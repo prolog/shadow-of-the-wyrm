@@ -99,6 +99,8 @@ class File
   protected:
     File();
     ~File();
+
+    static std::string update_text_format_specifiers(const std::string& unprocessed_res_str);
 };
 
 class Integer
