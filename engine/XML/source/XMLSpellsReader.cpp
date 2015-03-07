@@ -131,7 +131,8 @@ void XMLSpellsReader::parse_statistic_modifiers(bool& create_modifier, vector<in
                                SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_WIL,
                                SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_CHA,
                                SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_EVADE,
-                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_SOAK };
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_SOAK,
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_TO_HIT};
 
   for (const auto& key : stat_keys)
   {
