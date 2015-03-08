@@ -32,8 +32,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // French composer best known for "Tango en Skai"
-  return "\"Dyens\"";
+  // 16th century spanish composer who wrote for the vihuela and four-course
+  // guitar.
+  return "\"Mudarra\"";
 }
 
 string Metadata::get_game_version_synopsis() const
