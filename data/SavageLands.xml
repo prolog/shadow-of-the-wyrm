@@ -15176,6 +15176,28 @@
 				</Property>
 			</Properties>
 		</Spell>
+		<Spell id="c_08_bravery">
+			<NameSID>BRAVERY_NAME_SID</NameSID>
+			<PlayerCastMessageSID>BRAVERY_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>BRAVERY_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<Colour>9</Colour>
+			<APCost>6</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>18</Effect>
+			<Properties>
+				<Property>
+					<Name>STATISTIC_MODIFIER_TO_HIT</Name>
+					<Value>20</Value>
+				</Property>
+				<Property>
+					<Name>SPELL_WEAR_OFF_SID</Name>
+					<Value>BRAVERY_WEAR_OFF_SID</Value>
+				</Property>
+			</Properties>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -15726,7 +15748,7 @@
 			<Properties>
 				<Property>
 					<Name>STATISTIC_MODIFIER_TO_HIT</Name>
-					<Value>30</Value>
+					<Value>40</Value>
 				</Property>
 				<Property>
 					<Name>SPELL_WEAR_OFF_SID</Name>
@@ -20471,6 +20493,23 @@
 				<Rarity>0</Rarity>
 				<SpellID>c_07_antimagic_shield</SpellID>
 				<Difficulty>70</Difficulty>
+			</Spellbook>
+			<Spellbook id="bravery_spellbook">
+				<DescriptionSID>BRAVERY_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_BRAVERY_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>BRAVERY_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_BRAVERY_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>30</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<SpellID>c_08_bravery</SpellID>
+				<Difficulty>40</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
