@@ -13,6 +13,11 @@ Savage Lands v0.3.4 "Mudarra"
   found when selecting creatures with the cursor and selecting the
   "B"estiary option.
 
+- With the exception of various spells that require their own colours
+  (elemental spells, etc), standardized schools of magics with colours:
+  Cantrips are white, Mystic is bold green, Divine is bold white,
+  Primordial is blue, and Arcane is bold magenta.
+
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
 
