@@ -1,5 +1,8 @@
+Savage Lands v0.3.4 "Mudarra"
+- Version declared March 8, 2015.
+
 Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
-- Version declared February 8, 2015.
+- Version declared February 8, 2015.  Version finalized March 8, 2015.
 
 - Creatures can now switch places with other non-hostile (mobile)
   creatures, instead of having to attack.
