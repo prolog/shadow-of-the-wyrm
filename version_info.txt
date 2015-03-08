@@ -8,6 +8,11 @@ Savage Lands v0.3.4 "Mudarra"
   effective (+20 instead of +40 To-Hit) while costing a little more, as
   it's a Cantrip.
 
+- The player's bestiary entry could always be accessed by typing "player"
+  into the text box; added another option, so that the player could be
+  found when selecting creatures with the cursor and selecting the
+  "B"estiary option.
+
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
 
