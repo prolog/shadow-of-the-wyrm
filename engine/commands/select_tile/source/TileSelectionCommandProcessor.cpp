@@ -1,5 +1,6 @@
 #include "CommandKeys.hpp"
 #include "Game.hpp"
+#include "PlayerConstants.hpp"
 #include "TileSelectionCommandProcessor.hpp"
 
 using std::string;
@@ -100,7 +101,17 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
           
     if (tile_creature)
     {
-      search_text = StringTable::get(tile_creature->get_short_description_sid());
+      if (tile_creature->get_is_player())
+      {
+        // The bestiary contains player information under "player", so use the
+        // player creature ID, which is itself just "player".
+        search_text = PlayerConstants::PLAYER_CREATURE_ID;
+      }
+      else
+      {
+        search_text = StringTable::get(tile_creature->get_short_description_sid());
+      }
+
       ok_to_consult_bestiary = true;
     }
   }
