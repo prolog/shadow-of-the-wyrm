@@ -15051,7 +15051,7 @@
 			<PlayerCastMessageSID>MINOR_HEALING_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>MINOR_HEALING_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
-			<Colour>15</Colour>
+			<Colour>7</Colour>
 			<APCost>4</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -15090,7 +15090,7 @@
 			<PlayerCastMessageSID>STEEL_WIND_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>STEEL_WIND_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
-			<Colour>1</Colour>
+			<Colour>7</Colour>
 			<APCost>6</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -15116,7 +15116,7 @@
 			<PlayerCastMessageSID>BLINK_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>BLINK_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
-			<Colour>1</Colour>
+			<Colour>7</Colour>
 			<APCost>3</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -15151,7 +15151,7 @@
 			<PlayerCastMessageSID>PURIFY_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>PURIFY_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
-			<Colour>15</Colour>
+			<Colour>7</Colour>
 			<APCost>8</APCost>
 			<Speed>6</Speed>
 			<Range>0</Range>
@@ -15163,7 +15163,7 @@
 			<PlayerCastMessageSID>ANTIMAGIC_SHIELD_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ANTIMAGIC_SHIELD_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
-			<Colour>9</Colour>
+			<Colour>7</Colour>
 			<APCost>15</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -15181,7 +15181,7 @@
 			<PlayerCastMessageSID>BRAVERY_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>BRAVERY_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
-			<Colour>9</Colour>
+			<Colour>7</Colour>
 			<APCost>6</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -15271,7 +15271,7 @@
 			<PlayerCastMessageSID>FLIGHT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>FLIGHT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
-			<Colour>1</Colour>
+			<Colour>13</Colour>
 			<APCost>10</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -15317,7 +15317,7 @@
 			<PlayerCastMessageSID>ELEMENTAL_MASTERY_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ELEMENTAL_MASTERY_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
-			<Colour>9</Colour>
+			<Colour>13</Colour>
 			<APCost>15</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -15530,7 +15530,7 @@
 			<PlayerCastMessageSID>WRAITH_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>WRAITH_FORM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>15</Colour>
+			<Colour>10</Colour>
 			<APCost>30</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -15542,7 +15542,7 @@
 			<PlayerCastMessageSID>POISON_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>POISON_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>2</Colour>
+			<Colour>10</Colour>
 			<APCost>5</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
@@ -15560,7 +15560,7 @@
 			<PlayerCastMessageSID>BLIND_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>BLIND_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>4</Colour>
+			<Colour>10</Colour>
 			<APCost>6</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
@@ -15581,7 +15581,7 @@
 			<PlayerCastMessageSID>MUTE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>MUTE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>4</Colour>
+			<Colour>10</Colour>
 			<APCost>3</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
@@ -15602,7 +15602,7 @@
 			<PlayerCastMessageSID>SPELLBIND_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SPELLBIND_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>4</Colour>
+			<Colour>10</Colour>
 			<APCost>6</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
@@ -15623,7 +15623,7 @@
 			<PlayerCastMessageSID>HASTE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>HASTE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>4</Colour>
+			<Colour>10</Colour>
 			<APCost>5</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -15635,7 +15635,7 @@
 			<PlayerCastMessageSID>SLOW_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SLOW_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>4</Colour>
+			<Colour>10</Colour>
 			<APCost>5</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
@@ -15656,7 +15656,7 @@
 			<PlayerCastMessageSID>STONE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>STONE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>4</Colour>
+			<Colour>10</Colour>
 			<APCost>20</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
@@ -15677,7 +15677,7 @@
 			<PlayerCastMessageSID>CURSE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CURSE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>4</Colour>
+			<Colour>10</Colour>
 			<APCost>15</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
@@ -15739,7 +15739,7 @@
 			<PlayerCastMessageSID>AIM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>AIM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>4</Colour>
+			<Colour>10</Colour>
 			<APCost>5</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
@@ -15761,7 +15761,7 @@
 			<PlayerCastMessageSID>HAZE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>HAZE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
-			<Colour>4</Colour>
+			<Colour>10</Colour>
 			<APCost>3</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
@@ -15844,7 +15844,7 @@
 			<PlayerCastMessageSID>NETHER_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>NETHER_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
-			<Colour>6</Colour>
+			<Colour>4</Colour>
 			<APCost>10</APCost>
 			<Speed>1</Speed>
 			<Range>4</Range>
@@ -15861,7 +15861,7 @@
 			<PlayerCastMessageSID>CHAOS_AURA_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CHAOS_AURA_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
-			<Colour>5</Colour>
+			<Colour>4</Colour>
 			<APCost>12</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
