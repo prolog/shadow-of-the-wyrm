@@ -4,7 +4,12 @@ Savage Lands v0.3.4 "Mudarra"
 - Oracles now also start with a spellbook of Aim or Haze, in addition to 
   what they currently receive.
 
-- New spells (with associated spellbooks): haze (Mystic).
+- Aim is now a little more effective, so that Bravery can be half as
+  effective (+20 instead of +40 To-Hit) while costing a little more, as
+  it's a Cantrip.
+
+- New spells (with associated spellbooks): haze (Mystic), bravery
+  (Cantrips).
 
 Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 - Version declared February 8, 2015.  Version finalized March 8, 2015.
