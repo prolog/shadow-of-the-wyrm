@@ -20327,6 +20327,22 @@
 				<SpellID/>
 				<Difficulty>0</Difficulty>
 			</Spellbook>
+			<Spellbook id="on_faerie_fragments">
+				<DescriptionSID>ON_FAERIE_FRAGMENTS_SID</DescriptionSID>
+				<UsageDescriptionSID>ON_FAERIE_FRAGMENTS_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<TextSID>ON_FAERIE_FRAGMENTS_TEXT_SID</TextSID>
+				<SpellID/>
+				<Difficulty>0</Difficulty>
+			</Spellbook>			
 			<Spellbook id="stoneheim_history">
 				<DescriptionSID>STONEHEIM_HISTORY_SID</DescriptionSID>
 				<UsageDescriptionSID>STONEHEIM_HISTORY_USAGE_SID</UsageDescriptionSID>

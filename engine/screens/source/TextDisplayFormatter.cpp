@@ -6,7 +6,7 @@
 using namespace std;
 using namespace boost;
 
-vector<string> TextDisplayFormatter::format_text(const string& text) const
+vector<string> TextDisplayFormatter::format_text(const string& text, const int lines_displayable_area) const
 {
   vector<string> result;
 
@@ -25,6 +25,7 @@ vector<string> TextDisplayFormatter::format_text(const string& text) const
     char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
     tokenizer<char_separator<char>> tokens(text, separator);
     string current_str;
+    int cur_line = 0;
 
     // Iterate through all the tokens.  As we consider each token, if its
     // width is less than the width of the display, add it to the current
@@ -34,7 +35,7 @@ vector<string> TextDisplayFormatter::format_text(const string& text) const
     for (tokenizer<char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
     {
       string current_token = *t_iter;
-      process_token(current_token, result, current_str, cur_pos, width);
+      process_token(current_token, result, current_str, cur_pos, width, lines_displayable_area, cur_line);
     }
 
     // Once we're done, we'll still potentially have text that has not been
@@ -48,7 +49,7 @@ vector<string> TextDisplayFormatter::format_text(const string& text) const
   return result;
 }
 
-void TextDisplayFormatter::process_token(const string& current_token, vector<string>& result, string& current_str, uint& cur_pos, const uint width) const
+void TextDisplayFormatter::process_token(const string& current_token, vector<string>& result, string& current_str, uint& cur_pos, const uint width, const int lines_displayable_area, int& cur_line) const
 {
   // If the token is "%p" (a "new paragraph" token), then finish adding
   // the current line, add another blank line, and be sure to discard
@@ -60,6 +61,7 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
     result.push_back(current_str);
     current_str.clear();
     cur_pos = 0;
+    cur_line += 2;
 
     result.push_back(current_str);
   }
@@ -68,6 +70,26 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
     result.push_back(current_str);
     current_str.clear();
     cur_pos = 0;
+    cur_line++;
+  }
+  else if (current_token == TextFormatSpecifiers::NEW_PAGE)
+  {
+    result.push_back(current_str);
+    current_str.clear();
+    cur_pos = 0;
+
+    // Add as many lines as are necessary to pad the current page.
+    if (lines_displayable_area > 0)
+    {
+      for (int i = cur_line+1; i < lines_displayable_area; i++)
+      {
+        result.push_back(current_str);
+      }
+
+      // The display routines start iterating at 1 til the screen display constant,
+      // so follow suit.
+      cur_line = 0;
+    }
   }
   else
   {
@@ -76,6 +98,7 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
       result.push_back(current_str);
       current_str.clear();
       cur_pos = 0;
+      cur_line++;
     }
 
     current_str.append(current_token);

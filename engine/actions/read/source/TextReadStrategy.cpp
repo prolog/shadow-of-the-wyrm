@@ -18,7 +18,7 @@ ActionCostValue TextReadStrategy::read(CreaturePtr creature, ActionManager * con
     acv = get_action_cost_value(creature);
 
     string text_sid = readable->get_text_sid();
-    vector<string> formatted_text = tdf.format_text(StringTable::get(text_sid));
+    vector<string> formatted_text = tdf.format_text(StringTable::get(text_sid), Screen::LINES_DISPLAYABLE_AREA);
 
     for(const string& text_line : formatted_text)
     {

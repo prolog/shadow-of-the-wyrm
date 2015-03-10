@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int Screen::LINES_DISPLAYABLE_AREA = 21;
+const int Screen::LINES_DISPLAYABLE_AREA = 21;
 
 // Any base initialization for the Screen
 Screen::Screen(DisplayPtr new_display)

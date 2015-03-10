@@ -373,7 +373,7 @@ string File::update_text_format_specifiers(const string& unproc_res_str)
 {
   string proc_res_str = unproc_res_str;
 
-  vector<string> text_format_specifiers = { TextFormatSpecifiers::LINE_BREAK, TextFormatSpecifiers::NEW_PARAGRAPH };
+  vector<string> text_format_specifiers = { TextFormatSpecifiers::LINE_BREAK, TextFormatSpecifiers::NEW_PARAGRAPH, TextFormatSpecifiers::NEW_PAGE };
 
   for (const string& specifier : text_format_specifiers)
   {
