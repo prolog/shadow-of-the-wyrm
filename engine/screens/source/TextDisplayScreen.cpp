@@ -3,6 +3,7 @@
 #include "PromptTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextDisplayScreen.hpp"
+#include "TextFormatSpecifiers.hpp"
 
 using namespace std;
 using namespace boost::algorithm;
@@ -35,9 +36,9 @@ void TextDisplayScreen::initialize(const string& title_sid)
     trim_right(text);
 
     TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour);
+    add_component(text_screen, current_line, cnt);
 
     cnt++;
-    add_component(text_screen, current_line, cnt);
   }
 
   add_page(text_screen);

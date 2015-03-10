@@ -12,4 +12,5 @@ TextFormatSpecifiers::~TextFormatSpecifiers()
 
 const string TextFormatSpecifiers::NEW_PARAGRAPH = "%p";
 const string TextFormatSpecifiers::LINE_BREAK = "%b";
+const string TextFormatSpecifiers::NEW_PAGE = "%P";
 

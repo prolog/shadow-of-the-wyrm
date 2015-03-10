@@ -18,6 +18,10 @@ Savage Lands v0.3.4 "Mudarra"
   Cantrips are white, Mystic is bold green, Divine is bold white,
   Primordial is blue, and Arcane is bold magenta.
 
+- Added a new text format specifier, "new page" (%P).  Created a new
+  in game text, "On the Faerie Fragment" that uses this to combine
+  some criticism with a translation of the Faerie Fragment poem.
+
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
 
