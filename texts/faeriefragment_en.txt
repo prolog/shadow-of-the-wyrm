@@ -5,26 +5,31 @@ By Asher of Yew
 The Cithriel fragments, as they are commonly known, represent the oldest known
 link with the ancient world.  They are thought to be from vases kept in the faerie
 stronghold of Cithriel, so called "verse-pots" created by master potters and
-inscribed by the great, nameless poets of the ancient age.  These represent the
-only known record of the language of the faerie people.
+inscribed by the great, nameless poets of the ancient age.  These pots have been
+referred to throughout history, though no complete examples have ever been found.  These
+verse fragments represent the only known record of the language of the faerie people.
 %p
 That we know anything at all about these pots is nothing short of remarkable.
 Though their shape must forever remain a mystery, their translation is possible
 only because of the surviving translation into Primal Elvish, the language of the
-elves before the partition.  A remarkable find, it contains the text of the fragments,
+elves before the partition.  A remarkable work, it contains the text of the fragments,
 the Primal Elvish translation, and above the faerie text, phonetic pronunciations
 of the faerie words.
 %p
 The poems themselves are difficult to translate, because so little is known of the
-faerie language, and because it is completely distinct from Primal Elvish.  As a
-result, the translations themselves have become as important as the poems themselves,
-and have become the starting point for new translations of the original fragments.
+Faerie language, and because it is completely distinct from Primal Elvish.  The
+language is highly musical, with the words that are known seeming to flow
+together almost like music.  But due to the dearth of knowledge about Faerie,
+the translations themselves have become as important as the poems themselves,
+starting points for new translations into modern languages.
 %p
-The translations of the ur-text differ considerably.  The first fragment represents
-a kind of keening for what is lost, and is presented in the original formal style,
-heavily trochaic.  The second fragment presents a problem: it starts off in a trochaic
-form, then quickly veers into free verse.  It is uncertain what "Eka" represents,
-and has been a favoured subject of debate among scholars for generations.
+The translations presented here are faithful to the metre and rhyme patterns of the 
+original text.  The first fragment represents a kind of keening for what is lost, 
+and is presented in its original, formal style, heavily trochaic.  The second fragment 
+presents a problem: it starts off in a trochaic form, seemingly poetic in the classical
+style, then quickly veers into free verse.  It is uncertain what "Eka" represents --
+an exclamation? a person? -- and debate surrounding this word is ongoing.  In deference
+to the lack of any kind of conclusion to this discussion, I use the original Faerie word. 
 %P
 I
 %p
@@ -35,15 +40,13 @@ keening like a dying child.
 %p
 Where now lie our ancient forests, %b
 fragrant in the midnight rain? %b
-Gone by man and elf and giant, %b
+Taken now by elf and giant, %b
 seized for timber, felled and slain.
-%p
-Where have --
 %P
 II
 %p
 Eka, king of bloody heavens! %b
 Eka, lord of distant stars! %b
-Eka, watery thane! %b
+Eka, unholy watery thane! %b
 Eka, you iron-handed prince! %b
-Eka!  Your eyes are embers and your hide is stone! 
+Eka!  Your eyes are embers!  Your voice is death!  Your hide is stone! 
