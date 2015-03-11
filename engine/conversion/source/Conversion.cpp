@@ -360,7 +360,7 @@ string File::to_resource_string(const string& filename)
 {
 
   string str = to_string(filename);
-  str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
+  boost::replace_all(str, "\n", " ");
   str = update_text_format_specifiers(str);
 
   return str;
