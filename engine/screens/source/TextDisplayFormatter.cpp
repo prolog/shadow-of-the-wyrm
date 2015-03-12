@@ -104,4 +104,10 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
     current_str.append(current_token);
     cur_pos += current_token.size();
   }
+
+  // Once we hit a page worth of lines, reset the counter.
+  if (lines_displayable_area > 0 && cur_line == lines_displayable_area)
+  {
+    cur_line = 0;
+  }
 }
