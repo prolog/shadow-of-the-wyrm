@@ -22,6 +22,9 @@ Savage Lands v0.3.4 "Mudarra"
   in game text, "On the Faerie Fragment" that uses this to combine
   some criticism with a translation of the Faerie Fragment poem.
 
+- Licenses for dependencies (Boost, Google Test, Lua) are now contained
+  in the "licenses" directory.
+
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
 
