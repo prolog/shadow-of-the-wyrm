@@ -22,6 +22,10 @@ Savage Lands v0.3.4 "Mudarra"
   in game text, "On the Faerie Fragment" that uses this to combine
   some criticism with a translation of the Faerie Fragment poem.
 
+- Added the Eka, the Undersea Prison, the resting place of the fearsome 
+  cosmic creature imprisoned by the Faerie people.  This is located
+  just west of the caravan.
+
 - Licenses for dependencies (Boost, Google Test, Lua) are now contained
   in the "licenses" directory.
 

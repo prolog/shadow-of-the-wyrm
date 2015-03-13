@@ -98,5 +98,9 @@
 			<Row y="6" x="93">~~~~~</Row>
 			<Script>areas/snake_lands.lua</Script>
 		</Area>
+		<Area id="eka">
+			<Row y="5" x="49">~</Row>
+			<Script>areas/eka.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>
