@@ -13447,6 +13447,42 @@
 				<DeathScript>events/win_game.lua</DeathScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="super_boss">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>EAKAURI_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EAKAURI_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EAKAURI_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EAKAURI_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>95</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<!-- Well, it starts off friendly... -->
+				<Friendly>1</Friendly>
+				<DangerLevel>50</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3000</NumDice>
+					<NumSides>1</NumSides>
+				</HP>
+				<Exp>4000000</Exp>
+			</CreatureGeneration>
+			<Level>50</Level>
+			<Damage chaotic="1">
+				<NumDice>1</NumDice>
+				<NumSides>400</NumSides>
+				<Modifier>50</Modifier>
+				<Type>3</Type>
+			</Damage>
+			<Evade>40</Evade>
+			<Soak>30</Soak>
+			<Speed>15</Speed>
+			<ChatScript>quests/eakauri.lua</ChatScript>
+		</Creature>
 		<Creature id="fisherman">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>FISHERMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
