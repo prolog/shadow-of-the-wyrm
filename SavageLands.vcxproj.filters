@@ -1830,9 +1830,6 @@
     <ClInclude Include="engine\XML\include\XMLFoodReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\XML\include\XMLInitialItemReader.hpp">
-      <Filter>Header Files\engine\XML\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\include\XMLItemReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
@@ -4500,9 +4497,6 @@
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLFoodReader.cpp">
-      <Filter>Source Files\engine\XML\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\XML\source\XMLInitialItemReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLItemReader.cpp">
