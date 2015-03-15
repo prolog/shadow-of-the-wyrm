@@ -29,12 +29,21 @@ Savage Lands v0.3.4 "Mudarra"
 - Licenses for dependencies (Boost, Google Test, Lua) are now contained
   in the "licenses" directory.
 
+- The Lua "get_creature" API function now first checks by creature ID.
+  If that returns no matches, the function iterates over the creature
+  container on the map to check by original creature ID.
+
 - New items: eka key.
 
 - New creatures: Eakauri.
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
+
+- Bug fixes:
+
+  - HostilityManager::set_hostility_to_creature wasn't safe to call with
+    a null CreaturePtr.
 
 Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 - Version declared February 8, 2015.  Version finalized March 8, 2015.

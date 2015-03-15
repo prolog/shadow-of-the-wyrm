@@ -57,6 +57,20 @@ CreaturePtr get_creature(const string& creature_id)
       CreaturePtr creature = c_it->second;
       return creature;
     }
+    else
+    {
+      // Couldn't find by creature ID.
+      // Try by original creature ID.
+      for (const auto& c_pair : cmap)
+      {
+        CreaturePtr cr_original = c_pair.second;
+
+        if (cr_original != nullptr && cr_original->get_original_id() == creature_id)
+        {
+          return cr_original;
+        }
+      }
+    }
   }
 
   CreaturePtr null_creature;
