@@ -3,7 +3,9 @@
 #include <set>
 #include <string>
 #include "Dice.hpp"
+#include "EquipmentTypes.hpp"
 #include "GenerationValues.hpp"
+#include "InitialItem.hpp"
 #include "tiles.hpp"
 
 // Values that are used to generate a creature, without being a necessary
@@ -31,6 +33,12 @@ class CreatureGenerationValues : public GenerationValues
     void set_base_experience_value(const uint new_base_experience_value);
     uint get_base_experience_value() const;
 
+    void set_initial_equipment(const std::map<EquipmentWornLocation, InitialItem>& new_initial_equipment);
+    std::map<EquipmentWornLocation, InitialItem> get_initial_equipment() const;
+
+    void set_initial_inventory(const std::vector<InitialItem>& new_initial_inventory);
+    std::vector<InitialItem> get_initial_inventory() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -50,6 +58,10 @@ class CreatureGenerationValues : public GenerationValues
     // The base experience value.  Stored here so that a slightly different value can
     // be generated for each creature.
     uint base_experience_value;
+
+    // The initial equipment/inventory, used when generating the creature.
+    std::map<EquipmentWornLocation, InitialItem> initial_equipment;
+    std::vector<InitialItem> initial_inventory;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

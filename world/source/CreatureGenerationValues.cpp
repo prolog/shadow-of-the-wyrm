@@ -24,6 +24,8 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
   result = result && (friendly == cgv.friendly);
   result = result && (initial_hit_points == cgv.initial_hit_points);
   result = result && (base_experience_value == cgv.base_experience_value);
+  result = result && (initial_equipment == cgv.initial_equipment);
+  result = result && (initial_inventory == cgv.initial_inventory);
 
   return result;
 }
@@ -83,6 +85,26 @@ uint CreatureGenerationValues::get_base_experience_value() const
   return base_experience_value;
 }
 
+void CreatureGenerationValues::set_initial_equipment(const map<EquipmentWornLocation, InitialItem>& new_initial_equipment)
+{
+  initial_equipment = new_initial_equipment;
+}
+
+map<EquipmentWornLocation, InitialItem> CreatureGenerationValues::get_initial_equipment() const
+{
+  return initial_equipment;
+}
+
+void CreatureGenerationValues::set_initial_inventory(const vector<InitialItem>& new_initial_inventory)
+{
+  initial_inventory = new_initial_inventory;
+}
+
+vector<InitialItem> CreatureGenerationValues::get_initial_inventory() const
+{
+  return initial_inventory;
+}
+
 bool CreatureGenerationValues::serialize(ostream& stream) const
 {
   GenerationValues::serialize(stream);
@@ -101,6 +123,25 @@ bool CreatureGenerationValues::serialize(ostream& stream) const
   Serialize::write_bool(stream, friendly);
   initial_hit_points.serialize(stream);
   Serialize::write_uint(stream, base_experience_value);
+
+  // Initial Equipment
+  size_t eq_map_size = initial_equipment.size();
+  Serialize::write_size_t(stream, eq_map_size);
+
+  for (const auto& initial_eq_pair : initial_equipment)
+  {
+    Serialize::write_enum(stream, initial_eq_pair.first);
+    initial_eq_pair.second.serialize(stream);
+  }
+
+  // Initial Inventory
+  size_t inv_size = initial_inventory.size();
+  Serialize::write_size_t(stream, inv_size);
+
+  for (const auto& item : initial_inventory)
+  {
+    item.serialize(stream);
+  }
 
   return true;
 }
@@ -128,6 +169,34 @@ bool CreatureGenerationValues::deserialize(istream& stream)
   Serialize::read_bool(stream, friendly);
   initial_hit_points.deserialize(stream);
   Serialize::read_uint(stream, base_experience_value);
+
+  // Initial Equipment
+  size_t eq_map_size = 0;
+  Serialize::read_size_t(stream, eq_map_size);
+  initial_equipment.clear();
+
+  for (size_t i = 0; i < eq_map_size; i++)
+  {
+    EquipmentWornLocation ewl = EquipmentWornLocation::EQUIPMENT_WORN_HEAD;
+    Serialize::read_enum(stream, ewl);
+
+    InitialItem ii;
+    ii.deserialize(stream);
+
+    initial_equipment.insert(make_pair(ewl, ii));
+  }
+
+  size_t inv_size = 0;
+  Serialize::read_size_t(stream, inv_size);
+  initial_inventory.clear();
+
+  for (size_t i = 0; i < inv_size; i++)
+  {
+    InitialItem ii;
+    ii.deserialize(stream);
+
+    initial_inventory.push_back(ii);
+  }
 
   return true;
 }

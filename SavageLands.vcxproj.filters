@@ -6491,5 +6491,8 @@
     <ClCompile Include="engine\strings\source\unit_tests\StringTable_test.cpp">
       <Filter>Source Files\engine\strings\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\InitialItem_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
