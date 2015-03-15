@@ -24,10 +24,14 @@ Savage Lands v0.3.4 "Mudarra"
 
 - Added the Eka, the Undersea Prison, the resting place of the fearsome 
   cosmic creature imprisoned by the Faerie people.  This is located
-  just west of the caravan.
+  just north of the caravan.
 
 - Licenses for dependencies (Boost, Google Test, Lua) are now contained
   in the "licenses" directory.
+
+- New items: eka key.
+
+- New creatures: Eakauri.
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).

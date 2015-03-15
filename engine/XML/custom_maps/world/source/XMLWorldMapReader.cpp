@@ -34,6 +34,8 @@ void XMLWorldMapReader::read_area(MapPtr map, const XMLNode& area_node)
 {
   if (!area_node.is_null())
   {
+    string area_id = XMLUtils::get_attribute_value(area_node, "id");
+
     vector<XMLNode> row_nodes = XMLUtils::get_elements_by_local_name(area_node, "Row");
 
     // Read in the basic tile details.

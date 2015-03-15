@@ -20118,6 +20118,15 @@
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wyrmeswraec_gate</LockID>
 			</Tool>
+			<Tool id="eka_key">
+				<DescriptionSID>EKA_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>EKA_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>90</Value>
+				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>eka_door</LockID>
+			</Tool>
 			<Tool id="_crypt_key">
 				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CRYPT_KEY_USAGE_SID</UsageDescriptionSID>
