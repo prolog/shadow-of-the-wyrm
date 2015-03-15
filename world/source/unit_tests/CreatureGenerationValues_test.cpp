@@ -26,6 +26,19 @@ TEST(SL_World_CreatureGenerationValues, saveload)
   cgv.set_initial_hit_points(hp);
   cgv.set_base_experience_value(105);
 
+  vector<InitialItem> initial_items;
+  InitialItem i;
+  initial_items.push_back(i);
+  initial_items.push_back(i);
+
+  cgv.set_initial_inventory(initial_items);
+
+  map<EquipmentWornLocation, InitialItem> initial_equipment;
+  initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_HEAD, i));
+  initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_FEET, i));
+
+  cgv.set_initial_equipment(initial_equipment);
+
   ostringstream ss;
 
   cgv.serialize(ss);
