@@ -7,6 +7,7 @@
 #include "FeatureFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "HostilityManager.hpp"
 #include "Log.hpp"
 #include "LuaUtils.hpp"
 #include "ItemManager.hpp"
@@ -140,6 +141,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
   lua_register(L, "creature_is_class", creature_is_class);
   lua_register(L, "get_item_count", get_item_count);
+  lua_register(L, "set_hostility", set_hostility);
 }
 
 // Lua API helper functions
@@ -1657,6 +1659,33 @@ int get_item_count(lua_State* ls)
 
   lua_pushinteger(ls, count);
   return 1;
+}
+
+// Set a creature hostile towards another.
+// Argument 1: Creature to set the hostility on.
+// Argument 2: Creature to be hostile towards.
+// Argument 3 (opt): hostility level.
+int set_hostility(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string hostile_creature_id = lua_tostring(ls, 1);
+    string hostile_towards_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(hostile_creature_id);
+    
+    HostilityManager hm;
+    hm.set_hostility_to_creature(creature, hostile_towards_id);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_hostility");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)

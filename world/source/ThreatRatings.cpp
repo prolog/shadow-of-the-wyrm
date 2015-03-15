@@ -44,7 +44,21 @@ pair<bool, int> ThreatRatings::has_threat(const string& creature_id) const
   return threat_exists;
 }
 
-// Add a threat at a given threat rating.
+// Add or updeate a threat at a given threat rating.
+void ThreatRatings::add_or_update_threat(const string& creature_id, const int threat_rating)
+{
+  auto details = has_threat(creature_id);
+
+  if (details.first)
+  {
+    update_threat(creature_id, details.second, threat_rating);
+  }
+  else
+  {
+    add_threat(creature_id, threat_rating);
+  }
+}
+
 void ThreatRatings::add_threat(const string& creature_id, const int threat_rating)
 {
   ThreatMap::iterator t_it = threat_ratings.find(threat_rating);

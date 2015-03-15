@@ -1,4 +1,4 @@
-<CustomMap id="wintersea_keep_b1" xmlns="urn:savage_lands:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:maps:1.0.0 ./CustomMap.xsd">
+<CustomMap id="eka" xmlns="urn:savage_lands:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:maps:1.0.0 ./CustomMap.xsd">
 	<Dimensions>
 		<Rows>20</Rows>
 		<Columns>80</Columns>
@@ -18,10 +18,10 @@
 	##############################...............................................###
 	##############################.....................###########...............###
 	#########################..........................#.........#...............###
-	#########################.####...............................#..............####
-	###############.....####..####...............................#..............####
+	#########################.####.....................#.........#..............####
+	###############.....####..####.....................#.........#..............####
 	#######...#.....###.....##########.................#.........#...............###
-	######..#...####################.#.................###########...............###
+	######..#...####################.#.................#####.#####...............###
 	#####...######################...#..........................................#.##
 	#####.#########################.....##........................................##
 	####..##############################.#.....................................##.##
@@ -31,21 +31,44 @@
 	################################################################################
 	</Tiles>
 	<PlayerStart>
-		<Row>15</Row>
-		<Col>40</Col>
+		<Row>18</Row>
+		<Col>3</Col>
 	</PlayerStart>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<ID>super_boss</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>53</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 		<Items/>
 	</InitialPlacements>
 	<Exits>
 		<Exit>
 			<Coord>
-				<Row>15</Row>
-				<Col>40</Col>
+				<Row>18</Row>
+				<Col>3</Col>
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>world_map</MapID>
 		</Exit>
 	</Exits>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>12</Row>
+				<Col>56</Col>
+			</Coord>
+			<Door>
+				<Material>7</Material>
+				<LockID>eka_door</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>

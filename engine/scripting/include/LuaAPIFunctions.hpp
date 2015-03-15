@@ -70,6 +70,7 @@ int get_deity_summons(lua_State* ls);
 int summon_monsters_around_creature(lua_State* ls);
 int creature_is_class(lua_State* ls);
 int get_item_count(lua_State* ls);
+int set_hostility(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls);
