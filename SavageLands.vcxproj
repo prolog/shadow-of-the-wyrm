@@ -760,7 +760,6 @@
     <ClInclude Include="engine\XML\include\XMLDeitiesReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLFileReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLFoodReader.hpp" />
-    <ClInclude Include="engine\XML\include\XMLInitialItemReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLItemReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLItemsReaders.hpp" />
     <ClInclude Include="engine\XML\include\XMLPlantReader.hpp" />
@@ -2154,7 +2153,6 @@
     <ClCompile Include="engine\XML\source\XMLDeitiesReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLFileReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLFoodReader.cpp" />
-    <ClCompile Include="engine\XML\source\XMLInitialItemReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLItemReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLItemsReaders.cpp" />
     <ClCompile Include="engine\XML\source\XMLPlantReader.cpp" />

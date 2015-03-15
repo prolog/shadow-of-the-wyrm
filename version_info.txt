@@ -33,7 +33,11 @@ Savage Lands v0.3.4 "Mudarra"
   If that returns no matches, the function iterates over the creature
   container on the map to check by original creature ID.
 
-- New items: eka key.
+- Creatures can now have associated inventories.  Most shouldn't - in most
+  cases, drops should be random.  But certain key creatures can have items
+  loaded on them that are then guaranteed to drop on death.
+
+- New items: eka key, cosmos stone.
 
 - New creatures: Eakauri.
 

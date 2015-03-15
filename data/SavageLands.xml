@@ -13482,6 +13482,14 @@
 			<Soak>30</Soak>
 			<Speed>15</Speed>
 			<ChatScript>quests/eakauri.lua</ChatScript>
+			<InitialEquipmentAndInventory>
+				<InitialInventory>
+					<InitialItem>
+						<ID>cosmos_stone</ID>
+						<Quantity><Amount>1</Amount></Quantity>
+					</InitialItem>
+				</InitialInventory>
+			</InitialEquipmentAndInventory>
 		</Creature>
 		<Creature id="fisherman">
 			<RaceID>01_human</RaceID>
@@ -20155,6 +20163,19 @@
 				<TextDetails>
 					<Symbol>*</Symbol>
 					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Tool>
+			<Tool id="cosmos_stone">
+				<DescriptionSID>COSMOS_STONE_SID</DescriptionSID>
+				<UsageDescriptionSID>COSMOS_STONE_USAGE_SID</UsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<Artifact>1</Artifact>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
