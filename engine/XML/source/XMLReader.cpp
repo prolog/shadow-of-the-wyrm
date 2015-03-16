@@ -79,98 +79,91 @@ void XMLReader::parse_properties(map<string, string>& properties, const XMLNode&
   }
 }
 
-void XMLReader::parse_initial_equipment_and_inventory(ClassPtr current_class, const XMLNode& initial_eq_and_inv_node)
+void XMLReader::parse_initial_equipment_and_inventory(map<EquipmentWornLocation, InitialItem>& initial_eq, vector<InitialItem>& initial_inv, const XMLNode& initial_eq_and_inv_node)
 {
-  if (current_class && !initial_eq_and_inv_node.is_null())
+  if (!initial_eq_and_inv_node.is_null())
   {
-    parse_initial_equipment(current_class, initial_eq_and_inv_node);
+    parse_initial_equipment(initial_eq, initial_eq_and_inv_node);
 
     XMLNode initial_inv_node = XMLUtils::get_next_element_by_local_name(initial_eq_and_inv_node, "InitialInventory");
-    parse_initial_inventory(current_class, initial_inv_node);
+    parse_initial_inventory(initial_inv, initial_inv_node);
   }
 }
 
 // Parse the initial items into the eq.
-void XMLReader::parse_initial_equipment(ClassPtr current_class, const XMLNode& initial_eq_node)
+void XMLReader::parse_initial_equipment(map<EquipmentWornLocation, InitialItem>& initial_eq, const XMLNode& initial_eq_node)
 {
-  if (current_class && !initial_eq_node.is_null())
+  if (!initial_eq_node.is_null())
   {
-    map<EquipmentWornLocation, InitialItem> initial_equipment;
-
     // Head
     XMLNode head_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Head");
     InitialItem head_item = get_initial_item(head_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_HEAD, head_item));
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_HEAD, head_item));
 
     // Neck
     XMLNode neck_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Neck");
     InitialItem neck_item = get_initial_item(neck_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_NECK, neck_item));
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_NECK, neck_item));
 
     // RFinger
     XMLNode right_finger_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "RightFinger");
     InitialItem right_finger_item = get_initial_item(right_finger_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER, right_finger_item));
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER, right_finger_item));
 
     // LFinger
     XMLNode left_finger_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "LeftFinger");
     InitialItem left_finger_item = get_initial_item(left_finger_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER, left_finger_item));
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER, left_finger_item));
 
     // RHand
-    XMLNode WIELDED_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Wielded");
-    InitialItem WIELDED_item = get_initial_item(WIELDED_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED, WIELDED_item));
+    XMLNode wielded_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Wielded");
+    InitialItem wielded_item = get_initial_item(wielded_node);
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED, wielded_item));
 
     // LHand
-    XMLNode OFF_HAND_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "OffHand");
-    InitialItem OFF_HAND_item = get_initial_item(OFF_HAND_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND, OFF_HAND_item));
+    XMLNode off_hand_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "OffHand");
+    InitialItem off_hand_item = get_initial_item(off_hand_node);
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND, off_hand_item));
 
     // Body
     XMLNode body_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Body");
     InitialItem body_item = get_initial_item(body_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_BODY, body_item));
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_BODY, body_item));
 
     // Around Body
     XMLNode around_body_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "AroundBody");
     InitialItem around_body_item = get_initial_item(around_body_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, around_body_item));
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, around_body_item));
 
     // Feet
     XMLNode feet_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Feet");
     InitialItem feet_item = get_initial_item(feet_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_FEET, feet_item));
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_FEET, feet_item));
 
     // Ranged
     XMLNode ranged_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Ranged");
     InitialItem ranged_item = get_initial_item(ranged_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON, ranged_item));
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON, ranged_item));
 
     // Ammunition
     XMLNode ammunition_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Ammunition");
     InitialItem ammunition = get_initial_item(ammunition_node);
-    initial_equipment.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION, ammunition));
-
-    current_class->set_initial_equipment(initial_equipment);
+    initial_eq.insert(make_pair(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION, ammunition));
   }
 }
 
 // Parse the initial items into the inv.
-void XMLReader::parse_initial_inventory(ClassPtr current_class, const XMLNode& initial_inv_node)
+void XMLReader::parse_initial_inventory(vector<InitialItem>& initial_inv, const XMLNode& initial_inv_node)
 {
-  if (current_class && !initial_inv_node.is_null())
+  if (!initial_inv_node.is_null())
   {
-    vector<InitialItem> initial_inventory;
     vector<XMLNode> initial_item_nodes = XMLUtils::get_elements_by_local_name(initial_inv_node, "InitialItem");
 
     for (const XMLNode& node : initial_item_nodes)
     {
       InitialItem initial_item = get_initial_item(node);
-      initial_inventory.push_back(initial_item);
+      initial_inv.push_back(initial_item);
     }
-
-    current_class->set_initial_inventory(initial_inventory);
   }
 }
 

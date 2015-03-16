@@ -26,6 +26,9 @@ Savage Lands v0.3.4 "Mudarra"
   cosmic creature imprisoned by the Faerie people.  This is located
   just north of the caravan.
 
+  - Added Eakauri in a locked room in the centre of the prison, and loaded
+  the cosmos stone into his inventory.
+
 - Licenses for dependencies (Boost, Google Test, Lua) are now contained
   in the "licenses" directory.
 
