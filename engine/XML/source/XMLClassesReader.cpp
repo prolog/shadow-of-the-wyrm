@@ -87,7 +87,13 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     current_class->set_experience_multiplier(experience_multiplier);
     
     XMLNode initial_equipment_and_inventory_node = XMLUtils::get_next_element_by_local_name(class_node, "InitialEquipmentAndInventory");
-    parse_initial_equipment_and_inventory(current_class, initial_equipment_and_inventory_node);
+    map<EquipmentWornLocation, InitialItem> initial_eq;
+    vector<InitialItem> initial_inv;
+
+    parse_initial_equipment_and_inventory(initial_eq, initial_inv, initial_equipment_and_inventory_node);
+
+    current_class->set_initial_equipment(initial_eq);
+    current_class->set_initial_inventory(initial_inv);
 
     string level_script = XMLUtils::get_child_node_value(class_node, "LevelScript");
     current_class->set_level_script(level_script);

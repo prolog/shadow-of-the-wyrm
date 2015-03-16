@@ -14,9 +14,9 @@ class XMLReader
     void parse_status_ailments(StatusAilments& ailments, const XMLNode& status_ailments_node) const;
     void parse_properties(std::map<std::string, std::string>& properties_map, const XMLNode& properties_node) const;
 
-    void parse_initial_equipment_and_inventory(ClassPtr current_class, const XMLNode& initial_equipment_and_inventory_node);
-    void parse_initial_equipment(ClassPtr current_class, const XMLNode& initial_equipment_node);
-    void parse_initial_inventory(ClassPtr current_class, const XMLNode& initial_inventory_node);
+    void parse_initial_equipment_and_inventory(std::map<EquipmentWornLocation, InitialItem>& initial_eq, std::vector<InitialItem>& initial_inv, const XMLNode& initial_equipment_and_inventory_node);
+    void parse_initial_equipment(std::map<EquipmentWornLocation, InitialItem>& initial_eq, const XMLNode& initial_equipment_node);
+    void parse_initial_inventory(std::vector<InitialItem>& initial_inv, const XMLNode& initial_inventory_node);
 
     InitialItem get_initial_item(const XMLNode& initial_item_node);
 
