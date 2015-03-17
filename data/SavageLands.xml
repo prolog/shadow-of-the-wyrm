@@ -13470,6 +13470,14 @@
 					<NumSides>1</NumSides>
 				</HP>
 				<Exp>4000000</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>cosmos_stone</ID>
+							<Quantity><Amount>1</Amount></Quantity>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>50</Level>
 			<Damage chaotic="1">
@@ -13482,14 +13490,6 @@
 			<Soak>30</Soak>
 			<Speed>15</Speed>
 			<ChatScript>quests/eakauri.lua</ChatScript>
-			<InitialEquipmentAndInventory>
-				<InitialInventory>
-					<InitialItem>
-						<ID>cosmos_stone</ID>
-						<Quantity><Amount>1</Amount></Quantity>
-					</InitialItem>
-				</InitialInventory>
-			</InitialEquipmentAndInventory>
 		</Creature>
 		<Creature id="fisherman">
 			<RaceID>01_human</RaceID>
