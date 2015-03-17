@@ -210,6 +210,19 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
     // for each generated creature.
     uint base_experience = XMLUtils::get_child_node_int_value(creature_generation_values_node, "Exp");
     cgv.set_base_experience_value(base_experience);
+
+    // Optional equipment/inventory node.
+    XMLNode eq_inv_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "InitialEquipmentAndInventory");
+    if (!eq_inv_node.is_null())
+    {
+      map<EquipmentWornLocation, InitialItem> initial_eq;
+      vector<InitialItem> initial_inv;
+
+      parse_initial_equipment_and_inventory(initial_eq, initial_inv, eq_inv_node);
+
+      cgv.set_initial_equipment(initial_eq);
+      cgv.set_initial_inventory(initial_inv);
+    }
   }
   
   return cgv;

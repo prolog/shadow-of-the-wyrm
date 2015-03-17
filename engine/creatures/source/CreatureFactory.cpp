@@ -217,6 +217,16 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Set additional book-keeping values
     initialize(creaturep);
     
+    const CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
+    CreatureGenerationValues cgv;
+    
+    auto cgv_it = cgv_map.find(creaturep->get_original_id());
+
+    if (cgv_it != cgv_map.end())
+    {
+      cgv = cgv_it->second;
+    }
+
     // Equip the initial set of race/class equipment.
     InitialItemEquipper iie;
     iie.equip(creaturep, action_manager);

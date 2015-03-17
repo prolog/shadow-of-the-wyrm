@@ -255,6 +255,7 @@
 			<!-- Most creatures don't use spells, so this is optional. -->
 			<xs:element name="AP" type="tns:Dice" minOccurs="0"/>
 			<xs:element name="Exp" type="xs:unsignedInt"/>
+			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -351,7 +352,6 @@
 			<xs:element name="Speed" type="xs:integer" minOccurs="0"/>
 			<xs:element ref="tns:EventScripts" minOccurs="0"/>
 			<xs:element name="ChatScript" type="xs:string" minOccurs="0"/>
-			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
 	</xs:complexType>
