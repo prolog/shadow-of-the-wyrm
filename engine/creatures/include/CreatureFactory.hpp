@@ -22,6 +22,7 @@ class CreatureFactory
     void set_default_resistances(CreaturePtr creature);
     void set_initial_resistances(CreaturePtr creature, RacePtr race, ClassPtr char_class);
     void set_initial_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class);
+    void create_initial_equipment_and_inventory(CreaturePtr creature, ActionManager& am);
     HairColour get_random_hair_colour();
     EyeColour get_random_eye_colour();
     
