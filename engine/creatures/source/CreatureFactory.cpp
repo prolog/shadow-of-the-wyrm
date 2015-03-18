@@ -48,7 +48,8 @@ CreaturePtr CreatureFactory::create_by_creature_id
     
   CreatureMap::iterator c_it = creature_map.find(creature_id);
   CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
-    
+  CreatureGenerationValues cgv;
+
   if (!creature_id.empty() && c_it != creature_map.end() && cgv_it != cgv_map.end())
   {
     // If the current generation amount is equal to the maximum, then
@@ -59,7 +60,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
     // respectively, so by default, there should be no limit to the
     // number of creatures generated for a particular type, so long
     // as a limit has not been specified by the configuration.
-    CreatureGenerationValues& cgv  = cgv_it->second;
+    cgv  = cgv_it->second;
     if (cgv.is_maximum_reached())
     {
       return creature;
@@ -110,8 +111,8 @@ CreaturePtr CreatureFactory::create_by_creature_id
   }
     
   InitialItemEquipper iie;
-  iie.equip(creature, action_manager);
-  iie.add_inventory_items(creature, action_manager);
+  iie.equip(creature, cgv, action_manager);
+  iie.add_inventory_items(creature, cgv, action_manager);
   
   return creature;
 }
@@ -216,22 +217,10 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   {
     // Set additional book-keeping values
     initialize(creaturep);
+
+    // Create initial eq based on class and creature defaults.
+    create_initial_equipment_and_inventory(creaturep, action_manager);
     
-    const CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
-    CreatureGenerationValues cgv;
-    
-    auto cgv_it = cgv_map.find(creaturep->get_original_id());
-
-    if (cgv_it != cgv_map.end())
-    {
-      cgv = cgv_it->second;
-    }
-
-    // Equip the initial set of race/class equipment.
-    InitialItemEquipper iie;
-    iie.equip(creaturep, action_manager);
-    iie.add_inventory_items(creaturep, action_manager);
-
     // Set calculated statistics
     CreatureCalculator::update_calculated_values(creaturep);
 
@@ -241,6 +230,25 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   }
 
   return creaturep;
+}
+
+void CreatureFactory::create_initial_equipment_and_inventory(CreaturePtr creaturep, ActionManager& action_manager)
+{
+  Game& game = Game::instance();
+  const CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
+  CreatureGenerationValues cgv;
+
+  auto cgv_it = cgv_map.find(creaturep->get_original_id());
+
+  if (cgv_it != cgv_map.end())
+  {
+    cgv = cgv_it->second;
+  }
+
+  // Equip the initial set of race/class equipment.
+  InitialItemEquipper iie;
+  iie.equip(creaturep, cgv, action_manager);
+  iie.add_inventory_items(creaturep, cgv, action_manager);
 }
 
 void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, DeityPtr deity)

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void InitialItemEquipper::equip(CreaturePtr creature, ActionManager& am)
+void InitialItemEquipper::equip(CreaturePtr creature, const CreatureGenerationValues& cgv, ActionManager& am)
 {
   if (creature)
   {
@@ -46,7 +46,7 @@ void InitialItemEquipper::equip(CreaturePtr creature, ActionManager& am)
 }
 
 // Create the creature's inventory based on the items specified in its class.
-void InitialItemEquipper::add_inventory_items(CreaturePtr creature, ActionManager& am)
+void InitialItemEquipper::add_inventory_items(CreaturePtr creature, const CreatureGenerationValues& cgv, ActionManager& am)
 {
   if (creature)
   {
