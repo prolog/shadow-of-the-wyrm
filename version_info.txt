@@ -29,8 +29,8 @@ Savage Lands v0.3.4 "Mudarra"
   - Added Eakauri in a locked room in the centre of the prison, and loaded
   the cosmos stone into his inventory.
 
-- Licenses for dependencies (Boost, Google Test, Lua) are now contained
-  in the "licenses" directory.
+- Licenses for dependencies (Boost, Google Test, Lua, Xerces) are now 
+  contained in the "licenses" directory.
 
 - The Lua "get_creature" API function now first checks by creature ID.
   If that returns no matches, the function iterates over the creature
