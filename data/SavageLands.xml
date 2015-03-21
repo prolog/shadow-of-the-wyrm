@@ -13466,7 +13466,7 @@
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>1</NumDice>
+					<NumDice>3000</NumDice>
 					<NumSides>1</NumSides>
 				</HP>
 				<Exp>4000000</Exp>
@@ -13482,8 +13482,8 @@
 			<Level>50</Level>
 			<Damage chaotic="1">
 				<NumDice>1</NumDice>
-				<NumSides>1</NumSides>
-				<Modifier>1</Modifier>
+				<NumSides>400</NumSides>
+				<Modifier>50</Modifier>
 				<Type>3</Type>
 			</Damage>
 			<Evade>40</Evade>
