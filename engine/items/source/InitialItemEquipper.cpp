@@ -11,37 +11,54 @@ void InitialItemEquipper::equip(CreaturePtr creature, const CreatureGenerationVa
   if (creature)
   {
     ClassManager cm;
-    InitialItemSelector iis;
-    string creature_race = creature->get_race_id();
     ClassPtr current_class = cm.get_class(creature->get_class_id());
-    
+    vector<map<EquipmentWornLocation, InitialItem>> equipment_maps;
+
+    equipment_maps.push_back(cgv.get_initial_equipment());
+
     if (current_class)
     {
-      map<EquipmentWornLocation, InitialItem> initial_item_map = current_class->get_initial_equipment();
-      
-      for (const InitialEquipmentMap::value_type& ii_i : initial_item_map)
+      equipment_maps.push_back(current_class->get_initial_equipment());
+    }
+
+    for (const auto& map : equipment_maps)
+    {
+      process_initial_equipment(creature, map, am);
+    }
+  }
+}
+
+// Equip an initial equipment map, whether from the class, the creature's
+// definition, or something else.
+void InitialItemEquipper::process_initial_equipment(CreaturePtr creature, const map<EquipmentWornLocation, InitialItem>& initial_equipment_map, ActionManager& am)
+{
+  if (creature != nullptr)
+  {
+    InitialItemSelector iis;
+    string creature_race = creature->get_race_id();
+
+    for (const InitialEquipmentMap::value_type& ii_i : initial_equipment_map)
+    {
+      InitialItem ii = ii_i.second;
+      pair<string, uint> item_details = iis.get_item_details(creature_race, ii);
+      string item_id = item_details.first;
+      uint item_quantity = item_details.second;
+
+      if (!item_id.empty())
       {
-        InitialItem ii = ii_i.second;
-        pair<string, uint> item_details = iis.get_item_details(creature_race, ii);
-        string item_id = item_details.first;
-        uint item_quantity = item_details.second;
-        
-        if (!item_id.empty())
+        ItemPtr item = ItemManager::create_item(item_id, item_quantity);
+        item->set_quantity(item_quantity);
+
+        Equipment& eq = creature->get_equipment();
+        if (item->get_quantity() > 1 && !eq.can_equip_multiple_items(ii_i.first))
         {
-          ItemPtr item = ItemManager::create_item(item_id, item_quantity);
-          item->set_quantity(item_quantity);
-          
-          Equipment& eq = creature->get_equipment();
-          if (item->get_quantity() > 1 && !eq.can_equip_multiple_items(ii_i.first))
-          {
-            // Sanity check: only allow multiple items for slots that allow this.
-            item->set_quantity(1); 
-          }
-          
-          am.handle_item(creature, ItemAction::ITEM_ACTION_EQUIP, item);
+          // Sanity check: only allow multiple items for slots that allow this.
+          item->set_quantity(1);
         }
+
+        am.handle_item(creature, ItemAction::ITEM_ACTION_EQUIP, item);
       }
-    }  
+    }
   }
 }
 
@@ -51,24 +68,40 @@ void InitialItemEquipper::add_inventory_items(CreaturePtr creature, const Creatu
   if (creature)
   {
     ClassManager cm;
-    InitialItemSelector iis;
     string creature_race = creature->get_race_id();
     ClassPtr current_class = cm.get_class(creature->get_class_id());
+    vector<vector<InitialItem>> initial_inventories;
+
+    initial_inventories.push_back(cgv.get_initial_inventory());
     
     if (current_class)
     {
-      vector<InitialItem> vii = current_class->get_initial_inventory();
+      initial_inventories.push_back(current_class->get_initial_inventory());
+    }
 
-      for (const InitialItem& ii : vii)
+    for (const auto& inv : initial_inventories)
+    {
+      process_initial_inventory(creature, inv, am);
+    }
+  }
+}
+
+// Process an initial inventory, adding the items to the creature's inventory.
+void InitialItemEquipper::process_initial_inventory(CreaturePtr creature, const vector<InitialItem>& initial_inventory, ActionManager& am)
+{
+  if (creature != nullptr)
+  {
+    for (const InitialItem& ii : initial_inventory)
+    {
+      InitialItemSelector iis;
+      string creature_race = creature->get_race_id();
+      pair<string, uint> item_details = iis.get_item_details(creature_race, ii);
+      string item_id = item_details.first;
+      uint item_quantity = item_details.second;
+
+      if (!item_id.empty())
       {
-        pair<string, uint> item_details = iis.get_item_details(creature_race, ii);
-        string item_id = item_details.first;
-        uint item_quantity = item_details.second;
-        
-        if (!item_id.empty())
-        {
-          am.handle_item(creature, ItemAction::ITEM_ACTION_PICK_UP, ItemManager::create_item(item_id, item_quantity));
-        }
+        am.handle_item(creature, ItemAction::ITEM_ACTION_PICK_UP, ItemManager::create_item(item_id, item_quantity));
       }
     }
   }
