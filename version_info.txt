@@ -44,6 +44,9 @@ Savage Lands v0.3.4 "Mudarra"
   cases, drops should be random.  But certain key creatures can have items
   loaded on them that are then guaranteed to drop on death.
 
+- A value of "*" can be used to indicate that a weapon slays everything.
+  This should be used sparingly.
+
 - New items: eka key, cosmos stone.
 
 - New artifacts: the World-Sword.
@@ -57,6 +60,10 @@ Savage Lands v0.3.4 "Mudarra"
 
   - HostilityManager::set_hostility_to_creature wasn't safe to call with
     a null CreaturePtr.
+
+  - Saved games with traps in dungeons weren't loading properly, as when
+    I'd made traps into proper Features, I'd neglected to add them to
+    the map in FeatureFactory.
 
 Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 - Version declared February 8, 2015.  Version finalized March 8, 2015.
