@@ -220,7 +220,9 @@ bool CombatManager::does_attack_slay_creature_race(CreaturePtr attacking_creatur
 
   for(const string& slay_race : slay_races)
   {
-    if (rm.is_race_or_descendent(creature_race, slay_race))
+    // Check to see if the slay-race is related to the creature's race.
+    // If the slay race is "*", the attack slays - this slays everything.
+    if (rm.is_race_or_descendent(creature_race, slay_race) || slay_race == "*")
     {
       return true;
     }

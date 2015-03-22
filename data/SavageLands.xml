@@ -18092,10 +18092,7 @@
 					<Type>0</Type>
 				</Damage>
 				<Slays>
-					<Slay>_undead</Slay>
-					<Slay>_demon</Slay>
-					<Slay>_divine</Slay>
-					<Slay>_dragon</Slay>
+					<Slay>*</Slay>
 				</Slays>
 			</Weapon>
 			<Weapon id="beow">
