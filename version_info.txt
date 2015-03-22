@@ -47,6 +47,9 @@ Savage Lands v0.3.4 "Mudarra"
 - A value of "*" can be used to indicate that a weapon slays everything.
   This should be used sparingly.
 
+- Updated the score calculator to also include spell castings of various
+  spells, and the bonuses associated with each.
+
 - New items: eka key, cosmos stone.
 
 - New artifacts: the World-Sword.

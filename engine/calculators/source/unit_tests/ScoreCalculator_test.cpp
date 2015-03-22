@@ -83,6 +83,34 @@ TEST(SL_Engine_Calculator_ScoreCalculator, artifact_component)
   EXPECT_EQ(1000, sc.calculate_score(cp));
 }
 
+TEST(SL_Engine_Calculators_ScoreCalculator, spell_component)
+{
+  Creature c;
+  CreaturePtr cp(new Creature(c));
+
+  SpellKnowledge sk;
+  IndividualSpellKnowledge isk;
+
+  isk.set_castings(30);
+  isk.set_bonus(5);
+
+  sk.set_spell_knowledge("asdf", isk);
+
+  isk.set_bonus(15);
+
+  sk.set_spell_knowledge("aaa", isk);
+
+  isk.set_bonus(10);
+
+  sk.set_spell_knowledge("fdsa", isk);
+
+  cp->set_spell_knowledge(sk);
+
+  ScoreCalculator sc;
+
+  EXPECT_EQ(420, sc.calculate_score(cp));
+}
+
 TEST(SL_Engine_Calculators_ScoreCalculator, total_score)
 {
   Creature c;
