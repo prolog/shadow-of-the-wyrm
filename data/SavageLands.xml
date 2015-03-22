@@ -14619,6 +14619,7 @@
 				<Type>2</Type>
 			</Damage>
 			<Soak>10</Soak>
+			<ChatScript>quests/thengil.lua</ChatScript>
 		</Creature>
 		<Creature id="tindr">
 			<RaceID>06_dwarf</RaceID>
@@ -18056,6 +18057,45 @@
 				<Slays>
 					<Slay>_undead</Slay>
 					<Slay>_demon</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="worldsword">
+				<DescriptionSID>WORLDSWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>WORLDSWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>10000</Value>
+				<Weight><Pounds>30</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.25</Slash>
+					<Pierce>0.25</Pierce>
+					<Pound>0.25</Pound>
+					<Heat>0.25</Heat>
+					<Cold>0.25</Cold>
+					<Acid>0.25</Acid>
+					<Poison>0.25</Poison>
+					<Holy>0.25</Holy>
+					<Shadow>0.25</Shadow>
+					<Arcane>0.25</Arcane>
+					<Lightning>0.25</Lightning>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>50</Difficulty>
+				<Speed>12</Speed>
+				<Damage>
+					<NumDice>20</NumDice>
+					<NumSides>12</NumSides>
+					<Modifier>30</Modifier>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_undead</Slay>
+					<Slay>_demon</Slay>
+					<Slay>_divine</Slay>
+					<Slay>_dragon</Slay>
 				</Slays>
 			</Weapon>
 			<Weapon id="beow">

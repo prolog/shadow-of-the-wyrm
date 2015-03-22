@@ -27,7 +27,11 @@ Savage Lands v0.3.4 "Mudarra"
   just north of the caravan.
 
   - Added Eakauri in a locked room in the centre of the prison, and loaded
-  the cosmos stone into his inventory.
+    the cosmos stone into his inventory.
+
+  - Created a quest for Thengil for the player to find the Cosmos Stone.  
+    When the player brings the Cosmos Stone to Thengil, he forges the 
+    World-Sword, the most powerful weapon in the game.
 
 - Licenses for dependencies (Boost, Google Test, Lua, Xerces) are now 
   contained in the "licenses" directory.
@@ -41,6 +45,8 @@ Savage Lands v0.3.4 "Mudarra"
   loaded on them that are then guaranteed to drop on death.
 
 - New items: eka key, cosmos stone.
+
+- New artifacts: the World-Sword.
 
 - New creatures: Eakauri.
 
