@@ -14,6 +14,7 @@ ulonglong ScoreCalculator::calculate_score(CreaturePtr creature)
     update_score_experience(creature, score);
     update_score_level(creature, score);
     update_score_artifacts(creature, score);
+    update_score_spells(creature, score);
   }
 
   return score;
@@ -145,6 +146,24 @@ void ScoreCalculator::update_score_artifacts(CreaturePtr creature, ulonglong& sc
   }
 
   score += eq_score;
+}
+
+// The creature gets a few points for each spell casting.
+void ScoreCalculator::update_score_spells(CreaturePtr creature, ulonglong& score)
+{
+  if (creature != nullptr)
+  {
+    SpellKnowledgeMap skm = creature->get_spell_knowledge_ref().get_known_spells();
+    
+    for (auto& spell_pair : skm)
+    {
+      uint castings = spell_pair.second.get_castings();
+      uint bonus = spell_pair.second.get_bonus().get_current();
+
+      score += (castings * 4);
+      score += (bonus * 2);
+    }
+  }
 }
 
 #ifdef UNIT_TESTS
