@@ -33,6 +33,8 @@ Savage Lands v0.3.4 "Mudarra"
     When the player brings the Cosmos Stone to Thengil, he forges the 
     World-Sword, the most powerful weapon in the game.
 
+  - Added Vigarion near the entrance of Eka.
+
 - Licenses for dependencies (Boost, Google Test, Lua, Xerces) are now 
   contained in the "licenses" directory.
 
@@ -54,7 +56,7 @@ Savage Lands v0.3.4 "Mudarra"
 
 - New artifacts: the World-Sword.
 
-- New creatures: Eakauri.
+- New creatures: Eakauri, Vigarion.
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
