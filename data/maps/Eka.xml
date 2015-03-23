@@ -37,6 +37,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>vigarion</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>8</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>super_boss</ID>
 				<Coord>
 					<Row>9</Row>

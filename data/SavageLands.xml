@@ -4995,6 +4995,35 @@
 				<Type>9</Type>
 			</Damage>
 		</Creature>
+		<Creature id="vigarion">
+			<RaceID>05_fae</RaceID>
+			<ShortDescriptionSID>VIGARION_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VIGARION_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VIGARION_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>VIGARION_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<DangerLevel>46</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>54</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>180000</Exp>
+			</CreatureGeneration>
+			<Level>46</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>105</NumSides>
+				<Type>0</Type>
+			</Damage>
+		</Creature>
 		<Creature id="alcien">
 			<RaceID>02_woodelf</RaceID>
 			<ShortDescriptionSID>ALCIEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
