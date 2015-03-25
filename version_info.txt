@@ -35,6 +35,8 @@ Savage Lands v0.3.4 "Mudarra"
 
   - Added Vigarion near the entrance of Eka.
 
+  - Added four ancient guardians at the corner of Eakauri's room.
+
 - Licenses for dependencies (Boost, Google Test, Lua, Xerces) are now 
   contained in the "licenses" directory.
 
@@ -56,7 +58,7 @@ Savage Lands v0.3.4 "Mudarra"
 
 - New artifacts: the World-Sword.
 
-- New creatures: Eakauri, Vigarion.
+- New creatures: Eakauri, Vigarion, ancient guardian.
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).

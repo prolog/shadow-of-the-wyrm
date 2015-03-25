@@ -50,6 +50,34 @@
 					<Col>53</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>ancient_guardian</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>50</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ancient_guardian</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>62</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ancient_guardian</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>50</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ancient_guardian</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>62</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>
