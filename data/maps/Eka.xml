@@ -51,6 +51,20 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>windwalker</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>windwalker</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>64</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>skeletal_dragon</ID>
 				<Coord>
 					<Row>3</Row>
