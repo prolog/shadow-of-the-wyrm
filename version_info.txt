@@ -37,7 +37,7 @@ Savage Lands v0.3.4 "Mudarra"
 
   - Added four ancient guardians at the corner of Eakauri's room, water
     elementals to the watery parts, a pair of clockwork monstrosities,
-    and skeletal dragons.
+    windwalkers, and skeletal dragons.
 
 - Licenses for dependencies (Boost, Google Test, Lua, Xerces) are now 
   contained in the "licenses" directory.
@@ -61,7 +61,7 @@ Savage Lands v0.3.4 "Mudarra"
 - New artifacts: the World-Sword.
 
 - New creatures: Eakauri, Vigarion, ancient guardian, clockwork
-  monstrosity.
+  monstrosity, windwalker.
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
