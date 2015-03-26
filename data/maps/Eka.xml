@@ -51,6 +51,27 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>skeletal_dragon</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>68</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>skeletal_dragon</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>54</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>skeletal_dragon</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>clockwork_monstrosity</ID>
 				<Coord>
 					<Row>3</Row>
