@@ -56,12 +56,16 @@ Savage Lands v0.3.4 "Mudarra"
 - Updated the score calculator to also include spell castings of various
   spells, and the bonuses associated with each.
 
+- Last Island Lair is now (more) dangerous: instead of just containing
+  Amaurosis, it contains a number of other creatures, including: skeletal
+  dragons, voidlings, old lords.
+
 - New items: eka key, cosmos stone.
 
 - New artifacts: the World-Sword.
 
 - New creatures: Eakauri, Vigarion, ancient guardian, clockwork
-  monstrosity, windwalker.
+  monstrosity, windwalker, old lord.
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
