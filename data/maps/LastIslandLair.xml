@@ -36,11 +36,91 @@
 	</PlayerStart>
 	<InitialPlacements>
 		<Creatures>
+			<!-- Farthest point from beginning -->
 			<Placement>
 				<ID>end_boss</ID>
 				<Coord>
+					<Row>16</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<!-- Centre section -->
+			<Placement>
+				<ID>skeletal_dragon</ID>
+				<Coord>
 					<Row>9</Row>
-					<Col>26</Col>
+					<Col>17</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>skeletal_dragon</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>skeletal_dragon</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>17</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>skeletal_dragon</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>voidling</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>voidling</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>20</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>voidling</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>voidling</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>20</Col>
+				</Coord>
+			</Placement>
+			<!-- Top section -->
+			<Placement>
+				<ID>old_lord</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>16</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>old_lord</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>old_lord</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>20</Col>
 				</Coord>
 			</Placement>
 		</Creatures>
