@@ -58,14 +58,15 @@ Savage Lands v0.3.4 "Mudarra"
 
 - Last Island Lair is now (more) dangerous: instead of just containing
   Amaurosis, it contains a number of other creatures, including: skeletal
-  dragons, voidlings, old lords.
+  dragons, voidlings, old lords, cosmic infernos, lich kings, steel
+  slimes.
 
 - New items: eka key, cosmos stone.
 
 - New artifacts: the World-Sword.
 
 - New creatures: Eakauri, Vigarion, ancient guardian, clockwork
-  monstrosity, windwalker, old lord.
+  monstrosity, windwalker, old lord, cosmic inferno.
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).

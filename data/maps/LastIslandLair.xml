@@ -101,6 +101,62 @@
 					<Col>20</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>cosmic_inferno</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>21</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>cosmic_inferno</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>22</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>cosmic_inferno</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>21</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>cosmic_inferno</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>22</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>lich_king</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>23</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>lich_king</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>23</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>steel_slime</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>24</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>steel_slime</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>24</Col>
+				</Coord>
+			</Placement>
 			<!-- Top section -->
 			<Placement>
 				<ID>old_lord</ID>
