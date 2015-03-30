@@ -17,8 +17,8 @@
 	####.#####.###############################......#########.#####...##########.###
 	####.###...######.#################.##########......####...######...#######.####
 	####.###.########.#########.#######.##############......#######...########.#####
-	###..###.########.#########.#######..#################.#############......######
-	###.####.###................................######..################.....#######
+	###..###.########.#########.#######..#################.#########.###......######
+	###.####.###................................######..############.........#######
 	###.####............................................#################.##..######
 	###.##...###.#######.##########.####.#####..###..####################.##########
 	##..##.############################.######..###..##################...##########
@@ -394,6 +394,105 @@
 				<Coord>
 					<Row>2</Row>
 					<Col>26</Col>
+				</Coord>
+			</Placement>
+			<!-- Near the end and Amaurosis -->
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>68</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>68</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>69</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>69</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>70</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>70</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>71</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>71</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>barrow_wyrm</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>shadow_wyrm</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>70</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>shadow_wyrm</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>71</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>shadow_wyrm</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>shadow_wyrm</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>73</Col>
 				</Coord>
 			</Placement>
 		</Creatures>
