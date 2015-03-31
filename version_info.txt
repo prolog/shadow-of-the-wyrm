@@ -61,12 +61,16 @@ Savage Lands v0.3.4 "Mudarra"
   dragons, voidlings, old lords, cosmic infernos, lich kings, steel
   slimes, barrow wyrms, shadow wyrms.
 
+- Added the artifact knife "Akkar" to the evil deities' potential
+  crowning gifts.
+
 - New items: eka key, cosmos stone.
 
-- New artifacts: the World-Sword.
+- New artifacts: the World-Sword, assassin's knife "Akkar".
 
 - New creatures: Eakauri, Vigarion, ancient guardian, clockwork
-  monstrosity, windwalker, old lord, cosmic inferno, barrow wyrm.
+  monstrosity, windwalker, old lord, cosmic inferno, barrow wyrm,
+  screamer.
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
