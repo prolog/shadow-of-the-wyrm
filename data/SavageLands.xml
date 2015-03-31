@@ -7058,7 +7058,7 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>50</NumSides>
-				<Type>3</Type>
+				<Type>4</Type>
 			</Damage>
 			<Speed>35</Speed>
 		</Creature>
