@@ -59,7 +59,7 @@ Savage Lands v0.3.4 "Mudarra"
 - Last Island Lair is now (more) dangerous: instead of just containing
   Amaurosis, it contains a number of other creatures, including: skeletal
   dragons, voidlings, old lords, cosmic infernos, lich kings, steel
-  slimes, barrow wyrms, shadow wyrms.
+  slimes, barrow wyrms, shadow wyrms, screamers, Taro wraiths.
 
 - Added the artifact knife "Akkar" to the evil deities' potential
   crowning gifts.
@@ -70,7 +70,7 @@ Savage Lands v0.3.4 "Mudarra"
 
 - New creatures: Eakauri, Vigarion, ancient guardian, clockwork
   monstrosity, windwalker, old lord, cosmic inferno, barrow wyrm,
-  screamer.
+  screamer, Taro wraith.
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
