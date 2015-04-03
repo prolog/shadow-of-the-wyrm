@@ -22,6 +22,8 @@ CreatureEventScripts::~CreatureEventScripts()
 }
 
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH = "CREATURE_EVENT_SCRIPT_DEATH";
+const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK = "CREATURE_EVENT_SCRIPT_ATTACK";
+const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT = "CREATURE_EVENT_SCRIPT_CHAT";
 
 CreatureAdditionalProperties::CreatureAdditionalProperties()
 {

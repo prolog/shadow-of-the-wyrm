@@ -906,9 +906,9 @@ EventScriptsMap Creature::get_event_scripts() const
   return event_scripts;
 }
 
-void Creature::add_event_script(const string& event_name, const string& script_name)
+void Creature::add_event_script(const string& event_name, const ScriptDetails& sd)
 {
-  event_scripts[event_name] = script_name;
+  event_scripts[event_name] = sd;
 }
 
 bool Creature::has_event_script(const string& event_name)
@@ -925,18 +925,18 @@ bool Creature::has_event_script(const string& event_name)
   return has_event;
 }
 
-string Creature::get_event_script(const string& event_name) const
+ScriptDetails Creature::get_event_script(const string& event_name) const
 {
-  string script_name;
+  ScriptDetails sd;
 
   EventScriptsMap::const_iterator e_it = event_scripts.find(event_name);
 
   if (e_it != event_scripts.end())
   {
-    script_name = e_it->second;
+    sd = e_it->second;
   }
 
-  return script_name;
+  return sd;
 }
 
 // Set and get the generic speech text sid.
@@ -1262,7 +1262,13 @@ bool Creature::serialize(ostream& stream) const
     }
   }
 
-  Serialize::write_string_map(stream, event_scripts);
+  size_t es_size = event_scripts.size();
+  Serialize::write_size_t(stream, es_size);
+  for (const auto& es_pair : event_scripts)
+  {
+    Serialize::write_string(stream, es_pair.first);
+    es_pair.second.serialize(stream);
+  }
 
   auto_move.serialize(stream);
 
@@ -1413,7 +1419,19 @@ bool Creature::deserialize(istream& stream)
     }
   }
 
-  Serialize::read_string_map(stream, event_scripts);
+  size_t es_size = 0;
+  Serialize::read_size_t(stream, es_size);
+
+  for (size_t i = 0; i < es_size; i++)
+  {
+    string event_name;
+    ScriptDetails sd;
+
+    Serialize::read_string(stream, event_name);
+    sd.deserialize(stream);
+
+    event_scripts.insert(make_pair(event_name, sd));
+  }
 
   auto_move.deserialize(stream);
 

@@ -803,6 +803,7 @@
     <ClInclude Include="world\include\InventoryFactory.hpp" />
     <ClInclude Include="world\include\Modifier.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
+    <ClInclude Include="world\include\ScriptDetails.hpp" />
     <ClInclude Include="world\include\SkinningConstants.hpp" />
     <ClInclude Include="world\include\SmithingConstants.hpp" />
     <ClInclude Include="world\include\Spellbook.hpp" />
@@ -2295,6 +2296,7 @@
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\Modifier.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
+    <ClCompile Include="world\source\ScriptDetails.cpp" />
     <ClCompile Include="world\source\SkinningConstants.cpp" />
     <ClCompile Include="world\source\SmithingConstants.cpp" />
     <ClCompile Include="world\source\Spellbook.cpp" />
@@ -2403,6 +2405,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\ScriptDetails_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Spellbook_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

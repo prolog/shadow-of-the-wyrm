@@ -3,6 +3,7 @@
 #include "CreatureGenerationValues.hpp"
 #include "CreatureProperties.hpp"
 #include "XMLCreaturesReader.hpp"
+#include "XMLScriptsReader.hpp"
 #include "DecisionStrategyFactory.hpp"
 
 using namespace std;
@@ -154,7 +155,8 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     string chat_script = XMLUtils::get_child_node_value(creature_node, "ChatScript");
     if (!chat_script.empty())
     {
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHAT_SCRIPT, chat_script);
+      ScriptDetails chat_sd(chat_script, 100);
+      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, chat_sd);
     }
   }
   
@@ -231,14 +233,24 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
 // Parse in the list of event scripts for the creature
 void XMLCreaturesReader::parse_event_scripts(const XMLNode& event_scripts_node, CreaturePtr creature)
 {
+  XMLScriptsReader xsr;
+
   if (!event_scripts_node.is_null())
   {
     XMLNode death_script_node = XMLUtils::get_next_element_by_local_name(event_scripts_node, "DeathScript");
 
     if (!death_script_node.is_null())
     {
-      string script_name = XMLUtils::get_node_value(death_script_node);
-      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH, script_name);
+      ScriptDetails death_sd = xsr.get_script_details(death_script_node);
+      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH, death_sd);
+    }
+
+    XMLNode attack_script_node = XMLUtils::get_next_element_by_local_name(event_scripts_node, "AttackScript");
+
+    if (!attack_script_node.is_null())
+    {
+      ScriptDetails attack_sd = xsr.get_script_details(attack_script_node);
+      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK, attack_sd);
     }
   }
 }

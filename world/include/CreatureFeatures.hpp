@@ -66,6 +66,8 @@ class CreatureEventScripts
 {
   public:
     static const std::string CREATURE_EVENT_SCRIPT_DEATH;
+    static const std::string CREATURE_EVENT_SCRIPT_ATTACK;
+    static const std::string CREATURE_EVENT_SCRIPT_CHAT;
 
   protected:
     CreatureEventScripts();

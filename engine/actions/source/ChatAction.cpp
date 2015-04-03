@@ -5,6 +5,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -67,15 +68,19 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
   if (speaking_creature)
   {
     // Check to see if the creature is quest-granting:
-    string chat_script = speaking_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHAT_SCRIPT);
+    ScriptDetails sd = speaking_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT);
+    string chat_script = sd.get_script();
 
     if (!chat_script.empty())
     {
       Game& game = Game::instance();
       ScriptEngine& se = game.get_script_engine_ref();
-      se.execute(chat_script);
 
-      spoke = true;
+      if (RNG::percent_chance(sd.get_chance()))
+      {
+        se.execute(chat_script);
+        spoke = true;
+      }
     }
     else
     {

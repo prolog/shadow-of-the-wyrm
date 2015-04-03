@@ -10069,6 +10069,12 @@
 				<NumSides>28</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<EventScripts>
+				<AttackScript>
+					<Script>scripts/attacks/steal.lua</Script>
+					<Chance>25</Chance>
+				</AttackScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="snakeling_assassin">
 			<RaceID>04_snakeling</RaceID>
@@ -13815,7 +13821,10 @@
 			<Evade>30</Evade>
 			<Soak>20</Soak>
 			<EventScripts>
-				<DeathScript>events/win_game.lua</DeathScript>
+				<DeathScript>
+					<Script>events/win_game.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="super_boss">
@@ -14572,6 +14581,12 @@
 			</Damage>
 			<Evade>10</Evade>
 			<Soak>1</Soak>
+			<EventScripts>
+				<AttackScript>
+					<Script>scripts/attacks/steal.lua</Script>
+					<Chance>25</Chance>
+				</AttackScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="apprentice">
 			<RaceID>01_human</RaceID>
