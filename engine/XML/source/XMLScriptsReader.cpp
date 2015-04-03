@@ -16,3 +16,19 @@ map<string, string> XMLScriptsReader::get_scripts(const XMLNode& scripts_node)
   return scripts;
 }
 
+// Read and return a ScriptDetails
+ScriptDetails XMLScriptsReader::get_script_details(const XMLNode& script_details_node)
+{
+  ScriptDetails sd;
+
+  if (!script_details_node.is_null())
+  {
+    string script = XMLUtils::get_child_node_value(script_details_node, "Script");
+    int chance = XMLUtils::get_child_node_int_value(script_details_node, "Chance", 100);
+
+    sd.set_script(script);
+    sd.set_chance(chance);
+  }
+
+  return sd;
+}

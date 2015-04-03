@@ -23,6 +23,7 @@
 #include "MovementAccumulation.hpp"
 #include "Religion.hpp"
 #include "Resistances.hpp"
+#include "ScriptDetails.hpp"
 #include "Skills.hpp"
 #include "SpellKnowledge.hpp"
 #include "Statistic.hpp"
@@ -32,7 +33,7 @@
 class DecisionStrategy;
 
 typedef std::map<std::string, std::pair<std::string, Coordinate>> TargetMap;
-typedef std::map<std::string, std::string> EventScriptsMap;
+typedef std::map<std::string, ScriptDetails> EventScriptsMap;
 typedef std::map<std::string, bool> CreatureStatusMap;
 
 class Creature : public ISerializable
@@ -252,9 +253,9 @@ class Creature : public ISerializable
     void clear_event_scripts();
     void set_event_scripts(const EventScriptsMap& esm);
     EventScriptsMap get_event_scripts() const;
-    void add_event_script(const std::string& event_name, const std::string& script_name);
+    void add_event_script(const std::string& event_name, const ScriptDetails& sd);
     bool has_event_script(const std::string& event_name);
-    std::string get_event_script(const std::string& event_name) const;
+    ScriptDetails get_event_script(const std::string& event_name) const;
 
     // The generic "chat" text a creature uses.  Not all creatures will have chat
     // text.

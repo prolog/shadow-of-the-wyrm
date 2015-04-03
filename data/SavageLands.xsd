@@ -362,7 +362,8 @@
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="DeathScript" type="xs:string" minOccurs="0"/>
+			<xs:element name="DeathScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="AttackScript" type="tns:ScriptDetails" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -759,6 +760,12 @@
 			<xs:attribute name="piercing" type="xs:boolean" use="optional" default="0"/>
 		</xs:extension>
 	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ScriptDetails">
+	<xs:sequence>
+		<xs:element name="Script" type="xs:string"/>
+		<xs:element name="Chance" type="xs:integer"/>
+	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="StatusAilments">
 	<xs:annotation>

@@ -3333,6 +3333,9 @@
     <ClInclude Include="world\tiles\include\EarthTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\ScriptDetails.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6492,6 +6495,12 @@
       <Filter>Source Files\engine\strings\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\InitialItem_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\ScriptDetails.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\ScriptDetails_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>

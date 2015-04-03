@@ -454,13 +454,14 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const stri
   }
 }
 
-// Run the death event.  By default, this will be the null death function,
-// which does nothing and is always safe to call.
+// Run the death event.
 void CombatManager::run_death_event(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map)
 {
-  string event_script_name = attacked_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH);
+  ScriptDetails sd = attacked_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH);
+  string event_script_name = sd.get_script();
+  int chance = sd.get_chance();
 
-  if (!event_script_name.empty())
+  if (!event_script_name.empty() && RNG::percent_chance(chance))
   {
     ScriptEngine& se = Game::instance().get_script_engine_ref();
     se.execute(event_script_name);
