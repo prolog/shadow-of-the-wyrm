@@ -3336,6 +3336,9 @@
     <ClInclude Include="world\include\ScriptDetails.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripting\include\AttackScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6502,6 +6505,9 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\ScriptDetails_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\AttackScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

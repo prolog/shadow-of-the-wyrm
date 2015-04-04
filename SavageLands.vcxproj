@@ -633,6 +633,7 @@
     <ClInclude Include="engine\screens\include\WelcomeScreen.hpp" />
     <ClInclude Include="engine\screens\include\WornLocationScreenFactory.hpp" />
     <ClInclude Include="engine\screens\include\WornLocationSelectionScreen.hpp" />
+    <ClInclude Include="engine\scripting\include\AttackScript.hpp" />
     <ClInclude Include="engine\scripting\include\LevelScript.hpp" />
     <ClInclude Include="engine\scripting\include\LuaAPIFunctions.hpp" />
     <ClInclude Include="engine\scripting\include\LuaUtils.hpp" />
@@ -1904,6 +1905,7 @@
     <ClCompile Include="engine\screens\source\WelcomeScreen.cpp" />
     <ClCompile Include="engine\screens\source\WornLocationScreenFactory.cpp" />
     <ClCompile Include="engine\screens\source\WornLocationSelectionScreen.cpp" />
+    <ClCompile Include="engine\scripting\source\AttackScript.cpp" />
     <ClCompile Include="engine\scripting\source\LevelScript.cpp" />
     <ClCompile Include="engine\scripting\source\LuaAPIFunctions.cpp" />
     <ClCompile Include="engine\scripting\source\LuaUtils.cpp" />

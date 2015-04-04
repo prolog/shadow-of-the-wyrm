@@ -1,3 +1,4 @@
+#include "AttackScript.hpp"
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
@@ -234,12 +235,12 @@ bool CombatManager::run_attack_script_if_necessary(CreaturePtr attacking_creatur
       Game& game = Game::instance();
       ScriptEngine& se = game.get_script_engine_ref();
 
-      // JCD FIXME need attacked creature's ID as an argument, etc...
-      se.execute(script);
+      string attacking_base_id = attacking_creature->get_original_id();
+      string attacked_creature_id = attacked_creature->get_id();
 
-      result = true;
-    }
-    
+      AttackScript as;
+      result = as.execute(se, script, attacking_base_id, attacked_creature_id);
+    }    
   }
 
   return result;
