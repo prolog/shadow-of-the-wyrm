@@ -194,6 +194,9 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
     handle_damage_effects(attacked_creature, damage_dealt, damage_type, effect_bonus, damage_info.get_status_ailments());
   }
 
+  // If there are any scripts associated with the attack, run them.
+  run_attack_script_if_necessary(attacking_creature, attacked_creature);
+
   if (damage_dealt > 0)
   {
     // Deal the damage, handling death if necessary.
@@ -209,6 +212,37 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   }
 
   return true;
+}
+
+// After attacking, check to see if there is an associated attack script.
+// If there is, run it according to the associated probability.
+//
+// Return true if the script was run, false otherwise.
+bool CombatManager::run_attack_script_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+{
+  bool result = false;
+
+  if (attacking_creature && attacked_creature)
+  {
+    ScriptDetails sd = attacking_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK);
+
+    string script = sd.get_script();
+    int chance = sd.get_chance();
+
+    if (!script.empty() && RNG::percent_chance(chance))
+    {
+      Game& game = Game::instance();
+      ScriptEngine& se = game.get_script_engine_ref();
+
+      // JCD FIXME need attacked creature's ID as an argument, etc...
+      se.execute(script);
+
+      result = true;
+    }
+    
+  }
+
+  return result;
 }
 
 bool CombatManager::does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type)
