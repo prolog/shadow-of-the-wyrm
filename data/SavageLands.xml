@@ -6118,7 +6118,11 @@
 				<Type>2</Type>
 			</Damage>
 			<Speed>43</Speed>
-			<ChatScript>quests/caravan_master.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/caravan_master.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="caravan_guard">
 			<RaceID>05_fae</RaceID>
@@ -10252,7 +10256,11 @@
 			</Damage>
 			<Evade>-30</Evade>
 			<Soak>2</Soak>
-			<ChatScript>quests/altus.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/altus.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="zaeda">
 			<RaceID>01_human</RaceID>
@@ -12108,7 +12116,11 @@
 			</Damage>
 			<Evade>10</Evade>
 			<Soak>1</Soak>
-			<ChatScript>quests/ilru.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/ilru.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="falir">
 			<RaceID>02_woodelf</RaceID>
@@ -12452,7 +12464,11 @@
 				<NumSides>50</NumSides>
 				<Type>2</Type>
 			</Damage>
-			<ChatScript>quests/kirin.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/kirin.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="akkara">
 			<RaceID>03_mountainelf</RaceID>
@@ -12630,7 +12646,11 @@
 				<NumSides>30</NumSides>
 				<Type>1</Type>
 			</Damage>
-			<ChatScript>quests/tir.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/tir.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="akojo">
 			<RaceID>07_goblin</RaceID>
@@ -13405,7 +13425,11 @@
 			</Damage>
 			<Evade>20</Evade>
 			<Soak>10</Soak>
-			<ChatScript>quests/christof.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/christof.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="elfric">
 			<RaceID>10_gnome</RaceID>
@@ -13869,7 +13893,11 @@
 			<Evade>40</Evade>
 			<Soak>30</Soak>
 			<Speed>15</Speed>
-			<ChatScript>quests/eakauri.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/eakauri.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="fisherman">
 			<RaceID>01_human</RaceID>
@@ -13963,7 +13991,11 @@
 			</Damage>
 			<Evade>4</Evade>
 			<Soak>1</Soak>
-			<ChatScript>quests/the_ploughman.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_ploughman.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="the_blacksmith">
 			<RaceID>01_human</RaceID>
@@ -13995,7 +14027,11 @@
 			</Damage>
 			<Evade>0</Evade>
 			<Soak>3</Soak>
-			<ChatScript>quests/the_blacksmith.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_blacksmith.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="small_child">
 			<RaceID>01_human</RaceID>
@@ -14091,7 +14127,11 @@
 			</Damage>
 			<Evade>12</Evade>
 			<Soak>4</Soak>
-			<ChatScript>quests/cynwise.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/cynwise.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="kew">
 			<RaceID>01_human</RaceID>
@@ -14124,7 +14164,11 @@
 			</Damage>
 			<Evade>10</Evade>
 			<Soak>5</Soak>
-			<ChatScript>quests/kew.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/kew.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="exile">
 			<RaceID>01_human</RaceID>
@@ -14157,7 +14201,11 @@
 			</Damage>
 			<Evade>10</Evade>
 			<Soak>5</Soak>
-			<ChatScript>quests/exile.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/exile.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="farmer">
 			<RaceID>01_human</RaceID>
@@ -14220,7 +14268,11 @@
 			</Damage>
 			<Evade>7</Evade>
 			<Soak>0</Soak>
-			<ChatScript>quests/hild.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/hild.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="tanner">
 			<RaceID>01_human</RaceID>
@@ -14284,7 +14336,11 @@
 			</Damage>
 			<Evade>22</Evade>
 			<Soak>15</Soak>
-			<ChatScript>quests/hrimgar.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/hrimgar.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="siriath">
 			<RaceID>01_human</RaceID>
@@ -14942,7 +14998,11 @@
 			</Damage>
 			<Evade>11</Evade>
 			<Soak>5</Soak>
-			<ChatScript>quests/skaal.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/skaal.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="gildi">
 			<RaceID>06_dwarf</RaceID>
@@ -14973,7 +15033,11 @@
 				<NumSides>70</NumSides>
 				<Type>10</Type>
 			</Damage>
-			<ChatScript>quests/gildi.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/gildi.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="thengil">
 			<RaceID>06_dwarf</RaceID>
@@ -15005,7 +15069,11 @@
 				<Type>2</Type>
 			</Damage>
 			<Soak>10</Soak>
-			<ChatScript>quests/thengil.lua</ChatScript>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/thengil.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="tindr">
 			<RaceID>06_dwarf</RaceID>
