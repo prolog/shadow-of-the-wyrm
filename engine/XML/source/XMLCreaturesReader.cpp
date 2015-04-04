@@ -150,14 +150,6 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // Event scripts
     XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(creature_node, "EventScripts");
     parse_event_scripts(event_scripts_node, creature);
-
-    // Optional - quest script, used when chatting with the creature.
-    string chat_script = XMLUtils::get_child_node_value(creature_node, "ChatScript");
-    if (!chat_script.empty())
-    {
-      ScriptDetails chat_sd(chat_script, 100);
-      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, chat_sd);
-    }
   }
   
   creature_data.second = cgv;
@@ -251,6 +243,14 @@ void XMLCreaturesReader::parse_event_scripts(const XMLNode& event_scripts_node, 
     {
       ScriptDetails attack_sd = xsr.get_script_details(attack_script_node);
       creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK, attack_sd);
+    }
+
+    XMLNode chat_script_node = XMLUtils::get_next_element_by_local_name(event_scripts_node, "ChatScript");
+
+    if (!chat_script_node.is_null())
+    {
+      ScriptDetails chat_sd = xsr.get_script_details(chat_script_node);
+      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, chat_sd);
     }
   }
 }
