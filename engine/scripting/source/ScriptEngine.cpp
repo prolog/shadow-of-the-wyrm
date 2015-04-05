@@ -101,18 +101,27 @@ string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 // Run a particular script in the scripts folder.
 void ScriptEngine::execute(const string& script)
 {
-  if (script.empty())
+  try
   {
-    lua_pushstring(L, "Could not run script (no script provided)");
-    log_error();
-  }
-  else
-  {
-    string script_file = "scripts/" + script;
-    if (luaL_dofile(L, script_file.c_str()))
+    if (script.empty())
     {
+      lua_pushstring(L, "Could not run script (no script provided)");
       log_error();
     }
+    else
+    {
+      string script_file = "scripts/" + script;
+
+      if (luaL_dofile(L, script_file.c_str()))
+      {
+        log_error();
+      }
+    }
+  }
+  catch (...)
+  {
+    lua_pushstring(L, "Exception while trying to run script.");
+    log_error();
   }
 }
 

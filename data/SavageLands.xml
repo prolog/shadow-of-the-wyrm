@@ -10075,7 +10075,7 @@
 			</Damage>
 			<EventScripts>
 				<AttackScript>
-					<Script>scripts/attacks/steal.lua</Script>
+					<Script>attacks/steal.lua</Script>
 					<Chance>25</Chance>
 				</AttackScript>
 			</EventScripts>
@@ -14639,7 +14639,7 @@
 			<Soak>1</Soak>
 			<EventScripts>
 				<AttackScript>
-					<Script>scripts/attacks/steal.lua</Script>
+					<Script>attacks/steal.lua</Script>
 					<Chance>25</Chance>
 				</AttackScript>
 			</EventScripts>

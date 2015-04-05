@@ -11,7 +11,7 @@ class ScriptEngine;
 class AttackScript
 {
   public:
-    bool execute(ScriptEngine& se, const std::string& attack_script, const std::string& attacking_creature_base_id, const std::string& attacked_creature_id);
+    bool execute(ScriptEngine& se, const std::string& attack_script, CreaturePtr attacking_creature, const std::string& attacked_creature_id);
 
   protected:
     static const std::string ATTACK_MODULE_NAME;

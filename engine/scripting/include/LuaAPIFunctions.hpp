@@ -16,6 +16,7 @@ TilePtr get_tile(const std::string& map_id, const Coordinate& c);
 int add_message_with_pause(lua_State* ls);
 int clear_and_add_message(lua_State* ls);
 int add_message(lua_State* ls);
+int add_message_direct(lua_State* ls);
 int add_debug_message(lua_State* ls);
 int add_confirmation_message(lua_State* ls);
 int add_new_quest(lua_State* ls);
