@@ -101,6 +101,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_message_with_pause", add_message_with_pause);
   lua_register(L, "clear_and_add_message", clear_and_add_message);
   lua_register(L, "add_message", add_message);
+  lua_register(L, "add_message_direct", add_message_direct);
   lua_register(L, "add_debug_message", add_debug_message);
   lua_register(L, "add_confirmation_message", add_confirmation_message);
   lua_register(L, "add_new_quest", add_new_quest);
@@ -268,6 +269,29 @@ static int add_message(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to add_message");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Adds a new message directly - no SID lookup.
+// Expected argument: 1.
+// Argument type: string.
+static int add_message_direct(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+  if (num_args == 1 && lua_isstring(ls, 1))
+  {
+    string message = lua_tostring(ls, 1);
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.add_new_message(message);
+    manager.send();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_message_direct");
     lua_error(ls);
   }
 
