@@ -1,5 +1,8 @@
+Savage Lands v0.3.5 "Tzortinakis"
+- Version declared April 5, 2015.
+
 Savage Lands v0.3.4 "Mudarra"
-- Version declared March 8, 2015.
+- Version declared March 8, 2015.  Version finalized April 5, 2015.
 
 - Oracles now also start with a spellbook of Aim or Haze, in addition to 
   what they currently receive.
@@ -78,6 +81,9 @@ Savage Lands v0.3.4 "Mudarra"
 
 - New spells (with associated spellbooks): haze (Mystic), bravery
   (Cantrips).
+
+- New API functions: add_message_direct (doesn't use a resource string -
+  should only be used for debugging scripts!)
 
 - Bug fixes:
 

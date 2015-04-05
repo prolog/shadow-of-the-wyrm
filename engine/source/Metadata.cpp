@@ -32,9 +32,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // 16th century spanish composer who wrote for the vihuela and four-course
-  // guitar.
-  return "\"Mudarra\"";
+  // 20th century Greek guitar composer.
+  return "\"Tzortzinakis\"";
 }
 
 string Metadata::get_game_version_synopsis() const
