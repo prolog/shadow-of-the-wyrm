@@ -11,6 +11,7 @@
 #include "DateTimeAction.hpp"
 #include "DropAction.hpp"
 #include "EquipmentManager.hpp"
+#include "ExperienceAction.hpp"
 #include "EvokeAction.hpp"
 #include "FeatureAction.hpp"
 #include "FileWriter.hpp"
@@ -396,6 +397,13 @@ ActionCost ActionManager::piety(CreaturePtr creature)
 {
   PietyAction pa;
   return get_action_cost(creature, pa.piety(creature, this));
+}
+
+ActionCost ActionManager::experience(CreaturePtr creature)
+{
+  ExperienceAction ea;
+
+  return get_action_cost(creature, ea.experience());
 }
 
 // Pick up an item, doing any necessary checks first.

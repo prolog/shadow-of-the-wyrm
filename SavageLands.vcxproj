@@ -161,6 +161,7 @@
     <ClInclude Include="engine\actions\include\DropAction.hpp" />
     <ClInclude Include="engine\actions\include\EquipmentManager.hpp" />
     <ClInclude Include="engine\actions\include\EvokeAction.hpp" />
+    <ClInclude Include="engine\actions\include\ExperienceAction.hpp" />
     <ClInclude Include="engine\actions\include\FeatureAction.hpp" />
     <ClInclude Include="engine\actions\include\FoodAction.hpp" />
     <ClInclude Include="engine\actions\include\IActionManager.hpp" />
@@ -1053,6 +1054,7 @@
     <ClCompile Include="engine\actions\source\DropAction.cpp" />
     <ClCompile Include="engine\actions\source\EquipmentManager.cpp" />
     <ClCompile Include="engine\actions\source\EvokeAction.cpp" />
+    <ClCompile Include="engine\actions\source\ExperienceAction.cpp" />
     <ClCompile Include="engine\actions\source\FeatureAction.cpp" />
     <ClCompile Include="engine\actions\source\FoodAction.cpp" />
     <ClCompile Include="engine\actions\source\InventoryManager.cpp" />
