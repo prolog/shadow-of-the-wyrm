@@ -403,7 +403,7 @@ ActionCost ActionManager::experience(CreaturePtr creature)
 {
   ExperienceAction ea;
 
-  return get_action_cost(creature, ea.experience());
+  return get_action_cost(creature, ea.experience(creature));
 }
 
 // Pick up an item, doing any necessary checks first.

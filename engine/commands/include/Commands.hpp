@@ -283,3 +283,10 @@ class PietyCommand : public Command
     PietyCommand(int key);
     ~PietyCommand();
 };
+
+class ExperienceCommand : public Command
+{
+  public:
+    ExperienceCommand(int key);
+    ~ExperienceCommand();
+};

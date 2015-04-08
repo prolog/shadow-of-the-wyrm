@@ -8,11 +8,14 @@ ExperienceAction::ExperienceAction()
 {
 }
 
-ActionCostValue ExperienceAction::experience() const
+ActionCostValue ExperienceAction::experience(CreaturePtr creature) const
 {
   IMessageManager& manager = MessageManagerFactory::instance();
   
-  // ...
+  if (creature != nullptr)
+  {
+    // ...
+  }
     
   CreaturePtr nullc;
   return get_action_cost_value(nullc);

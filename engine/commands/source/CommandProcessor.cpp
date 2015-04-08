@@ -200,6 +200,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.piety(creature);
       }
+      else if (command_name == CommandKeys::EXPERIENCE)
+      {
+        ac = game.actions.experience(creature);
+      }
     }
   }
   
