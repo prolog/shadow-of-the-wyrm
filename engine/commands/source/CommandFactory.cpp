@@ -192,6 +192,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<PietyCommand>(key);
   }
+  else if (command_name == CommandKeys::EXPERIENCE)
+  {
+    command = std::make_shared<ExperienceCommand>(key);
+  }
 
   return command;
 }

@@ -407,3 +407,13 @@ PietyCommand::PietyCommand(int key)
 PietyCommand::~PietyCommand()
 {
 }
+
+// Experience details
+ExperienceCommand::ExperienceCommand(int key)
+: Command(CommandKeys::EXPERIENCE, key)
+{
+}
+
+ExperienceCommand::~ExperienceCommand()
+{
+}

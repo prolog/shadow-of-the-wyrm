@@ -4,7 +4,7 @@
 class ExperienceAction : public IActionManager
 {
   public:
-    ActionCostValue experience() const;
+    ActionCostValue experience(CreaturePtr creature) const;
     
   protected:
     friend class ActionManager;
