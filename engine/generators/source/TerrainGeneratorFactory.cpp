@@ -180,7 +180,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
   Coordinate c = world_map->get_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION);
 
   generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION, MapUtils::convert_coordinate_to_map_key(c));
-  generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT, Integer::to_string(world_map->size().get_y()));
+  generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT, std::to_string(world_map->size().get_y()));
 
   return generator;
 }

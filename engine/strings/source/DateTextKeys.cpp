@@ -28,9 +28,9 @@ string DateTextKeys::get_date_time_message(const Date& date, const string& seaso
 
   boost::replace_first(date_time_message, "%s", time);
   boost::replace_first(date_time_message, "%s", day_of_week);
-  boost::replace_first(date_time_message, "%s", Integer::to_string(date.get_day_of_month()));
+  boost::replace_first(date_time_message, "%s", std::to_string(date.get_day_of_month()));
   boost::replace_first(date_time_message, "%s", month);
-  boost::replace_first(date_time_message, "%s", Integer::to_string(date.get_year()));
+  boost::replace_first(date_time_message, "%s", std::to_string(date.get_year()));
   boost::replace_first(date_time_message, "%s", season);
   
   return date_time_message;

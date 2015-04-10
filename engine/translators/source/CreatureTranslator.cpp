@@ -87,64 +87,64 @@ string CreatureTranslator::get_display_name(const CreaturePtr& c)
 pair<string, Colour> CreatureTranslator::get_display_strength(const CreaturePtr& c)
 {
   Statistic str = c->get_strength();
-  string strength = StringTable::get(TextKeys::STRENGTH_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_strength().get_current()), 2);
+  string strength = StringTable::get(TextKeys::STRENGTH_ABRV) + ":" + String::add_trailing_spaces(std::to_string(c->get_strength().get_current()), 2);
   return make_pair(strength, (str.get_current() == str.get_base()) ? Colour::COLOUR_WHITE : Colour::COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_dexterity(const CreaturePtr& c)
 {
   Statistic dex = c->get_dexterity();
-  string dexterity = StringTable::get(TextKeys::DEXTERITY_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_dexterity().get_current()), 2);
+  string dexterity = StringTable::get(TextKeys::DEXTERITY_ABRV) + ":" + String::add_trailing_spaces(std::to_string(c->get_dexterity().get_current()), 2);
   return make_pair(dexterity, (dex.get_current() == dex.get_base()) ? Colour::COLOUR_WHITE : Colour::COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_agility(const CreaturePtr& c)
 {
   Statistic agi = c->get_agility();
-  string agility = StringTable::get(TextKeys::AGILITY_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_agility().get_current()), 2);
+  string agility = StringTable::get(TextKeys::AGILITY_ABRV) + ":" + String::add_trailing_spaces(std::to_string(c->get_agility().get_current()), 2);
   return make_pair(agility, (agi.get_current() == agi.get_base()) ? Colour::COLOUR_WHITE : Colour::COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_health(const CreaturePtr& c)
 {
   Statistic hea = c->get_health();
-  string health = StringTable::get(TextKeys::HEALTH_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_health().get_current()), 2);
+  string health = StringTable::get(TextKeys::HEALTH_ABRV) + ":" + String::add_trailing_spaces(std::to_string(c->get_health().get_current()), 2);
   return make_pair(health, (hea.get_current() == hea.get_base()) ? Colour::COLOUR_WHITE : Colour::COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_intelligence(const CreaturePtr& c)
 {
   Statistic intl = c->get_intelligence();
-  string intelligence = StringTable::get(TextKeys::INTELLIGENCE_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_intelligence().get_current()), 2);
+  string intelligence = StringTable::get(TextKeys::INTELLIGENCE_ABRV) + ":" + String::add_trailing_spaces(std::to_string(c->get_intelligence().get_current()), 2);
   return make_pair(intelligence, (intl.get_current() == intl.get_base()) ? Colour::COLOUR_WHITE : Colour::COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_willpower(const CreaturePtr& c)
 {
   Statistic wil = c->get_willpower();
-  string willpower = StringTable::get(TextKeys::WILLPOWER_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_willpower().get_current()), 2);
+  string willpower = StringTable::get(TextKeys::WILLPOWER_ABRV) + ":" + String::add_trailing_spaces(std::to_string(c->get_willpower().get_current()), 2);
   return make_pair(willpower, (wil.get_current() == wil.get_base()) ? Colour::COLOUR_WHITE : Colour::COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_charisma(const CreaturePtr& c)
 {
   Statistic cha = c->get_charisma();
-  string charisma = StringTable::get(TextKeys::CHARISMA_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_charisma().get_current()), 2);
+  string charisma = StringTable::get(TextKeys::CHARISMA_ABRV) + ":" + String::add_trailing_spaces(std::to_string(c->get_charisma().get_current()), 2);
   return make_pair(charisma, (cha.get_current() == cha.get_base()) ? Colour::COLOUR_WHITE : Colour::COLOUR_RED);
 }
 
 string CreatureTranslator::get_display_speed(const CreaturePtr& c)
 {
-  string speed = StringTable::get(TextKeys::SPEED_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_speed().get_current()), 2);
+  string speed = StringTable::get(TextKeys::SPEED_ABRV) + ":" + String::add_trailing_spaces(std::to_string(c->get_speed().get_current()), 2);
   return speed;
 }
 
 string CreatureTranslator::get_display_level(const CreaturePtr& c)
 {
-  string level = StringTable::get(TextKeys::LEVEL_ABRV) + Integer::to_string(c->get_level().get_current()) + ",";
+  string level = StringTable::get(TextKeys::LEVEL_ABRV) + std::to_string(c->get_level().get_current()) + ",";
 
   ExperienceManager em;
-  string expct = Integer::to_string(em.get_pct_to_next_level(c));
+  string expct = std::to_string(em.get_pct_to_next_level(c));
 
   // Display %tnl after the level.  This is a Crawl-ism/MUD-ism I really enjoy.
   level = level + expct + "%%";
@@ -155,8 +155,8 @@ string CreatureTranslator::get_display_defence(const CreaturePtr& c)
 {
   string evade_text  = StringTable::get(TextKeys::EVADE_ABRV);
   string soak_text   = StringTable::get(TextKeys::SOAK_ABRV);
-  string evade_value = Integer::to_string(c->get_evade().get_current());
-  string soak_value  = Integer::to_string(c->get_soak().get_current());
+  string evade_value = std::to_string(c->get_evade().get_current());
+  string soak_value  = std::to_string(c->get_soak().get_current());
 
   string defence = evade_text + "/" + soak_text + ": " + evade_value + "/" + soak_value;
   return defence;
@@ -174,14 +174,14 @@ pair<string, Colour> CreatureTranslator::get_display_alignment(const CreaturePtr
 string CreatureTranslator::get_display_hit_points(const CreaturePtr& c)
 {
   Statistic hp = c->get_hit_points();
-  string hit_points = StringTable::get(TextKeys::HIT_POINTS_ABRV) + ":" + Integer::to_string(hp.get_current()) + "/" + Integer::to_string(hp.get_base());
+  string hit_points = StringTable::get(TextKeys::HIT_POINTS_ABRV) + ":" + std::to_string(hp.get_current()) + "/" + std::to_string(hp.get_base());
   return hit_points;
 }
 
 string CreatureTranslator::get_display_arcana_points(const CreaturePtr& c)
 {
   Statistic ap = c->get_arcana_points();
-  string arcana_points = StringTable::get(TextKeys::ARCANA_POINTS_ABRV) + ":" + Integer::to_string(ap.get_current()) + "/" + Integer::to_string(ap.get_base());
+  string arcana_points = StringTable::get(TextKeys::ARCANA_POINTS_ABRV) + ":" + std::to_string(ap.get_current()) + "/" + std::to_string(ap.get_base());
   return arcana_points;
 }
 

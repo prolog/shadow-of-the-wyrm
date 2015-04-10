@@ -46,7 +46,7 @@ bool SlownessStatusEffect::after_apply(CreaturePtr creature) const
       creature_speed.set_current(cur_speed + slowness_modifier);
       creature->set_speed(creature_speed);
 
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HASTE_MODIFIER, Integer::to_string(slowness_modifier));
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HASTE_MODIFIER, std::to_string(slowness_modifier));
     }
   }
 

@@ -4,6 +4,12 @@ Savage Lands v0.3.5 "Tzortinakis"
 - New "X"perience action that displays current level, experience total,
   and amount required for the next level.
 
+- Cleaned up code I'd written pre-common-C++11 support that had a number
+  of custom to_string functions off classes, and changed these to use
+  std::to_string.  The exception is Char::to_string, which needs to stay
+  when I want to convert 'c' to "c" - std::to_string does integer
+  promotion on the char it is provided.
+
 Savage Lands v0.3.4 "Mudarra"
 - Version declared March 8, 2015.  Version finalized April 5, 2015.
 

@@ -10,6 +10,7 @@ class ExperienceManager
     uint get_current_experience_needed_for_level(CreaturePtr creature, const uint level);
     bool gain_experience(CreaturePtr creature, const uint experience_value);
     uint get_pct_to_next_level(CreaturePtr creature);
+    uint get_total_experience_needed_for_level(CreaturePtr creature, const int level);
     
     void run_level_script(CreaturePtr creature);
 

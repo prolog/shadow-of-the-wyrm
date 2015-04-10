@@ -29,29 +29,27 @@ class Convert
 
     Convert();
     template <class T> static T from_string(const std::string& str);
-    template <class T> static std::string to_string(const T& convert);
+};
+
+class Float
+{
+  public:
+    static std::string to_string(const float f, const int precision = 6);
+
+  protected:  
+    Float();
 };
 
 class Char
 {
   public:
-    static std::string to_string(const char character);
+    static std::string to_string(const char c);
     static EquipmentWornLocation to_equipment_worn_location(const char character);
     static int keyboard_selection_char_to_int(const char character);
 
   protected:
     Char();
     ~Char();
-};
-
-class Bool
-{
-  public:
-    static std::string to_string(const bool boolean);
-
-  protected:
-    Bool();
-    ~Bool();
 };
 
 class DirectionEnum
@@ -106,8 +104,6 @@ class File
 class Integer
 {
   public:
-    static std::string to_string(const uint integer);
-    static std::string to_string(const int integer);
     template <class T> inline static std::string to_string_key_at_given_position_in_rc_map(const std::map<std::string, T>& map, const int pos)
     {
       int cur = -1;

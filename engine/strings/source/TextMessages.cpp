@@ -29,6 +29,8 @@ const string TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_
 const string TextMessages::CURRENCY_MESSAGE_SINGLE            = "CURRENCY_MESSAGE_SINGLE";
 const string TextMessages::CURRENCY_MESSAGE_MULTIPLE          = "CURRENCY_MESSAGE_MULTIPLE";
 const string TextMessages::NAME_TITLE_MESSAGE                 = "NAME_TITLE_MESSAGE";
+const string TextMessages::EXPERIENCE_SYNOPSIS_MESSAGE        = "EXPERIENCE_SYNOPSIS_MESSAGE";
+const string TextMessages::EXPERIENCE_SYNOPSIS_MAX_MESSAGE    = "EXPERIENCE_SYNOPSIS_MAX_MESSAGE";
 
 string TextMessages::get_player_description(const string& player_name)
 {
@@ -326,7 +328,7 @@ string TextMessages::get_currency_amount_message(const uint currency_amount)
   if (currency_amount != 1)
   {
     currency_message = StringTable::get(CURRENCY_MESSAGE_MULTIPLE);
-    boost::replace_first(currency_message, "%s", Integer::to_string(currency_amount));
+    boost::replace_first(currency_message, "%s", std::to_string(currency_amount));
   }
   
   return currency_message;
@@ -372,4 +374,26 @@ string TextMessages::get_name_and_title(CreaturePtr creature)
   }
 
   return nt;
+}
+
+string TextMessages::get_experience_synopsis(const int level, const int exp, const int exp_required, const int next_level, const std::string& race_name, const float r_mult, const std::string class_name, const float c_mult)
+{
+  string exp_synopsis = StringTable::get(EXPERIENCE_SYNOPSIS_MESSAGE);
+
+  if (level == CreatureConstants::MAX_CREATURE_LEVEL)
+  {
+    exp_synopsis = StringTable::get(EXPERIENCE_SYNOPSIS_MAX_MESSAGE);
+  }
+
+
+  boost::replace_first(exp_synopsis, "%s1", std::to_string(level));
+  boost::replace_first(exp_synopsis, "%s2", std::to_string(exp));
+  boost::replace_first(exp_synopsis, "%s3", std::to_string(exp_required));
+  boost::replace_first(exp_synopsis, "%s4", std::to_string(next_level));
+  boost::replace_first(exp_synopsis, "%s5", race_name);
+  boost::replace_first(exp_synopsis, "%s6", Float::to_string(r_mult, 2));
+  boost::replace_first(exp_synopsis, "%s7", class_name);
+  boost::replace_first(exp_synopsis, "%s8", Float::to_string(c_mult, 2));
+
+  return exp_synopsis;
 }

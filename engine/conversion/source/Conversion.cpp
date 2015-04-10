@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <iomanip>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -21,11 +22,11 @@ template<class T> T Convert::from_string(const string& convert)
   return converted_string;
 }
 
-template<class T> string Convert::to_string(const T& convert)
+string Float::to_string(const float f, const int precision)
 {
-  ostringstream buffer;
-  buffer << convert;
-  return buffer.str();
+  std::ostringstream ss;
+  ss << std::setprecision(precision) << f;
+  return ss.str();
 }
 
 // A cleaned string should have alphanumeric characters and spaces only - no backspace, no control characters, etc.
@@ -43,7 +44,7 @@ string String::clean(const string& to_clean)
     {
       if (isalpha(c) || isdigit(c) || c >= ' ')
       {
-        clean << Char::to_string(c);
+        clean << c;
       }
     }
     else
@@ -99,10 +100,11 @@ Char::~Char()
 {
 }
 
-string Char::to_string(const char character)
+string Char::to_string(const char c)
 {
-  string converted_string = Convert::to_string(character);
-  return converted_string;
+  ostringstream ss;
+  ss << c;
+  return ss.str();
 }
 
 EquipmentWornLocation Char::to_equipment_worn_location(const char character)
@@ -124,20 +126,6 @@ EquipmentWornLocation Char::to_equipment_worn_location(const char character)
 int Char::keyboard_selection_char_to_int(const char character)
 {
   return static_cast<int>(character - 'a');
-}
-
-Bool::Bool()
-{
-}
-
-Bool::~Bool()
-{
-}
-
-string Bool::to_string(const bool b)
-{
-  string converted_string = Convert::to_string(b);
-  return converted_string;
 }
 
 DirectionEnum::DirectionEnum()
@@ -391,18 +379,6 @@ Integer::Integer()
 
 Integer::~Integer()
 {
-}
-
-string Integer::to_string(const uint convert_uint)
-{
-  string converted_int = Convert::to_string(convert_uint);
-  return converted_int;  
-}
-
-string Integer::to_string(const int convert)
-{
-  string converted_int = Convert::to_string(convert);
-  return converted_int;
 }
 
 // Boost uuid

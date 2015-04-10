@@ -98,7 +98,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(CreaturePtr
   TilesContainer fov_tile_cont = fov_map->get_tiles();
   TilesContainer::iterator t_it;
   
-  Log::instance().debug("RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts - centre coord: " + Integer::to_string(centre_coord.first) + "," + Integer::to_string(centre_coord.second));
+  Log::instance().debug("RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts - centre coord: " + std::to_string(centre_coord.first) + "," + std::to_string(centre_coord.second));
 
   for (t_it = tile_cont.begin(); t_it != tile_cont.end(); t_it++)
   {

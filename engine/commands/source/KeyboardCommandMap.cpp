@@ -87,13 +87,13 @@ void KeyboardCommandMap::initialize_special_key_mappings()
 {
   special_key_mappings.clear();
 
-  special_key_mappings.insert(make_pair("KEY_UP", Integer::to_string(KEY_UP)));
-  special_key_mappings.insert(make_pair("KEY_DOWN", Integer::to_string(KEY_DOWN)));
-  special_key_mappings.insert(make_pair("KEY_LEFT", Integer::to_string(KEY_LEFT)));
-  special_key_mappings.insert(make_pair("KEY_RIGHT", Integer::to_string(KEY_RIGHT)));
-  special_key_mappings.insert(make_pair("KEY_F1", Integer::to_string(KEY_F(1))));
-  special_key_mappings.insert(make_pair("KEY_F2", Integer::to_string(KEY_F(2))));
-  special_key_mappings.insert(make_pair("KEY_F12", Integer::to_string(KEY_F(12))));
+  special_key_mappings.insert(make_pair("KEY_UP", std::to_string(KEY_UP)));
+  special_key_mappings.insert(make_pair("KEY_DOWN", std::to_string(KEY_DOWN)));
+  special_key_mappings.insert(make_pair("KEY_LEFT", std::to_string(KEY_LEFT)));
+  special_key_mappings.insert(make_pair("KEY_RIGHT", std::to_string(KEY_RIGHT)));
+  special_key_mappings.insert(make_pair("KEY_F1", std::to_string(KEY_F(1))));
+  special_key_mappings.insert(make_pair("KEY_F2", std::to_string(KEY_F(2))));
+  special_key_mappings.insert(make_pair("KEY_F12", std::to_string(KEY_F(12))));
 }
 
 vector<string> KeyboardCommandMap::get_remappable_commands() const
@@ -134,7 +134,7 @@ void KeyboardCommandMap::parse_keybindings(const Settings& settings, const vecto
       // If key is length 1, it's a single character.
       if (key.size() == 1)
       {
-        command_mapping.insert(make_pair(Integer::to_string(key.at(0)), remap_cmd));
+        command_mapping.insert(make_pair(std::to_string(key.at(0)), remap_cmd));
       }
       // Otherwise, it's a special key, like KEY_UP or whatever.
       // We should already have a mapping for these, so look it up.
@@ -166,9 +166,9 @@ void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
   // JCD FIXME: When adding Unix support, update this to include whatever
   // debug flag is needed.
   #ifdef _DEBUG
-  command_mapping.insert(make_pair(Integer::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
+  command_mapping.insert(make_pair(std::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
   #endif
-  command_mapping.insert(make_pair(Integer::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_AND_SIDS));
+  command_mapping.insert(make_pair(std::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_AND_SIDS));
 }
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses

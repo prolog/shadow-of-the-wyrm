@@ -25,13 +25,13 @@ string StatsDumper::get_stats() const
   ostringstream ss;
 
   // First column
-  string strength      = StringTable::get(TextKeys::STRENGTH)      + ": " + Integer::to_string(creature->get_strength().get_current());
-  string dexterity     = StringTable::get(TextKeys::DEXTERITY)     + ": " + Integer::to_string(creature->get_dexterity().get_current());
-  string agility       = StringTable::get(TextKeys::AGILITY)       + ": " + Integer::to_string(creature->get_agility().get_current());
-  string health        = StringTable::get(TextKeys::HEALTH)        + ": " + Integer::to_string(creature->get_health().get_current());
-  string intelligence  = StringTable::get(TextKeys::INTELLIGENCE)  + ": " + Integer::to_string(creature->get_intelligence().get_current());
-  string willpower     = StringTable::get(TextKeys::WILLPOWER)     + ": " + Integer::to_string(creature->get_willpower().get_current());
-  string charisma      = StringTable::get(TextKeys::CHARISMA)      + ": " + Integer::to_string(creature->get_charisma().get_current());
+  string strength      = StringTable::get(TextKeys::STRENGTH)      + ": " + std::to_string(creature->get_strength().get_current());
+  string dexterity     = StringTable::get(TextKeys::DEXTERITY)     + ": " + std::to_string(creature->get_dexterity().get_current());
+  string agility       = StringTable::get(TextKeys::AGILITY)       + ": " + std::to_string(creature->get_agility().get_current());
+  string health        = StringTable::get(TextKeys::HEALTH)        + ": " + std::to_string(creature->get_health().get_current());
+  string intelligence  = StringTable::get(TextKeys::INTELLIGENCE)  + ": " + std::to_string(creature->get_intelligence().get_current());
+  string willpower     = StringTable::get(TextKeys::WILLPOWER)     + ": " + std::to_string(creature->get_willpower().get_current());
+  string charisma      = StringTable::get(TextKeys::CHARISMA)      + ": " + std::to_string(creature->get_charisma().get_current());
   string statuses = StringTable::get(TextKeys::STATUSES) + ": ";
   auto dsa = CreatureTranslator::get_display_status_ailments(creature);
   for (auto dsa_pair : dsa)
@@ -42,11 +42,11 @@ string StatsDumper::get_stats() const
   // Second column
   Statistic hp         = creature->get_hit_points();
   Statistic ap         = creature->get_arcana_points(); 
-  string hit_points    = StringTable::get(TextKeys::HIT_POINTS)    + ": " + Integer::to_string(hp.get_current()) + "/" + Integer::to_string(hp.get_base());
-  string arcana_points = StringTable::get(TextKeys::ARCANA_POINTS) + ": " + Integer::to_string(ap.get_current()) + "/" + Integer::to_string(ap.get_base());
-  string speed         = StringTable::get(TextKeys::SPEED)         + ": " + Integer::to_string(creature->get_speed().get_current());
-  string evade         = StringTable::get(TextKeys::EVADE)         + ": " + Integer::to_string(creature->get_evade().get_current());
-  string soak          = StringTable::get(TextKeys::SOAK)          + ": " + Integer::to_string(creature->get_soak().get_current());
+  string hit_points    = StringTable::get(TextKeys::HIT_POINTS)    + ": " + std::to_string(hp.get_current()) + "/" + std::to_string(hp.get_base());
+  string arcana_points = StringTable::get(TextKeys::ARCANA_POINTS) + ": " + std::to_string(ap.get_current()) + "/" + std::to_string(ap.get_base());
+  string speed         = StringTable::get(TextKeys::SPEED)         + ": " + std::to_string(creature->get_speed().get_current());
+  string evade         = StringTable::get(TextKeys::EVADE)         + ": " + std::to_string(creature->get_evade().get_current());
+  string soak          = StringTable::get(TextKeys::SOAK)          + ": " + std::to_string(creature->get_soak().get_current());
 
   string current_line;
   current_line = String::add_trailing_spaces(current_line, num_cols);

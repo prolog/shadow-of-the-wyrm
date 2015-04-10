@@ -217,7 +217,7 @@ string Damage::str() const
 
   if (effect_bonus != 0)
   {
-    ss << " +" << Integer::to_string(effect_bonus) + "/eff. ";
+    ss << " +" << std::to_string(effect_bonus) + "/eff. ";
   }
 
   if (additional_damage)

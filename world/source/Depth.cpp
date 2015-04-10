@@ -82,7 +82,7 @@ string Depth::str() const
   if (current != 0)
   {
     int depth_in_feet = current * DEPTH_MULTIPLIER;
-    depth_s = Integer::to_string(depth_in_feet);
+    depth_s = std::to_string(depth_in_feet);
     depth_s = "[" + depth_s + "']";
   }
   

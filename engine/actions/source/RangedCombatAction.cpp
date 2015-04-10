@@ -102,7 +102,7 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
   tsm.set_show_item_descriptions(false);
   // Show only the creature.
   
-  tsm.set_selection_key(Integer::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED)));
+  tsm.set_selection_key(std::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED)));
   
   action_cost_value = tsm.select_tile(creature, ActionTextKeys::ACTION_FIRE);  
   return action_cost_value;
@@ -123,7 +123,7 @@ void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
   {
     TargetMap& tile_map = creature->get_target_map_ref();
     
-    TargetMap::iterator t_it = tile_map.find(Integer::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED)));
+    TargetMap::iterator t_it = tile_map.find(std::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED)));
     DisplayTile projectile_disp = MapTranslator::create_display_tile_from_item(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
     
     if (t_it != tile_map.end())
