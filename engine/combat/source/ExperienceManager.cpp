@@ -84,6 +84,11 @@ uint ExperienceManager::get_pct_to_next_level(CreaturePtr creature)
   return tnl_pct;
 }
 
+uint ExperienceManager::get_total_experience_needed_for_level(CreaturePtr creature, const int level)
+{
+  return get_total_experience_needed_for_lvl_idx(creature, static_cast<uint>(level - 1));
+}
+
 uint ExperienceManager::get_current_experience_needed_for_level(CreaturePtr creature, const uint level)
 {
   return get_total_experience_needed_for_lvl_idx(creature, level-1) - creature->get_experience_points();

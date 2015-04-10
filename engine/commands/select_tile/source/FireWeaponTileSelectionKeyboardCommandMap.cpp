@@ -30,6 +30,6 @@ void FireWeaponTileSelectionKeyboardCommandMap::initialize_command_mapping(const
   TileSelectionKeyboardCommandMap::initialize_command_mapping(settings);
 
   // fire
-  command_mapping.insert(make_pair(Integer::to_string('f'), TileSelectionCommandKeys::TARGET_TILE));
+  command_mapping.insert(make_pair(std::to_string('f'), TileSelectionCommandKeys::TARGET_TILE));
 }
 

@@ -52,7 +52,7 @@ FeaturePtr FeatureFactory::create_feature(const ClassIdentifier ci)
   {
     // This is a problem, and likely means I've forgotten to update
     // the class ID map!
-    string s_cl_id = Integer::to_string(static_cast<int>(ci));
+    string s_cl_id = std::to_string(static_cast<int>(ci));
     string msg = "FeatureFactory::create_feature - Could not instantiate feature with class_id " + s_cl_id;
     Log::instance().error(msg);
     BOOST_ASSERT_MSG(false, msg.c_str());

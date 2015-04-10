@@ -68,7 +68,7 @@ string Dice::str() const
 {
   string damage;
   
-  damage = Integer::to_string(num_dice) + "d" + Integer::to_string(dice_sides);
+  damage = std::to_string(num_dice) + "d" + std::to_string(dice_sides);
   
   if (modifier > -1)
   {
@@ -79,7 +79,7 @@ string Dice::str() const
     damage = damage + "-";
   }
   
-  damage = damage + Integer::to_string(modifier);
+  damage = damage + std::to_string(modifier);
 
   return damage;
 }

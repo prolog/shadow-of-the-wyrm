@@ -270,7 +270,7 @@ bool TileSelectionAction::remove_target(CreaturePtr creature, const AttackType a
   if (creature)
   {
     TargetMap& target_map = creature->get_target_map_ref();
-    TargetMap::iterator t_it = target_map.find(Integer::to_string(static_cast<int>(attack_type)));
+    TargetMap::iterator t_it = target_map.find(std::to_string(static_cast<int>(attack_type)));
     
     if (t_it != target_map.end())
     {

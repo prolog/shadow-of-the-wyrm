@@ -167,7 +167,7 @@ string MessageManager::get_count_indicator(const Message& m)
 
   if (count > 1)
   {
-    count_indicator = " (x" + Integer::to_string(count) + ")"; 
+    count_indicator = " (x" + std::to_string(count) + ")"; 
   }
   
   return count_indicator;

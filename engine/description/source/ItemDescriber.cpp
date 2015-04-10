@@ -24,7 +24,7 @@ string ItemDescriber::describe() const
     
     if (quantity > 1)
     {
-      item_description += " (" + Integer::to_string(quantity) + ")";
+      item_description += " (" + std::to_string(quantity) + ")";
     }
   }
 
@@ -44,7 +44,7 @@ string ItemDescriber::describe_usage() const
 
     if (quantity > 1)
     {
-      item_description += " (" + Integer::to_string(quantity) + ")";
+      item_description += " (" + std::to_string(quantity) + ")";
     }
   }
 

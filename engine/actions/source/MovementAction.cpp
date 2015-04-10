@@ -452,7 +452,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
         if (depth_increment > 0) 
         {
-          generator->set_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, Integer::to_string(depth_increment));
+          generator->set_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, std::to_string(depth_increment));
         }
       }
 

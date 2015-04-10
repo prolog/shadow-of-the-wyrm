@@ -13,7 +13,7 @@ bool TileSelectionRangeChecker::is_selected_tile_in_range(CreaturePtr creature, 
     {
       MapPtr view_map = creature->get_decision_strategy()->get_fov_map();
       TargetMap target_map = creature->get_target_map();
-      TargetMap::iterator t_it = target_map.find(Integer::to_string(static_cast<int>(attack_type)));
+      TargetMap::iterator t_it = target_map.find(std::to_string(static_cast<int>(attack_type)));
 
       // There should always be a target selected if we got this far in
       // the game logic.

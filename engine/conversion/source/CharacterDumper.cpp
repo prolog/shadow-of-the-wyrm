@@ -99,7 +99,7 @@ string CharacterDumper::get_synopsis() const
     string race_name = StringTable::get(race->get_race_name_sid());
     string class_name = StringTable::get(char_class->get_class_name_sid());
       
-    string character_synopsis = "L" + Integer::to_string(creature->get_level().get_current()) + " " + race_name + " " + class_name;
+    string character_synopsis = "L" + std::to_string(creature->get_level().get_current()) + " " + race_name + " " + class_name;
     ss << String::centre(character_synopsis, num_cols);
   }
 
@@ -120,7 +120,7 @@ string CharacterDumper::get_vital_statistics() const
   }
   
   // First line
-  string age  = StringTable::get(TextKeys::AGE) + ": " + Integer::to_string(creature->get_age().get_current());
+  string age  = StringTable::get(TextKeys::AGE) + ": " + std::to_string(creature->get_age().get_current());
   string sex  = StringTable::get(TextKeys::SEX) + ": " + TextMessages::get_sex(creature->get_sex());
   string size = StringTable::get(SizeTextKeys::SIZE) + ": " + StringTable::get(SizeTextKeys::get_size_sid_from_creature_size(creature->get_size()));
   

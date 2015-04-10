@@ -103,9 +103,9 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
 {
   string synopsis = StringTable::get(EQUIPMENT_WEAPON_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS);
 
-  boost::replace_first(synopsis, "%s", Integer::to_string(base_difficulty));
-  boost::replace_first(synopsis, "%s", Integer::to_string(total_difficulty));
-  boost::replace_first(synopsis, "%s", Integer::to_string(speed));
+  boost::replace_first(synopsis, "%s", std::to_string(base_difficulty));
+  boost::replace_first(synopsis, "%s", std::to_string(total_difficulty));
+  boost::replace_first(synopsis, "%s", std::to_string(speed));
   boost::replace_first(synopsis, "%s", damage.str());
   
   return synopsis;
@@ -132,9 +132,9 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type
   }
   
   boost::replace_first(synopsis, "%s", StringTable::get(weapon_description_sid));
-  boost::replace_first(synopsis, "%s", Integer::to_string(base_difficulty));
-  boost::replace_first(synopsis, "%s", Integer::to_string(total_difficulty));
-  boost::replace_first(synopsis, "%s", Integer::to_string(speed));
+  boost::replace_first(synopsis, "%s", std::to_string(base_difficulty));
+  boost::replace_first(synopsis, "%s", std::to_string(total_difficulty));
+  boost::replace_first(synopsis, "%s", std::to_string(speed));
   boost::replace_first(synopsis, "%s", damage.str());
   
   return synopsis;

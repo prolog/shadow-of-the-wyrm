@@ -45,7 +45,7 @@ TEST(SL_World_Inventory, has_item_with_property)
 
   ToolPtr tool = std::make_shared<Tool>();
   tool->set_id("ore");
-  tool->set_additional_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, Integer::to_string(static_cast<int>(MaterialType::MATERIAL_TYPE_IRON)));
+  tool->set_additional_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, std::to_string(static_cast<int>(MaterialType::MATERIAL_TYPE_IRON)));
 
   inv.add(tool);
 
@@ -65,7 +65,7 @@ TEST(SL_World_Inventory, count_items_with_property)
 
   ToolPtr tool = std::make_shared<Tool>();
   tool->set_id("ore");
-  tool->set_additional_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, Integer::to_string(static_cast<int>(MaterialType::MATERIAL_TYPE_IRON)));
+  tool->set_additional_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, std::to_string(static_cast<int>(MaterialType::MATERIAL_TYPE_IRON)));
 
   inv.add(tool);
 

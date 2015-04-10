@@ -48,6 +48,12 @@ TEST(SL_Engine_ConversionRoutines, char_to_string)
   EXPECT_EQ("3", Char::to_string(three));
 }
 
+TEST(SL_Engine_ConversionRoutines, float_to_string)
+{
+  EXPECT_EQ("1.23", Float::to_string(1.234567f, 2));
+  EXPECT_EQ("3.1415926", Float::to_string(3.1415926535f));
+}
+
 TEST(SL_Engine_ConversionRoutines, csv_to_vector)
 {
   string csv = "first,second,third";
@@ -88,27 +94,6 @@ TEST(SL_Engine_ConversionRoutines, direction_to_string)
   EXPECT_EQ(CommandKeys::MOVE_NORTHWEST, DirectionEnum::to_string(Direction::DIRECTION_NORTH_WEST));
   EXPECT_EQ(CommandKeys::MOVE_NORTH, DirectionEnum::to_string(Direction::DIRECTION_NORTH));
   EXPECT_EQ(CommandKeys::MOVE_NORTHEAST, DirectionEnum::to_string(Direction::DIRECTION_NORTH_EAST));
-}
-
-TEST(SL_Engine_ConversionRoutines, int_to_string)
-{
-  int test_1 = 1;
-  int test_2 = 0;
-  int test_3 = -1;
-  int test_4 = 9999;
-  int test_5 = -9999;
-
-  string converted_test_1 = "1";
-  string converted_test_2 = "0";
-  string converted_test_3 = "-1";
-  string converted_test_4 = "9999";
-  string converted_test_5 = "-9999";
-
-  EXPECT_EQ(converted_test_1, Integer::to_string(test_1));
-  EXPECT_EQ(converted_test_2, Integer::to_string(test_2));
-  EXPECT_EQ(converted_test_3, Integer::to_string(test_3));
-  EXPECT_EQ(converted_test_4, Integer::to_string(test_4));
-  EXPECT_EQ(converted_test_5, Integer::to_string(test_5));
 }
 
 TEST(SL_Engine_ConversionRoutines, raw_hunger_to_hunger_level)

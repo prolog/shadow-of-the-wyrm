@@ -55,7 +55,7 @@ CommandPtr PlayerDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_f
         key = *key_p;
       }
 
-      string command_key_s = keyboard_commands->get_command_type(Integer::to_string(key));
+      string command_key_s = keyboard_commands->get_command_type(std::to_string(key));
       player_command = command_factory->create(key, command_key_s);
 
       // If after processing the input the resultant command is
