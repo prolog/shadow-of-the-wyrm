@@ -195,9 +195,6 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
     handle_damage_effects(attacked_creature, damage_dealt, damage_type, effect_bonus, damage_info.get_status_ailments());
   }
 
-  // If there are any scripts associated with the attack, run them.
-  run_attack_script_if_necessary(attacking_creature, attacked_creature);
-
   if (damage_dealt > 0)
   {
     // Deal the damage, handling death if necessary.
@@ -211,6 +208,9 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
       add_combat_message(attacking_creature, attacked_creature, no_damage_message);
     }
   }
+
+  // If there are any scripts associated with the attack, run them.
+  run_attack_script_if_necessary(attacking_creature, attacked_creature);
 
   return true;
 }

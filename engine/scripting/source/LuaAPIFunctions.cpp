@@ -1,8 +1,10 @@
 #include "LuaAPIFunctions.hpp"
 #include "ClassManager.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureDescriber.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureUtils.hpp"
+#include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "FeatureFactory.hpp"
 #include "Game.hpp"
@@ -104,6 +106,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_message_direct", add_message_direct);
   lua_register(L, "add_debug_message", add_debug_message);
   lua_register(L, "add_confirmation_message", add_confirmation_message);
+  lua_register(L, "add_message_for_creature", add_message_for_creature);
   lua_register(L, "add_new_quest", add_new_quest);
   lua_register(L, "is_on_quest", is_on_quest);
   lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
@@ -157,22 +160,27 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "creature_is_class", creature_is_class);
   lua_register(L, "get_item_count", get_item_count);
   lua_register(L, "set_hostility", set_hostility);
+  lua_register(L, "teleport", teleport);
+  lua_register(L, "get_creature_description", get_creature_description);
 }
 
 // Lua API helper functions
-string read_sid_and_replace_values(lua_State* ls)
+string read_sid_and_replace_values(lua_State* ls, int offset)
 {
   string message;
 
   int num_args = lua_gettop(ls);
-  if (num_args > 0 && lua_isstring(ls, 1))
+  int first_val = 1 + offset;
+
+  if (num_args > 0 && lua_isstring(ls, first_val))
   {
     vector<string> replacement_sids;
-    string message_sid = lua_tostring(ls, 1);
+    string message_sid = lua_tostring(ls, first_val);
 
-    if (num_args == 2)
+    // Check to see if a string replacement array has been provided.
+    if ((num_args - offset) == 2)
     {
-      replacement_sids = LuaUtils::get_string_array_from_table(ls, 2);
+      replacement_sids = LuaUtils::get_string_array_from_table(ls, first_val + 1);
     }
 
     message = StringTable::get(message_sid);
@@ -180,6 +188,11 @@ string read_sid_and_replace_values(lua_State* ls)
     for (const auto& value : replacement_sids)
     {
       boost::replace_first(message, "%s", value);
+    }
+
+    if (!message.empty())
+    {
+      message[0] = toupper(message[0]);
     }
   }
 
@@ -367,6 +380,30 @@ static int add_confirmation_message(lua_State* ls)
 
   lua_pushboolean(ls, confirm);
   return 1;
+}
+
+static int add_message_for_creature(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  // Need at least a creature ID and a SID.
+  if (num_args > 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string message = read_sid_and_replace_values(ls, 1 /* offset of 1 because first arg in stack is creature ID */);
+    CreaturePtr creature = get_creature(creature_id);
+
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
+    manager.add_new_message(message);
+    manager.send();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_message_for_creature");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 // Add a quest to the in-progress list.  Arguments are:
@@ -1724,6 +1761,56 @@ int set_hostility(lua_State* ls)
   }
 
   return 0;
+}
+
+int teleport(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    Game& game = Game::instance();
+    ActionManager& am = game.get_action_manager_ref();
+
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT);
+    teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to teleport");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Get the appropriate creature description, based on whether the viewing
+// creature can actually see or not.
+int get_creature_description(lua_State* ls)
+{
+  string creature_desc;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    Game& game = Game::instance();
+    string viewing_creature_id = lua_tostring(ls, 1);
+    string creature_id = lua_tostring(ls, 2);
+
+    CreaturePtr viewing_creature = get_creature(viewing_creature_id);
+    CreaturePtr creature = get_creature(creature_id);
+
+    CreatureDescriber cd(viewing_creature, creature);
+    creature_desc = cd.describe();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_description");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, creature_desc.c_str());
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)

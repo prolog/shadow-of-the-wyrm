@@ -19,6 +19,7 @@ int add_message(lua_State* ls);
 int add_message_direct(lua_State* ls);
 int add_debug_message(lua_State* ls);
 int add_confirmation_message(lua_State* ls);
+int add_message_for_creature(lua_State* ls);
 int add_new_quest(lua_State* ls);
 int is_on_quest(lua_State* ls);
 int get_num_creature_killed_global(lua_State* ls);
@@ -72,7 +73,9 @@ int summon_monsters_around_creature(lua_State* ls);
 int creature_is_class(lua_State* ls);
 int get_item_count(lua_State* ls);
 int set_hostility(lua_State* ls);
+int teleport(lua_State* ls);
+int get_creature_description(lua_State* ls);
 
 // helper functions for the Lua API functions.
-std::string read_sid_and_replace_values(lua_State* ls);
+std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);
 
