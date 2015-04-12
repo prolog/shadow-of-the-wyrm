@@ -6,7 +6,12 @@ local function steal(attacker_id, attacked_id)
   -- Steal some amount of currency off the creature, and transfer
   -- it to the attacker.
 
+  -- Add a message if the attacked creature is the player.
+  add_message_for_creature(attacked_id, "STEAL_CURRENCY_MESSAGE")
+  add_message_for_creature(attacked_id, "MONSTER_VANISHES_MESSAGE", {get_creature_description(attacked_id, attacker_id)})
+
   -- Vanish!
+  teleport(attacker_id)
 end
 
 local steal_fn = steal
