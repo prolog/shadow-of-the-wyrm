@@ -122,8 +122,10 @@ bool Inventory::remove(const string& id)
   return false;
 }
 
-bool Inventory::remove_by_base_id(const string& base_id, const int quantity)
+pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, const int quantity)
 {
+  pair<bool, vector<ItemPtr>> result = { false, {} };
+
   int rem_quantity = quantity;
 
   if (items.size() > 0)
@@ -138,23 +140,33 @@ bool Inventory::remove_by_base_id(const string& base_id, const int quantity)
       
       if (current_item && (current_item->get_base_id() == base_id))
       {
+        result.first = true;
         int i_quantity = current_item->get_quantity();
 
         if (i_quantity <= rem_quantity)
         {
+          result.second.push_back(current_item);
           items.erase(item_it++);
           erased = true;
         }
         else
         {
+          int existing_new_quantity = i_quantity - rem_quantity;
+          int new_quantity = rem_quantity;
+
+          ItemPtr new_item = ItemPtr(current_item->clone());
+          new_item->set_quantity(new_quantity);
+
           current_item->set_quantity(i_quantity - rem_quantity);
+
+          result.second.push_back(new_item);
         }
 
         rem_quantity -= i_quantity;
 
         if (rem_quantity <= 0)
         {
-          return true;
+          break;
         }
       }
 
@@ -165,7 +177,7 @@ bool Inventory::remove_by_base_id(const string& base_id, const int quantity)
     }    
   }
 
-  return false;
+  return result;
 }
 
 bool Inventory::clear()

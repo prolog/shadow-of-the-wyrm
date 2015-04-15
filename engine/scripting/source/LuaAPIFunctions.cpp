@@ -162,6 +162,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_hostility", set_hostility);
   lua_register(L, "teleport", teleport);
   lua_register(L, "get_creature_description", get_creature_description);
+  lua_register(L, "transfer_item", transfer_item);
 }
 
 // Lua API helper functions
@@ -1810,6 +1811,63 @@ int get_creature_description(lua_State* ls)
   }
 
   lua_pushstring(ls, creature_desc.c_str());
+  return 1;
+}
+
+
+// Argument 1: creature ID (creature that has the item)
+// Argument 2: creature ID (creature to which to transfer the item)
+// Argument 3: item ID
+// Argument 4, optional: item quantity
+int transfer_item(lua_State* ls)
+{
+  bool item_transferred = false;
+  int num_args = lua_gettop(ls);
+  bool args_ok = false;
+
+  args_ok = (num_args >= 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3));
+
+  if (num_args == 4)
+  {
+    args_ok = args_ok && lua_isnumber(ls, 4);
+  }
+
+  if (args_ok)
+  {
+    Game& game = Game::instance();
+    string old_creature_id = lua_tostring(ls, 1);
+    string new_creature_id = lua_tostring(ls, 2);
+    string item_base_id = lua_tostring(ls, 3);
+    int quantity = 1;
+
+    if (num_args == 4)
+    {
+      quantity = lua_tointeger(ls, 4);
+    }
+
+    CreaturePtr transfer_creature = get_creature(old_creature_id);
+    CreaturePtr creature = get_creature(new_creature_id);
+
+    // Transfer the items from one inventory to the other.
+    ItemManager im;
+    pair<bool, vector<ItemPtr>> items = im.remove_item_from_eq_or_inv(creature, item_base_id, quantity);
+
+    IInventoryPtr inv = transfer_creature->get_inventory();
+
+    for (ItemPtr item : items.second)
+    {
+      inv->add(item);
+    }
+
+    item_transferred = items.first;
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to transfer_item");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, item_transferred);
   return 1;
 }
 

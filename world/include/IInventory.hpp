@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <list>
+#include <vector>
 #include "Item.hpp"
 #include "ISerializable.hpp"
 
@@ -34,7 +35,7 @@ class IInventory : public ISerializable
     virtual bool merge(ItemPtr new_item) = 0;
 
     virtual bool remove(const std::string& id) = 0;
-    virtual bool remove_by_base_id(const std::string& base_id, const int quantity = 1) = 0;
+    virtual std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1) = 0;
 
     virtual bool clear() = 0;
 
