@@ -229,28 +229,16 @@ void XMLCreaturesReader::parse_event_scripts(const XMLNode& event_scripts_node, 
 
   if (!event_scripts_node.is_null())
   {
-    XMLNode death_script_node = XMLUtils::get_next_element_by_local_name(event_scripts_node, "DeathScript");
+    vector<pair<string, string>> node_details = { { "DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH }, 
+                                                  { "AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK },
+                                                  { "ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT },
+                                                  { "DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION } };
 
-    if (!death_script_node.is_null())
+    for (const auto& details : node_details)
     {
-      ScriptDetails death_sd = xsr.get_script_details(death_script_node);
-      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH, death_sd);
-    }
-
-    XMLNode attack_script_node = XMLUtils::get_next_element_by_local_name(event_scripts_node, "AttackScript");
-
-    if (!attack_script_node.is_null())
-    {
-      ScriptDetails attack_sd = xsr.get_script_details(attack_script_node);
-      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK, attack_sd);
-    }
-
-    XMLNode chat_script_node = XMLUtils::get_next_element_by_local_name(event_scripts_node, "ChatScript");
-
-    if (!chat_script_node.is_null())
-    {
-      ScriptDetails chat_sd = xsr.get_script_details(chat_script_node);
-      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, chat_sd);
+      XMLNode node = XMLUtils::get_next_element_by_local_name(event_scripts_node, details.first);
+      ScriptDetails sd = xsr.get_script_details(node);
+      creature->add_event_script(details.second, sd);
     }
   }
 }

@@ -10,8 +10,14 @@ Savage Lands v0.3.5 "Tzortinakis"
   when I want to convert 'c' to "c" - std::to_string does integer
   promotion on the char it is provided.
 
-- Implementation of the "steal" script: add a message about the theft,
-  and teleport away.
+- Implementation of the "steal" script: add a message about the theft
+  (or lack of money, if the creature has no money), transfer the
+  currency, and teleport away.
+
+- Support for decision scripts.  These are per-creature scripts that are
+  run prior to the engine's checks for movement, attack, etc - if the
+  script returns true after executing, no further actions are taken.
+  Care should be taken to ensure that creatures don't "double act"!
 
 Savage Lands v0.3.4 "Mudarra"
 - Version declared March 8, 2015.  Version finalized April 5, 2015.
