@@ -10078,6 +10078,10 @@
 					<Script>attacks/steal.lua</Script>
 					<Chance>25</Chance>
 				</AttackScript>
+				<DecisionScript>
+					<Script>decision/thief.lua</Script>
+					<Chance>80</Chance>
+				</DecisionScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="snakeling_assassin">
@@ -14642,6 +14646,10 @@
 					<Script>attacks/steal.lua</Script>
 					<Chance>25</Chance>
 				</AttackScript>
+				<DecisionScript>
+					<Script>decision/thief.lua</Script>
+					<Chance>80</Chance>
+				</DecisionScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="apprentice">

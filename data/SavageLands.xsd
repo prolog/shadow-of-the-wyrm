@@ -364,6 +364,7 @@
 			<xs:element name="DeathScript" type="tns:ScriptDetails" minOccurs="0"/>
 			<xs:element name="AttackScript" type="tns:ScriptDetails" minOccurs="0"/>
 			<xs:element name="ChatScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="DecisionScript" type="tns:ScriptDetails" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
