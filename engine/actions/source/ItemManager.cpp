@@ -149,8 +149,11 @@ ItemPtr ItemManager::create_item(const std::string& item_id, const uint quantity
 
 // Remove an item or reduce the quantity by 1.  First check the equipment, and
 // then the inventory.
-bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string& base_item_id, const int quantity)
+pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string& base_item_id, const int quantity)
 {
+  pair<bool, vector<ItemPtr>> result;
+  result.first = false;
+
   int rem_quantity = quantity;
 
   Equipment& eq  = creature->get_equipment();
@@ -172,26 +175,34 @@ bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string&
         // Subtract the current quantity from what's remaining, and
         // remove the item.
 
-        // Don't transfer to inventory, and swallow the returned ItemPtr
-        remove(creature, eq_pair.first, false);
-
-        // Reduce the number of items appropriately.
-        rem_quantity -= i_quantity;
+        // Don't transfer to inventory
+        ItemPtr item = remove(creature, eq_pair.first, false);
+        result.second.push_back(item);
       }
       else
       {
         // There are more items than are needed for removal.
         // Reduce the quantity accordingly.
-        item->set_quantity(i_quantity - rem_quantity);
+        int existing_item_new_quantity = i_quantity - rem_quantity;
+        int new_item_quantity = rem_quantity;
+
+        ItemPtr new_item = ItemPtr(item->clone());
+        item->set_quantity(existing_item_new_quantity);
+        new_item->set_quantity(new_item_quantity);
+
+        result.second.push_back(new_item);
       }
 
-      return true;
+      result.first = true;
     }
   }
 
-  return inv->remove_by_base_id(base_item_id, rem_quantity);
+  pair<bool, vector<ItemPtr>> inv_items = inv->remove_by_base_id(base_item_id, rem_quantity);
 
-  return false;
+  result.first = inv_items.first;
+  copy(inv_items.second.begin(), inv_items.second.end(), back_inserter(result.second));
+
+  return result;
 }
 
 // Create an item with a certain probability, and add it to the given

@@ -22,8 +22,8 @@ class ItemManager : public IActionManager
 
     // Remove an item by base ID, first checking the creature's equipment, and then
     // the inventory.  Return true if an item with the given ID was removed, or the
-    // quantity reduced by 1.
-    bool remove_item_from_eq_or_inv(CreaturePtr creature, const std::string& base_item_id, const int quantity = 1);
+    // quantity reduced by 1, and also return the vector of items.
+    std::pair<bool, std::vector<ItemPtr>> remove_item_from_eq_or_inv(CreaturePtr creature, const std::string& base_item_id, const int quantity = 1);
     
     static ItemPtr create_item(const std::string& item_id, const uint quantity = 1); // This version assumes that we use the collection on the Game singleton.
     static bool create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_bound, IInventoryPtr inv, const std::string& item_id, const uint quantity = 1);
