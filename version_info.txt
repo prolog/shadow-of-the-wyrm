@@ -17,7 +17,9 @@ Savage Lands v0.3.5 "Tzortinakis"
 - Support for decision scripts.  These are per-creature scripts that are
   run prior to the engine's checks for movement, attack, etc - if the
   script returns true after executing, no further actions are taken.
-  Care should be taken to ensure that creatures don't "double act"!
+  Each individual function (for thieves, dragons, etc) returns an array
+  of functions, and these are executed in order until done, or one of
+  the functions returns true, whichever occurs first.
 
 Savage Lands v0.3.4 "Mudarra"
 - Version declared March 8, 2015.  Version finalized April 5, 2015.
