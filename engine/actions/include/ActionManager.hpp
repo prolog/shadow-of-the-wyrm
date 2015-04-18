@@ -130,10 +130,10 @@ class ActionManager : public ISerializable
 
     bool serialize(std::ostream& ostream) const override;
     bool deserialize(std::istream& istream);
-    
-  protected:
+
     ActionCost get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value);
-    
+
+  protected:    
     CombatManager combat_manager;
     MovementAction movement_action;
     ItemManager item_manager;

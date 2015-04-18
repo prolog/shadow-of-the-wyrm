@@ -33,6 +33,12 @@ bool NullInventory::merge(ItemPtr item)
   return false;
 }
 
+ItemPtr NullInventory::remove_and_return(const string& id)
+{
+  ItemPtr item;
+  return item;
+}
+
 bool NullInventory::remove(const string& id)
 {
   return false;

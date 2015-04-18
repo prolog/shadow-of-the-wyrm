@@ -1,8 +1,11 @@
 #include "CommandKeys.hpp"
 #include "CommandProcessor.hpp"
 #include "Commands.hpp"
+#include "CommandCustomValues.hpp"
+#include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "Log.hpp"
 #include "RNG.hpp"
 #include "TextMessages.hpp"
 
@@ -203,6 +206,22 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       else if (command_name == CommandKeys::EXPERIENCE)
       {
         ac = game.actions.experience(creature);
+      }
+      else if (command_name == CommandKeys::CUSTOM_SCRIPT_COMMAND)
+      {
+        // All the actions have already been done.
+        // Get the custom action cost value, and then use it to
+        // update the action coordinator appropriately.
+        string custom_acv = command->get_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_ACTION_COST_VALUE);
+
+        if (custom_acv.empty())
+        {
+          Log::instance().error("Custom script command indicated, but no action cost value provided!");
+        }
+        else
+        {
+          ac = game.actions.get_action_cost(creature, String::to_int(custom_acv));
+        }
       }
     }
   }

@@ -417,3 +417,14 @@ ExperienceCommand::ExperienceCommand(int key)
 ExperienceCommand::~ExperienceCommand()
 {
 }
+
+// A custom script command that uses the Lua API to interact with the
+// engine
+CustomScriptCommand::CustomScriptCommand()
+: Command(CommandKeys::CUSTOM_SCRIPT_COMMAND, '?')
+{
+}
+
+CustomScriptCommand::~CustomScriptCommand()
+{
+}
