@@ -16,6 +16,7 @@
 #include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PickupAction.hpp"
 #include "PlayerConstants.hpp"
 #include "Quests.hpp"
 #include "ReligionManager.hpp"
@@ -163,6 +164,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "teleport", teleport);
   lua_register(L, "get_creature_description", get_creature_description);
   lua_register(L, "transfer_item", transfer_item);
+  lua_register(L, "creature_tile_has_item", creature_tile_has_item);
+  lua_register(L, "pick_up_item", pick_up_item);
 }
 
 // Lua API helper functions
@@ -1868,6 +1871,80 @@ int transfer_item(lua_State* ls)
   }
 
   lua_pushboolean(ls, item_transferred);
+  return 1;
+}
+
+int creature_tile_has_item(lua_State* ls)
+{
+  bool has_item = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string object_base_id = lua_tostring(ls, 2);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+    CreaturePtr creature = get_creature(creature_id);
+
+    TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
+
+    IInventoryPtr inv = tile->get_items();
+    ItemPtr item = inv->get_from_base_id(object_base_id);
+
+    has_item = (item != nullptr);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to creature_tile_has_item");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, static_cast<int>(has_item));
+  return 1;
+}
+
+int pick_up_item(lua_State* ls)
+{
+  int action_cost = 0;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string object_base_id = lua_tostring(ls, 2);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+    CreaturePtr creature = get_creature(creature_id);
+
+    TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
+
+    IInventoryPtr inv = tile->get_items();
+    ItemPtr item = inv->get_from_base_id(object_base_id);
+
+    if (item != nullptr)
+    {
+      item = inv->remove_and_return(item->get_id());
+
+      if (item != nullptr)
+      {
+        IInventoryPtr creature_inv = creature->get_inventory();
+        if (!creature_inv->merge(item))
+        {
+          // Add to the end of the inventory
+          creature_inv->add(item);
+          action_cost = 1;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to pick_up_item");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, action_cost);
   return 1;
 }
 

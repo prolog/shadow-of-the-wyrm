@@ -56,6 +56,7 @@ const string CommandKeys::OFFER          = "OFFER";
 const string CommandKeys::SKIN           = "SKIN";
 const string CommandKeys::PIETY          = "PIETY";
 const string CommandKeys::EXPERIENCE     = "EXPERIENCE";
+const string CommandKeys::CUSTOM_SCRIPT_COMMAND = "CUSTOM_SCRIPT_COMMAND";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";
@@ -65,7 +66,6 @@ const string CommandKeys::ATTACK_EAST      = "ATTACK_EAST";
 const string CommandKeys::ATTACK_SOUTHWEST = "ATTACK_SOUTHWEST";
 const string CommandKeys::ATTACK_SOUTH     = "ATTACK_SOUTH";
 const string CommandKeys::ATTACK_SOUTHEAST = "ATTACK_SOUTHEAST";
-
 
 bool CommandKeys::is_movement_type_key(const string& key)
 {

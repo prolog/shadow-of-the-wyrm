@@ -17,11 +17,15 @@ const string DecisionScript::DECIDE_FUNCTION_NAME = "decide";
 // Execute the decide script.
 // Return true if the script executed successfully and returns true;
 // false otherwise.
-bool DecisionScript::execute(ScriptEngine& se, const string& decision_script, CreaturePtr creature)
+int DecisionScript::execute(ScriptEngine& se, const string& decision_script, CreaturePtr creature)
 {
   // By default, the return value will be false.
   // It only gets set to true if the script execution returns true.
-  bool result = false;
+  int acv = 0;
+
+  // Set up the decision script - the creature's decision script will, as a
+  // part of its execution, set up all the values required for the 
+  // decide function to run successfully.
   se.execute(decision_script);
 
   string creature_base_id;
@@ -51,16 +55,16 @@ bool DecisionScript::execute(ScriptEngine& se, const string& decision_script, Cr
   else
   {
     // Parse the boolean return value.
-    if (!lua_isboolean(L, -1))
+    if (!lua_isnumber(L, -1))
     {
-      Log::instance().error("Return value from call to Lua function " + DECIDE_FUNCTION_NAME + " is not boolean!");
+      Log::instance().error("Return value from call to Lua function " + DECIDE_FUNCTION_NAME + " is not an action cost value!");
     }
     else
     {
-      result = (lua_toboolean(L, -1) != 0);
+      acv = (lua_toboolean(L, -1) != 0);
     }
   }
 
-  return result;
+  return acv;
 }
 

@@ -16,6 +16,25 @@ Command::~Command()
 {
 }
 
+void Command::set_custom_value(const string& key, const string& value)
+{
+  custom_values[key] = value;
+}
+
+string Command::get_custom_value(const string& key) const
+{
+  string val;
+
+  auto c_it = custom_values.find(key);
+
+  if (c_it != custom_values.end())
+  {
+    val = c_it->second;
+  }
+
+  return val;
+}
+
 string Command::get_name() const
 {
   return command_name;

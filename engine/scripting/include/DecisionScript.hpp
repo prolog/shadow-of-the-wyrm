@@ -13,7 +13,7 @@ class ScriptEngine;
 class DecisionScript
 {
   public:
-    bool execute(ScriptEngine& se, const std::string& decision_script, CreaturePtr deciding_creature);
+    int execute(ScriptEngine& se, const std::string& decision_script, CreaturePtr deciding_creature);
 
   protected:
     static const std::string DECIDE_MODULE_NAME;

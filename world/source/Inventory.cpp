@@ -103,6 +103,28 @@ bool Inventory::merge(ItemPtr item)
   return false;
 }
 
+ItemPtr Inventory::remove_and_return(const string& id)
+{
+  ItemPtr item;
+
+  if (items.size() > 0)
+  {
+    for (list<ItemPtr>::iterator item_it = items.begin(); item_it != items.end(); item_it++)
+    {
+      ItemPtr current_item = *item_it;
+
+      if (current_item && (current_item->get_id() == id))
+      {
+        item = current_item;
+        items.erase(item_it);
+        break;
+      }
+    }
+  }
+
+  return item;
+}
+
 bool Inventory::remove(const string& id)
 {
   if (items.size() > 0)

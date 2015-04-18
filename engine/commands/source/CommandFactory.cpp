@@ -12,6 +12,8 @@ CommandFactory::~CommandFactory()
 {
 }
 
+// Omitted: the custom script command, which gets instantiated
+// only through the AI process, and is not a keyboard-based command.
 CommandPtr CommandFactory::create(const int key, const string& command_name)
 {
   CommandPtr command;

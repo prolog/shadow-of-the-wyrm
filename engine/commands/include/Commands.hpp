@@ -290,3 +290,10 @@ class ExperienceCommand : public Command
     ExperienceCommand(int key);
     ~ExperienceCommand();
 };
+
+class CustomScriptCommand : public Command
+{
+  public:
+    CustomScriptCommand();
+    ~CustomScriptCommand();
+};
