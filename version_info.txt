@@ -21,6 +21,11 @@ Savage Lands v0.3.5 "Tzortinakis"
   of functions, and these are executed in order until done, or one of
   the functions returns true, whichever occurs first.
 
+- Bug fixes:
+
+  - Drop action wasn't properly using the action cost value, resulting
+    in a free action for the player.
+
 Savage Lands v0.3.4 "Mudarra"
 - Version declared March 8, 2015.  Version finalized April 5, 2015.
 
