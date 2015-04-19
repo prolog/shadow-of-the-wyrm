@@ -36,7 +36,7 @@ ActionCostValue DropAction::drop(CreaturePtr creature, ActionManager * const am)
       }
       else // Item selected
       {
-        do_drop(creature, game.get_current_map(), item_to_drop);
+        action_cost_value = do_drop(creature, game.get_current_map(), item_to_drop);
       }      
     }
   }
