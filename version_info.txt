@@ -21,6 +21,10 @@ Savage Lands v0.3.5 "Tzortinakis"
   of functions, and these are executed in order until done, or one of
   the functions returns true, whichever occurs first.
 
+- Updated NPC AI so that even when hostile, moving towards a particular
+  target occurs a certain percentage of the time.  This allows for
+  additional actions (e.g. via scripts).
+
 - Bug fixes:
 
   - Drop action wasn't properly using the action cost value, resulting

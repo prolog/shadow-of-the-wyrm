@@ -25,5 +25,7 @@ class NPCDecisionStrategy : public DecisionStrategy
 
     virtual CommandPtr get_decision_for_inventory(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) = 0;
     virtual CommandPtr get_decision_for_equipment(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) = 0; 
-    virtual CommandPtr get_decision_for_tile_selection(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) = 0;    
+    virtual CommandPtr get_decision_for_tile_selection(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) = 0;
+
+    static const int PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET;
 };
