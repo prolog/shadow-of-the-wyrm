@@ -16,8 +16,7 @@ function decide(original_id, creature_id)
   if (creature_decision_fn ~= nil) then
     local decision_fns = creature_decision_fn(creature_id)
 
-    log(CLOG_ERROR, "Type of decision_fns is " .. type(decision_fns))
-    log(CLOG_ERROR, "Evaluating " .. table.getn(decision_fns) .. " decision fns")
+    log(CLOG_DEBUG, "Evaluating " .. table.getn(decision_fns) .. " decision fns for creature base ID " .. original_id)
 
     -- Each creature decision function returns an array of decision
     -- functions to be checked in order, stopping if any returns true.
