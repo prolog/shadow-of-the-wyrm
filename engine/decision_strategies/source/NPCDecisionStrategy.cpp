@@ -12,6 +12,8 @@ using std::set;
 using std::string;
 using std::vector;
 
+const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
+
 NPCDecisionStrategy::NPCDecisionStrategy(ControllerPtr new_controller)
 : DecisionStrategy(new_controller)
 {
@@ -150,7 +152,10 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
           }
           else
           {
-            if (can_move())
+            // If the creature is hostile, and the target is generally far away,
+            // advance towards the target, but only do so with a certain
+            // probability, to allow for other actions (script decisions, etc).
+            if (can_move() && RNG::percent_chance(PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET))
             {
               SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SearchType::SEARCH_TYPE_UNIFORM_COST, this_cr); // JCD FIXME WAS BFS...
               Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat)); 

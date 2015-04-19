@@ -1,6 +1,8 @@
+module(..., package.seeall)
+
 -- Attempt to scavenge any currency on the current tile.  Returns the
 -- action cost if this was done, 0 otherwise.
-local function take_currency(creature_id)
+function take_currency(creature_id)
   local action_cost = 0
   local currency_id = "_currency"
 
