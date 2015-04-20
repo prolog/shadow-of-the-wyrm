@@ -1928,13 +1928,16 @@ int pick_up_item(lua_State* ls)
 
       if (item != nullptr)
       {
-        IInventoryPtr creature_inv = creature->get_inventory();
-        if (!creature_inv->merge(item))
+        // Pick up the item, adding a message based on whether the item
+        // went into the equipment or inventory, and from there, whether
+        // the creature is the player, the player is blind, and so on.
+        PickupAction pa;
+        if (!pa.merge_into_equipment(creature, item))
         {
-          // Add to the end of the inventory
-          creature_inv->add(item);
-          action_cost = 1;
+          pa.merge_or_add_into_inventory(creature, item);
         }
+
+        action_cost = 1;
       }
     }
   }

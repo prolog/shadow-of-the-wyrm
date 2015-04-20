@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "Inventory.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MapUtils.hpp"
@@ -122,18 +123,38 @@ void PickupAction::handle_empty_tile_pickup(CreaturePtr creature)
 // If the item can't be merged into the equipment, return false.
 bool PickupAction::merge_into_equipment(CreaturePtr creature, ItemPtr item)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-  
   if (creature)
   {
     Equipment& equipment = creature->get_equipment();
     
     if (equipment.merge(item))
     {
+      Game& game = Game::instance();
+      CreaturePtr player = game.get_current_player();
+
+      // As all creatures can pick up items, check to see if:
+      // - player is blind
+      // - player or monster is picking up.
+      //
+      // If the player is blind, only add a message if it is the player
+      // picking up an item.  Otherwise, always add a message.
       CurrentCreatureAbilities cca;
-      string item_merged_into_equipment = TextMessages::get_item_pick_up_and_merge_message(!cca.can_see(creature), item);
-      manager.add_new_message(item_merged_into_equipment);
-      manager.send();
+      bool player_blind = !cca.can_see(player);
+      string item_merged_into_equipment;
+
+      // Only broadcast if it's the player, or the monster's in range.
+      IMessageManager& manager = MessageManagerFactory::instance(creature, GameUtils::is_player_among_creatures(creature, player));
+
+      if (!player_blind || (player_blind && creature->get_is_player()))
+      {
+        item_merged_into_equipment = TextMessages::get_item_pick_up_and_merge_message(player_blind, creature, item);
+      }
+
+      if (!item_merged_into_equipment.empty())
+      {
+        manager.add_new_message(item_merged_into_equipment);
+        manager.send();
+      }
       
       return true;
     }
@@ -146,8 +167,6 @@ bool PickupAction::merge_into_equipment(CreaturePtr creature, ItemPtr item)
 // add the item to the inventory.
 bool PickupAction::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr item)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-
   if (creature)
   {
     IInventoryPtr creature_inv = creature->get_inventory();
@@ -156,17 +175,28 @@ bool PickupAction::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr ite
       // Add to the end of the inventory
       creature_inv->add(item);
     }
-    
+
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+    CurrentCreatureAbilities cca;
+    bool player_blind = !cca.can_see(player);
+
+    // Only broadcast if it's the player, or the monster's in range.
+    IMessageManager& manager = MessageManagerFactory::instance(creature, GameUtils::is_player_among_creatures(creature, player));
+
     // Display a message if necessary
-    if (creature->get_is_player())
+    string pick_up_message;
+    if (!player_blind || (player_blind && creature->get_is_player()))
     {
-      CurrentCreatureAbilities cca;
-      string pick_up_message = TextMessages::get_item_pick_up_message(!cca.can_see(creature), item);
-      
-      manager.add_new_message(pick_up_message);
-      manager.send();        
+      pick_up_message = TextMessages::get_item_pick_up_message(player_blind, creature, item);
     }
-    
+
+    if (!pick_up_message.empty())
+    {
+      manager.add_new_message(pick_up_message);
+      manager.send();
+    }
+
     return true;
   }
   

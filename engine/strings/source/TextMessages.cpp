@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
+#include "CreatureDescriber.hpp"
 #include "EquipmentTextKeys.hpp"
 #include "ItemDescriberFactory.hpp"
 #include "TextMessages.hpp"
@@ -23,8 +24,10 @@ const string TextMessages::WELCOME_MESSAGE                    = "WELCOME_MESSAGE
 const string TextMessages::WELCOME_BACK_MESSAGE               = "WELCOME_BACK_MESSAGE";
 const string TextMessages::DUMPING_CHARACTER_MESSAGE          = "DUMPING_CHARACTER_MESSAGE";
 const string TextMessages::ITEM_DROP_MESSAGE                  = "ITEM_DROP_MESSAGE";
-const string TextMessages::ITEM_PICK_UP_MESSAGE               = "ITEM_PICK_UP_MESSAGE";
-const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE     = "ITEM_PICK_UP_AND_MERGE_MESSAGE";
+const string TextMessages::ITEM_PICK_UP_MESSAGE_PLAYER        = "ITEM_PICK_UP_MESSAGE_PLAYER";
+const string TextMessages::ITEM_PICK_UP_MESSAGE_MONSTER       = "ITEM_PICK_UP_MESSAGE_MONSTER";
+const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER = "ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER";
+const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER = "ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER";
 const string TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_DESCRIPTION_MESSAGE";
 const string TextMessages::CURRENCY_MESSAGE_SINGLE            = "CURRENCY_MESSAGE_SINGLE";
 const string TextMessages::CURRENCY_MESSAGE_MULTIPLE          = "CURRENCY_MESSAGE_MULTIPLE";
@@ -294,21 +297,45 @@ string TextMessages::get_item_drop_message(const bool blind, ItemPtr item)
   return item_message;
 }
 
-string TextMessages::get_item_pick_up_message(const bool blind, ItemPtr item)
+string TextMessages::get_item_pick_up_message(const bool player_blind, CreaturePtr creature, ItemPtr item)
 {
-  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
-  
-  string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE);
-  boost::replace_first(item_message, "%s", id->describe_usage());
+  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(player_blind, item);
+  string item_message;
+
+  if (creature->get_is_player())
+  {
+    item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE_PLAYER);
+  }
+  else
+  {
+    item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE_MONSTER);
+    CreatureDescriber cd(creature, creature);
+    boost::replace_first(item_message, "%s1", cd.describe());
+  }
+
+  boost::replace_first(item_message, "%s2", id->describe_usage());
+  item_message[0] = toupper(item_message[0]);
   return item_message;
 }
 
-string TextMessages::get_item_pick_up_and_merge_message(const bool blind, ItemPtr item)
+string TextMessages::get_item_pick_up_and_merge_message(const bool player_blind, CreaturePtr creature, ItemPtr item)
 {
-  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
+  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(player_blind, item);
+  string item_message;
 
-  string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE);
-  boost::replace_first(item_message, "%s", id->describe_usage());
+  if (creature->get_is_player())
+  {
+    item_message = StringTable::get(TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER);
+  }
+  else
+  {
+    CreatureDescriber cd(creature, creature);
+    item_message = StringTable::get(TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER);
+    boost::replace_first(item_message, "%s1", cd.describe());
+  }
+
+  boost::replace_first(item_message, "%s2", id->describe_usage());
+  item_message[0] = toupper(item_message[0]);
   return item_message;
 }
 

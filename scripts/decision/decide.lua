@@ -23,6 +23,8 @@ function decide(original_id, creature_id)
     for i, d_fn in ipairs(decision_fns) do
       result = d_fn(creature_id)
 
+      log(CLOG_DEBUG, "Decision function returned action cost value: " .. result)
+
       -- If the current decision function fired off successfully, stop
       -- iterating over the list of functions, and return true.
       if result > 0 then

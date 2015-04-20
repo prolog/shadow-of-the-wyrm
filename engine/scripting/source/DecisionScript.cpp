@@ -54,14 +54,14 @@ int DecisionScript::execute(ScriptEngine& se, const string& decision_script, Cre
   }
   else
   {
-    // Parse the boolean return value.
+    // Parse the integer return value.
     if (!lua_isnumber(L, -1))
     {
       Log::instance().error("Return value from call to Lua function " + DECIDE_FUNCTION_NAME + " is not an action cost value!");
     }
     else
     {
-      acv = (lua_toboolean(L, -1) != 0);
+      acv = (lua_tointeger(L, -1) != 0);
     }
   }
 

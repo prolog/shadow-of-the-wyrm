@@ -25,6 +25,10 @@ Savage Lands v0.3.5 "Tzortinakis"
   target occurs a certain percentage of the time.  This allows for
   additional actions (e.g. via scripts).
 
+- Updated the pickup action so that several of its functions can be
+  called from script, and updated the pickup message functions to handle
+  items being picked up by any creature, not just the player.
+
 - Bug fixes:
 
   - Drop action wasn't properly using the action cost value, resulting
