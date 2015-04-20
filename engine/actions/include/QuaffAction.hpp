@@ -15,8 +15,9 @@ class QuaffAction : public IActionManager
     void explode_potion(CreaturePtr original_attacker, CreaturePtr creature_by_exploding_potion, PotionPtr potion);
     void quaff_potion(CreaturePtr creature, PotionPtr potion, CreaturePtr caster, const std::string& message);
 
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
   protected:
     Spell create_potion_spell(PotionPtr potion);
     void add_quaff_message(CreaturePtr creature, const std::string& quaff_message);
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

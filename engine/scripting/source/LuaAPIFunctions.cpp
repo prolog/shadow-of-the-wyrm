@@ -1937,7 +1937,7 @@ int pick_up_item(lua_State* ls)
           pa.merge_or_add_into_inventory(creature, item);
         }
 
-        action_cost = 1;
+        action_cost = pa.get_action_cost_value(creature);
       }
     }
   }

@@ -42,14 +42,14 @@ class TileSelectionAction : public IActionManager, ISerializable
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
   protected:
     friend class ActionManager;
     friend class RangedCombatAction;
     friend class SL_Engine_Actions_TileSelectionAction; // test fixture
     TileSelectionAction();
 
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
-    
     // The command factory/map
     CommandFactoryPtr command_factory;
     KeyboardCommandMapPtr kb_command_map;

@@ -9,7 +9,9 @@ class OfferAction : public IActionManager
 {
   public:
     ActionCostValue offer(CreaturePtr creature, ActionManager * const am);
-    
+
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
   protected:
     friend class ActionManager;
     OfferAction();
@@ -24,6 +26,4 @@ class OfferAction : public IActionManager
 
     // Returns the increase in piety as the result of the sacrifice.
     int adjust_creature_piety(CreaturePtr creature, const DeityDecisionImplications& ddi);
-
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

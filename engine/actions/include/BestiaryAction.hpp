@@ -7,7 +7,9 @@ class BestiaryAction : public IActionManager
   public:
     ActionCostValue display_creature_information(CreaturePtr creature, const std::string& creature_search_text) const;
     
-  protected:
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
+protected:
     friend class ActionManager;
     BestiaryAction();
 
@@ -16,8 +18,6 @@ class BestiaryAction : public IActionManager
     CreaturePtr get_bestiary_creature(const std::string& creature_search_text) const;
 
     // Display the bestiary details.
-    void display_bestiary_information(CreaturePtr beast) const;
-    
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+    void display_bestiary_information(CreaturePtr beast) const;    
 };
 
