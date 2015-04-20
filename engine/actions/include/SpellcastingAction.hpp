@@ -8,7 +8,9 @@ class SpellcastingAction : public IActionManager
 {
   public:
     ActionCostValue cast_spell(CreaturePtr creature) const;
-    
+
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
   protected:
     friend class ActionManager;
     SpellcastingAction();
@@ -39,6 +41,4 @@ class SpellcastingAction : public IActionManager
 
     // Update the spell's bonus information.
     void update_spell_bonus(CreaturePtr caster, const Spell& spell) const;
-
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

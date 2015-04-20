@@ -7,6 +7,8 @@ class SkinAction : public IActionManager
   public:
     ActionCostValue skin(CreaturePtr creature, ActionManager * const am);
     
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
   protected:
     friend class ActionManager;
     SkinAction();
@@ -18,6 +20,4 @@ class SkinAction : public IActionManager
 
     ActionCostValue attempt_skin(CreaturePtr creature, ItemPtr corpse, TilePtr tile);
     void create_skin_and_add_to_tile(CreaturePtr creature, ItemPtr corpse, TilePtr tile);
-
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

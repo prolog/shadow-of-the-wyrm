@@ -6,10 +6,10 @@ class QuestListAction : public IActionManager
 {
   public:
     ActionCostValue quest_list() const;
-    
+
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
   protected:
     friend class ActionManager;
-    QuestListAction();
-    
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+    QuestListAction();    
 };

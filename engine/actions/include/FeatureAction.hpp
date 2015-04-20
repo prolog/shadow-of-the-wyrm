@@ -23,6 +23,8 @@ class FeatureAction : public IActionManager
     // for a particular creature" - that functionality is encapsulated by handle(CreaturePtr).
     bool handle(TilePtr tile, FeaturePtr feature, CreaturePtr creature, const bool feature_tile_has_creature);
 
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
   protected:
     // If the creature is the player, inform them that there are no features
     // to be applied.
@@ -33,7 +35,5 @@ class FeatureAction : public IActionManager
     // Try to apply a terrain feature in a certain direction, when multiple
     // options are available.
     bool apply_multiple_options(CreaturePtr creature, const std::map<Direction, TilePtr>& direction_map);
-
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };
 

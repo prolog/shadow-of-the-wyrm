@@ -8,6 +8,8 @@ class RangedCombatAction : public IActionManager
     bool operator==(const RangedCombatAction& rca) const;
     ActionCostValue fire_missile(CreaturePtr creature);
 
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
   protected:
     friend class ActionManager;
     RangedCombatAction();
@@ -39,6 +41,4 @@ class RangedCombatAction : public IActionManager
     
     // Check to see if the creature has a ranged combat target selected.
     bool has_ranged_combat_target(CreaturePtr creature);
-    
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

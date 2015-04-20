@@ -15,9 +15,9 @@ class InventoryManager : public IActionManager
     // Do the actual managing of the inventory
     ItemPtr manage_inventory(IInventoryPtr inv, const std::list<IItemFilterPtr>& display_filter_list, const bool inventory_is_read_only);
 
-  protected:
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
+  protected:
     DisplayPtr display;
     CreaturePtr creature;
     

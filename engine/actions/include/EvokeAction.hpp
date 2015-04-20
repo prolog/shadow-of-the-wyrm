@@ -10,6 +10,8 @@ class EvokeAction : public IActionManager
   public:
     ActionCostValue evoke(CreaturePtr creature, ActionManager * const am);
 
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
   protected:
     ActionCostValue evoke_wand(CreaturePtr creature, ActionManager * const am, WandPtr wand);
     void add_evocation_message(CreaturePtr creature, WandPtr wand, const ItemIdentifier& item_id);
@@ -19,6 +21,4 @@ class EvokeAction : public IActionManager
     void name_wand_if_identified(WandPtr wand, const bool wand_identified, const bool wand_originally_identified, const ItemIdentifier& item_id) const;
 
     std::pair<bool, Direction> get_evocation_direction(CreaturePtr creature);
-
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };
