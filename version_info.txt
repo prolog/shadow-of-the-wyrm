@@ -29,6 +29,8 @@ Savage Lands v0.3.5 "Tzortinakis"
   called from script, and updated the pickup message functions to handle
   items being picked up by any creature, not just the player.
 
+- Added zlib as a project dependency so that savefiles can be compressed.
+
 - Bug fixes:
 
   - Drop action wasn't properly using the action cost value, resulting
