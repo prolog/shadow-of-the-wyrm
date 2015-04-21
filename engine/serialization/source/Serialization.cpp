@@ -59,11 +59,26 @@ void Serialization::save(CreaturePtr creature)
     // to get the details for the list of save files.
     MessageBuffer mb = MessageManagerFactory::instance().get_message_buffer();
     mb.serialize(stream);
+
+    // This should always be the last function called, to ensure that the
+    // finished file is compressed as expected.
+    bool use_compression = String::to_bool(game.get_settings_ref().get_setting("savefile_compression"));
+
+    if (use_compression)
+    {
+      compress_savefile(filename);
+    }
   }
   catch(...)
   {
     // JCD FIXME: Custom exception here
   }
+}
+
+// Compress the savefile using zlib.
+void Serialization::compress_savefile(const string& filename)
+{
+  // ...
 }
 
 // Restore the game state from a particular file
@@ -72,6 +87,16 @@ SerializationReturnCode Serialization::load(const string& filename)
   Game& game = Game::instance();
   ifstream stream;
 
+  bool use_compression = String::to_bool(game.get_settings_ref().get_setting("savefile_compression"));
+
+  // First, decompress the savefile, so that it's ready to be read in
+  // as usual.
+  if (use_compression)
+  {
+    decompress_savefile(filename);
+  }
+
+  // Once the savefile is decompressed, read in the save details.
   stream.open(filename, ios::in | ios::binary);
 
   Metadata meta;
@@ -93,6 +118,12 @@ SerializationReturnCode Serialization::load(const string& filename)
   }
 
   return SerializationReturnCode::SERIALIZATION_OK;
+}
+
+// Decompress the savefile using zlib.
+void Serialization::decompress_savefile(const string& filename)
+{
+  // ...
 }
 
 bool Serialization::delete_savefile(const string& filename)
