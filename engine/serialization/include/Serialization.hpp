@@ -19,5 +19,8 @@ class Serialization
 
   protected:
     static std::pair<bool, std::string> get_save_file_availability_and_synopsis(const std::string& file);
+
+    static void compress_savefile(const std::string& filename);
+    static void decompress_savefile(const std::string& filename);
 };
 

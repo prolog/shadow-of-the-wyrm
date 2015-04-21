@@ -31,6 +31,9 @@ Savage Lands v0.3.5 "Tzortinakis"
 
 - Added zlib as a project dependency so that savefiles can be compressed.
 
+- Savefiles can now be optionally compressed after the initial write to
+  disk - this is controlled by the "savefile_compression" ini setting.
+
 - Bug fixes:
 
   - Drop action wasn't properly using the action cost value, resulting
