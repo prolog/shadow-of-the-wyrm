@@ -35,7 +35,8 @@ void Serialization::save(CreaturePtr creature)
       name = creature->get_name();
     }
     
-    Metadata meta;
+    CreaturePtr player = game.get_current_player();
+    Metadata meta(player);
 
     // Get the user's name
     string user_name = meta.get_user_name();

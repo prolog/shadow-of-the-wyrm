@@ -1,5 +1,6 @@
 #pragma once
 #include "ISerializable.hpp"
+#include "Creature.hpp"
 
 // Contains information related to the user, version, compiler,
 // architecture, and other details that are not actually game data,
@@ -7,6 +8,8 @@
 class Metadata : public ISerializable
 {
   public:
+    Metadata();
+    Metadata(CreaturePtr player);
     bool operator==(const Metadata& meta) const;
 
     std::string get_user_name() const;
@@ -20,5 +23,7 @@ class Metadata : public ISerializable
 
   protected:
     ClassIdentifier internal_class_identifier() const override;
+
+    CreaturePtr player;
 };
 

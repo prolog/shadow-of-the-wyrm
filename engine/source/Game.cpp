@@ -705,11 +705,6 @@ bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
 
-  // Write a synopsis about the player's character, to be used when viewing
-  // the list of saved games.
-  CreatureDescriber cd(get_current_player(), get_current_player());
-  Serialize::write_string(stream, cd.describe_for_save_file());
-
   // Ignore keep_playing
   Serialize::write_bool(stream, reload_game_loop);
 
@@ -834,8 +829,6 @@ bool Game::serialize(ostream& stream) const
 bool Game::deserialize(istream& stream)
 {
   Log::instance().trace("Game::deserialize - start");
-
-  Serialize::consume_string(stream); // character synopsis
 
   // Ignore keep_playing
   Serialize::read_bool(stream, reload_game_loop);
