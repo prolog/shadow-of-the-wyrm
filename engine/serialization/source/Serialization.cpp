@@ -3,6 +3,9 @@
 #include <boost/filesystem.hpp>
 #include <boost/functional/hash/hash.hpp>
 #include <boost/regex.hpp>
+//#include <boost/iostreams/filtering_streambuf.hpp>
+//#include <boost/iostreams/copy.hpp>
+//#include <boost/iostreams/filter/zlib.hpp>
 #include "global_prototypes.hpp"
 #include "CompilationDetails.hpp"
 #include "Conversion.hpp"

@@ -29,7 +29,10 @@ Savage Lands v0.3.5 "Tzortinakis"
   called from script, and updated the pickup message functions to handle
   items being picked up by any creature, not just the player.
 
-- Added zlib as a project dependency so that savefiles can be compressed.
+- Added zlib-1.2.8 as a project dependency so that savefiles can be 
+  compressed.
+
+- Updated Boost from 1.55 to 1.58.
 
 - Savefiles can now be optionally compressed after the initial write to
   disk - this is controlled by the "savefile_compression" ini setting.
