@@ -1,11 +1,19 @@
+// Needed for zlib
+#if defined(MSDOS) || defined(OS2) || defined(WIN32) || defined(__CYGWIN__)
+#  include <fcntl.h>
+#  include <io.h>
+#  define SET_BINARY_MODE(file) setmode(fileno(file), O_BINARY)
+#else
+#  define SET_BINARY_MODE(file)
+#endif
+
+#include "zlib.h"
+
 #include <fstream>
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/functional/hash/hash.hpp>
 #include <boost/regex.hpp>
-//#include <boost/iostreams/filtering_streambuf.hpp>
-//#include <boost/iostreams/copy.hpp>
-//#include <boost/iostreams/filter/zlib.hpp>
 #include "global_prototypes.hpp"
 #include "CompilationDetails.hpp"
 #include "Conversion.hpp"
@@ -18,6 +26,8 @@
 #include "RNG.hpp"
 #include "Serialization.hpp"
 #include "Serialize.hpp"
+
+#define CHUNK 16384
 
 using namespace std;
 using namespace boost::algorithm;
@@ -47,31 +57,29 @@ void Serialization::save(CreaturePtr creature)
 
     // Name the file and do the appropriate setup
     ofstream stream(filename, ios::binary | ios::out);
+
+    // Create a stream for the metadata (always uncompressed).
+    ostringstream meta_stream;
+
+    // Create a stream for the game data (can be compressed or uncompressed).
+    ostringstream game_stream;
         
     // Save the state and game data:
 
     // Save the metadata
-    meta.serialize(stream);
+    meta.serialize(meta_stream);
 
-    // Save the game and RNG data
-    game.serialize(stream);
-    Serialize::write_uint(stream, RNG::get_seed());
-
-    // Save the message buffer.  Needs to be last because the first thing
-    // the game saves is the player's name, and we need that to be the
-    // first object read after the metadata to efficiently peek at files
-    // to get the details for the list of save files.
+    // Save the game, RNG data, message buffer.
+    game.serialize(game_stream);
+    Serialize::write_uint(game_stream, RNG::get_seed());
     MessageBuffer mb = MessageManagerFactory::instance().get_message_buffer();
-    mb.serialize(stream);
+    mb.serialize(game_stream);
 
     // This should always be the last function called, to ensure that the
     // finished file is compressed as expected.
     bool use_compression = String::to_bool(game.get_settings_ref().get_setting("savefile_compression"));
 
-    if (use_compression)
-    {
-      compress_savefile(filename);
-    }
+    write_savefile(stream, meta_stream, game_stream, use_compression);
   }
   catch(...)
   {
@@ -79,10 +87,10 @@ void Serialization::save(CreaturePtr creature)
   }
 }
 
-// Compress the savefile using zlib.
-void Serialization::compress_savefile(const string& filename)
+void Serialization::write_savefile(ofstream& file_stream, const ostringstream& meta_stream, const ostringstream& game_stream, const bool use_compression)
 {
-  // ...
+  file_stream << meta_stream.str();
+  file_stream << game_stream.str();
 }
 
 // Restore the game state from a particular file
@@ -92,13 +100,6 @@ SerializationReturnCode Serialization::load(const string& filename)
   ifstream stream;
 
   bool use_compression = String::to_bool(game.get_settings_ref().get_setting("savefile_compression"));
-
-  // First, decompress the savefile, so that it's ready to be read in
-  // as usual.
-  if (use_compression)
-  {
-    decompress_savefile(filename);
-  }
 
   // Once the savefile is decompressed, read in the save details.
   stream.open(filename, ios::in | ios::binary);
@@ -122,12 +123,6 @@ SerializationReturnCode Serialization::load(const string& filename)
   }
 
   return SerializationReturnCode::SERIALIZATION_OK;
-}
-
-// Decompress the savefile using zlib.
-void Serialization::decompress_savefile(const string& filename)
-{
-  // ...
 }
 
 bool Serialization::delete_savefile(const string& filename)
