@@ -49,6 +49,7 @@ void Serialization::save(CreaturePtr creature)
     }
     
     CreaturePtr player = game.get_current_player();
+
     Metadata meta(player);
 
     // Get the user's name
@@ -69,6 +70,9 @@ void Serialization::save(CreaturePtr creature)
     // Save the metadata
     meta.serialize(meta_stream);
 
+    bool use_compression = String::to_bool(game.get_settings_ref().get_setting("savefile_compression"));
+    Serialize::write_bool(meta_stream, use_compression);
+
     // Save the game, RNG data, message buffer.
     game.serialize(game_stream);
     Serialize::write_uint(game_stream, RNG::get_seed());
@@ -77,8 +81,6 @@ void Serialization::save(CreaturePtr creature)
 
     // This should always be the last function called, to ensure that the
     // finished file is compressed as expected.
-    bool use_compression = String::to_bool(game.get_settings_ref().get_setting("savefile_compression"));
-
     write_savefile(stream, meta_stream, game_stream, use_compression);
   }
   catch(...)
@@ -109,6 +111,11 @@ SerializationReturnCode Serialization::load(const string& filename)
   uint rng_seed = 0;
 
   meta.deserialize(stream);
+
+  // Get the serialized value to determine if savefile compression is used
+  // for the game data.
+  Serialize::read_bool(stream, use_compression);
+
   game.deserialize(stream);
   Serialize::read_uint(stream, rng_seed);
 
