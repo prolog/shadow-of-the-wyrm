@@ -19,7 +19,7 @@ class Serialization
 
   protected:
     static std::pair<bool, std::string> get_save_file_availability_and_synopsis(const std::string& file);
-    static void write_savefile(std::ofstream& file_stream, std::ostringstream& gamedata_stream, const bool use_compression);
+    static void write_savefile(std::ofstream& file_stream, std::ostringstream& gamedata_stream, const bool use_compression, const int compression_level);
     static void read_savefile(std::ifstream& stream);
     static void read_game_stream(std::istream& stream);
 };

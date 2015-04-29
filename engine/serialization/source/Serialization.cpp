@@ -73,7 +73,7 @@ void Serialization::save(CreaturePtr creature)
 
     // Write the game data, either compressed or uncompressed, depending on the
     // settings in the ini file.
-    write_savefile(stream, game_stream, use_compression);
+    write_savefile(stream, game_stream, use_compression, compression_level);
   }
   catch(...)
   {
@@ -81,7 +81,7 @@ void Serialization::save(CreaturePtr creature)
   }
 }
 
-void Serialization::write_savefile(ofstream& file_stream, ostringstream& game_stream, const bool use_compression)
+void Serialization::write_savefile(ofstream& file_stream, ostringstream& game_stream, const bool use_compression, const int compression_level)
 {
   int ret_code = Z_ERRNO;
 
@@ -94,7 +94,7 @@ void Serialization::write_savefile(ofstream& file_stream, ostringstream& game_st
       unsigned long data_size = game_data.size();
       unsigned long compressed_size = data_size;
       vector<Bytef> compressed_game_data(compressed_size);
-      int ret_code = compress2(&compressed_game_data[0], &compressed_size, reinterpret_cast<const Bytef*>(game_data.c_str()), data_size, Z_BEST_COMPRESSION);
+      int ret_code = compress2(&compressed_game_data[0], &compressed_size, reinterpret_cast<const Bytef*>(game_data.c_str()), data_size, compression_level);
       
       if (ret_code == Z_OK)
       {
