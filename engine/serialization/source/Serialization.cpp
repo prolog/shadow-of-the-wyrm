@@ -1,19 +1,9 @@
-// Needed for zlib
-#if defined(MSDOS) || defined(OS2) || defined(WIN32) || defined(__CYGWIN__)
-#  include <fcntl.h>
-#  include <io.h>
-#  define SET_BINARY_MODE(file) setmode(fileno(file), O_BINARY)
-#else
-#  define SET_BINARY_MODE(file)
-#endif
-
-#include "zlib.h"
-
 #include <fstream>
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/functional/hash/hash.hpp>
 #include <boost/regex.hpp>
+#include "zlib.h" // compression
 #include "global_prototypes.hpp"
 #include "CompilationDetails.hpp"
 #include "Conversion.hpp"
@@ -26,8 +16,6 @@
 #include "RNG.hpp"
 #include "Serialization.hpp"
 #include "Serialize.hpp"
-
-#define CHUNK 16384
 
 using namespace std;
 using namespace boost::algorithm;
@@ -59,29 +47,33 @@ void Serialization::save(CreaturePtr creature)
     // Name the file and do the appropriate setup
     ofstream stream(filename, ios::binary | ios::out);
 
-    // Create a stream for the metadata (always uncompressed).
-    ostringstream meta_stream;
-
     // Create a stream for the game data (can be compressed or uncompressed).
     ostringstream game_stream;
         
     // Save the state and game data:
 
     // Save the metadata
-    meta.serialize(meta_stream);
+    meta.serialize(stream);
 
-    bool use_compression = String::to_bool(game.get_settings_ref().get_setting("savefile_compression"));
-    Serialize::write_bool(meta_stream, use_compression);
+    Settings& settings = game.get_settings_ref();
+    bool use_compression = String::to_bool(settings.get_setting("savefile_compression"));
+    int compression_level = String::to_int(settings.get_setting("compression_level"));
+    Serialize::write_bool(stream, use_compression);
+    Serialize::write_int(stream, compression_level);
 
-    // Save the game, RNG data, message buffer.
-    game.serialize(game_stream);
-    Serialize::write_uint(game_stream, RNG::get_seed());
+    // Write the remaining settings: RNG, message buffer.
+    // These are not massive, so they can be left uncompressed.
+    Serialize::write_uint(stream, RNG::get_seed());
     MessageBuffer mb = MessageManagerFactory::instance().get_message_buffer();
-    mb.serialize(game_stream);
+    mb.serialize(stream);
 
-    // This should always be the last function called, to ensure that the
-    // finished file is compressed as expected.
-    write_savefile(stream, meta_stream, game_stream, use_compression);
+    // Save the game details.  This is where the bulk of the size comes from -
+    // this can be compressed after to save a lot of disk space.
+    game.serialize(game_stream);
+
+    // Write the game data, either compressed or uncompressed, depending on the
+    // settings in the ini file.
+    write_savefile(stream, game_stream, use_compression);
   }
   catch(...)
   {
@@ -89,47 +81,127 @@ void Serialization::save(CreaturePtr creature)
   }
 }
 
-void Serialization::write_savefile(ofstream& file_stream, const ostringstream& meta_stream, const ostringstream& game_stream, const bool use_compression)
+void Serialization::write_savefile(ofstream& file_stream, ostringstream& game_stream, const bool use_compression)
 {
-  file_stream << meta_stream.str();
-  file_stream << game_stream.str();
+  int ret_code = Z_ERRNO;
+
+  string game_data = game_stream.str();
+
+  try
+  {
+    if (use_compression)
+    {
+      unsigned long data_size = game_data.size();
+      unsigned long compressed_size = data_size;
+      vector<Bytef> compressed_game_data(compressed_size);
+      int ret_code = compress2(&compressed_game_data[0], &compressed_size, reinterpret_cast<const Bytef*>(game_data.c_str()), data_size, Z_BEST_COMPRESSION);
+      
+      if (ret_code == Z_OK)
+      {
+        // First, write the uncompressed and compressed size.
+        Serialize::write_ulong(file_stream, data_size);
+        Serialize::write_ulong(file_stream, compressed_size);
+
+        // Then, write the compressed data to file.  write() needs to be used
+        // instead of operator<< because the latter expects a null-terminated
+        // string.
+        file_stream.write(reinterpret_cast<const char *>(&compressed_game_data[0]), compressed_size);
+        return;
+      }
+    }
+
+    file_stream << game_data;
+  }
+  catch (...)
+  {
+    Log::instance().error("Error writing to savefile!");
+  }
 }
 
 // Restore the game state from a particular file
 SerializationReturnCode Serialization::load(const string& filename)
 {
-  Game& game = Game::instance();
-  ifstream stream;
-
-  bool use_compression = String::to_bool(game.get_settings_ref().get_setting("savefile_compression"));
+  ifstream fstream;
 
   // Once the savefile is decompressed, read in the save details.
-  stream.open(filename, ios::in | ios::binary);
+  fstream.open(filename, ios::in | ios::binary);
+
+  read_savefile(fstream);
+
+  return SerializationReturnCode::SERIALIZATION_OK;
+}
+
+// Read the savefile from the string, decompressing as needed.
+void Serialization::read_savefile(std::ifstream& stream)
+{
+  Game& game = Game::instance();
+
+  Settings& settings = game.get_settings_ref();
+  bool use_compression = false;
+  int compression_level = Z_DEFAULT_COMPRESSION;
 
   Metadata meta;
-  MessageBuffer mb;
-  uint rng_seed = 0;
-
   meta.deserialize(stream);
 
   // Get the serialized value to determine if savefile compression is used
   // for the game data.
   Serialize::read_bool(stream, use_compression);
+  Serialize::read_int(stream, compression_level);
 
-  game.deserialize(stream);
+  uint rng_seed = 0;
   Serialize::read_uint(stream, rng_seed);
 
   RNG::set_seed(rng_seed);
   RNG::initialize();
 
+  MessageBuffer mb;
   mb.deserialize(stream);
+  MessageManagerFactory::instance().set_message_buffer(mb);
 
-  if (stream.is_open())
+  try
   {
-    stream.close();
-  }
+    if (use_compression)
+    {
+      unsigned long uncomp_size, comp_size;
+      Serialize::read_ulong(stream, uncomp_size);
+      Serialize::read_ulong(stream, comp_size);
 
-  return SerializationReturnCode::SERIALIZATION_OK;
+      ostringstream game_stream;
+      vector<Bytef> game_data_comp(comp_size);
+      vector<Bytef> uncompressed(uncomp_size);
+
+      // Read the compressed data.
+      stream.read(reinterpret_cast<char*>(&game_data_comp[0]), comp_size);
+
+      // Uncompress the compressed data.
+      int ret_code = uncompress(&uncompressed[0], &uncomp_size, &game_data_comp[0], comp_size);
+
+      // Now we've got an uncompressed byte stream.
+      // Copy it to an istream& so it can be read by deserialize.
+      std::istringstream uncomp_game_stream(std::string(reinterpret_cast<char*>(&uncompressed[0]), uncompressed.size()));
+      read_game_stream(uncomp_game_stream);
+    }
+    else
+    {
+      read_game_stream(stream);
+    }
+  }
+  catch (std::exception& error)
+  {
+    string error_msg = error.what();
+    Log::instance().error("Error while reading savefile: " + error_msg);
+  }
+}
+
+// Read the game data from an istream.
+// The assumption is that this is either the original file stream (if the
+// data was never compressed), or an istringstream (if the data was
+// decompressed from the compressed data stored in the original file
+// stream).
+void Serialization::read_game_stream(istream& stream)
+{
+  Game& game = Game::instance();
+  game.deserialize(stream);
 }
 
 bool Serialization::delete_savefile(const string& filename)
