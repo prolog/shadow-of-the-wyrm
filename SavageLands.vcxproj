@@ -78,7 +78,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>C:\cygwin\home\Julian\zlib-1.2.8\lib;C:\Program Files %28x86%29\Lua\5.1\lib;C:\cygwin\home\Julian\gtest\gtest-1.7.0\msvc\gtest\Debug;C:\boost\boost_1_58_0\stage\lib;C:\xerces\xerces-c-3.1.1\Build\Win32\VC10\Debug;C:\cygwin\home\Julian\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua51.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtestd.lib;gtest_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtestd.lib;gtest_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">
@@ -98,7 +98,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>C:\cygwin\home\Julian\zlib-1.2.8\lib;C:\Program Files %28x86%29\Lua\5.1\lib;C:\cygwin\home\Julian\gtest\gtest-1.7.0\msvc\gtest\Debug;C:\boost\boost_1_58_0\stage\lib;C:\xerces\xerces-c-3.1.1\Build\Win32\VC10\Debug;C:\cygwin\home\Julian\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua51.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtestd.lib;gtest_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtestd.lib;gtest_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -116,7 +116,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>C:\cygwin\home\Julian\zlib-1.2.8\lib;C:\xerces\xerces-c-3.1.1\Build\Win32\VC10\Release;C:\Program Files %28x86%29\Lua\5.1\lib;C:\boost\boost_1_58_0\stage\lib;C:\cygwin\home\Julian\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua51.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
