@@ -37,6 +37,9 @@ Savage Lands v0.3.5 "Tzortinakis"
 - Savefiles can now be optionally compressed after the initial write to
   disk - this is controlled by the "savefile_compression" ini setting.
 
+- The game now redraws the display after each movement when the player
+  selects automovement.
+
 - Bug fixes:
 
   - Drop action wasn't properly using the action cost value, resulting
