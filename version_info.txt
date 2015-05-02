@@ -35,10 +35,13 @@ Savage Lands v0.3.5 "Tzortinakis"
 - Updated Boost from 1.55 to 1.58.
 
 - Savefiles can now be optionally compressed after the initial write to
-  disk - this is controlled by the "savefile_compression" ini setting.
+  disk - this is controlled by the "savefile_compression" and
+  "compression_level" ini settings.
 
 - The game now redraws the display after each movement when the player
   selects automovement.
+
+- New uniques: Callara.
 
 - Bug fixes:
 
