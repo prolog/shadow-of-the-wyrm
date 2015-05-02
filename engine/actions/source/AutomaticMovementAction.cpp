@@ -84,6 +84,15 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
     }
   }
 
+  // If the creature is the player, look at redrawing so that creature
+  // appears to move across the map, rather than just arriving at the
+  // destination slowly.
+  if (creature && creature->get_is_player())
+  {
+    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+    game.get_display()->redraw();
+  }
+
   return action_cost_value;
 }
 
