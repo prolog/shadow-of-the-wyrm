@@ -7,6 +7,7 @@
 #include "DoNothingDeityDecisionStrategyHandler.hpp"
 #include "ReligionConstants.hpp"
 #include "ReligionManager.hpp"
+#include "ProtectionDeityDecisionStrategyHandler.hpp"
 #include "RestoreStatusDeityDecisionStrategyHandler.hpp"
 #include "SacrificeDeityDecisionStrategyHandler.hpp"
 #include "SatiateDeityDecisionStrategyHandler.hpp"
@@ -30,6 +31,9 @@ void DeityDecisionStrategy::initialize_decisions()
   decisions.push_back(cur_decision);
 
   cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(cur_decision);
+
+  cur_decision = std::make_shared<ProtectionDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
   cur_decision = std::make_shared<SatiateDeityDecisionStrategyHandler>(deity_id);

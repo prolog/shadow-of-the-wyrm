@@ -3348,6 +3348,9 @@
     <ClInclude Include="engine\commands\include\CommandCustomValues.hpp">
       <Filter>Header Files\engine\commands\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\ProtectionDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6526,6 +6529,9 @@
     </ClCompile>
     <ClCompile Include="engine\commands\source\CommandCustomValues.cpp">
       <Filter>Source Files\engine\commands\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\ProtectionDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
