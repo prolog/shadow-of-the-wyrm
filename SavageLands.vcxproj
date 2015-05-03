@@ -384,6 +384,7 @@
     <ClInclude Include="engine\decision_strategies\deity\include\FullHPDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyHandler.hpp" />
+    <ClInclude Include="engine\decision_strategies\deity\include\ProtectionDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\RestoreStatusDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\SacrificeDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\SatiateDeityDecisionStrategyHandler.hpp" />
@@ -1544,6 +1545,7 @@
     <ClCompile Include="engine\decision_strategies\deity\source\FullAPDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\FullHPDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyHandler.cpp" />
+    <ClCompile Include="engine\decision_strategies\deity\source\ProtectionDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\RestoreStatusDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\SacrificeDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\SatiateDeityDecisionStrategyHandler.cpp" />

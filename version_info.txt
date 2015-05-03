@@ -41,6 +41,11 @@ Savage Lands v0.3.5 "Tzortinakis"
 - The game now redraws the display after each movement when the player
   selects automovement.
 
+- Added a new deity decision strategy, Protection, that can trigger when
+  there are hostile creatures in the praying creature's field of view.
+  This adds a huge amount of temporary evade/soak to the creature for a
+  period of time.
+
 - New uniques: Callara.
 
 - Bug fixes:
