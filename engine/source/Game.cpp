@@ -29,6 +29,7 @@
 #include "ScoreFile.hpp"
 #include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
+#include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WorldTimeKeeperCoordinator.hpp"
@@ -300,110 +301,130 @@ void Game::go()
   MapPtr current_map = get_current_map();
   CreaturePtr current_player = get_current_player();
 
-  // To see if this is a new game, check the ActionCoordinator to see if there is
-  // a map, yet.  If there isn't, the game hasn't been restored, so it must be a
-  // new game.
-  bool reloaded_game = !ac.get_current_map_id().empty();
-
-  string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), !reloaded_game);
-
-  IMessageManager& manager = MessageManagerFactory::instance(current_player, true);
-  manager.add_new_message(welcome_message);
-  manager.send();
-
-  CreatureCalculator::update_calculated_values(current_player);
- 
-  string map_id = "";
-
-  // Main game loop.
-  while(keep_playing)
+  // Use a try-catch block so that if there is an exception thrown, we can
+  // try to recover by saving.
+  try
   {
-    detect_creatures_if_necessary(current_player, map_id);
-        
-    current_map = get_current_map();
+    // To see if this is a new game, check the ActionCoordinator to see if there is
+    // a map, yet.  If there isn't, the game hasn't been restored, so it must be a
+    // new game.
+    bool reloaded_game = !ac.get_current_map_id().empty();
 
-    // After loading the (new) map, a full redraw is needed.
-    map_id = current_map_id;
-    loaded_map_details.update_map_id(map_id);
+    string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), !reloaded_game);
 
-    map<string, CreaturePtr> map_creatures = current_map->get_creatures();
+    IMessageManager& manager = MessageManagerFactory::instance(current_player, true);
+    manager.add_new_message(welcome_message);
+    manager.send();
 
-    if (!reloaded_game)
+    CreatureCalculator::update_calculated_values(current_player);
+
+    string map_id = "";
+
+    // Main game loop.
+    while (keep_playing)
     {
-      ac.reset_if_necessary(current_map->get_permanent(), current_map->get_map_id(), map_creatures);
+      detect_creatures_if_necessary(current_player, map_id);
+
+      current_map = get_current_map();
+
+      // After loading the (new) map, a full redraw is needed.
+      map_id = current_map_id;
+      loaded_map_details.update_map_id(map_id);
+
+      map<string, CreaturePtr> map_creatures = current_map->get_creatures();
+
+      if (!reloaded_game)
+      {
+        ac.reset_if_necessary(current_map->get_permanent(), current_map->get_map_id(), map_creatures);
+      }
+
+      Calendar& calendar = worlds[current_world_ix]->get_calendar();
+
+      while (ac.has_actions())
+      {
+        // Update the list of creatures after each action; otherwise, creatures that are killed
+        // might persist.
+        map_creatures = current_map->get_creatures();
+
+        CreaturePtr current_creature;
+        ActionCost next_action_cost = ac.get_current_action_cost();
+        string creature_id = ac.get_next_creature_id();
+        map<string, CreaturePtr>::iterator c_it = map_creatures.find(creature_id);
+
+        if (c_it != map_creatures.end())
+        {
+          current_creature = c_it->second;
+        }
+
+        if (!current_creature)
+        {
+          // Creature's been killed - advance to the next creature in the
+          // queue.
+          ac.update_actions();
+        }
+        else // Creature's fine, process its action
+        {
+          // If we shouldn't keep playing (player has quit, has been killed, etc), then break out of the 
+          // game loop.
+          if (!keep_playing) break;
+
+          process_elapsed_time(calendar, next_action_cost);
+
+          // Player may have been killed by some time-related effect.
+          if (!keep_playing) break;
+
+          ActionCost action_cost = process_action_for_creature(current_creature, current_map, reloaded_game);
+
+          // Remove the creature's current action.  This is done after the "keep_playing"
+          // check so that saving, etc., does not advance the turn.
+
+          if (keep_playing)
+          {
+            ac.update_actions();
+            ac.add(action_cost, current_creature->get_id());
+          }
+
+          if (current_creature->get_is_player())
+          {
+            // Now that we've ensured that the ActionCoordinator isn't reset,
+            // and that a full window redraw has been done, we can reset the
+            // reloaded_game variable so that it won't override any game logic.
+            reloaded_game = false;
+          }
+
+          if (reload_game_loop)
+          {
+            reload_game_loop = false;
+            break;
+          }
+        }
+      }
     }
- 
-    Calendar& calendar = worlds[current_world_ix]->get_calendar();
-    
-    while (ac.has_actions())
-    {      
-      // Update the list of creatures after each action; otherwise, creatures that are killed
-      // might persist.
-      map_creatures = current_map->get_creatures();
 
-      CreaturePtr current_creature;
-      ActionCost next_action_cost = ac.get_current_action_cost();
-      string creature_id = ac.get_next_creature_id();      
-      map<string, CreaturePtr>::iterator c_it = map_creatures.find(creature_id);
+    // We're done - clear the display so that score information (or error
+    // information, it is me coding this, after all) can be shown.
+    display->clear_display();
+    display->redraw();
+    update_score_file_if_necessary(current_player);
+  }
+  catch (...)
+  {
+    // If there was an exception, try to recover by saving and then exiting
+    // so that perhaps the player can reload the save.
+    panic_save(current_player);
 
-      if (c_it != map_creatures.end())
-      {
-        current_creature = c_it->second;
-      }
-      
-      if (!current_creature)
-      {
-        // Creature's been killed - advance to the next creature in the
-        // queue.
-        ac.update_actions(); 
-      }
-      else // Creature's fine, process its action
-      {
-        // If we shouldn't keep playing (player has quit, has been killed, etc), then break out of the 
-        // game loop.
-        if (!keep_playing) break;
-        
-        process_elapsed_time(calendar, next_action_cost);
-
-        // Player may have been killed by some time-related effect.
-        if (!keep_playing) break;
-                
-        ActionCost action_cost = process_action_for_creature(current_creature, current_map, reloaded_game);
-
-        // Remove the creature's current action.  This is done after the "keep_playing"
-        // check so that saving, etc., does not advance the turn.
-
-        if (keep_playing)
-        {
-          ac.update_actions(); 
-          ac.add(action_cost, current_creature->get_id());
-        }
-        
-        if (current_creature->get_is_player())
-        {
-          // Now that we've ensured that the ActionCoordinator isn't reset,
-          // and that a full window redraw has been done, we can reset the
-          // reloaded_game variable so that it won't override any game logic.
-          reloaded_game = false;
-        }
-
-        if (reload_game_loop)
-        {
-          reload_game_loop = false;
-          break;
-        }
-      }
-    }
+    // Add a message about the crash.
+    string crash_msg = StringTable::get(TextKeys::SL_PROBLEM_GAME_SAVED);
+    std::cout << crash_msg << endl << endl;
   }
 
-  // We're done - clear the display so that score information (or error
-  // information, it is me coding this, after all) can be shown.
-  display->clear_display();
-  display->redraw();
-  update_score_file_if_necessary(current_player);
-
   string farewell_msg = ScoreTextKeys::get_farewell_text_message(current_player->get_name());
-  cout << farewell_msg << endl;
+  std::cout << farewell_msg << endl;
+}
+
+void Game::panic_save(CreaturePtr player)
+{
+  actions.save(player);
 }
 
 void Game::set_check_scores(const bool new_check_scores)

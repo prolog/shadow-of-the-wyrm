@@ -17,6 +17,7 @@ const string TextKeys::SL_TITLE_NEW_GAME = "SL_TITLE_NEW_GAME";
 const string TextKeys::CHARACTER_ALREADY_EXISTS = "CHARACTER_ALREADY_EXISTS";
 const string TextKeys::SL_TITLE_LOAD_GAME = "SL_TITLE_LOAD_GAME";
 const string TextKeys::SL_TITLE_QUIT_GAME = "SL_TITLE_QUIT_GAME";
+const string TextKeys::SL_PROBLEM_GAME_SAVED = "SL_PROBLEM_GAME_SAVED";
 const string TextKeys::EXIT = "EXIT";
 const string TextKeys::DEATH_MESSAGE = "DEATH_MESSAGE";
 const string TextKeys::PLAYER_DESC = "PLAYER_DESC";

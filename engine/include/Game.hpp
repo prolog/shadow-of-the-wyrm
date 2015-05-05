@@ -159,6 +159,9 @@ class Game : public ISerializable
 
     // Update the scorefile if necessary, when leaving the game.
     void update_score_file_if_necessary(CreaturePtr creature);
+
+    // Save the game after an exception.
+    void panic_save(CreaturePtr player);
     
     bool keep_playing;
     bool reload_game_loop;
