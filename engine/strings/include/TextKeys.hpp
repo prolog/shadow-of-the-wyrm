@@ -13,6 +13,7 @@ class TextKeys
     static const std::string CHARACTER_ALREADY_EXISTS;
     static const std::string SL_TITLE_LOAD_GAME;
     static const std::string SL_TITLE_QUIT_GAME;
+    static const std::string SL_PROBLEM_GAME_SAVED;
     static const std::string EXIT;
     static const std::string DEATH_MESSAGE;
     static const std::string DEFAULT_PLAYER_NAME;

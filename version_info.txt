@@ -46,6 +46,9 @@ Savage Lands v0.3.5 "Tzortinakis"
   This adds a huge amount of temporary evade/soak to the creature for a
   period of time.
 
+- If there is now an unhandled exception in Game::go(), the game attempts
+  to create a savefile before exiting.
+
 - New uniques: Callara.
 
 - Bug fixes:
