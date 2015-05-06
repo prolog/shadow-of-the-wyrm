@@ -42,8 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // 20th century Greek guitar composer.
-  return "\"Tzortzinakis\"";
+  // Renaissance vihuela composer, best known for his pavanes.
+  return "\"Milan\"";
 }
 
 string Metadata::get_game_version_synopsis() const

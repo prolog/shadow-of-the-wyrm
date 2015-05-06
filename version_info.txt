@@ -1,5 +1,8 @@
+Savage Lands v0.3.6 "Milan"
+- Version declared May 6, 2015.
+
 Savage Lands v0.3.5 "Tzortinakis"
-- Version declared April 5, 2015.
+- Version declared April 5, 2015.  Version finalized May 6, 2015.
 
 - New "X"perience action that displays current level, experience total,
   and amount required for the next level.
