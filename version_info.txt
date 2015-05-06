@@ -56,7 +56,7 @@ Savage Lands v0.3.5 "Tzortinakis"
 
 - New spells, with associated spell books: Fire Storm (Arcane).
 
-- New uniques: Callara.
+- New uniques: Callara, Cahri.
 
 - Bug fixes:
 

@@ -8261,6 +8261,49 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
+		<Creature id="cahri">
+			<RaceID>04_snakeling</RaceID>
+			<ShortDescriptionSID>CAHRI_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CAHRI_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CAHRI_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CAHRI_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>17</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>22</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>850</Exp>
+			</CreatureGeneration>
+			<Level>17</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>44</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<Evade>12</Evade>
+			<Soak>3</Soak>
+		</Creature>
 		<Creature id="minotaur">
 			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>MINOTAUR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
