@@ -27,4 +27,7 @@ TEST(SL_World_Magic_SpellShapeFactory, shapes_return_correct_directional_value)
 
   SpellShape ss_ball = SpellShapeFactory::create_spell_shape(SpellShapeType::SPELL_SHAPE_BALL);
   EXPECT_EQ(DirectionCategory::DIRECTION_CATEGORY_NONE, ss_ball.get_direction_category());
+
+  SpellShape ss_storm = SpellShapeFactory::create_spell_shape(SpellShapeType::SPELL_SHAPE_STORM);
+  EXPECT_EQ(DirectionCategory::DIRECTION_CATEGORY_NONE, ss_storm.get_direction_category());
 }

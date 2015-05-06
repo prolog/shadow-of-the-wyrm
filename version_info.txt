@@ -49,6 +49,13 @@ Savage Lands v0.3.5 "Tzortinakis"
 - If there is now an unhandled exception in Game::go(), the game attempts
   to create a savefile before exiting.
 
+- Created a new spell shape, "Storm".  This affects a random number of
+  tiles within a particular radius, and can potentially target the same
+  tile multiple times (unlike ball/cross/etc which target a particular
+  tile at most once).
+
+- New spells, with associated spell books: Fire Storm (Arcane).
+
 - New uniques: Callara.
 
 - Bug fixes:

@@ -28,6 +28,7 @@ const string SpellcastingTextKeys::SPELLCASTING_REFLECTIVE_BEAM_ABRV = "SPELLCAS
 const string SpellcastingTextKeys::SPELLCASTING_CONE_ABRV = "SPELLCASTING_CONE_ABRV";
 const string SpellcastingTextKeys::SPELLCASTING_BALL_ABRV = "SPELLCASTING_BALL_ABRV";
 const string SpellcastingTextKeys::SPELLCASTING_CROSS_ABRV = "SPELLCASTING_CROSS_ABRV";
+const string SpellcastingTextKeys::SPELLCASTING_STORM_ABRV = "SPELLCASTING_STORM_ABRV";
 const string SpellcastingTextKeys::SPELLCASTING_SPELLBOOK_DESTRUCTION_MESSAGE = "SPELLCASTING_SPELLBOOK_DESTRUCTION_MESSAGE";
 
 const string SpellcastingTextKeys::get_spellbook_destruction_message(const string& spellbook_desc)

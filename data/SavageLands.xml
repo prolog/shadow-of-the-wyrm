@@ -15892,7 +15892,7 @@
 			<PlayerCastMessageSID>FROST_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>FROST_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
-			<Colour>9</Colour>
+			<Colour>12</Colour>
 			<APCost>6</APCost>
 			<Speed>1</Speed>
 			<Range>4</Range>
@@ -15901,6 +15901,23 @@
 				<NumDice>10</NumDice>
 				<NumSides>4</NumSides>
 				<Type>4</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="a_10_fire_storm">
+			<NameSID>FIRE_STORM_NAME_SID</NameSID>
+			<PlayerCastMessageSID>FIRE_STORM_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>FIRE_STORM_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<Colour>1</Colour>
+			<APCost>30</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>6</Shape>
+			<Damage>
+				<NumDice>12</NumDice>
+				<NumSides>4</NumSides>
+				<Type>3</Type>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
@@ -21316,6 +21333,23 @@
 				<Rarity>0</Rarity>
 				<SpellID>a_09_frost_bolt</SpellID>
 				<Difficulty>70</Difficulty>
+			</Spellbook>
+			<Spellbook id="fire_storm_spellbook">
+				<DescriptionSID>FIRE_STORM_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FIRE_STORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FIRE_STORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FIRE_STORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1100</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>16</DangerLevel>
+				<Rarity>0</Rarity>
+				<SpellID>a_10_fire_storm</SpellID>
+				<Difficulty>130</Difficulty>
 			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
