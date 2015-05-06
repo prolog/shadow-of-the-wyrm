@@ -4,6 +4,7 @@
 #include "CrossShapeProcessor.hpp"
 #include "ReflectiveBeamShapeProcessor.hpp"
 #include "SpellShapeProcessorFactory.hpp"
+#include "StormShapeProcessor.hpp"
 #include "TargetSelfShapeProcessor.hpp"
 
 SpellShapeProcessorFactory::SpellShapeProcessorFactory()
@@ -36,8 +37,11 @@ SpellShapeProcessorPtr SpellShapeProcessorFactory::create_processor(const SpellS
       spell_processor = std::make_shared<BallShapeProcessor>();
       break;
     case SpellShapeType::SPELL_SHAPE_CROSS:
-    default:
       spell_processor = std::make_shared<CrossShapeProcessor>();
+      break;
+    case SpellShapeType::SPELL_SHAPE_STORM:
+    default:  
+      spell_processor = std::make_shared<StormShapeProcessor>();
       break;
   }
 

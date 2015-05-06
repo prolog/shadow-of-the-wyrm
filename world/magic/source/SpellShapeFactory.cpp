@@ -22,6 +22,7 @@ SpellShape SpellShapeFactory::create_spell_shape(const SpellShapeType st)
       return directional_shape;
     case SpellShapeType::SPELL_SHAPE_TARGET_SELF:
     case SpellShapeType::SPELL_SHAPE_BALL:
+    case SpellShapeType::SPELL_SHAPE_STORM:
     default:
       return selfcentered_shape;
   }

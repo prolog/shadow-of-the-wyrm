@@ -8,6 +8,7 @@ enum struct SpellShapeType
   SPELL_SHAPE_CONE = 3,
   SPELL_SHAPE_BALL = 4,
   SPELL_SHAPE_CROSS = 5,
-  SPELL_SHAPE_LAST = 6
+  SPELL_SHAPE_STORM = 6,
+  SPELL_SHAPE_LAST = 7
 };
 

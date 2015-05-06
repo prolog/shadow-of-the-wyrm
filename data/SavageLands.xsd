@@ -1433,18 +1433,19 @@
 			3 = Cone
 			4 = Ball
 			5 = Cross
+			6 = Storm
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="5"/>
+		<xs:maxInclusive value="6"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="WandSpellShape">
 	<xs:annotation><xs:documentation>Wands can't self-target.</xs:documentation></xs:annotation>
-	<xs:restriction base="tns:SpellShape">
+	<xs:restriction base="tns:SpellShape">		
 		<xs:minInclusive value="1"/>
-		<xs:maxInclusive value="4"/>
+		<xs:maxInclusive value="6"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TrainedWeaponSkill">
