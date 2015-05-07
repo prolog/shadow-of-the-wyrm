@@ -1,6 +1,8 @@
 Savage Lands v0.3.6 "Milan"
 - Version declared May 6, 2015.
 
+- New artifacts: black sabre "Bloodsinger".
+
 Savage Lands v0.3.5 "Tzortinakis"
 - Version declared April 5, 2015.  Version finalized May 6, 2015.
 

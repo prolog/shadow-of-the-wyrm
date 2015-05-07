@@ -18653,6 +18653,29 @@
 					<Slay>_demon</Slay>
 				</Slays>
 			</Weapon>
+			<Weapon id="bloodsinger">
+				<DescriptionSID>BLOODSINGER_SID</DescriptionSID>
+				<UsageDescriptionSID>BLOODSINGER_USAGE_SID</UsageDescriptionSID>
+				<Value>1450</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>43</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>6</Modifier>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+				</Slays>
+			</Weapon>
 			<Weapon id="worldsword">
 				<DescriptionSID>WORLDSWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>WORLDSWORD_USAGE_SID</UsageDescriptionSID>
