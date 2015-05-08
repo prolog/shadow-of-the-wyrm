@@ -6000,7 +6000,7 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>48</NumSides>
-				<Type>2</Type>
+				<Type>6</Type>
 			</Damage>
 		</Creature>
 		<Creature id="will_o_the_wisp">
