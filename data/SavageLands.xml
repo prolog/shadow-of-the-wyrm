@@ -5973,6 +5973,36 @@
 			</Damage>
 			<Speed>35</Speed>
 		</Creature>
+		<Creature id="wispe">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>WISPE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WISPE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WISPE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WISPE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>19</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>24</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>960</Exp>
+			</CreatureGeneration>
+			<Level>19</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>48</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
 		<Creature id="will_o_the_wisp">
 			<RaceID>_spirit</RaceID>
 			<ShortDescriptionSID>WILL_O_THE_WISP_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
