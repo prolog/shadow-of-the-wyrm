@@ -39,6 +39,13 @@
 					<Col>40</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>wispe</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>78</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>
