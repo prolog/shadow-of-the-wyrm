@@ -3,6 +3,16 @@
 
 using namespace std;
 
+bool MortuaryEntry::operator==(const MortuaryEntry& me) const
+{
+  bool result = true;
+
+  result = result && (count == me.count);
+  result = result && (max == me.max);
+
+  return result;
+}
+
 bool Mortuary::operator==(const Mortuary& m) const
 {
   bool result = true;
@@ -13,17 +23,23 @@ bool Mortuary::operator==(const Mortuary& m) const
 }
 
 // Update the death toll.
-void Mortuary::add_creature_kill(const string& creature_id)
+void Mortuary::add_creature_kill(const string& creature_id, const bool is_unique)
 {
   MortuaryCountMap::iterator m_it = creatures_killed.find(creature_id);
 
   if (m_it != creatures_killed.end())
   {
-    creatures_killed[creature_id] = m_it->second + 1;
+    MortuaryEntry& me = creatures_killed[creature_id];
+    me.count += 1;
   }
   else
   {
-    creatures_killed.insert(make_pair(creature_id, 1));
+    MortuaryEntry me;
+
+    me.max = (is_unique) ? 1 : -1;
+    me.count = 1;
+
+    creatures_killed.insert(make_pair(creature_id, me));
   }
 }
 
@@ -41,7 +57,7 @@ uint Mortuary::get_num_creature_killed(const string& creature_id) const
 
   if (m_it != creatures_killed.end())
   {
-    num_killed = m_it->second;
+    num_killed = m_it->second.count;
   }
 
   return num_killed;
@@ -54,7 +70,23 @@ uint Mortuary::get_num_creatures_killed() const
 
   for (const MortuaryCountMap::value_type& pair : creatures_killed)
   {
-    num_killed += pair.second;
+    num_killed += pair.second.count;
+  }
+
+  return num_killed;
+}
+
+// Get the number of uniques killed.
+uint Mortuary::get_num_uniques_killed() const
+{
+  uint num_killed = 0;
+
+  for (const MortuaryCountMap::value_type& pair : creatures_killed)
+  {
+    if (pair.second.max == 1)
+    {
+      num_killed += pair.second.count;
+    }
   }
 
   return num_killed;
@@ -70,7 +102,8 @@ bool Mortuary::serialize(ostream& stream) const
     for (const MortuaryCountMap::value_type& pair : creatures_killed)
     {
       Serialize::write_string(stream, pair.first);
-      Serialize::write_uint(stream, pair.second);
+      Serialize::write_int(stream, pair.second.max);
+      Serialize::write_int(stream, pair.second.count);
     }
   }
 
@@ -91,10 +124,18 @@ bool Mortuary::deserialize(istream& stream)
       string creature_id;
       Serialize::read_string(stream, creature_id);
 
-      uint creature_count = 0;
-      Serialize::read_uint(stream, creature_count);
+      int creature_max = 0;
+      Serialize::read_int(stream, creature_max);
 
-      creatures_killed.insert(make_pair(creature_id, creature_count));
+      int creature_count = 0;
+      Serialize::read_int(stream, creature_count);
+
+      MortuaryEntry me;
+
+      me.max = creature_max;
+      me.count = creature_count;
+
+      creatures_killed.insert(make_pair(creature_id, me));
     }
   }
 

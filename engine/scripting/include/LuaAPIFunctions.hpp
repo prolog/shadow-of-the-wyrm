@@ -23,6 +23,7 @@ int add_message_for_creature(lua_State* ls);
 int add_new_quest(lua_State* ls);
 int is_on_quest(lua_State* ls);
 int get_num_creature_killed_global(lua_State* ls);
+int get_num_uniques_killed_global(lua_State* ls);
 int add_object_to_player_tile(lua_State* ls);
 int add_feature_to_player_tile(lua_State* ls);
 int mark_quest_completed(lua_State* ls);

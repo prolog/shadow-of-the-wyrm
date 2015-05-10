@@ -479,13 +479,18 @@ void CombatManager::mark_appropriate_skills(CreaturePtr attacking_creature, cons
 // Update the Game's and the attacking creature's mortuary with the kill.
 void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const string& killed_creature_id)
 {
+  // Get whether the creature is a unique or not.
+  Game& game = Game::instance();
+  bool is_unique = (game.get_creature_generation_values_ref()[killed_creature_id].get_maximum() == 1);
+
+  // Update the game's and creature's mortuary with the kill info.
   Mortuary& game_mortuary = Game::instance().get_mortuary_ref();
-  game_mortuary.add_creature_kill(killed_creature_id);
+  game_mortuary.add_creature_kill(killed_creature_id, is_unique);
 
   if (attacking_creature)
   {
     Mortuary& creature_mortuary = attacking_creature->get_mortuary_ref();
-    creature_mortuary.add_creature_kill(killed_creature_id);
+    creature_mortuary.add_creature_kill(killed_creature_id, is_unique);
   }
 }
 

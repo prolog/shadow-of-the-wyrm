@@ -33,7 +33,7 @@ local function caravan_master_cithriel_completion_condition_fn()
   return (get_num_creature_killed_global("cithriel_summoner") == 5)
 end
 
-local function caravan_mater_cithriel_completion_fn()
+local function caravan_master_cithriel_completion_fn()
   add_message_with_pause("CARAVAN_MASTER_CITHRIEL_QUEST_COMPLETE_SID")
   clear_and_add_message("CARAVAN_MASTER_CITHRIEL_QUEST_COMPLETE2_SID")
   add_object_to_player_tile("erandu")

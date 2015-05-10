@@ -111,6 +111,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_new_quest", add_new_quest);
   lua_register(L, "is_on_quest", is_on_quest);
   lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
+  lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
@@ -483,6 +484,30 @@ int get_num_creature_killed_global(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to get_num_creature_killed_global");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, num_killed);
+  return 1;
+}
+
+// Check the global mortuary on the game object to determine the death count
+// for uniques.
+//
+// Argument is the creature ID.
+int get_num_uniques_killed_global(lua_State* ls)
+{
+  int num_killed = 0;
+
+  if ((lua_gettop(ls) == 0))
+  {
+    Game& game = Game::instance();
+    Mortuary& mort = game.get_mortuary_ref();
+    num_killed = mort.get_num_uniques_killed();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_num_uniques_killed_global");
     lua_error(ls);
   }
 
