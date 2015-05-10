@@ -6002,6 +6002,11 @@
 				<NumSides>48</NumSides>
 				<Type>6</Type>
 			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/wispe.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="will_o_the_wisp">
 			<RaceID>_spirit</RaceID>

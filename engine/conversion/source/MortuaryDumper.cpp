@@ -33,7 +33,7 @@ string MortuaryDumper::get_mortuary() const
   for (auto mcm_vt : mcm)
   {
     string creature_id = mcm_vt.first;    
-    int count = mcm_vt.second;
+    int count = mcm_vt.second.count;
 
     auto cr_it = cmap.find(creature_id);
     if (cr_it != cmap.end())

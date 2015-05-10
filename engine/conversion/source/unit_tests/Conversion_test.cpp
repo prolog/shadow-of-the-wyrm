@@ -50,8 +50,8 @@ TEST(SL_Engine_ConversionRoutines, char_to_string)
 
 TEST(SL_Engine_ConversionRoutines, float_to_string)
 {
-  EXPECT_EQ("1.23", Float::to_string(1.234567f, 2));
-  EXPECT_EQ("3.1415926", Float::to_string(3.1415926535f));
+  EXPECT_EQ("1.23", Float::to_string(1.234567f, 3));
+  EXPECT_EQ("3.14159", Float::to_string(3.1415926535f, 6));
 }
 
 TEST(SL_Engine_ConversionRoutines, csv_to_vector)

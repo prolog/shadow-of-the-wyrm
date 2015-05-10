@@ -1,6 +1,14 @@
 Savage Lands v0.3.6 "Milan"
 - Version declared May 6, 2015.
 
+- Added a new questmaster, Wispe, to the ruins of Aeschburh, and gave him
+  a quest for the player to kill four uniques.
+
+- Updated the mortuary to track not only creature deaths, but also whether
+  a creature is a unique or not, so that uniques' deaths can be tracked.
+
+- Made certain characters (the blacksmith, Hild, etc) uniques.
+
 - New creatures: Wispe.
 
 - New artifacts: black sabre "Bloodsinger".
