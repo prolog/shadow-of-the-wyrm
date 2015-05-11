@@ -14097,6 +14097,7 @@
 				<Colour>2</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
 				<DangerLevel>6</DangerLevel>
@@ -14133,6 +14134,7 @@
 				<Colour>8</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
 				<DangerLevel>10</DangerLevel>
@@ -14374,6 +14376,7 @@
 				<Colour>2</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
 				<DangerLevel>12</DangerLevel>
