@@ -1,5 +1,6 @@
 #pragma once
 #include "ICreatureRegeneration.hpp"
+#include "IMessageManager.hpp"
 
 class CreatureSkillIncrementer : public ICreatureRegeneration
 {
@@ -10,5 +11,7 @@ class CreatureSkillIncrementer : public ICreatureRegeneration
     void tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed) override;
 
   protected:
+    bool update_skill_if_necessary(CreaturePtr creature, SkillPtr skill, IMessageManager& manager);
+
     int minutes_interval;
 };
