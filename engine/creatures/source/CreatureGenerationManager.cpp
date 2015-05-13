@@ -74,7 +74,7 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
       
     // Generate the creature if we hit the percentage, or if we're on the last item in the map
     // and a creature has not yet been generated.
-    if (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1) && !generated_creature))
+    if (!cgv.is_maximum_reached() && (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1) && !generated_creature)))
     {
       string creature_id = c_it->first;
       CreatureFactory cf;

@@ -48,7 +48,6 @@ CreaturePtr CreatureFactory::create_by_creature_id
     
   CreatureMap::iterator c_it = creature_map.find(creature_id);
   CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
-  CreatureGenerationValues cgv;
 
   if (!creature_id.empty() && c_it != creature_map.end() && cgv_it != cgv_map.end())
   {
@@ -60,7 +59,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
     // respectively, so by default, there should be no limit to the
     // number of creatures generated for a particular type, so long
     // as a limit has not been specified by the configuration.
-    cgv  = cgv_it->second;
+    CreatureGenerationValues& cgv = cgv_it->second;
     if (cgv.is_maximum_reached())
     {
       return creature;
@@ -108,12 +107,13 @@ CreaturePtr CreatureFactory::create_by_creature_id
     // Now that the creature has been generated, increment the number of such
     // creatures.
     cgv.incr_current();
+
+    // Add any initial equipment/inventory.
+    InitialItemEquipper iie;
+    iie.equip(creature, cgv, action_manager);
+    iie.add_inventory_items(creature, cgv, action_manager);
   }
-    
-  InitialItemEquipper iie;
-  iie.equip(creature, cgv, action_manager);
-  iie.add_inventory_items(creature, cgv, action_manager);
-  
+      
   return creature;
 }
 
