@@ -8,11 +8,13 @@
 #include "Game.hpp"
 #include "GraveyardGeneratorFactory.hpp"
 #include "HillsGenerator.hpp"
+#include "KeepGenerator.hpp"
 #include "MapProperties.hpp"
 #include "MarshGenerator.hpp"
 #include "MineGenerator.hpp"
 #include "MountainsGenerator.hpp"
 #include "RaceManager.hpp"
+#include "RuinsGenerator.hpp"
 #include "ScrubGenerator.hpp"
 #include "SeaGenerator.hpp"
 #include "SettlementGeneratorFactory.hpp"
@@ -45,35 +47,55 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
   switch(terrain_type)
   {
     case TileType::TILE_TYPE_FIELD:
+    {
       generator = std::make_shared<FieldGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_SEA:
+    {
       generator = std::make_shared<SeaGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_MARSH:
+    {
       generator = std::make_shared<MarshGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_MOUNTAINS:
+    {
       generator = std::make_shared<MountainsGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_HILLS:
+    {
       generator = std::make_shared<HillsGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_WILD_ORCHARD:
+    {
       generator = std::make_shared<WildOrchardGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_FOREST:
+    {
       generator = std::make_shared<ForestGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_CAVERN:
+    {
       generator = std::make_shared<CavernGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_DESERT:
+    {
       generator = std::make_shared<DesertGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_SCRUB:
+    {
       generator = std::make_shared<ScrubGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_VILLAGE:
     {      
       GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
@@ -95,14 +117,18 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       }
 
       generator = SettlementGeneratorFactory::create_settlement_generator(settlement_type, base_map);
-    }
       break;
+    }
     case TileType::TILE_TYPE_GRAVEYARD:
+    {
       generator = GraveyardGeneratorFactory::create_scattered_graveyard_generator(map_exit_id, true);
       break;
+    }
     case TileType::TILE_TYPE_DUNGEON_COMPLEX:
+    {
       generator = std::make_shared<DungeonGenerator>(map_exit_id);
       break;
+    }
     // All three worship sites use the same process:
     case TileType::TILE_TYPE_CHURCH:
     case TileType::TILE_TYPE_SITE_OF_DEATH:
@@ -125,10 +151,13 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       break;
     }
     case TileType::TILE_TYPE_CRYPT:
+    {
       generator = std::make_shared<CryptGenerator>(map_exit_id);
       break;
+    }
     case TileType::TILE_TYPE_UP_STAIRCASE:
     case TileType::TILE_TYPE_DOWN_STAIRCASE:
+    {
       if (terrain_subtype != TileType::TILE_TYPE_UP_STAIRCASE && terrain_subtype != TileType::TILE_TYPE_DOWN_STAIRCASE)
       {
         // The subtype will function as the terrain type.  The idea is that if we have a set of stairs,
@@ -137,6 +166,24 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       }
 
       break;
+    }
+    case TileType::TILE_TYPE_KEEP:
+    {
+      bool ruined_keep = String::to_bool(tile->get_additional_property(TileProperties::TILE_PROPERTY_RUINED));
+      
+      if (ruined_keep)
+      {
+        generator = std::make_shared<RuinsGenerator>(map_exit_id, 
+                                                     TileType::TILE_TYPE_FIELD /* if you need to change this, RuinsGenerator needs to be updated - currently a placeholder */, 
+                                                     RuinsType::RUINS_TYPE_KEEP);
+      }
+      else
+      {
+        generator = std::make_shared<KeepGenerator>(map_exit_id);
+      }
+
+      break;
+    }
 
     case TileType::TILE_TYPE_UNDEFINED:
     case TileType::TILE_TYPE_WHEAT:
@@ -158,7 +205,6 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_SPRINGS:
     case TileType::TILE_TYPE_BARRACKS:
     case TileType::TILE_TYPE_CASTLE:
-    case TileType::TILE_TYPE_KEEP:
     case TileType::TILE_TYPE_LIBRARY:
     case TileType::TILE_TYPE_DAIS:
     case TileType::TILE_TYPE_PIER:

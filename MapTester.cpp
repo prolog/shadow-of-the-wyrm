@@ -475,7 +475,8 @@ string generate_field_ruins()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  MapPtr ruins_map = RuinsGenerator::generate(field_map, RUINS_TYPE_KEEP);
+  RuinsGenerator rg;
+  MapPtr ruins_map = rg.generate(field_map, RUINS_TYPE_KEEP);
   cout << map_to_string(ruins_map, false);
   return map_to_string(ruins_map);
 }

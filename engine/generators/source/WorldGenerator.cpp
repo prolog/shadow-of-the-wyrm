@@ -4,6 +4,7 @@
 #include "Conversion.hpp"
 #include "DungeonGenerator.hpp"
 #include "Game.hpp"
+#include "Log.hpp"
 #include "WorldGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
@@ -159,10 +160,12 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
 {
   TilePtr tile;
   int rand;
+  map<string, string> addl_properties;
 
   vector<pair<int, pair<TileType, TileType>>> field_special_types;
   field_special_types = {{200, {TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED}},
                          {200, {TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED}},
+                         {300, {TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_UNDEFINED}},
                          {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
   
   // Always add fields.  
@@ -179,6 +182,17 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
         if (special_type.second.first == TileType::TILE_TYPE_VILLAGE)
         {
           village_coordinates.insert(make_pair(row, col));
+        }
+        else if (special_type.second.first == TileType::TILE_TYPE_KEEP)
+        {
+          bool ruined = RNG::percent_chance(50);
+
+          // Set the ruined flag, if applicable, so that when the generator is
+          // created, the keep can be generated either ruined or upright.
+          if (ruined)
+          {
+            tile->set_additional_property(TileProperties::TILE_PROPERTY_RUINED, Bool::to_string(ruined));
+          }
         }
 
         break;

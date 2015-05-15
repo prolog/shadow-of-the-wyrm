@@ -31,6 +31,16 @@ class Convert
     template <class T> static T from_string(const std::string& str);
 };
 
+class Bool
+{
+  public:
+    static std::string to_string(const bool b);
+
+  protected:
+    Bool();
+    ~Bool();
+};
+
 class Float
 {
   public:

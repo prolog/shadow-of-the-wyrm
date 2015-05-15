@@ -3760,6 +3760,7 @@
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -3796,6 +3797,7 @@
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -4044,6 +4046,7 @@
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
 				</AllowableTerrainTypes>
@@ -4163,6 +4166,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4466,6 +4470,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4510,6 +4515,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4553,6 +4559,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4597,6 +4604,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4639,6 +4647,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -4681,6 +4690,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4723,6 +4733,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4766,6 +4777,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4809,6 +4821,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4851,6 +4864,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4894,6 +4908,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4936,6 +4951,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -4980,6 +4996,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -5050,6 +5067,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -5093,6 +5111,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -5137,6 +5156,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -5179,6 +5199,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -5262,6 +5283,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -5318,6 +5340,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -5359,6 +5382,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -5403,6 +5427,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -5446,6 +5471,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -5527,6 +5553,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -5844,6 +5871,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -6105,6 +6133,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -6271,6 +6300,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -6395,6 +6425,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -6765,6 +6796,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -6957,6 +6989,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -7248,6 +7281,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -7587,6 +7621,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -7673,6 +7708,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -7716,6 +7752,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -8069,6 +8106,7 @@
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
 				</AllowableTerrainTypes>
@@ -8152,6 +8190,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -8193,6 +8232,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -8235,6 +8275,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -8278,6 +8319,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -8319,6 +8361,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -8462,6 +8505,7 @@
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
 				</AllowableTerrainTypes>
@@ -8503,6 +8547,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -8744,6 +8789,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -9681,6 +9727,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -9805,6 +9852,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -9928,6 +9976,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -10135,6 +10184,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -10176,6 +10226,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -10227,6 +10278,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
@@ -10270,6 +10322,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -10819,6 +10872,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -10860,6 +10914,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -10902,6 +10957,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -11191,6 +11247,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -11943,6 +12000,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -11985,6 +12043,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -12027,6 +12086,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -12069,6 +12129,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -12109,6 +12170,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -12150,6 +12212,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -12191,6 +12254,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -12299,6 +12363,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -12828,6 +12893,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -12869,6 +12935,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -12951,6 +13018,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -13239,6 +13307,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -13459,6 +13528,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -13499,6 +13569,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -13702,6 +13773,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -13775,6 +13847,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -14551,6 +14624,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -14745,6 +14819,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -14797,6 +14872,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -14840,6 +14916,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -14880,6 +14957,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -14922,6 +15000,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -14964,6 +15043,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -15006,6 +15086,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -15049,6 +15130,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
@@ -15415,6 +15497,7 @@
 					<TileType>21</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
+					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
