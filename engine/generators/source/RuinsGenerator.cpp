@@ -41,6 +41,11 @@ MapPtr RuinsGenerator::generate(const Dimensions& dim)
   return generate(base_map, rt);
 }
 
+bool RuinsGenerator::get_permanence_default() const
+{
+  return true;
+}
+
 // Generate a number of ruined buildings by doing a random walk starting at the
 // top left corner of the map.
 MapPtr RuinsGenerator::generate_ruined_settlement(MapPtr map)
