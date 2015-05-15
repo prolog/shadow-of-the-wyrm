@@ -12,6 +12,10 @@ Savage Lands v0.3.6 "Milan"
 - Keeps are now part of the world generation process.  These can either
   be ruined or unruined.
 
+- Keeps are now generated as permanent structures.
+
+- Changed the keep symbol to 'O'.
+
 - New creatures: Wispe.
 
 - New artifacts: black sabre "Bloodsinger".

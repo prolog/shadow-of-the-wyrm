@@ -21,6 +21,8 @@ class RuinsGenerator : public SL::Generator
     MapPtr generate(const Dimensions& dim);
 
   protected:
+    virtual bool get_permanence_default() const override;
+
     MapPtr generate_ruined_settlement(MapPtr map);
     MapPtr generate_ruined_keep(MapPtr map);
 
