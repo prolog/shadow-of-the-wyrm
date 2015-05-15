@@ -1,3 +1,4 @@
+#include "FieldGenerator.hpp"
 #include "RuinsGenerator.hpp"
 #include "SettlementRuinsGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
@@ -5,6 +6,11 @@
 #include "RNG.hpp"
 
 using namespace std;
+
+RuinsGenerator::RuinsGenerator(const string& map_exit_id, const TileType tile_type, const RuinsType new_rt)
+: Generator(map_exit_id, tile_type), rt(new_rt)
+{
+}
 
 MapPtr RuinsGenerator::generate(MapPtr map, const RuinsType& ruins_type)
 {
@@ -22,6 +28,17 @@ MapPtr RuinsGenerator::generate(MapPtr map, const RuinsType& ruins_type)
   }
 
   return result_map;
+}
+
+MapPtr RuinsGenerator::generate(const Dimensions& dim)
+{
+  TilePtr null_tile;
+
+  // JCD FIXME: At some point, may want to make the base map type configurable...
+  FieldGenerator fg(map_exit_id);
+  MapPtr base_map = fg.generate(dim);
+
+  return generate(base_map, rt);
 }
 
 // Generate a number of ruined buildings by doing a random walk starting at the

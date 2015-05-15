@@ -9,6 +9,9 @@ Savage Lands v0.3.6 "Milan"
 
 - Made certain characters (the blacksmith, Hild, etc) uniques.
 
+- Keeps are now part of the world generation process.  These can either
+  be ruined or unruined.
+
 - New creatures: Wispe.
 
 - New artifacts: black sabre "Bloodsinger".

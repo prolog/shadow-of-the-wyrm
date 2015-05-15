@@ -1,9 +1,19 @@
 #include "FeatureGenerator.hpp"
+#include "FieldGenerator.hpp"
 #include "KeepGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
 using std::string;
+
+KeepGenerator::KeepGenerator(const string& map_exit_id, const int chance_decay)
+  : Generator(map_exit_id, TileType::TILE_TYPE_KEEP), PCT_CHANCE_DECAY(chance_decay)
+{
+  FieldGenerator fg(map_exit_id);
+  Dimensions dim;
+
+  base_map = fg.generate(dim);
+}
 
 KeepGenerator::KeepGenerator(MapPtr new_base_map, const int chance_decay)
 : Generator(new_base_map->get_map_exit_id(), TileType::TILE_TYPE_KEEP)

@@ -92,6 +92,21 @@ bool String::to_bool(const string& convert)
   return false;
 }
 
+Bool::Bool()
+{
+}
+
+Bool::~Bool()
+{
+}
+
+string Bool::to_string(const bool b)
+{
+  ostringstream ss;
+  ss << b;
+  return ss.str();
+}
+
 Char::Char()
 {
 }
