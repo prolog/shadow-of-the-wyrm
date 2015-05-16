@@ -97,6 +97,7 @@ string generate_island_sacrifice_site();
 string generate_rocky_sacrifice_site();
 string generate_overgrown_sacrifice_site();
 string generate_mine();
+string generate_castle();
 
 void   settlement_maps();
 void   city_maps();
@@ -561,6 +562,13 @@ string generate_mine()
   return map_to_string(mine_map);
 }
 
+string generate_castle()
+{
+  // ...
+  string foo;
+  return foo;
+}
+
 string generate_world()
 {
   // Add inputs for parameters later!
@@ -847,6 +855,7 @@ void city_maps()
     cout << "4. Churches, Temples, Sites of Death" << endl;
     cout << "5. Crypt" << endl;
     cout << "6. Mine" << endl;
+    cout << "7. Castle" << endl;
 
     cin >> city_adjacent_map;
     
@@ -874,6 +883,10 @@ void city_maps()
       case 6:
         map = generate_mine();
         output_map(map, "mine_test.html");
+        break;
+      case 7:
+        map = generate_castle();
+        output_map(map, "castle.html");
         break;
       default:
         break;
