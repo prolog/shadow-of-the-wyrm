@@ -48,8 +48,8 @@ bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, S
   bool trained_skill = false;
 
   int skill_threshold = skill->get_threshold();
-  int skill_value = skill->get_value();
   int skill_marks = skill->get_marks();
+  int skill_value = skill->get_value();
 
   // Skills aren't automatically learned when at 0 and enough success/failure occurs.  This is meant to be a model
   // similar to ADOM and not DCSS, and is absolutely intentional.  Classes matter, and the initial skill set is
@@ -58,6 +58,8 @@ bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, S
   {
     if ((skill_value == 0 && (skill->can_train_from_unlearned())) || (skill_value > 0))
     {
+      skill_value = skill->get_value();
+
       // Update the value, which also updates the threshold.
       skill->set_value(skill_value + 1);
 
@@ -67,11 +69,13 @@ bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, S
         manager.add_new_message(skill_increase_message);
         trained_skill = true;
       }
+
+      skill_threshold = skill->get_threshold();
     }
 
     // Must decrement by at least 1 (i.e., when the skill is initially
     // at 0 points).
-    skill_marks -= std::min(skill_threshold, 1);
+    skill_marks -= std::max(skill_threshold, 1);
   }
 
   skill->set_marks(skill_marks);
