@@ -715,6 +715,18 @@
     <Filter Include="Source Files\source">
       <UniqueIdentifier>{c113b40f-ffc0-48b4-9799-6ebc117fc9e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\generators\fortresses">
+      <UniqueIdentifier>{3463a580-84e4-4319-bba1-a6f451e3e382}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\fortresses\source">
+      <UniqueIdentifier>{8da43ce0-8d5a-4ff8-8940-413ba8c88e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\fortresses">
+      <UniqueIdentifier>{6b8c7f1a-7449-4153-9f4c-b0a54de7176f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\fortresses\include">
+      <UniqueIdentifier>{7bf78366-7d2c-4999-901b-57450ca1bf53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -1606,12 +1618,6 @@
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\generators\include\HillsGenerator.hpp">
-      <Filter>Header Files\engine\generators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\include\KeepGenerator.hpp">
-      <Filter>Header Files\engine\generators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\include\KeepRuinsGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\generators\include\MarshGenerator.hpp">
@@ -3354,6 +3360,24 @@
     <ClInclude Include="engine\magic\include\StormShapeProcessor.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\fortresses\include\CastleGeneratorStrategy.hpp">
+      <Filter>Header Files\engine\generators\fortresses\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\fortresses\include\CastleGeneratorStrategyFactory.hpp">
+      <Filter>Header Files\engine\generators\fortresses\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\fortresses\include\MotteBaileyCastleGeneratorStrategy.hpp">
+      <Filter>Header Files\engine\generators\fortresses\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\fortresses\include\CastleGenerator.hpp">
+      <Filter>Header Files\engine\generators\fortresses\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\fortresses\include\KeepGenerator.hpp">
+      <Filter>Header Files\engine\generators\fortresses\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\fortresses\include\KeepRuinsGenerator.hpp">
+      <Filter>Header Files\engine\generators\fortresses\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4242,12 +4266,6 @@
       <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\source\HillsGenerator.cpp">
-      <Filter>Source Files\engine\generators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\source\KeepGenerator.cpp">
-      <Filter>Source Files\engine\generators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\source\KeepRuinsGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\source\MarshGenerator.cpp">
@@ -6538,6 +6556,21 @@
     </ClCompile>
     <ClCompile Include="engine\magic\source\StormShapeProcessor.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\fortresses\source\CastleGenerator.cpp">
+      <Filter>Source Files\engine\generators\fortresses\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\fortresses\source\KeepGenerator.cpp">
+      <Filter>Source Files\engine\generators\fortresses\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\fortresses\source\KeepRuinsGenerator.cpp">
+      <Filter>Source Files\engine\generators\fortresses\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\fortresses\source\CastleGeneratorStrategyFactory.cpp">
+      <Filter>Source Files\engine\generators\fortresses\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\fortresses\source\MotteBaileyCastleGeneratorStrategy.cpp">
+      <Filter>Source Files\engine\generators\fortresses\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
