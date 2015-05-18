@@ -34,4 +34,8 @@ TEST(SL_Engine_Maps_DirectionUtils, get_opposite_direction)
   EXPECT_EQ(Direction::DIRECTION_NORTH_WEST, DirectionUtils::get_opposite_direction(Direction::DIRECTION_SOUTH_EAST));
   EXPECT_EQ(Direction::DIRECTION_UP, DirectionUtils::get_opposite_direction(Direction::DIRECTION_DOWN));
   EXPECT_EQ(Direction::DIRECTION_DOWN, DirectionUtils::get_opposite_direction(Direction::DIRECTION_UP));
+  EXPECT_EQ(CardinalDirection::CARDINAL_DIRECTION_SOUTH, DirectionUtils::get_opposite_direction(CardinalDirection::CARDINAL_DIRECTION_NORTH));
+  EXPECT_EQ(CardinalDirection::CARDINAL_DIRECTION_NORTH, DirectionUtils::get_opposite_direction(CardinalDirection::CARDINAL_DIRECTION_SOUTH));
+  EXPECT_EQ(CardinalDirection::CARDINAL_DIRECTION_EAST, DirectionUtils::get_opposite_direction(CardinalDirection::CARDINAL_DIRECTION_WEST));
+  EXPECT_EQ(CardinalDirection::CARDINAL_DIRECTION_WEST, DirectionUtils::get_opposite_direction(CardinalDirection::CARDINAL_DIRECTION_EAST));
 }
