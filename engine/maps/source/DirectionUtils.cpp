@@ -32,6 +32,30 @@ bool DirectionUtils::is_ordinal(const Direction d)
   }
 }
 
+CardinalDirection DirectionUtils::get_opposite_direction(const CardinalDirection d)
+{
+  CardinalDirection o = d;
+
+  switch (d)
+  {
+    case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+      o = CardinalDirection::CARDINAL_DIRECTION_SOUTH;
+      break;
+    case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+      o = CardinalDirection::CARDINAL_DIRECTION_NORTH;
+      break;
+    case CardinalDirection::CARDINAL_DIRECTION_EAST:
+      o = CardinalDirection::CARDINAL_DIRECTION_WEST;
+      break;
+    case CardinalDirection::CARDINAL_DIRECTION_WEST:
+      o = CardinalDirection::CARDINAL_DIRECTION_EAST;
+    default:
+      break;
+  }
+
+  return o;
+}
+
 Direction DirectionUtils::get_opposite_direction(const Direction d)
 {
   Direction o = d;

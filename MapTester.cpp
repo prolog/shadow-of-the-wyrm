@@ -11,6 +11,7 @@
 #include "RNG.hpp"
 #include "Calendar.hpp"
 #include "Date.hpp"
+#include "CastleGenerator.hpp"
 #include "CathedralGenerator.hpp"
 #include "CavernGenerator.hpp"
 #include "CryptGenerator.hpp"
@@ -564,9 +565,10 @@ string generate_mine()
 
 string generate_castle()
 {
-  // ...
-  string foo;
-  return foo;
+  GeneratorPtr castle_gen = std::make_shared<CastleGenerator>("", TileType::TILE_TYPE_FIELD);
+  MapPtr castle_map = castle_gen->generate();
+  cout << map_to_string(castle_map, false);
+  return map_to_string(castle_map);
 }
 
 string generate_world()
