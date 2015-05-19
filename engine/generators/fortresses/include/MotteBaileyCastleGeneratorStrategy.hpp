@@ -7,7 +7,7 @@ class MotteBaileyCastleGeneratorStrategy : public CastleGeneratorStrategy
     void generate(MapPtr castle_map);
 
   protected:
-    void generate_moat(MapPtr castle_map, const int moat_radius);
+    void generate_moat(MapPtr castle_map, const int start_y, const int start_x, const int end_y, const int end_x);
     void generate_motte(MapPtr castle_map, const int motte_height, const int motte_width);
 
     static const int MIN_MOTTE_WIDTH;
