@@ -368,6 +368,16 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="ItemScripts">
+	<xs:annotation>
+		<xs:documentation>Scripts that can be run when something happens to the item.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="AmmunitionDestructionScript" type="tns:ScriptDetails" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="Class">
 	<xs:annotation>
 		<xs:documentation>A creature Class.</xs:documentation>
@@ -806,6 +816,7 @@
 		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>
 		<xs:element ref="tns:Resistances" minOccurs="0"/>
 		<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
+		<xs:element ref="tns:ItemScripts" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>
 </xs:complexType>

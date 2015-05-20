@@ -1,5 +1,7 @@
 #include "XMLItemReader.hpp"
+#include "ItemTypes.hpp"
 #include "XMLResistancesReader.hpp"
+#include "XMLScriptsReader.hpp"
 
 using namespace std;
 
@@ -124,6 +126,13 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
       parse_properties(addl_props, properties_node);
       item->set_additional_properties(addl_props);
     }
+
+    // Scripts
+    XMLNode item_scripts_node = XMLUtils::get_next_element_by_local_name(item_node, "ItemScripts");
+    if (!item_scripts_node.is_null())
+    {
+      parse_item_scripts(item, item_scripts_node);
+    }
   }
 }
 
@@ -146,5 +155,22 @@ void XMLItemReader::parse_text_details(ItemPtr item, const XMLNode& text_details
     
     Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(text_details_node, "Colour"));
     item->set_colour(colour);
+  }
+}
+
+void XMLItemReader::parse_item_scripts(ItemPtr item, const XMLNode& item_scripts_node)
+{
+  XMLScriptsReader xsr;
+
+  if (item != nullptr && !item_scripts_node.is_null())
+  {
+    vector<pair<string, string>> item_scripts = { {"AmmunitionDestructionScript", ItemEventScripts::ITEM_EVENT_AMMO_DESTRUCT} };
+
+    for (const pair<string, string>& script_pair : item_scripts)
+    {
+      XMLNode node = XMLUtils::get_next_element_by_local_name(item_scripts_node, script_pair.first);
+      ScriptDetails sd = xsr.get_script_details(node);
+      item->add_event_script(script_pair.second, sd);
+    }
   }
 }

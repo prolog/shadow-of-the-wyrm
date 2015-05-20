@@ -10,6 +10,7 @@
 #include "ItemTypes.hpp"
 #include "MaterialTypes.hpp"
 #include "Resistances.hpp"
+#include "ScriptDetails.hpp"
 #include "Statistic.hpp"
 #include "Weight.hpp"
 
@@ -143,6 +144,13 @@ class Item : public ISerializable
     std::string get_additional_property(const std::string& property_name) const;
     bool has_additional_property(const std::string& property_name) const;
 
+    void clear_event_scripts();
+    void set_event_scripts(const std::map<std::string, ScriptDetails>& esm);
+    std::map<std::string, ScriptDetails> get_event_scripts() const;
+    void add_event_script(const std::string& event_name, const ScriptDetails& sd);
+    bool has_event_script(const std::string& event_name);
+    ScriptDetails get_event_script(const std::string& event_name) const;
+
     virtual Item* create_with_new_id();
     virtual Item* create();
     virtual Item* clone() = 0;
@@ -196,6 +204,7 @@ class Item : public ISerializable
     Statistic remaining_enchants;
     Statistic remaining_smithings;
     std::map<std::string, std::string> additional_properties;
+    std::map<std::string, ScriptDetails> event_scripts;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

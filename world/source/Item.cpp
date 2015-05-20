@@ -72,6 +72,7 @@ bool Item::operator==(const Item& i) const
   result = result && (remaining_enchants == i.remaining_enchants);
   result = result && (remaining_smithings == i.remaining_smithings);
   result = result && (additional_properties == i.additional_properties);
+  result = result && (event_scripts == i.event_scripts);
 
   return result;
 }
@@ -317,6 +318,7 @@ bool Item::matches(std::shared_ptr<Item> i)
     match = match && (glowing               == i->get_glowing()              );
     match = match && (resistances           == i->get_resistances()          );
     match = match && (additional_properties == i->additional_properties      );
+    match = match && (event_scripts         == i->event_scripts              );
 
     // Originally, I didn't want to consier remaining enchantments/smithings
     // for purposes of matching.  But then the additional properties were used
@@ -622,6 +624,55 @@ bool Item::has_additional_property(const string& property_name) const
   return (additional_properties.find(property_name) != additional_properties.end());
 }
 
+void Item::clear_event_scripts()
+{
+  event_scripts.clear();
+}
+
+void Item::set_event_scripts(const map<string, ScriptDetails>& esm)
+{
+  event_scripts = esm;
+}
+
+map<string, ScriptDetails> Item::get_event_scripts() const
+{
+  return event_scripts;
+}
+
+void Item::add_event_script(const string& event_name, const ScriptDetails& sd)
+{
+  event_scripts[event_name] = sd;
+}
+
+bool Item::has_event_script(const string& event_name)
+{
+  bool has_event = false;
+
+  EventScriptsMap::iterator e_it = event_scripts.find(event_name);
+
+  if (e_it != event_scripts.end())
+  {
+    has_event = true;
+  }
+
+  return has_event;
+}
+
+ScriptDetails Item::get_event_script(const string& event_name) const
+{
+  ScriptDetails sd;
+
+  EventScriptsMap::const_iterator e_it = event_scripts.find(event_name);
+
+  if (e_it != event_scripts.end())
+  {
+    sd = e_it->second;
+  }
+
+  return sd;
+}
+
+
 bool Item::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, id);
@@ -654,6 +705,13 @@ bool Item::serialize(ostream& stream) const
   remaining_smithings.serialize(stream);
 
   Serialize::write_string_map(stream, additional_properties);
+
+  Serialize::write_size_t(stream, event_scripts.size());
+  for (const auto& script_pair : event_scripts)
+  {
+    Serialize::write_string(stream, script_pair.first);
+    script_pair.second.serialize(stream);
+  }
 
   return true;
 }
@@ -690,6 +748,20 @@ bool Item::deserialize(istream& stream)
   remaining_smithings.deserialize(stream);
 
   Serialize::read_string_map(stream, additional_properties);
+
+  size_t event_script_size = 0;
+  event_scripts.clear();
+  Serialize::read_size_t(stream, event_script_size);
+
+  for (size_t i = 0; i < event_script_size; i++)
+  {
+    string script_id;
+    ScriptDetails sd;
+
+    Serialize::read_string(stream, script_id);
+    sd.deserialize(stream);
+    event_scripts.insert(make_pair(script_id, sd));
+  }
 
   return true;
 }
