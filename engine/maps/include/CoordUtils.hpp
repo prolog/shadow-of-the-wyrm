@@ -1,5 +1,6 @@
 #pragma once
 #include <set>
+#include <map>
 #include <vector>
 #include "common.hpp"
 #include "Dimensions.hpp"
@@ -25,6 +26,9 @@ class CoordUtils
 
     // Get the perimeter coordinates of a given rectangle.
     static std::vector<Coordinate> get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
+
+    // Get the midway points, given the bounding box.
+    static std::map<CardinalDirection, Coordinate> get_midway_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
 
     // Get all the coordinates in the given range.
     static std::vector<Coordinate> get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right);

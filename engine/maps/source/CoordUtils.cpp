@@ -253,6 +253,19 @@ vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_l
   return perimeter_coordinates;
 }
 
+map<CardinalDirection, Coordinate> CoordUtils::get_midway_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
+{
+  int height = bottom_right.first - top_left.first;
+  int width = bottom_right.second - top_left.second;
+
+  map<CardinalDirection, Coordinate> mid_coords = { { CardinalDirection::CARDINAL_DIRECTION_NORTH, { top_left.first, top_left.second + (width / 2) } },
+                                                    { CardinalDirection::CARDINAL_DIRECTION_SOUTH, { top_left.first + height, top_left.second + (width / 2) } },
+                                                    { CardinalDirection::CARDINAL_DIRECTION_WEST, { top_left.first + (height / 2), top_left.second + width} },
+                                                    { CardinalDirection::CARDINAL_DIRECTION_EAST, { top_left.first + (height / 2), top_left.second } } };
+
+  return mid_coords;
+}
+
 // Returns all coordinates from top left to bottom right, inclusive.
 vector<Coordinate> CoordUtils::get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right)
 {
