@@ -18,7 +18,13 @@ Savage Lands v0.3.6 "Milan"
 
 - Added castle generation to the MapTester configuration.
 
+- Items can now have scripts.  Added support for an "ammo destruction
+  script", to be potentially fired when ammunition is used and then
+  destroyed.
+
 - New creatures: Wispe.
+
+- New items: clay pot.
 
 - New artifacts: black sabre "Bloodsinger".
 

@@ -19950,6 +19950,35 @@
 					<Type>2</Type>
 				</Damage>
 			</Missile>
+			<Missile id="clay_pot">
+				<DescriptionSID>CLAY_POT_SID</DescriptionSID>
+				<UsageDescriptionSID>CLAY_POT_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>o</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<ItemScripts>
+					<AmmunitionDestructionScript>
+						<Script>items/clay_pot.lua</Script>
+						<Chance>50</Chance>
+					</AmmunitionDestructionScript>
+				</ItemScripts>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<RequiresRangedWeapon>0</RequiresRangedWeapon>
+				<Difficulty>50</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>3</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
 			<Missile id="arrow">
 				<DescriptionSID>ARROW_SID</DescriptionSID>
 				<UsageDescriptionSID>ARROW_USAGE_SID</UsageDescriptionSID>

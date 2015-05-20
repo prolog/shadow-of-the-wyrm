@@ -15,6 +15,6 @@ class XMLItemReader : public XMLReader
     
   protected:
     void parse_text_details(ItemPtr item, const XMLNode& text_details_node);
-
+    void parse_item_scripts(ItemPtr item, const XMLNode& item_scripts_node);
 };
 

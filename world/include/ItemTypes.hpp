@@ -77,3 +77,13 @@ enum struct FoodType
   FOOD_TYPE_OTHER = 4,
   FOOD_TYPE_LAST = 5
 };
+
+class ItemEventScripts
+{
+  public:
+    static const std::string ITEM_EVENT_AMMO_DESTRUCT;
+
+  protected:
+    ItemEventScripts();
+    ~ItemEventScripts();
+};
