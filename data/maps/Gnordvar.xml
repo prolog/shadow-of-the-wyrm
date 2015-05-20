@@ -150,6 +150,29 @@
 				</Coord>
 			</Placement>
 		</Creatures>
+		<Items>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>69</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>69</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits/>
 	<Features>
