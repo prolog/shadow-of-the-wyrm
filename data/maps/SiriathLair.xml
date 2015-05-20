@@ -86,7 +86,22 @@
 				</Coord>
 			</Placement>
 		</Creatures>
-		<Items/>
+		<Items>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>35</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>35</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits>
 		<Exit>
