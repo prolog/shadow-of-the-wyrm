@@ -108,6 +108,48 @@
 		</Creatures>
 		<Items>
 			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>5</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>8</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>11</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>11</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>73</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>clay_pot</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>77</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>stoneheim_history</ID>
 				<Coord>
 					<Row>6</Row>
