@@ -18,6 +18,7 @@ const string TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID = "TILE_PROPERTY_ORIG
 const string TileProperties::TILE_PROPERTY_DEPTH_INCREMENT = "TILE_PROPERTY_DEPTH_INCREMENT";
 const string TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID = "TP_FLORA_TILE_DESC_SID";
 const string TileProperties::TILE_PROPERTY_RUINED = "TILE_PROPERTY_RUINED";
+const string TileProperties::TILE_PROPERTY_CASTLE_TYPE = "TILE_PROPERTY_CASTLE_TYPE";
 
 // Represents the non-number part of a depth custom map ID key.
 const string TileProperties::CUSTOM_MAP_ID_PART = "_MAP_ID";

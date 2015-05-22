@@ -16,7 +16,8 @@ Savage Lands v0.3.6 "Milan"
 
 - Changed the keep symbol to 'O'.
 
-- Added castle generation to the MapTester configuration.
+- Added castle generation to the MapTester configuration, as well as to
+  the world map generation.
 
 - Items can now have scripts.  Added support for an "ammo destruction
   script", to be potentially fired when ammunition is used and then

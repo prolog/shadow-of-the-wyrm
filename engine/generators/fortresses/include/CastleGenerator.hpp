@@ -3,10 +3,11 @@
 
 enum struct CastleType
 {
-  CASTLE_TYPE_MOTTE_AND_BAILEY = 0 /*,
-  CASTLE_TYPE_RECTANGULAR_KEEP = 1,
+  CASTLE_TYPE_MOTTE_AND_BAILEY = 0,
+/*  CASTLE_TYPE_RECTANGULAR_KEEP = 1,
   CASTLE_TYPE_CIRCULAR_KEEP = 2,
   CASTLE_TYPE_CONCENTRIC = 3 */
+  CASTLE_TYPE_LAST = 0 // Used for random type generation
 };
 
 class CastleGenerator : public SL::Generator

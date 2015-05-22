@@ -1,5 +1,6 @@
 #include <vector>
 #include "AlignmentEnums.hpp"
+#include "CastleGenerator.hpp"
 #include "CoordUtils.hpp"
 #include "Conversion.hpp"
 #include "DungeonGenerator.hpp"
@@ -165,7 +166,8 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
   vector<pair<int, pair<TileType, TileType>>> field_special_types;
   field_special_types = {{200, {TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED}},
                          {200, {TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED}},
-                         {300, {TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_UNDEFINED}},
+                         {300, {TileType::TILE_TYPE_CASTLE, TileType::TILE_TYPE_FIELD}},
+                         {300, {TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_FIELD}},
                          {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
   
   // Always add fields.  
@@ -193,6 +195,11 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
           {
             tile->set_additional_property(TileProperties::TILE_PROPERTY_RUINED, Bool::to_string(ruined));
           }
+        }
+        else if (special_type.second.first == TileType::TILE_TYPE_CASTLE)
+        {
+          CastleType ct = static_cast<CastleType>(RNG::range(static_cast<int>(CastleType::CASTLE_TYPE_MOTTE_AND_BAILEY), static_cast<int>(CastleType::CASTLE_TYPE_LAST)));
+          tile->set_additional_property(TileProperties::TILE_PROPERTY_CASTLE_TYPE, std::to_string(static_cast<int>(ct)));
         }
 
         break;

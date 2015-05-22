@@ -1,3 +1,4 @@
+#include "CastleGenerator.hpp"
 #include "CavernGenerator.hpp"
 #include "Conversion.hpp"
 #include "CryptGenerator.hpp"
@@ -184,7 +185,12 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
 
       break;
     }
-
+    case TileType::TILE_TYPE_CASTLE:
+    {
+      CastleType ct = static_cast<CastleType>(String::to_int(tile->get_additional_property(TileProperties::TILE_PROPERTY_CASTLE_TYPE)));
+      generator = std::make_shared<CastleGenerator>(map_exit_id, terrain_subtype);
+      break;
+    }
     case TileType::TILE_TYPE_UNDEFINED:
     case TileType::TILE_TYPE_WHEAT:
     case TileType::TILE_TYPE_CAIRN:
@@ -204,7 +210,6 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_WEEDS:
     case TileType::TILE_TYPE_SPRINGS:
     case TileType::TILE_TYPE_BARRACKS:
-    case TileType::TILE_TYPE_CASTLE:
     case TileType::TILE_TYPE_LIBRARY:
     case TileType::TILE_TYPE_DAIS:
     case TileType::TILE_TYPE_PIER:
