@@ -9,6 +9,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"
 #include "Game.hpp"
+#include "ItemScript.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemManager.hpp"
 #include "MapCursor.hpp"
@@ -18,6 +19,7 @@
 #include "RangedCombatAction.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RNG.hpp"
+#include "ScriptEngine.hpp"
 #include "SelectionUtils.hpp"
 #include "TileSelectionAction.hpp"
 
@@ -222,7 +224,10 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
   CreaturePtr target_creature = tile->get_creature();
 
   add_ranged_combat_message(creature, target_creature);
-    
+  ItemPtr item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
+  string item_base_id = item->get_base_id();
+  ScriptDetails item_script = item->get_event_script(ItemEventScripts::ITEM_EVENT_AMMO_DESTRUCT);
+
   if (target_creature)
   {
     CombatManager cm;
@@ -242,10 +247,22 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
       cm.attack(creature, target_creature, AttackType::ATTACK_TYPE_RANGED);
     }
   }
+  
+  bool ammunition_destroyed = false;
 
   if (!ammo_auto_destroy)
   {
-    destroy_ammunition_or_drop_on_tile(creature, tile);
+    ammunition_destroyed = destroy_ammunition_or_drop_on_tile(creature, tile);
+  }
+
+  // If the ammunition is destroyed, run the appropriate script.
+  if ((ammo_auto_destroy || ammunition_destroyed) && (RNG::percent_chance(item_script.get_chance())))
+  {
+    string script_name = item_script.get_script();
+    ScriptEngine& se = Game::instance().get_script_engine_ref();
+    ItemScript is;
+
+    is.execute(se, script_name, ItemEventScripts::ITEM_EVENT_AMMO_DESTRUCT, item_base_id, creature->get_original_id(), target_coords.first, target_coords.second);
   }
 }
 
@@ -291,8 +308,9 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
 }
 
 // Either destroy the ammunition, or drop it on the appropriate tile.
-void RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature, TilePtr tile)
+bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature, TilePtr tile)
 {
+  bool ammunition_destroyed = true;
   // Drop ammo on tile, assuming the ammunition survived being fired.
   ItemManager im;
   
@@ -326,8 +344,11 @@ void RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
       IInventoryPtr inv = tile->get_items();
       
       inv->merge_or_add(ammunition, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+      ammunition_destroyed = false;
     }
   }
+
+  return ammunition_destroyed;
 }
 
 ActionCostValue RangedCombatAction::get_action_cost_value(CreaturePtr creature) const

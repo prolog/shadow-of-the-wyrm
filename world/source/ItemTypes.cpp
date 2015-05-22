@@ -40,5 +40,7 @@ ItemEventScripts::~ItemEventScripts()
 {
 }
 
+// If you are changing any of these values, go through the Lua scripts to
+// ensure those are updated as well!
 const string ItemEventScripts::ITEM_EVENT_AMMO_DESTRUCT = "ITEM_EVENT_AMMO_DESTRUCT";
 

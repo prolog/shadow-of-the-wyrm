@@ -19965,7 +19965,7 @@
 				<ItemScripts>
 					<AmmunitionDestructionScript>
 						<Script>items/clay_pot.lua</Script>
-						<Chance>50</Chance>
+						<Chance>100</Chance>
 					</AmmunitionDestructionScript>
 				</ItemScripts>
 				<Skill>1009</Skill>
