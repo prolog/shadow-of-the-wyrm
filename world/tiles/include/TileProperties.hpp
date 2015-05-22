@@ -30,6 +30,9 @@ class TileProperties
     // Should the tile be generated ruined, if applicable?
     static const std::string TILE_PROPERTY_RUINED;
 
+    // What type of castle is this?
+    static const std::string TILE_PROPERTY_CASTLE_TYPE;
+
     // Generates the map key that identifies the custom map ID for
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);
