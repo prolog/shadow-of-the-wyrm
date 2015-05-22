@@ -113,6 +113,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
   lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
+  lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "remove_active_quest", remove_active_quest);
@@ -550,6 +551,47 @@ int add_object_to_player_tile(lua_State* ls)
   }
 
   return 0;
+}
+
+// Add an object to a particular tile.
+//
+// Argument 1: object base id
+//          2: row
+//          3: col
+//          4: quantity (optional, 1 assumed)
+int add_object_to_tile(lua_State* ls)
+{
+  bool result = false;
+  int num_args = lua_gettop(ls);
+
+  if (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && (num_args == 3 || (num_args == 4 && lua_isnumber(ls, 4))))
+  {
+    string base_item_id = lua_tostring(ls, 1);
+    int row = lua_tointeger(ls, 2);
+    int col = lua_tointeger(ls, 3);
+
+    uint quantity = 1;
+
+    // Set the quantity if it was specified.    
+    if (num_args == 4)
+    {
+      quantity = static_cast<uint>(lua_tointeger(ls, 4));
+    }
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+    TilePtr tile = map->at(row, col);
+
+    result = ItemManager::create_item_with_probability(100, 100, tile->get_items(), base_item_id, quantity);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_object_to_tile");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, result);
+  return 1;
 }
 
 // Add a feature (using the class ID) to the player's tile.
