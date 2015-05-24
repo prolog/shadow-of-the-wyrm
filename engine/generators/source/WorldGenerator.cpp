@@ -158,62 +158,52 @@ void WorldGenerator::populate_terrain_cell_maps
 
 // Handle generation of field terrain
 void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const int col, const CellValue world_val)
-{
-  TilePtr tile;
-  int rand;
-  map<string, string> addl_properties;
-
-  vector<pair<int, pair<TileType, TileType>>> field_special_types;
-  field_special_types = {{200, {TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED}},
-                         {200, {TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED}},
-                         {300, {TileType::TILE_TYPE_CASTLE, TileType::TILE_TYPE_FIELD}},
-                         {300, {TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_FIELD}},
-                         {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
-  
+{  
   // Always add fields.  
   if (world_val == CellValue::CELL_OFF)
   {
-    for (const auto& special_type : field_special_types)
+    TilePtr tile;
+
+    vector<pair<int, pair<TileType, TileType>>> field_special_types;
+    field_special_types = {{200, {TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED}},
+                           {200, {TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED}},
+                           {300, {TileType::TILE_TYPE_CASTLE, TileType::TILE_TYPE_FIELD}},
+                           {300, {TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_FIELD}},
+                           {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
+
+    tile = generate_feature_or_default(field_special_types, TileType::TILE_TYPE_FIELD, row, col);
+    result_map->insert(row, col, tile);
+  }
+}
+
+void WorldGenerator::set_tile_properties(TilePtr tile, TileType tile_type, TileType tile_subtype, const int row, const int col)
+{
+  Coordinate c = make_pair(row, col);
+
+  if (tile_type == TileType::TILE_TYPE_VILLAGE)
+  {
+    village_coordinates.insert(c);
+  }
+  else
+  {
+    remove_village_coordinates_if_present(c);
+
+    if (tile_type == TileType::TILE_TYPE_KEEP)
     {
-      rand = RNG::range(1, special_type.first);
+      bool ruined = RNG::percent_chance(50);
 
-      if (rand <= 1)
+      // Set the ruined flag, if applicable, so that when the generator is
+      // created, the keep can be generated either ruined or upright.
+      if (ruined)
       {
-        tile = tg.generate(special_type.second.first, special_type.second.second);
-
-        if (special_type.second.first == TileType::TILE_TYPE_VILLAGE)
-        {
-          village_coordinates.insert(make_pair(row, col));
-        }
-        else if (special_type.second.first == TileType::TILE_TYPE_KEEP)
-        {
-          bool ruined = RNG::percent_chance(50);
-
-          // Set the ruined flag, if applicable, so that when the generator is
-          // created, the keep can be generated either ruined or upright.
-          if (ruined)
-          {
-            tile->set_additional_property(TileProperties::TILE_PROPERTY_RUINED, Bool::to_string(ruined));
-          }
-        }
-        else if (special_type.second.first == TileType::TILE_TYPE_CASTLE)
-        {
-          CastleType ct = static_cast<CastleType>(RNG::range(static_cast<int>(CastleType::CASTLE_TYPE_MOTTE_AND_BAILEY), static_cast<int>(CastleType::CASTLE_TYPE_LAST)));
-          tile->set_additional_property(TileProperties::TILE_PROPERTY_CASTLE_TYPE, std::to_string(static_cast<int>(ct)));
-        }
-
-        break;
+        tile->set_additional_property(TileProperties::TILE_PROPERTY_RUINED, Bool::to_string(ruined));
       }
     }
-
-    // If a special field feature such as a dungeon or crypt hasn't been
-    // generated, generate a plain-jane field.
-    if (tile == nullptr)
+    else if (tile_type == TileType::TILE_TYPE_CASTLE)
     {
-      tile = tg.generate(TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_UNDEFINED);
+      CastleType ct = static_cast<CastleType>(RNG::range(static_cast<int>(CastleType::CASTLE_TYPE_MOTTE_AND_BAILEY), static_cast<int>(CastleType::CASTLE_TYPE_LAST)));
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_CASTLE_TYPE, std::to_string(static_cast<int>(ct)));
     }
-    
-    result_map->insert(row, col, tile);
   }
 }
 
@@ -222,106 +212,83 @@ void WorldGenerator::process_hill_cell(MapPtr result_map, const int row, const i
   if (hills_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
     TilePtr tile;
-    int rand;
-    
-    // 1% chance of a hills village
-    rand = RNG::range(1, 100);
-    Coordinate c(row, col);
-    
-    if (rand <= 1)
-    {
-      tile = tg.generate(TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_HILLS);
-      village_coordinates.insert(c);
-    }
-    else
-    {
-      remove_village_coordinates_if_present(c);
-      tile = tg.generate(TileType::TILE_TYPE_HILLS);      
-    }
-    
+
+    vector<pair<int, pair<TileType, TileType>>> hill_special_types;
+    hill_special_types = { { 100, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_HILLS } },
+                           { 300, { TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_HILLS } } };
+
+    tile = generate_feature_or_default(hill_special_types, TileType::TILE_TYPE_HILLS, row, col);
     result_map->insert(row, col, tile);
   }
 }
 
-void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const int col, const CellValue marsh_val, const CellValue world_val)
+TilePtr WorldGenerator::generate_feature_or_default(const vector<pair<int, pair<TileType, TileType>>>& special_types, TileType default_tile_type, const int row, const int col)
 {
-  TilePtr tile;
-  int rand;
-  
+  TilePtr result;
+
+  for (const auto& sp_type_pair : special_types)
+  {
+    if (RNG::x_in_y_chance(1, sp_type_pair.first))
+    {
+      TileType tile_type = sp_type_pair.second.first;
+      TileType tile_subtype = sp_type_pair.second.second;
+
+      result = tg.generate(tile_type, tile_subtype);
+      set_tile_properties(result, tile_type, tile_subtype, row, col);
+
+      break;
+    }
+  }
+
+  if (result == nullptr)
+  {
+    result = tg.generate(default_tile_type, TileType::TILE_TYPE_UNDEFINED);
+  }
+
+  return result;
+}
+
+void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const int col, const CellValue marsh_val, const CellValue world_val)
+{  
   if (marsh_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
-    // 0.5% chance of marsh village
-    rand = RNG::range(1, 200);
-    Coordinate c(row, col);
-    
-    if (rand <= 1)
-    {
-      tile = tg.generate(TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_MARSH);
-      village_coordinates.insert(c);
-    }
-    else
-    {
-      remove_village_coordinates_if_present(c);
-      tile = tg.generate(TileType::TILE_TYPE_MARSH);
-    }
+    TilePtr tile;
 
+    vector<pair<int, pair<TileType, TileType>>> marsh_special_types;
+    marsh_special_types = { { 200, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_MARSH } } };
+
+    tile = generate_feature_or_default(marsh_special_types, TileType::TILE_TYPE_MARSH, row, col);
     result_map->insert(row, col, tile);
   }
 }
 
 void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const int col, const CellValue forest_val, const CellValue world_val)
-{
-  TilePtr tile;
-  int rand;
-  
+{  
   if (forest_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
-    // 1% chance of forest village, and 1% chance of a wild orchard.
-    rand = RNG::range(1, 100);
-    Coordinate c(row, col);
+    TilePtr tile;
 
-    if (rand <= 1)
-    {
-      tile = tg.generate(TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FOREST);      
-      village_coordinates.insert(c);
-    }
-    else if (rand <= 2)
-    {
-      remove_village_coordinates_if_present(c);
-      tile = tg.generate(TileType::TILE_TYPE_WILD_ORCHARD);
-    }
-    else
-    {
-      remove_village_coordinates_if_present(c);
-      tile = tg.generate(TileType::TILE_TYPE_FOREST);
-    }
-    
+    vector<pair<int, pair<TileType, TileType>>> forest_special_types;
+    forest_special_types = { { 100, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FOREST } },
+                            { 50, { TileType::TILE_TYPE_WILD_ORCHARD, TileType::TILE_TYPE_UNDEFINED } },
+                            { 250, { TileType::TILE_TYPE_CASTLE, TileType::TILE_TYPE_UNDEFINED } } };
+
+    tile = generate_feature_or_default(forest_special_types, TileType::TILE_TYPE_FOREST, row, col);
     result_map->insert(row, col, tile);
   }
 }
 
 void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const int col, const CellValue scrub_val, const CellValue world_val)
-{
-  TilePtr tile;
-  int rand;
-  
+{   
   if (scrub_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
-    // 0.5% chance of scrub village.
-    rand = RNG::range(1, 200);
-    Coordinate c(row, col);
-    
-    if (rand <= 1)
-    {
-      tile = tg.generate(TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_SCRUB);
-      village_coordinates.insert(c);
-    }
-    else
-    {
-      remove_village_coordinates_if_present(c);
-      tile = tg.generate(TileType::TILE_TYPE_SCRUB);          
-    }
+    TilePtr tile;
 
+    vector<pair<int, pair<TileType, TileType>>> scrub_special_types;
+    scrub_special_types = { { 200, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_SCRUB } },
+                            { 300, { TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_SCRUB } } };
+
+    tile = generate_feature_or_default(scrub_special_types, TileType::TILE_TYPE_SCRUB, row, col);
     result_map->insert(row, col, tile);
   }
 }
@@ -340,36 +307,18 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
 
 void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue world_val)
 {
-  TilePtr tile;
-  int rand;
-
-  vector<pair<int, pair<TileType, TileType>>> field_special_types;
-  field_special_types = { { 50, { TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED } },
-                          { 50, { TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED }},
-                          { 33, { TileType::TILE_TYPE_CAVERN, TileType::TILE_TYPE_UNDEFINED }} };
-
   if (mountains_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && forest_val == CellValue::CELL_ON)
   {
-    // 2% chance of being a dungeon
-    // 2% chance of being a crypt
+    // 2% chance of being a dungeon or crypt
     // 3% chance of being a cavern
-    for (const auto& special_type : field_special_types)
-    {
-      rand = RNG::range(1, special_type.first);
+    TilePtr tile;
 
-      if (rand <= 1)
-      {
-        tile = tg.generate(special_type.second.first, special_type.second.second);
-        break;
-      }
-    }
+    vector<pair<int, pair<TileType, TileType>>> mountain_special_types;
+    mountain_special_types = { { 50, { TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED } },
+                               { 50, { TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED } },
+                               { 33, { TileType::TILE_TYPE_CAVERN, TileType::TILE_TYPE_UNDEFINED } } };
 
-    if (tile == nullptr)
-    {
-      tile = tg.generate(TileType::TILE_TYPE_MOUNTAINS);
-    }
-
-    remove_village_coordinates_if_present(make_pair(row, col));
+    tile = generate_feature_or_default(mountain_special_types, TileType::TILE_TYPE_MOUNTAINS, row, col);
     result_map->insert(row, col, tile);
   }
 }
