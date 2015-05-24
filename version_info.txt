@@ -10,14 +10,14 @@ Savage Lands v0.3.6 "Milan"
 - Made certain characters (the blacksmith, Hild, etc) uniques.
 
 - Keeps are now part of the world generation process.  These can either
-  be ruined or unruined.
+  be ruined or unruined, and are generated on fields or scrubland.
 
 - Keeps are now generated as permanent structures.
 
 - Changed the keep symbol to 'O'.
 
 - Added castle generation to the MapTester configuration, as well as to
-  the world map generation.
+  the world map generation.  These can be generated on fields and forests.
 
 - Items can now have scripts.  Added support for an "ammo destruction
   script", to be potentially fired when ammunition is used and then

@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <set>
+#include <vector>
 #include "CellularAutomataTypes.hpp"
 #include "Generator.hpp"
 #include "TileGenerator.hpp"
@@ -34,6 +35,8 @@ class WorldGenerator : public SL::Generator
     void populate_race_information();
     void set_village_races(MapPtr map);
     void remove_village_coordinates_if_present(const Coordinate& c);
+    void set_tile_properties(TilePtr tile, TileType tile_type, TileType tile_subtype, const int row, const int col);
+    TilePtr generate_feature_or_default(const std::vector<std::pair<int, std::pair<TileType, TileType>>>& special_features, TileType default_tile_type, const int row, const int col);
     
     std::set<Coordinate> village_coordinates;
     std::set<std::string> unused_initial_race_ids;
