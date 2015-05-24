@@ -39,7 +39,7 @@ class WorldGenerator : public SL::Generator
     TilePtr generate_feature_or_default(const std::vector<std::pair<int, std::pair<TileType, TileType>>>& special_features, TileType default_tile_type, const int row, const int col);
     
     std::set<Coordinate> village_coordinates;
-    std::set<std::string> unused_initial_race_ids;
+    std::set<std::string> initial_race_ids;
 
     TileGenerator tg;
 };
