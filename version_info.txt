@@ -26,6 +26,9 @@ Savage Lands v0.3.6 "Milan"
   - Added an ammo destruction script for clay pots, which can leave behind
     ivory pieces or healing/ether potions.
 
+- Removed the restriction of having at most one random village per race
+  during world generation.
+
 - New creatures: Wispe.
 
 - New items: clay pot.

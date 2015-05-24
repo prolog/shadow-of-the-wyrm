@@ -46,7 +46,7 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
 {
   // Clear the state variables, in case this generator has already had a run.
   village_coordinates.clear();
-  unused_initial_race_ids.clear();
+  initial_race_ids.clear();
   
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
@@ -243,6 +243,7 @@ TilePtr WorldGenerator::generate_feature_or_default(const vector<pair<int, pair<
   if (result == nullptr)
   {
     result = tg.generate(default_tile_type, TileType::TILE_TYPE_UNDEFINED);
+    set_tile_properties(result, default_tile_type, TileType::TILE_TYPE_UNDEFINED, row, col);
   }
 
   return result;
@@ -338,7 +339,7 @@ void WorldGenerator::populate_race_information()
       
     if (race && race->get_user_playable())
     {
-      unused_initial_race_ids.insert(current_race_id);
+      initial_race_ids.insert(current_race_id);
     }
   }
 }
@@ -360,55 +361,51 @@ void WorldGenerator::set_village_races(MapPtr map)
       
     if (village_tile)
     {
-      if (!unused_initial_race_ids.empty())
-      {
-        int rand_race_id_idx = RNG::range(0, unused_initial_race_ids.size()-1);
-        set<string>::iterator race_id_it;
+      int rand_race_id_idx = RNG::range(0, initial_race_ids.size()-1);
+      set<string>::iterator race_id_it;
           
-        int count = 0;
-        for (race_id_it = unused_initial_race_ids.begin(); race_id_it != unused_initial_race_ids.end(); race_id_it++)
-        {
-          if (count == rand_race_id_idx)
-          {
-            string race_id = *race_id_it;
-            RacePtr race = races[race_id];
-              
-            // Only populate user-playable races, for now.
-            // Bat villages, while awesome, should not happen.
-            if (race && race->get_user_playable())
-            {
-              village_tile->set_village_race_id(race_id);
-              village_tile->set_settlement_type(race->get_settlement_type());
-              village_tile->set_tile_subtype(race->get_settlement_tile_subtype());                
-            }
-
-            unused_initial_race_ids.erase(race_id_it);
-            break;
-          }
-            
-          count++;
-        }
-      }
-      else
+      int count = 0;
+      for (race_id_it = initial_race_ids.begin(); race_id_it != initial_race_ids.end(); race_id_it++)
       {
-        // All the races are selected (one of each), so now take one at random
-        // from the game's current races, ensuring that it is user-playable.
-        vector<string> playable_race_ids;
-
-        for (const RaceMap::value_type& pr : races)
+        if (count == rand_race_id_idx)
         {
-          if (pr.second->get_user_playable())
+          string race_id = *race_id_it;
+          RacePtr race = races[race_id];
+              
+          // Only populate user-playable races, for now.
+          // Bat villages, while awesome, should not happen.
+          if (race && race->get_user_playable())
           {
-            playable_race_ids.push_back(pr.first);
+            village_tile->set_village_race_id(race_id);
+            village_tile->set_settlement_type(race->get_settlement_type());
+            village_tile->set_tile_subtype(race->get_settlement_tile_subtype());                
           }
+
+          break;
         }
-
-        int rand_race_idx = RNG::range(0, playable_race_ids.size()-1);
-        string race_id = playable_race_ids.at(rand_race_idx);
-
-        village_tile->set_village_race_id(race_id);
-        village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
+            
+        count++;
       }
+    }
+    else
+    {
+      // All the races are selected (one of each), so now take one at random
+      // from the game's current races, ensuring that it is user-playable.
+      vector<string> playable_race_ids;
+
+      for (const RaceMap::value_type& pr : races)
+      {
+        if (pr.second->get_user_playable())
+        {
+          playable_race_ids.push_back(pr.first);
+        }
+      }
+
+      int rand_race_idx = RNG::range(0, playable_race_ids.size()-1);
+      string race_id = playable_race_ids.at(rand_race_idx);
+
+      village_tile->set_village_race_id(race_id);
+      village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
     }
   }
 }
@@ -430,7 +427,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
     int village_col = c.second;
       
     // For each village in the initial set, ensure that its village_race_id is 
-    // set to one of the unused_initial_race_ids, and then remove that ID from the set.
+    // set to one of the initial_race_ids.
     TilePtr tile = map->at(village_row, village_col);
     VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
       
