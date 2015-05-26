@@ -14181,7 +14181,9 @@
 				<Colour>14</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14317,7 +14319,9 @@
 				<Colour>10</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14491,7 +14495,9 @@
 				<Colour>3</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14509,6 +14515,39 @@
 			</Damage>
 			<Evade>3</Evade>
 			<Soak>0</Soak>
+		</Creature>
+		<Creature id="guardsman">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>GUARDSMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GUARDSMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GUARDSMAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GUARDSMAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>10</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>20</Exp>
+			</CreatureGeneration>
+			<Level>10</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>20</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>3</Evade>
+			<Soak>3</Soak>
 		</Creature>
 		<Creature id="hild">
 			<RaceID>01_human</RaceID>
@@ -14559,7 +14598,9 @@
 				<Colour>3</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
