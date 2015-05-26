@@ -378,7 +378,9 @@ void WorldGenerator::set_village_races(MapPtr map)
           {
             village_tile->set_village_race_id(race_id);
             village_tile->set_settlement_type(race->get_settlement_type());
-            village_tile->set_tile_subtype(race->get_settlement_tile_subtype());                
+            village_tile->set_tile_subtype(race->get_settlement_tile_subtype());
+
+            set_initial_creatures_for_village(village_tile);
           }
 
           break;
@@ -408,6 +410,12 @@ void WorldGenerator::set_village_races(MapPtr map)
       village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
     }
   }
+}
+
+// Set the initial list of creatures for the village tile.
+void WorldGenerator::set_initial_creatures_for_village(TilePtr tile)
+{
+  // MapProperties::MAP_PROPERTIES_INITIAL_CREATURES
 }
 
 // Generate the surroundings for each village
