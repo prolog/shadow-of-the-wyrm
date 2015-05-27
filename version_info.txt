@@ -29,7 +29,7 @@ Savage Lands v0.3.6 "Milan"
 - Removed the restriction of having at most one random village per race
   during world generation.
 
-- New creatures: Wispe, guardsman.
+- New creatures: Wispe, guardsman, watch captain.
 
 - New items: clay pot.
 
