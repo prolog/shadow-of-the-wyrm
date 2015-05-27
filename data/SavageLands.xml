@@ -14581,6 +14581,48 @@
 			</Damage>
 			<Soak>4</Soak>
 		</Creature>
+		<Creature id="spearman">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SPEARMAN_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SPEARMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SPEARMAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SPEARMAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>s</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>25</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>1</Soak>
+		</Creature>
 		<Creature id="hild">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>HILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
