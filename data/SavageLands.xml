@@ -14623,6 +14623,48 @@
 			</Damage>
 			<Soak>1</Soak>
 		</Creature>
+		<Creature id="archer">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>ARCHER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ARCHER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ARCHER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ARCHER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>a</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>25</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="hild">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>HILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
