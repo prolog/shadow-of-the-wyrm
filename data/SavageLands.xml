@@ -14516,6 +14516,68 @@
 			<Evade>3</Evade>
 			<Soak>0</Soak>
 		</Creature>
+		<Creature id="young_woman">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>YOUNG_WOMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>YOUNG_WOMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>YOUNG_WOMAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>YOUNG_WOMAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
+		<Creature id="tradesman">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>TRADESMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TRADESMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TRADESMAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TRADESMAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
 		<Creature id="guardsman">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>GUARDSMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
