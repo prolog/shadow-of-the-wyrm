@@ -6259,7 +6259,9 @@
 				<Colour>11</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>20</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6289,7 +6291,9 @@
 				<Colour>12</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>24</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8227,6 +8231,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -8270,6 +8275,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -8314,6 +8320,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -8359,6 +8366,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -8833,6 +8841,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -10232,6 +10241,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -10275,6 +10285,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -10328,6 +10339,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -10373,6 +10385,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -10924,6 +10937,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -10967,6 +10981,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -11011,6 +11026,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -12273,6 +12289,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -12316,6 +12333,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -12334,6 +12352,68 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>28</NumSides>
+				<Type>0</Type>
+			</Damage>
+		</Creature>
+		<Creature id="wood_elf_moneychanger">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>WOOD_ELF_MONEYCHANGER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WOOD_ELF_MONEYCHANGER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WOOD_ELF_MONEYCHANGER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WOOD_ELF_MONEYCHANGER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>6</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>12</NumSides>
+				<Type>0</Type>
+			</Damage>
+		</Creature>
+		<Creature id="wood_elf_bowyer">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>WOOD_ELF_BOWYER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WOOD_ELF_BOWYER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WOOD_ELF_BOWYER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WOOD_ELF_BOWYER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>6</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>12</NumSides>
 				<Type>0</Type>
 			</Damage>
 		</Creature>
@@ -12426,6 +12506,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -12796,7 +12877,9 @@
 				<Colour>3</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>12</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12825,7 +12908,9 @@
 				<Colour>10</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13773,7 +13858,9 @@
 				<Colour>4</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13878,7 +13965,9 @@
 				<Colour>3</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13918,6 +14007,7 @@
 					<TileType>15</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -15446,6 +15536,7 @@
 					<TileType>15</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -15491,6 +15582,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
