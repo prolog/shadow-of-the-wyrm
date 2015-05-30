@@ -301,7 +301,7 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   // Deserts should only appear in naturally dry areas.
   if (desert_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && scrub_val == CellValue::CELL_OFF)
   {
-    tile = tg.generate(TileType::TILE_TYPE_DESERT);
+    tile = generate_feature_or_default({}, TileType::TILE_TYPE_DESERT, row, col);
     result_map->insert(row, col, tile);
   }
 }
