@@ -12204,6 +12204,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -12246,6 +12247,50 @@
 					<TileType>15</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>12</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>12</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>70</Exp>
+			</CreatureGeneration>
+			<Level>12</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>24</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="mountain_elf_spelunker">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>MOUNTAIN_ELF_SPELUNKER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MOUNTAIN_ELF_SPELUNKER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MOUNTAIN_ELF_SPELUNKER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MOUNTAIN_ELF_SPELUNKER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -12414,6 +12459,68 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>12</NumSides>
+				<Type>0</Type>
+			</Damage>
+		</Creature>
+		<Creature id="wood_elf_forester">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>WOOD_ELF_FORESTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WOOD_ELF_FORESTER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WOOD_ELF_FORESTER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WOOD_ELF_FORESTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>6</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>12</NumSides>
+				<Type>0</Type>
+			</Damage>
+		</Creature>
+		<Creature id="wood_elf_child">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>WOOD_ELF_CHILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WOOD_ELF_CHILD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WOOD_ELF_CHILD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WOOD_ELF_CHILD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
 				<Type>0</Type>
 			</Damage>
 		</Creature>

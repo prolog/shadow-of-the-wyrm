@@ -31,7 +31,7 @@ Savage Lands v0.3.6 "Milan"
 
 - New creatures: Wispe, guardsman, watch captain, spearman, archer, young
   woman, tradesman, merchant, traveller, wood elf moneychanger, wood elf
-  bowyer.
+  bowyer, wood elf forester, wood elf child, mountain elf spelunker.
 
 - New items: clay pot.
 
