@@ -14578,6 +14578,68 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="merchant">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>MERCHANT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MERCHANT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MERCHANT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MERCHANT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="traveller">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>TRAVELLER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TRAVELLER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TRAVELLER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TRAVELLER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="guardsman">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>GUARDSMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

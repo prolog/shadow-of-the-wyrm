@@ -30,7 +30,7 @@ Savage Lands v0.3.6 "Milan"
   during world generation.
 
 - New creatures: Wispe, guardsman, watch captain, spearman, archer, young
-  woman, tradesman.
+  woman, tradesman, merchant, traveller.
 
 - New items: clay pot.
 
