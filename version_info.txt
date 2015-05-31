@@ -38,7 +38,7 @@ Savage Lands v0.3.6 "Milan"
   mountain elf stonemason, mountain elf skirmisher, snakeling muckraker,
   snakeling magus, snakeling mercenary, snakeling thug, snakeling
   sharpshooter, dwarven anklebiter, dwarven mother, dwarven metallurgist,
-  dwarven stonecarver.
+  dwarven stonecarver, gnomish adventurer.
 
 - New items: clay pot.
 
