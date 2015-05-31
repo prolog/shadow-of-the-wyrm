@@ -33,7 +33,8 @@ Savage Lands v0.3.6 "Milan"
   woman, tradesman, merchant, traveller, wood elf moneychanger, wood elf
   bowyer, wood elf forester, wood elf child, mountain elf spelunker,
   mountain elf stonemason, mountain elf skirmisher, snakeling muckraker,
-  snakeling magus, snakeling mercenary.
+  snakeling magus, snakeling mercenary, snakeling thug, snakeling
+  sharpshooter.
 
 - New items: clay pot.
 
