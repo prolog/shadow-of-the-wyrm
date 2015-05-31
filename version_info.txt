@@ -37,7 +37,8 @@ Savage Lands v0.3.6 "Milan"
   bowyer, wood elf forester, wood elf child, mountain elf spelunker,
   mountain elf stonemason, mountain elf skirmisher, snakeling muckraker,
   snakeling magus, snakeling mercenary, snakeling thug, snakeling
-  sharpshooter, dwarven anklebiter, dwarven mother, dwarven metallurgist.
+  sharpshooter, dwarven anklebiter, dwarven mother, dwarven metallurgist,
+  dwarven stonecarver.
 
 - New items: clay pot.
 
