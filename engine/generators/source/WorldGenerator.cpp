@@ -408,8 +408,17 @@ void WorldGenerator::set_village_races(MapPtr map)
       int rand_race_idx = RNG::range(0, playable_race_ids.size()-1);
       string race_id = playable_race_ids.at(rand_race_idx);
 
-      village_tile->set_village_race_id(race_id);
-      village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
+      if (village_tile != nullptr)
+      {
+        village_tile->set_village_race_id(race_id);
+        village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
+      }
+      else
+      {
+        ostringstream ss;
+        ss << "Could not create village at " << c.first << "," << c.second << ".  Tile type is " << static_cast<int>(tile->get_tile_type());
+        Log::instance().error(ss.str());
+      }
     }
   }
 }
