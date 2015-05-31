@@ -39,7 +39,8 @@ Savage Lands v0.3.6 "Milan"
   snakeling magus, snakeling mercenary, snakeling thug, snakeling
   sharpshooter, dwarven anklebiter, dwarven mother, dwarven metallurgist,
   dwarven stonecarver, gnomish adventurer, giant, giant stonetosser, giant
-  earthshaker, giant griffinrider, giant cloudwalker.
+  earthshaker, giant griffinrider, giant cloudwalker, ogre bonegrinder,
+  ogre mage, ogre war captain, ogre annihilator.
 
 - New items: clay pot.
 
