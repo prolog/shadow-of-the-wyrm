@@ -14488,6 +14488,7 @@
 					<TileType>15</TileType>
 					<TileType>21</TileType>
 					<TileType>24</TileType>
+					<TileType>25</TileType>
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
@@ -14507,6 +14508,51 @@
 				<NumDice>1</NumDice>
 				<NumSides>8</NumSides>
 				<Type>2</Type>
+			</Damage>
+			<Evade>5</Evade>
+			<Soak>0</Soak>
+		</Creature>
+		<Creature id="gnomish_adventurer">
+			<RaceID>10_gnome</RaceID>
+			<ShortDescriptionSID>GNOMISH_ADVENTURER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GNOMISH_ADVENTURER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GNOMISH_ADVENTURER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GNOMISH_ADVENTURER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>25</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>1</Type>
 			</Damage>
 			<Evade>5</Evade>
 			<Soak>0</Soak>
