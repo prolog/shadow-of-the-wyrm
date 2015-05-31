@@ -1381,6 +1381,7 @@
 		</Race>
 		<Race id="05_fae" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<HasRandomVillages>0</HasRandomVillages>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_5_NAME</NameSID>
