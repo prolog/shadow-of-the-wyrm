@@ -37,10 +37,15 @@ class WorldGenerator : public SL::Generator
     void remove_village_coordinates_if_present(const Coordinate& c);
     void set_tile_properties(TilePtr tile, TileType tile_type, TileType tile_subtype, const int row, const int col);
     TilePtr generate_feature_or_default(const std::vector<std::pair<int, std::pair<TileType, TileType>>>& special_features, TileType default_tile_type, const int row, const int col);
-    void set_initial_creatures_for_village(TilePtr village_tile);
     
+    void set_initial_creatures_for_village(TilePtr village_tile, const std::string& village_race_id);
+    std::vector<std::string> get_potential_creatures(const std::string& village_race_id);
+    void set_creatures_to_village_tile(TilePtr tile, const std::vector<std::string>& potential_creature_ids);
+
     std::set<Coordinate> village_coordinates;
     std::set<std::string> initial_race_ids;
 
     TileGenerator tg;
+    static const int MIN_CREATURES_PER_VILLAGE;
+    static const int MAX_CREATURES_PER_VILLAGE;
 };

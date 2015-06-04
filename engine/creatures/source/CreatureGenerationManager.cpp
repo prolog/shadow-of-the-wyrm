@@ -1,6 +1,7 @@
 #include <iterator>
 #include <map>
 #include "CreatureCalculator.hpp"
+#include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
@@ -101,7 +102,7 @@ bool CreatureGenerationManager::does_creature_match_generation_criteria(const Cr
     && cgv_danger_level >= 0 // Exclude danger level of -1, which means "don't generate"
     && cgv_danger_level >= min_danger_level
     && cgv_danger_level <= max_danger_level
-    && (cgv_maximum <= 0 || (cgv.get_current() < cgv_maximum)) // Either no max, or less than the > 0 maximum
+    && (cgv_maximum <= CreatureGenerationConstants::CREATURE_GENERATION_UNLIMITED || (cgv.get_current() < cgv_maximum)) // Either no max, or less than the > 0 maximum
     && (cgv_maximum != 1 || permanent_map) // no uniques on temporary maps
     && cgv.get_rarity() <= rarity )
   {

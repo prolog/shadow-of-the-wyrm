@@ -17,6 +17,9 @@ class CreatureGenerationValues : public GenerationValues
     CreatureGenerationValues();
     ~CreatureGenerationValues();
     bool operator==(const CreatureGenerationValues& cgv) const;
+    
+    void set_race_id(const std::string& new_race_id);
+    std::string get_race_id() const;
 
     void add_allowable_terrain_type(const TileType additional_terrain_type);
     void clear_allowable_terrain_types();
@@ -43,6 +46,9 @@ class CreatureGenerationValues : public GenerationValues
     bool deserialize(std::istream& stream) override;
 
   protected:
+    // The creature's race, used for filtering in certain situations.
+    std::string race_id;
+
     // The terrain types in which the creature can be generated
     std::set<TileType> allowable_terrain_types;
 
