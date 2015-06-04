@@ -57,7 +57,7 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     string id = XMLUtils::get_attribute_value(creature_node, "id");
     creature->set_id(id);
 
-    // Creature's race.
+    // Creature's race.  
     string race_id = XMLUtils::get_child_node_value(creature_node, "RaceID");
     creature->set_race_id(race_id);
 
@@ -112,6 +112,12 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     if (!creature_generation_node.is_null())
     {
       cgv = parse_creature_generation_values(creature_generation_node);
+
+      // Set any additional values found outside the CreatureGeneration node.
+      //
+      // Set the creature's race.  Set on the generation values, as it's needed 
+      // in some situations for filtering potential creatures by race.
+      cgv.set_race_id(race_id);
     }
     
     uint level = XMLUtils::get_child_node_int_value(creature_node, "Level");

@@ -20,6 +20,7 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
 
   result = result && GenerationValues::operator==(cgv);
 
+  result = result && (race_id == cgv.race_id);
   result = result && (allowable_terrain_types == cgv.allowable_terrain_types);
   result = result && (friendly == cgv.friendly);
   result = result && (initial_hit_points == cgv.initial_hit_points);
@@ -28,6 +29,16 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
   result = result && (initial_inventory == cgv.initial_inventory);
 
   return result;
+}
+
+void CreatureGenerationValues::set_race_id(const string& new_race_id)
+{
+  race_id = new_race_id;
+}
+
+string CreatureGenerationValues::get_race_id() const
+{
+  return race_id;
 }
 
 void CreatureGenerationValues::add_allowable_terrain_type(const TileType additional_terrain_type)
@@ -109,6 +120,8 @@ bool CreatureGenerationValues::serialize(ostream& stream) const
 {
   GenerationValues::serialize(stream);
 
+  Serialize::write_string(stream, race_id);
+
   size_t terrain_types_size = allowable_terrain_types.size();
   Serialize::write_size_t(stream, terrain_types_size);
 
@@ -149,6 +162,8 @@ bool CreatureGenerationValues::serialize(ostream& stream) const
 bool CreatureGenerationValues::deserialize(istream& stream)
 {
   GenerationValues::deserialize(stream);
+
+  Serialize::read_string(stream, race_id);
 
   size_t terrain_types_size = 0;
   Serialize::read_size_t(stream, terrain_types_size);

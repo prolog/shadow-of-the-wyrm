@@ -3,6 +3,7 @@
 #include "CastleGenerator.hpp"
 #include "CoordUtils.hpp"
 #include "Conversion.hpp"
+#include "CreatureGenerationConstants.hpp"
 #include "DungeonGenerator.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
@@ -17,6 +18,9 @@
 
 using namespace std;
 using std::dynamic_pointer_cast;
+
+const int WorldGenerator::MIN_CREATURES_PER_VILLAGE = 12;
+const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
@@ -382,7 +386,11 @@ void WorldGenerator::set_village_races(MapPtr map)
             village_tile->set_settlement_type(race->get_settlement_type());
             village_tile->set_tile_subtype(race->get_settlement_tile_subtype());
 
-            set_initial_creatures_for_village(village_tile);
+            set_initial_creatures_for_village(village_tile, race_id);
+
+            ostringstream log_msg;
+            log_msg << "Creatures for village at " << c.first << "," << c.second << " with race_id " << race_id << ": " << village_tile->get_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
+            Log::instance().debug(log_msg.str());
           }
 
           break;
@@ -424,9 +432,59 @@ void WorldGenerator::set_village_races(MapPtr map)
 }
 
 // Set the initial list of creatures for the village tile.
-void WorldGenerator::set_initial_creatures_for_village(TilePtr tile)
+void WorldGenerator::set_initial_creatures_for_village(TilePtr tile, const string& village_race_id)
 {
-  // MapProperties::MAP_PROPERTIES_INITIAL_CREATURES
+  // Get the list of potential creatures.
+  vector<string> creature_ids = get_potential_creatures(village_race_id);
+
+  // Create the list of creatures on the village tile.
+  set_creatures_to_village_tile(tile, creature_ids);
+}
+
+// Get a list of all potential creatures for the village: must allow TILE_TYPE_VILLAGE,
+// the race ID must match, and they must not have hit the max number of generated
+// creatures at the time this function runs.
+vector<string> WorldGenerator::get_potential_creatures(const string& village_race_id)
+{
+  vector<string> valid_creature_ids;
+  Game& game = Game::instance();
+  CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
+
+  for (const auto& cgv_pair : cgv_map)
+  {
+    string race_id = cgv_pair.second.get_race_id();
+    set<TileType> allowable_terrain = cgv_pair.second.get_allowable_terrain_types();
+    int max = cgv_pair.second.get_maximum();
+
+    if (allowable_terrain.find(TileType::TILE_TYPE_VILLAGE) != allowable_terrain.end() 
+     && race_id == village_race_id
+     && (max == CreatureGenerationConstants::CREATURE_GENERATION_UNLIMITED || cgv_pair.second.get_current() < max))
+    {
+      valid_creature_ids.push_back(cgv_pair.first);
+    }
+  }
+
+  return valid_creature_ids;
+}
+
+// Generate a random number of creatures from the provided vector of valid
+// creature IDs, and set them on the village tile.
+void WorldGenerator::set_creatures_to_village_tile(TilePtr tile, const vector<string>& valid_creature_ids)
+{
+  if (!valid_creature_ids.empty())
+  {
+    vector<string> creatures_to_gen;
+    int num_creatures = RNG::range(MIN_CREATURES_PER_VILLAGE, MAX_CREATURES_PER_VILLAGE);
+    size_t max_creature_idx = valid_creature_ids.size() - 1;
+
+    for (int i = 0; i < num_creatures; i++)
+    {
+      creatures_to_gen.push_back(valid_creature_ids.at(RNG::range(0, max_creature_idx)));
+    }
+
+    string creatures_csv = String::create_csv_from_string_vector(creatures_to_gen);
+    tile->set_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES, creatures_csv);
+  }
 }
 
 // Generate the surroundings for each village
