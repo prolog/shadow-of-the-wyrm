@@ -341,7 +341,7 @@ void WorldGenerator::populate_race_information()
     string current_race_id = r_it->first;
     RacePtr race = r_it->second;
       
-    if (race && race->get_user_playable() && !current_race_id.empty())
+    if (race && race->get_user_playable() && race->get_has_random_villages() && !current_race_id.empty())
     {
       initial_race_ids.insert(current_race_id);
     }
@@ -375,12 +375,12 @@ void WorldGenerator::set_village_races(MapPtr map)
         {
           string race_id = *race_id_it;
           RacePtr race = races[race_id];
-              
-          // Only populate user-playable races, for now.
-          // Bat villages, while awesome, should not happen.
-          // Also, don't add races without random villages -
-          // there should be no random Fae villages, for instance.
-          if (race && race->get_user_playable() && race->get_has_random_villages())
+             
+          // The population of the initial_race_ids set takes into consideration
+          // that races must be user-playable (no bat villages!) and must allow
+          // random villages - some races - Fae, for instance) don't have any
+          // random villages.
+          if (race != nullptr)
           {
             village_tile->set_village_race_id(race_id);
             village_tile->set_settlement_type(race->get_settlement_type());
