@@ -3381,6 +3381,12 @@
     <ClInclude Include="engine\scripting\include\ItemScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\CreatureGenerationOptions.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureGenerationOptionsStringBuilder.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6577,6 +6583,15 @@
     </ClCompile>
     <ClCompile Include="engine\scripting\source\ItemScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\CreatureGenerationOptions.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\CreatureGenerationOptions_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CreatureGenerationOptionsStringBuilder.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
