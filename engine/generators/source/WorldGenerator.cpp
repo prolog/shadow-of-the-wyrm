@@ -4,10 +4,12 @@
 #include "CoordUtils.hpp"
 #include "Conversion.hpp"
 #include "CreatureGenerationConstants.hpp"
+#include "CreatureGenerationOptionsStringBuilder.hpp"
 #include "DungeonGenerator.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "WorldGenerator.hpp"
+#include "PlayerConstants.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 #include "CellularAutomataGenerator.hpp"
@@ -460,7 +462,14 @@ vector<string> WorldGenerator::get_potential_creatures(const string& village_rac
      && race_id == village_race_id
      && (max == CreatureGenerationConstants::CREATURE_GENERATION_UNLIMITED || cgv_pair.second.get_current() < max))
     {
-      valid_creature_ids.push_back(cgv_pair.first);
+      CreatureGenerationOptions cgo;
+      cgo.set_id(cgv_pair.first);
+
+      // All creatures generated in villages should be docile.
+      cgo.set_hostility(PlayerConstants::PLAYER_CREATURE_ID, false);
+
+      CreatureGenerationOptionsStringBuilder cgob;
+      valid_creature_ids.push_back(cgob.build(cgo));
     }
   }
 

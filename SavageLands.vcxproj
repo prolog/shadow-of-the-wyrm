@@ -352,6 +352,7 @@
     <ClInclude Include="engine\creatures\include\CreatureFactory.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
+    <ClInclude Include="engine\creatures\include\CreatureGenerationOptionsStringBuilder.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureTileSafetyChecker.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureUtils.hpp" />
     <ClInclude Include="engine\creatures\include\CurrentCreatureAbilities.hpp" />
@@ -810,6 +811,7 @@
     <ClInclude Include="world\include\Conducts.hpp" />
     <ClInclude Include="world\include\ConductTypes.hpp" />
     <ClInclude Include="world\include\ConsumableConstants.hpp" />
+    <ClInclude Include="world\include\CreatureGenerationOptions.hpp" />
     <ClInclude Include="world\include\IInventory.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
     <ClInclude Include="world\include\Modifier.hpp" />
@@ -1507,6 +1509,7 @@
     <ClCompile Include="engine\creatures\source\CreatureFactory.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationConstants.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationManager.cpp" />
+    <ClCompile Include="engine\creatures\source\CreatureGenerationOptionsStringBuilder.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureTileSafetyChecker.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureUtils.cpp" />
     <ClCompile Include="engine\creatures\source\CurrentCreatureAbilities.cpp" />
@@ -2318,6 +2321,7 @@
     <ClCompile Include="world\source\BoolStatistic.cpp" />
     <ClCompile Include="world\source\Conducts.cpp" />
     <ClCompile Include="world\source\ConsumableConstants.cpp" />
+    <ClCompile Include="world\source\CreatureGenerationOptions.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\Modifier.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
@@ -2415,6 +2419,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\CreatureGenerationOptions_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\InitialItem_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

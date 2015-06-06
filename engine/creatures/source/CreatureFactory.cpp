@@ -5,6 +5,7 @@
 #include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
+#include "CreatureGenerationOptions.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
@@ -36,11 +37,15 @@ void CreatureFactory::set_hostility_for_creatures(const bool override_host, cons
 CreaturePtr CreatureFactory::create_by_creature_id
 (
   ActionManager& action_manager
-, const string& creature_id
+, const string& creature_id_and_options
 )
 {
   CreaturePtr creature;
-  
+  CreatureGenerationOptions cgo;
+  cgo.parse(creature_id_and_options);
+
+  string creature_id = cgo.get_id();
+
   Game& game = Game::instance();
   
   CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
@@ -99,6 +104,16 @@ CreaturePtr CreatureFactory::create_by_creature_id
     {
       // Set the creature hostile to the player, if the player fails a charisma check.
       set_hostility_to_player(creature);
+    }
+
+    map<string, bool> hostility_map = cgo.get_hostility_map();
+    auto h_it = hostility_map.find(PlayerConstants::PLAYER_CREATURE_ID);
+
+    if (h_it != hostility_map.end())
+    {
+      HostilityManager hm;
+
+      hm.set_hostility_to_player(creature, h_it->second);
     }
 
     initialize(creature);

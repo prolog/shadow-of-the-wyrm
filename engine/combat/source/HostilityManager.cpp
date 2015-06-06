@@ -32,8 +32,19 @@ void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const str
 }
 
 // Set the creature hostile to the player.
-void HostilityManager::set_hostility_to_player(CreaturePtr creature)
+void HostilityManager::set_hostility_to_player(CreaturePtr creature, const bool hostile)
 {
-  set_hostility_to_creature(creature, PlayerConstants::PLAYER_CREATURE_ID);
+  if (hostile)
+  {
+    set_hostility_to_creature(creature, PlayerConstants::PLAYER_CREATURE_ID);
+  }
+  else
+  {
+    DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+    ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
+
+    pair<bool, int> threat_exists = threat_ratings.has_threat(PlayerConstants::PLAYER_CREATURE_ID);
+    threat_ratings.remove_threat(PlayerConstants::PLAYER_CREATURE_ID, threat_exists.second);
+  }
 }
 
