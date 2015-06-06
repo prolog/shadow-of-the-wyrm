@@ -50,8 +50,12 @@ Savage Lands v0.3.6 "Milan"
 
 - New artifacts: black sabre "Bloodsinger".
 
-- Bug fixes: the "current" count for creature generation wasn't being
-  updated properly (uniques were being generated multiple times).
+- Bug fixes: 
+
+  - The "current" count for creature generation wasn't being
+    updated properly (uniques were being generated multiple times).
+
+  - Log level wasn't being set properly from the the ini settings.
 
 Savage Lands v0.3.5 "Tzortinakis"
 - Version declared April 5, 2015.  Version finalized May 6, 2015.
