@@ -42,8 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Renaissance vihuela composer, best known for his pavanes.
-  return "\"Milan\"";
+  // 20th century Cuban composer.
+  return "\"Brouwer\"";
 }
 
 string Metadata::get_game_version_synopsis() const

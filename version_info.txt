@@ -1,5 +1,8 @@
+Savage Lands v0.3.7 "Brouwer"
+- Version declared June 6, 2015.
+
 Savage Lands v0.3.6 "Milan"
-- Version declared May 6, 2015.
+- Version declared May 6, 2015.  Version finalized June 6, 2015.
 
 - Added a new questmaster, Wispe, to the ruins of Aeschburh, and gave him
   a quest for the player to kill four uniques.
@@ -34,7 +37,8 @@ Savage Lands v0.3.6 "Milan"
 
 - Villages now can have creatures.  These are based on the village's
   race ID and the list of those creatures with the same race defined for
-  TILE_TYPE_VILLAGE.
+  TILE_TYPE_VILLAGE.  Creatures generated in villages are always generated
+  friendly towards the player.
 
 - New creatures: Wispe, guardsman, watch captain, spearman, archer, young
   woman, tradesman, merchant, traveller, wood elf moneychanger, wood elf
