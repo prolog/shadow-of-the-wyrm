@@ -1,12 +1,13 @@
 Savage Lands v0.3.7 "Brouwer"
 - Version declared June 6, 2015.
 
-- Updated Church tiles to include clerics, laypeople, devotees, followers.
+- Updated Church tiles to include clerics, laypeople, devotees, followers,
+  apostles.
 
 - Updated Site of Death tiles to include black servants, black monks,
   black priests, astral horrors, star beasts, black devil.
 
-- New creatures: cleric, layperson, devotee, follower.
+- New creatures: cleric, layperson, devotee, follower, apostle.
 
 Savage Lands v0.3.6 "Milan"
 - Version declared May 6, 2015.  Version finalized June 6, 2015.
