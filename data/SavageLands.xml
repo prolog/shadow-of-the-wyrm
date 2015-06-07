@@ -15291,6 +15291,37 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>29</TileType>
+					<TileType>34</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>9</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>6</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>12</NumSides>
+				<Type>9</Type>
+			</Damage>
+		</Creature>
+		<Creature id="follower">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>FOLLOWER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FOLLOWER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FOLLOWER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>FOLLOWER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
 				<Colour>12</Colour>
 			</Text>
 			<CreatureGeneration>
