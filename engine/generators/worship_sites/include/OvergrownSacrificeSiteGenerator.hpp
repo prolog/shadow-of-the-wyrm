@@ -14,8 +14,12 @@ class OvergrownSacrificeSiteGenerator : public ChurchGenerator
     MapPtr generate(const Dimensions& dim) override;
     MapPtr generate() override;
 
+    std::vector<std::string> get_generator_filters() const override;
+
   protected:
     void generate_site(MapPtr map);
     void generate_additional_brush(MapPtr map);
     void generate_altar(MapPtr map);
+
+    static const std::string OVERGROWN_SACRIFICE_SITE_GENERATOR_FILTER;
 };

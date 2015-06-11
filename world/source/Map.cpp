@@ -80,6 +80,7 @@ bool Map::operator==(const Map& map) const
   result = result && (permanent == map.permanent);
   result = result && (danger == map.danger);
   result = result && (allow_creature_updates == map.allow_creature_updates);
+  result = result && (properties == map.properties);
 
   return result;
 }
@@ -432,6 +433,34 @@ bool Map::get_allow_creature_updates() const
   return ((map_type != MapType::MAP_TYPE_WORLD) && allow_creature_updates);
 }
 
+void Map::set_property(const string& prop, const string& value)
+{
+  properties[prop] = value;
+}
+
+void Map::set_properties(const map<string, string>& new_properties)
+{
+  properties = new_properties;
+}
+
+string Map::get_property(const string& prop) const
+{
+  string val;
+
+  auto p_it = properties.find(prop);
+  if (p_it != properties.end())
+  {
+    val = p_it->second;
+  }
+
+  return val;
+}
+
+map<string, string> Map::get_properties() const
+{
+  return properties;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
@@ -496,6 +525,7 @@ bool Map::serialize(ostream& stream) const
   Serialize::write_bool(stream, permanent);
   Serialize::write_uint(stream, danger);
   Serialize::write_bool(stream, allow_creature_updates);
+  Serialize::write_string_map(stream, properties);
 
   return true;
 }
@@ -593,6 +623,9 @@ bool Map::deserialize(istream& stream)
   Serialize::read_bool(stream, permanent);
   Serialize::read_uint(stream, danger);
   Serialize::read_bool(stream, allow_creature_updates);
+
+  properties.clear();
+  Serialize::read_string_map(stream, properties);
 
   return true;
 }

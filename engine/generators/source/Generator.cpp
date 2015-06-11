@@ -50,6 +50,7 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
 
   MapPtr map = generate(dim);
   initialize(map, danger_level);
+  copy_properties_to_map(map);
   
   return map;
 }
@@ -88,6 +89,7 @@ MapPtr Generator::generate()
 {
   Dimensions default_dimensions;
   MapPtr result_map = generate(default_dimensions);
+  copy_properties_to_map(result_map);
 
   return result_map;
 }
@@ -459,5 +461,22 @@ void Generator::update_custom_map_with_current(const string& depth_map_id, const
         }
       }
     }
+  }
+}
+
+vector<string> Generator::get_generator_filters() const
+{
+  vector<string> no_filters;
+  return no_filters;
+}
+
+void Generator::copy_properties_to_map(MapPtr map)
+{
+  vector<string> generator_filters = get_generator_filters();
+
+  if (!generator_filters.empty())
+  {
+    map->set_property(MapProperties::MAP_PROPERTIES_GENERATOR_FILTERS, 
+                      String::create_csv_from_string_vector(generator_filters));
   }
 }

@@ -20,6 +20,10 @@ class MapProperties
     static const std::string MAP_PROPERTIES_WORLD_MAP_LOCATION;
     static const std::string MAP_PROPERTIES_WORLD_MAP_HEIGHT;
 
+    // CSV string of filters used to filter out creatures for a particular
+    // tile type.
+    static const std::string MAP_PROPERTIES_GENERATOR_FILTERS;
+
   protected:
     MapProperties();
     ~MapProperties();
