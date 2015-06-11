@@ -3,7 +3,9 @@
 #include "OvergrownSacrificeSiteGenerator.hpp"
 #include "RNG.hpp"
 
-using std::string;
+using namespace std;
+
+const string OvergrownSacrificeSiteGenerator::OVERGROWN_SACRIFICE_SITE_GENERATOR_FILTER = "OvergrownSacrificeSite";
 
 OvergrownSacrificeSiteGenerator::OvergrownSacrificeSiteGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_SITE_OF_DEATH)
@@ -14,6 +16,12 @@ OvergrownSacrificeSiteGenerator::OvergrownSacrificeSiteGenerator(const string& n
 MapPtr OvergrownSacrificeSiteGenerator::generate(const Dimensions& dim)
 {
   return generate();
+}
+
+vector<string> OvergrownSacrificeSiteGenerator::get_generator_filters() const
+{
+  vector<string> filters = { OVERGROWN_SACRIFICE_SITE_GENERATOR_FILTER };
+  return filters;
 }
 
 MapPtr OvergrownSacrificeSiteGenerator::generate()

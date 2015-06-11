@@ -91,3 +91,19 @@ TEST_F(SL_Engine_Map, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_MAP, get_class_identifier());
 }
 
+TEST_F(SL_Engine_Map, saveload)
+{
+  MapPtr map = make_map();
+  map->set_property("foo", "bar");
+
+  MapPtr map2 = make_map();
+
+  ostringstream ss;
+  map->serialize(ss);
+
+  istringstream iss(ss.str());
+  map2->deserialize(iss);
+
+  EXPECT_TRUE(*map == *map2);
+  EXPECT_EQ("bar", map2->get_property("foo"));
+}

@@ -42,6 +42,11 @@ namespace SL
       virtual bool has_additional_property(const std::string& property_name) const;
       virtual std::string get_additional_property(const std::string& property_name) const;
 
+      // Generator filters are used to generate creatures - creatures who match
+      // the tile type and all the generator filters are included when considering
+      // the set of creatures to generate.
+      virtual std::vector<std::string> get_generator_filters() const;
+
       virtual MapType get_map_type() const;
 
   protected:
@@ -61,6 +66,8 @@ namespace SL
       // Seed the initial items.  Returns true if the items were created, false otherwise.
       virtual bool generate_initial_items(MapPtr map, const int danger_level);
       virtual bool update_items(MapPtr map, const int danger_level);
+
+      virtual void copy_properties_to_map(MapPtr map);
 
       std::string map_exit_id;
       TileType map_terrain_type;

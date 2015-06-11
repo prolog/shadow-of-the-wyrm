@@ -99,6 +99,11 @@ class Map : public ISerializable
     void set_allow_creature_updates(const bool new_allow_creature_updates);
     bool get_allow_creature_updates() const;
 
+    void set_property(const std::string& prop, const std::string& value);
+    void set_properties(const std::map<std::string, std::string>& new_properties);
+    std::string get_property(const std::string& prop) const;
+    std::map<std::string, std::string> get_properties() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -126,6 +131,7 @@ class Map : public ISerializable
     bool permanent;
     uint danger;
     bool allow_creature_updates;
+    std::map<std::string, std::string> properties;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
