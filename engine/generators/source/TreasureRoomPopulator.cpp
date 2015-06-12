@@ -65,7 +65,9 @@ void TreasureRoomPopulator::generate_creatures(MapPtr current_map, const TileTyp
 
   vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(make_pair(start_row, start_col), make_pair(end_row_wall - 1, end_col_wall - 1));
   CreatureGenerationManager cgm;
-  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile_type, current_map->get_permanent(), danger_level, danger_level + 5, Rarity::RARITY_RARE);
+
+  map<string, string> map_properties = current_map->get_properties();
+  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile_type, current_map->get_permanent(), danger_level, danger_level + 5, Rarity::RARITY_RARE, map_properties);
 
   // Generate a few creatures, and place them in random positions throughout the room.
   int num_creatures = RNG::range(2, 4);

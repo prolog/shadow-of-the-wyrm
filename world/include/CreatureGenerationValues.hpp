@@ -42,6 +42,9 @@ class CreatureGenerationValues : public GenerationValues
     void set_initial_inventory(const std::vector<InitialItem>& new_initial_inventory);
     std::vector<InitialItem> get_initial_inventory() const;
 
+    void set_generator_filters(const std::vector<std::string>& new_generator_filters);
+    std::vector<std::string> get_generator_filters() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -68,6 +71,11 @@ class CreatureGenerationValues : public GenerationValues
     // The initial equipment/inventory, used when generating the creature.
     std::map<EquipmentWornLocation, InitialItem> initial_equipment;
     std::vector<InitialItem> initial_inventory;
+
+    // Used to determine if the creature can be generated on a certain tile,
+    // after the tile has been matched.  Some tiles (e.g., sites of worship)
+    // have generator-based restrictions.
+    std::vector<std::string> generator_filters;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

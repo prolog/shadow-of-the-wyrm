@@ -70,7 +70,7 @@ bool MapCreatureGenerator::generate_random_creatures(MapPtr map, const int dange
 
   // Generate the list of possible creatures for this map.
   int min_danger_level = RNG::range(1, std::max<int>(1, (danger_level / 2)));
-  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, danger_level, rarity);
+  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, danger_level, rarity, additional_properties);
 
   while ((current_creatures_placed < num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {

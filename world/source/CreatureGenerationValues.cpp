@@ -27,6 +27,7 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
   result = result && (base_experience_value == cgv.base_experience_value);
   result = result && (initial_equipment == cgv.initial_equipment);
   result = result && (initial_inventory == cgv.initial_inventory);
+  result = result && (generator_filters == cgv.generator_filters);
 
   return result;
 }
@@ -116,6 +117,16 @@ vector<InitialItem> CreatureGenerationValues::get_initial_inventory() const
   return initial_inventory;
 }
 
+void CreatureGenerationValues::set_generator_filters(const vector<string>& new_generator_filters)
+{
+  generator_filters = new_generator_filters;
+}
+
+vector<string> CreatureGenerationValues::get_generator_filters() const
+{
+  return generator_filters;
+}
+
 bool CreatureGenerationValues::serialize(ostream& stream) const
 {
   GenerationValues::serialize(stream);
@@ -155,6 +166,8 @@ bool CreatureGenerationValues::serialize(ostream& stream) const
   {
     item.serialize(stream);
   }
+
+  Serialize::write_string_vector(stream, generator_filters);
 
   return true;
 }
@@ -212,6 +225,9 @@ bool CreatureGenerationValues::deserialize(istream& stream)
 
     initial_inventory.push_back(ii);
   }
+
+  generator_filters.clear();
+  Serialize::read_string_vector(stream, generator_filters);
 
   return true;
 }

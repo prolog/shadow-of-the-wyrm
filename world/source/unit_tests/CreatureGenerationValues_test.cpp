@@ -11,12 +11,14 @@ TEST(SL_World_CreatureGenerationValues, saveload)
 {
   CreatureGenerationValues cgv, cgv2;
 
+  vector<string> g_v = { "fdsa", "asdf" };
   cgv.set_current(1);
   cgv.incr_current();
   cgv.set_maximum(4);
   cgv.set_friendly(true);
   cgv.set_danger_level(22);
   cgv.set_rarity(Rarity(10));
+  cgv.set_generator_filters(g_v);
 
   cgv.add_allowable_terrain_type(TileType::TILE_TYPE_BARRACKS);
   cgv.add_allowable_terrain_type(TileType::TILE_TYPE_MARSH);
@@ -48,5 +50,9 @@ TEST(SL_World_CreatureGenerationValues, saveload)
   cgv2.deserialize(iss);
 
   EXPECT_TRUE(cgv == cgv2);
+
+  vector<string> generator_filters = cgv2.get_generator_filters();
+
+  EXPECT_TRUE(find(generator_filters.begin(), generator_filters.end(), "asdf") != generator_filters.end());
 }
 

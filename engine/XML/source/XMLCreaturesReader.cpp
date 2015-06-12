@@ -186,6 +186,21 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
         cgv.add_allowable_terrain_type(att);
       }
     }
+
+    // Optional GeneratorFilters node.
+    XMLNode generator_filters_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "GeneratorFilters");
+    if (!generator_filters_node.is_null())
+    {
+      vector<XMLNode> generator_filter_node = XMLUtils::get_elements_by_local_name(generator_filters_node, "Filter");
+      vector<string> filters;
+
+      for (const XMLNode& node : generator_filter_node)
+      {
+        filters.push_back(XMLUtils::get_node_value(node));
+      }
+
+      cgv.set_generator_filters(filters);
+    }
     
     // Friendly?
     bool friendly = XMLUtils::get_child_node_bool_value(creature_generation_values_node, "Friendly", false);
