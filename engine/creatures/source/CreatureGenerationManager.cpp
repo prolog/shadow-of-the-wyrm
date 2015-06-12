@@ -1,10 +1,12 @@
 #include <iterator>
 #include <map>
+#include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
+#include "MapProperties.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -13,7 +15,7 @@ CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity)
+CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
 {
   int min_danger = min_danger_level;
   CreatureGenerationMap generation_map;
@@ -23,6 +25,17 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
   
   CreatureMap creatures = game.get_creatures_ref();
   CreatureGenerationValuesMap cgv_map = game.get_creature_generation_values_ref();
+
+  vector<string> generator_filters;
+  auto a_it = additional_properties.find(MapProperties::MAP_PROPERTIES_GENERATOR_FILTERS);
+
+  if (a_it != additional_properties.end())
+  {
+    generator_filters = String::create_string_vector_from_csv_string(a_it->second);
+
+    // Sort this for easy comparison later on...
+    std::sort(generator_filters.begin(), generator_filters.end());
+  }
     
   while (generation_map.empty() && (min_danger > 0))
   {
@@ -34,7 +47,7 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
       CreaturePtr creature = c_it->second;
       CreatureGenerationValues cgvals = cgv_map[creature_id];
 
-      if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity))
+      if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity, generator_filters))
       {
         generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
       }
@@ -93,10 +106,14 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
   return generated_creature;
 }
 
-bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity)
+bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const vector<string>& generator_filters)
 {
   int cgv_danger_level = cgv.get_danger_level();
   int cgv_maximum = cgv.get_maximum();
+  vector<string> cgv_generator_filters = cgv.get_generator_filters();
+
+  // Sort the vectors.  The assumption is that the input vector is sorted.
+  std::sort(cgv_generator_filters.begin(), cgv_generator_filters.end());
 
   if ( cgv.is_terrain_type_allowed(terrain_type)
     && cgv_danger_level >= 0 // Exclude danger level of -1, which means "don't generate"
@@ -104,6 +121,10 @@ bool CreatureGenerationManager::does_creature_match_generation_criteria(const Cr
     && cgv_danger_level <= max_danger_level
     && (cgv_maximum <= CreatureGenerationConstants::CREATURE_GENERATION_UNLIMITED || (cgv.get_current() < cgv_maximum)) // Either no max, or less than the > 0 maximum
     && (cgv_maximum != 1 || permanent_map) // no uniques on temporary maps
+    // If there are no generator filters (from the generator/map) the creature
+    // can be generated.  If there are generator filters, then the creature's
+    // values must be present in the generator/map's.
+    && (generator_filters.empty() || std::includes(cgv_generator_filters.begin(), cgv_generator_filters.end(), generator_filters.begin(), generator_filters.end()))
     && cgv.get_rarity() <= rarity )
   {
     return true;

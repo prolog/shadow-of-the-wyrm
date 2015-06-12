@@ -7,6 +7,12 @@ Savage Lands v0.3.7 "Brouwer"
 - Updated Site of Death tiles to include black servants, black monks,
   black priests, astral horrors, star beasts, black devil.
 
+- Added generator filters so that certain generators can enforce the
+  presence of creatures with certain filters present.  Added a filter to
+  overgrown sacrifice sites (Scedugenga's turf), and added that filter to
+  a number of creatures.  Those creatures can still be generated
+  elsewhere.
+
 - Added some more debug-level logging to world generation so that more
   added features can be tracked.
 
