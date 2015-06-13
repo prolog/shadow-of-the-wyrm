@@ -50,7 +50,7 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
 
   MapPtr map = generate(dim);
   initialize(map, danger_level);
-  copy_properties_to_map(map);
+  create_properties_and_copy_to_map(map);
   
   return map;
 }
@@ -89,7 +89,7 @@ MapPtr Generator::generate()
 {
   Dimensions default_dimensions;
   MapPtr result_map = generate(default_dimensions);
-  copy_properties_to_map(result_map);
+  create_properties_and_copy_to_map(result_map);
 
   return result_map;
 }
@@ -470,13 +470,32 @@ vector<string> Generator::get_generator_filters() const
   return no_filters;
 }
 
-void Generator::copy_properties_to_map(MapPtr map)
+bool Generator::get_ignore_creature_generation_level_checks() const
+{
+  return false;
+}
+
+// Copy any generator properties that need to be a part of the map's
+// properties.
+void Generator::create_properties_and_copy_to_map(MapPtr map)
 {
   vector<string> generator_filters = get_generator_filters();
 
   if (!generator_filters.empty())
   {
-    map->set_property(MapProperties::MAP_PROPERTIES_GENERATOR_FILTERS, 
-                      String::create_csv_from_string_vector(generator_filters));
+    string generator_filter_csv = String::create_csv_from_string_vector(generator_filters);
+
+    set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_GENERATOR_FILTERS, generator_filter_csv);
   }
+
+  bool ignore_creature_lvl_checks = get_ignore_creature_generation_level_checks();
+  string ignore_creature_lvl_checks_s = Bool::to_string(ignore_creature_lvl_checks);
+
+  set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_creature_lvl_checks_s);
+}
+
+void Generator::set_property_to_generator_and_map(MapPtr map, const string& prop, const string& val)
+{
+  additional_properties[prop] = val;
+  map->set_property(prop, val);
 }

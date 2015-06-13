@@ -13,6 +13,9 @@ Savage Lands v0.3.7 "Brouwer"
   a number of creatures.  Those creatures can still be generated
   elsewhere.
 
+- Removed the level-based creature generation restrictions from villages
+  and worship sites.
+
 - Added some more debug-level logging to world generation so that more
   added features can be tracked.
 

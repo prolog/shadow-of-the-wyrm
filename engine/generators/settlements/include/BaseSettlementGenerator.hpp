@@ -26,6 +26,8 @@ class BaseSettlementGenerator : public SL::Generator
     void generate_road_east(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_size_modifier = 0, bool recurse = true);
     void generate_road_west(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_size_modifier = 0, bool recurse = true);
 
+    bool get_ignore_creature_generation_level_checks() const override;
+
     MapPtr base_map;
     int growth_rate;
 

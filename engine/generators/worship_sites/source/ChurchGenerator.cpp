@@ -14,3 +14,7 @@ bool ChurchGenerator::get_permanence_default() const
   return true;
 }
 
+bool ChurchGenerator::get_ignore_creature_generation_level_checks() const
+{
+  return true;
+}

@@ -67,7 +67,9 @@ namespace SL
       virtual bool generate_initial_items(MapPtr map, const int danger_level);
       virtual bool update_items(MapPtr map, const int danger_level);
 
-      virtual void copy_properties_to_map(MapPtr map);
+      virtual bool get_ignore_creature_generation_level_checks() const;
+      virtual void create_properties_and_copy_to_map(MapPtr map);
+      virtual void set_property_to_generator_and_map(MapPtr map, const std::string& property, const std::string& value);
 
       std::string map_exit_id;
       TileType map_terrain_type;

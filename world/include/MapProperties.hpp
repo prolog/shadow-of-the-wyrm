@@ -24,6 +24,10 @@ class MapProperties
     // tile type.
     static const std::string MAP_PROPERTIES_GENERATOR_FILTERS;
 
+    // Should level checks be ignored when generating creatures?  Some places
+    // are just dangerous.
+    static const std::string MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS;
+
   protected:
     MapProperties();
     ~MapProperties();
