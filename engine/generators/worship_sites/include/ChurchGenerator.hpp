@@ -16,6 +16,7 @@ class ChurchGenerator : public SL::Generator
 
   protected:
     virtual bool get_permanence_default() const override;
+    virtual bool get_ignore_creature_generation_level_checks() const override;
 
     std::string deity_id;
     MapPtr base_map;
