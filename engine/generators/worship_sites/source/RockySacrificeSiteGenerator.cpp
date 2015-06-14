@@ -3,7 +3,9 @@
 #include "RockySacrificeSiteGenerator.hpp"
 #include "RNG.hpp"
 
-using std::string;
+using namespace std;
+
+const string RockySacrificeSiteGenerator::ROCKY_SACRIFICE_SITE_GENERATOR_FILTER = "RockySacrificeSite";
 
 RockySacrificeSiteGenerator::RockySacrificeSiteGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_SITE_OF_DEATH)
@@ -74,4 +76,10 @@ void RockySacrificeSiteGenerator::generate_altar(MapPtr map)
   {
     centre_tile->set_feature(altar);
   }
+}
+
+vector<string> RockySacrificeSiteGenerator::get_generator_filters() const
+{
+  vector<string> filters = { ROCKY_SACRIFICE_SITE_GENERATOR_FILTER };
+  return filters;
 }
