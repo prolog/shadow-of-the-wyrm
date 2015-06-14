@@ -4,7 +4,9 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
-using std::string;
+using namespace std;
+
+const string IslandSacrificeSiteGenerator::ISLAND_SACRIFICE_SITE_GENERATOR_FILTER = "IslandSacrificeSite";
 
 IslandSacrificeSiteGenerator::IslandSacrificeSiteGenerator(const string& new_deity_id, const MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_CHURCH)
@@ -79,3 +81,8 @@ void IslandSacrificeSiteGenerator::generate_features(MapPtr map)
   centre_tile->set_feature(altar);
 }
 
+vector<string> IslandSacrificeSiteGenerator::get_generator_filters() const
+{
+  vector<string> filters = { ISLAND_SACRIFICE_SITE_GENERATOR_FILTER };
+  return filters;
+}

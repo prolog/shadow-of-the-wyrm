@@ -5,7 +5,9 @@ Savage Lands v0.3.7 "Brouwer"
   apostles, pilgrims.
 
 - Updated Site of Death tiles to include black servants, black monks,
-  black priests, astral horrors, star beasts, black devil.
+  black priests, astral horrors, star beasts, black devil.  These are all
+  for Sceadugenga; for the other deities, added zealots, bloodletters,
+  dark priests, believers, acolytes.
 
 - Added generator filters so that certain generators can enforce the
   presence of creatures with certain filters present.  Added a filter to
@@ -19,7 +21,8 @@ Savage Lands v0.3.7 "Brouwer"
 - Added some more debug-level logging to world generation so that more
   added features can be tracked.
 
-- New creatures: cleric, layperson, devotee, follower, apostle, pilgrim.
+- New creatures: cleric, layperson, devotee, follower, apostle, pilgrim,
+  zealot, bloodletter, dark priest, believer.
 
 Savage Lands v0.3.6 "Milan"
 - Version declared May 6, 2015.  Version finalized June 6, 2015.

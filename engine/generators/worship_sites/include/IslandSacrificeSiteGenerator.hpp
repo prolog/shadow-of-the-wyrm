@@ -11,8 +11,12 @@ class IslandSacrificeSiteGenerator : public ChurchGenerator
     MapPtr generate(const Dimensions& dim) override;
     MapPtr generate() override;
 
+    std::vector<std::string> get_generator_filters() const override;
+
   protected:
     void generate_site(MapPtr map);
     void generate_island(MapPtr map);
     void generate_features(MapPtr map);
+
+    static const std::string ISLAND_SACRIFICE_SITE_GENERATOR_FILTER;
 };
