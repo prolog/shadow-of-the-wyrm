@@ -21,6 +21,8 @@ Savage Lands v0.3.7 "Brouwer"
 - Added some more debug-level logging to world generation so that more
   added features can be tracked.
 
+- Changed the title poem to an excerpt from "The Faerie Queene".
+
 - New creatures: cleric, layperson, devotee, follower, apostle, pilgrim,
   zealot, bloodletter, dark priest, believer.
 
