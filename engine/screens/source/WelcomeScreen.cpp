@@ -1,12 +1,15 @@
+#include <boost/algorithm/string.hpp>
 #include "global_prototypes.hpp"
 #include "Metadata.hpp"
 #include "OptionsComponent.hpp"
 #include "PromptTextKeys.hpp"
 #include "StringTable.hpp"
+#include "TextDisplayFormatter.hpp"
 #include "TextKeys.hpp"
 #include "WelcomeScreen.hpp"
 
 using namespace std;
+using namespace boost::algorithm;
 
 WelcomeScreen::WelcomeScreen(DisplayPtr new_display) : Screen(new_display)
 {
@@ -23,7 +26,20 @@ void WelcomeScreen::initialize()
 
   TextComponentPtr game_version_synopsis = std::make_shared<TextComponent>(meta.get_game_version_synopsis());
   TextComponentPtr copyright_info = std::make_shared<TextComponent>(StringTable::get(TextKeys::COPYRIGHT_NOTICE));
-  TextComponentPtr wanderer_excerpt = std::make_shared<TextComponent>(get_title_poem());
+  string title_poem = get_title_poem();
+
+  TextDisplayFormatter tdf;
+  vector<string> poem_v = tdf.format_text(title_poem);
+  vector<TextComponentPtr> poem_lines;
+
+  for (string& poem_line : poem_v)
+  {
+    trim_left(poem_line);
+    trim_right(poem_line);
+
+    TextComponentPtr current_line = std::make_shared<TextComponent>(poem_line);
+    poem_lines.push_back(current_line);
+  }
 
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
@@ -52,7 +68,11 @@ void WelcomeScreen::initialize()
 
   welcome_screen.push_back(game_version_synopsis);
   welcome_screen.push_back(copyright_info);
-  welcome_screen.push_back(wanderer_excerpt);
+
+  for (TextComponentPtr poem_line : poem_lines)
+  {
+    welcome_screen.push_back(poem_line);
+  }
 
   welcome_screen.push_back(options);
 
