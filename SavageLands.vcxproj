@@ -622,6 +622,7 @@
     <ClInclude Include="engine\maps\include\MapUtils.hpp" />
     <ClInclude Include="engine\maps\include\TileUtils.hpp" />
     <ClInclude Include="engine\screens\include\ClassSelectionScreen.hpp" />
+    <ClInclude Include="engine\screens\include\ComponentAlignment.hpp" />
     <ClInclude Include="engine\screens\include\DeitySelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\EquipmentScreen.hpp" />
     <ClInclude Include="engine\screens\include\HighScoreScreen.hpp" />
@@ -1909,6 +1910,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\screens\source\ClassSelectionScreen.cpp" />
+    <ClCompile Include="engine\screens\source\ComponentAlignment.cpp" />
     <ClCompile Include="engine\screens\source\DeitySelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\EquipmentScreen.cpp" />
     <ClCompile Include="engine\screens\source\HighScoreScreen.cpp" />

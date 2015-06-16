@@ -34,3 +34,13 @@ std::vector<std::pair<std::string, Colour>> ScreenComponent::get_text() const
   return text;
 }
 
+void ScreenComponent::set_spacing_after(const ComponentAlignment& new_component_alignment)
+{
+  ca = new_component_alignment;
+}
+
+ComponentAlignment ScreenComponent::get_spacing_after() const
+{
+  return ca;
+}
+

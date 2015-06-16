@@ -1,10 +1,11 @@
-"Ah but," said craftie Trompart, "weete ye well,
-That yonder in that wastefull wildernesse
-Huge monsters haunt, and many dangers dwell;
-Dragons, and Minotaures, and feendes of hell,
-And many wilde woodmen, which robbe and rend
-All travellers; therefore advise ye well,
-Before ye enterprise that way to wend:
-One may his journey bring too soone to evill end."
+"Ah but," said craftie Trompart, "weete ye well, %b
+That yonder in that wastefull wildernesse %b
+Huge monsters haunt, and many dangers dwell; %b
+Dragons, and Minotaures, and feendes of hell, %b
+And many wilde woodmen, which robbe and rend %b
+All travellers; therefore advise ye well, %b
+Before ye enterprise that way to wend: %b
+One may his journey bring too soone to evill end." %b
 %b
-- Edmund Spenser, "The Faerie Queene", III.x
+- Edmund Spenser, "The Faerie Queene", Book III, Canto X
+%b

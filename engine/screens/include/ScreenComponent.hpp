@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "Colours.hpp"
+#include "ComponentAlignment.hpp"
 
 class ScreenComponent
 {
@@ -16,8 +17,12 @@ class ScreenComponent
     virtual void add_text(const std::string& new_text, const Colour new_colour);
     virtual std::vector<std::pair<std::string, Colour>> get_text() const;
 
+    void set_spacing_after(const ComponentAlignment& new_component_alignment);
+    ComponentAlignment get_spacing_after() const;
+
   protected:
     std::vector<std::pair<std::string, Colour>> text;
+    ComponentAlignment ca;
 };
 
 typedef std::shared_ptr<ScreenComponent> ScreenComponentPtr;
