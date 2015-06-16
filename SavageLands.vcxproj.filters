@@ -3387,6 +3387,9 @@
     <ClInclude Include="engine\creatures\include\CreatureGenerationOptionsStringBuilder.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\screens\include\ComponentAlignment.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6592,6 +6595,9 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\CreatureGenerationOptionsStringBuilder.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\ComponentAlignment.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

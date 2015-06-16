@@ -71,6 +71,9 @@ void WelcomeScreen::initialize()
 
   for (TextComponentPtr poem_line : poem_lines)
   {
+    ComponentAlignment ca(true, 1);
+
+    poem_line->set_spacing_after(ca);
     welcome_screen.push_back(poem_line);
   }
 

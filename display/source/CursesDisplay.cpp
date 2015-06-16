@@ -584,6 +584,13 @@ string CursesDisplay::display_screen(const Screen& current_screen)
   for(uint i = 0; i < csize; i++)
   {
     ScreenComponentPtr component = components.at(i);
+    ComponentAlignment ca = component->get_spacing_after();
+
+    // Check to see if we should override the screen's line increment value.
+    if (ca.get_override_default())
+    {
+      line_incr = ca.get_value();
+    }
 
     if (component)
     {
