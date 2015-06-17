@@ -196,8 +196,8 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
     // FIXME: Generate items, and place them in the chest
     
     // Generate the stairs down to the crypt
-    TilePtr down_staircase_tile = tg.generate(TileType::TILE_TYPE_DOWN_STAIRCASE);
-    map->insert((wall_row + start_row + church_height) / 2, (room_start_col + start_col + church_width) / 2, down_staircase_tile);
+    Coordinate c = { (wall_row + start_row + church_height) / 2, (room_start_col + start_col + church_width) / 2 };
+    place_staircase(map, c.first, c.second, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_CRYPT, Direction::DIRECTION_DOWN, get_permanence_default(), true);
   }
   else
   {

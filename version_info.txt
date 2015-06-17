@@ -4,6 +4,9 @@ Savage Lands v0.3.7 "Brouwer"
 - Updated Church tiles to include clerics, laypeople, devotees, followers,
   apostles, pilgrims.
 
+- Updated Cathedrals so that when a down staircase is generated, it
+  leads to a crypt.
+
 - Updated Site of Death tiles to include black servants, black monks,
   black priests, astral horrors, star beasts, black devil.  These are all
   for Sceadugenga; for the other deities, added zealots, bloodletters,
