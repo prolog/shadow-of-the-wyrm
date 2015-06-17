@@ -727,6 +727,9 @@
     <Filter Include="Header Files\engine\generators\fortresses\include">
       <UniqueIdentifier>{7bf78366-7d2c-4999-901b-57450ca1bf53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\screens\source\unit_tests">
+      <UniqueIdentifier>{7d63f869-ceef-410a-a6c6-ceb05f086bde}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -6598,6 +6601,9 @@
     </ClCompile>
     <ClCompile Include="engine\screens\source\ComponentAlignment.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\unit_tests\ComponentAlignment_test.cpp">
+      <Filter>Source Files\engine\screens\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
