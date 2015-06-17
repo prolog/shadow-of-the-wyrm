@@ -1928,6 +1928,11 @@
     <ClCompile Include="engine\screens\source\TextDisplayFormatter.cpp" />
     <ClCompile Include="engine\screens\source\TextDisplayScreen.cpp" />
     <ClCompile Include="engine\screens\source\TextFormatSpecifiers.cpp" />
+    <ClCompile Include="engine\screens\source\unit_tests\ComponentAlignment_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\screens\source\WelcomeScreen.cpp" />
     <ClCompile Include="engine\screens\source\WornLocationScreenFactory.cpp" />
     <ClCompile Include="engine\screens\source\WornLocationSelectionScreen.cpp" />

@@ -30,3 +30,6 @@ int ComponentAlignment::get_value() const
   return value;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/ComponentAlignment_test.cpp"
+#endif
