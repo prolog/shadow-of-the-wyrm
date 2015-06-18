@@ -741,6 +741,7 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\IXMLFeatureReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLAltarReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBarrelReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLBedReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLDoorReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFirePillarReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp" />
@@ -925,6 +926,7 @@
     <ClInclude Include="world\seasons\include\Winter.hpp" />
     <ClInclude Include="world\tiles\features\include\Altar.hpp" />
     <ClInclude Include="world\tiles\features\include\Barrel.hpp" />
+    <ClInclude Include="world\tiles\features\include\Bed.hpp" />
     <ClInclude Include="world\tiles\features\include\Bench.hpp" />
     <ClInclude Include="world\tiles\features\include\DecorativeStatues.hpp" />
     <ClInclude Include="world\tiles\features\include\Door.hpp" />
@@ -2157,6 +2159,7 @@
     <ClCompile Include="engine\translators\source\ViewMapTranslator.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLAltarReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBarrelReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLBedReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLDoorReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFirePillarReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLForgeReader.cpp" />
@@ -2636,6 +2639,7 @@
     <ClCompile Include="world\source\WorldFactory.cpp" />
     <ClCompile Include="world\tiles\features\source\Altar.cpp" />
     <ClCompile Include="world\tiles\features\source\Barrel.cpp" />
+    <ClCompile Include="world\tiles\features\source\Bed.cpp" />
     <ClCompile Include="world\tiles\features\source\Bench.cpp" />
     <ClCompile Include="world\tiles\features\source\DecorativeStatues.cpp" />
     <ClCompile Include="world\tiles\features\source\Door.cpp" />
@@ -2674,6 +2678,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Bed_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Bench_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

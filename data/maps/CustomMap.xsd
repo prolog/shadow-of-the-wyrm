@@ -1,333 +1,384 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:maps:1.0.0" xmlns:sl="urn:savage_lands:1.0.0" targetNamespace="urn:savage_lands:maps:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
-<xs:import namespace="urn:savage_lands:1.0.0" schemaLocation="../SavageLands.xsd"/>
-<xs:element name="CustomMap">
-	<xs:annotation><xs:documentation>XML element describing the custom maps that describe fixed locations within Savage Lands.</xs:documentation></xs:annotation>
-	<xs:complexType>
-		<xs:sequence>
-			<xs:element ref="tns:Dimensions"/>
-			<xs:element name="LevelRange" type="tns:LevelRange"/>
-			<xs:element name="MapType" type="tns:MapType"/>
-			<!-- This is a string of tiles, rows x cols, that represents a particular tile type.  The map is created by
+	<xs:import namespace="urn:savage_lands:1.0.0" schemaLocation="../SavageLands.xsd"/>
+	<xs:element name="CustomMap">
+		<xs:annotation>
+			<xs:documentation>XML element describing the custom maps that describe fixed locations within Savage Lands.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:Dimensions"/>
+				<xs:element name="LevelRange" type="tns:LevelRange"/>
+				<xs:element name="MapType" type="tns:MapType"/>
+				<!-- This is a string of tiles, rows x cols, that represents a particular tile type.  The map is created by
 				 adding the corresponding tile to the corresponding row/col.  Whitespace is ignored, as is any
 				 unrecognized character. -->
-			<xs:element name="Tiles" type="xs:string"/>
-			<xs:element name="PlayerStart" type="tns:Coord" minOccurs="0"/>
-			<xs:element name="InitialPlacements" type="tns:InitialPlacements" minOccurs="0"/>
-			<xs:element name="RandomPlacements" type="tns:RandomPlacements" minOccurs="0"/>
-			<xs:element name="Exits" type="tns:Exits" minOccurs="0"/>
-			<xs:element name="Features" type="tns:Features" minOccurs="0"/>
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:string" use="required"/>
-	</xs:complexType>
-</xs:element>
-<xs:element name="Dimensions">
-	<xs:annotation><xs:documentation>The dimensions of the map.</xs:documentation></xs:annotation>
-	<xs:complexType>
+				<xs:element name="Tiles" type="xs:string"/>
+				<xs:element name="PlayerStart" type="tns:Coord" minOccurs="0"/>
+				<xs:element name="InitialPlacements" type="tns:InitialPlacements" minOccurs="0"/>
+				<xs:element name="RandomPlacements" type="tns:RandomPlacements" minOccurs="0"/>
+				<xs:element name="Exits" type="tns:Exits" minOccurs="0"/>
+				<xs:element name="Features" type="tns:Features" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Dimensions">
+		<xs:annotation>
+			<xs:documentation>The dimensions of the map.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Rows" type="xs:unsignedInt"/>
+				<xs:element name="Columns" type="xs:unsignedInt"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- Complex Types -->
+	<xs:complexType name="LevelRange">
 		<xs:sequence>
-			<xs:element name="Rows" type="xs:unsignedInt"/>
-			<xs:element name="Columns" type="xs:unsignedInt"/>
+			<xs:element name="Min" type="xs:unsignedInt"/>
+			<xs:element name="Max" type="xs:unsignedInt"/>
 		</xs:sequence>
 	</xs:complexType>
-</xs:element>
-<!-- Complex Types -->
-<xs:complexType name="LevelRange">
-	<xs:sequence>
-		<xs:element name="Min" type="xs:unsignedInt"/>
-		<xs:element name="Max" type="xs:unsignedInt"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="Coord">
-	<xs:annotation><xs:documentation>A (y,x) coordinate.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Row" type="xs:unsignedInt"/>
-		<xs:element name="Col" type="xs:unsignedInt"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="InitialPlacements">
-	<xs:annotation><xs:documentation>Initial, set placements of creatures and items.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Creatures" type="tns:IdentifiedPlacementList" minOccurs="0"/>
-		<xs:element name="Items" type="tns:IdentifiedPlacementList" minOccurs="0"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="RandomPlacements">
-	<xs:annotation><xs:documentation>Random placements of creatures and items.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Creatures" type="tns:RandomPlacementList" minOccurs="0"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="IdentifiedPlacementList">
-	<xs:annotation><xs:documentation>A list of placements of a particular type (creature, item, etc).</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Placement" type="tns:IdentifiedPlacement" minOccurs="0" maxOccurs="unbounded"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="IdentifiedPlacement">
-	<xs:annotation><xs:documentation>An ID (creature, item, etc), and coordinates on which the entity should be placed.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:choice>
-			<xs:element name="ID" type="xs:string"/>
-			<xs:element name="Random" type="tns:IDList"/>
-		</xs:choice>
-		<xs:choice>
+	<xs:complexType name="Coord">
+		<xs:annotation>
+			<xs:documentation>A (y,x) coordinate.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Row" type="xs:unsignedInt"/>
+			<xs:element name="Col" type="xs:unsignedInt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InitialPlacements">
+		<xs:annotation>
+			<xs:documentation>Initial, set placements of creatures and items.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Creatures" type="tns:IdentifiedPlacementList" minOccurs="0"/>
+			<xs:element name="Items" type="tns:IdentifiedPlacementList" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RandomPlacements">
+		<xs:annotation>
+			<xs:documentation>Random placements of creatures and items.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Creatures" type="tns:RandomPlacementList" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentifiedPlacementList">
+		<xs:annotation>
+			<xs:documentation>A list of placements of a particular type (creature, item, etc).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Placement" type="tns:IdentifiedPlacement" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentifiedPlacement">
+		<xs:annotation>
+			<xs:documentation>An ID (creature, item, etc), and coordinates on which the entity should be placed.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="ID" type="xs:string"/>
+				<xs:element name="Random" type="tns:IDList"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:element name="Coord" type="tns:Coord"/>
+				<xs:element name="Random" type="tns:CoordList"/>
+			</xs:choice>
+			<!-- Used only for creatures - has no meaning for items. -->
+			<xs:element name="Friendly" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<!-- Quantity is only used for items. -->
+			<xs:element name="Quantity" type="xs:unsignedInt" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RandomPlacementList">
+		<xs:annotation>
+			<xs:documentation>A list specifying a list of potential creatures/items, and a range to generate.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Min" type="xs:integer"/>
+			<xs:element name="Max" type="xs:integer"/>
+			<xs:element name="IDList" type="tns:IDList"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Exits">
+		<xs:annotation>
+			<xs:documentation>Contains details about tile exits to other set maps or the previous map.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Exit" type="tns:Exit" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Exit">
+		<xs:annotation>
+			<xs:documentation>Contains details about a particular exit on a tile.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
 			<xs:element name="Coord" type="tns:Coord"/>
-			<xs:element name="Random" type="tns:CoordList"/>
-		</xs:choice>
-		<!-- Used only for creatures - has no meaning for items. -->
-		<xs:element name="Friendly" type="xs:boolean" minOccurs="0"/>
-		<xs:element name="Name" type="xs:string" minOccurs="0"/>
-		<!-- Quantity is only used for items. -->
-		<xs:element name="Quantity" type="xs:unsignedInt" minOccurs="0"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="RandomPlacementList">
-	<xs:annotation><xs:documentation>A list specifying a list of potential creatures/items, and a range to generate.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Min" type="xs:integer"/>
-		<xs:element name="Max" type="xs:integer"/>
-		<xs:element name="IDList" type="tns:IDList"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="Exits">
-	<xs:annotation><xs:documentation>Contains details about tile exits to other set maps or the previous map.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Exit" type="tns:Exit" minOccurs="0" maxOccurs="unbounded"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="Exit">
-	<xs:annotation><xs:documentation>Contains details about a particular exit on a tile.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Coord" type="tns:Coord"/>
-		<xs:element name="Direction" type="tns:Direction"/>
-		<xs:choice>
-			<xs:element name="MapID" type="xs:string"/>
-			<xs:sequence>
-				<xs:element name="TileType" type="sl:TileType"/>
-			</xs:sequence>
-		</xs:choice>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="Features">
-	<xs:annotation><xs:documentation>Tile features to be placed on the map.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="FeaturePlacement" type="tns:FeaturePlacement" minOccurs="0" maxOccurs="unbounded"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="FeaturePlacement">
-	<xs:annotation><xs:documentation>A type consisting of a coordinate, and a type of feature.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Coord" type="tns:Coord"/>
-		<xs:choice>
-			<xs:element name="Altar" type="tns:Altar"/>
-			<xs:element name="Barrel" type="tns:Barrel"/>
-			<xs:element name="Door" type="tns:Door"/>
-			<xs:element name="FirePillar" type="tns:FirePillar"/>
-			<xs:element name="Forge" type="tns:Forge"/>
-			<xs:element name="Fountain" type="tns:Fountain"/>
-			<xs:element name="Pew" type="tns:Pew"/>
-			<xs:element name="Sarcophagus" type="tns:Sarcophagus"/>
-			<xs:element name="Tannery" type="tns:Tannery"/>
-			<xs:element name="JewelerWorkbench" type="tns:JewelerWorkbench"/>
-			<xs:element name="WheelAndLoom" type="tns:WheelAndLoom"/>
-		</xs:choice>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="Feature">
-	<xs:annotation><xs:documentation>Defines a Feature - not all fields on the cpp class can be integrated via XML currently.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Material" type="sl:MaterialType" minOccurs="0"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="Altar">
-	<xs:annotation><xs:documentation>Defines an Altar feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-			<xs:sequence>
-				<xs:element name="DeityID" type="xs:string"/>
-				<xs:element name="Alignment" type="tns:AlignmentRange"/>
-			</xs:sequence>
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="Barrel">
-	<xs:annotation><xs:documentation>Defines a Barrel feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-			<xs:sequence>
-				<xs:element name="Tap" type="xs:boolean" minOccurs="0"/>
-				<xs:element name="Pour" type="xs:string" minOccurs="0"/>
-			</xs:sequence>
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="Door">
-	<xs:annotation><xs:documentation>Defines a Door feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-			<xs:sequence>
-				<xs:element name="LockID" type="xs:string" minOccurs="0"/>
-				<xs:element name="Entrance" type="tns:Entrance" minOccurs="0"/>
-			</xs:sequence>
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="FirePillar">
-	<xs:annotation><xs:documentation>Defines a Fire Pillar feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="Forge">
-	<xs:annotation><xs:documentation>Defines a Forge feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="Fountain">
-	<xs:annotation><xs:documentation>Defines a Fountain feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="Pew">
-	<xs:annotation><xs:documentation>Defines a Pew feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-			<xs:sequence>
-				<xs:element name="Orientation" type="tns:OrientationType"/>
-			</xs:sequence>
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="Sarcophagus">
-	<xs:annotation><xs:documentation>Defines a Sarcophagus.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-			<xs:sequence>
-				<xs:element name="Inscription" type="xs:string" minOccurs="0"/>
-			</xs:sequence>
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="Tannery">
-	<xs:annotation><xs:documentation>Defines a Tannery feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="JewelerWorkbench">
-	<xs:annotation><xs:documentation>Defines a jeweler's workbench feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="WheelAndLoom">
-	<xs:annotation><xs:documentation>Defines a Wheel and Loom feature.</xs:documentation></xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="tns:Feature">
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:complexType name="Entrance">
-	<xs:annotation>
-		<xs:documentation>
+			<xs:element name="Direction" type="tns:Direction"/>
+			<xs:choice>
+				<xs:element name="MapID" type="xs:string"/>
+				<xs:sequence>
+					<xs:element name="TileType" type="sl:TileType"/>
+				</xs:sequence>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Features">
+		<xs:annotation>
+			<xs:documentation>Tile features to be placed on the map.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="FeaturePlacement" type="tns:FeaturePlacement" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FeaturePlacement">
+		<xs:annotation>
+			<xs:documentation>A type consisting of a coordinate, and a type of feature.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Coord" type="tns:Coord"/>
+			<xs:choice>
+				<xs:element name="Altar" type="tns:Altar"/>
+				<xs:element name="Barrel" type="tns:Barrel"/>
+				<xs:element name="Door" type="tns:Door"/>
+				<xs:element name="FirePillar" type="tns:FirePillar"/>
+				<xs:element name="Forge" type="tns:Forge"/>
+				<xs:element name="Fountain" type="tns:Fountain"/>
+				<xs:element name="Pew" type="tns:Pew"/>
+				<xs:element name="Sarcophagus" type="tns:Sarcophagus"/>
+				<xs:element name="Tannery" type="tns:Tannery"/>
+				<xs:element name="JewelerWorkbench" type="tns:JewelerWorkbench"/>
+				<xs:element name="WheelAndLoom" type="tns:WheelAndLoom"/>
+				<xs:element name="Bed" type="tns:Feature"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Feature">
+		<xs:annotation>
+			<xs:documentation>Defines a Feature - not all fields on the cpp class can be integrated via XML currently.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Material" type="sl:MaterialType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Altar">
+		<xs:annotation>
+			<xs:documentation>Defines an Altar feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+				<xs:sequence>
+					<xs:element name="DeityID" type="xs:string"/>
+					<xs:element name="Alignment" type="tns:AlignmentRange"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Barrel">
+		<xs:annotation>
+			<xs:documentation>Defines a Barrel feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+				<xs:sequence>
+					<xs:element name="Tap" type="xs:boolean" minOccurs="0"/>
+					<xs:element name="Pour" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Door">
+		<xs:annotation>
+			<xs:documentation>Defines a Door feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+				<xs:sequence>
+					<xs:element name="LockID" type="xs:string" minOccurs="0"/>
+					<xs:element name="Entrance" type="tns:Entrance" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FirePillar">
+		<xs:annotation>
+			<xs:documentation>Defines a Fire Pillar feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Forge">
+		<xs:annotation>
+			<xs:documentation>Defines a Forge feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Fountain">
+		<xs:annotation>
+			<xs:documentation>Defines a Fountain feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Pew">
+		<xs:annotation>
+			<xs:documentation>Defines a Pew feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+				<xs:sequence>
+					<xs:element name="Orientation" type="tns:OrientationType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Sarcophagus">
+		<xs:annotation>
+			<xs:documentation>Defines a Sarcophagus.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+				<xs:sequence>
+					<xs:element name="Inscription" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Tannery">
+		<xs:annotation>
+			<xs:documentation>Defines a Tannery feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JewelerWorkbench">
+		<xs:annotation>
+			<xs:documentation>Defines a jeweler's workbench feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WheelAndLoom">
+		<xs:annotation>
+			<xs:documentation>Defines a Wheel and Loom feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Entrance">
+		<xs:annotation>
+			<xs:documentation>
 			Contains details about the entrance: open/closed/destroyed status, lock info, etc.
-		</xs:documentation>
-	</xs:annotation>
-	<xs:sequence>
-		<xs:element name="EntranceState" type="tns:EntranceStateType"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="CoordList">
-	<xs:annotation><xs:documentation>A list of coordinates (typically used for random placement of creatures or items).</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Coord" type="tns:Coord" maxOccurs="unbounded"/>
-	</xs:sequence>
-</xs:complexType>
-<xs:complexType name="IDList">
-	<xs:annotation>
-		<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EntranceState" type="tns:EntranceStateType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CoordList">
+		<xs:annotation>
+			<xs:documentation>A list of coordinates (typically used for random placement of creatures or items).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Coord" type="tns:Coord" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IDList">
+		<xs:annotation>
+			<xs:documentation>
 			A list of string IDs.
-		</xs:documentation>
-	</xs:annotation>
-	<xs:sequence>
-		<xs:element name="ID" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-	</xs:sequence>
-</xs:complexType>
-<!-- Simple Types -->
-<xs:simpleType name="MapType">
-	<xs:annotation>
-		<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ID" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Simple Types -->
+	<xs:simpleType name="MapType">
+		<xs:annotation>
+			<xs:documentation>
 			See: world/include/MapTypes.hpp
-			
+
 			0 = World (do not use)
 			1 = Overworld (forests, fields, villages, etc)
 			2 = Underworld (caverns, dungeons, etc)
-		</xs:documentation>
-	</xs:annotation>
-	<xs:restriction base="xs:int">
-		<xs:enumeration value="0"/>
-		<xs:enumeration value="1"/>
-		<xs:enumeration value="2"/>
-	</xs:restriction>
-</xs:simpleType>
-<xs:simpleType name="Direction">
-	<xs:annotation>
-		<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Direction">
+		<xs:annotation>
+			<xs:documentation>
 			See: world/include/Directions.hpp.
-			
+
 			This type corresponds to enum Direction.  Though any direction
 			can be set, in general, up/down are the ones that should see the
 			most use, via stairways, etc.
-		</xs:documentation>
-	</xs:annotation>
-	<xs:restriction base="xs:int">
-		<xs:minInclusive value="1"/>
-		<xs:maxInclusive value="11"/>
-	</xs:restriction>
-</xs:simpleType>
-<xs:simpleType name="AlignmentRange">
-	<xs:annotation>
-		<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="11"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AlignmentRange">
+		<xs:annotation>
+			<xs:documentation>
 			A particular alignment.  See: world/include/AlignmentEnums.hpp.
-		</xs:documentation>
-	</xs:annotation>
-	<xs:restriction base="xs:int">
-		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="2"/>
-	</xs:restriction>
-</xs:simpleType>
-<xs:simpleType name="OrientationType">
-	<xs:annotation>
-		<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OrientationType">
+		<xs:annotation>
+			<xs:documentation>
 			The orientation *of the building*:
 			0 = Exits are North/south
 			1 = Exits are East/west
-		</xs:documentation>
-	</xs:annotation>
-	<xs:restriction base="xs:int">
-		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="1"/>
-	</xs:restriction>
-</xs:simpleType>
-<xs:simpleType name="EntranceStateType">
-	<xs:annotation>
-		<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntranceStateType">
+		<xs:annotation>
+			<xs:documentation>
 			The state of the entrance.  See world/tiles/features/include/EntranceTypes.hpp.
 			0 = destroyed
 			1 = open
 			2 = closed
-		</xs:documentation>
-	</xs:annotation>
-	<xs:restriction base="xs:int">
-		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="2"/>
-	</xs:restriction>
-</xs:simpleType>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
