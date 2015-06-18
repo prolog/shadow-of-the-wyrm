@@ -301,6 +301,27 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>11</Row>
+				<Col>3</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>15</Row>
+				<Col>46</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
+				<Col>75</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>12</Row>
 				<Col>62</Col>
 			</Coord>
