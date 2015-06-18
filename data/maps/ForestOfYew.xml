@@ -122,6 +122,20 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>12</Row>
+				<Col>22</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>2</Row>
+				<Col>44</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>7</Row>
 				<Col>42</Col>
 			</Coord>
