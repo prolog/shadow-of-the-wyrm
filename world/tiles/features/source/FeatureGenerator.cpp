@@ -1,5 +1,6 @@
 #include "FeatureGenerator.hpp"
 #include "Bench.hpp"
+#include "Bed.hpp"
 #include "Door.hpp"
 #include "EastWestPew.hpp"
 #include "EvilAltar.hpp"
@@ -42,6 +43,12 @@ FeaturePtr FeatureGenerator::generate_altar(const std::string& deity_id, const A
   }
   
   return altar;
+}
+
+FeaturePtr FeatureGenerator::generate_bed()
+{
+  FeaturePtr bed = std::make_shared<Bed>();
+  return bed;
 }
 
 // Generate a door based on the parameters provided.

@@ -4,6 +4,7 @@
 #include "FeatureGenerator.hpp"
 #include "IXMLFeatureReader.hpp"
 #include "XMLAltarReader.hpp"
+#include "XMLBedReader.hpp"
 #include "XMLBarrelReader.hpp"
 #include "XMLDoorReader.hpp"
 #include "XMLFirePillarReader.hpp"
@@ -79,6 +80,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "WheelAndLoom")).is_null())
     {
       feature_creator = std::make_shared<XMLWheelAndLoomReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Bed")).is_null())
+    {
+      feature_creator = std::make_shared<XMLBedReader>();
     }
 
     assert(feature_creator != nullptr);
