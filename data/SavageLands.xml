@@ -5695,8 +5695,6 @@
 					<TileType>15</TileType>
 					<TileType>16</TileType>
 					<TileType>21</TileType>
-					<TileType>24</TileType>
-					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 				</AllowableTerrainTypes>
