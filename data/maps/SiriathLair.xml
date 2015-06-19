@@ -121,4 +121,13 @@
 			<TileType>26</TileType>
 		</Exit>
 	</Exits>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>9</Row>
+				<Col>40</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>
