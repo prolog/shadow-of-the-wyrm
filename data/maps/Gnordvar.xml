@@ -178,6 +178,20 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>4</Row>
+				<Col>59</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>9</Row>
+				<Col>64</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>7</Row>
 				<Col>15</Col>
 			</Coord>
