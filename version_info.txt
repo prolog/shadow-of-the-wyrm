@@ -36,6 +36,9 @@ Savage Lands v0.3.7 "Brouwer"
 
   - Kew's quest wasn't being set up properly.
 
+  - Custom map IDs for lower dungeon levels weren't being carried over
+    correctly.
+
 Savage Lands v0.3.6 "Milan"
 - Version declared May 6, 2015.  Version finalized June 6, 2015.
 
