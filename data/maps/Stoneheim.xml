@@ -231,6 +231,20 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>12</Row>
+				<Col>9</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>5</Row>
+				<Col>54</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>15</Row>
 				<Col>38</Col>
 			</Coord>
