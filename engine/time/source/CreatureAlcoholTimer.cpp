@@ -5,7 +5,7 @@
 #include "StatusAilmentTextKeys.hpp"
 
 // Check the timer to see if it's time to absorb or metabolize booze.
-void CreatureAlcoholTimer::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
+void CreatureAlcoholTimer::tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {
   if (creature != nullptr)
   {

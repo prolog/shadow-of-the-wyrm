@@ -267,7 +267,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   mau.update(creature, creatures_new_tile);
 
   ICreatureRegenerationPtr move_checker = std::make_shared<MovementAccumulationChecker>();
-  move_checker->tick(creature, 0, 0);
+  move_checker->tick(creature, creatures_new_tile, 0, 0);
   
   return added_location;
 }

@@ -20,6 +20,16 @@ uchar Bed::get_symbol() const
   return '~';
 }
 
+float Bed::get_hp_regeneration_multiplier() const
+{
+  return 0.3f;
+}
+
+float Bed::get_ap_regeneration_multiplier() const
+{
+  return 0.3f;
+}
+
 string Bed::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BED;

@@ -16,7 +16,7 @@ CreatureSkillIncrementer::CreatureSkillIncrementer(const uint new_minutes_interv
 {
 }
 
-void CreatureSkillIncrementer::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
+void CreatureSkillIncrementer::tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {
   if (creature)
   {

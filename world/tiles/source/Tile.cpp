@@ -349,6 +349,16 @@ void Tile::transformFrom(std::shared_ptr<Tile> original_tile)
   }
 }
 
+float Tile::get_hp_regeneration_multiplier() const
+{
+  return 1.0f;
+}
+
+float Tile::get_ap_regeneration_multiplier() const
+{
+  return 1.0f;
+}
+
 bool Tile::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, illuminated);

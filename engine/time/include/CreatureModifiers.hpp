@@ -4,7 +4,7 @@
 class CreatureModifiers : public ICreatureRegeneration
 {
   public:
-    void tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed) override;
+    void tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed) override;
 
   protected:
     void process_current_modifiers(CreaturePtr creature, const std::vector<std::pair<std::string, Modifier>>& current_modifiers);
