@@ -3757,7 +3757,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -3795,7 +3794,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -3837,7 +3835,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -3879,7 +3876,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -3922,7 +3918,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -3963,7 +3958,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -4005,7 +3999,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4045,7 +4038,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -4085,7 +4077,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4163,7 +4154,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4206,7 +4196,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4343,7 +4332,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4384,7 +4372,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4426,7 +4413,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4468,7 +4454,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4514,7 +4499,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4559,7 +4543,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4605,7 +4588,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4649,7 +4631,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4694,7 +4675,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -4737,7 +4717,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4782,7 +4761,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4827,7 +4805,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4871,7 +4848,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -4917,7 +4893,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -4960,7 +4935,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5006,7 +4980,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5078,7 +5051,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5123,7 +5095,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5169,7 +5140,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5213,7 +5183,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5257,7 +5226,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5356,7 +5324,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5399,7 +5366,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5445,7 +5411,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5490,7 +5455,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5533,7 +5497,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5573,7 +5536,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5650,7 +5612,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5690,7 +5651,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5728,7 +5688,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5768,7 +5727,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5809,7 +5767,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5850,7 +5807,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -5891,7 +5847,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -5933,7 +5888,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -5974,7 +5928,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6078,7 +6031,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -6115,7 +6067,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -6153,7 +6104,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6329,7 +6279,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6377,7 +6326,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6419,7 +6367,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6459,7 +6406,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6504,7 +6450,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6545,7 +6490,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6586,7 +6530,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -6626,7 +6569,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -6666,7 +6608,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6707,7 +6648,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6749,7 +6689,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6790,7 +6729,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6831,7 +6769,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6906,7 +6843,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6947,7 +6883,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -6988,7 +6923,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7033,7 +6967,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7077,7 +7010,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -7119,7 +7051,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7164,7 +7095,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7206,7 +7136,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7247,7 +7176,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7289,7 +7217,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7330,7 +7257,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7414,7 +7340,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7455,7 +7380,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7497,7 +7421,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7542,7 +7465,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7587,7 +7509,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7629,7 +7550,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7671,7 +7591,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7716,7 +7635,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7759,7 +7677,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7804,7 +7721,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -7846,7 +7762,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -7881,7 +7796,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -7916,7 +7830,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -7953,7 +7866,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -8019,7 +7931,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -8055,7 +7966,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -8091,7 +8001,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -8127,7 +8036,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -8162,7 +8070,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -8202,7 +8109,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8244,7 +8150,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8288,7 +8193,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8333,7 +8237,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8379,7 +8282,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8424,7 +8326,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -8497,7 +8398,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -8534,7 +8434,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8571,7 +8470,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -8611,7 +8509,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8656,7 +8553,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8697,7 +8593,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8738,7 +8633,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8813,7 +8707,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8854,7 +8747,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8898,7 +8790,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8939,7 +8830,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -8977,7 +8867,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -9016,7 +8905,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9058,7 +8946,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9099,7 +8986,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9173,7 +9059,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9215,7 +9100,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9256,7 +9140,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9296,7 +9179,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9338,7 +9220,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9379,7 +9260,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9421,7 +9301,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9462,7 +9341,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9504,7 +9382,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9545,7 +9422,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9619,7 +9495,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9660,7 +9535,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9702,7 +9576,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9744,7 +9617,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9785,7 +9657,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9826,7 +9697,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9869,7 +9739,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9911,7 +9780,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9952,7 +9820,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -9995,7 +9862,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10040,7 +9906,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10125,7 +9990,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10166,7 +10030,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10207,7 +10070,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10248,7 +10110,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10290,7 +10151,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10334,7 +10194,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -10375,7 +10234,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10420,7 +10278,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10464,7 +10321,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10518,7 +10374,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10562,7 +10417,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10608,7 +10462,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10651,7 +10504,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10823,7 +10675,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10865,7 +10716,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10907,7 +10757,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10949,7 +10798,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -10992,7 +10840,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11033,7 +10880,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11077,7 +10923,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11118,7 +10963,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11161,7 +11005,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11203,7 +11046,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11247,7 +11089,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11523,7 +11364,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11568,7 +11408,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11612,7 +11451,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11653,7 +11491,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11695,7 +11532,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11737,7 +11573,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11778,7 +11613,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11819,7 +11653,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -11860,7 +11693,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -12614,7 +12446,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -12658,7 +12489,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -12702,7 +12532,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -12746,7 +12575,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -12790,7 +12618,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -12833,7 +12660,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -12938,7 +12764,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -12984,7 +12809,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -13028,7 +12852,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -13308,7 +13131,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -13350,7 +13172,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -13425,7 +13246,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -13467,7 +13287,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -13508,7 +13327,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -13842,7 +13660,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -13885,7 +13702,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -13926,7 +13742,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -13969,7 +13784,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -14173,7 +13987,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -14216,7 +14029,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -14260,7 +14072,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -14302,7 +14113,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -14439,7 +14249,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -14695,7 +14504,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -14740,7 +14548,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -14818,7 +14625,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -14895,7 +14701,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -15833,7 +15638,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -16042,7 +15846,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16086,7 +15889,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16128,7 +15930,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16166,7 +15967,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -16200,7 +16000,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>24</TileType>
 					<TileType>26</TileType>
@@ -16238,7 +16037,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16292,7 +16090,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16336,7 +16133,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -16379,7 +16175,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16423,7 +16218,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16467,7 +16261,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16511,7 +16304,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -16553,7 +16345,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -16595,7 +16386,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16638,7 +16428,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -16681,7 +16470,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -16722,7 +16510,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16767,7 +16554,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -16811,7 +16597,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -16855,7 +16640,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -16897,7 +16681,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -16940,7 +16723,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -17185,7 +16967,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -17226,7 +17007,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -17268,7 +17048,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -17310,7 +17089,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -17354,7 +17132,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -17394,7 +17171,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -17435,7 +17211,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
@@ -17506,7 +17281,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>2</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>21</TileType>
@@ -17552,7 +17326,6 @@
 					<TileType>0</TileType>
 					<TileType>1</TileType>
 					<TileType>5</TileType>
-					<TileType>10</TileType>
 					<TileType>13</TileType>
 					<TileType>15</TileType>
 					<TileType>16</TileType>
