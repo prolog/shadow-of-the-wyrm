@@ -20,7 +20,7 @@ using namespace std;
 
 // Dungeon Generator
 DungeonGenerator::DungeonGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TileType::TILE_TYPE_DUNGEON)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_DUNGEON_COMPLEX)
 , DEFAULT_MIN_HEIGHT(4)
 , DEFAULT_MAX_HEIGHT(7)
 , DEFAULT_MIN_WIDTH(5)
