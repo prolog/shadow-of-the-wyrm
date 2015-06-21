@@ -1,7 +1,7 @@
 #include "MovementAccumulationChecker.hpp"
 #include "TerrainMovementAccumulationCheckerFactory.hpp"
 
-void MovementAccumulationChecker::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong minutes_elapsed)
+void MovementAccumulationChecker::tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong minutes_elapsed)
 {
   if (creature)
   {

@@ -175,6 +175,16 @@ int Feature::get_uses() const
   return uses;
 }
 
+float Feature::get_hp_regeneration_multiplier() const
+{
+  return 1.0f;
+}
+
+float Feature::get_ap_regeneration_multiplier() const
+{
+  return 1.0f;
+}
+
 bool Feature::serialize(ostream& stream) const
 {
   if (lock)

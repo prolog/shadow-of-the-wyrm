@@ -6620,5 +6620,11 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBedReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\APRegenerationCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\HPRegenerationCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

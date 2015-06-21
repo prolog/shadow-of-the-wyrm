@@ -9,7 +9,7 @@ using namespace std;
 
 // If the creature requires food, then reduce the hunger clock by 1 per
 // every minute this tick.
-void CreatureHungerTimer::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
+void CreatureHungerTimer::tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {
   if (creature)
   {

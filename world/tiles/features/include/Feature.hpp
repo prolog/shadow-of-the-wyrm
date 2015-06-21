@@ -73,6 +73,9 @@ class Feature : public ISerializable
     void set_uses(const int new_uses);
     int get_uses() const;
 
+    virtual float get_hp_regeneration_multiplier() const;
+    virtual float get_ap_regeneration_multiplier() const;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 

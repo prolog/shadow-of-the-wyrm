@@ -8,6 +8,7 @@
 #include "CreatureStatuses.hpp"
 #include "CreatureTimeObserver.hpp"
 #include "Game.hpp"
+#include "MapUtils.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulator.hpp"
 #include "RegenerationConstants.hpp"
@@ -73,6 +74,7 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
   for (map<string, CreaturePtr>::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
   {
     CreaturePtr creature = c_it->second;
+    TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
       
     for (ICreatureRegenerationPtr regen_helper : regen)
     {
@@ -80,7 +82,7 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
       {
         if (regen_helper)
         {
-          regen_helper->tick(creature, minutes_this_tick, minutes_elapsed); 
+          regen_helper->tick(creature, tile, minutes_this_tick, minutes_elapsed); 
         }
       }
       else

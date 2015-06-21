@@ -7,5 +7,5 @@
 class MovementAccumulationChecker : public ICreatureRegeneration
 {
   public:
-    void tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong minutes_elapsed) override;
+    void tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong minutes_elapsed) override;
 };

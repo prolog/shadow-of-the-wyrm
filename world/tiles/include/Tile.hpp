@@ -101,6 +101,13 @@ class Tile : public ISerializable
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
+    // Regeneration multipliers are used to determine how quickly it takes
+    // to regeneration 1 HP/AP.  The base multiplier is 1.  A multiplier
+    // less than 1 indicates quick regeneration, and greater than 1 indicates
+    // slower.
+    virtual float get_hp_regeneration_multiplier() const;
+    virtual float get_ap_regeneration_multiplier() const;
+
     virtual Tile* clone() = 0;
 
   protected:
