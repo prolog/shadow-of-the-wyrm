@@ -34,7 +34,7 @@ Savage Lands v0.3.7 "Brouwer"
   the time required to regenerate 1 HP/1 AP to 30% of the base.
 
 - New creatures: cleric, layperson, devotee, follower, apostle, pilgrim,
-  zealot, bloodletter, dark priest, believer.
+  zealot, bloodletter, dark priest, believer, large ant, hellbore beetle.
 
 - Bug fixes:
 
