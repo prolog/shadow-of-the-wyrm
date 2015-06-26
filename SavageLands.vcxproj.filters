@@ -3399,6 +3399,9 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBedReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\CarryingCapacityCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6624,6 +6627,12 @@
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\HPRegenerationCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CarryingCapacityCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\CarryingCapacityCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
