@@ -204,6 +204,7 @@
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BlindedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BloodiedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\CarryingCapacityCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureAdditionalDamageCalculator.hpp" />
@@ -1124,6 +1125,7 @@
     <ClCompile Include="engine\calculators\source\ArcanaPointsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\BlindedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\BloodiedCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\CarryingCapacityCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CombatTargetNumberCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureAdditionalDamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureCalculator.cpp" />
@@ -1218,6 +1220,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\BloodiedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\CarryingCapacityCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
