@@ -44,3 +44,9 @@ TEST(SL_World_NullInventory, items_are_not_persisted)
   
   EXPECT_TRUE(item == nullptr);
 }
+
+TEST(SL_World_NullInventory, count_items)
+{
+  NullInventory ni;
+  EXPECT_EQ(0, ni.count_items());
+}

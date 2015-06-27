@@ -163,6 +163,7 @@ class Creature : public ISerializable
 
     // Does the creature have any equipped or worn items?
     bool has_items() const;
+    uint count_items() const;
     
     // Set/get point-based statistics
 

@@ -76,6 +76,24 @@ ItemPtr Equipment::remove_item(const EquipmentWornLocation worn_location)
   return previously_worn_item;
 }
 
+uint Equipment::count_items() const
+{
+  uint count = 0;
+
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = get_item(ewl);
+
+    if (item != nullptr)
+    {
+      count += item->get_quantity();
+    }
+  }
+
+  return count;
+}
+
 // Initialize the internal map of items.
 void Equipment::initialize()
 {

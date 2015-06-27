@@ -44,6 +44,11 @@ bool NullInventory::remove(const string& id)
   return false;
 }
 
+uint NullInventory::count_items() const
+{
+  return 0;
+}
+
 pair<bool, vector<ItemPtr>> NullInventory::remove_by_base_id(const string& base_id, const int quantity)
 {
   pair<bool, vector<ItemPtr>> result;
@@ -110,12 +115,12 @@ bool NullInventory::has_item_with_property(const string& additional_property_nam
   return false;
 }
 
-int NullInventory::count_items_with_property(const string& additional_property_name) const
+uint NullInventory::count_items_with_property(const string& additional_property_name) const
 {
   return 0;
 }
 
-int NullInventory::count_items(const string& item_base_id) const
+uint NullInventory::count_items(const string& item_base_id) const
 {
   return 0;
 }
