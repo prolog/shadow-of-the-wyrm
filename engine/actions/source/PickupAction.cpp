@@ -1,5 +1,6 @@
 #include <list>
 #include "ActionTextKeys.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -56,12 +57,22 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
       {
         // If there is one item, pick it up.
         uint num_items = inv->size();
+        bool can_pick_up = true;
         
         ItemPtr pick_up_item;
         
         if (num_items == 1)
         {
-          pick_up_item = inv->at(0);
+          ItemPtr item = inv->at(0);
+
+          if (CreatureUtils::can_pick_up(creature, item))
+          {
+            pick_up_item = item;
+          }
+          else
+          {
+            can_pick_up = false;
+          }
         }
 
         // If there are many items, get one of them.
@@ -69,16 +80,25 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
         {
           list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
           pick_up_item = am->inventory(creature, inv, no_filter, false);
+
+          can_pick_up = CreatureUtils::can_pick_up(creature, pick_up_item);
         }
         
-        if (pick_up_item)
+        if (!can_pick_up)
         {
-          // Remove the item from the ground.
-          inv->remove(pick_up_item->get_id());
-          
-          if (!merge_into_equipment(creature, pick_up_item))
+          handle_max_item_pickup(creature);
+        }
+        else
+        {
+          if (pick_up_item)
           {
-            merge_or_add_into_inventory(creature, pick_up_item);
+            // Remove the item from the ground.
+            inv->remove(pick_up_item->get_id());
+
+            if (!merge_into_equipment(creature, pick_up_item))
+            {
+              merge_or_add_into_inventory(creature, pick_up_item);
+            }
           }
         }
         
@@ -89,6 +109,21 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
   }
   
   return action_cost_value;
+}
+
+// Handle the case where the creature already has the maximum number of items
+// it can hold.
+void PickupAction::handle_max_item_pickup(CreaturePtr creature)
+{
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+
+  if (creature && creature->get_is_player())
+  {
+    string pick_up_not_allowed = StringTable::get(ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS);
+
+    manager.add_new_message(pick_up_not_allowed);
+    manager.send();
+  }
 }
 
 // Handle the case where we're trying to pick up on the world map, which is an invalid case.

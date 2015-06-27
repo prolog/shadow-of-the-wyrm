@@ -202,6 +202,8 @@ pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, 
   return result;
 }
 
+// Count the number of items in the inventory, excluding currency, which does
+// not count towards the max.
 uint Inventory::count_items() const
 {
   uint count = 0;
@@ -209,7 +211,7 @@ uint Inventory::count_items() const
 
   for (ItemPtr item : items)
   {
-    if (item != nullptr)
+    if (item != nullptr && (item->get_type() != ItemType::ITEM_TYPE_CURRENCY))
     {
       count += item->get_quantity();
     }

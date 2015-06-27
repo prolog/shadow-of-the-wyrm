@@ -29,6 +29,10 @@ Savage Lands v0.3.7 "Brouwer"
 - Added a new tile feature, Bed, to provide a bit more flavour.  Added
   beds to the starting maps appropriately.
 
+- Creatures now have a maximum number of items that they can carry in
+  their equipment and inventory.  This is based on dexterity and size,
+  and does not include currency.
+
 - Added per-tile and per-feature HP and AP regeneration multipliers.
   All tiles (for now) provide the same level of regeneration.  Beds cut
   the time required to regenerate 1 HP/1 AP to 30% of the base.

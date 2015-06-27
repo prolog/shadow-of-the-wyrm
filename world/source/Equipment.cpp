@@ -76,6 +76,8 @@ ItemPtr Equipment::remove_item(const EquipmentWornLocation worn_location)
   return previously_worn_item;
 }
 
+// Count the number of items, but exclude currency, which does not count
+// towards the max number.
 uint Equipment::count_items() const
 {
   uint count = 0;
@@ -85,7 +87,7 @@ uint Equipment::count_items() const
     EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
     ItemPtr item = get_item(ewl);
 
-    if (item != nullptr)
+    if (item != nullptr && (item->get_type() != ItemType::ITEM_TYPE_CURRENCY))
     {
       count += item->get_quantity();
     }
