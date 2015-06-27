@@ -1,4 +1,5 @@
 #include "Conversion.hpp"
+#include "CarryingCapacityCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"
 #include "Game.hpp"
@@ -292,3 +293,22 @@ void CreatureUtils::incr_cha(CreaturePtr creature, const bool add_msg)
     manager.send();
   }
 }
+
+bool CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
+{
+  bool can_pu = false;
+
+  if (c != nullptr && i != nullptr)
+  {
+    CarryingCapacityCalculator ccc;
+    uint total_items = ccc.calculate_carrying_capacity_total_items(c);
+
+    can_pu = (c->count_items() + i->get_quantity() <= total_items);
+  }
+
+  return can_pu;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/CreatureUtils_test.cpp"
+#endif

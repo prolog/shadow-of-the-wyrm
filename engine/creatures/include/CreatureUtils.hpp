@@ -15,6 +15,9 @@ class CreatureUtils
     // on the player's view map.
     static bool is_player_or_in_los(CreaturePtr c);
 
+    // Can the creature pick up the item?
+    static bool can_pick_up(CreaturePtr c, ItemPtr i);
+
     // Increment a statistic, adding a message if desired.
     static void incr_str(CreaturePtr c, const bool add_msg);
     static void incr_dex(CreaturePtr c, const bool add_msg);
