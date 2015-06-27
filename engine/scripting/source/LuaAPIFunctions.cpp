@@ -1785,7 +1785,7 @@ int creature_is_class(lua_State* ls)
 // Argument 2: item ID
 int get_item_count(lua_State* ls)
 {
-  int count = 0;
+  uint count = 0;
 
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
   {

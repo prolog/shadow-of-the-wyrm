@@ -202,6 +202,22 @@ pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, 
   return result;
 }
 
+uint Inventory::count_items() const
+{
+  uint count = 0;
+  const list<ItemPtr> items = get_items_cref();
+
+  for (ItemPtr item : items)
+  {
+    if (item != nullptr)
+    {
+      count += item->get_quantity();
+    }
+  }
+
+  return count;
+}
+
 bool Inventory::clear()
 {
   items.clear();
@@ -319,7 +335,7 @@ bool Inventory::has_item_with_property(const string& item_property) const
 }
 
 // How many items in the inventory with the given property?
-int Inventory::count_items_with_property(const string& item_property) const
+uint Inventory::count_items_with_property(const string& item_property) const
 {
   int num_items = 0;
 
@@ -334,7 +350,7 @@ int Inventory::count_items_with_property(const string& item_property) const
   return num_items;
 }
 
-int Inventory::count_items(const string& item_base_id) const
+uint Inventory::count_items(const string& item_base_id) const
 {
   int num_items = 0;
 

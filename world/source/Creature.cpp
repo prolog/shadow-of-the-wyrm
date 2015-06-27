@@ -613,6 +613,12 @@ bool Creature::has_items() const
   return false;
 }
 
+uint Creature::count_items() const
+{
+  uint count = equipment.count_items() + inventory->count_items();
+  return count;
+}
+
 void Creature::set_hit_points(const Statistic& new_hit_points)
 {
   hit_points = new_hit_points;
