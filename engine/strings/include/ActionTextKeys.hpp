@@ -30,6 +30,7 @@ class ActionTextKeys
     static const std::string ACTION_DROP_QUANTITY_PROMPT;
     static const std::string ACTION_DROP_INVALID_QUANTITY;
     static const std::string ACTION_PICK_UP_NOTHING_ON_GROUND;
+    static const std::string ACTION_PICK_UP_MAX_ITEMS;
     static const std::string ACTION_MOVEMENT_BLOCKED;
     static const std::string ACTION_PLAYER_DROWNING;
     static const std::string ACTION_PLAYER_FALLING;
