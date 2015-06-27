@@ -24,3 +24,47 @@ TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_total_items_car
   EXPECT_EQ(300, ccc.calculate_carrying_capacity_total_items(c));
 }
 
+TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_burdened)
+{
+  CarryingCapacityCalculator ccc;
+  CreaturePtr c = std::make_shared<Creature>();
+  Statistic str(10);
+  c->set_strength(str);
+
+  EXPECT_EQ(1600, ccc.calculate_burdened_weight(c));
+
+  Statistic str2(15);
+  c->set_strength(str2);
+
+  EXPECT_EQ(2400, ccc.calculate_burdened_weight(c));
+}
+
+TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_strained)
+{
+  CarryingCapacityCalculator ccc;
+  CreaturePtr c = std::make_shared<Creature>();
+  Statistic str(10);
+  c->set_strength(str);
+
+  EXPECT_EQ(2400, ccc.calculate_strained_weight(c));
+
+  Statistic str2(15);
+  c->set_strength(str2);
+
+  EXPECT_EQ(3600, ccc.calculate_strained_weight(c));
+}
+
+TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_overburdened)
+{
+  CarryingCapacityCalculator ccc;
+  CreaturePtr c = std::make_shared<Creature>();
+  Statistic str(10);
+  c->set_strength(str);
+
+  EXPECT_EQ(3200, ccc.calculate_overburdened_weight(c));
+
+  Statistic str2(15);
+  c->set_strength(str2);
+
+  EXPECT_EQ(4800, ccc.calculate_overburdened_weight(c));
+}
