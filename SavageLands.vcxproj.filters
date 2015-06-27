@@ -6635,5 +6635,8 @@
     <ClCompile Include="engine\calculators\source\unit_tests\CarryingCapacityCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\CreatureUtils_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
