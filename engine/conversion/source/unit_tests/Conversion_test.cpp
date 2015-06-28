@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "Amulet.hpp"
 
 TEST(SL_Engine_ConversionRoutines, string_to_bool)
 {
@@ -111,4 +112,33 @@ TEST(SL_Engine_ConversionRoutines, grams_per_standard_drink)
   EXPECT_FLOAT_EQ(13.6f, AlcoholConverter::standard_drinks_to_grams(1.0f));
   EXPECT_FLOAT_EQ(27.2f, AlcoholConverter::standard_drinks_to_grams(2.0f));
   EXPECT_FLOAT_EQ(34.0f, AlcoholConverter::standard_drinks_to_grams(2.5f));
+}
+
+TEST(SL_Engine_ConversionRoutines, weight_to_burden_level)
+{
+  CreaturePtr c = std::make_shared<Creature>();
+  Statistic strength(10);
+  c->set_strength(10);
+  c->set_size(CreatureSize::CREATURE_SIZE_MEDIUM);
+
+  ItemPtr amulet = std::make_shared<Amulet>();
+  Weight amulet_weight;
+  amulet_weight.set_weight(16); // 1 lb
+  amulet->set_weight(amulet_weight);
+
+  c->get_inventory()->add_front(amulet);
+
+  EXPECT_EQ(BurdenLevel::BURDEN_LEVEL_UNBURDENED, BurdenLevelConverter::to_burden_level(c));
+
+  amulet->set_quantity(125);
+
+  EXPECT_EQ(BurdenLevel::BURDEN_LEVEL_BURDENED, BurdenLevelConverter::to_burden_level(c));
+
+  amulet->set_quantity(175);
+
+  EXPECT_EQ(BurdenLevel::BURDEN_LEVEL_STRAINED, BurdenLevelConverter::to_burden_level(c));
+
+  amulet->set_quantity(325);
+
+  EXPECT_EQ(BurdenLevel::BURDEN_LEVEL_OVERBURDENED, BurdenLevelConverter::to_burden_level(c));
 }

@@ -5,6 +5,7 @@
 #include <vector>
 #include "ActionCost.hpp"
 #include "common.hpp"
+#include "Creature.hpp"
 #include "Directions.hpp"
 #include "EquipmentTypes.hpp"
 #include "MapTypes.hpp"
@@ -187,6 +188,16 @@ class HungerLevelConverter
   protected:
     HungerLevelConverter();
     ~HungerLevelConverter();
+};
+
+class BurdenLevelConverter
+{
+  public:
+    static BurdenLevel to_burden_level(CreaturePtr creature);
+
+  protected:
+    BurdenLevelConverter();
+    ~BurdenLevelConverter();
 };
 
 class AlcoholConverter
