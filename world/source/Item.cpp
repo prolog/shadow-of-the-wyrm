@@ -188,6 +188,18 @@ Weight Item::get_weight() const
   return weight;
 }
 
+Weight Item::get_weight(const uint quantity) const
+{
+  Weight new_weight = weight;
+  new_weight.set_weight(weight.get_weight() * quantity);
+  return new_weight;
+}
+
+Weight Item::get_total_weight() const
+{
+  return get_weight(quantity);
+}
+
 void Item::set_worn_location(const EquipmentWornLocation new_worn_location)
 {
   worn_location = new_worn_location;

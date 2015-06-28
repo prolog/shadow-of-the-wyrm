@@ -22,10 +22,14 @@ string ItemDescriber::describe() const
     
     uint quantity = item->get_quantity();
     
+    // Add quantity as necessary
     if (quantity > 1)
     {
       item_description += " (" + std::to_string(quantity) + ")";
     }
+
+    // Add weight
+    item_description += " [" + item->get_total_weight().str() + "]";
   }
 
   return item_description;
@@ -42,10 +46,13 @@ string ItemDescriber::describe_usage() const
 
     uint quantity = item->get_quantity();
 
+    // Add quantity
     if (quantity > 1)
     {
       item_description += " (" + std::to_string(quantity) + ")";
     }
+
+    // No need to add weight to the usage description.
   }
 
   return item_description;

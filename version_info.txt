@@ -33,6 +33,9 @@ Savage Lands v0.3.7 "Brouwer"
   their equipment and inventory.  This is based on dexterity and size,
   and does not include currency.
 
+- Burden levels describe how much weight a creature is carrying: a
+  creature can be unburdened, burdened, strained, or overburdened.
+
 - Added per-tile and per-feature HP and AP regeneration multipliers.
   All tiles (for now) provide the same level of regeneration.  Beds cut
   the time required to regenerate 1 HP/1 AP to 30% of the base.
