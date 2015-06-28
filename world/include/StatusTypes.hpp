@@ -1,6 +1,14 @@
 #pragma once
 #include <string>
 
+enum struct BurdenLevel
+{
+  BURDEN_LEVEL_UNBURDENED,
+  BURDEN_LEVEL_BURDENED,
+  BURDEN_LEVEL_STRAINED,
+  BURDEN_LEVEL_OVERBURDENED
+};
+
 enum struct HungerLevel
 {
   HUNGER_LEVEL_STUFFED,

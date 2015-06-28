@@ -25,6 +25,23 @@ class HungerStatusAilmentTranslator : public IStatusAilmentTranslator
     static std::map<HungerLevel, Colour> colour_map;
 };
 
+class WeightStatusAilmentTranslator : public IStatusAilmentTranslator
+{
+public:
+  bool has_ailment(const CreaturePtr& creature) const override;
+
+protected:
+  std::string get_status_ailment_text(const CreaturePtr& creature) const override;
+  Colour get_status_ailment_colour(const CreaturePtr& creature) const override;
+
+  static void initialize_text_sid_map();
+  static void initialize_colour_map();
+
+  static std::map<BurdenLevel, std::string> text_sid_map;
+  static std::map<BurdenLevel, Colour> colour_map;
+
+};
+
 class StatusAilmentTranslator : public IStatusAilmentTranslator
 {
   public:

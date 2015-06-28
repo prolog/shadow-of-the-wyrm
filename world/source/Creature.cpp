@@ -596,6 +596,38 @@ IInventoryPtr Creature::get_inventory()
   return inventory;
 }
 
+// Currency counts towards total weight, but not total items.
+uint Creature::get_weight_carried() const
+{
+  uint total_weight = 0;
+
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = equipment.get_item(ewl);
+
+    if (item != nullptr)
+    {
+      total_weight += (item->get_quantity() * item->get_weight().get_weight());
+    }
+  }
+
+  if (inventory != nullptr)
+  {
+    const list<ItemPtr> items = inventory->get_items_cref();
+
+    for (ItemPtr item : items)
+    {
+      if (item != nullptr)
+      {
+        total_weight += (item->get_quantity() * item->get_weight().get_weight());
+      }
+    }
+  }
+
+  return total_weight;
+}
+
 bool Creature::has_items() const
 {
   for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)

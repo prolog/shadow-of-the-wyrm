@@ -160,6 +160,9 @@ class Creature : public ISerializable
     
     Equipment& get_equipment();
     IInventoryPtr get_inventory();
+    
+    // Get the weight carried, in oz
+    uint get_weight_carried() const;
 
     // Does the creature have any equipped or worn items?
     bool has_items() const;

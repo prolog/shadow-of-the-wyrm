@@ -3,6 +3,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include "CarryingCapacityCalculator.hpp"
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
 #include "Log.hpp"
@@ -483,6 +484,40 @@ HungerLevel HungerLevelConverter::to_hunger_level(const int hunger)
   }
 
   return hunger_level;
+}
+
+BurdenLevelConverter::BurdenLevelConverter()
+{
+}
+
+BurdenLevelConverter::~BurdenLevelConverter()
+{
+}
+
+BurdenLevel BurdenLevelConverter::to_burden_level(CreaturePtr c)
+{
+  BurdenLevel bl = BurdenLevel::BURDEN_LEVEL_UNBURDENED;
+
+  if (c != nullptr)
+  {
+    CarryingCapacityCalculator ccc;
+    uint weight_carried = c->get_weight_carried();
+
+    if (weight_carried >= ccc.calculate_overburdened_weight(c))
+    {
+      bl = BurdenLevel::BURDEN_LEVEL_OVERBURDENED;
+    }
+    else if (weight_carried >= ccc.calculate_strained_weight(c))
+    {
+      bl = BurdenLevel::BURDEN_LEVEL_STRAINED;
+    }
+    else if (weight_carried >= ccc.calculate_burdened_weight(c))
+    {
+      bl = BurdenLevel::BURDEN_LEVEL_BURDENED;
+    }
+  }
+
+  return bl;
 }
 
 // Alcohol conversion routines!  The sign that my roguelike has gone off
