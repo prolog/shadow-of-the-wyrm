@@ -724,10 +724,10 @@
     <Filter Include="Source Files\engine\screens\source\unit_tests">
       <UniqueIdentifier>{7d63f869-ceef-410a-a6c6-ceb05f086bde}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine\field_of_view\description">
+    <Filter Include="Source Files\engine\description">
       <UniqueIdentifier>{120bb93d-be27-49d5-9cbf-a9dd956a2e39}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine\field_of_view\description\source">
+    <Filter Include="Source Files\engine\description\source">
       <UniqueIdentifier>{b2e77dc7-6cac-4e96-ab00-6fa69a340800}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -4143,28 +4143,28 @@
       <Filter>Source Files\engine\decision_strategies\search\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\CreatureDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\DescriberFactory.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\FeatureDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\IDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\InventoryDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\ItemDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\TileDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\TileDescription.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
@@ -5139,7 +5139,7 @@
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\QuestDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\GenerationValues.cpp">
       <Filter>Source Files\world\source</Filter>
@@ -5388,7 +5388,7 @@
       <Filter>Source Files\engine\commands\magic\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\SpellDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\magic\source\SpellShapeProcessorFactory.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
@@ -5772,10 +5772,10 @@
       <Filter>Source Files\engine\maps\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\BlindItemDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\ItemDescriberFactory.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\ItemTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
@@ -6306,10 +6306,10 @@
       <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\FeatureDescriberFactory.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\BlindFeatureDescriber.cpp">
-      <Filter>Source Files\engine\field_of_view\description\source</Filter>
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\features\source\EvilAltarManipulator.cpp">
       <Filter>Source Files\engine\features\source</Filter>

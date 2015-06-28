@@ -608,7 +608,7 @@ uint Creature::get_weight_carried() const
 
     if (item != nullptr)
     {
-      total_weight += (item->get_quantity() * item->get_weight().get_weight());
+      total_weight += item->get_total_weight().get_weight();
     }
   }
 

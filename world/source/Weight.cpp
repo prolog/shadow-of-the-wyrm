@@ -53,7 +53,7 @@ std::string Weight::str() const
   uint extra_oz = (ounces % 16);
   double wgt    = lbs + (extra_oz / 16.0);
 
-  weight << std::setprecision(2) << wgt << "lbs";
+  weight << std::setprecision(2) << wgt << " lbs";
 
   return weight.str();
 }

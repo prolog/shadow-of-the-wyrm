@@ -69,6 +69,8 @@ class Item : public ISerializable
 
     virtual void set_weight(const Weight& new_weight);
     virtual Weight get_weight() const;
+    virtual Weight get_weight(const uint quantity) const;
+    virtual Weight get_total_weight() const;
     
     virtual void set_worn_location(const EquipmentWornLocation new_worn_location);
     virtual EquipmentWornLocation get_worn_location() const;
