@@ -20,6 +20,12 @@ class StatusAilmentTextKeys
     static const std::string STATUS_MESSAGE_HUNGER_STARVING;
     static const std::string STATUS_HUNGER_DYING;
     static const std::string STATUS_MESSAGE_HUNGER_DYING;
+
+    // Burden keys:
+    static const std::string STATUS_BURDEN_UNBURDENED;
+    static const std::string STATUS_BURDEN_BURDENED;
+    static const std::string STATUS_BURDEN_STRAINED;
+    static const std::string STATUS_BURDEN_OVERBURDENED;
     
     // Other status ailments:
     static const std::string STATUS_POISON;
