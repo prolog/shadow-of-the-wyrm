@@ -7,6 +7,7 @@ class Weight : public ISerializable
 {
   public:
     Weight();
+    Weight(const uint new_ounces);
     ~Weight();
     bool operator==(const Weight& weight) const;
 

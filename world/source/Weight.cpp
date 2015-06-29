@@ -10,6 +10,11 @@ Weight::Weight()
 {
 }
 
+Weight::Weight(const uint new_ounces)
+: ounces(new_ounces)
+{
+}
+
 Weight::~Weight()
 {
 }
