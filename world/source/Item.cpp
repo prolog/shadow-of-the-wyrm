@@ -777,3 +777,7 @@ bool Item::deserialize(istream& stream)
 
   return true;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Item_test.cpp"
+#endif
