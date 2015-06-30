@@ -90,11 +90,11 @@ class StatusAilmentTextKeys
     static const std::string get_npc_disfigured_message(std::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_disfigured_message(std::shared_ptr<Creature> creature);
 
-    static const std::string STATUS_SPELLBOUND;
-    static const std::string STATUS_MESSAGE_PLAYER_SPELLBOUND;
-    static const std::string STATUS_MESSAGE_PLAYER_SPELLBOUND_CURED;
-    static const std::string get_npc_spellbound_message(std::shared_ptr<Creature> creature);
-    static const std::string get_npc_undo_spellbound_message(std::shared_ptr<Creature> creature);
+    static const std::string STATUS_IMMOBILE;
+    static const std::string STATUS_MESSAGE_PLAYER_IMMOBILE;
+    static const std::string STATUS_MESSAGE_PLAYER_IMMOBILE_CURED;
+    static const std::string get_npc_immobile_message(std::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_immobile_message(std::shared_ptr<Creature> creature);
 
     static const std::string STATUS_BLINDED;
     static const std::string STATUS_MESSAGE_PLAYER_BLINDED;
@@ -157,8 +157,8 @@ class StatusAilmentTextKeys
     static const std::string STATUS_MESSAGE_NPC_DISFIGURED;
     static const std::string STATUS_MESSAGE_NPC_UNDO_DISFIGURED;
 
-    static const std::string STATUS_MESSAGE_NPC_SPELLBOUND;
-    static const std::string STATUS_MESSAGE_NPC_UNDO_SPELLBOUND;
+    static const std::string STATUS_MESSAGE_NPC_IMMOBILE;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_IMMOBILE;
 
     static const std::string STATUS_MESSAGE_NPC_BLINDED;
     static const std::string STATUS_MESSAGE_NPC_UNDO_BLINDNESS;
