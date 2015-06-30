@@ -222,7 +222,7 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   IStatusAilmentTranslatorPtr stunned_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STUNNED, StatusAilmentTextKeys::STATUS_STUNNED, Colour::COLOUR_BOLD_CYAN);
   IStatusAilmentTranslatorPtr exposed_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_EXPOSED, StatusAilmentTextKeys::STATUS_EXPOSED, Colour::COLOUR_CYAN);
   IStatusAilmentTranslatorPtr disfigured_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DISFIGURED, StatusAilmentTextKeys::STATUS_DISFIGURED, Colour::COLOUR_BOLD_GREEN);
-  IStatusAilmentTranslatorPtr spellbound_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SPELLBOUND, StatusAilmentTextKeys::STATUS_SPELLBOUND, Colour::COLOUR_BOLD_MAGENTA);
+  IStatusAilmentTranslatorPtr spellbound_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SPELLBOUND, StatusAilmentTextKeys::STATUS_IMMOBILE, Colour::COLOUR_BOLD_MAGENTA);
   IStatusAilmentTranslatorPtr blinded_check = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLINDED, StatusAilmentTextKeys::STATUS_BLINDED, Colour::COLOUR_BOLD_BLUE);
   IStatusAilmentTranslatorPtr incorporeal_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_INCORPOREAL, StatusAilmentTextKeys::STATUS_INCORPOREAL, Colour::COLOUR_WHITE);
   IStatusAilmentTranslatorPtr drunk_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DRUNK, StatusAilmentTextKeys::STATUS_DRUNK, Colour::COLOUR_WHITE);

@@ -64,9 +64,9 @@ const string StatusAilmentTextKeys::STATUS_DISFIGURED = "STATUS_DISFIGURED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DISFIGURED = "STATUS_MESSAGE_PLAYER_DISFIGURED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DISFIGURED_CURED = "STATUS_MESSAGE_PLAYER_DISFIGURED_CURED";
 
-const string StatusAilmentTextKeys::STATUS_SPELLBOUND = "STATUS_SPELLBOUND";
-const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SPELLBOUND = "STATUS_MESSAGE_PLAYER_SPELLBOUND";
-const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SPELLBOUND_CURED = "STATUS_MESSAGE_PLAYER_SPELLBOUND_CURED";
+const string StatusAilmentTextKeys::STATUS_IMMOBILE = "STATUS_IMMOBILE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_IMMOBILE = "STATUS_MESSAGE_PLAYER_IMMOBILE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_IMMOBILE_CURED = "STATUS_MESSAGE_PLAYER_IMMOBILE_CURED";
 
 const string StatusAilmentTextKeys::STATUS_BLINDED = "STATUS_BLINDED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLINDED = "STATUS_MESSAGE_PLAYER_BLINDED";
@@ -185,14 +185,14 @@ const string StatusAilmentTextKeys::get_npc_undo_disfigured_message(CreaturePtr 
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_DISFIGURED);
 }
 
-const string StatusAilmentTextKeys::get_npc_spellbound_message(CreaturePtr creature)
+const string StatusAilmentTextKeys::get_npc_immobile_message(CreaturePtr creature)
 {
-  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SPELLBOUND);
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_IMMOBILE);
 }
 
-const string StatusAilmentTextKeys::get_npc_undo_spellbound_message(CreaturePtr creature)
+const string StatusAilmentTextKeys::get_npc_undo_immobile_message(CreaturePtr creature)
 {
-  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SPELLBOUND);
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_IMMOBILE);
 }
 
 const string StatusAilmentTextKeys::get_npc_blinded_message(CreaturePtr creature)
@@ -277,8 +277,8 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_EXPOSED = "STATUS_ME
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DISFIGURED = "STATUS_MESSAGE_NPC_DISFIGURED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_DISFIGURED = "STATUS_MESSAGE_NPC_UNDO_DISFIGURED";
 
-const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SPELLBOUND = "STATUS_MESSAGE_NPC_SPELLBOUND";
-const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SPELLBOUND = "STATUS_MESSAGE_NPC_UNDO_SPELLBOUND";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_IMMOBILE = "STATUS_MESSAGE_NPC_IMMOBILE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_IMMOBILE = "STATUS_MESSAGE_NPC_UNDO_IMMOBILE";
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_BLINDED = "STATUS_MESSAGE_NPC_BLINDED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_BLINDNESS = "STATUS_MESSAGE_NPC_UNDO_BLINDNESS";

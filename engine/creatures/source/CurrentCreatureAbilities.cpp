@@ -1,4 +1,5 @@
 #include "CurrentCreatureAbilities.hpp"
+#include "CarryingCapacityCalculator.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
@@ -38,14 +39,24 @@ bool CurrentCreatureAbilities::can_hear(CreaturePtr creature, const bool add_mes
   return creature_can_hear;
 }
 
-// Check to see if the creature can move (is not spellbound)
+// Check to see if the creature can move (isn't spellbound, overburdened, etc)
 bool CurrentCreatureAbilities::can_move(CreaturePtr creature, const bool add_message_if_player_and_cannot_move) const
 {
-  bool creature_can_move = creature && can_act(creature) && (creature->has_status(StatusIdentifiers::STATUS_ID_SPELLBOUND) == false) && creature->get_decision_strategy()->can_move();
+  CarryingCapacityCalculator ccc;
+
+  bool creature_can_move = creature 
+                        // Is the creature paralyzed?
+                        && can_act(creature) 
+                        // Is the creature spellbound?
+                        && (creature->has_status(StatusIdentifiers::STATUS_ID_SPELLBOUND) == false) 
+                        // Is the creature overburdened by the weight they're carrying?
+                        && !(creature->get_weight_carried() >= ccc.calculate_overburdened_weight(creature))
+                        // Is the creature using a mobile decision strategy?
+                        && creature->get_decision_strategy()->can_move();
 
   if (add_message_if_player_and_cannot_move && !creature_can_move && creature && creature->get_is_player())
   {
-    add_ability_message_for_sid(creature, StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SPELLBOUND);
+    add_ability_message_for_sid(creature, StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_IMMOBILE);
   }
 
   return creature_can_move;

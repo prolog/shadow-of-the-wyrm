@@ -12,23 +12,23 @@ SpellboundStatusEffect::SpellboundStatusEffect()
 
 string SpellboundStatusEffect::get_player_application_message() const
 {
-  return StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SPELLBOUND);
+  return StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_IMMOBILE);
 }
 
 string SpellboundStatusEffect::get_npc_application_message(CreaturePtr creature) const
 {
-  return StatusAilmentTextKeys::get_npc_spellbound_message(creature);
+  return StatusAilmentTextKeys::get_npc_immobile_message(creature);
 }
 
 string SpellboundStatusEffect::get_player_undo_message() const
 {
-  string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SPELLBOUND_CURED);
+  string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_IMMOBILE_CURED);
   return message;
 }
 
 string SpellboundStatusEffect::get_npc_undo_message(CreaturePtr creature) const
 {
-  string message = StatusAilmentTextKeys::get_npc_undo_spellbound_message(creature);
+  string message = StatusAilmentTextKeys::get_npc_undo_immobile_message(creature);
 
   return message;
 }
