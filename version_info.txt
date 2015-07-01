@@ -36,6 +36,8 @@ Savage Lands v0.3.7 "Brouwer"
 - Burden levels describe how much weight a creature is carrying: a
   creature can be unburdened, burdened, strained, or overburdened.
 
+  - At burdened and strained, creatures move slower.
+
   - At overburdened, a creature can no longer move.
 
 - Added per-tile and per-feature HP and AP regeneration multipliers.
