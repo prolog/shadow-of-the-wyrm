@@ -1,4 +1,5 @@
 #include "CreatureCalculator.hpp"
+#include "CreatureSpeedCalculator.hpp"
 #include "CreatureToHitCalculator.hpp"
 #include "CreatureAdditionalDamageCalculator.hpp"
 #include "EvadeCalculator.hpp"
@@ -61,6 +62,12 @@ void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
     Statistic cha = c->get_charisma();
     cha.set_current(cc.calculate_current(c));
     c->set_charisma(cha);
+
+    // Speed
+    CreatureSpeedCalculator csc;
+    Statistic speed = c->get_speed();
+    speed.set_current(csc.calculate(c));
+    c->set_speed(speed);
  
     // Evade
     int calc_evade = EvadeCalculator::calculate_evade(c);
