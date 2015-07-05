@@ -12,6 +12,7 @@
 #include "JewelerWorkbench.hpp"
 #include "NeutralAltar.hpp"
 #include "Pew.hpp"
+#include "StoneMarker.hpp"
 #include "Tannery.hpp"
 #include "WheelAndLoom.hpp"
 
@@ -143,4 +144,11 @@ FeaturePtr FeatureGenerator::generate_wheel_and_loom()
 {
   FeaturePtr wheel_and_loom = std::make_shared<WheelAndLoom>();
   return wheel_and_loom;
+}
+
+// Generate a strange, stone marker
+FeaturePtr FeatureGenerator::generate_stone_marker()
+{
+  FeaturePtr stm = std::make_shared<StoneMarker>();
+  return stm;
 }

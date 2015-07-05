@@ -198,5 +198,12 @@
 				<Alignment>1</Alignment>
 			</Altar>
 		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>16</Row>
+				<Col>30</Col>
+			</Coord>
+			<StoneMarker/>
+		</FeaturePlacement>
 	</Features>
 </CustomMap>

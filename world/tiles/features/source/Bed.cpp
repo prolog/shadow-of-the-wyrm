@@ -27,7 +27,7 @@ float Bed::get_hp_regeneration_multiplier() const
 
 float Bed::get_ap_regeneration_multiplier() const
 {
-  return 0.3f;
+  return 0.75f;
 }
 
 string Bed::get_description_sid() const

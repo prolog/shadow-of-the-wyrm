@@ -753,6 +753,7 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLPewReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSarcophagusReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLStoneMarkerReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLTanneryReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLWheelAndLoomReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapCoordinateReader.hpp" />
@@ -952,6 +953,7 @@
     <ClInclude Include="world\tiles\features\include\Sarcophagus.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueTypes.hpp" />
+    <ClInclude Include="world\tiles\features\include\StoneMarker.hpp" />
     <ClInclude Include="world\tiles\features\include\Trap.hpp" />
     <ClInclude Include="world\tiles\features\include\WheelAndLoom.hpp" />
     <ClInclude Include="world\tiles\include\AirTile.hpp" />
@@ -2198,6 +2200,7 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureReaders.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLPewReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSarcophagusReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLStoneMarkerReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLTanneryReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLWheelAndLoomReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapCoordinateReader.cpp" />
@@ -2696,6 +2699,7 @@
     <ClCompile Include="world\tiles\features\source\RegularStatues.cpp" />
     <ClCompile Include="world\tiles\features\source\Sarcophagus.cpp" />
     <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp" />
+    <ClCompile Include="world\tiles\features\source\StoneMarker.cpp" />
     <ClCompile Include="world\tiles\features\source\Tannery.cpp" />
     <ClCompile Include="world\tiles\features\source\Trap.cpp" />
     <ClCompile Include="world\tiles\features\source\unit_tests\AllAltars_test.cpp">
@@ -2774,6 +2778,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Sarcophagus_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\StoneMarker_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

@@ -3405,6 +3405,12 @@
     <ClInclude Include="engine\calculators\include\CreatureSpeedCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\features\include\StoneMarker.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLStoneMarkerReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6649,6 +6655,15 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\CreatureSpeedCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\StoneMarker.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\StoneMarker_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLStoneMarkerReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
