@@ -155,6 +155,7 @@
 				<xs:element name="JewelerWorkbench" type="tns:JewelerWorkbench"/>
 				<xs:element name="WheelAndLoom" type="tns:WheelAndLoom"/>
 				<xs:element name="Bed" type="tns:Feature"/>
+				<xs:element name="StoneMarker" type="tns:Feature"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>

@@ -30,6 +30,7 @@ class FeatureDescriptionTextKeys
     static const std::string FEATURE_DESCRIPTION_WHEEL_AND_LOOM;
     static const std::string FEATURE_DESCRIPTION_TRAP_GENERIC;
     static const std::string FEATURE_DESCRIPTION_BED;
+    static const std::string FEATURE_DESCRIPTION_STONE_MARKER;
 
   protected:
     FeatureDescriptionTextKeys();

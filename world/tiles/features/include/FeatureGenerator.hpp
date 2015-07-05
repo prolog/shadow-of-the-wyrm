@@ -26,6 +26,7 @@ class FeatureGenerator
     static FeaturePtr generate_tannery();
     static FeaturePtr generate_jeweler_workbench();
     static FeaturePtr generate_wheel_and_loom();
+    static FeaturePtr generate_stone_marker();
 
   protected:
     FeatureGenerator();
