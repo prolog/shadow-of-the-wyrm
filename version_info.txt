@@ -43,6 +43,9 @@ Savage Lands v0.3.7 "Brouwer"
 
   - At overburdened, a creature can no longer move.
 
+  - Every pound the creature is above burdened has a negative impact on
+    the ability to hit with spells.
+
 - Added per-tile and per-feature HP and AP regeneration multipliers.
   All tiles (for now) provide the same level of regeneration.  Beds cut
   the time required to regenerate 1 HP/1 AP to 30%/75% of the base.
