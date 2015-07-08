@@ -33,6 +33,9 @@ class DungeonGenerator : public SL::Generator
     virtual void    generate_altar(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual void    generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual void    generate_treasure_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
+    virtual void    generate_rest_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
+    virtual void    generate_node(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
+    virtual void    centre_feature(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, FeaturePtr feature);
 
     bool connect_rooms(MapPtr map, const Room& room1, const Room& room2);
     bool is_tile_adjacent_to_room_tile(const Dimensions& dim, const int row, const int col);
