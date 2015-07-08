@@ -51,6 +51,9 @@ Savage Lands v0.3.7 "Brouwer"
   the time required to regenerate 1 HP/1 AP to 30%/75% of the base.
   Stone Markers are 100%/10%.
 
+- Added two new special rooms to dungeons to allow beds/stone markers to
+  appear randomly.
+
 - New creatures: cleric, layperson, devotee, follower, apostle, pilgrim,
   zealot, bloodletter, dark priest, believer, large ant, hellbore beetle,
   flare beast.
