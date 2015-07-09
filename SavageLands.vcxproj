@@ -669,6 +669,7 @@
     <ClInclude Include="engine\strings\include\DateTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DeityTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DifficultyTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\DungeonFeatureTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EffectTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EntranceTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EquipmentTextKeys.hpp" />
@@ -2079,6 +2080,7 @@
     <ClCompile Include="engine\strings\source\DateTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DeityTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DifficultyTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\DungeonFeatureTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\EffectTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\EntranceTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\EquipmentTextKeys.cpp" />
