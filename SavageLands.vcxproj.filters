@@ -3411,6 +3411,9 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLStoneMarkerReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\strings\include\DungeonFeatureTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6664,6 +6667,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLStoneMarkerReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\DungeonFeatureTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
