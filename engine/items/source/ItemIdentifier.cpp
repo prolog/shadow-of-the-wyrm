@@ -103,9 +103,18 @@ void ItemIdentifier::set_possessions_identified_by_type(CreaturePtr creature, co
 }
 
 // Identify an item
-void ItemIdentifier::set_item_identified(ItemPtr item, const string& base_item_id, const bool is_identified) const
+void ItemIdentifier::set_item_identified(ItemPtr item, const string& base_item_id, const bool is_identified, const bool item_is_base_item) const
 {
-  ItemPtr base_item = get_base_item(base_item_id);
+  ItemPtr base_item;
+  
+  if (item_is_base_item)
+  {
+    base_item = item;
+  }
+  else
+  {
+    base_item = get_base_item(base_item_id);
+  }
   
   if (item && base_item)
   {
@@ -129,6 +138,31 @@ bool ItemIdentifier::get_item_identified(const string& base_item_id) const
     item_identified = item->get_item_identified();
   }
   
+  return item_identified;
+}
+
+bool ItemIdentifier::get_item_identified(ItemPtr item, const bool item_is_base_item) const
+{
+  bool item_identified = false;
+  ItemPtr base_item;
+
+  if (item != nullptr)
+  {
+    if (item_is_base_item)
+    {
+      base_item = item;
+    }
+    else
+    {
+      base_item = get_base_item(item->get_base_id());
+    }
+  }
+
+  if (base_item)
+  {
+    item_identified = base_item->get_item_identified();
+  }
+
   return item_identified;
 }
 

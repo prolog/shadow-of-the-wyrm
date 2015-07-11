@@ -80,6 +80,7 @@ int get_creature_description(lua_State* ls);
 int transfer_item(lua_State* ls);
 int creature_tile_has_item(lua_State* ls);
 int pick_up_item(lua_State* ls);
+int identify_item_type(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

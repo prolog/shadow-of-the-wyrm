@@ -10,6 +10,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "ItemIdentifier.hpp"
 #include "Log.hpp"
 #include "LuaUtils.hpp"
 #include "ItemManager.hpp"
@@ -168,6 +169,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "transfer_item", transfer_item);
   lua_register(L, "creature_tile_has_item", creature_tile_has_item);
   lua_register(L, "pick_up_item", pick_up_item);
+  lua_register(L, "identify_item_type", identify_item_type);
 }
 
 // Lua API helper functions
@@ -2015,6 +2017,39 @@ int pick_up_item(lua_State* ls)
   }
 
   lua_pushinteger(ls, action_cost);
+  return 1;
+}
+
+int identify_item_type(lua_State* ls)
+{
+  int num_identified = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    ItemType item_type = static_cast<ItemType>(lua_tointeger(ls, 1));
+
+    Game& game = Game::instance();
+    const map<string, ItemPtr>& items = game.get_items_ref();
+
+    for (const pair<string, ItemPtr>& item_pair : items)
+    {
+      ItemIdentifier iid;
+      ItemPtr item = item_pair.second;
+
+      if ((item->get_type() == item_type) && (!iid.get_item_identified(item, true)))
+      {
+        iid.set_item_identified(item, item->get_base_id(), true);
+        num_identified++;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to identify_item_type");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, num_identified);
   return 1;
 }
 

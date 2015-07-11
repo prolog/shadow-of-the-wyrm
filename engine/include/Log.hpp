@@ -18,6 +18,13 @@ enum struct LoggingLevel
 #define CLOG_INFO 2
 #define CLOG_ERROR 3
 
+#define CITEM_TYPE_POTION 3
+#define CITEM_TYPE_WAND 6
+#define CITEM_TYPE_SCROLL 5
+#define CITEM_TYPE_SPELLBOOK 4
+#define CITEM_TYPE_RING 8
+#define CITEM_TYPE_AMULET 9
+
 class Log
 {
   public:

@@ -23,8 +23,9 @@ class ItemIdentifier
     
     // Functions for querying or modifying a particular item's
     // identification status.
-    void set_item_identified(ItemPtr item_instance, const std::string& base_item_id, const bool is_identified) const;
+    void set_item_identified(ItemPtr item_instance, const std::string& base_item_id, const bool is_identified, const bool item_instance_is_base_item = false) const;
     bool get_item_identified(const std::string& base_item_id) const;
+    bool get_item_identified(ItemPtr item_instance, const bool item_instance_is_base_item) const;
 
     // Get the appropriate description (identified or unidentified) for
     // the items whose base item identified is base_item_id.
