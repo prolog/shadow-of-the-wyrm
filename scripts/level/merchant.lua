@@ -22,8 +22,6 @@ end
 -- selling their wares.  They start off with a wealth of knowledge about
 -- a particular rare and magical class of items.
 local function merchant_stat_gain_fn(creature_id, level)
-  log(CLOG_ERROR, "Got here!")
-
   if level == 1 then
     identify_random_item_types()
   end
