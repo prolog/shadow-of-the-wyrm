@@ -78,6 +78,13 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CDIRECTION_NORTH_EAST);
   lua_exportConst(ls, CDIRECTION_UP);
   lua_exportConst(ls, CDIRECTION_DOWN);
+
+  lua_exportConst(ls, CITEM_TYPE_POTION);
+  lua_exportConst(ls, CITEM_TYPE_WAND);
+  lua_exportConst(ls, CITEM_TYPE_SCROLL);
+  lua_exportConst(ls, CITEM_TYPE_SPELLBOOK);
+  lua_exportConst(ls, CITEM_TYPE_RING);
+  lua_exportConst(ls, CITEM_TYPE_AMULET);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)
