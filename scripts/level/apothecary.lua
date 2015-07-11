@@ -4,6 +4,10 @@ require('level')
 -- a study of the elements.  As a result, they gain intelligence as they
 -- become more experienced.
 local function apothecary_stat_gain_fn(creature_id, level)
+  if level == 1 then
+    identify_item_type(CITEM_TYPE_POTION)
+  end
+
   if level % 5 == 0 then
     incr_int(creature_id, is_player(creature_id))
   end
