@@ -1,8 +1,10 @@
 Savage Lands v0.3.8 "Narvaez"
 - Version declared July 11, 2015.
 
-- Merchants start off knowing everything about either wands, potions, or
-  scrolls and spellbooks.
+- Merchants start off knowing everything about either wands and potions, 
+  rings and amulets, or scrolls and spellbooks.
+
+- Apothecaries start off with knowledge of all potions.
 
 Savage Lands v0.3.7 "Brouwer"
 - Version declared June 6, 2015.  Version finalized July 11, 2015.

@@ -2,11 +2,10 @@ require('level')
 
 -- Identify an initial set of items for the merchant.
 -- 
--- Each merchant starts off knowing everything about wands, potions, rings
--- and amulet, or scrolls and spellbooks.
+-- Each merchant starts off knowing everything about wands and potions, 
+-- rings and amulet, or scrolls and spellbooks.
 local function identify_random_item_types()
-  local merc_item_types = { {CITEM_TYPE_WAND},
-                            {CITEM_TYPE_POTION},
+  local merc_item_types = { {CITEM_TYPE_WAND, CITEM_TYPE_POTION},
                             {CITEM_TYPE_RING, CITEM_TYPE_AMULET},
                             {CITEM_TYPE_SCROLL, CITEM_TYPE_SPELLBOOK} }
 
