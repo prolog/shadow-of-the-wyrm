@@ -50,11 +50,19 @@ void TreasureRoomPopulator::generate_corner_features(MapPtr current_map, const i
 
   feat = FeaturePtr(feat->clone());
   feat_tile = current_map->at(end_row_wall - 1, start_col);
-  feat_tile->set_feature(feat);
+
+  if (feat_tile != nullptr)
+  {
+    feat_tile->set_feature(feat);
+  }
 
   feat = FeaturePtr(feat->clone());
   feat_tile = current_map->at(end_row_wall - 1, end_col_wall - 1);
-  feat_tile->set_feature(feat);
+
+  if (feat_tile != nullptr)
+  {
+    feat_tile->set_feature(feat);
+  }
 }
 
 // Generate the creatures in the treasure room.

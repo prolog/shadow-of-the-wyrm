@@ -499,14 +499,39 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     // items and creatures.
     handle_properties_and_move_to_new_map(tile, map, new_map);
                 
-    manager.add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
+    add_initial_map_messages(creature, new_map, tile_type);                
     add_tile_related_messages(creature, new_creature_tile);
-    manager.send();
-                
+
     action_cost_value = get_action_cost_value(creature);
   }
 
   return action_cost_value;
+}
+
+void MovementAction::add_initial_map_messages(CreaturePtr creature, MapPtr map, const TileType tile_type)
+{
+  // Add a message about the terrain type.
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  manager.add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
+
+  // Add any messages for special features.
+  string feature_message_sid_csv = map->get_property(MapProperties::MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS);
+
+  if (!feature_message_sid_csv.empty())
+  {
+    vector<string> feature_sids = String::create_string_vector_from_csv_string(feature_message_sid_csv);
+
+    for (const string& feature_sid : feature_sids)
+    {
+      manager.add_new_message(StringTable::get(feature_sid));
+    }
+
+    // Remove the properties so that they are no longer present when the creature
+    // enters the map the second time.
+    map->remove_property(MapProperties::MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS);
+  }
+
+  manager.send();
 }
 
 // Confirm if moving to a potentially dangerous tile.

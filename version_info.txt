@@ -1,5 +1,8 @@
+Savage Lands v0.3.8 "Narvaez"
+- Version declared July 11, 2015.
+
 Savage Lands v0.3.7 "Brouwer"
-- Version declared June 6, 2015.
+- Version declared June 6, 2015.  Version finalized July 11, 2015.
 
 - Updated Church tiles to include clerics, laypeople, devotees, followers,
   apostles, pilgrims.
@@ -53,6 +56,9 @@ Savage Lands v0.3.7 "Brouwer"
 
 - Added two new special rooms to dungeons to allow beds/stone markers to
   appear randomly.
+
+- Special dungeon rooms now trigger messages that are shown to the player
+  the first time the map is entered.
 
 - New creatures: cleric, layperson, devotee, follower, apostle, pilgrim,
   zealot, bloodletter, dark priest, believer, large ant, hellbore beetle,

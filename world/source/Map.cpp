@@ -438,6 +438,21 @@ void Map::set_property(const string& prop, const string& value)
   properties[prop] = value;
 }
 
+bool Map::remove_property(const string& prop)
+{
+  bool removed = false;
+
+  auto p_it = properties.find(prop);
+
+  if (p_it != properties.end())
+  {
+    properties.erase(p_it);
+    removed = true;
+  }
+
+  return removed;
+}
+
 void Map::set_properties(const map<string, string>& new_properties)
 {
   properties = new_properties;

@@ -42,8 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // 20th century Cuban composer.
-  return "\"Brouwer\"";
+  // 16th century Vihuela composer
+  return "\"Narvaez\"";
 }
 
 string Metadata::get_game_version_synopsis() const
