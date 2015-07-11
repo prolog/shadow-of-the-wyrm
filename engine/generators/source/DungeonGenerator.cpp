@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DungeonGenerator.hpp"
+#include "DungeonFeatureTextKeys.hpp"
 #include "AllTiles.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
@@ -393,11 +394,11 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
 
   if (generate_feature)
   {
-    vector<string> feature_choices = {RoomFeatures::ROOM_FEATURE_ALTAR, 
-                                      RoomFeatures::ROOM_FEATURE_TREASURE_ROOM, 
-                                      RoomFeatures::ROOM_FEATURE_ZOO,
-                                      RoomFeatures::ROOM_FEATURE_REST_ROOM,
-                                      RoomFeatures::ROOM_FEATURE_NODE};
+    vector<pair<string, string>> feature_choices = {{RoomFeatures::ROOM_FEATURE_ALTAR, DungeonFeatureTextKeys::DUNGEON_FEATURE_ALTAR},
+                                                    {RoomFeatures::ROOM_FEATURE_TREASURE_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_TREASURE_ROOM},
+                                                    {RoomFeatures::ROOM_FEATURE_ZOO, DungeonFeatureTextKeys::DUNGEON_FEATURE_ZOO},
+                                                    {RoomFeatures::ROOM_FEATURE_REST_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_REST_ROOM},
+                                                    {RoomFeatures::ROOM_FEATURE_NODE, DungeonFeatureTextKeys::DUNGEON_FEATURE_NODE}};
 
     shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
@@ -405,7 +406,10 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
     // so the player can know in advance...
     while (!feature_choices.empty())
     {
-      string feature = feature_choices.back();
+      pair<string, string> feature_pair = feature_choices.back();
+      string feature = feature_pair.first;
+      string feature_sid = feature_pair.second;
+
       feature_choices.pop_back();
 
       if (dungeon_features.find(feature) == dungeon_features.end())
@@ -416,7 +420,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
         }
         else if (feature == RoomFeatures::ROOM_FEATURE_TREASURE_ROOM)
         {
-          generate_treasure_room(map, start_row, start_col, start_col, end_col);
+          generate_treasure_room(map, start_row, end_row, start_col, end_col);
         }
         else if (feature == RoomFeatures::ROOM_FEATURE_ZOO)
         {
@@ -433,6 +437,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
 
         room_features.push_back(feature);
         dungeon_features.insert(feature);
+        feature_entry_text_sids.push_back(feature_sid);
 
         break;
       }

@@ -509,6 +509,10 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
   string ignore_creature_lvl_checks_s = Bool::to_string(ignore_creature_lvl_checks);
 
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_creature_lvl_checks_s);
+
+  // Set any special feature messages that should be displayed the first time
+  // the player enters a level.
+  set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS, String::create_csv_from_string_vector(feature_entry_text_sids));
 }
 
 void Generator::set_property_to_generator_and_map(MapPtr map, const string& prop, const string& val)

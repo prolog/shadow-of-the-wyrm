@@ -28,6 +28,10 @@ class MapProperties
     // are just dangerous.
     static const std::string MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS;
 
+    // Special messages that should be displayed only once, the very first
+    // time the player enters the level.  CSV string.
+    static const std::string MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS;
+
   protected:
     MapProperties();
     ~MapProperties();

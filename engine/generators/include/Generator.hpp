@@ -76,6 +76,9 @@ namespace SL
       TileType map_terrain_type;
       int danger_level;
       std::map<std::string, std::string> additional_properties;
+
+      // Displayed when the player enters a map for the first time.  Room messages, basically.
+      std::vector<std::string> feature_entry_text_sids; 
   };
 }
 
