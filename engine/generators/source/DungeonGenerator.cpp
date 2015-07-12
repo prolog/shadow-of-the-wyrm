@@ -12,6 +12,7 @@
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "RoomFeatures.hpp"
+#include "RoomGeneratorFactory.hpp"
 #include "TileGenerator.hpp"
 #include "TreasureRoomPopulator.hpp"
 #include "VaultPopulator.hpp"
@@ -361,24 +362,34 @@ bool DungeonGenerator::check_range(MapPtr map, int start_row, int start_col, int
 
 pair<bool, vector<string>> DungeonGenerator::place_room(MapPtr map, int start_row, int start_col, int size_rows, int size_cols)
 {
+  vector<string> room_features;
+
   if (!check_range(map, start_row-2, start_col-2, size_rows+3, size_cols+3))
   {
     return make_pair<bool, vector<string>>(false, {});
   }
-  
-  // We can place the room:  
+
   int end_row = start_row + size_rows;
   int end_col = start_col + size_cols;
-  for (int y = start_row; y < end_row; y++)
-  {
-    for (int x = start_col; x < end_col; x++)
-    {
-      TilePtr tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
-      map->insert(y, x, tile);
-    }
-  }
 
-  vector<string> room_features = potentially_generate_room_features(map, start_row, end_row, start_col, end_col);
+  // We can place the room.
+  RoomGeneratorFactory rgf;
+  IRoomGeneratorPtr rg;
+
+  // Most of the time, a basic room is created.
+  if (RNG::percent_chance(90))
+  {
+    rg = rgf.create_room_generator(RoomType::ROOM_TYPE_BASIC);
+    rg->generate(map, start_row, end_row, start_col, end_col);
+
+    room_features = potentially_generate_room_features(map, start_row, end_row, start_col, end_col);
+  }
+  // Occasionally, a specially-designed room is created.
+  else
+  {
+    rg = rgf.create_random_special_room_generator();
+    rg->generate(map, start_row, end_row, start_col, end_col);
+  }
   
   return make_pair(true, room_features);
 }
