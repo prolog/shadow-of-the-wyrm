@@ -730,6 +730,21 @@
     <Filter Include="Source Files\engine\description\source">
       <UniqueIdentifier>{b2e77dc7-6cac-4e96-ab00-6fa69a340800}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\generators\rooms">
+      <UniqueIdentifier>{991b9d66-53e3-439d-a5c7-95d9de01b1c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\rooms\include">
+      <UniqueIdentifier>{b1b97fd6-ad60-410c-aa7d-841323beca3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\rooms">
+      <UniqueIdentifier>{a1dac161-0b59-4f40-813b-8db07451e4f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\rooms\source">
+      <UniqueIdentifier>{603fa31d-aaa9-444d-8f74-f43feda6accd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\rooms\source\unit_tests">
+      <UniqueIdentifier>{58433942-77ce-4db5-8781-b1eb751b84f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -3413,6 +3428,21 @@
     </ClInclude>
     <ClInclude Include="engine\strings\include\DungeonFeatureTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\IRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\RoomGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\RoomTypes.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\BasicRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\NullRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -6670,6 +6700,18 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\DungeonFeatureTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\RoomGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\unit_tests\RoomGeneratorFactory_test.cpp">
+      <Filter>Source Files\engine\generators\rooms\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\BasicRoomGenerator.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\NullRoomGenerator.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
