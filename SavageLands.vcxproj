@@ -525,6 +525,7 @@
     <ClInclude Include="engine\generators\rooms\include\NullRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\rooms\include\RoomGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\rooms\include\RoomTypes.hpp" />
+    <ClInclude Include="engine\generators\rooms\include\XRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BaseSettlementGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\ScatteredSettlementGenerator.hpp" />
@@ -1735,6 +1736,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\XRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BaseSettlementGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\HamletGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\ScatteredSettlementGenerator.cpp" />
