@@ -3444,6 +3444,9 @@
     <ClInclude Include="engine\generators\rooms\include\NullRoomGenerator.hpp">
       <Filter>Header Files\engine\generators\rooms\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\XRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6711,6 +6714,9 @@
       <Filter>Source Files\engine\generators\rooms\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\rooms\source\NullRoomGenerator.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\XRoomGenerator.cpp">
       <Filter>Source Files\engine\generators\rooms\source</Filter>
     </ClCompile>
   </ItemGroup>

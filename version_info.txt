@@ -6,6 +6,10 @@ Savage Lands v0.3.8 "Narvaez"
 
 - Apothecaries start off with knowledge of all potions.
 
+- Refactored the room generation code out of DungeonGenerator and into
+  its own set of classes.  Created generators for basic rooms, X-shaped
+  rooms.
+
 Savage Lands v0.3.7 "Brouwer"
 - Version declared June 6, 2015.  Version finalized July 11, 2015.
 
