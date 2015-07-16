@@ -3902,6 +3902,46 @@
 			<Soak>8</Soak>
 			<Speed>56</Speed>
 		</Creature>
+		<Creature id="quillich">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>QUILLICH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>QUILLICH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>QUILLICH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>QUILLICH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>Q</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>44</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>21</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>21</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>800</Exp>
+			</CreatureGeneration>
+			<Level>21</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>42</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="spectral_wizard">
 			<RaceID>_spirit</RaceID>
 			<ShortDescriptionSID>SPECTRAL_WIZARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
