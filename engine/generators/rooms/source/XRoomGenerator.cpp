@@ -27,7 +27,7 @@ void XRoomGenerator::generate_x(MapPtr map, const int start_row, const int end_r
 
   while (xr_1 <= xr_2)
   {
-    vector<Coordinate> coords = { { xr_1, xc_1 }, { xr_1, xc_2 }, { xr_2, xc_1 }, { xr_2, xc_2 } };
+    set<Coordinate> coords = { { xr_1, xc_1 }, { xr_1, xc_2 }, { xr_2, xc_1 }, { xr_2, xc_2 } };
 
     for (const Coordinate& coord : coords)
     {

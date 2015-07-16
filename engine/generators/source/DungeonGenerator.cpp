@@ -166,6 +166,7 @@ pair<bool, vector<string>> DungeonGenerator::generate_and_place_room(MapPtr map,
   return place_room(map, start_y, start_x, height, width);  
 }
 
+// Dig the hallways.
 bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& room2)
 {
   int row_inc = 1;
