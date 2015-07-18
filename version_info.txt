@@ -10,7 +10,7 @@ Savage Lands v0.3.8 "Narvaez"
   its own set of classes.  Created generators for basic rooms, X-shaped
   rooms.
 
-- New creatures: quillich.
+- New creatures: quillich, quakeling.
 
 Savage Lands v0.3.7 "Brouwer"
 - Version declared June 6, 2015.  Version finalized July 11, 2015.
