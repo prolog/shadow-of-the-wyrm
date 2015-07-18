@@ -215,10 +215,15 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
   int start_row = 0;
   for (start_row = r1_c_first; start_row != r2_c_first; start_row += row_inc)
   {
-    TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
+    TilePtr cur_tile = map->at(start_row, r1_c_second);
+    bool no_overwrite = String::to_bool(cur_tile->get_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE));
+   
+    if (cur_tile && !no_overwrite)
+    {
+      TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
+      map->insert(start_row, r1_c_second, floor_tile);
+    }
 
-    map->insert(start_row, r1_c_second, floor_tile);
-    
     Coordinate current;
     current.first = start_row;
     current.second = r1_c_second;
@@ -237,25 +242,33 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
     }
   }
 
-  TilePtr extra_floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);  
-  if (start_row == (room1.y1-1))
+  TilePtr cur_tile = map->at(start_row, r1_c_second);
+  if (cur_tile && !cur_tile->has_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE))
   {
+    TilePtr extra_floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
     map->insert(start_row, r1_c_second, extra_floor_tile);
+  }
+
+  if (start_row == (room1.y1 - 1))
+  {
     start_row--;
   }
   
   if (start_row == (room1.y2))
   {
-    map->insert(start_row, r1_c_second, extra_floor_tile);
     start_row++;
   }
     
   int start_col = 0;
   for (start_col = r1_c_second; start_col != r2_c_second; start_col+=col_inc)
   {
-    TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
+    TilePtr cur_tile = map->at(start_row, start_col);
 
-    map->insert(start_row, start_col, floor_tile);
+    if (cur_tile && !cur_tile->has_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE))
+    {
+      TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
+      map->insert(start_row, start_col, floor_tile);
+    }
 
     Coordinate current;
     current.first = start_row;
@@ -527,17 +540,22 @@ bool DungeonGenerator::place_doorways(MapPtr map)
       // Doors are always generated.  They are generated shut about half the
       // time, unless adjacent to a special room, in which case they are always
       // generated closed (so that zoos aren't ruined).
-      if (tile && (tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON) && tile_exists_outside_of_room(row, col, true, true) && is_tile_adjacent_to_room_tile(dim, row, col))
+      if (tile != nullptr)
       {
-        DoorPtr doorway = FeatureGenerator::generate_door();
+        TileType tile_type = tile->get_tile_type();
 
-        // Generate doors closed by default, or when there's a creature nearby
-        if (RNG::percent_chance(50) || MapUtils::adjacent_creature_exists(row, col, map))
+        if ((tile_type == TileType::TILE_TYPE_DUNGEON || tile->has_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE)) && tile_exists_outside_of_room(row, col, true, true) && is_tile_adjacent_to_room_tile(dim, row, col))
         {
-          doorway->get_state_ref().set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
-        }
+          DoorPtr doorway = FeatureGenerator::generate_door();
 
-        tile->set_feature(doorway);
+          // Generate doors closed by default, or when there's a creature nearby
+          if (RNG::percent_chance(50) || MapUtils::adjacent_creature_exists(row, col, map))
+          {
+            doorway->get_state_ref().set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
+          }
+
+          tile->set_feature(doorway);
+        }
       }        
     }      
   }
