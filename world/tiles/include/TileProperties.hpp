@@ -33,6 +33,10 @@ class TileProperties
     // What type of castle is this?
     static const std::string TILE_PROPERTY_CASTLE_TYPE;
 
+    // For certain dungeon tiles, should we avoid overwriting the tile
+    // as part of dungeon generation?
+    static const std::string TILE_PROPERTY_NO_OVERWRITE;
+
     // Generates the map key that identifies the custom map ID for
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);

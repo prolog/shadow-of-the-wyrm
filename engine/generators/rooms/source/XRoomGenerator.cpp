@@ -1,3 +1,4 @@
+#include "Conversion.hpp"
 #include "XRoomGenerator.hpp"
 #include "BasicRoomGenerator.hpp"
 #include "TileGenerator.hpp"
@@ -32,6 +33,8 @@ void XRoomGenerator::generate_x(MapPtr map, const int start_row, const int end_r
     for (const Coordinate& coord : coords)
     {
       rock_tile = tg.generate(TileType::TILE_TYPE_ROCK);
+      rock_tile->set_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE, Bool::to_string(true));
+
       map->insert(coord.first, coord.second, rock_tile);
     }
 
