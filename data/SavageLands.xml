@@ -9684,6 +9684,46 @@
 			</Damage>
 			<Soak>5</Soak>
 		</Creature>
+		<Creature id="quadari">
+			<RaceID>_demon</RaceID>
+			<ShortDescriptionSID>QUADARI_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>QUADARI_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>QUADARI_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>QUADARI_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>Q</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>36</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>36</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>23000</Exp>
+			</CreatureGeneration>
+			<Level>36</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>72</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
 		<Creature id="wyvern">
 			<RaceID>_dragon</RaceID>
 			<ShortDescriptionSID>WYVERN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
