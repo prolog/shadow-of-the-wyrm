@@ -23841,6 +23841,19 @@
 				<Material>8</Material>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="shovel">
+				<DescriptionSID>SHOVEL_SID</DescriptionSID>
+				<UsageDescriptionSID>SHOVEL_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+			</Item>			
 			<Item id="mummified_corpse">
 				<DescriptionSID>MUMMIFIED_CORPSE_SID</DescriptionSID>
 				<UsageDescriptionSID>MUMMIFIED_CORPSE_USAGE_SID</UsageDescriptionSID>
