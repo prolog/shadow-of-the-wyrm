@@ -73,6 +73,20 @@ void Game::set_settings(const Settings& new_settings)
   {
     Log::instance().set_log_level(ll);
   }
+
+  set_world_settings();
+}
+
+void Game::set_world_settings()
+{
+  uint days_elapsed = String::to_uint(settings.get_setting("days_elapsed"));
+  WorldPtr world = get_current_world();
+
+  // If we're just starting up, the world may not have been instantiated yet.
+  if (world != nullptr)
+  {
+    world->get_calendar().set_date(days_elapsed);
+  }
 }
 
 Settings& Game::get_settings_ref()
@@ -224,6 +238,8 @@ void Game::create_new_world(CreaturePtr creature)
   WorldPtr world(new World(current_world));
   worlds.push_back(world);
   current_world_ix = (worlds.size() - 1);
+
+  set_world_settings();
 
   // Need to set the world map into the registry so that it's available to 
   // any scripts called by the CustomAreaGenerator.

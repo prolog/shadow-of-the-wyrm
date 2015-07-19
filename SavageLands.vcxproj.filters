@@ -5,10 +5,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
-    </Filter>
     <Filter Include="Header Files\controller">
       <UniqueIdentifier>{5702cdd9-01d5-4785-8cdc-f72ae42ad922}</UniqueIdentifier>
     </Filter>
@@ -744,6 +740,10 @@
     </Filter>
     <Filter Include="Source Files\engine\generators\rooms\source\unit_tests">
       <UniqueIdentifier>{58433942-77ce-4db5-8781-b1eb751b84f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\tiles\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,9 @@ Savage Lands v0.3.8 "Narvaez"
   its own set of classes.  Created generators for basic rooms, X-shaped
   rooms.
 
+- The player can now set the day of the year in the settings, so they
+  can easily start in any season.  Example dates are provided.
+
 - New creatures: quillich, quakeling, quadriga, quadari, queen bee.
 
 Savage Lands v0.3.7 "Brouwer"

@@ -59,6 +59,26 @@ ISeasonPtr SeasonFactory::create_season(const ClassIdentifier ci)
   return season;
 }
 
+ISeasonPtr SeasonFactory::create_season(const uint month_of_year)
+{
+  ISeasonPtr season;
+  set<Season> seasons = {Season::SEASON_SPRING, Season::SEASON_SUMMER, Season::SEASON_AUTUMN, Season::SEASON_WINTER};
+
+  for (Season cur_season_enum : seasons)
+  {
+    ISeasonPtr cur_season = create_season(cur_season_enum);
+    set<Months> months = cur_season->get_months_in_season();
+
+    if (months.find(static_cast<Months>(month_of_year)) != months.end())
+    {
+      season = cur_season;
+      break;
+    }
+  }
+
+  return season;
+}
+
 void SeasonFactory::initialize_season_map()
 {
   season_map.clear();
