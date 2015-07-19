@@ -26,6 +26,13 @@ bool Calendar::operator==(const Calendar& c) const
   return result;
 }
 
+void Calendar::set_date(const uint days_elapsed)
+{
+  seconds = (days_elapsed) * 60 * 60 * 24;
+  uint month_of_year = (days_elapsed / DateValues::NUMBER_OF_DAYS_PER_MONTH);
+  season = SeasonFactory::create_season(month_of_year);
+}
+
 void Calendar::add_days(const uint days)
 {
   double ddays = static_cast<double>(days);
@@ -51,9 +58,9 @@ Date Calendar::get_date() const
   uint hr  = ((usec / 60) / 60) % 24;
   uint total_days_elapsed = (usec / 86400);
   uint day_week = (total_days_elapsed % 7);
-  uint day_month = (total_days_elapsed % 30) + 1 /* Days of month start at 1, too */;
-  uint month = ((total_days_elapsed / 30) % 12);
-  uint year = STARTING_YEAR + (total_days_elapsed / 365);
+  uint day_month = (total_days_elapsed % DateValues::NUMBER_OF_DAYS_PER_MONTH) + 1 /* Days of month start at 1, too */;
+  uint month = ((total_days_elapsed / DateValues::NUMBER_OF_DAYS_PER_MONTH) % 12);
+  uint year = STARTING_YEAR + (total_days_elapsed / DateValues::NUMBER_OF_DAYS_PER_YEAR); /* 30 * 12 */
 
   Date calculated_date(sec, min, hr, day_week, day_month, month, year);
   return calculated_date;
@@ -62,6 +69,11 @@ Date Calendar::get_date() const
 ISeasonPtr Calendar::get_season() const
 {
   return season;
+}
+
+uint Calendar::get_starting_year() const
+{
+  return STARTING_YEAR;
 }
 
 bool Calendar::update_season_if_necessary()

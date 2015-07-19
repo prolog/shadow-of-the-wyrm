@@ -13,12 +13,14 @@ class Calendar : public ISerializable
     Calendar();
     bool operator==(const Calendar& c) const;
     
+    void set_date(const uint days_elapsed);
     void add_days(const uint days);
     void add_seconds(const double seconds);
     double get_seconds() const;
 
     Date get_date() const;
     ISeasonPtr get_season() const;
+    uint get_starting_year() const;
     
     bool update_season_if_necessary();
 

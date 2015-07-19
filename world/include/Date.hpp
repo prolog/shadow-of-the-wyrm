@@ -6,6 +6,8 @@ namespace DateValues
 {
   static const int NUMBER_OF_MONTHS = 12;
   static const int NUMBER_OF_DAYS = 7;
+  static const int NUMBER_OF_DAYS_PER_MONTH = 30;
+  static const int NUMBER_OF_DAYS_PER_YEAR = 360;
 };
 
 class Date

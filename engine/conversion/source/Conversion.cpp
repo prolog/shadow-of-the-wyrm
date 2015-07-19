@@ -250,6 +250,12 @@ int String::to_int(const string& convert)
   return converted_string;
 }
 
+uint String::to_uint(const string& convert)
+{
+  uint converted_string = Convert::from_string<uint>(convert);
+  return converted_string;
+}
+
 float String::to_float(const string& convert)
 {
   float converted_string = Convert::from_string<float>(convert);
