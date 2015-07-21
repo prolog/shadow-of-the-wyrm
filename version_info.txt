@@ -13,6 +13,10 @@ Savage Lands v0.3.8 "Narvaez"
 - The player can now set the day of the year in the settings, so they
   can easily start in any season.  Example dates are provided.
 
+- Started work on the "need before I release the source" work.  Removed
+  the old, dead Code::Blocks project.  Changed hardcoded project directory
+  paths to use Visual Studio's $(ProjectDir) option.
+
 - New creatures: quillich, quakeling, quadriga, quadari, queen bee.
 
 - New items: shovel.
