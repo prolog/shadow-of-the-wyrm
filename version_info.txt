@@ -15,7 +15,9 @@ Savage Lands v0.3.8 "Narvaez"
 
 - Started work on the "need before I release the source" work.  Removed
   the old, dead Code::Blocks project.  Changed hardcoded project directory
-  paths to use Visual Studio's $(ProjectDir) option.
+  paths to use Visual Studio's $(ProjectDir) option.  Updated all
+  dependencies to use their own environment variables to remove the
+  dependency on an absolute path.
 
 - New creatures: quillich, quakeling, quadriga, quadari, queen bee.
 
