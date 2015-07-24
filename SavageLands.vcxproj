@@ -631,6 +631,7 @@
     <ClInclude Include="engine\maps\tiles\features\include\WheelAndLoomManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\DefaultTileManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\ITileManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\include\TileManipulatorFactory.hpp" />
     <ClInclude Include="engine\screens\include\ClassSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\ComponentAlignment.hpp" />
     <ClInclude Include="engine\screens\include\DeitySelectionScreen.hpp" />
@@ -1961,6 +1962,7 @@
     <ClCompile Include="engine\maps\tiles\features\source\TrapManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\WheelAndLoomManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\source\DefaultTileManipulator.cpp" />
+    <ClCompile Include="engine\maps\tiles\source\TileManipulatorFactory.cpp" />
     <ClCompile Include="engine\screens\source\ClassSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\ComponentAlignment.cpp" />
     <ClCompile Include="engine\screens\source\DeitySelectionScreen.cpp" />
