@@ -302,12 +302,6 @@
     <Filter Include="Header Files\engine\commands\screens\include">
       <UniqueIdentifier>{d02b2b65-672f-4382-b7b2-5f379d54e483}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\features">
-      <UniqueIdentifier>{3edd2764-270d-4409-9e2f-d38cb5421d90}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\engine\features\include">
-      <UniqueIdentifier>{0327ad2c-b995-48f0-81e1-519dc3b864a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -627,12 +621,6 @@
     <Filter Include="Source Files\engine\screens\source">
       <UniqueIdentifier>{f02ccd11-e31b-4cff-9d8b-f6805048d55d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine\features">
-      <UniqueIdentifier>{e3f88513-7aed-4c21-aa68-bb50d177d61d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\features\source">
-      <UniqueIdentifier>{e1822443-2569-4967-af85-77250baebc5f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\engine\skills">
       <UniqueIdentifier>{528e0612-7a65-4322-a70e-fe1c95cd1226}</UniqueIdentifier>
     </Filter>
@@ -744,6 +732,30 @@
     <Filter Include="Header Files\world\tiles\Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Header Files\engine\maps\tiles">
+      <UniqueIdentifier>{20719342-1bc2-42a8-8253-fedac21969cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\maps\tiles\include">
+      <UniqueIdentifier>{8ea05533-d3e6-471c-bec0-df9f049f6a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\maps\tiles">
+      <UniqueIdentifier>{f6594e8d-d889-429f-8ee4-4d645af7df19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\maps\tiles\source">
+      <UniqueIdentifier>{b1d590b2-f2e4-4052-94d1-617990e31429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\maps\tiles\features">
+      <UniqueIdentifier>{4aa48390-da7e-44e9-a1c6-2127c660bac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\maps\tiles\features\include">
+      <UniqueIdentifier>{d9fd6ca0-026b-47f5-aed9-800e5b1469f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\maps\tiles\features">
+      <UniqueIdentifier>{2ee0030d-844e-47b0-a30f-eb37fd906261}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\maps\tiles\features\source">
+      <UniqueIdentifier>{dfa7446d-22b5-400b-8af6-705350e1dbc6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3168,15 +3180,6 @@
     <ClInclude Include="engine\actions\include\KickAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\features\include\IFeatureManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\DefaultFeatureManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\IFeatureManipulatorFactory.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\description\include\BlindItemDescriber.hpp">
       <Filter>Header Files\engine\description\include</Filter>
     </ClInclude>
@@ -3185,27 +3188,6 @@
     </ClInclude>
     <ClInclude Include="engine\description\include\BlindFeatureDescriber.hpp">
       <Filter>Header Files\engine\description\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\EvilAltarManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\GoodAltarManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\NeutralAltarManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\DoorGateManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\AltarManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\BarrelManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\PewManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
@@ -3261,9 +3243,6 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\features\include\ForgeManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\SmithingConstants.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -3281,12 +3260,6 @@
     </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLTanneryReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\JewelerWorkbenchManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\TanneryManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\actions\include\SkinAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
@@ -3306,9 +3279,6 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLWheelAndLoomReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\features\include\WheelAndLoomManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\WeavingConstants.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -3326,9 +3296,6 @@
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLTrapsReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\features\include\TrapManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\effects\include\ModifyStatisticsEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
@@ -3446,6 +3413,57 @@
     </ClInclude>
     <ClInclude Include="engine\generators\rooms\include\XRoomGenerator.hpp">
       <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\AltarManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\BarrelManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\DefaultFeatureManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\DoorGateManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\EvilAltarManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\ForgeManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\GoodAltarManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\IFeatureManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\IFeatureManipulatorFactory.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\JewelerWorkbenchManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\NeutralAltarManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\PewManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\TanneryManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\TrapManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\WheelAndLoomManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\DefaultTileManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\ITileManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -6344,38 +6362,11 @@
     <ClCompile Include="engine\actions\source\KickAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\features\source\DefaultFeatureManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\IFeatureManipulatorFactory.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\description\source\FeatureDescriberFactory.cpp">
       <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\source\BlindFeatureDescriber.cpp">
       <Filter>Source Files\engine\description\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\EvilAltarManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\GoodAltarManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\NeutralAltarManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\DoorGateManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\AltarManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\BarrelManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\PewManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\TertiaryUnarmedPhysicalAttackSpeedCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
@@ -6440,9 +6431,6 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLForgeReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\features\source\ForgeManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\SmithingConstants.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
@@ -6488,12 +6476,6 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLTanneryReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\features\source\JewelerWorkbenchManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\TanneryManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\actions\source\SkinAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
@@ -6521,9 +6503,6 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLWheelAndLoomReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\features\source\WheelAndLoomManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\WeavingConstants.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
@@ -6547,9 +6526,6 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLTrapsReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\features\source\TrapManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\JewelerWorkbench_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
@@ -6718,6 +6694,51 @@
     </ClCompile>
     <ClCompile Include="engine\generators\rooms\source\XRoomGenerator.cpp">
       <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\AltarManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\BarrelManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\DefaultFeatureManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\DoorGateManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\EvilAltarManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\ForgeManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\GoodAltarManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\IFeatureManipulatorFactory.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\JewelerWorkbenchManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\NeutralAltarManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\PewManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\TanneryManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\TrapManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\WheelAndLoomManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\source\DefaultTileManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
