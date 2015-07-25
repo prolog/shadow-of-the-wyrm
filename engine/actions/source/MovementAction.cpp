@@ -641,7 +641,8 @@ ActionCostValue MovementAction::ascend(CreaturePtr creature)
   }
 }
 
-// Descend, if the creature can move.
+// Descend, if the creature can move.  Or, if the creature has the appropriate
+// item, dig.
 ActionCostValue MovementAction::descend(CreaturePtr creature)
 {
   CurrentCreatureAbilities cca;

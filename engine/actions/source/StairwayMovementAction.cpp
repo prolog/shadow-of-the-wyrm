@@ -1,4 +1,7 @@
 #include "Game.hpp"
+#include "Conversion.hpp"
+#include "DigAction.hpp"
+#include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -131,15 +134,25 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
           }
           else
           {
-            // This is so that it's easy to find/replace this later, once I add message managers
-            // per-creature
-            if (creature->get_is_player())
+            // Does the creature have something to dig with?
+            ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+            if (wielded != nullptr && wielded->has_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS))
             {
-              // Let the player know there is no exit.
-              string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT);
-                
-              manager.add_new_message(no_exit);
-              manager.send();                
+              DigAction da;
+              descend_success = da.dig(creature, tile);
+            }
+            else
+            {
+              // This is so that it's easy to find/replace this later, once I add message managers
+              // per-creature
+              if (creature->get_is_player())
+              {
+                // Let the player know there is no exit.
+                string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT);
+
+                manager.add_new_message(no_exit);
+                manager.send();
+              }
             }
           }
         }  

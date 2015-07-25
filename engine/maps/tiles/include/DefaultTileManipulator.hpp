@@ -7,6 +7,11 @@
 class DefaultTileManipulator : public ITileManipulator
 {
   public:
+    DefaultTileManipulator();
+
     bool dig(CreaturePtr creature, TilePtr tile) override;
+
+  protected:
+    std::map<TileSuperType, std::string> super_type_message_sids;
 };
 
