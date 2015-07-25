@@ -37,6 +37,9 @@ class TileProperties
     // as part of dungeon generation?
     static const std::string TILE_PROPERTY_NO_OVERWRITE;
 
+    // Have we already dug at this tile?
+    static const std::string TILE_PROPERTY_PREVIOUSLY_DUG;
+
     // Generates the map key that identifies the custom map ID for
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);

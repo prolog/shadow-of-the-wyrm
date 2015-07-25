@@ -1,4 +1,5 @@
 #include "global_prototypes.hpp"
+#include "Conversion.hpp"
 #include "DigAction.hpp"
 #include "TileManipulatorFactory.hpp"
 
@@ -24,6 +25,7 @@ ActionCostValue DigAction::dig(CreaturePtr creature, TilePtr tile) const
 
       if (dug)
       {
+        tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, Bool::to_string(true));
         acv = get_action_cost_value(creature);
       }
     }
