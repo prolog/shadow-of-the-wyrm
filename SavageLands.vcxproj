@@ -158,6 +158,7 @@
     <ClInclude Include="engine\actions\include\CurrencyAction.hpp" />
     <ClInclude Include="engine\actions\include\DateTimeAction.hpp" />
     <ClInclude Include="engine\actions\include\DeityActionManager.hpp" />
+    <ClInclude Include="engine\actions\include\DigAction.hpp" />
     <ClInclude Include="engine\actions\include\DropAction.hpp" />
     <ClInclude Include="engine\actions\include\EquipmentManager.hpp" />
     <ClInclude Include="engine\actions\include\EvokeAction.hpp" />
@@ -829,6 +830,7 @@
     <ClInclude Include="world\include\CreatureGenerationOptions.hpp" />
     <ClInclude Include="world\include\IInventory.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
+    <ClInclude Include="world\include\ItemProperties.hpp" />
     <ClInclude Include="world\include\Modifier.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
     <ClInclude Include="world\include\ScriptDetails.hpp" />
@@ -1079,6 +1081,7 @@
     <ClCompile Include="engine\actions\source\CurrencyAction.cpp" />
     <ClCompile Include="engine\actions\source\DateTimeAction.cpp" />
     <ClCompile Include="engine\actions\source\DeityActionManager.cpp" />
+    <ClCompile Include="engine\actions\source\DigAction.cpp" />
     <ClCompile Include="engine\actions\source\DropAction.cpp" />
     <ClCompile Include="engine\actions\source\EquipmentManager.cpp" />
     <ClCompile Include="engine\actions\source\EvokeAction.cpp" />
@@ -2387,6 +2390,7 @@
     <ClCompile Include="world\source\ConsumableConstants.cpp" />
     <ClCompile Include="world\source\CreatureGenerationOptions.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
+    <ClCompile Include="world\source\ItemProperties.cpp" />
     <ClCompile Include="world\source\Modifier.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
     <ClCompile Include="world\source\ScriptDetails.cpp" />

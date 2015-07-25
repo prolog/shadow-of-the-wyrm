@@ -259,6 +259,9 @@ const string ActionTextKeys::ACTION_WEAVE_NO_FIBRES            = "ACTION_WEAVE_N
 const string ActionTextKeys::ACTION_WEAVE_NO_WEAVING_SKILL     = "ACTION_WEAVE_NO_WEAVING_SKILL";
 const string ActionTextKeys::ACTION_WEAVE_SUCCESSFUL           = "ACTION_WEAVE_SUCCESSFUL";
 const string ActionTextKeys::ACTION_SQUEEZE_FAILURE            = "ACTION_SQUEEZE_FAILURE";
+const string ActionTextKeys::ACTION_DIG_AIR                    = "ACTION_DIG_AIR";
+const string ActionTextKeys::ACTION_DIG_GROUND                 = "ACTION_DIG_GROUND";
+const string ActionTextKeys::ACTION_DIG_WATER                  = "ACTION_DIG_WATER";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

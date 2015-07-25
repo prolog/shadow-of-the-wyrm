@@ -13,6 +13,11 @@ Savage Lands v0.3.8 "Narvaez"
 - The player can now set the day of the year in the settings, so they
   can easily start in any season.  Example dates are provided.
 
+- When wielding a shovel with the dig-hardness property, a message is now
+  added when trying to dig (by using the "descend" keybinding) when on a
+  non-world map.  Initially, this is just based on tile super type, so
+  that a different message is generated based on ground, air, or water.
+
 - Started work on the "need before I release the source" work.  Removed
   the old, dead Code::Blocks project.  Changed hardcoded project directory
   paths to use Visual Studio's $(ProjectDir) option.  Updated all

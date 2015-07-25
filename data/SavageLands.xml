@@ -23853,6 +23853,12 @@
 					<Colour>7</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>dig_hardness</Name>
+						<Value>5</Value>
+					</Property>
+				</Properties>
 			</Item>			
 			<Item id="mummified_corpse">
 				<DescriptionSID>MUMMIFIED_CORPSE_SID</DescriptionSID>

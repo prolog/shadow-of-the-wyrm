@@ -3468,6 +3468,12 @@
     <ClInclude Include="engine\maps\tiles\include\TileManipulatorFactory.hpp">
       <Filter>Header Files\engine\maps\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\ItemProperties.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\DigAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6745,6 +6751,12 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\source\TileManipulatorFactory.cpp">
       <Filter>Source Files\engine\maps\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\ItemProperties.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\DigAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
