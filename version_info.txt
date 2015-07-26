@@ -30,6 +30,7 @@ Savage Lands v0.3.8 "Narvaez"
   dependencies to use their own environment variables to remove the
   dependency on an absolute path.
 
+- Converted the project from Visual Studio 2013 to 2015.
 - Bug fixes:
 
   - Potions weren't adding messages when hunger was sufficiently changed
