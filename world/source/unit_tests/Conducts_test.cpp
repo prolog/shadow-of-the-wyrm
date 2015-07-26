@@ -13,6 +13,7 @@ TEST(SL_World_Conducts, remaining_conducts)
 
   c.break_conduct(ConductType::CONDUCT_TYPE_FOODLESS);
   c.break_conduct(ConductType::CONDUCT_TYPE_WEAPONLESS);
+  c.break_conduct(ConductType::CONDCUT_TYPE_NO_GRAVEDIGGING);
 
   remaining = c.get_conducts();
 
@@ -20,6 +21,7 @@ TEST(SL_World_Conducts, remaining_conducts)
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_ILLITERATE)] == true);
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_FOODLESS)] == false);
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_WEAPONLESS)] == false);
+  EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDCUT_TYPE_NO_GRAVEDIGGING)] == false);
 }
 
 TEST(SL_World_Conducts, serialization_id)
