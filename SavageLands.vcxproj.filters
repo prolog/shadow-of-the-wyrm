@@ -3474,6 +3474,9 @@
     <ClInclude Include="engine\actions\include\DigAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\GraveTileManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6757,6 +6760,9 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\DigAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\source\GraveTileManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

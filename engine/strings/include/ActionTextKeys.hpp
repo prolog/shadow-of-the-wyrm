@@ -89,6 +89,7 @@ class ActionTextKeys
     static const std::string ACTION_DIG_WATER;
     static const std::string ACTION_DIG_AIR;
     static const std::string ACTION_DIG_GROUND;
+    static const std::string ACTION_DIG_GRAVE;
 
   protected:
     ActionTextKeys();

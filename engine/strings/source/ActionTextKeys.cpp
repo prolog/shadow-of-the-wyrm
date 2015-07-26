@@ -262,6 +262,7 @@ const string ActionTextKeys::ACTION_SQUEEZE_FAILURE            = "ACTION_SQUEEZE
 const string ActionTextKeys::ACTION_DIG_AIR                    = "ACTION_DIG_AIR";
 const string ActionTextKeys::ACTION_DIG_GROUND                 = "ACTION_DIG_GROUND";
 const string ActionTextKeys::ACTION_DIG_WATER                  = "ACTION_DIG_WATER";
+const string ActionTextKeys::ACTION_DIG_GRAVE                  = "ACTION_DIG_GRAVE";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
