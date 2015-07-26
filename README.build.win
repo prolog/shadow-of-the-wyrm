@@ -5,7 +5,7 @@ different pieces of software to build it.
 
 Basic toolchain:
 
-- Visual Studio 2013 (e.g., the free Community Edition)
+- Visual Studio 2015 (e.g., the free Community Edition)
 - Lua 5.1 with the LUA_DEV environment variable set
 
 Source:
