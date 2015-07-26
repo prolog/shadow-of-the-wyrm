@@ -1,6 +1,7 @@
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
 #include "ConsumableAction.hpp"
+#include "CreatureUtils.hpp"
 #include "EffectFactory.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
@@ -65,11 +66,14 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
 {
   if (creature && potion)
   {
+    HungerClock& hunger = creature->get_hunger_clock_ref();
+    int hunger_before = hunger.get_hunger();
+
     ConsumableAction ca;
     ca.consume(creature, potion);
     
     EffectPtr potion_effect = EffectFactory::create_effect(potion->get_effect_type());
-    
+
     if (potion_effect)
     {
       Game& game = Game::instance();
@@ -112,6 +116,11 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
           item_id.set_item_identified(potion, potion_base_id, true);
         }
       }
+
+      // Potions, like food, have an associated nutrition value.  Add a
+      // message if the creature's satiation level has changed.
+      int hunger_after = hunger.get_hunger();
+      CreatureUtils::add_hunger_level_message_if_necessary(creature, hunger_before, hunger_after);
     }
   }
 }
