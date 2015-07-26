@@ -8,6 +8,7 @@
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "StatisticTextKeys.hpp"
+#include "StatusAilmentTextKeys.hpp"
 
 using namespace std;
 
@@ -18,6 +19,48 @@ CreatureUtils::CreatureUtils()
 CreatureUtils::~CreatureUtils()
 {
 }
+
+map<HungerLevel, string> CreatureUtils::hunger_message_sid_map;
+
+// Initialize the map of message SIDs.  Messages are shown when the creature
+// (the player, realistically) transitions to a new state.
+void CreatureUtils::initialize_hunger_message_sid_map()
+{
+  hunger_message_sid_map.clear();
+
+  hunger_message_sid_map = std::map<HungerLevel, std::string>{
+    { HungerLevel::HUNGER_LEVEL_STUFFED, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STUFFED },
+    { HungerLevel::HUNGER_LEVEL_FULL, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_FULL },
+    { HungerLevel::HUNGER_LEVEL_NORMAL, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_NORMAL },
+    { HungerLevel::HUNGER_LEVEL_HUNGRY, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_HUNGRY },
+    { HungerLevel::HUNGER_LEVEL_STARVING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STARVING },
+    { HungerLevel::HUNGER_LEVEL_DYING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING } };
+}
+
+
+// Add a message about a change in hunger status, if appropriate.
+void CreatureUtils::add_hunger_level_message_if_necessary(CreaturePtr creature, const int old_hunger, const int new_hunger)
+{
+  HungerLevel old_level = HungerLevelConverter::to_hunger_level(old_hunger);
+  HungerLevel new_level = HungerLevelConverter::to_hunger_level(new_hunger);
+
+  if (old_level != new_level)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+
+    if (hunger_message_sid_map.empty())
+    {
+      initialize_hunger_message_sid_map();
+    }
+
+    string message_sid = hunger_message_sid_map[new_level];
+
+    manager.add_new_message(StringTable::get(message_sid));
+    manager.send();
+  }
+}
+
+
 
 string CreatureUtils::get_race_class_synopsis(CreaturePtr c)
 {

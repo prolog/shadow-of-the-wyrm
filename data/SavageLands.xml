@@ -22619,6 +22619,24 @@
 				<Nutrition>100</Nutrition>
 				<Effect>10</Effect>
 			</Potion>			
+			<Potion id="sustenance_potion">
+				<DescriptionSID>SUSTENANCE_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SUSTENANCE_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SUSTENANCE_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SUSTENANCE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>66</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>10</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>4000</Nutrition>
+				<Effect>0</Effect>
+			</Potion>			
 			<Potion id="restorative_potion">
 				<DescriptionSID>RESTORATIVE_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_RESTORATIVE_POTION_SID</UnidentifiedDescriptionSID>

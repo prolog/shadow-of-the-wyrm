@@ -11,6 +11,8 @@ class CreatureUtils
     static std::string get_race_class_synopsis(CreaturePtr c);
     static void handle_alignment_change(CreaturePtr c, const int new_alignment);
 
+    static void add_hunger_level_message_if_necessary(CreaturePtr c, const int old_hunger, const int new_hunger);
+
     // Check to see if the given creature is either the player, or exists
     // on the player's view map.
     static bool is_player_or_in_los(CreaturePtr c);
@@ -30,5 +32,8 @@ class CreatureUtils
   protected:
     CreatureUtils();
     ~CreatureUtils();
+
+    static void initialize_hunger_message_sid_map();
+    static std::map<HungerLevel, std::string> hunger_message_sid_map;
 };
 
