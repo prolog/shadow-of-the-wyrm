@@ -13,7 +13,7 @@ bool GraveTileManipulator::dig(CreaturePtr creature, TilePtr tile)
     DefaultTileManipulator dft;
     dug = dft.dig(creature, tile);
 
-    creature->get_conducts_ref().break_conduct(ConductType::CONDCUT_TYPE_NO_GRAVEDIGGING);
+    creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING);
 
     // Add a message about disturbing the dead.
     if (creature->get_is_player())
