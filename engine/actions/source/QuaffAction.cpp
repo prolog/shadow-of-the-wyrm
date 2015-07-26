@@ -65,10 +65,7 @@ void QuaffAction::explode_potion(CreaturePtr original_attacker, CreaturePtr crea
 void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreaturePtr caster, const string& message)
 {
   if (creature && potion)
-  {
-    ConsumableAction ca;
-    ca.consume(creature, potion);
-    
+  {    
     EffectPtr potion_effect = EffectFactory::create_effect(potion->get_effect_type());
 
     if (potion_effect)
@@ -113,6 +110,9 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
           item_id.set_item_identified(potion, potion_base_id, true);
         }
       }
+
+      ConsumableAction ca;
+      ca.consume(creature, potion);
     }
   }
 }
