@@ -21,7 +21,8 @@ Savage Lands v0.3.8 "Narvaez"
 - Added a conduct to track whether the player ever engaged in
   graverobbing.  This is defined as opening a grave or barrow with e.g.
   a shovel, and specifically doesn't apply to the Sun Gem quests in
-  Isen Dun.
+  Isen Dun.  This conduct gets broken when digging on a barrow or grave
+  tile.
 
 - Started work on the "need before I release the source" work.  Removed
   the old, dead Code::Blocks project.  Changed hardcoded project directory
