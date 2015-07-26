@@ -116,7 +116,6 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food, IInventoryPtr inve
 
     // Is the character full?  If not, eat the food.
     HungerClock& hunger = creature->get_hunger_clock_ref();
-    int hunger_before = hunger.get_hunger();
 
     if (!hunger.is_stuffed())
     {
@@ -142,9 +141,6 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food, IInventoryPtr inve
       }
 
       cm.consume(creature, item_as_consumable);
-
-      int hunger_after = hunger.get_hunger();
-      CreatureUtils::add_hunger_level_message_if_necessary(creature, hunger_before, hunger_after);
     }
     else
     {
