@@ -16,7 +16,7 @@ ConductTextKeys::~ConductTextKeys()
 
 string ConductTextKeys::get_conduct_message_sid(const ConductType ct)
 {
-  static_assert(ConductType::CONDUCT_SIZE == ConductType(5), "Unexpected number of conducts.");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(6), "Unexpected number of conducts.");
 
   if (conduct_message_sids.empty())
   {
@@ -28,7 +28,7 @@ string ConductTextKeys::get_conduct_message_sid(const ConductType ct)
 
 void ConductTextKeys::initialize_message_sids()
 {
-  conduct_message_sids = {"CONDUCT_MESSAGE_FOODLESS", "CONDUCT_MESSAGE_VEGETARIAN", "CONDUCT_MESSAGE_AGNOSTIC", "CONDUCT_MESSAGE_ILLITERATE", "CONDUCT_MESSAGE_WEAPONLESS"};
+  conduct_message_sids = {"CONDUCT_MESSAGE_FOODLESS", "CONDUCT_MESSAGE_VEGETARIAN", "CONDUCT_MESSAGE_AGNOSTIC", "CONDUCT_MESSAGE_ILLITERATE", "CONDUCT_MESSAGE_WEAPONLESS", "CONDUCT_MESSAGE_NO_GRAVEDIGGING"};
 }
 
 

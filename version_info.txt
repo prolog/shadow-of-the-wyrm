@@ -18,6 +18,11 @@ Savage Lands v0.3.8 "Narvaez"
   non-world map.  Initially, this is just based on tile super type, so
   that a different message is generated based on ground, air, or water.
 
+- Added a conduct to track whether the player ever engaged in
+  graverobbing.  This is defined as opening a grave or barrow with e.g.
+  a shovel, and specifically doesn't apply to the Sun Gem quests in
+  Isen Dun.
+
 - Started work on the "need before I release the source" work.  Removed
   the old, dead Code::Blocks project.  Changed hardcoded project directory
   paths to use Visual Studio's $(ProjectDir) option.  Updated all
