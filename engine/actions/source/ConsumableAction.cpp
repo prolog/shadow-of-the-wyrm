@@ -1,6 +1,7 @@
 #include "ClassManager.hpp"
 #include "ConsumableAction.hpp"
 #include "Conversion.hpp"
+#include "CreatureUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RaceManager.hpp"
 #include "ResistancesCalculator.hpp"
@@ -19,9 +20,15 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
 
   if (creature && consumable)
   {
-    int nutrition = consumable->get_nutrition();
     HungerClock& hunger = creature->get_hunger_clock_ref();
+    int hunger_before = hunger.get_hunger();
+
+    int nutrition = consumable->get_nutrition();
     hunger.set_hunger(hunger.get_hunger() + nutrition);
+
+    int hunger_after = hunger.get_hunger();
+    CreatureUtils::add_hunger_level_message_if_necessary(creature, hunger_before, hunger_after);
+
     creature->increment_grams_unabsorbed_alcohol(AlcoholConverter::standard_drinks_to_absorbable_grams(consumable->get_standard_drinks()));
 
     // Get any intrinsics from the resistances on the item being greater than
