@@ -29,6 +29,11 @@ Savage Lands v0.3.8 "Narvaez"
   dependencies to use their own environment variables to remove the
   dependency on an absolute path.
 
+- Bug fixes:
+
+  - Potions weren't adding messages when hunger was sufficiently changed
+    by quaffing.
+
 - New creatures: quillich, quakeling, quadriga, quadari, queen bee.
 
 - New items: shovel, sustenance potion.
