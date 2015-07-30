@@ -3477,6 +3477,9 @@
     <ClInclude Include="engine\maps\tiles\include\GraveTileManipulator.hpp">
       <Filter>Header Files\engine\maps\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\DigChances.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6763,6 +6766,12 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\source\GraveTileManipulator.cpp">
       <Filter>Source Files\engine\maps\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\DigChances.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\DigChances_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
