@@ -975,6 +975,7 @@
 	<xs:annotation><xs:documentation>Contains information about a particular tile type</xs:documentation></xs:annotation>
 		<xs:sequence>
 			<xs:element name="Text" type="tns:TextDetails" minOccurs="1"/>
+			<xs:element name="DigChances" type="tns:DigChances" minOccurs="0"/>
 		</xs:sequence>
 </xs:complexType>
 <xs:complexType name="TextDetails">
@@ -989,6 +990,15 @@
 			<!-- Indicates that colours will be provided for each season. -->
 			<xs:element name="Colours" type="tns:SeasonColoursType"/>
 		</xs:choice>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DigChances">
+	<xs:annotation>
+		<xs:documentation>Each element represents the probability of finding a particular thing while digging.</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Undead" type="xs:integer"/>
+		<xs:element name="Item" type="xs:integer"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="SeasonColoursType">

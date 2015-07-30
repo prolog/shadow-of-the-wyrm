@@ -27,6 +27,9 @@ Savage Lands v0.3.8 "Narvaez"
 - Added graverobbing as a tracked deity action.  All the good- and
   neutral-aligned deities punish graverobbing.
 
+- Dig probabilities are tracked at the tile level and can be configured
+  in the game data XML.
+
 - Started work on the "need before I release the source" work.  Removed
   the old, dead Code::Blocks project.  Changed hardcoded project directory
   paths to use Visual Studio's $(ProjectDir) option.  Updated all
