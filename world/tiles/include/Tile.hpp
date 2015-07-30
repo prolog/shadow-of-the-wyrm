@@ -5,6 +5,7 @@
 #include "tiles.hpp"
 #include "IInventory.hpp"
 #include "Creature.hpp"
+#include "DigChances.hpp"
 #include "Directions.hpp"
 #include "Item.hpp"
 #include "ISerializable.hpp"
@@ -108,10 +109,17 @@ class Tile : public ISerializable
     virtual float get_hp_regeneration_multiplier() const;
     virtual float get_ap_regeneration_multiplier() const;
 
+    virtual void set_dig_chances(const DigChances& new_dig_chances);
+    virtual DigChances get_dig_chances() const;
+
     virtual Tile* clone() = 0;
 
   protected:
     Tile();
+    Tile(const DigChances& dc);
+
+    // Setup code common to the two constructors
+    void init();
 
     virtual void set_default_properties();
 
@@ -138,6 +146,10 @@ class Tile : public ISerializable
     
     // A tile can have exits in various directions. These lead to other maps/levels/etc.
     TileExitMap map_exits;
+
+    // When digging on this tile, what're the probabilities of certain
+    // things happening?
+    DigChances dig_chances;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

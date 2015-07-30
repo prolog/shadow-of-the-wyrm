@@ -16,6 +16,17 @@ using namespace std;
  ******************************************************************/
 Tile::Tile()
 {
+  init();
+}
+
+Tile::Tile(const DigChances& dc)
+: dig_chances(dc)
+{
+  init();
+}
+
+void Tile::init()
+{
   items = std::make_shared<Inventory>();
   set_default_properties();
   tile_type = TileType::TILE_TYPE_UNDEFINED;
@@ -71,6 +82,8 @@ bool Tile::operator==(const Tile& tile) const
       t_it2++;
     }
   }
+
+  result = result && (dig_chances == tile.dig_chances);
 
   return result;
 }
@@ -359,6 +372,16 @@ float Tile::get_ap_regeneration_multiplier() const
   return 1.0f;
 }
 
+void Tile::set_dig_chances(const DigChances& new_dig_chances)
+{
+  dig_chances = new_dig_chances;
+}
+
+DigChances Tile::get_dig_chances() const
+{
+  return dig_chances;
+}
+
 bool Tile::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, illuminated);
@@ -411,6 +434,8 @@ bool Tile::serialize(ostream& stream) const
       Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
     }
   }
+
+  dig_chances.serialize(stream);
 
   return true;
 }
@@ -470,6 +495,8 @@ bool Tile::deserialize(istream& stream)
       map_exits.insert(make_pair(d, current_dir_map_exit));
     }
   }
+
+  dig_chances.deserialize(stream);
 
   return true;
 }
