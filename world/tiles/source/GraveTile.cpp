@@ -1,5 +1,14 @@
 #include "GraveTile.hpp"
 
+const int GraveTileUndeadPct = 15;
+const int GraveTileItemPct = 11;
+
+GraveTile::GraveTile()
+: Tile({GraveTileUndeadPct, GraveTileItemPct})
+{
+}
+
+
 TileType GraveTile::get_tile_type() const
 {
   return TileType::TILE_TYPE_GRAVE;
