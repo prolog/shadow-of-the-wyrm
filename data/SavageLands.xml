@@ -18671,10 +18671,6 @@
 				<Symbol>+</Symbol>
 				<Colour>7</Colour>
 			</Text>
-			<DigChances>
-				<Undead>6</Undead>
-				<Item>3</Item>
-			</DigChances>
 		</GraveTile>
 		<MarshTile>
 			<Text>
@@ -18850,10 +18846,6 @@
 				<Symbol>0</Symbol>
 				<Colour>3</Colour>
 			</Text>
-			<DigChances>
-				<Undead>15</Undead>
-				<Item>11</Item>
-			</DigChances>
 		</BarrowTile>
 		<WildOrchardTile>
 			<Text>

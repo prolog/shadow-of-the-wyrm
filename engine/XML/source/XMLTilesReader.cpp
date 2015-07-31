@@ -1,5 +1,4 @@
 #include "XMLTilesReader.hpp"
-#include "DigChances.hpp"
 #include "DisplayTile.hpp"
 #include "tiles.hpp"
 
@@ -68,14 +67,6 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     for (const auto& xml_tile : tile_nodes)
     {
       parse_tile_text_details(tiles, xml_tile);
-
-      XMLNode dig_chances_node = XMLUtils::get_next_element_by_local_name(xml_tile, "DigChances");
-
-      if (!dig_chances_node.is_null())
-      {
-        DigChances dc;
-        parse_dig_chances(dc, dig_chances_node);
-      }
     }
   }
 
@@ -137,17 +128,5 @@ void XMLTilesReader::parse_tile_text_details(vector<DisplayTile>& tile_info, con
       DisplayTile current_tile_info(symbol, tile_colours);
       tile_info.push_back(current_tile_info);
     }
-  }
-}
-
-void XMLTilesReader::parse_dig_chances(DigChances& dc, const XMLNode& dig_chances_node)
-{
-  if (!dig_chances_node.is_null())
-  {
-    int pct_undead = XMLUtils::get_child_node_int_value(dig_chances_node, "Undead");
-    int pct_item = XMLUtils::get_child_node_int_value(dig_chances_node, "Item");
-
-    dc.set_pct_chance_undead(pct_undead);
-    dc.set_pct_chance_item(pct_item);
   }
 }
