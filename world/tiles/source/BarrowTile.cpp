@@ -1,5 +1,13 @@
 #include "BarrowTile.hpp"
 
+const int BarrowTileUndeadPct = 15;
+const int BarrowTileItemPct = 11;
+
+BarrowTile::BarrowTile()
+: Tile({BarrowTileUndeadPct, BarrowTileItemPct})
+{
+}
+
 TileType BarrowTile::get_tile_type() const
 {
   return TileType::TILE_TYPE_BARROW;
