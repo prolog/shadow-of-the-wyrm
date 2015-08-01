@@ -2760,9 +2760,6 @@
     <ClInclude Include="engine\decision_strategies\include\AutomaticMovementDecisionStrategy.hpp">
       <Filter>Header Files\engine\decision_strategies\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\AutomaticMovementAction.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\decision_strategies\search\include\GreedySearchStrategy.hpp">
       <Filter>Header Files\engine\decision_strategies\search\include</Filter>
     </ClInclude>
@@ -3479,6 +3476,9 @@
     </ClInclude>
     <ClInclude Include="world\tiles\include\DigChances.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\AutomaticMovementAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

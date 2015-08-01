@@ -413,12 +413,12 @@ bool Map::get_permanent() const
 }
 
 // Set/get the danger level used to generate the monsters and items on the map.
-void Map::set_danger(const uint new_danger)
+void Map::set_danger(const int new_danger)
 {
   danger = new_danger;
 }
 
-uint Map::get_danger() const
+int Map::get_danger() const
 {
   return danger;
 }
@@ -538,7 +538,7 @@ bool Map::serialize(ostream& stream) const
 
   Serialize::write_string(stream, map_id);
   Serialize::write_bool(stream, permanent);
-  Serialize::write_uint(stream, danger);
+  Serialize::write_int(stream, danger);
   Serialize::write_bool(stream, allow_creature_updates);
   Serialize::write_string_map(stream, properties);
 
@@ -636,7 +636,7 @@ bool Map::deserialize(istream& stream)
 
   Serialize::read_string(stream, map_id);
   Serialize::read_bool(stream, permanent);
-  Serialize::read_uint(stream, danger);
+  Serialize::read_int(stream, danger);
   Serialize::read_bool(stream, allow_creature_updates);
 
   properties.clear();

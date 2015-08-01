@@ -263,6 +263,8 @@ const string ActionTextKeys::ACTION_DIG_AIR                    = "ACTION_DIG_AIR
 const string ActionTextKeys::ACTION_DIG_GROUND                 = "ACTION_DIG_GROUND";
 const string ActionTextKeys::ACTION_DIG_WATER                  = "ACTION_DIG_WATER";
 const string ActionTextKeys::ACTION_DIG_GRAVE                  = "ACTION_DIG_GRAVE";
+const string ActionTextKeys::ACTION_DIG_UNDEAD_FOUND           = "ACTION_DIG_UNDEAD_FOUND";
+const string ActionTextKeys::ACTION_DIG_ITEM_FOUND             = "ACTION_DIG_ITEM_FOUND";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

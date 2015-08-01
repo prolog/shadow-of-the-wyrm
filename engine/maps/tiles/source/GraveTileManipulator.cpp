@@ -5,7 +5,7 @@
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 
-bool GraveTileManipulator::dig(CreaturePtr creature, TilePtr tile)
+bool GraveTileManipulator::dig(CreaturePtr creature, MapPtr map, TilePtr tile)
 {
   bool dug = false;
 
@@ -13,10 +13,10 @@ bool GraveTileManipulator::dig(CreaturePtr creature, TilePtr tile)
   {
     // Get the default dig message.
     DefaultTileManipulator dft;
-    dug = dft.dig(creature, tile);
+    dug = dft.dig(creature, map, tile);
 
     creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING);
-	Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_GRAVEROBBING);
+    Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_GRAVEROBBING);
 
     // Add a message about disturbing the dead.
     if (creature->get_is_player())
