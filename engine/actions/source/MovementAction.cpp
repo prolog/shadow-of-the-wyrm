@@ -468,7 +468,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       if (new_map->get_map_type() != MapType::MAP_TYPE_WORLD)
       {
         // Set the danger level appropriately, using the OLD MAP's map type.
-        uint new_danger = calc->calculate(map, new_map);
+        int new_danger = calc->calculate(map, new_map);
         new_map->set_danger(new_danger);
 
         // Now that the danger level's been calculated, generate the creatures

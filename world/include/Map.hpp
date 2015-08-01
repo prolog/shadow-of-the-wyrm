@@ -89,8 +89,8 @@ class Map : public ISerializable
 
     // Set/get the base danger level.  This is used to determine the danger of the monsters to
     // generate, as well as the quality of the items.
-    void set_danger(const uint new_danger);
-    uint get_danger() const;
+    void set_danger(const int new_danger);
+    int get_danger() const;
 
     // Set/get whether creature updates are allowed.  If this is true, then
     // the engine will periodically add additional creatures to the map while
@@ -130,7 +130,7 @@ class Map : public ISerializable
     MapExitPtr map_exit;
     std::string map_id;
     bool permanent;
-    uint danger;
+    int danger;
     bool allow_creature_updates;
     std::map<std::string, std::string> properties;
 

@@ -10,7 +10,7 @@ DigAction::DigAction()
 }
 
 // Dig on a particular tile.
-ActionCostValue DigAction::dig(CreaturePtr creature, TilePtr tile) const
+ActionCostValue DigAction::dig(CreaturePtr creature, MapPtr map, TilePtr tile) const
 {
   ActionCostValue acv = 0;
 
@@ -21,7 +21,7 @@ ActionCostValue DigAction::dig(CreaturePtr creature, TilePtr tile) const
 
     if (tm != nullptr)
     {
-      bool dug = tm->dig(creature, tile);
+      bool dug = tm->dig(creature, map, tile);
 
       if (dug)
       {

@@ -4,6 +4,6 @@
 class GraveTileManipulator : public ITileManipulator
 {
   public:
-    bool dig(CreaturePtr creature, TilePtr tile) override;
+    bool dig(CreaturePtr creature, MapPtr map, TilePtr tile) override;
 };
 

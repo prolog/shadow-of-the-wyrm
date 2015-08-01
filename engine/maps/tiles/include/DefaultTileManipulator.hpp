@@ -9,9 +9,12 @@ class DefaultTileManipulator : public ITileManipulator
   public:
     DefaultTileManipulator();
 
-    bool dig(CreaturePtr creature, TilePtr tile) override;
+    bool dig(CreaturePtr creature, MapPtr map, TilePtr tile) override;
 
   protected:
+    void add_undead_if_necessary(CreaturePtr creature, MapPtr map, TilePtr tile);
+    void add_item_if_necessary(CreaturePtr creature, MapPtr map, TilePtr tile);
+
     std::map<TileSuperType, std::string> super_type_message_sids;
 };
 
