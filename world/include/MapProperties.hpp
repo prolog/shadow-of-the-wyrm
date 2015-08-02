@@ -28,6 +28,11 @@ class MapProperties
     // are just dangerous.
     static const std::string MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS;
 
+    // Is a particular race required when generating creatures?  If so,
+    // which one?  A race matches if it matches the given race, or the
+    // given race is an ancestor (e.g., humanoid matches dwarf).
+    static const std::string MAP_PROPERTIES_GENERATED_CREATURE_RACE_ID;
+
     // Special messages that should be displayed only once, the very first
     // time the player enters the level.  CSV string.
     static const std::string MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS;

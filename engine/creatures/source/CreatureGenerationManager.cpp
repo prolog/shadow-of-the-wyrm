@@ -7,6 +7,7 @@
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
 #include "MapProperties.hpp"
+#include "RaceManager.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -34,6 +35,14 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
     ignore_level_checks = String::to_bool(a_it->second);
   }
 
+  // If generation needs to be restricted to undead, dragons, etc.
+  string required_race;
+  a_it = additional_properties.find(MapProperties::MAP_PROPERTIES_GENERATED_CREATURE_RACE_ID);
+  if (a_it != additional_properties.end())
+  {
+    required_race = a_it->second;
+  }
+
   vector<string> generator_filters;
   a_it = additional_properties.find(MapProperties::MAP_PROPERTIES_GENERATOR_FILTERS);
 
@@ -55,7 +64,7 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
       CreaturePtr creature = c_it->second;
       CreatureGenerationValues cgvals = cgv_map[creature_id];
 
-      if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity, ignore_level_checks, generator_filters))
+      if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters))
       {
         generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
       }
@@ -114,8 +123,9 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
   return generated_creature;
 }
 
-bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const vector<string>& generator_filters)
+bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters)
 {
+  RaceManager rm;
   int cgv_danger_level = cgv.get_danger_level();
   int cgv_maximum = cgv.get_maximum();
   vector<string> cgv_generator_filters = cgv.get_generator_filters();
@@ -127,6 +137,7 @@ bool CreatureGenerationManager::does_creature_match_generation_criteria(const Cr
     && cgv_danger_level >= 0 // Exclude danger level of -1, which means "don't generate"
     && (ignore_level_checks || cgv_danger_level >= min_danger_level)
     && (ignore_level_checks || cgv_danger_level <= max_danger_level)
+    && (required_race.empty() || rm.is_race_or_descendent(cgv.get_race_id(), required_race))
     && (cgv_maximum <= CreatureGenerationConstants::CREATURE_GENERATION_UNLIMITED || (cgv.get_current() < cgv_maximum)) // Either no max, or less than the > 0 maximum
     && (cgv_maximum != 1 || permanent_map) // no uniques on temporary maps
     // If there are no generator filters (from the generator/map) the creature
