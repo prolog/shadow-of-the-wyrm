@@ -1,10 +1,19 @@
 #include "DefaultTileManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "CreatureGenerationManager.hpp"
+#include "CoordUtils.hpp"
 #include "Conversion.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "ItemGenerationManager.hpp"
+#include "MapProperties.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+
+using namespace std;
+
+const int DefaultTileManipulator::UNDEAD_LEVEL_UPPER_BOUND_OFFSET = 5;
 
 DefaultTileManipulator::DefaultTileManipulator()
   : super_type_message_sids({ { TileSuperType::TILE_SUPER_TYPE_GROUND, ActionTextKeys::ACTION_DIG_GROUND },
@@ -55,12 +64,54 @@ void DefaultTileManipulator::add_undead_if_necessary(CreaturePtr creature, MapPt
   {
     if (RNG::percent_chance(tile->get_dig_chances().get_pct_chance_undead()))
     {
-      if (creature->get_is_player())
-      {
-        IMessageManager& manager = MessageManagerFactory::instance();
+      int min_danger_level = std::max<int>(1, creature->get_level().get_current() / 2);
+      int max_danger_level = std::max<int>(1, map->get_danger()) + UNDEAD_LEVEL_UPPER_BOUND_OFFSET;
 
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_UNDEAD_FOUND));
-        manager.send();
+      Game& game = Game::instance();
+      CreaturePtr undead;
+      CreatureGenerationManager cgm;
+      std::map<string, string> additional_properties = { { MapProperties::MAP_PROPERTIES_GENERATED_CREATURE_RACE_ID, "_undead" } };
+      CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile->get_tile_type(), map->get_permanent(), min_danger_level, max_danger_level, Rarity::RARITY_VERY_RARE, additional_properties);
+
+      undead = cgm.generate_creature(game.get_action_manager_ref(), generation_map);
+      
+      if (undead != nullptr)
+      {
+        // Add the undead to the map: randomize the adjacent tiles, and then
+        // iterate through the tiles, trying to place.
+        bool placed = false;
+
+        TileDirectionMap directions = MapUtils::get_adjacent_tiles_to_creature(map, creature);
+        vector<Direction> keys;
+        for (const auto& d : directions)
+        {
+          keys.push_back(d.first);
+        }
+
+        std::random_shuffle(keys.begin(), keys.end());
+
+        for (const auto& direction : keys)
+        {
+          TilePtr tile = directions.at(direction);
+
+          if (tile != nullptr && !tile->has_creature())
+          {
+            Coordinate undead_coords = CoordUtils::get_new_coordinate(MapUtils::get_coordinate_for_creature(map, creature), direction);
+            GameUtils::add_new_creature_to_map(game, undead, map, undead_coords);
+
+            placed = true;
+            break;
+          }
+        }
+
+        // Add a message about the dead rising...
+        if (placed && creature->get_is_player())
+        {
+          IMessageManager& manager = MessageManagerFactory::instance();
+
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_UNDEAD_FOUND));
+          manager.send();
+        }
       }
     }
   }
@@ -78,7 +129,7 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
       int danger_level = map->get_danger();
 
       ItemGenerationManager igm;
-      ItemGenerationVec igv = igm.generate_item_generation_vec(1, std::max<int>(danger_level, creature->get_level().get_current()), Rarity::RARITY_RARE);
+      ItemGenerationVec igv = igm.generate_item_generation_vec(1, std::max<int>(danger_level, creature->get_level().get_current()), Rarity::RARITY_VERY_RARE);
 
       Game& game = Game::instance();
       ActionManager am = game.get_action_manager_ref();

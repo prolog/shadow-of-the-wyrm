@@ -16,5 +16,9 @@ class DefaultTileManipulator : public ITileManipulator
     void add_item_if_necessary(CreaturePtr creature, MapPtr map, TilePtr tile);
 
     std::map<TileSuperType, std::string> super_type_message_sids;
+
+    // The danger level of the undead considered ranges from half the creature's
+    // level to some offset above the creature's level (level + 5).
+    static const int UNDEAD_LEVEL_UPPER_BOUND_OFFSET;
 };
 

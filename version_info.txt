@@ -27,6 +27,10 @@ Savage Lands v0.3.8 "Narvaez"
 - Added graverobbing as a tracked deity action.  All the good- and
   neutral-aligned deities punish graverobbing.
 
+- Tiles can now have undead hidden in them, exposed by digging.  The
+  danger range is half the digger's level to 5 more than their level.
+  Currently, only graves/barrows have undead hidden in them.
+
 - Any tile can now have an item found while digging, though the
   probability is currently 0 for non-barrow/grave tiles.  The items found
   can be any rarity within the danger level range.
@@ -38,6 +42,7 @@ Savage Lands v0.3.8 "Narvaez"
   dependency on an absolute path.
 
 - Converted the project from Visual Studio 2013 to 2015.
+
 - Bug fixes:
 
   - Potions weren't adding messages when hunger was sufficiently changed
