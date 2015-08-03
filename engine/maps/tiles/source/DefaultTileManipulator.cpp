@@ -134,10 +134,21 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
       Game& game = Game::instance();
       ActionManager am = game.get_action_manager_ref();
 
-      ItemPtr item = igm.generate_item(am, igv, RNG::range(1, static_cast<int>(danger_level / 2)));
-      tile->get_items()->add(item);
+      bool items_placed = false;
+      int num_items_found = RNG::range(1, 3);
 
-      if (creature->get_is_player())
+      for (int i = 0; i < num_items_found; i++)
+      {
+        ItemPtr item = igm.generate_item(am, igv, RNG::range(1, static_cast<int>(danger_level / 2)));
+        
+        if (item != nullptr)
+        {
+          tile->get_items()->add(item);
+          items_placed = true;
+        }
+      }
+
+      if (items_placed && creature->get_is_player())
       {
         IMessageManager& manager = MessageManagerFactory::instance();
 
