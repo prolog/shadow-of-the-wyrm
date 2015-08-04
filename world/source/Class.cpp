@@ -186,6 +186,16 @@ map<int, string> Class::get_titles() const
   return titles;
 }
 
+void Class::set_deity_dislike_multipliers(const map<string, float>& new_deity_dislike_multipliers)
+{
+  deity_dislike_multipliers = new_deity_dislike_multipliers;
+}
+
+map<string, float> Class::get_deity_dislike_multipliers() const
+{
+  return deity_dislike_multipliers;
+}
+
 string Class::str() const
 {
   ostringstream class_details;

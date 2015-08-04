@@ -25,7 +25,8 @@ Savage Lands v0.3.8 "Narvaez"
   tile.
 
 - Added graverobbing as a tracked deity action.  All the good- and
-  neutral-aligned deities punish graverobbing.
+  neutral-aligned deities punish graverobbing.  Thieves, however, are
+  immune to this wrath.
 
 - Tiles can now have undead hidden in them, exposed by digging.  The
   danger range is half the digger's level to 5 more than their level.

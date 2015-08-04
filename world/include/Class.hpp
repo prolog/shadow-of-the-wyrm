@@ -70,6 +70,9 @@ class Class
     void set_titles(const std::map<int, std::string>& new_titles);
     std::map<int, std::string> get_titles() const;
 
+    void set_deity_dislike_multipliers(const std::map<std::string, float>& new_deity_dislike_multipliers);
+    std::map<std::string, float> get_deity_dislike_multipliers() const;
+
     std::string str() const;
 
   protected:
@@ -105,6 +108,11 @@ class Class
 
     // A map of levels to titles.
     std::map<int, std::string> titles;
+
+    // Deity dislike multipliers.  If a value exists for a given
+    // key (action name), then the multiplier is used; otherwise
+    // the default multiplier of 1 is used.
+    std::map<std::string, float> deity_dislike_multipliers;
 };
 
 typedef std::shared_ptr<Class> ClassPtr;

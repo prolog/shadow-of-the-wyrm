@@ -399,6 +399,7 @@
 			<xs:element name="PietyCostMultiplier" type="tns:NonNegativeDecimal" minOccurs="0"/>
 			<xs:element name="PietyRegenBonus" type="xs:integer" minOccurs="0"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+			<xs:element ref="tns:DeityDislikeMultipliers" minOccurs="0"/>
 			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 			<xs:element name="LevelScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
@@ -563,6 +564,24 @@
 		<xs:sequence>
 			<xs:element name="Level" type="xs:int"/>
 			<xs:element name="SID" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="DeityDislikeMultipliers">
+	<xs:annotation>
+		<xs:documentation>Multipliers for any deity dislikes.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:DeityDislikeMultiplier" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="DeityDislikeMultiplier">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Action" type="xs:string"/>
+			<xs:element name="Multiplier" type="xs:float"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

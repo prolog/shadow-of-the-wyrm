@@ -85,7 +85,10 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
     float experience_multiplier = XMLUtils::get_child_node_float_value(class_node, "ExperienceMultiplier", current_class->get_experience_multiplier());
     current_class->set_experience_multiplier(experience_multiplier);
-    
+   
+    XMLNode deity_dislike_multipliers_node = XMLUtils::get_next_element_by_local_name(class_node, "DeityDislikeMultipliers");
+    parse_class_deity_dislike_multipliers(current_class, deity_dislike_multipliers_node);
+
     XMLNode initial_equipment_and_inventory_node = XMLUtils::get_next_element_by_local_name(class_node, "InitialEquipmentAndInventory");
     map<EquipmentWornLocation, InitialItem> initial_eq;
     vector<InitialItem> initial_inv;
@@ -154,6 +157,26 @@ void XMLClassesReader::parse_class_titles(ClassPtr current_class, const XMLNode&
     }
 
     current_class->set_titles(titles);
+  }
+}
+
+void XMLClassesReader::parse_class_deity_dislike_multipliers(ClassPtr current_class, const XMLNode& deity_dislike_multipliers_node)
+{
+  if (!deity_dislike_multipliers_node.is_null())
+  {
+    map<string, float> ddm;
+
+    vector<XMLNode> deity_dislike_multiplier_nodes = XMLUtils::get_elements_by_local_name(deity_dislike_multipliers_node, "DeityDislikeMultiplier");
+
+    for (const XMLNode& ddm_node : deity_dislike_multiplier_nodes)
+    {
+      string action = XMLUtils::get_child_node_value(ddm_node, "Action");
+      float multiplier = XMLUtils::get_child_node_float_value(ddm_node, "Multiplier");
+
+      ddm[action] = multiplier;
+    }
+
+    current_class->set_deity_dislike_multipliers(ddm);
   }
 }
 
