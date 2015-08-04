@@ -44,6 +44,8 @@ Savage Lands v0.3.8 "Narvaez"
 
 - Converted the project from Visual Studio 2013 to 2015.
 
+- Added resistances to a number of pieces of armour.
+
 - Bug fixes:
 
   - Potions weren't adding messages when hunger was sufficiently changed
