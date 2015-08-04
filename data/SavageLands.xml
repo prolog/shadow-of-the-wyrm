@@ -19106,7 +19106,7 @@
 				<WornLocation>0</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>4</DangerLevel>
-				<Evade>9</Evade>
+				<Evade>10</Evade>
 				<Soak>0</Soak>
 			</Armour>
 			<Armour id="guildmasters_cap">
@@ -19432,6 +19432,9 @@
 				<WornLocation>6</WornLocation>
 				<Material>1</Material>
 				<DangerLevel>16</DangerLevel>
+				<Resistances>
+					<Lightning>0.20</Lightning>
+				</Resistances>
 				<Evade>-9</Evade>
 				<Soak>22</Soak>
 			</Armour>
@@ -19443,6 +19446,11 @@
 				<WornLocation>6</WornLocation>
 				<Material>7</Material>
 				<DangerLevel>16</DangerLevel>
+				<Resistances>
+					<Pound>0.15</Pound>
+					<Acid>0.10</Acid>
+					<Poison>0.10</Poison>
+				</Resistances>
 				<Evade>-30</Evade>
 				<Soak>30</Soak>
 			</Armour>
@@ -19455,6 +19463,10 @@
 				<Material>7</Material>
 				<DangerLevel>35</DangerLevel>
 				<Rarity>1</Rarity>
+				<Resistances>
+					<Slash>0.15</Slash>
+					<Pierce>0.15</Pierce>
+				</Resistances>
 				<Evade>-20</Evade>
 				<Soak>35</Soak>
 			</Armour>			
@@ -19477,6 +19489,9 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>4</DangerLevel>
+				<Resistances>
+					<Arcane>0.10</Arcane>
+				</Resistances>
 				<Evade>7</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -19488,6 +19503,11 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>6</DangerLevel>
+				<Resistances>
+					<Holy>0.10</Holy>
+					<Shadow>0.10</Shadow>
+					<Arcane>0.05</Arcane>
+				</Resistances>
 				<Evade>11</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -19499,6 +19519,10 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>8</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Cold>0.05</Cold>
+				</Resistances>
 				<Evade>9</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -19510,6 +19534,10 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>11</DangerLevel>
+				<Resistances>
+					<Cold>0.10</Cold>
+					<Shadow>0.10</Shadow>
+				</Resistances>
 				<Evade>14</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -19521,6 +19549,10 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>14</DangerLevel>
+				<Resistances>
+					<Holy>0.10</Holy>
+					<Lightning>0.10</Lightning>
+				</Resistances>
 				<Evade>17</Evade>
 				<Soak>3</Soak>
 			</Armour>
@@ -19532,7 +19564,7 @@
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>16</DangerLevel>
-				<Evade>24</Evade>
+				<Evade>25</Evade>
 				<Soak>2</Soak>
 			</Armour>
 			<Armour id="behemoth_hide">
@@ -19543,7 +19575,7 @@
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>20</DangerLevel>
-				<Evade>33</Evade>
+				<Evade>35</Evade>
 				<Soak>3</Soak>
 			</Armour>
 			<Armour id="clothes">
@@ -19609,6 +19641,9 @@
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>3</DangerLevel>
+				<Resistances>
+					<Arcane>0.05</Arcane>
+				</Resistances>
 				<Evade>7</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -19620,6 +19655,10 @@
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>7</DangerLevel>
+				<Resistances>
+					<Holy>0.05</Holy>
+					<Lightning>0.05</Lightning>
+				</Resistances>
 				<Evade>12</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -19702,7 +19741,7 @@
 				<Material>1</Material>
 				<DangerLevel>10</DangerLevel>
 				<Resistances>
-					<Heat>0.20</Heat>
+					<Heat>0.15</Heat>
 				</Resistances>
 				<Evade>8</Evade>
 				<Soak>5</Soak>
