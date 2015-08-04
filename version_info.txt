@@ -53,7 +53,7 @@ Savage Lands v0.3.8 "Narvaez"
 
 - New creatures: quillich, quakeling, quadriga, quadari, queen bee.
 
-- New items: shovel, sustenance potion, elemental shield.
+- New items: shovel, sustenance potion, elemental shield, iron ring.
 
 Savage Lands v0.3.7 "Brouwer"
 - Version declared June 6, 2015.  Version finalized July 11, 2015.

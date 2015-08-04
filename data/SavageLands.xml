@@ -20006,6 +20006,25 @@
 				<Soak>2</Soak>
 				<AddlDamage>10</AddlDamage>
 			</Ring>
+			<Ring id="ring_iron">
+				<DescriptionSID>RING_IRON_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RING_IRON_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RING_IRON_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RING_IRON_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>325</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Resistances>
+					<Slash>0.05</Slash>
+					<Pierce>0.10</Pierce>
+					<Pound>0.10</Pound>
+				</Resistances>
+				<Evade>2</Evade>
+				<Soak>2</Soak>
+			</Ring>
 			<Ring id="ring_flame">
 				<DescriptionSID>RING_FLAME_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_RING_FLAME_SID</UnidentifiedDescriptionSID>
