@@ -19990,7 +19990,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>3</DangerLevel>
-				<Evade>0</Evade>
+				<Evade>4</Evade>
 				<Soak>0</Soak>
 				<ToHit>15</ToHit>
 			</Ring>
@@ -20003,7 +20003,7 @@
 				<Material>13</Material>
 				<DangerLevel>3</DangerLevel>
 				<Evade>0</Evade>
-				<Soak>0</Soak>
+				<Soak>2</Soak>
 				<AddlDamage>10</AddlDamage>
 			</Ring>
 			<Ring id="ring_flame">
