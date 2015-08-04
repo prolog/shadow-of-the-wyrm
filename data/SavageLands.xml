@@ -3340,6 +3340,13 @@
 				</Title>
 			</Titles>
 			<ExperienceMultiplier>0.92</ExperienceMultiplier>
+			<DeityDislikeMultipliers>
+				<DeityDislikeMultiplier>
+					<Action>GraveRobbing</Action>
+					<!-- Thieves don't take any deity-related heat for grave robbing. -->
+					<Multiplier>0</Multiplier>
+				</DeityDislikeMultiplier>
+			</DeityDislikeMultipliers>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
 				<Wielded><ID>dagger</ID></Wielded>

@@ -1,3 +1,5 @@
+#include "global_prototypes.hpp"
+#include "ClassManager.hpp"
 #include "DeityActionManager.hpp"
 #include "DeityDecisionImplications.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
@@ -42,7 +44,7 @@ void DeityActionManager::notify_action(CreaturePtr creature, const string& actio
     {
       if (cur_deity->get_dislike(action_key))
       {
-        handle_displeasing_action(creature, cur_deity);
+        handle_displeasing_action(creature, cur_deity, action_key);
       }
       // else if (active_deity->get_like(action_key)) { ... }
     }
@@ -50,7 +52,7 @@ void DeityActionManager::notify_action(CreaturePtr creature, const string& actio
 }
 
 // Handle a displeasing action by decreasing piety.
-void DeityActionManager::handle_displeasing_action(CreaturePtr creature, DeityPtr deity)
+void DeityActionManager::handle_displeasing_action(CreaturePtr creature, DeityPtr deity, const string& action)
 {
   if (creature)
   {
@@ -64,25 +66,45 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, DeityPt
     // Always reduce the creature's piety with the particular deity.
     int original_piety = status.get_piety();
 
-    // Create a default (for now) dislike decision.
-    DeityDecisionStrategyHandlerPtr deity_decision_handler = std::make_shared<DislikeDeityDecisionStrategyHandler>(deity);
-    DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
+    ClassManager cm;
+    ClassPtr cr_class = cm.get_class(creature->get_class_id());
+    map<string, float> ddm = cr_class->get_deity_dislike_multipliers();
+    auto d_it = ddm.find(action);
+    float multiplier = 1.0f;
 
-    // This may have been updated as a result of the decision.
-    int new_piety = original_piety - decision_implications.get_piety_loss();
-    status.set_piety(new_piety);
-
-    if (creature->get_religion_ref().get_active_deity_id() == deity->get_id())
+    if (d_it != ddm.end())
     {
-      // If the creature is the player, and if the piety was reduced
-      // below zero, show the deity's anger.
-      if ((original_piety >= 0) && (new_piety < 0) && creature->get_is_player())
-      {
-        add_displeasure_message(creature, deity_decision_handler->get_message_sid());
-      }
+      float val = d_it->second;
 
-      // TODO: If the creature follows the deity, something other than anger
-      // may occur.
+      // Ignore displeasing actions if val == 0
+      if (fequal(val, 0.0f))
+      {
+        multiplier = val;
+      }
+    }
+
+    if (multiplier > 0)
+    {
+      // Create a default (for now) dislike decision.
+      DeityDecisionStrategyHandlerPtr deity_decision_handler = std::make_shared<DislikeDeityDecisionStrategyHandler>(deity);
+      DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
+
+      // This may have been updated as a result of the decision.
+      int new_piety = original_piety - (decision_implications.get_piety_loss() * multiplier);
+      status.set_piety(new_piety);
+
+      if (creature->get_religion_ref().get_active_deity_id() == deity->get_id())
+      {
+        // If the creature is the player, and if the piety was reduced
+        // below zero, show the deity's anger.
+        if ((original_piety >= 0) && (new_piety < 0) && creature->get_is_player())
+        {
+          add_displeasure_message(creature, deity_decision_handler->get_message_sid());
+        }
+
+        // TODO: If the creature follows the deity, something other than anger
+        // may occur.
+      }
     }
   }
 }

@@ -15,5 +15,6 @@ class XMLClassesReader : public XMLReader
     void parse_class_initial_modifiers(ClassPtr current_class, const XMLNode& initial_modifiers_node);
     void parse_class_resistances(ClassPtr current_class, const XMLNode& resistances_node);
     void parse_class_skills(ClassPtr current_class, const XMLNode& skills_node);
-    void parse_class_titles(ClassPtr current_class, const XMLNode& titles_node);        
+    void parse_class_titles(ClassPtr current_class, const XMLNode& titles_node); 
+    void parse_class_deity_dislike_multipliers(ClassPtr current_class, const XMLNode& deity_dislike_multipliers_node);
 };
