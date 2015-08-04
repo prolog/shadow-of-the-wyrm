@@ -19183,6 +19183,9 @@
 				<WornLocation>0</WornLocation>
 				<Material>1</Material>
 				<DangerLevel>14</DangerLevel>
+				<Resistances>
+					<Heat>0.10</Heat>
+				</Resistances>
 				<Evade>8</Evade>
 				<Soak>5</Soak>
 			</Armour>
@@ -19415,6 +19418,9 @@
 				<WornLocation>6</WornLocation>
 				<Material>1</Material>
 				<DangerLevel>16</DangerLevel>
+				<Resistances>
+					<Heat>0.25</Heat>
+				</Resistances>
 				<Evade>0</Evade>
 				<Soak>15</Soak>
 			</Armour>
@@ -19907,6 +19913,9 @@
 				<WornLocation>8</WornLocation>
 				<Material>1</Material>
 				<DangerLevel>8</DangerLevel>
+				<Resistances>
+					<Heat>0.10</Heat>
+				</Resistances>
 				<Evade>5</Evade>
 				<Soak>6</Soak>
 			</Armour>
