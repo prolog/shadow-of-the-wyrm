@@ -19617,6 +19617,22 @@
 				<Evade>12</Evade>
 				<Soak>1</Soak>
 			</Armour>
+			<Armour id="elemental_shield">
+				<DescriptionSID>ELEMENTAL_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>ELEMENTAL_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>500</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>7</DangerLevel>
+				<Resistances>
+					<Heat>0.10</Heat>
+					<Cold>0.10</Cold>
+					<Lightning>0.10</Lightning>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>4</Soak>
+			</Armour>
 			<Armour id="faerie_shield">
 				<DescriptionSID>FAERIE_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>FAERIE_SHIELD_USAGE_SID</UsageDescriptionSID>
@@ -19627,9 +19643,9 @@
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
-					<Heat>0.10</Heat>
-					<Cold>0.10</Cold>
-					<Lightning>0.10</Lightning>
+					<Heat>0.15</Heat>
+					<Shadow>0.15</Shadow>
+					<Arcane>0.15</Arcane>
 				</Resistances>
 				<Evade>20</Evade>
 				<Soak>5</Soak>
@@ -19667,7 +19683,7 @@
 				<Weight><Pounds>8</Pounds></Weight>
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>6</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>6</Soak>
 			</Armour>
@@ -19678,7 +19694,10 @@
 				<Weight><Pounds>8</Pounds></Weight>
 				<WornLocation>5</WornLocation>
 				<Material>1</Material>
-				<DangerLevel>12</DangerLevel>
+				<DangerLevel>10</DangerLevel>
+				<Resistances>
+					<Heat>0.20</Heat>
+				</Resistances>
 				<Evade>8</Evade>
 				<Soak>5</Soak>
 			</Armour>
