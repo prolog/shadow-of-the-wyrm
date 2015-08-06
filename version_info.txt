@@ -1,7 +1,7 @@
 Savage Lands v0.3.9 "Dowland"
 - Version declared August 5, 2015.
 
-- New creatures: goblin pelter.
+- New creatures: goblin pelter, githra.
 
 Savage Lands v0.3.8 "Narvaez"
 - Version declared July 11, 2015.  Version finalized August 5, 2015.
