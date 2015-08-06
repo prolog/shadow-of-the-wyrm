@@ -1,5 +1,8 @@
+Savage Lands v0.3.9 "Dowland"
+- Version declared August 5, 2015.
+
 Savage Lands v0.3.8 "Narvaez"
-- Version declared July 11, 2015.
+- Version declared July 11, 2015.  Version finalized August 5, 2015.
 
 - Merchants start off knowing everything about either wands and potions, 
   rings and amulets, or scrolls and spellbooks.
