@@ -15129,6 +15129,45 @@
 			<Evade>5</Evade>
 			<Soak>1</Soak>
 		</Creature>
+		<Creature id="goblin_pelter">
+			<RaceID>07_goblin</RaceID>
+			<ShortDescriptionSID>GOBLIN_PELTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GOBLIN_PELTER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GOBLIN_PELTER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GOBLIN_PELTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
 		<Creature id="frost_devil">
 			<RaceID>_demon</RaceID>
 			<ShortDescriptionSID>FROST_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
