@@ -15294,7 +15294,7 @@
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>750</NumDice>
+					<NumDice>1000</NumDice>
 					<NumSides>1</NumSides>
 				</HP>
 				<Exp>2000000</Exp>
