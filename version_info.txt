@@ -3,7 +3,7 @@ Savage Lands v0.3.9 "Dowland"
 
 - Prayer can now summon divine wrath.  When the creature has at least two
   adjacent hostile creatures, the deity may decide to smite them, doing
-  (praying creature's level * 5) holy damage.
+  (praying creature's level * 5) damage.
 
 - New creatures: goblin pelter, githra.
 
