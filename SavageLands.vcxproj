@@ -392,6 +392,7 @@
     <ClInclude Include="engine\decision_strategies\deity\include\RestoreStatusDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\SacrificeDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\SatiateDeityDecisionStrategyHandler.hpp" />
+    <ClInclude Include="engine\decision_strategies\deity\include\SmiteDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\include\AutomaticMovementDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategyFactory.hpp" />
@@ -1607,6 +1608,7 @@
     <ClCompile Include="engine\decision_strategies\deity\source\RestoreStatusDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\SacrificeDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\SatiateDeityDecisionStrategyHandler.cpp" />
+    <ClCompile Include="engine\decision_strategies\deity\source\SmiteDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\search\source\AStarSearchStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\search\source\BreadthFirstSearchStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\search\source\GreedySearchStrategy.cpp" />
