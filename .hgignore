@@ -13,6 +13,7 @@ MapTester.ilk
 MapTester.pdb
 xerces-c_3_1D.dll
 Debug
+dist
 sl-[0-9]+.log
 Release
 MapTester

@@ -17,6 +17,7 @@
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{4FC44FC7-10E9-CC58-62F0-8D757542DDAF}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -59,7 +60,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>savage</TargetName>
-    <OutDir>$(SolutionDir)\</OutDir>
+    <OutDir>$(SolutionDir)\dist\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -80,6 +81,14 @@
       <AdditionalLibraryDirectories>$(ZLIB_DIR)\zlib-1.2.8\lib;$(LUA_DEV)\lib;$(GTEST_DIR)\gtest-1.7.0\msvc\gtest\Debug;$(BOOST_DIR)\boost_1_58_0\stage\lib;$(XERCES_DIR)\xerces-c-3.1.1\Build\Win32\VC10\Debug;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtestd.lib;gtest_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">
     <ClCompile>
@@ -100,6 +109,14 @@
       <AdditionalLibraryDirectories>$(ZLIB_DIR)\zlib-1.2.8\lib;$(LUA_DEV)\lib;$(GTEST_DIR)\gtest-1.7.0\msvc\gtest\Debug;$(BOOST_DIR)\boost_1_58_0\stage\lib;$(XERCES_DIR)\xerces-c-3.1.1\Build\Win32\VC10\Debug;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtestd.lib;gtest_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -118,6 +135,22 @@
       <AdditionalLibraryDirectories>$(ZLIB_DIR)\zlib-1.2.8\lib;$(XERCES_DIR)\xerces-c-3.1.1\Build\Win32\VC10\Release;$(LUA_DEV)\lib;$(BOOST_DIR)\boost_1_58_0\stage\lib;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
+xcopy /y /d $(ProjectDir)xerces-c_3_1.dll $(OutDir)
+mkdir $(OutDir)docs
+xcopy /y /d $(ProjectDir)docs\*.pdf $(OutDir)docs
+xcopy /y /d $(ProjectDir)*.ini $(OutDir)
+mkdir $(OutDir)data
+xcopy /y /d /s /i $(ProjectDir)data $(OutDir)data
+mkdir $(OutDir)scripts
+xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
+mkdir $(OutDir)texts
+xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copying game files...</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp" />
