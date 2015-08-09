@@ -5,6 +5,9 @@ Savage Lands v0.3.9 "Dowland"
   adjacent hostile creatures, the deity may decide to smite them, doing
   (praying creature's level * 5) damage.
 
+- Updated the release build to create the executable in its own directory,
+  and copy over the required game files.
+
 - New creatures: goblin pelter, githra.
 
 Savage Lands v0.3.8 "Narvaez"

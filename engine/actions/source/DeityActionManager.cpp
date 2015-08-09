@@ -90,7 +90,7 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, DeityPt
       DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
 
       // This may have been updated as a result of the decision.
-      int new_piety = original_piety - (decision_implications.get_piety_loss() * multiplier);
+      int new_piety = original_piety - static_cast<int>(decision_implications.get_piety_loss() * multiplier);
       status.set_piety(new_piety);
 
       if (creature->get_religion_ref().get_active_deity_id() == deity->get_id())
