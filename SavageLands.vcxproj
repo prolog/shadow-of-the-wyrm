@@ -136,7 +136,8 @@
       <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
+      <Command>xcopy /y /d $(ProjectDir)*.txt $(OutDir)
+xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
 xcopy /y /d $(ProjectDir)xerces-c_3_1.dll $(OutDir)
 mkdir $(OutDir)docs
 xcopy /y /d $(ProjectDir)docs\*.pdf $(OutDir)docs
@@ -1063,7 +1064,7 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClInclude Include="world\tiles\include\WorshipSiteTypes.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CompilationDetails.cpp" />
+    <ClCompile Include="source\CompilationDetails.cpp" />
     <ClCompile Include="controller\source\Controller.cpp" />
     <ClCompile Include="controller\source\ControllerFactory.cpp" />
     <ClCompile Include="controller\source\CursesKeyboardController.cpp" />
@@ -2306,12 +2307,12 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClCompile Include="engine\XML\source\XMLWandReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLWeaponsReaders.cpp" />
     <ClCompile Include="engine\XML\source\XMLWearableReader.cpp" />
-    <ClCompile Include="global_functions.cpp" />
-    <ClCompile Include="MapTester.cpp">
+    <ClCompile Include="source\global_functions.cpp" />
+    <ClCompile Include="source\MapTester.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="SavageLands.cpp">
+    <ClCompile Include="source\SavageLands.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\magic\source\IndividualSpellKnowledge.cpp" />
