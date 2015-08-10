@@ -4784,15 +4784,6 @@
     <ClCompile Include="engine\generators\source\unit_tests\TileGenerator_test.cpp">
       <Filter>Source Files\engine\generators\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="global_functions.cpp">
-      <Filter>Source Files\source</Filter>
-    </ClCompile>
-    <ClCompile Include="MapTester.cpp">
-      <Filter>Source Files\source</Filter>
-    </ClCompile>
-    <ClCompile Include="SavageLands.cpp">
-      <Filter>Source Files\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\serialization\source\Serialize.cpp">
       <Filter>Source Files\engine\serialization\source</Filter>
     </ClCompile>
@@ -5927,9 +5918,6 @@
     <ClCompile Include="world\tiles\source\unit_tests\WellTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="CompilationDetails.cpp">
-      <Filter>Source Files\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\calculators\source\CriticalHitTypeCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
@@ -6778,6 +6766,18 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\SmiteDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CompilationDetails.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\global_functions.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MapTester.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SavageLands.cpp">
+      <Filter>Source Files\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
