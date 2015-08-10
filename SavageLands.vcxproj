@@ -139,6 +139,10 @@
       <Command>xcopy /y /d $(ProjectDir)*.txt $(OutDir)
 xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
 xcopy /y /d $(ProjectDir)xerces-c_3_1.dll $(OutDir)
+xcopy /y /d $(ProjectDir)README* $(OutDir)
+xcopy /y /d $(ProjectDir)LICENSE $(OutDir)
+mkdir $(Outdir) licenses
+xcopy /y /d $(ProjectDir)licenses $(OutDir) licenses
 mkdir $(OutDir)docs
 xcopy /y /d $(ProjectDir)docs\*.pdf $(OutDir)docs
 xcopy /y /d $(ProjectDir)*.ini $(OutDir)
