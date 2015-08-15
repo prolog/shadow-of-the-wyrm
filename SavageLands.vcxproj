@@ -315,6 +315,7 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TanningCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\TimewalkCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\UnderworldMapDangerLevelCalculator.hpp" />
@@ -413,6 +414,7 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClInclude Include="engine\creatures\include\StatusEffectFactory.hpp" />
     <ClInclude Include="engine\creatures\include\StoneStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StunnedStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\TimewalkStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\WaterSafetyCondition.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\CrowningDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp" />
@@ -481,6 +483,7 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClInclude Include="engine\effects\include\IdentifyEffect.hpp" />
     <ClInclude Include="engine\effects\include\NullEffect.hpp" />
     <ClInclude Include="engine\effects\include\TeleportEffect.hpp" />
+    <ClInclude Include="engine\effects\include\TimewalkEffect.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" />
@@ -1068,6 +1071,9 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClInclude Include="world\tiles\include\WorshipSiteTypes.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
+    <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
+    <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="source\CompilationDetails.cpp" />
     <ClCompile Include="controller\source\Controller.cpp" />
     <ClCompile Include="controller\source\ControllerFactory.cpp" />

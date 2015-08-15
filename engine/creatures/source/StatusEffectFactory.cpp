@@ -13,6 +13,7 @@
 #include "StatusEffectFactory.hpp"
 #include "StoneStatusEffect.hpp"
 #include "StunnedStatusEffect.hpp"
+#include "TimewalkStatusEffect.hpp"
 #include "StatusTypes.hpp"
 
 using namespace std;
@@ -121,6 +122,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_FLYING)
   {
     status_effect = std::make_shared<FlyingStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_TIMEWALK)
+  {
+    status_effect = std::make_shared<TimewalkStatusEffect>();
   }
   else
   {

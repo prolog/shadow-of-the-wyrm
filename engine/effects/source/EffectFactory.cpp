@@ -14,6 +14,7 @@
 #include "RechargingEffect.hpp"
 #include "StatusTypes.hpp"
 #include "TeleportEffect.hpp"
+#include "TimewalkEffect.hpp"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m, map<string, string> properties, string spell_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(19), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(20), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -93,6 +94,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m,
       effect = ms_effect;
       break;
     }
+    case EffectType::EFFECT_TYPE_TIMEWALK:
+      effect = std::make_shared<TimewalkEffect>();
+      break;
     case EffectType::EFFECT_TYPE_NULL:
     default:
       effect = std::make_shared<NullEffect>();

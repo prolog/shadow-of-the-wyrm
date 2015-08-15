@@ -227,6 +227,7 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   IStatusAilmentTranslatorPtr incorporeal_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_INCORPOREAL, StatusAilmentTextKeys::STATUS_INCORPOREAL, Colour::COLOUR_WHITE);
   IStatusAilmentTranslatorPtr drunk_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DRUNK, StatusAilmentTextKeys::STATUS_DRUNK, Colour::COLOUR_WHITE);
   IStatusAilmentTranslatorPtr flying_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_FLYING, StatusAilmentTextKeys::STATUS_FLYING, Colour::COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr timewalk_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_TIMEWALK, StatusAilmentTextKeys::STATUS_TIMEWALK, Colour::COLOUR_WHITE);
 
   status_ailment_checkers.push_back(hunger_checker);
   status_ailment_checkers.push_back(weight_checker);
@@ -245,4 +246,5 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   status_ailment_checkers.push_back(incorporeal_ck);
   status_ailment_checkers.push_back(drunk_checker );
   status_ailment_checkers.push_back(flying_checker);
+  status_ailment_checkers.push_back(timewalk_chekr);
 }

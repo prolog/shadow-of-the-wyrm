@@ -121,6 +121,12 @@ class StatusAilmentTextKeys
     static const std::string get_npc_flying_message(std::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_flying_message(std::shared_ptr<Creature> creature);
 
+    static const std::string STATUS_TIMEWALK;
+    static const std::string STATUS_MESSAGE_PLAYER_TIMEWALK;
+    static const std::string STATUS_MESSAGE_PLAYER_TIMEWALK_CURED;
+    static const std::string get_npc_timewalk_message(std::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_timewalk_message(std::shared_ptr<Creature> creature);
+
   protected:
     StatusAilmentTextKeys();
     ~StatusAilmentTextKeys();
@@ -171,4 +177,7 @@ class StatusAilmentTextKeys
 
     static const std::string STATUS_MESSAGE_NPC_FLYING;
     static const std::string STATUS_MESSAGE_NPC_UNDO_FLYING;
+
+    static const std::string STATUS_MESSAGE_NPC_TIMEWALK;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_TIMEWALK;
 };
