@@ -180,5 +180,15 @@ void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr cur
 
 ActionCostValue StairwayMovementAction::get_action_cost_value(CreaturePtr creature) const
 {
-  return 1;
+  ActionCostValue acv = 1;
+
+  if (creature != nullptr)
+  {
+    if (creature->has_status(StatusIdentifiers::STATUS_ID_TIMEWALK))
+    {
+      acv = 0;
+    }
+  }
+
+  return acv;
 }
