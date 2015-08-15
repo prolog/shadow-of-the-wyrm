@@ -744,15 +744,23 @@ ActionCostValue MovementAction::get_action_cost_value(CreaturePtr creature) cons
 
   if (creature != nullptr)
   {
-    int stumble_chance = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
-
-    if (RNG::percent_chance(stumble_chance))
+    // When timewalking, movement is free.
+    if (creature->has_status(StatusIdentifiers::STATUS_ID_TIMEWALK))
     {
-      // Add a message about stumbling.
-      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-      manager.add_new_message(ActionTextKeys::get_stumble_message(creature->get_description_sid(), creature->get_is_player()));
-      manager.send();
-      return 15;
+      acv = 0;
+    }
+    else
+    {
+      int stumble_chance = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
+
+      if (RNG::percent_chance(stumble_chance))
+      {
+        // Add a message about stumbling.
+        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+        manager.add_new_message(ActionTextKeys::get_stumble_message(creature->get_description_sid(), creature->get_is_player()));
+        manager.send();
+        return 15;
+      }
     }
   }
 
