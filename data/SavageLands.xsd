@@ -1396,11 +1396,12 @@
 				Flying = 16
 				Gain Attributes = 17
 				Modify Statistics = 18
+				Timewalk = 19
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="18"/>
+		<xs:maxInclusive value="19"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

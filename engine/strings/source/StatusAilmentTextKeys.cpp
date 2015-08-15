@@ -84,6 +84,10 @@ const string StatusAilmentTextKeys::STATUS_FLYING = "STATUS_FLYING";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_FLYING = "STATUS_MESSAGE_PLAYER_FLYING";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_FLYING_CURED = "STATUS_MESSAGE_PLAYER_FLYING_CURED";
 
+const string StatusAilmentTextKeys::STATUS_TIMEWALK = "STATUS_TIMEWALK";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_TIMEWALK = "STATUS_MESSAGE_PLAYER_TIMEWALK";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_TIMEWALK_CURED = "STATUS_MESSAGE_PLAYER_TIMEWALK_CURED";
+
 // public functions
 const string StatusAilmentTextKeys::get_npc_poisoned_message(CreaturePtr creature)
 {
@@ -235,6 +239,16 @@ const string StatusAilmentTextKeys::get_npc_undo_flying_message(CreaturePtr crea
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_FLYING);
 }
 
+const string StatusAilmentTextKeys::get_npc_timewalk_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_TIMEWALK);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_timewalk_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_TIMEWALK);
+}
+
 // Protected
 const string StatusAilmentTextKeys::get_general_npc_message(const string& npc_sid, const string& message_sid)
 {
@@ -292,3 +306,6 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SOBER = "STATUS_MESSAGE_N
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_FLYING = "STATUS_MESSAGE_NPC_FLYING";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_FLYING = "STATUS_MESSAGE_NPC_UNDO_FLYING";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_TIMEWALK = "STATUS_MESSAGE_NPC_TIMEWALK";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_TIMEWALK = "STATUS_MESSAGE_NPC_UNDO_TIMEWALK";

@@ -3483,6 +3483,15 @@
     <ClInclude Include="engine\decision_strategies\deity\include\SmiteDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\TimewalkEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\TimewalkStatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\TimewalkCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6778,6 +6787,15 @@
     </ClCompile>
     <ClCompile Include="source\SavageLands.cpp">
       <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\TimewalkEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
