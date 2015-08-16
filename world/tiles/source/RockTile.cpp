@@ -1,5 +1,12 @@
 #include "RockTile.hpp"
 
+const int RockTile::ROCK_TILE_HARDNESS = 10;
+
+int RockTile::get_hardness() const
+{
+  return ROCK_TILE_HARDNESS;
+}
+
 TileType RockTile::get_tile_type() const
 {
   return TileType::TILE_TYPE_ROCK;

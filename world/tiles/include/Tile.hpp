@@ -89,6 +89,10 @@ class Tile : public ISerializable
 
     virtual void     set_tile_subtype(const TileType new_tile_subtype);
     virtual TileType get_tile_subtype() const;
+
+    // Used for digging, to see if the wielded item has enough strength
+    // to penetrate the tile.
+    virtual int get_hardness() const;
     
     virtual TileExitMap& get_tile_exit_map_ref();
     

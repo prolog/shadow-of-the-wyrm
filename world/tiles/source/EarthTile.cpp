@@ -1,8 +1,15 @@
 #include "EarthTile.hpp"
 
+const int EarthTile::EARTH_TILE_HARDNESS = 1;
+
 TileType EarthTile::get_tile_type() const
 {
   return TileType::TILE_TYPE_EARTH;
+}
+
+int EarthTile::get_hardness() const
+{
+  return EarthTile::EARTH_TILE_HARDNESS;
 }
 
 std::string EarthTile::get_tile_description_sid() const

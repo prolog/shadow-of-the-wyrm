@@ -312,6 +312,11 @@ TileType Tile::get_tile_subtype() const
   return tile_subtype;
 }
 
+int Tile::get_hardness() const
+{
+  return 0;
+}
+
 TileExitMap& Tile::get_tile_exit_map_ref()
 {
   return map_exits;
