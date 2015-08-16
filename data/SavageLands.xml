@@ -3264,6 +3264,10 @@
 						<Quantity><Amount>1</Amount></Quantity>
 					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
+					<InitialItem>
+						<ID>pick_axe</ID>
+						<Quantity><Amount>1</Amount></Quantity>
+					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
 			<LevelScript>level/smith.lua</LevelScript>
@@ -21476,6 +21480,55 @@
 					<NumSides>3</NumSides>
 					<Modifier>2</Modifier>
 					<Type>10</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="pick_axe">
+				<DescriptionSID>PICK_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>PICK_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>3</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>dig_hardness</Name>
+						<Value>10</Value>
+					</Property>
+				</Properties>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>52</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="dwarven_mattock">
+				<DescriptionSID>DWARVEN_MATTOCK_SID</DescriptionSID>
+				<UsageDescriptionSID>DWARVEN_MATTOCK_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>5</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>dig_hardness</Name>
+						<Value>15</Value>
+					</Property>
+				</Properties>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>1</Modifier>
+					<Type>1</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="woodsman_axe">
