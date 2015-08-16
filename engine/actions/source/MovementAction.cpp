@@ -4,8 +4,10 @@
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DangerLevelCalculatorFactory.hpp"
+#include "DigAction.hpp"
 #include "FeatureAction.hpp"
 #include "Game.hpp"
+#include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapProperties.hpp"
@@ -192,12 +194,24 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     }
     else if (creatures_new_tile->get_is_blocking(creature) && !creature_incorporeal)
     {
-      // Can't move into the tile.  It's not a blocking feature (handled above),
-      // nor is it a creature (ditto), so most likely, it's impassable terrain -
-      // stone, etc.
-      //
-      // Do nothing.  Don't advance the turn.
-      movement_success = 0;
+      // Can the creature dig through the tile?
+      ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+      string dig_hardness = wielded->get_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS);
+
+      if (wielded != nullptr && !dig_hardness.empty() && (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness()))
+      {
+        DigAction da;
+        movement_success = da.dig_through(creature, map, creatures_new_tile);
+      }
+      else
+      {
+        // Can't move into the tile.  It's not a blocking feature (handled above),
+        // nor is it a creature (ditto), nor can the creature dig through it, so 
+        // most likely, it's impassable terrain - stone, etc.
+        //
+        // Do nothing.  Don't advance the turn.
+        movement_success = 0;
+      }
     }
     else
     {

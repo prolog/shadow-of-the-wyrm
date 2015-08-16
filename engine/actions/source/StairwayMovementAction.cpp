@@ -139,7 +139,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             if (wielded != nullptr && wielded->has_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS))
             {
               DigAction da;
-              descend_success = da.dig(creature, map, tile);
+              descend_success = da.dig_within(creature, map, tile);
             }
             else
             {

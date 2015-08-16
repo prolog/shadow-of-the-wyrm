@@ -10,7 +10,7 @@ DigAction::DigAction()
 }
 
 // Dig on a particular tile.
-ActionCostValue DigAction::dig(CreaturePtr creature, MapPtr map, TilePtr tile) const
+ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr tile) const
 {
   ActionCostValue acv = 0;
 
@@ -33,6 +33,26 @@ ActionCostValue DigAction::dig(CreaturePtr creature, MapPtr map, TilePtr tile) c
 
   return acv;
 }
+
+// Dig through an adjacent tile.
+ActionCostValue DigAction::dig_through(CreaturePtr creature, MapPtr map, TilePtr adjacent_tile) const
+{
+  ActionCostValue acv =  0;
+
+  if (creature != nullptr && map != nullptr && adjacent_tile != nullptr)
+  {
+    // Do the actual decomposition.
+
+    // Copy over features
+    
+    // Copy over items
+
+    acv = get_action_cost_value(creature);
+  }
+
+  return acv;
+}
+
 
 ActionCostValue DigAction::get_action_cost_value(CreaturePtr creature) const
 {
