@@ -410,6 +410,7 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClInclude Include="engine\creatures\include\PoisonStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\SlownessStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\SpellboundStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\StatusActionProcessor.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffectFactory.hpp" />
     <ClInclude Include="engine\creatures\include\StoneStatusEffect.hpp" />
@@ -1072,6 +1073,7 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
+    <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="source\CompilationDetails.cpp" />

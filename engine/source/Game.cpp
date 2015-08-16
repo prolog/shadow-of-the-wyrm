@@ -29,6 +29,7 @@
 #include "ScoreFile.hpp"
 #include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
+#include "StatusActionProcessor.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "ViewMapTranslator.hpp"
@@ -314,6 +315,7 @@ void Game::go()
 
   set_check_scores(true);
 
+  StatusActionProcessor sap;
   MapPtr current_map = get_current_map();
   CreaturePtr current_player = get_current_player();
 
@@ -389,7 +391,10 @@ void Game::go()
           // Player may have been killed by some time-related effect.
           if (!keep_playing) break;
 
+          CreatureStatusMap creature_statuses_before = current_creature->get_statuses();
+
           ActionCost action_cost = process_action_for_creature(current_creature, current_map, reloaded_game);
+          sap.process_action(current_creature, creature_statuses_before, action_cost);
 
           // Remove the creature's current action.  This is done after the "keep_playing"
           // check so that saving, etc., does not advance the turn.
