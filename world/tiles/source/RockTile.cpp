@@ -12,6 +12,11 @@ TileType RockTile::get_tile_type() const
   return TileType::TILE_TYPE_ROCK;
 }
 
+TileType RockTile::get_decomposition_tile_type() const
+{
+  return TileType::TILE_TYPE_ROCKY_EARTH;
+}
+
 std::string RockTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_ROCK;

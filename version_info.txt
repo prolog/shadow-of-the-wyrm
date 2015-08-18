@@ -17,6 +17,9 @@ Savage Lands v0.3.9 "Dowland"
   and copy over the required game files.  Did some minor refactoring of
   the location of some source files.
 
+- Smiths start with either a dwarven mattock (dwarves, gnomes) or a pick
+  axe (other races) in their inventory.
+
 - New creatures: goblin pelter, githra, chaosling
 
 - New items: pick axe, dwarven mattock.
