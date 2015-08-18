@@ -3267,6 +3267,16 @@
 					<InitialItem>
 						<ID>pick_axe</ID>
 						<Quantity><Amount>1</Amount></Quantity>
+						<Races>
+							<Race>
+								<RaceID>06_dwarf</RaceID>
+								<ID>dwarven_mattock</ID>
+							</Race>
+							<Race>
+								<RaceID>10_gnome</RaceID>
+								<ID>dwarven_mattock</ID>
+							</Race>
+						</Races>
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -21522,7 +21532,7 @@
 				</Properties>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
-				<Difficulty>46</Difficulty>
+				<Difficulty>49</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
 					<NumDice>2</NumDice>

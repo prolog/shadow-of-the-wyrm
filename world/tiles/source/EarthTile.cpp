@@ -7,6 +7,11 @@ TileType EarthTile::get_tile_type() const
   return TileType::TILE_TYPE_EARTH;
 }
 
+TileType EarthTile::get_decomposition_tile_type() const
+{
+  return TileType::TILE_TYPE_DUNGEON;
+}
+
 int EarthTile::get_hardness() const
 {
   return EarthTile::EARTH_TILE_HARDNESS;

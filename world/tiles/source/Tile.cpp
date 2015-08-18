@@ -312,6 +312,11 @@ TileType Tile::get_tile_subtype() const
   return tile_subtype;
 }
 
+TileType Tile::get_decomposition_tile_type() const
+{
+  return tile_type;
+}
+
 int Tile::get_hardness() const
 {
   return 0;
