@@ -196,12 +196,16 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     {
       // Can the creature dig through the tile?
       ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
-      string dig_hardness = wielded->get_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS);
 
-      if (wielded != nullptr && !dig_hardness.empty() && (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness()))
+      if (wielded != nullptr)
       {
-        DigAction da;
-        movement_success = da.dig_through(creature, map, creatures_new_tile);
+        string dig_hardness = wielded->get_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS);
+
+        if (!dig_hardness.empty() && (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness()))
+        {
+          DigAction da;
+          movement_success = da.dig_through(creature, map, creatures_new_tile, d);
+        }
       }
       else
       {

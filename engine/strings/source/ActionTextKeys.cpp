@@ -265,6 +265,7 @@ const string ActionTextKeys::ACTION_DIG_WATER                  = "ACTION_DIG_WAT
 const string ActionTextKeys::ACTION_DIG_GRAVE                  = "ACTION_DIG_GRAVE";
 const string ActionTextKeys::ACTION_DIG_UNDEAD_FOUND           = "ACTION_DIG_UNDEAD_FOUND";
 const string ActionTextKeys::ACTION_DIG_ITEM_FOUND             = "ACTION_DIG_ITEM_FOUND";
+const string ActionTextKeys::ACTION_DIG_THROUGH_TILE           = "ACTION_DIG_THROUGH_TILE";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
