@@ -9,7 +9,7 @@ class DigAction : public IActionManager
 
     // Dig through an adjacent tile - break up the tile into another type.
     // Eg, rock should become rocky earth, earth should become floor, etc.
-    ActionCostValue dig_through(CreaturePtr creature, MapPtr map, TilePtr adjacent_tile) const;
+    ActionCostValue dig_through(CreaturePtr creature, MapPtr map, TilePtr adjacent_tile, const Direction d) const;
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 

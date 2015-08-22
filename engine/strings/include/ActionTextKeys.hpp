@@ -92,6 +92,7 @@ class ActionTextKeys
     static const std::string ACTION_DIG_GRAVE;
     static const std::string ACTION_DIG_UNDEAD_FOUND;
     static const std::string ACTION_DIG_ITEM_FOUND;
+    static const std::string ACTION_DIG_THROUGH_TILE;
 
   protected:
     ActionTextKeys();

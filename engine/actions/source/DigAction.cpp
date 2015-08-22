@@ -1,6 +1,10 @@
 #include "global_prototypes.hpp"
+#include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "DigAction.hpp"
+#include "MessageManagerFactory.hpp"
+#include "TileGenerator.hpp"
 #include "TileManipulatorFactory.hpp"
 
 using namespace std;
@@ -35,18 +39,33 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr 
 }
 
 // Dig through an adjacent tile.
-ActionCostValue DigAction::dig_through(CreaturePtr creature, MapPtr map, TilePtr adjacent_tile) const
+ActionCostValue DigAction::dig_through(CreaturePtr creature, MapPtr map, TilePtr adjacent_tile, const Direction d) const
 {
   ActionCostValue acv =  0;
 
   if (creature != nullptr && map != nullptr && adjacent_tile != nullptr)
   {
     // Do the actual decomposition.
+    TileGenerator tg;
+    TilePtr new_tile = tg.generate(adjacent_tile->get_decomposition_tile_type());
 
-    // Copy over features
+    // Copy over features and items.
+    new_tile->transformFrom(adjacent_tile);
+
+    // Get the necessary details for re-adding
+    Coordinate cr_loc = map->get_location(creature->get_id());
+    Coordinate new_cr_loc = CoordUtils::get_new_coordinate(cr_loc, d);
+
+    map->insert(new_cr_loc.first, new_cr_loc.second, new_tile);
+
+    if (creature->get_is_player())
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_THROUGH_TILE));
+
+      manager.send();
+    }
     
-    // Copy over items
-
     acv = get_action_cost_value(creature);
   }
 
@@ -56,5 +75,5 @@ ActionCostValue DigAction::dig_through(CreaturePtr creature, MapPtr map, TilePtr
 
 ActionCostValue DigAction::get_action_cost_value(CreaturePtr creature) const
 {
-  return 1;
+  return 20;
 }
