@@ -4,6 +4,7 @@
 #include "CoordUtils.hpp"
 #include "DigAction.hpp"
 #include "ItemManager.hpp"
+#include "MapProperties.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -49,6 +50,18 @@ ActionCostValue DigAction::dig_through(CreaturePtr creature, MapPtr map, TilePtr
 
   if (creature != nullptr && map != nullptr && adjacent_tile != nullptr)
   {
+    IMessageManager& manager = MessageManagerFactory::instance();
+
+    // Is there something preventing digging on this map?
+    string no_dig = map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG);
+    if (!no_dig.empty() && (String::to_bool(no_dig) == true))
+    {
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CANNOT_DIG));
+      manager.send();
+
+      return acv;
+    }
+
     // Do the actual decomposition.
     TileGenerator tg;
     TilePtr new_tile = tg.generate(adjacent_tile->get_decomposition_tile_type());
@@ -68,7 +81,6 @@ ActionCostValue DigAction::dig_through(CreaturePtr creature, MapPtr map, TilePtr
 
     if (creature->get_is_player())
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_THROUGH_TILE));
 
       manager.send();

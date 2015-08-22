@@ -18,6 +18,7 @@ class XMLMapReader
     
     void parse_initial_creature_placements(const XMLNode& creatures_node, MapPtr map);
     void parse_initial_item_placements(const XMLNode& items_node, MapPtr map);
+    void parse_properties(const XMLNode& properties_node, MapPtr map);
 
     std::pair<int, int> parse_placement_range(const XMLNode& node);
     void parse_random_creature_placements(const XMLNode& creatures_node, MapPtr map);

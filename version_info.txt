@@ -28,6 +28,10 @@ Savage Lands v0.3.9 "Dowland"
   tile type (rocky earth, earth) and has a chance of adding a stack of
   rocks/handfuls of dirt.
 
+- Maps can now have properties set in the XML.  Added a property to
+  control whether digging is possible on a particular map, and set it on
+  Isen Dun and Last Island Lair.
+
 - New creatures: goblin pelter, githra, chaosling
 
 - New items: pick axe, dwarven mattock.
