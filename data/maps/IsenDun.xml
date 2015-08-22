@@ -408,4 +408,10 @@
 			<WheelAndLoom/>
 		</FeaturePlacement>
 	</Features>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_CANNOT_DIG</Name>
+			<Value>1</Value>
+		</Property>
+	</Properties>
 </CustomMap>

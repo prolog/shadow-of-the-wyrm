@@ -19,6 +19,7 @@
 				<xs:element name="RandomPlacements" type="tns:RandomPlacements" minOccurs="0"/>
 				<xs:element name="Exits" type="tns:Exits" minOccurs="0"/>
 				<xs:element name="Features" type="tns:Features" minOccurs="0"/>
+				<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="id" type="xs:string" use="required"/>
 		</xs:complexType>
@@ -310,6 +311,20 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="ID" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Properties">
+		<xs:annotation>
+			<xs:documentation>Properties that will be added to the Map instance within the game.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Property" type="tns:Property"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Property">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="Value" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- Simple Types -->

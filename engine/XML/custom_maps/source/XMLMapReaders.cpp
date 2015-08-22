@@ -11,6 +11,7 @@
 #include "XMLMapReaders.hpp"
 #include "XMLMapTilesReader.hpp"
 #include "XMLDataStructures.hpp"
+#include "XMLReader.hpp"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLNode random_placements_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "RandomPlacements");
     XMLNode exits_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Exits");
     XMLNode features_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Features");
+    XMLNode properties_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Properties");
 
     string map_id = XMLUtils::get_attribute_value(custom_map_node, "id");
     MapType map_type = static_cast<MapType>(XMLUtils::get_child_node_int_value(custom_map_node, "MapType"));
@@ -66,6 +68,8 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLMapFeaturesReader features_reader;
     features_reader.parse_features(features_node, custom_map);
 
+    parse_properties(properties_node, custom_map);
+
     // Custom maps currently don't allow creature updates.
     custom_map->set_allow_creature_updates(false);
 
@@ -75,6 +79,19 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
   }
 
   return custom_map;
+}
+
+void XMLMapReader::parse_properties(const XMLNode& properties_node, MapPtr map)
+{
+  if (!properties_node.is_null() && map != nullptr)
+  {
+    XMLReader xr;
+
+    std::map<string, string> properties;
+    xr.parse_properties(properties, properties_node);
+
+    map->set_properties(properties);
+  }
 }
 
 string XMLMapReader::parse_id(const XMLNode& parent_node)

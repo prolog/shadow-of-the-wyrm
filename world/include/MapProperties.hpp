@@ -37,6 +37,9 @@ class MapProperties
     // time the player enters the level.  CSV string.
     static const std::string MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS;
 
+    // Can we dig on this map?
+    static const std::string MAP_PROPERTIES_CANNOT_DIG;
+
   protected:
     MapProperties();
     ~MapProperties();
