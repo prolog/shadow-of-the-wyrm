@@ -3,11 +3,15 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DigAction.hpp"
+#include "ItemManager.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "TileGenerator.hpp"
 #include "TileManipulatorFactory.hpp"
 
 using namespace std;
+
+const int DigAction::DIG_PERCENT_CHANCE_ITEM = 8;
 
 DigAction::DigAction()
 {
@@ -51,6 +55,10 @@ ActionCostValue DigAction::dig_through(CreaturePtr creature, MapPtr map, TilePtr
 
     // Copy over features and items.
     new_tile->transformFrom(adjacent_tile);
+
+    // Potentially add some items created by breaking up the original tile.
+    ItemManager im;
+    im.create_item_with_probability(DIG_PERCENT_CHANCE_ITEM, 100, new_tile->get_items(), adjacent_tile->get_decomposition_item_id(), static_cast<uint>(RNG::range(1, 6)));
 
     // Get the necessary details for re-adding
     Coordinate cr_loc = map->get_location(creature->get_id());

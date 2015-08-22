@@ -317,6 +317,12 @@ TileType Tile::get_decomposition_tile_type() const
   return tile_type;
 }
 
+std::string Tile::get_decomposition_item_id() const
+{
+  string no_item;
+  return no_item;
+}
+
 int Tile::get_hardness() const
 {
   return 0;

@@ -24234,7 +24234,7 @@
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
-			<Item id="dirt">
+			<Item id="_dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>
 				<UsageDescriptionSID>DIRT_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
@@ -24335,7 +24335,7 @@
 				<Value>5</Value>
 				<Weight><Pounds>10</Pounds></Weight>
 				<Material>3</Material>
-				<DangerLevel>-1</DangerLevel>
+				<DangerLevel>3</DangerLevel>
 				<Properties>
 					<Property>
 						<Name>sm_con_mat_type</Name>
