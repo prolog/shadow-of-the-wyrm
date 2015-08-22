@@ -87,6 +87,7 @@ class Tile : public ISerializable
     virtual TileType get_tile_type() const;
     virtual TileSuperType get_tile_super_type() const;
     virtual TileType get_decomposition_tile_type() const; // When digging, what does the tile break down into?
+    virtual std::string get_decomposition_item_id() const;
 
     virtual void     set_tile_subtype(const TileType new_tile_subtype);
     virtual TileType get_tile_subtype() const;

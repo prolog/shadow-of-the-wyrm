@@ -18,4 +18,6 @@ class DigAction : public IActionManager
     friend class MovementAction;
 
     DigAction();
+
+    static const int DIG_PERCENT_CHANCE_ITEM;
 };

@@ -20,6 +20,14 @@ Savage Lands v0.3.9 "Dowland"
 - Smiths start with either a dwarven mattock (dwarves, gnomes) or a pick
   axe (other races) in their inventory.
 
+- Ingots now have a danger level of 3, so they can be considered for
+  normal item generation.
+
+- Using a pick axe or mattock, creatures can now dig through rock and
+  earth tiles.  Digging decomposes the rock/earth tile into a different
+  tile type (rocky earth, earth) and has a chance of adding a stack of
+  rocks/handfuls of dirt.
+
 - New creatures: goblin pelter, githra, chaosling
 
 - New items: pick axe, dwarven mattock.

@@ -1,5 +1,7 @@
 #include "RockTile.hpp"
 
+using namespace std;
+
 const int RockTile::ROCK_TILE_HARDNESS = 10;
 
 int RockTile::get_hardness() const
@@ -17,7 +19,12 @@ TileType RockTile::get_decomposition_tile_type() const
   return TileType::TILE_TYPE_ROCKY_EARTH;
 }
 
-std::string RockTile::get_tile_description_sid() const
+string RockTile::get_decomposition_item_id() const
+{
+  return "_rock";
+}
+
+string RockTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_ROCK;
 }
