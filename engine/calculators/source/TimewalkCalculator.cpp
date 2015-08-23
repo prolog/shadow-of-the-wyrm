@@ -16,7 +16,7 @@ int TimewalkCalculator::calculate_duration_in_minutes(CreaturePtr creature) cons
   return 0;
 }
 
-int TimewalkCalculator::calculate_percent_chance_wear_off_per_turn(CreaturePtr creature) const
+int TimewalkCalculator::calculate_pct_chance_wear_off_per_turn(CreaturePtr creature) const
 {
   return BASE_TIMEWALK_WEAR_OFF_CHANCE_PER_TURN;
 }
