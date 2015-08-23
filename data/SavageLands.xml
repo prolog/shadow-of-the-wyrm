@@ -18,6 +18,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -54,6 +55,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -90,6 +92,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -126,6 +129,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -160,6 +164,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -195,6 +200,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -228,6 +234,7 @@
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -262,6 +269,7 @@
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -296,6 +304,7 @@
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>shadow</Artifact>
@@ -21652,6 +21661,36 @@
 					<NumDice>6</NumDice>
 					<NumSides>12</NumSides>
 					<Modifier>6</Modifier>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>			
+			<Weapon id="delver">
+				<DescriptionSID>DELVER_SID</DescriptionSID>
+				<UsageDescriptionSID>DELVER_USAGE_SID</UsageDescriptionSID>
+				<Value>1825</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Pierce>0.15</Pierce>
+				</Resistances>
+				<Properties>
+					<Property>
+						<Name>dig_hardness</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>10</Modifier>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>			
