@@ -193,6 +193,21 @@ string ActionTextKeys::get_generic_wear_off_message(const string& desc_sid)
   return msg;
 }
 
+string ActionTextKeys::get_item_breakage_message(const string& creature_desc_sid, const bool is_player, const string& item_desc)
+{
+  string msg = StringTable::get(ACTION_ITEM_BREAKAGE_PLAYER);
+
+  if (!is_player)
+  {
+    msg = StringTable::get(ACTION_ITEM_BREAKAGE_MONSTER);
+    boost::replace_first(msg, "%s1", creature_desc_sid);
+  }
+
+  boost::replace_first(msg, "%s2", item_desc);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -293,3 +308,5 @@ const string ActionTextKeys::ACTION_KICK_MONSTER                  = "ACTION_KICK
 const string ActionTextKeys::ACTION_KICK_OBJECT_PLAYER            = "ACTION_KICK_OBJECT_PLAYER";
 const string ActionTextKeys::ACTION_KICK_OBJECT_MONSTER           = "ACTION_KICK_OBJECT_MONSTER";
 const string ActionTextKeys::ACTION_SPELL_WEAR_OFF_MONSTER        = "ACTION_SPELL_WEAR_OFF_MONSTER";
+const string ActionTextKeys::ACTION_ITEM_BREAKAGE_PLAYER          = "ACTION_ITEM_BREAKAGE_PLAYER";
+const string ActionTextKeys::ACTION_ITEM_BREAKAGE_MONSTER         = "ACTION_ITEM_BREAKAGE_MONSTER";

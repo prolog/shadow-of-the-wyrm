@@ -20,6 +20,7 @@ class ActionTextKeys
     static std::string get_kick_message(const std::string& desc_sid, const bool is_player);
     static std::string get_kick_object_message(const std::string& desc_sid, const std::string& object_desc, const bool is_player);
     static std::string get_generic_wear_off_message(const std::string& desc_sid); // monster only
+    static std::string get_item_breakage_message(const std::string& creature_desc_sid, const bool is_player, const std::string& item_desc);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -127,4 +128,6 @@ class ActionTextKeys
     static const std::string ACTION_KICK_OBJECT_PLAYER;
     static const std::string ACTION_KICK_OBJECT_MONSTER;
     static const std::string ACTION_SPELL_WEAR_OFF_MONSTER;
+    static const std::string ACTION_ITEM_BREAKAGE_PLAYER;
+    static const std::string ACTION_ITEM_BREAKAGE_MONSTER;
 };

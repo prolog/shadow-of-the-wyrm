@@ -21505,6 +21505,10 @@
 						<Name>dig_hardness</Name>
 						<Value>10</Value>
 					</Property>
+					<Property>
+						<Name>dig_breakage_pct_chance</Name>
+						<Value>8</Value>
+					</Property>
 				</Properties>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
@@ -21528,6 +21532,10 @@
 					<Property>
 						<Name>dig_hardness</Name>
 						<Value>15</Value>
+					</Property>
+					<Property>
+						<Name>dig_breakage_pct_chance</Name>
+						<Value>2</Value>
 					</Property>
 				</Properties>
 				<Skill>1000</Skill>
