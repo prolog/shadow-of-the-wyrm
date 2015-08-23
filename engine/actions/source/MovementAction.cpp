@@ -204,7 +204,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         if (!dig_hardness.empty() && (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness()))
         {
           DigAction da;
-          movement_success = da.dig_through(creature, map, creatures_new_tile, d);
+          movement_success = da.dig_through(creature, wielded, map, creatures_new_tile, d);
         }
       }
       else
