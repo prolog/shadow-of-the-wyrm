@@ -19313,7 +19313,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>7</Ounces></Weight>
 				<WornLocation>0</WornLocation>
 				<Material>0</Material>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>6</DangerLevel>
 				<Evade>15</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -19324,7 +19324,7 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Evade>3</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -19335,7 +19335,7 @@
 				<Weight><Pounds>3</Pounds></Weight>
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -19346,7 +19346,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>5</DangerLevel>
+				<DangerLevel>4</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>4</Soak>
 			</Armour>
@@ -19357,7 +19357,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
-				<DangerLevel>9</DangerLevel>
+				<DangerLevel>6</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>6</Soak>
 			</Armour>
@@ -19368,7 +19368,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
-				<DangerLevel>14</DangerLevel>
+				<DangerLevel>8</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>8</Soak>
 			</Armour>
@@ -19472,7 +19472,7 @@
 				<Weight><Pounds>40</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>7</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>5</Soak>
 			</Armour>
@@ -19483,7 +19483,7 @@
 				<Weight><Pounds>4</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>9</DangerLevel>
+				<DangerLevel>7</DangerLevel>
 				<Rarity>1</Rarity>
 				<Evade>6</Evade>
 				<Soak>5</Soak>
@@ -19581,7 +19581,7 @@
 				<Weight><Pounds>45</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>12</DangerLevel>
+				<DangerLevel>6</DangerLevel>
 				<Evade>-2</Evade>
 				<Soak>7</Soak>
 			</Armour>			
@@ -19592,7 +19592,7 @@
 				<Weight><Pounds>70</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>12</DangerLevel>
+				<DangerLevel>8</DangerLevel>
 				<Evade>-4</Evade>
 				<Soak>10</Soak>
 			</Armour>
@@ -19603,7 +19603,7 @@
 				<Weight><Pounds>85</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>6</Material>
-				<DangerLevel>16</DangerLevel>
+				<DangerLevel>14</DangerLevel>
 				<Evade>-8</Evade>
 				<Soak>18</Soak>
 			</Armour>
@@ -19614,7 +19614,7 @@
 				<Weight><Pounds>30</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>1</Material>
-				<DangerLevel>16</DangerLevel>
+				<DangerLevel>18</DangerLevel>
 				<Resistances>
 					<Heat>0.25</Heat>
 				</Resistances>
@@ -19628,7 +19628,7 @@
 				<Weight><Pounds>50</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>1</Material>
-				<DangerLevel>16</DangerLevel>
+				<DangerLevel>20</DangerLevel>
 				<Resistances>
 					<Lightning>0.20</Lightning>
 				</Resistances>
@@ -19642,7 +19642,7 @@
 				<Weight><Pounds>120</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>7</Material>
-				<DangerLevel>16</DangerLevel>
+				<DangerLevel>24</DangerLevel>
 				<Resistances>
 					<Pound>0.15</Pound>
 					<Acid>0.10</Acid>
@@ -19685,7 +19685,7 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>3</DangerLevel>
 				<Resistances>
 					<Arcane>0.10</Arcane>
 				</Resistances>
@@ -19715,7 +19715,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>7</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
 					<Cold>0.05</Cold>
@@ -19730,7 +19730,7 @@
 				<Weight><Pounds>3</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
-				<DangerLevel>11</DangerLevel>
+				<DangerLevel>10</DangerLevel>
 				<Resistances>
 					<Cold>0.10</Cold>
 					<Shadow>0.10</Shadow>
@@ -19745,7 +19745,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
-				<DangerLevel>14</DangerLevel>
+				<DangerLevel>12</DangerLevel>
 				<Resistances>
 					<Holy>0.10</Holy>
 					<Lightning>0.10</Lightning>
@@ -19760,7 +19760,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
-				<DangerLevel>16</DangerLevel>
+				<DangerLevel>14</DangerLevel>
 				<Evade>25</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -19794,7 +19794,7 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
-				<Evade>0</Evade>
+				<Evade>1</Evade>
 				<Soak>1</Soak>
 			</Armour>
 			<Armour id="leather_armour">
@@ -19804,7 +19804,7 @@
 				<Weight><Pounds>10</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>1</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -19925,7 +19925,7 @@
 				<Weight><Pounds>8</Pounds></Weight>
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>5</DangerLevel>
+				<DangerLevel>6</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>6</Soak>
 			</Armour>
@@ -19950,7 +19950,7 @@
 				<Weight><Pounds>10</Pounds></Weight>
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>11</DangerLevel>
+				<DangerLevel>7</DangerLevel>
 				<Evade>-5</Evade>
 				<Soak>9</Soak>
 			</Armour>			
@@ -19983,7 +19983,7 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>7</WornLocation>
 				<Material>0</Material>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>4</DangerLevel>
 				<Evade>8</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -19994,7 +19994,7 @@
 				<Weight><Pounds>4</Pounds></Weight>
 				<WornLocation>7</WornLocation>
 				<Material>0</Material>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>3</Soak>
 			</Armour>
@@ -20104,7 +20104,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
-				<DangerLevel>5</DangerLevel>
+				<DangerLevel>4</DangerLevel>
 				<Evade>7</Evade>
 				<Soak>1</Soak>
 			</Armour>			
@@ -20115,7 +20115,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
-				<DangerLevel>10</DangerLevel>
+				<DangerLevel>7</DangerLevel>
 				<Evade>15</Evade>
 				<Soak>0</Soak>
 			</Armour>			
@@ -20126,7 +20126,7 @@
 				<Weight><Pounds>6</Pounds></Weight>
 				<WornLocation>8</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -20137,7 +20137,7 @@
 				<Weight><Pounds>8</Pounds></Weight>
 				<WornLocation>8</WornLocation>
 				<Material>6</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>4</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>4</Soak>
 			</Armour>
@@ -20162,7 +20162,7 @@
 				<Weight><Pounds>8</Pounds></Weight>
 				<WornLocation>8</WornLocation>
 				<Material>6</Material>
-				<DangerLevel>14</DangerLevel>
+				<DangerLevel>8</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>8</Soak>
 			</Armour>			
@@ -20212,7 +20212,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
 					<Slash>0.05</Slash>
@@ -20231,7 +20231,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
 					<Heat>0.25</Heat>
@@ -20248,7 +20248,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
 					<Cold>0.25</Cold>
@@ -20265,7 +20265,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
 					<Acid>0.25</Acid>
@@ -20282,7 +20282,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
 					<Poison>0.25</Poison>
@@ -20299,7 +20299,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
 					<Holy>0.25</Holy>
@@ -20316,7 +20316,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
 					<Shadow>0.25</Shadow>
@@ -20333,7 +20333,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
 					<Arcane>0.25</Arcane>
@@ -20350,7 +20350,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
 					<Lightning>0.25</Lightning>
@@ -20413,7 +20413,7 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>8</NumSides>
-					<Modifier>3</Modifier>
+					<Modifier>4</Modifier>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
@@ -20424,7 +20424,7 @@
 				<Weight><Pounds>12</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>1</DangerLevel>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -20464,7 +20464,7 @@
 					<Symbol>)</Symbol>
 					<Colour>2</Colour>
 				</TextDetails>
-				<DangerLevel>5</DangerLevel>
+				<DangerLevel>3</DangerLevel>
 				<Skill>1004</Skill>
 				<RangedSkill>2005</RangedSkill>
 				<Difficulty>40</Difficulty>
@@ -20529,7 +20529,7 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>1</DangerLevel>
 				<Resistances>
 					<Arcane>0.20</Arcane>
 				</Resistances>
@@ -20540,6 +20540,7 @@
 				<Damage>
 					<NumDice>2</NumDice>
 					<NumSides>3</NumSides>
+					<Modifier>1</Modifier>
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
@@ -20631,7 +20632,7 @@
 					<Symbol>)</Symbol>
 					<Colour>13</Colour>
 				</TextDetails>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Skill>1001</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -21283,7 +21284,7 @@
 				<Weight><Pounds>3</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Rarity>1</Rarity>
 				<Skill>1001</Skill>
 				<RangedSkill>2001</RangedSkill>
@@ -21303,7 +21304,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Rarity>1</Rarity>
 				<Skill>1001</Skill>
 				<RangedSkill>2001</RangedSkill>
@@ -21457,7 +21458,7 @@
 				<Difficulty>46</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
-					<NumDice>5</NumDice>
+					<NumDice>7</NumDice>
 					<NumSides>12</NumSides>
 					<Modifier>16</Modifier>
 					<Type>2</Type>
@@ -21540,7 +21541,7 @@
 				<Weight><Pounds>8</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
 						<Name>dig_hardness</Name>
@@ -21615,7 +21616,7 @@
 				<Weight><Pounds>10</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>1</DangerLevel>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -21637,7 +21638,7 @@
 					<Symbol>)</Symbol>
 					<Colour>6</Colour>
 				</TextDetails>
-				<DangerLevel>6</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -21660,7 +21661,7 @@
 					<Symbol>)</Symbol>
 					<Colour>3</Colour>
 				</TextDetails>
-				<DangerLevel>6</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -21755,7 +21756,7 @@
 					<Symbol>)</Symbol>
 					<Colour>6</Colour>
 				</TextDetails>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -21778,7 +21779,7 @@
 					<Symbol>)</Symbol>
 					<Colour>2</Colour>
 				</TextDetails>
-				<DangerLevel>6</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -21797,7 +21798,7 @@
 				<Weight><Pounds>12</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>5</DangerLevel>
+				<DangerLevel>3</DangerLevel>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>47</Difficulty>
@@ -21874,7 +21875,7 @@
 					<Symbol>)</Symbol>
 					<Colour>15</Colour>
 				</TextDetails>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Skill>1005</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -21897,7 +21898,7 @@
 					<Symbol>)</Symbol>
 					<Colour>9</Colour>
 				</TextDetails>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Skill>1005</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -21993,7 +21994,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>4</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Skill>1008</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -22015,7 +22016,7 @@
 					<Symbol>)</Symbol>
 					<Colour>6</Colour>
 				</TextDetails>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Skill>1008</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -22038,7 +22039,7 @@
 					<Symbol>)</Symbol>
 					<Colour>9</Colour>
 				</TextDetails>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Skill>1008</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -22239,7 +22240,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<Difficulty>43</Difficulty>
@@ -22382,7 +22383,7 @@
 					<Symbol>/</Symbol>
 					<Colour>15</Colour>
 				</TextDetails>
-				<DangerLevel>15</DangerLevel>
+				<DangerLevel>4</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -22405,7 +22406,7 @@
 					<Symbol>/</Symbol>
 					<Colour>2</Colour>
 				</TextDetails>
-				<DangerLevel>15</DangerLevel>
+				<DangerLevel>4</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -22428,7 +22429,7 @@
 					<Symbol>/</Symbol>
 					<Colour>8</Colour>
 				</TextDetails>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>2</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
