@@ -14072,6 +14072,38 @@
 				<Type>0</Type>
 			</Damage>
 		</Creature>
+		<Creature id="mawgrawl">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>MAWGRAWL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MAWGRAWL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MAWGRAWL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MAWGRAWL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>M</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>9</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>9</NumDice>
+					<NumSides>10</NumSides>
+				</HP>
+				<Exp>20</Exp>
+			</CreatureGeneration>
+			<Level>9</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>18</NumSides>
+				<Type>5</Type>
+			</Damage>
+		</Creature>
 		<Creature id="queen_bee">
 			<RaceID>_insect</RaceID>
 			<ShortDescriptionSID>QUEEN_BEE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -21691,7 +21723,7 @@
 					<NumDice>4</NumDice>
 					<NumSides>6</NumSides>
 					<Modifier>10</Modifier>
-					<Type>0</Type>
+					<Type>1</Type>
 				</Damage>
 			</Weapon>			
 			<Weapon id="spear">
