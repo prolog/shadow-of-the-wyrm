@@ -163,6 +163,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 {
   ActionCostValue movement_success = 0;
   bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   if (creatures_new_tile)
   {
@@ -178,7 +179,6 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       // Did the handling do anything?
       if (!handled)
       {
-        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
         string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
         manager.add_new_message(blocked);
         manager.send();
@@ -201,10 +201,18 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       {
         string dig_hardness = wielded->get_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS);
 
-        if (!dig_hardness.empty() && (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness()))
+        if (!dig_hardness.empty())
         {
-          DigAction da;
-          movement_success = da.dig_through(creature, wielded, map, creatures_new_tile, d);
+          if (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness())
+          {
+            DigAction da;
+            movement_success = da.dig_through(creature, wielded, map, creatures_new_tile, d);
+          }
+          else
+          {
+            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_TOO_HARD));
+            manager.send();
+          }
         }
       }
       else
