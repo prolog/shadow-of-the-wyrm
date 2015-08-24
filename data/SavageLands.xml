@@ -1898,7 +1898,11 @@
 				<InitialInventory>
 					<InitialItem>
 						<ID>food_ration</ID>
-						<Quantity><Amount>3</Amount></Quantity>
+						<Quantity><Amount>2</Amount></Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>trail_ration</ID>
+						<Quantity><Amount>1</Amount></Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>healing_potion</ID>
@@ -2923,7 +2927,7 @@
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
-						<ID>food_ration</ID>
+						<ID>trail_ration</ID>
 						<Quantity><Amount>3</Amount></Quantity>
 					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>5</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
@@ -3184,7 +3188,7 @@
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
-						<ID>food_ration</ID>
+						<ID>trail_ration</ID>
 						<Quantity><Amount>3</Amount></Quantity>
 					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>2</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
@@ -22672,6 +22676,21 @@
 				</TextDetails>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>1440</Nutrition>
+				<FoodType>1</FoodType>
+			</Food>
+			<Food id="trail_ration">
+				<DescriptionSID>TRAIL_RATION_SID</DescriptionSID>
+				<UsageDescriptionSID>TRAIL_RATION_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>1</Pounds><Ounces>8</Ounces></Weight>
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>				
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>2000</Nutrition>
 				<FoodType>1</FoodType>
 			</Food>
 			<Food id="salted_fish">
