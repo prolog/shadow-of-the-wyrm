@@ -33,7 +33,10 @@ Savage Lands v0.3.9 "Dowland"
   control whether digging is possible on a particular map, and set it on
   Isen Dun and Last Island Lair.
 
-- New creatures: goblin pelter, githra, chaosling
+- Added another level to B1 of Wintersea Keep, a storage area that has
+  been found by a terrifying, and powerful creature.
+
+- New creatures: goblin pelter, githra, chaosling, grawl.
 
 - New items: pick axe, dwarven mattock.
 
