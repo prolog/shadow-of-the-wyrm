@@ -6,8 +6,9 @@
 #include "EffectTextKeys.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "TeleportEffect.hpp"
 
@@ -59,18 +60,32 @@ bool TeleportEffect::teleport(CreaturePtr creature)
 
   // The creature's original tile.
   TilePtr old_tile = map->at(map->get_location(creature->get_id()));
-
+  
   bool teleported = false;
 
-  if (blink_effect)
+  string map_cannot_teleport = map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_TELEPORT);
+
+  if (map_cannot_teleport.empty() || (String::to_bool(map_cannot_teleport) == false))
   {
-    // Blink just teleports in the field of view.
-    teleported = blink(creature, map, old_tile);
+    if (blink_effect)
+    {
+      // Blink just teleports in the field of view.
+      teleported = blink(creature, map, old_tile);
+    }
+    else
+    {
+      // Proper teleporting can go anywhere on the map.
+      teleported = teleport(creature, map, old_tile);
+    }
   }
   else
   {
-    // Proper teleporting can go anywhere on the map.
-    teleported = teleport(creature, map, old_tile);
+    if (creature->get_is_player())
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_TELEPORT_CANNOT_TELEPORT));
+      manager.send();
+    }
   }
 
   return teleported;

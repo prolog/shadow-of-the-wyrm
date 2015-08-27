@@ -25,7 +25,8 @@ class EffectTextKeys
     static const std::string EFFECT_RECHARGING_PLAYER_NO_WANDS;
     static const std::string EFFECT_NO_ITEMS_TO_ENCHANT;
     static const std::string EFFECT_ATTEMPT_ENCHANT_ARTIFACT;
-    
+    static const std::string EFFECT_TELEPORT_CANNOT_TELEPORT;
+
   protected:
     EffectTextKeys();
     ~EffectTextKeys();
