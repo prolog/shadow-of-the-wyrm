@@ -43,6 +43,8 @@ Savage Lands v0.3.9 "Dowland"
 - Rovers and Shepherds now start with trail rations instead of food
   rations.  Adventurers start with both.
 
+- Added a "no teleport" flag that can be set at the map level.
+
 - New creatures: goblin pelter, githra, chaosling, grawl.
 
 - New items: pick axe, dwarven mattock, trail ration.

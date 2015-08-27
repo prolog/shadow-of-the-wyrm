@@ -40,6 +40,9 @@ class MapProperties
     // Can we dig on this map?
     static const std::string MAP_PROPERTIES_CANNOT_DIG;
 
+    // Can we teleport?
+    static const std::string MAP_PROPERTIES_CANNOT_TELEPORT;
+
   protected:
     MapProperties();
     ~MapProperties();
