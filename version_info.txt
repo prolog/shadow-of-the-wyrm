@@ -36,6 +36,13 @@ Savage Lands v0.3.9 "Dowland"
 - Added another level to B1 of Wintersea Keep, a storage area that has
   been found by a terrifying, and powerful creature.
 
+- Added a ruined tower to Wintersea Keep.  This area has locked doors,
+  but is accessible via flying.  The area is no-dig/no-teleport, and the
+  key is found near Ardu in the tombs.  Within each room is a powerful
+  artifact of the forgotten empire.
+
+- Made the Wintersea Tombs undiggable.
+
 - Went through the game data and adjusted item danger level values.
   There were a number that were unreasonable for the statistics on the
   item.
@@ -45,11 +52,12 @@ Savage Lands v0.3.9 "Dowland"
 
 - Added a "no teleport" flag that can be set at the map level.
 
-- New creatures: goblin pelter, githra, chaosling, grawl.
+- New creatures: goblin pelter, githra, chaosling, grawl, quaalis.
 
 - New items: pick axe, dwarven mattock, trail ration.
 
-- New artifacts: primeval pick axe "Delver".
+- New artifacts: primeval pick axe "Delver", imperial broadsword
+  "Ironsword", imperial staff "Stormstaff".
 
 Savage Lands v0.3.8 "Narvaez"
 - Version declared July 11, 2015.  Version finalized August 5, 2015.
