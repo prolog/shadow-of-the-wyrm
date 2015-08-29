@@ -14603,6 +14603,47 @@
 			</Damage>
 			<Speed>40</Speed>
 		</Creature>
+		<Creature id="quaalis">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>QUAALIS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>QUAALIS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>QUAALIS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>QUAALIS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>B</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>25</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>28</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>28</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2200</Exp>
+			</CreatureGeneration>
+			<Level>28</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>56</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
 		<Creature id="satyr">
 			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>SATYR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -20742,6 +20783,29 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="ironsword">
+				<DescriptionSID>IRONSWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>IRONSWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>1250</Value>
+				<Weight><Pounds>12</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Acid>0.15</Acid>
+					<Poison>0.15</Poison>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>48</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>12</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="apocalypse">
 				<DescriptionSID>APOCALYPSE_SID</DescriptionSID>
 				<UsageDescriptionSID>APOCALYPSE_USAGE_SID</UsageDescriptionSID>
@@ -20845,6 +20909,30 @@
 				<Slays>
 					<Slay>_construct</Slay>
 				</Slays>
+			</Weapon>
+			<Weapon id="stormstaff">
+				<DescriptionSID>STORMSTAFF_SID</DescriptionSID>
+				<UsageDescriptionSID>STORMSTAFF_USAGE_SID</UsageDescriptionSID>
+				<Value>1250</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.10</Heat>
+					<Cold>0.10</Cold>
+					<Lightning>0.25</Lightning>
+				</Resistances>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>12</NumDice>
+					<NumSides>4</NumSides>
+					<Type>2</Type>
+				</Damage>
 			</Weapon>
 			<Weapon id="bugcrusher">
 				<DescriptionSID>BUGCRUSHER_SID</DescriptionSID>
@@ -23327,6 +23415,15 @@
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wintersea_tombs</LockID>
+			</Tool>
+			<Tool id="wintersea_keep_tower_key">
+				<DescriptionSID>WINTERSEA_TOWER_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>WINTERSEA_TOWER_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>wintersea_tower</LockID>
 			</Tool>
 			<Tool id="wyrmeswraec_gate_key">
 				<DescriptionSID>WYRMESWRAEC_GATE_KEY_SID</DescriptionSID>
