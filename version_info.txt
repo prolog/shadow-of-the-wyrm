@@ -59,6 +59,8 @@ Savage Lands v0.3.9 "Dowland"
 - New artifacts: primeval pick axe "Delver", imperial broadsword
   "Ironsword", imperial staff "Stormstaff".
 
+- Bug fixes: Ardu wasn't generating in the Wintersea tombs.
+
 Savage Lands v0.3.8 "Narvaez"
 - Version declared July 11, 2015.  Version finalized August 5, 2015.
 
