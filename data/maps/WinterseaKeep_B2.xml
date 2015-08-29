@@ -51,7 +51,7 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>Ardu</ID>
+				<ID>ardu</ID>
 				<Coord>
 					<Row>9</Row>
 					<Col>28</Col>
