@@ -52,7 +52,8 @@ Savage Lands v0.3.9 "Dowland"
 
 - Added a "no teleport" flag that can be set at the map level.
 
-- Converted all typedefs to C++11 using statements.
+- Converted all typedefs to C++11 using statements.  Renamed the "jrcpp"
+  branch to "default".
 
 - New creatures: goblin pelter, githra, chaosling, grawl, quaalis.
 
