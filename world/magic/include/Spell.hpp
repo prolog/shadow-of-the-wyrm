@@ -92,4 +92,4 @@ class Spell
     std::map<std::string, std::string> properties;
 };
 
-typedef std::map<std::string, Spell> SpellMap;
+using SpellMap = std::map<std::string, Spell>;

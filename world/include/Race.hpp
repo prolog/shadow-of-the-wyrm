@@ -160,5 +160,5 @@ class Race
     std::string level_script;
 };
 
-typedef std::shared_ptr<Race> RacePtr;
-typedef std::map<std::string, RacePtr> RaceMap;
+using RacePtr = std::shared_ptr<Race>;
+using RaceMap = std::map<std::string, RacePtr>;

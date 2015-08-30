@@ -3,7 +3,8 @@
 #include "ISeason.hpp"
 #include "Date.hpp"
 
-typedef std::map<ClassIdentifier, ISeasonPtr> SeasonSerializationMap;
+using SeasonSerializationMap = std::map<ClassIdentifier, ISeasonPtr>;
+
 class SeasonFactory
 {
   public:

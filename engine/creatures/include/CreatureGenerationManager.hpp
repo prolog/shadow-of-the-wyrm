@@ -5,7 +5,7 @@
 
 class CreatureGenerationValues;
 
-typedef std::map<std::string, std::pair<std::shared_ptr<Creature>, CreatureGenerationValues>> CreatureGenerationMap;
+using CreatureGenerationMap = std::map<std::string, std::pair<std::shared_ptr<Creature>, CreatureGenerationValues>>;
 
 class CreatureGenerationManager
 {

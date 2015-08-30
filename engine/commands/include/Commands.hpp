@@ -37,7 +37,7 @@ class DirectionalCommand : public Command
     Direction direction;
 };
 
-typedef std::shared_ptr<DirectionalCommand> DirectionalCommandPtr;
+using DirectionalCommandPtr = std::shared_ptr<DirectionalCommand>;
 
 class MovementCommand : public DirectionalCommand
 {

@@ -25,6 +25,6 @@ protected:
     static std::map<Direction, Direction> cardinal_reflection_map;
 };
 
-typedef std::map<Direction, Direction>::iterator ReflectionMapIterator;
-typedef std::map<Direction, Direction>::const_iterator ReflectionMapCIterator;
+using ReflectionMapIterator = std::map<Direction, Direction>::iterator;
+using ReflectionMapCIterator = std::map<Direction, Direction>::const_iterator;
 

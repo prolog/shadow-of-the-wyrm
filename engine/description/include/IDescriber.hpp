@@ -9,4 +9,4 @@ class IDescriber
     virtual std::string describe() const = 0;
 };
 
-typedef std::shared_ptr<IDescriber> IDescriberPtr;
+using IDescriberPtr = std::shared_ptr<IDescriber>;

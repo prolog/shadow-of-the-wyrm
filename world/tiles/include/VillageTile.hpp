@@ -37,4 +37,4 @@ class VillageTile : public WorldMapLandmarkTile
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<VillageTile> VillageTilePtr;
+using VillageTilePtr = std::shared_ptr<VillageTile>;

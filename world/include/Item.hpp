@@ -212,5 +212,5 @@ class Item : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
-typedef std::shared_ptr<Item> ItemPtr;
-typedef std::map<std::string, ItemPtr> ItemMap;
+using ItemPtr = std::shared_ptr<Item>;
+using ItemMap = std::map<std::string, ItemPtr>;

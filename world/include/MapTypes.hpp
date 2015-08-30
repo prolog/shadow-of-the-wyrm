@@ -10,5 +10,5 @@ enum struct MapType
 , MAP_TYPE_UNDERWORLD = 2
 };
 
-typedef std::map<std::string, Coordinate> NamedMapLocations;
+using NamedMapLocations = std::map<std::string, Coordinate>;
 

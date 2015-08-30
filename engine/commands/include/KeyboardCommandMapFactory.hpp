@@ -3,7 +3,7 @@
 #include "ClassIdentifiers.hpp"
 #include "KeyboardCommandMap.hpp"
 
-typedef std::map<ClassIdentifier, KeyboardCommandMapPtr> KeyboardCommandMapSerializationMap;
+using KeyboardCommandMapSerializationMap = std::map<ClassIdentifier, KeyboardCommandMapPtr>;
 
 class KeyboardCommandMapFactory
 {

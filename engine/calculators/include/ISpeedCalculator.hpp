@@ -9,5 +9,5 @@ class ISpeedCalculator
     virtual ActionCostValue calculate(CreaturePtr creature) = 0;
 };
 
-typedef std::shared_ptr<ISpeedCalculator> ISpeedCalculatorPtr;
+using ISpeedCalculatorPtr = std::shared_ptr<ISpeedCalculator>;
 

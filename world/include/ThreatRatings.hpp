@@ -4,8 +4,7 @@
 #include <set>
 #include "ISerializable.hpp"
 
-// Shorthand for easy typin'.
-typedef std::map<int, std::set<std::string>> ThreatMap;
+using ThreatMap = std::map<int, std::set<std::string>>;
 
 // ThreatRatings is a class representing the threat rating of various
 // creatures.

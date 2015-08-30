@@ -6,7 +6,7 @@
 #include "EquipmentTypes.hpp"
 #include "ItemTypes.hpp"
 
-typedef std::vector<TextColour> DisplayItemFlagsVec;
+using DisplayItemFlagsVec = std::vector<TextColour>;
 
 // A DisplayItem contains the relevant details of an item for the Display
 // to use in its inventory and equipment management routines.
@@ -41,5 +41,5 @@ class DisplayItem
 };
 
 // Data types used by the Display
-typedef std::map<EquipmentWornLocation, DisplayItem> DisplayEquipmentMap;
-typedef std::map<DisplayItemType, std::vector<DisplayItem>> DisplayInventoryMap;
+using DisplayEquipmentMap = std::map<EquipmentWornLocation, DisplayItem>;
+using DisplayInventoryMap = std::map<DisplayItemType, std::vector<DisplayItem>>;

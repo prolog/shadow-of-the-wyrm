@@ -3,7 +3,7 @@
 #include "common.hpp"
 #include "ISerializable.hpp"
 
-typedef int ActionCostValue;
+using ActionCostValue = int;
 
 class ActionCost : public ISerializable
 {

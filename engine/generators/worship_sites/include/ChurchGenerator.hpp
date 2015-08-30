@@ -22,4 +22,4 @@ class ChurchGenerator : public SL::Generator
     MapPtr base_map;
 };
 
-typedef std::shared_ptr<ChurchGenerator> ChurchGeneratorPtr;
+using ChurchGeneratorPtr = std::shared_ptr<ChurchGenerator>;

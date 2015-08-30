@@ -81,5 +81,5 @@ class Deity : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Deity> DeityPtr;
-typedef std::map<std::string, DeityPtr> DeityMap;
+using DeityPtr = std::shared_ptr<Deity>;
+using DeityMap = std::map<std::string, DeityPtr>;

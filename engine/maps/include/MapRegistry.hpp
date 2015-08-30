@@ -3,7 +3,8 @@
 #include <string>
 #include "ISerializable.hpp"
 #include "Map.hpp"
-typedef std::map<std::string, MapPtr> MapRegistryMap;
+
+using MapRegistryMap = std::map<std::string, MapPtr>;
 
 class MapRegistry : public ISerializable
 {

@@ -81,4 +81,4 @@ class CreatureGenerationValues : public GenerationValues
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::map<std::string, CreatureGenerationValues> CreatureGenerationValuesMap;
+using CreatureGenerationValuesMap = std::map<std::string, CreatureGenerationValues>;

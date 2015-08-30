@@ -32,4 +32,4 @@ class ISeason : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
-typedef std::shared_ptr<ISeason> ISeasonPtr;
+using ISeasonPtr = std::shared_ptr<ISeason>;

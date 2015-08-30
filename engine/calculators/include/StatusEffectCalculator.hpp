@@ -14,4 +14,4 @@ class StatusEffectCalculator
     virtual int calculate_pct_chance_effect(CreaturePtr creature) const = 0;
 };
 
-typedef std::shared_ptr<StatusEffectCalculator> StatusEffectCalculatorPtr;
+using StatusEffectCalculatorPtr = std::shared_ptr<StatusEffectCalculator>;

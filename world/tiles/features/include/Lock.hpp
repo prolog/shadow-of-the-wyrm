@@ -30,4 +30,4 @@ class Lock : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Lock> LockPtr;
+using LockPtr = std::shared_ptr<Lock>;

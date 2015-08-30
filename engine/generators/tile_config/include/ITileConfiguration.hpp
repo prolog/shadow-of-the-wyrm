@@ -19,4 +19,4 @@ class ITileConfiguration
     virtual void initialize() = 0;
 };
 
-typedef std::shared_ptr<ITileConfiguration> ITileConfigurationPtr;
+using ITileConfigurationPtr = std::shared_ptr<ITileConfiguration>;

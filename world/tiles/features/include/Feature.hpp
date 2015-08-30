@@ -91,4 +91,4 @@ class Feature : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Feature> FeaturePtr;
+using FeaturePtr = std::shared_ptr<Feature>;

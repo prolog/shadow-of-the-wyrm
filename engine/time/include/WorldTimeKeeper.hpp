@@ -3,8 +3,8 @@
 #include "ISerializable.hpp"
 #include "ITimeObserver.hpp"
 
-typedef std::map<std::string, ITimeObserverPtr> TimeObserverMap;
-typedef std::map<uint, TimeObserverMap> WorldTimeKeeperObserverMap;
+using TimeObserverMap = std::map<std::string, ITimeObserverPtr>;
+using WorldTimeKeeperObserverMap = std::map<uint, TimeObserverMap>;
 
 // The subject in the subject/observer pattern.
 class WorldTimeKeeper : public ISerializable

@@ -61,5 +61,5 @@ class OptionsComponent : public ScreenComponent
     std::vector<std::string> option_descriptions; // These describe the option at the same index in "options".
 };
 
-typedef std::shared_ptr<OptionsComponent> OptionsComponentPtr;
-typedef std::shared_ptr<Option> OptionPtr;
+using OptionsComponentPtr = std::shared_ptr<OptionsComponent>;
+using OptionPtr = std::shared_ptr<Option>;

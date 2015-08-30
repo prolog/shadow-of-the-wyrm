@@ -4,7 +4,7 @@
 #include "ISerializable.hpp"
 #include "IndividualSpellKnowledge.hpp"
 
-typedef std::map<std::string, IndividualSpellKnowledge> SpellKnowledgeMap;
+using SpellKnowledgeMap = std::map<std::string, IndividualSpellKnowledge>;
 
 // A class that represents a particular creature's knowledge of the various
 // spells defined in the configuration XML.

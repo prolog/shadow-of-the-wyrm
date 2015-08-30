@@ -20,4 +20,4 @@ class StaircaseTile : public Tile
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<StaircaseTile> StaircaseTilePtr;
+using StaircaseTilePtr = std::shared_ptr<StaircaseTile>;

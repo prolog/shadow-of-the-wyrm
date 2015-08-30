@@ -3,7 +3,7 @@
 #include "ClassIdentifiers.hpp"
 #include "Item.hpp"
 
-typedef std::map<ClassIdentifier, ItemPtr> ItemSerializationMap;
+using ItemSerializationMap = std::map<ClassIdentifier, ItemPtr>;
 
 class ItemSerializationFactory
 {

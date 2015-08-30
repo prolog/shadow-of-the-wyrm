@@ -3,7 +3,7 @@
 #include "ClassIdentifiers.hpp"
 #include "Tile.hpp"
 
-typedef std::map<ClassIdentifier, TilePtr> TileSerializationMap;
+using TileSerializationMap = std::map<ClassIdentifier, TilePtr>;
 
 class TileFactory
 {

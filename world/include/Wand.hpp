@@ -61,4 +61,4 @@ class Wand : public Item
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Wand> WandPtr;
+using WandPtr = std::shared_ptr<Wand>;

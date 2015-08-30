@@ -32,4 +32,4 @@ class DisplayItemType
     std::string description;
 };
 
-typedef std::shared_ptr<DisplayItemType> DisplayItemTypePtr;
+using DisplayItemTypePtr = std::shared_ptr<DisplayItemType>;

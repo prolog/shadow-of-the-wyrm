@@ -10,4 +10,4 @@ class TextComponent : public ScreenComponent
     TextComponent(const std::string& str, const Colour c);
 };
 
-typedef std::shared_ptr<TextComponent> TextComponentPtr;
+using TextComponentPtr = std::shared_ptr<TextComponent>;

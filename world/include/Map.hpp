@@ -14,7 +14,7 @@
 class Creature;
 class Tile;
 
-typedef std::unordered_map<std::string, std::shared_ptr<Tile>> TilesContainer;
+using TilesContainer = std::unordered_map<std::string, std::shared_ptr<Tile>>;
 
 class Map : public ISerializable
 {
@@ -138,4 +138,4 @@ class Map : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Map> MapPtr;
+using MapPtr = std::shared_ptr<Map>;

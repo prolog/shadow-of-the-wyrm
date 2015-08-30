@@ -35,7 +35,7 @@ class Quest : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::map<std::string, Quest> QuestMap;
+using QuestMap = std::map<std::string, Quest>;
 
 // A collection of quests that are in progress, and completed.
 class Quests : public ISerializable

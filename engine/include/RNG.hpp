@@ -2,7 +2,7 @@
 #include <random>
 #include <inttypes.h>
 
-typedef std::mt19937 RNGType;
+using RNGType = std::mt19937;
 
 class Dice;
 

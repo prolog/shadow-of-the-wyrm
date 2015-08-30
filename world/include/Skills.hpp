@@ -922,11 +922,11 @@ class PrimordialMagicSkill : public MagicSkill
 
 // Classes aggregating skills
 
-typedef std::shared_ptr<Skill> SkillPtr;
-typedef std::map<SkillType, SkillPtr> SkillMap;
-typedef std::map<SkillType, SkillPtr>* SkillMapPtr;
+using SkillPtr = std::shared_ptr<Skill>;
+using SkillMap = std::map<SkillType, SkillPtr>;
+using SkillMapPtr = std::map<SkillType, SkillPtr>*;
 
-typedef std::map<SkillType, SkillPtr> RawSkillMap;
+using RawSkillMap = std::map<SkillType, SkillPtr>;
 
 class Skills : public ISerializable
 {

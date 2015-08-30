@@ -35,4 +35,4 @@ class Consumable : public Item
     bool poisoned;
 };
 
-typedef std::shared_ptr<Consumable> ConsumablePtr;
+using ConsumablePtr = std::shared_ptr<Consumable>;

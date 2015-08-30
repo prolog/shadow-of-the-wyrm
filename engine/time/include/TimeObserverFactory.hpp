@@ -3,7 +3,7 @@
 #include "ClassIdentifiers.hpp"
 #include "ITimeObserver.hpp"
 
-typedef std::map<ClassIdentifier, ITimeObserverPtr> TimeObserverSerializationMap;
+using TimeObserverSerializationMap = std::map<ClassIdentifier, ITimeObserverPtr>;
 
 class TimeObserverFactory
 {

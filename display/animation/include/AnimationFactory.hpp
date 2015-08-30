@@ -14,5 +14,5 @@ class AnimationFactory
     virtual AnimationInstructionPtr create_pause_instruction() const;
 };
 
-typedef std::shared_ptr<AnimationFactory> AnimationFactoryPtr;
+using AnimationFactoryPtr = std::shared_ptr<AnimationFactory>;
 

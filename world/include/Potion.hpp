@@ -29,4 +29,4 @@ class Potion : public Consumable
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Potion> PotionPtr;
+using PotionPtr = std::shared_ptr<Potion>;

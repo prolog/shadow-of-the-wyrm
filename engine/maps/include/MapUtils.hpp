@@ -6,12 +6,12 @@
 #include <utility>
 
 //class MapComponents;
-typedef std::vector<std::set<Coordinate>> MapComponents;
-typedef std::vector<std::set<Coordinate>>::const_iterator MapComponentsItc;
-typedef std::set<Coordinate> Component;
-typedef std::set<Coordinate>::const_iterator ComponentItc;
-typedef std::map<Direction, TilePtr> TileDirectionMap;
-typedef std::map<Direction, CreaturePtr> CreatureDirectionMap;
+using MapComponents = std::vector<std::set<Coordinate>>;
+using MapComponentsItc = std::vector<std::set<Coordinate>>::const_iterator;
+using Component = std::set<Coordinate>;
+using ComponentItc = std::set<Coordinate>::const_iterator;
+using TileDirectionMap = std::map<Direction, TilePtr>;
+using CreatureDirectionMap = std::map<Direction, CreaturePtr>;
 
 class MapUtils
 {

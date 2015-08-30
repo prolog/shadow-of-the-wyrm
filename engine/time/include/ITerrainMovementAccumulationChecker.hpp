@@ -14,4 +14,4 @@ class ITerrainMovementAccumulationChecker
     SkillManager sm;
 };
 
-typedef std::shared_ptr<ITerrainMovementAccumulationChecker> ITerrainMovementAccumulationCheckerPtr;
+using ITerrainMovementAccumulationCheckerPtr = std::shared_ptr<ITerrainMovementAccumulationChecker>;

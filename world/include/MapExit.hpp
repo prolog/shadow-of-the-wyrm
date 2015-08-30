@@ -31,4 +31,4 @@ class MapExit : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<MapExit> MapExitPtr;
+using MapExitPtr = std::shared_ptr<MapExit>;

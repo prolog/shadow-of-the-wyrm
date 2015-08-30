@@ -30,4 +30,4 @@ class Command
     std::map<std::string, std::string> custom_values;
 };
 
-typedef std::shared_ptr<Command> CommandPtr;
+using CommandPtr = std::shared_ptr<Command>;

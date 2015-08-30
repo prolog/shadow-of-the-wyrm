@@ -3,7 +3,7 @@
 #include "common.hpp"
 #include "CalendarTypes.hpp"
 
-typedef std::unordered_map<Season, int> SeasonTileColourMap;
+using SeasonTileColourMap = std::unordered_map<Season, int>;
 
 // A DisplayTile is what the engine says we can see.  This provides a
 // separation between the "real" map and the "display" map.  A real map

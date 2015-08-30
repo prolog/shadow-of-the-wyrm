@@ -13,4 +13,4 @@ class FeatureDescriber : public IDescriber
     FeaturePtr feature;
 };
 
-typedef std::shared_ptr<FeatureDescriber> FeatureDescriberPtr;
+using FeatureDescriberPtr = std::shared_ptr<FeatureDescriber>;

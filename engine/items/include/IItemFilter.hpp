@@ -7,5 +7,5 @@ class IItemFilter
     virtual bool passes_filter(ItemPtr item) const = 0;
 };
 
-typedef std::shared_ptr<IItemFilter> IItemFilterPtr;
+using IItemFilterPtr = std::shared_ptr<IItemFilter>;
 

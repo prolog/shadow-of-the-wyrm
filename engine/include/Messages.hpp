@@ -3,7 +3,7 @@
 #include <vector>
 #include "Message.hpp"
 
-typedef boost::uuids::uuid MessageId;
+using MessageId = boost::uuids::uuid;
 
 class Messages
 {

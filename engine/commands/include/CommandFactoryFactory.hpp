@@ -2,7 +2,7 @@
 #include "CommandFactory.hpp"
 #include "ClassIdentifiers.hpp"
 
-typedef std::map<ClassIdentifier, CommandFactoryPtr> CommandFactorySerializationMap;
+using CommandFactorySerializationMap = std::map<ClassIdentifier, CommandFactoryPtr>;
 
 // I am so sorry.  "FactoryFactory"?  It sounds so enterprisey.  Maybe 
 // I could leverage synergies and SaaS, too.

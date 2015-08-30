@@ -9,8 +9,7 @@
 // of relations to all deities is kept so that relations with the
 // previous worshipped deities can be known.
 
-// Typedef'd because typing C++ templates is hard
-typedef std::map<std::string, DeityStatus> DeityRelations;
+using DeityRelations = std::map<std::string, DeityStatus>;
 
 class Religion : public ISerializable
 {

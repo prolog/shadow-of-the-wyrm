@@ -26,4 +26,4 @@ class IFeatureManipulator
     FeaturePtr feature;
 };
 
-typedef std::shared_ptr<IFeatureManipulator> IFeatureManipulatorPtr;
+using IFeatureManipulatorPtr = std::shared_ptr<IFeatureManipulator>;

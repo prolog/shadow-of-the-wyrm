@@ -32,4 +32,4 @@ class SpellFailureConsequences
     virtual std::string get_summoned_creatures_message_sid() const = 0;
 };
 
-typedef std::shared_ptr<SpellFailureConsequences> SpellFailureConsequencesPtr;
+using SpellFailureConsequencesPtr = std::shared_ptr<SpellFailureConsequences>;

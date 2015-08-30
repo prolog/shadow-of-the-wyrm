@@ -20,24 +20,24 @@
 
 // Implementations - ifdef these if additional parser support is needed.
 // Can't use shared_ptr here - Xerces has its own resource deallocation scheme...
-typedef xercesc::DOMAttr XMLAttributeImpl;
-typedef xercesc::DOMElement XMLElementImpl;
-typedef xercesc::DOMNode XMLNodeImpl;
-typedef const xercesc::DOMNodeList XMLNodeListImpl;
+using XMLAttributeImpl = xercesc::DOMAttr;
+using XMLElementImpl = xercesc::DOMElement;
+using XMLNodeImpl = xercesc::DOMNode;
+using XMLNodeListImpl = const xercesc::DOMNodeList;
 
-typedef xercesc::DOMAttr* XMLAttributeImplPtr;
-typedef xercesc::DOMElement* XMLElementImplPtr;
-typedef xercesc::DOMNode* XMLNodeImplPtr;
-typedef const xercesc::DOMNodeList* XMLNodeListImplPtr;
-typedef const xercesc::DOMNamedNodeMap* XMLAttributeListImplPtr;
+using XMLAttributeImplPtr = xercesc::DOMAttr*;
+using XMLElementImplPtr = xercesc::DOMElement*;
+using XMLNodeImplPtr = xercesc::DOMNode*;
+using XMLNodeListImplPtr = const xercesc::DOMNodeList*;
+using XMLAttributeListImplPtr = const xercesc::DOMNamedNodeMap*;
 
-typedef xercesc::DOMDocument XMLDocumentImpl;
-typedef xercesc::DOMDocument* XMLDocumentImplPtr;
+using XMLDocumentImpl = xercesc::DOMDocument;
+using XMLDocumentImplPtr = xercesc::DOMDocument*;
 
-typedef xercesc::XercesDOMParser XMLParserImpl;
-typedef xercesc::XercesDOMParser* XMLParserImplPtr;
+using XMLParserImpl = xercesc::XercesDOMParser;
+using XMLParserImplPtr = xercesc::XercesDOMParser*;
 
-typedef xercesc::DOMElement* ElementPtr;
+using ElementPtr = xercesc::DOMElement*;
 
 class XMLNode
 {

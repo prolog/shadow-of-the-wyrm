@@ -11,4 +11,4 @@ class ICreatureRegeneration
     virtual void tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed) = 0;
 };
 
-typedef std::shared_ptr<ICreatureRegeneration> ICreatureRegenerationPtr;
+using ICreatureRegenerationPtr = std::shared_ptr<ICreatureRegeneration>;
