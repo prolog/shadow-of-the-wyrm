@@ -27,7 +27,7 @@ class EngineStateManager
 };
 
 // Game flow functions - used to branch into New, Load, Exit, etc.
-typedef std::map<std::string, EngineStateEnum> GameOptionMap;
+using GameOptionMap = std::map<std::string, EngineStateEnum>;
 
 class SavageLandsEngine
 {

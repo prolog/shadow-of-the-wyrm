@@ -6,7 +6,7 @@
 #include "IKeyboardCommandMap.hpp"
 #include "Settings.hpp"
 
-typedef std::map<std::string, std::string> KeyboardCommandMappingMap;
+using KeyboardCommandMappingMap = std::map<std::string, std::string>;
 
 class KeyboardCommandMap : public ISerializable, public IKeyboardCommandMap
 {
@@ -56,4 +56,4 @@ class SL_Engine_Commands_KeyboardCommandMapFixture : public ::testing::Test
 };
 #endif
 
-typedef std::shared_ptr<KeyboardCommandMap> KeyboardCommandMapPtr;
+using KeyboardCommandMapPtr = std::shared_ptr<KeyboardCommandMap>;

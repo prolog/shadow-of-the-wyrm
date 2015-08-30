@@ -24,5 +24,5 @@ class GardenGenerator
     int window_end_col_inc; // end col inclusive - use <=
 };
 
-typedef std::shared_ptr<GardenGenerator> GardenGeneratorPtr;
+using GardenGeneratorPtr = std::shared_ptr<GardenGenerator>;
 

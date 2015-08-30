@@ -22,5 +22,5 @@ class AdditionalEffectMessage
     std::string effect_message_sid;
 };
 
-typedef std::shared_ptr<AdditionalEffectMessage> AdditionalEffectMessagePtr;
+using AdditionalEffectMessagePtr = std::shared_ptr<AdditionalEffectMessage>;
 

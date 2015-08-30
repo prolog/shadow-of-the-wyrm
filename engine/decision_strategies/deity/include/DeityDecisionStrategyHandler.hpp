@@ -24,4 +24,4 @@ class DeityDecisionStrategyHandler
     std::string deity_id;
 };
 
-typedef std::shared_ptr<DeityDecisionStrategyHandler> DeityDecisionStrategyHandlerPtr;
+using DeityDecisionStrategyHandlerPtr = std::shared_ptr<DeityDecisionStrategyHandler>;

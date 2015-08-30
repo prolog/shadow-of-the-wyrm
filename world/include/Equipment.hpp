@@ -4,7 +4,7 @@
 #include "Item.hpp"
 #include "ISerializable.hpp"
 
-typedef std::map<EquipmentWornLocation, ItemPtr> EquipmentMap;
+using EquipmentMap = std::map<EquipmentWornLocation, ItemPtr>;
 
 // Equipment is a class that represents all the "worn" equipment of a particular creature -
 // the items that are not carried as inventory.

@@ -37,4 +37,4 @@ class Wearable : public Item
     int evade, soak, to_hit, addl_damage;
 };
 
-typedef std::shared_ptr<Wearable> WearablePtr;
+using WearablePtr = std::shared_ptr<Wearable>;

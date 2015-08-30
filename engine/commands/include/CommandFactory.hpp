@@ -36,4 +36,4 @@ class CommandFactory : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<CommandFactory> CommandFactoryPtr;
+using CommandFactoryPtr = std::shared_ptr<CommandFactory>;

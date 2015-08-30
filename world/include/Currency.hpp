@@ -13,5 +13,5 @@ class Currency : public Item
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Currency> CurrencyPtr;
+using CurrencyPtr = std::shared_ptr<Currency>;
 

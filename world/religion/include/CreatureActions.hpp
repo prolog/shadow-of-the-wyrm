@@ -14,7 +14,7 @@ class CreatureActionKeys
 	static const std::string ACTION_GRAVEROBBING;
 };
 
-typedef std::map<std::string, bool> CreatureActionMap;
+using CreatureActionMap = std::map<std::string, bool>;
 
 // Describes creature actions, which the deity can either like, dislike,
 // or not care about.  Examples include using magic, attacking friendly

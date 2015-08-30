@@ -26,5 +26,5 @@ enum struct Colours
   COLOUR_BOLD_WHITE = 15
 };
 
-typedef Colours Colour;
-typedef std::pair<std::string, Colour> TextColour;
+using Colour = Colours;
+using TextColour = std::pair<std::string, Colour>;

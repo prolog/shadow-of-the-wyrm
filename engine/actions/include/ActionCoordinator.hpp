@@ -5,7 +5,7 @@
 #include "Creature.hpp"
 #include "ISerializable.hpp"
 
-typedef std::multimap<ActionCost, std::string> CreatureActionMultimap;
+using CreatureActionMultimap = std::multimap<ActionCost, std::string>;
 
 class ActionCoordinator : public ISerializable
 {
@@ -40,5 +40,5 @@ class ActionCoordinator : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::multimap<ActionCost, std::string>::iterator ActionOrderIterator;
-typedef std::multimap<ActionCost, std::string>::const_iterator ActionOrderConstIterator;
+using ActionOrderIterator = std::multimap<ActionCost, std::string>::iterator;
+using ActionOrderConstIterator = std::multimap<ActionCost, std::string>::const_iterator;

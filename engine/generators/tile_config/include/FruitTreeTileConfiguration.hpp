@@ -1,7 +1,7 @@
 #pragma once
 #include "TreeTileConfiguration.hpp"
 
-typedef std::map<std::pair<TreeSpeciesID, Season>, std::string> FruitProductionMap;
+using FruitProductionMap = std::map<std::pair<TreeSpeciesID, Season>, std::string>;
 
 class FruitTreeTileConfiguration : public TreeTileConfiguration
 {

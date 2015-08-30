@@ -11,5 +11,5 @@ class AnimationInstruction
     virtual void execute(Display* const display) = 0; 
 };
 
-typedef std::shared_ptr<AnimationInstruction> AnimationInstructionPtr;
+using AnimationInstructionPtr = std::shared_ptr<AnimationInstruction>;
 

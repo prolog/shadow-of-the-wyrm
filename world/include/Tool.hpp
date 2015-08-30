@@ -24,5 +24,5 @@ class Tool : public Item
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Tool> ToolPtr;
+using ToolPtr = std::shared_ptr<Tool>;
 

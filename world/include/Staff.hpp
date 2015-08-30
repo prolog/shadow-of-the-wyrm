@@ -13,4 +13,4 @@ class Staff : public Item
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Staff> StaffPtr;
+using StaffPtr = std::shared_ptr<Staff>;

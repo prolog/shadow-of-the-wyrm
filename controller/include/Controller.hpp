@@ -21,4 +21,4 @@ class Controller : public ISerializable
     ClassIdentifier internal_class_identifier() const = 0;
 };
 
-typedef std::shared_ptr<Controller> ControllerPtr;
+using ControllerPtr = std::shared_ptr<Controller>;

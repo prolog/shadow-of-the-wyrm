@@ -1,8 +1,8 @@
 #pragma once
 #include "ITileSafetyCondition.hpp"
 
-typedef std::map<TileType, std::vector<ITileSafetyConditionPtr>> TileTypeSafetyConditionsMap;
-typedef std::map<TileSuperType, std::vector<ITileSafetyConditionPtr>> TileSuperTypeSafetyConditionsMap;
+using TileTypeSafetyConditionsMap = std::map<TileType, std::vector<ITileSafetyConditionPtr>>;
+using TileSuperTypeSafetyConditionsMap = std::map<TileSuperType, std::vector<ITileSafetyConditionPtr>>;
 
 // A class used to check tile safety conditions to determine whether it is
 // safe for a creature to move there.  For example, moving on to water is

@@ -27,4 +27,4 @@ class Ammunition : public RangedWeapon
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Ammunition> AmmunitionPtr;
+using AmmunitionPtr = std::shared_ptr<Ammunition>;

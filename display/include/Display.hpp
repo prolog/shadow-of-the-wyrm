@@ -91,4 +91,4 @@ class Display : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const override = 0;
 };
 
-typedef std::shared_ptr<Display> DisplayPtr;
+using DisplayPtr = std::shared_ptr<Display>;

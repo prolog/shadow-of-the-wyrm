@@ -15,4 +15,4 @@ class Scroll : public Readable
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Scroll> ScrollPtr;
+using ScrollPtr = std::shared_ptr<Scroll>;

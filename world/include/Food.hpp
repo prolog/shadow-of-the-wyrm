@@ -17,4 +17,4 @@ class Food : public Consumable
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Food> FoodPtr;
+using FoodPtr = std::shared_ptr<Food>;

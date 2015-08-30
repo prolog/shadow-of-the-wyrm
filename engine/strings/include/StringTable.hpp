@@ -3,7 +3,7 @@
 #include <boost/algorithm/string.hpp>
 #include <unordered_map>
 
-typedef std::unordered_map<std::string, std::string> StringTableMap;
+using StringTableMap = std::unordered_map<std::string, std::string>;
 
 class StringTable
 {
@@ -21,4 +21,4 @@ class StringTable
     static StringTableMap string_table;
 };
 
-typedef const boost::iterator_range<std::string::const_iterator> StringRange;
+using StringRange = const boost::iterator_range<std::string::const_iterator>;

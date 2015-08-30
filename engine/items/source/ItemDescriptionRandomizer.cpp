@@ -6,8 +6,8 @@
 
 using namespace std;
 
-typedef tuple<string, string, Colour> details_tuple;
-typedef map<ItemType, vector<details_tuple>> RandomizedDescriptionMap;
+using details_tuple = tuple<string, string, Colour>;
+using RandomizedDescriptionMap = map<ItemType, vector<details_tuple>>;
 
 ItemDescriptionRandomizer::ItemDescriptionRandomizer(const vector<ItemType>& randomize_types)
 : types_to_randomize(randomize_types)

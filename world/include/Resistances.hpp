@@ -53,7 +53,7 @@ class Resistance : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
-typedef std::shared_ptr<Resistance> ResistancePtr;
+using ResistancePtr = std::shared_ptr<Resistance>;
 
 // Individual resistance types
 class SlashResistance : public Resistance
@@ -177,7 +177,7 @@ class LightningResistance : public Resistance
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::map<DamageType, std::shared_ptr<Resistance>> ResistancesMap;
+using ResistancesMap = std::map<DamageType, std::shared_ptr<Resistance>>;
 
 // Resistance container class
 class Resistances : public ISerializable

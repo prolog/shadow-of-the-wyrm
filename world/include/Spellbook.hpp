@@ -32,4 +32,4 @@ class Spellbook : public Readable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Spellbook> SpellbookPtr;
+using SpellbookPtr = std::shared_ptr<Spellbook>;

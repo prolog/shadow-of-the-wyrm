@@ -28,4 +28,4 @@ class WorshipSiteTile : public WorldMapLandmarkTile
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<WorshipSiteTile> WorshipSiteTilePtr;
+using WorshipSiteTilePtr = std::shared_ptr<WorshipSiteTile>;

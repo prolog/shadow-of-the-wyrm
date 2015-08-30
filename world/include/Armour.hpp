@@ -13,4 +13,4 @@ class Armour : public Wearable
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Armour> ArmourPtr;
+using ArmourPtr = std::shared_ptr<Armour>;

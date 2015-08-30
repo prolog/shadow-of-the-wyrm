@@ -13,4 +13,4 @@ class Amulet : public Wearable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Amulet> AmuletPtr;
+using AmuletPtr = std::shared_ptr<Amulet>;

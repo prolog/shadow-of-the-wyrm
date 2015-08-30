@@ -33,4 +33,4 @@ class Search
     CreaturePtr perspective_creature;
 };
 
-typedef std::shared_ptr<Search> SearchStrategyPtr;
+using SearchStrategyPtr = std::shared_ptr<Search>;

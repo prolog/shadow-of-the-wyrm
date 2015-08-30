@@ -79,6 +79,6 @@ class RangedWeapon : public Weapon
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Weapon> WeaponPtr;
-typedef std::shared_ptr<MeleeWeapon> MeleeWeaponPtr;
-typedef std::shared_ptr<RangedWeapon> RangedWeaponPtr;
+using WeaponPtr = std::shared_ptr<Weapon>;
+using MeleeWeaponPtr = std::shared_ptr<MeleeWeapon>;
+using RangedWeaponPtr = std::shared_ptr<RangedWeapon>;

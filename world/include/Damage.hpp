@@ -65,4 +65,4 @@ class Damage : public Dice
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Damage> DamagePtr;
+using DamagePtr = std::shared_ptr<Damage>;

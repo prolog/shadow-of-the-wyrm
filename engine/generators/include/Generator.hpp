@@ -82,4 +82,4 @@ namespace SL
   };
 }
 
-typedef std::shared_ptr<SL::Generator> GeneratorPtr;
+using GeneratorPtr = std::shared_ptr<SL::Generator>;

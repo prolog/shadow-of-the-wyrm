@@ -13,7 +13,7 @@
 #include "TileProperties.hpp"
 #include "TileTextKeys.hpp"
 
-typedef std::map<Direction, MapExitPtr> TileExitMap;
+using TileExitMap = std::map<Direction, MapExitPtr>;
 
 class Creature;
 class Feature;
@@ -161,4 +161,4 @@ class Tile : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Tile> TilePtr;
+using TilePtr = std::shared_ptr<Tile>;

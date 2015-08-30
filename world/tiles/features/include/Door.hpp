@@ -22,4 +22,4 @@ class Door : public Entrance
     virtual ClassIdentifier internal_class_identifier() const override;
  };
 
-typedef std::shared_ptr<Door> DoorPtr;
+using DoorPtr = std::shared_ptr<Door>;

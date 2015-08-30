@@ -14,5 +14,5 @@ class IDangerLevelCalculator
     virtual ~IDangerLevelCalculator() {};
 };
 
-typedef std::shared_ptr<IDangerLevelCalculator> IDangerLevelCalculatorPtr;
+using IDangerLevelCalculatorPtr = std::shared_ptr<IDangerLevelCalculator>;
 

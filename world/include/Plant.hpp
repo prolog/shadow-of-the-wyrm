@@ -17,4 +17,4 @@ class Plant : public Consumable
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Plant> PlantPtr;
+using PlantPtr = std::shared_ptr<Plant>;

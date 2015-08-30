@@ -15,7 +15,7 @@ struct MortuaryEntry
   int count = 0;
 };
 
-typedef std::map<std::string, MortuaryEntry> MortuaryCountMap;
+using MortuaryCountMap = std::map<std::string, MortuaryEntry>;
 
 // Used to identify the number of each creature killed.  There is a game-
 // level instance, as well as one for each creature generated.

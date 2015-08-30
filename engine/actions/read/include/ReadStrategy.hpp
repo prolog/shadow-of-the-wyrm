@@ -27,5 +27,5 @@ class ReadStrategy : public IActionManager
     virtual ActionCostValue get_action_cost_value(CreaturePtr creature) const override = 0;
 };
 
-typedef std::shared_ptr<ReadStrategy> ReadStrategyPtr;
+using ReadStrategyPtr = std::shared_ptr<ReadStrategy>;
 

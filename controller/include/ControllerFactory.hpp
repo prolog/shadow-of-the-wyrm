@@ -3,7 +3,7 @@
 #include "ClassIdentifiers.hpp"
 #include "Controller.hpp"
 
-typedef std::map<ClassIdentifier, ControllerPtr> ControllerSerializationMap;
+using ControllerSerializationMap = std::map<ClassIdentifier, ControllerPtr>;
 
 class ControllerFactory
 {

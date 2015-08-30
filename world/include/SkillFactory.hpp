@@ -3,7 +3,7 @@
 #include "ClassIdentifiers.hpp"
 #include "Skills.hpp"
 
-typedef std::map<ClassIdentifier, SkillPtr> SkillSerializationMap;
+using SkillSerializationMap = std::map<ClassIdentifier, SkillPtr>;
 
 class SkillFactory
 {

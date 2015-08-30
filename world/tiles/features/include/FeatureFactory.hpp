@@ -4,7 +4,7 @@
 #include "Feature.hpp"
 #include "Trap.hpp"
 
-typedef std::map<ClassIdentifier, FeaturePtr> FeatureSerializationMap;
+using FeatureSerializationMap =  std::map<ClassIdentifier, FeaturePtr>;
 
 class FeatureFactory
 {

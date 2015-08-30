@@ -67,5 +67,5 @@ class StatusEffect
     StatusEffectCalculatorPtr status_calc;
 };
 
-typedef std::shared_ptr<StatusEffect> StatusEffectPtr;
+using StatusEffectPtr = std::shared_ptr<StatusEffect>;
 

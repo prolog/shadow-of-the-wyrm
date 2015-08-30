@@ -16,4 +16,4 @@ class UpStaircaseTile : public StaircaseTile
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<UpStaircaseTile> UpStaircaseTilePtr;
+using UpStaircaseTilePtr = std::shared_ptr<UpStaircaseTile>;

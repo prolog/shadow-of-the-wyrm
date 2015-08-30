@@ -46,4 +46,4 @@ class PetrifiedCorpseStatue : public RegularStatue
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<PetrifiedCorpseStatue> PetrifiedCorpseStatuePtr;
+using PetrifiedCorpseStatuePtr = std::shared_ptr<PetrifiedCorpseStatue>;

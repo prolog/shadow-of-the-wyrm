@@ -25,4 +25,4 @@ class ScreenComponent
     ComponentAlignment ca;
 };
 
-typedef std::shared_ptr<ScreenComponent> ScreenComponentPtr;
+using ScreenComponentPtr = std::shared_ptr<ScreenComponent>;

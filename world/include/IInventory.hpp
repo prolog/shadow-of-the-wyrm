@@ -65,4 +65,4 @@ class IInventory : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const override = 0;
 };
 
-typedef std::shared_ptr<IInventory> IInventoryPtr;
+using IInventoryPtr = std::shared_ptr<IInventory>;

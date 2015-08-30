@@ -3,8 +3,8 @@
 #include "ClassIdentifiers.hpp"
 #include "Display.hpp"
 
-typedef std::map<ClassIdentifier, std::pair<DisplayPtr, ControllerPtr>> DisplaySerializationMap;
-typedef std::map<std::string, ClassIdentifier> DisplayIdentifierMap;
+using DisplaySerializationMap = std::map<ClassIdentifier, std::pair<DisplayPtr, ControllerPtr>>;
+using DisplayIdentifierMap = std::map<std::string, ClassIdentifier>;
 
 class DisplayFactory
 {

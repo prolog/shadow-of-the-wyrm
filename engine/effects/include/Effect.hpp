@@ -51,5 +51,5 @@ class Effect
     std::vector<AdditionalEffectMessagePtr> additional_effect_messages;
 };
 
-typedef std::shared_ptr<Effect> EffectPtr;
+using EffectPtr = std::shared_ptr<Effect>;
 

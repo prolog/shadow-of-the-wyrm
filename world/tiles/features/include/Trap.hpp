@@ -65,4 +65,4 @@ class Trap : public Feature
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<Trap> TrapPtr;
+using TrapPtr = std::shared_ptr<Trap>;

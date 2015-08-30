@@ -32,9 +32,9 @@
 // Forward declarations.
 class DecisionStrategy;
 
-typedef std::map<std::string, std::pair<std::string, Coordinate>> TargetMap;
-typedef std::map<std::string, ScriptDetails> EventScriptsMap;
-typedef std::map<std::string, bool> CreatureStatusMap;
+using TargetMap = std::map<std::string, std::pair<std::string, Coordinate>>;
+using EventScriptsMap = std::map<std::string, ScriptDetails>;
+using CreatureStatusMap = std::map<std::string, bool>;
 
 class Creature : public ISerializable
 {
@@ -439,5 +439,5 @@ class Creature : public ISerializable
     std::map<double, std::vector<std::pair<std::string, Modifier>>> modifiers;
 };
 
-typedef std::shared_ptr<Creature> CreaturePtr;
-typedef std::map<std::string, CreaturePtr> CreatureMap;
+using CreaturePtr = std::shared_ptr<Creature>;
+using CreatureMap = std::map<std::string, CreaturePtr>;

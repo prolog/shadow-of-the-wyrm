@@ -49,4 +49,4 @@ class GenerationValues : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::map<std::string, GenerationValues> GenerationValuesMap;
+using GenerationValuesMap = std::map<std::string, GenerationValues>;

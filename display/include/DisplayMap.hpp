@@ -7,7 +7,7 @@
 
 class DisplayTile;
 
-typedef std::unordered_map<std::string, DisplayTile> DisplayMapType;
+using DisplayMapType = std::unordered_map<std::string, DisplayTile>;
 
 // A DisplayMap is the only map the Display cares about.  It contains
 // DisplayTile info, which in turn contains boiled-down Tile information.

@@ -20,4 +20,4 @@ class ItemDescriber : public IDescriber
     ItemPtr item;
 };
 
-typedef std::shared_ptr<ItemDescriber> ItemDescriberPtr;
+using ItemDescriberPtr = std::shared_ptr<ItemDescriber>;

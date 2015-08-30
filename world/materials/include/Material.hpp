@@ -28,4 +28,4 @@ class Material
     virtual Material* clone() = 0;
 };
 
-typedef std::shared_ptr<Material> MaterialPtr;
+using MaterialPtr = std::shared_ptr<Material>;

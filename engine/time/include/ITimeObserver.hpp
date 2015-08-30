@@ -29,4 +29,4 @@ class ITimeObserver : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-typedef std::shared_ptr<ITimeObserver> ITimeObserverPtr;
+using ITimeObserverPtr = std::shared_ptr<ITimeObserver>;

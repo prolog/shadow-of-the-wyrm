@@ -16,4 +16,4 @@ class DamageCalculator
     AttackType attack_type;
 };
 
-typedef std::shared_ptr<DamageCalculator> DamageCalculatorPtr;
+using DamageCalculatorPtr = std::shared_ptr<DamageCalculator>;

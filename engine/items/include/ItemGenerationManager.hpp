@@ -3,8 +3,8 @@
 #include "ActionManager.hpp"
 #include "GenerationValues.hpp"
 
-typedef std::pair<std::string, std::pair<std::shared_ptr<Item>, GenerationValues>> ItemGenerationPair;
-typedef std::vector<ItemGenerationPair> ItemGenerationVec;
+using ItemGenerationPair = std::pair<std::string, std::pair<std::shared_ptr<Item>, GenerationValues>>;
+using ItemGenerationVec = std::vector<ItemGenerationPair>;
 
 class ItemGenerationManager
 {

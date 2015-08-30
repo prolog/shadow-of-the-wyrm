@@ -10,5 +10,5 @@ class IDeityDecisionStrategy
     virtual DeityDecisionStrategyHandlerPtr get_decision_for_sacrifice(CreaturePtr creature, ItemPtr item) = 0;
 };
 
-typedef std::shared_ptr<IDeityDecisionStrategy> IDeityDecisionStrategyPtr;
+using IDeityDecisionStrategyPtr = std::shared_ptr<IDeityDecisionStrategy>;
 
