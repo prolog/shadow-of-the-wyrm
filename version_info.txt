@@ -1,4 +1,4 @@
-Savage Lands v0.3.9 "Dowland"
+Savage Lands v0.3.9 "Dowland" 
 - Version declared August 5, 2015.
 
 - Prayer can now summon divine wrath.  When the creature has at least two
