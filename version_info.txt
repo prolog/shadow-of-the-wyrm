@@ -1,5 +1,6 @@
-Savage Lands v0.3.9 "Dowland" 
-- Version declared August 5, 2015.
+Savage Lands v0.3.9 "Dowland"
+- Version declared August 5, 2015.  Version finalized August 31, 2015.
+  (First public release)
 
 - Prayer can now summon divine wrath.  When the creature has at least two
   adjacent hostile creatures, the deity may decide to smite them, doing
