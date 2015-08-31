@@ -55,6 +55,8 @@ Savage Lands v0.3.9 "Dowland"
 - Converted all typedefs to C++11 using statements.  Renamed the "jrcpp"
   branch to "default".
 
+- Created a batch file to create the Windows release zip.
+
 - New creatures: goblin pelter, githra, chaosling, grawl, quaalis.
 
 - New items: pick axe, dwarven mattock, trail ration.
