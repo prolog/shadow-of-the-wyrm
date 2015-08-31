@@ -1108,8 +1108,8 @@ bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
 
 // Set, get, and query additional (string) properties
 // Uncomment the code below to find out the size of Creature. :)
-//  template<int s> struct creature_size;
-//  creature_size<sizeof(Creature)> creature_size;
+// template<int s> struct creature_size;
+// creature_size<sizeof(Creature)> creature_size;
 
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
@@ -1121,7 +1121,7 @@ void Creature::assert_size() const
     static_assert(sizeof(*this) == 904, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 800, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 816, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
 	static_assert(sizeof(*this) == 424, "Unexpected sizeof Creature.");
