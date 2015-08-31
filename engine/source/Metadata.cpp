@@ -42,8 +42,10 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // England lutentist and composer of the late 16th century
-  return "\"Dowland\"";
+  // Author of some of the most famous guitar pieces, but never actually
+  // wrote for guitar!  His pieces were for piano, and were transcribed
+  // by Tarrega, Segovia, and others.
+  return "\"Albeniz\"";
 }
 
 string Metadata::get_game_version_synopsis() const
