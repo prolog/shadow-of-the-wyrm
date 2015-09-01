@@ -2,7 +2,7 @@
 
 # Create a CSV file containing the creature data.  The CSV file will
 # contain a header line, followed by the creature data from
-# the SavageLands.xml configuration file.  This is useful for quickly
+# the ShadowOfTheWyrm.xml configuration file.  This is useful for quickly
 # checking whether a given symbol/colour combination has already been
 # assigned to a particular creature.
 
@@ -65,5 +65,5 @@ def write_creatures_to_csv(creatures, csv_file):
 
 # Get the creatures from the XML configuration file, and write them to
 # a CSV file, pre-sorted by symbol and colour
-creatures = get_creatures_from_xml("data/SavageLands.xml")
-write_creatures_to_csv(creatures, "SavageLands.csv")
+creatures = get_creatures_from_xml("data/ShadowOfTheWyrm.xml")
+write_creatures_to_csv(creatures, "ShadowOfTheWyrm.csv")

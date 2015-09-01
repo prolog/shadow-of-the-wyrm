@@ -1,4 +1,4 @@
-<SavageLands xmlns="urn:savage_lands:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:1.0.0 ./SavageLands.xsd">
+<ShadowOfTheWyrm xmlns="urn:shadow_of_the_wyrm:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:1.0.0 ./ShadowOfTheWyrm.xsd">
 	<Deities>
 		<Deity id="01_celeste">
 			<UserPlayable>1</UserPlayable>
@@ -24580,4 +24580,4 @@
 	<Scripts>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
-</SavageLands>
+</ShadowOfTheWyrm>

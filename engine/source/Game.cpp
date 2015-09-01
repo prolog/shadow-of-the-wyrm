@@ -435,7 +435,7 @@ void Game::go()
     panic_save(current_player);
 
     // Add a message about the crash.
-    string crash_msg = StringTable::get(TextKeys::SL_PROBLEM_GAME_SAVED);
+    string crash_msg = StringTable::get(TextKeys::SW_PROBLEM_GAME_SAVED);
     std::cout << crash_msg << endl << endl;
   }
 

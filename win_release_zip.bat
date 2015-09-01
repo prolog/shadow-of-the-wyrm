@@ -1,5 +1,5 @@
 @ECHO OFF
 cd dist
-7z.exe a -tzip SavageLands.zip * -r -x!*.pdb
+7z.exe a -tzip ShadowOfTheWyrm.zip * -r -x!*.pdb
 cd ..
-@ECHO dist\SavageLands.zip created!
+@ECHO dist\ShadowOfTheWyrm.zip created!

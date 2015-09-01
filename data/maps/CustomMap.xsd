@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:maps:1.0.0" xmlns:sl="urn:savage_lands:1.0.0" targetNamespace="urn:savage_lands:maps:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
-	<xs:import namespace="urn:savage_lands:1.0.0" schemaLocation="../SavageLands.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:sl="urn:shadow_of_the_wyrm:1.0.0" targetNamespace="urn:shadow_of_the_wyrm:maps:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
+	<xs:import namespace="urn:shadow_of_the_wyrm:1.0.0" schemaLocation="../ShadowOfTheWyrm.xsd"/>
 	<xs:element name="CustomMap">
 		<xs:annotation>
-			<xs:documentation>XML element describing the custom maps that describe fixed locations within Savage Lands.</xs:documentation>
+			<xs:documentation>XML element describing the custom maps that describe fixed locations within Shadow of the Wyrm.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -318,7 +318,7 @@
 			<xs:documentation>Properties that will be added to the Map instance within the game.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Property" type="tns:Property"/>
+			<xs:element name="Property" type="tns:Property" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Property">

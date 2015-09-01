@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:1.0.0" targetNamespace="urn:savage_lands:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:shadow_of_the_wyrm:1.0.0" targetNamespace="urn:shadow_of_the_wyrm:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
 <!-- ELEMENTS -->
-<xs:element name="SavageLands">
+<xs:element name="ShadowOfTheWyrm">
 	<xs:annotation><xs:documentation>The configuration root node - contains all the races, classes, and game data.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
@@ -18,7 +18,7 @@
 	</xs:complexType>
 </xs:element>
 <xs:element name="Deities">
-	<xs:annotation><xs:documentation>A list of the deities available for worship within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>A list of the deities available for worship within Shadow of the Wyrm.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:Deity" minOccurs="1" maxOccurs="unbounded"/>
@@ -26,7 +26,7 @@
 	</xs:complexType>
 </xs:element>
 <xs:element name="Races">
-	<xs:annotation><xs:documentation>A list of races to be used at runtime within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>A list of races to be used at runtime within Shadow of the Wyrm.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:Race" minOccurs="1" maxOccurs="unbounded"/>
@@ -34,7 +34,7 @@
 	</xs:complexType>
 </xs:element>
 <xs:element name="Classes">
-	<xs:annotation><xs:documentation>A list of classes to be used at runtime within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>A list of classes to be used at runtime within Shadow of the Wyrm.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:Class" minOccurs="1" maxOccurs="unbounded"/>
@@ -42,7 +42,7 @@
 	</xs:complexType>
 </xs:element>
 <xs:element name="Creatures">
-	<xs:annotation><xs:documentation>A list of the creatures available for generation within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>A list of the creatures available for generation within Shadow of the Wyrm.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:Creature" minOccurs="1" maxOccurs="unbounded"/>
@@ -140,7 +140,7 @@
 	</xs:complexType>
 </xs:element>
 <xs:element name="Items">
-	<xs:annotation><xs:documentation>The items available within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>The items available within Shadow of the Wyrm.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:Armours" minOccurs="0"/>
@@ -165,7 +165,7 @@
 	<!-- Rings -->
 </xs:element>
 <xs:element name="Scripts">
-	<xs:annotation><xs:documentation>Scripts used by the Savage Lands engine.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>Scripts used by the Shadow of the Wyrm engine.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<!-- Run after character creation to have special effects when
@@ -175,7 +175,7 @@
 	</xs:complexType>
 </xs:element>
 <xs:element name="Deity">
-	<xs:annotation><xs:documentation>One of the Gods or Goddesses of Savage Lands.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>One of the Gods or Goddesses of Shadow of the Wyrm.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
@@ -196,7 +196,7 @@
 	</xs:complexType>
 </xs:element>
 <xs:element name="Race">
-	<xs:annotation><xs:documentation>A race within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>A race within Shadow of the Wyrm.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
@@ -339,7 +339,7 @@
 				 - immobile_default
 				 - immobile_aggressive
 				 - mobile
-				 - Any unaccepted value provided will map to "default" in Savage Lands.
+				 - Any unaccepted value provided will map to "default" in Shadow of the Wyrm.
 			-->
 			<xs:element name="DecisionStrategy" type="xs:string" minOccurs="0"/>
 			<xs:element name="Text" type="tns:TextDetails"/>
@@ -950,7 +950,7 @@
 </xs:complexType>
 <xs:complexType name="Weapon">
 	<xs:annotation>
-		<xs:documentation>If Skill is not provided, Savage Lands will attempt to deduce it based on the other.
+		<xs:documentation>If Skill is not provided, Shadow of the Wyrm will attempt to deduce it based on the other.
 						  If neither is provided, the skill trained will default to Exotic.
 		</xs:documentation>
 	</xs:annotation>

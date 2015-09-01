@@ -104,7 +104,7 @@ vector<MapPtr> XMLConfigurationReader::get_custom_maps(const string& directory, 
       if (!root.is_null())
       {
         string xmlns = XMLUtils::get_attribute_value(root, "xmlns");
-        XML::set_namespace(xmlns); // these use a different ns than the main savage lands xml.
+        XML::set_namespace(xmlns); // these use a different ns than the main shadow of the wyrm xml.
       }
 
       MapPtr custom_map = map_reader.get_custom_map(root);

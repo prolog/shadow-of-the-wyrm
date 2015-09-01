@@ -221,7 +221,7 @@ string Serialization::generate_savefile_name(const string& user_name, const stri
   
   boost::hash<string> string_hash;
   size_t hash = string_hash(string_to_hash);
-  string savefile_name = "./" + std::to_string(hash) + ".sls"; // "sls" = "Savage Lands Save"
+  string savefile_name = "./" + std::to_string(hash) + ".sws"; // "sws" = "Shadow of the Wyrm Save"
 
   return savefile_name;
 }

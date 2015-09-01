@@ -12,7 +12,7 @@ using namespace std;
 // Get the poem for the title screen.
 string get_title_poem()
 {
-  string title_poem = StringTable::get(TextKeys::SL_TITLE_POEM);
+  string title_poem = StringTable::get(TextKeys::SW_TITLE_POEM);
   return title_poem;
 }
 

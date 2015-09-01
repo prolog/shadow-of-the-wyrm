@@ -29,10 +29,10 @@ class EngineStateManager
 // Game flow functions - used to branch into New, Load, Exit, etc.
 using GameOptionMap = std::map<std::string, EngineStateEnum>;
 
-class SavageLandsEngine
+class ShadowOfTheWyrmEngine
 {
   public:    
-    SavageLandsEngine();
+    ShadowOfTheWyrmEngine();
  
     void start(const Settings& settings);
 
@@ -61,5 +61,5 @@ class SavageLandsEngine
     ControllerPtr controller;
     DisplayPtr display;
     GameOptionMap game_option_map;
-    std::map<EngineStateEnum, bool (SavageLandsEngine::*)(void)> game_flow_functions;
+    std::map<EngineStateEnum, bool (ShadowOfTheWyrmEngine::*)(void)> game_flow_functions;
 };

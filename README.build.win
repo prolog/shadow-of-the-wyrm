@@ -1,6 +1,6 @@
-Building Savage Lands in Windows 7+
+Building Shadow of the Wyrm in Windows 7+
 
-Savage Lands is written in C++ and Lua.  As such, you will need a few
+Shadow of the Wyrm is written in C++ and Lua.  As such, you will need a few
 different pieces of software to build it.
 
 Basic toolchain:
@@ -9,7 +9,7 @@ Basic toolchain:
 - Lua 5.1 with the LUA_DEV environment variable set
 
 Source:
-- Savage Lands source in some directory
+- Shadow of the Wyrm source in some directory
 
 The following dependencies are used (environment variable in parens):
 
@@ -22,6 +22,6 @@ The following dependencies are used (environment variable in parens):
 Download each of the dependencies, build, and then set the environment
 variables appropraitely.
 
-Open the Savage Lands solution, select the configuration (e.g., Release),
-and select "Rebuild All".
+Open the Shadow of the Wyrm solution, select the configuration (e.g., 
+Release), and select "Rebuild All".
 

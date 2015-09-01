@@ -245,7 +245,7 @@ bool CursesDisplay::create()
 
   if ((TERMINAL_MAX_ROWS < 24) || (TERMINAL_MAX_COLS < 80))
   {
-    printw("Savage Lands requires a terminal of 80x24 or larger.\n");
+    printw("Shadow of the Wyrm requires a terminal of 80x24 or larger.\n");
     creation_success = false;
   }
 

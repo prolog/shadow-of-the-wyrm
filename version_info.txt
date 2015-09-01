@@ -1,5 +1,9 @@
-Savage Lands v0.4.0 "Albeniz"
-- Version declared August 31, 2015.
+Shadow of the Wyrm v0.4.0 "Albeniz"
+- Version declared August 31, 2015.  Version finalized September 1, 2015.
+
+- Small revision this time.  Needed to rename the game to avoid a 
+  naming-collision with open-world fantasy exploration game "Savage 
+  Lands" (I should have released last year!).
 
 Savage Lands v0.3.9 "Dowland"
 - Version declared August 5, 2015.  Version finalized August 31, 2015.

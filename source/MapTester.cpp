@@ -36,7 +36,7 @@
 #include "SimpleChurchGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
 #include "MapTranslator.hpp"
-#include "SavageLandsEngine.hpp"
+#include "ShadowOfTheWyrmEngine.hpp"
 #include "SettlementRuinsGenerator.hpp"
 #include "SimpleTempleGenerator.hpp"
 #include "SnakingTempleGenerator.hpp"
@@ -112,7 +112,7 @@ void   print_class_info(ClassMap& class_map, const string& id);
 
 void initialize_settings()
 {
-  StringTable::load("savagelandstext_en.ini");
+  StringTable::load("shadowofthewyrmtext_en.ini");
 }
 
 void output_map(string map, string filename)
@@ -614,7 +614,7 @@ void race_info()
 {
   string race_id = "";
 
-  XMLConfigurationReader xml_config_reader("data/SavageLands.xml");
+  XMLConfigurationReader xml_config_reader("data/ShadowOfTheWyrm.xml");
   RaceMap races = xml_config_reader.get_races();
 
   cout << "Read " << races.size() << " races." << endl << endl;
@@ -632,7 +632,7 @@ void class_info()
 {
   string class_id = "";
 
-  XMLConfigurationReader xml_config_reader("data/SavageLands.xml");
+  XMLConfigurationReader xml_config_reader("data/ShadowOfTheWyrm.xml");
   ClassMap classes = xml_config_reader.get_classes();
 
   cout << "Read " << classes.size() << " classes." << endl << endl;
@@ -967,7 +967,7 @@ int main(int argc, char** argv)
   initialize_settings();
   
   // Set up the items, so that I can see what gets generated...
-  SavageLandsEngine engine;
+  ShadowOfTheWyrmEngine engine;
   engine.setup_game();
 
   while (option != -1)

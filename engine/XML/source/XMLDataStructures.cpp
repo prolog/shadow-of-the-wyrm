@@ -7,8 +7,8 @@ using namespace xercesc;
 using namespace std;
 
 // XML static vars
-// Right now, there is only one namespace used for SavageLands.
-string XML::xml_namespace = "urn:savage_lands:1.0.0";
+// Right now, there is only one namespace used for ShadowOfTheWyrm.
+string XML::xml_namespace = "urn:shadow_of_the_wyrm:1.0.0";
 
 // Routines for setting up/tearing down the XML Library.  Xerces requires these.
 void XML::initialize()
@@ -52,7 +52,7 @@ string XML::get_namespace()
   return xml_namespace;
 }
 
-// By default, always search using the Savage Lands namespace - no need to try anything else, yet.
+// By default, always search using the Shadow of the Wyrm namespace - no need to try anything else, yet.
 XMLNode XMLUtils::get_next_element_by_local_name(const XMLNode& node, const string& node_name)
 {
   XMLNode result_node;

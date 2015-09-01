@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const string Settings::SETTINGS_FILENAME = "slands.ini";
+const string Settings::SETTINGS_FILENAME = "swyrm.ini";
 
 // Find the ini file (first check the user's home directory, then the
 // game directory).  Parse it into the boost::ptree so that it can be
@@ -26,7 +26,7 @@ Settings::Settings(const bool read_from_disk)
       // directory.
       if (!boost::filesystem::exists(SETTINGS_FILENAME))
       {
-        throw std::runtime_error("Could not find a copy of slands.ini");
+        throw std::runtime_error("Could not find a copy of swyrm.ini");
       }
     }
 

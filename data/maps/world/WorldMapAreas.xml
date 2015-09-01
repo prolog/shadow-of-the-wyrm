@@ -1,4 +1,4 @@
-<WorldMap xmlns="urn:savage_lands:maps:world_map:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:maps:world_map:1.0.0 ./WorldMapAreas.xsd">
+<WorldMap xmlns="urn:shadow_of_the_wyrm:maps:world_map:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:world_map:1.0.0 ./WorldMapAreas.xsd">
 	<Areas>
 		<Area id="little_island">
 			<Row y="94" x="94">~~~~~~</Row>
