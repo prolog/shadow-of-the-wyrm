@@ -52,7 +52,7 @@ string Metadata::get_game_version_synopsis() const
 {
   ostringstream oss;
 
-  string game_name = StringTable::get(TextKeys::SL_TITLE);
+  string game_name = StringTable::get(TextKeys::SW_TITLE);
   string version = get_version();
   string code_name = get_code_name();
 

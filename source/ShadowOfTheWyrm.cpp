@@ -17,7 +17,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "Metadata.hpp"
-#include "SavageLandsEngine.hpp"
+#include "ShadowOfTheWyrmEngine.hpp"
 #include "Settings.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
@@ -49,7 +49,7 @@ void print_title()
 {
   Metadata meta;
 
-  std::string title = StringTable::get(TextKeys::SL_TITLE);
+  std::string title = StringTable::get(TextKeys::SW_TITLE);
   std::string version = meta.get_version();
 	std::cout << title << " " << version << std::endl;
 
@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
 
       if (display && display->create())
       {
-        SavageLandsEngine engine;
+        ShadowOfTheWyrmEngine engine;
 
         // set the default display into the engine
         engine.set_display(display);
@@ -132,7 +132,7 @@ int main(int argc, char* argv[])
   }
   catch(...)
   {
-    log.error("main - Unable to run Savage Lands!");
+    log.error("main - Unable to run Shadow of the Wyrm!");
   }
 
   return 0;

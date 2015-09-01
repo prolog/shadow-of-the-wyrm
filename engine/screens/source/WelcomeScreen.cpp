@@ -47,15 +47,15 @@ void WelcomeScreen::initialize()
 
   Option new_game;
   new_game.set_id(option_id++);
-  new_game.set_description(StringTable::get(TextKeys::SL_TITLE_NEW_GAME));
+  new_game.set_description(StringTable::get(TextKeys::SW_TITLE_NEW_GAME));
 
   Option load_game;
   load_game.set_id(option_id++);
-  load_game.set_description(StringTable::get(TextKeys::SL_TITLE_LOAD_GAME));
+  load_game.set_description(StringTable::get(TextKeys::SW_TITLE_LOAD_GAME));
 
   Option quit;
   quit.set_id(25); // 'z'
-  quit.set_description(StringTable::get(TextKeys::SL_TITLE_QUIT_GAME));
+  quit.set_description(StringTable::get(TextKeys::SW_TITLE_QUIT_GAME));
 
   options->add_option(new_game);
   options->add_option_description("");

@@ -122,7 +122,7 @@ class Game : public ISerializable
     virtual bool deserialize(std::istream& stream) override;
 
   private:
-    friend class SavageLandsEngine;
+    friend class ShadowOfTheWyrmEngine;
     friend class BlindedStatusEffect;
     friend class CreatureDeathManager;
     friend class PlayerDeathManager;
@@ -135,7 +135,7 @@ class Game : public ISerializable
     friend class TileSelectionCommandProcessor;
     friend class SeasonsTimeObserver;
     friend class TileSelectionAction;
-    friend class SavageLandsEngine;
+    friend class ShadowOfTheWyrmEngine;
     friend class SL_Engine_Game; // unit testing
 
     Game();
@@ -143,7 +143,7 @@ class Game : public ISerializable
     bool operator=(const Game& game);
    ~Game();
 
-    // Game commands - protected, so they should only be called by SavageLandsEngine
+    // Game commands - protected, so they should only be called by ShadowOfTheWyrmEngine
     // or CommandProcessor.
     ActionCost process_action_for_creature(CreaturePtr current_creature, MapPtr current_map, const bool reloaded_game);
 
@@ -218,7 +218,7 @@ class Game : public ISerializable
     // being applied to the player.
     Quests quests;
 
-    // The name of the sid ini file (e.g., "savagelandstext_en.ini").  This
+    // The name of the sid ini file (e.g., "shadowofthewyrmtext_en.ini").  This
     // doesn't need to be persisted - it will be loaded each time the
     // program runs.
     std::string sid_ini_filename;

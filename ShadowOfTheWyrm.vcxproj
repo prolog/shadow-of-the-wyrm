@@ -59,7 +59,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetName>savage</TargetName>
+    <TargetName>sotw</TargetName>
     <OutDir>$(SolutionDir)\dist\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -152,7 +152,10 @@ xcopy /y /d /s /i $(ProjectDir)data $(OutDir)data
 mkdir $(OutDir)scripts
 xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
 mkdir $(OutDir)texts
-xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
+xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts
+xcopy "$(ZLIB_DIR)\zlib-1.2.8\*.dll" $(OutDir)
+xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
+</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copying game files...</Message>
@@ -609,12 +612,12 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClInclude Include="engine\include\Range.hpp" />
     <ClInclude Include="engine\include\ReligionManager.hpp" />
     <ClInclude Include="engine\include\RNG.hpp" />
-    <ClInclude Include="engine\include\SavageLandsEngine.hpp" />
     <ClInclude Include="engine\include\ScoreFile.hpp" />
     <ClInclude Include="engine\include\ScoreFileEntry.hpp" />
     <ClInclude Include="engine\include\SelectionUtils.hpp" />
     <ClInclude Include="engine\include\SettingKeybindings.hpp" />
     <ClInclude Include="engine\include\Settings.hpp" />
+    <ClInclude Include="engine\include\ShadowOfTheWyrmEngine.hpp" />
     <ClInclude Include="engine\items\include\CorpseFactory.hpp" />
     <ClInclude Include="engine\items\include\EdibleItemFilter.hpp" />
     <ClInclude Include="engine\items\include\IItemFilter.hpp" />
@@ -1079,6 +1082,7 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
+    <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
     <ClCompile Include="source\CompilationDetails.cpp" />
     <ClCompile Include="controller\source\Controller.cpp" />
     <ClCompile Include="controller\source\ControllerFactory.cpp" />
@@ -2093,7 +2097,6 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
     <ClCompile Include="engine\source\Random.cpp" />
     <ClCompile Include="engine\source\ReligionManager.cpp" />
     <ClCompile Include="engine\source\RNG.cpp" />
-    <ClCompile Include="engine\source\SavageLandsEngine.cpp" />
     <ClCompile Include="engine\source\ScoreFile.cpp" />
     <ClCompile Include="engine\source\ScoreFileEntry.cpp" />
     <ClCompile Include="engine\source\SelectionUtils.cpp" />
@@ -2327,9 +2330,7 @@ xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts</Command>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="source\SavageLands.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="source\ShadowOfTheWyrm.cpp" />
     <ClCompile Include="world\magic\source\IndividualSpellKnowledge.cpp" />
     <ClCompile Include="world\magic\source\Spell.cpp" />
     <ClCompile Include="world\magic\source\SpellAdditionalProperties.cpp" />

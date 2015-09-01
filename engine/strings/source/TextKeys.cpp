@@ -10,14 +10,14 @@ TextKeys::~TextKeys()
 {
 }
 
-const string TextKeys::SL_TITLE    = "SL_TITLE";
-const string TextKeys::SL_TITLE_POEM = "SL_TITLE_POEM";
+const string TextKeys::SW_TITLE    = "SW_TITLE";
+const string TextKeys::SW_TITLE_POEM = "SW_TITLE_POEM";
 const string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
-const string TextKeys::SL_TITLE_NEW_GAME = "SL_TITLE_NEW_GAME";
+const string TextKeys::SW_TITLE_NEW_GAME = "SW_TITLE_NEW_GAME";
 const string TextKeys::CHARACTER_ALREADY_EXISTS = "CHARACTER_ALREADY_EXISTS";
-const string TextKeys::SL_TITLE_LOAD_GAME = "SL_TITLE_LOAD_GAME";
-const string TextKeys::SL_TITLE_QUIT_GAME = "SL_TITLE_QUIT_GAME";
-const string TextKeys::SL_PROBLEM_GAME_SAVED = "SL_PROBLEM_GAME_SAVED";
+const string TextKeys::SW_TITLE_LOAD_GAME = "SW_TITLE_LOAD_GAME";
+const string TextKeys::SW_TITLE_QUIT_GAME = "SW_TITLE_QUIT_GAME";
+const string TextKeys::SW_PROBLEM_GAME_SAVED = "SW_PROBLEM_GAME_SAVED";
 const string TextKeys::EXIT = "EXIT";
 const string TextKeys::DEATH_MESSAGE = "DEATH_MESSAGE";
 const string TextKeys::PLAYER_DESC = "PLAYER_DESC";

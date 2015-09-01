@@ -3,7 +3,7 @@
 #include <vector>
 
 // A class that allows access to the compiler/platform details used to
-// compile Savage Lands.
+// compile Shadow of the Wyrm.
 class CompilationDetails
 {
   public:

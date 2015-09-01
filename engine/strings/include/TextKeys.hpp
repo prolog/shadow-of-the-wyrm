@@ -2,18 +2,18 @@
 #include <string>
 
 // These define all the string keys.
-// Key/value pairs are defined in savagelandstext_lang.ini, where lang=en,fr,ru,kl,etc.
+// Key/value pairs are defined in shadowofthewyrmtext_lang.ini, where lang=en,fr,ru,kl,etc.
 class TextKeys
 {
   public:
-    static const std::string SL_TITLE;
-    static const std::string SL_TITLE_POEM;
+    static const std::string SW_TITLE;
+    static const std::string SW_TITLE_POEM;
     static const std::string COPYRIGHT_NOTICE;
-    static const std::string SL_TITLE_NEW_GAME;
+    static const std::string SW_TITLE_NEW_GAME;
     static const std::string CHARACTER_ALREADY_EXISTS;
-    static const std::string SL_TITLE_LOAD_GAME;
-    static const std::string SL_TITLE_QUIT_GAME;
-    static const std::string SL_PROBLEM_GAME_SAVED;
+    static const std::string SW_TITLE_LOAD_GAME;
+    static const std::string SW_TITLE_QUIT_GAME;
+    static const std::string SW_PROBLEM_GAME_SAVED;
     static const std::string EXIT;
     static const std::string DEATH_MESSAGE;
     static const std::string DEFAULT_PLAYER_NAME;

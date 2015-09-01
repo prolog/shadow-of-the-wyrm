@@ -1,4 +1,4 @@
-#include "SavageLandsEngine.hpp"
+#include "ShadowOfTheWyrmEngine.hpp"
 #include "XMLConfigurationReader.hpp"
 #include "Class.hpp"
 #include "ClassSelectionScreen.hpp"
@@ -60,27 +60,27 @@ bool EngineStateManager::exit() const
 
 // Core engine functionality
 
-SavageLandsEngine::SavageLandsEngine()
+ShadowOfTheWyrmEngine::ShadowOfTheWyrmEngine()
 {
   initialize_game_option_map();
   initialize_game_flow_map();
 }
 
-void SavageLandsEngine::initialize_game_option_map()
+void ShadowOfTheWyrmEngine::initialize_game_option_map()
 {
   game_option_map = GameOptionMap{ { "a", EngineStateEnum::ENGINE_STATE_START_NEW_GAME },
                                   {"b", EngineStateEnum::ENGINE_STATE_LOAD_GAME},
                                   {"z", EngineStateEnum::ENGINE_STATE_STOP}};
 }
 
-void SavageLandsEngine::initialize_game_flow_map()
+void ShadowOfTheWyrmEngine::initialize_game_flow_map()
 {
-  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_START_NEW_GAME, &SavageLandsEngine::process_new_game));
-  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_LOAD_GAME, &SavageLandsEngine::process_load_game));
-  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_STOP, &SavageLandsEngine::process_exit_game));
+  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_START_NEW_GAME, &ShadowOfTheWyrmEngine::process_new_game));
+  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_LOAD_GAME, &ShadowOfTheWyrmEngine::process_load_game));
+  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_STOP, &ShadowOfTheWyrmEngine::process_exit_game));
 }
 
-void SavageLandsEngine::start(const Settings& settings)
+void ShadowOfTheWyrmEngine::start(const Settings& settings)
 {
   Game& game = Game::instance();
 
@@ -101,18 +101,18 @@ void SavageLandsEngine::start(const Settings& settings)
   }
 }
 
-void SavageLandsEngine::set_controller(ControllerPtr new_controller)
+void ShadowOfTheWyrmEngine::set_controller(ControllerPtr new_controller)
 {
   controller = new_controller;
 }
 
-void SavageLandsEngine::set_display(DisplayPtr new_display)
+void ShadowOfTheWyrmEngine::set_display(DisplayPtr new_display)
 {
   display = new_display;
 }
 
 // Set up the Display based on the ini settings.
-void SavageLandsEngine::setup_display(const Settings& settings)
+void ShadowOfTheWyrmEngine::setup_display(const Settings& settings)
 {
   if (display)
   {
@@ -123,7 +123,7 @@ void SavageLandsEngine::setup_display(const Settings& settings)
 }
 
 // Set up everything needed by the Game
-void SavageLandsEngine::setup_game()
+void ShadowOfTheWyrmEngine::setup_game()
 {
   Game& game = Game::instance();
   
@@ -173,7 +173,7 @@ void SavageLandsEngine::setup_game()
 }
 
 // Create the player
-void SavageLandsEngine::setup_player_and_world()
+void ShadowOfTheWyrmEngine::setup_player_and_world()
 {
   bool done = false;
 
@@ -187,17 +187,17 @@ void SavageLandsEngine::setup_player_and_world()
 }
 
 // Process the game option.
-bool SavageLandsEngine::process_game_option(const string& game_option)
+bool ShadowOfTheWyrmEngine::process_game_option(const string& game_option)
 {
   EngineStateEnum engine_state = game_option_map[game_option];
   state_manager.set_state(engine_state);
 
-  map<EngineStateEnum, bool (SavageLandsEngine::*)(void)>::iterator g_it = game_flow_functions.find(engine_state);
+  map<EngineStateEnum, bool (ShadowOfTheWyrmEngine::*)(void)>::iterator g_it = game_flow_functions.find(engine_state);
   return (this->*(g_it->second))();
 }
 
 // Process a new game command
-bool SavageLandsEngine::process_new_game()
+bool ShadowOfTheWyrmEngine::process_new_game()
 {
   Game& game = Game::instance();
 
@@ -288,7 +288,7 @@ bool SavageLandsEngine::process_new_game()
 }
 
 // Process a load game command
-bool SavageLandsEngine::process_load_game()
+bool ShadowOfTheWyrmEngine::process_load_game()
 {
   bool result = false;
 
@@ -312,7 +312,7 @@ bool SavageLandsEngine::process_load_game()
 }
 
 // Exit
-bool SavageLandsEngine::process_exit_game()
+bool ShadowOfTheWyrmEngine::process_exit_game()
 {
   return true;
 }

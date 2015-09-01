@@ -1797,9 +1797,6 @@
     <ClInclude Include="engine\include\RNG.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\include\SavageLandsEngine.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\items\include\IItemFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
@@ -3498,6 +3495,9 @@
     <ClInclude Include="engine\calculators\include\ItemBreakageCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\ShadowOfTheWyrmEngine.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4596,9 +4596,6 @@
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\RNG.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\SavageLandsEngine.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Message_test.cpp">
@@ -6791,9 +6788,6 @@
     <ClCompile Include="source\MapTester.cpp">
       <Filter>Source Files\source</Filter>
     </ClCompile>
-    <ClCompile Include="source\SavageLands.cpp">
-      <Filter>Source Files\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
@@ -6808,6 +6802,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ShadowOfTheWyrm.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp">
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

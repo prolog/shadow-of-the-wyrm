@@ -1,4 +1,4 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:maps:world_map:1.0.0" targetNamespace="urn:savage_lands:maps:world_map:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:shadow_of_the_wyrm:maps:world_map:1.0.0" targetNamespace="urn:shadow_of_the_wyrm:maps:world_map:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
 	<!-- Elements -->
 	<xs:element name="WorldMap" type="tns:WorldMapType"/>
 	<!-- Complex Types -->

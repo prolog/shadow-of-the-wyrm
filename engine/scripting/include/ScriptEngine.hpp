@@ -10,7 +10,7 @@ extern "C" {
 #include "Creature.hpp"
 #include "ISerializable.hpp"
 
-// Savage Lands' Lua script engine, currently only used for quests.
+// Shadow of the Wyrm's Lua script engine, currently only used for quests.
 //
 // Each instance creates its own script environment, and tears it down in
 // its destructor.
