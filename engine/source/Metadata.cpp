@@ -42,10 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Author of some of the most famous guitar pieces, but never actually
-  // wrote for guitar!  His pieces were for piano, and were transcribed
-  // by Tarrega, Segovia, and others.
-  return "\"Albeniz\"";
+  // 20th century Spanish composer.
+  return "\"Torroba\"";
 }
 
 string Metadata::get_game_version_synopsis() const
