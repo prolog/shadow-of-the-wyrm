@@ -4281,7 +4281,7 @@
 			<SpeechTextSID>WRECKER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
-				<Symbol>w</Symbol>
+				<Symbol>h</Symbol>
 				<Colour>9</Colour>
 			</Text>
 			<CreatureGeneration>
