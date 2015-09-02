@@ -6,6 +6,7 @@ CarryingCapacityCalculator::CarryingCapacityCalculator()
                                  {CreatureSize::CREATURE_SIZE_SMALL, 1.0f},
                                  {CreatureSize::CREATURE_SIZE_MEDIUM, 1.0f},
                                  {CreatureSize::CREATURE_SIZE_LARGE, 1.5f},
+                                 {CreatureSize::CREATURE_SIZE_HUGE, 2.0f},
                                  {CreatureSize::CREATURE_SIZE_BEHEMOTH, 2.0f}})
 {
   static_assert(CreatureSize::CREATURE_SIZE_LAST == CreatureSize(6), "Unexpected CREATURE_SIZE_LAST!");
@@ -21,7 +22,13 @@ uint CarryingCapacityCalculator::calculate_carrying_capacity_total_items(Creatur
   if (creature != nullptr)
   {
     uint base = creature->get_dexterity().get_current();
-    float size_multiplier = carrying_capacity_multipliers.find(creature->get_size())->second;
+    auto sm_it = carrying_capacity_multipliers.find(creature->get_size());
+    float size_multiplier = 1.0f;
+
+    if (sm_it != carrying_capacity_multipliers.end())
+    {
+      size_multiplier = carrying_capacity_multipliers.find(creature->get_size())->second;
+    }
 
     capacity = static_cast<uint>(base * CARRYING_CAPACITY_TOTAL_ITEMS_MULTIPLIER * size_multiplier);
   }

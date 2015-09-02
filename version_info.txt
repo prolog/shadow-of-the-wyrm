@@ -1,6 +1,11 @@
 Shadow of the Wyrm v0.4.1 "Torroba"
 - Version declared September 1, 2015.
 
+- Bug fixes:
+
+  - CarryingCapacityCalculator was missing an entry for huge creatures,
+    causing bugs related to maximum number of items (pat--).
+
 Shadow of the Wyrm v0.4.0 "Albeniz"
 - Version declared August 31, 2015.  Version finalized September 1, 2015.
 
