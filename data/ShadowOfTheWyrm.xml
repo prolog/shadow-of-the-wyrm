@@ -4323,7 +4323,7 @@
 			<SpeechTextSID>WOODSMAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
-				<Symbol>w</Symbol>
+				<Symbol>h</Symbol>
 				<Colour>10</Colour>
 			</Text>
 			<CreatureGeneration>
@@ -6671,8 +6671,8 @@
 			<SpeechTextSID>DIRE_WOLF_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
-				<Symbol>w</Symbol>
-				<Colour>7</Colour>
+				<Symbol>D</Symbol>
+				<Colour>15</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -6872,8 +6872,8 @@
 			<SpeechTextSID>WITCH_KING_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
-				<Symbol>w</Symbol>
-				<Colour>4</Colour>
+				<Symbol>K</Symbol>
+				<Colour>5</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -7443,7 +7443,7 @@
 			<SpeechTextSID>HIGH_WIZARD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
-				<Symbol>w</Symbol>
+				<Symbol>W</Symbol>
 				<Colour>14</Colour>
 			</Text>
 			<CreatureGeneration>
