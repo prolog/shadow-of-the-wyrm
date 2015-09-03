@@ -1,3 +1,7 @@
+pat--:
+* Siriath's quest isn't working.
+
+AgingMinotaur:
 * Character creation: I personally like to assign a name after I've assigned gender, class, and race. Not a biggie, though, and probably a question of taste.
 * A command to display character info in-game (without dumping it in a file) would be nice.
 * On a related note, I didn't feel very connected to my skills, so a way to access/display them would be nice. I get the impression that some of them aren't fully implemented yet, but also noticed that while some characters were unable to use a spinning wheel because they had no fibres to use, others reportedly didn't know how to spin.
