@@ -249,13 +249,14 @@ ActionCostValue KickAction::kick_item(CreaturePtr creature, TilePtr kick_tile, T
     string object_desc = describer->describe_usage();
     string kick_msg = ActionTextKeys::get_kick_object_message(creature->get_description_sid(), object_desc, creature->get_is_player());
 
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-    manager.add_new_message(kick_msg);
-
-    // If the new tile actually exists, add the item to its inventory
-    // and remove the item from the inventory of its original tile.
-    if (new_tile)
+    // If the new tile actually exists, and is not blocking (a wall, etc)
+    // then add the item to its inventory and remove the item from its 
+    // original tile.
+    if (new_tile && !new_tile->get_is_blocking_for_item(item))
     {
+      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+      manager.add_new_message(kick_msg);
+
       kick_tile->get_items()->remove(item->get_id());
       new_tile->get_items()->add(item);
     }

@@ -210,6 +210,24 @@ bool Tile::get_is_blocking(CreaturePtr perspective_creature) const
   return tile_blocking;
 }
 
+// JCD FIXME: If items can ever be incorporeal, this needs to be updated.
+bool Tile::get_is_blocking_for_item(ItemPtr item) const
+{
+  bool tile_blocking = false;
+
+  if (get_movement_multiplier() == 0)
+  {
+    tile_blocking = true;
+  }
+
+  if (feature && feature->get_is_blocking())
+  {
+    tile_blocking = true;
+  }
+
+  return tile_blocking;
+}
+
 int Tile::get_movement_multiplier() const
 {
   return 1;
