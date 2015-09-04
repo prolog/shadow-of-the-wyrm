@@ -10,7 +10,7 @@ local function kew_dungeon_start_fn()
 end
 
 -- Quest requires Siriath to be destroyed.
-local function kew_dungeon_completition_condition_fn()
+local function kew_dungeon_completion_condition_fn()
   return (get_num_creature_killed_global("siriath") > 0)
 end
 
