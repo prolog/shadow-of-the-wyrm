@@ -19,6 +19,8 @@ Shadow of the Wyrm v0.4.1 "Torroba"
   - Typo in a Lua function name meant Siriath's quest couldn't be
     completed (pat--).
 
+  - Items can no longer be kicked into/through walls (AgingMinotaur).
+
 Shadow of the Wyrm v0.4.0 "Albeniz"
 - Version declared August 31, 2015.  Version finalized September 1, 2015.
 
