@@ -1,6 +1,3 @@
-pat--:
-* Siriath's quest isn't working.
-
 AgingMinotaur:
 * Character creation: I personally like to assign a name after I've assigned gender, class, and race. Not a biggie, though, and probably a question of taste.
 * A command to display character info in-game (without dumping it in a file) would be nice.
