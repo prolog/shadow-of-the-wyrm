@@ -16409,7 +16409,7 @@
 				<Colour>8</Colour>
 			</Text>
 			<CreatureGeneration>
-				<Max>2</Max>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<DangerLevel>6</DangerLevel>
 				<Rarity>0</Rarity>
