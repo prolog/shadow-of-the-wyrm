@@ -8,6 +8,9 @@ Shadow of the Wyrm v0.4.1 "Torroba"
 - Adjusted a few more creatures to not have 'w' for a symbol: woodsman,
   high wizard, dire wolf, witch king.
 
+- In character creation, name has been moved to the end of the process
+  at the request of quite a few people.
+
 - Bug fixes:
 
   - CarryingCapacityCalculator was missing an entry for huge creatures,
