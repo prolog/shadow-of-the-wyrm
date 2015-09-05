@@ -19,6 +19,7 @@ class AutomaticMovementCoordinator
     // allowed) and a string (potentially empty, which represents a string ID
     // to display if the creature is the player.
     std::pair<bool, std::vector<std::string>> creature_can_auto_move(CreaturePtr creature);
+    std::pair<bool, std::vector<std::string>> creature_position_allows_auto_move(CreaturePtr creature, MapPtr map);
     std::pair<bool, std::vector<std::string>> hunger_allows_auto_move(CreaturePtr creature);
 
     // Check to see if the map allows auto-movement - adjacent tile must be

@@ -44,6 +44,8 @@ class MovementCommand : public DirectionalCommand
   public:
     MovementCommand(const Direction direction, int key);
     ~MovementCommand();
+
+    virtual bool get_allow_clear_message_buffer() const override;
 };
 
 class MoveUpLevelCommand : public Command
@@ -65,6 +67,8 @@ class AutomaticMovementCommand : public Command
   public:
     AutomaticMovementCommand(int key);
     ~AutomaticMovementCommand();
+
+    virtual bool get_allow_clear_message_buffer() const override;
 };
 
 class SearchCommand : public MovementCommand

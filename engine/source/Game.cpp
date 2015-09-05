@@ -580,8 +580,11 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
         
         // Clear the stored messages if we're about to receive the player's action.
-        // The player will already have had a chance to read the messages.
-        if (current_creature->get_is_player())
+        // The player will already have had a chance to read the messages.  The
+        // exception to this is if the creature is automatically moving - we don't
+        // want to clear the messages in this case, as otherwise when we get the
+        // player's next action input, the messages will be gone.
+        if (current_creature->get_is_player() && command->get_allow_clear_message_buffer())
         {
           MessageManagerFactory::instance(current_creature, true).clear_if_necessary();
         }
