@@ -208,25 +208,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   RaceMap  races   = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
 
-  bool user_and_character_exist = true;
-  string warning_message;
-
-  while (user_and_character_exist)
-  {
-    NamingScreen naming(display, warning_message);
-    name = naming.display();
-    name = Naming::clean_name(name);
-
-    if (Serialization::does_savefile_exist_for_user_and_character(Environment::get_user_name(), name))
-    {
-      warning_message = StringTable::get(TextKeys::CHARACTER_ALREADY_EXISTS);
-    }
-    else
-    {
-      user_and_character_exist = false;
-    }
-  }
-
   SexSelectionScreen sex_selection(display);
   int keyboard_selection = Char::keyboard_selection_char_to_int(sex_selection.display().at(0));
   sex = static_cast<CreatureSex>(keyboard_selection);
@@ -258,9 +239,28 @@ bool ShadowOfTheWyrmEngine::process_new_game()
       }
     }
 
+    bool user_and_character_exist = true;
+    string warning_message;
+
+    while (user_and_character_exist)
+    {
+      NamingScreen naming(display, warning_message);
+      name = naming.display();
+      name = Naming::clean_name(name);
+
+      if (Serialization::does_savefile_exist_for_user_and_character(Environment::get_user_name(), name))
+      {
+        warning_message = StringTable::get(TextKeys::CHARACTER_ALREADY_EXISTS);
+      }
+      else
+      {
+        user_and_character_exist = false;
+      }
+    }
+
     CreatureFactory cf;
     CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), selected_race_id, selected_class_id, name, sex, selected_deity_id);
-    player->set_is_player(true, controller);  
+    player->set_is_player(true, controller);
 
     // Identify the player's equipment and inventory.  If any equipment is
     // cursed, make it uncursed.
@@ -278,7 +278,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     ItemDescriptionRandomizer item_randomizer(item_types);
     item_randomizer.randomize(game.items);
 
-    game.create_new_world(player); 
+    game.create_new_world(player);
 
     // Run the "special day" script.
     game.get_script_engine_ref().execute(game.get_script(ScriptConstants::SPECIAL_DAY_SCRIPT));
