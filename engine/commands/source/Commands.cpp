@@ -69,6 +69,11 @@ MovementCommand::~MovementCommand()
 {
 }
 
+bool MovementCommand::get_allow_clear_message_buffer() const
+{
+  return (key_pressed != -1);
+}
+
 // Move up or down a level
 MoveUpLevelCommand::MoveUpLevelCommand(const int key)
 : Command(CommandKeys::MOVE_UP, key)
@@ -96,6 +101,11 @@ AutomaticMovementCommand::AutomaticMovementCommand(const int key)
 
 AutomaticMovementCommand::~AutomaticMovementCommand()
 {
+}
+
+bool AutomaticMovementCommand::get_allow_clear_message_buffer() const
+{
+  return false;
 }
 
 // Attack

@@ -11,6 +11,10 @@ Shadow of the Wyrm v0.4.1 "Torroba"
 - In character creation, name has been moved to the end of the process
   at the request of quite a few people.
 
+- Stopped automovement when stepping on an item.  Prevented the
+  item-related message from getting cleared from the message buffer by
+  the command processing code.
+
 - Bug fixes:
 
   - CarryingCapacityCalculator was missing an entry for huge creatures,

@@ -54,3 +54,8 @@ int Command::get_key() const
 {
   return key_pressed;
 }
+
+bool Command::get_allow_clear_message_buffer() const
+{
+  return true;
+}
