@@ -1,6 +1,8 @@
 #include "ActionTextKeys.hpp"
 #include "AutomaticMovementCoordinator.hpp"
 #include "CoordUtils.hpp"
+#include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -43,11 +45,15 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
 
   if (creature_move && creature_pos_move && tile_move && map_move)
   {
+    set_available_movement_directions(creature, map);
+
     MovementAction maction;
     auto_move_cost = maction.move(creature, d);
     TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
 
-    // If the creature wasn't able to move, disengage automovement.
+    // If the creature was able to move, engage automovement,
+    // and track the number of available directions for the
+    // next turn.
     if (auto_move_cost > 0)
     {
       auto_movement_engaged = true;
@@ -65,6 +71,9 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   }
   else
   {
+    // Clear the automovement available directions.
+    creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS);
+
     if (!message_sids.empty())
     {
       string first_message = message_sids.at(0);
@@ -110,13 +119,36 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
   pair<bool, vector<string>> move_details = {false, {}};
 
   TilePtr current_tile = MapUtils::get_tile_for_creature(map, creature);
+  bool items_allow_move = false;
 
   // Stop auto-movement when moving to a tile that has items.
   if (current_tile && current_tile->get_items()->empty())
   {
-    move_details.first = true;
+    items_allow_move = true;
   }
 
+  // Check the last number of available exits to see if it's changed.
+  bool has_prior_adjacent_dirs_flag = creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS);
+  uint prev_num_adjacent_dirs = 0;
+  
+  if (has_prior_adjacent_dirs_flag)
+  {
+    prev_num_adjacent_dirs = String::to_uint(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS));
+  }
+
+  uint cur_num_adjacent_dirs = MapUtils::get_num_adjacent_movement_directions(map, creature);
+  bool exits_allow_move = false;
+
+  // Automovement's good if:
+  // - The available directions parameter isn't there (hasn't been set yet)
+  // - The parameter is there, and the number of available directions hasn't
+  //   been reduced.
+  if (!has_prior_adjacent_dirs_flag || (prev_num_adjacent_dirs <= cur_num_adjacent_dirs))
+  {
+    exits_allow_move = true;
+  }
+
+  move_details.first = (items_allow_move && exits_allow_move);
   return move_details;
 }
 
@@ -182,3 +214,13 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(C
   return tile_details;
 }
 
+// Set the number of available automatic movement directions.  This is used in
+// determining when to stop the automovement algorithm.
+void AutomaticMovementCoordinator::set_available_movement_directions(CreaturePtr creature, MapPtr map)
+{
+  if (creature != nullptr && map != nullptr)
+  {
+    uint num_available_move_dirs = MapUtils::get_num_adjacent_movement_directions(map, creature);
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS, std::to_string(num_available_move_dirs));
+  }
+}

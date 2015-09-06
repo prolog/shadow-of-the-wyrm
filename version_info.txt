@@ -15,6 +15,9 @@ Shadow of the Wyrm v0.4.1 "Torroba"
   item-related message from getting cleared from the message buffer by
   the command processing code.
 
+- Automovement also halts when the number of available directions is
+  reduced from the number available from the previous step.
+
 - Bug fixes:
 
   - CarryingCapacityCalculator was missing an entry for huge creatures,

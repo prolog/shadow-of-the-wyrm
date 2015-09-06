@@ -26,12 +26,3 @@ const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK = "CREATURE_EVEN
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT = "CREATURE_EVENT_SCRIPT_CHAT";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION = "CREATURE_EVENT_SCRIPT_DECISION";
 
-CreatureAdditionalProperties::CreatureAdditionalProperties()
-{
-}
-
-CreatureAdditionalProperties::~CreatureAdditionalProperties()
-{
-}
-
-const string CreatureAdditionalProperties::CREATURE_PROPERTY_SPEECH_TEXT_SID = "CREATURE_PROPERTY_SPEECH_TEXT_SID";
