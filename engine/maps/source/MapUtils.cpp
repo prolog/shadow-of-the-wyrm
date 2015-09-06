@@ -20,9 +20,7 @@ using namespace boost;
 //   feature details)
 bool MapUtils::is_tile_available_for_creature(CreaturePtr creature, TilePtr tile)
 {
-  bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
-
-  return tile && !is_creature_present(tile) && (!tile->get_is_blocking(creature) || creature_incorporeal);
+  return tile && !is_creature_present(tile) && !tile->get_is_blocking(creature);
 }
 
 // Check to see if a tile is available for an item by checking:
@@ -325,6 +323,28 @@ std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapP
   }
   
   return result_map;
+}
+
+// Determine how many adjacent tiles are available to the creature
+uint MapUtils::get_num_adjacent_movement_directions(const MapPtr& map, const CreaturePtr& creature)
+{
+  uint num_dirs = 0;
+  TileDirectionMap tdm = MapUtils::get_adjacent_tiles_to_creature(map, creature);
+
+  for (const auto& tdm_pair : tdm)
+  {
+    if (tdm_pair.second != nullptr)
+    {
+      TilePtr tile = tdm_pair.second;
+
+      if (MapUtils::is_tile_available_for_creature(creature, tile))
+      {
+        num_dirs++;
+      }
+    }
+  }
+
+  return num_dirs;
 }
 
 // Get the tile adjacent to the creature's tile in a given direction.

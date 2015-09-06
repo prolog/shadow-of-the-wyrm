@@ -1,5 +1,6 @@
 #include <limits>
 #include "Creature.hpp"
+#include "CreatureProperties.hpp"
 #include "DecisionStrategyFactory.hpp"
 #include "InventoryFactory.hpp"
 #include "PlayerConstants.hpp"
@@ -980,14 +981,14 @@ ScriptDetails Creature::get_event_script(const string& event_name) const
 // Set and get the generic speech text sid.
 void Creature::set_speech_text_sid(const string& speech_text_sid)
 {
-  additional_properties[CreatureAdditionalProperties::CREATURE_PROPERTY_SPEECH_TEXT_SID] = speech_text_sid;
+  additional_properties[CreatureProperties::CREATURE_PROPERTIES_SPEECH_TEXT_SID] = speech_text_sid;
 }
 
 string Creature::get_speech_text_sid() const
 {
   string speech_text_sid;
 
-  map<string, string>::const_iterator p_it = additional_properties.find(CreatureAdditionalProperties::CREATURE_PROPERTY_SPEECH_TEXT_SID);
+  map<string, string>::const_iterator p_it = additional_properties.find(CreatureProperties::CREATURE_PROPERTIES_SPEECH_TEXT_SID);
 
   if (p_it != additional_properties.end())
   {
