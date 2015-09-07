@@ -5,6 +5,7 @@
 #include "ItemManager.hpp"
 #include "RaceManager.hpp"
 #include "ResistancesCalculator.hpp"
+#include "SkinningConstants.hpp"
 
 using namespace std;
 
@@ -75,6 +76,10 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr creature)
           // so that these can be used later: for increasing the eater's
           // resistances, or adding the resistances to a skin, etc.
           set_resistances(creature, corpse);
+
+          // Set any additional properties (evade, soak, etc) required on the
+          // corpse for things like skinning.
+          set_additional_details(creature, corpse);
         }
       }
     }
@@ -159,5 +164,16 @@ void CorpseFactory::set_resistances(CreaturePtr creature, ItemPtr corpse)
         corpse_resists.set_resistance_value(dt, cur_val);
       }
     }
+  }
+}
+
+// Set any additional details needed on the corpse for things like skinning,
+// etc.
+void CorpseFactory::set_additional_details(CreaturePtr creature, ItemPtr corpse)
+{
+  if (creature && corpse)
+  {
+    int soak = creature->get_base_soak().get_base();
+    corpse->set_additional_property(SkinningConstants::SKIN_SOAK, to_string(soak));
   }
 }

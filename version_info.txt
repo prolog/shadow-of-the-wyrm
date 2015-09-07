@@ -18,6 +18,9 @@ Shadow of the Wyrm v0.4.1 "Torroba"
 - Automovement also halts when the number of available directions is
   reduced from the number available from the previous step.
 
+- Tanning will now have a chance to also add a portion of the corpse 
+  creature's original soak value to the piece of armour.
+
 - Bug fixes:
 
   - CarryingCapacityCalculator was missing an entry for huge creatures,

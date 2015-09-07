@@ -121,13 +121,21 @@ ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr sel
       WearablePtr wearable = dynamic_pointer_cast<Wearable>(armour);
 
       // Set the skin details: creature description, resistances, etc.
-      // Additional evade and soak may be added if the tanner is skilled.
+      // Additional evade and soak may be added if the tanner is skilled, and
+      // also based on the base evade/soak of the skinned creature.
       if (wearable)
       {
         TanningCalculator tc;
+        int hide_evade = wearable->get_evade() + tc.calculate_evade_bonus(creature);
+        int hide_soak = wearable->get_soak() + tc.calculate_soak_bonus(creature);
 
-        wearable->set_evade(wearable->get_evade() + tc.calculate_evade_bonus(creature));
-        wearable->set_soak(wearable->get_soak() + tc.calculate_soak_bonus(creature));
+        if (selected_skin->has_additional_property(SkinningConstants::SKIN_SOAK))
+        {
+          hide_soak += RNG::range(0, String::to_int(selected_skin->get_additional_property(SkinningConstants::SKIN_SOAK)));
+        }
+
+        wearable->set_evade(hide_evade);
+        wearable->set_soak(hide_soak);
 
         armour->set_resistances(selected_skin->get_resistances());
         armour->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));
