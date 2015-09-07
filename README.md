@@ -1,6 +1,6 @@
-Shadow of the Wyrm is a roguelike game in the spirit of Omega and ADOM.  It 
-provides a large, explorable world, in addition to dungeons, caverns, and 
-other traditional roguelike elements.
+Shadow of the Wyrm is a traditional roguelike game in the spirit of Omega 
+and ADOM.  It provides a large, explorable world, in addition to dungeons, 
+caverns, and other traditional roguelike elements.
 
 Shadow of the Wyrm is, specifically:
 
