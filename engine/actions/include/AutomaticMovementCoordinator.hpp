@@ -28,8 +28,17 @@ class AutomaticMovementCoordinator
     std::pair<bool, std::vector<std::string>> fov_allows_auto_move(CreaturePtr creature, MapPtr map);
     std::pair<bool, std::vector<std::string>> tile_allows_auto_move(CreaturePtr creature, TilePtr tile);
 
+    // Can the creature move to the current tile, based on the ones visited
+    // already?  Visiting the same tile twice during auto-run is enforced
+    // to ensure that there are no running loops.
+    std::pair<bool, std::vector<std::string>> prev_visited_coords_allow_auto_move(CreaturePtr creature, const Coordinate& c);
+
     // Determine how many available moves there are from the creature's
     // current location, and set that on the creature.
     void set_available_movement_directions(CreaturePtr creature, MapPtr map);
+
+    // Add a coordinate to the list the creature has seen during the current
+    // automovement period.
+    void add_coordinate_to_automove_visited(CreaturePtr creature, const Coordinate& c);
 };
 

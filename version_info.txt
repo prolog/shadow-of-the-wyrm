@@ -19,7 +19,7 @@ Shadow of the Wyrm v0.4.1 "Torroba"
   reduced from the number available from the previous step.
 
 - Tanning will now have a chance to also add a portion of the corpse 
-  creature's original soak value to the piece of armour.
+  creature's original soak value to the piece of armour. (AgingMinotaur)
 
 - Bug fixes:
 
