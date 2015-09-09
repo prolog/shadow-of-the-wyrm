@@ -123,7 +123,7 @@ bool Equipment::merge(ItemPtr item)
 
     ItemPtr slot_item = get_item(ewl);
     
-    if (slot_item && slot_item->matches(item))
+    if (slot_item && ewl == EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION && slot_item->matches(item))
     {
       slot_item->set_quantity(slot_item->get_quantity() + item->get_quantity());
       

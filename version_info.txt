@@ -34,8 +34,11 @@ Shadow of the Wyrm v0.4.1 "Torroba"
 
   - Items can no longer be kicked into/through walls (AgingMinotaur).
 
-  - Up exit from Wintersea Keep B1 was declared on the wrong tile.
-    (Faladrit)
+  - Up exit from Wintersea Keep B1 was declared on the wrong tile
+    (Faladrit).
+
+  - Equipment merging was occurring for all slots, not just ammunition
+    (Faladrit).
 
 Shadow of the Wyrm v0.4.0 "Albeniz"
 - Version declared August 31, 2015.  Version finalized September 1, 2015.
