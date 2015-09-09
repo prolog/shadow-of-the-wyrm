@@ -42,6 +42,11 @@ Shadow of the Wyrm v0.4.1 "Torroba"
 
   - Documentation PDFs had a stray reference to "Savage Lands" (barrabus).
 
+  - Brass knuckles and spiked gloves had 0 speed.  This was being treated
+    by the engine as a free attack.  Changed the speed to 1 for each,
+    and updated the engine to ensure that a valid attack is considered
+    at least 1 in terms of speed (barrabus).
+
 Shadow of the Wyrm v0.4.0 "Albeniz"
 - Version declared August 31, 2015.  Version finalized September 1, 2015.
 

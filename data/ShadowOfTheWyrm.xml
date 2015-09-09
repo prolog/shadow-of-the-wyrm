@@ -20416,7 +20416,7 @@
 				<Skill>1007</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>40</Difficulty>
-				<Speed>0</Speed>
+				<Speed>1</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
@@ -20435,7 +20435,7 @@
 				<Skill>1007</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>41</Difficulty>
-				<Speed>0</Speed>
+				<Speed>1</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>

@@ -89,7 +89,8 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
   
   if (th_calculator && ctn_calculator)
   {
-    action_cost_value = speed_calculator->calculate(attacking_creature);
+    // Ensure that attacks take at least one speed - no free attacks!
+    action_cost_value = std::max(1, speed_calculator->calculate(attacking_creature));
     DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(attack_type);
     
     int d100_roll = RNG::range(1, 100);
