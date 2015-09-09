@@ -34,7 +34,7 @@ vector<string> TileSelectionKeyboardCommandMap::get_remappable_commands() const
     TileSelectionCommandKeys::CURSOR_MOVE_SOUTHWEST, TileSelectionCommandKeys::CURSOR_MOVE_SOUTH,
     TileSelectionCommandKeys::CURSOR_MOVE_SOUTHEAST, TileSelectionCommandKeys::CURSOR_MOVE_WEST,
     TileSelectionCommandKeys::CURSOR_MOVE_EAST, TileSelectionCommandKeys::CURSOR_MOVE_NORTHWEST,
-    TileSelectionCommandKeys::CURSOR_MOVE_NORTH, TileSelectionCommandKeys::CURSOR_MOVE_EAST,
+    TileSelectionCommandKeys::CURSOR_MOVE_NORTH, TileSelectionCommandKeys::CURSOR_MOVE_NORTHEAST,
     CommandKeys::BESTIARY
   };
 }

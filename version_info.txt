@@ -47,6 +47,8 @@ Shadow of the Wyrm v0.4.1 "Torroba"
     and updated the engine to ensure that a valid attack is considered
     at least 1 in terms of speed (barrabus).
 
+  - North-east tile selection wasn't being remapped properly (barrabus).
+
 Shadow of the Wyrm v0.4.0 "Albeniz"
 - Version declared August 31, 2015.  Version finalized September 1, 2015.
 
