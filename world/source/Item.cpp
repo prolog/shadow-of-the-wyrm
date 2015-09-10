@@ -6,6 +6,7 @@
 #include "NullEffect.hpp"
 #include "MaterialFactory.hpp"
 #include "RNG.hpp"
+#include "SkinningConstants.hpp"
 #include "Wood.hpp"
 #include "EffectFactory.hpp"
 #include "MaterialFactory.hpp"
@@ -526,6 +527,21 @@ void Item::do_enchant_item(const int points)
 {
   if (points < 1)
   {
+    return;
+  }
+
+  // If this is a skin, there is a chance to add more potential soak to
+  // use later.
+  string skin_soak_s = get_additional_property(SkinningConstants::SKIN_SOAK);
+  if (!skin_soak_s.empty() && RNG::percent_chance(SkinningConstants::SKIN_ENCHANT_PCT_CHANCE_SOAK))
+  {
+    int skin_soak = String::to_int(skin_soak_s);
+    skin_soak += points;
+
+    set_additional_property(SkinningConstants::SKIN_SOAK, to_string(skin_soak));
+
+    // Don't set resists if we've already used the enchant points to set
+    // additional soak for later.
     return;
   }
 

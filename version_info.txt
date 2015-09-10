@@ -25,6 +25,9 @@ Shadow of the Wyrm v0.4.1 "Torroba"
   not count at all against the total number of items a creature can
   carry (Faladrit).
 
+- Enchanting skins can now add potential soak, that get converted to
+  actual-soak when turning the skin into a piece of armour.
+
 - Bug fixes:
 
   - CarryingCapacityCalculator was missing an entry for huge creatures,
