@@ -125,17 +125,23 @@ string Screen::prompt()
 
 // Can't increment cnt in here because the ScreenComponentPtr may span
 // multiple lines - e.g., an options component with several values.
-void Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenComponentPtr component, int& cnt)
+//
+// Return true if a new page was generated.
+bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenComponentPtr component, int& cnt)
 {
-  if (cnt == LINES_DISPLAYABLE_AREA)
+  bool result = false;
+
+  if (cnt >= LINES_DISPLAYABLE_AREA)
   {
     cnt = 0;
 
     add_page(current_screen);
     current_screen.clear();
+    result = true;
   }
 
   current_screen.push_back(component);
+  return result;
 }
 
 void Screen::add_page(const vector<ScreenComponentPtr>& new_page)

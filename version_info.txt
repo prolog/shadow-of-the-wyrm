@@ -56,6 +56,11 @@ Shadow of the Wyrm v0.4.1 "Torroba"
 
   - North-east tile selection wasn't being remapped properly (barrabus).
 
+  - There was a bug in the screen paging so that if the number of lines
+    was greater than the allowable number for a screen, the screen would
+    not page correctly.  This caused the inventory screen to "jump around"
+    (AgingMinotaur & others).
+
 Shadow of the Wyrm v0.4.0 "Albeniz"
 - Version declared August 31, 2015.  Version finalized September 1, 2015.
 
