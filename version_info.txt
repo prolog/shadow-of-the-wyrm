@@ -1,4 +1,4 @@
-Shadow of the Wyrm v0.4.0 "Albeniz"
+Shadow of the Wyrm v0.4.0 "Albeniz"  
 - Version declared August 31, 2015.  Version finalized September 1, 2015.
 
 - Small revision this time.  Needed to rename the game to avoid a 
