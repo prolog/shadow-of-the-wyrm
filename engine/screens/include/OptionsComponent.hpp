@@ -47,6 +47,7 @@ class OptionsComponent : public ScreenComponent
     void clear_options();
     void add_option(const Option& additional_option);
     std::vector<Option> get_options() const;
+    std::vector<Option>& get_options_ref();
 
     void clear_option_descriptions();
     void add_option_description(const std::string& additional_description);

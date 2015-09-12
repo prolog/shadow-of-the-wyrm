@@ -36,7 +36,7 @@ void InventoryScreen::initialize()
     text->add_text(" - ", Colour::COLOUR_WHITE);
     text->add_text(category_symbol, category_colour);
 
-    add_component(inv_screen, text, cnt);
+    add_component(inv_screen, text, cnt, current_id);
     cnt++;
 
     if (!display_items.empty())
@@ -72,14 +72,15 @@ void InventoryScreen::initialize()
         options->add_option_description("");
 
         cnt++;
-        current_id++;
 
-        add_component(inv_screen, options, cnt);
+        bool page_reset = add_options_component(inv_screen, options, cnt, current_id);
+
+        current_id++;
       }
 
       TextComponentPtr empty = std::make_shared<TextComponent>("");
       cnt++;
-      add_component(inv_screen, empty, cnt);
+      add_component(inv_screen, empty, cnt, current_id);
     }
   }
 

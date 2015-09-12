@@ -44,7 +44,9 @@ class Screen
     // current item count has reached the maximum, reset the count, add the
     // current screen to the list of pages, etc.  Returns true if a new page was
     // added.
+    bool add_options_component(std::vector<ScreenComponentPtr>& current_menu, OptionsComponentPtr options, int& cnt, int& current_option_id);
     bool add_component(std::vector<ScreenComponentPtr>& current_menu, ScreenComponentPtr component, int& cnt);
+    bool add_component(std::vector<ScreenComponentPtr>& current_menu, ScreenComponentPtr component, int& cnt, int& current_option_id);
 
     // Add the current page to the list of pages for this screen.
     void add_page(const std::vector<ScreenComponentPtr>& new_page);
