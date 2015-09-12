@@ -3,6 +3,8 @@ Me:
 
 barrabus: 
 - Extra descs for items.
+- Seems to be some sort of issue with crashes when opening the door in
+  crypt vaults in some situations.
 
 AgingMinotaur:
 * A command to display character info in-game (without dumping it in a file) would be nice.
