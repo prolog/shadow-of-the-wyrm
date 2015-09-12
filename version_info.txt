@@ -1,3 +1,6 @@
+Shadow of the Wyrm v0.4.2 "Sanz"
+- Version declared September 12, 2015.
+
 Shadow of the Wyrm v0.4.1 "Torroba" 
 - Version declared September 1, 2015.  Version finalized September 12,
   2015.
