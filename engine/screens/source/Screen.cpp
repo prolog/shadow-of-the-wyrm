@@ -123,17 +123,43 @@ string Screen::prompt()
   return empty_str;
 }
 
+bool Screen::add_options_component(std::vector<ScreenComponentPtr>& current_menu, OptionsComponentPtr options, int& cnt, int& current_option_id)
+{
+  bool new_page = add_component(current_menu, options, cnt, current_option_id);
+
+  if (new_page)
+  {
+    vector<Option>& opt = options->get_options_ref();
+
+    if (!opt.empty())
+    {
+      opt.at(opt.size()-1).set_id(current_option_id);
+    }
+  }
+
+  return new_page;
+}
+
 // Can't increment cnt in here because the ScreenComponentPtr may span
 // multiple lines - e.g., an options component with several values.
 //
 // Return true if a new page was generated.
 bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenComponentPtr component, int& cnt)
 {
+  int ignore = 0;
+  return add_component(current_screen, component, cnt, ignore);
+}
+
+bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenComponentPtr component, int& cnt, int& current_option_id)
+{
   bool result = false;
 
+  // We've gone over the max displayable area.  Add the current page to the
+  // screen, and reset the line count and the option ID.
   if (cnt >= LINES_DISPLAYABLE_AREA)
   {
     cnt = 0;
+    current_option_id = 0;
 
     add_page(current_screen);
     current_screen.clear();

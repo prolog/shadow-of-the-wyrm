@@ -61,6 +61,10 @@ Shadow of the Wyrm v0.4.1 "Torroba"
     not page correctly.  This caused the inventory screen to "jump around"
     (AgingMinotaur & others).
 
+  - The option letters weren't being reset properly, so it was not
+    possible to view all of a creature's items without filtering
+    (AgingMinotaur & others).
+
 Shadow of the Wyrm v0.4.0 "Albeniz"
 - Version declared August 31, 2015.  Version finalized September 1, 2015.
 

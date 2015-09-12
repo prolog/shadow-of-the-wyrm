@@ -83,6 +83,11 @@ vector<Option> OptionsComponent::get_options() const
   return options;
 }
 
+vector<Option>& OptionsComponent::get_options_ref()
+{
+  return options;
+}
+
 void OptionsComponent::clear_option_descriptions()
 {
   option_descriptions.clear();
