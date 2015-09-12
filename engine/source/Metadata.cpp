@@ -42,8 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // 20th century Spanish composer.
-  return "\"Torroba\"";
+  // Composer for the baroque guitar.
+  return "\"Sanz\"";
 }
 
 string Metadata::get_game_version_synopsis() const
