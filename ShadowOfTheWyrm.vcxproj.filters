@@ -751,10 +751,10 @@
     <Filter Include="Source Files\engine\maps\tiles\features\source">
       <UniqueIdentifier>{dfa7446d-22b5-400b-8af6-705350e1dbc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\source\source">
+    <Filter Include="Source Files\engine\source">
       <UniqueIdentifier>{07a71702-5214-421b-97d9-a13fe70d7454}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\source\source\unit_tests">
+    <Filter Include="Source Files\engine\source\unit_tests">
       <UniqueIdentifier>{66044dd9-0e96-4071-ae2e-e839c5e55250}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -4560,52 +4560,52 @@
       <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\ClassManager.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\CreationUtils.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Environment.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\FileWriter.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Game.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Log.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Message.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\MessageManager.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Messages.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Naming.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\RaceManager.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\ReligionManager.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\RNG.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Message_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Messages_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\RNG_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\skills\source\Detection.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
@@ -4836,7 +4836,7 @@
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Metadata.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\effects\source\FruitJuiceEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
@@ -4869,7 +4869,7 @@
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Game_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\CastleTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
@@ -5001,7 +5001,7 @@
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Metadata_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Ammunition_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
@@ -5631,7 +5631,7 @@
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\GameUtils.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\source\WildOrchardTile.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
@@ -5703,7 +5703,7 @@
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Random.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\time\source\CreatureStatuses.cpp">
       <Filter>Source Files\engine\time\source</Filter>
@@ -5790,10 +5790,10 @@
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\MessageManagerFactory.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\NullMessageManager.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\creatures\source\BloodiedStatusEffect.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
@@ -6120,7 +6120,7 @@
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\SelectionUtils.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\ScoreCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
@@ -6132,16 +6132,16 @@
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\HighScoreConstants.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\ScoreFile.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\ScoreFileEntry.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\ScoreFileEntry_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\ScoreTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
@@ -6150,7 +6150,7 @@
       <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\ScoreFile_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\source\CryptTile.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
@@ -6282,19 +6282,19 @@
       <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Settings.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\SettingKeybindings.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\SettingKeybindings_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\MessageBuffer.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\MessageBuffer_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\conversion\source\MessageBufferDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
@@ -6414,10 +6414,10 @@
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\AlignmentUtils.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\AlignmentUtils_test.cpp">
-      <Filter>Source Files\source\source\unit_tests</Filter>
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\source\RoomFeatures.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
@@ -6807,7 +6807,7 @@
       <Filter>Source Files\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp">
-      <Filter>Source Files\source\source</Filter>
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
