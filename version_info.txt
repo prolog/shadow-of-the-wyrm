@@ -1,6 +1,11 @@
 Shadow of the Wyrm v0.4.2 "Sanz"
 - Version declared September 12, 2015.
 
+- Bug fixes:
+
+  - Skins that had been converted to armour were still available as
+    "skins" afterwards (barrabus).
+
 Shadow of the Wyrm v0.4.1 "Torroba" 
 - Version declared September 1, 2015.  Version finalized September 12,
   2015.

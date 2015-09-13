@@ -1,6 +1,10 @@
 Me:
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 
+Jeremy Long:
+- Allow murdering the ploughman to trigger the completion condition for
+  the blacksmith's quest.
+
 barrabus: 
 - Extra descs for items.
 - Seems to be some sort of issue with crashes when opening the door in
