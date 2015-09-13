@@ -78,20 +78,24 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
     if (!command)
     {
       CreaturePtr creature = view_map->get_creature(this_creature_id);
-      ScriptDetails decision_script_details = creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION);
-      string decision_script = decision_script_details.get_script();
 
-      if (!decision_script.empty() && RNG::percent_chance(decision_script_details.get_chance()))
+      if (creature != nullptr)
       {
-        Game& game = Game::instance();
-        ScriptEngine& se = game.get_script_engine_ref();
-        DecisionScript ds;
+        ScriptDetails decision_script_details = creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION);
+        string decision_script = decision_script_details.get_script();
 
-        ActionCostValue acv = ds.execute(se, decision_script, creature);
-        if (acv > 0)
+        if (!decision_script.empty() && RNG::percent_chance(decision_script_details.get_chance()))
         {
-          command = std::make_shared<CustomScriptCommand>();
-          command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_ACTION_COST_VALUE, std::to_string(acv));
+          Game& game = Game::instance();
+          ScriptEngine& se = game.get_script_engine_ref();
+          DecisionScript ds;
+
+          ActionCostValue acv = ds.execute(se, decision_script, creature);
+          if (acv > 0)
+          {
+            command = std::make_shared<CustomScriptCommand>();
+            command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_ACTION_COST_VALUE, std::to_string(acv));
+          }
         }
       }
     }
