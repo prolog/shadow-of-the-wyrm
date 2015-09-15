@@ -12,6 +12,8 @@ Shadow of the Wyrm v0.4.2 "Sanz"
   - Found an instance in NPCDecisionStrategy where a CreaturePtr was
     being used unchecked.  It *should* always be valid, but you know...
 
+  - Various typos (barrabus, others).
+
 Shadow of the Wyrm v0.4.1 "Torroba" 
 - Version declared September 1, 2015.  Version finalized September 12,
   2015.
