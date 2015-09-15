@@ -32,10 +32,10 @@ class CursesDisplay : public Display
 
     void halt_messages() override;
 
-	  void draw(const DisplayMap& current_map) override;
+	  void draw(const DisplayMap& current_map, const CursorSettings cs) override;
     void redraw() override;
 
-    virtual void draw_update_map(const DisplayMap& update_map) override;
+    virtual void draw_update_map(const DisplayMap& update_map, const CursorSettings cs) override;
     virtual void draw_tile(const uint y, const uint x, const DisplayTile& tile) override;
 
     // Create an animation factory for the display type.
@@ -69,7 +69,7 @@ class CursesDisplay : public Display
     friend class SL_Display_CursesDisplayFixture; // test fixture
    
     bool uses_colour() const;
-    int get_cursor_mode() const;
+    int get_cursor_mode(const CursorSettings cs) const;
 
     // Setup colours the way ncurses requires.
     void initialize_colours();

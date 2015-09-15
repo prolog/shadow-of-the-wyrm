@@ -110,7 +110,10 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
       manager.add_new_message(look_msg);
       manager.send();
       
-      game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+      MapCursor mc;
+      MapPtr current_map = game.get_current_map();
+      mc.set_cursor_location(current_map, current_map->get_location(creature->get_id()));
+      game.update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map(), false);
     }
     
     while (continue_select_tiles)
@@ -156,7 +159,7 @@ TilePtr TileSelectionAction::get_cursor_tile()
   if (map)
   {
     MapCursor mc;
-    tile = map->at(mc.get_cursor_location(map));
+    tile = map->at(mc.get_cursor_location(map).first);
   }
 
   return tile;
@@ -173,7 +176,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
     MapPtr current_map = game.get_current_map();
     
     mc.update_cursor_location(current_map, direction);
-    Coordinate c = mc.get_cursor_location(current_map);
+    Coordinate c = mc.get_cursor_location(current_map).first;
     
     TilePtr selected_tile = current_map->at(c);
     

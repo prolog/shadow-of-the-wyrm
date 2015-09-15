@@ -301,24 +301,31 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     display->display(display_stats);
 
     MapCursor mc;
-    Coordinate reference_coords = mc.get_cursor_location(current_map);
+    pair<Coordinate, bool> reference_coords = mc.get_cursor_location(current_map);
 
-    Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords);
+    Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords.first);
     loaded_map_details.update_display_coord(display_coord);
     bool redraw_needed = loaded_map_details.requires_full_map_redraw() || reloaded_game;
 
     CurrentCreatureAbilities cca;
     CreaturePtr player = game.get_current_player();
 
-    DisplayMap display_map = MapTranslator::create_display_map(!cca.can_see(player), current_map, fov_map, display_area, reference_coords, redraw_needed);
+    DisplayMap display_map = MapTranslator::create_display_map(!cca.can_see(player), current_map, fov_map, display_area, reference_coords.first, redraw_needed);
     
+    CursorSettings cs = CursorSettings::CURSOR_SETTINGS_USE_DEFAULT;
+
+    if (reference_coords.second)
+    {
+      cs = CursorSettings::CURSOR_SETTINGS_SHOW_CURSOR;
+    }
+
     if (redraw_needed)
     {
-      display->draw(display_map);
+      display->draw(display_map, cs);
     }
     else
     {
-      display->draw_update_map(display_map);
+      display->draw_update_map(display_map, cs);
     }
 
     // As long as there are still player actions within the current map, and we've
