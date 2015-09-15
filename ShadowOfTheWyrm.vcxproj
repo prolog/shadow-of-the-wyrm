@@ -173,6 +173,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp" />
+    <ClInclude Include="display\include\CursesProperties.hpp" />
     <ClInclude Include="display\include\Display.hpp" />
     <ClInclude Include="display\include\DisplayConstants.hpp" />
     <ClInclude Include="display\include\DisplayFactory.hpp" />
@@ -1077,6 +1078,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\tiles\include\WorshipSiteTypes.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="display\source\CursesProperties.cpp" />
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />

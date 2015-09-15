@@ -15,3 +15,13 @@ class CursesConstants
     CursesConstants();
     ~CursesConstants();
 };
+
+enum struct CursorMode
+{
+  CURSOR_MODE_MIN = 0,
+  CURSOR_MODE_NO_CURSOR = 0,
+  CURSOR_MODE_NORMAL_VISIBILITY = 1,
+  CURSOR_MODE_HIGH_VISIBILITY = 2,
+  CURSOR_MODE_MAX = 2
+};
+

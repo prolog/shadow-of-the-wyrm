@@ -8,6 +8,8 @@
 #include "CreatureFeatures.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "CustomAreaGenerator.hpp"
+#include "CursesConstants.hpp"
+#include "CursesProperties.hpp"
 #include "DecisionStrategySelector.hpp"
 #include "Detection.hpp"
 #include "FieldOfViewStrategy.hpp"
@@ -75,9 +77,25 @@ void Game::set_settings(const Settings& new_settings)
     Log::instance().set_log_level(ll);
   }
 
+  set_display_settings();
   set_world_settings();
 }
 
+void Game::set_display_settings()
+{
+  string cursor_mode = settings.get_setting("cursor_mode");
+  CursorMode cm = static_cast<CursorMode>(String::to_int(cursor_mode));
+
+  // Game may just be starting up.
+  if (display != nullptr)
+  {
+    if (cm >= CursorMode::CURSOR_MODE_MIN && cm <= CursorMode::CURSOR_MODE_MAX)
+    {
+      DisplayPtr display = get_display();
+      display->set_property(CursesProperties::CURSES_PROPERTIES_CURSOR_MODE, cursor_mode);
+    }
+  }
+}
 void Game::set_world_settings()
 {
   uint days_elapsed = String::to_uint(settings.get_setting("days_elapsed"));
@@ -98,6 +116,7 @@ Settings& Game::get_settings_ref()
 void Game::set_display(DisplayPtr game_display)
 {
   display = game_display;
+  set_display_settings();
 }
 
 DisplayPtr Game::get_display() const
