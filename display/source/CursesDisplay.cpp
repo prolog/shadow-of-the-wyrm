@@ -115,14 +115,22 @@ bool CursesDisplay::uses_colour() const
 
 // If the cursor mode has been set in the properties, use that.
 // Otherwise, use the default.
-int CursesDisplay::get_cursor_mode() const
+int CursesDisplay::get_cursor_mode(const CursorSettings cs) const
 {
   int mode = cursor_mode;
-  auto p_it = display_properties.find(CursesProperties::CURSES_PROPERTIES_CURSOR_MODE);
 
-  if (p_it != display_properties.end())
+  if (cs == CursorSettings::CURSOR_SETTINGS_SHOW_CURSOR)
   {
-    mode = String::to_int(p_it->second);
+    mode = 1; /* show cursor */
+  }
+  else
+  {
+    auto p_it = display_properties.find(CursesProperties::CURSES_PROPERTIES_CURSOR_MODE);
+
+    if (p_it != display_properties.end())
+    {
+      mode = String::to_int(p_it->second);
+    }
   }
 
   return mode;
@@ -415,7 +423,7 @@ string CursesDisplay::add_message_with_prompt(const string& message, const Colou
   no specific creature, etc., data.
 
  *****************************************************************/
-void CursesDisplay::draw(const DisplayMap& current_map)
+void CursesDisplay::draw(const DisplayMap& current_map, const CursorSettings cs)
 {
   refresh_terminal_size();
 
@@ -442,7 +450,7 @@ void CursesDisplay::draw(const DisplayMap& current_map)
 
   // Since we're drawing the map (with, presumably, the player) we need the cursor present to show the
   // position of the player's character.
-  curs_set(get_cursor_mode());
+  curs_set(get_cursor_mode(cs));
   move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
 }
@@ -460,7 +468,7 @@ void CursesDisplay::redraw()
   }
 }
 
-void CursesDisplay::draw_update_map(const DisplayMap& update_map)
+void CursesDisplay::draw_update_map(const DisplayMap& update_map, const CursorSettings cs)
 {
   DisplayTile display_tile;
   Coordinate map_coords;
@@ -484,7 +492,7 @@ void CursesDisplay::draw_update_map(const DisplayMap& update_map)
 
   // Since we're drawing the map (with, presumably, the player) we need the cursor present to show the
   // position of the player's character.
-  curs_set(get_cursor_mode());
+  curs_set(get_cursor_mode(cs));
   move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, update_map.size().get_y());
 }

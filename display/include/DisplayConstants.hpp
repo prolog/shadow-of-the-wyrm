@@ -9,3 +9,9 @@ class DisplayIdentifier
   protected:
     DisplayIdentifier();
 };
+
+enum struct CursorSettings
+{
+  CURSOR_SETTINGS_USE_DEFAULT = 0,
+  CURSOR_SETTINGS_SHOW_CURSOR = 1
+};

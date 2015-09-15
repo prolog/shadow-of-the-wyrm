@@ -8,6 +8,7 @@
 #pragma once
 #include <string>
 #include "AnimationFactory.hpp"
+#include "DisplayConstants.hpp"
 #include "DisplayItem.hpp"
 #include "DisplayMap.hpp"
 #include "DisplayStatistics.hpp"
@@ -42,11 +43,11 @@ class Display : public ISerializable
     virtual void halt_messages() = 0;
 
     // Draws the map
-	  virtual void draw(const DisplayMap& current_map) = 0;
+	  virtual void draw(const DisplayMap& current_map, const CursorSettings cs) = 0;
     virtual void redraw() = 0;
 
     // Draws on a portion of the map area.
-    virtual void draw_update_map(const DisplayMap& update_map) = 0;
+    virtual void draw_update_map(const DisplayMap& update_map, const CursorSettings cs) = 0;
 
     // Update a single tile.
     // Engine coordinates are used - the display will calculate the correct coordinates for the display
