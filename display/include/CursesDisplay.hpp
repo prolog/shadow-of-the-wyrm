@@ -67,8 +67,9 @@ class CursesDisplay : public Display
 
   protected:
     friend class SL_Display_CursesDisplayFixture; // test fixture
-
+   
     bool uses_colour() const;
+    int get_cursor_mode() const;
 
     // Setup colours the way ncurses requires.
     void initialize_colours();
@@ -113,4 +114,5 @@ class CursesDisplay : public Display
     // Used to process the prompt
     CursesPromptProcessor prompt_processor;
     bool can_use_colour;
+    const int cursor_mode;
 };

@@ -7,6 +7,7 @@
 #include "Colours.hpp"
 #include "Conversion.hpp"
 #include "CursesAnimationFactory.hpp"
+#include "CursesProperties.hpp"
 #include "DisplaySettings.hpp"
 #include "EquipmentTextKeys.hpp"
 #include "Log.hpp"
@@ -37,7 +38,8 @@ TERMINAL_MAX_COLS(0),
 FIELD_SPACE(2), 
 MSG_BUFFER_LAST_Y(0), 
 MSG_BUFFER_LAST_X(0), 
-can_use_colour(false)
+can_use_colour(false),
+cursor_mode(1) /* normal visibility */
 {
 }
 
@@ -109,6 +111,21 @@ bool CursesDisplay::uses_colour() const
   bool colour = String::to_bool(colour_prop);
 
   return colour;
+}
+
+// If the cursor mode has been set in the properties, use that.
+// Otherwise, use the default.
+int CursesDisplay::get_cursor_mode() const
+{
+  int mode = cursor_mode;
+  auto p_it = display_properties.find(CursesProperties::CURSES_PROPERTIES_CURSOR_MODE);
+
+  if (p_it != display_properties.end())
+  {
+    mode = String::to_int(p_it->second);
+  }
+
+  return mode;
 }
 
 // Initialize the base ncurses colours.
@@ -425,7 +442,7 @@ void CursesDisplay::draw(const DisplayMap& current_map)
 
   // Since we're drawing the map (with, presumably, the player) we need the cursor present to show the
   // position of the player's character.
-  curs_set(1);
+  curs_set(get_cursor_mode());
   move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
 }
@@ -467,7 +484,7 @@ void CursesDisplay::draw_update_map(const DisplayMap& update_map)
 
   // Since we're drawing the map (with, presumably, the player) we need the cursor present to show the
   // position of the player's character.
-  curs_set(1);
+  curs_set(get_cursor_mode());
   move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, update_map.size().get_y());
 }
@@ -923,6 +940,8 @@ bool CursesDisplay::serialize(ostream& stream) const
 
   Serialize::write_bool(stream, can_use_colour);
 
+  // cursor_mode is a constant set in the constructor - ignore it.
+
   return true;
 }
 
@@ -942,6 +961,8 @@ bool CursesDisplay::deserialize(istream& stream)
   // CursesPromptProcessor is stateless; don't load it.
 
   Serialize::read_bool(stream, can_use_colour);
+
+  // cursor_mode is a constant set in the constructor - ignore it.
 
   return true;
 }

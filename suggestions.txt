@@ -1,6 +1,13 @@
 Me:
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 
+Calandor:
+- Rest for a while command
+
+Akeley:
+- ESC as well as 'z'
+- Separate inventory and equipment
+
 Jeremy Long:
 - Allow murdering the ploughman to trigger the completion condition for
   the blacksmith's quest.

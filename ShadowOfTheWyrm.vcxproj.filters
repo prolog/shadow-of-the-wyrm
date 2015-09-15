@@ -3498,6 +3498,9 @@
     <ClInclude Include="engine\include\ShadowOfTheWyrmEngine.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="display\include\CursesProperties.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6808,6 +6811,9 @@
     </ClCompile>
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp">
       <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesProperties.cpp">
+      <Filter>Source Files\display\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
