@@ -4,6 +4,9 @@ Shadow of the Wyrm v0.4.2 "Sanz"
 - Added an option ("cursor_mode") to configure the visibility of the 
   cursor under the player when on the map (akeley).
 
+- Made mention that Witchling magic is innate and other magics are
+  book-learnt (Calandor).
+
 - Bug fixes:
 
   - Skins that had been converted to armour were still available as
