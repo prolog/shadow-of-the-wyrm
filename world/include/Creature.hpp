@@ -55,6 +55,7 @@ class Creature : public ISerializable
 
     void set_is_player(const bool player, ControllerPtr decision_strategy_controller);
     bool get_is_player() const;
+    bool is(std::shared_ptr<Creature> creature) const;
 
     // Set/Get basic vitals
     void set_name(const std::string& new_name);

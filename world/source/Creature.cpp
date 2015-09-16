@@ -250,6 +250,19 @@ bool Creature::get_is_player() const
   return is_player;
 }
 
+// A creature "is" another creature if their ids match.
+bool Creature::is(CreaturePtr other_creature) const
+{
+  bool is_other = false;
+
+  if (other_creature != nullptr)
+  {
+    is_other = (id == other_creature->get_id());
+  }
+
+  return is_other;
+}
+
 void Creature::set_name(const string& new_name)
 {
   name = new_name;

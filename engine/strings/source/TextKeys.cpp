@@ -145,3 +145,4 @@ const string TextKeys::UNARMED = "UNARMED";
 const string TextKeys::SOMETHING = "SOMETHING";
 
 const string TextKeys::LATEST_MESSAGES = "LATEST_MESSAGES";
+const string TextKeys::FRIENDLY = "FRIENDLY";
