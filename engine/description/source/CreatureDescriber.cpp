@@ -8,6 +8,7 @@
 #include "ClassManager.hpp"
 #include "StringTable.hpp"
 #include "StatusAilmentTextKeys.hpp"
+#include "TextKeys.hpp"
 #include "TextMessages.hpp"
 
 using namespace std;
@@ -101,17 +102,24 @@ string CreatureDescriber::describe_statuses() const
 {
   ostringstream ss;
 
-  if (creature)
+  if (creature && viewing_creature)
   {
     vector<pair<string, Colour>> statuses = CreatureTranslator::get_display_status_ailments(creature);
+    bool hostile_to_viewer = creature->hostile_to(viewing_creature->get_id());
 
-    if (!statuses.empty())
+    if (!statuses.empty() || (!creature->is(viewing_creature) && !hostile_to_viewer))
     {
       ss << "[ ";
 
       for (const auto& status_pair : statuses)
       {
         ss << status_pair.first << " ";
+      }
+
+      // If the creature is friendly, be sure to note that!
+      if (!creature->is(viewing_creature) && !hostile_to_viewer)
+      {
+        ss << StringTable::get(TextKeys::FRIENDLY) << " ";
       }
 
       ss << "]";

@@ -7,6 +7,9 @@ Shadow of the Wyrm v0.4.2 "Sanz"
 - Made mention that Witchling magic is innate and other magics are
   book-learnt (Calandor).
 
+- Friendly creatures are now identified as such when using the "L"ook
+  command (barrabus).
+
 - Bug fixes:
 
   - Skins that had been converted to armour were still available as
