@@ -9,6 +9,7 @@
 #include "ItemGenerationManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RaceManager.hpp"
 #include "RNG.hpp"
 
 using std::string;
@@ -118,9 +119,22 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr dead_cre
 // With some probability, create a creature corpse.
 void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_creature, CreaturePtr dead_creature, IInventoryPtr ground) const
 {
+  bool leaves_corpse = false;
+
+  if (dead_creature)
+  {
+    RaceManager rm;
+    RacePtr race = rm.get_race(dead_creature->get_race_id());
+
+    if (race)
+    {
+      leaves_corpse = race->get_leaves_corpse();
+    }
+  }
+
   // Potentially generate a corpse as well.
   CorpseCalculator cc;
-  if (RNG::percent_chance(cc.calculate_chance_corpse(attacking_creature)))
+  if (RNG::percent_chance(cc.calculate_chance_corpse(attacking_creature)) && leaves_corpse)
   {
     CorpseFactory cf;
     ItemPtr corpse = cf.create_corpse(dead_creature);
