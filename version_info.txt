@@ -10,6 +10,10 @@ Shadow of the Wyrm v0.4.2 "Sanz"
 - Friendly creatures are now identified as such when using the "L"ook
   command (barrabus).
 
+- The game XML now allows defining on a race-by-race basis whether a
+  corpse will be left.  Jellies, constructs, and divine creatures do not
+  leave corpses.
+
 - Bug fixes:
 
   - Skins that had been converted to armour were still available as

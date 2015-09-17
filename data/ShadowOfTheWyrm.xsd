@@ -200,6 +200,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="LeavesCorpse" type="xs:boolean"/>
 			<xs:element name="HasRandomVillages" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="SettlementType" type="tns:SettlementType" minOccurs="0"/>
 			<xs:element name="SettlementTileSubtype" type="tns:SettlementTileSubtype" minOccurs="0"/>
