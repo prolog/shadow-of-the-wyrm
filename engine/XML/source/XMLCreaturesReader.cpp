@@ -122,6 +122,16 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     
     uint level = XMLUtils::get_child_node_int_value(creature_node, "Level");
     creature->set_level(level);
+
+    // Properties
+    XMLNode properties_node = XMLUtils::get_next_element_by_local_name(creature_node, "Properties");
+    if (!properties_node.is_null())
+    {
+      map<string, string> addl_props;
+      parse_properties(addl_props, properties_node);
+      creature->set_additional_properties_map(addl_props);
+    }
+
     
     // Set the creature's base damage - this is the damage dealt if a weapon is not used.
     // If a weapon is to be used (for humanoid-types), consider leaving this empty in the
