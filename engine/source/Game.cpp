@@ -454,19 +454,34 @@ void Game::go()
     display->redraw();
     update_score_file_if_necessary(current_player);
   }
+  catch (std::exception& e)
+  {
+    Log::instance().error("Exception caught in main loop!  Details: ");
+    Log::instance().error(e.what());
+
+    exit_on_exception(current_player);
+  }
   catch (...)
   {
     // If there was an exception, try to recover by saving and then exiting
     // so that perhaps the player can reload the save.
-    panic_save(current_player);
-
-    // Add a message about the crash.
-    string crash_msg = StringTable::get(TextKeys::SW_PROBLEM_GAME_SAVED);
-    std::cout << crash_msg << endl << endl;
+    exit_on_exception(current_player);
   }
 
   string farewell_msg = ScoreTextKeys::get_farewell_text_message(current_player->get_name());
   std::cout << farewell_msg << endl;
+}
+
+void Game::exit_on_exception(CreaturePtr player)
+{
+  if (player != nullptr)
+  {
+    panic_save(player);
+  }
+
+  // Add a message about the crash.
+  string crash_msg = StringTable::get(TextKeys::SW_PROBLEM_GAME_SAVED);
+  std::cout << crash_msg << endl << endl;
 }
 
 void Game::panic_save(CreaturePtr player)

@@ -163,6 +163,7 @@ class Game : public ISerializable
     void update_score_file_if_necessary(CreaturePtr creature);
 
     // Save the game after an exception.
+    void exit_on_exception(CreaturePtr player);
     void panic_save(CreaturePtr player);
     
     bool keep_playing;
