@@ -20274,7 +20274,9 @@
 		<Rings>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FENCERS_RING_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FENCERS_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FENCERS_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>105</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
@@ -20286,7 +20288,9 @@
 			</Ring>
 			<Ring id="barbarians_ring">
 				<DescriptionSID>BARBARIANS_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_BARBARIANS_RING_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>BARBARIANS_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_BARBARIANS_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>205</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
@@ -20295,6 +20299,32 @@
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 				<AddlDamage>10</AddlDamage>
+			</Ring>
+			<Ring id="guildmasters_ring">
+				<DescriptionSID>GUILDMASTERS_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_GUILDMASTERS_RING_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>GUILDMASTERS_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_GUILDMASTERS_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>225</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>4</DangerLevel>
+				<Evade>10</Evade>
+				<Soak>0</Soak>
+			</Ring>
+			<Ring id="knights_ring">
+				<DescriptionSID>KNIGHTS_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_KNIGHTS_RING_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>KNIGHTS_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_KNIGHTS_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>225</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>3</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>5</Soak>
 			</Ring>
 			<Ring id="ring_iron">
 				<DescriptionSID>RING_IRON_SID</DescriptionSID>
