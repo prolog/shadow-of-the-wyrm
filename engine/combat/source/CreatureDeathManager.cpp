@@ -1,7 +1,9 @@
 #include "CombatTextKeys.hpp"
+#include "Conversion.hpp"
 #include "CorpseCalculator.hpp"
 #include "CorpseFactory.hpp"
 #include "CreationUtils.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureDeathManager.hpp"
 #include "Game.hpp"
@@ -129,6 +131,13 @@ void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_cre
     if (race)
     {
       leaves_corpse = race->get_leaves_corpse();
+    }
+
+    string leaves_corpse_prop = dead_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_CORPSE);
+
+    if (!leaves_corpse_prop.empty())
+    {
+      leaves_corpse = leaves_corpse && String::to_bool(leaves_corpse_prop);
     }
   }
 
