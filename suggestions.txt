@@ -1,4 +1,6 @@
 Me:
+- When a dungeon updates, it looks like those creatures aren't getting
+to act (in release mode, anyway).
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 
 Calandor:
