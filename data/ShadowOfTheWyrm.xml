@@ -8042,6 +8042,12 @@
 				<NumSides>8</NumSides>
 				<Type>2</Type>
 			</Damage>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_LEAVES_CORPSE</Name>
+					<Value>0</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="skeletal_warrior">
 			<RaceID>_corporeal_undead</RaceID>
@@ -8080,6 +8086,12 @@
 			</Damage>
 			<Soak>2</Soak>
 			<Speed>47</Speed>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_LEAVES_CORPSE</Name>
+					<Value>0</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="mummy">
 			<RaceID>_corporeal_undead</RaceID>
@@ -8258,6 +8270,12 @@
 				<Type>0</Type>
 			</Damage>
 			<Speed>42</Speed>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_LEAVES_CORPSE</Name>
+					<Value>0</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="reaper">
 			<RaceID>_corporeal_undead</RaceID>
@@ -9172,6 +9190,12 @@
 				<Type>0</Type>
 			</Damage>
 			<Speed>40</Speed>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_LEAVES_CORPSE</Name>
+					<Value>0</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="demon_lord">
 			<RaceID>_demon</RaceID>

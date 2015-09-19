@@ -14,6 +14,12 @@ Shadow of the Wyrm v0.4.2 "Sanz"
   corpse will be left.  Jellies, constructs, and divine creatures do not
   leave corpses.
 
+- Creatures can also be specified as to whether or not they leave a
+  corpse.  This is checked after the race flag (the race flag overrides).
+  If this flag is not specified, it is assumed the creature leaves a
+  corpse.  Skeletons, skeletal kings/dragons/etc now no longer leave
+  corpses.
+
 - Bug fixes:
 
   - Skins that had been converted to armour were still available as
