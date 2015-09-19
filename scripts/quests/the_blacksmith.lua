@@ -17,11 +17,19 @@ local function sun_gem_start_fn()
 end
 
 local function sun_gem_completion_condition_fn()
-  return player_has_item("sun_gem") == true
+  return ((player_has_item("sun_gem") == true) or (get_num_creature_killed_global("the_ploughman") > 0))
 end
 
 local function sun_gem_completion_fn()
-  add_message("BLACKSMITH_SUNGEM_QUEST_COMPLETE_SID")
+  if (player_has_item("sun_gem")) then
+    -- Player did the quest
+    add_message("BLACKSMITH_SUNGEM_QUEST_COMPLETE_SID")
+  else
+    -- Player murdered the ploughman!
+    add_message_with_pause("BLACKSMITH_SUNGEM_QUEST_COMPLETE_MURDER_SID")
+    clear_and_add_message("BLACKSMITH_SUNGEM_QUEST_COMPLETE_MURDER2_SID")
+  end
+
   add_object_to_player_tile("forger")
   remove_object_from_player("sun_gem")
   remove_active_quest("ploughman_sungem")
