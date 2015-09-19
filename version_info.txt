@@ -20,6 +20,10 @@ Shadow of the Wyrm v0.4.2 "Sanz"
   corpse.  Skeletons, skeletal kings/dragons/etc now no longer leave
   corpses.
 
+- Made all rings initially unidentified.
+
+- New items: guildmaster's ring, knight's ring.
+
 - Bug fixes:
 
   - Skins that had been converted to armour were still available as
