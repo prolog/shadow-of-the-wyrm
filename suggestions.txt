@@ -8,16 +8,11 @@ Akeley:
 - ESC as well as 'z'
 - Separate inventory and equipment
 
-Jeremy Long:
-- Allow murdering the ploughman to trigger the completion condition for
-  the blacksmith's quest.
-
 barrabus: 
 - Extra descs for items.
 - Seems to be some sort of issue with crashes when opening the door in
   crypt vaults in some situations.
 - Creature decision strategy issue?
-- skinning property not removed from item when skin is made.
 - Resize not working properly.
 
 AgingMinotaur:

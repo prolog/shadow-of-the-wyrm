@@ -22,6 +22,9 @@ Shadow of the Wyrm v0.4.2 "Sanz"
 
 - Made all rings initially unidentified.
 
+- Murdering the ploughman in Isen Dun can now trigger a victory condition
+  for the blacksmith's quest (Jeremy Long).
+
 - New items: guildmaster's ring, knight's ring.
 
 - Bug fixes:
