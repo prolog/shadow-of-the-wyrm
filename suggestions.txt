@@ -3,6 +3,9 @@ Me:
 to act (in release mode, anyway).
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 
+Aleksanderus: 
+- Display issues with terminal of e.g. 94x25.
+
 Calandor:
 - Rest for a while command
 
