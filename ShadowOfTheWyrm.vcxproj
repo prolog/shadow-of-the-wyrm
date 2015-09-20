@@ -137,7 +137,7 @@
       <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d $(ProjectDir)*.txt $(OutDir)
+      <Command>xcopy /y /d $(ProjectDir)version_info.txt $(OutDir)
 xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
 xcopy /y /d $(ProjectDir)xerces-c_3_1.dll $(OutDir)
 xcopy /y /d $(ProjectDir)README.md $(OutDir)
