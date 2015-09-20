@@ -3,6 +3,7 @@
 #include "CreationUtils.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
@@ -57,7 +58,7 @@ bool MapCreatureGenerator::generate_random_creatures(MapPtr map, const int dange
   int cols = dim.get_x();
 
   CreatureGenerationManager cgm;
-
+  
   Rarity rarity = CreationUtils::generate_rarity();
 
   Game& game = Game::instance();
@@ -87,7 +88,7 @@ bool MapCreatureGenerator::generate_random_creatures(MapPtr map, const int dange
       if (MapUtils::is_tile_available_for_creature(generated_creature, tile))
       {
         Coordinate coords(creature_row, creature_col);
-        MapUtils::add_or_update_location(map, generated_creature, coords);
+        GameUtils::add_new_creature_to_map(game, generated_creature, map, coords);
         if (!creatures_generated) creatures_generated = true;
         current_creatures_placed++;
       }
