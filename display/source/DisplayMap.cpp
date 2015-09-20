@@ -39,7 +39,17 @@ void DisplayMap::set(const Coordinate& c, const DisplayTile& value)
 // but then it broke my ::at.
 DisplayTile DisplayMap::at(const Coordinate& c) const
 {
-  return display_map.find(MapUtils::convert_coordinate_to_map_key(c))->second;
+  auto d_it = display_map.find(MapUtils::convert_coordinate_to_map_key(c));
+
+  if (d_it != display_map.end())
+  {
+    return d_it->second;
+  }
+  else
+  {
+    DisplayTile dt(' ', static_cast<int>(Colour::COLOUR_BLACK));
+    return dt;
+  }
 }
 
 Dimensions DisplayMap::size() const

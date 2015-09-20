@@ -40,6 +40,9 @@ Shadow of the Wyrm v0.4.2 "Sanz"
   - Dungeon creatures generated on update weren't getting their actions
     initialized properly, and thus weren't acting at all.
 
+  - The map display code wasn't properly considering both map size and
+    display size in its output routines (Aleksanderus).
+
 Shadow of the Wyrm v0.4.1 "Torroba" 
 - Version declared September 1, 2015.  Version finalized September 12,
   2015.

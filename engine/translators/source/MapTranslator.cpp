@@ -26,16 +26,18 @@ DisplayMap MapTranslator::create_display_map(const bool player_blinded, const Ma
   // I believe this is what people call "a train wreck":
   Season season = Game::instance().get_current_world()->get_calendar().get_season()->get_season();
 
-  DisplayMap display_map(display_area.get_height(), display_area.get_width());
-
   int cursor_row = reference_coords.first;
   int cursor_col = reference_coords.second;
   Coordinate engine_coord = CreatureCoordinateCalculator::calculate_engine_coordinate(display_area, map, reference_coords);
 
   uint start_y, start_x;
   uint stop_y, stop_x;
-  int display_height = display_area.get_height();
-  int display_width = display_area.get_width();
+  Dimensions map_dim = map->size();
+
+  // Ensure that we're not trying to walk over the maximum size of our map.
+  int display_height = std::min<int>(map_dim.get_y(), display_area.get_height());
+  int display_width = std::min<int>(map_dim.get_x(), display_area.get_width());
+  DisplayMap display_map(display_area.get_height(), display_area.get_width());
 
   // Set the loop's start/stop points based on whether a full redraw is
   // required.  It may have been required as part of the display coordinate
