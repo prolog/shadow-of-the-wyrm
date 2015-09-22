@@ -17,3 +17,4 @@ Shadow of the Wyrm is, specifically:
 Shadow of the Wyrm is released under the terms of the MIT License.  A copy 
 of this license can be found in LICENSE.
 
+At the current time I am unlikely to accept pull requests on BitBucket.
