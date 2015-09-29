@@ -8,12 +8,15 @@ class AutomaticMovement : public ISerializable
 {
   public:
     AutomaticMovement();
-    AutomaticMovement(const Direction d, const bool engage);
+    AutomaticMovement(const Direction d, const bool engage, const int new_turns = -1);
 
     bool operator==(const AutomaticMovement& auto_m) const;
 
     void set_direction(const Direction new_direction);
     Direction get_direction() const;
+
+    void set_turns(const int new_turns);
+    int get_turns() const;
 
     void set_engaged(const bool new_engaged);
     bool get_engaged() const;
@@ -23,6 +26,7 @@ class AutomaticMovement : public ISerializable
 
   protected:
     Direction direction;
+    int turns;
     bool engaged;
 
   private:

@@ -283,6 +283,7 @@ const string ActionTextKeys::ACTION_DIG_ITEM_FOUND             = "ACTION_DIG_ITE
 const string ActionTextKeys::ACTION_DIG_THROUGH_TILE           = "ACTION_DIG_THROUGH_TILE";
 const string ActionTextKeys::ACTION_DIG_CANNOT_DIG             = "ACTION_DIG_CANNOT_DIG";
 const string ActionTextKeys::ACTION_DIG_TOO_HARD               = "ACTION_DIG_TOO_HARD";
+const string ActionTextKeys::ACTION_RESTING                    = "ACTION_RESTING";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

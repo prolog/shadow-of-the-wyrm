@@ -59,6 +59,7 @@ class CommandKeys
     static const std::string PIETY;
     static const std::string EXPERIENCE;
     static const std::string CUSTOM_SCRIPT_COMMAND;
+    static const std::string REST;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

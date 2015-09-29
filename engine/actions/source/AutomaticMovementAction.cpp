@@ -2,6 +2,8 @@
 #include "AutomaticMovementAction.hpp"
 #include "AutomaticMovementCoordinator.hpp"
 #include "Commands.hpp"
+#include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementAction.hpp"
@@ -27,6 +29,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
   if (map->get_map_type() == MapType::MAP_TYPE_WORLD)
   {
+    creature->get_automatic_movement_ref().set_engaged(false);
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_AUTOMOVE_WORLD_MAP));
     manager.send();
   }
@@ -71,17 +74,51 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
       if (dcommand)
       {
-        action_cost_value = get_action_cost_value(creature);
         Direction d = dcommand->get_direction();
 
-        // Start moving in the requested direction.
-        AutomaticMovementCoordinator amc;
-        action_cost_value = amc.auto_move(creature, map, d);
+        if (d != Direction::DIRECTION_NULL)
+        {
+          action_cost_value = automatic_movement_in_direction(creature, map, d);
+        }
+        else
+        {
+          action_cost_value = rest(creature);
+        }
       }
     }
   }
 
   return action_cost_value;
+}
+
+ActionCostValue AutomaticMovementAction::rest(CreaturePtr creature) const
+{
+  ActionCostValue acv = 0;
+  MapPtr map = Game::instance().get_current_map();
+  IMessageManager& manager = MessageManagerFactory::instance();
+
+  // Start moving in the requested direction.
+  AutomaticMovementCoordinator amc;
+
+  if (map->get_map_type() == MapType::MAP_TYPE_WORLD)
+  {
+    creature->get_automatic_movement_ref().set_engaged(false);
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_AUTOMOVE_WORLD_MAP));
+    manager.send();
+  }
+  else
+  {
+    acv = amc.auto_move(creature, map, Direction::DIRECTION_NULL, true, true, true);
+  }
+
+  return acv;
+}
+
+ActionCostValue AutomaticMovementAction::automatic_movement_in_direction(CreaturePtr creature, MapPtr map, const Direction d) const
+{
+  // Start moving in the requested direction.
+  AutomaticMovementCoordinator amc;
+  return amc.auto_move(creature, map, d, false, false, false);
 }
 
 ActionCostValue AutomaticMovementAction::get_action_cost_value(CreaturePtr creature) const

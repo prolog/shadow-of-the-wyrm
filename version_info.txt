@@ -25,6 +25,13 @@ Shadow of the Wyrm v0.4.2 "Sanz"
 - Murdering the ploughman in Isen Dun can now trigger a victory condition
   for the blacksmith's quest (Jeremy Long).
 
+- The player can now rest up (default is 100 turns) by using "5".  Most of
+  the usual auto-movement checks apply: hunger, hostile creatures, etc
+  (Calandor).  Resting will also halt when HP and AP are both full, if
+  there are turns remaining.
+
+- Automovement now stops on Poison and Stone statuses.
+
 - New items: guildmaster's ring, knight's ring.
 
 - Bug fixes:

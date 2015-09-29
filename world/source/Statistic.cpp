@@ -81,6 +81,11 @@ int Statistic::get_lowest() const
   }
 }
 
+bool Statistic::get_full() const
+{
+  return (current == base);
+}
+
 bool Statistic::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, base);

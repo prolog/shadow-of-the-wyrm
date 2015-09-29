@@ -1,19 +1,15 @@
 Me:
-- When a dungeon updates, it looks like those creatures aren't getting
-to act (in release mode, anyway).
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
-
-Aleksanderus: 
-- Display issues with terminal of e.g. 94x25.
-
-Calandor:
-- Rest for a while command
+- Soak should be halved when fighting incorporeal creatures (update docs!)
 
 Akeley:
 - ESC as well as 'z'
 - Separate inventory and equipment
 
 barrabus: 
+- You can switch places with a friendly spirit who is inside a wall, and end up inside the wall yourself.  Fortunately you can just walk back out.
+- Incorporeal creatures can also drop items inside a wall upon death.
+- Hostile creatures triggering a trap adjacent to the player triggers the same message as if the player had triggered the trap ("The ceiling clicks above you...").
 - Extra descs for items.
 - Seems to be some sort of issue with crashes when opening the door in
   crypt vaults in some situations.
@@ -29,7 +25,6 @@ AgingMinotaur:
 * The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
 * Kicking in doors doesn't seem to work, which is fine enough. I guess it's a simple question of balancing. On the other hand, it would be nice if evil characters had a way to rob the boathouse, for instance.
 * The one thing I did manage to do with kicking, was to kick items through walls. You should probably take a look at that ;)
-* Inventory behaves weird sometimes. Let's say I want to drop something, and the "d"rop command puts me in the inventory screen. Sometimes, pressing the letter corresponding to an item picks that item, other times it scrolls, seemingly at random. Items past the letter "y" are completely inaccessible, unless I choose to filter the item list. (This may be because I'm playing under Linux with wine)
 * Regarding inventory, I wouldn't mind if weapon/missile damage were displayed next to the item in question. As it is now, I have to equip everything and press "W" and "R" to get at that info.
 * The "f"ire command is also acting a bit wonky. Sometimes it autotargets the closest enemy, sometimes is jumps to an entirely different place in the map (the last place I shot at something), and sometimes the cursor starts out over my own avatar, seemingly at random.
 * I noticed that archers and goblin pelters don't actually shoot anything. I'm supposing this will show up later.

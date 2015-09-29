@@ -4,12 +4,12 @@
 using namespace std;
 
 AutomaticMovement::AutomaticMovement()
-: direction(Direction::DIRECTION_NULL), engaged(false)
+: direction(Direction::DIRECTION_NULL), engaged(false), turns(-1)
 {
 }
 
-AutomaticMovement::AutomaticMovement(const Direction d, const bool engage)
-: direction(d), engaged(engage)
+AutomaticMovement::AutomaticMovement(const Direction d, const bool engage, const int new_turns)
+: direction(d), engaged(engage), turns(new_turns)
 {
 }
 
@@ -18,6 +18,7 @@ bool AutomaticMovement::operator==(const AutomaticMovement& auto_m) const
   bool result = true;
 
   result = result && (direction == auto_m.direction);
+  result = result && (turns == auto_m.turns);
   result = result && (engaged == auto_m.engaged);
 
   return result;
@@ -33,22 +34,38 @@ Direction AutomaticMovement::get_direction() const
   return direction;
 }
 
+void AutomaticMovement::set_turns(const int new_turns)
+{
+  turns = new_turns;
+}
+
+int AutomaticMovement::get_turns() const
+{
+  return turns;
+}
+
+// Set the engaged flag.  If the flag becomes false, also reset the turn
+// counter.
 void AutomaticMovement::set_engaged(const bool new_engaged)
 {
   engaged = new_engaged;
+
+  if (engaged == false)
+  {
+    turns = -1;
+  }
 }
 
 bool AutomaticMovement::get_engaged() const
 {
   return (engaged &&
-          direction != Direction::DIRECTION_NULL &&
-          direction != Direction::DIRECTION_UP &&
-          direction != Direction::DIRECTION_DOWN);
+          ((turns > 0) || (direction != Direction::DIRECTION_UP && direction != Direction::DIRECTION_DOWN && direction != Direction::DIRECTION_NULL)));
 }
 
 bool AutomaticMovement::serialize(ostream& stream) const
 {
   Serialize::write_enum(stream, direction);
+  Serialize::write_int(stream, turns);
   Serialize::write_bool(stream, engaged);
 
   return true;
@@ -57,6 +74,7 @@ bool AutomaticMovement::serialize(ostream& stream) const
 bool AutomaticMovement::deserialize(istream& stream)
 {
   Serialize::read_enum(stream, direction);
+  Serialize::read_int(stream, turns);
   Serialize::read_enum(stream, engaged);
 
   return true;
