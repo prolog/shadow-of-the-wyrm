@@ -17,7 +17,7 @@ using namespace std;
 // (not blocking, no creatures, etc), and the FOV must allow automatic
 // movement as well (there can't be any hostile creatures that the creature
 // can see).
-ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, MapPtr map, const Direction d)
+ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, MapPtr map, const Direction d, const bool ignore_item_checks, const bool ignore_tile_check, const bool ignore_prev_visited_checks)
 {
   // The direction may change during automatic movement, if the creature
   // is e.g., moving down a corridor.
@@ -34,11 +34,11 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   bool creature_move = creature_results.first;
   copy(creature_results.second.begin(), creature_results.second.end(), back_inserter(message_sids));
 
-  pair<bool, vector<string>> creature_position_results = creature_position_allows_auto_move(creature, map);
+  pair<bool, vector<string>> creature_position_results = creature_position_allows_auto_move(creature, map, ignore_item_checks);
   bool creature_pos_move = creature_position_results.first;
   copy(creature_position_results.second.begin(), creature_position_results.second.end(), back_inserter(message_sids));
 
-  pair<bool, vector<string>> tile_results = tile_allows_auto_move(creature, direction_tile);
+  pair<bool, vector<string>> tile_results = tile_allows_auto_move(creature, direction_tile, ignore_tile_check);
   bool tile_move = tile_results.first;
   copy(tile_results.second.begin(), tile_results.second.end(), back_inserter(message_sids));
 
@@ -47,17 +47,23 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   copy(map_results.second.begin(), map_results.second.end(), back_inserter(message_sids));
 
   Coordinate new_coord = CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), cur_dir);
-  pair<bool, vector<string>> visit_results = prev_visited_coords_allow_auto_move(creature, new_coord);
+  pair<bool, vector<string>> visit_results = prev_visited_coords_allow_auto_move(creature, new_coord, ignore_prev_visited_checks);
   bool visit_move = visit_results.first;
 
   if (creature_move && creature_pos_move && tile_move && map_move && visit_move)
   {
     set_available_movement_directions(creature, map);
-    add_coordinate_to_automove_visited(creature, new_coord);
-
-    MovementAction maction;
-    auto_move_cost = maction.move(creature, cur_dir);
-    TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
+    add_coordinate_to_automove_visited(creature, new_coord, ignore_prev_visited_checks);
+    update_turns_if_necessary(creature);
+    auto_move_cost = 1;
+     
+    // Don't move when resting, or else the creature will attempt to
+    // attack itself!
+    if (d != Direction::DIRECTION_NULL)
+    {
+      MovementAction maction;
+      auto_move_cost = maction.move(creature, cur_dir);
+    }
 
     // If the creature was able to move, engage automovement,
     // and track the number of available directions for the
@@ -74,17 +80,28 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
     {
       game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
       game.get_display()->redraw();
+
+      // Resting?
+      if (d == Direction::DIRECTION_NULL)
+      {
+        IMessageManager& manager = MessageManagerFactory::instance();
+
+        manager.clear_if_necessary();
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_RESTING));
+        manager.send();
+      }
     }
 
   }
   else
   {
-    // Clear the automovement available directions to clean things up for
-    // next time.
-    creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS);
+    vector<string> attrs_to_remove = {CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS, 
+                                      CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_COORDS_VISITED};
 
-    // Now that automovement's done, clear the visited coordinates.
-    creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_COORDS_VISITED);
+    for (auto& attr : attrs_to_remove)
+    {
+      creature->remove_additional_property(attr);
+    }
 
     if (!message_sids.empty())
     {
@@ -105,8 +122,8 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   return auto_move_cost;
 }
 
-// Check hunger and other attributes on the creature to determine if auto-move
-// is allowed.
+// Check hunger, the turns flag, and other attributes on the creature to 
+// determine if auto-move is allowed.
 pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(CreaturePtr creature)
 {
   pair<bool, vector<string>> move_details;
@@ -116,7 +133,26 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(
   pair<bool, vector<string>> hunger_details = hunger_allows_auto_move(creature);
   copy(hunger_details.second.begin(), hunger_details.second.end(), back_inserter(message_sids));
 
-  can_move = can_move && hunger_details.first;
+  // No auto-movement when poisoned or in stoning!
+  bool status_ok = (creature->has_status(StatusIdentifiers::STATUS_ID_POISON) == false) && (creature->has_status(StatusIdentifiers::STATUS_ID_STONE) == false);
+
+  // Stop automovement if resting and HP and AP are full.
+  bool rest_ok = (creature->get_automatic_movement_ref().get_direction() != Direction::DIRECTION_NULL || (creature->get_hit_points().get_full() == false || creature->get_arcana_points().get_full() == false));
+
+  // Turns Remaining is used by timed actions, such as resting, that specify
+  // that a movement (for turns, null movement) should be done for a certain
+  // number of turns.
+  bool turns_ok = true;
+  int turns_remaining = creature->get_automatic_movement_ref().get_turns();
+
+  // > 0 (rest, typically) ok for obvious reasons.
+  // Values < 0 are used for non-counted actions (e.g., automovement)
+  if (turns_remaining == 0)
+  {
+    turns_ok = false;
+  }
+
+  can_move = can_move && hunger_details.first && status_ok && rest_ok && turns_ok;
 
   move_details.first = can_move;
   move_details.second = message_sids;
@@ -126,7 +162,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(
 
 // Does the creature's position (current tile, and the surrounding ones) allow
 // auto movement?
-pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allows_auto_move(CreaturePtr creature, MapPtr map)
+pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allows_auto_move(CreaturePtr creature, MapPtr map, const bool ignore_item_checks)
 {
   pair<bool, vector<string>> move_details = {false, {}};
 
@@ -134,7 +170,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
   bool items_allow_move = false;
 
   // Stop auto-movement when moving to a tile that has items.
-  if (current_tile && current_tile->get_items()->empty())
+  if (ignore_item_checks || (current_tile && current_tile->get_items()->empty()))
   {
     items_allow_move = true;
   }
@@ -217,21 +253,21 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::fov_allows_auto_move(Cr
 
 // Check to see if the tile allows automatic movement into it by checking to 
 // see if the tile is available (not empty, no blocking features, etc).
-pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(CreaturePtr creature, TilePtr tile)
+pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(CreaturePtr creature, TilePtr tile, const bool ignore_tile_check)
 {
   pair<bool, vector<string>> tile_details;
 
-  tile_details.first = (MapUtils::is_tile_available_for_creature(creature, tile));
+  tile_details.first = ignore_tile_check || (MapUtils::is_tile_available_for_creature(creature, tile));
 
   return tile_details;
 }
 
 // Check to see if the creature has already visited the new coordinate.
-pair<bool, vector<string>> AutomaticMovementCoordinator::prev_visited_coords_allow_auto_move(CreaturePtr creature, const Coordinate& new_coord)
+pair<bool, vector<string>> AutomaticMovementCoordinator::prev_visited_coords_allow_auto_move(CreaturePtr creature, const Coordinate& new_coord, const bool ignore_prev_visited_checks)
 {
-  pair<bool, vector<string>> visit_details = {false, {}};
+  pair<bool, vector<string>> visit_details = {ignore_prev_visited_checks, {}};
 
-  if (creature != nullptr)
+  if (creature != nullptr && ignore_prev_visited_checks == false)
   {
     vector<string> visited_coords;
 
@@ -245,7 +281,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::prev_visited_coords_all
     visit_details.first = (std::find(visited_coords.begin(), visited_coords.end(), MapUtils::convert_coordinate_to_map_key(new_coord)) == visited_coords.end());
   }
 
-  return visit_details;
+  return (visit_details);
 }
 
 // Set the number of available automatic movement directions.  This is used in
@@ -262,9 +298,9 @@ void AutomaticMovementCoordinator::set_available_movement_directions(CreaturePtr
 // Add a coordinate to the current set of coordinates visited during 
 // automovement, so that the same coordinate can't be visited twice
 // (no running loops!).
-void AutomaticMovementCoordinator::add_coordinate_to_automove_visited(CreaturePtr creature, const Coordinate& c)
+void AutomaticMovementCoordinator::add_coordinate_to_automove_visited(CreaturePtr creature, const Coordinate& c, const bool ignore_prev_visited_checks)
 {
-  if (creature != nullptr)
+  if (creature != nullptr && ignore_prev_visited_checks == false)
   {
     vector<string> coords;
 
@@ -275,5 +311,16 @@ void AutomaticMovementCoordinator::add_coordinate_to_automove_visited(CreaturePt
 
     coords.push_back(MapUtils::convert_coordinate_to_map_key(c));
     creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_COORDS_VISITED, String::create_csv_from_string_vector(coords));
+  }
+}
+
+void AutomaticMovementCoordinator::update_turns_if_necessary(CreaturePtr creature)
+{
+  // If there is already a flag on the creature, decrement it
+  int turns_auto = creature->get_automatic_movement_ref().get_turns();
+
+  if (turns_auto > 0)
+  {
+    creature->get_automatic_movement_ref().set_turns(turns_auto - 1);
   }
 }

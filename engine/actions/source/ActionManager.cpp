@@ -547,6 +547,17 @@ ActionCost ActionManager::fire_missile(CreaturePtr creature)
   return get_action_cost(creature, action_cost_value);
 }
 
+ActionCost ActionManager::rest(CreaturePtr creature)
+{
+  Game& game = Game::instance();
+  Settings& settings = game.get_settings_ref();
+  int rest_turns = String::to_int(settings.get_setting("rest_turns"));
+  creature->get_automatic_movement_ref().set_turns(rest_turns);
+
+  AutomaticMovementAction ama;
+  return get_action_cost(creature, ama.rest(creature));
+}
+
 ActionCost ActionManager::save(CreaturePtr creature)
 {
   Game& game = Game::instance();

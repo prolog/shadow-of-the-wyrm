@@ -21,6 +21,22 @@ TEST(SL_World_Statistic, Lowest)
   EXPECT_EQ(15, stat2.get_lowest());
 }
 
+TEST(SL_World_Statistic, IsFull)
+{
+  Statistic stat(30);
+  stat.set_current(30);
+
+  EXPECT_TRUE(stat.get_full());
+
+  stat.set_current(33);
+
+  EXPECT_FALSE(stat.get_full());
+
+  stat.set_current(10);
+
+  EXPECT_FALSE(stat.get_full());
+}
+
 TEST(SL_World_Statistic, BaseValue)
 {
   Statistic stat;

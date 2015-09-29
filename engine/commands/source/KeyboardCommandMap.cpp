@@ -113,7 +113,7 @@ vector<string> KeyboardCommandMap::get_remappable_commands() const
   CommandKeys::QUEST_LIST, CommandKeys::CAST_SPELL, CommandKeys::BESTIARY,
   CommandKeys::EVOKE, CommandKeys::LATEST_MESSAGES, CommandKeys::KICK,
   CommandKeys::OFFER, CommandKeys::SKIN, CommandKeys::PIETY,
-  CommandKeys::EXPERIENCE};
+  CommandKeys::EXPERIENCE, CommandKeys::REST};
 }
 
 void KeyboardCommandMap::parse_keybindings(const Settings& settings, const vector<string>& remappable_commands)

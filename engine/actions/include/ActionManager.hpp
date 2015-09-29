@@ -118,6 +118,9 @@ class ActionManager : public ISerializable
     // Determine the player's piety.
     ActionCost piety(CreaturePtr creature);
 
+    // Rest for a while.
+    ActionCost rest(CreaturePtr creature);
+
     // Level and experience information.
     ActionCost experience(CreaturePtr creature);
 

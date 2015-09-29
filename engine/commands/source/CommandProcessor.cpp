@@ -223,6 +223,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
           ac = game.actions.get_action_cost(creature, String::to_int(custom_acv));
         }
       }
+      else if (command_name == CommandKeys::REST)
+      {
+        game.actions.rest(creature);
+      }
     }
   }
   

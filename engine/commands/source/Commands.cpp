@@ -438,3 +438,13 @@ CustomScriptCommand::CustomScriptCommand()
 CustomScriptCommand::~CustomScriptCommand()
 {
 }
+
+// Rest!
+RestCommand::RestCommand(int key)
+  : Command(CommandKeys::REST, key)
+{
+}
+
+RestCommand::~RestCommand()
+{
+}

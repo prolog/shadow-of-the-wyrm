@@ -17,6 +17,8 @@ class Statistic : public ISerializable
 
     int get_lowest() const;
 
+    bool get_full() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

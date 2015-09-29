@@ -301,3 +301,10 @@ class CustomScriptCommand : public Command
     CustomScriptCommand();
     ~CustomScriptCommand();
 };
+
+class RestCommand : public Command
+{
+  public:
+    RestCommand(int key);
+    ~RestCommand();
+};

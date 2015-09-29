@@ -28,6 +28,34 @@ TEST(SL_World_AutomaticMovement, engaged_status)
   am.set_direction(Direction::DIRECTION_NORTH_WEST);
 
   EXPECT_TRUE(am.get_engaged());
+
+  am.set_turns(12);
+
+  am.set_direction(Direction::DIRECTION_NULL);
+
+  EXPECT_TRUE(am.get_engaged());
+
+  am.set_direction(Direction::DIRECTION_UP);
+
+  EXPECT_TRUE(am.get_engaged());
+
+  am.set_direction(Direction::DIRECTION_DOWN);
+
+  EXPECT_TRUE(am.get_engaged());
+}
+
+TEST(SL_World_AutomaticMovement, turn_counter)
+{
+  AutomaticMovement am;
+
+  am.set_engaged(true);
+  am.set_turns(15);
+
+  EXPECT_EQ(15, am.get_turns());
+
+  am.set_engaged(false);
+
+  EXPECT_EQ(-1, am.get_turns());
 }
 
 TEST(SL_World_AutomaticMovement, serialization_id)

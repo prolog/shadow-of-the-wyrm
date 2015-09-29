@@ -198,6 +198,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<ExperienceCommand>(key);
   }
+  else if (command_name == CommandKeys::REST)
+  {
+    command = std::make_shared<RestCommand>(key);
+  }
 
   return command;
 }
