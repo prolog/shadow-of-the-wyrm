@@ -59,6 +59,10 @@ Shadow of the Wyrm v0.4.2 "Sanz"
     can switch into the tile - this was triggered by trading spaces with
     friendly spooks while not incorporeal (barrabus).
 
+  - Trap messages were being displayed when the player was in LOS -
+    should only have been displayed when the player actually triggered
+    the trap (barrabus).
+
 Shadow of the Wyrm v0.4.1 "Torroba" 
 - Version declared September 1, 2015.  Version finalized September 12,
   2015.
