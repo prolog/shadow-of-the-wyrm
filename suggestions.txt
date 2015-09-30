@@ -7,8 +7,6 @@ Akeley:
 - Separate inventory and equipment
 
 barrabus: 
-- You can switch places with a friendly spirit who is inside a wall, and end up inside the wall yourself.  Fortunately you can just walk back out.
-- Incorporeal creatures can also drop items inside a wall upon death.
 - Hostile creatures triggering a trap adjacent to the player triggers the same message as if the player had triggered the trap ("The ceiling clicks above you...").
 - Extra descs for items.
 - Seems to be some sort of issue with crashes when opening the door in

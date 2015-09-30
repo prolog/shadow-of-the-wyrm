@@ -40,7 +40,7 @@ class MovementAction : public IActionManager
 
     // Handle attempting to move on to a tile where there is a creature present.
     ActionCostValue handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map, const Coordinate& new_coords, const Direction d);
-    MovementThroughTileType get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature);
+    MovementThroughTileType get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature, TilePtr creatures_new_tile);
 
     void add_tile_related_messages(const CreaturePtr& creature, TilePtr tile);
     bool add_message_about_tile_if_necessary(const CreaturePtr& creature, TilePtr tile);

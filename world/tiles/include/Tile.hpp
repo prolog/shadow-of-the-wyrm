@@ -60,6 +60,7 @@ class Tile : public ISerializable
     virtual bool get_illuminated() const;
     
     virtual bool get_is_blocking(std::shared_ptr<Creature> perspective_creature = std::shared_ptr<Creature>()) const;
+    virtual bool get_is_blocking_ignore_present_creature(std::shared_ptr<Creature> perspective_creature) const;
     virtual bool get_is_blocking_for_item(std::shared_ptr<Item> item = std::shared_ptr<Item>()) const;
     virtual int get_movement_multiplier() const;
 

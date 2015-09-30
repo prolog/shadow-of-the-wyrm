@@ -287,7 +287,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
       // into the other creature and attack indiscriminately.
       if (cca.can_select_movement_direction(creature))
       {
-        mtt = get_movement_through_tile_type(creature, adjacent_creature);
+        mtt = get_movement_through_tile_type(creature, adjacent_creature, creatures_new_tile);
       }
 
       switch (mtt)
@@ -350,7 +350,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
 }
 
 // Figure out what the creature wants to do in terms of getting through the occupied tile.
-MovementThroughTileType MovementAction::get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature)
+MovementThroughTileType MovementAction::get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature, TilePtr creatures_new_tile)
 {
   MovementThroughTileType mtt = MovementThroughTileType::MOVEMENT_ATTACK;
 
@@ -358,10 +358,20 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
   // to move, and the moving creature will need to find another way around.
   bool adjacent_creature_can_move = adjacent_creature->get_decision_strategy()->can_move();
 
+  // Ensure the creature can actually enter the tile before prompting the switch.  This is
+  // almost always the case, but if the nearby creature is incorporeal and the switching
+  // creature is not, no prompt should occur.
+  bool creature_can_enter_adjacent_tile = false;
+  
+  if (creatures_new_tile)
+  {
+    creature_can_enter_adjacent_tile = !creatures_new_tile->get_is_blocking_ignore_present_creature(creature);
+  }
+
   // Maybe the creature just wants to switch?
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
-  if (adjacent_creature_can_move)
+  if (adjacent_creature_can_move && creature_can_enter_adjacent_tile)
   {
     manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SWITCH_FRIENDLY_CREATURE));
     bool switch_places = creature->get_decision_strategy()->get_confirmation();
@@ -373,12 +383,15 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
   }
   else
   {
-    manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SQUEEZE_FRIENDLY_CREATURE));
-    bool squeeze_past = creature->get_decision_strategy()->get_confirmation();
+    if (creature_can_enter_adjacent_tile)
+    { 
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SQUEEZE_FRIENDLY_CREATURE));
+      bool squeeze_past = creature->get_decision_strategy()->get_confirmation();
 
-    if (squeeze_past)
-    {
-      mtt = MovementThroughTileType::MOVEMENT_SQUEEZE;
+      if (squeeze_past)
+      {
+        mtt = MovementThroughTileType::MOVEMENT_SQUEEZE;
+      }
     }
   }
 
