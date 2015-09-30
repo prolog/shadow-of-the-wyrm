@@ -1,17 +1,15 @@
 Me:
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 - Soak should be halved when fighting incorporeal creatures (update docs!)
+- Display "A foo triggers a trap" generic message when the foo steps on the
+  trap and the player.
 
 Akeley:
 - ESC as well as 'z'
 - Separate inventory and equipment
 
 barrabus: 
-- Hostile creatures triggering a trap adjacent to the player triggers the same message as if the player had triggered the trap ("The ceiling clicks above you...").
 - Extra descs for items.
-- Seems to be some sort of issue with crashes when opening the door in
-  crypt vaults in some situations.
-- Creature decision strategy issue?
 - Resize not working properly.
 
 AgingMinotaur:

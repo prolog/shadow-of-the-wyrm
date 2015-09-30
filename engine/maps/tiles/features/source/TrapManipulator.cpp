@@ -49,11 +49,14 @@ void TrapManipulator::trigger_trap(TrapPtr trap, CreaturePtr creature)
 {
   string trigger_message_sid = trap->get_trigger_message_sid();
 
-  // Traps only affect the creature on the exact tile (the creature passed
-  // as an argument to this function).
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-  manager.add_new_message(StringTable::get(trigger_message_sid));
-  manager.send();
+  if (creature && creature->get_is_player())
+  {
+    // Traps only affect the creature on the exact tile (the creature passed
+    // as an argument to this function).
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(trigger_message_sid));
+    manager.send();
+  }
 
   trap->set_triggered(true);
 }
