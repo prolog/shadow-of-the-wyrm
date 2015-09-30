@@ -50,6 +50,11 @@ Shadow of the Wyrm v0.4.2 "Sanz"
   - The map display code wasn't properly considering both map size and
     display size in its output routines (Aleksanderus).
 
+  - Incorporeal creatures were able to drop items on rock/earth tiles.
+    Tiles with non-zero solidity (earth, rock at the moment) now have
+    null inventories, so dropping items on these makes the items
+    disappear (barrabus).
+
 Shadow of the Wyrm v0.4.1 "Torroba" 
 - Version declared September 1, 2015.  Version finalized September 12,
   2015.
