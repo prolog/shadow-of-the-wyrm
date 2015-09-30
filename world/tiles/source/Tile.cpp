@@ -194,6 +194,28 @@ bool Tile::get_illuminated() const
 // creature present.
 bool Tile::get_is_blocking(CreaturePtr perspective_creature) const
 {
+  bool tile_blocking = get_is_blocking_ignore_present_creature(perspective_creature);
+  
+  if (creature && perspective_creature 
+               && (creature->get_id() != perspective_creature->get_id()))
+  {
+    // Check to see if the searching creature is hostile to this creature.
+    // If the creature's not hostile, consider the tile blocking; otherwise,
+    // use whatever the current value of tile_blocking is (based on movement,
+    // features, etc).
+    if (!perspective_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
+    {
+      tile_blocking = true;
+    }
+  }
+
+  return tile_blocking;
+}
+
+// Check to see if the tile is blocking, checking as if the present creature
+// (if there is one) was not there.
+bool Tile::get_is_blocking_ignore_present_creature(CreaturePtr perspective_creature) const
+{
   bool tile_blocking = false;
   bool perspective_creature_incorporeal = perspective_creature && perspective_creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
 
@@ -205,19 +227,6 @@ bool Tile::get_is_blocking(CreaturePtr perspective_creature) const
   if (feature && feature->get_is_blocking() && !perspective_creature_incorporeal)
   {
     tile_blocking = true;
-  }
-  
-  if (creature && perspective_creature 
-               && (creature->get_id() != perspective_creature->get_id()))
-  {
-    // Check to see if the searching creature is hostile to this creature.
-    // If the creature's not hostile, consider the tile blocking; otherwise,
-    // ues whatever the current value of tile_blocking is (based on movement,
-    // features, etc).
-    if (!perspective_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
-    {
-      tile_blocking = true;
-    }
   }
 
   return tile_blocking;
