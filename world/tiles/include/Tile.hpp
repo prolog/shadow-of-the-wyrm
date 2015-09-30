@@ -95,7 +95,8 @@ class Tile : public ISerializable
 
     // Used for digging, to see if the wielded item has enough strength
     // to penetrate the tile.
-    virtual int get_hardness() const;
+    void set_hardness(const int new_hardness);
+    int get_hardness() const;
     
     virtual TileExitMap& get_tile_exit_map_ref();
     
@@ -122,7 +123,7 @@ class Tile : public ISerializable
     virtual Tile* clone() = 0;
 
   protected:
-    Tile();
+    Tile(const int new_hardness = 0);
     Tile(const DigChances& dc);
 
     // Setup code common to the two constructors
@@ -140,6 +141,10 @@ class Tile : public ISerializable
     // by means of a set function.
     TileType tile_type;
     TileType tile_subtype;
+
+    // How hard is the tile? > 1 means that the tile is solid and requires
+    // digging.
+    int hardness;
 
     // Each tile can have at most one creature on it.
     std::shared_ptr<Creature> creature;

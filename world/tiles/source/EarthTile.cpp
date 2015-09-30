@@ -4,6 +4,11 @@ using namespace std;
 
 const int EarthTile::EARTH_TILE_HARDNESS = 1;
 
+EarthTile::EarthTile()
+: Tile(EARTH_TILE_HARDNESS)
+{
+}
+
 TileType EarthTile::get_tile_type() const
 {
   return TileType::TILE_TYPE_EARTH;
@@ -17,11 +22,6 @@ TileType EarthTile::get_decomposition_tile_type() const
 string EarthTile::get_decomposition_item_id() const
 {
   return "_dirt";
-}
-
-int EarthTile::get_hardness() const
-{
-  return EarthTile::EARTH_TILE_HARDNESS;
 }
 
 string EarthTile::get_tile_description_sid() const

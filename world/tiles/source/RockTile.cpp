@@ -4,9 +4,9 @@ using namespace std;
 
 const int RockTile::ROCK_TILE_HARDNESS = 10;
 
-int RockTile::get_hardness() const
+RockTile::RockTile()
+: Tile(ROCK_TILE_HARDNESS)
 {
-  return ROCK_TILE_HARDNESS;
 }
 
 TileType RockTile::get_tile_type() const

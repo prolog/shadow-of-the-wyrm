@@ -12,7 +12,9 @@ TEST(SL_World_Tiles_Tile, correct_inventory_type)
                                                              {TileSuperType::TILE_SUPER_TYPE_UNDEFINED, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
 
   // But, there are exceptions.  Items fall down wells, for example.
-  std::map<TileType, ClassIdentifier> tt_exceptions({{TileType::TILE_TYPE_WELL, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
+  std::map<TileType, ClassIdentifier> tt_exceptions({{TileType::TILE_TYPE_WELL, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
+                                                     {TileType::TILE_TYPE_ROCK, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
+                                                     {TileType::TILE_TYPE_EARTH, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
   TileGenerator tg;
 
   for (int i = static_cast<int>(TileType::TILE_TYPE_FIRST); i < static_cast<int>(TileType::TILE_TYPE_LAST); i++)

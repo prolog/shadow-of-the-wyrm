@@ -2,6 +2,7 @@
 #include "FeatureFactory.hpp"
 #include "InventoryFactory.hpp"
 #include "MapFactory.hpp"
+#include "NullInventory.hpp"
 #include "Serialize.hpp"
 #include "Tile.hpp"
 
@@ -14,7 +15,8 @@ using namespace std;
   Tile.
 
  ******************************************************************/
-Tile::Tile()
+Tile::Tile(const int new_hardness)
+: hardness(new_hardness)
 {
   init();
 }
@@ -27,7 +29,17 @@ Tile::Tile(const DigChances& dc)
 
 void Tile::init()
 {
-  items = std::make_shared<Inventory>();
+  // JCD FIXME: Not working because virtual functions don't work
+  // until after the object is fully constructed.
+  if (hardness > 0)
+  {
+    items = std::make_shared<NullInventory>();
+  }
+  else
+  {
+    items = std::make_shared<Inventory>();
+  }
+
   set_default_properties();
   tile_type = TileType::TILE_TYPE_UNDEFINED;
   tile_subtype = TileType::TILE_TYPE_UNDEFINED;
@@ -46,6 +58,7 @@ bool Tile::operator==(const Tile& tile) const
   result = result && (viewed == tile.viewed);
   result = result && (tile_type == tile.tile_type);
   result = result && (tile_subtype == tile.tile_subtype);
+  result = result && (hardness == tile.hardness);
   result = result && ((creature && tile.creature) || (!creature && !tile.creature));
 
   result = result && (additional_properties == tile.additional_properties);
@@ -341,9 +354,14 @@ std::string Tile::get_decomposition_item_id() const
   return no_item;
 }
 
+void Tile::set_hardness(const int new_hardness)
+{
+  hardness = new_hardness;
+}
+
 int Tile::get_hardness() const
 {
-  return 0;
+  return hardness;
 }
 
 TileExitMap& Tile::get_tile_exit_map_ref()
@@ -423,6 +441,7 @@ bool Tile::serialize(ostream& stream) const
   Serialize::write_bool(stream, viewed);
   Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, tile_subtype);
+  Serialize::write_int(stream, hardness);
 
   Serialize::write_string_map(stream, additional_properties);
 
@@ -481,6 +500,7 @@ bool Tile::deserialize(istream& stream)
   Serialize::read_bool(stream, viewed);
   Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, tile_subtype);
+  Serialize::read_int(stream, hardness);
 
   Serialize::read_string_map(stream, additional_properties);
 
