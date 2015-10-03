@@ -1,8 +1,6 @@
 Me:
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
-- Soak should be halved when fighting incorporeal creatures (update docs!)
-- Display "A foo triggers a trap" generic message when the foo steps on the
-  trap and the player.
+- Soak should be quartered when fighting incorporeal creatures (update docs!)
 
 Akeley:
 - ESC as well as 'z'
