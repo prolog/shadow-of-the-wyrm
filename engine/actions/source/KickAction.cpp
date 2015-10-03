@@ -109,10 +109,10 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
 
   if (creature && current_map)
   {
-    TilePtr kick_tile = MapUtils::get_adjacent_tile(current_map, creature, direction);
+    TilePtr k_tile = MapUtils::get_adjacent_tile(current_map, creature, direction);
     IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
-    if (kick_tile)
+    if (k_tile)
     {
       acv = get_action_cost_value(creature);
 
@@ -120,43 +120,34 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
       manager.send(); // Send immediately so that things don't look weird if interrupted by a confirmation.
 
       // Is there a creature?
-      if (kick_tile->has_creature())
+      if (k_tile->has_creature())
       {
-        CreaturePtr kicked_creature = kick_tile->get_creature();
+        CreaturePtr kicked_creature = k_tile->get_creature();
         
         acv = kick_creature(creature, kicked_creature);
       }
       // Are there items present?
-      else if (!kick_tile->get_items()->empty())
+      else if (!k_tile->get_items()->empty())
       {
         // Kick the top item in the pile in the given direction.
         TilePtr new_tile = MapUtils::get_adjacent_tile(current_map, creature, direction, 2);
-        acv = kick_item(creature, kick_tile, new_tile, direction);
+        acv = kick_item(creature, k_tile, new_tile, direction);
       }
       // No creature to kick.  Is there a feature?
-      else if (kick_tile->has_feature())
+      else if (k_tile->has_feature())
       {
-        acv = kick_feature(creature, current_map, kick_tile, kick_tile->get_feature());
-      }
-      else
-      {
-        // Creatures can't kick solid tiles, unless they're incorporeal, or can
-        // otherwise pass through such things.
-        if (kick_tile->get_movement_multiplier() == 0 && !creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+        if (!creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
         {
-          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SOLID_TILE));
-        }
-        // Kicking a water tile generates a message
-        else if (kick_tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
-        {
-          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_WATER_TILE));
+          acv = kick_feature(creature, current_map, k_tile, k_tile->get_feature());
         }
         else
         {
-          // ...
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_PASSES_THROUGH));
         }
-
-        acv = get_action_cost_value(creature);
+      }
+      else
+      {
+        acv = kick_tile(creature, k_tile);
       }
     }
     else
@@ -262,6 +253,38 @@ ActionCostValue KickAction::kick_item(CreaturePtr creature, TilePtr kick_tile, T
     }
   }
 
+  return acv;
+}
+
+// Kick at a particular tile, being sure to handle the incorporeal case.
+ActionCostValue KickAction::kick_tile(CreaturePtr creature, TilePtr kick_tile)
+{
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+
+  // Creatures can't kick solid tiles, unless they're incorporeal, or can
+  // otherwise pass through such things.
+  if (kick_tile->get_movement_multiplier() == 0)
+  {
+    if (!creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+    {
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SOLID_TILE));
+    }
+    else
+    {
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_PASSES_THROUGH));
+    }
+  }
+  // Kicking a water tile generates a message
+  else if (kick_tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
+  {
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_WATER_TILE));
+  }
+  else
+  {
+    // ...
+  }
+
+  ActionCostValue acv = get_action_cost_value(creature);
   return acv;
 }
 

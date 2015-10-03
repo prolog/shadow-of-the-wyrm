@@ -70,6 +70,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_WHEEL_AND_LOOM;
     static const std::string ACTION_KICK_BARREL;
     static const std::string ACTION_KICK_TRAP;
+    static const std::string ACTION_KICK_PASSES_THROUGH;
     static const std::string ACTION_FORGE_NO_SUITABLE_HAMMER;
     static const std::string ACTION_FORGE_NO_SMITHING_SKILL;
     static const std::string ACTION_FORGE_NO_INGOTS;
