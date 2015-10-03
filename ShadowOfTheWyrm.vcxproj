@@ -262,6 +262,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\DefaultStatusEffectCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DisfiguredCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\DoorBreakageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ExposedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FlyingCalculator.hpp" />
@@ -1079,8 +1080,14 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\CursesProperties.cpp" />
+    <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\unit_tests\DoorBreakageCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
