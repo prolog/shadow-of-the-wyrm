@@ -257,6 +257,7 @@ const string ActionTextKeys::ACTION_KICK_TANNERY               = "ACTION_KICK_TA
 const string ActionTextKeys::ACTION_KICK_WHEEL_AND_LOOM        = "ACTION_KICK_WHEEL_AND_LOOM";
 const string ActionTextKeys::ACTION_KICK_BARREL                = "ACTION_KICK_BARREL";
 const string ActionTextKeys::ACTION_KICK_TRAP                  = "ACTION_KICK_TRAP";
+const string ActionTextKeys::ACTION_KICK_PASSES_THROUGH        = "ACTION_KICK_PASSES_THROUGH";
 const string ActionTextKeys::ACTION_FORGE_NO_SUITABLE_HAMMER   = "ACTION_FORGE_NO_SUITABLE_HAMMER";
 const string ActionTextKeys::ACTION_FORGE_NO_SMITHING_SKILL    = "ACTION_FORGE_NO_SMITHING_SKILL";
 const string ActionTextKeys::ACTION_FORGE_NO_INGOTS            = "ACTION_FORGE_NO_INGOTS";
