@@ -42,6 +42,9 @@ Shadow of the Wyrm v0.4.2 "Sanz"
   potentially add slowness) when the kick is unsuccessful.  When the
   kick is successful, the door is destroyed.
 
+- The default "apply a feature" code (that does nothing) now shows a 
+  message for the player (AgingMinotaur).
+
 - Bug fixes:
 
   - Skins that had been converted to armour were still available as
