@@ -13,11 +13,8 @@ barrabus:
 AgingMinotaur:
 * A command to display character info in-game (without dumping it in a file) would be nice.
 * On a related note, I didn't feel very connected to my skills, so a way to access/display them would be nice. I get the impression that some of them aren't fully implemented yet, but also noticed that while some characters were unable to use a spinning wheel because they had no fibres to use, others reportedly didn't know how to spin.
-* I love to skin stuff and make cloaks of them! I'm guessing armoured bugs, for instance, yield better equipment than regular animals. Looking forward to discovering more crafting mechanics. But the fact that I was able to skin a skeleton is perhaps a bit over the top?
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
 * The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
-* Kicking in doors doesn't seem to work, which is fine enough. I guess it's a simple question of balancing. On the other hand, it would be nice if evil characters had a way to rob the boathouse, for instance.
-* The one thing I did manage to do with kicking, was to kick items through walls. You should probably take a look at that ;)
 * Regarding inventory, I wouldn't mind if weapon/missile damage were displayed next to the item in question. As it is now, I have to equip everything and press "W" and "R" to get at that info.
 * The "f"ire command is also acting a bit wonky. Sometimes it autotargets the closest enemy, sometimes is jumps to an entirely different place in the map (the last place I shot at something), and sometimes the cursor starts out over my own avatar, seemingly at random.
 * I noticed that archers and goblin pelters don't actually shoot anything. I'm supposing this will show up later.
