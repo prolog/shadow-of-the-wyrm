@@ -1,10 +1,11 @@
 #include "DoorBreakageCalculator.hpp"
 
-const int DoorBreakageCalculator::DEFAULT_STR_BASE = 10;
-const int DoorBreakageCalculator::STR_INCR_DIVISOR = 3;
+const int DoorBreakageCalculator::DEFAULT_STR_BASE = 0;
+const int DoorBreakageCalculator::DEFAULT_STR_LOCK = 10;
+const int DoorBreakageCalculator::STR_INCR_DIVISOR = 1;
 
 DoorBreakageCalculator::DoorBreakageCalculator()
-: material_base_strength_values({{MaterialType::MATERIAL_TYPE_WOOD, 10}, 
+: material_base_strength_values({{MaterialType::MATERIAL_TYPE_WOOD, 0}, 
                                  {MaterialType::MATERIAL_TYPE_STONE, 50}, 
                                  {MaterialType::MATERIAL_TYPE_IRON, 60}, 
                                  {MaterialType::MATERIAL_TYPE_STEEL, 70}})
@@ -19,7 +20,7 @@ int DoorBreakageCalculator::calculate_pct_chance_breakage(CreaturePtr creature, 
 
   if (creature && door)
   {
-    int base_str_val = get_base_strength_value(door->get_material_type());
+    int base_str_val = get_base_strength_value(door);
     int creature_str = creature->get_strength().get_current();
 
     if (creature_str > base_str_val)
@@ -32,14 +33,29 @@ int DoorBreakageCalculator::calculate_pct_chance_breakage(CreaturePtr creature, 
   return chance;
 }
 
-int DoorBreakageCalculator::get_base_strength_value(const MaterialType mt)
+int DoorBreakageCalculator::get_base_strength_value(DoorPtr door)
 {
   int base_str = DEFAULT_STR_BASE;
-  auto m_it = material_base_strength_values.find(mt);
 
-  if (m_it != material_base_strength_values.end())
+  if (door != nullptr)
   {
-    base_str = m_it->second;
+    MaterialType mt = door->get_material_type();
+    auto m_it = material_base_strength_values.find(mt);
+
+    if (m_it != material_base_strength_values.end())
+    {
+      base_str = m_it->second;
+    }
+
+    LockPtr lock = door->get_lock();
+
+    // Locked doors are harder to kick down.
+    // Not for any good reason, but for game balance and mechanic purposes.
+    // Otherwise, kick kick kick kick...
+    if (lock != nullptr && lock->get_locked() && !lock->get_lock_id().empty())
+    {
+      base_str += DEFAULT_STR_LOCK;
+    }
   }
 
   return base_str;
