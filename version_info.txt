@@ -38,6 +38,10 @@ Shadow of the Wyrm v0.4.2 "Sanz"
 
 - New items: guildmaster's ring, knight's ring.
 
+- Kicking a door has a chance to sprain the player's leg (deal damage,
+  potentially add slowness) when the kick is unsuccessful.  When the
+  kick is successful, the door is destroyed.
+
 - Bug fixes:
 
   - Skins that had been converted to armour were still available as
