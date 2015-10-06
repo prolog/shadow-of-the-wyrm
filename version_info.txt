@@ -45,6 +45,9 @@ Shadow of the Wyrm v0.4.2 "Sanz"
 - The default "apply a feature" code (that does nothing) now shows a 
   message for the player (AgingMinotaur).
 
+- Included the material as part of a feature's description when looking
+  at it.
+
 - Bug fixes:
 
   - Skins that had been converted to armour were still available as
