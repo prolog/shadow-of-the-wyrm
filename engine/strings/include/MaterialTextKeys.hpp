@@ -1,9 +1,13 @@
 #pragma once
+#include <map>
 #include <string>
+#include "MaterialTypes.hpp"
 
 class MaterialTextKeys
 {
   public:
+    static const std::string get_material(const MaterialType mt);
+
     static const std::string MATERIAL_CLOTH;
     static const std::string MATERIAL_DRAGON_SCALE;
     static const std::string MATERIAL_GLASS;
@@ -22,4 +26,8 @@ class MaterialTextKeys
   protected:
     MaterialTextKeys();
     ~MaterialTextKeys();
+
+    static void init_material_sids();
+
+    static std::map<MaterialType, std::string> material_sids;
 };
