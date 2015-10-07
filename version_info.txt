@@ -1,3 +1,6 @@
+Shadow of the Wyrm v0.4.3 "Carcassi"
+- Version declared October 6, 2015.
+
 Shadow of the Wyrm v0.4.2 "Sanz"
 - Version declared September 12, 2015.  Version finalized October 6, 2015.
 

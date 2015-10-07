@@ -42,8 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Composer for the baroque guitar.
-  return "\"Sanz\"";
+  // Italian guitarist and composer of the classical period.
+  return "\"Carcassi\"";
 }
 
 string Metadata::get_game_version_synopsis() const
