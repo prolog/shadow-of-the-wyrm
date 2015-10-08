@@ -11,6 +11,10 @@ DefaultFeatureManipulator::DefaultFeatureManipulator(FeaturePtr feature)
 
 void DefaultFeatureManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
 {
+}
+
+bool DefaultFeatureManipulator::handle(TilePtr tile, CreaturePtr creature)
+{
   if (creature)
   {
     if (creature && creature->get_is_player())
@@ -20,10 +24,7 @@ void DefaultFeatureManipulator::kick(CreaturePtr creature, MapPtr current_map, T
       manager.send();
     }
   }
-}
 
-bool DefaultFeatureManipulator::handle(TilePtr tile, CreaturePtr creature)
-{
   return true;
 }
 
