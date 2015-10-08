@@ -138,6 +138,7 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d $(ProjectDir)version_info.txt $(OutDir)
+xcopy /y /d $(ProjectDir)howdoi.txt $(OutDir)
 xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
 xcopy /y /d $(ProjectDir)xerces-c_3_1.dll $(OutDir)
 xcopy /y /d $(ProjectDir)README.md $(OutDir)

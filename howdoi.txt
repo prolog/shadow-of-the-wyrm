@@ -1,0 +1,43 @@
+"How do I mod this thing, anyway?!"
+
+A Brief Guide to Basic Modding for Shadow of the Wyrm
+
+- To edit game data, edit data/ShadowOfTheWyrm.xml.  Its structure is
+  defined by data/ShadowOfTheWyrm.xsd, so if you use an editor like
+  Notepad++, you can use Alt+Shift+Ctrl+M to validate the updated XML
+  against the schema.  The various values for effects, damage types, etc.,
+  are provided in the XSD, and will typically provide references back to
+  where the details of those types can be found in the engine's C++
+  code.
+
+- Resource strings are defined in shadowofthewyrm_blank.ini, and also
+  in each language-specific resource strings file.  So if you were
+  wanting to edit a resource string, edit shadowofthewyrm_en.ini.  To
+  add a new one, add it to the blank resource strings file, and then to
+  your language-specific file, giving it its actual value there.
+
+- To add a new map, create a new XML file in data/maps.  Your XML should
+  validate against CustomMap.xsd.  To place that map somewhere on the
+  world map, add a new entry to data/maps/world/WorldMapAreas.xml.  Make
+  sure your map has a unique ID!
+
+- The Guidebook is located in docs/src, and is written in LaTeX.  To
+  generate the PDF, you'll need to run "generate_docs.sh" in the src
+  folder.  You'll need to run it twice to updated the content as well as
+  the table of contents, since LaTeX is single-pass.  You'll need an 
+  environment with the Bourne shell (e.g., MinGW) to run the shell
+  script properly.
+
+- Lua scripts are located in the scripts folder.  If you're adding a new
+  subfolder, be sure to edit scripts/env.lua so that the new folder is
+  considered when the game starts up.  To see what functions are
+  available, look at engine/scripting/include/LuaAPIFunctions.hpp (for
+  the list) and engine/scripting/source/LuaAPIFunctions.cpp (to see
+  what kinds of parameters are expected).  
+
+  IMPORTANT NOTE: Some Lua scripts (typically, those run directly by the
+  engine, rather than the scripts that register functions to be called from
+  lookup tables), when run, will cause the game to crash if there is an 
+  error in your Lua code.  I will look at improving this at some point in 
+  the future, but for the moment, be careful with your Lua code!
+

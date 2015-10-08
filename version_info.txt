@@ -3,6 +3,8 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 
 - Shepherds now start with Weaving (AgingMinotaur).
 
+- Added a brief guide on how to do simple modding (Zirael).
+
 Shadow of the Wyrm v0.4.2 "Sanz"
 - Version declared September 12, 2015.  Version finalized October 6, 2015.
 
