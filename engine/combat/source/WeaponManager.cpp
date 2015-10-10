@@ -121,15 +121,22 @@ Damage WeaponManager::get_damage(CreaturePtr creature, const AttackType attack_t
 Damage WeaponManager::get_melee_weapon_damage(CreaturePtr creature, const AttackType attack_type)
 {
   WeaponPtr weapon = get_weapon(creature, attack_type);
+  Damage dmg;
   
   if (weapon)
   {
-    return weapon->get_damage();
+    dmg = weapon->get_damage();
   }
   else
   {
-    return creature->get_base_damage();
+    dmg = creature->get_base_damage();
+    if (creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+    {
+      dmg.set_incorporeal(true);
+    }
   }
+
+  return dmg;
 }
 
 Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)

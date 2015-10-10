@@ -8,6 +8,10 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 - Logged an error when unable to insert a map into the MapRegistry
   because the key is already in use.  Useful for debugging while modding.
 
+- Soak is quartered when an incorporeal attack is used.  Typically, this
+  will be an unarmed attack by an incorporeal creature, such as a spook,
+  etc.
+
 Shadow of the Wyrm v0.4.2 "Sanz"
 - Version declared September 12, 2015.  Version finalized October 6, 2015.
 

@@ -10,7 +10,7 @@ class Damage : public Dice
 {
   public:
     explicit Damage();
-    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool piercing, const int ebonus, const StatusAilments& sa);
+    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool piercing, const bool incorporeal, const int ebonus, const StatusAilments& sa);
     Damage(const Damage& d);
     Damage&  operator= (const Damage& d);
     bool     operator==(const Damage& d) const;
@@ -25,6 +25,9 @@ class Damage : public Dice
 
     void set_piercing(const bool new_piercing);
     bool get_piercing() const;
+
+    void set_incorporeal(const bool new_incorporeal);
+    bool get_incorporeal() const;
 
     void set_effect_bonus(const int new_bonus);
     int get_effect_bonus() const;
@@ -54,7 +57,8 @@ class Damage : public Dice
 
   protected:
     bool chaotic;
-    bool piercing;
+    bool piercing; // ignore soak
+    bool incorporeal; // only a quarter of the soak is used
     DamageType damage_type;
     int effect_bonus;
     StatusAilments status_ailments;
