@@ -171,6 +171,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   IHitTypeCalculatorPtr hit_calculator = IHitTypeFactory::create_hit_type(hit_type_enum);
   string hit_specific_msg = hit_calculator->get_combat_message();
   bool piercing = damage_info.get_piercing();
+  bool incorporeal = damage_info.get_incorporeal();
 
   base_damage = hit_calculator->get_base_damage(damage_info);
 
@@ -186,7 +187,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 
   // Add the text so far.
   add_combat_message(attacking_creature, attacked_creature, combat_message);
-  add_any_necessary_damage_messages(attacking_creature, attacked_creature, damage_dealt, piercing);
+  add_any_necessary_damage_messages(attacking_creature, attacked_creature, damage_dealt, piercing, incorporeal);
 
   // Do damage effects if damage was dealt, or if there is a bonus to the
   // effect.
@@ -366,7 +367,7 @@ bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attac
 // 
 // JCD FIXME Need to have the usual player vs. monster checks here
 // so that these are only added when the target is not the player.
-void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing)
+void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing, const bool incorporeal)
 {
   vector<string> additional_messages;
   
@@ -379,10 +380,18 @@ void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, Crea
     // ...
   }
 
+  string attacked_creature_desc;
+
   if (piercing)
   {
-    string attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
+    attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
     additional_messages.push_back(CombatTextKeys::get_pierce_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
+  }
+
+  if (incorporeal)
+  {
+    attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
+    additional_messages.push_back(CombatTextKeys::get_incorporeal_attack_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
   }
   
   if (!additional_messages.empty())

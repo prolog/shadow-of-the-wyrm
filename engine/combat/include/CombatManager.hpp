@@ -34,7 +34,7 @@ class CombatManager
     bool close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
         
     bool run_attack_script_if_necessary(CreaturePtr creature, CreaturePtr attacked_creature);
-    void add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing);
+    void add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing, const bool incorporeal);
     void add_combat_message(CreaturePtr creature, CreaturePtr attacked_creature, const std::string& message);
     void send_combat_messages(CreaturePtr creature);
     

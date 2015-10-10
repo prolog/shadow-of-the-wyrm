@@ -4,7 +4,6 @@ to register a new map with the same ID as an existing map currently in the
 registry, instead of failing silently.
 - Look at making the Lua code safer so that if there is an error, it
 doesn't crash the entire game.
-- Add a message when getting hit by an incorporeal attack.
 
 Akeley:
 - ESC as well as 'z'

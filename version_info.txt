@@ -10,7 +10,8 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 
 - Soak is quartered when an incorporeal attack is used.  Typically, this
   will be an unarmed attack by an incorporeal creature, such as a spook,
-  etc.
+  etc.  A successful hit generates a message about the incorporeal attack,
+  similar to what is done for piercing damage.
 
 Shadow of the Wyrm v0.4.2 "Sanz"
 - Version declared September 12, 2015.  Version finalized October 6, 2015.
