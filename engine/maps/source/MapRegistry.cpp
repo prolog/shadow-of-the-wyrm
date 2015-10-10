@@ -1,4 +1,5 @@
 #include "MapRegistry.hpp"
+#include "Log.hpp"
 #include "Serialize.hpp"
 
 // Needed for serialization
@@ -19,7 +20,16 @@ MapRegistry::~MapRegistry()
 // ID already exists.
 bool MapRegistry::set_map(const string& map_id, const MapPtr& map)
 {
-  return (map_registry.insert(make_pair(map_id, map))).second;
+  bool inserted = (map_registry.insert(make_pair(map_id, map))).second;
+
+  if (!inserted)
+  {
+    ostringstream ss;
+    ss << "Could not insert map with id " << map_id << " - a map with this key already exists in the MapRegistry!";
+    Log::instance().error(ss.str());
+  }
+
+  return inserted;
 }
 
 // Get a map from the registry.  Return a null shared ptr if the map
