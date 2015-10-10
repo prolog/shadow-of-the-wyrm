@@ -86,7 +86,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(attacking_creature, attack_type);
   CombatTargetNumberCalculatorPtr ctn_calculator = CombatTargetNumberCalculatorFactory::create_target_number_calculator(attack_type);
   ISpeedCalculatorPtr speed_calculator = SpeedCalculatorFactory::create_speed_calculator(attack_type);
-  
+
   if (th_calculator && ctn_calculator)
   {
     // Ensure that attacks take at least one speed - no free attacks!

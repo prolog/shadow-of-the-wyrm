@@ -8,17 +8,17 @@
 using namespace std;
 
 Damage::Damage()
-: Dice(0, 0, 0), damage_type(DamageType::DAMAGE_TYPE_SLASH), chaotic(false), piercing(false), effect_bonus(0)
+: Dice(0, 0, 0), damage_type(DamageType::DAMAGE_TYPE_SLASH), chaotic(false), piercing(false), incorporeal(false), effect_bonus(0)
 {
 }
 
-Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool pierce, const int eb, const StatusAilments& ailments)
-: Dice(dice, sides, mod), damage_type(dtype), chaotic(chaos), piercing(pierce), effect_bonus(eb), status_ailments(ailments)
+Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool pierce, const bool incorp, const int eb, const StatusAilments& ailments)
+: Dice(dice, sides, mod), damage_type(dtype), chaotic(chaos), piercing(pierce), incorporeal(incorp), effect_bonus(eb), status_ailments(ailments)
 {
 }
 
 Damage::Damage(const Damage& d)
-: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), chaotic(d.chaotic), piercing(d.piercing), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
+: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), chaotic(d.chaotic), piercing(d.piercing), incorporeal(d.incorporeal), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
 {
   DamagePtr addl_damage = d.get_additional_damage();
   
@@ -38,6 +38,7 @@ Damage& Damage::operator=(const Damage& d)
     damage_type = d.damage_type;
     chaotic     = d.chaotic;
     piercing    = d.piercing;
+    incorporeal = d.incorporeal;
     effect_bonus= d.effect_bonus;
     status_ailments = d.status_ailments;
     
@@ -69,6 +70,7 @@ bool Damage::operator==(const Damage& d) const
 
     match = match && (chaotic     == d.get_chaotic()    );
     match = match && (piercing    == d.get_piercing()   );
+    match = match && (incorporeal == d.get_incorporeal());
     match = match && (effect_bonus == d.get_effect_bonus());
     
     DamagePtr d_add_damage = d.get_additional_damage();
@@ -140,6 +142,16 @@ void Damage::set_piercing(const bool new_piercing)
 bool Damage::get_piercing() const
 {
   return piercing;
+}
+
+void Damage::set_incorporeal(const bool new_incorporeal)
+{
+  incorporeal = new_incorporeal;
+}
+
+bool Damage::get_incorporeal() const
+{
+  return incorporeal;
 }
 
 void Damage::set_effect_bonus(const int new_effect_bonus)
@@ -234,6 +246,7 @@ bool Damage::serialize(ostream& stream) const
   Serialize::write_enum(stream, damage_type);
   Serialize::write_bool(stream, chaotic);
   Serialize::write_bool(stream, piercing);
+  Serialize::write_bool(stream, incorporeal);
   Serialize::write_int(stream, effect_bonus);
 
   status_ailments.serialize(stream);
@@ -257,6 +270,7 @@ bool Damage::deserialize(istream& stream)
   Serialize::read_enum(stream, damage_type);
   Serialize::read_bool(stream, chaotic);
   Serialize::read_bool(stream, piercing);
+  Serialize::read_bool(stream, incorporeal);
   Serialize::read_int(stream, effect_bonus);
 
   status_ailments.deserialize(stream);

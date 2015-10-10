@@ -10,6 +10,10 @@ const int PhysicalDamageCalculator::DAMAGE_STAT_BASELINE = 10;
 // dex for ranged, etc).
 const int PhysicalDamageCalculator::DAMAGE_STAT_DIVISOR = 5;
 
+// When an attack is incorporeal, it allows only a fraction of the available
+// soak.
+const float PhysicalDamageCalculator::INCORPOREAL_SOAK_MULTIPLIER = 0.25f;
+
 PhysicalDamageCalculator::PhysicalDamageCalculator(const AttackType new_attack_type)
 : DamageCalculator(new_attack_type)
 {
@@ -34,6 +38,10 @@ int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bo
       if (physical_damage.get_piercing())
       {
         soak_mult = 0;
+      }
+      else if (physical_damage.get_incorporeal())
+      {
+        soak_mult = INCORPOREAL_SOAK_MULTIPLIER;
       }
 
       // Apply soak if damage is not negative.
