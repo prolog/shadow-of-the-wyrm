@@ -5,6 +5,9 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 
 - Added a brief guide on how to do simple modding (Zirael).
 
+- Logged an error when unable to insert a map into the MapRegistry
+  because the key is already in use.  Useful for debugging while modding.
+
 Shadow of the Wyrm v0.4.2 "Sanz"
 - Version declared September 12, 2015.  Version finalized October 6, 2015.
 
