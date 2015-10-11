@@ -85,13 +85,9 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
   {
     MapPtr current_map = game.get_current_map();
 
-    if (!SelectionUtils::has_target(creature, AttackType::ATTACK_TYPE_RANGED))
+    if (!SelectionUtils::has_target(creature, AttackType::ATTACK_TYPE_RANGED) || !SelectionUtils::select_existing_target(creature, current_map))
     {
       SelectionUtils::select_nearest_hostile_target(creature, current_map);
-    }
-    else
-    {
-      SelectionUtils::select_existing_target(creature, current_map);
     }
   }
   
@@ -106,7 +102,7 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
   
   tsm.set_selection_key(std::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED)));
   
-  action_cost_value = tsm.select_tile(creature, ActionTextKeys::ACTION_FIRE);  
+  action_cost_value = tsm.select_tile(creature, ActionTextKeys::ACTION_FIRE, TileReset::TILE_RESET_ON_PREV_TARGET);  
   return action_cost_value;
 }
 

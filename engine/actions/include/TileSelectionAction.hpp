@@ -2,6 +2,12 @@
 #include "IActionManager.hpp"
 #include "SelectTileTypes.hpp"
 
+enum struct TileReset
+{
+  TILE_RESET_ON_CREATURE,
+  TILE_RESET_ON_PREV_TARGET
+};
+
 class TileSelectionAction : public IActionManager, ISerializable
 {
   public:
@@ -29,7 +35,7 @@ class TileSelectionAction : public IActionManager, ISerializable
     void set_show_item_descriptions(const bool item_descs);
     bool get_show_item_descriptions() const;
     
-    ActionCostValue select_tile(CreaturePtr creature, const std::string& initial_message_sid);
+    ActionCostValue select_tile(CreaturePtr creature, const std::string& initial_message_sid, const TileReset tre);
     ActionCostValue select_tile(CreaturePtr creature, const Direction d);
     ActionCostValue select_tile(CreaturePtr creature, const SelectCreatureType sct);
     ActionCostValue select_tile_cancel(CreaturePtr creature);
@@ -49,6 +55,8 @@ class TileSelectionAction : public IActionManager, ISerializable
     friend class RangedCombatAction;
     friend class SL_Engine_Actions_TileSelectionAction; // test fixture
     TileSelectionAction();
+
+    void reset_cursor_appropriately(CreaturePtr creature, MapPtr current_map, const TileReset tre);
 
     // The command factory/map
     CommandFactoryPtr command_factory;

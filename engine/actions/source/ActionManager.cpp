@@ -482,7 +482,7 @@ ActionCost ActionManager::select_tile(CreaturePtr creature)
 
   if (creature && cca.can_see(creature, true))
   {
-    action_cost_value = tile_selection_action.select_tile(creature, ActionTextKeys::ACTION_LOOK);
+    action_cost_value = tile_selection_action.select_tile(creature, ActionTextKeys::ACTION_LOOK, TileReset::TILE_RESET_ON_CREATURE);
   }
   
   return get_action_cost(creature, action_cost_value);

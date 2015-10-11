@@ -13,6 +13,15 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   etc.  A successful hit generates a message about the incorporeal attack,
   similar to what is done for piercing damage.
 
+- Changed the pierce damage type message from "tears at" to "pierces".
+
+- Bug fixes:
+
+  - Fire weapon was acting strangely due to some code that was shared
+    with looking.  The cursor was correctly being set on the nearest
+    hostile creature, and that was being recorded as the target, but then
+    the map cursor was reset on the player (AgingMinotaur).
+
 Shadow of the Wyrm v0.4.2 "Sanz"
 - Version declared September 12, 2015.  Version finalized October 6, 2015.
 

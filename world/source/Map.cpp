@@ -202,13 +202,21 @@ void Map::reset_creatures_and_locations()
   }
 }
 
+// Remove a creature both from the main list, as well as from the locations list.
 void Map::remove_creature(const string& creature_id)
 {
-  map<string, CreaturePtr>::iterator c_it = creatures.find(creature_id);
+  auto c_it = creatures.find(creature_id);
   
   if (c_it != creatures.end())
   {
     creatures.erase(c_it);
+  }
+
+  auto l_it = locations.find(creature_id);
+
+  if (l_it != locations.end())
+  {
+    locations.erase(l_it);
   }
 }
 

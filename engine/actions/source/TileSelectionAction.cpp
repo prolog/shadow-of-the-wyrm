@@ -92,7 +92,7 @@ void TileSelectionAction::set_selection_key(const string& new_selection_key)
   selection_key = new_selection_key;
 }
 
-ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const string& initial_message_sid)
+ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const string& initial_message_sid, const TileReset tre)
 {  
   pair<bool, ActionCostValue> command_result(false, 0);
   
@@ -109,11 +109,9 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
       
       manager.add_new_message(look_msg);
       manager.send();
-      
-      MapCursor mc;
+
       MapPtr current_map = game.get_current_map();
-      mc.set_cursor_location(current_map, current_map->get_location(creature->get_id()));
-      game.update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map(), false);
+      reset_cursor_appropriately(creature, current_map, tre);
     }
     
     while (continue_select_tiles)
@@ -147,6 +145,23 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
   }
   
   return command_result.second;
+}
+
+void TileSelectionAction::reset_cursor_appropriately(CreaturePtr creature, MapPtr current_map, const TileReset tre)
+{
+  Game& game = Game::instance();
+
+  if (tre == TileReset::TILE_RESET_ON_CREATURE)
+  {
+    MapCursor mc;
+    mc.set_cursor_location(current_map, current_map->get_location(creature->get_id()));
+  }
+  else if (tre == TileReset::TILE_RESET_ON_PREV_TARGET)
+  {
+    SelectionUtils::select_existing_target(creature, current_map);
+  }
+
+  game.update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map(), false);
 }
 
 TilePtr TileSelectionAction::get_cursor_tile()
