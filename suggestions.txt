@@ -20,5 +20,4 @@ AgingMinotaur:
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
 * The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
 * Regarding inventory, I wouldn't mind if weapon/missile damage were displayed next to the item in question. As it is now, I have to equip everything and press "W" and "R" to get at that info.
-* The "f"ire command is also acting a bit wonky. Sometimes it autotargets the closest enemy, sometimes is jumps to an entirely different place in the map (the last place I shot at something), and sometimes the cursor starts out over my own avatar, seemingly at random.
 * I noticed that archers and goblin pelters don't actually shoot anything. I'm supposing this will show up later.

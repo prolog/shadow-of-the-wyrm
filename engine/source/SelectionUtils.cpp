@@ -32,8 +32,10 @@ void SelectionUtils::select_nearest_hostile_target(CreaturePtr creature, MapPtr 
 // Select an existing target.  Because creatures can move about after the target was previously
 // acquired, update the target (if necessary) to reflect the creature's current position on the
 // map.
-void SelectionUtils::select_existing_target(CreaturePtr creature, MapPtr map)
+bool SelectionUtils::select_existing_target(CreaturePtr creature, MapPtr map)
 {
+  bool selected_existing = false;
+
   if (creature && map && has_target(creature, AttackType::ATTACK_TYPE_RANGED))
   {
     // Set the target:
@@ -50,6 +52,7 @@ void SelectionUtils::select_existing_target(CreaturePtr creature, MapPtr map)
       Coordinate creature_loc = map->get_location(creature_id);
       target_details.second = creature_loc; // Ensure the location of the creature is up to date!
       mc.set_cursor_location(map, creature_loc);
+      selected_existing = true;
     }
     else
     {
@@ -57,6 +60,8 @@ void SelectionUtils::select_existing_target(CreaturePtr creature, MapPtr map)
       mc.reset_cursor(map);
     }
   }
+
+  return selected_existing;
 }
 
 // Select the previous or next target from the current target.
@@ -156,15 +161,13 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
 // Does the creature have a target defined for a particular attack type?
 bool SelectionUtils::has_target(CreaturePtr creature, const AttackType attack_type)
 {
-  bool has_target = false;
-
   if (creature)
   {
     TargetMap tmap = creature->get_target_map();
     return (tmap.find(std::to_string(static_cast<int>(attack_type))) != tmap.end());
   }
 
-  return has_target;
+  return false;
 }
 
 // Set targetting/selection information.

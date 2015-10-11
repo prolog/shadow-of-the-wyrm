@@ -12,7 +12,8 @@ class SelectionUtils
     static void select_nearest_hostile_target(CreaturePtr creature, MapPtr current_map);
 
     // Select the existing ranged combat target for the given creature, on the given map.
-    static void select_existing_target(CreaturePtr creature, MapPtr map);
+    // Return true if the existing target was selected, false if the cursor was reset.
+    static bool select_existing_target(CreaturePtr creature, MapPtr map);
 
     // Select the previous or next target from the current target.
     static void select_target_in_cycle(CreaturePtr creature, MapPtr map, const SelectCreatureType sct);
