@@ -104,24 +104,39 @@ uint PlayerDecisionStrategy::get_count(const uint max_count)
 }
 
 
-// Get confirmation - true or false.  Used for commands that require confirmation, like quitting,
-// saving, or leaving an area.
-bool PlayerDecisionStrategy::get_confirmation()
+// Get confirmation - true or false.  Used for commands that require 
+// confirmation, like quitting, saving, or leaving an area.
+//
+// The confirmation_default_value parameter determines what the default
+// should be.  Convention is that the default can be true in cases where
+// it makes sense and the action is not dangerous, like switching places.
+bool PlayerDecisionStrategy::get_confirmation(const bool confirmation_default_value)
 {
-  bool confirm = false;
+  bool confirm = confirmation_default_value;
+
   string confirm_str = StringTable::get(TextKeys::DECISION_CONFIRM_KEY);
   boost::to_lower(confirm_str);
+
+  string deny_str = StringTable::get(TextKeys::DECISION_DENY_KEY);
+  boost::to_lower(deny_str);
+
+  map<string, bool> key_map = {{confirm_str, true}, {deny_str, false}};
   
   ostringstream ss;
   ss << (char) controller->get_char_as_int(); // needs to be interpreted as a char!
   string user_input = ss.str();
   boost::to_lower(user_input);
   
-  if (confirm_str.size() > 0 && user_input.size() > 0 && (confirm_str.at(0) == user_input.at(0)))
+  if (user_input.size() > 0)
   {
-    confirm = true;
+    auto k_it = key_map.find(user_input);
+
+    if (k_it != key_map.end())
+    {
+      confirm = k_it->second;
+    }
   }
-  
+
   return confirm;
 }
 

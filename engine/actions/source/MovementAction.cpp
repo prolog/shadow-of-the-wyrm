@@ -374,7 +374,7 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
   if (adjacent_creature_can_move && creature_can_enter_adjacent_tile)
   {
     manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SWITCH_FRIENDLY_CREATURE));
-    bool switch_places = creature->get_decision_strategy()->get_confirmation();
+    bool switch_places = creature->get_decision_strategy()->get_confirmation(true);
 
     if (switch_places)
     {
@@ -386,7 +386,7 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
     if (creature_can_enter_adjacent_tile)
     { 
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SQUEEZE_FRIENDLY_CREATURE));
-      bool squeeze_past = creature->get_decision_strategy()->get_confirmation();
+      bool squeeze_past = creature->get_decision_strategy()->get_confirmation(true);
 
       if (squeeze_past)
       {

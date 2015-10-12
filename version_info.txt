@@ -15,6 +15,10 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 
 - Changed the pierce damage type message from "tears at" to "pierces".
 
+- The switching places prompt now defaults to "yes" when an unrecognized
+  input is received (AgingMinotaur).  The "squeeze past" prompt also
+  defaults to "yes".
+
 - Bug fixes:
 
   - Fire weapon was acting strangely due to some code that was shared
