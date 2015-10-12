@@ -36,7 +36,7 @@ uint AutomaticMovementDecisionStrategy::get_count(const uint max_count)
   return 0;
 }
 
-bool AutomaticMovementDecisionStrategy::get_confirmation()
+bool AutomaticMovementDecisionStrategy::get_confirmation(const bool confirmation_default_value)
 {
   return true;
 }

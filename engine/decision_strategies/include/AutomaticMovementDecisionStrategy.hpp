@@ -20,7 +20,7 @@ class AutomaticMovementDecisionStrategy : public DecisionStrategy
     virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p = 0) override;
 
     virtual uint get_count(const uint max_count) override;
-    virtual bool get_confirmation() override;
+    virtual bool get_confirmation(const bool confirmation_default_value = false) override;
 
     virtual DecisionStrategy* copy() override;
 
