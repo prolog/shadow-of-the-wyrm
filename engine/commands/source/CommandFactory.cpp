@@ -202,6 +202,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<RestCommand>(key);
   }
+  else if (command_name == CommandKeys::VIEW_ITEMS)
+  {
+    command = std::make_shared<ViewItemsCommand>(key);
+  }
 
   return command;
 }

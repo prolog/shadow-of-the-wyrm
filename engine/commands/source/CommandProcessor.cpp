@@ -5,6 +5,7 @@
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "ItemFilterFactory.hpp"
 #include "Log.hpp"
 #include "RNG.hpp"
 #include "TextMessages.hpp"
@@ -226,6 +227,11 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       else if (command_name == CommandKeys::REST)
       {
         game.actions.rest(creature);
+      }
+      else if (command_name == CommandKeys::VIEW_ITEMS)
+      {
+        list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
+        game.actions.inventory(creature, creature->get_inventory(), empty_filter, true);
       }
     }
   }
