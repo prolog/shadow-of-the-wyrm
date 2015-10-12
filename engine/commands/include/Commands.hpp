@@ -308,3 +308,10 @@ class RestCommand : public Command
     RestCommand(int key);
     ~RestCommand();
 };
+
+class ViewItemsCommand : public Command
+{
+  public:
+    ViewItemsCommand(int key);
+    ~ViewItemsCommand();
+};

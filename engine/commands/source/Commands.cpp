@@ -441,10 +441,20 @@ CustomScriptCommand::~CustomScriptCommand()
 
 // Rest!
 RestCommand::RestCommand(int key)
-  : Command(CommandKeys::REST, key)
+: Command(CommandKeys::REST, key)
 {
 }
 
 RestCommand::~RestCommand()
+{
+}
+
+// View Items
+ViewItemsCommand::ViewItemsCommand(int key)
+: Command(CommandKeys::VIEW_ITEMS, key)
+{
+}
+
+ViewItemsCommand::~ViewItemsCommand()
 {
 }

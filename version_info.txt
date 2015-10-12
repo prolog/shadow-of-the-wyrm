@@ -19,6 +19,9 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   input is received (AgingMinotaur).  The "squeeze past" prompt also
   defaults to "yes".
 
+- Created a new "I"tems command to view the inventory directly.  "i"
+  continues to take the player to the equipment screen (Akeley).
+
 - Bug fixes:
 
   - Fire weapon was acting strangely due to some code that was shared

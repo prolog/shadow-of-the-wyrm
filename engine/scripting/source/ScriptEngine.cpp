@@ -57,7 +57,10 @@ void ScriptEngine::load_modules()
 {
   // Update the environment so that the "/script" directory 
   // and certain subdirectories are assumed.
-  luaL_dofile(L, "scripts/env.lua");
+  if (luaL_dofile(L, "scripts/env.lua"))
+  {
+    log_error();
+  }
 }
 
 void ScriptEngine::set_constants(lua_State* ls)
