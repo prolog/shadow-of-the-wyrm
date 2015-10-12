@@ -26,6 +26,10 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
 
   vector<string> message_sids;
   AutomaticMovement& am = creature->get_automatic_movement_ref();
+
+  // Set the direction so it can be properly considered for creature_position_allows_auto_move
+  am.set_direction(cur_dir);
+
   ActionCostValue auto_move_cost = 0;
   bool auto_movement_engaged = false;
   TilePtr direction_tile = map->at(CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), cur_dir));
@@ -191,7 +195,8 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
   // - The available directions parameter isn't there (hasn't been set yet)
   // - The parameter is there, and the number of available directions hasn't
   //   been reduced.
-  if (!has_prior_adjacent_dirs_flag || (prev_num_adjacent_dirs <= cur_num_adjacent_dirs))
+  if (!has_prior_adjacent_dirs_flag || 
+      (prev_num_adjacent_dirs <= cur_num_adjacent_dirs))
   {
     exits_allow_move = true;
   }
