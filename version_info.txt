@@ -22,6 +22,10 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 - Created a new "I"tems command to view the inventory directly.  "i"
   continues to take the player to the equipment screen (Akeley).
 
+- Made the Lua code safer (everything should run in protected mode, now)
+  so that errors in certain scripts no longer cause the application to
+  panic-exit.
+
 - Bug fixes:
 
   - Fire weapon was acting strangely due to some code that was shared

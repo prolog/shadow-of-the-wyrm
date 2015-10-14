@@ -47,7 +47,10 @@ bool ScriptEngine::clear_state()
 void ScriptEngine::initialize_state()
 {
    L = lua_open();
+   
    luaL_openlibs(L);
+   luaopen_base(L);
+   
    set_constants(L);
    load_modules();
    register_api_functions();
@@ -57,7 +60,7 @@ void ScriptEngine::load_modules()
 {
   // Update the environment so that the "/script" directory 
   // and certain subdirectories are assumed.
-  if (luaL_dofile(L, "scripts/env.lua"))
+  if (luaL_loadfile(L, "scripts/env.lua") || lua_pcall(L, 0, 0, 0))
   {
     log_error();
   }
@@ -109,8 +112,10 @@ string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 }
 
 // Run a particular script in the scripts folder.
-void ScriptEngine::execute(const string& script)
+bool ScriptEngine::execute(const string& script)
 {
+  bool ret_val = false;
+
   try
   {
     if (script.empty())
@@ -122,9 +127,13 @@ void ScriptEngine::execute(const string& script)
     {
       string script_file = "scripts/" + script;
 
-      if (luaL_dofile(L, script_file.c_str()))
+      if (luaL_loadfile(L, script_file.c_str()) || lua_pcall(L, 0, 0, 0))
       {
         log_error();
+      }
+      else
+      {
+        ret_val = true;
       }
     }
   }
@@ -133,6 +142,8 @@ void ScriptEngine::execute(const string& script)
     lua_pushstring(L, "Exception while trying to run script.");
     log_error();
   }
+
+  return ret_val;
 }
 
 // Run a user-supplied command within the current Lua state.
@@ -163,7 +174,7 @@ void ScriptEngine::call_function(const string& fn_name, const vector<string>& pa
   lua_pop(L, n_return_vals);
 }
 
-// Handle arugments to a Lua function.
+// Handle arguments to a Lua function.
 void ScriptEngine::process_function_arguments(const vector<string>& param_types, const vector<string>& param_values)
 {
   for (uint i = 0; i < param_types.size(); i++)

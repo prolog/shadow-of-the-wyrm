@@ -21,7 +21,7 @@ class ScriptEngine : public ISerializable
     ~ScriptEngine();
     bool operator==(const ScriptEngine& se) const;
 
-    void execute(const std::string& script_file);
+    bool execute(const std::string& script_file);
     void run_command(const std::string& script_command);
     void call_function(const std::string& fn_name, const std::vector<std::string>& param_types, const std::vector<std::string>& param_values, const int n_return_vals);
 
