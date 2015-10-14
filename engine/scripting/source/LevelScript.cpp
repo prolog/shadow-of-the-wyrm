@@ -25,27 +25,39 @@ void LevelScript::execute(ScriptEngine& se, const vector<string>& setup_scripts,
     string creature_id = creature->get_id();
     uint creature_level = creature->get_level().get_current();
 
+    bool execution_result = true;
+
     // Run each script to load its functions, etc.
     for (const string& script : setup_scripts)
     {
-      se.execute(script);
+      if (!se.execute(script))
+      {
+        execution_result = false;
+      }
     }
 
-    // Set up the function call parameters.
-    lua_State* L = se.get_current_state();
-    lua_getglobal(L, LEVEL_MODULE_NAME.c_str());
-    lua_getfield(L, -1, LEVEL_FUNCTION_NAME.c_str());
-    lua_pushstring(L, race_id.c_str());
-    lua_pushstring(L, class_id.c_str());
-    lua_pushstring(L, creature_id.c_str());
-    lua_pushnumber(L, creature_level);
-
-    // Do the function call.  The level function returns nothing.
-    if (lua_pcall(L, 4, 0, 0) != 0)
+    if (execution_result == true)
     {
-      string l_err = lua_tostring(L, -1);
-      string error_msg = "LevelScript::execute - error running Lua function `" + LEVEL_FUNCTION_NAME  + "': " + l_err;
-      Log::instance().error(error_msg);
+      // Set up the function call parameters.
+      lua_State* L = se.get_current_state();
+      lua_getglobal(L, LEVEL_MODULE_NAME.c_str());
+      lua_getfield(L, -1, LEVEL_FUNCTION_NAME.c_str());
+      lua_pushstring(L, race_id.c_str());
+      lua_pushstring(L, class_id.c_str());
+      lua_pushstring(L, creature_id.c_str());
+      lua_pushnumber(L, creature_level);
+
+      // Do the function call.  The level function returns nothing.
+      if (lua_pcall(L, 4, 0, 0) != 0)
+      {
+        string l_err = lua_tostring(L, -1);
+        string error_msg = "LevelScript::execute - error running Lua function `" + LEVEL_FUNCTION_NAME + "': " + l_err;
+        Log::instance().error(error_msg);
+      }
+    }
+    else
+    {
+      Log::instance().error("LevelScript::execute - Did not run level function due to failure in level setup scripts.");
     }
   }
 }
