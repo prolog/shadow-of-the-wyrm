@@ -10,7 +10,7 @@ class IDangerLevelCalculator
 {
   public:
     // Calculate the new danger level, given the old.
-    virtual int calculate(MapPtr old_map, MapPtr new_map = std::shared_ptr<Map>()) const = 0;
+    virtual int calculate(MapPtr old_map, MapPtr new_map = nullptr) const = 0;
     virtual ~IDangerLevelCalculator() {};
 };
 

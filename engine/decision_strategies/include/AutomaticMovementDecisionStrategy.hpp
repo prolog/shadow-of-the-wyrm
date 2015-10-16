@@ -16,7 +16,7 @@ class AutomaticMovementDecisionStrategy : public DecisionStrategy
 
     virtual bool operator==(const AutomaticMovementDecisionStrategy& ds) const;
 
-    virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, std::shared_ptr<Map> view_map = std::shared_ptr<Map>() /* optional - only used when getting a decision on the main map, and only for non-player characters. */, int* key_p = 0) override;
+    virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, std::shared_ptr<Map> view_map = nullptr /* optional - only used when getting a decision on the main map, and only for non-player characters. */, int* key_p = 0) override;
     virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p = 0) override;
 
     virtual uint get_count(const uint max_count) override;
