@@ -1,3 +1,4 @@
+#include "AgeTimeObserver.hpp"
 #include "CreatureTimeObserver.hpp"
 #include "MapTimeObserver.hpp"
 #include "SeasonsTimeObserver.hpp"
@@ -47,9 +48,11 @@ void TimeObserverFactory::initialize_time_observer_map()
   ITimeObserverPtr creature = std::make_shared<CreatureTimeObserver>();
   ITimeObserverPtr seasons = std::make_shared<SeasonsTimeObserver>();
   ITimeObserverPtr map_observer = std::make_shared<MapTimeObserver>();
+  ITimeObserverPtr age_observer = std::make_shared<AgeTimeObserver>();
 
   time_observer_map = TimeObserverSerializationMap{{ClassIdentifier::CLASS_ID_CREATURE_TIME_OBSERVER, creature},
                                                    {ClassIdentifier::CLASS_ID_MAP_TIME_OBSERVER, map_observer},
-                                                   {ClassIdentifier::CLASS_ID_SEASONS_TIME_OBSERVER, seasons}};
+                                                   {ClassIdentifier::CLASS_ID_SEASONS_TIME_OBSERVER, seasons},
+                                                   {ClassIdentifier::CLASS_ID_AGE_TIME_OBSERVER, age_observer}};
 }
 
