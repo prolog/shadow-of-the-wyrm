@@ -4,6 +4,7 @@ to register a new map with the same ID as an existing map currently in the
 registry, instead of failing silently.
 - Refactor death manager so that death script is always called, instead of
   only if the creature is not the player.
+- Support for advancing the in-game clock via a Lua function.
 
 Akeley:
 - ESC as well as 'z'
