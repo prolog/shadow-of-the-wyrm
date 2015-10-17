@@ -16,6 +16,8 @@ class MapRegistry : public ISerializable
     MapPtr get_map(const std::string& map_id) const;
     bool remove_map(const std::string& map_id);
 
+    MapRegistryMap& get_maps_ref();
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
