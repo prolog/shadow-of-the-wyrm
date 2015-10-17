@@ -26,6 +26,12 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   so that errors in certain scripts no longer cause the application to
   panic-exit.
 
+- Once a year, the game does a sweep through everything in the game with
+  an age (currently just creatures), increments their age, and then checks
+  that against their maximum, calculated on creature creation.  If the
+  current age exceeds the maximum, the creature has died of old age, and
+  is removed from the game.
+
 - Bug fixes:
 
   - Fire weapon was acting strangely due to some code that was shared

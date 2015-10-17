@@ -50,9 +50,15 @@ void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_ma
       Range<uint> max_age_range = age_info.get_maximum_age();
       uint max = RNG::range(max_age_range.get_min(), max_age_range.get_max());
 
-      if (static_cast<uint>(age.get_current()) > max)
+      if (age.get_current() > age.get_base())
       {
+        // Creature has died of old age.
         MapUtils::remove_creature(cur_map, creature);
+      }
+      else
+      {
+        // Creature has lived to see another year.
+        creature->set_age(age);
       }
     }
   }
