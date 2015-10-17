@@ -331,7 +331,6 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
       // Kill the creature, and run the death event function, if necessary.
       death_manager->die();
       update_mortuaries(attacking_creature, attacked_creature->get_original_id());
-      run_death_event(attacking_creature, attacked_creature, map);
 
       // Sometimes there will be no attacking creature, eg., when drowning, falling off mountains, etc.
       if (attacking_creature)
@@ -501,20 +500,6 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const stri
   {
     Mortuary& creature_mortuary = attacking_creature->get_mortuary_ref();
     creature_mortuary.add_creature_kill(killed_creature_id, is_unique);
-  }
-}
-
-// Run the death event.
-void CombatManager::run_death_event(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map)
-{
-  ScriptDetails sd = attacked_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH);
-  string event_script_name = sd.get_script();
-  int chance = sd.get_chance();
-
-  if (!event_script_name.empty() && RNG::percent_chance(chance))
-  {
-    ScriptEngine& se = Game::instance().get_script_engine_ref();
-    se.execute(event_script_name);
   }
 }
 

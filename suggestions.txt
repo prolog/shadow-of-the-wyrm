@@ -2,6 +2,8 @@ Me:
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
+- Refactor death manager so that death script is always called, instead of
+  only if the creature is not the player.
 
 Akeley:
 - ESC as well as 'z'
@@ -12,6 +14,9 @@ barrabus:
 
 Kyrzati:
 - A way to get at item info without equipping.
+- Over time, generation of new random uniques, etc.
+- Different in-game event when inhabitants of certain places have aged,
+  died, etc.
 
 AgingMinotaur:
 * A command to display character info in-game (without dumping it in a file) would be nice.
