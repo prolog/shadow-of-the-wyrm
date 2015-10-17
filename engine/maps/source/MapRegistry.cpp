@@ -63,6 +63,11 @@ bool MapRegistry::remove_map(const string& map_id)
   return map_removed;
 }
 
+MapRegistryMap& MapRegistry::get_maps_ref()
+{
+  return map_registry;
+}
+
 bool MapRegistry::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, map_registry.size());
