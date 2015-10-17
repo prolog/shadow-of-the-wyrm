@@ -31,5 +31,5 @@ void WorldTimeKeeperCoordinator::setup_time_keeper(WorldTimeKeeper& time_keeper)
   time_keeper.register_observer(1440, seasons);
 
   // Once a year, age everything touched by time.
-  time_keeper.register_observer(525600, age_observer);
+  time_keeper.register_observer(250 /*525600*/, age_observer);
 }
