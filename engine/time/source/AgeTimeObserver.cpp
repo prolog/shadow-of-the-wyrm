@@ -1,4 +1,5 @@
 #include "AgeTimeObserver.hpp"
+#include "DeathManagerFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MapUtils.hpp"
@@ -52,8 +53,12 @@ void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_ma
 
       if (age.get_current() > age.get_base())
       {
-        // Creature has died of old age.
-        MapUtils::remove_creature(cur_map, creature);
+        DeathManagerPtr dm = DeathManagerFactory::create_death_manager(nullptr, creature, cur_map);
+
+        if (dm != nullptr)
+        {
+          dm->die();
+        }
       }
       else
       {

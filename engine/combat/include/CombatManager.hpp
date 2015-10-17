@@ -51,8 +51,6 @@ class CombatManager
     // Update the mortuary on the game and on the attacking creature.
     void update_mortuaries(CreaturePtr attacking_creature, const std::string& killed_creature_id);
 
-    void run_death_event(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map);
-
     // Get the appropriate description for the defending creature.
     std::string get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature);
 };
