@@ -170,6 +170,11 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "creature_tile_has_item", creature_tile_has_item);
   lua_register(L, "pick_up_item", pick_up_item);
   lua_register(L, "identify_item_type", identify_item_type);
+  lua_register(L, "calendar_add_seconds", calendar_add_seconds);
+  lua_register(L, "calendar_add_minutes", calendar_add_minutes);
+  lua_register(L, "calendar_add_hours", calendar_add_hours);
+  lua_register(L, "calendar_add_days", calendar_add_days);
+  lua_register(L, "calendar_add_years", calendar_add_years);
 }
 
 // Lua API helper functions
@@ -2050,6 +2055,115 @@ int identify_item_type(lua_State* ls)
   }
 
   lua_pushinteger(ls, num_identified);
+  return 1;
+}
+
+int calendar_add_seconds(lua_State* ls)
+{
+  int added_time = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    int seconds = lua_tointeger(ls, 1);
+
+    Game& game = Game::instance();
+    game.process_elapsed_time(seconds);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to calendar_add_seconds");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added_time);
+  return 1;
+}
+
+int calendar_add_minutes(lua_State* ls)
+{
+  int added_time = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    int minutes = lua_tointeger(ls, 1);
+    int seconds = minutes * 60;
+
+    Game& game = Game::instance();
+    game.process_elapsed_time(seconds);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to calendar_add_minutes");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added_time);
+  return 1;
+}
+
+int calendar_add_hours(lua_State* ls)
+{
+  int added_time = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    int hours = lua_tointeger(ls, 1);
+    int seconds = hours * 60 * 60;
+
+    Game& game = Game::instance();
+    game.process_elapsed_time(seconds);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to calendar_add_hours");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added_time);
+  return 1;
+}
+
+int calendar_add_days(lua_State* ls)
+{
+  int added_time = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    int days = lua_tointeger(ls, 1);
+    int seconds = days * 60 * 60 * 24;
+
+    Game& game = Game::instance();
+    game.process_elapsed_time(seconds);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to calendar_add_days");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added_time);
+  return 1;
+}
+
+int calendar_add_years(lua_State* ls)
+{
+  int added_time = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    int years = lua_tointeger(ls, 1);
+    int seconds = years * 60 * 60 * 24 * 365;
+
+    Game& game = Game::instance();
+    game.process_elapsed_time(seconds);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to calendar_add_years");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added_time);
   return 1;
 }
 

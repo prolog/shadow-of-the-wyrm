@@ -32,6 +32,9 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   current age exceeds the maximum, the creature has died of old age, and
   is removed from the game.
 
+- Added Lua API functions to add seconds, minutes, hours, days, or years
+  to the calendar.
+
 - Bug fixes:
 
   - Fire weapon was acting strangely due to some code that was shared

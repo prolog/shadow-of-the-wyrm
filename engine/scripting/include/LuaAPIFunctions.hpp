@@ -81,6 +81,11 @@ int transfer_item(lua_State* ls);
 int creature_tile_has_item(lua_State* ls);
 int pick_up_item(lua_State* ls);
 int identify_item_type(lua_State* ls);
+int calendar_add_seconds(lua_State* ls);
+int calendar_add_minutes(lua_State* ls);
+int calendar_add_hours(lua_State* ls);
+int calendar_add_days(lua_State* ls);
+int calendar_add_years(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

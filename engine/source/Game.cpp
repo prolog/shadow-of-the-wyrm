@@ -533,6 +533,19 @@ void Game::process_elapsed_time(Calendar& calendar, const ActionCost& next_actio
   time_keeper.tick(seconds);
 }
 
+// Update the calendar based on how much time has elapsed in seconds.
+// The game loop itself should likely never call this - this is mainly intended
+// for the scripting engine.
+//
+// Assumes the calendar attached to the current world.
+void Game::process_elapsed_time(const int seconds)
+{
+  Calendar& calendar = get_current_world()->get_calendar();
+  double d_sec = static_cast<double>(seconds);
+  calendar.add_seconds(d_sec);
+  time_keeper.tick(d_sec);
+}
+
 // Get and process the action for the current creature
 ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPtr current_map, const bool reloaded_game)
 {
