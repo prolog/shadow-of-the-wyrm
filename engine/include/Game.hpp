@@ -119,6 +119,8 @@ class Game : public ISerializable
 
     LoadedMapDetails& get_loaded_map_details_ref();
 
+    void process_elapsed_time(const int seconds);
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
