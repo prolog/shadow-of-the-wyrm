@@ -1,3 +1,4 @@
+#include <sstream>
 #include "RNG.hpp"
 #include "Serialize.hpp"
 #include "Weapon.hpp"
@@ -172,6 +173,16 @@ void Weapon::do_improve_item(const int points)
     default:
       break;
   }
+}
+
+string Weapon::get_synopsis() const
+{
+  ostringstream ss;
+
+  string dmg = damage.str();
+  ss << Wearable::get_synopsis() << "(" << dmg << ") ";
+
+  return ss.str();
 }
 
 bool Weapon::serialize(ostream& stream) const

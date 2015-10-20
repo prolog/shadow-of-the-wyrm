@@ -75,7 +75,7 @@ string Wearable::get_synopsis() const
   
   if (evade > 0 || soak > 0)
   {
-    ss << "[" << evade << ", " << soak << "]";
+    ss << "[" << evade << ", " << soak << "] ";
   }
 
   return ss.str();
