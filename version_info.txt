@@ -35,6 +35,9 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 - Added Lua API functions to add seconds, minutes, hours, days, or years
   to the calendar.
 
+- Weapons and ammunition now show the damage when viewing the equipment
+  screen (AgingMinotaur, Kyrzati).
+
 - Bug fixes:
 
   - Fire weapon was acting strangely due to some code that was shared

@@ -36,6 +36,8 @@ class Weapon : public Wearable
 
     virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) override;
 
+    std::string get_synopsis() const override;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 

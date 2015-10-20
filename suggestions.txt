@@ -13,7 +13,6 @@ barrabus:
 - Resize not working properly.
 
 Kyrzati:
-- A way to get at item info without equipping.
 - Over time, generation of new random uniques, etc.
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
@@ -23,5 +22,4 @@ AgingMinotaur:
 * On a related note, I didn't feel very connected to my skills, so a way to access/display them would be nice. I get the impression that some of them aren't fully implemented yet, but also noticed that while some characters were unable to use a spinning wheel because they had no fibres to use, others reportedly didn't know how to spin.
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
 * The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
-* Regarding inventory, I wouldn't mind if weapon/missile damage were displayed next to the item in question. As it is now, I have to equip everything and press "W" and "R" to get at that info.
 * I noticed that archers and goblin pelters don't actually shoot anything. I'm supposing this will show up later.
