@@ -1,9 +1,10 @@
 #include <sstream>
 #include <vector>
+#include <iomanip>
 #include "Game.hpp"
 #include "ResistanceTextKeys.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "ShowResistancesAction.hpp"
-#include <iomanip>
 #include "TextDisplayScreen.hpp"
 
 using namespace std;
@@ -11,7 +12,7 @@ using namespace std;
 ActionCostValue ShowResistancesAction::show_resistances(CreaturePtr creature)
 {
   Game& game = Game::instance();
-  string resistances_title_sid = ResistanceTextKeys::RESISTANCES_SCREEN_TITLE;
+  string resistances_title_sid = ScreenTitleTextKeys::SCREEN_TITLE_RESISTANCES;
   vector<TextDisplayPair> resists_text;
 
   Resistances res = creature->get_resistances();

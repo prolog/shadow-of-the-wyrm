@@ -1,5 +1,6 @@
 #include <sstream>
 #include <boost/algorithm/string.hpp>
+#include <boost/tokenizer.hpp>
 #include "global_prototypes.hpp"
 #include "CharacterDumper.hpp"
 #include "ClassManager.hpp"

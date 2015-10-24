@@ -121,7 +121,7 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     Game& game = Game::instance();
     TextDisplayFormatter tdf;
 
-    string bestiary_title_sid = ScreenTitleKeys::SCREEN_TITLE_BESTIARY;
+    string bestiary_title_sid = ScreenTitleTextKeys::SCREEN_TITLE_BESTIARY;
     vector<pair<Colour, string>> bestiary_text;
 
     string separator;

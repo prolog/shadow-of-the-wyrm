@@ -7,7 +7,7 @@ class CharacterDumper : public StringConverter
   public:
     CharacterDumper(CreaturePtr new_creature, const uint new_num_cols = 80);
     ~CharacterDumper();
-    
+
     std::string str() const override;
     
   protected:

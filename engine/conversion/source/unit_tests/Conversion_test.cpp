@@ -55,6 +55,18 @@ TEST(SL_Engine_ConversionRoutines, float_to_string)
   EXPECT_EQ("3.14159", Float::to_string(3.1415926535f, 6));
 }
 
+TEST(SL_Engine_ConversionRoutines, tokenize)
+{
+  string test1 = "fdsa\nasdf\nbbb";
+  vector<string> t1_v = String::tokenize(test1, "\n", false);
+
+  EXPECT_EQ(3, t1_v.size());
+
+  t1_v = String::tokenize(test1, "\n", true);
+
+  EXPECT_EQ(5, t1_v.size());
+}
+
 TEST(SL_Engine_ConversionRoutines, csv_to_vector)
 {
   string csv = "first,second,third";

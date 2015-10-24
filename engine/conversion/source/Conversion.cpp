@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/tokenizer.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "CarryingCapacityCalculator.hpp"
 #include "CommandKeys.hpp"
@@ -91,6 +92,31 @@ bool String::to_bool(const string& convert)
   }
 
   return false;
+}
+
+vector<string> String::tokenize(const string& tok_str, const string& delim, const bool include_delims)
+{
+  vector<string> output;
+  
+  string drop_delim = delim;
+  string keep_delim;
+  boost::empty_token_policy token_policy = boost::drop_empty_tokens;
+
+  if (include_delims)
+  {
+    drop_delim = "";
+    keep_delim = delim;
+    token_policy = boost::keep_empty_tokens;
+  }
+
+  boost::char_separator<char> separator(drop_delim.c_str(), keep_delim.c_str(), token_policy);
+  boost::tokenizer<boost::char_separator<char>> tokens(tok_str, separator);
+
+  for (const auto& t : tokens) {
+    output.push_back(t);
+  }
+
+  return output;
 }
 
 Bool::Bool()

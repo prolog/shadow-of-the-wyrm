@@ -23,7 +23,7 @@ string SpellsDumper::get_spells() const
 {
   ostringstream ss;
 
-  ss << String::centre(StringTable::get(ScreenTitleKeys::SCREEN_TITLE_MAGIC_SPELLS), num_cols) << endl << endl;
+  ss << String::centre(StringTable::get(ScreenTitleTextKeys::SCREEN_TITLE_MAGIC_SPELLS), num_cols) << endl << endl;
 
   int spell_count = 0;
 
