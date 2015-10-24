@@ -2,6 +2,8 @@ Me:
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
+- Dump command for arbitrary text screens.
+- Convert "display character" to a text screen.
 
 Akeley:
 - ESC as well as 'z'
@@ -14,6 +16,9 @@ Kyrzati:
 - Over time, generation of new random uniques, etc.
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
+
+Avagart:
+- Eventually, have automovement stop only on new items.
 
 AgingMinotaur:
 * A command to display character info in-game (without dumping it in a file) would be nice.

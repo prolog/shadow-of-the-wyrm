@@ -38,6 +38,8 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 - Weapons and ammunition now show the damage when viewing the equipment
   screen (AgingMinotaur, Kyrzati).
 
+- New creatures: boar.
+
 - Bug fixes:
 
   - Fire weapon was acting strangely due to some code that was shared
