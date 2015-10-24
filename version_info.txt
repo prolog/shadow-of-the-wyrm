@@ -38,7 +38,7 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 - Weapons and ammunition now show the damage when viewing the equipment
   screen (AgingMinotaur, Kyrzati).
 
-- New creatures: boar.
+- New creatures: boar, blue jay.
 
 - Bug fixes:
 
