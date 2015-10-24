@@ -29,7 +29,7 @@ string QuestDumper::get_quests() const
     Game& game = Game::instance();
     Quests& quests = game.get_quests_ref();
     QuestMap in_progress_quests = quests.get_in_progress_quests();
-    ss << String::centre(StringTable::get(ScreenTitleKeys::SCREEN_TITLE_QUEST_LIST), num_cols) << endl << endl;
+    ss << String::centre(StringTable::get(ScreenTitleTextKeys::SCREEN_TITLE_QUEST_LIST), num_cols) << endl << endl;
    
     int num_in_progress = 0;
 
@@ -48,7 +48,7 @@ string QuestDumper::get_quests() const
     ss << endl << endl;
 
     QuestMap completed_quests = quests.get_completed_quests();
-    ss << String::centre(StringTable::get(ScreenTitleKeys::SCREEN_TITLE_COMPLETED_QUEST_LIST), num_cols) << endl << endl;
+    ss << String::centre(StringTable::get(ScreenTitleTextKeys::SCREEN_TITLE_COMPLETED_QUEST_LIST), num_cols) << endl << endl;
 
     int num_completed = 0;
 

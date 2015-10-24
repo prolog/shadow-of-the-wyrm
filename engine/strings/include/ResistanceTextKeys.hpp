@@ -49,7 +49,6 @@ class ResistanceTextKeys
     static const std::string RESISTANCE_GAIN_LIGHTNING;
     static const std::string RESISTANCE_LOSE_LIGHTNING;
 
-    static const std::string RESISTANCES_SCREEN_TITLE;
     static const std::string RESISTANCES_EXPLANATION;
 
   protected:

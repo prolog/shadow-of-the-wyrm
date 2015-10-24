@@ -38,7 +38,7 @@ string SpellSelectionScreen::get_selected_spell(const char selection) const
 void SpellSelectionScreen::initialize()
 {
   // Set the screen title.
-  title_text_sid = ScreenTitleKeys::SCREEN_TITLE_MAGIC_SPELLS;
+  title_text_sid = ScreenTitleTextKeys::SCREEN_TITLE_MAGIC_SPELLS;
 
   vector<ScreenComponentPtr> spell_screen;
 

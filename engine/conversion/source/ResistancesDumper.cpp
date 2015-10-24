@@ -3,8 +3,9 @@
 #include "Game.hpp"
 #include "ResistancesDumper.hpp"
 #include "ResistanceTextKeys.hpp"
-#include "TextKeys.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ string ResistancesDumper::get_resistances() const
 {
   ostringstream ss;
 
-  ss << String::centre(StringTable::get(ResistanceTextKeys::RESISTANCES_SCREEN_TITLE), num_cols) << endl << endl;
+  ss << String::centre(StringTable::get(ScreenTitleTextKeys::SCREEN_TITLE_RESISTANCES), num_cols) << endl << endl;
 
   Resistances res = creature->get_resistances();
 
