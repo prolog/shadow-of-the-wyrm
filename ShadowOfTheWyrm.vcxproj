@@ -196,7 +196,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\actions\include\AutomaticMovementAction.hpp" />
     <ClInclude Include="engine\actions\include\AutomaticMovementCoordinator.hpp" />
     <ClInclude Include="engine\actions\include\BestiaryAction.hpp" />
-    <ClInclude Include="engine\actions\include\CharacterDumpAction.hpp" />
+    <ClInclude Include="engine\actions\include\CharacterAction.hpp" />
     <ClInclude Include="engine\actions\include\ChatAction.hpp" />
     <ClInclude Include="engine\actions\include\ConsumableAction.hpp" />
     <ClInclude Include="engine\actions\include\CurrencyAction.hpp" />
@@ -1148,7 +1148,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\actions\source\AutomaticMovementAction.cpp" />
     <ClCompile Include="engine\actions\source\AutomaticMovementCoordinator.cpp" />
     <ClCompile Include="engine\actions\source\BestiaryAction.cpp" />
-    <ClCompile Include="engine\actions\source\CharacterDumpAction.cpp" />
+    <ClCompile Include="engine\actions\source\CharacterAction.cpp" />
     <ClCompile Include="engine\actions\source\ChatAction.cpp" />
     <ClCompile Include="engine\actions\source\ConsumableAction.cpp" />
     <ClCompile Include="engine\actions\source\CurrencyAction.cpp" />

@@ -21,7 +21,6 @@ Avagart:
 - Eventually, have automovement stop only on new items.
 
 AgingMinotaur:
-* A command to display character info in-game (without dumping it in a file) would be nice.
 * On a related note, I didn't feel very connected to my skills, so a way to access/display them would be nice. I get the impression that some of them aren't fully implemented yet, but also noticed that while some characters were unable to use a spinning wheel because they had no fibres to use, others reportedly didn't know how to spin.
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
 * The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.

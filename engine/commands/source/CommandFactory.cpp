@@ -86,6 +86,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<DropCommand>(key);
   }
+  else if (command_name == CommandKeys::CHAR_DETAILS)
+  {
+    command = std::make_shared<CharDetailsCommand>(key);
+  }
   else if (command_name == CommandKeys::CHAR_DUMP)
   {
     command = std::make_shared<CharDumpCommand>(key);

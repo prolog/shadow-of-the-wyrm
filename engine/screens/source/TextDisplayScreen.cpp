@@ -8,17 +8,17 @@
 using namespace std;
 using namespace boost::algorithm;
 
-TextDisplayScreen::TextDisplayScreen(DisplayPtr new_display, const std::string& new_title_text_sid, const vector<TextDisplayPair>& new_text)
+TextDisplayScreen::TextDisplayScreen(DisplayPtr new_display, const std::string& new_title_text_sid, const vector<TextDisplayPair>& new_text, const bool preserve_formatting)
 : Screen(new_display), text(new_text)
 {
   // Set the line increment to 1, so that single-spacing between lines is
   // enforced.  Otherwise, things will look goofy.
   line_increment = 1;
 
-  initialize(new_title_text_sid);
+  initialize(new_title_text_sid, preserve_formatting);
 }
 
-void TextDisplayScreen::initialize(const string& title_sid)
+void TextDisplayScreen::initialize(const string& title_sid, const bool preserve_formatting)
 {
   // Set the title text.
   title_text_sid = title_sid;
@@ -32,8 +32,11 @@ void TextDisplayScreen::initialize(const string& title_sid)
     Colour colour = line_pair.first;
     string text = line_pair.second;
 
-    trim_left(text);
-    trim_right(text);
+    if (preserve_formatting == false)
+    {
+      trim_left(text);
+      trim_right(text);
+    }
 
     TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour);
     add_component(text_screen, current_line, cnt);

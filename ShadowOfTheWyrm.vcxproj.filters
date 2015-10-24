@@ -2187,9 +2187,6 @@
     <ClInclude Include="engine\XML\include\XMLSpellsReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\CharacterDumpAction.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\actions\include\ChatAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
@@ -3506,6 +3503,9 @@
     </ClInclude>
     <ClInclude Include="engine\time\include\AgeTimeObserver.hpp">
       <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\CharacterAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5300,9 +5300,6 @@
     <ClCompile Include="engine\XML\source\XMLSpellsReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\source\CharacterDumpAction.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\actions\source\ChatAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
@@ -6832,6 +6829,9 @@
     </ClCompile>
     <ClCompile Include="engine\time\source\unit_tests\AgeTimeObserver_test.cpp">
       <Filter>Source Files\engine\time\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\CharacterAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

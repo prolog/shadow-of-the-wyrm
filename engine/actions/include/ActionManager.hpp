@@ -29,6 +29,7 @@ class ActionManager : public ISerializable
 
     ActionCost version(CreaturePtr creature);
     ActionCost date_and_time(CreaturePtr creature);
+    ActionCost display_character(CreaturePtr creature);
     ActionCost dump_character(CreaturePtr creature);
     ActionCost search(CreaturePtr creature);
     ActionCost move(CreaturePtr creature, const Direction d);

@@ -29,6 +29,7 @@ const string CommandKeys::AUTOMATIC_MOVEMENT = "AUTOMATIC_MOVEMENT";
 const string CommandKeys::PICK_UP_ITEM   = "PICK_UP_ITEM";
 const string CommandKeys::DROP_ITEM      = "DROP_ITEM";
 const string CommandKeys::CHAR_DUMP      = "CHAR_DUMP";
+const string CommandKeys::CHAR_DETAILS   = "CHAR_DETAILS";
 const string CommandKeys::INVENTORY      = "INVENTORY";
 const string CommandKeys::PRAY           = "PRAY";
 const string CommandKeys::MELEE_WEAPON_INFO = "MELEE_WEAPON_INFO";
