@@ -2,8 +2,6 @@ Me:
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
-- Refactor death manager so that death script is always called, instead of
-  only if the creature is not the player.
 
 Akeley:
 - ESC as well as 'z'
