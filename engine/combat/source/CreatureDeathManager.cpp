@@ -42,21 +42,6 @@ void CreatureDeathManager::die() const
   }
 }
 
-// Run the death event.
-void CreatureDeathManager::run_death_event(CreaturePtr attacked_creature, MapPtr map) const
-{
-  ScriptDetails sd = attacked_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH);
-  string event_script_name = sd.get_script();
-  int chance = sd.get_chance();
-
-  if (!event_script_name.empty() && RNG::percent_chance(chance))
-  {
-    ScriptEngine& se = Game::instance().get_script_engine_ref();
-    se.execute(event_script_name);
-  }
-}
-
-
 // If necessary, add messages about the creature's death.
 void CreatureDeathManager::add_creature_death_messages(CreaturePtr attacking_creature, CreaturePtr dead_creature) const
 {

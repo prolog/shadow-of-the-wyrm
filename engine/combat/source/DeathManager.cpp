@@ -1,4 +1,9 @@
+#include <string>
 #include "DeathManager.hpp"
+#include "Game.hpp"
+#include "RNG.hpp"
+
+using namespace std;
 
 const int DeathManager::PCT_CHANCE_CORPSE = 15;
 
@@ -11,5 +16,19 @@ DeathManager::DeathManager(CreaturePtr attacking, CreaturePtr attacked_creature,
 
 DeathManager::~DeathManager()
 {
+}
+
+// Run the death event.
+void DeathManager::run_death_event(CreaturePtr attacked_creature, MapPtr map) const
+{
+  ScriptDetails sd = attacked_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH);
+  string event_script_name = sd.get_script();
+  int chance = sd.get_chance();
+
+  if (!event_script_name.empty() && RNG::percent_chance(chance))
+  {
+    ScriptEngine& se = Game::instance().get_script_engine_ref();
+    se.execute(event_script_name);
+  }
 }
 

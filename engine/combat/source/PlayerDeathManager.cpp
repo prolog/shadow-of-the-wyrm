@@ -32,6 +32,10 @@ void PlayerDeathManager::die() const
     string deity_message_sid = rm.get_death_message_sid(dead_creature->get_religion().get_active_deity_id());
     string death_message = TextMessages::get_death_message(deity_message_sid);
     manager.add_new_message(death_message);
+    
+    // Run any death scripts.
+    run_death_event(dead_creature, map);
+    
     manager.send_and_halt();
     
     // Signal to the game that it is time to quit.
