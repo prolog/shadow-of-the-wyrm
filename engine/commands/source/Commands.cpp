@@ -159,6 +159,16 @@ DropCommand::~DropCommand()
 {
 }
 
+// Display character details
+CharDetailsCommand::CharDetailsCommand(const int key)
+: Command(CommandKeys::CHAR_DETAILS, key)
+{
+}
+
+CharDetailsCommand::~CharDetailsCommand()
+{
+}
+
 // Dump (pretty-print) the character to a file
 CharDumpCommand::CharDumpCommand(const int key)
 : Command(CommandKeys::CHAR_DUMP, key)

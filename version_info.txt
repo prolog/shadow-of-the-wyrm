@@ -38,6 +38,10 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 - Weapons and ammunition now show the damage when viewing the equipment
   screen (AgingMinotaur, Kyrzati).
 
+- Added a character details screen in addition to the character dump
+  command.  Character details is now bound to '@' by default, with 
+  character dump using '#' (AgingMinotaur).
+
 - New creatures: boar, blue jay.
 
 - Bug fixes:

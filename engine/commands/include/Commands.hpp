@@ -106,6 +106,13 @@ class DropCommand : public Command
     ~DropCommand();
 };
 
+class CharDetailsCommand : public Command
+{
+  public:
+    CharDetailsCommand(int key);
+    ~CharDetailsCommand();
+};
+
 class CharDumpCommand : public Command
 {
   public:

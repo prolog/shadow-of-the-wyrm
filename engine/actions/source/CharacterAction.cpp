@@ -1,4 +1,4 @@
-#include "CharacterDumpAction.hpp"
+#include "CharacterAction.hpp"
 #include "CharacterDumper.hpp"
 #include "Conversion.hpp"
 #include "FileWriter.hpp"
@@ -10,11 +10,11 @@
 
 using namespace std;
 
-CharacterDumpAction::CharacterDumpAction()
+CharacterAction::CharacterAction()
 {
 }
 
-ActionCostValue CharacterDumpAction::dump_character(CreaturePtr creature)
+ActionCostValue CharacterAction::display_character(CreaturePtr creature)
 {
   if (creature != nullptr)
   {
@@ -24,28 +24,23 @@ ActionCostValue CharacterDumpAction::dump_character(CreaturePtr creature)
     vector<string> char_text = String::tokenize(dumper.str(), "\n", true);
 
     vector<TextDisplayPair> char_details_text;
-    string last_str;
 
     for (const string& str : char_text)
     {
-      // Ensure that the newlines from the end of a line of text aren't added as separate
-      // strings, or else the text will have lots of extra newlines and look bad.
-      if (str != "\n" || last_str.empty())
+      if (str != "\n")
       {
         char_details_text.push_back(make_pair(Colour::COLOUR_WHITE, str));
       }
-
-      last_str = str;
     }
 
-    TextDisplayScreen tds(game.get_display(), char_title_sid, char_details_text);
+    TextDisplayScreen tds(game.get_display(), char_title_sid, char_details_text, true);
     tds.display();
   }
 
   return get_action_cost_value(creature);
 }
 
-void CharacterDumpAction::dump_character_to_file(CreaturePtr creature)
+ActionCostValue CharacterAction::dump_character(CreaturePtr creature)
 {
   if (creature)
   {
@@ -61,10 +56,12 @@ void CharacterDumpAction::dump_character_to_file(CreaturePtr creature)
     manager.add_new_message(dump_message);
     manager.send();
   }
+
+  return get_action_cost_value(creature);
 }
 
 
-ActionCostValue CharacterDumpAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue CharacterAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }

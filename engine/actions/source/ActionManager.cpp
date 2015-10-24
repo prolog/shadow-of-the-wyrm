@@ -3,7 +3,7 @@
 #include "ActionTextKeys.hpp"
 #include "AutomaticMovementAction.hpp"
 #include "BestiaryAction.hpp"
-#include "CharacterDumpAction.hpp"
+#include "CharacterAction.hpp"
 #include "ChatAction.hpp"
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -79,10 +79,16 @@ ActionCost ActionManager::date_and_time(CreaturePtr creature)
   return get_action_cost(creature, dt.date_and_time());
 }
 
+ActionCost ActionManager::display_character(CreaturePtr creature)
+{
+  CharacterAction ca;
+  return get_action_cost(creature, ca.display_character(creature));
+}
+
 ActionCost ActionManager::dump_character(CreaturePtr creature)
 {
-  CharacterDumpAction cd;
-  return get_action_cost(creature, cd.dump_character(creature));
+  CharacterAction ca;
+  return get_action_cost(creature, ca.dump_character(creature));
 }
 
 ActionCost ActionManager::search(CreaturePtr creature)
