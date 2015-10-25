@@ -3,14 +3,16 @@ Me:
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
 - Dump command for arbitrary text screens.
-- Convert "display character" to a text screen.
+- Define two moons, and create a phase-of-moon command.
+- Eventually, chances to learn spells are increased based on the type
+  of magic and the phase of the moon.
+- Remove need for zlib and xerces by making everything statically linked.
 
 Akeley:
 - ESC as well as 'z'
 
 barrabus: 
 - Extra descs for items.
-- Resize not working properly.
 
 Kyrzati:
 - Over time, generation of new random uniques, etc.
@@ -21,7 +23,6 @@ Avagart:
 - Eventually, have automovement stop only on new items.
 
 AgingMinotaur:
-* On a related note, I didn't feel very connected to my skills, so a way to access/display them would be nice. I get the impression that some of them aren't fully implemented yet, but also noticed that while some characters were unable to use a spinning wheel because they had no fibres to use, others reportedly didn't know how to spin.
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
 * The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
 * I noticed that archers and goblin pelters don't actually shoot anything. I'm supposing this will show up later.

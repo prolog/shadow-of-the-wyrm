@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "AutomaticMovementAction.hpp"
 #include "AutomaticMovementCoordinator.hpp"
+#include "AutomaticMovementFlags.hpp"
 #include "Commands.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
@@ -108,7 +109,8 @@ ActionCostValue AutomaticMovementAction::rest(CreaturePtr creature) const
   }
   else
   {
-    acv = amc.auto_move(creature, map, Direction::DIRECTION_NULL, true, true, true);
+    AutomaticMovementFlags amf(true, true, true, true);
+    acv = amc.auto_move(creature, map, Direction::DIRECTION_NULL, amf);
   }
 
   return acv;
@@ -118,11 +120,11 @@ ActionCostValue AutomaticMovementAction::automatic_movement_in_direction(Creatur
 {
   // Start moving in the requested direction.
   AutomaticMovementCoordinator amc;
-  return amc.auto_move(creature, map, d, false, false, false);
+  AutomaticMovementFlags amf(false, false, false, false);
+  return amc.auto_move(creature, map, d, amf);
 }
 
 ActionCostValue AutomaticMovementAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }
-

@@ -42,6 +42,8 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   command.  Character details is now bound to '@' by default, with 
   character dump using '#' (AgingMinotaur).
 
+- Automovement now also stops on features.
+
 - New creatures: boar, blue jay.
 
 - Bug fixes:
