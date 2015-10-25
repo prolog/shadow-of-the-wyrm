@@ -17,7 +17,7 @@ using namespace std;
 // (not blocking, no creatures, etc), and the FOV must allow automatic
 // movement as well (there can't be any hostile creatures that the creature
 // can see).
-ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, MapPtr map, const Direction d, const bool ignore_item_checks, const bool ignore_tile_check, const bool ignore_prev_visited_checks)
+ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, MapPtr map, const Direction d, const AutomaticMovementFlags& amf)
 {
   // The direction may change during automatic movement, if the creature
   // is e.g., moving down a corridor.
@@ -38,11 +38,11 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   bool creature_move = creature_results.first;
   copy(creature_results.second.begin(), creature_results.second.end(), back_inserter(message_sids));
 
-  pair<bool, vector<string>> creature_position_results = creature_position_allows_auto_move(creature, map, ignore_item_checks);
+  pair<bool, vector<string>> creature_position_results = creature_position_allows_auto_move(creature, map, amf);
   bool creature_pos_move = creature_position_results.first;
   copy(creature_position_results.second.begin(), creature_position_results.second.end(), back_inserter(message_sids));
 
-  pair<bool, vector<string>> tile_results = tile_allows_auto_move(creature, direction_tile, ignore_tile_check);
+  pair<bool, vector<string>> tile_results = tile_allows_auto_move(creature, direction_tile, amf);
   bool tile_move = tile_results.first;
   copy(tile_results.second.begin(), tile_results.second.end(), back_inserter(message_sids));
 
@@ -51,13 +51,13 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   copy(map_results.second.begin(), map_results.second.end(), back_inserter(message_sids));
 
   Coordinate new_coord = CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), cur_dir);
-  pair<bool, vector<string>> visit_results = prev_visited_coords_allow_auto_move(creature, new_coord, ignore_prev_visited_checks);
+  pair<bool, vector<string>> visit_results = prev_visited_coords_allow_auto_move(creature, new_coord, amf);
   bool visit_move = visit_results.first;
 
   if (creature_move && creature_pos_move && tile_move && map_move && visit_move)
   {
     set_available_movement_directions(creature, map);
-    add_coordinate_to_automove_visited(creature, new_coord, ignore_prev_visited_checks);
+    add_coordinate_to_automove_visited(creature, new_coord, amf);
     update_turns_if_necessary(creature);
     auto_move_cost = 1;
      
@@ -166,7 +166,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(
 
 // Does the creature's position (current tile, and the surrounding ones) allow
 // auto movement?
-pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allows_auto_move(CreaturePtr creature, MapPtr map, const bool ignore_item_checks)
+pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allows_auto_move(CreaturePtr creature, MapPtr map, const AutomaticMovementFlags& amf)
 {
   pair<bool, vector<string>> move_details = {false, {}};
 
@@ -174,9 +174,17 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
   bool items_allow_move = false;
 
   // Stop auto-movement when moving to a tile that has items.
-  if (ignore_item_checks || (current_tile && current_tile->get_items()->empty()))
+  if (amf.get_ignore_items() || (current_tile && current_tile->get_items()->empty()))
   {
     items_allow_move = true;
+  }
+
+  bool feature_allows_move = false;
+
+  // Also stop auto-movement when the tile has features present.
+  if (amf.get_ignore_feature() || (current_tile && !current_tile->has_feature()))
+  {
+    feature_allows_move = true;
   }
 
   // Check the last number of available exits to see if it's changed.
@@ -201,7 +209,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
     exits_allow_move = true;
   }
 
-  move_details.first = (items_allow_move && exits_allow_move);
+  move_details.first = (items_allow_move && feature_allows_move && exits_allow_move);
   return move_details;
 }
 
@@ -258,21 +266,21 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::fov_allows_auto_move(Cr
 
 // Check to see if the tile allows automatic movement into it by checking to 
 // see if the tile is available (not empty, no blocking features, etc).
-pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(CreaturePtr creature, TilePtr tile, const bool ignore_tile_check)
+pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(CreaturePtr creature, TilePtr tile, const AutomaticMovementFlags& amf)
 {
   pair<bool, vector<string>> tile_details;
 
-  tile_details.first = ignore_tile_check || (MapUtils::is_tile_available_for_creature(creature, tile));
+  tile_details.first = amf.get_ignore_tile() || (MapUtils::is_tile_available_for_creature(creature, tile));
 
   return tile_details;
 }
 
 // Check to see if the creature has already visited the new coordinate.
-pair<bool, vector<string>> AutomaticMovementCoordinator::prev_visited_coords_allow_auto_move(CreaturePtr creature, const Coordinate& new_coord, const bool ignore_prev_visited_checks)
+pair<bool, vector<string>> AutomaticMovementCoordinator::prev_visited_coords_allow_auto_move(CreaturePtr creature, const Coordinate& new_coord, const AutomaticMovementFlags& amf)
 {
-  pair<bool, vector<string>> visit_details = {ignore_prev_visited_checks, {}};
+  pair<bool, vector<string>> visit_details = {amf.get_ignore_prev_visited(), {}};
 
-  if (creature != nullptr && ignore_prev_visited_checks == false)
+  if (creature != nullptr && amf.get_ignore_prev_visited() == false)
   {
     vector<string> visited_coords;
 
@@ -303,9 +311,9 @@ void AutomaticMovementCoordinator::set_available_movement_directions(CreaturePtr
 // Add a coordinate to the current set of coordinates visited during 
 // automovement, so that the same coordinate can't be visited twice
 // (no running loops!).
-void AutomaticMovementCoordinator::add_coordinate_to_automove_visited(CreaturePtr creature, const Coordinate& c, const bool ignore_prev_visited_checks)
+void AutomaticMovementCoordinator::add_coordinate_to_automove_visited(CreaturePtr creature, const Coordinate& c, const AutomaticMovementFlags& amf)
 {
-  if (creature != nullptr && ignore_prev_visited_checks == false)
+  if (creature != nullptr && amf.get_ignore_prev_visited() == false)
   {
     vector<string> coords;
 
