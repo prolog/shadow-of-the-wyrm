@@ -23786,6 +23786,30 @@
 				<Range>4</Range>
 				<Colour>1</Colour>
 			</Wand>
+			<Wand id="dragon_breath_wand">
+				<DescriptionSID>DRAGON_BREATH_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DRAGON_BREATH_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DRAGON_BREATH_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DRAGON_BREATH_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>650</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>12</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage>
+					<NumDice>10</NumDice>
+					<NumSides>8</NumSides>
+					<Modifier>10</Modifier>
+					<Type>3</Type>
+				</Damage>
+				<BeamType>3</BeamType>
+				<Range>5</Range>
+				<Colour>1</Colour>
+			</Wand>
 			<Wand id="lightning_wand">
 				<DescriptionSID>LIGHTNING_WAND_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_LIGHTNING_WAND_SID</UnidentifiedDescriptionSID>
