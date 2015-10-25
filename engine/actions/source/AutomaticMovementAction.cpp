@@ -120,7 +120,14 @@ ActionCostValue AutomaticMovementAction::automatic_movement_in_direction(Creatur
 {
   // Start moving in the requested direction.
   AutomaticMovementCoordinator amc;
-  AutomaticMovementFlags amf(false, false, false, false);
+
+  // The first time we auto-move, set the ignore flags.  This is so we can 
+  // always move off the current tile.  For subsequent moves in the auto 
+  // movement chain, the "engaged" flag will be set, and we'll properly
+  // consider items, features, and so on, during the automatic movement
+  // checks.
+  bool ignore = !(creature->get_automatic_movement_ref().get_engaged());
+  AutomaticMovementFlags amf(ignore, ignore, ignore, ignore);
   return amc.auto_move(creature, map, d, amf);
 }
 
