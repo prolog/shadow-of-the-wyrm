@@ -106,6 +106,7 @@ class ActionTextKeys
     static const std::string ACTION_HANDLE_DEFAULT;
     static const std::string ACTION_HANDLE_ALTAR;
     static const std::string ACTION_HANDLE_PEW;
+    static const std::string ACTION_EVOKE_FAILED;
 
   protected:
     ActionTextKeys();

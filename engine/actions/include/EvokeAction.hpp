@@ -20,5 +20,5 @@ class EvokeAction : public IActionManager
     bool process_wand_damage_and_effect(CreaturePtr creature, MapPtr map, const Coordinate& caster_coord, const Direction spell_direction, const Spell& wand_spell, const ItemStatus wand_status, const Statistic& original_charges);
     void name_wand_if_identified(WandPtr wand, const bool wand_identified, const bool wand_originally_identified, const ItemIdentifier& item_id) const;
 
-    std::pair<bool, Direction> get_evocation_direction(CreaturePtr creature);
+    std::pair<bool, Direction> get_evocation_direction(CreaturePtr creature, const SpellShapeType shape_type);
 };

@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "DirectionUtils.hpp"
 #include "EffectFactory.hpp"
 #include "EffectTextKeys.hpp"
 #include "Game.hpp"
@@ -93,10 +94,11 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
       // Get the wand's direction.
       bool evoke_successful = true;
       pair<bool, Direction> evoke_result = { true, Direction::DIRECTION_NULL };
+      SpellShapeType shape_type = wand->get_spell_shape_type();
 
-      if (wand->get_spell_shape_type() != SpellShapeType::SPELL_SHAPE_BALL)
+      if (shape_type != SpellShapeType::SPELL_SHAPE_BALL)
       {
-        evoke_result = get_evocation_direction(creature);
+        evoke_result = get_evocation_direction(creature, shape_type);
         evoke_successful = evoke_result.first;
       }
 
@@ -125,6 +127,16 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
 
         action_cost_value = get_action_cost_value(creature);
       }
+      else
+      {
+        // Add a message about the unsuccessful attempt.
+        if (creature && creature->get_is_player())
+        {
+          IMessageManager& manager = MessageManagerFactory::instance();
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_EVOKE_FAILED));
+          manager.send();
+        }
+      }
     }
   }
 
@@ -151,7 +163,7 @@ ActionCostValue EvokeAction::get_action_cost_value(CreaturePtr creature) const
   return 1;
 }
 
-pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature)
+pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature, const SpellShapeType shape_type)
 {
   pair<bool, Direction> evoke_direction_result(false, Direction::DIRECTION_UP);
   Direction direction = Direction::DIRECTION_UP;
@@ -161,11 +173,19 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature)
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+  SpellShape spell_shape = SpellShapeFactory::create_spell_shape(shape_type);
 
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())
   {
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
+    string direction_prompt_sid = ActionTextKeys::ACTION_GET_DIRECTION;
+
+    if (spell_shape.get_direction_category() == DirectionCategory::DIRECTION_CATEGORY_CARDINAL)
+    {
+      direction_prompt_sid = ActionTextKeys::ACTION_GET_CARDINAL_DIRECTION;
+    }
+
+    manager.add_new_message(StringTable::get(direction_prompt_sid));
     manager.send();
   }
 
@@ -177,7 +197,7 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature)
     std::shared_ptr<DirectionalCommand> dcommand;
     dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
 
-    if (dcommand)
+    if (dcommand && (DirectionUtils::direction_matches_category(dcommand->get_direction(), spell_shape.get_direction_category())))
     {
       evoke_direction_result.first = true;
       evoke_direction_result.second = dcommand->get_direction();

@@ -1,4 +1,8 @@
+#include <utility>
+#include <vector>
 #include "gtest/gtest.h"
+
+using namespace std;
 
 TEST(SL_Engine_Maps_DirectionUtils, is_cardinal)
 {
@@ -38,4 +42,30 @@ TEST(SL_Engine_Maps_DirectionUtils, get_opposite_direction)
   EXPECT_EQ(CardinalDirection::CARDINAL_DIRECTION_NORTH, DirectionUtils::get_opposite_direction(CardinalDirection::CARDINAL_DIRECTION_SOUTH));
   EXPECT_EQ(CardinalDirection::CARDINAL_DIRECTION_EAST, DirectionUtils::get_opposite_direction(CardinalDirection::CARDINAL_DIRECTION_WEST));
   EXPECT_EQ(CardinalDirection::CARDINAL_DIRECTION_WEST, DirectionUtils::get_opposite_direction(CardinalDirection::CARDINAL_DIRECTION_EAST));
+}
+
+TEST(SL_Engine_Maps_DirectionUtils, direction_matches_category)
+{
+  // First bool = is cardinal?
+  // Second bool = is cardinal or ordinal?
+  vector<pair<Direction, pair<bool, bool>>> dirs = 
+  {
+    { Direction::DIRECTION_NORTH_WEST,{ false, true } },
+    { Direction::DIRECTION_NORTH,{ true, true } },
+    { Direction::DIRECTION_NORTH_EAST,{ false, true } },
+    { Direction::DIRECTION_WEST,{ true, true } },
+    { Direction::DIRECTION_NULL,{ false, false } },
+    { Direction::DIRECTION_EAST,{ true, true } },
+    { Direction::DIRECTION_SOUTH_WEST,{ false, true } },
+    { Direction::DIRECTION_SOUTH,{ true, true } },
+    { Direction::DIRECTION_SOUTH_EAST,{ false, true } },
+    { Direction::DIRECTION_UP,{ false, false } },
+    { Direction::DIRECTION_DOWN,{ false, false } }
+  };
+
+  for (auto& dir_pair : dirs)
+  {
+    EXPECT_EQ(dir_pair.second.first, DirectionUtils::direction_matches_category(dir_pair.first, DirectionCategory::DIRECTION_CATEGORY_CARDINAL));
+    EXPECT_EQ(dir_pair.second.second, DirectionUtils::direction_matches_category(dir_pair.first, DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL));
+  }
 }

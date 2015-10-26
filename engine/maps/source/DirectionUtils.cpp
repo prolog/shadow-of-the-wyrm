@@ -100,6 +100,25 @@ Direction DirectionUtils::get_opposite_direction(const Direction d)
   return o;
 }
 
+bool DirectionUtils::direction_matches_category(const Direction d, const DirectionCategory cd)
+{
+  bool matches = false;
+
+  switch (cd)
+  {
+    case DirectionCategory::DIRECTION_CATEGORY_CARDINAL:
+      matches = DirectionUtils::is_cardinal(d);
+      break;
+    case DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL:
+      matches = (DirectionUtils::is_ordinal(d) || DirectionUtils::is_cardinal(d));
+      break;
+    case DirectionCategory::DIRECTION_CATEGORY_NONE:
+      break;
+  }
+
+  return matches;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/DirectionUtils_test.cpp"
 #endif
