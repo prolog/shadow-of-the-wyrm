@@ -8,6 +8,7 @@ registry, instead of failing silently.
   of magic and the phase of the moon.
 - Remove need for zlib and xerces by making everything statically linked.
 - Code for diagonal cone effects (test with wand of dragon breath).
+- Multi-map areas (the central city!)
 
 Akeley:
 - ESC as well as 'z'

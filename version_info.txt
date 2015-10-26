@@ -42,8 +42,14 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   command.  Character details is now bound to '@' by default, with 
   character dump using '#' (AgingMinotaur).
 
-- Automovement now also stops on features, and there are a number of
-  other improvements to make it intuitively better.
+- Automovement improvements:
+  
+  - Stop on tile features (doors, pews, altars, etc).
+  
+  - On first move, ignore a lot of the things (features, items, etc) that
+    would normally cause automovement to halt.
+    
+  - Turn bends in corridors automatically.
 
 - New creatures: boar, blue jay.
 
