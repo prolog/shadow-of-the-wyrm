@@ -51,6 +51,8 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
     
   - Turn bends in corridors automatically.
 
+  - Added a message when trying to auto-move while poisoned/in stoning.
+
 - New creatures: boar, blue jay.
 
 - New items: wand of dragon breath.

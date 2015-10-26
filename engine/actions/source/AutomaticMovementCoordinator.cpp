@@ -151,6 +151,14 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(
   // No auto-movement when poisoned or in stoning!
   bool status_ok = (creature->has_status(StatusIdentifiers::STATUS_ID_POISON) == false) && (creature->has_status(StatusIdentifiers::STATUS_ID_STONE) == false);
 
+  if (!status_ok && creature && creature->get_is_player())
+  {
+    IMessageManager& manager = MessageManagerFactory::instance();
+
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_AUTOMOVE_BAD_STATUSES));
+    manager.send();
+  }
+
   // Stop automovement if resting and HP and AP are full.
   bool rest_ok = (creature->get_automatic_movement_ref().get_direction() != Direction::DIRECTION_NULL || (creature->get_hit_points().get_full() == false || creature->get_arcana_points().get_full() == false));
 
