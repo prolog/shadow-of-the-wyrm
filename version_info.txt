@@ -53,6 +53,12 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 
   - Added a message when trying to auto-move while poisoned/in stoning.
 
+- Wands with a cardinal beam type (e.g., those that use cone effects)
+  now display an appropriate message to warn the player that a cardinal
+  direction must be selected.
+
+- When wands are used unsuccessfully, a message is now generated.
+
 - New creatures: boar, blue jay.
 
 - New items: wand of dragon breath.
