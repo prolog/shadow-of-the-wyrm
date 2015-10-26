@@ -3,6 +3,7 @@
 #include "CoordUtils.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "DirectionUtils.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -44,6 +45,18 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
 
   pair<bool, vector<string>> tile_results = tile_allows_auto_move(creature, direction_tile, amf);
   bool tile_move = tile_results.first;
+
+  if (!tile_results.first)
+  {
+    pair<bool, Direction> new_dir = get_new_direction_if_bend_in_corridor(creature, map, cur_dir);
+
+    if (new_dir.first)
+    {
+      tile_move = new_dir.first;
+      cur_dir = new_dir.second;
+    }
+  }
+
   copy(tile_results.second.begin(), tile_results.second.end(), back_inserter(message_sids));
 
   pair<bool, vector<string>> map_results = fov_allows_auto_move(creature, creature->get_decision_strategy()->get_fov_map());
@@ -56,7 +69,6 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
 
   if (creature_move && creature_pos_move && tile_move && map_move && visit_move)
   {
-    set_available_movement_directions(creature, map);
     add_coordinate_to_automove_visited(creature, new_coord, amf);
     update_turns_if_necessary(creature);
     auto_move_cost = 1;
@@ -99,8 +111,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   }
   else
   {
-    vector<string> attrs_to_remove = {CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS, 
-                                      CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_COORDS_VISITED};
+    vector<string> attrs_to_remove = {CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_COORDS_VISITED};
 
     for (auto& attr : attrs_to_remove)
     {
@@ -187,29 +198,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
     feature_allows_move = true;
   }
 
-  // Check the last number of available exits to see if it's changed.
-  bool has_prior_adjacent_dirs_flag = creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS);
-  uint prev_num_adjacent_dirs = 0;
-  
-  if (has_prior_adjacent_dirs_flag)
-  {
-    prev_num_adjacent_dirs = String::to_uint(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS));
-  }
-
-  uint cur_num_adjacent_dirs = MapUtils::get_num_adjacent_movement_directions(map, creature);
-  bool exits_allow_move = false;
-
-  // Automovement's good if:
-  // - The available directions parameter isn't there (hasn't been set yet)
-  // - The parameter is there, and the number of available directions hasn't
-  //   been reduced.
-  if (!has_prior_adjacent_dirs_flag || 
-      (prev_num_adjacent_dirs <= cur_num_adjacent_dirs))
-  {
-    exits_allow_move = true;
-  }
-
-  move_details.first = (items_allow_move && feature_allows_move && exits_allow_move);
+  move_details.first = (items_allow_move && feature_allows_move);
   return move_details;
 }
 
@@ -297,17 +286,6 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::prev_visited_coords_all
   return (visit_details);
 }
 
-// Set the number of available automatic movement directions.  This is used in
-// determining when to stop the automovement algorithm.
-void AutomaticMovementCoordinator::set_available_movement_directions(CreaturePtr creature, MapPtr map)
-{
-  if (creature != nullptr && map != nullptr)
-  {
-    uint num_available_move_dirs = MapUtils::get_num_adjacent_movement_directions(map, creature);
-    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_AUTOMOVEMENT_AVAILABLE_DIRECTIONS, std::to_string(num_available_move_dirs));
-  }
-}
-
 // Add a coordinate to the current set of coordinates visited during 
 // automovement, so that the same coordinate can't be visited twice
 // (no running loops!).
@@ -336,4 +314,49 @@ void AutomaticMovementCoordinator::update_turns_if_necessary(CreaturePtr creatur
   {
     creature->get_automatic_movement_ref().set_turns(turns_auto - 1);
   }
+}
+
+// If the creature is moving in a corridor, and the next tile in the given
+// direction is a wall, return the new direction to move in.
+pair<bool, Direction> AutomaticMovementCoordinator::get_new_direction_if_bend_in_corridor(CreaturePtr creature, MapPtr map, const Direction cur_dir)
+{
+  pair<bool, Direction> result = {false, Direction::DIRECTION_NULL};
+  vector<Coordinate> non_block_coords;
+  Coordinate cur_pos;
+
+  if (creature && map)
+  {
+    cur_pos = map->get_location(creature->get_id());
+    vector<Coordinate> adjacent = CoordUtils::get_adjacent_map_coordinates(map->size(), cur_pos.first, cur_pos.second);
+
+    int non_block_count = 0;
+
+    // We're at a bend in the corridor if there are exactly two non-blocking
+    // tiles adjacent to the current position.
+    for (const Coordinate& cur_adj : adjacent)
+    {
+      TilePtr tile = map->at(cur_adj);
+
+      if (tile && !tile->get_is_blocking(creature))
+      {
+        non_block_count++;
+        non_block_coords.push_back(cur_adj);
+      }
+    }
+
+    if (non_block_count == 2)
+    {
+      non_block_coords.erase(std::find(non_block_coords.begin(), non_block_coords.end(), CoordUtils::get_new_coordinate(cur_pos, DirectionUtils::get_opposite_direction(cur_dir))));
+    }
+  }
+
+  // Translate the new coordinates back to a direction which is then returned
+  // to be used to flip the automovement direction.
+  if (!non_block_coords.empty())
+  {
+    result.first = true;
+    result.second = CoordUtils::get_direction(cur_pos, non_block_coords.at(0));
+  }
+
+  return result;
 }

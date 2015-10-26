@@ -34,10 +34,6 @@ class AutomaticMovementCoordinator
     // to ensure that there are no running loops.
     std::pair<bool, std::vector<std::string>> prev_visited_coords_allow_auto_move(CreaturePtr creature, const Coordinate& c, const AutomaticMovementFlags& amf);
 
-    // Determine how many available moves there are from the creature's
-    // current location, and set that on the creature.
-    void set_available_movement_directions(CreaturePtr creature, MapPtr map);
-
     // Add a coordinate to the list the creature has seen during the current
     // automovement period.
     void add_coordinate_to_automove_visited(CreaturePtr creature, const Coordinate& c, const AutomaticMovementFlags& amf);
@@ -45,5 +41,7 @@ class AutomaticMovementCoordinator
     // If this is a timed automove (e.g., rest 300 turns), update the number
     // of turns on the creature.
     void update_turns_if_necessary(CreaturePtr creature);
+
+    std::pair<bool, Direction> get_new_direction_if_bend_in_corridor(CreaturePtr creature, MapPtr map, const Direction cur_dir);
 };
 
