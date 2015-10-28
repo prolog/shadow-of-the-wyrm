@@ -25,3 +25,10 @@ enum struct Months
   MONTH_12 = 11
 };
 
+enum struct PhaseOfMoonType
+{
+  PHASE_OF_MOON_NEW = 0,
+  PHASE_OF_MOON_WAXING = 1,
+  PHASE_OF_MOON_FULL = 2,
+  PHASE_OF_MOON_WANING = 3
+};
