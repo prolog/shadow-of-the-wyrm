@@ -42,6 +42,9 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   command.  Character details is now bound to '@' by default, with 
   character dump using '#' (AgingMinotaur).
 
+- The game now tracks phase of moon (displayed in-game via the "T"ime
+  command), to have an effect later.
+
 - Automovement improvements:
   
   - Stop on tile features (doors, pews, altars, etc).
