@@ -32,6 +32,19 @@ using namespace std;
 
 CreaturePtr local_creature;
 
+void add_seconds_to_calendar(const int seconds, int& add_successful);
+
+void add_seconds_to_calendar(const int seconds, int& added_time)
+{
+  if (seconds > 0)
+  {
+    Game& game = Game::instance();
+    game.process_elapsed_time(seconds);
+
+    added_time = 1;
+  }
+}
+
 void set_local_creature(CreaturePtr creature)
 {
   local_creature = creature;
@@ -2066,8 +2079,7 @@ int calendar_add_seconds(lua_State* ls)
   {
     int seconds = lua_tointeger(ls, 1);
 
-    Game& game = Game::instance();
-    game.process_elapsed_time(seconds);
+    add_seconds_to_calendar(seconds, added_time);
   }
   else
   {
@@ -2088,8 +2100,7 @@ int calendar_add_minutes(lua_State* ls)
     int minutes = lua_tointeger(ls, 1);
     int seconds = minutes * 60;
 
-    Game& game = Game::instance();
-    game.process_elapsed_time(seconds);
+    add_seconds_to_calendar(seconds, added_time);
   }
   else
   {
@@ -2110,8 +2121,7 @@ int calendar_add_hours(lua_State* ls)
     int hours = lua_tointeger(ls, 1);
     int seconds = hours * 60 * 60;
 
-    Game& game = Game::instance();
-    game.process_elapsed_time(seconds);
+    add_seconds_to_calendar(seconds, added_time);
   }
   else
   {
@@ -2132,8 +2142,7 @@ int calendar_add_days(lua_State* ls)
     int days = lua_tointeger(ls, 1);
     int seconds = days * 60 * 60 * 24;
 
-    Game& game = Game::instance();
-    game.process_elapsed_time(seconds);
+    add_seconds_to_calendar(seconds, added_time);
   }
   else
   {
@@ -2154,8 +2163,7 @@ int calendar_add_years(lua_State* ls)
     int years = lua_tointeger(ls, 1);
     int seconds = years * 60 * 60 * 24 * 365;
 
-    Game& game = Game::instance();
-    game.process_elapsed_time(seconds);
+    add_seconds_to_calendar(seconds, added_time);
   }
   else
   {
