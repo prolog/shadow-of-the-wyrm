@@ -2,11 +2,11 @@
 
 using namespace std;
 
-const int PhaseOfMoonCalculator::DAYS_PER_CYCLE = 29;
+const int PhaseOfMoonCalculator::DAYS_PER_CYCLE = 28;
 const map<int, PhaseOfMoonType> PhaseOfMoonCalculator::PHASE_THRESHOLDS = {{0, PhaseOfMoonType::PHASE_OF_MOON_NEW}, 
                                                                            {1, PhaseOfMoonType::PHASE_OF_MOON_WAXING}, 
-                                                                           {14, PhaseOfMoonType::PHASE_OF_MOON_FULL}, 
-                                                                           {15, PhaseOfMoonType::PHASE_OF_MOON_WANING}};
+                                                                           {13, PhaseOfMoonType::PHASE_OF_MOON_FULL}, 
+                                                                           {14, PhaseOfMoonType::PHASE_OF_MOON_WANING}};
 
 PhaseOfMoonType PhaseOfMoonCalculator::calculate_phase_of_moon(const double seconds) const
 {
