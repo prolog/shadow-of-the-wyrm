@@ -1,7 +1,7 @@
 #include "RangedPhysicalDamageCalculator.hpp"
 
-RangedPhysicalDamageCalculator::RangedPhysicalDamageCalculator()
-: PhysicalDamageCalculator(AttackType::ATTACK_TYPE_RANGED)
+RangedPhysicalDamageCalculator::RangedPhysicalDamageCalculator(const PhaseOfMoonType new_pom)
+: PhysicalDamageCalculator(AttackType::ATTACK_TYPE_RANGED, new_pom)
 {
 }
 

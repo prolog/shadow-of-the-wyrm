@@ -43,7 +43,9 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   character dump using '#' (AgingMinotaur).
 
 - The game now tracks phase of moon (displayed in-game via the "T"ime
-  command), to have an effect later.
+  command).  When waning/new, shadow/acid/poison/arcane damage does
+  another 10% (waning)/20% (full).  When waxing/full, heat/cold/holy/
+  lightning does 10%/20%.
 
 - Automovement improvements:
   

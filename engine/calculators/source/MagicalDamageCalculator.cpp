@@ -1,13 +1,13 @@
 #include "Game.hpp"
 #include "MagicalDamageCalculator.hpp"
 
-MagicalDamageCalculator::MagicalDamageCalculator()
-: DamageCalculator(AttackType::ATTACK_TYPE_MAGICAL)
+MagicalDamageCalculator::MagicalDamageCalculator(const PhaseOfMoonType new_pom)
+: DamageCalculator(AttackType::ATTACK_TYPE_MAGICAL, new_pom)
 {
 }
 
 // Magical damage =
-// Rolled damage * Resistance to that damage
+// Rolled damage * Resistance to that damage * any phase of moon multiplier
 // * 1 (magical damage doesn't slay a particular race)
 //
 // (Soak is not considered for magical damage - resistances become far more powerful.
@@ -19,9 +19,11 @@ int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const boo
 
   if (defending_creature)
   {
-    double resistance_multiplier = defending_creature->get_resistances().get_resistance_value(magical_damage.get_damage_type());
+    DamageType damage_type = magical_damage.get_damage_type();
+    double resistance_multiplier = defending_creature->get_resistances().get_resistance_value(damage_type);
+    double pom_multiplier = get_phase_of_moon_multiplier(damage_type, pom_type);
     
-    damage = static_cast<int>(base_damage * resistance_multiplier);
+    damage = static_cast<int>(base_damage * resistance_multiplier * pom_multiplier);
   }
   
   return damage;

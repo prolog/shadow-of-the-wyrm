@@ -9,6 +9,7 @@
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PhaseOfMoonCalculator.hpp"
 #include "ResistancesCalculator.hpp"
 #include "RNG.hpp"
 
@@ -81,7 +82,11 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
     message = trap->get_player_damage_message_sid();
   }
 
-  DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
+  Game& game = Game::instance();
+  PhaseOfMoonCalculator pomc;
+  PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
+
+  DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
   int damage_dealt = damage_calc->calculate(creature, slays_race, damage, dmg_roll, soak_mult);
 
   // Only apply the effect if there is damage to be dealt.

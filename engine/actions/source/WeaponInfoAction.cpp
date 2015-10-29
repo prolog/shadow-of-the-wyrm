@@ -1,6 +1,8 @@
 #include "DamageCalculatorFactory.hpp"
 #include "EquipmentTextKeys.hpp"
+#include "Game.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PhaseOfMoonCalculator.hpp"
 #include "RangedAttackSpeedCalculator.hpp"
 #include "WeaponDifficultyCalculator.hpp"
 #include "WeaponInfoAction.hpp"
@@ -95,7 +97,10 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, WeaponPtr w
   // unarmed).
   if (weapon || (attack_type == AttackType::ATTACK_TYPE_MELEE_PRIMARY))
   {
-    DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
+    Game& game = Game::instance();
+    PhaseOfMoonCalculator pomc;
+    PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
+    DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
     WeaponDifficultyCalculator wdc;
 
     int base_difficulty = wdc.calculate_base_difficulty(creature, attack_type);
@@ -122,7 +127,11 @@ string WeaponInfoAction::get_ranged_weapon_info(CreaturePtr creature, WeaponPtr 
 
   if (ranged_weapon || ammunition)
   {
-    DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(AttackType::ATTACK_TYPE_RANGED);
+    Game& game = Game::instance();
+    PhaseOfMoonCalculator pomc;
+    PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
+
+    DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(AttackType::ATTACK_TYPE_RANGED, phase);
     WeaponDifficultyCalculator wdc;
 
     int base_difficulty = wdc.calculate_base_difficulty(creature, AttackType::ATTACK_TYPE_RANGED);
