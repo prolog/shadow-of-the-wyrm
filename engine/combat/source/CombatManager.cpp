@@ -15,6 +15,7 @@
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PhaseOfMoonCalculator.hpp"
 #include "RaceManager.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
@@ -89,9 +90,13 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 
   if (th_calculator && ctn_calculator)
   {
+    Game& game = Game::instance();
+    PhaseOfMoonCalculator pomc;
+    PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
+
     // Ensure that attacks take at least one speed - no free attacks!
     action_cost_value = std::max(1, speed_calculator->calculate(attacking_creature));
-    DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(attack_type);
+    DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
     
     int d100_roll = RNG::range(1, 100);
     int to_hit_value = th_calculator->calculate(attacking_creature);
@@ -181,8 +186,12 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   }
 
   // Deal damage.
+  Game& game = Game::instance();
+  PhaseOfMoonCalculator pomc;
+  PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
+
   bool slays_race = does_attack_slay_creature_race(attacking_creature, attacked_creature, attack_type);
-  DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
+  DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
   int damage_dealt = damage_calc->calculate(attacked_creature, slays_race, damage_info, base_damage, soak_multiplier);
 
   // Add the text so far.

@@ -14,8 +14,8 @@ const int PhysicalDamageCalculator::DAMAGE_STAT_DIVISOR = 5;
 // soak.
 const float PhysicalDamageCalculator::INCORPOREAL_SOAK_MULTIPLIER = 0.25f;
 
-PhysicalDamageCalculator::PhysicalDamageCalculator(const AttackType new_attack_type)
-: DamageCalculator(new_attack_type)
+PhysicalDamageCalculator::PhysicalDamageCalculator(const AttackType new_attack_type, const PhaseOfMoonType new_pom)
+: DamageCalculator(new_attack_type, new_pom)
 {
 }
 
@@ -30,8 +30,11 @@ int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bo
 
   if (defending_creature)
   {
-    double resistance_multiplier = defending_creature->get_resistances().get_resistance_value(physical_damage.get_damage_type());
-    double resisted_damage = base_damage * resistance_multiplier;
+    DamageType damage_type = physical_damage.get_damage_type();
+    
+    double resistance_multiplier = defending_creature->get_resistances().get_resistance_value(damage_type);
+    double pom_multiplier = get_phase_of_moon_multiplier(damage_type, pom_type);
+    double resisted_damage = base_damage * resistance_multiplier * pom_multiplier;
     
     if (resisted_damage > 0)
     {

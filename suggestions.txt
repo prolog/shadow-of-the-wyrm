@@ -3,9 +3,7 @@ Me:
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
 - Dump command for arbitrary text screens.
-- Define two moons, and create a phase-of-moon command.
-- Eventually, chances to learn spells are increased based on the type
-  of magic and the phase of the moon.
+- Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)
 
