@@ -39,6 +39,7 @@ class ActionTextKeys
     static const std::string ACTION_PLAYER_FALL_FROM_MOUNTAIN;
     static const std::string ACTION_PLAYER_STARVING_TO_DEATH;
     static const std::string ACTION_DETECTED_HOSTILE_CREATURES;
+    static const std::string ACTION_DETECTED_OUT_OF_DEPTH_CREATURES;
     static const std::string ACTION_LOOK;
     static const std::string ACTION_LOOK_UNEXPLORED_TILE;
     static const std::string ACTION_LOOK_TILE_OUT_OF_RANGE;
