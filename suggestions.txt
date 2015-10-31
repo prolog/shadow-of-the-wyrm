@@ -6,6 +6,7 @@ registry, instead of failing silently.
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)
+- Add fishing, foraging
 
 Akeley:
 - ESC as well as 'z'
