@@ -1,19 +1,16 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
-#include "CreationUtils.hpp"
 #include "DirectionUtils.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
+#include "MapItemGenerator.hpp"
 #include "MapProperties.hpp"
-#include "ItemGenerationManager.hpp"
 #include "TileGenerator.hpp"
 #include "Game.hpp"
 #include "Generator.hpp"
 #include "Map.hpp"
-#include "MapUtils.hpp"
-#include "RNG.hpp"
 #include "Serialize.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
@@ -73,15 +70,17 @@ void Generator::initialize(MapPtr map, const int danger_level)
 // on the map.
 void Generator::create_entities(MapPtr map, const int danger_level, const bool create_creatures, const bool create_items)
 {
+  pair<bool, int> creature_details(false, -1);
+
   if (create_creatures)
   {
     MapCreatureGenerator mcg;
-    mcg.generate_creatures(map, danger_level, additional_properties);
+    creature_details = mcg.generate_creatures(map, danger_level, additional_properties);
   }
 
   if (create_items && can_create_initial_items())
   {
-    generate_initial_items(map, danger_level);
+    generate_initial_items(map, danger_level, creature_details);
   }
 }
 
@@ -125,66 +124,10 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
 // Seed the initial items.  Returns true if the items were created, false otherwise.
 // By default, no initial items are generated.  This function should be overridden
 // for generators where this is expected (dungeons, maybe villages, etc).
-bool Generator::generate_initial_items(MapPtr map, const int danger_level)
+bool Generator::generate_initial_items(MapPtr map, const int danger_level, const pair<bool, int>& creature_details)
 {
-  bool items_generated = false;
-
-  Dimensions dim = map->size();
-  int rows = dim.get_y();
-  int cols = dim.get_x();
-  
-  ItemGenerationManager igm;
-
-  Rarity rarity = CreationUtils::generate_rarity();
-
-  Game& game = Game::instance();
-  
-  ActionManager am = game.get_action_manager_ref();
-  uint num_items_to_place = RNG::range(1, CreationUtils::random_maximum_items(dim.get_y(), dim.get_x()));
-  uint current_items_placed = 0;
-  uint unsuccessful_attempts = 0;
-
-  // Generate the vector of possible items for this map.
-  ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, danger_level, rarity);
-
-  while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
-  {
-    int enchant_points = RNG::range(0, (danger_level / 2));
-    ItemPtr generated_item = igm.generate_item(am, generation_vec, enchant_points);
-
-    bool placed_item = false;
-
-    if (generated_item)
-    {
-      while (!placed_item)
-      {
-        int item_row = RNG::range(0, rows-1);
-        int item_col = RNG::range(0, cols-1);
-      
-        // Check to see if the tile isn't blocking
-        TilePtr tile = map->at(item_row, item_col);
-
-        if (MapUtils::is_tile_available_for_item(tile))
-        {
-          tile->get_items()->add(generated_item);
-
-          if (!items_generated) items_generated = true;
-          current_items_placed++;
-          placed_item = true;
-        }
-        else
-        {
-          unsuccessful_attempts++;
-        }
-      }
-    }
-    else
-    {
-      unsuccessful_attempts++;
-    }
-  }
-
-  return items_generated;
+  MapItemGenerator mig;
+  return mig.generate_items(map, danger_level, creature_details);
 }
 
 bool Generator::update_items(MapPtr map, const int danger_level)

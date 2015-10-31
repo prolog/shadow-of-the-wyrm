@@ -65,7 +65,7 @@ namespace SL
       virtual void update_custom_map_with_current(const std::string& depth_map_id, const Direction direction, const std::string& linkback_map_id, const Depth& new_depth);
     
       // Seed the initial items.  Returns true if the items were created, false otherwise.
-      virtual bool generate_initial_items(MapPtr map, const int danger_level);
+      virtual bool generate_initial_items(MapPtr map, const int danger_level, const std::pair<bool, int>& creature_details);
       virtual bool update_items(MapPtr map, const int danger_level);
 
       virtual bool get_ignore_creature_generation_level_checks() const;
