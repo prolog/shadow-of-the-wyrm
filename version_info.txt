@@ -45,7 +45,7 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 - The game now tracks phase of moon (displayed in-game via the "T"ime
   command).  When waning/new, shadow/acid/poison/arcane damage does
   another 10% (waning)/20% (full).  When waxing/full, heat/cold/holy/
-  lightning does 10%/20%.
+  lightning does an additional 10%/20% damage.
 
 - Automovement improvements:
   
@@ -63,6 +63,11 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   direction must be selected.
 
 - When wands are used unsuccessfully, a message is now generated.
+
+- Each level now has a chance to generate out of depth creatures.  There
+  is no upper bound on the level of the out of depth creatures, but a
+  low-percentage check must be passed each time to raise the max danger
+  level.
 
 - New creatures: boar, blue jay.
 
