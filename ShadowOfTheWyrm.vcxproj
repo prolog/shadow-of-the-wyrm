@@ -536,6 +536,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\include\HillsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\IPillarGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MapCreatureGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\MapItemGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MarshGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MountainsGenerator.hpp" />
@@ -1107,6 +1108,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
+    <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
     <ClCompile Include="engine\time\source\AgeTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\unit_tests\AgeTimeObserver_test.cpp">
