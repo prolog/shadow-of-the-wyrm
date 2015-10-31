@@ -74,7 +74,7 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   probability follows the same model as that used for generating out of
   depth creatures.
 
-- New creatures: boar, blue jay.
+- New creatures: boar, blue jay, weeper.
 
 - New items: wand of dragon breath.
 
