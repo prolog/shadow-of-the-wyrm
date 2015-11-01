@@ -76,7 +76,7 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
 
 - Added an "identifier", Idem, a wandering mountain elf.  He can be found
   in Wintersea Keep, and will happily take ivory pieces in exchange for
-  his encyclopedic knowledge of items.
+  doling out bits of his encyclopedic knowledge of items.
 
 - New creatures: boar, blue jay, weeper, Idem.
 
@@ -88,6 +88,9 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
     with looking.  The cursor was correctly being set on the nearest
     hostile creature, and that was being recorded as the target, but then
     the map cursor was reset on the player (AgingMinotaur).
+
+  - The currency command was only considering the first stack of currency,
+    not all of them.
 
 Shadow of the Wyrm v0.4.2 "Sanz"
 - Version declared September 12, 2015.  Version finalized October 6, 2015.

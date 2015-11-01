@@ -10,6 +10,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "Log.hpp"
 #include "LuaUtils.hpp"
@@ -177,12 +178,16 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "creature_is_class", creature_is_class);
   lua_register(L, "get_item_count", get_item_count);
   lua_register(L, "get_unidentified_item_count", get_unidentified_item_count);
+  lua_register(L, "is_item_identified", is_item_identified);
+  lua_register(L, "get_item_value", get_item_value);
+  lua_register(L, "select_item", select_item);
   lua_register(L, "set_hostility", set_hostility);
   lua_register(L, "teleport", teleport);
   lua_register(L, "get_creature_description", get_creature_description);
   lua_register(L, "transfer_item", transfer_item);
   lua_register(L, "creature_tile_has_item", creature_tile_has_item);
   lua_register(L, "pick_up_item", pick_up_item);
+  lua_register(L, "identify_item", identify_item);
   lua_register(L, "identify_item_type", identify_item_type);
   lua_register(L, "calendar_add_seconds", calendar_add_seconds);
   lua_register(L, "calendar_add_minutes", calendar_add_minutes);
@@ -390,11 +395,11 @@ static int add_confirmation_message(lua_State* ls)
   {
     Game& game = Game::instance();
     CreaturePtr player = game.get_current_player();
-    string message_sid = lua_tostring(ls, 1);
+    string message = read_sid_and_replace_values(ls);
 
     IMessageManager& manager = MessageManagerFactory::instance();
     manager.clear_if_necessary();
-    manager.add_new_confirmation_message(TextMessages::get_confirmation_message(message_sid));
+    manager.add_new_confirmation_message(TextMessages::get_confirmation_message(message));
     confirm = player->get_decision_strategy()->get_confirmation();
 
     manager.send();
@@ -1829,6 +1834,7 @@ int get_item_count(lua_State* ls)
 }
 
 // Check to see how many unidentified items exist in the player's inventory.
+// We're explicitly not considering the creature's equipment.
 int get_unidentified_item_count(lua_State* ls)
 {
   uint unid_count = 0;
@@ -1838,24 +1844,10 @@ int get_unidentified_item_count(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
-    const EquipmentMap& eq = creature->get_equipment().get_equipment();
-    ItemIdentifier iid;
-
-    // Count unid'd items in EQ
-    for (const auto& eq_pair : eq)
-    {
-      if (eq_pair.second != nullptr)
-      {
-        if (!iid.get_item_identified(eq_pair.second->get_base_id()))
-        {
-          unid_count += eq_pair.second->get_quantity();
-        }
-      }
-    }
-
     // Count unid'd items in Inv
     IInventoryPtr inv = creature->get_inventory();
-    
+    ItemIdentifier iid;
+
     for (const auto& item: inv->get_items_cref())
     {
       if (item != nullptr && !iid.get_item_identified(item->get_base_id()))
@@ -1872,6 +1864,106 @@ int get_unidentified_item_count(lua_State* ls)
 
   lua_pushinteger(ls, static_cast<signed int>(unid_count));
   return 1;
+}
+
+// Check an item base ID to see if that item is already identified.
+int is_item_identified(lua_State* ls)
+{
+  int is_identified = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    ItemIdentifier iid;
+    string item_base_id = lua_tostring(ls, 1);
+
+    is_identified = iid.get_item_identified(item_base_id);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_item_identified");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, is_identified);
+  return 1;
+}
+
+int get_item_value(lua_State* ls)
+{
+  int value = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string item_base_id = lua_tostring(ls, 1);
+    const ItemMap items = Game::instance().get_items_ref();
+    const auto i_it = items.find(item_base_id);
+
+    if (i_it != items.end())
+    {
+      ItemPtr item = i_it->second;
+
+      if (item != nullptr)
+      {
+        value = static_cast<int>(item->get_value());
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_item_value");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, value);
+  return 1;
+}
+
+// Select an item from the given creature's equipment or inventory.
+//
+// Returns three values:
+// 
+// - 1: whether an item was selected (boolean)
+// - 2: the item's id (guid)
+// - 3: the item's base id
+int select_item(lua_State* ls)
+{
+  bool selected_item = false;
+  string item_id;
+  string item_base_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    Game& game = Game::instance();
+    list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
+    ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), empty_filter, false);
+
+    if (item != nullptr)
+    {
+      selected_item = true;
+      item_id = item->get_id();
+      item_base_id = item->get_base_id();
+    }
+
+    // Redraw the screen, since we will have moved from the inventory
+    // back to the main map, and need to redraw before any confirmation
+    // messages.
+    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+    game.get_display()->redraw();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to select_item");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, selected_item);
+  lua_pushstring(ls, item_id.c_str());
+  lua_pushstring(ls, item_base_id.c_str());
+
+  return 3;
 }
 
 // Set a creature hostile towards another.
@@ -2082,6 +2174,35 @@ int pick_up_item(lua_State* ls)
   }
 
   lua_pushinteger(ls, action_cost);
+  return 1;
+}
+
+int identify_item(lua_State* ls)
+{
+  bool identified_item = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string item_base_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    const map<string, ItemPtr>& items = game.get_items_ref();
+    const auto& i_it = items.find(item_base_id);
+
+    if (i_it != items.end())
+    {
+      ItemIdentifier iid;
+      iid.set_item_identified(i_it->second, item_base_id, true, true);
+      identified_item = true;
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to identify_item");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, identified_item);
   return 1;
 }
 

@@ -9,6 +9,7 @@ registry, instead of failing silently.
 - Add fishing, foraging
 - Evil story arc
 - Use of gold by identify items via a character
+- Create an "unidentified items" filter for Idem
 
 Akeley:
 - ESC as well as 'z'
