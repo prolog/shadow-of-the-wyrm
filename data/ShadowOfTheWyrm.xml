@@ -15919,6 +15919,43 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="idem">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>IDEM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>IDEM_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>IDEM_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>IDEM_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>10</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>10</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>500</Exp>
+			</CreatureGeneration>
+			<Level>10</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>20</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>15</Evade>
+			<Soak>5</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/idem.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="exile">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>EXILE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

@@ -74,7 +74,11 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   probability follows the same model as that used for generating out of
   depth creatures.
 
-- New creatures: boar, blue jay, weeper.
+- Added an "identifier", Idem, a wandering mountain elf.  He can be found
+  in Wintersea Keep, and will happily take ivory pieces in exchange for
+  his encyclopedic knowledge of items.
+
+- New creatures: boar, blue jay, weeper, Idem.
 
 - New items: wand of dragon breath.
 
