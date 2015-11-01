@@ -8,14 +8,15 @@ ActionCostValue CurrencyAction::count_currency(CreaturePtr creature)
 {
   if (creature)
   {
-    IInventoryPtr inv = creature->get_inventory();
-    ItemPtr item = inv->get_from_base_id(ItemIdKeys::ITEM_ID_CURRENCY);
-    
     uint currency_quantity = 0;
-    
-    if (item)
+    IInventoryPtr inv = creature->get_inventory();
+
+    for (const ItemPtr item : inv->get_items_cref())
     {
-      currency_quantity = item->get_quantity();
+      if (item != nullptr && item->get_base_id() == ItemIdKeys::ITEM_ID_CURRENCY)
+      {
+        currency_quantity += item->get_quantity();
+      }
     }
 
     add_currency_message_if_necessary(creature, currency_quantity);    
