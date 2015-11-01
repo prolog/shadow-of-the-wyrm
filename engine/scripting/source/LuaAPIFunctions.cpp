@@ -176,6 +176,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
   lua_register(L, "creature_is_class", creature_is_class);
   lua_register(L, "get_item_count", get_item_count);
+  lua_register(L, "get_unidentified_item_count", get_unidentified_item_count);
   lua_register(L, "set_hostility", set_hostility);
   lua_register(L, "teleport", teleport);
   lua_register(L, "get_creature_description", get_creature_description);
@@ -1824,6 +1825,52 @@ int get_item_count(lua_State* ls)
   }
 
   lua_pushinteger(ls, count);
+  return 1;
+}
+
+// Check to see how many unidentified items exist in the player's inventory.
+int get_unidentified_item_count(lua_State* ls)
+{
+  uint unid_count = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    const EquipmentMap& eq = creature->get_equipment().get_equipment();
+    ItemIdentifier iid;
+
+    // Count unid'd items in EQ
+    for (const auto& eq_pair : eq)
+    {
+      if (eq_pair.second != nullptr)
+      {
+        if (!iid.get_item_identified(eq_pair.second->get_base_id()))
+        {
+          unid_count += eq_pair.second->get_quantity();
+        }
+      }
+    }
+
+    // Count unid'd items in Inv
+    IInventoryPtr inv = creature->get_inventory();
+    
+    for (const auto& item: inv->get_items_cref())
+    {
+      if (item != nullptr && !iid.get_item_identified(item->get_base_id()))
+      {
+        unid_count += item->get_quantity();
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_unidentified_item_count");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, static_cast<signed int>(unid_count));
   return 1;
 }
 

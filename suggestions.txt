@@ -7,6 +7,8 @@ registry, instead of failing silently.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)
 - Add fishing, foraging
+- Evil story arc
+- Use of gold by identify items via a character
 
 Akeley:
 - ESC as well as 'z'
