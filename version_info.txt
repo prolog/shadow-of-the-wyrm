@@ -78,6 +78,9 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   in Wintersea Keep, and will happily take ivory pieces in exchange for
   doling out bits of his encyclopedic knowledge of items.
 
+- Created a new "Questless" conduct, which is broken when the player is
+  given any quest.
+
 - New creatures: boar, blue jay, weeper, Idem.
 
 - New items: wand of dragon breath.
