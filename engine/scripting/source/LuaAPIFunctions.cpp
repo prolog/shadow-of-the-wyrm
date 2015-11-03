@@ -456,6 +456,17 @@ static int add_new_quest(lua_State* ls)
     Quest new_quest(quest_id, quest_title_sid, questmaster_name_sid, quest_description_sid);
 
     game.get_quests_ref().add_new_quest(quest_id, new_quest);
+
+    // Break the player's questless conduct.
+    //
+    // Quests should always be handled via Lua code.  If there's ever code to
+    // add quests from within the engine, refactor the code below.
+    CreaturePtr player = game.get_current_player();
+
+    if (player != nullptr)
+    {
+      player->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_QUESTLESS);
+    }
   }
   else
   {

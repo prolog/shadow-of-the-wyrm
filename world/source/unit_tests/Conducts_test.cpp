@@ -14,6 +14,7 @@ TEST(SL_World_Conducts, remaining_conducts)
   c.break_conduct(ConductType::CONDUCT_TYPE_FOODLESS);
   c.break_conduct(ConductType::CONDUCT_TYPE_WEAPONLESS);
   c.break_conduct(ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING);
+  c.break_conduct(ConductType::CONDUCT_TYPE_QUESTLESS);
 
   remaining = c.get_conducts();
 
