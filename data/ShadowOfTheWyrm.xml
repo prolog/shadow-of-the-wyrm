@@ -15925,7 +15925,7 @@
 			<DescriptionSID>IDEM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>IDEM_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>IDEM_SPEECH_TEXT_SID</SpeechTextSID>
-			<DecisionStrategy>immobile</DecisionStrategy>
+			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>@</Symbol>
 				<Colour>10</Colour>

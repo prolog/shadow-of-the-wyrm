@@ -10,6 +10,9 @@ registry, instead of failing silently.
 - Evil story arc
 - Use of gold by identify items via a character
 - Create an "unidentified items" filter for Idem
+- Allow "firing through occupied tiles" (based on Archery skill) when 
+  aiming at a more distant creature.
+  
 
 Akeley:
 - ESC as well as 'z'
