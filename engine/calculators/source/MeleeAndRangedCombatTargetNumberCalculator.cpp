@@ -26,3 +26,23 @@ int MeleeAndRangedCombatTargetNumberCalculator::calculate(CreaturePtr attacking_
 
   return target_number;
 }
+
+// The chance for an untargetted melee or ranged attack to pass through
+// an untargetted tile is the maximum of the attacking creature's archery
+// skill and the defending creature's awareness.
+int MeleeAndRangedCombatTargetNumberCalculator::calculate_pct_chance_pass_through_untargetted_square(CreaturePtr attacking_creature, CreaturePtr tile_creature)
+{
+  int pct_chance = 0;
+
+  if (tile_creature != nullptr)
+  {
+    pct_chance = tile_creature->get_skills().get_value(SkillType::SKILL_GENERAL_AWARENESS);
+  }
+
+  if (attacking_creature != nullptr)
+  {
+    pct_chance = std::max<int>(pct_chance, attacking_creature->get_skills().get_value(SkillType::SKILL_GENERAL_ARCHERY));
+  }
+
+  return pct_chance;
+}

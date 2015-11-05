@@ -10,9 +10,8 @@ registry, instead of failing silently.
 - Evil story arc
 - Use of gold by identify items via a character
 - Create an "unidentified items" filter for Idem
-- Allow "firing through occupied tiles" (based on Archery skill) when 
-  aiming at a more distant creature.
-  
+- Linux support.  
+- Investigate targetting not staying properly some (all?) of the time.
 
 Akeley:
 - ESC as well as 'z'
@@ -20,7 +19,7 @@ Akeley:
 barrabus: 
 - Extra descs for items.
 
-Kyrzati:
+Kyzrati:
 - Over time, generation of new random uniques, etc.
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
