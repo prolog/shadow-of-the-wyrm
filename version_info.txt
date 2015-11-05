@@ -1,6 +1,11 @@
 Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Version declared November 3, 2015.
 
+- Firing through an occupied tile is now possible, when that occupied
+  tile is not the terminal tile on a particular path.  The check is
+  based on the maximum of the defending creature's Awareness, and the
+  attacking creature's Archery.
+
 - Bug fixes:
 
   - Idem's description implied that he was mobile, but he was set to
@@ -44,7 +49,7 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   to the calendar.
 
 - Weapons and ammunition now show the damage when viewing the equipment
-  screen (AgingMinotaur, Kyrzati).
+  screen (AgingMinotaur, Kyzrati).
 
 - Added a character details screen in addition to the character dump
   command.  Character details is now bound to '@' by default, with 
