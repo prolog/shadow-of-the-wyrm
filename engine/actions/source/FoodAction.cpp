@@ -8,6 +8,8 @@
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
+#include "ItemManager.hpp"
+#include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -33,6 +35,11 @@ ActionCostValue FoodAction::eat(CreaturePtr creature, ActionManager * const am)
 
   if (creature)
   {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
+    TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
+
     list<IItemFilterPtr> display_list = ItemFilterFactory::create_edible_filter();
 
     action_cost_value = eat_food_off_ground(creature, display_list);
@@ -43,7 +50,7 @@ ActionCostValue FoodAction::eat(CreaturePtr creature, ActionManager * const am)
 
       if (selected_edible_item)
       {
-        if (eat_food(creature, selected_edible_item, creature->get_inventory()))
+        if (eat_food(creature, tile, selected_edible_item, creature->get_inventory()))
         {
           // The item has been eaten.  Advance the turn:
           action_cost_value = get_action_cost_value(creature);
@@ -93,7 +100,7 @@ ActionCostValue FoodAction::eat_food_off_ground(CreaturePtr creature, const list
 
       if (confirm)
       {
-        eat_food(creature, food, tile->get_items());
+        eat_food(creature, tile, food, tile->get_items());
         action_cost_value = get_action_cost_value(creature);
         break;
       }
@@ -104,7 +111,7 @@ ActionCostValue FoodAction::eat_food_off_ground(CreaturePtr creature, const list
 }
 
 // Eat the selected item.  Return true if it can be eaten, false otherwise.
-bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food, IInventoryPtr inventory_for_food)
+bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInventoryPtr inventory_for_food)
 {
   bool turn_advanced = false;
 
@@ -138,6 +145,13 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food, IInventoryPtr inve
       if (!corpse_race_id.empty() && (corpse_race_id == creature->get_race_id()))
       {
         Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_CANNIBALISM);
+      }
+
+      // Some foods have seeds.
+      string seed_item_id = food->get_additional_property(ItemProperties::ITEM_PROPERTIES_SEED_ITEM_ID);
+      if (!seed_item_id.empty())
+      {
+        create_seed_on_tile(creature, tile, seed_item_id);
       }
 
       cm.consume(creature, item_as_consumable);
@@ -178,6 +192,30 @@ void FoodAction::add_food_message(CreaturePtr creature, ItemPtr food, const bool
 
   manager.add_new_message(message);
   manager.send();
+}
+
+void FoodAction::create_seed_on_tile(CreaturePtr creature, TilePtr tile, const string& seed_item_id)
+{
+  if (creature != nullptr && tile != nullptr)
+  {
+    // Create the seed on the tile.
+    ItemPtr seed = ItemManager::create_item(seed_item_id);
+
+    if (seed != nullptr)
+    {
+      tile->get_items()->add_front(seed);
+
+      if (creature->get_is_player())
+      {
+        ItemIdentifier iid;
+        string usage_desc = iid.get_appropriate_usage_description(seed);
+
+        IMessageManager& manager = MessageManagerFactory::instance();
+        manager.add_new_message(ActionTextKeys::get_spit_out_message(usage_desc));
+        manager.send();
+      }
+    }
+  }
 }
 
 ActionCostValue FoodAction::get_action_cost_value(CreaturePtr creature) const

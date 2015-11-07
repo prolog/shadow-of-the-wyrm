@@ -6,6 +6,11 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   based on the maximum of the defending creature's Awareness, and the
   attacking creature's Archery.
 
+- Added "seeds" to certain food items (apples, cherries, etc).  When
+  a creature eats these foods, he/she "spits out" the seed onto their
+  own tile.  This seed is its own item and will eventually be used to
+  allow planting of trees.
+
 - Bug fixes:
 
   - Idem's description implied that he was mobile, but he was set to
