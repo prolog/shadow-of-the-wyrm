@@ -24883,6 +24883,12 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>9</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_cherry_pit">
 				<DescriptionSID>CHERRY_PIT_SID</DescriptionSID>
@@ -24895,6 +24901,12 @@
 					<Colour>1</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>10</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_peach_pit">
 				<DescriptionSID>PEACH_PIT_SID</DescriptionSID>
@@ -24907,6 +24919,12 @@
 					<Colour>11</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>11</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_plum_pit">
 				<DescriptionSID>PLUM_PIT_SID</DescriptionSID>
@@ -24919,6 +24937,12 @@
 					<Colour>5</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_pear_seed">
 				<DescriptionSID>PEAR_SEED_SID</DescriptionSID>
@@ -24931,6 +24955,12 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>13</Value>
+					</Property>
+				</Properties>
 			</Item>
 		</MiscItems>
 	</Items>
