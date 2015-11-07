@@ -22841,6 +22841,12 @@
 					<Colour>10</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_apple_seed</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -22856,6 +22862,12 @@
 					<Colour>1</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_cherry_pit</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -22871,6 +22883,12 @@
 					<Colour>11</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_peach_pit</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -22886,6 +22904,12 @@
 					<Colour>5</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_plum_pit</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -22901,6 +22925,12 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_pear_seed</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -24840,6 +24870,66 @@
 				<Value>1</Value>
 				<Weight><Pounds>3</Pounds></Weight>
 				<Material>4</Material>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_apple_seed">
+				<DescriptionSID>APPLE_SEED_SID</DescriptionSID>
+				<UsageDescriptionSID>APPLE_SEED_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_cherry_pit">
+				<DescriptionSID>CHERRY_PIT_SID</DescriptionSID>
+				<UsageDescriptionSID>CHERRY_PIT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>1</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_peach_pit">
+				<DescriptionSID>PEACH_PIT_SID</DescriptionSID>
+				<UsageDescriptionSID>PEACH_PIT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_plum_pit">
+				<DescriptionSID>PLUM_PIT_SID</DescriptionSID>
+				<UsageDescriptionSID>PLUM_PIT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>5</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_pear_seed">
+				<DescriptionSID>PEAR_SEED_SID</DescriptionSID>
+				<UsageDescriptionSID>PEAR_SEED_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 		</MiscItems>
