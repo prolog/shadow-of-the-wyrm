@@ -11,6 +11,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   own tile.  This seed is its own item and will eventually be used to
   allow planting of trees.
 
+- Added some guards to a few of the Lua API functions so that they
+  wouldn't do anything while the player is on the world map.
+
 - Bug fixes:
 
   - Idem's description implied that he was mobile, but he was set to

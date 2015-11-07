@@ -557,8 +557,11 @@ int get_num_uniques_killed_global(lua_State* ls)
 // Arguments:
 // - 1: base item ID
 // - 2: quantity (optional, 1 is assumed)
+//
+// Return value: true if added, false otherwise.
 int add_object_to_player_tile(lua_State* ls)
 {
+  bool added = false;
   int num_args = lua_gettop(ls);
 
   if (lua_isstring(ls, 1) && (num_args == 1 || (num_args == 2 && lua_isnumber(ls, 2))))
@@ -568,18 +571,22 @@ int add_object_to_player_tile(lua_State* ls)
 
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
-    CreaturePtr player = game.get_current_player();
-    TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
-    
-    base_item_id = lua_tostring(ls, 1);
 
-    // Set the quantity if it was specified.    
-    if (num_args == 2) 
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
-      quantity = static_cast<uint>(lua_tointeger(ls, 2));
-    }
+      CreaturePtr player = game.get_current_player();
+      TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
 
-    ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity);
+      base_item_id = lua_tostring(ls, 1);
+
+      // Set the quantity if it was specified.    
+      if (num_args == 2)
+      {
+        quantity = static_cast<uint>(lua_tointeger(ls, 2));
+      }
+
+      added = ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity);
+    }
   }
   else
   {
@@ -587,7 +594,8 @@ int add_object_to_player_tile(lua_State* ls)
     lua_error(ls);
   }
 
-  return 0;
+  lua_pushboolean(ls, added);
+  return 1;
 }
 
 // Add an object to a particular tile.
@@ -596,6 +604,8 @@ int add_object_to_player_tile(lua_State* ls)
 //          2: row
 //          3: col
 //          4: quantity (optional, 1 assumed)
+//
+// Return value: true if added, false otherwise.
 int add_object_to_tile(lua_State* ls)
 {
   bool result = false;
@@ -617,9 +627,12 @@ int add_object_to_tile(lua_State* ls)
 
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
-    TilePtr tile = map->at(row, col);
 
-    result = ItemManager::create_item_with_probability(100, 100, tile->get_items(), base_item_id, quantity);
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+    {
+      TilePtr tile = map->at(row, col);
+      result = ItemManager::create_item_with_probability(100, 100, tile->get_items(), base_item_id, quantity);
+    }
   }
   else
   {
@@ -634,19 +647,26 @@ int add_object_to_tile(lua_State* ls)
 // Add a feature (using the class ID) to the player's tile.
 int add_feature_to_player_tile(lua_State* ls)
 {
+  bool added = false;
+
   if ((lua_gettop(ls) == 1) && (lua_isnumber(ls, 1)))
   {
-    ClassIdentifier class_id = static_cast<ClassIdentifier>(lua_tointeger(ls, 1));
-    FeaturePtr feature = FeatureFactory::create_feature(class_id);
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
 
-    if (feature != nullptr)
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
-      Game& game = Game::instance();
-      MapPtr map = game.get_current_map();
-      CreaturePtr player = game.get_current_player();
-      TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+      ClassIdentifier class_id = static_cast<ClassIdentifier>(lua_tointeger(ls, 1));
+      FeaturePtr feature = FeatureFactory::create_feature(class_id);
 
-      player_tile->set_feature(feature);
+      if (feature != nullptr)
+      {
+        CreaturePtr player = game.get_current_player();
+        TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+
+        player_tile->set_feature(feature);
+        added = true;
+      }
     }
   }
   else
@@ -655,7 +675,8 @@ int add_feature_to_player_tile(lua_State* ls)
     lua_error(ls);
   }
   
-  return 0;
+  lua_pushboolean(ls, added);
+  return 1;
 }
 
 // Mark a quest as completed.
