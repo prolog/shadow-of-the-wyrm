@@ -95,7 +95,7 @@ TilePtr DigAction::dig_tile(TilePtr adjacent_tile) const
   TilePtr new_tile = tg.generate(adjacent_tile->get_decomposition_tile_type());
 
   // Copy over features and items.
-  new_tile->transformFrom(adjacent_tile);
+  new_tile->transform_from(adjacent_tile);
 
   // Potentially add some items created by breaking up the original tile.
   ItemManager im;

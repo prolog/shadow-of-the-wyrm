@@ -1517,7 +1517,7 @@ int map_transform_tile(lua_State* ls)
           TilePtr new_tile = tg.generate(new_tile_type);
 
           // Copy over the common details
-          new_tile->transformFrom(tile);
+          new_tile->transform_from(tile);
           map->insert(c.first, c.second, new_tile);
         }
         else

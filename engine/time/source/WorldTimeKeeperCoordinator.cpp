@@ -2,6 +2,7 @@
 #include "CreatureTimeObserver.hpp"
 #include "MapTimeObserver.hpp"
 #include "SeasonsTimeObserver.hpp"
+#include "TileTransformObserver.hpp"
 #include "WorldTimeKeeperCoordinator.hpp"
 #include "WorldTimeKeeper.hpp"
 
@@ -18,6 +19,7 @@ void WorldTimeKeeperCoordinator::setup_time_keeper(WorldTimeKeeper& time_keeper)
   ITimeObserverPtr seasons = std::make_shared<SeasonsTimeObserver>();
   ITimeObserverPtr map_observer = std::make_shared<MapTimeObserver>();
   ITimeObserverPtr age_observer = std::make_shared<AgeTimeObserver>();
+  ITimeObserverPtr tile_transform_observer = std::make_shared<TileTransformObserver>();
 
   time_keeper.register_observer(1, creature_minute_tick);
   
@@ -29,6 +31,9 @@ void WorldTimeKeeperCoordinator::setup_time_keeper(WorldTimeKeeper& time_keeper)
   // will eventually start on a random day, so we can't key in on the fact that the game always starts on
   // the first of the month.
   time_keeper.register_observer(1440, seasons);
+
+  // Also daily, check each map to see what tile transformations need to occur.
+  time_keeper.register_observer(1440, tile_transform_observer);
 
   // Once a year, age everything touched by time.
   time_keeper.register_observer(525600, age_observer);

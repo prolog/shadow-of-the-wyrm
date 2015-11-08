@@ -9,12 +9,14 @@
 #include "Tile.hpp"
 #include "MapExit.hpp"
 #include "MapTypes.hpp"
+#include "TileTransform.hpp"
 
 // Forward declarations.
 class Creature;
 class Tile;
 
 using TilesContainer = std::unordered_map<std::string, std::shared_ptr<Tile>>;
+using TileTransformContainer = std::map<Coordinate, TileTransform>;
 
 class Map : public ISerializable
 {
@@ -47,6 +49,8 @@ class Map : public ISerializable
     void set_tiles(const TilesContainer& new_tiles);
 
 		bool insert(int row, int col, std::shared_ptr<Tile> tile);
+    bool insert(const Coordinate& c, std::shared_ptr<Tile> tile);
+
 		std::shared_ptr<Tile> at(int row, int col);
 		std::shared_ptr<Tile> at(const Coordinate& c);
 
@@ -105,6 +109,10 @@ class Map : public ISerializable
     std::string get_property(const std::string& prop) const;
     std::map<std::string, std::string> get_properties() const;
 
+    void set_tile_transforms(const TileTransformContainer& new_tile_transforms);
+    TileTransformContainer& get_tile_transforms_ref();
+    TileTransformContainer get_tile_transforms() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -133,6 +141,7 @@ class Map : public ISerializable
     int danger;
     bool allow_creature_updates;
     std::map<std::string, std::string> properties;
+    TileTransformContainer tile_transforms;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

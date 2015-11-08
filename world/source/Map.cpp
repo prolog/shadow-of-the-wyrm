@@ -81,6 +81,7 @@ bool Map::operator==(const Map& map) const
   result = result && (danger == map.danger);
   result = result && (allow_creature_updates == map.allow_creature_updates);
   result = result && (properties == map.properties);
+  result = result && (tile_transforms == map.tile_transforms);
 
   return result;
 }
@@ -239,6 +240,11 @@ bool Map::insert(int row, int col, TilePtr tile)
 
   tiles[key] = tile;
   return true;
+}
+
+bool Map::insert(const Coordinate& c, TilePtr tile)
+{
+  return insert(c.first, c.second, tile);
 }
 
 TilePtr Map::at(int row, int col)
@@ -484,6 +490,21 @@ map<string, string> Map::get_properties() const
   return properties;
 }
 
+void Map::set_tile_transforms(const TileTransformContainer& new_tile_transforms)
+{
+  tile_transforms = new_tile_transforms;
+}
+
+TileTransformContainer& Map::get_tile_transforms_ref()
+{
+  return tile_transforms;
+}
+
+TileTransformContainer Map::get_tile_transforms() const
+{
+  return tile_transforms;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
@@ -549,6 +570,14 @@ bool Map::serialize(ostream& stream) const
   Serialize::write_int(stream, danger);
   Serialize::write_bool(stream, allow_creature_updates);
   Serialize::write_string_map(stream, properties);
+
+  Serialize::write_size_t(stream, tile_transforms.size());
+  for (const auto& t_pair : tile_transforms)
+  {
+    Serialize::write_int(stream, t_pair.first.first);
+    Serialize::write_int(stream, t_pair.first.second);
+    t_pair.second.serialize(stream);
+  }
 
   return true;
 }
@@ -649,6 +678,23 @@ bool Map::deserialize(istream& stream)
 
   properties.clear();
   Serialize::read_string_map(stream, properties);
+
+  tile_transforms.clear();
+  size_t trans_size = 0;
+  Serialize::read_size_t(stream, trans_size);
+
+  for (size_t i = 0; i < trans_size; i++)
+  {
+    Coordinate c;
+
+    Serialize::read_int(stream, c.first);
+    Serialize::read_int(stream, c.second);
+
+    TileTransform tt;
+    tt.deserialize(stream);
+
+    tile_transforms.insert(make_pair(c, tt));
+  }
 
   return true;
 }

@@ -405,7 +405,7 @@ float Tile::get_piety_loss_multiplier() const
 // will be assumed to have the new tile type and subtype, but won't have
 // any of the original's required values: creature, inventory, exits,
 // certain flags, etc.  Copy those values over to this tile.
-void Tile::transformFrom(std::shared_ptr<Tile> original_tile)
+void Tile::transform_from(std::shared_ptr<Tile> original_tile)
 {
   if (original_tile != nullptr)
   {
