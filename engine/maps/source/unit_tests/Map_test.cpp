@@ -37,6 +37,28 @@ MapPtr SL_Engine_Map::make_map() const
   return map;
 }
 
+TEST_F(SL_Engine_Map, tile_transforms)
+{
+  Coordinate c1(1, 2);
+  Coordinate c2(10, 20);
+  TileTransform tt1(1234, TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_UNDEFINED, {});
+  TileTransform tt2(557612356, TileType::TILE_TYPE_MARSH, TileType::TILE_TYPE_UNDEFINED, {});
+  TileTransformContainer ttc;
+
+  ttc.insert(make_pair(c1, tt1));
+  ttc.insert(make_pair(c2, tt2));
+
+  Dimensions tt_dim;
+  MapPtr map = std::make_shared<Map>(tt_dim);
+  
+  map->set_tile_transforms(ttc);
+
+  Dimensions tt_dim2;
+  MapPtr map2 = std::make_shared<Map>(tt_dim2);
+
+  EXPECT_FALSE(*map == *map2);
+}
+
 TEST_F(SL_Engine_Map, coordinate_to_key)
 {
   Coordinate c(10, 1);
