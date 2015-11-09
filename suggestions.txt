@@ -15,6 +15,9 @@ registry, instead of failing silently.
 
 Akeley:
 - ESC as well as 'z'
+- random character.  random character generation steps (e.g., random
+  race but select class).
+- too much food/spellbooks?
 
 barrabus: 
 - Extra descs for items.
