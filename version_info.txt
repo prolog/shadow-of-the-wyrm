@@ -14,6 +14,12 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Added some guards to a few of the Lua API functions so that they
   wouldn't do anything while the player is on the world map.
 
+- Created a new character, Nama, who like Idem can be found at Wintersea 
+  Keep.  Nama records the true name of things, and allows the player to 
+  change his or her name.
+
+- New creatures: Nama.
+
 - Bug fixes:
 
   - Idem's description implied that he was mobile, but he was set to
