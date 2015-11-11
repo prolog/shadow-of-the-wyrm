@@ -1,5 +1,6 @@
 #include "Ammunition.hpp"
 #include "CombatConstants.hpp"
+#include "PhysicalDamageCalculator.hpp"
 #include "WeaponDifficultyCalculator.hpp"
 #include "WeaponManager.hpp"
 
@@ -14,30 +15,46 @@ bool WeaponManager::is_using_weapon(CreaturePtr creature, const AttackType attac
 }
 
 // Get the weapon for the given attack type.  The returned pointer
-// WILL BE NULL if there is nothing equipped in the appropriate slot.
+// WILL BE NULL if there is nothing equipped in the appropriate slot,
+// or if there's something equipped and it's not a weapon
+// (shield, etc).
 WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attack_type)
 {
-  WeaponPtr weapon;
+  ItemPtr item = get_item(creature, attack_type);
+  WeaponPtr weapon = dynamic_pointer_cast<Weapon>(item);
+
+  return weapon;
+}
+
+ItemPtr WeaponManager::get_item(CreaturePtr creature, const AttackType attack_type)
+{
+  ItemPtr item;
   
   if (creature)
   {
     switch(attack_type)
     {
       case AttackType::ATTACK_TYPE_RANGED:
-        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
+      {
+        item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);
 
         // Check to see if it's ranged combat with ammo only (thrown daggers, etc)
-        if (!weapon)
+        if (item != nullptr)
         {
-          weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
+          item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
         }
         break;
+      }
       case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
-        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_handedness())));
+      {
+        item = creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_handedness()));
         break;
+      }
       case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
-        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_off_handedness())));
+      {
+        item = creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_off_handedness()));
         break;
+      }
       case AttackType::ATTACK_TYPE_MAGICAL:
       case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       default:
@@ -45,7 +62,7 @@ WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attac
     }
   }
   
-  return weapon;
+  return item;
 }
 
 // Get the slay races for the given attack type
@@ -122,17 +139,28 @@ Damage WeaponManager::get_melee_weapon_damage(CreaturePtr creature, const Attack
 {
   WeaponPtr weapon = get_weapon(creature, attack_type);
   Damage dmg;
-  
-  if (weapon)
+
+  if (creature != nullptr)
   {
-    dmg = weapon->get_damage();
-  }
-  else
-  {
-    dmg = creature->get_base_damage();
-    if (creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+    ItemPtr equipped_item = get_item(creature, attack_type);
+
+    if (weapon != nullptr)
     {
-      dmg.set_incorporeal(true);
+      dmg = weapon->get_damage();
+    }
+    else if (equipped_item != nullptr)
+    {
+      PhysicalDamageCalculator pdc(attack_type, PhaseOfMoonType::PHASE_OF_MOON_NULL);
+      dmg = pdc.calculate_default_damage_for_improvised_weapon(equipped_item);
+    }
+    // unarmed!
+    else
+    {
+      dmg = creature->get_base_damage();
+      if (creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+      {
+        dmg.set_incorporeal(true);
+      }
     }
   }
 

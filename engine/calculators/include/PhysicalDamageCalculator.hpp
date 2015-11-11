@@ -10,6 +10,7 @@ class PhysicalDamageCalculator : public DamageCalculator
     virtual Damage calculate_base_damage_object(CreaturePtr attacking_creature) override;
     virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature) override;
     virtual int get_statistic_based_damage_modifier(CreaturePtr attacking_creature);
+    virtual Damage calculate_default_damage_for_improvised_weapon(ItemPtr item);
     
   protected:
     static const int DAMAGE_STAT_BASELINE;
