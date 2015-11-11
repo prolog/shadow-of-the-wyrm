@@ -19,6 +19,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   - Idem's description implied that he was mobile, but he was set to
     immobile.
 
+  - Altus' quest incorrectly defaulted to Christof's generic chat text
+    when the quest was completed (kraphead).
+
 Shadow of the Wyrm v0.4.3 "Carcassi"
 - Version declared October 6, 2015.  Version finalized November 3, 2015.
 
