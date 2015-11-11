@@ -15919,6 +15919,41 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="nama">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>NAMA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>NAMA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>NAMA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>NAMA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>22</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>22</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>850</Exp>
+			</CreatureGeneration>
+			<Level>22</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>44</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/nama.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="idem">
 			<RaceID>03_mountainelf</RaceID>
 			<ShortDescriptionSID>IDEM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

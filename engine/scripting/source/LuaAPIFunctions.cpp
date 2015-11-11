@@ -122,6 +122,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_message_direct", add_message_direct);
   lua_register(L, "add_debug_message", add_debug_message);
   lua_register(L, "add_confirmation_message", add_confirmation_message);
+  lua_register(L, "add_prompt_message", add_prompt_message);
   lua_register(L, "add_message_for_creature", add_message_for_creature);
   lua_register(L, "add_new_quest", add_new_quest);
   lua_register(L, "is_on_quest", is_on_quest);
@@ -171,6 +172,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
   lua_register(L, "set_creature_current_ap", set_creature_current_ap);
+  lua_register(L, "set_creature_name", set_creature_name);
   lua_register(L, "destroy_creature_equipment", destroy_creature_equipment);
   lua_register(L, "destroy_creature_inventory", destroy_creature_inventory);
   lua_register(L, "get_deity_summons", get_deity_summons);
@@ -411,6 +413,35 @@ static int add_confirmation_message(lua_State* ls)
   }
 
   lua_pushboolean(ls, confirm);
+  return 1;
+}
+
+// Add a message to prompt for text.
+// Arguments: message SID (with optional replacements).
+// Return value: string (the text entered)
+static int add_prompt_message(lua_State* ls)
+{
+  string prompt_val;
+
+  if ((lua_gettop(ls) > 0) && (lua_isstring(ls, 1)))
+  {
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+    string message = read_sid_and_replace_values(ls);
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
+    prompt_val = manager.add_new_message_with_prompt(message);
+
+    manager.send();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_prompt_message");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, prompt_val.c_str());
   return 1;
 }
 
@@ -1667,6 +1698,33 @@ int set_creature_current_ap(lua_State* ls)
   }
 
   return 0;
+}
+
+int set_creature_name(lua_State* ls)
+{
+  bool changed_name = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string name = lua_tostring(ls, 2);
+
+    if (!name.empty())
+    {
+      CreaturePtr creature = get_creature(creature_id);
+      creature->set_name(name);
+
+      changed_name = true;
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_name");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, changed_name);
+  return 1;
 }
 
 int destroy_creature_equipment(lua_State* ls)

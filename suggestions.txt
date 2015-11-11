@@ -14,6 +14,7 @@ registry, instead of failing silently.
 - Some more information in-game about offering at altars
 - Character in the orchard who lets you change names.
 - Include creature level in to-hit calculations
+- Offer to save character dump when quitting or winning
 
 Akeley:
 - ESC as well as 'z'
