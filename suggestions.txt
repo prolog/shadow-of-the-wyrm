@@ -12,8 +12,6 @@ registry, instead of failing silently.
 - Linux support.  
 - Investigate targetting not staying properly some (all?) of the time.
 - Some more information in-game about offering at altars
-- Character in the orchard who lets you change names.
-- Include creature level in to-hit calculations
 - Offer to save character dump when quitting or winning
 
 Akeley:
@@ -41,11 +39,9 @@ AgingMinotaur:
 
 Kraphead:
 - monsters should cast spells
-- evade overpowered?
 - auto-displace when bumping friendly creatures
 - implement dual wield
 - Wiki!
 - Option to keep adventuring after killing Amaurosis
 - scale down enchantments - too powerful!
-- evade very powerful
 
