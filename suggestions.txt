@@ -15,8 +15,6 @@ registry, instead of failing silently.
 - Character in the orchard who lets you change names.
 - Include creature level in to-hit calculations
 - Offer to save character dump when quitting or winning
-- In CombatManager, add a small chance to auto-hit in the same way that
-  there is a chance to auto-miss.
 
 Akeley:
 - ESC as well as 'z'
