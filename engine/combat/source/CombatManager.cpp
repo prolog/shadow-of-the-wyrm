@@ -120,7 +120,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
       miss(attacking_creature, attacked_creature);
     }
     // Hit
-    else if (is_hit(total_roll, target_number_value))
+    else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
     {
       hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type);
       mark_for_weapon_and_combat_skills = true;
@@ -444,6 +444,11 @@ bool CombatManager::is_close_miss(const int total_roll, const int target_number_
 bool CombatManager::is_automatic_miss(const int d100_roll)
 {
   return (d100_roll <= CombatConstants::AUTOMATIC_MISS_THRESHOLD);
+}
+
+bool CombatManager::is_automatic_hit(const int d100_roll)
+{
+  return (d100_roll >= CombatConstants::AUTOMATIC_HIT_THRESHOLD);
 }
 
 // Get the appropriate description for the attacked creature.

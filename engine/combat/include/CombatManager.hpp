@@ -43,6 +43,7 @@ class CombatManager
     bool is_miss(const int total_roll, const int target_number_value);
     bool is_close_miss(const int total_roll, const int target_number_value);
     bool is_automatic_miss(const int d100_roll);
+    bool is_automatic_hit(const int d100_roll);
 
     bool does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type);
     

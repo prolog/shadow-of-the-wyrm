@@ -24,6 +24,10 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Evade nerf part 1: half the attacking creature's level, rounded down,
   is now used for all physical and magical to-hit calculations (kraphead).
 
+- Evade nerf part 2: there was already a check in place for automatic
+  misses; now there is also a check in place for automatic hits, though
+  the chance of the latter (2%) is less than the former (5%).
+  
 - New creatures: Nama.
 
 - Bug fixes:
