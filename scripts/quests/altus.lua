@@ -22,18 +22,18 @@ local function altus_quest_completion_fn()
   return true
 end
 
-christof_mine_quest = Quest:new("altus_quest",
-                                "ALTUS_QUEST_TITLE_SID",
-                                "ALTUS_DESCRIPTION_SID",
-                                "ALTUS_QUEST_DESCRIPTION_SID",
-                                "ALTUS_QUEST_COMPLETE_SID",
-                                "ALTUS_QUEST_REMINDER_SID",
-                                truefn,
-                                altus_quest_start_fn,
-                                altus_quest_completion_condition_fn,
-                                altus_quest_completion_fn)
+altus_tower_quest = Quest:new("altus_quest",
+                              "ALTUS_QUEST_TITLE_SID",
+                              "ALTUS_DESCRIPTION_SID",
+                              "ALTUS_QUEST_DESCRIPTION_SID",
+                              "ALTUS_QUEST_COMPLETE_SID",
+                              "ALTUS_QUEST_REMINDER_SID",
+                              truefn,
+                              altus_quest_start_fn,
+                              altus_quest_completion_condition_fn,
+                              altus_quest_completion_fn)
 
-if christof_mine_quest:execute() == false then
-  add_message("CHRISTOF_SPEECH_TEXT_SID")
+if altus_tower_quest:execute() == false then
+  add_message("ALTUS_SPEECH_TEXT_SID")
 end
 
