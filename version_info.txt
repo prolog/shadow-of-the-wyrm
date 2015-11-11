@@ -18,6 +18,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   Keep.  Nama records the true name of things, and allows the player to 
   change his or her name.
 
+- Improvised weapons now deal 1d2 damage, plus a modifier based on
+  their weight.
+
 - New creatures: Nama.
 
 - Bug fixes:
@@ -31,6 +34,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   - Shields/etc could be used in the ammunition slot for extra Ev/Soak,
     resistances, etc.  Fixed this so that only ammunition adds to
     Ev/Soak/resists when in the ammunition slot (kraphead).
+
+  - Puglists' unarmed damage was being applied even when an improvised
+    weapon (e.g., a shield) was wielded (kraphead).
 
 Shadow of the Wyrm v0.4.3 "Carcassi"
 - Version declared October 6, 2015.  Version finalized November 3, 2015.

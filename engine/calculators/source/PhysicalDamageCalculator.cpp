@@ -116,6 +116,27 @@ int PhysicalDamageCalculator::get_statistic_based_damage_modifier(CreaturePtr at
   return modifier;
 }
 
+// Improvised weapons do 1d2 damage plus a bonus based on their weight.
+Damage PhysicalDamageCalculator::calculate_default_damage_for_improvised_weapon(ItemPtr item)
+{
+  Damage dmg;
+
+  if (item != nullptr)
+  {
+    dmg.set_num_dice(1);
+    dmg.set_dice_sides(2);
+    dmg.set_damage_type(DamageType::DAMAGE_TYPE_POUND);
+
+    // For every additional 10 lbs, add +1 dmg
+    Weight weight = item->get_weight();
+    int mod = static_cast<int>(weight.get_weight_in_lbs()) / 10;
+
+    dmg.set_modifier(mod);
+  }
+  
+  return dmg;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/PhysicalDamageCalculator_test.cpp"
 #endif
