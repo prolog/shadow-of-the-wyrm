@@ -12,12 +12,15 @@ registry, instead of failing silently.
 - Linux support.  
 - Investigate targetting not staying properly some (all?) of the time.
 - Some more information in-game about offering at altars
+- Character in the orchard who lets you change names.
+- Include creature level in to-hit calculations
 
 Akeley:
 - ESC as well as 'z'
 - random character.  random character generation steps (e.g., random
   race but select class).
 - too much food/spellbooks?
+- HP/AP should include statistics in the regeneration calcs
 
 barrabus: 
 - Extra descs for items.
@@ -42,3 +45,8 @@ Kraphead:
 - implement dual wield
 - Wiki!
 - Option to keep adventuring after killing Amaurosis
+- scale down enchantments - too powerful!
+- evade very powerful
+- Pugilist attack bonuses still present when wielding a non-weapon (e.g.
+  a shield) - do an explicit nullptr check.
+

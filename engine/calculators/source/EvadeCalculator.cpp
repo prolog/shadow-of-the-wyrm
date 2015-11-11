@@ -48,7 +48,21 @@ int EvadeCalculator::get_equipment_bonus(const CreaturePtr& c)
     
     if (equipped)
     {
-      equipment_evade_bonus += equipped->get_evade();
+      // The player can equip a lot of things in the ammunition slot.  But the
+      // evade bonus is only granted if the item is actually ammunition.  This
+      // prevents sneaky things like shoving an additional shield in that slot
+      // purely for the Ev (nerf!)
+      if (item.first == EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION)
+      {
+        if (equipped->get_type() == ItemType::ITEM_TYPE_AMMUNITION)
+        {
+          equipment_evade_bonus += equipped->get_evade();
+        }
+      }
+      else
+      {
+        equipment_evade_bonus += equipped->get_evade();
+      }
     }
   }
   

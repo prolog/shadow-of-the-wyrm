@@ -39,7 +39,7 @@ int SoakCalculator::calculate_soak(const CreaturePtr& c)
 
 int SoakCalculator::get_equipment_bonus(const CreaturePtr& c)
 {
-  int equipment_evade_bonus = 0;
+  int equipment_soak_bonus = 0;
   
   Equipment& eq = c->get_equipment();
   EquipmentMap equipment = eq.get_equipment();
@@ -50,11 +50,24 @@ int SoakCalculator::get_equipment_bonus(const CreaturePtr& c)
     
     if (equipped)
     {
-      equipment_evade_bonus += equipped->get_soak();
+      // The player can equip a lot of things in the ammunition slot.
+      // Prevent the use of anything but ammunition when calculating
+      // soak.
+      if (item.first == EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION)
+      {
+        if (equipped->get_type() == ItemType::ITEM_TYPE_AMMUNITION)
+        {
+          equipment_soak_bonus += equipped->get_evade();
+        }
+      }
+      else
+      {
+        equipment_soak_bonus += equipped->get_soak();
+      }
     }
   }
   
-  return equipment_evade_bonus;
+  return equipment_soak_bonus;
 }
 
 int SoakCalculator::get_modifier_bonus(const CreaturePtr& c)
