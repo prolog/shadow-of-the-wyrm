@@ -17,6 +17,20 @@ ToHitCalculator::ToHitCalculator(const AttackType new_attack_type)
 {
 }
 
+// The level portion of the to-hit bonus is equal to half the creature's
+// level, rounded down.
+int ToHitCalculator::get_level_bonus(CreaturePtr creature)
+{
+  int level_bonus = 0;
+
+  if (creature != nullptr)
+  {
+    level_bonus = creature->get_level().get_current() / 2;
+  }
+
+  return level_bonus;
+}
+
 int ToHitCalculator::get_weapon_bonus(CreaturePtr creature)
 {
   int weapon_bonus = 0;

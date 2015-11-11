@@ -21,6 +21,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Improvised weapons now deal 1d2 damage, plus a modifier based on
   their weight.
 
+- Evade nerf part 1: half the attacking creature's level, rounded down,
+  is now used for all physical and magical to-hit calculations (kraphead).
+
 - New creatures: Nama.
 
 - Bug fixes:

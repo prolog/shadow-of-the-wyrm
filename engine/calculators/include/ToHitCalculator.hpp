@@ -11,6 +11,7 @@ class ToHitCalculator
     virtual int calculate(CreaturePtr creature) = 0;
     
   protected:
+    virtual int get_level_bonus(CreaturePtr creature);
     virtual int get_weapon_bonus(CreaturePtr creature);
     virtual int get_modifier_bonus(CreaturePtr creature);
     

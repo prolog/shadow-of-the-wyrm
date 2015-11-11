@@ -15,6 +15,8 @@ registry, instead of failing silently.
 - Character in the orchard who lets you change names.
 - Include creature level in to-hit calculations
 - Offer to save character dump when quitting or winning
+- In CombatManager, add a small chance to auto-hit in the same way that
+  there is a chance to auto-miss.
 
 Akeley:
 - ESC as well as 'z'
@@ -48,6 +50,4 @@ Kraphead:
 - Option to keep adventuring after killing Amaurosis
 - scale down enchantments - too powerful!
 - evade very powerful
-- Pugilist attack bonuses still present when wielding a non-weapon (e.g.
-  a shield) - do an explicit nullptr check.
 
