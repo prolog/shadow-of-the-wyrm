@@ -27,7 +27,12 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Evade nerf part 2: there was already a check in place for automatic
   misses; now there is also a check in place for automatic hits, though
   the chance of the latter (2%) is less than the former (5%).
-  
+
+- HP regeneration is now based on not only on the multipliers associated
+  with the creature's tile and feature, but also on the creature's
+  Health score.  There is a hard minimum of 4 minutes to regen 1 HP
+  in-game.
+    
 - New creatures: Nama.
 
 - Bug fixes:
