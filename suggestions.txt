@@ -19,7 +19,6 @@ Akeley:
 - random character.  random character generation steps (e.g., random
   race but select class).
 - too much food/spellbooks?
-- HP/AP should include statistics in the regeneration calcs
 
 barrabus: 
 - Extra descs for items.
@@ -41,7 +40,12 @@ Kraphead:
 - monsters should cast spells
 - auto-displace when bumping friendly creatures
 - implement dual wield
-- Wiki!
 - Option to keep adventuring after killing Amaurosis
 - scale down enchantments - too powerful!
-
+- bug fix: don't display eating resist messages when the value doesn't
+  actually increase.
+- option for never moving on to dangerous terrain.
+- caravan master quest not completing?
+- two moon amulet not being removed when wearing - bug is in
+  ItemManager::remove_item_from_eq_or_inv
+- artifact rings

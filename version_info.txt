@@ -32,6 +32,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   with the creature's tile and feature, but also on the creature's
   Health score.  There is a hard minimum of 4 minutes to regen 1 HP
   in-game.
+
+- Similarly, AP regeneration now takes into account the creature's
+  willpower score (akeley).
     
 - New creatures: Nama.
 
