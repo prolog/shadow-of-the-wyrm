@@ -91,7 +91,7 @@
 		</Creatures>
 		<Items>
 			<Placement>
-				<ID>two_moon_amulet</ID>
+				<ID>two_moon_amulett</ID>
 				<Coord>
 					<Row>9</Row>
 					<Col>32</Col>
