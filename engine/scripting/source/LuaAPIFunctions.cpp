@@ -196,6 +196,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "calendar_add_hours", calendar_add_hours);
   lua_register(L, "calendar_add_days", calendar_add_days);
   lua_register(L, "calendar_add_years", calendar_add_years);
+  lua_register(L, "add_kill_to_creature_mortuary", add_kill_to_creature_mortuary);
 }
 
 // Lua API helper functions
@@ -2431,6 +2432,47 @@ int calendar_add_years(lua_State* ls)
 
   lua_pushboolean(ls, added_time);
   return 1;
+}
+
+// THIS IS ONLY MEANT TO BE A DEBUG FUNCTION FOR TESTING PURPOSES.
+// THIS SHOULDN'T BE CALLED FROM REAL CODE!
+int add_kill_to_creature_mortuary(lua_State* ls)
+{
+  if (lua_gettop(ls) >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string killed_id = lua_tostring(ls, 2);
+
+    int quantity = 1;
+
+    if (lua_gettop(ls) == 3)
+    {
+      quantity = lua_tointeger(ls, 3);
+    }
+
+    CreaturePtr creature = get_creature(creature_id);
+    Mortuary& mort = creature->get_mortuary_ref();
+
+    for (int i = 0; i < quantity; i++)
+    {
+      mort.add_creature_kill(killed_id);
+    }
+
+    Game& game = game.instance();
+    Mortuary& global_mort = game.get_mortuary_ref();
+
+    for (int i = 0; i < quantity; i++)
+    {
+      global_mort.add_creature_kill(killed_id);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_kill_to_creature_mortuary");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)

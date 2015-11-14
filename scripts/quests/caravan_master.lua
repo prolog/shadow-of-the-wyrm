@@ -30,7 +30,7 @@ local function caravan_master_cithriel_start_fn()
 end
 
 local function caravan_master_cithriel_completion_condition_fn()
-  return (get_num_creature_killed_global("cithriel_summoner") == 5)
+  return (get_num_creature_killed_global("black_summoner") == 5)
 end
 
 local function caravan_master_cithriel_completion_fn()
