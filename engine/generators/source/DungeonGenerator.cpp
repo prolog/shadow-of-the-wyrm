@@ -591,11 +591,16 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     while (!location_found)
     {
       Room r = connected_rooms.at(RNG::range(0, connected_rooms.size()-1));
-    
-      y = RNG::range(r.y1+1, r.y2-2);
-      x = RNG::range(r.x1+1, r.x2-2);
-    
-      place_staircase(map, y, x, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase);
+        
+      bool placed = false;
+      
+      while (placed == false)
+      {
+        y = RNG::range(r.y1 + 1, r.y2 - 2);
+        x = RNG::range(r.x1 + 1, r.x2 - 2);
+
+        placed = place_staircase(map, y, x, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase);
+      }
 
       // Ensure that the original map ID is set on the down staircase.  This will
       // allow it to be set on future maps.  In a fully randomized dungeon, this
@@ -618,11 +623,16 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     // Stairs need to be in different rooms, and up staircases shouldn't be
     // in a zoo, or else the player will get pummelled.
     if (r == first_staircase_room || r.has_feature(RoomFeatures::ROOM_FEATURE_ZOO)) continue;
-    
-    y = RNG::range(r.y1+1, r.y2-2);
-    x = RNG::range(r.x1+1, r.x2-2);
-    
-    place_staircase(map, y, x, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
+        
+    bool placed = false;
+
+    while (placed == false)
+    {
+      y = RNG::range(r.y1 + 1, r.y2 - 2);
+      x = RNG::range(r.x1 + 1, r.x2 - 2);
+
+      placed = place_staircase(map, y, x, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
+    }
 
     location_found = true;
   }

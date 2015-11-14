@@ -187,6 +187,12 @@ bool Tile::get_illuminated() const
   return illuminated;
 }
 
+bool Tile::get_is_staircase() const
+{
+  TileType val = get_tile_type();
+  return (val == TileType::TILE_TYPE_UP_STAIRCASE || val == TileType::TILE_TYPE_DOWN_STAIRCASE);
+}
+
 // The conditions are broken up for easier debugging.
 //
 // A tile should only be blocking from the perspective of a particular
