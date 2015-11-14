@@ -5,6 +5,7 @@
 #include "Conversion.hpp"
 #include "Creature.hpp"
 #include "CreatureFactory.hpp"
+#include "CreatureUtils.hpp"
 #include "DeitySelectionScreen.hpp"
 #include "DisplaySettings.hpp"
 #include "DisplayTile.hpp"
@@ -221,6 +222,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   string class_index = class_selection.display();
   int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
   string selected_class_id = Integer::to_string_key_at_given_position_in_rc_map(classes, class_idx);
+  ClassPtr selected_class = classes[selected_class_id];
 
   RacePtr selected_race = races[selected_race_id];
   DeitySelectionScreen deity_selection(display, selected_race);
@@ -240,11 +242,12 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
 
     bool user_and_character_exist = true;
+    string creature_synopsis = StringTable::get(selected_race->get_race_name_sid()) + " " + StringTable::get(selected_class->get_class_name_sid());
     string warning_message;
 
     while (user_and_character_exist)
     {
-      NamingScreen naming(display, warning_message);
+      NamingScreen naming(display, creature_synopsis, warning_message);
       name = naming.display();
       name = Naming::clean_name(name);
 

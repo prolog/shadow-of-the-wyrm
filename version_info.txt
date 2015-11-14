@@ -35,7 +35,11 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 
 - Similarly, AP regeneration now takes into account the creature's
   willpower score (akeley).
-    
+
+- The naming screen now shows the selected race/class combination.
+  Typically the user will select this, but for random generation, these
+  may not be known.
+      
 - New creatures: Nama.
 
 - Bug fixes:

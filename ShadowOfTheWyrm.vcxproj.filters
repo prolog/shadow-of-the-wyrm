@@ -751,10 +751,10 @@
     <Filter Include="Source Files\engine\source\unit_tests">
       <UniqueIdentifier>{66044dd9-0e96-4071-ae2e-e839c5e55250}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\maps\tiles\screens">
+    <Filter Include="Header Files\engine\screens">
       <UniqueIdentifier>{16ab4664-e3ca-4262-8d72-60ffe6e737ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\maps\tiles\screens\include">
+    <Filter Include="Header Files\engine\screens\include">
       <UniqueIdentifier>{5afc028a-76b5-4850-9135-ead4f12db8c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -3022,61 +3022,61 @@
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\ClassSelectionScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\DeitySelectionScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\EquipmentScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\HighScoreScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\InventoryScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\LoadGameScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\NamingScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\OptionsComponent.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\Prompt.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\RaceSelectionScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\SexSelectionScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\SpellSelectionScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\TextComponent.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\TextDisplayFormatter.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\TextDisplayScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\TextFormatSpecifiers.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\WelcomeScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\Screen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\ScreenComponent.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\commands\screens\include\ScreenCommandFactory.hpp">
       <Filter>Header Files\engine\commands\screens\include</Filter>
@@ -3274,10 +3274,10 @@
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\WornLocationSelectionScreen.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\WornLocationScreenFactory.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\WeavingCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
@@ -3364,7 +3364,7 @@
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\screens\include\ComponentAlignment.hpp">
-      <Filter>Header Files\engine\maps\tiles\screens\include</Filter>
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="world\tiles\features\include\Bed.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
