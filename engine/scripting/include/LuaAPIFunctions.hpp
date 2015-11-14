@@ -93,6 +93,7 @@ int calendar_add_minutes(lua_State* ls);
 int calendar_add_hours(lua_State* ls);
 int calendar_add_days(lua_State* ls);
 int calendar_add_years(lua_State* ls);
+int add_kill_to_creature_mortuary(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

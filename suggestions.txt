@@ -45,7 +45,7 @@ Kraphead:
 - bug fix: don't display eating resist messages when the value doesn't
   actually increase.
 - option for never moving on to dangerous terrain.
-- caravan master quest not completing?
 - two moon amulet not being removed when wearing - bug is in
   ItemManager::remove_item_from_eq_or_inv
 - artifact rings
+- artifact boots

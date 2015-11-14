@@ -53,6 +53,10 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   - Puglists' unarmed damage was being applied even when an improvised
     weapon (e.g., a shield) was wielded (kraphead).
 
+  - The completion function for the Caravan Master's quest referenced an
+    older creature ID, preventing the quest from being completed
+    (kraphead).
+
 Shadow of the Wyrm v0.4.3 "Carcassi"
 - Version declared October 6, 2015.  Version finalized November 3, 2015.
 
