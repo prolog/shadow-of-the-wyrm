@@ -239,7 +239,8 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
   TileGenerator tg;
   TilePtr tile = map->at(row, col);
   
-  if (tile)
+  // Don't overwrite an existing staircase!
+  if (tile && (!tile->get_is_staircase()))
   {
     Coordinate c(row, col);
     
@@ -291,9 +292,11 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     {
       map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
     }
+
+    return true;
   }  
   
-  return true;
+  return false;
 }
 
 // Copy the depth custom map ID properties over, so that when generating new staircases,

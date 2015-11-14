@@ -59,6 +59,7 @@ class Tile : public ISerializable
     virtual void set_illuminated(bool new_illuminated);
     virtual bool get_illuminated() const;
     
+    virtual bool get_is_staircase() const;
     virtual bool get_is_blocking(std::shared_ptr<Creature> perspective_creature = nullptr) const;
     virtual bool get_is_blocking_ignore_present_creature(std::shared_ptr<Creature> perspective_creature) const;
     virtual bool get_is_blocking_for_item(std::shared_ptr<Item> item = nullptr) const;

@@ -49,3 +49,5 @@ Kraphead:
   ItemManager::remove_item_from_eq_or_inv
 - artifact rings
 - artifact boots
+- item generation: more arrows, more ivory, other things not generating
+  as expected?  Are scrolls even generating?
