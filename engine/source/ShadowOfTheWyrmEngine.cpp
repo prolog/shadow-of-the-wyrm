@@ -241,8 +241,10 @@ bool ShadowOfTheWyrmEngine::process_new_game()
       }
     }
 
+    DeityPtr deity = deities[selected_deity_id];
+
     bool user_and_character_exist = true;
-    string creature_synopsis = StringTable::get(selected_race->get_race_name_sid()) + " " + StringTable::get(selected_class->get_class_name_sid());
+    string creature_synopsis = StringTable::get(selected_race->get_race_name_sid()) + " " + StringTable::get(selected_class->get_class_name_sid()) + ", " + StringTable::get(deity->get_name_sid());
     string warning_message;
 
     while (user_and_character_exist)
