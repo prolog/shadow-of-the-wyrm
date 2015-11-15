@@ -1,4 +1,5 @@
 #pragma once
+#include "CharacterCreationDetails.hpp"
 #include "Controller.hpp"
 #include "Display.hpp"
 #include "Settings.hpp"
@@ -6,8 +7,9 @@
 enum struct EngineStateEnum
 {
   ENGINE_STATE_START_NEW_GAME = 0,
-  ENGINE_STATE_LOAD_GAME = 1,
-  ENGINE_STATE_STOP = 2
+  ENGINE_STATE_START_NEW_GAME_RANDOM = 1,
+  ENGINE_STATE_LOAD_GAME = 2,
+  ENGINE_STATE_STOP = 3
 };
 
 class EngineStateManager
@@ -19,6 +21,7 @@ class EngineStateManager
     EngineStateEnum get_state() const;
 
     bool start_new_game() const;
+    bool start_new_game_random() const;
     bool load_existing_game() const;
     bool exit() const;
 
@@ -54,6 +57,8 @@ class ShadowOfTheWyrmEngine
 
     bool process_game_option(const std::string& game_option);
     bool process_new_game();
+    bool process_new_game_random();
+    bool process_name_and_start(const CharacterCreationDetails& ccd);
     bool process_load_game();
     bool process_exit_game();
     

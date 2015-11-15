@@ -14,11 +14,13 @@ registry, instead of failing silently.
 - Some more information in-game about offering at altars
 - Offer to save character dump when quitting or winning
 - Finish up tree planting.
+- General performance improvements.
+- Item generation: get rarity working properly, and then do some test
+  runs.  Once that works, create some more artifacts/great items for
+  random generation.
 
 Akeley:
 - ESC as well as 'z'
-- random character.  random character generation steps (e.g., random
-  race but select class).
 - too much food/spellbooks?
 
 barrabus: 
@@ -48,7 +50,9 @@ Kraphead:
 - option for never moving on to dangerous terrain.
 - two moon amulet not being removed when wearing - bug is in
   ItemManager::remove_item_from_eq_or_inv
-- artifact rings
 - artifact boots
 - item generation: more arrows, more ivory, other things not generating
   as expected?  Are scrolls even generating?
+- fix the message when a stunned monster does an incorporeal attack on
+  itself.
+- points for conducts
