@@ -39,8 +39,17 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 - The naming screen now shows the selected race/class combination, as
   well as the selected deity.  Typically the user will know these, but 
   may not depending if a random generation option was chosen.
-      
+
+- The welcome screen now offers an option to create a new, randomized
+  character.  Random selections are also possible from each of the
+  sex, race, class, and deity selection screens (akeley).
+
+- Conducts are now worth points (100 per conduct per level), not just
+  bragging rights after winning (kraphead).
+          
 - New creatures: Nama.
+
+- New artifacts: ruby ring "Falcon's Eye", jasper ring "Carpathos".
 
 - Bug fixes:
 

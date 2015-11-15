@@ -25,6 +25,16 @@ int Option::get_id() const
   return id;
 }
 
+int Option::get_id_for_random() const
+{
+  return '*' - 'a';
+}
+
+bool Option::is_random_option(const int opt) const
+{
+  return (opt == '*');
+}
+
 char Option::get_id_char() const
 {
   return (id + 'a');

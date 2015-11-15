@@ -48,6 +48,14 @@ void ClassSelectionScreen::initialize()
     }
   }
 
+  // Random selection (use '*')
+  Option random_option;
+  random_option.set_id(random_option.get_id_for_random());
+  random_option.set_description(StringTable::get(TextKeys::RANDOM_SELECTION));
+
+  options->add_option(random_option);
+  options->add_option_description("");
+
   vector<ScreenComponentPtr> cur_page;
   cur_page.push_back(class_selection_text);
   cur_page.push_back(options);

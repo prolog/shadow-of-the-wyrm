@@ -352,6 +352,77 @@ bool CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
   return can_pu;
 }
 
+RacePtr CreatureUtils::get_random_user_playable_race()
+{
+  Game& game = Game::instance();
+  RaceMap  races = game.get_races_ref();
+  vector<RacePtr> playable_races;
+  RacePtr race;
+
+  for (const auto& race_pair : races)
+  {
+    RacePtr race = race_pair.second;
+
+    if (race && race->get_user_playable())
+    {
+      playable_races.push_back(race);
+    }
+  }
+
+  if (!playable_races.empty())
+  {
+    race = playable_races.at(RNG::range(0, playable_races.size() - 1));
+  }
+
+  return race;
+}
+
+ClassPtr CreatureUtils::get_random_user_playable_class()
+{
+  Game& game = Game::instance();
+  ClassMap classes = game.get_classes_ref();
+  vector<ClassPtr> playable_classes;
+  ClassPtr cur_class;
+
+  for (const auto& class_pair : classes)
+  {
+    ClassPtr cur_class = class_pair.second;
+
+    if (cur_class && cur_class->get_user_playable())
+    {
+      playable_classes.push_back(cur_class);
+    }
+  }
+
+  if (!playable_classes.empty())
+  {
+    cur_class = playable_classes.at(RNG::range(0, playable_classes.size() - 1));
+  }
+
+  return cur_class;
+}
+
+DeityPtr CreatureUtils::get_random_deity_for_race(RacePtr race)
+{
+  Game& game = Game::instance();
+  DeityMap deities = game.get_deities_ref();
+  vector<string> allowable_deity_ids;
+  DeityPtr deity;
+
+  if (race != nullptr)
+  {
+    allowable_deity_ids = race->get_initial_deity_ids();
+  }
+
+  if (!allowable_deity_ids.empty())
+  {
+    string deity_id = allowable_deity_ids.at(RNG::range(0, allowable_deity_ids.size() - 1));
+    deity = deities.at(deity_id);
+  }
+
+  return deity;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureUtils_test.cpp"
 #endif

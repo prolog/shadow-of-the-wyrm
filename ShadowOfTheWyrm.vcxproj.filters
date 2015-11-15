@@ -3522,6 +3522,9 @@
     <ClInclude Include="engine\time\include\TileTransformObserver.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\CharacterCreationDetails.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6874,6 +6877,12 @@
     </ClCompile>
     <ClCompile Include="engine\time\source\unit_tests\TileTransformObserver_test.cpp">
       <Filter>Source Files\engine\time\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\CharacterCreationDetails.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\CharacterCreationDetails_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

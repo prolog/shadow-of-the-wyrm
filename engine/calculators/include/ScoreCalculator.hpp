@@ -15,5 +15,6 @@ class ScoreCalculator
     void update_score_level(CreaturePtr creature, ulonglong& score);
     void update_score_artifacts(CreaturePtr creature, ulonglong& score);
     void update_score_spells(CreaturePtr creature, ulonglong& score);
+    void update_score_conducts(CreaturePtr creature, ulonglong& score);
 };
 

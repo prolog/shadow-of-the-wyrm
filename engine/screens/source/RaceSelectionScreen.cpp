@@ -48,6 +48,14 @@ void RaceSelectionScreen::initialize()
     }
   }
 
+  // Random selection (use '*')
+  Option random_option;
+  random_option.set_id(random_option.get_id_for_random());
+  random_option.set_description(StringTable::get(TextKeys::RANDOM_SELECTION));
+
+  options->add_option(random_option);
+  options->add_option_description("");
+
   race_screen.push_back(race_selection_text);
   race_screen.push_back(options);
 

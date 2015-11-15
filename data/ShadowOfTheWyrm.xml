@@ -56,6 +56,7 @@
 			</Dislikes>
 			<Crowning>
 				<Artifact>delver</Artifact>
+				<Artifact>falcons_eye</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -129,6 +130,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -167,6 +169,7 @@
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>falcons_eye</Artifact>
 				<Artifact>pelter</Artifact>
 				<Artifact>light_of_battle</Artifact>
 				<Artifact>dragonsfist</Artifact>
@@ -200,6 +203,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -234,6 +238,7 @@
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -20472,6 +20477,40 @@
 			</Armour>
 		</Armours>
 		<Rings>
+			<Ring id="falcons_eye">
+				<DescriptionSID>FALCONS_EYE_SID</DescriptionSID>
+				<UsageDescriptionSID>FALCONS_EYE_USAGE_SID</UsageDescriptionSID>
+				<Value>1550</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Pierce>0.15</Pierce>
+					<Arcane>0.15</Arcane>
+				</Resistances>
+				<Evade>10</Evade>
+				<Soak>6</Soak>
+			</Ring>
+			<Ring id="carpathos">
+				<DescriptionSID>CARPATHOS_SID</DescriptionSID>
+				<UsageDescriptionSID>CARPATHOS_USAGE_SID</UsageDescriptionSID>
+				<Value>1550</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Cold>0.20</Cold>
+					<Acid>0.15</Acid>
+					<Poison>0.15</Poison>
+				</Resistances>
+				<Evade>5</Evade>
+				<Soak>10</Soak>
+			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_FENCERS_RING_SID</UnidentifiedDescriptionSID>
