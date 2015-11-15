@@ -43,7 +43,7 @@ void ClassSelectionScreen::initialize()
       current_option.set_description(StringTable::get(current_class->get_class_name_sid()));
 
       options->add_option(current_option);
-      options->add_option_description("");
+      options->add_option_description(StringTable::get(current_class->get_class_short_description_sid()));
       current_id++;
     }
   }

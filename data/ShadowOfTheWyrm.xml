@@ -1844,6 +1844,7 @@
 		<Class id="adventurer">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_1_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_1_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_1_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_1_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -1953,6 +1954,7 @@
 		<Class id="apothecary">
  			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_2_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_2_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_2_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_2_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2038,6 +2040,7 @@
 		<Class id="archer">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_3_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_3_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_3_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_3_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2251,6 +2254,7 @@
 		<Class id="artisan">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_4_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_4_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_4_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_4_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2331,6 +2335,7 @@
 		<Class id="merchant">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_5_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_5_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_5_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_5_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2417,6 +2422,7 @@
 		<Class id="minstrel">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_6_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_6_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_6_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_6_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2507,6 +2513,7 @@
 		<Class id="noble">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_7_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_7_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_7_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_7_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2594,6 +2601,7 @@
 		<Class id="oracle">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_8_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_8_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_8_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_8_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2694,6 +2702,7 @@
 		<Class id="pilgrim">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_9_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_9_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_9_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_9_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2788,6 +2797,7 @@
 		<Class id="pugilist">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_10_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_10_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_10_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_10_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2872,6 +2882,7 @@
 		<Class id="rover">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_11_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_11_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_11_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_11_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2967,6 +2978,7 @@
 		<Class id="sage">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_12_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_12_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_12_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_12_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3060,6 +3072,7 @@
 		<Class id="seafarer">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_13_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_13_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_13_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_13_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3146,6 +3159,7 @@
 		<Class id="shepherd">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_14_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_14_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_14_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_14_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3229,6 +3243,7 @@
 		<Class id="smith">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_15_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_15_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_15_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_15_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3328,6 +3343,7 @@
 		<Class id="thief">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_16_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_16_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_16_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_16_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3423,6 +3439,7 @@
 		<Class id="warrior">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_17_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_17_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_17_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_17_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3611,6 +3628,7 @@
 		<Class id="witchling">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_18_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_18_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_18_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_18_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3699,6 +3717,7 @@
 		<Class id="wizard">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_19_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_19_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_19_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_19_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>

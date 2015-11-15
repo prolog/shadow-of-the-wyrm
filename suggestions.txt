@@ -56,3 +56,7 @@ Kraphead:
 - fix the message when a stunned monster does an incorporeal attack on
   itself.
 - points for conducts
+
+Mateusz Lagowski
+- ? for command list
+- Move monsters back via kick

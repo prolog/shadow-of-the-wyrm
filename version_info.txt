@@ -46,7 +46,8 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 
 - Conducts are now worth points (100 per conduct per level), not just
   bragging rights after winning (kraphead).
-          
+
+- Added brief class descriptions to character creation (Mateusz Logowski)        
 - New creatures: Nama.
 
 - New artifacts: ruby ring "Falcon's Eye", jasper ring "Carpathos".
