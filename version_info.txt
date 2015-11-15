@@ -42,6 +42,8 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
       
 - New creatures: Nama.
 
+- New artifacts: ruby ring "Falcon's Eye".
+
 - Bug fixes:
 
   - Idem's description implied that he was mobile, but he was set to

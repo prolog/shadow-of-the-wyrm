@@ -52,3 +52,5 @@ Kraphead:
 - artifact boots
 - item generation: more arrows, more ivory, other things not generating
   as expected?  Are scrolls even generating?
+- fix the message when a stunned monster does an incorporeal attack on
+  itself.
