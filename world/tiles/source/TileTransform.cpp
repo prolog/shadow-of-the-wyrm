@@ -4,12 +4,12 @@
 using namespace std;
 
 TileTransform::TileTransform()
-: min_transform_time(0), tile_type(TileType::TILE_TYPE_UNDEFINED), tile_subtype(TileType::TILE_TYPE_UNDEFINED)
+: coord{0,0}, tile_type(TileType::TILE_TYPE_UNDEFINED), tile_subtype(TileType::TILE_TYPE_UNDEFINED)
 {
 }
 
-TileTransform::TileTransform(const double new_min_time, const TileType new_tt, const TileType new_tst, const map<string, string>& new_props)
-: min_transform_time(new_min_time), tile_type(new_tt), tile_subtype(new_tst), properties(new_props)
+TileTransform::TileTransform(const Coordinate& new_coord, const TileType new_tt, const TileType new_tst, const map<string, string>& new_props)
+: coord(new_coord), tile_type(new_tt), tile_subtype(new_tst), properties(new_props)
 {
 }
 
@@ -17,7 +17,7 @@ bool TileTransform::operator==(const TileTransform& tt) const
 {
   bool result = true;
 
-  result = result && (min_transform_time == tt.min_transform_time);
+  result = result && (coord == tt.coord);
   result = result && (tile_type == tt.tile_type);
   result = result && (tile_subtype == tt.tile_subtype);
   result = result && (properties == tt.properties);
@@ -25,14 +25,14 @@ bool TileTransform::operator==(const TileTransform& tt) const
   return result;
 }
 
-void TileTransform::set_min_transform_time(const double new_transform_time)
+void TileTransform::set_coordinate(const Coordinate& new_coord)
 {
-  min_transform_time = new_transform_time;
+  coord = new_coord;
 }
 
-double TileTransform::get_min_transform_time() const
+Coordinate TileTransform::get_coordinate() const
 {
-  return min_transform_time;
+  return coord;
 }
 
 void TileTransform::set_tile_type(const TileType new_tile_type)
@@ -67,7 +67,8 @@ map<string, string> TileTransform::get_properties() const
 
 bool TileTransform::serialize(ostream& stream) const
 {
-  Serialize::write_double(stream, min_transform_time);
+  Serialize::write_int(stream, coord.first);
+  Serialize::write_int(stream, coord.second);
   Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, tile_subtype);
   Serialize::write_string_map(stream, properties);
@@ -77,7 +78,8 @@ bool TileTransform::serialize(ostream& stream) const
 
 bool TileTransform::deserialize(istream& stream)
 {
-  Serialize::read_double(stream, min_transform_time);
+  Serialize::read_int(stream, coord.first);
+  Serialize::read_int(stream, coord.second);
   Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, tile_subtype);
   Serialize::read_string_map(stream, properties);

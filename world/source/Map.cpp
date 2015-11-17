@@ -574,9 +574,15 @@ bool Map::serialize(ostream& stream) const
   Serialize::write_size_t(stream, tile_transforms.size());
   for (const auto& t_pair : tile_transforms)
   {
-    Serialize::write_int(stream, t_pair.first.first);
-    Serialize::write_int(stream, t_pair.first.second);
-    t_pair.second.serialize(stream);
+    Serialize::write_double(stream, t_pair.first);
+
+    vector<TileTransform> t_trans = t_pair.second;
+    Serialize::write_size_t(stream, t_trans.size());
+
+    for (const TileTransform& tt : t_trans)
+    {
+      tt.serialize(stream);
+    }
   }
 
   return true;
@@ -685,15 +691,23 @@ bool Map::deserialize(istream& stream)
 
   for (size_t i = 0; i < trans_size; i++)
   {
-    Coordinate c;
+    double seconds;
 
-    Serialize::read_int(stream, c.first);
-    Serialize::read_int(stream, c.second);
+    Serialize::read_double(stream, seconds);
 
-    TileTransform tt;
-    tt.deserialize(stream);
+    size_t v_size = 0;
+    Serialize::read_size_t(stream, v_size);
+    vector<TileTransform> t_trans;
 
-    tile_transforms.insert(make_pair(c, tt));
+    for (size_t i = 0; i < v_size; i++)
+    {
+      TileTransform tt;
+      tt.deserialize(stream);
+
+      t_trans.push_back(tt);
+    }
+
+    tile_transforms.insert(make_pair(seconds, t_trans));
   }
 
   return true;

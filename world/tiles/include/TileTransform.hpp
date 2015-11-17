@@ -2,16 +2,16 @@
 #include <map>
 #include "ISerializable.hpp"
 #include "tiles.hpp"
-
+#include "common.hpp"
 class TileTransform : public ISerializable
 {
   public:
     TileTransform();
-    TileTransform(const double new_time, const TileType new_tt, const TileType new_tst, const std::map<std::string, std::string>& new_props);
+    TileTransform(const Coordinate& new_coord, const TileType new_tt, const TileType new_tst, const std::map<std::string, std::string>& new_props);
     bool operator==(const TileTransform& tt) const;
 
-    void set_min_transform_time(const double new_transform_time);
-    double get_min_transform_time() const;
+    void set_coordinate(const Coordinate& new_coord);
+    Coordinate get_coordinate() const;
 
     void set_tile_type(const TileType new_tile_type);
     TileType get_tile_type() const;
@@ -26,8 +26,8 @@ class TileTransform : public ISerializable
     bool deserialize(std::istream& stream) override;
 
   protected:
-    // The minimum time at which the transformation can occur.
-    double min_transform_time;
+    // The coordinate at which the transform occurs.
+    Coordinate coord;
 
     // Tile details.
     TileType tile_type;

@@ -39,14 +39,12 @@ MapPtr SL_Engine_Map::make_map() const
 
 TEST_F(SL_Engine_Map, tile_transforms)
 {
-  Coordinate c1(1, 2);
-  Coordinate c2(10, 20);
-  TileTransform tt1(1234, TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_UNDEFINED, {});
-  TileTransform tt2(557612356, TileType::TILE_TYPE_MARSH, TileType::TILE_TYPE_UNDEFINED, {});
+  TileTransform tt1(make_pair(4,5) TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_UNDEFINED, {});
+  TileTransform tt2(make_pair(5,6), TileType::TILE_TYPE_MARSH, TileType::TILE_TYPE_UNDEFINED, {});
   TileTransformContainer ttc;
 
-  ttc.insert(make_pair(c1, tt1));
-  ttc.insert(make_pair(c2, tt2));
+  ttc.insert(make_pair(12345, vector<TileTransform>{tt1}));
+  ttc.insert(make_pair(65789, vector<TileTransform>{tt2}));
 
   Dimensions tt_dim;
   MapPtr map = std::make_shared<Map>(tt_dim);
