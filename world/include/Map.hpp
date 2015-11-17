@@ -16,7 +16,7 @@ class Creature;
 class Tile;
 
 using TilesContainer = std::unordered_map<std::string, std::shared_ptr<Tile>>;
-using TileTransformContainer = std::map<Coordinate, TileTransform>;
+using TileTransformContainer = std::map<double, std::vector<TileTransform>>;
 
 class Map : public ISerializable
 {

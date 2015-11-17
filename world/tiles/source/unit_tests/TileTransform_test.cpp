@@ -9,7 +9,7 @@ TEST(SL_Engine_Maps_Tiles_TileTransform, serialization_id)
 
 TEST(SL_Engine_Maps_Tiles_TileTransform, saveload)
 {
-  TileTransform tt1(1234, TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD, {{"anc", "1"}, {"fdsa", "2"}});
+  TileTransform tt1(make_pair(1,2), TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD, {{"anc", "1"}, {"fdsa", "2"}});
   TileTransform tt2;
 
   ostringstream ss;

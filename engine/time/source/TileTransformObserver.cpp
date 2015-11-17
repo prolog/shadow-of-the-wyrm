@@ -41,32 +41,36 @@ void TileTransformObserver::process_tile_transforms(MapPtr cur_map, const double
 
     for (auto t_it = ttc.begin(); t_it != ttc.end(); )
     {
-      TileTransform tt = t_it->second;
+      double seconds = t_it->first;
 
-      if (cur_seconds > tt.get_min_transform_time())
+      if (cur_seconds < seconds)
       {
-        Coordinate c = t_it->first;
-
-        TileGenerator tg;
-        TilePtr new_tile = tg.generate(tt.get_tile_type(), tt.get_tile_subtype());
-
-        // Copy over features and items.
-        new_tile->transform_from(cur_map->at(c));
-
-        map<string, string> tt_props = tt.get_properties();
-        for (const auto& p_pair : tt_props)
-        {
-          new_tile->set_additional_property(p_pair.first, p_pair.second);
-        }
-
-        cur_map->insert(c, new_tile);
-
-        ttc.erase(t_it++);
-        continue;
+        break;
       }
       else
       {
-        ++t_it;
+        vector<TileTransform> tt_vec = t_it->second;
+
+        for (const TileTransform tt : tt_vec)
+        {
+          Coordinate c = tt.get_coordinate();
+
+          TileGenerator tg;
+          TilePtr new_tile = tg.generate(tt.get_tile_type(), tt.get_tile_subtype());
+
+          // Copy over features and items.
+          new_tile->transform_from(cur_map->at(c));
+
+          map<string, string> tt_props = tt.get_properties();
+          for (const auto& p_pair : tt_props)
+          {
+            new_tile->set_additional_property(p_pair.first, p_pair.second);
+          }
+
+          cur_map->insert(c, new_tile);
+        }
+
+        ttc.erase(t_it++);
       }
     }
   }
