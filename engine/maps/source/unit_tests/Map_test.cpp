@@ -39,8 +39,8 @@ MapPtr SL_Engine_Map::make_map() const
 
 TEST_F(SL_Engine_Map, tile_transforms)
 {
-  TileTransform tt1(make_pair(4,5) TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_UNDEFINED, {});
-  TileTransform tt2(make_pair(5,6), TileType::TILE_TYPE_MARSH, TileType::TILE_TYPE_UNDEFINED, {});
+  TileTransform tt1(Coordinate(4,5), TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_UNDEFINED, {});
+  TileTransform tt2(Coordinate(5,6), TileType::TILE_TYPE_MARSH, TileType::TILE_TYPE_UNDEFINED, {});
   TileTransformContainer ttc;
 
   ttc.insert(make_pair(12345, vector<TileTransform>{tt1}));
