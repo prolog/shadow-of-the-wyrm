@@ -56,7 +56,7 @@ void TileTransformObserver::process_tile_transforms(MapPtr cur_map, const double
           Coordinate c = tt.get_coordinate();
 
           TileGenerator tg;
-          TilePtr new_tile = tg.generate(tt.get_tile_type(), tt.get_tile_subtype());
+          TilePtr new_tile = tg.generate(tt.get_tile_type(), tt.get_tile_subtype(), tt.get_properties());
 
           // Copy over features and items.
           new_tile->transform_from(cur_map->at(c));

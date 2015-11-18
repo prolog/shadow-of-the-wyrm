@@ -5,6 +5,7 @@ class TileTextKeys
 {
   public:
     static const std::string TILE_DESC_DUG;
+    static const std::string TILE_DESC_PLANTED;
     static const std::string TILE_DESC_AIR;
     static const std::string TILE_DESC_BARROW;
     static const std::string TILE_DESC_BEACH;

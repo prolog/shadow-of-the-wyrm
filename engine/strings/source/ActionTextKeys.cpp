@@ -1,5 +1,6 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "ActionTextKeys.hpp"
+#include "TextKeys.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -216,6 +217,21 @@ string ActionTextKeys::get_spit_out_message(const string& item_usage_desc)
   return msg;
 }
 
+string ActionTextKeys::get_seed_planted_message(const bool blind, const string& item_usage_desc)
+{
+  string msg = StringTable::get(ACTION_SEED_PLANTED);
+  string replace = item_usage_desc;
+
+  if (blind)
+  {
+    replace = StringTable::get(TextKeys::SOMETHING);
+  }
+
+  boost::replace_first(msg, "%s", replace);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -332,3 +348,4 @@ const string ActionTextKeys::ACTION_SPELL_WEAR_OFF_MONSTER        = "ACTION_SPEL
 const string ActionTextKeys::ACTION_ITEM_BREAKAGE_PLAYER          = "ACTION_ITEM_BREAKAGE_PLAYER";
 const string ActionTextKeys::ACTION_ITEM_BREAKAGE_MONSTER         = "ACTION_ITEM_BREAKAGE_MONSTER";
 const string ActionTextKeys::ACTION_SPIT_OUT_SEED                 = "ACTION_SPIT_OUT_SEED";
+const string ActionTextKeys::ACTION_SEED_PLANTED                  = "ACTION_SEED_PLANTED";

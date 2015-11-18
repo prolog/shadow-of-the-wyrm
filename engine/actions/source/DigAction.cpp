@@ -38,6 +38,11 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr 
       {
         tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, Bool::to_string(true));
         acv = get_action_cost_value(creature);
+
+        // Digging also removes any seeds currently planted.
+        // Useful for when you wanted a lovely orchard full of cherry trees,
+        // but you accidentally planted a pear seed.  How embarassing!
+        tile->remove_additional_property(TileProperties::TILE_PROPERTY_PLANTED);
       }
     }
   }
