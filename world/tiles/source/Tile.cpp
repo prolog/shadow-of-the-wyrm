@@ -121,6 +121,20 @@ bool Tile::has_extra_description() const
   return has_additional_property(TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
 }
 
+bool Tile::has_been_dug() const
+{
+  string prop = get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG);
+
+  return (prop == to_string(true));
+}
+
+bool Tile::has_been_planted() const
+{
+  string prop = get_additional_property(TileProperties::TILE_PROPERTY_PLANTED);
+
+  return (prop == to_string(true));
+}
+
 void Tile::set_custom_map_id(const string& map_generator_id)
 {
   set_additional_property(TileProperties::TILE_PROPERTY_CUSTOM_MAP_ID, map_generator_id);
@@ -134,6 +148,11 @@ string Tile::get_custom_map_id() const
 bool Tile::has_custom_map_id() const
 {
   return has_additional_property(TileProperties::TILE_PROPERTY_CUSTOM_MAP_ID);
+}
+
+void Tile::set_additional_properties(const map<string, string>& new_props)
+{
+  additional_properties = new_props;
 }
 
 void Tile::set_additional_property(const string& property_name, const string& property_value)
@@ -426,6 +445,14 @@ void Tile::transform_from(std::shared_ptr<Tile> original_tile)
 
     tile_type = orig_tt;
     tile_subtype = orig_tst;
+
+    // Remove particular properties
+    vector<string> props_to_remove = {TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, TileProperties::TILE_PROPERTY_PLANTED};
+
+    for (const auto& p : props_to_remove)
+    {
+      remove_additional_property(p);
+    }
   }
 }
 

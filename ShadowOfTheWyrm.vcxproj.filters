@@ -3525,6 +3525,15 @@
     <ClInclude Include="engine\include\CharacterCreationDetails.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\SeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TreeSpecies.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TreeSpeciesFactory.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6883,6 +6892,15 @@
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\CharacterCreationDetails_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\SeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\TreeSpecies.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\TreeSpeciesFactory.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

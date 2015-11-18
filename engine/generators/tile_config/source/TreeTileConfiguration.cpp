@@ -1,5 +1,7 @@
 #include "TreeTileConfiguration.hpp"
+#include "Conversion.hpp"
 #include "ItemManager.hpp"
+#include "ItemProperties.hpp"
 #include "RNG.hpp"
 #include "TileDescriptionKeys.hpp"
 
@@ -35,16 +37,30 @@ void TreeTileConfiguration::initialize_tree_species_details()
   tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WALNUT, TileDescriptionKeys::FLORA_TILE_DESC_WALNUT));
 }
 
-TreeSpeciesID TreeTileConfiguration::get_random_species() const
+TreeSpeciesID TreeTileConfiguration::get_species(TilePtr tile) const
 {
-  return tree_species_ids.at(RNG::range(0, tree_species_ids.size() - 1));
+  TreeSpeciesID species_id = tree_species_ids.at(RNG::range(0, tree_species_ids.size() - 1));
+
+  if (tile != nullptr)
+  {
+    string species_tile_id = tile->get_additional_property(ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID);
+
+    if (!species_tile_id.empty())
+    {
+      species_id = static_cast<TreeSpeciesID>(String::to_int(species_tile_id));
+    }
+  }
+
+  return species_id;
 }
 
 void TreeTileConfiguration::configure(TilePtr tile, const Season season) const
 {
   ItemManager::create_item_with_probability(1, 100, tile->get_items(), ItemIdKeys::ITEM_ID_BRANCH);
 
-  TreeSpeciesID species_id = get_random_species();
+  // If a species ID has already been provided, use that; otherwise, generate
+  // a random allowable species.
+  TreeSpeciesID species_id = get_species(tile);
   tile->set_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID, tree_species_description_sids.find(species_id)->second);
 
   configure_additional_features(tile, season, species_id);

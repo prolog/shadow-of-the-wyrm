@@ -288,6 +288,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreConstants.hpp" />
     <ClInclude Include="engine\calculators\include\CorpseCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\SeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\StatisticsCalculators.hpp" />
     <ClInclude Include="engine\calculators\include\StatusEffectCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp" />
@@ -1075,6 +1076,8 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\tiles\include\TileProperties.hpp" />
     <ClInclude Include="world\tiles\include\tiles.hpp" />
     <ClInclude Include="world\tiles\include\TileTransform.hpp" />
+    <ClInclude Include="world\tiles\include\TreeSpecies.hpp" />
+    <ClInclude Include="world\tiles\include\TreeSpeciesFactory.hpp" />
     <ClInclude Include="world\tiles\include\TreeTile.hpp" />
     <ClInclude Include="world\tiles\include\UpStaircaseTile.hpp" />
     <ClInclude Include="world\tiles\include\VillageTile.hpp" />
@@ -1097,6 +1100,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\SeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\unit_tests\DoorBreakageCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -2978,6 +2982,8 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\tiles\source\TileFactory.cpp" />
     <ClCompile Include="world\tiles\source\TileProperties.cpp" />
     <ClCompile Include="world\tiles\source\TileTransform.cpp" />
+    <ClCompile Include="world\tiles\source\TreeSpecies.cpp" />
+    <ClCompile Include="world\tiles\source\TreeSpeciesFactory.cpp" />
     <ClCompile Include="world\tiles\source\TreeTile.cpp" />
     <ClCompile Include="world\tiles\source\unit_tests\AirTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

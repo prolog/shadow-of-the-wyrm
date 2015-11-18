@@ -49,6 +49,20 @@ double Calendar::get_seconds() const
   return seconds;
 }
 
+double Calendar::get_seconds_from_date(const Date& date) const
+{
+  double secs = 0;
+
+  secs = date.get_seconds() +
+         (date.get_minutes() * 60) +
+         (date.get_hours() * 60 * 60) +
+         (date.get_day_of_month() * 60 * 60 * 24) +
+         (date.get_month() * 60 * 60 * 24 * 30) +
+         ((date.get_year() - STARTING_YEAR) * 60 * 60 * 24 * 30 * 12);
+
+  return secs;
+}
+
 // Calculate and return the date, based on the total seconds that have elapsed so far.
 Date Calendar::get_date() const
 {

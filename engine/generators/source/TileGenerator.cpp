@@ -6,6 +6,8 @@
 #include "tiles.hpp"
 #include "AllTiles.hpp"
 
+using namespace std;
+
 TileGenerator::TileGenerator()
 : generate_items(true)
 {
@@ -26,7 +28,7 @@ bool TileGenerator::get_generate_items() const
   return generate_items;
 }
 
-TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type)
+TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type, const map<string, string>& properties)
 {
   // To make it easier to remember what needs to be updated:
   static_assert(TileType::TILE_TYPE_LAST == TileType(47), "Unexpected TileType::TILE_TYPE_LAST value.");
@@ -185,6 +187,7 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
 
   if (generate_items)
   {
+    result_tile->set_additional_properties(properties);
     configure_tile(result_tile);
   }
 

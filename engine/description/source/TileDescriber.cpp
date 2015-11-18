@@ -24,6 +24,12 @@ string TileDescriber::describe() const
       description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_DUG);
     }
 
+    string planted = tile->get_additional_property(TileProperties::TILE_PROPERTY_PLANTED);
+    if (!planted.empty() && (String::to_bool(planted) == true))
+    {
+      description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_PLANTED);
+    }
+
     if (tile->has_extra_description())
     {
       description = description + " " + StringTable::get(tile->get_extra_description_sid());
