@@ -51,7 +51,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 
 - Dropping a seed in a tile with a hole now plants that seed.  The tile
   will transform into a tree of the appropriate type at some point in the
-  spring of the following year.
+  spring of the following year.  Planting is currently 100% successful
+  (a tree always grows the following year), though this may change in
+  future.
 
 - New creatures: Nama.
 
