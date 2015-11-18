@@ -55,6 +55,8 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   (a tree always grows the following year), though this may change in
   future.
 
+- Various code cleanups and minor refactorings.
+
 - New creatures: Nama.
 
 - New artifacts: ruby ring "Falcon's Eye", jasper ring "Carpathos".

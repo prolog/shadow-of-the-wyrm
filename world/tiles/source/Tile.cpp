@@ -434,23 +434,16 @@ void Tile::transform_from(std::shared_ptr<Tile> original_tile)
 {
   if (original_tile != nullptr)
   {
-    // Keep the tile type, subtype, properties.
+    // Keep the properties.
     // Copy everything else.
-    TileType orig_tt, orig_tst;
     map<string, string> props = additional_properties;
     
-    orig_tt = original_tile->get_tile_type();
-    orig_tst = original_tile->get_tile_subtype();
-
     *this = *original_tile;
 
     for (const auto& p_pair : props)
     {
       set_additional_property(p_pair.first, p_pair.second);
     }
-
-    tile_type = orig_tt;
-    tile_subtype = orig_tst;
 
     // Remove particular properties
     vector<string> props_to_remove = {TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, TileProperties::TILE_PROPERTY_PLANTED};
