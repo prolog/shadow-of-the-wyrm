@@ -13,11 +13,14 @@ registry, instead of failing silently.
 - Investigate targetting not staying properly some (all?) of the time.
 - Some more information in-game about offering at altars
 - Offer to save character dump when quitting or winning
-- Finish up tree planting.
 - General performance improvements.
 - Item generation: get rarity working properly, and then do some test
   runs.  Once that works, create some more artifacts/great items for
   random generation.
+- Per-tile fertility ratings for planting trees and other plants.  Fields
+  should give you a great chance, beaches very small, etc.
+- "Dug" (and therefore planted) status should only apply to terra firma,
+  so add some checks for water/air tiles to disallow dug status.
 
 Akeley:
 - ESC as well as 'z'
