@@ -6902,5 +6902,8 @@
     <ClCompile Include="world\tiles\source\TreeSpeciesFactory.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\MapTypes.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
