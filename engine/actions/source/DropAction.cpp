@@ -3,7 +3,6 @@
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
-#include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemProperties.hpp"
@@ -162,7 +161,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 
       if (!tree_species_id.empty() && creatures_tile->has_been_dug())
       {
-        bool planted = plant_seed(tree_species_id, MapUtils::get_coordinate_for_creature(current_map, creature), creatures_tile, current_map);
+        bool planted = plant_seed(creature, tree_species_id, MapUtils::get_coordinate_for_creature(current_map, creature), creatures_tile, current_map);
 
         if (planted)
         {
@@ -217,7 +216,7 @@ uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity
 }
 
 // Plant a seed for a particular type of tree.
-bool DropAction::plant_seed(const string& tree_species_id, const Coordinate& coords, TilePtr tile, MapPtr current_map)
+bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id, const Coordinate& coords, TilePtr tile, MapPtr current_map)
 {
   bool planted = false;
 
@@ -240,11 +239,45 @@ bool DropAction::plant_seed(const string& tree_species_id, const Coordinate& coo
 
       tt_v.push_back(tt);
       tile->set_additional_property(TileProperties::TILE_PROPERTY_PLANTED, to_string(true));
+
+      // Planting a tree alters the world by making the map permanent, if it 
+      // was not already so.
+      if (!current_map->get_permanent())
+      {
+        make_map_permanent(game, creature, current_map);
+      }
+
       planted = true;
     }
   }
   
   return planted;
+}
+
+void DropAction::make_map_permanent(Game& game, CreaturePtr creature, MapPtr current_map)
+{
+  if (current_map != nullptr)
+  {
+    current_map->set_permanent(true);
+    string current_map_id = current_map->get_map_id();
+    game.get_map_registry_ref().set_map(current_map_id, current_map);
+
+    // Assumption: if a creature (realistically, the player) is in a
+    // previously-random map on the overworld, it is connected to
+    // the player's position on that map.
+    MapPtr world_map = game.get_map_registry_ref().get_map(MapID::MAP_ID_OVERWORLD);
+
+    if (world_map != nullptr)
+    {
+      Coordinate location = world_map->get_location(creature->get_id());
+      TilePtr creature_wm_tile = world_map->at(location);
+
+      if (creature_wm_tile != nullptr)
+      {
+        creature_wm_tile->set_custom_map_id(current_map_id);
+      }
+    }
+  }
 }
 
 // Dropping always has a base action cost of 1.

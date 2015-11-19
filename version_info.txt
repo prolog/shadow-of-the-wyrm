@@ -49,11 +49,13 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 
 - Added brief class descriptions to character creation (Mateusz Logowski)
 
-- Dropping a seed in a tile with a hole now plants that seed.  The tile
-  will transform into a tree of the appropriate type at some point in the
-  spring of the following year.  Planting is currently 100% successful
-  (a tree always grows the following year), though this may change in
-  future.
+- Dropping a seed in a tile with a hole now plants that seed, and if the
+  map is not permanent (e.g., it was a randomly generated field, forest,
+  etc) then the map becomes permanent and links up to the world map.  
+  The planted tile will transform into a tree of the appropriate type at 
+  some point in the spring of the following year.  Planting is currently 
+  100% successful (a tree always grows the following year), though this 
+  may change in future.
 
 - Various code cleanups and minor refactorings.
 

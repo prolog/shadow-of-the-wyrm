@@ -1,5 +1,6 @@
 #pragma once
 #include "IActionManager.hpp"
+#include "Game.hpp"
 
 class ActionManager;
 
@@ -16,7 +17,8 @@ class DropAction : public IActionManager
     void handle_seed_planted_message(CreaturePtr creature, ItemPtr seed);
     void handle_no_item_dropped(CreaturePtr creature);
     void handle_invalid_drop_quantity(CreaturePtr creature);
-    bool plant_seed(const std::string& tree_species_id, const Coordinate& coords, TilePtr tile, MapPtr current_map);
+    bool plant_seed(CreaturePtr creature, const std::string& tree_species_id, const Coordinate& coords, TilePtr tile, MapPtr current_map);
+    void make_map_permanent(Game& game, CreaturePtr creature, MapPtr current_map);
     
     ActionCostValue do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item);
     uint get_drop_quantity(CreaturePtr creature, const uint max_quantity) const;
