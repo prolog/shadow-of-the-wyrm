@@ -197,6 +197,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "calendar_add_days", calendar_add_days);
   lua_register(L, "calendar_add_years", calendar_add_years);
   lua_register(L, "add_kill_to_creature_mortuary", add_kill_to_creature_mortuary);
+  lua_register(L, "report_coords", report_coords);
 }
 
 // Lua API helper functions
@@ -2469,6 +2470,34 @@ int add_kill_to_creature_mortuary(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to add_kill_to_creature_mortuary");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int report_coords(lua_State* ls)
+{
+  if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    CreaturePtr creature = get_creature(creature_id);
+    
+    Coordinate c = MapUtils::get_coordinate_for_creature(current_map, creature);
+    ostringstream msg;
+    msg << "(" << c.first << "," << c.second << ")";
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
+    manager.add_new_message(msg.str());
+    manager.send();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to report_coords");
     lua_error(ls);
   }
 
