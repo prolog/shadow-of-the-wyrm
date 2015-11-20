@@ -943,17 +943,17 @@
 				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
-				<Slash>-0.10</Slash>
-				<Pierce>-0.10</Pierce>
+				<Slash>0.10</Slash>
+				<Pierce>0.10</Pierce>
 				<Pound>0.0</Pound>
-				<Heat>0.15</Heat>
-				<Cold>-0.50</Cold>
-				<Acid>-0.25</Acid>
-				<Poison>-0.25</Poison>
-				<Holy>0.50</Holy>
-				<Shadow>-0.80</Shadow>
+				<Heat>-0.15</Heat>
+				<Cold>0.50</Cold>
+				<Acid>0.25</Acid>
+				<Poison>0.25</Poison>
+				<Holy>-0.50</Holy>
+				<Shadow>0.80</Shadow>
 				<Arcane>0.0</Arcane>
-				<Lightning>0.10</Lightning>
+				<Lightning>-0.10</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
@@ -995,17 +995,17 @@
 				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
-				<Slash>-0.10</Slash>
-				<Pierce>-0.10</Pierce>
+				<Slash>0.10</Slash>
+				<Pierce>0.10</Pierce>
 				<Pound>0.0</Pound>
-				<Heat>0.15</Heat>
-				<Cold>-0.50</Cold>
-				<Acid>-0.25</Acid>
-				<Poison>-0.25</Poison>
-				<Holy>0.50</Holy>
-				<Shadow>-0.80</Shadow>
+				<Heat>-0.15</Heat>
+				<Cold>0.50</Cold>
+				<Acid>0.25</Acid>
+				<Poison>0.25</Poison>
+				<Holy>-0.50</Holy>
+				<Shadow>0.80</Shadow>
 				<Arcane>0.0</Arcane>
-				<Lightning>0.10</Lightning>
+				<Lightning>-0.10</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
@@ -1050,17 +1050,17 @@
 				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
-				<Slash>-0.10</Slash>
-				<Pierce>-0.10</Pierce>
+				<Slash>0.10</Slash>
+				<Pierce>0.10</Pierce>
 				<Pound>0.0</Pound>
-				<Heat>0.15</Heat>
-				<Cold>-0.50</Cold>
-				<Acid>-0.25</Acid>
-				<Poison>-0.25</Poison>
-				<Holy>0.50</Holy>
-				<Shadow>-0.80</Shadow>
+				<Heat>-0.15</Heat>
+				<Cold>0.50</Cold>
+				<Acid>0.25</Acid>
+				<Poison>0.25</Poison>
+				<Holy>-0.50</Holy>
+				<Shadow>0.80</Shadow>
 				<Arcane>0.0</Arcane>
-				<Lightning>0.10</Lightning>
+				<Lightning>-0.10</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
@@ -1105,16 +1105,16 @@
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
-				<Pierce>0.20</Pierce>
+				<Pierce>-0.20</Pierce>
 				<Pound>0.0</Pound>
-				<Heat>-0.50</Heat>
-				<Cold>-0.50</Cold>
-				<Acid>-0.25</Acid>
-				<Poison>-0.25</Poison>
-				<Holy>-0.50</Holy>
-				<Shadow>-0.50</Shadow>
-				<Arcane>-0.10</Arcane>
-				<Lightning>-0.10</Lightning>
+				<Heat>0.50</Heat>
+				<Cold>0.50</Cold>
+				<Acid>0.25</Acid>
+				<Poison>0.25</Poison>
+				<Holy>0.50</Holy>
+				<Shadow>0.50</Shadow>
+				<Arcane>0.10</Arcane>
+				<Lightning>0.10</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
