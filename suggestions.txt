@@ -21,7 +21,6 @@ registry, instead of failing silently.
   should give you a great chance, beaches very small, etc.
 - "Dug" (and therefore planted) status should only apply to terra firma,
   so add some checks for water/air tiles to disallow dug status.
-- Add permanence when planting a tree in a random map.
 - New effect/scroll/cantrip - "Cleansing", which prevents new creatures
   from being generated on a map.  When cursed, flips that boolean switch
   to re-enable it (and maybe ups the danger level?)
@@ -60,7 +59,6 @@ Kraphead:
   as expected?  Are scrolls even generating?
 - fix the message when a stunned monster does an incorporeal attack on
   itself.
-- points for conducts
 
 Mateusz Lagowski
 - ? for command list

@@ -947,11 +947,11 @@
 				<Pierce>0.10</Pierce>
 				<Pound>0.0</Pound>
 				<Heat>-0.15</Heat>
-				<Cold>0.50</Cold>
-				<Acid>0.25</Acid>
-				<Poison>0.25</Poison>
-				<Holy>-0.50</Holy>
-				<Shadow>0.80</Shadow>
+				<Cold>0.25</Cold>
+				<Acid>0.15</Acid>
+				<Poison>0.15</Poison>
+				<Holy>-0.20</Holy>
+				<Shadow>0.40</Shadow>
 				<Arcane>0.0</Arcane>
 				<Lightning>-0.10</Lightning>
 			</Resistances>
@@ -999,11 +999,11 @@
 				<Pierce>0.10</Pierce>
 				<Pound>0.0</Pound>
 				<Heat>-0.15</Heat>
-				<Cold>0.50</Cold>
-				<Acid>0.25</Acid>
-				<Poison>0.25</Poison>
-				<Holy>-0.50</Holy>
-				<Shadow>0.80</Shadow>
+				<Cold>0.25</Cold>
+				<Acid>0.15</Acid>
+				<Poison>0.15</Poison>
+				<Holy>-0.20</Holy>
+				<Shadow>0.40</Shadow>
 				<Arcane>0.0</Arcane>
 				<Lightning>-0.10</Lightning>
 			</Resistances>
@@ -1054,11 +1054,11 @@
 				<Pierce>0.10</Pierce>
 				<Pound>0.0</Pound>
 				<Heat>-0.15</Heat>
-				<Cold>0.50</Cold>
-				<Acid>0.25</Acid>
-				<Poison>0.25</Poison>
-				<Holy>-0.50</Holy>
-				<Shadow>0.80</Shadow>
+				<Cold>0.25</Cold>
+				<Acid>0.15</Acid>
+				<Poison>0.15</Poison>
+				<Holy>-0.20</Holy>
+				<Shadow>0.40</Shadow>
 				<Arcane>0.0</Arcane>
 				<Lightning>-0.10</Lightning>
 			</Resistances>
