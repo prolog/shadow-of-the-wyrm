@@ -54,8 +54,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   etc) then the map becomes permanent and links up to the world map.  
   The planted tile will transform into a tree of the appropriate type at 
   some point in the spring of the following year.  Planting is currently 
-  100% successful (a tree always grows the following year), though this 
-  may change in future.
+  100% successful when planting on overworld maps (a tree always grows 
+  the following year), and 0% on other map types (dungeons, caverns, etc),
+  though this may change in future.
 
 - Various code cleanups and minor refactorings.
 

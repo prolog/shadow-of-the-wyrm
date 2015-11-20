@@ -13,7 +13,7 @@ enum struct MapType
 class MapID
 {
   public:
-    static const std::string MAP_ID_OVERWORLD;
+    static const std::string MAP_ID_WORLD_MAP;
 
   protected:
     MapID();

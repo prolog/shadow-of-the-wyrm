@@ -224,8 +224,13 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
   {
     Game& game = Game::instance();
     WorldPtr world = game.get_current_world();
-    
-    if (world)
+    planted = true;
+
+    // Regardless of whether anything can actually grow on the tile, mark
+    // it as planted.
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_PLANTED, to_string(true));
+
+    if (world && current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
     {
       TreeSpeciesFactory tsf;
 
@@ -238,16 +243,13 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
       vector<TileTransform>& tt_v = current_map->get_tile_transforms_ref()[sprout_time];
 
       tt_v.push_back(tt);
-      tile->set_additional_property(TileProperties::TILE_PROPERTY_PLANTED, to_string(true));
 
       // Planting a tree alters the world by making the map permanent, if it 
       // was not already so.
-      if (!current_map->get_permanent())
+      if (!current_map->get_permanent() && current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
       {
         make_map_permanent(game, creature, current_map);
       }
-
-      planted = true;
     }
   }
   
@@ -265,7 +267,7 @@ void DropAction::make_map_permanent(Game& game, CreaturePtr creature, MapPtr cur
     // Assumption: if a creature (realistically, the player) is in a
     // previously-random map on the overworld, it is connected to
     // the player's position on that map.
-    MapPtr world_map = game.get_map_registry_ref().get_map(MapID::MAP_ID_OVERWORLD);
+    MapPtr world_map = game.get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
 
     if (world_map != nullptr)
     {

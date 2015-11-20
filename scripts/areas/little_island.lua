@@ -33,5 +33,5 @@ for k,v in pairs(little_island) do
 end
 
 -- The game starts out on Little Island, at Isen Dun.
-map_add_location("overworld", "STARTING_LOCATION", 96, 96)
+map_add_location("world_map", "STARTING_LOCATION", 96, 96)
 
