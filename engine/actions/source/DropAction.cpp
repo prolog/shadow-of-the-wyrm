@@ -246,7 +246,7 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
 
       // Planting a tree alters the world by making the map permanent, if it 
       // was not already so.
-      if (!current_map->get_permanent() && current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+      if (!current_map->get_permanent())
       {
         make_map_permanent(game, creature, current_map);
       }
