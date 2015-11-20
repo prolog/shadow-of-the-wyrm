@@ -11,7 +11,7 @@ class CreatureActionKeys
     static const std::string ACTION_DESECRATE_GOOD; // Kicking pews, altars, etc.
     static const std::string ACTION_DESECRATE_NEUTRAL;
     static const std::string ACTION_DESECRATE_EVIL;
-	static const std::string ACTION_GRAVEROBBING;
+  	static const std::string ACTION_GRAVEROBBING;
 };
 
 using CreatureActionMap = std::map<std::string, bool>;
