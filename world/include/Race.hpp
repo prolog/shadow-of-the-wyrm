@@ -92,6 +92,9 @@ class Race
     void set_corporeal(const BoolStatistic& new_corporeal);
     BoolStatistic get_corporeal() const;
 
+    void set_undead(const BoolStatistic& new_undead);
+    BoolStatistic get_undead() const;
+
     void set_flying(const BoolStatistic& new_flying);
     BoolStatistic get_flying() const;
 
@@ -144,7 +147,7 @@ class Race
     Statistic starting_speed; // starting speed is set by race.
 
     BoolStatistic corporeal; // Most races are corporeal; spirits aren't.
-
+    BoolStatistic undead; // Good and neutral gods don't think zombies are good eating
     BoolStatistic flying; // Birds can fly - the rest aren't so lucky.
     
     // Available deities on creation
