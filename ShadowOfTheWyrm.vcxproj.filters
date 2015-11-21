@@ -3534,6 +3534,12 @@
     <ClInclude Include="world\tiles\include\TreeSpeciesFactory.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\items\include\UnidentifiedItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\LuaItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6904,6 +6910,9 @@
     </ClCompile>
     <ClCompile Include="world\source\MapTypes.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

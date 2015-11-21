@@ -13,6 +13,7 @@
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "Log.hpp"
+#include "LuaItemFilter.hpp"
 #include "LuaUtils.hpp"
 #include "ItemManager.hpp"
 #include "MapExitUtils.hpp"
@@ -2023,14 +2024,21 @@ int select_item(lua_State* ls)
   string item_id;
   string item_base_id;
 
-  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
   {
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
+    int item_filter = CITEM_FILTER_NONE;
+
+    if (lua_gettop(ls) == 2 && lua_isnumber(ls, 2))
+    {
+      item_filter = lua_tointeger(ls, 2);
+    }
+
     Game& game = Game::instance();
-    list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
-    ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), empty_filter, false);
+    list<IItemFilterPtr> selected_filter = ItemFilterFactory::create_script_filter(item_filter);
+    ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, false);
 
     if (item != nullptr)
     {
