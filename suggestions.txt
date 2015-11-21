@@ -24,9 +24,6 @@ registry, instead of failing silently.
 - New effect/scroll/cantrip - "Cleansing", which prevents new creatures
   from being generated on a map.  When cursed, flips that boolean switch
   to re-enable it (and maybe ups the danger level?)
-- Eating the corpse of an undead creature should fire DESECRATE_GOOD
-  and DESECRATE_NEUTRAL to balance the advantages of the resistances
-  gained.
 
 Akeley:
 - ESC as well as 'z'

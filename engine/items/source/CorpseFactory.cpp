@@ -93,7 +93,8 @@ void CorpseFactory::set_internal_details(CreaturePtr creature, ItemPtr corpse)
   if (creature && corpse)
   {
     // Set the corpse's race ID so that cannibalism can be punished when
-    // necessary.
+    // necessary.  This is also used to see if the creature is eating something
+    // that really displeases the Nine (undead for good deities, etc).
     corpse->set_additional_property(ConsumableConstants::CORPSE_RACE_ID, creature->get_race_id());
   }
 }

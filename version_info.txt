@@ -58,6 +58,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   the following year), and 0% on other map types (dungeons, caverns, etc),
   though this may change in future.
 
+- Good and neutral deities now very strongly dislike the consumption of
+  undead corpses.
+
 - Various code cleanups and minor refactorings.
 
 - New creatures: Nama.

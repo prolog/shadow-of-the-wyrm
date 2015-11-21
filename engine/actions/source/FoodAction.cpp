@@ -12,6 +12,7 @@
 #include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RaceManager.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "TextMessages.hpp"
 
@@ -145,6 +146,24 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
       if (!corpse_race_id.empty() && (corpse_race_id == creature->get_race_id()))
       {
         Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_CANNIBALISM);
+      }
+
+      // Likewise, eating undead is decidedly not kosher for many.
+      if (!corpse_race_id.empty())
+      {
+        RaceManager rm;
+        RacePtr corpse_race = rm.get_race(corpse_race_id);
+
+        if (corpse_race != nullptr)
+        {
+          if (corpse_race->get_undead().get_current())
+          {
+            DeityActionManager& dam = Game::instance().get_deity_action_manager_ref();
+            
+            dam.notify_action(creature, CreatureActionKeys::ACTION_DESECRATE_GOOD);
+            dam.notify_action(creature, CreatureActionKeys::ACTION_DESECRATE_NEUTRAL);
+          }
+        }
       }
 
       // Some foods have seeds.

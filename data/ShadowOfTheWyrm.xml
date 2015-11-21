@@ -936,6 +936,7 @@
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Undead>1</Undead>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
@@ -988,6 +989,7 @@
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Undead>1</Undead>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
@@ -1043,6 +1045,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>0</Corporeal>
+			<Undead>1</Undead>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
