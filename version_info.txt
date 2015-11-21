@@ -89,6 +89,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   - A number of monster races (undead, dragon, etc) had their resistances
     and vulnerabilities inverted.
 
+  - Ensured that piercing/incorporeal attack messages don't fire when a
+    creature attacks itself (kraphead).
+
 Shadow of the Wyrm v0.4.3 "Carcassi"
 - Version declared October 6, 2015.  Version finalized November 3, 2015.
 

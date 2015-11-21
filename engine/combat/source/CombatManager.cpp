@@ -390,16 +390,19 @@ void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, Crea
 
   string attacked_creature_desc;
 
-  if (piercing)
+  if (creature && attacked_creature && (creature->get_id() != attacked_creature->get_id()))
   {
-    attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
-    additional_messages.push_back(CombatTextKeys::get_pierce_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
-  }
+    if (piercing)
+    {
+      attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
+      additional_messages.push_back(CombatTextKeys::get_pierce_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
+    }
 
-  if (incorporeal)
-  {
-    attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
-    additional_messages.push_back(CombatTextKeys::get_incorporeal_attack_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
+    if (incorporeal)
+    {
+      attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
+      additional_messages.push_back(CombatTextKeys::get_incorporeal_attack_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
+    }
   }
   
   if (!additional_messages.empty())
