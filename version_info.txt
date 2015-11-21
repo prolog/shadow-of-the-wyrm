@@ -58,8 +58,13 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   the following year), and 0% on other map types (dungeons, caverns, etc),
   though this may change in future.
 
+- Digging on a water- or air-based tile is now impossible.
+
 - Good and neutral deities now very strongly dislike the consumption of
   undead corpses.
+
+- Idem now only shows you the items in your inventory that are not
+  identified.
 
 - Various code cleanups and minor refactorings.
 

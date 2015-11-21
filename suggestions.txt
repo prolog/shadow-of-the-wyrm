@@ -8,7 +8,6 @@ registry, instead of failing silently.
 - Multi-map areas (the central city!)
 - Add fishing, foraging
 - Evil story arc
-- Create an "unidentified items" filter for Idem
 - Linux support.  
 - Investigate targetting not staying properly some (all?) of the time.
 - Some more information in-game about offering at altars
@@ -19,8 +18,6 @@ registry, instead of failing silently.
   random generation.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
-- "Dug" (and therefore planted) status should only apply to terra firma,
-  so add some checks for water/air tiles to disallow dug status.
 - New effect/scroll/cantrip - "Cleansing", which prevents new creatures
   from being generated on a map.  When cursed, flips that boolean switch
   to re-enable it (and maybe ups the danger level?)
