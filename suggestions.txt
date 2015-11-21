@@ -52,8 +52,6 @@ Kraphead:
 - Option to keep adventuring after killing Amaurosis
 - scale down enchantments - too powerful!
 - option for never moving on to dangerous terrain.
-- two moon amulet not being removed when wearing - bug is in
-  ItemManager::remove_item_from_eq_or_inv
 - artifact boots
 - item generation: more arrows, more ivory, other things not generating
   as expected?  Are scrolls even generating?

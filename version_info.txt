@@ -92,6 +92,10 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   - Ensured that piercing/incorporeal attack messages don't fire when a
     creature attacks itself (kraphead).
 
+  - The code to remove items (e.g., the Exile taking the Amulet of the
+    Two Moons) wasn't properly handling the case when the item was
+    equipped in the inventory (kraphead).
+
 Shadow of the Wyrm v0.4.3 "Carcassi"
 - Version declared October 6, 2015.  Version finalized November 3, 2015.
 
