@@ -3540,6 +3540,9 @@
     <ClInclude Include="engine\items\include\LuaItemFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\ItemEnchantmentCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6913,6 +6916,9 @@
     </ClCompile>
     <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp">
       <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
