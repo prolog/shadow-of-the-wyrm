@@ -8,6 +8,7 @@
 #include "global_prototypes.hpp"
 #include "BresenhamLine.hpp"
 #include "Display.hpp"
+#include "Random.hpp"
 #include "RNG.hpp"
 #include "Calendar.hpp"
 #include "Date.hpp"
@@ -59,6 +60,7 @@ void output_map(string map, string filename);
 void test_rng();
 void test_range();
 void test_dice();
+void test_poisson();
 
 // Miscellaneous testing
 void misc();
@@ -693,6 +695,49 @@ void test_dice()
   }
 }
 
+void test_poisson()
+{
+  int mean = 1;
+  int times = 1;
+
+  while (mean > 0 && times > 0)
+  {
+    cout << "Poisson calculator (mean <= 0 or times <= 0 to quit)" << endl;
+    cout << "Mean: ";
+    cin >> mean;
+    cout << "Times: ";
+    cin >> times;
+
+    if (mean > 0 && times > 0)
+    {
+      int m = 0;
+      int min = std::numeric_limits<int>::max();
+      int max = std::numeric_limits<int>::min();
+      PoissonDistribution pd(mean);
+
+      for (int i = 0; i < times; i++)
+      {
+        int v = pd.next();
+
+        if (v < min)
+        {
+          min = v;
+        }
+
+        if (v > max)
+        {
+          max = v;
+        }
+
+        m += v;
+      }
+
+      cout << "Calculated mean: " << (m / static_cast<float>(times)) << endl;
+      cout << "Min, max: " << min << ", " << max << endl << endl;
+    }
+  }
+}
+
 void misc()
 {
   int choice = 0;
@@ -787,6 +832,7 @@ void test_rng()
     cout << "RNG Test!" << endl << endl;
     cout << "1. Range" << endl;
     cout << "2. Dice" << endl;
+    cout << "3. Poisson" << endl;
     cout << "-1. Quit" << endl << endl;
     cin >> option;
 
@@ -797,6 +843,9 @@ void test_rng()
         break;
       case 2:
         test_dice();
+        break;
+      case 3:
+        test_poisson();
         break;
       default:
         break;

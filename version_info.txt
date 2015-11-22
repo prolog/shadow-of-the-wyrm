@@ -66,6 +66,11 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Idem now only shows you the items in your inventory that are not
   identified.
 
+- Item enchantments were way too powerful.  Instead of using a uniform
+  random number from 1 to (danger level/2), the algorithm is now 
+  mostly Poisson-based, with a typical mean of (danger level/8).  This
+  is likely to be tweaked again in future releases.
+
 - Various code cleanups and minor refactorings.
 
 - New creatures: Nama.

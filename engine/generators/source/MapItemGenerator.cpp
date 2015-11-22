@@ -1,6 +1,7 @@
 #include "MapItemGenerator.hpp"
 #include "CreationUtils.hpp"
 #include "Game.hpp"
+#include "ItemEnchantmentCalculator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
@@ -46,10 +47,11 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
 
   // Generate the vector of possible items for this map.
   ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, max_danger_level, rarity);
+  ItemEnchantmentCalculator iec;
 
   while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
   {
-    int enchant_points = RNG::range(0, (danger_level / 2));
+    int enchant_points = iec.calculate_enchantments(danger_level);
     ItemPtr generated_item = igm.generate_item(am, generation_vec, enchant_points);
 
     bool placed_item = false;

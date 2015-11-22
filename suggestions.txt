@@ -21,6 +21,7 @@ registry, instead of failing silently.
 - New effect/scroll/cantrip - "Cleansing", which prevents new creatures
   from being generated on a map.  When cursed, flips that boolean switch
   to re-enable it (and maybe ups the danger level?)
+- Crash bug is still present: find out what's causing it!
 
 Akeley:
 - ESC as well as 'z'
@@ -47,7 +48,6 @@ Kraphead:
 - auto-displace when bumping friendly creatures
 - implement dual wield
 - Option to keep adventuring after killing Amaurosis
-- scale down enchantments - too powerful!
 - option for never moving on to dangerous terrain.
 - artifact boots
 - item generation: more arrows, more ivory, other things not generating
