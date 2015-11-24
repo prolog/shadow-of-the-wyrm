@@ -226,10 +226,26 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
     
     // Initial hit point; dice are used to represent a range of possible values.  A random value will be
     // generated when the creature is created, based on the Dice provided.
-    XMLNode dice_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "HP");
-    Dice dice;
-    parse_dice(dice, dice_node);
-    cgv.set_initial_hit_points(dice);
+    XMLNode hp_dice_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "HP");
+    Dice hp_dice;
+    parse_dice(hp_dice, hp_dice_node);
+    cgv.set_initial_hit_points(hp_dice);
+
+    // Initial arcana points.  If none are provided, the base HP are used.
+    XMLNode ap_dice_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "AP");
+    Dice ap_dice;
+
+    if (!ap_dice_node.is_null())
+    {
+      parse_dice(ap_dice, ap_dice_node);
+    }
+    else
+    {
+      ap_dice = hp_dice;
+      ap_dice.set_num_dice(std::max<int>(1, ap_dice.get_num_dice() / 2));
+    }
+
+    cgv.set_initial_arcana_points(ap_dice);
     
     // Base experience value; a range around this value will be used to generate the experience value
     // for each generated creature.

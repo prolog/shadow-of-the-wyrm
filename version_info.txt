@@ -71,6 +71,8 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   mostly Poisson-based, with a typical mean of (danger level/8).  This
   is likely to be tweaked again in future releases.
 
+- For generated NPCs, set AP to be half the base HP, if not specified.
+
 - Various code cleanups and minor refactorings.
 
 - New creatures: Nama.
