@@ -73,6 +73,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 
 - For generated NPCs, set AP to be half the base HP, if not specified.
 
+- Spellbooks have been set to uncommon, so they should be generated much
+  less frequently (akeley).
+
 - Various code cleanups and minor refactorings.
 
 - New creatures: Nama.
