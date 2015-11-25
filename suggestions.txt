@@ -22,10 +22,19 @@ registry, instead of failing silently.
   from being generated on a map.  When cursed, flips that boolean switch
   to re-enable it (and maybe ups the danger level?)
 - Crash bug is still present: find out what's causing it!
+- Named in-game holidays/special days.  Should get an in-game message
+  when that day occurs.
+- As-is, the common/uncommon/rare code favours common items too heavily.
+  Update it so that:
+  - When rarity is common, only common generates
+  - When rarity is uncommon, uncommon generates, and common generates 20%
+    of the time
+  - When rarity is rare, rare generates, uncommon generates 20% of the
+    time, and common generates 2% of the time.
 
 Akeley:
 - ESC as well as 'z'
-- too much food/spellbooks?
+- too much food?
 
 barrabus: 
 - Extra descs for items.
