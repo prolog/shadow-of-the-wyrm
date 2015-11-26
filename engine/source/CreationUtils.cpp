@@ -30,11 +30,11 @@ Rarity CreationUtils::generate_rarity()
 {
   int rand = RNG::range(1, 100);
 
-  if (rand < 90)
+  if (rand < 75)
   {
     return Rarity::RARITY_COMMON;
   }
-  else if (rand < 99)
+  else if (rand < 91)
   {
     return Rarity::RARITY_UNCOMMON;
   }

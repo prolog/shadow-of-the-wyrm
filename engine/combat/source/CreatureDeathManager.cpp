@@ -110,7 +110,7 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr dead_cre
     ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, danger_level, rarity);
 
     int enchant_points = RNG::range(0, (danger_level / 2));
-    ItemPtr generated_item = igm.generate_item(game.get_action_manager_ref(), generation_vec, enchant_points);
+    ItemPtr generated_item = igm.generate_item(game.get_action_manager_ref(), generation_vec, rarity, enchant_points);
 
     if (generated_item != nullptr)
     {

@@ -52,7 +52,7 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
   while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
   {
     int enchant_points = iec.calculate_enchantments(danger_level);
-    ItemPtr generated_item = igm.generate_item(am, generation_vec, enchant_points);
+    ItemPtr generated_item = igm.generate_item(am, generation_vec, rarity, enchant_points);
 
     bool placed_item = false;
 

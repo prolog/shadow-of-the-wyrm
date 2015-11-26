@@ -76,6 +76,11 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Spellbooks have been set to uncommon, so they should be generated much
   less frequently (akeley).
 
+- Item generation was ridiculously biased towards generating common items,
+  as those make up the majority of items in the game.  Rewrote the
+  item generation algorithm to generate a larger proportion of uncommon
+  and rare items.
+
 - Various code cleanups and minor refactorings.
 
 - New creatures: Nama.
