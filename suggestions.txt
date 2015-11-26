@@ -24,17 +24,11 @@ registry, instead of failing silently.
 - Crash bug is still present: find out what's causing it!
 - Named in-game holidays/special days.  Should get an in-game message
   when that day occurs.
-- As-is, the common/uncommon/rare code favours common items too heavily.
-  Update it so that:
-  - When rarity is common, only common generates
-  - When rarity is uncommon, uncommon generates, and common generates 20%
-    of the time
-  - When rarity is rare, rare generates, uncommon generates 20% of the
-    time, and common generates 2% of the time.
+- Update MapTester config so that "generation runs" of creatures and
+  items can be done and dumped to disk.
 
 Akeley:
 - ESC as well as 'z'
-- too much food?
 
 barrabus: 
 - Extra descs for items.
@@ -59,8 +53,7 @@ Kraphead:
 - Option to keep adventuring after killing Amaurosis
 - option for never moving on to dangerous terrain.
 - artifact boots
-- item generation: more arrows, more ivory, other things not generating
-  as expected?  Are scrolls even generating?
+- item generation: more arrows, more ivory
 
 Mateusz Lagowski
 - ? for command list

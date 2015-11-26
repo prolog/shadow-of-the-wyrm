@@ -139,7 +139,7 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
 
       for (int i = 0; i < num_items_found; i++)
       {
-        ItemPtr item = igm.generate_item(am, igv, RNG::range(1, static_cast<int>(danger_level / 2)));
+        ItemPtr item = igm.generate_item(am, igv, Rarity::RARITY_RARE, RNG::range(1, static_cast<int>(danger_level / 2)));
         
         if (item != nullptr)
         {
