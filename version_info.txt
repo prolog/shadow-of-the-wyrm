@@ -81,6 +81,11 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   item generation algorithm to generate a larger proportion of uncommon
   and rare items.
 
+- When out of depth creatures appear, there is a greater chance for
+  uncommon items to appear as well.  Right now this results in a
+  preponderance of potions and spellbooks, but will sort itself out over
+  time as more items are added to the game.
+
 - Various code cleanups and minor refactorings.
 
 - New creatures: Nama.

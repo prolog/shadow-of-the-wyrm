@@ -14,9 +14,9 @@ using namespace std;
 const int MapCreatureGenerator::OUT_OF_DEPTH_CREATURES_CHANCE = 15;
 
 // Generate the creatures.  Returns true if creatures were created, false otherwise.
-pair<bool, int> MapCreatureGenerator::generate_creatures(MapPtr map, const int danger_level, const std::map<std::string, std::string>& additional_properties)
+tuple<bool, int, Rarity> MapCreatureGenerator::generate_creatures(MapPtr map, const int danger_level, const std::map<std::string, std::string>& additional_properties)
 {
-  pair<bool, int> creatures_generated(false, 0);
+  tuple<bool, int, Rarity> creatures_generated(false, 0, Rarity::RARITY_COMMON);
 
   if (additional_properties.find(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES) != additional_properties.end())
   {
@@ -28,10 +28,10 @@ pair<bool, int> MapCreatureGenerator::generate_creatures(MapPtr map, const int d
   }
 }
 
-pair<bool, int> MapCreatureGenerator::generate_initial_set_creatures(MapPtr map, const std::map<string, string>& additional_properties)
+tuple<bool, int, Rarity> MapCreatureGenerator::generate_initial_set_creatures(MapPtr map, const std::map<string, string>& additional_properties)
 {
   // -1 indicates that there was no generated danger level - a set list of creatures was generated.
-  pair<bool, int> creatures_generated(false, -1);
+  tuple<bool, int, Rarity> creatures_generated(false, -1, Rarity::RARITY_COMMON);
 
   string initial_creatures = additional_properties.at(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
   vector<string> creature_ids = String::create_string_vector_from_csv_string(initial_creatures);
@@ -40,7 +40,7 @@ pair<bool, int> MapCreatureGenerator::generate_initial_set_creatures(MapPtr map,
   {
     for (const string& creature_id : creature_ids)
     {
-      creatures_generated.first = MapUtils::place_creature_randomly(map, creature_id);
+      std::get<0>(creatures_generated) = MapUtils::place_creature_randomly(map, creature_id);
     }
   }
   catch (...)
@@ -51,9 +51,9 @@ pair<bool, int> MapCreatureGenerator::generate_initial_set_creatures(MapPtr map,
   return creatures_generated;
 }
 
-pair<bool, int> MapCreatureGenerator::generate_random_creatures(MapPtr map, const int danger_level, const std::map<string, string>& additional_properties)
+tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr map, const int danger_level, const std::map<string, string>& additional_properties)
 {
-  pair<bool, int> creatures_generated(false, 0);
+  tuple<bool, int, Rarity> creatures_generated(false, 0, Rarity::RARITY_COMMON);
   TileType map_terrain_type = map->get_terrain_type();
 
   Dimensions dim = map->size();
@@ -63,6 +63,7 @@ pair<bool, int> MapCreatureGenerator::generate_random_creatures(MapPtr map, cons
   CreatureGenerationManager cgm;
   
   Rarity rarity = CreationUtils::generate_rarity();
+  std::get<2>(creatures_generated) = rarity;
 
   Game& game = Game::instance();
 
@@ -78,6 +79,14 @@ pair<bool, int> MapCreatureGenerator::generate_random_creatures(MapPtr map, cons
   while (RNG::percent_chance(OUT_OF_DEPTH_CREATURES_CHANCE))
   {
     max_danger_level++;
+
+    // If the max danger level has increased, there is also a chance that the
+    // rarity will increase, and if so, this will carry over to item generation
+    // as well.
+    if (rarity == Rarity::RARITY_COMMON)
+    {
+      rarity = Rarity::RARITY_UNCOMMON;
+    }
   }
 
   CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
@@ -117,17 +126,17 @@ pair<bool, int> MapCreatureGenerator::generate_random_creatures(MapPtr map, cons
 // Add the creature to the map.  Update necessary values/counters surrounding
 // creature generation.  If the creature is out of depth, potentially add a
 // message about this.
-void MapCreatureGenerator::add_creature_to_map_and_potentially_notify(Game& game, CreaturePtr generated_creature, MapPtr map, IMessageManager& manager, const int danger_level, const int creature_row, const int creature_col, unsigned int& current_creatures_placed, pair<bool, int>& creatures_generated, bool& out_of_depth_msg_added)
+void MapCreatureGenerator::add_creature_to_map_and_potentially_notify(Game& game, CreaturePtr generated_creature, MapPtr map, IMessageManager& manager, const int danger_level, const int creature_row, const int creature_col, unsigned int& current_creatures_placed, tuple<bool, int, Rarity>& creatures_generated, bool& out_of_depth_msg_added)
 {
   Coordinate coords(creature_row, creature_col);
   GameUtils::add_new_creature_to_map(game, generated_creature, map, coords);
 
-  if (!creatures_generated.first)
+  if (!std::get<0>(creatures_generated))
   {
-    creatures_generated.first = true;
+    std::get<0>(creatures_generated) = true;
   }
 
-  creatures_generated.second = std::max<int>(creatures_generated.second, generated_creature->get_level().get_base());
+  std::get<1>(creatures_generated) = std::max<int>(std::get<1>(creatures_generated), generated_creature->get_level().get_base());
 
   if (!out_of_depth_msg_added && generated_creature->get_level().get_base() > danger_level)
   {
