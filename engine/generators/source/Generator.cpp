@@ -70,7 +70,7 @@ void Generator::initialize(MapPtr map, const int danger_level)
 // on the map.
 void Generator::create_entities(MapPtr map, const int danger_level, const bool create_creatures, const bool create_items)
 {
-  pair<bool, int> creature_details(false, -1);
+  tuple<bool, int, Rarity> creature_details(false, -1, Rarity::RARITY_COMMON);
 
   if (create_creatures)
   {
@@ -124,7 +124,7 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
 // Seed the initial items.  Returns true if the items were created, false otherwise.
 // By default, no initial items are generated.  This function should be overridden
 // for generators where this is expected (dungeons, maybe villages, etc).
-bool Generator::generate_initial_items(MapPtr map, const int danger_level, const pair<bool, int>& creature_details)
+bool Generator::generate_initial_items(MapPtr map, const int danger_level, const tuple<bool, int, Rarity>& creature_details)
 {
   MapItemGenerator mig;
   return mig.generate_items(map, danger_level, creature_details);
