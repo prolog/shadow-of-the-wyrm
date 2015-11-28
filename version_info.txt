@@ -86,6 +86,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   preponderance of potions and spellbooks, but will sort itself out over
   time as more items are added to the game.
 
+- Humanoids now have a base chance to be carrying a small amount of
+  ivory pieces.
+
 - Various code cleanups and minor refactorings.
 
 - New creatures: Nama.
