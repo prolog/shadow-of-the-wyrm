@@ -9,12 +9,14 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "ItemGenerationManager.hpp"
+#include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RaceConstants.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 
-using std::string;
+using namespace std;
 
 CreatureDeathManager::CreatureDeathManager(CreaturePtr a_creature, CreaturePtr d_creature, MapPtr current_map)
 : DeathManager(a_creature, d_creature, current_map)
@@ -100,13 +102,31 @@ void CreatureDeathManager::remove_creature_equipment_and_drop_inventory_on_tile(
 void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr dead_creature, IInventoryPtr ground) const
 {
   Game& game = Game::instance();
+  vector<ItemPtr> generated_items;
+  ItemGenerationManager igm;
+  ItemManager im;
+  RaceManager rm;
 
-  // When a creature dies, there is a small chance it will drop an item.
+  if (dead_creature)
+  {
+    if (rm.is_race_or_descendent(dead_creature->get_race_id(), RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
+    {
+      // When a humanoid dies, there is a chance for a drop of ivory pieces.
+      if (RNG::percent_chance(CreatureGenerationConstants::HUMANOID_CURRENCY_RATE))
+      {
+        // Generate currency!
+        ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::dice(4, 6));
+        generated_items.push_back(ivory);
+      }
+    }
+  }
+
+  // When a creature in general dies, there is a small chance it will drop 
+  // an item.
   if (RNG::percent_chance(CreatureGenerationConstants::CREATURE_DROP_RATE))
   {
     Rarity rarity = CreationUtils::generate_rarity();
     int danger_level = dead_creature->get_level().get_current();
-    ItemGenerationManager igm;
     ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, danger_level, rarity);
 
     int enchant_points = RNG::range(0, (danger_level / 2));
@@ -114,7 +134,15 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr dead_cre
 
     if (generated_item != nullptr)
     {
-      ground->add_front(generated_item);
+      generated_items.push_back(generated_item);
+    }
+  }
+
+  for (const ItemPtr i : generated_items)
+  {
+    if (i != nullptr)
+    {
+      ground->add_front(i);
     }
   }
 }
