@@ -17,9 +17,7 @@ Statistic::Statistic(const int new_base_and_current)
 
 Statistic& Statistic::operator=(const int& rhs)
 {
-  base = rhs;
-  current = rhs;
-
+  set_base_current(rhs);
   return *this;
 }
 
@@ -31,6 +29,12 @@ bool Statistic::operator==(const Statistic& stat) const
   result = result && (current == stat.current);
 
   return result;
+}
+
+void Statistic::set_base_current(int new_base_and_current)
+{
+  base = new_base_and_current;
+  current = new_base_and_current;
 }
 
 /*

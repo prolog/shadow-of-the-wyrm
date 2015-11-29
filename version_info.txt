@@ -89,6 +89,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Humanoids now have a base chance to be carrying a small amount of
   ivory pieces.
 
+- Kicking a creature now has a chance to send the creature staggering
+  back (Mateusz Lagowski).
+
 - Various code cleanups and minor refactorings.
 
 - New creatures: Nama.
@@ -123,6 +126,11 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
   - The code to remove items (e.g., the Exile taking the Amulet of the
     Two Moons) wasn't properly handling the case when the item was
     equipped in the inventory (kraphead).
+
+  - The game would crash when it encountered a "%" when trying to print
+    the game text, because of how the printw-type functions work.  Fixed
+    up CursesDisplay to always change "%" to "%%" when doing string
+    printing.
 
 Shadow of the Wyrm v0.4.3 "Carcassi"
 - Version declared October 6, 2015.  Version finalized November 3, 2015.

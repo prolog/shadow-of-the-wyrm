@@ -326,6 +326,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\StunnedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TanningCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\TertiaryUnarmedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TimewalkCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
@@ -1106,6 +1107,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SeedCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\TertiaryUnarmedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\unit_tests\DoorBreakageCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1113,6 +1115,11 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\PhaseOfMoonCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\TertiaryUnarmedCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
