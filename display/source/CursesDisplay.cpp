@@ -314,8 +314,14 @@ void CursesDisplay::add_message(const string& message, const bool reset_cursor)
   add_message(message, Colour::COLOUR_WHITE, reset_cursor);
 }
 
-void CursesDisplay::add_message(const string& message, const Colour colour, const bool reset_cursor)
+void CursesDisplay::add_message(const string& to_add_message, const Colour colour, const bool reset_cursor)
 {
+  string message = to_add_message;
+
+  // Replace any single instances of "%", as these will cause a crash when
+  // the corresponding parameters are not present in printw.
+  boost::replace_all(message, "%", "%%");
+
   int orig_curs_y, orig_curs_x;
   getyx(stdscr, orig_curs_y, orig_curs_x);
 
@@ -685,13 +691,16 @@ void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, T
   {
     vector<pair<string, Colour>> current_text = tc->get_text();
 
-    for (const auto& text_line : current_text)
-    {
+    for (auto& text_line : current_text)
+    {  
+      string cur_text = text_line.first;
+      boost::replace_all(cur_text, "%", "%%");
+
       enable_colour(static_cast<int>(text_line.second), window);
-      mvwprintw(window, *row, cur_col, text_line.first.c_str());
+      mvwprintw(window, *row, cur_col, cur_text.c_str());
       disable_colour(static_cast<int>(text_line.second), window);
 
-      cur_col += text_line.first.size();
+      cur_col += cur_text.size();
     }
 
     *row += line_incr;
@@ -738,7 +747,11 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       display_option << "  [" << current_option.get_id_char() << "] ";
 
       int ocol = *col;
-      mvwprintw(window, *row, ocol, display_option.str().c_str());
+
+      string display_option_s = display_option.str();
+      boost::replace_all(display_option_s, "%", "%%");
+
+      mvwprintw(window, *row, ocol, display_option_s.c_str());
       
       getyx(window, *row, ocol);
 
@@ -853,8 +866,11 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
       {
         Colour colour = status_ailment.second;
 
+        string sail = status_ailment.first;
+        boost::replace_all(sail, "%", "%%");
+
         enable_colour(static_cast<int>(colour), stdscr);
-        mvprintw(current_row, current_col, status_ailment.first.c_str());
+        mvprintw(current_row, current_col, sail.c_str());
         disable_colour(static_cast<int>(colour), stdscr);
       }
     }
@@ -864,9 +880,11 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
 bool CursesDisplay::print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat, Colour print_colour)
 {
   bool can_print = true;
+  string stat = current_stat;
+  boost::replace_all(stat, "%", "%%");
 
   enable_colour(static_cast<int>(print_colour), stdscr);
-  mvprintw(*current_row, *current_col, current_stat.c_str());
+  mvprintw(*current_row, *current_col, stat.c_str());
   can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat);
   disable_colour(static_cast<int>(print_colour), stdscr);
 
@@ -901,7 +919,10 @@ bool CursesDisplay::update_synopsis_row_and_column(const unsigned int initial_ro
 
 void CursesDisplay::display_header(const string& header_text, WINDOW* window, const int display_line)
 {
-  size_t header_text_size = header_text.size();
+  string header = header_text;
+  boost::replace_all(header, "%", "%%");
+
+  size_t header_text_size = header.size();
 
   unsigned int header_start = (TERMINAL_MAX_COLS/2) - (header_text_size/2);
   unsigned int header_end = (TERMINAL_MAX_COLS/2) - (header_text_size/2) + header_text_size;
@@ -911,7 +932,7 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
     mvwprintw(window, display_line, i, "-");
   }
   
-  mvwprintw(window, display_line, header_start, header_text.c_str());
+  mvwprintw(window, display_line, header_start, header.c_str());
   
   for (unsigned int i = header_end+1; i < TERMINAL_MAX_COLS; i++)
   {

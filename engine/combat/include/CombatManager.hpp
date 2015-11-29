@@ -6,6 +6,8 @@
 #include "DamageTypes.hpp"
 #include "StatusEffect.hpp"
 
+class Game;
+
 class CombatManager
 {
   public:
@@ -48,6 +50,7 @@ class CombatManager
     bool does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type);
     
     void mark_appropriate_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success);
+    bool knock_back_creature_if_necessary(const AttackType attack_type, CreaturePtr attacking_creature, CreaturePtr attacked_creature, Game& game, MapPtr current_map);
     
     // Update the mortuary on the game and on the attacking creature.
     void update_mortuaries(CreaturePtr attacking_creature, const std::string& killed_creature_id);
