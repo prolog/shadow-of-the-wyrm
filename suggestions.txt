@@ -26,6 +26,7 @@ registry, instead of failing silently.
   when that day occurs.
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
+- Read item on floor when inventory has no scrolls/spellbooks.
 
 Akeley:
 - ESC as well as 'z'
@@ -53,7 +54,7 @@ Kraphead:
 - Option to keep adventuring after killing Amaurosis
 - option for never moving on to dangerous terrain.
 - artifact boots
-- item generation: more arrows, more ivory
+- item generation: more arrows
 
 Mateusz Lagowski
 - ? for command list
