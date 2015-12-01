@@ -583,14 +583,22 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Til
   if (needs_confirmation)
   {
     bool confirmation = false;
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-    
-    if (creature->get_is_player())
-    { 
-      manager.add_new_confirmation_message(details.second);
-      
-      confirmation = (creature->get_decision_strategy()->get_confirmation());
-      manager.clear_if_necessary();
+
+    Game& game = Game::instance();
+    Settings& settings = game.get_settings_ref();
+    bool never_move_to_danger = String::to_bool(settings.get_setting("never_move_to_danger_tiles"));
+
+    if (never_move_to_danger == false)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+
+      if (creature->get_is_player())
+      {
+        manager.add_new_confirmation_message(details.second);
+
+        confirmation = (creature->get_decision_strategy()->get_confirmation());
+        manager.clear_if_necessary();
+      }
     }
 
     return confirmation;      

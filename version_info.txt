@@ -92,6 +92,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Kicking a creature now has a chance to send the creature staggering
   back (Mateusz Lagowski).
 
+- Added a setting to always disallow moving on to dangerous tiles.  Set
+  it to false by default - players can enable it as desired (kraphead).
+
 - Various code cleanups and minor refactorings.
 
 - New creatures: Nama.
