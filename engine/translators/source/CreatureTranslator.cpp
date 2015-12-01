@@ -147,7 +147,7 @@ string CreatureTranslator::get_display_level(const CreaturePtr& c)
   string expct = std::to_string(em.get_pct_to_next_level(c));
 
   // Display %tnl after the level.  This is a Crawl-ism/MUD-ism I really enjoy.
-  level = level + expct + "%%";
+  level = level + expct + "%";
   return level;
 }
 
