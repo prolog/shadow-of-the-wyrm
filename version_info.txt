@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.4.4 "Domeniconi"
-- Version declared November 3, 2015.
+- Version declared November 3, 2015.  Version finalized December 1, 2015.
 
 - Firing through an occupied tile is now possible, when that occupied
   tile is not the terminal tile on a particular path.  The check is
