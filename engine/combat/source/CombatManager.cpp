@@ -1,8 +1,10 @@
+#include "ActionTextKeys.hpp"
 #include "AttackScript.hpp"
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
 #include "CoordUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DamageText.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
@@ -21,6 +23,7 @@
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
 #include "SpeedCalculatorFactory.hpp"
+#include "TertiaryUnarmedCalculator.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "RNG.hpp"
@@ -120,7 +123,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
       miss(attacking_creature, attacked_creature);
     }
     // Hit
-    else if (is_hit(total_roll, target_number_value))
+    else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
     {
       hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type);
       mark_for_weapon_and_combat_skills = true;
@@ -159,6 +162,9 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)
 {
   WeaponManager wm;
+  Game& game = Game::instance();
+  MapPtr current_map = game.get_current_map();
+
   if (wm.is_using_weapon(attacking_creature, attack_type))
   {
     attacking_creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_WEAPONLESS);
@@ -185,8 +191,12 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
     combat_message = combat_message + " " + hit_specific_msg;
   }
 
+  // If this is a tertiary unarmed attack (kicking), there is a chance that 
+  // the creature is knocked back, given the existence of an open, inhabitable
+  // tile.
+  knock_back_creature_if_necessary(attack_type, attacking_creature, attacked_creature, game, current_map);
+
   // Deal damage.
-  Game& game = Game::instance();
   PhaseOfMoonCalculator pomc;
   PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
 
@@ -390,16 +400,19 @@ void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, Crea
 
   string attacked_creature_desc;
 
-  if (piercing)
+  if (creature && attacked_creature && (creature->get_id() != attacked_creature->get_id()))
   {
-    attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
-    additional_messages.push_back(CombatTextKeys::get_pierce_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
-  }
+    if (piercing)
+    {
+      attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
+      additional_messages.push_back(CombatTextKeys::get_pierce_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
+    }
 
-  if (incorporeal)
-  {
-    attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
-    additional_messages.push_back(CombatTextKeys::get_incorporeal_attack_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
+    if (incorporeal)
+    {
+      attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
+      additional_messages.push_back(CombatTextKeys::get_incorporeal_attack_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
+    }
   }
   
   if (!additional_messages.empty())
@@ -444,6 +457,11 @@ bool CombatManager::is_close_miss(const int total_roll, const int target_number_
 bool CombatManager::is_automatic_miss(const int d100_roll)
 {
   return (d100_roll <= CombatConstants::AUTOMATIC_MISS_THRESHOLD);
+}
+
+bool CombatManager::is_automatic_hit(const int d100_roll)
+{
+  return (d100_roll >= CombatConstants::AUTOMATIC_HIT_THRESHOLD);
 }
 
 // Get the appropriate description for the attacked creature.
@@ -512,6 +530,52 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const stri
   }
 }
 
+bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_type, CreaturePtr attacking_creature, CreaturePtr attacked_creature, Game& game, MapPtr current_map)
+{
+  bool knocked_back = false;
+
+  if (attacking_creature && attacked_creature && attack_type == AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED)
+  {
+    // Check to see if the knock-back succeeded.
+    TertiaryUnarmedCalculator tuc;
+    int kb_chance = tuc.calculate_knock_back_pct_chance(attacking_creature);
+
+    if (RNG::percent_chance(kb_chance))
+    {
+      Direction kick_dir = CoordUtils::get_direction(current_map->get_location(attacking_creature->get_id()), current_map->get_location(attacked_creature->get_id()));
+      TilePtr tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, kick_dir, 2);
+      TilePtr next_tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, kick_dir, 3);
+      ActionManager& am = game.get_action_manager_ref();
+
+      if (MapUtils::is_tile_available_for_creature(attacked_creature, tile))
+      {
+        am.move(attacked_creature, kick_dir);
+        knocked_back = true;
+
+        if (MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))
+        {
+          am.move(attacked_creature, kick_dir);
+        }
+      }
+    }
+  }
+
+  // If the creature was knocked back, and if it is appropriate to do so,
+  // add a message.
+  CurrentCreatureAbilities cca;
+
+  // Show a message if the player is in the field of view of either creature.
+  if (knocked_back && cca.can_see(attacking_creature))
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
+    string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
+
+    manager.add_new_message(knock_back_msg);
+    manager.send();
+  }
+
+  return knocked_back;
+}
 #ifdef UNIT_TESTS
 #include "unit_tests/CombatManager_test.cpp"
 #endif

@@ -8,6 +8,9 @@ using namespace std;
 
 ItemGenerationManager::ItemGenerationManager()
 {
+  rarity_chances = { { Rarity::RARITY_COMMON,   { { Rarity::RARITY_COMMON, 100 } } },
+                     { Rarity::RARITY_UNCOMMON, { { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } },
+                     { Rarity::RARITY_RARE,     { { Rarity::RARITY_RARE, 60 }, { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } } };
 }
 
 // Generate an item generation map for the given danger level and rarity.
@@ -33,7 +36,7 @@ ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int 
 
       if (does_item_match_generation_criteria(igvals, min_danger, max_danger_level, rarity))
       {
-        generation_vec.push_back(make_pair(item_id, make_pair(item, igvals)));
+        generation_vec[igvals.get_rarity()].push_back(make_pair(item_id, make_pair(item, igvals)));
       }
     }
 
@@ -43,7 +46,35 @@ ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int 
   return generation_vec;
 }
 
-ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVec& generation_vec, const int enchant_points)
+// Get an item rarity.  This will be based on a general generational rarity.
+// Common items can only be generated for common rarities.  Uncommon items
+// have a good chance to generate an uncommon item, or else generate a
+// common item, and with a rare rarity, there's a good chance of either a
+// rare or uncommon item.
+Rarity ItemGenerationManager::get_item_rarity(const Rarity generation_rarity) const
+{
+  Rarity rarity = Rarity::RARITY_COMMON;
+
+  auto r_it = rarity_chances.find(generation_rarity);
+
+  if (r_it != rarity_chances.end())
+  {
+    vector<pair<Rarity, int>> rarity_chances = r_it->second;
+
+    for (const auto& rarity_pair : rarity_chances)
+    {
+      if (RNG::percent_chance(rarity_pair.second))
+      {
+        rarity = rarity_pair.first;
+        break;
+      }
+    }
+  }
+
+  return rarity;
+}
+
+ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVec& generation_vec, const Rarity rarity, const int enchant_points)
 {
   ItemPtr generated_item;
   Game& game = Game::instance();
@@ -52,9 +83,27 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
   // so pick one at random.
   if (!generation_vec.empty())
   {
-    uint idx = RNG::range(0, generation_vec.size()-1);
+    Rarity item_rarity = get_item_rarity(rarity);
+    vector<ItemGenerationPair> rarity_vec;
 
-    ItemGenerationPair rand_item = generation_vec[idx];
+    while (rarity_vec.empty())
+    {
+      rarity_vec = generation_vec[item_rarity];
+
+      if (rarity_vec.empty())
+      {
+        if (item_rarity == Rarity::RARITY_COMMON)
+        {
+          return generated_item;
+        }
+        else
+        {
+          item_rarity = Rarity::RARITY_COMMON;
+        }
+      }
+    }
+
+    ItemGenerationPair rand_item = rarity_vec.at(RNG::range(0, rarity_vec.size()-1));
     string item_id = rand_item.first;
 
     generated_item = ItemManager::create_item(item_id);

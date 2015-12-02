@@ -56,6 +56,7 @@
 			</Dislikes>
 			<Crowning>
 				<Artifact>delver</Artifact>
+				<Artifact>falcons_eye</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
 				<Artifact>pelter</Artifact>
@@ -129,6 +130,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -167,6 +169,7 @@
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>falcons_eye</Artifact>
 				<Artifact>pelter</Artifact>
 				<Artifact>light_of_battle</Artifact>
 				<Artifact>dragonsfist</Artifact>
@@ -200,6 +203,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -234,6 +238,7 @@
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -931,6 +936,7 @@
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Undead>1</Undead>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
@@ -938,17 +944,17 @@
 				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
-				<Slash>-0.10</Slash>
-				<Pierce>-0.10</Pierce>
+				<Slash>0.10</Slash>
+				<Pierce>0.10</Pierce>
 				<Pound>0.0</Pound>
-				<Heat>0.15</Heat>
-				<Cold>-0.50</Cold>
-				<Acid>-0.25</Acid>
-				<Poison>-0.25</Poison>
-				<Holy>0.50</Holy>
-				<Shadow>-0.80</Shadow>
+				<Heat>-0.15</Heat>
+				<Cold>0.25</Cold>
+				<Acid>0.15</Acid>
+				<Poison>0.15</Poison>
+				<Holy>-0.20</Holy>
+				<Shadow>0.40</Shadow>
 				<Arcane>0.0</Arcane>
-				<Lightning>0.10</Lightning>
+				<Lightning>-0.10</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
@@ -983,6 +989,7 @@
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Undead>1</Undead>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
@@ -990,17 +997,17 @@
 				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
-				<Slash>-0.10</Slash>
-				<Pierce>-0.10</Pierce>
+				<Slash>0.10</Slash>
+				<Pierce>0.10</Pierce>
 				<Pound>0.0</Pound>
-				<Heat>0.15</Heat>
-				<Cold>-0.50</Cold>
-				<Acid>-0.25</Acid>
-				<Poison>-0.25</Poison>
-				<Holy>0.50</Holy>
-				<Shadow>-0.80</Shadow>
+				<Heat>-0.15</Heat>
+				<Cold>0.25</Cold>
+				<Acid>0.15</Acid>
+				<Poison>0.15</Poison>
+				<Holy>-0.20</Holy>
+				<Shadow>0.40</Shadow>
 				<Arcane>0.0</Arcane>
-				<Lightning>0.10</Lightning>
+				<Lightning>-0.10</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
@@ -1038,6 +1045,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>0</Corporeal>
+			<Undead>1</Undead>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
@@ -1045,17 +1053,17 @@
 				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
-				<Slash>-0.10</Slash>
-				<Pierce>-0.10</Pierce>
+				<Slash>0.10</Slash>
+				<Pierce>0.10</Pierce>
 				<Pound>0.0</Pound>
-				<Heat>0.15</Heat>
-				<Cold>-0.50</Cold>
-				<Acid>-0.25</Acid>
-				<Poison>-0.25</Poison>
-				<Holy>0.50</Holy>
-				<Shadow>-0.80</Shadow>
+				<Heat>-0.15</Heat>
+				<Cold>0.25</Cold>
+				<Acid>0.15</Acid>
+				<Poison>0.15</Poison>
+				<Holy>-0.20</Holy>
+				<Shadow>0.40</Shadow>
 				<Arcane>0.0</Arcane>
-				<Lightning>0.10</Lightning>
+				<Lightning>-0.10</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
@@ -1100,16 +1108,16 @@
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
-				<Pierce>0.20</Pierce>
+				<Pierce>-0.20</Pierce>
 				<Pound>0.0</Pound>
-				<Heat>-0.50</Heat>
-				<Cold>-0.50</Cold>
-				<Acid>-0.25</Acid>
-				<Poison>-0.25</Poison>
-				<Holy>-0.50</Holy>
-				<Shadow>-0.50</Shadow>
-				<Arcane>-0.10</Arcane>
-				<Lightning>-0.10</Lightning>
+				<Heat>0.50</Heat>
+				<Cold>0.50</Cold>
+				<Acid>0.25</Acid>
+				<Poison>0.25</Poison>
+				<Holy>0.50</Holy>
+				<Shadow>0.50</Shadow>
+				<Arcane>0.10</Arcane>
+				<Lightning>0.10</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
@@ -1839,6 +1847,7 @@
 		<Class id="adventurer">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_1_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_1_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_1_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_1_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -1948,6 +1957,7 @@
 		<Class id="apothecary">
  			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_2_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_2_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_2_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_2_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2033,6 +2043,7 @@
 		<Class id="archer">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_3_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_3_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_3_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_3_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2246,6 +2257,7 @@
 		<Class id="artisan">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_4_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_4_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_4_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_4_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2326,6 +2338,7 @@
 		<Class id="merchant">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_5_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_5_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_5_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_5_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2412,6 +2425,7 @@
 		<Class id="minstrel">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_6_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_6_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_6_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_6_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2502,6 +2516,7 @@
 		<Class id="noble">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_7_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_7_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_7_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_7_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2589,6 +2604,7 @@
 		<Class id="oracle">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_8_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_8_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_8_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_8_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2689,6 +2705,7 @@
 		<Class id="pilgrim">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_9_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_9_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_9_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_9_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2783,6 +2800,7 @@
 		<Class id="pugilist">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_10_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_10_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_10_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_10_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2867,6 +2885,7 @@
 		<Class id="rover">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_11_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_11_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_11_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_11_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -2962,6 +2981,7 @@
 		<Class id="sage">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_12_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_12_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_12_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_12_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3055,6 +3075,7 @@
 		<Class id="seafarer">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_13_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_13_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_13_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_13_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3141,6 +3162,7 @@
 		<Class id="shepherd">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_14_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_14_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_14_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_14_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3224,6 +3246,7 @@
 		<Class id="smith">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_15_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_15_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_15_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_15_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3323,6 +3346,7 @@
 		<Class id="thief">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_16_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_16_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_16_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_16_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3418,6 +3442,7 @@
 		<Class id="warrior">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_17_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_17_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_17_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_17_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3606,6 +3631,7 @@
 		<Class id="witchling">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_18_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_18_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_18_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_18_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -3694,6 +3720,7 @@
 		<Class id="wizard">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_19_NAME</NameSID>
+			<ShortDescriptionSID>CLASS_19_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>CLASS_19_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_19_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
@@ -15919,13 +15946,48 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="nama">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>NAMA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>NAMA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>NAMA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>NAMA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>22</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>22</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>850</Exp>
+			</CreatureGeneration>
+			<Level>22</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>44</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/nama.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="idem">
 			<RaceID>03_mountainelf</RaceID>
 			<ShortDescriptionSID>IDEM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>IDEM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>IDEM_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>IDEM_SPEECH_TEXT_SID</SpeechTextSID>
-			<DecisionStrategy>immobile</DecisionStrategy>
+			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>@</Symbol>
 				<Colour>10</Colour>
@@ -20437,6 +20499,40 @@
 			</Armour>
 		</Armours>
 		<Rings>
+			<Ring id="falcons_eye">
+				<DescriptionSID>FALCONS_EYE_SID</DescriptionSID>
+				<UsageDescriptionSID>FALCONS_EYE_USAGE_SID</UsageDescriptionSID>
+				<Value>1550</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Pierce>0.15</Pierce>
+					<Arcane>0.15</Arcane>
+				</Resistances>
+				<Evade>10</Evade>
+				<Soak>6</Soak>
+			</Ring>
+			<Ring id="carpathos">
+				<DescriptionSID>CARPATHOS_SID</DescriptionSID>
+				<UsageDescriptionSID>CARPATHOS_USAGE_SID</UsageDescriptionSID>
+				<Value>1550</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Cold>0.20</Cold>
+					<Acid>0.15</Acid>
+					<Poison>0.15</Poison>
+				</Resistances>
+				<Evade>5</Evade>
+				<Soak>10</Soak>
+			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_FENCERS_RING_SID</UnidentifiedDescriptionSID>
@@ -22841,6 +22937,12 @@
 					<Colour>10</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_apple_seed</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -22856,6 +22958,12 @@
 					<Colour>1</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_cherry_pit</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -22871,6 +22979,12 @@
 					<Colour>11</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_peach_pit</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -22886,6 +23000,12 @@
 					<Colour>5</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_plum_pit</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -22901,6 +23021,12 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_pear_seed</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -23947,7 +24073,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<TextSID>ISEN_DUN_CHRONICLE_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -23963,7 +24089,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<TextSID>ON_ETERNALISM_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -23979,7 +24105,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<TextSID>ON_FAERIE_FRAGMENTS_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -23995,7 +24121,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<TextSID>STONEHEIM_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -24011,7 +24137,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<TextSID>GNORDVAR_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -24027,7 +24153,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<TextSID>YEW_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -24045,7 +24171,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>c_01_minor_healing</SpellID>
 				<Difficulty>30</Difficulty>
 			</Spellbook>
@@ -24062,7 +24188,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>c_02_flame_dart</SpellID>
 				<Difficulty>30</Difficulty>
 			</Spellbook>
@@ -24079,7 +24205,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>c_03_steel_wind</SpellID>
 				<Difficulty>35</Difficulty>
 			</Spellbook>
@@ -24096,7 +24222,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>c_04_blink</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -24113,7 +24239,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>7</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>c_05_spirit_bolt</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -24130,7 +24256,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>c_06_purify</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -24147,7 +24273,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>c_07_antimagic_shield</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -24164,7 +24290,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>c_08_bravery</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -24181,7 +24307,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_01_wreath_of_fire</SpellID>
 				<Difficulty>110</Difficulty>
 			</Spellbook>
@@ -24198,7 +24324,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_03_lightning_bolt</SpellID>
 				<Difficulty>75</Difficulty>
 			</Spellbook>
@@ -24215,7 +24341,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>12</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_02_dragon_breath</SpellID>
 				<Difficulty>100</Difficulty>
 			</Spellbook>
@@ -24232,7 +24358,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>18</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_04_shockwave</SpellID>
 				<Difficulty>115</Difficulty>
 			</Spellbook>
@@ -24249,7 +24375,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>30</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_05_flight</SpellID>
 				<Difficulty>100</Difficulty>
 			</Spellbook>
@@ -24266,7 +24392,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_06_cross_of_flame</SpellID>
 				<Difficulty>125</Difficulty>
 			</Spellbook>
@@ -24283,7 +24409,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_07_fireball</SpellID>
 				<Difficulty>125</Difficulty>
 			</Spellbook>
@@ -24300,7 +24426,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>8</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_08_elemental_mastery</SpellID>
 				<Difficulty>85</Difficulty>
 			</Spellbook>
@@ -24317,7 +24443,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_09_frost_bolt</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -24334,7 +24460,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>16</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>a_10_fire_storm</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>
@@ -24351,7 +24477,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>d_01_healing_word</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -24368,7 +24494,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>d_02_smite</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -24385,7 +24511,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>32</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>d_03_holy</SpellID>
 				<Difficulty>120</Difficulty>
 			</Spellbook>
@@ -24402,7 +24528,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>d_04_divine_wind</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -24419,7 +24545,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>d_05_divine_shield</SpellID>
 				<Difficulty>75</Difficulty>
 			</Spellbook>			
@@ -24436,7 +24562,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>d_06_cure</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>			
@@ -24453,7 +24579,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>d_07_soften</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -24470,7 +24596,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>18</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>d_08_benediction</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>			
@@ -24487,7 +24613,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>d_09_heavenly_hand</SpellID>
 				<Difficulty>80</Difficulty>
 			</Spellbook>			
@@ -24504,7 +24630,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>30</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_01_wraith_form</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>
@@ -24521,7 +24647,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_02_poison</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -24538,7 +24664,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_03_blind</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -24555,7 +24681,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_04_mute</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -24572,7 +24698,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_05_spellbind</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>
@@ -24589,7 +24715,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_06_haste</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -24606,7 +24732,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_07_slow</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -24623,7 +24749,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_08_stone</SpellID>
 				<Difficulty>115</Difficulty>
 			</Spellbook>
@@ -24640,7 +24766,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_09_curse</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -24657,7 +24783,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_10_aim</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>
@@ -24674,7 +24800,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_11_haze</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>
@@ -24691,7 +24817,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>15</DangerLevel>
-				<Rarity>0</Rarity>
+				<Rarity>1</Rarity>
 				<SpellID>m_12_timewalk</SpellID>
 				<Difficulty>80</Difficulty>
 			</Spellbook>
@@ -24841,6 +24967,96 @@
 				<Weight><Pounds>3</Pounds></Weight>
 				<Material>4</Material>
 				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_apple_seed">
+				<DescriptionSID>APPLE_SEED_SID</DescriptionSID>
+				<UsageDescriptionSID>APPLE_SEED_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>9</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_cherry_pit">
+				<DescriptionSID>CHERRY_PIT_SID</DescriptionSID>
+				<UsageDescriptionSID>CHERRY_PIT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>1</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>10</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_peach_pit">
+				<DescriptionSID>PEACH_PIT_SID</DescriptionSID>
+				<UsageDescriptionSID>PEACH_PIT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>11</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_plum_pit">
+				<DescriptionSID>PLUM_PIT_SID</DescriptionSID>
+				<UsageDescriptionSID>PLUM_PIT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>5</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_pear_seed">
+				<DescriptionSID>PEAR_SEED_SID</DescriptionSID>
+				<UsageDescriptionSID>PEAR_SEED_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>13</Value>
+					</Property>
+				</Properties>
 			</Item>
 		</MiscItems>
 	</Items>

@@ -4,7 +4,7 @@
 -- for a fee.
 if get_unidentified_item_count("player") > 0 then
   add_message_with_pause("IDEM_SPEECH_TEXT_SID")
-  local selected, item_id, item_base_id = select_item("player")
+  local selected, item_id, item_base_id = select_item("player", CITEM_FILTER_UNIDENTIFIED)
 
   if selected == true then
     -- Check the base ID to see if that type of item has already been

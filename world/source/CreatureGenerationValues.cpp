@@ -24,6 +24,7 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
   result = result && (allowable_terrain_types == cgv.allowable_terrain_types);
   result = result && (friendly == cgv.friendly);
   result = result && (initial_hit_points == cgv.initial_hit_points);
+  result = result && (initial_arcana_points == cgv.initial_arcana_points);
   result = result && (base_experience_value == cgv.base_experience_value);
   result = result && (initial_equipment == cgv.initial_equipment);
   result = result && (initial_inventory == cgv.initial_inventory);
@@ -87,6 +88,16 @@ Dice CreatureGenerationValues::get_initial_hit_points() const
   return initial_hit_points;
 }
 
+void CreatureGenerationValues::set_initial_arcana_points(const Dice& new_initial_arcana_points)
+{
+  initial_arcana_points = new_initial_arcana_points;
+}
+
+Dice CreatureGenerationValues::get_initial_arcana_points() const
+{
+  return initial_arcana_points;
+}
+
 void CreatureGenerationValues::set_base_experience_value(const uint new_base_experience)
 {
   base_experience_value = new_base_experience;
@@ -146,6 +157,7 @@ bool CreatureGenerationValues::serialize(ostream& stream) const
 
   Serialize::write_bool(stream, friendly);
   initial_hit_points.serialize(stream);
+  initial_arcana_points.serialize(stream);
   Serialize::write_uint(stream, base_experience_value);
 
   // Initial Equipment
@@ -196,6 +208,7 @@ bool CreatureGenerationValues::deserialize(istream& stream)
 
   Serialize::read_bool(stream, friendly);
   initial_hit_points.deserialize(stream);
+  initial_arcana_points.deserialize(stream);
   Serialize::read_uint(stream, base_experience_value);
 
   // Initial Equipment

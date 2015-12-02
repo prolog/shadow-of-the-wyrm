@@ -36,6 +36,16 @@ string Class::get_class_name_sid() const
   return class_name_sid;
 }
 
+void Class::set_class_short_description_sid(const string& new_class_short_description_sid)
+{
+  class_short_description_sid = new_class_short_description_sid;
+}
+
+string Class::get_class_short_description_sid() const
+{
+  return class_short_description_sid;
+}
+
 void Class::set_class_description_sid(const string& new_class_description_sid)
 {
   class_description_sid = new_class_description_sid;
@@ -201,6 +211,7 @@ string Class::str() const
   ostringstream class_details;
 
   string class_name_value = StringTable::get(class_name_sid);
+  string class_short_desc_value = StringTable::get(class_short_description_sid);
   string class_desc_value = StringTable::get(class_description_sid);
   string class_abrv_value = StringTable::get(class_abbreviation_sid);
 
@@ -216,6 +227,7 @@ string Class::str() const
                 << endl;
   class_details << class_name_value << endl;
   class_details << class_abrv_value << endl;
+  class_details << class_short_desc_value << endl;
   class_details << class_desc_value << endl;
   class_details << resistances.str() << endl;
   class_details << skills.str() << endl;

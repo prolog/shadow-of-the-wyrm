@@ -15,6 +15,7 @@ ulonglong ScoreCalculator::calculate_score(CreaturePtr creature)
     update_score_level(creature, score);
     update_score_artifacts(creature, score);
     update_score_spells(creature, score);
+    update_score_conducts(creature, score);
   }
 
   return score;
@@ -162,6 +163,27 @@ void ScoreCalculator::update_score_spells(CreaturePtr creature, ulonglong& score
 
       score += (castings * 4);
       score += (bonus * 2);
+    }
+  }
+}
+
+void ScoreCalculator::update_score_conducts(CreaturePtr creature, ulonglong& score)
+{
+  if (creature != nullptr)
+  {
+    // Each conduct is worth 100 points per level at the end of the game
+    int level = creature->get_level().get_current();
+
+    Conducts cond = creature->get_conducts_ref();
+
+    auto cond_array = cond.get_conducts();
+
+    for (const auto& conduct : cond_array)
+    {
+      if (conduct == true)
+      {
+        score += (100 * level);
+      }
     }
   }
 }

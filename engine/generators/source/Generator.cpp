@@ -70,7 +70,7 @@ void Generator::initialize(MapPtr map, const int danger_level)
 // on the map.
 void Generator::create_entities(MapPtr map, const int danger_level, const bool create_creatures, const bool create_items)
 {
-  pair<bool, int> creature_details(false, -1);
+  tuple<bool, int, Rarity> creature_details(false, -1, Rarity::RARITY_COMMON);
 
   if (create_creatures)
   {
@@ -124,7 +124,7 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
 // Seed the initial items.  Returns true if the items were created, false otherwise.
 // By default, no initial items are generated.  This function should be overridden
 // for generators where this is expected (dungeons, maybe villages, etc).
-bool Generator::generate_initial_items(MapPtr map, const int danger_level, const pair<bool, int>& creature_details)
+bool Generator::generate_initial_items(MapPtr map, const int danger_level, const tuple<bool, int, Rarity>& creature_details)
 {
   MapItemGenerator mig;
   return mig.generate_items(map, danger_level, creature_details);
@@ -239,7 +239,8 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
   TileGenerator tg;
   TilePtr tile = map->at(row, col);
   
-  if (tile)
+  // Don't overwrite an existing staircase!
+  if (tile && (!tile->get_is_staircase()))
   {
     Coordinate c(row, col);
     
@@ -291,9 +292,11 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     {
       map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
     }
+
+    return true;
   }  
   
-  return true;
+  return false;
 }
 
 // Copy the depth custom map ID properties over, so that when generating new staircases,

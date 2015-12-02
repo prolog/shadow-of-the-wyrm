@@ -282,12 +282,14 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\ISkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemBreakageCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ItemEnchantmentCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhaseOfMoonCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreConstants.hpp" />
     <ClInclude Include="engine\calculators\include\CorpseCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\SeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\StatisticsCalculators.hpp" />
     <ClInclude Include="engine\calculators\include\StatusEffectCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp" />
@@ -324,6 +326,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\StunnedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TanningCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\TertiaryUnarmedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TimewalkCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
@@ -596,6 +599,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\worship_sites\include\SnakingTempleGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\WorshipSiteGenerator.hpp" />
     <ClInclude Include="engine\include\AlignmentUtils.hpp" />
+    <ClInclude Include="engine\include\CharacterCreationDetails.hpp" />
     <ClInclude Include="engine\include\ClassManager.hpp" />
     <ClInclude Include="engine\include\CreationUtils.hpp" />
     <ClInclude Include="engine\include\Environment.hpp" />
@@ -637,9 +641,11 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\items\include\ItemMaterialFilter.hpp" />
     <ClInclude Include="engine\items\include\ItemPropertyFilter.hpp" />
     <ClInclude Include="engine\items\include\ItemTypeFilter.hpp" />
+    <ClInclude Include="engine\items\include\LuaItemFilter.hpp" />
     <ClInclude Include="engine\items\include\NullItemFilter.hpp" />
     <ClInclude Include="engine\items\include\ReadableItemFilter.hpp" />
     <ClInclude Include="engine\items\include\SquishyEquipWornLocationFilter.hpp" />
+    <ClInclude Include="engine\items\include\UnidentifiedItemFilter.hpp" />
     <ClInclude Include="engine\magic\include\BallShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\BeamShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\ConeShapeProcessor.hpp" />
@@ -791,6 +797,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\time\include\SeasonsTimeObserver.hpp" />
     <ClInclude Include="engine\time\include\SwimmingMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" />
+    <ClInclude Include="engine\time\include\TileTransformObserver.hpp" />
     <ClInclude Include="engine\time\include\TimeObserverFactory.hpp" />
     <ClInclude Include="engine\time\include\WorldTimeKeeper.hpp" />
     <ClInclude Include="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
@@ -889,6 +896,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\ItemProperties.hpp" />
     <ClInclude Include="world\include\Modifier.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
+    <ClInclude Include="world\include\RaceConstants.hpp" />
     <ClInclude Include="world\include\ScriptDetails.hpp" />
     <ClInclude Include="world\include\SkinningConstants.hpp" />
     <ClInclude Include="world\include\SmithingConstants.hpp" />
@@ -1072,6 +1080,9 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\tiles\include\TileIDs.hpp" />
     <ClInclude Include="world\tiles\include\TileProperties.hpp" />
     <ClInclude Include="world\tiles\include\tiles.hpp" />
+    <ClInclude Include="world\tiles\include\TileTransform.hpp" />
+    <ClInclude Include="world\tiles\include\TreeSpecies.hpp" />
+    <ClInclude Include="world\tiles\include\TreeSpeciesFactory.hpp" />
     <ClInclude Include="world\tiles\include\TreeTile.hpp" />
     <ClInclude Include="world\tiles\include\UpStaircaseTile.hpp" />
     <ClInclude Include="world\tiles\include\VillageTile.hpp" />
@@ -1093,7 +1104,10 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     </ClCompile>
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\SeedCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\TertiaryUnarmedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\unit_tests\DoorBreakageCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1105,13 +1119,31 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\TertiaryUnarmedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
+    <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp" />
+    <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
+    <ClCompile Include="engine\source\unit_tests\CharacterCreationDetails_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\time\source\AgeTimeObserver.cpp" />
+    <ClCompile Include="engine\time\source\TileTransformObserver.cpp" />
     <ClCompile Include="engine\time\source\unit_tests\AgeTimeObserver_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\TileTransformObserver_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -2363,7 +2395,9 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="source\ShadowOfTheWyrm.cpp" />
+    <ClCompile Include="source\ShadowOfTheWyrm.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\magic\source\IndividualSpellKnowledge.cpp" />
     <ClCompile Include="world\magic\source\Spell.cpp" />
     <ClCompile Include="world\magic\source\SpellAdditionalProperties.cpp" />
@@ -2479,8 +2513,10 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\CreatureGenerationOptions.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\ItemProperties.cpp" />
+    <ClCompile Include="world\source\MapTypes.cpp" />
     <ClCompile Include="world\source\Modifier.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
+    <ClCompile Include="world\source\RaceConstants.cpp" />
     <ClCompile Include="world\source\ScriptDetails.cpp" />
     <ClCompile Include="world\source\SkinningConstants.cpp" />
     <ClCompile Include="world\source\SmithingConstants.cpp" />
@@ -2962,6 +2998,9 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\tiles\source\Tile.cpp" />
     <ClCompile Include="world\tiles\source\TileFactory.cpp" />
     <ClCompile Include="world\tiles\source\TileProperties.cpp" />
+    <ClCompile Include="world\tiles\source\TileTransform.cpp" />
+    <ClCompile Include="world\tiles\source\TreeSpecies.cpp" />
+    <ClCompile Include="world\tiles\source\TreeSpeciesFactory.cpp" />
     <ClCompile Include="world\tiles\source\TreeTile.cpp" />
     <ClCompile Include="world\tiles\source\unit_tests\AirTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -3177,6 +3216,11 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\TileTransform_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\Tile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

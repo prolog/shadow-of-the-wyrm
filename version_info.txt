@@ -1,3 +1,143 @@
+Shadow of the Wyrm v0.4.4 "Domeniconi"
+- Version declared November 3, 2015.  Version finalized December 1, 2015.
+
+- Firing through an occupied tile is now possible, when that occupied
+  tile is not the terminal tile on a particular path.  The check is
+  based on the maximum of the defending creature's Awareness, and the
+  attacking creature's Archery.
+
+- Added "seeds" to certain food items (apples, cherries, etc).  When
+  a creature eats these foods, he/she "spits out" the seed onto their
+  own tile.  This seed is its own item and will eventually be used to
+  allow planting of trees.
+
+- Added some guards to a few of the Lua API functions so that they
+  wouldn't do anything while the player is on the world map.
+
+- Created a new character, Nama, who like Idem can be found at Wintersea 
+  Keep.  Nama records the true name of things, and allows the player to 
+  change his or her name.
+
+- Improvised weapons now deal 1d2 damage, plus a modifier based on
+  their weight.
+
+- Evade nerf part 1: half the attacking creature's level, rounded down,
+  is now used for all physical and magical to-hit calculations (kraphead).
+
+- Evade nerf part 2: there was already a check in place for automatic
+  misses; now there is also a check in place for automatic hits, though
+  the chance of the latter (2%) is less than the former (5%).
+
+- HP regeneration is now based on not only on the multipliers associated
+  with the creature's tile and feature, but also on the creature's
+  Health score.  There is a hard minimum of 4 minutes to regen 1 HP
+  in-game.
+
+- Similarly, AP regeneration now takes into account the creature's
+  willpower score (akeley).
+
+- The naming screen now shows the selected race/class combination, as
+  well as the selected deity.  Typically the user will know these, but 
+  may not depending if a random generation option was chosen.
+
+- The welcome screen now offers an option to create a new, randomized
+  character.  Random selections are also possible from each of the
+  sex, race, class, and deity selection screens (akeley).
+
+- Conducts are now worth points (100 per conduct per level), not just
+  bragging rights after winning (kraphead).
+
+- Added brief class descriptions to character creation (Mateusz Logowski)
+
+- Dropping a seed in a tile with a hole now plants that seed, and if the
+  map is not permanent (e.g., it was a randomly generated field, forest,
+  etc) then the map becomes permanent and links up to the world map.  
+  The planted tile will transform into a tree of the appropriate type at 
+  some point in the spring of the following year.  Planting is currently 
+  100% successful when planting on overworld maps (a tree always grows 
+  the following year), and 0% on other map types (dungeons, caverns, etc),
+  though this may change in future.
+
+- Digging on a water- or air-based tile is now impossible.
+
+- Good and neutral deities now very strongly dislike the consumption of
+  undead corpses.
+
+- Idem now only shows you the items in your inventory that are not
+  identified.
+
+- Item enchantments were way too powerful.  Instead of using a uniform
+  random number from 1 to (danger level/2), the algorithm is now 
+  mostly Poisson-based, with a typical mean of (danger level/8).  This
+  is likely to be tweaked again in future releases.
+
+- For generated NPCs, set AP to be half the base HP, if not specified.
+
+- Spellbooks have been set to uncommon, so they should be generated much
+  less frequently (akeley).
+
+- Item generation was ridiculously biased towards generating common items,
+  as those make up the majority of items in the game.  Rewrote the
+  item generation algorithm to generate a larger proportion of uncommon
+  and rare items.
+
+- When out of depth creatures appear, there is a greater chance for
+  uncommon items to appear as well.  Right now this results in a
+  preponderance of potions and spellbooks, but will sort itself out over
+  time as more items are added to the game.
+
+- Humanoids now have a base chance to be carrying a small amount of
+  ivory pieces.
+
+- Kicking a creature now has a chance to send the creature staggering
+  back (Mateusz Lagowski).
+
+- Added a setting to always disallow moving on to dangerous tiles.  Set
+  it to false by default - players can enable it as desired (kraphead).
+
+- Various code cleanups and minor refactorings.
+
+- New creatures: Nama.
+
+- New artifacts: ruby ring "Falcon's Eye", jasper ring "Carpathos".
+
+- Bug fixes:
+
+  - Idem's description implied that he was mobile, but he was set to
+    immobile.
+
+  - Altus' quest incorrectly defaulted to Christof's generic chat text
+    when the quest was completed (kraphead).
+
+  - Shields/etc could be used in the ammunition slot for extra Ev/Soak,
+    resistances, etc.  Fixed this so that only ammunition adds to
+    Ev/Soak/resists when in the ammunition slot (kraphead).
+
+  - Puglists' unarmed damage was being applied even when an improvised
+    weapon (e.g., a shield) was wielded (kraphead).
+
+  - The completion function for the Caravan Master's quest referenced an
+    older creature ID, preventing the quest from being completed
+    (kraphead).
+
+  - A number of monster races (undead, dragon, etc) had their resistances
+    and vulnerabilities inverted.
+
+  - Ensured that piercing/incorporeal attack messages don't fire when a
+    creature attacks itself (kraphead).
+
+  - The code to remove items (e.g., the Exile taking the Amulet of the
+    Two Moons) wasn't properly handling the case when the item was
+    equipped in the inventory (kraphead).
+
+  - The game would crash when it encountered a "%" when trying to print
+    the game text, because of how the printw-type functions work.  Fixed
+    up CursesDisplay to always change "%" to "%%" when doing string
+    printing.
+
+  - Fixed a bug with dates in the Isen Dun Chronicle going past the
+    actual in-game start date.
+
 Shadow of the Wyrm v0.4.3 "Carcassi"
 - Version declared October 6, 2015.  Version finalized November 3, 2015.
 
@@ -36,7 +176,7 @@ Shadow of the Wyrm v0.4.3 "Carcassi"
   to the calendar.
 
 - Weapons and ammunition now show the damage when viewing the equipment
-  screen (AgingMinotaur, Kyrzati).
+  screen (AgingMinotaur, Kyzrati).
 
 - Added a character details screen in addition to the character dump
   command.  Character details is now bound to '@' by default, with 

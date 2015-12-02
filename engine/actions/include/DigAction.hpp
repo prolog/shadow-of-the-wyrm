@@ -20,7 +20,9 @@ class DigAction : public IActionManager
     DigAction();
 
     bool add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr map) const;
+    void add_cannot_dig_on_tile_super_type_message(CreaturePtr creature) const;
     TilePtr dig_tile(TilePtr adjacent_tile) const;
+    bool tile_super_type_supports_digging(const TileSuperType tst) const;
     void add_new_tile_to_dig_location(TilePtr new_tile, MapPtr map, const std::string& creature_id, const Direction d) const;
     void handle_potential_item_breakage(CreaturePtr creature, ItemPtr item) const;
     void add_successful_dig_message(CreaturePtr creature) const;

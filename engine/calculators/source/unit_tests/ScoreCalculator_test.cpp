@@ -2,10 +2,31 @@
 #include "Currency.hpp"
 #include "Weapon.hpp"
 
+using CreaturePtr = std::shared_ptr<Creature>;
+
+CreaturePtr create_conductless_creature();
+
+// Create a creature without any active conducts, to more easily unit test
+// the various score components.
+CreaturePtr create_conductless_creature() 
+{
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(7), "Unexpected CONDUCT_SIZE");
+
+  CreaturePtr cp = std::make_shared<Creature>();
+  Conducts& cond = cp->get_conducts_ref();
+
+  vector<ConductType> conducts = { ConductType::CONDUCT_TYPE_FOODLESS, ConductType::CONDUCT_TYPE_VEGETARIAN, ConductType::CONDUCT_TYPE_AGNOSTIC, ConductType::CONDUCT_TYPE_ILLITERATE, ConductType::CONDUCT_TYPE_WEAPONLESS, ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING, ConductType::CONDUCT_TYPE_QUESTLESS };
+  for (const ConductType c : conducts)
+  {
+    cond.break_conduct(c);
+  }
+
+  return cp;
+}
+
 TEST(SL_Engine_Calculators_ScoreCalculator, end_boss_component)
 {
-  Creature c;
-  CreaturePtr cp(new Creature(c));
+  CreaturePtr cp = create_conductless_creature();
 
   Mortuary& m = cp->get_mortuary_ref();
   m.add_creature_kill("end_boss");
@@ -17,8 +38,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, end_boss_component)
 
 TEST(SL_Engine_Calculators_ScoreCalculator, currency_component)
 {
-  Creature c;
-  CreaturePtr cp(new Creature(c));
+  CreaturePtr cp = create_conductless_creature();
 
   CurrencyPtr currency = std::make_shared<Currency>();
   currency->set_base_id(ItemIdKeys::ITEM_ID_CURRENCY);
@@ -34,8 +54,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, currency_component)
 
 TEST(SL_Engine_Calculators_ScoreCalculator, experience_component)
 {
-  Creature c;
-  CreaturePtr cp(new Creature(c));
+  CreaturePtr cp = create_conductless_creature();
 
   cp->set_experience_points(400000);
 
@@ -50,8 +69,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, experience_component)
 
 TEST(SL_Engine_Calculators_ScoreCalculator, level_component)
 {
-  Creature c;
-  CreaturePtr cp(new Creature(c));
+  CreaturePtr cp = create_conductless_creature();
 
   Statistic level(36);
   cp->set_level(level);
@@ -63,8 +81,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, level_component)
 
 TEST(SL_Engine_Calculator_ScoreCalculator, artifact_component)
 {
-  Creature c;
-  CreaturePtr cp(new Creature(c));
+  CreaturePtr cp = create_conductless_creature();
 
   WeaponPtr w1 = std::make_shared<MeleeWeapon>();
   w1->set_artifact(true);
@@ -85,8 +102,7 @@ TEST(SL_Engine_Calculator_ScoreCalculator, artifact_component)
 
 TEST(SL_Engine_Calculators_ScoreCalculator, spell_component)
 {
-  Creature c;
-  CreaturePtr cp(new Creature(c));
+  CreaturePtr cp = create_conductless_creature();
 
   SpellKnowledge sk;
   IndividualSpellKnowledge isk;
@@ -111,10 +127,22 @@ TEST(SL_Engine_Calculators_ScoreCalculator, spell_component)
   EXPECT_EQ(420, sc.calculate_score(cp));
 }
 
+TEST(SL_Engine_Calculators_ScoreCalculator, conducts)
+{
+  CreaturePtr cp = make_shared<Creature>();
+  Statistic level(16);
+  cp->set_level(level);
+
+  ScoreCalculator sc;
+
+  EXPECT_EQ(16 * 100 * 7 + 1600, sc.calculate_score(cp));
+}
+
 TEST(SL_Engine_Calculators_ScoreCalculator, total_score)
 {
-  Creature c;
-  CreaturePtr cp(new Creature(c));
+  CreaturePtr cp = make_shared<Creature>();
+  Statistic clevel(10);
+  cp->set_level(clevel);
 
   // exp
   cp->set_experience_points(400000);
@@ -141,13 +169,9 @@ TEST(SL_Engine_Calculators_ScoreCalculator, total_score)
   Mortuary& m = cp->get_mortuary_ref();
   m.add_creature_kill("end_boss");
 
-  // level
-  Statistic level(36);
-  cp->set_level(level);
-
   ScoreCalculator sc;
 
-  int expected_score = ScoreConstants::END_BOSS_BONUS + 58000 + 12345 + 1000 + 3600;
+  int expected_score = (7 * 10 * 100) + ScoreConstants::END_BOSS_BONUS + 58000 + 12345 + 1000 + 1000;
 
   EXPECT_EQ(expected_score, sc.calculate_score(cp));
 }

@@ -8,8 +8,24 @@ registry, instead of failing silently.
 - Multi-map areas (the central city!)
 - Add fishing, foraging
 - Evil story arc
-- Use of gold by identify items via a character
-- Create an "unidentified items" filter for Idem
+- Linux support.  
+- Investigate targetting not staying properly some (all?) of the time.
+- Some more information in-game about offering at altars
+- Offer to save character dump when quitting or winning
+- General performance improvements.
+- Item generation: get rarity working properly, and then do some test
+  runs.  Once that works, create some more artifacts/great items for
+  random generation.
+- Per-tile fertility ratings for planting trees and other plants.  Fields
+  should give you a great chance, beaches very small, etc.
+- New effect/scroll/cantrip - "Cleansing", which prevents new creatures
+  from being generated on a map.  When cursed, flips that boolean switch
+  to re-enable it (and maybe ups the danger level?)
+- Crash bug is still present: find out what's causing it!
+- Named in-game holidays/special days.  Should get an in-game message
+  when that day occurs.
+- Update MapTester config so that "generation runs" of creatures and
+  items can be done and dumped to disk.
 
 Akeley:
 - ESC as well as 'z'
@@ -17,7 +33,7 @@ Akeley:
 barrabus: 
 - Extra descs for items.
 
-Kyrzati:
+Kyzrati:
 - Over time, generation of new random uniques, etc.
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
@@ -29,3 +45,14 @@ AgingMinotaur:
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
 * The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
 * I noticed that archers and goblin pelters don't actually shoot anything. I'm supposing this will show up later.
+
+Kraphead:
+- monsters should cast spells
+- auto-displace when bumping friendly creatures
+- implement dual wield
+- Option to keep adventuring after killing Amaurosis
+- artifact boots
+- item generation: more arrows
+
+Mateusz Lagowski
+- ? for command list

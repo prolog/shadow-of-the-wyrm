@@ -46,6 +46,7 @@ class Tile : public ISerializable
     virtual bool has_custom_map_id() const;
 
     // The generic way to set additional properties.
+    virtual void set_additional_properties(const std::map<std::string, std::string>& new_properties);
     virtual void set_additional_property(const std::string& property_name, const std::string& property_value);
     virtual std::string get_additional_property(const std::string& property_name) const;
     virtual size_t remove_additional_property(const std::string& property_name);
@@ -59,6 +60,7 @@ class Tile : public ISerializable
     virtual void set_illuminated(bool new_illuminated);
     virtual bool get_illuminated() const;
     
+    virtual bool get_is_staircase() const;
     virtual bool get_is_blocking(std::shared_ptr<Creature> perspective_creature = nullptr) const;
     virtual bool get_is_blocking_ignore_present_creature(std::shared_ptr<Creature> perspective_creature) const;
     virtual bool get_is_blocking_for_item(std::shared_ptr<Item> item = nullptr) const;
@@ -78,6 +80,9 @@ class Tile : public ISerializable
     virtual void set_feature(std::shared_ptr<Feature> new_feature);
     virtual void remove_feature();
     virtual std::shared_ptr<Feature> get_feature();
+
+    virtual bool has_been_dug() const;
+    virtual bool has_been_planted() const;
 
     virtual bool has_creature() const;
     virtual void set_creature(const std::shared_ptr<Creature>& new_creature);
@@ -106,7 +111,7 @@ class Tile : public ISerializable
 
     virtual float get_piety_loss_multiplier() const;
 
-    virtual void transformFrom(std::shared_ptr<Tile> original_tile);
+    virtual void transform_from(std::shared_ptr<Tile> original_tile);
     
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

@@ -65,7 +65,15 @@ void DeitySelectionScreen::initialize()
         Log::instance().log(error_msg);
       }
     }
-    
+
+    // Random selection (use '*')
+    Option random_option;
+    random_option.set_id(random_option.get_id_for_random());
+    random_option.set_description(StringTable::get(TextKeys::RANDOM_SELECTION));
+
+    options->add_option(random_option);
+    options->add_option_description("");
+
     deity_screen.push_back(deity_selection_text);
     deity_screen.push_back(options);
   }

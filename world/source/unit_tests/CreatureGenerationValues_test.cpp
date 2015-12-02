@@ -25,7 +25,9 @@ TEST(SL_World_CreatureGenerationValues, saveload)
   cgv.add_allowable_terrain_type(TileType::TILE_TYPE_PIER);
 
   Dice hp(5, 6, 7);
+  Dice ap(9, 1, 3);
   cgv.set_initial_hit_points(hp);
+  cgv.set_initial_arcana_points(ap);
   cgv.set_base_experience_value(105);
 
   vector<InitialItem> initial_items;

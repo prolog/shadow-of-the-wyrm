@@ -19,6 +19,7 @@ int add_message(lua_State* ls);
 int add_message_direct(lua_State* ls);
 int add_debug_message(lua_State* ls);
 int add_confirmation_message(lua_State* ls);
+int add_prompt_message(lua_State* ls);
 int add_message_for_creature(lua_State* ls);
 int add_new_quest(lua_State* ls);
 int is_on_quest(lua_State* ls);
@@ -68,6 +69,7 @@ int log(lua_State* ls);
 int get_player_title(lua_State* ls);
 int set_creature_current_hp(lua_State* ls);
 int set_creature_current_ap(lua_State* ls);
+int set_creature_name(lua_State* ls);
 int destroy_creature_equipment(lua_State* ls);
 int destroy_creature_inventory(lua_State* ls);
 int get_deity_summons(lua_State* ls);
@@ -91,6 +93,8 @@ int calendar_add_minutes(lua_State* ls);
 int calendar_add_hours(lua_State* ls);
 int calendar_add_days(lua_State* ls);
 int calendar_add_years(lua_State* ls);
+int add_kill_to_creature_mortuary(lua_State* ls);
+int report_coords(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

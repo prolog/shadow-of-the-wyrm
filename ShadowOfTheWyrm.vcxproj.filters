@@ -290,12 +290,6 @@
     <Filter Include="Header Files\engine\generators\crypts\include">
       <UniqueIdentifier>{426bdb7f-e694-4a1a-88a9-307213569f3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\screens">
-      <UniqueIdentifier>{16ab4664-e3ca-4262-8d72-60ffe6e737ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\engine\screens\include">
-      <UniqueIdentifier>{5afc028a-76b5-4850-9135-ead4f12db8c0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\engine\commands\screens">
       <UniqueIdentifier>{7be00d1d-3102-4f21-b0e1-400411e9739a}</UniqueIdentifier>
     </Filter>
@@ -756,6 +750,12 @@
     </Filter>
     <Filter Include="Source Files\engine\source\unit_tests">
       <UniqueIdentifier>{66044dd9-0e96-4071-ae2e-e839c5e55250}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\screens">
+      <UniqueIdentifier>{16ab4664-e3ca-4262-8d72-60ffe6e737ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\screens\include">
+      <UniqueIdentifier>{5afc028a-76b5-4850-9135-ead4f12db8c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3515,6 +3515,39 @@
     </ClInclude>
     <ClInclude Include="engine\generators\include\MapItemGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TileTransform.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\TileTransformObserver.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\CharacterCreationDetails.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\SeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TreeSpecies.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TreeSpeciesFactory.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\UnidentifiedItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\LuaItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ItemEnchantmentCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\RaceConstants.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\TertiaryUnarmedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -6856,6 +6889,51 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\TileTransform.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\TileTransform_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\TileTransformObserver.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\TileTransformObserver_test.cpp">
+      <Filter>Source Files\engine\time\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\CharacterCreationDetails.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\CharacterCreationDetails_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\SeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\TreeSpecies.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\TreeSpeciesFactory.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\MapTypes.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\RaceConstants.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\TertiaryUnarmedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\TertiaryUnarmedCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

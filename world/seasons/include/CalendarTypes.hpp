@@ -27,6 +27,7 @@ enum struct Months
 
 enum struct PhaseOfMoonType
 {
+  PHASE_OF_MOON_NULL = -1,
   PHASE_OF_MOON_NEW = 0,
   PHASE_OF_MOON_WAXING = 1,
   PHASE_OF_MOON_FULL = 2,

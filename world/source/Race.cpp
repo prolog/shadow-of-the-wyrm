@@ -273,6 +273,16 @@ BoolStatistic Race::get_corporeal() const
   return corporeal;
 }
 
+void Race::set_undead(const BoolStatistic& new_undead)
+{
+  undead = new_undead;
+}
+
+BoolStatistic Race::get_undead() const
+{
+  return undead;
+}
+
 void Race::set_flying(const BoolStatistic& new_flying)
 {
   flying = new_flying;

@@ -97,6 +97,10 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     BoolStatistic corporeal_stat(corporeal);
     race->set_corporeal(corporeal_stat);
 
+    bool undead = XMLUtils::get_child_node_bool_value(race_node, "Undead", false);
+    BoolStatistic undead_stat(undead);
+    race->set_undead(undead_stat);
+
     bool flying = XMLUtils::get_child_node_bool_value(race_node, "Flying", race->get_flying().get_base());
     BoolStatistic flying_stat(flying);
     race->set_flying(flying_stat);

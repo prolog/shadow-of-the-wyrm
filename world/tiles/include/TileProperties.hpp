@@ -40,6 +40,9 @@ class TileProperties
     // Have we already dug at this tile?
     static const std::string TILE_PROPERTY_PREVIOUSLY_DUG;
 
+    // Has something been planted on this tile?
+    static const std::string TILE_PROPERTY_PLANTED;
+
     // Generates the map key that identifies the custom map ID for
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);

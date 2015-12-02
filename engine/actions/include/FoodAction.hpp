@@ -17,8 +17,8 @@ class FoodAction : public IActionManager
 
     ActionCostValue eat_food_off_ground(CreaturePtr creature, const std::list<IItemFilterPtr>& display_list);
 
-    bool eat_food(CreaturePtr creature, ItemPtr food, IInventoryPtr inventory_for_food);
-
+    bool eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInventoryPtr inventory_for_food);
+    void create_seed_on_tile(CreaturePtr creature, TilePtr tile, const std::string& seed_item_id);
     void add_food_message(CreaturePtr creature, ItemPtr food, const bool successfully_ate);
 };
 
