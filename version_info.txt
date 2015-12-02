@@ -135,6 +135,9 @@ Shadow of the Wyrm v0.4.4 "Domeniconi"
     up CursesDisplay to always change "%" to "%%" when doing string
     printing.
 
+  - Fixed a bug with dates in the Isen Dun Chronicle going past the
+    actual in-game start date.
+
 Shadow of the Wyrm v0.4.3 "Carcassi"
 - Version declared October 6, 2015.  Version finalized November 3, 2015.
 
