@@ -116,12 +116,15 @@ Resistances ResistancesCalculator::calculate_equipment_resistances(CreaturePtr c
 
       if (item)
       {
-        Resistances item_res = item->get_resistances();
-
-        for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
+        if (ewl != EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION || item->get_type() == ItemType::ITEM_TYPE_AMMUNITION)
         {
-          DamageType dt = static_cast<DamageType>(d);
-          res.set_resistance_value(dt, res.get_resistance_value(dt) + item_res.get_resistance_value(dt));
+          Resistances item_res = item->get_resistances();
+
+          for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
+          {
+            DamageType dt = static_cast<DamageType>(d);
+            res.set_resistance_value(dt, res.get_resistance_value(dt) + item_res.get_resistance_value(dt));
+          }
         }
       }
     }

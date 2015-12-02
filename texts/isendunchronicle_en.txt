@@ -63,15 +63,15 @@ Our silver-smith Wilfrid has been given a measure of the silver and tasked with 
 808 The goblins have sacked Aeschburh, and put every man to the sword.  Their fortress lies empty now, though some have said at night there are lights 
 that dance in the dark. 
 %p 
-825 In this year, a young man has come to lead our sermons and prayers.  His name is Oswyn, a good man of the south.  Also Hrimgar has been made chief.  
+812 In this year, a young man has come to lead our sermons and prayers.  His name is Oswyn, a good man of the south.  Also Hrimgar has been made chief.  
 He is son of Hrimhere, son of Eadbert, himself son of Aethelric, one of Aethelwulf's kin. 
 %p 
-833 We sent our ships far north, where we heard the sea was teeming with cod.  This was true, and late in the year the ships returned, their holds full 
+820 We sent our ships far north, where we heard the sea was teeming with cod.  This was true, and late in the year the ships returned, their holds full 
 of salted fish.  The sailors told of a strange sight on one of the northern islands that is shaped like a cross.  They said that on this far-flung island, 
 they saw wagons, caravans, and heard the sweet music of flutes and fiddles.  They saw also many kinds of fruit trees, and said it was strange that this 
 beautiful island should be found at the end of the world. 
 %p 
-850 Strange tidings.  We have heard several accounts of a great tower rising out of the earth in the snake-lands, where previously there were only ruins. 
+826 Strange tidings.  We have heard several accounts of a great tower rising out of the earth in the snake-lands, where previously there were only ruins. 
 %p 
-851 Rumblings from the north-west: something has stirred, something long quiet.  It is felt all over the world.  The winds are colder.  Great evils have 
+831 Rumblings from the north-west: something has stirred, something long quiet.  It is felt all over the world.  The winds are colder.  Great evils have 
 arrived, things not seen in generations.  Everything is unsettled, everything unquiet.

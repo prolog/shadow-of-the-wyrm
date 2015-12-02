@@ -42,8 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Italian guitarist and composer of the classical period.
-  return "\"Carcassi\"";
+  // 20th century composer best known for "Koyunbaba"
+  return "\"Domeniconi\"";
 }
 
 string Metadata::get_game_version_synopsis() const

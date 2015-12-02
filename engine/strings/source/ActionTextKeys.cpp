@@ -1,5 +1,6 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "ActionTextKeys.hpp"
+#include "TextKeys.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -183,6 +184,24 @@ string ActionTextKeys::get_kick_object_message(const string& desc_sid, const str
   return kick_msg;
 }
 
+string ActionTextKeys::get_knock_back_message(const string& defend_desc_sid, const bool defend_is_player)
+{
+  string kb_msg;
+
+  if (defend_is_player)
+  {
+    kb_msg = StringTable::get(ACTION_KNOCK_BACK_PLAYER);
+  }
+  else
+  {
+    kb_msg = StringTable::get(ACTION_KNOCK_BACK_MONSTER);
+    boost::replace_first(kb_msg, "%s", StringTable::get(defend_desc_sid));
+    kb_msg[0] = toupper(kb_msg[0]);
+  }
+
+  return kb_msg;
+}
+
 string ActionTextKeys::get_generic_wear_off_message(const string& desc_sid)
 {
   string msg;
@@ -204,6 +223,29 @@ string ActionTextKeys::get_item_breakage_message(const string& creature_desc_sid
   }
 
   boost::replace_first(msg, "%s2", item_desc);
+
+  return msg;
+}
+
+string ActionTextKeys::get_spit_out_message(const string& item_usage_desc)
+{
+  string msg = StringTable::get(ACTION_SPIT_OUT_SEED);
+  boost::replace_first(msg, "%s", item_usage_desc);
+
+  return msg;
+}
+
+string ActionTextKeys::get_seed_planted_message(const bool blind, const string& item_usage_desc)
+{
+  string msg = StringTable::get(ACTION_SEED_PLANTED);
+  string replace = item_usage_desc;
+
+  if (blind)
+  {
+    replace = StringTable::get(TextKeys::SOMETHING);
+  }
+
+  boost::replace_first(msg, "%s", replace);
 
   return msg;
 }
@@ -289,6 +331,7 @@ const string ActionTextKeys::ACTION_DIG_UNDEAD_FOUND           = "ACTION_DIG_UND
 const string ActionTextKeys::ACTION_DIG_ITEM_FOUND             = "ACTION_DIG_ITEM_FOUND";
 const string ActionTextKeys::ACTION_DIG_THROUGH_TILE           = "ACTION_DIG_THROUGH_TILE";
 const string ActionTextKeys::ACTION_DIG_CANNOT_DIG             = "ACTION_DIG_CANNOT_DIG";
+const string ActionTextKeys::ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE = "ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE";
 const string ActionTextKeys::ACTION_DIG_TOO_HARD               = "ACTION_DIG_TOO_HARD";
 const string ActionTextKeys::ACTION_RESTING                    = "ACTION_RESTING";
 const string ActionTextKeys::ACTION_HANDLE_DEFAULT             = "ACTION_HANDLE_DEFAULT";
@@ -318,8 +361,12 @@ const string ActionTextKeys::ACTION_ALCOHOL_POISONING_PLAYER      = "ACTION_ALCO
 const string ActionTextKeys::ACTION_ALCOHOL_POISONING_MONSTER     = "ACTION_ALCOHOL_POISONING_MONSTER";
 const string ActionTextKeys::ACTION_KICK_PLAYER                   = "ACTION_KICK_PLAYER";
 const string ActionTextKeys::ACTION_KICK_MONSTER                  = "ACTION_KICK_MONSTER";
+const string ActionTextKeys::ACTION_KNOCK_BACK_PLAYER             = "ACTION_KNOCK_BACK_PLAYER";
+const string ActionTextKeys::ACTION_KNOCK_BACK_MONSTER            = "ACTION_KNOCK_BACK_MONSTER";
 const string ActionTextKeys::ACTION_KICK_OBJECT_PLAYER            = "ACTION_KICK_OBJECT_PLAYER";
 const string ActionTextKeys::ACTION_KICK_OBJECT_MONSTER           = "ACTION_KICK_OBJECT_MONSTER";
 const string ActionTextKeys::ACTION_SPELL_WEAR_OFF_MONSTER        = "ACTION_SPELL_WEAR_OFF_MONSTER";
 const string ActionTextKeys::ACTION_ITEM_BREAKAGE_PLAYER          = "ACTION_ITEM_BREAKAGE_PLAYER";
 const string ActionTextKeys::ACTION_ITEM_BREAKAGE_MONSTER         = "ACTION_ITEM_BREAKAGE_MONSTER";
+const string ActionTextKeys::ACTION_SPIT_OUT_SEED                 = "ACTION_SPIT_OUT_SEED";
+const string ActionTextKeys::ACTION_SEED_PLANTED                  = "ACTION_SEED_PLANTED";

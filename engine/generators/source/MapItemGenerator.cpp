@@ -1,6 +1,7 @@
 #include "MapItemGenerator.hpp"
 #include "CreationUtils.hpp"
 #include "Game.hpp"
+#include "ItemEnchantmentCalculator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
@@ -11,7 +12,7 @@ const int MapItemGenerator::OUT_OF_DEPTH_ITEMS_CHANCE = 15;
 
 // Generate items based on the provided danger level, and place them
 // on the given map.
-bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const pair<bool, int>& creature_details)
+bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const tuple<bool, int, Rarity>& creature_details)
 {
   bool items_generated = false;
 
@@ -21,7 +22,17 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
 
   ItemGenerationManager igm;
 
+  bool creature_danger_override = std::get<0>(creature_details);
+  int creature_danger_level = std::get<1>(creature_details);
+  Rarity creature_rarity = std::get<2>(creature_details);
+
   Rarity rarity = CreationUtils::generate_rarity();
+
+  // The minimum rarity should always be what was used for creature generation.
+  if (rarity < creature_rarity)
+  {
+    rarity = creature_rarity;
+  }
 
   Game& game = Game::instance();
 
@@ -39,18 +50,19 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
 
   // Take the max of the current max danger level and the one used for
   // creature generation.
-  if (creature_details.first && creature_details.second > 0)
+  if (creature_danger_override && creature_danger_level > 0)
   {
-    max_danger_level = std::max<int>(max_danger_level, creature_details.second);
+    max_danger_level = std::max<int>(max_danger_level, creature_danger_level);
   }
 
   // Generate the vector of possible items for this map.
   ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, max_danger_level, rarity);
+  ItemEnchantmentCalculator iec;
 
   while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
   {
-    int enchant_points = RNG::range(0, (danger_level / 2));
-    ItemPtr generated_item = igm.generate_item(am, generation_vec, enchant_points);
+    int enchant_points = iec.calculate_enchantments(danger_level);
+    ItemPtr generated_item = igm.generate_item(am, generation_vec, rarity, enchant_points);
 
     bool placed_item = false;
 

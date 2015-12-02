@@ -4,11 +4,34 @@
 #include "ItemMaterialFilter.hpp"
 #include "ItemPropertyFilter.hpp"
 #include "ItemTypeFilter.hpp"
+#include "LuaItemFilter.hpp"
 #include "NullItemFilter.hpp"
 #include "ReadableItemFilter.hpp"
 #include "SquishyEquipWornLocationFilter.hpp"
+#include "UnidentifiedItemFilter.hpp"
 
 using namespace std;
+
+// Create a filter based on a constant (values defined in 
+// LuaItemFilter.hpp) passed in from a Lua script.
+list<IItemFilterPtr> ItemFilterFactory::create_script_filter(const int script_constant)
+{
+  list<IItemFilterPtr> filters;
+  IItemFilterPtr filter;
+
+  switch(script_constant)
+  {
+    case CITEM_FILTER_UNIDENTIFIED:
+      filter = std::make_shared<UnidentifiedItemFilter>();
+      break;
+    default:
+      filter = std::make_shared<NullFilter>();
+      break;
+  }
+
+  filters.push_back(filter);
+  return filters;
+}
 
 // Create a 1-item list that always passes - used for things like pickup,
 // drop, etc., where the initial filter is always empty.

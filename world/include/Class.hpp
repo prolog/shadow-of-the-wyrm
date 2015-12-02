@@ -22,6 +22,9 @@ class Class
     void set_class_name_sid(const std::string& new_class_name_sid);
     std::string get_class_name_sid() const;
 
+    void set_class_short_description_sid(const std::string& new_class_short_description_sid);
+    std::string get_class_short_description_sid() const;
+
     void set_class_description_sid(const std::string& new_class_description_sid);
     std::string get_class_description_sid() const;
 
@@ -79,6 +82,7 @@ class Class
     std::string class_id;
 
     std::string class_name_sid;
+    std::string class_short_description_sid;
     std::string class_description_sid;
     std::string class_abbreviation_sid;
 

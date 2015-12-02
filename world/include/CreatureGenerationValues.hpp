@@ -32,6 +32,8 @@ class CreatureGenerationValues : public GenerationValues
 
     void set_initial_hit_points(const Dice& new_initial_hit_points);
     Dice get_initial_hit_points() const;
+
+    void set_initial_arcana_points(const Dice& new_initial_arcana_points);      Dice get_initial_arcana_points() const;
     
     void set_base_experience_value(const uint new_base_experience_value);
     uint get_base_experience_value() const;
@@ -60,9 +62,10 @@ class CreatureGenerationValues : public GenerationValues
     // hostile towards the player.
     bool friendly;
 
-    // A range used to randomly generate a creature's hit points every time an instance
-    // is created from the template.
+    // A range used to randomly generate a creature's hit points/arcana
+    // points every time an instance is created from the template.
     Dice initial_hit_points;
+    Dice initial_arcana_points;
     
     // The base experience value.  Stored here so that a slightly different value can
     // be generated for each creature.

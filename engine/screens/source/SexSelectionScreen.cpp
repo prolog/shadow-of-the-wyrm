@@ -32,9 +32,16 @@ void SexSelectionScreen::initialize()
   option_female.set_id(static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE));
   option_female.set_description(female);
 
+  // Random selection (use '*')
+  Option random_option;
+  random_option.set_id(random_option.get_id_for_random());
+  random_option.set_description(StringTable::get(TextKeys::RANDOM_SELECTION));
+
   options->add_option(option_male);
   options->add_option_description("");
   options->add_option(option_female);
+  options->add_option_description("");
+  options->add_option(random_option);
   options->add_option_description("");
 
   sex_screen.push_back(sex_selection_text);

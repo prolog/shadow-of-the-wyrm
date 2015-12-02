@@ -1,4 +1,5 @@
 #include "Food.hpp"
+#include "ItemProperties.hpp"
 
 using namespace std;
 
@@ -23,6 +24,24 @@ Food::~Food()
 ItemType Food::get_type() const
 {
   return ItemType::ITEM_TYPE_FOOD;
+}
+
+void Food::set_seed_item_id(const string& new_seed_item_id)
+{
+  set_additional_property(ItemProperties::ITEM_PROPERTIES_SEED_ITEM_ID, new_seed_item_id);
+}
+
+string Food::get_seed_item_id() const
+{
+  string item_id;
+  auto p_it = additional_properties.find(ItemProperties::ITEM_PROPERTIES_SEED_ITEM_ID);
+  
+  if (p_it != additional_properties.end())
+  {
+    item_id = p_it->second;
+  }
+
+  return item_id;
 }
 
 Item* Food::clone()

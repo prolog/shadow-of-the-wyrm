@@ -121,6 +121,20 @@ bool Tile::has_extra_description() const
   return has_additional_property(TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
 }
 
+bool Tile::has_been_dug() const
+{
+  string prop = get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG);
+
+  return (prop == to_string(true));
+}
+
+bool Tile::has_been_planted() const
+{
+  string prop = get_additional_property(TileProperties::TILE_PROPERTY_PLANTED);
+
+  return (prop == to_string(true));
+}
+
 void Tile::set_custom_map_id(const string& map_generator_id)
 {
   set_additional_property(TileProperties::TILE_PROPERTY_CUSTOM_MAP_ID, map_generator_id);
@@ -134,6 +148,11 @@ string Tile::get_custom_map_id() const
 bool Tile::has_custom_map_id() const
 {
   return has_additional_property(TileProperties::TILE_PROPERTY_CUSTOM_MAP_ID);
+}
+
+void Tile::set_additional_properties(const map<string, string>& new_props)
+{
+  additional_properties = new_props;
 }
 
 void Tile::set_additional_property(const string& property_name, const string& property_value)
@@ -185,6 +204,12 @@ void Tile::set_illuminated(bool new_illuminated)
 bool Tile::get_illuminated() const
 {
   return illuminated;
+}
+
+bool Tile::get_is_staircase() const
+{
+  TileType val = get_tile_type();
+  return (val == TileType::TILE_TYPE_UP_STAIRCASE || val == TileType::TILE_TYPE_DOWN_STAIRCASE);
 }
 
 // The conditions are broken up for easier debugging.
@@ -405,21 +430,28 @@ float Tile::get_piety_loss_multiplier() const
 // will be assumed to have the new tile type and subtype, but won't have
 // any of the original's required values: creature, inventory, exits,
 // certain flags, etc.  Copy those values over to this tile.
-void Tile::transformFrom(std::shared_ptr<Tile> original_tile)
+void Tile::transform_from(std::shared_ptr<Tile> original_tile)
 {
   if (original_tile != nullptr)
   {
-    // Keep the tile type and subtype.
+    // Keep the properties.
     // Copy everything else.
-    TileType orig_tt, orig_tst;
+    map<string, string> props = additional_properties;
     
-    orig_tt = original_tile->get_tile_type();
-    orig_tst = original_tile->get_tile_subtype();
-
     *this = *original_tile;
 
-    tile_type = orig_tt;
-    tile_subtype = orig_tst;
+    for (const auto& p_pair : props)
+    {
+      set_additional_property(p_pair.first, p_pair.second);
+    }
+
+    // Remove particular properties
+    vector<string> props_to_remove = {TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, TileProperties::TILE_PROPERTY_PLANTED};
+
+    for (const auto& p : props_to_remove)
+    {
+      remove_additional_property(p);
+    }
   }
 }
 

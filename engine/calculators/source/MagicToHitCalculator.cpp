@@ -22,6 +22,7 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
     // Have you ever tried directing a fireball while drunk?
     // It's not easy!
     int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
+    int level_bonus  = get_level_bonus(creature);
     int magic_bonus  = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_MAGIC) / NWP_SKILL_BONUS_DIVISOR;
     int intelligence = creature->get_intelligence().get_current();
 
@@ -37,6 +38,7 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
       attacker_weight_value = static_cast<int>((creature_carried_weight - burdened_limit) / 16 /* oz to lbs */ / MAGIC_WEIGHT_DIVISOR);
     }
 
+    to_hit += level_bonus;
     to_hit += magic_bonus;
     to_hit += (intelligence - 10) / 3;
     to_hit -= bac_modifier;

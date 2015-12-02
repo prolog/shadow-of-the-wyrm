@@ -68,7 +68,7 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   generate_village_surroundings(result_map);  
   
   result_map->set_map_type(MapType::MAP_TYPE_WORLD);
-  result_map->set_map_id("overworld");
+  result_map->set_map_id(MapID::MAP_ID_WORLD_MAP);
   result_map->set_permanent(true);
 
   return result_map;

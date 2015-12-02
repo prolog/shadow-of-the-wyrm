@@ -10,5 +10,14 @@ enum struct MapType
 , MAP_TYPE_UNDERWORLD = 2
 };
 
+class MapID
+{
+  public:
+    static const std::string MAP_ID_WORLD_MAP;
+
+  protected:
+    MapID();
+};
+
 using NamedMapLocations = std::map<std::string, Coordinate>;
 

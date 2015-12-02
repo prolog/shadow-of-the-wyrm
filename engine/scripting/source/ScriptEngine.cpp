@@ -2,6 +2,7 @@
 #include "GameEnvTextKeys.hpp"
 #include "Log.hpp"
 #include "LuaAPIFunctions.hpp"
+#include "LuaItemFilter.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ScriptEngine.hpp"
 #include "Serialize.hpp"
@@ -91,6 +92,9 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CITEM_TYPE_SPELLBOOK);
   lua_exportConst(ls, CITEM_TYPE_RING);
   lua_exportConst(ls, CITEM_TYPE_AMULET);
+
+  lua_exportConst(ls, CITEM_FILTER_NONE);
+  lua_exportConst(ls, CITEM_FILTER_UNIDENTIFIED);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

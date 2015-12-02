@@ -13,6 +13,7 @@
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "Log.hpp"
+#include "LuaItemFilter.hpp"
 #include "LuaUtils.hpp"
 #include "ItemManager.hpp"
 #include "MapExitUtils.hpp"
@@ -122,6 +123,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_message_direct", add_message_direct);
   lua_register(L, "add_debug_message", add_debug_message);
   lua_register(L, "add_confirmation_message", add_confirmation_message);
+  lua_register(L, "add_prompt_message", add_prompt_message);
   lua_register(L, "add_message_for_creature", add_message_for_creature);
   lua_register(L, "add_new_quest", add_new_quest);
   lua_register(L, "is_on_quest", is_on_quest);
@@ -171,6 +173,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
   lua_register(L, "set_creature_current_ap", set_creature_current_ap);
+  lua_register(L, "set_creature_name", set_creature_name);
   lua_register(L, "destroy_creature_equipment", destroy_creature_equipment);
   lua_register(L, "destroy_creature_inventory", destroy_creature_inventory);
   lua_register(L, "get_deity_summons", get_deity_summons);
@@ -194,6 +197,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "calendar_add_hours", calendar_add_hours);
   lua_register(L, "calendar_add_days", calendar_add_days);
   lua_register(L, "calendar_add_years", calendar_add_years);
+  lua_register(L, "add_kill_to_creature_mortuary", add_kill_to_creature_mortuary);
+  lua_register(L, "report_coords", report_coords);
 }
 
 // Lua API helper functions
@@ -414,6 +419,35 @@ static int add_confirmation_message(lua_State* ls)
   return 1;
 }
 
+// Add a message to prompt for text.
+// Arguments: message SID (with optional replacements).
+// Return value: string (the text entered)
+static int add_prompt_message(lua_State* ls)
+{
+  string prompt_val;
+
+  if ((lua_gettop(ls) > 0) && (lua_isstring(ls, 1)))
+  {
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+    string message = read_sid_and_replace_values(ls);
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
+    prompt_val = manager.add_new_message_with_prompt(message);
+
+    manager.send();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_prompt_message");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, prompt_val.c_str());
+  return 1;
+}
+
 static int add_message_for_creature(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
@@ -557,8 +591,11 @@ int get_num_uniques_killed_global(lua_State* ls)
 // Arguments:
 // - 1: base item ID
 // - 2: quantity (optional, 1 is assumed)
+//
+// Return value: true if added, false otherwise.
 int add_object_to_player_tile(lua_State* ls)
 {
+  bool added = false;
   int num_args = lua_gettop(ls);
 
   if (lua_isstring(ls, 1) && (num_args == 1 || (num_args == 2 && lua_isnumber(ls, 2))))
@@ -568,18 +605,22 @@ int add_object_to_player_tile(lua_State* ls)
 
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
-    CreaturePtr player = game.get_current_player();
-    TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
-    
-    base_item_id = lua_tostring(ls, 1);
 
-    // Set the quantity if it was specified.    
-    if (num_args == 2) 
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
-      quantity = static_cast<uint>(lua_tointeger(ls, 2));
-    }
+      CreaturePtr player = game.get_current_player();
+      TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
 
-    ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity);
+      base_item_id = lua_tostring(ls, 1);
+
+      // Set the quantity if it was specified.    
+      if (num_args == 2)
+      {
+        quantity = static_cast<uint>(lua_tointeger(ls, 2));
+      }
+
+      added = ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity);
+    }
   }
   else
   {
@@ -587,7 +628,8 @@ int add_object_to_player_tile(lua_State* ls)
     lua_error(ls);
   }
 
-  return 0;
+  lua_pushboolean(ls, added);
+  return 1;
 }
 
 // Add an object to a particular tile.
@@ -596,6 +638,8 @@ int add_object_to_player_tile(lua_State* ls)
 //          2: row
 //          3: col
 //          4: quantity (optional, 1 assumed)
+//
+// Return value: true if added, false otherwise.
 int add_object_to_tile(lua_State* ls)
 {
   bool result = false;
@@ -617,9 +661,12 @@ int add_object_to_tile(lua_State* ls)
 
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
-    TilePtr tile = map->at(row, col);
 
-    result = ItemManager::create_item_with_probability(100, 100, tile->get_items(), base_item_id, quantity);
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+    {
+      TilePtr tile = map->at(row, col);
+      result = ItemManager::create_item_with_probability(100, 100, tile->get_items(), base_item_id, quantity);
+    }
   }
   else
   {
@@ -634,19 +681,26 @@ int add_object_to_tile(lua_State* ls)
 // Add a feature (using the class ID) to the player's tile.
 int add_feature_to_player_tile(lua_State* ls)
 {
+  bool added = false;
+
   if ((lua_gettop(ls) == 1) && (lua_isnumber(ls, 1)))
   {
-    ClassIdentifier class_id = static_cast<ClassIdentifier>(lua_tointeger(ls, 1));
-    FeaturePtr feature = FeatureFactory::create_feature(class_id);
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
 
-    if (feature != nullptr)
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
-      Game& game = Game::instance();
-      MapPtr map = game.get_current_map();
-      CreaturePtr player = game.get_current_player();
-      TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+      ClassIdentifier class_id = static_cast<ClassIdentifier>(lua_tointeger(ls, 1));
+      FeaturePtr feature = FeatureFactory::create_feature(class_id);
 
-      player_tile->set_feature(feature);
+      if (feature != nullptr)
+      {
+        CreaturePtr player = game.get_current_player();
+        TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+
+        player_tile->set_feature(feature);
+        added = true;
+      }
     }
   }
   else
@@ -655,7 +709,8 @@ int add_feature_to_player_tile(lua_State* ls)
     lua_error(ls);
   }
   
-  return 0;
+  lua_pushboolean(ls, added);
+  return 1;
 }
 
 // Mark a quest as completed.
@@ -1496,7 +1551,7 @@ int map_transform_tile(lua_State* ls)
           TilePtr new_tile = tg.generate(new_tile_type);
 
           // Copy over the common details
-          new_tile->transformFrom(tile);
+          new_tile->transform_from(tile);
           map->insert(c.first, c.second, new_tile);
         }
         else
@@ -1646,6 +1701,33 @@ int set_creature_current_ap(lua_State* ls)
   }
 
   return 0;
+}
+
+int set_creature_name(lua_State* ls)
+{
+  bool changed_name = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string name = lua_tostring(ls, 2);
+
+    if (!name.empty())
+    {
+      CreaturePtr creature = get_creature(creature_id);
+      creature->set_name(name);
+
+      changed_name = true;
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_name");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, changed_name);
+  return 1;
 }
 
 int destroy_creature_equipment(lua_State* ls)
@@ -1942,14 +2024,21 @@ int select_item(lua_State* ls)
   string item_id;
   string item_base_id;
 
-  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
   {
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
+    int item_filter = CITEM_FILTER_NONE;
+
+    if (lua_gettop(ls) == 2 && lua_isnumber(ls, 2))
+    {
+      item_filter = lua_tointeger(ls, 2);
+    }
+
     Game& game = Game::instance();
-    list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
-    ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), empty_filter, false);
+    list<IItemFilterPtr> selected_filter = ItemFilterFactory::create_script_filter(item_filter);
+    ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, false);
 
     if (item != nullptr)
     {
@@ -2352,6 +2441,75 @@ int calendar_add_years(lua_State* ls)
 
   lua_pushboolean(ls, added_time);
   return 1;
+}
+
+// THIS IS ONLY MEANT TO BE A DEBUG FUNCTION FOR TESTING PURPOSES.
+// THIS SHOULDN'T BE CALLED FROM REAL CODE!
+int add_kill_to_creature_mortuary(lua_State* ls)
+{
+  if (lua_gettop(ls) >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string killed_id = lua_tostring(ls, 2);
+
+    int quantity = 1;
+
+    if (lua_gettop(ls) == 3)
+    {
+      quantity = lua_tointeger(ls, 3);
+    }
+
+    CreaturePtr creature = get_creature(creature_id);
+    Mortuary& mort = creature->get_mortuary_ref();
+
+    for (int i = 0; i < quantity; i++)
+    {
+      mort.add_creature_kill(killed_id);
+    }
+
+    Game& game = game.instance();
+    Mortuary& global_mort = game.get_mortuary_ref();
+
+    for (int i = 0; i < quantity; i++)
+    {
+      global_mort.add_creature_kill(killed_id);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_kill_to_creature_mortuary");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int report_coords(lua_State* ls)
+{
+  if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    CreaturePtr creature = get_creature(creature_id);
+    
+    Coordinate c = MapUtils::get_coordinate_for_creature(current_map, creature);
+    ostringstream msg;
+    msg << "(" << c.first << "," << c.second << ")";
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
+    manager.add_new_message(msg.str());
+    manager.send();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to report_coords");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)

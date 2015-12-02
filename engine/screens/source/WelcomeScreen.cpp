@@ -49,6 +49,10 @@ void WelcomeScreen::initialize()
   new_game.set_id(option_id++);
   new_game.set_description(StringTable::get(TextKeys::SW_TITLE_NEW_GAME));
 
+  Option new_game_random_char;
+  new_game_random_char.set_id(option_id++);
+  new_game_random_char.set_description(StringTable::get(TextKeys::SW_TITLE_NEW_GAME_RANDOM));
+
   Option load_game;
   load_game.set_id(option_id++);
   load_game.set_description(StringTable::get(TextKeys::SW_TITLE_LOAD_GAME));
@@ -58,6 +62,9 @@ void WelcomeScreen::initialize()
   quit.set_description(StringTable::get(TextKeys::SW_TITLE_QUIT_GAME));
 
   options->add_option(new_game);
+  options->add_option_description("");
+
+  options->add_option(new_game_random_char);
   options->add_option_description("");
 
   options->add_option(load_game);

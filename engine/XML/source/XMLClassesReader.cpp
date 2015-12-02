@@ -48,10 +48,12 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     current_class->set_class_id(internal_class_id);
 
     string class_name_sid = XMLUtils::get_child_node_value(class_node, "NameSID");
+    string class_short_description_sid = XMLUtils::get_child_node_value(class_node, "ShortDescriptionSID");
     string class_description_sid = XMLUtils::get_child_node_value(class_node, "DescriptionSID");
     string class_abbreviation_sid = XMLUtils::get_child_node_value(class_node, "DisplayAbbreviationSID");
 
     current_class->set_class_name_sid(class_name_sid);
+    current_class->set_class_short_description_sid(class_short_description_sid);
     current_class->set_class_description_sid(class_description_sid);
     current_class->set_class_abbreviation_sid(class_abbreviation_sid);
 

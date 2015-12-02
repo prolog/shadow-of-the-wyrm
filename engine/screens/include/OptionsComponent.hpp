@@ -18,6 +18,8 @@ class Option
     // 0, 1, 2, etc.
     void set_id(const int new_id);
     int get_id() const;
+    int get_id_for_random() const; // get the '*' random option
+    bool is_random_option(const int opt) const;
 
     // The char to display when displaying the option in the UI - e.g., 'a', 'e'
     char get_id_char() const;

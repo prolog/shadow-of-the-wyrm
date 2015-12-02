@@ -331,6 +331,7 @@ pair<bool, Direction> AutomaticMovementCoordinator::get_new_direction_if_bend_in
   pair<bool, Direction> result = {false, Direction::DIRECTION_NULL};
   vector<Coordinate> non_block_coords;
   Coordinate cur_pos;
+  bool flip_dir = false;
 
   if (creature && map)
   {
@@ -355,12 +356,13 @@ pair<bool, Direction> AutomaticMovementCoordinator::get_new_direction_if_bend_in
     if (non_block_count == 2)
     {
       non_block_coords.erase(std::find(non_block_coords.begin(), non_block_coords.end(), CoordUtils::get_new_coordinate(cur_pos, DirectionUtils::get_opposite_direction(cur_dir))));
+      flip_dir = true;
     }
   }
 
   // Translate the new coordinates back to a direction which is then returned
   // to be used to flip the automovement direction.
-  if (!non_block_coords.empty())
+  if (flip_dir)
   {
     result.first = true;
     result.second = CoordUtils::get_direction(cur_pos, non_block_coords.at(0));

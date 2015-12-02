@@ -40,6 +40,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>nama</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>77</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>corpse_rat</ID>
 				<Coord>
 					<Row>6</Row>

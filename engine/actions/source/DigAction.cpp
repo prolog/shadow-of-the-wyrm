@@ -32,12 +32,24 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr 
 
     if (tm != nullptr)
     {
-      bool dug = tm->dig(creature, map, tile);
+      TileSuperType tst = tile->get_tile_super_type();
 
-      if (dug)
+      if (tile_super_type_supports_digging(tst))
       {
-        tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, Bool::to_string(true));
-        acv = get_action_cost_value(creature);
+        if (tm->dig(creature, map, tile))
+        {
+          tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, Bool::to_string(true));
+          acv = get_action_cost_value(creature);
+
+          // Digging also removes any seeds currently planted.
+          // Useful for when you wanted a lovely orchard full of cherry trees,
+          // but you accidentally planted a pear seed.  How embarassing!
+          tile->remove_additional_property(TileProperties::TILE_PROPERTY_PLANTED);
+        }
+      }
+      else
+      {
+        add_cannot_dig_on_tile_super_type_message(creature);
       }
     }
   }
@@ -95,7 +107,7 @@ TilePtr DigAction::dig_tile(TilePtr adjacent_tile) const
   TilePtr new_tile = tg.generate(adjacent_tile->get_decomposition_tile_type());
 
   // Copy over features and items.
-  new_tile->transformFrom(adjacent_tile);
+  new_tile->transform_from(adjacent_tile);
 
   // Potentially add some items created by breaking up the original tile.
   ItemManager im;
@@ -124,6 +136,17 @@ void DigAction::add_successful_dig_message(CreaturePtr creature) const
   }
 }
 
+void DigAction::add_cannot_dig_on_tile_super_type_message(CreaturePtr creature) const
+{
+  if (creature && creature->get_is_player())
+  {
+    IMessageManager& manager = MessageManagerFactory::instance();
+
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE));
+    manager.send();
+  }
+}
+
 void DigAction::handle_potential_item_breakage(CreaturePtr creature, ItemPtr item) const
 {
   if (creature != nullptr && item != nullptr)
@@ -140,6 +163,14 @@ void DigAction::handle_potential_item_breakage(CreaturePtr creature, ItemPtr ite
       manager.send();
     }
   }
+}
+
+// JCD FIXME: If there get to be more and more checks surrounding tile super type,
+// consider making it a class based on the existing enum, with member functions
+// like the one below.
+bool DigAction::tile_super_type_supports_digging(const TileSuperType tst) const
+{
+  return (tst == TileSuperType::TILE_SUPER_TYPE_GROUND);
 }
 
 ActionCostValue DigAction::get_action_cost_value(CreaturePtr creature) const

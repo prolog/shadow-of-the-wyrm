@@ -16,7 +16,7 @@ function Area:new(row, col)
 
   -- Assume the area is placed on the world map unless we're told
   -- otherwise.
-  obj.map_id = "overworld"
+  obj.map_id = "world_map"
 
   return obj
 end

@@ -168,9 +168,11 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr 
     if (item && item->get_base_id() == base_item_id)
     {
       int i_quantity = item->get_quantity();
+      bool remove_item = (i_quantity <= rem_quantity);
+
       rem_quantity -= i_quantity;
 
-      if (i_quantity <= rem_quantity)
+      if (remove_item)
       {
         // Subtract the current quantity from what's remaining, and
         // remove the item.
@@ -194,10 +196,20 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr 
       }
 
       result.first = true;
+
+      if (rem_quantity <= 0)
+      {
+        break;
+      }
     }
   }
 
-  pair<bool, vector<ItemPtr>> inv_items = inv->remove_by_base_id(base_item_id, rem_quantity);
+  pair<bool, vector<ItemPtr>> inv_items;
+
+  if (rem_quantity > 0)
+  {
+    inv_items = inv->remove_by_base_id(base_item_id, rem_quantity);
+  }
 
   result.first = inv_items.first;
   copy(inv_items.second.begin(), inv_items.second.end(), back_inserter(result.second));

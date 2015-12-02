@@ -19,8 +19,11 @@ class ActionTextKeys
     static std::string get_alcohol_poisoning_death_message(const std::string& desc_sid, const bool is_player);
     static std::string get_kick_message(const std::string& desc_sid, const bool is_player);
     static std::string get_kick_object_message(const std::string& desc_sid, const std::string& object_desc, const bool is_player);
+    static std::string get_knock_back_message(const std::string& attacked_desc_sid, const bool is_player);
     static std::string get_generic_wear_off_message(const std::string& desc_sid); // monster only
     static std::string get_item_breakage_message(const std::string& creature_desc_sid, const bool is_player, const std::string& item_desc);
+    static std::string get_spit_out_message(const std::string& seed_usage_desc);
+    static std::string get_seed_planted_message(const bool blind, const std::string& seed_usage_desc);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -102,6 +105,7 @@ class ActionTextKeys
     static const std::string ACTION_DIG_ITEM_FOUND;
     static const std::string ACTION_DIG_THROUGH_TILE;
     static const std::string ACTION_DIG_CANNOT_DIG;
+    static const std::string ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE;
     static const std::string ACTION_DIG_TOO_HARD;
     static const std::string ACTION_RESTING;
     static const std::string ACTION_HANDLE_DEFAULT;
@@ -140,7 +144,11 @@ class ActionTextKeys
     static const std::string ACTION_KICK_MONSTER;
     static const std::string ACTION_KICK_OBJECT_PLAYER;
     static const std::string ACTION_KICK_OBJECT_MONSTER;
+    static const std::string ACTION_KNOCK_BACK_PLAYER;
+    static const std::string ACTION_KNOCK_BACK_MONSTER;
     static const std::string ACTION_SPELL_WEAR_OFF_MONSTER;
     static const std::string ACTION_ITEM_BREAKAGE_PLAYER;
     static const std::string ACTION_ITEM_BREAKAGE_MONSTER;
+    static const std::string ACTION_SPIT_OUT_SEED;
+    static const std::string ACTION_SEED_PLANTED;
 };

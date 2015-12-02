@@ -17,7 +17,7 @@ class Calendar : public ISerializable
     void add_days(const uint days);
     void add_seconds(const double seconds);
     double get_seconds() const;
-
+    double get_seconds_from_date(const Date& date) const;
     Date get_date() const;
     ISeasonPtr get_season() const;
     uint get_starting_year() const;
