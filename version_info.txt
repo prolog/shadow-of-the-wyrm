@@ -1,3 +1,6 @@
+Shadow of the Wyrm v0.4.5 "Bacarisse"
+- Version declared December 1, 2015.
+
 Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Version declared November 3, 2015.  Version finalized December 1, 2015.
 
