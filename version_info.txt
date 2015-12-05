@@ -9,6 +9,11 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - New artifacts: legendary boots "Akos Akari".
 
+- Bug fixes:
+
+  - Crash when attacking with a ranged weapon with no launcher (e.g.,
+    thrown rocks, no sling equipped) (Lagi)
+
 Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Version declared November 3, 2015.  Version finalized December 1, 2015.
 
