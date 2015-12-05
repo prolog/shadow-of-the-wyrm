@@ -1,6 +1,14 @@
 Shadow of the Wyrm v0.4.5 "Bacarisse"
 - Version declared December 1, 2015.
 
+- Wearables can now include a speed bonus.  This will be used very, very
+  rarely, essentially only for artifacts.
+
+- Updated the creature speed calculation to also include speed bonuses on
+  worn equipment.
+
+- New artifacts: legendary boots "Akos Akari".
+
 Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Version declared November 3, 2015.  Version finalized December 1, 2015.
 

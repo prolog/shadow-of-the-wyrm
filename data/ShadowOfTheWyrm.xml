@@ -29,6 +29,7 @@
 				<Artifact>alaric_mail_shirt</Artifact>
 				<Artifact>helm_of_the_heavens</Artifact>
 				<Artifact>heavens_blade</Artifact>
+				<Artifact>akos_akari</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>archangel</Summon>
@@ -215,6 +216,7 @@
 				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>shroud_fate</Artifact>
+				<Artifact>akos_akari</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>air_elemental</Summon>
@@ -251,6 +253,7 @@
 				<Artifact>crown_of_tyranny</Artifact>
 				<Artifact>athame_winter</Artifact>
 				<Artifact>akkar</Artifact>
+				<Artifact>akos_akari</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>water_elemental</Summon>
@@ -20497,6 +20500,24 @@
 				<Evade>2</Evade>
 				<Soak>0</Soak>
 			</Armour>
+			<Armour id="akos_akari">
+				<DescriptionSID>AKOS_AKARI_SID</DescriptionSID>
+				<UsageDescriptionSID>AKOS_AKARI_USAGE_SID</UsageDescriptionSID>
+				<Value>1960</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>7</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Poison>0.15</Poison>
+				</Resistances>
+				<Evade>15</Evade>
+				<Soak>5</Soak>
+				<SpeedBonus>6</SpeedBonus>
+				<ToHit>10</ToHit>
+			</Armour>			
 		</Armours>
 		<Rings>
 			<Ring id="falcons_eye">
