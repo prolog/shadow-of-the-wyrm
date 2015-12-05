@@ -57,8 +57,6 @@ Mateusz Lagowski
 - ? for command list
 
 Lagi:
-- throw potion doesn't remove
-- throw potion adds nutrition to player?
 - something to allow "breaking" walking.  Eg., if a key is pressed, stop.
 - keys to toggle monsters when looking
 - during aiming, "=" should do the same as "+" for laziness (+ update
