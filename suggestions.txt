@@ -51,8 +51,22 @@ Kraphead:
 - auto-displace when bumping friendly creatures
 - implement dual wield
 - Option to keep adventuring after killing Amaurosis
-- artifact boots
 - item generation: more arrows
 
 Mateusz Lagowski
 - ? for command list
+
+Lagi:
+- crash on rock throw
+- throw potion doesn't remove
+- throw potion adds nutrition to player?
+- something to allow "breaking" walking.  Eg., if a key is pressed, stop.
+- keys to toggle monsters when looking
+- during aiming, "=" should do the same as "+" for laziness (+ update
+  message in UI)
+- alternative inventory management: when in the stateless inventory
+  screen ("I"), items should be selectable, and then another menu should
+  be overlaid allowing equipping into various slots, dropping, evoking,
+  drinking, and so on.
+- Random names when "*" is selected.
+

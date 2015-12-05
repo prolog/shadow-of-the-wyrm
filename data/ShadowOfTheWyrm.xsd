@@ -935,6 +935,7 @@
 			<xs:sequence>
 				<xs:element name="Evade" type="xs:integer" minOccurs="0"/>
 				<xs:element name="Soak" type="xs:integer" minOccurs="0"/>
+				<xs:element name="SpeedBonus" type="xs:integer" minOccurs="0"/>
 				<xs:element name="ToHit" type="xs:integer" minOccurs="0"/>
 				<xs:element name="AddlDamage" type="xs:integer" minOccurs="0"/>
 			</xs:sequence>
