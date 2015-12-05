@@ -78,9 +78,9 @@ string Wearable::get_synopsis() const
 {
   stringstream ss;
 
-  if (to_hit > 0 || addl_damage > 0)
+  if (to_hit > 0 || addl_damage > 0 || speed_bonus > 0)
   {
-    ss << "(" << to_hit << ", " << addl_damage << ") ";
+    ss << "(" << to_hit << ", " << addl_damage << ", " << speed_bonus << ") ";
   }
   
   if (evade > 0 || soak > 0)
