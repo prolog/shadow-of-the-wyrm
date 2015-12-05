@@ -43,7 +43,7 @@ int ToHitCalculator::get_weapon_bonus(CreaturePtr creature)
   // Apply the weapon modifier.
   SkillType st = SkillType::SKILL_MELEE_UNARMED;
   
-  if (attack_type == AttackType::ATTACK_TYPE_RANGED)
+  if (attack_type == AttackType::ATTACK_TYPE_RANGED && weapon)
   {
     st = weapon->get_trained_ranged_skill();
   }
