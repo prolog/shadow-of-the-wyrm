@@ -19,6 +19,7 @@
 #include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "Naming.hpp"
 #include "PickupAction.hpp"
 #include "PlayerConstants.hpp"
 #include "Quests.hpp"
@@ -1715,6 +1716,8 @@ int set_creature_name(lua_State* ls)
     if (!name.empty())
     {
       CreaturePtr creature = get_creature(creature_id);
+      name = Naming::clean_name_or_use_default(name, creature->get_sex());
+
       creature->set_name(name);
 
       changed_name = true;

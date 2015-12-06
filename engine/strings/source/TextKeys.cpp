@@ -23,7 +23,6 @@ const string TextKeys::RANDOM_SELECTION = "RANDOM_SELECTION";
 const string TextKeys::EXIT = "EXIT";
 const string TextKeys::DEATH_MESSAGE = "DEATH_MESSAGE";
 const string TextKeys::PLAYER_DESC = "PLAYER_DESC";
-const string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
 const string TextKeys::YOU = "YOU";
 const string TextKeys::YOURSELF = "YOURSELF";
 const string TextKeys::HIMSELF = "HIMSELF";

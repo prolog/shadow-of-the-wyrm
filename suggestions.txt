@@ -1,4 +1,6 @@
 Me:
+- In the infinite dungeon, up staircases at 100' (and lower?) are going
+  back to the overworld map.
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
@@ -26,6 +28,8 @@ registry, instead of failing silently.
   when that day occurs.
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
+- Scrolls of uncursing, should be common, appear around d2 or 3.
+- The spell of uncursing should be a wizard spell.
 
 Akeley:
 - ESC as well as 'z'
@@ -40,6 +44,9 @@ Kyzrati:
 
 Avagart:
 - Eventually, have automovement stop only on new items.
+- Cursed items should bind to slot, identify as cursed.
+- Include feature when drawing old areas so doors/etc don't disappear.
+
 
 AgingMinotaur:
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
@@ -65,5 +72,4 @@ Lagi:
   screen ("I"), items should be selectable, and then another menu should
   be overlaid allowing equipping into various slots, dropping, evoking,
   drinking, and so on.
-- Random names when "*" is selected.
-
+- siriath_lair already inserted?
