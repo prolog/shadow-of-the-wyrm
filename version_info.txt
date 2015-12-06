@@ -7,7 +7,12 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 - Updated the creature speed calculation to also include speed bonuses on
   worn equipment.
 
-- Random name generation on "*" or empty on the naming screen (Lagi).
+- Random name generation on an empty name on the naming screen (Lagi).
+
+- '=' can be used in the same way as '+' when using the keys to toggle
+  target selection (Lagi).
+
+- Various minor refactorings and cleanups.
 
 - New settings: default_name (can be used to set a default name, or leave
   empty or as "*" to do random name generation).
