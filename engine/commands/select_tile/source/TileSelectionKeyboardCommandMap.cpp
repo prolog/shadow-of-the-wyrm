@@ -47,6 +47,7 @@ void TileSelectionKeyboardCommandMap::initialize_command_mapping(const Settings&
   { { std::to_string('z'), TileSelectionCommandKeys::CANCEL_TILE_SELECTION },
   { std::to_string('Z'), TileSelectionCommandKeys::CANCEL_TILE_SELECTION },
   { std::to_string('+'), TileSelectionCommandKeys::TARGET_NEXT_CREATURE },
+  { std::to_string('='), TileSelectionCommandKeys::TARGET_NEXT_CREATURE },
   { std::to_string('-'), TileSelectionCommandKeys::TARGET_PREV_CREATURE } };
 
   initialize_special_key_mappings();
