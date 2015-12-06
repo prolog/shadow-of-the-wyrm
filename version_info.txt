@@ -7,6 +7,11 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 - Updated the creature speed calculation to also include speed bonuses on
   worn equipment.
 
+- Random name generation on "*" or empty on the naming screen (Lagi).
+
+- New settings: default_name (can be used to set a default name, or leave
+  empty or as "*" to do random name generation).
+
 - New artifacts: legendary boots "Akos Akari".
 
 - Bug fixes:
@@ -16,6 +21,9 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
   - When throwing potions, the last potion in a stack was not being
     removed properly (Lagi).
+
+  - The code for setting a new name in-game via Nama wasn't using the
+    same rules as name generation at the start of the game.
 
 Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Version declared November 3, 2015.  Version finalized December 1, 2015.
