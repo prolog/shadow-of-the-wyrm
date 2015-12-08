@@ -31,9 +31,6 @@ registry, instead of failing silently.
 - Scrolls of uncursing, should be common, appear around d2 or 3.
 - The spell of uncursing should be a wizard spell.
 
-Akeley:
-- ESC as well as 'z'
-
 barrabus: 
 - Extra descs for items.
 

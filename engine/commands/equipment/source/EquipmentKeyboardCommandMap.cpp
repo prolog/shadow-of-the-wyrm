@@ -49,7 +49,8 @@ void EquipmentKeyboardCommandMap::initialize_command_mapping(const Settings& set
                         {"y", EquipmentCommandKeys::YOUR_ITEMS},
                         {"Y", EquipmentCommandKeys::YOUR_ITEMS},
                         {"z", EquipmentCommandKeys::EXIT_EQUIPMENT},
-                        {"Z", EquipmentCommandKeys::EXIT_EQUIPMENT}};
+                        {"Z", EquipmentCommandKeys::EXIT_EQUIPMENT},
+                        };
 }
 
 string EquipmentKeyboardCommandMap::get_settings_prefix() const
