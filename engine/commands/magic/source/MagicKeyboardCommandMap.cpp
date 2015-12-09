@@ -1,4 +1,5 @@
 #include "Conversion.hpp"
+#include "CursesConstants.hpp"
 #include "MagicCommandKeys.hpp"
 #include "MagicKeyboardCommandMap.hpp"
 
@@ -23,11 +24,16 @@ void MagicKeyboardCommandMap::command_not_found(const string& keyboard_input)
 // Settings currently does nothing here.
 void MagicKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
+  string esc_key;
+  esc_key = NC_ESCAPE_KEY;
+
   command_mapping.clear();
   command_mapping = KeyboardCommandMappingMap{{std::to_string('.'), MagicCommandKeys::NEXT_PAGE},
                                               {std::to_string(','), MagicCommandKeys::PREVIOUS_PAGE},
                                               {std::to_string('z'), MagicCommandKeys::EXIT_MAGIC},
-                                              {std::to_string('Z'), MagicCommandKeys::EXIT_MAGIC}};
+                                              {std::to_string('Z'), MagicCommandKeys::EXIT_MAGIC},
+                                              {std::to_string(NC_ESCAPE_KEY), MagicCommandKeys::EXIT_MAGIC},
+                                              {esc_key, MagicCommandKeys::EXIT_MAGIC}};
 
   // Select a spell
   for (char c = 'a'; c < 'z'; c++)

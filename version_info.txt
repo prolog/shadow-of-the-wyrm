@@ -17,8 +17,10 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 - New settings: default_name (can be used to set a default name, or leave
   empty or as "*" to do random name generation).
 
-- ESC can now be used to exit tile selection, equipment, and inventory.  
-  Still to do: magic and general screens (akeley, Lagi).
+- ESC can now be used to exit tile selection, equipment, magic and 
+  inventory screens.  This should include all uses of those screens:
+  the readables screen when reading, wands when evoking, and so on (akeley
+  and Lagi).
 
 - New artifacts: legendary boots "Akos Akari".
 
