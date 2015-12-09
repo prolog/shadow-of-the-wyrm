@@ -1,6 +1,4 @@
 Me:
-- In the infinite dungeon, up staircases at 100' (and lower?) are going
-  back to the overworld map.
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
@@ -30,6 +28,8 @@ registry, instead of failing silently.
   items can be done and dumped to disk.
 - Scrolls of uncursing, should be common, appear around d2 or 3.
 - The spell of uncursing should be a wizard spell.
+- Slightly different creatures: marsh gas, should have a chance of
+  exploding when attacked.  "Exploding" should cast "Wreath of Fire".
 
 barrabus: 
 - Extra descs for items.
