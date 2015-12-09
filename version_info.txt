@@ -35,6 +35,14 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   - The code for setting a new name in-game via Nama wasn't using the
     same rules as name generation at the start of the game.
 
+  - Generator::set_depth_custom_map_id_properties was copying over too
+    many properties.  It was intended only to copy over custom map IDs
+    for particular depths (e.g., if level 5 of some dungeon was a set
+    level), but it was copying over additional properties, which lead to
+    a bug in the infinite dungeon where the up staircase on every level
+    lead back to the surface because the key TILE_PROPERTY_PREVIOUS_MAP_ID
+    was copied from level to level.
+
 Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Version declared November 3, 2015.  Version finalized December 1, 2015.
 

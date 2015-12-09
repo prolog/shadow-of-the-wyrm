@@ -24,7 +24,7 @@ const string TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG = "TILE_PROPERTY_PREVI
 const string TileProperties::TILE_PROPERTY_PLANTED = "TILE_PROPERTY_PLANTED";
 
 // Represents the non-number part of a depth custom map ID key.
-const string TileProperties::CUSTOM_MAP_ID_PART = "_MAP_ID";
+const string TileProperties::CUSTOM_MAP_ID_PART = "_CUSTOM_MAP_ID";
 
 // Generate the string used to identify the custom map ID of a particular depth
 // in the dungeon or world.  A custom map ID for two levels deep in the dungeon
