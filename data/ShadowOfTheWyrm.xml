@@ -18,6 +18,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>asturias</Artifact>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -179,6 +180,7 @@
 				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>earthcleaver</Artifact>
+				<Artifact>asturias</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>fire_elemental</Summon>
@@ -240,6 +242,7 @@
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
 			<Crowning>
+				<Artifact>asturias</Artifact>
 				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -20553,6 +20556,20 @@
 				</Resistances>
 				<Evade>5</Evade>
 				<Soak>10</Soak>
+			</Ring>
+			<Ring id="asturias">
+				<DescriptionSID>ASTURIAS_SID</DescriptionSID>
+				<UsageDescriptionSID>ASTURIAS_USAGE_SID</UsageDescriptionSID>
+				<Value>1950</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pierce>0.20</Pierce>
+				</Resistances>
+				<SpeedBonus>10</SpeedBonus>
 			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
