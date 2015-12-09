@@ -17,9 +17,9 @@ barrows:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD")
 
 local dungeon = Area:new(97, 98)
 local siriath_area = RNG_range(4, 5)
-local siriath_map_id_key = siriath_area .. "_MAP_ID"
+local siriath_custom_map_id_key = siriath_area .. "_CUSTOM_MAP_ID"
 dungeon:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON")
-dungeon:set_additional_property(siriath_map_id_key, "siriath_lair")
+dungeon:set_additional_property(siriath_custom_map_id_key, "siriath_lair")
 dungeon:set_additional_property("UNDERWORLD_STRUCTURE_MAX_DEPTH", 50)
 
 table.insert(little_island, wintersea_keep)
