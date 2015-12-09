@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include "Conversion.hpp"
+#include "CursesConstants.hpp"
 #include "InventoryCommandKeys.hpp"
 #include "InventoryKeyboardCommandMap.hpp"
 
@@ -25,9 +26,13 @@ void InventoryKeyboardCommandMap::command_not_found(const std::string& keyboard_
 // Settings currently does nothing here.
 void InventoryKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
+  string esc_key;
+  esc_key = NC_ESCAPE_KEY;
+
   command_mapping.clear();
   command_mapping = KeyboardCommandMappingMap{{"z", InventoryCommandKeys::EXIT_INVENTORY},
                                               {"Z", InventoryCommandKeys::EXIT_INVENTORY},
+                                              {esc_key, InventoryCommandKeys::EXIT_INVENTORY},
                                               {"`", InventoryCommandKeys::CLEAR_FILTER},
                                               {"]", InventoryCommandKeys::FILTER_VIEW},
                                               {")", InventoryCommandKeys::FILTER_VIEW},
