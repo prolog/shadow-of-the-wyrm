@@ -3,6 +3,7 @@
 // Once other platforms are supported, use appropriate ifdefs.
 #define NC_BACKSPACE_KEY 8
 #define NC_ENTER_KEY 10
+#define NC_ESCAPE_KEY 27
 
 class CursesConstants
 {
