@@ -355,6 +355,7 @@
 				 others. -->
 			<xs:element name="Speed" type="xs:integer" minOccurs="0"/>
 			<xs:element ref="tns:EventScripts" minOccurs="0"/>
+			<xs:element name="Spells" type="tns:Spells" minOccurs="0"/>
 			<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
@@ -738,6 +739,24 @@
 		<xs:element name="Uses" type="xs:int"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>
+</xs:complexType>
+<xs:complexType name="Spells">
+	<xs:annotation>
+		<xs:documentation>A list of spells known by a particular creature</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Spell" type="tns:Spell" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Spell">
+	<xs:annotation>
+		<xs:documentation>A particular spell known by a particular creature</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="SpellID" type="xs:string"/>
+		<xs:element name="Castings" type="xs:integer"/>
+		<xs:element name="Bonus" type="xs:integer" minOccurs="0"/>
+	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Properties">
 	<xs:sequence>

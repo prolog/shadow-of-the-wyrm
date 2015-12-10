@@ -25,6 +25,9 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 - Created a batch file to run the game plus procdump to try to track down
   a particular crash bug.
 
+- Known spells, number of castings, and spell bonuses can now be specified
+  per creature in the configuration XML.
+
 - New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".
 
 - New creatures: gas cloud.

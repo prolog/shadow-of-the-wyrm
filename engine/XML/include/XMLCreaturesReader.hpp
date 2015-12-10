@@ -15,4 +15,5 @@ class XMLCreaturesReader : public XMLReader
     CreatureGenerationValues parse_creature_generation_values(const XMLNode& creature_generation_values_node);
 
     void parse_event_scripts(const XMLNode& event_scripts_node, CreaturePtr creature);
+    void parse_spells(const XMLNode& spells_node, CreaturePtr creature);
 };
