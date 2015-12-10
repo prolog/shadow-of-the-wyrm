@@ -17069,6 +17069,47 @@
 			<Evade>3</Evade>
 			<Soak>2</Soak>
 		</Creature>
+		<Creature id="gas_cloud">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>GAS_CLOUD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GAS_CLOUD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GAS_CLOUD_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>6</Type>
+			</Damage>
+			<Evade>10</Evade>
+		</Creature>
 		<Creature id="graverobber">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>GRAVEROBBER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
