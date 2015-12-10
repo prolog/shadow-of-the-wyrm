@@ -718,6 +718,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\screens\include\WornLocationScreenFactory.hpp" />
     <ClInclude Include="engine\screens\include\WornLocationSelectionScreen.hpp" />
     <ClInclude Include="engine\scripting\include\AttackScript.hpp" />
+    <ClInclude Include="engine\scripting\include\DeathScript.hpp" />
     <ClInclude Include="engine\scripting\include\DecisionScript.hpp" />
     <ClInclude Include="engine\scripting\include\ItemScript.hpp" />
     <ClInclude Include="engine\scripting\include\LevelScript.hpp" />
@@ -1130,6 +1131,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
     <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp" />
+    <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
     <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
     <ClCompile Include="engine\source\unit_tests\CharacterCreationDetails_test.cpp">

@@ -28,6 +28,10 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 - Known spells, number of castings, and spell bonuses can now be specified
   per creature in the configuration XML.
 
+- Refactored the death script code to be table-based and more general,
+  like the attack scripts.  Updated Amaurosis' death script, and created a
+  currently-empty script for gas clouds.
+
 - New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".
 
 - New creatures: gas cloud.
