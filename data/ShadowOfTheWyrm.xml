@@ -15622,7 +15622,7 @@
 			<Soak>20</Soak>
 			<EventScripts>
 				<DeathScript>
-					<Script>events/win_game.lua</Script>
+					<Script>death/amaurosis.lua</Script>
 					<Chance>100</Chance>
 				</DeathScript>
 			</EventScripts>
@@ -17113,6 +17113,12 @@
 				<Type>6</Type>
 			</Damage>
 			<Evade>10</Evade>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/gas_cloud.lua</Script>
+					<Chance>70</Chance>
+				</DeathScript>
+			</EventScripts>
 			<Spells>
 				<Spell>
 					<SpellID>a_01_wreath_of_fire</SpellID>

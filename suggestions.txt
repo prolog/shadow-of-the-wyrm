@@ -1,4 +1,5 @@
 Me:
+- Teleport not working on self?
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
