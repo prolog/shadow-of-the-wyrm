@@ -1,7 +1,7 @@
 require('death')
 
 -- Win the game!
-local function win(creature_id)
+local function win(creature_id, attacking_creature_id)
     stop_playing_game()
 
     -- To do: eventually prompt the player for whether they want to

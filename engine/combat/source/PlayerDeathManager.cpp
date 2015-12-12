@@ -34,7 +34,7 @@ void PlayerDeathManager::die() const
     manager.add_new_message(death_message);
     
     // Run any death scripts.
-    run_death_event(dead_creature, map);
+    run_death_event(dead_creature, attacking_creature, map);
     
     manager.send_and_halt();
     

@@ -1,6 +1,6 @@
 require('death')
 
-local function explode(creature_id)
+local function explode(creature_id, attacking_creature_id)
   -- Cast wreath of fire
   -- ...
 end
