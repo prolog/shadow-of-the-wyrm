@@ -7,18 +7,15 @@
 class SpellcastingAction : public IActionManager
 {
   public:
+    // Player-specific version of cast_spell
     ActionCostValue cast_spell(CreaturePtr creature) const;
+
+    // The following version of cast_spell is meant for NPCs
+    ActionCostValue cast_spell(CreaturePtr creature, const std::string& spell_id) const;
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
   protected:
-    friend class ActionManager;
-    SpellcastingAction();
-
-    // Internal spellcasting function that is called by the basic cast_spell(creature)
-    // function.
-    ActionCostValue cast_spell(CreaturePtr creature, const std::string& spell_id) const;
-
     void add_no_magical_knowledge_message(CreaturePtr creature) const;
     void add_invalid_spellcasting_location_message(CreaturePtr creature) const;
     void add_insufficient_power_message(CreaturePtr creature) const;

@@ -1,8 +1,7 @@
 require('death')
 
 local function explode(creature_id, attacking_creature_id)
-  -- Cast wreath of fire
-  -- ...
+  cast_spell(creature_id, "a_01_wreath_of_fire") 
 end
 
 local explode_fn = explode

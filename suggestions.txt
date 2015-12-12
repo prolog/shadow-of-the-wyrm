@@ -52,7 +52,7 @@ AgingMinotaur:
 * I noticed that archers and goblin pelters don't actually shoot anything. I'm supposing this will show up later.
 
 Kraphead:
-- monsters should cast spells
+- monsters should cast spells (in normal combat, not just on death...)
 - auto-displace when bumping friendly creatures
 - implement dual wield
 - Option to keep adventuring after killing Amaurosis
