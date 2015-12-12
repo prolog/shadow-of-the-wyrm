@@ -306,11 +306,9 @@ void Generator::set_depth_custom_map_id_properties(TilePtr tile)
 {
   for (const auto& pair : additional_properties)
   {
-    string key = pair.first;
-
-    if (key.find(TileProperties::CUSTOM_MAP_ID_PART) != string::npos)
+    if (TileProperties::is_depth_custom_map_id(pair.first))
     {
-      tile->set_additional_property(key, pair.second);
+      tile->set_additional_property(pair.first, pair.second);
     }
   }
 }

@@ -1,5 +1,6 @@
 Me:
 - Teleport not working on self?
+- Corpseless conduct
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
@@ -31,6 +32,7 @@ registry, instead of failing silently.
 - The spell of uncursing should be a wizard spell.
 - Slightly different creatures: marsh gas, should have a chance of
   exploding when attacked.  "Exploding" should cast "Wreath of Fire".
+- Implement two-handed weapons.
 
 barrabus: 
 - Extra descs for items.
