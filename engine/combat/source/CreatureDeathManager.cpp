@@ -36,7 +36,7 @@ void CreatureDeathManager::die() const
     IInventoryPtr ground = MapUtils::get_tile_for_creature(map, dead_creature)->get_items();
 
     add_creature_death_messages(attacking_creature, dead_creature);
-    run_death_event(dead_creature, map);
+    run_death_event(dead_creature, attacking_creature, map);
     MapUtils::remove_creature(map, dead_creature);
     remove_creature_equipment_and_drop_inventory_on_tile(map, dead_creature, ground);
     potentially_generate_random_drop(dead_creature, ground);
