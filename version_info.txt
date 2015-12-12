@@ -32,6 +32,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   like the attack scripts.  Updated Amaurosis' death script, and created a
   currently-empty script for gas clouds.
 
+- Gas clouds "explode" on death, by casting wreath of fire.
+
 - The monochrome colour is now an ini setting.
 
 - New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".

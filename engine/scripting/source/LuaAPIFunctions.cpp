@@ -25,6 +25,7 @@
 #include "Quests.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "SpellcastingAction.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
@@ -200,6 +201,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "calendar_add_years", calendar_add_years);
   lua_register(L, "add_kill_to_creature_mortuary", add_kill_to_creature_mortuary);
   lua_register(L, "report_coords", report_coords);
+  lua_register(L, "cast_spell", cast_spell);
 }
 
 // Lua API helper functions
@@ -2513,6 +2515,38 @@ int report_coords(lua_State* ls)
   }
 
   return 0;
+}
+
+int cast_spell(lua_State* ls)
+{
+  bool spell_cast = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string spell_id = lua_tostring(ls, 2);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr && !spell_id.empty())
+    {
+      // Try to have the given creature cast the desired spell.
+      SpellcastingAction sa;
+      ActionCostValue acv = sa.cast_spell(creature, spell_id);
+
+      if (acv > 0)
+      {
+        spell_cast = true;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to cast_spell");
+    lua_error(ls);
+  }
+    
+  lua_pushboolean(ls, spell_cast);
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)
