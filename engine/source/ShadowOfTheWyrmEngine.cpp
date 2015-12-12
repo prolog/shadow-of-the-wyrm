@@ -129,6 +129,9 @@ void ShadowOfTheWyrmEngine::setup_display(const Settings& settings)
     // Use newfangled colour?  Or traditional mono?
     string colour = DisplaySettings::DISPLAY_SETTING_COLOUR;
     display->set_property(colour, settings.get_setting(colour));
+
+    string mono_colour = DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR;
+    display->set_property(mono_colour, settings.get_setting(mono_colour));
   }
 }
 
