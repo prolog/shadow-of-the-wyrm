@@ -21,6 +21,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual CommandPtr get_magic_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_attack_magic_decision(CreaturePtr creature, MapPtr view_map);
     virtual CommandPtr get_healing_magic_decision(CreaturePtr creature, MapPtr view_map);
+    virtual CommandPtr get_buff_magic_decision(CreaturePtr creature, MapPtr view_map);
     virtual CommandPtr get_utility_magic_decision(CreaturePtr creature, MapPtr view_map);
 
     virtual CommandPtr get_attack_decision(const std::string& this_creature_id, MapPtr view_map);

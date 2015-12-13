@@ -130,6 +130,11 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
 
         if (magic_command == nullptr)
         {
+          magic_command = get_buff_magic_decision(creature, view_map);
+        }
+
+        if (magic_command == nullptr)
+        {
           magic_command = get_utility_magic_decision(creature, view_map);
         }
       }
@@ -162,6 +167,19 @@ CommandPtr NPCDecisionStrategy::get_healing_magic_decision(CreaturePtr creature,
 
   return magic_decision;
 }
+
+CommandPtr NPCDecisionStrategy::get_buff_magic_decision(CreaturePtr creature, MapPtr view_map)
+{
+  CommandPtr magic_decision;
+
+  if (creature != nullptr && view_map != nullptr)
+  {
+    // ...
+  }
+
+  return magic_decision;
+}
+
 
 CommandPtr NPCDecisionStrategy::get_utility_magic_decision(CreaturePtr creature, MapPtr view_map)
 {
