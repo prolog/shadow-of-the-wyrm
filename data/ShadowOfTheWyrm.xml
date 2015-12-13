@@ -16973,6 +16973,10 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>6</NumDice>
+					<NumSides>2</NumSides>
+				</AP>
 				<Exp>6</Exp>
 			</CreatureGeneration>
 			<Level>2</Level>
@@ -16983,6 +16987,12 @@
 			</Damage>
 			<Evade>4</Evade>
 			<Soak>1</Soak>
+			<Spells>
+				<Spell>
+					<SpellID>c_02_flame_dart</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="thaumaturge">
 			<RaceID>02_woodelf</RaceID>
