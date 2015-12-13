@@ -47,6 +47,19 @@ uint SpellKnowledge::count_spells_known() const
   return spells_known;
 }
 
+bool SpellKnowledge::get_knows_spells() const
+{
+  for (const auto& pair : spell_knowledge)
+  {
+    if (pair.second.get_castings() > 0)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 SpellKnowledgeMap SpellKnowledge::get_known_spells() const
 {
   return spell_knowledge;
