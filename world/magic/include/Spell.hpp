@@ -35,6 +35,9 @@ class Spell
     void set_magic_category(const SkillType new_skill_type);
     SkillType get_magic_category() const;
 
+    void set_magic_classification(const MagicClassification new_classification);
+    MagicClassification get_magic_classification() const;
+
     void set_ap_cost(const uint new_ap_cost);
     uint get_ap_cost() const;
 
@@ -83,6 +86,7 @@ class Spell
     SpellShape shape;
     bool allows_bonus;
     EffectType effect;
+    MagicClassification magic_classification;
 
     // If the spell has damage associated with it, and what that damage is.
     bool has_damage;

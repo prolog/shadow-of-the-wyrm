@@ -65,6 +65,7 @@
 			<xs:element name="PlayerCastMessageSID" type="xs:string"/>
 			<xs:element name="MonsterCastMessageSID" type="xs:string"/>
 			<xs:element name="MagicCategory" type="tns:MagicSkillType"/>
+			<xs:element name="MagicClassification" type="tns:MagicClassificationType"/>
 			<xs:element name="Colour" type="tns:ColourType"/>
 			<xs:element name="APCost" type="xs:unsignedInt"/>
 			<xs:element name="Speed" type="xs:integer"/>
@@ -1484,6 +1485,13 @@
 		<xs:enumeration value="3002"/>
 		<xs:enumeration value="3003"/>
 		<xs:enumeration value="3004"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MagicClassificationType">
+	<xs:annotation><xs:documentation>Range is defined in SpellTypes.hpp</xs:documentation></xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="-1"/>
+		<xs:maxInclusive value="3"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="SpellShape">

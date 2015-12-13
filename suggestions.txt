@@ -1,4 +1,6 @@
 Me:
+- Given the previous issues with misspecified resistances, test the "Curse"
+  spell to make sure it works as intended.
 - Teleport not working on self?
 - Corpseless conduct
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
