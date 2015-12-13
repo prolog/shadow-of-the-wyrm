@@ -13,6 +13,7 @@ using std::string;
 using std::vector;
 
 const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
+const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
 
 NPCDecisionStrategy::NPCDecisionStrategy(ControllerPtr new_controller)
 : DecisionStrategy(new_controller)
@@ -71,37 +72,24 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   
   if (view_map)
   {
+    // If the creature has any spells, consider casting a spell, based on
+    // low health, nearby hostile creatures, etc.
+    command = get_magic_decision(this_creature_id, view_map);
+
     // Attack if threatened.
-    command = get_attack_decision(this_creature_id, view_map);
-
-    // If not threatened, try a custom decision.
-    if (!command)
+    if (command == nullptr)
     {
-      CreaturePtr creature = view_map->get_creature(this_creature_id);
+      command = get_attack_decision(this_creature_id, view_map);
+    }
 
-      if (creature != nullptr)
-      {
-        ScriptDetails decision_script_details = creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION);
-        string decision_script = decision_script_details.get_script();
-
-        if (!decision_script.empty() && RNG::percent_chance(decision_script_details.get_chance()))
-        {
-          Game& game = Game::instance();
-          ScriptEngine& se = game.get_script_engine_ref();
-          DecisionScript ds;
-
-          ActionCostValue acv = ds.execute(se, decision_script, creature);
-          if (acv > 0)
-          {
-            command = std::make_shared<CustomScriptCommand>();
-            command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_ACTION_COST_VALUE, std::to_string(acv));
-          }
-        }
-      }
+    // If not threatened, try a custom (script-based) decision.
+    if (command == nullptr)
+    {
+      command = get_custom_decision(this_creature_id, view_map);
     }
     
     // If no custom decisions fired, attempt movement.
-    if (!command && can_move())
+    if (command == nullptr && can_move())
     {
       command = get_movement_decision(this_creature_id);
     }    
@@ -118,6 +106,75 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   return command;
 }
 
+// Decide whether or not to cast a spell.
+CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr magic_command;
+
+  if (view_map != nullptr)
+  {
+    CreaturePtr creature = view_map->get_creature(this_creature_id);
+
+    if (creature != nullptr)
+    {
+      SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+
+      if (sk.get_knows_spells() && RNG::percent_chance(PERCENT_CHANCE_CONSIDER_USING_MAGIC))
+      {
+        magic_command = get_attack_magic_decision(creature, view_map);
+
+        if (magic_command == nullptr)
+        {
+          magic_command = get_healing_magic_decision(creature, view_map);
+        }
+
+        if (magic_command == nullptr)
+        {
+          magic_command = get_utility_magic_decision(creature, view_map);
+        }
+      }
+    }
+  }
+
+  return magic_command;
+}
+
+CommandPtr NPCDecisionStrategy::get_attack_magic_decision(CreaturePtr creature, MapPtr view_map)
+{
+  CommandPtr magic_decision;
+
+  if (creature != nullptr && view_map != nullptr)
+  {
+    // ...
+  }
+
+  return magic_decision;
+}
+
+CommandPtr NPCDecisionStrategy::get_healing_magic_decision(CreaturePtr creature, MapPtr view_map)
+{
+  CommandPtr magic_decision;
+
+  if (creature != nullptr && view_map != nullptr)
+  {
+    // ...
+  }
+
+  return magic_decision;
+}
+
+CommandPtr NPCDecisionStrategy::get_utility_magic_decision(CreaturePtr creature, MapPtr view_map)
+{
+  CommandPtr magic_decision;
+
+  if (creature != nullptr && view_map != nullptr)
+  {
+    // ...
+  }
+
+  return magic_decision;
+}
+
 // Get the decision for what to attack.
 CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_id, MapPtr view_map)
 {
@@ -127,59 +184,95 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
   ThreatMap threat_map = threat_ratings.get_all_threats();
   ThreatMap::const_reverse_iterator t_it = threat_map.rbegin();
   
-  Coordinate c_this   = view_map->get_location(this_creature_id);
-  TilePtr this_tile   = view_map->at(c_this);
-
-  if (this_tile != nullptr)
+  if (view_map != nullptr)
   {
-    CreaturePtr this_cr = this_tile->get_creature();
+    Coordinate c_this = view_map->get_location(this_creature_id);
+    TilePtr this_tile = view_map->at(c_this);
 
-    while (t_it != threat_map.rend())
+    if (this_tile != nullptr)
     {
-      set<string> creature_ids = t_it->second;
+      CreaturePtr this_cr = this_tile->get_creature();
 
-      for (const string& threatening_creature_id : creature_ids)
+      while (t_it != threat_map.rend())
       {
-        // Check the view map to see if the creature exists
-        if (view_map->has_creature(threatening_creature_id))
+        set<string> creature_ids = t_it->second;
+
+        for (const string& threatening_creature_id : creature_ids)
         {
-          // Check if adjacent to this_creature_id
-          Coordinate c_threat = view_map->get_location(threatening_creature_id);
-
-          if (CoordUtils::are_coordinates_adjacent(c_this, c_threat))
+          // Check the view map to see if the creature exists
+          if (view_map->has_creature(threatening_creature_id))
           {
-            Direction direction = CoordUtils::get_direction(c_this, c_threat);
+            // Check if adjacent to this_creature_id
+            Coordinate c_threat = view_map->get_location(threatening_creature_id);
 
-            // create movement command, return.
-            CommandPtr command = std::make_shared<AttackCommand>(direction, -1);
-            return command;
-          }
-          else
-          {
-            // If the creature is hostile, and the target is generally far away,
-            // advance towards the target, but only do so with a certain
-            // probability, to allow for other actions (script decisions, etc).
-            if (can_move() && RNG::percent_chance(PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET) && this_cr != nullptr)
+            if (CoordUtils::are_coordinates_adjacent(c_this, c_threat))
             {
-              SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SearchType::SEARCH_TYPE_UNIFORM_COST, this_cr); // JCD FIXME WAS BFS...
-              Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat)); 
+              Direction direction = CoordUtils::get_direction(c_this, c_threat);
 
-              if (direction != Direction::DIRECTION_NULL)
+              // create movement command, return.
+              CommandPtr command = std::make_shared<AttackCommand>(direction, -1);
+              return command;
+            }
+            else
+            {
+              // If the creature is hostile, and the target is generally far away,
+              // advance towards the target, but only do so with a certain
+              // probability, to allow for other actions (script decisions, etc).
+              if (can_move() && RNG::percent_chance(PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET) && this_cr != nullptr)
               {
-                CommandPtr command = std::make_shared<MovementCommand>(direction, -1);
-                return command;
+                SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SearchType::SEARCH_TYPE_UNIFORM_COST, this_cr); // JCD FIXME WAS BFS...
+                Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
+
+                if (direction != Direction::DIRECTION_NULL)
+                {
+                  CommandPtr command = std::make_shared<MovementCommand>(direction, -1);
+                  return command;
+                }
               }
             }
           }
         }
-      }
 
-      // Try the next threat level.
-      t_it++;
+        // Try the next threat level.
+        t_it++;
+      }
     }
   }
   
   return no_attack;
+}
+
+// Get a custom decision (script-based)
+CommandPtr NPCDecisionStrategy::get_custom_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr command;
+
+  if (view_map != nullptr)
+  {
+    CreaturePtr creature = view_map->get_creature(this_creature_id);
+
+    if (creature != nullptr)
+    {
+      ScriptDetails decision_script_details = creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION);
+      string decision_script = decision_script_details.get_script();
+
+      if (!decision_script.empty() && RNG::percent_chance(decision_script_details.get_chance()))
+      {
+        Game& game = Game::instance();
+        ScriptEngine& se = game.get_script_engine_ref();
+        DecisionScript ds;
+
+        ActionCostValue acv = ds.execute(se, decision_script, creature);
+        if (acv > 0)
+        {
+          command = std::make_shared<CustomScriptCommand>();
+          command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_ACTION_COST_VALUE, std::to_string(acv));
+        }
+      }
+    }
+  }
+
+  return command;
 }
 
 // Get the decision for where to move.
@@ -191,23 +284,27 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
   Game& game = Game::instance();
   
   MapPtr current_map = game.get_current_map();
-  Dimensions current_dimensions = current_map->size();
-  Coordinate this_creature_coords = current_map->get_location(this_creature_id);
-  TilePtr this_creature_tile = current_map->at(this_creature_coords);
-  CreaturePtr this_creature = this_creature_tile->get_creature();
 
-  int this_row = this_creature_coords.first;
-  int this_col = this_creature_coords.second;
-   
-  vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(current_dimensions, this_row, this_col);
-  vector<Coordinate> choice_coordinates = get_adjacent_safe_coordinates_without_creatures(current_map, adjacent_coordinates, this_creature);
-    
-  // Pick a tile if not empty
-  if (!choice_coordinates.empty())
+  if (current_map != nullptr)
   {
-    Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size()-1));
-    Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
-    movement_command = std::make_shared<MovementCommand>(direction, -1);
+    Dimensions current_dimensions = current_map->size();
+    Coordinate this_creature_coords = current_map->get_location(this_creature_id);
+    TilePtr this_creature_tile = current_map->at(this_creature_coords);
+    CreaturePtr this_creature = this_creature_tile->get_creature();
+
+    int this_row = this_creature_coords.first;
+    int this_col = this_creature_coords.second;
+
+    vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(current_dimensions, this_row, this_col);
+    vector<Coordinate> choice_coordinates = get_adjacent_safe_coordinates_without_creatures(current_map, adjacent_coordinates, this_creature);
+
+    // Pick a tile if not empty
+    if (!choice_coordinates.empty())
+    {
+      Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size() - 1));
+      Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
+      movement_command = std::make_shared<MovementCommand>(direction, -1);
+    }
   }
 
   return movement_command;
@@ -223,14 +320,17 @@ vector<Coordinate> NPCDecisionStrategy::get_adjacent_safe_coordinates_without_cr
   {
     // Don't move if there's a creature on that coordinate.
     TilePtr adjacent_tile = current_map->at(c.first, c.second);
-    
-    if (adjacent_tile->has_creature() || (!safety_checker.is_tile_safe_for_creature(this_creature, adjacent_tile)))
+
+    if (adjacent_tile != nullptr)
     {
-      continue;
-    }
-    else
-    {
-      coords_without_creatures.push_back(c);
+      if (adjacent_tile->has_creature() || (!safety_checker.is_tile_safe_for_creature(this_creature, adjacent_tile)))
+      {
+        continue;
+      }
+      else
+      {
+        coords_without_creatures.push_back(c);
+      }
     }
   }
   
