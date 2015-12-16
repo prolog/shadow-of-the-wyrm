@@ -1125,6 +1125,8 @@ int add_status_to_creature_at(lua_State* ls)
 
         StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
         se->apply_change(creature);
+
+        added_status = true;
       }
     }
   }
