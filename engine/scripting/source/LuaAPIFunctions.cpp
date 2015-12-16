@@ -149,6 +149,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "add_creature_to_map", add_creature_to_map);
   lua_register(L, "add_status_to_creature", add_status_to_creature);
+  lua_register(L, "add_status_to_creature_at", add_status_to_creature_at);
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
   lua_register(L, "set_creature_speed", set_creature_speed);
@@ -1097,6 +1098,43 @@ int add_status_to_creature(lua_State* ls)
   }
 
   lua_pushboolean(ls, false);
+  return 1;
+}
+
+int add_status_to_creature_at(lua_State* ls)
+{
+  bool added_status = false;
+
+  if ((lua_gettop(ls) == 3) && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  {
+    Game& game = Game::instance();
+
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+    string status_id = lua_tostring(ls, 3);
+
+    MapPtr cur_map = game.get_current_map();
+
+    if (cur_map != nullptr)
+    {
+      TilePtr tile = cur_map->at(y, x);
+
+      if (tile != nullptr && tile->has_creature())
+      {
+        CreaturePtr creature = tile->get_creature();
+
+        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
+        se->apply_change(creature);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_status_to_creature_at");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added_status);
   return 1;
 }
 

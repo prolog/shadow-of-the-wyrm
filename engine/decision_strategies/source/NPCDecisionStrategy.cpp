@@ -2,6 +2,7 @@
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
 #include "CreatureTileSafetyChecker.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
 #include "Game.hpp"
 #include "NPCDecisionStrategy.hpp"
@@ -114,8 +115,9 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
   if (view_map != nullptr)
   {
     CreaturePtr creature = view_map->get_creature(this_creature_id);
+    CurrentCreatureAbilities cca;
 
-    if (creature != nullptr)
+    if (creature != nullptr && cca.can_speak(creature))
     {
       SpellKnowledge& sk = creature->get_spell_knowledge_ref();
 
