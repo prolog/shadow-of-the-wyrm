@@ -43,6 +43,7 @@ int add_spell_castings(lua_State* ls);
 int gain_experience(lua_State* ls);
 int add_creature_to_map(lua_State* ls);
 int add_status_to_creature(lua_State* ls);
+int add_status_to_creature_at(lua_State* ls);
 int stop_playing_game(lua_State* ls);
 int set_creature_base_damage(lua_State* ls);
 int set_creature_speed(lua_State* ls);

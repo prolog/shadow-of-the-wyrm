@@ -106,8 +106,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
 {
   ActionCostValue action_cost_value = 0;
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  CurrentCreatureAbilities cca;
 
-  if (creature)
+  if (creature && cca.can_speak(creature))
   {
     Game& game = Game::instance();
     const SpellMap& spells = game.get_spells_ref();
