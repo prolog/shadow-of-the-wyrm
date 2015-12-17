@@ -14987,6 +14987,10 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>4</NumDice>
+					<NumSides>2</NumSides>
+				</AP>
 				<Exp>6</Exp>
 			</CreatureGeneration>
 			<Level>2</Level>
@@ -14997,6 +15001,12 @@
 			</Damage>
 			<Evade>2</Evade>
 			<Soak>2</Soak>
+			<Spells>
+				<Spell>
+					<SpellID>c_01_minor_healing</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="fox">
 			<RaceID>_animal</RaceID>

@@ -21,6 +21,8 @@ class SpellKnowledge : public ISerializable
     void set_most_recently_cast_spell_id(const std::string& spell_id);
     std::string get_most_recently_cast_spell_id() const;
 
+    SpellKnowledgeMap get_spell_knowledge_map() const;
+
     SpellKnowledgeMap get_known_spells() const;
 
     bool serialize(std::ostream& stream) const override;

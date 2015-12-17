@@ -75,6 +75,11 @@ string SpellKnowledge::get_most_recently_cast_spell_id() const
   return most_recently_cast_spell_id;
 }
 
+SpellKnowledgeMap SpellKnowledge::get_spell_knowledge_map() const
+{
+  return spell_knowledge;
+}
+
 bool SpellKnowledge::serialize(ostream& stream) const
 {
   size_t num_spells = spell_knowledge.size();

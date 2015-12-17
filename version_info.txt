@@ -36,7 +36,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - The monochrome colour is now an ini setting.
 
-- New spellcasters: gas cloud (wreath of fire), apprentice (flame dart).
+- New spellcasters: gas cloud (wreath of fire), apprentice (flame dart),
+  acolyte (minor healing).
 
 - New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".
 
