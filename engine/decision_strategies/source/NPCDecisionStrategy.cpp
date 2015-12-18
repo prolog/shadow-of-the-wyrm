@@ -6,6 +6,7 @@
 #include "DecisionScript.hpp"
 #include "Game.hpp"
 #include "NPCDecisionStrategy.hpp"
+#include "NPCMagicDecisionFactory.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
 
@@ -109,6 +110,7 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
 CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_id, MapPtr view_map)
 {
   CommandPtr magic_command;
+  INPCMagicDecisionPtr npc_magic_decision;
 
   if (view_map != nullptr)
   {
@@ -123,107 +125,28 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
 
       if (sk.get_knows_spells() && RNG::percent_chance(PERCENT_CHANCE_CONSIDER_USING_MAGIC))
       {
-        magic_command = get_attack_magic_decision(creature, view_map, spell_map);
+        SpellKnowledgeMap skm = sk.get_spell_knowledge_map();
 
-        if (magic_command == nullptr)
+        for (const auto& skm_pair : skm)
         {
-          magic_command = get_healing_magic_decision(creature, view_map, spell_map);
-        }
+          const auto& s_it = spell_map.find(skm_pair.first);
 
-        if (magic_command == nullptr)
-        {
-          magic_command = get_buff_magic_decision(creature, view_map, spell_map);
-        }
+          if (s_it != spell_map.end())
+          {
+            const Spell& spell = s_it->second;
+            npc_magic_decision = NPCMagicDecisionFactory::create_npc_magic_decision(spell.get_magic_classification());
 
-        if (magic_command == nullptr)
-        {
-          magic_command = get_utility_magic_decision(creature, view_map, spell_map);
+            if (npc_magic_decision && npc_magic_decision->decide(creature, view_map, spell))
+            {
+              // Add this to the potential list of spells to cast...
+            }
+          }
         }
       }
     }
   }
 
   return magic_command;
-}
-
-CommandPtr NPCDecisionStrategy::get_attack_magic_decision(CreaturePtr creature, MapPtr view_map, const SpellMap& spell_map)
-{
-  CommandPtr magic_decision;
-  vector<pair<string, Direction>> potential_spell_ids;
-
-  if (creature != nullptr && view_map != nullptr)
-  {
-    Statistic ap = creature->get_arcana_points();
-    string spell_id;
-
-    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-    SpellKnowledgeMap skm = sk.get_spell_knowledge_map();
-
-    for (const auto& skm_pair : skm)
-    {
-      spell_id = skm_pair.first;
-
-      // Look up the spell in the in-game map.
-      auto sp_it = spell_map.find(spell_id);
-
-      if (sp_it != spell_map.end())
-      {
-        const Spell& spell = sp_it->second;
-
-        if (spell.get_magic_classification() == MagicClassification::MAGIC_CLASSIFICATION_ATTACK 
-         && spell.get_ap_cost() <= static_cast<uint>(ap.get_current()))
-        {
-          Direction d = Direction::DIRECTION_NULL;
-
-          // The spell can be cast.  Check to see if the biggest threat is
-          // in its range.
-          // ... need function ...
-          potential_spell_ids.push_back(make_pair(spell_id, d));
-        }
-      }
-    }
-  }
-
-  // Shuffle the potential spell IDs, and then
-  // pick one.
-  return magic_decision;
-}
-
-CommandPtr NPCDecisionStrategy::get_healing_magic_decision(CreaturePtr creature, MapPtr view_map, const SpellMap& spell_map)
-{
-  CommandPtr magic_decision;
-
-  if (creature != nullptr && view_map != nullptr)
-  {
-    // JCD FIXME IMPLEMENT!
-  }
-
-  return magic_decision;
-}
-
-CommandPtr NPCDecisionStrategy::get_buff_magic_decision(CreaturePtr creature, MapPtr view_map, const SpellMap& spell_map)
-{
-  CommandPtr magic_decision;
-
-  if (creature != nullptr && view_map != nullptr)
-  {
-    // JCD FIXME IMPLEMENT!
-  }
-
-  return magic_decision;
-}
-
-
-CommandPtr NPCDecisionStrategy::get_utility_magic_decision(CreaturePtr creature, MapPtr view_map, const SpellMap& spell_map)
-{
-  CommandPtr magic_decision;
-
-  if (creature != nullptr && view_map != nullptr)
-  {
-    // JCD FIXME IMPLEMENT!
-  }
-
-  return magic_decision;
 }
 
 // Get the decision for what to attack.

@@ -3552,6 +3552,24 @@
     <ClInclude Include="engine\scripting\include\DeathScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\INPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\NPCMagicDecisionFactory.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\NullNPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\AttackNPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\DefaultNPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\HealingNPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6940,6 +6958,21 @@
     </ClCompile>
     <ClCompile Include="engine\scripting\source\DeathScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\NPCMagicDecisionFactory.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\NullNPCMagicDecision.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\AttackNPCMagicDecision.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\DefaultNPCMagicDecision.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\HealingNPCMagicDecision.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
