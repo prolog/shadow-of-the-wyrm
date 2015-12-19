@@ -101,6 +101,20 @@ ThreatMap ThreatRatings::get_all_threats() const
   return threat_ratings;
 }
 
+// Get a set of creature IDs that represent the current threats.  The actual
+// threat levels are ignored in this case.
+set<string> ThreatRatings::get_all_threats_without_level() const
+{
+  set<string> threats;
+
+  for (const auto& c_it : threat_ratings)
+  {
+    threats.insert(c_it.second.begin(), c_it.second.end());
+  }
+
+  return threats;
+}
+
 // Write out the threat map.
 bool ThreatRatings::serialize(ostream& stream) const
 {

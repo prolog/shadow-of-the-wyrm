@@ -757,6 +757,18 @@
     <Filter Include="Header Files\engine\screens\include">
       <UniqueIdentifier>{5afc028a-76b5-4850-9135-ead4f12db8c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\decision_strategies\magic">
+      <UniqueIdentifier>{11843848-c36e-48d8-be2f-cb73a63861e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\decision_strategies\magic\include">
+      <UniqueIdentifier>{16cb0ba1-e873-425c-9a0b-3901422a4752}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\magic">
+      <UniqueIdentifier>{b8c33f20-d1ad-4bbd-bfa4-35cad6aa8343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\magic\source">
+      <UniqueIdentifier>{ec162b25-3021-4eea-8750-216e95d673f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -3552,23 +3564,23 @@
     <ClInclude Include="engine\scripting\include\DeathScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\include\INPCMagicDecision.hpp">
-      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    <ClInclude Include="engine\decision_strategies\magic\include\AttackNPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\include\NPCMagicDecisionFactory.hpp">
-      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    <ClInclude Include="engine\decision_strategies\magic\include\DefaultNPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\include\NullNPCMagicDecision.hpp">
-      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    <ClInclude Include="engine\decision_strategies\magic\include\HealingNPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\include\AttackNPCMagicDecision.hpp">
-      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    <ClInclude Include="engine\decision_strategies\magic\include\INPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\include\DefaultNPCMagicDecision.hpp">
-      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    <ClInclude Include="engine\decision_strategies\magic\include\NPCMagicDecisionFactory.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\include\HealingNPCMagicDecision.hpp">
-      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    <ClInclude Include="engine\decision_strategies\magic\include\NullNPCMagicDecision.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -6959,20 +6971,20 @@
     <ClCompile Include="engine\scripting\source\DeathScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\decision_strategies\source\NPCMagicDecisionFactory.cpp">
-      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    <ClCompile Include="engine\decision_strategies\magic\source\AttackNPCMagicDecision.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\decision_strategies\source\NullNPCMagicDecision.cpp">
-      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    <ClCompile Include="engine\decision_strategies\magic\source\DefaultNPCMagicDecision.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\decision_strategies\source\AttackNPCMagicDecision.cpp">
-      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    <ClCompile Include="engine\decision_strategies\magic\source\HealingNPCMagicDecision.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\decision_strategies\source\DefaultNPCMagicDecision.cpp">
-      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    <ClCompile Include="engine\decision_strategies\magic\source\NPCMagicDecisionFactory.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\decision_strategies\source\HealingNPCMagicDecision.cpp">
-      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    <ClCompile Include="engine\decision_strategies\magic\source\NullNPCMagicDecision.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

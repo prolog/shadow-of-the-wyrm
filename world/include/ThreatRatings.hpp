@@ -23,6 +23,7 @@ class ThreatRatings : public ISerializable
     void remove_threat(const std::string& creature_id, const int threat_rating);
     
     ThreatMap get_all_threats() const;
+    std::set<std::string> get_all_threats_without_level() const;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
