@@ -36,6 +36,9 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - The monochrome colour is now an ini setting.
 
+- Added decision (AI) code for NPCs regarding spellcasting, separating out
+  attack, healing, buff, and utility spells.
+
 - New spellcasters: gas cloud (wreath of fire), apprentice (flame dart),
   acolyte (minor healing).
 

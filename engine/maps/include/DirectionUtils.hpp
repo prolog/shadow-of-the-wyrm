@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 #include "Directions.hpp"
 
 class DirectionUtils
@@ -9,6 +10,7 @@ class DirectionUtils
     static CardinalDirection get_opposite_direction(const CardinalDirection cd);
     static Direction get_opposite_direction(const Direction d);
     static bool direction_matches_category(const Direction d, const DirectionCategory dc);
+    static std::set<Direction> get_all_directions_for_category(const DirectionCategory dc);
 
   protected:
     DirectionUtils();

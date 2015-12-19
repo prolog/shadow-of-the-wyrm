@@ -1,6 +1,7 @@
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
+#include "Conversion.hpp"
 #include "CreatureTileSafetyChecker.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
@@ -118,6 +119,8 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
     CurrentCreatureAbilities cca;
     Game& game = Game::instance();
     const SpellMap& spell_map = game.get_spells_ref();
+    const set<string> creature_threats = threat_ratings.get_all_threats_without_level();
+    std::vector<std::pair<std::string, Direction>> potential_spells;
 
     if (creature != nullptr && cca.can_speak(creature))
     {
@@ -134,15 +137,33 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
           if (s_it != spell_map.end())
           {
             const Spell& spell = s_it->second;
-            npc_magic_decision = NPCMagicDecisionFactory::create_npc_magic_decision(spell.get_magic_classification());
 
-            if (npc_magic_decision && npc_magic_decision->decide(creature, view_map, spell))
+            // Only consider the spell if the creature actually has enough
+            // AP to cast it!
+            if (spell.get_ap_cost() <= static_cast<uint>(creature->get_arcana_points().get_current()))
             {
-              // Add this to the potential list of spells to cast...
+              npc_magic_decision = NPCMagicDecisionFactory::create_npc_magic_decision(spell.get_magic_classification());
+              pair<bool, Direction> decision_details = npc_magic_decision->decide(creature, view_map, spell, creature_threats);
+
+              if (npc_magic_decision && decision_details.first)
+              {
+                potential_spells.push_back(make_pair(spell.get_spell_id(), decision_details.second));
+              }
             }
           }
         }
       }
+    }
+
+    if (potential_spells.size() > 0)
+    {
+      std::shuffle(potential_spells.begin(), potential_spells.end(), RNG::get_engine());
+      pair<string, Direction> spell_to_cast = potential_spells.at(0);
+
+      // Create the spell command, adding properties to set the spell details.
+      magic_command = make_shared<CastSpellCommand>(-1);
+      magic_command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SELECTED_SPELL_ID, spell_to_cast.first);
+      magic_command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_DIRECTION, to_string(static_cast<int>(spell_to_cast.second)));
     }
   }
 

@@ -1,8 +1,10 @@
 #include "HealingNPCMagicDecision.hpp"
 
+using namespace std;
+
 const float HealingNPCMagicDecision::HEALING_THRESHOLD_MULTIPLIER = 0.5f;
 
-bool HealingNPCMagicDecision::decide(CreaturePtr caster, MapPtr view_map, const Spell& spell) const
+pair<bool, Direction> HealingNPCMagicDecision::decide(CreaturePtr caster, MapPtr view_map, const Spell& spell, const set<string>& creature_threats) const
 {
   bool decision = false;
 
@@ -44,5 +46,5 @@ bool HealingNPCMagicDecision::decide(CreaturePtr caster, MapPtr view_map, const 
     }
   }
 
-  return decision;
+  return make_pair(decision, Direction::DIRECTION_NULL);
 }
