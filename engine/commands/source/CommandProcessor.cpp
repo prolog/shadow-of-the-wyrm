@@ -4,7 +4,6 @@
 #include "CommandCustomValues.hpp"
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
-#include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "Log.hpp"
 #include "RNG.hpp"
@@ -169,7 +168,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::CAST_SPELL)
       {
-        ac = game.actions.cast_spell(creature);
+        ac = process_spell_casting_command(creature, command, game);
       }
       else if (command_name == CommandKeys::BESTIARY)
       {
@@ -241,6 +240,23 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
   }
   
   return ac;
+}
+
+// Process a spell casting command.
+ActionCost CommandProcessor::process_spell_casting_command(CreaturePtr creature, Command* command, Game& game)
+{
+  // Get the spell ID and direction out of the command's properties.
+  // These will be present when an NPC is casting the spell.
+  string spell_id = command->get_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SELECTED_SPELL_ID);
+  string direction_s = command->get_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_DIRECTION);
+  Direction dir = Direction::DIRECTION_NULL;
+
+  if (!direction_s.empty())
+  {
+    dir = static_cast<Direction>(String::to_int(direction_s));
+  }
+
+  return game.actions.cast_spell(creature, spell_id, dir);
 }
 
 // Process the DirectionalCommand

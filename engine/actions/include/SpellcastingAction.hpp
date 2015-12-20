@@ -11,7 +11,7 @@ class SpellcastingAction : public IActionManager
     ActionCostValue cast_spell(CreaturePtr creature) const;
 
     // The following version of cast_spell is meant for NPCs
-    ActionCostValue cast_spell(CreaturePtr creature, const std::string& spell_id) const;
+    ActionCostValue cast_spell(CreaturePtr creature, const std::string& spell_id, const Direction direction = Direction::DIRECTION_NULL) const;
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 

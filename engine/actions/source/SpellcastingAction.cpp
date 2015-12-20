@@ -102,7 +102,7 @@ pair<string, ActionCostValue> SpellcastingAction::cast_spell_on_valid_map_type(C
 }
 
 // Cast a particular spell by a particular creature.
-ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const string& spell_id) const
+ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const string& spell_id, const Direction preselected_direction) const
 {
   ActionCostValue action_cost_value = 0;
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
@@ -141,9 +141,16 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         // Is a direction needed?
         if (spell.get_shape().get_direction_category() != DirectionCategory::DIRECTION_CATEGORY_NONE)
         {
-          pair<bool, Direction> direction_pair = get_spell_direction_from_creature(creature, spell, spell_direction);
-          spellcasting_succeeded = direction_pair.first; // Can the input be converted to a dir?
-          spell_direction = direction_pair.second; // The actual direction, or the initial value if action conversion didn't work.
+          if (preselected_direction != Direction::DIRECTION_NULL)
+          {
+            spell_direction = preselected_direction;
+          }
+          else
+          {
+            pair<bool, Direction> direction_pair = get_spell_direction_from_creature(creature, spell, spell_direction);
+            spellcasting_succeeded = direction_pair.first; // Can the input be converted to a dir?
+            spell_direction = direction_pair.second; // The actual direction, or the initial value if action conversion didn't work.
+          }
         }
 
         if (spellcasting_succeeded == false)

@@ -92,7 +92,7 @@ class ActionManager : public ISerializable
     ActionCost reload_scripts_and_sids(CreaturePtr creature); // creature's-command-version
     ActionCost run_script_command(CreaturePtr creature); // should only be available in debug mode!
 
-    ActionCost cast_spell(CreaturePtr creature);
+    ActionCost cast_spell(CreaturePtr creature, const std::string& spell_id, const Direction d);
 
     ActionCost bestiary(CreaturePtr creature);
     ActionCost bestiary(CreaturePtr creature, const std::string& creature_search_text);

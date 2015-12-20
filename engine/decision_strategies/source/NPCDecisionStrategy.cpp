@@ -6,6 +6,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
 #include "Game.hpp"
+#include "MagicalAbilityChecker.hpp"
 #include "NPCDecisionStrategy.hpp"
 #include "NPCMagicDecisionFactory.hpp"
 #include "RNG.hpp"
@@ -121,6 +122,7 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
     const SpellMap& spell_map = game.get_spells_ref();
     const set<string> creature_threats = threat_ratings.get_all_threats_without_level();
     std::vector<std::pair<std::string, Direction>> potential_spells;
+    MagicalAbilityChecker mac;
 
     if (creature != nullptr && cca.can_speak(creature))
     {
@@ -140,7 +142,7 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
 
             // Only consider the spell if the creature actually has enough
             // AP to cast it!
-            if (spell.get_ap_cost() <= static_cast<uint>(creature->get_arcana_points().get_current()))
+            if (mac.has_sufficient_power(creature, spell))
             {
               npc_magic_decision = NPCMagicDecisionFactory::create_npc_magic_decision(spell.get_magic_classification());
 
