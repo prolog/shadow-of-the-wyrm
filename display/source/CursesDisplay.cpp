@@ -654,7 +654,7 @@ string CursesDisplay::display_screen(const Screen& current_screen)
     {
       TextComponentPtr tc = dynamic_pointer_cast<TextComponent>(component);
 
-      if (tc != NULL)
+      if (tc != nullptr)
       {
         display_text_component(screen_window, &current_row, &current_col, tc, line_incr);
       }
@@ -662,7 +662,7 @@ string CursesDisplay::display_screen(const Screen& current_screen)
       {
         OptionsComponentPtr oc = dynamic_pointer_cast<OptionsComponent>(component);
 
-        if (oc != NULL)
+        if (oc != nullptr)
         {
           // Process the options...
           display_options_component(screen_window, &current_row, &current_col, oc);

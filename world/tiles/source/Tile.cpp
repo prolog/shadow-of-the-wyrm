@@ -327,7 +327,7 @@ FeaturePtr Tile::get_feature()
 
 bool Tile::has_creature() const
 {
-  return (creature != NULL);
+  return (creature != nullptr);
 }
 
 void Tile::set_creature(const CreaturePtr& new_creature)

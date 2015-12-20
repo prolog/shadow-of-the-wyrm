@@ -143,11 +143,15 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
             if (spell.get_ap_cost() <= static_cast<uint>(creature->get_arcana_points().get_current()))
             {
               npc_magic_decision = NPCMagicDecisionFactory::create_npc_magic_decision(spell.get_magic_classification());
-              pair<bool, Direction> decision_details = npc_magic_decision->decide(creature, view_map, spell, creature_threats);
 
-              if (npc_magic_decision && decision_details.first)
+              if (npc_magic_decision != nullptr)
               {
-                potential_spells.push_back(make_pair(spell.get_spell_id(), decision_details.second));
+                pair<bool, Direction> decision_details = npc_magic_decision->decide(creature, view_map, spell, creature_threats);
+
+                if (npc_magic_decision && decision_details.first)
+                {
+                  potential_spells.push_back(make_pair(spell.get_spell_id(), decision_details.second));
+                }
               }
             }
           }
