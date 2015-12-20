@@ -18373,7 +18373,7 @@
 			<Colour>1</Colour>
 			<APCost>3</APCost>
 			<Speed>1</Speed>
-			<Range>1</Range>
+			<Range>2</Range>
 			<Shape>1</Shape>
 			<Damage>
 				<NumDice>2</NumDice>

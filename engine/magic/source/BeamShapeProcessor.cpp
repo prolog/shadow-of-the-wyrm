@@ -46,7 +46,6 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   Coordinate current_coord = caster_coord;
   TileMagicChecker tmc;
   
-
   vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
 
   // For regular beams, the current direction will always be the passed-in
