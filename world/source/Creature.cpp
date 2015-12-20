@@ -1087,6 +1087,11 @@ SpellKnowledge& Creature::get_spell_knowledge_ref()
   return spell_knowledge;
 }
 
+SpellKnowledge Creature::get_spell_knowledge() const
+{
+  return spell_knowledge;
+}
+
 void Creature::set_modifiers(const map<double, vector<pair<string, Modifier>>>& new_modifiers)
 {
   modifiers = new_modifiers;

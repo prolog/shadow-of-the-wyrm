@@ -21,7 +21,7 @@ class Search
     virtual SearchNode remove_front(std::list<SearchNode>& search_queue);
     
     // Create a list of search nodes given a coordinate
-    std::list<SearchNode> make_search_nodes(MapPtr view_map, std::set<Coordinate>& visited, const Coordinate& c, const Coordinate& goal_coordinate, SearchNode* const parent = NULL);
+    std::list<SearchNode> make_search_nodes(MapPtr view_map, std::set<Coordinate>& visited, const Coordinate& c, const Coordinate& goal_coordinate, SearchNode* const parent = nullptr);
     
     // Create a list of search nodes given a search node - this will fully populate
     // depth and path cost details.

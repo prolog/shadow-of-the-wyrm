@@ -18,7 +18,7 @@ class MapUtils
   public:    
     static MapComponents get_map_components(MapPtr map, const std::set<TileType>& exclusion_tiles);
     
-    static bool add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, TilePtr creatures_old_tile = TilePtr() /* NULL by default*/);
+    static bool add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, TilePtr creatures_old_tile = nullptr);
 
     static Coordinate get_coordinate_for_creature(const MapPtr& map, const CreaturePtr& creature);
     static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
