@@ -39,6 +39,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 - Added decision (AI) code for NPCs regarding spellcasting, separating out
   attack, healing, buff, and utility spells.
 
+- Flame dart is now range 2 instead of 1.
+
 - New spellcasters: gas cloud (wreath of fire), apprentice (flame dart),
   acolyte (minor healing).
 
