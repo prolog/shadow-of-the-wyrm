@@ -330,11 +330,21 @@ ActionCost ActionManager::run_script_command(CreaturePtr creature)
   return get_action_cost(creature, 0);
 }
 
-ActionCost ActionManager::cast_spell(CreaturePtr creature)
+ActionCost ActionManager::cast_spell(CreaturePtr creature, const string& spell_id, const Direction direction)
 {
   SpellcastingAction sa;
+  ActionCost ac;
 
-  return get_action_cost(creature, sa.cast_spell(creature));
+  if (spell_id.empty())
+  {
+    ac = get_action_cost(creature, sa.cast_spell(creature));
+  }
+  else
+  {
+    ac = get_action_cost(creature, sa.cast_spell(creature, spell_id, direction));
+  }
+
+  return ac;
 }
 
 ActionCost ActionManager::bestiary(CreaturePtr creature)

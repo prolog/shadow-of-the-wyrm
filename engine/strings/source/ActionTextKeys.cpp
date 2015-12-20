@@ -86,6 +86,7 @@ string ActionTextKeys::get_spellcasting_message(const Spell& spell, const string
     boost::replace_first(spellcasting_message, "%s", StringTable::get(creature_desc_sid));
   }
 
+  spellcasting_message[0] = toupper(spellcasting_message[0]);
   return spellcasting_message;
 }
 

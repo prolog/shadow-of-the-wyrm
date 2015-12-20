@@ -37,7 +37,9 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 - The monochrome colour is now an ini setting.
 
 - Added decision (AI) code for NPCs regarding spellcasting, separating out
-  attack, healing, buff, and utility spells.
+  attack, healing, buff, and utility spells.  NPCs have a base chance to
+  cast spells every turn, with decisions being made based on their
+  health, whether there are threats in range of attack spells, and so on.
 
 - Flame dart is now range 2 instead of 1.
 
