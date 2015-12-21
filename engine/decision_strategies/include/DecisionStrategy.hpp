@@ -33,6 +33,12 @@ class DecisionStrategy : public ISerializable
 
     virtual bool can_move() const;
 
+    void set_property(const std::string& prop, const std::string& val);
+    std::string get_property(const std::string& prop) const;
+    void set_properties(const std::map<std::string, std::string>& new_props);
+    std::map<std::string, std::string>& get_properties_ref();
+    std::map<std::string, std::string> get_properties() const;
+
     virtual DecisionStrategy* copy() = 0;
 
     virtual bool serialize(std::ostream& stream) const override;
@@ -44,6 +50,7 @@ class DecisionStrategy : public ISerializable
     std::shared_ptr<Map> current_fov_map;
     ThreatRatings threat_ratings;
     ControllerPtr controller;
+    std::map<std::string, std::string> properties;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;
