@@ -451,6 +451,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\decision_strategies\include\AutomaticMovementDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategyFactory.hpp" />
+    <ClInclude Include="engine\decision_strategies\include\DecisionStrategyProperties.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategySelector.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategyTypes.hpp" />
     <ClInclude Include="engine\decision_strategies\include\ImmobileDecisionStrategy.hpp" />
@@ -1139,6 +1140,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\decision_strategies\magic\source\HealingNPCMagicDecision.cpp" />
     <ClCompile Include="engine\decision_strategies\magic\source\NPCMagicDecisionFactory.cpp" />
     <ClCompile Include="engine\decision_strategies\magic\source\NullNPCMagicDecision.cpp" />
+    <ClCompile Include="engine\decision_strategies\source\DecisionStrategyProperties.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
     <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp" />

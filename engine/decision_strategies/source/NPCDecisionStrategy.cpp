@@ -5,6 +5,7 @@
 #include "CreatureTileSafetyChecker.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "Game.hpp"
 #include "MagicalAbilityChecker.hpp"
 #include "NPCDecisionStrategy.hpp"
@@ -113,8 +114,9 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
 {
   CommandPtr magic_command;
   INPCMagicDecisionPtr npc_magic_decision;
+  bool suppress_magic = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SUPPRESS_MAGIC));
 
-  if (view_map != nullptr)
+  if (view_map != nullptr && !suppress_magic)
   {
     CreaturePtr creature = view_map->get_creature(this_creature_id);
     CurrentCreatureAbilities cca;

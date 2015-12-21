@@ -344,7 +344,7 @@
 				 - mobile
 				 - Any unaccepted value provided will map to "default" in Shadow of the Wyrm.
 			-->
-			<xs:element name="DecisionStrategy" type="xs:string" minOccurs="0"/>
+			<xs:element name="DecisionStrategy" type="tns:DecisionStrategyType" minOccurs="0"/>
 			<xs:element name="Text" type="tns:TextDetails"/>
 			<xs:element ref="tns:CreatureGeneration"/>
 			<xs:element name="Level" type="tns:PrimaryStatistic"/>
@@ -1021,6 +1021,15 @@
 		<xs:sequence>
 			<xs:element name="Text" type="tns:TextDetails" minOccurs="1"/>
 		</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DecisionStrategyType">
+	<xs:annotation>
+		<xs:documentation>Contains the necessary information to create and configure the creature's decision strategy</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Strategy" type="xs:string"/>
+		<xs:element name="SuppressMagic" type="xs:boolean" minOccurs="0"/>
+	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="TextDetails">
 	<xs:annotation>

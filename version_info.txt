@@ -43,6 +43,11 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - Flame dart is now range 2 instead of 1.
 
+- Rejigged the structure of the DecisionStrategy node in the game
+  configuration to include both the strategy as well as a "suppress magic"
+  flag, which is set for gas clouds and which prevents the selection of
+  spellcasting actions during decision strategy execution.
+
 - New spellcasters: gas cloud (wreath of fire), apprentice (flame dart),
   acolyte (minor healing).
 
