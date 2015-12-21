@@ -18091,6 +18091,16 @@
 				<NumSides>28</NumSides>
 				<Type>9</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>c_01_minor_healing</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>d_10_radiant_beam</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="squire">
 			<RaceID>01_human</RaceID>
@@ -19993,6 +20003,25 @@
 				</Property>
 			</Properties>
 		</Spell>
+		<Spell id="d_10_radiant_beam">
+			<NameSID>RADIANT_BEAM_NAME_SID</NameSID>
+			<PlayerCastMessageSID>RADIANT_BEAM_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>RADIANT_BEAM_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3001</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>15</Colour>
+			<APCost>15</APCost>
+			<Speed>1</Speed>
+			<Range>5</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>5</NumDice>
+				<NumSides>8</NumSides>
+				<Modifier>5</Modifier>
+				<Type>7</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
 		<Spell id="m_01_wraith_form">
 			<NameSID>WRAITH_FORM_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WRAITH_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -26570,6 +26599,25 @@
 				<Rarity>1</Rarity>
 				<SpellID>d_09_heavenly_hand</SpellID>
 				<Difficulty>80</Difficulty>
+			</Spellbook>			
+			<Spellbook id="radiant_beam_spellbook">
+				<DescriptionSID>RADIANT_BEAM_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RADIANT_BEAM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RADIANT_BEAM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RADIANT_BEAM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>180</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>d_10_radiant_beam</SpellID>
+				<Difficulty>65</Difficulty>
 			</Spellbook>			
 			<Spellbook id="wraith_form_spellbook">
 				<DescriptionSID>WRAITH_FORM_SPELLBOOK_SID</DescriptionSID>
