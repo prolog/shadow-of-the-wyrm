@@ -138,23 +138,26 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
         {
           const auto& s_it = spell_map.find(skm_pair.first);
 
-          if (s_it != spell_map.end())
+          if (skm_pair.second.get_castings() > 0)
           {
-            const Spell& spell = s_it->second;
-
-            // Only consider the spell if the creature actually has enough
-            // AP to cast it!
-            if (mac.has_sufficient_power(creature, spell))
+            if (s_it != spell_map.end())
             {
-              npc_magic_decision = NPCMagicDecisionFactory::create_npc_magic_decision(spell.get_magic_classification());
+              const Spell& spell = s_it->second;
 
-              if (npc_magic_decision != nullptr)
+              // Only consider the spell if the creature actually has enough
+              // AP to cast it!
+              if (mac.has_sufficient_power(creature, spell))
               {
-                pair<bool, Direction> decision_details = npc_magic_decision->decide(creature, view_map, spell, creature_threats);
+                npc_magic_decision = NPCMagicDecisionFactory::create_npc_magic_decision(spell.get_magic_classification());
 
-                if (npc_magic_decision && decision_details.first)
+                if (npc_magic_decision != nullptr)
                 {
-                  potential_spells.push_back(make_pair(spell.get_spell_id(), decision_details.second));
+                  pair<bool, Direction> decision_details = npc_magic_decision->decide(creature, view_map, spell, creature_threats);
+
+                  if (npc_magic_decision && decision_details.first)
+                  {
+                    potential_spells.push_back(make_pair(spell.get_spell_id(), decision_details.second));
+                  }
                 }
               }
             }
