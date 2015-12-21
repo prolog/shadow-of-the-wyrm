@@ -18732,15 +18732,15 @@
 			<Spells>
 				<Spell>
 					<SpellID>a_04_shockwave</SpellID>
-					<Castings>2</Castings>
+					<Castings>4</Castings>
 				</Spell>
 				<Spell>
 					<SpellID>c_01_minor_healing</SpellID>
-					<Castings>3</Castings>
+					<Castings>12</Castings>
 				</Spell>
 				<Spell>
 					<SpellID>p_04_nether_bolt</SpellID>
-					<Castings>4</Castings>
+					<Castings>12</Castings>
 				</Spell>
 			</Spells>
 		</Creature>
