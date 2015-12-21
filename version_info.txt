@@ -49,7 +49,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   spellcasting actions during decision strategy execution.
 
 - New spellcasters: gas cloud (wreath of fire), apprentice (flame dart),
-  acolyte (minor healing).
+  acolyte (minor healing), ogre magus (shockwave, minor healing, nether
+  bolt).
 
 - New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".
 
