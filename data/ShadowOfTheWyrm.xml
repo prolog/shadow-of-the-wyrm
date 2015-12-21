@@ -18717,6 +18717,10 @@
 					<NumDice>28</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>28</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>2200</Exp>
 			</CreatureGeneration>
 			<Level>28</Level>
@@ -18725,6 +18729,20 @@
 				<NumSides>56</NumSides>
 				<Type>4</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>a_04_shockwave</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>c_01_minor_healing</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_04_nether_bolt</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="ogre_war_captain">
 			<RaceID>08_ogre</RaceID>
