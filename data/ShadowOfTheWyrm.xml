@@ -6580,6 +6580,10 @@
 					<NumDice>22</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>22</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>850</Exp>
 			</CreatureGeneration>
 			<Level>22</Level>
@@ -6588,6 +6592,16 @@
 				<NumSides>44</NumSides>
 				<Type>10</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>c_02_flame_dart</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>c_09_force_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="wight">
 			<RaceID>_undead</RaceID>
@@ -19640,6 +19654,24 @@
 				</Property>
 			</Properties>
 		</Spell>
+		<Spell id="c_09_force_bolt">
+			<NameSID>FORCE_BOLT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>FORCE_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>FORCE_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>15</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>10</NumDice>
+				<NumSides>5</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -20013,7 +20045,7 @@
 			<APCost>15</APCost>
 			<Speed>1</Speed>
 			<Range>5</Range>
-			<Shape>1</Shape>
+			<Shape>2</Shape>
 			<Damage>
 				<NumDice>5</NumDice>
 				<NumSides>8</NumSides>
@@ -26238,6 +26270,25 @@
 				<Rarity>1</Rarity>
 				<SpellID>c_08_bravery</SpellID>
 				<Difficulty>40</Difficulty>
+			</Spellbook>
+			<Spellbook id="force_bolt_spellbook">
+				<DescriptionSID>FORCE_BOLT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FORCE_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FORCE_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FORCE_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>c_09_force_bolt</SpellID>
+				<Difficulty>50</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
