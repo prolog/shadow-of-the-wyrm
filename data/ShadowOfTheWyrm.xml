@@ -5348,6 +5348,10 @@
 					<NumDice>22</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>28</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>850</Exp>
 			</CreatureGeneration>
 			<Level>22</Level>
@@ -5356,6 +5360,16 @@
 				<NumSides>44</NumSides>
 				<Type>4</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>a_11_ice_storm</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_09_frost_bolt</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="gilirien">
 			<RaceID>02_woodelf</RaceID>
@@ -19858,7 +19872,46 @@
 			<Damage>
 				<NumDice>12</NumDice>
 				<NumSides>4</NumSides>
+				<Modifier>15</Modifier>
 				<Type>3</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="a_11_ice_storm">
+			<NameSID>ICE_STORM_NAME_SID</NameSID>
+			<PlayerCastMessageSID>ICE_STORM_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>ICE_STORM_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>14</Colour>
+			<APCost>30</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>6</Shape>
+			<Damage>
+				<NumDice>3</NumDice>
+				<NumSides>20</NumSides>
+				<Modifier>12</Modifier>
+				<Type>4</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="a_12_lightning_storm">
+			<NameSID>LIGHTNING_STORM_NAME_SID</NameSID>
+			<PlayerCastMessageSID>LIGHTNING_STORM_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>LIGHTNING_STORM_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>11</Colour>
+			<APCost>30</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>6</Shape>
+			<Damage>
+				<NumDice>4</NumDice>
+				<NumSides>12</NumSides>
+				<Modifier>20</Modifier>
+				<Type>10</Type>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
@@ -26484,6 +26537,44 @@
 				<DangerLevel>16</DangerLevel>
 				<Rarity>1</Rarity>
 				<SpellID>a_10_fire_storm</SpellID>
+				<Difficulty>130</Difficulty>
+			</Spellbook>
+			<Spellbook id="ice_storm_spellbook">
+				<DescriptionSID>ICE_STORM_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_ICE_STORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>ICE_STORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_ICE_STORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1100</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>16</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_11_ice_storm</SpellID>
+				<Difficulty>130</Difficulty>
+			</Spellbook>
+			<Spellbook id="lightning_storm_spellbook">
+				<DescriptionSID>LIGHTNING_STORM_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_LIGHTNING_STORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>LIGHTNING_STORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_LIGHTNING_STORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1100</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>16</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_12_lightning_storm</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
