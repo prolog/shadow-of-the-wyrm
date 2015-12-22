@@ -61,6 +61,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - New creatures: gas cloud.
 
+- Boost updated to 1.60.0.
+
 - Bug fixes:
 
   - Crash when attacking with a ranged weapon with no launcher (e.g.,

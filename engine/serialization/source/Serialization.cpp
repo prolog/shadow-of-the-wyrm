@@ -45,7 +45,7 @@ void Serialization::save(CreaturePtr creature)
     string filename = generate_savefile_name(user_name, name);
 
     // Name the file and do the appropriate setup
-    ofstream stream(filename, ios::binary | ios::out);
+    std::ofstream stream(filename, ios::binary | ios::out);
 
     // Create a stream for the game data (can be compressed or uncompressed).
     ostringstream game_stream;
@@ -81,7 +81,7 @@ void Serialization::save(CreaturePtr creature)
   }
 }
 
-void Serialization::write_savefile(ofstream& file_stream, ostringstream& game_stream, const bool use_compression, const int compression_level)
+void Serialization::write_savefile(std::ofstream& file_stream, ostringstream& game_stream, const bool use_compression, const int compression_level)
 {
   int ret_code = Z_ERRNO;
 
@@ -121,7 +121,7 @@ void Serialization::write_savefile(ofstream& file_stream, ostringstream& game_st
 // Restore the game state from a particular file
 SerializationReturnCode Serialization::load(const string& filename)
 {
-  ifstream fstream;
+  std::ifstream fstream;
 
   // Once the savefile is decompressed, read in the save details.
   fstream.open(filename, ios::in | ios::binary);
@@ -278,7 +278,7 @@ pair<bool, string> Serialization::get_save_file_availability_and_synopsis(const 
 {
   pair<bool, string> save_file_availability(false, "");
 
-  ifstream save_file;
+  std::ifstream save_file;
 
   try
   {
