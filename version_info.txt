@@ -51,9 +51,11 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 - New spellcasters: gas cloud (wreath of fire), apprentice (flame dart),
   acolyte (minor healing), ogre magus (shockwave, minor healing, nether
   bolt), thaumaturge (minor healing, radiant beam), sorceror (flame
-  dart, force bolt), lichling (frost bolt).
+  dart, force bolt), lichling (frost bolt), Brimman (ice storm, frost 
+  bolt).
 
-- New spells/spellbooks: radiant beam (Divine), force bolt (Cantrips).
+- New spells/spellbooks: radiant beam (Divine), force bolt (Cantrips),
+  ice storm (Arcane), lightning storm (Arcane).
 
 - New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".
 
