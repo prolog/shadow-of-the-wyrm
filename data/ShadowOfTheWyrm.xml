@@ -14628,6 +14628,12 @@
 				<Type>8</Type>
 			</Damage>
 			<Speed>43</Speed>
+			<Spells>
+				<Spell>
+					<SpellID>a_09_frost_bolt</SpellID>
+					<Castings>8</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="grey_glider">
 			<RaceID>_corporeal_undead</RaceID>
