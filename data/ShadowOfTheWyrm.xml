@@ -5416,6 +5416,16 @@
 				<Type>9</Type>
 			</Damage>
 			<Soak>4</Soak>
+			<Spells>
+				<Spell>
+					<SpellID>a_01_wreath_of_fire</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_03_lightning_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="hord">
 			<RaceID>08_ogre</RaceID>
