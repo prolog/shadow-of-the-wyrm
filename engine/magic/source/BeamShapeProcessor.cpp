@@ -64,6 +64,13 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
     
     TilePtr tile = map->at(c);
 
+    // If casting a reflective spell around the corners of an open map, handle
+    // that appropriately (by not looping infinitely).
+    if (tile == nullptr)
+    {
+      break;
+    }
+
     // Check to see if the tile blocks the spell.
     if (tmc.does_tile_block_spell(tile))
     {
