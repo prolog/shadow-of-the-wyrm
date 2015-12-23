@@ -11056,6 +11056,16 @@
 				<NumSides>74</NumSides>
 				<Type>9</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>p_05_chaos_aura</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_06_nightfire</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="astral_horror">
 			<RaceID>_divine</RaceID>
@@ -20542,7 +20552,7 @@
 			<Colour>4</Colour>
 			<APCost>12</APCost>
 			<Speed>1</Speed>
-			<Range>1</Range>
+			<Range>2</Range>
 			<Shape>4</Shape>
 			<Damage>
 				<NumDice>3</NumDice>
