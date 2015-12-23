@@ -3,6 +3,9 @@ Me:
   spell to make sure it works as intended.
 - Spells outside of player's FOV can cause issues with part of the
   animation staying onscreen (see high wizards and maelstrom).
+- Hard redraw after player turn to ensure animations/etc don't appear to
+  be affecting a location the player doesn't appear to be in (but actually
+  is).
 - Teleport not working on self?
 - Corpseless conduct
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
