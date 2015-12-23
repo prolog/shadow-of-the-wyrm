@@ -57,6 +57,13 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
     {
       creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_VEGETARIAN);
     }
+
+    // Is the food actually a corpse?  Corpseless is a conduct due to the
+    // general advantage adventurers get by eating corpses.
+    if (consumable->is_corpse())
+    {
+      creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_CORPSELESS);
+    }
   }
 
   return action_cost_value;

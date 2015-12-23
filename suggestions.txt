@@ -1,8 +1,8 @@
 Me:
 - Given the previous issues with misspecified resistances, test the "Curse"
   spell to make sure it works as intended.
-- Need a "mute" flag for creatures that should work like the "incorporeal"
-  flag in terms of not wearing off.  Set the flag on gas clouds.
+- Spells outside of player's FOV can cause issues with part of the
+  animation staying onscreen (see high wizards and maelstrom).
 - Teleport not working on self?
 - Corpseless conduct
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
