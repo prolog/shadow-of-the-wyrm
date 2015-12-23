@@ -56,7 +56,7 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   dart, force bolt), lichling (frost bolt), Brimman (ice storm, frost 
   bolt), Gilirien (wreath of fire, lightning bolt), spectral wizard
   (cross of flame, fireball), high wizard (minor healing, lightning bolt,
-  maelstrom).
+  maelstrom), deep wizard (chaos aura, nightfire).
 
 - New spells/spellbooks: radiant beam (Divine), force bolt (Cantrips),
   ice storm (Arcane), lightning storm (Arcane), maelstrom (Arcane).
