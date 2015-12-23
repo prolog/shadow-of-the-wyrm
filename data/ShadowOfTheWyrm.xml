@@ -5702,6 +5702,10 @@
 					<NumDice>48</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>180000</Exp>
 			</CreatureGeneration>
 			<Level>48</Level>
@@ -5710,6 +5714,20 @@
 				<NumSides>96</NumSides>
 				<Type>9</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>p_04_nether_bolt</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_06_nightfire</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_07_veil_of_shadows</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="vigarion">
 			<RaceID>05_fae</RaceID>
@@ -11048,6 +11066,10 @@
 					<NumDice>37</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>37</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>30000</Exp>
 			</CreatureGeneration>
 			<Level>37</Level>
