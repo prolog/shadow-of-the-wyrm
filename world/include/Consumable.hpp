@@ -9,6 +9,8 @@ class Consumable : public Item
     Consumable(const int nutr, const float std_drinks);
     bool operator==(const Consumable& consumable) const;
 
+    virtual bool is_corpse() const;
+
     virtual void set_food_type(const FoodType new_food_type);
     virtual FoodType get_food_type() const;
 

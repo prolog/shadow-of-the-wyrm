@@ -36,6 +36,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - The monochrome colour is now an ini setting.
 
+- New food-related conduct type: corpseless.
+
 - Added decision (AI) code for NPCs regarding spellcasting, separating out
   attack, healing, buff, and utility spells.  NPCs have a base chance to
   cast spells every turn, with decisions being made based on their
@@ -53,10 +55,11 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   bolt), thaumaturge (minor healing, radiant beam), sorceror (flame
   dart, force bolt), lichling (frost bolt), Brimman (ice storm, frost 
   bolt), Gilirien (wreath of fire, lightning bolt), spectral wizard
-  (cross of flame, fireball).
+  (cross of flame, fireball), high wizard (minor healing, lightning bolt,
+  maelstrom).
 
 - New spells/spellbooks: radiant beam (Divine), force bolt (Cantrips),
-  ice storm (Arcane), lightning storm (Arcane).
+  ice storm (Arcane), lightning storm (Arcane), maelstrom (Arcane).
 
 - New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".
 
