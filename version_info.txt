@@ -52,7 +52,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   acolyte (minor healing), ogre magus (shockwave, minor healing, nether
   bolt), thaumaturge (minor healing, radiant beam), sorceror (flame
   dart, force bolt), lichling (frost bolt), Brimman (ice storm, frost 
-  bolt), Gilirien (wreath of fire, lightning bolt).
+  bolt), Gilirien (wreath of fire, lightning bolt), spectral wizard
+  (cross of flame, fireball).
 
 - New spells/spellbooks: radiant beam (Divine), force bolt (Cantrips),
   ice storm (Arcane), lightning storm (Arcane).

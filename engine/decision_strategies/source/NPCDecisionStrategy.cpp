@@ -7,6 +7,7 @@
 #include "DecisionScript.hpp"
 #include "DecisionStrategyProperties.hpp"
 #include "Game.hpp"
+#include "Log.hpp"
 #include "MagicalAbilityChecker.hpp"
 #include "NPCDecisionStrategy.hpp"
 #include "NPCMagicDecisionFactory.hpp"
@@ -140,7 +141,12 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
 
           if (skm_pair.second.get_castings() > 0)
           {
-            if (s_it != spell_map.end())
+            if (s_it == spell_map.end())
+            {
+              Log::instance().error("Spell ID " + s_it->first + " not found for creature base ID " + creature->get_original_id());
+              continue;
+            }
+            else
             {
               const Spell& spell = s_it->second;
 

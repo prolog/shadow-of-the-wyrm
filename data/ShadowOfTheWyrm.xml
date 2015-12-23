@@ -4457,6 +4457,16 @@
 				<NumSides>62</NumSides>
 				<Type>9</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>a_06_cross_of_flame</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_07_fireball</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="spectral_lord">
 			<RaceID>_spirit</RaceID>
@@ -19799,8 +19809,9 @@
 			<Range>3</Range>
 			<Shape>5</Shape>
 			<Damage>
-				<NumDice>6</NumDice>
+				<NumDice>10</NumDice>
 				<NumSides>4</NumSides>
+				<Modifier>10</Modifier>
 				<Type>3</Type>
 			</Damage>
 			<Effect>0</Effect>
@@ -19812,13 +19823,14 @@
 			<MagicCategory>3000</MagicCategory>
 			<MagicClassification>0</MagicClassification>
 			<Colour>9</Colour>
-			<APCost>15</APCost>
+			<APCost>20</APCost>
 			<Speed>1</Speed>
 			<Range>4</Range>
 			<Shape>4</Shape>
 			<Damage>
-				<NumDice>15</NumDice>
+				<NumDice>20</NumDice>
 				<NumSides>4</NumSides>
+				<Modifier>10</Modifier>
 				<Type>3</Type>
 			</Damage>
 			<Effect>0</Effect>
