@@ -7,7 +7,6 @@ Me:
   be affecting a location the player doesn't appear to be in (but actually
   is).
 - Teleport not working on self?
-- Corpseless conduct
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
