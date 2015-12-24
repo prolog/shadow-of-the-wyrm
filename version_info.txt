@@ -75,7 +75,7 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".
 
-- New creatures: gas cloud.
+- New creatures: gas cloud, frostling.
 
 - Boost updated to 1.60.0.
 
