@@ -645,6 +645,12 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 
         action_cost = CommandProcessor::process(current_creature, command, display);
 
+        if (current_creature->get_is_player())
+        {
+          // Do a full redraw if we've changed map, or if we've just reloaded the game.
+          update_display(current_creature, current_map, fov_map, reloaded_game);
+        }
+
         // Poor NPCs...they're discriminated against even at the code level!
         advance = action_cost.get_turn_advanced();
         
@@ -654,7 +660,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         {
           int x = 1;
           action_cost.set_cost(50);
-          advance = true; // REMOVE THESE WHEN I GET ENTHUSIASTIC AND WANT TO DEBUG THE WOES...
+          advance = true; // JCD FIXME REMOVE THESE WHEN I GET ENTHUSIASTIC AND WANT TO DEBUG THE WOES...
         }
       }
       

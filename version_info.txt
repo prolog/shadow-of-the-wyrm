@@ -38,6 +38,11 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - New food-related conduct type: corpseless.
 
+- The map is now updated (either partially or fully) after each creature's
+  action.  With NPC spellcasting, having the screen update after the
+  player's action only was causing issues with bits of the screen not
+  being redrawn correctly after spell animations.
+
 - Added decision (AI) code for NPCs regarding spellcasting, separating out
   attack, healing, buff, and utility spells.  NPCs have a base chance to
   cast spells every turn, with decisions being made based on their
