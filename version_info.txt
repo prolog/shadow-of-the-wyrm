@@ -43,7 +43,7 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   cast spells every turn, with decisions being made based on their
   health, whether there are threats in range of attack spells, and so on.
 
-- Flame dart is now range 2 instead of 1.
+- Flame Dart is now range 2 instead of 1, as is Shadow Flame.
 
 - Rejigged the structure of the DecisionStrategy node in the game
   configuration to include both the strategy as well as a "suppress magic"
@@ -57,7 +57,10 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   bolt), Gilirien (wreath of fire, lightning bolt), spectral wizard
   (cross of flame, fireball), high wizard (minor healing, lightning bolt,
   maelstrom), deep wizard (chaos aura, nightfire), Bagra (nether bolt,
-  nightfire, veil of shadows).
+  nightfire, veil of shadows), black priest (shadow flame, curse of
+  shadows, nether bolt), witch king (curse of shadows, nether bolt, chaos
+  aura, nightfire), lich (lightning bolt, fireball), lich king (lightning 
+  bolt, fireball, fire storm, ice storm, lightning storm, maelstrom).
 
 - New spells/spellbooks: radiant beam (Divine), force bolt (Cantrips),
   ice storm (Arcane), lightning storm (Arcane), maelstrom (Arcane).

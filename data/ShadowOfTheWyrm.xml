@@ -7111,6 +7111,10 @@
 					<NumDice>25</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>25</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>1000</Exp>
 			</CreatureGeneration>
 			<Level>25</Level>
@@ -7120,6 +7124,20 @@
 				<Type>7</Type>
 			</Damage>
 			<Speed>60</Speed>
+			<Spells>
+				<Spell>
+					<SpellID>p_01_shadow_flame</SpellID>
+					<Castings>6</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_02_curse_of_shadows</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_04_nether_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="antlion">
 			<RaceID>_monster</RaceID>
@@ -7579,6 +7597,10 @@
 					<NumDice>35</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>20000</Exp>
 			</CreatureGeneration>
 			<Level>35</Level>
@@ -7587,6 +7609,24 @@
 				<NumSides>70</NumSides>
 				<Type>8</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>p_02_curse_of_shadows</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_04_nether_bolt</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_05_chaos_aura</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_06_nightfire</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="black_monk">
 			<RaceID>01_human</RaceID>
@@ -8971,6 +9011,32 @@
 				<Type>9</Type>
 			</Damage>
 			<Speed>50</Speed>
+			<Spells>
+				<Spell>
+					<SpellID>a_03_lightning_bolt</SpellID>
+					<Castings>10</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_07_fireball</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_10_fire_storm</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_11_ice_storm</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_12_lightning_storm</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_13_maelstrom</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="skeletal_dragon">
 			<RaceID>_corporeal_undead</RaceID>
@@ -20492,7 +20558,7 @@
 			<Colour>4</Colour>
 			<APCost>2</APCost>
 			<Speed>1</Speed>
-			<Range>1</Range>
+			<Range>2</Range>
 			<Shape>1</Shape>
 			<Damage>
 				<NumDice>2</NumDice>
@@ -20561,6 +20627,7 @@
 			<Damage>
 				<NumDice>4</NumDice>
 				<NumSides>6</NumSides>
+				<Modifier>15</Modifier>
 				<Type>8</Type>
 			</Damage>
 			<Effect>0</Effect>
@@ -20579,6 +20646,7 @@
 			<Damage>
 				<NumDice>3</NumDice>
 				<NumSides>12</NumSides>
+				<Modifier>20</Modifier>
 				<Type>8</Type>
 			</Damage>
 			<Effect>0</Effect>
@@ -20597,6 +20665,7 @@
 			<Damage>
 				<NumDice>12</NumDice>
 				<NumSides>4</NumSides>
+				<Modifier>25</Modifier>
 				<Type>8</Type>
 			</Damage>
 			<Effect>0</Effect>
@@ -20615,6 +20684,7 @@
 			<Damage>
 				<NumDice>12</NumDice>
 				<NumSides>10</NumSides>
+				<Modifier>30</Modifier>
 				<Type>8</Type>
 			</Damage>
 			<Effect>0</Effect>
