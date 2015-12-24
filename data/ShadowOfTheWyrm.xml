@@ -9002,9 +9002,13 @@
 					<NumDice>35</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>10000</Exp>
 			</CreatureGeneration>
-			<Level>12</Level>
+			<Level>35</Level>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>35</NumSides>
@@ -9018,23 +9022,7 @@
 				</Spell>
 				<Spell>
 					<SpellID>a_07_fireball</SpellID>
-					<Castings>3</Castings>
-				</Spell>
-				<Spell>
-					<SpellID>a_10_fire_storm</SpellID>
-					<Castings>1</Castings>
-				</Spell>
-				<Spell>
-					<SpellID>a_11_ice_storm</SpellID>
-					<Castings>1</Castings>
-				</Spell>
-				<Spell>
-					<SpellID>a_12_lightning_storm</SpellID>
-					<Castings>1</Castings>
-				</Spell>
-				<Spell>
-					<SpellID>a_13_maelstrom</SpellID>
-					<Castings>1</Castings>
+					<Castings>5</Castings>
 				</Spell>
 			</Spells>
 		</Creature>
@@ -11288,6 +11276,20 @@
 				<Type>4</Type>
 			</Damage>
 			<Evade>8</Evade>
+			<Spells>
+				<Spell>
+					<SpellID>c_01_minor_healing</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_02_dragon_breath</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_03_lightning_bolt</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="shadow_snake">
 			<RaceID>_animal</RaceID>
@@ -11826,6 +11828,16 @@
 				<NumSides>66</NumSides>
 				<Type>9</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>p_05_chaos_aura</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_05_cross_of_flame</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="snakeling_conjurer">
 			<RaceID>04_snakeling</RaceID>
@@ -11998,6 +12010,10 @@
 					<NumDice>35</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>4500</Exp>
 			</CreatureGeneration>
 			<Level>30</Level>
@@ -12007,6 +12023,16 @@
 				<Type>4</Type>
 			</Damage>
 			<Speed>40</Speed>
+			<Spells>
+				<Spell>
+					<SpellID>c_03_lightning_bolt</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>c_09_force_bolt</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="abomination">
 			<RaceID>_demon</RaceID>
@@ -14849,6 +14875,10 @@
 					<NumDice>16</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>110</Exp>
 			</CreatureGeneration>
 			<Level>16</Level>
@@ -14860,6 +14890,16 @@
 			<Evade>7</Evade>
 			<Soak>4</Soak>
 			<Speed>42</Speed>
+			<Spells>
+				<Spell>
+					<SpellID>a_01_wreath_of_fire</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_03_lightning_bolt</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="ghoul">
 			<RaceID>_corporeal_undead</RaceID>
@@ -19600,6 +19640,32 @@
 					<Status>_stone</Status>
 				</StatusAilments>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>a_03_lightning_bolt</SpellID>
+					<Castings>10</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_07_fireball</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_10_fire_storm</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_11_ice_storm</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_12_lightning_storm</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_13_maelstrom</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="hollow_man">
 			<RaceID>_undead</RaceID>

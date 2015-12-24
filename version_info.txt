@@ -60,7 +60,10 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   nightfire, veil of shadows), black priest (shadow flame, curse of
   shadows, nether bolt), witch king (curse of shadows, nether bolt, chaos
   aura, nightfire), lich (lightning bolt, fireball), lich king (lightning 
-  bolt, fireball, fire storm, ice storm, lightning storm, maelstrom).
+  bolt, fireball, fire storm, ice storm, lightning storm, maelstrom),
+  Lalo (wreath of fire, lightning bolt), Zaeda (lightning bolt, force
+  bolt), Callara (minor healing, dragon breath, lightning bolt), snakeling
+  magus (chaos aura, cross of flame).
 
 - New spells/spellbooks: radiant beam (Divine), force bolt (Cantrips),
   ice storm (Arcane), lightning storm (Arcane), maelstrom (Arcane).
