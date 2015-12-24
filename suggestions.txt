@@ -1,11 +1,4 @@
 Me:
-- Given the previous issues with misspecified resistances, test the "Curse"
-  spell to make sure it works as intended.
-- Spells outside of player's FOV can cause issues with part of the
-  animation staying onscreen (see high wizards and maelstrom).
-- Hard redraw after player turn to ensure animations/etc don't appear to
-  be affecting a location the player doesn't appear to be in (but actually
-  is).
 - Teleport not working on self?
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
@@ -36,8 +29,6 @@ registry, instead of failing silently.
   items can be done and dumped to disk.
 - Scrolls of uncursing, should be common, appear around d2 or 3.
 - The spell of uncursing should be a wizard spell.
-- Slightly different creatures: marsh gas, should have a chance of
-  exploding when attacked.  "Exploding" should cast "Wreath of Fire".
 - Implement two-handed weapons.
 
 barrabus: 

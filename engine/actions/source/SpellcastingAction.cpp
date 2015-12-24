@@ -70,6 +70,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
     game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
     game.get_display()->redraw();
 
+    // Indicate that a full redraw is needed.
+    game.get_loaded_map_details_ref().update_spell_cast(true);
+
     action_cost_value = cast_spell(creature, spell_id);
   }
 
@@ -179,6 +182,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
 
             // Spells always use the "uncursed" effect status.
             sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
+
+            // Indicate that a full redraw is needed.
+            game.get_loaded_map_details_ref().update_spell_cast(true);
           }
 
           // Now that the spell has been cast, update the spell bonus information
