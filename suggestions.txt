@@ -1,5 +1,11 @@
 Me:
+- Some of the bushes are not showing extra descriptions properly.
+- More than one piece of fruit per fruit tree.
 - Teleport not working on self?
+- Additional options at death.  Items identified?  Character dump?  There
+  should be options for each of these in the ini settings.  0/1, and if
+  empty, the prompt is given.
+- Per-level skill increases (general, melee, ranged, magic).
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
