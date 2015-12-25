@@ -2,7 +2,7 @@
 
 TreeSpecies TreeSpeciesFactory::create_tree_species(const TreeSpeciesID species_id)
 {
-  static_assert(TreeSpeciesID::TREE_SPECIES_LAST == TreeSpeciesID(30), "Unrecognized TREE_SPECIES_ID_LAST");
+  static_assert(TreeSpeciesID::TREE_SPECIES_LAST == TreeSpeciesID(31), "Unrecognized TREE_SPECIES_ID_LAST");
 
   TreeSpecies ts;
 
@@ -26,6 +26,7 @@ TreeSpecies TreeSpeciesFactory::create_tree_species(const TreeSpeciesID species_
     case TreeSpeciesID::TREE_SPECIES_PEACH:
     case TreeSpeciesID::TREE_SPECIES_PLUM:
     case TreeSpeciesID::TREE_SPECIES_PEAR:
+    case TreeSpeciesID::TREE_SPECIES_OLIVE:
       tt = TileType::TILE_TYPE_FRUIT_TREE;
       break;
     case TreeSpeciesID::TREE_SPECIES_CEDAR:

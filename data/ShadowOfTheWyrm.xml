@@ -25075,6 +25075,31 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_olive">
+				<DescriptionSID>OLIVE_SID</DescriptionSID>
+				<UsageDescriptionSID>OLIVE_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>2</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_olive_pit</Value>
+					</Property>
+				</Properties>
+				<Nutrition>50</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
 			<Food id="_plum">
 				<DescriptionSID>PLUM_SID</DescriptionSID>
 				<UsageDescriptionSID>PLUM_USAGE_SID</UsageDescriptionSID>
@@ -27516,6 +27541,27 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>11</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_olive_pit">
+				<DescriptionSID>OLIVE_PIT_SID</DescriptionSID>
+				<UsageDescriptionSID>OLIVE_PIT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>14</Value>
 					</Property>
 				</Properties>
 			</Item>

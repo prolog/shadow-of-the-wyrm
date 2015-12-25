@@ -61,7 +61,13 @@ void TreeTileConfiguration::configure(TilePtr tile, const Season season) const
   // If a species ID has already been provided, use that; otherwise, generate
   // a random allowable species.
   TreeSpeciesID species_id = get_species(tile);
-  tile->set_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID, tree_species_description_sids.find(species_id)->second);
+
+  auto s_it = tree_species_description_sids.find(species_id);
+
+  if (s_it != tree_species_description_sids.end())
+  {
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID, s_it->second);
+  }
 
   configure_additional_features(tile, season, species_id);
 }

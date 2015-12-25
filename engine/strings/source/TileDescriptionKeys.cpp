@@ -26,6 +26,7 @@ const string TileDescriptionKeys::FLORA_TILE_DESC_CHERRY = "FLORA_TILE_DESC_CHER
 const string TileDescriptionKeys::FLORA_TILE_DESC_PEACH = "FLORA_TILE_DESC_PEACH";
 const string TileDescriptionKeys::FLORA_TILE_DESC_PLUM = "FLORA_TILE_DESC_PLUM";
 const string TileDescriptionKeys::FLORA_TILE_DESC_PEAR = "FLORA_TILE_DESC_PEAR";
+const string TileDescriptionKeys::FLORA_TILE_DESC_OLIVE = "FLORA_TILE_DESC_OLIVE";
 
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED1 = "FLORA_TILE_DESC_WEED1";
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED2 = "FLORA_TILE_DESC_WEED2";

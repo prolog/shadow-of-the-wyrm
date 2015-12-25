@@ -29,6 +29,7 @@ class TileDescriptionKeys
     static const std::string FLORA_TILE_DESC_PEACH;
     static const std::string FLORA_TILE_DESC_PLUM;
     static const std::string FLORA_TILE_DESC_PEAR;
+    static const std::string FLORA_TILE_DESC_OLIVE;
 
     // Used by TileType::TILE_TYPE_WEED:
     static const std::string FLORA_TILE_DESC_WEED1;
