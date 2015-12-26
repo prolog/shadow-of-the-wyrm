@@ -103,6 +103,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   - Beam spells weren't properly handling going off the edge of an open
     map.
 
+  - Certain weed tile configurations weren't showing a description.
+
 Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Version declared November 3, 2015.  Version finalized December 1, 2015.
 

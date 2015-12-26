@@ -1,5 +1,5 @@
 Me:
-- Some of the bushes are not showing extra descriptions properly.
+- Comestibles showing up as %% in filter list.
 - More than one piece of fruit per fruit tree.
 - Teleport not working on self?
 - Additional options at death.  Items identified?  Character dump?  There
