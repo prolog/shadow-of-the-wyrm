@@ -1,5 +1,6 @@
 #include "FruitTreeTileConfiguration.hpp"
 #include "ItemManager.hpp"
+#include "RNG.hpp"
 #include "TileDescriptionKeys.hpp"
 
 using namespace std;
@@ -39,10 +40,15 @@ void FruitTreeTileConfiguration::configure_additional_features(TilePtr tile, con
 {
   FruitProductionMap::const_iterator f_it = fruit_ids.find(make_pair(tree_species_id, season));
 
-  if (f_it != fruit_ids.end())
+  if (f_it != fruit_ids.end() && tile != nullptr)
   {
-    string fruit_id = f_it->second;
+    if (RNG::percent_chance(60))
+    {
+      int num_pieces = RNG::range(1, 6);
+      string fruit_id = f_it->second;
 
-    ItemManager::create_item_with_probability(1, 2, tile->get_items(), fruit_id);
+      ItemPtr fruit = ItemManager::create_item(fruit_id, static_cast<uint>(num_pieces));
+      tile->get_items()->add_front(fruit);
+    }
   }
 }

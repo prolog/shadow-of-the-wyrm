@@ -1,6 +1,4 @@
 Me:
-- Comestibles showing up as %% in filter list.
-- More than one piece of fruit per fruit tree.
 - Teleport not working on self?
 - Additional options at death.  Items identified?  Character dump?  There
   should be options for each of these in the ini settings.  0/1, and if
