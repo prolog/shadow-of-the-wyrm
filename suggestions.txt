@@ -7,6 +7,7 @@ Me:
 - Additional "flavour" messages for each damage type.  Pound/pummel/etc.
 to register a new map with the same ID as an existing map currently in the 
 registry, instead of failing silently.
+- Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
