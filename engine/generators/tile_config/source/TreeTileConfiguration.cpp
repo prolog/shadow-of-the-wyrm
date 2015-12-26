@@ -69,6 +69,16 @@ void TreeTileConfiguration::configure(TilePtr tile, const Season season) const
     tile->set_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID, s_it->second);
   }
 
+  if (std::find(tree_species_ids.begin(), tree_species_ids.end(), TreeSpeciesID::TREE_SPECIES_WEED4) != tree_species_ids.end())
+  {
+    string foo = tile->get_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID);
+
+    if (foo.empty())
+    {
+      int x = 1;
+    }
+  }
+
   configure_additional_features(tile, season, species_id);
 }
 
