@@ -61,7 +61,7 @@ AmuletDisplayItemType::AmuletDisplayItemType()
 }
 
 FoodDisplayItemType::FoodDisplayItemType()
-  : DisplayItemType("%%", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_FOOD, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_FOOD))
+  : DisplayItemType("%", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_FOOD, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_FOOD))
 {
 }
 
@@ -81,7 +81,7 @@ BoatDisplayItemType::BoatDisplayItemType()
 }
 
 CurrencyDisplayItemType::CurrencyDisplayItemType()
-  : DisplayItemType("$", Colour::COLOUR_BOLD_YELLOW, ItemType::ITEM_TYPE_CURRENCY, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_CURRENCY))
+  : DisplayItemType("$", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_CURRENCY, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_CURRENCY))
 {
 }
 
