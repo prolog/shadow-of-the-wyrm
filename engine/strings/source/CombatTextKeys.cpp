@@ -136,7 +136,7 @@ string CombatTextKeys::get_mighty_blow_message()
   return mighty_blow_msg;
 }
 
-string CombatTextKeys::get_hit_message(const bool attacker_is_player, const bool attacked_is_player, const DamageType damage_type, const string& attacker, const string& hit_target)
+string CombatTextKeys::get_hit_message(const bool attacker_is_player, const bool attacked_is_player, const DamageType damage_type, const string& attacker, const string& hit_target, const bool use_multiple_damage_type_msgs)
 {
   pair<string,string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, hit_target);
   string attack = attacker_and_target.first;
@@ -154,7 +154,14 @@ string CombatTextKeys::get_hit_message(const bool attacker_is_player, const bool
 
   if (!hit_msg_v.empty())
   {
-    hit_msg_sid = hit_msg_v.at(RNG::range(0, hit_msg_v.size() - 1));
+    int idx = 0;
+
+    if (use_multiple_damage_type_msgs)
+    {
+      idx = RNG::range(0, hit_msg_v.size() - 1);
+    }
+
+    hit_msg_sid = hit_msg_v.at(idx);
     hit_msg = StringTable::get(hit_msg_sid);
   }
   

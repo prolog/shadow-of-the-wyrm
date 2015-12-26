@@ -14,7 +14,7 @@ class CombatTextKeys
     static std::string get_miss_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& missed_target);
     static std::string get_critical_hit_message();
     static std::string get_mighty_blow_message();
-    static std::string get_hit_message(const bool attacker_is_player, const bool attacked_is_player, const DamageType damage_type, const std::string& attacker, const std::string& hit_target);
+    static std::string get_hit_message(const bool attacker_is_player, const bool attacked_is_player, const DamageType damage_type, const std::string& attacker, const std::string& hit_target, const bool use_multiple_damage_type_msgs);
     static std::string get_monster_killed_message(const std::string& monster_name);
     static std::string get_monster_dies_message(const std::string& monster_name);
     static std::string get_no_damage_message(const bool target_is_player, const std::string& target);
