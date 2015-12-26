@@ -42,6 +42,9 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - Fruit trees now typically generate more than a single piece of fruit.
 
+- Each damage type now has an additional damage message that can be
+  selected.
+
 - The map is now updated (either partially or fully) after each creature's
   action.  With NPC spellcasting, having the screen update after the
   player's action only was causing issues with bits of the screen not
