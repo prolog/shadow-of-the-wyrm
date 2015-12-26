@@ -40,6 +40,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - Olive trees may now be generated in the same way as other fruit trees.
 
+- Fruit trees now typically generate more than a single piece of fruit.
+
 - The map is now updated (either partially or fully) after each creature's
   action.  With NPC spellcasting, having the screen update after the
   player's action only was causing issues with bits of the screen not
