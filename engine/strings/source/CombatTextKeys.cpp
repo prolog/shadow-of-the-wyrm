@@ -303,38 +303,38 @@ string CombatTextKeys::get_ranged_attack_message(const bool attacker_is_player, 
 
 void CombatTextKeys::populate_combat_messages()
 {
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_SLASH), {"COMBAT_HIT_SLASH_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_SLASH), {"COMBAT_HIT_SLASH"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_SLASH), {"COMBAT_HIT_SLASH_NP", "COMBAT_HIT_SLASH2_NP"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_SLASH), {"COMBAT_HIT_SLASH", "COMBAT_HIT_SLASH2"}));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_POUND), {"COMBAT_HIT_POUND_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_POUND), {"COMBAT_HIT_POUND"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_POUND), {"COMBAT_HIT_POUND_NP", "COMBAT_HIT_POUND2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_POUND), {"COMBAT_HIT_POUND", "COMBAT_HIT_POUND2" }));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_PIERCE), {"COMBAT_HIT_PIERCE_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_PIERCE), {"COMBAT_HIT_PIERCE"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_PIERCE), {"COMBAT_HIT_PIERCE_NP", "COMBAT_HIT_PIERCE2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_PIERCE), {"COMBAT_HIT_PIERCE", "COMBAT_HIT_PIERCE2" }));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_HEAT), {"COMBAT_HIT_HEAT_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_HEAT), {"COMBAT_HIT_HEAT"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_HEAT), {"COMBAT_HIT_HEAT_NP", "COMBAT_HIT_HEAT2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_HEAT), {"COMBAT_HIT_HEAT", "COMBAT_HIT_HEAT2" }));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_COLD), {"COMBAT_HIT_COLD_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_COLD), {"COMBAT_HIT_COLD"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_COLD), {"COMBAT_HIT_COLD_NP", "COMBAT_HIT_COLD2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_COLD), {"COMBAT_HIT_COLD", "COMBAT_HIT_COLD2" }));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_ACID), {"COMBAT_HIT_ACID_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_ACID), {"COMBAT_HIT_ACID"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_ACID), {"COMBAT_HIT_ACID_NP", "COMBAT_HIT_ACID2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_ACID), {"COMBAT_HIT_ACID", "COMBAT_HIT_ACID2" }));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_POISON), {"COMBAT_HIT_POISON_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_POISON), {"COMBAT_HIT_POISON"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_POISON), {"COMBAT_HIT_POISON_NP", "COMBAT_HIT_POISON2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_POISON), {"COMBAT_HIT_POISON", "COMBAT_HIT_POISON2" }));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_HOLY), {"COMBAT_HIT_HOLY_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_HOLY), {"COMBAT_HIT_HOLY"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_HOLY), {"COMBAT_HIT_HOLY_NP", "COMBAT_HIT_HOLY2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_HOLY), {"COMBAT_HIT_HOLY", "COMBAT_HIT_HOLY2" }));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_SHADOW), {"COMBAT_HIT_SHADOW_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_SHADOW), {"COMBAT_HIT_SHADOW"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_SHADOW), {"COMBAT_HIT_SHADOW_NP", "COMBAT_HIT_SHADOW2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_SHADOW), {"COMBAT_HIT_SHADOW", "COMBAT_HIT_SHADOW2" }));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_ARCANE), {"COMBAT_HIT_ARCANE_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_ARCANE), {"COMBAT_HIT_ARCANE"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_ARCANE), {"COMBAT_HIT_ARCANE_NP", "COMBAT_HIT_ARCANE2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_ARCANE), {"COMBAT_HIT_ARCANE", "COMBAT_HIT_ARCANE2" }));
 
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_LIGHTNING), {"COMBAT_HIT_LIGHTNING_NP"}));
-  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_LIGHTNING), {"COMBAT_HIT_LIGHTNING"}));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_LIGHTNING), {"COMBAT_HIT_LIGHTNING_NP", "COMBAT_HIT_LIGHTNING2_NP" }));
+  combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(1, DamageType::DAMAGE_TYPE_LIGHTNING), {"COMBAT_HIT_LIGHTNING", "COMBAT_HIT_LIGHTNING2"}));
 }
 
 string CombatTextKeys::create_key(const bool is_player, const DamageType damage_type)
