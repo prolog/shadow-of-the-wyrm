@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
+#include <vector>
 #include "Damage.hpp"
 
 // Contains player and non-player versions of all combat strings.
@@ -53,6 +54,6 @@ class CombatTextKeys
     
     static void populate_combat_messages();
     static std::string create_key(const bool is_player, const DamageType damage_type);
-    static std::map<std::string, std::string> combat_damage_hit_messages;
+    static std::map<std::string, std::vector<std::string>> combat_damage_hit_messages;
 };
 
