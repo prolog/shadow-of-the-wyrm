@@ -50,28 +50,6 @@ class CombatTextKeys
     static const std::string COMBAT_PIERCE_MESSAGE_NP;
     static const std::string COMBAT_INCORPOREAL_MESSAGE;
     static const std::string COMBAT_INCORPOREAL_MESSAGE_NP;
-    static const std::string COMBAT_HIT_SLASH;
-    static const std::string COMBAT_HIT_SLASH_NP;
-    static const std::string COMBAT_HIT_POUND;
-    static const std::string COMBAT_HIT_POUND_NP;
-    static const std::string COMBAT_HIT_PIERCE;
-    static const std::string COMBAT_HIT_PIERCE_NP;
-    static const std::string COMBAT_HIT_HEAT;
-    static const std::string COMBAT_HIT_HEAT_NP;
-    static const std::string COMBAT_HIT_COLD;
-    static const std::string COMBAT_HIT_COLD_NP;
-    static const std::string COMBAT_HIT_ACID;
-    static const std::string COMBAT_HIT_ACID_NP;
-    static const std::string COMBAT_HIT_POISON;
-    static const std::string COMBAT_HIT_POISON_NP;
-    static const std::string COMBAT_HIT_HOLY;
-    static const std::string COMBAT_HIT_HOLY_NP;
-    static const std::string COMBAT_HIT_SHADOW;
-    static const std::string COMBAT_HIT_SHADOW_NP;
-    static const std::string COMBAT_HIT_ARCANE;
-    static const std::string COMBAT_HIT_ARCANE_NP;
-    static const std::string COMBAT_HIT_LIGHTNING;
-    static const std::string COMBAT_HIT_LIGHTNING_NP;
     
     static void populate_combat_messages();
     static std::string create_key(const bool is_player, const DamageType damage_type);
