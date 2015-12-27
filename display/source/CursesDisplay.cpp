@@ -486,6 +486,7 @@ void CursesDisplay::draw(const DisplayMap& current_map, const CursorSettings cs)
   curs_set(get_cursor_mode(cs));
   move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
+  refresh();
 }
 
 // Refreshes the contents of the current window.
