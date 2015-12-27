@@ -44,6 +44,8 @@ class TileDescriptionKeys
     static const std::string FLORA_TILE_DESC_WEED10;
     static const std::string FLORA_TILE_DESC_WEED11;
     static const std::string FLORA_TILE_DESC_WEED12;
+    static const std::string FLORA_TILE_DESC_WEED13;
+    static const std::string FLORA_TILE_DESC_WEED14;
         
   protected:
     TileDescriptionKeys();

@@ -27,6 +27,20 @@ void Display::set_property(const string& property, const string& value)
   display_properties[property] = value;
 }
 
+bool Display::remove_property(const string& property)
+{
+  bool removed = false;
+  auto p_it = display_properties.find(property);
+
+  if (p_it != display_properties.end())
+  {
+    display_properties.erase(p_it);
+    removed = true;
+  }
+
+  return removed;
+}
+
 string Display::get_property(const string& property) const
 {
   string value;

@@ -2,7 +2,7 @@
 
 TreeSpecies TreeSpeciesFactory::create_tree_species(const TreeSpeciesID species_id)
 {
-  static_assert(TreeSpeciesID::TREE_SPECIES_LAST == TreeSpeciesID(31), "Unrecognized TREE_SPECIES_ID_LAST");
+  static_assert(TreeSpeciesID::TREE_SPECIES_LAST == TreeSpeciesID(33), "Unrecognized TREE_SPECIES_ID_LAST");
 
   TreeSpecies ts;
 
@@ -46,6 +46,8 @@ TreeSpecies TreeSpeciesFactory::create_tree_species(const TreeSpeciesID species_
     case TreeSpeciesID::TREE_SPECIES_WEED10:
     case TreeSpeciesID::TREE_SPECIES_WEED11:
     case TreeSpeciesID::TREE_SPECIES_WEED12:
+    case TreeSpeciesID::TREE_SPECIES_WEED13:
+    case TreeSpeciesID::TREE_SPECIES_WEED14:
       tt = TileType::TILE_TYPE_WEEDS;
       break;
     default:

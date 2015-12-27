@@ -40,3 +40,5 @@ const string TileDescriptionKeys::FLORA_TILE_DESC_WEED9 = "FLORA_TILE_DESC_WEED9
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED10 = "FLORA_TILE_DESC_WEED10";
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED11 = "FLORA_TILE_DESC_WEED11";
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED12 = "FLORA_TILE_DESC_WEED12";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED13 = "FLORA_TILE_DESC_WEED13";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED14 = "FLORA_TILE_DESC_WEED14";
