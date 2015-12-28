@@ -48,6 +48,9 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   selected.  The use of multiple messages for damage is controlled by an
   ini setting.
 
+- There are a few new real-world dates tracked by the game: summer and
+  winter solstice, spring and fall equinox.
+
 - The map is now updated (either partially or fully) after each creature's
   action.  With NPC spellcasting, having the screen update after the
   player's action only was causing issues with bits of the screen not

@@ -19,6 +19,8 @@ Me:
 - Item generation: get rarity working properly, and then do some test
   runs.  Once that works, create some more artifacts/great items for
   random generation.
+- Potion components of some sort?  Weeds should be "pickable"?
+- Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
 - New effect/scroll/cantrip - "Cleansing", which prevents new creatures
