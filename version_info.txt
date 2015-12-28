@@ -40,7 +40,7 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - Olive trees may now be generated in the same way as other fruit trees.
 
-- Two new species of weeds.
+- Eight new species of weeds.
 
 - Fruit trees now typically generate more than a single piece of fruit.
 
