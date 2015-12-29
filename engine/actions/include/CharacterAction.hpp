@@ -12,5 +12,7 @@ class CharacterAction : public IActionManager
 
   protected:
     friend class ActionManager;
+    friend class ExitGameAction;
+
     CharacterAction();    
 };

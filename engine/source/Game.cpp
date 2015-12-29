@@ -12,6 +12,7 @@
 #include "CursesConstants.hpp"
 #include "DecisionStrategySelector.hpp"
 #include "Detection.hpp"
+#include "ExitGameAction.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "FileConstants.hpp"
@@ -679,9 +680,18 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
   return action_cost;
 }
 
-void Game::stop_playing()
+void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions)
 {
   keep_playing = false;
+
+  if (show_quit_actions && creature != nullptr && creature->get_is_player())
+  {
+    // Prompt the player if they want an identified character dump created.
+    IMessageManager& manager = MessageManagerFactory::instance();
+
+    ExitGameAction ega;
+    ega.create_dump_if_necessary(manager, &actions, creature);
+  }
 }
 
 bool Game::should_keep_playing() const
