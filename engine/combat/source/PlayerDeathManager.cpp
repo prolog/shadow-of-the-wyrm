@@ -39,6 +39,6 @@ void PlayerDeathManager::die() const
     manager.send_and_halt();
     
     // Signal to the game that it is time to quit.
-    game.stop_playing();
+    game.stop_playing(dead_creature, true);
   }
 }

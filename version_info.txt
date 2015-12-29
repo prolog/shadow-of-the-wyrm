@@ -56,6 +56,9 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   player's action only was causing issues with bits of the screen not
   being redrawn correctly after spell animations.
 
+- After dying or quitting, the player is now asked if they want an
+  identified character dump.
+
 - Added decision (AI) code for NPCs regarding spellcasting, separating out
   attack, healing, buff, and utility spells.  NPCs have a base chance to
   cast spells every turn, with decisions being made based on their

@@ -2591,8 +2591,20 @@ int cast_spell(lua_State* ls)
 
 int stop_playing_game(lua_State* ls)
 {
-  Game& game = Game::instance();
-  game.stop_playing();
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    bool do_dump = lua_toboolean(ls, 2) != 0;
+    CreaturePtr player = get_creature(creature_id);
+
+    Game& game = Game::instance();
+    game.stop_playing(player, do_dump);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to stop_playing_game");
+    lua_error(ls);
+  }
 
   return 0;
 }

@@ -583,7 +583,7 @@ ActionCost ActionManager::save(CreaturePtr creature)
 ActionCost ActionManager::quit(CreaturePtr creature)
 {
   ExitGameAction ega;
-  return get_action_cost(creature, ega.quit(creature));
+  return get_action_cost(creature, ega.quit(creature, true));
 }
 
 // Create an ActionCost based on the ActionCostValue already generated

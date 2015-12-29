@@ -1,8 +1,7 @@
 Me:
+- After killing Amaurosis, he isn't showing up in the mortuary when
+  dumping the character.
 - Teleport not working on self?
-- Additional options at death.  Items identified?  Character dump?  There
-  should be options for each of these in the ini settings.  0/1, and if
-  empty, the prompt is given.
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.
