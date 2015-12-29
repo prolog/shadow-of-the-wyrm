@@ -3585,6 +3585,9 @@
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategyProperties.hpp">
       <Filter>Header Files\engine\decision_strategies\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\ExitGameAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6991,6 +6994,9 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\source\DecisionStrategyProperties.cpp">
       <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ExitGameAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
