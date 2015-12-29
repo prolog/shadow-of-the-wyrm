@@ -11,6 +11,7 @@
 #include "DateTimeAction.hpp"
 #include "DropAction.hpp"
 #include "EquipmentManager.hpp"
+#include "ExitGameAction.hpp"
 #include "ExperienceAction.hpp"
 #include "EvokeAction.hpp"
 #include "FeatureAction.hpp"
@@ -37,7 +38,6 @@
 #include "ShowResistancesAction.hpp"
 #include "SkinAction.hpp"
 #include "SpellcastingAction.hpp"
-#include "Serialization.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "VersionAction.hpp"
 #include "WeaponInfoAction.hpp"
@@ -576,24 +576,14 @@ ActionCost ActionManager::rest(CreaturePtr creature)
 
 ActionCost ActionManager::save(CreaturePtr creature)
 {
-  Game& game = Game::instance();
-  game.set_check_scores(false);
-
-  Serialization::save(creature);
-  quit(creature);
-  
-  // Setting the action cost to 1 after everything has been saved ensures
-  // that the user doesn't have to press another key to actually quit.
-  return get_action_cost(creature, 1);
+  ExitGameAction ega;
+  return get_action_cost(creature, ega.save(creature));
 }
 
 ActionCost ActionManager::quit(CreaturePtr creature)
 {
-  Game& game = Game::instance();
-  
-  game.stop_playing();
-  
-  return get_action_cost(creature, 1);
+  ExitGameAction ega;
+  return get_action_cost(creature, ega.quit(creature));
 }
 
 // Create an ActionCost based on the ActionCostValue already generated

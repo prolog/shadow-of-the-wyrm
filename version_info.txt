@@ -92,6 +92,8 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - Boost updated to 1.60.0.
 
+- Various minor refactorings.
+
 - Bug fixes:
 
   - Crash when attacking with a ranged weapon with no launcher (e.g.,
