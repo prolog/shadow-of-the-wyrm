@@ -1,3 +1,4 @@
+#include <chrono>
 #include "CharacterAction.hpp"
 #include "CharacterDumper.hpp"
 #include "Conversion.hpp"
@@ -7,6 +8,7 @@
 #include "ScreenTitleTextKeys.hpp"
 #include "TextDisplayScreen.hpp"
 #include "TextMessages.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
@@ -47,14 +49,30 @@ ActionCostValue CharacterAction::dump_character(CreaturePtr creature)
     IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
     string name = creature->get_name();
     string dump_message = TextMessages::get_dumping_character_message(name);
-    
-    CharacterDumper dumper(creature);
-    FileWriter file(creature->get_name());
-    
-    file.write(dumper.str());
-    
     manager.add_new_message(dump_message);
     manager.send();
+
+    CharacterDumper dumper(creature);
+    string file_contents = dumper.str();
+    FileWriter file(creature->get_name());
+    
+    bool created_file = file.write(file_contents);
+
+    if (!created_file)
+    {
+      ostringstream fname;
+      auto cur_time = std::chrono::system_clock::now();
+      fname << creature->get_name() << "_" << std::chrono::system_clock::to_time_t(cur_time);
+
+      file.set_base_file_name(fname.str());
+      created_file = file.write(file_contents);
+
+      if (!created_file)
+      {
+        manager.add_new_message(StringTable::get(TextKeys::DUMPING_CHARACTER_FAILED));
+        manager.send();
+      }
+    }    
   }
 
   return get_action_cost_value(creature);

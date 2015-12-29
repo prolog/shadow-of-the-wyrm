@@ -59,6 +59,11 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 - After dying or quitting, the player is now asked if they want an
   identified character dump.
 
+- Character dumping code now respects existing files.  If it tries to
+  dump to a named file that exists, the game will retry, adding a time
+  stamp.  If that also fails (typically because the user tries to dump
+  several times a second), an error message is displayed.
+
 - Added decision (AI) code for NPCs regarding spellcasting, separating out
   attack, healing, buff, and utility spells.  NPCs have a base chance to
   cast spells every turn, with decisions being made based on their
