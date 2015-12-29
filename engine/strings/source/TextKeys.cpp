@@ -148,3 +148,4 @@ const string TextKeys::SOMETHING = "SOMETHING";
 
 const string TextKeys::LATEST_MESSAGES = "LATEST_MESSAGES";
 const string TextKeys::FRIENDLY = "FRIENDLY";
+const string TextKeys::DUMPING_CHARACTER_FAILED = "DUMPING_CHARACTER_FAILED";
