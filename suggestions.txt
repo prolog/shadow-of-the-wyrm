@@ -1,5 +1,6 @@
 Me:
-- Dragon breath not working when self-targetting.
+- Dragon breath not working when self-targetting.  Ensure cone/cross both
+  work.
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.
