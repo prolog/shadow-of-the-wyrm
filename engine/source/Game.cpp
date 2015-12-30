@@ -686,11 +686,16 @@ void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions)
 
   if (show_quit_actions && creature != nullptr && creature->get_is_player())
   {
-    // Prompt the player if they want an identified character dump created.
-    IMessageManager& manager = MessageManagerFactory::instance();
+    Game& game = Game::instance();
 
-    ExitGameAction ega;
-    ega.create_dump_if_necessary(manager, &actions, creature);
+    if (String::to_bool(game.get_settings_ref().get_setting("prompt_for_character_dump_on_exit")))
+    {
+      // Prompt the player if they want an identified character dump created.
+      IMessageManager& manager = MessageManagerFactory::instance();
+
+      ExitGameAction ega;
+      ega.create_dump_if_necessary(manager, &actions, creature);
+    }
   }
 }
 
