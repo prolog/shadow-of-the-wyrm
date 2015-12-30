@@ -1,5 +1,5 @@
 Me:
-- Teleport not working on self?
+- Dragon breath not working when self-targetting.
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.

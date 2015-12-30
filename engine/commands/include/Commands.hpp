@@ -309,7 +309,7 @@ class CustomScriptCommand : public Command
     ~CustomScriptCommand();
 };
 
-class RestCommand : public Command
+class RestCommand : public DirectionalCommand
 {
   public:
     RestCommand(int key);

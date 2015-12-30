@@ -109,10 +109,10 @@ bool DirectionUtils::direction_matches_category(const Direction d, const Directi
   switch (dc)
   {
     case DirectionCategory::DIRECTION_CATEGORY_CARDINAL:
-      matches = DirectionUtils::is_cardinal(d);
+      matches = DirectionUtils::is_cardinal(d) || d == Direction::DIRECTION_NULL;
       break;
     case DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL:
-      matches = (DirectionUtils::is_ordinal(d) || DirectionUtils::is_cardinal(d));
+      matches = (DirectionUtils::is_ordinal(d) || DirectionUtils::is_cardinal(d)) || d == Direction::DIRECTION_NULL;
       break;
     case DirectionCategory::DIRECTION_CATEGORY_NONE:
       break;
