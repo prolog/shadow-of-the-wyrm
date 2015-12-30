@@ -16829,12 +16829,12 @@
 				<Colour>1</Colour>
 			</Text>
 			<CreatureGeneration>
-				<Max>1</Max>
+				<Max>2</Max>
 				<AllowableTerrainTypes/>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>1000</NumDice>
+					<NumDice>1</NumDice>
 					<NumSides>1</NumSides>
 				</HP>
 				<Exp>2000000</Exp>

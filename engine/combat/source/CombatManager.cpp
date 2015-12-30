@@ -350,8 +350,8 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
 
       // Kill the creature, and run the death event function, if necessary.
-      death_manager->die();
       update_mortuaries(attacking_creature, attacked_creature->get_original_id());
+      death_manager->die();
 
       // Sometimes there will be no attacking creature, eg., when drowning, falling off mountains, etc.
       if (attacking_creature)
