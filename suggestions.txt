@@ -1,6 +1,4 @@
 Me:
-- Dragon breath not working when self-targetting.  Ensure cone/cross both
-  work.
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.
@@ -11,7 +9,6 @@ Me:
 - Evil story arc
 - Linux support.  
 - Investigate targetting not staying properly some (all?) of the time.
-- Some more information in-game about offering at altars
 - Offer to save character dump when quitting or winning
 - General performance improvements.
 - Item generation: get rarity working properly, and then do some test
