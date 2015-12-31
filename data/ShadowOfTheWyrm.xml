@@ -5223,7 +5223,7 @@
 				</HP>
 				<Exp>5</Exp>
 			</CreatureGeneration>
-			<Level>4</Level>
+			<Level>1</Level>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>8</NumSides>
@@ -5231,6 +5231,63 @@
 			</Damage>
 			<Soak>3</Soak>
 			<Speed>60</Speed>
+		</Creature>
+		<Creature id="wulf">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>WULF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WULF_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WULF_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WULF_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>10</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>2</Soak>
+			<Speed>45</Speed>
+			<Spells>
+				<Spell>
+					<SpellID>c_01_minor_healing</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="kith">
 			<RaceID>04_snakeling</RaceID>
