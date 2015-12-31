@@ -49,6 +49,9 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   direction (by default, '5').  Ranged spells are reduced to range 1 when
   made self-targetting.
 
+- Kew now dispenses useful advice on a variety of topics after you 
+  complete his quests.
+
 - Each damage type now has an additional damage message that can be
   selected.  The use of multiple messages for damage is controlled by an
   ini setting.

@@ -38,9 +38,21 @@ kew_quest = Quest:new("kew_dungeon",
                       kew_dungeon_completion_condition_fn,
                       kew_dungeon_completion_fn)
 
+-- Random chat topics.
+local chat_topics = {"KEW_SPEECH_TEXT_SID",
+                     "KEW_SPEECH_TEXT2_SID",
+                     "KEW_SPEECH_TEXT3_SID",
+                     "KEW_SPEECH_TEXT4_SID",
+                     "KEW_SPEECH_TEXT5_SID",
+                     "KEW_SPEECH_TEXT6_SID",
+                     "KEW_SPEECH_TEXT7_SID",
+                     "KEW_SPEECH_TEXT8_SID",
+                     "KEW_SPEECH_TEXT9_SID",
+                     "KEW_SPEECH_TEXT10_SID"}
+
 if is_item_generated("kew_key") == true then
   if kew_quest:execute() == false then
-    add_message("KEW_SPEECH_TEXT_SID")
+    add_message(chat_topics[RNG_range(1, table.getn(chat_topics))])
   end
 else
   add_message("KEW_SUPPLIES_SPEECH_SID")
