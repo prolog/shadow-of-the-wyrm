@@ -1432,11 +1432,12 @@
 				Gain Attributes = 17
 				Modify Statistics = 18
 				Timewalk = 19
+				Cleansing = 20
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="19"/>
+		<xs:maxInclusive value="20"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

@@ -43,6 +43,9 @@ class MapProperties
     // Can we teleport?
     static const std::string MAP_PROPERTIES_CANNOT_TELEPORT;
 
+    // What is the creature generation rate?
+    static const std::string MAP_PROPERTIES_CREATURE_GENERATION_RATE;
+
   protected:
     MapProperties();
     ~MapProperties();

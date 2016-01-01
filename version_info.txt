@@ -79,6 +79,9 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
 
 - Flame Dart is now range 2 instead of 1, as is Shadow Flame.
 
+- New effect type, Cleansing, which sets a regeneration multiplier on
+  the map that affects creature generation.
+
 - Rejigged the structure of the DecisionStrategy node in the game
   configuration to include both the strategy as well as a "suppress magic"
   flag, which is set for gas clouds and which prevents the selection of
@@ -100,7 +103,10 @@ Shadow of the Wyrm v0.4.5 "Bacarisse"
   magus (chaos aura, cross of flame).
 
 - New spells/spellbooks: radiant beam (Divine), force bolt (Cantrips),
-  ice storm (Arcane), lightning storm (Arcane), maelstrom (Arcane).
+  ice storm (Arcane), lightning storm (Arcane), maelstrom (Arcane),
+  cleansing (Cantrips).
+
+- New items: scroll of cleansing.
 
 - New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".
 

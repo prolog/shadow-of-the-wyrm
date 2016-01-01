@@ -19993,6 +19993,19 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="c_10_cleansing">
+			<NameSID>CLEANSING_NAME_SID</NameSID>
+			<PlayerCastMessageSID>CLEANSING_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>CLEANSING_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>15</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>20</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -26043,6 +26056,24 @@
 				<Rarity>1</Rarity>
 				<Effect>15</Effect>				
 			</Scroll>
+			<Scroll id="cleansing_scroll">
+				<DescriptionSID>CLEANSING_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CLEANSING_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>CLEANSING_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_CLEANSING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>360</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>20</Effect>
+			</Scroll>
 		</Scrolls>
 		<Currencies>
 			<Currency id="_currency">
@@ -26699,6 +26730,25 @@
 				<Rarity>1</Rarity>
 				<SpellID>c_09_force_bolt</SpellID>
 				<Difficulty>50</Difficulty>
+			</Spellbook>
+			<Spellbook id="cleansing_spellbook">
+				<DescriptionSID>CLEANSING_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CLEANSIG_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>CLEANSING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_CLEANSING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>c_10_cleansing</SpellID>
+				<Difficulty>40</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>

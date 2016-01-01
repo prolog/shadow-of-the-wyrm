@@ -3588,6 +3588,9 @@
     <ClInclude Include="engine\actions\include\ExitGameAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\CleansingEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6997,6 +7000,9 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\ExitGameAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\CleansingEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
