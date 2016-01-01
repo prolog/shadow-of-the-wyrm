@@ -48,7 +48,11 @@ void FruitTreeTileConfiguration::configure_additional_features(TilePtr tile, con
       string fruit_id = f_it->second;
 
       ItemPtr fruit = ItemManager::create_item(fruit_id, static_cast<uint>(num_pieces));
-      tile->get_items()->add_front(fruit);
+
+      if (fruit != nullptr)
+      {
+        tile->get_items()->add_front(fruit);
+      }
     }
   }
 }
