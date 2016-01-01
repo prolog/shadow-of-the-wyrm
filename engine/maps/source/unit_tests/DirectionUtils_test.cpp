@@ -54,7 +54,7 @@ TEST(SL_Engine_Maps_DirectionUtils, direction_matches_category)
     { Direction::DIRECTION_NORTH,{ true, true } },
     { Direction::DIRECTION_NORTH_EAST,{ false, true } },
     { Direction::DIRECTION_WEST,{ true, true } },
-    { Direction::DIRECTION_NULL,{ false, false } },
+    { Direction::DIRECTION_NULL,{ true, true } },
     { Direction::DIRECTION_EAST,{ true, true } },
     { Direction::DIRECTION_SOUTH_WEST,{ false, true } },
     { Direction::DIRECTION_SOUTH,{ true, true } },
