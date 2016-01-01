@@ -51,7 +51,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_initial_set_creatures(Ma
   return creatures_generated;
 }
 
-tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr map, const int danger_level, const std::map<string, string>& additional_properties)
+tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr map, const int base_danger_level, const std::map<string, string>& additional_properties)
 {
   tuple<bool, int, Rarity> creatures_generated(false, 0, Rarity::RARITY_COMMON);
   TileType map_terrain_type = map->get_terrain_type();
@@ -69,13 +69,20 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
   int max_creatures = CreationUtils::random_maximum_creatures(dim.get_y(), dim.get_x());
   ActionManager am = game.get_action_manager_ref();
-  uint num_creatures_to_place = RNG::range(max_creatures / 2, max_creatures);
+  uint num_creatures_to_place = get_num_creatures(map, max_creatures);
+  
   uint current_creatures_placed = 0;
   uint unsuccessful_attempts = 0;
 
   // Generate the list of possible creatures for this map.
-  int min_danger_level = RNG::range(1, std::max<int>(1, (danger_level / 2)));
-  int max_danger_level = danger_level;
+  int min_danger_level = RNG::range(1, std::max<int>(1, (base_danger_level / 2)));
+  int max_danger_level = get_danger_level(map, base_danger_level);
+
+  if (max_danger_level > min_danger_level)
+  {
+    min_danger_level = max_danger_level;
+  }
+
   while (RNG::percent_chance(OUT_OF_DEPTH_CREATURES_CHANCE))
   {
     max_danger_level++;
@@ -107,7 +114,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
       if (MapUtils::is_tile_available_for_creature(generated_creature, tile))
       {
-        add_creature_to_map_and_potentially_notify(game, generated_creature, map, manager, danger_level, creature_row, creature_col, current_creatures_placed, creatures_generated, out_of_depth_msg_added);
+        add_creature_to_map_and_potentially_notify(game, generated_creature, map, manager, base_danger_level, creature_row, creature_col, current_creatures_placed, creatures_generated, out_of_depth_msg_added);
       }
       else
       {
@@ -147,4 +154,48 @@ void MapCreatureGenerator::add_creature_to_map_and_potentially_notify(Game& game
   }
 
   current_creatures_placed++;
+}
+
+// How many creatures should be generated?  Look at both the theoretical maximum,
+// and any multiplier present on the map.
+int MapCreatureGenerator::get_num_creatures(MapPtr map, const int max_creatures)
+{
+  int num_creatures = RNG::range(max_creatures / 2, max_creatures);
+
+  if (map != nullptr)
+  {
+    float multiplier = 1.0f;
+    string mult_s = map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE);
+
+    if (!mult_s.empty())
+    {
+      multiplier = String::to_float(mult_s);
+    }
+
+    num_creatures = static_cast<int>(num_creatures * multiplier);
+  }
+
+  return num_creatures;
+}
+
+// The creature generation rate, if it has been set, also affects the danger level
+// at the same rate.
+int MapCreatureGenerator::get_danger_level(MapPtr map, const int base_danger_level)
+{
+  int danger_level = base_danger_level;
+
+  if (map != nullptr)
+  {
+    float multiplier = 1.0f;
+    string mult_s = map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE);
+
+    if (!mult_s.empty())
+    {
+      multiplier = String::to_float(mult_s);
+    }
+
+    danger_level = static_cast<int>(base_danger_level * multiplier);
+  }
+
+  return danger_level;
 }
