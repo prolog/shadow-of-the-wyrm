@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.4.5 "Bacarisse"
-- Version declared December 1, 2015.
+- Version declared December 1, 2015.  Version finalized January 2, 2016.
 
 - Wearables can now include a speed bonus.  This will be used very, very
   rarely, essentially only for artifacts.
