@@ -67,6 +67,14 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
         }
       }
     }
+    // Self-targetting
+    else if (d == Direction::DIRECTION_NULL)
+    {
+      current_frame.push_back(centre_coord);
+
+      TilePtr tile = map->at(centre_coord);
+      affected_tiles.push_back(tile);
+    }
 
     // Update the frames required for the animation.
     movement_path.push_back(make_pair(dt, current_frame));

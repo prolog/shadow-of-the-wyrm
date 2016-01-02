@@ -290,6 +290,7 @@ class Creature : public ISerializable
 
     void set_spell_knowledge(const SpellKnowledge& new_spell_knowledge);
     SpellKnowledge& get_spell_knowledge_ref();
+    SpellKnowledge get_spell_knowledge() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

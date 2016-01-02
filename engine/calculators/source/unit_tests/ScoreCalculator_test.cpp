@@ -10,12 +10,12 @@ CreaturePtr create_conductless_creature();
 // the various score components.
 CreaturePtr create_conductless_creature() 
 {
-  static_assert(ConductType::CONDUCT_SIZE == ConductType(7), "Unexpected CONDUCT_SIZE");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(8), "Unexpected CONDUCT_SIZE");
 
   CreaturePtr cp = std::make_shared<Creature>();
   Conducts& cond = cp->get_conducts_ref();
 
-  vector<ConductType> conducts = { ConductType::CONDUCT_TYPE_FOODLESS, ConductType::CONDUCT_TYPE_VEGETARIAN, ConductType::CONDUCT_TYPE_AGNOSTIC, ConductType::CONDUCT_TYPE_ILLITERATE, ConductType::CONDUCT_TYPE_WEAPONLESS, ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING, ConductType::CONDUCT_TYPE_QUESTLESS };
+  vector<ConductType> conducts = { ConductType::CONDUCT_TYPE_FOODLESS, ConductType::CONDUCT_TYPE_VEGETARIAN, ConductType::CONDUCT_TYPE_CORPSELESS, ConductType::CONDUCT_TYPE_AGNOSTIC, ConductType::CONDUCT_TYPE_ILLITERATE, ConductType::CONDUCT_TYPE_WEAPONLESS, ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING, ConductType::CONDUCT_TYPE_QUESTLESS };
   for (const ConductType c : conducts)
   {
     cond.break_conduct(c);
@@ -135,7 +135,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, conducts)
 
   ScoreCalculator sc;
 
-  EXPECT_EQ(16 * 100 * 7 + 1600, sc.calculate_score(cp));
+  EXPECT_EQ(16 * 100 * static_cast<int>(ConductType::CONDUCT_SIZE) + 1600, sc.calculate_score(cp));
 }
 
 TEST(SL_Engine_Calculators_ScoreCalculator, total_score)
@@ -171,7 +171,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, total_score)
 
   ScoreCalculator sc;
 
-  int expected_score = (7 * 10 * 100) + ScoreConstants::END_BOSS_BONUS + 58000 + 12345 + 1000 + 1000;
+  int expected_score = (static_cast<int>(ConductType::CONDUCT_SIZE) * 10 * 100) + ScoreConstants::END_BOSS_BONUS + 58000 + 12345 + 1000 + 1000;
 
   EXPECT_EQ(expected_score, sc.calculate_score(cp));
 }

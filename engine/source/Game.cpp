@@ -7,11 +7,12 @@
 #include "CreatureCoordinateCalculator.hpp"
 #include "CreatureFeatures.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "CursesProperties.hpp"
 #include "CustomAreaGenerator.hpp"
 #include "CursesConstants.hpp"
-#include "CursesProperties.hpp"
 #include "DecisionStrategySelector.hpp"
 #include "Detection.hpp"
+#include "ExitGameAction.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "FileConstants.hpp"
@@ -645,6 +646,12 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 
         action_cost = CommandProcessor::process(current_creature, command, display);
 
+        if (current_creature->get_is_player())
+        {
+          // Do a full redraw if we've changed map, or if we've just reloaded the game.
+          update_display(current_creature, current_map, fov_map, reloaded_game);
+        }
+
         // Poor NPCs...they're discriminated against even at the code level!
         advance = action_cost.get_turn_advanced();
         
@@ -654,7 +661,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         {
           int x = 1;
           action_cost.set_cost(50);
-          advance = true; // REMOVE THESE WHEN I GET ENTHUSIASTIC AND WANT TO DEBUG THE WOES...
+          advance = true; // JCD FIXME REMOVE THESE WHEN I GET ENTHUSIASTIC AND WANT TO DEBUG THE WOES...
         }
       }
       
@@ -673,9 +680,23 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
   return action_cost;
 }
 
-void Game::stop_playing()
+void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions)
 {
   keep_playing = false;
+
+  if (show_quit_actions && creature != nullptr && creature->get_is_player())
+  {
+    Game& game = Game::instance();
+
+    if (String::to_bool(game.get_settings_ref().get_setting("prompt_for_character_dump_on_exit")))
+    {
+      // Prompt the player if they want an identified character dump created.
+      IMessageManager& manager = MessageManagerFactory::instance();
+
+      ExitGameAction ega;
+      ega.create_dump_if_necessary(manager, &actions, creature);
+    }
+  }
 }
 
 bool Game::should_keep_playing() const

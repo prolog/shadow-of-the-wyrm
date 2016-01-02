@@ -13,4 +13,5 @@ class NamingScreen : public Screen
 
     std::string creature_synopsis;
     std::string warning_message;
+    std::string default_name;
 };

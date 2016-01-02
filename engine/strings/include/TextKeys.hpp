@@ -18,7 +18,6 @@ class TextKeys
     static const std::string RANDOM_SELECTION;
     static const std::string EXIT;
     static const std::string DEATH_MESSAGE;
-    static const std::string DEFAULT_PLAYER_NAME;
     static const std::string PLAYER_DESC;
     static const std::string YOU;
     static const std::string YOURSELF;
@@ -136,7 +135,8 @@ class TextKeys
     static const std::string DECISION_ATTACK_FRIENDLY_CREATURE;
     static const std::string DECISION_SWITCH_FRIENDLY_CREATURE;
     static const std::string DECISION_SQUEEZE_FRIENDLY_CREATURE;
-    
+    static const std::string DECISION_CREATE_IDENTIFIED_DUMP;
+
     static const std::string GAIN_LEVEL;
     static const std::string UNARMED;
 
@@ -144,6 +144,7 @@ class TextKeys
 
     static const std::string LATEST_MESSAGES;
     static const std::string FRIENDLY;
+    static const std::string DUMPING_CHARACTER_FAILED;
 
   protected:
     TextKeys();

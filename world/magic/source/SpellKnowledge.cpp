@@ -47,6 +47,19 @@ uint SpellKnowledge::count_spells_known() const
   return spells_known;
 }
 
+bool SpellKnowledge::get_knows_spells() const
+{
+  for (const auto& pair : spell_knowledge)
+  {
+    if (pair.second.get_castings() > 0)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 SpellKnowledgeMap SpellKnowledge::get_known_spells() const
 {
   return spell_knowledge;
@@ -60,6 +73,11 @@ void SpellKnowledge::set_most_recently_cast_spell_id(const string& spell_id)
 string SpellKnowledge::get_most_recently_cast_spell_id() const
 {
   return most_recently_cast_spell_id;
+}
+
+SpellKnowledgeMap SpellKnowledge::get_spell_knowledge_map() const
+{
+  return spell_knowledge;
 }
 
 bool SpellKnowledge::serialize(ostream& stream) const

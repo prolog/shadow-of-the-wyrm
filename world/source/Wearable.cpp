@@ -16,7 +16,7 @@ enum struct ImproveWearableType
 };
 
 Wearable::Wearable()
-: evade(0), soak(0), to_hit(0), addl_damage(0)
+: evade(0), soak(0), speed_bonus(0), to_hit(0), addl_damage(0)
 {
 }
 
@@ -64,13 +64,23 @@ int Wearable::get_soak() const
   return soak;
 }
 
+void Wearable::set_speed_bonus(const int new_speed_bonus)
+{
+  speed_bonus = new_speed_bonus;
+}
+
+int Wearable::get_speed_bonus() const
+{
+  return speed_bonus;
+}
+
 string Wearable::get_synopsis() const
 {
   stringstream ss;
 
-  if (to_hit > 0 || addl_damage > 0)
+  if (to_hit > 0 || addl_damage > 0 || speed_bonus > 0)
   {
-    ss << "(" << to_hit << ", " << addl_damage << ") ";
+    ss << "(" << to_hit << ", " << addl_damage << ", " << speed_bonus << ") ";
   }
   
   if (evade > 0 || soak > 0)
@@ -114,6 +124,7 @@ void Wearable::do_improve_item(const int points)
     case ImproveWearableType::IMPROVE_WEARABLE_SOAK:
       set_soak(get_soak() + points);
       break;
+    // We don't consider speed presently, as it's very powerful.
     case ImproveWearableType::IMPROVE_WEARABLE_BOTH:
       set_evade(get_evade() + points);
       set_soak(get_soak() + (points / 2));
@@ -132,6 +143,7 @@ bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i)
   {
     match = match && (evade == i_wear->get_evade());
     match = match && (soak  == i_wear->get_soak() );
+    match = match && (speed_bonus == i_wear->get_speed_bonus());
     match = match && (to_hit == i_wear->get_to_hit());
     match = match && (addl_damage == i_wear->get_addl_damage());
   }
@@ -144,6 +156,7 @@ bool Wearable::serialize(ostream& stream) const
   Item::serialize(stream);
   Serialize::write_int(stream, evade);
   Serialize::write_int(stream, soak);
+  Serialize::write_int(stream, speed_bonus);
   Serialize::write_int(stream, to_hit);
   Serialize::write_int(stream, addl_damage);
 
@@ -155,6 +168,7 @@ bool Wearable::deserialize(istream& stream)
   Item::deserialize(stream);
   Serialize::read_int(stream, evade);
   Serialize::read_int(stream, soak);
+  Serialize::read_int(stream, speed_bonus);
   Serialize::read_int(stream, to_hit);
   Serialize::read_int(stream, addl_damage);
 

@@ -43,6 +43,7 @@ int add_spell_castings(lua_State* ls);
 int gain_experience(lua_State* ls);
 int add_creature_to_map(lua_State* ls);
 int add_status_to_creature(lua_State* ls);
+int add_status_to_creature_at(lua_State* ls);
 int stop_playing_game(lua_State* ls);
 int set_creature_base_damage(lua_State* ls);
 int set_creature_speed(lua_State* ls);
@@ -95,6 +96,7 @@ int calendar_add_days(lua_State* ls);
 int calendar_add_years(lua_State* ls);
 int add_kill_to_creature_mortuary(lua_State* ls);
 int report_coords(lua_State* ls);
+int cast_spell(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

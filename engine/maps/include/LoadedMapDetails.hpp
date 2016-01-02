@@ -20,6 +20,8 @@ class LoadedMapDetails : public ISerializable
 
     void update_season(const Season& new_season);
 
+    void update_spell_cast(const bool new_spell_cast);
+
     // Synchronize the previous and current values
     void synch();
 
@@ -47,6 +49,8 @@ class LoadedMapDetails : public ISerializable
 
     Season prev_season;
     Season cur_season;
+
+    bool spell_cast;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

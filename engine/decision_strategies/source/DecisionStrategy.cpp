@@ -31,6 +31,8 @@ bool DecisionStrategy::operator==(const DecisionStrategy& ds) const
     result = result && (*controller == *ds.controller);
   }
 
+  result = result && (properties == ds.properties);
+
   return result;
 }
 
@@ -62,6 +64,39 @@ ControllerPtr DecisionStrategy::get_controller()
   return controller;
 }
 
+void DecisionStrategy::set_property(const string& prop, const string& value)
+{
+  properties[prop] = value;
+}
+
+string DecisionStrategy::get_property(const string& prop) const
+{
+  string prop_val;
+  auto p_it = properties.find(prop);
+
+  if (p_it != properties.end())
+  {
+    prop_val = p_it->second;
+  }
+
+  return prop_val;
+}
+
+void DecisionStrategy::set_properties(const map<string, string>& new_properties)
+{
+  properties = new_properties;
+}
+
+map<string, string>& DecisionStrategy::get_properties_ref()
+{
+  return properties;
+}
+
+map<string, string> DecisionStrategy::get_properties() const
+{
+  return properties;
+}
+
 bool DecisionStrategy::can_move() const
 {
   return true;
@@ -70,6 +105,7 @@ bool DecisionStrategy::can_move() const
 bool DecisionStrategy::serialize(ostream& stream) const
 {
   threat_ratings.serialize(stream);
+  Serialize::write_string_map(stream, properties);
 
   if (controller)
   {
@@ -87,6 +123,7 @@ bool DecisionStrategy::serialize(ostream& stream) const
 bool DecisionStrategy::deserialize(istream& stream)
 {
   threat_ratings.deserialize(stream);
+  Serialize::read_string_map(stream, properties);
 
   ClassIdentifier cl_id = ClassIdentifier::CLASS_ID_NULL;
   Serialize::read_class_id(stream, cl_id);

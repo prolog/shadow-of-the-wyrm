@@ -10,7 +10,8 @@ colour(Colour::COLOUR_WHITE),
   range(0), 
   has_damage(false),
   allows_bonus(true),
-  effect(EffectType::EFFECT_TYPE_NULL)
+  effect(EffectType::EFFECT_TYPE_NULL),
+  magic_classification(MagicClassification::MAGIC_CLASSIFICATION_UNDEFINED)
 {
 }
 
@@ -34,6 +35,7 @@ bool Spell::operator==(const Spell& spell) const
   result = result && (effect == spell.effect);
   result = result && (modifier == spell.modifier);
   result = result && (properties == spell.properties);
+  result = result && (magic_classification == spell.magic_classification);
 
   return result;
 }
@@ -86,6 +88,16 @@ void Spell::set_magic_category(const SkillType new_magic_category)
 SkillType Spell::get_magic_category() const
 {
   return magic_category;
+}
+
+void Spell::set_magic_classification(const MagicClassification new_classification)
+{
+  magic_classification = new_classification;
+}
+
+MagicClassification Spell::get_magic_classification() const
+{
+  return magic_classification;
 }
 
 void Spell::set_colour(const Colour new_colour)

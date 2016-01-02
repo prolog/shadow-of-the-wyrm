@@ -39,6 +39,7 @@ FIELD_SPACE(2),
 MSG_BUFFER_LAST_Y(0), 
 MSG_BUFFER_LAST_X(0), 
 can_use_colour(false),
+mono_colour(Colour::COLOUR_UNDEFINED),
 cursor_mode(1) /* normal visibility */
 {
 }
@@ -161,16 +162,42 @@ void CursesDisplay::enable_colour(const int selected_colour, WINDOW* window)
 {
   if (uses_colour())
   {
-    if ((selected_colour % CURSES_NUM_TOTAL_COLOURS) > static_cast<int>(Colour::COLOUR_WHITE))
+    set_colour(selected_colour, window);
+  }
+  else
+  {
+    // Do we need to set the "monochrome" display to a particular colour?
+    // Dark red, like my thirteen-year-old-self's old QBASIC games?
+    // Bright green, like an old Apple ][?
+    if (mono_colour == Colour::COLOUR_UNDEFINED)
     {
-      int actual_colour = selected_colour - static_cast<int>(Colour::COLOUR_BOLD_BLACK);
-      wattron(window, COLOR_PAIR(actual_colour+1));
-      wattron(window, A_BOLD);
-      return;
+      // Set up the monochrome colour on initial use from the properties
+      // set by the game.
+      auto m_it = display_properties.find(DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR);
+
+      if (m_it != display_properties.end())
+      {
+        int mono_i = String::to_int(m_it->second);
+        mono_colour = static_cast<Colour>(mono_i);
+      }
     }
 
-    wattron(window, COLOR_PAIR(selected_colour+1));
+    set_colour(static_cast<int>(mono_colour), window);
   }
+}
+
+// Set the display colour without actually checking for monochrome.
+void CursesDisplay::set_colour(const int selected_colour, WINDOW* window)
+{
+  if ((selected_colour % CURSES_NUM_TOTAL_COLOURS) > static_cast<int>(Colour::COLOUR_WHITE))
+  {
+    int actual_colour = selected_colour - static_cast<int>(Colour::COLOUR_BOLD_BLACK);
+    wattron(window, COLOR_PAIR(actual_colour + 1));
+    wattron(window, A_BOLD);
+    return;
+  }
+
+  wattron(window, COLOR_PAIR(selected_colour + 1));
 }
 
 // Turn off colour using attroff.
@@ -459,6 +486,7 @@ void CursesDisplay::draw(const DisplayMap& current_map, const CursorSettings cs)
   curs_set(get_cursor_mode(cs));
   move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
+  refresh();
 }
 
 // Refreshes the contents of the current window.
@@ -627,7 +655,7 @@ string CursesDisplay::display_screen(const Screen& current_screen)
     {
       TextComponentPtr tc = dynamic_pointer_cast<TextComponent>(component);
 
-      if (tc != NULL)
+      if (tc != nullptr)
       {
         display_text_component(screen_window, &current_row, &current_col, tc, line_incr);
       }
@@ -635,7 +663,7 @@ string CursesDisplay::display_screen(const Screen& current_screen)
       {
         OptionsComponentPtr oc = dynamic_pointer_cast<OptionsComponent>(component);
 
-        if (oc != NULL)
+        if (oc != nullptr)
         {
           // Process the options...
           display_options_component(screen_window, &current_row, &current_col, oc);
@@ -919,6 +947,9 @@ bool CursesDisplay::update_synopsis_row_and_column(const unsigned int initial_ro
 
 void CursesDisplay::display_header(const string& header_text, WINDOW* window, const int display_line)
 {
+  int white = static_cast<int>(Colour::COLOUR_WHITE);
+  enable_colour(white, window);
+
   string header = header_text;
   boost::replace_all(header, "%", "%%");
 
@@ -938,6 +969,8 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
   {
     mvwprintw(window, display_line, i, "-");
   }
+
+  disable_colour(white, window);
 }
 
 WINDOW* CursesDisplay::get_current_screen()

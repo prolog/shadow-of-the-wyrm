@@ -22,6 +22,9 @@ class Wearable : public Item
     void set_soak(const int new_soak);
     int get_soak() const;
 
+    void set_speed_bonus(const int new_speed_bonus);
+    int get_speed_bonus() const;
+
     std::string get_synopsis() const override;
     
     virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) override;
@@ -34,7 +37,7 @@ class Wearable : public Item
     virtual void do_smith_item(const int smith_points) override;
     virtual void do_improve_item(const int points);
 
-    int evade, soak, to_hit, addl_damage;
+    int evade, soak, speed_bonus, to_hit, addl_damage;
 };
 
 using WearablePtr = std::shared_ptr<Wearable>;

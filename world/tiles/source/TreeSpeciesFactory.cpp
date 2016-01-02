@@ -2,7 +2,7 @@
 
 TreeSpecies TreeSpeciesFactory::create_tree_species(const TreeSpeciesID species_id)
 {
-  static_assert(TreeSpeciesID::TREE_SPECIES_LAST == TreeSpeciesID(30), "Unrecognized TREE_SPECIES_ID_LAST");
+  static_assert(TreeSpeciesID::TREE_SPECIES_LAST == TreeSpeciesID(39), "Unrecognized TREE_SPECIES_ID_LAST");
 
   TreeSpecies ts;
 
@@ -26,6 +26,7 @@ TreeSpecies TreeSpeciesFactory::create_tree_species(const TreeSpeciesID species_
     case TreeSpeciesID::TREE_SPECIES_PEACH:
     case TreeSpeciesID::TREE_SPECIES_PLUM:
     case TreeSpeciesID::TREE_SPECIES_PEAR:
+    case TreeSpeciesID::TREE_SPECIES_OLIVE:
       tt = TileType::TILE_TYPE_FRUIT_TREE;
       break;
     case TreeSpeciesID::TREE_SPECIES_CEDAR:
@@ -45,6 +46,14 @@ TreeSpecies TreeSpeciesFactory::create_tree_species(const TreeSpeciesID species_
     case TreeSpeciesID::TREE_SPECIES_WEED10:
     case TreeSpeciesID::TREE_SPECIES_WEED11:
     case TreeSpeciesID::TREE_SPECIES_WEED12:
+    case TreeSpeciesID::TREE_SPECIES_WEED13:
+    case TreeSpeciesID::TREE_SPECIES_WEED14:
+    case TreeSpeciesID::TREE_SPECIES_WEED15:
+    case TreeSpeciesID::TREE_SPECIES_WEED16:
+    case TreeSpeciesID::TREE_SPECIES_WEED17:
+    case TreeSpeciesID::TREE_SPECIES_WEED18:
+    case TreeSpeciesID::TREE_SPECIES_WEED19:
+    case TreeSpeciesID::TREE_SPECIES_WEED20:
       tt = TileType::TILE_TYPE_WEEDS;
       break;
     default:

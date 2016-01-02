@@ -79,6 +79,10 @@ class CursesDisplay : public Display
     void enable_colour(const int colour, WINDOW* window);
     void disable_colour(const int colour, WINDOW* window);
 
+    // Set colour sets the colour without checking to see if we're in
+    // monochrome mode or not.
+    void set_colour(const int colour, WINDOW* window);
+
     // Clear the message buffer.
     int clear_message_buffer();
 
@@ -114,5 +118,6 @@ class CursesDisplay : public Display
     // Used to process the prompt
     CursesPromptProcessor prompt_processor;
     bool can_use_colour;
+    Colour mono_colour;
     const int cursor_mode;
 };

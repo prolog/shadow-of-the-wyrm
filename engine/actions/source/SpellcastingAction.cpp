@@ -20,10 +20,6 @@
 
 using namespace std;
 
-SpellcastingAction::SpellcastingAction()
-{
-}
-
 ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
 {
   ActionCostValue action_cost_value = 0;
@@ -74,6 +70,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
     game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
     game.get_display()->redraw();
 
+    // Indicate that a full redraw is needed.
+    game.get_loaded_map_details_ref().update_spell_cast(true);
+
     action_cost_value = cast_spell(creature, spell_id);
   }
 
@@ -106,81 +105,100 @@ pair<string, ActionCostValue> SpellcastingAction::cast_spell_on_valid_map_type(C
 }
 
 // Cast a particular spell by a particular creature.
-ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const string& spell_id) const
+ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const string& spell_id, const Direction preselected_direction) const
 {
   ActionCostValue action_cost_value = 0;
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  CurrentCreatureAbilities cca;
 
-  if (creature)
+  if (creature && cca.can_speak(creature))
   {
     Game& game = Game::instance();
-    Spell spell = game.get_spells_ref().find(spell_id)->second;
-    MagicalAbilityChecker mac;
+    const SpellMap& spells = game.get_spells_ref();
+    auto s_it = spells.find(spell_id);
+    Spell spell;
 
-    // Check to see if the creature has the AP for the spell.
-    if (mac.has_sufficient_power(creature, spell))
+    if (s_it != spells.end())
     {
-      action_cost_value = spell.get_speed();
+      spell = s_it->second;
 
-      MapPtr current_map = game.get_current_map();
-      Coordinate caster_coord = current_map->get_location(creature->get_id());
+      MagicalAbilityChecker mac;
 
-      // Reduce the creature's AP by the spell cost.
-      reduce_caster_ap_by_spell_cost(creature, spell);
-
-      // A check to see if spellcasting succeeded.  If the spell is directional
-      // and a proper direction isn't selected, this will cause the magic 
-      // to fail.
-      bool spellcasting_succeeded = true;
-      Direction spell_direction = Direction::DIRECTION_NORTH;
-
-      // Is a direction needed?
-      if (spell.get_shape().get_direction_category() != DirectionCategory::DIRECTION_CATEGORY_NONE)
+      // Check to see if the creature has the AP for the spell.
+      if (mac.has_sufficient_power(creature, spell))
       {
-        pair<bool, Direction> direction_pair = get_spell_direction_from_creature(creature, spell, spell_direction);
-        spellcasting_succeeded = direction_pair.first; // Can the input be converted to a dir?
-        spell_direction = direction_pair.second; // The actual direction, or the initial value if action conversion didn't work.
-      }
+        action_cost_value = spell.get_speed();
 
-      if (spellcasting_succeeded == false)
-      {
-        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-        manager.add_new_message(ActionTextKeys::get_spellcasting_cancelled_message(creature->get_description_sid(), creature->get_is_player()));
+        MapPtr current_map = game.get_current_map();
+        Coordinate caster_coord = current_map->get_location(creature->get_id());
+
+        // Reduce the creature's AP by the spell cost.
+        reduce_caster_ap_by_spell_cost(creature, spell);
+
+        // A check to see if spellcasting succeeded.  If the spell is directional
+        // and a proper direction isn't selected, this will cause the magic 
+        // to fail.
+        bool spellcasting_succeeded = true;
+        Direction spell_direction = Direction::DIRECTION_NORTH;
+
+        // Is a direction needed?
+        if (spell.get_shape().get_direction_category() != DirectionCategory::DIRECTION_CATEGORY_NONE)
+        {
+          if (preselected_direction != Direction::DIRECTION_NULL)
+          {
+            spell_direction = preselected_direction;
+          }
+          else
+          {
+            pair<bool, Direction> direction_pair = get_spell_direction_from_creature(creature, spell, spell_direction);
+            spellcasting_succeeded = direction_pair.first; // Can the input be converted to a dir?
+            spell_direction = direction_pair.second; // The actual direction, or the initial value if action conversion didn't work.
+          }
+        }
+
+        if (spellcasting_succeeded == false)
+        {
+          IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+          manager.add_new_message(ActionTextKeys::get_spellcasting_cancelled_message(creature->get_description_sid(), creature->get_is_player()));
+        }
+        else
+        {
+          // Add an appropriate casting message.
+          string cast_message = ActionTextKeys::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
+          manager.add_new_message(cast_message);
+
+          // Reduce castings by one, removing the spell if there are none left.
+          reduce_castings_or_remove_spell(creature, spell);
+
+          // Mark the spell as the most recently cast.
+          creature->get_spell_knowledge_ref().set_most_recently_cast_spell_id(spell.get_spell_id());
+
+          // Process the spell shape.
+          SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
+
+          if (spell_processor)
+          {
+            SpellcastingProcessor sp;
+
+            // Spells always use the "uncursed" effect status.
+            sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
+
+            // Indicate that a full redraw is needed.
+            game.get_loaded_map_details_ref().update_spell_cast(true);
+          }
+
+          // Now that the spell has been cast, update the spell bonus information
+          update_spell_bonus(creature, spell);
+        }
+
+        // Send the cast message and any messages generating by hitting other
+        // creatures, etc.
+        manager.send();
       }
       else
       {
-        // Add an appropriate casting message.
-        string cast_message = ActionTextKeys::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
-        manager.add_new_message(cast_message);
-
-        // Reduce castings by one, removing the spell if there are none left.
-        reduce_castings_or_remove_spell(creature, spell);
-
-        // Mark the spell as the most recently cast.
-        creature->get_spell_knowledge_ref().set_most_recently_cast_spell_id(spell.get_spell_id());
-
-        // Process the spell shape.
-        SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
-      
-        if (spell_processor)
-        {
-          SpellcastingProcessor sp;
-
-          // Spells always use the "uncursed" effect status.
-          sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
-        }
-
-        // Now that the spell has been cast, update the spell bonus information
-        update_spell_bonus(creature, spell);
+        add_insufficient_power_message(creature);
       }
-
-      // Send the cast message and any messages generating by hitting other
-      // creatures, etc.
-      manager.send();
-    }
-    else
-    {
-      add_insufficient_power_message(creature);
     }
   }
 
@@ -234,10 +252,13 @@ void SpellcastingAction::add_invalid_spellcasting_location_message(CreaturePtr c
 // Add a message about not having enough AP.
 void SpellcastingAction::add_insufficient_power_message(CreaturePtr creature) const
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MessageManagerFactory::instance();
 
-  manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_INSUFFICIENT_POWER));
-  manager.send();
+  if (creature && creature->get_is_player())
+  {
+    manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_INSUFFICIENT_POWER));
+    manager.send();
+  }
 }
 
 ActionCostValue SpellcastingAction::get_action_cost_value(CreaturePtr creature) const

@@ -41,6 +41,20 @@ TEST(SL_World_Magic_SpellKnowledge, saveload)
   EXPECT_TRUE(sk == sk2);
 }
 
+TEST(SL_World_Magic_SpellKnowledge, get_knows_spells)
+{
+  SpellKnowledge sk;
+
+  IndividualSpellKnowledge isk;
+  isk.set_castings(2);
+
+  EXPECT_FALSE(sk.get_knows_spells());
+
+  sk.set_spell_knowledge("quuux", isk);
+
+  EXPECT_TRUE(sk.get_knows_spells());
+}
+
 TEST(SL_World_Magic_SpellKnowledge, count_spells_known)
 {
   SpellKnowledge sk;

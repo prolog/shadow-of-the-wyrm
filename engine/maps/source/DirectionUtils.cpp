@@ -1,5 +1,7 @@
 #include "DirectionUtils.hpp"
 
+using namespace std;
+
 DirectionUtils::DirectionUtils()
 {
 }
@@ -100,23 +102,43 @@ Direction DirectionUtils::get_opposite_direction(const Direction d)
   return o;
 }
 
-bool DirectionUtils::direction_matches_category(const Direction d, const DirectionCategory cd)
+bool DirectionUtils::direction_matches_category(const Direction d, const DirectionCategory dc)
 {
   bool matches = false;
 
-  switch (cd)
+  switch (dc)
   {
     case DirectionCategory::DIRECTION_CATEGORY_CARDINAL:
-      matches = DirectionUtils::is_cardinal(d);
+      matches = DirectionUtils::is_cardinal(d) || d == Direction::DIRECTION_NULL;
       break;
     case DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL:
-      matches = (DirectionUtils::is_ordinal(d) || DirectionUtils::is_cardinal(d));
+      matches = (DirectionUtils::is_ordinal(d) || DirectionUtils::is_cardinal(d)) || d == Direction::DIRECTION_NULL;
       break;
     case DirectionCategory::DIRECTION_CATEGORY_NONE:
       break;
   }
 
   return matches;
+}
+
+set<Direction> DirectionUtils::get_all_directions_for_category(DirectionCategory dc)
+{
+  set<Direction> directions;
+
+  switch (dc)
+  {
+    case DirectionCategory::DIRECTION_CATEGORY_CARDINAL:
+      directions = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST};
+      break;
+    case DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL:
+      directions = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST, Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_NORTH_WEST, Direction::DIRECTION_SOUTH_EAST, Direction::DIRECTION_SOUTH_WEST};
+      break;
+    case DirectionCategory::DIRECTION_CATEGORY_NONE:
+      directions.insert(Direction::DIRECTION_NULL);
+      break;
+  }
+
+  return directions;
 }
 
 #ifdef UNIT_TESTS

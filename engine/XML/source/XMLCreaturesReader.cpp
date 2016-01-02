@@ -1,10 +1,12 @@
 #include <vector>
 #include "CombatConstants.hpp"
+#include "Conversion.hpp"
 #include "CreatureGenerationValues.hpp"
 #include "CreatureProperties.hpp"
+#include "DecisionStrategyFactory.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "XMLCreaturesReader.hpp"
 #include "XMLScriptsReader.hpp"
-#include "DecisionStrategyFactory.hpp"
 
 using namespace std;
 
@@ -90,9 +92,12 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // A decision strategy for the creature, which provides a set of actions (move, attack, and so on)
     // as appropriate.  ImmobileDecisionStrategy, for example, disallows movement, and is used for
     // immobile creatures (such as slimes, etc.)
-    string decision_strategy_id = XMLUtils::get_child_node_value(creature_node, "DecisionStrategy");
-    DecisionStrategyPtr decision_strategy = DecisionStrategyFactory::create_decision_strategy(decision_strategy_id);
-    creature->set_decision_strategy(decision_strategy);
+    XMLNode decision_strategy_node = XMLUtils::get_next_element_by_local_name(creature_node, "DecisionStrategy");
+
+    if (!decision_strategy_node.is_null())
+    {
+      parse_decision_strategy(decision_strategy_node, creature);
+    }
     
     XMLNode text_node = XMLUtils::get_next_element_by_local_name(creature_node, "Text");
     if (!text_node.is_null())
@@ -132,6 +137,12 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
       creature->set_additional_properties_map(addl_props);
     }
 
+    // Spells
+    XMLNode spells_node = XMLUtils::get_next_element_by_local_name(creature_node, "Spells");
+    if (!spells_node.is_null())
+    {
+      parse_spells(spells_node, creature);
+    }
     
     // Set the creature's base damage - this is the damage dealt if a weapon is not used.
     // If a weapon is to be used (for humanoid-types), consider leaving this empty in the
@@ -287,5 +298,42 @@ void XMLCreaturesReader::parse_event_scripts(const XMLNode& event_scripts_node, 
       ScriptDetails sd = xsr.get_script_details(node);
       creature->add_event_script(details.second, sd);
     }
+  }
+}
+
+// Read in any spells the creature has
+void XMLCreaturesReader::parse_spells(const XMLNode& spells_node, CreaturePtr creature)
+{
+  if (!spells_node.is_null())
+  {
+    vector<XMLNode> spell_nodes = XMLUtils::get_elements_by_local_name(spells_node, "Spell");
+    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+
+    for (const XMLNode& spell_node : spell_nodes)
+    {
+      string spell_id = XMLUtils::get_child_node_value(spell_node, "SpellID");
+      int castings = XMLUtils::get_child_node_int_value(spell_node, "Castings");
+      int bonus = XMLUtils::get_child_node_int_value(spell_node, "Bonus");
+
+      IndividualSpellKnowledge isk;
+      isk.set_castings(castings);
+      isk.set_bonus(bonus);
+
+      sk.set_spell_knowledge(spell_id, isk);
+    }
+  }
+}
+
+void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strategy_node, CreaturePtr creature)
+{
+  if (!decision_strategy_node.is_null())
+  {
+    string decision_strategy_id = XMLUtils::get_child_node_value(decision_strategy_node, "Strategy");
+    DecisionStrategyPtr decision_strategy = DecisionStrategyFactory::create_decision_strategy(decision_strategy_id);
+
+    bool suppress_magic = XMLUtils::get_child_node_bool_value(decision_strategy_node, "SuppressMagic");
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SUPPRESS_MAGIC, Bool::to_string(suppress_magic));
+
+    creature->set_decision_strategy(decision_strategy);
   }
 }

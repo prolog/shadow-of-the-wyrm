@@ -1,4 +1,5 @@
 #include "Conversion.hpp"
+#include "CursesConstants.hpp"
 #include "EquipmentCommandKeys.hpp"
 #include "EquipmentKeyboardCommandMap.hpp"
 
@@ -24,6 +25,9 @@ void EquipmentKeyboardCommandMap::command_not_found(const string& keyboard_input
 void EquipmentKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
   command_mapping.clear();
+  string esc_str;
+  esc_str = NC_ESCAPE_KEY;
+
   command_mapping = KeyboardCommandMappingMap{ {"a", EquipmentCommandKeys::WEAR_OR_REMOVE_HEAD},
                         {"A", EquipmentCommandKeys::WEAR_OR_REMOVE_HEAD},
                         {"b", EquipmentCommandKeys::WEAR_OR_REMOVE_NECK},
@@ -49,7 +53,9 @@ void EquipmentKeyboardCommandMap::initialize_command_mapping(const Settings& set
                         {"y", EquipmentCommandKeys::YOUR_ITEMS},
                         {"Y", EquipmentCommandKeys::YOUR_ITEMS},
                         {"z", EquipmentCommandKeys::EXIT_EQUIPMENT},
-                        {"Z", EquipmentCommandKeys::EXIT_EQUIPMENT}};
+                        {"Z", EquipmentCommandKeys::EXIT_EQUIPMENT},
+                        {esc_str, EquipmentCommandKeys::EXIT_EQUIPMENT}
+                        };
 }
 
 string EquipmentKeyboardCommandMap::get_settings_prefix() const

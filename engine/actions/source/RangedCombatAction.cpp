@@ -249,6 +249,15 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
       QuaffAction qa;
       qa.explode_potion(creature, target_creature, potion);
 
+      // Quaff action reduces the number of potions as part of the quaff step.
+      // If we're now down to 0, we should remove the potion from the
+      // attacker's inventory.
+      if (potion->get_quantity() == 0)
+      {
+        ItemManager im;
+        im.remove(creature, EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION, false);
+      }
+
       // Potion shatters, creature is covered in it.
       ammo_auto_destroy = true;
     }

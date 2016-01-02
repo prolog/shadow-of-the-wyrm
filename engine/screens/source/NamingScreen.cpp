@@ -4,7 +4,7 @@
 
 using namespace std;
 
-NamingScreen::NamingScreen(DisplayPtr new_display, const string& synop, const string& warning) 
+NamingScreen::NamingScreen(DisplayPtr new_display, const string& synop, const string& warning)
 : Screen(new_display), creature_synopsis(synop), warning_message(warning)
 {
   initialize();

@@ -25,7 +25,7 @@ int CursesKeyboardController::get_char_as_int()
   int character;
   WINDOW* cur_win;
 
-  if (cdisplay && ((cur_win = cdisplay->get_current_screen()) != NULL))
+  if (cdisplay && ((cur_win = cdisplay->get_current_screen()) != nullptr))
   {
     character = wgetch(cur_win);
   }

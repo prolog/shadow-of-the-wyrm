@@ -85,7 +85,7 @@ class Game : public ISerializable
 
     void create_new_world(CreaturePtr creature);
     void go(); // main game loop
-    void stop_playing(); // end the game
+    void stop_playing(CreaturePtr creature, const bool show_quit_actions); // end the game
     bool should_keep_playing() const; // Check to see if the "game over" flag's been set.
     void set_check_scores(const bool new_check_scores);
     bool should_check_scores() const;

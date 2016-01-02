@@ -42,8 +42,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // 20th century composer best known for "Koyunbaba"
-  return "\"Domeniconi\"";
+  // Spanish composer of the 20th century - perhaps best known for his
+  // concertino for guitar and orchestra.
+  return "\"Bacarisse\"";
 }
 
 string Metadata::get_game_version_synopsis() const

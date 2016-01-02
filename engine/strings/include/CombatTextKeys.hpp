@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
+#include <vector>
 #include "Damage.hpp"
 
 // Contains player and non-player versions of all combat strings.
@@ -13,7 +14,7 @@ class CombatTextKeys
     static std::string get_miss_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& missed_target);
     static std::string get_critical_hit_message();
     static std::string get_mighty_blow_message();
-    static std::string get_hit_message(const bool attacker_is_player, const bool attacked_is_player, const DamageType damage_type, const std::string& attacker, const std::string& hit_target);
+    static std::string get_hit_message(const bool attacker_is_player, const bool attacked_is_player, const DamageType damage_type, const std::string& attacker, const std::string& hit_target, const bool use_multiple_damage_type_msgs);
     static std::string get_monster_killed_message(const std::string& monster_name);
     static std::string get_monster_dies_message(const std::string& monster_name);
     static std::string get_no_damage_message(const bool target_is_player, const std::string& target);
@@ -50,31 +51,9 @@ class CombatTextKeys
     static const std::string COMBAT_PIERCE_MESSAGE_NP;
     static const std::string COMBAT_INCORPOREAL_MESSAGE;
     static const std::string COMBAT_INCORPOREAL_MESSAGE_NP;
-    static const std::string COMBAT_HIT_SLASH;
-    static const std::string COMBAT_HIT_SLASH_NP;
-    static const std::string COMBAT_HIT_POUND;
-    static const std::string COMBAT_HIT_POUND_NP;
-    static const std::string COMBAT_HIT_PIERCE;
-    static const std::string COMBAT_HIT_PIERCE_NP;
-    static const std::string COMBAT_HIT_HEAT;
-    static const std::string COMBAT_HIT_HEAT_NP;
-    static const std::string COMBAT_HIT_COLD;
-    static const std::string COMBAT_HIT_COLD_NP;
-    static const std::string COMBAT_HIT_ACID;
-    static const std::string COMBAT_HIT_ACID_NP;
-    static const std::string COMBAT_HIT_POISON;
-    static const std::string COMBAT_HIT_POISON_NP;
-    static const std::string COMBAT_HIT_HOLY;
-    static const std::string COMBAT_HIT_HOLY_NP;
-    static const std::string COMBAT_HIT_SHADOW;
-    static const std::string COMBAT_HIT_SHADOW_NP;
-    static const std::string COMBAT_HIT_ARCANE;
-    static const std::string COMBAT_HIT_ARCANE_NP;
-    static const std::string COMBAT_HIT_LIGHTNING;
-    static const std::string COMBAT_HIT_LIGHTNING_NP;
     
     static void populate_combat_messages();
     static std::string create_key(const bool is_player, const DamageType damage_type);
-    static std::map<std::string, std::string> combat_damage_hit_messages;
+    static std::map<std::string, std::vector<std::string>> combat_damage_hit_messages;
 };
 

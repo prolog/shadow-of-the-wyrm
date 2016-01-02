@@ -1,4 +1,5 @@
 #include "Consumable.hpp"
+#include "ConsumableConstants.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -24,6 +25,22 @@ bool Consumable::operator==(const Consumable& consumable) const
   result = result && (poisoned == consumable.poisoned);
 
   return result;
+}
+
+bool Consumable::is_corpse() const
+{
+  bool corpse = false;
+
+  auto c_it_desc = additional_properties.find(ConsumableConstants::CORPSE_DESCRIPTION_SID);
+  auto c_it_rid = additional_properties.find(ConsumableConstants::CORPSE_RACE_ID);
+  auto c_it_short = additional_properties.find(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID);
+
+  if (c_it_desc != additional_properties.end() || c_it_rid != additional_properties.end() || c_it_short != additional_properties.end())
+  {
+    corpse = true;
+  }
+
+  return corpse;
 }
 
 void Consumable::set_food_type(const FoodType new_food_type)

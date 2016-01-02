@@ -12,7 +12,7 @@ class DeathManager
     virtual void die() const = 0;
     
   protected:
-    void run_death_event(CreaturePtr dead_creature, MapPtr map) const;
+    void run_death_event(CreaturePtr dead_creature, CreaturePtr attacking_creature, MapPtr map) const;
 
     CreaturePtr attacking_creature;
     CreaturePtr dead_creature;
