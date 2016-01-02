@@ -21,14 +21,6 @@ MapRegistry::~MapRegistry()
 bool MapRegistry::set_map(const string& map_id, const MapPtr& map)
 {
   bool inserted = (map_registry.insert(make_pair(map_id, map))).second;
-
-  if (!inserted)
-  {
-    ostringstream ss;
-    ss << "Could not insert map with id " << map_id << " - a map with this key already exists in the MapRegistry!";
-    Log::instance().error(ss.str());
-  }
-
   return inserted;
 }
 

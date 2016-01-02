@@ -5,7 +5,7 @@ using namespace std;
 
 Conducts::Conducts()
 {
-  cond = array<bool, 7>{{ true, true, true, true, true, true, true }};
+  std::fill(cond.begin(), cond.end(), true);
 }
 
 bool Conducts::operator==(const Conducts& c) const
@@ -30,7 +30,7 @@ void Conducts::break_conduct(const ConductType ct)
 
 bool Conducts::serialize(ostream& stream) const
 {
-  static_assert(ConductType::CONDUCT_SIZE == ConductType(7), "Unexpected number of conducts");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(8), "Unexpected number of conducts");
 
   for (const bool conduct : cond)
   {

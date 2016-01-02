@@ -1,3 +1,145 @@
+Shadow of the Wyrm v0.4.5 "Bacarisse"
+- Version declared December 1, 2015.  Version finalized January 2, 2016.
+
+- Wearables can now include a speed bonus.  This will be used very, very
+  rarely, essentially only for artifacts.
+
+- Updated the creature speed calculation to also include speed bonuses on
+  worn equipment.
+
+- Random name generation on an empty name on the naming screen (Lagi).
+
+- '=' can be used in the same way as '+' when using the keys to toggle
+  target selection (Lagi).
+
+- Various minor refactorings and cleanups.
+
+- New settings: default_name (can be used to set a default name, or leave
+  empty or as "*" to do random name generation).
+
+- ESC can now be used to exit tile selection, equipment, magic and 
+  inventory screens.  This should include all uses of those screens:
+  the readables screen when reading, wands when evoking, and so on (akeley
+  and Lagi).
+
+- Created a batch file to run the game plus procdump to try to track down
+  a particular crash bug.
+
+- Known spells, number of castings, and spell bonuses can now be specified
+  per creature in the configuration XML.
+
+- Refactored the death script code to be table-based and more general,
+  like the attack scripts.  Updated Amaurosis' death script, and created a
+  currently-empty script for gas clouds.
+
+- Gas clouds "explode" on death, by casting wreath of fire.
+
+- The monochrome colour is now an ini setting.
+
+- New food-related conduct type: corpseless.
+
+- Olive trees may now be generated in the same way as other fruit trees.
+
+- Eight new species of weeds.
+
+- Fruit trees now typically generate more than a single piece of fruit.
+
+- Wands that take a direction (flame, teleport, etc) cam now be used
+  by the player against his or her own character by selecting the null
+  direction (by default, '5').  Ranged spells are reduced to range 1 when
+  made self-targetting.
+
+- Kew now dispenses useful advice on a variety of topics after you 
+  complete his quests.
+
+- Each damage type now has an additional damage message that can be
+  selected.  The use of multiple messages for damage is controlled by an
+  ini setting.
+
+- There are a few new real-world dates tracked by the game: summer and
+  winter solstice, spring and fall equinox.
+
+- The map is now updated (either partially or fully) after each creature's
+  action.  With NPC spellcasting, having the screen update after the
+  player's action only was causing issues with bits of the screen not
+  being redrawn correctly after spell animations.
+
+- After dying or quitting, the player is now asked if they want an
+  identified character dump.
+
+- Character dumping code now respects existing files.  If it tries to
+  dump to a named file that exists, the game will retry, adding a time
+  stamp.  If that also fails (typically because the user tries to dump
+  several times a second), an error message is displayed.
+
+- Added decision (AI) code for NPCs regarding spellcasting, separating out
+  attack, healing, buff, and utility spells.  NPCs have a base chance to
+  cast spells every turn, with decisions being made based on their
+  health, whether there are threats in range of attack spells, and so on.
+
+- Flame Dart is now range 2 instead of 1, as is Shadow Flame.
+
+- New effect type, Cleansing, which sets a regeneration multiplier on
+  the map that affects creature generation.
+
+- Rejigged the structure of the DecisionStrategy node in the game
+  configuration to include both the strategy as well as a "suppress magic"
+  flag, which is set for gas clouds and which prevents the selection of
+  spellcasting actions during decision strategy execution.
+
+- New spellcasters: gas cloud (wreath of fire), apprentice (flame dart),
+  acolyte (minor healing), ogre magus (shockwave, minor healing, nether
+  bolt), thaumaturge (minor healing, radiant beam), sorceror (flame
+  dart, force bolt), lichling (frost bolt), Brimman (ice storm, frost 
+  bolt), Gilirien (wreath of fire, lightning bolt), spectral wizard
+  (cross of flame, fireball), high wizard (minor healing, lightning bolt,
+  maelstrom), deep wizard (chaos aura, nightfire), Bagra (nether bolt,
+  nightfire, veil of shadows), black priest (shadow flame, curse of
+  shadows, nether bolt), witch king (curse of shadows, nether bolt, chaos
+  aura, nightfire), lich (lightning bolt, fireball), lich king (lightning 
+  bolt, fireball, fire storm, ice storm, lightning storm, maelstrom),
+  Lalo (wreath of fire, lightning bolt), Zaeda (lightning bolt, force
+  bolt), Callara (minor healing, dragon breath, lightning bolt), snakeling
+  magus (chaos aura, cross of flame).
+
+- New spells/spellbooks: radiant beam (Divine), force bolt (Cantrips),
+  ice storm (Arcane), lightning storm (Arcane), maelstrom (Arcane),
+  cleansing (Cantrips).
+
+- New items: scroll of cleansing.
+
+- New artifacts: legendary boots "Akos Akari", tiger's eye ring "Asturias".
+
+- New creatures: gas cloud, frostling, Wulf.
+
+- Boost updated to 1.60.0.
+
+- Various minor refactorings.
+
+- Bug fixes:
+
+  - Crash when attacking with a ranged weapon with no launcher (e.g.,
+    thrown rocks, no sling equipped) (Lagi).
+
+  - When throwing potions, the last potion in a stack was not being
+    removed properly (Lagi).
+
+  - The code for setting a new name in-game via Nama wasn't using the
+    same rules as name generation at the start of the game.
+
+  - Generator::set_depth_custom_map_id_properties was copying over too
+    many properties.  It was intended only to copy over custom map IDs
+    for particular depths (e.g., if level 5 of some dungeon was a set
+    level), but it was copying over additional properties, which lead to
+    a bug in the infinite dungeon where the up staircase on every level
+    lead back to the surface because the key TILE_PROPERTY_PREVIOUS_MAP_ID
+    was copied from level to level.
+
+  - Beam spells weren't properly handling going off the edge of an open
+    map.
+
+  - Certain weed tile configurations weren't showing a description.
+
 Shadow of the Wyrm v0.4.4 "Domeniconi"
 - Version declared November 3, 2015.  Version finalized December 1, 2015.
 

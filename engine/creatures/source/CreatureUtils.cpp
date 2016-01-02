@@ -46,17 +46,20 @@ void CreatureUtils::add_hunger_level_message_if_necessary(CreaturePtr creature, 
 
   if (old_level != new_level)
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-
-    if (hunger_message_sid_map.empty())
+    if (creature && creature->get_is_player())
     {
-      initialize_hunger_message_sid_map();
+      IMessageManager& manager = MessageManagerFactory::instance();
+
+      if (hunger_message_sid_map.empty())
+      {
+        initialize_hunger_message_sid_map();
+      }
+
+      string message_sid = hunger_message_sid_map[new_level];
+
+      manager.add_new_message(StringTable::get(message_sid));
+      manager.send();
     }
-
-    string message_sid = hunger_message_sid_map[new_level];
-
-    manager.add_new_message(StringTable::get(message_sid));
-    manager.send();
   }
 }
 

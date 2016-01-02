@@ -101,5 +101,10 @@ TEST(SL_World_Tiles_Tile, saveload)
     tp2->deserialize(iss);
 
     EXPECT_TRUE(*tp == *tp2);
+
+    if (!(*tp == *tp2))
+    {
+      cout << "Failed for tile type: " << i;
+    }
   }
 }

@@ -10,13 +10,13 @@ class ItemIdentifier
 {
   public:
     // Set the creature's entire possessions (equipment and inventory) identified.  Filter as necessary.
-    void set_possessions_identified(CreaturePtr creature, const std::list<IItemFilterPtr> * const filter_v = NULL);
+    void set_possessions_identified(CreaturePtr creature, const std::list<IItemFilterPtr> * const filter_v = nullptr);
 
     // Set the creature's equipment identified.
-    void set_equipment_identified(CreaturePtr creature, const std::list<IItemFilterPtr> * const filter_v = NULL);
+    void set_equipment_identified(CreaturePtr creature, const std::list<IItemFilterPtr> * const filter_v = nullptr);
     
     // Set the creature's inventory identified.
-    void set_inventory_identified(CreaturePtr creature, const std::list<IItemFilterPtr> * const filter_v = NULL);
+    void set_inventory_identified(CreaturePtr creature, const std::list<IItemFilterPtr> * const filter_v = nullptr);
     
     // Identify all possessions of a particular type.
     void set_possessions_identified_by_type(CreaturePtr creature, const ItemType item_type);

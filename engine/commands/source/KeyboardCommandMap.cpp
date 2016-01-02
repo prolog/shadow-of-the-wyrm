@@ -94,6 +94,10 @@ void KeyboardCommandMap::initialize_special_key_mappings()
   special_key_mappings.insert(make_pair("KEY_F1", std::to_string(KEY_F(1))));
   special_key_mappings.insert(make_pair("KEY_F2", std::to_string(KEY_F(2))));
   special_key_mappings.insert(make_pair("KEY_F12", std::to_string(KEY_F(12))));
+  // Other special keys.
+  // "Escape" keys.
+  // JCD FIXME HACK!
+  special_key_mappings.insert(make_pair("KEY_ALT_L", std::to_string(27)));
 }
 
 vector<string> KeyboardCommandMap::get_remappable_commands() const

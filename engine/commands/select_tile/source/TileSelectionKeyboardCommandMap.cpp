@@ -35,18 +35,18 @@ vector<string> TileSelectionKeyboardCommandMap::get_remappable_commands() const
     TileSelectionCommandKeys::CURSOR_MOVE_SOUTHEAST, TileSelectionCommandKeys::CURSOR_MOVE_WEST,
     TileSelectionCommandKeys::CURSOR_MOVE_EAST, TileSelectionCommandKeys::CURSOR_MOVE_NORTHWEST,
     TileSelectionCommandKeys::CURSOR_MOVE_NORTH, TileSelectionCommandKeys::CURSOR_MOVE_NORTHEAST,
-    CommandKeys::BESTIARY
+    CommandKeys::BESTIARY, TileSelectionCommandKeys::CANCEL_TILE_SELECTION
   };
 }
+
 void TileSelectionKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
   command_mapping.clear();
 
   // Non-remappable commands
   command_mapping = KeyboardCommandMappingMap
-  { { std::to_string('z'), TileSelectionCommandKeys::CANCEL_TILE_SELECTION },
-  { std::to_string('Z'), TileSelectionCommandKeys::CANCEL_TILE_SELECTION },
-  { std::to_string('+'), TileSelectionCommandKeys::TARGET_NEXT_CREATURE },
+  { { std::to_string('+'), TileSelectionCommandKeys::TARGET_NEXT_CREATURE },
+  { std::to_string('='), TileSelectionCommandKeys::TARGET_NEXT_CREATURE },
   { std::to_string('-'), TileSelectionCommandKeys::TARGET_PREV_CREATURE } };
 
   initialize_special_key_mappings();

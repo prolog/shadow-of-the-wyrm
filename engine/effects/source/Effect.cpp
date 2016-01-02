@@ -8,7 +8,7 @@ using namespace std;
 
 // Call the correct item effect function based on the item status.  Blessed effects can often be
 // much better than uncursed, and cursed are often more hurtful than helpful.
-bool Effect::effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status) 
+bool Effect::effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status, const bool show_msg_on_unid) 
 {
   bool effect_identified = false;
 
@@ -33,12 +33,12 @@ bool Effect::effect(std::shared_ptr<Creature> creature, ActionManager * const am
     add_additional_effect_messages(creature);
   }
 
-  identify_effect_as_necessary(creature, effect_identified);
+  identify_effect_as_necessary(creature, effect_identified, show_msg_on_unid);
 
   return effect_identified;
 }
 
-void Effect::identify_effect_as_necessary(std::shared_ptr<Creature> creature, const bool effect_identified) const
+void Effect::identify_effect_as_necessary(std::shared_ptr<Creature> creature, const bool effect_identified, const bool show_effect_on_unid) const
 {
   if (creature)
   {
@@ -53,7 +53,10 @@ void Effect::identify_effect_as_necessary(std::shared_ptr<Creature> creature, co
     }
     else
     {
-      inform_unidentified_if_player(creature);
+      if (show_effect_on_unid)
+      {
+        inform_unidentified_if_player(creature);
+      }
     }
   }
 }

@@ -1,7 +1,6 @@
 Me:
-- Additional "flavour" messages for each damage type.  Pound/pummel/etc.
-to register a new map with the same ID as an existing map currently in the 
-registry, instead of failing silently.
+- Per-level skill increases (general, melee, ranged, magic).
+- Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
@@ -10,25 +9,23 @@ registry, instead of failing silently.
 - Evil story arc
 - Linux support.  
 - Investigate targetting not staying properly some (all?) of the time.
-- Some more information in-game about offering at altars
 - Offer to save character dump when quitting or winning
 - General performance improvements.
 - Item generation: get rarity working properly, and then do some test
   runs.  Once that works, create some more artifacts/great items for
   random generation.
+- Potion components of some sort?  Weeds should be "pickable"?
+- Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
-- New effect/scroll/cantrip - "Cleansing", which prevents new creatures
-  from being generated on a map.  When cursed, flips that boolean switch
-  to re-enable it (and maybe ups the danger level?)
 - Crash bug is still present: find out what's causing it!
 - Named in-game holidays/special days.  Should get an in-game message
   when that day occurs.
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
-
-Akeley:
-- ESC as well as 'z'
+- Scrolls of uncursing, should be common, appear around d2 or 3.
+- The spell of uncursing should be a wizard spell.
+- Implement two-handed weapons.
 
 barrabus: 
 - Extra descs for items.
@@ -40,6 +37,9 @@ Kyzrati:
 
 Avagart:
 - Eventually, have automovement stop only on new items.
+- Cursed items should bind to slot, identify as cursed.
+- Include feature when drawing old areas so doors/etc don't disappear.
+
 
 AgingMinotaur:
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
@@ -47,12 +47,18 @@ AgingMinotaur:
 * I noticed that archers and goblin pelters don't actually shoot anything. I'm supposing this will show up later.
 
 Kraphead:
-- monsters should cast spells
 - auto-displace when bumping friendly creatures
 - implement dual wield
 - Option to keep adventuring after killing Amaurosis
-- artifact boots
 - item generation: more arrows
 
 Mateusz Lagowski
 - ? for command list
+
+Lagi:
+- something to allow "breaking" walking.  Eg., if a key is pressed, stop.
+- keys to toggle monsters when looking
+- alternative inventory management: when in the stateless inventory
+  screen ("I"), items should be selectable, and then another menu should
+  be overlaid allowing equipping into various slots, dropping, evoking,
+  drinking, and so on.

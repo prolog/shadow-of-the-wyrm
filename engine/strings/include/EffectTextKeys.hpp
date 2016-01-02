@@ -26,6 +26,7 @@ class EffectTextKeys
     static const std::string EFFECT_NO_ITEMS_TO_ENCHANT;
     static const std::string EFFECT_ATTEMPT_ENCHANT_ARTIFACT;
     static const std::string EFFECT_TELEPORT_CANNOT_TELEPORT;
+    static const std::string EFFECT_CLEANSING;
 
   protected:
     EffectTextKeys();

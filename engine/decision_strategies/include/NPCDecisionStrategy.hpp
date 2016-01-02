@@ -1,5 +1,6 @@
 #pragma once
 #include "DecisionStrategy.hpp"
+#include "Spell.hpp"
 
 // An abstract class that represents the base class for decision strategies
 // for monsters and other NPCs.
@@ -18,8 +19,10 @@ class NPCDecisionStrategy : public DecisionStrategy
     // Functions that are called based on the factory type
     virtual CommandPtr get_decision_for_map(const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map);
 
-    virtual CommandPtr get_attack_decision(const std::string& this_creature_id, MapPtr view_map);
+    virtual CommandPtr get_magic_decision(const std::string& this_creature_id, MapPtr view_map);
 
+    virtual CommandPtr get_attack_decision(const std::string& this_creature_id, MapPtr view_map);
+    virtual CommandPtr get_custom_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_movement_decision(const std::string& this_creature_id);
     virtual std::vector<Coordinate> get_adjacent_safe_coordinates_without_creatures(MapPtr current_map, const std::vector<Coordinate>& all_adjacent_coordinates, std::shared_ptr<Creature> creature);
 
@@ -28,4 +31,5 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual CommandPtr get_decision_for_tile_selection(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) = 0;
 
     static const int PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET;
+    static const int PERCENT_CHANCE_CONSIDER_USING_MAGIC;
 };

@@ -110,7 +110,8 @@ bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const S
         hm.set_hostility_to_creature(creature, caster->get_id());
       }
 
-      return effect->effect(creature, am, effect_status);
+      bool show_msg_on_unid = (creature && caster && caster->get_is_player() && creature->get_is_player());
+      return effect->effect(creature, am, effect_status, show_msg_on_unid);
     }
   }
 

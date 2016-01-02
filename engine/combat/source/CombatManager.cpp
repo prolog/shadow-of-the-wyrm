@@ -3,6 +3,7 @@
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageText.hpp"
@@ -176,7 +177,8 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   int base_damage = 0;
   float soak_multiplier = 1.0;
   
-  string combat_message = CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
+  bool use_mult_dam_type_msgs = String::to_bool(game.get_settings_ref().get_setting("multiple_damage_type_messages"));
+  string combat_message = CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc, use_mult_dam_type_msgs);
 
   HitTypeEnum hit_type_enum = HitTypeEnumConverter::from_successful_to_hit_roll(d100_roll);
   IHitTypeCalculatorPtr hit_calculator = IHitTypeFactory::create_hit_type(hit_type_enum);
@@ -348,8 +350,8 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
 
       // Kill the creature, and run the death event function, if necessary.
-      death_manager->die();
       update_mortuaries(attacking_creature, attacked_creature->get_original_id());
+      death_manager->die();
 
       // Sometimes there will be no attacking creature, eg., when drowning, falling off mountains, etc.
       if (attacking_creature)

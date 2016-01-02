@@ -18,6 +18,7 @@ TEST(SL_World_Conducts, remaining_conducts)
 
   remaining = c.get_conducts();
 
+  EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_CORPSELESS)] == true);
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_AGNOSTIC)] == true);
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_ILLITERATE)] == true);
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_FOODLESS)] == false);

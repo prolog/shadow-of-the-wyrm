@@ -39,7 +39,7 @@ ItemPtr WeaponManager::get_item(CreaturePtr creature, const AttackType attack_ty
         item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);
 
         // Check to see if it's ranged combat with ammo only (thrown daggers, etc)
-        if (item != nullptr)
+        if (item == nullptr)
         {
           item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
         }

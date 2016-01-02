@@ -19,11 +19,13 @@
 #include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "Naming.hpp"
 #include "PickupAction.hpp"
 #include "PlayerConstants.hpp"
 #include "Quests.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "SpellcastingAction.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
@@ -147,6 +149,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "add_creature_to_map", add_creature_to_map);
   lua_register(L, "add_status_to_creature", add_status_to_creature);
+  lua_register(L, "add_status_to_creature_at", add_status_to_creature_at);
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
   lua_register(L, "set_creature_speed", set_creature_speed);
@@ -199,6 +202,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "calendar_add_years", calendar_add_years);
   lua_register(L, "add_kill_to_creature_mortuary", add_kill_to_creature_mortuary);
   lua_register(L, "report_coords", report_coords);
+  lua_register(L, "cast_spell", cast_spell);
 }
 
 // Lua API helper functions
@@ -1097,6 +1101,45 @@ int add_status_to_creature(lua_State* ls)
   return 1;
 }
 
+int add_status_to_creature_at(lua_State* ls)
+{
+  bool added_status = false;
+
+  if ((lua_gettop(ls) == 3) && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  {
+    Game& game = Game::instance();
+
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+    string status_id = lua_tostring(ls, 3);
+
+    MapPtr cur_map = game.get_current_map();
+
+    if (cur_map != nullptr)
+    {
+      TilePtr tile = cur_map->at(y, x);
+
+      if (tile != nullptr && tile->has_creature())
+      {
+        CreaturePtr creature = tile->get_creature();
+
+        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
+        se->apply_change(creature);
+
+        added_status = true;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_status_to_creature_at");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added_status);
+  return 1;
+}
+
 // Set a creature's base (bare-handed) damage.
 int set_creature_base_damage(lua_State* ls)
 {
@@ -1715,6 +1758,8 @@ int set_creature_name(lua_State* ls)
     if (!name.empty())
     {
       CreaturePtr creature = get_creature(creature_id);
+      name = Naming::clean_name_or_use_default(name, creature->get_sex());
+
       creature->set_name(name);
 
       changed_name = true;
@@ -2512,10 +2557,54 @@ int report_coords(lua_State* ls)
   return 0;
 }
 
+int cast_spell(lua_State* ls)
+{
+  bool spell_cast = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string spell_id = lua_tostring(ls, 2);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr && !spell_id.empty())
+    {
+      // Try to have the given creature cast the desired spell.
+      SpellcastingAction sa;
+      ActionCostValue acv = sa.cast_spell(creature, spell_id);
+
+      if (acv > 0)
+      {
+        spell_cast = true;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to cast_spell");
+    lua_error(ls);
+  }
+    
+  lua_pushboolean(ls, spell_cast);
+  return 1;
+}
+
 int stop_playing_game(lua_State* ls)
 {
-  Game& game = Game::instance();
-  game.stop_playing();
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    bool do_dump = lua_toboolean(ls, 2) != 0;
+    CreaturePtr player = get_creature(creature_id);
+
+    Game& game = Game::instance();
+    game.stop_playing(player, do_dump);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to stop_playing_game");
+    lua_error(ls);
+  }
 
   return 0;
 }

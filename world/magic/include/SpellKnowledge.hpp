@@ -15,10 +15,13 @@ class SpellKnowledge : public ISerializable
 
     void set_spell_knowledge(const std::string& spell_id, const IndividualSpellKnowledge& isk);
     IndividualSpellKnowledge get_spell_knowledge(const std::string& spell_id) const;
+    bool get_knows_spells() const;
     uint count_spells_known() const;
 
     void set_most_recently_cast_spell_id(const std::string& spell_id);
     std::string get_most_recently_cast_spell_id() const;
+
+    SpellKnowledgeMap get_spell_knowledge_map() const;
 
     SpellKnowledgeMap get_known_spells() const;
 

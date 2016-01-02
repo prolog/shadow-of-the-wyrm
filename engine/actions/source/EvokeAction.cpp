@@ -109,7 +109,7 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
         Coordinate caster_coord = map->get_location(creature->get_id());
 
         // Create a temporary spell based on the wand's characteristics.
-        Spell wand_spell = create_wand_spell(wand);
+        Spell wand_spell = create_wand_spell(wand, evoke_result.second);
 
         // Add a message about evoking.
         add_evocation_message(creature, wand, item_id);
@@ -209,14 +209,23 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature,
 
 // Create a temporary spell for use by the spell processor, based on the
 // wand's characteristics.
-Spell EvokeAction::create_wand_spell(WandPtr wand) const
+Spell EvokeAction::create_wand_spell(WandPtr wand, const Direction dir) const
 {
   Spell wand_spell;
 
   wand_spell.set_has_damage(wand->get_has_damage());
   wand_spell.set_damage(wand->get_damage());
   wand_spell.set_effect(wand->get_effect_type());
-  wand_spell.set_range(wand->get_range());
+
+  if (dir == Direction::DIRECTION_NULL)
+  {
+    wand_spell.set_range(1);
+  }
+  else
+  {
+    wand_spell.set_range(wand->get_range());
+  }
+
   wand_spell.set_allows_bonus(false);
   wand_spell.set_shape(SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type()));
   wand_spell.set_colour(wand->get_spell_colour());

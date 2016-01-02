@@ -46,7 +46,6 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   Coordinate current_coord = caster_coord;
   TileMagicChecker tmc;
   
-
   vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
 
   // For regular beams, the current direction will always be the passed-in
@@ -64,6 +63,13 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
     Coordinate c = CoordUtils::get_new_coordinate(current_coord, current_direction);
     
     TilePtr tile = map->at(c);
+
+    // If casting a reflective spell around the corners of an open map, handle
+    // that appropriately (by not looping infinitely).
+    if (tile == nullptr)
+    {
+      break;
+    }
 
     // Check to see if the tile blocks the spell.
     if (tmc.does_tile_block_spell(tile))

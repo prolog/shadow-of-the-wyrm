@@ -18,7 +18,7 @@ class Effect
   public:
     virtual ~Effect() {};
 
-    virtual bool effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status);
+    virtual bool effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status, const bool show_message_on_unid = true);
 
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const = 0;
 
@@ -38,7 +38,7 @@ class Effect
     virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) = 0;
     
     // Effect identification functions
-    virtual void identify_effect_as_necessary(std::shared_ptr<Creature> creature, const bool is_identified) const;
+    virtual void identify_effect_as_necessary(std::shared_ptr<Creature> creature, const bool is_identified, const bool show_msg_on_unid) const;
     virtual void identify_effect_if_player(std::shared_ptr<Creature> creature) const;
     virtual void inform_unidentified_if_player(std::shared_ptr<Creature> creature) const;
 

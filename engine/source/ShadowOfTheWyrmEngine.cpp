@@ -129,6 +129,9 @@ void ShadowOfTheWyrmEngine::setup_display(const Settings& settings)
     // Use newfangled colour?  Or traditional mono?
     string colour = DisplaySettings::DISPLAY_SETTING_COLOUR;
     display->set_property(colour, settings.get_setting(colour));
+
+    string mono_colour = DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR;
+    display->set_property(mono_colour, settings.get_setting(mono_colour));
   }
 }
 
@@ -350,9 +353,16 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 
   while (user_and_character_exist)
   {
+    string default_name = game.get_settings_ref().get_setting("default_name");
     NamingScreen naming(display, creature_synopsis, warning_message);
     name = naming.display();
-    name = Naming::clean_name(name);
+
+    if (name.empty())
+    {
+      name = default_name;
+    }
+
+    name = Naming::clean_name_or_use_default(name, ccd.get_sex());
 
     if (Serialization::does_savefile_exist_for_user_and_character(Environment::get_user_name(), name))
     {

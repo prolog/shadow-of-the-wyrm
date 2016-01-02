@@ -8,7 +8,8 @@ LoadedMapDetails::LoadedMapDetails()
 : prev_engine_coord(0,0), cur_engine_coord(0,0),
   prev_display_coord(0,0), cur_display_coord(0,0),
   prev_blind_status(false), cur_blind_status(false),
-  prev_season(Season::SEASON_WINTER), cur_season(Season::SEASON_WINTER)
+  prev_season(Season::SEASON_WINTER), cur_season(Season::SEASON_WINTER),
+  spell_cast(false)
 {
 }
 
@@ -30,6 +31,8 @@ bool LoadedMapDetails::operator==(const LoadedMapDetails& lmd) const
 
   result = result && (prev_season == lmd.prev_season);
   result = result && (cur_season == lmd.cur_season);
+
+  result = result && (spell_cast == lmd.spell_cast);
 
   return result;
 }
@@ -64,6 +67,11 @@ void LoadedMapDetails::update_season(const Season& new_season)
   cur_season = new_season;
 }
 
+void LoadedMapDetails::update_spell_cast(const bool new_spell_cast)
+{
+  spell_cast = new_spell_cast;
+}
+
 // Synchronize the previous values with the current.  Used at the end of the
 // redraw routine so that the next time the player acts, any updates to the
 // state variables can be used to trigger the redraw.
@@ -74,6 +82,7 @@ void LoadedMapDetails::synch()
   prev_display_coord = cur_display_coord;
   prev_blind_status = cur_blind_status;
   prev_season = cur_season;
+  spell_cast = false;
 }
 
 bool LoadedMapDetails::requires_full_map_redraw() const
@@ -91,7 +100,10 @@ bool LoadedMapDetails::requires_full_map_redraw() const
           (prev_blind_status != cur_blind_status) ||
           // A change in season requires full redraw so that there isn't a
           // combination of tiles all over the place.
-          (prev_season != cur_season));
+          (prev_season != cur_season) ||
+          // If a spell was cast, assume that the animation requires the
+          // screen to be redrawn.
+          (spell_cast == true));
 }
 
 bool LoadedMapDetails::serialize(ostream& stream) const
@@ -114,6 +126,8 @@ bool LoadedMapDetails::serialize(ostream& stream) const
 
   Serialize::write_enum(stream, prev_season);
   Serialize::write_enum(stream, cur_season);
+
+  Serialize::write_bool(stream, spell_cast);
 
   return true;
 }
@@ -138,6 +152,8 @@ bool LoadedMapDetails::deserialize(istream& stream)
 
   Serialize::read_enum(stream, prev_season);
   Serialize::read_enum(stream, cur_season);
+
+  Serialize::read_bool(stream, spell_cast);
 
   return true;
 }
