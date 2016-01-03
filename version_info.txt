@@ -5,6 +5,8 @@ Shadow of the Wyrm v0.4.6 "Llobet"
   effect is uncursed, the creature's equipment is uncursed, and when the
   effect is blessed, all of the creature's possessions are uncursed.
 
+- Lua API functions to allow cursing a creature's equipment and inventory.
+
 - New spells/spellbooks: uncurse (Mystic).
 
 Shadow of the Wyrm v0.4.5 "Bacarisse"

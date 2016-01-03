@@ -1,5 +1,7 @@
 Me:
 - Cursed items should show up in red on the eq screen
+- Ticked-off deities should be able to curse the player's equipment and/or
+  inventory.
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.
