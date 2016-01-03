@@ -16,6 +16,7 @@
 #include "StatusTypes.hpp"
 #include "TeleportEffect.hpp"
 #include "TimewalkEffect.hpp"
+#include "UncursingEffect.hpp"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m, map<string, string> properties, string spell_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(21), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(22), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -100,6 +101,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m,
       break;
     case EffectType::EFFECT_TYPE_CLEANSING:
       effect = std::make_shared<CleansingEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_UNCURSING:
+      effect = std::make_shared<UncursingEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:

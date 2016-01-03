@@ -1,4 +1,5 @@
 Me:
+- Cursed items should show up in red on the eq screen
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.
@@ -23,8 +24,6 @@ Me:
   when that day occurs.
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
-- Scrolls of uncursing, should be common, appear around d2 or 3.
-- The spell of uncursing should be a wizard spell.
 - Implement two-handed weapons.
 
 barrabus: 

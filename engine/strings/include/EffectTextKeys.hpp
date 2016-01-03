@@ -16,6 +16,7 @@ class EffectTextKeys
     static std::string get_gain_attributes_effect_message(const std::string& monster_desc_sid, const bool is_player);
     static std::string get_modify_statistics_effect_message(const std::string& monster_desc_sid, const bool is_player);
     static std::string get_timewalk_effect_message(const std::string& monster_desc_sid, const bool is_player);
+    static std::string get_uncursing_effect_message(const std::string& monster_desc_sid, const bool is_player);
 
     static const std::string EFFECT_NULL;
     static const std::string EFFECT_SWEET_TASTE;
@@ -52,5 +53,7 @@ class EffectTextKeys
     static const std::string EFFECT_MODIFY_STATISTICS_MONSTER;
     static const std::string EFFECT_TIMEWALK_PLAYER;
     static const std::string EFFECT_TIMEWALK_MONSTER;
+    static const std::string EFFECT_UNCURSING_PLAYER;
+    static const std::string EFFECT_UNCURSING_MONSTER;
 };
 

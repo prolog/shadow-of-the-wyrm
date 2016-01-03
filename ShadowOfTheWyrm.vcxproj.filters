@@ -3591,6 +3591,9 @@
     <ClInclude Include="engine\effects\include\CleansingEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\UncursingEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7002,6 +7005,9 @@
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\effects\source\CleansingEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\UncursingEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
