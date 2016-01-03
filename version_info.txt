@@ -1,3 +1,6 @@
+Shadow of the Wyrm v0.4.6 "Llobet"
+- Version declared January 2, 2016.
+
 Shadow of the Wyrm v0.4.5 "Bacarisse"
 - Version declared December 1, 2015.  Version finalized January 2, 2016.
 

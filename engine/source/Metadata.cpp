@@ -42,9 +42,10 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Spanish composer of the 20th century - perhaps best known for his
-  // concertino for guitar and orchestra.
-  return "\"Bacarisse\"";
+  // One of the earliest recorded guitarists, and composer/arranger of many
+  // notable Catalonian folk songs, including my favourite, "El Testament
+  // d'Amelia."
+  return "\"Llobet\"";
 }
 
 string Metadata::get_game_version_synopsis() const
