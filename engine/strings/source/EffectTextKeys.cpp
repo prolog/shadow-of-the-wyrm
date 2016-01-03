@@ -115,6 +115,11 @@ string EffectTextKeys::get_timewalk_effect_message(const string& monster_desc_si
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_TIMEWALK_PLAYER, EFFECT_TIMEWALK_MONSTER);
 }
 
+string EffectTextKeys::get_uncursing_effect_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_UNCURSING_PLAYER, EFFECT_UNCURSING_MONSTER);
+}
+
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
 const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
 const string EffectTextKeys::EFFECT_NULL = "EFFECT_NULL";
@@ -144,3 +149,5 @@ const string EffectTextKeys::EFFECT_MODIFY_STATISTICS_PLAYER = "EFFECT_MODIFY_ST
 const string EffectTextKeys::EFFECT_MODIFY_STATISTICS_MONSTER = "EFFECT_MODIFY_STATISTICS_MONSTER";
 const string EffectTextKeys::EFFECT_TIMEWALK_PLAYER = "EFFECT_TIMEWALK_PLAYER";
 const string EffectTextKeys::EFFECT_TIMEWALK_MONSTER = "EFFECT_TIMEWALK_MONSTER";
+const string EffectTextKeys::EFFECT_UNCURSING_PLAYER = "EFFECT_UNCURSING_PLAYER";
+const string EffectTextKeys::EFFECT_UNCURSING_MONSTER = "EFFECT_UNCURSING_MONSTER";
