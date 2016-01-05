@@ -63,3 +63,8 @@ Lagi:
   screen ("I"), items should be selectable, and then another menu should
   be overlaid allowing equipping into various slots, dropping, evoking,
   drinking, and so on.
+
+roguecastergames:
+- sea monsters
+- pirates
+- ambushes
