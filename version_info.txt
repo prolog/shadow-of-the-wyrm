@@ -9,6 +9,10 @@ Shadow of the Wyrm v0.4.6 "Llobet"
 
 - New spells/spellbooks: uncurse (Mystic).
 
+- Bug fixes:
+
+  - Rest command wasn't working (Dave Keen).
+
 Shadow of the Wyrm v0.4.5 "Bacarisse"
 - Version declared December 1, 2015.  Version finalized January 2, 2016.
 
