@@ -42,10 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // One of the earliest recorded guitarists, and composer/arranger of many
-  // notable Catalonian folk songs, including my favourite, "El Testament
-  // d'Amelia."
-  return "\"Llobet\"";
+  // Early Venetian lutenist and composer.
+  return "\"Spinacino\"";
 }
 
 string Metadata::get_game_version_synopsis() const
