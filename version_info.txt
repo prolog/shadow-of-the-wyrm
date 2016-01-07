@@ -1,3 +1,18 @@
+Shadow of the Wyrm v0.4.6 "Spinacino"
+- Version declared January 2, 2016.  Version finalized January 6, 2016.
+
+- New effect type, uncursing.  The cursed effect does nothing - when the
+  effect is uncursed, the creature's equipment is uncursed, and when the
+  effect is blessed, all of the creature's possessions are uncursed.
+
+- Lua API functions to allow cursing a creature's equipment and inventory.
+
+- New spells/spellbooks: uncurse (Mystic).
+
+- Bug fixes:
+
+  - Rest command broken (Dave Keen).
+
 Shadow of the Wyrm v0.4.5 "Bacarisse"
 - Version declared December 1, 2015.  Version finalized January 2, 2016.
 

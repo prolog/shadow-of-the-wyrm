@@ -97,6 +97,8 @@ int calendar_add_years(lua_State* ls);
 int add_kill_to_creature_mortuary(lua_State* ls);
 int report_coords(lua_State* ls);
 int cast_spell(lua_State* ls);
+int curse_equipment(lua_State* ls);
+int curse_inventory(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

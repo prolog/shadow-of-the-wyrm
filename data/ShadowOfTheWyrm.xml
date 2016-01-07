@@ -20731,6 +20731,19 @@
 				</Property>
 			</Properties>
 		</Spell>		
+		<Spell id="m_13_uncurse">
+			<NameSID>UNCURSE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>UNCURSE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>UNCURSE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>20</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>21</Effect>
+		</Spell>
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -26074,6 +26087,24 @@
 				<Rarity>1</Rarity>
 				<Effect>20</Effect>
 			</Scroll>
+			<Scroll id="uncursing_scroll">
+				<DescriptionSID>UNCURSING_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_UNCURSING_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>UNCURSING_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_UNCURSING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>75</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>21</Effect>
+			</Scroll>
 		</Scrolls>
 		<Currencies>
 			<Currency id="_currency">
@@ -27414,6 +27445,25 @@
 				<Rarity>1</Rarity>
 				<SpellID>m_12_timewalk</SpellID>
 				<Difficulty>80</Difficulty>
+			</Spellbook>
+			<Spellbook id="uncurse_spellbook">
+				<DescriptionSID>UNCURSE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_UNCURSE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>UNCURSE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_UNCURSE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>125</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>7</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_13_uncurse</SpellID>
+				<Difficulty>60</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
