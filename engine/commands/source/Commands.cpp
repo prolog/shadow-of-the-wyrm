@@ -453,6 +453,7 @@ CustomScriptCommand::~CustomScriptCommand()
 RestCommand::RestCommand(int key)
 : DirectionalCommand(Direction::DIRECTION_NULL, key)
 {
+  command_name = CommandKeys::REST;
 }
 
 RestCommand::~RestCommand()

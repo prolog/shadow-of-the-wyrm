@@ -203,6 +203,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_kill_to_creature_mortuary", add_kill_to_creature_mortuary);
   lua_register(L, "report_coords", report_coords);
   lua_register(L, "cast_spell", cast_spell);
+  lua_register(L, "curse_equipment", curse_equipment);
+  lua_register(L, "curse_inventory", curse_inventory);
 }
 
 // Lua API helper functions
@@ -2589,6 +2591,79 @@ int cast_spell(lua_State* ls)
   return 1;
 }
 
+int curse_equipment(lua_State* ls)
+{
+  int cursed_eq = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      EquipmentMap& eq_map = creature->get_equipment().get_equipment();
+
+      for (auto& eq_pair : eq_map)
+      {
+        ItemPtr item = eq_pair.second;
+
+        if (item != nullptr)
+        {
+          item->set_status(ItemStatus::ITEM_STATUS_CURSED);
+          cursed_eq = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to curse_equipment");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, cursed_eq);
+  return 1;
+}
+
+int curse_inventory(lua_State* ls)
+{
+  int cursed_inv = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      IInventoryPtr inv = creature->get_inventory();
+
+      if (inv != nullptr)
+      {
+        list<ItemPtr> items = inv->get_items_ref();
+
+        for (ItemPtr item : items)
+        {
+          if (item != nullptr)
+          {
+            item->set_status(ItemStatus::ITEM_STATUS_CURSED);
+            cursed_inv = true;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to curse_inventory");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, cursed_inv);
+  return 1;
+}
+
 int stop_playing_game(lua_State* ls)
 {
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
@@ -2608,3 +2683,4 @@ int stop_playing_game(lua_State* ls)
 
   return 0;
 }
+
