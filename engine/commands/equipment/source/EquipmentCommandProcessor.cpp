@@ -44,7 +44,7 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
       {
         list<IItemFilterPtr> display_filter = ItemFilterFactory::create_empty_filter();
         
-        game.actions.inventory(creature, creature->get_inventory(), display_filter, true);
+        game.actions.inventory(creature, creature->get_inventory(), display_filter, {}, true);
         // Because the player is just looking at the items, this shouldn't
         // advance any turn information.
         process_result = 0;

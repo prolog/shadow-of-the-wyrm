@@ -28,7 +28,7 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
   if (creature)
   {
     list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_POTION);
-    ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, false);
+    ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
     
     if (selected_item)
     {

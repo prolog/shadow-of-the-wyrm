@@ -53,7 +53,7 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
       vector<pair<string, string>> item_property_filter = {make_pair(SkinningConstants::SKIN_IS_SKIN, Bool::to_string(true))};
       list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
 
-      ItemPtr selected_skin = am.inventory(creature, creature->get_inventory(), display_filter_list, false);
+      ItemPtr selected_skin = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
 
       if (selected_skin)
       {

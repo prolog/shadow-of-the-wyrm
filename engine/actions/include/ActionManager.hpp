@@ -45,7 +45,7 @@ class ActionManager : public ISerializable
 
     // Display the inventory.  Potentially, select an item.  ItemPtr is null if no item
     // was selected.
-    ItemPtr inventory(CreaturePtr creature, IInventoryPtr inv, const std::list<IItemFilterPtr>& display_filter_list, const bool inventory_is_read_only);
+    ItemPtr inventory(CreaturePtr creature, IInventoryPtr inv, const std::list<IItemFilterPtr>& base_display_filter_list, const std::list<IItemFilterPtr>& additional_filter_list, const bool inventory_is_read_only);
     
     // Miscellaneous actions
     ActionCost pray(CreaturePtr creature);
