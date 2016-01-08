@@ -68,7 +68,7 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
       acv = get_action_cost_value(creature);
 
       list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-      ItemPtr item_to_sac = am->inventory(creature, creature->get_inventory(), no_filter, false);
+      ItemPtr item_to_sac = am->inventory(creature, creature->get_inventory(), no_filter, {}, false);
 
       if (item_to_sac == nullptr)
       {

@@ -1,3 +1,10 @@
+Shadow of the Wyrm v0.4.7 "Llobet"
+- Version declared January 6, 2015.
+
+- Bug fixes:
+
+  - Clearing inventory filters wasn't respecting the original filter.
+
 Shadow of the Wyrm v0.4.6 "Spinacino"
 - Version declared January 2, 2016.  Version finalized January 6, 2016.
 

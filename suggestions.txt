@@ -1,4 +1,6 @@
 Me:
+- When filtering items in the Inventory screen, potentially change the 
+  Inventory screen title?
 - Cursed items should show up in red on the eq screen
 - Ticked-off deities should be able to curse the player's equipment and/or
   inventory.

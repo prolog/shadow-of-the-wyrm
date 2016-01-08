@@ -47,7 +47,7 @@ ActionCostValue FoodAction::eat(CreaturePtr creature, ActionManager * const am)
 
     if (action_cost_value == 0)
     {
-      ItemPtr selected_edible_item = am->inventory(creature, creature->get_inventory(), display_list, false);
+      ItemPtr selected_edible_item = am->inventory(creature, creature->get_inventory(), display_list, {}, false);
 
       if (selected_edible_item)
       {

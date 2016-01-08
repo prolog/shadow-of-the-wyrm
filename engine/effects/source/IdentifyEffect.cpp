@@ -41,7 +41,7 @@ bool IdentifyEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionM
 
     // Pick an item.  Identify all possessions of that type.
     list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
-    ItemPtr item = am->inventory(creature, creature->get_inventory(), empty_filter, false);
+    ItemPtr item = am->inventory(creature, creature->get_inventory(), empty_filter, {}, false);
     
     if (item)
     {
@@ -64,7 +64,7 @@ bool IdentifyEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionMan
     
     // Pick an item.  Identify that item.
     list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
-    ItemPtr item = am->inventory(creature, creature->get_inventory(), empty_filter, false);
+    ItemPtr item = am->inventory(creature, creature->get_inventory(), empty_filter, {}, false);
     
     if (item)
     {
