@@ -6,7 +6,8 @@
 enum struct UncursingEffectType
 {
   UNCURSING_EFFECT_NO_EFFECT,
-  UNCURSING_EFFECT_UNCURSE
+  UNCURSING_EFFECT_UNCURSE,
+  UNCURSING_EFFECT_CURSE
 };
 
 class UncursingEffect : public Effect

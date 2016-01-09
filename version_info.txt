@@ -10,6 +10,8 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
 - Cursed items now cannot be removed.
 
+- The cursed uncursing effect curses the creature's equipment.
+
 - Bug fixes:
 
   - Clearing inventory filters wasn't respecting the original filter.

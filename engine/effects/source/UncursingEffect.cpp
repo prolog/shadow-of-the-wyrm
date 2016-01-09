@@ -36,18 +36,20 @@ bool UncursingEffect::effect_uncursed(CreaturePtr creature, ActionManager * cons
   return uncurse(creature, UncursingEffectType::UNCURSING_EFFECT_UNCURSE, UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT);
 }
 
+// The cursed uncursing effect (yes, I know that's awkward) curses the
+// player's equipment.
 bool UncursingEffect::effect_cursed(CreaturePtr creature, ActionManager * am)
 {
-  return uncurse(creature, UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT, UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT);
+  return uncurse(creature, UncursingEffectType::UNCURSING_EFFECT_CURSE, UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT);
 }
 
 bool UncursingEffect::uncurse(CreaturePtr creature, const UncursingEffectType uet_eq, const UncursingEffectType uet_inv)
 {
-  bool uncursed = (uet_eq == UncursingEffectType::UNCURSING_EFFECT_UNCURSE || uet_inv == UncursingEffectType::UNCURSING_EFFECT_UNCURSE);
+  bool uncursed = (uet_eq != UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT || uet_inv != UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT);
 
   if (creature != nullptr)
   {
-    if (uet_eq == UncursingEffectType::UNCURSING_EFFECT_UNCURSE)
+    if (uet_eq != UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT)
     {
       EquipmentMap raw_eq = creature->get_equipment().get_equipment();
 
@@ -56,15 +58,25 @@ bool UncursingEffect::uncurse(CreaturePtr creature, const UncursingEffectType ue
         EquipmentWornLocation worn_location = e_it->first;
         ItemPtr equipped_item = e_it->second;
 
-        if (equipped_item != nullptr && equipped_item->get_status() == ItemStatus::ITEM_STATUS_CURSED)
+        if (uet_eq == UncursingEffectType::UNCURSING_EFFECT_UNCURSE)
         {
-          equipped_item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
-          equipped_item->set_status_identified(true);
+          if (equipped_item != nullptr && equipped_item->get_status() == ItemStatus::ITEM_STATUS_CURSED)
+          {
+            equipped_item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
+            equipped_item->set_status_identified(true);
+          }
+        }
+        else if (uet_eq == UncursingEffectType::UNCURSING_EFFECT_CURSE)
+        {
+          if (equipped_item != nullptr)
+          {
+            equipped_item->set_status(ItemStatus::ITEM_STATUS_CURSED);
+          }
         }
       }
     }
 
-    if (uet_inv == UncursingEffectType::UNCURSING_EFFECT_UNCURSE)
+    if (uet_inv != UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT)
     {
       IInventoryPtr inv = creature->get_inventory();
 
@@ -74,11 +86,21 @@ bool UncursingEffect::uncurse(CreaturePtr creature, const UncursingEffectType ue
 
         for (ItemPtr item : items)
         {
-          // If the item is cursed, set it to uncursed and status-id'd.
-          if (item && item->get_status() == ItemStatus::ITEM_STATUS_CURSED)
+          if (uet_inv == UncursingEffectType::UNCURSING_EFFECT_UNCURSE)
           {
-            item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
-            item->set_status_identified(true);
+            // If the item is cursed, set it to uncursed and status-id'd.
+            if (item && item->get_status() == ItemStatus::ITEM_STATUS_CURSED)
+            {
+              item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
+              item->set_status_identified(true);
+            }
+          }
+          else if (uet_inv == UncursingEffectType::UNCURSING_EFFECT_CURSE)
+          {
+            if (item)
+            {
+              item->set_status(ItemStatus::ITEM_STATUS_CURSED);
+            }
           }
         }
       }
