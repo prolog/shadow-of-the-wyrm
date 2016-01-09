@@ -22,16 +22,12 @@ int CursesKeyboardController::get_char_as_int()
   // kb controller...
   std::shared_ptr<CursesDisplay> cdisplay = std::dynamic_pointer_cast<CursesDisplay>(display);
 
-  int character;
-  WINDOW* cur_win;
+  int character = -1;
+  WINDOW* cur_win = nullptr;
 
   if (cdisplay && ((cur_win = cdisplay->get_current_screen()) != nullptr))
   {
     character = wgetch(cur_win);
-  }
-  else
-  {
-    character = getch();
   }
 
   return character;

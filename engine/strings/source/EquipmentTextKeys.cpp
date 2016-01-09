@@ -14,10 +14,10 @@ const string EquipmentTextKeys::EQUIPMENT_HEAD         = "EQUIPMENT_HEAD";
 const string EquipmentTextKeys::EQUIPMENT_NECK         = "EQUIPMENT_NECK";
 const string EquipmentTextKeys::EQUIPMENT_RIGHT_FINGER = "EQUIPMENT_RIGHT_FINGER";
 const string EquipmentTextKeys::EQUIPMENT_LEFT_FINGER  = "EQUIPMENT_LEFT_FINGER";
-const string EquipmentTextKeys::EQUIPMENT_WIELDED   = "EQUIPMENT_WIELDED";
-const string EquipmentTextKeys::EQUIPMENT_OFF_HAND    = "EQUIPMENT_OFF_HAND";
+const string EquipmentTextKeys::EQUIPMENT_WIELDED      = "EQUIPMENT_WIELDED";
+const string EquipmentTextKeys::EQUIPMENT_OFF_HAND     = "EQUIPMENT_OFF_HAND";
 const string EquipmentTextKeys::EQUIPMENT_BODY         = "EQUIPMENT_BODY";
-const string EquipmentTextKeys::EQUIPMENT_AROUND_BODY   = "EQUIPMENT_AROUND_BODY";
+const string EquipmentTextKeys::EQUIPMENT_AROUND_BODY  = "EQUIPMENT_AROUND_BODY";
 const string EquipmentTextKeys::EQUIPMENT_FEET         = "EQUIPMENT_FEET";
 const string EquipmentTextKeys::EQUIPMENT_RANGED       = "EQUIPMENT_RANGED";
 const string EquipmentTextKeys::EQUIPMENT_AMMUNITION   = "EQUIPMENT_AMMUNITION";
@@ -25,6 +25,7 @@ const string EquipmentTextKeys::EQUIPMENT_RANGED_SYNOPSIS = "EQUIPMENT_RANGED_SY
 const string EquipmentTextKeys::EQUIPMENT_WEAPON_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_WEAPON_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS";
 const string EquipmentTextKeys::EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS";
 const string EquipmentTextKeys::EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS";
+const string EquipmentTextKeys::EQUIPMENT_REMOVAL_CURSED = "EQUIPMENT_REMOVAL_CURSED";
 
 string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location)
 {

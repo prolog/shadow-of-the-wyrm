@@ -1,8 +1,10 @@
 #include "EquipmentCommandKeys.hpp"
 #include "EquipmentCommandProcessor.hpp"
 #include "EquipmentCommands.hpp"
+#include "EquipmentTextKeys.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
+#include "MessageManagerFactory.hpp"
 
 using namespace std;
 
@@ -35,9 +37,26 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
         if (wear_raw_command)
         {
           EquipmentWornLocation worn_slot = wear_raw_command->get_equipment_worn_location();
-          
-          // Only advance the turn if something was actually either worn or removed.
-          process_result = game.actions.wear_or_remove_item(creature, worn_slot);
+          ItemPtr item_in_slot = creature->get_equipment().get_item(worn_slot);
+
+          if (item_in_slot && item_in_slot->get_status() == ItemStatus::ITEM_STATUS_CURSED && creature->get_is_player())
+          {
+            process_result = 0;
+
+            // Add a message about the item being cursed.
+            IMessageManager& manager = MessageManagerFactory::instance();
+
+            // JCD FIXME - Assumes stdscr!  Update CursesDisplay everywhere and
+            // test extensively!
+            manager.clear_if_necessary();
+            manager.add_new_message_with_pause(StringTable::get(EquipmentTextKeys::EQUIPMENT_REMOVAL_CURSED));
+            manager.send();
+          }
+          else
+          {
+            // Only advance the turn if something was actually either worn or removed.
+            process_result = game.actions.wear_or_remove_item(creature, worn_slot);
+          }          
         }
       }
       else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)

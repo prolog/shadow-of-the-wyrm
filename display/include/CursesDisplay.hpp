@@ -58,6 +58,7 @@ class CursesDisplay : public Display
     virtual Display* clone() override;
 
     WINDOW* get_current_screen();
+    WINDOW* get_message_buffer_screen();
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
@@ -114,6 +115,7 @@ class CursesDisplay : public Display
     // or subscreens are layered as new windows on top of that.  Each time a screen is done, a window is popped off
     // the stack and the display is re-drawn.
     std::deque<WINDOW*> screens;
+    WINDOW* message_buffer_screen;
 
     // Used to process the prompt
     CursesPromptProcessor prompt_processor;
