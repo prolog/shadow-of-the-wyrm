@@ -1,10 +1,14 @@
 Shadow of the Wyrm v0.4.7 "Llobet"
 - Version declared January 6, 2015.
 
-- Updated the curses-based display so that the message buffer can be
-  displayed on any screen, instead of just stdscr.
+- Refactored the curses-based display so that the message buffer can be
+  used on any screen, instead of just stdscr.
 
-- Cursed items cannot be removed from the player's equipment.
+- Added "Alert" functionality, which is basically just using the message
+  buffer on the current window (instead of stdscr) along with requiring
+  the player to press a key.
+
+- Cursed items now cannot be removed.
 
 - Bug fixes:
 

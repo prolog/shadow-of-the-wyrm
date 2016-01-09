@@ -64,6 +64,14 @@ void MessageManager::send_and_halt()
   send(true);
 }
 
+void MessageManager::alert(const string& message)
+{
+  if (user_display != nullptr)
+  {
+    user_display->add_alert(message + " ...");
+  }
+}
+
 // Add a new message to the set of unread messages.
 bool MessageManager::add_new_message(const std::string& message_text, const Colour colour, const MessageImportance& importance)
 {

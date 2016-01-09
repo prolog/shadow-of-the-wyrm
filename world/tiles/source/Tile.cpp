@@ -8,13 +8,7 @@
 
 using namespace std;
 
-/*
- ******************************************************************
-
-  Routines for creating and setting/getting attributes of a given
-  Tile.
-
- ******************************************************************/
+// Routines for creating and setting/getting attributes of a given Tile.
 Tile::Tile(const int new_hardness)
 : hardness(new_hardness)
 {
