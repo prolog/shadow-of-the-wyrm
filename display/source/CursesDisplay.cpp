@@ -38,6 +38,7 @@ TERMINAL_MAX_COLS(0),
 FIELD_SPACE(2), 
 MSG_BUFFER_LAST_Y(0), 
 MSG_BUFFER_LAST_X(0), 
+message_buffer_screen(nullptr),
 can_use_colour(false),
 mono_colour(Colour::COLOUR_UNDEFINED),
 cursor_mode(1) /* normal visibility */
@@ -227,29 +228,44 @@ void CursesDisplay::clear_messages()
 int CursesDisplay::clear_message_buffer()
 {  
   int return_val;
+  WINDOW* screen = get_message_buffer_screen();
   
-  move(0, 0);
-  clrtoeol();
+  wmove(screen, 0, 0);
+  wclrtoeol(screen);
 
-  move(1, 0);
-  return_val = clrtoeol();
+  wmove(screen, 1, 0);
+  return_val = wclrtoeol(screen);
   
   // Reset the internal state
   MSG_BUFFER_LAST_Y = 0;
   MSG_BUFFER_LAST_X = 0;
   
   // Reset cursor to original position
-  move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  wmove(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
 
   return return_val;
+}
+
+WINDOW* CursesDisplay::get_message_buffer_screen()
+{
+  WINDOW* screen = stdscr;
+
+  if (message_buffer_screen != nullptr)
+  {
+    screen = message_buffer_screen;
+  }
+
+  return screen;
 }
 
 // Halt processing and force user input to continue.
 void CursesDisplay::halt_messages()
 {
-  move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
-  refresh();
-  getch();  
+  WINDOW* screen = get_message_buffer_screen();
+
+  wmove(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  wrefresh(screen);
+  wgetch(screen);  
 }
 
 /*
@@ -344,60 +360,61 @@ void CursesDisplay::add_message(const string& message, const bool reset_cursor)
 void CursesDisplay::add_message(const string& to_add_message, const Colour colour, const bool reset_cursor)
 {
   string message = to_add_message;
+  WINDOW* screen = get_message_buffer_screen();
 
   // Replace any single instances of "%", as these will cause a crash when
   // the corresponding parameters are not present in printw.
   boost::replace_all(message, "%", "%%");
 
   int orig_curs_y, orig_curs_x;
-  getyx(stdscr, orig_curs_y, orig_curs_x);
+  getyx(screen, orig_curs_y, orig_curs_x);
 
   uint cur_y, cur_x;
 
   if (reset_cursor)
   {
     clear_message_buffer();
-    move(0, 0);
+    wmove(screen, 0, 0);
   }
   else
   {
-    move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+    wmove(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
   }
 
   boost::char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
   boost::tokenizer<boost::char_separator<char>> tokens(message, separator);
 
-  enable_colour(static_cast<int>(colour), stdscr);
+  enable_colour(static_cast<int>(colour), screen);
 
   for (boost::tokenizer<boost::char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
-    getyx(stdscr, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+    getyx(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
     
     string current_token = *t_iter;
-    getyx(stdscr, cur_y, cur_x);
+    getyx(screen, cur_y, cur_x);
 
     if (cur_y == 0)
     {
       if ((cur_x + current_token.length()) > (TERMINAL_MAX_COLS-1))
       {
         // Move to the second line of the buffer
-        move(1, 0);
-        getyx(stdscr, cur_y, cur_x);
+        wmove(screen, 1, 0);
+        getyx(screen, cur_y, cur_x);
       }
     }
     else
     {
       if ((cur_x + current_token.length()) > (TERMINAL_MAX_COLS) - 4)
       {
-        move(1, TERMINAL_MAX_COLS-4);
+        wmove(screen, 1, TERMINAL_MAX_COLS-4);
 
-        disable_colour(static_cast<int>(colour), stdscr);
-        printw("...");
-        getch();
-        enable_colour(static_cast<int>(colour), stdscr);
+        disable_colour(static_cast<int>(colour), screen);
+        wprintw(screen, "...");
+        wgetch(screen);
+        enable_colour(static_cast<int>(colour), screen);
 
         clear_message_buffer();
-        getyx(stdscr, cur_y, cur_x);
+        getyx(screen, cur_y, cur_x);
       }
     }
     
@@ -417,19 +434,19 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
       }
     }
 
-    printw(current_token.c_str());        
+    wprintw(screen, current_token.c_str());        
   }
 
   // Ensure that the last coordinates from the message buffer are up to date.
-  getyx(stdscr, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  getyx(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
 
   // Reset the cursor.
   if (reset_cursor)
   {
-    move(orig_curs_y, orig_curs_x);
+    wmove(screen, orig_curs_y, orig_curs_x);
   }
   
-  disable_colour(static_cast<int>(colour), stdscr);
+  disable_colour(static_cast<int>(colour), screen);
   
   //refresh();
 }
@@ -975,7 +992,7 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
 
 WINDOW* CursesDisplay::get_current_screen()
 {
-  WINDOW* screen = nullptr;
+  WINDOW* screen = stdscr;
 
   if (!screens.empty())
   {
