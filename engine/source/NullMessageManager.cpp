@@ -1,5 +1,7 @@
 #include "NullMessageManager.hpp"
 
+using namespace std;
+
 void NullMessageManager::clear_if_necessary()
 {
 }
@@ -11,23 +13,27 @@ void NullMessageManager::send(const bool halt_afterwards, const bool reset_after
 void NullMessageManager::send_and_halt()
 {
 }
+
+void NullMessageManager::alert(const string& message)
+{
+}
     
-bool NullMessageManager::add_new_message(const std::string& message, const Colour colour, const MessageImportance& importance)
+bool NullMessageManager::add_new_message(const string& message, const Colour colour, const MessageImportance& importance)
 {
   return false;
 }
 
-bool NullMessageManager::add_new_confirmation_message(const std::string& message, const Colour colour, const MessageImportance& importance)
+bool NullMessageManager::add_new_confirmation_message(const string& message, const Colour colour, const MessageImportance& importance)
 {
   return false;
 }
 
-bool NullMessageManager::add_new_message_with_pause(const std::string& message, const Colour colour, const MessageImportance& importance)
+bool NullMessageManager::add_new_message_with_pause(const string& message, const Colour colour, const MessageImportance& importance)
 {
   return false;
 }
 
-std::string NullMessageManager::add_new_message_with_prompt(const std::string& message, const Colour colour, const MessageImportance& importance)
+std::string NullMessageManager::add_new_message_with_prompt(const string& message, const Colour colour, const MessageImportance& importance)
 {
   std::string no_msg;
   return no_msg;

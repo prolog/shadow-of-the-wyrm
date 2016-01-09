@@ -43,14 +43,9 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
           {
             process_result = 0;
 
-            // Add a message about the item being cursed.
+            // Add an alert, as we're in a separate window.
             IMessageManager& manager = MessageManagerFactory::instance();
-
-            // JCD FIXME - Assumes stdscr!  Update CursesDisplay everywhere and
-            // test extensively!
-            manager.clear_if_necessary();
-            manager.add_new_message_with_pause(StringTable::get(EquipmentTextKeys::EQUIPMENT_REMOVAL_CURSED));
-            manager.send();
+            manager.alert(StringTable::get(EquipmentTextKeys::EQUIPMENT_REMOVAL_CURSED));
           }
           else
           {

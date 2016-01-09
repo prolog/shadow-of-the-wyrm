@@ -26,6 +26,11 @@ class CursesDisplay : public Display
     void clear_messages() override;
     void clear_display() override;
 
+    // Adds a message in the current window, clearing any existing messages and
+    // requiring user input.
+    void add_alert(const std::string& message) override;
+
+    // Functions to add messages to the message buffer.
     void add_message(const std::string& message, const bool reset_prompt) override;
     void add_message(const std::string& message, const Colour colour, const bool reset_prompt) override;
     std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt) override;
