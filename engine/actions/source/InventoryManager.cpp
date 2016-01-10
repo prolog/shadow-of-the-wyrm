@@ -45,10 +45,11 @@ ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFi
           all_filters.insert(all_filters.end(), additional_display_filter_list.begin(), additional_display_filter_list.end());
 
           display_inventory = InventoryTranslator::create_display_inventory(creature, inv, all_filters);
-          InventoryScreen is(display, creature, display_inventory);
+          bool user_filters = !additional_display_filter_list.empty();
+          InventoryScreen is(display, creature, display_inventory, user_filters);
           string inv_selection = is.display();
-          string external_id;
 
+          string external_id;
           int option_id = Char::keyboard_selection_char_to_int(inv_selection.at(0));
           OptionPtr op = is.get_option(option_id);
           

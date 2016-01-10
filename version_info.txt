@@ -16,6 +16,9 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
 - Deities can curse a player's equipment when angry.
 
+- When applying additional, user-requested filters on the Inventory
+  screen, the title text indicates that additional filters are in place.
+
 - Bug fixes:
 
   - Clearing inventory filters wasn't respecting the original filter.
