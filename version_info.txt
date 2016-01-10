@@ -19,6 +19,9 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 - When applying additional, user-requested filters on the Inventory
   screen, the title text indicates that additional filters are in place.
 
+- The equipment screen now displays colours for cursed (bold red) and
+  blessed (bold white) items.
+
 - Bug fixes:
 
   - Clearing inventory filters wasn't respecting the original filter.
