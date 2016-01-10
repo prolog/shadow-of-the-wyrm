@@ -12,6 +12,8 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
 - The cursed uncursing effect curses the creature's equipment.
 
+- After prayer, deities may now decide to uncurse the player's equipment.
+
 - Bug fixes:
 
   - Clearing inventory filters wasn't respecting the original filter.
