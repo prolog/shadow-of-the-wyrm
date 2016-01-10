@@ -332,7 +332,7 @@ void CursesDisplay::add_alert(const string& message)
 
   int prev_curs_state = curs_set(1);
   clear_message_buffer();
-  add_message(message, Colour::COLOUR_RED, false);
+  add_message(message, Colour::COLOUR_BOLD_RED, false);
   wrefresh(message_buffer_screen);
   wgetch(message_buffer_screen);
   clear_message_buffer();
