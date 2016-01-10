@@ -20,6 +20,9 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
   - Clearing inventory filters wasn't respecting the original filter.
 
+  - The order of potential actions was allowing ticked-off deities to 
+    help a creature rather than doing something nasty.
+
 Shadow of the Wyrm v0.4.6 "Spinacino"
 - Version declared January 2, 2016.  Version finalized January 6, 2016.
 

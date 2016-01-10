@@ -26,7 +26,10 @@ void DeityDecisionStrategy::initialize_decisions()
 {
   decisions.clear();
 
-  DeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<CrowningDeityDecisionStrategyHandler>(deity_id);
+  DeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<DislikeDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(cur_decision);
+  
+  cur_decision = std::make_shared<CrowningDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
   cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>(deity_id);
@@ -48,9 +51,6 @@ void DeityDecisionStrategy::initialize_decisions()
   decisions.push_back(cur_decision);
 
   cur_decision = std::make_shared<SatiateDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
-
-  cur_decision = std::make_shared<DislikeDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 }
 
