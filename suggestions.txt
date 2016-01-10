@@ -2,8 +2,6 @@ Me:
 - When filtering items in the Inventory screen, potentially change the 
   Inventory screen title?
 - Cursed items should show up in red on the eq screen
-- Ticked-off deities should be able to curse the player's equipment and/or
-  inventory.
 - Add a "resting counter" to the message manager: ie, "Resting...(1/100)"
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
