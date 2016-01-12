@@ -986,6 +986,7 @@
 				<xs:element name="Skill" type="tns:TrainedWeaponSkill"/>
 				<xs:element name="RangedSkill" type="tns:TrainedWeaponSkill"/>
 				<xs:element name="RequiresRangedWeapon" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="HandsRequired" type="tns:HandsType" minOccurs="0"/>
 				<xs:element name="Difficulty" type="xs:integer"/>
 				<xs:element name="Speed" type="xs:integer"/>
 				<xs:element name="Damage" type="tns:Damage"/>
@@ -1064,6 +1065,15 @@
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->
+<xs:simpleType name="HandsType">
+	<xs:annotation>
+		<xs:documentation>Number of hands required to use a melee weapon.</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="1"/>
+		<xs:maxInclusive value="2"/>
+	</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="TrackedDeityAction">
 	<xs:annotation>
 		<xs:documentation>Actions that deities may take an interest in, one way or the other</xs:documentation>

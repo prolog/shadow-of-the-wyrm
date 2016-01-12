@@ -22,6 +22,8 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 - The equipment screen now displays colours for cursed (bold red) and
   blessed (bold white) items.
 
+- Added handedness to weapons.
+
 - Bug fixes:
 
   - Clearing inventory filters wasn't respecting the original filter.

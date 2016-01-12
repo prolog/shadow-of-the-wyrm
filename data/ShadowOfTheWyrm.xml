@@ -23105,6 +23105,7 @@
 				</Resistances>
 				<Skill>1002</Skill>
 				<RangedSkill>2001</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>46</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
@@ -23155,6 +23156,7 @@
 				</Resistances>
 				<Skill>1002</Skill>
 				<RangedSkill>2001</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>46</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
@@ -23239,6 +23241,7 @@
 				</Resistances>
 				<Skill>1005</Skill>
 				<RangedSkill>2002</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>47</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
@@ -23269,6 +23272,7 @@
 				</Resistances>
 				<Skill>1005</Skill>
 				<RangedSkill>2002</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>47</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
@@ -23293,6 +23297,7 @@
 				</Resistances>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>46</Difficulty>
 				<Speed>5</Speed>
 				<Damage>
@@ -23559,6 +23564,7 @@
 				</Resistances>
 				<Skill>1002</Skill>
 				<RangedSkill>2001</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>50</Difficulty>
 				<Speed>12</Speed>
 				<Damage>
@@ -23650,6 +23656,7 @@
 				</Resistances>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>52</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
@@ -23940,6 +23947,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>46</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
@@ -23967,6 +23975,7 @@
 				</Resistances>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>47</Difficulty>
 				<Speed>7</Speed>
 				<Damage>
@@ -24193,6 +24202,7 @@
 				</Resistances>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>47</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
@@ -24316,6 +24326,7 @@
 				<DangerLevel>3</DangerLevel>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
+				<HandsRequired>2</HandsRequired>
 				<Difficulty>47</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
