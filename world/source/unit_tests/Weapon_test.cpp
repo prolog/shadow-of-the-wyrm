@@ -20,6 +20,7 @@ TEST(SL_World_Weapon, saveload)
   m.set_to_hit(17);
   m.set_addl_damage(4);
   m.set_speed_bonus(2);
+  m.set_hands_required(2);
   m.set_additional_property("testprop", "testval");
   r.set_quantity(1333);
   r.set_value(444);
@@ -46,5 +47,6 @@ TEST(SL_World_Weapon, saveload)
   EXPECT_EQ(17, m2.get_to_hit());
   EXPECT_EQ(4, m2.get_addl_damage());
   EXPECT_EQ(2, m2.get_speed_bonus());
+  EXPECT_EQ(2, m2.get_hands_required());
   EXPECT_EQ(444, r2.get_value());
 }
