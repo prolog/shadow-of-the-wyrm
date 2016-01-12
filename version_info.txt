@@ -24,6 +24,8 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
 - Added handedness to weapons.
 
+- New items: greatsword, greataxe
+
 - Bug fixes:
 
   - Clearing inventory filters wasn't respecting the original filter.

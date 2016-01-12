@@ -23814,6 +23814,27 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="great_sword">
+				<DescriptionSID>GREAT_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>GREAT_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight>
+					<Pounds>20</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>1</DangerLevel>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<HandsRequired>2</HandsRequired>
+				<Difficulty>48</Difficulty>
+				<Speed>12</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>10</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="lightning_sword">
 				<DescriptionSID>LIGHTNING_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>LIGHTNING_SWORD_USAGE_SID</UsageDescriptionSID>
@@ -24132,6 +24153,26 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>8</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="great_axe">
+				<DescriptionSID>GREAT_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>GREAT_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>110</Value>
+				<Weight>
+					<Pounds>20</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>1</DangerLevel>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>49</Difficulty>
+				<Speed>12</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>20</NumSides>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
