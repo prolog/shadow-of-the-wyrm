@@ -23160,8 +23160,8 @@
 				<Difficulty>46</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
-					<NumDice>8</NumDice>
-					<NumSides>12</NumSides>
+					<NumDice>9</NumDice>
+					<NumSides>10</NumSides>
 					<Type>0</Type>
 				</Damage>
 				<Slays>
@@ -24247,9 +24247,8 @@
 				<Difficulty>47</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
-					<NumDice>6</NumDice>
-					<NumSides>12</NumSides>
-					<Modifier>6</Modifier>
+					<NumDice>4</NumDice>
+					<NumSides>20</NumSides>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>			
