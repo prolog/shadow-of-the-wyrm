@@ -83,7 +83,10 @@ class Item : public ISerializable
     
     virtual void set_artifact(const bool new_artifact);
     virtual bool get_artifact() const;
-    
+
+    virtual void set_hands_required(const int new_hands_required);
+    int get_hands_required() const;
+
     virtual void set_type(const ItemType type);
     virtual ItemType get_type() const;
     
@@ -195,6 +198,7 @@ class Item : public ISerializable
     bool status_identified;
     bool item_identified;
     bool artifact;
+    int hands_required;
     ItemType type;
     uchar symbol;
     Colour colour;

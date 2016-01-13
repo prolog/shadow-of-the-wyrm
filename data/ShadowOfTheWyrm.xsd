@@ -860,6 +860,7 @@
 		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
 <!--		<xs:element name="ItemType" type="tns:ItemType"/> -->
 		<xs:element name="Artifact" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="HandsRequired" type="tns:HandsType" minOccurs="0"/>
 		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>
 		<xs:element name="Glow" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="TextDetails" type="tns:TextDetails" minOccurs="0"/>
@@ -986,7 +987,6 @@
 				<xs:element name="Skill" type="tns:TrainedWeaponSkill"/>
 				<xs:element name="RangedSkill" type="tns:TrainedWeaponSkill"/>
 				<xs:element name="RequiresRangedWeapon" type="xs:boolean" minOccurs="0"/>
-				<xs:element name="HandsRequired" type="tns:HandsType" minOccurs="0"/>
 				<xs:element name="Difficulty" type="xs:integer"/>
 				<xs:element name="Speed" type="xs:integer"/>
 				<xs:element name="Damage" type="tns:Damage"/>

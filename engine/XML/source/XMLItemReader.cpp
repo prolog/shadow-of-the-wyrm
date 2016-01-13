@@ -84,6 +84,9 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     // If the item is an artifact, set the maximum to 1.
     if (is_artifact) gv.set_maximum(1);
 
+    int hands_required = XMLUtils::get_child_node_int_value(item_node, "HandsRequired", 1);
+    item->set_hands_required(hands_required);
+
     MaterialType material_type = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(item_node, "Material", static_cast<int>(MaterialType::MATERIAL_TYPE_WOOD)));
     item->set_material_type(material_type);
 

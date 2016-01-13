@@ -3,7 +3,7 @@
 #include "Food.hpp"
 #include "Plant.hpp"
 
-TEST(SL_Engine_Items_EditableItemFilter, passes_test)
+TEST(SL_Engine_Items_EdibleItemFilter, passes_test)
 {
   EdibleItemFilter eif;
 

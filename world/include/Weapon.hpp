@@ -31,9 +31,6 @@ class Weapon : public Wearable
     virtual void set_requires_ranged_weapon(const bool new_requires_ranged_weapon);
     virtual bool get_requires_ranged_weapon() const;
     
-    virtual void set_hands_required(const int new_hands_required);
-    int get_hands_required() const;
-
     virtual void set_slays_races(const std::vector<std::string>& new_slay_races);
     std::vector<std::string> get_slays_races() const;
 
@@ -55,7 +52,6 @@ class Weapon : public Wearable
     SkillType trained_skill;
     SkillType trained_ranged_skill;
     bool requires_ranged_weapon;
-    int hands_required;
     std::vector<std::string> slays_races;
 };
 

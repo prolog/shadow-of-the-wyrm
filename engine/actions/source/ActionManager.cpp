@@ -179,8 +179,22 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
       list<EquipmentWornLocation> worn_list;
       worn_list.push_back(worn_location);
       
-      list<IItemFilterPtr> worn_filter = ItemFilterFactory::create_equipment_filter(worn_list);
-      ItemPtr item_in_slot = inventory(creature, creature->get_inventory(), worn_filter, {}, false);
+      list<IItemFilterPtr> worn_filter = ItemFilterFactory::create_equipment_filter(worn_list);      
+      list<IItemFilterPtr> total_filter(worn_filter);
+
+      // JCD FIXME: Refactor this to return a list of filters on a per-slot
+      // basis.
+      //
+      // If the creature is wielding an item, or holding it in its off-hand,
+      // then we need to check to see if there are enough hands available
+      // for this.  Don't check for other slots (rings, head, etc).
+      if (worn_location == EquipmentWornLocation::EQUIPMENT_WORN_WIELDED || worn_location == EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND)
+      {
+        list<IItemFilterPtr> hands_filter = ItemFilterFactory::create_hands_required_filter(creature->get_hands_available());
+        total_filter.insert(total_filter.end(), hands_filter.begin(), hands_filter.end());
+      }
+
+      ItemPtr item_in_slot = inventory(creature, creature->get_inventory(), total_filter, {}, false);
       
       // This is null if no item was selected.
       if (item_in_slot)
