@@ -22,7 +22,9 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 - The equipment screen now displays colours for cursed (bold red) and
   blessed (bold white) items.
 
-- Added handedness to weapons.
+- Added hands-required to items.  When wielding an item in the wielded/
+  off-hand slot, the number of hands free is checked against the number
+  of hands required to wield the item.
 
 - New items: greatsword, greataxe.
 

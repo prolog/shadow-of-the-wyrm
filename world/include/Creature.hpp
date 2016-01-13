@@ -160,6 +160,7 @@ class Creature : public ISerializable
     Damage get_base_damage() const;
     
     Equipment& get_equipment();
+    int get_hands_available() const;
     IInventoryPtr get_inventory();
     
     // Get the weight carried, in oz

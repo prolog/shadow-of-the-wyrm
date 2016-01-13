@@ -1,5 +1,6 @@
 #include "DisplayItemTypeFactory.hpp"
 #include "EdibleItemFilter.hpp"
+#include "HandsRequiredItemFilter.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemMaterialFilter.hpp"
 #include "ItemPropertyFilter.hpp"
@@ -137,6 +138,16 @@ list<IItemFilterPtr> ItemFilterFactory::create_edible_filter()
   IItemFilterPtr readable_filter = std::make_shared<EdibleItemFilter>();
   it_filter.push_back(readable_filter);
   
+  return it_filter;
+}
+
+list<IItemFilterPtr> ItemFilterFactory::create_hands_required_filter(const int hands_available)
+{
+  list<IItemFilterPtr> it_filter;
+
+  IItemFilterPtr hands_req_filter = std::make_shared<HandsRequiredItemFilter>(hands_available);
+  it_filter.push_back(hands_req_filter);
+
   return it_filter;
 }
 
