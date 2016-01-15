@@ -219,6 +219,7 @@
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>shroud_fate</Artifact>
 				<Artifact>akos_akari</Artifact>
+				<Artifact>whisperwind</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>air_elemental</Summon>
@@ -257,6 +258,7 @@
 				<Artifact>athame_winter</Artifact>
 				<Artifact>akkar</Artifact>
 				<Artifact>akos_akari</Artifact>
+				<Artifact>whisperwind</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>water_elemental</Summon>
@@ -23511,6 +23513,38 @@
 				<Slays>
 					<Slay>_undead</Slay>
 					<Slay>_demon</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="whisperwind">
+				<DescriptionSID>WHISPERWIND_SID</DescriptionSID>
+				<UsageDescriptionSID>WHISPERWIND_USAGE_SID</UsageDescriptionSID>
+				<Value>1676</Value>
+				<Weight>
+					<Pounds>15</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<HandsRequired>2</HandsRequired>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.15</Slash>
+					<Cold>0.10</Cold>
+				</Resistances>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>48</Difficulty>
+				<Speed>10</Speed>
+				<Damage>
+					<NumDice>8</NumDice>
+					<NumSides>12</NumSides>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+					<Slay>_demon</Slay>
+					<Slay>_monster</Slay>
+					<Slay>_dragon</Slay>
 				</Slays>
 			</Weapon>
 			<Weapon id="bloodsinger">

@@ -1,4 +1,6 @@
 Me:
+- 4chan found a bug where one of the spellbooks' description SIDs isn't
+  showing up.
 - Add a "resting counter" to the message manager: ie, "Resting...(1/100)"
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
