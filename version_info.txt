@@ -28,6 +28,8 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
 - New items: greatsword, greataxe.
 
+- New artifacts: boreal scythe "Whisperwind" (The Trickster, Shiver).
+
 - Bug fixes:
 
   - Clearing inventory filters wasn't respecting the original filter.
