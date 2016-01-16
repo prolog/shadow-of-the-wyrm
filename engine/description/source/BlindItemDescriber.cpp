@@ -20,9 +20,9 @@ string BlindItemDescriber::describe_usage() const
   return describe();
 }
 
-// Nothing shows up for the additional desc when blind.
-string BlindItemDescriber::describe_additional() const
+// Nothing shows up for the resists when blind.
+string BlindItemDescriber::describe_resists() const
 {
-  string no_addl_desc;
-  return no_addl_desc;
+  string no_res;
+  return no_res;
 }
