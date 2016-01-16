@@ -17,13 +17,14 @@ end
 -- If the player knows how to weave, she presents the Mantle of Wintersea
 -- instead.
 local function hild_weaving_completion_fn()
-  local weaving = 49
+  local weaving = 48
   local skill_value = get_skill_value("player", weaving)
 
   if (skill_value < 80) then
     -- If the player hasn't come close to mastering weaving, Hild
     -- will teach him or her a little more.
-    set_skill_value("player", weaving, skill_value + 25)
+    local weaving_incr = RNG_range(15, 25)
+    set_skill_value("player", weaving, skill_value + weaving_incr)
     clear_and_add_message("HILD_WEAVING_QUEST_COMPLETE_SID")
   else
     -- Set the skill to the maximum value, and then grant the mantle.

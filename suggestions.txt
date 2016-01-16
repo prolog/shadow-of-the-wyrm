@@ -1,6 +1,4 @@
 Me:
-- 4chan: crash when chatting near Hild/Cynwise trying to complete flower
-  quest.
 - 4chan: resists non-obvious (maybe add "Res" to the start)
 - 4chan found a bug where one of the spellbooks' description SIDs isn't
   showing up (make a Python script to look up sets of resource strings
