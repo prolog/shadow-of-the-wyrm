@@ -26,6 +26,9 @@ Shadow of the Wyrm v0.4.7 "Llobet"
   off-hand slot, the number of hands free is checked against the number
   of hands required to wield the item.
 
+- White wildflowers have been renamed to cream wildflowers to reduce
+  confusion for the early whiteflower quest.
+
 - New items: greatsword, greataxe.
 
 - New artifacts: boreal scythe "Whisperwind" (The Trickster, Shiver).
