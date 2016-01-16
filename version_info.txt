@@ -29,6 +29,8 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 - White wildflowers have been renamed to cream wildflowers to reduce
   confusion for the early whiteflower quest.
 
+- Merchants now start with Literacy (/rlg).
+
 - New items: greatsword, greataxe.
 
 - New artifacts: boreal scythe "Whisperwind" (The Trickster, Shiver).

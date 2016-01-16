@@ -2465,6 +2465,7 @@
 					<Detection>15</Detection>
 					<Herbalism>10</Herbalism>
 					<Jeweler>15</Jeweler>
+					<Literacy>20</Literacy>
 					<Lore>20</Lore>
 				</GeneralSkills>
 				<WeaponSkills>
