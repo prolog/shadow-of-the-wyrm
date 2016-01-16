@@ -35,6 +35,10 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
 - New artifacts: boreal scythe "Whisperwind" (The Trickster, Shiver).
 
+- The second line on the equipment screen now shows "Res:" to make it
+  clearer that the numbers and the abbreviations are resistance deltas
+  (/rlg).
+
 - Bug fixes:
 
   - Clearing inventory filters wasn't respecting the original filter.
@@ -43,7 +47,7 @@ Shadow of the Wyrm v0.4.7 "Llobet"
     help a creature rather than doing something nasty.
 
   - Crash when talking to Hild after gathering the required twenty
-    whiteflowers (rlg).
+    whiteflowers (/rlg).
 
 Shadow of the Wyrm v0.4.6 "Spinacino"
 - Version declared January 2, 2016.  Version finalized January 6, 2016.
