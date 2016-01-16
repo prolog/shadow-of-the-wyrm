@@ -1659,6 +1659,8 @@ int Skills::get_value(const SkillType& skill_name) const
   {
     value = skill->get_value();
   }
+
+  return value;
 }
 
 void Skills::set_skill(const SkillType& st, const SkillPtr skill)

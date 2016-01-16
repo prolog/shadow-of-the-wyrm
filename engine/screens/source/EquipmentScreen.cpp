@@ -4,6 +4,7 @@
 #include "EquipmentTranslator.hpp"
 #include "Game.hpp"
 #include "OptionsComponent.hpp"
+#include "ResistanceTextKeys.hpp"
 #include "TextComponent.hpp"
 #include "TextKeys.hpp"
 
@@ -77,9 +78,20 @@ void EquipmentScreen::initialize()
 
     eq_screen.push_back(options);
 
+    string res_abrv = StringTable::get(ResistanceTextKeys::RESISTANCES_ABRV);
     string item_addl_desc;
-    String::reset_and_pad(item_addl_desc, longest + 6 /* 6 = extra padding for '[a] : ' */);
-    item_addl_desc += display_item.get_additional_description();
+    string di_addl_desc = display_item.get_additional_description();
+    String::reset_and_pad(item_addl_desc, 6 /* 6 = extra padding for '[a] : ' */);
+
+    // Only show the resistances abbreviation if the item's got anything...
+    if (!di_addl_desc.empty())
+    {
+      ostringstream ss;
+      ss << String::add_trailing_spaces(res_abrv, longest) << ": " << di_addl_desc;
+      di_addl_desc = ss.str();
+    }
+
+    item_addl_desc += di_addl_desc;
     TextComponentPtr eq_text = std::make_shared<TextComponent>(item_addl_desc, Colour::COLOUR_BOLD_YELLOW);
     eq_screen.push_back(eq_text);
   }
