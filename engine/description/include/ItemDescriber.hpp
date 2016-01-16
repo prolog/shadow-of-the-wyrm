@@ -11,10 +11,7 @@ class ItemDescriber : public IDescriber
 
     virtual std::string describe() const override;
     virtual std::string describe_usage() const;
-
-    // Describe any additional details, i.e. desc for line2 of the eq
-    // screen.
-    virtual std::string describe_additional() const;
+    virtual std::string describe_resists() const;
 
   protected:
     ItemPtr item;

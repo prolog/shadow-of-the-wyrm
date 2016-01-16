@@ -25,12 +25,12 @@ DisplayItem ItemTranslator::create_display_item(const bool blind, const ItemPtr&
   {
     ItemDescriberPtr item_describer = ItemDescriberFactory::create_item_describer(blind, item);
     string desc = item_describer->describe();
-    string additional_desc = item_describer->describe_additional();
+    string res_desc = item_describer->describe_resists();
     
     string id = item->get_id();
 
     display_item.set_description(desc);
-    display_item.set_additional_description(additional_desc);
+    display_item.set_additional_description(res_desc);
     display_item.set_id(id);
 
     DisplayItemColourTranslator dict;

@@ -8,7 +8,6 @@ class BlindItemDescriber : public ItemDescriber
     BlindItemDescriber();
     virtual std::string describe() const override;
     virtual std::string describe_usage() const override;
-
-    virtual std::string describe_additional() const override;
+    virtual std::string describe_resists() const override;
 };
 
