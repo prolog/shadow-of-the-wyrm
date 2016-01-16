@@ -26850,7 +26850,7 @@
 			</Spellbook>
 			<Spellbook id="cleansing_spellbook">
 				<DescriptionSID>CLEANSING_SPELLBOOK_SID</DescriptionSID>
-				<UnidentifiedDescriptionSID>UNID_CLEANSIG_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CLEANSING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>CLEANSING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_CLEANSING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>30</Value>

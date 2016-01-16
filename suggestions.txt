@@ -1,7 +1,4 @@
 Me:
-- 4chan found a bug where one of the spellbooks' description SIDs isn't
-  showing up (make a Python script to look up sets of resource strings
-  against a given ini).
 - Update gaining resists so that the delta needs to be more than a certain
   amount before you get something from a corpse.
 - Add a "resting counter" to the message manager: ie, "Resting...(1/100)"

@@ -35,7 +35,7 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
 - New artifacts: boreal scythe "Whisperwind" (The Trickster, Shiver).
 
-- The second line on the equipment screen now shows "Res:" to make it
+- The second line on the equipment screen now shows "Resists:" to make it
   clearer that the numbers and the abbreviations are resistance deltas
   (/rlg).
 
@@ -48,6 +48,10 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
   - Crash when talking to Hild after gathering the required twenty
     whiteflowers (/rlg).
+
+  - Typo in one of the resource string names for the Cleansing spellbook,
+    which caused the book's unid'd name to show up as blank in the UI.
+    Created a Python script to catch this (/rlg).
 
 Shadow of the Wyrm v0.4.6 "Spinacino"
 - Version declared January 2, 2016.  Version finalized January 6, 2016.
