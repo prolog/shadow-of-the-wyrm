@@ -42,6 +42,9 @@ Shadow of the Wyrm v0.4.7 "Llobet"
   - The order of potential actions was allowing ticked-off deities to 
     help a creature rather than doing something nasty.
 
+  - Crash when talking to Hild after gathering the required twenty
+    whiteflowers (rlg).
+
 Shadow of the Wyrm v0.4.6 "Spinacino"
 - Version declared January 2, 2016.  Version finalized January 6, 2016.
 

@@ -943,6 +943,11 @@ int get_skill_value(lua_State* ls)
     if (creature)
     {
       skill_value = creature->get_skills().get_value(skill_name);
+
+      if (skill_value == -1)
+      {
+        Log::instance().error("Unknown skill: " + to_string(static_cast<int>(skill_name)));
+      }
     }
   }
   else
