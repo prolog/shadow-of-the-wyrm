@@ -53,6 +53,9 @@ Shadow of the Wyrm v0.4.7 "Llobet"
     which caused the book's unid'd name to show up as blank in the UI.
     Created a Python script to catch this (/rlg).
 
+  - Incorporeal creatures on blocking features could not be attacked
+    (Dave Keen).
+
 Shadow of the Wyrm v0.4.6 "Spinacino"
 - Version declared January 2, 2016.  Version finalized January 6, 2016.
 
