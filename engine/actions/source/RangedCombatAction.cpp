@@ -140,9 +140,9 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
 
       if (target_tile != nullptr)
       {
-        bool continue_attack = check_target_tile_for_friendly_creature(creature, target_tile);
+        pair<bool, bool> firing_details = check_target_tile_for_friendly_creature(creature, target_tile);
 
-        if (continue_attack)
+        if (firing_details.first)
         {
           acv = fire_acv;
 
@@ -178,6 +178,15 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
 
           // Determine whether it's a hit or miss.
           fire_at_given_coordinates(creature, current_map, target_coords);
+
+          // If the creature fired at a friendly creature, notify the deity
+          // of the action.  It doesn't matter whether or not the attack hit
+          // or missed, or if the creature was ultimately blocked by an 
+          // obstacle or another creature - it's the intention that counts.
+          if (firing_details.second)
+          {
+            game.get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+          }
         }
       }      
     }
@@ -388,9 +397,9 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
   return ammunition_destroyed;
 }
 
-bool RangedCombatAction::check_target_tile_for_friendly_creature(CreaturePtr creature, TilePtr target_tile)
+pair<bool, bool> RangedCombatAction::check_target_tile_for_friendly_creature(CreaturePtr creature, TilePtr target_tile)
 {
-  bool confirm = true;
+  pair<bool, bool> firing_details(true, false);
 
   // Is there a friendly creature present?
   if (target_tile->has_creature())
@@ -403,18 +412,19 @@ bool RangedCombatAction::check_target_tile_for_friendly_creature(CreaturePtr cre
       {
         IMessageManager& manager = MessageManagerFactory::instance();
         manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
-        confirm = creature->get_decision_strategy()->get_confirmation();
+        firing_details.first = creature->get_decision_strategy()->get_confirmation();
 
-        if (confirm)
+        if (firing_details.first)
         {
-          Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+          firing_details.second = true;
         }
       }
     }
   }
 
-  return confirm;
+  return firing_details;
 }
+
 ActionCostValue RangedCombatAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
