@@ -38,8 +38,12 @@ class RangedCombatAction : public IActionManager
     
     // Fire creature's weapon at the tile, checking to see if
     // anything is hit along the way.
-    void fire_weapon_at_tile(CreaturePtr creature);
-    
+    ActionCostValue fire_weapon_at_tile(CreaturePtr creature, const ActionCostValue fire_acv);
+
+    // The target tile may have a friendly creature present.  If it does,
+    // confirm whether to actually continue the attack.
+    bool check_target_tile_for_friendly_creature(CreaturePtr creature, TilePtr target_tile);
+
     // Check to see if the creature has a ranged combat target selected.
     bool has_ranged_combat_target(CreaturePtr creature);
 };

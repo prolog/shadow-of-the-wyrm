@@ -39,6 +39,9 @@ Shadow of the Wyrm v0.4.7 "Llobet"
   clearer that the numbers and the abbreviations are resistance deltas
   (/rlg).
 
+- Added a prompt when targetting friendly creatures via ranged combat
+  (Dave Keen).
+
 - Bug fixes:
 
   - Clearing inventory filters wasn't respecting the original filter.
