@@ -29,7 +29,6 @@ Me:
 
 Dave Keen:
 - way too long to regen HP
-- incorporeal creatures in closed doors can't be attacked
 
 barrabus: 
 - Extra descs for items.

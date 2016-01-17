@@ -167,9 +167,13 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
   if (creatures_new_tile)
   {
+    if (MapUtils::is_creature_present(creatures_new_tile))
+    {
+      movement_success = handle_movement_into_occupied_tile(creature, creatures_new_tile, map, new_coords, d);
+    }
     // Only try to handle a blocking terrain feature if the creature is corporeal.
     // Spirits don't care about closed doors, etc!
-    if (MapUtils::is_blocking_feature_present(creatures_new_tile) && !creature_incorporeal)
+    else if (MapUtils::is_blocking_feature_present(creatures_new_tile) && !creature_incorporeal)
     {
       // If there is a feature, handle it, prompting the creature for confirmation
       // if necessary.
@@ -187,10 +191,6 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       // Regardless of whether the handling did anything, it still costs
       // an action.
       movement_success = 1;
-    }
-    else if (MapUtils::is_creature_present(creatures_new_tile))
-    {
-      movement_success = handle_movement_into_occupied_tile(creature, creatures_new_tile, map, new_coords, d);
     }
     else if (creatures_new_tile->get_is_blocking(creature) && !creature_incorporeal)
     {
