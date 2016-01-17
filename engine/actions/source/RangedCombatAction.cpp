@@ -22,6 +22,8 @@
 #include "RNG.hpp"
 #include "ScriptEngine.hpp"
 #include "SelectionUtils.hpp"
+#include "TextKeys.hpp"
+#include "TextMessages.hpp"
 #include "TileSelectionAction.hpp"
 
 using namespace std;
@@ -53,7 +55,7 @@ ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature)
       // If the action advances a turn, we've selected a tile:
       if (action_cost_value)
       {
-        fire_weapon_at_tile(creature);
+        action_cost_value = fire_weapon_at_tile(creature, action_cost_value);
       }
     }
     else
@@ -92,7 +94,7 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
     }
   }
   
-  //Select the tile, and then fire.
+  // Select the tile, and then fire.
   TileSelectionAction tsm;
   KeyboardCommandMapPtr fire_weapon_keyboard_bindings = std::make_shared<FireWeaponTileSelectionKeyboardCommandMap>();
   tsm.set_keyboard_command_map(fire_weapon_keyboard_bindings);
@@ -114,8 +116,9 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
 // such blocking instance.
 //
 // JCD TODO: Checks on range of weapon.
-void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
+ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, const ActionCostValue fire_acv)
 {
+  ActionCostValue acv = 0;
   Game& game = Game::instance();
   
   if (creature)
@@ -131,41 +134,56 @@ void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
       pair<string, Coordinate> target_info = t_it->second;
       Coordinate creature_coords = current_map->get_location(creature->get_id());
       Coordinate target_coords = target_info.second;
-      
-      // Get the attack path so that we can determine the actual target coords,
-      // and create an animation if necessary.
-      vector<Coordinate> attack_path = get_actual_coordinates_given_missile_path(creature, creature_coords, target_coords, current_map);
-      vector<pair<DisplayTile, vector<Coordinate>>> animation_frames;
 
-      for(const Coordinate& c : attack_path)
+      TilePtr target_tile = current_map->at(target_coords);
+      bool do_target = true;
+
+      if (target_tile != nullptr)
       {
-        vector<Coordinate> frame;
-        frame.push_back(c);
-        animation_frames.push_back(make_pair(projectile_disp, frame));
-      }
-      
-      if (!attack_path.empty())
-      {
-        target_coords = attack_path.back();
+        bool continue_attack = check_target_tile_for_friendly_creature(creature, target_tile);
 
-        DisplayPtr display = game.get_display();
+        if (continue_attack)
+        {
+          acv = fire_acv;
 
-        // Create the animation showing the flight of the projectile.
-        AnimationTranslator anim_tr(display);
-        MapPtr current_map = game.get_current_map();
-        MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-        CurrentCreatureAbilities cca;
-        CreaturePtr player = game.get_current_player();
+          // Get the attack path so that we can determine the actual target coords,
+          // and create an animation if necessary.
+          vector<Coordinate> attack_path = get_actual_coordinates_given_missile_path(creature, creature_coords, target_coords, current_map);
+          vector<pair<DisplayTile, vector<Coordinate>>> animation_frames;
 
-        Animation anim = anim_tr.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), animation_frames, true, current_map, fov_map);
+          for (const Coordinate& c : attack_path)
+          {
+            vector<Coordinate> frame;
+            frame.push_back(c);
+            animation_frames.push_back(make_pair(projectile_disp, frame));
+          }
 
-        display->draw_animation(anim);
-      }
+          if (!attack_path.empty())
+          {
+            target_coords = attack_path.back();
 
-      // Determine whether it's a hit or miss.
-      fire_at_given_coordinates(creature, current_map, target_coords);
+            DisplayPtr display = game.get_display();
+
+            // Create the animation showing the flight of the projectile.
+            AnimationTranslator anim_tr(display);
+            MapPtr current_map = game.get_current_map();
+            MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+            CurrentCreatureAbilities cca;
+            CreaturePtr player = game.get_current_player();
+
+            Animation anim = anim_tr.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), animation_frames, true, current_map, fov_map);
+
+            display->draw_animation(anim);
+          }
+
+          // Determine whether it's a hit or miss.
+          fire_at_given_coordinates(creature, current_map, target_coords);
+        }
+      }      
     }
   }
+
+  return fire_acv;
 }
 
 // Get the actual coordinates to fire at, given the missile's flight path.
@@ -370,6 +388,33 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
   return ammunition_destroyed;
 }
 
+bool RangedCombatAction::check_target_tile_for_friendly_creature(CreaturePtr creature, TilePtr target_tile)
+{
+  bool confirm = true;
+
+  // Is there a friendly creature present?
+  if (target_tile->has_creature())
+  {
+    CreaturePtr target_creature = target_tile->get_creature();
+
+    if (!target_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
+    {
+      if (creature->get_is_player())
+      {
+        IMessageManager& manager = MessageManagerFactory::instance();
+        manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
+        confirm = creature->get_decision_strategy()->get_confirmation();
+
+        if (confirm)
+        {
+          Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+        }
+      }
+    }
+  }
+
+  return confirm;
+}
 ActionCostValue RangedCombatAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
