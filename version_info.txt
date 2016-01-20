@@ -31,16 +31,28 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
 - Merchants now start with Literacy (/rlg).
 
-- New items: greatsword, greataxe.
-
-- New artifacts: boreal scythe "Whisperwind" (The Trickster, Shiver).
-
 - The second line on the equipment screen now shows "Resists:" to make it
   clearer that the numbers and the abbreviations are resistance deltas
   (/rlg).
 
 - Added a prompt when targetting friendly creatures via ranged combat
   (Dave Keen).
+
+- HP and AP regeneration has been updated so that instead of always
+  getting 1 HP/AP per tick, the amount is calculated based on race- and
+  class-based multipliers, rounding up to the nearest HP.  Effectively,
+  for almost all race/class combos, the HP rate has at least doubled
+  (except for some very weak classes, like wizards, witchlings, etc).
+  Some race/class combos, like Ogre Warriors/Puglists/etc, will regain
+  HP very quickly.  And some classes (Elven/Gnomish/Fae Wizards, etc)
+  will regain AP much faster.  Finally, the base minutes per HP/AP tick 
+  is now 15, so in general, HP/AP regeneration should be at least twice
+  as fast as in the previous version, and based on the selected race/class
+  combination, could be much faster than that.
+
+- New items: greatsword, greataxe.
+
+- New artifacts: boreal scythe "Whisperwind" (The Trickster, Shiver).
 
 - Bug fixes:
 

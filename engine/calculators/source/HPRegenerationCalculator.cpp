@@ -1,6 +1,8 @@
 #include "HPRegenerationCalculator.hpp"
+#include "ClassManager.hpp"
+#include "RaceManager.hpp"
 
-const uint HPRegenerationCalculator::BASE_MINUTES_PER_HP_TICK = 30;
+const uint HPRegenerationCalculator::BASE_MINUTES_PER_HP_TICK = 15;
 const uint HPRegenerationCalculator::MIN_MINUTES_PER_HP_TICK = 4;
 
 uint HPRegenerationCalculator::calculate_minutes_per_hp_tick(CreaturePtr creature, TilePtr tile)
@@ -31,7 +33,31 @@ uint HPRegenerationCalculator::calculate_minutes_per_hp_tick(CreaturePtr creatur
 
 int HPRegenerationCalculator::calculate_hp_per_tick(CreaturePtr creature)
 {
-  return 1;
+  int hp_per_tick = 1;
+  float mult = 1.0;
+
+  if (creature)
+  {
+    RaceManager rm;
+    ClassManager cm;
+
+    RacePtr race = rm.get_race(creature->get_race_id());
+    ClassPtr cr_class = cm.get_class(creature->get_class_id());
+
+    if (race != nullptr)
+    {
+      mult *= race->get_hp_regen_multiplier();
+    }
+
+    if (cr_class != nullptr)
+    {
+      mult *= cr_class->get_hp_regen_multiplier();
+    }
+
+    hp_per_tick = std::max(1, static_cast<int>(std::ceil(hp_per_tick * mult)));
+  }
+
+  return hp_per_tick;
 }
 
 float HPRegenerationCalculator::get_hp_tick_health_multiplier(CreaturePtr creature)

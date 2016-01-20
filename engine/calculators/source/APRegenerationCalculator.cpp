@@ -1,6 +1,8 @@
 #include "APRegenerationCalculator.hpp"
+#include "ClassManager.hpp"
+#include "RaceManager.hpp"
 
-const uint APRegenerationCalculator::BASE_MINUTES_PER_AP_TICK = 40;
+const uint APRegenerationCalculator::BASE_MINUTES_PER_AP_TICK = 15;
 const uint APRegenerationCalculator::MIN_MINUTES_PER_AP_TICK = 4;
 
 uint APRegenerationCalculator::calculate_minutes_per_ap_tick(CreaturePtr creature, TilePtr tile)
@@ -30,7 +32,31 @@ uint APRegenerationCalculator::calculate_minutes_per_ap_tick(CreaturePtr creatur
 
 int APRegenerationCalculator::calculate_ap_per_tick(CreaturePtr creature)
 {
-  return 1;
+  int ap_per_tick = 1;
+  float mult = 1.0;
+
+  if (creature)
+  {
+    RaceManager rm;
+    ClassManager cm;
+
+    RacePtr race = rm.get_race(creature->get_race_id());
+    ClassPtr cr_class = cm.get_class(creature->get_class_id());
+
+    if (race != nullptr)
+    {
+      mult *= race->get_ap_regen_multiplier();
+    }
+
+    if (cr_class != nullptr)
+    {
+      mult *= cr_class->get_ap_regen_multiplier();
+    }
+
+    ap_per_tick = std::max(1, static_cast<int>(std::ceil(ap_per_tick * mult)));
+  }
+
+  return ap_per_tick;
 }
 
 // A creature's base willpower multiplier is 1.0, with -0.01 per pt of will.

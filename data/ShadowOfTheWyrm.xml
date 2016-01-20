@@ -394,7 +394,9 @@
 				<WeaponSkills/>
 				<RangedWeaponSkills/>
 			</Skills>
-			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
@@ -453,6 +455,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_construct">
 			<UserPlayable>0</UserPlayable>
@@ -511,6 +515,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_demon">
 			<UserPlayable>0</UserPlayable>
@@ -569,6 +575,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_divine">
 			<UserPlayable>0</UserPlayable>
@@ -627,6 +635,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_humanoid">
 			<UserPlayable>0</UserPlayable>
@@ -685,6 +695,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_insect">
 			<UserPlayable>0</UserPlayable>
@@ -743,6 +755,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_jelly">
 			<UserPlayable>0</UserPlayable>
@@ -801,6 +815,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_monster">
 			<UserPlayable>0</UserPlayable>
@@ -859,6 +875,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_plant">
 			<UserPlayable>0</UserPlayable>
@@ -917,6 +935,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_undead">
 			<UserPlayable>0</UserPlayable>
@@ -970,6 +990,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_corporeal_undead" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
@@ -1026,6 +1048,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_spirit" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
@@ -1081,6 +1105,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_dragon">
 			<UserPlayable>0</UserPlayable>
@@ -1133,6 +1159,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="01_human" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -1212,6 +1240,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<LevelScript>level/human.lua</LevelScript>
 		</Race>
 		<Race id="02_woodelf" parent_id="_humanoid">
@@ -1283,6 +1313,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
+			<HPRegenMultiplier>0.9</HPRegenMultiplier>
+			<APRegenMultiplier>1.25</APRegenMultiplier>
 			<LevelScript>level/wood_elf.lua</LevelScript>
 		</Race>
 		<Race id="03_mountainelf" parent_id="_humanoid">
@@ -1356,6 +1388,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<HPRegenMultiplier>1.1</HPRegenMultiplier>
+			<APRegenMultiplier>1.05</APRegenMultiplier>
 			<LevelScript>level/mountain_elf.lua</LevelScript>
 		</Race>
 		<Race id="04_snakeling" parent_id="_humanoid">
@@ -1426,6 +1460,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<HPRegenMultiplier>0.9</HPRegenMultiplier>
+			<APRegenMultiplier>1.1</APRegenMultiplier>
 			<LevelScript>level/snakeling.lua</LevelScript>
 		</Race>
 		<Race id="05_fae" parent_id="_humanoid">
@@ -1497,6 +1533,8 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.9</ExperienceMultiplier>
+			<HPRegenMultiplier>0.8</HPRegenMultiplier>
+			<APRegenMultiplier>1.4</APRegenMultiplier>
 			<LevelScript>level/fae.lua</LevelScript>
 		</Race>
 		<Race id="06_dwarf" parent_id="_humanoid">
@@ -1568,6 +1606,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<HPRegenMultiplier>1.2</HPRegenMultiplier>
+			<APRegenMultiplier>0.9</APRegenMultiplier>
 			<LevelScript>level/dwarf.lua</LevelScript>
 		</Race>
 		<Race id="07_goblin" parent_id="_humanoid">
@@ -1640,6 +1680,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<LevelScript>level/goblin.lua</LevelScript>
 		</Race>
 		<Race id="08_ogre" parent_id="_humanoid">
@@ -1708,6 +1750,8 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.3</HPRegenMultiplier>
+			<APRegenMultiplier>0.8</APRegenMultiplier>
 			<LevelScript>level/ogre.lua</LevelScript>
 		</Race>
 		<Race id="09_giant" parent_id="_humanoid">
@@ -1777,6 +1821,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
+			<HPRegenMultiplier>1.25</HPRegenMultiplier>
+			<APRegenMultiplier>0.8</APRegenMultiplier>
 			<LevelScript>level/giant.lua</LevelScript>
 		</Race>
 		<Race id="10_gnome" parent_id="_humanoid">
@@ -1848,6 +1894,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
+			<HPRegenMultiplier>0.85</HPRegenMultiplier>
+			<APRegenMultiplier>1.25</APRegenMultiplier>
 			<LevelScript>level/gnome.lua</LevelScript>
 		</Race>
 	</Races>
@@ -1869,6 +1917,8 @@
 			</ClassInitialModifiers>
 			<HitDice>8</HitDice>
 			<APDice>4</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2006,6 +2056,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>6</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2113,6 +2165,8 @@
 			</ClassInitialModifiers>		
 			<HitDice>8</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2347,6 +2401,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2444,6 +2500,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2546,6 +2604,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2655,6 +2715,8 @@
 			</ClassInitialModifiers>
 			<HitDice>10</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2763,6 +2825,8 @@
 			</ClassInitialModifiers>
 			<HitDice>8</HitDice>
 			<APDice>8</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2884,6 +2948,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>10</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2999,6 +3065,8 @@
 			</ClassInitialModifiers>
 			<HitDice>10</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>4.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3102,6 +3170,8 @@
 			</ClassInitialModifiers>
 			<HitDice>10</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>4.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3216,6 +3286,8 @@
 			</ClassInitialModifiers>
 			<HitDice>4</HitDice>
 			<APDice>12</APDice>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>4.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3328,6 +3400,8 @@
 			</ClassInitialModifiers>
 			<HitDice>8</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3435,6 +3509,8 @@
 			</ClassInitialModifiers>
 			<HitDice>4</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3539,6 +3615,8 @@
 			</ClassInitialModifiers>
 			<HitDice>10</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>4.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3661,6 +3739,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3775,6 +3855,8 @@
 			</ClassInitialModifiers>
 			<HitDice>12</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>4.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3978,6 +4060,8 @@
 			</ClassInitialModifiers>
 			<HitDice>4</HitDice>
 			<APDice>12</APDice>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>4.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -4083,6 +4167,8 @@
 			</ClassInitialModifiers>
 			<HitDice>4</HitDice>
 			<APDice>12</APDice>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>4.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -23524,8 +23610,8 @@
 					<Pounds>15</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
-				<HandsRequired>2</HandsRequired>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>

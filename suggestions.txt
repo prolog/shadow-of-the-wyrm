@@ -1,6 +1,4 @@
 Me:
-- Per-race and per-class HP/AP regeneration multipliers (each should be
-  added to the base of 1.0 HP per however many minutes).
 - Update gaining resists so that the delta needs to be more than a certain
   amount before you get something from a corpse.
 - Add a "resting counter" to the message manager: ie, "Resting...(1/100)"

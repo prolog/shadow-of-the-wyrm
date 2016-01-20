@@ -223,6 +223,8 @@
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+			<xs:element name="HPRegenMultiplier" type="xs:float"/>
+			<xs:element name="APRegenMultiplier" type="xs:float"/>
 			<xs:element name="LevelScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
@@ -399,6 +401,8 @@
 			<xs:element name="ClassInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="HitDice" type="xs:unsignedInt"/>
 			<xs:element name="APDice" type="xs:unsignedInt"/>
+			<xs:element name="HPRegenMultiplier" type="xs:float"/>
+			<xs:element name="APRegenMultiplier" type="xs:float"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element ref="tns:Titles"/>
