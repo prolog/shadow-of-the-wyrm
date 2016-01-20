@@ -9,6 +9,9 @@ Class::Class()
 , user_playable(false)
 , hit_dice(1)
 , ap_dice(0)
+, experience_multiplier(1)
+, hp_regen_multiplier(1)
+, ap_regen_multiplier(1)
 {
 }
 
@@ -136,6 +139,25 @@ float Class::get_experience_multiplier() const
   return experience_multiplier;
 }
 
+void Class::set_hp_regen_multiplier(const float new_hp_regen_multiplier)
+{
+  hp_regen_multiplier = new_hp_regen_multiplier;
+}
+
+float Class::get_hp_regen_multiplier() const
+{
+  return hp_regen_multiplier;
+}
+
+void Class::set_ap_regen_multiplier(const float new_ap_regen_multiplier)
+{
+  ap_regen_multiplier = new_ap_regen_multiplier;
+}
+
+float Class::get_ap_regen_multiplier() const
+{
+  return ap_regen_multiplier;
+}
 void Class::set_hit_dice(const uint new_hit_dice)
 {
   hit_dice = new_hit_dice;
@@ -232,6 +254,7 @@ string Class::str() const
   class_details << resistances.str() << endl;
   class_details << skills.str() << endl;
   class_details << experience_multiplier << endl;
+  class_details << hp_regen_multiplier << " " << ap_regen_multiplier << endl;
   class_details << piety_cost_multiplier << " " << piety_regen_bonus << endl;
 
   for (const auto& t_pair : titles)

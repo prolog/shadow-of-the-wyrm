@@ -100,6 +100,12 @@ class Race
 
     void set_experience_multiplier(const float new_experience_multiplier);
     float get_experience_multiplier() const;
+
+    void set_hp_regen_multiplier(const float new_hp_regen_multiplier);
+    float get_hp_regen_multiplier() const;
+
+    void set_ap_regen_multiplier(const float new_ap_regen_multiplier);
+    float get_ap_regen_multiplier() const;
     
     void set_initial_deity_ids(const std::vector<std::string>& new_initial_deity_ids);
     std::vector<std::string> get_initial_deity_ids() const;
@@ -161,6 +167,10 @@ class Race
 
     // Level info
     float experience_multiplier;
+
+    // How much does the race affect HP/AP per tick?
+    float hp_regen_multiplier;
+    float ap_regen_multiplier;
 
     // Level script, used to populate Lua functions that run every time the
     // creature gains a level.

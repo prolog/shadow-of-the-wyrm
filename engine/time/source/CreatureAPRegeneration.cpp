@@ -6,10 +6,11 @@ void CreatureAPRegeneration::tick(CreaturePtr creature, TilePtr tile, const ulon
   {
     // If any of them pass the check, regenerate an arcana point.
     uint minutes_per_ap = ap_regen_calc.calculate_minutes_per_ap_tick(creature, tile);
-    int ap_incr = ap_regen_calc.calculate_ap_per_tick(creature);
     
     if (total_minutes_elapsed % minutes_per_ap == 0)
     {
+      int ap_incr = ap_regen_calc.calculate_ap_per_tick(creature);
+
       creature->increment_arcana_points(ap_incr);
     }
   }
