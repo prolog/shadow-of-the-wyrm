@@ -80,6 +80,10 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
         // incoming direction and map characteristics.
         current_direction = get_new_beam_direction_after_impact(current_direction, c, map);
 
+        // Ensure that each reflection also takes one off the range (again,
+        // to prevent looping indefinitely).
+        count++;
+
         // Edge case: caster is standing by the wall.
         if (current_coord == caster_coord)
         {

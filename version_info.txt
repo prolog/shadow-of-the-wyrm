@@ -75,6 +75,8 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
   - Redcap speech text was the same as its bestiary description.
 
+  - Reflective beam spells could get into infinite loops (Darcy Faires).
+
 Shadow of the Wyrm v0.4.6 "Spinacino"
 - Version declared January 2, 2016.  Version finalized January 6, 2016.
 
