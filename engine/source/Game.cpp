@@ -654,14 +654,13 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 
         // Poor NPCs...they're discriminated against even at the code level!
         advance = action_cost.get_turn_advanced();
-        
-        // This is purely to suss out the weird pathfinding issues where monsters are trying to move
-        // to bad locations.
+
+        // Ensure that NPCs always advance the turn, otherwise we'll run into
+        // infinite loops.        
         if (!advance && !current_creature->get_is_player())
         {
-          int x = 1;
-          action_cost.set_cost(50);
-          advance = true; // JCD FIXME REMOVE THESE WHEN I GET ENTHUSIASTIC AND WANT TO DEBUG THE WOES...
+          action_cost.set_cost(std::max(current_creature->get_speed().get_current() + 1, 1));
+          advance = true;
         }
       }
       
