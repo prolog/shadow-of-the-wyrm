@@ -50,6 +50,8 @@ Shadow of the Wyrm v0.4.7 "Llobet"
   as fast as in the previous version, and based on the selected race/class
   combination, could be much faster than that.
 
+- When defaulting an NPC's action, use max(1, (creature speed + 1)).
+
 - New creatures: were-light.
 
 - New items: greatsword, greataxe.
