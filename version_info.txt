@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.4.7 "Llobet"
-- Version declared January 6, 2015.
+- Version declared January 6, 2016.  Version finalized January 23, 2016.
 
 - Refactored the curses-based display so that the message buffer can be
   used on any screen, instead of just stdscr.
