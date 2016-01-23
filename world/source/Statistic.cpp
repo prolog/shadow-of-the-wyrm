@@ -37,13 +37,8 @@ void Statistic::set_base_current(int new_base_and_current)
   current = new_base_and_current;
 }
 
-/*
- ********************************************************************
-
- 	Get and set the base value of the statistic.  The base value can't
- 	go below 0, though the current can.
-
- ********************************************************************/
+// Get and set the base value of the statistic.  The base value can't
+// go below 0, though the current can.
 void Statistic::set_base(int new_base)
 {
   if (new_base > 0)
@@ -57,12 +52,7 @@ int Statistic::get_base() const
 	return base;
 }
 
-/*
- ********************************************************************
-
- 	Get and set the current value of the statistic.
-
- ********************************************************************/
+// Get and set the current value of the statistic.
 void Statistic::set_current(int new_current)
 {
 	current = new_current;

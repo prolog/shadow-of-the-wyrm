@@ -11,6 +11,7 @@ ResistanceTextKeys::~ResistanceTextKeys()
 {
 }
 
+const string ResistanceTextKeys::RESISTANCES_ABRV          = "RESISTANCES_ABRV";
 const string ResistanceTextKeys::RESISTANCE_SLASH          = "RESISTANCE_SLASH";
 const string ResistanceTextKeys::RESISTANCE_ABRV_SLASH     = "RESISTANCE_ABRV_SLASH";
 const string ResistanceTextKeys::RESISTANCE_GAIN_SLASH     = "RESISTANCE_GAIN_SLASH";

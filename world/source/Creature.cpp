@@ -605,6 +605,26 @@ Equipment& Creature::get_equipment()
   return equipment;
 }
 
+int Creature::get_hands_available() const
+{
+  int hands_available = 2;
+  vector<ItemPtr> wielded_items;
+
+  wielded_items.push_back(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED));
+  wielded_items.push_back(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
+
+  for (ItemPtr item : wielded_items)
+  {
+    if (item != nullptr)
+    {
+      // This is going to produce some odd results if I'm not careful.
+      hands_available -= item->get_hands_required();
+    }
+  }
+
+  return hands_available;
+}
+
 IInventoryPtr Creature::get_inventory()
 {
   return inventory;

@@ -1652,8 +1652,15 @@ void Skills::mark(const SkillType skill_name)
 
 int Skills::get_value(const SkillType& skill_name) const
 {
+  int value = -1;
   SkillPtr skill = get_skill(skill_name);
-  return skill->get_value();
+
+  if (skill != nullptr)
+  {
+    value = skill->get_value();
+  }
+
+  return value;
 }
 
 void Skills::set_skill(const SkillType& st, const SkillPtr skill)

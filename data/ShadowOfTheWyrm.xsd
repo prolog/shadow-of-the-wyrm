@@ -223,6 +223,8 @@
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+			<xs:element name="HPRegenMultiplier" type="xs:float"/>
+			<xs:element name="APRegenMultiplier" type="xs:float"/>
 			<xs:element name="LevelScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
@@ -399,6 +401,8 @@
 			<xs:element name="ClassInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="HitDice" type="xs:unsignedInt"/>
 			<xs:element name="APDice" type="xs:unsignedInt"/>
+			<xs:element name="HPRegenMultiplier" type="xs:float"/>
+			<xs:element name="APRegenMultiplier" type="xs:float"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element ref="tns:Titles"/>
@@ -860,6 +864,7 @@
 		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
 <!--		<xs:element name="ItemType" type="tns:ItemType"/> -->
 		<xs:element name="Artifact" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="HandsRequired" type="tns:HandsType" minOccurs="0"/>
 		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>
 		<xs:element name="Glow" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="TextDetails" type="tns:TextDetails" minOccurs="0"/>
@@ -1064,6 +1069,15 @@
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->
+<xs:simpleType name="HandsType">
+	<xs:annotation>
+		<xs:documentation>Number of hands required to use a melee weapon.</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="1"/>
+		<xs:maxInclusive value="2"/>
+	</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="TrackedDeityAction">
 	<xs:annotation>
 		<xs:documentation>Actions that deities may take an interest in, one way or the other</xs:documentation>

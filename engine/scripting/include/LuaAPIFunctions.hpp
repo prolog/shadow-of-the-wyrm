@@ -97,6 +97,7 @@ int calendar_add_years(lua_State* ls);
 int add_kill_to_creature_mortuary(lua_State* ls);
 int report_coords(lua_State* ls);
 int cast_spell(lua_State* ls);
+int bless_equipment(lua_State* ls);
 int curse_equipment(lua_State* ls);
 int curse_inventory(lua_State* ls);
 

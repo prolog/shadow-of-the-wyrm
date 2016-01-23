@@ -113,6 +113,12 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     float experience_multiplier = XMLUtils::get_child_node_float_value(race_node, "ExperienceMultiplier");
     race->set_experience_multiplier(experience_multiplier);
 
+    float hp_regen_multiplier = XMLUtils::get_child_node_float_value(race_node, "HPRegenMultiplier", race->get_hp_regen_multiplier());
+    race->set_hp_regen_multiplier(hp_regen_multiplier);
+
+    float ap_regen_multiplier = XMLUtils::get_child_node_float_value(race_node, "APRegenMultiplier", race->get_ap_regen_multiplier());
+    race->set_ap_regen_multiplier(ap_regen_multiplier);
+
     string race_level_script = XMLUtils::get_child_node_value(race_node, "LevelScript");
     race->set_level_script(race_level_script);
   }

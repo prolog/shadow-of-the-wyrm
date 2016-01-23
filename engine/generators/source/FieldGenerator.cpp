@@ -12,12 +12,7 @@ FieldGenerator::FieldGenerator(const std::string& new_map_exit_id)
 {
 }
 
-/*
- **********************************************************************
-
-  Routines for generating a map that should roughly resemble a field.
-
- **********************************************************************/
+// Routines for generating a map that should roughly resemble a field.
 MapPtr FieldGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);

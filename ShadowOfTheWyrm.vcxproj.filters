@@ -3594,6 +3594,12 @@
     <ClInclude Include="engine\effects\include\UncursingEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\UncurseDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\HandsRequiredItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7009,6 +7015,15 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\UncurseDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\HandsRequiredItemFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\unit_tests\HandsRequiredItemFilter_test.cpp">
+      <Filter>Source Files\engine\items\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -145,7 +145,7 @@ bool ScoreFile::write(CreaturePtr creature)
   {
     ScoreCalculator sc;
 
-    ulonglong cr_score = sc.calculate_score(creature);
+    long long cr_score = sc.calculate_score(creature);
     bool sf_full = is_full();
 
     // We can write to the score file if one of the following is true:

@@ -1,3 +1,90 @@
+Shadow of the Wyrm v0.4.7 "Llobet"
+- Version declared January 6, 2016.  Version finalized January 23, 2016.
+
+- Refactored the curses-based display so that the message buffer can be
+  used on any screen, instead of just stdscr.
+
+- Added "Alert" functionality, which is basically just using the message
+  buffer on the current window (instead of stdscr) along with requiring
+  the player to press a key.
+
+- Cursed items now cannot be removed.
+
+- The cursed uncursing effect curses the creature's equipment.
+
+- After prayer, deities may now decide to uncurse the player's equipment.
+
+- Deities can curse a player's equipment when angry.
+
+- When applying additional, user-requested filters on the Inventory
+  screen, the title text indicates that additional filters are in place.
+
+- The equipment screen now displays colours for cursed (bold red) and
+  blessed (bold white) items.
+
+- Added hands-required to items.  When wielding an item in the wielded/
+  off-hand slot, the number of hands free is checked against the number
+  of hands required to wield the item.
+
+- White wildflowers have been renamed to cream wildflowers to reduce
+  confusion for the early whiteflower quest.
+
+- Merchants now start with Literacy (/rlg).
+
+- The second line on the equipment screen now shows "Resists:" to make it
+  clearer that the numbers and the abbreviations are resistance deltas
+  (/rlg).
+
+- Added a prompt when targetting friendly creatures via ranged combat
+  (Dave Keen).
+
+- HP and AP regeneration has been updated so that instead of always
+  getting 1 HP/AP per tick, the amount is calculated based on race- and
+  class-based multipliers, rounding up to the nearest HP.  Effectively,
+  for almost all race/class combos, the HP rate has at least doubled
+  (except for some very weak classes, like wizards, witchlings, etc).
+  Some race/class combos, like Ogre Warriors/Puglists/etc, will regain
+  HP very quickly.  And some classes (Elven/Gnomish/Fae Wizards, etc)
+  will regain AP much faster.  Finally, the base minutes per HP/AP tick 
+  is now 15, so in general, HP/AP regeneration should be at least twice
+  as fast as in the previous version, and based on the selected race/class
+  combination, could be much faster than that.
+
+- When defaulting an NPC's action, use max(1, (creature speed + 1)).
+
+- New creatures: were-light.
+
+- New items: greatsword, greataxe.
+
+- New artifacts: boreal scythe "Whisperwind" (The Trickster, Shiver).
+
+- Bug fixes:
+
+  - Clearing inventory filters wasn't respecting the original filter.
+
+  - The order of potential actions was allowing ticked-off deities to 
+    help a creature rather than doing something nasty.
+
+  - Crash when talking to Hild after gathering the required twenty
+    whiteflowers (/rlg).
+
+  - Typo in one of the resource string names for the Cleansing spellbook,
+    which caused the book's unid'd name to show up as blank in the UI.
+    Created a Python script to catch this (/rlg).
+
+  - Incorporeal creatures on blocking features could not be attacked
+    (Dave Keen).
+
+  - Redcap speech text was the same as its bestiary description.
+
+  - Reflective beam spells could get into infinite loops (Darcy Faires).
+
+  - Score calculation had some signed/unsigned arithmetic issues
+    (Darcy Faires).
+
+  - When selecting an item to pick up, and selecting none, a message is
+    incorrectly added about not being able to pick up (Darcy Faires).
+
 Shadow of the Wyrm v0.4.6 "Spinacino"
 - Version declared January 2, 2016.  Version finalized January 6, 2016.
 

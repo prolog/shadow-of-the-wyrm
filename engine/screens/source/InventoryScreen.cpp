@@ -7,8 +7,8 @@
 
 using namespace std;
 
-InventoryScreen::InventoryScreen(DisplayPtr new_display, CreaturePtr new_creature, const DisplayInventoryMap& new_dim)
-: Screen(new_display), creature(new_creature), dim(new_dim)
+InventoryScreen::InventoryScreen(DisplayPtr new_display, CreaturePtr new_creature, const DisplayInventoryMap& new_dim, const bool user_filters)
+: Screen(new_display), creature(new_creature), dim(new_dim), filters(user_filters)
 {
   initialize();
 }
@@ -19,7 +19,14 @@ void InventoryScreen::initialize()
   int current_id = 0;
   int cnt = 0;
 
-  title_text_sid = TextKeys::INVENTORY;
+  if (filters)
+  {
+    title_text_sid = TextKeys::INVENTORY_FILTERED;
+  }
+  else
+  {
+    title_text_sid = TextKeys::INVENTORY;
+  }
 
   for (const auto& i_it : dim)
   {

@@ -18,6 +18,7 @@ class EquipmentTextKeys
     static const std::string EQUIPMENT_FEET;
     static const std::string EQUIPMENT_RANGED;
     static const std::string EQUIPMENT_AMMUNITION;
+    static const std::string EQUIPMENT_REMOVAL_CURSED;
     
     static std::string get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location);
     static std::string get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, WeaponPtr ammunition, const std::string& difficulty_speed_and_damage_synopsis);

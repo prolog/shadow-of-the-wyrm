@@ -67,7 +67,7 @@ ActionCostValue SkinAction::skin(CreaturePtr creature, ActionManager * const am)
           else if (num_corpses > 1)
           {
             list<IItemFilterPtr> corpse_filter = ItemFilterFactory::create_item_property_type_filter(vector<pair<string, string>>{make_pair(ConsumableConstants::CORPSE_DESCRIPTION_SID, "")});
-            selected_corpse = am->inventory(creature, ground_items, corpse_filter, false);
+            selected_corpse = am->inventory(creature, ground_items, corpse_filter, {}, false);
 
             acv = attempt_skin(creature, selected_corpse, creature_tile);
           }

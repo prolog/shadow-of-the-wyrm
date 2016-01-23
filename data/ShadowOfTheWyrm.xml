@@ -219,6 +219,7 @@
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>shroud_fate</Artifact>
 				<Artifact>akos_akari</Artifact>
+				<Artifact>whisperwind</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>air_elemental</Summon>
@@ -257,6 +258,7 @@
 				<Artifact>athame_winter</Artifact>
 				<Artifact>akkar</Artifact>
 				<Artifact>akos_akari</Artifact>
+				<Artifact>whisperwind</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>water_elemental</Summon>
@@ -392,7 +394,9 @@
 				<WeaponSkills/>
 				<RangedWeaponSkills/>
 			</Skills>
-			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
@@ -451,6 +455,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_construct">
 			<UserPlayable>0</UserPlayable>
@@ -509,6 +515,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_demon">
 			<UserPlayable>0</UserPlayable>
@@ -567,6 +575,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_divine">
 			<UserPlayable>0</UserPlayable>
@@ -625,6 +635,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_humanoid">
 			<UserPlayable>0</UserPlayable>
@@ -683,6 +695,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_insect">
 			<UserPlayable>0</UserPlayable>
@@ -741,6 +755,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_jelly">
 			<UserPlayable>0</UserPlayable>
@@ -799,6 +815,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_monster">
 			<UserPlayable>0</UserPlayable>
@@ -857,6 +875,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_plant">
 			<UserPlayable>0</UserPlayable>
@@ -915,6 +935,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>		
 		<Race id="_undead">
 			<UserPlayable>0</UserPlayable>
@@ -968,6 +990,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_corporeal_undead" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
@@ -1024,6 +1048,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_spirit" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
@@ -1079,6 +1105,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="_dragon">
 			<UserPlayable>0</UserPlayable>
@@ -1131,6 +1159,8 @@
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 		</Race>
 		<Race id="01_human" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -1210,6 +1240,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<LevelScript>level/human.lua</LevelScript>
 		</Race>
 		<Race id="02_woodelf" parent_id="_humanoid">
@@ -1281,6 +1313,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
+			<HPRegenMultiplier>0.9</HPRegenMultiplier>
+			<APRegenMultiplier>1.25</APRegenMultiplier>
 			<LevelScript>level/wood_elf.lua</LevelScript>
 		</Race>
 		<Race id="03_mountainelf" parent_id="_humanoid">
@@ -1354,6 +1388,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<HPRegenMultiplier>1.1</HPRegenMultiplier>
+			<APRegenMultiplier>1.05</APRegenMultiplier>
 			<LevelScript>level/mountain_elf.lua</LevelScript>
 		</Race>
 		<Race id="04_snakeling" parent_id="_humanoid">
@@ -1424,6 +1460,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<HPRegenMultiplier>0.9</HPRegenMultiplier>
+			<APRegenMultiplier>1.1</APRegenMultiplier>
 			<LevelScript>level/snakeling.lua</LevelScript>
 		</Race>
 		<Race id="05_fae" parent_id="_humanoid">
@@ -1495,6 +1533,8 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.9</ExperienceMultiplier>
+			<HPRegenMultiplier>0.8</HPRegenMultiplier>
+			<APRegenMultiplier>1.4</APRegenMultiplier>
 			<LevelScript>level/fae.lua</LevelScript>
 		</Race>
 		<Race id="06_dwarf" parent_id="_humanoid">
@@ -1566,6 +1606,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<HPRegenMultiplier>1.2</HPRegenMultiplier>
+			<APRegenMultiplier>0.9</APRegenMultiplier>
 			<LevelScript>level/dwarf.lua</LevelScript>
 		</Race>
 		<Race id="07_goblin" parent_id="_humanoid">
@@ -1638,6 +1680,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<LevelScript>level/goblin.lua</LevelScript>
 		</Race>
 		<Race id="08_ogre" parent_id="_humanoid">
@@ -1706,6 +1750,8 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.3</HPRegenMultiplier>
+			<APRegenMultiplier>0.8</APRegenMultiplier>
 			<LevelScript>level/ogre.lua</LevelScript>
 		</Race>
 		<Race id="09_giant" parent_id="_humanoid">
@@ -1775,6 +1821,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
+			<HPRegenMultiplier>1.25</HPRegenMultiplier>
+			<APRegenMultiplier>0.8</APRegenMultiplier>
 			<LevelScript>level/giant.lua</LevelScript>
 		</Race>
 		<Race id="10_gnome" parent_id="_humanoid">
@@ -1846,6 +1894,8 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
+			<HPRegenMultiplier>0.85</HPRegenMultiplier>
+			<APRegenMultiplier>1.25</APRegenMultiplier>
 			<LevelScript>level/gnome.lua</LevelScript>
 		</Race>
 	</Races>
@@ -1867,6 +1917,8 @@
 			</ClassInitialModifiers>
 			<HitDice>8</HitDice>
 			<APDice>4</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2004,6 +2056,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>6</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2111,6 +2165,8 @@
 			</ClassInitialModifiers>		
 			<HitDice>8</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2345,6 +2401,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2442,6 +2500,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2463,6 +2523,7 @@
 					<Detection>15</Detection>
 					<Herbalism>10</Herbalism>
 					<Jeweler>15</Jeweler>
+					<Literacy>20</Literacy>
 					<Lore>20</Lore>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -2543,6 +2604,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2652,6 +2715,8 @@
 			</ClassInitialModifiers>
 			<HitDice>10</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2760,6 +2825,8 @@
 			</ClassInitialModifiers>
 			<HitDice>8</HitDice>
 			<APDice>8</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2881,6 +2948,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>10</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -2996,6 +3065,8 @@
 			</ClassInitialModifiers>
 			<HitDice>10</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>4.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3099,6 +3170,8 @@
 			</ClassInitialModifiers>
 			<HitDice>10</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>4.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3213,6 +3286,8 @@
 			</ClassInitialModifiers>
 			<HitDice>4</HitDice>
 			<APDice>12</APDice>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>4.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3325,6 +3400,8 @@
 			</ClassInitialModifiers>
 			<HitDice>8</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3432,6 +3509,8 @@
 			</ClassInitialModifiers>
 			<HitDice>4</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>2.0</HPRegenMultiplier>
+			<APRegenMultiplier>3.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3536,6 +3615,8 @@
 			</ClassInitialModifiers>
 			<HitDice>10</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>4.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3658,6 +3739,8 @@
 			</ClassInitialModifiers>
 			<HitDice>6</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>3.0</HPRegenMultiplier>
+			<APRegenMultiplier>2.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3772,6 +3855,8 @@
 			</ClassInitialModifiers>
 			<HitDice>12</HitDice>
 			<APDice>3</APDice>
+			<HPRegenMultiplier>4.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -3975,6 +4060,8 @@
 			</ClassInitialModifiers>
 			<HitDice>4</HitDice>
 			<APDice>12</APDice>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>4.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -4080,6 +4167,8 @@
 			</ClassInitialModifiers>
 			<HitDice>4</HitDice>
 			<APDice>12</APDice>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>4.0</APRegenMultiplier>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -6908,6 +6997,47 @@
 				<Type>9</Type>
 			</Damage>
 			<Evade>35</Evade>
+		</Creature>
+		<Creature id="werelight">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>WERELIGHT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WERELIGHT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WERELIGHT_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>19</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>19</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>210</Exp>
+			</CreatureGeneration>
+			<Level>19</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>38</NumSides>
+				<Type>10</Type>
+			</Damage>
 		</Creature>
 		<Creature id="grave_worm">
 			<RaceID>_insect</RaceID>
@@ -12271,7 +12401,7 @@
 			<ShortDescriptionSID>REDCAP_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>REDCAP_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>REDCAP_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>REDCAP_TEXT_DETAILS_SID</SpeechTextSID>
+			<SpeechTextSID>REDCAP_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -23098,6 +23228,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -23148,6 +23279,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -23158,8 +23290,8 @@
 				<Difficulty>46</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
-					<NumDice>8</NumDice>
-					<NumSides>12</NumSides>
+					<NumDice>9</NumDice>
+					<NumSides>10</NumSides>
 					<Type>0</Type>
 				</Damage>
 				<Slays>
@@ -23231,6 +23363,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -23260,6 +23393,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -23286,6 +23420,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -23508,6 +23643,38 @@
 					<Slay>_demon</Slay>
 				</Slays>
 			</Weapon>
+			<Weapon id="whisperwind">
+				<DescriptionSID>WHISPERWIND_SID</DescriptionSID>
+				<UsageDescriptionSID>WHISPERWIND_USAGE_SID</UsageDescriptionSID>
+				<Value>1676</Value>
+				<Weight>
+					<Pounds>15</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.15</Slash>
+					<Cold>0.10</Cold>
+				</Resistances>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>48</Difficulty>
+				<Speed>10</Speed>
+				<Damage>
+					<NumDice>8</NumDice>
+					<NumSides>12</NumSides>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+					<Slay>_demon</Slay>
+					<Slay>_monster</Slay>
+					<Slay>_dragon</Slay>
+				</Slays>
+			</Weapon>
 			<Weapon id="bloodsinger">
 				<DescriptionSID>BLOODSINGER_SID</DescriptionSID>
 				<UsageDescriptionSID>BLOODSINGER_USAGE_SID</UsageDescriptionSID>
@@ -23542,6 +23709,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -23641,6 +23809,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -23807,6 +23976,27 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="great_sword">
+				<DescriptionSID>GREAT_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>GREAT_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight>
+					<Pounds>20</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>1</DangerLevel>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>48</Difficulty>
+				<Speed>12</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>10</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="lightning_sword">
 				<DescriptionSID>LIGHTNING_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>LIGHTNING_SWORD_USAGE_SID</UsageDescriptionSID>
@@ -23936,6 +24126,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1003</Skill>
@@ -23958,6 +24149,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>7</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -24126,6 +24318,26 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="great_axe">
+				<DescriptionSID>GREAT_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>GREAT_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>110</Value>
+				<Weight>
+					<Pounds>20</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>1</DangerLevel>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>49</Difficulty>
+				<Speed>12</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>20</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="frost_axe">
 				<DescriptionSID>FROST_AXE_SID</DescriptionSID>
 				<UsageDescriptionSID>FROST_AXE_USAGE_SID</UsageDescriptionSID>
@@ -24185,6 +24397,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -24196,9 +24409,8 @@
 				<Difficulty>47</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
-					<NumDice>6</NumDice>
-					<NumSides>12</NumSides>
-					<Modifier>6</Modifier>
+					<NumDice>4</NumDice>
+					<NumSides>20</NumSides>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>			
@@ -24312,6 +24524,7 @@
 					<Pounds>12</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>3</DangerLevel>
 				<Skill>1006</Skill>
@@ -26764,7 +26977,7 @@
 			</Spellbook>
 			<Spellbook id="cleansing_spellbook">
 				<DescriptionSID>CLEANSING_SPELLBOOK_SID</DescriptionSID>
-				<UnidentifiedDescriptionSID>UNID_CLEANSIG_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CLEANSING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>CLEANSING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_CLEANSING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>30</Value>

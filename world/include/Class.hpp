@@ -52,6 +52,12 @@ class Class
     void set_experience_multiplier(const float new_multiplier);
     float get_experience_multiplier() const;
 
+    void set_hp_regen_multiplier(const float new_hp_regen_multiplier);
+    float get_hp_regen_multiplier() const;
+
+    void set_ap_regen_multiplier(const float new_ap_regen_multiplier);
+    float get_ap_regen_multiplier() const;
+
     // Hit and AP dice.
     void set_hit_dice(const uint new_hit_dice);
     uint get_hit_dice() const;
@@ -96,6 +102,10 @@ class Class
 
     bool user_playable;
     float experience_multiplier;
+
+    // How much does the class affect HP/AP regen per tick?
+    float hp_regen_multiplier;
+    float ap_regen_multiplier;
     
     // The dice to use each level for a creature's HP and AP
     uint hit_dice;

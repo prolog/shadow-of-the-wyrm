@@ -34,13 +34,8 @@ uint32_t RNG::get_seed()
   return seed;
 }
 
-/*!
- *********************************************************************
-
-	D&D-style dice: roll XdY+Z, either by providing a Dice object, or
-	the dice values directly.
-
- *********************************************************************/
+// D&D-style dice: roll XdY+Z, either by providing a Dice object, or
+// the dice values directly.
 int RNG::dice(const Dice& dice)
 {
   int num_dice  = dice.get_num_dice();
@@ -64,12 +59,7 @@ int RNG::dice(int num_dice, int num_sides, int additional_modifier)
   return result;
 }
 
-/*
- **********************************************************************
-
- 	Get a number in the range of [min, max], with uniform probability.
-
- **********************************************************************/
+// Get a number in the range of [min, max], with uniform probability.
 int RNG::range(double first, double second)
 {
   int i_first = static_cast<int>(first);

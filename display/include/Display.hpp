@@ -1,10 +1,5 @@
-/*!
- *********************************************************************
-
- 	General definition of an abstract Display so that multiple displays
-	can be specified (curses-based, graphical tiles, etc).
-
- *********************************************************************/
+// General definition of an abstract Display so that multiple displays
+// can be specified (curses-based, graphical tiles, etc).
 #pragma once
 #include <string>
 #include "AnimationFactory.hpp"
@@ -33,6 +28,10 @@ class Display : public ISerializable
     
     // Clears the message buffer, map, and info display.
     virtual void clear_display() = 0;
+
+    // Adds a message in the current window, clearing any existing messages and
+    // requiring user input.
+    virtual void add_alert(const std::string& message) = 0;
 
     // Add a message to display to the user
     virtual void add_message(const std::string& message, const bool reset_cursor) = 0;

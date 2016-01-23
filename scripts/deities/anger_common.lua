@@ -11,6 +11,13 @@ local function deity_anger_blast(creature_id, deity_id)
   add_message("DEITY_ACTION_DISPLEASED_BLUE_LIGHTNING")
 end
 
+-- Curse the equipment of the irritating!
+local function deity_anger_curse(creature_id, deity_id)
+  curse_equipment(creature_id)
+
+  add_message("DEITY_ACTION_DISPLEASED_CURSE_EQUIPMENT")
+end
+
 -- Destroy the items of the impious!
 local function deity_anger_destroy_items(creature_id, deity_id)
   destroy_creature_equipment(creature_id)
@@ -31,8 +38,8 @@ end
 -- deity dislikes you.
 function deity_anger_default(creature_id, deity_id)
   -- Equal chance of blue-bolting, equipment destruction, or nasties.
-  local val = RNG_range(1, 3)
-  local deity_actions = {deity_anger_blast, deity_anger_destroy_items, deity_anger_summon_creatures}
+  local deity_actions = {deity_anger_blast, deity_anger_curse, deity_anger_destroy_items, deity_anger_summon_creatures}
+  local val = RNG_range(1, table.getn(deity_actions))
   
   local action_fn = deity_actions[val]
   action_fn(creature_id, deity_id)

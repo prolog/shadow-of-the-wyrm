@@ -242,6 +242,40 @@ void Serialize::read_ulong(istream& stream, unsigned long& val)
   }
 }
 
+// Write a long long
+void Serialize::write_longlong(ostream& stream, const long long val)
+{
+  if (stream.good())
+  {
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not write ulonglong");
+    throw stream_error;
+  }
+}
+
+// Read a long long
+void Serialize::read_longlong(istream& stream, long long& val)
+{
+  if (stream.good())
+  {
+    stream.read((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not read long long");
+    throw stream_error;
+  }
+
+  if (stream.fail())
+  {
+    SerializationException stream_error("Could not read full long long");
+    throw stream_error;
+  }
+}
+
 // Write an unsigned long long
 void Serialize::write_ulonglong(ostream& stream, const unsigned long long val)
 {
