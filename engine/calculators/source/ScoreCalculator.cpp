@@ -3,9 +3,9 @@
 
 using namespace std;
 
-ulonglong ScoreCalculator::calculate_score(CreaturePtr creature)
+long long ScoreCalculator::calculate_score(CreaturePtr creature)
 {
-  ulonglong score = 0;
+  long long score = 0;
 
   if (creature != nullptr)
   {
@@ -22,7 +22,7 @@ ulonglong ScoreCalculator::calculate_score(CreaturePtr creature)
 }
 
 // Update the score based on whether the end boss was killed.
-void ScoreCalculator::update_score_end_boss(CreaturePtr creature, ulonglong& score)
+void ScoreCalculator::update_score_end_boss(CreaturePtr creature, long long& score)
 {
   Mortuary& mortuary = creature->get_mortuary_ref();
   if (mortuary.get_num_creature_killed("end_boss") > 0)
@@ -32,7 +32,7 @@ void ScoreCalculator::update_score_end_boss(CreaturePtr creature, ulonglong& sco
 }
 
 // Update the score based on the number of ivory pieces accumulated.
-void ScoreCalculator::update_score_currency(CreaturePtr creature, ulonglong& score)
+void ScoreCalculator::update_score_currency(CreaturePtr creature, long long& score)
 {
   IInventoryPtr inv = creature->get_inventory();
 
@@ -44,7 +44,7 @@ void ScoreCalculator::update_score_currency(CreaturePtr creature, ulonglong& sco
   }
 }
 
-void ScoreCalculator::update_score_experience(CreaturePtr creature, ulonglong& score)
+void ScoreCalculator::update_score_experience(CreaturePtr creature, long long& score)
 {
   uint exp = creature->get_experience_points();
   uint exp_score = 0;
@@ -107,7 +107,7 @@ void ScoreCalculator::update_score_experience(CreaturePtr creature, ulonglong& s
 }
 
 // If the player gained levels, count that.
-void ScoreCalculator::update_score_level(CreaturePtr creature, ulonglong& score)
+void ScoreCalculator::update_score_level(CreaturePtr creature, long long& score)
 {
   uint current_level = creature->get_level().get_current();
 
@@ -118,9 +118,9 @@ void ScoreCalculator::update_score_level(CreaturePtr creature, ulonglong& score)
 }
 
 // For each artifact collected, add its value to the score.
-void ScoreCalculator::update_score_artifacts(CreaturePtr creature, ulonglong& score)
+void ScoreCalculator::update_score_artifacts(CreaturePtr creature, long long& score)
 {
-  ulonglong eq_score = 0;
+  long long eq_score = 0;
 
   Equipment& eq = creature->get_equipment();
   IInventoryPtr inv = creature->get_inventory();
@@ -150,7 +150,7 @@ void ScoreCalculator::update_score_artifacts(CreaturePtr creature, ulonglong& sc
 }
 
 // The creature gets a few points for each spell casting.
-void ScoreCalculator::update_score_spells(CreaturePtr creature, ulonglong& score)
+void ScoreCalculator::update_score_spells(CreaturePtr creature, long long& score)
 {
   if (creature != nullptr)
   {
@@ -167,7 +167,7 @@ void ScoreCalculator::update_score_spells(CreaturePtr creature, ulonglong& score
   }
 }
 
-void ScoreCalculator::update_score_conducts(CreaturePtr creature, ulonglong& score)
+void ScoreCalculator::update_score_conducts(CreaturePtr creature, long long& score)
 {
   if (creature != nullptr)
   {
