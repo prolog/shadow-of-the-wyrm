@@ -42,8 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Catalonian guitar player and composer.
-  return "\"Llobet\"";
+  // Italian guitarist and composer of the classical period.
+  return "\"Carulli\"";
 }
 
 string Metadata::get_game_version_synopsis() const
