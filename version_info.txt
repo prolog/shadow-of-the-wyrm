@@ -79,6 +79,12 @@ Shadow of the Wyrm v0.4.7 "Llobet"
 
   - Reflective beam spells could get into infinite loops (Darcy Faires).
 
+  - Score calculation had some signed/unsigned arithmetic issues
+    (Darcy Faires).
+
+  - When selecting an item to pick up, and selecting none, a message is
+    incorrectly added about not being able to pick up (Darcy Faires).
+
 Shadow of the Wyrm v0.4.6 "Spinacino"
 - Version declared January 2, 2016.  Version finalized January 6, 2016.
 

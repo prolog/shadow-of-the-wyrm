@@ -84,7 +84,7 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
           can_pick_up = CreatureUtils::can_pick_up(creature, pick_up_item);
         }
         
-        if (!can_pick_up)
+        if (pick_up_item != nullptr && !can_pick_up)
         {
           handle_max_item_pickup(creature);
         }
