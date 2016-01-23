@@ -14238,7 +14238,7 @@
 			</DecisionStrategy>
 			<Text>
 				<Symbol>b</Symbol>
-				<Colour>11</Colour>
+				<Colour>12</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>

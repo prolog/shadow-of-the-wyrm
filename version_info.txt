@@ -1,3 +1,10 @@
+Shadow of the Wyrm v0.4.8 "Carulli"
+- Version declared January 23, 2016.
+
+- Bug fixes:
+
+  - Blue jays were, uh, bright yellow.
+
 Shadow of the Wyrm v0.4.7 "Llobet"
 - Version declared January 6, 2016.  Version finalized January 23, 2016.
 
