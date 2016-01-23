@@ -87,6 +87,12 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
     float experience_multiplier = XMLUtils::get_child_node_float_value(class_node, "ExperienceMultiplier", current_class->get_experience_multiplier());
     current_class->set_experience_multiplier(experience_multiplier);
+
+    float hp_regen_multiplier = XMLUtils::get_child_node_float_value(class_node, "HPRegenMultiplier", current_class->get_hp_regen_multiplier());
+    current_class->set_hp_regen_multiplier(hp_regen_multiplier);
+
+    float ap_regen_multiplier = XMLUtils::get_child_node_float_value(class_node, "APRegenMultiplier", current_class->get_ap_regen_multiplier());
+    current_class->set_ap_regen_multiplier(ap_regen_multiplier);
    
     XMLNode deity_dislike_multipliers_node = XMLUtils::get_next_element_by_local_name(class_node, "DeityDislikeMultipliers");
     parse_class_deity_dislike_multipliers(current_class, deity_dislike_multipliers_node);

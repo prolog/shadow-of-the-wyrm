@@ -7,7 +7,8 @@ class MessageManager : public IMessageManager
     void clear_if_necessary() override;
     void send(const bool halt_afterwards = false, const bool reset_afterwards = false) override;
     void send_and_halt() override;
-    
+    void alert(const std::string& message);
+
     bool add_new_message(const std::string& message, const Colour colour = Colour::COLOUR_WHITE, const MessageImportance& importance = MessageImportance::MessageImportance_Normal) override;
     bool add_new_confirmation_message(const std::string& message, const Colour colour = Colour::COLOUR_WHITE, const MessageImportance& importance = MessageImportance::MessageImportance_Normal) override;
     bool add_new_message_with_pause(const std::string& message, const Colour colour = Colour::COLOUR_WHITE, const MessageImportance& importance = MessageImportance::MessageImportance_Normal) override;

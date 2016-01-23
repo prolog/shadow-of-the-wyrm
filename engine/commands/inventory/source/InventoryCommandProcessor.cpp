@@ -18,7 +18,7 @@ InventoryCommandProcessor::~InventoryCommandProcessor()
 {
 }
 
-bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, const DisplayInventoryMap& inventory_display, const string& item_id, CreaturePtr creature, IInventoryPtr inv, CommandPtr command, const bool inventory_is_read_only, ItemPtr& selected_item)
+bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, const list<IItemFilterPtr>& base_item_filter_list, const DisplayInventoryMap& inventory_display, const string& item_id, CreaturePtr creature, IInventoryPtr inv, CommandPtr command, const bool inventory_is_read_only, ItemPtr& selected_item)
 {
   bool process_result = true;
 
@@ -34,9 +34,9 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     }
     else if (command_name == InventoryCommandKeys::CLEAR_FILTER)
     {
-      list<IItemFilterPtr> display_filter = ItemFilterFactory::create_empty_filter();
+      list<IItemFilterPtr> empty_filter = {};
 
-      ItemPtr item = game.actions.inventory(creature, creature->get_inventory(), display_filter, inventory_is_read_only);
+      ItemPtr item = game.actions.inventory(creature, creature->get_inventory(), base_item_filter_list, empty_filter, inventory_is_read_only);
 
       if (item != nullptr)
       {
@@ -49,7 +49,7 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     {
       list<IItemFilterPtr> display_filter = ItemFilterFactory::create_item_type_filter(command->get_key());
 
-      ItemPtr item = game.actions.inventory(creature, creature->get_inventory(), display_filter, inventory_is_read_only);
+      ItemPtr item = game.actions.inventory(creature, creature->get_inventory(), base_item_filter_list, display_filter, inventory_is_read_only);
 
       if (item != nullptr)
       {

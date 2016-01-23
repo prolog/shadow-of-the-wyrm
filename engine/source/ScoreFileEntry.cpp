@@ -15,7 +15,7 @@ ScoreFileEntry::ScoreFileEntry()
 }
 
 // Construct a score file entry with all required values.
-ScoreFileEntry::ScoreFileEntry(const ulonglong new_score, const string& new_name, const CreatureSex new_sex, const bool new_is_current_char, const int new_level, const string& new_race_class_abrv)
+ScoreFileEntry::ScoreFileEntry(const long long new_score, const string& new_name, const CreatureSex new_sex, const bool new_is_current_char, const int new_level, const string& new_race_class_abrv)
 : score(new_score), name(new_name), sex(new_sex), is_current_char(new_is_current_char), level(new_level), race_class_abrv(new_race_class_abrv)
 {
 }
@@ -27,7 +27,7 @@ bool ScoreFileEntry::operator<(const ScoreFileEntry& sfe) const
 
 bool ScoreFileEntry::serialize(ostream& stream) const
 {
-  Serialize::write_ulonglong(stream, score);
+  Serialize::write_longlong(stream, score);
   Serialize::write_string(stream, name);
   Serialize::write_enum(stream, sex);
 
@@ -44,7 +44,7 @@ bool ScoreFileEntry::serialize(ostream& stream) const
 
 bool ScoreFileEntry::deserialize(istream& stream)
 {
-  Serialize::read_ulonglong(stream, score);
+  Serialize::read_longlong(stream, score);
   Serialize::read_string(stream, name);
   Serialize::read_enum(stream, sex);
   Serialize::read_bool(stream, is_current_char);
@@ -59,7 +59,7 @@ ClassIdentifier ScoreFileEntry::internal_class_identifier() const
   return ClassIdentifier::CLASS_ID_SCORE_FILE_ENTRY;
 }
 
-ulonglong ScoreFileEntry::get_score() const
+long long ScoreFileEntry::get_score() const
 {
   return score;
 }

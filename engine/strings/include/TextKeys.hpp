@@ -122,6 +122,7 @@ class TextKeys
     static const std::string EQUIPMENT;
     static const std::string EQUIPMENT_PROMPT;
     static const std::string INVENTORY;
+    static const std::string INVENTORY_FILTERED;
     static const std::string INVENTORY_PROMPT;
     static const std::string SKIN_PROMPT;
     static const std::string WEAVE_PROMPT;

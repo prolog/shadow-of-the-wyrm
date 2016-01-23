@@ -58,9 +58,9 @@ string ItemDescriber::describe_usage() const
   return item_description;
 }
 
-string ItemDescriber::describe_additional() const
+string ItemDescriber::describe_resists() const
 {
-  string addl_desc;
+  string res_desc;
 
   if (item)
   {
@@ -71,9 +71,9 @@ string ItemDescriber::describe_additional() const
       Resistances res = item->get_resistances();
 
       ResistancesTranslator rt;
-      addl_desc = rt.create_description(res);
+      res_desc = rt.create_description(res);
     }
   }
 
-  return addl_desc;
+  return res_desc;
 }

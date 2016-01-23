@@ -12,6 +12,7 @@ class IMessageManager
     virtual void clear_if_necessary() = 0;
     virtual void send(const bool halt_afterwards = false, const bool reset_afterwards = false) = 0;
     virtual void send_and_halt() = 0;
+    virtual void alert(const std::string& message) = 0;
     
     virtual bool add_new_message(const std::string& message, const Colour colour = Colour::COLOUR_WHITE, const MessageImportance& importance = MessageImportance::MessageImportance_Normal) = 0;
     virtual bool add_new_confirmation_message(const std::string& message, const Colour colour = Colour::COLOUR_WHITE, const MessageImportance& importance = MessageImportance::MessageImportance_Normal) = 0;

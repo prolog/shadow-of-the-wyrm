@@ -4,6 +4,7 @@
 class ResistanceTextKeys
 {
   public:
+    static const std::string RESISTANCES_ABRV;
     static const std::string RESISTANCE_SLASH;
     static const std::string RESISTANCE_ABRV_SLASH;
     static const std::string RESISTANCE_GAIN_SLASH;

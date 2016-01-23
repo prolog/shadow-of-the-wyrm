@@ -37,6 +37,7 @@ using namespace std;
 CreaturePtr local_creature;
 
 void add_seconds_to_calendar(const int seconds, int& add_successful);
+bool set_all_eq_to(CreaturePtr creature, const ItemStatus status);
 
 void add_seconds_to_calendar(const int seconds, int& added_time)
 {
@@ -203,6 +204,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_kill_to_creature_mortuary", add_kill_to_creature_mortuary);
   lua_register(L, "report_coords", report_coords);
   lua_register(L, "cast_spell", cast_spell);
+  lua_register(L, "bless_equipment", bless_equipment);
   lua_register(L, "curse_equipment", curse_equipment);
   lua_register(L, "curse_inventory", curse_inventory);
 }
@@ -941,6 +943,11 @@ int get_skill_value(lua_State* ls)
     if (creature)
     {
       skill_value = creature->get_skills().get_value(skill_name);
+
+      if (skill_value == -1)
+      {
+        Log::instance().error("Unknown skill: " + to_string(static_cast<int>(skill_name)));
+      }
     }
   }
   else
@@ -2085,7 +2092,7 @@ int select_item(lua_State* ls)
 
     Game& game = Game::instance();
     list<IItemFilterPtr> selected_filter = ItemFilterFactory::create_script_filter(item_filter);
-    ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, false);
+    ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, {}, false);
 
     if (item != nullptr)
     {
@@ -2591,6 +2598,27 @@ int cast_spell(lua_State* ls)
   return 1;
 }
 
+int bless_equipment(lua_State* ls)
+{
+  int blessed_eq = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    blessed_eq = set_all_eq_to(creature, ItemStatus::ITEM_STATUS_BLESSED);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to bless_equipment");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, blessed_eq);
+  return 1;
+}
+
 int curse_equipment(lua_State* ls)
 {
   int cursed_eq = false;
@@ -2600,21 +2628,7 @@ int curse_equipment(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
-    if (creature != nullptr)
-    {
-      EquipmentMap& eq_map = creature->get_equipment().get_equipment();
-
-      for (auto& eq_pair : eq_map)
-      {
-        ItemPtr item = eq_pair.second;
-
-        if (item != nullptr)
-        {
-          item->set_status(ItemStatus::ITEM_STATUS_CURSED);
-          cursed_eq = true;
-        }
-      }
-    }
+    cursed_eq = set_all_eq_to(creature, ItemStatus::ITEM_STATUS_CURSED);
   }
   else
   {
@@ -2684,3 +2698,25 @@ int stop_playing_game(lua_State* ls)
   return 0;
 }
 
+bool set_all_eq_to(CreaturePtr creature, const ItemStatus status)
+{
+  bool eq_set = false;
+
+  if (creature != nullptr)
+  {
+    EquipmentMap& eq_map = creature->get_equipment().get_equipment();
+
+    for (auto& eq_pair : eq_map)
+    {
+      ItemPtr item = eq_pair.second;
+
+      if (item != nullptr)
+      {
+        item->set_status(status);
+        eq_set = true;
+      }
+    }
+  }
+
+  return eq_set;
+}

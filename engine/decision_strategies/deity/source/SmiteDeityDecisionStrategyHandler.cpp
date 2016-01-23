@@ -12,7 +12,6 @@ const int SmiteDeityDecisionStrategyHandler::SMITE_LEVEL_DAMAGE_MULTIPLIER = 5;
 SmiteDeityDecisionStrategyHandler::SmiteDeityDecisionStrategyHandler(const string& new_deity_id)
 : DeityDecisionStrategyHandler(new_deity_id)
 {
-  deity_id = new_deity_id;
 }
 
 bool SmiteDeityDecisionStrategyHandler::decide(CreaturePtr creature)

@@ -12,6 +12,7 @@
 #include "SacrificeDeityDecisionStrategyHandler.hpp"
 #include "SatiateDeityDecisionStrategyHandler.hpp"
 #include "SmiteDeityDecisionStrategyHandler.hpp"
+#include "UncurseDeityDecisionStrategyHandler.hpp"
 
 using namespace std;
 
@@ -25,7 +26,10 @@ void DeityDecisionStrategy::initialize_decisions()
 {
   decisions.clear();
 
-  DeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<CrowningDeityDecisionStrategyHandler>(deity_id);
+  DeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<DislikeDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(cur_decision);
+  
+  cur_decision = std::make_shared<CrowningDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
   cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>(deity_id);
@@ -40,13 +44,13 @@ void DeityDecisionStrategy::initialize_decisions()
   cur_decision = std::make_shared<ProtectionDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
-  cur_decision = std::make_shared<SatiateDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
-
   cur_decision = std::make_shared<FullAPDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
-  cur_decision = std::make_shared<DislikeDeityDecisionStrategyHandler>(deity_id);
+  cur_decision = std::make_shared<UncurseDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(cur_decision);
+
+  cur_decision = std::make_shared<SatiateDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 }
 

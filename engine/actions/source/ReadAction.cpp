@@ -28,7 +28,7 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
   if (creature && am)
   {
     list<IItemFilterPtr> display_list = ItemFilterFactory::create_readable_filter();
-    ItemPtr selected_readable_item = am->inventory(creature, creature->get_inventory(), display_list, false);
+    ItemPtr selected_readable_item = am->inventory(creature, creature->get_inventory(), display_list, {}, false);
     
     if (selected_readable_item)
     {

@@ -80,7 +80,7 @@ bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, 
   {
     list<IItemFilterPtr> wand_filter = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_WAND);
 
-    ItemPtr item = am->inventory(creature, creature->get_inventory(), wand_filter, false);
+    ItemPtr item = am->inventory(creature, creature->get_inventory(), wand_filter, {}, false);
     WandPtr wand = std::dynamic_pointer_cast<Wand>(item);
 
     if (wand)

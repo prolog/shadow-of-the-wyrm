@@ -6,7 +6,16 @@ using namespace std;
 
 // Set the bare defaults for each race.
 Race::Race()
-: user_playable(false), leaves_corpse(true), has_random_villages(true), settlement_type(SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE), settlement_tile_subtype(TileType::TILE_TYPE_FIELD), size(CreatureSize::CREATURE_SIZE_MEDIUM), hungerless(false), experience_multiplier(1.0)
+: user_playable(false)
+, leaves_corpse(true)
+, has_random_villages(true)
+, settlement_type(SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE)
+, settlement_tile_subtype(TileType::TILE_TYPE_FIELD)
+, size(CreatureSize::CREATURE_SIZE_MEDIUM)
+, hungerless(false)
+, experience_multiplier(1.0)
+, hp_regen_multiplier(1.0)
+, ap_regen_multiplier(1.0)
 {
   Range<uint> start_age(10, 10);
   Range<uint> maximum_age(50, 60);
@@ -303,6 +312,26 @@ float Race::get_experience_multiplier() const
   return experience_multiplier;
 }
 
+void Race::set_hp_regen_multiplier(const float new_hp_regen_multiplier)
+{
+  hp_regen_multiplier = new_hp_regen_multiplier;
+}
+
+float Race::get_hp_regen_multiplier() const
+{
+  return hp_regen_multiplier;
+}
+
+void Race::set_ap_regen_multiplier(const float new_ap_regen_multiplier)
+{
+  ap_regen_multiplier = new_ap_regen_multiplier;
+}
+
+float Race::get_ap_regen_multiplier() const
+{
+  return ap_regen_multiplier;
+}
+
 void Race::set_initial_deity_ids(const std::vector<std::string>& new_initial_deity_ids)
 {
   initial_deity_ids = new_initial_deity_ids;
@@ -361,6 +390,7 @@ string Race::str() const
   race_details << skills.str() << endl;
   race_details << static_cast<int>(size) << endl;
   race_details << experience_multiplier << endl;
+  race_details << hp_regen_multiplier << " " << ap_regen_multiplier << endl;
 
   return race_details.str();
 }

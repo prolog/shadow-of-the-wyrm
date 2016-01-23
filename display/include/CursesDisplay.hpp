@@ -26,6 +26,11 @@ class CursesDisplay : public Display
     void clear_messages() override;
     void clear_display() override;
 
+    // Adds a message in the current window, clearing any existing messages and
+    // requiring user input.
+    void add_alert(const std::string& message) override;
+
+    // Functions to add messages to the message buffer.
     void add_message(const std::string& message, const bool reset_prompt) override;
     void add_message(const std::string& message, const Colour colour, const bool reset_prompt) override;
     std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt) override;
@@ -58,6 +63,7 @@ class CursesDisplay : public Display
     virtual Display* clone() override;
 
     WINDOW* get_current_screen();
+    WINDOW* get_message_buffer_screen();
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
@@ -114,6 +120,7 @@ class CursesDisplay : public Display
     // or subscreens are layered as new windows on top of that.  Each time a screen is done, a window is popped off
     // the stack and the display is re-drawn.
     std::deque<WINDOW*> screens;
+    WINDOW* message_buffer_screen;
 
     // Used to process the prompt
     CursesPromptProcessor prompt_processor;

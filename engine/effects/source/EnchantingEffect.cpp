@@ -55,7 +55,7 @@ bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, c
   }
 
   list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-  ItemPtr item = am->inventory(creature, creature->get_inventory(), no_filter, false);
+  ItemPtr item = am->inventory(creature, creature->get_inventory(), no_filter, {}, false);
 
   if (item != nullptr)
   {

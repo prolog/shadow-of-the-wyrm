@@ -62,7 +62,7 @@ ItemPtr JewelerWorkbenchManipulator::get_selected_ingot(CreaturePtr creature, Ac
 
   // Select an ingot-type item.
   list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
-  ItemPtr selected_ingot = am.inventory(creature, creature->get_inventory(), display_filter_list, false);
+  ItemPtr selected_ingot = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
 
   return selected_ingot;
 }
@@ -76,7 +76,7 @@ ItemPtr JewelerWorkbenchManipulator::get_selected_item(CreaturePtr creature, Ite
   // Create a filter list that contains all weapons and armour that match the material type.
   copy(ring_or_amulet_filter.begin(), ring_or_amulet_filter.end(), back_inserter(smithable_item_list));
 
-  ItemPtr selected_item = am.inventory(creature, creature->get_inventory(), smithable_item_list, false);
+  ItemPtr selected_item = am.inventory(creature, creature->get_inventory(), smithable_item_list, {}, false);
   return selected_item;
 }
 

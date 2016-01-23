@@ -5,11 +5,12 @@
 class HPRegenerationCalculator
 {
   public:
-    uint calculate_minutes_per_hit_point(CreaturePtr creature, TilePtr tile);
+    uint calculate_minutes_per_hp_tick(CreaturePtr creature, TilePtr tile);
+    int calculate_hp_per_tick(CreaturePtr creature);
 
   protected:
-    float get_health_multiplier(CreaturePtr creature);
+    float get_hp_tick_health_multiplier(CreaturePtr creature);
 
-    static const uint BASE_MINUTES_PER_HIT_POINT;
-    static const uint MIN_MINUTES_PER_HIT_POINT;
+    static const uint BASE_MINUTES_PER_HP_TICK;
+    static const uint MIN_MINUTES_PER_HP_TICK;
 };

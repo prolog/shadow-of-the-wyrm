@@ -57,7 +57,7 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
         vector<pair<string, string>> item_property_filter = { make_pair(WeavingConstants::WEAVING_MATERIAL_TYPE_KEY, "") };
         list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
 
-        ItemPtr selected_fibre = am.inventory(creature, creature->get_inventory(), display_filter_list, false);
+        ItemPtr selected_fibre = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
 
         if (selected_fibre)
         {

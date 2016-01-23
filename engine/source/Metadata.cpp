@@ -42,8 +42,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Early Venetian lutenist and composer.
-  return "\"Spinacino\"";
+  // Catalonian guitar player and composer.
+  return "\"Llobet\"";
 }
 
 string Metadata::get_game_version_synopsis() const

@@ -38,6 +38,7 @@ TERMINAL_MAX_COLS(0),
 FIELD_SPACE(2), 
 MSG_BUFFER_LAST_Y(0), 
 MSG_BUFFER_LAST_X(0), 
+message_buffer_screen(nullptr),
 can_use_colour(false),
 mono_colour(Colour::COLOUR_UNDEFINED),
 cursor_mode(1) /* normal visibility */
@@ -227,41 +228,52 @@ void CursesDisplay::clear_messages()
 int CursesDisplay::clear_message_buffer()
 {  
   int return_val;
+  WINDOW* screen = get_message_buffer_screen();
   
-  move(0, 0);
-  clrtoeol();
+  wmove(screen, 0, 0);
+  wclrtoeol(screen);
 
-  move(1, 0);
-  return_val = clrtoeol();
+  wmove(screen, 1, 0);
+  return_val = wclrtoeol(screen);
   
   // Reset the internal state
   MSG_BUFFER_LAST_Y = 0;
   MSG_BUFFER_LAST_X = 0;
   
   // Reset cursor to original position
-  move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  wmove(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
 
   return return_val;
+}
+
+WINDOW* CursesDisplay::get_message_buffer_screen()
+{
+  WINDOW* screen = stdscr;
+
+  if (message_buffer_screen != nullptr)
+  {
+    screen = message_buffer_screen;
+  }
+
+  return screen;
 }
 
 // Halt processing and force user input to continue.
 void CursesDisplay::halt_messages()
 {
-  move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
-  refresh();
-  getch();  
+  WINDOW* screen = get_message_buffer_screen();
+
+  wmove(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  wrefresh(screen);
+  wgetch(screen);  
 }
 
-/*
- **************************************************************
-
-  Refresh the display's size.
-
- **************************************************************/
+// Refresh the display's size.
+//
 //
 // JCD FIXME: This doesn't seem to work.
 //
-// Fix this up once SL is compiling on Linux/FreeBSD and I can
+// Fix this up once SOTW is compiling on Linux/FreeBSD and I can
 // resize terminals.
 //
 void CursesDisplay::refresh_terminal_size()
@@ -269,12 +281,7 @@ void CursesDisplay::refresh_terminal_size()
   getmaxyx(stdscr, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 }
 
-/*
- **************************************************************
-
-	Set up the Curses-based display.
-
- **************************************************************/
+// Set up the Curses-based display.
 bool CursesDisplay::create()
 {
   bool creation_success = true;
@@ -306,36 +313,36 @@ bool CursesDisplay::create()
   return creation_success;
 }
 
-/*
- ***************************************************************
-
- 	Do anything necessary to tear down the Curses-based display.
-
- ***************************************************************/
+// Do anything necessary to tear down the Curses-based display.
 void CursesDisplay::tear_down()
 {
   refresh();
   endwin();
 }
 
-/*
- *****************************************************************
-
-  Clear the display (in practice, stdscr).
-
- *****************************************************************/
+// Clear the display (in practice, stdscr).
 void CursesDisplay::clear_display()
 {
   clear();
 }
 
-/*
- *****************************************************************
+void CursesDisplay::add_alert(const string& message)
+{
+  message_buffer_screen = get_current_screen();
 
-  Clear the message buffer, and then add a message to display to
-  the user.  If it's very long, "..." it.
+  int prev_curs_state = curs_set(1);
+  clear_message_buffer();
+  add_message(message, Colour::COLOUR_BOLD_RED, false);
+  wrefresh(message_buffer_screen);
+  wgetch(message_buffer_screen);
+  clear_message_buffer();
+  curs_set(prev_curs_state);
 
- *****************************************************************/
+  message_buffer_screen = nullptr;
+}
+
+// Clear the message buffer, and then add a message to display to
+// the user.  If it's very long, "..." it.
 void CursesDisplay::add_message(const string& message, const bool reset_cursor)
 {
   add_message(message, Colour::COLOUR_WHITE, reset_cursor);
@@ -344,60 +351,61 @@ void CursesDisplay::add_message(const string& message, const bool reset_cursor)
 void CursesDisplay::add_message(const string& to_add_message, const Colour colour, const bool reset_cursor)
 {
   string message = to_add_message;
+  WINDOW* screen = get_message_buffer_screen();
 
   // Replace any single instances of "%", as these will cause a crash when
   // the corresponding parameters are not present in printw.
   boost::replace_all(message, "%", "%%");
 
   int orig_curs_y, orig_curs_x;
-  getyx(stdscr, orig_curs_y, orig_curs_x);
+  getyx(screen, orig_curs_y, orig_curs_x);
 
   uint cur_y, cur_x;
 
   if (reset_cursor)
   {
     clear_message_buffer();
-    move(0, 0);
+    wmove(screen, 0, 0);
   }
   else
   {
-    move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+    wmove(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
   }
 
   boost::char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
   boost::tokenizer<boost::char_separator<char>> tokens(message, separator);
 
-  enable_colour(static_cast<int>(colour), stdscr);
+  enable_colour(static_cast<int>(colour), screen);
 
   for (boost::tokenizer<boost::char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
-    getyx(stdscr, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+    getyx(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
     
     string current_token = *t_iter;
-    getyx(stdscr, cur_y, cur_x);
+    getyx(screen, cur_y, cur_x);
 
     if (cur_y == 0)
     {
       if ((cur_x + current_token.length()) > (TERMINAL_MAX_COLS-1))
       {
         // Move to the second line of the buffer
-        move(1, 0);
-        getyx(stdscr, cur_y, cur_x);
+        wmove(screen, 1, 0);
+        getyx(screen, cur_y, cur_x);
       }
     }
     else
     {
       if ((cur_x + current_token.length()) > (TERMINAL_MAX_COLS) - 4)
       {
-        move(1, TERMINAL_MAX_COLS-4);
+        wmove(screen, 1, TERMINAL_MAX_COLS-4);
 
-        disable_colour(static_cast<int>(colour), stdscr);
-        printw("...");
-        getch();
-        enable_colour(static_cast<int>(colour), stdscr);
+        disable_colour(static_cast<int>(colour), screen);
+        wprintw(screen, "...");
+        wgetch(screen);
+        enable_colour(static_cast<int>(colour), screen);
 
         clear_message_buffer();
-        getyx(stdscr, cur_y, cur_x);
+        getyx(screen, cur_y, cur_x);
       }
     }
     
@@ -417,19 +425,19 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
       }
     }
 
-    printw(current_token.c_str());        
+    wprintw(screen, current_token.c_str());        
   }
 
   // Ensure that the last coordinates from the message buffer are up to date.
-  getyx(stdscr, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  getyx(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
 
   // Reset the cursor.
   if (reset_cursor)
   {
-    move(orig_curs_y, orig_curs_x);
+    wmove(screen, orig_curs_y, orig_curs_x);
   }
   
-  disable_colour(static_cast<int>(colour), stdscr);
+  disable_colour(static_cast<int>(colour), screen);
   
   //refresh();
 }
@@ -448,14 +456,9 @@ string CursesDisplay::add_message_with_prompt(const string& message, const Colou
   return prompt_result;
 }
 
-/*
- *****************************************************************
-
- 	Draw the specified Display in the term.  This'll be a simplified
-  map that contains only the information needed by the display -
-  no specific creature, etc., data.
-
- *****************************************************************/
+// Draw the specified Display in the term.  This'll be a simplified
+// map that contains only the information needed by the display -
+// no specific creature, etc., data.
 void CursesDisplay::draw(const DisplayMap& current_map, const CursorSettings cs)
 {
   refresh_terminal_size();
@@ -578,28 +581,18 @@ void CursesDisplay::draw_coordinate(const DisplayTile& display_tile, const unsig
   disable_colour(colour, stdscr);
 }
 
-/*!
- *****************************************************************
-
-  Get the size of the map display in "tiles"
-
- *****************************************************************/
+// Get the size of the map display in "tiles"
 MapDisplayArea CursesDisplay::get_map_display_area()
 {
   MapDisplayArea map_display_area;
 
   map_display_area.set_width(TERMINAL_MAX_COLS);
-  map_display_area.set_height(TERMINAL_MAX_ROWS - 5); // FIXME: Remove magic num later
+  map_display_area.set_height(TERMINAL_MAX_ROWS - 5); // JCD FIXME: Remove magic num later
 
   return map_display_area;
 }
 
-/*!
- *****************************************************************
-
-  Draw the specified screen, full-screen.
-
- *****************************************************************/
+// Draw the specified screen, full-screen.
 string CursesDisplay::display_screen(const Screen& current_screen)
 {
   string result;
@@ -975,7 +968,7 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
 
 WINDOW* CursesDisplay::get_current_screen()
 {
-  WINDOW* screen = nullptr;
+  WINDOW* screen = stdscr;
 
   if (!screens.empty())
   {

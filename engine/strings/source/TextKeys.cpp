@@ -126,6 +126,7 @@ const string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
 const string TextKeys::EQUIPMENT         = "EQUIPMENT";
 const string TextKeys::EQUIPMENT_PROMPT  = "EQUIPMENT_PROMPT";
 const string TextKeys::INVENTORY         = "INVENTORY";
+const string TextKeys::INVENTORY_FILTERED = "INVENTORY_FILTERED";
 const string TextKeys::INVENTORY_PROMPT  = "INVENTORY_PROMPT";
 const string TextKeys::SKIN_PROMPT       = "SKIN_PROMPT";
 const string TextKeys::WEAVE_PROMPT      = "WEAVE_PROMPT";
