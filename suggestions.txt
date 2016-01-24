@@ -31,6 +31,9 @@ Me:
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
 
+Legend:
+- Windows XP binary.
+
 barrabus: 
 - Extra descs for items.
 
