@@ -53,7 +53,17 @@ int APRegenerationCalculator::calculate_ap_per_tick(CreaturePtr creature)
       mult *= cr_class->get_ap_regen_multiplier();
     }
 
+    Statistic ap = creature->get_arcana_points();
+    int b_ap = ap.get_base();
+    int c_ap = ap.get_current();
+    int d_ap = b_ap - c_ap;
+
     ap_per_tick = std::max(1, static_cast<int>(std::ceil(ap_per_tick * mult)));
+
+    if (c_ap + ap_per_tick > b_ap)
+    {
+      ap_per_tick = d_ap;
+    }
   }
 
   return ap_per_tick;
