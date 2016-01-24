@@ -221,7 +221,15 @@ DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr
 {
   DisplayTile display_tile;
   
-  display_tile = create_display_tile_from_tile(tile);
+  if (tile->has_feature())
+  {
+    FeaturePtr feature = tile->get_feature();
+    display_tile = create_display_tile_from_feature(feature);
+  }
+  else
+  {
+    display_tile = create_display_tile_from_tile(tile);
+  }
   
   return display_tile;
 }

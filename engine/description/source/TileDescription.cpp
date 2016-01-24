@@ -39,15 +39,18 @@ string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, boo
         tile_info_strings.push_back(describer->describe());
       }
 
+      if (show_feature)
+      {
+        FeaturePtr feature = tile->get_feature();
+        describer = DescriberFactory::create_describer(feature);
+        tile_info_strings.push_back(describer->describe());
+      }
+
       if (tile_is_in_fov)
       {
-        if (show_feature)
-        {
-          FeaturePtr feature = tile->get_feature();
-          describer = DescriberFactory::create_describer(feature);
-          tile_info_strings.push_back(describer->describe());
-        }
-        
+        // Only show the creature if the tile can be viewed.
+        // The player remembers the tile type and feature details, but not
+        // creature positioning.        
         if (show_creature)
         {
           CreaturePtr creature = tile->get_creature();
