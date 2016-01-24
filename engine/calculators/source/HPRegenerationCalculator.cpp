@@ -55,6 +55,18 @@ int HPRegenerationCalculator::calculate_hp_per_tick(CreaturePtr creature)
     }
 
     hp_per_tick = std::max(1, static_cast<int>(std::ceil(hp_per_tick * mult)));
+
+    Statistic hp = creature->get_hit_points();
+    int b_hp = hp.get_base();
+    int c_hp = hp.get_current();
+    int d_hp = b_hp - c_hp;
+
+    hp_per_tick = std::max(1, static_cast<int>(std::ceil(hp_per_tick * mult)));
+
+    if (c_hp + hp_per_tick > b_hp)
+    {
+      hp_per_tick = d_hp;
+    }
   }
 
   return hp_per_tick;
