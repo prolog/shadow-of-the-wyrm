@@ -19,7 +19,7 @@ CreaturePtr create_creature_with_weapon_and_15_str()
   return creature;
 }
 
-TEST(SL_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_object)
+TEST(SW_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_object)
 {
   PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY, PhaseOfMoonType::PHASE_OF_MOON_NEW);
   CreaturePtr creature = create_creature_with_weapon_and_15_str();
@@ -36,7 +36,7 @@ TEST(SL_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_object
   EXPECT_EQ(expected_damage, base_damage);
 }
 
-TEST(SL_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_bonuses)
+TEST(SW_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_bonuses)
 {
   PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY, PhaseOfMoonType::PHASE_OF_MOON_NEW);
   CreaturePtr creature = create_creature_with_weapon_and_15_str();
@@ -52,7 +52,7 @@ TEST(SL_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_b
 }
 
 // For every 5 points of Str > 10, +1 dam.
-TEST(SL_World_Calculators_PhysicalDamageCalculator, get_statistic_based_damage_modifier)
+TEST(SW_World_Calculators_PhysicalDamageCalculator, get_statistic_based_damage_modifier)
 {
   PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY, PhaseOfMoonType::PHASE_OF_MOON_NEW);
 
@@ -71,7 +71,7 @@ TEST(SL_World_Calculators_PhysicalDamageCalculator, get_statistic_based_damage_m
 }
 
 // For every 0.02 BAC, +1 dam.
-TEST(SL_World_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
+TEST(SW_World_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
 {
   PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY, PhaseOfMoonType::PHASE_OF_MOON_NEW);
   CreaturePtr creature = create_creature_with_weapon_and_15_str();

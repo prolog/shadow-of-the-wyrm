@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-class SL_Engine_Strings_StringTable : public ::testing::Test
+class SW_Engine_Strings_StringTable : public ::testing::Test
 {
   public:
     bool is_external_file(const string& str);
@@ -10,21 +10,21 @@ class SL_Engine_Strings_StringTable : public ::testing::Test
     void SetUp();
 };
 
-bool SL_Engine_Strings_StringTable::is_external_file(const string& value)
+bool SW_Engine_Strings_StringTable::is_external_file(const string& value)
 {
   return StringTable::is_external_file(value);
 }
 
-string SL_Engine_Strings_StringTable::parse_file_name(const string& value)
+string SW_Engine_Strings_StringTable::parse_file_name(const string& value)
 {
   return StringTable::parse_file_name(value);
 }
 
-void SL_Engine_Strings_StringTable::SetUp()
+void SW_Engine_Strings_StringTable::SetUp()
 {
 }
 
-TEST_F(SL_Engine_Strings_StringTable, check_is_external_file)
+TEST_F(SW_Engine_Strings_StringTable, check_is_external_file)
 {
   string file_ref = "   [[fdsafdsa]] ";
   string not_file_ref = "[Some In-Game Prompt]";
@@ -33,7 +33,7 @@ TEST_F(SL_Engine_Strings_StringTable, check_is_external_file)
   EXPECT_FALSE(is_external_file(not_file_ref));
 }
 
-TEST_F(SL_Engine_Strings_StringTable, check_parse_file_name)
+TEST_F(SW_Engine_Strings_StringTable, check_parse_file_name)
 {
   string not_file_ref = "fdsafdsa";
 

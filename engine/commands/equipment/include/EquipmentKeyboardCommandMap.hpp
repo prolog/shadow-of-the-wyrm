@@ -17,7 +17,7 @@ class EquipmentKeyboardCommandMap : public KeyboardCommandMap
     virtual KeyboardCommandMap* clone() override;
 
   protected:
-    friend class SL_Engine_Commands_Equipment_EquipmentKeyboardCommandMapFixture;
+    friend class SW_Engine_Commands_Equipment_EquipmentKeyboardCommandMapFixture;
 
     // The equipment keys mean different things than the parent class's
     // map!

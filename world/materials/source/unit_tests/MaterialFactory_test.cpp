@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Materials_MaterialFactory, output_types_not_null)
+TEST(SW_World_Materials_MaterialFactory, output_types_not_null)
 {
   for (int m = static_cast<int>(MaterialType::MATERIAL_TYPE_CLOTH); m < static_cast<int>(MaterialType::MATERIAL_TYPE_LAST); m++)
   {
@@ -11,7 +11,7 @@ TEST(SL_World_Materials_MaterialFactory, output_types_not_null)
   }
 }
 
-TEST(SL_World_Materials_MaterialFactory, output_types_match_input)
+TEST(SW_World_Materials_MaterialFactory, output_types_match_input)
 {
   for (int m = static_cast<int>(MaterialType::MATERIAL_TYPE_CLOTH); m < static_cast<int>(MaterialType::MATERIAL_TYPE_LAST); m++)
   {

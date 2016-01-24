@@ -44,7 +44,6 @@ Kyzrati:
 
 Avagart:
 - Eventually, have automovement stop only on new items.
-- Include feature when drawing old areas so doors/etc don't disappear.
 
 AgingMinotaur:
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?

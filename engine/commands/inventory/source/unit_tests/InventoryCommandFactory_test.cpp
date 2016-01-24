@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Commands_Inventory_InventoryCommandFactory, serialization_id)
+TEST(SW_Engine_Commands_Inventory_InventoryCommandFactory, serialization_id)
 {
   InventoryCommandFactory icf;
 

@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Armour.hpp"
 
-TEST(SL_Engine_Calculators_CreatureAdditionalDamageCalculator, calculate_addl_damage_bonus)
+TEST(SW_Engine_Calculators_CreatureAdditionalDamageCalculator, calculate_addl_damage_bonus)
 {
   CreatureAdditionalDamageCalculator cadc;
   Creature c;

@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Seasons_Winter, serialization_id)
+TEST(SW_World_Seasons_Winter, serialization_id)
 {
   Winter winter;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_WINTER, winter.get_class_identifier());
 }
 
-TEST(SL_World_Seasons_Winter, saveload)
+TEST(SW_World_Seasons_Winter, saveload)
 {
   Winter winter, winter2;
 

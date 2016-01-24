@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Time_MapTimeObserver, serialization_id)
+TEST(SW_Engine_Time_MapTimeObserver, serialization_id)
 {
   MapTimeObserver mto;
 

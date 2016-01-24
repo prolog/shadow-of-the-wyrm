@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Spellbook, serialization_id)
+TEST(SW_World_Spellbook, serialization_id)
 {
   Spellbook book;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SPELLBOOK, book.get_class_identifier());
 }
 
-TEST(SL_World_Spellbook, saveload)
+TEST(SW_World_Spellbook, saveload)
 {
   Spellbook book, book2;
 

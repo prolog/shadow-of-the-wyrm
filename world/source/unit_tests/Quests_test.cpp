@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Quest, serialization_id)
+TEST(SW_World_Quest, serialization_id)
 {
   Quest q;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_QUEST, q.get_class_identifier());
 }
 
-TEST(SL_World_Quest, saveload)
+TEST(SW_World_Quest, saveload)
 {
   Quest q("a", "b", "c", "d");
   Quest q2;
@@ -23,7 +23,7 @@ TEST(SL_World_Quest, saveload)
   EXPECT_TRUE(q == q2);
 }
 
-TEST(SL_World_Quests, add_quest)
+TEST(SW_World_Quests, add_quest)
 {
   Quests q;
   Quest q1("a", "b", "c", "d");
@@ -34,7 +34,7 @@ TEST(SL_World_Quests, add_quest)
   EXPECT_TRUE(q.is_quest_in_progress("q"));
 }
 
-TEST(SL_World_Quests, move_quest_to_completed_status)
+TEST(SW_World_Quests, move_quest_to_completed_status)
 {
   Quests q;
   Quest q1("a", "b", "c", "d");
@@ -48,14 +48,14 @@ TEST(SL_World_Quests, move_quest_to_completed_status)
   EXPECT_TRUE(q.is_quest_completed("q1"));
 }
 
-TEST(SL_World_Quests, serialization_id)
+TEST(SW_World_Quests, serialization_id)
 {
   Quests q;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_QUESTS, q.get_class_identifier());
 }
 
-TEST(SL_World_Quests, saveload)
+TEST(SW_World_Quests, saveload)
 {
   Quests q;
   Quests q_deser;

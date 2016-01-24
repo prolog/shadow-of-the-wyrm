@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Message, MessageImportanceValues)
+TEST(SW_Engine_Message, MessageImportanceValues)
 {
   EXPECT_EQ(static_cast<int>(MessageImportance::MessageImportance_UNDEFINED), -1);
   EXPECT_EQ(static_cast<int>(MessageImportance::MessageImportance_Normal), 0);
@@ -8,7 +8,7 @@ TEST(SL_Engine_Message, MessageImportanceValues)
   EXPECT_EQ(static_cast<int>(MessageImportance::MessageImportance_Critical), 2);
 }
 
-TEST(SL_Engine_Message, Content)
+TEST(SW_Engine_Message, Content)
 {
   Message msg("test", Colour::COLOUR_WHITE, MessageImportance::MessageImportance_UNDEFINED);
 
@@ -19,14 +19,14 @@ TEST(SL_Engine_Message, Content)
   EXPECT_EQ("test2", msg.get_content());
 }
 
-TEST(SL_Engine_Message, Colour)
+TEST(SW_Engine_Message, Colour)
 {
   Message msg("test", Colour::COLOUR_RED, MessageImportance::MessageImportance_UNDEFINED);
 
   EXPECT_EQ(Colour::COLOUR_RED, msg.get_colour());
 }
 
-TEST(SL_Engine_Message, Importance)
+TEST(SW_Engine_Message, Importance)
 {
   Message msg("test", Colour::COLOUR_WHITE, MessageImportance::MessageImportance_UNDEFINED);
 
@@ -45,7 +45,7 @@ TEST(SL_Engine_Message, Importance)
   EXPECT_EQ(MessageImportance::MessageImportance_Critical, msg.get_importance());
 }
 
-TEST(SL_Engine_Message, Id)
+TEST(SW_Engine_Message, Id)
 {
   boost::uuids::uuid id = boost::uuids::random_generator()();
   Message msg("test", Colour::COLOUR_WHITE, MessageImportance::MessageImportance_UNDEFINED);

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_AlcoholCalculator, drunk)
+TEST(SW_Engine_Calculators_AlcoholCalculator, drunk)
 {
   AlcoholCalculator ac;
   CreaturePtr creature = CreaturePtr(new Creature());
@@ -19,7 +19,7 @@ TEST(SL_Engine_Calculators_AlcoholCalculator, drunk)
   EXPECT_FALSE(ac.is_drunk(creature));
 }
 
-TEST(SL_Engine_Calculators_AlcoholCalculator, dead)
+TEST(SW_Engine_Calculators_AlcoholCalculator, dead)
 {
   AlcoholCalculator ac;
 

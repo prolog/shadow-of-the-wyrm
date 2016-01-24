@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-class SL_Engine_Combat_CombatManager : public ::testing::Test
+class SW_Engine_Combat_CombatManager : public ::testing::Test
 {
   protected:
     static void SetUpTestCase() {}
@@ -14,7 +14,7 @@ class SL_Engine_Combat_CombatManager : public ::testing::Test
     CombatManager cm;
 };
 
-TEST_F(SL_Engine_Combat_CombatManager, is_hit)
+TEST_F(SW_Engine_Combat_CombatManager, is_hit)
 {
   int total_roll = 50;
   int target_number_value = 45;
@@ -31,7 +31,7 @@ TEST_F(SL_Engine_Combat_CombatManager, is_hit)
   EXPECT_TRUE(is_hit(total_roll, target_number_value));
 }
 
-TEST_F(SL_Engine_Combat_CombatManager, is_miss)
+TEST_F(SW_Engine_Combat_CombatManager, is_miss)
 {
   int total_roll = 50;
   int target_number_value = 50;
@@ -51,7 +51,7 @@ TEST_F(SL_Engine_Combat_CombatManager, is_miss)
   EXPECT_TRUE(is_miss(total_roll, target_number_value));
 }
 
-TEST_F(SL_Engine_Combat_CombatManager, is_close_miss)
+TEST_F(SW_Engine_Combat_CombatManager, is_close_miss)
 {
   int total_roll = 51;
   int target_number_value = 50;
@@ -73,7 +73,7 @@ TEST_F(SL_Engine_Combat_CombatManager, is_close_miss)
   EXPECT_FALSE(is_close_miss(roll, target_number_value));
 }
 
-TEST_F(SL_Engine_Combat_CombatManager, is_automatic_miss)
+TEST_F(SW_Engine_Combat_CombatManager, is_automatic_miss)
 {
   int i;
   for (i = 0; i <= CombatConstants::AUTOMATIC_MISS_THRESHOLD; i++)

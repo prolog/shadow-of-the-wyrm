@@ -2,7 +2,7 @@
 #include "Amulet.hpp"
 #include "Scroll.hpp"
 
-TEST(SL_Engine_Items_ReadableItemFilter, passes_filter)
+TEST(SW_Engine_Items_ReadableItemFilter, passes_filter)
 {
   ReadableItemFilter rif;
 

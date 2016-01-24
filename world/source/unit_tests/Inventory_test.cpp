@@ -4,14 +4,14 @@
 #include "SmithingConstants.hpp"
 #include "Tool.hpp"
 
-TEST(SL_World_Inventory, serialization_id)
+TEST(SW_World_Inventory, serialization_id)
 {
   Inventory inv;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_INVENTORY, inv.get_class_identifier());
 }
 
-TEST(SL_World_Inventory, saveload)
+TEST(SW_World_Inventory, saveload)
 {
   std::shared_ptr<Inventory> inv = std::make_shared<Inventory>();
   std::shared_ptr<Inventory> sinv2 = std::make_shared<Inventory>();
@@ -32,7 +32,7 @@ TEST(SL_World_Inventory, saveload)
   EXPECT_TRUE(*inv == *sinv2);
 }
 
-TEST(SL_World_Inventory, has_item_with_property)
+TEST(SW_World_Inventory, has_item_with_property)
 {
   Inventory inv;
 
@@ -52,7 +52,7 @@ TEST(SL_World_Inventory, has_item_with_property)
   EXPECT_TRUE(inv.has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE));
 }
 
-TEST(SL_World_Inventory, count_items_with_property)
+TEST(SW_World_Inventory, count_items_with_property)
 {
   Inventory inv;
 
@@ -76,7 +76,7 @@ TEST(SL_World_Inventory, count_items_with_property)
   EXPECT_EQ(3, inv.count_items_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE));
 }
 
-TEST(SL_World_Inventory, count_items)
+TEST(SW_World_Inventory, count_items)
 {
   Inventory inv;
 
@@ -101,7 +101,7 @@ TEST(SL_World_Inventory, count_items)
   EXPECT_EQ(8, inv.count_items("book"));
 }
 
-TEST(SL_World_Inventory, items_are_persisted)
+TEST(SW_World_Inventory, items_are_persisted)
 {
   Inventory inv;
   SpellbookPtr book = std::make_shared<Spellbook>();

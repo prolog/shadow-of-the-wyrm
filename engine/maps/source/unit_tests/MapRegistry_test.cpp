@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_MapRegistry, serialization_id)
+TEST(SW_Engine_MapRegistry, serialization_id)
 {
   MapRegistry mr;
 

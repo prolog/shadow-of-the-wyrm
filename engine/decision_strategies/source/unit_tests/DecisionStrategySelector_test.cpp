@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 // This function is unsafe for anything using the creature's controller!
-TEST(SL_Engine_DecisionStrategies_DecisionStrategySelector, select_decision_strategy)
+TEST(SW_Engine_DecisionStrategies_DecisionStrategySelector, select_decision_strategy)
 {
   CreaturePtr c = std::make_shared<Creature>();
 

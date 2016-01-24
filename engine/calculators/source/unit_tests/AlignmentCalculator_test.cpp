@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
-TEST(SL_Engine_Calculators_AlignmentCalculator, calculate_alignment_for_sacrifice_on_coaligned_altar)
+TEST(SW_Engine_Calculators_AlignmentCalculator, calculate_alignment_for_sacrifice_on_coaligned_altar)
 {
   AlignmentCalculator ac;
 
@@ -22,7 +22,7 @@ TEST(SL_Engine_Calculators_AlignmentCalculator, calculate_alignment_for_sacrific
   EXPECT_EQ(-1276, ac.calculate_alignment_for_sacrifice_on_coaligned_altar(alignment, AlignmentRange::ALIGNMENT_RANGE_EVIL));
 }
 
-TEST(SL_Engine_Calculators_AlignmentCalculator, calculate_alignment_for_sacrifice_on_crossaligned_altar)
+TEST(SW_Engine_Calculators_AlignmentCalculator, calculate_alignment_for_sacrifice_on_crossaligned_altar)
 {
   AlignmentCalculator ac;
 
@@ -71,7 +71,7 @@ TEST(SL_Engine_Calculators_AlignmentCalculator, calculate_alignment_for_sacrific
   EXPECT_EQ(exp_value, ac.calculate_alignment_for_sacrifice_on_crossaligned_altar(alignment, cur_range, alt_range));
 }
 
-TEST(SL_Engine_Calculators_AlignmentCalculator, calculate_pct_chance_for_altar_conversion)
+TEST(SW_Engine_Calculators_AlignmentCalculator, calculate_pct_chance_for_altar_conversion)
 {
   AlignmentCalculator ac;
 

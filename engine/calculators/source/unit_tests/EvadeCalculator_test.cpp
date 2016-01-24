@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_EvadeCalculator, calculate_evade_bonus)
+TEST(SW_Engine_Calculators_EvadeCalculator, calculate_evade_bonus)
 {
   Creature c;
   

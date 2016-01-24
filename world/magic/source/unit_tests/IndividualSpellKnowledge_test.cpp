@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Magic_IndividualSpellKnowledge, serialization_id)
+TEST(SW_World_Magic_IndividualSpellKnowledge, serialization_id)
 {
   IndividualSpellKnowledge isk;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_INDIVIDUAL_SPELL_KNOWLEDGE, isk.get_class_identifier());
 }
 
-TEST(SL_World_Magic_IndividualSpellKnowledge, saveload)
+TEST(SW_World_Magic_IndividualSpellKnowledge, saveload)
 {
   IndividualSpellKnowledge isk, isk2;
   Statistic bonus(4);

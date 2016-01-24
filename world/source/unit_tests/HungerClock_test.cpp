@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_HungerClock, requires_food)
+TEST(SW_World_HungerClock, requires_food)
 {
   HungerClock hc;
 
@@ -13,7 +13,7 @@ TEST(SL_World_HungerClock, requires_food)
   EXPECT_FALSE(hc.get_requires_food());
 }
 
-TEST(SL_World_HungerClock, raw_hunger_level)
+TEST(SW_World_HungerClock, raw_hunger_level)
 {
   HungerClock hc;
   hc.set_hunger(12345);
@@ -21,7 +21,7 @@ TEST(SL_World_HungerClock, raw_hunger_level)
   EXPECT_EQ(12345, hc.get_hunger());
 }
 
-TEST(SL_World_HungerClock, hunger_levels)
+TEST(SW_World_HungerClock, hunger_levels)
 {
   HungerClock hc;
 
@@ -80,14 +80,14 @@ TEST(SL_World_HungerClock, hunger_levels)
   EXPECT_TRUE(hc.is_normal_or_worse());
 }
 
-TEST(SL_World_HungerClock, serialization_id)
+TEST(SW_World_HungerClock, serialization_id)
 {
   HungerClock hc;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_HUNGER_CLOCK, hc.get_class_identifier());
 }
 
-TEST(SL_World_HungerClock, saveload)
+TEST(SW_World_HungerClock, saveload)
 {
   HungerClock hc, hc2;
 

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Time_AgeTimeObserver, serialization_id)
+TEST(SW_Engine_Time_AgeTimeObserver, serialization_id)
 {
   AgeTimeObserver ato;
 

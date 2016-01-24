@@ -13,6 +13,7 @@
 			<xs:element ref="tns:Tiles"/>
 			<xs:element ref="tns:Traps"/>
 			<xs:element ref="tns:Items"/>
+			<xs:element ref="tns:Calendar"/>
 			<xs:element ref="tns:Scripts"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -164,6 +165,16 @@
 	<!-- Wands/Staves -->
 	<!-- Books -->
 	<!-- Rings -->
+</xs:element>
+<xs:element name="Calendar">
+	<xs:annotation>
+		<xs:documentation>All notable in-game days.  The player gets a notification when the day arrives.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Day" type="tns:CalendarDayType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
 </xs:element>
 <xs:element name="Scripts">
 	<xs:annotation><xs:documentation>Scripts used by the Shadow of the Wyrm engine.</xs:documentation></xs:annotation>
@@ -726,6 +737,12 @@
 		   or
 		3. A list of string-string pairs, which represent a race/item-ID override of #1.
   -->
+<xs:complexType name="CalendarDayType">
+	<xs:sequence>
+		<xs:element name="DaySID" type="xs:string"/>
+		<xs:element name="CalendarDay" type="xs:integer"/>
+	</xs:sequence>
+</xs:complexType>
 <xs:complexType name="GeneratorFilters">
 	<xs:sequence>
 		<xs:element name="Filter" minOccurs="0" maxOccurs="unbounded"/>

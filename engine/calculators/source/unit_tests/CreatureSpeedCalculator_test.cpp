@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
-TEST(SL_Engine_Calculators_CreatureSpeedCalculator, calculate_creature_speed_base)
+TEST(SW_Engine_Calculators_CreatureSpeedCalculator, calculate_creature_speed_base)
 {
   Statistic speed(47);
   CreaturePtr c = std::make_shared<Creature>();
@@ -14,7 +14,7 @@ TEST(SL_Engine_Calculators_CreatureSpeedCalculator, calculate_creature_speed_bas
   EXPECT_EQ(47, csc.calculate(c));
 }
 
-TEST(SL_Engine_Calculators_CreatureSpeedCalculator, calculate_burdened_and_strained)
+TEST(SW_Engine_Calculators_CreatureSpeedCalculator, calculate_burdened_and_strained)
 {
   Statistic speed(50);
   Statistic str(10);

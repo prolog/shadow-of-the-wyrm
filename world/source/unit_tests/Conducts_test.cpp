@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Conducts, remaining_conducts)
+TEST(SW_World_Conducts, remaining_conducts)
 {
   Conducts c;
 
@@ -26,13 +26,13 @@ TEST(SL_World_Conducts, remaining_conducts)
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING)] == false);
 }
 
-TEST(SL_World_Conducts, serialization_id)
+TEST(SW_World_Conducts, serialization_id)
 {
   Conducts c;
   EXPECT_EQ(ClassIdentifier::CLASS_ID_CONDUCTS, c.get_class_identifier());
 }
 
-TEST(SL_World_Conducts, saveload)
+TEST(SW_World_Conducts, saveload)
 {
   Conducts c;
   

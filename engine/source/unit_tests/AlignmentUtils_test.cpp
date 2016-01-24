@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_AlignmentUtils, are_alignments_opposites)
+TEST(SW_Engine_AlignmentUtils, are_alignments_opposites)
 {
   for (int i = static_cast<int>(AlignmentRange::ALIGNMENT_RANGE_EVIL); i <= static_cast<int>(AlignmentRange::ALIGNMENT_RANGE_GOOD); i++)
   {

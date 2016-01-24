@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
-TEST(SL_Engine_Items_ItemMaterialFilter, passes_test)
+TEST(SW_Engine_Items_ItemMaterialFilter, passes_test)
 {
   ItemMaterialFilter imf(MaterialType::MATERIAL_TYPE_WOOD);
   

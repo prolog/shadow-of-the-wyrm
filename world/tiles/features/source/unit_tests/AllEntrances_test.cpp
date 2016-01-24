@@ -2,7 +2,7 @@
 #include "Door.hpp"
 #include "Gate.hpp"
 
-TEST(SL_World_Tiles_Feature_Entrances, saveload)
+TEST(SW_World_Tiles_Feature_Entrances, saveload)
 {
   Door door, door2;
   LockPtr lock = LockPtr(new Lock());
@@ -31,7 +31,7 @@ TEST(SL_World_Tiles_Feature_Entrances, saveload)
   EXPECT_TRUE(gate == gate2);
 }
 
-TEST(SL_World_Tiles_Feature_Entrances, serialization_id)
+TEST(SW_World_Tiles_Feature_Entrances, serialization_id)
 {
   Door door;
   Gate gate;

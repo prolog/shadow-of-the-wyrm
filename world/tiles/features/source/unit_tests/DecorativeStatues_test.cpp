@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_Features_DecorativeStatues, serialization_ids)
+TEST(SW_World_Tiles_Features_DecorativeStatues, serialization_ids)
 {
   KingDecorativeStatue kds;
   QueenDecorativeStatue qds;

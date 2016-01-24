@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_TertiaryUnarmedCalculator, calculate_knock_back_pct_chance)
+TEST(SW_Engine_Calculators_TertiaryUnarmedCalculator, calculate_knock_back_pct_chance)
 {
   CreaturePtr creature;
   TertiaryUnarmedCalculator tuc;

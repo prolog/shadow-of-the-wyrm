@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Maps_CoordUtils, incr)
+TEST(SW_Engine_Maps_CoordUtils, incr)
 {
   Dimensions d; // Bog standard 20x80.
   Coordinate c(0, 0);
@@ -20,12 +20,12 @@ TEST(SL_Engine_Maps_CoordUtils, incr)
   EXPECT_EQ(CoordUtils::end(), CoordUtils::incr(c, d));
 }
 
-TEST(SL_Engine_Maps_CoordUtils, end_coordinate)
+TEST(SW_Engine_Maps_CoordUtils, end_coordinate)
 {
   EXPECT_TRUE(CoordUtils::is_end(CoordUtils::end()));
 }
 
-TEST(SL_Engine_Maps_CoordUtils, perimeter_coords)
+TEST(SW_Engine_Maps_CoordUtils, perimeter_coords)
 {
   Coordinate top_left(1,1);
   Coordinate bottom_right(3,3);
@@ -46,7 +46,7 @@ TEST(SL_Engine_Maps_CoordUtils, perimeter_coords)
   EXPECT_FALSE(std::find(coords.begin(), coords.end(), make_pair(2, 2)) != coords.end());
 }
 
-TEST(SL_Engine_Maps_CoordUtils, coords_in_range)
+TEST(SW_Engine_Maps_CoordUtils, coords_in_range)
 {
   Coordinate top_left(2,2);
   Coordinate bottom_right(7,7);
@@ -63,7 +63,7 @@ TEST(SL_Engine_Maps_CoordUtils, coords_in_range)
   }
 }
 
-TEST(SL_Engine_Maps_CoordUtils, perimeter_length)
+TEST(SW_Engine_Maps_CoordUtils, perimeter_length)
 {
   Coordinate a(0,0);
   Coordinate b(10,10);
@@ -78,7 +78,7 @@ TEST(SL_Engine_Maps_CoordUtils, perimeter_length)
   EXPECT_EQ(18, CoordUtils::get_perimeter_length(a, b));
 }
 
-TEST(SL_Engine_Maps_CoordUtils, get_new_coordinate)
+TEST(SW_Engine_Maps_CoordUtils, get_new_coordinate)
 {
   Coordinate c(10, 10);
   Coordinate c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH_WEST);

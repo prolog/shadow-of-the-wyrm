@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Boat, serialization_id)
+TEST(SW_World_Boat, serialization_id)
 {
   Boat boat;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_BOAT, boat.get_class_identifier());
 }
 
-TEST(SL_World_Boat, saveload)
+TEST(SW_World_Boat, saveload)
 {
   Boat boat, boat2;
 

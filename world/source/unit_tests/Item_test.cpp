@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
-TEST(SL_World_Item, quantity_weight)
+TEST(SW_World_Item, quantity_weight)
 {
   ItemPtr amulet = std::make_shared<Amulet>();
 
@@ -15,7 +15,7 @@ TEST(SL_World_Item, quantity_weight)
   EXPECT_EQ(30, amulet->get_weight(3).get_weight());
 }
 
-TEST(SL_World_Item, total_weight)
+TEST(SW_World_Item, total_weight)
 {
   ItemPtr amulet = std::make_shared<Amulet>();
 
@@ -27,7 +27,7 @@ TEST(SL_World_Item, total_weight)
   EXPECT_EQ(48, amulet->get_total_weight().get_weight());
 }
 
-TEST(SL_World_Item, matches)
+TEST(SW_World_Item, matches)
 {
   ItemPtr amulet = std::make_shared<Amulet>();
   amulet->set_description_sid("asdf");

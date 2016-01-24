@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_ScrubTile, type_is_TILE_TYPE_SCRUB)
+TEST(SW_World_Tiles_ScrubTile, type_is_TILE_TYPE_SCRUB)
 {
   ScrubTile scrub_tile;
 
@@ -8,7 +8,7 @@ TEST(SL_World_Tiles_ScrubTile, type_is_TILE_TYPE_SCRUB)
 }
 
 
-TEST(SL_World_Tiles_ScrubTile, serialization_id)
+TEST(SW_World_Tiles_ScrubTile, serialization_id)
 {
   ScrubTile scrub_tile;
 

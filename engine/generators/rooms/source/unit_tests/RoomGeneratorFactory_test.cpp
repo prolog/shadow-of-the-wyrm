@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Generators_Rooms_RoomGeneratorFactory, generator_not_null)
+TEST(SW_Engine_Generators_Rooms_RoomGeneratorFactory, generator_not_null)
 {
   RoomGeneratorFactory rgf;
 

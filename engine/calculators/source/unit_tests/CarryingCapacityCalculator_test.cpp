@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_total_items_carrying_capacity)
+TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_total_items_carrying_capacity)
 {
   CarryingCapacityCalculator ccc;
   CreaturePtr null_creature;
@@ -24,7 +24,7 @@ TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_total_items_car
   EXPECT_EQ(300, ccc.calculate_carrying_capacity_total_items(c));
 }
 
-TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_burdened)
+TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_burdened)
 {
   CarryingCapacityCalculator ccc;
   CreaturePtr c = std::make_shared<Creature>();
@@ -39,7 +39,7 @@ TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_burdened)
   EXPECT_EQ(2400, ccc.calculate_burdened_weight(c));
 }
 
-TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_strained)
+TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_strained)
 {
   CarryingCapacityCalculator ccc;
   CreaturePtr c = std::make_shared<Creature>();
@@ -54,7 +54,7 @@ TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_strained)
   EXPECT_EQ(3600, ccc.calculate_strained_weight(c));
 }
 
-TEST(SL_Engine_Calculators_CarryingCapacityCalculator, calculate_overburdened)
+TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_overburdened)
 {
   CarryingCapacityCalculator ccc;
   CreaturePtr c = std::make_shared<Creature>();

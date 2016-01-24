@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Generators_PillarGeneratorFactory, all_types_non_null)
+TEST(SW_Engine_Generators_PillarGeneratorFactory, all_types_non_null)
 {
   for (int i = 0; i < static_cast<int>(PillarType::PILLAR_TYPE_LAST); i++)
   {

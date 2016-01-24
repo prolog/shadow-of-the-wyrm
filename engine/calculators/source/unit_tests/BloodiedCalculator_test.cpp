@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Calculator_BloodiedCalculator, calc_pct_chance_bloodied)
+TEST(SW_World_Calculator_BloodiedCalculator, calc_pct_chance_bloodied)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_strength(3);

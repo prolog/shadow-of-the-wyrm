@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Scroll, serialization_id)
+TEST(SW_World_Scroll, serialization_id)
 {
   Scroll scroll;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SCROLL, scroll.get_class_identifier());
 }
 
-TEST(SL_World_Scroll, saveload)
+TEST(SW_World_Scroll, saveload)
 {
   Scroll scroll, scroll2;
 

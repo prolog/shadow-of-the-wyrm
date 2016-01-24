@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Calculator_BlindedCalculator, calc_pct_chance_blinded)
+TEST(SW_World_Calculator_BlindedCalculator, calc_pct_chance_blinded)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(3);

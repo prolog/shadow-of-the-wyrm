@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Currency, serialization_id)
+TEST(SW_World_Currency, serialization_id)
 {
   Currency currency;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_CURRENCY, currency.get_class_identifier());
 }
 
-TEST(SL_World_Currency, saveload)
+TEST(SW_World_Currency, saveload)
 {
   Currency currency, currency2;
 

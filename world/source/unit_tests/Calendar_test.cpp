@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Calendar, serialization_id)
+TEST(SW_World_Calendar, serialization_id)
 {
   Calendar calendar;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_CALENDAR, calendar.get_class_identifier());
 }
 
-TEST(SL_World_Calendar, saveload)
+TEST(SW_World_Calendar, saveload)
 {
   Calendar c, c2;
   ostringstream ss;

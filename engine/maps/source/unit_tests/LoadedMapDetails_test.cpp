@@ -158,14 +158,14 @@ TEST_F(LoadedMapDetailsTester, test_needs_redraw)
   test_requires_full_redraw();
 }
 
-TEST(SL_Engine_Maps_LoadedMapDetails, serialization_id)
+TEST(SW_Engine_Maps_LoadedMapDetails, serialization_id)
 {
   LoadedMapDetails lmd;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_LOADED_MAP_DETAILS, lmd.get_class_identifier());
 }
 
-TEST(SL_Engine_Maps_LoadedMapDetails, saveload)
+TEST(SW_Engine_Maps_LoadedMapDetails, saveload)
 {
   LoadedMapDetails lmd, lmd2;
 

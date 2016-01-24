@@ -27979,6 +27979,12 @@
 			</Item>
 		</MiscItems>
 	</Items>
+	<Calendar>
+		<Day>
+			<DaySID>DAY_ENGLELAS_SID</DaySID>
+			<CalendarDay>151</CalendarDay>
+		</Day>
+	</Calendar>
 	<Scripts>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>

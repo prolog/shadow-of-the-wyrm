@@ -11,7 +11,7 @@ class Game;
 class CombatManager
 {
   public:
-    friend class SL_Engine_Combat_CombatManager;
+    friend class SW_Engine_Combat_CombatManager;
 
     CombatManager();
     bool operator==(const CombatManager& cm) const;

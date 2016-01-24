@@ -3,14 +3,14 @@
 #include "Armour.hpp"
 #include "Amulet.hpp"
 
-TEST(SL_World_Equipment, serialization_id)
+TEST(SW_World_Equipment, serialization_id)
 {
   Equipment eq;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_EQUIPMENT, eq.get_class_identifier());
 }
 
-TEST(SL_World_Equipment, saveload)
+TEST(SW_World_Equipment, saveload)
 {
   Equipment e, e2;
 

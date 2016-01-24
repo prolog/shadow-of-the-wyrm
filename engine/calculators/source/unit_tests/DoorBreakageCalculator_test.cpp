@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_DoorBreakageCalculator, calculate_pct_chance_breakage)
+TEST(SW_Engine_Calculators_DoorBreakageCalculator, calculate_pct_chance_breakage)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   Statistic str(17);

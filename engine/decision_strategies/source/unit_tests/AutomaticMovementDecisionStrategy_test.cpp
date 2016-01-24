@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "AutomaticMovement.hpp"
 
-TEST(SL_Engine_DecisionStrategy_AutomaticMovementDecisionStrategy, serialization_id)
+TEST(SW_Engine_DecisionStrategy_AutomaticMovementDecisionStrategy, serialization_id)
 {
   ControllerPtr nullp;
   AutomaticMovement am;
@@ -10,7 +10,7 @@ TEST(SL_Engine_DecisionStrategy_AutomaticMovementDecisionStrategy, serialization
   EXPECT_EQ(ClassIdentifier::CLASS_ID_AUTOMATIC_MOVEMENT_DECISION_STRATEGY, ds.get_class_identifier());
 }
 
-TEST(SL_Engine_DecisionStrategy_AutomaticMovementDecisionStrategy, saveload)
+TEST(SW_Engine_DecisionStrategy_AutomaticMovementDecisionStrategy, saveload)
 {
   AutomaticMovement am;
   ControllerPtr nullp;

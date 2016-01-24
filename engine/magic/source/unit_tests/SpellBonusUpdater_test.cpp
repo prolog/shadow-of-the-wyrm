@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Magic_SpellBonusUpdater, add_successful_casting)
+TEST(SW_Engine_Magic_SpellBonusUpdater, add_successful_casting)
 {
   SpellBonusUpdater sbu;
   IndividualSpellKnowledge isk;
@@ -26,7 +26,7 @@ TEST(SL_Engine_Magic_SpellBonusUpdater, add_successful_casting)
   EXPECT_EQ(3, isk.get_bonus().get_base());
 }
 
-TEST(SL_Engine_Magic_SpellBonusUpdater, spell_bonus_respects_maximum)
+TEST(SW_Engine_Magic_SpellBonusUpdater, spell_bonus_respects_maximum)
 {
   SpellBonusUpdater sbu;
   IndividualSpellKnowledge isk;

@@ -24,7 +24,7 @@ class ModifyStatisticsEffect : public Effect
     virtual bool is_negative_effect() const override;
 
   protected:
-    friend class SL_Engine_Effects_ModifyStatisticsEffect;
+    friend class SW_Engine_Effects_ModifyStatisticsEffect;
 
     virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
     virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;

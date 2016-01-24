@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "ControllerFactory.hpp"
 
-TEST(SL_Engine_DecisionStrategy_MobileDecisionStrategy, serialization_id)
+TEST(SW_Engine_DecisionStrategy_MobileDecisionStrategy, serialization_id)
 {
   ControllerPtr null_controller = ControllerFactory::create_controller(ClassIdentifier::CLASS_ID_NULL_KEYBOARD_CONTROLLER);
   

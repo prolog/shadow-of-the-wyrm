@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "DungeonGenerator.hpp"
-TEST(SL_Engine_Calculators_UnderworldMapDangerLevelCalculator, calculate_danger_level)
+TEST(SW_Engine_Calculators_UnderworldMapDangerLevelCalculator, calculate_danger_level)
 {
   Depth depth(10, 10);
   Depth depth2(13, 13);

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Messages, Add)
+TEST(SW_Engine_Messages, Add)
 {
   Messages messages;
   Message  msg("test", Colour::COLOUR_WHITE, MessageImportance::MessageImportance_UNDEFINED);
@@ -13,7 +13,7 @@ TEST(SL_Engine_Messages, Add)
   EXPECT_EQ(2, size);
 }
 
-TEST(SL_Engine_Messages, Clear)
+TEST(SW_Engine_Messages, Clear)
 {
   Messages messages;
   Message  msg("test", Colour::COLOUR_WHITE, MessageImportance::MessageImportance_UNDEFINED);

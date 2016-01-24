@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Translators_DisplayItemTypeFactory, display_items_not_null_for_given_type)
+TEST(SW_Engine_Translators_DisplayItemTypeFactory, display_items_not_null_for_given_type)
 {
   for (int i = static_cast<int>(ItemType::ITEM_TYPE_FIRST); i < static_cast<int>(ItemType::ITEM_TYPE_LAST); i++)
   {

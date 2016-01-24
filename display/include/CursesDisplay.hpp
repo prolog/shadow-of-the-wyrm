@@ -72,7 +72,7 @@ class CursesDisplay : public Display
     ClassIdentifier internal_class_identifier() const override;
 
   protected:
-    friend class SL_Display_CursesDisplayFixture; // test fixture
+    friend class SW_Display_CursesDisplayFixture; // test fixture
    
     bool uses_colour() const;
     int get_cursor_mode(const CursorSettings cs) const;

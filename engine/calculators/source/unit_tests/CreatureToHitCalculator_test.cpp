@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Armour.hpp"
 
-TEST(SL_Engine_Calculators_CreatureToHitCalculator, calculate_to_hit_bonus)
+TEST(SW_Engine_Calculators_CreatureToHitCalculator, calculate_to_hit_bonus)
 {
   CreatureToHitCalculator cthc;
   Creature c;

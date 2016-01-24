@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Calculator_StunnedCalculator, calc_pct_chance_stunned)
+TEST(SW_World_Calculator_StunnedCalculator, calc_pct_chance_stunned)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_dexterity(3);

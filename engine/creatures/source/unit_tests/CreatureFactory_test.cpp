@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Creatures_CreatureFactory, set_name)
+TEST(SW_Engine_Creatures_CreatureFactory, set_name)
 {
   ActionManager am;
 

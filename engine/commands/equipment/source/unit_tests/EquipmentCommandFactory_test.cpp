@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Commands_Equipment_EquipmentCommandFactory, serialization_id)
+TEST(SW_Engine_Commands_Equipment_EquipmentCommandFactory, serialization_id)
 {
   EquipmentCommandFactory ecf;
 

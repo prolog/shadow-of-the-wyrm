@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_MapExit, serialization_id)
+TEST(SW_Engine_MapExit, serialization_id)
 {
   MapExit map_exit;
 

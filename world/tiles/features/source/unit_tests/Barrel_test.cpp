@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_Features_Barrel, serialization_id)
+TEST(SW_World_Tiles_Features_Barrel, serialization_id)
 {
   Barrel barrel;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_BARREL, barrel.get_class_identifier());
 }
 
-TEST(SL_World_Tiles_Features_Barrel, saveload)
+TEST(SW_World_Tiles_Features_Barrel, saveload)
 {
   Barrel barrel, barrel2;
 

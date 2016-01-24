@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Religion_Deity, serialization_id)
+TEST(SW_World_Religion_Deity, serialization_id)
 {
   Deity d;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_DEITY, d.get_class_identifier());
 }
 
-TEST(SL_World_Religion_Deity, saveload)
+TEST(SW_World_Religion_Deity, saveload)
 {
   Deity d, d2;
 

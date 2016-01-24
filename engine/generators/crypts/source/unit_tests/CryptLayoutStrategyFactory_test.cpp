@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Generators_Crypts_CryptLayoutStrategyFactory, non_null_strategies)
+TEST(SW_Engine_Generators_Crypts_CryptLayoutStrategyFactory, non_null_strategies)
 {
   for (int i = static_cast<int>(CryptLayoutType::CRYPT_LAYOUT_PILLARS); i < static_cast<int>(CryptLayoutType::CRYPT_LAYOUT_LAST); i++)
   {

@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "FieldGenerator.hpp"
 
-TEST(SL_World_Map, serialization_id)
+TEST(SW_World_Map, serialization_id)
 {
   Dimensions d;
   Map map(d);
@@ -9,7 +9,7 @@ TEST(SL_World_Map, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_MAP, map.get_class_identifier());
 }
 
-TEST(SL_World_Map, saveload)
+TEST(SW_World_Map, saveload)
 {
   MapPtr map, map2;
   Dimensions d;

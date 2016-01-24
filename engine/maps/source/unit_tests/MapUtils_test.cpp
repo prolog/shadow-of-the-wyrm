@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Maps_MapUtils, get_dimensions)
+TEST(SW_Engine_Maps_MapUtils, get_dimensions)
 {
   // Size = 0 - dimensions should be 0, regardless.
   uint size = 0;
@@ -63,7 +63,7 @@ TEST(SL_Engine_Maps_MapUtils, get_dimensions)
   EXPECT_EQ(expected_size, MapUtils::get_dimensions(original_map, c, size).get_x());
 }
 
-TEST(SL_Engine_Maps_MapUtils, coordinate_within_dimensions)
+TEST(SW_Engine_Maps_MapUtils, coordinate_within_dimensions)
 {
   Dimensions d;
   Coordinate c(-1, -1);

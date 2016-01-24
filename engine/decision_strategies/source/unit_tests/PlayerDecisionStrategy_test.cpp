@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "ControllerFactory.hpp"
 
-TEST(SL_Engine_DecisionStrategy_PlayerDecisionStrategy, serialization_id)
+TEST(SW_Engine_DecisionStrategy_PlayerDecisionStrategy, serialization_id)
 {
   ControllerPtr null_controller = ControllerFactory::create_controller(ClassIdentifier::CLASS_ID_NULL_KEYBOARD_CONTROLLER);
   
@@ -10,7 +10,7 @@ TEST(SL_Engine_DecisionStrategy_PlayerDecisionStrategy, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_PLAYER_DECISION_STRATEGY, pds.get_class_identifier());
 }
 
-TEST(SL_Engine_DecisionStrategy_PlayerDecisionStrategy, saveload_to_test_decision_strategy_properties)
+TEST(SW_Engine_DecisionStrategy_PlayerDecisionStrategy, saveload_to_test_decision_strategy_properties)
 {
   ControllerPtr null_controller = ControllerFactory::create_controller(ClassIdentifier::CLASS_ID_NULL_KEYBOARD_CONTROLLER);
 

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Serialization_Serialize, string_map)
+TEST(SW_Engine_Serialization_Serialize, string_map)
 {
   map<string, string> orig;
   orig["s1"] = "foo";
@@ -21,7 +21,7 @@ TEST(SL_Engine_Serialization_Serialize, string_map)
   EXPECT_TRUE(orig == after);
 }
 
-TEST(SL_Engine_Serialization_Serialize, string_vector)
+TEST(SW_Engine_Serialization_Serialize, string_vector)
 {
   vector<string> original;
 

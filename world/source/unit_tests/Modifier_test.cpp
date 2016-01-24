@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Modifier, is_negative_stats)
+TEST(SW_World_Modifier, is_negative_stats)
 {
   Modifier m;
 
@@ -19,7 +19,7 @@ TEST(SL_World_Modifier, is_negative_stats)
   EXPECT_FALSE(m.is_negative());
 }
 
-TEST(SL_World_Modifier, is_negative_resists)
+TEST(SW_World_Modifier, is_negative_resists)
 {
   Modifier m2;
 
@@ -38,7 +38,7 @@ TEST(SL_World_Modifier, is_negative_resists)
   EXPECT_TRUE(m2.is_negative());
 }
 
-TEST(SL_World_Modifier, is_negative_both)
+TEST(SW_World_Modifier, is_negative_both)
 {
   Modifier m3;
   Resistances r;
@@ -61,7 +61,7 @@ TEST(SL_World_Modifier, is_negative_both)
   EXPECT_TRUE(m3.is_negative());
 }
 
-TEST(SL_World_Modifier, statuses)
+TEST(SW_World_Modifier, statuses)
 {
   Modifier m;
   
@@ -78,7 +78,7 @@ TEST(SL_World_Modifier, statuses)
   EXPECT_EQ(false, m.has_status("abab"));
 }
 
-TEST(SL_World_Modifier, get_affected_statuses)
+TEST(SW_World_Modifier, get_affected_statuses)
 {
   Modifier m;
 
@@ -95,21 +95,21 @@ TEST(SL_World_Modifier, get_affected_statuses)
   EXPECT_EQ(statuses, m.get_affected_status_keys());
 }
 
-TEST(SL_World_Modifier, serialization_id)
+TEST(SW_World_Modifier, serialization_id)
 {
   Modifier m;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_MODIFIER, m.get_class_identifier());
 }
 
-TEST(SL_World_Modifier, export_raw)
+TEST(SW_World_Modifier, export_raw)
 {
   vector<int> raw_values{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   Modifier m(raw_values);
   EXPECT_EQ(raw_values, m.get_raw_values());
 }
 
-TEST(SL_World_Modifier, saveload)
+TEST(SW_World_Modifier, saveload)
 {
   Modifier m(1,2,3,4,5,6,7);
   m.set_evade_modifier(3);

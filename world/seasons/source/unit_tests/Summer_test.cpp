@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Seasons_Summer, serialization_id)
+TEST(SW_World_Seasons_Summer, serialization_id)
 {
   Summer summer;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SUMMER, summer.get_class_identifier());
 }
 
-TEST(SL_World_Seasons_Summer, saveload)
+TEST(SW_World_Seasons_Summer, saveload)
 {
   Summer summer, summer2;
 

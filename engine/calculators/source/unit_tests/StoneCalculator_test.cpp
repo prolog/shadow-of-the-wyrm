@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Calculator_StoneCalculator, calc_pct_chance_stone)
+TEST(SW_World_Calculator_StoneCalculator, calc_pct_chance_stone)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(3);

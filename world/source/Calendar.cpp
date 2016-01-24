@@ -22,6 +22,7 @@ bool Calendar::operator==(const Calendar& c) const
   result = result && (seconds == c.seconds);
   result = result && (STARTING_YEAR == c.STARTING_YEAR);
   result = result && season && c.season && (*season == *c.season);
+  result = result && calendar_days == c.calendar_days;
 
   return result;
 }
@@ -117,6 +118,16 @@ bool Calendar::update_season_if_necessary()
   return season_updated;
 }
 
+void Calendar::set_calendar_days(const map<int, CalendarDay>& new_calendar_days)
+{
+  calendar_days = new_calendar_days;
+}
+
+map<int, CalendarDay>& Calendar::get_calendar_days_ref()
+{
+  return calendar_days;
+}
+
 bool Calendar::serialize(ostream& stream) const
 {
   Serialize::write_double(stream, seconds);
@@ -124,6 +135,14 @@ bool Calendar::serialize(ostream& stream) const
 
   Serialize::write_class_id(stream, season->get_class_identifier());
   season->serialize(stream);
+
+  Serialize::write_size_t(stream, calendar_days.size());
+
+  for (const auto& cd_pair : calendar_days)
+  {
+    Serialize::write_int(stream, cd_pair.first);
+    cd_pair.second.serialize(stream);
+  }
 
   return true;
 }
@@ -138,6 +157,20 @@ bool Calendar::deserialize(istream& stream)
   season = SeasonFactory::create_season(season_ci);
   if (!season) return false;
   if (!season->deserialize(stream)) return false;
+
+  size_t cal_size = 0;
+  Serialize::read_size_t(stream, cal_size);
+
+  for (size_t i = 0; i < cal_size; i++)
+  {
+    int day_of_year = -1;
+    Serialize::read_int(stream, day_of_year);
+
+    CalendarDay day_info;
+    day_info.deserialize(stream);
+
+    calendar_days[day_of_year] = day_info;
+  }
 
   return true;
 }

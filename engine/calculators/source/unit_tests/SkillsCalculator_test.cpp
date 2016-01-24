@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_SkillsCalculator, calculate_general_skills)
+TEST(SW_Engine_Calculators_SkillsCalculator, calculate_general_skills)
 {
   RacePtr racep = std::make_shared<Race>();
   ClassPtr classp = std::make_shared<Class>();
@@ -28,7 +28,7 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_general_skills)
   EXPECT_EQ(46, calculated_skills.get_value(SkillType::SKILL_GENERAL_WEAVING));
 }
 
-TEST(SL_Engine_Calculators_SkillsCalculator, calculate_melee_weapon_skills)
+TEST(SW_Engine_Calculators_SkillsCalculator, calculate_melee_weapon_skills)
 {
   RacePtr racep = std::make_shared<Race>();
   ClassPtr classp = std::make_shared<Class>();
@@ -56,7 +56,7 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_melee_weapon_skills)
   EXPECT_EQ(52, calculated_skills.get_value(SkillType::SKILL_MELEE_SHORT_BLADES));
 }
 
-TEST(SL_Engine_Calculators_SkillsCalculator, calculate_ranged_weapon_skills)
+TEST(SW_Engine_Calculators_SkillsCalculator, calculate_ranged_weapon_skills)
 {
   RacePtr racep = std::make_shared<Race>();
   ClassPtr classp = std::make_shared<Class>();
@@ -84,7 +84,7 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_ranged_weapon_skills)
   EXPECT_EQ(10, calculated_skills.get_value(SkillType::SKILL_RANGED_SLINGS));
 }
 
-TEST(SL_Engine_Calculators_SkillsCalculator, calculate_magic_skills)
+TEST(SW_Engine_Calculators_SkillsCalculator, calculate_magic_skills)
 {
   RacePtr racep = std::make_shared<Race>();
   ClassPtr classp = std::make_shared<Class>();

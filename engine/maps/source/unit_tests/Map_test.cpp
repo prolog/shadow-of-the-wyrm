@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-class SL_Engine_Map : public ::testing::Test
+class SW_Engine_Map : public ::testing::Test
 {
   public:
     string make_key(const Coordinate& c);
@@ -10,26 +10,26 @@ class SL_Engine_Map : public ::testing::Test
     MapPtr make_map() const;
 };
 
-string SL_Engine_Map::make_key(const Coordinate& c)
+string SW_Engine_Map::make_key(const Coordinate& c)
 {
   MapPtr map = make_map();
 
   return MapUtils::convert_coordinate_to_map_key(c);
 }
 
-Coordinate SL_Engine_Map::convert_map_key_to_coordinate(const string& key)
+Coordinate SW_Engine_Map::convert_map_key_to_coordinate(const string& key)
 {
   return MapUtils::convert_map_key_to_coordinate(key);
 }
 
-ClassIdentifier SL_Engine_Map::get_class_identifier()
+ClassIdentifier SW_Engine_Map::get_class_identifier()
 {
   MapPtr map = make_map();
 
   return map->get_class_identifier();
 }
 
-MapPtr SL_Engine_Map::make_map() const
+MapPtr SW_Engine_Map::make_map() const
 {
   Dimensions d;
   MapPtr map = std::make_shared<Map>(d);
@@ -37,7 +37,7 @@ MapPtr SL_Engine_Map::make_map() const
   return map;
 }
 
-TEST_F(SL_Engine_Map, tile_transforms)
+TEST_F(SW_Engine_Map, tile_transforms)
 {
   TileTransform tt1(Coordinate(4,5), TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_UNDEFINED, {});
   TileTransform tt2(Coordinate(5,6), TileType::TILE_TYPE_MARSH, TileType::TILE_TYPE_UNDEFINED, {});
@@ -57,7 +57,7 @@ TEST_F(SL_Engine_Map, tile_transforms)
   EXPECT_FALSE(*map == *map2);
 }
 
-TEST_F(SL_Engine_Map, coordinate_to_key)
+TEST_F(SW_Engine_Map, coordinate_to_key)
 {
   Coordinate c(10, 1);
 
@@ -73,7 +73,7 @@ TEST_F(SL_Engine_Map, coordinate_to_key)
   EXPECT_EQ("18-67", key);
 }
 
-TEST_F(SL_Engine_Map, key_to_coordinate)
+TEST_F(SW_Engine_Map, key_to_coordinate)
 {
   string key = "18-67";
 
@@ -83,7 +83,7 @@ TEST_F(SL_Engine_Map, key_to_coordinate)
   EXPECT_EQ(c.second, 67);
 }
 
-TEST_F(SL_Engine_Map, map_type_allows_updates)
+TEST_F(SW_Engine_Map, map_type_allows_updates)
 {
   MapPtr map = make_map();
   map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
@@ -106,12 +106,12 @@ TEST_F(SL_Engine_Map, map_type_allows_updates)
   EXPECT_FALSE(map->get_allow_creature_updates());
 }
 
-TEST_F(SL_Engine_Map, serialization_id)
+TEST_F(SW_Engine_Map, serialization_id)
 {
   EXPECT_EQ(ClassIdentifier::CLASS_ID_MAP, get_class_identifier());
 }
 
-TEST_F(SL_Engine_Map, saveload)
+TEST_F(SW_Engine_Map, saveload)
 {
   MapPtr map = make_map();
   map->set_property("foo", "bar");

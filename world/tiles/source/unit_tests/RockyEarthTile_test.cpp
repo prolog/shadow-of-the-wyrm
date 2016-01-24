@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_RockyEarthTile, type_is_TILE_TYPE_ROCKY_EARTH)
+TEST(SW_World_Tiles_RockyEarthTile, type_is_TILE_TYPE_ROCKY_EARTH)
 {
   RockyEarthTile rocky_tile;
 
   EXPECT_EQ(TileType::TILE_TYPE_ROCKY_EARTH, rocky_tile.get_tile_type());
 }
 
-TEST(SL_World_Tiles_RockyEarthTile, serialization_id)
+TEST(SW_World_Tiles_RockyEarthTile, serialization_id)
 {
   RockyEarthTile rocky_tile;
 

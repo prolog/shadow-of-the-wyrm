@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Alignment, abrv_sid)
+TEST(SW_World_Alignment, abrv_sid)
 {
   Alignment a;
 
@@ -9,7 +9,7 @@ TEST(SL_World_Alignment, abrv_sid)
   EXPECT_EQ(TextKeys::ALIGNMENT_NEUTRAL_ABRV, a.get_abbreviation_sid(AlignmentRange::ALIGNMENT_RANGE_NEUTRAL));
 }
 
-TEST(SL_World_Alignment, align_sid)
+TEST(SW_World_Alignment, align_sid)
 {
   Alignment a;
 
@@ -18,7 +18,7 @@ TEST(SL_World_Alignment, align_sid)
   EXPECT_EQ(TextKeys::ALIGNMENT_NEUTRAL, a.get_alignment_sid(AlignmentRange::ALIGNMENT_RANGE_NEUTRAL));
 }
 
-TEST(SL_World_Alignment, default_for_range)
+TEST(SW_World_Alignment, default_for_range)
 {
   Alignment a;
 
@@ -27,7 +27,7 @@ TEST(SL_World_Alignment, default_for_range)
   EXPECT_EQ(1600, a.get_default_alignment_for_range(AlignmentRange::ALIGNMENT_RANGE_GOOD));
 }
 
-TEST(SL_World_Alignment, set_values)
+TEST(SW_World_Alignment, set_values)
 {
   Alignment a;
 
@@ -52,7 +52,7 @@ TEST(SL_World_Alignment, set_values)
   EXPECT_EQ(-1250, a.get_alignment());
 }
 
-TEST(SL_World_Alignment, alignment_ranges)
+TEST(SW_World_Alignment, alignment_ranges)
 {
   Alignment a;
   a.set_alignment(-2500);
@@ -72,14 +72,14 @@ TEST(SL_World_Alignment, alignment_ranges)
   EXPECT_EQ(AlignmentRange::ALIGNMENT_RANGE_GOOD, a.get_alignment_range());
 }
 
-TEST(SL_World_Alignment, serialization_id)
+TEST(SW_World_Alignment, serialization_id)
 {
   Alignment a;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_ALIGNMENT, a.get_class_identifier());
 }
 
-TEST(SL_World_Alignment, saveload)
+TEST(SW_World_Alignment, saveload)
 {
   Alignment a, a2;
   a.set_alignment(1212);

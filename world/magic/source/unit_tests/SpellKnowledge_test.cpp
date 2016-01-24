@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Magic_SpellKnowledge, store_values)
+TEST(SW_World_Magic_SpellKnowledge, store_values)
 {
   SpellKnowledge sk;
   IndividualSpellKnowledge isk;
@@ -13,14 +13,14 @@ TEST(SL_World_Magic_SpellKnowledge, store_values)
   EXPECT_EQ(15, sk.get_spell_knowledge("big_blast").get_castings());
 }
 
-TEST(SL_World_Magic_SpellKnowledge, serialization_id)
+TEST(SW_World_Magic_SpellKnowledge, serialization_id)
 {
   SpellKnowledge sk;
 
   EXPECT_TRUE(sk.get_class_identifier() == ClassIdentifier::CLASS_ID_SPELL_KNOWLEDGE);
 }
 
-TEST(SL_World_Magic_SpellKnowledge, saveload)
+TEST(SW_World_Magic_SpellKnowledge, saveload)
 {
   SpellKnowledge sk, sk2;
   IndividualSpellKnowledge isk;
@@ -41,7 +41,7 @@ TEST(SL_World_Magic_SpellKnowledge, saveload)
   EXPECT_TRUE(sk == sk2);
 }
 
-TEST(SL_World_Magic_SpellKnowledge, get_knows_spells)
+TEST(SW_World_Magic_SpellKnowledge, get_knows_spells)
 {
   SpellKnowledge sk;
 
@@ -55,7 +55,7 @@ TEST(SL_World_Magic_SpellKnowledge, get_knows_spells)
   EXPECT_TRUE(sk.get_knows_spells());
 }
 
-TEST(SL_World_Magic_SpellKnowledge, count_spells_known)
+TEST(SW_World_Magic_SpellKnowledge, count_spells_known)
 {
   SpellKnowledge sk;
 

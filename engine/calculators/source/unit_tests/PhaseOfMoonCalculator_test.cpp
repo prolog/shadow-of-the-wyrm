@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_PhaseOfMoonCalculator, calculate_phase)
+TEST(SW_Engine_Calculators_PhaseOfMoonCalculator, calculate_phase)
 {
   PhaseOfMoonCalculator pomc;
 

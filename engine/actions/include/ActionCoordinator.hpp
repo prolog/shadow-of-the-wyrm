@@ -31,7 +31,7 @@ class ActionCoordinator : public ISerializable
     virtual bool deserialize(std::istream& stream) override;
 
   protected:
-    friend class SL_Engine_Actions_ActionCoordinatorFixture; // test fixture
+    friend class SW_Engine_Actions_ActionCoordinatorFixture; // test fixture
 
     CreatureActionMultimap creature_action_order;
     std::string current_map_id;

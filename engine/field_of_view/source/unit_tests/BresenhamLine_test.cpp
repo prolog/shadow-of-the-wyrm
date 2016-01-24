@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-TEST(SL_Engine_FieldOfView, BresenhamLine)
+TEST(SW_Engine_FieldOfView, BresenhamLine)
 {
   BresenhamLine bl;
 

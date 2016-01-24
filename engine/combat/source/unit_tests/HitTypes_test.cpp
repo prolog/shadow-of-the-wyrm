@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Combat_HitTypes, is_critical_hit)
+TEST(SW_Engine_Combat_HitTypes, is_critical_hit)
 {
   int i = CombatConstants::CRITICAL_DIFFICULTY;
   
@@ -15,7 +15,7 @@ TEST(SL_Engine_Combat_HitTypes, is_critical_hit)
   EXPECT_FALSE(HitTypeEnum::HIT_TYPE_CRITICAL == HitTypeEnumConverter::from_successful_to_hit_roll(i));
 }
 
-TEST(SL_Engine_Combat_HitTypes, is_mighty_blow)
+TEST(SW_Engine_Combat_HitTypes, is_mighty_blow)
 {
   for (int i = CombatConstants::MIGHTY_BLOW_DIFFICULTY; i < CombatConstants::CRITICAL_DIFFICULTY; i++)
   {

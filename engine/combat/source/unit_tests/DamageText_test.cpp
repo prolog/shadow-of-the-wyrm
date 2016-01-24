@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Combat_DamageText, get_colour)
+TEST(SW_Engine_Combat_DamageText, get_colour)
 {
   CreaturePtr creature = CreaturePtr(new Creature());
   ControllerPtr null_controller;

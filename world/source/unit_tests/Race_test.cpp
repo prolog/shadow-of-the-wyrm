@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Race, operator_less_than)
+TEST(SW_World_Race, operator_less_than)
 {
   Race first;
   Race second;

@@ -3,14 +3,14 @@
 #include "NeutralAltar.hpp"
 #include "EvilAltar.hpp"
 
-TEST(SL_World_Tiles_Feature_Altar, deity_id)
+TEST(SW_World_Tiles_Feature_Altar, deity_id)
 {
   EvilAltar altar("test");
 
   EXPECT_EQ("test", altar.get_deity_id());
 }
 
-TEST(SL_World_Tiles_Feature_Altar, symbol)
+TEST(SW_World_Tiles_Feature_Altar, symbol)
 {
   char sym = '_'; // common for all altars
 
@@ -23,7 +23,7 @@ TEST(SL_World_Tiles_Feature_Altar, symbol)
   EXPECT_EQ(sym, evil.get_symbol());
 }
 
-TEST(SL_World_Tiles_Feature_Altar, material)
+TEST(SW_World_Tiles_Feature_Altar, material)
 {
   GoodAltar good("test1");
   NeutralAltar neutral("test2");
@@ -34,7 +34,7 @@ TEST(SL_World_Tiles_Feature_Altar, material)
   EXPECT_EQ(MaterialType::MATERIAL_TYPE_ONYX, evil.get_material_type());
 }
 
-TEST(SL_World_Tiles_Feature_Altar, serialization_id)
+TEST(SW_World_Tiles_Feature_Altar, serialization_id)
 {
   GoodAltar good("test1");
   NeutralAltar neutral("test2");

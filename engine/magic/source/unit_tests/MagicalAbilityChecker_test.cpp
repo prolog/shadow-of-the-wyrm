@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Magic_MagicalAbilityChecker, has_magical_knowledge)
+TEST(SW_Engine_Magic_MagicalAbilityChecker, has_magical_knowledge)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   MagicalAbilityChecker mac;
@@ -19,7 +19,7 @@ TEST(SL_Engine_Magic_MagicalAbilityChecker, has_magical_knowledge)
   EXPECT_TRUE(mac.has_magical_knowledge(creature));
 }
 
-TEST(SL_Engine_Magic_MagicalAbilityChecker, has_power)
+TEST(SW_Engine_Magic_MagicalAbilityChecker, has_power)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   MagicalAbilityChecker mac;

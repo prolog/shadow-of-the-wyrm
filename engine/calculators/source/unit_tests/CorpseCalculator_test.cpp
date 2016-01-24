@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_CorpseCalculator, calculate_chance_successful_skin)
+TEST(SW_Engine_Calculators_CorpseCalculator, calculate_chance_successful_skin)
 {
   CorpseCalculator cc;
   CreaturePtr creature = std::make_shared<Creature>();
@@ -24,7 +24,7 @@ TEST(SL_Engine_Calculators_CorpseCalculator, calculate_chance_successful_skin)
   EXPECT_EQ(100, cc.calculate_chance_successful_skin(creature));
 }
 
-TEST(SL_Engine_Calculators_CorpseCalculator, calculate_chance_corpse)
+TEST(SW_Engine_Calculators_CorpseCalculator, calculate_chance_corpse)
 {
   CorpseCalculator cc;
   CreaturePtr creature = std::make_shared<Creature>();

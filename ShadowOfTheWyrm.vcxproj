@@ -901,6 +901,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\Blood.hpp" />
     <ClInclude Include="world\include\Boat.hpp" />
     <ClInclude Include="world\include\BoolStatistic.hpp" />
+    <ClInclude Include="world\include\CalendarDay.hpp" />
     <ClInclude Include="world\include\Conducts.hpp" />
     <ClInclude Include="world\include\ConductTypes.hpp" />
     <ClInclude Include="world\include\ConsumableConstants.hpp" />
@@ -2539,6 +2540,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\Blood.cpp" />
     <ClCompile Include="world\source\Boat.cpp" />
     <ClCompile Include="world\source\BoolStatistic.cpp" />
+    <ClCompile Include="world\source\CalendarDay.cpp" />
     <ClCompile Include="world\source\Conducts.cpp" />
     <ClCompile Include="world\source\ConsumableConstants.cpp" />
     <ClCompile Include="world\source\CreatureGenerationOptions.cpp" />
@@ -2634,6 +2636,11 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\BoolStatistic_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\CalendarDay_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

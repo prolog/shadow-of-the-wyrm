@@ -1,12 +1,12 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Blood, serialization_id)
+TEST(SW_World_Blood, serialization_id)
 {
   Blood b;
   EXPECT_EQ(ClassIdentifier::CLASS_ID_BLOOD, b.get_class_identifier());
 }
 
-TEST(SL_World_Blood, saveload)
+TEST(SW_World_Blood, saveload)
 {
   Blood b, b2;
 
@@ -24,7 +24,7 @@ TEST(SL_World_Blood, saveload)
   EXPECT_TRUE(b == b2);
 }
 
-TEST(SL_World_Blood, increment_grams)
+TEST(SW_World_Blood, increment_grams)
 {
   Blood b;
   b.set_grams_alcohol(3);
@@ -33,7 +33,7 @@ TEST(SL_World_Blood, increment_grams)
   EXPECT_EQ(5, b.get_grams_alcohol());
 }
 
-TEST(SL_World_Blood, decrement_grams)
+TEST(SW_World_Blood, decrement_grams)
 {
   Blood b;
   b.set_grams_alcohol(5);
@@ -46,7 +46,7 @@ TEST(SL_World_Blood, decrement_grams)
   EXPECT_EQ(0, b.get_grams_alcohol());
 }
 
-TEST(SL_World_Blood, BAC)
+TEST(SW_World_Blood, BAC)
 {
   // Humans actually have around five litres of blood - the 1.0 litres
   // below is just to test the calculation of BAC itself.

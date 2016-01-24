@@ -22,7 +22,7 @@ int ItemPietyCalculatorTestFixture::get_base_value(ItemPtr item)
   return ipc.get_base_value(item);
 }
 
-TEST(SL_Engine_Calculators_ItemPietyCalculator, minimum_piety)
+TEST(SW_Engine_Calculators_ItemPietyCalculator, minimum_piety)
 {
   ItemPtr item = std::make_shared<Amulet>();
   item->set_value(1);
@@ -48,7 +48,7 @@ TEST_F(ItemPietyCalculatorTestFixture, get_base_value)
   EXPECT_EQ(1, get_base_value(item));
 }
 
-TEST(SL_Engine_Calculators_ItemPietyCalculator, calculated_piety_value)
+TEST(SW_Engine_Calculators_ItemPietyCalculator, calculated_piety_value)
 {
   ItemPietyCalculator ipc;
   ItemPtr item = std::make_shared<Amulet>();

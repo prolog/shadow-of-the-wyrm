@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_ForestCalculator, pct_chance_fruit)
+TEST(SW_Engine_Calculators_ForestCalculator, pct_chance_fruit)
 {
   ForestCalculator fc;
 
@@ -9,7 +9,7 @@ TEST(SL_Engine_Calculators_ForestCalculator, pct_chance_fruit)
   EXPECT_EQ(0, fc.calculate_pct_chance_fruit(TileType::TILE_TYPE_DUNGEON_COMPLEX));
 }
 
-TEST(SL_Engine_Calculators_ForestCalculator, pct_chance_evergreen)
+TEST(SW_Engine_Calculators_ForestCalculator, pct_chance_evergreen)
 {
   ForestCalculator fc;
 

@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_MovementAccumulation, serialization_id)
+TEST(SW_World_MovementAccumulation, serialization_id)
 {
   MovementAccumulation ma;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_MOVEMENT_ACCUMULATION, ma.get_class_identifier());
 }
 
-TEST(SL_World_MovementAccumulation, saveload)
+TEST(SW_World_MovementAccumulation, saveload)
 {
   MovementAccumulation ma, ma2;
 

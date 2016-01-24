@@ -1,12 +1,12 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_ScriptDetails, serialization_id)
+TEST(SW_World_ScriptDetails, serialization_id)
 {
   ScriptDetails sd;
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SCRIPT_DETAILS, sd.get_class_identifier());
 }
 
-TEST(SL_World_ScriptDetails, saveload)
+TEST(SW_World_ScriptDetails, saveload)
 {
   ScriptDetails sd("abc", 88);
 

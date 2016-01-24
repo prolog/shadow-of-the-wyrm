@@ -30,7 +30,7 @@ CreaturePtr create_test_creature()
   return creature;
 }
 
-TEST(SL_Engine_Calculators_StatisticsCalculators_Strength, calculate_current)
+TEST(SW_Engine_Calculators_StatisticsCalculators_Strength, calculate_current)
 {
   CreaturePtr creature = create_test_creature();
   
@@ -38,7 +38,7 @@ TEST(SL_Engine_Calculators_StatisticsCalculators_Strength, calculate_current)
   EXPECT_EQ(21, sc.calculate_current(creature));
 }
 
-TEST(SL_Engine_Calculators_StatisticsCalculators_Dexterity, calculate_current)
+TEST(SW_Engine_Calculators_StatisticsCalculators_Dexterity, calculate_current)
 {
   CreaturePtr creature = create_test_creature();
 
@@ -46,7 +46,7 @@ TEST(SL_Engine_Calculators_StatisticsCalculators_Dexterity, calculate_current)
   EXPECT_EQ(19, dc.calculate_current(creature));
 }
 
-TEST(SL_Engine_Calculators_StatisticsCalculators_Agility, calculate_current)
+TEST(SW_Engine_Calculators_StatisticsCalculators_Agility, calculate_current)
 {
   CreaturePtr creature = create_test_creature();
 
@@ -54,7 +54,7 @@ TEST(SL_Engine_Calculators_StatisticsCalculators_Agility, calculate_current)
   EXPECT_EQ(17, ac.calculate_current(creature));
 }
 
-TEST(SL_Engine_Calculators_StatisticsCalculators_Health, calculate_current)
+TEST(SW_Engine_Calculators_StatisticsCalculators_Health, calculate_current)
 {
   CreaturePtr creature = create_test_creature();
 
@@ -62,7 +62,7 @@ TEST(SL_Engine_Calculators_StatisticsCalculators_Health, calculate_current)
   EXPECT_EQ(15, hc.calculate_current(creature));
 }
 
-TEST(SL_Engine_Calculators_StatisticsCalculators_Intelligence, calculate_current)
+TEST(SW_Engine_Calculators_StatisticsCalculators_Intelligence, calculate_current)
 {
   CreaturePtr creature = create_test_creature();
 
@@ -70,7 +70,7 @@ TEST(SL_Engine_Calculators_StatisticsCalculators_Intelligence, calculate_current
   EXPECT_EQ(13, ic.calculate_current(creature));
 }
 
-TEST(SL_Engine_Calculators_StatisticsCalculators_Willpower, calculate_current)
+TEST(SW_Engine_Calculators_StatisticsCalculators_Willpower, calculate_current)
 {
   CreaturePtr creature = create_test_creature();
 
@@ -78,7 +78,7 @@ TEST(SL_Engine_Calculators_StatisticsCalculators_Willpower, calculate_current)
   EXPECT_EQ(11, wc.calculate_current(creature));
 }
 
-TEST(SL_Engine_Calculators_StatisticsCalculators_Charisma, calculate_current)
+TEST(SW_Engine_Calculators_StatisticsCalculators_Charisma, calculate_current)
 {
   CreaturePtr creature = create_test_creature();
 

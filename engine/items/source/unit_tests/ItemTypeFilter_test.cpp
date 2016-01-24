@@ -2,7 +2,7 @@
 #include "Amulet.hpp"
 #include "Food.hpp"
 
-TEST(SL_Engine_Items_ItemTypeFilter, passes_filter)
+TEST(SW_Engine_Items_ItemTypeFilter, passes_filter)
 {
   ItemTypeFilter itf(ItemType::ITEM_TYPE_AMULET);
 

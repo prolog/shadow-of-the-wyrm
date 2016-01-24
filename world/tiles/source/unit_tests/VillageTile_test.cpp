@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_VillageTile, type_is_TILE_TYPE_VILLAGE)
+TEST(SW_World_Tiles_VillageTile, type_is_TILE_TYPE_VILLAGE)
 {
   VillageTile village_tile;
 
   EXPECT_EQ(TileType::TILE_TYPE_VILLAGE, village_tile.get_tile_type());
 }
 
-TEST(SL_World_Tiles_VillageTile, settlement_type)
+TEST(SW_World_Tiles_VillageTile, settlement_type)
 {
   VillageTile village_tile;
 
@@ -20,7 +20,7 @@ TEST(SL_World_Tiles_VillageTile, settlement_type)
   }
 }
 
-TEST(SL_World_Tiles_VillageTile, village_race)
+TEST(SW_World_Tiles_VillageTile, village_race)
 {
   VillageTile village_tile;
 
@@ -29,7 +29,7 @@ TEST(SL_World_Tiles_VillageTile, village_race)
   EXPECT_EQ("robot_monkeys", village_tile.get_village_race_id());
 }
 
-TEST(SL_World_Tiles_VillageTile, serialization_id)
+TEST(SW_World_Tiles_VillageTile, serialization_id)
 {
   VillageTile village_tile;
 

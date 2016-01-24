@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Generators_TileGenerator, tile_types_correct)
+TEST(SW_Engine_Generators_TileGenerator, tile_types_correct)
 {
   TilePtr tile;
   TileGenerator tg;
@@ -14,7 +14,7 @@ TEST(SL_Engine_Generators_TileGenerator, tile_types_correct)
   }
 }
 
-TEST(SL_Engine_Generators_TileGenerator, get_is_staircase)
+TEST(SW_Engine_Generators_TileGenerator, get_is_staircase)
 {
   TilePtr tile;
   TileGenerator tg;

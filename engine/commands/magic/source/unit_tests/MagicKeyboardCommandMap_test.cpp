@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Commands_Magic_MagicKeyboardCommandMap, serialization_id)
+TEST(SW_Engine_Commands_Magic_MagicKeyboardCommandMap, serialization_id)
 {
   MagicKeyboardCommandMap mkcm;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_MAGIC_KEYBOARD_COMMAND_MAP, mkcm.get_class_identifier());
 }
 
-class SL_Engine_Commands_Magic_MagicKeyboardCommandMapFixture : public SL_Engine_Commands_KeyboardCommandMapFixture
+class SW_Engine_Commands_Magic_MagicKeyboardCommandMapFixture : public SW_Engine_Commands_KeyboardCommandMapFixture
 {
   public:
     void SetUp();
@@ -16,12 +16,12 @@ class SL_Engine_Commands_Magic_MagicKeyboardCommandMapFixture : public SL_Engine
     MagicKeyboardCommandMap mkcm;
 };
 
-void SL_Engine_Commands_Magic_MagicKeyboardCommandMapFixture::SetUp()
+void SW_Engine_Commands_Magic_MagicKeyboardCommandMapFixture::SetUp()
 {
   initialize_kcm_for_unit_tests(mkcm);
 }
 
-TEST_F(SL_Engine_Commands_Magic_MagicKeyboardCommandMapFixture, saveload)
+TEST_F(SW_Engine_Commands_Magic_MagicKeyboardCommandMapFixture, saveload)
 {
   ostringstream ss;
 

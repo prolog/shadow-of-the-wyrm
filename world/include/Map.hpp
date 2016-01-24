@@ -119,7 +119,7 @@ class Map : public ISerializable
 		void create_creatures();		
 
 	protected:
-    friend class SL_Engine_Map;
+    friend class SW_Engine_Map;
     
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.

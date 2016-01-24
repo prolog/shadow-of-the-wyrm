@@ -2,7 +2,7 @@
 #include "AirTile.hpp"
 #include "Bed.hpp"
 
-TEST(SL_Engine_Calculators_APRegenerationCalculator, minutes_per_ap)
+TEST(SW_Engine_Calculators_APRegenerationCalculator, minutes_per_ap)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   TilePtr tile = std::make_shared<AirTile>();
