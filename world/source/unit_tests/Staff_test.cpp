@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Staff, serialization_id)
+TEST(SW_World_Staff, serialization_id)
 {
   Staff staff;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_STAFF, staff.get_class_identifier());
 }
 
-TEST(SL_World_Staff, saveload)
+TEST(SW_World_Staff, saveload)
 {
   Staff staff, staff2;
 

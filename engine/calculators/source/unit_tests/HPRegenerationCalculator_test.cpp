@@ -2,7 +2,7 @@
 #include "BarrowTile.hpp"
 #include "Bed.hpp"
 
-TEST(SL_Engine_Calculators_HPRegenerationCalculator, minutes_per_hp)
+TEST(SW_Engine_Calculators_HPRegenerationCalculator, minutes_per_hp)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   Statistic health(0);

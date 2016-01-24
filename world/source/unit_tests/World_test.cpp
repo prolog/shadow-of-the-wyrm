@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_World, serialization_id)
+TEST(SW_World_World, serialization_id)
 {
   World world;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_WORLD, world.get_class_identifier());
 }
 
-TEST(SL_World_World, saveload)
+TEST(SW_World_World, saveload)
 {
   World world, world2;
   ostringstream ss;

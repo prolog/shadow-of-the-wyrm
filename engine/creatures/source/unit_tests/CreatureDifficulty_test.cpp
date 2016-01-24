@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Creatures_CreatureDifficulty, difficulty_text_sids)
+TEST(SW_Engine_Creatures_CreatureDifficulty, difficulty_text_sids)
 {
   CreatureDifficulty cd;
   CreaturePtr c1, c2;

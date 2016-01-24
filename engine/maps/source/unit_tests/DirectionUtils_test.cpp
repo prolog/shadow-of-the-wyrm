@@ -4,7 +4,7 @@
 
 using namespace std;
 
-TEST(SL_Engine_Maps_DirectionUtils, is_cardinal)
+TEST(SW_Engine_Maps_DirectionUtils, is_cardinal)
 {
   EXPECT_TRUE(DirectionUtils::is_cardinal(Direction::DIRECTION_NORTH));
   EXPECT_TRUE(DirectionUtils::is_cardinal(Direction::DIRECTION_SOUTH));
@@ -15,7 +15,7 @@ TEST(SL_Engine_Maps_DirectionUtils, is_cardinal)
   EXPECT_FALSE(DirectionUtils::is_cardinal(Direction::DIRECTION_UP));
 }
 
-TEST(SL_Engine_Maps_DirectionUtils, is_ordinal)
+TEST(SW_Engine_Maps_DirectionUtils, is_ordinal)
 {
   EXPECT_TRUE(DirectionUtils::is_ordinal(Direction::DIRECTION_NORTH_WEST));
   EXPECT_TRUE(DirectionUtils::is_ordinal(Direction::DIRECTION_NORTH_EAST));
@@ -25,7 +25,7 @@ TEST(SL_Engine_Maps_DirectionUtils, is_ordinal)
   EXPECT_FALSE(DirectionUtils::is_ordinal(Direction::DIRECTION_DOWN));
 }
 
-TEST(SL_Engine_Maps_DirectionUtils, get_opposite_direction)
+TEST(SW_Engine_Maps_DirectionUtils, get_opposite_direction)
 {
   EXPECT_EQ(Direction::DIRECTION_SOUTH_EAST, DirectionUtils::get_opposite_direction(Direction::DIRECTION_NORTH_WEST));
   EXPECT_EQ(Direction::DIRECTION_SOUTH, DirectionUtils::get_opposite_direction(Direction::DIRECTION_NORTH));
@@ -44,7 +44,7 @@ TEST(SL_Engine_Maps_DirectionUtils, get_opposite_direction)
   EXPECT_EQ(CardinalDirection::CARDINAL_DIRECTION_WEST, DirectionUtils::get_opposite_direction(CardinalDirection::CARDINAL_DIRECTION_EAST));
 }
 
-TEST(SL_Engine_Maps_DirectionUtils, direction_matches_category)
+TEST(SW_Engine_Maps_DirectionUtils, direction_matches_category)
 {
   // First bool = is cardinal?
   // Second bool = is cardinal or ordinal?

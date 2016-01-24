@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_BushTile, type_is_TILE_TYPE_BUSH)
+TEST(SW_World_Tiles_BushTile, type_is_TILE_TYPE_BUSH)
 {
   BushTile bush_tile;
 

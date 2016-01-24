@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Statistic, InitialValueIs1)
+TEST(SW_World_Statistic, InitialValueIs1)
 {
   Statistic stat;
 
@@ -8,7 +8,7 @@ TEST(SL_World_Statistic, InitialValueIs1)
   EXPECT_EQ(1, stat.get_current());
 }
 
-TEST(SL_World_Statistic, Lowest)
+TEST(SW_World_Statistic, Lowest)
 {
   Statistic stat(30);
   stat.set_current(33);
@@ -21,7 +21,7 @@ TEST(SL_World_Statistic, Lowest)
   EXPECT_EQ(15, stat2.get_lowest());
 }
 
-TEST(SL_World_Statistic, IsFull)
+TEST(SW_World_Statistic, IsFull)
 {
   Statistic stat(30);
   stat.set_current(30);
@@ -37,7 +37,7 @@ TEST(SL_World_Statistic, IsFull)
   EXPECT_FALSE(stat.get_full());
 }
 
-TEST(SL_World_Statistic, BaseValue)
+TEST(SW_World_Statistic, BaseValue)
 {
   Statistic stat;
 
@@ -50,7 +50,7 @@ TEST(SL_World_Statistic, BaseValue)
   EXPECT_EQ(66, stat.get_base());
 }
 
-TEST(SL_World_Statistic, CurrentValue)
+TEST(SW_World_Statistic, CurrentValue)
 {
   Statistic stat;
 
@@ -63,14 +63,14 @@ TEST(SL_World_Statistic, CurrentValue)
   EXPECT_EQ(99, stat.get_current());
 }
 
-TEST(SL_World_Statistic, serialization_id)
+TEST(SW_World_Statistic, serialization_id)
 {
   Statistic stat;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_STATISTIC, stat.get_class_identifier());
 }
 
-TEST(SL_World_Statistic, saveload)
+TEST(SW_World_Statistic, saveload)
 {
   Statistic stat(45);
   Statistic stat2;

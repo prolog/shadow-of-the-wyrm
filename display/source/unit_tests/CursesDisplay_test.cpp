@@ -1,14 +1,14 @@
 #include "gtest/gtest.h"
 #include "RNG.hpp"
 
-TEST(SL_Display_CursesDisplay, serialization_id)
+TEST(SW_Display_CursesDisplay, serialization_id)
 {
   CursesDisplay cd;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_CURSES_DISPLAY, cd.get_class_identifier());
 }
 
-class SL_Display_CursesDisplayFixture : public ::testing::Test
+class SW_Display_CursesDisplayFixture : public ::testing::Test
 {
   protected:
     void SetUp();
@@ -16,7 +16,7 @@ class SL_Display_CursesDisplayFixture : public ::testing::Test
     CursesDisplay curses_display;
 };
 
-void SL_Display_CursesDisplayFixture::SetUp()
+void SW_Display_CursesDisplayFixture::SetUp()
 {
   curses_display.TERMINAL_MAX_ROWS = RNG::range(0, 25);
   curses_display.TERMINAL_MAX_COLS = RNG::range(0, 80);
@@ -29,7 +29,7 @@ void SL_Display_CursesDisplayFixture::SetUp()
   curses_display.can_use_colour = RNG::percent_chance(50);
 }
 
-TEST_F(SL_Display_CursesDisplayFixture, saveload)
+TEST_F(SW_Display_CursesDisplayFixture, saveload)
 {
   CursesDisplay cd = curses_display;
 

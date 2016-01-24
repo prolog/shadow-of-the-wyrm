@@ -139,7 +139,7 @@ class Game : public ISerializable
     friend class SeasonsTimeObserver;
     friend class TileSelectionAction;
     friend class ShadowOfTheWyrmEngine;
-    friend class SL_Engine_Game; // unit testing
+    friend class SW_Engine_Game; // unit testing
 
     Game();
     Game(const Game& game);

@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Scripting_ScriptEngine, serialization_id)
+TEST(SW_Engine_Scripting_ScriptEngine, serialization_id)
 {
   ScriptEngine se;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SCRIPT_ENGINE, se.get_class_identifier());
 }
 
-TEST(SL_engine_Scripting_ScriptEngine, saveload)
+TEST(SW_engine_Scripting_ScriptEngine, saveload)
 {
   ScriptEngine se, se2;
 

@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Wand, serialization_id)
+TEST(SW_World_Wand, serialization_id)
 {
   Wand wand;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_WAND, wand.get_class_identifier());
 }
 
-TEST(SL_World_Wand, saveload)
+TEST(SW_World_Wand, saveload)
 {
   Wand wand, wand2;
 
@@ -31,7 +31,7 @@ TEST(SL_World_Wand, saveload)
   EXPECT_TRUE(wand == wand2);
 }
 
-TEST(SL_World_Wand, no_effect_when_zero_charges)
+TEST(SW_World_Wand, no_effect_when_zero_charges)
 {
   Wand wand;
   wand.set_effect_type(EffectType::EFFECT_TYPE_TELEPORT);
@@ -44,7 +44,7 @@ TEST(SL_World_Wand, no_effect_when_zero_charges)
   EXPECT_EQ(EffectType::EFFECT_TYPE_NULL, wand.get_effect_type());
 }
 
-TEST(SL_World_Wand, no_damage_when_zero_charges)
+TEST(SW_World_Wand, no_damage_when_zero_charges)
 {
   Wand wand;
   wand.set_has_damage(true);
@@ -57,7 +57,7 @@ TEST(SL_World_Wand, no_damage_when_zero_charges)
   EXPECT_FALSE(wand.get_has_damage());
 }
 
-TEST(SL_World_Wand, no_range_when_zero_charges)
+TEST(SW_World_Wand, no_range_when_zero_charges)
 {
   Wand wand;
   wand.set_range(5);

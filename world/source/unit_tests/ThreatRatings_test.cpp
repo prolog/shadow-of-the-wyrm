@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_ThreatRatings, serialization_id)
+TEST(SW_World_ThreatRatings, serialization_id)
 {
   ThreatRatings tr;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_THREAT_RATINGS, tr.get_class_identifier());
 }
 
-TEST(SL_World_ThreatRatings, saveload)
+TEST(SW_World_ThreatRatings, saveload)
 {
   ThreatRatings tr, tr2;
 

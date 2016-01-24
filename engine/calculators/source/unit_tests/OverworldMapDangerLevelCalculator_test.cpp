@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "FieldGenerator.hpp"
 
-TEST(SL_Engine_Calculators_OverworldMapDangerLevelCalculator, calculate_danger_level)
+TEST(SW_Engine_Calculators_OverworldMapDangerLevelCalculator, calculate_danger_level)
 {
   Dimensions dim;
   FieldGenerator generator("test!");

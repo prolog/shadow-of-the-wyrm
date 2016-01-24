@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Magic_SpellShapeFactory, shapes_return_correct_shape_type)
+TEST(SW_World_Magic_SpellShapeFactory, shapes_return_correct_shape_type)
 {
   for (int i = static_cast<int>(SpellShapeType::SPELL_SHAPE_TARGET_SELF); i < static_cast<int>(SpellShapeType::SPELL_SHAPE_LAST); i++)
   {
@@ -11,7 +11,7 @@ TEST(SL_World_Magic_SpellShapeFactory, shapes_return_correct_shape_type)
   }
 }
 
-TEST(SL_World_Magic_SpellShapeFactory, shapes_return_correct_directional_value)
+TEST(SW_World_Magic_SpellShapeFactory, shapes_return_correct_directional_value)
 {
   SpellShape ss_ts = SpellShapeFactory::create_spell_shape(SpellShapeType::SPELL_SHAPE_TARGET_SELF);
   EXPECT_EQ(DirectionCategory::DIRECTION_CATEGORY_NONE, ss_ts.get_direction_category());

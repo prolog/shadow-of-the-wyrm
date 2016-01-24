@@ -2,7 +2,7 @@
 #include "Armour.hpp"
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calcalators_ResistancesCalculator, calculate_resistances)
+TEST(SW_Engine_Calcalators_ResistancesCalculator, calculate_resistances)
 {
   RacePtr racep = std::make_shared<Race>();
   ClassPtr classp = std::make_shared<Class>();
@@ -42,7 +42,7 @@ TEST(SL_Engine_Calcalators_ResistancesCalculator, calculate_resistances)
   EXPECT_DOUBLE_EQ(0.63, calc_resists.get_resistance_value(DamageType::DAMAGE_TYPE_LIGHTNING));
 }
 
-TEST(SL_Engine_Calcalators_ResistancesCalculator, calculate_equipment_resistances)
+TEST(SW_Engine_Calcalators_ResistancesCalculator, calculate_equipment_resistances)
 {
   CreaturePtr creature = CreaturePtr(new Creature());
 

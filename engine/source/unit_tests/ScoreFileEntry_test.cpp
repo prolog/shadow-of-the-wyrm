@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_ScoreFileEntry, serialization_id)
+TEST(SW_Engine_ScoreFileEntry, serialization_id)
 {
   ScoreFileEntry sfe;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SCORE_FILE_ENTRY, sfe.get_class_identifier());
 }
 
-TEST(SL_Engine_ScoreFileEntry, saveload)
+TEST(SW_Engine_ScoreFileEntry, saveload)
 {
   ScoreFileEntry sfe(123456, "Julian", CreatureSex::CREATURE_SEX_MALE, true, 25, "HumanNerd");
 

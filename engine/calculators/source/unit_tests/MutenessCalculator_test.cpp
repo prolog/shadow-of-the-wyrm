@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Calculator_MutenessCalculator, calc_pct_chance_muteness)
+TEST(SW_World_Calculator_MutenessCalculator, calc_pct_chance_muteness)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_charisma(3);

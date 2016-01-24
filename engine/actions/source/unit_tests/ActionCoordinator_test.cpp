@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Actions_ActionCoordinator, serialization_id)
+TEST(SW_Engine_Actions_ActionCoordinator, serialization_id)
 {
   ActionCoordinator ac;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_ACTION_COORDINATOR, ac.get_class_identifier());
 }
 
-class SL_Engine_Actions_ActionCoordinatorFixture : public ::testing::Test
+class SW_Engine_Actions_ActionCoordinatorFixture : public ::testing::Test
 {
   protected:
     void SetUp();
@@ -15,7 +15,7 @@ class SL_Engine_Actions_ActionCoordinatorFixture : public ::testing::Test
     ActionCoordinator ac;
 };
 
-void SL_Engine_Actions_ActionCoordinatorFixture::SetUp()
+void SW_Engine_Actions_ActionCoordinatorFixture::SetUp()
 {
   ActionCost ac1;
   ActionCost ac2;
@@ -29,7 +29,7 @@ void SL_Engine_Actions_ActionCoordinatorFixture::SetUp()
   ac.current_map_id = "test!";
 }
 
-TEST_F(SL_Engine_Actions_ActionCoordinatorFixture, saveload)
+TEST_F(SW_Engine_Actions_ActionCoordinatorFixture, saveload)
 {
   ostringstream ss;
 

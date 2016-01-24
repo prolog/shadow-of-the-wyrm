@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Calculator_SpellboundCalculator, calc_pct_chance_spellbound)
+TEST(SW_World_Calculator_SpellboundCalculator, calc_pct_chance_spellbound)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_willpower(3);

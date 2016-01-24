@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Actions_AutomaticMovementFlags, flag_values)
+TEST(SW_Engine_Actions_AutomaticMovementFlags, flag_values)
 {
   AutomaticMovementFlags af1(true, false, true, false);
   AutomaticMovementFlags af2(false, true, false, true);

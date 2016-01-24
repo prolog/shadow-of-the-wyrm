@@ -29,7 +29,7 @@ InitialItem make_populated_initial_item(const bool populate_random)
   return ii;
 }
 
-TEST(SL_Engine_InitialItemSelector, empty)
+TEST(SW_Engine_InitialItemSelector, empty)
 {
   InitialItem ii;
   InitialItemSelector iis;
@@ -38,7 +38,7 @@ TEST(SL_Engine_InitialItemSelector, empty)
   EXPECT_EQ(empty_string, iis.get_item_details("dwarf", ii).first);
 }
 
-TEST(SL_Engine_InitialItemSelector, no_base_id_and_race_not_found)
+TEST(SW_Engine_InitialItemSelector, no_base_id_and_race_not_found)
 {
   InitialItemSelector iis;
   InitialItem ii = make_populated_initial_item(false);
@@ -47,7 +47,7 @@ TEST(SL_Engine_InitialItemSelector, no_base_id_and_race_not_found)
   EXPECT_EQ("", iis.get_item_details("nina_cow", ii).first);  
 }
 
-TEST(SL_Engine_InitialItemSelector, base_id)
+TEST(SW_Engine_InitialItemSelector, base_id)
 {
   InitialItem ii;
   InitialItemSelector iis;
@@ -60,7 +60,7 @@ TEST(SL_Engine_InitialItemSelector, base_id)
   EXPECT_EQ("monkeypants", iis.get_item_details("dwarf", ii).first);
 }
 
-TEST(SL_Engine_InitialItemSelector, random_id)
+TEST(SW_Engine_InitialItemSelector, random_id)
 {
   InitialItemSelector iis;
   InitialItem ii = make_populated_initial_item(true);
@@ -68,7 +68,7 @@ TEST(SL_Engine_InitialItemSelector, random_id)
   EXPECT_EQ("ddd", iis.get_item_details("dwarf", ii).first);
 }
 
-TEST(SL_Engine_InitialItemSelector, racial_id)
+TEST(SW_Engine_InitialItemSelector, racial_id)
 {
   InitialItemSelector iis;
   InitialItem ii = make_populated_initial_item(false);

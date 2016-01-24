@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "FieldGenerator.hpp"
 
-TEST(SL_World_Generators_CrossPillarGenerator, expected_shape)
+TEST(SW_World_Generators_CrossPillarGenerator, expected_shape)
 {
   FieldGenerator fg("foo");
   Dimensions dim;

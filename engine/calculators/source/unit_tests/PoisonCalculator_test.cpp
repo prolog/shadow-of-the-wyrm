@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Calculator_PoisonCalculator, calc_pct_chance_poison)
+TEST(SW_World_Calculator_PoisonCalculator, calc_pct_chance_poison)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(10);
@@ -19,7 +19,7 @@ TEST(SL_World_Calculator_PoisonCalculator, calc_pct_chance_poison)
   EXPECT_EQ(5, pc.calculate_pct_chance_effect(creature));
 }
 
-TEST(SL_World_Calculator_PoisonCalculator, calc_damage_per_tick)
+TEST(SW_World_Calculator_PoisonCalculator, calc_damage_per_tick)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(4);

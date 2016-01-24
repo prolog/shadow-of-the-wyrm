@@ -1,19 +1,19 @@
 #include "gtest/gtest.h"
 
-class SL_Engine_Effects_ModifyStatisticsEffect : public ::testing::Test
+class SW_Engine_Effects_ModifyStatisticsEffect : public ::testing::Test
 {
   public:
     int get_primary_statistic_modifier(const int stat_score, const int stat_mod);
 };
 
-int SL_Engine_Effects_ModifyStatisticsEffect::get_primary_statistic_modifier(const int stat_score, const int stat_mod)
+int SW_Engine_Effects_ModifyStatisticsEffect::get_primary_statistic_modifier(const int stat_score, const int stat_mod)
 {
   ModifyStatisticsEffect mse;
 
   return mse.get_primary_statistic_modifier(stat_score, stat_mod);
 }
 
-TEST_F(SL_Engine_Effects_ModifyStatisticsEffect, get_primary_stat_modifier)
+TEST_F(SW_Engine_Effects_ModifyStatisticsEffect, get_primary_stat_modifier)
 {
   EXPECT_EQ(4, get_primary_statistic_modifier(12, 4));
 

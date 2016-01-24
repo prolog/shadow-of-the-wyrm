@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Commands_Equipment_EquipmentKeyboardCommandMap, serialization_id)
+TEST(SW_Engine_Commands_Equipment_EquipmentKeyboardCommandMap, serialization_id)
 {
   EquipmentKeyboardCommandMap ekcm;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP, ekcm.get_class_identifier());
 }
 
-class SL_Engine_Commands_Equipment_EquipmentKeyboardCommandMapFixture : public SL_Engine_Commands_KeyboardCommandMapFixture
+class SW_Engine_Commands_Equipment_EquipmentKeyboardCommandMapFixture : public SW_Engine_Commands_KeyboardCommandMapFixture
 {
   public:
     void SetUp();
@@ -16,12 +16,12 @@ class SL_Engine_Commands_Equipment_EquipmentKeyboardCommandMapFixture : public S
     EquipmentKeyboardCommandMap ekcm;
 };
 
-void SL_Engine_Commands_Equipment_EquipmentKeyboardCommandMapFixture::SetUp()
+void SW_Engine_Commands_Equipment_EquipmentKeyboardCommandMapFixture::SetUp()
 {
   initialize_kcm_for_unit_tests(ekcm);
 }
 
-TEST_F(SL_Engine_Commands_Equipment_EquipmentKeyboardCommandMapFixture, saveload)
+TEST_F(SW_Engine_Commands_Equipment_EquipmentKeyboardCommandMapFixture, saveload)
 {
   ostringstream ss;
 

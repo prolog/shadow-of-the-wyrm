@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_ShoalsTile, type_is_TILE_TYPE_SHOALS)
+TEST(SW_World_Tiles_ShoalsTile, type_is_TILE_TYPE_SHOALS)
 {
   ShoalsTile shoals_tile;
 
   EXPECT_EQ(TileType::TILE_TYPE_SHOALS, shoals_tile.get_tile_type());
 }
 
-TEST(SL_World_Tiles_ShoalsTile, serialization_id)
+TEST(SW_World_Tiles_ShoalsTile, serialization_id)
 {
   ShoalsTile shoals_tile;
 

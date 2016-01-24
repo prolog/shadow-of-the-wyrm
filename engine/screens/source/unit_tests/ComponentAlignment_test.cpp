@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Screens_ComponentAlignment, default_override_value)
+TEST(SW_Engine_Screens_ComponentAlignment, default_override_value)
 {
   ComponentAlignment ca;
 

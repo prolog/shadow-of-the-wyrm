@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Commands_Screens_ScreenCommandFactory, serialization_id)
+TEST(SW_Engine_Commands_Screens_ScreenCommandFactory, serialization_id)
 {
   ScreenCommandFactory scf;
 

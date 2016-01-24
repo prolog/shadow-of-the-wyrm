@@ -1,14 +1,14 @@
 #include "gtest/gtest.h"
 #include "Spellbook.hpp"
 
-TEST(SL_World_NullInventory, serialization_id)
+TEST(SW_World_NullInventory, serialization_id)
 {
   NullInventory inv;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_NULL_INVENTORY, inv.get_class_identifier());
 }
 
-TEST(SL_World_NullInventory, saveload)
+TEST(SW_World_NullInventory, saveload)
 {
   std::shared_ptr<IInventory> inv = std::make_shared<NullInventory>();
   std::shared_ptr<IInventory> sinv2 = std::make_shared<NullInventory>();
@@ -29,7 +29,7 @@ TEST(SL_World_NullInventory, saveload)
   EXPECT_TRUE(*inv == *sinv2);
 }
 
-TEST(SL_World_NullInventory, items_are_not_persisted)
+TEST(SW_World_NullInventory, items_are_not_persisted)
 {
   NullInventory ni;
   SpellbookPtr book = std::make_shared<Spellbook>();
@@ -45,7 +45,7 @@ TEST(SL_World_NullInventory, items_are_not_persisted)
   EXPECT_TRUE(item == nullptr);
 }
 
-TEST(SL_World_NullInventory, count_items)
+TEST(SW_World_NullInventory, count_items)
 {
   NullInventory ni;
   EXPECT_EQ(0, ni.count_items());

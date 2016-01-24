@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_StatusAilments, serialization_id)
+TEST(SW_World_StatusAilments, serialization_id)
 {
   StatusAilments sa;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_STATUS_AILMENTS, sa.get_class_identifier());
 }
 
-TEST(SL_World_StatusAilments, saveload)
+TEST(SW_World_StatusAilments, saveload)
 {
   set<string> ailments{"_poison", "_para"};
   StatusAilments sa, sa2;

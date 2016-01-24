@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
-TEST(SL_Engine_Items_NullItemFilter, passes_test)
+TEST(SW_Engine_Items_NullItemFilter, passes_test)
 {
   NullFilter nif;
 

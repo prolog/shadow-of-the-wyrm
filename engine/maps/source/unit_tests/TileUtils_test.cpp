@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Maps_TileUtils, get_opposite_tile_type)
+TEST(SW_Engine_Maps_TileUtils, get_opposite_tile_type)
 {
   EXPECT_EQ(TileType::TILE_TYPE_UP_STAIRCASE, TileUtils::get_opposite_tile_type(TileType::TILE_TYPE_DOWN_STAIRCASE));
 

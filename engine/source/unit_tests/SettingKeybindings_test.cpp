@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_SettingKeybindings, empty_setting)
+TEST(SW_Engine_SettingKeybindings, empty_setting)
 {
   string setting = "";
 
@@ -10,7 +10,7 @@ TEST(SL_Engine_SettingKeybindings, empty_setting)
   EXPECT_EQ(0, bindings.size());
 }
 
-TEST(SL_Engine_SettingKeybindings, parse_single)
+TEST(SW_Engine_SettingKeybindings, parse_single)
 {
   string setting = "123";
 
@@ -21,7 +21,7 @@ TEST(SL_Engine_SettingKeybindings, parse_single)
   EXPECT_EQ("123", bindings.at(0));
 }
 
-TEST(SL_Engine_SettingKeybindings, parse_multiple)
+TEST(SW_Engine_SettingKeybindings, parse_multiple)
 {
   string setting = "123|343|1222";
 

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_BoolStatistic, InitialValueIsTrue)
+TEST(SW_World_BoolStatistic, InitialValueIsTrue)
 {
   BoolStatistic b_stat;
 
@@ -8,7 +8,7 @@ TEST(SL_World_BoolStatistic, InitialValueIsTrue)
   EXPECT_TRUE(b_stat.get_current());
 }
 
-TEST(SL_World_BoolStatistic, BaseValue)
+TEST(SW_World_BoolStatistic, BaseValue)
 {
   BoolStatistic b_stat;
 
@@ -21,7 +21,7 @@ TEST(SL_World_BoolStatistic, BaseValue)
   EXPECT_TRUE(b_stat.get_base());
 }
 
-TEST(SL_World_BoolStatistic, CurrentValue)
+TEST(SW_World_BoolStatistic, CurrentValue)
 {
   BoolStatistic b_stat;
 
@@ -34,14 +34,14 @@ TEST(SL_World_BoolStatistic, CurrentValue)
   EXPECT_FALSE(b_stat.get_current());
 }
 
-TEST(SL_World_BoolStatistic, serialization_id)
+TEST(SW_World_BoolStatistic, serialization_id)
 {
   BoolStatistic stat;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_BOOL_STATISTIC, stat.get_class_identifier());
 }
 
-TEST(SL_World_BoolStatistic, saveload)
+TEST(SW_World_BoolStatistic, saveload)
 {
   BoolStatistic stat(false);
   BoolStatistic stat2;

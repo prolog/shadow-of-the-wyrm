@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Ammunition, serialization_id)
+TEST(SW_World_Ammunition, serialization_id)
 {
   Ammunition ammo;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_AMMUNITION, ammo.get_class_identifier());
 }
 
-TEST(SL_World_Ammunition, saveload)
+TEST(SW_World_Ammunition, saveload)
 {
   Ammunition ammo, ammo2;
 

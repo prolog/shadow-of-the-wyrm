@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_Features_Lock, serialization_id)
+TEST(SW_World_Tiles_Features_Lock, serialization_id)
 {
   Lock lock;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_LOCK, lock.get_class_identifier());
 }
 
-TEST(SL_World_Tiles_Features_Lock, saveload)
+TEST(SW_World_Tiles_Features_Lock, saveload)
 {
   Lock lock, lock2;
 

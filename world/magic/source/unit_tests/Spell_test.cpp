@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "SpellShapeFactory.hpp"
 
-TEST(SL_World_Magic_Spell, properties)
+TEST(SW_World_Magic_Spell, properties)
 {
   Spell sp;
   string key = "abc";
@@ -15,7 +15,7 @@ TEST(SL_World_Magic_Spell, properties)
   EXPECT_EQ(value, sp.get_property(key));
 }
 
-TEST(SL_World_Magic_Spell, equality_operator)
+TEST(SW_World_Magic_Spell, equality_operator)
 {
   Spell sp, sp2;
 

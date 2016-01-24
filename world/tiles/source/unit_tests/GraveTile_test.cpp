@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_GraveTile, type_is_TILE_TYPE_GRAVE)
+TEST(SW_World_Tiles_GraveTile, type_is_TILE_TYPE_GRAVE)
 {
   GraveTile grave_tile;
 
   EXPECT_EQ(TileType::TILE_TYPE_GRAVE, grave_tile.get_tile_type());
 }
 
-TEST(SL_World_Tiles_GraveTile, serialization_id)
+TEST(SW_World_Tiles_GraveTile, serialization_id)
 {
   GraveTile grave_tile;
 

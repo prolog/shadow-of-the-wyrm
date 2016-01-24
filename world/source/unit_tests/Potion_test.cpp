@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Potion, serialization_id)
+TEST(SW_World_Potion, serialization_id)
 {
   Potion potion;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_POTION, potion.get_class_identifier());
 }
 
-TEST(SL_World_Potion, saveload)
+TEST(SW_World_Potion, saveload)
 {
   Potion potion, potion2;
 

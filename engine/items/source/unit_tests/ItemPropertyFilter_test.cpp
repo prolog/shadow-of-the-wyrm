@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
-TEST(SL_Engine_Items_ItemPropertyFilter, passes_test)
+TEST(SW_Engine_Items_ItemPropertyFilter, passes_test)
 {
   ItemPropertyFilter ipf(make_pair("foo", ""));
   

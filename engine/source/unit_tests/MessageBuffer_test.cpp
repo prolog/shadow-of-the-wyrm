@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_MessageBuffer, insertion)
+TEST(SW_Engine_MessageBuffer, insertion)
 {
   MessageBuffer mb(3);
 
@@ -22,13 +22,13 @@ TEST(SL_Engine_MessageBuffer, insertion)
   EXPECT_EQ(3, mb.size());
 }
 
-TEST(SL_Engine_MessageBuffer, serialization_id)
+TEST(SW_Engine_MessageBuffer, serialization_id)
 {
   MessageBuffer mb;
   EXPECT_EQ(ClassIdentifier::CLASS_ID_MESSAGE_BUFFER, mb.get_class_identifier());
 }
 
-TEST(SL_Engine_MessageBuffer, saveload)
+TEST(SW_Engine_MessageBuffer, saveload)
 {
   MessageBuffer mb;
   MessageBuffer mb2;

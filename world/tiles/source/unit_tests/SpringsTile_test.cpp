@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_SpringsTile, type_is_TILE_TYPE_SPRINGS)
+TEST(SW_World_Tiles_SpringsTile, type_is_TILE_TYPE_SPRINGS)
 {
   SpringsTile springs_tile;
 
   EXPECT_EQ(TileType::TILE_TYPE_SPRINGS, springs_tile.get_tile_type());
 }
 
-TEST(SL_World_Tiles_SpringsTile, different_description_SID_for_hot_springs)
+TEST(SW_World_Tiles_SpringsTile, different_description_SID_for_hot_springs)
 {
   SpringsTile springs;
   SpringsTile hot_springs;
@@ -17,14 +17,14 @@ TEST(SL_World_Tiles_SpringsTile, different_description_SID_for_hot_springs)
   EXPECT_FALSE(springs.get_tile_description_sid() == hot_springs.get_tile_description_sid());
 }
 
-TEST(SL_World_Tiles_SpringsTile, serialization_id)
+TEST(SW_World_Tiles_SpringsTile, serialization_id)
 {
   SpringsTile springs_tile;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SPRINGS_TILE, springs_tile.get_class_identifier());
 }
 
-TEST(SL_World_Tiles_SpringsTile, saveload)
+TEST(SW_World_Tiles_SpringsTile, saveload)
 {
   SpringsTile springs;
   SpringsTile hot_springs, hot_springs2;

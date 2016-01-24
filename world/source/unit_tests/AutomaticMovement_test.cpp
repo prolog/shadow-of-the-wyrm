@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_AutomaticMovement, engaged_status)
+TEST(SW_World_AutomaticMovement, engaged_status)
 {
   AutomaticMovement am;
 
@@ -44,7 +44,7 @@ TEST(SL_World_AutomaticMovement, engaged_status)
   EXPECT_TRUE(am.get_engaged());
 }
 
-TEST(SL_World_AutomaticMovement, turn_counter)
+TEST(SW_World_AutomaticMovement, turn_counter)
 {
   AutomaticMovement am;
 
@@ -58,14 +58,14 @@ TEST(SL_World_AutomaticMovement, turn_counter)
   EXPECT_EQ(-1, am.get_turns());
 }
 
-TEST(SL_World_AutomaticMovement, serialization_id)
+TEST(SW_World_AutomaticMovement, serialization_id)
 {
   AutomaticMovement auto_move;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_AUTOMATIC_MOVEMENT, auto_move.get_class_identifier());
 }
 
-TEST(SL_World_AutomaticMovement, saveload)
+TEST(SW_World_AutomaticMovement, saveload)
 {
   AutomaticMovement am, am2;
 

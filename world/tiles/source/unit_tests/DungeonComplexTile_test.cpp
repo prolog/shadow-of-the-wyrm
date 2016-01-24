@@ -1,20 +1,20 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_DungeonComplexTile, type_is_TILE_TYPE_DUNGEON_COMPLEX)
+TEST(SW_World_Tiles_DungeonComplexTile, type_is_TILE_TYPE_DUNGEON_COMPLEX)
 {
   DungeonComplexTile dungeon_complex_tile;
 
   EXPECT_EQ(TileType::TILE_TYPE_DUNGEON_COMPLEX, dungeon_complex_tile.get_tile_type());
 }
 
-TEST(SL_World_Tiles_DungeonComplexTile, tile_description_sid)
+TEST(SW_World_Tiles_DungeonComplexTile, tile_description_sid)
 {
   DungeonComplexTile dungeon_complex_tile;
 
   EXPECT_EQ(TileTextKeys::TILE_DESC_DUNGEON_COMPLEX, dungeon_complex_tile.get_tile_description_sid());
 }
 
-TEST(SL_World_Tiles_DungeonComplexTile, serialization_id)
+TEST(SW_World_Tiles_DungeonComplexTile, serialization_id)
 {
   DungeonComplexTile dungeon_complex_tile;
 

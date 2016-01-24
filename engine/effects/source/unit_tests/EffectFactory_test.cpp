@@ -1,7 +1,7 @@
 #pragma once
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Effects_EffectFactory, effect_types_product_valid_effect_ptr)
+TEST(SW_Engine_Effects_EffectFactory, effect_types_product_valid_effect_ptr)
 {
   for (int i = static_cast<int>(EffectType::EFFECT_TYPE_NULL); i < static_cast<int>(EffectType::EFFECT_TYPE_LAST); i++)
   {

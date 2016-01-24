@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
-TEST(SL_Engine_Creatures_CreatureUtils, can_pick_up)
+TEST(SW_Engine_Creatures_CreatureUtils, can_pick_up)
 {
   CreaturePtr c = std::make_shared<Creature>();
   c->set_size(CreatureSize::CREATURE_SIZE_MEDIUM);

@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Weight, serialization_id)
+TEST(SW_World_Weight, serialization_id)
 {
   Weight weight;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_WEIGHT, weight.get_class_identifier());
 }
 
-TEST(SL_World_Weight, saveload)
+TEST(SW_World_Weight, saveload)
 {
   Weight weight, weight2;
 

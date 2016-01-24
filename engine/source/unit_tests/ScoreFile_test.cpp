@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_ScoreFile, multiple_creatures_with_same_score)
+TEST(SW_Engine_ScoreFile, multiple_creatures_with_same_score)
 {
   ScoreFile sf(false);
 

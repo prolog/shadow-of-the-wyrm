@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Commands_Magic_MagicCommandFactory, serialization_id)
+TEST(SW_Engine_Commands_Magic_MagicCommandFactory, serialization_id)
 {
   MagicCommandFactory mcf;
 

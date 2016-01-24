@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_HungerDamageCalculator, damage_per_tick)
+TEST(SW_Engine_Calculators_HungerDamageCalculator, damage_per_tick)
 {
   HungerDamageCalculator hdc;
   CreaturePtr null_creature;

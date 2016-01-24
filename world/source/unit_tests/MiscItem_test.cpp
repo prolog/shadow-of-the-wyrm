@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_MiscItem, serialization_id)
+TEST(SW_World_MiscItem, serialization_id)
 {
   MiscItem misc_item;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_MISC_ITEM, misc_item.get_class_identifier());
 }
 
-TEST(SL_World_MiscItem, saveload)
+TEST(SW_World_MiscItem, saveload)
 {
   MiscItem misc1, misc2;
 

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Time_WorldTimeKeeper, serialization_id)
+TEST(SW_Engine_Time_WorldTimeKeeper, serialization_id)
 {
   WorldTimeKeeper wtk;
 

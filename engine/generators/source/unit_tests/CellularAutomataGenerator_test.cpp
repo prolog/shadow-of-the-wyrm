@@ -7,7 +7,7 @@ class CellularAutomataGeneratorTest
     vector<pair<int, int>> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col) { return CoordUtils::get_adjacent_map_coordinates(dim, row, col); }
 };
 
-TEST(SL_Engine_Generators_CellularAutomataGenerator, adjacent_map_coordinates_size)
+TEST(SW_Engine_Generators_CellularAutomataGenerator, adjacent_map_coordinates_size)
 {
   Dimensions d; // default dimensions;
 
@@ -43,7 +43,7 @@ TEST(SL_Engine_Generators_CellularAutomataGenerator, adjacent_map_coordinates_si
   EXPECT_EQ(expected_size, size);
 }
 
-TEST(SL_Engine_Generators_Generator, adjacent_map_coordinates_content)
+TEST(SW_Engine_Generators_Generator, adjacent_map_coordinates_content)
 {
   Dimensions d; // default dimensions;
 

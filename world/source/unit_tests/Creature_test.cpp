@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
-TEST(SL_World_Creature, name)
+TEST(SW_World_Creature, name)
 {
   Creature c;
   string creature_name = "Bubba Ho Tep";
@@ -10,7 +10,7 @@ TEST(SL_World_Creature, name)
   EXPECT_EQ(creature_name, c.get_name());
 }
 
-TEST(SL_World_Creature, age)
+TEST(SW_World_Creature, age)
 {
   Creature c;
   int age = 25;
@@ -20,7 +20,7 @@ TEST(SL_World_Creature, age)
   EXPECT_EQ(age, c.get_age().get_current());
 }
 
-TEST(SL_World_Creature, size)
+TEST(SW_World_Creature, size)
 {
   Creature c;
   CreatureSize size = CreatureSize::CREATURE_SIZE_LARGE;
@@ -29,7 +29,7 @@ TEST(SL_World_Creature, size)
   EXPECT_EQ(size, c.get_size());
 }
 
-TEST(SL_World_Creature, strength)
+TEST(SW_World_Creature, strength)
 {
   Creature c;
   int strength = 12;
@@ -39,14 +39,14 @@ TEST(SL_World_Creature, strength)
   EXPECT_EQ(strength, c.get_strength().get_current());
 }
 
-TEST(SL_World_Creature, serialization_id)
+TEST(SW_World_Creature, serialization_id)
 {
   Creature c;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_CREATURE, c.get_class_identifier());
 }
 
-TEST(SL_World_Creature, saveload)
+TEST(SW_World_Creature, saveload)
 {
   Creature c, c2;
 
@@ -100,7 +100,7 @@ TEST(SL_World_Creature, saveload)
   EXPECT_FLOAT_EQ(1.2f, c2.get_blood().get_grams_alcohol());
 }
 
-TEST(SL_World_Creature, count_items)
+TEST(SW_World_Creature, count_items)
 {
   Creature c;
 

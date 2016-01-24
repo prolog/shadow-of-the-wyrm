@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Wand.hpp"
 
-TEST(SL_Engine_Translators_DisplayItemColourTranslator, correct_colour)
+TEST(SW_Engine_Translators_DisplayItemColourTranslator, correct_colour)
 {
   DisplayItemColourTranslator dict;
   ItemPtr wand = ItemPtr(new Wand());

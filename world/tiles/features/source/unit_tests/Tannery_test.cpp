@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_Features_Tannery, serialization_id)
+TEST(SW_World_Tiles_Features_Tannery, serialization_id)
 {
   Tannery t;
 

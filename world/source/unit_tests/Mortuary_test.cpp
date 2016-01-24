@@ -12,7 +12,7 @@ void add_creatures_to_mortuary(Mortuary& m)
   m.add_creature_kill("dragon_cat_of_doom");
 }
 
-TEST(SL_World_Mortuary, death_toll)
+TEST(SW_World_Mortuary, death_toll)
 {
   Mortuary m;
 
@@ -25,7 +25,7 @@ TEST(SL_World_Mortuary, death_toll)
   EXPECT_EQ(4, m.get_num_creatures_killed());
 }
 
-TEST(SL_World_Mortuary, num_uniques_killed)
+TEST(SW_World_Mortuary, num_uniques_killed)
 {
   Mortuary m;
 
@@ -34,14 +34,14 @@ TEST(SL_World_Mortuary, num_uniques_killed)
   EXPECT_EQ(1, m.get_num_uniques_killed());
 }
 
-TEST(SL_World_Mortuary, serialization_id)
+TEST(SW_World_Mortuary, serialization_id)
 {
   Mortuary m;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_MORTUARY, m.get_class_identifier());
 }
 
-TEST(SL_World_Mortuary, saveload)
+TEST(SW_World_Mortuary, saveload)
 {
   Mortuary m, m2;
 

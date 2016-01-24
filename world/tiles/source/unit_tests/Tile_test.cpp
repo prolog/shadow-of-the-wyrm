@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 #include "TileGenerator.hpp"
 
-TEST(SL_World_Tiles_Tile, correct_inventory_type)
+TEST(SW_World_Tiles_Tile, correct_inventory_type)
 {
   // Generally speaking, all tile super types have a usual value.
   // Items fall away from water or air, and are kept on ground tiles.
@@ -40,7 +40,7 @@ TEST(SL_World_Tiles_Tile, correct_inventory_type)
   }
 }
 
-TEST(SL_World_Tiles_Tile, set_default_properties)
+TEST(SW_World_Tiles_Tile, set_default_properties)
 {
   DungeonTile tile;
 
@@ -48,7 +48,7 @@ TEST(SL_World_Tiles_Tile, set_default_properties)
   EXPECT_FALSE(tile.get_explored());
 }
 
-TEST(SL_World_Tiles_Tile, illuminated)
+TEST(SW_World_Tiles_Tile, illuminated)
 {
   DungeonTile tile;
 
@@ -63,7 +63,7 @@ TEST(SL_World_Tiles_Tile, illuminated)
   EXPECT_TRUE(tile.get_illuminated());
 }
 
-TEST(SL_World_Tiles_Tile, explored)
+TEST(SW_World_Tiles_Tile, explored)
 {
   DungeonTile tile;
 
@@ -78,7 +78,7 @@ TEST(SL_World_Tiles_Tile, explored)
   EXPECT_FALSE(tile.get_explored());
 }
 
-TEST(SL_World_Tiles_Tile, saveload)
+TEST(SW_World_Tiles_Tile, saveload)
 {
   TileGenerator tg;
 

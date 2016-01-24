@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Dice, max_dice_rolls)
+TEST(SW_World_Dice, max_dice_rolls)
 {
   Dice dice1(3, 4, 0);
 
@@ -15,14 +15,14 @@ TEST(SL_World_Dice, max_dice_rolls)
   EXPECT_EQ(0, dice3.max());
 }
 
-TEST(SL_World_Dice, serialization_id)
+TEST(SW_World_Dice, serialization_id)
 {
   Dice dice;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_DICE, dice.get_class_identifier());
 }
 
-TEST(SL_World_Dice, saveload)
+TEST(SW_World_Dice, saveload)
 {
   Dice d(5, 6, 7);
   Dice d2;

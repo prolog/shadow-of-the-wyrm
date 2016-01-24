@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Damage, contains_dam_type)
+TEST(SW_World_Damage, contains_dam_type)
 {
   StatusAilments sa;
   Damage damage(5, 6, 7, DamageType::DAMAGE_TYPE_SHADOW, false, false, true, 0, sa);
@@ -24,14 +24,14 @@ TEST(SL_World_Damage, contains_dam_type)
   EXPECT_FALSE(damage.contains(DamageType::DAMAGE_TYPE_HEAT));
 }
 
-TEST(SL_World_Damage, serialization_id)
+TEST(SW_World_Damage, serialization_id)
 {
   Damage damage;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_DAMAGE, damage.get_class_identifier());
 }
 
-TEST(SL_World_Damage, saveload)
+TEST(SW_World_Damage, saveload)
 {
   StatusAilments sa;
   Damage damage(5, 6, 7, DamageType::DAMAGE_TYPE_SHADOW, false, false, true, 0, sa);

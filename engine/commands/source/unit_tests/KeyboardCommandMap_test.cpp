@@ -1,6 +1,6 @@
 #include "RNG.hpp"
 
-TEST(SL_Engine_Commands_KeyboardCommandMap, serialization_id)
+TEST(SW_Engine_Commands_KeyboardCommandMap, serialization_id)
 {
   KeyboardCommandMap kcm;
 
@@ -8,12 +8,12 @@ TEST(SL_Engine_Commands_KeyboardCommandMap, serialization_id)
 }
 
 // Definitions for the test fixture
-void SL_Engine_Commands_KeyboardCommandMapFixture::SetUp()
+void SW_Engine_Commands_KeyboardCommandMapFixture::SetUp()
 {
   initialize_kcm_for_unit_tests(kcm);
 }
 
-void SL_Engine_Commands_KeyboardCommandMapFixture::initialize_kcm_for_unit_tests(KeyboardCommandMap& key_map)
+void SW_Engine_Commands_KeyboardCommandMapFixture::initialize_kcm_for_unit_tests(KeyboardCommandMap& key_map)
 {
   if (!key_map.command_mapping.empty())
   {
@@ -28,7 +28,7 @@ void SL_Engine_Commands_KeyboardCommandMapFixture::initialize_kcm_for_unit_tests
   }
 }
 
-TEST_F(SL_Engine_Commands_KeyboardCommandMapFixture, saveload)
+TEST_F(SW_Engine_Commands_KeyboardCommandMapFixture, saveload)
 {
   ostringstream ss;
 

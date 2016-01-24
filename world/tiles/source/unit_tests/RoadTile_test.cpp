@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_RoadTile, type_is_TILE_TYPE_ROAD)
+TEST(SW_World_Tiles_RoadTile, type_is_TILE_TYPE_ROAD)
 {
   RoadTile road_tile;
 
   EXPECT_EQ(TileType::TILE_TYPE_ROAD, road_tile.get_tile_type());
 }
 
-TEST(SL_World_Tiles_RoadTile, serialization_id)
+TEST(SW_World_Tiles_RoadTile, serialization_id)
 {
   RoadTile road_tile;
 

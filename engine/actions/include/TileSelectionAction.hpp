@@ -53,7 +53,7 @@ class TileSelectionAction : public IActionManager, ISerializable
   protected:
     friend class ActionManager;
     friend class RangedCombatAction;
-    friend class SL_Engine_Actions_TileSelectionAction; // test fixture
+    friend class SW_Engine_Actions_TileSelectionAction; // test fixture
     TileSelectionAction();
 
     void reset_cursor_appropriately(CreaturePtr creature, MapPtr current_map, const TileReset tre);

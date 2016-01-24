@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_CreatureGenerationOptions, parse_options)
+TEST(SW_World_CreatureGenerationOptions, parse_options)
 {
   string parse_1 = "fdsa";
   CreatureGenerationOptions cgo_1;

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "ResistanceFactory.hpp"
-TEST(SL_World_Resistances, add)
+TEST(SW_World_Resistances, add)
 {
   Resistances r1;
   r1.set_all_resistances_to(0.45);
@@ -28,7 +28,7 @@ TEST(SL_World_Resistances, add)
   }
 }
 
-TEST(SL_World_Resistances, gain_and_lose_messages)
+TEST(SW_World_Resistances, gain_and_lose_messages)
 {
   map<DamageType, pair<std::string, std::string>> gain_lose_msgs =
   { { DamageType::DAMAGE_TYPE_SLASH, { ResistanceTextKeys::RESISTANCE_GAIN_SLASH, ResistanceTextKeys::RESISTANCE_LOSE_SLASH } },
@@ -61,14 +61,14 @@ TEST(SL_World_Resistances, gain_and_lose_messages)
   }
 }
 
-TEST(SL_World_Resistances, serialization_id)
+TEST(SW_World_Resistances, serialization_id)
 {
   Resistances resistances;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_RESISTANCES, resistances.get_class_identifier());
 }
 
-TEST(SL_World_Resistances, serialization_ids_for_individual_types)
+TEST(SW_World_Resistances, serialization_ids_for_individual_types)
 {
   SlashResistance sr;
   PierceResistance pr;
@@ -95,7 +95,7 @@ TEST(SL_World_Resistances, serialization_ids_for_individual_types)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_LIGHTNING_RESISTANCE, lr.get_class_identifier());
 }
 
-TEST(SL_World_Resistances, saveload)
+TEST(SW_World_Resistances, saveload)
 {
   for (int i = static_cast<int>(ClassIdentifier::CLASS_ID_SLASH_RESISTANCE); i <= static_cast<int>(ClassIdentifier::CLASS_ID_LIGHTNING_RESISTANCE); i++)
   {

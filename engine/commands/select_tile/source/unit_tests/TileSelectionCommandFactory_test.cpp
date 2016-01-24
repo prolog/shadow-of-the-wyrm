@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Commands_SelectTile_TileSelectionCommandFactory, serialization_id)
+TEST(SW_Engine_Commands_SelectTile_TileSelectionCommandFactory, serialization_id)
 {
   TileSelectionCommandFactory tscf;
 

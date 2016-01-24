@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Religion_DeityStatus, decrement_piety)
+TEST(SW_World_Religion_DeityStatus, decrement_piety)
 {
   DeityStatus ds;
 
@@ -22,14 +22,14 @@ TEST(SL_World_Religion_DeityStatus, decrement_piety)
 
   EXPECT_EQ(25000, ds.get_piety());
 }
-TEST(SL_World_Religion_DeityStatus, serialization_id)
+TEST(SW_World_Religion_DeityStatus, serialization_id)
 {
   DeityStatus ds;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_DEITY_STATUS, ds.get_class_identifier());
 }
 
-TEST(SL_World_Religion_DeityStatus, saveload)
+TEST(SW_World_Religion_DeityStatus, saveload)
 {
   DeityStatus ds1, ds2;
 

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_CharacterCreationDetails, default_constructor)
+TEST(SW_Engine_CharacterCreationDetails, default_constructor)
 {
   CharacterCreationDetails ccd;
 
@@ -10,7 +10,7 @@ TEST(SL_Engine_CharacterCreationDetails, default_constructor)
   EXPECT_EQ("", ccd.get_deity_id());
 }
 
-TEST(SL_Engine_CharacterCreationDetails, populating_constructor)
+TEST(SW_Engine_CharacterCreationDetails, populating_constructor)
 {
   CharacterCreationDetails ccd(CreatureSex::CREATURE_SEX_FEMALE, "elf", "mason", "the_one_god");
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include "common.hpp"
+#include "CalendarDay.hpp"
 #include "CalendarTypes.hpp"
 #include "ISeason.hpp"
 #include "ISerializable.hpp"
@@ -24,6 +25,9 @@ class Calendar : public ISerializable
     
     bool update_season_if_necessary();
 
+    void set_calendar_days(const std::map<int, CalendarDay>& new_calendar_days);
+    std::map<int, CalendarDay>& get_calendar_days_ref();
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
     
@@ -34,6 +38,7 @@ class Calendar : public ISerializable
     double seconds;
     uint STARTING_YEAR;
     ISeasonPtr season;
+    std::map<int, CalendarDay> calendar_days;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

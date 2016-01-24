@@ -2,7 +2,7 @@
 #include "Amulet.hpp"
 #include "Weapon.hpp"
 
-TEST(SL_Engine_Items_HandsRequiredItemFilter, passes_test)
+TEST(SW_Engine_Items_HandsRequiredItemFilter, passes_test)
 {
   HandsRequiredItemFilter hrif1(1);
   HandsRequiredItemFilter hrif2(2);

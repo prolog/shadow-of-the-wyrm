@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_SoakCalculator, calculate_soak)
+TEST(SW_Engine_Calculators_SoakCalculator, calculate_soak)
 {
   Creature c;
   c.set_strength(15);

@@ -3,7 +3,7 @@
 
 // Can't instantiate Skill directly, so test the methods of a
 // descendent.
-TEST(SL_World_Skills_GeneralSkill, value)
+TEST(SW_World_Skills_GeneralSkill, value)
 {
   ArcherySkill gs;
   gs.set_value(5);
@@ -15,7 +15,7 @@ TEST(SL_World_Skills_GeneralSkill, value)
   EXPECT_EQ(6, gs.get_value());
 }
 
-TEST(SL_World_Skills_GeneralSkill, marks)
+TEST(SW_World_Skills_GeneralSkill, marks)
 {
   ArcherySkill gs;
   gs.set_marks(7);
@@ -27,7 +27,7 @@ TEST(SL_World_Skills_GeneralSkill, marks)
   EXPECT_EQ(8, gs.get_marks());
 }
 
-TEST(SL_World_Skills_GeneralSkill, threshold)
+TEST(SW_World_Skills_GeneralSkill, threshold)
 {
   ArcherySkill gs;
   gs.set_threshold(100);
@@ -35,38 +35,38 @@ TEST(SL_World_Skills_GeneralSkill, threshold)
   EXPECT_EQ(100, gs.get_threshold());
 }
 
-TEST(SL_World_Skills_GeneralSkill, category)
+TEST(SW_World_Skills_GeneralSkill, category)
 {
   ArcherySkill archery;
   EXPECT_EQ(SkillCategory::SKILL_CATEGORY_GENERAL, archery.get_category());
 }
 
-TEST(SL_World_Skills_WeaponSkill, category)
+TEST(SW_World_Skills_WeaponSkill, category)
 {
   AxesSkill axes;
   EXPECT_EQ(SkillCategory::SKILL_CATEGORY_MELEE, axes.get_category());
 }
 
-TEST(SL_World_Skills_RangedWeaponSkill, category)
+TEST(SW_World_Skills_RangedWeaponSkill, category)
 {
   BowsSkill bows;
   EXPECT_EQ(SkillCategory::SKILL_CATEGORY_RANGED, bows.get_category());
 }
 
-TEST(SL_World_Skills_MagicSkill, category)
+TEST(SW_World_Skills_MagicSkill, category)
 {
   ArcaneMagicSkill arcane;
   EXPECT_EQ(SkillCategory::SKILL_CATEGORY_MAGIC, arcane.get_category());
 }
 
-TEST(SL_World_Skills, serialization_id)
+TEST(SW_World_Skills, serialization_id)
 {
   Skills skills;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILLS, skills.get_class_identifier());
 }
 
-TEST(SL_World_Skills, serialization_ids_general_skills)
+TEST(SW_World_Skills, serialization_ids_general_skills)
 {
   ArcherySkill archery;
   AwarenessSkill awareness;
@@ -171,7 +171,7 @@ TEST(SL_World_Skills, serialization_ids_general_skills)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_WEAVING, weaving.get_class_identifier());
 }
 
-TEST(SL_World_Skills, serialization_ids_magic_skills)
+TEST(SW_World_Skills, serialization_ids_magic_skills)
 {
   ArcaneMagicSkill ams;
   DivineMagicSkill dms;
@@ -184,7 +184,7 @@ TEST(SL_World_Skills, serialization_ids_magic_skills)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_PRIMORDIAL, pms.get_class_identifier());
 }
 
-TEST(SL_World_Skills, serialization_ids_melee_skills)
+TEST(SW_World_Skills, serialization_ids_melee_skills)
 {
   AxesSkill axes;
   ShortBladesSkill short_blades;
@@ -209,7 +209,7 @@ TEST(SL_World_Skills, serialization_ids_melee_skills)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_EXOTIC, exotic.get_class_identifier());
 }
 
-TEST(SL_World_Skills, serialization_ids_ranged_skills)
+TEST(SW_World_Skills, serialization_ids_ranged_skills)
 {
   ThrownAxesSkill ta;
   ThrownBladesSkill tb;
@@ -251,7 +251,7 @@ void serialize_test_skills(ClassIdentifier skill_ci)
   EXPECT_TRUE(*skill == *skill2);
 }
 
-TEST(SL_World_Skills, saveload_general_skills)
+TEST(SW_World_Skills, saveload_general_skills)
 {
   for(int i = static_cast<int>(ClassIdentifier::CLASS_ID_SKILL_ARCHERY); i <= static_cast<int>(ClassIdentifier::CLASS_ID_SKILL_WEAVING); i++)
   {
@@ -261,7 +261,7 @@ TEST(SL_World_Skills, saveload_general_skills)
   }
 }
 
-TEST(SL_World_Skills, saveload_melee_skills)
+TEST(SW_World_Skills, saveload_melee_skills)
 {
   for(int i = static_cast<int>(ClassIdentifier::CLASS_ID_SKILL_AXES); i <= static_cast<int>(ClassIdentifier::CLASS_ID_SKILL_EXOTIC); i++)
   {
@@ -271,7 +271,7 @@ TEST(SL_World_Skills, saveload_melee_skills)
   }
 }
 
-TEST(SL_World_Skills, saveload_ranged_skills)
+TEST(SW_World_Skills, saveload_ranged_skills)
 {
   for(int i = static_cast<int>(ClassIdentifier::CLASS_ID_SKILL_THROWN_AXES); i <= static_cast<int>(ClassIdentifier::CLASS_ID_SKILL_THROWN_EXOTIC); i++)
   {
@@ -281,7 +281,7 @@ TEST(SL_World_Skills, saveload_ranged_skills)
   }
 }
 
-TEST(SL_World_Skills, saveload_magic_skills)
+TEST(SW_World_Skills, saveload_magic_skills)
 {
   for(int i = static_cast<int>(ClassIdentifier::CLASS_ID_SKILL_ARCANE); i <= static_cast<int>(ClassIdentifier::CLASS_ID_SKILL_PRIMORDIAL); i++)
   {

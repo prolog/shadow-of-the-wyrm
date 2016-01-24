@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Depth, lower)
+TEST(SW_World_Depth, lower)
 {
   Depth d(5, 20);
   Depth lower = d.lower();
@@ -19,7 +19,7 @@ TEST(SL_World_Depth, lower)
   EXPECT_TRUE(lowest == d2);
 }
 
-TEST(SL_World_Depth, higher)
+TEST(SW_World_Depth, higher)
 {
   Depth d(5, 0);
   Depth higher = d.higher();
@@ -33,14 +33,14 @@ TEST(SL_World_Depth, higher)
   EXPECT_EQ(0, higher.get_maximum());
 }
 
-TEST(SL_World_Depth, serialization_id)
+TEST(SW_World_Depth, serialization_id)
 {
   Depth depth;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_DEPTH, depth.get_class_identifier());
 }
 
-TEST(SL_World_Depth, saveload)
+TEST(SW_World_Depth, saveload)
 {
   Depth depth, depth2;
 

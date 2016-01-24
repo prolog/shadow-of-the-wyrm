@@ -26,7 +26,7 @@ class KeyboardCommandMap : public ISerializable, public IKeyboardCommandMap
     virtual KeyboardCommandMap* clone();
 
   protected:
-    friend class SL_Engine_Commands_KeyboardCommandMapFixture;
+    friend class SW_Engine_Commands_KeyboardCommandMapFixture;
 
     virtual void command_not_found(const std::string& keyboard_input);
     virtual void initialize_command_mapping(const Settings& settings);
@@ -44,7 +44,7 @@ class KeyboardCommandMap : public ISerializable, public IKeyboardCommandMap
 #ifdef UNIT_TESTS
 #include "gtest/gtest.h"
 // Test fixture declared here so that it can be subclassed in the _test.cpp files
-class SL_Engine_Commands_KeyboardCommandMapFixture : public ::testing::Test
+class SW_Engine_Commands_KeyboardCommandMapFixture : public ::testing::Test
 {
   public:
     void SetUp();

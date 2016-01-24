@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_DigChances, serialization_id)
+TEST(SW_World_Tiles_DigChances, serialization_id)
 {
   DigChances dc;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_DIG_CHANCES, dc.get_class_identifier());
 }
 
-TEST(SL_World_Tiles_DigChances, set_values)
+TEST(SW_World_Tiles_DigChances, set_values)
 {
   DigChances dc;
 
@@ -26,7 +26,7 @@ TEST(SL_World_Tiles_DigChances, set_values)
   EXPECT_EQ(44, dc2.get_pct_chance_item());
 }
 
-TEST(SL_World_Tiles_DigChances, saveload)
+TEST(SW_World_Tiles_DigChances, saveload)
 {
   DigChances dc(12, 24);
   DigChances dc2;

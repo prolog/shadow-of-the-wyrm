@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_RNG, Dice)
+TEST(SW_Engine_RNG, Dice)
 {
 	for (int x = 0; x < 1000; x++)
 	{
@@ -20,7 +20,7 @@ TEST(SL_Engine_RNG, Dice)
 	}
 }
 
-TEST(SL_Engine_RNG, Range)
+TEST(SW_Engine_RNG, Range)
 {
 	for (int x = 0; x < 1000; x++)
 	{

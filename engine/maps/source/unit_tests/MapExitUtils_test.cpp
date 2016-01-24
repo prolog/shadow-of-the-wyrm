@@ -1,12 +1,12 @@
 #include "gtest/gtest.h"
 
-class SL_Engine_Maps_MapExitUtilsFixture : public ::testing::Test
+class SW_Engine_Maps_MapExitUtilsFixture : public ::testing::Test
 {
   protected:
     void add_map_tile_exit(map<Direction, vector<Coordinate>>& tile_exits, const Direction d, const Coordinate& c);
 };
 
-void SL_Engine_Maps_MapExitUtilsFixture::add_map_tile_exit(map<Direction, vector<Coordinate>>& tile_exits, const Direction d, const Coordinate& c)
+void SW_Engine_Maps_MapExitUtilsFixture::add_map_tile_exit(map<Direction, vector<Coordinate>>& tile_exits, const Direction d, const Coordinate& c)
 {
   MapExitUtils::add_map_tile_exit(tile_exits, d, c);
 }
@@ -14,7 +14,7 @@ void SL_Engine_Maps_MapExitUtilsFixture::add_map_tile_exit(map<Direction, vector
 // Ensure that:
 //
 // - When a map doesn't have a mapping for a direction, one is added
-TEST_F(SL_Engine_Maps_MapExitUtilsFixture, map_tile_exit_added_new_dir)
+TEST_F(SW_Engine_Maps_MapExitUtilsFixture, map_tile_exit_added_new_dir)
 {
   Coordinate tile_coord(3,4);
   Direction direction = Direction::DIRECTION_SOUTH;
@@ -38,7 +38,7 @@ TEST_F(SL_Engine_Maps_MapExitUtilsFixture, map_tile_exit_added_new_dir)
   }
 }
 
-TEST_F(SL_Engine_Maps_MapExitUtilsFixture, map_tile_exit_added_to_existing)
+TEST_F(SW_Engine_Maps_MapExitUtilsFixture, map_tile_exit_added_to_existing)
 {
   Coordinate tile_coord(3,2);
   Direction direction = Direction::DIRECTION_SOUTH_EAST;

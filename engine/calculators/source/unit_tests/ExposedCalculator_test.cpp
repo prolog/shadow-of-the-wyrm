@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Calculator_ExposedCalculator, calc_pct_chance_exposed)
+TEST(SW_World_Calculator_ExposedCalculator, calc_pct_chance_exposed)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_agility(3);

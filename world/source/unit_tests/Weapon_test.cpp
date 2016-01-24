@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Weapon, serialization_ids)
+TEST(SW_World_Weapon, serialization_ids)
 {
   MeleeWeapon melee;
   RangedWeapon ranged;
@@ -9,7 +9,7 @@ TEST(SL_World_Weapon, serialization_ids)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_RANGED_WEAPON, ranged.get_class_identifier());
 }
 
-TEST(SL_World_Weapon, saveload)
+TEST(SW_World_Weapon, saveload)
 {
   MeleeWeapon m, m2;
   RangedWeapon r, r2;

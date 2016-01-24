@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Display_MapDisplayArea, default_width_and_height)
+TEST(SW_Display_MapDisplayArea, default_width_and_height)
 {
   MapDisplayArea default_area;
 
@@ -8,7 +8,7 @@ TEST(SL_Display_MapDisplayArea, default_width_and_height)
   EXPECT_EQ(0, static_cast<int>(default_area.get_height()));
 }
 
-TEST(SL_Display_MapDisplayArea, set_width_and_height)
+TEST(SW_Display_MapDisplayArea, set_width_and_height)
 {
   MapDisplayArea display_area(20, 80);
 

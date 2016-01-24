@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Spell.hpp"
 
-TEST(SL_Engine_Translators_BeamSpellTranslator, burst_symbol_used_when_in_range)
+TEST(SW_Engine_Translators_BeamSpellTranslator, burst_symbol_used_when_in_range)
 {
   BeamSpellTranslator bst;
 

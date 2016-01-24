@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Amulet, serialization_id)
+TEST(SW_World_Amulet, serialization_id)
 {
   Amulet amulet;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_AMULET, amulet.get_class_identifier());
 }
 
-TEST(SL_World_Amulet, saveload)
+TEST(SW_World_Amulet, saveload)
 {
   Amulet am, am2;
 

@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
-TEST(SL_Engine_ConversionRoutines, string_to_bool)
+TEST(SW_Engine_ConversionRoutines, string_to_bool)
 {
   string test_1 = "1";
   string test_2 = "true";
@@ -14,7 +14,7 @@ TEST(SL_Engine_ConversionRoutines, string_to_bool)
   EXPECT_FALSE(String::to_bool(test_4));
 }
 
-TEST(SL_Engine_ConversionRoutines, string_to_int)
+TEST(SW_Engine_ConversionRoutines, string_to_int)
 {
   string test_1 = "1";
   string test_2 = "0";
@@ -29,7 +29,7 @@ TEST(SL_Engine_ConversionRoutines, string_to_int)
   EXPECT_EQ(-9999, String::to_int(test_5));
 }
 
-TEST(SL_Engine_ConversionRoutines, string_to_float)
+TEST(SW_Engine_ConversionRoutines, string_to_float)
 {
   string test_1 = "0.00";
   string test_2 = "-3.6";
@@ -40,7 +40,7 @@ TEST(SL_Engine_ConversionRoutines, string_to_float)
   EXPECT_FLOAT_EQ(54.95f, String::to_float(test_3));
 }
 
-TEST(SL_Engine_ConversionRoutines, char_to_string)
+TEST(SW_Engine_ConversionRoutines, char_to_string)
 {
   char x = 'x';
   char three = '3';
@@ -49,13 +49,13 @@ TEST(SL_Engine_ConversionRoutines, char_to_string)
   EXPECT_EQ("3", Char::to_string(three));
 }
 
-TEST(SL_Engine_ConversionRoutines, float_to_string)
+TEST(SW_Engine_ConversionRoutines, float_to_string)
 {
   EXPECT_EQ("1.23", Float::to_string(1.234567f, 3));
   EXPECT_EQ("3.14159", Float::to_string(3.1415926535f, 6));
 }
 
-TEST(SL_Engine_ConversionRoutines, tokenize)
+TEST(SW_Engine_ConversionRoutines, tokenize)
 {
   string test1 = "fdsa\nasdf\nbbb";
   vector<string> t1_v = String::tokenize(test1, "\n", false);
@@ -67,7 +67,7 @@ TEST(SL_Engine_ConversionRoutines, tokenize)
   EXPECT_EQ(5, t1_v.size());
 }
 
-TEST(SL_Engine_ConversionRoutines, csv_to_vector)
+TEST(SW_Engine_ConversionRoutines, csv_to_vector)
 {
   string csv = "first,second,third";
   vector<string> str_vec = String::create_string_vector_from_csv_string(csv);
@@ -83,7 +83,7 @@ TEST(SL_Engine_ConversionRoutines, csv_to_vector)
   EXPECT_EQ("first", str_vec.back());
 }
 
-TEST(SL_Engine_ConversionRoutines, vector_to_csv)
+TEST(SW_Engine_ConversionRoutines, vector_to_csv)
 {
   vector<string> foo;
 
@@ -97,7 +97,7 @@ TEST(SL_Engine_ConversionRoutines, vector_to_csv)
   EXPECT_EQ("foo,bar,baz,quux", String::create_csv_from_string_vector(foo));
 }
 
-TEST(SL_Engine_ConversionRoutines, direction_to_string)
+TEST(SW_Engine_ConversionRoutines, direction_to_string)
 {
   EXPECT_EQ(CommandKeys::MOVE_SOUTHEAST, DirectionEnum::to_string(Direction::DIRECTION_SOUTH_EAST));
   EXPECT_EQ(CommandKeys::MOVE_SOUTH, DirectionEnum::to_string(Direction::DIRECTION_SOUTH));
@@ -109,7 +109,7 @@ TEST(SL_Engine_ConversionRoutines, direction_to_string)
   EXPECT_EQ(CommandKeys::MOVE_NORTHEAST, DirectionEnum::to_string(Direction::DIRECTION_NORTH_EAST));
 }
 
-TEST(SL_Engine_ConversionRoutines, raw_hunger_to_hunger_level)
+TEST(SW_Engine_ConversionRoutines, raw_hunger_to_hunger_level)
 {
   EXPECT_EQ(HungerLevel::HUNGER_LEVEL_STUFFED, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_STUFFED));
   EXPECT_EQ(HungerLevel::HUNGER_LEVEL_FULL, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_FULL));
@@ -119,14 +119,14 @@ TEST(SL_Engine_ConversionRoutines, raw_hunger_to_hunger_level)
   EXPECT_EQ(HungerLevel::HUNGER_LEVEL_DYING, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_DYING));
 }
 
-TEST(SL_Engine_ConversionRoutines, grams_per_standard_drink)
+TEST(SW_Engine_ConversionRoutines, grams_per_standard_drink)
 {
   EXPECT_FLOAT_EQ(13.6f, AlcoholConverter::standard_drinks_to_grams(1.0f));
   EXPECT_FLOAT_EQ(27.2f, AlcoholConverter::standard_drinks_to_grams(2.0f));
   EXPECT_FLOAT_EQ(34.0f, AlcoholConverter::standard_drinks_to_grams(2.5f));
 }
 
-TEST(SL_Engine_ConversionRoutines, weight_to_burden_level)
+TEST(SW_Engine_ConversionRoutines, weight_to_burden_level)
 {
   CreaturePtr c = std::make_shared<Creature>();
   Statistic strength(10);

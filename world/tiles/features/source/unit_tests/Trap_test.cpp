@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Tiles_Features_Trap, triggered)
+TEST(SW_World_Tiles_Features_Trap, triggered)
 {
   Trap trap;
 
@@ -15,14 +15,14 @@ TEST(SL_World_Tiles_Features_Trap, triggered)
   EXPECT_FALSE(trap.get_is_hidden());
 }
 
-TEST(SL_World_Tiles_Features_Trap, serialization_id)
+TEST(SW_World_Tiles_Features_Trap, serialization_id)
 {
   Trap trap;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_TRAP, trap.get_class_identifier());
 }
 
-TEST(SL_World_Tiles_Features_Trap, saveload)
+TEST(SW_World_Tiles_Features_Trap, saveload)
 {
   try {
     Trap t1, t2;

@@ -24,7 +24,7 @@ CreaturePtr create_conductless_creature()
   return cp;
 }
 
-TEST(SL_Engine_Calculators_ScoreCalculator, end_boss_component)
+TEST(SW_Engine_Calculators_ScoreCalculator, end_boss_component)
 {
   CreaturePtr cp = create_conductless_creature();
 
@@ -36,7 +36,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, end_boss_component)
   EXPECT_EQ(ScoreConstants::END_BOSS_BONUS, sc.calculate_score(cp));
 }
 
-TEST(SL_Engine_Calculators_ScoreCalculator, currency_component)
+TEST(SW_Engine_Calculators_ScoreCalculator, currency_component)
 {
   CreaturePtr cp = create_conductless_creature();
 
@@ -52,7 +52,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, currency_component)
   EXPECT_EQ(12345, sc.calculate_score(cp));
 }
 
-TEST(SL_Engine_Calculators_ScoreCalculator, experience_component)
+TEST(SW_Engine_Calculators_ScoreCalculator, experience_component)
 {
   CreaturePtr cp = create_conductless_creature();
 
@@ -67,7 +67,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, experience_component)
   EXPECT_EQ(129728, sc.calculate_score(cp));
 }
 
-TEST(SL_Engine_Calculators_ScoreCalculator, level_component)
+TEST(SW_Engine_Calculators_ScoreCalculator, level_component)
 {
   CreaturePtr cp = create_conductless_creature();
 
@@ -79,7 +79,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, level_component)
   EXPECT_EQ(3600, sc.calculate_score(cp));
 }
 
-TEST(SL_Engine_Calculator_ScoreCalculator, artifact_component)
+TEST(SW_Engine_Calculator_ScoreCalculator, artifact_component)
 {
   CreaturePtr cp = create_conductless_creature();
 
@@ -100,7 +100,7 @@ TEST(SL_Engine_Calculator_ScoreCalculator, artifact_component)
   EXPECT_EQ(1000, sc.calculate_score(cp));
 }
 
-TEST(SL_Engine_Calculators_ScoreCalculator, spell_component)
+TEST(SW_Engine_Calculators_ScoreCalculator, spell_component)
 {
   CreaturePtr cp = create_conductless_creature();
 
@@ -127,7 +127,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, spell_component)
   EXPECT_EQ(420, sc.calculate_score(cp));
 }
 
-TEST(SL_Engine_Calculators_ScoreCalculator, conducts)
+TEST(SW_Engine_Calculators_ScoreCalculator, conducts)
 {
   CreaturePtr cp = make_shared<Creature>();
   Statistic level(16);
@@ -138,7 +138,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, conducts)
   EXPECT_EQ(16 * 100 * static_cast<int>(ConductType::CONDUCT_SIZE) + 1600, sc.calculate_score(cp));
 }
 
-TEST(SL_Engine_Calculators_ScoreCalculator, total_score)
+TEST(SW_Engine_Calculators_ScoreCalculator, total_score)
 {
   CreaturePtr cp = make_shared<Creature>();
   Statistic clevel(10);

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Calculators_WeavingCalculator, calculate_min_points)
+TEST(SW_Engine_Calculators_WeavingCalculator, calculate_min_points)
 {
   WeavingCalculator wc;
   CreaturePtr creature;
@@ -24,7 +24,7 @@ TEST(SL_Engine_Calculators_WeavingCalculator, calculate_min_points)
   }
 }
 
-TEST(SL_Engine_Calculators_WeavingCalculator, calculate_max_points)
+TEST(SW_Engine_Calculators_WeavingCalculator, calculate_max_points)
 {
   WeavingCalculator wc;
   CreaturePtr creature;

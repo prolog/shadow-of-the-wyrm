@@ -3600,6 +3600,9 @@
     <ClInclude Include="engine\items\include\HandsRequiredItemFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\CalendarDay.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7024,6 +7027,12 @@
     </ClCompile>
     <ClCompile Include="engine\items\source\unit_tests\HandsRequiredItemFilter_test.cpp">
       <Filter>Source Files\engine\items\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\CalendarDay_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\CalendarDay.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

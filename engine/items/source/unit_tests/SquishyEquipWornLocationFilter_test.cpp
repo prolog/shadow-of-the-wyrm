@@ -3,7 +3,7 @@
 #include "Ring.hpp"
 #include "Amulet.hpp"
 
-TEST(SL_Engine_Items_SquishyEquipWornLocationFilter, passes_filter)
+TEST(SW_Engine_Items_SquishyEquipWornLocationFilter, passes_filter)
 {
   SquishyEquipWornLocationFilter filter1(EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER);
   SquishyEquipWornLocationFilter filter2(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);

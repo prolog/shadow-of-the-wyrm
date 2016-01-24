@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_CreatureGenerationValues, serialization_id)
+TEST(SW_World_CreatureGenerationValues, serialization_id)
 {
   CreatureGenerationValues cgv;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_CREATURE_GENERATION_VALUES, cgv.get_class_identifier());
 }
 
-TEST(SL_World_CreatureGenerationValues, saveload)
+TEST(SW_World_CreatureGenerationValues, saveload)
 {
   CreatureGenerationValues cgv, cgv2;
 

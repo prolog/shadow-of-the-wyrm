@@ -32,7 +32,7 @@ class ActionCost : public ISerializable
    
   protected:
     friend class ActionManager;
-    friend class SL_Engine_Actions_ActionCostFixture;
+    friend class SW_Engine_Actions_ActionCostFixture;
     
     explicit ActionCost(const ActionCostValue new_cost);
 
