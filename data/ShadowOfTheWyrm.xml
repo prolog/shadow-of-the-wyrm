@@ -27981,7 +27981,8 @@
 	</Items>
 	<Calendar>
 		<Day>
-			<DaySID>DAY_ENGLELAS_SID</DaySID>
+			<NameSID>EDELAS_NAME_SID</NameSID>
+			<DescriptionSID>EDELAS_DESCRIPTION_SID</DescriptionSID>
 			<CalendarDay>151</CalendarDay>
 		</Day>
 	</Calendar>

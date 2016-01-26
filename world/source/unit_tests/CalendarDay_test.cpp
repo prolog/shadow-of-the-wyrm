@@ -7,9 +7,9 @@ TEST(SW_World_CalendarDay, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_CALENDAR_DAY, cd.get_class_identifier());
 }
 
-TEST(SW_World_Calendarday, saveload)
+TEST(SW_World_CalendarDay, saveload)
 {
-  CalendarDay cd("asdf", 123);
+  CalendarDay cd("bing", "asdf", 123);
   CalendarDay cd2;
 
   ostringstream ss;
