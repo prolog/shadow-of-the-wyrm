@@ -739,7 +739,8 @@
   -->
 <xs:complexType name="CalendarDayType">
 	<xs:sequence>
-		<xs:element name="DaySID" type="xs:string"/>
+		<xs:element name="NameSID" type="xs:string"/>
+		<xs:element name="DescriptionSID" type="xs:string"/>
 		<xs:element name="CalendarDay" type="xs:integer"/>
 	</xs:sequence>
 </xs:complexType>
