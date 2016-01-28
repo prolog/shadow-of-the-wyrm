@@ -244,6 +244,17 @@ const vector<TrapPtr>& Game::get_trap_info_ref() const
   return trap_info;
 }
 
+void Game::set_calendar_days(const map<int, CalendarDay>& new_calendar_days)
+{
+  calendar_days = new_calendar_days;
+}
+
+map<int, CalendarDay>& Game::get_calendar_days_ref()
+{
+  return calendar_days;
+}
+
+
 CreaturePtr Game::get_current_player() const
 {
   CreaturePtr current_player = get_current_map()->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
@@ -940,6 +951,14 @@ bool Game::serialize(ostream& stream) const
   // a game is reloaded.
   loaded_map_details.serialize(stream);
     
+  Serialize::write_size_t(stream, calendar_days.size());
+
+  for (const auto& cd_pair : calendar_days)
+  {
+    Serialize::write_int(stream, cd_pair.first);
+    cd_pair.second.serialize(stream);
+  }
+
   Log::instance().trace("Game::serialize - end");
 
   return true;
@@ -1090,6 +1109,20 @@ bool Game::deserialize(istream& stream)
   // Game command factory and keyboard map get built up every time - don't load these.
 
   loaded_map_details.deserialize(stream);
+
+  size_t cal_size = 0;
+  Serialize::read_size_t(stream, cal_size);
+
+  for (size_t i = 0; i < cal_size; i++)
+  {
+    int day_of_year = -1;
+    Serialize::read_int(stream, day_of_year);
+
+    CalendarDay day_info;
+    day_info.deserialize(stream);
+
+    calendar_days[day_of_year] = day_info;
+  }
 
   Log::instance().trace("Game::deserialize - end");
   return true;

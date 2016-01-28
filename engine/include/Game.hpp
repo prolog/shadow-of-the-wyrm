@@ -81,6 +81,9 @@ class Game : public ISerializable
     void set_trap_info(const std::vector<TrapPtr>& game_traps);
     const std::vector<TrapPtr>& get_trap_info_ref() const;
 
+    void set_calendar_days(const std::map<int, CalendarDay>& new_calendar_days);
+    std::map<int, CalendarDay>& get_calendar_days_ref();
+
     CreaturePtr get_current_player() const;
 
     void create_new_world(CreaturePtr creature);
@@ -187,6 +190,7 @@ class Game : public ISerializable
     ItemMap items;
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
     std::vector<TrapPtr> trap_info;
+    std::map<int, CalendarDay> calendar_days;
 
     // The current list of game worlds.  For a long, long time, this should always be size=1.
     std::vector<WorldPtr> worlds;

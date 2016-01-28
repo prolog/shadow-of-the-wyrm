@@ -177,9 +177,13 @@ void ShadowOfTheWyrmEngine::setup_game()
   vector<TrapPtr> trap_info = reader.get_trap_info();
   game.set_trap_info(trap_info);
 
+  map<int, CalendarDay> calendar_days = reader.get_calendar_days();
+  game.set_calendar_days(calendar_days);
+
+  // This switches files/namespaces - so should be last.
   vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
   game.set_custom_maps(custom_maps);
-    
+
   // Set up the message manager also.
   IMessageManager& manager = MessageManagerFactory::instance();
   manager.set_display(display);
