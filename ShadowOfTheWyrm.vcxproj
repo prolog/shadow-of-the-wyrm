@@ -854,6 +854,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\XML\include\XMLAmuletReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLArmourReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLBoatReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLCalendarReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLModifierReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLScriptsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLSpellbookReader.hpp" />
@@ -1180,6 +1181,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp" />
     <ClCompile Include="source\CompilationDetails.cpp" />
     <ClCompile Include="controller\source\Controller.cpp" />
     <ClCompile Include="controller\source\ControllerFactory.cpp" />

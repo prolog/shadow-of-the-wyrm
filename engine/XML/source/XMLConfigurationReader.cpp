@@ -36,6 +36,12 @@ ClassMap XMLConfigurationReader::get_classes()
   return classes;
 }
 
+map<int, CalendarDay> XMLConfigurationReader::get_calendar_days()
+{
+  XMLNode calendar_node = XMLUtils::get_next_element_by_local_name(root, "Calendar");
+  return calendar_reader.get_calendar_days(calendar_node);
+}
+
 pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creatures()
 {
   XMLNode creatures_node = XMLUtils::get_next_element_by_local_name(root, "Creatures");

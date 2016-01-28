@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "XMLCalendarReader.hpp"
 #include "XMLClassesReader.hpp"
 #include "XMLCreaturesReader.hpp"
 #include "XMLDataStructures.hpp"
@@ -25,6 +26,7 @@ class XMLConfigurationReader
 
     void set_new_file(const std::string& xml_filename);
 
+    std::map<int, CalendarDay> get_calendar_days();
     DeityMap get_deities();
     RaceMap get_races();
     ClassMap get_classes();
@@ -44,6 +46,7 @@ class XMLConfigurationReader
     XMLNode root;
 
     // Member variables for reading the various XML nodes and setting the data into world objects.
+    XMLCalendarReader calendar_reader;
     XMLClassesReader classes_reader;
     XMLDeitiesReader deities_reader;
     XMLCreaturesReader creatures_reader;
@@ -54,3 +57,4 @@ class XMLConfigurationReader
     XMLTrapsReader traps_reader;
     XMLScriptsReader scripts_reader;
 };
+
