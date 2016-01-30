@@ -34,6 +34,7 @@ const string TextMessages::CURRENCY_MESSAGE_MULTIPLE          = "CURRENCY_MESSAG
 const string TextMessages::NAME_TITLE_MESSAGE                 = "NAME_TITLE_MESSAGE";
 const string TextMessages::EXPERIENCE_SYNOPSIS_MESSAGE        = "EXPERIENCE_SYNOPSIS_MESSAGE";
 const string TextMessages::EXPERIENCE_SYNOPSIS_MAX_MESSAGE    = "EXPERIENCE_SYNOPSIS_MAX_MESSAGE";
+const string TextMessages::SPECIAL_DAY_MESSAGE                = "SPECIAL_DAY_MESSAGE";
 
 string TextMessages::get_player_description(const string& player_name)
 {
@@ -423,4 +424,14 @@ string TextMessages::get_experience_synopsis(const int level, const int exp, con
   boost::replace_first(exp_synopsis, "%s8", Float::to_string(c_mult, 2));
 
   return exp_synopsis;
+}
+
+string TextMessages::get_special_day_message(const string& name_sid, const string& desc_sid)
+{
+  string special_day_msg = StringTable::get(SPECIAL_DAY_MESSAGE);
+
+  boost::replace_first(special_day_msg, "%s1", StringTable::get(name_sid));
+  boost::replace_first(special_day_msg, "%s2", StringTable::get(desc_sid));
+
+  return special_day_msg;
 }

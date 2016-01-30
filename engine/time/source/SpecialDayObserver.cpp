@@ -1,5 +1,7 @@
 #include "SpecialDayObserver.hpp"
 #include "Game.hpp"
+#include "TextMessages.hpp"
+#include "MessageManagerFactory.hpp"
 
 using namespace std;
 
@@ -22,7 +24,18 @@ void SpecialDayObserver::check_special_day(const std::map<int, CalendarDay>& cal
 {
   int day_of_year = static_cast<int>(calendar.get_date().get_day_of_year());
 
-  // ...
+  auto cd_it = calendar_days.find(day_of_year);
+
+  if (cd_it != calendar_days.end())
+  {
+    CalendarDay cd = cd_it->second;
+    string day_message = TextMessages::get_special_day_message(cd.get_name_sid(), cd.get_description_sid());
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.add_new_message(day_message);
+
+    manager.send();
+  }
 }
 
 
