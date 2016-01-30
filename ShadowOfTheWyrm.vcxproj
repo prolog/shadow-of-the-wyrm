@@ -809,6 +809,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\time\include\NullMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\RegenerationConstants.hpp" />
     <ClInclude Include="engine\time\include\SeasonsTimeObserver.hpp" />
+    <ClInclude Include="engine\time\include\SpecialDayObserver.hpp" />
     <ClInclude Include="engine\time\include\SwimmingMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" />
     <ClInclude Include="engine\time\include\TileTransformObserver.hpp" />
@@ -1170,8 +1171,14 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\time\source\AgeTimeObserver.cpp" />
+    <ClCompile Include="engine\time\source\SpecialDayObserver.cpp" />
     <ClCompile Include="engine\time\source\TileTransformObserver.cpp" />
     <ClCompile Include="engine\time\source\unit_tests\AgeTimeObserver_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\SpecialDayObserver_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

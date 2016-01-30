@@ -1,5 +1,4 @@
 #include "Calendar.hpp"
-#include "Date.hpp"
 #include "SeasonFactory.hpp"
 #include "Serialize.hpp"
 
@@ -73,10 +72,11 @@ Date Calendar::get_date() const
   uint total_days_elapsed = (usec / 86400);
   uint day_week = (total_days_elapsed % 7);
   uint day_month = (total_days_elapsed % DateValues::NUMBER_OF_DAYS_PER_MONTH) + 1 /* Days of month start at 1, too */;
+  uint day_year = (total_days_elapsed % DateValues::NUMBER_OF_DAYS_PER_YEAR) + 1; // JCD FIXME there's a constant somewhere.
   uint month = ((total_days_elapsed / DateValues::NUMBER_OF_DAYS_PER_MONTH) % 12);
   uint year = STARTING_YEAR + (total_days_elapsed / DateValues::NUMBER_OF_DAYS_PER_YEAR); /* 30 * 12 */
 
-  Date calculated_date(sec, min, hr, day_week, day_month, month, year);
+  Date calculated_date(sec, min, hr, day_week, day_month, day_year, month, year);
   return calculated_date;
 }
 

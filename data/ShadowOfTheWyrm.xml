@@ -27983,7 +27983,7 @@
 		<Day>
 			<NameSID>EDELMAS_NAME_SID</NameSID>
 			<DescriptionSID>EDELMAS_DESCRIPTION_SID</DescriptionSID>
-			<CalendarDay>151</CalendarDay>
+			<CalendarDay>151</CalendarDay> <!-- FIXME CHANGE THIS AFTER TESTING -->
 		</Day>
 	</Calendar>
 	<Scripts>

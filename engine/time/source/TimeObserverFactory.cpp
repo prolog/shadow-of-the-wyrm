@@ -2,6 +2,7 @@
 #include "CreatureTimeObserver.hpp"
 #include "MapTimeObserver.hpp"
 #include "SeasonsTimeObserver.hpp"
+#include "SpecialDayObserver.hpp"
 #include "TileTransformObserver.hpp"
 #include "TimeObserverFactory.hpp"
 
@@ -51,11 +52,13 @@ void TimeObserverFactory::initialize_time_observer_map()
   ITimeObserverPtr map_observer = std::make_shared<MapTimeObserver>();
   ITimeObserverPtr age_observer = std::make_shared<AgeTimeObserver>();
   ITimeObserverPtr tile_transform_observer = std::make_shared<TileTransformObserver>();
+  ITimeObserverPtr special_day_observer = std::make_shared<SpecialDayObserver>();
 
   time_observer_map = TimeObserverSerializationMap{{ClassIdentifier::CLASS_ID_CREATURE_TIME_OBSERVER, creature},
                                                    {ClassIdentifier::CLASS_ID_MAP_TIME_OBSERVER, map_observer},
                                                    {ClassIdentifier::CLASS_ID_SEASONS_TIME_OBSERVER, seasons},
                                                    {ClassIdentifier::CLASS_ID_AGE_TIME_OBSERVER, age_observer},
-                                                   {ClassIdentifier::CLASS_ID_TILE_TRANSFORM_OBSERVER, tile_transform_observer}};
+                                                   {ClassIdentifier::CLASS_ID_TILE_TRANSFORM_OBSERVER, tile_transform_observer},
+                                                   {ClassIdentifier::CLASS_ID_SPECIAL_DAY_OBSERVER, special_day_observer}};
 }
 

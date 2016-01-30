@@ -779,7 +779,7 @@ void test_calendar()
       
       cout << "Calendar Info: " << endl;
       cout << "Time: " << d.get_hours() << ":" << d.get_minutes() << ":" << d.get_seconds() << endl;
-      cout << "Day: Day " << d.get_day_of_week() << " of week, day " << d.get_day_of_month() << " of month" << endl;
+      cout << "Day: Day " << d.get_day_of_week() << " of week, day " << d.get_day_of_month() << " of month, day " << d.get_day_of_year() << " of year" << endl;
       cout << "Month: " << d.get_month() << endl;
       cout << "Year: " << d.get_year() << endl; 
     }

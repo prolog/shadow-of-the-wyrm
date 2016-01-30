@@ -741,6 +741,9 @@
 	<xs:sequence>
 		<xs:element name="NameSID" type="xs:string"/>
 		<xs:element name="DescriptionSID" type="xs:string"/>
+		<!-- CalendarDay is the n-th day of the year.  The game tracks both "days elapsed"
+		     (0 is day 1 of the year, 1 day elapsed is day 2, ...) and "day of" (day x of
+			 the year). -->
 		<xs:element name="CalendarDay" type="xs:integer"/>
 	</xs:sequence>
 </xs:complexType>
