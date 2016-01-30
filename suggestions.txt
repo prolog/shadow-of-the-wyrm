@@ -26,8 +26,6 @@ Me:
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
 - Crash bug is still present: find out what's causing it!
-- Named in-game holidays/special days.  Should get an in-game message
-  when that day occurs.
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
 - Add initial write-access checks for the working directory and fail out
