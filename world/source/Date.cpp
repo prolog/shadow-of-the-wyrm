@@ -5,8 +5,8 @@ using std::string;
 string Date::month_sids[DateValues::NUMBER_OF_MONTHS] = {"MONTH_1", "MONTH_2", "MONTH_3", "MONTH_4", "MONTH_5", "MONTH_6", "MONTH_7", "MONTH_8", "MONTH_9", "MONTH_10", "MONTH_11", "MONTH_12"};
 string Date::day_of_week_sids[DateValues::NUMBER_OF_DAYS] = {"DAY_1", "DAY_2", "DAY_3", "DAY_4", "DAY_5", "DAY_6", "DAY_7"};
 
-Date::Date(const uint sec, const uint min, const uint hrs, const uint day_week, const uint day_month, const uint mnth, const uint yr)
-: seconds(sec), minutes(min), hours(hrs), day_of_week(day_week), day_of_month(day_month), month(mnth), year(yr)
+Date::Date(const uint sec, const uint min, const uint hrs, const uint day_week, const uint day_month, const uint day_year, const uint mnth, const uint yr)
+: seconds(sec), minutes(min), hours(hrs), day_of_week(day_week), day_of_month(day_month), day_of_year(day_year), month(mnth), year(yr)
 {
 }
 
@@ -38,6 +38,11 @@ string Date::get_day_of_week_sid() const
 uint Date::get_day_of_month() const
 {
   return day_of_month;
+}
+
+uint Date::get_day_of_year() const
+{
+  return day_of_year;
 }
 
 uint Date::get_month() const

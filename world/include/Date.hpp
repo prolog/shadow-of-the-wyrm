@@ -13,7 +13,7 @@ namespace DateValues
 class Date
 {
   public:
-    Date(const uint sec, const uint min, const uint hrs, const uint day_week, const uint day_month, const uint month, const uint year);
+    Date(const uint sec, const uint min, const uint hrs, const uint day_week, const uint day_month, const uint day_year, const uint month, const uint year);
 
     uint get_seconds() const;
     uint get_minutes() const;
@@ -21,6 +21,7 @@ class Date
     uint get_day_of_week() const;
     std::string get_day_of_week_sid() const;
     uint get_day_of_month() const;
+    uint get_day_of_year() const;
     uint get_month() const;
     std::string get_month_sid() const;
     uint get_year() const;
@@ -31,6 +32,7 @@ class Date
     uint hours;
     uint day_of_week;
     uint day_of_month;
+    uint day_of_year;
     uint month;
     uint year;
     

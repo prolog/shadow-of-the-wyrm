@@ -3,10 +3,9 @@
 #include "common.hpp"
 #include "CalendarDay.hpp"
 #include "CalendarTypes.hpp"
+#include "Date.hpp"
 #include "ISeason.hpp"
 #include "ISerializable.hpp"
-
-class Date;
 
 class Calendar : public ISerializable
 {

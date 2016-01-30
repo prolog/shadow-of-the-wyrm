@@ -3606,6 +3606,9 @@
     <ClInclude Include="engine\XML\include\XMLCalendarReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\SpecialDayObserver.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7039,6 +7042,12 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\SpecialDayObserver.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\SpecialDayObserver_test.cpp">
+      <Filter>Source Files\engine\time\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
