@@ -4,6 +4,12 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 - Out-of-view features no longer disappear - these are remembered
   (Avagart).
 
+- Added support for special days, with messages being displayed when that
+  day arrives.
+
+- New special days: Alari, Festival of the Midwinter Moon; Edelmas, Day of
+  Ancient Slaughter.
+
 - Bug fixes:
 
   - Blue jays were, uh, bright yellow.

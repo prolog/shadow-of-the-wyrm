@@ -27981,9 +27981,14 @@
 	</Items>
 	<Calendar>
 		<Day>
+			<NameSID>ALARI_NAME_SID</NameSID>
+			<DescriptionSID>ALARI_DESCRIPTION_SID</DescriptionSID>
+			<CalendarDay>13</CalendarDay>
+		</Day>
+		<Day>
 			<NameSID>EDELMAS_NAME_SID</NameSID>
 			<DescriptionSID>EDELMAS_DESCRIPTION_SID</DescriptionSID>
-			<CalendarDay>152</CalendarDay> <!-- FIXME CHANGE THIS AFTER TESTING -->
+			<CalendarDay>164</CalendarDay> <!-- FIXME CHANGE THIS AFTER TESTING -->
 		</Day>
 	</Calendar>
 	<Scripts>
