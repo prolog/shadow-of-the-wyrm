@@ -32,6 +32,7 @@ Me:
   if no write access available.
 - default_race and default_class settings that accept race/class IDs.  If
   empty or invalid, the user is prompted for selection.
+- Book in the library describing the world's special days.
 
 Legend:
 - Windows XP binary.

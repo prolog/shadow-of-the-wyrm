@@ -28009,9 +28009,24 @@
 			<CalendarDay>164</CalendarDay>
 		</Day>
 		<Day>
+			<NameSID>SOLSTIDE_NAME_SID</NameSID>
+			<DescriptionSID>SOLSTIDE_DESCRIPTION_SID</DescriptionSID>
+			<CalendarDay>223</CalendarDay>
+		</Day>
+		<Day>
+			<NameSID>DRAGONSDAY_NAME_SID</NameSID>
+			<DescriptionSID>DRAGONSDAY_DESCRIPTION_SID</DescriptionSID>
+			<CalendarDay>288</CalendarDay>
+		</Day>
+		<Day>
 			<NameSID>REAVING_NAME_SID</NameSID>
 			<DescriptionSID>REAVING_DESCRIPTION_SID</DescriptionSID>
 			<CalendarDay>305</CalendarDay>
+		</Day>
+		<Day>
+			<NameSID>ELFENWAEL_NAME_SID</NameSID>
+			<DescriptionSID>ELFENWAEL_DESCRIPTION_SID</DescriptionSID>
+			<CalendarDay>328</CalendarDay>
 		</Day>
 	</Calendar>
 	<Scripts>

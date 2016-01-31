@@ -1,4 +1,7 @@
+#include <sstream>
 #include "XMLCalendarReader.hpp"
+#include "Log.hpp"
+
 
 using namespace std;
 
@@ -15,7 +18,15 @@ map<int, CalendarDay> XMLCalendarReader::get_calendar_days(const XMLNode& calend
       CalendarDay cd;
       parse_calendar_day(cd, day_node);
 
-      cal_days[cd.get_calendar_day()] = cd;
+      int cal_day = cd.get_calendar_day();
+      auto insert_success = cal_days.insert(make_pair(cal_day, cd));
+
+      if (!insert_success.second)
+      {
+        ostringstream ss;
+        ss << "Could not insert calendar day - day " << cal_day << " already used.";
+        Log::instance().error(ss.str());
+      }
     }
   }
 
