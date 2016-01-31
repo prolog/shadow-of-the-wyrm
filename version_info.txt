@@ -7,8 +7,10 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 - Added support for special days, with messages being displayed when that
   day arrives.
 
-- New special days: Alari, Festival of the Midwinter Moon; Edelmas, Day of
-  Ancient Slaughter.
+- New special days: Alari, Festival of the Midwinter Moon; Halingsdaeg,
+  Celebration of the Ascension of St. Haling; Demonstide, Day of Defeat of
+  the Unholy Hordes; Coma, Night of Heavenly Death; Edelmas, Ancient Day 
+  of Slaughter; Reaving, Celebration of the Harvest.
 
 - Bug fixes:
 
