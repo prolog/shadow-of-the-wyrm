@@ -1952,6 +1952,9 @@
 					<Daggers>5</Daggers>
 					<Spears>5</Spears>
 				</WeaponSkills>
+				<MagicSkills>
+					<Cantrips>5</Cantrips>
+				</MagicSkills>
 			</Skills>
 			<Titles>
 				<Default>ADVENTURER_DEFAULT_TITLE</Default>

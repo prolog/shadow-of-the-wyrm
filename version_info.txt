@@ -12,6 +12,8 @@ Shadow of the Wyrm v0.4.8 "Carulli"
   the Unholy Hordes; Coma, Night of Heavenly Death; Edelmas, Ancient Day 
   of Slaughter; Reaving, Celebration of the Harvest.
 
+- Adventurers now start with skill in Cantrips (Darcy Faires).
+
 - Bug fixes:
 
   - Blue jays were, uh, bright yellow.
