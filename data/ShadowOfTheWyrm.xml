@@ -27986,9 +27986,29 @@
 			<CalendarDay>13</CalendarDay>
 		</Day>
 		<Day>
+			<NameSID>HALINGSDAEG_NAME_SID</NameSID>
+			<DescriptionSID>HALINGSDAEG_DESCRIPTION_SID</DescriptionSID>
+			<CalendarDay>56</CalendarDay>
+		</Day>
+		<Day>
+			<NameSID>DEMONSTIDE_NAME_SID</NameSID>
+			<DescriptionSID>DEMONSTIDE_DESCRIPTION_SID</DescriptionSID>
+			<CalendarDay>91</CalendarDay>
+		</Day>
+		<Day>
+			<NameSID>COMA_NAME_SID</NameSID>
+			<DescriptionSID>COMA_DESCRIPTION_SID</DescriptionSID>
+			<CalendarDay>145</CalendarDay>
+		</Day>
+		<Day>
 			<NameSID>EDELMAS_NAME_SID</NameSID>
 			<DescriptionSID>EDELMAS_DESCRIPTION_SID</DescriptionSID>
-			<CalendarDay>164</CalendarDay> <!-- FIXME CHANGE THIS AFTER TESTING -->
+			<CalendarDay>164</CalendarDay>
+		</Day>
+		<Day>
+			<NameSID>REAVING_NAME_SID</NameSID>
+			<DescriptionSID>REAVING_DESCRIPTION_SID</DescriptionSID>
+			<CalendarDay>305</CalendarDay>
 		</Day>
 	</Calendar>
 	<Scripts>
