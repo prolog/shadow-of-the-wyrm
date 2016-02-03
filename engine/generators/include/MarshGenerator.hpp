@@ -2,7 +2,7 @@
 #include "Generator.hpp"
 #include "TileGenerator.hpp"
 
-class MarshGenerator : public SL::Generator
+class MarshGenerator : public SOTW::Generator
 {
   public:
     MarshGenerator(const std::string& map_exit_id);

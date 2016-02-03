@@ -16,6 +16,16 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - Adventurers now start with skill in Cantrips (Darcy Faires).
 
+- Creatures now have a chance of finding foragable foods on overworld 
+  maps.  The chance of finding these is seasonal: roots can always be 
+  had, but are fewer and rarer, while berries are more plentiful, but can 
+  only be found in the fall.  Fiddleheads are the curled fronds of ferns, 
+  and are only available in the spring.  The chance of a particular 
+  random overworld map of having foragables is based on the player's 
+  Foraging skill.
+
+- New items: roots, berries, kelp.
+
 - Bug fixes:
 
   - Blue jays were, uh, bright yellow.

@@ -1,3 +1,4 @@
+#include "ItemTypes.hpp"
 #include "SeasonTextKeys.hpp"
 #include "Spring.hpp"
 
@@ -6,6 +7,7 @@ using namespace std;
 Spring::Spring()
 {
   initialize_months();
+  initialize_foragables();
 }
 
 void Spring::initialize_months()
@@ -19,6 +21,13 @@ void Spring::initialize_months()
   months_in_season.insert(Months::MONTH_4);
   months_in_season.insert(Months::MONTH_5);
 }
+
+void Spring::initialize_foragables()
+{
+  foragables = {{TileType::TILE_TYPE_SEA, {ItemIdKeys::ITEM_ID_KELP}},
+                {TileType::TILE_TYPE_FIELD, {ItemIdKeys::ITEM_ID_ROOT, ItemIdKeys::ITEM_ID_FIDDLEHEAD_GREEN}}};
+}
+
 
 Season Spring::get_season() const
 {

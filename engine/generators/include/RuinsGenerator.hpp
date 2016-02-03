@@ -10,7 +10,7 @@ enum struct RuinsType
 };
 
 // JCD FIXME: Refactor this into SettlementRuinsGenerator and KeepRuinsGenerator.
-class RuinsGenerator : public SL::Generator
+class RuinsGenerator : public SOTW::Generator
 {
   public:
     RuinsGenerator(const std::string& map_exit_id, const TileType tile_type, const RuinsType new_rt);

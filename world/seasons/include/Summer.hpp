@@ -17,6 +17,7 @@ class Summer : public ISeason
     
   protected:
     void initialize_months() override;
+    void initialize_foragables() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

@@ -495,6 +495,10 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
         }
       }
 
+      // If this is an overworld map, add a chance of foragables.
+      int pct_chance_foragables = creature ? creature->get_skills().get_value(SkillType::SKILL_GENERAL_FORAGING) : 0;
+      generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES, to_string(pct_chance_foragables));
+
       new_map = generator->generate_and_initialize(danger_level, depth);
 
       if (new_map->get_permanent())

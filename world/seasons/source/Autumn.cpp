@@ -1,11 +1,13 @@
 #include "Autumn.hpp"
 #include "SeasonTextKeys.hpp"
+#include "ItemTypes.hpp"
 
 using namespace std;
 
 Autumn::Autumn()
 {
   initialize_months();
+  initialize_foragables();
 }
 
 void Autumn::initialize_months()
@@ -18,6 +20,13 @@ void Autumn::initialize_months()
   months_in_season.insert(Months::MONTH_9);
   months_in_season.insert(Months::MONTH_10);
   months_in_season.insert(Months::MONTH_11);
+}
+
+void Autumn::initialize_foragables()
+{
+  foragables = {{TileType::TILE_TYPE_SEA, {ItemIdKeys::ITEM_ID_KELP}},
+                {TileType::TILE_TYPE_FIELD, {ItemIdKeys::ITEM_ID_ROOT}},
+                {TileType::TILE_TYPE_BUSH, {ItemIdKeys::ITEM_ID_BERRIES}}};
 }
 
 Season Autumn::get_season() const

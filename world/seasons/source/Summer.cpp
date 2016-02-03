@@ -1,3 +1,4 @@
+#include "ItemTypes.hpp"
 #include "SeasonTextKeys.hpp"
 #include "Summer.hpp"
 
@@ -6,6 +7,7 @@ using namespace std;
 Summer::Summer()
 {
   initialize_months();
+  initialize_foragables();
 }
 
 void Summer::initialize_months()
@@ -19,6 +21,14 @@ void Summer::initialize_months()
   months_in_season.insert(Months::MONTH_7);
   months_in_season.insert(Months::MONTH_8);
 }
+
+void Summer::initialize_foragables()
+{
+  foragables = {{TileType::TILE_TYPE_SEA, {ItemIdKeys::ITEM_ID_KELP}},
+                {TileType::TILE_TYPE_FIELD, {ItemIdKeys::ITEM_ID_ROOT}},
+                {TileType::TILE_TYPE_BUSH, {ItemIdKeys::ITEM_ID_BERRIES}}};
+}
+
 
 Season Summer::get_season() const
 {

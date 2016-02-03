@@ -1,7 +1,7 @@
 #pragma once
 #include "Generator.hpp"
 
-class HillsGenerator : public SL::Generator
+class HillsGenerator : public SOTW::Generator
 {
   public:
     HillsGenerator(const std::string& map_exit_id);

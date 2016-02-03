@@ -807,6 +807,28 @@ std::multimap<int, pair<string, Coordinate>> MapUtils::create_distance_map(Creat
   return distance_map;
 }
 
+map<TileType, vector<TilePtr>> MapUtils::partition_tiles(MapPtr current_map)
+{
+  map<TileType, vector<TilePtr>> part_tiles;
+
+  if (current_map != nullptr)
+  {
+    TilesContainer tc = current_map->get_tiles();
+
+    for (const auto& tc_pair : tc)
+    {
+      TilePtr tile = tc_pair.second;
+
+      if (tile != nullptr)
+      {
+        part_tiles[tile->get_tile_type()].push_back(tile);
+      }
+    }
+  }
+
+  return part_tiles;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"

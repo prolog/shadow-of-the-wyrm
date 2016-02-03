@@ -6,7 +6,7 @@
 // abstract class for generating churches, templates, and sites of
 // threefold death - the names for religious places for good,
 // neutral, and evil deities, respectively.
-class ChurchGenerator : public SL::Generator
+class ChurchGenerator : public SOTW::Generator
 {
   public:
     ChurchGenerator(const std::string& new_deity_id, MapPtr new_base_map, const TileType church_type);

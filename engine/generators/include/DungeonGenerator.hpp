@@ -4,7 +4,7 @@
 #include "Room.hpp"
 #include "TileGenerator.hpp"
 
-class DungeonGenerator : public SL::Generator
+class DungeonGenerator : public SOTW::Generator
 {
   public:
     DungeonGenerator(const std::string& map_exit_id);

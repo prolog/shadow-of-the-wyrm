@@ -1,7 +1,7 @@
 #pragma once
 #include "Generator.hpp"
 #include "GardenTypes.hpp"
-class BaseSettlementGenerator : public SL::Generator
+class BaseSettlementGenerator : public SOTW::Generator
 {
   public:
     BaseSettlementGenerator(MapPtr new_base_map);

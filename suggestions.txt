@@ -12,7 +12,7 @@ Me:
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)
-- Add fishing, foraging
+- Add fishing 
 - Evil story arc
 - Linux support.  
 - Investigate targetting not staying properly some (all?) of the time.

@@ -25324,6 +25324,62 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_root">
+				<DescriptionSID>ROOT_SID</DescriptionSID>
+				<UsageDescriptionSID>ROOT_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>200</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_berries">
+				<DescriptionSID>BERRIES_SID</DescriptionSID>
+				<UsageDescriptionSID>BERRIES_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>1</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>110</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_kelp">
+				<DescriptionSID>KELP_SID</DescriptionSID>
+				<UsageDescriptionSID>KELP_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>2</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>205</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>CHERRIES_USAGE_SID</UsageDescriptionSID>

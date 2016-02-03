@@ -1,7 +1,7 @@
 #pragma once
 #include "Generator.hpp"
 
-class KeepGenerator : public SL::Generator
+class KeepGenerator : public SOTW::Generator
 {
   public:
     KeepGenerator(const std::string& map_exit_id, const int chance_decay = 0);
