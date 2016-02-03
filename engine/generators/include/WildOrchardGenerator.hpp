@@ -1,7 +1,7 @@
 #pragma once
 #include "Generator.hpp"
 
-class WildOrchardGenerator : public SL::Generator
+class WildOrchardGenerator : public SOTW::Generator
 {
   public:
     WildOrchardGenerator(const std::string& map_exit_id);

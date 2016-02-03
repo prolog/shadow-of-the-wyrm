@@ -2,7 +2,7 @@
 #include "Generator.hpp"
 #include "TileGenerator.hpp"
 
-class ScrubGenerator : public SL::Generator
+class ScrubGenerator : public SOTW::Generator
 {
   public:
     ScrubGenerator(const std::string& map_exit_id);

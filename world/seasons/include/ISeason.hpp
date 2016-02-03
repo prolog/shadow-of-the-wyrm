@@ -1,9 +1,12 @@
 #pragma once
+#include <map>
 #include <string>
 #include <set>
 #include <memory>
+#include <vector>
 #include "CalendarTypes.hpp"
 #include "ISerializable.hpp"
+#include "tiles.hpp"
 
 class ISeason : public ISerializable
 {
@@ -18,6 +21,8 @@ class ISeason : public ISerializable
     virtual Season get_next_season() const = 0;
     virtual std::set<Months> get_months_in_season() const;
 
+    std::map<TileType, std::vector<std::string>> get_foragables() const;
+
     virtual ISeason* clone() = 0;
 
     bool serialize(std::ostream& stream) const override;
@@ -25,8 +30,10 @@ class ISeason : public ISerializable
     
   protected:
     virtual void initialize_months() = 0;
+    virtual void initialize_foragables() = 0;
     
     std::set<Months> months_in_season;
+    std::map<TileType, std::vector<std::string>> foragables;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

@@ -8,7 +8,7 @@
 
 // JCD FIXME: Eventually, set about changing all the "MapPtr" arguments to "const MapPtr&" arguments.
 
-class WorldGenerator : public SL::Generator
+class WorldGenerator : public SOTW::Generator
 {
   public:
     WorldGenerator();

@@ -7,3 +7,4 @@ enum struct Rarity
   RARITY_RARE = 2,
   RARITY_VERY_RARE = 3
 };
+

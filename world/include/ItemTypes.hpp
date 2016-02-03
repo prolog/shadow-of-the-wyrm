@@ -63,6 +63,11 @@ class ItemIdKeys
     static const std::string ITEM_ID_VEGETABLE_5;
     static const std::string ITEM_ID_VEGETABLE_6;
 
+    // Foragables
+    static const std::string ITEM_ID_ROOT;
+    static const std::string ITEM_ID_BERRIES;
+    static const std::string ITEM_ID_KELP;
+
   protected:
     ItemIdKeys();
     ~ItemIdKeys();

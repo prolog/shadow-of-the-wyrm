@@ -2,7 +2,7 @@
 #include "Generator.hpp"
 #include "Room.hpp"
 
-class MineGenerator : public SL::Generator
+class MineGenerator : public SOTW::Generator
 {
   public:
     MineGenerator(const std::string& map_exit_id);

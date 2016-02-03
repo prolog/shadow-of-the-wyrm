@@ -2,7 +2,7 @@
 #include "Generator.hpp"
 #include "TileGenerator.hpp"
 
-class CryptGenerator : public SL::Generator
+class CryptGenerator : public SOTW::Generator
 {
   public:
     CryptGenerator(const std::string& new_map_exit_id);

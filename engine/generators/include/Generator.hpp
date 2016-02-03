@@ -8,7 +8,7 @@ class Dimensions;
 
 // Need the namespace to disambiguate from boost's generators - apparently, MSVC
 // doesn't like the unqualified name...
-namespace SL
+namespace SOTW
 {
   class Generator
   {  
@@ -67,6 +67,7 @@ namespace SL
       // Seed the initial items.  Returns true if the items were created, false otherwise.
       virtual bool generate_initial_items(MapPtr map, const int danger_level, const std::tuple<bool, int, Rarity>& creature_details);
       virtual bool update_items(MapPtr map, const int danger_level);
+      virtual bool generate_foragables(MapPtr map);
 
       virtual bool get_ignore_creature_generation_level_checks() const;
       virtual void create_properties_and_copy_to_map(MapPtr map);
@@ -79,7 +80,11 @@ namespace SL
 
       // Displayed when the player enters a map for the first time.  Room messages, basically.
       std::vector<std::string> feature_entry_text_sids; 
+
+      // JCD FIXME: If I ever go with larger maps, these could be divisors.
+      static const int FORAGABLE_MIN;
+      static const int FORAGABLE_MAX;
   };
 }
 
-using GeneratorPtr = std::shared_ptr<SL::Generator>;
+using GeneratorPtr = std::shared_ptr<SOTW::Generator>;

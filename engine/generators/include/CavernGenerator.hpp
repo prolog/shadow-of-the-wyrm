@@ -3,7 +3,7 @@
 #include "Map.hpp"
 #include "MapUtils.hpp"
 
-class CavernGenerator : public SL::Generator
+class CavernGenerator : public SOTW::Generator
 {
   public:
     CavernGenerator(const std::string& map_exit_id);

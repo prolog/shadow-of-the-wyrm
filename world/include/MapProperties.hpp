@@ -46,6 +46,9 @@ class MapProperties
     // What is the creature generation rate?
     static const std::string MAP_PROPERTIES_CREATURE_GENERATION_RATE;
 
+    // Should there be the chance of foragables?
+    static const std::string MAP_PROPERTIES_PCT_CHANCE_FORAGABLES;
+
   protected:
     MapProperties();
     ~MapProperties();

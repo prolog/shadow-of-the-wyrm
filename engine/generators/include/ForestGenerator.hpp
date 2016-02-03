@@ -3,7 +3,7 @@
 #include "Generator.hpp"
 #include "ForestCalculator.hpp"
 
-class ForestGenerator : public SL::Generator
+class ForestGenerator : public SOTW::Generator
 {
   public:
     ForestGenerator(const std::string& map_exit_id);

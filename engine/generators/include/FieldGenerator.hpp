@@ -2,7 +2,7 @@
 #include "Generator.hpp"
 #include "TileGenerator.hpp"
 
-class FieldGenerator : public SL::Generator
+class FieldGenerator : public SOTW::Generator
 {
   public:
     FieldGenerator(const std::string& map_exit_id);

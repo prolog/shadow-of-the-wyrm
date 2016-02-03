@@ -7,6 +7,13 @@ TEST(SW_World_Seasons_Summer, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SUMMER, summer.get_class_identifier());
 }
 
+TEST(SW_World_Seasons_Summer, foragables_present)
+{
+  Summer summer;
+
+  EXPECT_TRUE(summer.get_foragables().empty() == false);
+}
+
 TEST(SW_World_Seasons_Summer, saveload)
 {
   Summer summer, summer2;

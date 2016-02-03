@@ -2,7 +2,7 @@
 #include "Generator.hpp"
 #include "TileGenerator.hpp"
 
-class GraveyardGenerator : public SL::Generator
+class GraveyardGenerator : public SOTW::Generator
 {
   public:
     GraveyardGenerator(const std::string& new_map_exit_id);
