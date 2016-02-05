@@ -9,6 +9,10 @@
     <LocalDebuggerCommandArguments>/test</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">
+    <LocalDebuggerCommandArguments>/test</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">
     <LocalDebuggerCommandArguments>
     </LocalDebuggerCommandArguments>

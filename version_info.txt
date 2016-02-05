@@ -24,6 +24,11 @@ Shadow of the Wyrm v0.4.8 "Carulli"
   random overworld map of having foragables is based on the player's 
   Foraging skill.
 
+- Created a Windows XP-compatible release build configuration (Legend).
+
+- The game now checks to see if it has write access in the main
+  directory, failing out if it does not.
+
 - New items: roots, berries, kelp.
 
 - Bug fixes:

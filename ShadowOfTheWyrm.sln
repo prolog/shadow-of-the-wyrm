@@ -1,12 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C++ Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShadowOfTheWyrm", "ShadowOfTheWyrm.vcxproj", "{4FC44FC7-10E9-CC58-62F0-8D757542DDAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		MapTester|Win32 = MapTester|Win32
+		Release - Windows XP Compatible|Win32 = Release - Windows XP Compatible|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -14,6 +17,8 @@ Global
 		{4FC44FC7-10E9-CC58-62F0-8D757542DDAF}.Debug|Win32.Build.0 = Debug|Win32
 		{4FC44FC7-10E9-CC58-62F0-8D757542DDAF}.MapTester|Win32.ActiveCfg = MapTester|Win32
 		{4FC44FC7-10E9-CC58-62F0-8D757542DDAF}.MapTester|Win32.Build.0 = MapTester|Win32
+		{4FC44FC7-10E9-CC58-62F0-8D757542DDAF}.Release - Windows XP Compatible|Win32.ActiveCfg = Release - Windows XP Compatible|Win32
+		{4FC44FC7-10E9-CC58-62F0-8D757542DDAF}.Release - Windows XP Compatible|Win32.Build.0 = Release - Windows XP Compatible|Win32
 		{4FC44FC7-10E9-CC58-62F0-8D757542DDAF}.Release|Win32.ActiveCfg = Release|Win32
 		{4FC44FC7-10E9-CC58-62F0-8D757542DDAF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
