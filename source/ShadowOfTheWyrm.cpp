@@ -2,9 +2,11 @@
 #include <tchar.h>
 #endif
 
+#include <stdio.h>
 #include <iostream>
 #include <xercesc/util/PlatformUtils.hpp>
 #include <boost/archive/archive_exception.hpp>
+#include <boost/filesystem.hpp>
 
 #include "common.hpp"
 #include "global_prototypes.hpp"
@@ -31,8 +33,8 @@
 using namespace std;
 using namespace xercesc;
 
-void print_title(void);
-void initialize_settings(void);
+void print_title();
+bool check_write_permissions();
 int parse_command_line_arguments(int argc, char* argv[]);
 
 #ifdef UNIT_TESTS
@@ -49,9 +51,8 @@ void print_title()
 {
   Metadata meta;
 
-  std::string title = StringTable::get(TextKeys::SW_TITLE);
   std::string version = meta.get_version();
-	std::cout << title << " " << version << std::endl;
+	std::cout << "Shadow of the Wyrm " << version << std::endl;
 
 }
 
@@ -112,6 +113,15 @@ int main(int argc, char* argv[])
       DisplayPtr display = display_details.first;
       ControllerPtr controller = display_details.second;
 
+      // Check whether or not we have write access to the current directory.
+      bool write_ok = check_write_permissions();
+
+      if (!write_ok)
+      {
+        cout << "No write permissions in current directory!" << endl;
+        throw "error";
+      }
+
       if (display && display->create())
       {
         ShadowOfTheWyrmEngine engine;
@@ -127,13 +137,36 @@ int main(int argc, char* argv[])
       {
         log.error("main - Could not create display!");
         cerr << "Could not create display - exiting.";
+        throw "error";
       }
     }
   }
   catch(...)
   {
     log.error("main - Unable to run Shadow of the Wyrm!");
+    return 1;
   }
 
   return 0;
+}
+
+bool check_write_permissions()
+{
+  bool can_write = true;
+
+  string fname = "test";
+  ofstream test_file;
+  test_file.open(fname, ios::out | ios::binary);
+
+  if (!test_file.good())
+  {
+    can_write = false;
+  }
+  else
+  {
+    test_file.close();
+    std::remove(fname.c_str());
+  }
+  
+  return can_write;
 }
