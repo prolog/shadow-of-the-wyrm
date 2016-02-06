@@ -37,6 +37,8 @@ Shadow of the Wyrm v0.4.8 "Carulli"
     
 - New items: roots, berries, kelp.
 
+- New creatures: Twille.
+
 - Bug fixes:
 
   - Blue jays were, uh, bright yellow.
