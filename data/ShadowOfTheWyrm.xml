@@ -26900,6 +26900,24 @@
 				<SpellID/>
 				<Difficulty>0</Difficulty>
 			</Spellbook>
+			<Spellbook id="history_kell_empire">
+				<DescriptionSID>HISTORY_KELL_EMPIRE_SID</DescriptionSID>
+				<UsageDescriptionSID>HISTORY_KELL_EMPIRE_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<TextSID>HISTORY_KELL_EMPIRE_TEXT_SID</TextSID>
+				<SpellID/>
+				<Difficulty>0</Difficulty>
+			</Spellbook>
 			<Spellbook id="minor_healing_spellbook">
 				<DescriptionSID>MINOR_HEALING_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_MINOR_HEALING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
