@@ -29,6 +29,9 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 - The game now checks to see if it has write access in the main
   directory, failing out if it does not.
 
+- In preparation for eventual Unix builds, added the player's user name
+  to the high score entries.
+  
 - New items: roots, berries, kelp.
 
 - Bug fixes:
