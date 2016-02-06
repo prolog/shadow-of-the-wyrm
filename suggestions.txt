@@ -1,4 +1,5 @@
 Me:
+- Quest for Twille
 - Code should handle being started from outside the game's directory.
 - Update gaining resists so that the delta needs to be more than a certain
   amount before you get something from a corpse.
@@ -27,9 +28,6 @@ Me:
 - default_race and default_class settings that accept race/class IDs.  If
   empty or invalid, the user is prompted for selection.
 - Book in the library describing the world's special days.
-
-Legend:
-- Windows XP binary.
 
 barrabus: 
 - Extra descs for items.
