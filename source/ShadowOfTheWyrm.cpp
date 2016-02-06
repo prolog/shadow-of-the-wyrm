@@ -113,7 +113,6 @@ int main(int argc, char* argv[])
       DisplayPtr display = display_details.first;
       ControllerPtr controller = display_details.second;
 
-      // Check whether or not we have write access to the current directory.
       bool write_ok = check_write_permissions();
 
       if (!write_ok)

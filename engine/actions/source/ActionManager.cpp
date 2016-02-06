@@ -584,6 +584,15 @@ ActionCost ActionManager::rest(CreaturePtr creature)
   int rest_turns = String::to_int(settings.get_setting("rest_turns"));
   creature->get_automatic_movement_ref().set_turns(rest_turns);
 
+  if (creature && creature->get_is_player())
+  {
+    IMessageManager& manager = MessageManagerFactory::instance();
+
+    manager.clear_if_necessary();
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_RESTING));
+    manager.send(MessageSpacing::NO_SPACING);
+  }
+
   AutomaticMovementAction ama;
   return get_action_cost(creature, ama.rest(creature));
 }

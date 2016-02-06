@@ -102,9 +102,9 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
       {
         IMessageManager& manager = MessageManagerFactory::instance();
 
-        manager.clear_if_necessary();
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_RESTING));
-        manager.send();
+        // Add another period to the "Resting......." message.
+        manager.add_new_message(".");
+        manager.send(MessageSpacing::NO_SPACING);
       }
     }
 

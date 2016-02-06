@@ -31,7 +31,10 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - In preparation for eventual Unix builds, added the player's user name
   to the high score entries.
-  
+
+- When resting, each turn now adds a "." to the resting message, to give
+  a visual indication of how long the player has rested.
+    
 - New items: roots, berries, kelp.
 
 - Bug fixes:

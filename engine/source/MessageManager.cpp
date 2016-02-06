@@ -29,7 +29,7 @@ void MessageManager::clear_if_necessary()
 }
 
 // Send the currently-unread messages to the display.
-void MessageManager::send(const bool halt_after, const bool reset_cursor_after)
+void MessageManager::send(const MessageSpacing ms, const bool halt_after, const bool reset_cursor_after)
 {
   Messages unread_messages = get_unread_messages_and_mark_as_read();
   string message_text;
@@ -40,7 +40,15 @@ void MessageManager::send(const bool halt_after, const bool reset_cursor_after)
 
     for (const Message& m : messages)
     {
-      message_text = m.get_content() + get_count_indicator(m) + " ";
+      ostringstream message;
+      message << m.get_content() + get_count_indicator(m);
+
+      if (ms == MessageSpacing::DEFAULT_SPACING)
+      {
+        message << " ";
+      }
+
+      message_text = message.str();
 
       // Don't immediately clear, and only send text if the message buffer has something.
       if (!message_text.empty())
@@ -61,7 +69,7 @@ void MessageManager::send(const bool halt_after, const bool reset_cursor_after)
 
 void MessageManager::send_and_halt()
 {
-  send(true);
+  send(MessageSpacing::DEFAULT_SPACING, true);
 }
 
 void MessageManager::alert(const string& message)
