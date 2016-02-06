@@ -34,8 +34,11 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - When resting, each turn now adds a "." to the resting message, to give
   a visual indication of how long the player has rested.
+
+- Added a new island off the coast of the Stonewall ruins.  This is the
+  basis for a quest from Twille in Atua-Elar.
     
-- New items: roots, berries, kelp.
+- New items: roots, berries, kelp, History of the Kell Empire.
 
 - New creatures: Twille.
 
