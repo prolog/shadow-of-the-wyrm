@@ -688,6 +688,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\include\MessageManager.hpp" />
     <ClInclude Include="engine\include\MessageManagerFactory.hpp" />
     <ClInclude Include="engine\include\Messages.hpp" />
+    <ClInclude Include="engine\include\MessageSpacing.hpp" />
     <ClInclude Include="engine\include\Metadata.hpp" />
     <ClInclude Include="engine\include\Naming.hpp" />
     <ClInclude Include="engine\include\NullMessageManager.hpp" />

@@ -76,7 +76,7 @@ void KeyboardCommandMap::command_not_found(const string& keyboard_input)
   string keyboard_input_as_character = Char::to_string(String::to_int(keyboard_input));
   IMessageManager& manager = MessageManagerFactory::instance();
   manager.add_new_message(TextMessages::get_action_not_found_message(keyboard_input_as_character));
-  manager.send(false /* Don't halt */, true /* Reset the cursor on the player */);
+  manager.send(MessageSpacing::DEFAULT_SPACING, false /* Don't halt */, true /* Reset the cursor on the player */);
 
   Log::instance().debug("KeyboardCommandMap::command_not_found - could not find mapped command for input: " + keyboard_input);
 }

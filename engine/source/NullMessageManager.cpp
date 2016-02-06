@@ -6,7 +6,7 @@ void NullMessageManager::clear_if_necessary()
 {
 }
 
-void NullMessageManager::send(const bool halt_afterwards, const bool reset_afterwards)
+void NullMessageManager::send(const MessageSpacing ms, const bool halt_afterwards, const bool reset_afterwards)
 {
 }
 

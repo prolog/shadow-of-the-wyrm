@@ -2,6 +2,7 @@
 #include "Display.hpp"
 #include "MessageBuffer.hpp"
 #include "Messages.hpp"
+#include "MessageSpacing.hpp"
 
 // Defines the interface for the message managers.
 class IMessageManager
@@ -10,7 +11,7 @@ class IMessageManager
     virtual ~IMessageManager() {};
 
     virtual void clear_if_necessary() = 0;
-    virtual void send(const bool halt_afterwards = false, const bool reset_afterwards = false) = 0;
+    virtual void send(const MessageSpacing ms = MessageSpacing::DEFAULT_SPACING, const bool halt_afterwards = false, const bool reset_afterwards = false) = 0;
     virtual void send_and_halt() = 0;
     virtual void alert(const std::string& message) = 0;
     
@@ -21,7 +22,6 @@ class IMessageManager
 		
 		virtual Messages get_unread_messages() const = 0;
 		virtual Messages get_unread_messages_and_mark_as_read() = 0;
-
     virtual void set_display(DisplayPtr new_display) = 0;
 
     virtual void set_message_buffer(const MessageBuffer& new_message_buffer) = 0;

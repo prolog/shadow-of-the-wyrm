@@ -2,11 +2,6 @@ Me:
 - Code should handle being started from outside the game's directory.
 - Update gaining resists so that the delta needs to be more than a certain
   amount before you get something from a corpse.
-- With the fixes to the reflective beam range counter, do some checks to
-  determine if the "next direction" code needs to be updated.  Test case
-  is to stand in the NW corner of the first building to the NW in Isen
-  Dun, fire a lightning bolt SE.
-- Add a "resting counter" to the message manager: ie, "Resting...(1/100)"
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.
