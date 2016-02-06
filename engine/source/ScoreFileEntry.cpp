@@ -15,8 +15,8 @@ ScoreFileEntry::ScoreFileEntry()
 }
 
 // Construct a score file entry with all required values.
-ScoreFileEntry::ScoreFileEntry(const long long new_score, const string& new_name, const CreatureSex new_sex, const bool new_is_current_char, const int new_level, const string& new_race_class_abrv)
-: score(new_score), name(new_name), sex(new_sex), is_current_char(new_is_current_char), level(new_level), race_class_abrv(new_race_class_abrv)
+ScoreFileEntry::ScoreFileEntry(const long long new_score, const string& new_name, const string& new_username, const CreatureSex new_sex, const bool new_is_current_char, const int new_level, const string& new_race_class_abrv)
+: score(new_score), name(new_name), username(new_username), sex(new_sex), is_current_char(new_is_current_char), level(new_level), race_class_abrv(new_race_class_abrv)
 {
 }
 
@@ -29,6 +29,7 @@ bool ScoreFileEntry::serialize(ostream& stream) const
 {
   Serialize::write_longlong(stream, score);
   Serialize::write_string(stream, name);
+  Serialize::write_string(stream, username);
   Serialize::write_enum(stream, sex);
 
   // The constant below is "is_current_char".  After writing the entry to
@@ -46,6 +47,7 @@ bool ScoreFileEntry::deserialize(istream& stream)
 {
   Serialize::read_longlong(stream, score);
   Serialize::read_string(stream, name);
+  Serialize::read_string(stream, username);
   Serialize::read_enum(stream, sex);
   Serialize::read_bool(stream, is_current_char);
   Serialize::read_int(stream, level);
@@ -67,6 +69,11 @@ long long ScoreFileEntry::get_score() const
 string ScoreFileEntry::get_name() const
 {
   return name;
+}
+
+string ScoreFileEntry::get_username() const
+{
+  return username;
 }
 
 CreatureSex ScoreFileEntry::get_sex() const
@@ -95,7 +102,7 @@ string ScoreFileEntry::str(const int score_number) const
   string rc_abrv = get_race_class_abrv();
   boost::algorithm::trim(rc_abrv);
 
-  ss << score_number << ". " << get_score() << ". " << get_name() << " - " << StringTable::get(TextKeys::LEVEL_ABRV) << get_level() << " " << rc_abrv << " (" << TextMessages::get_sex_abrv(get_sex()) << ").";
+  ss << score_number << ". " << get_score() << ". " << get_name() << " (" << get_username() << ") - " << StringTable::get(TextKeys::LEVEL_ABRV) << get_level() << " " << rc_abrv << " (" << TextMessages::get_sex_abrv(get_sex()) << ").";
   return ss.str();
 }
 

@@ -9,7 +9,7 @@ TEST(SW_Engine_ScoreFileEntry, serialization_id)
 
 TEST(SW_Engine_ScoreFileEntry, saveload)
 {
-  ScoreFileEntry sfe(123456, "Julian", CreatureSex::CREATURE_SEX_MALE, true, 25, "HumanNerd");
+  ScoreFileEntry sfe(123456, "Julian", "julian", CreatureSex::CREATURE_SEX_MALE, true, 25, "HumanNerd");
 
   ostringstream oss;
 
