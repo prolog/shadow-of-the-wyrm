@@ -37,10 +37,14 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - Added a new island off the coast of the Stonewall ruins.  This is the
   basis for a quest from Twille in Atua-Elar.
-    
+
+- Beefed up Goblincrusher a little bit.
+
 - New items: roots, berries, kelp, History of the Kell Empire.
 
 - New creatures: Twille.
+
+- New artifacts: imperial dagger "Amagari".
 
 - Bug fixes:
 
