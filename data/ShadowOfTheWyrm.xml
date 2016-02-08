@@ -23532,12 +23532,38 @@
 				<Damage>
 					<NumDice>2</NumDice>
 					<NumSides>10</NumSides>
-					<Modifier>10</Modifier>
+					<Modifier>15</Modifier>
 					<Type>2</Type>
 				</Damage>
 				<Slays>
 					<Slay>07_goblin</Slay>
 				</Slays>
+			</Weapon>
+			<Weapon id="amagari">
+				<DescriptionSID>AMAGARI_SID</DescriptionSID>
+				<UsageDescriptionSID>AMAGARI_USAGE_SID</UsageDescriptionSID>
+				<Value>1260</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Shadow>0.15</Shadow>
+					<Arcane>0.20</Arcane>
+				</Resistances>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>43</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>7</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>4</Modifier>
+					<Type>1</Type>
+				</Damage>
 			</Weapon>
 			<Weapon id="long_hunt_knife">
 				<DescriptionSID>LONG_HUNT_KNIFE_SID</DescriptionSID>
