@@ -34,6 +34,7 @@
 #include "HamletGenerator.hpp"
 #include "WalledSettlementGenerator.hpp"
 #include "ScatteredSettlementGenerator.hpp"
+#include "SewerGenerator.hpp"
 #include "SimpleChurchGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
 #include "MapTranslator.hpp"
@@ -101,6 +102,7 @@ string generate_rocky_sacrifice_site();
 string generate_overgrown_sacrifice_site();
 string generate_mine();
 string generate_castle();
+string generate_sewer();
 
 void   settlement_maps();
 void   city_maps();
@@ -148,127 +150,130 @@ string map_to_string(MapPtr map, bool use_html)
     {
       TilePtr tile = map->at(row, col);
       
-      IInventoryPtr items = tile->get_items();
-      if (items->size() > 0)
+      if (tile != nullptr)
       {
-        ItemPtr item = items->at(0);
-        if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(item->get_colour()) + "\">";
-        ostringstream ss;
-        ss << item->get_symbol();
-        tile_ascii = html_encode(ss.str());
-      }
-      else if (tile->has_feature())
-      {
-        if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(tile->get_feature()->get_colour()) + "\">";
-        ostringstream ss;
-        ss << tile->get_feature()->get_symbol();
-        tile_ascii = html_encode(ss.str()); 
-      }
-      else
-      {
-        DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, tile, tile);
-        if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
-        ostringstream ss;
-        ss << dt.get_symbol();
-        tile_ascii = html_encode(ss.str());
-/*        switch(type)
+        IInventoryPtr items = tile->get_items();
+        if (items->size() > 0)
         {
+          ItemPtr item = items->at(0);
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(item->get_colour()) + "\">";
+          ostringstream ss;
+          ss << item->get_symbol();
+          tile_ascii = html_encode(ss.str());
+        }
+        else if (tile->has_feature())
+        {
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(tile->get_feature()->get_colour()) + "\">";
+          ostringstream ss;
+          ss << tile->get_feature()->get_symbol();
+          tile_ascii = html_encode(ss.str());
+        }
+        else
+        {
+          DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, tile, tile);
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
+          ostringstream ss;
+          ss << dt.get_symbol();
+          tile_ascii = html_encode(ss.str());
+          /*        switch(type)
+          {
           case TileType::TILE_TYPE_DAIS:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#848484\">";
-            tile_ascii = ".";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#848484\">";
+          tile_ascii = ".";
+          break;
           case TileType::TILE_TYPE_FIELD:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-            tile_ascii = ".";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
+          tile_ascii = ".";
+          break;
           case TileType::TILE_TYPE_BUSH:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-            tile_ascii = "\"";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
+          tile_ascii = "\"";
+          break;
           case TileType::TILE_TYPE_WEEDS:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
-            tile_ascii = "\"";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
+          tile_ascii = "\"";
+          break;
           case TileType::TILE_TYPE_FOREST:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-            tile_ascii = "&";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
+          tile_ascii = "&";
+          break;
           case TileType::TILE_TYPE_MOUNTAINS:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-            tile_ascii = "^";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
+          tile_ascii = "^";
+          break;
           case TileType::TILE_TYPE_TREE:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-            tile_ascii = "T";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
+          tile_ascii = "T";
+          break;
           case TileType::TILE_TYPE_CAIRN:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
-            tile_ascii = "*";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
+          tile_ascii = "*";
+          break;
           case TileType::TILE_TYPE_SPRINGS:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FFFF\">";
-            tile_ascii = "v";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FFFF\">";
+          tile_ascii = "v";
+          break;
           case TileType::TILE_TYPE_RIVER:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
-            tile_ascii = "~";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
+          tile_ascii = "~";
+          break;
           case TileType::TILE_TYPE_DUNGEON:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-            tile_ascii = ".";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
+          tile_ascii = ".";
+          break;
           case TileType::TILE_TYPE_ROCK:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
-            tile_ascii = "#";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
+          tile_ascii = "#";
+          break;
           case TileType::TILE_TYPE_SCRUB:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#CCFF00\">";
-            tile_ascii = ".";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#CCFF00\">";
+          tile_ascii = ".";
+          break;
           case TileType::TILE_TYPE_ROAD:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
-            tile_ascii = ".";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
+          tile_ascii = ".";
+          break;
           case TileType::TILE_TYPE_MARSH:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"008000\">";
-            tile_ascii = "~";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"008000\">";
+          tile_ascii = "~";
+          break;
           case TileType::TILE_TYPE_REEDS:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
-            tile_ascii = "|";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
+          tile_ascii = "|";
+          break;
           case TileType::TILE_TYPE_SEA:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
-            tile_ascii = "~";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
+          tile_ascii = "~";
+          break;
           case TileType::TILE_TYPE_GRAVE:
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"C0C0C0\">";
-            tile_ascii = "+";
-            break;
+          if (use_html) start_tag = "<font face=\"Courier\" color=\"C0C0C0\">";
+          tile_ascii = "+";
+          break;
           case TileType::TILE_TYPE_UP_STAIRCASE:
-            if (use_html)
-            {
-              start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-              tile_ascii = "&lt;";
-              
-            } 
-            else tile_ascii = "<";
-            break;
-          case TileType::TILE_TYPE_DOWN_STAIRCASE:
-            if (use_html)
-            {
-              start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-              tile_ascii = "&gt;";
-            }
-            else tile_ascii = ">";
-            break;
-          default:
-            tile_ascii = "?";
-            break;
-        } */
-      }
+          if (use_html)
+          {
+          start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
+          tile_ascii = "&lt;";
 
-      map_s = map_s + start_tag + tile_ascii + end_tag;
+          }
+          else tile_ascii = "<";
+          break;
+          case TileType::TILE_TYPE_DOWN_STAIRCASE:
+          if (use_html)
+          {
+          start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
+          tile_ascii = "&gt;";
+          }
+          else tile_ascii = ">";
+          break;
+          default:
+          tile_ascii = "?";
+          break;
+          } */
+        }
+
+        map_s = map_s + start_tag + tile_ascii + end_tag;
+      }
     }
 
     if (use_html)
@@ -571,6 +576,14 @@ string generate_castle()
   MapPtr castle_map = castle_gen->generate();
   cout << map_to_string(castle_map, false);
   return map_to_string(castle_map);
+}
+
+string generate_sewer()
+{
+  GeneratorPtr sewer_gen = std::make_shared<SewerGenerator>("");
+  MapPtr sewer_map = sewer_gen->generate();
+  cout << map_to_string(sewer_map, false);
+  return map_to_string(sewer_map);
 }
 
 string generate_world()
@@ -907,6 +920,7 @@ void city_maps()
     cout << "5. Crypt" << endl;
     cout << "6. Mine" << endl;
     cout << "7. Castle" << endl;
+    cout << "8. Sewer" << endl;
 
     cin >> city_adjacent_map;
     
@@ -938,6 +952,10 @@ void city_maps()
       case 7:
         map = generate_castle();
         output_map(map, "castle.html");
+        break;
+      case 8:
+        map = generate_sewer();
+        output_map(map, "sewer.html");
         break;
       default:
         break;
