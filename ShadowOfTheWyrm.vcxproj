@@ -627,6 +627,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\include\ScatteredGraveyardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\ScrubGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SeaGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\SewerGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SpiralDungeonGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SpringsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SquarePillarGenerator.hpp" />
@@ -1222,6 +1223,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\SewerGenerator.cpp" />
     <ClCompile Include="engine\items\source\HandsRequiredItemFilter.cpp" />
     <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp" />
     <ClCompile Include="engine\items\source\unit_tests\HandsRequiredItemFilter_test.cpp">
