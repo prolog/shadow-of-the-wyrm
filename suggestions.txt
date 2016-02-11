@@ -1,4 +1,5 @@
 Me:
+- New tile types, SewerComplex and Sewer.
 - Code should handle being started from outside the game's directory.
 - Update gaining resists so that the delta needs to be more than a certain
   amount before you get something from a corpse.
