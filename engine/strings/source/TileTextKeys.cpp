@@ -60,3 +60,5 @@ const string TileTextKeys::TILE_DESC_MINE           = "TILE_DESC_MINE";
 const string TileTextKeys::TILE_DESC_WELL           = "TILE_DESC_WELL";
 const string TileTextKeys::TILE_DESC_CRYPT          = "TILE_DESC_CRYPT";
 const string TileTextKeys::TILE_DESC_EARTH          = "TILE_DESC_EARTH";
+const string TileTextKeys::TILE_DESC_SEWER_COMPLEX  = "TILE_DESC_SEWER_COMPLEX";
+const string TileTextKeys::TILE_DESC_SEWER          = "TILE_DESC_SEWER";

@@ -21398,6 +21398,18 @@
 				<Colour>3</Colour>
 			</Text>
 		</EarthTile>
+		<SewerComplexTile>
+			<Text>
+				<Symbol>&gt;</Symbol>
+				<Colour>2</Colour>
+			</Text>
+		</SewerComplexTile>
+		<SewerTile>
+			<Text>
+				<Symbol>.</Symbol>
+				<Colour>2</Colour>
+			</Text>
+		</SewerTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">

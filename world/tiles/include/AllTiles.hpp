@@ -34,6 +34,8 @@
 #include "RockTile.hpp"
 #include "ScrubTile.hpp"
 #include "SeaTile.hpp"
+#include "SewerComplexTile.hpp"
+#include "SewerTile.hpp"
 #include "ShoalsTile.hpp"
 #include "SiteOfDeathTile.hpp"
 #include "SpringsTile.hpp"

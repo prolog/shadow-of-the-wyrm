@@ -110,6 +110,7 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TileType::TILE_TYPE_AIR);
   }
+  // JCD FIXME: Later add sewers, etc.
   else if ((xml_tile == '\'') || (xml_tile == '`'))
   {
     // Single quote indicates a regular freshwater spring.
