@@ -3615,6 +3615,12 @@
     <ClInclude Include="engine\generators\include\SewerGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\SewerComplexTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\SewerTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7057,6 +7063,18 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\SewerGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\SewerComplexTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\SewerTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SewerComplexTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SewerTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

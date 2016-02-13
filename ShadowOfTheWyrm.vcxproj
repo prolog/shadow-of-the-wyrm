@@ -1151,6 +1151,8 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\tiles\include\RockyEarthTile.hpp" />
     <ClInclude Include="world\tiles\include\ScrubTile.hpp" />
     <ClInclude Include="world\tiles\include\SeaTile.hpp" />
+    <ClInclude Include="world\tiles\include\SewerComplexTile.hpp" />
+    <ClInclude Include="world\tiles\include\SewerTile.hpp" />
     <ClInclude Include="world\tiles\include\ShoalsTile.hpp" />
     <ClInclude Include="world\tiles\include\SiteOfDeathTile.hpp" />
     <ClInclude Include="world\tiles\include\SpringsTile.hpp" />
@@ -3315,6 +3317,8 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\tiles\source\RockyEarthTile.cpp" />
     <ClCompile Include="world\tiles\source\ScrubTile.cpp" />
     <ClCompile Include="world\tiles\source\SeaTile.cpp" />
+    <ClCompile Include="world\tiles\source\SewerComplexTile.cpp" />
+    <ClCompile Include="world\tiles\source\SewerTile.cpp" />
     <ClCompile Include="world\tiles\source\ShoalsTile.cpp" />
     <ClCompile Include="world\tiles\source\SiteOfDeathTile.cpp" />
     <ClCompile Include="world\tiles\source\SpringsTile.cpp" />
@@ -3544,6 +3548,18 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\SeaTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SewerComplexTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SewerTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
