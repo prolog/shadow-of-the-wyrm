@@ -271,24 +271,18 @@ vector<Coordinate> CoordUtils::get_coordinates_in_range(const Coordinate& top_le
 {
   int size = ((bottom_right.first - top_left.first) * (bottom_right.second - top_left.second));
 
-  if (size > 0)
+  vector<Coordinate> coords;
+  coords.reserve(size);
+
+  for (int row = top_left.first; row <= bottom_right.first; row++)
   {
-    vector<Coordinate> coords;
-    coords.reserve(size);
-
-    for (int row = top_left.first; row <= bottom_right.first; row++)
+    for (int col = top_left.second; col <= bottom_right.second; col++)
     {
-      for (int col = top_left.second; col <= bottom_right.second; col++)
-      {
-        coords.push_back(make_pair(row, col));
-      }
+      coords.push_back(make_pair(row, col));
     }
-
-    return coords;
   }
 
-  vector<Coordinate> no_coords;
-  return no_coords;
+  return coords;
 }
 
 int CoordUtils::get_perimeter_length(const Coordinate& top_left, const Coordinate& bottom_right)
@@ -304,6 +298,95 @@ int CoordUtils::get_perimeter_length(const Coordinate& top_left, const Coordinat
   }
 
   return p;
+}
+
+pair<bool, vector<Coordinate>> CoordUtils::are_segments_joinable(const pair<Coordinate, Coordinate>& s1, const pair<Coordinate, Coordinate>& s2)
+{
+  pair<bool, vector<Coordinate>> result(false, {});
+
+  vector<Coordinate> seg1 = get_coordinates_in_range(s1.first, s1.second);
+  vector<Coordinate> seg2 = get_coordinates_in_range(s2.first, s2.second);
+
+  if (!seg1.empty() && !seg2.empty())
+  {
+    auto s1_it = seg1.begin();
+    auto s2_it = seg2.begin();
+
+    while (!(s1_it == seg1.end() || s2_it == seg2.end()))
+    {
+      Coordinate seg1_c = *s1_it;
+      Coordinate seg2_c = *s2_it;
+      auto c_join = are_coordinates_joinable(seg1_c, seg2_c);
+
+      // If the coordinates are joinable, add the intersecting coordinate to
+      // the the return values.
+      if (c_join.first)
+      {
+        if (!result.first)
+        {
+          result.first = true;
+        }
+
+        result.second.push_back(c_join.second);
+      }
+
+      // Iterate the appropriate iterator.  Always iterate at least one iterator!
+      //
+      // If the rows are 2 apart, iterate the iterator with the smallest
+      // column.  
+      if (abs(seg1_c.second - seg2_c.second) == 2)
+      {
+        (seg1_c.first < seg2_c.first) ? s1_it++ : s2_it++;
+      }
+      // If the columns are 2 apart, iterate the iterator with the smallest
+      // row.
+      else if (abs(seg1_c.first - seg2_c.first) == 2)
+      {
+        (seg1_c.second < seg2_c.second) ? s1_it++ : s2_it++;
+      }
+      // Otherwise, iterate the smallest coordinate.
+      else
+      {
+        (seg1_c.first <= seg2_c.first && seg1_c.second <= seg2_c.second) ? s1_it++ : s2_it++;
+      }
+    }
+  }
+
+  return result;
+}
+
+// Is there a coordinate that can be placed between the two?
+// Consider only horizontal and vertical (diagonal not currently supported).
+pair<bool, Coordinate> CoordUtils::are_coordinates_joinable(const Coordinate& c1, const Coordinate& c2)
+{
+  pair<bool, Coordinate> result(true, make_pair(0,0));
+
+  int d_row = abs(c1.first - c2.first);
+  int d_col = abs(c1.second - c2.second);
+  int middle_row = ((c1.first < c2.first) ? c1.first + 1 : c2.first + 1);
+  int middle_col = ((c1.second < c2.second) ? c1.second + 1 : c2.second + 1);
+
+  // Vertical section, joinable horizontally
+  if (d_row == 0 && d_col == 2)
+  {
+    result.second = make_pair(c1.first, middle_col);
+  }
+  // Horizontal section, joinable vertically
+  else if (d_col == 0 && d_row == 2)
+  {
+    result.second = make_pair(middle_row, c1.second);
+  }
+  // Diagonal, joinable diagonally.
+  else if (d_row == 2 && d_col == 2)
+  {
+    result.second = make_pair(middle_row, middle_col);
+  }
+  else
+  {
+    result.first = false;
+  }
+
+  return result;
 }
 
 #ifdef UNIT_TESTS

@@ -106,6 +106,14 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TileType::TILE_TYPE_BARROW);
   }
+  else if (xml_tile == '+')
+  {
+    tile = tg.generate(TileType::TILE_TYPE_SEWER_COMPLEX);
+  }
+  else if (xml_tile == '1')
+  {
+    tile = tg.generate(TileType::TILE_TYPE_SEWER);
+  }
   else if (xml_tile == 'A')
   {
     tile = tg.generate(TileType::TILE_TYPE_AIR);
