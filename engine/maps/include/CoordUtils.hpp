@@ -39,7 +39,12 @@ class CoordUtils
     // Get all the adjacent coordinates for the current row and column, given the map's dimensions.
     static std::vector<Coordinate> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col);
 
-protected:
+    // Are the two line segments "joinable"?  Two segments are joinable iff
+    // there is a coordinate adjacent to both.
+    static std::pair<bool, std::vector<Coordinate>> are_segments_joinable(const std::pair<Coordinate, Coordinate>& s1, const std::pair<Coordinate, Coordinate>& s2);
+    static std::pair<bool, Coordinate> are_coordinates_joinable(const Coordinate& c1, const Coordinate& c2);
+
+  protected:
     CoordUtils();
     ~CoordUtils();
 };

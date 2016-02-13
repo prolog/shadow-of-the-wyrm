@@ -39,7 +39,7 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
       // Generate a sewer piece, and place it on the map
       for (int i = start_x; i < start_x + length; i++)
       {
-        TilePtr tile = tg.generate(TileType::TILE_TYPE_DUNGEON); // JCD FIXME
+        TilePtr tile = tg.generate(TileType::TILE_TYPE_SEWER);
         result_map->insert(cur_row, i, tile);
       }
 

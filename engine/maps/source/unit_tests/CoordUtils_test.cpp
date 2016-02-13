@@ -129,3 +129,49 @@ TEST(SW_Engine_Maps_CoordUtils, get_new_coordinate)
   c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH_EAST, 7);
   EXPECT_EQ(make_pair(17, 17), c_new);
 }
+
+TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable)
+{
+  // Two parallel segments, perfect overlap.
+  pair<Coordinate, Coordinate> l1 = make_pair(make_pair(1,2), make_pair(3,2));
+  pair<Coordinate, Coordinate> l2 = make_pair(make_pair(1,4), make_pair(3,4));
+
+  auto result = CoordUtils::are_segments_joinable(l1, l2);
+  vector<Coordinate> expected = { {1,3}, {2,3}, {3,3} };
+
+  EXPECT_TRUE(result.first);
+  EXPECT_EQ(expected, result.second);
+}
+
+TEST(SW_Engine_Maps_CoordUtils, are_coordinates_joinable)
+{
+  // Horizontally adjacent coordinates.
+  Coordinate c1(1,1);
+  Coordinate c2(1,2);
+  Coordinate c3(1,3);
+
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c1, c3).first);
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c3, c1).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3).first);
+
+  // Vertically adjacent coordinates.
+  c1 = {3,3};
+  c2 = {4,3};
+  c3 = {5,3};
+
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c1, c3).first);
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c3, c1).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3).first);
+
+  // Diagonally-adjacent coordinates.
+  c1 = {7,7};
+  c2 = {8,8};
+  c3 = {9,9};
+
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c1, c3).first);
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c3, c1).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3).first);
+}
