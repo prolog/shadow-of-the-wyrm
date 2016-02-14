@@ -1,4 +1,5 @@
 #include "SewerGenerator.hpp"
+#include "CoordUtils.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -75,7 +76,35 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
     }
     else
     {
-      // Have we stopped overlapping?
+      for (const auto& ps : pipe_sections)
+      {
+        // Have we stopped overlapping?
+        vector<pair<Coordinate, Coordinate>> lower_coords = r_it->second;
+
+        for (const auto& lc : lower_coords)
+        {
+          if (CoordUtils::starts_after(lc, ps))
+          {
+            break;
+          }
+          // Any overlap?
+          else
+          {
+            pair<bool, vector<Coordinate>> overlap = CoordUtils::are_segments_joinable(ps, lc);
+
+            // There's some overlap - take a random coordinate and dig there.
+            if (overlap.first == true && !overlap.second.empty())
+            {
+              vector<Coordinate> overlap_coords = overlap.second;
+
+              Coordinate dig_coord = overlap_coords.at(RNG::range(0, overlap_coords.size()-1));
+              TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
+
+              result_map->insert(dig_coord, connector);
+            }
+          }
+        }
+      }
     }
   }
 
