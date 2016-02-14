@@ -20,14 +20,28 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
+  fill(result_map, TileType::TILE_TYPE_ROCK);
+
+  // Generate the sewer sections, and then connect them together.
+  generate_sewer_sections(result_map);
+  connect_sewer_sections(result_map);
+
+  // Place up and potentially down staircases as appropriate.
+  // ...
+
+  return result_map;
+}
+
+void SewerGenerator::generate_sewer_sections(MapPtr result_map)
+{
+  Dimensions dimensions = result_map->size();
+
   int rows = dimensions.get_y();
   int cols = dimensions.get_x();
 
   int length = 0;
 
   int cur_row = 1;
-
-  fill(result_map, TileType::TILE_TYPE_ROCK);
 
   // For each row:
   while (cur_row < rows - 1)
@@ -56,7 +70,10 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
 
     cur_row += Y_INCR;
   }
+}
 
+void SewerGenerator::connect_sewer_sections(MapPtr result_map)
+{
   // Now we've got a bunch of horizontal sections, and need to connect them.
   // Iterate through each row in the sections map.  For each section, if
   // it overlaps any sections in the row below, we need a connection,
@@ -97,7 +114,7 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
             {
               vector<Coordinate> overlap_coords = overlap.second;
 
-              Coordinate dig_coord = overlap_coords.at(RNG::range(0, overlap_coords.size()-1));
+              Coordinate dig_coord = overlap_coords.at(RNG::range(0, overlap_coords.size() - 1));
               TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
 
               result_map->insert(dig_coord, connector);
@@ -107,9 +124,4 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
       }
     }
   }
-
-  // Now, place the staircases.
-
-  return result_map;
 }
-
