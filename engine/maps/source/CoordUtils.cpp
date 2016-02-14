@@ -384,6 +384,58 @@ pair<bool, Coordinate> CoordUtils::are_coordinates_joinable(const Coordinate& c1
   return result;
 }
 
+// Check to see if seg_1 ends before seg_2 starts
+bool CoordUtils::ends_before(const pair<Coordinate, Coordinate>& seg_1, const pair<Coordinate, Coordinate>& seg_2)
+{
+  bool ends = false;
+
+  if (is_horizontal(seg_1) && is_horizontal(seg_2))
+  {
+    ends = (seg_1.second.second < seg_2.first.second);
+  }
+  else if (is_vertical(seg_1) && is_vertical(seg_2))
+  {
+    ends = (seg_1.second.first < seg_2.first.first);
+  }
+  else
+  {
+    ends = (seg_1.second.first < seg_2.first.first && seg_1.second.second < seg_2.first.second);
+  }
+
+  return ends;
+}
+
+// Check to see if seg_1 starts after seg_2 ends
+bool CoordUtils::starts_after(const pair<Coordinate, Coordinate>& seg_1, const pair<Coordinate, Coordinate>& seg_2)
+{
+  bool starts = false;
+
+  if (is_horizontal(seg_1) && is_horizontal(seg_2))
+  {
+    starts = (seg_1.first.second > seg_2.second.second);
+  }
+  else if (is_vertical(seg_1) && is_vertical(seg_2))
+  {
+    starts = (seg_1.first.first > seg_2.second.first);
+  }
+  else
+  {
+    starts = (seg_1.first.first > seg_2.second.first && seg_1.first.second > seg_2.second.second);
+  }
+
+  return starts;
+}
+
+bool CoordUtils::is_horizontal(const pair<Coordinate, Coordinate>& segment)
+{
+  return (segment.first.first == segment.second.first);
+}
+
+bool CoordUtils::is_vertical(const pair<Coordinate, Coordinate>& segment)
+{
+  return (segment.first.second == segment.second.second);
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CoordUtils_test.cpp"
 #endif
