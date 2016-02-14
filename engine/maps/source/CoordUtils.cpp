@@ -376,11 +376,6 @@ pair<bool, Coordinate> CoordUtils::are_coordinates_joinable(const Coordinate& c1
   {
     result.second = make_pair(middle_row, c1.second);
   }
-  // Diagonal, joinable diagonally.
-  else if (d_row == 2 && d_col == 2)
-  {
-    result.second = make_pair(middle_row, middle_col);
-  }
   else
   {
     result.first = false;
