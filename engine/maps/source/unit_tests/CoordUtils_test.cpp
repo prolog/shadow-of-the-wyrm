@@ -248,3 +248,61 @@ TEST(SW_Engine_Maps_CoordUtils, are_coordinates_joinable)
   EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2).first);
   EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3).first);
 }
+
+TEST(SW_Engine_Maps_CoordUtils, ends_before)
+{
+  // Vertical segment
+  pair<Coordinate, Coordinate> l1 = make_pair(make_pair(5, 3), make_pair(5, 5));
+  pair<Coordinate, Coordinate> l2 = make_pair(make_pair(4, 3), make_pair(7, 3));
+
+  EXPECT_FALSE(CoordUtils::ends_before(l1, l2));
+
+  l1 = make_pair(make_pair(1,3), make_pair(3, 3));
+
+  EXPECT_TRUE(CoordUtils::ends_before(l1, l2));
+
+  // Horizontal segment
+  l1 = make_pair(make_pair(1, 1), make_pair(1, 4));
+  l2 = make_pair(make_pair(1, 3), make_pair(1, 7));
+
+  EXPECT_FALSE(CoordUtils::ends_before(l1, l2));
+
+  l2 = make_pair(make_pair(1, 9), make_pair(1, 12));
+
+  EXPECT_TRUE(CoordUtils::ends_before(l1, l2));
+}
+
+TEST(SW_Engine_Maps_CoordUtils, starts_after)
+{
+  // ...
+}
+
+TEST(SW_Engine_Maps_CoordUtils, is_horizontal)
+{
+  pair<Coordinate, Coordinate> seg = make_pair(make_pair(1, 3), make_pair(1, 5));
+
+  EXPECT_TRUE(CoordUtils::is_horizontal(seg));
+
+  seg.second = make_pair(1, 9);
+
+  EXPECT_TRUE(CoordUtils::is_horizontal(seg));
+
+  seg.second = make_pair(2, 9);
+
+  EXPECT_FALSE(CoordUtils::is_horizontal(seg));
+}
+
+TEST(SW_Engine_Maps_CoordUtils, is_vertical)
+{
+  pair<Coordinate, Coordinate> seg = make_pair(make_pair(3, 1), make_pair(5, 1));
+
+  EXPECT_TRUE(CoordUtils::is_vertical(seg));
+
+  seg.second = make_pair(9, 1);
+
+  EXPECT_TRUE(CoordUtils::is_vertical(seg));
+
+  seg.second = make_pair(9, 2);
+
+  EXPECT_FALSE(CoordUtils::is_vertical(seg));
+}

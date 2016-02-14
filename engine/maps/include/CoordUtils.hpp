@@ -44,6 +44,18 @@ class CoordUtils
     static std::pair<bool, std::vector<Coordinate>> are_segments_joinable(const std::pair<Coordinate, Coordinate>& s1, const std::pair<Coordinate, Coordinate>& s2);
     static std::pair<bool, Coordinate> are_coordinates_joinable(const Coordinate& c1, const Coordinate& c2);
 
+    // Does the segment seg_1 end before seg_2 begins?
+    static bool ends_before(const std::pair<Coordinate, Coordinate>& seg_1, const std::pair<Coordinate, Coordinate>& seg_2);
+
+    // Does the segment seg_1 start after seg_2 ends?
+    static bool starts_after(const std::pair<Coordinate, Coordinate>& seg_1, const std::pair<Coordinate, Coordinate>& seg_2);
+
+    // Is the line segment horizontal?
+    static bool is_horizontal(const std::pair<Coordinate, Coordinate>& segment);
+
+    // Is the line segment vertical?
+    static bool is_vertical(const std::pair<Coordinate, Coordinate>& segment);
+
   protected:
     CoordUtils();
     ~CoordUtils();
