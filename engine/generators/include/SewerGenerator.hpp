@@ -13,7 +13,12 @@ class SewerGenerator : public SOTW::Generator
 
   protected:
     void generate_sewer_sections(MapPtr result_map);
+    void place_staircases(MapPtr result_map);
+
     void connect_sewer_sections(MapPtr result_map);
+    void connect_section(MapPtr result_map, const std::pair<bool, std::vector<Coordinate>>& overlap);
+
+    std::pair<Coordinate, Coordinate> retrieve_and_remove_random_section(std::map<int, std::vector<std::pair<Coordinate, Coordinate>>>& sections_copy);
 
     TileGenerator tg;
     std::map<int, std::vector<std::pair<Coordinate, Coordinate>>> sections;
