@@ -78,6 +78,19 @@ bool Log::log(const string& to_log)
   return logged;
 }
 
+bool Log::debug(const string& to_debug)
+{
+  bool logged = false;
+
+  if (level <= LoggingLevel::LOG_DEBUG)
+  {
+    sl_log << create_datetimestamp() << "\t" << to_debug << endl;
+    logged = true;
+  }
+
+  return logged;
+}
+
 bool Log::trace(const string& to_trace)
 {
   bool logged = false;
@@ -91,17 +104,29 @@ bool Log::trace(const string& to_trace)
   return logged;
 }
 
-bool Log::debug(const string& to_debug)
+bool Log::level_enabled(const LoggingLevel ll) const
 {
-  bool logged = false;
+  return (level <= ll);
+}
 
-  if (level <= LoggingLevel::LOG_DEBUG)
-  {
-    sl_log << create_datetimestamp() << "\t" << to_debug << endl;
-    logged = true;
-  }
+bool Log::error_enabled() const
+{
+  return level_enabled(LoggingLevel::LOG_ERROR);
+}
 
-  return logged;
+bool Log::info_enabled() const
+{
+  return level_enabled(LoggingLevel::LOG_INFO);
+}
+
+bool Log::debug_enabled() const
+{
+  return level_enabled(LoggingLevel::LOG_DEBUG);
+}
+
+bool Log::trace_enabled() const
+{
+  return level_enabled(LoggingLevel::LOG_TRACE);
 }
 
 string Log::create_filename()

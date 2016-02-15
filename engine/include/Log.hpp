@@ -39,8 +39,14 @@ class Log
     bool log_using_level(const LoggingLevel level, const std::string& log_msg);
     bool error(const std::string& to_error);
     bool log(const std::string& to_log);
-    bool trace(const std::string& to_trace);
     bool debug(const std::string& to_debug);
+    bool trace(const std::string& to_trace);
+
+    bool level_enabled(const LoggingLevel level) const;
+    bool error_enabled() const;
+    bool info_enabled() const;
+    bool debug_enabled() const;
+    bool trace_enabled() const;
 
   private:
     friend int main(int argc, char* argv[]);

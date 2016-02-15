@@ -436,6 +436,14 @@ bool CoordUtils::is_vertical(const pair<Coordinate, Coordinate>& segment)
   return (segment.first.second == segment.second.second);
 }
 
+string CoordUtils::to_string(const Coordinate& c)
+{
+  ostringstream ss;
+  ss << "(" << c.first << "," << c.second << ")";
+
+  return ss.str();
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CoordUtils_test.cpp"
 #endif
