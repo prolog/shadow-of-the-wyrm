@@ -192,11 +192,6 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
       stairway_placed = true;
     }
   }
-
-  if (!stairway_placed)
-  {
-    int x = 1;
-  }
 }
 
 bool MineGenerator::generate_room(MapPtr map, const int start_y, const int start_x, const int height, const int width)

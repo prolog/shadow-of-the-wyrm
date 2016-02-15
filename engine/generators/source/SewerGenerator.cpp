@@ -29,7 +29,7 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
   connect_sewer_sections(result_map);
 
   // Place up and potentially down staircases as appropriate.
-  // ...
+  place_staircases(result_map);
 
   return result_map;
 }
@@ -115,25 +115,54 @@ void SewerGenerator::connect_sewer_sections(MapPtr result_map)
             // There's some overlap - take a random coordinate and dig there.
             if (overlap.first == true && !overlap.second.empty())
             {
-              vector<Coordinate> overlap_coords = overlap.second;
-              Coordinate dig_coord = overlap_coords.at(RNG::range(0, overlap_coords.size() - 1));
-
-              if (!MapUtils::adjacent_tiles_match_type(result_map, dig_coord, { Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH }, TileType::TILE_TYPE_SEWER))
-              {
-                Log::instance().error("Bad sewer connection!");
-              }
-
-              TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
-              result_map->insert(dig_coord, connector);
+              connect_section(result_map, overlap);
             }
           }
-        }
-
-        if (connections == 0)
-        {
-          int x = 1;
         }
       }
     }
   }
+}
+
+void SewerGenerator::connect_section(MapPtr result_map, const pair<bool, vector<Coordinate>>& overlap)
+{
+  vector<Coordinate> overlap_coords = overlap.second;
+  Coordinate dig_coord = overlap_coords.at(RNG::range(0, overlap_coords.size() - 1));
+
+  if (!MapUtils::adjacent_tiles_match_type(result_map, dig_coord, { Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH }, TileType::TILE_TYPE_SEWER))
+  {
+    Log::instance().error("Bad sewer connection!");
+  }
+
+  TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
+  result_map->insert(dig_coord, connector);
+}
+
+void SewerGenerator::place_staircases(MapPtr result_map)
+{
+  map<int, vector<pair<Coordinate, Coordinate>>> sections_copy = sections;
+  pair<Coordinate, Coordinate> sec = retrieve_and_remove_random_section(sections_copy);
+
+  // Place the staircase
+  // ...
+
+}
+
+pair<Coordinate, Coordinate> SewerGenerator::retrieve_and_remove_random_section(map<int, vector<pair<Coordinate, Coordinate>>>& sections_copy)
+{
+  pair<Coordinate, Coordinate> section;
+
+  auto s_it = sections_copy.begin();
+  std::advance(s_it, RNG::range(1, sections_copy.size()));
+  int rand_key = s_it->first;
+  int rand_sec_idx = RNG::range(0, s_it->second.size() - 1);
+
+  // Get the random section
+  section = s_it->second.at(rand_sec_idx);
+
+  // Now erase that section from our copy of the map, so that if there is a 
+  // down staircase it will have to go in a different section.
+  s_it->second.erase(s_it->second.begin() + rand_sec_idx);
+
+  return section;
 }
