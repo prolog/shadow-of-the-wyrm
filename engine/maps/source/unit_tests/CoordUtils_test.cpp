@@ -306,3 +306,11 @@ TEST(SW_Engine_Maps_CoordUtils, is_vertical)
 
   EXPECT_FALSE(CoordUtils::is_vertical(seg));
 }
+
+TEST(SW_Engine_Maps_CoordUtils, to_string)
+{
+  Coordinate c(5,10);
+  string s = CoordUtils::to_string(c);
+
+  EXPECT_EQ("(5,10)", s);
+}

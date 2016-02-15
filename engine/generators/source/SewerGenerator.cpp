@@ -1,5 +1,7 @@
 #include "SewerGenerator.hpp"
 #include "CoordUtils.hpp"
+#include "Log.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -52,7 +54,7 @@ void SewerGenerator::generate_sewer_sections(MapPtr result_map)
     while (start_x + length < cols - 1)
     {
       // Generate a sewer piece, and place it on the map
-      for (int i = start_x; i < start_x + length; i++)
+      for (int i = start_x; i <= start_x + length; i++)
       {
         TilePtr tile = tg.generate(TileType::TILE_TYPE_SEWER);
         result_map->insert(cur_row, i, tile);
@@ -113,10 +115,14 @@ void SewerGenerator::connect_sewer_sections(MapPtr result_map)
             if (overlap.first == true && !overlap.second.empty())
             {
               vector<Coordinate> overlap_coords = overlap.second;
-
               Coordinate dig_coord = overlap_coords.at(RNG::range(0, overlap_coords.size() - 1));
-              TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
 
+              if (!MapUtils::adjacent_tiles_match_type(result_map, dig_coord, { Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH }, TileType::TILE_TYPE_SEWER))
+              {
+                Log::instance().error("Bad sewer connection!");
+              }
+
+              TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
               result_map->insert(dig_coord, connector);
             }
           }

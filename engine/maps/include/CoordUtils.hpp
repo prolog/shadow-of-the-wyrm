@@ -56,6 +56,9 @@ class CoordUtils
     // Is the line segment vertical?
     static bool is_vertical(const std::pair<Coordinate, Coordinate>& segment);
 
+    // Convert to a "(y,x)" format string
+    static std::string to_string(const Coordinate& c);
+
   protected:
     CoordUtils();
     ~CoordUtils();

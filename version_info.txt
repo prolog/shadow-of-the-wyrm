@@ -40,6 +40,8 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - Beefed up Goblincrusher a little bit.
 
+- Additional logger functionality.
+
 - New tile types: sewer complex (shown on the world map), and sewer
   (individual tiles within a sewer complex).
 
