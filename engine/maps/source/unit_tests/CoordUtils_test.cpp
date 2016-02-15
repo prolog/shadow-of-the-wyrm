@@ -214,6 +214,16 @@ TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_vertical)
 
   EXPECT_FALSE(result.first);
   EXPECT_EQ(expected, result.second);
+
+  // Failure case from early development - should actually overlap.
+  l1 = make_pair(make_pair(1,5), make_pair(1,11));
+  l2 = make_pair(make_pair(3,2), make_pair(3,25));
+
+  result = CoordUtils::are_segments_joinable(l1, l2);
+  expected = { {2,5}, {2,6}, {2,7}, {2,8}, {2,9}, {2,10}, {2,11} };
+
+  EXPECT_TRUE(result.first);
+  EXPECT_EQ(expected, result.second);
 }
 
 TEST(SW_Engine_Maps_CoordUtils, are_coordinates_joinable)
