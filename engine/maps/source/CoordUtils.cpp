@@ -334,13 +334,13 @@ pair<bool, vector<Coordinate>> CoordUtils::are_segments_joinable(const pair<Coor
       //
       // If the rows are 2 apart, iterate the iterator with the smallest
       // column.  
-      if (abs(seg1_c.second - seg2_c.second) == 2)
+      if (CoordUtils::is_vertical(s1))
       {
         (seg1_c.first < seg2_c.first) ? s1_it++ : s2_it++;
       }
       // If the columns are 2 apart, iterate the iterator with the smallest
       // row.
-      else if (abs(seg1_c.first - seg2_c.first) == 2)
+      else if (CoordUtils::is_horizontal(s1))
       {
         (seg1_c.second < seg2_c.second) ? s1_it++ : s2_it++;
       }

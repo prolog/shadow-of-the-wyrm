@@ -99,6 +99,7 @@ void SewerGenerator::connect_sewer_sections(MapPtr result_map)
       {
         // Have we stopped overlapping?
         vector<pair<Coordinate, Coordinate>> lower_coords = r_it->second;
+        int connections = 0;
 
         for (const auto& lc : lower_coords)
         {
@@ -126,6 +127,11 @@ void SewerGenerator::connect_sewer_sections(MapPtr result_map)
               result_map->insert(dig_coord, connector);
             }
           }
+        }
+
+        if (connections == 0)
+        {
+          int x = 1;
         }
       }
     }
