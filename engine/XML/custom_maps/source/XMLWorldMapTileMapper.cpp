@@ -39,6 +39,10 @@ TilePtr XMLWorldMapTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TileType::TILE_TYPE_DUNGEON_COMPLEX);
   }
+  else if (xml_tile == '+')
+  {
+    tile = tg.generate(TileType::TILE_TYPE_SEWER_COMPLEX);
+  }
   else if (xml_tile == 'g')
   {
     tile = tg.generate(TileType::TILE_TYPE_GRAVEYARD);

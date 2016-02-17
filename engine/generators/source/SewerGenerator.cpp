@@ -1,6 +1,7 @@
 #include "SewerGenerator.hpp"
 #include "CoordUtils.hpp"
 #include "Log.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
 
@@ -64,7 +65,11 @@ void SewerGenerator::generate_sewer_sections(MapPtr result_map)
       Coordinate start(cur_row, start_x);
       Coordinate end(cur_row, start_x + length);
 
-      sections[cur_row].push_back(make_pair(start, end));
+      // Ensure that we're always adding sections with actual length
+      if (length > 0)
+      {
+        sections[cur_row].push_back(make_pair(start, end));
+      }
 
       start_x += (length + X_INCR);
       length = RNG::range(MIN_WIDTH, MAX_WIDTH);
@@ -140,12 +145,41 @@ void SewerGenerator::connect_section(MapPtr result_map, const pair<bool, vector<
 
 void SewerGenerator::place_staircases(MapPtr result_map)
 {
+  string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+  bool place_player_on_down_staircase = (depth_increment.empty());
+
   map<int, vector<pair<Coordinate, Coordinate>>> sections_copy = sections;
   pair<Coordinate, Coordinate> sec = retrieve_and_remove_random_section(sections_copy);
+  vector<Coordinate> sec_coords = CoordUtils::get_coordinates_in_range(sec.first, sec.second);
 
-  // Place the staircase
-  // ...
+  if (!sec_coords.empty())
+  {
+    Coordinate up_c = sec_coords.at(RNG::range(0, sec_coords.size()-1));
+    place_staircase(result_map, up_c.first, up_c.second, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_SEWER_COMPLEX, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
+  }
+  else
+  {
+    Log::instance().error("Could not generate up staircase for sewer!");
+  }
 
+  sec = retrieve_and_remove_random_section(sections_copy);
+  sec_coords = CoordUtils::get_coordinates_in_range(sec.first, sec.second);
+  Depth depth = result_map->size().depth();
+  string max_depth_property = get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH);
+
+  update_depth_details(result_map);
+
+  if (depth.get_current() < depth.get_maximum() && !sec_coords.empty())
+  {
+    Coordinate down_c = sec_coords.at(RNG::range(0, sec_coords.size() - 1));
+    TilePtr down_tile = result_map->at(down_c.first, down_c.second);
+    down_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
+    down_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, max_depth_property);
+  }
+  else
+  {
+    Log::instance().error("Could not generate down staircase for sewer!");
+  }
 }
 
 pair<Coordinate, Coordinate> SewerGenerator::retrieve_and_remove_random_section(map<int, vector<pair<Coordinate, Coordinate>>>& sections_copy)
@@ -153,7 +187,7 @@ pair<Coordinate, Coordinate> SewerGenerator::retrieve_and_remove_random_section(
   pair<Coordinate, Coordinate> section;
 
   auto s_it = sections_copy.begin();
-  std::advance(s_it, RNG::range(1, sections_copy.size()));
+  std::advance(s_it, RNG::range(0, sections_copy.size()-1));
   int rand_key = s_it->first;
   int rand_sec_idx = RNG::range(0, s_it->second.size() - 1);
 

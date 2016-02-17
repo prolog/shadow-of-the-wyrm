@@ -175,6 +175,7 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
                            {200, {TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED}},
                            {300, {TileType::TILE_TYPE_CASTLE, TileType::TILE_TYPE_FIELD}},
                            {300, {TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_FIELD}},
+                           {400, {TileType::TILE_TYPE_SEWER_COMPLEX, TileType::TILE_TYPE_UNDEFINED}},
                            {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
 
     tile = generate_feature_or_default(field_special_types, TileType::TILE_TYPE_FIELD, row, col);

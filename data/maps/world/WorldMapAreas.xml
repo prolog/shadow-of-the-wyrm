@@ -5,7 +5,7 @@
 			<Row y="95" x="94">~KF~~~</Row>
 			<Row y="96" x="94">~~vgO~</Row>
 			<Row y="97" x="94">~~~~d~</Row>
-			<Row y="98" x="94">FCF~~~</Row>
+			<Row y="98" x="94">FC+~~~</Row>
 			<Script>areas/little_island.lua</Script>
 		</Area>
 		<Area id="aeschburh">
