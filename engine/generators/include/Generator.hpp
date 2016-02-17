@@ -55,6 +55,7 @@ namespace SOTW
       virtual bool get_permanence() const; // Check additional properties, and only then check the default
       virtual bool get_permanence_default() const;
       virtual void update_map_permanence_from_additional_properties(MapPtr map);
+      virtual void update_depth_details(MapPtr map);
 
       virtual void initialize(MapPtr map, const int danger_level);
       virtual void fill(const MapPtr map, const TileType& tile_type);

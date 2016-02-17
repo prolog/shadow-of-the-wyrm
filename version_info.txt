@@ -45,6 +45,9 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 - New tile types: sewer complex (shown on the world map), and sewer
   (individual tiles within a sewer complex).
 
+- Sewer complexes have a chance to generate on field tiles.  They are
+  generally rare, being generated even less often than keeps.
+
 - New items: roots, berries, kelp, History of the Kell Empire.
 
 - New creatures: Twille.
