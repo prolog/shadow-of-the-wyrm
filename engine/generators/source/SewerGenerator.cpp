@@ -19,6 +19,11 @@ SewerGenerator::SewerGenerator(const std::string& new_map_exit_id)
 {
 }
 
+MapType SewerGenerator::get_map_type() const
+{
+  return MapType::MAP_TYPE_UNDERWORLD;
+}
+
 MapPtr SewerGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);

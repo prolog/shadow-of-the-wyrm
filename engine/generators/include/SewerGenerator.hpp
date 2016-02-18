@@ -12,6 +12,8 @@ class SewerGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
+    virtual MapType get_map_type() const override;
+
     void generate_sewer_sections(MapPtr result_map);
     void place_staircases(MapPtr result_map);
 
