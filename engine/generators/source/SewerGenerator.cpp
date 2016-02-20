@@ -169,14 +169,17 @@ void SewerGenerator::place_staircases(MapPtr result_map)
 
   sec = retrieve_and_remove_random_section(sections_copy);
   sec_coords = CoordUtils::get_coordinates_in_range(sec.first, sec.second);
-  Depth depth = result_map->size().depth();
   string max_depth_property = get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH);
 
   update_depth_details(result_map);
+  Depth depth = result_map->size().depth();
 
   if (depth.get_current() < depth.get_maximum() && !sec_coords.empty())
   {
     Coordinate down_c = sec_coords.at(RNG::range(0, sec_coords.size() - 1));
+    place_staircase(result_map, down_c.first, down_c.second, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_SEWER_COMPLEX, Direction::DIRECTION_DOWN, get_permanence(), place_player_on_down_staircase);
+
+    // Set the necessary properties.
     TilePtr down_tile = result_map->at(down_c.first, down_c.second);
     down_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
     down_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, max_depth_property);

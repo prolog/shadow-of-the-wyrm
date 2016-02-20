@@ -5,7 +5,7 @@
 			<Row y="95" x="94">~KF~~~</Row>
 			<Row y="96" x="94">~~vgO~</Row>
 			<Row y="97" x="94">~~~~d~</Row>
-			<Row y="98" x="94">FC+~~~</Row>
+			<Row y="98" x="94">FCf~~~</Row>
 			<Script>areas/little_island.lua</Script>
 		</Area>
 		<Area id="aeschburh">
@@ -23,6 +23,13 @@
 			<Row y="90" x="97">~F~</Row>
 			<Row y="91" x="97">~~~</Row>
 			<Script>areas/infinite_dungeon.lua</Script>
+		</Area>
+		<Area id="infinite_sewer">
+			<Row y="80" x="76">~~~~~</Row>
+			<Row y="81" x="76">~~O~~</Row>
+			<Row y="82" x="76">~ff+~</Row>
+			<Row y="83" x="76">~~~~~</Row>
+			<Script>areas/infinite_sewer.lua</Script>
 		</Area>
 		<Area id="far_reaches">
 			<Row y="0" x="0">~~~~~~</Row>
