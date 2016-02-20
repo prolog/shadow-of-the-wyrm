@@ -48,6 +48,9 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 - Sewer complexes have a chance to generate on field tiles.  They are
   generally rare, being generated even less often than keeps.
 
+- Created an infinite sewer complex north-west of Aeschburh.  Made the
+  infinite dungeon even deeper.
+
 - New items: roots, berries, kelp, History of the Kell Empire.
 
 - New creatures: Twille.

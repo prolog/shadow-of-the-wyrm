@@ -1,6 +1,7 @@
 Me:
 - When done sewers, update the world map XML to remove the sewer on the
   island near Isen Dun.
+- Auto identify wearables on wearing.
 - Need to update game data to generate most/all monsters in sewer
   complexes.
 - Code should handle being started from outside the game's directory.
