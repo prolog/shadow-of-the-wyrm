@@ -49,11 +49,12 @@ Shadow of the Wyrm v0.4.8 "Carulli"
   generally rare, being generated even less often than keeps.
 
 - Created an infinite sewer complex north-west of Aeschburh.  Made the
-  infinite dungeon even deeper.
+  infinite dungeon even deeper.  Added a new unique, Cadlind, in Isen Dun
+  to tell the player about the existence of these places.
 
 - New items: roots, berries, kelp, History of the Kell Empire.
 
-- New creatures: Twille.
+- New creatures: Twille, Cadlind.
 
 - New artifacts: imperial dagger "Amagari".
 
