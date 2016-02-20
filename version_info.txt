@@ -52,7 +52,9 @@ Shadow of the Wyrm v0.4.8 "Carulli"
   infinite dungeon even deeper.  Added a new unique, Cadlind, in Isen Dun
   to tell the player about the existence of these places.
 
-- New items: roots, berries, kelp, History of the Kell Empire.
+- Rovers now start with either a woodsman's axe or a briar axe.
+
+- New items: roots, berries, kelp, History of the Kell Empire, briar axe.
 
 - New creatures: Twille, Cadlind.
 
