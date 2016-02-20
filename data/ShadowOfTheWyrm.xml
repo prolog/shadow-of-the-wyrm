@@ -17427,6 +17427,43 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="cadlind">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>CADLIND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CADLIND_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CADLIND_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CADLIND_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>11</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>15</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>60</Exp>
+			</CreatureGeneration>
+			<Level>11</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>30</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/cadlind.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="nama">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>NAMA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

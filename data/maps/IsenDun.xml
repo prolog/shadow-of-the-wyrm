@@ -75,6 +75,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>cadlind</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>1</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>farmer</ID>
 				<Coord>
 					<Row>4</Row>
