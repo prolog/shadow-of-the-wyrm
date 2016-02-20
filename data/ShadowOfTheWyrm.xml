@@ -3241,7 +3241,10 @@
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
-					<ID>woodsman_axe</ID>
+					<Random>
+						<ID>woodsman_axe</ID>
+						<ID>briar_axe</ID>
+					</Random>
 				</Wielded>
 				<Body>
 					<ID>leather_armour</ID>
@@ -24411,6 +24414,27 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="briar_axe">
+				<DescriptionSID>BRIAR_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>BRIAR_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>10</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>1</DangerLevel>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>4</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>2</Modifier>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="battle_axe">
