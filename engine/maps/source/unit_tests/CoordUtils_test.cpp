@@ -132,11 +132,13 @@ TEST(SW_Engine_Maps_CoordUtils, get_new_coordinate)
 
 TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_horizontal)
 {
+  int y_incr = 2;
+
   // Two parallel segments, horizontal, perfect overlap.
   pair<Coordinate, Coordinate> l1 = make_pair(make_pair(1,2), make_pair(3,2));
   pair<Coordinate, Coordinate> l2 = make_pair(make_pair(1,4), make_pair(3,4));
 
-  auto result = CoordUtils::are_segments_joinable(l1, l2);
+  auto result = CoordUtils::are_segments_joinable(l1, l2, y_incr);
   vector<Coordinate> expected = { {1,3}, {2,3}, {3,3} };
 
   EXPECT_TRUE(result.first);
@@ -146,7 +148,7 @@ TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_horizontal)
   l1 = make_pair(make_pair(1,2), make_pair(3,2));
   l2 = make_pair(make_pair(3,4), make_pair(5,4));
 
-  result = CoordUtils::are_segments_joinable(l1, l2);
+  result = CoordUtils::are_segments_joinable(l1, l2, y_incr);
   expected = { {3,3} };
 
   EXPECT_TRUE(result.first);
@@ -156,7 +158,7 @@ TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_horizontal)
   l1 = make_pair(make_pair(1, 2), make_pair(3, 2));
   l2 = make_pair(make_pair(1, 9), make_pair(5, 9));
 
-  result = CoordUtils::are_segments_joinable(l1, l2);
+  result = CoordUtils::are_segments_joinable(l1, l2, y_incr);
   expected.clear();
 
   EXPECT_FALSE(result.first);
@@ -166,7 +168,7 @@ TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_horizontal)
   l1 = make_pair(make_pair(1, 2), make_pair(3, 2));
   l2 = make_pair(make_pair(12, 12), make_pair(15, 12));
 
-  result = CoordUtils::are_segments_joinable(l1, l2);
+  result = CoordUtils::are_segments_joinable(l1, l2, y_incr);
   expected.clear();
 
   EXPECT_FALSE(result.first);
@@ -175,12 +177,14 @@ TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_horizontal)
 
 TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_vertical)
 {
+  int x_incr = 2;
+
   // Two parallel segments, vertical, perfect overlap
   pair<Coordinate, Coordinate> l1 = make_pair(make_pair(2, 5), make_pair(7, 5));
   pair<Coordinate, Coordinate> l2 = make_pair(make_pair(2, 3), make_pair(7, 3));
 
-  auto result = CoordUtils::are_segments_joinable(l1, l2);
-  vector<Coordinate> expected = { { 2,4 },{ 3,4 },{ 4,4 },{ 5,4 },{ 6,4 },{ 7,4 } };
+  auto result = CoordUtils::are_segments_joinable(l1, l2, x_incr);
+  vector<Coordinate> expected = { {2,4}, {3,4}, {4,4}, {5,4}, {6,4}, {7,4} };
 
   EXPECT_TRUE(result.first);
   EXPECT_EQ(expected, result.second);
@@ -189,8 +193,8 @@ TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_vertical)
   l1 = make_pair(make_pair(2, 5), make_pair(7, 5));
   l2 = make_pair(make_pair(6, 3), make_pair(9, 3));
 
-  result = CoordUtils::are_segments_joinable(l1, l2);
-  expected = { { 6,4 },{ 7,4 } };
+  result = CoordUtils::are_segments_joinable(l1, l2, x_incr);
+  expected = { {6,4}, {7,4} };
 
   EXPECT_TRUE(result.first);
   EXPECT_EQ(expected, result.second);
@@ -199,7 +203,7 @@ TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_vertical)
   l1 = make_pair(make_pair(2, 5), make_pair(7, 5));
   l2 = make_pair(make_pair(17, 3), make_pair(20, 3));
 
-  result = CoordUtils::are_segments_joinable(l1, l2);
+  result = CoordUtils::are_segments_joinable(l1, l2, x_incr);
   expected.clear();
 
   EXPECT_FALSE(result.first);
@@ -209,7 +213,7 @@ TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_vertical)
   l1 = make_pair(make_pair(2, 5), make_pair(7, 5));
   l2 = make_pair(make_pair(19, 15), make_pair(30, 15));
 
-  result = CoordUtils::are_segments_joinable(l1, l2);
+  result = CoordUtils::are_segments_joinable(l1, l2, x_incr);
   expected.clear();
 
   EXPECT_FALSE(result.first);
@@ -219,7 +223,7 @@ TEST(SW_Engine_Maps_CoordUtils, are_segments_joinable_vertical)
   l1 = make_pair(make_pair(1,5), make_pair(1,11));
   l2 = make_pair(make_pair(3,2), make_pair(3,25));
 
-  result = CoordUtils::are_segments_joinable(l1, l2);
+  result = CoordUtils::are_segments_joinable(l1, l2, x_incr);
   expected = { {2,5}, {2,6}, {2,7}, {2,8}, {2,9}, {2,10}, {2,11} };
 
   EXPECT_TRUE(result.first);
@@ -232,31 +236,32 @@ TEST(SW_Engine_Maps_CoordUtils, are_coordinates_joinable)
   Coordinate c1(1,1);
   Coordinate c2(1,2);
   Coordinate c3(1,3);
+  int y_incr = 2;
 
-  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c1, c3).first);
-  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c3, c1).first);
-  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2).first);
-  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3).first);
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c1, c3, y_incr).first);
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c3, c1, y_incr).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2, y_incr).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3, y_incr).first);
 
   // Vertically adjacent coordinates.
   c1 = {3,3};
   c2 = {4,3};
   c3 = {5,3};
 
-  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c1, c3).first);
-  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c3, c1).first);
-  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2).first);
-  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3).first);
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c1, c3, y_incr).first);
+  EXPECT_TRUE(CoordUtils::are_coordinates_joinable(c3, c1, y_incr).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2, y_incr).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3, y_incr).first);
 
   // Diagonally-adjacent coordinates.
   c1 = {7,7};
   c2 = {8,8};
   c3 = {9,9};
 
-  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c3).first);
-  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c3, c1).first);
-  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2).first);
-  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c3, y_incr).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c3, c1, y_incr).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c1, c2, y_incr).first);
+  EXPECT_FALSE(CoordUtils::are_coordinates_joinable(c2, c3, y_incr).first);
 }
 
 TEST(SW_Engine_Maps_CoordUtils, ends_before)

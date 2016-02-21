@@ -11,11 +11,12 @@ const int SewerGenerator::MIN_WIDTH = 5;
 const int SewerGenerator::MAX_WIDTH = 27;
 const int SewerGenerator::MIN_HEIGHT = 3;
 const int SewerGenerator::MAX_HEIGHT = 7;
-const int SewerGenerator::Y_INCR = 2;
 const int SewerGenerator::X_INCR = 2;
+const int SewerGenerator::MIN_Y_INCR = 2;
+const int SewerGenerator::MAX_Y_INCR = 4;
 
 SewerGenerator::SewerGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TileType::TILE_TYPE_SCRUB)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_SEWER)
 {
 }
 
@@ -29,10 +30,11 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
   fill(result_map, TileType::TILE_TYPE_ROCK);
+  int y_incr = RNG::range(MIN_Y_INCR, MAX_Y_INCR);
 
   // Generate the sewer sections, and then connect them together.
-  generate_sewer_sections(result_map);
-  connect_sewer_sections(result_map);
+  generate_sewer_sections(result_map, y_incr);
+  connect_sewer_sections(result_map, y_incr);
 
   // Place up and potentially down staircases as appropriate.
   place_staircases(result_map);
@@ -40,7 +42,7 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
-void SewerGenerator::generate_sewer_sections(MapPtr result_map)
+void SewerGenerator::generate_sewer_sections(MapPtr result_map, const int y_incr)
 {
   Dimensions dimensions = result_map->size();
 
@@ -80,11 +82,11 @@ void SewerGenerator::generate_sewer_sections(MapPtr result_map)
       length = RNG::range(MIN_WIDTH, MAX_WIDTH);
     }
 
-    cur_row += Y_INCR;
+    cur_row += y_incr;
   }
 }
 
-void SewerGenerator::connect_sewer_sections(MapPtr result_map)
+void SewerGenerator::connect_sewer_sections(MapPtr result_map, const int y_incr)
 {
   // Now we've got a bunch of horizontal sections, and need to connect them.
   // Iterate through each row in the sections map.  For each section, if
@@ -95,7 +97,7 @@ void SewerGenerator::connect_sewer_sections(MapPtr result_map)
     int row_num = row_pair.first;
     vector<pair<Coordinate, Coordinate>> pipe_sections = row_pair.second;
 
-    int next_row = row_num += Y_INCR;
+    int next_row = row_num += y_incr;
     auto r_it = sections.find(next_row);
 
     // If we're on the last row, we can stop, as there'll be nothing below.
@@ -120,12 +122,12 @@ void SewerGenerator::connect_sewer_sections(MapPtr result_map)
           // Any overlap?
           else
           {
-            pair<bool, vector<Coordinate>> overlap = CoordUtils::are_segments_joinable(ps, lc);
+            pair<bool, vector<Coordinate>> overlap = CoordUtils::are_segments_joinable(ps, lc, y_incr);
 
             // There's some overlap - take a random coordinate and dig there.
             if (overlap.first == true && !overlap.second.empty())
             {
-              connect_section(result_map, overlap);
+              connect_section(result_map, overlap, ps.first.first /* pipe section's row */, y_incr);
             }
           }
         }
@@ -134,18 +136,16 @@ void SewerGenerator::connect_sewer_sections(MapPtr result_map)
   }
 }
 
-void SewerGenerator::connect_section(MapPtr result_map, const pair<bool, vector<Coordinate>>& overlap)
+void SewerGenerator::connect_section(MapPtr result_map, const pair<bool, vector<Coordinate>>& overlap, const int first_row, const int y_incr)
 {
   vector<Coordinate> overlap_coords = overlap.second;
   Coordinate dig_coord = overlap_coords.at(RNG::range(0, overlap_coords.size() - 1));
 
-  if (!MapUtils::adjacent_tiles_match_type(result_map, dig_coord, { Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH }, TileType::TILE_TYPE_SEWER))
+  for (int i = first_row; i <= (first_row + y_incr); i++)
   {
-    Log::instance().error("Bad sewer connection!");
+    TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
+    result_map->insert(make_pair(i, dig_coord.second), connector);
   }
-
-  TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
-  result_map->insert(dig_coord, connector);
 }
 
 void SewerGenerator::place_staircases(MapPtr result_map)

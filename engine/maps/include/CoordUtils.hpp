@@ -31,8 +31,8 @@ class CoordUtils
     static std::map<CardinalDirection, Coordinate> get_midway_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
 
     // Get all the coordinates in the given range.
-    static std::vector<Coordinate> get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right);
-
+    static std::vector<Coordinate> get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right, const bool start_row_inclusive = true, const bool start_col_inclusive = true, const bool end_row_inclusive = true, const bool end_col_inclusive = true);
+    
     // Get the direction of a move given the start and end coordinates.
     static Direction get_direction(const Coordinate& start_coord, const Coordinate& end_coord);
 
@@ -41,8 +41,8 @@ class CoordUtils
 
     // Are the two line segments "joinable"?  Two segments are joinable iff
     // there is a coordinate adjacent to both.
-    static std::pair<bool, std::vector<Coordinate>> are_segments_joinable(const std::pair<Coordinate, Coordinate>& s1, const std::pair<Coordinate, Coordinate>& s2);
-    static std::pair<bool, Coordinate> are_coordinates_joinable(const Coordinate& c1, const Coordinate& c2);
+    static std::pair<bool, std::vector<Coordinate>> are_segments_joinable(const std::pair<Coordinate, Coordinate>& s1, const std::pair<Coordinate, Coordinate>& s2, const int incr);
+    static std::pair<bool, std::vector<Coordinate>> are_coordinates_joinable(const Coordinate& c1, const Coordinate& c2, const int incr);
 
     // Does the segment seg_1 end before seg_2 begins?
     static bool ends_before(const std::pair<Coordinate, Coordinate>& seg_1, const std::pair<Coordinate, Coordinate>& seg_2);
