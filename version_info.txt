@@ -46,7 +46,8 @@ Shadow of the Wyrm v0.4.8 "Carulli"
   (individual tiles within a sewer complex).
 
 - Sewer complexes have a chance to generate on field tiles.  They are
-  generally rare, being generated even less often than keeps.
+  generally rare, being generated even less often than keeps.  However,
+  pretty much any non-unique can be found in sewers.
 
 - Created an infinite sewer complex north-west of Aeschburh.  Made the
   infinite dungeon even deeper.  Added a new unique, Cadlind, in Isen Dun
