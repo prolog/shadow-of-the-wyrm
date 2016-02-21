@@ -88,52 +88,10 @@ void SewerGenerator::generate_sewer_sections(MapPtr result_map, const int y_incr
 
 void SewerGenerator::connect_sewer_sections(MapPtr result_map, const int y_incr)
 {
-  // Now we've got a bunch of horizontal sections, and need to connect them.
-  // Iterate through each row in the sections map.  For each section, if
-  // it overlaps any sections in the row below, we need a connection,
-  // somewhere along the intersecting coordinates.
-  for (const auto& row_pair : sections)
-  {
-    int row_num = row_pair.first;
-    vector<pair<Coordinate, Coordinate>> pipe_sections = row_pair.second;
+  map<pair<Coordinate, Coordinate>, int> incoming_connections;
 
-    int next_row = row_num += y_incr;
-    auto r_it = sections.find(next_row);
-
-    // If we're on the last row, we can stop, as there'll be nothing below.
-    if (r_it == sections.end())
-    {
-      break;
-    }
-    else
-    {
-      for (const auto& ps : pipe_sections)
-      {
-        // Have we stopped overlapping?
-        vector<pair<Coordinate, Coordinate>> lower_coords = r_it->second;
-        int connections = 0;
-
-        for (const auto& lc : lower_coords)
-        {
-          if (CoordUtils::starts_after(lc, ps))
-          {
-            break;
-          }
-          // Any overlap?
-          else
-          {
-            pair<bool, vector<Coordinate>> overlap = CoordUtils::are_segments_joinable(ps, lc, y_incr);
-
-            // There's some overlap - take a random coordinate and dig there.
-            if (overlap.first == true && !overlap.second.empty())
-            {
-              connect_section(result_map, overlap, ps.first.first /* pipe section's row */, y_incr);
-            }
-          }
-        }
-      }
-    }
-  }
+  create_vertical_connections(result_map, incoming_connections, y_incr);
+  connect_unconnected_sections(result_map, incoming_connections);
 }
 
 void SewerGenerator::connect_section(MapPtr result_map, const pair<bool, vector<Coordinate>>& overlap, const int first_row, const int y_incr)
@@ -207,4 +165,113 @@ pair<Coordinate, Coordinate> SewerGenerator::retrieve_and_remove_random_section(
   s_it->second.erase(s_it->second.begin() + rand_sec_idx);
 
   return section;
+}
+
+void SewerGenerator::increment_connections(map<pair<Coordinate, Coordinate>, int>& connections, const pair<Coordinate, Coordinate>& section)
+{
+  auto sec_it = connections.find(section);
+
+  // Increment the number of incoming connections.
+  // This is used at the end of the algorithm to detect any
+  // unconnected sections.
+  if (sec_it == connections.end())
+  {
+    connections[section] = 1;
+  }
+  else
+  {
+    sec_it->second++;
+  }
+}
+
+void SewerGenerator::create_vertical_connections(MapPtr result_map,  map<pair<Coordinate, Coordinate>, int>& incoming_connections, const int y_incr)
+{
+  Dimensions dim = result_map->size();
+
+  // Now we've got a bunch of horizontal sections, and need to connect them.
+  // Iterate through each row in the sections map.  For each section, if
+  // it overlaps any sections in the row below, we need a connection,
+  // somewhere along the intersecting coordinates.
+  for (const auto& row_pair : sections)
+  {
+    int row_num = row_pair.first;
+    vector<pair<Coordinate, Coordinate>> pipe_sections = row_pair.second;
+
+    int next_row = row_num += y_incr;
+    auto r_it = sections.find(next_row);
+
+    // If we're on the last row, we can stop, as there'll be nothing below.
+    if (r_it == sections.end())
+    {
+      break;
+    }
+    else
+    {
+      for (const auto& ps : pipe_sections)
+      {
+        // Have we stopped overlapping?
+        vector<pair<Coordinate, Coordinate>> lower_coords = r_it->second;
+        int connections = 0;
+
+        for (const auto& lc : lower_coords)
+        {
+          if (CoordUtils::starts_after(lc, ps))
+          {
+            break;
+          }
+          // Any overlap?
+          else
+          {
+            pair<bool, vector<Coordinate>> overlap = CoordUtils::are_segments_joinable(ps, lc, y_incr);
+
+            // There's some overlap - take a random coordinate and dig in that column.
+            if (overlap.first == true && !overlap.second.empty())
+            {
+              connect_section(result_map, overlap, ps.first.first /* pipe section's row */, y_incr);
+
+              increment_connections(incoming_connections, ps);
+              increment_connections(incoming_connections, lc);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+void SewerGenerator::connect_unconnected_sections(MapPtr result_map, const map<pair<Coordinate, Coordinate>, int>& incoming_connections)
+{
+  Dimensions dim = result_map->size();
+
+  for (const auto& row_pair : sections)
+  {
+    vector<pair<Coordinate, Coordinate>> section_v = row_pair.second;
+
+    for (const auto& section : section_v)
+    {
+      auto sec_it = incoming_connections.find(section);
+
+      if (sec_it == incoming_connections.end() || sec_it->second == 0)
+      {
+        // Connect around this section.
+        Coordinate sec_before = section.first;
+        sec_before.second--;
+
+        Coordinate sec_after = section.second;
+        sec_after.second++;
+
+        if (sec_before.second > 0)
+        {
+          TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
+          result_map->insert(sec_before, connector);
+        }
+
+        if (sec_after.second < dim.get_x() - 1)
+        {
+          TilePtr connector = tg.generate(TileType::TILE_TYPE_SEWER);
+          result_map->insert(sec_after, connector);
+        }
+      }
+    }
+  }
 }
