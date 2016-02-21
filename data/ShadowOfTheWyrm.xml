@@ -4320,6 +4320,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4359,6 +4360,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4404,6 +4406,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>11</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4449,6 +4452,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>21</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4493,6 +4497,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>21</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4537,6 +4542,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>31</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4591,6 +4597,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>41</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4637,6 +4644,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4681,6 +4689,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4721,6 +4730,7 @@
 					<TileType>31</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>3</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4766,6 +4776,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4804,6 +4815,7 @@
 					<TileType>16</TileType>
 					<TileType>21</TileType>
 					<TileType>38</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4848,6 +4860,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>3</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4890,6 +4903,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>4</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4924,6 +4938,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>4</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4958,6 +4973,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>4</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4992,6 +5008,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>4</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5036,6 +5053,7 @@
 					<TileType>37</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5081,6 +5099,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>6</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5126,6 +5145,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>7</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5170,6 +5190,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5216,6 +5237,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5262,6 +5284,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
 				<!-- base: 8 -->
@@ -5309,6 +5332,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5356,6 +5380,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5413,6 +5438,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5459,6 +5485,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>13</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5503,6 +5530,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>17</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5562,6 +5590,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>21</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5618,6 +5647,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>25</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5664,6 +5694,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>29</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5709,6 +5740,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>33</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5755,6 +5787,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>37</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5800,6 +5833,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>41</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5847,6 +5881,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>45</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5940,6 +5975,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -5987,6 +6023,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6034,6 +6071,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6078,6 +6116,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6121,6 +6160,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6168,6 +6208,7 @@
 					<TileType>37</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>12</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6227,6 +6268,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>13</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6271,6 +6313,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6318,6 +6361,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>26</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6364,6 +6408,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>15</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6406,6 +6451,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>16</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6450,6 +6496,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>17</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6485,6 +6532,7 @@
 					<TileType>26</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>18</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6527,6 +6575,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>19</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6566,6 +6615,7 @@
 					<TileType>21</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6607,6 +6657,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>30</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6648,6 +6699,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6690,6 +6742,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>20</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6734,6 +6787,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>21</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6777,6 +6831,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>22</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6836,6 +6891,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>23</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6877,6 +6933,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>24</DangerLevel>
 				<Rarity>0</Rarity>
@@ -6987,6 +7044,7 @@
 					<TileType>37</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>11</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7029,6 +7087,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>19</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7064,6 +7123,7 @@
 					<TileType>26</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7109,6 +7169,7 @@
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<GeneratorFilters>
 					<Filter>OvergrownSacrificeSite</Filter>
@@ -7294,6 +7355,7 @@
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<GeneratorFilters>
 					<Filter>OvergrownSacrificeSite</Filter>
@@ -7359,6 +7421,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>26</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7401,6 +7464,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>27</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7445,6 +7509,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>28</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7488,6 +7553,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>29</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7530,6 +7596,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>30</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7571,6 +7638,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>31</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7612,6 +7680,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>32</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7654,6 +7723,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>33</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7698,6 +7768,7 @@
 					<TileType>37</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>33</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7741,6 +7812,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>34</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7783,6 +7855,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>35</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7850,6 +7923,7 @@
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<GeneratorFilters>
 					<Filter>OvergrownSacrificeSite</Filter>
@@ -7925,6 +7999,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>37</DangerLevel>
 				<Rarity>0</Rarity>
@@ -7967,6 +8042,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>38</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8010,6 +8086,7 @@
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<GeneratorFilters>
 					<Filter>OvergrownSacrificeSite</Filter>
@@ -8058,6 +8135,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>40</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8099,6 +8177,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>41</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8144,6 +8223,7 @@
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<GeneratorFilters>
 					<Filter>OvergrownSacrificeSite</Filter>
@@ -8191,6 +8271,7 @@
 					<TileType>37</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>42</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8234,6 +8315,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>42</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8277,6 +8359,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>43</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8319,6 +8402,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>44</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8362,6 +8446,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>45</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8406,6 +8491,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>46</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8463,6 +8549,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>46</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8505,6 +8592,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>47</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8547,6 +8635,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>47</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8590,6 +8679,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>48</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8638,6 +8728,7 @@
 					<TileType>37</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>48</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8684,6 +8775,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>48</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8727,6 +8819,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>49</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8772,6 +8865,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>49</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8816,6 +8910,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8864,6 +8959,7 @@
 					<TileType>37</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8911,6 +9007,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8950,6 +9047,7 @@
 					<TileType>37</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -8988,6 +9086,7 @@
 					<TileType>37</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>4</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9032,6 +9131,7 @@
 					<TileType>37</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9078,6 +9178,7 @@
 					<TileType>37</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>12</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9149,6 +9250,7 @@
 					<TileType>37</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9188,6 +9290,7 @@
 					<TileType>37</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>35</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9241,6 +9344,7 @@
 					<TileType>37</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>40</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9286,6 +9390,7 @@
 					<TileType>37</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9324,6 +9429,7 @@
 					<TileType>31</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9366,6 +9472,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9412,6 +9519,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9457,6 +9565,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9503,6 +9612,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>12</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9549,6 +9659,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>15</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9596,6 +9707,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>17</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9640,6 +9752,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>17</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9676,6 +9789,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>22</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9711,6 +9825,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>32</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9753,6 +9868,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>42</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9790,6 +9906,7 @@
 					<TileType>31</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>3</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9834,6 +9951,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>13</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9878,6 +9996,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>23</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9920,6 +10039,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>23</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9962,6 +10082,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>33</DangerLevel>
 				<Rarity>0</Rarity>
@@ -9998,6 +10119,7 @@
 					<TileType>15</TileType>
 					<TileType>16</TileType>
 					<TileType>21</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>43</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10040,6 +10162,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>43</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10085,6 +10208,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>4</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10127,6 +10251,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10169,6 +10294,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>24</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10207,6 +10333,7 @@
 					<TileType>37</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>34</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10256,6 +10383,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>34</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10299,6 +10427,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>44</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10341,6 +10470,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>44</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10375,6 +10505,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10418,6 +10549,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>15</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10461,6 +10593,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>25</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10503,6 +10636,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>25</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10544,6 +10678,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>35</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10587,6 +10722,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>45</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10629,6 +10765,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>6</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10672,6 +10809,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>6</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10715,6 +10853,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10757,6 +10896,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10800,6 +10940,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>16</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10842,6 +10983,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>16</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10922,6 +11064,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>26</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10963,6 +11106,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>36</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11006,6 +11150,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>36</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11048,6 +11193,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>36</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11091,6 +11237,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>46</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11133,6 +11280,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>46</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11177,6 +11325,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>7</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11220,6 +11369,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>17</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11262,6 +11412,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>27</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11306,6 +11457,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>37</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11363,6 +11515,7 @@
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<GeneratorFilters>
 					<Filter>OvergrownSacrificeSite</Filter>
@@ -11408,6 +11561,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11453,6 +11607,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>7</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11510,6 +11665,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>18</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11552,6 +11708,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>28</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11594,6 +11751,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>38</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11636,6 +11794,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>48</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11682,6 +11841,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11724,6 +11884,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>11</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11769,6 +11930,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>13</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11815,6 +11977,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11860,6 +12023,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11915,6 +12079,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>17</DangerLevel>
 				<Rarity>0</Rarity>
@@ -11961,6 +12126,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>23</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12006,6 +12172,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>33</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12061,6 +12228,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>25</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12253,6 +12421,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>25</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12298,6 +12467,7 @@
 					<TileType>37</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>26</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12342,6 +12512,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>28</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12384,6 +12555,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>29</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12428,6 +12600,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>19</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12470,6 +12643,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>29</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12515,6 +12689,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>39</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12557,6 +12732,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>39</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12601,6 +12777,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>49</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12644,6 +12821,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>49</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12691,6 +12869,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
 				<Rarity>0</Rarity>
@@ -12737,6 +12916,7 @@
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<GeneratorFilters>
 					<Filter>IslandSacrificeSite</Filter>
@@ -13027,6 +13207,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13073,6 +13254,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>20</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13115,6 +13297,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>30</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13157,6 +13340,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>40</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13200,6 +13384,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13243,6 +13428,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13286,6 +13472,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13327,6 +13514,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13371,6 +13559,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13415,6 +13604,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14216,6 +14406,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14261,6 +14452,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14306,6 +14498,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14351,6 +14544,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>7</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14397,6 +14591,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>7</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14441,6 +14636,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>12</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14485,6 +14681,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>12</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14596,6 +14793,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14641,6 +14839,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14686,6 +14885,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>6</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14731,6 +14931,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
@@ -14980,6 +15181,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>13</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15023,6 +15225,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>15</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15075,6 +15278,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>13</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15169,6 +15373,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15211,6 +15416,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15252,6 +15458,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>11</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15601,6 +15808,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15635,6 +15843,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15678,6 +15887,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15723,6 +15933,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>19</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15765,6 +15976,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>29</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15809,6 +16021,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>39</DangerLevel>
 				<Rarity>0</Rarity>
@@ -15851,6 +16064,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>49</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16066,6 +16280,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16112,6 +16327,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16155,6 +16371,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>15</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16199,6 +16416,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>28</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16240,6 +16458,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16307,6 +16526,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16342,6 +16562,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<!-- Fix this later -->
 				<DangerLevel>1</DangerLevel>
@@ -16390,6 +16611,7 @@
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<GeneratorFilters>
 					<Filter>IslandSacrificeSite</Filter>
@@ -16448,6 +16670,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16491,6 +16714,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16710,6 +16934,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>4</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16756,6 +16981,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16837,6 +17063,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>4</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16914,6 +17141,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>3</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16957,6 +17185,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>3</DangerLevel>
 				<Rarity>0</Rarity>
@@ -16991,6 +17220,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
 				<Rarity>0</Rarity>
@@ -17027,6 +17257,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18019,6 +18250,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18063,6 +18295,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>4</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18283,6 +18516,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18326,6 +18560,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>11</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18369,6 +18604,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>21</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18405,6 +18641,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>31</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18440,6 +18677,7 @@
 					<TileType>24</TileType>
 					<TileType>26</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>41</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18484,6 +18722,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18539,6 +18778,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18595,6 +18835,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18648,6 +18889,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18693,6 +18935,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>3</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18754,6 +18997,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>3</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18799,6 +19043,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18844,6 +19089,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>19</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18887,6 +19133,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>24</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18929,6 +19176,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>31</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18974,6 +19222,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>39</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19017,6 +19266,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>44</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19059,6 +19309,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>44</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19104,6 +19355,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>12</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19151,6 +19403,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>17</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19195,6 +19448,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>22</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19239,6 +19493,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>28</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19300,6 +19555,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>33</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19347,6 +19603,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>40</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19601,6 +19858,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>37</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19644,6 +19902,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>38</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19686,6 +19945,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>39</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19732,6 +19992,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>40</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19773,6 +20034,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>41</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19817,6 +20079,7 @@
 					<TileType>37</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>42</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19859,6 +20122,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>43</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19933,6 +20197,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>41</DangerLevel>
 				<Rarity>0</Rarity>
@@ -20007,6 +20272,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>47</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>40</DangerLevel>
 				<Rarity>0</Rarity>

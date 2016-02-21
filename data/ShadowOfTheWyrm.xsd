@@ -1120,7 +1120,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="46"/>
+		<xs:maxInclusive value="48"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="Rarity">

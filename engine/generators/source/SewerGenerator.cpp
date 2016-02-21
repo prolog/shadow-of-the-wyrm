@@ -16,7 +16,7 @@ const int SewerGenerator::MIN_Y_INCR = 2;
 const int SewerGenerator::MAX_Y_INCR = 4;
 
 SewerGenerator::SewerGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TileType::TILE_TYPE_SEWER)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_SEWER_COMPLEX)
 {
 }
 
