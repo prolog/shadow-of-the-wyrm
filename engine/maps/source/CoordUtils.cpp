@@ -267,16 +267,44 @@ map<CardinalDirection, Coordinate> CoordUtils::get_midway_coordinates(const Coor
 }
 
 // Returns all coordinates from top left to bottom right, inclusive.
-vector<Coordinate> CoordUtils::get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right)
+vector<Coordinate> CoordUtils::get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right, const bool start_row_inclusive, const bool start_col_inclusive, const bool end_row_inclusive, const bool end_col_inclusive)
 {
   int size = ((bottom_right.first - top_left.first) * (bottom_right.second - top_left.second));
 
   vector<Coordinate> coords;
   coords.reserve(size);
 
-  for (int row = top_left.first; row <= bottom_right.first; row++)
+  int start_row = top_left.first + 1;
+
+  if (start_row_inclusive)
   {
-    for (int col = top_left.second; col <= bottom_right.second; col++)
+    start_row--;
+  }
+
+  int start_col = top_left.second + 1;
+
+  if (start_col_inclusive)
+  {
+    start_col--;
+  }
+
+  int end_row = bottom_right.first - 1;
+
+  if (end_row_inclusive)
+  {
+    end_row++;
+  }
+
+  int end_col = bottom_right.second - 1;
+
+  if (end_col_inclusive)
+  {
+    end_col++;
+  }
+
+  for (int row = start_row; row <= end_row; row++)
+  {
+    for (int col = start_col; col <= end_col; col++)
     {
       coords.push_back(make_pair(row, col));
     }
@@ -300,7 +328,7 @@ int CoordUtils::get_perimeter_length(const Coordinate& top_left, const Coordinat
   return p;
 }
 
-pair<bool, vector<Coordinate>> CoordUtils::are_segments_joinable(const pair<Coordinate, Coordinate>& s1, const pair<Coordinate, Coordinate>& s2)
+pair<bool, vector<Coordinate>> CoordUtils::are_segments_joinable(const pair<Coordinate, Coordinate>& s1, const pair<Coordinate, Coordinate>& s2, const int incr)
 {
   pair<bool, vector<Coordinate>> result(false, {});
 
@@ -316,9 +344,9 @@ pair<bool, vector<Coordinate>> CoordUtils::are_segments_joinable(const pair<Coor
     {
       Coordinate seg1_c = *s1_it;
       Coordinate seg2_c = *s2_it;
-      auto c_join = are_coordinates_joinable(seg1_c, seg2_c);
+      auto c_join = are_coordinates_joinable(seg1_c, seg2_c, incr);
 
-      // If the coordinates are joinable, add the intersecting coordinate to
+      // If the coordinates are joinable, add the intersecting coordinates to
       // the the return values.
       if (c_join.first)
       {
@@ -327,7 +355,7 @@ pair<bool, vector<Coordinate>> CoordUtils::are_segments_joinable(const pair<Coor
           result.first = true;
         }
 
-        result.second.push_back(c_join.second);
+        result.second.insert(result.second.end(), c_join.second.begin(), c_join.second.end());
       }
 
       // Iterate the appropriate iterator.  Always iterate at least one iterator!
@@ -357,24 +385,44 @@ pair<bool, vector<Coordinate>> CoordUtils::are_segments_joinable(const pair<Coor
 
 // Is there a coordinate that can be placed between the two?
 // Consider only horizontal and vertical (diagonal not currently supported).
-pair<bool, Coordinate> CoordUtils::are_coordinates_joinable(const Coordinate& c1, const Coordinate& c2)
+pair<bool, vector<Coordinate>> CoordUtils::are_coordinates_joinable(const Coordinate& c1, const Coordinate& c2, const int incr)
 {
-  pair<bool, Coordinate> result(true, make_pair(0,0));
+  pair<bool, vector<Coordinate>> result(true, {make_pair(0,0)});
 
   int d_row = abs(c1.first - c2.first);
   int d_col = abs(c1.second - c2.second);
-  int middle_row = ((c1.first < c2.first) ? c1.first + 1 : c2.first + 1);
-  int middle_col = ((c1.second < c2.second) ? c1.second + 1 : c2.second + 1);
 
   // Vertical section, joinable horizontally
-  if (d_row == 0 && d_col == 2)
+  if (d_row == 0 && d_col == incr)
   {
-    result.second = make_pair(c1.first, middle_col);
+    Coordinate smaller, larger;
+    if (c1.second <= c2.second)
+    {
+      smaller = c1;
+      larger = c2;
+    }
+    else
+    {
+      smaller = c2;
+      larger = c1;
+    }
+    result.second = get_coordinates_in_range(smaller, larger, true, false, true, false);
   }
   // Horizontal section, joinable vertically
-  else if (d_col == 0 && d_row == 2)
+  else if (d_col == 0 && d_row == incr)
   {
-    result.second = make_pair(middle_row, c1.second);
+    Coordinate smaller, larger;
+    if (c1.first <= c2.first)
+    {
+      smaller = c1;
+      larger = c2;
+    }
+    else
+    {
+      smaller = c2;
+      larger = c1;
+    }
+    result.second = get_coordinates_in_range(smaller, larger, false, true, false, true);
   }
   else
   {
