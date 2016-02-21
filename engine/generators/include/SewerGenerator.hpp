@@ -19,7 +19,9 @@ class SewerGenerator : public SOTW::Generator
 
     void connect_sewer_sections(MapPtr result_map, const int y_incr);
     void connect_section(MapPtr result_map, const std::pair<bool, std::vector<Coordinate>>& overlap, const int first_row, const int y_incr);
-
+    void increment_connections(std::map<std::pair<Coordinate, Coordinate>, int>& connections_map, const std::pair<Coordinate, Coordinate>& section);
+    void create_vertical_connections(MapPtr result_map, std::map<std::pair<Coordinate, Coordinate>, int>& incoming_connections, const int y_incr);
+    void connect_unconnected_sections(MapPtr result_map, const std::map<std::pair<Coordinate, Coordinate>, int>& incoming_connections);
     std::pair<Coordinate, Coordinate> retrieve_and_remove_random_section(std::map<int, std::vector<std::pair<Coordinate, Coordinate>>>& sections_copy);
 
     TileGenerator tg;
