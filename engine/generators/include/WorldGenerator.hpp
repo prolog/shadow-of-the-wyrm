@@ -35,12 +35,22 @@ class WorldGenerator : public SOTW::Generator
     void populate_race_information();
     void set_village_races(MapPtr map);
     void remove_village_coordinates_if_present(const Coordinate& c);
-    void set_tile_properties(TilePtr tile, TileType tile_type, TileType tile_subtype, const int row, const int col);
+    void set_tile_properties(TilePtr tile, TileType tile_type, const int row, const int col);
     TilePtr generate_feature_or_default(const std::vector<std::pair<int, std::pair<TileType, TileType>>>& special_features, TileType default_tile_type, const int row, const int col);
     
     void set_initial_creatures_for_village(TilePtr village_tile, const std::string& village_race_id);
     std::vector<std::string> get_potential_creatures(const std::string& village_race_id);
     void set_creatures_to_village_tile(TilePtr tile, const std::vector<std::string>& potential_creature_ids);
+
+    // Tile-specific property setup functions.
+    void set_dungeon_complex_properties(TilePtr tile);
+    void set_castle_properties(TilePtr tile);
+    void set_keep_properties(TilePtr tile);
+    void set_sewer_complex_properties(TilePtr tile);
+
+    // A map containing pointers to member functions - used to set up special
+    // sets of properties on particular tile types.
+    std::map<TileType, void (WorldGenerator::*)(TilePtr tile)> tile_property_fns;
 
     std::set<Coordinate> village_coordinates;
     std::set<std::string> initial_race_ids;

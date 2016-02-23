@@ -30,7 +30,12 @@ const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 // The tile generator should not generate any random items on the world map!
 // Those items cannot be picked up.
 WorldGenerator::WorldGenerator()
-: Generator("", TileType::TILE_TYPE_UNDEFINED), tg(false)
+: Generator("", TileType::TILE_TYPE_UNDEFINED)
+, tg(false)
+, tile_property_fns({{TileType::TILE_TYPE_DUNGEON_COMPLEX, &WorldGenerator::set_dungeon_complex_properties},
+                     {TileType::TILE_TYPE_KEEP, &WorldGenerator::set_keep_properties},
+                     {TileType::TILE_TYPE_CASTLE, &WorldGenerator::set_castle_properties},
+                     {TileType::TILE_TYPE_SEWER, &WorldGenerator::set_sewer_complex_properties}})
 {
 }
 
@@ -183,7 +188,7 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
   }
 }
 
-void WorldGenerator::set_tile_properties(TilePtr tile, TileType tile_type, TileType tile_subtype, const int row, const int col)
+void WorldGenerator::set_tile_properties(TilePtr tile, TileType tile_type, const int row, const int col)
 {
   Coordinate c = make_pair(row, col);
 
@@ -194,22 +199,15 @@ void WorldGenerator::set_tile_properties(TilePtr tile, TileType tile_type, TileT
   else
   {
     remove_village_coordinates_if_present(c);
+  }
 
-    if (tile_type == TileType::TILE_TYPE_KEEP)
-    {
-      bool ruined = RNG::percent_chance(50);
+  if (tile != nullptr)
+  {
+    auto t_it = tile_property_fns.find(tile->get_tile_type());
 
-      // Set the ruined flag, if applicable, so that when the generator is
-      // created, the keep can be generated either ruined or upright.
-      if (ruined)
-      {
-        tile->set_additional_property(TileProperties::TILE_PROPERTY_RUINED, Bool::to_string(ruined));
-      }
-    }
-    else if (tile_type == TileType::TILE_TYPE_CASTLE)
+    if (t_it != tile_property_fns.end())
     {
-      CastleType ct = static_cast<CastleType>(RNG::range(static_cast<int>(CastleType::CASTLE_TYPE_MOTTE_AND_BAILEY), static_cast<int>(CastleType::CASTLE_TYPE_LAST)));
-      tile->set_additional_property(TileProperties::TILE_PROPERTY_CASTLE_TYPE, std::to_string(static_cast<int>(ct)));
+      (this->*(t_it->second))(tile);
     }
   }
 }
@@ -241,7 +239,7 @@ TilePtr WorldGenerator::generate_feature_or_default(const vector<pair<int, pair<
       TileType tile_subtype = sp_type_pair.second.second;
 
       result = tg.generate(tile_type, tile_subtype);
-      set_tile_properties(result, tile_type, tile_subtype, row, col);
+      set_tile_properties(result, tile_type, row, col);
 
       break;
     }
@@ -250,7 +248,7 @@ TilePtr WorldGenerator::generate_feature_or_default(const vector<pair<int, pair<
   if (result == nullptr)
   {
     result = tg.generate(default_tile_type, TileType::TILE_TYPE_UNDEFINED);
-    set_tile_properties(result, default_tile_type, TileType::TILE_TYPE_UNDEFINED, row, col);
+    set_tile_properties(result, default_tile_type, row, col);
   }
 
   return result;
@@ -582,4 +580,44 @@ void WorldGenerator::remove_village_coordinates_if_present(const Coordinate& c)
 MapType WorldGenerator::get_map_type() const
 {
   return MapType::MAP_TYPE_WORLD;
+}
+
+void WorldGenerator::set_dungeon_complex_properties(TilePtr tile)
+{
+  if (tile != nullptr)
+  {
+    // ...
+  }
+}
+
+void WorldGenerator::set_sewer_complex_properties(TilePtr tile)
+{
+  if (tile != nullptr)
+  {
+    // ...
+  }
+}
+
+void WorldGenerator::set_keep_properties(TilePtr tile)
+{
+  if (tile != nullptr)
+  {
+    bool ruined = RNG::percent_chance(50);
+
+    // Set the ruined flag, if applicable, so that when the generator is
+    // created, the keep can be generated either ruined or upright.
+    if (ruined)
+    {
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_RUINED, Bool::to_string(ruined));
+    }
+  }
+}
+
+void WorldGenerator::set_castle_properties(TilePtr tile)
+{
+  if (tile != nullptr)
+  {
+    CastleType ct = static_cast<CastleType>(RNG::range(static_cast<int>(CastleType::CASTLE_TYPE_MOTTE_AND_BAILEY), static_cast<int>(CastleType::CASTLE_TYPE_LAST)));
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_CASTLE_TYPE, std::to_string(static_cast<int>(ct)));
+  }
 }
