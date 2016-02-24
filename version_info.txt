@@ -55,7 +55,9 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - Rovers now start with either a woodsman's axe or a briar axe.
 
-- New items: roots, berries, kelp, History of the Kell Empire, briar axe.
+- New items: roots, berries, kelp, History of the Kell Empire, briar axe,
+  fortified dwarven wine, elven brandy, goblin moonshine, imperial dagger
+  "Amagari".
 
 - New creatures: Twille, Cadlind.
 
