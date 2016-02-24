@@ -26400,6 +26400,63 @@
 				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
+			<Potion id="fortified_dwarven_wine">
+				<DescriptionSID>FORTIFIED_DWARVEN_WINE_SID</DescriptionSID>
+				<UsageDescriptionSID>FORTIFIED_DWARVEN_WINE_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>400</Nutrition>
+				<StandardDrinks>1.5</StandardDrinks>
+				<Effect>0</Effect>
+			</Potion>
+			<Potion id="elven_brandy">
+				<DescriptionSID>ELVEN_BRANDY_SID</DescriptionSID>
+				<UsageDescriptionSID>ELVEN_BRANDY_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>400</Nutrition>
+				<StandardDrinks>1</StandardDrinks>
+				<Effect>0</Effect>
+			</Potion>
+			<Potion id="goblin_moonshine">
+				<DescriptionSID>GOBLIN_MOONSHINE_SID</DescriptionSID>
+				<UsageDescriptionSID>GOBLIN_MOONSHINE_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>400</Nutrition>
+				<StandardDrinks>2</StandardDrinks>
+				<Effect>0</Effect>
+			</Potion>
 			<Potion id="healing_potion">
 				<DescriptionSID>HEALING_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HEALING_POTION_SID</UnidentifiedDescriptionSID>
