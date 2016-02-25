@@ -4,6 +4,7 @@
 #include <vector>
 #include "CellularAutomataTypes.hpp"
 #include "Generator.hpp"
+#include "TileDepthOptions.hpp"
 #include "TileGenerator.hpp"
 
 // JCD FIXME: Eventually, set about changing all the "MapPtr" arguments to "const MapPtr&" arguments.
@@ -41,6 +42,7 @@ class WorldGenerator : public SOTW::Generator
     void set_initial_creatures_for_village(TilePtr village_tile, const std::string& village_race_id);
     std::vector<std::string> get_potential_creatures(const std::string& village_race_id);
     void set_creatures_to_village_tile(TilePtr tile, const std::vector<std::string>& potential_creature_ids);
+    void set_tile_depth_options(TilePtr tile);
 
     // Tile-specific property setup functions.
     void set_dungeon_complex_properties(TilePtr tile);
@@ -51,6 +53,9 @@ class WorldGenerator : public SOTW::Generator
     // A map containing pointers to member functions - used to set up special
     // sets of properties on particular tile types.
     std::map<TileType, void (WorldGenerator::*)(TilePtr tile)> tile_property_fns;
+
+    // Used to set min/max depths for underworld tile types.
+    std::map<TileType, TileDepthOptions> tile_depth_options;
 
     std::set<Coordinate> village_coordinates;
     std::set<std::string> initial_race_ids;

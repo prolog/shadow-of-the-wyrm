@@ -55,6 +55,11 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - Rovers now start with either a woodsman's axe or a briar axe.
 
+- World generation now sets a maximum depths on dungeons and sewers.
+  There is always at least one 50-level structure.
+
+- Reduced the depth of the dungeon on little island from 50 levels to 25.
+
 - New items: roots, berries, kelp, History of the Kell Empire, briar axe,
   fortified dwarven wine, elven brandy, goblin moonshine, imperial dagger
   "Amagari".
