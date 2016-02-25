@@ -3621,6 +3621,9 @@
     <ClInclude Include="world\tiles\include\SewerTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\TileDepthOptions.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7075,6 +7078,12 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\SewerTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\TileDepthOptions.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\unit_tests\TileDepthOptions_test.cpp">
+      <Filter>Source Files\engine\generators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
