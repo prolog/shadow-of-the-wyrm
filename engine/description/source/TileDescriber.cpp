@@ -1,6 +1,7 @@
 #include "TileDescriber.hpp"
 #include "Conversion.hpp"
 #include "StringTable.hpp"
+#include "TextMessages.hpp"
 #include "TileTextKeys.hpp"
 
 using std::string;
@@ -33,6 +34,11 @@ string TileDescriber::describe() const
     if (tile->has_extra_description())
     {
       description = description + " " + StringTable::get(tile->get_extra_description_sid());
+    }
+
+    if (tile->has_engraving())
+    {
+      description = description + " " + TextMessages::get_engraving_message(tile->get_engraving_sid());
     }
   }
 

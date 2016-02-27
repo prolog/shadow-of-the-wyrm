@@ -1,4 +1,7 @@
 Me:
+- Each dungeon/sewer should have a description to give an indication of
+  how deep it goes: pick a random creature that can be generated at its
+  max level.
 - Auto identify wearables on wearing.
 - Code should handle being started from outside the game's directory.
 - Update gaining resists so that the delta needs to be more than a certain

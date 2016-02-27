@@ -115,6 +115,21 @@ bool Tile::has_extra_description() const
   return has_additional_property(TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
 }
 
+void Tile::set_engraving_sid(const string& new_engraving_sid)
+{
+  set_additional_property(TileProperties::TILE_PROPERTY_ENGRAVING_SID, new_engraving_sid);
+}
+
+string Tile::get_engraving_sid() const
+{
+  return get_additional_property(TileProperties::TILE_PROPERTY_ENGRAVING_SID);
+}
+
+bool Tile::has_engraving() const
+{
+  return has_additional_property(TileProperties::TILE_PROPERTY_ENGRAVING_SID);
+}
+
 bool Tile::has_been_dug() const
 {
   string prop = get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG);

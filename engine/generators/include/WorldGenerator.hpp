@@ -42,7 +42,15 @@ class WorldGenerator : public SOTW::Generator
     void set_initial_creatures_for_village(TilePtr village_tile, const std::string& village_race_id);
     std::vector<std::string> get_potential_creatures(const std::string& village_race_id);
     void set_creatures_to_village_tile(TilePtr tile, const std::vector<std::string>& potential_creature_ids);
-    void set_tile_depth_options(TilePtr tile);
+    
+    // Set all the various tile depth information.
+    void set_tile_depth_details(TilePtr tile);
+
+    // Set the tile depth
+    void set_tile_depth_options(TilePtr tile, TileDepthOptions& tdo, int& max_depth);
+
+    // Set creature details for the depth (ie, what's the engraving of?)
+    void set_tile_depth_creature_details(TilePtr tile, const int max_depth);
 
     // Tile-specific property setup functions.
     void set_dungeon_complex_properties(TilePtr tile);

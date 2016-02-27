@@ -35,6 +35,7 @@ const string TextMessages::NAME_TITLE_MESSAGE                 = "NAME_TITLE_MESS
 const string TextMessages::EXPERIENCE_SYNOPSIS_MESSAGE        = "EXPERIENCE_SYNOPSIS_MESSAGE";
 const string TextMessages::EXPERIENCE_SYNOPSIS_MAX_MESSAGE    = "EXPERIENCE_SYNOPSIS_MAX_MESSAGE";
 const string TextMessages::SPECIAL_DAY_MESSAGE                = "SPECIAL_DAY_MESSAGE";
+const string TextMessages::ENGRAVING_MESSAGE                  = "ENGRAVING_MESSAGE";
 
 string TextMessages::get_player_description(const string& player_name)
 {
@@ -434,4 +435,13 @@ string TextMessages::get_special_day_message(const string& name_sid, const strin
   boost::replace_first(special_day_msg, "%s2", StringTable::get(desc_sid));
 
   return special_day_msg;
+}
+
+string TextMessages::get_engraving_message(const string& engraving_sid)
+{
+  string engraving_msg = StringTable::get(ENGRAVING_MESSAGE);
+
+  boost::replace_first(engraving_msg, "%s", StringTable::get(engraving_sid));
+
+  return engraving_msg;
 }
