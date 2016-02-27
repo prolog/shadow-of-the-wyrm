@@ -69,7 +69,7 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - New items: roots, berries, kelp, History of the Kell Empire, briar axe,
   fortified dwarven wine, elven brandy, goblin moonshine, imperial dagger
-  "Amagari".
+  "Amagari", withering ring.
 
 - New creatures: Twille, Cadlind.
 
