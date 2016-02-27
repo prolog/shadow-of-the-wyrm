@@ -2,9 +2,11 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "EquipmentManager.hpp"
+#include "ItemIdentifier.hpp"
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
+#include "Wearable.hpp"
 
 using namespace std;
 
@@ -315,7 +317,8 @@ ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item, const Equ
   return action_cost_value; 
 }
 
-// Equip the item.  If successful, remove it from the inventory.
+// Equip the item.  If successful, remove it from the inventory, and then
+// identify the item, if the item is a wearable.
 ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot)
 {
   ActionCostValue action_cost_value = 0;
@@ -330,6 +333,14 @@ ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creatur
 
       string item_id = item->get_id();
       creature->get_inventory()->remove(item_id);
+
+      WearablePtr wearable = std::dynamic_pointer_cast<Wearable>(item);
+
+      if (wearable != nullptr)
+      {
+        ItemIdentifier iid;
+        iid.set_item_identified(item, item->get_base_id(), true);
+      }
     }
   }
     
