@@ -1,11 +1,5 @@
 Me:
-- Each dungeon/sewer should have a description to give an indication of
-  how deep it goes: pick a random creature that can be generated at its
-  max level.
-- Auto identify wearables on wearing.
 - Code should handle being started from outside the game's directory.
-- Update gaining resists so that the delta needs to be more than a certain
-  amount before you get something from a corpse.
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.

@@ -64,6 +64,9 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - Reduced the depth of the dungeon on little island from 50 levels to 25.
 
+- Wearables (weapons and armour, rings, amulets, etc) are now identified
+  when equipped.
+
 - New items: roots, berries, kelp, History of the Kell Empire, briar axe,
   fortified dwarven wine, elven brandy, goblin moonshine, imperial dagger
   "Amagari".
