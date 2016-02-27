@@ -22957,6 +22957,21 @@
 				<Soak>0</Soak>
 				<ToHit>15</ToHit>
 			</Ring>
+			<Ring id="withering_ring">
+				<DescriptionSID>WITHERING_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_WITHERING_RING_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>WITHERING_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_WITHERING_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>105</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>2</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>3</DangerLevel>
+				<Evade>-20</Evade>
+			</Ring>
 			<Ring id="barbarians_ring">
 				<DescriptionSID>BARBARIANS_RING_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_BARBARIANS_RING_SID</UnidentifiedDescriptionSID>
