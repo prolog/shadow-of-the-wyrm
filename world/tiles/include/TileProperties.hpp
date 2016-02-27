@@ -43,6 +43,9 @@ class TileProperties
     // Has something been planted on this tile?
     static const std::string TILE_PROPERTY_PLANTED;
 
+    // Is there an engraving on this tile?
+    static const std::string TILE_PROPERTY_ENGRAVING_SID;
+
     // Generates the map key that identifies the custom map ID for
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);

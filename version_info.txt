@@ -58,6 +58,10 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 - World generation now sets a maximum depths on dungeons and sewers.
   There is always at least one 50-level structure.
 
+- Tiles can now have engravings.  For dungeon and sewer complexes, added
+  engravings, when applicable, of a creature whose danger corresponds to
+  the maximum depth of the dungeon.
+
 - Reduced the depth of the dungeon on little island from 50 levels to 25.
 
 - New items: roots, berries, kelp, History of the Kell Empire, briar axe,

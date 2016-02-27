@@ -30,6 +30,7 @@ class TextMessages
     static std::string get_reflexive_pronoun(CreaturePtr creature);
     static std::string get_experience_synopsis(const int level, const int exp, const int exp_required, const int next_level, const std::string& race_name, const float r_mult, const std::string class_name, const float c_mult);
     static std::string get_special_day_message(const std::string& day_name_sid, const std::string& day_desc_sid);
+    static std::string get_engraving_message(const std::string& engraving_sid);
 
   protected:
     TextMessages();
@@ -50,4 +51,5 @@ class TextMessages
     static const std::string EXPERIENCE_SYNOPSIS_MESSAGE;
     static const std::string EXPERIENCE_SYNOPSIS_MAX_MESSAGE;
     static const std::string SPECIAL_DAY_MESSAGE;
+    static const std::string ENGRAVING_MESSAGE;
 };

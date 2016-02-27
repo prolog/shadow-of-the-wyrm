@@ -4,6 +4,7 @@
 #include "CoordUtils.hpp"
 #include "Conversion.hpp"
 #include "CreatureGenerationConstants.hpp"
+#include "CreatureGenerationManager.hpp"
 #include "CreatureGenerationOptionsStringBuilder.hpp"
 #include "DungeonGenerator.hpp"
 #include "Game.hpp"
@@ -37,8 +38,8 @@ WorldGenerator::WorldGenerator()
                      {TileType::TILE_TYPE_CASTLE, &WorldGenerator::set_castle_properties},
                      {TileType::TILE_TYPE_SEWER, &WorldGenerator::set_sewer_complex_properties}})
 // Min Depth for dungeons is 10 levels, 5 for sewers.
-, tile_depth_options({{TileType::TILE_TYPE_DUNGEON, TileDepthOptions(10, 50, vector<int>({50, 45}))},
-                      {TileType::TILE_TYPE_SEWER, TileDepthOptions(5, 50, vector<int>({50}))}})
+, tile_depth_options({{TileType::TILE_TYPE_DUNGEON_COMPLEX, TileDepthOptions(10, 50, vector<int>({50, 45}))},
+                      {TileType::TILE_TYPE_SEWER_COMPLEX, TileDepthOptions(5, 50, vector<int>({50}))}})
 {
 }
 
@@ -213,11 +214,11 @@ void WorldGenerator::set_tile_properties(TilePtr tile, TileType tile_type, const
       (this->*(t_it->second))(tile);
     }
 
-    set_tile_depth_options(tile);
+    set_tile_depth_details(tile);
   }
 }
 
-void WorldGenerator::set_tile_depth_options(TilePtr tile)
+void WorldGenerator::set_tile_depth_details(TilePtr tile)
 {
   if (tile != nullptr)
   {
@@ -227,22 +228,58 @@ void WorldGenerator::set_tile_depth_options(TilePtr tile)
 
     if (t_it != tile_depth_options.end())
     {
-      TileDepthOptions tdo = t_it->second;
-      vector<int>& remaining_depths = tdo.get_remaining_depths_ref();
-      int max_depth;
+      TileDepthOptions& tdo = t_it->second;
+      int max_depth = 1;
 
-      if (!remaining_depths.empty())
-      {
-        max_depth = remaining_depths.back();
-        remaining_depths.pop_back();
-      }
-      else
-      {
-        max_depth = RNG::range(tdo.get_min_depth(), tdo.get_max_depth());
-      }
+      set_tile_depth_options(tile, tdo, max_depth);
+      set_tile_depth_creature_details(tile, max_depth);
+    }
+  }
+}
 
-      // Set the max depth on the tile.
-      tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, to_string(max_depth));
+void WorldGenerator::set_tile_depth_options(TilePtr tile, TileDepthOptions& tdo, int& max_depth)
+{
+  if (tile != nullptr)
+  {
+    vector<int>& remaining_depths = tdo.get_remaining_depths_ref();
+
+    if (!remaining_depths.empty())
+    {
+      max_depth = remaining_depths.back();
+      remaining_depths.pop_back();
+    }
+    else
+    {
+      max_depth = RNG::range(tdo.get_min_depth(), tdo.get_max_depth());
+    }
+
+    // Set the max depth on the tile.
+    tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, to_string(max_depth));
+  }
+}
+
+void WorldGenerator::set_tile_depth_creature_details(TilePtr tile, const int max_depth)
+{
+  if (tile != nullptr)
+  {
+    // Get a creature ID for the given tile/depth combination.
+    CreatureGenerationManager cgm;
+    CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile->get_tile_type(), true /* assume permanent */, max_depth, max_depth, Rarity::RARITY_COMMON, {});
+
+    if (!generation_map.empty())
+    {
+      auto g_it = generation_map.begin();
+      std::advance(g_it, RNG::range(0, generation_map.size() - 1));
+
+      if (g_it != generation_map.end())
+      {
+        CreaturePtr creature = g_it->second.first;
+
+        if (creature != nullptr)
+        {
+          tile->set_additional_property(TileProperties::TILE_PROPERTY_ENGRAVING_SID, creature->get_description_sid());
+        }
+      }
     }
   }
 }
