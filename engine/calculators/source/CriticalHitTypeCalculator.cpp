@@ -20,6 +20,6 @@ string CriticalHitTypeCalculator::get_combat_message() const
 // Critical hits do max damage.
 int CriticalHitTypeCalculator::get_base_damage(const Damage& damage) const
 {
-  return damage.max();
+  return std::max(1, damage.max());
 }
 

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "RegularHitTypeCalculator.hpp"
 #include "RNG.hpp"
 
@@ -19,6 +20,6 @@ string RegularHitTypeCalculator::get_combat_message() const
 // The base damage for a regular hit is just the damage roll
 int RegularHitTypeCalculator::get_base_damage(const Damage& damage) const
 {
-  return RNG::dice(damage);
+  return std::max(1, RNG::dice(damage));
 }
 
