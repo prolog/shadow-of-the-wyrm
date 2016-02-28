@@ -30,7 +30,7 @@ namespace ItemEnchantingSmithing
 
 Item::Item()
 : quantity(1), readable(false), worn_location(EquipmentWornLocation::EQUIPMENT_WORN_NONE), status(ItemStatus::ITEM_STATUS_UNCURSED), status_identified(false), 
-item_identified(false), artifact(false), hands_required(1), type(ItemType::ITEM_TYPE_MISC), symbol('?'), colour(Colour::COLOUR_UNDEFINED), 
+item_identified(false), auto_curse(false), artifact(false), hands_required(1), type(ItemType::ITEM_TYPE_MISC), symbol('?'), colour(Colour::COLOUR_UNDEFINED), 
 identification_type(ItemIdentificationType::ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EffectType::EFFECT_TYPE_NULL), material(MaterialType::MATERIAL_TYPE_WOOD),
 glowing(false)
 {
@@ -60,6 +60,7 @@ bool Item::operator==(const Item& i) const
   result = result && (worn_location == i.worn_location);
   result = result && (status == i.status);
   result = result && (item_identified == i.item_identified);
+  result = result && (auto_curse == i.auto_curse);
   result = result && (status_identified == i.status_identified);
   result = result && (artifact == i.artifact);
   result = result && (hands_required == i.hands_required);
@@ -436,6 +437,16 @@ bool Item::get_item_identified() const
   return identified;
 }
 
+void Item::set_auto_curse(const int new_auto_curse)
+{
+  auto_curse = new_auto_curse;
+}
+
+bool Item::get_auto_curse() const
+{
+  return auto_curse;
+}
+
 void Item::initialize_remaining_enchants()
 {
   Statistic new_rem(RNG::range(ItemEnchantingSmithing::MIN_ENCHANTS, ItemEnchantingSmithing::MAX_ENCHANTS));
@@ -731,6 +742,7 @@ bool Item::serialize(ostream& stream) const
   Serialize::write_enum(stream, status);
   Serialize::write_bool(stream, status_identified);
   Serialize::write_bool(stream, item_identified);
+  Serialize::write_bool(stream, auto_curse);
   Serialize::write_bool(stream, artifact);
   Serialize::write_int(stream, hands_required);
   Serialize::write_enum(stream, type);
@@ -775,6 +787,7 @@ bool Item::deserialize(istream& stream)
   Serialize::read_enum(stream, status);
   Serialize::read_bool(stream, status_identified);
   Serialize::read_bool(stream, item_identified);
+  Serialize::read_bool(stream, auto_curse);
   Serialize::read_bool(stream, artifact);
   Serialize::read_int(stream, hands_required);
   Serialize::read_enum(stream, type);

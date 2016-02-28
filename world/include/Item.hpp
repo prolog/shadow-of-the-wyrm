@@ -81,6 +81,10 @@ class Item : public ISerializable
     virtual void set_status_identified(const bool new_status_identified);
     virtual bool get_status_identified() const;
     
+    // Does the item curse itself when equipped?
+    virtual void set_auto_curse(const int new_auto_curse);
+    virtual bool get_auto_curse() const;
+
     virtual void set_artifact(const bool new_artifact);
     virtual bool get_artifact() const;
 
@@ -197,6 +201,7 @@ class Item : public ISerializable
     ItemStatus status;
     bool status_identified;
     bool item_identified;
+    bool auto_curse;
     bool artifact;
     int hands_required;
     ItemType type;

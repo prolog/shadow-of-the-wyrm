@@ -78,6 +78,9 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     ItemStatus status = static_cast<ItemStatus>(XMLUtils::get_child_node_int_value(item_node, "ItemStatus"));
     item->set_status(status);
     
+    bool auto_curse = XMLUtils::get_child_node_bool_value(item_node, "AutoCurse", item->get_auto_curse());
+    item->set_auto_curse(auto_curse);
+
     bool is_artifact = XMLUtils::get_child_node_bool_value(item_node, "Artifact");
     item->set_artifact(is_artifact);
 

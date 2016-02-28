@@ -67,6 +67,10 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 - Wearables (weapons and armour, rings, amulets, etc) are now identified
   when equipped.
 
+- Added an "auto curse" flag that sets an item's status to cursed when
+  the item is equipped.  Set the following items and artifacts auto-curse:
+  withering ring.
+
 - New items: roots, berries, kelp, History of the Kell Empire, briar axe,
   fortified dwarven wine, elven brandy, goblin moonshine, imperial dagger
   "Amagari", withering ring.

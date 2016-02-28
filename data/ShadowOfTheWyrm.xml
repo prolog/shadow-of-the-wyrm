@@ -21957,6 +21957,8 @@
 					<Pounds>8</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
+				<AutoCurse>1</AutoCurse>
+				<Artifact>1</Artifact>
 				<Material>6</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -22097,6 +22099,7 @@
 					<Pounds>12</Pounds>
 				</Weight>
 				<WornLocation>6</WornLocation>
+				<AutoCurse>1</AutoCurse>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
@@ -22968,6 +22971,7 @@
 					<Ounces>2</Ounces>
 				</Weight>
 				<WornLocation>2</WornLocation>
+				<AutoCurse>1</AutoCurse>
 				<Material>13</Material>
 				<DangerLevel>3</DangerLevel>
 				<Evade>-20</Evade>
@@ -23651,6 +23655,7 @@
 					<Pounds>13</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
+				<AutoCurse>1</AutoCurse>
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>

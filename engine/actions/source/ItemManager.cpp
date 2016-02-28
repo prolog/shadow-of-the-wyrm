@@ -329,18 +329,27 @@ ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creatur
     
     if (eq.set_item(item, eq_worn_slot))
     {
-      action_cost_value = get_action_cost_value(creature);
-
-      string item_id = item->get_id();
-      creature->get_inventory()->remove(item_id);
-
       WearablePtr wearable = std::dynamic_pointer_cast<Wearable>(item);
 
+      // If wearable, identify it.
       if (wearable != nullptr)
       {
         ItemIdentifier iid;
         iid.set_item_identified(item, item->get_base_id(), true);
       }
+
+      // If auto-cursing, curse it.
+      if (item->get_auto_curse())
+      {
+        item->set_status(ItemStatus::ITEM_STATUS_CURSED);
+        item->set_status_identified(true);
+      }
+
+      // Remove from inventory.
+      action_cost_value = get_action_cost_value(creature);
+
+      string item_id = item->get_id();
+      creature->get_inventory()->remove(item_id);
     }
   }
     
