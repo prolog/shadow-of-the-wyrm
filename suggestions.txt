@@ -1,7 +1,6 @@
 Me:
 - Code should handle being started from outside the game's directory.
 - Per-level skill increases (general, melee, ranged, magic).
-- Messages when you damage a creature below certain hit point thresholds.
 - Dump command for arbitrary text screens.
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
@@ -24,7 +23,6 @@ Me:
   items can be done and dumped to disk.
 - default_race and default_class settings that accept race/class IDs.  If
   empty or invalid, the user is prompted for selection.
-- Book in the library describing the world's special days.
 
 barrabus: 
 - Extra descs for items.

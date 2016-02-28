@@ -198,6 +198,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>book_of_days</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>57</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>isen_dun_chronicle</ID>
 				<Coord>
 					<Row>13</Row>
