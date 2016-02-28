@@ -27270,6 +27270,24 @@
 				<SpellID/>
 				<Difficulty>0</Difficulty>
 			</Spellbook>
+			<Spellbook id="book_of_days">
+				<DescriptionSID>BOOK_OF_DAYS_SID</DescriptionSID>
+				<UsageDescriptionSID>BOOK_OF_DAYS_USAGE_SID</UsageDescriptionSID>
+				<Value>15</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<TextSID>BOOK_OF_DAYS_TEXT_SID</TextSID>
+				<SpellID/>
+				<Difficulty>0</Difficulty>
+			</Spellbook>
 			<Spellbook id="on_eternalism">
 				<DescriptionSID>ON_ETERNALISM_SID</DescriptionSID>
 				<UsageDescriptionSID>ON_ETERNALISM_USAGE_SID</UsageDescriptionSID>
