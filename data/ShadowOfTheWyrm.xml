@@ -22976,6 +22976,24 @@
 				<DangerLevel>3</DangerLevel>
 				<Evade>-20</Evade>
 			</Ring>
+			<Ring id="stumbling_ring">
+				<DescriptionSID>STUMBLING_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_STUMBLING_RING_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>STUMBLING_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_STUMBLING_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>105</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>2</WornLocation>
+				<AutoCurse>1</AutoCurse>
+				<Material>13</Material>
+				<DangerLevel>3</DangerLevel>
+				<Evade>5</Evade>
+				<ToHit>-15</ToHit>
+				<AddlDamage>-10</AddlDamage>
+			</Ring>
 			<Ring id="barbarians_ring">
 				<DescriptionSID>BARBARIANS_RING_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_BARBARIANS_RING_SID</UnidentifiedDescriptionSID>

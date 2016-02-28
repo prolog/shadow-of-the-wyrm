@@ -69,11 +69,12 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - Added an "auto curse" flag that sets an item's status to cursed when
   the item is equipped.  Set the following items and artifacts auto-curse:
-  withering ring.
+  withering ring, Crown of Tyranny, smouldering black plate mail "Terror",
+  eldritch greatsword "Apocalypse", stumbling ring.
 
 - New items: roots, berries, kelp, History of the Kell Empire, briar axe,
   fortified dwarven wine, elven brandy, goblin moonshine, imperial dagger
-  "Amagari", withering ring.
+  "Amagari", withering ring, stumbling ring.
 
 - New creatures: Twille, Cadlind.
 
@@ -82,6 +83,9 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 - Bug fixes:
 
   - Blue jays were, uh, bright yellow.
+
+  - Damages were being displayed incorrectly (e.g., 1d8--10) when the
+    modifier portion was negative.
 
 Shadow of the Wyrm v0.4.7 "Llobet"
 - Version declared January 6, 2016.  Version finalized January 23, 2016.

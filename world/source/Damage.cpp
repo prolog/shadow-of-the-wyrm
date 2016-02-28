@@ -200,6 +200,8 @@ string Damage::str() const
 {
   ostringstream ss;
   string modifier_s;
+
+  int modifier_abs = std::abs(modifier);
   
   ss << num_dice << "d" << dice_sides;
   
@@ -214,7 +216,7 @@ string Damage::str() const
   
   if (!modifier_s.empty())
   {
-    ss << modifier_s << modifier;
+    ss << modifier_s << modifier_abs;
   }
   
   if (chaotic)
