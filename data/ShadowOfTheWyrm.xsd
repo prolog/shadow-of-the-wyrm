@@ -886,6 +886,7 @@
 		<xs:element name="WornLocation" type="tns:WornLocation" minOccurs="0"/>
 		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
 <!--		<xs:element name="ItemType" type="tns:ItemType"/> -->
+		<xs:element name="AutoCurse" type="xs:boolean"  minOccurs="0"/>
 		<xs:element name="Artifact" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="HandsRequired" type="tns:HandsType" minOccurs="0"/>
 		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>

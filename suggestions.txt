@@ -1,6 +1,5 @@
 Me:
 - Negative damage can be messed up - e.g., "1d8--10"
-- Add a flag to curse on equipping.  Add to withering ring.
 - Code should handle being started from outside the game's directory.
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
