@@ -87,6 +87,9 @@ Shadow of the Wyrm v0.4.8 "Carulli"
   - Damages were being displayed incorrectly (e.g., 1d8--10) when the
     modifier portion was negative.
 
+  - Negative damages used to be possible.  This is now fixed so that
+    the base damage (before resistances, soak, etc) is always at least 1.
+
 Shadow of the Wyrm v0.4.7 "Llobet"
 - Version declared January 6, 2016.  Version finalized January 23, 2016.
 

@@ -20,6 +20,6 @@ string MightyHitTypeCalculator::get_combat_message() const
 // Mighty blows use the max damage.
 int MightyHitTypeCalculator::get_base_damage(const Damage& damage) const
 {
-  return damage.max();
+  return std::max(1, damage.max());
 }
 

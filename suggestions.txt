@@ -1,6 +1,4 @@
 Me:
-- Ensure that a minimum of 1 damage can always be dealt, even with massive
-  negative values.
 - Code should handle being started from outside the game's directory.
 - Per-level skill increases (general, melee, ranged, magic).
 - Messages when you damage a creature below certain hit point thresholds.
