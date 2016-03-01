@@ -100,6 +100,7 @@ int cast_spell(lua_State* ls);
 int bless_equipment(lua_State* ls);
 int curse_equipment(lua_State* ls);
 int curse_inventory(lua_State* ls);
+int set_winner(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

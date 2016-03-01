@@ -2,6 +2,7 @@
 #include <boost/filesystem.hpp>
 #include "CompilationDetails.hpp"
 #include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "HighScoreConstants.hpp"
 #include "Metadata.hpp"
@@ -159,7 +160,7 @@ bool ScoreFile::write(CreaturePtr creature)
     {
       Metadata m;
 
-      ScoreFileEntry sfe(cr_score, creature->get_name(), m.get_user_name(), creature->get_sex(), creature->get_is_player(), creature->get_level().get_current(), CreatureUtils::get_race_class_synopsis(creature));
+      ScoreFileEntry sfe(cr_score, creature->get_name(), m.get_user_name(), creature->get_sex(), creature->get_is_player(), creature->get_level().get_current(), String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER)), CreatureUtils::get_race_class_synopsis(creature));
       entries.push_back(sfe);
 
       // Sort descending.
