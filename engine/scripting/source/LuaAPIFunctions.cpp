@@ -2690,6 +2690,7 @@ int set_winner(lua_State* ls)
     CreaturePtr creature = get_creature(creature_id);
 
     creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(true));
+    winner = true;
   }
   else
   {
