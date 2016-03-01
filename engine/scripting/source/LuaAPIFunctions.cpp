@@ -3,6 +3,7 @@
 #include "CoordUtils.hpp"
 #include "CreatureDescriber.hpp"
 #include "CreatureFactory.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
@@ -207,6 +208,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "bless_equipment", bless_equipment);
   lua_register(L, "curse_equipment", curse_equipment);
   lua_register(L, "curse_inventory", curse_inventory);
+  lua_register(L, "set_winner", set_winner);
 }
 
 // Lua API helper functions
@@ -2675,6 +2677,27 @@ int curse_inventory(lua_State* ls)
   }
 
   lua_pushboolean(ls, cursed_inv);
+  return 1;
+}
+
+int set_winner(lua_State* ls)
+{
+  bool winner = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(true));
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_winner");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, winner);
   return 1;
 }
 

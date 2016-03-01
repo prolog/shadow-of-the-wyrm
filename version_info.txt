@@ -75,6 +75,8 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 - Next to the Chronicle in the rectory in Isen Dun there is now a book
   describing the world's special days.
 
+- Winning characters are now mentioned in the high scores.
+
 - New items: roots, berries, kelp, History of the Kell Empire, briar axe,
   fortified dwarven wine, elven brandy, goblin moonshine, imperial dagger
   "Amagari", withering ring, stumbling ring, Book of Days.
