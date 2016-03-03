@@ -81,7 +81,7 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - After winning, the player now has the option to keep adventuring.  The
   winner flag is always set regardless of the choice, so that quitting
-  later still yields a winner in the high scores.
+  later still yields a winner in the high scores (kraphead).
 
 - New items: roots, berries, kelp, History of the Kell Empire, briar axe,
   fortified dwarven wine, elven brandy, goblin moonshine, imperial dagger
