@@ -262,10 +262,23 @@ static int add_message_with_pause(lua_State* ls)
   int num_args = lua_gettop(ls);
   if (num_args > 0 && lua_isstring(ls, 1))
   {
+    // By default, clear the message buffer
+    bool clear_buffer = true;
+
+    if (num_args == 2 && lua_isboolean(ls, 2))
+    {
+      clear_buffer = (lua_toboolean(ls, 2) != 0);
+    }
+
     string message = read_sid_and_replace_values(ls);
 
     IMessageManager& manager = MessageManagerFactory::instance();
-    manager.clear_if_necessary();
+
+    if (clear_buffer)
+    {
+      manager.clear_if_necessary();
+    }
+
     manager.add_new_message_with_pause(message);
     manager.send();
 
