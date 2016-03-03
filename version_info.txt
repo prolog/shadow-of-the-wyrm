@@ -77,6 +77,12 @@ Shadow of the Wyrm v0.4.8 "Carulli"
 
 - Winning characters are now mentioned in the high scores.
 
+- The message displayed after winning is more descriptive.
+
+- After winning, the player now has the option to keep adventuring.  The
+  winner flag is always set regardless of the choice, so that quitting
+  later still yields a winner in the high scores.
+
 - New items: roots, berries, kelp, History of the Kell Empire, briar axe,
   fortified dwarven wine, elven brandy, goblin moonshine, imperial dagger
   "Amagari", withering ring, stumbling ring, Book of Days.

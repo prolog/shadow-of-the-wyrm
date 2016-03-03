@@ -43,7 +43,6 @@ AgingMinotaur:
 Kraphead:
 - auto-displace when bumping friendly creatures
 - implement dual wield
-- Option to keep adventuring after killing Amaurosis
 - item generation: more arrows
 
 Mateusz Lagowski
