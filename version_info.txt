@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.4.8 "Carulli"
-- Version declared January 23, 2016.
+- Version declared January 23, 2016.  Version finalized March 3, 2016.
 
 - Out-of-view features no longer disappear - these are remembered
   (Avagart).
