@@ -42,8 +42,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Italian guitarist and composer of the classical period.
-  return "\"Carulli\"";
+  // Venetian lutenist - his "Ballo Detto Il Conte Orlando" is the basis for
+  // the first movement of Respighi's "Ancient Airs and Dances".
+  return "\"Molinaro\"";
 }
 
 string Metadata::get_game_version_synopsis() const
