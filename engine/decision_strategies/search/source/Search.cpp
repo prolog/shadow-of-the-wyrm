@@ -106,8 +106,10 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
             sn.set_path_cost(parent->get_path_cost() + 1);
           }
         
-          // Used for A* search.  Use Chebyshev distance for now.
-          sn.set_estimated_cost_to_goal(CoordUtils::chebyshev_distance(coord, goal_coordinate));
+          // Used for A* search.  Use Chebyshev distance - 1 (distance from
+          // next tile) plus the actual movement cost of the current tile.
+          int estimated_cost = (CoordUtils::chebyshev_distance(coord, goal_coordinate) - 1) + tile->get_movement_multiplier();
+          sn.set_estimated_cost_to_goal(estimated_cost);
         
           search_nodes.push_back(sn);
         }

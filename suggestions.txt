@@ -1,4 +1,8 @@
 Me:
+- Confirm danger level after siriath's lair - seeing a lot of the same
+  creatures.
+- Goblin trappers
+- Stores
 - More monsters with special attacks or death events.
 - Code should handle being started from outside the game's directory.
 - Per-level skill increases (general, melee, ranged, magic).
