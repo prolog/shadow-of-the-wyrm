@@ -97,6 +97,7 @@
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(ZLIB_DIR)\zlib-1.2.8\lib;$(LUA_DEV)\lib;$(GTEST_DIR)\gtest-1.7.0\msvc\gtest\Debug;$(BOOST_DIR)\boost_1_60_0\stage\lib;$(XERCES_DIR)\xerces-c-3.1.1\Build\Win32\VC10\Debug;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtestd.lib;gtest_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -125,6 +126,7 @@
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(ZLIB_DIR)\zlib-1.2.8\lib;$(LUA_DEV)\lib;$(GTEST_DIR)\gtest-1.7.0\msvc\gtest\Debug;$(BOOST_DIR)\boost_1_60_0\stage\lib;$(XERCES_DIR)\xerces-c-3.1.1\Build\Win32\VC10\Debug;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtestd.lib;gtest_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -152,6 +154,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(ZLIB_DIR)\zlib-1.2.8\lib;$(XERCES_DIR)\xerces-c-3.1.1\Build\Win32\VC10\Release;$(LUA_DEV)\lib;$(BOOST_DIR)\boost_1_60_0\stage\lib;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d $(ProjectDir)version_info.txt $(OutDir)
@@ -197,6 +200,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(ZLIB_DIR)\zlib-1.2.8\lib;$(XERCES_DIR)\xerces-c-3.1.1\Build\Win32\VC10\Release;$(LUA_DEV)\lib;$(BOOST_DIR)\boost_1_60_0\stage\lib;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>zdll.lib;lua51.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d $(ProjectDir)version_info.txt $(OutDir)
