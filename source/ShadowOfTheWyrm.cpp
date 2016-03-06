@@ -30,181 +30,105 @@
 #ifdef _MSC_VER
 #include <tchar.h>
 #include <windows.h>
+#include <dbghelp.h>
 
-// From "Postmortem Debugging" by Stefan Wörthmüller.
-void LogStackFrames(FILE* opened_out_file, void * FaultAdress, char *);
 LONG sotw_fault_handler(struct _EXCEPTION_POINTERS *  ExInfo);
-LONG sotw_fault_handler(struct _EXCEPTION_POINTERS *  ExInfo)
+void write_minidump(struct _EXCEPTION_POINTERS * e);
+
+LONG sotw_fault_handler(struct _EXCEPTION_POINTERS *  e)
 {
-  char  *fault = "";
-  switch (ExInfo->ExceptionRecord->ExceptionCode)
-  {
-    case EXCEPTION_ACCESS_VIOLATION:
-      fault = "ACCESS VIOLATION"; 
-      break;
-    case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:
-      fault = "ARRAY BOUNDS EXCEEDED";
-      break;
-    case EXCEPTION_BREAKPOINT:
-      fault = "BREAKPOINT";
-      break;
-    case EXCEPTION_DATATYPE_MISALIGNMENT:
-      fault = "DATATYPE MISALIGNMENT"; 
-      break;
-    case EXCEPTION_FLT_DENORMAL_OPERAND:
-      fault = "FLT DENORMAL OPERAND";
-      break;
-    case EXCEPTION_FLT_INEXACT_RESULT:
-      fault = "FLT INEXACT RESULT";
-      break;
-    case EXCEPTION_FLT_DIVIDE_BY_ZERO:
-      fault = "FLT DIVIDE BY ZERO"; 
-      break;
-    case EXCEPTION_FLT_INVALID_OPERATION:
-      fault = "FLT INVALID OPERATION";
-      break;
-    case EXCEPTION_FLT_OVERFLOW:
-      fault = "FLT OVERFLOW";
-      break;
-    case EXCEPTION_FLT_STACK_CHECK:
-      fault = "FLT STACK CHECK";
-      break;
-    case EXCEPTION_FLT_UNDERFLOW:
-      fault = "FLT UNDERFLOW";
-      break;
-    case EXCEPTION_ILLEGAL_INSTRUCTION:
-      fault = "ILLEGAL INSTRUCTION";
-      break;
-    case EXCEPTION_IN_PAGE_ERROR:
-      fault = "IN_PAGE_ERROR";
-      break;
-    case EXCEPTION_INT_DIVIDE_BY_ZERO:
-      fault = "INT DIVIDE BY ZERO";
-      break;
-    case EXCEPTION_INT_OVERFLOW:
-      fault = "INT OVERFLOW";
-      break;
-    case EXCEPTION_INVALID_DISPOSITION:
-      fault = "INVALID_DISPOSITION";
-      break;
-    case EXCEPTION_NONCONTINUABLE_EXCEPTION:
-      fault = "NONCONTINUABLE EXCEPTION";
-      break;
-    case EXCEPTION_PRIV_INSTRUCTION:
-      fault = "PRIV INSTRUCTION";
-      break;
-    case EXCEPTION_SINGLE_STEP:
-      fault = "SINGLE STEP";
-      break;
-    case EXCEPTION_STACK_OVERFLOW:
-      fault = "STACK_OVERFLOW";
-      break;
-    default: 
-      fault = "UNKNOWN";
-      break;
-  }
+  write_minidump(e);
 
-  FILE* sgLogFile = fopen("crash_sotw.log", "w");
-
-  if (sgLogFile != NULL)
-  {
-    fprintf(sgLogFile, "****************************************************\n");
-    fprintf(sgLogFile, "*** A Program Fault occurred:\n");
-    fprintf(sgLogFile, "*** Error code %08X: %s\n", ExInfo->ExceptionRecord->ExceptionCode, fault);
-    fprintf(sgLogFile, "****************************************************\n");
-    fprintf(sgLogFile, "***   Address: %08X\n", (int)ExInfo->ExceptionRecord->ExceptionAddress);
-    fprintf(sgLogFile, "***     Flags: %08X\n", ExInfo->ExceptionRecord->ExceptionFlags);
-
-    LogStackFrames(sgLogFile, ExInfo->ExceptionRecord->ExceptionAddress, (char *)ExInfo->ContextRecord->Ebp);
-    
-    fclose(sgLogFile);
-
-    std::cout << "Sadly, Shadow of the Wyrm crashed." << std::endl << std::endl;
-    std::cout << "Please email crash_sotw.log to jcd748@mail.usask.ca, and mention if you're " << std::endl;
-    std::cout << "using the Win7 or XP build." << std::endl << std::endl;
-  }
-
+  std::cout << "Shadow of the Wyrm crashed unexpectedly (sorry!)." << std::endl << std::endl;
+  std::cout << "Please email the .dmp file created to jcd748@mail.usask.ca and mention if you're using the Win7 or XP build." << std::endl << std::endl;
   return EXCEPTION_EXECUTE_HANDLER;
 }
 
-void LogStackFrames(FILE* sgLogFile, void *FaultAdress, char *eNextBP)
+void write_minidump(struct _EXCEPTION_POINTERS* e)
 {
-  char *p, *pBP;
-  unsigned i, x, BpPassed;
-  static int  CurrentlyInTheStackDump = 0;
-
-  if (CurrentlyInTheStackDump)
-  {
-    fprintf(sgLogFile, "\n***\n*** Recursive Stack Dump skipped\n***\n");
+  auto hDbgHelp = LoadLibraryA("dbghelp");
+  if (hDbgHelp == nullptr)
     return;
-  }
+  auto pMiniDumpWriteDump = (decltype(&MiniDumpWriteDump))GetProcAddress(hDbgHelp, "MiniDumpWriteDump");
+  if (pMiniDumpWriteDump == nullptr)
+    return;
 
-  fprintf(sgLogFile, "****************************************************\n");
-  fprintf(sgLogFile, "*** CallStack:\n");
-  fprintf(sgLogFile, "****************************************************\n");
-
-  /* ====================================================================== */
-  /*                                                                        */
-  /*      BP +x ...    -> == SP (current top of stack)                      */
-  /*            ...    -> Local data of current function                    */
-  /*      BP +4 0xabcd -> 32 address of calling function                    */
-  /*  +<==BP    0xabcd -> Stack address of next stack frame (0, if end)     */
-  /*  |   BP -1 ...    -> Aruments of function call                         */
-  /*  Y                                                                     */
-  /*  |   BP -x ...    -> Local data of calling function                    */
-  /*  |                                                                     */
-  /*  Y  (BP)+4 0xabcd -> 32 address of calling function                    */
-  /*  +==>BP)   0xabcd -> Stack address of next stack frame (0, if end)     */
-  /*            ...                                                         */
-  /* ====================================================================== */
-  CurrentlyInTheStackDump = 1;
-
-
-  BpPassed = (eNextBP != NULL);
-
-  if (!eNextBP)
+  char name[MAX_PATH];
   {
-    _asm mov     eNextBP, eBp
-  }
-  else
-    fprintf(sgLogFile, "\n  Fault Occured At $ADDRESS:%08LX\n", (int)FaultAdress);
-
-
-  // prevent infinite loops
-  for (i = 0; eNextBP && i < 100; i++)
-  {
-    pBP = eNextBP;           // keep current BasePointer
-    eNextBP = *(char **)pBP; // dereference next BP 
-
-    p = pBP + 8;
-
-    // Write 20 Bytes of potential arguments
-    fprintf(sgLogFile, "         with ");
-    for (x = 0; p < eNextBP && x < 20; p++, x++)
-      fprintf(sgLogFile, "%02X ", *(unsigned char *)p);
-
-    fprintf(sgLogFile, "\n\n");
-
-    if (i == 1 && !BpPassed)
-      fprintf(sgLogFile, "****************************************************\n"
-        "         Fault Occured Here:\n");
-
-    // Write the backjump address
-    fprintf(sgLogFile, "*** %2d called from $ADDRESS:%08X\n", i, *(char **)(pBP + 4));
-
-    if (*(char **)(pBP + 4) == NULL)
-      break;
+    auto nameEnd = name + GetModuleFileNameA(GetModuleHandleA(0), name, MAX_PATH);
+    SYSTEMTIME t;
+    GetSystemTime(&t);
+    wsprintfA(nameEnd - strlen(".exe"),
+      "_%4d%02d%02d_%02d%02d%02d.dmp",
+      t.wYear, t.wMonth, t.wDay, t.wHour, t.wMinute, t.wSecond);
   }
 
+  auto hFile = CreateFileA(name, GENERIC_WRITE, FILE_SHARE_READ, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
+  if (hFile == INVALID_HANDLE_VALUE)
+    return;
 
-  fprintf(sgLogFile, "************************************************************\n");
-  fprintf(sgLogFile, "\n\n");
+  MINIDUMP_EXCEPTION_INFORMATION exceptionInfo;
+  exceptionInfo.ThreadId = GetCurrentThreadId();
+  exceptionInfo.ExceptionPointers = e;
+  exceptionInfo.ClientPointers = FALSE;
 
+  auto dumped = pMiniDumpWriteDump(
+    GetCurrentProcess(),
+    GetCurrentProcessId(),
+    hFile,
+    MINIDUMP_TYPE(MiniDumpWithIndirectlyReferencedMemory | MiniDumpScanMemory),
+    e ? &exceptionInfo : nullptr,
+    nullptr,
+    nullptr);
 
-  CurrentlyInTheStackDump = 0;
-
-  fflush(sgLogFile);
+  CloseHandle(hFile);
 }
+
+/*{
+  std::string fault;
+
+  switch (ExInfo->ExceptionRecord->ExceptionCode)
+  {
+    case EXCEPTION_ACCESS_VIOLATION: fault = "ACCESS VIOLATION"; break;
+    case EXCEPTION_DATATYPE_MISALIGNMENT: fault = "DATATYPE MISALIGNMENT"; break;
+    case EXCEPTION_BREAKPOINT: fault = "BREAKPOINT"; break;
+    case EXCEPTION_SINGLE_STEP: fault = "SINGLE STEP"; break;
+    case EXCEPTION_ARRAY_BOUNDS_EXCEEDED: fault = "ARRAY BOUNDS EXCEEDED"; break;
+    case EXCEPTION_FLT_DENORMAL_OPERAND: fault = "FLT DENORMAL OPERAND"; break;
+    case EXCEPTION_FLT_DIVIDE_BY_ZERO: fault = "FLT DIVIDE BY ZERO"; break;
+    case EXCEPTION_FLT_INEXACT_RESULT: fault = "FLT INEXACT RESULT"; break;
+    case EXCEPTION_FLT_INVALID_OPERATION: fault = "FLT INVALID OPERATION"; break;
+    case EXCEPTION_FLT_OVERFLOW: fault = "FLT OVERFLOW"; break;
+    case EXCEPTION_FLT_STACK_CHECK: fault = "FLT STACK CHECK"; break;
+    case EXCEPTION_FLT_UNDERFLOW: fault = "FLT UNDERFLOW"; break;
+    case EXCEPTION_INT_DIVIDE_BY_ZERO: fault = "INT DIVIDE BY ZERO"; break;
+    case EXCEPTION_INT_OVERFLOW: fault = "INT OVERFLOW"; break;
+    case EXCEPTION_PRIV_INSTRUCTION: fault = "PRIV INSTRUCTION"; break;
+    case EXCEPTION_IN_PAGE_ERROR: fault = "IN PAGE ERROR"; break;
+    case EXCEPTION_ILLEGAL_INSTRUCTION: fault = "ILLEGAL INSTRUCTION"; break;
+    case EXCEPTION_NONCONTINUABLE_EXCEPTION: fault = "NONCONTINUABLE EXCEPTION"; break;
+    case EXCEPTION_STACK_OVERFLOW: fault = "STACK OVERFLOW"; break;
+    case EXCEPTION_INVALID_DISPOSITION: fault = "INVALID DISPOSITION"; break;
+    case EXCEPTION_GUARD_PAGE: fault = "GUARD PAGE"; break;
+    default: fault = "(unknown)";           break;
+  }
+  
+  Metadata md;
+  std::ofstream crash_log;
+  crash_log.open("crash_sotw.log");
+
+  if (crash_log.good())
+  {
+    crash_log << "Crash log for " << md.get_full_game_version_details() << std::endl << std::endl;
+    crash_log << "Exception at address: 0x" << std::hex << ExInfo->ExceptionRecord->ExceptionAddress << std::dec << std::endl;
+    crash_log << "Exception type: " << fault << std::endl;
+  }
+
+  std::cout << "Shadow of the Wyrm crashed unexpectedly." << std::endl << std::endl;
+  std::cout << "Please email crash_sotw.log to jcd748@mail.usask.ca and mention if you're using the Win7 or XP build." << std::endl;
+
+  return EXCEPTION_EXECUTE_HANDLER;
+} */
 #endif
 
 using namespace std;
@@ -264,6 +188,7 @@ int _tmain(int argc, _TCHAR* argv[])
 int main(int argc, char* argv[])
 #endif
 {
+  // JCD FIXME refactor
   #ifdef _MSC_VER
   SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)sotw_fault_handler);
   #endif

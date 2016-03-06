@@ -1,11 +1,11 @@
-Shadow of the Wyrm v0.4.9 "Molinaro"
-- Version declared March 3, 2016.
+Shadow of the Wyrm v0.4.9 "Mavroedes"
+- Version declared March 3, 2016.  Version finalized March 6, 2016.
 
 - Slightly better estimation of the distance to the goal for the A*
   search algorithm - it now considers the movement multiplier of the
   current tile, in addition to the Chebyshev distance.
 
-- Added code to create a dump file when a crash condition is detected.
+- Added code to create a minidump when a crash is detected.
 
 Shadow of the Wyrm v0.4.8 "Carulli"
 - Version declared January 23, 2016.  Version finalized March 3, 2016.

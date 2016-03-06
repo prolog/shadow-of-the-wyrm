@@ -1,4 +1,5 @@
 Me:
+- Turn off map file generation
 - Confirm danger level after siriath's lair - seeing a lot of the same
   creatures.
 - Goblin trappers
