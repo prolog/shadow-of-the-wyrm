@@ -962,6 +962,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="include\CompilationDetails.hpp" />
     <ClInclude Include="include\global_prototypes.hpp" />
     <ClInclude Include="include\ISerializable.hpp" />
+    <ClInclude Include="include\UnhandledExceptions.hpp" />
     <ClInclude Include="world\include\AgeInfo.hpp" />
     <ClInclude Include="world\include\Alignment.hpp" />
     <ClInclude Include="world\include\AlignmentEnums.hpp" />
@@ -2647,6 +2648,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="source\ShadowOfTheWyrm.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="source\UnhandledExceptions.cpp" />
     <ClCompile Include="world\magic\source\IndividualSpellKnowledge.cpp" />
     <ClCompile Include="world\magic\source\Spell.cpp" />
     <ClCompile Include="world\magic\source\SpellAdditionalProperties.cpp" />
