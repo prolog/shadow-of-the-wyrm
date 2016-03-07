@@ -42,8 +42,10 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Greek composer.  I like "Wreck in the Living Room"
-  return "\"Mavroedes\"";
+  // Early Venetian lute composer, perhaps best known indirectly for his
+  // "Ballo Detta Il Conte Orlando", the basis for the opening of Respighi's
+  // "Ancient Airs and Dances".
+  return "\"Molinaro\"";
 }
 
 string Metadata::get_game_version_synopsis() const
