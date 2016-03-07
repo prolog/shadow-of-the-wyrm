@@ -20,6 +20,7 @@
 #include "Settings.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
+#include "UnhandledExceptions.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLFileReader.hpp"
 
@@ -29,106 +30,6 @@
 
 #ifdef _MSC_VER
 #include <tchar.h>
-#include <windows.h>
-#include <dbghelp.h>
-
-LONG sotw_fault_handler(struct _EXCEPTION_POINTERS *  ExInfo);
-void write_minidump(struct _EXCEPTION_POINTERS * e);
-
-LONG sotw_fault_handler(struct _EXCEPTION_POINTERS *  e)
-{
-  write_minidump(e);
-
-  std::cout << "Shadow of the Wyrm crashed unexpectedly (sorry!)." << std::endl << std::endl;
-  std::cout << "Please email the .dmp file created to jcd748@mail.usask.ca and mention if you're using the Win7 or XP build." << std::endl << std::endl;
-  return EXCEPTION_EXECUTE_HANDLER;
-}
-
-void write_minidump(struct _EXCEPTION_POINTERS* e)
-{
-  auto hDbgHelp = LoadLibraryA("dbghelp");
-  if (hDbgHelp == nullptr)
-    return;
-  auto pMiniDumpWriteDump = (decltype(&MiniDumpWriteDump))GetProcAddress(hDbgHelp, "MiniDumpWriteDump");
-  if (pMiniDumpWriteDump == nullptr)
-    return;
-
-  char name[MAX_PATH];
-  {
-    auto nameEnd = name + GetModuleFileNameA(GetModuleHandleA(0), name, MAX_PATH);
-    SYSTEMTIME t;
-    GetSystemTime(&t);
-    wsprintfA(nameEnd - strlen(".exe"),
-      "_%4d%02d%02d_%02d%02d%02d.dmp",
-      t.wYear, t.wMonth, t.wDay, t.wHour, t.wMinute, t.wSecond);
-  }
-
-  auto hFile = CreateFileA(name, GENERIC_WRITE, FILE_SHARE_READ, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
-  if (hFile == INVALID_HANDLE_VALUE)
-    return;
-
-  MINIDUMP_EXCEPTION_INFORMATION exceptionInfo;
-  exceptionInfo.ThreadId = GetCurrentThreadId();
-  exceptionInfo.ExceptionPointers = e;
-  exceptionInfo.ClientPointers = FALSE;
-
-  auto dumped = pMiniDumpWriteDump(
-    GetCurrentProcess(),
-    GetCurrentProcessId(),
-    hFile,
-    MINIDUMP_TYPE(MiniDumpWithIndirectlyReferencedMemory | MiniDumpScanMemory),
-    e ? &exceptionInfo : nullptr,
-    nullptr,
-    nullptr);
-
-  CloseHandle(hFile);
-}
-
-/*{
-  std::string fault;
-
-  switch (ExInfo->ExceptionRecord->ExceptionCode)
-  {
-    case EXCEPTION_ACCESS_VIOLATION: fault = "ACCESS VIOLATION"; break;
-    case EXCEPTION_DATATYPE_MISALIGNMENT: fault = "DATATYPE MISALIGNMENT"; break;
-    case EXCEPTION_BREAKPOINT: fault = "BREAKPOINT"; break;
-    case EXCEPTION_SINGLE_STEP: fault = "SINGLE STEP"; break;
-    case EXCEPTION_ARRAY_BOUNDS_EXCEEDED: fault = "ARRAY BOUNDS EXCEEDED"; break;
-    case EXCEPTION_FLT_DENORMAL_OPERAND: fault = "FLT DENORMAL OPERAND"; break;
-    case EXCEPTION_FLT_DIVIDE_BY_ZERO: fault = "FLT DIVIDE BY ZERO"; break;
-    case EXCEPTION_FLT_INEXACT_RESULT: fault = "FLT INEXACT RESULT"; break;
-    case EXCEPTION_FLT_INVALID_OPERATION: fault = "FLT INVALID OPERATION"; break;
-    case EXCEPTION_FLT_OVERFLOW: fault = "FLT OVERFLOW"; break;
-    case EXCEPTION_FLT_STACK_CHECK: fault = "FLT STACK CHECK"; break;
-    case EXCEPTION_FLT_UNDERFLOW: fault = "FLT UNDERFLOW"; break;
-    case EXCEPTION_INT_DIVIDE_BY_ZERO: fault = "INT DIVIDE BY ZERO"; break;
-    case EXCEPTION_INT_OVERFLOW: fault = "INT OVERFLOW"; break;
-    case EXCEPTION_PRIV_INSTRUCTION: fault = "PRIV INSTRUCTION"; break;
-    case EXCEPTION_IN_PAGE_ERROR: fault = "IN PAGE ERROR"; break;
-    case EXCEPTION_ILLEGAL_INSTRUCTION: fault = "ILLEGAL INSTRUCTION"; break;
-    case EXCEPTION_NONCONTINUABLE_EXCEPTION: fault = "NONCONTINUABLE EXCEPTION"; break;
-    case EXCEPTION_STACK_OVERFLOW: fault = "STACK OVERFLOW"; break;
-    case EXCEPTION_INVALID_DISPOSITION: fault = "INVALID DISPOSITION"; break;
-    case EXCEPTION_GUARD_PAGE: fault = "GUARD PAGE"; break;
-    default: fault = "(unknown)";           break;
-  }
-  
-  Metadata md;
-  std::ofstream crash_log;
-  crash_log.open("crash_sotw.log");
-
-  if (crash_log.good())
-  {
-    crash_log << "Crash log for " << md.get_full_game_version_details() << std::endl << std::endl;
-    crash_log << "Exception at address: 0x" << std::hex << ExInfo->ExceptionRecord->ExceptionAddress << std::dec << std::endl;
-    crash_log << "Exception type: " << fault << std::endl;
-  }
-
-  std::cout << "Shadow of the Wyrm crashed unexpectedly." << std::endl << std::endl;
-  std::cout << "Please email crash_sotw.log to jcd748@mail.usask.ca and mention if you're using the Win7 or XP build." << std::endl;
-
-  return EXCEPTION_EXECUTE_HANDLER;
-} */
 #endif
 
 using namespace std;
@@ -188,10 +89,7 @@ int _tmain(int argc, _TCHAR* argv[])
 int main(int argc, char* argv[])
 #endif
 {
-  // JCD FIXME refactor
-  #ifdef _MSC_VER
-  SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)sotw_fault_handler);
-  #endif
+  register_unhandled_exception_handler();
 
   Log& log = Log::instance();
 
