@@ -1,5 +1,8 @@
+Shadow of the Wyrm v0.5.0 "Molinaro"
+- Version declared March 7, 2016.
+
 Shadow of the Wyrm v0.4.9 "Mavroedes"
-- Version declared March 3, 2016.  Version finalized March 6, 2016.
+- Version declared March 3, 2016.  Version finalized March 7, 2016.
 
 - Slightly better estimation of the distance to the goal for the A*
   search algorithm - it now considers the movement multiplier of the
