@@ -41,8 +41,10 @@ string Metadata::get_version() const
 }
 
 string Metadata::get_code_name() const
-{
-  return "\"Mavroedes\"";
+{ 
+  // 15th century Venetian lutenist and composer, whose "Ballo Detto Il Conte
+  // Orlando" is the opening theme of Respighi's "Ancient Airs and Dances".
+  return "\"Molinaro\"";
 }
 
 string Metadata::get_game_version_synopsis() const
