@@ -42,10 +42,7 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Early Venetian lute composer, perhaps best known indirectly for his
-  // "Ballo Detta Il Conte Orlando", the basis for the opening of Respighi's
-  // "Ancient Airs and Dances".
-  return "\"Molinaro\"";
+  return "\"Mavroedes\"";
 }
 
 string Metadata::get_game_version_synopsis() const
