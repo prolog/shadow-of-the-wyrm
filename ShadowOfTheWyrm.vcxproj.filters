@@ -7091,5 +7091,8 @@
     <ClCompile Include="source\UnhandledExceptions.cpp">
       <Filter>Source Files\source</Filter>
     </ClCompile>
+    <ClCompile Include="source\SaveConverter.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
