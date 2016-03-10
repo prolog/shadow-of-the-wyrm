@@ -1,6 +1,10 @@
 Shadow of the Wyrm v0.5.0 "Molinaro"
 - Version declared March 7, 2016.
 
+- Added a utility to set the username to empty on savefiles, and updated
+  the code so that any savefile with an empty username can be opened by
+  anyone.
+
 Shadow of the Wyrm v0.4.9 "Mavroedes"
 - Version declared March 3, 2016.  Version finalized March 7, 2016.
 

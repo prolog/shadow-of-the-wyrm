@@ -11,6 +11,8 @@
 
 using namespace std;
 
+const int Metadata::METADATA_VERSION = 1;
+
 Metadata::Metadata(CreaturePtr creature)
 : player(creature)
 {
@@ -25,6 +27,11 @@ bool Metadata::operator==(const Metadata& meta) const
   bool result = true;
 
   return result;
+}
+
+int Metadata::get_metadata_version() const
+{
+  return METADATA_VERSION;
 }
 
 string Metadata::get_user_name() const

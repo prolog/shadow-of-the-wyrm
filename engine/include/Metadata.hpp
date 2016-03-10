@@ -12,6 +12,7 @@ class Metadata : public ISerializable
     Metadata(CreaturePtr player);
     bool operator==(const Metadata& meta) const;
 
+    int get_metadata_version() const;
     std::string get_user_name() const;
     std::string get_version() const;
     std::string get_code_name() const;
@@ -25,5 +26,6 @@ class Metadata : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 
     CreaturePtr player;
+    static const int METADATA_VERSION;
 };
 
