@@ -5,6 +5,9 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
   the code so that any savefile with an empty username can be opened by
   anyone.
 
+- Save files now persist after loading, and are only removed when quitting
+  or dying.  This allows a basic recovery mechanism from crashes.
+
 Shadow of the Wyrm v0.4.9 "Mavroedes"
 - Version declared March 3, 2016.  Version finalized March 7, 2016.
 
