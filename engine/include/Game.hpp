@@ -88,7 +88,7 @@ class Game : public ISerializable
 
     void create_new_world(CreaturePtr creature);
     void go(); // main game loop
-    void stop_playing(CreaturePtr creature, const bool show_quit_actions); // end the game
+    void stop_playing(CreaturePtr creature, const bool show_quit_actions, const bool delete_savefile); // end the game
     bool should_keep_playing() const; // Check to see if the "game over" flag's been set.
     void set_check_scores(const bool new_check_scores);
     bool should_check_scores() const;
@@ -123,6 +123,9 @@ class Game : public ISerializable
     LoadedMapDetails& get_loaded_map_details_ref();
 
     void process_elapsed_time(const int seconds);
+
+    void set_current_loaded_savefile(const std::string& current_loaded_savefile);
+    std::string get_current_loaded_savefile() const;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
@@ -242,6 +245,10 @@ class Game : public ISerializable
     // only partially drawn to squeeze out some more performance, and allow more
     // processing after the player's turn.
     LoadedMapDetails loaded_map_details;
+
+    // The currently loaded savefile.  Tracked at the game level so that it can
+    // be delete after death or quitting.
+    std::string current_loaded_savefile;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

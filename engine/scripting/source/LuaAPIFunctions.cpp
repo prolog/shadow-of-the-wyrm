@@ -2721,10 +2721,13 @@ int stop_playing_game(lua_State* ls)
   {
     string creature_id = lua_tostring(ls, 1);
     bool do_dump = lua_toboolean(ls, 2) != 0;
+    bool delete_savefile = true;
     CreaturePtr player = get_creature(creature_id);
 
+    // Assumption: saving isn't done via Lua and therefore the savefile should
+    // always be deleted.
     Game& game = Game::instance();
-    game.stop_playing(player, do_dump);
+    game.stop_playing(player, do_dump, delete_savefile);
   }
   else
   {

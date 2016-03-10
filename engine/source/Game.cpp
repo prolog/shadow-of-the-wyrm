@@ -32,6 +32,7 @@
 #include "ScoreFile.hpp"
 #include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
+#include "Serialization.hpp"
 #include "StatusActionProcessor.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -690,7 +691,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
   return action_cost;
 }
 
-void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions)
+void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions, const bool delete_savefile)
 {
   keep_playing = false;
 
@@ -705,6 +706,16 @@ void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions)
 
       ExitGameAction ega;
       ega.create_dump_if_necessary(manager, &actions, creature);
+
+      if (delete_savefile)
+      {
+        string current_savefile = game.get_current_loaded_savefile();
+
+        if (!current_savefile.empty())
+        {
+          Serialization::delete_savefile(current_savefile);
+        }
+      }
     }
   }
 }
@@ -831,6 +842,16 @@ LoadedMapDetails& Game::get_loaded_map_details_ref()
   return loaded_map_details;
 }
 
+void Game::set_current_loaded_savefile(const string& new_current_loaded_savefile)
+{
+  current_loaded_savefile = new_current_loaded_savefile;
+}
+
+string Game::get_current_loaded_savefile() const
+{
+  return current_loaded_savefile;
+}
+
 bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
@@ -950,6 +971,8 @@ bool Game::serialize(ostream& stream) const
   // Persist the map-redraw values so that the same logic can be applied after
   // a game is reloaded.
   loaded_map_details.serialize(stream);
+
+  Serialize::write_string(stream, current_loaded_savefile);
     
   Serialize::write_size_t(stream, calendar_days.size());
 
@@ -1109,6 +1132,8 @@ bool Game::deserialize(istream& stream)
   // Game command factory and keyboard map get built up every time - don't load these.
 
   loaded_map_details.deserialize(stream);
+
+  Serialize::read_string(stream, current_loaded_savefile);
 
   size_t cal_size = 0;
   Serialize::read_size_t(stream, cal_size);

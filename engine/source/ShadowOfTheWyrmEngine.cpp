@@ -422,7 +422,9 @@ bool ShadowOfTheWyrmEngine::process_load_game()
 
     if (src == SerializationReturnCode::SERIALIZATION_OK)
     {
-      Serialization::delete_savefile(filename);
+      Game& game = Game::instance();
+      game.set_current_loaded_savefile(filename);
+
       result = true;
     }
   }

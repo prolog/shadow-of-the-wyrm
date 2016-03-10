@@ -15,7 +15,7 @@ ExitGameAction::ExitGameAction()
 ActionCostValue ExitGameAction::quit(CreaturePtr creature, const bool show_quit_actions) const
 {
   Game& game = Game::instance();
-  game.stop_playing(creature, show_quit_actions);
+  game.stop_playing(creature, show_quit_actions, true);
 
   return get_action_cost_value(creature);
 }
