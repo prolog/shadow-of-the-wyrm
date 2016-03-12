@@ -17,6 +17,7 @@ dist
 sl-[0-9]+.log
 Release
 MapTester
+SaveConverter
 savage.exe
 savage.pdb
 xerces-c_3_1.dll

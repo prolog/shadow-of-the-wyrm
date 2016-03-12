@@ -1,7 +1,4 @@
 Me:
-- Saves should persist until death/quitting
-- Dying Star: creature that changes colour, damage/speed/resists/etc
-  vary with the colour changes.
 - Confirm danger level after siriath's lair - seeing a lot of the same
   creatures.
 - Goblin trappers
