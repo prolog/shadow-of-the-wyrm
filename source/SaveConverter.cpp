@@ -30,10 +30,8 @@ void convert_savefile(const string& savefile, const string& outfile)
   string user_name, version, compilation_details, character_synopsis;
   
   streamoff cur_pos_begin = ifile.tellg();
-  cout << "Cur pos begin: " << cur_pos_begin << endl;
   ifile.seekg(0, ifile.end);
   streamoff length = ifile.tellg();
-  cout << "Initial length: " << length << endl;
   ifile.seekg(0, ifile.beg);
 
   Serialize::read_string(ifile, user_name);
@@ -45,7 +43,6 @@ void convert_savefile(const string& savefile, const string& outfile)
   user_name.clear();
 
   // Write the metadata into the new file.
-  cout << "User name is: " << user_name << endl;
   Serialize::write_string(ofile, user_name);
   Serialize::write_string(ofile, version);
   Serialize::write_string(ofile, compilation_details);
@@ -53,9 +50,7 @@ void convert_savefile(const string& savefile, const string& outfile)
 
   // Write the remainder of the input file into the new file.
   streamoff cur_pos = ifile.tellg();
-  cout << "Cur pos: " << cur_pos << endl;
   streamoff rem_size = length - cur_pos;
-  cout << "Rem size: " << rem_size << endl;
 
   char* rem_buffer = new char[static_cast<unsigned int>(rem_size)];
   ifile.read(rem_buffer, rem_size);

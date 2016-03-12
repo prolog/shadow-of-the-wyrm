@@ -8,6 +8,14 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 - Save files now persist after loading, and are only removed when quitting
   or dying.  This allows a basic recovery mechanism from crashes.
 
+- Fixed up a number of locations in the Lua API functions where creature
+  pointers were being used unchecked.
+
+- Dying stars will change their evade, damage, and speed based on their 
+  intensity.
+
+- New creatures: dying star.
+
 Shadow of the Wyrm v0.4.9 "Mavroedes"
 - Version declared March 3, 2016.  Version finalized March 7, 2016.
 

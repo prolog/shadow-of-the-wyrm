@@ -209,6 +209,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "curse_equipment", curse_equipment);
   lua_register(L, "curse_inventory", curse_inventory);
   lua_register(L, "set_winner", set_winner);
+  lua_register(L, "get_creature_colour", get_creature_colour);
+  lua_register(L, "set_creature_colour", set_creature_colour);
+  lua_register(L, "set_creature_evade", set_creature_evade);
 }
 
 // Lua API helper functions
@@ -482,9 +485,12 @@ static int add_message_for_creature(lua_State* ls)
     string message = read_sid_and_replace_values(ls, 1 /* offset of 1 because first arg in stack is creature ID */);
     CreaturePtr creature = get_creature(creature_id);
 
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
-    manager.add_new_message(message);
-    manager.send();
+    if (creature != nullptr)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
+      manager.add_new_message(message);
+      manager.send();
+    }
   }
   else
   {
@@ -1027,12 +1033,16 @@ int add_spell_castings(lua_State* ls)
     int addl_castings = lua_tointeger(ls, 3);
 
     CreaturePtr creature = get_creature(creature_id);
-    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
 
-    IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
-    uint new_castings = isk.get_castings() + addl_castings;
-    isk.set_castings(new_castings);
-    sk.set_spell_knowledge(spell_id, isk);
+    if (creature != nullptr)
+    {
+      SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+
+      IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
+      uint new_castings = isk.get_castings() + addl_castings;
+      isk.set_castings(new_castings);
+      sk.set_spell_knowledge(spell_id, isk);
+    }
   }
   else
   {
@@ -1052,8 +1062,11 @@ int gain_experience(lua_State* ls)
     CreaturePtr creature = get_creature(creature_id);
     int experience = lua_tointeger(ls, 2);
 
-    ExperienceManager em;
-    em.gain_experience(creature, experience);
+    if (creature != nullptr)
+    {
+      ExperienceManager em;
+      em.gain_experience(creature, experience);
+    }
   }
   else
   {
@@ -1175,11 +1188,14 @@ int set_creature_base_damage(lua_State* ls)
 
     CreaturePtr creature = get_creature(creature_id);
 
-    Damage damage = creature->get_base_damage();
-    damage.set_num_dice(num_dice);
-    damage.set_dice_sides(num_sides);
+    if (creature != nullptr)
+    {
+      Damage damage = creature->get_base_damage();
+      damage.set_num_dice(num_dice);
+      damage.set_dice_sides(num_sides);
 
-    creature->set_base_damage(damage);
+      creature->set_base_damage(damage);
+    }
   }
   else
   {
@@ -1198,14 +1214,18 @@ int set_creature_speed(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     int new_base_speed = lua_tointeger(ls, 2);
     CreaturePtr creature = get_creature(creature_id);
-    Statistic cr_speed = creature->get_speed();
 
-    int cur_speed = cr_speed.get_current();
+    if (creature != nullptr)
+    {
+      Statistic cr_speed = creature->get_speed();
 
-    cr_speed.set_base(new_base_speed);
-    cr_speed.set_current(cur_speed - (cur_speed - new_base_speed));
+      int cur_speed = cr_speed.get_current();
 
-    creature->set_speed(cr_speed);
+      cr_speed.set_base(new_base_speed);
+      cr_speed.set_current(cur_speed - (cur_speed - new_base_speed));
+
+      creature->set_speed(cr_speed);
+    }
   }
   else
   {
@@ -1225,7 +1245,11 @@ int get_creature_speed(lua_State* ls)
   {
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
-    speed = creature->get_speed().get_base();
+
+    if (creature != nullptr)
+    {
+      speed = creature->get_speed().get_base();
+    }
   }
   else
   {
@@ -1361,7 +1385,10 @@ int incr_str(lua_State* ls)
 
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureUtils::incr_str(creature, add_msg);
+    if (creature != nullptr)
+    {
+      CreatureUtils::incr_str(creature, add_msg);
+    }
   }
   else
   {
@@ -1381,7 +1408,10 @@ int incr_dex(lua_State* ls)
 
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureUtils::incr_dex(creature, add_msg);
+    if (creature != nullptr)
+    {
+      CreatureUtils::incr_dex(creature, add_msg);
+    }
   }
   else
   {
@@ -1401,7 +1431,10 @@ int incr_agi(lua_State* ls)
 
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureUtils::incr_agi(creature, add_msg);
+    if (creature != nullptr)
+    {
+      CreatureUtils::incr_agi(creature, add_msg);
+    }
   }
   else
   {
@@ -1421,7 +1454,10 @@ int incr_hea(lua_State* ls)
 
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureUtils::incr_hea(creature, add_msg);
+    if (creature != nullptr)
+    {
+      CreatureUtils::incr_hea(creature, add_msg);
+    }
   }
   else
   {
@@ -1441,7 +1477,10 @@ int incr_int(lua_State* ls)
 
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureUtils::incr_int(creature, add_msg);
+    if (creature != nullptr)
+    {
+      CreatureUtils::incr_int(creature, add_msg);
+    }
   }
   else
   {
@@ -1461,7 +1500,10 @@ int incr_wil(lua_State* ls)
 
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureUtils::incr_wil(creature, add_msg);
+    if (creature != nullptr)
+    {
+      CreatureUtils::incr_wil(creature, add_msg);
+    }
   }
   else
   {
@@ -1481,7 +1523,10 @@ int incr_cha(lua_State* ls)
 
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureUtils::incr_cha(creature, add_msg);
+    if (creature != nullptr)
+    {
+      CreatureUtils::incr_cha(creature, add_msg);
+    }
   }
   else
   {
@@ -1734,10 +1779,14 @@ int set_creature_current_hp(lua_State* ls)
     int new_hp = lua_tointeger(ls, 2);
 
     CreaturePtr creature = get_creature(creature_id);
-    Statistic hp = creature->get_hit_points();
-    hp.set_current(new_hp);
 
-    creature->set_hit_points(hp);
+    if (creature != nullptr)
+    {
+      Statistic hp = creature->get_hit_points();
+      hp.set_current(new_hp);
+
+      creature->set_hit_points(hp);
+    }
   }
   else
   {
@@ -1756,10 +1805,14 @@ int set_creature_current_ap(lua_State* ls)
     int new_ap = lua_tointeger(ls, 2);
 
     CreaturePtr creature = get_creature(creature_id);
-    Statistic ap = creature->get_arcana_points();
-    ap.set_current(new_ap);
 
-    creature->set_arcana_points(ap);
+    if (creature != nullptr)
+    {
+      Statistic ap = creature->get_arcana_points();
+      ap.set_current(new_ap);
+
+      creature->set_arcana_points(ap);
+    }
   }
   else
   {
@@ -1782,11 +1835,13 @@ int set_creature_name(lua_State* ls)
     if (!name.empty())
     {
       CreaturePtr creature = get_creature(creature_id);
-      name = Naming::clean_name_or_use_default(name, creature->get_sex());
 
-      creature->set_name(name);
-
-      changed_name = true;
+      if (creature != nullptr)
+      {
+        name = Naming::clean_name_or_use_default(name, creature->get_sex());
+        creature->set_name(name);
+        changed_name = true;
+      }
     }
   }
   else
@@ -1982,8 +2037,11 @@ int get_item_count(lua_State* ls)
 
     CreaturePtr creature = get_creature(creature_id);
 
-    IInventoryPtr inv = creature->get_inventory();
-    count = inv->count_items(item_id);
+    if (creature != nullptr)
+    {
+      IInventoryPtr inv = creature->get_inventory();
+      count = inv->count_items(item_id);
+    }
   }
   else
   {
@@ -2006,15 +2064,18 @@ int get_unidentified_item_count(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
-    // Count unid'd items in Inv
-    IInventoryPtr inv = creature->get_inventory();
-    ItemIdentifier iid;
-
-    for (const auto& item: inv->get_items_cref())
+    if (creature != nullptr)
     {
-      if (item != nullptr && !iid.get_item_identified(item->get_base_id()))
+      // Count unid'd items in Inv
+      IInventoryPtr inv = creature->get_inventory();
+      ItemIdentifier iid;
+
+      for (const auto& item : inv->get_items_cref())
       {
-        unid_count += item->get_quantity();
+        if (item != nullptr && !iid.get_item_identified(item->get_base_id()))
+        {
+          unid_count += item->get_quantity();
+        }
       }
     }
   }
@@ -2098,29 +2159,32 @@ int select_item(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
-    int item_filter = CITEM_FILTER_NONE;
-
-    if (lua_gettop(ls) == 2 && lua_isnumber(ls, 2))
+    if (creature != nullptr)
     {
-      item_filter = lua_tointeger(ls, 2);
+      int item_filter = CITEM_FILTER_NONE;
+
+      if (lua_gettop(ls) == 2 && lua_isnumber(ls, 2))
+      {
+        item_filter = lua_tointeger(ls, 2);
+      }
+
+      Game& game = Game::instance();
+      list<IItemFilterPtr> selected_filter = ItemFilterFactory::create_script_filter(item_filter);
+      ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, {}, false);
+
+      if (item != nullptr)
+      {
+        selected_item = true;
+        item_id = item->get_id();
+        item_base_id = item->get_base_id();
+      }
+
+      // Redraw the screen, since we will have moved from the inventory
+      // back to the main map, and need to redraw before any confirmation
+      // messages.
+      game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+      game.get_display()->redraw();
     }
-
-    Game& game = Game::instance();
-    list<IItemFilterPtr> selected_filter = ItemFilterFactory::create_script_filter(item_filter);
-    ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, {}, false);
-
-    if (item != nullptr)
-    {
-      selected_item = true;
-      item_id = item->get_id();
-      item_base_id = item->get_base_id();
-    }
-
-    // Redraw the screen, since we will have moved from the inventory
-    // back to the main map, and need to redraw before any confirmation
-    // messages.
-    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
-    game.get_display()->redraw();
   }
   else
   {
@@ -2150,8 +2214,11 @@ int set_hostility(lua_State* ls)
 
     CreaturePtr creature = get_creature(hostile_creature_id);
     
-    HostilityManager hm;
-    hm.set_hostility_to_creature(creature, hostile_towards_id);
+    if (creature != nullptr)
+    {
+      HostilityManager hm;
+      hm.set_hostility_to_creature(creature, hostile_towards_id);
+    }
   }
   else
   {
@@ -2172,8 +2239,11 @@ int teleport(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
-    EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT);
-    teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
+    if (creature != nullptr)
+    {
+      EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT);
+      teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
+    }
   }
   else
   {
@@ -2246,18 +2316,21 @@ int transfer_item(lua_State* ls)
     CreaturePtr transfer_creature = get_creature(old_creature_id);
     CreaturePtr creature = get_creature(new_creature_id);
 
-    // Transfer the items from one inventory to the other.
-    ItemManager im;
-    pair<bool, vector<ItemPtr>> items = im.remove_item_from_eq_or_inv(creature, item_base_id, quantity);
-
-    IInventoryPtr inv = transfer_creature->get_inventory();
-
-    for (ItemPtr item : items.second)
+    if (transfer_creature != nullptr && creature != nullptr)
     {
-      inv->add(item);
-    }
+      // Transfer the items from one inventory to the other.
+      ItemManager im;
+      pair<bool, vector<ItemPtr>> items = im.remove_item_from_eq_or_inv(creature, item_base_id, quantity);
 
-    item_transferred = items.first;
+      IInventoryPtr inv = transfer_creature->get_inventory();
+
+      for (ItemPtr item : items.second)
+      {
+        inv->add(item);
+      }
+
+      item_transferred = items.first;
+    }
   }
   else
   {
@@ -2563,14 +2636,17 @@ int report_coords(lua_State* ls)
     MapPtr current_map = game.get_current_map();
     CreaturePtr creature = get_creature(creature_id);
     
-    Coordinate c = MapUtils::get_coordinate_for_creature(current_map, creature);
-    ostringstream msg;
-    msg << "(" << c.first << "," << c.second << ")";
+    if (creature != nullptr)
+    {
+      Coordinate c = MapUtils::get_coordinate_for_creature(current_map, creature);
+      ostringstream msg;
+      msg << "(" << c.first << "," << c.second << ")";
 
-    IMessageManager& manager = MessageManagerFactory::instance();
-    manager.clear_if_necessary();
-    manager.add_new_message(msg.str());
-    manager.send();
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.clear_if_necessary();
+      manager.add_new_message(msg.str());
+      manager.send();
+    }
   }
   else
   {
@@ -2702,8 +2778,11 @@ int set_winner(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
-    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(true));
-    winner = true;
+    if (creature != nullptr)
+    {
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(true));
+      winner = true;
+    }
   }
   else
   {
@@ -2713,6 +2792,75 @@ int set_winner(lua_State* ls)
 
   lua_pushboolean(ls, winner);
   return 1;
+}
+
+int get_creature_colour(lua_State* ls)
+{
+  int colour = static_cast<int>(Colour::COLOUR_BLACK);
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      colour = static_cast<int>(creature->get_colour());
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_colour");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, colour);
+  return 1;
+}
+
+int set_creature_colour(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+    Colour new_colour = static_cast<Colour>(lua_tointeger(ls, 2));
+
+    if (creature != nullptr)
+    {
+      creature->set_colour(new_colour);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_colour");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int set_creature_evade(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int evade = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->set_base_evade(evade);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_evade");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)
