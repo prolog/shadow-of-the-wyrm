@@ -10621,7 +10621,7 @@
 			</DecisionStrategy>
 			<Text>
 				<Symbol>*</Symbol>
-				<Colour>9</Colour>
+				<Colour>11</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -10657,7 +10657,7 @@
 			<EventScripts>
 				<DecisionScript>
 					<Script>decision/dying_star.lua</Script>
-					<Chance>75</Chance>
+					<Chance>60</Chance>
 				</DecisionScript>
 			</EventScripts>
 		</Creature>
