@@ -14,6 +14,10 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 - Dying stars will change their evade, damage, and speed based on their 
   intensity.
 
+- Defined initial equipment for goblin pelters, archers, and dwarven
+  warriors (these receive slings and rocks/bows and arrows/crossbows and
+  bolts, respectively).
+
 - New creatures: dying star.
 
 Shadow of the Wyrm v0.4.9 "Mavroedes"

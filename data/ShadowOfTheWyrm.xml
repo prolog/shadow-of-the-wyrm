@@ -13267,6 +13267,20 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>10</Exp>
+				<InitialEquipmentAndInventory>
+					<Ranged>
+						<ID>crossbow</ID>
+					</Ranged>
+					<Ammunition>
+						<ID>bolt</ID>
+						<Quantity>
+							<Random>
+								<NumDice>1</NumDice>
+								<NumSides>4</NumSides>
+							</Random>
+						</Quantity>
+					</Ammunition>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>14</Level>
 			<Damage>
@@ -17245,6 +17259,20 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>2</Exp>
+				<InitialEquipmentAndInventory>
+					<Ranged>
+						<ID>sling</ID>
+					</Ranged>
+					<Ammunition>
+						<ID>_rock</ID>
+						<Quantity>
+							<Random>
+								<NumDice>2</NumDice>
+								<NumSides>3</NumSides>
+							</Random>
+						</Quantity>
+					</Ammunition>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>1</Level>
 			<Damage>
@@ -18355,6 +18383,20 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>10</Exp>
+				<InitialEquipmentAndInventory>
+					<Ranged>
+						<ID>yew_bow</ID>
+					</Ranged>
+					<Ammunition>
+						<ID>arrow</ID>
+						<Quantity>
+							<Random>
+								<NumDice>3</NumDice>
+								<NumSides>3</NumSides>
+							</Random>
+						</Quantity>
+					</Ammunition>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>4</Level>
 			<Damage>
