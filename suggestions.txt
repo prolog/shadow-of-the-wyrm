@@ -29,6 +29,7 @@ Me:
 - default_race and default_class settings that accept race/class IDs.  If
   empty or invalid, the user is prompted for selection.
 
+
 barrabus: 
 - Extra descs for items.
 
@@ -43,7 +44,6 @@ Avagart:
 AgingMinotaur:
 * Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
 * The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
-* I noticed that archers and goblin pelters don't actually shoot anything. I'm supposing this will show up later.
 
 Kraphead:
 - auto-displace when bumping friendly creatures

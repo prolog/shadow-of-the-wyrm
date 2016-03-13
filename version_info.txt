@@ -18,6 +18,9 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
   warriors (these receive slings and rocks/bows and arrows/crossbows and
   bolts, respectively).
 
+- Updated NPC AI to consider ranged combat when threats are in range and
+  when an appropriate ranged weapon is wielded.
+
 - New creatures: dying star.
 
 Shadow of the Wyrm v0.4.9 "Mavroedes"

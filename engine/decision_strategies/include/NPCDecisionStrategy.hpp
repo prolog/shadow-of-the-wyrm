@@ -22,6 +22,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual CommandPtr get_magic_decision(const std::string& this_creature_id, MapPtr view_map);
 
     virtual CommandPtr get_attack_decision(const std::string& this_creature_id, MapPtr view_map);
+    virtual CommandPtr get_ranged_attack_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_custom_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_movement_decision(const std::string& this_creature_id);
     virtual std::vector<Coordinate> get_adjacent_safe_coordinates_without_creatures(MapPtr current_map, const std::vector<Coordinate>& all_adjacent_coordinates, std::shared_ptr<Creature> creature);
@@ -32,4 +33,5 @@ class NPCDecisionStrategy : public DecisionStrategy
 
     static const int PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET;
     static const int PERCENT_CHANCE_CONSIDER_USING_MAGIC;
+    static const int PERCENT_CHANCE_CONSIDER_RANGED_COMBAT;
 };
