@@ -340,6 +340,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\actions\include\QuestListAction.hpp" />
     <ClInclude Include="engine\actions\include\RangedCombatAction.hpp" />
     <ClInclude Include="engine\actions\include\RangedCombatApplicabilityChecker.hpp" />
+    <ClInclude Include="engine\actions\include\RangedCombatUtils.hpp" />
     <ClInclude Include="engine\actions\include\ReadAction.hpp" />
     <ClInclude Include="engine\actions\include\SearchAction.hpp" />
     <ClInclude Include="engine\actions\include\ShowConductsAction.hpp" />
@@ -1233,6 +1234,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="display\source\CursesProperties.cpp" />
     <ClCompile Include="engine\actions\source\AutomaticMovementFlags.cpp" />
     <ClCompile Include="engine\actions\source\ExitGameAction.cpp" />
+    <ClCompile Include="engine\actions\source\RangedCombatUtils.cpp" />
     <ClCompile Include="engine\actions\source\unit_tests\AutomaticMovementFlags_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

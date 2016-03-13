@@ -1,4 +1,5 @@
 #include "Conversion.hpp"
+#include "RangedCombatUtils.hpp"
 #include "TileSelectionRangeChecker.hpp"
 
 bool TileSelectionRangeChecker::is_selected_tile_in_range(CreaturePtr creature, const AttackType attack_type)
@@ -20,18 +21,10 @@ bool TileSelectionRangeChecker::is_selected_tile_in_range(CreaturePtr creature, 
       if (t_it != target_map.end() && view_map)
       {
         Coordinate c = t_it->second.second;
-        TilePtr tile = view_map->at(c);
-
-        if (tile)
-        {
-          // The selected coordinates mapped to a tile in the view map,
-          // so the selected tile is in range.
-          in_range = true;
-        }
+        in_range = RangedCombatUtils::is_coord_in_range(c, view_map);
       }
     }
   }
 
   return in_range;
 }
-

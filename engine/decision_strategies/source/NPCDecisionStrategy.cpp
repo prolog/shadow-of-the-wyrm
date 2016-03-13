@@ -11,6 +11,8 @@
 #include "MagicalAbilityChecker.hpp"
 #include "NPCDecisionStrategy.hpp"
 #include "NPCMagicDecisionFactory.hpp"
+#include "RangedCombatApplicabilityChecker.hpp"
+#include "RangedCombatUtils.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
 
@@ -18,6 +20,7 @@ using namespace std;
 
 const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
+const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_RANGED_COMBAT = 80;
 
 NPCDecisionStrategy::NPCDecisionStrategy(ControllerPtr new_controller)
 : DecisionStrategy(new_controller)
@@ -84,6 +87,11 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
     if (command == nullptr)
     {
       command = get_attack_decision(this_creature_id, view_map);
+    }
+
+    if (command == nullptr)
+    {
+      command = get_ranged_attack_decision(this_creature_id, view_map);
     }
 
     // If not threatened, try a custom (script-based) decision.
@@ -251,6 +259,51 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
     }
   }
   
+  return no_attack;
+}
+
+// Potentially do a ranged attack
+CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr no_attack;
+
+  ThreatMap threat_map = threat_ratings.get_all_threats();
+  ThreatMap::const_reverse_iterator t_it = threat_map.rbegin();
+
+  if (view_map != nullptr)
+  {
+    Coordinate c_this = view_map->get_location(this_creature_id);
+    TilePtr this_tile = view_map->at(c_this);
+
+    if (this_tile != nullptr)
+    {
+      CreaturePtr this_cr = this_tile->get_creature();
+
+      RangedCombatApplicabilityChecker rcac;
+      if (rcac.can_creature_do_ranged_combat(this_cr).first && RNG::percent_chance(PERCENT_CHANCE_CONSIDER_RANGED_COMBAT))
+      {
+        while (t_it != threat_map.rend())
+        {
+          set<string> creature_ids = t_it->second;
+
+          for (const string& threatening_creature_id : creature_ids)
+          {
+            Coordinate threat_c = view_map->get_location(threatening_creature_id);
+
+            if (RangedCombatUtils::is_coord_in_range(threat_c, view_map) && RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map))
+            {
+              // ....
+              int x = 1;
+            }
+          }
+
+          // Try the next threat level.
+          t_it++;
+        }
+      }
+    }
+  }
+
   return no_attack;
 }
 
