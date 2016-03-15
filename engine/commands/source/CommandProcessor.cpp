@@ -124,7 +124,15 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::FIRE_MISSILE)
       {
-        ac = game.actions.fire_missile(creature);
+        string skip_targetting_s = command->get_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SKIP_TARGETTING);
+        bool skip_targetting = false;
+
+        if (!skip_targetting_s.empty())
+        {
+          skip_targetting = String::to_bool(skip_targetting_s);
+        }
+
+        ac = game.actions.fire_missile(creature, skip_targetting);
       }
       else if (command_name == CommandKeys::QUAFF)
       {

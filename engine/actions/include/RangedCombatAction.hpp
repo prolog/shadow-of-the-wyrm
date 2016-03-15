@@ -6,7 +6,7 @@ class RangedCombatAction : public IActionManager
 {
   public:
     bool operator==(const RangedCombatAction& rca) const;
-    ActionCostValue fire_missile(CreaturePtr creature);
+    ActionCostValue fire_missile(CreaturePtr creature, const bool skip_targetting);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 

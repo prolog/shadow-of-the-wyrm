@@ -36,7 +36,7 @@ bool RangedCombatAction::operator==(const RangedCombatAction& rca) const
   return true;
 }
 
-ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature)
+ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature, const bool skip_targetting)
 {
   ActionCostValue action_cost_value = 0;
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
@@ -49,7 +49,15 @@ ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature)
     
     if (ranged_combat_info.first)
     {
-      action_cost_value = get_selected_tile(creature);
+      if (skip_targetting == false)
+      {
+        action_cost_value = get_selected_tile(creature);
+      }
+      else
+      {
+        // Need a default for fire_weapon_at_tile
+        action_cost_value = 1;
+      }
       
       // If the action advances a turn, we've selected a tile:
       if (action_cost_value)
