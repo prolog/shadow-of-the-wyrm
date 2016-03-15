@@ -58,7 +58,7 @@ class ActionManager : public ISerializable
     ActionCostValue select_tile(CreaturePtr creature, const SelectCreatureType sct, TileSelectionAction* const tsa);
     
     // Actions utilizing tile selection actions:
-    ActionCost fire_missile(CreaturePtr creature);
+    ActionCost fire_missile(CreaturePtr creature, const bool skip_targetting /* true for NPCs */);
 
     // Unlike pick up/drop, handle item has no checks.
     ActionCostValue remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);

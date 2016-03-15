@@ -552,14 +552,14 @@ ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction
   return action_cost_value;
 }
 
-ActionCost ActionManager::fire_missile(CreaturePtr creature)
+ActionCost ActionManager::fire_missile(CreaturePtr creature, const bool skip_targetting)
 {
   ActionCostValue action_cost_value = 0;
   CurrentCreatureAbilities cca;
   
   if (creature && cca.can_see(creature))
   {
-    action_cost_value = ranged_combat_action.fire_missile(creature);
+    action_cost_value = ranged_combat_action.fire_missile(creature, skip_targetting);
   }
   else
   {
