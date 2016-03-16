@@ -437,7 +437,7 @@ bool Item::get_item_identified() const
   return identified;
 }
 
-void Item::set_auto_curse(const int new_auto_curse)
+void Item::set_auto_curse(const bool new_auto_curse)
 {
   auto_curse = new_auto_curse;
 }

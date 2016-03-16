@@ -21,6 +21,13 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 - Updated NPC AI to consider ranged combat when threats are in range and
   when an appropriate ranged weapon is wielded.
 
+- Resting no longer cuts off at full HP or AP when the player has at
+  least one status.  This allows players to quickly rest off being
+  Spellbound, etc.  Resting still can't be done when afflicted by
+  particularly dangerous statuses (Stone, Poison) - in this case, the
+  player would need to use an item, pray, manually rest using 's', etc.
+  (Antonio Sabochini)
+
 - New creatures: dying star.
 
 Shadow of the Wyrm v0.4.9 "Mavroedes"

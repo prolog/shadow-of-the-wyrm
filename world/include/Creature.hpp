@@ -254,6 +254,7 @@ class Creature : public ISerializable
     void set_status(const std::string& status_id, const bool affected);
     void remove_status(const std::string& status_id);
     bool has_status(const std::string& status_id) const;
+    bool has_status() const;
     CreatureStatusMap get_statuses() const;
 
     void clear_event_scripts();
