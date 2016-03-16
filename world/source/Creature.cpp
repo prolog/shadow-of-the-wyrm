@@ -958,6 +958,11 @@ bool Creature::has_status(const string& status_id) const
   return has_status;
 }
 
+bool Creature::has_status() const
+{
+  return !statuses.empty();
+}
+
 CreatureStatusMap Creature::get_statuses() const
 {
   return statuses;
