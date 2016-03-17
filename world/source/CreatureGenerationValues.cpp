@@ -26,6 +26,7 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
   result = result && (initial_hit_points == cgv.initial_hit_points);
   result = result && (initial_arcana_points == cgv.initial_arcana_points);
   result = result && (base_experience_value == cgv.base_experience_value);
+  result = result && (skills == cgv.skills);
   result = result && (initial_equipment == cgv.initial_equipment);
   result = result && (initial_inventory == cgv.initial_inventory);
   result = result && (generator_filters == cgv.generator_filters);
@@ -106,6 +107,16 @@ void CreatureGenerationValues::set_base_experience_value(const uint new_base_exp
 uint CreatureGenerationValues::get_base_experience_value() const
 {
   return base_experience_value;
+}
+
+void CreatureGenerationValues::set_skills(const Skills& new_skills)
+{
+  skills = new_skills;
+}
+
+Skills CreatureGenerationValues::get_skills() const
+{
+  return skills;
 }
 
 void CreatureGenerationValues::set_initial_equipment(const map<EquipmentWornLocation, InitialItem>& new_initial_equipment)

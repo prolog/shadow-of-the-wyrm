@@ -18383,6 +18383,18 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>10</Exp>
+				<Skills>
+					<GeneralSkills>
+						<Archery>20</Archery>
+					</GeneralSkills>
+					<RangedWeaponSkills>
+						<Bows>20</Bows>
+						<Crossbows>15</Crossbows>
+						<Rocks>20</Rocks>
+						<Slings>20</Slings>
+						<Spears>20</Spears>
+					</RangedWeaponSkills>
+				</Skills>
 				<InitialEquipmentAndInventory>
 					<Ranged>
 						<ID>yew_bow</ID>

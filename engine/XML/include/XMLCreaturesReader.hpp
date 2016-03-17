@@ -4,6 +4,7 @@
 #include "CreatureGenerationValues.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLReader.hpp"
+#include "XMLSkillsReaders.hpp"
 
 class XMLCreaturesReader : public XMLReader
 {
@@ -17,4 +18,6 @@ class XMLCreaturesReader : public XMLReader
     void parse_event_scripts(const XMLNode& event_scripts_node, CreaturePtr creature);
     void parse_spells(const XMLNode& spells_node, CreaturePtr creature);
     void parse_decision_strategy(const XMLNode& decision_strategy_node, CreaturePtr creature);
+
+    XMLSkillsReader skill_reader;
 };

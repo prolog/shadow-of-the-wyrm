@@ -1636,6 +1636,23 @@ bool Skills::operator==(const Skills& sk) const
   return result;
 }
 
+void Skills::increment_skills(const Skills& skills_to_increment)
+{
+  RawSkillMap rsm = skills_to_increment.get_raw_skills();
+
+  for (const auto& skill_pair : rsm)
+  {
+    SkillType sk = skill_pair.first;
+    SkillPtr skill = skill_pair.second;
+
+    if (skill != nullptr)
+    {
+      unsigned int new_value = static_cast<unsigned int>(get_value(sk) + skill->get_value());
+      set_value(sk, new_value);
+    }
+  }
+}
+
 // Set the value of a skill
 void Skills::set_value(const SkillType skill_name, const unsigned int value)
 {
@@ -1754,7 +1771,12 @@ ClassIdentifier Skills::internal_class_identifier() const
 }
 
 // Return a reference to the skills map
-std::map<SkillType, SkillPtr>& Skills::get_raw_skills()
+std::map<SkillType, SkillPtr>& Skills::get_raw_skills_ref()
+{
+  return skills;
+}
+
+std::map<SkillType, SkillPtr> Skills::get_raw_skills() const
 {
   return skills;
 }

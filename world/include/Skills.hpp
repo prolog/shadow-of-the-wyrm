@@ -936,6 +936,10 @@ class Skills : public ISerializable
     Skills& operator=(const Skills& skills);
     virtual bool operator==(const Skills& skills) const;
 
+    // For each skill in skills_to_increment, update the values in the current
+    // object by the appropriate amount.
+    void increment_skills(const Skills& skills_to_increment);
+
     void set_value(const SkillType skill_name, const unsigned int new_value);
     void mark(const SkillType skill_name);
 
@@ -946,7 +950,8 @@ class Skills : public ISerializable
 
     std::string str() const;
     
-    RawSkillMap& get_raw_skills();
+    RawSkillMap& get_raw_skills_ref();
+    RawSkillMap get_raw_skills() const;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

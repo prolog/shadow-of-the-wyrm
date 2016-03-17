@@ -291,3 +291,19 @@ TEST(SW_World_Skills, saveload_magic_skills)
   }
 }
 
+TEST(SW_World_Skills, increment_skills)
+{
+  Skills s1;
+  s1.set_value(SkillType::SKILL_GENERAL_ARCHERY, 30);
+  s1.set_value(SkillType::SKILL_GENERAL_BOATING, 50);
+
+  Skills s2;
+  s2.set_value(SkillType::SKILL_GENERAL_ARCHERY, 22);
+  s2.set_value(SkillType::SKILL_GENERAL_CARRYING, 10);
+
+  s1.increment_skills(s2);
+
+  EXPECT_EQ(52, s1.get_value(SkillType::SKILL_GENERAL_ARCHERY));
+  EXPECT_EQ(50, s1.get_value(SkillType::SKILL_GENERAL_BOATING));
+  EXPECT_EQ(10, s1.get_value(SkillType::SKILL_GENERAL_CARRYING));
+}
