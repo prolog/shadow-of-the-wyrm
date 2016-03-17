@@ -46,8 +46,11 @@ int LightMeleeAndRangedWeaponToHitCalculator::get_combat_or_archery_bonus(Creatu
   {
     skill = SkillType::SKILL_GENERAL_ARCHERY;
   }
-  
-  bonus = static_cast<int>(skill) / NWP_SKILL_BONUS_DIVISOR;
+
+  if (creature != nullptr)
+  {
+    bonus = static_cast<int>(creature->get_skills().get_value(skill)) / NWP_SKILL_BONUS_DIVISOR;
+  }
   
   return bonus;
 }
