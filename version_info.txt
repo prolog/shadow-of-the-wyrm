@@ -33,6 +33,10 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 
 - New creatures: dying star.
 
+- Bug fixes:
+
+  - Combat/Archery was not affecting the combat to-hit calculations.
+
 Shadow of the Wyrm v0.4.9 "Mavroedes"
 - Version declared March 3, 2016.  Version finalized March 7, 2016.
 
