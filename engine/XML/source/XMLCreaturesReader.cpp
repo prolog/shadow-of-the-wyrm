@@ -263,6 +263,13 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
     uint base_experience = XMLUtils::get_child_node_int_value(creature_generation_values_node, "Exp");
     cgv.set_base_experience_value(base_experience);
 
+    XMLNode skills_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "Skills");
+    if (!skills_node.is_null())
+    {
+      Skills skills = skill_reader.get_skills(skills_node);
+      cgv.set_skills(skills);
+    }
+
     // Optional equipment/inventory node.
     XMLNode eq_inv_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "InitialEquipmentAndInventory");
     if (!eq_inv_node.is_null())

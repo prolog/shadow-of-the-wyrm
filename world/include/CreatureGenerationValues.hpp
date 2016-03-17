@@ -7,6 +7,7 @@
 #include "GenerationValues.hpp"
 #include "InitialItem.hpp"
 #include "tiles.hpp"
+#include "Skills.hpp"
 
 // Values that are used to generate a creature, without being a necessary
 // part of the creature itself.  Prevents values that only need a single
@@ -37,6 +38,9 @@ class CreatureGenerationValues : public GenerationValues
     
     void set_base_experience_value(const uint new_base_experience_value);
     uint get_base_experience_value() const;
+
+    void set_skills(const Skills& skills);
+    Skills get_skills() const;
 
     void set_initial_equipment(const std::map<EquipmentWornLocation, InitialItem>& new_initial_equipment);
     std::map<EquipmentWornLocation, InitialItem> get_initial_equipment() const;
@@ -70,6 +74,9 @@ class CreatureGenerationValues : public GenerationValues
     // The base experience value.  Stored here so that a slightly different value can
     // be generated for each creature.
     uint base_experience_value;
+
+    // Skills for the creature.
+    Skills skills;
 
     // The initial equipment/inventory, used when generating the creature.
     std::map<EquipmentWornLocation, InitialItem> initial_equipment;

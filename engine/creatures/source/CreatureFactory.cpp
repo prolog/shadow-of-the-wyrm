@@ -102,6 +102,11 @@ CreaturePtr CreatureFactory::create_by_creature_id
     uint base_experience_value = cgv.get_base_experience_value();
     uint actual_experience_value = RNG::range(ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_LOWER_MULTIPLIER), ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_UPPER_MULTIPLIER));
     creature->set_experience_value(actual_experience_value);
+
+    // Increment the creature's skills based on the skills in the generation
+    // values.
+    Skills& skills = creature->get_skills();
+    skills.increment_skills(cgv.get_skills());
       
     // If the creature is guaranteed to be generated as friendly, then be sure
     // that hostility isn't set.

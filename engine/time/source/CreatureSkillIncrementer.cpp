@@ -23,7 +23,7 @@ void CreatureSkillIncrementer::tick(CreaturePtr creature, TilePtr tile, const ul
     if (total_minutes_elapsed % minutes_interval == 0)
     {
       Skills& skills = creature->get_skills();
-      map<SkillType, SkillPtr>& raw_skills = skills.get_raw_skills();
+      map<SkillType, SkillPtr>& raw_skills = skills.get_raw_skills_ref();
       
       IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
