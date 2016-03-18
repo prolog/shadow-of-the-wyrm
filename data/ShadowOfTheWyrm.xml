@@ -13267,6 +13267,14 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>10</Exp>
+				<Skills>
+					<GeneralSkills>
+						<Archery>45</Archery>
+					</GeneralSkills>
+					<RangedWeaponSkills>
+						<Crossbows>60</Crossbows>
+					</RangedWeaponSkills>
+				</Skills>
 				<InitialEquipmentAndInventory>
 					<Ranged>
 						<ID>crossbow</ID>
@@ -17259,6 +17267,15 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>2</Exp>
+				<Skills>
+					<GeneralSkills>
+						<Archery>10</Archery>
+					</GeneralSkills>
+					<RangedWeaponSkills>
+						<Rocks>20</Rocks>
+						<Slings>20</Slings>
+					</RangedWeaponSkills>
+				</Skills>
 				<InitialEquipmentAndInventory>
 					<Ranged>
 						<ID>sling</ID>
