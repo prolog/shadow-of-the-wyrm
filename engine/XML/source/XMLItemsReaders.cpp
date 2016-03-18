@@ -21,6 +21,15 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
   
   if (!items_node.is_null())
   {
+    XMLNode amulets_node = XMLUtils::get_next_element_by_local_name(items_node, "Amulets");
+
+    if (!amulets_node.is_null())
+    {
+      pair<ItemMap, GenerationValuesMap> amulets = get_amulets(amulets_node);
+      items.insert(amulets.first.begin(), amulets.first.end());
+      igv_map.insert(amulets.second.begin(), amulets.second.end());
+    }
+
     XMLNode armours_node = XMLUtils::get_next_element_by_local_name(items_node, "Armours");
     
     if (!armours_node.is_null())
@@ -191,6 +200,35 @@ std::pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_misc_items(const XML
   misc_items.second = igv_map;
 
   return misc_items;
+}
+
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_amulets(const XMLNode& amulets_node)
+{
+  pair<ItemMap, GenerationValuesMap> amulets;
+  ItemMap amulets_map;
+  GenerationValuesMap igv_map;
+
+  if (!amulets_node.is_null())
+  {
+    vector<XMLNode> amulet_nodes = XMLUtils::get_elements_by_local_name(amulets_node, "Amulet");
+
+    for (const XMLNode& node : amulet_nodes)
+    {
+      if (!node.is_null())
+      {
+        AmuletPtr amulet = std::make_shared<Amulet>();
+        
+        GenerationValues igv;
+        amulet_reader.parse(amulet, igv, node);
+        amulets_map.insert(make_pair(amulet->get_id(), amulet));
+        igv_map.insert(make_pair(amulet->get_id(), igv));
+      }
+    }
+  }
+
+  amulets.first = amulets_map;
+  amulets.second = igv_map;
+  return amulets;
 }
 
 pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& armours_node)

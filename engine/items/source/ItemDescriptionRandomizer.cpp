@@ -42,11 +42,6 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
     if (item)
     {
       ItemType item_type = item->get_type();
-
-      if (item_type == ItemType::ITEM_TYPE_AMULET)
-      {
-        int x = 1;
-      }
       int i_item_type = static_cast<int>(item_type);
 
       if ((type_inclusion[i_item_type] == true) && (!ii.get_item_identified(item->get_base_id())))
