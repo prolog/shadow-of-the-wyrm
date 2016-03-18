@@ -86,12 +86,12 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
     // Attack if threatened.
     if (command == nullptr)
     {
-      command = get_attack_decision(this_creature_id, view_map);
+      command = get_ranged_attack_decision(this_creature_id, view_map);
     }
 
     if (command == nullptr)
     {
-      command = get_ranged_attack_decision(this_creature_id, view_map);
+      command = get_attack_decision(this_creature_id, view_map);
     }
 
     // If not threatened, try a custom (script-based) decision.
