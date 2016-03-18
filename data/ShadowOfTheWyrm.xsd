@@ -147,6 +147,7 @@
 	<xs:annotation><xs:documentation>The items available within Shadow of the Wyrm.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
+			<xs:element ref="tns:Amulets" minOccurs="0"/>
 			<xs:element ref="tns:Armours" minOccurs="0"/>
 			<xs:element ref="tns:Rings" minOccurs="0"/>
 			<xs:element name="Weapons" type="tns:Weapons" minOccurs="0"/>
@@ -718,6 +719,13 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Amulets">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Amulet" type="tns:Amulet" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="Armours">
 	<xs:complexType>
 		<xs:sequence>
@@ -989,6 +997,12 @@
 				<xs:element name="ToHit" type="xs:integer" minOccurs="0"/>
 				<xs:element name="AddlDamage" type="xs:integer" minOccurs="0"/>
 			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Amulet">
+	<xs:complexContent>
+		<xs:extension base="tns:Wearable">
 		</xs:extension>
 	</xs:complexContent>
 </xs:complexType>

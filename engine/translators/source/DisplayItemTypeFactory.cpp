@@ -56,7 +56,7 @@ RingDisplayItemType::RingDisplayItemType()
 }
 
 AmuletDisplayItemType::AmuletDisplayItemType()
-  : DisplayItemType("+", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_AMULET, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_AMULETS))
+  : DisplayItemType("#", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_AMULET, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_AMULETS))
 {
 }
 
