@@ -17284,7 +17284,7 @@
 						<ID>_rock</ID>
 						<Quantity>
 							<Random>
-								<NumDice>2</NumDice>
+								<NumDice>4</NumDice>
 								<NumSides>3</NumSides>
 							</Random>
 						</Quantity>
