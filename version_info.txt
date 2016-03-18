@@ -31,7 +31,11 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 - Creatures can now have skills as well.  Added archery-related skills to
   archers, goblin pelters, and dwarven warriors.
 
+- Amulets now have randomized unidentified descriptions.
+
 - New creatures: dying star.
+
+- New items: holy amulet, shadow amulet, lightning amulet.
 
 - Bug fixes:
 
