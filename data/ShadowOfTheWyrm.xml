@@ -22128,7 +22128,9 @@
 			</Armour>
 			<Armour id="protective_amulet">
 				<DescriptionSID>PROTECTIVE_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_PROTECTIVE_AMULET_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>PROTECTIVE_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_PROTECTIVE_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -22142,7 +22144,9 @@
 			</Armour>
 			<Armour id="evasive_amulet">
 				<DescriptionSID>EVASIVE_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_EVASIVE_AMULET_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>EVASIVE_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_EVASIVE_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -22153,6 +22157,63 @@
 				<DangerLevel>6</DangerLevel>
 				<Evade>12</Evade>
 				<Soak>0</Soak>
+			</Armour>
+			<Armour id="holy_amulet">
+				<DescriptionSID>HOLY_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_HOLY_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>HOLY_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_HOLY_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>150</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>8</DangerLevel>
+				<Resistances>
+					<Holy>0.10</Holy>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>2</Soak>
+			</Armour>
+			<Armour id="shadow_amulet">
+				<DescriptionSID>SHADOW_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SHADOW_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SHADOW_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SHADOW_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>150</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>8</DangerLevel>
+				<Resistances>
+					<Shadow>0.10</Shadow>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>2</Soak>
+			</Armour>
+			<Armour id="lightning_amulet">
+				<DescriptionSID>LIGHTNING_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_LIGHTNING_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>LIGHTNING_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_LIGHTNING_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>150</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>8</DangerLevel>
+				<Resistances>
+					<Lightning>0.10</Lightning>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>2</Soak>
 			</Armour>
 			<Armour id="chain_scraps">
 				<DescriptionSID>CHAIN_SCRAPS_SID</DescriptionSID>
