@@ -42,6 +42,8 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 - Creatures can now attack with two weapons.  There is a to-hit penalty
   on the secondary weapon, as well as a speed penalty.  These are both
   reduced by the Dual Wield skill (kraphead).
+
+- Rovers now start with skill in Dual Wield as well.
   
 - New creatures: dying star.
 
