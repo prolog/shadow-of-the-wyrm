@@ -59,9 +59,20 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
     CreaturePtr adjacent_creature = adjacent_tile->get_creature();
     
     // Sanity check
-    if (adjacent_creature)
+    if (creature && adjacent_creature)
     {
       action_cost_value = attack(creature, adjacent_creature);
+
+      bool attack_secondary = false;
+      WeaponPtr off_hand_weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
+
+      // Secondary attacks fire only if the creature is wielding a weapon in
+      // its off hand.  Shields, potions, etc., don't count!
+      if (off_hand_weapon != nullptr)
+      {
+        action_cost_value += attack(creature, adjacent_creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
+        // action_cost_value += some_calculated_penalty TODO FIXME ...
+      }
     }
   }
   else
