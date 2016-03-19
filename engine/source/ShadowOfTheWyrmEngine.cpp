@@ -253,83 +253,146 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   ClassMap classes = game.get_classes_ref();
   
   Option opt;
-  SexSelectionScreen sex_selection(display);
-  string sex_selection_s = sex_selection.display();
-  int keyboard_selection = Char::keyboard_selection_char_to_int(sex_selection_s.at(0));
 
-  if (opt.is_random_option(sex_selection_s.at(0)))
+  string default_sex = game.get_settings_ref().get_setting("default_sex");
+  bool prompt_user_for_sex = true;
+
+  if (!default_sex.empty())
   {
-    sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
-  }
-  else
-  {
-    sex = static_cast<CreatureSex>(keyboard_selection);
+    int sex_i = String::to_int(default_sex);
+    sex = static_cast<CreatureSex>(sex_i);
+    prompt_user_for_sex = false;
   }
 
-  RaceSelectionScreen race_selection(display);
-  string race_index = race_selection.display();
+  if (prompt_user_for_sex)
+  {
+    SexSelectionScreen sex_selection(display);
+    string sex_selection_s = sex_selection.display();
+    int keyboard_selection = Char::keyboard_selection_char_to_int(sex_selection_s.at(0));
+
+    if (opt.is_random_option(sex_selection_s.at(0)))
+    {
+      sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
+    }
+    else
+    {
+      sex = static_cast<CreatureSex>(keyboard_selection);
+    }
+  }
+
+  string default_race_id = game.get_settings_ref().get_setting("default_race_id");
+  const auto r_it = races.find(default_race_id);
+  bool prompt_user_for_race_selection = true;
   string selected_race_id;
 
-  if (opt.is_random_option(race_index.at(0)))
+  if (r_it != races.end())
   {
-    RacePtr random_race = CreatureUtils::get_random_user_playable_race();
+    RacePtr race = r_it->second;
 
-    if (random_race != nullptr)
+    if (race && race->get_user_playable())
     {
-      selected_race_id = random_race->get_race_id();
+      prompt_user_for_race_selection = false;
+      selected_race_id = default_race_id;
     }
   }
-  else
+
+  if (prompt_user_for_race_selection)
   {
-    int race_idx = Char::keyboard_selection_char_to_int(race_index.at(0));
-    selected_race_id = Integer::to_string_key_at_given_position_in_rc_map(races, race_idx);
+    RaceSelectionScreen race_selection(display);
+    string race_index = race_selection.display();
+
+    if (opt.is_random_option(race_index.at(0)))
+    {
+      RacePtr random_race = CreatureUtils::get_random_user_playable_race();
+
+      if (random_race != nullptr)
+      {
+        selected_race_id = random_race->get_race_id();
+      }
+    }
+    else
+    {
+      int race_idx = Char::keyboard_selection_char_to_int(race_index.at(0));
+      selected_race_id = Integer::to_string_key_at_given_position_in_rc_map(races, race_idx);
+    }
   }
 
-  ClassSelectionScreen class_selection(display);
-  string class_index = class_selection.display();
+  string default_class_id = game.get_settings_ref().get_setting("default_class_id");
+  const auto c_it = classes.find(default_class_id);
+  bool prompt_user_for_class_selection = true;
   string selected_class_id;
 
-  if (opt.is_random_option(class_index.at(0)))
+  if (c_it != classes.end())
   {
-    ClassPtr cur_class = CreatureUtils::get_random_user_playable_class();
+    ClassPtr cur_class = c_it->second;
 
-    if (cur_class != nullptr)
+    if (cur_class && cur_class->get_user_playable())
     {
-      selected_class_id = cur_class->get_class_id();
+      prompt_user_for_class_selection = false;
+      selected_class_id = default_class_id;
     }
   }
-  else
+
+  if (prompt_user_for_class_selection)
   {
-    int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
-    selected_class_id = Integer::to_string_key_at_given_position_in_rc_map(classes, class_idx);
+    ClassSelectionScreen class_selection(display);
+    string class_index = class_selection.display();
+
+    if (opt.is_random_option(class_index.at(0)))
+    {
+      ClassPtr cur_class = CreatureUtils::get_random_user_playable_class();
+
+      if (cur_class != nullptr)
+      {
+        selected_class_id = cur_class->get_class_id();
+      }
+    }
+    else
+    {
+      int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
+      selected_class_id = Integer::to_string_key_at_given_position_in_rc_map(classes, class_idx);
+    }
   }
 
   RacePtr selected_race = races[selected_race_id];
   ClassPtr selected_class = classes[selected_class_id];
 
-  DeitySelectionScreen deity_selection(display, selected_race);
-  string deity_index = deity_selection.display();
+  string default_deity_id = game.get_settings_ref().get_setting("default_deity_id");
+  bool prompt_user_for_deity_selection = true;
+  vector<string> deity_ids = selected_race->get_initial_deity_ids();
   string selected_deity_id;
 
-  if (opt.is_random_option(deity_index.at(0)))
+  if (std::find(deity_ids.begin(), deity_ids.end(), default_deity_id) != deity_ids.end())
   {
-    DeityPtr deity = CreatureUtils::get_random_deity_for_race(selected_race);
-
-    if (deity != nullptr)
-    {
-      selected_deity_id = deity->get_id();
-    }
+    selected_deity_id = default_deity_id;
+    prompt_user_for_deity_selection = false;
   }
-  else
-  {
-    int deity_idx = Char::keyboard_selection_char_to_int(deity_index.at(0));
 
-    vector<string> deity_ids = selected_race->get_initial_deity_ids();
-    for (uint i = 0; i < deity_ids.size(); i++)
+  if (prompt_user_for_deity_selection)
+  {
+    DeitySelectionScreen deity_selection(display, selected_race);
+    string deity_index = deity_selection.display();
+
+    if (opt.is_random_option(deity_index.at(0)))
     {
-      if (static_cast<int>(i) == deity_idx)
+      DeityPtr deity = CreatureUtils::get_random_deity_for_race(selected_race);
+
+      if (deity != nullptr)
       {
-        selected_deity_id = deity_ids.at(i);
+        selected_deity_id = deity->get_id();
+      }
+    }
+    else
+    {
+      int deity_idx = Char::keyboard_selection_char_to_int(deity_index.at(0));
+
+      vector<string> deity_ids = selected_race->get_initial_deity_ids();
+      for (uint i = 0; i < deity_ids.size(); i++)
+      {
+        if (static_cast<int>(i) == deity_idx)
+        {
+          selected_deity_id = deity_ids.at(i);
+        }
       }
     }
   }
