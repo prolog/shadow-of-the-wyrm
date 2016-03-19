@@ -39,6 +39,10 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
   class, deity, and sex.  If these aren't set appropriately, the user
   is prompted to select a value.
 
+- Creatures can now attack with two weapons.  There is a to-hit penalty
+  on the secondary weapon, as well as a speed penalty.  These are both
+  reduced by the Dual Wield skill (kraphead).
+  
 - New creatures: dying star.
 
 - New items: holy amulet, shadow amulet, lightning amulet.

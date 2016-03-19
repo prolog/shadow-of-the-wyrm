@@ -45,7 +45,7 @@ bool MovementAction::operator==(const MovementAction& mm) const
 
 ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direction)
 {
-  ActionCostValue movement_success = 0;
+  ActionCostValue movement_acv = 0;
   Game& game = Game::instance();
 
   if (creature)
@@ -74,12 +74,12 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
         // - there is at least one hostile adjacent creature, and a successful Escape check is made.
         if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) || sm.check_skill(creature, SkillType::SKILL_GENERAL_ESCAPE))
         {
-          movement_success = move_off_map(creature, map, creatures_old_tile);
+          movement_acv = move_off_map(creature, map, creatures_old_tile);
         }
         else
         {
           IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());  
-          movement_success = true;
+          movement_acv = 1;
           string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
           manager.add_new_message(cannot_escape);
           manager.send();
@@ -92,7 +92,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
       Coordinate new_coords = CoordUtils::get_new_coordinate(creature_location, direction);
       TilePtr creatures_new_tile = map->at(new_coords.first, new_coords.second);
       
-      movement_success = move_within_map(creature, map, creatures_old_tile, creatures_new_tile, new_coords, direction);
+      movement_acv = move_within_map(creature, map, creatures_old_tile, creatures_new_tile, new_coords, direction);
     }
 
     // Update the loaded map details with the player's new coordinate,
@@ -104,12 +104,12 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
     }
   }
   
-  return movement_success;
+  return movement_acv;
 }
 
 ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile)
 {
-  ActionCostValue movement_success = 0;
+  ActionCostValue movement_acv = 0;
 
   Game& game = Game::instance();
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());  
@@ -135,7 +135,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
       if (creature->get_decision_strategy()->get_confirmation())
       {
         handle_properties_and_move_to_new_map(creatures_old_tile, map, map_exit);
-        movement_success = get_action_cost_value(creature);
+        movement_acv = get_action_cost_value(creature);
       }
       
       // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
@@ -152,16 +152,16 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
       manager.add_new_message(npc_exit_message);
       manager.send();
         
-      movement_success = get_action_cost_value(creature);
+      movement_acv = get_action_cost_value(creature);
     } 
   }
   
-  return movement_success;
+  return movement_acv;
 }
 
 ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d)
 {
-  ActionCostValue movement_success = 0;
+  ActionCostValue movement_acv = 0;
   bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
@@ -169,7 +169,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
   {
     if (MapUtils::is_creature_present(creatures_new_tile))
     {
-      movement_success = handle_movement_into_occupied_tile(creature, creatures_new_tile, map, new_coords, d);
+      movement_acv = handle_movement_into_occupied_tile(creature, creatures_new_tile, map, new_coords, d);
     }
     // Only try to handle a blocking terrain feature if the creature is corporeal.
     // Spirits don't care about closed doors, etc!
@@ -190,7 +190,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       
       // Regardless of whether the handling did anything, it still costs
       // an action.
-      movement_success = 1;
+      movement_acv = 1;
     }
     else if (creatures_new_tile->get_is_blocking(creature) && !creature_incorporeal)
     {
@@ -206,7 +206,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
           if (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness())
           {
             DigAction da;
-            movement_success = da.dig_through(creature, wielded, map, creatures_new_tile, d);
+            movement_acv = da.dig_through(creature, wielded, map, creatures_new_tile, d);
           }
           else
           {
@@ -222,7 +222,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         // most likely, it's impassable terrain - stone, etc.
         //
         // Do nothing.  Don't advance the turn.
-        movement_success = 0;
+        movement_acv = 0;
       }
     }
     else
@@ -239,7 +239,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
           TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
         
           add_tile_related_messages(creature, new_tile);
-          movement_success = get_action_cost_value(creature);
+          movement_acv = get_action_cost_value(creature);
         }
 
         if (creatures_new_tile->has_feature())
@@ -259,14 +259,14 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     }
   }
   
-  return movement_success;
+  return movement_acv;
 }
 
 // Handle movement into an occupied tile.  First, check to see whether the
 // creature will attack the occupying creature.  If so, attack the creature.
 ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map, const Coordinate& new_coords, const Direction d)
 {
-  ActionCostValue movement_success = 0;
+  ActionCostValue movement_acv = 0;
 
   // Do the necessary checks here to determine whether to attack...
   CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
@@ -311,7 +311,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
 
             // Squeezing past should cost roughly twice as much as a single
             // move, since two squares are being traversed in a turn.
-            movement_success = creature->get_speed().get_current();
+            movement_acv = creature->get_speed().get_current();
           }
           else
           {
@@ -322,19 +322,19 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
             manager.send();
           }
 
-          return movement_success;
+          return movement_acv;
         }
         case MovementThroughTileType::MOVEMENT_SWITCH:
         {
           MapUtils::swap_places(map, creature, adjacent_creature);
 
-          movement_success = 1;
-          return movement_success;
+          movement_acv = 1;
+          return movement_acv;
         }
         default:
         case MovementThroughTileType::MOVEMENT_NONE:
         {
-          return movement_success;
+          return movement_acv;
         }
       }
     }
@@ -343,10 +343,13 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
   if (adjacent_creature != nullptr)
   {
     CombatManager cm;
-    movement_success = cm.attack(creature, adjacent_creature);
+
+    // Call the directional attack function so that if the creature is
+    // dual wielding weapons, both attacks are properly considered.
+    movement_acv = cm.attack(creature, d);
   }
 
-  return movement_success;
+  return movement_acv;
 }
 
 // Figure out what the creature wants to do in terms of getting through the occupied tile.
