@@ -26,9 +26,6 @@ Me:
 - Crash bug is still present: find out what's causing it!
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
-- default_race and default_class settings that accept race/class IDs.  If
-  empty or invalid, the user is prompted for selection.
-
 
 barrabus: 
 - Extra descs for items.

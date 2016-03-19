@@ -35,6 +35,10 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 
 - Changed amulet symbol to '#'.
 
+- Added configuration settings to allow the selection of a default race,
+  class, deity, and sex.  If these aren't set appropriately, the user
+  is prompted to select a value.
+
 - New creatures: dying star.
 
 - New items: holy amulet, shadow amulet, lightning amulet.
