@@ -56,7 +56,7 @@ void InitialItemEquipper::process_initial_equipment(CreaturePtr creature, const 
           item->set_quantity(1);
         }
 
-        am.handle_item(creature, ItemAction::ITEM_ACTION_EQUIP, item);
+        am.handle_item(creature, ItemAction::ITEM_ACTION_EQUIP, item, ii_i.first);
       }
     }
   }

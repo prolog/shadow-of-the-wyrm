@@ -44,7 +44,11 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
   reduced by the Dual Wield skill (kraphead).
 
 - Rovers now start with skill in Dual Wield as well.
-  
+
+- Thieves now start dual-wielding daggers, with some extra daggers in
+  their inventories.  Rovers start with an extra dagger in their
+  inventory.
+    
 - New creatures: dying star.
 
 - New items: holy amulet, shadow amulet, lightning amulet.
@@ -52,6 +56,9 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 - Bug fixes:
 
   - Combat/Archery was not affecting the combat to-hit calculations.
+
+  - Off-hand equipment specified in the configuration XML wasn't being
+    equipped properly.
 
 Shadow of the Wyrm v0.4.9 "Mavroedes"
 - Version declared March 3, 2016.  Version finalized March 7, 2016.
