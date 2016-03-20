@@ -3264,6 +3264,12 @@
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
+						<ID>dagger</ID>
+						<Quantity>
+							<Amount>1</Amount>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>
@@ -3818,6 +3824,9 @@
 				<Wielded>
 					<ID>dagger</ID>
 				</Wielded>
+				<OffHand>
+					<ID>dagger</ID>
+				</OffHand>
 				<Body>
 					<ID>leather_armour</ID>
 				</Body>
@@ -3827,6 +3836,12 @@
 				<InitialInventory>
 					<InitialItem>
 						<ID>food_ration</ID>
+						<Quantity>
+							<Amount>3</Amount>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>dagger</ID>
 						<Quantity>
 							<Amount>3</Amount>
 						</Quantity>
