@@ -44,7 +44,6 @@ AgingMinotaur:
 
 Kraphead:
 - auto-displace when bumping friendly creatures
-- implement dual wield
 - item generation: more arrows
 
 Mateusz Lagowski

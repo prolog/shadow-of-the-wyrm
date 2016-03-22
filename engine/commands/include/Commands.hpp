@@ -322,3 +322,10 @@ class ViewItemsCommand : public Command
     ViewItemsCommand(int key);
     ~ViewItemsCommand();
 };
+
+class HelpCommand : public Command
+{
+  public:
+    HelpCommand(int key);
+    ~HelpCommand();
+};
