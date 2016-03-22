@@ -244,6 +244,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
         list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
         game.actions.inventory(creature, creature->get_inventory(), empty_filter, {}, true);
       }
+      else if (command_name == CommandKeys::HELP)
+      {
+        int x = 1;
+      }
     }
   }
   

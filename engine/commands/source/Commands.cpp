@@ -469,3 +469,13 @@ ViewItemsCommand::ViewItemsCommand(int key)
 ViewItemsCommand::~ViewItemsCommand()
 {
 }
+
+// View help, keybindings, etc.
+HelpCommand::HelpCommand(int key)
+: Command(CommandKeys::HELP, key)
+{
+}
+
+HelpCommand::~HelpCommand()
+{
+}
