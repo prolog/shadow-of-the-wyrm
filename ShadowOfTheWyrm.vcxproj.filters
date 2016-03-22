@@ -3630,6 +3630,9 @@
     <ClInclude Include="engine\actions\include\RangedCombatUtils.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\HelpAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7098,6 +7101,9 @@
       <Filter>Source Files\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\actions\source\RangedCombatUtils.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\HelpAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>

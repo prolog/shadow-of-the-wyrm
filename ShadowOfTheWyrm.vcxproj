@@ -324,6 +324,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\actions\include\ExperienceAction.hpp" />
     <ClInclude Include="engine\actions\include\FeatureAction.hpp" />
     <ClInclude Include="engine\actions\include\FoodAction.hpp" />
+    <ClInclude Include="engine\actions\include\HelpAction.hpp" />
     <ClInclude Include="engine\actions\include\IActionManager.hpp" />
     <ClInclude Include="engine\actions\include\InventoryManager.hpp" />
     <ClInclude Include="engine\actions\include\ItemManager.hpp" />
@@ -1234,6 +1235,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="display\source\CursesProperties.cpp" />
     <ClCompile Include="engine\actions\source\AutomaticMovementFlags.cpp" />
     <ClCompile Include="engine\actions\source\ExitGameAction.cpp" />
+    <ClCompile Include="engine\actions\source\HelpAction.cpp" />
     <ClCompile Include="engine\actions\source\RangedCombatUtils.cpp" />
     <ClCompile Include="engine\actions\source\unit_tests\AutomaticMovementFlags_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
