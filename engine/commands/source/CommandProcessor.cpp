@@ -237,7 +237,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::REST)
       {
-        game.actions.rest(creature);
+        ac = game.actions.rest(creature);
       }
       else if (command_name == CommandKeys::VIEW_ITEMS)
       {
@@ -246,7 +246,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::HELP)
       {
-        int x = 1;
+        ac = game.actions.help();
       }
     }
   }

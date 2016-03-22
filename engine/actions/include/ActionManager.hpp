@@ -122,6 +122,9 @@ class ActionManager : public ISerializable
     // Rest for a while.
     ActionCost rest(CreaturePtr creature);
 
+    // Show help information.
+    ActionCost help();
+
     // Level and experience information.
     ActionCost experience(CreaturePtr creature);
 

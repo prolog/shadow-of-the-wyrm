@@ -19,6 +19,7 @@
 #include "FoodAction.hpp"
 #include "Game.hpp"
 #include "GameEnvTextKeys.hpp"
+#include "HelpAction.hpp"
 #include "ItemFilterFactory.hpp"
 #include "InventoryManager.hpp"
 #include "KickAction.hpp"
@@ -595,6 +596,12 @@ ActionCost ActionManager::rest(CreaturePtr creature)
 
   AutomaticMovementAction ama;
   return get_action_cost(creature, ama.rest(creature));
+}
+
+ActionCost ActionManager::help()
+{
+  CreaturePtr no_creature;
+  return get_action_cost(no_creature, 0);
 }
 
 ActionCost ActionManager::save(CreaturePtr creature)
