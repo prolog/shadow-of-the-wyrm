@@ -1,6 +1,8 @@
 #include "CommandFactoryFactory.hpp"
 #include "EquipmentCommandFactory.hpp"
+#include "HelpCommandFactory.hpp"
 #include "InventoryCommandFactory.hpp"
+#include "ScreenCommandFactory.hpp"
 #include "TileSelectionCommandFactory.hpp"
 
 using namespace std;
@@ -41,10 +43,14 @@ void CommandFactoryFactory::initialize_command_factory_map()
   CommandFactoryPtr cf     = std::make_shared<CommandFactory>();
   CommandFactoryPtr eq_cf  = std::make_shared<EquipmentCommandFactory>();
   CommandFactoryPtr inv_cf = std::make_shared<InventoryCommandFactory>();
-  CommandFactoryPtr ts_cf = std::make_shared<TileSelectionCommandFactory>();
+  CommandFactoryPtr ts_cf  = std::make_shared<TileSelectionCommandFactory>();
+  CommandFactoryPtr sc_cf  = std::make_shared<ScreenCommandFactory>();
+  CommandFactoryPtr hlp_cf = std::make_shared<HelpCommandFactory>();
 
   command_factory_map = CommandFactorySerializationMap{{ClassIdentifier::CLASS_ID_COMMAND_FACTORY, cf},
                                                        {ClassIdentifier::CLASS_ID_EQUIPMENT_COMMAND_FACTORY, eq_cf},
                                                        {ClassIdentifier::CLASS_ID_INVENTORY_COMMAND_FACTORY, inv_cf},
-                                                       {ClassIdentifier::CLASS_ID_TILE_SELECTION_COMMAND_FACTORY, ts_cf}};
+                                                       {ClassIdentifier::CLASS_ID_TILE_SELECTION_COMMAND_FACTORY, ts_cf},
+                                                       {ClassIdentifier::CLASS_ID_SCREEN_COMMAND_FACTORY, sc_cf},
+                                                       {ClassIdentifier::CLASS_ID_HELP_COMMAND_FACTORY, hlp_cf}};
 }

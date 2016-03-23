@@ -9,7 +9,7 @@ HelpAction::HelpAction()
 {
 }
 
-ActionCostValue HelpAction::help() const
+ActionCostValue HelpAction::help(CreaturePtr creature) const
 {
   CreaturePtr nullc;
 
