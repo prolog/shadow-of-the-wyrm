@@ -769,6 +769,21 @@
     <Filter Include="Source Files\engine\decision_strategies\magic\source">
       <UniqueIdentifier>{ec162b25-3021-4eea-8750-216e95d673f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\commands\help">
+      <UniqueIdentifier>{f3a9471a-5473-4716-a7f4-1c9b1ba3808c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\help\source">
+      <UniqueIdentifier>{11211ac2-3614-421c-afff-e5a575e9d89a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\help">
+      <UniqueIdentifier>{e5c937a2-4b44-4989-a8f2-c70de0edb82e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\help\include">
+      <UniqueIdentifier>{14cfd3d6-9d20-464a-b7f5-333596f49a0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\help\source\unit_tests">
+      <UniqueIdentifier>{481c7de5-bf2a-4003-89ff-7627a66cf54c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -3632,6 +3647,21 @@
     </ClInclude>
     <ClInclude Include="engine\actions\include\HelpAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\help\include\HelpCommandFactory.hpp">
+      <Filter>Header Files\engine\commands\help\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\help\include\HelpCommandKeys.hpp">
+      <Filter>Header Files\engine\commands\help\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\help\include\HelpCommands.hpp">
+      <Filter>Header Files\engine\commands\help\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\help\include\HelpCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\help\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\help\include\HelpKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\help\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7105,6 +7135,27 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\HelpAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\help\source\HelpCommandFactory.cpp">
+      <Filter>Source Files\engine\commands\help\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\help\source\HelpCommandKeys.cpp">
+      <Filter>Source Files\engine\commands\help\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\help\source\unit_tests\HelpCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\help\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\help\source\HelpCommands.cpp">
+      <Filter>Source Files\engine\commands\help\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\help\source\HelpCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\help\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\help\source\HelpKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\help\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\help\source\unit_tests\HelpKeyboardCommandMap_test.cpp">
+      <Filter>Source Files\engine\commands\help\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

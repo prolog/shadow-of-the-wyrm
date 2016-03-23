@@ -598,10 +598,10 @@ ActionCost ActionManager::rest(CreaturePtr creature)
   return get_action_cost(creature, ama.rest(creature));
 }
 
-ActionCost ActionManager::help()
+ActionCost ActionManager::help(CreaturePtr creature)
 {
-  CreaturePtr no_creature;
-  return get_action_cost(no_creature, 0);
+  HelpAction ha;
+  return get_action_cost(creature, ha.help(creature));
 }
 
 ActionCost ActionManager::save(CreaturePtr creature)

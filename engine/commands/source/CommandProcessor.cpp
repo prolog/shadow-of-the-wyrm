@@ -246,7 +246,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::HELP)
       {
-        ac = game.actions.help();
+        ac = game.actions.help(creature);
       }
     }
   }

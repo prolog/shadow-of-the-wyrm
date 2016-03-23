@@ -123,7 +123,7 @@ class ActionManager : public ISerializable
     ActionCost rest(CreaturePtr creature);
 
     // Show help information.
-    ActionCost help();
+    ActionCost help(CreaturePtr creature);
 
     // Level and experience information.
     ActionCost experience(CreaturePtr creature);
