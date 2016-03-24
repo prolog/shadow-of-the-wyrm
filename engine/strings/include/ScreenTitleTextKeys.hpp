@@ -10,6 +10,8 @@ class ScreenTitleTextKeys
     static const std::string SCREEN_TITLE_BESTIARY;
     static const std::string SCREEN_TITLE_RESISTANCES;
     static const std::string SCREEN_TITLE_CHARACTER_DETAILS;
+    static const std::string SCREEN_TITLE_HELP;
+    static const std::string SCREEN_TITLE_KEYBINDINGS;
 
   protected:
     ScreenTitleTextKeys();

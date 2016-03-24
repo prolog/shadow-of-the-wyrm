@@ -1,4 +1,5 @@
 Me:
+- Look into formatting of first line of keybindings.
 - Confirm danger level after siriath's lair - seeing a lot of the same
   creatures.
 - Goblin trappers
@@ -38,16 +39,11 @@ Kyzrati:
 Avagart:
 - Eventually, have automovement stop only on new items.
 
-AgingMinotaur:
-* Also, a command to display the keybindings would be nice. Ie. pressing "?" might bring up a list of commands, please?
 * The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
 
 Kraphead:
 - auto-displace when bumping friendly creatures
 - item generation: more arrows
-
-Mateusz Lagowski
-- ? for command list
 
 Lagi:
 - something to allow "breaking" walking.  Eg., if a key is pressed, stop.

@@ -3663,6 +3663,9 @@
     <ClInclude Include="engine\commands\help\include\HelpKeyboardCommandMap.hpp">
       <Filter>Header Files\engine\commands\help\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\screens\include\HelpScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7156,6 +7159,9 @@
     </ClCompile>
     <ClCompile Include="engine\commands\help\source\unit_tests\HelpKeyboardCommandMap_test.cpp">
       <Filter>Source Files\engine\commands\help\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\HelpScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
