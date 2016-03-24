@@ -1,0 +1,21 @@
+  Movement:
+%p
+7,y          8,k,up        9,u %b
+4,h,left      s,.        6,l,left %b
+1,b         2,j,down       3,n
+%p
+General:
+%p
+w - Automatic Movement        > - Descend, Dig        < - Ascend %b
+5 - Rest                      , - Pick up             d - Drop %b
+i - View equipment/items      I - View items          _ - Pray %b
+L - Look at nearby tiles      f - Fire a missile      D - Drink %b
+r - Read scroll/book          $ - Count currency      e - Eat %b
+C - Chat                      a - Apply feature       q - Quests %b
+z - Cast spell                B - Bestiary            v - Evoke wand %b
+K - Kick                      O - Sacrifice at altar  / - Skin corpse %b
+P - Show piety                X - Experience details  S - Save and quit %b
+Q - Quit without saving       M - Message buffer      W - Melee info %b
+R - Ranged info               V - Version details     T - Game date/time %b
+@ - Character details         # - Character dump     F1 - Resistances %b
+F2 - Conduct details          F12 - Reload strings

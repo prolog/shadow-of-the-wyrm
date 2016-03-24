@@ -1,3 +1,4 @@
+#include "HelpAction.hpp"
 #include "HelpCommandKeys.hpp"
 #include "HelpCommandProcessor.hpp"
 #include "HelpCommands.hpp"
@@ -22,10 +23,10 @@ ActionCostValue HelpCommandProcessor::process(CreaturePtr creature, CommandPtr c
 
     if (command_name == HelpCommandKeys::KEYBINDINGS)
     {
-      // JCD FIXME
-      int x = 1;
+      HelpAction ha;
+      return ha.keybindings();
     }
-    if (command_name == HelpCommandKeys::EXIT_HELP)
+    else if (command_name == HelpCommandKeys::EXIT_HELP)
     {
       process_result = -1;
     }

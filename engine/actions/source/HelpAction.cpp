@@ -1,9 +1,15 @@
-#include "global_prototypes.hpp"
-#include "MessageManagerFactory.hpp"
-#include "Metadata.hpp"
+#include "ActionTextKeys.hpp"
+#include "Game.hpp"
+#include "HelpCommandFactory.hpp"
+#include "HelpCommandProcessor.hpp"
+#include "HelpKeyboardCommandMap.hpp"
+#include "HelpScreen.hpp"
 #include "HelpAction.hpp"
+#include "ScreenTitleTextKeys.hpp"
+#include "TextDisplayFormatter.hpp"
+#include "TextDisplayScreen.hpp"
 
-using std::string;
+using namespace std;
 
 HelpAction::HelpAction()
 {
@@ -12,14 +18,50 @@ HelpAction::HelpAction()
 ActionCostValue HelpAction::help(CreaturePtr creature) const
 {
   CreaturePtr nullc;
+  ActionCostValue action_cost_value = 0;
 
-  // Show the help screen.
-  // ...
+  DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+  CommandFactoryPtr command_factory = std::make_shared<HelpCommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = std::make_shared<HelpKeyboardCommandMap>();
+  Game& game = Game::instance();
 
-  // Based on the selected option, show additional help.
-  // ...
+  if (decision_strategy)
+  {
+    while (action_cost_value > -1)
+    {
+      HelpScreen hs(game.get_display());
+      string display_s = hs.display();
+      int input = display_s.at(0);
+      char screen_selection = display_s.at(0);
+
+      CommandPtr help_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, &input);
+      action_cost_value = HelpCommandProcessor::process(creature, help_command);
+    }
+  }
 
   return get_action_cost_value(nullc);
+}
+
+ActionCostValue HelpAction::keybindings() const
+{
+  CreaturePtr null_c;
+
+  Game& game = Game::instance();
+
+  TextDisplayFormatter tdf;
+  vector<string> kb_formatted = tdf.format_text(StringTable::get(ActionTextKeys::ACTION_KEYBINDINGS), Screen::LINES_DISPLAYABLE_AREA);
+  vector<TextDisplayPair> kb_text;
+
+  for (size_t i = 0; i < kb_formatted.size(); i++)
+  {
+    TextDisplayPair kb_line = make_pair(Colour::COLOUR_WHITE, kb_formatted.at(i));
+    kb_text.push_back(kb_line);
+  }
+
+  TextDisplayScreen tds(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_KEYBINDINGS, kb_text, true);
+  tds.display();
+
+  return get_action_cost_value(null_c);
 }
 
 ActionCostValue HelpAction::get_action_cost_value(CreaturePtr creature) const

@@ -48,7 +48,10 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 - Thieves now start dual-wielding daggers, with some extra daggers in
   their inventories.  Rovers start with an extra dagger in their
   inventory.
-    
+
+- There is now a simple in-game help, accessible via '?'.  All keybindings
+  shown are the default values (AgingMinotaur/Mateusz Lagowski).
+
 - New creatures: dying star.
 
 - New items: holy amulet, shadow amulet, lightning amulet.
