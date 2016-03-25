@@ -23,14 +23,18 @@ void HelpScreen::initialize()
   vector<ScreenComponentPtr> help_screen;
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
-  string keybindings = StringTable::get(TextKeys::KEYBINDINGS);
+  vector<string> options_v = {TextKeys::INTRODUCTION_TO_ROGUELIKES, TextKeys::KEYBINDINGS};
+  int cur_id = 0;
 
-  Option current_option;
-  current_option.set_id(0);
-  current_option.set_description(keybindings);
+  for (const auto& option_s : options_v)
+  {
+    Option current_option;
+    current_option.set_id(cur_id++);
+    current_option.set_description(StringTable::get(option_s));
 
-  options->add_option(current_option);
-  options->add_option_description("");
+    options->add_option(current_option);
+    options->add_option_description("");
+  }
 
   help_screen.push_back(options);
   add_page(help_screen);

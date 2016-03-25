@@ -1,0 +1,19 @@
+Roguelike games are a genre of computer games that are spiritually descended from Rogue.  Rogue was written by Michael Toy, Glenn Wichman, and Ken Arnold in the early 1980s, first for UNIX, and then for the Macintosh, IBM PCs, and other platforms.  In it, you play a nameless rogue who must descend, turn by turn, through a fiendish dungeon to retrieve the Amulet of Yendor.
+%p
+What made Rogue so interesting was that, unlike other games of its era, the levels weren't set - instead, they were randomly generated.  And unlike other games, which gave you multiple attempts to complete the game (usually via a "lives" mechanism), with Rogue, you had a single attempt.  You could save the game and come back to it, but once you died, you had to start again.
+%p
+From the ideas of turn-based gameplay, procedural content generation, and perma-death, the roguelike was born.  There have been many fantasy-based games (nethack, Moria, ADOM, Dungeon Crawl Stone Soup), but also sci-fi (DoomRL, Cogmind), post-apocalyptic (Alphaman, Cataclysm: Dark Days Ahead), even Lovecraftian (Infra Arcana).
+%p
+With a loosening of some of the elements of the genre, a new side-genre emerged.  Usually based on procedural content generation and permadeath, with real-time gameplay, games such as Spelunky, Binding of Isaac, Faster Than Light, and others have proved very popular with players outside the niche who enjoy roguelikes.
+%p
+Roguelikes reward careful, considered gameplay.  Turn-based gameplay allows the player to consider each action individually, free from the pressures of real-time play.  Even if a given situation leads to death, the player can always question what about the situation could have been prevented, or done differently.  The best roguelike players learn from their mistakes, and have an intuitive sense about whether the present circumstances are dangerous or not.  This is best illustrated by the winning streaks in games of nethack or Dungeon Crawl Stone Soup played on common servers, with players winning many games in a row.
+%p
+The roguelike scene has moved from individual computer rooms at universities, to Usenet discussion forums, to the web.  For more information on roguelikes, or new games to try, there are many resources available:
+%p
+- https://en.wikipedia.org/wiki/Roguelike %b
+- http://www.roguebasin.com %b
+- https://www.reddit.com/r/roguelikes %b
+- https://www.reddit.com/r/roguelikedev %b
+- http://forums.roguetemple.com/
+%p
+Happy hacking!

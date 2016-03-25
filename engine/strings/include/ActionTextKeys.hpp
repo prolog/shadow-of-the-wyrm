@@ -113,6 +113,7 @@ class ActionTextKeys
     static const std::string ACTION_HANDLE_PEW;
     static const std::string ACTION_EVOKE_FAILED;
     static const std::string ACTION_KEYBINDINGS;
+    static const std::string ACTION_INTRODUCTION_ROGUELIKES;
 
   protected:
     ActionTextKeys();

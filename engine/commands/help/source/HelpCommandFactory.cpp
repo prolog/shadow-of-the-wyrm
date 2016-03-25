@@ -22,6 +22,10 @@ CommandPtr HelpCommandFactory::create(const int key, const std::string& command_
   {
     command = std::make_shared<ExitHelpCommand>(key);
   }
+  else if (command_name == HelpCommandKeys::INTRODUCTION_ROGUELIKES)
+  {
+    command = std::make_shared<IntroductionRoguelikesCommand>(key);
+  }
 
   return command;
 }

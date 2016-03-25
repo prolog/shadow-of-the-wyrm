@@ -147,7 +147,9 @@ class TextKeys
     static const std::string LATEST_MESSAGES;
     static const std::string FRIENDLY;
     static const std::string DUMPING_CHARACTER_FAILED;
+
     static const std::string KEYBINDINGS;
+    static const std::string INTRODUCTION_TO_ROGUELIKES;
 
   protected:
     TextKeys();

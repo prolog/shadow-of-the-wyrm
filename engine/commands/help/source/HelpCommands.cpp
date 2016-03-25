@@ -13,3 +13,7 @@ ExitHelpCommand::ExitHelpCommand(const int key)
 {
 }
 
+IntroductionRoguelikesCommand::IntroductionRoguelikesCommand(const int key)
+: Command(HelpCommandKeys::INTRODUCTION_ROGUELIKES, key)
+{
+}

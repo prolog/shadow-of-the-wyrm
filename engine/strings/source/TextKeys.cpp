@@ -151,4 +151,6 @@ const string TextKeys::SOMETHING = "SOMETHING";
 const string TextKeys::LATEST_MESSAGES = "LATEST_MESSAGES";
 const string TextKeys::FRIENDLY = "FRIENDLY";
 const string TextKeys::DUMPING_CHARACTER_FAILED = "DUMPING_CHARACTER_FAILED";
+
 const string TextKeys::KEYBINDINGS = "KEYBINDINGS";
+const string TextKeys::INTRODUCTION_TO_ROGUELIKES = "INTRODUCTION_TO_ROGUELIKES";
