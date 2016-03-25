@@ -1,0 +1,7 @@
+Shadow of the Wyrm, nee Savage Lands, started as a side-project in July, 2011.  Development was originally done with gcc/MinGW and a local Subversion server, before switching in early 2012 to Visual Studio and a Mercurial repository hosted at Bitbucket.
+%p
+The first release, as Savage Lands, was on August 31, 2015.  A re-release the next day (under the final name, Shadow of the Wyrm) was required due to a naming collision with another fantasy game with the same name.
+%p
+The following people have made bug reports, or had suggestions implemented - thank you!
+%p
+AgingMinotaur, barrabus, Faladrit, pat--, Aleksanderus, Jeremy Long, akeley, Kyzrati, Zirael, kraphead, Mateusz Lagowski, Lagi, Dave Keen, Darcy Faires, Anonymous, Legend, Avagart, Antonio Sabachini.

@@ -18,3 +18,9 @@ class IntroductionRoguelikesCommand : public Command
   public:
     IntroductionRoguelikesCommand(int key);
 };
+
+class SOTWHistoryCommand : public Command
+{
+  public:
+    SOTWHistoryCommand(int key);
+};

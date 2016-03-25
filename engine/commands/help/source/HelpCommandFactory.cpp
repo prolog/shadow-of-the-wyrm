@@ -26,6 +26,10 @@ CommandPtr HelpCommandFactory::create(const int key, const std::string& command_
   {
     command = std::make_shared<IntroductionRoguelikesCommand>(key);
   }
+  else if (command_name == HelpCommandKeys::SOTW_HISTORY)
+  {
+    command = std::make_shared<SOTWHistoryCommand>(key);
+  }
 
   return command;
 }
