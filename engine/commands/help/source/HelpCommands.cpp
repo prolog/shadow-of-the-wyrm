@@ -17,3 +17,8 @@ IntroductionRoguelikesCommand::IntroductionRoguelikesCommand(const int key)
 : Command(HelpCommandKeys::INTRODUCTION_ROGUELIKES, key)
 {
 }
+
+SOTWHistoryCommand::SOTWHistoryCommand(const int key)
+  : Command(HelpCommandKeys::SOTW_HISTORY, key)
+{
+}

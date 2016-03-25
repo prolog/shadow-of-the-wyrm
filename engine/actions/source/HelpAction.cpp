@@ -66,25 +66,36 @@ ActionCostValue HelpAction::keybindings() const
 
 ActionCostValue HelpAction::introduction_roguelikes() const
 {
+  return display_text(ScreenTitleTextKeys::SCREEN_TITLE_INTRODUCTION_ROGUELIKES, ActionTextKeys::ACTION_INTRODUCTION_ROGUELIKES, false);
+}
+
+ActionCostValue HelpAction::game_history() const
+{
+  return display_text(ScreenTitleTextKeys::SCREEN_TITLE_SOTW_HISTORY, ActionTextKeys::ACTION_SOTW_HISTORY, false);
+}
+
+ActionCostValue HelpAction::display_text(const string& title_sid, const string& text_sid, const bool maintain_formatting) const
+{
   CreaturePtr null_c;
 
   Game& game = Game::instance();
 
   TextDisplayFormatter tdf;
-  vector<string> kb_formatted = tdf.format_text(StringTable::get(ActionTextKeys::ACTION_INTRODUCTION_ROGUELIKES));
-  vector<TextDisplayPair> kb_text;
+  vector<string> kb_formatted = tdf.format_text(StringTable::get(text_sid));
+  vector<TextDisplayPair> td_text;
 
   for (size_t i = 0; i < kb_formatted.size(); i++)
   {
-    TextDisplayPair kb_line = make_pair(Colour::COLOUR_WHITE, kb_formatted.at(i));
-    kb_text.push_back(kb_line);
+    TextDisplayPair td_line = make_pair(Colour::COLOUR_WHITE, kb_formatted.at(i));
+    td_text.push_back(td_line);
   }
 
-  TextDisplayScreen tds(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_INTRODUCTION_ROGUELIKES, kb_text, false);
+  TextDisplayScreen tds(game.get_display(), title_sid, td_text, false);
   tds.display();
 
   return get_action_cost_value(null_c);
 }
+
 
 ActionCostValue HelpAction::get_action_cost_value(CreaturePtr creature) const
 {

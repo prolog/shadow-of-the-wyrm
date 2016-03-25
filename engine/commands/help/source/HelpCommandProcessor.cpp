@@ -34,6 +34,10 @@ ActionCostValue HelpCommandProcessor::process(CreaturePtr creature, CommandPtr c
     {
       return ha.introduction_roguelikes();
     }
+    else if (command_name == HelpCommandKeys::SOTW_HISTORY)
+    {
+      return ha.game_history();
+    }
   }
 
   return process_result;

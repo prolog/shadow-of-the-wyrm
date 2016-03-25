@@ -373,4 +373,5 @@ const string ActionTextKeys::ACTION_SPIT_OUT_SEED                 = "ACTION_SPIT
 const string ActionTextKeys::ACTION_SEED_PLANTED                  = "ACTION_SEED_PLANTED";
 const string ActionTextKeys::ACTION_KEYBINDINGS                   = "ACTION_KEYBINDINGS";
 const string ActionTextKeys::ACTION_INTRODUCTION_ROGUELIKES       = "ACTION_INTRODUCTION_ROGUELIKES";
+const string ActionTextKeys::ACTION_SOTW_HISTORY                  = "ACTION_SOTW_HISTORY";
 
