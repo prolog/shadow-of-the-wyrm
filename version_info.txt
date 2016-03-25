@@ -52,6 +52,8 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 - There is now a simple in-game help, accessible via '?'.  All keybindings
   shown are the default values (AgingMinotaur/Mateusz Lagowski).
 
+- Added another entrance to the boathouse in Isen Dun.
+
 - New creatures: dying star.
 
 - New items: holy amulet, shadow amulet, lightning amulet.
