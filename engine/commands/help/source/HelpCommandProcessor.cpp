@@ -16,6 +16,7 @@ HelpCommandProcessor::~HelpCommandProcessor()
 ActionCostValue HelpCommandProcessor::process(CreaturePtr creature, CommandPtr command)
 {
   ActionCostValue process_result = 1;
+  HelpAction ha;
 
   if (creature && command)
   {
@@ -23,12 +24,15 @@ ActionCostValue HelpCommandProcessor::process(CreaturePtr creature, CommandPtr c
 
     if (command_name == HelpCommandKeys::KEYBINDINGS)
     {
-      HelpAction ha;
       return ha.keybindings();
     }
     else if (command_name == HelpCommandKeys::EXIT_HELP)
     {
       process_result = -1;
+    }
+    else if (command_name == HelpCommandKeys::INTRODUCTION_ROGUELIKES)
+    {
+      return ha.introduction_roguelikes();
     }
   }
 

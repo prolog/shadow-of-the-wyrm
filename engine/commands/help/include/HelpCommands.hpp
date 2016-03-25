@@ -12,3 +12,9 @@ class ExitHelpCommand : public Command
   public:
     ExitHelpCommand(int key);
 };
+
+class IntroductionRoguelikesCommand : public Command
+{
+  public:
+    IntroductionRoguelikesCommand(int key);
+};

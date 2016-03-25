@@ -50,7 +50,8 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
   inventory.
 
 - There is now a simple in-game help, accessible via '?'.  All keybindings
-  shown are the default values (AgingMinotaur/Mateusz Lagowski).
+  shown are the default values (AgingMinotaur/Mateusz Lagowski).  The
+  help menu also includes an introduction to roguelike games.
 
 - Added another entrance to the boathouse in Isen Dun.
 
