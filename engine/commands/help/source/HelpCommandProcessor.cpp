@@ -38,6 +38,10 @@ ActionCostValue HelpCommandProcessor::process(CreaturePtr creature, CommandPtr c
     {
       return ha.game_history();
     }
+    else if (command_name == HelpCommandKeys::STRATEGY_BASICS)
+    {
+      return ha.strategy_basics();
+    }
   }
 
   return process_result;

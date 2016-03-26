@@ -29,7 +29,8 @@ void HelpKeyboardCommandMap::initialize_command_mapping(const Settings& settings
   command_mapping.clear();
   command_mapping = KeyboardCommandMappingMap{ { std::to_string('a'), HelpCommandKeys::INTRODUCTION_ROGUELIKES },
   { std::to_string('b'), HelpCommandKeys::SOTW_HISTORY },
-  { std::to_string('c'), HelpCommandKeys::KEYBINDINGS },
+  { std::to_string('c'), HelpCommandKeys::STRATEGY_BASICS },
+  { std::to_string('d'), HelpCommandKeys::KEYBINDINGS },
   { std::to_string('z'), HelpCommandKeys::EXIT_HELP },
   { std::to_string('Z'), HelpCommandKeys::EXIT_HELP },
   { std::to_string(NC_ESCAPE_KEY), HelpCommandKeys::EXIT_HELP },

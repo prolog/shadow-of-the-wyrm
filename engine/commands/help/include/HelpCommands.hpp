@@ -24,3 +24,9 @@ class SOTWHistoryCommand : public Command
   public:
     SOTWHistoryCommand(int key);
 };
+
+class StrategyBasicsCommand : public Command
+{
+  public:
+    StrategyBasicsCommand(int key);
+};

@@ -51,8 +51,8 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 
 - There is now a simple in-game help, accessible via '?'.  All keybindings
   shown are the default values (AgingMinotaur/Mateusz Lagowski).  The
-  help menu also includes an introduction to roguelike games, and a
-  history of Shadow of the Wyrm.
+  help menu also includes an introduction to roguelike games, a history 
+  of Shadow of the Wyrm, and a basic strategy guide.
 
 - Added another entrance to the boathouse in Isen Dun.
 

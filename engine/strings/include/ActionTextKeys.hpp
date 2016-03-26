@@ -115,6 +115,7 @@ class ActionTextKeys
     static const std::string ACTION_KEYBINDINGS;
     static const std::string ACTION_INTRODUCTION_ROGUELIKES;
     static const std::string ACTION_SOTW_HISTORY;
+    static const std::string ACTION_STRATEGY_BASICS;
 
   protected:
     ActionTextKeys();
