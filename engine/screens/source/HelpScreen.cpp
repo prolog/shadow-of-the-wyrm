@@ -22,7 +22,7 @@ void HelpScreen::initialize()
   vector<ScreenComponentPtr> help_screen;
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
-  vector<string> options_v = {ScreenTitleTextKeys::SCREEN_TITLE_INTRODUCTION_ROGUELIKES, ScreenTitleTextKeys::SCREEN_TITLE_SOTW_HISTORY, ScreenTitleTextKeys::SCREEN_TITLE_KEYBINDINGS};
+  vector<string> options_v = {ScreenTitleTextKeys::SCREEN_TITLE_INTRODUCTION_ROGUELIKES, ScreenTitleTextKeys::SCREEN_TITLE_SOTW_HISTORY, ScreenTitleTextKeys::SCREEN_TITLE_STRATEGY_BASICS, ScreenTitleTextKeys::SCREEN_TITLE_KEYBINDINGS};
   int cur_id = 0;
 
   for (const auto& option_s : options_v)

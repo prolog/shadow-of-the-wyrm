@@ -1,5 +1,4 @@
 Me:
-- Look into formatting of first line of keybindings.
 - Confirm danger level after siriath's lair - seeing a lot of the same
   creatures.
 - Goblin trappers

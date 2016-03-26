@@ -74,6 +74,11 @@ ActionCostValue HelpAction::game_history() const
   return display_text(ScreenTitleTextKeys::SCREEN_TITLE_SOTW_HISTORY, ActionTextKeys::ACTION_SOTW_HISTORY, false);
 }
 
+ActionCostValue HelpAction::strategy_basics() const
+{
+  return display_text(ScreenTitleTextKeys::SCREEN_TITLE_STRATEGY_BASICS, ActionTextKeys::ACTION_STRATEGY_BASICS, false);
+}
+
 ActionCostValue HelpAction::display_text(const string& title_sid, const string& text_sid, const bool maintain_formatting) const
 {
   CreaturePtr null_c;

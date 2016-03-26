@@ -30,6 +30,10 @@ CommandPtr HelpCommandFactory::create(const int key, const std::string& command_
   {
     command = std::make_shared<SOTWHistoryCommand>(key);
   }
+  else if (command_name == HelpCommandKeys::STRATEGY_BASICS)
+  {
+    command = std::make_shared<StrategyBasicsCommand>(key);
+  }
 
   return command;
 }
