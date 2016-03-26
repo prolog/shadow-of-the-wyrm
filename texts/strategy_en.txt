@@ -1,1 +1,27 @@
-Strategy help to come.
+In Shadow of the Wyrm, you start off by picking a race and class.  This has a huge impact on the difficulty of your game, as no attempt is made to balance races and classes.  Some are good at some things and some at others, but it is fair to say that some races and classes will always be more difficult than others.
+%p
+For an easier start, consider a Dwarven or Giant Warrior, or potentially an Ogre Pugilist.  All of these combinations have good HP regeneration rates.  In addition, warriors start off with good weapons and armour, making initial encounters less deadly.  Pugilists don't initially start with armour, so they are a little more fragile, but Ogres usually have enough Health that they get a bit of initial Soak for free.  Pugilists also have their unarmed damage increase every level - this, combined with Ogres' natural strength, means that damage will not be a concern.
+%p
+Once your race and class are chosen, you will find yourself on a tiny island in the south-east corner of the world.  This is the island of the Isenlings, a human people who inhabit a hilly village known as Isen Dun.  To complete the game, you will eventually need to get off the island; you can do this by starting with a boat (if you play a Seafarer), by getting lucky and finding one in a dungeon, or by acquiring one by other means.  There is a boathouse on the water in Isen Dun.  The doors are locked, and made of solid iron, but if you ask around, someone might be able to provide you the key.
+%p
+As you get better at the game and at surviving the first few levels, other classes will present their advantages.  Wizards can learn a collection of powerful offensive and utility spells from some of the spellbooks you'll find on your journey.  Witchlings learn magic automatically with each level, and by the end of the game are capable of unleashing terrifying primordial powers.  Thieves are accomplished at fighting with two weapons, and with a bit of armour can become dangerous combatants.  Merchants will always be difficult.
+%p
+In your travels throughout the world, you'll need to find a way to survive.  Life is, they say, nasty, brutish, and short.  As you descend through the dungeons, goblins and slimes give way to griffins, chimeras, and dragons.  You can increase your odds by increasing your Evade, Soak, and Resistances.  Evade reduces the chance that you'll be hit by any given attack.  Each point of Soak nullifies a point of damage, and Resistances work as a multiplier, reducing (or increasing, if you have a vulnerability) the base damage itself.
+%p
+But if your stats are low, and you're having problems, there are always ways to help yourself out.  Ranged combat can soften up your foes, and the wands you find can help do the same.  Even if you can't find arrows or bolts, the fields are full of rocks and stones - fill your pockets!  By the time a creature closes with you, there's no reason it has to be at full strength.
+%p
+Let's say you find yourself in a bad place, eviscerated by manticores despite a hail of stones.  What's an adventurer to do?  There are a number of options available to you, which may or may not be appropriate, based on your circumstances.  You can wait out your injuries by resting; you can drink healing potions, assuming you have any; or you can pray to your whimsical and capricious deity, and hope for the best.
+%p
+And as you travel from place to place, you will meet many people and creatures.  This being a roguelike, many of them will want to kill you and dance on your grave, but not all.  Some of them will even need assistance, and by chatting with them, you may receive quests.  Usually quests are quite dangerous, but come with an associated reward that makes it worth it: a great weapon or armour, a number of magical items, and so on.  Some of the people don't like each other at all, and their quests will be mutually exclusive.  So it goes.
+%p
+When you find yourself on some tiny island, far from where you started, remember the advice of those who have survived:
+%p
+- Pick your fights carefully.
+%p
+- You don't have to fight everything.
+%p
+- Stay in your deity's graces.
+%p
+- Plan your escapes.
+%p
+Good luck, and axes high!
