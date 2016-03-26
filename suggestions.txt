@@ -1,4 +1,5 @@
 Me:
+- New conduct: silent.
 - Confirm danger level after siriath's lair - seeing a lot of the same
   creatures.
 - Goblin trappers
