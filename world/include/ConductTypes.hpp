@@ -10,6 +10,7 @@ enum struct ConductType
   CONDUCT_TYPE_WEAPONLESS = 5, /* Never hits something with a weapon, rather than not wielding one. */
   CONDUCT_TYPE_NO_GRAVEDIGGING = 6,
   CONDUCT_TYPE_QUESTLESS = 7,
-  CONDUCT_SIZE = 8
+  CONDUCT_TYPE_SILENT = 8,
+  CONDUCT_SIZE = 9
 };
 

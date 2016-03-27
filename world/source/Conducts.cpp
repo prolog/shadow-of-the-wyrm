@@ -30,7 +30,7 @@ void Conducts::break_conduct(const ConductType ct)
 
 bool Conducts::serialize(ostream& stream) const
 {
-  static_assert(ConductType::CONDUCT_SIZE == ConductType(8), "Unexpected number of conducts");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(9), "Unexpected number of conducts");
 
   for (const bool conduct : cond)
   {

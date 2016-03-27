@@ -163,6 +163,10 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         }
         else
         {
+          // Casting a spell always involves a verbal component, which breaks the
+          // Silent conduct.
+          creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_SILENT);
+
           // Add an appropriate casting message.
           string cast_message = ActionTextKeys::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
           manager.add_new_message(cast_message);

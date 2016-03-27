@@ -24,6 +24,7 @@ TEST(SW_World_Conducts, remaining_conducts)
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_FOODLESS)] == false);
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_WEAPONLESS)] == false);
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING)] == false);
+  EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_SILENT)] == true);
 }
 
 TEST(SW_World_Conducts, serialization_id)

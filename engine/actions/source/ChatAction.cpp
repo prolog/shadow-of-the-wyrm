@@ -46,6 +46,7 @@ ActionCostValue ChatAction::chat(CreaturePtr creature) const
 
         if (spoke)
         {
+          creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_SILENT);
           action_cost = get_action_cost_value(creature);
         }
       }
