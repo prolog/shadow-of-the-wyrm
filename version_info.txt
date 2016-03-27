@@ -58,7 +58,7 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 
 - New conduct type: silent (broken on chatting and spellcasting).
 
-- New creatures: dying star.
+- New creatures: dying star, puca.
 
 - New items: holy amulet, shadow amulet, lightning amulet.
 
