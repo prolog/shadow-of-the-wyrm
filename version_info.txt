@@ -56,6 +56,8 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 
 - Added another entrance to the boathouse in Isen Dun.
 
+- Increased the amount of currency per drop, as well as ammunition.
+
 - New conduct type: silent (broken on chatting and spellcasting).
 
 - New creatures: dying star, puca, tentacled spider.
