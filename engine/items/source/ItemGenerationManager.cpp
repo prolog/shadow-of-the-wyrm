@@ -114,11 +114,11 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
 
     if (type == ItemType::ITEM_TYPE_CURRENCY)
     {
-      generated_item->set_quantity(RNG::dice(3, 12));
+      generated_item->set_quantity(RNG::dice(3, 20));
     }
     else if (type == ItemType::ITEM_TYPE_AMMUNITION)
     {
-      generated_item->set_quantity(RNG::dice(2, 12));
+      generated_item->set_quantity(RNG::dice(12, 50));
     }
 
     if (enchant_points > 0)
