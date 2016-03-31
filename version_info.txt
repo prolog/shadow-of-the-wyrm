@@ -60,7 +60,7 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 
 - New conduct type: silent (broken on chatting and spellcasting).
 
-- New creatures: dying star, puca, tentacled spider.
+- New creatures: dying star, puca, tentacled spider, fork bug.
 
 - New items: holy amulet, shadow amulet, lightning amulet.
 
