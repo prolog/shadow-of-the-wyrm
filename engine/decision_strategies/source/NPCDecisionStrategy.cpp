@@ -83,6 +83,12 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
     // low health, nearby hostile creatures, etc.
     command = get_magic_decision(this_creature_id, view_map);
 
+    // Breed, potentially.
+    if (command == nullptr)
+    {
+      command = get_breed_decision(this_creature_id, view_map);
+    }
+
     // Attack if threatened.
     if (command == nullptr)
     {
@@ -260,6 +266,21 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
   }
   
   return no_attack;
+}
+
+// If the creature is a breeder, consider whether or not to breed.
+CommandPtr NPCDecisionStrategy::get_breed_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr no_breed;
+
+  bool breeds = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_BREEDS));
+
+  if (breeds)
+  {
+    // JCD TODO: Use breeds flag.
+  }
+
+  return no_breed;
 }
 
 // Potentially do a ranged attack

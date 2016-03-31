@@ -341,6 +341,9 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
     bool suppress_magic = XMLUtils::get_child_node_bool_value(decision_strategy_node, "SuppressMagic");
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SUPPRESS_MAGIC, Bool::to_string(suppress_magic));
 
+    bool breeds = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Breeds", false);
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_BREEDS, Bool::to_string(breeds));
+
     creature->set_decision_strategy(decision_strategy);
   }
 }
