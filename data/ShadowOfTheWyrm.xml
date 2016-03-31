@@ -5093,6 +5093,7 @@
 			<TextDetailsSID>FORK_BUG_TEXT_DETAILS_SID</TextDetailsSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Breeds>1</Breeds>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>b</Symbol>
@@ -5138,7 +5139,6 @@
 			<SpeechTextSID>DIVINE_SPIRIT_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
-				<Breeds>1</Breeds>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>s</Symbol>

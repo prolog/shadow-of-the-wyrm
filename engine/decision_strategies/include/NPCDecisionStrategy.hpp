@@ -21,6 +21,7 @@ class NPCDecisionStrategy : public DecisionStrategy
 
     virtual CommandPtr get_magic_decision(const std::string& this_creature_id, MapPtr view_map);
 
+    virtual CommandPtr get_breed_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_attack_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_ranged_attack_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_custom_decision(const std::string& this_creature_id, MapPtr view_map);
