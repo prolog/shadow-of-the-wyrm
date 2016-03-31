@@ -5086,6 +5086,50 @@
 				<Type>5</Type>
 			</Damage>
 		</Creature>
+		<Creature id="fork_bug">
+			<RaceID>_insect</RaceID>
+			<ShortDescriptionSID>FORK_BUG_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FORK_BUG_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FORK_BUG_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>b</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>12</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>37</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage piercing="true">
+				<NumDice>3</NumDice>
+				<NumSides>1</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="divine_spirit">
 			<RaceID>_spirit</RaceID>
 			<ShortDescriptionSID>DIVINE_SPIRIT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -5094,6 +5138,7 @@
 			<SpeechTextSID>DIVINE_SPIRIT_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Breeds>1</Breeds>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>s</Symbol>
