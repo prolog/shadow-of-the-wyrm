@@ -63,6 +63,7 @@ class CommandKeys
     static const std::string REST;
     static const std::string VIEW_ITEMS;
     static const std::string HELP;
+    static const std::string BREED;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

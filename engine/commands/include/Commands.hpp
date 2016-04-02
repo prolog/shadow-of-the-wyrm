@@ -329,3 +329,12 @@ class HelpCommand : public Command
     HelpCommand(int key);
     ~HelpCommand();
 };
+
+// NPC-only commands:
+
+class BreedCommand : public Command
+{
+  public:
+    BreedCommand(int key);
+    ~BreedCommand();
+};

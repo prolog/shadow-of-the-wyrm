@@ -3666,6 +3666,9 @@
     <ClInclude Include="engine\screens\include\HelpScreen.hpp">
       <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\BreedAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7162,6 +7165,9 @@
     </ClCompile>
     <ClCompile Include="engine\screens\source\HelpScreen.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\BreedAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

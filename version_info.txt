@@ -54,6 +54,11 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
   help menu also includes an introduction to roguelike games, a history 
   of Shadow of the Wyrm, and a basic strategy guide.
 
+- Creatures can now be defined as breeders.  Breeders have a small chance
+  to create another creature of the same type onto a surrounding tile.
+
+- Added the breeder flag to fork bugs, as well as a piercing attack.
+
 - Added another entrance to the boathouse in Isen Dun.
 
 - Increased the amount of currency per drop, as well as ammunition.

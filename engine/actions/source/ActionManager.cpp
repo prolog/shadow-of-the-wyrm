@@ -3,6 +3,7 @@
 #include "ActionTextKeys.hpp"
 #include "AutomaticMovementAction.hpp"
 #include "BestiaryAction.hpp"
+#include "BreedAction.hpp"
 #include "CharacterAction.hpp"
 #include "ChatAction.hpp"
 #include "Conversion.hpp"
@@ -602,6 +603,15 @@ ActionCost ActionManager::help(CreaturePtr creature)
 {
   HelpAction ha;
   return get_action_cost(creature, ha.help(creature));
+}
+
+ActionCost ActionManager::breed(CreaturePtr creature)
+{
+  BreedAction ba;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  return get_action_cost(creature, ba.breed(creature, map));
 }
 
 ActionCost ActionManager::save(CreaturePtr creature)
