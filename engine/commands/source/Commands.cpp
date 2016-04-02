@@ -479,3 +479,15 @@ HelpCommand::HelpCommand(int key)
 HelpCommand::~HelpCommand()
 {
 }
+
+// NPC-only commands
+
+// Breed (create a new creature of the same ID on an adjacent tile)
+BreedCommand::BreedCommand(int key)
+  : Command(CommandKeys::BREED, key)
+{
+}
+
+BreedCommand::~BreedCommand()
+{
+}

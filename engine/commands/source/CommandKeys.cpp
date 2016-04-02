@@ -61,6 +61,7 @@ const string CommandKeys::CUSTOM_SCRIPT_COMMAND = "CUSTOM_SCRIPT_COMMAND";
 const string CommandKeys::REST           = "REST";
 const string CommandKeys::VIEW_ITEMS     = "VIEW_ITEMS";
 const string CommandKeys::HELP           = "HELP";
+const string CommandKeys::BREED          = "BREED";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

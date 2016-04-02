@@ -9,6 +9,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MagicalAbilityChecker.hpp"
+#include "MapUtils.hpp"
 #include "NPCDecisionStrategy.hpp"
 #include "NPCMagicDecisionFactory.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
@@ -21,6 +22,7 @@ using namespace std;
 const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_RANGED_COMBAT = 80;
+const int NPCDecisionStrategy::PERCENT_CHANCE_BREED = 10;
 
 NPCDecisionStrategy::NPCDecisionStrategy(ControllerPtr new_controller)
 : DecisionStrategy(new_controller)
@@ -273,11 +275,24 @@ CommandPtr NPCDecisionStrategy::get_breed_decision(const string& this_creature_i
 {
   CommandPtr no_breed;
 
+  // JCD TODO: Later, once all creatures can potentially act, update this
+  // to only breed if there is a hostile creature nearby.
   bool breeds = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_BREEDS));
 
-  if (breeds)
+  if (breeds && RNG::percent_chance(PERCENT_CHANCE_BREED))
   {
-    // JCD TODO: Use breeds flag.
+    TileDirectionMap tdm = MapUtils::get_adjacent_tiles_to_creature(view_map, view_map->get_creature(this_creature_id));
+
+    for (const auto& tdm_pair : tdm)
+    {
+      TilePtr tile = tdm_pair.second;
+
+      if (tile != nullptr && tile->has_creature() == false)
+      {
+        CommandPtr breed = std::make_shared<BreedCommand>(-1);
+        return breed;
+      }
+    }
   }
 
   return no_breed;

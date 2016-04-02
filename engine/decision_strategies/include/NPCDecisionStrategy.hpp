@@ -35,4 +35,5 @@ class NPCDecisionStrategy : public DecisionStrategy
     static const int PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET;
     static const int PERCENT_CHANCE_CONSIDER_USING_MAGIC;
     static const int PERCENT_CHANCE_CONSIDER_RANGED_COMBAT;
+    static const int PERCENT_CHANCE_BREED;
 };

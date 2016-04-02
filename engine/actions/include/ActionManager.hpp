@@ -125,6 +125,9 @@ class ActionManager : public ISerializable
     // Show help information.
     ActionCost help(CreaturePtr creature);
 
+    // Breed by spawning into an adjacent tile
+    ActionCost breed(CreaturePtr creature);
+
     // Level and experience information.
     ActionCost experience(CreaturePtr creature);
 

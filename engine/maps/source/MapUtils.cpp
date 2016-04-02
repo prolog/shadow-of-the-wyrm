@@ -325,6 +325,26 @@ std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapP
   return result_map;
 }
 
+std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature)
+{
+  std::vector<TilePtr> result_map;
+
+  if (map && creature)
+  {
+    Coordinate creature_coord = map->get_location(creature->get_id());
+
+    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
+
+    for (const Coordinate& c : adjacent_coords)
+    {
+      TilePtr tile = map->at(c);
+      result_map.push_back(tile);
+    }
+  }
+
+  return result_map;
+}
+
 // Do the adjacent tiles in the given direction match a particular tile type?
 bool MapUtils::adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c, const vector<Direction>& directions, const TileType type_to_match)
 {
