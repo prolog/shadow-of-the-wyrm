@@ -1,7 +1,5 @@
 Me:
 - Scent maps/track by scent.
-- More creatures with ranged attacks.
-- More types of arrows/bolts.
 - Message manager is not updating properly when toggling between creatures
   using +/- when looking.
 - New quest from the caravan master or someone else: destruction of the 
@@ -48,7 +46,6 @@ AgingMinotaur:
 
 Kraphead:
 - auto-displace when bumping friendly creatures
-- item generation: more arrows
 
 Lagi:
 - something to allow "breaking" walking.  Eg., if a key is pressed, stop.
