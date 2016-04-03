@@ -274,13 +274,29 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
 CommandPtr NPCDecisionStrategy::get_breed_decision(const string& this_creature_id, MapPtr view_map)
 {
   CommandPtr no_breed;
-
-  // JCD TODO: Later, once all creatures can potentially act, update this
-  // to only breed if there is a hostile creature nearby.
   bool breeds = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_BREEDS));
 
   if (breeds && RNG::percent_chance(PERCENT_CHANCE_BREED))
   {
+    // Only breed if there's at least one threatening creature in the
+    // creature's view map.
+    set<string> all_threats = threat_ratings.get_all_threats_without_level();
+    bool threat_nearby = false;
+
+    for (const string& threat_id : all_threats)
+    {
+      if (view_map->has_creature(threat_id))
+      {
+        threat_nearby = true;
+        break;
+      }
+    }
+
+    if (!threat_nearby)
+    {
+      return no_breed;
+    }
+
     TileDirectionMap tdm = MapUtils::get_adjacent_tiles_to_creature(view_map, view_map->get_creature(this_creature_id));
 
     for (const auto& tdm_pair : tdm)
