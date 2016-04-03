@@ -1,3 +1,6 @@
+Shadow of the Wyrm v0.5.1 "Beauvais"
+- Version declared April 3, 2016.
+
 Shadow of the Wyrm v0.5.0 "Molinaro"
 - Version declared March 7, 2016.  Version finalized April 3, 2016.
 
