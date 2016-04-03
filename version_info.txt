@@ -70,7 +70,8 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 
 - New creatures: dying star, puca, tentacled spider, fork bug.
 
-- New items: holy amulet, shadow amulet, lightning amulet.
+- New items: holy amulet, shadow amulet, lightning amulet, flame bolt,
+  arcane bolt, winged javelin, caber.
 
 - Bug fixes:
 

@@ -26042,6 +26042,58 @@
 					<Type>1</Type>
 				</Damage>
 			</Missile>
+			<Missile id="flame_bolt">
+				<DescriptionSID>FLAME_BOLT_SID</DescriptionSID>
+				<UsageDescriptionSID>FLAME_BOLT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>1</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2004</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
+				<Difficulty>43</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Type>3</Type>
+				</Damage>
+			</Missile>
+			<Missile id="arcane_bolt">
+				<DescriptionSID>ARCANE_BOLT_SID</DescriptionSID>
+				<UsageDescriptionSID>ARCANE_BOLT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2004</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
+				<Difficulty>43</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Type>9</Type>
+				</Damage>
+			</Missile>
 			<Missile id="javelin">
 				<DescriptionSID>JAVELIN_SID</DescriptionSID>
 				<UsageDescriptionSID>JAVELIN_USAGE_SID</UsageDescriptionSID>
@@ -26062,6 +26114,26 @@
 					<Type>1</Type>
 				</Damage>
 			</Missile>
+			<Missile id="winged_javelin">
+				<DescriptionSID>WINGED_JAVELIN_SID</DescriptionSID>
+				<UsageDescriptionSID>WINGED_JAVELIN_USAGE_SID</UsageDescriptionSID>
+				<Value>50</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>4</DangerLevel>
+				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>3</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
 			<Missile id="throwing_club">
 				<DescriptionSID>THROWING_CLUB_SID</DescriptionSID>
 				<UsageDescriptionSID>THROWING_CLUB_USAGE_SID</UsageDescriptionSID>
@@ -26077,7 +26149,27 @@
 				<Difficulty>46</Difficulty>
 				<Speed>4</Speed>
 				<Damage>
-					<NumDice>2</NumDice>
+					<NumDice>4</NumDice>
+					<NumSides>2</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Missile>
+			<Missile id="caber">
+				<DescriptionSID>CABER_SID</DescriptionSID>
+				<UsageDescriptionSID>CABER_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>50</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>52</Difficulty>
+				<Speed>8</Speed>
+				<Damage>
+					<NumDice>14</NumDice>
 					<NumSides>2</NumSides>
 					<Type>2</Type>
 				</Damage>
