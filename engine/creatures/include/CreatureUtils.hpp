@@ -37,6 +37,10 @@ class CreatureUtils
     static void incr_wil(CreaturePtr c, const bool add_msg);
     static void incr_cha(CreaturePtr c, const bool add_msg);
 
+    // Check to see if any of the creatures in a particular threat map exist
+    // in the given map.
+    static bool threat_exists_in_map(const ThreatMap& tm, MapPtr map);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();
