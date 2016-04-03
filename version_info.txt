@@ -14,9 +14,9 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 - Dying stars will change their evade, damage, and speed based on their 
   intensity.
 
-- Defined initial equipment for goblin pelters, archers, and dwarven
-  warriors (these receive slings and rocks/bows and arrows/crossbows and
-  bolts, respectively).
+- Defined initial equipment for goblin pelters, archers, ogre hurlers,
+  and dwarven warriors (these receive slings and rocks/bows and 
+  arrows/cabers/crossbows and bolts, respectively).
 
 - Updated NPC AI to consider ranged combat when threats are in range and
   when an appropriate ranged weapon is wielded.
@@ -29,7 +29,8 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
   (Antonio Sabochini)
 
 - Creatures can now have skills as well.  Added archery-related skills to
-  archers, goblin pelters, and dwarven warriors.
+  archers, goblin pelters, ogre hurlers, snakeling sharpshoters, and 
+  dwarven warriors.
 
 - Amulets now have randomized unidentified descriptions.
 
@@ -68,10 +69,11 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 
 - New conduct type: silent (broken on chatting and spellcasting).
 
-- New creatures: dying star, puca, tentacled spider, fork bug.
+- New creatures: dying star, puca, tentacled spider, fork bug, ogre
+  hurler.
 
 - New items: holy amulet, shadow amulet, lightning amulet, flame bolt,
-  arcane bolt, winged javelin, caber.
+  arcane bolt, barbed spear, winged javelin, caber.
 
 - Bug fixes:
 

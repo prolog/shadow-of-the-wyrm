@@ -12144,6 +12144,25 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>43</Exp>
+				<Skills>
+					<GeneralSkills>
+						<Archery>15</Archery>
+					</GeneralSkills>
+					<RangedWeaponSkills>
+						<Spears>30</Spears>
+					</RangedWeaponSkills>
+				</Skills>
+				<InitialEquipmentAndInventory>
+					<Ammunition>
+						<ID>barbed_spear</ID>
+						<Quantity>
+							<Random>
+								<NumDice>2</NumDice>
+								<NumSides>3</NumSides>
+							</Random>
+						</Quantity>
+					</Ammunition>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>13</Level>
 			<Damage>
@@ -15475,6 +15494,68 @@
 					<Castings>8</Castings>
 				</Spell>
 			</Spells>
+		</Creature>
+		<Creature id="ogre_hurler">
+			<RaceID>08_ogre</RaceID>
+			<ShortDescriptionSID>OGRE_HURLER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>OGRE_HURLER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>OGRE_HURLER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>OGRE_HURLER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>O</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>15</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>15</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>100</Exp>
+				<Skills>
+					<GeneralSkills>
+						<Archery>15</Archery>
+					</GeneralSkills>
+					<RangedWeaponSkills>
+						<Bludgeons>20</Bludgeons>
+					</RangedWeaponSkills>
+				</Skills>
+				<InitialEquipmentAndInventory>
+					<Ammunition>
+						<ID>caber</ID>
+						<Quantity>
+							<Random>
+								<NumDice>2</NumDice>
+								<NumSides>2</NumSides>
+							</Random>
+						</Quantity>
+					</Ammunition>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>15</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>30</NumSides>
+				<Type>2</Type>
+			</Damage>
 		</Creature>
 		<Creature id="grey_glider">
 			<RaceID>_corporeal_undead</RaceID>
@@ -26114,6 +26195,26 @@
 					<Type>1</Type>
 				</Damage>
 			</Missile>
+			<Missile id="barbed_spear">
+				<DescriptionSID>BARBED_SPEAR_SID</DescriptionSID>
+				<UsageDescriptionSID>BARBED_SPEAR_USAGE_SID</UsageDescriptionSID>
+				<Value>45</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>2</DangerLevel>
+				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>3</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
 			<Missile id="winged_javelin">
 				<DescriptionSID>WINGED_JAVELIN_SID</DescriptionSID>
 				<UsageDescriptionSID>WINGED_JAVELIN_USAGE_SID</UsageDescriptionSID>
@@ -26169,7 +26270,7 @@
 				<Difficulty>52</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
-					<NumDice>14</NumDice>
+					<NumDice>16</NumDice>
 					<NumSides>2</NumSides>
 					<Type>2</Type>
 				</Damage>
