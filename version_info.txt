@@ -56,6 +56,9 @@ Shadow of the Wyrm v0.5.0 "Molinaro"
 
 - Creatures can now be defined as breeders.  Breeders have a small chance
   to create another creature of the same type onto a surrounding tile.
+  Breeding respects when the creature generation rate is 0 (via the
+  Cleansing spell), so even if a creature decides to breed, breeding will
+  be suppressed on the level by this spell.
 
 - Added the breeder flag to fork bugs, as well as a piercing attack.
 
