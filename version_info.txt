@@ -1,7 +1,10 @@
 Shadow of the Wyrm v0.5.1 "Beauvais"
 - Version declared April 3, 2016.
 
-- Added a new area, the Caldera, in the dwarf lands.
+- Added a new area, the Caldera, in the dwarf lands.  Guarding the centre
+  of the lake are four ageless giants.
+
+- New creatures: Weyg, Rhone, Phole, Carne, avernal bats.
 
 Shadow of the Wyrm v0.5.0 "Molinaro"
 - Version declared March 7, 2016.  Version finalized April 3, 2016.
