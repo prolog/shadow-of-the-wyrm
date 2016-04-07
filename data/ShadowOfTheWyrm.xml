@@ -8818,6 +8818,28 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>180000</Exp>
+				<Skills>
+					<GeneralSkills>
+						<Archery>80</Archery>
+					</GeneralSkills>
+					<RangedWeaponSkills>
+						<Bows>80</Bows>
+					</RangedWeaponSkills>
+				</Skills>
+				<InitialEquipmentAndInventory>
+					<Ranged>
+						<ID>ash_bow</ID>
+					</Ranged>
+					<Ammunition>
+						<ID>avernal_arrow</ID>
+						<Quantity>
+							<Random>
+								<NumDice>20</NumDice>
+								<NumSides>4</NumSides>
+							</Random>
+						</Quantity>
+					</Ammunition>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>47</Level>
 			<Damage>
@@ -26254,6 +26276,32 @@
 					<NumDice>2</NumDice>
 					<NumSides>6</NumSides>
 					<Type>6</Type>
+				</Damage>
+			</Missile>
+			<Missile id="avernal_arrow">
+				<DescriptionSID>AVERNAL_ARROW_SID</DescriptionSID>
+				<UsageDescriptionSID>AVERNAL_ARROW_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>9</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>10</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2003</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
+				<Difficulty>43</Difficulty>
+				<Speed>3</Speed>
+				<Damage piercing="true">
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
 				</Damage>
 			</Missile>
 			<Missile id="bolt">
