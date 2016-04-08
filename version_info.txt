@@ -3,6 +3,8 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 
 - Added a new area, the Caldera, in the dwarf lands.  Guarding the centre
   of the lake are four ageless giants: Weyg, Rhone, Phole, and Carne.
+  Weyg and Carne are warriors, while Rhone is an archer and Phole a
+  witchling.
 
 - New creatures: Weyg, Rhone, Phole, Carne, avernal bats.
 
