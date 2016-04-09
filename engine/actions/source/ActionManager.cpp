@@ -37,7 +37,6 @@
 #include "ReadAction.hpp"
 #include "SearchAction.hpp"
 #include "ShowConductsAction.hpp"
-#include "ShowSkillsAction.hpp"
 #include "ShowResistancesAction.hpp"
 #include "SkinAction.hpp"
 #include "SpellcastingAction.hpp"
@@ -66,6 +65,7 @@ bool ActionManager::operator==(const ActionManager& am) const
   result = result && (tile_selection_action == am.tile_selection_action);
   result = result && (ranged_combat_action == am.ranged_combat_action);
   result = result && (quaff_action == am.quaff_action);
+  result = result && (show_skills_action == am.show_skills_action);
 
   return result;
 }
@@ -400,9 +400,7 @@ ActionCost ActionManager::show_conducts(CreaturePtr creature)
 
 ActionCost ActionManager::show_skills(CreaturePtr creature)
 {
-  ShowSkillsAction ssa;
-
-  return get_action_cost(creature, ssa.show_skills(creature));
+  return get_action_cost(creature, show_skills_action.show_skills(creature));
 }
 
 ActionCost ActionManager::latest_messages(CreaturePtr creature)
@@ -646,6 +644,11 @@ ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCost
   
   ActionCost ac(total_action_cost_value);
   return ac;
+}
+
+ShowSkillsAction& ActionManager::get_show_skills_action_ref()
+{
+  return show_skills_action;
 }
 
 bool ActionManager::serialize(std::ostream& stream) const
