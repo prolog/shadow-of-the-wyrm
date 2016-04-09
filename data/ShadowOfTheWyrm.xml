@@ -22386,6 +22386,31 @@
 				<Evade>10</Evade>
 				<Soak>4</Soak>
 			</Amulet>
+			<Amulet id="eunoia">
+				<DescriptionSID>EUNOIA_SID</DescriptionSID>
+				<UsageDescriptionSID>EUNOIA_USAGE_SID</UsageDescriptionSID>
+				<Value>1666</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<TextDetails>
+					<Symbol>#</Symbol>
+					<Colour>1</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Poison>0.20</Poison>
+					<Holy>0.20</Holy>
+					<Shadow>0.20</Shadow>
+					<Arcane>0.20</Arcane>
+				</Resistances>
+				<Evade>17</Evade>
+				<Soak>7</Soak>
+			</Amulet>
 			<Amulet id="protective_amulet">
 				<DescriptionSID>PROTECTIVE_AMULET_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_PROTECTIVE_AMULET_SID</UnidentifiedDescriptionSID>
