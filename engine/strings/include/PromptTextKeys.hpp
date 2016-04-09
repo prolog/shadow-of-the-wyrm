@@ -13,6 +13,7 @@ class PromptTextKeys
     static const std::string PROMPT_ENTER_YOUR_NAME;
     static const std::string PROMPT_RUN_SCRIPT;
     static const std::string PROMPT_HELP;
+    static const std::string PROMPT_SKILLS;
 
   protected:
     PromptTextKeys();

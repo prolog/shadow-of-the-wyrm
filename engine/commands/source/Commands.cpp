@@ -378,6 +378,16 @@ ShowConductsCommand::~ShowConductsCommand()
 {
 }
 
+// Show the player's skills
+ShowSkillsCommand::ShowSkillsCommand(const int key)
+: Command(CommandKeys::SHOW_SKILLS, key)
+{
+}
+
+ShowSkillsCommand::~ShowSkillsCommand()
+{
+}
+
 // View the message buffer
 LatestMessagesCommand::LatestMessagesCommand(const int key)
 : Command(CommandKeys::LATEST_MESSAGES, key)

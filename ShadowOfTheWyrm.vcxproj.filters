@@ -784,6 +784,21 @@
     <Filter Include="Source Files\engine\commands\help\source\unit_tests">
       <UniqueIdentifier>{481c7de5-bf2a-4003-89ff-7627a66cf54c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\commands\skills">
+      <UniqueIdentifier>{95305693-ddbf-4134-b3cf-e567f18a89a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\skills\include">
+      <UniqueIdentifier>{6036509a-a4f1-446b-8f0e-fcefae66825a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\skills">
+      <UniqueIdentifier>{601e0f18-5f49-4d58-b164-b986e5f0d816}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\skills\source">
+      <UniqueIdentifier>{83df2927-a729-4b98-80db-6debcc2792fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\skills\source\unit_tests">
+      <UniqueIdentifier>{176e97df-8073-4015-ba1d-aa4741c86ca3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -3668,6 +3683,27 @@
     </ClInclude>
     <ClInclude Include="engine\actions\include\BreedAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ShowSkillsAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\skills\include\SkillsCommandFactory.hpp">
+      <Filter>Header Files\engine\commands\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\skills\include\SkillsCommandKeys.hpp">
+      <Filter>Header Files\engine\commands\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\skills\include\SkillsCommands.hpp">
+      <Filter>Header Files\engine\commands\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\skills\include\SkillsCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\skills\include\SkillsKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\SkillsScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7168,6 +7204,30 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\BreedAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ShowSkillsAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\SkillsCommandFactory.cpp">
+      <Filter>Source Files\engine\commands\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\unit_tests\SkillsCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\skills\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\SkillsCommandKeys.cpp">
+      <Filter>Source Files\engine\commands\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\SkillsCommands.cpp">
+      <Filter>Source Files\engine\commands\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\SkillsCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\SkillsKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\SkillsScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -260,6 +260,13 @@ class ShowConductsCommand : public Command
     ~ShowConductsCommand();
 };
 
+class ShowSkillsCommand : public Command
+{
+  public:
+    ShowSkillsCommand(int key);
+    ~ShowSkillsCommand();
+};
+
 class LatestMessagesCommand : public Command
 {
   public:
