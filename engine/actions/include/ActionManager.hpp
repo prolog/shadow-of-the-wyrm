@@ -10,6 +10,7 @@
 #include "QuaffAction.hpp"
 #include "RangedCombatAction.hpp"
 #include "SelectTileTypes.hpp"
+#include "ShowSkillsAction.hpp"
 #include "TileSelectionAction.hpp"
 #include "WeaponTypes.hpp"
 
@@ -135,6 +136,8 @@ class ActionManager : public ISerializable
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 
+    ShowSkillsAction& get_show_skills_action_ref();
+
     // Quits the game.  Right now this just sets a boolean flag in the game loop to be false, so there will need to be
     // additional work done later to compensate for pending actions, etc.
     ActionCost quit(CreaturePtr creature);
@@ -151,6 +154,7 @@ class ActionManager : public ISerializable
     TileSelectionAction tile_selection_action;
     RangedCombatAction ranged_combat_action;
     QuaffAction quaff_action;
+    ShowSkillsAction show_skills_action;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

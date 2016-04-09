@@ -9,6 +9,16 @@
 
 using namespace std;
 
+ShowSkillsAction::ShowSkillsAction()
+: category(SkillCategory::SKILL_CATEGORY_GENERAL)
+{
+}
+
+bool ShowSkillsAction::operator==(const ShowSkillsAction& ssa) const
+{
+  return (category == ssa.category);
+}
+
 ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = 0;
@@ -22,7 +32,7 @@ ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
   {
     while (action_cost_value > -1)
     {
-      SkillsScreen ss(game.get_display(), creature, SkillCategory::SKILL_CATEGORY_GENERAL);
+      SkillsScreen ss(game.get_display(), creature, category);
       string display_s = ss.display();
       int input = display_s.at(0);
       char screen_selection = display_s.at(0);
@@ -32,29 +42,37 @@ ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
     }
   }
 
+  // Reset the category for the next time Show Skills is called.
+  category = SkillCategory::SKILL_CATEGORY_GENERAL;
+
   return get_action_cost_value(creature);
 }
 
 ActionCostValue ShowSkillsAction::show_general_skills(CreaturePtr creature)
 {
+  category = SkillCategory::SKILL_CATEGORY_GENERAL;
   return get_action_cost_value(creature);
 }
 
 ActionCostValue ShowSkillsAction::show_melee_weapon_skills(CreaturePtr creature)
 {
+  category = SkillCategory::SKILL_CATEGORY_MELEE;
   return get_action_cost_value(creature);
 }
 
 ActionCostValue ShowSkillsAction::show_ranged_weapon_skills(CreaturePtr creature)
 {
+  category = SkillCategory::SKILL_CATEGORY_RANGED;
   return get_action_cost_value(creature);
 }
 
 ActionCostValue ShowSkillsAction::show_magic_skills(CreaturePtr creature)
 {
+  category = SkillCategory::SKILL_CATEGORY_MAGIC;
   return get_action_cost_value(creature);
 }
 
+// Looking at skills is always free.
 ActionCostValue ShowSkillsAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
