@@ -63,7 +63,11 @@ void SkillsScreen::initialize()
       if (skill != nullptr && skill->get_value() > 0)
       {
         string skill_desc = StringTable::get(skill->get_skill_name_sid());
-        option_text_component->add_text(skill_desc);
+
+        ostringstream ss;
+        ss << skill_desc << " (" << skill->get_value() << ")";
+
+        option_text_component->add_text(ss.str());
 
         current_option.set_id(current_id);
         current_option.set_external_id(to_string(i));
