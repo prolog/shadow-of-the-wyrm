@@ -6,9 +6,18 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
   Weyg and Carne are warriors, while Rhone is an archer and Phole a
   witchling.
 
+- Added a quest to the caravan master, which will fire after the Cithriel
+  quest is complete, to slay the four avernal giants in the Caldera.
+
+- Bug fixes:
+
+  - Fixed a crash bug in a Lua API test function.
+
 - New creatures: Weyg, Rhone, Phole, Carne, avernal bats.
 
 - New items: avernal arrow.
+
+- New artifacts: the ruby amulet "Eunoia".
 
 Shadow of the Wyrm v0.5.0 "Molinaro"
 - Version declared March 7, 2016.  Version finalized April 3, 2016.

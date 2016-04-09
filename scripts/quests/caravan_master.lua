@@ -51,7 +51,48 @@ cithriel_quest = Quest:new("cithriel_quest",
                            caravan_master_cithriel_completion_condition_fn,
                            caravan_master_cithriel_completion_fn)
 
+-- Quest to slay the four avernal giants.
+local function caravan_master_caldera_start_fn()
+  add_message_with_pause("CARAVAN_MASTER_CALDERA_QUEST_START_SID")
+  add_message_with_pause("CARAVAN_MASTER_CALDERA_QUEST_START2_SID")
+  add_message_with_pause("CARAVAN_MASTER_CALDERA_QUEST_START3_SID")
+  add_message_with_pause("CARAVAN_MASTER_CALDERA_QUEST_START4_SID")
+  add_message_with_pause("CARAVAN_MASTER_CALDERA_QUEST_START5_SID")
+  clear_and_add_message("CARAVAN_MASTER_CALDERA_QUEST_START6_SID")
+end
+
+local function caravan_master_caldera_completion_condition_fn()
+  local weyg_killed = (get_num_creature_killed_global("weyg") > 0)
+  local rhone_killed = (get_num_creature_killed_global("rhone") > 0)
+  local phole_killed = (get_num_creature_killed_global("phole") > 0)
+  local carne_killed = (get_num_creature_killed_global("carne") > 0)
+
+  return (weyg_killed and rhone_killed and phole_killed and carne_killed)
+end
+
+local function caravan_master_caldera_completion_fn()
+  add_message_with_pause("CARAVAN_MASTER_CALDERA_QUEST_COMPLETE_SID")
+  add_message_with_pause("CARAVAN_MASTER_CALDERA_QUEST_COMPLETE2_SID")
+  clear_and_add_message("CARAVAN_MASTER_CALDERA_QUEST_COMPLETE3_SID")
+  add_object_to_player_tile("eunoia")
+  return true
+end
+
+caldera_quest = Quest:new("caldera_quest",
+                          "CARAVAN_MASTER_CALDERA_QUEST_TITLE_SID",
+                          "CARAVAN_MASTER_DESCRIPTION_SID",
+                          "CARAVAN_MASTER_CALDERA_DESCRIPTION_SID",
+                          "CARAVAN_MASTER_CALDERA_QUEST_COMPLETE_SID",
+                          "CARAVAN_MASTER_CALDERA_QUEST_REMINDER_SID",
+                          truefn,
+                          caravan_master_caldera_start_fn,
+                          caravan_master_caldera_completion_condition_fn,
+                          caravan_master_caldera_completion_fn)
+
+
 if cithriel_quest:execute() == false then
-  add_message("CARAVAN_MASTER_SPEECH_TEXT_SID")
+  if caldera_quest:execute() == false then
+    add_message("CARAVAN_MASTER_SPEECH_TEXT_SID")
+  end
 end
 

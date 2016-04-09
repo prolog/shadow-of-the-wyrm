@@ -2602,19 +2602,23 @@ int add_kill_to_creature_mortuary(lua_State* ls)
     }
 
     CreaturePtr creature = get_creature(creature_id);
-    Mortuary& mort = creature->get_mortuary_ref();
 
-    for (int i = 0; i < quantity; i++)
+    if (creature != nullptr)
     {
-      mort.add_creature_kill(killed_id);
-    }
+      Mortuary& mort = creature->get_mortuary_ref();
 
-    Game& game = game.instance();
-    Mortuary& global_mort = game.get_mortuary_ref();
+      for (int i = 0; i < quantity; i++)
+      {
+        mort.add_creature_kill(killed_id);
+      }
 
-    for (int i = 0; i < quantity; i++)
-    {
-      global_mort.add_creature_kill(killed_id);
+      Game& game = game.instance();
+      Mortuary& global_mort = game.get_mortuary_ref();
+
+      for (int i = 0; i < quantity; i++)
+      {
+        global_mort.add_creature_kill(killed_id);
+      }
     }
   }
   else
