@@ -53,6 +53,7 @@ class CommandKeys
     static const std::string EVOKE;
     static const std::string SHOW_RESISTANCES;
     static const std::string SHOW_CONDUCTS;
+    static const std::string SHOW_SKILLS;
     static const std::string LATEST_MESSAGES;
     static const std::string KICK;
     static const std::string OFFER;

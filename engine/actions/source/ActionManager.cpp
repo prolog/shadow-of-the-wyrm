@@ -37,6 +37,7 @@
 #include "ReadAction.hpp"
 #include "SearchAction.hpp"
 #include "ShowConductsAction.hpp"
+#include "ShowSkillsAction.hpp"
 #include "ShowResistancesAction.hpp"
 #include "SkinAction.hpp"
 #include "SpellcastingAction.hpp"
@@ -395,6 +396,13 @@ ActionCost ActionManager::show_conducts(CreaturePtr creature)
   ShowConductsAction sca;
 
   return get_action_cost(creature, sca.show_conducts(creature));
+}
+
+ActionCost ActionManager::show_skills(CreaturePtr creature)
+{
+  ShowSkillsAction ssa;
+
+  return get_action_cost(creature, ssa.show_skills(creature));
 }
 
 ActionCost ActionManager::latest_messages(CreaturePtr creature)

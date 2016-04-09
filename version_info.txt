@@ -9,6 +9,8 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Added a quest to the caravan master, which will fire after the Cithriel
   quest is complete, to slay the four avernal giants in the Caldera.
 
+- The player can now view his or her skills (default keybinding is F3).
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.

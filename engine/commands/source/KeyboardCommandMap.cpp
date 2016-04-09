@@ -93,6 +93,15 @@ void KeyboardCommandMap::initialize_special_key_mappings()
   special_key_mappings.insert(make_pair("KEY_RIGHT", std::to_string(KEY_RIGHT)));
   special_key_mappings.insert(make_pair("KEY_F1", std::to_string(KEY_F(1))));
   special_key_mappings.insert(make_pair("KEY_F2", std::to_string(KEY_F(2))));
+  special_key_mappings.insert(make_pair("KEY_F3", std::to_string(KEY_F(3))));
+  special_key_mappings.insert(make_pair("KEY_F4", std::to_string(KEY_F(4))));
+  special_key_mappings.insert(make_pair("KEY_F5", std::to_string(KEY_F(5))));
+  special_key_mappings.insert(make_pair("KEY_F6", std::to_string(KEY_F(6))));
+  special_key_mappings.insert(make_pair("KEY_F7", std::to_string(KEY_F(7))));
+  special_key_mappings.insert(make_pair("KEY_F8", std::to_string(KEY_F(8))));
+  special_key_mappings.insert(make_pair("KEY_F9", std::to_string(KEY_F(9))));
+  special_key_mappings.insert(make_pair("KEY_F10", std::to_string(KEY_F(10))));
+  special_key_mappings.insert(make_pair("KEY_F11", std::to_string(KEY_F(11))));
   special_key_mappings.insert(make_pair("KEY_F12", std::to_string(KEY_F(12))));
   // Other special keys.
   // "Escape" keys.
@@ -110,7 +119,7 @@ vector<string> KeyboardCommandMap::get_remappable_commands() const
   CommandKeys::QUIT, CommandKeys::SAVE_GAME, CommandKeys::VERSION,
   CommandKeys::GAME_DATE_TIME, CommandKeys::CHAR_DUMP, CommandKeys::MELEE_WEAPON_INFO,
   CommandKeys::RANGED_WEAPON_INFO, CommandKeys::SHOW_CONDUCTS, CommandKeys::SHOW_RESISTANCES,
-  CommandKeys::PICK_UP_ITEM, CommandKeys::DROP_ITEM, CommandKeys::INVENTORY,
+  CommandKeys::SHOW_SKILLS, CommandKeys::PICK_UP_ITEM, CommandKeys::DROP_ITEM, CommandKeys::INVENTORY,
   CommandKeys::PRAY, CommandKeys::SELECT_TILE, CommandKeys::FIRE_MISSILE,
   CommandKeys::QUAFF, CommandKeys::READ, CommandKeys::CHECK_CURRENCY,
   CommandKeys::EAT, CommandKeys::CHAT, CommandKeys::APPLY_FEATURE,

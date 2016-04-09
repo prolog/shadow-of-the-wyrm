@@ -1,1 +1,1 @@
-dir /s /p *.cpp *.hpp *.ini *.xsd *.xml *.lua *.py *.txt *.tex
+dir /s *.cpp *.hpp *.ini *.xsd *.xml *.lua *.py *.txt *.tex
