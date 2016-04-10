@@ -37,6 +37,10 @@ ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
       int input = display_s.at(0);
       char screen_selection = display_s.at(0);
 
+      SkillType st = ss.get_selected_skill(screen_selection);
+
+      // ...
+
       CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, &input);
       action_cost_value = SkillsCommandProcessor::process(creature, skills_command);
     }
