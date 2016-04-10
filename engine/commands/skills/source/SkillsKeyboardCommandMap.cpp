@@ -46,8 +46,8 @@ void SkillsKeyboardCommandMap::initialize_command_mapping(const Settings& settin
 
   for (char i = 'a'; i <= 'y'; i++)
   {
-    command_mapping.insert(make_pair(Char::to_string(i), SkillsCommandKeys::SELECT_SKILL));
-    command_mapping.insert(make_pair(Char::to_string(toupper(i)), SkillsCommandKeys::SELECT_SKILL));
+    command_mapping.insert(make_pair(std::to_string(i), SkillsCommandKeys::SELECT_SKILL));
+    command_mapping.insert(make_pair(std::to_string(toupper(i)), SkillsCommandKeys::SELECT_SKILL));
   }
 }
 

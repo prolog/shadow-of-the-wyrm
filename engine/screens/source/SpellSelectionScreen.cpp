@@ -30,7 +30,6 @@ string SpellSelectionScreen::get_selected_spell(const char selection) const
     spell_id = selection_map_it->second;
   }
 
-
   return spell_id;
 }
 

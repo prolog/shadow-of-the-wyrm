@@ -34,10 +34,10 @@ void SkillsScreen::initialize()
     title_text_sid = s_it->second;
   }
 
-  // JCD FIXME: Set the skills/pages.
   auto sty_it = skills_for_category.find(category);
   SkillType min = SkillType::SKILL_GENERAL_ARCHERY;
   SkillType max = SkillType::SKILL_GENERAL_WEAVING;
+  std::map<char, SkillType> selection_map;
 
   if (sty_it != skills_for_category.end())
   {
@@ -58,10 +58,12 @@ void SkillsScreen::initialize()
       Option current_option;
       TextComponentPtr option_text_component = current_option.get_description();
 
-      SkillPtr skill = creature->get_skills().get_skill(static_cast<SkillType>(i));
+      SkillType st = static_cast<SkillType>(i);
+      SkillPtr skill = creature->get_skills().get_skill(st);
 
       if (skill != nullptr && (skill->get_value() > 0 || skill->can_train_from_unlearned()))
       {
+        selection_map['a' + current_id] = st;
         string skill_desc = StringTable::get(skill->get_skill_name_sid());
 
         ostringstream ss;
@@ -79,11 +81,18 @@ void SkillsScreen::initialize()
 
         add_options_component(sk_screen, options, cnt, current_id);
 
+        if (cnt == 0)
+        {
+          screen_selection_to_skill_map.push_back(selection_map);
+          selection_map.clear();
+        }
+
         current_id++;
       }
     }
   }
 
+  screen_selection_to_skill_map.push_back(selection_map);
   add_page(sk_screen);
 
   // Set the prompt
@@ -97,3 +106,17 @@ void SkillsScreen::initialize()
   line_increment = 1;
 }
 
+SkillType SkillsScreen::get_selected_skill(const char selection) const
+{
+  SkillType st = SkillType::SKILL_UNDEFINED;
+
+  const auto& selection_map = screen_selection_to_skill_map.at(get_cur_page_idx());
+  map<char, SkillType>::const_iterator selection_map_it = selection_map.find(selection);
+
+  if (selection_map_it != selection_map.end())
+  {
+    st = selection_map_it->second;
+  }
+  
+  return st;
+}
