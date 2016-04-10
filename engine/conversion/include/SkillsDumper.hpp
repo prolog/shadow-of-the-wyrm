@@ -20,7 +20,7 @@ class SkillsDumper : public StringConverter
     std::string get_ranged_weapon_skills() const;
     std::string get_magical_skills_header() const;
     std::string get_magical_skills() const;
-    std::string get_skills_by_category(const SkillCategory category, bool include_zero_valued_skills = false) const;
+    std::string get_skills_by_category(const SkillCategory category) const;
 
     CreaturePtr creature;
     const int num_cols;

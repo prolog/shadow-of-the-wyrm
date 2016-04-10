@@ -1,5 +1,4 @@
 Me:
-- Show skills should show 0-valued weapon skills.
 - Scent maps/track by scent.
 - Message manager is not updating properly when toggling between creatures
   using +/- when looking.
@@ -8,7 +7,6 @@ Me:
 - More monsters with special attacks or death events.
 - Code should handle being started from outside the game's directory.
 - Per-level skill increases (general, melee, ranged, magic).
-- Dump command for arbitrary text screens.
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)

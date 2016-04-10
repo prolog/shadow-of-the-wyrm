@@ -13,6 +13,9 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
   This shows all trained and trainable skills.  Trainable skills are those
   that can advance from 0. (AgingMinotaur)
 
+- Appropriately 0-valued skills (weapon skills) are now shown in the
+  character dump as well.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.

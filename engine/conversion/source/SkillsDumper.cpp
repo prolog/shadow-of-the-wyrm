@@ -49,7 +49,7 @@ string SkillsDumper::get_general_skills() const
   return general_skills;
 }
 
-string SkillsDumper::get_skills_by_category(const SkillCategory category, bool include_zero_valued_skills) const
+string SkillsDumper::get_skills_by_category(const SkillCategory category) const
 {
   ostringstream ss;
   bool at_least_one_skill = false;
@@ -68,7 +68,7 @@ string SkillsDumper::get_skills_by_category(const SkillCategory category, bool i
       {
         int skill_value = skill->get_value();
         
-        if ((skill_value > 0) || (include_zero_valued_skills))
+        if ((skill_value > 0) || skill->can_train_from_unlearned())
         {
           if (!at_least_one_skill) at_least_one_skill = true;
           ss << skill->str() << endl;
