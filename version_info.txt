@@ -10,6 +10,8 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
   quest is complete, to slay the four avernal giants in the Caldera.
 
 - The player can now view his or her skills (default keybinding is F3).
+  This shows all trained and trainable skills.  Trainable skills are those
+  that can advance from 0. (AgingMinotaur)
 
 - Bug fixes:
 

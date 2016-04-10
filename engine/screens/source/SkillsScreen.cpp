@@ -60,7 +60,7 @@ void SkillsScreen::initialize()
 
       SkillPtr skill = creature->get_skills().get_skill(static_cast<SkillType>(i));
 
-      if (skill != nullptr && skill->get_value() > 0)
+      if (skill != nullptr && (skill->get_value() > 0 || skill->can_train_from_unlearned()))
       {
         string skill_desc = StringTable::get(skill->get_skill_name_sid());
 

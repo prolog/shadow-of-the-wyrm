@@ -1,4 +1,5 @@
 Me:
+- Show skills should show 0-valued weapon skills.
 - Scent maps/track by scent.
 - Message manager is not updating properly when toggling between creatures
   using +/- when looking.
