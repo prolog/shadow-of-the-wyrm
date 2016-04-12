@@ -27,10 +27,13 @@ ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
   CommandFactoryPtr command_factory = std::make_shared<SkillsCommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<SkillsKeyboardCommandMap>();
   Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
 
   if (decision_strategy)
   {
-    while (action_cost_value > -1)
+    // If we've received an action that actually has a cost (> 0), or an exit
+    // action (-1), then exit and return the cost.
+    while (action_cost_value == 0)
     {
       SkillsScreen ss(game.get_display(), creature, category);
       string display_s = ss.display();
@@ -38,11 +41,8 @@ ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
       char screen_selection = display_s.at(0);
 
       SkillType st = ss.get_selected_skill(screen_selection);
-
-      // ...
-
       CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, &input);
-      action_cost_value = SkillsCommandProcessor::process(creature, skills_command);
+      action_cost_value = SkillsCommandProcessor::process(creature, skills_command, map, st);
     }
   }
 

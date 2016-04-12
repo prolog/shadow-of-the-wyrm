@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "ShowSkillsAction.hpp"
+#include "SkillProcessorFactory.hpp"
 #include "SkillsCommandKeys.hpp"
 #include "SkillsCommandProcessor.hpp"
 #include "SkillsCommands.hpp"
@@ -14,9 +15,9 @@ SkillsCommandProcessor::~SkillsCommandProcessor()
 {
 }
 
-ActionCostValue SkillsCommandProcessor::process(CreaturePtr creature, CommandPtr command)
+ActionCostValue SkillsCommandProcessor::process(CreaturePtr creature, CommandPtr command, MapPtr map, const SkillType st)
 {
-  ActionCostValue process_result = 1;
+  ActionCostValue process_result = 0;
   Game& game = Game::instance();
   ShowSkillsAction& ssa = game.get_action_manager_ref().get_show_skills_action_ref();
 
@@ -42,8 +43,12 @@ ActionCostValue SkillsCommandProcessor::process(CreaturePtr creature, CommandPtr
     }
     else if (command_name == SkillsCommandKeys::SELECT_SKILL)
     {
-      // JCD FIXME
-      int x = 1;
+      ISkillProcessorPtr sp = SkillProcessorFactory::create(st);
+
+      if (sp != nullptr)
+      {
+        process_result = sp->process(creature, map);
+      }
     }
     else if (command_name == SkillsCommandKeys::EXIT_SKILLS)
     {
