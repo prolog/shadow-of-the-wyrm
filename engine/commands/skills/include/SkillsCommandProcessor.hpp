@@ -5,7 +5,7 @@
 class SkillsCommandProcessor
 {
   public:
-    static ActionCostValue process(CreaturePtr creature, CommandPtr command);
+    static ActionCostValue process(CreaturePtr creature, CommandPtr command, MapPtr map, const SkillType st);
 
   protected:
     SkillsCommandProcessor();
