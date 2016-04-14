@@ -164,6 +164,11 @@ class SkillTextKeys
     static const std::string SKILL_MAGIC_PRIMORDIAL;
     static const std::string SKILL_MAGIC_PRIMORDIAL_INCREMENT;
 
+    // Skill usage
+    static const std::string SKILL_USAGE_WEAPON;
+    static const std::string SKILL_USAGE_MAGIC;
+    static const std::string SKILL_USAGE_UNIMPLEMENTED;
+
   protected:
     SkillTextKeys();
     ~SkillTextKeys();

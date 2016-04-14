@@ -1,4 +1,7 @@
 Me:
+- For the General skills that are implemented, add appropriate flyweight
+  classes/messages so that the player can understand how the skills are
+  used.
 - Scent maps/track by scent.
 - Message manager is not updating properly when toggling between creatures
   using +/- when looking.
