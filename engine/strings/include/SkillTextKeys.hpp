@@ -168,6 +168,7 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_WEAPON;
     static const std::string SKILL_USAGE_MAGIC;
     static const std::string SKILL_USAGE_UNIMPLEMENTED;
+    static const std::string SKILL_USAGE_WORLD_MAP;
 
     // Skill usage - specific skills
     static const std::string SKILL_USAGE_ARCHERY;
