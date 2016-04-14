@@ -1,6 +1,8 @@
 #include "Game.hpp"
+#include "MessageManagerFactory.hpp"
 #include "ShowSkillsAction.hpp"
 #include "SkillProcessorFactory.hpp"
+#include "SkillTextKeys.hpp"
 #include "SkillsCommandKeys.hpp"
 #include "SkillsCommandProcessor.hpp"
 #include "SkillsCommands.hpp"
@@ -47,7 +49,18 @@ ActionCostValue SkillsCommandProcessor::process(CreaturePtr creature, CommandPtr
 
       if (sp != nullptr)
       {
-        process_result = sp->process(creature, map);
+        if (creature && creature->get_is_player() && map->get_map_type() == MapType::MAP_TYPE_WORLD)
+        {
+          process_result = -1;
+
+          IMessageManager& manager = MessageManagerFactory::instance();
+          manager.add_new_message(StringTable::get(SkillTextKeys::SKILL_USAGE_WORLD_MAP));
+          manager.send();
+        }
+        else
+        {
+          process_result = sp->process(creature, map);
+        }
       }
     }
     else if (command_name == SkillsCommandKeys::EXIT_SKILLS)
