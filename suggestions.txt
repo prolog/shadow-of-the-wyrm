@@ -1,4 +1,10 @@
 Me:
+- Unit tests for carrying (total items + total weight)
+- Blindfighting needs to hook into evade/to-hit (+msgs).
+- Add blindfighting to to-hit calcs when blind, consider blindness, etc,
+  update guide/game.
+- Add awareness to the defending creature's checks for avoiding ranged
+  combat and magic.
 - For the General skills that are implemented, add appropriate flyweight
   classes/messages so that the player can understand how the skills are
   used.
