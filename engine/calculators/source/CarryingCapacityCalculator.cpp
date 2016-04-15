@@ -24,13 +24,17 @@ uint CarryingCapacityCalculator::calculate_carrying_capacity_total_items(Creatur
     uint base = creature->get_dexterity().get_current();
     auto sm_it = carrying_capacity_multipliers.find(creature->get_size());
     float size_multiplier = 1.0f;
+    float skill_multiplier = calculate_total_items_skill_multiplier(creature);
 
     if (sm_it != carrying_capacity_multipliers.end())
     {
       size_multiplier = carrying_capacity_multipliers.find(creature->get_size())->second;
     }
 
-    capacity = static_cast<uint>(base * CARRYING_CAPACITY_TOTAL_ITEMS_MULTIPLIER * size_multiplier);
+    capacity = static_cast<uint>(base 
+                               * CARRYING_CAPACITY_TOTAL_ITEMS_MULTIPLIER
+                               * size_multiplier 
+                               * skill_multiplier);
   }
 
   return capacity;
@@ -47,6 +51,7 @@ uint CarryingCapacityCalculator::calculate_burdened_weight(CreaturePtr creature)
   {
     Statistic str = creature->get_strength();
     burdened_weight = 10 * str.get_current();
+    burdened_weight *= static_cast<uint>(calculate_weight_skill_multiplier(creature));
     burdened_weight *= 16; // convert from lbs to oz
   }
 
@@ -64,6 +69,7 @@ uint CarryingCapacityCalculator::calculate_strained_weight(CreaturePtr creature)
   {
     Statistic str = creature->get_strength();
     strained_weight = 15 * str.get_current();
+    strained_weight *= static_cast<uint>(calculate_weight_skill_multiplier(creature));
     strained_weight *= 16; // convert from lbs to oz
   }
 
@@ -81,10 +87,38 @@ uint CarryingCapacityCalculator::calculate_overburdened_weight(CreaturePtr creat
   {
     Statistic str = creature->get_strength();
     overburdened_weight = 20 * str.get_current();
+    overburdened_weight *= static_cast<uint>(calculate_weight_skill_multiplier(creature));
     overburdened_weight *= 16; // convert from lbs to oz
   }
 
   return overburdened_weight;
+}
+
+// The skill multiplier is 1.0 + 0.01 for every point of carrying.
+float CarryingCapacityCalculator::calculate_total_items_skill_multiplier(CreaturePtr creature) const
+{
+  float skill_mult = 1.0f;
+
+  if (creature != nullptr)
+  {
+    skill_mult += (creature->get_skills().get_value(SkillType::SKILL_GENERAL_CARRYING) * 0.01f);
+  }
+
+  return skill_mult;
+}
+
+// The weight multiplier (for total weight until burdened, etc) is 1.0
+// + 0.02 for every point of carrying.
+float CarryingCapacityCalculator::calculate_weight_skill_multiplier(CreaturePtr creature) const
+{
+  float skill_mult = 1.0f;
+
+  if (creature != nullptr)
+  {
+    skill_mult += (creature->get_skills().get_value(SkillType::SKILL_GENERAL_CARRYING) * 0.02f);
+  }
+
+  return skill_mult;
 }
 
 #ifdef UNIT_TESTS

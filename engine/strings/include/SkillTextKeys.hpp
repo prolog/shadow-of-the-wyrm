@@ -172,6 +172,8 @@ class SkillTextKeys
 
     // Skill usage - specific skills
     static const std::string SKILL_USAGE_ARCHERY;
+    static const std::string SKILL_USAGE_AWARENESS;
+    static const std::string SKILL_USAGE_CARRYING;
 
   protected:
     SkillTextKeys();

@@ -19,6 +19,9 @@ class CarryingCapacityCalculator
     uint calculate_overburdened_weight(CreaturePtr creature) const;
 
   protected:
+    float calculate_total_items_skill_multiplier(CreaturePtr creature) const;
+    float calculate_weight_skill_multiplier(CreaturePtr creature) const;
+
     const uint CARRYING_CAPACITY_TOTAL_ITEMS_MULTIPLIER;
     const std::map<CreatureSize, float> carrying_capacity_multipliers;
 };
