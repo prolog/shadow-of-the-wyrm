@@ -18,7 +18,9 @@ void SkillProcessorFactory::populate_skill_map()
 {
   skill_map = {{SkillType::SKILL_GENERAL_ARCHERY, SkillTextKeys::SKILL_USAGE_ARCHERY},
                {SkillType::SKILL_GENERAL_AWARENESS, SkillTextKeys::SKILL_USAGE_AWARENESS},
-               {SkillType::SKILL_GENERAL_CARRYING, SkillTextKeys::SKILL_USAGE_CARRYING}};
+               {SkillType::SKILL_GENERAL_CARRYING, SkillTextKeys::SKILL_USAGE_CARRYING},
+               {SkillType::SKILL_GENERAL_COMBAT, SkillTextKeys::SKILL_USAGE_COMBAT},
+               {SkillType::SKILL_GENERAL_DETECTION, SkillTextKeys::SKILL_USAGE_DETECTION}};
 }
 
 ISkillProcessorPtr SkillProcessorFactory::create(const SkillType st)
