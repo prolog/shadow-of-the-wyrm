@@ -1,5 +1,7 @@
 Me:
-- Ogre thief bug: Escape 20 Escape 10.
+- Creatures without literacy should not be able to read!  Literacy should
+  have a small effect on learning spells, and on how quickly scrolls are
+  read.
 - Ensure Escape is hooked up to stairways.
 - Blindfighting needs to hook into evade/to-hit (+msgs).
 - Add blindfighting to to-hit calcs when blind, consider blindness, etc,
