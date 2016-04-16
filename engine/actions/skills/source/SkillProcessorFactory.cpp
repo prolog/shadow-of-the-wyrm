@@ -20,7 +20,10 @@ void SkillProcessorFactory::populate_skill_map()
                {SkillType::SKILL_GENERAL_AWARENESS, SkillTextKeys::SKILL_USAGE_AWARENESS},
                {SkillType::SKILL_GENERAL_CARRYING, SkillTextKeys::SKILL_USAGE_CARRYING},
                {SkillType::SKILL_GENERAL_COMBAT, SkillTextKeys::SKILL_USAGE_COMBAT},
-               {SkillType::SKILL_GENERAL_DETECTION, SkillTextKeys::SKILL_USAGE_DETECTION}};
+               {SkillType::SKILL_GENERAL_DETECTION, SkillTextKeys::SKILL_USAGE_DETECTION},
+               {SkillType::SKILL_GENERAL_DUAL_WIELD, SkillTextKeys::SKILL_USAGE_DUAL_WIELD},
+               {SkillType::SKILL_GENERAL_ESCAPE, SkillTextKeys::SKILL_USAGE_ESCAPE},
+               {SkillType::SKILL_GENERAL_FORAGING, SkillTextKeys::SKILL_USAGE_FORAGING}};
 }
 
 ISkillProcessorPtr SkillProcessorFactory::create(const SkillType st)
