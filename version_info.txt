@@ -25,6 +25,9 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 
   - Fixed a crash bug in a Lua API test function.
 
+  - The resource string for the Foraging skill's name was incorrect,
+    pointing at Escaping instead.
+
 - New creatures: Weyg, Rhone, Phole, Carne, avernal bats.
 
 - New items: avernal arrow.
