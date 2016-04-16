@@ -22,6 +22,10 @@ TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_total_items_car
   c->set_dexterity(new_dex);
 
   EXPECT_EQ(300, ccc.calculate_carrying_capacity_total_items(c));
+
+  // Check carrying skill multiplier.
+  c->get_skills().set_value(SkillType::SKILL_GENERAL_CARRYING, 50);
+  EXPECT_EQ(450, ccc.calculate_carrying_capacity_total_items(c));
 }
 
 TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_burdened)
@@ -37,6 +41,9 @@ TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_burdened)
   c->set_strength(str2);
 
   EXPECT_EQ(2400, ccc.calculate_burdened_weight(c));
+
+  c->get_skills().set_value(SkillType::SKILL_GENERAL_CARRYING, 50);
+  EXPECT_EQ(4800, ccc.calculate_burdened_weight(c));
 }
 
 TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_strained)
@@ -52,6 +59,9 @@ TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_strained)
   c->set_strength(str2);
 
   EXPECT_EQ(3600, ccc.calculate_strained_weight(c));
+
+  c->get_skills().set_value(SkillType::SKILL_GENERAL_CARRYING, 50);
+  EXPECT_EQ(7200, ccc.calculate_strained_weight(c));
 }
 
 TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_overburdened)
@@ -67,4 +77,7 @@ TEST(SW_Engine_Calculators_CarryingCapacityCalculator, calculate_overburdened)
   c->set_strength(str2);
 
   EXPECT_EQ(4800, ccc.calculate_overburdened_weight(c));
+
+  c->get_skills().set_value(SkillType::SKILL_GENERAL_CARRYING, 50);
+  EXPECT_EQ(9600, ccc.calculate_overburdened_weight(c));
 }
