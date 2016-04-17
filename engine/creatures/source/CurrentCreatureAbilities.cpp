@@ -75,6 +75,19 @@ bool CurrentCreatureAbilities::can_act(CreaturePtr creature, const bool add_mess
   return creature_can_act;
 }
 
+// Can the creature read? (has Literacy)
+bool CurrentCreatureAbilities::can_read(CreaturePtr creature, const bool add_message_if_player_and_cannot_read) const
+{
+  bool creature_can_read = creature && (creature->get_skills().get_value(SkillType::SKILL_GENERAL_LITERACY) > 0);
+
+  if (add_message_if_player_and_cannot_read && !creature_can_read && creature && creature->get_is_player())
+  {
+    add_ability_message_for_sid(creature, StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_ILLITERATE);
+  }
+
+  return creature_can_read;
+}
+
 // Check to see if the creature can select their movement direction -
 // false if the creature is stunned.
 bool CurrentCreatureAbilities::can_select_movement_direction(CreaturePtr creature, const bool add_message_if_player_and_stunned) const

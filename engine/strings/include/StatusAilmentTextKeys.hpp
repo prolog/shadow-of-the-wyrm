@@ -58,6 +58,8 @@ class StatusAilmentTextKeys
     static const std::string get_npc_hasted_message(std::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_haste_message(std::shared_ptr<Creature> creature);
 
+    static const std::string STATUS_MESSAGE_PLAYER_ILLITERATE;
+
     static const std::string STATUS_STONE;
     static const std::string STATUS_MESSAGE_PLAYER_STONE;
     static const std::string STATUS_MESSAGE_PLAYER_STONE_CURED;

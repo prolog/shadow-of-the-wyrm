@@ -19,8 +19,8 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
   ActionCostValue action_cost_value = 0;
   CurrentCreatureAbilities cca;
 
-  // Make sure that the creature can actually see before trying to read.
-  if (!cca.can_see(creature, true))
+  if (!cca.can_see(creature, true) ||
+      !cca.can_read(creature, true))
   {
     return action_cost_value;
   }
