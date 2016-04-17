@@ -19,5 +19,6 @@ class JewelerWorkbenchManipulator : public ForgeManipulator
 
     virtual ItemPtr get_selected_ingot(CreaturePtr creature, ActionManager& am) override;
     virtual ItemPtr get_selected_item(CreaturePtr creature, ItemPtr ingot, ActionManager& am) override;
+    virtual SkillType get_primary_crafting_skill() const override;
 };
 

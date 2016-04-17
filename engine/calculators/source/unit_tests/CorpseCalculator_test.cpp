@@ -11,14 +11,19 @@ TEST(SW_Engine_Calculators_CorpseCalculator, calculate_chance_successful_skin)
   skills.set_value(SkillType::SKILL_GENERAL_SKINNING, 1);
   creature->set_skills(skills);
 
-  EXPECT_EQ(36, cc.calculate_chance_successful_skin(creature));
+  EXPECT_EQ(35, cc.calculate_chance_successful_skin(creature));
 
   skills.set_value(SkillType::SKILL_GENERAL_SKINNING, 22);
   creature->set_skills(skills);
 
-  EXPECT_EQ(57, cc.calculate_chance_successful_skin(creature));
+  EXPECT_EQ(46, cc.calculate_chance_successful_skin(creature));
 
   skills.set_value(SkillType::SKILL_GENERAL_SKINNING, 100);
+  creature->set_skills(skills);
+
+  EXPECT_EQ(85, cc.calculate_chance_successful_skin(creature));
+
+  skills.set_value(SkillType::SKILL_GENERAL_CRAFTING, 60);
   creature->set_skills(skills);
 
   EXPECT_EQ(100, cc.calculate_chance_successful_skin(creature));

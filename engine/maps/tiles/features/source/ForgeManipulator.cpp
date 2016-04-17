@@ -5,6 +5,7 @@
 #include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "SmithingCalculator.hpp"
 #include "SmithingConstants.hpp"
 #include "WeaponManager.hpp"
 
@@ -211,12 +212,25 @@ void ForgeManipulator::improve_item(CreaturePtr creature, ItemPtr selected_item,
 
   // If the creature's good at smithing, there's a chance it gets an extra
   // point to work with.
-  bool extra_point = RNG::percent_chance(creature->get_skills().get_value(SkillType::SKILL_GENERAL_SMITHING));
-  if (extra_point) num_points++;
+  SmithingCalculator sc;
+  vector<int> pct_chances = sc.calculate_pct_chances_extra_point(creature, get_primary_crafting_skill());
+
+  for (int chance : pct_chances)
+  {
+    if (RNG::percent_chance(chance))
+    {
+      num_points++;
+    }
+  }
 
   selected_item->smith(num_points);
 
   // Let the player know the smithing was successful.
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_SUCCESSFUL));
   manager.send();
+}
+
+SkillType ForgeManipulator::get_primary_crafting_skill() const
+{
+  return SkillType::SKILL_GENERAL_SMITHING;
 }

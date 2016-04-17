@@ -101,3 +101,8 @@ bool JewelerWorkbenchManipulator::check_creature_has_jewelry_skill(CreaturePtr c
 
   return knows_jewelry;
 }
+
+SkillType JewelerWorkbenchManipulator::get_primary_crafting_skill() const
+{
+  return SkillType::SKILL_GENERAL_JEWELER;
+}

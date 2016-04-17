@@ -21,6 +21,16 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Appropriately 0-valued skills (weapon skills) are now shown in the
   character dump as well.
 
+- Implemented the crafting skill.  This is a secondary skill for a lot
+  of crafting-type skills, and increases the chance of creating something 
+  useful.
+
+- As weaving and tanning now consider both a primary skill as well as 
+  crafting, the items created can now be more powerful.
+
+- Working at a jeweler's workbench now considers the Jeweler skill instead
+  of Smithing.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.
