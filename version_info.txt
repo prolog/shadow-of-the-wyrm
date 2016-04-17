@@ -31,6 +31,9 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Working at a jeweler's workbench now considers the Jeweler skill instead
   of Smithing.
 
+- The player now needs literacy as a basic prerequisite to read scrolls
+  and spellbooks.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.
