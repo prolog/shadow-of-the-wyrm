@@ -24,7 +24,14 @@ void SkillProcessorFactory::populate_skill_map()
                {SkillType::SKILL_GENERAL_DUAL_WIELD, SkillTextKeys::SKILL_USAGE_DUAL_WIELD},
                {SkillType::SKILL_GENERAL_ESCAPE, SkillTextKeys::SKILL_USAGE_ESCAPE},
                {SkillType::SKILL_GENERAL_FORAGING, SkillTextKeys::SKILL_USAGE_FORAGING},
-               {SkillType::SKILL_GENERAL_JEWELER, SkillTextKeys::SKILL_USAGE_JEWELER}};
+               {SkillType::SKILL_GENERAL_JEWELER, SkillTextKeys::SKILL_USAGE_JEWELER},
+               {SkillType::SKILL_GENERAL_MAGIC, SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC},
+               {SkillType::SKILL_GENERAL_MOUNTAINEERING, SkillTextKeys::SKILL_USAGE_MOUNTAINEERING},
+               {SkillType::SKILL_GENERAL_SKINNING, SkillTextKeys::SKILL_USAGE_SKINNING},
+               {SkillType::SKILL_GENERAL_SMITHING, SkillTextKeys::SKILL_USAGE_SMITHING},
+               {SkillType::SKILL_GENERAL_SWIMMING, SkillTextKeys::SKILL_USAGE_SWIMMING},
+               {SkillType::SKILL_GENERAL_TANNING, SkillTextKeys::SKILL_USAGE_TANNING},
+               {SkillType::SKILL_GENERAL_WEAVING, SkillTextKeys::SKILL_USAGE_WEAVING}};
 }
 
 ISkillProcessorPtr SkillProcessorFactory::create(const SkillType st)

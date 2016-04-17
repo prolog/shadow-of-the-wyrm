@@ -1,7 +1,9 @@
 Me:
 - Creatures without literacy should not be able to read!  Literacy should
   have a small effect on learning spells, and on how quickly scrolls are
-  read.
+  read.  Cynwise should have an earlier quest, also for the Sun Gem, and
+  her reward should be teaching Literacy and providing an identified scroll
+  of identify.
 - Ensure Escape is hooked up to stairways.
 - Blindfighting needs to hook into evade/to-hit (+msgs).
 - Add blindfighting to to-hit calcs when blind, consider blindness, etc,
