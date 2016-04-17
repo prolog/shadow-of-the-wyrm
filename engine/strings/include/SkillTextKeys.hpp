@@ -175,6 +175,7 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_AWARENESS;
     static const std::string SKILL_USAGE_CARRYING;
     static const std::string SKILL_USAGE_COMBAT;
+    static const std::string SKILL_USAGE_CRAFTING;
     static const std::string SKILL_USAGE_DETECTION;
     static const std::string SKILL_USAGE_DUAL_WIELD;
     static const std::string SKILL_USAGE_ESCAPE;

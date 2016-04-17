@@ -1,14 +1,17 @@
 #include "CorpseCalculator.hpp"
 
-// The chance to create a skin is min(35 + skinning skill, 100)
+// The chance to create a skin is min(35 + (skinning skill / 2) + (crafting skill / 4), 100)
 int CorpseCalculator::calculate_chance_successful_skin(CreaturePtr creature)
 {
   int pct_chance = 0;
 
   if (creature)
   {
-    int skin_value = creature->get_skills().get_value(SkillType::SKILL_GENERAL_SKINNING);
-    pct_chance = std::min(35 + skin_value, 100);
+    Skills& skills = creature->get_skills();
+    int skin_value = skills.get_value(SkillType::SKILL_GENERAL_SKINNING);
+    int craft_value = skills.get_value(SkillType::SKILL_GENERAL_CRAFTING);
+
+    pct_chance = std::min(35 + (skin_value / 2) + (craft_value / 4), 100);
   }
 
   return pct_chance;

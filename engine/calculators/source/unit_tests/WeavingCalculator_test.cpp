@@ -15,12 +15,12 @@ TEST(SW_Engine_Calculators_WeavingCalculator, calculate_min_points)
 
   EXPECT_EQ(0, wc.calculate_min_enchant_points(creature));
 
-  for (uint i = 20; i <= 100; i += 20)
+  for (uint i = 25; i <= 100; i += 25)
   {
     s.set_value(SkillType::SKILL_GENERAL_WEAVING, i);
     creature->set_skills(s);
 
-    EXPECT_EQ(i / 20, wc.calculate_min_enchant_points(creature));
+    EXPECT_EQ(i / 25, wc.calculate_min_enchant_points(creature));
   }
 }
 

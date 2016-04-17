@@ -21,5 +21,7 @@ class ForgeManipulator : public IFeatureManipulator
     virtual ItemPtr get_selected_item(CreaturePtr creature, ItemPtr ingot, ActionManager& am);
 
     void improve_item(CreaturePtr creature, ItemPtr selected_item, ItemPtr selected_ingot);
+
+    virtual SkillType get_primary_crafting_skill() const;
 };
 
