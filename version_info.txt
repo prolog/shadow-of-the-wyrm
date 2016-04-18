@@ -34,6 +34,13 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - The player now needs literacy as a basic prerequisite to read scrolls
   and spellbooks.
 
+- One more inhabitant of Isen Dun wants the Sun Gem.  Cynwise's first
+  quest is now for the Gem, and she gives a number of identify scrolls.
+  She also teaches the player about Literacy, if that skill is 0.
+
+- Since there is now additional incentive to do Cynwise's quest for
+  Literacy, the Blacksmith's reward, Forger, now does a bit more damage.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.
