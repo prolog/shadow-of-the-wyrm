@@ -10,7 +10,8 @@ end
 -- Don't allow the ploughman's quest to be requested if the corresponding
 -- quest from the blacksmith has already been completed.
 local function plough_sun_gem_precond_fn()
-  return not is_quest_completed("blacksmith_sungem")
+  return not ((is_quest_completed("blacksmith_sungem")) or
+              (is_quest_completed("cynwise_sungem")))
 end
 
 local function sun_gem_completion_condition_fn()
@@ -22,6 +23,7 @@ local function sun_gem_completion_fn()
   add_object_to_player_tile("silverweed", 15)
   remove_object_from_player("sun_gem")
   remove_active_quest("blacksmith_sungem")
+  remove_active_quest("cynwise_sungem")
   return true
 end
 

@@ -24274,7 +24274,7 @@
 				<Damage>
 					<NumDice>2</NumDice>
 					<NumSides>10</NumSides>
-					<Modifier>4</Modifier>
+					<Modifier>8</Modifier>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>

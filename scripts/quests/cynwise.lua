@@ -1,5 +1,56 @@
 require('quest')
 
+-- Cynwise is one of three inhabitants of Isen Dun who really, really wants
+-- the Sun Gem.  Her quest can only be done if neither the Blacksmith or
+-- the Ploughman's quest for the gem have been completed.
+local function cynwise_sun_gem_precond_fn()
+  return not ((is_quest_completed("ploughman_sungem")) or
+              (is_quest_completed("blacksmith_sungem")))
+end
+
+local function cynwise_sun_gem_start_fn()
+  add_message_with_pause("CYNWISE_SUNGEM_QUEST_START_SID")
+  add_message_with_pause("CYNWISE_SUNGEM_QUEST_START2_SID")
+  clear_and_add_message("CYNWISE_SUNGEM_QUEST_START3_SID")
+end
+
+local function cynwise_sun_gem_completion_condition_fn()
+  return (player_has_item("sun_gem") == true)
+end
+
+local function cynwise_sun_gem_completion_fn()
+  add_message_with_pause("CYNWISE_SUNGEM_QUEST_COMPLETE_SID")
+
+  local literacy_value = get_skill_value("player", 28)
+
+  if (literacy_value > 0) then
+    clear_and_add_message("CYNWISE_SUNGEM_QUEST_COMPLETE2_SID")
+    add_object_to_player_tile("identify_scroll", 4)
+  else
+    add_object_to_player_tile("identify_scroll", 2)
+    literacy_value = RNG_range(3, 15)
+    set_skill_value("player", 28, literacy_value)
+    clear_and_add_message("CYNWISE_SUNGEM_QUEST_COMPLETE_LITERACY_SID")
+  end
+
+  remove_object_from_player("sun_gem")
+  remove_active_quest("blacksmith_sungem")
+  remove_active_quest("ploughman_sungem")
+
+  return true
+end
+
+cynwise_sungem_quest = Quest:new("cynwise_sungem",
+                                 "CYNWISE_SUNGEM_QUEST_TITLE_SID",
+                                 "CYNWISE_SHORT_DESCRIPTION_SID",
+                                 "CYNWISE_SUNGEM_DESCRIPTION_SID",
+                                 "CYNWISE_SUNGEM_QUEST_COMPLETE_SID",
+                                 "CYNWISE_SUNGEM_QUEST_REMINDER_SID",
+                                 cynwise_sun_gem_precond_fn,
+                                 cynwise_sun_gem_start_fn,
+                                 cynwise_sun_gem_completion_condition_fn,
+                                 cynwise_sun_gem_completion_fn)
+
 -- Wintersea Keep quest details
 local function cynwise_wintersea_start_fn()
   add_message_with_pause("CYNWISE_WINTERSEA_QUEST_START_SID")
@@ -82,11 +133,12 @@ cynwise_aeschburh_quest = Quest:new("cynwise_aeschburh_quest",
 
 
 -- Handle quest ordering for Cynwise.
--- The Wintersea quest comes first, followed by Aeschburh.
-if wintersea_quest:execute() == false then
-  if cynwise_aeschburh_quest:execute() == false then
-    local replace = {get_player_title()}
-    add_message("CYNWISE_SPEECH_TEXT_SID", replace)
+-- The Sun Gem quest comes first, then Wintersea, followed by Aeschburh.
+if cynwise_sungem_quest:execute() == false then
+  if wintersea_quest:execute() == false then
+    if cynwise_aeschburh_quest:execute() == false then
+      local replace = {get_player_title()}
+      add_message("CYNWISE_SPEECH_TEXT_SID", replace)
+    end
   end
 end
-

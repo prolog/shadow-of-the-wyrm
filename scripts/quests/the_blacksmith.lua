@@ -3,11 +3,12 @@ require('quest')
 -- Sun Gem quest details
 --
 -- The blacksmith's sun gem quest is inaccessible once the ploughman's
--- quest has been completed.  The player can actually get both quests
--- if both are requested prior to completion, but only one can actually
+-- quest has been completed, or Cynwise's.  The player can actually get both 
+-- quests if both are requested prior to completion, but only one can actually
 -- be completed.
 local function blacksmith_sun_gem_precond_fn()
-  return not is_quest_completed("ploughman_sungem")
+  return not ((is_quest_completed("ploughman_sungem")) or
+              (is_quest_completed("cynwise_sungem")))
 end
 
 local function sun_gem_start_fn()
@@ -16,6 +17,8 @@ local function sun_gem_start_fn()
   clear_and_add_message("BLACKSMITH_SUNGEM_QUEST_START3_SID")
 end
 
+-- The blacksmith really, really hates the ploughman.  See the Colloquy on the
+-- occupations.
 local function sun_gem_completion_condition_fn()
   return ((player_has_item("sun_gem") == true) or (get_num_creature_killed_global("the_ploughman") > 0))
 end
@@ -33,6 +36,7 @@ local function sun_gem_completion_fn()
   add_object_to_player_tile("forger")
   remove_object_from_player("sun_gem")
   remove_active_quest("ploughman_sungem")
+  remove_active_quest("cynwise_sungem")
 
   if creature_is_class("player", "smith") == true then
     add_object_to_player_tile("_iron_ingot", 2)
