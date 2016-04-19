@@ -30,6 +30,8 @@
 
 using namespace std;
 
+const int MovementAction::BASE_ASCEND_DESCEND_CHANCE = 35;
+
 MovementAction::MovementAction()
 {
 }
@@ -69,6 +71,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
       if (cca.can_move(creature, true))
       {
         SkillManager sm;
+
         // Otherwise, move the creature, if:
         // - there are no hostile adjacent creatures
         // - there is at least one hostile adjacent creature, and a successful Escape check is made.
@@ -78,11 +81,8 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
         }
         else
         {
-          IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());  
+          add_cannot_escape_message(creature);
           movement_acv = 1;
-          string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
-          manager.add_new_message(cannot_escape);
-          manager.send();
         }
       }
     }
@@ -683,16 +683,29 @@ void MovementAction::handle_properties_and_move_to_new_map(TilePtr old_tile, Map
 ActionCostValue MovementAction::ascend(CreaturePtr creature)
 {
   CurrentCreatureAbilities cca;
+  ActionCostValue movement_acv = 0;
 
   if (cca.can_move(creature, true))
   {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
     StairwayMovementAction smm;
-    return smm.ascend(creature, this);
+    SkillManager sm;
+
+    if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) 
+      || sm.check_skill(creature, SkillType::SKILL_GENERAL_ESCAPE)
+      || RNG::percent_chance(BASE_ASCEND_DESCEND_CHANCE))
+    {
+      movement_acv = smm.ascend(creature, this);
+    }
+    else
+    {
+      add_cannot_escape_message(creature);
+      movement_acv = 1;
+    }
   }
-  else
-  {
-    return 0;
-  }
+
+  return movement_acv;
 }
 
 // Descend, if the creature can move.  Or, if the creature has the appropriate
@@ -700,16 +713,29 @@ ActionCostValue MovementAction::ascend(CreaturePtr creature)
 ActionCostValue MovementAction::descend(CreaturePtr creature)
 {
   CurrentCreatureAbilities cca;
+  ActionCostValue movement_acv = 0;
 
   if (cca.can_move(creature, true))
   {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
     StairwayMovementAction smm;
-    return smm.descend(creature, this);
+    SkillManager sm;
+
+    if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) 
+      || sm.check_skill(creature, SkillType::SKILL_GENERAL_ESCAPE)
+      || RNG::percent_chance(BASE_ASCEND_DESCEND_CHANCE))
+    {
+      movement_acv = smm.descend(creature, this);
+    }
+    else
+    {
+      add_cannot_escape_message(creature);
+      movement_acv = 1;
+    }
   }
-  else
-  {
-    return 0;
-  }
+
+  return movement_acv;
 }
 
 // Add any messages after moving to a particular tile:
@@ -790,6 +816,17 @@ bool MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
   }
 
   return msg_added;
+}
+
+void MovementAction::add_cannot_escape_message(const CreaturePtr& creature)
+{
+  if (creature && creature->get_is_player())
+  {
+    IMessageManager& manager = MessageManagerFactory::instance();
+    string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
+    manager.add_new_message(cannot_escape);
+    manager.send();
+  }
 }
 
 ActionCostValue MovementAction::get_action_cost_value(CreaturePtr creature) const
