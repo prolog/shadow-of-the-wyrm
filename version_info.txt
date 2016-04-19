@@ -41,6 +41,11 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Since there is now additional incentive to do Cynwise's quest for
   Literacy, the Blacksmith's reward, Forger, now does a bit more damage.
 
+- The Escape skill is now also checked when trying to ascend/descend
+  while adjacent to hostile creatures.  Previously, this movement could
+  always be performed.  Now, there is a base chance to ascend/descend,
+  and if that fails, the Escape skill is checked for a second chance.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.
