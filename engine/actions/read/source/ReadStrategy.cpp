@@ -2,6 +2,7 @@
 #include "EffectFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ReadCalculator.hpp"
 #include "ReadStrategy.hpp"
 
 using namespace std;
@@ -25,3 +26,8 @@ void ReadStrategy::add_read_message(const pair<string, string>& player_and_monst
   }
 }
 
+ActionCostValue ReadStrategy::get_action_cost_value(CreaturePtr creature) const
+{
+  ReadCalculator rc;
+  return rc.calculate_reading_acv(creature);
+}

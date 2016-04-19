@@ -407,6 +407,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhaseOfMoonCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ReadCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreConstants.hpp" />
     <ClInclude Include="engine\calculators\include\CorpseCalculator.hpp" />
@@ -1270,6 +1271,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ReadCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SmithingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TertiaryUnarmedCalculator.cpp" />

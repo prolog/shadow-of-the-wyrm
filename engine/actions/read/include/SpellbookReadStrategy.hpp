@@ -38,7 +38,5 @@ class SpellbookReadStrategy : public ReadStrategy
     // reading - success indicates memorization, failure is just a read.
     virtual std::pair<std::string, std::string> get_player_and_monster_read_sids() const override;
     virtual std::pair<std::string, std::string> get_player_and_monster_unsuccessful_read_sids() const;
-
-    ActionCostValue get_action_cost_value(CreaturePtr creature) const;
 };
 

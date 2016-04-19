@@ -70,8 +70,3 @@ pair<string, string> ScrollReadStrategy::get_player_and_monster_read_sids() cons
   return sids;
 }
 
-ActionCostValue ScrollReadStrategy::get_action_cost_value(CreaturePtr creature) const
-{
-  return 1;
-}
-

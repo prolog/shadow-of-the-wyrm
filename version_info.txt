@@ -32,7 +32,8 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
   of Smithing.
 
 - The player now needs literacy as a basic prerequisite to read scrolls
-  and spellbooks.
+  and spellbooks.  The Literacy skill now also affects how quickly a
+  readable item is read.
 
 - One more inhabitant of Isen Dun wants the Sun Gem.  Cynwise's first
   quest is now for the Gem, and she gives a number of identify scrolls.

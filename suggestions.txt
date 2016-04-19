@@ -1,7 +1,5 @@
 Me:
-- Literacy should have a small effect on learning spells, and on how 
-  quickly scrolls are read.
-- Ensure Escape is hooked up to stairways.
+- Literacy should have a small effect on learning spells.
 - Blindfighting needs to hook into evade/to-hit (+msgs).
 - Add blindfighting to to-hit calcs when blind, consider blindness, etc,
   update guide/game.
