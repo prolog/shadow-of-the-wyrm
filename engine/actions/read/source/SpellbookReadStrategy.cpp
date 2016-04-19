@@ -87,11 +87,6 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
   return acv;
 }
 
-ActionCostValue SpellbookReadStrategy::get_action_cost_value(CreaturePtr creature) const
-{
-  return 1;
-}
-
 void SpellbookReadStrategy::learn_spell_from_spellbook(CreaturePtr creature, SpellbookPtr spellbook, const ItemIdentifier& item_id, const string& spell_id, const SkillType magic_category)
 {
   SpellbookCalculator sc;

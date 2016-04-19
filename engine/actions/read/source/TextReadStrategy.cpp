@@ -38,9 +38,3 @@ pair<string, string> TextReadStrategy::get_player_and_monster_read_sids() const
   pair<string, string> sids(SpellcastingTextKeys::SPELLCASTING_READ_BOOK_PLAYER, SpellcastingTextKeys::SPELLCASTING_READ_BOOK_MONSTER);
   return sids;
 }
-
-ActionCostValue TextReadStrategy::get_action_cost_value(CreaturePtr creature) const
-{
-  return 1;
-}
-
