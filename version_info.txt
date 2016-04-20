@@ -25,6 +25,10 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
   of crafting-type skills, and increases the chance of creating something 
   useful.
 
+- Implemented the blind fighting skill.  This helps negate the large
+  evade penalties associated with blindness, as well as the to-hit
+  penalties.
+
 - As weaving and tanning now consider both a primary skill as well as 
   crafting, the items created can now be more powerful.
 
@@ -53,6 +57,9 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 
   - The resource string for the Foraging skill's name was incorrect,
     pointing at Escaping instead.
+
+  - To-hit modifiers weren't being properly applied in the magical to-hit
+    calculations.
 
 - New creatures: Weyg, Rhone, Phole, Carne, avernal bats.
 

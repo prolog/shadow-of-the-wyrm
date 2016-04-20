@@ -1,3 +1,4 @@
+#include "CurrentCreatureAbilities.hpp"
 #include "SkillManager.hpp"
 #include "StatusEffectFactory.hpp"
 #include "ToHitCalculator.hpp"
@@ -79,3 +80,23 @@ int ToHitCalculator::get_modifier_bonus(CreaturePtr creature)
   return to_hit_bonus;
 }
 
+int ToHitCalculator::get_skills_bonus(CreaturePtr creature)
+{
+  int skills_bonus = 0;
+
+  if (creature != nullptr)
+  {
+    CurrentCreatureAbilities cca;
+
+    if (!cca.can_see(creature, false))
+    {
+      int blindfighting_value = creature->get_skills().get_value(SkillType::SKILL_GENERAL_BLIND_FIGHTING);
+
+      // +1 to hit for every 4 pts of Blindfighting, when blind.
+      // This can help negate the base -25 to-hit modifier added by blindness.
+      skills_bonus += (blindfighting_value / 4);
+    }
+  }
+
+  return skills_bonus;
+}
