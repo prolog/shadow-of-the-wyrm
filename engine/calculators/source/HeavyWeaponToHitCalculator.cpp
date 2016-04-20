@@ -25,6 +25,7 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
     int level    = get_level_bonus(creature);
     int weapon   = get_weapon_bonus(creature);
     int modifier = get_modifier_bonus(creature);
+    int skills   = get_skills_bonus(creature);
 
     // There is no BAC penalty for heavy weapons - unlike light and ranged
     // weapons, which rely on finesse, heavy weapons rely more on strength,
@@ -36,6 +37,7 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
     to_hit += level;
     to_hit += weapon;
     to_hit += modifier;
+    to_hit += skills;
   }
 
   return to_hit;

@@ -6,8 +6,8 @@
 
 using namespace std;
 
-const int BlindedStatusEffect::BLINDED_TO_HIT_PENALTY = -10;
-const int BlindedStatusEffect::BLINDED_EVADE_PENALTY = -10;
+const int BlindedStatusEffect::BLINDED_TO_HIT_PENALTY = -25;
+const int BlindedStatusEffect::BLINDED_EVADE_PENALTY = -25;
 
 BlindedStatusEffect::BlindedStatusEffect()
 {

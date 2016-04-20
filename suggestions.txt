@@ -1,6 +1,7 @@
 Me:
+- Merge the existing skill code in engine/actions/skills with the stuff
+  in engine/skills so that all the skills use a common interface.
 - Literacy should have a small effect on learning spells.
-- Blindfighting needs to hook into evade/to-hit (+msgs).
 - Add blindfighting to to-hit calcs when blind, consider blindness, etc,
   update guide/game.
 - Add awareness to the defending creature's checks for avoiding ranged

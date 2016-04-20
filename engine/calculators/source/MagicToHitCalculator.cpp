@@ -25,6 +25,8 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
     int level_bonus  = get_level_bonus(creature);
     int magic_bonus  = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_MAGIC) / NWP_SKILL_BONUS_DIVISOR;
     int intelligence = creature->get_intelligence().get_current();
+    int skills       = get_skills_bonus(creature);
+    int modifiers    = get_modifier_bonus(creature);
 
     // Harder to wiggle fingers and nose while schlepping fifty broadswords.
     int creature_carried_weight = creature->get_weight_carried();
@@ -41,6 +43,8 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
     to_hit += level_bonus;
     to_hit += magic_bonus;
     to_hit += (intelligence - 10) / 3;
+    to_hit += skills;
+    to_hit += modifiers;
     to_hit -= bac_modifier;
     to_hit -= attacker_weight_value;
   }

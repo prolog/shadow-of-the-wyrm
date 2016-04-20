@@ -1,3 +1,4 @@
+#include "CurrentCreatureAbilities.hpp"
 #include "EvadeCalculator.hpp"
 #include "StatusEffectFactory.hpp"
 #include "Wearable.hpp"
@@ -29,6 +30,7 @@ int EvadeCalculator::calculate_evade(const CreaturePtr& c)
     
     evade += get_equipment_bonus(c);
     evade += get_modifier_bonus(c);
+    evade += get_skill_bonus(c);
     evade += agility_bonus;
   }
   
@@ -87,6 +89,26 @@ int EvadeCalculator::get_modifier_bonus(const CreaturePtr& c)
   }
 
   return mod_bonus;
+}
+
+int EvadeCalculator::get_skill_bonus(const CreaturePtr& c)
+{
+  int sk_bonus = 0;
+
+  if (c != nullptr)
+  {
+    // +1 to evade for every four points of Blindfighting, if the creature is
+    // blind.
+    CurrentCreatureAbilities cca;
+
+    if (!cca.can_see(c, false))
+    {
+      int blindfighting_value = c->get_skills().get_value(SkillType::SKILL_GENERAL_BLIND_FIGHTING);
+      sk_bonus += (blindfighting_value / 4);
+    }
+  }
+
+  return sk_bonus;
 }
 
 #ifdef UNIT_TESTS

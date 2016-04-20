@@ -24,6 +24,7 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
     int level     = get_level_bonus(creature);
     int weapon    = get_weapon_bonus(creature);
     int modifier  = get_modifier_bonus(creature);
+    int skill     = get_skills_bonus(creature);
     int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
 
     to_hit += nwp_bonus;
@@ -31,6 +32,7 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
     to_hit += level;
     to_hit += weapon;
     to_hit += modifier;
+    to_hit += skill;
     to_hit -= bac_modifier;
   }
   
