@@ -55,6 +55,13 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
   magical combat, so creatures with very high awareness and/or evade
   will be very difficult to attack with magic.
 
+- Religion now plays a part in your relations with your deity.  After
+  praying, a multiplier is now applied to the piety gain (sacrificing)
+  and loss (praying).
+
+- Being favoured by the Nine and spoken to in visions and in their dreams,
+  Shepherds now start with skill in Religion.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.

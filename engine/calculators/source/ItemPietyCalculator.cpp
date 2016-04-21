@@ -2,7 +2,7 @@
 #include "ConsumableConstants.hpp"
 #include "Consumable.hpp"
 
-const int ItemPietyCalculator::MINIMUM_PIETY = 50;
+const int ItemPietyCalculator::MINIMUM_PIETY = 10;
 const int ItemPietyCalculator::BASE_DIVISOR = 10;
 const int ItemPietyCalculator::CORPSE_DIVISOR = 4;
 

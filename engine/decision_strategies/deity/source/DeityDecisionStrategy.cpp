@@ -76,7 +76,7 @@ DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr 
 
 DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision_for_sacrifice(CreaturePtr creature, ItemPtr item)
 {
-  DeityDecisionStrategyHandlerPtr sacrifice = std::make_shared<SacrificeDeityDecisionStrategyHandler>(deity_id, item);
+  DeityDecisionStrategyHandlerPtr sacrifice = std::make_shared<SacrificeDeityDecisionStrategyHandler>(deity_id, creature, item);
 
   return sacrifice;
 }
