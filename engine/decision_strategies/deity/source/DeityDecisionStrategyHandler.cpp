@@ -1,3 +1,4 @@
+#include "CreaturePietyCalculator.hpp"
 #include "DeityDecisionStrategyHandler.hpp"
 
 using namespace std;
@@ -16,6 +17,21 @@ DeityDecisionImplications DeityDecisionStrategyHandler::get_deity_decision_impli
   if (piety_loss > 0)
   {
     piety_loss = static_cast<int>(piety_loss * tile->get_piety_loss_multiplier());
+  }
+
+  // Meanwhile, a creature's relations with his or her deity always affects
+  // relations: for piety gain, it amplifies it; for piety loss, it mitigates
+  // it.  This is a piety multiplier, not a loss multiplier.
+  CreaturePietyCalculator cpc;
+  float cp_mult = cpc.calculate_piety_multiplier(creature);
+
+  if (piety_loss > 0)
+  {
+    piety_loss = static_cast<int>(piety_loss / cp_mult);
+  }
+  else
+  {
+    piety_loss = static_cast<int>(piety_loss * cp_mult);
   }
 
   DeityDecisionImplications decision_implications(piety_loss, get_message_sid());

@@ -9,8 +9,8 @@ SacrificeDeityDecisionStrategyHandler::SacrificeDeityDecisionStrategyHandler(con
 {
 }
 
-SacrificeDeityDecisionStrategyHandler::SacrificeDeityDecisionStrategyHandler(const string& new_deity_id, ItemPtr sacrificed_item)
-: DeityDecisionStrategyHandler(new_deity_id), sac_item(sacrificed_item)
+SacrificeDeityDecisionStrategyHandler::SacrificeDeityDecisionStrategyHandler(const string& new_deity_id, CreaturePtr sacrificing_creature, ItemPtr sacrificed_item)
+: DeityDecisionStrategyHandler(new_deity_id), creature(sacrificing_creature), sac_item(sacrificed_item)
 {
 }
 
@@ -29,6 +29,7 @@ DeityDecisionImplications SacrificeDeityDecisionStrategyHandler::handle_decision
 int SacrificeDeityDecisionStrategyHandler::get_piety_loss() const
 {
   ItemPietyCalculator ipc;
+
   int calc_piety = 0;
 
   if (sac_item)

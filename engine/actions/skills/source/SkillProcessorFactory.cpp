@@ -28,6 +28,7 @@ void SkillProcessorFactory::populate_skill_map()
                {SkillType::SKILL_GENERAL_JEWELER, SkillTextKeys::SKILL_USAGE_JEWELER},
                {SkillType::SKILL_GENERAL_MAGIC, SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC},
                {SkillType::SKILL_GENERAL_MOUNTAINEERING, SkillTextKeys::SKILL_USAGE_MOUNTAINEERING},
+               {SkillType::SKILL_GENERAL_RELIGION, SkillTextKeys::SKILL_USAGE_RELIGION},
                {SkillType::SKILL_GENERAL_SKINNING, SkillTextKeys::SKILL_USAGE_SKINNING},
                {SkillType::SKILL_GENERAL_SMITHING, SkillTextKeys::SKILL_USAGE_SMITHING},
                {SkillType::SKILL_GENERAL_SWIMMING, SkillTextKeys::SKILL_USAGE_SWIMMING},

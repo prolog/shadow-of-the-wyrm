@@ -3732,6 +3732,9 @@
     <ClInclude Include="engine\calculators\include\ReadCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\CreaturePietyCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7269,6 +7272,9 @@
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\ReadCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
