@@ -51,6 +51,10 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
   always be performed.  Now, there is a base chance to ascend/descend,
   and if that fails, the Escape skill is checked for a second chance.
 
+- Awareness now plays a large part in calculating the target number for
+  magical combat, so creatures with very high awareness and/or evade
+  will be very difficult to attack with magic.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.
