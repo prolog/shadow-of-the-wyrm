@@ -5,19 +5,22 @@ MagicalCombatTargetNumberCalculator::MagicalCombatTargetNumberCalculator()
 {
 }
 
-// The target number for magical combat is the attacked creature's evade minus half the attacker's Magic skill.
-//
-// That is, magic should be very, very easy to hit with.
+// The target number for magical combat is the attacked creature's evade
+// plus half the attacked creature's Awareness skill minus the attacker's
+// Magic skill.
 int MagicalCombatTargetNumberCalculator::calculate(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
   int target_number = 0;
 
   if (attacking_creature && attacked_creature)
   {
-    int defender_evade = attacked_creature->get_evade().get_current();
-    int attacker_magic_value = (attacking_creature->get_skills().get_skill(SkillType::SKILL_GENERAL_MAGIC)->get_value() / 2);
+    Skills& d_skills = attacked_creature->get_skills();
 
-    target_number = defender_evade - attacker_magic_value;
+    int defender_evade = attacked_creature->get_evade().get_current();
+    int defender_awareness = (d_skills.get_value(SkillType::SKILL_GENERAL_AWARENESS) / 2);
+    int attacker_magic_value = d_skills.get_value(SkillType::SKILL_GENERAL_MAGIC);
+
+    target_number = defender_evade + defender_awareness - attacker_magic_value;
 
     if (target_number < 0) target_number = 0;
   }
