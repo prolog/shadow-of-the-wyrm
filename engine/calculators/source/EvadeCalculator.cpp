@@ -103,7 +103,7 @@ int EvadeCalculator::get_skill_bonus(const CreaturePtr& c)
 
     if (!cca.can_see(c, false))
     {
-      int blindfighting_value = c->get_skills().get_value(SkillType::SKILL_GENERAL_BLIND_FIGHTING);
+      int blindfighting_value = c->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_BLIND_FIGHTING);
       sk_bonus += (blindfighting_value / 4);
     }
   }

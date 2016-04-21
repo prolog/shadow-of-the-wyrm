@@ -941,9 +941,10 @@ class Skills : public ISerializable
     void increment_skills(const Skills& skills_to_increment);
 
     void set_value(const SkillType skill_name, const unsigned int new_value);
-    void mark(const SkillType skill_name);
+    void mark(const SkillType skill_name, const bool override_default = false /* whether to mark regardless of whether the skill indicates it can be trained from unlearned */);
 
     int get_value(const SkillType& skill_name) const;
+    int get_value_incr_marks(const SkillType& skill_name);
     
     void set_skill(const SkillType& skill_name, SkillPtr skill);
     SkillPtr get_skill(const SkillType& st) const;

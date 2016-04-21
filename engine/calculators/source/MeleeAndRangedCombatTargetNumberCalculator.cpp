@@ -36,7 +36,7 @@ int MeleeAndRangedCombatTargetNumberCalculator::calculate_pct_chance_pass_throug
 
   if (tile_creature != nullptr)
   {
-    pct_chance = tile_creature->get_skills().get_value(SkillType::SKILL_GENERAL_AWARENESS);
+    pct_chance = tile_creature->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_AWARENESS);
   }
 
   if (attacking_creature != nullptr)

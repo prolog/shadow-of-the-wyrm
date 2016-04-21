@@ -46,6 +46,8 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
 
           // Break the illiterate conduct.
           creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_ILLITERATE);
+
+          creature->get_skills().mark(SkillType::SKILL_GENERAL_LITERACY);
         }
       }
     }    

@@ -219,6 +219,7 @@ void ForgeManipulator::improve_item(CreaturePtr creature, ItemPtr selected_item,
   {
     if (RNG::percent_chance(chance))
     {
+      creature->get_skills().mark(get_primary_crafting_skill());
       num_points++;
     }
   }

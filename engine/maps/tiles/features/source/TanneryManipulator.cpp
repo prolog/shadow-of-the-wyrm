@@ -140,6 +140,8 @@ ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr sel
         armour->set_resistances(selected_skin->get_resistances());
         armour->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));
     		armour->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID));
+
+        creature->get_skills().mark(SkillType::SKILL_GENERAL_TANNING);
 	    }
     }
   }

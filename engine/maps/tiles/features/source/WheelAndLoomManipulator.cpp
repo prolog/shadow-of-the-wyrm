@@ -91,6 +91,8 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
                 // Add a message about successfully creating the skin.
                 add_successful_weaving_message(creature);
 
+                creature->get_skills().mark(SkillType::SKILL_GENERAL_WEAVING);
+
                 // Add the skin to the tile.
                 tile->get_items()->add_front(armour);
                 handled = true;
