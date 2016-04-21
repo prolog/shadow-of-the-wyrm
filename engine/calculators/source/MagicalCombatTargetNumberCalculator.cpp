@@ -17,7 +17,7 @@ int MagicalCombatTargetNumberCalculator::calculate(CreaturePtr attacking_creatur
     Skills& d_skills = attacked_creature->get_skills();
 
     int defender_evade = attacked_creature->get_evade().get_current();
-    int defender_awareness = (d_skills.get_value(SkillType::SKILL_GENERAL_AWARENESS) / 2);
+    int defender_awareness = (d_skills.get_value_incr_marks(SkillType::SKILL_GENERAL_AWARENESS) / 2);
     int attacker_magic_value = d_skills.get_value(SkillType::SKILL_GENERAL_MAGIC);
 
     target_number = defender_evade + defender_awareness - attacker_magic_value;

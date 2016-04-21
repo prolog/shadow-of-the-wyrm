@@ -95,6 +95,7 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
 
     if (RNG::percent_chance(chance_skin))
     {
+      creature->get_skills().mark(SkillType::SKILL_GENERAL_SKINNING);
       add_skin_successful_message(creature); 
       create_skin_and_add_to_tile(creature, item, tile);
     }
@@ -125,6 +126,7 @@ void SkinAction::create_skin_and_add_to_tile(CreaturePtr creature, ItemPtr corps
     // using the creature's skinning skill.
     if (RNG::percent_chance(creature->get_skills().get_value(SkillType::SKILL_GENERAL_SKINNING)))
     {
+      creature->get_skills().mark(SkillType::SKILL_GENERAL_SKINNING);
       quantity++;
     }
 

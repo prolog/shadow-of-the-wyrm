@@ -1,4 +1,5 @@
 Me:
+- Keep marking general skills as applicable when using them.
 - When sacrificing an item with 0 value, don't add "you feel pious".  The
   player should just get "nothing happens".
 - Merge the existing skill code in engine/actions/skills with the stuff

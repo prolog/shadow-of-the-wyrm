@@ -62,6 +62,9 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Being favoured by the Nine and spoken to in visions and in their dreams,
   Shepherds now start with skill in Religion.
 
+- Most of the general skills are now marked on use, or in certain use
+  cases, meaning that their repeated use will improve them over time.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.

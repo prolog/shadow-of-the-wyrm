@@ -90,7 +90,7 @@ int ToHitCalculator::get_skills_bonus(CreaturePtr creature)
 
     if (!cca.can_see(creature, false))
     {
-      int blindfighting_value = creature->get_skills().get_value(SkillType::SKILL_GENERAL_BLIND_FIGHTING);
+      int blindfighting_value = creature->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_BLIND_FIGHTING);
 
       // +1 to hit for every 4 pts of Blindfighting, when blind.
       // This can help negate the base -25 to-hit modifier added by blindness.

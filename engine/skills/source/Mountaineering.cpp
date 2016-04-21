@@ -31,6 +31,10 @@ void Mountaineering::check_for_fall(CreaturePtr creature)
       // Reset counter, since we're no longer "on" the mt.
       creature->get_movement_accumulation_ref().set_minutes_on_tile_type_given_movement(0); 
     }
+    else
+    {
+      creature->get_skills().mark(SkillType::SKILL_GENERAL_MOUNTAINEERING);
+    }
   }
 }
 

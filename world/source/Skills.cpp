@@ -1661,10 +1661,17 @@ void Skills::set_value(const SkillType skill_name, const unsigned int value)
 }
 
 // Mark a skill.  JCD FIXME: A skill manager should control this...
-void Skills::mark(const SkillType skill_name)
+void Skills::mark(const SkillType skill_name, const bool override_default)
 {
   SkillPtr skill_to_mark = skills[skill_name];
-  skill_to_mark->increment_marks();
+
+  if (skill_to_mark)
+  {
+    if (skill_to_mark->get_value() > 0 || skill_to_mark->can_train_from_unlearned() || override_default)
+    {
+      skill_to_mark->increment_marks();
+    }
+  }
 }
 
 int Skills::get_value(const SkillType& skill_name) const
@@ -1678,6 +1685,25 @@ int Skills::get_value(const SkillType& skill_name) const
   }
 
   return value;
+}
+
+// Get the value and increment the marks, if applicable.
+int Skills::get_value_incr_marks(const SkillType& skill_name)
+{
+  int val = 0;
+  SkillPtr skill = get_skill(skill_name);
+
+  if (skill != nullptr)
+  {
+    val = skill->get_value();
+
+    if (val > 0 || skill->can_train_from_unlearned())
+    {
+      skill->increment_marks();
+    }
+  }
+
+  return val;
 }
 
 void Skills::set_skill(const SkillType& st, const SkillPtr skill)
