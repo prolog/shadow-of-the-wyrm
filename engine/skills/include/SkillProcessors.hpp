@@ -1,7 +1,7 @@
 #pragma once
-#include "ISkillProcessor.hpp"
+#include "SkillProcessor.hpp"
 
-class DefaultSkillProcessor : public ISkillProcessor
+class DefaultSkillProcessor : public SkillProcessor
 {
   public:
     DefaultSkillProcessor(const std::string& new_message_sid);

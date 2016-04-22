@@ -8,7 +8,7 @@ using std::string;
 
 // "Drown" the creature by applying swimming damage.
 // If the creature is the player, display a UI message.
-void Swimming::drown(CreaturePtr creature)
+ActionCostValue SwimmingProcessor::process(CreaturePtr creature, MapPtr map)
 {
   if (creature)
   {
@@ -25,4 +25,6 @@ void Swimming::drown(CreaturePtr creature)
 
     cm.deal_damage(no_attacker, creature, sc.calculate_swimming_damage(creature, creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL)), drowning_message_sid);    
   }
+
+  return get_default_skill_action_cost_value(creature);
 }

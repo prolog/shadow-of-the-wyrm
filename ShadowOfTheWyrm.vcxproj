@@ -877,9 +877,9 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\serialization\include\SerializationTypes.hpp" />
     <ClInclude Include="engine\serialization\include\Serialize.hpp" />
     <ClInclude Include="engine\skills\include\Detection.hpp" />
-    <ClInclude Include="engine\skills\include\ISkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\Mountaineering.hpp" />
     <ClInclude Include="engine\skills\include\SkillManager.hpp" />
+    <ClInclude Include="engine\skills\include\SkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\SkillProcessorFactory.hpp" />
     <ClInclude Include="engine\skills\include\SkillProcessors.hpp" />
     <ClInclude Include="engine\skills\include\Swimming.hpp" />
@@ -1369,6 +1369,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
+    <ClCompile Include="engine\skills\source\SkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessorFactory.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessors.cpp" />
     <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />

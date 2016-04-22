@@ -11,6 +11,6 @@ class MountainClimbingMovementAccumulationChecker : public ITerrainMovementAccum
     
   protected:
     MountainClimbingCalculator mcc;
-    Mountaineering mountaineering;
+    MountaineeringProcessor mountaineering;
     SkillManager sm;
 };

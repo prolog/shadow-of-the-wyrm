@@ -6,7 +6,7 @@
 
 using std::string;
 
-void Mountaineering::check_for_fall(CreaturePtr creature)
+ActionCostValue MountaineeringProcessor::process(CreaturePtr creature, MapPtr map)
 {
   if (creature)
   {
@@ -36,5 +36,7 @@ void Mountaineering::check_for_fall(CreaturePtr creature)
       creature->get_skills().mark(SkillType::SKILL_GENERAL_MOUNTAINEERING);
     }
   }
+
+  return get_default_skill_action_cost_value(creature);
 }
 

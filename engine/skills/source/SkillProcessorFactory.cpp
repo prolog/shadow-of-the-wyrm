@@ -36,7 +36,7 @@ void SkillProcessorFactory::populate_skill_map()
                {SkillType::SKILL_GENERAL_WEAVING, SkillTextKeys::SKILL_USAGE_WEAVING}};
 }
 
-ISkillProcessorPtr SkillProcessorFactory::create(const SkillType st)
+SkillProcessorPtr SkillProcessorFactory::create(const SkillType st)
 {
   static_assert(SkillType::SKILL_GENERAL_LAST == static_cast<SkillType>(49), "Unexpected SKILL_GENERAL_LAST");
   static_assert(SkillType::SKILL_MELEE_LAST == static_cast<SkillType>(1010), "Unexpected SKILL_MELEE_LAST");
@@ -48,7 +48,7 @@ ISkillProcessorPtr SkillProcessorFactory::create(const SkillType st)
     populate_skill_map();
   }
 
-  ISkillProcessorPtr sp = std::make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_UNIMPLEMENTED);
+  SkillProcessorPtr sp = std::make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_UNIMPLEMENTED);
 
   if (st >= SkillType::SKILL_GENERAL_ARCHERY && st < SkillType::SKILL_GENERAL_LAST)
   {

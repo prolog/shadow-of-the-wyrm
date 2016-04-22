@@ -1,10 +1,10 @@
 #pragma once
-#include "ISkillProcessor.hpp"
+#include "SkillProcessor.hpp"
 
 class SkillProcessorFactory
 {
   public:
-    static ISkillProcessorPtr create(const SkillType st);
+    static SkillProcessorPtr create(const SkillType st);
 
   protected:
     SkillProcessorFactory();

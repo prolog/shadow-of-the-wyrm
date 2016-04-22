@@ -1,8 +1,8 @@
 #pragma once
-#include "Creature.hpp"
+#include "SkillProcessor.hpp"
 
-class Mountaineering
+class MountaineeringProcessor : public SkillProcessor
 {
   public:
-    void check_for_fall(CreaturePtr creature);
+    ActionCostValue process(CreaturePtr creature, MapPtr map /* Unused by MountaineeringProcessor */);
 };

@@ -6,7 +6,7 @@
 
 using std::string;
 
-ActionCostValue Detection::process(CreaturePtr creature, MapPtr map)
+ActionCostValue DetectionProcessor::process(CreaturePtr creature, MapPtr map)
 {
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
@@ -25,5 +25,5 @@ ActionCostValue Detection::process(CreaturePtr creature, MapPtr map)
     }
   }
 
-  return 1; // JCD FIXME
+  return get_default_skill_action_cost_value(creature);
 }

@@ -3714,13 +3714,13 @@
     <ClInclude Include="engine\calculators\include\CreaturePietyCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\skills\include\ISkillProcessor.hpp">
-      <Filter>Header Files\engine\skills\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\skills\include\SkillProcessorFactory.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\skills\include\SkillProcessors.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\SkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -7263,6 +7263,9 @@
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\skills\source\SkillProcessors.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\SkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>

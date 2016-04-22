@@ -8,5 +8,5 @@ class SwimmingMovementAccumulationChecker : public ITerrainMovementAccumulationC
     void check(CreaturePtr creature) override;
     
   protected:
-    Swimming swim;
+    SwimmingProcessor swim;
 };
