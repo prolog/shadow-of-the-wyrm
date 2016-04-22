@@ -1,7 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "MessageManager.hpp"
-#include "Swimming.hpp"
+#include "SwimmingProcessor.hpp"
 #include "SwimmingCalculator.hpp"
 
 using std::string;

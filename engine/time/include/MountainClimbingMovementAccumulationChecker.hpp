@@ -1,7 +1,7 @@
 #pragma once
 #include "ITerrainMovementAccumulationChecker.hpp"
 #include "MountainClimbingCalculator.hpp"
-#include "Mountaineering.hpp"
+#include "MountaineeringProcessor.hpp"
 #include "SkillManager.hpp"
 
 class MountainClimbingMovementAccumulationChecker : public ITerrainMovementAccumulationChecker

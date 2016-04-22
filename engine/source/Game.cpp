@@ -11,7 +11,7 @@
 #include "CustomAreaGenerator.hpp"
 #include "CursesConstants.hpp"
 #include "DecisionStrategySelector.hpp"
-#include "Detection.hpp"
+#include "DetectionProcessor.hpp"
 #include "ExitGameAction.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"

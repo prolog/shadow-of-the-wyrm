@@ -2028,16 +2028,7 @@
     <ClInclude Include="engine\time\include\WorldTimeKeeperCoordinator.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\skills\include\Detection.hpp">
-      <Filter>Header Files\engine\skills\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\skills\include\Mountaineering.hpp">
-      <Filter>Header Files\engine\skills\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\skills\include\SkillManager.hpp">
-      <Filter>Header Files\engine\skills\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\skills\include\Swimming.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\serialization\include\Serialization.hpp">
@@ -3723,6 +3714,15 @@
     <ClInclude Include="engine\skills\include\SkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\skills\include\DetectionProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\MountaineeringProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\SwimmingProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4832,16 +4832,7 @@
     <ClCompile Include="engine\source\unit_tests\RNG_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\skills\source\Detection.cpp">
-      <Filter>Source Files\engine\skills\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\skills\source\Mountaineering.cpp">
-      <Filter>Source Files\engine\skills\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\skills\source\SkillManager.cpp">
-      <Filter>Source Files\engine\skills\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\skills\source\Swimming.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\serialization\source\Serialization.cpp">
@@ -7266,6 +7257,15 @@
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\skills\source\SkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\DetectionProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\MountaineeringProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\SwimmingProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
