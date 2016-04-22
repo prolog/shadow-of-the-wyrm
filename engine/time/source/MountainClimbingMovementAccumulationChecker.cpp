@@ -15,7 +15,7 @@ void MountainClimbingMovementAccumulationChecker::check(CreaturePtr creature)
 
     if (time_on_mt > max_climbing_time)
     {
-      mountaineering.check_for_fall(creature);
+      mountaineering.process(creature, nullptr);
     }
     else
     {

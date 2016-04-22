@@ -45,7 +45,7 @@ ActionCostValue SkillsCommandProcessor::process(CreaturePtr creature, CommandPtr
     }
     else if (command_name == SkillsCommandKeys::SELECT_SKILL)
     {
-      ISkillProcessorPtr sp = SkillProcessorFactory::create(st);
+      SkillProcessorPtr sp = SkillProcessorFactory::create(st);
 
       if (sp != nullptr)
       {

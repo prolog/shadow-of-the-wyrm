@@ -1,8 +1,8 @@
 #pragma once
-#include "Creature.hpp"
+#include "SkillProcessor.hpp"
 
-class Swimming
+class SwimmingProcessor : public SkillProcessor
 {
   public:
-    void drown(CreaturePtr creature);
+    ActionCostValue process(CreaturePtr creature, MapPtr map /* unused by SwimmingProcessor */) override;
 };

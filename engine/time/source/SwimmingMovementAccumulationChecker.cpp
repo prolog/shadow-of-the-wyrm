@@ -16,7 +16,7 @@ void SwimmingMovementAccumulationChecker::check(CreaturePtr creature)
 
     if (time_in_water > max_swimming_time)
     {
-      swim.drown(creature);
+      swim.process(creature, nullptr);
     }
     else
     {

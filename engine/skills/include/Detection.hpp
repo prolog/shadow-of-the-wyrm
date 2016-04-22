@@ -1,9 +1,9 @@
 #pragma once
 #include "Creature.hpp"
 #include "Map.hpp"
-#include "ISkillProcessor.hpp"
+#include "SkillProcessor.hpp"
 
-class Detection : public ISkillProcessor
+class DetectionProcessor : public SkillProcessor
 {
   public:
     virtual ActionCostValue process(CreaturePtr player, MapPtr map) override;

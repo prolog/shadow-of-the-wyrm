@@ -6,11 +6,14 @@
 // Implementing classes should return:
 // -1, if the skill does not advance the clock.
 // >= 1, if the skill advances the clock.
-class ISkillProcessor
+class SkillProcessor
 {
   public:
     virtual ActionCostValue process(CreaturePtr creature, MapPtr map) = 0;
+
+  protected:
+    virtual ActionCostValue get_default_skill_action_cost_value(CreaturePtr creature) const;
 };
 
-using ISkillProcessorPtr = std::shared_ptr<ISkillProcessor>;
+using SkillProcessorPtr = std::shared_ptr<SkillProcessor>;
 
