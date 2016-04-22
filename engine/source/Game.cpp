@@ -733,7 +733,11 @@ void Game::reload_map()
 void Game::detect_creatures_if_necessary(CreaturePtr player, const string& original_map_id)
 {
   Detection detection;
-  detection.detect_creatures_if_necessary(player, get_current_map(), original_map_id, current_map_id);
+  
+  if (original_map_id != current_map_id)
+  {
+    detection.process(player, get_current_map());
+  }
 }
 
 // Set the current map in the map registry.
