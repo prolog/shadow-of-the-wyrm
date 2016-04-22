@@ -1,5 +1,5 @@
 #include "ActionTextKeys.hpp"
-#include "Detection.hpp"
+#include "DetectionProcessor.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "SkillManager.hpp"

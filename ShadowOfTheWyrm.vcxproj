@@ -876,13 +876,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\serialization\include\SerializationExceptions.hpp" />
     <ClInclude Include="engine\serialization\include\SerializationTypes.hpp" />
     <ClInclude Include="engine\serialization\include\Serialize.hpp" />
-    <ClInclude Include="engine\skills\include\Detection.hpp" />
-    <ClInclude Include="engine\skills\include\Mountaineering.hpp" />
+    <ClInclude Include="engine\skills\include\DetectionProcessor.hpp" />
+    <ClInclude Include="engine\skills\include\MountaineeringProcessor.hpp" />
     <ClInclude Include="engine\skills\include\SkillManager.hpp" />
     <ClInclude Include="engine\skills\include\SkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\SkillProcessorFactory.hpp" />
     <ClInclude Include="engine\skills\include\SkillProcessors.hpp" />
-    <ClInclude Include="engine\skills\include\Swimming.hpp" />
+    <ClInclude Include="engine\skills\include\SwimmingProcessor.hpp" />
     <ClInclude Include="engine\strings\include\ActionTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ColourTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\CombatTextKeys.hpp" />
@@ -1369,9 +1369,12 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
+    <ClCompile Include="engine\skills\source\DetectionProcessor.cpp" />
+    <ClCompile Include="engine\skills\source\MountaineeringProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessorFactory.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessors.cpp" />
+    <ClCompile Include="engine\skills\source\SwimmingProcessor.cpp" />
     <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
     <ClCompile Include="engine\source\unit_tests\CharacterCreationDetails_test.cpp">
@@ -2596,10 +2599,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="engine\skills\source\Detection.cpp" />
-    <ClCompile Include="engine\skills\source\Mountaineering.cpp" />
     <ClCompile Include="engine\skills\source\SkillManager.cpp" />
-    <ClCompile Include="engine\skills\source\Swimming.cpp" />
     <ClCompile Include="engine\source\AlignmentUtils.cpp" />
     <ClCompile Include="engine\source\ClassManager.cpp" />
     <ClCompile Include="engine\source\CreationUtils.cpp" />

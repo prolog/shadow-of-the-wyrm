@@ -2,13 +2,7 @@ Me:
 - Keep marking general skills as applicable when using them.
 - When sacrificing an item with 0 value, don't add "you feel pious".  The
   player should just get "nothing happens".
-- Merge the existing skill code in engine/actions/skills with the stuff
-  in engine/skills so that all the skills use a common interface.
 - Literacy should have a small effect on learning spells.
-- Add blindfighting to to-hit calcs when blind, consider blindness, etc,
-  update guide/game.
-- Add awareness to the defending creature's checks for avoiding ranged
-  combat and magic.
 - Scent maps/track by scent.
 - Message manager is not updating properly when toggling between creatures
   using +/- when looking.

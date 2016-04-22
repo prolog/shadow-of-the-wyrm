@@ -1,6 +1,6 @@
 #pragma once
 #include "ITerrainMovementAccumulationChecker.hpp"
-#include "Swimming.hpp"
+#include "SwimmingProcessor.hpp"
 
 class SwimmingMovementAccumulationChecker : public ITerrainMovementAccumulationChecker
 {
