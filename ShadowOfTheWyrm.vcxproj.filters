@@ -799,18 +799,6 @@
     <Filter Include="Source Files\engine\commands\skills\source\unit_tests">
       <UniqueIdentifier>{176e97df-8073-4015-ba1d-aa4741c86ca3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\actions\skills">
-      <UniqueIdentifier>{e7a527d1-a900-485d-813f-0d1b19851ddf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\engine\actions\skills\include">
-      <UniqueIdentifier>{ec14b31e-fae9-4641-b3ae-d855437d57ac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\actions\skills">
-      <UniqueIdentifier>{d1a56eb6-5858-4a08-9817-9e915a152621}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\actions\skills\source">
-      <UniqueIdentifier>{386e3065-81dc-42e7-b0c3-cd3a0d275db1}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -3717,15 +3705,6 @@
     <ClInclude Include="engine\screens\include\SkillsScreen.hpp">
       <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\skills\include\ISkillProcessor.hpp">
-      <Filter>Header Files\engine\actions\skills\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\skills\include\SkillProcessorFactory.hpp">
-      <Filter>Header Files\engine\actions\skills\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\skills\include\SkillProcessors.hpp">
-      <Filter>Header Files\engine\actions\skills\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\calculators\include\SmithingCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
@@ -3734,6 +3713,15 @@
     </ClInclude>
     <ClInclude Include="engine\calculators\include\CreaturePietyCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\ISkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\SkillProcessorFactory.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\SkillProcessors.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7259,12 +7247,6 @@
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\skills\source\SkillProcessorFactory.cpp">
-      <Filter>Source Files\engine\actions\skills\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\skills\source\SkillProcessors.cpp">
-      <Filter>Source Files\engine\actions\skills\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\calculators\source\SmithingCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
@@ -7276,6 +7258,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\SkillProcessorFactory.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\SkillProcessors.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
