@@ -6,7 +6,7 @@
 
 using std::string;
 
-ActionCostValue MountaineeringProcessor::process(CreaturePtr creature, MapPtr map)
+ActionCostValue MountaineeringProcessor::process(CreaturePtr creature, MapPtr map /* unused, will be nullptr */)
 {
   if (creature)
   {

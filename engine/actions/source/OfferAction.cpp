@@ -77,14 +77,6 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
       }
       else
       {
-        // Item disappears.
-        CurrentCreatureAbilities cca;
-        string message = SacrificeTextKeys::get_sacrifice_message(feature->get_alignment_range(), 
-                                                                  item_to_sac, 
-                                                                  !cca.can_see(creature));
-        manager.add_new_message(message);
-        manager.send();
-
         // Deity accepts the sacrifice, altar is converted, etc.
         bool item_accepted = handle_sacrifice(creature, tile, feature, item_to_sac);
 
@@ -92,6 +84,15 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
         {
           // Nothing happened.  Add a message.
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_NOTHING_HAPPENS));
+          manager.send();
+        }
+        else
+        {
+          // Item disappears.
+          CurrentCreatureAbilities cca;
+          string message = SacrificeTextKeys::get_sacrifice_message(feature->get_alignment_range(), item_to_sac, !cca.can_see(creature));
+
+          manager.add_new_message(message);
           manager.send();
         }
 
@@ -163,9 +164,8 @@ bool OfferAction::sacrifice_on_coaligned_altar(CreaturePtr creature, FeaturePtr 
     if (piety > 0)
     {
       result = true;
+      add_piety_message_if_player(creature);
     }
-
-    add_piety_message_if_player(creature);
   }
 
   return result;

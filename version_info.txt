@@ -75,6 +75,9 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
   - To-hit modifiers weren't being properly applied in the magical to-hit
     calculations.
 
+  - Sacrificing a low-value item and receiving 0 piety was incorrectly 
+    generating a "you feel pious"-type message.
+
 - New creatures: Weyg, Rhone, Phole, Carne, avernal bats.
 
 - New items: avernal arrow.
