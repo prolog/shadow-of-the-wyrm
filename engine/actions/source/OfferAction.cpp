@@ -82,9 +82,11 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
 
         if (!item_accepted)
         {
-          // Nothing happened.  Add a message.
+          // Nothing happened.  Add a message, and place the item on the altar.
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_NOTHING_HAPPENS));
           manager.send();
+
+          tile->get_items()->add_front(item_to_sac);
         }
         else
         {
