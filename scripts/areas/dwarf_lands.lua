@@ -1,7 +1,7 @@
 require('areas')
 
 local creature = require('creature')
-local creature_list = {{"avernal_bat", 30, 40}}
+local creature_list = {{"avernal_bat", 25, 35}, {"mist_wraith", 10, 20}}
 
 local creatures_csv = creature.to_csv(creature_list)
 

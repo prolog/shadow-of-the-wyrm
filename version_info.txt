@@ -80,7 +80,7 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
   - Sacrificing a low-value item and receiving 0 piety was incorrectly 
     generating a "you feel pious"-type message.
 
-- New creatures: Weyg, Rhone, Phole, Carne, avernal bats.
+- New creatures: Weyg, Rhone, Phole, Carne, avernal bat, mist wraith.
 
 - New items: avernal arrow.
 
