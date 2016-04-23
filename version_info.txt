@@ -65,6 +65,8 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Most of the general skills are now marked on use, or in certain use
   cases, meaning that their repeated use will improve them over time.
 
+- Rejected sacrifices now no longer disappear, but are left on the altar.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.
