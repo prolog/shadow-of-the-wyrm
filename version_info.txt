@@ -9,6 +9,13 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Added a quest to the caravan master, which will fire after the Cithriel
   quest is complete, to slay the four avernal giants in the Caldera.
 
+- In adding the Caldera and the associated mythology, I noticed there were
+  now two distinct "underworlds": the underworld of Greek and Roman myth, 
+  and the one of Dungeons & Dragons and other fantasy games.  Reworked the
+  texts so that demons are now from a parallel world known as the black 
+  plains, while the underworld is now the place where spirits go after 
+  death.
+
 - The player can now view his or her skills (default keybinding is F3).
   This shows all trained and trainable skills.  Trainable skills are those
   that can advance from 0. (AgingMinotaur)
