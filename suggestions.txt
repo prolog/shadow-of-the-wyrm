@@ -1,7 +1,6 @@
 Me:
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
-- Literacy should have a small effect on learning spells.
 - Scent maps/track by scent.
 - Message manager is not updating properly when toggling between creatures
   using +/- when looking.
@@ -29,6 +28,9 @@ Me:
 - Crash bug is still present: find out what's causing it!
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
+
+Sean McKeague:
+- Ability to pick up partial stacks.
 
 redfeek:
 - Add wide char support to more easily support UTF-8/Russian translation.

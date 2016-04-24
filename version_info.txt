@@ -44,7 +44,8 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 
 - The player now needs literacy as a basic prerequisite to read scrolls
   and spellbooks.  The Literacy skill now also affects how quickly a
-  readable item is read.
+  readable item is read, and is also now checked when determining if a
+  creature is able to learn a spell from a spellbook.
 
 - One more inhabitant of Isen Dun wants the Sun Gem.  Cynwise's first
   quest is now for the Gem, and she gives a number of identify scrolls.
@@ -86,6 +87,11 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 
   - Sacrificing a low-value item and receiving 0 piety was incorrectly 
     generating a "you feel pious"-type message.
+
+  - Both currency and ammunition were generating in much larger piles
+    than expected, due to calling the RNG "dice" function instead of
+    "range".  This led to stacks of three hundred or more cabers weighing
+    18000 lbs. (Sean McKeague)
 
 - New creatures: Weyg, Rhone, Phole, Carne, avernal bat, mist wraith.
 

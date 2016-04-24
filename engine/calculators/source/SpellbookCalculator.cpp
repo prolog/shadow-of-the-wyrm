@@ -49,12 +49,14 @@ pair<bool, int> SpellbookCalculator::learn_spell(CreaturePtr creature, const Ski
     int magic_category_skill_raw = skills.get_skill(magic_category)->get_value();
     int magic_category_skill = (magic_category_skill_raw > 0) ? magic_category_skill_raw 
                                                               : SpellConstants::NO_CATEGORY_SKILL_SPELL_LEARNING_PENALTY;
+    int literacy_skill = skills.get_value(SkillType::SKILL_GENERAL_LITERACY);
     int int_stat = creature->get_intelligence().get_current();
     int will_stat = creature->get_willpower().get_current();
     int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100) * 10;
 
     int i = (rand
           + (magic_general_skill / 2)
+          + (literacy_skill / 4)
           + magic_category_skill
           + (int_stat / 5)
           + (will_stat / 5))

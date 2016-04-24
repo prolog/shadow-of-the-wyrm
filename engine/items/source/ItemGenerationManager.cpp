@@ -108,17 +108,16 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
 
     generated_item = ItemManager::create_item(item_id);
 
-    // If this is currency, generate a random amount based on the d12.
-    // If this is ammunition, generate a little less.
+    // Generate stacks appropriately.
     ItemType type = generated_item->get_type();
 
     if (type == ItemType::ITEM_TYPE_CURRENCY)
     {
-      generated_item->set_quantity(RNG::dice(3, 20));
+      generated_item->set_quantity(RNG::range(3, 20));
     }
     else if (type == ItemType::ITEM_TYPE_AMMUNITION)
     {
-      generated_item->set_quantity(RNG::dice(12, 50));
+      generated_item->set_quantity(RNG::range(12, 50));
     }
 
     if (enchant_points > 0)
