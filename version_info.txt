@@ -75,6 +75,9 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 
 - Rejected sacrifices now no longer disappear, but are left on the altar.
 
+- Rovers and Seafarers now start with fishing rods.  There is also a
+  guaranteed fishing rod in the boathouse in Isen Dun.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.
@@ -95,7 +98,7 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 
 - New creatures: Weyg, Rhone, Phole, Carne, avernal bat, mist wraith.
 
-- New items: avernal arrow.
+- New items: avernal arrow, fishing rod.
 
 - New artifacts: the ruby amulet "Eunoia".
 

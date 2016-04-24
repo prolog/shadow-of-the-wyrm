@@ -3270,6 +3270,12 @@
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
+						<ID>_fishing_rod</ID>
+						<Quantity>
+							<Amount>1</Amount>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>
@@ -3487,6 +3493,12 @@
 						<ID>food_ration</ID>
 						<Quantity>
 							<Amount>4</Amount>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>_fishing_rod</ID>
+						<Quantity>
+							<Amount>1</Amount>
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
@@ -27868,6 +27880,17 @@
 					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
+			</Tool>
+			<Tool id="_fishing_rod">
+				<DescriptionSID>FISHING_ROD_SID</DescriptionSID>
+				<UsageDescriptionSID>FISHING_ROD_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>2</DangerLevel>
 			</Tool>
 			<Tool id="lute">
 				<DescriptionSID>LUTE_SID</DescriptionSID>
