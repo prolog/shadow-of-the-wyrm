@@ -5,3 +5,5 @@ The first release, as Savage Lands, was on August 31, 2015.  A re-release the ne
 The following people have made bug reports, or had suggestions implemented - thank you!
 %p
 AgingMinotaur, barrabus, Faladrit, pat--, Aleksanderus, Jeremy Long, akeley, Kyzrati, Zirael, kraphead, Mateusz Lagowski, Lagi, Dave Keen, Darcy Faires, Anonymous, Legend, Avagart, Antonio Sabachini, kemcop.
+%p
+Localizations take a large amount of time and effort.  The Russian localization was provided by Redfeek.

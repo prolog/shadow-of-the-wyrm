@@ -30,6 +30,9 @@ Me:
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
 
+redfeek:
+- Add wide char support to more easily support UTF-8/Russian translation.
+
 barrabus: 
 - Extra descs for items.
 
