@@ -306,9 +306,17 @@
 				<ID>salted_fish</ID>
 				<Coord>
 					<Row>15</Row>
-					<Col>9</Col>
+					<Col>8</Col>
 				</Coord>
 				<Quantity>4</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_fishing_rod</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>9</Col>
+				</Coord>
+				<Quantity>1</Quantity>
 			</Placement>
 		</Items>
 	</InitialPlacements>
