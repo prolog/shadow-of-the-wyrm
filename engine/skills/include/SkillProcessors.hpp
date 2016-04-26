@@ -6,7 +6,7 @@ class DefaultSkillProcessor : public SkillProcessor
   public:
     DefaultSkillProcessor(const std::string& new_message_sid);
 
-    virtual ActionCostValue process(CreaturePtr creature, MapPtr map);
+    virtual ActionCostValue process(CreaturePtr creature, MapPtr map) override;
 
   protected:
     std::string message_sid;
