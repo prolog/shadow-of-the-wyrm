@@ -3,7 +3,7 @@
 #include "Map.hpp"
 #include "SkillProcessor.hpp"
 
-class DetectionProcessor : public SkillProcessor
+class DetectionSkillProcessor : public SkillProcessor
 {
   public:
     virtual ActionCostValue process(CreaturePtr player, MapPtr map) override;

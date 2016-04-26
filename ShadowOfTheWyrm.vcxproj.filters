@@ -3714,13 +3714,16 @@
     <ClInclude Include="engine\skills\include\SkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\skills\include\DetectionProcessor.hpp">
+    <ClInclude Include="engine\skills\include\DetectionSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\skills\include\MountaineeringProcessor.hpp">
+    <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\skills\include\SwimmingProcessor.hpp">
+    <ClInclude Include="engine\skills\include\SwimmingSkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\FishingSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -7259,13 +7262,16 @@
     <ClCompile Include="engine\skills\source\SkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\skills\source\DetectionProcessor.cpp">
+    <ClCompile Include="engine\skills\source\DetectionSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\skills\source\MountaineeringProcessor.cpp">
+    <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\skills\source\SwimmingProcessor.cpp">
+    <ClCompile Include="engine\skills\source\SwimmingSkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\FishingSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>

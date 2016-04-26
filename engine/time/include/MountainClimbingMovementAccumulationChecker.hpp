@@ -1,7 +1,7 @@
 #pragma once
 #include "ITerrainMovementAccumulationChecker.hpp"
 #include "MountainClimbingCalculator.hpp"
-#include "MountaineeringProcessor.hpp"
+#include "MountaineeringSkillProcessor.hpp"
 #include "SkillManager.hpp"
 
 class MountainClimbingMovementAccumulationChecker : public ITerrainMovementAccumulationChecker
@@ -11,6 +11,6 @@ class MountainClimbingMovementAccumulationChecker : public ITerrainMovementAccum
     
   protected:
     MountainClimbingCalculator mcc;
-    MountaineeringProcessor mountaineering;
+    MountaineeringSkillProcessor mountaineering;
     SkillManager sm;
 };

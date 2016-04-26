@@ -11,7 +11,7 @@
 #include "CustomAreaGenerator.hpp"
 #include "CursesConstants.hpp"
 #include "DecisionStrategySelector.hpp"
-#include "DetectionProcessor.hpp"
+#include "DetectionSkillProcessor.hpp"
 #include "ExitGameAction.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
@@ -732,7 +732,7 @@ void Game::reload_map()
 
 void Game::detect_creatures_if_necessary(CreaturePtr player, const string& original_map_id)
 {
-  DetectionProcessor detection;
+  DetectionSkillProcessor detection;
   
   if (original_map_id != current_map_id)
   {

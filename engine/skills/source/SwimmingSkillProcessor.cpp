@@ -1,14 +1,14 @@
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "MessageManager.hpp"
-#include "SwimmingProcessor.hpp"
+#include "SwimmingSkillProcessor.hpp"
 #include "SwimmingCalculator.hpp"
 
 using std::string;
 
 // "Drown" the creature by applying swimming damage.
 // If the creature is the player, display a UI message.
-ActionCostValue SwimmingProcessor::process(CreaturePtr creature, MapPtr map /* unused, will be nullptr */)
+ActionCostValue SwimmingSkillProcessor::process(CreaturePtr creature, MapPtr map /* unused, will be nullptr */)
 {
   if (creature)
   {

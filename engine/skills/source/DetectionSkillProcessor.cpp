@@ -1,12 +1,12 @@
 #include "ActionTextKeys.hpp"
-#include "DetectionProcessor.hpp"
+#include "DetectionSkillProcessor.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "SkillManager.hpp"
 
 using std::string;
 
-ActionCostValue DetectionProcessor::process(CreaturePtr creature, MapPtr map)
+ActionCostValue DetectionSkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   

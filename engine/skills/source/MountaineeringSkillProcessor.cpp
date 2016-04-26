@@ -1,12 +1,12 @@
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
-#include "MountaineeringProcessor.hpp"
+#include "MountaineeringSkillProcessor.hpp"
 #include "MountainClimbingCalculator.hpp"
 #include "SkillManager.hpp"
 
 using std::string;
 
-ActionCostValue MountaineeringProcessor::process(CreaturePtr creature, MapPtr map /* unused, will be nullptr */)
+ActionCostValue MountaineeringSkillProcessor::process(CreaturePtr creature, MapPtr map /* unused, will be nullptr */)
 {
   if (creature)
   {
