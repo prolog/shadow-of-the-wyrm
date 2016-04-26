@@ -99,7 +99,8 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
     "range".  This led to stacks of three hundred or more cabers weighing
     18000 lbs. (Sean McKeague)
 
-- New creatures: Weyg, Rhone, Phole, Carne, avernal bat, mist wraith.
+- New creatures: Weyg, Rhone, Phole, Carne, avernal bat, mist wraith, fox
+  mage.
 
 - New items: avernal arrow, fishing rod.
 
