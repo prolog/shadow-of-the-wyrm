@@ -78,6 +78,9 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Rovers and Seafarers now start with fishing rods.  There is also a
   guaranteed fishing rod in the boathouse in Isen Dun.
 
+- Artifacts are now always generated as either uncursed or blessed
+  (Sean McKeague).
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.
