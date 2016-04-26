@@ -27,19 +27,22 @@ ItemPtr ItemFactory::create(ItemPtr item_to_copy)
 void ItemFactory::randomize_item_status(ItemPtr item)
 {
   int pct = RNG::range(1, 100);
-  ItemStatus status;
+  ItemStatus status = ItemStatus::ITEM_STATUS_UNCURSED;
 
-  if (pct <= 5)
+  if (item != nullptr)
   {
-    status = ItemStatus::ITEM_STATUS_CURSED;
-  }
-  else if (pct <= 93)
-  {
-    status = ItemStatus::ITEM_STATUS_UNCURSED;
-  }
-  else
-  {
-    status = ItemStatus::ITEM_STATUS_BLESSED;
+    if (pct <= 5 && !item->get_artifact())
+    {
+      status = ItemStatus::ITEM_STATUS_CURSED;
+    }
+    else if (pct <= 93)
+    {
+      status = ItemStatus::ITEM_STATUS_UNCURSED;
+    }
+    else
+    {
+      status = ItemStatus::ITEM_STATUS_BLESSED;
+    }
   }
 
   item->set_status(status);
