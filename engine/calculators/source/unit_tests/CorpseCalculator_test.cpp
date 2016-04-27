@@ -45,10 +45,15 @@ TEST(SW_Engine_Calculators_CorpseCalculator, calculate_chance_corpse)
   skills.set_value(SkillType::SKILL_GENERAL_FORAGING, 22);
   creature->set_skills(skills);
 
-  EXPECT_EQ(20, cc.calculate_chance_corpse(creature));
+  EXPECT_EQ(22, cc.calculate_chance_corpse(creature));
 
   skills.set_value(SkillType::SKILL_GENERAL_FORAGING, 100);
   creature->set_skills(skills);
 
-  EXPECT_EQ(40, cc.calculate_chance_corpse(creature));
+  EXPECT_EQ(48, cc.calculate_chance_corpse(creature));
+
+  skills.set_value(SkillType::SKILL_GENERAL_HUNTING, 100);
+  creature->set_skills(skills);
+
+  EXPECT_EQ(80, cc.calculate_chance_corpse(creature));
 }

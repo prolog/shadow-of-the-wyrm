@@ -1302,6 +1302,7 @@
 					<Detection>10</Detection>
 					<ForestLore>20</ForestLore>
 					<Herbalism>10</Herbalism>
+					<Hunting>20</Hunting>
 					<NightSight>15</NightSight>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
@@ -1524,6 +1525,7 @@
 					<Escape>20</Escape>
 					<ForestLore>25</ForestLore>
 					<Herbalism>10</Herbalism>
+					<Hunting>25</Hunting>
 					<Magic>15</Magic>
 					<NightSight>15</NightSight>
 					<Stealth>15</Stealth>

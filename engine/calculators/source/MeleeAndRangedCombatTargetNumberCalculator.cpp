@@ -1,4 +1,5 @@
 #include "MeleeAndRangedCombatTargetNumberCalculator.hpp"
+#include "RaceConstants.hpp"
 #include "WeaponDifficultyCalculator.hpp"
 
 MeleeAndRangedCombatTargetNumberCalculator::MeleeAndRangedCombatTargetNumberCalculator(const AttackType new_attack_type)
@@ -9,6 +10,7 @@ MeleeAndRangedCombatTargetNumberCalculator::MeleeAndRangedCombatTargetNumberCalc
 // The target number:
 //
 // = the difficulty of the attacking creature's weapon
+// - attacking creature's Hunting skill / 2, if the attacked creature is an animal
 // + attacked creature's evade
 //
 int MeleeAndRangedCombatTargetNumberCalculator::calculate(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
@@ -19,9 +21,19 @@ int MeleeAndRangedCombatTargetNumberCalculator::calculate(CreaturePtr attacking_
   {
     WeaponDifficultyCalculator wdc;
     int weapon_difficulty = wdc.calculate_base_difficulty(attacking_creature, attack_type);
+
+    int hunting_bonus = 0;
+
+    if (attacked_creature->get_race_id() == RaceConstants::RACE_CONSTANTS_RACE_ID_ANIMAL)
+    {
+      hunting_bonus = attacking_creature->get_skills().get_value(SkillType::SKILL_GENERAL_HUNTING) / 2;
+    }
+
     int target_evade = attacked_creature->get_evade().get_current();
     
-    target_number = weapon_difficulty + target_evade;
+    target_number = weapon_difficulty 
+                  - hunting_bonus 
+                  + target_evade;
   }
 
   return target_number;
