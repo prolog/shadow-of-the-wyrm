@@ -25,6 +25,7 @@ void SkillProcessorFactory::populate_skill_map()
                {SkillType::SKILL_GENERAL_DUAL_WIELD, SkillTextKeys::SKILL_USAGE_DUAL_WIELD},
                {SkillType::SKILL_GENERAL_ESCAPE, SkillTextKeys::SKILL_USAGE_ESCAPE},
                {SkillType::SKILL_GENERAL_FORAGING, SkillTextKeys::SKILL_USAGE_FORAGING},
+               {SkillType::SKILL_GENERAL_HUNTING, SkillTextKeys::SKILL_USAGE_HUNTING},
                {SkillType::SKILL_GENERAL_JEWELER, SkillTextKeys::SKILL_USAGE_JEWELER},
                {SkillType::SKILL_GENERAL_MAGIC, SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC},
                {SkillType::SKILL_GENERAL_MOUNTAINEERING, SkillTextKeys::SKILL_USAGE_MOUNTAINEERING},

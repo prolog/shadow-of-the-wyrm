@@ -81,6 +81,11 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Artifacts are now always generated as either uncursed or blessed
   (Sean McKeague).
 
+- The Hunting skill now improves combat skills against animals, and also
+  helps find more corpses.
+
+- Wood Elves and Fae now start with Hunting.
+
 - Bug fixes:
 
   - Fixed a crash bug in a Lua API test function.
