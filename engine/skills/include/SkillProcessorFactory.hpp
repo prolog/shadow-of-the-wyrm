@@ -12,6 +12,6 @@ class SkillProcessorFactory
 
     static void populate_skill_map();
 
-    static std::map<SkillType, std::string> skill_map;
+    static std::map<SkillType, SkillProcessorPtr> skill_map;
 };
 

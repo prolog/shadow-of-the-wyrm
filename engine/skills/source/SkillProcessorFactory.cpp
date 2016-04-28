@@ -1,10 +1,11 @@
+#include "FishingSkillProcessor.hpp"
 #include "SkillProcessorFactory.hpp"
 #include "SkillProcessors.hpp"
 #include "SkillTextKeys.hpp"
 
 using namespace std;
 
-map<SkillType, string> SkillProcessorFactory::skill_map;
+map<SkillType, SkillProcessorPtr> SkillProcessorFactory::skill_map;
 
 SkillProcessorFactory::SkillProcessorFactory()
 {
@@ -16,25 +17,26 @@ SkillProcessorFactory::~SkillProcessorFactory()
 
 void SkillProcessorFactory::populate_skill_map()
 {
-  skill_map = {{SkillType::SKILL_GENERAL_ARCHERY, SkillTextKeys::SKILL_USAGE_ARCHERY},
-               {SkillType::SKILL_GENERAL_AWARENESS, SkillTextKeys::SKILL_USAGE_AWARENESS},
-               {SkillType::SKILL_GENERAL_BLIND_FIGHTING, SkillTextKeys::SKILL_USAGE_BLIND_FIGHTING},
-               {SkillType::SKILL_GENERAL_CARRYING, SkillTextKeys::SKILL_USAGE_CARRYING},
-               {SkillType::SKILL_GENERAL_COMBAT, SkillTextKeys::SKILL_USAGE_COMBAT},
-               {SkillType::SKILL_GENERAL_DETECTION, SkillTextKeys::SKILL_USAGE_DETECTION},
-               {SkillType::SKILL_GENERAL_DUAL_WIELD, SkillTextKeys::SKILL_USAGE_DUAL_WIELD},
-               {SkillType::SKILL_GENERAL_ESCAPE, SkillTextKeys::SKILL_USAGE_ESCAPE},
-               {SkillType::SKILL_GENERAL_FORAGING, SkillTextKeys::SKILL_USAGE_FORAGING},
-               {SkillType::SKILL_GENERAL_HUNTING, SkillTextKeys::SKILL_USAGE_HUNTING},
-               {SkillType::SKILL_GENERAL_JEWELER, SkillTextKeys::SKILL_USAGE_JEWELER},
-               {SkillType::SKILL_GENERAL_MAGIC, SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC},
-               {SkillType::SKILL_GENERAL_MOUNTAINEERING, SkillTextKeys::SKILL_USAGE_MOUNTAINEERING},
-               {SkillType::SKILL_GENERAL_RELIGION, SkillTextKeys::SKILL_USAGE_RELIGION},
-               {SkillType::SKILL_GENERAL_SKINNING, SkillTextKeys::SKILL_USAGE_SKINNING},
-               {SkillType::SKILL_GENERAL_SMITHING, SkillTextKeys::SKILL_USAGE_SMITHING},
-               {SkillType::SKILL_GENERAL_SWIMMING, SkillTextKeys::SKILL_USAGE_SWIMMING},
-               {SkillType::SKILL_GENERAL_TANNING, SkillTextKeys::SKILL_USAGE_TANNING},
-               {SkillType::SKILL_GENERAL_WEAVING, SkillTextKeys::SKILL_USAGE_WEAVING}};
+  skill_map = {make_pair(SkillType::SKILL_GENERAL_ARCHERY, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_ARCHERY)),
+               make_pair(SkillType::SKILL_GENERAL_AWARENESS, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_AWARENESS)),
+               make_pair(SkillType::SKILL_GENERAL_BLIND_FIGHTING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_BLIND_FIGHTING)),
+               make_pair(SkillType::SKILL_GENERAL_CARRYING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_CARRYING)),
+               make_pair(SkillType::SKILL_GENERAL_COMBAT, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_COMBAT)),
+               make_pair(SkillType::SKILL_GENERAL_DETECTION, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DETECTION)),
+               make_pair(SkillType::SKILL_GENERAL_DUAL_WIELD, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DUAL_WIELD)),
+               make_pair(SkillType::SKILL_GENERAL_ESCAPE, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_ESCAPE)),
+               make_pair(SkillType::SKILL_GENERAL_FISHING, make_shared<FishingSkillProcessor>()),
+               make_pair(SkillType::SKILL_GENERAL_FORAGING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_FORAGING)),
+               make_pair(SkillType::SKILL_GENERAL_HUNTING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HUNTING)),
+               make_pair(SkillType::SKILL_GENERAL_JEWELER, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_JEWELER)),
+               make_pair(SkillType::SKILL_GENERAL_MAGIC, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC)),
+               make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MOUNTAINEERING)),
+               make_pair(SkillType::SKILL_GENERAL_RELIGION, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_RELIGION)),
+               make_pair(SkillType::SKILL_GENERAL_SKINNING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SKINNING)),
+               make_pair(SkillType::SKILL_GENERAL_SMITHING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SMITHING)),
+               make_pair(SkillType::SKILL_GENERAL_SWIMMING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SWIMMING)),
+               make_pair(SkillType::SKILL_GENERAL_TANNING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_TANNING)),
+               make_pair(SkillType::SKILL_GENERAL_WEAVING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_WEAVING))};
 }
 
 SkillProcessorPtr SkillProcessorFactory::create(const SkillType st)
@@ -56,9 +58,9 @@ SkillProcessorPtr SkillProcessorFactory::create(const SkillType st)
     // Handle the individual skills as necessary here.
     auto s_it = skill_map.find(st);
 
-    if (s_it != skill_map.end())
+    if (s_it != skill_map.end() && s_it->second != nullptr)
     {
-      sp = std::make_shared<DefaultSkillProcessor>(s_it->second);
+      sp = s_it->second;
     }
     // else: get the "not yet implemented" message
   }

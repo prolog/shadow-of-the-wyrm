@@ -33,7 +33,7 @@ const string ItemIdKeys::ITEM_ID_VEGETABLE_6      = "_vegetable_6";
 const string ItemIdKeys::ITEM_ID_ROOT             = "_root";
 const string ItemIdKeys::ITEM_ID_BERRIES          = "_berries";
 const string ItemIdKeys::ITEM_ID_KELP             = "_kelp";
-
+const string ItemIdKeys::ITEM_ID_FISHING_ROD      = "_fishing_rod";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()
