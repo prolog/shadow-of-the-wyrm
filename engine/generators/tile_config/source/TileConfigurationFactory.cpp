@@ -6,6 +6,8 @@
 #include "TileConfigurationFactory.hpp"
 #include "WeedsTileConfiguration.hpp"
 
+using namespace std;
+
 ITileConfigurationPtr TileConfigurationFactory::tile_configurations[static_cast<int>(TileType::TILE_TYPE_LAST)];
 bool TileConfigurationFactory::tile_configurations_initialized = false;
 

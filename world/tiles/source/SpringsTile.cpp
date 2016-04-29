@@ -1,6 +1,7 @@
 #include "SpringsTile.hpp"
 #include "Serialize.hpp"
 #include "NullInventory.hpp"
+#include "WaterTypes.hpp"
 
 using namespace std;
 
@@ -8,6 +9,7 @@ SpringsTile::SpringsTile()
 : temperature(static_cast<int>(SpringsTemperature::SPRINGS_TEMPERATURE_COOL))
 {
   items = std::make_shared<NullInventory>();
+  set_additional_property(TileProperties::TILE_PROPERTY_WATER_TYPE, std::to_string(static_cast<int>(WaterType::WATER_TYPE_FRESH)));
 }
 
 bool SpringsTile::operator==(const SpringsTile& sp) const

@@ -46,6 +46,9 @@ class TileProperties
     // Is there an engraving on this tile?
     static const std::string TILE_PROPERTY_ENGRAVING_SID;
 
+    // If this is a water tile, is it freshwater?  Saltwater?
+    static const std::string TILE_PROPERTY_WATER_TYPE;
+
     // Generates the map key that identifies the custom map ID for
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);
