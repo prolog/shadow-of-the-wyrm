@@ -107,7 +107,8 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - New creatures: Weyg, Rhone, Phole, Carne, avernal bat, mist wraith, fox
   mage.
 
-- New items: avernal arrow, fishing rod.
+- New items: avernal arrow, fishing rod, rainbow trout, river carp,
+  nothern pike, sockeye salmon, yellowfin tuna, southern cod.
 
 - New artifacts: the ruby amulet "Eunoia".
 

@@ -83,3 +83,9 @@ bool FishingSkillProcessor::check_for_adjacent_water_tile(CreaturePtr creature, 
 
   return adj_water;
 }
+
+// Fishing takes a very long time.
+ActionCostValue FishingSkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
+{
+  return 100;
+}

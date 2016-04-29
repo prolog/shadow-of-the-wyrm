@@ -1111,6 +1111,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\ThreatRatings.hpp" />
     <ClInclude Include="world\include\Tool.hpp" />
     <ClInclude Include="world\include\Wand.hpp" />
+    <ClInclude Include="world\include\WaterTypes.hpp" />
     <ClInclude Include="world\include\Weapon.hpp" />
     <ClInclude Include="world\include\WeaponTypes.hpp" />
     <ClInclude Include="world\include\Wearable.hpp" />
