@@ -26990,6 +26990,114 @@
 				<Nutrition>1440</Nutrition>
 				<FoodType>1</FoodType>
 			</Food>
+			<Food id="_trout">
+				<DescriptionSID>TROUT_SID</DescriptionSID>
+				<UsageDescriptionSID>TROUT_USAGE_SID</UsageDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>860</Nutrition>
+				<FoodType>2</FoodType>
+			</Food>
+			<Food id="_carp">
+				<DescriptionSID>CARP_SID</DescriptionSID>
+				<UsageDescriptionSID>CARP_USAGE_SID</UsageDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Pounds>8</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>1050</Nutrition>
+				<FoodType>2</FoodType>
+			</Food>
+			<Food id="_pike">
+				<DescriptionSID>PIKE_SID</DescriptionSID>
+				<UsageDescriptionSID>PIKE_USAGE_SID</UsageDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>4</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>900</Nutrition>
+				<FoodType>2</FoodType>
+			</Food>
+			<Food id="_salmon">
+				<DescriptionSID>SALMON_SID</DescriptionSID>
+				<UsageDescriptionSID>SALMON_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>6</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>1120</Nutrition>
+				<FoodType>2</FoodType>
+			</Food>
+			<Food id="_tuna">
+				<DescriptionSID>TUNA_SID</DescriptionSID>
+				<UsageDescriptionSID>TUNA_USAGE_SID</UsageDescriptionSID>
+				<Value>4</Value>
+				<Weight>
+					<Pounds>12</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>1590</Nutrition>
+				<FoodType>2</FoodType>
+			</Food>
+			<Food id="_cod">
+				<DescriptionSID>COD_SID</DescriptionSID>
+				<UsageDescriptionSID>COD_USAGE_SID</UsageDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>1000</Nutrition>
+				<FoodType>2</FoodType>
+			</Food>
 			<Food id="trail_ration">
 				<DescriptionSID>TRAIL_RATION_SID</DescriptionSID>
 				<UsageDescriptionSID>TRAIL_RATION_USAGE_SID</UsageDescriptionSID>

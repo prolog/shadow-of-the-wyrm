@@ -9,7 +9,7 @@ enum struct MovementType
 
 // When moving through an occupied tile, there are a number of potential things that can
 // happen - attacking, switch places, and squeezing past.
-enum class MovementThroughTileType
+enum struct MovementThroughTileType
 {
   MOVEMENT_NONE = 0,
   MOVEMENT_ATTACK = 1,
