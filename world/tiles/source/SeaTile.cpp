@@ -1,9 +1,11 @@
 #include "SeaTile.hpp"
 #include "NullInventory.hpp"
+#include "WaterTypes.hpp"
 
 SeaTile::SeaTile()
 {
   items = std::make_shared<NullInventory>();
+  set_additional_property(TileProperties::TILE_PROPERTY_WATER_TYPE, std::to_string(static_cast<int>(WaterType::WATER_TYPE_SALT)));
 }
 
 TileType SeaTile::get_tile_type() const
