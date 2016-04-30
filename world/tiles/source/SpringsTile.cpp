@@ -9,7 +9,6 @@ SpringsTile::SpringsTile()
 : temperature(static_cast<int>(SpringsTemperature::SPRINGS_TEMPERATURE_COOL))
 {
   items = std::make_shared<NullInventory>();
-  set_additional_property(TileProperties::TILE_PROPERTY_WATER_TYPE, std::to_string(static_cast<int>(WaterType::WATER_TYPE_FRESH)));
 }
 
 bool SpringsTile::operator==(const SpringsTile& sp) const
@@ -29,6 +28,11 @@ TileType SpringsTile::get_tile_type() const
 TileSuperType SpringsTile::get_tile_super_type() const
 {
   return TileSuperType::TILE_SUPER_TYPE_WATER;
+}
+
+WaterType SpringsTile::get_water_type() const
+{
+  return WaterType::WATER_TYPE_FRESH;
 }
 
 std::string SpringsTile::get_tile_description_sid() const

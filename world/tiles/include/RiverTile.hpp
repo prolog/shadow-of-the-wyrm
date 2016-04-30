@@ -8,6 +8,7 @@ class RiverTile : public Tile
 
     TileType get_tile_type() const override;
     TileSuperType get_tile_super_type() const;
+    WaterType get_water_type() const override;
     
     std::string get_tile_description_sid() const override;
 

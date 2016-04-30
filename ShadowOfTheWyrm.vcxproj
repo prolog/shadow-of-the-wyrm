@@ -386,6 +386,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\DoorBreakageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ExposedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\FishingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FlyingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ForestCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HasteCalculator.hpp" />
@@ -1270,6 +1271,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     </ClCompile>
     <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\FishingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
@@ -1284,6 +1286,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FishingCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\PhaseOfMoonCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

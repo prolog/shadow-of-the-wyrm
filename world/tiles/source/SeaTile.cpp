@@ -5,7 +5,6 @@
 SeaTile::SeaTile()
 {
   items = std::make_shared<NullInventory>();
-  set_additional_property(TileProperties::TILE_PROPERTY_WATER_TYPE, std::to_string(static_cast<int>(WaterType::WATER_TYPE_SALT)));
 }
 
 TileType SeaTile::get_tile_type() const
@@ -16,6 +15,11 @@ TileType SeaTile::get_tile_type() const
 TileSuperType SeaTile::get_tile_super_type() const
 {
   return TileSuperType::TILE_SUPER_TYPE_WATER;
+}
+
+WaterType SeaTile::get_water_type() const
+{
+  return WaterType::WATER_TYPE_SALT;
 }
 
 std::string SeaTile::get_tile_description_sid() const

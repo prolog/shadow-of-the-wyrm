@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Spell.hpp"
+#include "WaterTypes.hpp"
 
 class ActionTextKeys
 {
@@ -24,6 +25,8 @@ class ActionTextKeys
     static std::string get_item_breakage_message(const std::string& creature_desc_sid, const bool is_player, const std::string& item_desc);
     static std::string get_spit_out_message(const std::string& seed_usage_desc);
     static std::string get_seed_planted_message(const bool blind, const std::string& seed_usage_desc);
+    static std::string get_random_bait_message();
+    static std::string get_fishing_outcome_message(const FishingOutcomeType fot);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -118,6 +121,13 @@ class ActionTextKeys
     static const std::string ACTION_STRATEGY_BASICS;
     static const std::string ACTION_FISHING_NO_WATER;
     static const std::string ACTION_FISHING_NO_EQUIPMENT;
+    static const std::string ACTION_FISHING_BAIT1;
+    static const std::string ACTION_FISHING_BAIT2;
+    static const std::string ACTION_FISHING_BAIT3;
+    static const std::string ACTION_FISHING_NO_CATCH;
+    static const std::string ACTION_FISHING_ESCAPE;
+    static const std::string ACTION_FISHING_NIBBLE;
+    static const std::string ACTION_FISHING_CATCH;
 
   protected:
     ActionTextKeys();

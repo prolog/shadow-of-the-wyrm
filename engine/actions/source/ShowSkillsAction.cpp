@@ -48,8 +48,7 @@ ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
 
   // Reset the category for the next time Show Skills is called.
   category = SkillCategory::SKILL_CATEGORY_GENERAL;
-
-  return get_action_cost_value(creature);
+  return action_cost_value;
 }
 
 ActionCostValue ShowSkillsAction::show_general_skills(CreaturePtr creature)

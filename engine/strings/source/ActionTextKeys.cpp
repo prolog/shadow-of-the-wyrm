@@ -1,7 +1,8 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "ActionTextKeys.hpp"
-#include "TextKeys.hpp"
+#include "RNG.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
@@ -251,6 +252,40 @@ string ActionTextKeys::get_seed_planted_message(const bool blind, const string& 
   return msg;
 }
 
+string ActionTextKeys::get_random_bait_message()
+{
+  vector<string> bait_msgs = {ACTION_FISHING_BAIT1, ACTION_FISHING_BAIT2, ACTION_FISHING_BAIT3};
+  return StringTable::get(bait_msgs.at(RNG::range(0, bait_msgs.size()-1)));
+}
+
+string ActionTextKeys::get_fishing_outcome_message(const FishingOutcomeType fot)
+{
+  string msg_sid;
+
+  switch (fot)
+  {
+    case FishingOutcomeType::FISHING_OUTCOME_NO_CATCH:
+      msg_sid = ACTION_FISHING_NO_CATCH;
+      break;
+    case FishingOutcomeType::FISHING_OUTCOME_ESCAPE:
+      msg_sid = ACTION_FISHING_ESCAPE;
+      break;
+    case FishingOutcomeType::FISHING_OUTCOME_NIBBLE:
+      msg_sid = ACTION_FISHING_NIBBLE;
+      break;
+    case FishingOutcomeType::FISHING_OUTCOME_CATCH:
+      msg_sid = ACTION_FISHING_CATCH;
+      break;
+    case FishingOutcomeType::FISHING_OUTCOME_UNDEFINED:
+    default:
+      break;
+  }
+
+  string msg = StringTable::get(msg_sid);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -341,6 +376,14 @@ const string ActionTextKeys::ACTION_HANDLE_PEW                 = "ACTION_HANDLE_
 const string ActionTextKeys::ACTION_EVOKE_FAILED               = "ACTION_EVOKE_FAILED";
 const string ActionTextKeys::ACTION_FISHING_NO_WATER           = "ACTION_FISHING_NO_WATER";
 const string ActionTextKeys::ACTION_FISHING_NO_EQUIPMENT       = "ACTION_FISHING_NO_EQUIPMENT";
+const string ActionTextKeys::ACTION_FISHING_BAIT1              = "ACTION_FISHING_BAIT1";
+const string ActionTextKeys::ACTION_FISHING_BAIT2              = "ACTION_FISHING_BAIT2";
+const string ActionTextKeys::ACTION_FISHING_BAIT3              = "ACTION_FISHING_BAIT3";
+const string ActionTextKeys::ACTION_FISHING_NO_CATCH           = "ACTION_FISHING_NO_CATCH";
+const string ActionTextKeys::ACTION_FISHING_ESCAPE             = "ACTION_FISHING_ESCAPE";
+const string ActionTextKeys::ACTION_FISHING_NIBBLE             = "ACTION_FISHING_NIBBLE";
+const string ActionTextKeys::ACTION_FISHING_CATCH              = "ACTION_FISHING_CATCH";
+
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

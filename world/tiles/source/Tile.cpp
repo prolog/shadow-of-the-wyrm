@@ -376,6 +376,12 @@ TileSuperType Tile::get_tile_super_type() const
   return TileSuperType::TILE_SUPER_TYPE_GROUND;
 }
 
+// Tiles are assumed to have no water on them.
+WaterType Tile::get_water_type() const
+{
+  return WaterType::WATER_TYPE_UNDEFINED;
+}
+
 void Tile::set_tile_subtype(const TileType new_tile_subtype)
 {
   tile_subtype = new_tile_subtype;
