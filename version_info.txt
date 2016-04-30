@@ -78,6 +78,10 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 - Rovers and Seafarers now start with fishing rods.  There is also a
   guaranteed fishing rod in the boathouse in Isen Dun.
 
+- Implemented fishing.  To fish successfully, you will need to have a
+  fishing rod and be standing by water.  It also helps a great deal if
+  you have skill in Fishing.
+
 - Artifacts are now always generated as either uncursed or blessed
   (Sean McKeague).
 

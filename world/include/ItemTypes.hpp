@@ -71,6 +71,15 @@ class ItemIdKeys
     // Fishing stuff
     static const std::string ITEM_ID_FISHING_ROD;
 
+    // Fish species
+    static const std::string ITEM_ID_TROUT;
+    static const std::string ITEM_ID_CARP;
+    static const std::string ITEM_ID_PIKE;
+
+    static const std::string ITEM_ID_SALMON;
+    static const std::string ITEM_ID_TUNA;
+    static const std::string ITEM_ID_COD;
+
   protected:
     ItemIdKeys();
     ~ItemIdKeys();

@@ -6,7 +6,6 @@
 RiverTile::RiverTile()
 {
   items = std::make_shared<NullInventory>();
-  set_additional_property(TileProperties::TILE_PROPERTY_WATER_TYPE, std::to_string(static_cast<int>(WaterType::WATER_TYPE_FRESH)));
 }
 
 TileType RiverTile::get_tile_type() const
@@ -17,6 +16,11 @@ TileType RiverTile::get_tile_type() const
 TileSuperType RiverTile::get_tile_super_type() const
 {
   return TileSuperType::TILE_SUPER_TYPE_WATER;
+}
+
+WaterType RiverTile::get_water_type() const
+{
+  return WaterType::WATER_TYPE_FRESH;
 }
 
 std::string RiverTile::get_tile_description_sid() const

@@ -5,7 +5,6 @@
 ShoalsTile::ShoalsTile()
 {
   items = std::make_shared<NullInventory>();
-  set_additional_property(TileProperties::TILE_PROPERTY_WATER_TYPE, std::to_string(static_cast<int>(WaterType::WATER_TYPE_SALT)));
 }
 
 TileType ShoalsTile::get_tile_type() const
@@ -16,6 +15,11 @@ TileType ShoalsTile::get_tile_type() const
 TileSuperType ShoalsTile::get_tile_super_type() const
 {
   return TileSuperType::TILE_SUPER_TYPE_WATER;
+}
+
+WaterType ShoalsTile::get_water_type() const
+{
+  return WaterType::WATER_TYPE_SALT;
 }
 
 std::string ShoalsTile::get_tile_description_sid() const

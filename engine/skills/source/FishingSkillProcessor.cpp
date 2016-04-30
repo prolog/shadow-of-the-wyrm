@@ -1,8 +1,20 @@
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
+#include "FishingCalculator.hpp"
 #include "FishingSkillProcessor.hpp"
+#include "ItemManager.hpp"
 #include "ItemTypes.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
+
+using namespace std;
+
+FishingSkillProcessor::FishingSkillProcessor()
+: fish_types{{WaterType::WATER_TYPE_FRESH, {ItemIdKeys::ITEM_ID_TROUT, ItemIdKeys::ITEM_ID_CARP, ItemIdKeys::ITEM_ID_PIKE}}, 
+             {WaterType::WATER_TYPE_SALT,  {ItemIdKeys::ITEM_ID_SALMON, ItemIdKeys::ITEM_ID_TUNA, ItemIdKeys::ITEM_ID_COD}}}
+{
+}
 
 ActionCostValue FishingSkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
@@ -16,7 +28,12 @@ ActionCostValue FishingSkillProcessor::process(CreaturePtr creature, MapPtr map)
     if (has_fishing_eq)
     {
       // Are we land-locked?
-      bool adj_water = check_for_adjacent_water_tile(creature, map);
+      pair<bool, WaterType> adj_water = check_for_adjacent_water_tile(creature, map);
+
+      if (adj_water.first)
+      {
+        fish(creature, map, adj_water.second);
+      }
     }
   }
 
@@ -48,12 +65,10 @@ bool FishingSkillProcessor::check_for_fishing_equipment(CreaturePtr creature)
   return has_fishing_eq;
 }
 
-bool FishingSkillProcessor::check_for_adjacent_water_tile(CreaturePtr creature, MapPtr map)
+pair<bool, WaterType> FishingSkillProcessor::check_for_adjacent_water_tile(CreaturePtr creature, MapPtr map)
 {
-  bool adj_water = false;
+  pair<bool, WaterType> adj_water = {false, WaterType::WATER_TYPE_UNDEFINED};
   TileDirectionMap tdm = MapUtils::get_adjacent_tiles_to_creature(map, creature);
-
-  bool adjacent_water = false;
 
   if (creature != nullptr)
   {
@@ -67,13 +82,15 @@ bool FishingSkillProcessor::check_for_adjacent_water_tile(CreaturePtr creature, 
 
         if (tst == TileSuperType::TILE_SUPER_TYPE_WATER)
         {
-          adjacent_water = true;
+          adj_water.first = true;
+          adj_water.second = tile->get_water_type();
+
           break;
         }
       }
     }
 
-    if (!adjacent_water && creature->get_is_player())
+    if (!adj_water.first && creature->get_is_player())
     {
       IMessageManager& manager = MessageManagerFactory::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_NO_WATER));
@@ -82,6 +99,66 @@ bool FishingSkillProcessor::check_for_adjacent_water_tile(CreaturePtr creature, 
   }
 
   return adj_water;
+}
+
+void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const WaterType water)
+{
+  FishingCalculator fc;
+  vector<pair<FishingOutcomeType, int>> outcomes = fc.calculate_fishing_outcomes(creature);
+  
+  for (const auto& outcome_pair : outcomes)
+  {
+    if (RNG::percent_chance(outcome_pair.second))
+    {
+      FishingOutcomeType fot = outcome_pair.first;
+
+      // Add a message about fishing, if appropriate
+      if (creature && creature->get_is_player())
+      {
+        IMessageManager& manager = MessageManagerFactory::instance();
+        manager.add_new_message(ActionTextKeys::get_random_bait_message());
+        manager.add_new_message(ActionTextKeys::get_fishing_outcome_message(fot));
+        manager.send();
+      }
+
+      // If the creature caught something, add it to the tile
+      if (fot == FishingOutcomeType::FISHING_OUTCOME_CATCH)
+      {
+        TilePtr creature_tile = map->at(map->get_location(creature->get_id()));
+
+        if (creature_tile != nullptr)
+        {
+          auto f_it = fish_types.find(water);
+
+          if (f_it != fish_types.end())
+          {
+            vector<string> fishies = f_it->second;
+            
+            if (!fishies.empty())
+            {
+              string fish_type = fishies.at(RNG::range(0, fishies.size()-1));
+              ItemPtr fish = ItemManager::create_item(fish_type);
+
+              // If the creature's on terra firma, add it to the ground
+              if (creature_tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND)
+              {
+                creature_tile->get_items()->add_front(fish);
+              }
+              // If the creature's on water (air?!), try to add it to the 
+              // creature's inventory.
+              else
+              {
+                // ... JCD FIXME ...
+              }
+            }
+          }
+        }
+      }
+
+      // Don't try any other fishing outcomes.
+      break;
+    }
+  }
 }
 
 // Fishing takes a very long time.

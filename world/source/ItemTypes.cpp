@@ -34,6 +34,12 @@ const string ItemIdKeys::ITEM_ID_ROOT             = "_root";
 const string ItemIdKeys::ITEM_ID_BERRIES          = "_berries";
 const string ItemIdKeys::ITEM_ID_KELP             = "_kelp";
 const string ItemIdKeys::ITEM_ID_FISHING_ROD      = "_fishing_rod";
+const string ItemIdKeys::ITEM_ID_TROUT            = "_trout";
+const string ItemIdKeys::ITEM_ID_CARP             = "_carp";
+const string ItemIdKeys::ITEM_ID_PIKE             = "_pike";
+const string ItemIdKeys::ITEM_ID_SALMON           = "_salmon";
+const string ItemIdKeys::ITEM_ID_TUNA             = "_tuna";
+const string ItemIdKeys::ITEM_ID_COD              = "_cod";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()

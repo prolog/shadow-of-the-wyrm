@@ -12,6 +12,7 @@
 #include "MapExit.hpp"
 #include "TileProperties.hpp"
 #include "TileTextKeys.hpp"
+#include "WaterTypes.hpp"
 
 using TileExitMap = std::map<Direction, MapExitPtr>;
 
@@ -103,6 +104,9 @@ class Tile : public ISerializable
 
     virtual void     set_tile_subtype(const TileType new_tile_subtype);
     virtual TileType get_tile_subtype() const;
+
+    // If the tile contains some type of water, what type?
+    virtual WaterType get_water_type() const;
 
     // Used for digging, to see if the wielded item has enough strength
     // to penetrate the tile.
