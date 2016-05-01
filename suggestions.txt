@@ -1,9 +1,4 @@
 Me:
-- Update fishing to try to add to the player's inventory when on a water
-  tile.
-- Update fishing to track a number of fish per each water tile.  Success
-  also checks whether there are fish remaining, and decrements one of the
-  nearby water tiles accordingly.
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
 - Scent maps/track by scent.

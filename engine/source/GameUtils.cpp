@@ -29,7 +29,12 @@ void GameUtils::make_map_permanent(Game& game, CreaturePtr creature, MapPtr curr
 
       if (creature_wm_tile != nullptr)
       {
-        creature_wm_tile->set_custom_map_id(current_map_id);
+        string wm_custom_map_id = creature_wm_tile->get_custom_map_id();
+
+        if (wm_custom_map_id.empty())
+        {
+          creature_wm_tile->set_custom_map_id(current_map_id);
+        }
       }
     }
   }
