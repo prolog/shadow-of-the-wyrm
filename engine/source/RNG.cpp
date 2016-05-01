@@ -34,6 +34,15 @@ uint32_t RNG::get_seed()
   return seed;
 }
 
+// Random float generation
+float RNG::range_f(const float min, const float max)
+{
+  std::mt19937 gen(rng);
+  std::uniform_real_distribution<> dis(min, max);
+
+  return dis(rng);
+}
+
 // D&D-style dice: roll XdY+Z, either by providing a Dice object, or
 // the dice values directly.
 int RNG::dice(const Dice& dice)

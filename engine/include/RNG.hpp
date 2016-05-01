@@ -9,6 +9,7 @@ class Dice;
 class RNG
 {
 	public:
+    static float range_f(float min, float max);
     static int dice(const Dice& dice);
 		static int dice(int num_dice, int num_sides, int additional_modifier = 0);
 		static int range(int min, int max, int additional_modifier = 0);

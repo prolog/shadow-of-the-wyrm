@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
+#include "GameUtils.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemProperties.hpp"
@@ -248,38 +249,12 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
       // was not already so.
       if (!current_map->get_permanent())
       {
-        make_map_permanent(game, creature, current_map);
+        GameUtils::make_map_permanent(game, creature, current_map);
       }
     }
   }
   
   return planted;
-}
-
-void DropAction::make_map_permanent(Game& game, CreaturePtr creature, MapPtr current_map)
-{
-  if (current_map != nullptr)
-  {
-    current_map->set_permanent(true);
-    string current_map_id = current_map->get_map_id();
-    game.get_map_registry_ref().set_map(current_map_id, current_map);
-
-    // Assumption: if a creature (realistically, the player) is in a
-    // previously-random map on the overworld, it is connected to
-    // the player's position on that map.
-    MapPtr world_map = game.get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
-
-    if (world_map != nullptr)
-    {
-      Coordinate location = world_map->get_location(creature->get_id());
-      TilePtr creature_wm_tile = world_map->at(location);
-
-      if (creature_wm_tile != nullptr)
-      {
-        creature_wm_tile->set_custom_map_id(current_map_id);
-      }
-    }
-  }
 }
 
 // Dropping always has a base action cost of 1.
