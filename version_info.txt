@@ -80,7 +80,8 @@ Shadow of the Wyrm v0.5.1 "Beauvais"
 
 - Implemented fishing.  To fish successfully, you will need to have a
   fishing rod and be standing by water.  It also helps a great deal if
-  you have skill in Fishing.
+  you have skill in Fishing.  Fishing on a map makes it permanent, if it
+  was not before.
 
 - Artifacts are now always generated as either uncursed or blessed
   (Sean McKeague).

@@ -2,6 +2,8 @@
 #include "Conversion.hpp"
 #include "FishingCalculator.hpp"
 #include "FishingSkillProcessor.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
 #include "MapUtils.hpp"
@@ -104,6 +106,7 @@ pair<bool, WaterType> FishingSkillProcessor::check_for_adjacent_water_tile(Creat
 void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const WaterType water)
 {
   FishingCalculator fc;
+  Game& game = Game::instance();
   vector<pair<FishingOutcomeType, int>> outcomes = fc.calculate_fishing_outcomes(creature);
   
   for (const auto& outcome_pair : outcomes)
@@ -138,6 +141,21 @@ void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const WaterTy
             {
               string fish_type = fishies.at(RNG::range(0, fishies.size()-1));
               ItemPtr fish = ItemManager::create_item(fish_type);
+              ConsumablePtr food = dynamic_pointer_cast<Consumable>(fish);
+
+              // There's some variation in size between every fish.
+              if (food != nullptr)
+              {
+                float size_variation = RNG::range_f(0.5, 1.5);
+                Weight new_weight = food->get_weight();
+                new_weight.set_weight(static_cast<uint>(new_weight.get_weight() * size_variation));
+
+                food->set_nutrition(static_cast<int>(food->get_nutrition() * size_variation));
+                food->set_weight(new_weight);
+              }
+
+              // A fish has been caught - the map should now become permanent.
+              GameUtils::make_map_permanent(game, creature, map);
 
               // If the creature's on terra firma, add it to the ground
               if (creature_tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND)

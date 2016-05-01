@@ -9,6 +9,32 @@ GameUtils::GameUtils()
 {
 }
 
+void GameUtils::make_map_permanent(Game& game, CreaturePtr creature, MapPtr current_map)
+{
+  if (current_map != nullptr)
+  {
+    current_map->set_permanent(true);
+    string current_map_id = current_map->get_map_id();
+    game.get_map_registry_ref().set_map(current_map_id, current_map);
+
+    // Assumption: if a creature (realistically, the player) is in a
+    // previously-random map on the overworld, it is connected to
+    // the player's position on that map.
+    MapPtr world_map = game.get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
+
+    if (world_map != nullptr)
+    {
+      Coordinate location = world_map->get_location(creature->get_id());
+      TilePtr creature_wm_tile = world_map->at(location);
+
+      if (creature_wm_tile != nullptr)
+      {
+        creature_wm_tile->set_custom_map_id(current_map_id);
+      }
+    }
+  }
+}
+
 // Add a new creature to the specified map.  If the specified map is the
 // currently loaded map, ensure that the creature is also added
 // appropriately to the Game's ActionCoordinator.

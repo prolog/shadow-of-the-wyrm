@@ -1,9 +1,6 @@
 Me:
 - Update fishing to try to add to the player's inventory when on a water
   tile.
-- Fishing on a random map should add the permanence flag.
-- Update fishing to vary the weight/nutritional value of the fish by
-  a random multiplier.
 - Update fishing to track a number of fish per each water tile.  Success
   also checks whether there are fish remaining, and decrements one of the
   nearby water tiles accordingly.
