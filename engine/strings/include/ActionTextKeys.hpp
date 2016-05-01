@@ -128,6 +128,7 @@ class ActionTextKeys
     static const std::string ACTION_FISHING_ESCAPE;
     static const std::string ACTION_FISHING_NIBBLE;
     static const std::string ACTION_FISHING_CATCH;
+    static const std::string ACTION_FISHING_THROW_BACK;
 
   protected:
     ActionTextKeys();

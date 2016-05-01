@@ -1,5 +1,6 @@
 #include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
+#include "CreatureUtils.hpp"
 #include "FishingCalculator.hpp"
 #include "FishingSkillProcessor.hpp"
 #include "Game.hpp"
@@ -157,16 +158,24 @@ void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const WaterTy
               // A fish has been caught - the map should now become permanent.
               GameUtils::make_map_permanent(game, creature, map);
 
-              // If the creature's on terra firma, add it to the ground
-              if (creature_tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND)
+              // Add the fish to the inventory, if possible.
+              if (CreatureUtils::can_pick_up(creature, fish))
               {
-                creature_tile->get_items()->add_front(fish);
+                IInventoryPtr inv = creature->get_inventory();
+                if (!inv->merge(fish))
+                {
+                  // Add to the end of the inventory
+                  inv->add(fish);
+                }
               }
-              // If the creature's on water (air?!), try to add it to the 
-              // creature's inventory.
               else
               {
-                // ... JCD FIXME ...
+                if (creature && creature->get_is_player())
+                {
+                  IMessageManager& manager = MessageManagerFactory::instance();
+                  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_THROW_BACK));
+                  manager.send();
+                }
               }
             }
           }
