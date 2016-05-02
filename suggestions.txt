@@ -46,7 +46,7 @@ Avagart:
 - Eventually, have automovement stop only on new items.
 
 AgingMinotaur:
-* The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
+- The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
 
 Kraphead:
 - auto-displace when bumping friendly creatures
