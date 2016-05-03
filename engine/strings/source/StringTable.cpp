@@ -1,7 +1,8 @@
-#include "StringTable.hpp"
 #include <boost/tokenizer.hpp>
 #include <iostream>
 #include <fstream>
+#include "RNG.hpp"
+#include "StringTable.hpp"
 #include "Conversion.hpp"
 
 using namespace std;
@@ -59,7 +60,13 @@ string StringTable::get(const string& key)
 
   if (is_external_file(result))
   {
-    result = File::to_resource_string(parse_file_name(result));
+    vector<string> files = String::create_string_vector_from_csv_string(parse_file_name(result));
+
+    if (!files.empty())
+    {
+      string rand_file = files.at(RNG::range(0, files.size()-1));
+      result = File::to_resource_string(rand_file);
+    }
   }
 
   return result;
