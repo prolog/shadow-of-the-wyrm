@@ -10,6 +10,12 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
+- Bug fixes:
+
+  - The Magic skill didn't have its resource string properly defined,
+    resulting in empty text when that skill was selected from the Skills
+    screen (Redfeek).
+
 Shadow of the Wyrm v0.5.1 "Beauvais"
 - Version declared April 3, 2016.  Version finalized May 1, 2016.
 
