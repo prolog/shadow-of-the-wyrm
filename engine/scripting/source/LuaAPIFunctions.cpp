@@ -10,6 +10,7 @@
 #include "FeatureFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "GeneratorUtils.hpp"
 #include "HostilityManager.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
@@ -212,6 +213,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_colour", get_creature_colour);
   lua_register(L, "set_creature_colour", set_creature_colour);
   lua_register(L, "set_creature_evade", set_creature_evade);
+  lua_register(L, "set_trap", set_trap);
 }
 
 // Lua API helper functions
@@ -2861,6 +2863,37 @@ int set_creature_evade(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to set_creature_evade");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int set_trap(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    int row = lua_tointeger(ls, 1);
+    int col = lua_tointeger(ls, 2);
+
+    string trap_id;
+
+    if (num_args == 3 && lua_isstring(ls, 3))
+    {
+      trap_id = lua_tostring(ls, 3);
+    }
+
+    // Create a trap with the given ID.
+    GeneratorUtils::generate_trap(map, row, col, game.get_trap_info_ref(), trap_id);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_trap");
     lua_error(ls);
   }
 

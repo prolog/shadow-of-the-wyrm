@@ -199,6 +199,43 @@ int GeneratorUtils::generate_traps(const MapPtr map, const int num_traps)
 
   return num_gen;
 }
+
+// Generate a trap with a given ID and place it at the given coordinates.
+void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int col, const vector<TrapPtr>& traps, const string& trap_id)
+{
+  if (!traps.empty())
+  {
+    TrapPtr selected_trap;
+
+    for (TrapPtr trap : traps)
+    {
+      if (trap && trap->get_id() == trap_id)
+      {
+        selected_trap = trap;
+        break;
+      }
+    }
+
+    if (selected_trap != nullptr)
+    {
+      // Make a copy of the one provided.
+      TrapPtr new_trap = TrapPtr(selected_trap->clone_and_randomize_uses());
+
+      // Set the new copy on to the tile.
+      TilePtr tile = map->at(row, col);
+
+      if (tile != nullptr)
+      {
+        tile->set_feature(new_trap);
+
+        ostringstream ss;
+        ss << "GeneratorUtils::generate_trap - trap generated at (" << row << "," << col << ").";
+        Log::instance().debug(ss.str());
+      }
+    }
+  }
+}
+
 // Generate a random trap from the list and place it at the given coordinates.
 void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int col, const vector<TrapPtr>& traps)
 {

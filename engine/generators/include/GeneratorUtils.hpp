@@ -28,6 +28,9 @@ class GeneratorUtils
     // Return value is number of traps generated.
     static int generate_traps(const MapPtr map, const int num_traps);
 
+    // Generates a particular trap at the given coordinate.
+    static void generate_trap(const MapPtr map, const int row, const int col, const std::vector<TrapPtr>& traps, const std::string& trap_id);
+
     // Generates a random trap from the game at the given coordinates.
     static void generate_trap(const MapPtr map, const int row, const int col, const std::vector<TrapPtr>& traps);
 
