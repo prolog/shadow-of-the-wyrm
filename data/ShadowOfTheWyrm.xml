@@ -22408,7 +22408,22 @@
 				<Modifier>1</Modifier>
 				<Type>1</Type>
 			</Damage>
-			<Uses>6</Uses>
+			<Uses>10</Uses>
+		</Trap>
+		<Trap id="crossbow_trap">
+			<DescriptionSID>TRAP_CROSSBOW_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_CROSSBOW_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>/</TriggerSymbol>
+			<PlayerDamageMessageSID>TRAP_CROSSBOW_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>8</Colour>
+			<Item>bolt</Item>
+			<Damage>
+				<NumDice>2</NumDice>
+				<NumSides>6</NumSides>
+				<Modifier>1</Modifier>
+				<Type>1</Type>
+			</Damage>
+			<Uses>10</Uses>
 		</Trap>
 		<Trap id="rock_trap">
 			<DescriptionSID>TRAP_ROCK_SID</DescriptionSID>
@@ -22471,6 +22486,40 @@
 				</StatusAilments>
 			</Damage>
 			<Uses>12</Uses>
+		</Trap>
+		<Trap id="blackwater_trap">
+			<DescriptionSID>TRAP_BLACKWATER_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_BLACKWATER_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>*</TriggerSymbol>
+			<PlayerDamageMessageSID>TRAP_BLACKWATER_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>4</Colour>
+			<Damage piercing="1">
+				<NumDice>2</NumDice>
+				<NumSides>6</NumSides>
+				<Type>8</Type>
+				<EffectBonus>50</EffectBonus>
+				<StatusAilments>
+					<Status>_stone</Status>
+				</StatusAilments>
+			</Damage>
+			<Uses>1</Uses>
+		</Trap>
+		<Trap id="electrical_field_trap">
+			<DescriptionSID>TRAP_ELECTRICAL_FIELD_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_ELECTRICAL_FIELD_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>#</TriggerSymbol>
+			<PlayerDamageMessageSID>TRAP_ELECTRICAL_FIELD_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>11</Colour>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>10</Type>
+				<EffectBonus>40</EffectBonus>
+				<StatusAilments>
+					<Status>_para</Status>
+				</StatusAilments>
+			</Damage>
+			<Uses>3</Uses>
 		</Trap>
 	</Traps>
 	<Items>

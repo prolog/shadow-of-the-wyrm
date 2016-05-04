@@ -104,6 +104,7 @@ int set_winner(lua_State* ls);
 int get_creature_colour(lua_State* ls);
 int set_creature_colour(lua_State* ls);
 int set_creature_evade(lua_State* ls);
+int set_trap(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);
