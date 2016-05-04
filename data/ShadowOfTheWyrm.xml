@@ -9,7 +9,7 @@
 			<DeathMessageSID>DEITY_1_DEATH</DeathMessageSID>
 			<Alignment>2</Alignment>
 			<DeityInitialModifiers>
-				<IntelligenceModifier>1</IntelligenceModifier>
+				<IntelligenceModifier>2</IntelligenceModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>AttackFriendlyCreature</Action>
@@ -48,7 +48,7 @@
 			<DeathMessageSID>DEITY_2_DEATH</DeathMessageSID>
 			<Alignment>2</Alignment>
 			<DeityInitialModifiers>
-				<StrengthModifier>1</StrengthModifier>
+				<StrengthModifier>2</StrengthModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>AttackFriendlyCreature</Action>
@@ -86,7 +86,7 @@
 			<DeathMessageSID>DEITY_3_DEATH</DeathMessageSID>
 			<Alignment>2</Alignment>
 			<DeityInitialModifiers>
-				<CharismaModifier>1</CharismaModifier>
+				<CharismaModifier>2</CharismaModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>AttackFriendlyCreature</Action>
@@ -123,7 +123,7 @@
 			<DeathMessageSID>DEITY_4_DEATH</DeathMessageSID>
 			<Alignment>1</Alignment>
 			<DeityInitialModifiers>
-				<HealthModifier>1</HealthModifier>
+				<HealthModifier>2</HealthModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>AttackFriendlyCreature</Action>
@@ -161,7 +161,7 @@
 			<DeathMessageSID>DEITY_5_DEATH</DeathMessageSID>
 			<Alignment>1</Alignment>
 			<DeityInitialModifiers>
-				<StrengthModifier>1</StrengthModifier>
+				<StrengthModifier>2</StrengthModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>DesecrateNeutral</Action>
@@ -198,7 +198,7 @@
 			<DeathMessageSID>DEITY_6_DEATH</DeathMessageSID>
 			<Alignment>1</Alignment>
 			<DeityInitialModifiers>
-				<AgilityModifier>1</AgilityModifier>
+				<AgilityModifier>2</AgilityModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>Cannibalism</Action>
@@ -237,7 +237,7 @@
 			<DeathMessageSID>DEITY_7_DEATH</DeathMessageSID>
 			<Alignment>0</Alignment>
 			<DeityInitialModifiers>
-				<WillpowerModifier>1</WillpowerModifier>
+				<WillpowerModifier>2</WillpowerModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
@@ -276,7 +276,7 @@
 			<DeathMessageSID>DEITY_8_DEATH</DeathMessageSID>
 			<Alignment>0</Alignment>
 			<DeityInitialModifiers>
-				<StrengthModifier>1</StrengthModifier>
+				<StrengthModifier>2</StrengthModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
@@ -311,7 +311,7 @@
 			<DeathMessageSID>DEITY_9_DEATH</DeathMessageSID>
 			<Alignment>0</Alignment>
 			<DeityInitialModifiers>
-				<IntelligenceModifier>1</IntelligenceModifier>
+				<IntelligenceModifier>2</IntelligenceModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>DesecrateEvil</Action>

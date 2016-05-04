@@ -5,6 +5,9 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   won't be used in many places, but is currently being used for allowing
   a number of different title poems.
 
+- Deities now grant +2 to a statistic at the start of the game, instead
+  of +1.
+
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
 Shadow of the Wyrm v0.5.1 "Beauvais"
