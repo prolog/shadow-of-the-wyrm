@@ -8,6 +8,9 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - Deities now grant +2 to a statistic at the start of the game, instead
   of +1.
 
+- The locked room in Kew's house now always contains an unstoning
+  potion.
+
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
 - Bug fixes:
