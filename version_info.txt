@@ -11,6 +11,8 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - The locked room in Kew's house now always contains an unstoning
   potion.
 
+- New creatures: goblin trapper.
+
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
 - Bug fixes:
