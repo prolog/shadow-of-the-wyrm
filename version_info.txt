@@ -15,6 +15,9 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 
 - Bug fixes:
 
+  - Randomizable items (potions, etc) placed on custom maps weren't
+    being randomized properly.
+
   - The Magic skill didn't have its resource string properly defined,
     resulting in empty text when that skill was selected from the Skills
     screen (Redfeek).
