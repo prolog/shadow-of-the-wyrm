@@ -152,6 +152,13 @@ void ShadowOfTheWyrmEngine::setup_game()
   game.set_items(items.first);
   game.set_item_generation_values(items.second);
 
+  // Randomize the items after reading them!  Otherwise, if any potions, etc.,
+  // are generated e.g. during custom map initialization, they will always have
+  // the same descriptions.
+  vector<ItemType> item_types{ ItemType::ITEM_TYPE_SCROLL, ItemType::ITEM_TYPE_WAND, ItemType::ITEM_TYPE_STAFF, ItemType::ITEM_TYPE_SPELLBOOK, ItemType::ITEM_TYPE_RING, ItemType::ITEM_TYPE_POTION, ItemType::ITEM_TYPE_AMULET };
+  ItemDescriptionRandomizer item_randomizer(item_types);
+  item_randomizer.randomize(game.items);
+
   map<string, string> scripts = reader.get_scripts();
   game.set_scripts(scripts);
 
@@ -456,10 +463,6 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
     ItemPtr item = eq_pair.second;
     if (item && item->get_status() == ItemStatus::ITEM_STATUS_CURSED) item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
   }
-
-  vector<ItemType> item_types{ ItemType::ITEM_TYPE_SCROLL, ItemType::ITEM_TYPE_WAND, ItemType::ITEM_TYPE_STAFF, ItemType::ITEM_TYPE_SPELLBOOK, ItemType::ITEM_TYPE_RING, ItemType::ITEM_TYPE_POTION, ItemType::ITEM_TYPE_AMULET };
-  ItemDescriptionRandomizer item_randomizer(item_types);
-  item_randomizer.randomize(game.items);
 
   game.create_new_world(player);
 
