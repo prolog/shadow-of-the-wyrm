@@ -28,6 +28,7 @@
 #include "Quests.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "SkillManager.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
@@ -147,6 +148,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_item_generated", get_num_item_generated);
   lua_register(L, "set_skill_value", set_skill_value);
   lua_register(L, "get_skill_value", get_skill_value);
+  lua_register(L, "check_skill", check_skill);
   lua_register(L, "RNG_range", RNG_range);
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
   lua_register(L, "add_spell_castings", add_spell_castings);
@@ -982,6 +984,39 @@ int get_skill_value(lua_State* ls)
   }
 
   lua_pushnumber(ls, skill_value);
+  return 1;
+}
+
+// Check a particular skill for a particular creature.
+// - First argument is the creature ID
+// - Second argument is the SkillType value
+int check_skill(lua_State* ls)
+{
+  bool check_value = false;
+  int num_args = lua_gettop(ls);
+
+  if ((num_args == 2) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int skill_id = lua_tointeger(ls, 2);
+    SkillType skill_name = static_cast<SkillType>(skill_id);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature)
+    {
+      SkillManager sm;
+
+      check_value = sm.check_skill(creature, skill_name);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to check_skill");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, check_value);
   return 1;
 }
 
@@ -2902,13 +2937,15 @@ int set_trap(lua_State* ls)
   return 0;
 }
 
+// Returns a variable number of arguments (the number of nearby creatures
+// the creature is hostile to), with each returned value being a hostile 
+// creature's id.
 int get_nearby_hostile_creatures(lua_State* ls)
 {
-  string creature_csv;
+  int num_hostiles = 0;
 
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
-    vector<string> creature_id_v;
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
     MapPtr view_map = creature->get_decision_strategy()->get_fov_map();
@@ -2922,12 +2959,11 @@ int get_nearby_hostile_creatures(lua_State* ls)
       {
         if (creature->hostile_to(creature_pair.first))
         {
-          creature_id_v.push_back(creature_pair.first);
+          num_hostiles++;
+          lua_pushstring(ls, creature_pair.first.c_str());
         }
       }
     }
-
-    creature_csv = String::create_csv_from_string_vector(creature_id_v);
   }
   else
   {
@@ -2935,8 +2971,7 @@ int get_nearby_hostile_creatures(lua_State* ls)
     lua_error(ls);
   }
 
-  lua_pushstring(ls, creature_csv.c_str());
-  return 1;
+  return num_hostiles;
 }
 
 int stop_playing_game(lua_State* ls)
