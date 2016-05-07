@@ -10041,6 +10041,12 @@
 				<NumSides>5</NumSides>
 				<Type>0</Type>
 			</Damage>
+			<EventScripts>
+				<DecisionScript>
+					<Script>decision/goblin_trapper.lua</Script>
+					<Chance>60</Chance>
+				</DecisionScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="chaosling">
 			<RaceID>_demon</RaceID>

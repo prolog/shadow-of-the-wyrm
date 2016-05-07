@@ -1,5 +1,6 @@
 #include "LuaAPIFunctions.hpp"
 #include "ClassManager.hpp"
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureDescriber.hpp"
 #include "CreatureFactory.hpp"
@@ -214,6 +215,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_colour", set_creature_colour);
   lua_register(L, "set_creature_evade", set_creature_evade);
   lua_register(L, "set_trap", set_trap);
+  lua_register(L, "get_nearby_hostile_creatures", get_nearby_hostile_creatures);
 }
 
 // Lua API helper functions
@@ -2898,6 +2900,43 @@ int set_trap(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_nearby_hostile_creatures(lua_State* ls)
+{
+  string creature_csv;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    vector<string> creature_id_v;
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+    MapPtr view_map = creature->get_decision_strategy()->get_fov_map();
+    const CreatureMap& creatures = view_map->get_creatures();
+
+    for (const auto creature_pair : creatures)
+    {
+      CreaturePtr view_creature = creature_pair.second;
+
+      if (view_creature != nullptr)
+      {
+        if (creature->hostile_to(creature_pair.first))
+        {
+          creature_id_v.push_back(creature_pair.first);
+        }
+      }
+    }
+
+    creature_csv = String::create_csv_from_string_vector(creature_id_v);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_nearby_hostile_creatures");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, creature_csv.c_str());
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)
