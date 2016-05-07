@@ -1,4 +1,6 @@
 Me:
+- Goblin trappers: set max/remaining traps, message after setting a
+  triggered trap.
 - Special rooms: beer hall, magical workshop.
 - Add larger widths to beam spells.  Create a few spells to demonstrate.
 - You should be able to ride the bucket down to the bottom of wells.
@@ -6,7 +8,6 @@ Me:
 - Scent maps/track by scent.
 - Message manager is not updating properly when toggling between creatures
   using +/- when looking.
-- Goblin trappers
 - Stores
 - More monsters with special attacks or death events.
 - Code should handle being started from outside the game's directory.
