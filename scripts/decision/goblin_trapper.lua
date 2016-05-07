@@ -1,9 +1,21 @@
 require('decide')
 
 local function set_goblin_trap(creature_id)
-  -- JCD FIXME: Actual functionality goes here.
-  local creature_id_csv = get_nearby_hostile_creatures(creature_id)
+  local creature_ids = {get_nearby_hostile_creatures(creature_id)}
+  local trap_hidden = true
 
+  -- For each nearby creature, see if it passes a Detection check.
+  -- If any creatures pass their detection check, the trap should be
+  -- generated as "seen"; otherwise, it will be hidden.
+  for k,v in pairs(creature_ids) do
+    if check_skill(v, 12) == true then
+      trap_hidden = false
+      break
+    end
+  end
+
+  -- Now we've determined whether the trap is properly hidden or not.
+  -- Set the trap appropriately on the trapper's square.
   -- ...
 
   local action_cost = 10
