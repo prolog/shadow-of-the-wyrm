@@ -2910,23 +2910,25 @@ int set_trap(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
 
-  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  if (num_args >= 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isboolean(ls, 3))
   {
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
 
     int row = lua_tointeger(ls, 1);
     int col = lua_tointeger(ls, 2);
+    bool trap_triggered = lua_toboolean(ls, 3) != 0;
 
     string trap_id;
 
-    if (num_args == 3 && lua_isstring(ls, 3))
+    if (num_args == 4 && lua_isstring(ls, 4))
     {
-      trap_id = lua_tostring(ls, 3);
+      trap_id = lua_tostring(ls, 4);
     }
 
     // Create a trap with the given ID.
-    GeneratorUtils::generate_trap(map, row, col, game.get_trap_info_ref(), trap_id);
+    GeneratorUtils::generate_trap(map, row, col, game.get_trap_info_ref(), trap_id, trap_triggered);
+    TrapPtr trap;
   }
   else
   {
