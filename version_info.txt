@@ -11,6 +11,14 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - The locked room in Kew's house now always contains an unstoning
   potion.
 
+- Goblin trappers can now, as part of their AI, set a trap.  Whether or
+  not the trap is seen is dependent on the Detection checks of the
+  creatures the trapper can see that the trapper is hostile towards.
+
+- When skills are checked for improvement, if the number of marks is less
+  than the amount required for a skill increase, the skill still has a
+  chance to improve, based on the number of marks accumulated.
+
 - New creatures: goblin trapper.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
