@@ -1,6 +1,6 @@
 Me:
-- Goblin trappers: set max/remaining traps, message after setting a
-  triggered trap.
+- Goblin trappers: message after setting a triggered trap.  Confirm that
+  the triggered trap code actually works!
 - Special rooms: beer hall, magical workshop.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
@@ -32,6 +32,8 @@ Me:
 - Crash bug is still present: find out what's causing it!
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
+- Capacities on barrels, so that they don't contain an infinite amount
+  of booze.
 
 Sean McKeague:
 - Ability to pick up partial stacks.
