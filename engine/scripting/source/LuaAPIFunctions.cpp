@@ -218,6 +218,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_evade", set_creature_evade);
   lua_register(L, "set_trap", set_trap);
   lua_register(L, "get_nearby_hostile_creatures", get_nearby_hostile_creatures);
+  lua_register(L, "set_creature_additional_property", set_creature_additional_property);
+  lua_register(L, "get_creature_additional_property", get_creature_additional_property);
 }
 
 // Lua API helper functions
@@ -2973,6 +2975,56 @@ int get_nearby_hostile_creatures(lua_State* ls)
   }
 
   return num_hostiles;
+}
+
+int set_creature_additional_property(lua_State* ls)
+{
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string prop_name = lua_tostring(ls, 2);
+    string prop_value = lua_tostring(ls, 3);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->set_additional_property(prop_name, prop_value);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_additional_property");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int get_creature_additional_property(lua_State* ls)
+{
+  string creature_prop;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string prop_name = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature_prop = creature->get_additional_property(prop_name);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_additional_property");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, creature_prop.c_str());
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)

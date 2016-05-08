@@ -10047,6 +10047,12 @@
 					<Chance>60</Chance>
 				</DecisionScript>
 			</EventScripts>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_NUM_TRAPS</Name>
+					<Value>3</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="chaosling">
 			<RaceID>_demon</RaceID>
