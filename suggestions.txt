@@ -1,6 +1,7 @@
 Me:
-- Goblin trappers: message after setting a triggered trap.  Confirm that
-  the triggered trap code actually works!
+- Goblin trappers: message after setting a triggered trap.
+- Goblin trappers: don't set traps when there are no hostile creatures in
+  FOV.
 - Special rooms: beer hall, magical workshop.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.

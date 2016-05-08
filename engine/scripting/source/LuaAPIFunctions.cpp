@@ -1018,7 +1018,7 @@ int check_skill(lua_State* ls)
     lua_error(ls);
   }
 
-  lua_pushnumber(ls, check_value);
+  lua_pushboolean(ls, check_value);
   return 1;
 }
 
