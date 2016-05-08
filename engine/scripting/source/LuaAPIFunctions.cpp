@@ -2928,7 +2928,6 @@ int set_trap(lua_State* ls)
 
     // Create a trap with the given ID.
     GeneratorUtils::generate_trap(map, row, col, game.get_trap_info_ref(), trap_id, trap_triggered);
-    TrapPtr trap;
   }
   else
   {
