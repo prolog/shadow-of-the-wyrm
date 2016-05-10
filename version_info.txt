@@ -14,6 +14,7 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - Goblin trappers can now, as part of their AI, set a trap.  Whether or
   not the trap is seen is dependent on the Detection checks of the
   creatures the trapper can see that the trapper is hostile towards.
+  Trappers don't set traps when there are no hostile creatures present.
 
 - When skills are checked for improvement, if the number of marks is less
   than the amount required for a skill increase, the skill still has a
