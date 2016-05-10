@@ -3,6 +3,7 @@ Me:
 - Goblin trappers: don't set traps when there are no hostile creatures in
   FOV.
 - Special rooms: beer hall, magical workshop.
+- Update creature pathfinding to penalize routes with traps.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
 - Add larger widths to beam spells.  Create a few spells to demonstrate.

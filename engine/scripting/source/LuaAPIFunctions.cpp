@@ -220,6 +220,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_nearby_hostile_creatures", get_nearby_hostile_creatures);
   lua_register(L, "set_creature_additional_property", set_creature_additional_property);
   lua_register(L, "get_creature_additional_property", get_creature_additional_property);
+  lua_register(L, "is_creature_in_view_map", is_creature_in_view_map);
 }
 
 // Lua API helper functions
@@ -3024,6 +3025,41 @@ int get_creature_additional_property(lua_State* ls)
   }
 
   lua_pushstring(ls, creature_prop.c_str());
+  return 1;
+}
+
+int is_creature_in_view_map(lua_State* ls)
+{
+  bool creature_in_map = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string map_creature_id = lua_tostring(ls, 1);
+    string creature_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      map<string, CreaturePtr> creatures = creature->get_decision_strategy()->get_fov_map()->get_creatures();
+
+      for (const auto c_pair : creatures)
+      {
+        if (c_pair.first == map_creature_id)
+        {
+          creature_in_map = true;
+          break;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_creature_in_view_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, creature_in_map);
   return 1;
 }
 
