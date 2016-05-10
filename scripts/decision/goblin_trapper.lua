@@ -52,6 +52,13 @@ local function set_goblin_trap(creature_id)
   local trap_id = goblin_traps[RNG_range(1, table.getn(goblin_traps))]
 
   set_trap(y, x, trap_triggered, trap_id)
+
+  if trap_triggered == true then
+    if is_creature_in_view_map("player", creature_id) then
+      add_message("ACTION_SET_TRAP", {get_creature_description("player", creature_id)})
+    end
+  end
+
   decrement_goblin_traps(creature_id)
 
   local action_cost = 10
