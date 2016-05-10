@@ -34,6 +34,12 @@ local function set_goblin_trap(creature_id)
   end
 
   local creature_ids = {get_nearby_hostile_creatures(creature_id)}
+
+  -- If there aren't any nearby hostile creatures, don't set any traps.
+  if next(creature_ids) == nil then
+    return 0
+  end
+
   local trap_triggered = false
 
   -- For each nearby creature, see if it passes a Detection check.
