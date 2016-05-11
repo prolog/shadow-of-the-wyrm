@@ -7,11 +7,11 @@ SpellShapeFactory::SpellShapeFactory()
 
 // Create a spell shape with the appropriate properties, based on the
 // spell shape type.
-SpellShape SpellShapeFactory::create_spell_shape(const SpellShapeType st, const uint width)
+SpellShape SpellShapeFactory::create_spell_shape(const SpellShapeType st, const uint radius)
 {
-  SpellShape directional_shape(st, DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL, width);
-  SpellShape cone_shape(st, DirectionCategory::DIRECTION_CATEGORY_CARDINAL, width);
-  SpellShape selfcentered_shape(st, DirectionCategory::DIRECTION_CATEGORY_NONE, width);
+  SpellShape directional_shape(st, DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL, radius);
+  SpellShape cone_shape(st, DirectionCategory::DIRECTION_CATEGORY_CARDINAL, radius);
+  SpellShape selfcentered_shape(st, DirectionCategory::DIRECTION_CATEGORY_NONE, radius);
 
   switch(st)
   {

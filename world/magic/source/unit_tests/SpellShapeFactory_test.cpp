@@ -8,7 +8,7 @@ TEST(SW_World_Magic_SpellShapeFactory, shapes_return_correct_shape_type)
     SpellShape ss = SpellShapeFactory::create_spell_shape(st, 3);
 
     EXPECT_EQ(st, ss.get_spell_shape_type());
-    EXPECT_EQ(3, ss.get_width());
+    EXPECT_EQ(3, ss.get_radius());
   }
 }
 

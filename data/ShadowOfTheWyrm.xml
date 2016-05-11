@@ -21214,7 +21214,7 @@
 			<Speed>1</Speed>
 			<Range>3</Range>
 			<Shape>1</Shape>
-			<Width>2</Width>
+			<Radius>2</Radius>
 			<Damage>
 				<NumDice>4</NumDice>
 				<NumSides>5</NumSides>

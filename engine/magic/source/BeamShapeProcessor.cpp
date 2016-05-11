@@ -43,11 +43,15 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   Animation animation;
 
   uint range = spell.get_range();
-  uint width = spell.get_shape().get_width();
+  uint radius = spell.get_shape().get_radius();
   Coordinate current_coord = caster_coord;
   TileMagicChecker tmc;
   
   vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
+  vector<Coordinate> coords = CoordUtils::get_beam_coordinates(current_coord, d, radius);
+
+  // JCD TODO: For each coord in coords, create the beam, then combine them to
+  // make a reasonable animation...
 
   // For regular beams, the current direction will always be the passed-in
   // direction (the beam will "fizzle out" if it hits a blocking tile).  For
