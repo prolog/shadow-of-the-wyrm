@@ -43,6 +43,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   Animation animation;
 
   uint range = spell.get_range();
+  uint width = spell.get_shape().get_width();
   Coordinate current_coord = caster_coord;
   TileMagicChecker tmc;
   
@@ -56,7 +57,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
 
   BeamSpellTranslator bst;
   DisplayTile dt = bst.create_display_tile(spell.get_range(), current_direction, spell.get_colour());
-
+  
   uint count = 0;
   while (count < range)
   {

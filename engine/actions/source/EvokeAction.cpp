@@ -9,6 +9,7 @@
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MessageManagerFactory.hpp"
+#include "SpellConstants.hpp"
 #include "SpellcastingProcessor.hpp"
 #include "SpellShapeFactory.hpp"
 #include "SpellShapeProcessorFactory.hpp"
@@ -173,7 +174,7 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature,
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
-  SpellShape spell_shape = SpellShapeFactory::create_spell_shape(shape_type);
+  SpellShape spell_shape = SpellShapeFactory::create_spell_shape(shape_type, SpellConstants::DEFAULT_BEAM_WIDTH);
 
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())
@@ -227,7 +228,7 @@ Spell EvokeAction::create_wand_spell(WandPtr wand, const Direction dir) const
   }
 
   wand_spell.set_allows_bonus(false);
-  wand_spell.set_shape(SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type()));
+  wand_spell.set_shape(SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type(), SpellConstants::DEFAULT_BEAM_WIDTH));
   wand_spell.set_colour(wand->get_spell_colour());
 
   return wand_spell;
