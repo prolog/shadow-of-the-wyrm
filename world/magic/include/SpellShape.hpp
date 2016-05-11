@@ -9,16 +9,16 @@ class SpellShape
 {
   public:
     SpellShape();
-    SpellShape(const SpellShapeType st, const DirectionCategory dir_cat, const uint new_width);
+    SpellShape(const SpellShapeType st, const DirectionCategory dir_cat, const uint new_radius);
     bool operator==(const SpellShape& ss) const;
 
     SpellShapeType get_spell_shape_type() const;
     DirectionCategory get_direction_category() const;
-    uint get_width() const;
+    uint get_radius() const;
 
   protected:
     SpellShapeType spell_shape_type;
     DirectionCategory direction_category;
-    uint width;
+    uint radius;
 };
 

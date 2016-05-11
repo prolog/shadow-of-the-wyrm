@@ -253,6 +253,12 @@ vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_l
   return perimeter_coordinates;
 }
 
+vector<Coordinate> CoordUtils::get_beam_coordinates(const Coordinate& centre_coord, const Direction d, const uint radius)
+{
+  vector<Coordinate> beam = {centre_coord};
+  return beam;
+}
+
 map<CardinalDirection, Coordinate> CoordUtils::get_midway_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
 {
   int height = bottom_right.first - top_left.first;

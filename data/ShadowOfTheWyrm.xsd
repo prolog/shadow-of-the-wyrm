@@ -72,8 +72,8 @@
 			<xs:element name="Speed" type="xs:integer"/>
 			<xs:element name="Range" type="xs:unsignedInt"/>
 			<xs:element name="Shape" type="tns:SpellShape"/>
-			<!-- Width is only applicable when the Shape is a non-reflective beam. -->
-			<xs:element name="Width" type="xs:unsignedInt" minOccurs="0"/>
+			<!-- Radius is only applicable when the Shape is a non-reflective beam. -->
+			<xs:element name="Radius" type="xs:unsignedInt" minOccurs="0"/>
 			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 			<xs:element name="Effect" type="tns:EffectType"/>
 			<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
