@@ -24,6 +24,8 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
+- New spells: blast (Cantrips).
+
 - Bug fixes:
 
   - Randomizable items (potions, etc) placed on custom maps weren't

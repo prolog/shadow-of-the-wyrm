@@ -21203,6 +21203,25 @@
 			<Shape>0</Shape>
 			<Effect>20</Effect>
 		</Spell>
+		<Spell id="c_11_blast">
+			<NameSID>BLAST_NAME_SID</NameSID>
+			<PlayerCastMessageSID>BLAST_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>BLAST_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>3</Range>
+			<Shape>1</Shape>
+			<Width>2</Width>
+			<Damage>
+				<NumDice>4</NumDice>
+				<NumSides>5</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -28724,6 +28743,25 @@
 				<Rarity>1</Rarity>
 				<SpellID>c_10_cleansing</SpellID>
 				<Difficulty>40</Difficulty>
+			</Spellbook>
+			<Spellbook id="blast_spellbook">
+				<DescriptionSID>BLAST_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_BLAST_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>BLAST_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_BLAST_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>22</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>c_11_blast</SpellID>
+				<Difficulty>36</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>

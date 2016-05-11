@@ -20,5 +20,3 @@ enum struct MagicClassification
   MAGIC_CLASSIFICATION_BUFF = 2,
   MAGIC_CLASSIFICATION_UTILITY = 3
 };
-
-

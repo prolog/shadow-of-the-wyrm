@@ -1,6 +1,7 @@
 #include "SpellConstants.hpp"
 
 const int SpellConstants::MAX_SPELL_BONUS = 99;
+const int SpellConstants::DEFAULT_BEAM_WIDTH = 1;
 const unsigned int SpellConstants::BEAM_BURST_RANGE = 1;
 const unsigned char SpellConstants::BEAM_BURST_SYMBOL = '*';
 const int SpellConstants::SPELL_FAILURE_BAD = -100;

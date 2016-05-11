@@ -4,6 +4,7 @@ class SpellConstants
 {
   public:
     static const int MAX_SPELL_BONUS;
+    static const int DEFAULT_BEAM_WIDTH;
 
     // The range at which beam spells use '*' instead of the usual symbols.
     static const unsigned int BEAM_BURST_RANGE;
