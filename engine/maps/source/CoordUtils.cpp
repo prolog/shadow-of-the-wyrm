@@ -255,7 +255,59 @@ vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_l
 
 vector<Coordinate> CoordUtils::get_beam_coordinates(const Coordinate& centre_coord, const Direction d, const uint radius)
 {
-  vector<Coordinate> beam = {centre_coord};
+  vector<Coordinate> beam;
+
+  if (radius > 0)
+  {
+    beam.push_back(centre_coord);
+  }
+
+  Coordinate c1, c2;
+  bool insert = false;
+
+  for (uint i = 1; i < radius; i++)
+  {
+    switch (d)
+    {
+      // Valid beam directions:
+      case Direction::DIRECTION_NORTH:
+      case Direction::DIRECTION_SOUTH:
+        c1 = make_pair(centre_coord.first, centre_coord.second - i);
+        c2 = make_pair(centre_coord.first, centre_coord.second + i);
+
+        insert = true;
+        break;
+      case Direction::DIRECTION_NORTH_WEST:
+      case Direction::DIRECTION_SOUTH_EAST:
+      case Direction::DIRECTION_WEST:
+      case Direction::DIRECTION_EAST:
+        c1 = make_pair(centre_coord.first - i, centre_coord.second);
+        c2 = make_pair(centre_coord.first + i, centre_coord.second);
+
+        insert = true;
+        break;
+      case Direction::DIRECTION_NORTH_EAST:
+      case Direction::DIRECTION_SOUTH_WEST:
+        insert = true;
+        break;
+        break;
+
+      // Not valid beam directions:
+      case Direction::DIRECTION_UP:
+      case Direction::DIRECTION_DOWN:
+      case Direction::DIRECTION_NULL:
+      default:
+        insert = false;
+        break;
+    }
+
+    if (insert)
+    {
+      beam.push_back(c1);
+      beam.push_back(c2);
+    }
+  }
+
   return beam;
 }
 
