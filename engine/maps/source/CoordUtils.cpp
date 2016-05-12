@@ -279,17 +279,14 @@ vector<Coordinate> CoordUtils::get_beam_coordinates(const Coordinate& centre_coo
         break;
       case Direction::DIRECTION_NORTH_WEST:
       case Direction::DIRECTION_SOUTH_EAST:
+      case Direction::DIRECTION_NORTH_EAST:
+      case Direction::DIRECTION_SOUTH_WEST:
       case Direction::DIRECTION_WEST:
       case Direction::DIRECTION_EAST:
         c1 = make_pair(centre_coord.first - i, centre_coord.second);
         c2 = make_pair(centre_coord.first + i, centre_coord.second);
 
         insert = true;
-        break;
-      case Direction::DIRECTION_NORTH_EAST:
-      case Direction::DIRECTION_SOUTH_WEST:
-        insert = true;
-        break;
         break;
 
       // Not valid beam directions:

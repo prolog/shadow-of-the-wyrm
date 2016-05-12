@@ -332,34 +332,64 @@ TEST(SW_Engine_Maps_CoordUtils, to_string)
 
 TEST(SW_Engine_Maps_CoordUtils, beam_coords_cardinal)
 {
-  vector<Coordinate> c = CoordUtils::get_beam_coordinates(make_pair(5,5), Direction::DIRECTION_NORTH, 1);
-  vector<Coordinate> exp = { {5,5} };
-  EXPECT_EQ(exp, c);
+  vector<Direction> dirs = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH};
 
-  c = CoordUtils::get_beam_coordinates(make_pair(5, 5), Direction::DIRECTION_SOUTH, 1);
-  EXPECT_EQ(exp, c);
+  for (const auto d : dirs)
+  {
+    vector<Coordinate> c = CoordUtils::get_beam_coordinates(make_pair(5, 5), d, 1);
+    vector<Coordinate> exp = { { 5,5 } };
+    EXPECT_EQ(exp, c);
 
-  c = CoordUtils::get_beam_coordinates(make_pair(5, 5), Direction::DIRECTION_EAST, 1);
-  EXPECT_EQ(exp, c);
+    c = CoordUtils::get_beam_coordinates(make_pair(5, 5), d, 2);
+    exp = { { 5,5 },{ 5,4 },{ 5,6 } };
+    EXPECT_EQ(exp, c);
+  }
 
-  c = CoordUtils::get_beam_coordinates(make_pair(5, 5), Direction::DIRECTION_WEST, 1);
-  EXPECT_EQ(exp, c);
+  dirs = {Direction::DIRECTION_EAST, Direction::DIRECTION_WEST};
 
-  c = CoordUtils::get_beam_coordinates(make_pair(5, 5), Direction::DIRECTION_NORTH, 2);
-  exp = { { 5,5 },{ 5,4 },{ 5,6 } };
-  EXPECT_EQ(exp, c);
+  for (const auto d : dirs)
+  {
+    vector<Coordinate> c = CoordUtils::get_beam_coordinates(make_pair(5, 5), d, 1);
+    vector<Coordinate> exp = { { 5,5 } };
+    EXPECT_EQ(exp, c);
 
-  c = CoordUtils::get_beam_coordinates(make_pair(5, 5), Direction::DIRECTION_SOUTH, 2);
-  EXPECT_EQ(exp, c);
-
-  c = CoordUtils::get_beam_coordinates(make_pair(5, 5), Direction::DIRECTION_EAST, 2);
-  exp = { { 5,5 },{ 4,5 },{ 6,5 } };
-  EXPECT_EQ(exp, c);
-
-  c = CoordUtils::get_beam_coordinates(make_pair(5, 5), Direction::DIRECTION_WEST, 2);
-  EXPECT_EQ(exp, c);
+    c = CoordUtils::get_beam_coordinates(make_pair(5, 5), d, 2);
+    exp = { { 5,5 },{ 4,5 },{ 6,5 } };
+    EXPECT_EQ(exp, c);
+  }
 }
 
 TEST(SW_Engine_Maps_CoordUtils, beam_coords_ordinal)
 {
+  vector<Direction> dirs = {Direction::DIRECTION_NORTH_WEST, Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_SOUTH_WEST, Direction::DIRECTION_SOUTH_EAST};
+
+  for (const auto d : dirs)
+  {
+    vector<Coordinate> c = CoordUtils::get_beam_coordinates(make_pair(5, 5), d, 1);
+    vector<Coordinate> exp = { { 5,5 } };
+    EXPECT_EQ(exp, c);
+
+    c = CoordUtils::get_beam_coordinates(make_pair(5, 5), d, 2);
+    exp = { { 5,5 },{ 4,5 },{ 6,5 } };
+    EXPECT_EQ(exp, c);
+
+    c = CoordUtils::get_beam_coordinates(make_pair(5, 5), d, 4);
+    exp = { { 5,5 },{ 4,5 },{ 6,5 },{ 3,5 },{ 7,5 },{ 2,5 },{ 8,5 }};
+    EXPECT_EQ(exp, c);
+  }
+}
+
+TEST(SW_Engine_Maps_CoordUtils, beam_coords_invalid)
+{
+  vector<Direction> dirs = { Direction::DIRECTION_UP, Direction::DIRECTION_DOWN, Direction::DIRECTION_NULL };
+
+  for (const auto d : dirs)
+  {
+    vector<Coordinate> c = CoordUtils::get_beam_coordinates(make_pair(5, 5), d, 1);
+    vector<Coordinate> exp = { { 5,5 } };
+    EXPECT_EQ(exp, c);
+
+    c = CoordUtils::get_beam_coordinates(make_pair(5, 5), d, 2);
+    EXPECT_EQ(exp, c);
+  }
 }
