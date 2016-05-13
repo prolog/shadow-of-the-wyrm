@@ -39,16 +39,16 @@ void BeamShapeProcessor::initialize_cardinal_reflection_map()
 
 pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
-  vector<TilePtr> affected_tiles;
   Animation animation;
 
-  uint range = spell.get_range();
   uint radius = spell.get_shape().get_radius();
-  Coordinate current_coord = caster_coord;
-  TileMagicChecker tmc;
-  
-  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
-  vector<Coordinate> coords = CoordUtils::get_beam_coordinates(current_coord, d, radius);
+  Coordinate current_coord = caster_coord;  
+  vector<Coordinate> beam_coords = CoordUtils::get_beam_coordinates(current_coord, d, radius);
+
+  for (const Coordinate& beam_start_coord : beam_coords)
+  {
+    // ... create_beam, etc ...
+  }
 
   // JCD TODO: For each coord in coords, create the beam, then combine them to
   // make a reasonable animation...
@@ -57,16 +57,32 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   // direction (the beam will "fizzle out" if it hits a blocking tile).  For
   // reflective beams (a subclass), the current direction will change as the
   // beam bounces.
-  Direction current_direction = d;
+  auto beam_pair = create_beam(map, spell, current_coord, caster_coord, d);
 
+  // Create the animation using the default movement animation mechanism.
+  CreaturePtr caster = map->at(caster_coord)->get_creature();
+  return create_affected_tiles_and_animation(caster, map, beam_pair.first, beam_pair.second);
+}
+
+pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapeProcessor::create_beam(MapPtr map, const Spell& spell, const Coordinate& coord, const Coordinate& caster_coord, const Direction d)
+{
+  pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> results;
+  vector<TilePtr> affected_tiles;
+  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
+  TileMagicChecker tmc;
   BeamSpellTranslator bst;
+
+  Coordinate current_coord = coord;
+  Direction current_direction = d;
+  uint range = spell.get_range();
   DisplayTile dt = bst.create_display_tile(spell.get_range(), current_direction, spell.get_colour());
-  
+
   uint count = 0;
+
   while (count < range)
   {
     Coordinate c = CoordUtils::get_new_coordinate(current_coord, current_direction);
-    
+
     TilePtr tile = map->at(c);
 
     // If casting a reflective spell around the corners of an open map, handle
@@ -119,9 +135,10 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
     count++; // Didn't bounce - update the spell range counter.
   }
 
-  // Create the animation using the default movement animation mechanism.
-  CreaturePtr caster = map->at(caster_coord)->get_creature();
-  return create_affected_tiles_and_animation(caster, map, affected_tiles, movement_path);
+  results.first = affected_tiles;
+  results.second = movement_path;
+
+  return results;
 }
 
 // By default, beams do not reflect - only instances of ReflectiveBeam should.
