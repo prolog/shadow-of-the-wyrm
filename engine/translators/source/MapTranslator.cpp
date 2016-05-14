@@ -221,7 +221,7 @@ DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr
 {
   DisplayTile display_tile;
   
-  if (tile->has_feature())
+  if (tile->has_feature() && !tile->get_feature()->get_is_hidden())
   {
     FeaturePtr feature = tile->get_feature();
     display_tile = create_display_tile_from_feature(feature);

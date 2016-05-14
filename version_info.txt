@@ -20,6 +20,8 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   than the amount required for a skill increase, the skill still has a
   chance to improve, based on the number of marks accumulated.
 
+- Created support for beam spells with radii greater than 1.
+
 - New creatures: goblin trapper, corpse fiend.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
@@ -34,6 +36,9 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   - The Magic skill didn't have its resource string properly defined,
     resulting in empty text when that skill was selected from the Skills
     screen (Redfeek).
+
+  - Untriggered traps were being displayed when moving out of view of
+    that tile.
 
 Shadow of the Wyrm v0.5.1 "Beauvais"
 - Version declared April 3, 2016.  Version finalized May 1, 2016.
