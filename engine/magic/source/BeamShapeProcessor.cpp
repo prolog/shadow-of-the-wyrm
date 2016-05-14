@@ -73,7 +73,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   // JCD FIXME WRONG NOW
   for (const auto& mp : per_beam_movement_paths)
   {
-    size_t cur_size = per_beam_affected_tiles.size();
+    size_t cur_size = mp.size();
 
     if (cur_size > largest_mp)
     {

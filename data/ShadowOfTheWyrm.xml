@@ -21218,7 +21218,7 @@
 			<Damage>
 				<NumDice>4</NumDice>
 				<NumSides>5</NumSides>
-				<Type>2</Type>
+				<Type>9</Type>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
