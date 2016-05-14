@@ -96,9 +96,8 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
 
   // Create the animation using the default movement animation mechanism.
   CreaturePtr caster = map->at(caster_coord)->get_creature();
-  // JCD FIXME uncomment when done!
-  // return create_affected_tiles_and_animation(caster, map, multi_beam_pair.first, multi_beam_pair.second);
-  return create_affected_tiles_and_animation(caster, map, beam_pair.first, beam_pair.second);
+  //return create_affected_tiles_and_animation(caster, map, beam_pair.first, beam_pair.second);
+  return create_affected_tiles_and_animation(caster, map, multi_beam_pair.first, multi_beam_pair.second);
 }
 
 pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapeProcessor::create_beam(MapPtr map, const Spell& spell, const Coordinate& coord, const Coordinate& caster_coord, const Direction d)
@@ -181,8 +180,40 @@ pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapePr
 pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapeProcessor::create_multi_beam(const vector<vector<TilePtr>>& per_beam_affected_tiles, const vector<vector<pair<DisplayTile, vector<Coordinate>>>>& per_beam_movement_paths, const size_t largest_at, const size_t largest_mp)
 {
   pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> result;
+  vector<TilePtr> final_at;
+  vector<pair<DisplayTile, vector<Coordinate>>> final_mp;
 
-  // ...
+  // Create the combined vector of affected tiles.
+  // Some tiles might be affected twice due to bounces, etc, so duplication
+  // is okay.
+  for (size_t i = 0; i < largest_at; i++)
+  {
+    for (const auto& v_at : per_beam_affected_tiles)
+    {
+      // Not all beams might be the same size due to obstacles, etc., so
+      // add a safety check.
+      if (i < v_at.size())
+      {
+        final_at.push_back(v_at[i]);
+      }
+    }
+  }
+
+  // Create the combined movement path for the animation.
+  for (size_t i = 0; i < largest_mp; i++)
+  {
+    for (const vector<pair<DisplayTile, vector<Coordinate>>>& v_mp : per_beam_movement_paths)
+    {
+      if (i < v_mp.size())
+      {
+        // Basic, ugly animation for now.
+        final_mp.push_back(v_mp[i]);
+      }
+    }
+  }
+
+  result.first = final_at;
+  result.second = final_mp;
 
   return result;
 }
