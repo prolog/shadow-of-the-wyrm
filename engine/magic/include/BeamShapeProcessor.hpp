@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <vector>
 #include "SpellShapeProcessor.hpp"
 
 // A class for processing beam-type spells.
@@ -13,6 +14,7 @@ protected:
     virtual bool should_beam_reflect() const;
 
     virtual std::pair<std::vector<TilePtr>, std::vector<std::pair<DisplayTile, std::vector<Coordinate>>>> create_beam(MapPtr map, const Spell& spell, const Coordinate& cur_coord, const Coordinate& caster_coord, const Direction d);
+    virtual std::pair<std::vector<TilePtr>, std::vector<std::pair<DisplayTile, std::vector<Coordinate>>>> create_multi_beam(const std::vector<std::vector<TilePtr>>& per_beam_affected_tiles, const std::vector<std::vector<std::pair<DisplayTile, std::vector<Coordinate>>>>& per_beam_movement_paths, const size_t largest_at, const size_t largest_mp);
     virtual Direction get_new_beam_direction_after_impact(const Direction old_direction, const Coordinate& current_coord, MapPtr map);
 
     Direction get_ne_reflection(const Coordinate& current_coord, MapPtr map);
