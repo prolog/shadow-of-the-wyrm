@@ -11526,6 +11526,49 @@
 				<Type>0</Type>
 			</Damage>
 		</Creature>
+		<Creature id="corpse_fiend">
+			<RaceID>_construct</RaceID>
+			<ShortDescriptionSID>CORPSE_FIEND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CORPSE_FIEND_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CORPSE_FIEND_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CORPSE_FIEND_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>C</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>16</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>90</Exp>
+			</CreatureGeneration>
+			<Level>16</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>32</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
 		<Creature id="oread">
 			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>OREAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
