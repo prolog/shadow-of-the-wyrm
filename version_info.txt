@@ -20,7 +20,7 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   than the amount required for a skill increase, the skill still has a
   chance to improve, based on the number of marks accumulated.
 
-- New creatures: goblin trapper.
+- New creatures: goblin trapper, corpse fiend.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
