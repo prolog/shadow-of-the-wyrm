@@ -47,7 +47,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
 
   // Element 0, 1, ... in each of these vectors is for a particular beam.
   vector<vector<TilePtr>> per_beam_affected_tiles;
-  vector<vector<pair<DisplayTile, vector<Coordinate>>>> per_beam_movement_paths;
+  vector<MovementPath> per_beam_movement_paths;
 
   for (const Coordinate& beam_start_coord : beam_coords)
   {
@@ -70,6 +70,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
     }
   }
 
+  // JCD FIXME WRONG NOW
   for (const auto& mp : per_beam_movement_paths)
   {
     size_t cur_size = per_beam_affected_tiles.size();
@@ -100,11 +101,11 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   return create_affected_tiles_and_animation(caster, map, multi_beam_pair.first, multi_beam_pair.second);
 }
 
-pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapeProcessor::create_beam(MapPtr map, const Spell& spell, const Coordinate& coord, const Coordinate& caster_coord, const Direction d)
+pair<vector<TilePtr>, MovementPath> BeamShapeProcessor::create_beam(MapPtr map, const Spell& spell, const Coordinate& coord, const Coordinate& caster_coord, const Direction d)
 {
-  pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> results;
+  pair<vector<TilePtr>, MovementPath> results;
   vector<TilePtr> affected_tiles;
-  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
+  MovementPath movement_path;
   TileMagicChecker tmc;
   BeamSpellTranslator bst;
 
@@ -167,7 +168,7 @@ pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapePr
     affected_tiles.push_back(tile);
     vector<Coordinate> beam_vec;
     beam_vec.push_back(current_coord);
-    movement_path.push_back(make_pair(dt, beam_vec));
+    movement_path.push_back({make_pair(dt, current_coord)});
     count++; // Didn't bounce - update the spell range counter.
   }
 
@@ -177,11 +178,11 @@ pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapePr
   return results;
 }
 
-pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapeProcessor::create_multi_beam(const vector<vector<TilePtr>>& per_beam_affected_tiles, const vector<vector<pair<DisplayTile, vector<Coordinate>>>>& per_beam_movement_paths, const size_t largest_at, const size_t largest_mp)
+pair<vector<TilePtr>, MovementPath> BeamShapeProcessor::create_multi_beam(const vector<vector<TilePtr>>& per_beam_affected_tiles, const vector<MovementPath>& per_beam_movement_paths, const size_t largest_at, const size_t largest_mp)
 {
-  pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> result;
+  pair<vector<TilePtr>, MovementPath> result;
   vector<TilePtr> final_at;
-  vector<pair<DisplayTile, vector<Coordinate>>> final_mp;
+  MovementPath final_mp;
 
   // Create the combined vector of affected tiles.
   // Some tiles might be affected twice due to bounces, etc, so duplication
@@ -202,14 +203,23 @@ pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapePr
   // Create the combined movement path for the animation.
   for (size_t i = 0; i < largest_mp; i++)
   {
-    for (const vector<pair<DisplayTile, vector<Coordinate>>>& v_mp : per_beam_movement_paths)
+    vector<pair<DisplayTile, Coordinate>> frame_mp;
+
+    for (const MovementPath& v_mp : per_beam_movement_paths)
     {
       if (i < v_mp.size())
       {
-        // Basic, ugly animation for now.
-        final_mp.push_back(v_mp[i]);
+        auto cur_frame = v_mp[i];
+        
+        for (const auto& cf : cur_frame)
+        {
+          frame_mp.push_back(make_pair(cf.first, cf.second));
+        }
       }
     }
+
+    // JCD FIXME this hasn't been tested!
+    final_mp.push_back(frame_mp);
   }
 
   result.first = final_at;

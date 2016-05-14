@@ -3732,6 +3732,9 @@
     <ClInclude Include="engine\calculators\include\FishingCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\include\MapMovementTypes.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">

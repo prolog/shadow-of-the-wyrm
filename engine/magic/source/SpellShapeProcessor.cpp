@@ -16,7 +16,7 @@ SpellShapeProcessor::~SpellShapeProcessor()
 }
 
 // Create the affected tiles and animation for the spell shape.
-pair<vector<TilePtr>, Animation> SpellShapeProcessor::create_affected_tiles_and_animation(CreaturePtr caster, MapPtr map, const std::vector<TilePtr>& affected_tiles, const std::vector<std::pair<DisplayTile, std::vector<Coordinate>>>& movement_path)
+pair<vector<TilePtr>, Animation> SpellShapeProcessor::create_affected_tiles_and_animation(CreaturePtr caster, MapPtr map, const std::vector<TilePtr>& affected_tiles, const MovementPath& movement_path)
 {
   MapPtr fov_map = caster->get_decision_strategy()->get_fov_map();
   Game& game = Game::instance();

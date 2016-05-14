@@ -27,10 +27,8 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
 
   vector<Coordinate> current_frame;
 
-  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
-
+  MovementPath movement_path;
   TileMagicChecker tmc;
-
   vector<TilePtr> affected_tiles;
 
   Coordinate centre_coord = CoordUtils::get_new_coordinate(prev_coord, d);
@@ -77,7 +75,14 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
     }
 
     // Update the frames required for the animation.
-    movement_path.push_back(make_pair(dt, current_frame));
+    vector<pair<DisplayTile, Coordinate>> frame;
+
+    for (const Coordinate& c : current_frame)
+    {
+      frame.push_back(make_pair(dt, c));
+    }
+
+    movement_path.push_back(frame);
     previous_frame = current_frame;
     current_frame.clear();
 
