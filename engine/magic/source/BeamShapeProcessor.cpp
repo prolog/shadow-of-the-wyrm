@@ -45,10 +45,45 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   Coordinate current_coord = caster_coord;  
   vector<Coordinate> beam_coords = CoordUtils::get_beam_coordinates(current_coord, d, radius);
 
+  // Element 0, 1, ... in each of these vectors is for a particular beam.
+  vector<vector<TilePtr>> per_beam_affected_tiles;
+  vector<vector<pair<DisplayTile, vector<Coordinate>>>> per_beam_movement_paths;
+
   for (const Coordinate& beam_start_coord : beam_coords)
   {
-    // ... create_beam, etc ...
+    auto beam_pair = create_beam(map, spell, beam_start_coord, caster_coord, d);
+
+    per_beam_affected_tiles.push_back(beam_pair.first);
+    per_beam_movement_paths.push_back(beam_pair.second);
   }
+
+  size_t largest_at = 0;
+  size_t largest_mp = 0;
+
+  for (const auto& at : per_beam_affected_tiles)
+  {
+    size_t cur_size = at.size();
+
+    if (cur_size > largest_at)
+    {
+      largest_at = cur_size;
+    }
+  }
+
+  for (const auto& mp : per_beam_movement_paths)
+  {
+    size_t cur_size = per_beam_affected_tiles.size();
+
+    if (cur_size > largest_mp)
+    {
+      largest_mp = cur_size;
+    }
+  }
+
+  // Now that the largest number of affected tiles/movement path has been
+  // determined, loop through the collections.  For 0 to the largest_size-1,
+  // create a combined list of affected tiles and movement paths.
+  auto multi_beam_pair = create_multi_beam(per_beam_affected_tiles, per_beam_movement_paths, largest_at, largest_mp);
 
   // JCD TODO: For each coord in coords, create the beam, then combine them to
   // make a reasonable animation...
@@ -61,6 +96,8 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
 
   // Create the animation using the default movement animation mechanism.
   CreaturePtr caster = map->at(caster_coord)->get_creature();
+  // JCD FIXME uncomment when done!
+  // return create_affected_tiles_and_animation(caster, map, multi_beam_pair.first, multi_beam_pair.second);
   return create_affected_tiles_and_animation(caster, map, beam_pair.first, beam_pair.second);
 }
 
@@ -140,6 +177,16 @@ pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapePr
 
   return results;
 }
+
+pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> BeamShapeProcessor::create_multi_beam(const vector<vector<TilePtr>>& per_beam_affected_tiles, const vector<vector<pair<DisplayTile, vector<Coordinate>>>>& per_beam_movement_paths, const size_t largest_at, const size_t largest_mp)
+{
+  pair<vector<TilePtr>, vector<pair<DisplayTile, vector<Coordinate>>>> result;
+
+  // ...
+
+  return result;
+}
+
 
 // By default, beams do not reflect - only instances of ReflectiveBeam should.
 bool BeamShapeProcessor::should_beam_reflect() const
