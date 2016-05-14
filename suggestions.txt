@@ -1,9 +1,12 @@
 Me:
+- Need to test each of: trap, ranged combat, beam, reflective beam, wide
+  beam, cross, cone, ball, storm after recent animation changes!
 - Special rooms: beer hall, magical workshop.
 - Update creature pathfinding to penalize routes with traps.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
 - Add larger widths to beam spells.  Create a few spells to demonstrate.
+  Add beam widths to spell synopsis.
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
 - Scent maps/track by scent.

@@ -816,6 +816,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\maps\include\LoadedMapDetails.hpp" />
     <ClInclude Include="engine\maps\include\MapCursor.hpp" />
     <ClInclude Include="engine\maps\include\MapExitUtils.hpp" />
+    <ClInclude Include="engine\maps\include\MapMovementTypes.hpp" />
     <ClInclude Include="engine\maps\include\MapRegistry.hpp" />
     <ClInclude Include="engine\maps\include\MapTypeQueries.hpp" />
     <ClInclude Include="engine\maps\include\MapTypeQueryFactory.hpp" />

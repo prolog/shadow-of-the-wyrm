@@ -117,10 +117,9 @@ void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creatu
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
     Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
     DisplayTile display_tile(trap->get_trigger_symbol(), static_cast<int>(trap->get_colour()));
-    vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
-    vector<Coordinate> coords = { creature_coord };
+    MovementPath movement_path;
 
-    movement_path.push_back(make_pair(display_tile, coords));
+    movement_path.push_back({make_pair(display_tile, creature_coord)});
 
     Animation animation = at.create_movement_animation(!cca.can_see(creature), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
 

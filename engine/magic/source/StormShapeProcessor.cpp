@@ -12,7 +12,7 @@ using namespace std;
 pair<vector<TilePtr>, Animation> StormShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
   uint spell_range = spell.get_range();
-  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
+  MovementPath movement_path;
   DisplayTile dt('*', static_cast<int>(spell.get_colour()));
   uint num_tiles_affected = static_cast<uint>(pow(spell_range, 2));
 
@@ -24,8 +24,7 @@ pair<vector<TilePtr>, Animation> StormShapeProcessor::get_affected_tiles_and_ani
   // rather than all at once.
   for (const Coordinate& c : storm_coords)
   {
-    vector<Coordinate> cur_storm_c = { c };
-    movement_path.push_back(make_pair(dt, cur_storm_c));
+    movement_path.push_back({make_pair(dt, c)});
   }
 
   // Create the storm animation.
