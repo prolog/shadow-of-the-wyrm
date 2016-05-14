@@ -1,5 +1,4 @@
 Me:
-- LOS bug: untriggered traps are appearing when out of LOS.
 - Need to test each of: trap, ranged combat, beam, reflective beam, wide
   beam, cross, cone, ball, storm after recent animation changes!
 - Special rooms: beer hall, magical workshop.
