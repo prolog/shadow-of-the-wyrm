@@ -20,13 +20,16 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   than the amount required for a skill increase, the skill still has a
   chance to improve, based on the number of marks accumulated.
 
+- Witchlings get a new wide-beamed spell, Umbra, starting at level 26.
+
 - Created support for beam spells with radii greater than 1.
 
 - New creatures: goblin trapper, corpse fiend.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
-- New spells: blast (Cantrips).
+- New spells/spellbooks: blast (Cantrips), umbra (Primordial), absolute
+  zero (Arcane).
 
 - Bug fixes:
 
