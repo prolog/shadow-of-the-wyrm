@@ -24,6 +24,9 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 
 - Created support for beam spells with radii greater than 1.
 
+- Updated the pathfinding code to use a greater cost when considering
+  a search node that contains a dangerous feature like a trap.
+
 - New creatures: goblin trapper, corpse fiend.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.

@@ -1,6 +1,10 @@
 Me:
+- Before next ver: the search code needs to be looked at, in particular how
+  tiles are penalized for being dangerous.  Creatures should pathfind
+  around traps unless there is only one available route!
+- When traps are sprung by e.g. other creatures, the animation is centered
+  on the player.
 - Special rooms: beer hall, magical workshop.
-- Update creature pathfinding to penalize routes with traps.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
 - Add beam widths to spell synopsis.
@@ -31,6 +35,7 @@ Me:
   items can be done and dumped to disk.
 - Capacities on barrels, so that they don't contain an infinite amount
   of booze.
+- Tile desc when looking at a bunch of items is ugly!
 
 Sean McKeague:
 - Ability to pick up partial stacks.
