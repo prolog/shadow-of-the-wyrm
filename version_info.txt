@@ -40,6 +40,9 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   - Untriggered traps were being displayed when moving out of view of
     that tile.
 
+  - When using +/- to cycle between creatures using Look, the message
+    manager details were not being updated correctly.
+
 Shadow of the Wyrm v0.5.1 "Beauvais"
 - Version declared April 3, 2016.  Version finalized May 1, 2016.
 

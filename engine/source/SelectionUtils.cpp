@@ -10,8 +10,10 @@ using namespace std;
 
 // select the nearest hostile target for the initial cursor location - this is done so that the user has to do less
 // to select a target, and "nearest hostile" is a good enough heuristic, for now.
-void SelectionUtils::select_nearest_hostile_target(CreaturePtr creature, MapPtr map)
+string SelectionUtils::select_nearest_hostile_target(CreaturePtr creature, MapPtr map)
 {
+  string hostile_creature_id;
+
   if (creature && map)
   {
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
@@ -25,8 +27,11 @@ void SelectionUtils::select_nearest_hostile_target(CreaturePtr creature, MapPtr 
     {
       pair<string, Coordinate> target_creature_details = hostile_creature_distance_map.begin()->second;
       set_target(creature, AttackType::ATTACK_TYPE_RANGED, target_creature_details, map);
+      hostile_creature_id = target_creature_details.first;
     }
   }
+
+  return hostile_creature_id;
 }
 
 // Select an existing target.  Because creatures can move about after the target was previously
@@ -65,8 +70,11 @@ bool SelectionUtils::select_existing_target(CreaturePtr creature, MapPtr map)
 }
 
 // Select the previous or next target from the current target.
-void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, const SelectCreatureType sct)
+// Return the creature ID for the selected target.
+string SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, const SelectCreatureType sct)
 {
+  string selected_target_id;
+
   if (creature != nullptr)
   {
     string ranged_s = std::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED));
@@ -104,6 +112,7 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
         prev = next = distance_map.begin()->second;
 
         set_target(creature, AttackType::ATTACK_TYPE_RANGED, prev, game_map);
+        selected_target_id = prev.first;
       }
       else // size must be >= 2
       {
@@ -142,10 +151,12 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
             if (sct == SelectCreatureType::SELECT_CREATURE_NEXT)
             {
               set_target(creature, AttackType::ATTACK_TYPE_RANGED, next, game_map);
+              selected_target_id = next.first;
             }
             else
             {
               set_target(creature, AttackType::ATTACK_TYPE_RANGED, prev, game_map);
+              selected_target_id = prev.first;
             }
           }
 
@@ -156,6 +167,8 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
       }
     }
   }
+
+  return selected_target_id;
 }
 
 // Does the creature have a target defined for a particular attack type?
