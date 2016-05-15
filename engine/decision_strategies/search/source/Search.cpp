@@ -104,9 +104,8 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
             danger_cost += 10;
           }
 
-          // JCD TODO: Work the above danger cost into the search function.
-          // Ensure that creatures "pathfind around" sprung traps.
-          
+          int path_cost = danger_cost + 1;
+
           if (parent)
           {
             sn.set_location(coord);
@@ -115,8 +114,15 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
             ancestors.push_back(parent->get_location());
             sn.set_ancestors(ancestors);
           
-            sn.set_path_cost(parent->get_path_cost() + 1);
+            // Be sure to consider the parent's path cost as well.
+            path_cost += parent->get_path_cost();
           }
+
+          // Because the queueing function considers the path cost
+          // and the estimated cost to the goal, ensure that the path
+          // cost is penalized for any "bad things" present on the
+          // current tile.
+          sn.set_path_cost(path_cost);
         
           // Used for A* search.  Use Chebyshev distance - 1 (distance from
           // next tile) plus the actual movement cost of the current tile.
