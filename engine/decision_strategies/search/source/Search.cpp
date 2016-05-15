@@ -95,6 +95,18 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
         {
           SearchNode sn(coord);
         
+          int danger_cost = 0;
+          FeaturePtr feature = tile->get_feature();
+          if (feature != nullptr && feature->get_is_dangerous())
+          {
+            // If it's a dangerous feature (probably a trap), penalize the 
+            // search path.
+            danger_cost += 10;
+          }
+
+          // JCD TODO: Work the above danger cost into the search function.
+          // Ensure that creatures "pathfind around" sprung traps.
+          
           if (parent)
           {
             sn.set_location(coord);
@@ -108,7 +120,9 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
         
           // Used for A* search.  Use Chebyshev distance - 1 (distance from
           // next tile) plus the actual movement cost of the current tile.
-          int estimated_cost = (CoordUtils::chebyshev_distance(coord, goal_coordinate) - 1) + tile->get_movement_multiplier();
+          int estimated_cost = (CoordUtils::chebyshev_distance(coord, goal_coordinate) - 1) 
+                             + tile->get_movement_multiplier();
+
           sn.set_estimated_cost_to_goal(estimated_cost);
         
           search_nodes.push_back(sn);

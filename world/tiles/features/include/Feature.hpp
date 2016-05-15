@@ -34,6 +34,10 @@ class Feature : public ISerializable
     // when rendering the map.
     virtual bool get_is_hidden() const;
 
+    // Is the feature dangerous in some sense?  E.g., traps are,
+    // pews aren't.
+    virtual bool get_is_dangerous() const;
+
     // Does the feature apply on movement?  The creature moving
     // into the tile is passed so that skills/eq can be checked, etc.
     virtual bool apply_on_movement(std::shared_ptr<Creature> creature) const;

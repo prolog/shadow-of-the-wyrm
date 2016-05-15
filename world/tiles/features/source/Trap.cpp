@@ -65,6 +65,14 @@ bool Trap::get_is_hidden() const
   return !triggered;
 }
 
+// Traps are dangerous.
+// That's, uh, why we call them traps --
+// only if triggered.
+bool Trap::get_is_dangerous() const
+{
+  return triggered;
+}
+
 bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
   bool apply_trap = true;
