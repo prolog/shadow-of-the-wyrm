@@ -1,8 +1,5 @@
 Me:
-- Traps really are animating on the player!
-- Traps should only be able to be applied when on them.
-- When another creature triggers a trap, if the player is in view, an
-  appropriate message should be generated.
+- Ensure that "A foo dies!" messages come after status effect messages.
 - Special rooms: beer hall, magical workshop.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
