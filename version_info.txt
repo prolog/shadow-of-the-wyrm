@@ -27,6 +27,9 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - Updated the pathfinding code to use a greater cost when considering
   a search node that contains a dangerous feature like a trap.
 
+- The player must now be standing on a trap to apply it - traps can't
+  be applied while the player is adjacent.
+
 - New creatures: goblin trapper, corpse fiend.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
