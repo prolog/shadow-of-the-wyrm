@@ -33,6 +33,7 @@ void TrapManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fea
 
 bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
 {
+  Game& game = Game::instance();
   FeaturePtr feature = tile->get_feature();
   TrapPtr trap = dynamic_pointer_cast<Trap>(feature);
 
@@ -46,10 +47,16 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
     {
       if (trap && creature)
       {
+        MapPtr current_map = game.get_current_map();
+        Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
+
         trigger_trap(trap, creature);
         apply_effects_to_creature(trap, creature);
         create_item_if_necessary(tile, trap);
-        create_and_draw_animation(trap, creature);
+
+        // Pass the coordinate in now because the triggering of the trap
+        // may have killed the creature...
+        create_and_draw_animation(trap, creature, creature_coord);
       }
     }
     else
@@ -129,27 +136,31 @@ void TrapManipulator::create_item_if_necessary(TilePtr tile, TrapPtr trap)
   im.create_item_with_probability(50, 100, inv, trap->get_item_id());
 }
 
-void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creature)
+void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creature, const Coordinate& creature_coord)
 {
   if (CreatureUtils::is_player_or_in_los(creature))
   {
     // Create the animation
     Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
     CurrentCreatureAbilities cca;
     AnimationTranslator at(game.get_display());
-    MapPtr current_map = game.get_current_map();
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-    Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
     DisplayTile display_tile(trap->get_trigger_symbol(), static_cast<int>(trap->get_colour()));
     MovementPath movement_path;
 
     movement_path.push_back({make_pair(display_tile, creature_coord)});
+    bool player_blind = false;
 
-    Animation animation = at.create_movement_animation(!cca.can_see(creature), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
+    if (creature->get_is_player())
+    {
+      player_blind = !cca.can_see(creature);
+    }
+
+    Animation animation = at.create_movement_animation(player_blind, game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
 
     // Draw the animation.
     DisplayPtr display = game.get_display();
     display->draw_animation(animation);
-
   }
 }
