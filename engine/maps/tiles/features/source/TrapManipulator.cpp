@@ -6,6 +6,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -67,15 +68,19 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
 
 void TrapManipulator::trigger_trap(TrapPtr trap, CreaturePtr creature)
 {
-  string trigger_message_sid = trap->get_trigger_message_sid();
+  string trigger_message = StringTable::get(trap->get_trigger_message_sid());
+  Game& game = Game::instance();
 
-  if (creature && creature->get_is_player())
+  if (creature)
   {
-    // Traps only affect the creature on the exact tile (the creature passed
-    // as an argument to this function).
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-    manager.add_new_message(StringTable::get(trigger_message_sid));
-    manager.send();
+    IMessageManager& manager = MessageManagerFactory::instance();
+    bool show_msg = GameUtils::is_creature_in_player_view_map(game, creature->get_id());
+
+    if (show_msg)
+    {
+      manager.add_new_message(trigger_message);
+      manager.send();
+    }
   }
 
   trap->set_triggered(true);
