@@ -30,6 +30,11 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - The player must now be standing on a trap to apply it - traps can't
   be applied while the player is adjacent.
 
+- Traps now give a message regardless of whether they're triggered by the
+  player or another creature, so long as the player can see the triggering
+  creature.  Reworked the trigger messages so that they no longer assume
+  that the player is the triggering creature.
+
 - New creatures: goblin trapper, corpse fiend.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
