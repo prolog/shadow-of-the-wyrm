@@ -35,12 +35,31 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
   FeaturePtr feature = tile->get_feature();
   TrapPtr trap = dynamic_pointer_cast<Trap>(feature);
 
-  if (trap && creature)
+  // Traps can only be manipulated when the manipulating creature is standing
+  // directly on the tile.
+  if (tile != nullptr)
   {
-    trigger_trap(trap, creature);
-    apply_effects_to_creature(trap, creature);
-    create_item_if_necessary(tile, trap);
-    create_and_draw_animation(trap, creature);
+    CreaturePtr tile_creature = tile->get_creature();
+
+    if (tile_creature != nullptr && creature != nullptr && (tile_creature->get_id() == creature->get_id()))
+    {
+      if (trap && creature)
+      {
+        trigger_trap(trap, creature);
+        apply_effects_to_creature(trap, creature);
+        create_item_if_necessary(tile, trap);
+        create_and_draw_animation(trap, creature);
+      }
+    }
+    else
+    {
+      if (creature && creature->get_is_player())
+      {
+        IMessageManager& manager = MessageManagerFactory::instance();
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_APPLY_TRAP_TOO_FAR));
+        manager.send();
+      }
+    }
   }
 
   return true;
