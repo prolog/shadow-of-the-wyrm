@@ -61,6 +61,14 @@ string SpellDescriber::describe_range() const
   stringstream ss;
 
   ss << spell.get_range() << StringTable::get(shape_abbreviation_sids.find(spell.get_shape().get_spell_shape_type())->second);
+  
+  uint radius = spell.get_shape().get_radius();
+  
+  // Include the radius if it's non-standard (> 1).
+  if (radius > 1)
+  {
+    ss << radius;
+  }
 
   return ss.str();
 }
