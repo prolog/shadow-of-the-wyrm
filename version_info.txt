@@ -42,6 +42,8 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - New spells/spellbooks: blast (Cantrips), umbra (Primordial), absolute
   zero (Arcane).
 
+- New items: wand of poison, wand of shadow.
+
 - Bug fixes:
 
   - Randomizable items (potions, etc) placed on custom maps weren't

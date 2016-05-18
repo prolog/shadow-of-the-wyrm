@@ -28413,6 +28413,60 @@
 				<Range>4</Range>
 				<Colour>1</Colour>
 			</Wand>
+			<Wand id="poison_wand">
+				<DescriptionSID>POISON_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_POISON_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>POISON_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_POISON_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>222</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage>
+					<NumDice>5</NumDice>
+					<NumSides>8</NumSides>
+					<Modifier>8</Modifier>
+					<Type>6</Type>
+					<EffectBonus>50</EffectBonus>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
+				<Colour>2</Colour>
+			</Wand>
+			<Wand id="shadow_wand">
+				<DescriptionSID>SHADOW_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SHADOW_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SHADOW_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SHADOW_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>234</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+					<Type>8</Type>
+					<EffectBonus>50</EffectBonus>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
+				<Colour>4</Colour>
+			</Wand>
 			<Wand id="dragon_breath_wand">
 				<DescriptionSID>DRAGON_BREATH_WAND_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_DRAGON_BREATH_WAND_SID</UnidentifiedDescriptionSID>
