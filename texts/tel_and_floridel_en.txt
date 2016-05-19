@@ -1,6 +1,6 @@
 Within the shrouds of myth, a kind of song %b
 of lovers at the edges of the world, %b
-their love acurs'd, a feeling held too strong %b
+their love accurs'd, a feeling held too strong %b
 to keep the threads of fate from being purled %b
 about them.  In the ancient woods so wild, %b
 a pair whose love would ever grow and swell, %b
@@ -27,4 +27,14 @@ good rulers, both, who kept a lengthy peace %b
 between their kind and giants who in way %b
 and deed sought war; sweet days would finally cease %b
 when Tel raised sword in meddling Shiver's masterpiece.
+%p
+But first, he was a mewling, squealing babe, %b
+with copper hair, and startling, sea-blue eyes - %b
+a child who loved to run, but ever brave, %b
+so fleet of foot, and quicker still to rise %b
+to slights perceived, to all the things unsaid %b
+but seen behind the veil of courtly grace. %b
+For this was not a whelp who ever fled %b
+the courtly hounds who lingered in that space - %b
+the princeling made his presence felt within that place.
 %p
