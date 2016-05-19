@@ -35,6 +35,9 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   creature.  Reworked the trigger messages so that they no longer assume
   that the player is the triggering creature.
 
+- Created a new epic poem, to be added to with each release, found in
+  the library of Atua-Elar.
+
 - New creatures: goblin trapper, corpse fiend.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
@@ -42,7 +45,7 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - New spells/spellbooks: blast (Cantrips), umbra (Primordial), absolute
   zero (Arcane).
 
-- New items: wand of poison, wand of shadow.
+- New items: wand of poison, wand of shadow, epic poem "Tel and Floridel".
 
 - Bug fixes:
 

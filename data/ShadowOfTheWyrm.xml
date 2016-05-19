@@ -28617,6 +28617,24 @@
 				<SpellID/>
 				<Difficulty>0</Difficulty>
 			</Spellbook>			
+			<Spellbook id="tel_and_floridel">
+				<DescriptionSID>TEL_AND_FLORIDEL_SID</DescriptionSID>
+				<UsageDescriptionSID>TEL_AND_FLORIDEL_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<TextSID>TEL_AND_FLORIDEL_TEXT_SID</TextSID>
+				<SpellID/>
+				<Difficulty>0</Difficulty>
+			</Spellbook>			
 			<Spellbook id="stoneheim_history">
 				<DescriptionSID>STONEHEIM_HISTORY_SID</DescriptionSID>
 				<UsageDescriptionSID>STONEHEIM_HISTORY_USAGE_SID</UsageDescriptionSID>
