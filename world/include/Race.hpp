@@ -106,6 +106,9 @@ class Race
 
     void set_ap_regen_multiplier(const float new_ap_regen_multiplier);
     float get_ap_regen_multiplier() const;
+
+    void set_skill_points(const int new_skill_points);
+    int get_skill_points() const;
     
     void set_initial_deity_ids(const std::vector<std::string>& new_initial_deity_ids);
     std::vector<std::string> get_initial_deity_ids() const;
@@ -171,6 +174,9 @@ class Race
     // How much does the race affect HP/AP per tick?
     float hp_regen_multiplier;
     float ap_regen_multiplier;
+
+    // How many skill points per level?
+    int skill_points;
 
     // Level script, used to populate Lua functions that run every time the
     // creature gains a level.

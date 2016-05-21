@@ -119,6 +119,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     float ap_regen_multiplier = XMLUtils::get_child_node_float_value(race_node, "APRegenMultiplier", race->get_ap_regen_multiplier());
     race->set_ap_regen_multiplier(ap_regen_multiplier);
 
+    int skill_points = XMLUtils::get_child_node_int_value(race_node, "SkillPoints", race->get_skill_points());
+    race->set_skill_points(skill_points);
+
     string race_level_script = XMLUtils::get_child_node_value(race_node, "LevelScript");
     race->set_level_script(race_level_script);
   }
