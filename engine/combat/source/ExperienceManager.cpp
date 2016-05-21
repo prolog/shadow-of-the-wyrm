@@ -182,7 +182,7 @@ void ExperienceManager::level_up(CreaturePtr creature)
 
     gain_level(creature);
     gain_hp_and_ap(creature);
-    gain_statistics_if_necessary(creature);
+    gain_statistics(creature);
     run_level_script(creature);
   }
 }
@@ -245,11 +245,18 @@ void ExperienceManager::gain_hp_and_ap(CreaturePtr creature)
   }
 }
 
-void ExperienceManager::gain_statistics_if_necessary(CreaturePtr creature)
+void ExperienceManager::gain_statistics(CreaturePtr creature)
 {
   if (creature)
   {
-    // JCD TODO
+    RaceManager rm;
+    RacePtr race = rm.get_race(creature->get_race_id());
+
+    if (race != nullptr)
+    {
+      int skill_pts = race->get_skill_points();
+      creature->increment_skill_points(skill_pts);
+    }
   }
 }
 

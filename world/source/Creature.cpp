@@ -24,6 +24,7 @@ Creature::Creature()
 , colour(Colour::COLOUR_WHITE)
 , experience_value(0)
 , experience_points(0)
+, skill_points(0)
 , turns(0)
 // Everything else is a string, Statistic, etc, and is not a primitive type.  These'll have their own constructors.
 // Religion defaults to atheist.
@@ -107,6 +108,7 @@ Creature::Creature(const Creature& cr)
   religion = cr.religion;
   experience_value = cr.experience_value;
   experience_points = cr.experience_points;
+  skill_points = cr.skill_points;
   turns = cr.turns;
   targets = cr.targets;  
   hunger = cr.hunger;
@@ -190,6 +192,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (religion == cr.religion);
   result = result && (experience_value == cr.experience_value);
   result = result && (experience_points == cr.experience_points);
+  result = result && (skill_points == cr.skill_points);
   result = result && (turns == cr.turns);
   result = result && (targets == cr.targets);
   result = result && (hunger == cr.hunger);
@@ -891,6 +894,21 @@ uint Creature::get_experience_points() const
   return experience_points;
 }
 
+void Creature::set_skill_points(const int new_skill_points)
+{
+  skill_points = new_skill_points;
+}
+
+void Creature::increment_skill_points(const int incr_amount)
+{
+  skill_points += incr_amount;
+}
+
+int Creature::get_skill_points() const
+{
+  return skill_points;
+}
+
 void Creature::increment_turns()
 {
   if (turns < numeric_limits<ulonglong>::max())
@@ -1162,10 +1180,10 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 912, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 920, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 824, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 832, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
 	static_assert(sizeof(*this) == 424, "Unexpected sizeof Creature.");
@@ -1224,6 +1242,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->religion, cr.religion);
   std::swap(this->experience_value, cr.experience_value);
   std::swap(this->experience_points, cr.experience_points);
+  std::swap(this->skill_points, cr.skill_points);
   std::swap(this->turns, cr.turns);
   std::swap(this->targets, cr.targets);
   std::swap(this->hunger, cr.hunger);
@@ -1316,6 +1335,7 @@ bool Creature::serialize(ostream& stream) const
 
   Serialize::write_uint(stream, experience_value);
   Serialize::write_uint(stream, experience_points);
+  Serialize::write_int(stream, skill_points);
   Serialize::write_ulonglong(stream, turns);
 
   Serialize::write_size_t(stream, targets.size());
@@ -1459,6 +1479,7 @@ bool Creature::deserialize(istream& stream)
 
   Serialize::read_uint(stream, experience_value);
   Serialize::read_uint(stream, experience_points);
+  Serialize::read_int(stream, skill_points);
   Serialize::read_ulonglong(stream, turns);
 
   size_t targets_size = 0;
