@@ -38,6 +38,13 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - Created a new epic poem, to be added to with each release, found in
   the library of Atua-Elar.
 
+- Each race now has an associated number of skill points that they gain
+  per level.  Humans and Snakelings are the most adaptive, and gain skill
+  the fastest this way (12 points each).  Fae and Giants are the most
+  hidebound as a people, and very set in their ways (8 each).  Between the
+  two extremes are Dwarves and Wood Elves (9); Goblins and Ogres (10); and
+  Gnomes and Mountain Elves (11).
+
 - New creatures: goblin trapper, corpse fiend.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.

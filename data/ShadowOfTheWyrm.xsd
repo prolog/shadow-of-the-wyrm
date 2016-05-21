@@ -241,6 +241,7 @@
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 			<xs:element name="HPRegenMultiplier" type="xs:float"/>
 			<xs:element name="APRegenMultiplier" type="xs:float"/>
+			<xs:element name="SkillPoints" type="xs:integer"/>
 			<xs:element name="LevelScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>

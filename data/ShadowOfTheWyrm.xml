@@ -397,6 +397,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>		
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
@@ -457,6 +458,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>		
 		<Race id="_construct">
 			<UserPlayable>0</UserPlayable>
@@ -517,6 +519,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>		
 		<Race id="_demon">
 			<UserPlayable>0</UserPlayable>
@@ -577,6 +580,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>10</SkillPoints>
 		</Race>		
 		<Race id="_divine">
 			<UserPlayable>0</UserPlayable>
@@ -637,6 +641,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>8</SkillPoints>
 		</Race>		
 		<Race id="_humanoid">
 			<UserPlayable>0</UserPlayable>
@@ -697,6 +702,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>10</SkillPoints>
 		</Race>
 		<Race id="_insect">
 			<UserPlayable>0</UserPlayable>
@@ -757,6 +763,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>		
 		<Race id="_jelly">
 			<UserPlayable>0</UserPlayable>
@@ -817,6 +824,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>
 		<Race id="_monster">
 			<UserPlayable>0</UserPlayable>
@@ -877,6 +885,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>		
 		<Race id="_plant">
 			<UserPlayable>0</UserPlayable>
@@ -937,6 +946,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>		
 		<Race id="_undead">
 			<UserPlayable>0</UserPlayable>
@@ -992,6 +1002,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>
 		<Race id="_corporeal_undead" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
@@ -1050,6 +1061,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>
 		<Race id="_spirit" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
@@ -1107,6 +1119,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>
 		<Race id="_dragon">
 			<UserPlayable>0</UserPlayable>
@@ -1161,6 +1174,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
 		</Race>
 		<Race id="01_human" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -1242,6 +1256,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>12</SkillPoints>
 			<LevelScript>level/human.lua</LevelScript>
 		</Race>
 		<Race id="02_woodelf" parent_id="_humanoid">
@@ -1316,6 +1331,7 @@
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
 			<HPRegenMultiplier>0.9</HPRegenMultiplier>
 			<APRegenMultiplier>1.25</APRegenMultiplier>
+			<SkillPoints>9</SkillPoints>
 			<LevelScript>level/wood_elf.lua</LevelScript>
 		</Race>
 		<Race id="03_mountainelf" parent_id="_humanoid">
@@ -1391,6 +1407,7 @@
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 			<HPRegenMultiplier>1.1</HPRegenMultiplier>
 			<APRegenMultiplier>1.05</APRegenMultiplier>
+			<SkillPoints>11</SkillPoints>
 			<LevelScript>level/mountain_elf.lua</LevelScript>
 		</Race>
 		<Race id="04_snakeling" parent_id="_humanoid">
@@ -1463,6 +1480,7 @@
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 			<HPRegenMultiplier>0.9</HPRegenMultiplier>
 			<APRegenMultiplier>1.1</APRegenMultiplier>
+			<SkillPoints>12</SkillPoints>
 			<LevelScript>level/snakeling.lua</LevelScript>
 		</Race>
 		<Race id="05_fae" parent_id="_humanoid">
@@ -1537,6 +1555,7 @@
 			<ExperienceMultiplier>1.9</ExperienceMultiplier>
 			<HPRegenMultiplier>0.8</HPRegenMultiplier>
 			<APRegenMultiplier>1.4</APRegenMultiplier>
+			<SkillPoints>8</SkillPoints>
 			<LevelScript>level/fae.lua</LevelScript>
 		</Race>
 		<Race id="06_dwarf" parent_id="_humanoid">
@@ -1610,6 +1629,7 @@
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 			<HPRegenMultiplier>1.2</HPRegenMultiplier>
 			<APRegenMultiplier>0.9</APRegenMultiplier>
+			<SkillPoints>9</SkillPoints>
 			<LevelScript>level/dwarf.lua</LevelScript>
 		</Race>
 		<Race id="07_goblin" parent_id="_humanoid">
@@ -1684,6 +1704,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.0</HPRegenMultiplier>
 			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>10</SkillPoints>
 			<LevelScript>level/goblin.lua</LevelScript>
 		</Race>
 		<Race id="08_ogre" parent_id="_humanoid">
@@ -1754,6 +1775,7 @@
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
 			<HPRegenMultiplier>1.3</HPRegenMultiplier>
 			<APRegenMultiplier>0.8</APRegenMultiplier>
+			<SkillPoints>10</SkillPoints>
 			<LevelScript>level/ogre.lua</LevelScript>
 		</Race>
 		<Race id="09_giant" parent_id="_humanoid">
@@ -1825,6 +1847,7 @@
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 			<HPRegenMultiplier>1.25</HPRegenMultiplier>
 			<APRegenMultiplier>0.8</APRegenMultiplier>
+			<SkillPoints>8</SkillPoints>
 			<LevelScript>level/giant.lua</LevelScript>
 		</Race>
 		<Race id="10_gnome" parent_id="_humanoid">
@@ -1898,6 +1921,7 @@
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
 			<HPRegenMultiplier>0.85</HPRegenMultiplier>
 			<APRegenMultiplier>1.25</APRegenMultiplier>
+			<SkillPoints>11</SkillPoints>
 			<LevelScript>level/gnome.lua</LevelScript>
 		</Race>
 	</Races>
