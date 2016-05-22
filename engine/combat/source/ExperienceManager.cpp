@@ -6,6 +6,7 @@
 #include "MessageManagerFactory.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
+#include "SkillsScreen.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
@@ -174,8 +175,11 @@ void ExperienceManager::level_up(CreaturePtr creature)
   {
     if (creature->get_is_player())
     {
+      // Add a paused message so that the player understands that they gain a
+      // level.  After this, the skills screen will be shown.
       string level_up_message = StringTable::get(TextKeys::GAIN_LEVEL);
-      manager.add_new_message(level_up_message, Colour::COLOUR_BOLD_YELLOW);
+      manager.add_new_message_with_pause(level_up_message, Colour::COLOUR_BOLD_YELLOW);
+      creature->get_decision_strategy()->get_confirmation();
       manager.send();
       // Should monsters' level-ups be broadcast?
     }    
@@ -310,6 +314,9 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
 
 void ExperienceManager::gain_skills(CreaturePtr creature)
 {
+  Game& game = Game::instance();
+  SkillCategory category = SkillCategory::SKILL_CATEGORY_GENERAL;
+
   // JCD FIXME: Later, figure out a reasonable way of assigning new skills
   // to NPCs when they level up.
   if (creature != nullptr && creature->get_is_player())
@@ -321,6 +328,9 @@ void ExperienceManager::gain_skills(CreaturePtr creature)
       // Show the Skills screen.
       // Instead of the default skills command processor, use the
       // GainSkillsCommandProcessor.
+      SkillsScreen ss(game.get_display(), creature, category, SkillsScreenMode::SKILLS_SCREEN_MODE_IMPROVE_SKILL);
+      string display_s = ss.display();
+      int input = display_s.at(0);
     }
   }
 }
