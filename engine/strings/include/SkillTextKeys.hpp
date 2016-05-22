@@ -6,6 +6,7 @@ class SkillTextKeys
   public:
     // General (NWP)
     static const std::string SKILLS_GENERAL;
+    static const std::string SKILLS_IMPROVE_GENERAL;
     static const std::string SKILL_GENERAL_ARCHERY;
     static const std::string SKILL_GENERAL_ARCHERY_INCREMENT;
     static const std::string SKILL_GENERAL_AWARENESS;
@@ -109,6 +110,7 @@ class SkillTextKeys
 
     // Weapon (Melee)
     static const std::string SKILLS_WEAPON;
+    static const std::string SKILLS_IMPROVE_WEAPON;
     static const std::string SKILL_MELEE_AXES;
     static const std::string SKILL_MELEE_AXES_INCREMENT;
     static const std::string SKILL_MELEE_SHORT_BLADES;
@@ -132,6 +134,7 @@ class SkillTextKeys
 
     // Weapon (Ranged)
     static const std::string SKILLS_RANGED_WEAPON;
+    static const std::string SKILLS_IMPROVE_RANGED_WEAPON;
     static const std::string SKILL_RANGED_AXES;
     static const std::string SKILL_RANGED_AXES_INCREMENT;
     static const std::string SKILL_RANGED_BLADES;
@@ -155,6 +158,7 @@ class SkillTextKeys
 
     // Magic
     static const std::string SKILLS_MAGIC;
+    static const std::string SKILLS_IMPROVE_MAGIC;
     static const std::string SKILL_MAGIC_ARCANE;
     static const std::string SKILL_MAGIC_ARCANE_INCREMENT;
     static const std::string SKILL_MAGIC_DIVINE;

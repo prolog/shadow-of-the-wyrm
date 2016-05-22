@@ -35,7 +35,7 @@ ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
     // action (-1), then exit and return the cost.
     while (action_cost_value == 0)
     {
-      SkillsScreen ss(game.get_display(), creature, category);
+      SkillsScreen ss(game.get_display(), creature, category, SkillsScreenMode::SKILLS_SCREEN_MODE_SELECT_SKILL);
       string display_s = ss.display();
       int input = display_s.at(0);
       char screen_selection = display_s.at(0);
