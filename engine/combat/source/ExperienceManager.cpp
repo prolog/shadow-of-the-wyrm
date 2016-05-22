@@ -184,6 +184,7 @@ void ExperienceManager::level_up(CreaturePtr creature)
     gain_hp_and_ap(creature);
     gain_statistics(creature);
     run_level_script(creature);
+    gain_skills(creature);
   }
 }
 
@@ -303,6 +304,23 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
       // appropriately.
       CreaturePtr nullcr;
       se.set_creature(nullcr);
+    }
+  }
+}
+
+void ExperienceManager::gain_skills(CreaturePtr creature)
+{
+  // JCD FIXME: Later, figure out a reasonable way of assigning new skills
+  // to NPCs when they level up.
+  if (creature != nullptr && creature->get_is_player())
+  {
+    int skill_pts = creature->get_skill_points();
+
+    if (skill_pts > 0)
+    {
+      // Show the Skills screen.
+      // Instead of the default skills command processor, use the
+      // GainSkillsCommandProcessor.
     }
   }
 }
