@@ -197,7 +197,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::SHOW_SKILLS)
       {
-        ac = game.actions.show_skills(creature);
+        ac = game.actions.show_skills(creature, SkillsSelectionType::SKILLS_SELECTION_SELECT_SKILL);
       }
       else if (command_name == CommandKeys::LATEST_MESSAGES)
       {

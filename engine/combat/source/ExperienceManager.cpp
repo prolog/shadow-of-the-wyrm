@@ -6,6 +6,8 @@
 #include "MessageManagerFactory.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
+#include "SkillsCommandFactory.hpp"
+#include "SkillsKeyboardCommandMap.hpp"
 #include "SkillsScreen.hpp"
 #include "TextKeys.hpp"
 
@@ -325,12 +327,9 @@ void ExperienceManager::gain_skills(CreaturePtr creature)
 
     if (skill_pts > 0)
     {
-      // Show the Skills screen.
-      // Instead of the default skills command processor, use the
-      // GainSkillsCommandProcessor.
-      SkillsScreen ss(game.get_display(), creature, category, SkillsScreenMode::SKILLS_SCREEN_MODE_IMPROVE_SKILL);
-      string display_s = ss.display();
-      int input = display_s.at(0);
+      // Show the Skills screen.  Indicate that this is a "Skill Improvement"
+      // screen so that the appropriate command processor can be created.
+      game.get_action_manager_ref().show_skills(creature, SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL);
     }
   }
 }

@@ -1,14 +1,15 @@
 #pragma once
 #include <map>
 #include "IActionManager.hpp"
+#include "SkillTypes.hpp"
 
-class ShowSkillsAction : public IActionManager
+class SkillsAction : public IActionManager
 {
   public:
-    ShowSkillsAction();
-    bool operator==(const ShowSkillsAction& ssa) const;
+    SkillsAction();
+    bool operator==(const SkillsAction& ssa) const;
 
-    ActionCostValue show_skills(CreaturePtr creature);
+    ActionCostValue show_skills(CreaturePtr creature, const SkillsSelectionType sst);
     ActionCostValue show_general_skills(CreaturePtr creature);
     ActionCostValue show_melee_weapon_skills(CreaturePtr creature);
     ActionCostValue show_ranged_weapon_skills(CreaturePtr creature);
