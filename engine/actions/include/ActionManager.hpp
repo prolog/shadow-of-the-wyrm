@@ -10,7 +10,7 @@
 #include "QuaffAction.hpp"
 #include "RangedCombatAction.hpp"
 #include "SelectTileTypes.hpp"
-#include "ShowSkillsAction.hpp"
+#include "SkillsAction.hpp"
 #include "TileSelectionAction.hpp"
 #include "WeaponTypes.hpp"
 
@@ -104,7 +104,7 @@ class ActionManager : public ISerializable
     // Show a creature's (well, the player's) resistances and vulnerabilities.
     ActionCost show_resistances(CreaturePtr creature);
     ActionCost show_conducts(CreaturePtr creature);
-    ActionCost show_skills(CreaturePtr creature);
+    ActionCost show_skills(CreaturePtr creature, SkillsSelectionType sst);
 
     // Display the message buffer
     ActionCost latest_messages(CreaturePtr creature);
@@ -136,7 +136,7 @@ class ActionManager : public ISerializable
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 
-    ShowSkillsAction& get_show_skills_action_ref();
+    SkillsAction& get_skills_action_ref();
 
     // Quits the game.  Right now this just sets a boolean flag in the game loop to be false, so there will need to be
     // additional work done later to compensate for pending actions, etc.
@@ -154,7 +154,7 @@ class ActionManager : public ISerializable
     TileSelectionAction tile_selection_action;
     RangedCombatAction ranged_combat_action;
     QuaffAction quaff_action;
-    ShowSkillsAction show_skills_action;
+    SkillsAction skills_action;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

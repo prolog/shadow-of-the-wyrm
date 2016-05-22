@@ -1,25 +1,25 @@
 #include <vector>
 #include "Game.hpp"
-#include "ShowSkillsAction.hpp"
+#include "SkillsAction.hpp"
 #include "SkillsCommandFactory.hpp"
-#include "SkillsCommandProcessor.hpp"
+#include "SkillsCommandProcessorFactory.hpp"
 #include "SkillsKeyboardCommandMap.hpp"
 #include "SkillsScreen.hpp"
 #include "TextDisplayScreen.hpp"
 
 using namespace std;
 
-ShowSkillsAction::ShowSkillsAction()
+SkillsAction::SkillsAction()
 : category(SkillCategory::SKILL_CATEGORY_GENERAL)
 {
 }
 
-bool ShowSkillsAction::operator==(const ShowSkillsAction& ssa) const
+bool SkillsAction::operator==(const SkillsAction& ssa) const
 {
   return (category == ssa.category);
 }
 
-ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
+ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSelectionType sst)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -31,18 +31,20 @@ ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
 
   if (decision_strategy)
   {
+    ISkillsCommandProcessorPtr scp = SkillsCommandProcessorFactory::create(sst);
+
     // If we've received an action that actually has a cost (> 0), or an exit
     // action (-1), then exit and return the cost.
     while (action_cost_value == 0)
     {
-      SkillsScreen ss(game.get_display(), creature, category, SkillsScreenMode::SKILLS_SCREEN_MODE_SELECT_SKILL);
+      SkillsScreen ss(game.get_display(), creature, category, sst);
       string display_s = ss.display();
       int input = display_s.at(0);
       char screen_selection = display_s.at(0);
 
       SkillType st = ss.get_selected_skill(screen_selection);
       CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, &input);
-      action_cost_value = SkillsCommandProcessor::process(creature, skills_command, map, st);
+      action_cost_value = scp->process(creature, skills_command, map, st);
     }
   }
 
@@ -51,32 +53,32 @@ ActionCostValue ShowSkillsAction::show_skills(CreaturePtr creature)
   return action_cost_value;
 }
 
-ActionCostValue ShowSkillsAction::show_general_skills(CreaturePtr creature)
+ActionCostValue SkillsAction::show_general_skills(CreaturePtr creature)
 {
   category = SkillCategory::SKILL_CATEGORY_GENERAL;
   return get_action_cost_value(creature);
 }
 
-ActionCostValue ShowSkillsAction::show_melee_weapon_skills(CreaturePtr creature)
+ActionCostValue SkillsAction::show_melee_weapon_skills(CreaturePtr creature)
 {
   category = SkillCategory::SKILL_CATEGORY_MELEE;
   return get_action_cost_value(creature);
 }
 
-ActionCostValue ShowSkillsAction::show_ranged_weapon_skills(CreaturePtr creature)
+ActionCostValue SkillsAction::show_ranged_weapon_skills(CreaturePtr creature)
 {
   category = SkillCategory::SKILL_CATEGORY_RANGED;
   return get_action_cost_value(creature);
 }
 
-ActionCostValue ShowSkillsAction::show_magic_skills(CreaturePtr creature)
+ActionCostValue SkillsAction::show_magic_skills(CreaturePtr creature)
 {
   category = SkillCategory::SKILL_CATEGORY_MAGIC;
   return get_action_cost_value(creature);
 }
 
 // Looking at skills is always free.
-ActionCostValue ShowSkillsAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue SkillsAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }

@@ -65,7 +65,7 @@ bool ActionManager::operator==(const ActionManager& am) const
   result = result && (tile_selection_action == am.tile_selection_action);
   result = result && (ranged_combat_action == am.ranged_combat_action);
   result = result && (quaff_action == am.quaff_action);
-  result = result && (show_skills_action == am.show_skills_action);
+  result = result && (skills_action == am.skills_action);
 
   return result;
 }
@@ -398,9 +398,9 @@ ActionCost ActionManager::show_conducts(CreaturePtr creature)
   return get_action_cost(creature, sca.show_conducts(creature));
 }
 
-ActionCost ActionManager::show_skills(CreaturePtr creature)
+ActionCost ActionManager::show_skills(CreaturePtr creature, SkillsSelectionType sst)
 {
-  return get_action_cost(creature, show_skills_action.show_skills(creature));
+  return get_action_cost(creature, skills_action.show_skills(creature, sst));
 }
 
 ActionCost ActionManager::latest_messages(CreaturePtr creature)
@@ -646,9 +646,9 @@ ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCost
   return ac;
 }
 
-ShowSkillsAction& ActionManager::get_show_skills_action_ref()
+SkillsAction& ActionManager::get_skills_action_ref()
 {
-  return show_skills_action;
+  return skills_action;
 }
 
 bool ActionManager::serialize(std::ostream& stream) const

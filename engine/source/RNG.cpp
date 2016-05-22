@@ -40,7 +40,7 @@ float RNG::range_f(const float min, const float max)
   std::mt19937 gen(rng);
   std::uniform_real_distribution<> dis(min, max);
 
-  return dis(rng);
+  return static_cast<float>(dis(rng));
 }
 
 // D&D-style dice: roll XdY+Z, either by providing a Dice object, or

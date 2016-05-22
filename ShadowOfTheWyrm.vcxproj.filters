@@ -3675,9 +3675,6 @@
     <ClInclude Include="engine\actions\include\BreedAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\ShowSkillsAction.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\commands\skills\include\SkillsCommandFactory.hpp">
       <Filter>Header Files\engine\commands\skills\include</Filter>
     </ClInclude>
@@ -3685,9 +3682,6 @@
       <Filter>Header Files\engine\commands\skills\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\commands\skills\include\SkillsCommands.hpp">
-      <Filter>Header Files\engine\commands\skills\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\commands\skills\include\SkillsCommandProcessor.hpp">
       <Filter>Header Files\engine\commands\skills\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\commands\skills\include\SkillsKeyboardCommandMap.hpp">
@@ -3734,6 +3728,21 @@
     </ClInclude>
     <ClInclude Include="engine\maps\include\MapMovementTypes.hpp">
       <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\skills\include\GainSkillsCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\skills\include\ISkillsCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\skills\include\ShowSkillsCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\skills\include\SkillsCommandProcessorFactory.hpp">
+      <Filter>Header Files\engine\commands\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\SkillsAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7226,9 +7235,6 @@
     <ClCompile Include="engine\actions\source\BreedAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\source\ShowSkillsAction.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\commands\skills\source\SkillsCommandFactory.cpp">
       <Filter>Source Files\engine\commands\skills\source</Filter>
     </ClCompile>
@@ -7239,9 +7245,6 @@
       <Filter>Source Files\engine\commands\skills\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\commands\skills\source\SkillsCommands.cpp">
-      <Filter>Source Files\engine\commands\skills\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\commands\skills\source\SkillsCommandProcessor.cpp">
       <Filter>Source Files\engine\commands\skills\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\commands\skills\source\SkillsKeyboardCommandMap.cpp">
@@ -7288,6 +7291,24 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\FishingCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\GainSkillsCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\ShowSkillsCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\SkillsCommandProcessorFactory.cpp">
+      <Filter>Source Files\engine\commands\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\unit_tests\SkillsCommandProcessorFactory_test.cpp">
+      <Filter>Source Files\engine\commands\skills\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\unit_tests\SkillsKeyboardCommandMap_test.cpp">
+      <Filter>Source Files\engine\commands\skills\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\SkillsAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,27 +1,19 @@
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
-#include "ShowSkillsAction.hpp"
+#include "SkillsAction.hpp"
 #include "SkillProcessorFactory.hpp"
 #include "SkillTextKeys.hpp"
 #include "SkillsCommandKeys.hpp"
-#include "SkillsCommandProcessor.hpp"
+#include "ShowSkillsCommandProcessor.hpp"
 #include "SkillsCommands.hpp"
 
 using namespace std;
 
-SkillsCommandProcessor::SkillsCommandProcessor()
-{
-}
-
-SkillsCommandProcessor::~SkillsCommandProcessor()
-{
-}
-
-ActionCostValue SkillsCommandProcessor::process(CreaturePtr creature, CommandPtr command, MapPtr map, const SkillType st)
+ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, CommandPtr command, MapPtr map, const SkillType st)
 {
   ActionCostValue process_result = 0;
   Game& game = Game::instance();
-  ShowSkillsAction& ssa = game.get_action_manager_ref().get_show_skills_action_ref();
+  SkillsAction& ssa = game.get_action_manager_ref().get_skills_action_ref();
 
   if (creature && command)
   {
