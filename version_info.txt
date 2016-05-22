@@ -45,7 +45,7 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   two extremes are Dwarves and Wood Elves (9); Goblins and Ogres (10); and
   Gnomes and Mountain Elves (11).
 
-- New creatures: goblin trapper, corpse fiend.
+- New creatures: goblin trapper, corpse fiend, Shale.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
