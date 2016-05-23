@@ -76,7 +76,15 @@ void MessageManager::alert(const string& message)
 {
   if (user_display != nullptr)
   {
-    user_display->add_alert(message + " ...");
+    user_display->add_alert(message + " ...", true /* require user input */);
+  }
+}
+
+void MessageManager::alert_text(const string& message)
+{
+  if (user_display != nullptr)
+  {
+    user_display->add_alert(message, false /* no user input */);
   }
 }
 

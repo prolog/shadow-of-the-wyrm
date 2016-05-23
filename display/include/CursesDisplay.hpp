@@ -28,7 +28,7 @@ class CursesDisplay : public Display
 
     // Adds a message in the current window, clearing any existing messages and
     // requiring user input.
-    void add_alert(const std::string& message) override;
+    void add_alert(const std::string& message, const bool require_input) override;
 
     // Functions to add messages to the message buffer.
     void add_message(const std::string& message, const bool reset_prompt) override;

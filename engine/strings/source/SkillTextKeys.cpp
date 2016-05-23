@@ -12,6 +12,8 @@ SkillTextKeys::~SkillTextKeys()
 {
 }
 
+const string SkillTextKeys::SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN = "SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN";
+
 // SkillTextKeys
 // General (NWP)
 const string SkillTextKeys::SKILLS_GENERAL = "SKILLS_GENERAL";

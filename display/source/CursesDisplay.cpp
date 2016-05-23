@@ -326,7 +326,7 @@ void CursesDisplay::clear_display()
   clear();
 }
 
-void CursesDisplay::add_alert(const string& message)
+void CursesDisplay::add_alert(const string& message, const bool require_input)
 {
   message_buffer_screen = get_current_screen();
 
@@ -334,8 +334,13 @@ void CursesDisplay::add_alert(const string& message)
   clear_message_buffer();
   add_message(message, Colour::COLOUR_BOLD_RED, false);
   wrefresh(message_buffer_screen);
-  wgetch(message_buffer_screen);
-  clear_message_buffer();
+
+  if (require_input)
+  {
+    wgetch(message_buffer_screen);
+    clear_message_buffer();
+  }
+
   curs_set(prev_curs_state);
 
   message_buffer_screen = nullptr;
