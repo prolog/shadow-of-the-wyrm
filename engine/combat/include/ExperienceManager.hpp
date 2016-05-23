@@ -23,7 +23,6 @@ protected:
     void gain_level(CreaturePtr creature);
     void gain_hp_and_ap(CreaturePtr creature);
     void gain_statistics(CreaturePtr creature);
-    void gain_skills(CreaturePtr creature);
     
     // The actual experience table
     static const uint base_experience_table[];
