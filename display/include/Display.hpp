@@ -31,7 +31,7 @@ class Display : public ISerializable
 
     // Adds a message in the current window, clearing any existing messages and
     // requiring user input.
-    virtual void add_alert(const std::string& message) = 0;
+    virtual void add_alert(const std::string& message, const bool prompt_for_input) = 0;
 
     // Add a message to display to the user
     virtual void add_message(const std::string& message, const bool reset_cursor) = 0;

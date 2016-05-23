@@ -13,7 +13,7 @@ ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, Comman
 {
   ActionCostValue process_result = 0;
   Game& game = Game::instance();
-  SkillsAction& ssa = game.get_action_manager_ref().get_skills_action_ref();
+  SkillsAction& sa = game.get_action_manager_ref().get_skills_action_ref();
 
   if (creature && command)
   {
@@ -21,19 +21,19 @@ ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, Comman
 
     if (command_name == SkillsCommandKeys::GENERAL_SKILLS)
     {
-      return ssa.show_general_skills(creature);
+      return sa.show_general_skills(creature);
     }
     else if (command_name == SkillsCommandKeys::MELEE_WEAPON_SKILLS)
     {
-      return ssa.show_melee_weapon_skills(creature);
+      return sa.show_melee_weapon_skills(creature);
     }
     else if (command_name == SkillsCommandKeys::RANGED_WEAPON_SKILLS)
     {
-      return ssa.show_ranged_weapon_skills(creature);
+      return sa.show_ranged_weapon_skills(creature);
     }
     else if (command_name == SkillsCommandKeys::MAGIC_SKILLS)
     {
-      return ssa.show_magic_skills(creature);
+      return sa.show_magic_skills(creature);
     }
     else if (command_name == SkillsCommandKeys::SELECT_SKILL)
     {
