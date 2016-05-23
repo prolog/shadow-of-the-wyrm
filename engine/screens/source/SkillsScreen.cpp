@@ -34,6 +34,12 @@ void SkillsScreen::initialize()
   if (s_it != screen_titles.end())
   {
     title_text_sid = s_it->second[sst];
+
+    if (sst == SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL && creature != nullptr)
+    {
+      int skill_pts_remaining = creature->get_skill_points();
+      title_text_sid = SkillTextKeys::get_skill_improvement_message(title_text_sid, skill_pts_remaining);
+    }
   }
 
   auto sty_it = skills_for_category.find(category);

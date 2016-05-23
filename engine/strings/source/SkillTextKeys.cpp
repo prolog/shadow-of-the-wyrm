@@ -1,4 +1,6 @@
+#include <boost/algorithm/string/replace.hpp>
 #include "SkillTextKeys.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 
@@ -201,3 +203,13 @@ const string SkillTextKeys::SKILL_USAGE_SMITHING = "SKILL_USAGE_SMITHING";
 const string SkillTextKeys::SKILL_USAGE_SWIMMING = "SKILL_USAGE_SWIMMING";
 const string SkillTextKeys::SKILL_USAGE_TANNING = "SKILL_USAGE_TANNING";
 const string SkillTextKeys::SKILL_USAGE_WEAVING = "SKILL_USAGE_WEAVING";
+
+string SkillTextKeys::get_skill_improvement_message(const string& title_text_sid, const int pts_remaining)
+{
+  string message = StringTable::get(title_text_sid);
+
+  boost::replace_first(message, "%s", to_string(pts_remaining));
+  message[0] = toupper(message[0]);
+
+  return message;
+}

@@ -40,6 +40,7 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
 {
   bool experience_gained = false;
   int levels_gained = 0;
+  Game& game = Game::instance();
 
   if (creature)
   {
@@ -59,7 +60,17 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
   // If we've gained at least one level, display the skill advancement screen.
   if (levels_gained > 0)
   {
-    // ...
+    if (creature != nullptr && creature->get_is_player())
+    {
+      int skill_pts = creature->get_skill_points();
+
+      if (skill_pts > 0)
+      {
+        // Show the Skills screen.  Indicate that this is a "Skill Improvement"
+        // screen so that the appropriate command processor can be created.
+        game.get_action_manager_ref().show_skills(creature, SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL);
+      }
+    }
   }
   
   return experience_gained;
@@ -190,7 +201,6 @@ void ExperienceManager::level_up(CreaturePtr creature)
     gain_hp_and_ap(creature);
     gain_statistics(creature);
     run_level_script(creature);
-    gain_skills(creature);
   }
 }
 
@@ -310,26 +320,6 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
       // appropriately.
       CreaturePtr nullcr;
       se.set_creature(nullcr);
-    }
-  }
-}
-
-void ExperienceManager::gain_skills(CreaturePtr creature)
-{
-  Game& game = Game::instance();
-  SkillCategory category = SkillCategory::SKILL_CATEGORY_GENERAL;
-
-  // JCD FIXME: Later, figure out a reasonable way of assigning new skills
-  // to NPCs when they level up.
-  if (creature != nullptr && creature->get_is_player())
-  {
-    int skill_pts = creature->get_skill_points();
-
-    if (skill_pts > 0)
-    {
-      // Show the Skills screen.  Indicate that this is a "Skill Improvement"
-      // screen so that the appropriate command processor can be created.
-      game.get_action_manager_ref().show_skills(creature, SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL);
     }
   }
 }
