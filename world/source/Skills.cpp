@@ -1585,6 +1585,9 @@ ClassIdentifier PrimordialMagicSkill::internal_class_identifier() const
 }
 
 // Skills
+
+const int Skills::MAX_SKILL_VALUE = 100;
+
 Skills::Skills()
 {
   initialize_skills();
@@ -1712,6 +1715,18 @@ void Skills::set_skill(const SkillType& st, const SkillPtr skill)
   skills[st] = skill;
 }
 
+void Skills::set_all_to(const int val)
+{
+  for (auto& s_it : skills)
+  {
+    SkillPtr cur_skill = s_it.second;
+
+    if (cur_skill != nullptr)
+    {
+      cur_skill->set_value(val);
+    }
+  }
+}
 SkillPtr Skills::get_skill(const SkillType& st) const
 {
   SkillPtr result;
@@ -1724,6 +1739,29 @@ SkillPtr Skills::get_skill(const SkillType& st) const
   }
 
   return result;
+}
+
+bool Skills::has_trainable_skill() const
+{
+  bool has_ts = false;
+
+  for (const auto& sk_it : skills)
+  {
+    SkillPtr skill = sk_it.second;
+
+    if (skill != nullptr)
+    {
+      int val = skill->get_value();
+      
+      if (val < MAX_SKILL_VALUE && (val > 0 || skill->can_train_from_unlearned()))
+      {
+        has_ts = true;
+        break;
+      }
+    }
+  }
+
+  return has_ts;
 }
 
 string Skills::str() const

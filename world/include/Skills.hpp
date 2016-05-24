@@ -947,8 +947,10 @@ class Skills : public ISerializable
     int get_value_incr_marks(const SkillType& skill_name);
     
     void set_skill(const SkillType& skill_name, SkillPtr skill);
+    void set_all_to(const int val);
     SkillPtr get_skill(const SkillType& st) const;
 
+    bool has_trainable_skill() const;
     std::string str() const;
     
     RawSkillMap& get_raw_skills_ref();
@@ -966,6 +968,8 @@ class Skills : public ISerializable
     void initialize_magic_skills();
 
     RawSkillMap skills;
+
+    static const int MAX_SKILL_VALUE;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
