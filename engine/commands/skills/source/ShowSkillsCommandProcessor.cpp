@@ -9,6 +9,11 @@
 
 using namespace std;
 
+bool ShowSkillsCommandProcessor::can_process(CreaturePtr creature)
+{
+  return (creature && creature->get_is_player());
+}
+
 ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, CommandPtr command, MapPtr map, const SkillType st)
 {
   ActionCostValue process_result = 0;
@@ -63,3 +68,7 @@ ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, Comman
 
   return process_result;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ShowSkillsCommandProcessor_test.cpp"
+#endif

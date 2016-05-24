@@ -35,7 +35,7 @@ ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSele
 
     // If we've received an action that actually has a cost (> 0), or an exit
     // action (-1), then exit and return the cost.
-    while (action_cost_value == 0)
+    while (action_cost_value == 0 && scp->can_process(creature))
     {
       SkillsScreen ss(game.get_display(), creature, category, sst);
       string display_s = ss.display();

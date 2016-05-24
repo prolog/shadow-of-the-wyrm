@@ -10,6 +10,21 @@
 
 using namespace std;
 
+bool GainSkillsCommandProcessor::can_process(CreaturePtr creature)
+{
+  int skill_pts = 0;
+  Skills skills;
+
+  if (creature)
+  {
+    skill_pts = creature->get_skill_points();
+    skills = creature->get_skills();
+  }
+
+  return (skill_pts > 0 && skills.has_trainable_skill());
+
+}
+
 ActionCostValue GainSkillsCommandProcessor::process(CreaturePtr creature, CommandPtr command, MapPtr map, const SkillType st)
 {
   ActionCostValue process_result = 0;
@@ -69,3 +84,7 @@ ActionCostValue GainSkillsCommandProcessor::process(CreaturePtr creature, Comman
 
   return process_result;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/GainSkillsCommandProcessor_test.cpp"
+#endif
