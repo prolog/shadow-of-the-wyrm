@@ -7310,5 +7310,11 @@
     <ClCompile Include="engine\actions\source\SkillsAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\unit_tests\GainSkillsCommandProcessor_test.cpp">
+      <Filter>Source Files\engine\commands\skills\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\unit_tests\ShowSkillsCommandProcessor_test.cpp">
+      <Filter>Source Files\engine\commands\skills\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
