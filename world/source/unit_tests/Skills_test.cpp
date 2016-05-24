@@ -291,6 +291,21 @@ TEST(SW_World_Skills, saveload_magic_skills)
   }
 }
 
+TEST(SW_World_Skills_Skills, has_trainable)
+{
+  Skills s1;
+
+  EXPECT_TRUE(s1.has_trainable_skill());
+
+  s1.set_all_to(100);
+
+  EXPECT_FALSE(s1.has_trainable_skill());
+
+  s1.set_value(SkillType::SKILL_GENERAL_ARCHERY, 30);
+
+  EXPECT_TRUE(s1.has_trainable_skill());
+}
+
 TEST(SW_World_Skills, increment_skills)
 {
   Skills s1;
