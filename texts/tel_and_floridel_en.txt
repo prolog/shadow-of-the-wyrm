@@ -85,6 +85,16 @@ across the moor.  A hunt!  The horses swelled %b
 and surged, to circle round the shepherd's flock. %b
 Encircled by the lords, she never feared %b
 for anything; she raised her voice to talk, %b
-soprano, like a songbird, high and clear %b
-above the fray, a sweetness felt upon the ear.
+soprano free and lilting, high and clear %b
+above the fray, a songbird's call upon the ear.
+%p
+"My name," she said with calm, "is Floridel. %b
+I whither wander here upon these moors, %b
+among the purple flowers, wherein I dwell %b
+with sheep and lamb.  My life, I think, is pure. %b
+I am she who weathers in the hills; %b
+who sleeps among her sheep, and then beholds %b
+the stars above that shine despite the chill; %b
+who watches under weather harsh and cold; %b
+a witness as the seasons say how life unfolds."
 %p
