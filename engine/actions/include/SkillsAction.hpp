@@ -15,6 +15,8 @@ class SkillsAction : public IActionManager
     ActionCostValue show_ranged_weapon_skills(CreaturePtr creature);
     ActionCostValue show_magic_skills(CreaturePtr creature);
 
+    ActionCostValue improve_skill(CreaturePtr creature, const SkillType st);
+
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
   protected:

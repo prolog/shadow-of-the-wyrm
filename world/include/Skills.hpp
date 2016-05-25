@@ -959,6 +959,8 @@ class Skills : public ISerializable
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
+    static const int MAX_SKILL_VALUE;
+
   protected:
     void initialize_skills();
 
@@ -968,8 +970,6 @@ class Skills : public ISerializable
     void initialize_magic_skills();
 
     RawSkillMap skills;
-
-    static const int MAX_SKILL_VALUE;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

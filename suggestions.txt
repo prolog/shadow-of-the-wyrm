@@ -1,16 +1,16 @@
 Me:
+- Add skill points remaining to score function
+- Additional prompt when exiting skill improvement screen at max level (50)
 - Ensure that "A foo dies!" messages come after status effect messages.
 - Special rooms: beer hall, magical workshop.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
-- Add beam widths to spell synopsis.
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
 - Scent maps/track by scent.
 - Stores
 - More monsters with special attacks or death events.
 - Code should handle being started from outside the game's directory.
-- Per-level skill increases (general, melee, ranged, magic).
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)

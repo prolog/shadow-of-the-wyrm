@@ -77,8 +77,32 @@ ActionCostValue SkillsAction::show_magic_skills(CreaturePtr creature)
   return get_action_cost_value(creature);
 }
 
-// Looking at skills is always free.
+ActionCostValue SkillsAction::improve_skill(CreaturePtr creature, const SkillType st)
+{
+  if (creature != nullptr)
+  {
+    SkillPtr skill = creature->get_skills().get_skill(st);
+
+    if (skill != nullptr)
+    {
+      int val = skill->get_value();
+
+      if (val < Skills::MAX_SKILL_VALUE)
+      {
+        val++;
+        skill->set_value(val);
+
+        creature->set_skill_points(creature->get_skill_points() - 1);
+      }
+    }
+  }
+
+  return get_action_cost_value(creature);
+}
+
+// Looking at/improving skills is always free.
 ActionCostValue SkillsAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }
+
