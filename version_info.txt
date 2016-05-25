@@ -40,15 +40,18 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 
 - Each race now has an associated number of skill points that they gain
   per level.  Humans and Snakelings are the most adaptive, and gain skill
-  the fastest this way (12 points each).  Fae and Giants are the most
-  hidebound as a people, and very set in their ways (8 each).  Between the
-  two extremes are Dwarves and Wood Elves (9); Goblins and Ogres (10); and
-  Gnomes and Mountain Elves (11).
+  the fastest this way (10 points each).  Fae and Giants are the most
+  hidebound as a people, and very set in their ways (7 each).  Between the
+  two extremes are:
+  
+  - Dwarves, Ogres, and Wood Elves (8)
+  - Goblins, Gnomes, and Mountain Elves (9).
 
 - When creatures gain levels, they now gain a certain number of skill
   points.  Each skill point can be used to gain skill in a previously-
   learned skill, or learn a new skill when trainable from 0 (melee and
-  ranged weapons).
+  ranged weapons).  The number of skill points is determined by the
+  creature's race.
 
 - New creatures: goblin trapper, corpse fiend, Shale.
 

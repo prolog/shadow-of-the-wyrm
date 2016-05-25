@@ -22,7 +22,6 @@ bool GainSkillsCommandProcessor::can_process(CreaturePtr creature)
   }
 
   return (skill_pts > 0 && skills.has_trainable_skill());
-
 }
 
 ActionCostValue GainSkillsCommandProcessor::process(CreaturePtr creature, CommandPtr command, MapPtr map, const SkillType st)
@@ -53,8 +52,7 @@ ActionCostValue GainSkillsCommandProcessor::process(CreaturePtr creature, Comman
     }
     else if (command_name == SkillsCommandKeys::SELECT_SKILL)
     {
-      // Functionality here!
-      process_result = 0;
+      return sa.improve_skill(creature, st);
     }
     else if (command_name == SkillsCommandKeys::EXIT_SKILLS)
     {
