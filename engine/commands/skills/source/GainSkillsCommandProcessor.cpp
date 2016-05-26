@@ -66,7 +66,16 @@ ActionCostValue GainSkillsCommandProcessor::process(CreaturePtr creature, Comman
         {
           // Add an alert, as we're in a separate window.
           IMessageManager& manager = MessageManagerFactory::instance();
-          manager.alert_text(TextMessages::get_confirmation_message(SkillTextKeys::SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN));
+          ostringstream ss;
+          ss << StringTable::get(SkillTextKeys::SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN);
+
+
+          if (creature->get_level() == CreatureConstants::MAX_CREATURE_LEVEL)
+          {
+            ss << " " << StringTable::get(SkillTextKeys::SKILLS_EXIT_MAX_LEVEL);
+          }
+
+          manager.alert_text(TextMessages::get_confirmation_message(ss.str()));
           bool quit_improve = creature->get_decision_strategy()->get_confirmation();
           manager.clear_if_necessary();
 

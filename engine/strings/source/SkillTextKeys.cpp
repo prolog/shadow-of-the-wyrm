@@ -13,6 +13,7 @@ SkillTextKeys::~SkillTextKeys()
 }
 
 const string SkillTextKeys::SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN = "SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN";
+const string SkillTextKeys::SKILLS_EXIT_MAX_LEVEL = "SKILLS_EXIT_MAX_LEVEL";
 
 // SkillTextKeys
 // General (NWP)

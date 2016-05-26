@@ -187,6 +187,7 @@ string TextMessages::get_confirmation_message(const string& query_or_sid)
 {
   ostringstream ss;
   string query = StringTable::get(query_or_sid);
+
   if (query.empty())
   {
     query = query_or_sid;
