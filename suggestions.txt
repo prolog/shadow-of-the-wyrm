@@ -1,6 +1,7 @@
 Me:
+- Ogre Artisan not getting stat improvements?
+- Clear message buffer before or after loading the skills screen.
 - Add skill points remaining to score function
-- Additional prompt when exiting skill improvement screen at max level (50)
 - Ensure that "A foo dies!" messages come after status effect messages.
 - Special rooms: beer hall, magical workshop.
 - Initial Music skill implementation.

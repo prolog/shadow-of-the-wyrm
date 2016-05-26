@@ -5,6 +5,7 @@ class SkillTextKeys
 {
   public:
     static const std::string SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN;
+    static const std::string SKILLS_EXIT_MAX_LEVEL;
 
     // General (NWP)
     static const std::string SKILLS_GENERAL;
