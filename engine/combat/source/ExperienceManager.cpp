@@ -77,6 +77,8 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
         // Show the Skills screen.  Indicate that this is a "Skill Improvement"
         // screen so that the appropriate command processor can be created.
         game.get_action_manager_ref().show_skills(creature, SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL);
+
+        manager.clear_if_necessary();
       }
     }
   }
