@@ -66,6 +66,14 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
 
       if (skill_pts > 0)
       {
+        IMessageManager& manager = MessageManagerFactory::instance();
+
+        // Pause so the player can see the accumulated messages.
+        manager.add_new_message_with_pause("");
+        manager.send();
+
+        creature->get_decision_strategy()->get_confirmation();
+
         // Show the Skills screen.  Indicate that this is a "Skill Improvement"
         // screen so that the appropriate command processor can be created.
         game.get_action_manager_ref().show_skills(creature, SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL);
@@ -191,8 +199,8 @@ void ExperienceManager::level_up(CreaturePtr creature)
       // Add a paused message so that the player understands that they gain a
       // level.  After this, the skills screen will be shown.
       string level_up_message = StringTable::get(TextKeys::GAIN_LEVEL);
-      manager.add_new_message_with_pause(level_up_message, Colour::COLOUR_BOLD_YELLOW);
-      creature->get_decision_strategy()->get_confirmation();
+      manager.add_new_message(level_up_message, Colour::COLOUR_BOLD_YELLOW);
+
       manager.send();
       // Should monsters' level-ups be broadcast?
     }    
