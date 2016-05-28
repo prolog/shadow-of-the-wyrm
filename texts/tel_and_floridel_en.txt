@@ -103,8 +103,18 @@ the young man Tel, resplendent as the sun. %b
 Intrigued, for all around, a show of force, %b
 each horseman drunk with glory that he'd won %b
 on hunt or battlefield, each armed with spear %b
-across the back, and Floridel unmoved. %p
+across the back, and Floridel unmoved. %b
 She met the king's own gaze, no trace of fear; %b
 for, with no words, she knew that he approved. %b
 Young Floridel, her mettle well and truly proved.
+%p
+He paused but for a moment; then he spoke, %b
+"I've never met a person such as you - %b
+who sees beneath the raiment and the cloak, %b
+to speak her words so clear, to cut right through %b
+the skein-and-tangle of my noble life. %b
+Won't you come with me?  Beneath the earth %b
+to Cithriel, our hall, forever rife %b
+with feasting and with fill, a place of worth %b
+where fairy-kind forever flits with joy and mirth."
 %p
