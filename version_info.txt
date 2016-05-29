@@ -51,7 +51,8 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   points.  Each skill point can be used to gain skill in a previously-
   learned skill, or learn a new skill when trainable from 0 (melee and
   ranged weapons).  The number of skill points is determined by the
-  creature's race.
+  creature's race.  Unused skill points have an effect on the game's
+  final score.
 
 - New creatures: goblin trapper, corpse fiend, Shale.
 

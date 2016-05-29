@@ -52,6 +52,18 @@ TEST(SW_Engine_Calculators_ScoreCalculator, currency_component)
   EXPECT_EQ(12345, sc.calculate_score(cp));
 }
 
+TEST(SW_Engine_Calculators_ScoreCalculator, skill_points_component)
+{
+  CreaturePtr cp = create_conductless_creature();
+  ScoreCalculator sc;
+
+  EXPECT_EQ(0, sc.calculate_score(cp));
+
+  cp->set_skill_points(86);
+
+  EXPECT_EQ(6450, sc.calculate_score(cp));
+}
+
 TEST(SW_Engine_Calculators_ScoreCalculator, experience_component)
 {
   CreaturePtr cp = create_conductless_creature();
