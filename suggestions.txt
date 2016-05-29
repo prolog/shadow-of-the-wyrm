@@ -1,4 +1,5 @@
 Me:
+- Remaining skill points to character dump
 - Ensure that "A foo dies!" messages come after status effect messages.
 - Special rooms: beer hall, magical workshop.
 - Initial Music skill implementation.
