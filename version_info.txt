@@ -54,7 +54,7 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
   creature's race.  Unused skill points have an effect on the game's
   final score.
 
-- New creatures: goblin trapper, corpse fiend, Shale.
+- New creatures: goblin trapper, corpse fiend, Shale, Marvelle.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
