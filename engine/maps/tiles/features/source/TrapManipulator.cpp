@@ -123,8 +123,8 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   // Only apply the effect if there is damage to be dealt.
   if (damage_dealt > 0)
   {
-    cm.deal_damage(nullptr, creature, damage_dealt, message);
     cm.handle_damage_effects(creature, damage_dealt, dt, effect_bonus, status_ailments);
+    cm.deal_damage(nullptr, creature, damage_dealt, message);
   }
 }
 
