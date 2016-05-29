@@ -27,7 +27,6 @@ Me:
   items can be done and dumped to disk.
 - Capacities on barrels, so that they don't contain an infinite amount
   of booze.
-- Tile desc when looking at a bunch of items is ugly!
 
 Sean McKeague:
 - Ability to pick up partial stacks.
