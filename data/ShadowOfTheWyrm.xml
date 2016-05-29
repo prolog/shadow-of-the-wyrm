@@ -22778,7 +22778,7 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
-				<Type>2</Type>
+				<Type>1</Type>
 				<EffectBonus>30</EffectBonus>
 				<StatusAilments>
 					<Status>_poison</Status>
