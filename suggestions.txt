@@ -1,4 +1,5 @@
 Me:
+- Allow the player to inscribe on tiles.
 - Make sarcophagi plunderable in the same way as graves.  Add a 
   manipulator, add a flag, if flag for plundered is false, do stuff.  
   Should not need shovel.  Should hook into graverobbing/default tile 
