@@ -15,6 +15,7 @@ bool GraveTileManipulator::dig(CreaturePtr creature, MapPtr map, TilePtr tile)
     DefaultTileManipulator dft;
     dug = dft.dig(creature, map, tile);
 
+    // Graverobbing is an action many of the Nine do not approve of...
     creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING);
     Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_GRAVEROBBING);
 
@@ -26,11 +27,6 @@ bool GraveTileManipulator::dig(CreaturePtr creature, MapPtr map, TilePtr tile)
 
       manager.send();
     }
-
-    // Break the appropriate conduct
-    // ...
-
-    // Graverobbing is an action many of the nine do not approve of...
   }
 
   return dug;
