@@ -23,6 +23,7 @@ const string TileProperties::TILE_PROPERTY_NO_OVERWRITE = "TILE_PROPERTY_NO_OVER
 const string TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG = "TILE_PROPERTY_PREVIOUSLY_DUG";
 const string TileProperties::TILE_PROPERTY_PLANTED = "TILE_PROPERTY_PLANTED";
 const string TileProperties::TILE_PROPERTY_ENGRAVING_SID = "TILE_PROPERTY_ENGRAVING_SID";
+const string TileProperties::TILE_PROPERTY_INSCRIPTION_SID = "TILE_PROPERTY_INSCRIPTION_SID";
 const string TileProperties::TILE_PROPERTY_WATER_TYPE = "TILE_PROPERTY_WATER_TYPE";
 
 // Represents the non-number part of a depth custom map ID key.
