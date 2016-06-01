@@ -21,6 +21,7 @@
 #include "Game.hpp"
 #include "GameEnvTextKeys.hpp"
 #include "HelpAction.hpp"
+#include "InscribeAction.hpp"
 #include "ItemFilterFactory.hpp"
 #include "InventoryManager.hpp"
 #include "KickAction.hpp"
@@ -609,6 +610,12 @@ ActionCost ActionManager::help(CreaturePtr creature)
 {
   HelpAction ha;
   return get_action_cost(creature, ha.help(creature));
+}
+
+ActionCost ActionManager::inscribe(CreaturePtr creature)
+{
+  InscribeAction ia;
+  return get_action_cost(creature, ia.inscribe(creature));
 }
 
 ActionCost ActionManager::breed(CreaturePtr creature)

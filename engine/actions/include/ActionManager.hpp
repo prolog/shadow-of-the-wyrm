@@ -127,6 +127,9 @@ class ActionManager : public ISerializable
     // Show help information.
     ActionCost help(CreaturePtr creature);
 
+    // Inscribe something on the current tile.
+    ActionCost inscribe(CreaturePtr creature);
+
     // Breed by spawning into an adjacent tile
     ActionCost breed(CreaturePtr creature);
 

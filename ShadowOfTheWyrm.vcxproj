@@ -327,6 +327,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\actions\include\FoodAction.hpp" />
     <ClInclude Include="engine\actions\include\HelpAction.hpp" />
     <ClInclude Include="engine\actions\include\IActionManager.hpp" />
+    <ClInclude Include="engine\actions\include\InscribeAction.hpp" />
     <ClInclude Include="engine\actions\include\InventoryManager.hpp" />
     <ClInclude Include="engine\actions\include\ItemManager.hpp" />
     <ClInclude Include="engine\actions\include\KeyManager.hpp" />
@@ -1264,6 +1265,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\actions\source\BreedAction.cpp" />
     <ClCompile Include="engine\actions\source\ExitGameAction.cpp" />
     <ClCompile Include="engine\actions\source\HelpAction.cpp" />
+    <ClCompile Include="engine\actions\source\InscribeAction.cpp" />
     <ClCompile Include="engine\actions\source\RangedCombatUtils.cpp" />
     <ClCompile Include="engine\actions\source\SkillsAction.cpp" />
     <ClCompile Include="engine\actions\source\unit_tests\AutomaticMovementFlags_test.cpp">

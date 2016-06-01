@@ -337,6 +337,13 @@ class HelpCommand : public Command
     ~HelpCommand();
 };
 
+class InscribeCommand : public Command
+{
+  public:
+    InscribeCommand(int key);
+    ~InscribeCommand();
+};
+
 // NPC-only commands:
 
 class BreedCommand : public Command
