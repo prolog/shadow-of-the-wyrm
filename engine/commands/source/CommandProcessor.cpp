@@ -252,6 +252,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.help(creature);
       }
+      else if (command_name == CommandKeys::INSCRIBE)
+      {
+        ac = game.actions.inscribe(creature);
+      }
       else if (command_name == CommandKeys::BREED)
       {
         ac = game.actions.breed(creature);

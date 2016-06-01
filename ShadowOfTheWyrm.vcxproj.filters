@@ -3744,6 +3744,9 @@
     <ClInclude Include="engine\actions\include\SkillsAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\InscribeAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7315,6 +7318,9 @@
     </ClCompile>
     <ClCompile Include="engine\commands\skills\source\unit_tests\ShowSkillsCommandProcessor_test.cpp">
       <Filter>Source Files\engine\commands\skills\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\InscribeAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
