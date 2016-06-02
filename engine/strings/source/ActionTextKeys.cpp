@@ -388,6 +388,8 @@ const string ActionTextKeys::ACTION_FISHING_THROW_BACK         = "ACTION_FISHING
 const string ActionTextKeys::ACTION_INSCRIBE_WORLD_MAP         = "ACTION_INSCRIBE_WORLD_MAP";
 const string ActionTextKeys::ACTION_INSCRIBE_WATER             = "ACTION_INSCRIBE_WATER";
 const string ActionTextKeys::ACTION_INSCRIBE_AIR               = "ACTION_INSCRIBE_AIR";
+const string ActionTextKeys::ACTION_INSCRIBE_GROUND            = "ACTION_INSCRIBE_GROUND";
+const string ActionTextKeys::ACTION_INSCRIBE_QUERY             = "ACTION_INSCRIBE_QUERY";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
