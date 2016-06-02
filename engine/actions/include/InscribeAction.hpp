@@ -11,9 +11,12 @@ class InscribeAction : public IActionManager
   protected:
     InscribeAction();
 
-    void add_inscribe_on_world_map_message() const;
-    void add_invalid_tile_super_type_message(const TileSuperType tst) const;
+    void create_inscription(CreaturePtr creature, TilePtr tile) const;
 
-    std::map<TileSuperType, std::string> invalid_ts_messages;
+    void add_inscribe_on_world_map_message() const;
+    void add_inscription_super_type_message(const TileSuperType tst) const;
+
+    static const size_t MAX_INSCRIPTION_LENGTH;
+    std::map<TileSuperType, std::string> inscription_messages;
     friend class ActionManager;
 };

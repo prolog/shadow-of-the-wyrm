@@ -57,7 +57,8 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - Looking at a tile with multiple items now results in a message about
   this, rather than an ugly list of all the items in the stack.
 
-- Tiles can now have inscriptions.
+- Tiles can now have inscriptions, and the player can create inscriptions
+  ("N" by default).
 
 - New creatures: goblin trapper, corpse fiend, Shale, Marvelle.
 
