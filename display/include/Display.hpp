@@ -24,6 +24,10 @@ class Display : public ISerializable
 
     // Get the screen's current width
     virtual unsigned int get_width() const = 0;
+
+    // Get the screen's current height
+    virtual unsigned int get_height() const = 0;
+
     virtual void clear_messages() = 0;
     
     // Clears the message buffer, map, and info display.

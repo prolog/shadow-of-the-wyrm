@@ -79,6 +79,12 @@ unsigned int CursesDisplay::get_width() const
   return TERMINAL_MAX_COLS;
 }
 
+// Get the current display height
+unsigned int CursesDisplay::get_height() const
+{
+  return TERMINAL_MAX_ROWS;
+}
+
 // Create a screen and return it.
 WINDOW* CursesDisplay::create_screen(int height, int width, int start_row, int start_col)
 {
