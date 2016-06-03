@@ -221,6 +221,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_additional_property", set_creature_additional_property);
   lua_register(L, "get_creature_additional_property", get_creature_additional_property);
   lua_register(L, "is_creature_in_view_map", is_creature_in_view_map);
+  lua_register(L, "redraw", redraw);
 }
 
 // Lua API helper functions
@@ -3061,6 +3062,32 @@ int is_creature_in_view_map(lua_State* ls)
 
   lua_pushboolean(ls, creature_in_map);
   return 1;
+}
+
+int redraw(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    string creature_id = PlayerConstants::PLAYER_CREATURE_ID;
+    Game& game = Game::instance();
+    MapPtr cur_map = game.get_current_map();
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr && cur_map != nullptr)
+    {
+      MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+
+      // Force a hard redraw.
+      game.update_display(creature, cur_map, fov_map, true);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to redraw");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)
