@@ -71,10 +71,13 @@ void InscribeAction::create_inscription(CreaturePtr creature, TilePtr tile) cons
     tile->set_inscription_sid(inscription);
 
     // User might be a smartass and try to enter a page of text.
-    Game::instance().get_display()->redraw();
-
-    // JCD FIXME
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    
+    // Hard redraw, player might be a smartass who entered ten lines of text 
+    // (jerk).
     manager.clear_if_necessary();
+    game.update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map(), true);
   }
 }
 

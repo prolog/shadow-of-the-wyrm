@@ -22,6 +22,7 @@ class CursesDisplay : public Display
 	  void tear_down() override;
 
     unsigned int get_width() const override;
+    unsigned int get_height() const override;
 
     void clear_messages() override;
     void clear_display() override;
@@ -65,6 +66,11 @@ class CursesDisplay : public Display
     WINDOW* get_current_screen();
     WINDOW* get_message_buffer_screen();
 
+    // Creation/destruction methods.
+    // Generally, don't use these.  Know what you're doing!
+    WINDOW* create_screen(int height, int width, int start_row, int start_col);
+    void destroy_screen(WINDOW *screen);
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -96,10 +102,6 @@ class CursesDisplay : public Display
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
     void display_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
     std::string display_prompt(WINDOW* screen_window, PromptPtr prompt, int row = 0, int col = 0);
-
-    // Creation/destruction methods
-    WINDOW* create_screen(int height, int width, int start_row, int start_col);
-    void destroy_screen(WINDOW *screen);
 
     // Print the current display statistic at the specified row/column, unless we're in a different row than the initial one, and therefore
     // should line up the column with the next-available, previously-used column from the previous row.
