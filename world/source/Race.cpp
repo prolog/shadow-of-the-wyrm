@@ -16,6 +16,7 @@ Race::Race()
 , experience_multiplier(1.0)
 , hp_regen_multiplier(1.0)
 , ap_regen_multiplier(1.0)
+, skill_points(0)
 {
   Range<uint> start_age(10, 10);
   Range<uint> maximum_age(50, 60);
@@ -330,6 +331,16 @@ void Race::set_ap_regen_multiplier(const float new_ap_regen_multiplier)
 float Race::get_ap_regen_multiplier() const
 {
   return ap_regen_multiplier;
+}
+
+void Race::set_skill_points(const int new_skill_points)
+{
+  skill_points = new_skill_points;
+}
+
+int Race::get_skill_points() const
+{
+  return skill_points;
 }
 
 void Race::set_initial_deity_ids(const std::vector<std::string>& new_initial_deity_ids)

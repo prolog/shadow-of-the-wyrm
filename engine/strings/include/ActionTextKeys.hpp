@@ -83,6 +83,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_DOOR_BUCKLED;
     static const std::string ACTION_KICK_DOOR_UNMOVED;
     static const std::string ACTION_KICK_SPRAIN_LEG;
+    static const std::string ACTION_APPLY_TRAP_TOO_FAR;
     static const std::string ACTION_FORGE_NO_SUITABLE_HAMMER;
     static const std::string ACTION_FORGE_NO_SMITHING_SKILL;
     static const std::string ACTION_FORGE_NO_INGOTS;
@@ -129,6 +130,11 @@ class ActionTextKeys
     static const std::string ACTION_FISHING_NIBBLE;
     static const std::string ACTION_FISHING_CATCH;
     static const std::string ACTION_FISHING_THROW_BACK;
+    static const std::string ACTION_INSCRIBE_WORLD_MAP;
+    static const std::string ACTION_INSCRIBE_WATER;
+    static const std::string ACTION_INSCRIBE_AIR;
+    static const std::string ACTION_INSCRIBE_GROUND;
+    static const std::string ACTION_INSCRIBE_QUERY;
 
   protected:
     ActionTextKeys();

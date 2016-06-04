@@ -35,6 +35,7 @@ void OrderedGraveyardGenerator::add_graves(MapPtr map, const int start_row, cons
       if ((col % 5) + (row % 3) == 0)
       {
         grave = tg.generate(TileType::TILE_TYPE_GRAVE);
+        add_inscription(grave);
         map->insert(row, col, grave);
       }
     }

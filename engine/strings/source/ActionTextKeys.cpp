@@ -342,6 +342,7 @@ const string ActionTextKeys::ACTION_KICK_DOOR_DESTROYED        = "ACTION_KICK_DO
 const string ActionTextKeys::ACTION_KICK_DOOR_BUCKLED          = "ACTION_KICK_DOOR_BUCKLED";
 const string ActionTextKeys::ACTION_KICK_DOOR_UNMOVED          = "ACTION_KICK_DOOR_UNMOVED";
 const string ActionTextKeys::ACTION_KICK_SPRAIN_LEG            = "ACTION_KICK_SPRAIN_LEG";
+const string ActionTextKeys::ACTION_APPLY_TRAP_TOO_FAR         = "ACTION_APPLY_TRAP_TOO_FAR";
 const string ActionTextKeys::ACTION_FORGE_NO_SUITABLE_HAMMER   = "ACTION_FORGE_NO_SUITABLE_HAMMER";
 const string ActionTextKeys::ACTION_FORGE_NO_SMITHING_SKILL    = "ACTION_FORGE_NO_SMITHING_SKILL";
 const string ActionTextKeys::ACTION_FORGE_NO_INGOTS            = "ACTION_FORGE_NO_INGOTS";
@@ -384,6 +385,11 @@ const string ActionTextKeys::ACTION_FISHING_ESCAPE             = "ACTION_FISHING
 const string ActionTextKeys::ACTION_FISHING_NIBBLE             = "ACTION_FISHING_NIBBLE";
 const string ActionTextKeys::ACTION_FISHING_CATCH              = "ACTION_FISHING_CATCH";
 const string ActionTextKeys::ACTION_FISHING_THROW_BACK         = "ACTION_FISHING_THROW_BACK";
+const string ActionTextKeys::ACTION_INSCRIBE_WORLD_MAP         = "ACTION_INSCRIBE_WORLD_MAP";
+const string ActionTextKeys::ACTION_INSCRIBE_WATER             = "ACTION_INSCRIBE_WATER";
+const string ActionTextKeys::ACTION_INSCRIBE_AIR               = "ACTION_INSCRIBE_AIR";
+const string ActionTextKeys::ACTION_INSCRIBE_GROUND            = "ACTION_INSCRIBE_GROUND";
+const string ActionTextKeys::ACTION_INSCRIBE_QUERY             = "ACTION_INSCRIBE_QUERY";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

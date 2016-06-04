@@ -16,7 +16,7 @@ pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_anim
 
   vector<Coordinate> prev_coords;
   vector<Coordinate> current_coords;
-  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
+  MovementPath movement_path;
   prev_coords.push_back(caster_coord);
 
   // Set the row/column offset, to be used to calculate the increasing
@@ -71,7 +71,13 @@ pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_anim
       }
     }
 
-    movement_path.push_back(make_pair(dt, current_coords));
+    vector<pair<DisplayTile, Coordinate>> frame;
+    for (const Coordinate& c : current_coords)
+    {
+      frame.push_back(make_pair(dt, c));
+    }
+
+    movement_path.push_back(frame);
     prev_coords = current_coords;
     current_coords.clear();
 

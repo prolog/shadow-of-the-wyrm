@@ -1,4 +1,6 @@
+#include <boost/algorithm/string/replace.hpp>
 #include "SkillTextKeys.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 
@@ -10,9 +12,14 @@ SkillTextKeys::~SkillTextKeys()
 {
 }
 
+const string SkillTextKeys::SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN = "SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN";
+const string SkillTextKeys::SKILLS_IMPROVEMENT_POINTS_REMAINING = "SKILLS_IMPROVEMENT_POINTS_REMAINING";
+const string SkillTextKeys::SKILLS_EXIT_MAX_LEVEL = "SKILLS_EXIT_MAX_LEVEL";
+
 // SkillTextKeys
 // General (NWP)
 const string SkillTextKeys::SKILLS_GENERAL = "SKILLS_GENERAL";
+const string SkillTextKeys::SKILLS_IMPROVE_GENERAL = "SKILLS_IMPROVE_GENERAL";
 const string SkillTextKeys::SKILL_GENERAL_ARCHERY = "SKILL_GENERAL_ARCHERY";
 const string SkillTextKeys::SKILL_GENERAL_ARCHERY_INCREMENT = "SKILL_GENERAL_ARCHERY_INCREMENT";
 const string SkillTextKeys::SKILL_GENERAL_AWARENESS = "SKILL_GENERAL_AWARENESS";
@@ -116,6 +123,7 @@ const string SkillTextKeys::SKILL_GENERAL_WEAVING_INCREMENT = "SKILL_GENERAL_WEA
 
 // Weapon (Melee)
 const string SkillTextKeys::SKILLS_WEAPON = "SKILLS_WEAPON";
+const string SkillTextKeys::SKILLS_IMPROVE_WEAPON = "SKILLS_IMPROVE_WEAPON";
 const string SkillTextKeys::SKILL_MELEE_AXES = "SKILL_MELEE_AXES";
 const string SkillTextKeys::SKILL_MELEE_AXES_INCREMENT = "SKILL_MELEE_AXES_INCREMENT";
 const string SkillTextKeys::SKILL_MELEE_SHORT_BLADES = "SKILL_MELEE_SHORT_BLADES";
@@ -139,6 +147,7 @@ const string SkillTextKeys::SKILL_MELEE_EXOTIC_INCREMENT = "SKILL_MELEE_EXOTIC_I
 
 // Weapon (Ranged)
 const string SkillTextKeys::SKILLS_RANGED_WEAPON = "SKILLS_RANGED_WEAPON";
+const string SkillTextKeys::SKILLS_IMPROVE_RANGED_WEAPON = "SKILLS_IMPROVE_RANGED_WEAPON";
 const string SkillTextKeys::SKILL_RANGED_AXES = "SKILL_RANGED_AXES";
 const string SkillTextKeys::SKILL_RANGED_AXES_INCREMENT = "SKILL_RANGED_AXES_INCREMENT";
 const string SkillTextKeys::SKILL_RANGED_BLADES = "SKILL_RANGED_BLADES";
@@ -162,6 +171,7 @@ const string SkillTextKeys::SKILL_RANGED_EXOTIC_INCREMENT = "SKILL_RANGED_EXOTIC
 
 // Magic
 const string SkillTextKeys::SKILLS_MAGIC = "SKILLS_MAGIC";
+const string SkillTextKeys::SKILLS_IMPROVE_MAGIC = "SKILLS_IMPROVE_MAGIC";
 const string SkillTextKeys::SKILL_MAGIC_ARCANE = "SKILL_MAGIC_ARCANE";
 const string SkillTextKeys::SKILL_MAGIC_ARCANE_INCREMENT = "SKILL_MAGIC_ARCANE_INCREMENT";
 const string SkillTextKeys::SKILL_MAGIC_DIVINE = "SKILL_MAGIC_DIVINE";
@@ -197,3 +207,13 @@ const string SkillTextKeys::SKILL_USAGE_SMITHING = "SKILL_USAGE_SMITHING";
 const string SkillTextKeys::SKILL_USAGE_SWIMMING = "SKILL_USAGE_SWIMMING";
 const string SkillTextKeys::SKILL_USAGE_TANNING = "SKILL_USAGE_TANNING";
 const string SkillTextKeys::SKILL_USAGE_WEAVING = "SKILL_USAGE_WEAVING";
+
+string SkillTextKeys::get_skill_improvement_message(const string& title_text_sid, const int pts_remaining)
+{
+  string message = StringTable::get(title_text_sid);
+
+  boost::replace_first(message, "%s", to_string(pts_remaining));
+  message[0] = toupper(message[0]);
+
+  return message;
+}

@@ -947,8 +947,10 @@ class Skills : public ISerializable
     int get_value_incr_marks(const SkillType& skill_name);
     
     void set_skill(const SkillType& skill_name, SkillPtr skill);
+    void set_all_to(const int val);
     SkillPtr get_skill(const SkillType& st) const;
 
+    bool has_trainable_skill() const;
     std::string str() const;
     
     RawSkillMap& get_raw_skills_ref();
@@ -956,6 +958,8 @@ class Skills : public ISerializable
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
+
+    static const int MAX_SKILL_VALUE;
 
   protected:
     void initialize_skills();

@@ -11,6 +11,7 @@ long long ScoreCalculator::calculate_score(CreaturePtr creature)
   {
     update_score_end_boss(creature, score);
     update_score_currency(creature, score);
+    update_score_skill_points(creature, score);
     update_score_experience(creature, score);
     update_score_level(creature, score);
     update_score_artifacts(creature, score);
@@ -42,6 +43,13 @@ void ScoreCalculator::update_score_currency(CreaturePtr creature, long long& sco
   {
     score += item->get_quantity();
   }
+}
+
+void ScoreCalculator::update_score_skill_points(CreaturePtr creature, long long& score)
+{
+  int skill_points = creature->get_skill_points();
+
+  score  += (skill_points * 75);
 }
 
 void ScoreCalculator::update_score_experience(CreaturePtr creature, long long& score)

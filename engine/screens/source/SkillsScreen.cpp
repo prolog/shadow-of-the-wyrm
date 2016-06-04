@@ -8,14 +8,11 @@
 
 using namespace std;
 
-SkillsScreen::SkillsScreen(DisplayPtr new_display, CreaturePtr new_creature, const SkillCategory sc)
+SkillsScreen::SkillsScreen(DisplayPtr new_display, CreaturePtr new_creature, const SkillCategory sc, const SkillsSelectionType s_type)
 : Screen(new_display)
 , creature(new_creature)
 , category(sc)
-, screen_titles({{SkillCategory::SKILL_CATEGORY_GENERAL, SkillTextKeys::SKILLS_GENERAL},
-                 {SkillCategory::SKILL_CATEGORY_MELEE, SkillTextKeys::SKILLS_WEAPON},
-                 {SkillCategory::SKILL_CATEGORY_RANGED, SkillTextKeys::SKILLS_RANGED_WEAPON},
-                 {SkillCategory::SKILL_CATEGORY_MAGIC, SkillTextKeys::SKILLS_MAGIC}})
+, sst(s_type)
 , skills_for_category({{SkillCategory::SKILL_CATEGORY_GENERAL, {SkillType::SKILL_GENERAL_ARCHERY, SkillType::SKILL_GENERAL_WEAVING}},
                        {SkillCategory::SKILL_CATEGORY_MELEE, {SkillType::SKILL_MELEE_AXES, SkillType::SKILL_MELEE_EXOTIC}},
                        {SkillCategory::SKILL_CATEGORY_RANGED, {SkillType::SKILL_RANGED_AXES, SkillType::SKILL_RANGED_EXOTIC}},
@@ -26,12 +23,23 @@ SkillsScreen::SkillsScreen(DisplayPtr new_display, CreaturePtr new_creature, con
 
 void SkillsScreen::initialize()
 {
+  screen_titles = { {SkillCategory::SKILL_CATEGORY_GENERAL, {make_pair(SkillsSelectionType::SKILLS_SELECTION_SELECT_SKILL, SkillTextKeys::SKILLS_GENERAL), make_pair(SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL, SkillTextKeys::SKILLS_IMPROVE_GENERAL)}},
+                    {SkillCategory::SKILL_CATEGORY_MELEE,   {make_pair(SkillsSelectionType::SKILLS_SELECTION_SELECT_SKILL, SkillTextKeys::SKILLS_WEAPON), make_pair(SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL, SkillTextKeys::SKILLS_IMPROVE_WEAPON)}},
+                    {SkillCategory::SKILL_CATEGORY_RANGED,  {make_pair(SkillsSelectionType::SKILLS_SELECTION_SELECT_SKILL, SkillTextKeys::SKILLS_RANGED_WEAPON), make_pair(SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL, SkillTextKeys::SKILLS_IMPROVE_RANGED_WEAPON)}},
+                    {SkillCategory::SKILL_CATEGORY_MAGIC,   {make_pair(SkillsSelectionType::SKILLS_SELECTION_SELECT_SKILL, SkillTextKeys::SKILLS_MAGIC), make_pair(SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL, SkillTextKeys::SKILLS_IMPROVE_MAGIC)}}};
+
   vector<ScreenComponentPtr> sk_screen;
   auto s_it = screen_titles.find(category);
 
   if (s_it != screen_titles.end())
   {
-    title_text_sid = s_it->second;
+    title_text_sid = s_it->second[sst];
+
+    if (sst == SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL && creature != nullptr)
+    {
+      int skill_pts_remaining = creature->get_skill_points();
+      title_text_sid = SkillTextKeys::get_skill_improvement_message(title_text_sid, skill_pts_remaining);
+    }
   }
 
   auto sty_it = skills_for_category.find(category);

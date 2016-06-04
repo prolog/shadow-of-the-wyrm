@@ -36,6 +36,7 @@ const string TextMessages::EXPERIENCE_SYNOPSIS_MESSAGE        = "EXPERIENCE_SYNO
 const string TextMessages::EXPERIENCE_SYNOPSIS_MAX_MESSAGE    = "EXPERIENCE_SYNOPSIS_MAX_MESSAGE";
 const string TextMessages::SPECIAL_DAY_MESSAGE                = "SPECIAL_DAY_MESSAGE";
 const string TextMessages::ENGRAVING_MESSAGE                  = "ENGRAVING_MESSAGE";
+const string TextMessages::INSCRIPTION_MESSAGE                = "INSCRIPTION_MESSAGE";
 
 string TextMessages::get_player_description(const string& player_name)
 {
@@ -187,6 +188,7 @@ string TextMessages::get_confirmation_message(const string& query_or_sid)
 {
   ostringstream ss;
   string query = StringTable::get(query_or_sid);
+
   if (query.empty())
   {
     query = query_or_sid;
@@ -444,4 +446,19 @@ string TextMessages::get_engraving_message(const string& engraving_sid)
   boost::replace_first(engraving_msg, "%s", StringTable::get(engraving_sid));
 
   return engraving_msg;
+}
+
+string TextMessages::get_inscription_message(const string& inscription_sid)
+{
+  string inscription_msg = StringTable::get(INSCRIPTION_MESSAGE);
+  string repl = StringTable::get(inscription_sid);
+
+  if (repl.empty() && !inscription_sid.empty())
+  {
+    repl = inscription_sid;
+  }
+
+  boost::replace_first(inscription_msg, "%s", repl);
+
+  return inscription_msg;
 }

@@ -1,5 +1,6 @@
 #include "CreatureSkillIncrementer.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -51,10 +52,10 @@ bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, S
   int skill_marks = skill->get_marks();
   int skill_value = skill->get_value();
 
-  // Skills aren't automatically learned when at 0 and enough success/failure occurs.  This is meant to be a model
-  // similar to ADOM and not DCSS, and is absolutely intentional.  Classes matter, and the initial skill set is
-  // important. 
-  while (skill_marks > skill_threshold)
+  // Skills are automatically learned when the number of marks is greater than
+  // the threshold.  When the marks are less than that, there is a percent
+  // chance applied.
+  while ((skill_marks > skill_threshold) || (RNG::percent_chance(skill_marks)))
   {
     if ((skill_value == 0 && (skill->can_train_from_unlearned())) || (skill_value > 0))
     {
@@ -75,7 +76,16 @@ bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, S
 
     // Must decrement by at least 1 (i.e., when the skill is initially
     // at 0 points).
-    skill_marks -= std::max(skill_threshold, 1);
+    if (skill_threshold == 0)
+    {
+      skill_marks = 0;
+    }
+    else
+    {
+      skill_marks -= std::max(skill_threshold, 1);
+    }
+
+    skill_marks = std::max(skill_marks, 0);
   }
 
   skill->set_marks(skill_marks);

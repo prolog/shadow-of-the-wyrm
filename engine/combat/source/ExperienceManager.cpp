@@ -6,6 +6,9 @@
 #include "MessageManagerFactory.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
+#include "SkillsCommandFactory.hpp"
+#include "SkillsKeyboardCommandMap.hpp"
+#include "SkillsScreen.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
@@ -36,7 +39,9 @@ ExperienceManager::~ExperienceManager()
 bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experience_value)
 {
   bool experience_gained = false;
-  
+  int levels_gained = 0;
+  Game& game = Game::instance();
+
   if (creature)
   {
     creature->set_experience_points(creature->get_experience_points() + experience_value);
@@ -46,9 +51,36 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
     while (can_gain_level(creature))
     {
       level_up(creature);
+      levels_gained++;
     }
     
     experience_gained = true;
+  }
+
+  // If we've gained at least one level, display the skill advancement screen.
+  if (levels_gained > 0)
+  {
+    if (creature != nullptr && creature->get_is_player())
+    {
+      int skill_pts = creature->get_skill_points();
+
+      if (skill_pts > 0)
+      {
+        IMessageManager& manager = MessageManagerFactory::instance();
+
+        // Pause so the player can see the accumulated messages.
+        manager.add_new_message_with_pause("");
+        manager.send();
+
+        creature->get_decision_strategy()->get_confirmation();
+
+        // Show the Skills screen.  Indicate that this is a "Skill Improvement"
+        // screen so that the appropriate command processor can be created.
+        game.get_action_manager_ref().show_skills(creature, SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL);
+
+        manager.clear_if_necessary();
+      }
+    }
   }
   
   return experience_gained;
@@ -166,15 +198,18 @@ void ExperienceManager::level_up(CreaturePtr creature)
   {
     if (creature->get_is_player())
     {
+      // Add a paused message so that the player understands that they gain a
+      // level.  After this, the skills screen will be shown.
       string level_up_message = StringTable::get(TextKeys::GAIN_LEVEL);
       manager.add_new_message(level_up_message, Colour::COLOUR_BOLD_YELLOW);
+
       manager.send();
       // Should monsters' level-ups be broadcast?
     }    
 
     gain_level(creature);
     gain_hp_and_ap(creature);
-    gain_statistics_if_necessary(creature);
+    gain_statistics(creature);
     run_level_script(creature);
   }
 }
@@ -237,11 +272,18 @@ void ExperienceManager::gain_hp_and_ap(CreaturePtr creature)
   }
 }
 
-void ExperienceManager::gain_statistics_if_necessary(CreaturePtr creature)
+void ExperienceManager::gain_statistics(CreaturePtr creature)
 {
   if (creature)
   {
-    // JCD TODO
+    RaceManager rm;
+    RacePtr race = rm.get_race(creature->get_race_id());
+
+    if (race != nullptr)
+    {
+      int skill_pts = race->get_skill_points();
+      creature->increment_skill_points(skill_pts);
+    }
   }
 }
 

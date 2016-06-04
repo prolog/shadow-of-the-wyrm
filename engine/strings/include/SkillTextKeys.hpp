@@ -4,8 +4,13 @@
 class SkillTextKeys
 {
   public:
+    static const std::string SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN;
+    static const std::string SKILLS_IMPROVEMENT_POINTS_REMAINING;
+    static const std::string SKILLS_EXIT_MAX_LEVEL;
+
     // General (NWP)
     static const std::string SKILLS_GENERAL;
+    static const std::string SKILLS_IMPROVE_GENERAL;
     static const std::string SKILL_GENERAL_ARCHERY;
     static const std::string SKILL_GENERAL_ARCHERY_INCREMENT;
     static const std::string SKILL_GENERAL_AWARENESS;
@@ -109,6 +114,7 @@ class SkillTextKeys
 
     // Weapon (Melee)
     static const std::string SKILLS_WEAPON;
+    static const std::string SKILLS_IMPROVE_WEAPON;
     static const std::string SKILL_MELEE_AXES;
     static const std::string SKILL_MELEE_AXES_INCREMENT;
     static const std::string SKILL_MELEE_SHORT_BLADES;
@@ -132,6 +138,7 @@ class SkillTextKeys
 
     // Weapon (Ranged)
     static const std::string SKILLS_RANGED_WEAPON;
+    static const std::string SKILLS_IMPROVE_RANGED_WEAPON;
     static const std::string SKILL_RANGED_AXES;
     static const std::string SKILL_RANGED_AXES_INCREMENT;
     static const std::string SKILL_RANGED_BLADES;
@@ -155,6 +162,7 @@ class SkillTextKeys
 
     // Magic
     static const std::string SKILLS_MAGIC;
+    static const std::string SKILLS_IMPROVE_MAGIC;
     static const std::string SKILL_MAGIC_ARCANE;
     static const std::string SKILL_MAGIC_ARCANE_INCREMENT;
     static const std::string SKILL_MAGIC_DIVINE;
@@ -191,6 +199,8 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_SWIMMING;
     static const std::string SKILL_USAGE_TANNING;
     static const std::string SKILL_USAGE_WEAVING;
+
+    static std::string get_skill_improvement_message(const std::string& skill_improvement_sid, const int points_remaining);
 
   protected:
     SkillTextKeys();

@@ -24,6 +24,10 @@ class Display : public ISerializable
 
     // Get the screen's current width
     virtual unsigned int get_width() const = 0;
+
+    // Get the screen's current height
+    virtual unsigned int get_height() const = 0;
+
     virtual void clear_messages() = 0;
     
     // Clears the message buffer, map, and info display.
@@ -31,7 +35,7 @@ class Display : public ISerializable
 
     // Adds a message in the current window, clearing any existing messages and
     // requiring user input.
-    virtual void add_alert(const std::string& message) = 0;
+    virtual void add_alert(const std::string& message, const bool prompt_for_input) = 0;
 
     // Add a message to display to the user
     virtual void add_message(const std::string& message, const bool reset_cursor) = 0;

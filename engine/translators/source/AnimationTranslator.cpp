@@ -10,7 +10,7 @@ AnimationTranslator::AnimationTranslator(DisplayPtr display)
   animation_factory = display->create_animation_factory();
 }
 
-Animation AnimationTranslator::create_movement_animation(const bool player_blinded, const Season current_season, const vector<pair<DisplayTile, vector<Coordinate>>>& movement_path, const bool redraw_previous_frame, MapPtr current_map, MapPtr fov_map)
+Animation AnimationTranslator::create_movement_animation(const bool player_blinded, const Season current_season, const MovementPath& movement_path, const bool redraw_previous_frame, MapPtr current_map, MapPtr fov_map)
 {
   Animation animation;
 
@@ -23,13 +23,15 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
 
   for (uint i = 0; i < num_steps; i++)
   {
-    pair<DisplayTile, vector<Coordinate>> current_frame = movement_path.at(i);
-    DisplayTile projectile = current_frame.first;
+    vector<pair<DisplayTile, Coordinate>> current_frame = movement_path.at(i);
     vector<AnimationInstructionPtr> coords_in_frame;
     vector<AnimationInstructionPtr> frame_cleanup;
 
-    for (const Coordinate& c : current_frame.second)
+    for (const pair<DisplayTile, Coordinate>& dt_c_pair : current_frame)
     {
+      DisplayTile projectile = dt_c_pair.first;
+      Coordinate c = dt_c_pair.second;
+
       TilePtr game_tile = current_map->at(c);
       TilePtr fov_tile = fov_map->at(c);
 

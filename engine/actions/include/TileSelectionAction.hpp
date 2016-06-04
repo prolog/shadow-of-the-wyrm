@@ -57,6 +57,7 @@ class TileSelectionAction : public IActionManager, ISerializable
     TileSelectionAction();
 
     void reset_cursor_appropriately(CreaturePtr creature, MapPtr current_map, const TileReset tre);
+    void describe_current_tile(CreaturePtr creature, TilePtr selected_tile, const bool does_tile_exist_in_fov_map);
 
     // The command factory/map
     CommandFactoryPtr command_factory;

@@ -9,6 +9,7 @@ if rename_confirm == true then
   local changed = set_creature_name("player", new_name)
 
   if changed == true then
+    redraw()
     clear_and_add_message("NAMA_RENAME_QUERY_AFFIRM_SID")
   else
     clear_and_add_message("NAMA_RENAME_QUERY_DENY_SID")

@@ -1,3 +1,108 @@
+Shadow of the Wyrm v0.5.2 "Le Roy"
+- Version declared May 1, 2016.  Version finalized June 4, 2016.
+
+- Added support for reading a random file for a resource string.  This
+  won't be used in many places, but is currently being used for allowing
+  a number of different title poems.
+
+- Deities now grant +2 to a statistic at the start of the game, instead
+  of +1.
+
+- The locked room in Kew's house now always contains an unstoning
+  potion.
+
+- Goblin trappers can now, as part of their AI, set a trap.  Whether or
+  not the trap is seen is dependent on the Detection checks of the
+  creatures the trapper can see that the trapper is hostile towards.
+  Trappers don't set traps when there are no hostile creatures present.
+
+- When skills are checked for improvement, if the number of marks is less
+  than the amount required for a skill increase, the skill still has a
+  chance to improve, based on the number of marks accumulated.
+
+- Witchlings get a new wide-beamed spell, Umbra, starting at level 26.
+
+- Created support for beam spells with radii greater than 1.
+
+- Updated the pathfinding code to use a greater cost when considering
+  a search node that contains a dangerous feature like a trap.
+
+- The player must now be standing on a trap to apply it - traps can't
+  be applied while the player is adjacent.
+
+- Traps now give a message regardless of whether they're triggered by the
+  player or another creature, so long as the player can see the triggering
+  creature.  Reworked the trigger messages so that they no longer assume
+  that the player is the triggering creature.
+
+- Created a new epic poem, to be added to with each release, found in
+  the library of Atua-Elar.
+
+- Each race now has an associated number of skill points that they gain
+  per level.  Humans and Snakelings are the most adaptive, and gain skill
+  the fastest this way (10 points each).  Fae and Giants are the most
+  hidebound as a people, and very set in their ways (7 each).  Between the
+  two extremes are:
+  
+  - Dwarves, Ogres, and Wood Elves (8)
+  - Goblins, Gnomes, and Mountain Elves (9).
+
+- When creatures gain levels, they now gain a certain number of skill
+  points.  Each skill point can be used to gain skill in a previously-
+  learned skill, or learn a new skill when trainable from 0 (melee and
+  ranged weapons).  The number of skill points is determined by the
+  creature's race.  Unused skill points have an effect on the game's
+  final score.
+
+- Looking at a tile with multiple items now results in a message about
+  this, rather than an ugly list of all the items in the stack.
+
+- Tiles can now have inscriptions, and the player can create inscriptions
+  ("N" by default).
+
+- Added more name syllables, so there are more possible random names.
+
+- Graveyards weren't properly hooked up to world generation.  Now there
+  are lots of lovely graves to plunder.  These now have inscriptions, so
+  you can see whose grave you're trying to plunder.
+
+- New creatures: goblin trapper, corpse fiend, Shale, Marvelle, 
+  changeling.
+
+- New traps: crossbow trap, blackwater trap, electric field trap.
+
+- New spells/spellbooks: blast (Cantrips), umbra (Primordial), absolute
+  zero (Arcane).
+
+- New items: wand of poison, wand of shadow, epic poem "Tel and Floridel".
+
+- Bug fixes:
+
+  - Randomizable items (potions, etc) placed on custom maps weren't
+    being randomized properly.
+
+  - The Magic skill didn't have its resource string properly defined,
+    resulting in empty text when that skill was selected from the Skills
+    screen (Redfeek).
+
+  - Untriggered traps were being displayed when moving out of view of
+    that tile.
+
+  - When using +/- to cycle between creatures using Look, the message
+    manager details were not being updated correctly.
+
+  - Tomatoes weren't red.
+
+  - When a trap killed a creature, the redraw was not immediate and the
+    projectile might end up being redrawn in the wrong location.
+
+  - Resource strings for NPC paralysis were missing.
+
+  - Poison dart traps now deal piercing damage instead of pound damage.
+
+  - Fixed a bug where renaming with Nama wouldn't redraw the screen
+    properly when inputting a name consisting of many lines of text.
+
 Shadow of the Wyrm v0.5.1 "Beauvais"
 - Version declared April 3, 2016.  Version finalized May 1, 2016.
 

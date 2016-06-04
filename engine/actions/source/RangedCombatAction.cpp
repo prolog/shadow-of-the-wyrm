@@ -157,13 +157,11 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
           // Get the attack path so that we can determine the actual target coords,
           // and create an animation if necessary.
           vector<Coordinate> attack_path = RangedCombatUtils::get_actual_coordinates_given_missile_path(creature, creature_coords, target_coords, current_map);
-          vector<pair<DisplayTile, vector<Coordinate>>> animation_frames;
+          MovementPath animation_frames;
 
           for (const Coordinate& c : attack_path)
           {
-            vector<Coordinate> frame;
-            frame.push_back(c);
-            animation_frames.push_back(make_pair(projectile_disp, frame));
+            animation_frames.push_back({make_pair(projectile_disp, c)});
           }
 
           if (!attack_path.empty())

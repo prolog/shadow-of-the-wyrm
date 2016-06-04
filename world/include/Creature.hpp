@@ -237,7 +237,12 @@ class Creature : public ISerializable
     // Creature's current experience
     void set_experience_points(const uint new_experience_points);
     uint get_experience_points() const;
-    
+
+    // Current number of skill points
+    void set_skill_points(const int new_skill_points);
+    void increment_skill_points(const int incr_amount);
+    int get_skill_points() const;
+        
     // The number of turns a creature has taken.
     void increment_turns();
     ulonglong get_turns() const;
@@ -403,6 +408,9 @@ class Creature : public ISerializable
     
     // The creature's overall experience
     uint experience_points;
+
+    // The current number of skill points.
+    int skill_points;
     
     // The number of actions the creature has taken.
     ulonglong turns;

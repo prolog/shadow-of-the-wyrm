@@ -46,6 +46,9 @@ class TileProperties
     // Is there an engraving on this tile?
     static const std::string TILE_PROPERTY_ENGRAVING_SID;
 
+    // What about an inscription?
+    static const std::string TILE_PROPERTY_INSCRIPTION_SID;
+
     // If this is a water tile, is it freshwater?  Saltwater?
     static const std::string TILE_PROPERTY_WATER_TYPE;
 

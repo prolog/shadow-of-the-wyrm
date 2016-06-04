@@ -183,7 +183,6 @@ TilePtr TileSelectionAction::get_cursor_tile()
 ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Direction direction)
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   if (creature && command_factory && kb_command_map)
   {
@@ -194,14 +193,11 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
     Coordinate c = mc.get_cursor_location(current_map).first;
     
     TilePtr selected_tile = current_map->at(c);
-    
+
     // If the tile exists in the FOV map, note that, so that the
     // describer can return full details.  If the at(..) function
     // returns a null shared pointer, the boolean will be false.
     bool tile_exists_in_fov_map = (creature->get_decision_strategy()->get_fov_map()->at(c)) != nullptr;
-    
-    TileDescription td(show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
-    string tile_desc = td.describe(creature, selected_tile, tile_exists_in_fov_map);
 
     if (!selection_key.empty())
     {
@@ -210,13 +206,11 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
       TargetMap& current_targets = creature->get_target_map_ref();
       current_targets[selection_key] = target;
     }
-    
+
     if (creature->get_is_player())
     {
-      manager.clear_if_necessary();
-      manager.add_new_message(tile_desc);
-      manager.send();
-    }
+      describe_current_tile(creature, selected_tile, tile_exists_in_fov_map);
+    }    
   }
   
   return get_action_cost_value(creature);
@@ -228,7 +222,13 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Sel
   {
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
 
-    SelectionUtils::select_target_in_cycle(creature, fov_map, sct);
+    string selected_creature_id = SelectionUtils::select_target_in_cycle(creature, fov_map, sct);
+    
+    if (fov_map != nullptr)
+    {
+      TilePtr selected_creature_tile = fov_map->at(fov_map->get_location(selected_creature_id));
+      describe_current_tile(creature, selected_creature_tile, selected_creature_tile != nullptr);
+    }
   }
 
   return get_action_cost_value(creature);
@@ -257,6 +257,22 @@ ActionCostValue TileSelectionAction::select_tile_cancel(CreaturePtr creature)
 ActionCostValue TileSelectionAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
+}
+
+// Describe the currently selected tile.
+void TileSelectionAction::describe_current_tile(CreaturePtr creature, TilePtr selected_tile, const bool tile_exists_in_fov_map)
+{
+  // Should only be called by the player, anyway.
+  IMessageManager& manager = MessageManagerFactory::instance();
+  TileDescription td(show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
+  string tile_desc = td.describe(creature, selected_tile, tile_exists_in_fov_map);
+
+  if (creature->get_is_player())
+  {
+    manager.clear_if_necessary();
+    manager.add_new_message(tile_desc);
+    manager.send();
+  }
 }
 
 // Check to see if the given tile is in range for a particular attack. If it isn't,

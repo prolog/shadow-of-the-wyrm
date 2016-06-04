@@ -10,6 +10,24 @@ TEST(SW_World_Creature, name)
   EXPECT_EQ(creature_name, c.get_name());
 }
 
+TEST(SW_World_Creature, skill_points)
+{
+  Creature c;
+
+  EXPECT_EQ(0, c.get_skill_points());
+
+  c.set_skill_points(4);
+
+  EXPECT_EQ(4, c.get_skill_points());
+
+  c.increment_skill_points(3);
+
+  EXPECT_EQ(7, c.get_skill_points());
+
+  c.increment_skill_points(17);
+
+  EXPECT_EQ(24, c.get_skill_points());
+}
 TEST(SW_World_Creature, age)
 {
   Creature c;
@@ -65,6 +83,7 @@ TEST(SW_World_Creature, saveload)
   c.set_intelligence(intel);
   c.set_willpower(will);
   c.set_charisma(cha);
+  c.set_skill_points(26);
 
   AutomaticMovement& am = c.get_automatic_movement_ref();
   am.set_direction(Direction::DIRECTION_SOUTH);
@@ -97,6 +116,7 @@ TEST(SW_World_Creature, saveload)
   c2.deserialize(iss);
 
   EXPECT_TRUE(c == c2);
+  EXPECT_EQ(26, c2.get_skill_points());
   EXPECT_FLOAT_EQ(1.2f, c2.get_blood().get_grams_alcohol());
 }
 

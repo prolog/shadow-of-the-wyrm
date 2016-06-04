@@ -79,6 +79,12 @@ unsigned int CursesDisplay::get_width() const
   return TERMINAL_MAX_COLS;
 }
 
+// Get the current display height
+unsigned int CursesDisplay::get_height() const
+{
+  return TERMINAL_MAX_ROWS;
+}
+
 // Create a screen and return it.
 WINDOW* CursesDisplay::create_screen(int height, int width, int start_row, int start_col)
 {
@@ -326,7 +332,7 @@ void CursesDisplay::clear_display()
   clear();
 }
 
-void CursesDisplay::add_alert(const string& message)
+void CursesDisplay::add_alert(const string& message, const bool require_input)
 {
   message_buffer_screen = get_current_screen();
 
@@ -334,8 +340,13 @@ void CursesDisplay::add_alert(const string& message)
   clear_message_buffer();
   add_message(message, Colour::COLOUR_BOLD_RED, false);
   wrefresh(message_buffer_screen);
-  wgetch(message_buffer_screen);
-  clear_message_buffer();
+
+  if (require_input)
+  {
+    wgetch(message_buffer_screen);
+    clear_message_buffer();
+  }
+
   curs_set(prev_curs_state);
 
   message_buffer_screen = nullptr;
@@ -609,7 +620,16 @@ string CursesDisplay::display_screen(const Screen& current_screen)
   // Display the header if the text is defined.  Some screens (like the quest list,
   // etc) will have this defined, while others (such as the new character-type
   // screens) will not.
-  string header_text = StringTable::get(current_screen.get_title_text_sid());
+  string title_text_sid = current_screen.get_title_text_sid();
+  string header_text = StringTable::get(title_text_sid);
+
+  // The title might not be an actual resource string, but instead an already-
+  // formatted message.  Use that if the lookup is empty but the sid is not.
+  if (!title_text_sid.empty() && header_text.empty())
+  {
+    header_text = title_text_sid;
+  }
+
   uint num_pages = current_screen.get_num_pages();
 
   if (num_pages > 1)

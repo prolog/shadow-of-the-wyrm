@@ -15,7 +15,7 @@ pair<vector<TilePtr>, Animation> CrossShapeProcessor::get_affected_tiles_and_ani
   Animation animation;
 
   uint range = spell.get_range();
-  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
+  MovementPath movement_path;
   DisplayTile dt('*', static_cast<int>(spell.get_colour()));
   vector<Direction> directions = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST};
   int offset = 1;
@@ -59,7 +59,13 @@ pair<vector<TilePtr>, Animation> CrossShapeProcessor::get_affected_tiles_and_ani
       }
     }
 
-    movement_path.push_back(make_pair(dt, cross_vec));
+    vector<pair<DisplayTile, Coordinate>> frame;
+    for (const Coordinate& c : cross_vec)
+    {
+      frame.push_back(make_pair(dt, c));
+    }
+
+    movement_path.push_back(frame);
     cross_vec.clear();
     offset++;
   }

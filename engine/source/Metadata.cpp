@@ -49,8 +49,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // Canadian composer and classical guitarist.
-  return "\"Beauvais\"";
+  // French guitarist/lutenist, and one of the most famous of the early 
+  // Renaissance lute composers.
+  return "\"Le Roy\"";
 }
 
 string Metadata::get_game_version_synopsis() const
