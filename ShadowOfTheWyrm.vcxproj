@@ -653,6 +653,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\crypts\include\CryptLayoutStrategyFactory.hpp" />
     <ClInclude Include="engine\generators\crypts\include\CryptLayoutTypes.hpp" />
     <ClInclude Include="engine\generators\crypts\include\EmptyCryptLayoutStrategy.hpp" />
+    <ClInclude Include="engine\generators\crypts\include\GraveInscriptionGenerator.hpp" />
     <ClInclude Include="engine\generators\crypts\include\ICryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\PillarCryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\VaultCryptLayoutStrategy.hpp" />
@@ -1394,6 +1395,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\CleansingEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
+    <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
     <ClCompile Include="engine\generators\source\SewerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\TileDepthOptions.cpp" />

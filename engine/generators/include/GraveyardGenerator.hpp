@@ -1,5 +1,6 @@
 #pragma once
 #include "Generator.hpp"
+#include "GraveInscriptionGenerator.hpp"
 #include "TileGenerator.hpp"
 
 class GraveyardGenerator : public SOTW::Generator
@@ -16,6 +17,7 @@ class GraveyardGenerator : public SOTW::Generator
 
   protected:
     virtual bool get_permanence_default() const override;
+    virtual void add_inscription(TilePtr grave_tile);
 
     virtual TilePtr generate_tile(MapPtr current_map, const int row, const int col);
     
@@ -26,6 +28,8 @@ class GraveyardGenerator : public SOTW::Generator
     
     const int TOMB_MIN_SIZE;
     const int TOMB_MAX_SIZE;
+    const int PCT_CHANCE_INSCRIPTION;
 
     TileGenerator tg;
+    GraveInscriptionGenerator gig;
 };
