@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.5.2 "Le Roy"
-- Version declared May 1, 2016.
+- Version declared May 1, 2016.  Version finalized June 4, 2016.
 
 - Added support for reading a random file for a resource string.  This
   won't be used in many places, but is currently being used for allowing
@@ -63,9 +63,11 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - Added more name syllables, so there are more possible random names.
 
 - Graveyards weren't properly hooked up to world generation.  Now there
-  are lots of lovely graves to plunder.
+  are lots of lovely graves to plunder.  These now have inscriptions, so
+  you can see whose grave you're trying to plunder.
 
-- New creatures: goblin trapper, corpse fiend, Shale, Marvelle.
+- New creatures: goblin trapper, corpse fiend, Shale, Marvelle, 
+  changeling.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.
 
