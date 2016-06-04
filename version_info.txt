@@ -60,6 +60,11 @@ Shadow of the Wyrm v0.5.2 "Le Roy"
 - Tiles can now have inscriptions, and the player can create inscriptions
   ("N" by default).
 
+- Added more name syllables, so there are more possible random names.
+
+- Graveyards weren't properly hooked up to world generation.  Now there
+  are lots of lovely graves to plunder.
+
 - New creatures: goblin trapper, corpse fiend, Shale, Marvelle.
 
 - New traps: crossbow trap, blackwater trap, electric field trap.

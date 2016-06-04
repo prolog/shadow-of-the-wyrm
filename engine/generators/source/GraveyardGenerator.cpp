@@ -1,4 +1,5 @@
 #include "GraveyardGenerator.hpp"
+#include "Game.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
@@ -6,6 +7,7 @@ GraveyardGenerator::GraveyardGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_GRAVEYARD)
 , TOMB_MIN_SIZE(7)
 , TOMB_MAX_SIZE(7)
+, PCT_CHANCE_INSCRIPTION(65)
 {
 }
 
@@ -147,6 +149,26 @@ void GraveyardGenerator::add_random_foliage(MapPtr map)
       }
       
       map->insert(y, x, new_tile);
+    }
+    else
+    {
+      add_inscription(tile);
+    }
+  }
+}
+
+// JCD FIXME - If graves are generated outside of graveyards more
+// frequently, refactor this elsewhere.
+void GraveyardGenerator::add_inscription(TilePtr grave_tile)
+{
+  if (grave_tile != nullptr && RNG::percent_chance(PCT_CHANCE_INSCRIPTION))
+  {
+    WorldPtr world = Game::instance().get_current_world();
+
+    if (world != nullptr)
+    {
+      int current_year = world->get_calendar().get_date().get_year();
+      grave_tile->set_inscription_sid(gig.generate_inscription(current_year));
     }
   }
 }
