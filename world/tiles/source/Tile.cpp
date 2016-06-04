@@ -130,6 +130,21 @@ bool Tile::has_engraving() const
   return has_additional_property(TileProperties::TILE_PROPERTY_ENGRAVING_SID);
 }
 
+void Tile::set_inscription_sid(const string& new_inscription_sid)
+{
+  set_additional_property(TileProperties::TILE_PROPERTY_INSCRIPTION_SID, new_inscription_sid);
+}
+
+string Tile::get_inscription_sid() const
+{
+  return get_additional_property(TileProperties::TILE_PROPERTY_INSCRIPTION_SID);
+}
+
+bool Tile::has_inscription() const
+{
+  return has_additional_property(TileProperties::TILE_PROPERTY_INSCRIPTION_SID);
+}
+
 bool Tile::has_been_dug() const
 {
   string prop = get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG);

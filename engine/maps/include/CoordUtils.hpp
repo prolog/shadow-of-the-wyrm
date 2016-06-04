@@ -27,6 +27,15 @@ class CoordUtils
     // Get the perimeter coordinates of a given rectangle.
     static std::vector<Coordinate> get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
 
+    // Get coordinates used for a beam.
+    // A radius 1 beam: *******
+    //
+    // A radius 2 beam  *******
+    //                  *******
+    //                  *******
+    //
+    static std::vector<Coordinate> get_beam_coordinates(const Coordinate& centre_coord, const Direction d, const uint radius);
+
     // Get the midway points, given the bounding box.
     static std::map<CardinalDirection, Coordinate> get_midway_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
 

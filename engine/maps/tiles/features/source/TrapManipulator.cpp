@@ -6,6 +6,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -32,15 +33,41 @@ void TrapManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fea
 
 bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
 {
+  Game& game = Game::instance();
   FeaturePtr feature = tile->get_feature();
   TrapPtr trap = dynamic_pointer_cast<Trap>(feature);
 
-  if (trap && creature)
+  // Traps can only be manipulated when the manipulating creature is standing
+  // directly on the tile.
+  if (tile != nullptr)
   {
-    trigger_trap(trap, creature);
-    apply_effects_to_creature(trap, creature);
-    create_item_if_necessary(tile, trap);
-    create_and_draw_animation(trap, creature);
+    CreaturePtr tile_creature = tile->get_creature();
+
+    if (tile_creature != nullptr && creature != nullptr && (tile_creature->get_id() == creature->get_id()))
+    {
+      if (trap && creature)
+      {
+        MapPtr current_map = game.get_current_map();
+        Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
+
+        trigger_trap(trap, creature);
+        apply_effects_to_creature(trap, creature);
+        create_item_if_necessary(tile, trap);
+
+        // Pass the coordinate in now because the triggering of the trap
+        // may have killed the creature...
+        create_and_draw_animation(trap, creature, creature_coord);
+      }
+    }
+    else
+    {
+      if (creature && creature->get_is_player())
+      {
+        IMessageManager& manager = MessageManagerFactory::instance();
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_APPLY_TRAP_TOO_FAR));
+        manager.send();
+      }
+    }
   }
 
   return true;
@@ -48,15 +75,19 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
 
 void TrapManipulator::trigger_trap(TrapPtr trap, CreaturePtr creature)
 {
-  string trigger_message_sid = trap->get_trigger_message_sid();
+  string trigger_message = StringTable::get(trap->get_trigger_message_sid());
+  Game& game = Game::instance();
 
-  if (creature && creature->get_is_player())
+  if (creature)
   {
-    // Traps only affect the creature on the exact tile (the creature passed
-    // as an argument to this function).
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-    manager.add_new_message(StringTable::get(trigger_message_sid));
-    manager.send();
+    IMessageManager& manager = MessageManagerFactory::instance();
+    bool show_msg = GameUtils::is_creature_in_player_view_map(game, creature->get_id());
+
+    if (show_msg)
+    {
+      manager.add_new_message(trigger_message);
+      manager.send();
+    }
   }
 
   trap->set_triggered(true);
@@ -92,8 +123,8 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   // Only apply the effect if there is damage to be dealt.
   if (damage_dealt > 0)
   {
-    cm.deal_damage(nullptr, creature, damage_dealt, message);
     cm.handle_damage_effects(creature, damage_dealt, dt, effect_bonus, status_ailments);
+    cm.deal_damage(nullptr, creature, damage_dealt, message);
   }
 }
 
@@ -105,28 +136,31 @@ void TrapManipulator::create_item_if_necessary(TilePtr tile, TrapPtr trap)
   im.create_item_with_probability(50, 100, inv, trap->get_item_id());
 }
 
-void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creature)
+void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creature, const Coordinate& creature_coord)
 {
   if (CreatureUtils::is_player_or_in_los(creature))
   {
     // Create the animation
     Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
     CurrentCreatureAbilities cca;
     AnimationTranslator at(game.get_display());
-    MapPtr current_map = game.get_current_map();
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-    Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
     DisplayTile display_tile(trap->get_trigger_symbol(), static_cast<int>(trap->get_colour()));
-    vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
-    vector<Coordinate> coords = { creature_coord };
+    MovementPath movement_path;
 
-    movement_path.push_back(make_pair(display_tile, coords));
+    movement_path.push_back({make_pair(display_tile, creature_coord)});
+    bool player_blind = false;
 
-    Animation animation = at.create_movement_animation(!cca.can_see(creature), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
+    if (creature->get_is_player())
+    {
+      player_blind = !cca.can_see(creature);
+    }
+
+    Animation animation = at.create_movement_animation(player_blind, game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
 
     // Draw the animation.
     DisplayPtr display = game.get_display();
     display->draw_animation(animation);
-
   }
 }

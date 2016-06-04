@@ -37,6 +37,7 @@ int is_item_generated(lua_State* ls);
 int get_num_item_generated(lua_State* ls);
 int set_skill_value(lua_State* ls);
 int get_skill_value(lua_State* ls);
+int check_skill(lua_State* ls);
 int RNG_range(lua_State* ls);
 int RNG_percent_chance(lua_State* ls);
 int add_spell_castings(lua_State* ls);
@@ -104,6 +105,12 @@ int set_winner(lua_State* ls);
 int get_creature_colour(lua_State* ls);
 int set_creature_colour(lua_State* ls);
 int set_creature_evade(lua_State* ls);
+int set_trap(lua_State* ls);
+int get_nearby_hostile_creatures(lua_State* ls);
+int set_creature_additional_property(lua_State* ls);
+int get_creature_additional_property(lua_State* ls);
+int is_creature_in_view_map(lua_State* ls);
+int redraw(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

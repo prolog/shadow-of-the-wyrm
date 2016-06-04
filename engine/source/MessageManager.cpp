@@ -76,7 +76,15 @@ void MessageManager::alert(const string& message)
 {
   if (user_display != nullptr)
   {
-    user_display->add_alert(message + " ...");
+    user_display->add_alert(message + " ...", true /* require user input */);
+  }
+}
+
+void MessageManager::alert_text(const string& message)
+{
+  if (user_display != nullptr)
+  {
+    user_display->add_alert(message, false /* no user input */);
   }
 }
 
@@ -133,7 +141,7 @@ bool MessageManager::add_new_message_with_pause(const std::string& message_text,
 
   if (user_display)
   {
-    user_display->confirm(message_text + " ...");
+    user_display->add_message(message_text + " ...", colour, false);
   }
 
   message_buffer.add_message(message_text);

@@ -14,6 +14,7 @@ class Trap : public Feature
     Trap* clone_and_randomize_uses();
 
     virtual bool get_is_hidden() const override;
+    virtual bool get_is_dangerous() const override;
 
     virtual bool apply_on_movement(CreaturePtr creature) const override;
 

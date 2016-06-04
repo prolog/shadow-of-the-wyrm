@@ -12,6 +12,7 @@ class SkillsDumper : public StringConverter
 
   protected:
     std::string get_skills() const;
+    std::string get_skill_improvement_points_remaining_header() const;
     std::string get_general_skills_header() const;
     std::string get_general_skills() const;
     std::string get_weapon_skills_header() const;

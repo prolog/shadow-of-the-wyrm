@@ -327,6 +327,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\actions\include\FoodAction.hpp" />
     <ClInclude Include="engine\actions\include\HelpAction.hpp" />
     <ClInclude Include="engine\actions\include\IActionManager.hpp" />
+    <ClInclude Include="engine\actions\include\InscribeAction.hpp" />
     <ClInclude Include="engine\actions\include\InventoryManager.hpp" />
     <ClInclude Include="engine\actions\include\ItemManager.hpp" />
     <ClInclude Include="engine\actions\include\KeyManager.hpp" />
@@ -347,7 +348,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\actions\include\SearchAction.hpp" />
     <ClInclude Include="engine\actions\include\ShowConductsAction.hpp" />
     <ClInclude Include="engine\actions\include\ShowResistancesAction.hpp" />
-    <ClInclude Include="engine\actions\include\ShowSkillsAction.hpp" />
+    <ClInclude Include="engine\actions\include\SkillsAction.hpp" />
     <ClInclude Include="engine\actions\include\SkinAction.hpp" />
     <ClInclude Include="engine\actions\include\SpellcastingAction.hpp" />
     <ClInclude Include="engine\actions\include\StairwayMovementAction.hpp" />
@@ -513,9 +514,12 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\commands\select_tile\include\TileSelectionCommands.hpp" />
     <ClInclude Include="engine\commands\select_tile\include\TileSelectionKeyboardCommandMap.hpp" />
     <ClInclude Include="engine\commands\select_tile\include\TileSelectionRangeChecker.hpp" />
+    <ClInclude Include="engine\commands\skills\include\GainSkillsCommandProcessor.hpp" />
+    <ClInclude Include="engine\commands\skills\include\ISkillsCommandProcessor.hpp" />
+    <ClInclude Include="engine\commands\skills\include\ShowSkillsCommandProcessor.hpp" />
     <ClInclude Include="engine\commands\skills\include\SkillsCommandFactory.hpp" />
     <ClInclude Include="engine\commands\skills\include\SkillsCommandKeys.hpp" />
-    <ClInclude Include="engine\commands\skills\include\SkillsCommandProcessor.hpp" />
+    <ClInclude Include="engine\commands\skills\include\SkillsCommandProcessorFactory.hpp" />
     <ClInclude Include="engine\commands\skills\include\SkillsCommands.hpp" />
     <ClInclude Include="engine\commands\skills\include\SkillsKeyboardCommandMap.hpp" />
     <ClInclude Include="engine\conversion\include\CharacterDumper.hpp" />
@@ -649,6 +653,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\crypts\include\CryptLayoutStrategyFactory.hpp" />
     <ClInclude Include="engine\generators\crypts\include\CryptLayoutTypes.hpp" />
     <ClInclude Include="engine\generators\crypts\include\EmptyCryptLayoutStrategy.hpp" />
+    <ClInclude Include="engine\generators\crypts\include\GraveInscriptionGenerator.hpp" />
     <ClInclude Include="engine\generators\crypts\include\ICryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\PillarCryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\VaultCryptLayoutStrategy.hpp" />
@@ -816,6 +821,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\maps\include\LoadedMapDetails.hpp" />
     <ClInclude Include="engine\maps\include\MapCursor.hpp" />
     <ClInclude Include="engine\maps\include\MapExitUtils.hpp" />
+    <ClInclude Include="engine\maps\include\MapMovementTypes.hpp" />
     <ClInclude Include="engine\maps\include\MapRegistry.hpp" />
     <ClInclude Include="engine\maps\include\MapTypeQueries.hpp" />
     <ClInclude Include="engine\maps\include\MapTypeQueryFactory.hpp" />
@@ -1260,8 +1266,9 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\actions\source\BreedAction.cpp" />
     <ClCompile Include="engine\actions\source\ExitGameAction.cpp" />
     <ClCompile Include="engine\actions\source\HelpAction.cpp" />
+    <ClCompile Include="engine\actions\source\InscribeAction.cpp" />
     <ClCompile Include="engine\actions\source\RangedCombatUtils.cpp" />
-    <ClCompile Include="engine\actions\source\ShowSkillsAction.cpp" />
+    <ClCompile Include="engine\actions\source\SkillsAction.cpp" />
     <ClCompile Include="engine\actions\source\unit_tests\AutomaticMovementFlags_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1334,12 +1341,42 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\GainSkillsCommandProcessor.cpp" />
+    <ClCompile Include="engine\commands\skills\source\ShowSkillsCommandProcessor.cpp" />
     <ClCompile Include="engine\commands\skills\source\SkillsCommandFactory.cpp" />
     <ClCompile Include="engine\commands\skills\source\SkillsCommandKeys.cpp" />
-    <ClCompile Include="engine\commands\skills\source\SkillsCommandProcessor.cpp" />
+    <ClCompile Include="engine\commands\skills\source\SkillsCommandProcessorFactory.cpp" />
     <ClCompile Include="engine\commands\skills\source\SkillsCommands.cpp" />
     <ClCompile Include="engine\commands\skills\source\SkillsKeyboardCommandMap.cpp" />
+    <ClCompile Include="engine\commands\skills\source\unit_tests\GainSkillsCommandProcessor_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\unit_tests\ShowSkillsCommandProcessor_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\commands\skills\source\unit_tests\SkillsCommandFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\unit_tests\SkillsCommandProcessorFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\commands\skills\source\unit_tests\SkillsKeyboardCommandMap_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -1358,6 +1395,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\CleansingEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
+    <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
     <ClCompile Include="engine\generators\source\SewerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\TileDepthOptions.cpp" />

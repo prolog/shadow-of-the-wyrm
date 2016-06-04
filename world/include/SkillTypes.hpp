@@ -1,5 +1,11 @@
 #pragma once
 
+enum struct SkillsSelectionType
+{
+  SKILLS_SELECTION_SELECT_SKILL = 0,
+  SKILLS_SELECTION_IMPROVE_SKILL = 1
+};
+
 enum struct SkillType
 {
   SKILL_UNDEFINED = -1,

@@ -29,7 +29,7 @@ TEST(SW_World_Magic_Spell, equality_operator)
   sp.set_property("abc123", "fdsafdsafdsa");
   sp.set_speed(4);
   sp.set_range(1);
-  SpellShape shape = SpellShapeFactory::create_spell_shape(SpellShapeType::SPELL_SHAPE_BALL);
+  SpellShape shape = SpellShapeFactory::create_spell_shape(SpellShapeType::SPELL_SHAPE_BALL, 1);
   sp.set_shape(shape);
   sp.set_has_damage(true);
   sp.set_effect(EffectType::EFFECT_TYPE_HEALING);

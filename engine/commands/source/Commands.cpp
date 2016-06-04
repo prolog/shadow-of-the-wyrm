@@ -490,6 +490,16 @@ HelpCommand::~HelpCommand()
 {
 }
 
+// Inscribe something on the tile.
+InscribeCommand::InscribeCommand(int key)
+: Command(CommandKeys::INSCRIBE, key)
+{
+}
+
+InscribeCommand::~InscribeCommand()
+{
+}
+
 // NPC-only commands
 
 // Breed (create a new creature of the same ID on an adjacent tile)

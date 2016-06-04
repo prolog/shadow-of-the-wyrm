@@ -1,4 +1,5 @@
 #pragma once
+#include "common.hpp"
 #include "SpellTypes.hpp"
 
 class SpellShape;
@@ -8,7 +9,7 @@ class SpellShape;
 class SpellShapeFactory
 {
   public:
-    static SpellShape create_spell_shape(const SpellShapeType st);
+    static SpellShape create_spell_shape(const SpellShapeType st, const uint radius);
 
   protected:
     SpellShapeFactory();

@@ -275,6 +275,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>unstoning_potion</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>64</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>stone_hammer</ID>
 				<Coord>
 					<Row>2</Row>

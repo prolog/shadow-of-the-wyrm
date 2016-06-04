@@ -92,9 +92,9 @@ void DefaultTileManipulator::add_undead_if_necessary(CreaturePtr creature, MapPt
 
         for (const auto& direction : keys)
         {
-          TilePtr tile = directions.at(direction);
+          TilePtr d_tile = directions.at(direction);
 
-          if (tile != nullptr && !tile->has_creature())
+          if (d_tile != nullptr && !d_tile->has_creature())
           {
             Coordinate undead_coords = CoordUtils::get_new_coordinate(MapUtils::get_coordinate_for_creature(map, creature), direction);
             GameUtils::add_new_creature_to_map(game, undead, map, undead_coords);

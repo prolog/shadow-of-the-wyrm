@@ -185,6 +185,7 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
                            {300, {TileType::TILE_TYPE_CASTLE, TileType::TILE_TYPE_FIELD}},
                            {300, {TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_FIELD}},
                            {400, {TileType::TILE_TYPE_SEWER_COMPLEX, TileType::TILE_TYPE_UNDEFINED}},
+                           {500, {TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED}},
                            {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
 
     tile = generate_feature_or_default(field_special_types, TileType::TILE_TYPE_FIELD, row, col);
@@ -292,7 +293,8 @@ void WorldGenerator::process_hill_cell(MapPtr result_map, const int row, const i
 
     vector<pair<int, pair<TileType, TileType>>> hill_special_types;
     hill_special_types = { { 100, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_HILLS } },
-                           { 300, { TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_HILLS } } };
+                           { 300, { TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_HILLS } },
+                           { 650, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(hill_special_types, TileType::TILE_TYPE_HILLS, row, col);
     result_map->insert(row, col, tile);
@@ -349,7 +351,8 @@ void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const
     vector<pair<int, pair<TileType, TileType>>> forest_special_types;
     forest_special_types = { { 100, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FOREST } },
                             { 50, { TileType::TILE_TYPE_WILD_ORCHARD, TileType::TILE_TYPE_UNDEFINED } },
-                            { 250, { TileType::TILE_TYPE_CASTLE, TileType::TILE_TYPE_UNDEFINED } } };
+                            { 250, { TileType::TILE_TYPE_CASTLE, TileType::TILE_TYPE_UNDEFINED } },
+                            { 650, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(forest_special_types, TileType::TILE_TYPE_FOREST, row, col);
     result_map->insert(row, col, tile);
@@ -364,7 +367,8 @@ void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const 
 
     vector<pair<int, pair<TileType, TileType>>> scrub_special_types;
     scrub_special_types = { { 200, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_SCRUB } },
-                            { 300, { TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_SCRUB } } };
+                            { 300, { TileType::TILE_TYPE_KEEP, TileType::TILE_TYPE_SCRUB } },
+                            { 500, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(scrub_special_types, TileType::TILE_TYPE_SCRUB, row, col);
     result_map->insert(row, col, tile);

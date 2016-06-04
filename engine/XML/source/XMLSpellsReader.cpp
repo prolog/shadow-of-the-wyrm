@@ -1,5 +1,6 @@
 #include <vector>
 #include "Conversion.hpp"
+#include "SpellConstants.hpp"
 #include "SpellShapeFactory.hpp"
 #include "Modifier.hpp"
 #include "SpellAdditionalProperties.hpp"
@@ -51,7 +52,8 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
     int speed = XMLUtils::get_child_node_int_value(spell_node, "Speed");
     uint range = XMLUtils::get_child_node_int_value(spell_node, "Range");
     SpellShapeType shape_type = static_cast<SpellShapeType>(XMLUtils::get_child_node_int_value(spell_node, "Shape"));
-    SpellShape spell_shape = SpellShapeFactory::create_spell_shape(shape_type);
+    uint radius = static_cast<uint>(XMLUtils::get_child_node_int_value(spell_node, "Radius", SpellConstants::DEFAULT_BEAM_RADIUS));
+    SpellShape spell_shape = SpellShapeFactory::create_spell_shape(shape_type, radius);
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(spell_node, "Damage");
     EffectType effect = static_cast<EffectType>(XMLUtils::get_child_node_int_value(spell_node, "Effect"));
     XMLNode properties_node = XMLUtils::get_next_element_by_local_name(spell_node, "Properties");

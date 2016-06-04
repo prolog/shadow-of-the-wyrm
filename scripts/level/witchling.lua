@@ -33,9 +33,14 @@ local function witchling_level_fn(creature_id, lvl)
     add_spell_castings(creature_id, "p_06_nightfire", lvl)
   end
 
+  -- Start adding castings of Umbra at level 26.
+  if (lvl >= 26) then
+    add_spell_castings(creature_id, "p_07_umbra", lvl)
+  end
+ 
   -- Start adding castings of Veil of Shadows at level 35.
   if (lvl >= 35) then
-    add_spell_castings(creature_id, "p_07_veil_of_shadows", lvl)
+    add_spell_castings(creature_id, "p_08_veil_of_shadows", lvl)
   end
 end
 

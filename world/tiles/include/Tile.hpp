@@ -42,6 +42,11 @@ class Tile : public ISerializable
     virtual std::string get_engraving_sid() const;
     virtual bool has_engraving() const;
 
+    // Sometimes there are inscriptions, as well.
+    virtual void set_inscription_sid(const std::string& new_inscr_sid);
+    virtual std::string get_inscription_sid() const;
+    virtual bool has_inscription() const;
+
     // The custom map ID is a unique ID used to identify the pre-generated map
     // for a particular tile.  In most cases, this will not be needed, and the 
     // default generator (based on tile type, etc) should be used instead.  

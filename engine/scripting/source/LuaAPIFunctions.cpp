@@ -1,5 +1,6 @@
 #include "LuaAPIFunctions.hpp"
 #include "ClassManager.hpp"
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureDescriber.hpp"
 #include "CreatureFactory.hpp"
@@ -10,6 +11,7 @@
 #include "FeatureFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "GeneratorUtils.hpp"
 #include "HostilityManager.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
@@ -26,6 +28,7 @@
 #include "Quests.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "SkillManager.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
@@ -145,6 +148,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_item_generated", get_num_item_generated);
   lua_register(L, "set_skill_value", set_skill_value);
   lua_register(L, "get_skill_value", get_skill_value);
+  lua_register(L, "check_skill", check_skill);
   lua_register(L, "RNG_range", RNG_range);
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
   lua_register(L, "add_spell_castings", add_spell_castings);
@@ -212,6 +216,12 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_colour", get_creature_colour);
   lua_register(L, "set_creature_colour", set_creature_colour);
   lua_register(L, "set_creature_evade", set_creature_evade);
+  lua_register(L, "set_trap", set_trap);
+  lua_register(L, "get_nearby_hostile_creatures", get_nearby_hostile_creatures);
+  lua_register(L, "set_creature_additional_property", set_creature_additional_property);
+  lua_register(L, "get_creature_additional_property", get_creature_additional_property);
+  lua_register(L, "is_creature_in_view_map", is_creature_in_view_map);
+  lua_register(L, "redraw", redraw);
 }
 
 // Lua API helper functions
@@ -978,6 +988,39 @@ int get_skill_value(lua_State* ls)
   }
 
   lua_pushnumber(ls, skill_value);
+  return 1;
+}
+
+// Check a particular skill for a particular creature.
+// - First argument is the creature ID
+// - Second argument is the SkillType value
+int check_skill(lua_State* ls)
+{
+  bool check_value = false;
+  int num_args = lua_gettop(ls);
+
+  if ((num_args == 2) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int skill_id = lua_tointeger(ls, 2);
+    SkillType skill_name = static_cast<SkillType>(skill_id);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature)
+    {
+      SkillManager sm;
+
+      check_value = sm.check_skill(creature, skill_name);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to check_skill");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, check_value);
   return 1;
 }
 
@@ -2861,6 +2904,186 @@ int set_creature_evade(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to set_creature_evade");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int set_trap(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isboolean(ls, 3))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    int row = lua_tointeger(ls, 1);
+    int col = lua_tointeger(ls, 2);
+    bool trap_triggered = lua_toboolean(ls, 3) != 0;
+
+    string trap_id;
+
+    if (num_args == 4 && lua_isstring(ls, 4))
+    {
+      trap_id = lua_tostring(ls, 4);
+    }
+
+    // Create a trap with the given ID.
+    GeneratorUtils::generate_trap(map, row, col, game.get_trap_info_ref(), trap_id, trap_triggered);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_trap");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Returns a variable number of arguments (the number of nearby creatures
+// the creature is hostile to), with each returned value being a hostile 
+// creature's id.
+int get_nearby_hostile_creatures(lua_State* ls)
+{
+  int num_hostiles = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+    MapPtr view_map = creature->get_decision_strategy()->get_fov_map();
+    const CreatureMap& creatures = view_map->get_creatures();
+
+    for (const auto creature_pair : creatures)
+    {
+      CreaturePtr view_creature = creature_pair.second;
+
+      if (view_creature != nullptr)
+      {
+        if (creature->hostile_to(creature_pair.first))
+        {
+          num_hostiles++;
+          lua_pushstring(ls, creature_pair.first.c_str());
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_nearby_hostile_creatures");
+    lua_error(ls);
+  }
+
+  return num_hostiles;
+}
+
+int set_creature_additional_property(lua_State* ls)
+{
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string prop_name = lua_tostring(ls, 2);
+    string prop_value = lua_tostring(ls, 3);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->set_additional_property(prop_name, prop_value);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_additional_property");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int get_creature_additional_property(lua_State* ls)
+{
+  string creature_prop;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string prop_name = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature_prop = creature->get_additional_property(prop_name);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_additional_property");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, creature_prop.c_str());
+  return 1;
+}
+
+int is_creature_in_view_map(lua_State* ls)
+{
+  bool creature_in_map = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string map_creature_id = lua_tostring(ls, 1);
+    string creature_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      map<string, CreaturePtr> creatures = creature->get_decision_strategy()->get_fov_map()->get_creatures();
+
+      for (const auto c_pair : creatures)
+      {
+        if (c_pair.first == map_creature_id)
+        {
+          creature_in_map = true;
+          break;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_creature_in_view_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, creature_in_map);
+  return 1;
+}
+
+int redraw(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    string creature_id = PlayerConstants::PLAYER_CREATURE_ID;
+    Game& game = Game::instance();
+    MapPtr cur_map = game.get_current_map();
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr && cur_map != nullptr)
+    {
+      MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+
+      // Force a hard redraw.
+      game.update_display(creature, cur_map, fov_map, true);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to redraw");
     lua_error(ls);
   }
 

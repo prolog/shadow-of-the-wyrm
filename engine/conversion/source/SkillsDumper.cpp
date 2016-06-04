@@ -21,6 +21,8 @@ string SkillsDumper::str() const
 string SkillsDumper::get_skills() const
 {
   ostringstream ss;
+
+  ss << String::centre(get_skill_improvement_points_remaining_header(), num_cols) << " " << creature->get_skill_points() << endl << endl;
   
   ss << String::centre(get_general_skills_header(), num_cols)  << endl << endl;
   ss << get_general_skills() << endl << endl;
@@ -83,6 +85,12 @@ string SkillsDumper::get_skills_by_category(const SkillCategory category) const
   }
 
   return ss.str();
+}
+
+string SkillsDumper::get_skill_improvement_points_remaining_header() const
+{
+  string sipr_header = StringTable::get(SkillTextKeys::SKILLS_IMPROVEMENT_POINTS_REMAINING);
+  return sipr_header;
 }
 
 string SkillsDumper::get_weapon_skills_header() const

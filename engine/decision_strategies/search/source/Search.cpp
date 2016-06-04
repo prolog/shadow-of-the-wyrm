@@ -95,6 +95,17 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
         {
           SearchNode sn(coord);
         
+          int danger_cost = 0;
+          FeaturePtr feature = tile->get_feature();
+          if (feature != nullptr && feature->get_is_dangerous())
+          {
+            // If it's a dangerous feature (probably a trap), penalize the 
+            // search path.
+            danger_cost += 10;
+          }
+
+          int path_cost = danger_cost + 1;
+
           if (parent)
           {
             sn.set_location(coord);
@@ -103,12 +114,21 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
             ancestors.push_back(parent->get_location());
             sn.set_ancestors(ancestors);
           
-            sn.set_path_cost(parent->get_path_cost() + 1);
+            // Be sure to consider the parent's path cost as well.
+            path_cost += parent->get_path_cost();
           }
+
+          // Because the queueing function considers the path cost
+          // and the estimated cost to the goal, ensure that the path
+          // cost is penalized for any "bad things" present on the
+          // current tile.
+          sn.set_path_cost(path_cost);
         
           // Used for A* search.  Use Chebyshev distance - 1 (distance from
           // next tile) plus the actual movement cost of the current tile.
-          int estimated_cost = (CoordUtils::chebyshev_distance(coord, goal_coordinate) - 1) + tile->get_movement_multiplier();
+          int estimated_cost = (CoordUtils::chebyshev_distance(coord, goal_coordinate) - 1) 
+                             + tile->get_movement_multiplier();
+
           sn.set_estimated_cost_to_goal(estimated_cost);
         
           search_nodes.push_back(sn);

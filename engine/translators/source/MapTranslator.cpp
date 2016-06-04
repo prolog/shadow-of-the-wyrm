@@ -184,8 +184,6 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
 DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item)
 {
   return create_display_tile_from_symbol_and_colour(item->get_symbol(), item->get_colour());
-  DisplayTile empty;
-  return empty;
 }
 
 // Create a display tile from a given tile
@@ -221,7 +219,7 @@ DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr
 {
   DisplayTile display_tile;
   
-  if (tile->has_feature())
+  if (tile->has_feature() && !tile->get_feature()->get_is_hidden())
   {
     FeaturePtr feature = tile->get_feature();
     display_tile = create_display_tile_from_feature(feature);

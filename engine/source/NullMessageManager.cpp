@@ -17,7 +17,11 @@ void NullMessageManager::send_and_halt()
 void NullMessageManager::alert(const string& message)
 {
 }
-    
+
+void NullMessageManager::alert_text(const string& message)
+{
+}
+
 bool NullMessageManager::add_new_message(const string& message, const Colour colour, const MessageImportance& importance)
 {
   return false;
