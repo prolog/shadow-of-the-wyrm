@@ -49,9 +49,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // French guitarist/lutenist, and one of the most famous of the early 
-  // Renaissance lute composers.
-  return "\"Le Roy\"";
+  // Early 17th century Italian guitarist and composer.
+  return "\"Calvi\"";
 }
 
 string Metadata::get_game_version_synopsis() const
