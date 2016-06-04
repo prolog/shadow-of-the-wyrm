@@ -5467,6 +5467,52 @@
 			<Soak>4</Soak>
 			<Speed>55</Speed>
 		</Creature>
+		<Creature id="changeling">
+			<RaceID>_humanoid</RaceID>
+			<ShortDescriptionSID>CHANGELING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CHANGELING_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CHANGELING_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CHANGELING_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>c</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Speed>40</Speed>
+		</Creature>
 		<Creature id="boar">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>BOAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
