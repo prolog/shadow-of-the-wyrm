@@ -40,6 +40,10 @@ Me:
 Sean McKeague:
 - Ability to pick up partial stacks.
 
+Legend:
+- Pick up all
+- Option to always prompt on stack pickup
+
 redfeek:
 - Add wide char support to more easily support UTF-8/Russian translation.
 

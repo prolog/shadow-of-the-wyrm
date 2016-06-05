@@ -11,7 +11,7 @@ w - Automatic Movement        > - Descend, Dig        < - Ascend %b
 i - View equipment/items      I - View items          _ - Pray %b
 L - Look at nearby tiles      f - Fire a missile      D - Drink %b
 r - Read scroll/book          $ - Count currency      e - Eat %b
-C - Chat                      a - Apply feature       N - Inscribe %b
+c - Chat                      a - Apply feature       N - Inscribe %b
 q - Quests                    z - Cast spell          B - Bestiary %b
 v - Evoke wand                K - Kick                O - Sacrifice %b
 / - Skin corpse               P - Show piety          X - Experience %b
