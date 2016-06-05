@@ -31,7 +31,7 @@ Feature* Sarcophagus::clone()
 
 uchar Sarcophagus::get_symbol() const
 {
-  return 'S';
+  return '0';
 }
 
 pair<string, vector<string>> Sarcophagus::get_description_and_replacement_sids() const

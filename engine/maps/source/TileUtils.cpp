@@ -1,4 +1,5 @@
 #include "TileUtils.hpp"
+#include "GraveTile.hpp"
 
 TileUtils::TileUtils()
 {
@@ -24,6 +25,18 @@ TileType TileUtils::get_opposite_tile_type(const TileType tt)
   }
 
   return tt;
+}
+
+void TileUtils::set_grave_feature(TilePtr tile, FeaturePtr grave_feature)
+{
+  if (tile != nullptr && grave_feature != nullptr)
+  {
+    GraveTile gt;
+    DigChances dc = gt.get_dig_chances();
+
+    tile->set_dig_chances(dc);
+    tile->set_feature(grave_feature);
+  }
 }
 
 #ifdef UNIT_TESTS

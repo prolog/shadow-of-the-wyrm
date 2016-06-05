@@ -505,6 +505,11 @@ DigChances Tile::get_dig_chances() const
   return dig_chances;
 }
 
+DigChances& Tile::get_dig_chances_ref()
+{
+  return dig_chances;
+}
+
 bool Tile::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, illuminated);
