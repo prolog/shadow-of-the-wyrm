@@ -5,6 +5,15 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - Behemoth hide armour is a bit more powerful, soak-wise.
 
+- Defined grave-rooms for dungeons.  These contain a sarcophagus that
+  is guaranteed to contain an item, and is very likely to contain someone
+  not pleased with being woken.
+
+- Updated the dungeon generation algorithm to keep better bookkeeping on
+  special rooms.  Previously, some rooms might not be placed, but would
+  be tracked as such, preventing the generation of the room on that
+  dungeon level.
+
 - New creatures: abyssal beast, aster.
 
 - New items: abyssal hide armour.

@@ -14,6 +14,7 @@
 #include "RoomFeatures.hpp"
 #include "RoomGeneratorFactory.hpp"
 #include "TileGenerator.hpp"
+#include "TileUtils.hpp"
 #include "TreasureRoomPopulator.hpp"
 #include "VaultPopulator.hpp"
 #include "RNG.hpp"
@@ -423,7 +424,8 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
                                                     {RoomFeatures::ROOM_FEATURE_TREASURE_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_TREASURE_ROOM},
                                                     {RoomFeatures::ROOM_FEATURE_ZOO, DungeonFeatureTextKeys::DUNGEON_FEATURE_ZOO},
                                                     {RoomFeatures::ROOM_FEATURE_REST_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_REST_ROOM},
-                                                    {RoomFeatures::ROOM_FEATURE_NODE, DungeonFeatureTextKeys::DUNGEON_FEATURE_NODE}};
+                                                    {RoomFeatures::ROOM_FEATURE_NODE, DungeonFeatureTextKeys::DUNGEON_FEATURE_NODE},
+                                                    {RoomFeatures::ROOM_FEATURE_GRAVE, DungeonFeatureTextKeys::DUNGEON_FEATURE_GRAVE}};
 
     shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
@@ -434,6 +436,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
       pair<string, string> feature_pair = feature_choices.back();
       string feature = feature_pair.first;
       string feature_sid = feature_pair.second;
+      bool placed_feature = false;
 
       feature_choices.pop_back();
 
@@ -441,28 +444,35 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
       {
         if (feature == RoomFeatures::ROOM_FEATURE_ALTAR)
         {
-          generate_altar(map, start_row, end_row, start_col, end_col);
+          placed_feature = generate_altar(map, start_row, end_row, start_col, end_col);
         }
         else if (feature == RoomFeatures::ROOM_FEATURE_TREASURE_ROOM)
         {
-          generate_treasure_room(map, start_row, end_row, start_col, end_col);
+          placed_feature = generate_treasure_room(map, start_row, end_row, start_col, end_col);
         }
         else if (feature == RoomFeatures::ROOM_FEATURE_ZOO)
         {
-          generate_zoo(map, start_row, end_row, start_col, end_col);
+          placed_feature = generate_zoo(map, start_row, end_row, start_col, end_col);
         }
         else if (feature == RoomFeatures::ROOM_FEATURE_REST_ROOM)
         {
-          generate_rest_room(map, start_row, end_row, start_col, end_col);
+          placed_feature = generate_rest_room(map, start_row, end_row, start_col, end_col);
         }
         else if (feature == RoomFeatures::ROOM_FEATURE_NODE)
         {
-          generate_node(map, start_row, end_row, start_col, end_col);
+          placed_feature = generate_node(map, start_row, end_row, start_col, end_col);
+        }
+        else if (feature == RoomFeatures::ROOM_FEATURE_GRAVE)
+        {
+          placed_feature = generate_grave(map, start_row, end_row, start_col, end_col);
         }
 
-        room_features.push_back(feature);
-        dungeon_features.insert(feature);
-        feature_entry_text_sids.push_back(feature_sid);
+        if (placed_feature)
+        {
+          room_features.push_back(feature);
+          dungeon_features.insert(feature);
+          feature_entry_text_sids.push_back(feature_sid);
+        }
 
         break;
       }
@@ -472,51 +482,77 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
   return room_features;
 }
 
-void DungeonGenerator::generate_altar(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+bool DungeonGenerator::generate_altar(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   string deity_id; // Leave empty for now.
   AlignmentRange altar_range = static_cast<AlignmentRange>(RNG::range(static_cast<int>(AlignmentRange::ALIGNMENT_RANGE_EVIL), static_cast<int>(AlignmentRange::ALIGNMENT_RANGE_GOOD)));
 
   FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, altar_range);
-  centre_feature(map, start_row, end_row, start_col, end_col, altar);
+  return centre_feature(map, start_row, end_row, start_col, end_col, altar).first;
 }
 
-void DungeonGenerator::centre_feature(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, FeaturePtr feature)
+pair<bool, TilePtr> DungeonGenerator::centre_feature(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, FeaturePtr feature)
 {
   int feature_y = (start_row + end_row - 1) / 2;
   int feature_x = (start_col + end_col - 1) / 2;
 
   TilePtr tile = map->at(feature_y, feature_x);
+  bool placed = false;
 
   if (tile && !tile->has_feature())
   {
     tile->set_feature(feature);
+    placed = true;
   }
+
+  return make_pair(placed, tile);
 }
 
-void DungeonGenerator::generate_rest_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+bool DungeonGenerator::generate_rest_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   FeaturePtr bed = FeatureGenerator::generate_bed();
-  centre_feature(map, start_row, end_row, start_col, end_col, bed);
+  return centre_feature(map, start_row, end_row, start_col, end_col, bed).first;
 }
 
-void DungeonGenerator::generate_node(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+bool DungeonGenerator::generate_node(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   FeaturePtr stone_marker = FeatureGenerator::generate_stone_marker();
-  centre_feature(map, start_row, end_row, start_col, end_col, stone_marker);
+  return centre_feature(map, start_row, end_row, start_col, end_col, stone_marker).first;
 }
 
-void DungeonGenerator::generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+bool DungeonGenerator::generate_grave(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  FeaturePtr sarcophagus = FeatureGenerator::generate_sarcophagus();
+  pair<bool, TilePtr> place_details = centre_feature(map, start_row, end_row, start_col, end_col, sarcophagus);
+  TilePtr sar_tile = place_details.second;
+
+  if (sar_tile != nullptr)
+  {
+    DigChances& dc = sar_tile->get_dig_chances_ref();
+
+    // You're going to get something good, and probably, something bad.
+    dc.set_pct_chance_item(100);
+    dc.set_pct_chance_undead(80);
+  }
+
+  return place_details.first;
+}
+
+bool DungeonGenerator::generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   VaultPopulator vp;
   vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(make_pair(start_row, start_col), make_pair(end_row-1, end_col-1));
   vp.populate_vault_creatures(map, TileType::TILE_TYPE_DUNGEON_COMPLEX, coords, danger_level, Rarity::RARITY_COMMON);
+
+  return true;
 }
 
-void DungeonGenerator::generate_treasure_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+bool DungeonGenerator::generate_treasure_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   TreasureRoomPopulator trp;
   trp.populate_treasure_room(map, TileType::TILE_TYPE_DUNGEON_COMPLEX, danger_level, start_row, end_row, start_col, end_col);
+
+  return true;
 }
 
 bool DungeonGenerator::place_doorway(MapPtr map, int row, int col)

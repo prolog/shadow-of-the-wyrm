@@ -139,6 +139,7 @@ class Tile : public ISerializable
 
     virtual void set_dig_chances(const DigChances& new_dig_chances);
     virtual DigChances get_dig_chances() const;
+    virtual DigChances& get_dig_chances_ref();
 
     virtual Tile* clone() = 0;
 
