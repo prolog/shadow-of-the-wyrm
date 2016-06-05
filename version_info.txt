@@ -14,7 +14,7 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   be tracked as such, preventing the generation of the room on that
   dungeon level.
 
-- New creatures: abyssal beast, aster.
+- New creatures: abyssal beast, aster, golgothan.
 
 - New items: abyssal hide armour.
 
