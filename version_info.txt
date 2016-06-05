@@ -5,7 +5,7 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - Behemoth hide armour is a bit more powerful, soak-wise.
 
-- New creatures: abyssal beast.
+- New creatures: abyssal beast, aster.
 
 - New items: abyssal hide armour.
 
