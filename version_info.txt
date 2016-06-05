@@ -3,6 +3,12 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - Chat is now bound to the easier-to-press 'c' (Legend).
 
+- Behemoth hide armour is a bit more powerful, soak-wise.
+
+- New creatures: abyssal beast.
+
+- New items: abyssal hide armour.
+
 Shadow of the Wyrm v0.5.2 "Le Roy"
 - Version declared May 1, 2016.  Version finalized June 4, 2016.
 
