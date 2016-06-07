@@ -9,7 +9,7 @@ Me:
 - Fields, forests, and hills should have a chance to have graves/cairns 
   (very small [test!])
 - Graves in these maps should set the permanence to true
-- Inscriptions for graves - phrases and names, ages.
+- Make uniques rarer.
 - Special rooms: beer hall, magical workshop.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
