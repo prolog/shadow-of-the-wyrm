@@ -16,9 +16,13 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - Additional stanzas for "Tel and Floridel".
 
-- New creatures: abyssal beast, aster, golgothan.
+- New creatures: abyssal beast, aster, golgothan, fantastic beast.
 
 - New items: abyssal hide armour.
+
+- Bug fixes:
+
+  - Shadow snakes' speech text wasn't defined properly.
 
 Shadow of the Wyrm v0.5.2 "Le Roy"
 - Version declared May 1, 2016.  Version finalized June 4, 2016.
