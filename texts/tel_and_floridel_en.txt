@@ -128,3 +128,13 @@ and so she said, "The world is ever swift %b
 to say what should be done.  And so, report %b
 that in a week I'll join you in your fairy court."
 %p
+Her answer given, Floridel went west. %b
+She took her flock and wandered for three days, %b
+until she found a valley, green and blessed %b
+with icy streams.  And then, she made her way %b
+alone across the moor.  She wept, her loss %b
+a heavy thing, a fetter in her chest. %b
+Without her sheep, she stepped across the moss, %b
+and there among the flowers took her rest, %b
+alstroemeria and asters at her breast.
+%p
