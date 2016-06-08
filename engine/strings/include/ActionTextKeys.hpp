@@ -77,6 +77,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_TANNERY;
     static const std::string ACTION_KICK_WHEEL_AND_LOOM;
     static const std::string ACTION_KICK_BARREL;
+    static const std::string ACTION_KICK_SARCOPHAGUS;
     static const std::string ACTION_KICK_TRAP;
     static const std::string ACTION_KICK_PASSES_THROUGH;
     static const std::string ACTION_KICK_DOOR_DESTROYED;

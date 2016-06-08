@@ -3750,6 +3750,9 @@
     <ClInclude Include="engine\generators\crypts\include\GraveInscriptionGenerator.hpp">
       <Filter>Header Files\engine\generators\crypts\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\SarcophagusManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7327,6 +7330,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp">
       <Filter>Source Files\engine\generators\crypts\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
