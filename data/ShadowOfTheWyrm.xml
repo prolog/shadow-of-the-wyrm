@@ -8062,6 +8062,55 @@
 				<Type>0</Type>
 			</Damage>
 		</Creature>
+		<Creature id="ghast">
+			<RaceID>_corporeal_undead</RaceID>
+			<ShortDescriptionSID>GHAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GHAST_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GHAST_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GHAST_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>U</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>32</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>32</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9000</Exp>
+			</CreatureGeneration>
+			<Level>32</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>64</NumSides>
+				<Type>8</Type>
+				<StatusAilments>
+					<Status>_poison</Status>
+					<Status>_slow</Status>
+					<Status>_para</Status>
+				</StatusAilments>
+			</Damage>
+			<Evade>20</Evade>
+			<Speed>60</Speed>
+		</Creature>
 		<Creature id="fell_lord">
 			<RaceID>_divine</RaceID>
 			<ShortDescriptionSID>FELL_LORD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
