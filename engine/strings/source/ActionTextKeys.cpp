@@ -336,6 +336,7 @@ const string ActionTextKeys::ACTION_KICK_JEWELER_WORKBENCH     = "ACTION_KICK_JE
 const string ActionTextKeys::ACTION_KICK_TANNERY               = "ACTION_KICK_TANNERY";
 const string ActionTextKeys::ACTION_KICK_WHEEL_AND_LOOM        = "ACTION_KICK_WHEEL_AND_LOOM";
 const string ActionTextKeys::ACTION_KICK_BARREL                = "ACTION_KICK_BARREL";
+const string ActionTextKeys::ACTION_KICK_SARCOPHAGUS           = "ACTION_KICK_SARCOPHAGUS";
 const string ActionTextKeys::ACTION_KICK_TRAP                  = "ACTION_KICK_TRAP";
 const string ActionTextKeys::ACTION_KICK_PASSES_THROUGH        = "ACTION_KICK_PASSES_THROUGH";
 const string ActionTextKeys::ACTION_KICK_DOOR_DESTROYED        = "ACTION_KICK_DOOR_DESTROYED";
