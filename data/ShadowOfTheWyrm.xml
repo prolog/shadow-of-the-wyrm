@@ -12407,6 +12407,50 @@
 				<Type>6</Type>
 			</Damage>
 		</Creature>
+		<Creature id="celestial">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>CELESTIAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CELESTIAL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CELESTIAL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CELESTIAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>27</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>27</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2100</Exp>
+			</CreatureGeneration>
+			<Level>27</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>54</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Evade>20</Evade>
+		</Creature>
 		<Creature id="deep_wizard">
 			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>DEEP_WIZARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
