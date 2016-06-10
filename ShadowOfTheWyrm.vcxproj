@@ -1182,6 +1182,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\tiles\features\include\Feature.hpp" />
     <ClInclude Include="world\tiles\features\include\FeatureFactory.hpp" />
     <ClInclude Include="world\tiles\features\include\FeatureGenerator.hpp" />
+    <ClInclude Include="world\tiles\features\include\FeatureProperties.hpp" />
     <ClInclude Include="world\tiles\features\include\FirePillar.hpp" />
     <ClInclude Include="world\tiles\features\include\Forge.hpp" />
     <ClInclude Include="world\tiles\features\include\Fountain.hpp" />
@@ -3529,6 +3530,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\tiles\features\source\Feature.cpp" />
     <ClCompile Include="world\tiles\features\source\FeatureFactory.cpp" />
     <ClCompile Include="world\tiles\features\source\FeatureGenerator.cpp" />
+    <ClCompile Include="world\tiles\features\source\FeatureProperties.cpp" />
     <ClCompile Include="world\tiles\features\source\FirePillar.cpp" />
     <ClCompile Include="world\tiles\features\source\Forge.cpp" />
     <ClCompile Include="world\tiles\features\source\Fountain.cpp" />
