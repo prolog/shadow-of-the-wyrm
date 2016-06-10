@@ -80,6 +80,12 @@ class Feature : public ISerializable
     virtual float get_hp_regeneration_multiplier() const;
     virtual float get_ap_regeneration_multiplier() const;
 
+    void set_additional_properties(const std::map<std::string, std::string>& new_props);
+    void set_additional_property(const std::string& prop, const std::string& value);
+    std::string get_additional_property(const std::string& prop) const;
+    bool has_additional_property(const std::string& prop) const;
+    std::map<std::string, std::string> get_additional_properties() const;
+    
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
@@ -90,6 +96,7 @@ class Feature : public ISerializable
     MaterialType material;
     AlignmentRange alignment_range;
     int uses;
+    std::map<std::string, std::string> additional_properties;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

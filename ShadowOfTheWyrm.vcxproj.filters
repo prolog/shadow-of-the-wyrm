@@ -3753,6 +3753,9 @@
     <ClInclude Include="engine\maps\tiles\features\include\SarcophagusManipulator.hpp">
       <Filter>Header Files\engine\maps\tiles\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\features\include\FeatureProperties.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7333,6 +7336,9 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp">
       <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\FeatureProperties.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

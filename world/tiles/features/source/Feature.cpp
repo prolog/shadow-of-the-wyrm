@@ -190,6 +190,39 @@ float Feature::get_ap_regeneration_multiplier() const
   return 1.0f;
 }
 
+void Feature::set_additional_properties(const map<string, string>& new_props)
+{
+  additional_properties = new_props;
+}
+
+void Feature::set_additional_property(const string& prop, const string& value)
+{
+  additional_properties[prop] = value;
+}
+
+string Feature::get_additional_property(const string& prop) const
+{
+  string val;
+  auto p_it = additional_properties.find(prop);
+
+  if (p_it != additional_properties.end())
+  {
+    val = p_it->second;
+  }
+
+  return val;
+}
+
+bool Feature::has_additional_property(const string& prop) const
+{
+  return (additional_properties.find(prop) != additional_properties.end());
+}
+
+map<string, string> Feature::get_additional_properties() const
+{
+  return additional_properties;
+}
+
 bool Feature::serialize(ostream& stream) const
 {
   if (lock)
@@ -205,6 +238,7 @@ bool Feature::serialize(ostream& stream) const
   Serialize::write_enum(stream, material);
   Serialize::write_enum(stream, alignment_range);
   Serialize::write_enum(stream, uses);
+  Serialize::write_string_map(stream, additional_properties);
 
   return true;
 }
@@ -223,6 +257,7 @@ bool Feature::deserialize(istream& stream)
   Serialize::read_enum(stream, material);
   Serialize::read_enum(stream, alignment_range);
   Serialize::read_int(stream, uses);
+  Serialize::read_string_map(stream, additional_properties);
 
   return true;
 }

@@ -1,8 +1,11 @@
 #include "SarcophagusManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
+#include "FeatureProperties.hpp"
 #include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "TextMessages.hpp"
+#include "TileProperties.hpp"
 
 using namespace std;
 
@@ -33,7 +36,16 @@ bool SarcophagusManipulator::handle(TilePtr tile, CreaturePtr creature)
 
     if (sarc_opened)
     {
-      // ...
+      bool already_opened = String::to_bool(feature->get_additional_property(FeatureProperties::FEATURE_PROPERTIES_OPEN));
+
+      if (already_opened)
+      {
+        // ...
+      }
+      else
+      {
+        // ...
+      }
     }
   }
 
