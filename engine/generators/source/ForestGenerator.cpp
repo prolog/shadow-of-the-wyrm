@@ -1,6 +1,8 @@
 #include <vector>
 #include "Conversion.hpp"
 #include "ForestGenerator.hpp"
+#include "Game.hpp"
+#include "GeneratorUtils.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "SpringsGenerator.hpp"
@@ -61,6 +63,7 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
   int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
   Coordinate world_location = MapUtils::convert_map_key_to_coordinate(world_location_map_key);
   int pct_chance_evergreen = fc.calculate_pct_chance_evergreen(world_map_height, world_location);
+  Game& game = Game::instance();
 
   Dimensions dim = map->size();
   int rows = dim.get_y();
@@ -90,6 +93,18 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
         result_map->insert(row, col, current_tile);
       }
     }
+  }
+
+  // 20% chance of having a grave or barrow on the map.
+  // This makes the map permanent.
+  if (RNG::percent_chance(20))
+  {
+    int gr_row = RNG::range(0, rows-1);
+    int gr_col = RNG::range(0, cols-1);
+
+    TilePtr grave_or_barrow = GeneratorUtils::generate_grave_or_barrow();
+    result_map->insert(gr_row, gr_col, grave_or_barrow);
+    result_map->set_permanent(true);
   }
 
   return result_map;

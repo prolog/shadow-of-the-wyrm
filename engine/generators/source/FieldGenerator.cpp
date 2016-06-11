@@ -1,6 +1,8 @@
 #include <iostream>
 #include "TileGenerator.hpp"
 #include "FieldGenerator.hpp"
+#include "Game.hpp"
+#include "GeneratorUtils.hpp"
 #include "Dimensions.hpp"
 #include "tiles.hpp"
 #include "RNG.hpp"
@@ -16,6 +18,7 @@ FieldGenerator::FieldGenerator(const std::string& new_map_exit_id)
 MapPtr FieldGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);
+  Game& game = Game::instance();
 
   int rows = dimensions.get_y();
   int columns = dimensions.get_x();
@@ -28,13 +31,24 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
       result_map->insert(row, col, current_tile);
     }
   }
+
+  if (RNG::percent_chance(25))
+  {
+    int gr_row = RNG::range(0, rows - 1);
+    int gr_col = RNG::range(0, columns - 1);
+
+    TilePtr grave_or_barrow = GeneratorUtils::generate_grave_or_barrow();
+    result_map->insert(gr_row, gr_col, grave_or_barrow);
+    result_map->set_permanent(true);
+  }
+
   return result_map;
 }
 
 TilePtr FieldGenerator::generate_tile(MapPtr map, int row, int col)
 {
   TilePtr generated_tile;
-
+  
   // Ensure the first row is reachable.
   if ( row == 0 )
   {

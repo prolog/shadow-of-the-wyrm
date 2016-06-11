@@ -1,6 +1,10 @@
 #include "MountainsGenerator.hpp"
+#include "ItemManager.hpp"
+#include "ItemTypes.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
+
+using namespace std;
 
 MountainsGenerator::MountainsGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_MOUNTAINS)
@@ -19,6 +23,7 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
   int rand;
   TileType tile_type;
   TilePtr tile;
+
   for (int row = 0; row < rows; row++)
   {
     for (int col = 0; col < cols; col++)
@@ -51,6 +56,26 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
       }
       
       tile = tg.generate(tile_type);
+
+      // Did someone die here?
+      // Probably, people die climbing mountains with alarming regularity.
+      if (RNG::x_in_y_chance(1, 1000))
+      {
+        string item_id = ItemIdKeys::ITEM_ID_PILE_OF_BONES;
+
+        if (RNG::percent_chance(50))
+        {
+          item_id = ItemIdKeys::ITEM_ID_INTACT_SKELETON;
+        }
+
+        ItemPtr corpse_details = ItemManager::create_item(item_id);
+
+        if (corpse_details != nullptr)
+        {
+          tile->get_items()->add_front(corpse_details);
+        }
+      }
+
       result_map->insert(row, col, tile);
     }
   }

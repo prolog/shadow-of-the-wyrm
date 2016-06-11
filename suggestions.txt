@@ -1,4 +1,6 @@
 Me:
+- Bartender in Gnordvar should offer to sell you food and beer for a few
+  ivory.
 - Do stuff with inscriptions!
 - Fields, forests, and hills should have a chance to have graves/cairns 
   (very small [test!])

@@ -49,6 +49,8 @@ class ItemIdKeys
     static const std::string ITEM_ID_KINGFLOWER;
     static const std::string ITEM_ID_FIDDLEHEAD_GREEN;
     static const std::string ITEM_ID_FERN;
+    static const std::string ITEM_ID_PILE_OF_BONES;
+    static const std::string ITEM_ID_INTACT_SKELETON;
     static const std::string ITEM_ID_WHITEFLOWER;
     static const std::string ITEM_ID_WILDFLOWER_1;
     static const std::string ITEM_ID_WILDFLOWER_2;

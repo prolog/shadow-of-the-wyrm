@@ -17,12 +17,16 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   be tracked as such, preventing the generation of the room on that
   dungeon level.
 
+- Fields, forests, scrublands, and hills now have a small chance of having
+  a grave or barrow generated as part of the map.  If this happens, then
+  the map is made permanent.
+
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
   ichor, celestial, muck, mire.
 
-- New items: abyssal hide armour.
+- New items: abyssal hide armour, intact skeleton.
 
 - Bug fixes:
 

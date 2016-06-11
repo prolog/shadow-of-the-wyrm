@@ -27474,6 +27474,24 @@
 				<Nutrition>1150</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
+			<Food id="_intact_skeleton">
+				<DescriptionSID>INTACT_SKELETON_SID</DescriptionSID>
+				<UsageDescriptionSID>INTACT_SKELETON_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>10</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>50</Nutrition>
+				<FoodType>2</FoodType>
+			</Food>
 			<Food id="_apple">
 				<DescriptionSID>APPLE_SID</DescriptionSID>
 				<UsageDescriptionSID>APPLE_USAGE_SID</UsageDescriptionSID>
