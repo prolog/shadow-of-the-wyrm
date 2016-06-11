@@ -1,4 +1,5 @@
 #include <vector>
+#include "DigChancesFactory.hpp"
 #include "XMLMapCoordinateReader.hpp"
 #include "XMLMapFeatureReaders.hpp"
 #include "XMLMapFeatureFactory.hpp"

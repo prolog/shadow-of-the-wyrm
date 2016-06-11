@@ -12279,6 +12279,7 @@
 				<Colour>6</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
 					<TileType>1</TileType>

@@ -27,7 +27,8 @@ void TreasureRoomPopulator::populate_treasure_room(MapPtr current_map, const Til
 void TreasureRoomPopulator::generate_corner_features(MapPtr current_map, const int start_row, const int end_row_wall, const int start_col, const int end_col_wall)
 {
   FeaturePtr feat;
-  
+  TilePtr feat_tile = current_map->at(start_row, start_col);
+
   if (RNG::percent_chance(33))
   {
      feat = FeatureGenerator::generate_fire_pillar();
@@ -41,7 +42,6 @@ void TreasureRoomPopulator::generate_corner_features(MapPtr current_map, const i
     feat = FeatureGenerator::generate_sarcophagus(MaterialType::MATERIAL_TYPE_STEEL);
   }
 
-  TilePtr feat_tile = current_map->at(start_row, start_col);
   feat_tile->set_feature(feat);
   
   feat = FeaturePtr(feat->clone());

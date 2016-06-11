@@ -138,3 +138,13 @@ Without her sheep, she stepped across the moss, %b
 and there among the flowers took her rest, %b
 alstroemeria and asters at her breast.
 %p
+Her sleep was restive as the evening turned %b
+to dusk.  A dream apart, her body twitched %b
+beneath the sky, beneath the air that burned %b
+with things to come.  A shepherdess bewitched %b
+by fairy-kind, she offered up herself, %b
+an offer that was taken by the fae. %b
+So, taken in her sleep, she bade farewell, %b
+and found herself beneath the loam and clay, %b
+in Cithriel, forever bound and held in sway.
+%p

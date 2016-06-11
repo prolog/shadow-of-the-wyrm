@@ -1212,6 +1212,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\tiles\include\DaisTile.hpp" />
     <ClInclude Include="world\tiles\include\DesertTile.hpp" />
     <ClInclude Include="world\tiles\include\DigChances.hpp" />
+    <ClInclude Include="world\tiles\include\DigChancesFactory.hpp" />
     <ClInclude Include="world\tiles\include\DownStaircaseTile.hpp" />
     <ClInclude Include="world\tiles\include\DungeonComplexTile.hpp" />
     <ClInclude Include="world\tiles\include\DungeonTile.hpp" />
@@ -3700,6 +3701,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\tiles\source\DaisTile.cpp" />
     <ClCompile Include="world\tiles\source\DesertTile.cpp" />
     <ClCompile Include="world\tiles\source\DigChances.cpp" />
+    <ClCompile Include="world\tiles\source\DigChancesFactory.cpp" />
     <ClCompile Include="world\tiles\source\DownStaircaseTile.cpp" />
     <ClCompile Include="world\tiles\source\DungeonComplexTile.cpp" />
     <ClCompile Include="world\tiles\source\DungeonTile.cpp" />
