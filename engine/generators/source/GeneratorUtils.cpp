@@ -152,6 +152,23 @@ void GeneratorUtils::generate_fire_pillar(const MapPtr map, const int row, const
   }
 }
 
+TilePtr GeneratorUtils::generate_grave_or_barrow()
+{
+  TilePtr generated_tile;
+  TileGenerator tg;
+
+  if (RNG::percent_chance(35))
+  {
+    generated_tile = tg.generate(TileType::TILE_TYPE_BARROW);
+  }
+  else
+  {
+    generated_tile = tg.generate(TileType::TILE_TYPE_GRAVE);
+  }
+
+  return generated_tile;
+}
+
 void GeneratorUtils::generate_fountain(const MapPtr map, const int row, const int col)
 {
   FeaturePtr fountain = FeatureGenerator::generate_fountain();

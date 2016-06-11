@@ -17,7 +17,11 @@ class GeneratorUtils
     
     // Generates a fire pillar feature on top of the existing tile.
     static void generate_fire_pillar(const MapPtr map, const int row, const int col);
-    
+
+    // Generates and returns a grave or barrow.  Graves are slightly more 
+    // common than barrows.
+    static TilePtr generate_grave_or_barrow();
+
     // Generates a Fountain feature on top of whatever tile exists at the current coordinates.
     static void generate_fountain(const MapPtr map, const int row, const int col);
 

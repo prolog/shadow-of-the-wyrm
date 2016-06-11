@@ -13,7 +13,7 @@ using namespace std;
 using namespace boost;
 
 Map::Map(const Map& new_map)
-: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true)
+: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(new_map.permanent), danger(0), allow_creature_updates(true)
 {
   if (this != &new_map)
   {

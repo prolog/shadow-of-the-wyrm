@@ -1,4 +1,5 @@
 #include "HillsGenerator.hpp"
+#include "Game.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
@@ -11,6 +12,7 @@ HillsGenerator::HillsGenerator(const string& new_map_exit_id)
 
 MapPtr HillsGenerator::generate(const Dimensions& dim)
 {
+  Game& game = Game::instance();
   TileGenerator tg;
   MapPtr result_map = std::make_shared<Map>(dim);
 
@@ -51,6 +53,17 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
       tile = tg.generate(tile_type);
       result_map->insert(row, col, tile);
     }
+  }
+
+  // The early hill-people made barrows instead of using grave-markers.
+  if (RNG::percent_chance(15))
+  {
+    int gr_row = RNG::range(0, rows - 1);
+    int gr_col = RNG::range(0, cols - 1);
+
+    TilePtr barrow = tg.generate(TileType::TILE_TYPE_BARROW);
+    result_map->insert(gr_row, gr_col, barrow);
+    result_map->set_permanent(true);
   }
 
   return result_map;

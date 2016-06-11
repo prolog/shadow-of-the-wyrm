@@ -1,5 +1,8 @@
 #include "ScrubGenerator.hpp"
 #include "TileGenerator.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
+#include "GeneratorUtils.hpp"
 #include "RNG.hpp"
 
 ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
@@ -10,6 +13,7 @@ ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
 MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);
+  Game& game = Game::instance();
 
   int rows = dimensions.get_y();
   int cols = dimensions.get_x();
@@ -21,6 +25,16 @@ MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
       TilePtr current_tile = generate_tile(result_map, row, col);
       result_map->insert(row, col, current_tile);
     }
+  }
+
+  if (RNG::percent_chance(15))
+  {
+    int gr_row = RNG::range(0, rows - 1);
+    int gr_col = RNG::range(0, cols - 1);
+
+    TilePtr grave_or_barrow = GeneratorUtils::generate_grave_or_barrow();
+    result_map->insert(gr_row, gr_col, grave_or_barrow);
+    result_map->set_permanent(true);
   }
   
   return result_map;
