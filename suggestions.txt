@@ -1,12 +1,5 @@
 Me:
-- Muck, mire, etc.
 - Do stuff with inscriptions!
-- After sarcophagus changes are done, re-test grave rooms in dungeons.
-- Make sarcophagi plunderable in the same way as graves.  The sarcophagus
-  should basically set the underlying dig chances, and applying the
-  sarcophagus should act like digging.  Should hook into 
-  graverobbing/default tile manipulator code.  Affects graverobbing 
-  conduct, etc (Anonymous)
 - Fields, forests, and hills should have a chance to have graves/cairns 
   (very small [test!])
 - Graves in these maps should set the permanence to true
