@@ -1,3 +1,4 @@
+#include "DigChancesFactory.hpp"
 #include "Inventory.hpp"
 #include "FeatureFactory.hpp"
 #include "InventoryFactory.hpp"
@@ -336,6 +337,14 @@ bool Tile::has_blocking_feature() const
 
 void Tile::set_feature(FeaturePtr new_feature)
 {
+  // Do we need to update the dig chances from what was there previously?
+  pair<bool, DigChances> update_dig_chances = DigChancesFactory::create_feature_dig_chances(new_feature->get_class_identifier());
+
+  if (update_dig_chances.first)
+  {
+    dig_chances = update_dig_chances.second;
+  }
+
   feature = new_feature;
 }
 

@@ -9,6 +9,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   is guaranteed to contain an item, and is very likely to contain someone
   not pleased with being woken.
 
+- Sarcophagi can now be plundered with the usual 'a' (apply feature)
+  command.
+
 - Updated the dungeon generation algorithm to keep better bookkeeping on
   special rooms.  Previously, some rooms might not be placed, but would
   be tracked as such, preventing the generation of the room on that
@@ -24,6 +27,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 - Bug fixes:
 
   - Shadow snakes' speech text wasn't defined properly.
+
+  - Marvelle is supposed to be unique, but didn't have a Max defined
+    (4chan rlg).
 
 Shadow of the Wyrm v0.5.2 "Le Roy"
 - Version declared May 1, 2016.  Version finalized June 4, 2016.

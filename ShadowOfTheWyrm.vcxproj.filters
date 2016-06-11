@@ -3756,6 +3756,9 @@
     <ClInclude Include="world\tiles\features\include\FeatureProperties.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\DigChancesFactory.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7339,6 +7342,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\FeatureProperties.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\DigChancesFactory.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
