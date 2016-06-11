@@ -20,7 +20,7 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
-  ichor, celestial.
+  ichor, celestial, muck, mire.
 
 - New items: abyssal hide armour.
 
