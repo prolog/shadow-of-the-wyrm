@@ -20,7 +20,7 @@ bool AttackScript::execute(ScriptEngine& se, const string& attack_script, Creatu
 {
   bool result = true;
 
-  if (se.execute(attack_script))
+  if (se.execute(attack_script, {}))
   {
     string attacking_creature_base_id;
     string attacking_creature_id;

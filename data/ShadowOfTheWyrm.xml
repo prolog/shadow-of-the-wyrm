@@ -18203,7 +18203,6 @@
 				<Colour>11</Colour>
 			</Text>
 			<CreatureGeneration>
-				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
 				<DangerLevel>12</DangerLevel>
@@ -18222,6 +18221,21 @@
 			</Damage>
 			<Evade>5</Evade>
 			<Soak>1</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/barkeeper.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Properties>
+				<Property>
+					<Name>BARKEEPER_DRINK</Name>
+					<Value>gnomish_stout,dram_whisky</Value>
+				</Property>
+				<Property>
+					<Name>BARKEEPER_FOOD</Name>
+					<Value>bowl_stewed_meat</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="gnome">
 			<RaceID>10_gnome</RaceID>
@@ -27975,6 +27989,25 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Nutrition>1440</Nutrition>	
+				<FoodType>2</FoodType>
+			</Food>
+			<Food id="bowl_stewed_meat">
+				<DescriptionSID>BOWL_STEWED_MEAT_SID</DescriptionSID>
+				<UsageDescriptionSID>BOWL_STEWED_MEAT_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>1700</Nutrition>	
 				<FoodType>2</FoodType>
 			</Food>
 		</Foodstuffs>

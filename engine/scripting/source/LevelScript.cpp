@@ -30,7 +30,7 @@ void LevelScript::execute(ScriptEngine& se, const vector<string>& setup_scripts,
     // Run each script to load its functions, etc.
     for (const string& script : setup_scripts)
     {
-      if (!se.execute(script))
+      if (!se.execute(script, {}))
       {
         execution_result = false;
       }

@@ -50,7 +50,7 @@ void XMLWorldMapReader::read_area(MapPtr map, const XMLNode& area_node)
     if (!script.empty())
     {
       ScriptEngine& se = Game::instance().get_script_engine_ref();
-      se.execute(script);
+      se.execute(script, {});
     }
   }
 }

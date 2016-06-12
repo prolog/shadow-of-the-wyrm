@@ -21,6 +21,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   a grave or barrow generated as part of the map.  If this happens, then
   the map is made permanent.
 
+- The gnomish barkeeper in Gnordvar will now sell you food and a drink
+  for a few ivories.
+
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
