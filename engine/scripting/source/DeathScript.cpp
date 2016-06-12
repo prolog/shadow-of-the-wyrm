@@ -19,7 +19,7 @@ bool DeathScript::execute(ScriptEngine& se, const string& event_script, Creature
 {
   bool result = true;
 
-  if (se.execute(event_script))
+  if (se.execute(event_script, {}))
   {
     string dead_creature_id;
     string dead_creature_base_id;

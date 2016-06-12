@@ -109,6 +109,7 @@ int set_trap(lua_State* ls);
 int get_nearby_hostile_creatures(lua_State* ls);
 int set_creature_additional_property(lua_State* ls);
 int get_creature_additional_property(lua_State* ls);
+int get_creature_additional_property_csv(lua_State* ls);
 int is_creature_in_view_map(lua_State* ls);
 int redraw(lua_State* ls);
 

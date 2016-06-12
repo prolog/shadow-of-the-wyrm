@@ -51,7 +51,7 @@ DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(C
       ScriptEngine& se = Game::instance().get_script_engine_ref();
       string anger_script = deity->get_anger_script();
 
-      se.execute(anger_script);
+      se.execute(anger_script, {});
       se.call_function("anger", { "string", "string" }, { creature->get_id(), deity->get_id() }, 0);
     }
   }

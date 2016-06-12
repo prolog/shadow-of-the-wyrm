@@ -26,7 +26,7 @@ int DecisionScript::execute(ScriptEngine& se, const string& decision_script, Cre
   // Set up the decision script - the creature's decision script will, as a
   // part of its execution, set up all the values required for the 
   // decide function to run successfully.
-  se.execute(decision_script);
+  se.execute(decision_script, {});
 
   string creature_base_id;
   string creature_id;

@@ -116,7 +116,8 @@ string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 }
 
 // Run a particular script in the scripts folder.
-bool ScriptEngine::execute(const string& script)
+// As we're just running a script, pass any desired arguments as a table.
+bool ScriptEngine::execute(const string& script, const map<string, string>& script_args)
 {
   bool ret_val = false;
 
@@ -130,6 +131,25 @@ bool ScriptEngine::execute(const string& script)
     else
     {
       string script_file = "scripts/" + script;
+
+      // Init the table
+      lua_newtable(L);
+
+      // Set the table values
+      for (const auto &sa_pair : script_args)
+      {
+        lua_pushstring(L, sa_pair.first.c_str());
+        lua_pushstring(L, sa_pair.second.c_str());
+        lua_rawset(L, -3);
+      }
+
+      // Set table size
+      lua_pushliteral(L, "n");
+      lua_pushnumber(L, script_args.size());
+      lua_rawset(L, -3);
+
+      // Expose to the script
+      lua_setglobal(L, "args");
 
       if (luaL_loadfile(L, script_file.c_str()) || lua_pcall(L, 0, 0, 0))
       {

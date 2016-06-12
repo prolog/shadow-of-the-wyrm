@@ -79,7 +79,8 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
 
       if (RNG::percent_chance(sd.get_chance()))
       {
-        se.execute(chat_script);
+        map<string, string> args = { {"speaking_creature_id", speaking_creature->get_id()} };
+        se.execute(chat_script, args);
         spoke = true;
       }
     }

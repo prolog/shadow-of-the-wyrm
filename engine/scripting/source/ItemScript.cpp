@@ -20,7 +20,7 @@ bool ItemScript::execute(ScriptEngine& se, const string& item_script, const stri
 {
   bool result = true;
   
-  if (se.execute(item_script))
+  if (se.execute(item_script, {}))
   {
     // Set up the function call parameters.
     lua_State* L = se.get_current_state();

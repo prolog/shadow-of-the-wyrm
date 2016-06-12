@@ -220,6 +220,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_nearby_hostile_creatures", get_nearby_hostile_creatures);
   lua_register(L, "set_creature_additional_property", set_creature_additional_property);
   lua_register(L, "get_creature_additional_property", get_creature_additional_property);
+  lua_register(L, "get_creature_additional_property_csv", get_creature_additional_property_csv);
   lua_register(L, "is_creature_in_view_map", is_creature_in_view_map);
   lua_register(L, "redraw", redraw);
 }
@@ -3003,6 +3004,7 @@ int set_creature_additional_property(lua_State* ls)
   return 0;
 }
 
+// Return a creature property just as the string is stored
 int get_creature_additional_property(lua_State* ls)
 {
   string creature_prop;
@@ -3027,6 +3029,40 @@ int get_creature_additional_property(lua_State* ls)
 
   lua_pushstring(ls, creature_prop.c_str());
   return 1;
+}
+
+int get_creature_additional_property_csv(lua_State* ls)
+{
+  int num_strs = 0;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string prop_name = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+    string creature_prop_csv;
+
+    if (creature != nullptr)
+    {
+      creature_prop_csv = creature->get_additional_property(prop_name);
+
+      vector<string> prop_v = String::create_string_vector_from_csv_string(creature_prop_csv);
+
+      for (const string& p : prop_v)
+      {
+        num_strs++;
+        lua_pushstring(ls, p.c_str());
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_additional_property_csv");
+    lua_error(ls);
+  }
+
+  return num_strs;
 }
 
 int is_creature_in_view_map(lua_State* ls)
