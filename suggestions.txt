@@ -1,5 +1,12 @@
 Me:
 - Do stuff with inscriptions!
+- Implement proper branded weapons.  These should allow for any "magical"
+  damage type (heat through lightning in the damage enum) to be the weapon
+  damage instead.  Should also allow for chaotic or piercing flags.  Gives
+  extra dice or modifier.  Should have "branded" flag on Weapon, config
+  as necessary during item generation.  Have one weapon for each of the
+  melee weapon groups, and ranged ammunition.  Remove all the individual
+  branded-like items from the game configuration.
 - Special rooms: beer hall, magical workshop.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
@@ -28,6 +35,8 @@ Me:
   items can be done and dumped to disk.
 - Capacities on barrels, so that they don't contain an infinite amount
   of booze.
+- Adjust ammunition stacks so that lighter items (arrows) have larger
+  stacks than larger items (clubs, javelins, and so on).
 
 Sean McKeague:
 - Ability to pick up partial stacks.
