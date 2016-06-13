@@ -7,6 +7,11 @@ Me:
   as necessary during item generation.  Have one weapon for each of the
   melee weapon groups, and ranged ammunition.  Remove all the individual
   branded-like items from the game configuration.
+- Implement a draining flag (50% chance return 1/4 damage to attacker).
+- Implement a vorpal flag (small chance, ~5% to insta-kill on successful
+  hit, with special message).
+- Ensure item describers properly handle the brads, plus draining/vorpal/
+  piercing/chaotic.
 - Special rooms: beer hall, magical workshop.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
