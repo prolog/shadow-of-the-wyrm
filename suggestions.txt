@@ -1,5 +1,15 @@
 Me:
 - Do stuff with inscriptions!
+- new tile type: shrine ('o', bright cyan)
+- sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
+  randomly located. 
+- text in Atua-Elar on the shrines and their significance
+- each is locked.  key should be somewhere else, in a set location 
+  (Aeschburh [e], Yew [n], Stonewall [g]).
+- there should be sections filled with moderate/strong/very strong creatures
+- inner room should contain an artifact
+- the three artifacts should be able to be given to Farra in exchange for the 
+  item that can be given to Amaurosis for an evil ending.
 - Implement proper branded weapons.  These should allow for any "magical"
   damage type (heat through lightning in the damage enum) to be the weapon
   damage instead.  Should also allow for chaotic or piercing flags.  Gives
@@ -42,6 +52,10 @@ Me:
   of booze.
 - Adjust ammunition stacks so that lighter items (arrows) have larger
   stacks than larger items (clubs, javelins, and so on).
+
+4chan anon:
+- Pugilist damage doesn't scale well compared to other classes
+  dual-wielding.  More damage?  Random slays at 25/50?
 
 Sean McKeague:
 - Ability to pick up partial stacks.
