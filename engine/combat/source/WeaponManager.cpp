@@ -79,7 +79,7 @@ vector<string> WeaponManager::get_slays_races(CreaturePtr creature, const Attack
 
       if (attack_weapon)
       {
-        slay_races = attack_weapon->get_slays_races();
+        slay_races = attack_weapon->get_damage().get_slays_races();
       }
 
       break;
@@ -92,13 +92,13 @@ vector<string> WeaponManager::get_slays_races(CreaturePtr creature, const Attack
 
       if (ranged_weapon)
       {
-        vector<string> slay_ranged = ranged_weapon->get_slays_races();
+        vector<string> slay_ranged = ranged_weapon->get_damage().get_slays_races();
         slay_races.insert(slay_races.end(), slay_ranged.begin(), slay_ranged.end());
       }
 
       if (ammunition)
       {
-        vector<string> slay_ammo = ammunition->get_slays_races();
+        vector<string> slay_ammo = ammunition->get_damage().get_slays_races();
         slay_races.insert(slay_races.end(), slay_ammo.begin(), slay_ammo.end());
       }
 

@@ -1,5 +1,7 @@
 #pragma once
 #include <memory>
+#include <string>
+#include <vector>
 #include "DamageTypes.hpp"
 #include "Dice.hpp"
 #include "StatusAilments.hpp"
@@ -10,7 +12,7 @@ class Damage : public Dice
 {
   public:
     explicit Damage();
-    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool piercing, const bool incorporeal, const int ebonus, const StatusAilments& sa);
+    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const std::vector<std::string>& rslays, const bool chaos, const bool piercing, const bool incorporeal, const int ebonus, const StatusAilments& sa);
     Damage(const Damage& d);
     Damage&  operator= (const Damage& d);
     bool     operator==(const Damage& d) const;
@@ -19,6 +21,9 @@ class Damage : public Dice
 
     void set_damage_type(const DamageType new_damage_type);
     DamageType get_damage_type() const;
+
+    virtual void set_slays_races(const std::vector<std::string>& new_slay_races);
+    std::vector<std::string> get_slays_races() const;
 
     void set_chaotic(const bool new_chaotic);
     bool get_chaotic() const;
@@ -60,6 +65,7 @@ class Damage : public Dice
     bool piercing; // ignore soak
     bool incorporeal; // only a quarter of the soak is used
     DamageType damage_type;
+    std::vector<std::string> slays_races;
     int effect_bonus;
     StatusAilments status_ailments;
 

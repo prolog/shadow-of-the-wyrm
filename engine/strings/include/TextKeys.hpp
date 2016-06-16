@@ -119,7 +119,8 @@ class TextKeys
     
     static const std::string DAMAGE_MELEE;
     static const std::string DAMAGE_RANGED;
-    
+    static const std::string DAMAGE_SLAYS;
+
     static const std::string EQUIPMENT;
     static const std::string EQUIPMENT_PROMPT;
     static const std::string INVENTORY;

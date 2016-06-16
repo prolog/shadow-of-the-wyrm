@@ -850,6 +850,7 @@
 		<xs:extension base="tns:Dice">
 			<xs:sequence>
 				<xs:element name="Type" type="tns:DamageType"/>
+				<xs:element name="Slays" type="tns:SlayRaces" minOccurs="0"/>
 				<xs:element name="EffectBonus" type="xs:integer" minOccurs="0"/>
 				<!-- If this is not present, the default status ailment will be used.
 				     If this is present but empty, the attack will inflict no status ailments.
@@ -1036,7 +1037,6 @@
 				<xs:element name="Difficulty" type="xs:integer"/>
 				<xs:element name="Speed" type="xs:integer"/>
 				<xs:element name="Damage" type="tns:Damage"/>
-				<xs:element name="Slays" type="tns:SlayRaces" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>

@@ -31,6 +31,22 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
     damage_type = static_cast<DamageType>(XMLUtils::get_child_node_int_value(damage_node, "Type"));
     damage.set_damage_type(damage_type);
 
+    XMLNode slays_node = XMLUtils::get_next_element_by_local_name(damage_node, "Slays");
+
+    if (!slays_node.is_null())
+    {
+      vector<string> slay_races;
+      vector<XMLNode> slay_nodes = XMLUtils::get_elements_by_local_name(slays_node, "Slay");
+
+      for (const XMLNode& slay_node : slay_nodes)
+      {
+        string slay_race = XMLUtils::get_node_value(slay_node);
+        slay_races.push_back(slay_race);
+      }
+
+      damage.set_slays_races(slay_races);
+    }
+
     bool chaotic = XMLUtils::get_attribute_bool_value(damage_node, "chaotic");
     damage.set_chaotic(chaotic);
 

@@ -25108,12 +25108,12 @@
 					<NumSides>3</NumSides>
 					<Modifier>10</Modifier>
 					<Type>4</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+						<Slay>_divine</Slay>
+						<Slay>_demon</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-					<Slay>_divine</Slay>
-					<Slay>_demon</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="akkar">
 				<DescriptionSID>AKKAR_SID</DescriptionSID>
@@ -25140,11 +25140,11 @@
 					<NumSides>2</NumSides>
 					<Modifier>10</Modifier>
 					<Type>6</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+						<Slay>_monster</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-					<Slay>_monster</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="short_sword">
 				<DescriptionSID>SHORT_SWORD_SID</DescriptionSID>
@@ -25238,10 +25238,10 @@
 					<NumDice>6</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
+					<Slays>
+						<Slay>_undead</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_undead</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="forger">
 				<DescriptionSID>FORGER_SID</DescriptionSID>
@@ -25343,12 +25343,12 @@
 					<NumDice>9</NumDice>
 					<NumSides>10</NumSides>
 					<Type>0</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+						<Slay>_animal</Slay>
+						<Slay>_divine</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-					<Slay>_animal</Slay>
-					<Slay>_divine</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="erebus">
 				<DescriptionSID>EREBUS_SID</DescriptionSID>
@@ -25429,10 +25429,10 @@
 					<NumSides>12</NumSides>
 					<Modifier>6</Modifier>
 					<Type>2</Type>
+					<Slays>
+						<Slay>_construct</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_construct</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="stormstaff">
 				<DescriptionSID>STORMSTAFF_SID</DescriptionSID>
@@ -25485,10 +25485,10 @@
 					<NumSides>6</NumSides>
 					<Modifier>14</Modifier>
 					<Type>2</Type>
+					<Slays>
+						<Slay>_insect</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_insect</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="jellysmasher">
 				<DescriptionSID>JELLYSMASHER_SID</DescriptionSID>
@@ -25514,10 +25514,10 @@
 					<NumSides>4</NumSides>
 					<Modifier>15</Modifier>
 					<Type>2</Type>
+					<Slays>
+						<Slay>_jelly</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_jelly</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="goblincrusher">
 				<DescriptionSID>GOBLINCRUSHER_SID</DescriptionSID>
@@ -25544,10 +25544,10 @@
 					<NumSides>10</NumSides>
 					<Modifier>15</Modifier>
 					<Type>2</Type>
+					<Slays>
+						<Slay>07_goblin</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>07_goblin</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="amagari">
 				<DescriptionSID>AMAGARI_SID</DescriptionSID>
@@ -25598,10 +25598,10 @@
 					<NumSides>4</NumSides>
 					<Modifier>12</Modifier>
 					<Type>1</Type>
+					<Slays>
+						<Slay>_animal</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_animal</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="kithslayer">
 				<DescriptionSID>KITHSLAYER_SID</DescriptionSID>
@@ -25626,10 +25626,10 @@
 					<NumSides>8</NumSides>
 					<Modifier>16</Modifier>
 					<Type>0</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="beastbinder">
 				<DescriptionSID>BEASTBINDER_SID</DescriptionSID>
@@ -25655,11 +25655,11 @@
 					<NumSides>4</NumSides>
 					<Modifier>11</Modifier>
 					<Type>3</Type>
+					<Slays>
+						<Slay>_animal</Slay>
+						<Slay>_monster</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_animal</Slay>
-					<Slay>_monster</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="skyslayer">
 				<DescriptionSID>SKYSLAYER_SID</DescriptionSID>
@@ -25685,10 +25685,10 @@
 					<NumSides>6</NumSides>
 					<Modifier>15</Modifier>
 					<Type>0</Type>
+					<Slays>
+						<Slay>_divine</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_divine</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="sunsword">
 				<DescriptionSID>SUNSWORD_SID</DescriptionSID>
@@ -25713,11 +25713,11 @@
 					<NumSides>6</NumSides>
 					<Modifier>18</Modifier>
 					<Type>0</Type>
+					<Slays>
+						<Slay>_undead</Slay>
+						<Slay>_demon</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_undead</Slay>
-					<Slay>_demon</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="whisperwind">
 				<DescriptionSID>WHISPERWIND_SID</DescriptionSID>
@@ -25743,13 +25743,13 @@
 					<NumDice>8</NumDice>
 					<NumSides>12</NumSides>
 					<Type>0</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+						<Slay>_demon</Slay>
+						<Slay>_monster</Slay>
+						<Slay>_dragon</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-					<Slay>_demon</Slay>
-					<Slay>_monster</Slay>
-					<Slay>_dragon</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="bloodsinger">
 				<DescriptionSID>BLOODSINGER_SID</DescriptionSID>
@@ -25771,10 +25771,10 @@
 					<NumSides>4</NumSides>
 					<Modifier>6</Modifier>
 					<Type>0</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="worldsword">
 				<DescriptionSID>WORLDSWORD_SID</DescriptionSID>
@@ -25810,10 +25810,10 @@
 					<NumSides>12</NumSides>
 					<Modifier>30</Modifier>
 					<Type>0</Type>
+					<Slays>
+						<Slay>*</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>*</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="beow">
 				<DescriptionSID>BEOW_SID</DescriptionSID>
@@ -25838,11 +25838,11 @@
 					<NumDice>10</NumDice>
 					<NumSides>6</NumSides>
 					<Type>0</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+						<Slay>_dragon</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-					<Slay>_dragon</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="heavens_blade">
 				<DescriptionSID>HEAVENS_BLADE_SID</DescriptionSID>
@@ -25870,11 +25870,11 @@
 					<NumSides>4</NumSides>
 					<Modifier>20</Modifier>
 					<Type>0</Type>
+					<Slays>
+						<Slay>_monster</Slay>
+						<Slay>_demon</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_monster</Slay>
-					<Slay>_demon</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="dragonbane">
 				<DescriptionSID>DRAGONBANE_SID</DescriptionSID>
@@ -25902,10 +25902,10 @@
 					<NumSides>10</NumSides>
 					<Modifier>16</Modifier>
 					<Type>1</Type>
+					<Slays>
+						<Slay>_dragon</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_dragon</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="stonespear">
 				<DescriptionSID>STONESPEAR_SID</DescriptionSID>
@@ -25957,10 +25957,10 @@
 					<NumSides>4</NumSides>
 					<Modifier>8</Modifier>
 					<Type>7</Type>
+					<Slays>
+						<Slay>_undead</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_undead</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="dragonsfist">
 				<DescriptionSID>DRAGONSFIST_SID</DescriptionSID>
@@ -26242,11 +26242,11 @@
 					<NumSides>12</NumSides>
 					<Modifier>14</Modifier>
 					<Type>2</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+						<Slay>_dragon</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-					<Slay>_dragon</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="stone_hammer">
 				<DescriptionSID>STONE_HAMMER_SID</DescriptionSID>
@@ -26770,11 +26770,11 @@
 					<NumSides>6</NumSides>
 					<Modifier>6</Modifier>
 					<Type>2</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+						<Slay>_demon</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-					<Slay>_demon</Slay>
-				</Slays>
 			</Weapon>			
 			<Weapon id="light_of_battle">
 				<DescriptionSID>LIGHT_OF_BATTLE_SID</DescriptionSID>
@@ -26798,15 +26798,15 @@
 					<NumDice>6</NumDice>
 					<NumSides>6</NumSides>
 					<Type>2</Type>
+					<Slays>
+						<Slay>_undead</Slay>
+						<Slay>_demon</Slay>
+						<Slay>_monster</Slay>
+						<Slay>_dragon</Slay>
+						<Slay>_jelly</Slay>
+						<Slay>_divine</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_undead</Slay>
-					<Slay>_demon</Slay>
-					<Slay>_monster</Slay>
-					<Slay>_dragon</Slay>
-					<Slay>_jelly</Slay>
-					<Slay>_divine</Slay>
-				</Slays>
 			</Weapon>			
 			<Weapon id="leather_whip">
 				<DescriptionSID>LEATHER_WHIP_SID</DescriptionSID>
@@ -27053,12 +27053,12 @@
 					<NumDice>8</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
+					<Slays>
+						<Slay>_animal</Slay>
+						<Slay>_insect</Slay>
+						<Slay>_jelly</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_animal</Slay>
-					<Slay>_insect</Slay>
-					<Slay>_jelly</Slay>
-				</Slays>
 			</Weapon>
 			<Weapon id="yew_bow">
 				<DescriptionSID>YEW_BOW_SID</DescriptionSID>
@@ -27139,10 +27139,10 @@
 					<NumDice>6</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+					</Slays>
 				</Damage>
-				<Slays>
-					<Slay>_humanoid</Slay>
-				</Slays>
 			</Weapon>
 		</RangedWeapons>
 		<Ammunition>
