@@ -26,13 +26,6 @@ TEST(SW_World_Weapon, saveload)
   r.set_value(444);
   r.set_glowing(true);
 
-  vector<string> slay_races;
-  slay_races.push_back("elf");
-  slay_races.push_back("dwarf");
-
-  m.set_slays_races(slay_races);
-  r.set_slays_races(slay_races);
-
   m.serialize(ss);
   r.serialize(ss2);
 
@@ -42,8 +35,6 @@ TEST(SW_World_Weapon, saveload)
   m2.deserialize(iss);
   r2.deserialize(iss2);
 
-  slay_races = m2.get_slays_races();
-  EXPECT_TRUE(find(slay_races.begin(), slay_races.end(), "elf") != slay_races.end());
   EXPECT_EQ(17, m2.get_to_hit());
   EXPECT_EQ(4, m2.get_addl_damage());
   EXPECT_EQ(2, m2.get_speed_bonus());

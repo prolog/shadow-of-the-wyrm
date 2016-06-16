@@ -12,13 +12,13 @@ Damage::Damage()
 {
 }
 
-Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool pierce, const bool incorp, const int eb, const StatusAilments& ailments)
-: Dice(dice, sides, mod), damage_type(dtype), chaotic(chaos), piercing(pierce), incorporeal(incorp), effect_bonus(eb), status_ailments(ailments)
+Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const vector<string>& rslays, const bool chaos, const bool pierce, const bool incorp, const int eb, const StatusAilments& ailments)
+: Dice(dice, sides, mod), damage_type(dtype), slays_races(rslays), chaotic(chaos), piercing(pierce), incorporeal(incorp), effect_bonus(eb), status_ailments(ailments)
 {
 }
 
 Damage::Damage(const Damage& d)
-: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), chaotic(d.chaotic), piercing(d.piercing), incorporeal(d.incorporeal), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
+: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), slays_races(d.slays_races), chaotic(d.chaotic), piercing(d.piercing), incorporeal(d.incorporeal), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
 {
   DamagePtr addl_damage = d.get_additional_damage();
   
@@ -36,6 +36,7 @@ Damage& Damage::operator=(const Damage& d)
     dice_sides  = d.dice_sides;
     modifier    = d.modifier;
     damage_type = d.damage_type;
+    slays_races = d.slays_races;
     chaotic     = d.chaotic;
     piercing    = d.piercing;
     incorporeal = d.incorporeal;
@@ -63,6 +64,7 @@ bool Damage::operator==(const Damage& d) const
     match = match && (dice_sides  == d.get_dice_sides() );
     match = match && (modifier    == d.get_modifier()   );
     match = match && (status_ailments == d.status_ailments );
+    match = match && (slays_races == d.slays_races);
 
     // bypass the "chaotic" flag.  otherwise, unit tests fail
     // roughly 50% of the time when chaotic is on. :)
@@ -107,6 +109,24 @@ DamageType Damage::get_damage_type() const
   {
     return static_cast<DamageType>(RNG::range(static_cast<int>(DamageType::DAMAGE_TYPE_SLASH), static_cast<int>(DamageType::DAMAGE_TYPE_MAX)-1));
   }
+}
+
+void Damage::set_slays_races(const vector<string>& new_slays_races)
+{
+  slays_races = new_slays_races;
+}
+
+vector<string> Damage::get_slays_races() const
+{
+  vector<string> slays_combined = slays_races;
+
+  if (additional_damage != nullptr)
+  {
+    vector<string> addl_slays = additional_damage->get_slays_races();
+    slays_combined.insert(slays_combined.end(), addl_slays.begin(), addl_slays.end());
+  }
+
+  return slays_combined;
 }
 
 void Damage::set_additional_damage(DamagePtr new_additional_damage)
@@ -252,6 +272,7 @@ bool Damage::serialize(ostream& stream) const
   Serialize::write_int(stream, effect_bonus);
 
   status_ailments.serialize(stream);
+  Serialize::write_string_vector(stream, slays_races);
 
   if (additional_damage)
   {
@@ -276,6 +297,7 @@ bool Damage::deserialize(istream& stream)
   Serialize::read_int(stream, effect_bonus);
 
   status_ailments.deserialize(stream);
+  Serialize::read_string_vector(stream, slays_races);
 
   ClassIdentifier ci = ClassIdentifier::CLASS_ID_NULL;
   Serialize::read_class_id(stream, ci);

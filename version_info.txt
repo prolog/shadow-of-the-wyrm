@@ -24,6 +24,12 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 - The gnomish barkeeper in Gnordvar will now sell you food and a drink
   for a few ivories.
 
+- The code has been internally restructured so that weapons no longer
+  have slays.  This is now at the damage level, so that it can be applied
+  both to a weapon and to unarmed damage (or, later, magic).
+
+- Slays are now shown when using the W/R weapon info command.
+
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,

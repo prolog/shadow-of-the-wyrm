@@ -1,6 +1,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "Conversion.hpp"
 #include "EquipmentTextKeys.hpp"
+#include "RaceManager.hpp"
 #include "TextKeys.hpp"
 #include "StringTable.hpp"
 
@@ -109,6 +110,36 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
   boost::replace_first(synopsis, "%s", std::to_string(speed));
   boost::replace_first(synopsis, "%s", damage.str());
   
+  vector<string> slays = damage.get_slays_races();
+  ostringstream ss;
+
+  if (!slays.empty())
+  {
+    RaceManager rm;
+    size_t ssz = slays.size();
+    ss << " (" << StringTable::get(TextKeys::DAMAGE_SLAYS) << ": ";
+
+    for (size_t i = 0; i < ssz; i++)
+    {
+      string slay_race_id = slays[i];
+      RacePtr slay_race = rm.get_race(slay_race_id);
+
+      if (slay_race != nullptr)
+      {
+        ss << StringTable::get(slay_race->get_race_name_sid());
+
+        if (i != ssz - 1)
+        {
+          ss << ", ";
+        }
+      }
+    }
+
+    ss << ")";
+  }
+
+  boost::replace_first(synopsis, "%s", ss.str());
+
   return synopsis;
 }
 
@@ -133,10 +164,9 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type
   }
   
   boost::replace_first(synopsis, "%s", StringTable::get(weapon_description_sid));
-  boost::replace_first(synopsis, "%s", std::to_string(base_difficulty));
-  boost::replace_first(synopsis, "%s", std::to_string(total_difficulty));
-  boost::replace_first(synopsis, "%s", std::to_string(speed));
-  boost::replace_first(synopsis, "%s", damage.str());
-  
+
+  string dmg_synopsis = get_weapon_difficulty_speed_and_damage_synopsis(base_difficulty, total_difficulty, speed, damage);
+  boost::replace_first(synopsis, "%s", dmg_synopsis);
+
   return synopsis;
 }
