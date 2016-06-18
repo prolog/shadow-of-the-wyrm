@@ -223,6 +223,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_additional_property_csv", get_creature_additional_property_csv);
   lua_register(L, "is_creature_in_view_map", is_creature_in_view_map);
   lua_register(L, "redraw", redraw);
+  lua_register(L, "get_race_ids", get_race_ids);
+  lua_register(L, "get_unarmed_slays", get_unarmed_slays);
+  lua_register(L, "add_unarmed_slay", add_unarmed_slay);
 }
 
 // Lua API helper functions
@@ -3120,6 +3123,102 @@ int redraw(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to redraw");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int get_race_ids(lua_State* ls)
+{
+  int race_cnt = 0;
+
+  if (lua_gettop(ls) <= 1)
+  {
+    bool include_user_playable = false;
+
+    if (lua_gettop(ls) == 1 && lua_isboolean(ls, 1))
+    {
+      include_user_playable = (lua_toboolean(ls, 2) != 0);
+    }
+
+    Game& game = Game::instance();
+    const RaceMap& rm = game.instance().get_races_ref();
+
+    for (const auto& race_pair : rm)
+    {
+      RacePtr race = race_pair.second;
+
+      if (race != nullptr && (include_user_playable || !race->get_user_playable()))
+      {
+        lua_pushstring(ls, race_pair.first.c_str());
+        race_cnt++;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_race_ids");
+    lua_error(ls);
+  }
+
+  return race_cnt;
+}
+
+int get_unarmed_slays(lua_State* ls)
+{
+  int slay_cnt = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      vector<string> slays = creature->get_base_damage().get_slays_races();
+
+      for (const string& slay : slays)
+      {
+        lua_pushstring(ls, slay.c_str());
+        slay_cnt++;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_unarmed_slays");
+    lua_error(ls);
+  }
+
+  return slay_cnt;
+}
+
+int add_unarmed_slay(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string slay_race_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Damage damage = creature->get_base_damage();
+      vector<string> slays = damage.get_slays_races();
+
+      if (std::find(slays.begin(), slays.end(), slay_race_id) == slays.end())
+      {
+        slays.push_back(slay_race_id);
+      }
+
+      damage.set_slays_races(slays);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_unarmed_slay");
     lua_error(ls);
   }
 
