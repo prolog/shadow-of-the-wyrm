@@ -25,6 +25,7 @@
 #include "Naming.hpp"
 #include "PickupAction.hpp"
 #include "PlayerConstants.hpp"
+#include "RaceManager.hpp"
 #include "Quests.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
@@ -226,6 +227,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_race_ids", get_race_ids);
   lua_register(L, "get_unarmed_slays", get_unarmed_slays);
   lua_register(L, "add_unarmed_slay", add_unarmed_slay);
+  lua_register(L, "get_race_name", get_race_name);
 }
 
 // Lua API helper functions
@@ -3149,7 +3151,7 @@ int get_race_ids(lua_State* ls)
     {
       RacePtr race = race_pair.second;
 
-      if (race != nullptr && (include_user_playable || !race->get_user_playable()))
+      if (race != nullptr && !race_pair.first.empty() && (include_user_playable || !race->get_user_playable()))
       {
         lua_pushstring(ls, race_pair.first.c_str());
         race_cnt++;
@@ -3214,6 +3216,7 @@ int add_unarmed_slay(lua_State* ls)
       }
 
       damage.set_slays_races(slays);
+      creature->set_base_damage(damage);
     }
   }
   else
@@ -3223,6 +3226,31 @@ int add_unarmed_slay(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_race_name(lua_State* ls)
+{
+  string race_name;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string race_id = lua_tostring(ls, 1);
+    RaceManager rm;
+    RacePtr race = rm.get_race(race_id);
+
+    if (race != nullptr)
+    {
+      race_name = StringTable::get(race->get_race_name_sid());
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_race_name");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, race_name.c_str());
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)

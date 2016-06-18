@@ -1,4 +1,7 @@
 Me:
+- Include unarmed slays in character dump.
+- Long messages are not displaying properly in the message history with
+  '@'.
 - Do stuff with inscriptions!
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  

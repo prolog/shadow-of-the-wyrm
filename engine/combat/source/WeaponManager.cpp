@@ -76,12 +76,14 @@ vector<string> WeaponManager::get_slays_races(CreaturePtr creature, const Attack
     case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
     {
       WeaponPtr attack_weapon = get_weapon(creature, attack_type);
+      Damage dmg = creature->get_base_damage();
 
       if (attack_weapon)
       {
         slay_races = attack_weapon->get_damage().get_slays_races();
       }
 
+      slay_races = dmg.get_slays_races();
       break;
     }
     case AttackType::ATTACK_TYPE_RANGED:

@@ -10,18 +10,36 @@ local function pugilist_stat_gain_fn(creature_id, level)
     -- Don't include user-playable races.  Revisit this later if there are
     -- ever a lot of any particular race.  Excluding these because
     -- otherwise the slays will not be particularly useful.
-    local exist_unarm_slay = get_unarmed_slays(creature_id)
-    local race_ids = get_race_ids(false)
-    local new_slay = ""
+    local exist_unarm_slay = {get_unarmed_slays(creature_id)}
+    local race_ids = {get_race_ids(false)}
+
+    for i,v in ipairs(exist_unarm_slay) do
+      local rem_idx = 0
+
+      for j,v2 in ipairs(race_ids) do
+        if v == v2 then
+          rem_idx = j
+          break
+        end
+      end
+
+      if rem_idx > 0 then
+        table.remove(race_ids, rem_idx)
+      end
+    end
 
     -- Pick a race_id not present in the existing unarmed slays.
-    -- ...
+    local sr_size = table.getn(race_ids)
 
-    -- Add the new slay to the creature's unarmed damage.
-    add_unarmed_slay(creature_id, new_slay)
+    if sr_size > 0 then
+      local new_race_slay = race_ids[RNG_range(1, sr_size)]
+            
+      -- Add the new slay to the creature's unarmed damage.
+      add_unarmed_slay(creature_id, new_race_slay)
 
-    -- Add a message about slaying this race.
-    -- ...
+      -- Add a message about slaying this race.
+      add_message("DAMAGE_NEW_SLAY", {get_race_name(new_race_slay)})
+    end
   end
 end
 
