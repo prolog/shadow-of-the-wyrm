@@ -125,6 +125,7 @@ const string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
 const string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
 const string TextKeys::DAMAGE_SLAYS      = "DAMAGE_SLAYS";
 
+const string TextKeys::ATTACK_DETAILS    = "ATTACK_DETAILS";
 const string TextKeys::EQUIPMENT         = "EQUIPMENT";
 const string TextKeys::EQUIPMENT_PROMPT  = "EQUIPMENT_PROMPT";
 const string TextKeys::INVENTORY         = "INVENTORY";

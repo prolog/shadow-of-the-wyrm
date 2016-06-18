@@ -2,6 +2,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
 #include "global_prototypes.hpp"
+#include "AttackDumper.hpp"
 #include "CharacterDumper.hpp"
 #include "ClassManager.hpp"
 #include "ColourTextKeys.hpp"
@@ -71,6 +72,9 @@ string CharacterDumper::str() const
     
   InventoryDumper inventory_dumper(creature, num_cols);
   ss << inventory_dumper.str() << endl << endl;
+
+  AttackDumper attack_dumper(creature, num_cols);
+  ss << attack_dumper.str() << endl << endl;
 
   MessageBufferDumper mbd(MessageManagerFactory::instance(), num_cols);
   ss << mbd.str() << endl << endl;
