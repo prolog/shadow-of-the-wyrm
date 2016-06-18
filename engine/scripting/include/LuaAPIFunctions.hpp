@@ -112,6 +112,9 @@ int get_creature_additional_property(lua_State* ls);
 int get_creature_additional_property_csv(lua_State* ls);
 int is_creature_in_view_map(lua_State* ls);
 int redraw(lua_State* ls);
+int get_race_ids(lua_State* ls);
+int get_unarmed_slays(lua_State* ls);
+int add_unarmed_slay(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

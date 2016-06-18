@@ -30,6 +30,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - Slays are now shown when using the W/R weapon info command.
 
+- Pugilists are now more powerful: at levels 20 and 40, they receive a
+  random slay on their unarmed damage.
+
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
