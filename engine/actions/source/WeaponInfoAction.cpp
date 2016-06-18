@@ -8,8 +8,7 @@
 #include "WeaponInfoAction.hpp"
 #include "WeaponManager.hpp"
 
-using std::string;
-using std::dynamic_pointer_cast;
+using namespace std;
 
 WeaponInfoAction::WeaponInfoAction()
 {
@@ -46,20 +45,12 @@ ActionCostValue WeaponInfoAction::melee_weapon_info(CreaturePtr creature) const
   
   if (creature)
   {
-    Equipment& eq = creature->get_equipment();
-    Damage base_damage = creature->get_base_damage();
-
-    ItemPtr wielded_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
-    WeaponPtr wielded_weapon = dynamic_pointer_cast<Weapon>(wielded_item);
-
-    ItemPtr off_hand_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND);
-    WeaponPtr off_hand_weapon = dynamic_pointer_cast<Weapon>(off_hand_item);
-    
-    string wielded_weapon_text = get_melee_weapon_info(creature, wielded_weapon, AttackType::ATTACK_TYPE_MELEE_PRIMARY, base_damage);
-    string off_hand_weapon_text = get_melee_weapon_info(creature, off_hand_weapon, AttackType::ATTACK_TYPE_MELEE_SECONDARY, base_damage);
-    
-    manager.add_new_message(wielded_weapon_text);
-    manager.add_new_message(off_hand_weapon_text);
+    pair<string, string> wielded_offhand_text = get_wielded_and_offhand_text(creature);
+    string wielded_text = wielded_offhand_text.first;
+    string offhand_text = wielded_offhand_text.second;
+        
+    manager.add_new_message(wielded_text);
+    manager.add_new_message(offhand_text);
     manager.send();
   }
 
@@ -72,20 +63,54 @@ ActionCostValue WeaponInfoAction::ranged_weapon_info(CreaturePtr creature) const
   
   if (creature)
   {
-    Equipment& eq = creature->get_equipment();
-    ItemPtr ranged_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);
-    ItemPtr ammunition_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
+    string ranged_text = get_ranged_text(creature);
     
-    WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(ranged_item);
-    WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(ammunition_item);
-    
-    string ranged_weapon_text = get_ranged_weapon_info(creature, ranged_weapon, ammunition);
-    
-    manager.add_new_message(ranged_weapon_text);
+    manager.add_new_message(ranged_text);
     manager.send();
   }
   
   return get_action_cost_value(creature);
+}
+
+pair<string, string> WeaponInfoAction::get_wielded_and_offhand_text(CreaturePtr creature) const
+{
+  pair<string, string> wo_text;
+
+  if (creature != nullptr)
+  {
+    Equipment& eq = creature->get_equipment();
+    Damage base_damage = creature->get_base_damage();
+
+    ItemPtr wielded_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+    WeaponPtr wielded_weapon = dynamic_pointer_cast<Weapon>(wielded_item);
+
+    ItemPtr off_hand_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND);
+    WeaponPtr off_hand_weapon = dynamic_pointer_cast<Weapon>(off_hand_item);
+
+    wo_text.first = get_melee_weapon_info(creature, wielded_weapon, AttackType::ATTACK_TYPE_MELEE_PRIMARY, base_damage);
+    wo_text.second = get_melee_weapon_info(creature, off_hand_weapon, AttackType::ATTACK_TYPE_MELEE_SECONDARY, base_damage);
+  }
+
+  return wo_text;
+}
+
+string WeaponInfoAction::get_ranged_text(CreaturePtr creature) const
+{
+  string ranged_weapon_text;
+
+  if (creature != nullptr)
+  {
+    Equipment& eq = creature->get_equipment();
+    ItemPtr ranged_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);
+    ItemPtr ammunition_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
+
+    WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(ranged_item);
+    WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(ammunition_item);
+
+    ranged_weapon_text = get_ranged_weapon_info(creature, ranged_weapon, ammunition);
+  }
+
+  return ranged_weapon_text;
 }
 
 // Get the UI string for either the primary or off-hand weapon.

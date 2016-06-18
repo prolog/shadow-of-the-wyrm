@@ -3759,6 +3759,9 @@
     <ClInclude Include="world\tiles\include\DigChancesFactory.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\conversion\include\AttackDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7345,6 +7348,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\DigChancesFactory.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\AttackDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
