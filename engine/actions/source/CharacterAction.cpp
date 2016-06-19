@@ -1,4 +1,5 @@
 #include <chrono>
+#include <boost/algorithm/string.hpp>
 #include "CharacterAction.hpp"
 #include "CharacterDumper.hpp"
 #include "Conversion.hpp"
@@ -6,6 +7,7 @@
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ScreenTitleTextKeys.hpp"
+#include "TextDisplayFormatter.hpp"
 #include "TextDisplayScreen.hpp"
 #include "TextMessages.hpp"
 #include "TextKeys.hpp"
@@ -23,15 +25,28 @@ ActionCostValue CharacterAction::display_character(CreaturePtr creature)
     Game& game = Game::instance();
     string char_title_sid = ScreenTitleTextKeys::SCREEN_TITLE_CHARACTER_DETAILS;
     CharacterDumper dumper(creature);
-    vector<string> char_text = String::tokenize(dumper.str(), "\n", true);
 
+    vector<string> char_text = String::tokenize(dumper.str(), "\n", true);
     vector<TextDisplayPair> char_details_text;
+    TextDisplayFormatter tdf;
 
     for (const string& str : char_text)
     {
       if (str != "\n")
       {
-        char_details_text.push_back(make_pair(Colour::COLOUR_WHITE, str));
+        if (str.empty())
+        {
+          char_details_text.push_back(make_pair(Colour::COLOUR_WHITE, str));
+        }
+        else
+        {
+          vector<string> formatted_line = tdf.format_text(boost::algorithm::trim_right_copy(str));
+
+          for (const string& line : formatted_line)
+          {
+            char_details_text.push_back(make_pair(Colour::COLOUR_WHITE, line));
+          }
+        }
       }
     }
 
