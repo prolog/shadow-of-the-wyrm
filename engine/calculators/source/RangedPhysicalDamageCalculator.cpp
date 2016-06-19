@@ -22,3 +22,8 @@ int RangedPhysicalDamageCalculator::get_statistic_based_damage_modifier(Creature
   
   return modifier;
 }
+
+SkillType RangedPhysicalDamageCalculator::get_general_combat_skill() const
+{
+  return SkillType::SKILL_GENERAL_ARCHERY;
+}

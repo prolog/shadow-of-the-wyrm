@@ -12,6 +12,8 @@ class PhysicalDamageCalculator : public DamageCalculator
     virtual int get_statistic_based_damage_modifier(CreaturePtr attacking_creature);
     virtual int get_skill_based_damage_modifier(CreaturePtr attacking_creature);
     virtual Damage calculate_default_damage_for_improvised_weapon(ItemPtr item);
+
+    virtual SkillType get_general_combat_skill() const;
     
   protected:
     static const int DAMAGE_STAT_BASELINE;
