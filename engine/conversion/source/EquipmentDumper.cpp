@@ -35,14 +35,7 @@ string EquipmentDumper::get_equipment() const
     {
       ItemDumper id(creature, e_it->second, true);
       string item_desc = id.str();
-      ss << TextMessages::get_equipment_location(e_it->first) << ": " << item_desc << endl;
-
-      if (item_desc.empty())
-      {
-        // Ensure there's always a second line for extra desc, even if 
-        // nothing is equipped.
-        ss << endl; 
-      }
+      ss << TextMessages::get_equipment_location(e_it->first) << ": " << item_desc;
     }
   }
 

@@ -1,5 +1,4 @@
 Me:
-- In EquipmentDumper, only write row 2 when not empty.
 - Long messages are not displaying properly in the character dumper. Ensure
   long lines are handled properly.
 - Do stuff with inscriptions!

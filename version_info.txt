@@ -36,6 +36,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 - Attack details (the output of the "W"/"R" commands) are now shown in
   the character synopsis.
 
+- Fixed some ugliness with how equipment is displayed in the character
+  synopsis.
+
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
@@ -49,6 +52,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
   - Marvelle is supposed to be unique, but didn't have a Max defined
     (4chan rlg).
+
+  - Character synopsis now displays "Resists" by item resistances, to
+    be consistent with the other screens.
 
 Shadow of the Wyrm v0.5.2 "Le Roy"
 - Version declared May 1, 2016.  Version finalized June 4, 2016.

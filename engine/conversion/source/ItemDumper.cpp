@@ -4,6 +4,7 @@
 #include "ItemDumper.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemTranslator.hpp"
+#include "ResistanceTextKeys.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -23,15 +24,21 @@ string ItemDumper::str() const
     DisplayItem display_item = ItemTranslator::create_display_item(!cca.can_see(creature), item);
 
     ss << display_item.get_description() << endl;
+    string additional_desc = display_item.get_additional_description();
 
     if (show_addl_desc)
     {
-      ss << display_item.get_additional_description();
+      if (!additional_desc.empty())
+      {
+        ss << StringTable::get(ResistanceTextKeys::RESISTANCES_ABRV) << ": " << additional_desc << endl;
+      }
+
+      ss << endl;
     }
   }
   else
   {
-    ss << "-";
+    ss << "-" << endl << endl;
   }
 
   // This may be empty - that's fine if we've passed in a null ItemPtr.
