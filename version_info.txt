@@ -56,6 +56,8 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   - Character synopsis now displays "Resists" by item resistances, to
     be consistent with the other screens.
 
+  - Long lines weren't being handled properly in the synopsis.
+
 Shadow of the Wyrm v0.5.2 "Le Roy"
 - Version declared May 1, 2016.  Version finalized June 4, 2016.
 

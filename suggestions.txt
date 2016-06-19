@@ -1,6 +1,4 @@
 Me:
-- Long messages are not displaying properly in the character dumper. Ensure
-  long lines are handled properly.
 - Do stuff with inscriptions!
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
@@ -60,6 +58,8 @@ Me:
 - Sacrifices should generate more piety when non-aligned.
 - Now that damage slays, and not weapons, ensure that magical damage/traps
   and so on properly check slays.
+- Weapon skill should give a damage bonus too.
+- Two-weapon penalty should be much nastier.
 
 Sean McKeague:
 - Ability to pick up partial stacks.
