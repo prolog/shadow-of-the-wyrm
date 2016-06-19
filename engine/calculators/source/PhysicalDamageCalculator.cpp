@@ -120,6 +120,8 @@ int PhysicalDamageCalculator::get_statistic_based_damage_modifier(CreaturePtr at
   return modifier;
 }
 
+// Get the damage modifier that is calculated based on combat/archery, and the
+// applicable melee or ranged weapon.
 int PhysicalDamageCalculator::get_skill_based_damage_modifier(CreaturePtr attacking_creature)
 {
   int modifier = 0;
@@ -130,11 +132,16 @@ int PhysicalDamageCalculator::get_skill_based_damage_modifier(CreaturePtr attack
     SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
     int val = attacking_creature->get_skills().get_value(skill);
 
+    SkillType general_skill = get_general_combat_skill();
+    int general_val = attacking_creature->get_skills().get_value(general_skill);
+
     modifier += (val / DAMAGE_SKILL_DIVISOR);
+    modifier += (general_val / DAMAGE_SKILL_DIVISOR);
   }
 
   return modifier;
 }
+
 // Improvised weapons do 1d2 damage plus a bonus based on their weight.
 Damage PhysicalDamageCalculator::calculate_default_damage_for_improvised_weapon(ItemPtr item)
 {
@@ -154,6 +161,11 @@ Damage PhysicalDamageCalculator::calculate_default_damage_for_improvised_weapon(
   }
   
   return dmg;
+}
+
+SkillType PhysicalDamageCalculator::get_general_combat_skill() const
+{
+  return SkillType::SKILL_GENERAL_COMBAT;
 }
 
 #ifdef UNIT_TESTS

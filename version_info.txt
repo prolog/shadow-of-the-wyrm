@@ -43,7 +43,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   could be offset pretty easily by pumping a weapon skill.
 
 - Skills now also affect damage: creatures get +1 damage for every 10
-  skill in the relevant melee or ranged weapon skill.
+  skill in the relevant melee or ranged weapon skill (clubs, spears, etc).
+  Furthermore, an additional +1 damage is granted for every 10 points of
+  Combat or Archery, depending on the type of the physical attack.
 
 - Additional stanzas for "Tel and Floridel".
 

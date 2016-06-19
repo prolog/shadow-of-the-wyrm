@@ -1,5 +1,5 @@
 Me:
-- Do stuff with inscriptions!
+- Do stuff with inscriptions (helpful/unhelpful inscriptions in dungeons).
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
   randomly located. 
@@ -58,6 +58,8 @@ Me:
 - Sacrifices should generate more piety when non-aligned.
 - Now that damage slays, and not weapons, ensure that magical damage/traps
   and so on properly check slays.
+- Discover traps on search?  Passive search at the end of each turn for
+  traps?
 
 Sean McKeague:
 - Ability to pick up partial stacks.
