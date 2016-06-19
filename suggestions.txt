@@ -58,7 +58,6 @@ Me:
 - Sacrifices should generate more piety when non-aligned.
 - Now that damage slays, and not weapons, ensure that magical damage/traps
   and so on properly check slays.
-- Weapon skill should give a damage bonus too.
 
 Sean McKeague:
 - Ability to pick up partial stacks.
