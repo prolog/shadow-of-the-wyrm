@@ -4,7 +4,7 @@
 
 using std::dynamic_pointer_cast;
 
-const int WeaponDifficultyCalculator::BASE_DUAL_DIFFICULTY = 50;
+const int WeaponDifficultyCalculator::BASE_DUAL_DIFFICULTY = 75;
 const int WeaponDifficultyCalculator::SKILLED_BASE_DUAL_DIFFICULTY = 20;
 const int WeaponDifficultyCalculator::MINIMUM_DUAL_DIFFICULTY = 2;
 const int WeaponDifficultyCalculator::HEAVY_WEAPON_PENALTY = 25;
