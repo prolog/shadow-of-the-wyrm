@@ -42,6 +42,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 - Dual wielding is now even more difficult, as before this difficulty
   could be offset pretty easily by pumping a weapon skill.
 
+- Skills now also affect damage: creatures get +1 damage for every 10
+  skill in the relevant melee or ranged weapon skill.
+
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,

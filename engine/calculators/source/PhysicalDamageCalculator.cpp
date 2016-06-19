@@ -10,6 +10,9 @@ const int PhysicalDamageCalculator::DAMAGE_STAT_BASELINE = 10;
 // dex for ranged, etc).
 const int PhysicalDamageCalculator::DAMAGE_STAT_DIVISOR = 5;
 
+// A creature gets +1 damage for every 10 points in the relevant weapon skill.
+const int PhysicalDamageCalculator::DAMAGE_SKILL_DIVISOR = 10;
+
 // When an attack is incorporeal, it allows only a fraction of the available
 // soak.
 const float PhysicalDamageCalculator::INCORPOREAL_SOAK_MULTIPLIER = 0.25f;
@@ -88,6 +91,7 @@ Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties
     int bac_modifier = static_cast<int>(attacking_creature->get_blood().get_blood_alcohol_content() * 100) / 2;
 
     current_modifier += get_statistic_based_damage_modifier(attacking_creature);
+    current_modifier += get_skill_based_damage_modifier(attacking_creature);
     current_modifier += bac_modifier;
     
     base_damage.set_modifier(current_modifier);
@@ -116,6 +120,21 @@ int PhysicalDamageCalculator::get_statistic_based_damage_modifier(CreaturePtr at
   return modifier;
 }
 
+int PhysicalDamageCalculator::get_skill_based_damage_modifier(CreaturePtr attacking_creature)
+{
+  int modifier = 0;
+
+  if (attacking_creature)
+  {
+    WeaponManager wm;
+    SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
+    int val = attacking_creature->get_skills().get_value(skill);
+
+    modifier += (val / DAMAGE_SKILL_DIVISOR);
+  }
+
+  return modifier;
+}
 // Improvised weapons do 1d2 damage plus a bonus based on their weight.
 Damage PhysicalDamageCalculator::calculate_default_damage_for_improvised_weapon(ItemPtr item)
 {
