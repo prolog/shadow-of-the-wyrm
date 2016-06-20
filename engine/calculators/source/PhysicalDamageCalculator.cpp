@@ -13,6 +13,9 @@ const int PhysicalDamageCalculator::DAMAGE_STAT_DIVISOR = 5;
 // A creature gets +1 damage for every 10 points in the relevant weapon skill.
 const int PhysicalDamageCalculator::DAMAGE_SKILL_DIVISOR = 10;
 
+// A creatures get +1 damage for every 20 points in Combat or Archery.
+const int PhysicalDamageCalculator::DAMAGE_GENERAL_SKILL_DIVISOR = 20;
+
 // When an attack is incorporeal, it allows only a fraction of the available
 // soak.
 const float PhysicalDamageCalculator::INCORPOREAL_SOAK_MULTIPLIER = 0.25f;
@@ -136,7 +139,7 @@ int PhysicalDamageCalculator::get_skill_based_damage_modifier(CreaturePtr attack
     int general_val = attacking_creature->get_skills().get_value(general_skill);
 
     modifier += (val / DAMAGE_SKILL_DIVISOR);
-    modifier += (general_val / DAMAGE_SKILL_DIVISOR);
+    modifier += (general_val / DAMAGE_GENERAL_SKILL_DIVISOR);
   }
 
   return modifier;

@@ -19,5 +19,6 @@ class PhysicalDamageCalculator : public DamageCalculator
     static const int DAMAGE_STAT_BASELINE;
     static const int DAMAGE_STAT_DIVISOR;
     static const int DAMAGE_SKILL_DIVISOR;
+    static const int DAMAGE_GENERAL_SKILL_DIVISOR;
     static const float INCORPOREAL_SOAK_MULTIPLIER;
 };
