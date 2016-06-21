@@ -54,6 +54,8 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - New items: abyssal hide armour, intact skeleton.
 
+- New artifacts: Sword of the Fairy-King, fickle dagger "Fatebender".
+
 - Bug fixes:
 
   - Shadow snakes' speech text wasn't defined properly.

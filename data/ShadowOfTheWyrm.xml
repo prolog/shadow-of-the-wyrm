@@ -106,6 +106,7 @@
 				<Artifact>alaric_mail_shirt</Artifact>
 				<Artifact>helm_of_the_heavens</Artifact>
 				<Artifact>radiance</Artifact>
+				<Artifact>sword_fairy_king</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>air_elemental</Summon>
@@ -144,6 +145,7 @@
 				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>creators_might</Artifact>
+				<Artifact>sword_fairy_king</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>earth_elemental</Summon>
@@ -220,6 +222,7 @@
 				<Artifact>shroud_fate</Artifact>
 				<Artifact>akos_akari</Artifact>
 				<Artifact>whisperwind</Artifact>
+				<Artifact>fatebender</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>air_elemental</Summon>
@@ -25161,6 +25164,36 @@
 					</Slays>
 				</Damage>
 			</Weapon>
+			<Weapon id="fatebender">
+				<DescriptionSID>FATEBENDER_SID</DescriptionSID>
+				<UsageDescriptionSID>FATEBENDER_USAGE_SID</UsageDescriptionSID>
+				<Value>2400</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pierce>0.25</Pierce>
+					<Holy>0.15</Holy>
+					<Arcane>0.15</Arcane>
+				</Resistances>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage chaotic="1">
+					<NumDice>12</NumDice>
+					<NumSides>3</NumSides>
+					<Modifier>6</Modifier>
+					<Type>1</Type>
+					<Slays>
+						<Slay>_monster</Slay>
+					</Slays>
+				</Damage>
+			</Weapon>
 			<Weapon id="akkar">
 				<DescriptionSID>AKKAR_SID</DescriptionSID>
 				<UsageDescriptionSID>AKKAR_USAGE_SID</UsageDescriptionSID>
@@ -25734,6 +25767,33 @@
 					<Slays>
 						<Slay>_divine</Slay>
 					</Slays>
+				</Damage>
+			</Weapon>
+			<Weapon id="sword_fairy_king">
+				<DescriptionSID>SWORD_FAIRY_KING_SID</DescriptionSID>
+				<UsageDescriptionSID>SWORD_FAIRY_KING_USAGE_SID</UsageDescriptionSID>
+				<Value>2660</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.15</Slash>
+					<Pierce>0.15</Pierce>
+					<Shadow>0.25</Shadow>
+				</Resistances>
+				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>3</Speed>
+				<Damage piercing="1">
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>10</Modifier>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="sunsword">
