@@ -109,33 +109,64 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
   boost::replace_first(synopsis, "%s", std::to_string(total_difficulty));
   boost::replace_first(synopsis, "%s", std::to_string(speed));
   boost::replace_first(synopsis, "%s", damage.str());
-  
+
+  vector<string> dmg_flags;  
   vector<string> slays = damage.get_slays_races();
   ostringstream ss;
 
-  if (!slays.empty())
+  if (damage.get_chaotic())
   {
-    RaceManager rm;
-    size_t ssz = slays.size();
-    ss << " (" << StringTable::get(TextKeys::DAMAGE_SLAYS) << ": ";
+    dmg_flags.push_back(TextKeys::DAMAGE_CHAOTIC);
+  }
 
-    for (size_t i = 0; i < ssz; i++)
+  if (damage.get_piercing())
+  {
+    dmg_flags.push_back(TextKeys::DAMAGE_PIERCING);
+  }
+
+  bool has_slays = !slays.empty();
+
+  if (!dmg_flags.empty() || !slays.empty())
+  {
+    ss << " (";
+    
+    if (!dmg_flags.empty())
     {
-      string slay_race_id = slays[i];
-      RacePtr slay_race = rm.get_race(slay_race_id);
-
-      if (slay_race != nullptr)
+      for (size_t i = 0; i < dmg_flags.size(); i++)
       {
-        ss << StringTable::get(slay_race->get_race_name_sid());
+        ss << StringTable::get(dmg_flags[i]);
 
-        if (i != ssz - 1)
+        if (i != dmg_flags.size() - 1 || has_slays)
         {
           ss << ", ";
         }
       }
     }
 
-    ss << ")";
+    if (has_slays)
+    {
+      RaceManager rm;
+      size_t ssz = slays.size();
+      ss << StringTable::get(TextKeys::DAMAGE_SLAYS) << ": ";
+
+      for (size_t i = 0; i < ssz; i++)
+      {
+        string slay_race_id = slays[i];
+        RacePtr slay_race = rm.get_race(slay_race_id);
+
+        if (slay_race != nullptr)
+        {
+          ss << StringTable::get(slay_race->get_race_name_sid());
+
+          if (i != ssz - 1)
+          {
+            ss << ", ";
+          }
+        }
+      }
+
+      ss << ")";
+    }
   }
 
   boost::replace_first(synopsis, "%s", ss.str());

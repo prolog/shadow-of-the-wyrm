@@ -47,6 +47,8 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   Furthermore, an additional +1 damage is granted for every 20 points of
   Combat or Archery, depending on the type of the physical attack.
 
+- Prettified damage flags in the weapon output.
+
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
