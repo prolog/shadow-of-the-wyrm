@@ -61,6 +61,13 @@ Me:
 - Discover traps on search?  Passive search at the end of each turn for
   traps?
 
+Alzrius:
+- When skinning, each resist should have only a 50% chance of being
+  included.
+- Allow skinning to add at most 50% of the base resistances (should be
+  between 0.01 and 50% of the max).
+- Add to credits.
+
 Sean McKeague:
 - Ability to pick up partial stacks.
 

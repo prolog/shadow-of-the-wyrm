@@ -507,12 +507,12 @@
 				<Pound>0</Pound>
 				<Heat>0</Heat>
 				<Cold>0</Cold>
-				<Acid>0</Acid>
-				<Poison>0</Poison>
+				<Acid>0.15</Acid>
+				<Poison>0.10</Poison>
 				<Holy>0</Holy>
 				<Shadow>0</Shadow>
-				<Arcane>0</Arcane>
-				<Lightning>0</Lightning>
+				<Arcane>0.15</Arcane>
+				<Lightning>-0.15</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
@@ -566,12 +566,12 @@
 				<Slash>0</Slash>
 				<Pierce>0</Pierce>
 				<Pound>0</Pound>
-				<Heat>0</Heat>
+				<Heat>0.10</Heat>
 				<Cold>0</Cold>
 				<Acid>0</Acid>
 				<Poison>0</Poison>
-				<Holy>0</Holy>
-				<Shadow>0</Shadow>
+				<Holy>-0.15</Holy>
+				<Shadow>0.25</Shadow>
 				<Arcane>0</Arcane>
 				<Lightning>0</Lightning>
 			</Resistances>
@@ -631,8 +631,8 @@
 				<Cold>0</Cold>
 				<Acid>0</Acid>
 				<Poison>0</Poison>
-				<Holy>0</Holy>
-				<Shadow>0</Shadow>
+				<Holy>0.40</Holy>
+				<Shadow>-0.30</Shadow>
 				<Arcane>0</Arcane>
 				<Lightning>0</Lightning>
 			</Resistances>
@@ -750,9 +750,9 @@
 				<Pierce>0</Pierce>
 				<Pound>0</Pound>
 				<Heat>0</Heat>
-				<Cold>0</Cold>
-				<Acid>0</Acid>
-				<Poison>0</Poison>
+				<Cold>0.20</Cold>
+				<Acid>0.15</Acid>
+				<Poison>0.10</Poison>
 				<Holy>0</Holy>
 				<Shadow>0</Shadow>
 				<Arcane>0</Arcane>
@@ -810,14 +810,14 @@
 				<Slash>0</Slash>
 				<Pierce>0</Pierce>
 				<Pound>0</Pound>
-				<Heat>0</Heat>
-				<Cold>0</Cold>
-				<Acid>0</Acid>
-				<Poison>0</Poison>
+				<Heat>0.10</Heat>
+				<Cold>0.10</Cold>
+				<Acid>0.10</Acid>
+				<Poison>0.05</Poison>
 				<Holy>0</Holy>
 				<Shadow>0</Shadow>
-				<Arcane>0</Arcane>
-				<Lightning>0</Lightning>
+				<Arcane>-0.15</Arcane>
+				<Lightning>0.05</Lightning>
 			</Resistances>
 			<Skills>
 				<GeneralSkills/>
@@ -877,7 +877,7 @@
 				<Poison>0</Poison>
 				<Holy>0</Holy>
 				<Shadow>0</Shadow>
-				<Arcane>0</Arcane>
+				<Arcane>0.10</Arcane>
 				<Lightning>0</Lightning>
 			</Resistances>
 			<Skills>

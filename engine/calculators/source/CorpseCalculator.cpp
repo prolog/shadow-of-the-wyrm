@@ -17,7 +17,7 @@ int CorpseCalculator::calculate_chance_successful_skin(CreaturePtr creature)
   return pct_chance;
 }
 
-// The chance of a corpse is 15% + (hunting / 2) + (foraging / 3).
+// The chance of a corpse is 7% + (hunting / 2) + (foraging / 3).
 // The maximum chance is 80%.
 int CorpseCalculator::calculate_chance_corpse(CreaturePtr deathblow_creature)
 {
@@ -30,7 +30,7 @@ int CorpseCalculator::calculate_chance_corpse(CreaturePtr deathblow_creature)
     int forage_value = skills.get_value_incr_marks(SkillType::SKILL_GENERAL_FORAGING);
     int hunt_value = skills.get_value_incr_marks(SkillType::SKILL_GENERAL_HUNTING);
 
-    pct_chance = std::min(15 + (forage_value / 3) + (hunt_value / 2), 80);
+    pct_chance = std::min(7 + (forage_value / 3) + (hunt_value / 2), 80);
   }
 
   return pct_chance;

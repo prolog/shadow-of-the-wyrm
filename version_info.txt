@@ -49,6 +49,12 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - Prettified damage flags in the weapon output.
 
+- The following races now have some resists/vulns, which should make
+  skinning creatures of that race worthwhile: construct, demon, divine,
+  insect, jelly, monster.
+
+- The base rate for corpse-dropping has been reduced from 15% to 7%.
+  
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
