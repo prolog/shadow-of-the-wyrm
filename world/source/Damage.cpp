@@ -239,21 +239,6 @@ string Damage::str() const
     ss << modifier_s << modifier_abs;
   }
   
-  if (chaotic)
-  {
-    ss << " (cha) ";
-  }
-
-  if (piercing)
-  {
-    ss << " (prc) ";
-  }
-
-  if (effect_bonus != 0)
-  {
-    ss << " +" << std::to_string(effect_bonus) + "/eff. ";
-  }
-
   if (additional_damage)
   {
     ss << "+" << additional_damage->str();
