@@ -1,4 +1,8 @@
 Me:
+- Looks like there may be an issue with the incorrect resists being
+  applied.
+- Skins with different resists are being merged into each other
+  incorrectly.
 - Do stuff with inscriptions (helpful/unhelpful inscriptions in dungeons).
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  

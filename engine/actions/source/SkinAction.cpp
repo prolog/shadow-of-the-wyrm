@@ -120,17 +120,8 @@ void SkinAction::create_skin_and_add_to_tile(CreaturePtr creature, ItemPtr corps
   if (corpse && tile)
   {
     ItemManager im;
-    uint quantity = 1;
 
-    // Chance to create a second skin based on a percentage check
-    // using the creature's skinning skill.
-    if (RNG::percent_chance(creature->get_skills().get_value(SkillType::SKILL_GENERAL_SKINNING)))
-    {
-      creature->get_skills().mark(SkillType::SKILL_GENERAL_SKINNING);
-      quantity++;
-    }
-
-    ItemPtr skin = im.create_item(SkinningConstants::SKIN_ID, quantity);
+    ItemPtr skin = im.create_item(SkinningConstants::SKIN_ID, 1);
     skin->set_additional_property(SkinningConstants::SKIN_IS_SKIN, Bool::to_string(true));
     skin->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID));
   	skin->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID));

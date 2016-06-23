@@ -29,28 +29,51 @@ TEST(SW_Engine_Calculators_CorpseCalculator, calculate_chance_successful_skin)
   EXPECT_EQ(100, cc.calculate_chance_successful_skin(creature));
 }
 
+TEST(SW_Engine_Calculators_CorpseCaclulator, calculate_chance_resistance)
+{
+  CorpseCalculator cc;
+
+  EXPECT_EQ(40, cc.calculate_chance_resistance(nullptr));
+
+  CreaturePtr creature = std::make_shared<Creature>();
+
+  EXPECT_EQ(40, cc.calculate_chance_resistance(creature));
+
+  Skills skills;
+  skills.set_value(SkillType::SKILL_GENERAL_SKINNING, 40);
+  creature->set_skills(skills);
+
+  EXPECT_EQ(60, cc.calculate_chance_resistance(creature));
+
+  skills.set_value(SkillType::SKILL_GENERAL_SKINNING, 100);
+  creature->set_skills(skills);
+
+  EXPECT_EQ(90, cc.calculate_chance_resistance(creature));
+  
+}
+
 TEST(SW_Engine_Calculators_CorpseCalculator, calculate_chance_corpse)
 {
   CorpseCalculator cc;
   CreaturePtr creature = std::make_shared<Creature>();
   Skills skills;
 
-  EXPECT_EQ(15, cc.calculate_chance_corpse(creature));
+  EXPECT_EQ(7, cc.calculate_chance_corpse(creature));
 
   skills.set_value(SkillType::SKILL_GENERAL_FORAGING, 1);
   creature->set_skills(skills);
 
-  EXPECT_EQ(15, cc.calculate_chance_corpse(creature));
+  EXPECT_EQ(7, cc.calculate_chance_corpse(creature));
 
   skills.set_value(SkillType::SKILL_GENERAL_FORAGING, 22);
   creature->set_skills(skills);
 
-  EXPECT_EQ(22, cc.calculate_chance_corpse(creature));
+  EXPECT_EQ(14, cc.calculate_chance_corpse(creature));
 
   skills.set_value(SkillType::SKILL_GENERAL_FORAGING, 100);
   creature->set_skills(skills);
 
-  EXPECT_EQ(48, cc.calculate_chance_corpse(creature));
+  EXPECT_EQ(40, cc.calculate_chance_corpse(creature));
 
   skills.set_value(SkillType::SKILL_GENERAL_HUNTING, 100);
   creature->set_skills(skills);

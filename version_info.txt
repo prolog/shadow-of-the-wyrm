@@ -53,6 +53,12 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   skinning creatures of that race worthwhile: construct, demon, divine,
   insect, jelly, monster.
 
+- The chance of a corpse carrying over a racial resistance is no longer
+  100% - the base chance is 40, and modified by the skinning creature's
+  Skinning skill (based on an observation by Alzrius).
+
+- Each corpse now produces only one skin.
+
 - The base rate for corpse-dropping has been reduced from 15% to 7%.
   
 - Additional stanzas for "Tel and Floridel".

@@ -12,17 +12,17 @@ class CorpseFactory
     CorpseFactory();
     ~CorpseFactory();
 
-    ItemPtr create_corpse(CreaturePtr creature);
+    ItemPtr create_corpse(CreaturePtr attacking_creature, CreaturePtr creature);
 
   protected:
     void initialize_size_weight_multipliers();
 
-    void set_internal_details(CreaturePtr creature, ItemPtr corpse);
-    void set_display_details(CreaturePtr creature, ItemPtr corpse);
-    void set_weight(CreaturePtr creature, ItemPtr corpse);
-    void set_poisoned_if_necessary(CreaturePtr creature, ItemPtr corpse);
-    void set_resistances(CreaturePtr creature, ItemPtr corpse);
-    void set_additional_details(CreaturePtr creature, ItemPtr corpse);
+    void set_internal_details(CreaturePtr dead_creature, ItemPtr corpse);
+    void set_display_details(CreaturePtr dead_creature, ItemPtr corpse);
+    void set_weight(CreaturePtr dead_creature, ItemPtr corpse);
+    void set_poisoned_if_necessary(CreaturePtr dead_creature, ItemPtr corpse);
+    void set_resistances(CreaturePtr attacking_creature, CreaturePtr dead_creature, ItemPtr corpse);
+    void set_additional_details(CreaturePtr dead_creature, ItemPtr corpse);
 
     static std::map<CreatureSize, float> size_weight_multipliers;
 };
