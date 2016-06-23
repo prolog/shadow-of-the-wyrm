@@ -157,6 +157,32 @@ Resistances::Resistances()
   default_resistances();
 }
 
+Resistances::Resistances(const Resistances& r)
+{
+  *this = r;
+}
+
+// Ensure that we create new shared ptrs, or else the shallow copy will
+// mess everything up!  Copying shared_ptrs is the worst.
+Resistances& Resistances::operator=(const Resistances& r)
+{
+  if (this != &r)
+  {
+    default_resistances();
+
+    for (const auto& r_pair : r.resistances)
+    {
+      if (r_pair.second != nullptr)
+      {
+        shared_ptr<Resistance> r = r_pair.second;
+        resistances[r_pair.first] = ResistancePtr(r->clone());
+      }
+    }
+  }
+
+  return *this;
+}
+
 bool Resistances::operator==(const Resistances& res) const
 {
   bool result = true;

@@ -175,7 +175,7 @@ void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_cre
   if (RNG::percent_chance(cc.calculate_chance_corpse(attacking_creature)) && leaves_corpse)
   {
     CorpseFactory cf;
-    ItemPtr corpse = cf.create_corpse(dead_creature);
+    ItemPtr corpse = cf.create_corpse(attacking_creature, dead_creature);
 
     if (corpse != nullptr)
     {

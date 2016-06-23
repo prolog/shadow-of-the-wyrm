@@ -17,6 +17,20 @@ int CorpseCalculator::calculate_chance_successful_skin(CreaturePtr creature)
   return pct_chance;
 }
 
+// The chance for a creature to carry over a particular resistance is
+// 40 + (skinning skill / 2)
+int CorpseCalculator::calculate_chance_resistance(CreaturePtr creature)
+{
+  int pct_chance = 40;
+
+  if (creature != nullptr)
+  {
+    pct_chance += static_cast<int>(creature->get_skills().get_value(SkillType::SKILL_GENERAL_SKINNING) / 2);
+  }
+
+  return pct_chance;
+}
+
 // The chance of a corpse is 7% + (hunting / 2) + (foraging / 3).
 // The maximum chance is 80%.
 int CorpseCalculator::calculate_chance_corpse(CreaturePtr deathblow_creature)

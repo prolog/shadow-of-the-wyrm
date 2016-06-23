@@ -184,6 +184,9 @@ class Resistances : public ISerializable
 {
   public:
     Resistances();
+    Resistances(const Resistances& r);
+    Resistances& operator=(const Resistances& r);
+
     virtual bool operator==(const Resistances& resistances) const;
 
     // Add the values from the given resistances to the current set of resistances.
