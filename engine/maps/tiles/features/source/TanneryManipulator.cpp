@@ -114,6 +114,7 @@ ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr sel
 
     if (slot_item_it != skin_items.end())
     {
+      TanningCalculator tc;
       string item_id = slot_item_it->second;
 
       // Create the item.
@@ -125,7 +126,6 @@ ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr sel
       // also based on the base evade/soak of the skinned creature.
       if (wearable)
       {
-        TanningCalculator tc;
         int hide_evade = wearable->get_evade() + tc.calculate_evade_bonus(creature);
         int hide_soak = wearable->get_soak() + tc.calculate_soak_bonus(creature);
 
@@ -137,7 +137,7 @@ ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr sel
         wearable->set_evade(hide_evade);
         wearable->set_soak(hide_soak);
 
-        armour->set_resistances(selected_skin->get_resistances());
+        armour->set_resistances(tc.calculate_item_resistances(creature, selected_skin->get_resistances()));
         armour->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));
     		armour->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID));
 
