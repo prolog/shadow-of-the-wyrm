@@ -198,6 +198,7 @@ class Resistances : public ISerializable
     void set_all_resistances_to(const double new_value);
     ResistancePtr get_resistance(const DamageType dt) const;
     double get_resistance_value(const DamageType type) const;
+    ResistancesMap get_resistances_map() const;
 
     std::string str() const;
 

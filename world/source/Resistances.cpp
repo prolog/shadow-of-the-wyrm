@@ -491,6 +491,11 @@ double Resistances::get_resistance_value(const DamageType type) const
   return DEFAULT_RESISTANCE_VALUE;
 }
 
+ResistancesMap Resistances::get_resistances_map() const
+{
+  return resistances;
+}
+
 string Resistances::str() const
 {
   string resistances_str;

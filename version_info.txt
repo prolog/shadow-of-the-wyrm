@@ -59,6 +59,12 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - Each corpse now produces only one skin.
 
+- The resistances transferred from a skin to a piece of armour are now
+  much lower - they used to be the same value, but now start at 1/4.
+  At maximum Tanning skill, the divisor is 1/2, and there is the chance
+  to increase the resistance a bit beyond the base value, depending on
+  the Tanning skill.
+
 - The base rate for corpse-dropping has been reduced from 15% to 7%.
   
 - Additional stanzas for "Tel and Floridel".
