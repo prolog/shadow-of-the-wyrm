@@ -29,3 +29,6 @@ int ItemDropRateCalculator::calculate_pct_chance_currency_drop(CreaturePtr creat
   return pct_chance;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/ItemDropRateCalculator_test.cpp"
+#endif
