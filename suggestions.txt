@@ -1,5 +1,4 @@
 Me:
-- More inscriptions!
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
   randomly located. 
