@@ -187,11 +187,13 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_CRAFTING;
     static const std::string SKILL_USAGE_DETECTION;
     static const std::string SKILL_USAGE_DUAL_WIELD;
+    static const std::string SKILL_USAGE_DUNGEONEERING;
     static const std::string SKILL_USAGE_ESCAPE;
     static const std::string SKILL_USAGE_FORAGING;
     static const std::string SKILL_USAGE_HUNTING;
     static const std::string SKILL_USAGE_JEWELER;
     static const std::string SKILL_USAGE_GENERAL_MAGIC;
+    static const std::string SKILL_USAGE_MEDICINE;
     static const std::string SKILL_USAGE_MOUNTAINEERING;
     static const std::string SKILL_USAGE_RELIGION;
     static const std::string SKILL_USAGE_SKINNING;

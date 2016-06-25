@@ -69,6 +69,8 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - The Medicine skill now helps reduce the number of minutes required for
   a tick of HP regeneration.
+
+- The Dungeoneering skill now affects the drop rate on slain creatures.
     
 - Additional stanzas for "Tel and Floridel".
 
