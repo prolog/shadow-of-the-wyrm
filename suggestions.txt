@@ -1,7 +1,5 @@
 Me:
-- Lower currency drop rate, update unit tests.
-- Dungeoneering should affect item generation rate.
-- Do stuff with inscriptions (helpful/unhelpful inscriptions in dungeons).
+- More inscriptions!
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
   randomly located. 
@@ -62,13 +60,6 @@ Me:
   and so on properly check slays.
 - Discover traps on search?  Passive search at the end of each turn for
   traps?
-
-Alzrius:
-- When skinning, each resist should have only a 50% chance of being
-  included.
-- Allow skinning to add at most 50% of the base resistances (should be
-  between 0.01 and 50% of the max).
-- Add to credits.
 
 Sean McKeague:
 - Ability to pick up partial stacks.

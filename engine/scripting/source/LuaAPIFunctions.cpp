@@ -228,6 +228,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_unarmed_slays", get_unarmed_slays);
   lua_register(L, "add_unarmed_slay", add_unarmed_slay);
   lua_register(L, "get_race_name", get_race_name);
+  lua_register(L, "set_inscription", set_inscription);
 }
 
 // Lua API helper functions
@@ -3251,6 +3252,36 @@ int get_race_name(lua_State* ls)
 
   lua_pushstring(ls, race_name.c_str());
   return 1;
+}
+
+int set_inscription(lua_State* ls)
+{
+  if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  {
+    int row = lua_tointeger(ls, 1);
+    int col = lua_tointeger(ls, 2);
+    string inscription = lua_tostring(ls, 3);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(row, col);
+
+      if (tile != nullptr)
+      {
+        tile->set_inscription_sid(inscription);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_inscription");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)
