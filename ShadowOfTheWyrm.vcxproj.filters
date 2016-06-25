@@ -3762,6 +3762,9 @@
     <ClInclude Include="engine\conversion\include\AttackDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\ItemDropRateCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7351,6 +7354,9 @@
     </ClCompile>
     <ClCompile Include="engine\conversion\source\AttackDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ItemDropRateCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

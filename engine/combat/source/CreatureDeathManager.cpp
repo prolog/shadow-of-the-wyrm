@@ -4,10 +4,10 @@
 #include "CorpseFactory.hpp"
 #include "CreationUtils.hpp"
 #include "CreatureProperties.hpp"
-#include "CreatureGenerationConstants.hpp"
 #include "CreatureDeathManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "ItemDropRateCalculator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
@@ -39,7 +39,7 @@ void CreatureDeathManager::die() const
     run_death_event(dead_creature, attacking_creature, map);
     MapUtils::remove_creature(map, dead_creature);
     remove_creature_equipment_and_drop_inventory_on_tile(map, dead_creature, ground);
-    potentially_generate_random_drop(dead_creature, ground);
+    potentially_generate_random_drop(attacking_creature, dead_creature, ground);
     potentially_generate_corpse(attacking_creature, dead_creature, ground);
   }
 }
@@ -99,20 +99,21 @@ void CreatureDeathManager::remove_creature_equipment_and_drop_inventory_on_tile(
 }
 
 // With some probability, create a random item drop when the creature dies.
-void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr dead_creature, IInventoryPtr ground) const
+void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attacking_creature, CreaturePtr dead_creature, IInventoryPtr ground) const
 {
   Game& game = Game::instance();
   vector<ItemPtr> generated_items;
   ItemGenerationManager igm;
   ItemManager im;
   RaceManager rm;
+  ItemDropRateCalculator idrc;
 
   if (dead_creature)
   {
     if (rm.is_race_or_descendent(dead_creature->get_race_id(), RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
     {
       // When a humanoid dies, there is a chance for a drop of ivory pieces.
-      if (RNG::percent_chance(CreatureGenerationConstants::HUMANOID_CURRENCY_RATE))
+      if (RNG::percent_chance(idrc.calculate_pct_chance_currency_drop(attacking_creature)))
       {
         // Generate currency!
         ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::dice(4, 6));
@@ -123,7 +124,7 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr dead_cre
 
   // When a creature in general dies, there is a small chance it will drop 
   // an item.
-  if (RNG::percent_chance(CreatureGenerationConstants::CREATURE_DROP_RATE))
+  if (RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attacking_creature)))
   {
     Rarity rarity = CreationUtils::generate_rarity();
     int danger_level = dead_creature->get_level().get_current();

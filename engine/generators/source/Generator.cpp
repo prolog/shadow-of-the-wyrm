@@ -89,6 +89,7 @@ void Generator::create_entities(MapPtr map, const int danger_level, const bool c
   }
 
   string foragables = get_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES);
+
   if (!foragables.empty())
   {
     int pct_chance_foragables = String::to_int(foragables);

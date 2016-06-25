@@ -1,4 +1,6 @@
 Me:
+- Unit tests for drop rates.
+- Dungeoneering should affect item generation rate.
 - Do stuff with inscriptions (helpful/unhelpful inscriptions in dungeons).
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
