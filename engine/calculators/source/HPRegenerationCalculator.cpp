@@ -16,6 +16,7 @@ uint HPRegenerationCalculator::calculate_minutes_per_hp_tick(CreaturePtr creatur
     {
       multiplier *= tile->get_hp_regeneration_multiplier();
       multiplier *= get_hp_tick_health_multiplier(creature);
+      multiplier *= get_hp_tick_medicine_multiplier(creature);
 
       FeaturePtr feature = tile->get_feature();
 
@@ -78,8 +79,23 @@ float HPRegenerationCalculator::get_hp_tick_health_multiplier(CreaturePtr creatu
 
   if (creature != nullptr)
   {
-    // - 0.01 to multiplier per point of Health.
-    mult -= (0.01f * creature->get_health().get_current());
+    // - 0.01 to multiplier per two points of Health.
+    mult -= (0.01f * (creature->get_health().get_current() / 2));
+  }
+
+  return mult;
+}
+
+float HPRegenerationCalculator::get_hp_tick_medicine_multiplier(CreaturePtr creature)
+{
+  float mult = 1.0f;
+
+  if (creature != nullptr)
+  {
+    float medicine_mod = static_cast<float>(creature->get_skills().get_value(SkillType::SKILL_GENERAL_MEDICINE));
+    medicine_mod = (medicine_mod / 2) * 0.01f;
+
+    mult -= medicine_mod;
   }
 
   return mult;

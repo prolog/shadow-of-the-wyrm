@@ -10,6 +10,7 @@ class HPRegenerationCalculator
 
   protected:
     float get_hp_tick_health_multiplier(CreaturePtr creature);
+    float get_hp_tick_medicine_multiplier(CreaturePtr creature);
 
     static const uint BASE_MINUTES_PER_HP_TICK;
     static const uint MIN_MINUTES_PER_HP_TICK;
