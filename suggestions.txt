@@ -1,5 +1,5 @@
 Me:
-- Unit tests for drop rates.
+- Lower currency drop rate, update unit tests.
 - Dungeoneering should affect item generation rate.
 - Do stuff with inscriptions (helpful/unhelpful inscriptions in dungeons).
 - New tile type: shrine ('o', bright cyan)

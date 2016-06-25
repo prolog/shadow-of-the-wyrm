@@ -7358,5 +7358,8 @@
     <ClCompile Include="engine\calculators\source\ItemDropRateCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ItemDropRateCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
