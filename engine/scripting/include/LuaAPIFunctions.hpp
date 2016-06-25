@@ -116,6 +116,7 @@ int get_race_ids(lua_State* ls);
 int get_unarmed_slays(lua_State* ls);
 int add_unarmed_slay(lua_State* ls);
 int get_race_name(lua_State* ls);
+int set_inscription(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

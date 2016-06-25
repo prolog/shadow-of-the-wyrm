@@ -405,7 +405,7 @@ pair<bool, vector<string>> DungeonGenerator::place_room(MapPtr map, int start_ro
     rg = rgf.create_random_special_room_generator();
     rg->generate(map, start_row, end_row, start_col, end_col);
   }
-  
+    
   return make_pair(true, room_features);
 }
 
