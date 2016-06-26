@@ -40,7 +40,7 @@ ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, Comman
     {
       return sa.show_magic_skills(creature);
     }
-    else if (command_name == SkillsCommandKeys::SELECT_SKILL)
+    else if (command_name == SkillsCommandKeys::SELECT_SKILL && st != SkillType::SKILL_UNDEFINED)
     {
       SkillProcessorPtr sp = SkillProcessorFactory::create(st);
 

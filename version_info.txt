@@ -111,6 +111,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   - For creatures with lots of general skills (e.g., Human Rover), the
     skills on the second page were not selectable.
 
+  - Selecting a letter for which there is no skill bound (e.g., 'u')
+    no longer gives the message "This skill is not yet implemented."
+
 Shadow of the Wyrm v0.5.2 "Le Roy"
 - Version declared May 1, 2016.  Version finalized June 4, 2016.
 
