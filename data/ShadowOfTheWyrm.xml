@@ -27914,6 +27914,26 @@
 				<FoodType>0</FoodType>
 				<Effect>9</Effect>
 			</Food>
+			<Food id="_voxflower">
+				<DescriptionSID>VOXFLOWER_SID</DescriptionSID>
+				<UsageDescriptionSID>VOXFLOWER_USAGE_SID</UsageDescriptionSID>
+				<Value>4</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>12</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>40</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>7</Effect>
+			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>CHERRIES_USAGE_SID</UsageDescriptionSID>

@@ -78,13 +78,16 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   floor during dungeon generation.
 
 - The Herbalism skill now allows finding herbs that can heal HP 
-  (blackroot) and AP (verbena), remove poison (white basil), or reverse 
-  the effects of petrification (stoneflower), when generating an overworld
-  map like a field or forest.  The availability of the herbs depends on
-  the season.
+  (blackroot) and AP (verbena), remove poison (white basil), restore the
+  voice (voxflower), or reverse the effects of petrification 
+  (stoneflower), when generating an overworld map like a field or forest.
+  The availability of the herbs depends on the season.
 
 - Foods can also have effects now, instead of just potions.
-        
+
+- The skills screen now remembers the page properly, so that after
+  selecting a skill, the page is not reset to 1.
+          
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
@@ -92,7 +95,7 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   magmos.
 
 - New items: abyssal hide armour, intact skeleton, white basil, blackroot,
-  verbena, stoneflower.
+  verbena, stoneflower, voxflower.
 
 - New artifacts: Sword of the Fairy-King, fickle dagger "Fatebender".
 

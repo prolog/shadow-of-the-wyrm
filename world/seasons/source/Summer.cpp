@@ -33,7 +33,7 @@ void Summer::initialize_foragables()
 void Summer::initialize_herbs()
 {
   herbs = {{TileType::TILE_TYPE_FIELD, {ItemIdKeys::ITEM_ID_BLACKROOT, ItemIdKeys::ITEM_ID_VERBENA, ItemIdKeys::ITEM_ID_WHITE_BASIL}},
-           {TileType::TILE_TYPE_BUSH, {ItemIdKeys::ITEM_ID_STONEFLOWER}}};
+           {TileType::TILE_TYPE_BUSH, {ItemIdKeys::ITEM_ID_STONEFLOWER, ItemIdKeys::ITEM_ID_VOXFLOWER}}};
 }
 
 Season Summer::get_season() const

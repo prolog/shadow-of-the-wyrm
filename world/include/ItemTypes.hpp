@@ -75,6 +75,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_STONEFLOWER; // cures petrification
     static const std::string ITEM_ID_VERBENA; // increases AP
     static const std::string ITEM_ID_BLACKROOT; // increases HP
+    static const std::string ITEM_ID_VOXFLOWER; // restores the voice
 
     // Fishing stuff
     static const std::string ITEM_ID_FISHING_ROD;

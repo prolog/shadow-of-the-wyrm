@@ -31,7 +31,8 @@ void Spring::initialize_foragables()
 
 void Spring::initialize_herbs()
 {
-  herbs = {{TileType::TILE_TYPE_FIELD, {ItemIdKeys::ITEM_ID_BLACKROOT, ItemIdKeys::ITEM_ID_VERBENA, ItemIdKeys::ITEM_ID_WHITE_BASIL}}};
+  herbs = {{TileType::TILE_TYPE_FIELD, {ItemIdKeys::ITEM_ID_BLACKROOT, ItemIdKeys::ITEM_ID_VERBENA, ItemIdKeys::ITEM_ID_WHITE_BASIL}},
+           {TileType::TILE_TYPE_BUSH, {ItemIdKeys::ITEM_ID_STONEFLOWER, ItemIdKeys::ITEM_ID_VOXFLOWER}}};
 }
 
 Season Spring::get_season() const
