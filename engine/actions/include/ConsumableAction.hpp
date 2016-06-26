@@ -8,7 +8,7 @@
 class ConsumableAction : public IActionManager
 {
   public:
-    ActionCostValue consume(CreaturePtr creature, ConsumablePtr consumable);
+    ActionCostValue consume(CreaturePtr creature, ConsumablePtr consumable, const bool process_consumable_action);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 

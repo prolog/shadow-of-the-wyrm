@@ -82,6 +82,8 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   the effects of petrification (stoneflower), when generating an overworld
   map like a field or forest.  The availability of the herbs depends on
   the season.
+
+- Foods can also have effects now, instead of just potions.
         
 - Additional stanzas for "Tel and Floridel".
 

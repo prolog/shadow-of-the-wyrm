@@ -27852,6 +27852,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
+				<Effect>1</Effect>
 			</Food>
 			<Food id="_verbena">
 				<DescriptionSID>VERBENA_SID</DescriptionSID>
@@ -27871,6 +27872,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>30</Nutrition>
 				<FoodType>0</FoodType>
+				<Effect>3</Effect>
 			</Food>
 			<Food id="_white_basil">
 				<DescriptionSID>WHITE_BASIL_SID</DescriptionSID>
@@ -27890,6 +27892,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>60</Nutrition>
 				<FoodType>0</FoodType>
+				<Effect>6</Effect>
 			</Food>
 			<Food id="_stoneflower">
 				<DescriptionSID>STONEFLOWER_SID</DescriptionSID>
@@ -27909,6 +27912,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>40</Nutrition>
 				<FoodType>0</FoodType>
+				<Effect>9</Effect>
 			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>

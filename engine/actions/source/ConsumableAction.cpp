@@ -2,6 +2,8 @@
 #include "ConsumableAction.hpp"
 #include "Conversion.hpp"
 #include "CreatureUtils.hpp"
+#include "EffectFactory.hpp"
+#include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RaceManager.hpp"
 #include "ResistancesCalculator.hpp"
@@ -14,12 +16,13 @@ using namespace std;
 // and its grams of absorbable pure alcohol (based on the number of standard 
 // drinks) to the creature's grams of unabsorbed alcohol.  Then, check to see
 // if it's poisoned - if it is, potentially poison the creature.
-ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr consumable)
+ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr consumable, const bool process_effect)
 {
   ActionCostValue action_cost_value = 0;
 
   if (creature && consumable)
   {
+    Game& game = Game::instance();
     HungerClock& hunger = creature->get_hunger_clock_ref();
     int hunger_before = hunger.get_hunger();
 
@@ -30,6 +33,14 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
     CreatureUtils::add_hunger_level_message_if_necessary(creature, hunger_before, hunger_after);
 
     creature->increment_grams_unabsorbed_alcohol(AlcoholConverter::standard_drinks_to_absorbable_grams(consumable->get_standard_drinks()));
+
+    EffectType et = consumable->get_effect_type();
+
+    if (et != EffectType::EFFECT_TYPE_NULL && process_effect)
+    {
+      EffectPtr consumable_effect = EffectFactory::create_effect(et);
+      consumable_effect->effect(creature, &game.get_action_manager_ref(), consumable->get_status());
+    }
 
     // Get any intrinsics from the resistances on the item being greater than
     // the creature's combined race and class values.
