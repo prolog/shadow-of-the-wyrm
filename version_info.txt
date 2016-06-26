@@ -108,6 +108,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
   - Long lines weren't being handled properly in the synopsis.
 
+  - For creatures with lots of general skills (e.g., Human Rover), the
+    skills on the second page were not selectable.
+
 Shadow of the Wyrm v0.5.2 "Le Roy"
 - Version declared May 1, 2016.  Version finalized June 4, 2016.
 

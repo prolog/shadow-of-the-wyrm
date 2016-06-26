@@ -1,7 +1,9 @@
 Me:
-- When dealing with multi-page skill lists (e.g., Human Rover), the skills
-  on page 2 aren't selectable.
-- Add effects to herbs.
+- When looking at skills with F3, handle invalid skills better so that
+  pressing 'k' when there's no 'k' skill you don't get "This skill is
+  not yet implemented."
+- When improving skills, track the page so that it doesn't always go back
+  to pg. 1 on General.
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
   randomly located. 

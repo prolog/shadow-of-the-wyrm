@@ -71,7 +71,6 @@ void SkillsScreen::initialize()
 
       if (skill != nullptr && (skill->get_value() > 0 || skill->can_train_from_unlearned()))
       {
-        selection_map['a' + current_id] = st;
         string skill_desc = StringTable::get(skill->get_skill_name_sid());
 
         ostringstream ss;
@@ -94,6 +93,11 @@ void SkillsScreen::initialize()
           screen_selection_to_skill_map.push_back(selection_map);
           selection_map.clear();
         }
+
+        // Add to the selection map after the option component has been added
+        // so that if we've started a new page, the skill is added to the
+        // correct place.
+        selection_map['a' + current_id] = st;
 
         current_id++;
       }
