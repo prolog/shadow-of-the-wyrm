@@ -936,6 +936,7 @@
 				<xs:element name="StandardDrinks" type="xs:float" minOccurs="0"/>
 				<xs:element name="FoodType" type="tns:FoodType" minOccurs="0"/>
 				<xs:element name="Poisoned" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="Effect" type="tns:EffectType" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
@@ -944,7 +945,6 @@
 	<xs:complexContent>
 		<xs:extension base="tns:Consumable">
 			<xs:sequence>
-				<xs:element name="Effect" type="tns:EffectType"/>
 				<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>

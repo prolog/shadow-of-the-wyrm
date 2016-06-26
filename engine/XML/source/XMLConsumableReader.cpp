@@ -30,5 +30,8 @@ void XMLConsumableReader::parse(ConsumablePtr consumable, GenerationValues& gv, 
 
     bool poisoned = XMLUtils::get_child_node_bool_value(node, "Poisoned", consumable->get_poisoned());
     consumable->set_poisoned(poisoned);
+
+    EffectType effect_type = static_cast<EffectType>(XMLUtils::get_child_node_int_value(node, "Effect", static_cast<int>(EffectType::EFFECT_TYPE_NULL)));
+    consumable->set_effect_type(effect_type);
   }
 }

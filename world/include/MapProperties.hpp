@@ -49,6 +49,9 @@ class MapProperties
     // Should there be the chance of foragables?
     static const std::string MAP_PROPERTIES_PCT_CHANCE_FORAGABLES;
 
+    // Should there be useful healing herbs?
+    static const std::string MAP_PROPERTIES_PCT_CHANCE_HERBS;
+
   protected:
     MapProperties();
     ~MapProperties();

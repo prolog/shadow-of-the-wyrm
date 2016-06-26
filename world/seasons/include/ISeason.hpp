@@ -22,6 +22,7 @@ class ISeason : public ISerializable
     virtual std::set<Months> get_months_in_season() const;
 
     std::map<TileType, std::vector<std::string>> get_foragables() const;
+    std::map<TileType, std::vector<std::string>> get_herbs() const;
 
     virtual ISeason* clone() = 0;
 
@@ -31,9 +32,11 @@ class ISeason : public ISerializable
   protected:
     virtual void initialize_months() = 0;
     virtual void initialize_foragables() = 0;
+    virtual void initialize_herbs() = 0;
     
     std::set<Months> months_in_season;
     std::map<TileType, std::vector<std::string>> foragables;
+    std::map<TileType, std::vector<std::string>> herbs;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

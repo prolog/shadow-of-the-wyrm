@@ -27834,6 +27834,82 @@
 				<Nutrition>205</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_blackroot">
+				<DescriptionSID>BLACKROOT_SID</DescriptionSID>
+				<UsageDescriptionSID>BLACKROOT_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>200</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_verbena">
+				<DescriptionSID>VERBENA_SID</DescriptionSID>
+				<UsageDescriptionSID>VERBENA_USAGE_SID</UsageDescriptionSID>
+				<Value>15</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>5</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>30</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_white_basil">
+				<DescriptionSID>WHITE_BASIL_SID</DescriptionSID>
+				<UsageDescriptionSID>WHITE_BASIL_USAGE_SID</UsageDescriptionSID>
+				<Value>17</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>60</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_stoneflower">
+				<DescriptionSID>STONEFLOWER_SID</DescriptionSID>
+				<UsageDescriptionSID>STONEFLOWER_USAGE_SID</UsageDescriptionSID>
+				<Value>19</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>40</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>CHERRIES_USAGE_SID</UsageDescriptionSID>

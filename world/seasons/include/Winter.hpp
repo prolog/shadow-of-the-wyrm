@@ -18,6 +18,7 @@ class Winter : public ISeason
   protected:
     void initialize_months() override;
     void initialize_foragables() override;
+    void initialize_herbs() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
