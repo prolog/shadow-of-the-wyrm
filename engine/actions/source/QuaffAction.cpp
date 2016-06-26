@@ -37,7 +37,6 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
       if (potion)
       {
         ItemIdentifier item_id;
-        EffectPtr effect = EffectFactory::create_effect(potion->get_effect_type());
         string base_id = potion->get_base_id();
   
         // Get "You/monster quaffs a foo-ey potion" message
@@ -112,7 +111,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
       }
 
       ConsumableAction ca;
-      ca.consume(creature, potion);
+      ca.consume(creature, potion, false /* don't process effect */);
     }
   }
 }
