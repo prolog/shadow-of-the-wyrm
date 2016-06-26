@@ -35,7 +35,24 @@ void SkillManager::mark_skill(CreaturePtr creature, const SkillType skill_type, 
   {
     Skills& skills = creature->get_skills();
     SkillPtr skill = skills.get_skill(skill_type);
-    
-    skill->increment_marks();
+ 
+    if (skill != nullptr)
+    {
+      int val = skill->get_value();
+
+      // Don't mark skills that can't actually be improved.
+      if (val > 0 || skill->can_train_from_unlearned())
+      {
+        skill->increment_marks();
+      }
+    }
+  }
+}
+
+void SkillManager::mark_skill_with_probability(const int pct_chance, CreaturePtr creature, const SkillType skill_type, const bool skill_check_result)
+{
+  if (RNG::percent_chance(pct_chance))
+  {
+    mark_skill(creature, skill_type, skill_check_result);
   }
 }

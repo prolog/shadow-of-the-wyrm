@@ -1,4 +1,5 @@
 #include "CreatureHPRegeneration.hpp"
+#include "SkillManager.hpp"
 
 void CreatureHPRegeneration::tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {
@@ -12,6 +13,11 @@ void CreatureHPRegeneration::tick(CreaturePtr creature, TilePtr tile, const ulon
       int hp_incr = hp_regen_calc.calculate_hp_per_tick(creature);
 
       creature->increment_hit_points(hp_incr);
+
+      // Every time we regen HP, there's a chance to mark the Medicine skill.
+      // Because this occurs so often, we need to tone down the probability.
+      SkillManager sm;
+      sm.mark_skill_with_probability(25, creature, SkillType::SKILL_GENERAL_MEDICINE, true);
     }
   }
 }

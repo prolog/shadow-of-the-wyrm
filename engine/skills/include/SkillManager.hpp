@@ -13,7 +13,8 @@ class SkillManager
 
     // Mark a particular NWP, weapon, or magic skill
     void mark_skill(CreaturePtr creature, const SkillType skill_type, const bool skill_check_result);
-    
+    void mark_skill_with_probability(const int pct_chance, CreaturePtr creature, const SkillType skill_type, const bool skill_check_result);
+
   protected:
     static const int PERCENT_CHANCE_TO_MARK_SKILL_ON_FAILURE;
 };

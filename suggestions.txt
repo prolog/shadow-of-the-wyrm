@@ -1,4 +1,5 @@
 Me:
+- Herbalism should allow finding healing/antidote/softening herbs.
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
   randomly located. 
