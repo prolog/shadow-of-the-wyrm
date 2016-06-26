@@ -22,6 +22,7 @@ bool SkillsAction::operator==(const SkillsAction& ssa) const
 ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSelectionType sst)
 {
   ActionCostValue action_cost_value = 0;
+  int cur_page = 1;
 
   DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory = std::make_shared<SkillsCommandFactory>();
@@ -38,11 +39,14 @@ ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSele
     while (action_cost_value == 0 && scp->can_process(creature))
     {
       SkillsScreen ss(game.get_display(), creature, category, sst);
+      ss.set_current_page_number(cur_page);
+
       string display_s = ss.display();
       int input = display_s.at(0);
       char screen_selection = display_s.at(0);
 
       SkillType st = ss.get_selected_skill(screen_selection);
+      cur_page = ss.get_current_page_number();
 
       CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, &input);
       action_cost_value = scp->process(creature, skills_command, map, st);

@@ -37,6 +37,7 @@ const string ItemIdKeys::ITEM_ID_BERRIES          = "_berries";
 const string ItemIdKeys::ITEM_ID_KELP             = "_kelp";
 const string ItemIdKeys::ITEM_ID_WHITE_BASIL      = "_white_basil";
 const string ItemIdKeys::ITEM_ID_STONEFLOWER      = "_stoneflower";
+const string ItemIdKeys::ITEM_ID_VOXFLOWER        = "_voxflower";
 const string ItemIdKeys::ITEM_ID_VERBENA          = "_verbena";
 const string ItemIdKeys::ITEM_ID_BLACKROOT        = "_blackroot";
 const string ItemIdKeys::ITEM_ID_FISHING_ROD      = "_fishing_rod";
