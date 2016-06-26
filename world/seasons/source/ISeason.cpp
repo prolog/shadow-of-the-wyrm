@@ -18,6 +18,11 @@ std::map<TileType, std::vector<std::string>> ISeason::get_foragables() const
   return foragables;
 }
 
+std::map<TileType, std::vector<std::string>> ISeason::get_herbs() const
+{
+  return herbs;
+}
+
 bool ISeason::serialize(std::ostream& stream) const
 {
   Serialize::write_size_t(stream, months_in_season.size());
@@ -33,6 +38,14 @@ bool ISeason::serialize(std::ostream& stream) const
   {
     Serialize::write_enum(stream, foragables_pair.first);
     Serialize::write_string_vector(stream, foragables_pair.second);
+  }
+
+  Serialize::write_size_t(stream, herbs.size());
+
+  for (const auto& herbs_pair : herbs)
+  {
+    Serialize::write_enum(stream, herbs_pair.first);
+    Serialize::write_string_vector(stream, herbs_pair.second);
   }
 
   return true;
@@ -66,6 +79,20 @@ bool ISeason::deserialize(std::istream& stream)
     Serialize::read_string_vector(stream, tile_foragables);
 
     foragables[tile_type] = tile_foragables;
+  }
+
+  size_t herbs_size = 0;
+  Serialize::read_size_t(stream, herbs_size);
+
+  for (size_t i = 0; i < herbs_size; i++)
+  {
+    TileType tile_type = TileType::TILE_TYPE_UNDEFINED;
+    Serialize::read_enum(stream, tile_type);
+
+    vector<string> tile_herbs;
+    Serialize::read_string_vector(stream, tile_herbs);
+
+    herbs[tile_type] = tile_herbs;
   }
 
   return true;

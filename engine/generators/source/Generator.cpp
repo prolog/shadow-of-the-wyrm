@@ -89,14 +89,22 @@ void Generator::create_entities(MapPtr map, const int danger_level, const bool c
   }
 
   string foragables = get_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES);
+  string herbs = get_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS);
 
-  if (!foragables.empty())
+  std::map<ForagableType, string> foragable_chances = {{ForagableType::FORAGABLE_TYPE_FORAGABLES, foragables}, {ForagableType::FORAGABLE_TYPE_HERBS, herbs}};
+
+  for (const auto& f_pair : foragable_chances)
   {
-    int pct_chance_foragables = String::to_int(foragables);
+    string chance = f_pair.second;
 
-    if (map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && RNG::percent_chance(pct_chance_foragables))
+    if (!chance.empty())
     {
-      generate_foragables(map);
+      int pct_chance = String::to_int(chance);
+
+      if (map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && RNG::percent_chance(pct_chance))
+      {
+        generate_foragables(map, f_pair.first);
+      }
     }
   }
 }
@@ -490,7 +498,7 @@ void Generator::set_property_to_generator_and_map(MapPtr map, const string& prop
 
 // Generate roots, berries, etc., on the map, based on the seasons and the
 // tiles that are present.
-bool Generator::generate_foragables(MapPtr map)
+bool Generator::generate_foragables(MapPtr map, const ForagableType ft)
 {
   bool generated_foragables = false;
 
@@ -508,7 +516,7 @@ bool Generator::generate_foragables(MapPtr map)
       std::map<TileType, vector<TilePtr>> part_tiles = MapUtils::partition_tiles(map);
 
       // Get the map of tile types to item IDs for the current season.
-      std::map<TileType, vector<string>> tile_foragables = season->get_foragables();
+      std::map<TileType, vector<string>> tile_foragables = get_foragables_for_season(season, ft);
 
       // For each available item type, generate a number of them and
       // place them randomly.
@@ -533,7 +541,7 @@ bool Generator::generate_foragables(MapPtr map)
             {
               ItemPtr item = ItemManager::create_item(item_id);
 
-              TilePtr rand_tile = avail_tiles.at(RNG::range(0, t_size));
+              TilePtr rand_tile = avail_tiles.at(RNG::range(0, t_size-1));
 
               if (rand_tile != nullptr)
               {
@@ -549,6 +557,23 @@ bool Generator::generate_foragables(MapPtr map)
   }
 
   return generated_foragables;
+}
+
+map<TileType, vector<string>> Generator::get_foragables_for_season(ISeasonPtr season, const ForagableType ft)
+{
+  if (season != nullptr)
+  {
+    if (ft == ForagableType::FORAGABLE_TYPE_HERBS)
+    {
+      return season->get_herbs();
+    }
+    else
+    {
+      return season->get_foragables();
+    }
+  }
+
+  return {};
 }
 
 void Generator::update_depth_details(MapPtr map)

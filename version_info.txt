@@ -76,14 +76,21 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - There are now useful and useless inscriptions that can be added to the
   floor during dungeon generation.
-      
+
+- The Herbalism skill now allows finding herbs that can heal HP 
+  (blackroot) and AP (verbena), remove poison (white basil), or reverse 
+  the effects of petrification (stoneflower), when generating an overworld
+  map like a field or forest.  The availability of the herbs depends on
+  the season.
+        
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
   ichor, celestial, muck, mire, manticore, rock grinder, Whitebard,
   magmos.
 
-- New items: abyssal hide armour, intact skeleton.
+- New items: abyssal hide armour, intact skeleton, white basil, blackroot,
+  verbena, stoneflower.
 
 - New artifacts: Sword of the Fairy-King, fickle dagger "Fatebender".
 

@@ -1,5 +1,7 @@
 Me:
-- Herbalism should allow finding healing/antidote/softening herbs.
+- When dealing with multi-page skill lists (e.g., Human Rover), the skills
+  on page 2 aren't selectable.
+- Add effects to herbs.
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
   randomly located. 

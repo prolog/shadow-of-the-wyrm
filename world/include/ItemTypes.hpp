@@ -70,6 +70,12 @@ class ItemIdKeys
     static const std::string ITEM_ID_BERRIES;
     static const std::string ITEM_ID_KELP;
 
+    // Herbs
+    static const std::string ITEM_ID_WHITE_BASIL; // cures poison
+    static const std::string ITEM_ID_STONEFLOWER; // cures petrification
+    static const std::string ITEM_ID_VERBENA; // increases AP
+    static const std::string ITEM_ID_BLACKROOT; // increases HP
+
     // Fishing stuff
     static const std::string ITEM_ID_FISHING_ROD;
 
@@ -95,6 +101,12 @@ enum struct FoodType
   FOOD_TYPE_DAIRY = 3,
   FOOD_TYPE_OTHER = 4,
   FOOD_TYPE_LAST = 5
+};
+
+enum struct ForagableType
+{
+  FORAGABLE_TYPE_FORAGABLES = 0,
+  FORAGABLE_TYPE_HERBS = 1
 };
 
 class ItemEventScripts

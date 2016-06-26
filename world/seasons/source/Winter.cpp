@@ -8,6 +8,7 @@ Winter::Winter()
 {
   initialize_months();
   initialize_foragables();
+  initialize_herbs();
 }
 
 void Winter::initialize_months()
@@ -25,6 +26,10 @@ void Winter::initialize_months()
 void Winter::initialize_foragables()
 {
   foragables = {{TileType::TILE_TYPE_SEA, {ItemIdKeys::ITEM_ID_KELP}}};
+}
+
+void Winter::initialize_herbs()
+{
 }
 
 Season Winter::get_season() const

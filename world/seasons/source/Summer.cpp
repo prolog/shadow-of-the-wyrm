@@ -8,6 +8,7 @@ Summer::Summer()
 {
   initialize_months();
   initialize_foragables();
+  initialize_herbs();
 }
 
 void Summer::initialize_months()
@@ -29,6 +30,11 @@ void Summer::initialize_foragables()
                 {TileType::TILE_TYPE_BUSH, {ItemIdKeys::ITEM_ID_BERRIES}}};
 }
 
+void Summer::initialize_herbs()
+{
+  herbs = {{TileType::TILE_TYPE_FIELD, {ItemIdKeys::ITEM_ID_BLACKROOT, ItemIdKeys::ITEM_ID_VERBENA, ItemIdKeys::ITEM_ID_WHITE_BASIL}},
+           {TileType::TILE_TYPE_BUSH, {ItemIdKeys::ITEM_ID_STONEFLOWER}}};
+}
 
 Season Summer::get_season() const
 {
