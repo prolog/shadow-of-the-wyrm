@@ -87,6 +87,11 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - The skills screen now remembers the page properly, so that after
   selecting a skill, the page is not reset to 1.
+
+- Added a new room type, trap room, to the dungeon.  When placing traps,
+  one to four traps can now be added.  Occasionally, the room will be
+  completely filled with traps, and this will generate a warning message
+  when entering the dungeon.
           
 - Additional stanzas for "Tel and Floridel".
 

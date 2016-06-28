@@ -12,6 +12,7 @@ class DungeonFeatureTextKeys
     static const std::string DUNGEON_FEATURE_REST_ROOM;
     static const std::string DUNGEON_FEATURE_NODE;
     static const std::string DUNGEON_FEATURE_GRAVE;
+    static const std::string DUNGEON_FEATURE_TRAP_ROOM;
 
   protected:
     DungeonFeatureTextKeys();

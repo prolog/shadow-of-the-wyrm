@@ -111,7 +111,7 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
         connect_rooms(map, new_room, next_room);
         connected_rooms.push_back(new_room);
 
-        if (RNG::percent_chance(10))
+        if (RNG::percent_chance(20))
         {
           place_traps(map, new_room);
         }
@@ -681,9 +681,13 @@ bool DungeonGenerator::place_traps(MapPtr map, const Room& room)
 
   int num_traps = 1;
 
-  if (RNG::percent_chance(30))
+  if (RNG::percent_chance(10))
   {
-    num_traps++;
+    fill_room_with_traps(map, room, traps);
+  }
+  else if (RNG::percent_chance(30))
+  {
+    num_traps += RNG::range(1, 3);
   }
 
   // Generate however many traps, with about ten attempts for each trap.
@@ -711,6 +715,25 @@ bool DungeonGenerator::place_traps(MapPtr map, const Room& room)
   }
 
   return generated_trap;
+}
+
+void DungeonGenerator::fill_room_with_traps(MapPtr map, const Room& room, const vector<TrapPtr>& traps)
+{
+  for (int y = room.y1; y <= room.y2; y++)
+  {
+    for (int x = room.x1; x <= room.x2; x++)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr && tile->get_movement_multiplier() > 0 && !tile->has_feature())
+      {
+        GeneratorUtils::generate_trap(map, y, x, traps);
+      }
+    }
+  }
+
+  // Notify the player that there's something bad going on here!
+  feature_entry_text_sids.push_back(DungeonFeatureTextKeys::DUNGEON_FEATURE_TRAP_ROOM);
 }
 
 bool DungeonGenerator::get_permanence_default() const
