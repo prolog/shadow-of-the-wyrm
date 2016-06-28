@@ -3,6 +3,7 @@
 #include "Map.hpp"
 #include "Room.hpp"
 #include "TileGenerator.hpp"
+#include "Trap.hpp"
 
 class DungeonGenerator : public SOTW::Generator
 {
@@ -29,6 +30,7 @@ class DungeonGenerator : public SOTW::Generator
     virtual bool    place_doorways(MapPtr current_map);
     virtual bool    place_staircases(MapPtr current_map);
     virtual bool    place_traps(MapPtr map, const Room& room);
+    virtual void    fill_room_with_traps(MapPtr map, const Room& room, const std::vector<TrapPtr>& traps);
     virtual std::vector<std::string> potentially_generate_room_features(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual bool    generate_altar(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual bool    generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
