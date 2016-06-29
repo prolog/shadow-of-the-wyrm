@@ -888,6 +888,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\serialization\include\SerializationTypes.hpp" />
     <ClInclude Include="engine\serialization\include\Serialize.hpp" />
     <ClInclude Include="engine\skills\include\DetectionSkillProcessor.hpp" />
+    <ClInclude Include="engine\skills\include\DisarmTrapsSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\FishingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\SkillManager.hpp" />
@@ -1444,6 +1445,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
     <ClCompile Include="engine\skills\source\DetectionSkillProcessor.cpp" />
+    <ClCompile Include="engine\skills\source\DisarmTrapsSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\FishingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessor.cpp" />
