@@ -3771,6 +3771,9 @@
     <ClInclude Include="engine\calculators\include\ForagablesCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\skills\include\DisarmTrapsSkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7375,6 +7378,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ForagablesCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\DisarmTrapsSkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

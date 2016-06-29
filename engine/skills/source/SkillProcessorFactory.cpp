@@ -1,3 +1,4 @@
+#include "DisarmTrapsSkillProcessor.hpp"
 #include "FishingSkillProcessor.hpp"
 #include "SkillProcessorFactory.hpp"
 #include "SkillProcessors.hpp"
@@ -23,6 +24,7 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_CARRYING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_CARRYING)),
                make_pair(SkillType::SKILL_GENERAL_COMBAT, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_COMBAT)),
                make_pair(SkillType::SKILL_GENERAL_DETECTION, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DETECTION)),
+               make_pair(SkillType::SKILL_GENERAL_DISARM_TRAPS, make_shared<DisarmTrapsSkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_DUAL_WIELD, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DUAL_WIELD)),
                make_pair(SkillType::SKILL_GENERAL_DUNGEONEERING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DUNGEONEERING)),
                make_pair(SkillType::SKILL_GENERAL_ESCAPE, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_ESCAPE)),

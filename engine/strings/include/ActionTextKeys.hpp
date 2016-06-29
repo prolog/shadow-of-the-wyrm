@@ -134,6 +134,7 @@ class ActionTextKeys
     static const std::string ACTION_FISHING_NIBBLE;
     static const std::string ACTION_FISHING_CATCH;
     static const std::string ACTION_FISHING_THROW_BACK;
+    static const std::string ACTION_DISARM_TRAPS_NO_TRAPS;
     static const std::string ACTION_INSCRIBE_WORLD_MAP;
     static const std::string ACTION_INSCRIBE_WATER;
     static const std::string ACTION_INSCRIBE_AIR;

@@ -92,7 +92,11 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   one to four traps can now be added.  Occasionally, the room will be
   completely filled with traps, and this will generate a warning message
   when entering the dungeon.
-          
+
+- The Disarm Traps skill is now useful.  It can be used to disarm an
+  existing trap, with a chance to deconstruct the trap into a stack of
+  useful projectiles, based on the type of the trap.
+        
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,
