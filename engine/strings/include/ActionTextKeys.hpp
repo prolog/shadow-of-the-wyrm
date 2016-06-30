@@ -135,6 +135,11 @@ class ActionTextKeys
     static const std::string ACTION_FISHING_CATCH;
     static const std::string ACTION_FISHING_THROW_BACK;
     static const std::string ACTION_DISARM_TRAPS_NO_TRAPS;
+    static const std::string ACTION_DISARM_TRAPS_NO_TRAP;
+    static const std::string ACTION_DISARM_TRAPS_OUTCOME_DISMANTLE;
+    static const std::string ACTION_DISARM_TRAPS_OUTCOME_DISARM;
+    static const std::string ACTION_DISARM_TRAPS_OUTCOME_FAIL;
+    static const std::string ACTION_DISARM_TRAPS_OUTCOME_TRIGGER;
     static const std::string ACTION_INSCRIBE_WORLD_MAP;
     static const std::string ACTION_INSCRIBE_WATER;
     static const std::string ACTION_INSCRIBE_AIR;
