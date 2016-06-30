@@ -38,15 +38,22 @@ ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSele
     // action (-1), then exit and return the cost.
     while (action_cost_value == 0 && scp->can_process(creature))
     {
-      SkillsScreen ss(game.get_display(), creature, category, sst);
-      ss.set_current_page_number(cur_page);
+      int input = 0;
+      string display_s;
+      char screen_selection = '?';
+      SkillType st = SkillType::SKILL_UNDEFINED;
 
-      string display_s = ss.display();
-      int input = display_s.at(0);
-      char screen_selection = display_s.at(0);
+      {
+        SkillsScreen ss(game.get_display(), creature, category, sst);
+        ss.set_current_page_number(cur_page);
 
-      SkillType st = ss.get_selected_skill(screen_selection);
-      cur_page = ss.get_current_page_number();
+        display_s = ss.display();
+        input = display_s.at(0);
+        screen_selection = display_s.at(0);
+
+        st = ss.get_selected_skill(screen_selection);
+        cur_page = ss.get_current_page_number();
+      }
 
       CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, &input);
       action_cost_value = scp->process(creature, skills_command, map, st);
