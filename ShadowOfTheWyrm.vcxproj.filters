@@ -3774,6 +3774,9 @@
     <ClInclude Include="engine\skills\include\DisarmTrapsSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\DisarmTrapsCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7381,6 +7384,9 @@
     </ClCompile>
     <ClCompile Include="engine\skills\source\DisarmTrapsSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DisarmTrapsCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
