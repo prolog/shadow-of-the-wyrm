@@ -30,6 +30,7 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_ESCAPE, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_ESCAPE)),
                make_pair(SkillType::SKILL_GENERAL_FISHING, make_shared<FishingSkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_FORAGING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_FORAGING)),
+               make_pair(SkillType::SKILL_GENERAL_HERBALISM, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HERBALISM)),
                make_pair(SkillType::SKILL_GENERAL_HUNTING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HUNTING)),
                make_pair(SkillType::SKILL_GENERAL_JEWELER, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_JEWELER)),
                make_pair(SkillType::SKILL_GENERAL_MAGIC, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC)),

@@ -23352,12 +23352,13 @@
 			<PlayerDamageMessageSID>TRAP_FIREBALL_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
 			<Colour>1</Colour>
 			<Damage>
-				<NumDice>3</NumDice>
+				<NumDice>4</NumDice>
 				<NumSides>6</NumSides>
 				<Modifier>1</Modifier>
 				<Type>3</Type>
 			</Damage>
-			<Uses>2</Uses>
+			<Uses>4</Uses>
+			<DismantleItem>fire_bomb</DismantleItem>
 		</Trap>
 		<Trap id="arrow_trap">
 			<DescriptionSID>TRAP_ARROW_SID</DescriptionSID>
@@ -23373,6 +23374,7 @@
 				<Type>1</Type>
 			</Damage>
 			<Uses>10</Uses>
+			<DismantleItem>arrow</DismantleItem>
 		</Trap>
 		<Trap id="crossbow_trap">
 			<DescriptionSID>TRAP_CROSSBOW_SID</DescriptionSID>
@@ -23388,6 +23390,7 @@
 				<Type>1</Type>
 			</Damage>
 			<Uses>10</Uses>
+			<DismantleItem>bolt</DismantleItem>
 		</Trap>
 		<Trap id="rock_trap">
 			<DescriptionSID>TRAP_ROCK_SID</DescriptionSID>
@@ -23403,6 +23406,7 @@
 				<Type>2</Type>
 			</Damage>
 			<Uses>10</Uses>
+			<DismantleItem>_rock</DismantleItem>
 		</Trap>
 		<Trap id="floor_spikes">
 			<DescriptionSID>TRAP_FLOOR_SPIKES_SID</DescriptionSID>
@@ -23441,15 +23445,16 @@
 			<PlayerDamageMessageSID>TRAP_POISON_DART_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
 			<Colour>2</Colour>
 			<Damage>
-				<NumDice>1</NumDice>
+				<NumDice>2</NumDice>
 				<NumSides>6</NumSides>
-				<Type>1</Type>
+				<Type>6</Type>
 				<EffectBonus>30</EffectBonus>
 				<StatusAilments>
 					<Status>_poison</Status>
 				</StatusAilments>
 			</Damage>
 			<Uses>12</Uses>
+			<DismantleItem>poison_dart</DismantleItem>
 		</Trap>
 		<Trap id="blackwater_trap">
 			<DescriptionSID>TRAP_BLACKWATER_SID</DescriptionSID>
@@ -23458,7 +23463,7 @@
 			<PlayerDamageMessageSID>TRAP_BLACKWATER_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
 			<Colour>4</Colour>
 			<Damage piercing="1">
-				<NumDice>2</NumDice>
+				<NumDice>3</NumDice>
 				<NumSides>6</NumSides>
 				<Type>8</Type>
 				<EffectBonus>50</EffectBonus>
@@ -23467,6 +23472,7 @@
 				</StatusAilments>
 			</Damage>
 			<Uses>1</Uses>
+			<DismantleItem>shadow_bomb</DismantleItem>
 		</Trap>
 		<Trap id="electrical_field_trap">
 			<DescriptionSID>TRAP_ELECTRICAL_FIELD_SID</DescriptionSID>
@@ -23483,7 +23489,7 @@
 					<Status>_para</Status>
 				</StatusAilments>
 			</Damage>
-			<Uses>3</Uses>
+			<Uses>5</Uses>
 		</Trap>
 	</Traps>
 	<Items>
@@ -25154,6 +25160,70 @@
 					<NumSides>4</NumSides>
 					<Modifier>4</Modifier>
 					<Type>6</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="poison_dart">
+				<DescriptionSID>POISON_DART_SID</DescriptionSID>
+				<UsageDescriptionSID>POISON_DART_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>43</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Type>6</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="fire_bomb">
+				<DescriptionSID>FIRE_BOMB_SID</DescriptionSID>
+				<UsageDescriptionSID>FIRE_BOMB_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>11</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>14</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>1</Modifier>
+					<Type>3</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="shadow_bomb">
+				<DescriptionSID>SHADOW_BOMB_SID</DescriptionSID>
+				<UsageDescriptionSID>SHADOW_BOMB_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>14</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>3</Speed>
+				<Damage piercing="1">
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+					<Type>8</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="arcane_dagger">

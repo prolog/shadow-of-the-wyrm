@@ -777,6 +777,7 @@
 		<xs:element name="Item" type="tns:Identifier" minOccurs="0"/>
 		<xs:element name="Damage" type="tns:Damage"/>
 		<xs:element name="Uses" type="xs:int"/>
+		<xs:element name="DismantleItem" type="xs:string" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>
 </xs:complexType>

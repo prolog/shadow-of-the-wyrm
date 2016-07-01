@@ -1,7 +1,10 @@
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
+#include "CoordUtils.hpp"
 #include "DisarmTrapsSkillProcessor.hpp"
 #include "Game.hpp"
+#include "IFeatureManipulatorFactory.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "Trap.hpp"
 
@@ -166,6 +169,11 @@ void DisarmTrapsSkillProcessor::disarm_trap_success(CreaturePtr creature, MapPtr
   {
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_DISARM));
     manager.send();
+
+    if (tile != nullptr)
+    {
+      tile->remove_feature();
+    }
   }
 }
 
@@ -175,6 +183,13 @@ void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapP
   {
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_DISMANTLE));
     manager.send();
+
+    // Remove the trap, and add any components to the tile.
+    if (tile != nullptr)
+    {
+      FeaturePtr trap = tile->get_feature();
+      tile->remove_feature();
+    }
   }
 }
 
@@ -193,5 +208,20 @@ void DisarmTrapsSkillProcessor::disarm_trap_trigger(CreaturePtr creature, MapPtr
   {
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_TRIGGER));
     manager.send();
+
+    // If the tile doesn't have a creature on it, move on to the tile.
+    if (tile != nullptr && tile->has_creature() == false)
+    {
+      Coordinate creature_coords = map->get_location(creature->get_id());
+      TilePtr creature_current_tile = map->at(creature_coords);
+      MapUtils::add_or_update_location(map, creature, CoordUtils::get_new_coordinate(creature_coords, d), creature_current_tile);
+
+      IFeatureManipulatorPtr trap_manip = IFeatureManipulatorFactory::create_manipulator(tile->get_feature());
+
+      if (trap_manip != nullptr)
+      {
+        trap_manip->handle(tile, creature);
+      }
+    }
   }
 }
