@@ -7,6 +7,14 @@
 
 using namespace std;
 
+DisarmTrapsSkillProcessor::DisarmTrapsSkillProcessor()
+{
+  disarm_traps_outcome_functions[DisarmTrapsOutcome::DISARM_TRAPS_DISARM] = &DisarmTrapsSkillProcessor::disarm_trap_success;
+  disarm_traps_outcome_functions[DisarmTrapsOutcome::DISARM_TRAPS_DISMANTLE] = &DisarmTrapsSkillProcessor::disarm_trap_dismantle;
+  disarm_traps_outcome_functions[DisarmTrapsOutcome::DISARM_TRAPS_FAIL] = &DisarmTrapsSkillProcessor::disarm_trap_fail;
+  disarm_traps_outcome_functions[DisarmTrapsOutcome::DISARM_TRAPS_TRIGGER] = &DisarmTrapsSkillProcessor::disarm_trap_trigger;
+}
+
 ActionCostValue DisarmTrapsSkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
   ActionCostValue acv = -1;
@@ -107,9 +115,23 @@ bool DisarmTrapsSkillProcessor::disarm_trap(const std::pair<int, TileDirectionMa
           {
             manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DISARM_TRAPS_NO_TRAP));
             manager.send();
+
+            return false;
           }
         }
       }
+    }
+
+    DisarmTrapsCalculator dtc;
+    DisarmTrapsOutcome dto = dtc.calculate_disarm_traps_outcome(creature);
+
+    // Process the outcome.
+    auto d_it = disarm_traps_outcome_functions.find(dto);
+
+    if (d_it != disarm_traps_outcome_functions.end())
+    {
+      (this->*(d_it->second))(creature, map, d);
+      attempted_disarm = true;
     }
   }
 
@@ -132,3 +154,30 @@ ActionCostValue DisarmTrapsSkillProcessor::get_default_skill_action_cost_value(C
   return 30;
 }
 
+void DisarmTrapsSkillProcessor::disarm_trap_success(CreaturePtr creature, MapPtr map, const Direction d)
+{
+  if (creature != nullptr && map != nullptr)
+  {
+  }
+}
+
+void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapPtr map, const Direction d)
+{
+  if (creature != nullptr && map != nullptr)
+  {
+  }
+}
+
+void DisarmTrapsSkillProcessor::disarm_trap_fail(CreaturePtr creature, MapPtr map, const Direction d)
+{
+  if (creature != nullptr && map != nullptr)
+  {
+  }
+}
+
+void DisarmTrapsSkillProcessor::disarm_trap_trigger(CreaturePtr creature, MapPtr map, const Direction d)
+{
+  if (creature != nullptr && map != nullptr)
+  {
+  }
+}
