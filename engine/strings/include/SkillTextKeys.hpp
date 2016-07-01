@@ -190,6 +190,7 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_DUNGEONEERING;
     static const std::string SKILL_USAGE_ESCAPE;
     static const std::string SKILL_USAGE_FORAGING;
+    static const std::string SKILL_USAGE_HERBALISM;
     static const std::string SKILL_USAGE_HUNTING;
     static const std::string SKILL_USAGE_JEWELER;
     static const std::string SKILL_USAGE_GENERAL_MAGIC;
