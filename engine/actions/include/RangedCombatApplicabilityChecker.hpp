@@ -15,6 +15,9 @@ class RangedCombatApplicabilityChecker
     bool is_ranged_weapon_equipped(CreaturePtr creature);
     std::string get_ranged_weapon_not_equipped_message() const;
 
+    bool is_ammunition_cursed(CreaturePtr creature);
+    std::string get_ammunition_cursed_message() const;
+
     bool is_ranged_weapon_and_ammunition_equipped(CreaturePtr creature);
     std::string get_ammunition_not_equipped_message() const;
 

@@ -19,6 +19,10 @@ pair<bool, string> RangedCombatApplicabilityChecker::can_creature_do_ranged_comb
   {
     ranged_combat_info.second = get_ranged_combat_on_world_map_not_allowed_message();
   }
+  else if (is_ammunition_cursed(creature))
+  {
+    ranged_combat_info.second = get_ammunition_cursed_message();
+  }
   else if (!is_ranged_weapon_equipped(creature))
   {
     ranged_combat_info.second = get_ranged_weapon_not_equipped_message();
@@ -44,6 +48,30 @@ pair<bool, string> RangedCombatApplicabilityChecker::can_creature_do_ranged_comb
 
   return ranged_combat_info;
 }
+
+bool RangedCombatApplicabilityChecker::is_ammunition_cursed(CreaturePtr creature)
+{
+  bool is_cursed = false;
+
+  if (creature != nullptr)
+  {
+    ItemPtr ammunition = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
+
+    if (ammunition != nullptr)
+    {
+      is_cursed = (ammunition->get_status() == ItemStatus::ITEM_STATUS_CURSED);
+    }
+  }
+  return is_cursed;
+}
+
+// Get a message about the current ammunition being cursed
+string RangedCombatApplicabilityChecker::get_ammunition_cursed_message() const
+{
+  string ammo_cursed = StringTable::get(RangedCombatTextKeys::RANGED_COMBAT_AMMUNITION_CURSED);
+  return ammo_cursed;
+}
+
 
 // Check to see if the type of the current map is not world.  Ranged combat isn't really
 // applicable on the overworld map.

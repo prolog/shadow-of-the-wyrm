@@ -112,6 +112,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 - When using destructible items as melee weapons, the destruction
   percentage is now properly considered in melee - you can't wield
   clay pots or fire bombs with impunity.
+
+- Ranged combat is no longer possible when trying to fire cursed
+  ammunition.
     
 - Additional stanzas for "Tel and Floridel".
 

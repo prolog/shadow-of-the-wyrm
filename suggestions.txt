@@ -1,5 +1,4 @@
 Me:
-- Should not be able to fire cursed ammunition.
 - Add carrying details to synopsis.
 - Digging on a field tile should have a chance of providing an edible
   root (1%), or blackroot (.1%)
