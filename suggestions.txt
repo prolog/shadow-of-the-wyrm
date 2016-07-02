@@ -1,6 +1,10 @@
 Me:
+- Ensure that item destruction percentage is respected even when an object
+  is wielded as a melee weapon (ie, fire bombs).
 - Add some fire and shadow bombs to the basement in Wintersea.
 - Should not be able to fire cursed ammunition.
+- Digging on a field tile should have a chance of providing an edible
+  root (1%), or blackroot (.1%)
 - Allow definition of symbol for items.  Set for the trap items.
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
