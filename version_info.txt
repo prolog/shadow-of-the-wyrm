@@ -106,7 +106,9 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   - Bolt (crossbow trap)
 
   - Rock (rock trap)
-        
+
+- Clay pots are more brittle.
+      
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,

@@ -88,6 +88,22 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>shadow_bomb</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>35</Col>
+				</Coord>
+				<Quantity>2</Quantity>
+			</Placement>
+			<Placement>
+				<ID>fire_bomb</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>36</Col>
+				</Coord>
+				<Quantity>6</Quantity>
+			</Placement>
+			<Placement>
 				<ID>iron_shield</ID>
 				<Coord>
 					<Row>12</Row>

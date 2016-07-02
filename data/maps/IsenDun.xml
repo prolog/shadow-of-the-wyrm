@@ -275,6 +275,14 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>fire_bomb</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>64</Col>
+				</Coord>
+				<Quantity>4</Quantity>
+			</Placement>
+			<Placement>
 				<ID>unstoning_potion</ID>
 				<Coord>
 					<Row>2</Row>

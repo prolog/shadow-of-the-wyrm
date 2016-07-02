@@ -25210,6 +25210,7 @@
 					<NumSides>6</NumSides>
 					<Modifier>1</Modifier>
 					<Type>3</Type>
+					<EffectBonus>50</EffectBonus>
 				</Damage>
 			</Weapon>
 			<Weapon id="shadow_bomb">
@@ -25241,6 +25242,7 @@
 					<NumDice>3</NumDice>
 					<NumSides>6</NumSides>
 					<Type>8</Type>
+					<EffectBonus>30</EffectBonus>
 				</Damage>
 			</Weapon>
 			<Weapon id="arcane_dagger">
@@ -27503,6 +27505,12 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
 				<ItemScripts>
 					<AmmunitionDestructionScript>
 						<Script>items/clay_pot.lua</Script>
