@@ -115,6 +115,8 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 
 - Ranged combat is no longer possible when trying to fire cursed
   ammunition.
+
+- New title poem (selection from Ben Jonson's "Gypsy Songs").
     
 - Additional stanzas for "Tel and Floridel".
 
