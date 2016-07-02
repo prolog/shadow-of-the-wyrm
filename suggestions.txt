@@ -1,8 +1,7 @@
 Me:
-- Add dismantle item support in XML
-- Add destruction percentage.  When using the item as ammunition, should
-  check this first, then the other checks.  Set appropriate for fire bomb,
-  shadow bomb, etc.
+- Should not be able to fire cursed ammunition.
+- When using the item as ammunition, check destruction_pct_chance before
+  other checks.
 - Allow definition of symbol for items.  Set for the trap items.
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  

@@ -2,12 +2,14 @@
 #include "ActionTextKeys.hpp"
 #include "AnimationTranslator.hpp"
 #include "CombatManager.hpp"
+#include "Conversion.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "ItemManager.hpp"
+#include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PhaseOfMoonCalculator.hpp"
@@ -133,7 +135,11 @@ void TrapManipulator::create_item_if_necessary(TilePtr tile, TrapPtr trap)
   // Generate an item, if applicable.
   ItemManager im;
   IInventoryPtr inv = tile->get_items();
-  im.create_item_with_probability(50, 100, inv, trap->get_item_id());
+
+  string item_destruction_s = trap->get_additional_property(ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE);
+  int item_destruction_pct = item_destruction_s.empty() ? 0 : String::to_int(item_destruction_s);
+
+  im.create_item_with_probability(50, 100 - item_destruction_pct, inv, trap->get_item_id());
 }
 
 void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creature, const Coordinate& creature_coord)

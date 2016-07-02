@@ -225,7 +225,7 @@ bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal
 {
   // For safety's sake, always do nothing and return false when the item id
   // is empty.
-  if (item_id.empty())
+  if (item_id.empty() || (rand_upper_val < rand_less_than_or_equal_val))
   {
     return false;
   }

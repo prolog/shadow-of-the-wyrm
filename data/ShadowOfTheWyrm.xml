@@ -23351,6 +23351,7 @@
 			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_FIREBALL_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
 			<Colour>1</Colour>
+			<Item>fire_bomb</Item>
 			<Damage>
 				<NumDice>4</NumDice>
 				<NumSides>6</NumSides>
@@ -23358,7 +23359,6 @@
 				<Type>3</Type>
 			</Damage>
 			<Uses>4</Uses>
-			<DismantleItem>fire_bomb</DismantleItem>
 		</Trap>
 		<Trap id="arrow_trap">
 			<DescriptionSID>TRAP_ARROW_SID</DescriptionSID>
@@ -23374,7 +23374,6 @@
 				<Type>1</Type>
 			</Damage>
 			<Uses>10</Uses>
-			<DismantleItem>arrow</DismantleItem>
 		</Trap>
 		<Trap id="crossbow_trap">
 			<DescriptionSID>TRAP_CROSSBOW_SID</DescriptionSID>
@@ -23390,7 +23389,6 @@
 				<Type>1</Type>
 			</Damage>
 			<Uses>10</Uses>
-			<DismantleItem>bolt</DismantleItem>
 		</Trap>
 		<Trap id="rock_trap">
 			<DescriptionSID>TRAP_ROCK_SID</DescriptionSID>
@@ -23406,7 +23404,6 @@
 				<Type>2</Type>
 			</Damage>
 			<Uses>10</Uses>
-			<DismantleItem>_rock</DismantleItem>
 		</Trap>
 		<Trap id="floor_spikes">
 			<DescriptionSID>TRAP_FLOOR_SPIKES_SID</DescriptionSID>
@@ -23444,6 +23441,7 @@
 			<TriggerSymbol>-</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_POISON_DART_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
 			<Colour>2</Colour>
+			<Item>poison_dart</Item>
 			<Damage>
 				<NumDice>2</NumDice>
 				<NumSides>6</NumSides>
@@ -23454,7 +23452,6 @@
 				</StatusAilments>
 			</Damage>
 			<Uses>12</Uses>
-			<DismantleItem>poison_dart</DismantleItem>
 		</Trap>
 		<Trap id="blackwater_trap">
 			<DescriptionSID>TRAP_BLACKWATER_SID</DescriptionSID>
@@ -23462,6 +23459,7 @@
 			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_BLACKWATER_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
 			<Colour>4</Colour>
+			<Item>shadow_bomb</Item>
 			<Damage piercing="1">
 				<NumDice>3</NumDice>
 				<NumSides>6</NumSides>
@@ -23471,8 +23469,7 @@
 					<Status>_stone</Status>
 				</StatusAilments>
 			</Damage>
-			<Uses>1</Uses>
-			<DismantleItem>shadow_bomb</DismantleItem>
+			<Uses>3</Uses>
 		</Trap>
 		<Trap id="electrical_field_trap">
 			<DescriptionSID>TRAP_ELECTRICAL_FIELD_SID</DescriptionSID>
@@ -25193,7 +25190,17 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>
 				<DangerLevel>14</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>47</Difficulty>
@@ -25215,7 +25222,17 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>4</Colour>
+				</TextDetails>
 				<DangerLevel>14</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>47</Difficulty>

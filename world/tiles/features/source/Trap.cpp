@@ -179,6 +179,11 @@ string Trap::get_item_id() const
   return item_id;
 }
 
+bool Trap::has_items() const
+{
+  return (!item_id.empty() && (uses > 0));
+}
+
 void Trap::set_damage(const Damage& new_damage)
 {
   damage = new_damage;
