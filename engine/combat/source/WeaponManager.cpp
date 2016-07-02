@@ -7,6 +7,35 @@
 using namespace std;
 using std::dynamic_pointer_cast;
 
+ItemPtr WeaponManager::remove_weapon(CreaturePtr creature, const AttackType attack_type)
+{
+  ItemPtr removed_weapon;
+
+  if (creature != nullptr)
+  {
+    Equipment& eq = creature->get_equipment();
+
+    switch (attack_type)
+    {
+      case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
+        removed_weapon = eq.remove_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+        break;
+      case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
+        removed_weapon = eq.remove_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND);
+        break;
+      case AttackType::ATTACK_TYPE_RANGED:
+        removed_weapon = eq.remove_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);
+        break;
+      case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
+      case AttackType::ATTACK_TYPE_MAGICAL:
+      default:
+        break;
+    }
+  }
+
+  return removed_weapon;
+}
+
 // Check to see if the creature is using a weapon for the given
 // attack type - grab the weapon, and check if it's a nullptr.
 bool WeaponManager::is_using_weapon(CreaturePtr creature, const AttackType attack_type)

@@ -6,6 +6,7 @@
 class WeaponManager
 {
   public:
+    ItemPtr remove_weapon(CreaturePtr creature, const AttackType attack_type);
     bool is_using_weapon(CreaturePtr creature, const AttackType attack_type);
     WeaponPtr get_weapon(CreaturePtr creature, const AttackType attack_type);
     ItemPtr get_item(CreaturePtr creature, const AttackType attack_type);
