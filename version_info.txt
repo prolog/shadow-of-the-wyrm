@@ -108,7 +108,11 @@ Shadow of the Wyrm v0.5.3 "Calvi"
   - Rock (rock trap)
 
 - Clay pots are more brittle.
-      
+
+- When using destructible items as melee weapons, the destruction
+  percentage is now properly considered in melee - you can't wield
+  clay pots or fire bombs with impunity.
+    
 - Additional stanzas for "Tel and Floridel".
 
 - New creatures: abyssal beast, aster, golgothan, fantastic beast, ghast,

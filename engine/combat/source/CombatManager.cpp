@@ -14,6 +14,7 @@
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
 #include "IHitTypeFactory.hpp"
+#include "ItemProperties.hpp"
 #include "ToHitCalculatorFactory.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
@@ -145,6 +146,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     {
       hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type);
       mark_for_weapon_and_combat_skills = true;
+      destroy_weapon_if_necessary(attacking_creature, attack_type);
     }
     // Close miss (flavour text only.)
     else if (is_close_miss(total_roll, target_number_value))
@@ -175,6 +177,31 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
   send_combat_messages(attacking_creature);
   
   return action_cost_value;
+}
+
+bool CombatManager::destroy_weapon_if_necessary(CreaturePtr attacking_creature, const AttackType attack_type)
+{
+  bool destroyed_weapon = false;
+
+  if (attacking_creature != nullptr)
+  {
+    WeaponManager wm;
+    WeaponPtr weapon = wm.get_weapon(attacking_creature, attack_type);
+
+    if (weapon != nullptr)
+    {
+      string destruction_pct_s = weapon->get_additional_property(ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE);
+      int destruction_pct = destruction_pct_s.empty() ? 0 : String::to_int(destruction_pct_s);
+
+      if (RNG::percent_chance(destruction_pct))
+      {
+        wm.remove_weapon(attacking_creature, attack_type);
+        destroyed_weapon = true;
+      }
+    }
+  }
+
+  return destroyed_weapon;
 }
 
 bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)

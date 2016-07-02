@@ -47,6 +47,8 @@ class CombatManager
     bool is_automatic_miss(const int d100_roll);
     bool is_automatic_hit(const int d100_roll);
 
+    bool destroy_weapon_if_necessary(CreaturePtr creature, const AttackType attack_type);
+
     bool does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type);
     
     void mark_appropriate_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success);
