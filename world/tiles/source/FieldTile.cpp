@@ -1,4 +1,13 @@
 #include "FieldTile.hpp"
+#include "ItemTypes.hpp"
+
+const int FIELD_TILE_UNDEAD_PCT = 1;
+const int FIELD_TILE_ITEM_PCT = 2;
+
+FieldTile::FieldTile()
+: WorldMapTile({ FIELD_TILE_UNDEAD_PCT, FIELD_TILE_ITEM_PCT, {ItemIdKeys::ITEM_ID_ROOT} })
+{
+}
 
 TileType FieldTile::get_tile_type() const
 {

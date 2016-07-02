@@ -1,10 +1,10 @@
 #include "GraveTile.hpp"
 
-const int GraveTileUndeadPct = 15;
-const int GraveTileItemPct = 11;
+const int GRAVE_TILE_UNDEAD_PCT = 15;
+const int GRAVE_TILE_ITEM_PCT = 11;
 
 GraveTile::GraveTile()
-: Tile({GraveTileUndeadPct, GraveTileItemPct})
+: Tile({GRAVE_TILE_UNDEAD_PCT, GRAVE_TILE_ITEM_PCT, {}})
 {
 }
 

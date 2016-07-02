@@ -114,7 +114,11 @@ Shadow of the Wyrm v0.5.3 "Calvi"
 - Ranged combat is no longer possible when trying to fire cursed
   ammunition.
 
-- New title poem (selection from Ben Jonson's "Gypsy Songs").
+- There is now a small chance that digging on a field or under a bush
+  will yield an edible root.
+
+- Two new title poems (selection from Ben Jonson's "Gypsy Songs", and a
+  haiku by Kobayashi Issa).
     
 - Additional stanzas for "Tel and Floridel".
 

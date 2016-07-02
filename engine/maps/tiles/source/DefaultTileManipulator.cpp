@@ -124,8 +124,15 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
 {
   if (tile != nullptr)
   {
-    if (RNG::percent_chance(tile->get_dig_chances().get_pct_chance_item()))
+    DigChances dc = tile->get_dig_chances();
+    ItemManager im;
+    Game& game = Game::instance();
+    const ItemMap& items = game.get_items_ref();
+
+    if (RNG::percent_chance(dc.get_pct_chance_item()))
     {
+      vector<string> item_ids = dc.get_item_ids();
+
       int danger_level = map->get_danger();
 
       ItemGenerationManager igm;
@@ -139,7 +146,17 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
 
       for (int i = 0; i < num_items_found; i++)
       {
-        ItemPtr item = igm.generate_item(am, igv, Rarity::RARITY_RARE, RNG::range(1, static_cast<int>(danger_level / 2)));
+        ItemPtr item;
+
+        if (item_ids.empty())
+        {
+          item = igm.generate_item(am, igv, Rarity::RARITY_RARE, RNG::range(1, static_cast<int>(danger_level / 2)));
+        }
+        else
+        {
+          string item_id = item_ids.at(RNG::range(0, item_ids.size()-1));
+          item = im.create_item(items, item_id, 1);
+        }
         
         if (item != nullptr)
         {
