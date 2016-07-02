@@ -1,10 +1,10 @@
 #include "BarrowTile.hpp"
 
-const int BarrowTileUndeadPct = 15;
-const int BarrowTileItemPct = 11;
+const int BARROW_TILE_UNDEAD_PCT = 15;
+const int BARROW_TILE_ITEM_PCT = 11;
 
 BarrowTile::BarrowTile()
-: Tile({BarrowTileUndeadPct, BarrowTileItemPct})
+: Tile({BARROW_TILE_UNDEAD_PCT, BARROW_TILE_ITEM_PCT, {}})
 {
 }
 

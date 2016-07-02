@@ -1,5 +1,15 @@
 #include "WorldMapTile.hpp"
 
+WorldMapTile::WorldMapTile()
+: Tile()
+{
+}
+
+WorldMapTile::WorldMapTile(const DigChances& dc)
+: Tile(dc)
+{
+}
+
 bool WorldMapTile::display_description_on_arrival() const
 {
   return false;

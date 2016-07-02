@@ -1,4 +1,13 @@
 #include "BushTile.hpp"
+#include "ItemTypes.hpp"
+
+const int BUSH_TILE_UNDEAD_PCT = 0;
+const int BUSH_TILE_ITEM_PCT = 3;
+
+BushTile::BushTile()
+: Tile({BUSH_TILE_UNDEAD_PCT, BUSH_TILE_ITEM_PCT, {ItemIdKeys::ITEM_ID_ROOT}})
+{
+}
 
 TileType BushTile::get_tile_type() const
 {
