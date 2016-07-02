@@ -1,8 +1,6 @@
 Shadow of the Wyrm v0.5.3 "Calvi"
 - Version declared June 4, 2016.
 
-- Chat is now bound to the easier-to-press 'c' (Legend).
-
 - Behemoth hide armour is a bit more powerful, soak-wise.
 
 - Defined grave-rooms for dungeons.  These contain a sarcophagus that
