@@ -3,6 +3,8 @@
 #include "CoordUtils.hpp"
 #include "DisarmTrapsSkillProcessor.hpp"
 #include "Game.hpp"
+#include "ItemManager.hpp"
+#include "ItemProperties.hpp"
 #include "IFeatureManipulatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -131,8 +133,10 @@ bool DisarmTrapsSkillProcessor::disarm_trap(const std::pair<int, TileDirectionMa
       }
     }
 
+    TrapPtr trap = dynamic_pointer_cast<Trap>(tile->get_feature());
+
     DisarmTrapsCalculator dtc;
-    DisarmTrapsOutcome dto = dtc.calculate_disarm_traps_outcome(creature);
+    DisarmTrapsOutcome dto = dtc.calculate_disarm_traps_outcome(creature, trap && trap->has_items());
 
     // Process the outcome.
     auto d_it = disarm_traps_outcome_functions.find(dto);
@@ -179,6 +183,8 @@ void DisarmTrapsSkillProcessor::disarm_trap_success(CreaturePtr creature, MapPtr
 
 void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapPtr map, const Direction d, TilePtr tile, IMessageManager& manager)
 {
+  Game& game = Game::instance();
+
   if (creature != nullptr && map != nullptr)
   {
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_DISMANTLE));
@@ -187,8 +193,24 @@ void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapP
     // Remove the trap, and add any components to the tile.
     if (tile != nullptr)
     {
-      FeaturePtr trap = tile->get_feature();
+      TrapPtr trap = dynamic_pointer_cast<Trap>(tile->get_feature());
       tile->remove_feature();
+
+      if (trap != nullptr)
+      {
+        string item_id = trap->get_item_id();
+
+        if (!item_id.empty())
+        {
+          ItemManager im;
+          uint quantity = static_cast<uint>(trap->get_uses());
+
+          if (quantity > 0)
+          {
+            im.create_item_with_probability(100, 100, tile->get_items(), item_id, quantity);
+          }
+        }
+      }
     }
   }
 }

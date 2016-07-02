@@ -12,7 +12,7 @@ enum struct DisarmTrapsOutcome
 class DisarmTrapsCalculator
 {
   public:
-    DisarmTrapsOutcome calculate_disarm_traps_outcome(CreaturePtr creature);
+    DisarmTrapsOutcome calculate_disarm_traps_outcome(CreaturePtr creature, const bool has_component_items);
 
   protected:
     static const float DISARM_TRAPS_SKILL_MULTIPLIER;

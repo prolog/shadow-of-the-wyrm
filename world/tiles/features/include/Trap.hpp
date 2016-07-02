@@ -42,6 +42,7 @@ class Trap : public Feature
 
     void set_item_id(const std::string& new_item_id);
     std::string get_item_id() const;
+    bool has_items() const;
 
     void set_damage(const Damage& new_damage);
     Damage get_damage() const;
