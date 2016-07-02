@@ -1,6 +1,4 @@
 Me:
-- Digging on a field tile should have a chance of providing an edible
-  root (1%), or blackroot (.1%)
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
   randomly located. 

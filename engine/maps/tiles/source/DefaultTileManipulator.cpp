@@ -128,11 +128,10 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
     ItemManager im;
     Game& game = Game::instance();
     const ItemMap& items = game.get_items_ref();
+    vector<string> item_ids = dc.get_item_ids();
 
     if (RNG::percent_chance(dc.get_pct_chance_item()))
     {
-      vector<string> item_ids = dc.get_item_ids();
-
       int danger_level = map->get_danger();
 
       ItemGenerationManager igm;
