@@ -1,7 +1,6 @@
 Me:
+- Add some fire and shadow bombs to the basement in Wintersea.
 - Should not be able to fire cursed ammunition.
-- When using the item as ammunition, check destruction_pct_chance before
-  other checks.
 - Allow definition of symbol for items.  Set for the trap items.
 - New tile type: shrine ('o', bright cyan)
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  

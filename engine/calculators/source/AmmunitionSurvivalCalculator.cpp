@@ -1,5 +1,9 @@
 #include "AmmunitionSurvivalCalculator.hpp"
+#include "Conversion.hpp"
+#include "ItemProperties.hpp"
 #include "RNG.hpp"
+
+using namespace std;
 
 // 2% chance of breakage, always, unless the item is an artifact.
 const int AmmunitionSurvivalCalculator::BASE_PCT_CHANCE_BREAKAGE = 2;
@@ -33,7 +37,17 @@ bool AmmunitionSurvivalCalculator::survives(CreaturePtr creature, ItemPtr ammuni
       int chance_survive = BASE_PCT_CHANCE_SURVIVAL
                          + (creature->get_skills().get_skill(SkillType::SKILL_GENERAL_ARCHERY)->get_value() / ARCHERY_SKILL_SURVIVAL_DIVISOR)
                          + (ammunition->get_weight().get_weight() / ITEM_WEIGHT_SURVIVAL_DIVISOR);
-                         
+
+      string item_destruction_s = ammunition->get_additional_property(ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE);
+      int item_destruction_pct = String::to_int(item_destruction_s);
+
+      // The item destruction pct is a hard override, and doesn't consider
+      // any skills, etc.
+      if (RNG::percent_chance(item_destruction_pct))
+      {
+        survive = false;
+      }
+
       if (rand > chance_survive)
       {
         survive = false;
