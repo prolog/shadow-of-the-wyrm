@@ -49,8 +49,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // Early 17th century Italian guitarist and composer.
-  return "\"Calvi\"";
+  // 20th century Paraguayan composer.
+  // La Catedral and El Ultimo Tremolo are incredible.
+  return "\"Barrios\"";
 }
 
 string Metadata::get_game_version_synopsis() const
