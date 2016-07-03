@@ -16,6 +16,7 @@
 #include "CellularAutomataGenerator.hpp"
 #include "MapProperties.hpp"
 #include "Serialize.hpp"
+#include "TileTextKeys.hpp"
 #include "VillageTile.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 

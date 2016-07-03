@@ -43,7 +43,7 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
 GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
 {
-  static_assert(TileType::TILE_TYPE_LAST == TileType(49), "Unexpected TileType::TILE_TYPE_LAST");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(50), "Unexpected TileType::TILE_TYPE_LAST");
   GeneratorPtr generator;
   
   switch(terrain_type)
@@ -129,6 +129,12 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_DUNGEON_COMPLEX:
     {
       generator = std::make_shared<DungeonGenerator>(map_exit_id);
+      break;
+    }
+    case TileType::TILE_TYPE_SHRINE:
+    {
+      // JCD FIXME REPLACE WITH REAL GENERATOR LATER
+      generator = std::make_shared<FieldGenerator>(map_exit_id);
       break;
     }
     // All three worship sites use the same process:

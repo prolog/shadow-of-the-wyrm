@@ -23343,6 +23343,12 @@
 				<Colour>2</Colour>
 			</Text>
 		</SewerTile>
+		<ShrineTile>
+			<Text>
+				<Symbol>o</Symbol>
+				<Colour>5</Colour>
+			</Text>
+		</ShrineTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">
