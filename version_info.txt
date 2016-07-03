@@ -1,5 +1,7 @@
 Shadow of the Wyrm v0.5.4 "Barrios"
 
+- More stanzas for "Tel and Floridel".
+
 Shadow of the Wyrm v0.5.3 "Calvi"
 - Version declared June 4, 2016.  Version finalized July 2, 2016.
 
