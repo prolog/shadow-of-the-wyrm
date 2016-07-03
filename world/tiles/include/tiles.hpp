@@ -61,6 +61,7 @@ enum struct TileType
   TILE_TYPE_EARTH     = 46,
   TILE_TYPE_SEWER_COMPLEX = 47,
   TILE_TYPE_SEWER     = 48,
-  TILE_TYPE_LAST      = 49
+  TILE_TYPE_SHRINE    = 49,
+  TILE_TYPE_LAST      = 50
 };
 

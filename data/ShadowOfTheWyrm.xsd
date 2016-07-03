@@ -134,6 +134,7 @@
 			<xs:element name="EarthTile" type="tns:Tile"/>
 			<xs:element name="SewerComplexTile" type="tns:Tile"/>
 			<xs:element name="SewerTile" type="tns:Tile"/>
+			<xs:element name="ShrineTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

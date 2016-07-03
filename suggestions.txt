@@ -1,5 +1,5 @@
 Me:
-- New tile type: shrine ('o', bright cyan)
+- Create shrine generator
 - Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
   randomly located. 
 - Text in Atua-Elar on the shrines and their significance.

@@ -34,7 +34,7 @@ TilePtr TileFactory::create_tile(const ClassIdentifier cl_id)
 
 void TileFactory::initialize_tile_map()
 {
-  static_assert(TileType::TILE_TYPE_LAST == TileType(49), "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(50), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   TilePtr barracks = std::make_shared<BarracksTile>();
   TilePtr barrow   = std::make_shared<BarrowTile>();
@@ -85,6 +85,7 @@ void TileFactory::initialize_tile_map()
   TilePtr earth    = std::make_shared<EarthTile>();
   TilePtr s_comp   = std::make_shared<SewerComplexTile>();
   TilePtr sewer    = std::make_shared<SewerTile>();
+  TilePtr shrine   = std::make_shared<ShrineTile>();
 
   tiles_map = TileSerializationMap{{ClassIdentifier::CLASS_ID_BARRACKS_TILE, barracks},
                                    {ClassIdentifier::CLASS_ID_BARROW_TILE, barrow},
@@ -134,5 +135,6 @@ void TileFactory::initialize_tile_map()
                                    {ClassIdentifier::CLASS_ID_AIR_TILE, air},
                                    {ClassIdentifier::CLASS_ID_EARTH_TILE, earth},
                                    {ClassIdentifier::CLASS_ID_SEWER_COMPLEX_TILE, s_comp},
-                                   {ClassIdentifier::CLASS_ID_SEWER_TILE, sewer}};
+                                   {ClassIdentifier::CLASS_ID_SEWER_TILE, sewer},
+                                   {ClassIdentifier::CLASS_ID_SHRINE_TILE, shrine}};
 }
