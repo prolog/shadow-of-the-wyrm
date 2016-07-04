@@ -29347,6 +29347,51 @@
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
+			<Tool id="heart_heaven">
+				<DescriptionSID>HEART_HEAVEN_SID</DescriptionSID>
+				<UsageDescriptionSID>HEART_HEAVEN_USAGE_SID</UsageDescriptionSID>
+				<Value>5000</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Artifact>1</Artifact>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Tool>
+			<Tool id="heart_world">
+				<DescriptionSID>HEART_WORLD_SID</DescriptionSID>
+				<UsageDescriptionSID>HEART_WORLD_USAGE_SID</UsageDescriptionSID>
+				<Value>5000</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Artifact>1</Artifact>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>2</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Tool>
+			<Tool id="heart_world_beyond">
+				<DescriptionSID>HEART_WORLD_BEYOND_SID</DescriptionSID>
+				<UsageDescriptionSID>HEART_WORLD_BEYOND_USAGE_SID</UsageDescriptionSID>
+				<Value>5000</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Artifact>1</Artifact>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Tool>
 			<Tool id="cosmos_stone">
 				<DescriptionSID>COSMOS_STONE_SID</DescriptionSID>
 				<UsageDescriptionSID>COSMOS_STONE_USAGE_SID</UsageDescriptionSID>

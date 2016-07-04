@@ -1,14 +1,15 @@
 Me:
+- In the script files, set the tile subtypes for the shrines.
 - Create shrine generator
-- Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
-  randomly located. 
 - Text in Atua-Elar on the shrines and their significance.
 - Each is locked.  key should be somewhere else, in a set location 
   (Aeschburh [e], Yew [n], Stonewall [g]).
 - There should be sections filled with moderate/strong/very strong creatures
-- inner room should contain an artifact.
-- the three artifacts should be able to be given to Farra in exchange for the 
-  item that can be given to Amaurosis for an evil ending.
+- Inner room should contain an artifact.
+- The three artifacts should be able to be given to Farra in exchange for 
+  the item that can be given to Amaurosis for an evil ending.
+- They should also be able to be given to a good character (Cynwise?)
+  for conversion into the World-Shroud (25% res/everything).
 - Implement proper branded weapons.  These should allow for any "magical"
   damage type (heat through lightning in the damage enum) to be the weapon
   damage instead.  Should also allow for chaotic or piercing flags.  Gives
