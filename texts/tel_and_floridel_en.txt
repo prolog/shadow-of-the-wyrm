@@ -249,3 +249,13 @@ left carved in stone, and vaulted like a tomb %b
 to hold the wilting flower of her youth, %b
 the meanings to be found with the hall abstruse.
 %p
+The ceiling held such strange and wondrous lights, %b
+each chandelier an ancient beast, its eyes %b
+aflame; and in the judgement of their height, %b
+a bestiary cast upon the sky. %b
+Their claws held torn the forms of ancient knights, %b
+the gore a clutch of rubies in the air. %b
+Though full of beauty, still by every right %b 
+imagined blood, a ravaging laid bare, %b
+the twisting of each face a gasping, dying stare.
+%p
