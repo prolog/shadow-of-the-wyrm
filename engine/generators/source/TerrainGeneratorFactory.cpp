@@ -20,6 +20,7 @@
 #include "SeaGenerator.hpp"
 #include "SettlementGeneratorFactory.hpp"
 #include "SewerGenerator.hpp"
+#include "ShrineGeneratorFactory.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "WildOrchardGenerator.hpp"
 #include "WorshipSiteGenerator.hpp"
@@ -133,8 +134,10 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     }
     case TileType::TILE_TYPE_SHRINE:
     {
-      // JCD FIXME REPLACE WITH REAL GENERATOR LATER
-      generator = std::make_shared<FieldGenerator>(map_exit_id);
+      GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
+      MapPtr base_map = base_generator->generate();
+
+      generator = ShrineGeneratorFactory::create_random_shrine_generator(base_map);
       break;
     }
     // All three worship sites use the same process:

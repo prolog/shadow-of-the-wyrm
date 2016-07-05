@@ -697,6 +697,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\include\OrderedGraveyardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\PillarGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\PillarTypes.hpp" />
+    <ClInclude Include="engine\generators\include\RectangularShrineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\RoadGenerator.hpp" />
     <ClInclude Include="engine\generators\include\Room.hpp" />
     <ClInclude Include="engine\generators\include\RoomFeatures.hpp" />
@@ -705,6 +706,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\include\ScrubGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SeaGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SewerGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\ShrineGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\SpiralDungeonGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SpringsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SquarePillarGenerator.hpp" />
@@ -1425,7 +1427,9 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\RectangularShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\SewerGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\ShrineGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\source\TileDepthOptions.cpp" />
     <ClCompile Include="engine\generators\source\unit_tests\TileDepthOptions_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
