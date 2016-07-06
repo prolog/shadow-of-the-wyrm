@@ -1,6 +1,14 @@
 Me:
 - In the script files, set the tile subtypes for the shrines.
+- Allow the specification, at the Generator-level, of a list of creature
+  IDs.  When doing creature generation, check this first.
+- On the generator, allow the specification of a vector of coordinates.
+  When doing creature generation, before placing creatures randomly, check
+  to see if any of these remain.  If so, use them.
+- Combination of the two above will allow specification of shrines full of
+  baddies, with none outside.
 - Create shrine generator
+- Create different shrine generators.
 - Text in Atua-Elar on the shrines and their significance.
 - Each is locked.  key should be somewhere else, in a set location 
   (Aeschburh [e], Yew [n], Stonewall [g]).
@@ -60,6 +68,9 @@ Me:
   and so on properly check slays.
 - Discover traps on search?  Passive search at the end of each turn for
   traps?
+- Oracle spell: trap detection
+- Scroll of trap detection
+- Create the spell effect, etc.
 
 Sean McKeague:
 - Ability to pick up partial stacks.
