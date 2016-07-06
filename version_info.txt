@@ -7,6 +7,8 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
 - More stanzas for "Tel and Floridel".
 
+- New creatures: gorgon.
+
 - New artifacts: Heart of Heaven, Heart of the World, Heart of the World
   Beyond.
 

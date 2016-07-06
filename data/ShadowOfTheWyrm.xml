@@ -8664,6 +8664,53 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
+		<Creature id="gorgon">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>GORGON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GORGON_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GORGON_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GORGON_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>S</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>38</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>38</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>45000</Exp>
+			</CreatureGeneration>
+			<Level>38</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>76</NumSides>
+				<Type>6</Type>
+				<EffectBonus>50</EffectBonus>
+				<StatusAilments>
+					<Status>_stone</Status>
+				</StatusAilments>
+			</Damage>
+		</Creature>
 		<Creature id="star_beast">
 			<RaceID>_divine</RaceID>
 			<ShortDescriptionSID>STAR_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
