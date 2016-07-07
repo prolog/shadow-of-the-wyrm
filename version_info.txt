@@ -6,6 +6,8 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   - Rectangular shrines are pretty plain-jane.  They have statues and
     pillars leading up to the centre, where the shrine's relic is kept.
 
+  - Cross shaped shrines keep the relic off to the sides.
+
 - Boating now improves at a much slower pace.
 
 - More stanzas for "Tel and Floridel".

@@ -10,8 +10,6 @@ Me:
 - Create shrine generator
 - Create different shrine generators.
 - Text in Atua-Elar on the shrines and their significance.
-- Each is locked.  key should be somewhere else, in a set location 
-  (Aeschburh [e], Yew [n], Stonewall [g]).
 - There should be sections filled with moderate/strong/very strong creatures
 - Inner room should contain an artifact.
 - The three artifacts should be able to be given to Farra in exchange for 
