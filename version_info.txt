@@ -3,6 +3,9 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 - New world map location type, shrine.  Updated the post-world map 
   generation XML/script routines to place the sky/world/nether shrines.
 
+  - Rectangular shrines are pretty plain-jane.  They have statues and
+    pillars leading up to the centre, where the shrine's relic is kept.
+
 - Boating now improves at a much slower pace.
 
 - More stanzas for "Tel and Floridel".
