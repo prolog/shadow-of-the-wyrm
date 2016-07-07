@@ -1,3 +1,4 @@
+#include "CrossShrineGenerator.hpp"
 #include "RectangularShrineGenerator.hpp"
 #include "ShrineGeneratorFactory.hpp"
 #include "RNG.hpp"
@@ -13,8 +14,11 @@ GeneratorPtr ShrineGeneratorFactory::create_random_shrine_generator(MapPtr base_
   switch(shrine_layout)
   {
     case ShrineLayoutType::SHRINE_LAYOUT_RECTANGULAR:
-    default:
       shrine_generator = create_rectangular_shrine_generator(base_map);
+      break;
+    case ShrineLayoutType::SHRINE_LAYOUT_CROSS:
+    default:
+      shrine_generator = create_cross_shrine_generator(base_map);
       break;
   }
 
@@ -24,5 +28,11 @@ GeneratorPtr ShrineGeneratorFactory::create_random_shrine_generator(MapPtr base_
 GeneratorPtr ShrineGeneratorFactory::create_rectangular_shrine_generator(MapPtr base_map)
 {
   GeneratorPtr shrine = make_shared<RectangularShrineGenerator>(base_map);
+  return shrine;
+}
+
+GeneratorPtr ShrineGeneratorFactory::create_cross_shrine_generator(MapPtr base_map)
+{
+  GeneratorPtr shrine = make_shared<CrossShrineGenerator>(base_map);
   return shrine;
 }
