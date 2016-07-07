@@ -52,6 +52,9 @@ class MapProperties
     // Should there be useful healing herbs?
     static const std::string MAP_PROPERTIES_PCT_CHANCE_HERBS;
 
+    // If we're a shrine, what's the item ID of the relic?
+    static const std::string MAP_PROPERTIES_RELIC_ID;
+
   protected:
     MapProperties();
     ~MapProperties();
