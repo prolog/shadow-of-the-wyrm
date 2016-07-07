@@ -269,3 +269,13 @@ engraved with dragons deep within the wood. %b
 Attention to their savagery was shown, %b
 the hateful eyes as lifeless as a river stone.
 %p
+The king stood by his son and lovely queen. %b
+The boy wore shining mail, and by his side, %b
+an ancient fairy sword.  Its subtle sheen %b
+belied that once it cut a titan wide %b
+apart. And then the queen, so proud and tall, %b
+a silver circlet perched upon her hair. %b
+The spell she cast was palpable to all %b
+that watched beneath the dancing lights.  The rare %b
+sight of her was stunning: full and sweet and fair.
+%p
