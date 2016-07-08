@@ -176,6 +176,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_custom_map_id", map_set_custom_map_id);
   lua_register(L, "map_set_edesc", map_set_edesc);
   lua_register(L, "map_set_additional_property", map_set_additional_property);
+  lua_register(L, "map_set_tile_subtype", map_set_tile_subtype);
   lua_register(L, "map_add_location", map_add_location);
   lua_register(L, "map_transform_tile", map_transform_tile);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
@@ -1655,6 +1656,30 @@ int map_set_additional_property(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to map_set_additional_property");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Set the tile subtype appropriately.
+int map_set_tile_subtype(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    TileType subtype = static_cast<TileType>(lua_tointeger(ls, 4));
+    TilePtr tile = get_tile(map_id, c);
+
+    if (tile)
+    {
+      tile->set_tile_subtype(subtype);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_set_tile_subtype");
     lua_error(ls);
   }
 
