@@ -64,6 +64,7 @@ int is_player(lua_State* ls);
 int map_set_custom_map_id(lua_State* ls);
 int map_set_edesc(lua_State* ls);
 int map_set_additional_property(lua_State* ls);
+int map_set_tile_subtype(lua_State* ls);
 int map_add_location(lua_State* ls);
 int map_transform_tile(lua_State* ls);
 int map_add_tile_exit(lua_State* ls);
