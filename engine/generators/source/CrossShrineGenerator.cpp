@@ -1,6 +1,8 @@
 #include "CrossShrineGenerator.hpp"
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
+#include "ItemManager.hpp"
+#include "MapProperties.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -32,25 +34,25 @@ MapPtr CrossShrineGenerator::generate()
   int shrine_width = shrine_height;
 
   int start_col = mid_col - (shrine_width / 2);
+  int wide_start_row = mid_row - (shrine_width / 4);
+  int wide_start_col = start_col - (shrine_width / 2);
+  int wide_width = shrine_width * 2;
 
-  generate_building(map, start_row, start_col, mid_row, shrine_height, shrine_width);
+  generate_building(map, start_row, start_col, mid_row, shrine_height, shrine_width, wide_start_row, wide_start_col, wide_width);
   generate_entrances(map, start_row, shrine_height, mid_col);
-
-  // Relic
+  generate_relic(map, {{wide_start_row, wide_start_col + 2}, {wide_start_row, wide_start_col + wide_width - 2}});
 
   return map;
 }
 
-void CrossShrineGenerator::generate_building(MapPtr map, const int start_row, const int start_col, const int mid_row, const int shrine_height, const int shrine_width)
+void CrossShrineGenerator::generate_building(MapPtr map, const int start_row, const int start_col, const int mid_row, const int shrine_height, const int shrine_width, const int wide_start_row, const int wide_start_col, const int wide_width)
 {
   // Generate the tall bit
   GeneratorUtils::generate_building(map, start_row, start_col, shrine_height, shrine_width);
 
   // Generate the wide bit
-  int wide_start_row = mid_row - (shrine_width / 4);
   int wide_height = shrine_height / 2;
-  int wide_width = shrine_width * 2;
-  GeneratorUtils::generate_building(map, wide_start_row, start_col - (shrine_width / 2), wide_height, wide_width);
+  GeneratorUtils::generate_building(map, wide_start_row, wide_start_col, wide_height, wide_width);
 
   // Get rid of the walls in the middle
   vector<int> rows = { wide_start_row, wide_start_row + wide_height - 1 };
@@ -81,5 +83,29 @@ void CrossShrineGenerator::generate_entrances(MapPtr map, const int start_row, c
   {
     TilePtr dungeon_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
     map->insert(entr, dungeon_tile);
+  }
+}
+
+void CrossShrineGenerator::generate_relic(MapPtr map, const vector<Coordinate>& options)
+{
+  if (map != nullptr && !options.empty())
+  {
+    Coordinate c = options.at(RNG::range(0, options.size()-1));
+
+    // JCD FIXME refactor and reconsider includes
+    string relic_id = get_additional_property(MapProperties::MAP_PROPERTIES_RELIC_ID);
+
+    if (!relic_id.empty())
+    {
+      ItemManager im;
+
+      ItemPtr relic = im.create_item(relic_id);
+      TilePtr relic_tile = map->at(c);
+
+      if (relic_tile != nullptr)
+      {
+        relic_tile->get_items()->add_front(relic);
+      }
+    }
   }
 }
