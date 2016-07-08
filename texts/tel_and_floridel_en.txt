@@ -279,3 +279,13 @@ The spell she cast was palpable to all %b
 that watched beneath the dancing lights.  The rare %b
 sight of her was stunning: full and sweet and fair.
 %p
+A hush as Floridel walked in, and came %b
+to stand before the retinue, alone. %b
+For none within the court could ever feign %b
+indifference, their pique and anger shown %b
+by sidelong glances.  Whispers.  Every look %b
+an accusation, but of what?  Her place? %b
+She raised her eyes to meet Tel's own, and took %b
+the rest the way a swimmer takes the waves, %b
+embracing the nobility with calm and grace.
+%p
