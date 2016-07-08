@@ -35,6 +35,7 @@
 			<Summons>
 				<Summon>archangel</Summon>
 				<Summon>angel</Summon>
+				<Summon>skyborn</Summon>
 			</Summons>
 			<WorshipSiteType>0</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
@@ -73,6 +74,7 @@
 			<Summons>
 				<Summon>titan</Summon>
 				<Summon>divine_avenger</Summon>
+				<Summon>skyborn</Summon>
 			</Summons>
 			<WorshipSiteType>1</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
@@ -111,6 +113,7 @@
 			<Summons>
 				<Summon>air_elemental</Summon>
 				<Summon>angel</Summon>
+				<Summon>skyborn</Summon>
 			</Summons>
 			<WorshipSiteType>2</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
@@ -150,6 +153,7 @@
 			<Summons>
 				<Summon>earth_elemental</Summon>
 				<Summon>air_elemental</Summon>
+				<Summon>skyborn</Summon>
 			</Summons>
 			<WorshipSiteType>3</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
@@ -187,6 +191,7 @@
 			<Summons>
 				<Summon>fire_elemental</Summon>
 				<Summon>iron_horror</Summon>
+				<Summon>skyborn</Summon>
 			</Summons>
 			<WorshipSiteType>4</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
@@ -227,6 +232,7 @@
 			<Summons>
 				<Summon>air_elemental</Summon>
 				<Summon>planewalker</Summon>
+				<Summon>skyborn</Summon>
 			</Summons>
 			<WorshipSiteType>5</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
@@ -266,6 +272,7 @@
 			<Summons>
 				<Summon>water_elemental</Summon>
 				<Summon>voidling</Summon>
+				<Summon>skyborn</Summon>
 			</Summons>
 			<WorshipSiteType>6</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
@@ -301,6 +308,7 @@
 			<Summons>
 				<Summon>fell_lord</Summon>
 				<Summon>star_beast</Summon>
+				<Summon>skyborn</Summon>
 			</Summons>
 			<WorshipSiteType>7</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
@@ -335,6 +343,7 @@
 			<Summons>
 				<Summon>tentacled_horror</Summon>
 				<Summon>astral_horror</Summon>
+				<Summon>skyborn</Summon>
 			</Summons>
 			<WorshipSiteType>8</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
@@ -7919,7 +7928,7 @@
 			</DecisionStrategy>
 			<Text>
 				<Symbol>A</Symbol>
-				<Colour>11</Colour>
+				<Colour>3</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -9305,6 +9314,51 @@
 				<NumSides>94</NumSides>
 				<Type>5</Type>
 			</Damage>
+		</Creature>
+		<Creature id="skyborn">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SKYBORN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SKYBORN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SKYBORN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SKYBORN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>47</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>47</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>180000</Exp>
+			</CreatureGeneration>
+			<Level>47</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>94</NumSides>
+				<Type>10</Type>
+			</Damage>
+			<Evade>20</Evade>
+			<Speed>35</Speed>
 		</Creature>
 		<Creature id="weyg">
 			<RaceID>09_giant</RaceID>

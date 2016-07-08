@@ -10,9 +10,12 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
 - Boating now improves at a much slower pace.
 
+- Each of the Nine now include the skyborn in their list of creatures that
+  can be summoned when they are annoyed.
+
 - More stanzas for "Tel and Floridel".
 
-- New creatures: gorgon.
+- New creatures: gorgon, skyborn.
 
 - New artifacts: Heart of Heaven, Heart of the World, Heart of the World
   Beyond.
