@@ -1,6 +1,8 @@
 #include "RectangularShrineGenerator.hpp"
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
+#include "ItemManager.hpp"
+#include "MapProperties.hpp"
 #include "RNG.hpp"
 #include "StatueGenerator.hpp"
 
@@ -35,6 +37,7 @@ MapPtr RectangularShrineGenerator::generate()
   GeneratorUtils::generate_building(map, start_row, start_col, shrine_height, shrine_width);
   create_entrances(map, start_row, start_col, shrine_height, shrine_width, mid_row, mid_col);
   place_pillars_and_statues(map, start_row, start_col, shrine_height, shrine_width, mid_row, mid_col);
+  place_relic(map, mid_row, mid_col);
 
   return map;
 }
@@ -134,6 +137,28 @@ void RectangularShrineGenerator::generate_pillar_or_statue(MapPtr map, const vec
     if (tile != nullptr)
     {
       tile->set_feature(feature);
+    }
+  }
+}
+
+void RectangularShrineGenerator::place_relic(MapPtr map, const int mid_row, const int mid_col)
+{
+  if (map != nullptr)
+  {
+    // JCD FIXME refactor and reconsider includes
+    string relic_id = get_additional_property(MapProperties::MAP_PROPERTIES_RELIC_ID);
+
+    if (!relic_id.empty())
+    {
+      ItemManager im;
+
+      ItemPtr relic = im.create_item(relic_id);
+      TilePtr relic_tile = map->at(mid_row, mid_col);
+
+      if (relic_tile != nullptr)
+      {
+        relic_tile->get_items()->add_front(relic);
+      }
     }
   }
 }

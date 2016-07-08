@@ -1,4 +1,7 @@
 Me:
+- Create a common IShrineGenerator interface.
+- When doing "real shrine testing", debug and make sure the relics are
+  loaded properly.
 - In the script files, set the tile subtypes for the shrines.
 - Allow the specification, at the Generator-level, of a list of creature
   IDs.  When doing creature generation, check this first.
