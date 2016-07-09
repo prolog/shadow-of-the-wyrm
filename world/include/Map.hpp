@@ -113,6 +113,9 @@ class Map : public ISerializable
     TileTransformContainer& get_tile_transforms_ref();
     TileTransformContainer get_tile_transforms() const;
 
+    void set_preset_locations(const std::vector<Coordinate>& new_preset_locations);
+    std::vector<Coordinate> get_preset_locations() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -142,6 +145,7 @@ class Map : public ISerializable
     bool allow_creature_updates;
     std::map<std::string, std::string> properties;
     TileTransformContainer tile_transforms;
+    std::vector<Coordinate> preset_locations; // used for generating creatures onto specific locations
 
   private:
     ClassIdentifier internal_class_identifier() const override;
