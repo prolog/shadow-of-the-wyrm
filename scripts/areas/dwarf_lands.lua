@@ -8,7 +8,7 @@ local creatures_csv = creature.to_csv(creature_list)
 local world_shrine = Area:new(9, 10)
 world_shrine:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_WORLD_SHRINE")
 world_shrine:set_tile_subtype(21) -- always on a forest
-world_shrine:set_additional_properties({["MAP_PROPERTIES_RELIC_ID"] = "heart_world"})
+world_shrine:set_additional_properties({["MAP_PROPERTIES_RELIC_ID"] = "heart_world", ["MAP_PROPERTIES_CREATURE_IDS"] = "cosmic_inferno,war_mammoth,skywing,golgothan,wyrm,titan"})
 
 local wyrmeswraec = Area:new(6, 9)
 wyrmeswraec:set_custom_map_id("wyrmeswraec")
