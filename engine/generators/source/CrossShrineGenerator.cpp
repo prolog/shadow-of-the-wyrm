@@ -1,14 +1,12 @@
 #include "CrossShrineGenerator.hpp"
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
-#include "ItemManager.hpp"
-#include "MapProperties.hpp"
 #include "RNG.hpp"
 
 using namespace std;
 
 CrossShrineGenerator::CrossShrineGenerator(MapPtr new_base_map)
-: Generator(new_base_map->get_map_exit_id(), TileType::TILE_TYPE_SHRINE), base_map(new_base_map)
+: ShrineGenerator(new_base_map)
 {
 }
 
@@ -40,7 +38,12 @@ MapPtr CrossShrineGenerator::generate()
 
   generate_building(map, start_row, start_col, mid_row, shrine_height, shrine_width, wide_start_row, wide_start_col, wide_width);
   generate_entrances(map, start_row, shrine_height, mid_col);
-  generate_relic(map, {{wide_start_row, wide_start_col + 2}, {wide_start_row, wide_start_col + wide_width - 2}});
+
+  vector<Coordinate> relic_locs = {{wide_start_row, wide_start_col + 2}, {wide_start_row, wide_start_col + wide_width - 2}};
+  Coordinate relic_loc = relic_locs.at(RNG::range(0, relic_locs.size()-1));
+  place_relic(map, relic_loc.first, relic_loc.second);
+
+  add_dungeon_tiles_to_preset_locations(map);
 
   return map;
 }
@@ -83,29 +86,5 @@ void CrossShrineGenerator::generate_entrances(MapPtr map, const int start_row, c
   {
     TilePtr dungeon_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
     map->insert(entr, dungeon_tile);
-  }
-}
-
-void CrossShrineGenerator::generate_relic(MapPtr map, const vector<Coordinate>& options)
-{
-  if (map != nullptr && !options.empty())
-  {
-    Coordinate c = options.at(RNG::range(0, options.size()-1));
-
-    // JCD FIXME refactor and reconsider includes
-    string relic_id = get_additional_property(MapProperties::MAP_PROPERTIES_RELIC_ID);
-
-    if (!relic_id.empty())
-    {
-      ItemManager im;
-
-      ItemPtr relic = im.create_item(relic_id);
-      TilePtr relic_tile = map->at(c);
-
-      if (relic_tile != nullptr)
-      {
-        relic_tile->get_items()->add_front(relic);
-      }
-    }
   }
 }
