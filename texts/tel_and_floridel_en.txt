@@ -289,3 +289,13 @@ She raised her eyes to meet Tel's own, and took %b
 the rest the way a swimmer takes the waves, %b
 embracing the nobility with calm and grace.
 %p
+And then, the sudden voice of Sel-the-King, %b
+his baritone commanding silence in %b
+the court.  Eyes dropped.  He said, "Today, we bring %b
+an unling-child, a girl of earthly skin. %b
+Let no one say we stole this shepherdess. %b
+She slept upon the asters, on the knoll %b
+we laid out for the willing.  Now she's blessed %b
+to feast with us for seven years, to know %b
+that time is all we're taking; seven years our toll."
+%p
