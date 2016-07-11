@@ -516,6 +516,11 @@ vector<Coordinate> Map::get_preset_locations() const
   return preset_locations;
 }
 
+vector<Coordinate>& Map::get_preset_locations_ref()
+{
+  return preset_locations;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
