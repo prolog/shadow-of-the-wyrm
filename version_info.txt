@@ -13,6 +13,8 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 - Each of the Nine now include the skyborn in their list of creatures that
   can be summoned when they are annoyed.
 
+- More random name combinations.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: gorgon, skyborn.

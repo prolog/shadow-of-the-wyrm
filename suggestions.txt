@@ -1,17 +1,6 @@
 Me:
-- Create a common IShrineGenerator interface.
-- When doing "real shrine testing", debug and make sure the relics are
-  loaded properly.
-- In the script files, set the tile subtypes for the shrines.
-- Allow the specification, at the Generator-level, of a list of creature
-  IDs.  When doing creature generation, check this first.
-- On the generator, allow the specification of a vector of coordinates.
-  When doing creature generation, before placing creatures randomly, check
-  to see if any of these remain.  If so, use them.
-- Combination of the two above will allow specification of shrines full of
-  baddies, with none outside.
-- Create shrine generator
-- Create different shrine generators.
+- Check the specified "random creature ID override" when doing creature
+  generation.
 - Text in Atua-Elar on the shrines and their significance.
 - There should be sections filled with moderate/strong/very strong creatures
 - Inner room should contain an artifact.
