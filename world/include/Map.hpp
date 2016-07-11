@@ -115,6 +115,7 @@ class Map : public ISerializable
 
     void set_preset_locations(const std::vector<Coordinate>& new_preset_locations);
     std::vector<Coordinate> get_preset_locations() const;
+    std::vector<Coordinate>& get_preset_locations_ref();
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

@@ -40,6 +40,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_initial_set_creatures(Ma
   {
     for (const string& creature_id : creature_ids)
     {
+      // JCD FIXME - consider get_coordinate_for_creature here
       std::get<0>(creatures_generated) = MapUtils::place_creature_randomly(map, creature_id);
     }
   }
@@ -106,15 +107,14 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
     if (generated_creature)
     {
-      int creature_row = RNG::range(0, rows - 1);
-      int creature_col = RNG::range(0, cols - 1);
+      Coordinate c = get_coordinate_for_creature(map, generated_creature, rows, cols);
 
       // Check to see if the spot is empty, and if a creature can be added there.
-      TilePtr tile = map->at(creature_row, creature_col);
+      TilePtr tile = map->at(c.first, c.second);
 
       if (MapUtils::is_tile_available_for_creature(generated_creature, tile))
       {
-        add_creature_to_map_and_potentially_notify(game, generated_creature, map, manager, base_danger_level, creature_row, creature_col, current_creatures_placed, creatures_generated, out_of_depth_msg_added);
+        add_creature_to_map_and_potentially_notify(game, generated_creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated, out_of_depth_msg_added);
       }
       else
       {
@@ -128,6 +128,47 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   }
 
   return creatures_generated;
+}
+
+// Get a coordinate for a newly-generated creature.  This will generally be a
+// random coordinate, unless the map has preset locations, in which case the
+// first of these that is unoccupied will be used.
+Coordinate MapCreatureGenerator::get_coordinate_for_creature(MapPtr map, CreaturePtr generated_creature, const int rows, const int cols)
+{
+  Coordinate c;
+
+  if (map != nullptr)
+  {
+    vector<Coordinate>& preset_locs = map->get_preset_locations_ref();
+
+    if (preset_locs.empty())
+    {
+      c.first = RNG::range(0, rows - 1);
+      c.second = RNG::range(0, cols - 1);
+    }
+    else
+    {
+      vector<Coordinate>::iterator p_it = preset_locs.begin();
+      while (p_it != preset_locs.end())
+      {
+        Coordinate cur_coord = *p_it;
+
+        TilePtr tile = map->at(cur_coord.first, cur_coord.second);
+
+        if (MapUtils::is_tile_available_for_creature(generated_creature, tile))
+        {
+          c = cur_coord;
+          break;
+        }
+        else
+        {
+          p_it = preset_locs.erase(p_it);
+        }
+      }
+    }
+  }
+
+  return c;
 }
 
 // Add the creature to the map.  Update necessary values/counters surrounding

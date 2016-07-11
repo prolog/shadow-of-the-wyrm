@@ -3,6 +3,7 @@
 #include "CreatureFactory.hpp"
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "MapUtils.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
@@ -149,7 +150,7 @@ bool MapUtils::place_creature_randomly(MapPtr map, const string& creature_id)
       if (MapUtils::is_tile_available_for_creature(creature, tile))
       {
         Coordinate coords(creature_row, creature_col);
-        MapUtils::add_or_update_location(map, creature, coords);
+        GameUtils::add_new_creature_to_map(game, creature, map, coords);
         creatures_generated = true;
 
         break;
