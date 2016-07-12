@@ -150,7 +150,7 @@ bool MapUtils::place_creature_randomly(MapPtr map, const string& creature_id)
       if (MapUtils::is_tile_available_for_creature(creature, tile))
       {
         Coordinate coords(creature_row, creature_col);
-        GameUtils::add_new_creature_to_map(game, creature, map, coords);
+        MapUtils::add_or_update_location(map, creature, coords);
         creatures_generated = true;
 
         break;
