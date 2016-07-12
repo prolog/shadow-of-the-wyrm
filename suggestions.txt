@@ -1,6 +1,6 @@
 Me:
-- Check the specified "random creature ID override" when doing creature
-  generation.
+- Allow the map property "override level checks" to be specified as an
+  additional property, and not be overwritten by the generator default.
 - Text in Atua-Elar on the shrines and their significance.
 - There should be sections filled with moderate/strong/very strong creatures
 - Inner room should contain an artifact.

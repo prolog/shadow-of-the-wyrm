@@ -20,6 +20,7 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
 
   result = result && GenerationValues::operator==(cgv);
 
+  result = result && (id == cgv.id);
   result = result && (race_id == cgv.race_id);
   result = result && (allowable_terrain_types == cgv.allowable_terrain_types);
   result = result && (friendly == cgv.friendly);
@@ -32,6 +33,16 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
   result = result && (generator_filters == cgv.generator_filters);
 
   return result;
+}
+
+void CreatureGenerationValues::set_id(const std::string& new_id)
+{
+  id = new_id;
+}
+
+string CreatureGenerationValues::get_id() const
+{
+  return id;
 }
 
 void CreatureGenerationValues::set_race_id(const string& new_race_id)
@@ -153,6 +164,7 @@ bool CreatureGenerationValues::serialize(ostream& stream) const
 {
   GenerationValues::serialize(stream);
 
+  Serialize::write_string(stream, id);
   Serialize::write_string(stream, race_id);
 
   size_t terrain_types_size = allowable_terrain_types.size();
@@ -199,6 +211,7 @@ bool CreatureGenerationValues::deserialize(istream& stream)
 {
   GenerationValues::deserialize(stream);
 
+  Serialize::read_string(stream, id);
   Serialize::read_string(stream, race_id);
 
   size_t terrain_types_size = 0;

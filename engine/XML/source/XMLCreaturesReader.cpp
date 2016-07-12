@@ -119,9 +119,14 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
       cgv = parse_creature_generation_values(creature_generation_node);
 
       // Set any additional values found outside the CreatureGeneration node.
-      //
-      // Set the creature's race.  Set on the generation values, as it's needed 
-      // in some situations for filtering potential creatures by race.
+      
+      // Set the creature's ID. Set on the generation values, as it's needed 
+      // in some situations for ensuring only creatures from a certain set
+      // of IDs are generated.
+      cgv.set_id(id);
+
+      // Set the creature's race. Needed occasionally for filtering so that 
+      // only creatures of a particular race are generated.
       cgv.set_race_id(race_id);
     }
     
