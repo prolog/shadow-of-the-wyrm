@@ -1,11 +1,6 @@
 Me:
 - Test clearing all shrines
 - Shrine entry messages.
-- Allow the map property "override level checks" to be specified as an
-  additional property, and not be overwritten by the generator default.
-- Text in Atua-Elar on the shrines and their significance.
-- There should be sections filled with moderate/strong/very strong creatures
-- Inner room should contain an artifact.
 - The three artifacts should be able to be given to Farra in exchange for 
   the item that can be given to Amaurosis for an evil ending.
 - They should also be able to be given to a good character (Cynwise?)

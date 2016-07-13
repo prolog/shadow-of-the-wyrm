@@ -9,8 +9,8 @@ const int TanningCalculator::TANNING_EVADE_DECREMENT = 5;
 const int TanningCalculator::TANNING_SOAK_DECREMENT = 5;
 const int TanningCalculator::BASE_IMPROVEMENT_PCT = 10;
 const int TanningCalculator::MAX_IMPROVEMENT_PCT = 100;
-const int TanningCalculator::BASE_RESIST_DIVISOR = 4;
-const vector<pair<int, double>> TanningCalculator::SKILL_VALUE_DIVISORS = {{100, 2.0}, {75, 2.5}, {50, 3.0}, {25, 3.5}, {0, 4.0}};
+const int TanningCalculator::BASE_RESIST_DIVISOR = 5;
+const vector<pair<int, double>> TanningCalculator::SKILL_VALUE_DIVISORS = {{100, 2.5}, {75, 3}, {50, 3.5}, {25, 4}, {0, 5.0}};
 const int TanningCalculator::PCT_CHANCE_EXTRA_POINT = 60;
 
 int TanningCalculator::calculate_evade_bonus(CreaturePtr creature)

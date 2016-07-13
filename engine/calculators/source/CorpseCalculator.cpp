@@ -18,14 +18,14 @@ int CorpseCalculator::calculate_chance_successful_skin(CreaturePtr creature)
 }
 
 // The chance for a creature to carry over a particular resistance is
-// 40 + (skinning skill / 2)
+// 25 + (skinning skill / 3)
 int CorpseCalculator::calculate_chance_resistance(CreaturePtr creature)
 {
-  int pct_chance = 40;
+  int pct_chance = 25;
 
   if (creature != nullptr)
   {
-    pct_chance += static_cast<int>(creature->get_skills().get_value(SkillType::SKILL_GENERAL_SKINNING) / 2);
+    pct_chance += static_cast<int>(creature->get_skills().get_value(SkillType::SKILL_GENERAL_SKINNING) / 3);
   }
 
   return pct_chance;
