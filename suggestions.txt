@@ -1,4 +1,6 @@
 Me:
+- Test clearing all shrines
+- Shrine entry messages.
 - Allow the map property "override level checks" to be specified as an
   additional property, and not be overwritten by the generator default.
 - Text in Atua-Elar on the shrines and their significance.

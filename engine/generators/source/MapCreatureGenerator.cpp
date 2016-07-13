@@ -101,7 +101,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   bool out_of_depth_msg_added = false;
   IMessageManager& manager = MessageManagerFactory::instance();
 
-  while ((current_creatures_placed < num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
+  while (!maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
     CreaturePtr generated_creature = cgm.generate_creature(am, generation_map);
 
@@ -239,4 +239,10 @@ int MapCreatureGenerator::get_danger_level(MapPtr map, const int base_danger_lev
   }
 
   return danger_level;
+}
+
+bool MapCreatureGenerator::maximum_creatures_reached(MapPtr map, const int current_creatures_placed, const int num_creatures_to_place)
+{
+  bool max_reached = (current_creatures_placed >= num_creatures_to_place);
+  return max_reached;
 }

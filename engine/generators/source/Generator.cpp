@@ -480,10 +480,17 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
     set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_GENERATOR_FILTERS, generator_filter_csv);
   }
 
-  bool ignore_creature_lvl_checks = get_ignore_creature_generation_level_checks();
-  string ignore_creature_lvl_checks_s = Bool::to_string(ignore_creature_lvl_checks);
+  string ignore_lvl_checks_val = get_additional_property(MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS);
 
-  set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_creature_lvl_checks_s);
+  // If there isn't a value defined at the map level, and there usually isn't,
+  // then get the generator value.
+  if (ignore_lvl_checks_val.empty())
+  {
+    bool ignore_creature_lvl_checks = get_ignore_creature_generation_level_checks();
+    string ignore_creature_lvl_checks_val = Bool::to_string(ignore_creature_lvl_checks);
+  }
+
+  set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_lvl_checks_val);
 
   // Set any special feature messages that should be displayed the first time
   // the player enters a level.
