@@ -19,6 +19,7 @@ class MapCreatureGenerator
     int get_num_creatures(MapPtr map, const int max_creatures);
     int get_danger_level(MapPtr map, const int base_danger_level);
     Coordinate get_coordinate_for_creature(MapPtr map, CreaturePtr generated_creature, const int rows, const int cols);
+    bool maximum_creatures_reached(MapPtr map, const int current_creatures_placed, const int num_creatures_to_place);
 
     static const int OUT_OF_DEPTH_CREATURES_CHANCE;
 };
