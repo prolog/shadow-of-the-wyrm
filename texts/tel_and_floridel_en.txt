@@ -309,3 +309,13 @@ To trap the upland girl, the fair folk threw %b
 the greatest feast they had, each one obsessed %b
 to see if Floridel would fail or pass their test.
 %p
+She ate.  A fist of berries, then the wine, %b
+the spice and honey heavy on her tongue. %b
+An apple baked with cloves.  A snapper brined %b
+in salt and sugar, plated high among %b
+the sweet potatoes.  Candied plums.  A pie %b
+with pecans hidden in the crust.  Her take %b
+of food and drink had stilled the court, the sly %b
+nobility enrapt with with how she slaked %b
+her hunger on the fairy food and came awake.
+%p

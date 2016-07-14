@@ -164,6 +164,15 @@ double TanningCalculator::calculate_resistance_value(CreaturePtr creature, Resis
     }
 
     resist_val = (val / divisor);
+
+    // Ensure that if this is a resist (> 0), there is a minimum value of 0.01.
+    // That way, even with a large divisor, a small resistance can be carried
+    // over.
+    if (val > 0)
+    {
+      resist_val = std::max<double>(0.01, resist_val);
+    }
+
     int potential_extra = calculate_potential_extra_resistance_points(creature);
     double extra = 0.0;
 

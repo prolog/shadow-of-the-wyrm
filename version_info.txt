@@ -15,9 +15,15 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
 - More random name combinations.
 
+- Skinning and tanning are now slightly less easy-mode, though stlil very
+  powerful with high skinning/tanning/dungeoneering.
+
+- Tanning now always adds at least 0.01 points of resistance when the
+  resistance is present.
+
 - More stanzas for "Tel and Floridel".
 
-- New creatures: gorgon, skyborn.
+- New creatures: gorgon, skyborn, shrine hag.
 
 - New artifacts: Heart of Heaven, Heart of the World, Heart of the World
   Beyond.
