@@ -1,4 +1,6 @@
 Me:
+- Equipping from a stack of rings (maybe other objects, too) doesn't
+  properly identify on use.
 - Test clearing all shrines
 - Shrine entry messages.
 - The three artifacts should be able to be given to Farra in exchange for 
