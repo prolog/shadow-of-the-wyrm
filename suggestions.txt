@@ -60,6 +60,7 @@ Me:
 - Oracle spell: trap detection
 - Scroll of trap detection
 - Create the spell effect, etc.
+- Revisit creature generation algorithm.
 
 Sean McKeague:
 - Ability to pick up partial stacks.

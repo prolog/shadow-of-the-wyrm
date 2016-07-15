@@ -34,9 +34,9 @@
 		</Area>
 		<Area id="nether_shrine">
 			<Row y="95" x="0">~~~~~</Row>
-			<Row y="96" x="0">~m~m~</Row>
-			<Row y="97" x="0">~~h~~</Row>
-			<Row y="98" x="0">~m~m~</Row>
+			<Row y="96" x="0">~mmm~</Row>
+			<Row y="97" x="0">~mhm~</Row>
+			<Row y="98" x="0">~mmm~</Row>
 			<Row y="99" x="0">~~~~~</Row>
 			<Script>areas/nether_shrine.lua</Script>
 		</Area>

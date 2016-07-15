@@ -29780,7 +29780,7 @@
 				<UsageDescriptionSID>HEART_HEAVEN_USAGE_SID</UsageDescriptionSID>
 				<Value>5000</Value>
 				<Weight>
-					<Pounds>1</Pounds>
+					<Pounds>20</Pounds>
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
@@ -29795,7 +29795,7 @@
 				<UsageDescriptionSID>HEART_WORLD_USAGE_SID</UsageDescriptionSID>
 				<Value>5000</Value>
 				<Weight>
-					<Pounds>1</Pounds>
+					<Pounds>15</Pounds>
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
@@ -29810,7 +29810,7 @@
 				<UsageDescriptionSID>HEART_WORLD_BEYOND_USAGE_SID</UsageDescriptionSID>
 				<Value>5000</Value>
 				<Weight>
-					<Pounds>1</Pounds>
+					<Pounds>10</Pounds>
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
@@ -30276,6 +30276,24 @@
 				<SpellID/>
 				<Difficulty>0</Difficulty>
 			</Spellbook>
+			<Spellbook id="shrines_history">
+				<DescriptionSID>SHRINES_HISTORY_SID</DescriptionSID>
+				<UsageDescriptionSID>SHRINES_HISTORY_USAGE_SID</UsageDescriptionSID>
+				<Value>60</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<TextSID>SHRINES_HISTORY_TEXT_SID</TextSID>
+				<SpellID/>
+				<Difficulty>0</Difficulty>
+			</Spellbook>			
 			<Spellbook id="history_kell_empire">
 				<DescriptionSID>HISTORY_KELL_EMPIRE_SID</DescriptionSID>
 				<UsageDescriptionSID>HISTORY_KELL_EMPIRE_USAGE_SID</UsageDescriptionSID>
