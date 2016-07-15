@@ -178,6 +178,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>shrines_history</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>33</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>on_eternalism</ID>
 				<Coord>
 					<Row>12</Row>
