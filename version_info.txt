@@ -26,7 +26,7 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 - New creatures: gorgon, skyborn, shrine hag.
 
 - New artifacts: Heart of Heaven, Heart of the World, Heart of the World
-  Beyond.
+  Beyond, holy sword "Heart's Fury", unholy dagger "Heart's Needle".
 
 Shadow of the Wyrm v0.5.3 "Calvi"
 - Version declared June 4, 2016.  Version finalized July 2, 2016.
