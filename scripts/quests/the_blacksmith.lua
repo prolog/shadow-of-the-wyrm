@@ -58,14 +58,13 @@ sungem_quest = Quest:new("blacksmith_sungem",
                          sun_gem_completion_condition_fn,
                          sun_gem_completion_fn)
 
--- -----------------------------
 
 -- The blacksmith can forge a great blade, given the shrine relics.
 -- The resultant sword will make you powerful, but it will also bring
 -- endless glory to him forever, which if you think about it, is really
 -- the important thing.
 local function blacksmith_shrine_precond_fn()
-  return not (is_quest_completed("farrah_shrine"))
+  return not (is_quest_completed("bagra_shrine"))
 end
 
 local function blacksmith_shrine_start_fn()
@@ -87,7 +86,7 @@ local function blacksmith_shrine_completion_fn()
   remove_object_from_player("heart_heaven")
   remove_object_from_player("heart_world")
   remove_object_from_player("heart_world_beyond")
-  remove_active_quest("farra_shrine")
+  remove_active_quest("bagra_shrine")
 
   return true
 end
