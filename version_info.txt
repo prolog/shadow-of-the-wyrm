@@ -8,6 +8,11 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
   - Cross shaped shrines keep the relic off to the sides.
 
+- The blacksmith now gives a quest for the shrine gems.  This is an
+  alternative if you wish to clear the shrines, but don't want the
+  artifact for the evil ending.  He crafts a divine blade of immense
+  power and protection.
+
 - Boating now improves at a much slower pace.
 
 - Each of the Nine now include the skyborn in their list of creatures that
@@ -27,6 +32,11 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
 - New artifacts: Heart of Heaven, Heart of the World, Heart of the World
   Beyond, holy sword "Heart's Fury", unholy dagger "Heart's Needle".
+
+- Bug fixes:
+
+  - Slaying information wasn't being displayed correctly when a weapon
+    slays '*' (everything).
 
 Shadow of the Wyrm v0.5.3 "Calvi"
 - Version declared June 4, 2016.  Version finalized July 2, 2016.

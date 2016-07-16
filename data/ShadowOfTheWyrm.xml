@@ -26040,7 +26040,7 @@
 				<Difficulty>46</Difficulty>
 				<Speed>8</Speed>
 				<Damage>
-					<NumDice>9</NumDice>
+					<NumDice>11</NumDice>
 					<NumSides>10</NumSides>
 					<Type>0</Type>
 					<Slays>
@@ -26594,7 +26594,7 @@
 				<Damage>
 					<NumDice>12</NumDice>
 					<NumSides>6</NumSides>
-					<Modifier>6</Modifier>
+					<Modifier>12</Modifier>
 					<Type>0</Type>
 					<Slays>
 						<Slay>_demon</Slay>
