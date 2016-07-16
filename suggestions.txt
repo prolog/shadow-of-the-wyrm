@@ -1,4 +1,5 @@
 Me:
+- Test Bagra's quest, mutual exclusion, etc.
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
 - Test clearing all shrines

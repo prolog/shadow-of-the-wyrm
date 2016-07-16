@@ -6304,6 +6304,11 @@
 				<NumSides>96</NumSides>
 				<Type>9</Type>
 			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/bagra.lua</Script>
+				</ChatScript>
+			</EventScripts>
 			<Spells>
 				<Spell>
 					<SpellID>p_04_nether_bolt</SpellID>
