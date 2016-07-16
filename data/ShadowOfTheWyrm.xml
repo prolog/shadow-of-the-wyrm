@@ -26571,6 +26571,67 @@
 					</Slays>
 				</Damage>
 			</Weapon>
+			<Weapon id="hearts_fury">
+				<DescriptionSID>HEARTS_FURY_SID</DescriptionSID>
+				<UsageDescriptionSID>HEARTS_FURY_USAGE_SID</UsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>14</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.40</Slash>
+					<Pierce>0.40</Pierce>
+					<Holy>0.50</Holy>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>43</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>12</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+					<Type>0</Type>
+					<Slays>
+						<Slay>_demon</Slay>
+						<Slay>_divine</Slay>
+						<Slay>_dragon</Slay>
+						<Slay>_monster</Slay>
+					</Slays>
+				</Damage>
+			</Weapon>
+			<Weapon id="hearts_needle">
+				<DescriptionSID>HEARTS_NEEDLE_SID</DescriptionSID>
+				<UsageDescriptionSID>HEARTS_NEEDLE_USAGE_SID</UsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Shadow>0.60</Shadow>
+					<Arcane>0.30</Arcane>
+				</Resistances>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>5</NumDice>
+					<NumSides>4</NumSides>
+					<Type>1</Type>
+					<Slays>
+						<Slay>*</Slay>
+					</Slays>
+				</Damage>
+			</Weapon>
 			<Weapon id="heavens_blade">
 				<DescriptionSID>HEAVENS_BLADE_SID</DescriptionSID>
 				<UsageDescriptionSID>HEAVENS_BLADE_USAGE_SID</UsageDescriptionSID>
