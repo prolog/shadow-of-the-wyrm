@@ -152,16 +152,27 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
       for (size_t i = 0; i < ssz; i++)
       {
         string slay_race_id = slays[i];
-        RacePtr slay_race = rm.get_race(slay_race_id);
+        string slay_sid;
 
-        if (slay_race != nullptr)
+        if (slay_race_id == "*")
         {
-          ss << StringTable::get(slay_race->get_race_name_sid());
-
-          if (i != ssz - 1)
+          slay_sid = TextKeys::EVERYTHING;
+        }
+        else
+        {
+          RacePtr slay_race = rm.get_race(slay_race_id);
+          
+          if (slay_race != nullptr)
           {
-            ss << ", ";
+            slay_sid = slay_race->get_race_name_sid();
           }
+        }
+
+        ss << StringTable::get(slay_sid);
+
+        if (i != ssz - 1)
+        {
+          ss << ", ";
         }
       }
 
