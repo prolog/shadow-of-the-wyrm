@@ -6284,23 +6284,8 @@
 			</Text>
 			<CreatureGeneration>
 				<Max>1</Max>
-				<AllowableTerrainTypes>
-					<TileType>0</TileType>
-					<TileType>1</TileType>
-					<TileType>5</TileType>
-					<TileType>13</TileType>
-					<TileType>15</TileType>
-					<TileType>16</TileType>
-					<TileType>21</TileType>
-					<TileType>24</TileType>
-					<TileType>26</TileType>
-					<TileType>28</TileType>
-					<TileType>31</TileType>
-					<TileType>38</TileType>
-					<TileType>42</TileType>
-					<TileType>47</TileType>
-					<TileType>49</TileType>
-				</AllowableTerrainTypes>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
 				<DangerLevel>45</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>

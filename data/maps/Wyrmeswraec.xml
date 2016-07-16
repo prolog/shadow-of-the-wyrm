@@ -35,7 +35,15 @@
 		<Col>78</Col>
 	</PlayerStart>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<ID>bagra</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>36</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 		<Items>
 			<Placement>
 				<ID>mummified_corpse</ID>

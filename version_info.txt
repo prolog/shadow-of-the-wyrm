@@ -13,6 +13,9 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   artifact for the evil ending.  He crafts a divine blade of immense
   power and protection.
 
+- Repurposed Bagra from a random high-level unique to the quest-giver for
+  the evil ending.  She now wanders Wyrmeswraec.
+
 - Boating now improves at a much slower pace.
 
 - Each of the Nine now include the skyborn in their list of creatures that
