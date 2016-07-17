@@ -120,6 +120,7 @@ const string TextKeys::ALIGNMENT_NEUTRAL_ABRV = "ALIGNMENT_NEUTRAL_ABRV";
 const string TextKeys::LEVEL             = "LEVEL";
 const string TextKeys::LEVEL_ABRV        = "LEVEL_ABRV";
 const string TextKeys::WINNER            = "WINNER";
+const string TextKeys::WINNER_EVIL       = "WINNER_EVIL";
 
 const string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
 const string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";

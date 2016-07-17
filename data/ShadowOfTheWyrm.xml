@@ -19139,17 +19139,20 @@
 			<Level>50</Level>
 			<Damage chaotic="1">
 				<NumDice>1</NumDice>
-				<NumSides>200</NumSides>
+				<NumSides>220</NumSides>
 				<Modifier>25</Modifier>
 				<Type>3</Type>
 			</Damage>
 			<Evade>30</Evade>
-			<Soak>20</Soak>
+			<Soak>35</Soak>
 			<EventScripts>
 				<DeathScript>
 					<Script>death/amaurosis.lua</Script>
 					<Chance>100</Chance>
 				</DeathScript>
+				<ChatScript>
+					<Script>quests/amaurosis.lua</Script>
+				</ChatScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="super_boss">
