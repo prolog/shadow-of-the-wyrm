@@ -9,7 +9,7 @@ TEST(SW_Engine_ScoreFileEntry, serialization_id)
 
 TEST(SW_Engine_ScoreFileEntry, saveload)
 {
-  ScoreFileEntry sfe(123456, "Julian", "julian", CreatureSex::CREATURE_SEX_MALE, true, 25, true, "HumanNerd");
+  ScoreFileEntry sfe(123456, "Julian", "julian", CreatureSex::CREATURE_SEX_MALE, true, 25, CreatureWin::CREATURE_WIN_EVIL, "HumanNerd");
 
   ostringstream oss;
 
@@ -25,7 +25,7 @@ TEST(SW_Engine_ScoreFileEntry, saveload)
   EXPECT_EQ("Julian", sfe2.get_name());
   EXPECT_EQ(25, sfe2.get_level());
   EXPECT_EQ("HumanNerd", sfe2.get_race_class_abrv());
-  EXPECT_TRUE(sfe2.get_winner());
+  EXPECT_EQ(CreatureWin::CREATURE_WIN_EVIL, sfe2.get_winner());
   EXPECT_EQ(CreatureSex::CREATURE_SEX_MALE, sfe2.get_sex());
 }
 

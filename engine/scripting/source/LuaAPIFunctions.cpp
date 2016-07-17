@@ -2306,7 +2306,7 @@ int set_hostility(lua_State* ls)
 
 int teleport(lua_State* ls)
 {
-  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
   {
     Game& game = Game::instance();
     ActionManager& am = game.get_action_manager_ref();
@@ -2316,8 +2316,21 @@ int teleport(lua_State* ls)
 
     if (creature != nullptr)
     {
-      EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT);
-      teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
+      // This version of the function should generally only be used for debug
+      // testing.
+      if (lua_gettop(ls) == 3 && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+      {
+        int y = lua_tointeger(ls, 2);
+        int x = lua_tointeger(ls, 3);
+
+        MapPtr map = game.get_current_map();
+        MapUtils::add_or_update_location(map, creature, make_pair(y, x), MapUtils::get_tile_for_creature(map, creature));
+      }
+      else
+      {
+        EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT);
+        teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
+      }
     }
   }
   else
@@ -2850,17 +2863,23 @@ int curse_inventory(lua_State* ls)
 
 int set_winner(lua_State* ls)
 {
-  bool winner = false;
+  int num_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  if (num_args >= 1 && lua_isstring(ls, 1))
   {
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
+    CreatureWin win_type = CreatureWin::CREATURE_WIN_REGULAR;
+
+    if (num_args == 2 && lua_isnumber(ls, 2))
+    {
+      win_type = static_cast<CreatureWin>(lua_tointeger(ls, 2));
+    }
+
     if (creature != nullptr)
     {
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(true));
-      winner = true;
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(static_cast<int>(win_type)));
     }
   }
   else
@@ -2869,8 +2888,7 @@ int set_winner(lua_State* ls)
     lua_error(ls);
   }
 
-  lua_pushboolean(ls, winner);
-  return 1;
+  return 0;
 }
 
 int get_creature_colour(lua_State* ls)

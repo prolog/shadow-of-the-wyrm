@@ -14,7 +14,10 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   power and protection.
 
 - Repurposed Bagra from a random high-level unique to the quest-giver for
-  the evil ending.  She now wanders Wyrmeswraec.
+  the evil ending.  She now wanders Wyrmeswraec.  Her quest grants an
+  unholy dagger, Heart's Needle, that can be given to Amaurosis to
+  complete the evil ending and destroy the universe. (Jeremy Long and
+  others)
 
 - Boating now improves at a much slower pace.
 

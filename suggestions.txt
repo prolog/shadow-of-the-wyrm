@@ -1,13 +1,10 @@
 Me:
-- Test Bagra's quest, mutual exclusion, etc.
+- Failing unit tests
+- When resists are good enough, showing e.g. 2.98...e-08.
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
 - Test clearing all shrines
 - Shrine entry messages.
-- The three artifacts should be able to be given to Farra in exchange for 
-  the item that can be given to Amaurosis for an evil ending.
-- They should also be able to be given to a good character (Cynwise?)
-  for conversion into the World-Shroud (25% res/everything).
 - Implement proper branded weapons.  These should allow for any "magical"
   damage type (heat through lightning in the damage enum) to be the weapon
   damage instead.  Should also allow for chaotic or piercing flags.  Gives
