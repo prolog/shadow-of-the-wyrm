@@ -92,7 +92,7 @@ above the fray, a songbird's call upon the ear.
 I whither wander here upon these moors, %b
 among the purple flowers, wherein I dwell %b
 with sheep and lamb.  My life, I think, is pure. %b
-I am she who weathers in the hills; %b
+For I am she who weathers in the hills; %b
 who sleeps among her sheep, and then beholds %b
 the stars above that shine despite the chill; %b
 who watches under weather harsh and cold; %b
@@ -104,7 +104,7 @@ Intrigued, for all around, a show of force, %b
 each horseman drunk with glory that he'd won %b
 on hunt or battlefield, each armed with spear %b
 across the back, and Floridel unmoved. %b
-She met the king's own gaze, no trace of fear; %b
+She met the princeling's gaze, no trace of fear; %b
 for, with no words, she knew that he approved. %b
 Young Floridel, her mettle well and truly proved.
 %p
@@ -120,7 +120,7 @@ where fairy-kind forever flits with joy and mirth."
 %p
 She let the words between them cut the air %b
 to fall among the flowers on the ground, %b
-pausing for a moment just to stare %b
+and pausing for a moment, stopped to stare %b
 at cowslips, flowering crimson, that she found %b
 about her feet.  A kind of final gift %b
 upon the moor.  A fairy ring of sorts, %b
@@ -148,13 +148,13 @@ So, taken in her sleep, she bade farewell, %b
 and found herself beneath the loam and clay, %b
 in Cithriel, forever bound and held in sway.
 %p
-Floridel awoke on silk and down, %b
+Young Floridel awoke on silk and down, %b
 the guttering of the torches on the wall %b
 illumination of the life she found %b
 by chance, what came before leapt up to fall %b
 on rocky shoals.  This hall, this fairy thing %b
 her earth and sky, forever intertwined. %b
-Cithriel - a name that ever sings %b
+Oh, Cithriel - a name that ever sings %b
 of desperate fate, of stress and two declines, %b
 the future of its ruler and his queen-in-kind.
 %p
@@ -191,7 +191,7 @@ sweet Floridel, this foreign and so lovely flower.
 For here she was; of course she'd heard the tales %b
 from shepherd-folk, who told of seven years %b
 they lost to merriment, with few details. %b
-Sleep?  They spoke of music on the ear, %b
+And sleep?  They spoke of music on the ear, %b
 when resting on a high and stony mound. %b
 Or glade.  Or underneath a stormy sky; %b
 the claim from each of riders in the dark, %b
@@ -201,10 +201,10 @@ on journeys soon forgot, a steep and tumbling arc.
 %p
 She took the clothes.  She changed in open view, %b
 and cast aside her tunic and her cloak, %b
-naked for a moment such that few %b
+naked, and for a moment such that few %b
 had ever seen, for few have ever spoke %b
 of beauty such as this: a willow tree %b
-bending low to slip inside the dress. %b
+that bent down low to slip inside the dress. %b
 And tying up the belt, she stopped to see %b
 her image in a bowl, to first assess %b
 herself as best as shallow water can express.
@@ -222,7 +222,7 @@ had passed to take her life before so far from here.
 She looked up from the bowl, and fixed her stare %b
 towards the serving girl, who, with no name %b 
 she knew, was like a mirror to her fair %b
-self, with darker hair, but still the same %b
+complexion - darker hair, but still the same %b
 in sense - anonymous within this space, %b
 and seen, perhaps, but named by shamefully few. %b
 But unlike Floridel, she had a place %b
