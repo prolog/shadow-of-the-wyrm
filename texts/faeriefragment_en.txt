@@ -19,9 +19,14 @@ of the faerie words.
 The poems themselves are difficult to translate, because so little is known of the
 Faerie language, and because it is completely distinct from Primal Elvish.  The
 language is highly musical, with the words that are known seeming to flow
-together almost like music.  But due to the dearth of knowledge about Faerie,
+together like notes on a staff.  But due to the dearth of knowledge about Faerie,
 the translations themselves have become as important as the poems themselves,
 starting points for new translations into modern languages.
+%p
+The poems differ from the epic poem "Tel and Floridel" in that the latter exists only
+in translation, in the language of the mountain elves.  Whatever original "Tel and
+Floridel" was taken from, whether Primal Elvish, oral performances, or some other
+form, is not known.
 %p
 The translations presented here are faithful to the metre and rhyme patterns of the 
 original text.  The first fragment represents a kind of keening for what is lost, 

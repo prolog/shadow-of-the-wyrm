@@ -1,6 +1,9 @@
 Me:
 - Failing unit tests
 - When resists are good enough, showing e.g. 2.98...e-08.
+- Text screen paging for Tel and Floridel when using "%P".  Issue is with
+  the for loop - cur_line is 351, which is way more than the max.  Use
+  modulo instead.
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
 - Test clearing all shrines
