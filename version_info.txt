@@ -47,6 +47,10 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   - Text paging wasn't working correctly when the current "page" was
     very long, as the additional padding wasn't being added.
 
+  - Very small resistances (ie, around 0) were showing their value in
+    scientific notation.  Fixed this so that resistances are still 
+    precisely calculated using doubles, but displayed using precision 2.
+
 Shadow of the Wyrm v0.5.3 "Calvi"
 - Version declared June 4, 2016.  Version finalized July 2, 2016.
 

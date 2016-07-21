@@ -33,7 +33,7 @@ string ResistancesDumper::get_resistances() const
     DamageType dt = static_cast<DamageType>(d);
 
     ResistancePtr cur_res = res.get_resistance(dt);
-    double res_val = cur_res->get_value();
+    string res_val = cur_res->get_value_str();
     string name_sid = cur_res->get_name_sid();
 
     ss << StringTable::get(name_sid) << ": " << res_val << endl;
