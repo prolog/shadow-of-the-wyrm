@@ -1,3 +1,5 @@
+I
+%p
 Within the shrouds of myth, a kind of song %b
 of lovers at the edges of the world, %b
 their love accurs'd, a feeling held too strong %b
@@ -347,5 +349,8 @@ My life will never be, she thought, as good %b
 as all the feasting laid about tonight. %b
 A consort unaccepted - if I should %b
 falter, or if I quaver from their slights, %b
-then give me strength to shine against the coming night.
+then give me strength to shine against the coming night. 
+%P 
+II
 %p
+
