@@ -32,6 +32,8 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 - Tanning now always adds at least 0.01 points of resistance when the
   resistance is present.
 
+- Gnomes now start with Literacy.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: gorgon, skyborn, shrine hag.

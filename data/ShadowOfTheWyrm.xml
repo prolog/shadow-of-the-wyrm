@@ -1919,6 +1919,7 @@
 					<Detection>10</Detection>
 					<DisarmTraps>15</DisarmTraps>
 					<Dungeoneering>15</Dungeoneering>
+					<Literacy>5</Literacy>
 					<MountainLore>15</MountainLore>
 					<Spelunking>20</Spelunking>
 				</GeneralSkills>
