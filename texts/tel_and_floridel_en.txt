@@ -353,4 +353,13 @@ then give me strength to shine against the coming night.
 %P 
 II
 %p
-
+So by and by, the young girl passed the days %b
+enrapt within the stacks, the ancient tomes %b
+the fae preserved; for still, the wise men say %b
+that fairy folk was learning's ancient home: %b
+in Calasim, a library down below %b
+the ancient halls of Cithriel, a stone %b
+and paper fortress, alluded to, and shown %b
+in bits and scraps: in books, in scrolls and koans, %b
+the greatest trove of knowledge man had ever known.
+%p
