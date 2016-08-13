@@ -1,4 +1,6 @@
 Me:
+- Set depths appropriately for caverns.
+- Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
 - Update ResistancesTranslator to make use of Resistance::get_value_str()
