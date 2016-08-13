@@ -265,6 +265,30 @@ bool Generator::can_create_initial_items() const
   return false;
 }
 
+bool Generator::place_up_staircase(MapPtr map, const int row, const int col, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location)
+{
+  return place_staircase(map, row, col, TileType::TILE_TYPE_UP_STAIRCASE, tile_subtype, direction, link_to_map_exit_id, set_as_player_default_location);
+}
+
+bool Generator::place_down_staircase(MapPtr map, const int row, const int col,const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location)
+{
+  bool placed = place_staircase(map, row, col, TileType::TILE_TYPE_DOWN_STAIRCASE, tile_subtype, direction, link_to_map_exit_id, set_as_player_default_location);
+  
+  TilePtr tile = map->at(row, col);
+
+  if (tile != nullptr)
+  {
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
+    tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH));
+  }
+  else
+  {
+    placed = false;
+  }
+
+  return placed;
+}
+
 bool Generator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location)
 {
   TileGenerator tg;

@@ -194,7 +194,12 @@ void CavernGenerator::generate_staircases(MapPtr map)
   generate_staircase(map, TileType::TILE_TYPE_UP_STAIRCASE, Direction::DIRECTION_UP);
     
   // Down staircase
-  generate_staircase(map, TileType::TILE_TYPE_DOWN_STAIRCASE, Direction::DIRECTION_DOWN);
+  Depth depth = map->size().depth();
+
+  if (depth.get_current() < depth.get_maximum())
+  {
+    generate_staircase(map, TileType::TILE_TYPE_DOWN_STAIRCASE, Direction::DIRECTION_DOWN);
+  }
 }
 
 // Generate a particular staircase
@@ -219,7 +224,14 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
     if (!tile) break;
     if (tile && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
     {
-      place_staircase(map, c.first, c.second, tile_type, TileType::TILE_TYPE_CAVERN, Direction::DIRECTION_UP, get_permanence_default(), true);
+      if (tile_type == TileType::TILE_TYPE_UP_STAIRCASE)
+      {
+        place_up_staircase(map, c.first, c.second, TileType::TILE_TYPE_CAVERN, direction, get_permanence_default(), true);
+      }
+      else
+      {
+        place_down_staircase(map, c.first, c.second, TileType::TILE_TYPE_CAVERN, direction, get_permanence_default(), true);
+      }
       break;
     }
   }
