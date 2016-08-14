@@ -38,9 +38,11 @@ WorldGenerator::WorldGenerator()
                      {TileType::TILE_TYPE_KEEP, &WorldGenerator::set_keep_properties},
                      {TileType::TILE_TYPE_CASTLE, &WorldGenerator::set_castle_properties},
                      {TileType::TILE_TYPE_SEWER, &WorldGenerator::set_sewer_complex_properties}})
-// Min Depth for dungeons is 10 levels, 5 for sewers.
+// Min Depth for dungeons is 10 levels, 5 for sewers.  Caverns have the most
+// variance, and can be anywhere from 1 to 50 levels deep.
 , tile_depth_options({{TileType::TILE_TYPE_DUNGEON_COMPLEX, TileDepthOptions(10, 50, vector<int>({50, 45}))},
-                      {TileType::TILE_TYPE_SEWER_COMPLEX, TileDepthOptions(5, 50, vector<int>({50}))}})
+                      {TileType::TILE_TYPE_SEWER_COMPLEX, TileDepthOptions(5, 50, vector<int>({50}))},
+                      {TileType::TILE_TYPE_CAVERN, TileDepthOptions(1, 50)}})
 {
 }
 
