@@ -1981,6 +1981,7 @@
 					<Foraging>15</Foraging>
 					<Hiding>10</Hiding>
 					<Jumping>10</Jumping>
+					<Literacy>5</Literacy>
 					<Spelunking>10</Spelunking>
 					<Stealth>10</Stealth>
 				</GeneralSkills>
