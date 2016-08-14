@@ -5,6 +5,7 @@ class TileDepthOptions
 {
   public:
     TileDepthOptions();
+    TileDepthOptions(const int new_min_depth, const int new_max_depth);
     TileDepthOptions(const int new_min_depth, const int new_max_depth, const std::vector<int>& new_remaining_depths);
 
     void set_min_depth(const int new_min_depth);

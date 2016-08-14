@@ -31,6 +31,8 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
   MapComponents cc = get_cavern_components(result_map);
   connect_cavern_components(result_map, cc);
   generate_traps(result_map);
+
+  update_depth_details(result_map);
   generate_staircases(result_map);
   
   result_map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
