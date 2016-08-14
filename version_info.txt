@@ -54,6 +54,7 @@ Shadow of the Wyrm v0.5.4 "Barrios"
     precisely calculated using doubles, but displayed using precision 2.
 
   - Staircase generation in caverns was incredibly broken (4chan /rlg).
+    Down staircases in sewers were also broken.
 
 Shadow of the Wyrm v0.5.3 "Calvi"
 - Version declared June 4, 2016.  Version finalized July 2, 2016.
