@@ -373,3 +373,14 @@ she crept into the stacks, and on her own %b
 she learned the runic script, the songs and rites %b
 that danced across the page and fluttered in the light.
 %p
+But books were not for Tel.  He knew his place %b
+was on the throne, a prince who soon would rule %b
+the hidden world.  He learned to fight with grace, %b
+elan, to work his howling sword with cruel %b
+intensity.  To give and then to take. %b
+His father, Sel, made peace with giant-kind. %b
+Between the titan-kin and wilful fae, %b
+a peace maintained for generations, blind %b
+to sons and how their hubris has its own designs.
+%p
+
