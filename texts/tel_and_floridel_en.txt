@@ -383,14 +383,24 @@ Between the titan-kin and wilful fae, %b
 a peace maintained for generations, blind %b
 to hubris and the way it has its own designs.
 %p
-A faint and precious thing, that fragile peace. %b
+A precious thing, his father's fragile peace. %b
 The stopper of a thousand years of war, %b
 it spoke of better times; if not, at least %b
 for grass to grow upon the upland moors %b
 that held within their hills a mass of bones. %b
-Beneath, the mouthless voices of the dead, %b
-the nameless men.  A low and piercing moan, %b
-the call of countless peasants armed and bled %b
+Beneath, the mouthless voices of the dead. %b
+The nameless men, who with their sigh and moan %b
+lay bare their ending: fatted, armed and bled %b
 with promises of glory heaped on kings instead.
+%p
+And Tel was young, and keen to earn his fame. %b
+Each morning he took lessons with the knights, %b
+the hardened men who fought and won their names %b
+while comrades fell, impaled, and felt the light %b
+fade.  Later, tactics.  How to lead his men %b
+on horse, on foot, through hills or open field. %b
+To pass unseen through woodlands, heath and fens. %b
+To find the ambush points within a weald. %b
+To come like hidden death, to bite and never yield.
 %p
 
