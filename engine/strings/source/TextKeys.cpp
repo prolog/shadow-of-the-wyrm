@@ -126,6 +126,7 @@ const string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
 const string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
 const string TextKeys::DAMAGE_PIERCING   = "DAMAGE_PIERCING";
 const string TextKeys::DAMAGE_CHAOTIC    = "DAMAGE_CHAOTIC";
+const string TextKeys::DAMAGE_VORPAL     = "DAMAGE_VORPAL";
 const string TextKeys::DAMAGE_SLAYS      = "DAMAGE_SLAYS";
 
 const string TextKeys::ATTACK_DETAILS    = "ATTACK_DETAILS";

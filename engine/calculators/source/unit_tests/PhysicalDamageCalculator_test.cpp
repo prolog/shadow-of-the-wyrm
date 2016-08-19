@@ -9,7 +9,7 @@ CreaturePtr create_creature_with_weapon_and_15_str()
 
   ItemPtr weapon_item = ItemPtr(new MeleeWeapon());
 
-  Damage damage(3,4,2,DamageType::DAMAGE_TYPE_SLASH, {}, false, false, false, 0, {});
+  Damage damage(3,4,2,DamageType::DAMAGE_TYPE_SLASH, {}, false, false, false, false, 0, {});
 
   WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(weapon_item);
   weapon->set_damage(damage);

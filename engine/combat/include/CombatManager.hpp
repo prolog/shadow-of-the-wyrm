@@ -29,6 +29,9 @@ class CombatManager
   protected:
     // Apply a particular status effect.
     void apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus);
+
+    // Handle vorpal as necessary
+    void handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt);
     
     // Functions to handle the attacking mechanics and add messages as necessary.
     bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type);
