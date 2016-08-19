@@ -34,12 +34,17 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
 - Gnomes now start with Literacy, as do Adventurers.
 
+- Added a new vorpal flag.  This gives a 3% chance to insta-kill
+  creatures that are not incorporeal.  Added the flag to a new artifact,
+  the vorpal blade.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: gorgon, skyborn, shrine hag.
 
 - New artifacts: Heart of Heaven, Heart of the World, Heart of the World
-  Beyond, holy sword "Heart's Fury", unholy dagger "Heart's Needle".
+  Beyond, holy sword "Heart's Fury", unholy dagger "Heart's Needle",
+  vorpal blade.
 
 - Bug fixes:
 
@@ -55,6 +60,9 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
   - Staircase generation in caverns was incredibly broken (4chan /rlg).
     Down staircases in sewers were also broken.
+
+  - There was an unterminated parenthesis in damage output when the
+    damage didn't have any slays.
 
 Shadow of the Wyrm v0.5.3 "Calvi"
 - Version declared June 4, 2016.  Version finalized July 2, 2016.

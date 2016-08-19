@@ -1,5 +1,5 @@
 Me:
-- Set depths appropriately for caverns.
+- vorpal bug
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
@@ -14,8 +14,6 @@ Me:
   melee weapon groups, and ranged ammunition.  Remove all the individual
   branded-like items from the game configuration.
 - Implement a draining flag (50% chance return 1/4 damage to attacker).
-- Implement a vorpal flag (small chance, ~5% to insta-kill on successful
-  hit, with special message).
 - Ensure item describers properly handle the brads, plus draining/vorpal/
   piercing/chaotic.
 - Special rooms: beer hall, magical workshop.

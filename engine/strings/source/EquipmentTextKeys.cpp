@@ -119,6 +119,11 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
     dmg_flags.push_back(TextKeys::DAMAGE_CHAOTIC);
   }
 
+  if (damage.get_vorpal())
+  {
+    dmg_flags.push_back(TextKeys::DAMAGE_VORPAL);
+  }
+
   if (damage.get_piercing())
   {
     dmg_flags.push_back(TextKeys::DAMAGE_PIERCING);
@@ -175,9 +180,9 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
           ss << ", ";
         }
       }
-
-      ss << ")";
     }
+
+    ss << ")";
   }
 
   boost::replace_first(synopsis, "%s", ss.str());

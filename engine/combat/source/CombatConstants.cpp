@@ -12,6 +12,7 @@ const int CombatConstants::AUTOMATIC_HIT_THRESHOLD = 98;
 const int CombatConstants::INITIAL_THREAT_RATING = 100;
 const int CombatConstants::THREAT_RATING_INCREMENT = 25;
 const double CombatConstants::RACE_SLAY_MULTIPLIER = 2.0;
+const int CombatConstants::PCT_CHANCE_VORPAL = 3;
 
 CombatConstants::CombatConstants()
 {

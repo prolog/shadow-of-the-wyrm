@@ -31,6 +31,7 @@
 				<Artifact>helm_of_the_heavens</Artifact>
 				<Artifact>heavens_blade</Artifact>
 				<Artifact>akos_akari</Artifact>
+				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>archangel</Summon>
@@ -70,6 +71,7 @@
 				<Artifact>alaric_mail_shirt</Artifact>
 				<Artifact>helm_of_the_heavens</Artifact>
 				<Artifact>battle_armour_aurelion</Artifact>
+				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>titan</Summon>
@@ -109,6 +111,7 @@
 				<Artifact>helm_of_the_heavens</Artifact>
 				<Artifact>radiance</Artifact>
 				<Artifact>sword_fairy_king</Artifact>
+				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>air_elemental</Summon>
@@ -149,6 +152,7 @@
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>creators_might</Artifact>
 				<Artifact>sword_fairy_king</Artifact>
+				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>earth_elemental</Summon>
@@ -187,6 +191,7 @@
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>earthcleaver</Artifact>
 				<Artifact>asturias</Artifact>
+				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>fire_elemental</Summon>
@@ -228,6 +233,7 @@
 				<Artifact>akos_akari</Artifact>
 				<Artifact>whisperwind</Artifact>
 				<Artifact>fatebender</Artifact>
+				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>air_elemental</Summon>
@@ -268,6 +274,7 @@
 				<Artifact>akkar</Artifact>
 				<Artifact>akos_akari</Artifact>
 				<Artifact>whisperwind</Artifact>
+				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>water_elemental</Summon>
@@ -304,6 +311,7 @@
 				<Artifact>crown_of_tyranny</Artifact>
 				<Artifact>stone_club_urgol</Artifact>
 				<Artifact>akkar</Artifact>
+				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>fell_lord</Summon>
@@ -339,6 +347,7 @@
 				<Artifact>crown_of_tyranny</Artifact>
 				<Artifact>apocalypse</Artifact>
 				<Artifact>akkar</Artifact>
+				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>tentacled_horror</Summon>
@@ -26439,6 +26448,30 @@
 						<Slay>_undead</Slay>
 						<Slay>_demon</Slay>
 					</Slays>
+				</Damage>
+			</Weapon>
+			<Weapon id="vorpal_blade">
+				<DescriptionSID>VORPAL_BLADE_SID</DescriptionSID>
+				<UsageDescriptionSID>VORPAL_BLADE_USAGE_SID</UsageDescriptionSID>
+				<Value>2100</Value>
+				<Weight>
+					<Pounds>7</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.20</Slash>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>3</Speed>
+				<Damage vorpal="1">
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="whisperwind">
