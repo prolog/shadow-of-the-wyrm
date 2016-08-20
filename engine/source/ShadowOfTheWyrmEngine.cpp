@@ -223,6 +223,12 @@ bool ShadowOfTheWyrmEngine::process_game_option(const string& game_option)
 // Process a new game command, random character
 bool ShadowOfTheWyrmEngine::process_new_game_random()
 {
+  if (!is_new_game_allowed())
+  {
+    // Add an alert for the user.
+    return false;
+  }
+
   CharacterCreationDetails ccd;
 
   // Random sex
@@ -252,6 +258,12 @@ bool ShadowOfTheWyrmEngine::process_new_game_random()
 // Process a new game command
 bool ShadowOfTheWyrmEngine::process_new_game()
 {
+  if (!is_new_game_allowed())
+  {
+    // Add an alert for the user.
+    return false;
+  }
+
   Game& game = Game::instance();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
     
@@ -502,4 +514,36 @@ bool ShadowOfTheWyrmEngine::process_load_game()
 bool ShadowOfTheWyrmEngine::process_exit_game()
 {
   return true;
+}
+
+// Check to see if a new game is allowed.
+// In practical terms, check to see if the user has hit the maximum number
+// of characters that can be created per user.
+bool ShadowOfTheWyrmEngine::is_new_game_allowed()
+{
+  bool allowed = true;
+  IMessageManager& manager = MessageManagerFactory::instance();
+  Game& game = Game::instance();
+  string max_chars = game.get_settings_ref().get_setting("max_characters_per_user");
+  int num_allowed = -1;
+
+  if (!max_chars.empty())
+  {
+    num_allowed = String::to_int(max_chars);
+  }
+
+  if (num_allowed > -1)
+  {
+    // Get a list of savefiles for the user, and then see if the limit's been
+    // reached, adding an alert if it has.
+    vector<pair<string, string>> savefile_details = Serialization::get_save_file_names();
+
+    if (savefile_details.size() >= static_cast<size_t>(num_allowed))
+    {
+      manager.alert(StringTable::get(TextKeys::NO_NEW_CHARACTERS));
+      allowed = false;
+    }
+  }
+
+  return allowed;
 }

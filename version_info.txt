@@ -38,6 +38,10 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   creatures that are not incorporeal.  Added the flag to a new artifact,
   the vorpal blade.
 
+- Added a flag to allow administrators to set a maximum number of
+  savefiles per user.  This is intended to limit resource usage on
+  multi-user systems.  The flag is -1 (unlimited characters) by default.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: gorgon, skyborn, shrine hag, vorpal bug.
