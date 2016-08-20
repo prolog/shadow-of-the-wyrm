@@ -1,5 +1,5 @@
 Me:
-- vorpal bug
+- Setting to limit the number of characters that each user can have.
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
