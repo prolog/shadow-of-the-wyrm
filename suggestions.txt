@@ -5,7 +5,6 @@ Me:
   properly identify on use.
 - Update ResistancesTranslator to make use of Resistance::get_value_str()
 - Test clearing all shrines
-- Shrine entry messages.
 - Implement proper branded weapons.  These should allow for any "magical"
   damage type (heat through lightning in the damage enum) to be the weapon
   damage instead.  Should also allow for chaotic or piercing flags.  Gives
