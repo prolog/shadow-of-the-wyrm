@@ -1,4 +1,6 @@
 Me:
+- Adjust ammunition stacks so that lighter items (arrows) have larger
+  stacks than larger items (clubs, javelins, and so on).
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
@@ -26,7 +28,6 @@ Me:
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)
-- Evil story arc
 - Linux support (get working using Fedora/Debian in VirtualBox).
 - Investigate targetting not staying properly some (all?) of the time.
 - General performance improvements.
@@ -42,8 +43,6 @@ Me:
   items can be done and dumped to disk.
 - Capacities on barrels, so that they don't contain an infinite amount
   of booze.
-- Adjust ammunition stacks so that lighter items (arrows) have larger
-  stacks than larger items (clubs, javelins, and so on).
 - Define all monsters as good/neutral/evil
 - Monsters should have a chance of being generated friendly when same
   alignment.

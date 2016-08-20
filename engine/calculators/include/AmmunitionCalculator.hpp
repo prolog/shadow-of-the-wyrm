@@ -2,9 +2,10 @@
 #include "Creature.hpp"
 #include "Item.hpp"
 
-class AmmunitionSurvivalCalculator
+class AmmunitionCalculator
 {
   public:
+    // Does the ammunition survive after use?
     bool survives(CreaturePtr creature, ItemPtr ammunition);
     
   protected:

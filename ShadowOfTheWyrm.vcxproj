@@ -364,7 +364,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\actions\read\include\TextReadStrategy.hpp" />
     <ClInclude Include="engine\calculators\include\AlcoholCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\AlignmentCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\AmmunitionSurvivalCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\AmmunitionCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\APRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BlindedCalculator.hpp" />
@@ -1290,6 +1290,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\AmmunitionCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DisarmTrapsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
@@ -1619,7 +1620,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\actions\source\WeaponInfoAction.cpp" />
     <ClCompile Include="engine\calculators\source\AlcoholCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\AlignmentCalculator.cpp" />
-    <ClCompile Include="engine\calculators\source\AmmunitionSurvivalCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\APRegenerationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ArcanaPointsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\BlindedCalculator.cpp" />
