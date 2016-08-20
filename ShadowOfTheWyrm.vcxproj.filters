@@ -1275,9 +1275,6 @@
     <ClInclude Include="engine\actions\include\TileMovementConfirmation.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\AmmunitionSurvivalCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
@@ -3792,6 +3789,9 @@
     <ClInclude Include="engine\generators\include\ShrineGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\AmmunitionCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4222,9 +4222,6 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\TileMovementConfirmation.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\AmmunitionSurvivalCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\ArcanaPointsCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
@@ -7420,6 +7417,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\ShrineGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\AmmunitionCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
