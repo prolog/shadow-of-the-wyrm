@@ -1,5 +1,6 @@
 #include "RemoveStatusEffect.hpp"
 #include "CleansingEffect.hpp"
+#include "DetectTrapsEffect.hpp"
 #include "EffectFactory.hpp"
 #include "EtherEffect.hpp"
 #include "EnchantingEffect.hpp"
@@ -30,7 +31,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m, map<string, string> properties, string spell_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(22), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(23), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -104,6 +105,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m,
       break;
     case EffectType::EFFECT_TYPE_UNCURSING:
       effect = std::make_shared<UncursingEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_DETECT_TRAPS:
+      effect = std::make_shared<DetectTrapsEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:

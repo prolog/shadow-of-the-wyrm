@@ -1493,11 +1493,12 @@
 				Timewalk = 19
 				Cleansing = 20
 				Uncursing = 21
+				Detect Traps = 22
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="21"/>
+		<xs:maxInclusive value="22"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

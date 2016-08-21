@@ -629,6 +629,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
     <ClInclude Include="engine\effects\include\CleansingEffect.hpp" />
+    <ClInclude Include="engine\effects\include\DetectTrapsEffect.hpp" />
     <ClInclude Include="engine\effects\include\EnchantingEffect.hpp" />
     <ClInclude Include="engine\effects\include\FlyingEffect.hpp" />
     <ClInclude Include="engine\effects\include\GainAttributesEffect.hpp" />
@@ -1426,6 +1427,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\decision_strategies\magic\source\NullNPCMagicDecision.cpp" />
     <ClCompile Include="engine\decision_strategies\source\DecisionStrategyProperties.cpp" />
     <ClCompile Include="engine\effects\source\CleansingEffect.cpp" />
+    <ClCompile Include="engine\effects\source\DetectTrapsEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
