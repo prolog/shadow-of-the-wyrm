@@ -26,7 +26,7 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
 - More random name combinations.
 
-- Skinning and tanning are now slightly less easy-mode, though stlil very
+- Skinning and tanning are now slightly less easy-mode, though still very
   powerful with high skinning/tanning/dungeoneering.
 
 - Tanning now always adds at least 0.01 points of resistance when the
@@ -41,6 +41,9 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 - Added a flag to allow administrators to set a maximum number of
   savefiles per user.  This is intended to limit resource usage on
   multi-user systems.  The flag is -1 (unlimited characters) by default.
+
+- The size of a stack of ammunition is now based on how on the weight of
+  the individual projectiles.
 
 - More stanzas for "Tel and Floridel".
 
