@@ -1,4 +1,5 @@
 #include <iterator>
+#include "AmmunitionCalculator.hpp"
 #include "Game.hpp"
 #include "ItemGenerationManager.hpp"
 #include "ItemManager.hpp"
@@ -78,6 +79,7 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
 {
   ItemPtr generated_item;
   Game& game = Game::instance();
+  AmmunitionCalculator ac;
 
   // The map already contains appropriate items filtered by danger level,
   // so pick one at random.
@@ -117,7 +119,8 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
     }
     else if (type == ItemType::ITEM_TYPE_AMMUNITION)
     {
-      generated_item->set_quantity(RNG::range(12, 50));
+      pair<int, int> stack_size = ac.calculate_stack_size(generated_item);
+      generated_item->set_quantity(RNG::range(stack_size.first, stack_size.second));
     }
 
     if (enchant_points > 0)

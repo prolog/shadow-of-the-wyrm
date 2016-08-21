@@ -1,6 +1,4 @@
 Me:
-- Adjust ammunition stacks so that lighter items (arrows) have larger
-  stacks than larger items (clubs, javelins, and so on).
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
@@ -16,7 +14,7 @@ Me:
 - Implement a draining flag (50% chance return 1/4 damage to attacker).
 - Ensure item describers properly handle the brads, plus draining/vorpal/
   piercing/chaotic.
-- Special rooms: beer hall, magical workshop.
+- Special rooms: beer hall, magical workshop, armory.
 - Initial Music skill implementation.
 - Initial Disarm Traps skill implementation.
 - You should be able to ride the bucket down to the bottom of wells.

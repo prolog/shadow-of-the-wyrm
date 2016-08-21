@@ -1,5 +1,14 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Weight, constructors)
+{
+  Weight w(10, 10);
+  Weight w2(1672);
+
+  EXPECT_EQ(170, w.get_weight());
+  EXPECT_EQ(1672, w2.get_weight());
+}
+
 TEST(SW_World_Weight, operator_eq)
 {
   Weight w1(10);

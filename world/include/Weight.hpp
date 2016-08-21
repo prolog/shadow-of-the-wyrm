@@ -7,8 +7,10 @@ class Weight : public ISerializable
 {
   public:
     Weight();
+    Weight(const uint new_pounds, const uint new_ounces);
     Weight(const uint new_ounces);
     ~Weight();
+
     bool operator==(const Weight& weight) const;
     bool operator>(const Weight& weight) const;
     bool operator<(const Weight& weight) const;
