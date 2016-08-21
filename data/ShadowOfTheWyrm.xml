@@ -2968,6 +2968,7 @@
 						<Random>
 							<ID>aim_spellbook</ID>
 							<ID>haze_spellbook</ID>
+							<ID>detect_traps_spellbook</ID>
 						</Random>
 					</InitialItem>
 					<InitialItem>
@@ -23307,6 +23308,19 @@
 			<Shape>0</Shape>
 			<Effect>21</Effect>
 		</Spell>
+		<Spell id="m_14_detect_traps">
+			<NameSID>DETECT_TRAPS_NAME_SID</NameSID>
+			<PlayerCastMessageSID>DETECT_TRAPS_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>DETECT_TRAPS_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>5</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>22</Effect>
+		</Spell>
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -29780,6 +29794,24 @@
 				<Rarity>1</Rarity>
 				<Effect>21</Effect>
 			</Scroll>
+			<Scroll id="detect_traps_scroll">
+				<DescriptionSID>DETECT_TRAPS_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DETECT_TRAPS_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DETECT_TRAPS_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DETECT_TRAPS_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>75</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>22</Effect>
+			</Scroll>
 		</Scrolls>
 		<Currencies>
 			<Currency id="_currency">
@@ -31359,6 +31391,25 @@
 				<Rarity>1</Rarity>
 				<SpellID>m_13_uncurse</SpellID>
 				<Difficulty>60</Difficulty>
+			</Spellbook>
+			<Spellbook id="detect_traps_spellbook">
+				<DescriptionSID>DETECT_TRAPS_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DETECT_TRAPS_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DETECT_TRAPS_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DETECT_TRAPS_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>100</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_14_detect_traps</SpellID>
+				<Difficulty>50</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
