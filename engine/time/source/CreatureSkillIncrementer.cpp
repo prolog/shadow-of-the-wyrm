@@ -49,13 +49,13 @@ bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, S
   bool trained_skill = false;
 
   int skill_threshold = skill->get_threshold();
-  int skill_marks = skill->get_marks();
+  Marks& marks = skill->get_marks();
   int skill_value = skill->get_value();
 
   // Skills are automatically learned when the number of marks is greater than
   // the threshold.  When the marks are less than that, there is a percent
   // chance applied.
-  while ((skill_marks > skill_threshold) || (RNG::percent_chance(skill_marks)))
+  while ((marks.get_value() > skill_threshold) || (RNG::percent_chance(marks.get_value())))
   {
     if ((skill_value == 0 && (skill->can_train_from_unlearned())) || (skill_value > 0))
     {
@@ -78,16 +78,17 @@ bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, S
     // at 0 points).
     if (skill_threshold == 0)
     {
-      skill_marks = 0;
+      marks.set_value(0);
     }
     else
     {
+      int skill_marks = marks.get_value();
       skill_marks -= std::max(skill_threshold, 1);
+      marks.set_value(skill_marks);
     }
 
-    skill_marks = std::max(skill_marks, 0);
+    marks.set_value(std::max(marks.get_value(), 0));
   }
 
-  skill->set_marks(skill_marks);
   return trained_skill;
 }

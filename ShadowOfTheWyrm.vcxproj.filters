@@ -3795,6 +3795,12 @@
     <ClInclude Include="engine\effects\include\DetectTrapsEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureStatsIncrementer.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Marks.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7426,6 +7432,15 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\DetectTrapsEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureStatsIncrementer.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Marks.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Marks_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

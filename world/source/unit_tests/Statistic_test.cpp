@@ -12,6 +12,8 @@ TEST(SW_World_Statistic, Lowest)
 {
   Statistic stat(30);
   stat.set_current(33);
+  Marks m(32);
+  stat.set_marks(m);
 
   EXPECT_EQ(30, stat.get_lowest());
 
@@ -19,6 +21,7 @@ TEST(SW_World_Statistic, Lowest)
   stat2.set_current(15);
 
   EXPECT_EQ(15, stat2.get_lowest());
+  EXPECT_EQ(32, stat2.get_marks().get_value());
 }
 
 TEST(SW_World_Statistic, IsFull)

@@ -1,5 +1,6 @@
 #pragma once
 #include "ISerializable.hpp"
+#include "Marks.hpp"
 
 class Statistic : public ISerializable
 {
@@ -21,12 +22,17 @@ class Statistic : public ISerializable
 
     bool get_full() const;
 
+    void set_marks(const Marks& new_marks);
+    Marks get_marks() const;
+    Marks& get_marks_ref();
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
 	protected:
 		int base;
 		int current;
+    Marks marks;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

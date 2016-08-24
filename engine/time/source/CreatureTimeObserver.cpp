@@ -4,6 +4,7 @@
 #include "CreatureHungerTimer.hpp"
 #include "CreaturePietyRegeneration.hpp"
 #include "CreatureSkillIncrementer.hpp"
+#include "CreatureStatsIncrementer.hpp"
 #include "CreatureModifiers.hpp"
 #include "CreatureStatuses.hpp"
 #include "CreatureTimeObserver.hpp"
@@ -37,6 +38,8 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   ICreatureRegenerationPtr move_accum   = std::make_shared<MovementAccumulator>();
   // Do things based on current movement accumulations - drown, fall from mountains, etc.
   ICreatureRegenerationPtr move_checkr  = std::make_shared<MovementAccumulationChecker>();
+  // Every two days, increment each creature's stats if they've been exercised enough.
+  ICreatureRegenerationPtr stats_checkr = std::make_shared<CreatureStatsIncrementer>(2880);
   // Every day, increment the creature's skills if they have been used enough.
   ICreatureRegenerationPtr skill_checkr = std::make_shared<CreatureSkillIncrementer>(1440);
   // Every minute, check to see if the creature has modifiers that should be removed.
@@ -53,6 +56,7 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   regen.push_back(piety_regen );
   regen.push_back(move_accum  );
   regen.push_back(move_checkr );
+  regen.push_back(stats_checkr);
   regen.push_back(skill_checkr);
   regen.push_back(mod_chkr    );
   regen.push_back(hungr_checkr);
