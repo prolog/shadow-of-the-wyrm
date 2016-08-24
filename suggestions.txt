@@ -1,4 +1,20 @@
 Me:
+- Stats unit tests failing
+- Need to retest training skills after the refactoring!
+- Work on training stats:
+  - Str: carrying heavy loads, kicking down doors, hitting with a heavy
+    melee or ranged weapon.
+  - Dex: hitting with a light melee/ranged weapon.
+  - Agi: being missed by an attack/trap.
+  - Hea: afflicted by a status ailment, having a status ailment wear off,
+    chance after regenerating HP.
+  - Int: learning/casting spell of the appropriate sphere, learning a
+    previously unknown effect, chance after regenerating AP, reading a
+    scroll.
+  - Will: learning/casting spell of the appropriate sphere, gaining spell
+    focus, zapping a wand, quaffing a potion.
+  - Cha: requesting a quest, completing a quest, chance after talking with
+    a creature, periodic chance when wearing rings or amulets.
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
@@ -48,9 +64,10 @@ Me:
   and so on properly check slays.
 - Discover traps on search?  Passive search at the end of each turn for
   traps?
-- Oracle spell: trap detection
-- Scroll of trap detection
-- Create the spell effect, etc.
+
+For v1:
+- Item generation needs a serious overhaul!  Many items are rarely, if 
+  ever, generated.
 - Revisit creature generation algorithm.
 
 Sean McKeague:

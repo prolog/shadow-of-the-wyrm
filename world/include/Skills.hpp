@@ -3,6 +3,7 @@
 #include <string>
 #include <memory>
 #include "ISerializable.hpp"
+#include "Marks.hpp"
 #include "SkillTypes.hpp"
 #include "StringTable.hpp"
 
@@ -26,9 +27,9 @@ class Skill : public ISerializable
     bool is_learned() const;
     virtual bool can_train_from_unlearned() const;
     
-    virtual void set_marks(const int new_marks);
-    virtual int  get_marks() const;
-    virtual void increment_marks();
+    virtual void set_marks(const Marks& marks);
+    virtual Marks get_marks() const;
+    virtual Marks& get_marks_ref();
 
     virtual void set_threshold(const int new_threshold);
     virtual void set_threshold_for_value(const int skill_value);
@@ -51,8 +52,8 @@ class Skill : public ISerializable
     virtual Skill* clone() = 0;
 
   protected:
+    Marks marks;
     int value;
-    int marks;
     int threshold;
     SkillCategory category;
     std::string skill_name_sid;

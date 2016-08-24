@@ -473,12 +473,22 @@ Statistic Creature::get_strength() const
   return strength;
 }
 
+Statistic& Creature::get_strength_ref()
+{
+  return strength;
+}
+
 void Creature::set_dexterity(const Statistic& new_dexterity)
 {
   dexterity = new_dexterity;
 }
 
 Statistic Creature::get_dexterity() const
+{
+  return dexterity;
+}
+
+Statistic& Creature::get_dexterity_ref()
 {
   return dexterity;
 }
@@ -493,12 +503,22 @@ Statistic Creature::get_agility() const
   return agility;
 }
 
+Statistic& Creature::get_agility_ref()
+{
+  return agility;
+}
+
 void Creature::set_health(const Statistic& new_health)
 {
   health = new_health;
 }
 
 Statistic Creature::get_health() const
+{
+  return health;
+}
+
+Statistic& Creature::get_health_ref()
 {
   return health;
 }
@@ -513,6 +533,11 @@ Statistic Creature::get_intelligence() const
   return intelligence;
 }
 
+Statistic& Creature::get_intelligence_ref()
+{
+  return intelligence;
+}
+
 void Creature::set_willpower(const Statistic& new_willpower)
 {
   willpower = new_willpower;
@@ -523,12 +548,22 @@ Statistic Creature::get_willpower() const
   return willpower;
 }
 
+Statistic& Creature::get_willpower_ref()
+{
+  return willpower;
+}
+
 void Creature::set_charisma(const Statistic& new_charisma)
 {
   charisma = new_charisma;
 }
 
 Statistic Creature::get_charisma() const
+{
+  return charisma;
+}
+
+Statistic& Creature::get_charisma_ref()
 {
   return charisma;
 }
@@ -1180,7 +1215,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 936, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1080, "Unexpected sizeof Creature.");
     #else
     // Release
     static_assert(sizeof(*this) == 840, "Unexpected sizeof Creature.");
