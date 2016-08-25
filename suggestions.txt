@@ -1,6 +1,4 @@
 Me:
-- Stats unit tests failing
-- Need to retest training skills after the refactoring!
 - Work on training stats:
   - Str: carrying heavy loads, kicking down doors, hitting with a heavy
     melee or ranged weapon.
