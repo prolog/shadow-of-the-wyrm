@@ -3801,6 +3801,9 @@
     <ClInclude Include="world\include\Marks.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\StatisticsMarker.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7441,6 +7444,12 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Marks_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\StatisticsMarker.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\StatisticsMarker_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
