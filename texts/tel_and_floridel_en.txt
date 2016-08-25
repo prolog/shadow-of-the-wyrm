@@ -403,4 +403,13 @@ To pass unseen through woodlands, heath and fens. %b
 To find the ambush points within a weald. %b
 To come like hidden death, to bite and never yield.
 %p
-
+If only it were practice, not the way %b
+that men approach the world.  That in those halls %b
+the swords were show, and never used to prey %b
+on weaker things: the frightened peasant mauled %b
+and left to die, the entrails in his hands %b
+a sickly mess, no way to keep them in; %b
+the folk whose fault is just to work the land %b
+in places that are coveted by kings. %b
+For where there's want, it's sure the sword is what they'll bring.
+%p
