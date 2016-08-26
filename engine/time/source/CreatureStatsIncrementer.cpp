@@ -1,8 +1,11 @@
 #include "CreatureStatsIncrementer.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "StatisticTextKeys.hpp"
 
 using namespace std;
+
+const int CreatureStatsIncrementer::PCT_CHANCE_INCREMENT_STATISTIC = 70;
 
 CreatureStatsIncrementer::CreatureStatsIncrementer()
 : ICreatureRegeneration(),
@@ -49,15 +52,19 @@ void CreatureStatsIncrementer::increment_stat_if_necessary(pair<Statistic&, stri
   bool incremented_stat = false;
 
   int marks_cur = marks.get_value();
-  while (marks_cur >= stat.get_base())
+
+  if (marks_cur >= stat.get_base() && RNG::percent_chance(PCT_CHANCE_INCREMENT_STATISTIC))
   {
-    marks_cur -= stat.get_base();
+    while (marks_cur >= stat.get_base())
+    {
+      marks_cur -= stat.get_base();
 
-    marks.set_value(marks_cur);
-    stat.set_base(stat.get_base() + 1);
-    stat.set_current(stat.get_current() + 1);
+      marks.set_value(marks_cur);
+      stat.set_base(stat.get_base() + 1);
+      stat.set_current(stat.get_current() + 1);
 
-    incremented_stat = true;
+      incremented_stat = true;
+    }
   }
 
   if (incremented_stat)

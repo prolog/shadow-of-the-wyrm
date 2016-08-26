@@ -51,6 +51,15 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   Oracles.  The detect traps spellbook is a potential starting spellbook 
   for Oracles.
 
+- Added support for marking statistics, and gaining statistics.
+  Statistics can now be marked in certain circumstances (e.g., agility
+  is marked when dodging).  Every two days, each creature's statistics
+  are checked, and if there are any statistics whose marks equal the base
+  value of the statistic, there is a chance (~70%) that the stat will
+  increase.  Statistics are currently marked in the following cases:
+
+  - Agility: when an attack is avoided.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: gorgon, skyborn, shrine hag, vorpal bug.
