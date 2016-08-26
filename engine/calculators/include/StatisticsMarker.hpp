@@ -1,5 +1,5 @@
 #pragma once
-#include "Statistic.hpp"
+#include "Creature.hpp"
 
 class StatisticsMarker
 {
@@ -7,6 +7,14 @@ class StatisticsMarker
     // Marks a statistic with a declining probability.  The probability
     // is based off the statistic's base value.
     bool mark_statistic(Statistic& stat);
+
+    bool mark_strength(CreaturePtr creature);
+    bool mark_dexterity(CreaturePtr creature);
+    bool mark_agility(CreaturePtr creature);
+    bool mark_health(CreaturePtr creature);
+    bool mark_intelligence(CreaturePtr creature);
+    bool mark_willpower(CreaturePtr creature);
+    bool mark_charisma(CreaturePtr creature);
 
   protected:
     friend class SW_Engine_Calculators_StatisticsMarkerFixture;
