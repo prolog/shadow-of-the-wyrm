@@ -25,6 +25,7 @@
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
 #include "SpeedCalculatorFactory.hpp"
+#include "StatisticsMarker.hpp"
 #include "TertiaryUnarmedCalculator.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -437,6 +438,9 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
 
 bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
+  StatisticsMarker sm;
+  sm.mark_agility(attacked_creature);
+
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
   add_combat_message(attacking_creature, attacked_creature, combat_message);
@@ -446,6 +450,9 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 
 bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
+  StatisticsMarker sm;
+  sm.mark_agility(attacked_creature);
+
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_close_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
   add_combat_message(attacking_creature, attacked_creature, combat_message);

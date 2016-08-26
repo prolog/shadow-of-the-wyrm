@@ -14,4 +14,5 @@ class CreatureStatsIncrementer : public ICreatureRegeneration
     void increment_stat_if_necessary(std::pair<Statistic&, std::string>& stat_pair, IMessageManager& manager);
 
     int minutes_interval;
+    static const int PCT_CHANCE_INCREMENT_STATISTIC;
 };
