@@ -31,6 +31,90 @@ bool StatisticsMarker::mark_statistic(Statistic& stat)
   return marked;
 }
 
+bool StatisticsMarker::mark_strength(CreaturePtr creature)
+{
+  bool marked = false;
+
+  if (creature != nullptr)
+  {
+    marked = mark_statistic(creature->get_strength_ref());
+  }
+
+  return marked;
+}
+
+bool StatisticsMarker::mark_dexterity(CreaturePtr creature)
+{
+  bool marked = false;
+
+  if (creature != nullptr)
+  {
+    marked = mark_statistic(creature->get_dexterity_ref());
+  }
+
+  return marked;
+}
+
+bool StatisticsMarker::mark_agility(CreaturePtr creature)
+{
+  bool marked = false;
+
+  if (creature != nullptr)
+  {
+    marked = mark_statistic(creature->get_agility_ref());
+  }
+
+  return marked;
+}
+
+bool StatisticsMarker::mark_health(CreaturePtr creature)
+{
+  bool marked = false;
+
+  if (creature != nullptr)
+  {
+    marked = mark_statistic(creature->get_health_ref());
+  }
+
+  return marked;
+}
+
+bool StatisticsMarker::mark_intelligence(CreaturePtr creature)
+{
+  bool marked = false;
+
+  if (creature != nullptr)
+  {
+    marked = mark_statistic(creature->get_intelligence_ref());
+  }
+
+  return marked;
+}
+
+bool StatisticsMarker::mark_willpower(CreaturePtr creature)
+{
+  bool marked = false;
+
+  if (creature != nullptr)
+  {
+    marked = mark_statistic(creature->get_willpower_ref());
+  }
+
+  return marked;
+}
+
+bool StatisticsMarker::mark_charisma(CreaturePtr creature)
+{
+  bool marked = false;
+
+  if (creature != nullptr)
+  {
+    marked = mark_statistic(creature->get_charisma_ref());
+  }
+
+  return marked;
+}
+
 // Calculates the y in the x-in-y chance that a stat is marked.
 //
 // The probability is 1 / (2 ^ (stat_base_val / 10)))
