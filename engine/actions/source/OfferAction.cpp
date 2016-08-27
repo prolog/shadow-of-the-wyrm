@@ -100,6 +100,10 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
 
         // Now that it's been dealt with, remove it from the inventory.
         creature->get_inventory()->remove(item_to_sac->get_id());
+
+        // Offering on an altar is admitting the existence of a deity, so break
+        // the agnostic conduct.
+        creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_AGNOSTIC);
       }
     }
   }

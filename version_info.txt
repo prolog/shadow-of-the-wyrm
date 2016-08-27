@@ -60,6 +60,10 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
   - Agility: when an attack is avoided.
 
+  - Charisma: when quests are requested and completed.
+
+- Sacrificing on an altar now breaks the agnostic conduct.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: gorgon, skyborn, shrine hag, vorpal bug.
