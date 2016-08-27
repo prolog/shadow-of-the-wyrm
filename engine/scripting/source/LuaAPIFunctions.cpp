@@ -31,6 +31,7 @@
 #include "RNG.hpp"
 #include "SkillManager.hpp"
 #include "SpellcastingAction.hpp"
+#include "StatisticsMarker.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
@@ -173,6 +174,13 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "incr_int", incr_int);
   lua_register(L, "incr_wil", incr_wil);
   lua_register(L, "incr_cha", incr_cha);
+  lua_register(L, "mark_str", mark_str);
+  lua_register(L, "mark_dex", mark_dex);
+  lua_register(L, "mark_agi", mark_agi);
+  lua_register(L, "mark_hea", mark_hea);
+  lua_register(L, "mark_int", mark_int);
+  lua_register(L, "mark_wil", mark_wil);
+  lua_register(L, "mark_cha", mark_cha);
   lua_register(L, "map_set_custom_map_id", map_set_custom_map_id);
   lua_register(L, "map_set_edesc", map_set_edesc);
   lua_register(L, "map_set_additional_property", map_set_additional_property);
@@ -1586,6 +1594,181 @@ int incr_cha(lua_State* ls)
   }
 
   return 0;
+}
+
+int mark_str(lua_State* ls)
+{
+  bool marked_str = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_str = sm.mark_strength(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_str");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_str);
+  return 1;
+}
+
+int mark_dex(lua_State* ls)
+{
+  bool marked_dex = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_dex = sm.mark_dexterity(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_dex");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_dex);
+  return 1;
+}
+
+int mark_agi(lua_State* ls)
+{
+  bool marked_agi = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_agi = sm.mark_agility(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_agi");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_agi);
+  return 1;
+}
+
+int mark_hea(lua_State* ls)
+{
+  bool marked_hea = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_hea = sm.mark_health(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_hea");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_hea);
+  return 1;
+}
+
+int mark_int(lua_State* ls)
+{
+  bool marked_int = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_int = sm.mark_intelligence(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_int");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_int);
+  return 1;
+}
+
+int mark_wil(lua_State* ls)
+{
+  bool marked_wil = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_wil = sm.mark_willpower(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_wil");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_wil);
+  return 1;
+}
+
+int mark_cha(lua_State* ls)
+{
+  bool marked_cha = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_cha = sm.mark_charisma(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_cha");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_cha);
+  return 1;
 }
 
 // Set a custom map id into the given map id at the given row and col.
