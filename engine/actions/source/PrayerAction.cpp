@@ -6,6 +6,7 @@
 #include "MessageManagerFactory.hpp"
 #include "PrayerAction.hpp"
 #include "ReligionManager.hpp"
+#include "StatisticsMarker.hpp"
 
 using std::string;
 
@@ -90,7 +91,8 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   ClassPtr cur_class = cm.get_class(creature->get_class_id());
   float piety_cost_multiplier = cur_class->get_piety_cost_multiplier();
   int piety_cost = static_cast<int>(piety_loss * piety_cost_multiplier);
-  
+  int initial_piety = status.get_piety();
+
   status.decrement_piety(piety_cost);
   religion.set_deity_status(deity_id, status);
   
@@ -102,6 +104,13 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
       
     manager.add_new_message(prayer_message);
     manager.send();
+  }
+
+  // If in the deity's good books, praying can increase charisma.
+  if (initial_piety > 0)
+  {
+    StatisticsMarker sm;
+    sm.mark_charisma(creature);
   }
 }
 
