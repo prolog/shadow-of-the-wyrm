@@ -82,7 +82,14 @@ function Quest:execute()
     -- if the completion function has indicated this.
     if should_mark_complete == true then
       mark_quest_completed(self.quest_id)
+
+      -- Adventurers who complete lots of quest are kind of by definition
+      -- charismatic.
+      for i = 1, RNG_range(3, 6) do
+        mark_cha("player")
+      end 
     end
+
 
   -- Quest is in progress, condition is not met.
   elseif is_on_quest(self.quest_id) then
@@ -92,6 +99,11 @@ function Quest:execute()
   else
     add_new_quest(self.quest_id, self)
     self.quest_start_fn()
+    
+    -- Starting a quest gets the player a few marks in Charisma.
+    for i = 1, RNG_range(2,4) do
+      mark_cha("player")
+    end
   end
 
   return true
