@@ -760,14 +760,16 @@ void Creature::set_arcana_points(const Statistic& new_arcana_points)
   arcana_points = new_arcana_points;
 }
 
-void Creature::increment_arcana_points(const int amount)
+int Creature::increment_arcana_points(const int amount)
 {
   arcana_points.set_current(arcana_points.get_current() + amount);
+  return arcana_points.get_current();
 }
 
-void Creature::decrement_arcana_points(const int amount)
+int Creature::decrement_arcana_points(const int amount)
 {
   arcana_points.set_current(arcana_points.get_current() - amount);
+  return arcana_points.get_current();
 }
 
 Statistic Creature::get_arcana_points() const

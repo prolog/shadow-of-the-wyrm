@@ -34,6 +34,8 @@
 
 using namespace std;
 
+const int CombatManager::PCT_CHANCE_MARK_STATISTIC_ON_MISS = 15;
+
 CombatManager::CombatManager()
 {
 }
@@ -439,7 +441,11 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
 bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
   StatisticsMarker sm;
-  sm.mark_agility(attacked_creature);
+
+  if (RNG::percent_chance(PCT_CHANCE_MARK_STATISTIC_ON_MISS))
+  {
+    sm.mark_agility(attacked_creature);
+  }
 
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
@@ -451,6 +457,9 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
   StatisticsMarker sm;
+
+  // Close misses are considered misses that the creature narrowly avoided
+  // due to quick reflexes - always mark Agility.
   sm.mark_agility(attacked_creature);
 
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
