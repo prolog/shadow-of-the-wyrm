@@ -3,9 +3,7 @@ Me:
   - Str: carrying heavy loads, kicking down doors, hitting with a heavy
     melee or ranged weapon.
   - Dex: hitting with a light melee/ranged weapon.
-  - Agi: being missed by an attack/trap.
-  - Hea: afflicted by a status ailment, having a status ailment wear off,
-    chance after regenerating HP.
+  - Hea: when eating and not becoming full.
   - Int: learning/casting spell of the appropriate sphere, learning a
     previously unknown effect, chance after regenerating AP, reading a
     scroll.

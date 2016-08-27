@@ -187,8 +187,8 @@ class Creature : public ISerializable
     bool is_ap_full() const;
 
     void set_arcana_points(const Statistic& new_arcana_points);
-    void increment_arcana_points(int amount);
-    void decrement_arcana_points(int amount);
+    int increment_arcana_points(int amount);
+    int decrement_arcana_points(int amount);
     Statistic get_arcana_points() const;
 
 

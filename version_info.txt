@@ -58,9 +58,15 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   value of the statistic, there is a chance (~70%) that the stat will
   increase.  Statistics are currently marked in the following cases:
 
-  - Agility: when an attack is avoided.
+  - Health: when a particular status wears off or is cancelled, 
+    potentially when HP regenerates.
 
-  - Charisma: when quests are requested and completed.
+  - Agility: potentially when an attack is avoided.
+
+  - Willpower: potentially when AP regenerates.
+
+  - Charisma: when quests are requested and completed, when a sacrifice
+    is offered and accepted.
 
 - Sacrificing on an altar now breaks the agnostic conduct.
 
