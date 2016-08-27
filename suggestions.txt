@@ -9,8 +9,7 @@ Me:
     scroll.
   - Will: learning/casting spell of the appropriate sphere, gaining spell
     focus, zapping a wand, quaffing a potion.
-  - Cha: requesting a quest, completing a quest, chance after talking with
-    a creature, periodic chance when wearing rings or amulets.
+  - Cha: periodic chance when wearing rings or amulets.
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.

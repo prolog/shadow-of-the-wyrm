@@ -66,7 +66,7 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   - Willpower: potentially when AP regenerates.
 
   - Charisma: when quests are requested and completed, when a sacrifice
-    is offered and accepted.
+    is offered and accepted, when praying while in good standing.
 
 - Sacrificing on an altar now breaks the agnostic conduct.
 
