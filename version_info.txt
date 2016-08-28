@@ -60,6 +60,8 @@ Shadow of the Wyrm v0.5.4 "Barrios"
 
   - Strength: when digging on a tile or through another tile.
 
+  - Dexterity: when dismantling a trap into useful components.
+
   - Agility: potentially when an attack is avoided.
 
   - Health: when a particular status wears off or is cancelled, 
