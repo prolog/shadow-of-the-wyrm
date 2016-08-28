@@ -14,6 +14,7 @@
 #include "SpellShapeFactory.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "EvokeAction.hpp"
+#include "StatisticsMarker.hpp"
 
 using namespace std;
 using std::dynamic_pointer_cast;
@@ -84,7 +85,8 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
 
   if (creature && wand)
   {
-    EffectPtr wand_effect = EffectFactory::create_effect(wand->get_effect_type());
+    EffectType et = wand->get_effect_type();
+    EffectPtr wand_effect = EffectFactory::create_effect(et);
     
     if (wand_effect)
     {
@@ -125,6 +127,13 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
 
         // If the wand was identified during use, name it.
         name_wand_if_identified(wand, wand_identified, wand_originally_identified, item_id);
+
+        // If this is a useful wand (effect type isn't null), train willpower.
+        if (et != EffectType::EFFECT_TYPE_NULL)
+        {
+          StatisticsMarker sm;
+          sm.mark_willpower(creature);
+        }
 
         action_cost_value = get_action_cost_value(creature);
       }
