@@ -5,6 +5,7 @@
 #include "DoorBreakageCalculator.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "StatisticsMarker.hpp"
 #include "StatusEffectFactory.hpp"
 
 using namespace std;
@@ -38,6 +39,11 @@ void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr
         if (RNG::percent_chance(break_chance))
         {
           break_down_door(creature, feature_tile);
+
+          // Breaking down doors with a solid kick is pretty impressive,
+          // and marks Strength.
+          StatisticsMarker sm;
+          sm.mark_strength(creature);
         }
         else
         {

@@ -1,14 +1,8 @@
 Me:
 - Work on training stats:
-  - Str: carrying heavy loads, kicking down doors, hitting with a heavy
-    melee or ranged weapon.
-  - Dex: hitting with a light melee/ranged weapon.
+  - Str: carrying heavy loads.
   - Hea: when eating and not becoming full.
-  - Int: learning/casting spell of the appropriate sphere, learning a
-    previously unknown effect, chance after regenerating AP, reading a
-    scroll.
-  - Will: learning/casting spell of the appropriate sphere, gaining spell
-    focus, zapping a wand, quaffing a potion.
+  - Int: learning a previously unknown effect.
   - Cha: periodic chance when wearing rings or amulets.
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
