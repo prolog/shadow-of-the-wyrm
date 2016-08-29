@@ -20,7 +20,7 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
     to_hit = creature->get_to_hit().get_current();
 
     int nwp_bonus = get_combat_or_archery_bonus(creature);
-    int dexterity = creature->get_dexterity().get_current();
+    int dexterity = get_statistic(creature).get_current();
     int level     = get_level_bonus(creature);
     int weapon    = get_weapon_bonus(creature);
     int modifier  = get_modifier_bonus(creature);
@@ -37,6 +37,11 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
   }
   
   return to_hit;
+}
+
+Statistic& LightMeleeAndRangedWeaponToHitCalculator::get_statistic(CreaturePtr creature)
+{
+  return creature->get_dexterity_ref();
 }
 
 int LightMeleeAndRangedWeaponToHitCalculator::get_combat_or_archery_bonus(CreaturePtr creature) const

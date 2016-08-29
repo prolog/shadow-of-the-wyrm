@@ -26141,7 +26141,7 @@
 				<UsageDescriptionSID>APOCALYPSE_USAGE_SID</UsageDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
-					<Pounds>13</Pounds>
+					<Pounds>35</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<AutoCurse>1</AutoCurse>
@@ -26649,7 +26649,7 @@
 				<UsageDescriptionSID>WORLDSWORD_USAGE_SID</UsageDescriptionSID>
 				<Value>10000</Value>
 				<Weight>
-					<Pounds>30</Pounds>
+					<Pounds>40</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
@@ -26688,7 +26688,7 @@
 				<UsageDescriptionSID>BEOW_USAGE_SID</UsageDescriptionSID>
 				<Value>1900</Value>
 				<Weight>
-					<Pounds>14</Pounds>
+					<Pounds>22</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
@@ -27127,7 +27127,7 @@
 				<UsageDescriptionSID>GREAT_MACE_TORASIN_USAGE_SID</UsageDescriptionSID>
 				<Value>1265</Value>
 				<Weight>
-					<Pounds>15</Pounds>
+					<Pounds>25</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>

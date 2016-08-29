@@ -107,7 +107,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 {
   ActionCostValue action_cost_value = 0;
 
-  bool mark_for_weapon_and_combat_skills = false;
+  bool mark_for_weapon_and_combat_skills_and_stat = false;
  
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(attacking_creature, attack_type);
   CombatTargetNumberCalculatorPtr ctn_calculator = CombatTargetNumberCalculatorFactory::create_target_number_calculator(attack_type);
@@ -148,7 +148,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
     {
       hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type);
-      mark_for_weapon_and_combat_skills = true;
+      mark_for_weapon_and_combat_skills_and_stat = true;
       destroy_weapon_if_necessary(attacking_creature, attack_type);
     }
     // Close miss (flavour text only.)
@@ -170,7 +170,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
   {
     if (mark_skills)
     {
-      mark_appropriate_skills(attacking_creature, attack_type, mark_for_weapon_and_combat_skills);
+      mark_appropriately(attacking_creature, attack_type, th_calculator->get_statistic(attacking_creature), mark_for_weapon_and_combat_skills_and_stat);
     }
 
     HostilityManager hm;
@@ -583,10 +583,13 @@ string CombatManager::get_appropriate_creature_description(CreaturePtr attacking
 // Create an appropriate ISkillMarker for the attack type, and get the list of
 // skills that should be marked, based on the successful attack.  Then, mark
 // each of them.
-void CombatManager::mark_appropriate_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success)
+void CombatManager::mark_appropriately(CreaturePtr attacking_creature, const AttackType attack_type, Statistic& marked_statistic, const bool attack_success)
 {
   SkillManager sm;  
   ISkillMarkerPtr skill_marker = SkillMarkerFactory::create_skill_marker(attack_type);
+
+  StatisticsMarker stat_marker;
+  stat_marker.mark_statistic(marked_statistic);
 
   if (skill_marker)
   {
