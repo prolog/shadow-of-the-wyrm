@@ -64,7 +64,6 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator_given_weapon
   {
     double weight = weapon->get_weight().get_weight_in_lbs();
     
-    // JCD FIXME magic number
     if (weight > CombatConstants::HEAVY_WEAPON_THRESHOLD_IN_LBS)
     {
       calculator = std::make_shared<HeavyWeaponToHitCalculator>(attack_type);

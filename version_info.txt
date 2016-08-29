@@ -58,16 +58,19 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   value of the statistic, there is a chance (~70%) that the stat will
   increase.  Statistics are currently marked in the following cases:
 
-  - Strength: when digging on a tile or through another tile.
+  - Strength: when digging on a tile or through another tile, when a
+    heavy melee attack hits.
 
-  - Dexterity: when dismantling a trap into useful components.
+  - Dexterity: when dismantling a trap into useful components, when a
+    light melee attack hits, when a ranged attack hits.
 
   - Agility: potentially when an attack is avoided.
 
   - Health: when a particular status wears off or is cancelled, 
     potentially when HP regenerates.
 
-  - Intelligence: successfully reading a spellbook, reading a scroll.
+  - Intelligence: successfully reading a spellbook, reading a scroll,
+    when a magical attack hits.
 
   - Willpower: potentially when AP regenerates, when casting a spell
     causes the spell's bonus to increase, drinking a potion, evoking a
@@ -77,6 +80,10 @@ Shadow of the Wyrm v0.5.4 "Barrios"
     is offered and accepted, when praying while in good standing.
 
 - Sacrificing on an altar now breaks the agnostic conduct.
+
+- Reduced the weight required for a weapon to be "heavy" from 30 lbs. to
+  20.  Adjusted a number of weapons to be heavy: Apocalypse, Torasin,
+  Urgol, Beow.
 
 - More stanzas for "Tel and Floridel".
 
