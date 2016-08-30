@@ -85,9 +85,13 @@ Shadow of the Wyrm v0.5.4 "Barrios"
   20.  Adjusted a number of weapons to be heavy: Apocalypse, Torasin,
   Urgol, Beow.
 
+- There is now an NPC in the Forest of Yew, Melura, who provides training
+  (marking) for statistics in exchange for ivory.
+
 - More stanzas for "Tel and Floridel".
 
-- New creatures: gorgon, skyborn, shrine hag, vorpal bug, gloaming.
+- New creatures: gorgon, skyborn, shrine hag, vorpal bug, gloaming,
+  Melura.
 
 - New spells/spellbooks: Detect Traps (mystic).
 
