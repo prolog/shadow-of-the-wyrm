@@ -413,3 +413,13 @@ the folk whose fault is just to work the land %b
 in places that are coveted by kings. %b
 For where there's want, it's sure the sword is what they'll bring.
 %p
+It's said that in the ages of the world, %b
+the fairy folk were first; were that the case, %b
+who built the ancient temples, high, unfurled %b
+like banners from the sky?  I hear that race %b
+of builders passed like sound.  So too the beasts %b
+that live in myth.  The nimble, copper birds. %b
+The creatures of the ancient woods, not least %b
+of all the golden hart.  Unseen, unheard, %b
+the mighty stag a call to any man who dared.
+%p
