@@ -1128,6 +1128,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\SkillTypes.hpp" />
     <ClInclude Include="world\include\Staff.hpp" />
     <ClInclude Include="world\include\Statistic.hpp" />
+    <ClInclude Include="world\include\StatisticTypes.hpp" />
     <ClInclude Include="world\include\StatusAilments.hpp" />
     <ClInclude Include="world\include\StatusTypes.hpp" />
     <ClInclude Include="world\include\ThreatRatings.hpp" />

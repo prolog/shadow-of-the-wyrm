@@ -3804,6 +3804,9 @@
     <ClInclude Include="engine\calculators\include\StatisticsMarker.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\StatisticTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">

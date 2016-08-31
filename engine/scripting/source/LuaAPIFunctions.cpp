@@ -133,6 +133,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_debug_message", add_debug_message);
   lua_register(L, "add_confirmation_message", add_confirmation_message);
   lua_register(L, "add_prompt_message", add_prompt_message);
+  lua_register(L, "add_char_message", add_char_message);
   lua_register(L, "add_message_for_creature", add_message_for_creature);
   lua_register(L, "add_new_quest", add_new_quest);
   lua_register(L, "is_on_quest", is_on_quest);
@@ -199,6 +200,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
   lua_register(L, "creature_is_class", creature_is_class);
   lua_register(L, "get_item_count", get_item_count);
+  lua_register(L, "count_currency", count_currency);
   lua_register(L, "get_unidentified_item_count", get_unidentified_item_count);
   lua_register(L, "is_item_identified", is_item_identified);
   lua_register(L, "get_item_value", get_item_value);
@@ -497,6 +499,36 @@ static int add_prompt_message(lua_State* ls)
   }
 
   lua_pushstring(ls, prompt_val.c_str());
+  return 1;
+}
+
+// Add a message with a prompt for a keypress.
+// Arguments: message SID (with optional replacements).
+// Return value: string (the keypress entered)
+static int add_char_message(lua_State* ls)
+{
+  string key_val;
+
+  if ((lua_gettop(ls) > 0) && (lua_isstring(ls, 1)))
+  {
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+    string message = read_sid_and_replace_values(ls);
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
+    manager.add_new_message(message);
+    manager.send();
+
+    key_val = static_cast<char>(player->get_decision_strategy()->get_controller()->get_char_as_int());
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_char_message");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, key_val.c_str());
   return 1;
 }
 
@@ -2304,6 +2336,30 @@ int get_item_count(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to get_item_count");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, count);
+  return 1;
+}
+
+int count_currency(lua_State* ls)
+{
+  uint count = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      count = creature->get_inventory()->count_currency();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to count_currency");
     lua_error(ls);
   }
 

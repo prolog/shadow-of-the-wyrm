@@ -4846,7 +4846,7 @@
 				<NumSides>125</NumSides>
 				<Type>1</Type>
 			</Damage>
-			<Speed>30</Speed>
+			<Speed>40</Speed>
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/melura.lua</Script>
