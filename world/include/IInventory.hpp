@@ -54,6 +54,7 @@ class IInventory : public ISerializable
     virtual uint count_items_with_property(const std::string& additional_property_name) const = 0;
     virtual uint count_items(const std::string& item_base_id) const = 0;
     virtual uint count_items() const = 0;
+    virtual uint count_currency() const = 0;
 
     virtual std::list<ItemPtr>& get_items_ref() = 0;
     virtual const std::list<ItemPtr>& get_items_cref() const = 0;
