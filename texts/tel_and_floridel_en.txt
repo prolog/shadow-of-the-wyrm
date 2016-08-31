@@ -423,3 +423,13 @@ The creatures of the ancient woods, not least %b
 of all the golden hart.  Unseen, unheard, %b
 the mighty stag a call to any man who dared.
 %p
+The princeling heard the stories as a child: %b
+the stag-that-fled-the-day, its golden hide %b
+alight beneath the brilliance of the wild %b
+blue mornings.  Fleeting.  Eager in its stride, %b
+an echo of a magic come and gone %b
+when things were new, the firmament unclear %b
+and cooling fast, the rules and lines undrawn %b
+within the world.  A great and tragic deer; %b
+a vestige of an era soon to disappear.
+%p
