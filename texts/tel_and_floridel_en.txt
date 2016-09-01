@@ -430,6 +430,16 @@ blue mornings.  Fleeting.  Eager in its stride, %b
 an echo of a magic come and gone %b
 when things were new, the firmament unclear %b
 and cooling fast, the rules and lines undrawn %b
-within the world.  A great and tragic deer; %b
-a vestige of an era soon to disappear.
+within the world.  A great and tragic deer. %b
+A vestige of an era soon to disappear.
+%p
+One morning, as the sunrise broke the moors, %b
+the fae prepared to take a feasting day. %b
+The king and all his company ensured %b
+their table never lacked for meat.  They say %b
+that ancient folk loved boar; and not the pigs %b
+who wallow down in shaky wooden sties, %b
+but massive things whose tusks could crack the ribs %b
+of lesser men, eviscerate them dry, %b
+and leave their bodies underneath the callow sky.
 %p
