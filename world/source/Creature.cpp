@@ -468,6 +468,35 @@ void Creature::set_strength(const Statistic& new_strength)
   strength = new_strength;
 }
 
+Statistic& Creature::get_statistic_ref(const PrimaryStatisticType pr_st)
+{
+  switch(pr_st)
+  {
+    case PrimaryStatisticType::PRIMARY_STATISTIC_STRENGTH:
+      return strength;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_DEXTERITY:
+      return dexterity;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_AGILITY:
+      return agility;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_HEALTH:
+      return health;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_INTELLIGENCE:
+      return intelligence;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_WILLPOWER:
+      return willpower;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_CHARISMA:
+    default:
+      return charisma;
+      break;
+  }
+}
+
 Statistic Creature::get_strength() const
 {
   return strength;

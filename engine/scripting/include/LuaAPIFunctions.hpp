@@ -59,6 +59,7 @@ int incr_hea(lua_State* ls);
 int incr_int(lua_State* ls);
 int incr_wil(lua_State* ls);
 int incr_cha(lua_State* ls);
+int mark_stat(lua_State* ls);
 int mark_str(lua_State* ls);
 int mark_dex(lua_State* ls);
 int mark_agi(lua_State* ls);

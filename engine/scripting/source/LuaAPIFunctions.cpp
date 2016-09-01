@@ -175,6 +175,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "incr_int", incr_int);
   lua_register(L, "incr_wil", incr_wil);
   lua_register(L, "incr_cha", incr_cha);
+  lua_register(L, "mark_stat", mark_stat);
   lua_register(L, "mark_str", mark_str);
   lua_register(L, "mark_dex", mark_dex);
   lua_register(L, "mark_agi", mark_agi);
@@ -1540,15 +1541,15 @@ int incr_hea(lua_State* ls)
 {
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
   {
-    string creature_id = lua_tostring(ls, 1);
-    bool add_msg = lua_toboolean(ls, 2) != 0;
+string creature_id = lua_tostring(ls, 1);
+bool add_msg = lua_toboolean(ls, 2) != 0;
 
-    CreaturePtr creature = get_creature(creature_id);
+CreaturePtr creature = get_creature(creature_id);
 
-    if (creature != nullptr)
-    {
-      CreatureUtils::incr_hea(creature, add_msg);
-    }
+if (creature != nullptr)
+{
+  CreatureUtils::incr_hea(creature, add_msg);
+}
   }
   else
   {
@@ -1626,6 +1627,53 @@ int incr_cha(lua_State* ls)
   }
 
   return 0;
+}
+
+int mark_stat(lua_State* ls)
+{
+  bool marked_stat = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    PrimaryStatisticType primary_stat = static_cast<PrimaryStatisticType>(lua_tointeger(ls, 2));
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    int num_marks = 1;
+    if (num_args >= 3 && lua_isnumber(ls, 3))
+    {
+      num_marks = lua_tointeger(ls, 3);
+    }
+
+    bool override_denom = false;
+    if (num_args >= 4 && lua_isboolean(ls, 4))
+    {
+      override_denom = lua_toboolean(ls, 4) != 0;
+    }
+
+    if (creature != nullptr)
+    {
+      Statistic& stat = creature->get_statistic_ref(primary_stat);
+
+      StatisticsMarker sm;
+      StatisticsMarkerProbabilityDetails smpd(override_denom, 1);
+
+      for (int i = 0; i < num_marks; i++)
+      {
+        marked_stat = sm.mark_statistic(stat, smpd);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_stat");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_stat);
+  return 1;
 }
 
 int mark_str(lua_State* ls)
