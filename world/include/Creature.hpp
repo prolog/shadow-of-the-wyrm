@@ -27,6 +27,7 @@
 #include "Skills.hpp"
 #include "SpellKnowledge.hpp"
 #include "Statistic.hpp"
+#include "StatisticTypes.hpp"
 #include "StatusTypes.hpp"
 
 // Forward declarations.
@@ -116,6 +117,8 @@ class Creature : public ISerializable
     std::string get_class_id() const;
 
     // Set/Get physical stats.
+    Statistic& get_statistic_ref(const PrimaryStatisticType pr_stat);
+
     void set_strength(const Statistic& new_strength);
     Statistic get_strength() const;
     Statistic& get_strength_ref();

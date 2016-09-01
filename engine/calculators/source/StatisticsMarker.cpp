@@ -4,6 +4,21 @@
 
 using namespace std;
 
+StatisticsMarkerProbabilityDetails::StatisticsMarkerProbabilityDetails(const bool new_override_p_denom, const int new_p_denom)
+: override_p_denom(new_override_p_denom), p_denom(new_p_denom)
+{
+}
+
+bool StatisticsMarkerProbabilityDetails::get_override_p_denom() const
+{
+  return override_p_denom;
+}
+
+int StatisticsMarkerProbabilityDetails::get_p_denom() const
+{
+  return p_denom;
+}
+
 // Marks a statistic based on a declining probability, based on the 
 // statistic's base value.
 //
@@ -11,7 +26,7 @@ using namespace std;
 // statistic's base value.
 //
 // Returns true if the statistic was marked, false otherwise.
-bool StatisticsMarker::mark_statistic(Statistic& stat)
+bool StatisticsMarker::mark_statistic(Statistic& stat, const StatisticsMarkerProbabilityDetails& smpd)
 {
   bool marked = false;
   Marks& marks = stat.get_marks_ref();
@@ -20,7 +35,12 @@ bool StatisticsMarker::mark_statistic(Statistic& stat)
   if (marks.get_value() < base_val)
   {
     int x = 1;
-    int y = calculate_mark_probability_denominator(base_val);
+    int y = smpd.get_p_denom();
+    
+    if (smpd.get_override_p_denom() == false)
+    {
+      calculate_mark_probability_denominator(base_val);
+    }
 
     if (RNG::x_in_y_chance(x, y))
     {
@@ -31,85 +51,85 @@ bool StatisticsMarker::mark_statistic(Statistic& stat)
   return marked;
 }
 
-bool StatisticsMarker::mark_strength(CreaturePtr creature)
+bool StatisticsMarker::mark_strength(CreaturePtr creature, const StatisticsMarkerProbabilityDetails& smpd)
 {
   bool marked = false;
 
   if (creature != nullptr)
   {
-    marked = mark_statistic(creature->get_strength_ref());
+    marked = mark_statistic(creature->get_strength_ref(), smpd);
   }
 
   return marked;
 }
 
-bool StatisticsMarker::mark_dexterity(CreaturePtr creature)
+bool StatisticsMarker::mark_dexterity(CreaturePtr creature, const StatisticsMarkerProbabilityDetails& smpd)
 {
   bool marked = false;
 
   if (creature != nullptr)
   {
-    marked = mark_statistic(creature->get_dexterity_ref());
+    marked = mark_statistic(creature->get_dexterity_ref(), smpd);
   }
 
   return marked;
 }
 
-bool StatisticsMarker::mark_agility(CreaturePtr creature)
+bool StatisticsMarker::mark_agility(CreaturePtr creature, const StatisticsMarkerProbabilityDetails& smpd)
 {
   bool marked = false;
 
   if (creature != nullptr)
   {
-    marked = mark_statistic(creature->get_agility_ref());
+    marked = mark_statistic(creature->get_agility_ref(), smpd);
   }
 
   return marked;
 }
 
-bool StatisticsMarker::mark_health(CreaturePtr creature)
+bool StatisticsMarker::mark_health(CreaturePtr creature, const StatisticsMarkerProbabilityDetails& smpd)
 {
   bool marked = false;
 
   if (creature != nullptr)
   {
-    marked = mark_statistic(creature->get_health_ref());
+    marked = mark_statistic(creature->get_health_ref(), smpd);
   }
 
   return marked;
 }
 
-bool StatisticsMarker::mark_intelligence(CreaturePtr creature)
+bool StatisticsMarker::mark_intelligence(CreaturePtr creature, const StatisticsMarkerProbabilityDetails& smpd)
 {
   bool marked = false;
 
   if (creature != nullptr)
   {
-    marked = mark_statistic(creature->get_intelligence_ref());
+    marked = mark_statistic(creature->get_intelligence_ref(), smpd);
   }
 
   return marked;
 }
 
-bool StatisticsMarker::mark_willpower(CreaturePtr creature)
+bool StatisticsMarker::mark_willpower(CreaturePtr creature, const StatisticsMarkerProbabilityDetails& smpd)
 {
   bool marked = false;
 
   if (creature != nullptr)
   {
-    marked = mark_statistic(creature->get_willpower_ref());
+    marked = mark_statistic(creature->get_willpower_ref(), smpd);
   }
 
   return marked;
 }
 
-bool StatisticsMarker::mark_charisma(CreaturePtr creature)
+bool StatisticsMarker::mark_charisma(CreaturePtr creature, const StatisticsMarkerProbabilityDetails& smpd)
 {
   bool marked = false;
 
   if (creature != nullptr)
   {
-    marked = mark_statistic(creature->get_charisma_ref());
+    marked = mark_statistic(creature->get_charisma_ref(), smpd);
   }
 
   return marked;

@@ -1,4 +1,6 @@
 Me:
+- Unit tests for Creature::get_statistic_ref()
+- Clean up the Lua code to require + use the new constants
 - Work on training stats:
   - Str: carrying heavy loads.
   - Hea: when eating and not becoming full.
