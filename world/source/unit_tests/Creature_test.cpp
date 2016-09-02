@@ -10,6 +10,53 @@ TEST(SW_World_Creature, name)
   EXPECT_EQ(creature_name, c.get_name());
 }
 
+TEST(SW_World_Creature, get_statistics)
+{
+  Statistic str(11);
+  str.get_marks_ref().set_value(1);
+
+  Statistic dex(12);
+  dex.get_marks_ref().set_value(2);
+
+  Statistic agi(13);
+  agi.get_marks_ref().set_value(3);
+
+  Statistic hea(14);
+  hea.get_marks_ref().set_value(4);
+
+  Statistic itl(15);
+  itl.get_marks_ref().set_value(5);
+
+  Statistic wil(16);
+  wil.get_marks_ref().set_value(6);
+
+  Statistic cha(17);
+  cha.get_marks_ref().set_value(7);
+
+  Creature c;
+  c.set_strength(str);
+  c.set_dexterity(dex);
+  c.set_agility(agi);
+  c.set_health(hea);
+  c.set_intelligence(itl);
+  c.set_willpower(wil);
+  c.set_charisma(cha);
+
+  std::map<PrimaryStatisticType, int> stat_marks = {{PrimaryStatisticType::PRIMARY_STATISTIC_STRENGTH, 1},
+                                                    {PrimaryStatisticType::PRIMARY_STATISTIC_DEXTERITY, 2},
+                                                    {PrimaryStatisticType::PRIMARY_STATISTIC_AGILITY, 3},
+                                                    {PrimaryStatisticType::PRIMARY_STATISTIC_HEALTH, 4},
+                                                    {PrimaryStatisticType::PRIMARY_STATISTIC_INTELLIGENCE, 5},
+                                                    {PrimaryStatisticType::PRIMARY_STATISTIC_WILLPOWER, 6},
+                                                    {PrimaryStatisticType::PRIMARY_STATISTIC_CHARISMA, 7}};
+
+  for (const auto& sm_pair : stat_marks)
+  {
+    Statistic& exp_stat = c.get_statistic_ref(sm_pair.first);
+    EXPECT_EQ(sm_pair.second, exp_stat.get_marks().get_value());
+  }
+}
+
 TEST(SW_World_Creature, skill_points)
 {
   Creature c;
