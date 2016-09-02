@@ -67,6 +67,7 @@ int mark_hea(lua_State* ls);
 int mark_int(lua_State* ls);
 int mark_wil(lua_State* ls);
 int mark_cha(lua_State* ls);
+int is_stat_max_marked(lua_State* ls);
 int gain_level(lua_State* ls);
 int goto_level(lua_State* ls);
 int is_player(lua_State* ls);

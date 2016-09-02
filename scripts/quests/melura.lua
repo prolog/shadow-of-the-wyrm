@@ -13,25 +13,29 @@ if stat_enum ~= nil then
   if payment > avail_funds then
     clear_and_add_message("MELURA_NSF_SID")
   else
-    -- The number of marks to add to the stat.
-    local improve_amt = math.floor(payment / 100)
+    if is_stat_max_marked(PLAYER_ID, stat_enum) then
+      clear_and_add_message("MELURA_STAT_MAX_MARKED_SID")
+    else
+      -- The number of marks to add to the stat.
+      local improve_amt = math.floor(payment / 100)
 
-    -- The chance to add another mark, after the guaranteed number of
-    -- marks are added.
-    local improve_chance = payment % 100
+      -- The chance to add another mark, after the guaranteed number of
+      -- marks are added.
+      local improve_chance = payment % 100
 
-    -- Take the player's money.
-    remove_object_from_player(CURRENCY_ID, payment)
+      -- Take the player's money.
+      remove_object_from_player(CURRENCY_ID, payment)
 
-    -- Improve the player's stats: always mark the stat, as Melura's
-    -- training is that good.
-    mark_stat(PLAYER_ID, stat_enum, improve_amt, true)
+      -- Improve the player's stats: always mark the stat, as Melura's
+      -- training is that good.
+      mark_stat(PLAYER_ID, stat_enum, improve_amt, true)
 
-    if RNG_percent_chance(improve_chance) then
-      mark_stat(PLAYER_ID, stat_enum, 1, true)
+      if RNG_percent_chance(improve_chance) then
+        mark_stat(PLAYER_ID, stat_enum, 1, true)
+      end
+
+      clear_and_add_message("MELURA_STAT_IMPROVED_SID")    
     end
-
-    clear_and_add_message("MELURA_STAT_IMPROVED_SID")
   end
 else
   clear_and_add_message("MELURA_BAD_INPUT_SID")

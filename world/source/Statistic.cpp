@@ -81,6 +81,12 @@ bool Statistic::get_full() const
   return (current == base);
 }
 
+// True if the number of marks equals the base value.
+bool Statistic::get_max_marks() const
+{
+  return (base == marks.get_value());
+}
+
 void Statistic::set_marks(const Marks& new_marks)
 {
   marks = new_marks;
