@@ -183,6 +183,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "mark_int", mark_int);
   lua_register(L, "mark_wil", mark_wil);
   lua_register(L, "mark_cha", mark_cha);
+  lua_register(L, "is_stat_max_marked", is_stat_max_marked);
   lua_register(L, "map_set_custom_map_id", map_set_custom_map_id);
   lua_register(L, "map_set_edesc", map_set_edesc);
   lua_register(L, "map_set_additional_property", map_set_additional_property);
@@ -1848,6 +1849,32 @@ int mark_cha(lua_State* ls)
   }
 
   lua_pushboolean(ls, marked_cha);
+  return 1;
+}
+
+int is_stat_max_marked(lua_State* ls)
+{
+  bool max_marked = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    PrimaryStatisticType pr_stat = static_cast<PrimaryStatisticType>(lua_tointeger(ls, 2));
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      max_marked = creature->get_statistic_ref(pr_stat).get_max_marks();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_stat_max_marked");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, max_marked);
   return 1;
 }
 

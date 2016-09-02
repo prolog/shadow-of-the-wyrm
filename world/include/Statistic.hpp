@@ -21,6 +21,7 @@ class Statistic : public ISerializable
     int get_lowest() const;
 
     bool get_full() const;
+    bool get_max_marks() const;
 
     void set_marks(const Marks& new_marks);
     Marks get_marks() const;
