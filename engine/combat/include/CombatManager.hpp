@@ -29,6 +29,9 @@ class CombatManager
   protected:
     // Apply a particular status effect.
     void apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus);
+
+    // Handle vorpal as necessary
+    void handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt);
     
     // Functions to handle the attacking mechanics and add messages as necessary.
     bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type);
@@ -51,7 +54,7 @@ class CombatManager
 
     bool does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type);
     
-    void mark_appropriate_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success);
+    void mark_appropriately(CreaturePtr attacking_creature, const AttackType attack_type, Statistic& marked_statistic, const bool attack_success);
     bool knock_back_creature_if_necessary(const AttackType attack_type, CreaturePtr attacking_creature, CreaturePtr attacked_creature, Game& game, MapPtr current_map);
     
     // Update the mortuary on the game and on the attacking creature.
@@ -59,4 +62,6 @@ class CombatManager
 
     // Get the appropriate description for the defending creature.
     std::string get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature);
+
+    static const int PCT_CHANCE_MARK_STATISTIC_ON_MISS;
 };

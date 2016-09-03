@@ -81,7 +81,7 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
     // Add as many lines as are necessary to pad the current page.
     if (lines_displayable_area > 0)
     {
-      for (int i = cur_line+1; i < lines_displayable_area; i++)
+      for (int i = (cur_line + 1) % lines_displayable_area; i < lines_displayable_area; i++)
       {
         result.push_back(current_str);
       }

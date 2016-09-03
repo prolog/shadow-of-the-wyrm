@@ -28,4 +28,5 @@ class DigAction : public IActionManager
     void add_successful_dig_message(CreaturePtr creature) const;
 
     static const int DIG_PERCENT_CHANCE_ITEM;
+    static const int DIG_PERCENT_CHANCE_MARK_STATISTIC;
 };

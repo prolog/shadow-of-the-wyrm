@@ -27,6 +27,7 @@
 #include "Skills.hpp"
 #include "SpellKnowledge.hpp"
 #include "Statistic.hpp"
+#include "StatisticTypes.hpp"
 #include "StatusTypes.hpp"
 
 // Forward declarations.
@@ -116,26 +117,35 @@ class Creature : public ISerializable
     std::string get_class_id() const;
 
     // Set/Get physical stats.
+    Statistic& get_statistic_ref(const PrimaryStatisticType pr_stat);
+
     void set_strength(const Statistic& new_strength);
     Statistic get_strength() const;
+    Statistic& get_strength_ref();
 
     void set_dexterity(const Statistic& new_dexterity);
     Statistic get_dexterity() const;
+    Statistic& get_dexterity_ref();
 
     void set_agility(const Statistic& new_agility);
     Statistic get_agility() const;
+    Statistic& get_agility_ref();
 
     void set_health(const Statistic& new_health);
     Statistic get_health() const;
+    Statistic& get_health_ref();
 
     void set_intelligence(const Statistic& new_intelligence);
     Statistic get_intelligence() const;
+    Statistic& get_intelligence_ref();
 
     void set_willpower(const Statistic& new_willpower);
     Statistic get_willpower() const;
+    Statistic& get_willpower_ref();
 
     void set_charisma(const Statistic& new_charisma);
     Statistic get_charisma() const;
+    Statistic& get_charisma_ref();
 
 
     // Set/get secondary statistics
@@ -180,8 +190,8 @@ class Creature : public ISerializable
     bool is_ap_full() const;
 
     void set_arcana_points(const Statistic& new_arcana_points);
-    void increment_arcana_points(int amount);
-    void decrement_arcana_points(int amount);
+    int increment_arcana_points(int amount);
+    int decrement_arcana_points(int amount);
     Statistic get_arcana_points() const;
 
 

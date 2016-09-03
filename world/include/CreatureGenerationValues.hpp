@@ -18,7 +18,10 @@ class CreatureGenerationValues : public GenerationValues
     CreatureGenerationValues();
     ~CreatureGenerationValues();
     bool operator==(const CreatureGenerationValues& cgv) const;
-    
+
+    void set_id(const std::string& new_id);
+    std::string get_id() const;
+
     void set_race_id(const std::string& new_race_id);
     std::string get_race_id() const;
 
@@ -55,6 +58,9 @@ class CreatureGenerationValues : public GenerationValues
     bool deserialize(std::istream& stream) override;
 
   protected:
+    // The creature's ID, used for filtering in certain situations.
+    std::string id;
+
     // The creature's race, used for filtering in certain situations.
     std::string race_id;
 

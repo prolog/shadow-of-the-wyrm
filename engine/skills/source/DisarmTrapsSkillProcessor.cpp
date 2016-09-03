@@ -8,6 +8,7 @@
 #include "IFeatureManipulatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "StatisticsMarker.hpp"
 #include "Trap.hpp"
 
 using namespace std;
@@ -212,6 +213,10 @@ void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapP
         }
       }
     }
+
+    // Successfully and usefully dismantling a trap marks Dexterity.
+    StatisticsMarker sm;
+    sm.mark_dexterity(creature);
   }
 }
 

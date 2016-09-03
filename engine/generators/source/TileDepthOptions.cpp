@@ -7,6 +7,11 @@ TileDepthOptions::TileDepthOptions()
 {
 }
 
+TileDepthOptions::TileDepthOptions(const int new_min_depth, const int new_max_depth)
+: min_depth(new_min_depth), max_depth(new_max_depth)
+{
+}
+
 TileDepthOptions::TileDepthOptions(const int new_min_depth, const int new_max_depth, const vector<int>& new_remaining_depths)
 : min_depth(new_min_depth), max_depth(new_max_depth), remaining_depths(new_remaining_depths)
 {

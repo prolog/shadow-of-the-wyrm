@@ -82,6 +82,7 @@ bool Map::operator==(const Map& map) const
   result = result && (allow_creature_updates == map.allow_creature_updates);
   result = result && (properties == map.properties);
   result = result && (tile_transforms == map.tile_transforms);
+  result = result && (preset_locations == map.preset_locations);
 
   return result;
 }
@@ -505,6 +506,21 @@ TileTransformContainer Map::get_tile_transforms() const
   return tile_transforms;
 }
 
+void Map::set_preset_locations(const vector<Coordinate>& new_preset_locations)
+{
+  preset_locations = new_preset_locations;
+}
+
+vector<Coordinate> Map::get_preset_locations() const
+{
+  return preset_locations;
+}
+
+vector<Coordinate>& Map::get_preset_locations_ref()
+{
+  return preset_locations;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
@@ -583,6 +599,13 @@ bool Map::serialize(ostream& stream) const
     {
       tt.serialize(stream);
     }
+  }
+
+  Serialize::write_size_t(stream, preset_locations.size());
+  for (const auto& c : preset_locations)
+  {
+    Serialize::write_int(stream, c.first);
+    Serialize::write_int(stream, c.second);
   }
 
   return true;
@@ -708,6 +731,20 @@ bool Map::deserialize(istream& stream)
     }
 
     tile_transforms.insert(make_pair(seconds, t_trans));
+  }
+
+  preset_locations.clear();
+  size_t preset_loc_size = 0;
+  Serialize::read_size_t(stream, preset_loc_size);
+
+  for (size_t i = 0; i < preset_loc_size; i++)
+  {
+    int y, x;
+
+    Serialize::read_int(stream, y);
+    Serialize::read_int(stream, x);
+
+    preset_locations.push_back(make_pair(y, x));
   }
 
   return true;

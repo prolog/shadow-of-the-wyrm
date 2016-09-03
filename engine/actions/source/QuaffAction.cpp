@@ -11,6 +11,7 @@
 #include "SpellFactory.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "SpellcastingProcessor.hpp"
+#include "StatisticsMarker.hpp"
 
 using namespace std;
 using std::dynamic_pointer_cast;
@@ -65,7 +66,8 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
 {
   if (creature && potion)
   {    
-    EffectPtr potion_effect = EffectFactory::create_effect(potion->get_effect_type());
+    EffectType et = potion->get_effect_type();
+    EffectPtr potion_effect = EffectFactory::create_effect(et);
 
     if (potion_effect)
     {
@@ -112,6 +114,14 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
 
       ConsumableAction ca;
       ca.consume(creature, potion, false /* don't process effect */);
+
+      // If there's actually an effect (ie, this isn't booze, fruit juice, etc)
+      // then mark willpower, as it takes nerve to pound magical potions.
+      if (et != EffectType::EFFECT_TYPE_NULL)
+      {
+        StatisticsMarker sm;
+        sm.mark_willpower(creature);
+      }
     }
   }
 }

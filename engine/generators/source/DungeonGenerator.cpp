@@ -610,7 +610,6 @@ bool DungeonGenerator::place_staircases(MapPtr map)
 
   // Update the map's depth information.
   update_depth_details(map);
-  string max_depth_property = get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH);
 
   Depth depth = map->size().depth();
 
@@ -630,16 +629,8 @@ bool DungeonGenerator::place_staircases(MapPtr map)
         y = RNG::range(r.y1 + 1, r.y2 - 2);
         x = RNG::range(r.x1 + 1, r.x2 - 2);
 
-        placed = place_staircase(map, y, x, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase);
+        placed = place_down_staircase(map, y, x, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase);
       }
-
-      // Ensure that the original map ID is set on the down staircase.  This will
-      // allow it to be set on future maps.  In a fully randomized dungeon, this
-      // will keep the value persistent, and allow it to be used on the up staircase
-      // on the first dungeon level.
-      TilePtr down_tile = map->at(y, x);
-      down_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
-      down_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, max_depth_property);
 
       location_found = true;
     }
@@ -662,7 +653,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
       y = RNG::range(r.y1 + 1, r.y2 - 2);
       x = RNG::range(r.x1 + 1, r.x2 - 2);
 
-      placed = place_staircase(map, y, x, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
+      placed = place_up_staircase(map, y, x, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
     }
 
     location_found = true;

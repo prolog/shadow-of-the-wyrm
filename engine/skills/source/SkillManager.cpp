@@ -43,7 +43,7 @@ void SkillManager::mark_skill(CreaturePtr creature, const SkillType skill_type, 
       // Don't mark skills that can't actually be improved.
       if (val > 0 || skill->can_train_from_unlearned())
       {
-        skill->increment_marks();
+        skill->get_marks_ref().incr();
       }
     }
   }

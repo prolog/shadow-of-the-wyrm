@@ -33,6 +33,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>melura</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>49</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>ilru</ID>
 				<Coord>
 					<Row>4</Row>

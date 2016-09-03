@@ -220,6 +220,22 @@ uint Inventory::count_items() const
   return count;
 }
 
+uint Inventory::count_currency() const
+{
+  uint currency_quantity = 0;
+  auto raw_items = get_items_cref();
+
+  for (const ItemPtr item : raw_items)
+  {
+    if (item != nullptr && item->get_base_id() == ItemIdKeys::ITEM_ID_CURRENCY)
+    {
+      currency_quantity += item->get_quantity();
+    }
+  }
+
+  return currency_quantity;
+}
+
 bool Inventory::clear()
 {
   items.clear();

@@ -31,6 +31,7 @@
 #include "RNG.hpp"
 #include "SkillManager.hpp"
 #include "SpellcastingAction.hpp"
+#include "StatisticsMarker.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
@@ -132,6 +133,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_debug_message", add_debug_message);
   lua_register(L, "add_confirmation_message", add_confirmation_message);
   lua_register(L, "add_prompt_message", add_prompt_message);
+  lua_register(L, "add_char_message", add_char_message);
   lua_register(L, "add_message_for_creature", add_message_for_creature);
   lua_register(L, "add_new_quest", add_new_quest);
   lua_register(L, "is_on_quest", is_on_quest);
@@ -173,9 +175,19 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "incr_int", incr_int);
   lua_register(L, "incr_wil", incr_wil);
   lua_register(L, "incr_cha", incr_cha);
+  lua_register(L, "mark_stat", mark_stat);
+  lua_register(L, "mark_str", mark_str);
+  lua_register(L, "mark_dex", mark_dex);
+  lua_register(L, "mark_agi", mark_agi);
+  lua_register(L, "mark_hea", mark_hea);
+  lua_register(L, "mark_int", mark_int);
+  lua_register(L, "mark_wil", mark_wil);
+  lua_register(L, "mark_cha", mark_cha);
+  lua_register(L, "is_stat_max_marked", is_stat_max_marked);
   lua_register(L, "map_set_custom_map_id", map_set_custom_map_id);
   lua_register(L, "map_set_edesc", map_set_edesc);
   lua_register(L, "map_set_additional_property", map_set_additional_property);
+  lua_register(L, "map_set_tile_subtype", map_set_tile_subtype);
   lua_register(L, "map_add_location", map_add_location);
   lua_register(L, "map_transform_tile", map_transform_tile);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
@@ -190,6 +202,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
   lua_register(L, "creature_is_class", creature_is_class);
   lua_register(L, "get_item_count", get_item_count);
+  lua_register(L, "count_currency", count_currency);
   lua_register(L, "get_unidentified_item_count", get_unidentified_item_count);
   lua_register(L, "is_item_identified", is_item_identified);
   lua_register(L, "get_item_value", get_item_value);
@@ -488,6 +501,36 @@ static int add_prompt_message(lua_State* ls)
   }
 
   lua_pushstring(ls, prompt_val.c_str());
+  return 1;
+}
+
+// Add a message with a prompt for a keypress.
+// Arguments: message SID (with optional replacements).
+// Return value: string (the keypress entered)
+static int add_char_message(lua_State* ls)
+{
+  string key_val;
+
+  if ((lua_gettop(ls) > 0) && (lua_isstring(ls, 1)))
+  {
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+    string message = read_sid_and_replace_values(ls);
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
+    manager.add_new_message(message);
+    manager.send();
+
+    key_val = static_cast<char>(player->get_decision_strategy()->get_controller()->get_char_as_int());
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_char_message");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, key_val.c_str());
   return 1;
 }
 
@@ -1499,15 +1542,15 @@ int incr_hea(lua_State* ls)
 {
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
   {
-    string creature_id = lua_tostring(ls, 1);
-    bool add_msg = lua_toboolean(ls, 2) != 0;
+string creature_id = lua_tostring(ls, 1);
+bool add_msg = lua_toboolean(ls, 2) != 0;
 
-    CreaturePtr creature = get_creature(creature_id);
+CreaturePtr creature = get_creature(creature_id);
 
-    if (creature != nullptr)
-    {
-      CreatureUtils::incr_hea(creature, add_msg);
-    }
+if (creature != nullptr)
+{
+  CreatureUtils::incr_hea(creature, add_msg);
+}
   }
   else
   {
@@ -1587,6 +1630,254 @@ int incr_cha(lua_State* ls)
   return 0;
 }
 
+int mark_stat(lua_State* ls)
+{
+  bool marked_stat = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    PrimaryStatisticType primary_stat = static_cast<PrimaryStatisticType>(lua_tointeger(ls, 2));
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    int num_marks = 1;
+    if (num_args >= 3 && lua_isnumber(ls, 3))
+    {
+      num_marks = lua_tointeger(ls, 3);
+    }
+
+    bool override_denom = false;
+    if (num_args >= 4 && lua_isboolean(ls, 4))
+    {
+      override_denom = lua_toboolean(ls, 4) != 0;
+    }
+
+    if (creature != nullptr)
+    {
+      Statistic& stat = creature->get_statistic_ref(primary_stat);
+
+      StatisticsMarker sm;
+      StatisticsMarkerProbabilityDetails smpd(override_denom, 1);
+
+      for (int i = 0; i < num_marks; i++)
+      {
+        marked_stat = sm.mark_statistic(stat, smpd);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_stat");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_stat);
+  return 1;
+}
+
+int mark_str(lua_State* ls)
+{
+  bool marked_str = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_str = sm.mark_strength(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_str");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_str);
+  return 1;
+}
+
+int mark_dex(lua_State* ls)
+{
+  bool marked_dex = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_dex = sm.mark_dexterity(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_dex");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_dex);
+  return 1;
+}
+
+int mark_agi(lua_State* ls)
+{
+  bool marked_agi = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_agi = sm.mark_agility(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_agi");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_agi);
+  return 1;
+}
+
+int mark_hea(lua_State* ls)
+{
+  bool marked_hea = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_hea = sm.mark_health(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_hea");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_hea);
+  return 1;
+}
+
+int mark_int(lua_State* ls)
+{
+  bool marked_int = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_int = sm.mark_intelligence(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_int");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_int);
+  return 1;
+}
+
+int mark_wil(lua_State* ls)
+{
+  bool marked_wil = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_wil = sm.mark_willpower(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_wil");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_wil);
+  return 1;
+}
+
+int mark_cha(lua_State* ls)
+{
+  bool marked_cha = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      StatisticsMarker sm;
+      marked_cha = sm.mark_charisma(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_cha");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, marked_cha);
+  return 1;
+}
+
+int is_stat_max_marked(lua_State* ls)
+{
+  bool max_marked = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    PrimaryStatisticType pr_stat = static_cast<PrimaryStatisticType>(lua_tointeger(ls, 2));
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      max_marked = creature->get_statistic_ref(pr_stat).get_max_marks();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_stat_max_marked");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, max_marked);
+  return 1;
+}
+
 // Set a custom map id into the given map id at the given row and col.
 int map_set_custom_map_id(lua_State* ls)
 {
@@ -1655,6 +1946,30 @@ int map_set_additional_property(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to map_set_additional_property");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Set the tile subtype appropriately.
+int map_set_tile_subtype(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    TileType subtype = static_cast<TileType>(lua_tointeger(ls, 4));
+    TilePtr tile = get_tile(map_id, c);
+
+    if (tile)
+    {
+      tile->set_tile_subtype(subtype);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_set_tile_subtype");
     lua_error(ls);
   }
 
@@ -2103,6 +2418,30 @@ int get_item_count(lua_State* ls)
   return 1;
 }
 
+int count_currency(lua_State* ls)
+{
+  uint count = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      count = creature->get_inventory()->count_currency();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to count_currency");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, count);
+  return 1;
+}
+
 // Check to see how many unidentified items exist in the player's inventory.
 // We're explicitly not considering the creature's equipment.
 int get_unidentified_item_count(lua_State* ls)
@@ -2281,7 +2620,7 @@ int set_hostility(lua_State* ls)
 
 int teleport(lua_State* ls)
 {
-  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
   {
     Game& game = Game::instance();
     ActionManager& am = game.get_action_manager_ref();
@@ -2291,8 +2630,21 @@ int teleport(lua_State* ls)
 
     if (creature != nullptr)
     {
-      EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT);
-      teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
+      // This version of the function should generally only be used for debug
+      // testing.
+      if (lua_gettop(ls) == 3 && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+      {
+        int y = lua_tointeger(ls, 2);
+        int x = lua_tointeger(ls, 3);
+
+        MapPtr map = game.get_current_map();
+        MapUtils::add_or_update_location(map, creature, make_pair(y, x), MapUtils::get_tile_for_creature(map, creature));
+      }
+      else
+      {
+        EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT);
+        teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
+      }
     }
   }
   else
@@ -2825,17 +3177,23 @@ int curse_inventory(lua_State* ls)
 
 int set_winner(lua_State* ls)
 {
-  bool winner = false;
+  int num_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  if (num_args >= 1 && lua_isstring(ls, 1))
   {
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
+    CreatureWin win_type = CreatureWin::CREATURE_WIN_REGULAR;
+
+    if (num_args == 2 && lua_isnumber(ls, 2))
+    {
+      win_type = static_cast<CreatureWin>(lua_tointeger(ls, 2));
+    }
+
     if (creature != nullptr)
     {
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(true));
-      winner = true;
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(static_cast<int>(win_type)));
     }
   }
   else
@@ -2844,8 +3202,7 @@ int set_winner(lua_State* ls)
     lua_error(ls);
   }
 
-  lua_pushboolean(ls, winner);
-  return 1;
+  return 0;
 }
 
 int get_creature_colour(lua_State* ls)

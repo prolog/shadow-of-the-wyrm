@@ -9,4 +9,6 @@ class CreatureHPRegeneration : public ICreatureRegeneration
 
   protected:
     HPRegenerationCalculator hp_regen_calc;
+
+    static const int PCT_CHANCE_MARK_STATISTIC;
 };

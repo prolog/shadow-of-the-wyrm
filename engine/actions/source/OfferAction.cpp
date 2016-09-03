@@ -15,6 +15,7 @@
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SacrificeTextKeys.hpp"
+#include "StatisticsMarker.hpp"
 
 using namespace std;
 
@@ -94,12 +95,20 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
           CurrentCreatureAbilities cca;
           string message = SacrificeTextKeys::get_sacrifice_message(feature->get_alignment_range(), item_to_sac, !cca.can_see(creature));
 
+          // Having one's deity accept a proffered sacrifice marks charisma.
+          StatisticsMarker sm;
+          sm.mark_charisma(creature);
+
           manager.add_new_message(message);
           manager.send();
         }
 
         // Now that it's been dealt with, remove it from the inventory.
         creature->get_inventory()->remove(item_to_sac->get_id());
+
+        // Offering on an altar is admitting the existence of a deity, so break
+        // the agnostic conduct.
+        creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_AGNOSTIC);
       }
     }
   }

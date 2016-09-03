@@ -1,5 +1,5 @@
 #include "ActionTextKeys.hpp"
-#include "AmmunitionSurvivalCalculator.hpp"
+#include "AmmunitionCalculator.hpp"
 #include "AnimationTranslator.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
@@ -333,9 +333,9 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
       ammunition = im.remove(creature, EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION, false);
     }
     
-    AmmunitionSurvivalCalculator ammunition_survival_calc;
+    AmmunitionCalculator ammunition_calc;
     
-    if (ammunition_survival_calc.survives(creature, ammunition))
+    if (ammunition_calc.survives(creature, ammunition))
     {
       IInventoryPtr inv = tile->get_items();
       

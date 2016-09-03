@@ -58,6 +58,53 @@ sungem_quest = Quest:new("blacksmith_sungem",
                          sun_gem_completion_condition_fn,
                          sun_gem_completion_fn)
 
+
+-- The blacksmith can forge a great blade, given the shrine relics.
+-- The resultant sword will make you powerful, but it will also bring
+-- endless glory to him forever, which if you think about it, is really
+-- the important thing.
+local function blacksmith_shrine_precond_fn()
+  return not (is_quest_completed("bagra_shrine"))
+end
+
+local function blacksmith_shrine_start_fn()
+  add_message_with_pause("BLACKSMITH_SHRINE_QUEST_START_SID")
+  add_message_with_pause("BLACKSMITH_SHRINE_QUEST_START2_SID")
+  clear_and_add_message("BLACKSMITH_SHRINE_QUEST_START3_SID")
+end
+
+local function blacksmith_shrine_completion_condition_fn()
+  return (player_has_item("heart_heaven") == true and player_has_item("heart_world") == true and player_has_item("heart_world_beyond") == true)
+end
+
+local function blacksmith_shrine_completion_fn()
+  add_message_with_pause("BLACKSMITH_SHRINE_QUEST_COMPLETE_SID")
+  add_message_with_pause("BLACKSMITH_SHRINE_QUEST_COMPLETE2_SID")
+  clear_and_add_message("BLACKSMITH_SHRINE_QUEST_COMPLETE3_SID")
+
+  add_object_to_player_tile("hearts_fury")
+  remove_object_from_player("heart_heaven")
+  remove_object_from_player("heart_world")
+  remove_object_from_player("heart_world_beyond")
+  remove_active_quest("bagra_shrine")
+
+  return true
+end
+
+shrine_quest = Quest:new("blacksmith_shrine",
+                         "BLACKSMITH_SHRINE_QUEST_TITLE_SID",
+                         "THE_BLACKSMITH_DESCRIPTION_SID",
+                         "BLACKSMITH_SHRINE_DESCRIPTION_SID",
+                         "BLACKSMITH_SHRINE_QUEST_COMPLETE_SID",
+                         "BLACKSMITH_SHRINE_QUEST_REMINDER_SID",
+                         blacksmith_shrine_precond_fn,
+                         blacksmith_shrine_start_fn,
+                         blacksmith_shrine_completion_condition_fn,
+                         blacksmith_shrine_completion_fn)
+
+
 if sungem_quest:execute() == false then
-  add_message("THE_BLACKSMITH_SPEECH_TEXT_SID")
+  if shrine_quest:execute() == false then
+    add_message("THE_BLACKSMITH_SPEECH_TEXT_SID")
+  end
 end

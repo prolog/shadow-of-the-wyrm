@@ -134,6 +134,7 @@
 			<xs:element name="EarthTile" type="tns:Tile"/>
 			<xs:element name="SewerComplexTile" type="tns:Tile"/>
 			<xs:element name="SewerTile" type="tns:Tile"/>
+			<xs:element name="ShrineTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -860,6 +861,7 @@
 			<xs:attribute name="chaotic" type="xs:boolean" use="optional" default="0"/>
 			<xs:attribute name="piercing" type="xs:boolean" use="optional" default="0"/>
 			<xs:attribute name="incorporeal" type="xs:boolean" use="optional" default="0"/>
+			<xs:attribute name="vorpal" type="xs:boolean" use="optional" default="0"/>
 		</xs:extension>
 	</xs:complexContent>
 </xs:complexType>
@@ -1140,7 +1142,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="48"/>
+		<xs:maxInclusive value="49"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="Rarity">
@@ -1491,11 +1493,12 @@
 				Timewalk = 19
 				Cleansing = 20
 				Uncursing = 21
+				Detect Traps = 22
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="21"/>
+		<xs:maxInclusive value="22"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

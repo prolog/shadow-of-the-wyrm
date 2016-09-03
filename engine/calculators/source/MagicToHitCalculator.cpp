@@ -24,7 +24,7 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
     int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
     int level_bonus  = get_level_bonus(creature);
     int magic_bonus  = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_MAGIC) / NWP_SKILL_BONUS_DIVISOR;
-    int intelligence = creature->get_intelligence().get_current();
+    int intelligence = get_statistic(creature).get_current();
     int skills       = get_skills_bonus(creature);
     int modifiers    = get_modifier_bonus(creature);
 
@@ -50,6 +50,11 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
   }
 
   return to_hit;
+}
+
+Statistic& MagicToHitCalculator::get_statistic(CreaturePtr creature)
+{
+  return creature->get_intelligence_ref();
 }
 
 #ifdef UNIT_TESTS

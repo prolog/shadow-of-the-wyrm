@@ -1,3 +1,127 @@
+Shadow of the Wyrm v0.5.4 "Barrios"
+- Version started July 2, 2016.  Version finalized September 3, 2016.
+
+- New world map location type, shrine.  Updated the post-world map 
+  generation XML/script routines to place the sky/world/nether shrines.
+
+  - Rectangular shrines are pretty plain-jane.  They have statues and
+    pillars leading up to the centre, where the shrine's relic is kept.
+
+  - Cross shaped shrines keep the relic off to the sides.
+
+- The blacksmith now gives a quest for the shrine gems.  This is an
+  alternative if you wish to clear the shrines, but don't want the
+  artifact for the evil ending.  He crafts a divine blade of immense
+  power and protection.
+
+- Repurposed Bagra from a random high-level unique to the quest-giver for
+  the evil ending.  She now wanders Wyrmeswraec.  Her quest grants an
+  unholy dagger, Heart's Needle, that can be given to Amaurosis to
+  complete the evil ending and destroy the universe. (Jeremy Long and
+  others)
+
+- Boating now improves at a much slower pace.
+
+- Each of the Nine now include the skyborn in their list of creatures that
+  can be summoned when they are annoyed.
+
+- More random name combinations.
+
+- Skinning and tanning are now slightly less easy-mode, though still very
+  powerful with high skinning/tanning/dungeoneering.
+
+- Tanning now always adds at least 0.01 points of resistance when the
+  resistance is present.
+
+- Gnomes now start with Literacy, as do Adventurers.
+
+- Added a new vorpal flag.  This gives a 3% chance to insta-kill
+  creatures that are not incorporeal.  Added the flag to a new artifact,
+  the vorpal blade.
+
+- Added a flag to allow administrators to set a maximum number of
+  savefiles per user.  This is intended to limit resource usage on
+  multi-user systems.  The flag is -1 (unlimited characters) by default.
+
+- The size of a stack of ammunition is now based on how on the weight of
+  the individual projectiles.
+
+- New effect type, trap detection.  When blessed, detects all traps on the
+  level; uncursed, all traps in the FOV.  When cursed, hides all traps in
+  the FOV.  As a spell, Detect Traps is mystic and therefore available to
+  Oracles.  The detect traps spellbook is a potential starting spellbook 
+  for Oracles.
+
+- Added support for marking statistics, and gaining statistics.
+  Statistics can now be marked in certain circumstances (e.g., agility
+  is marked when dodging).  Every two days, each creature's statistics
+  are checked, and if there are any statistics whose marks equal the base
+  value of the statistic, there is a chance (~70%) that the stat will
+  increase.  Statistics are currently marked in the following cases:
+
+  - Strength: when digging on a tile or through another tile, when a
+    heavy melee attack hits.
+
+  - Dexterity: when dismantling a trap into useful components, when a
+    light melee attack hits, when a ranged attack hits.
+
+  - Agility: potentially when an attack is avoided.
+
+  - Health: when a particular status wears off or is cancelled, 
+    potentially when HP regenerates.
+
+  - Intelligence: successfully reading a spellbook, reading a scroll,
+    when a magical attack hits.
+
+  - Willpower: potentially when AP regenerates, when casting a spell
+    causes the spell's bonus to increase, drinking a potion, evoking a
+    wand.
+
+  - Charisma: when quests are requested and completed, when a sacrifice
+    is offered and accepted, when praying while in good standing.
+
+- Sacrificing on an altar now breaks the agnostic conduct.
+
+- Reduced the weight required for a weapon to be "heavy" from 30 lbs. to
+  20.  Adjusted a number of weapons to be heavy: Apocalypse, Torasin,
+  Urgol, Beow.
+
+- There is now an NPC in the Forest of Yew, Melura, who provides training
+  (marking) for statistics in exchange for ivory.
+
+- More stanzas for "Tel and Floridel".
+
+- New creatures: gorgon, skyborn, shrine hag, vorpal bug, gloaming,
+  Melura.
+
+- New spells/spellbooks: Detect Traps (mystic).
+
+- New items: scroll of trap detection.
+
+- New artifacts: Heart of Heaven, Heart of the World, Heart of the World
+  Beyond, holy sword "Heart's Fury", unholy dagger "Heart's Needle",
+  vorpal blade.
+
+- Bug fixes:
+
+  - Slaying information wasn't being displayed correctly when a weapon
+    slays '*' (everything).
+
+  - Text paging wasn't working correctly when the current "page" was
+    very long, as the additional padding wasn't being added.
+
+  - Very small resistances (ie, around 0) were showing their value in
+    scientific notation.  Fixed this so that resistances are still 
+    precisely calculated using doubles, but displayed using precision 2.
+
+  - Staircase generation in caverns was incredibly broken (4chan /rlg).
+    Down staircases in sewers were also broken.
+
+  - There was an unterminated parenthesis in damage output when the
+    damage didn't have any slays.
+
+  - Nagas didn't have speech text.
+
 Shadow of the Wyrm v0.5.3 "Calvi"
 - Version declared June 4, 2016.  Version finalized July 2, 2016.
 

@@ -9,12 +9,14 @@
 #include "MapProperties.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "StatisticsMarker.hpp"
 #include "TileGenerator.hpp"
 #include "TileManipulatorFactory.hpp"
 
 using namespace std;
 
 const int DigAction::DIG_PERCENT_CHANCE_ITEM = 8;
+const int DigAction::DIG_PERCENT_CHANCE_MARK_STATISTIC = 15;
 
 DigAction::DigAction()
 {
@@ -45,6 +47,14 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr 
           // Useful for when you wanted a lovely orchard full of cherry trees,
           // but you accidentally planted a pear seed.  How embarassing!
           tile->remove_additional_property(TileProperties::TILE_PROPERTY_PLANTED);
+
+          // Regular digging (ground, shovel - the kind that Heaney avoided) 
+          // has a chance to train Strength.
+          if (RNG::percent_chance(DIG_PERCENT_CHANCE_MARK_STATISTIC))
+          {
+            StatisticsMarker sm;
+            sm.mark_strength(creature);
+          }
         }
       }
       else
@@ -73,6 +83,10 @@ ActionCostValue DigAction::dig_through(CreaturePtr creature, ItemPtr dig_item, M
     add_new_tile_to_dig_location(new_tile, map, creature->get_id(), d);
     add_successful_dig_message(creature);
     handle_potential_item_breakage(creature, dig_item);
+
+    // Digging through a tile is strenuous, and always trains Strength.
+    StatisticsMarker sm;
+    sm.mark_strength(creature);
 
     acv = get_action_cost_value(creature);
   }

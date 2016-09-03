@@ -3,6 +3,7 @@
 #include "CreatureFactory.hpp"
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "MapUtils.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
