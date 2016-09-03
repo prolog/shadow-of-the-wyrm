@@ -49,9 +49,10 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // 20th century Paraguayan composer.
-  // La Catedral and El Ultimo Tremolo are incredible.
-  return "\"Barrios\"";
+  // A contemporary of Bach, Sylvius Leopold Weiss was one of the great
+  // lutenists and composers of the baroque era, writing music that I
+  // enjoy more than that of Bach himself.
+  return "\"Weiss\"";
 }
 
 string Metadata::get_game_version_synopsis() const
