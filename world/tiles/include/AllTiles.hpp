@@ -37,6 +37,7 @@
 #include "SewerComplexTile.hpp"
 #include "SewerTile.hpp"
 #include "ShoalsTile.hpp"
+#include "ShrineTile.hpp"
 #include "SiteOfDeathTile.hpp"
 #include "SpringsTile.hpp"
 #include "StaircaseTile.hpp"

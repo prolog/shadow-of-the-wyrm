@@ -40,6 +40,7 @@
 #include "MapTranslator.hpp"
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "SettlementRuinsGenerator.hpp"
+#include "ShrineGeneratorFactory.hpp"
 #include "SimpleTempleGenerator.hpp"
 #include "SnakingTempleGenerator.hpp"
 #include "SpiralDungeonGenerator.hpp"
@@ -103,6 +104,8 @@ string generate_overgrown_sacrifice_site();
 string generate_mine();
 string generate_castle();
 string generate_sewer();
+string generate_rectangular_shrine();
+string generate_cross_shrine();
 
 void   settlement_maps();
 void   city_maps();
@@ -586,6 +589,26 @@ string generate_sewer()
   return map_to_string(sewer_map);
 }
 
+string generate_rectangular_shrine()
+{
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr shrine_gen = ShrineGeneratorFactory::create_rectangular_shrine_generator(field_map);
+  MapPtr shrine_map = shrine_gen->generate();
+  cout << map_to_string(shrine_map, false);
+  return map_to_string(shrine_map);
+}
+
+string generate_cross_shrine()
+{
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr shrine_gen = ShrineGeneratorFactory::create_cross_shrine_generator(field_map);
+  MapPtr shrine_map = shrine_gen->generate();
+  cout << map_to_string(shrine_map, false);
+  return map_to_string(shrine_map);
+}
+
 string generate_world()
 {
   // Add inputs for parameters later!
@@ -921,6 +944,8 @@ void city_maps()
     cout << "6. Mine" << endl;
     cout << "7. Castle" << endl;
     cout << "8. Sewer" << endl;
+    cout << "9. Rectangular Shrine" << endl;
+    cout << "10. Cross Shrine" << endl;
 
     cin >> city_adjacent_map;
     
@@ -956,6 +981,14 @@ void city_maps()
       case 8:
         map = generate_sewer();
         output_map(map, "sewer.html");
+        break;
+      case 9:
+        map = generate_rectangular_shrine();
+        output_map(map, "rect_shrine.html");
+        break;
+      case 10:
+        map = generate_cross_shrine();
+        output_map(map, "cross_shrine.html");
         break;
       default:
         break;

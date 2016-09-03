@@ -7,6 +7,7 @@
 #include "ModifyStatisticsEffect.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
+#include "StatisticsMarker.hpp"
 #include "StatusEffect.hpp"
 
 using namespace std;
@@ -211,6 +212,11 @@ void StatusEffect::undo(CreaturePtr creature) const
       manager.add_new_message(undo_message);
       manager.send();
     }
+
+    // When a creature has dealt with a particular status, whether harmful or
+    // beneficial, they are the stronger for it.
+    StatisticsMarker sm;
+    sm.mark_health(creature);
   }
 }
 

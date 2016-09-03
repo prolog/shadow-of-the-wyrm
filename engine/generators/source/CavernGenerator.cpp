@@ -31,6 +31,8 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
   MapComponents cc = get_cavern_components(result_map);
   connect_cavern_components(result_map, cc);
   generate_traps(result_map);
+
+  update_depth_details(result_map);
   generate_staircases(result_map);
   
   result_map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
@@ -194,7 +196,12 @@ void CavernGenerator::generate_staircases(MapPtr map)
   generate_staircase(map, TileType::TILE_TYPE_UP_STAIRCASE, Direction::DIRECTION_UP);
     
   // Down staircase
-  generate_staircase(map, TileType::TILE_TYPE_DOWN_STAIRCASE, Direction::DIRECTION_DOWN);
+  Depth depth = map->size().depth();
+
+  if (depth.get_current() < depth.get_maximum())
+  {
+    generate_staircase(map, TileType::TILE_TYPE_DOWN_STAIRCASE, Direction::DIRECTION_DOWN);
+  }
 }
 
 // Generate a particular staircase
@@ -202,6 +209,14 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
 {
   TileGenerator tg;
   Dimensions dimensions = map->size();
+  string depth_incr = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+  bool place_player_on_down_staircase = depth_incr.empty();
+  bool place_player_on_staircase = place_player_on_down_staircase;
+
+  if (tile_type == TileType::TILE_TYPE_UP_STAIRCASE)
+  {
+    place_player_on_staircase = !place_player_on_down_staircase;
+  }
 
   bool found = false;
   Coordinate c;
@@ -219,7 +234,15 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
     if (!tile) break;
     if (tile && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
     {
-      place_staircase(map, c.first, c.second, tile_type, TileType::TILE_TYPE_CAVERN, Direction::DIRECTION_UP, get_permanence_default(), true);
+      if (tile_type == TileType::TILE_TYPE_UP_STAIRCASE)
+      {
+        place_up_staircase(map, c.first, c.second, TileType::TILE_TYPE_CAVERN, direction, get_permanence_default(), place_player_on_staircase);
+      }
+      else
+      {
+        place_down_staircase(map, c.first, c.second, TileType::TILE_TYPE_CAVERN, direction, false, place_player_on_staircase);
+      }
+
       break;
     }
   }

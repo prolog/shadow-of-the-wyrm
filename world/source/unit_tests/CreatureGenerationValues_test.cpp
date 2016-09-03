@@ -19,6 +19,8 @@ TEST(SW_World_CreatureGenerationValues, saveload)
   cgv.set_danger_level(22);
   cgv.set_rarity(Rarity(10));
   cgv.set_generator_filters(g_v);
+  cgv.set_race_id("fatratcatbat");
+  cgv.set_id("blargho");
 
   cgv.add_allowable_terrain_type(TileType::TILE_TYPE_BARRACKS);
   cgv.add_allowable_terrain_type(TileType::TILE_TYPE_MARSH);
@@ -56,5 +58,7 @@ TEST(SW_World_CreatureGenerationValues, saveload)
   vector<string> generator_filters = cgv2.get_generator_filters();
 
   EXPECT_TRUE(find(generator_filters.begin(), generator_filters.end(), "asdf") != generator_filters.end());
+  EXPECT_EQ("fatratcatbat", cgv2.get_race_id());
+  EXPECT_EQ("blargho", cgv2.get_id());
 }
 

@@ -61,6 +61,8 @@ class ShadowOfTheWyrmEngine
     bool process_name_and_start(const CharacterCreationDetails& ccd);
     bool process_load_game();
     bool process_exit_game();
+
+    bool is_new_game_allowed();
     
     EngineStateManager state_manager;
     ControllerPtr controller;

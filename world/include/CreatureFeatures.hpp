@@ -1,6 +1,13 @@
 #pragma once
 #include <string>
 
+enum struct CreatureWin
+{
+  CREATURE_WIN_NO_WIN = 0,
+  CREATURE_WIN_REGULAR = 1,
+  CREATURE_WIN_EVIL = 2
+};
+
 enum struct CreatureSize
 {
   CREATURE_SIZE_TINY = 0,

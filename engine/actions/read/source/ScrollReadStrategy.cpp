@@ -7,6 +7,7 @@
 #include "SpellFactory.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "SpellcastingProcessor.hpp"
+#include "StatisticsMarker.hpp"
 
 using namespace std;
 
@@ -56,6 +57,10 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
       {
         item_id.set_item_identified(readable, base_id, true);
       }
+
+      // Reading scrolls trains intelligence.
+      StatisticsMarker sm;
+      sm.mark_intelligence(creature);
 
       acv = get_action_cost_value(creature);
     }

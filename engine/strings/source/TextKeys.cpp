@@ -120,11 +120,13 @@ const string TextKeys::ALIGNMENT_NEUTRAL_ABRV = "ALIGNMENT_NEUTRAL_ABRV";
 const string TextKeys::LEVEL             = "LEVEL";
 const string TextKeys::LEVEL_ABRV        = "LEVEL_ABRV";
 const string TextKeys::WINNER            = "WINNER";
+const string TextKeys::WINNER_EVIL       = "WINNER_EVIL";
 
 const string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
 const string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
 const string TextKeys::DAMAGE_PIERCING   = "DAMAGE_PIERCING";
 const string TextKeys::DAMAGE_CHAOTIC    = "DAMAGE_CHAOTIC";
+const string TextKeys::DAMAGE_VORPAL     = "DAMAGE_VORPAL";
 const string TextKeys::DAMAGE_SLAYS      = "DAMAGE_SLAYS";
 
 const string TextKeys::ATTACK_DETAILS    = "ATTACK_DETAILS";
@@ -151,8 +153,9 @@ const string TextKeys::GAIN_LEVEL = "GAIN_LEVEL";
 
 const string TextKeys::UNARMED = "UNARMED";
 const string TextKeys::SOMETHING = "SOMETHING";
+const string TextKeys::EVERYTHING = "EVERYTHING";
 
 const string TextKeys::LATEST_MESSAGES = "LATEST_MESSAGES";
 const string TextKeys::FRIENDLY = "FRIENDLY";
 const string TextKeys::DUMPING_CHARACTER_FAILED = "DUMPING_CHARACTER_FAILED";
-
+const string TextKeys::NO_NEW_CHARACTERS = "NO_NEW_CHARACTERS";

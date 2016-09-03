@@ -1275,9 +1275,6 @@
     <ClInclude Include="engine\actions\include\TileMovementConfirmation.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\AmmunitionSurvivalCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
@@ -3777,6 +3774,39 @@
     <ClInclude Include="engine\calculators\include\DisarmTrapsCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\ShrineTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\RectangularShrineGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\ShrineGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\CrossShrineGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\ShrineGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\AmmunitionCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\DetectTrapsEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureStatsIncrementer.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Marks.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\StatisticsMarker.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\StatisticTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4207,9 +4237,6 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\TileMovementConfirmation.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\AmmunitionSurvivalCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\ArcanaPointsCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
@@ -7387,6 +7414,45 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\DisarmTrapsCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\ShrineTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\ShrineTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\RectangularShrineGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\ShrineGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\CrossShrineGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\ShrineGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\AmmunitionCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\DetectTrapsEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureStatsIncrementer.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Marks.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Marks_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\StatisticsMarker.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\StatisticsMarker_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

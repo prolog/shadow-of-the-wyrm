@@ -24,6 +24,22 @@
 			<Row y="91" x="97">~~~</Row>
 			<Script>areas/infinite_dungeon.lua</Script>
 		</Area>
+		<Area id="sky_shrine">
+			<Row y="1" x="87">~~~~</Row>
+			<Row y="2" x="87">~~f~</Row>
+			<Row y="3" x="87">~~h~</Row>
+			<Row y="4" x="87">~ff~</Row>
+			<Row y="5" x="87">~~~~</Row>
+			<Script>areas/sky_shrine.lua</Script>
+		</Area>
+		<Area id="nether_shrine">
+			<Row y="95" x="0">~~~~~</Row>
+			<Row y="96" x="0">~mmm~</Row>
+			<Row y="97" x="0">~mhm~</Row>
+			<Row y="98" x="0">~mmm~</Row>
+			<Row y="99" x="0">~~~~~</Row>
+			<Script>areas/nether_shrine.lua</Script>
+		</Area>
 		<Area id="infinite_sewer">
 			<Row y="80" x="76">~~~~~</Row>
 			<Row y="81" x="76">~~O~~</Row>
@@ -49,13 +65,14 @@
 			<Row y="94" x="13">~~~~~~~~</Row>
 			<Script>areas/atua_elar.lua</Script>
 		</Area>
+		<!-- Dwarf Lands contains the world-shrine as well -->
 		<Area id="dwarf_lands">
 			<Row y="4" x="7" >~~~~~~~~~~~~~~~</Row>
 			<Row y="5" x="7" >~~^^~~~~~~~^~~~</Row>
 			<Row y="6" x="7" >~^v^~~~~~~^f^~~</Row>
 			<Row y="7" x="7" >~^^^~~~~~~~~~~~</Row>
 			<Row y="8" x="7" >~~~~~~~~~^^^~~~</Row>
-			<Row y="9" x="7" >~~~~~~~~~~~^v^~</Row>
+			<Row y="9" x="7" >~~FhF~~~~~~^v^~</Row>
 			<Row y="10" x="7">~~~~~~~~~~~^^^~</Row>
 			<Row y="11" x="7">~~~~~~~~~~~~~~~</Row>
 			<Script>areas/dwarf_lands.lua</Script>

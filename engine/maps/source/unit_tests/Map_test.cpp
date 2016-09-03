@@ -115,6 +115,8 @@ TEST_F(SW_Engine_Map, saveload)
 {
   MapPtr map = make_map();
   map->set_property("foo", "bar");
+  vector<Coordinate> coords = {{0,1},{2,2},{3,3},{18,56}};
+  map->set_preset_locations(coords);
 
   MapPtr map2 = make_map();
 
@@ -126,4 +128,5 @@ TEST_F(SW_Engine_Map, saveload)
 
   EXPECT_TRUE(*map == *map2);
   EXPECT_EQ("bar", map2->get_property("foo"));
+  EXPECT_EQ(coords, map2->get_preset_locations());
 }

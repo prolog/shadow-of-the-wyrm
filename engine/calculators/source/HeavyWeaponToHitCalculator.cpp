@@ -21,7 +21,7 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
     SkillManager sm;
     
     int combat   = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_COMBAT);
-    int strength = creature->get_strength().get_current();
+    int strength = get_statistic(creature).get_current();
     int level    = get_level_bonus(creature);
     int weapon   = get_weapon_bonus(creature);
     int modifier = get_modifier_bonus(creature);
@@ -41,6 +41,11 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
   }
 
   return to_hit;
+}
+
+Statistic& HeavyWeaponToHitCalculator::get_statistic(CreaturePtr creature)
+{
+  return creature->get_strength_ref();
 }
 
 #ifdef UNIT_TESTS

@@ -56,6 +56,11 @@ class TileTextKeys
     static const std::string TILE_DESC_EARTH;
     static const std::string TILE_DESC_SEWER_COMPLEX;
     static const std::string TILE_DESC_SEWER;
+    static const std::string TILE_DESC_SHRINE;
+
+    static const std::string TILE_EXTRA_DESCRIPTION_SKY_SHRINE;
+    static const std::string TILE_EXTRA_DESCRIPTION_WORLD_SHRINE;
+    static const std::string TILE_EXTRA_DESCRIPTION_NETHER_SHRINE;
 
   protected:
     TileTextKeys();

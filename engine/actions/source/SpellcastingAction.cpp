@@ -16,6 +16,7 @@
 #include "SpellSelectionScreen.hpp"
 #include "SpellcastingProcessor.hpp"
 #include "SpellShapeProcessorFactory.hpp"
+#include "StatisticsMarker.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -223,6 +224,11 @@ void SpellcastingAction::update_spell_bonus(CreaturePtr caster, const Spell& spe
   if (bonus_updated && caster->get_is_player())
   {
     add_spell_bonus_increased_message(caster);
+
+    // When the spellcasting bonus is updated, the creature's willpower is
+    // trained.
+    StatisticsMarker sm;
+    sm.mark_willpower(caster);
   }
 }
 

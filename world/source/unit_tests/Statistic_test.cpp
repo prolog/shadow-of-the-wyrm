@@ -8,6 +8,18 @@ TEST(SW_World_Statistic, InitialValueIs1)
   EXPECT_EQ(1, stat.get_current());
 }
 
+TEST(SW_World_Statistic, get_max_marks)
+{
+  Statistic test(16);
+  test.get_marks_ref().set_value(14);
+
+  EXPECT_FALSE(test.get_max_marks());
+
+  test.get_marks_ref().set_value(16);
+
+  EXPECT_TRUE(test.get_max_marks());
+}
+
 TEST(SW_World_Statistic, Lowest)
 {
   Statistic stat(30);
@@ -74,6 +86,8 @@ TEST(SW_World_Statistic, saveload)
 {
   Statistic stat(45);
   Statistic stat2;
+  Marks m(32);
+  stat.set_marks(m);
 
   ostringstream ss;
 
@@ -84,4 +98,5 @@ TEST(SW_World_Statistic, saveload)
   stat2.deserialize(iss);
 
   EXPECT_TRUE(stat == stat2);
+  EXPECT_EQ(32, stat2.get_marks().get_value());
 }

@@ -34,6 +34,9 @@ class Resistance : public ISerializable
     void set_value(const double new_value);
     double get_value() const;
 
+    // Get a 2-precision, fixed value for the resistance.
+    std::string get_value_str() const;
+
     std::string str() const;
 
     virtual bool serialize(std::ostream& stream) const override;

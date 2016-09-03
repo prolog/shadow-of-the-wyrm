@@ -41,7 +41,7 @@ Creature::Creature()
   // Base speed is 50.  This needs to be set or slimes get 25 actions to your 1 (23 or 24 if you're quick!).
   set_speed(50);
   
-  Damage dam(1, 2, 0, DamageType::DAMAGE_TYPE_POUND, {}, false, false, false, 0, {});
+  Damage dam(1, 2, 0, DamageType::DAMAGE_TYPE_POUND, {}, false, false, false, false, 0, {});
   set_base_damage(dam);
 
   intrinsic_resistances.set_all_resistances_to(0);
@@ -468,7 +468,41 @@ void Creature::set_strength(const Statistic& new_strength)
   strength = new_strength;
 }
 
+Statistic& Creature::get_statistic_ref(const PrimaryStatisticType pr_st)
+{
+  switch(pr_st)
+  {
+    case PrimaryStatisticType::PRIMARY_STATISTIC_STRENGTH:
+      return strength;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_DEXTERITY:
+      return dexterity;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_AGILITY:
+      return agility;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_HEALTH:
+      return health;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_INTELLIGENCE:
+      return intelligence;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_WILLPOWER:
+      return willpower;
+      break;
+    case PrimaryStatisticType::PRIMARY_STATISTIC_CHARISMA:
+    default:
+      return charisma;
+      break;
+  }
+}
+
 Statistic Creature::get_strength() const
+{
+  return strength;
+}
+
+Statistic& Creature::get_strength_ref()
 {
   return strength;
 }
@@ -483,12 +517,22 @@ Statistic Creature::get_dexterity() const
   return dexterity;
 }
 
+Statistic& Creature::get_dexterity_ref()
+{
+  return dexterity;
+}
+
 void Creature::set_agility(const Statistic& new_agility)
 {
   agility = new_agility;
 }
 
 Statistic Creature::get_agility() const
+{
+  return agility;
+}
+
+Statistic& Creature::get_agility_ref()
 {
   return agility;
 }
@@ -503,12 +547,22 @@ Statistic Creature::get_health() const
   return health;
 }
 
+Statistic& Creature::get_health_ref()
+{
+  return health;
+}
+
 void Creature::set_intelligence(const Statistic& new_intelligence)
 {
   intelligence = new_intelligence;
 }
 
 Statistic Creature::get_intelligence() const
+{
+  return intelligence;
+}
+
+Statistic& Creature::get_intelligence_ref()
 {
   return intelligence;
 }
@@ -523,12 +577,22 @@ Statistic Creature::get_willpower() const
   return willpower;
 }
 
+Statistic& Creature::get_willpower_ref()
+{
+  return willpower;
+}
+
 void Creature::set_charisma(const Statistic& new_charisma)
 {
   charisma = new_charisma;
 }
 
 Statistic Creature::get_charisma() const
+{
+  return charisma;
+}
+
+Statistic& Creature::get_charisma_ref()
 {
   return charisma;
 }
@@ -725,14 +789,16 @@ void Creature::set_arcana_points(const Statistic& new_arcana_points)
   arcana_points = new_arcana_points;
 }
 
-void Creature::increment_arcana_points(const int amount)
+int Creature::increment_arcana_points(const int amount)
 {
   arcana_points.set_current(arcana_points.get_current() + amount);
+  return arcana_points.get_current();
 }
 
-void Creature::decrement_arcana_points(const int amount)
+int Creature::decrement_arcana_points(const int amount)
 {
   arcana_points.set_current(arcana_points.get_current() - amount);
+  return arcana_points.get_current();
 }
 
 Statistic Creature::get_arcana_points() const
@@ -1180,10 +1246,10 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 936, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1080, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 840, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 984, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
 	static_assert(sizeof(*this) == 424, "Unexpected sizeof Creature.");

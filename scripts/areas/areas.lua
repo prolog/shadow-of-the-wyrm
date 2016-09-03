@@ -51,6 +51,11 @@ function Area:set_additional_properties(addl_properties)
   self.additional_properties = addl_properties
 end
 
+-- Set the tile subtype
+function Area:set_tile_subtype(subtype)
+  self.tile_subtype = subtype
+end
+
 -- Set the area details on the specified map
 function Area:insert()
   -- If a custom map ID has been specified, set that.
@@ -67,6 +72,11 @@ function Area:insert()
   -- If so, link that.
   if (self.edesc_sid ~= nil) then
     map_set_edesc(self.map_id, self.row, self.col, self.edesc_sid)
+  end
+
+  -- Were we given a tile subtype to set, e.g. for shrines?
+  if (self.tile_subtype ~= nil) then
+    map_set_tile_subtype(self.map_id, self.row, self.col, self.tile_subtype)
   end
 
   -- Finally, add any additional properties.

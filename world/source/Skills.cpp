@@ -59,7 +59,6 @@ void Skill::initialize()
 {
   category = SkillCategory::SKILL_CATEGORY_UNDEFINED;
   value = 0;
-  marks = 0;
   threshold = 0;
 }
 
@@ -92,19 +91,19 @@ void Skill::increment_value()
   value++;
 }
 
-void Skill::set_marks(const int new_marks)
+void Skill::set_marks(const Marks& new_marks)
 {
   marks = new_marks;
 }
 
-int Skill::get_marks() const
+Marks Skill::get_marks() const
 {
   return marks;
 }
 
-void Skill::increment_marks()
+Marks& Skill::get_marks_ref()
 {
-  marks++;
+  return marks;
 }
 
 void Skill::set_threshold(const int new_threshold)
@@ -168,11 +167,11 @@ string Skill::str() const
 bool Skill::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, value);
-  Serialize::write_int(stream, marks);
   Serialize::write_int(stream, threshold);
   Serialize::write_enum(stream, category);
   Serialize::write_string(stream, skill_name_sid);
   Serialize::write_string(stream, skill_increment_message_sid);
+  marks.serialize(stream);
 
   return true;
 }
@@ -180,11 +179,11 @@ bool Skill::serialize(ostream& stream) const
 bool Skill::deserialize(istream& stream)
 {
   Serialize::read_int(stream, value);
-  Serialize::read_int(stream, marks);
   Serialize::read_int(stream, threshold);
   Serialize::read_enum(stream, category);
   Serialize::read_string(stream, skill_name_sid);
   Serialize::read_string(stream, skill_increment_message_sid);
+  marks.deserialize(stream);
 
   return true;
 }
@@ -1672,7 +1671,7 @@ void Skills::mark(const SkillType skill_name, const bool override_default)
   {
     if (skill_to_mark->get_value() > 0 || skill_to_mark->can_train_from_unlearned() || override_default)
     {
-      skill_to_mark->increment_marks();
+      skill_to_mark->get_marks_ref().incr();
     }
   }
 }
@@ -1702,7 +1701,7 @@ int Skills::get_value_incr_marks(const SkillType& skill_name)
 
     if (val > 0 || skill->can_train_from_unlearned())
     {
-      skill->increment_marks();
+      skill->get_marks_ref().incr();
     }
   }
 

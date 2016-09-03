@@ -10,6 +10,11 @@ Weight::Weight()
 {
 }
 
+Weight::Weight(const uint new_pounds, const uint new_ounces)
+{
+  ounces = new_ounces + (16 * new_pounds);
+}
+
 Weight::Weight(const uint new_ounces)
 : ounces(new_ounces)
 {

@@ -16,6 +16,7 @@ class CombatConstants
     static const int INITIAL_THREAT_RATING;
     static const int THREAT_RATING_INCREMENT;
     static const double RACE_SLAY_MULTIPLIER;
+    static const int PCT_CHANCE_VORPAL;
 
   protected:
     CombatConstants();

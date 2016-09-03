@@ -26,7 +26,7 @@ TEST(SW_World_Tiles_Features_Trap, saveload)
 {
   try {
     Trap t1, t2;
-    Damage d1(5, 5, 7, DamageType::DAMAGE_TYPE_COLD, {}, false, false, false, 0, {});
+    Damage d1(5, 5, 7, DamageType::DAMAGE_TYPE_COLD, {}, false, false, false, false, 0, {});
 
     t1.set_triggered(true);
     t1.set_id("foo");

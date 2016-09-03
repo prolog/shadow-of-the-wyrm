@@ -50,6 +50,9 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
     bool chaotic = XMLUtils::get_attribute_bool_value(damage_node, "chaotic");
     damage.set_chaotic(chaotic);
 
+    bool vorpal = XMLUtils::get_attribute_bool_value(damage_node, "vorpal");
+    damage.set_vorpal(vorpal);
+
     bool piercing = XMLUtils::get_attribute_bool_value(damage_node, "piercing");
     damage.set_piercing(piercing);
 

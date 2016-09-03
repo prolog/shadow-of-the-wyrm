@@ -1,4 +1,4 @@
-#include "AmmunitionSurvivalCalculator.hpp"
+#include "AmmunitionCalculator.hpp"
 #include "Conversion.hpp"
 #include "ItemProperties.hpp"
 #include "RNG.hpp"
@@ -6,17 +6,22 @@
 using namespace std;
 
 // 2% chance of breakage, always, unless the item is an artifact.
-const int AmmunitionSurvivalCalculator::BASE_PCT_CHANCE_BREAKAGE = 2;
-const int AmmunitionSurvivalCalculator::BASE_PCT_CHANCE_SURVIVAL = 40;
-const int AmmunitionSurvivalCalculator::ARCHERY_SKILL_SURVIVAL_DIVISOR = 2;
-const int AmmunitionSurvivalCalculator::ITEM_WEIGHT_SURVIVAL_DIVISOR = 6;
+const int AmmunitionCalculator::BASE_PCT_CHANCE_BREAKAGE = 2;
+const int AmmunitionCalculator::BASE_PCT_CHANCE_SURVIVAL = 40;
+const int AmmunitionCalculator::ARCHERY_SKILL_SURVIVAL_DIVISOR = 2;
+const int AmmunitionCalculator::ITEM_WEIGHT_SURVIVAL_DIVISOR = 6;
+const map<Weight, pair<int, int>> AmmunitionCalculator::AMMUNITION_STACK_RANGES = 
+{{Weight(0), {1, 50}},
+ {Weight(2, 0), {1, 20}},
+ {Weight(8, 0), {1, 8}},
+ {Weight(100, 0), {1, 3}}};
 
 // Whether or not ammunition survives is determined by:
 //
 // - Base 40% chance
 // - +1 for every 6oz. in weight
 // - +1 for every 2 pts of Archery
-bool AmmunitionSurvivalCalculator::survives(CreaturePtr creature, ItemPtr ammunition)
+bool AmmunitionCalculator::survives(CreaturePtr creature, ItemPtr ammunition)
 {
   bool survive = true;
 
@@ -56,4 +61,28 @@ bool AmmunitionSurvivalCalculator::survives(CreaturePtr creature, ItemPtr ammuni
   }
 
   return survive;
+}
+
+pair<int, int> AmmunitionCalculator::calculate_stack_size(ItemPtr ammo)
+{
+  pair<int, int> stack_size(1, 1);
+
+  if (ammo != nullptr)
+  {
+    Weight weight = ammo->get_weight();
+    
+    for (const auto& weight_pair : AMMUNITION_STACK_RANGES)
+    {
+      if (weight > weight_pair.first)
+      {
+        stack_size = weight_pair.second;
+      }
+      else
+      {
+        break;
+      }
+    }
+  }
+
+  return stack_size;
 }

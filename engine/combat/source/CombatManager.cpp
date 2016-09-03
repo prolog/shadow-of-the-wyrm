@@ -25,6 +25,7 @@
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
 #include "SpeedCalculatorFactory.hpp"
+#include "StatisticsMarker.hpp"
 #include "TertiaryUnarmedCalculator.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -32,6 +33,8 @@
 #include "WeaponManager.hpp"
 
 using namespace std;
+
+const int CombatManager::PCT_CHANCE_MARK_STATISTIC_ON_MISS = 15;
 
 CombatManager::CombatManager()
 {
@@ -104,7 +107,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 {
   ActionCostValue action_cost_value = 0;
 
-  bool mark_for_weapon_and_combat_skills = false;
+  bool mark_for_weapon_and_combat_skills_and_stat = false;
  
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(attacking_creature, attack_type);
   CombatTargetNumberCalculatorPtr ctn_calculator = CombatTargetNumberCalculatorFactory::create_target_number_calculator(attack_type);
@@ -145,7 +148,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
     {
       hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type);
-      mark_for_weapon_and_combat_skills = true;
+      mark_for_weapon_and_combat_skills_and_stat = true;
       destroy_weapon_if_necessary(attacking_creature, attack_type);
     }
     // Close miss (flavour text only.)
@@ -167,7 +170,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
   {
     if (mark_skills)
     {
-      mark_appropriate_skills(attacking_creature, attack_type, mark_for_weapon_and_combat_skills);
+      mark_appropriately(attacking_creature, attack_type, th_calculator->get_statistic(attacking_creature), mark_for_weapon_and_combat_skills_and_stat);
     }
 
     HostilityManager hm;
@@ -227,6 +230,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   HitTypeEnum hit_type_enum = HitTypeEnumConverter::from_successful_to_hit_roll(d100_roll);
   IHitTypeCalculatorPtr hit_calculator = IHitTypeFactory::create_hit_type(hit_type_enum);
   string hit_specific_msg = hit_calculator->get_combat_message();
+  
   bool piercing = damage_info.get_piercing();
   bool incorporeal = damage_info.get_incorporeal();
 
@@ -264,7 +268,9 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 
   if (damage_dealt > 0)
   {
-    // Deal the damage, handling death if necessary.
+    // If this attack is vorpal and passes the vorpal check, update the damage 
+    // to match the creature's remaining HP
+    handle_vorpal_if_necessary(attacking_creature, attacked_creature, damage_info, damage_dealt);
     deal_damage(attacking_creature, attacked_creature, damage_dealt);
   }
   else
@@ -280,6 +286,30 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   run_attack_script_if_necessary(attacking_creature, attacked_creature);
 
   return true;
+}
+
+void CombatManager::handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt)
+{
+  if (attacked_creature != nullptr)
+  {
+    bool vorpal = damage_info.get_vorpal();
+    bool attacked_creature_incorporeal = attacked_creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
+
+    if ((damage_dealt > 0)
+      && vorpal
+      && RNG::percent_chance(CombatConstants::PCT_CHANCE_VORPAL)
+      && !attacked_creature_incorporeal)
+    {
+      // Maximize the damage.
+      damage_dealt = attacked_creature->get_hit_points().get_current();
+
+      // Add a vorpal message.
+      string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
+      string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+      string vorpal_message = CombatTextKeys::get_vorpal_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
+      add_combat_message(attacking_creature, attacked_creature, vorpal_message);
+    }
+  }
 }
 
 // After attacking, check to see if there is an associated attack script.
@@ -410,6 +440,13 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
 
 bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
+  StatisticsMarker sm;
+
+  if (RNG::percent_chance(PCT_CHANCE_MARK_STATISTIC_ON_MISS))
+  {
+    sm.mark_agility(attacked_creature);
+  }
+
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
   add_combat_message(attacking_creature, attacked_creature, combat_message);
@@ -419,6 +456,12 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 
 bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
+  StatisticsMarker sm;
+
+  // Close misses are considered misses that the creature narrowly avoided
+  // due to quick reflexes - always mark Agility.
+  sm.mark_agility(attacked_creature);
+
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_close_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
   add_combat_message(attacking_creature, attacked_creature, combat_message);
@@ -444,19 +487,17 @@ void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, Crea
     // ...
   }
 
-  string attacked_creature_desc;
+  string attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
 
   if (creature && attacked_creature && (creature->get_id() != attacked_creature->get_id()))
   {
     if (piercing)
     {
-      attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
       additional_messages.push_back(CombatTextKeys::get_pierce_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
     }
 
     if (incorporeal)
     {
-      attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
       additional_messages.push_back(CombatTextKeys::get_incorporeal_attack_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
     }
   }
@@ -526,7 +567,7 @@ string CombatManager::get_appropriate_creature_description(CreaturePtr attacking
   }
   else
   {
-    if (creature->get_is_player())
+    if (creature && creature->get_is_player())
     {
       desc = StringTable::get(TextKeys::YOU);
     }
@@ -542,10 +583,13 @@ string CombatManager::get_appropriate_creature_description(CreaturePtr attacking
 // Create an appropriate ISkillMarker for the attack type, and get the list of
 // skills that should be marked, based on the successful attack.  Then, mark
 // each of them.
-void CombatManager::mark_appropriate_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success)
+void CombatManager::mark_appropriately(CreaturePtr attacking_creature, const AttackType attack_type, Statistic& marked_statistic, const bool attack_success)
 {
   SkillManager sm;  
   ISkillMarkerPtr skill_marker = SkillMarkerFactory::create_skill_marker(attack_type);
+
+  StatisticsMarker stat_marker;
+  stat_marker.mark_statistic(marked_statistic);
 
   if (skill_marker)
   {

@@ -32,6 +32,7 @@ class NullInventory : public IInventory
     uint count_items_with_property(const std::string& additional_property_name) const override;
     uint count_items(const std::string& item_base_id) const override;
     uint count_items() const override;
+    uint count_currency() const override;
 
     std::list<ItemPtr>& get_items_ref() override;
     const std::list<ItemPtr>& get_items_cref() const override;

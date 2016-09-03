@@ -20,11 +20,11 @@ TEST(SW_World_Skills_GeneralSkill, marks)
   ArcherySkill gs;
   gs.set_marks(7);
 
-  EXPECT_EQ(7, gs.get_marks());
+  EXPECT_EQ(7, gs.get_marks().get_value());
 
-  gs.increment_marks();
+  gs.get_marks_ref().incr();
 
-  EXPECT_EQ(8, gs.get_marks());
+  EXPECT_EQ(8, gs.get_marks().get_value());
 }
 
 TEST(SW_World_Skills_GeneralSkill, threshold)

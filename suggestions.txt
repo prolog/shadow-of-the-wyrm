@@ -1,14 +1,15 @@
 Me:
-- New tile type: shrine ('o', bright cyan)
-- Sky-shrine (field), world-shrine (forest), nether-shrine (marsh).  
-  randomly located. 
-- Text in Atua-Elar on the shrines and their significance.
-- Each is locked.  key should be somewhere else, in a set location 
-  (Aeschburh [e], Yew [n], Stonewall [g]).
-- There should be sections filled with moderate/strong/very strong creatures
-- inner room should contain an artifact.
-- the three artifacts should be able to be given to Farra in exchange for the 
-  item that can be given to Amaurosis for an evil ending.
+- Clean up the Lua code to require + use the new constants
+- Work on training stats:
+  - Str: carrying heavy loads.
+  - Hea: when eating and not becoming full.
+  - Int: learning a previously unknown effect.
+  - Cha: periodic chance when wearing rings or amulets.
+- Traps that fire and kill a creature are giving the player exp?
+- Equipping from a stack of rings (maybe other objects, too) doesn't
+  properly identify on use.
+- Update ResistancesTranslator to make use of Resistance::get_value_str()
+- Test clearing all shrines
 - Implement proper branded weapons.  These should allow for any "magical"
   damage type (heat through lightning in the damage enum) to be the weapon
   damage instead.  Should also allow for chaotic or piercing flags.  Gives
@@ -17,13 +18,10 @@ Me:
   melee weapon groups, and ranged ammunition.  Remove all the individual
   branded-like items from the game configuration.
 - Implement a draining flag (50% chance return 1/4 damage to attacker).
-- Implement a vorpal flag (small chance, ~5% to insta-kill on successful
-  hit, with special message).
 - Ensure item describers properly handle the brads, plus draining/vorpal/
   piercing/chaotic.
-- Special rooms: beer hall, magical workshop.
+- Special rooms: beer hall, magical workshop, armory.
 - Initial Music skill implementation.
-- Initial Disarm Traps skill implementation.
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
 - Scent maps/track by scent.
@@ -33,7 +31,6 @@ Me:
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)
-- Evil story arc
 - Linux support (get working using Fedora/Debian in VirtualBox).
 - Investigate targetting not staying properly some (all?) of the time.
 - General performance improvements.
@@ -49,8 +46,6 @@ Me:
   items can be done and dumped to disk.
 - Capacities on barrels, so that they don't contain an infinite amount
   of booze.
-- Adjust ammunition stacks so that lighter items (arrows) have larger
-  stacks than larger items (clubs, javelins, and so on).
 - Define all monsters as good/neutral/evil
 - Monsters should have a chance of being generated friendly when same
   alignment.
@@ -59,6 +54,11 @@ Me:
   and so on properly check slays.
 - Discover traps on search?  Passive search at the end of each turn for
   traps?
+
+For v1:
+- Item generation needs a serious overhaul!  Many items are rarely, if 
+  ever, generated.
+- Revisit creature generation algorithm.
 
 Sean McKeague:
 - Ability to pick up partial stacks.

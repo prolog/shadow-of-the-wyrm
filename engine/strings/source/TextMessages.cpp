@@ -266,6 +266,9 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
     case TileType::TILE_TYPE_TEMPLE:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_TEMPLE);
       break;
+    case TileType::TILE_TYPE_SHRINE:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_SHRINE);
+      break;
     case TileType::TILE_TYPE_UNDEFINED:
     case TileType::TILE_TYPE_WHEAT:
     case TileType::TILE_TYPE_CAIRN:

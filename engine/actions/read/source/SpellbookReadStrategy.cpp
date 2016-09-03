@@ -6,6 +6,7 @@
 #include "SpellbookReadStrategy.hpp"
 #include "SpellcastingTextKeys.hpp"
 #include "SpellbookCalculator.hpp"
+#include "StatisticsMarker.hpp"
 #include "StringTable.hpp"
 #include "TextMessages.hpp"
 
@@ -48,6 +49,10 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
           if (spell_learned)
           {
             learn_spell_from_spellbook(creature, spellbook, item_id, spell_id, magic_category);
+
+            // Reading spellbooks trains intelligence.
+            StatisticsMarker sm;
+            sm.mark_intelligence(creature);
 
             // Determine whether the spellbook is destroyed afterwards.
             spellbook_destroyed = sc.get_is_spellbook_destroyed(spellbook_status);

@@ -116,11 +116,13 @@ class TextKeys
     static const std::string LEVEL;
     static const std::string LEVEL_ABRV;
     static const std::string WINNER;
+    static const std::string WINNER_EVIL;
     
     static const std::string DAMAGE_MELEE;
     static const std::string DAMAGE_RANGED;
     static const std::string DAMAGE_PIERCING;
     static const std::string DAMAGE_CHAOTIC;
+    static const std::string DAMAGE_VORPAL;
     static const std::string DAMAGE_SLAYS;
 
     static const std::string ATTACK_DETAILS;
@@ -147,10 +149,12 @@ class TextKeys
     static const std::string UNARMED;
 
     static const std::string SOMETHING;
+    static const std::string EVERYTHING;
 
     static const std::string LATEST_MESSAGES;
     static const std::string FRIENDLY;
     static const std::string DUMPING_CHARACTER_FAILED;
+    static const std::string NO_NEW_CHARACTERS;
 
   protected:
     TextKeys();

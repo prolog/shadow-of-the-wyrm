@@ -27,6 +27,7 @@ bool Statistic::operator==(const Statistic& stat) const
 
   result = result && (base == stat.base);
   result = result && (current == stat.current);
+  result = result && (marks == stat.marks);
 
   return result;
 }
@@ -80,10 +81,32 @@ bool Statistic::get_full() const
   return (current == base);
 }
 
+// True if the number of marks equals the base value.
+bool Statistic::get_max_marks() const
+{
+  return (base == marks.get_value());
+}
+
+void Statistic::set_marks(const Marks& new_marks)
+{
+  marks = new_marks;
+}
+
+Marks Statistic::get_marks() const
+{
+  return marks;
+}
+
+Marks& Statistic::get_marks_ref()
+{
+  return marks;
+}
+
 bool Statistic::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, base);
   Serialize::write_int(stream, current);
+  marks.serialize(stream);
 
   return true;
 }
@@ -92,6 +115,7 @@ bool Statistic::deserialize(istream& stream)
 {
   Serialize::read_int(stream, base);
   Serialize::read_int(stream, current);
+  marks.deserialize(stream);
 
   return false;
 }

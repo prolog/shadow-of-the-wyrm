@@ -117,6 +117,15 @@ double Resistance::get_value() const
   return value;
 }
 
+string Resistance::get_value_str() const
+{
+  stringstream ss;
+  ss.precision(2);
+
+  ss << fixed << value;
+  return ss.str();
+}
+
 // Used only for testing/debug purposes (stub tester, etc).
 string Resistance::str() const
 {
