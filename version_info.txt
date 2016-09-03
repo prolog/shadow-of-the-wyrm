@@ -1,5 +1,8 @@
+Shadow of the Wyrm v0.5.5 "Weiss"
+- Version declared September 3, 2016.
+
 Shadow of the Wyrm v0.5.4 "Barrios"
-- Version started July 2, 2016.  Version finalized September 3, 2016.
+- Version declared July 2, 2016.  Version finalized September 3, 2016.
 
 - New world map location type, shrine.  Updated the post-world map 
   generation XML/script routines to place the sky/world/nether shrines.
