@@ -1,6 +1,20 @@
 Shadow of the Wyrm v0.5.5 "Weiss"
 - Version declared September 3, 2016.
 
+- Stats can now be marked periodically.  Every three hours, the game
+  checks for:
+
+  - Being burdened (+1 mark) or strained (+2 marks) - Strength
+
+  - Being neither hungry nor full (+1 mark) - Health
+
+  - Wearing any rings or amulets (+1 mark for each) - Charisma
+
+- Bug fixes:
+
+  - Improving statistics when not going through the NPC was not
+    incrementing the marks properly.
+
 Shadow of the Wyrm v0.5.4 "Barrios"
 - Version declared July 2, 2016.  Version finalized September 3, 2016.
 

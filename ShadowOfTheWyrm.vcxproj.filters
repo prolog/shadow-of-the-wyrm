@@ -3807,6 +3807,9 @@
     <ClInclude Include="world\include\StatisticTypes.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureStatisticsMarkerChecker.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7453,6 +7456,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\StatisticsMarker_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureStatisticsMarkerChecker.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

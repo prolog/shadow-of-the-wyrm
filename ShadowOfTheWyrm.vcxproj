@@ -954,6 +954,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\time\include\CreatureModifiers.hpp" />
     <ClInclude Include="engine\time\include\CreaturePietyRegeneration.hpp" />
     <ClInclude Include="engine\time\include\CreatureSkillIncrementer.hpp" />
+    <ClInclude Include="engine\time\include\CreatureStatisticsMarkerChecker.hpp" />
     <ClInclude Include="engine\time\include\CreatureStatsIncrementer.hpp" />
     <ClInclude Include="engine\time\include\CreatureStatuses.hpp" />
     <ClInclude Include="engine\time\include\CreatureTimeObserver.hpp" />
@@ -1489,6 +1490,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     </ClCompile>
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\time\source\AgeTimeObserver.cpp" />
+    <ClCompile Include="engine\time\source\CreatureStatisticsMarkerChecker.cpp" />
     <ClCompile Include="engine\time\source\CreatureStatsIncrementer.cpp" />
     <ClCompile Include="engine\time\source\SpecialDayObserver.cpp" />
     <ClCompile Include="engine\time\source\TileTransformObserver.cpp" />

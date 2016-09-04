@@ -5,6 +5,7 @@
 #include "CreaturePietyRegeneration.hpp"
 #include "CreatureSkillIncrementer.hpp"
 #include "CreatureStatsIncrementer.hpp"
+#include "CreatureStatisticsMarkerChecker.hpp"
 #include "CreatureModifiers.hpp"
 #include "CreatureStatuses.hpp"
 #include "CreatureTimeObserver.hpp"
@@ -50,6 +51,9 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   ICreatureRegenerationPtr status_chekr = std::make_shared<CreatureStatuses>();
   // Every half an hour to an hour, do alcohol absorption and metabolism.
   ICreatureRegenerationPtr alcohol_chkr = std::make_shared<CreatureAlcoholTimer>();
+  // Every few hours, check to see if the creature meets any of the conditions
+  // for marking statistics.
+  ICreatureRegenerationPtr st_mark_chkr = std::make_shared<CreatureStatisticsMarkerChecker>(360);
 
   regen.push_back(hp_regen    );
   regen.push_back(ap_regen    );
@@ -62,6 +66,7 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   regen.push_back(hungr_checkr);
   regen.push_back(status_chekr);
   regen.push_back(alcohol_chkr);
+  regen.push_back(st_mark_chkr);
 }
 
 void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
