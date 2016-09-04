@@ -39,7 +39,7 @@ bool StatisticsMarker::mark_statistic(Statistic& stat, const StatisticsMarkerPro
     
     if (smpd.get_override_p_denom() == false)
     {
-      calculate_mark_probability_denominator(base_val);
+      y = calculate_mark_probability_denominator(base_val);
     }
 
     if (RNG::x_in_y_chance(x, y))
