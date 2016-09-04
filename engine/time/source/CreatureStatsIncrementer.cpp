@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const int CreatureStatsIncrementer::PCT_CHANCE_INCREMENT_STATISTIC = 70;
+const int CreatureStatsIncrementer::PCT_CHANCE_INCREMENT_STATISTIC = 75;
 
 CreatureStatsIncrementer::CreatureStatsIncrementer()
 : ICreatureRegeneration(),
