@@ -10,6 +10,8 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 
   - Wearing any rings or amulets (+1 mark for each) - Charisma
 
+- Increased the chance for a statistic to be incremented when max-marked.
+
 - Bug fixes:
 
   - Improving statistics when not going through the NPC was not
