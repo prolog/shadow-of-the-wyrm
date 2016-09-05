@@ -1,4 +1,6 @@
 #include <algorithm>
+#include "Game.hpp"
+#include "PhaseOfMoonCalculator.hpp"
 #include "StatisticsMarker.hpp"
 #include "RNG.hpp"
 
@@ -145,9 +147,19 @@ int StatisticsMarker::calculate_mark_probability_denominator(const int stat_base
 {
   int d = stat_base_value;
 
-  if (d < 0)
+  Game& game = Game::instance();
+  PhaseOfMoonCalculator pomc;
+  PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
+
+  // Marking statistics is easier when the moon is waxing, and significantly
+  // easier when the moon is full.
+  if (d < 0 || phase == PhaseOfMoonType::PHASE_OF_MOON_FULL)
   {
     d = 0;
+  }
+  else if (phase == PhaseOfMoonType::PHASE_OF_MOON_WAXING)
+  {
+    d = d / 2;
   }
 
   int denom = static_cast<int>(std::pow(2, (d / 10)));
