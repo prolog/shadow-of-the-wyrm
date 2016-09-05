@@ -335,7 +335,7 @@ ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creatur
       if (wearable != nullptr)
       {
         ItemIdentifier iid;
-        iid.set_item_identified(item, item->get_base_id(), true);
+        iid.set_item_identified(creature, item, item->get_base_id(), true);
       }
 
       // If auto-cursing, curse it.

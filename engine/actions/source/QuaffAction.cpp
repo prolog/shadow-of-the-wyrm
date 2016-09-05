@@ -108,7 +108,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
         // If the item was not identified prior to quaffing, identify it now.
         if (!potion_originally_identified)
         {
-          item_id.set_item_identified(potion, potion_base_id, true);
+          item_id.set_item_identified(creature, potion, potion_base_id, true);
         }
       }
 

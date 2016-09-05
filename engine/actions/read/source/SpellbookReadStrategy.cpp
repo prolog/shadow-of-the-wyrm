@@ -98,7 +98,7 @@ void SpellbookReadStrategy::learn_spell_from_spellbook(CreaturePtr creature, Spe
 
   // The creature successfully learned the spell.
   // Identify the spellbook.
-  item_id.set_item_identified(spellbook, spellbook->get_base_id(), true);
+  item_id.set_item_identified(creature, spellbook, spellbook->get_base_id(), true);
 
   // Add a message about this.
   add_read_message(get_player_and_monster_read_sids(), creature, spellbook, item_id);

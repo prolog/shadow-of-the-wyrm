@@ -5,7 +5,7 @@ require('level')
 -- become more experienced.
 local function apothecary_stat_gain_fn(creature_id, level)
   if level == 1 then
-    identify_item_type(CITEM_TYPE_POTION)
+    identify_item_type(creature_id, CITEM_TYPE_POTION)
   end
 
   if level % 5 == 0 then

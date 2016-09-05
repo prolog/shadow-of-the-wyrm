@@ -4,7 +4,7 @@ require('level')
 -- 
 -- Each merchant starts off knowing everything about wands and potions, 
 -- rings and amulet, or scrolls and spellbooks.
-local function identify_random_item_types()
+local function identify_random_item_types(creature_id)
   local merc_item_types = { {CITEM_TYPE_WAND, CITEM_TYPE_POTION},
                             {CITEM_TYPE_RING, CITEM_TYPE_AMULET},
                             {CITEM_TYPE_SCROLL, CITEM_TYPE_SPELLBOOK} }
@@ -13,7 +13,7 @@ local function identify_random_item_types()
   local merc_item_type = merc_item_types[math.random(#merc_item_types)]
 
   for i,itype in ipairs(merc_item_type) do
-    identify_item_type(itype)
+    identify_item_type(creature_id, itype)
   end
 end
 
@@ -22,7 +22,7 @@ end
 -- a particular rare and magical class of items.
 local function merchant_stat_gain_fn(creature_id, level)
   if level == 1 then
-    identify_random_item_types()
+    identify_random_item_types(creature_id)
   end
 
   if level % 5 == 0 then
