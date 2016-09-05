@@ -55,7 +55,7 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
 
       if (effect_identified && !readable_originally_identified)
       {
-        item_id.set_item_identified(readable, base_id, true);
+        item_id.set_item_identified(creature, readable, base_id, true);
       }
 
       // Reading scrolls trains intelligence.

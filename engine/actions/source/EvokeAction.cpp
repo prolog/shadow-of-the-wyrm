@@ -126,7 +126,7 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
         bool wand_identified = process_wand_damage_and_effect(creature, map, caster_coord, evoke_result.second, wand_spell, wand->get_status(), original_charges);
 
         // If the wand was identified during use, name it.
-        name_wand_if_identified(wand, wand_identified, wand_originally_identified, item_id);
+        name_wand_if_identified(creature, wand, wand_identified, wand_originally_identified, item_id);
 
         // If this is a useful wand (effect type isn't null), train willpower.
         if (et != EffectType::EFFECT_TYPE_NULL)
@@ -288,7 +288,7 @@ bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr ma
   return wand_identified;
 }
 
-void EvokeAction::name_wand_if_identified(WandPtr wand, const bool wand_identified, const bool wand_originally_identified, const ItemIdentifier& item_id) const
+void EvokeAction::name_wand_if_identified(CreaturePtr creature, WandPtr wand, const bool wand_identified, const bool wand_originally_identified, const ItemIdentifier& item_id) const
 {
   // Was the item identified?
   if (wand && wand_identified)
@@ -296,7 +296,7 @@ void EvokeAction::name_wand_if_identified(WandPtr wand, const bool wand_identifi
     // If the item was not identified prior to quaffing, identify it now.
     if (!wand_originally_identified)
     {
-      item_id.set_item_identified(wand, wand->get_base_id(), true);
+      item_id.set_item_identified(creature, wand, wand->get_base_id(), true);
     }
   }
 }

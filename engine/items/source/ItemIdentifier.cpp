@@ -6,6 +6,7 @@
 #include "ItemFilterFactory.hpp"
 #include "ItemStatusTextKeys.hpp"
 #include "SkinningConstants.hpp"
+#include "StatisticsMarker.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -51,7 +52,7 @@ void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<I
       // This is an item to be identified (it passes all the filters), so identify it.
       if (passes_filter && item) 
       {
-        set_item_identified(item, item->get_base_id(), true);
+        set_item_identified(creature, item, item->get_base_id(), true);
       }
     }
   }
@@ -86,7 +87,7 @@ void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<I
       // This is an item to be identified (it passes all the filters), so identify it.
       if (passes_filter && item) 
       {
-        set_item_identified(item, item->get_base_id(), true);
+        set_item_identified(creature, item, item->get_base_id(), true);
       }
     }    
   }
@@ -103,7 +104,7 @@ void ItemIdentifier::set_possessions_identified_by_type(CreaturePtr creature, co
 }
 
 // Identify an item
-void ItemIdentifier::set_item_identified(ItemPtr item, const string& base_item_id, const bool is_identified, const bool item_is_base_item) const
+void ItemIdentifier::set_item_identified(CreaturePtr identifying_creature, ItemPtr item, const string& base_item_id, const bool is_identified, const bool item_is_base_item) const
 {
   ItemPtr base_item;
   
@@ -118,12 +119,21 @@ void ItemIdentifier::set_item_identified(ItemPtr item, const string& base_item_i
   
   if (item && base_item)
   {
+    // Was the original item type identified?
+    bool original_prev_identified = base_item->get_item_identified();
+
     // "Base identify" all items of that type.
     base_item->set_item_identified(is_identified);
     
     // Fully identify this particular item.
     item->set_item_identified(true);
     item->set_status_identified(true);
+
+    if (identifying_creature != nullptr && original_prev_identified == false)
+    {
+      StatisticsMarker sm;
+      sm.mark_intelligence(identifying_creature);
+    }
   }
 }
 

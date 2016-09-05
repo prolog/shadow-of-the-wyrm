@@ -68,7 +68,7 @@ bool IdentifyEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionMan
     
     if (item)
     {
-      item_id.set_item_identified(item, item->get_base_id(), true);
+      item_id.set_item_identified(creature, item, item->get_base_id(), true);
       return true;
     }
   }

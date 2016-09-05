@@ -2832,11 +2832,12 @@ int identify_item(lua_State* ls)
     Game& game = Game::instance();
     const map<string, ItemPtr>& items = game.get_items_ref();
     const auto& i_it = items.find(item_base_id);
+    CreaturePtr creature = game.get_current_player();
 
     if (i_it != items.end())
     {
       ItemIdentifier iid;
-      iid.set_item_identified(i_it->second, item_base_id, true, true);
+      iid.set_item_identified(creature, i_it->second, item_base_id, true, true);
       identified_item = true;
     }
   }
@@ -2854,9 +2855,11 @@ int identify_item_type(lua_State* ls)
 {
   int num_identified = 0;
 
-  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
   {
-    ItemType item_type = static_cast<ItemType>(lua_tointeger(ls, 1));
+    string creature_id = lua_tostring(ls, 1);
+    ItemType item_type = static_cast<ItemType>(lua_tointeger(ls, 2));
+    CreaturePtr creature = get_creature(creature_id);
 
     Game& game = Game::instance();
     const map<string, ItemPtr>& items = game.get_items_ref();
@@ -2868,7 +2871,7 @@ int identify_item_type(lua_State* ls)
 
       if ((item->get_type() == item_type) && (!iid.get_item_identified(item, true)))
       {
-        iid.set_item_identified(item, item->get_base_id(), true);
+        iid.set_item_identified(creature, item, item->get_base_id(), true);
         num_identified++;
       }
     }
