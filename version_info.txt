@@ -14,6 +14,11 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 
 - Increased the chance for a statistic to be incremented when max-marked.
 
+- The phase of moon now has an effect on marking statistics.  The chance
+  of marking a statistics when the moon is waxing is twice as easy, 
+  while when the moon is full, statistics are always marked - no 
+  probability check.
+
 - Bug fixes:
 
   - Improving statistics when not going through the NPC was not
