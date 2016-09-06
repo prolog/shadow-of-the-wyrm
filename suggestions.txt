@@ -1,6 +1,4 @@
 Me:
-- When the moon is full, stats should have a better chance of being
-  marked.
 - New spell: vorpal bolt
 - Clean up the Lua code to require + use the new constants
 - Traps that fire and kill a creature are giving the player exp?
