@@ -71,7 +71,7 @@ int parse_command_line_arguments(int argc, char* argv[])
       int test_result = run_unit_tests();
       return test_result;
       #else
-      cout << "Unit tests are not available in release mode." << endl;
+      cout << "Unit tests are not available in this build." << endl;
       #endif
     }
     else
