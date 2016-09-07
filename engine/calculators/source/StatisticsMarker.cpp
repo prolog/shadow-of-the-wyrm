@@ -148,8 +148,15 @@ int StatisticsMarker::calculate_mark_probability_denominator(const int stat_base
   int d = stat_base_value;
 
   Game& game = Game::instance();
-  PhaseOfMoonCalculator pomc;
-  PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
+  WorldPtr world = game.get_current_world();
+  PhaseOfMoonType phase = PhaseOfMoonType::PHASE_OF_MOON_NULL;
+
+  if (world != nullptr)
+  {
+    Calendar& cal = world->get_calendar();
+    PhaseOfMoonCalculator pomc;
+    phase = pomc.calculate_phase_of_moon(cal.get_seconds());
+  }
 
   // Marking statistics is easier when the moon is waxing, and significantly
   // easier when the moon is full.
