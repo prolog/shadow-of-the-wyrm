@@ -7,11 +7,11 @@ Class::Class()
 : piety_cost_multiplier(1)
 , piety_regen_bonus(0)
 , user_playable(false)
-, hit_dice(1)
-, ap_dice(0)
 , experience_multiplier(1)
 , hp_regen_multiplier(1)
 , ap_regen_multiplier(1)
+, hit_dice(1)
+, ap_dice(0)
 {
 }
 

@@ -8,17 +8,17 @@
 using namespace std;
 
 Damage::Damage()
-: Dice(0, 0, 0), damage_type(DamageType::DAMAGE_TYPE_SLASH), chaotic(false), vorpal(false), piercing(false), incorporeal(false), effect_bonus(0)
+: Dice(0, 0, 0), chaotic(false), vorpal(false), piercing(false), incorporeal(false), damage_type(DamageType::DAMAGE_TYPE_SLASH), effect_bonus(0)
 {
 }
 
 Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const vector<string>& rslays, const bool chaos, const bool vorp, const bool pierce, const bool incorp, const int eb, const StatusAilments& ailments)
-: Dice(dice, sides, mod), damage_type(dtype), slays_races(rslays), chaotic(chaos), vorpal(vorp), piercing(pierce), incorporeal(incorp), effect_bonus(eb), status_ailments(ailments)
+: Dice(dice, sides, mod), chaotic(chaos), vorpal(vorp), piercing(pierce), incorporeal(incorp), damage_type(dtype), slays_races(rslays), effect_bonus(eb), status_ailments(ailments)
 {
 }
 
 Damage::Damage(const Damage& d)
-: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), slays_races(d.slays_races), chaotic(d.chaotic), vorpal(d.vorpal), piercing(d.piercing), incorporeal(d.incorporeal), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
+: Dice(d.num_dice, d.dice_sides, d.modifier), chaotic(d.chaotic), vorpal(d.vorpal), piercing(d.piercing), incorporeal(d.incorporeal), damage_type(d.damage_type), slays_races(d.slays_races), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
 {
   DamagePtr addl_damage = d.get_additional_damage();
   
