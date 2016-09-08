@@ -128,7 +128,7 @@ class Integer
 
         while (map_it != map.end() && cur <= pos)
         {
-          typename T second_val = map_it->second;
+          auto second_val = map_it->second;
 
           if (second_val->get_user_playable())
           {
