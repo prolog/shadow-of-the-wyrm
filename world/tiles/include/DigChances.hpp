@@ -9,7 +9,7 @@ class DigChances : public ISerializable
     DigChances();
     DigChances(const int new_pct_chance_undead, const int new_pct_chance_item, const std::vector<std::string>& new_item_ids);
 
-  	bool DigChances::operator==(const DigChances& dc) const;
+  	bool operator==(const DigChances& dc) const;
 
     void set_pct_chance_undead(const int new_pct_chance_undead);
     int get_pct_chance_undead() const;
