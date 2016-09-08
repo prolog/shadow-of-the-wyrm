@@ -173,7 +173,6 @@ pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, 
         }
         else
         {
-          int existing_new_quantity = i_quantity - rem_quantity;
           int new_quantity = rem_quantity;
 
           ItemPtr new_item = ItemPtr(current_item->clone());

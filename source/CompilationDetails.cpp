@@ -51,6 +51,8 @@ string CompilationDetails::get_platform() const
   oss << "Win64";
   #elif defined(_WIN32)
   oss << "Win32";
+  #elif defined(__linux__)
+  oss << "Linux";
   #else
   // This needs to be filled in when porting to Linux/FreeBSD/MacOS/etc.
   static_assert(false, "Platform not recognized");
@@ -66,6 +68,8 @@ string CompilationDetails::get_compiler() const
 
   #ifdef _MSC_VER
   compiler_details << "MSVC " << _MSC_VER;
+  #elif defined(__GNUC__)
+  compiler_details << "GCC " << __GNUC__ << "." << __GNUC_MINOR__ << "." << __GNUC_PATCHLEVEL__;
   #else
   // This needs to be filled in when porting to use gcc/etc
   static_assert(false, "Unrecognized compiler.");
