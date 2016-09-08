@@ -29,7 +29,6 @@ void convert_savefile(const string& savefile, const string& outfile)
 
   string user_name, version, compilation_details, character_synopsis;
   
-  streamoff cur_pos_begin = ifile.tellg();
   ifile.seekg(0, ifile.end);
   streamoff length = ifile.tellg();
   ifile.seekg(0, ifile.beg);
