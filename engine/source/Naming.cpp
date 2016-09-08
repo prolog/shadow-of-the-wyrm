@@ -115,7 +115,7 @@ string Naming::clean_name(const string& name)
 
   if (new_name.size() > 0)
   {
-    size_t new_name_length = min(new_name.size(), MAXIMUM_NAME_SIZE);
+    size_t new_name_length = std::min<size_t>(new_name.size(), MAXIMUM_NAME_SIZE);
     new_name = new_name.substr(0, new_name_length);
   }
 
