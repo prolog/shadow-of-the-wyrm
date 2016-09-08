@@ -8,10 +8,10 @@ colour(Colour::COLOUR_WHITE),
   ap_cost(0), 
   speed(1), 
   range(0), 
-  has_damage(false),
   allows_bonus(true),
   effect(EffectType::EFFECT_TYPE_NULL),
-  magic_classification(MagicClassification::MAGIC_CLASSIFICATION_UNDEFINED)
+  magic_classification(MagicClassification::MAGIC_CLASSIFICATION_UNDEFINED),
+  has_damage(false)
 {
 }
 

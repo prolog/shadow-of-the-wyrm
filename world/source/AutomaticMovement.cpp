@@ -4,12 +4,12 @@
 using namespace std;
 
 AutomaticMovement::AutomaticMovement()
-: direction(Direction::DIRECTION_NULL), engaged(false), turns(-1)
+: direction(Direction::DIRECTION_NULL), turns(-1), engaged(false)
 {
 }
 
 AutomaticMovement::AutomaticMovement(const Direction d, const bool engage, const int new_turns)
-: direction(d), engaged(engage), turns(new_turns)
+: direction(d), turns(new_turns), engaged(engage)
 {
 }
 

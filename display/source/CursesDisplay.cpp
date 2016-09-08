@@ -63,7 +63,7 @@ bool CursesDisplay::operator==(const CursesDisplay& cd) const
       WINDOW* screen = screens.at(i);
       WINDOW* cd_screen = cd.screens.at(i);
 
-      result = result && screen && cd_screen && (memcmp(screen, cd_screen, sizeof(screen)) == 0);
+      result = result && screen && cd_screen && (memcmp(screen, cd_screen, sizeof(*screen)) == 0);
     }
   }
 
@@ -689,7 +689,7 @@ string CursesDisplay::display_screen(const Screen& current_screen)
       // After each line, check to see if we need to throw up a prompt because
       // of hitting the end of the screen, but only if there's still stuff to
       // display.
-      if (current_row == (TERMINAL_MAX_ROWS - 1) && (i != csize-1))
+      if (current_row == (static_cast<int>(TERMINAL_MAX_ROWS) - 1) && (i != csize-1))
       {
         PromptPtr prompt = current_screen.get_prompt();
         prompt_processor.show_prompt(screen_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
