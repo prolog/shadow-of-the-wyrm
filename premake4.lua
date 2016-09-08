@@ -6,6 +6,12 @@ project "ShadowOfTheWyrm"
   kind "ConsoleApp"
   language "C++"
   files { "**.hpp", "**.cpp" }
+
+  -- TODO: Once premake supports per-configuration exclude lists,
+  -- create MapTester/SaveConverter configurations that exclude the appropriate
+  -- files.
+  excludes { "source/SaveConverter.cpp", "source/MapTester.cpp" }
+
   includedirs { "include",
                 "controller/include",
                 "display/include",
