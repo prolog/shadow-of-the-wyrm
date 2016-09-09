@@ -101,7 +101,6 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const int displa
   }
 
   it_filter = create_item_type_filter(it_list);
-  DisplayItemTypeFactory;
   return it_filter;
 }
 

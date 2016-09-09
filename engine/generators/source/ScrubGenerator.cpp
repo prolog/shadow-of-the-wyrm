@@ -1,6 +1,5 @@
 #include "ScrubGenerator.hpp"
 #include "TileGenerator.hpp"
-#include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GeneratorUtils.hpp"
 #include "RNG.hpp"
@@ -13,7 +12,6 @@ ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
 MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);
-  Game& game = Game::instance();
 
   int rows = dimensions.get_y();
   int cols = dimensions.get_x();

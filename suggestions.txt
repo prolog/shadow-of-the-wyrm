@@ -1,4 +1,5 @@
 Me:
+- Test the new POSIX environmental code in Linux with gdb.
 - New spell: vorpal bolt
 - Clean up the Lua code to require + use the new constants
 - Traps that fire and kill a creature are giving the player exp?

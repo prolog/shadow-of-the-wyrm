@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "CoordUtils.hpp"
 #include "Room.hpp"
 

@@ -33,7 +33,6 @@ const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 // Those items cannot be picked up.
 WorldGenerator::WorldGenerator()
 : Generator("", TileType::TILE_TYPE_UNDEFINED)
-, tg(false)
 , tile_property_fns({{TileType::TILE_TYPE_DUNGEON_COMPLEX, &WorldGenerator::set_dungeon_complex_properties},
                      {TileType::TILE_TYPE_KEEP, &WorldGenerator::set_keep_properties},
                      {TileType::TILE_TYPE_CASTLE, &WorldGenerator::set_castle_properties},
@@ -43,6 +42,7 @@ WorldGenerator::WorldGenerator()
 , tile_depth_options({{TileType::TILE_TYPE_DUNGEON_COMPLEX, TileDepthOptions(10, 50, vector<int>({50, 45}))},
                       {TileType::TILE_TYPE_SEWER_COMPLEX, TileDepthOptions(5, 50, vector<int>({50}))},
                       {TileType::TILE_TYPE_CAVERN, TileDepthOptions(1, 50)}})
+, tg(false)
 {
 }
 

@@ -83,8 +83,6 @@ void Serialization::save(CreaturePtr creature)
 
 void Serialization::write_savefile(std::ofstream& file_stream, ostringstream& game_stream, const bool use_compression, const int compression_level)
 {
-  int ret_code = Z_ERRNO;
-
   string game_data = game_stream.str();
 
   try
@@ -134,9 +132,6 @@ SerializationReturnCode Serialization::load(const string& filename)
 // Read the savefile from the string, decompressing as needed.
 void Serialization::read_savefile(std::ifstream& stream)
 {
-  Game& game = Game::instance();
-
-  Settings& settings = game.get_settings_ref();
   bool use_compression = false;
   int compression_level = Z_DEFAULT_COMPRESSION;
 
@@ -174,7 +169,7 @@ void Serialization::read_savefile(std::ifstream& stream)
       stream.read(reinterpret_cast<char*>(&game_data_comp[0]), comp_size);
 
       // Uncompress the compressed data.
-      int ret_code = uncompress(&uncompressed[0], &uncomp_size, &game_data_comp[0], comp_size);
+      uncompress(&uncompressed[0], &uncomp_size, &game_data_comp[0], comp_size);
 
       // Now we've got an uncompressed byte stream.
       // Copy it to an istream& so it can be read by deserialize.

@@ -14,7 +14,6 @@ const int MotteBaileyCastleGeneratorStrategy::MIN_MOTTE_HEIGHT = 6;
 void MotteBaileyCastleGeneratorStrategy::generate(MapPtr castle_map)
 {
   Dimensions d;
-  int moat_radius = RNG::range(d.get_y()/2 - 3, d.get_y()/2 - 2);
   int start_y = RNG::range(2, d.get_y() / 4);
   int start_x = RNG::range(5, d.get_x() / 4);
   int end_y = d.get_y() - start_y;
@@ -64,7 +63,6 @@ void MotteBaileyCastleGeneratorStrategy::generate_motte(MapPtr castle_map, const
 // Generate a land bridge over the moat.
 void MotteBaileyCastleGeneratorStrategy::generate_bridge(MapPtr castle_map, const int start_y, const int start_x, const int end_y, const int end_x)
 {
-  CardinalDirection cd = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
   Coordinate a = make_pair(start_y, start_x);
   Coordinate b = make_pair(end_y, end_x);
   map<CardinalDirection, Coordinate> bridge_coords = CoordUtils::get_midway_coordinates(a, b);

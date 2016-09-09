@@ -2,6 +2,8 @@
 #include "IActionManager.hpp"
 #include "MessageManagerFactory.hpp"
 
+class ActionManager;
+
 class ExitGameAction : public IActionManager
 {
   public:

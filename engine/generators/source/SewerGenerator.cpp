@@ -49,8 +49,6 @@ void SewerGenerator::generate_sewer_sections(MapPtr result_map, const int y_incr
   int rows = dimensions.get_y();
   int cols = dimensions.get_x();
 
-  int length = 0;
-
   int cur_row = 1;
 
   // For each row:
@@ -149,7 +147,6 @@ pair<Coordinate, Coordinate> SewerGenerator::retrieve_and_remove_random_section(
 
   auto s_it = sections_copy.begin();
   std::advance(s_it, RNG::range(0, sections_copy.size()-1));
-  int rand_key = s_it->first;
   int rand_sec_idx = RNG::range(0, s_it->second.size() - 1);
 
   // Get the random section
@@ -206,7 +203,6 @@ void SewerGenerator::create_vertical_connections(MapPtr result_map,  map<pair<Co
       {
         // Have we stopped overlapping?
         vector<pair<Coordinate, Coordinate>> lower_coords = r_it->second;
-        int connections = 0;
 
         for (const auto& lc : lower_coords)
         {

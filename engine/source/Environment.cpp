@@ -7,6 +7,11 @@ using namespace std;
 #ifdef _WIN32
 #include <windows.h>
 #include <Lmcons.h>
+#elif defined(__unix__)
+#include <limits.h>
+#include <pwd.h>
+#include <sys/types.h>
+#include <unistd.h>
 #else
 #error Error: define user name code in Environment.cpp for this configuration.
 #endif
@@ -24,6 +29,19 @@ string Environment::get_user_name()
   
   GetUserName(username_c, &dUsername);
   user_name = username_c;
+  #elif defined(__unix__)
+  char username_c[LOGIN_NAME_MAX];
+  int rv = getlogin_r(username_c, sizeof(username_c));
+
+  if (rv == 0)
+  {
+    // Leave the username blank if no user exists.  Anyone can then
+    // use the savefile.
+  }
+  else
+  {
+    user_name = username_c;
+  }
   #else
   static_assert(false, "Unrecognized environment for Environment::get_user_name()");
   #endif
@@ -54,7 +72,10 @@ string Environment::get_user_home_directory()
       free(buf);
     }
   }
-
+  #elif defined(__unix__)
+  // Less ugly, but still C-ish, ugh.
+  struct passwd* pw = getpwuid(getuid());
+  home_dir << pw->pw_dir;
   #else
   static_assert(false, "Unrecognized environment for Environment::get_user_home_directory()");
   #endif

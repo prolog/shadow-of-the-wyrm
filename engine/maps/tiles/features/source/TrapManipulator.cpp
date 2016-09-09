@@ -97,7 +97,7 @@ void TrapManipulator::trigger_trap(TrapPtr trap, CreaturePtr creature)
 
 void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creature)
 {
-  Damage& damage = trap->get_damage();
+  Damage damage = trap->get_damage();
   DamageType dt = damage.get_damage_type();
   int effect_bonus = damage.get_effect_bonus();
   StatusAilments status_ailments = damage.get_status_ailments();

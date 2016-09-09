@@ -22,7 +22,7 @@ CreaturePtr create_test_creature()
   creature->set_willpower(wil);
   creature->set_charisma(cha);
 
-  Modifier m({ 6, 5, 4, 3, 2, 1, 4 });
+  Modifier m(vector<int>({ 6, 5, 4, 3, 2, 1, 4 }));
 
   ModifyStatisticsEffect mse;
   mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);

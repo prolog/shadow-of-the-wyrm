@@ -78,7 +78,6 @@ Rarity ItemGenerationManager::get_item_rarity(const Rarity generation_rarity) co
 ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVec& generation_vec, const Rarity rarity, const int enchant_points)
 {
   ItemPtr generated_item;
-  Game& game = Game::instance();
   AmmunitionCalculator ac;
 
   // The map already contains appropriate items filtered by danger level,
