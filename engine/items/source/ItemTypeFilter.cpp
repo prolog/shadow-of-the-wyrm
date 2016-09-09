@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "ItemTypeFilter.hpp"
 
 using namespace std;
@@ -18,7 +19,8 @@ bool ItemTypeFilter::passes_filter(ItemPtr item) const
 
   if (item)
   {
-    passes = (find(item_types.begin(), item_types.end(), item->get_type()) != item_types.end());
+    ItemType i_type = item->get_type();
+    passes = (std::find(item_types.begin(), item_types.end(), i_type) != item_types.end());
   }
 
   return passes;

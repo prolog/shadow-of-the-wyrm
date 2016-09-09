@@ -142,14 +142,12 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
   int x_offset = cols/10;
 
   int start_y = RNG::range(1, 2);
-  int offset = cols / 10;
   int orig_xpos = RNG::range(cols/2 - x_offset, cols/2 + x_offset);
   int xpos = orig_xpos;
   int end_y = rows - RNG::range(1,2);
   int up_staircase_y = RNG::range(start_y+2, end_y-2);
   main_hallway_centre = std::make_shared<Room>(no_features, -1 /* id doesn't matter */, start_y, end_y, orig_xpos, orig_xpos);
 
-  bool stairway_placed = false;
   int incr_value = 1;
 
   // JCD FIXME
@@ -189,7 +187,6 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
       // Place the up staircase, and note that the player 
       // should be placed here.
       place_staircase(map, y, orig_xpos, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_MINE, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);  
-      stairway_placed = true;
     }
   }
 }

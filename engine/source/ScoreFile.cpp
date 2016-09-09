@@ -70,7 +70,7 @@ void ScoreFile::save()
   Serialize::write_string(score_file, version);
 
   // How many entries?
-  size_t num_entries = std::min(HighScoreConstants::MAX_ENTRIES, entries.size());
+  size_t num_entries = std::min(static_cast<size_t>(HighScoreConstants::MAX_ENTRIES), entries.size());
   Serialize::write_size_t(score_file, num_entries);
 
   // Write out the entries.
