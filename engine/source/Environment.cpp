@@ -33,7 +33,7 @@ string Environment::get_user_name()
   char username_c[LOGIN_NAME_MAX];
   int rv = getlogin_r(username_c, sizeof(username_c));
 
-  if (rv == 0)
+  if (rv != 0)
   {
     // Leave the username blank if no user exists.  Anyone can then
     // use the savefile.
