@@ -3,6 +3,7 @@
 #include "Creature.hpp"
 #include "Readable.hpp"
 
+class ActionManager;
 class ItemIdentifier;
 
 // Implements common functionality required for reading a scroll, a

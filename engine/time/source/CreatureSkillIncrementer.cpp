@@ -49,7 +49,7 @@ bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, S
   bool trained_skill = false;
 
   int skill_threshold = skill->get_threshold();
-  Marks& marks = skill->get_marks();
+  Marks& marks = skill->get_marks_ref();
   int skill_value = skill->get_value();
 
   // Skills are automatically learned when the number of marks is greater than

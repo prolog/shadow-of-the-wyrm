@@ -83,8 +83,6 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
 
     manager.clear_if_necessary();
     
-    uint quantity = item->get_quantity();
-    
     CurrentCreatureAbilities cca;
     string drop_message = TextMessages::get_item_drop_message(!cca.can_see(creature), item);
     

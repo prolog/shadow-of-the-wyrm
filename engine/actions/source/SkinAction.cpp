@@ -86,7 +86,6 @@ ActionCostValue SkinAction::skin(CreaturePtr creature, ActionManager * const am)
 ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, TilePtr tile)
 {
   ActionCostValue acv = 0;
-  Game& game = Game::instance();
 
   if (creature && item && tile)
   {

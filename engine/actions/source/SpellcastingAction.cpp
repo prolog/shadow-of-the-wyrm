@@ -26,10 +26,6 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
   ActionCostValue action_cost_value = 0;
   CurrentCreatureAbilities cca;
 
-  // variable used to control whether to keep looping for input on the 
-  // spellcasting screen.
-  bool cast_spells = true;
-
   // used to determine whether a spell was selected in the spellcasting screen.
   // if so, the spell will be cast at the end of the process.
   string spell_id;
@@ -82,10 +78,8 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
 
 pair<string, ActionCostValue> SpellcastingAction::cast_spell_on_valid_map_type(CreaturePtr creature) const
 {
-  Game& game = Game::instance();
-
-  bool cast_spells = true;
   pair<string, ActionCostValue> selection_details("", 0);
+  bool cast_spells = true;
 
   if (creature->get_is_player())
   {

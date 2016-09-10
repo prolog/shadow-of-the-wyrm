@@ -37,7 +37,6 @@ void CreatureAlcoholTimer::tick(CreaturePtr creature, TilePtr tile, const ulongl
 void CreatureAlcoholTimer::absorb_alcohol(CreaturePtr creature)
 {
   Blood& blood = creature->get_blood_ref();
-  float unabsorbed = creature->get_grams_unabsorbed_alcohol();
   float to_absorb = alco_calc.calculate_grams_to_absorb(creature);
 
   blood.increment_grams_alcohol(to_absorb);
@@ -58,7 +57,6 @@ void CreatureAlcoholTimer::absorb_alcohol(CreaturePtr creature)
 void CreatureAlcoholTimer::metabolize_alcohol(CreaturePtr creature)
 {
   Blood& blood = creature->get_blood_ref();
-  float absorbed = blood.get_grams_alcohol();
   float to_metabolize = alco_calc.calculate_grams_to_metabolize(creature);
   blood.decrement_grams_alcohol(to_metabolize);
 

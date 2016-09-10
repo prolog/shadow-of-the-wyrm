@@ -126,7 +126,6 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
 // JCD YEARS LATER: Still todo.
 ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, const ActionCostValue fire_acv)
 {
-  ActionCostValue acv = 0;
   Game& game = Game::instance();
   
   if (creature)
@@ -144,7 +143,6 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
       Coordinate target_coords = target_info.second;
 
       TilePtr target_tile = current_map->at(target_coords);
-      bool do_target = true;
 
       if (target_tile != nullptr)
       {
@@ -152,8 +150,6 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
 
         if (firing_details.first)
         {
-          acv = fire_acv;
-
           // Get the attack path so that we can determine the actual target coords,
           // and create an animation if necessary.
           vector<Coordinate> attack_path = RangedCombatUtils::get_actual_coordinates_given_missile_path(creature, creature_coords, target_coords, current_map);

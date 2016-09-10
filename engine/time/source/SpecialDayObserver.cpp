@@ -7,7 +7,6 @@ using namespace std;
 
 void SpecialDayObserver::notify(const ulonglong minutes_passed)
 {
-  double cur_seconds = 0;
   Game& game = Game::instance();
   WorldPtr world = game.get_current_world();
 

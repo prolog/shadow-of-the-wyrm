@@ -55,7 +55,6 @@ bool UncursingEffect::uncurse(CreaturePtr creature, const UncursingEffectType ue
 
       for (EquipmentMap::const_iterator e_it = raw_eq.begin(); e_it != raw_eq.end(); e_it++)
       {
-        EquipmentWornLocation worn_location = e_it->first;
         ItemPtr equipped_item = e_it->second;
 
         if (uet_eq == UncursingEffectType::UNCURSING_EFFECT_UNCURSE)
