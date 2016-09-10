@@ -70,7 +70,7 @@ project "ShadowOfTheWyrm"
                 "world/tiles/include",
                 "world/tiles/features/include" }
   excludes { "**_test.cpp" }
-  links { "dl", "z", "boost_system", "xerces-c", "ncurses", "gtest" }
+  links { "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", "boost_thread", "boost_regex", "lua", "xerces-c", "ncurses", "gtest" }
   flags { "ExtraWarnings" }
 
   -- Ignore SaveConverter, MapTester configs.
