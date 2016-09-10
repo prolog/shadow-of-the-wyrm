@@ -1,6 +1,5 @@
 #include <vector>
 #include "Conversion.hpp"
-#include "Game.hpp"
 #include "LoadGameScreen.hpp"
 #include "OptionsComponent.hpp"
 #include "PromptTextKeys.hpp"
@@ -19,8 +18,6 @@ LoadGameScreen::LoadGameScreen(DisplayPtr new_display)
 
 void LoadGameScreen::initialize()
 {
-  Game& game = Game::instance();
-
   vector<ScreenComponentPtr> load_game_screen;
 
   screen_selection_to_filename_map.clear();

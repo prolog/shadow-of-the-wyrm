@@ -87,7 +87,6 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
 CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationMap& generation_map)
 {
   CreaturePtr generated_creature;
-  Game& game = Game::instance();
   
   // Iterate through the generation map, and attempt to generate a creature with probability P,
   // where P = (danger level / danger_level + num_creatures_in_map)

@@ -1,3 +1,4 @@
+#include <cmath>
 #include "APRegenerationCalculator.hpp"
 #include "ClassManager.hpp"
 #include "RaceManager.hpp"

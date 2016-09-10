@@ -46,7 +46,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     uint actual = tiles.size();
     uint expected = dim.get_y() * dim.get_x();
     oss << "Incorrect number of tiles for map \"" << map_id << "\": expected " << expected << ", found " << actual << ".";
-    BOOST_ASSERT_MSG(tiles.size() == (dim.get_y() * dim.get_x()), oss.str().c_str());
+    BOOST_ASSERT_MSG(tiles.size() == static_cast<size_t>((dim.get_y() * dim.get_x())), oss.str().c_str());
 
     XMLMapCoordinateReader coord_reader;
     Coordinate player_start_location = coord_reader.parse_fixed_coordinate(player_start_node);
@@ -231,8 +231,6 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
 {
   if (!items_node.is_null())
   {
-    Game& game = Game::instance();
-
     vector<XMLNode> placement_nodes = XMLUtils::get_elements_by_local_name(items_node, "Placement");
 
     for (const XMLNode& item_node : placement_nodes)

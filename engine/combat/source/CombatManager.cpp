@@ -73,7 +73,6 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 
       if (adjacent_creature)
       {
-        bool attack_secondary = false;
         WeaponPtr off_hand_weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
 
         // Secondary attacks fire only if the creature is wielding a weapon in

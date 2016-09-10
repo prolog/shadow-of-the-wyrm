@@ -60,7 +60,7 @@ project "ShadowOfTheWyrm"
                 "engine/translators/include",
                 "engine/XML/include",
                 "engine/XML/custom_maps/include",
-                "engine/XML/custom_maps/feature/include",
+                "engine/XML/custom_maps/features/include",
                 "engine/XML/custom_maps/world/include",
                 "world/include",
                 "world/magic/include",

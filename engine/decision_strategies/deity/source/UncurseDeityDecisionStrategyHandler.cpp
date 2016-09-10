@@ -39,7 +39,7 @@ DeityDecisionImplications UncurseDeityDecisionStrategyHandler::handle_decision(C
 {
   if (creature != nullptr)
   {
-    EquipmentMap& em = creature->get_equipment().get_equipment();
+    EquipmentMap em = creature->get_equipment().get_equipment();
 
     for (auto& em_pair : em)
     {

@@ -29,8 +29,6 @@ CreatureDeathManager::~CreatureDeathManager()
 
 void CreatureDeathManager::die() const
 {
-  Game& game = Game::instance();
-  
   if (map && dead_creature)
   {
     IInventoryPtr ground = MapUtils::get_tile_for_creature(map, dead_creature)->get_items();

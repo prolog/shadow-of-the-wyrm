@@ -453,7 +453,6 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     : generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, tile->get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   if (generator)
   {
@@ -622,7 +621,6 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Til
 ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
 {
   ActionCostValue acv = 0;
-  Game& game = Game::instance();
 
   if (new_map)
   {
