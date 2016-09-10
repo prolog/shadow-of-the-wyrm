@@ -1,6 +1,8 @@
 #pragma once
 #include "IActionManager.hpp"
 
+class ActionManager;
+
 class PietyAction : public IActionManager
 {
   public:

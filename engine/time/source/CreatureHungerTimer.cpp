@@ -21,7 +21,7 @@ void CreatureHungerTimer::tick(CreaturePtr creature, TilePtr tile, const ulonglo
     //
     // Only do hunger checks for the player.  Other creatures currently do not
     // have to eat...
-    if (creature->get_is_player() && hunger_clock.get_requires_food() || hunger_clock.is_normal_or_worse() == false)
+    if (creature->get_is_player() && (hunger_clock.get_requires_food() || hunger_clock.is_normal_or_worse() == false))
     {
       int old_hunger = hunger_clock.get_hunger();
       int new_hunger = old_hunger - 1;

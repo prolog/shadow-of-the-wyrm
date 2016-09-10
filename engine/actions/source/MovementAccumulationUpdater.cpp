@@ -48,7 +48,7 @@ MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature
   // Boating is only allowed on water.
   MovementType movement = MovementType::MOVEMENT_TYPE_WALKING;
 
-  if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) || creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+  if (creature && (creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) || creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL)))
   {
     movement = MovementType::MOVEMENT_TYPE_FLYING;
   }

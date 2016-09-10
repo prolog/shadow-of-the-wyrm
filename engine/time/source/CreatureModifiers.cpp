@@ -18,7 +18,7 @@ void CreatureModifiers::tick(CreaturePtr creature, TilePtr tile, const ulonglong
   {
     map<double, vector<pair<string, Modifier>>>& creature_modifiers = creature->get_modifiers_ref();
 
-    for (auto& m_it = creature_modifiers.begin(); m_it != creature_modifiers.end(); )
+    for (auto m_it = creature_modifiers.begin(); m_it != creature_modifiers.end(); )
     {
       Game& game = Game::instance();
 

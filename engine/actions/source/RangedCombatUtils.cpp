@@ -60,7 +60,7 @@ vector<Coordinate> RangedCombatUtils::get_actual_coordinates_given_missile_path(
     }
     // Check to see if there's a blocking feature, or if the tile itself blocks things
     // (walls, etc).
-    else if (tile && (tile->get_movement_multiplier() == 0) || (tile->has_blocking_feature()))
+    else if (tile && ((tile->get_movement_multiplier() == 0) || (tile->has_blocking_feature())))
     {
       // Done - don't consider any other tiles.  Use the previous for dropping ammo.
       break;

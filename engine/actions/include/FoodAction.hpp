@@ -4,6 +4,8 @@
 #include "IItemFilter.hpp"
 #include "StatusTypes.hpp"
 
+class ActionManager;
+
 class FoodAction : public IActionManager
 {
   public:

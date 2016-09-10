@@ -176,7 +176,6 @@ ActionCostValue EvokeAction::get_action_cost_value(CreaturePtr creature) const
 pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature, const SpellShapeType shape_type)
 {
   pair<bool, Direction> evoke_direction_result(false, Direction::DIRECTION_UP);
-  Direction direction = Direction::DIRECTION_UP;
 
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
