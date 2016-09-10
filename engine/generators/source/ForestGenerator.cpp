@@ -63,7 +63,6 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
   int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
   Coordinate world_location = MapUtils::convert_map_key_to_coordinate(world_location_map_key);
   int pct_chance_evergreen = fc.calculate_pct_chance_evergreen(world_map_height, world_location);
-  Game& game = Game::instance();
 
   Dimensions dim = map->size();
   int rows = dim.get_y();

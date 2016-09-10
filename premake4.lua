@@ -1,4 +1,12 @@
 #!lua
+
+-- For the moment, there are two sets of build files: the Visual Studio files
+-- themselves, and this premake4 file, which at the moment is only intended
+-- to be used to create Unix makefiles.
+-- 
+-- To use, run "premake4 gmake", and then "make config=release".  Assuming you 
+-- have the correct versions of all the libraries/headers installed, the game
+-- and all supporting files will be found in the "sotw" folder.
 solution "ShadowOfTheWyrm"
   configurations { "Debug", "Release" }
 
@@ -82,4 +90,19 @@ project "ShadowOfTheWyrm"
   configuration "Release"
     defines { "NDEBUG" }
     flags { "Optimize" }
+    postbuildcommands { "mkdir sotw",
+                        "cp ShadowOfTheWyrm sotw/sotw",
+                        "cp -R data sotw",
+                        "mkdir sotw/docs",
+                        "cp docs/*.pdf sotw/docs",
+                        "cp -R licenses sotw",
+                        "cp -R scripts sotw",
+                        "cp -R texts sotw",
+                        "cp howdoi.txt sotw",
+                        "cp *.ini sotw",
+                        "cp README.md sotw",
+                        "cp LICENSE sotw",
+                        -- Copy libraries:
+                        "lua copy_libs.lua",
+                        "tar cvzf ShadowOfTheWyrm-Linux.tar.gz sotw"}
 

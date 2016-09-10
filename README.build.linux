@@ -1,0 +1,24 @@
+Building Shadow of the Wyrm, Linux Edition
+
+Shadow of the Wyrm can be built using premake4 and makefiles.  Before you
+start, ensure you have your distribution's developer packages for:
+
+- premake4
+- Boost (1.60)
+- Google Test 1.7, if you want to build debug mode, which includes unit tests
+- Xerces-C 3.1
+- Zlib-1.2.8
+- ncurses or equivalent
+
+You will also need to know where your libraries are installed, and update
+the location in "copy_libs.lua" appropriately.  The values in that file are
+valid for 64-bit Fedora 24 (/usr/lib64).
+
+To create the makefile, run "premake4 gmake".  Build the makefile with
+"make config=release".  This should build the game and copy the necessary
+files into a "sotw" subdirectory.  It will take a while.  There are a lot of
+translation units.  Sorry.
+
+The Linux build has been tested using g++.
+
+Happy hacking!

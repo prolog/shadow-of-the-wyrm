@@ -197,7 +197,6 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     }
     case TileType::TILE_TYPE_CASTLE:
     {
-      CastleType ct = static_cast<CastleType>(String::to_int(tile->get_additional_property(TileProperties::TILE_PROPERTY_CASTLE_TYPE)));
       generator = std::make_shared<CastleGenerator>(map_exit_id, terrain_subtype);
       break;
     }

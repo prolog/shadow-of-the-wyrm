@@ -18,7 +18,6 @@ FieldGenerator::FieldGenerator(const std::string& new_map_exit_id)
 MapPtr FieldGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);
-  Game& game = Game::instance();
 
   int rows = dimensions.get_y();
   int columns = dimensions.get_x();

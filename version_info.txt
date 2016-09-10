@@ -19,6 +19,8 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   while when the moon is full, statistics are always marked - no 
   probability check.
 
+- Linux support.
+
 - More stanzas for "Tel and Floridel".
 
 - Bug fixes:
