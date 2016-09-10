@@ -5,7 +5,7 @@
 using namespace std;
 
 Prompt::Prompt(const PromptLocation prompt_location)
-: type(PromptType::PROMPT_TYPE_CHARACTER), location(prompt_location), accept_any_input(false)
+: location(prompt_location), type(PromptType::PROMPT_TYPE_CHARACTER), accept_any_input(false)
 {
   initialize();
 }

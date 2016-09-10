@@ -25,7 +25,6 @@ ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFi
 {
   ItemPtr selected_item;
   bool manage_inv = true;
-  ulonglong screens_created = 0;
 
   try
   {

@@ -16,7 +16,6 @@ vector<string> TextDisplayFormatter::format_text(const string& text, const int l
   if (display)
   {
     uint width = display->get_width();
-    size_t str_size = text.size();
 
     // Check to see if the text is less than the screen width.
     // If it is, just add it.

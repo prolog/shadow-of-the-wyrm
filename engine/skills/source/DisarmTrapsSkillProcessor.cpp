@@ -184,8 +184,6 @@ void DisarmTrapsSkillProcessor::disarm_trap_success(CreaturePtr creature, MapPtr
 
 void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapPtr map, const Direction d, TilePtr tile, IMessageManager& manager)
 {
-  Game& game = Game::instance();
-
   if (creature != nullptr && map != nullptr)
   {
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_DISMANTLE));

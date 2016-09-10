@@ -290,7 +290,7 @@ string read_sid_and_replace_values(lua_State* ls, int offset)
 // Arguments are:
 // - 1: string containing the SID
 // - 2: string array containing replacement values (optional)
-static int add_message_with_pause(lua_State* ls)
+int add_message_with_pause(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
   if (num_args > 0 && lua_isstring(ls, 1))
@@ -336,7 +336,7 @@ static int add_message_with_pause(lua_State* ls)
 // Argument types: 
 // - 1: string (resource SID)
 // - 2: string array, containing replacement values (optional)
-static int clear_and_add_message(lua_State* ls)
+int clear_and_add_message(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
   if (num_args > 0 && lua_isstring(ls, 1))
@@ -361,7 +361,7 @@ static int clear_and_add_message(lua_State* ls)
 // Arguments expected: 1-2.
 // Argument types: string (resource SID, required), table of strings (opt.)
 // Assumption: table of strings is an array.
-static int add_message(lua_State* ls)
+int add_message(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
   if (num_args > 0 && lua_isstring(ls, 1))
@@ -384,7 +384,7 @@ static int add_message(lua_State* ls)
 // Adds a new message directly - no SID lookup.
 // Expected argument: 1.
 // Argument type: string.
-static int add_message_direct(lua_State* ls)
+int add_message_direct(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
   if (num_args == 1 && lua_isstring(ls, 1))
@@ -412,7 +412,7 @@ static int add_message_direct(lua_State* ls)
 // The expectation is that this function should be used only for
 // debugging purposes, where strings won't be in the .ini files - use the regular 
 // "add_message" function otherwise!
-static int add_debug_message(lua_State* ls)
+int add_debug_message(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
 
@@ -448,7 +448,7 @@ static int add_debug_message(lua_State* ls)
 // Add a message with a confirmation prompt at the end.
 // Arguments: message SID.
 // Return value: boolean
-static int add_confirmation_message(lua_State* ls)
+int add_confirmation_message(lua_State* ls)
 {
   bool confirm = false;
 
@@ -478,7 +478,7 @@ static int add_confirmation_message(lua_State* ls)
 // Add a message to prompt for text.
 // Arguments: message SID (with optional replacements).
 // Return value: string (the text entered)
-static int add_prompt_message(lua_State* ls)
+int add_prompt_message(lua_State* ls)
 {
   string prompt_val;
 
@@ -507,7 +507,7 @@ static int add_prompt_message(lua_State* ls)
 // Add a message with a prompt for a keypress.
 // Arguments: message SID (with optional replacements).
 // Return value: string (the keypress entered)
-static int add_char_message(lua_State* ls)
+int add_char_message(lua_State* ls)
 {
   string key_val;
 
@@ -534,7 +534,7 @@ static int add_char_message(lua_State* ls)
   return 1;
 }
 
-static int add_message_for_creature(lua_State* ls)
+int add_message_for_creature(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
 
@@ -564,7 +564,7 @@ static int add_message_for_creature(lua_State* ls)
 // Add a quest to the in-progress list.  Arguments are:
 // - a string representing the quest ID
 // - a table representing the "Quest" lua object.
-static int add_new_quest(lua_State* ls)
+int add_new_quest(lua_State* ls)
 {
   if ((lua_gettop(ls) == 2) && (lua_istable(ls, -1)) && (lua_isstring(ls, -2)))
   {
@@ -828,7 +828,6 @@ int mark_quest_completed(lua_State* ls)
 int remove_active_quest(lua_State* ls)
 {
   bool args_ok = ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)));
-  bool quest_removed = false;
 
   if (args_ok)
   {
@@ -1206,8 +1205,6 @@ int add_status_to_creature(lua_State* ls)
 {
   if ((lua_gettop(ls) == 2) && (lua_isstring(ls, 1) && (lua_isstring(ls, 2))))
   {
-    Game& game = Game::instance();
-
     string creature_id = lua_tostring(ls, 1);
     string status_id = lua_tostring(ls, 2);
     CreaturePtr creature = get_creature(creature_id);
@@ -2664,7 +2661,6 @@ int get_creature_description(lua_State* ls)
 
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
   {
-    Game& game = Game::instance();
     string viewing_creature_id = lua_tostring(ls, 1);
     string creature_id = lua_tostring(ls, 2);
 
@@ -2704,7 +2700,6 @@ int transfer_item(lua_State* ls)
 
   if (args_ok)
   {
-    Game& game = Game::instance();
     string old_creature_id = lua_tostring(ls, 1);
     string new_creature_id = lua_tostring(ls, 2);
     string item_base_id = lua_tostring(ls, 3);
@@ -3680,7 +3675,7 @@ bool set_all_eq_to(CreaturePtr creature, const ItemStatus status)
 
   if (creature != nullptr)
   {
-    EquipmentMap& eq_map = creature->get_equipment().get_equipment();
+    EquipmentMap eq_map = creature->get_equipment().get_equipment();
 
     for (auto& eq_pair : eq_map)
     {

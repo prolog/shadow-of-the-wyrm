@@ -75,7 +75,7 @@ bool StatusEffect::apply(CreaturePtr creature) const
     modifier.set_status(status_identifier, true);
 
     ModifyStatisticsEffect mse;
-    bool status_added = mse.apply_modifiers(creature, modifier, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, eff_dur_sec);
+    mse.apply_modifiers(creature, modifier, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, eff_dur_sec);
   }
 
   return true;
