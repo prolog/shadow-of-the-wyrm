@@ -1,5 +1,4 @@
 Me:
-- Test the new POSIX environmental code in Linux with gdb.
 - New spell: vorpal bolt
 - Clean up the Lua code to require + use the new constants
 - Traps that fire and kill a creature are giving the player exp?
@@ -28,7 +27,6 @@ Me:
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)
-- Linux support (get working using Fedora/Debian in VirtualBox).
 - Investigate targetting not staying properly some (all?) of the time.
 - General performance improvements.
 - Item generation: get rarity working properly, and then do some test
