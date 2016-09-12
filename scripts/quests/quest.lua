@@ -1,4 +1,5 @@
 -- Quest module.  Used for creating new quests for the player.
+require('constants')
 
 Quest = {}
 Quest.__index = Quest
@@ -86,7 +87,7 @@ function Quest:execute()
       -- Adventurers who complete lots of quest are kind of by definition
       -- charismatic.
       for i = 1, RNG_range(3, 6) do
-        mark_cha("player")
+        mark_cha(PLAYER_ID)
       end 
     end
 
@@ -102,7 +103,7 @@ function Quest:execute()
     
     -- Starting a quest gets the player a few marks in Charisma.
     for i = 1, RNG_range(2,4) do
-      mark_cha("player")
+      mark_cha(PLAYER_ID)
     end
   end
 

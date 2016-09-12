@@ -1,3 +1,4 @@
+require('constants')
 require('quest')
 
 -- Hild requires a large supply of whiteflower to be able to fulfill
@@ -10,7 +11,7 @@ end
 
 -- 20 whiteflowers are required
 local function hild_weaving_completion_condition_fn()
-  return (get_item_count("player", "_whiteflower") >= 20)
+  return (get_item_count(PLAYER_ID, "_whiteflower") >= 20)
 end
 
 -- Hild will teach weaving, if the player does not know it.
@@ -18,17 +19,17 @@ end
 -- instead.
 local function hild_weaving_completion_fn()
   local weaving = 48
-  local skill_value = get_skill_value("player", weaving)
+  local skill_value = get_skill_value(PLAYER_ID, weaving)
 
   if (skill_value < 80) then
     -- If the player hasn't come close to mastering weaving, Hild
     -- will teach him or her a little more.
     local weaving_incr = RNG_range(15, 25)
-    set_skill_value("player", weaving, skill_value + weaving_incr)
+    set_skill_value(PLAYER_ID, weaving, skill_value + weaving_incr)
     clear_and_add_message("HILD_WEAVING_QUEST_COMPLETE_SID")
   else
     -- Set the skill to the maximum value, and then grant the mantle.
-    set_skill_value("player", weaving, 100)
+    set_skill_value(PLAYER_ID, weaving, 100)
     add_object_to_player_tile("wintersea_mantle")
     
     add_message_with_pause("HILD_WEAVING_QUEST_COMPLETE_SPECIAL_SID")

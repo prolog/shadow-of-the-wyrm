@@ -439,9 +439,20 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 
   while (user_and_character_exist)
   {
-    string default_name = game.get_settings_ref().get_setting("default_name");
-    NamingScreen naming(display, creature_synopsis, warning_message);
-    name = naming.display();
+    Settings& settings = game.get_settings_ref();
+    string default_name = settings.get_setting("default_name");
+    bool username_is_character_name = String::to_bool(settings.get_setting("username_is_character_name"));
+    
+    if (username_is_character_name)
+    {
+      name = Environment::get_user_name();
+    }
+    else
+    {
+      NamingScreen naming(display, creature_synopsis, warning_message);
+      name = naming.display();
+    }
+
 
     if (name.empty())
     {
@@ -524,7 +535,9 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
   bool allowed = true;
   IMessageManager& manager = MessageManagerFactory::instance();
   Game& game = Game::instance();
-  string max_chars = game.get_settings_ref().get_setting("max_characters_per_user");
+  Settings& settings = game.get_settings_ref();
+  string max_chars = settings.get_setting("max_characters_per_user");
+  bool username_is_character_name = String::to_bool(settings.get_setting("username_is_character_name"));
   int num_allowed = -1;
 
   if (!max_chars.empty())
@@ -532,13 +545,19 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
     num_allowed = String::to_int(max_chars);
   }
 
+  if (username_is_character_name)
+  {
+    num_allowed = 1;
+  }
+
   if (num_allowed > -1)
   {
     // Get a list of savefiles for the user, and then see if the limit's been
     // reached, adding an alert if it has.
     vector<pair<string, string>> savefile_details = Serialization::get_save_file_names();
+    size_t num_savefiles = savefile_details.size();
 
-    if (savefile_details.size() >= static_cast<size_t>(num_allowed))
+    if (num_savefiles >= static_cast<size_t>(num_allowed) || (num_savefiles > 0 && username_is_character_name))
     {
       manager.alert(StringTable::get(TextKeys::NO_NEW_CHARACTERS));
       allowed = false;

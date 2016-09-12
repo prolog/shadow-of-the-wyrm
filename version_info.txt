@@ -19,7 +19,12 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   while when the moon is full, statistics are always marked - no 
   probability check.
 
+- Added a setting to enforce the character's name being the same as the
+  player's username, for the full nethack/DCSS experience.
+
 - Linux support.
+
+- Some refactoring in the Lua and C++ code.
 
 - More stanzas for "Tel and Floridel".
 

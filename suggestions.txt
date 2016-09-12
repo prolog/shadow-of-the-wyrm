@@ -1,6 +1,5 @@
 Me:
 - New spell: vorpal bolt
-- Clean up the Lua code to require + use the new constants
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.

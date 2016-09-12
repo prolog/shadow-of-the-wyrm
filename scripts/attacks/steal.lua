@@ -1,4 +1,5 @@
 require('attack')
+require('constants')
 
 -- Steal ivory off the attacked creature, and then vanish in a puff
 -- of smoke.
@@ -6,7 +7,7 @@ local function steal(attacker_id, attacked_id)
   -- Steal some amount of currency off the creature, and transfer
   -- it to the attacker.
   local amount = RNG_range(20, 50)
-  local stole = transfer_item(attacker_id, attacked_id, "_currency", amount)
+  local stole = transfer_item(attacker_id, attacked_id, CURRENCY_ID, amount)
 
   if stole == true then
     -- Add a message if the attacked creature is the player.

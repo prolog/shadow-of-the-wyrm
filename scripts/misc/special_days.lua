@@ -1,28 +1,30 @@
+require('constants')
+
 -- It is particularly helpful to start out on Creator's Day!
 function check_for_creation_day(cur_date)
   if cur_date == "09 01" then
     for i = 1, RNG_range(1, 5) do
-      incr_str("player", false)
+      incr_str(PLAYER_ID, false)
     end
 
     for i = 1, RNG_range(1, 5) do
-      incr_dex("player", false)
+      incr_dex(PLAYER_ID, false)
     end
 
     for i = 1, RNG_range(1, 5) do
-      incr_agi("player", false)
+      incr_agi(PLAYER_ID, false)
     end
 
     for i = 1, RNG_range(1, 5) do
-      incr_int("player", false)
+      incr_int(PLAYER_ID, false)
     end
 
     for i = 1, RNG_range(1, 5) do
-      incr_wil("player", false)
+      incr_wil(PLAYER_ID, false)
     end
 
     for i = 1, RNG_range(1, 5) do
-      incr_cha("player", false)
+      incr_cha(PLAYER_ID, false)
     end
 
     add_message("SPECIAL_DAY_CREATORS_DAY")
@@ -34,28 +36,28 @@ end
 function check_for_solstice_and_equinox(cur_date)
   if cur_date == "12 22" then
     for i = 1, RNG_range(4, 5) do
-      incr_str("player", false)
-      incr_hea("player", false)
+      incr_str(PLAYER_ID, false)
+      incr_hea(PLAYER_ID, false)
     end
     
     add_message("SPECIAL_DAY_WINTER_SOLSTICE")
   elseif cur_date == "06 21" then
     for i = 1, RNG_range(4, 5) do
-      incr_int("player", false)
-      incr_wil("player", false)
+      incr_int(PLAYER_ID, false)
+      incr_wil(PLAYER_ID, false)
     end
 
     add_message("SPECIAL_DAY_SUMMER_SOLSTICE")
   elseif cur_date == "03 20" then
     for i = 1, RNG_range(4, 5) do
-      incr_cha("player", false)
+      incr_cha(PLAYER_ID, false)
     end
 
     add_message("SPECIAL_DAY_SPRING_EQUINOX")
   elseif cur_date == "09 22" then
     for i = 1, RNG_range(2, 3) do
-      incr_dex("player", false)
-      incr_agi("player", false)
+      incr_dex(PLAYER_ID, false)
+      incr_agi(PLAYER_ID, false)
     end
 
     add_message("SPECIAL_DAY_FALL_EQUINOX")
