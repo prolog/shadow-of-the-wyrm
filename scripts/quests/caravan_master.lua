@@ -1,4 +1,6 @@
+require('constants')
 require('quest')
+
 local creature = require('creature')
 
 -- Quest to clear the ancient underground fortress of Cithriel.
@@ -9,7 +11,7 @@ local function caravan_master_cithriel_start_fn()
   add_message_with_pause("CARAVAN_MASTER_CITHRIEL_QUEST_START4_SID")
   clear_and_add_message("CARAVAN_MASTER_CITHRIEL_QUEST_START5_SID")
 
-  local pl_y, pl_x = get_creature_yx("player")
+  local pl_y, pl_x = get_creature_yx(PLAYER_ID)
   local cur_map_id = get_current_map_id()
   
   -- Add the necessary properties to the tile.

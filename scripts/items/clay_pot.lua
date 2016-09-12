@@ -1,3 +1,4 @@
+require('constants')
 require('items')
 
 -- When a clay pot smashes and this script runs, an item is created.
@@ -14,7 +15,7 @@ local function pot_smash(item_original_id, creature_original_id, row, col)
   elseif RNG_percent_chance(2) then
     base_id = "healing_potion"
   else
-    base_id = "_currency"
+    base_id = CURRENCY_ID
     quantity = RNG_range(2,3)
   end
 

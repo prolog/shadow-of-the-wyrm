@@ -1,3 +1,4 @@
+require('constants')
 require('quest')
 
 -- Bagra will use her black magic to create an unholy dagger from the three
@@ -32,7 +33,7 @@ local function bagra_shrine_completion_fn()
   remove_active_quest("blacksmith_shrine")
 
   -- Bagra wants to give the knife to Amaurosis herself.
-  set_hostility("bagra", "player")
+  set_hostility("bagra", PLAYER_ID)
 
   return true
 end

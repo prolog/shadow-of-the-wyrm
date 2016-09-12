@@ -1,3 +1,4 @@
+require('constants')
 require('quest')
 
 -- Sun Gem quest details
@@ -38,7 +39,7 @@ local function sun_gem_completion_fn()
   remove_active_quest("ploughman_sungem")
   remove_active_quest("cynwise_sungem")
 
-  if creature_is_class("player", "smith") == true then
+  if creature_is_class(PLAYER_ID, "smith") == true then
     add_object_to_player_tile("_iron_ingot", 2)
     add_object_to_player_tile("_steel_ingot")
     add_message("BLACKSMITH_SUNGEM_QUEST_COMPLETE_SMITH_SID")

@@ -1,3 +1,4 @@
+require('constants')
 require('decide')
 
 goblin_traps = {"arrow_trap", "rock_trap", "crossbow_trap", 
@@ -60,8 +61,8 @@ local function set_goblin_trap(creature_id)
   set_trap(y, x, trap_triggered, trap_id)
 
   if trap_triggered == true then
-    if is_creature_in_view_map("player", creature_id) then
-      add_message("ACTION_SET_TRAP", {get_creature_description("player", creature_id)})
+    if is_creature_in_view_map(PLAYER_ID, creature_id) then
+      add_message("ACTION_SET_TRAP", {get_creature_description(PLAYER_ID, creature_id)})
     end
   end
 

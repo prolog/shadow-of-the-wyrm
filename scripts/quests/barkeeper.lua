@@ -1,4 +1,6 @@
-local currency_amount = get_item_count("player", "_currency")
+require('constants')
+
+local currency_amount = get_item_count(PLAYER_ID, CURRENCY_ID)
 
 if (currency_amount > 3) then
   local sc_id = args["speaking_creature_id"]
@@ -19,7 +21,7 @@ if (currency_amount > 3) then
       add_object_to_player_tile(food_id)
       add_object_to_player_tile(drink_id)
 
-      remove_object_from_player("_currency", 3)
+      remove_object_from_player(CURRENCY_ID, 3)
     else
       clear_and_add_message("BARKEEPER_ACTION_SAY_GOODBYE")
     end

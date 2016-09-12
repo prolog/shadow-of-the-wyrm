@@ -1,3 +1,4 @@
+require('constants')
 require('quest')
 
 -- Cynwise is one of three inhabitants of Isen Dun who really, really wants
@@ -21,7 +22,7 @@ end
 local function cynwise_sun_gem_completion_fn()
   add_message_with_pause("CYNWISE_SUNGEM_QUEST_COMPLETE_SID")
 
-  local literacy_value = get_skill_value("player", 28)
+  local literacy_value = get_skill_value(PLAYER_ID, 28)
 
   if (literacy_value > 0) then
     clear_and_add_message("CYNWISE_SUNGEM_QUEST_COMPLETE2_SID")
@@ -29,7 +30,7 @@ local function cynwise_sun_gem_completion_fn()
   else
     add_object_to_player_tile("identify_scroll", 2)
     literacy_value = RNG_range(3, 15)
-    set_skill_value("player", 28, literacy_value)
+    set_skill_value(PLAYER_ID, 28, literacy_value)
     clear_and_add_message("CYNWISE_SUNGEM_QUEST_COMPLETE_LITERACY_SID")
   end
 
@@ -64,22 +65,22 @@ end
 
 local function cynwise_wintersea_completion_fn()
   -- Does the player have Herbalism?
-  if get_skill_value("player", 22) == 0 then
-    set_skill_value("player", 22, RNG_range(15, 20))
+  if get_skill_value(PLAYER_ID, 22) == 0 then
+    set_skill_value(PLAYER_ID, 22, RNG_range(15, 20))
     -- Give the player some skill in Herbalism.
     add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_HERBALISM_SID")
   else
-    magic_skill_value = get_skill_value("player", 31)
+    magic_skill_value = get_skill_value(PLAYER_ID, 31)
     -- If the player has Herbalism, and has Magic, and has not maxed out
     -- Magic, Cynwise will teach the player.
     if (magic_skill_value > 0 and magic_skill_value < 100) then
       new_magic_value = magic_skill_value + RNG_range(15, 20)
-      set_skill_value("player", 31, new_magic_value)
+      set_skill_value(PLAYER_ID, 31, new_magic_value)
       add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_MAGIC_SID")
     else
       -- Has Herbalism, but doesn't have Magic: Cynwise has nothing
       -- to teach, and provides some money.
-      add_object_to_player_tile("_currency", 150);
+      add_object_to_player_tile(CURRENCY_ID, 150);
       add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_CURRENCY_SID")
     end
   end
