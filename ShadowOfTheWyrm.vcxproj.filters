@@ -3810,6 +3810,9 @@
     <ClInclude Include="engine\time\include\CreatureStatisticsMarkerChecker.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\skills\include\ThieverySkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7459,6 +7462,9 @@
     </ClCompile>
     <ClCompile Include="engine\time\source\CreatureStatisticsMarkerChecker.cpp">
       <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\ThieverySkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

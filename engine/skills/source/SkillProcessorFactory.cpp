@@ -3,6 +3,7 @@
 #include "SkillProcessorFactory.hpp"
 #include "SkillProcessors.hpp"
 #include "SkillTextKeys.hpp"
+#include "ThieverySkillProcessor.hpp"
 
 using namespace std;
 
@@ -41,6 +42,7 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_SMITHING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SMITHING)),
                make_pair(SkillType::SKILL_GENERAL_SWIMMING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SWIMMING)),
                make_pair(SkillType::SKILL_GENERAL_TANNING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_TANNING)),
+               make_pair(SkillType::SKILL_GENERAL_THIEVERY, make_shared<ThieverySkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_WEAVING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_WEAVING))};
 }
 
