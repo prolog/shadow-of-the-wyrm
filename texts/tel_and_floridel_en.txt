@@ -473,3 +473,13 @@ and muscle.  Then, it turned and held his gaze. %b
 The deer!  A thing of magic in the cold %b
 grey morning, proud and wondrous, grim and hale and bold.
 %p
+When deer and Tel locked eyes, the prince was struck %b
+by how the unassuming creature stood - %b
+a loose and easy confidence, that buck. %b
+Its antlers caught the light, and if it could %b 
+just speak, then it would surely voice disdain %b
+toward the stripling, winded in his bower %b
+beneath a mountain ash.  The fairy thane %b
+stood up.  He drew his bow with all his power, %b
+and sent an arrow shrieking in that morning hour.
+%p
