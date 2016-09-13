@@ -414,7 +414,7 @@ string TextMessages::get_experience_synopsis(const int level, const int exp, con
 {
   string exp_synopsis = StringTable::get(EXPERIENCE_SYNOPSIS_MESSAGE);
 
-  if (level == CreatureConstants::MAX_CREATURE_LEVEL)
+  if (level == static_cast<int>(CreatureConstants::MAX_CREATURE_LEVEL))
   {
     exp_synopsis = StringTable::get(EXPERIENCE_SYNOPSIS_MAX_MESSAGE);
   }
