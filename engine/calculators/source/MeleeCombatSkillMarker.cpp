@@ -19,7 +19,6 @@ vector<SkillType> MeleeCombatSkillMarker::get_marked_skills(CreaturePtr creature
   vector<SkillType> marked_skills{SkillType::SKILL_GENERAL_COMBAT};
   WeaponManager wm;
 
-  WeaponStyle ws = wm.get_style(attack_type);  
   SkillType weapon_skill = wm.get_skill_type(creature, attack_type);
 
   marked_skills.push_back(weapon_skill);

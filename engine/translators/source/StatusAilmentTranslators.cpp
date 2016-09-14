@@ -69,8 +69,6 @@ string HungerStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr&
 
 Colour HungerStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
 {
-  Colour colour = Colour::COLOUR_WHITE;
-
   if (colour_map.empty())
   {
     initialize_colour_map();
@@ -135,8 +133,6 @@ string WeightStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr&
 
 Colour WeightStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
 {
-  Colour colour = Colour::COLOUR_WHITE;
-
   if (colour_map.empty())
   {
     initialize_colour_map();
