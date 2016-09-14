@@ -197,8 +197,6 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile)
   DisplayTile tile_info = tiles_info.at(static_cast<int>(tile->get_tile_type()));
   display_tile = tile_info;
 
-  size_t foo = display_tile.get_colours().size();
-
   return display_tile;
 }
 

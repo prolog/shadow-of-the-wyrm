@@ -19,7 +19,6 @@ TilesContainer XMLMapTilesReader::parse_tiles(const XMLNode& tiles_node, const i
   if (!tiles_node.is_null())
   {
     string tile_str = XMLUtils::get_node_value(tiles_node);
-    size_t tiles_size = tile_str.size();
 
     XMLTileMapper tile_mapper;
 
@@ -41,10 +40,6 @@ TilesContainer XMLMapTilesReader::parse_tiles(const XMLNode& tiles_node, const i
               cur_col = 0;
               cur_row++;
             }
-          }
-          else
-          {
-            int x = 1;
           }
         }
       }

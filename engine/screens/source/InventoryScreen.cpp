@@ -80,7 +80,7 @@ void InventoryScreen::initialize()
 
         cnt++;
 
-        bool page_reset = add_options_component(inv_screen, options, cnt, current_id);
+        add_options_component(inv_screen, options, cnt, current_id);
 
         current_id++;
       }

@@ -36,8 +36,7 @@ ITimeObserverPtr TimeObserverFactory::create_time_observer(const ClassIdentifier
   }
   else
   {
-    const auto time_obs_end = time_observer_map.end();
-    BOOST_ASSERT_MSG(t_it == time_obs_end, "Could not find time observer from class id!");
+    BOOST_ASSERT_MSG(t_it == time_observer_map.end(), "Could not find time observer from class id!");
   }
 
   return time_observer;
