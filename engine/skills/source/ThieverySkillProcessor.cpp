@@ -1,7 +1,10 @@
 #include "ThieverySkillProcessor.hpp"
 #include "ActionTextKeys.hpp"
+#include "Commands.hpp"
+#include "CommandFactory.hpp"
+#include "Game.hpp"
+#include "KeyboardCommandMap.hpp"
 #include "MapUtils.hpp"
-#include "MessageManagerFactory.hpp"
 
 using namespace std;
 
@@ -17,11 +20,62 @@ ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map
   {
     acv = get_default_skill_action_cost_value(creature);
 
-    bool adj_creatures = check_for_adjacent_creatures(creature, map);
+    pair<bool, TileDirectionMap> adj_creatures_pair = check_for_adjacent_creatures(creature, map);
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
 
-    if (adj_creatures)
+    if (adj_creatures_pair.first && !adj_creatures_pair.second.empty())
     {
-      // ...
+      TileDirectionMap tdm = adj_creatures_pair.second;
+      size_t tdm_sz = tdm.size();
+      Direction d;
+      CreaturePtr steal_creature;
+      TilePtr steal_tile;
+
+      if (tdm_sz == 1)
+      {
+        d = tdm.begin()->first;
+        steal_tile = tdm.begin()->second;
+
+        if (steal_tile)
+        {
+          steal_creature = steal_tile->get_creature();
+        }
+      }
+      else
+      {
+        CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
+        KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+
+        Game& game = Game::instance();
+        game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
+        manager.send();
+
+        CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, 0);
+
+        if (base_command)
+        {
+          // Check to see if it's an actual directional command
+          std::shared_ptr<DirectionalCommand> dcommand;
+          dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+
+          if (dcommand)
+          {
+            TilePtr tile = MapUtils::get_adjacent_tile(map, creature, dcommand->get_direction());
+
+            if (tile && tile->has_creature())
+            {
+              steal_creature = tile->get_creature();
+            }
+          }
+        }
+      }
+
+      if (steal_creature != nullptr)
+      {
+        acv = process_steal(creature, steal_creature, manager);
+      }
     }
   }
 
@@ -30,13 +84,14 @@ ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map
 
 // Check to see if there are any creature, hostile or not, that are adjacent
 // to the given creature.
-bool ThieverySkillProcessor::check_for_adjacent_creatures(CreaturePtr creature, MapPtr map)
+pair<bool, TileDirectionMap> ThieverySkillProcessor::check_for_adjacent_creatures(CreaturePtr creature, MapPtr map)
 {
-  bool adj_creatures = false;
+  pair<bool, TileDirectionMap> result;
+  TileDirectionMap tdm;
 
   if (creature != nullptr && map != nullptr)
   {
-    TileDirectionMap tdm = MapUtils::get_adjacent_tiles_to_creature(map, creature);
+    tdm = MapUtils::get_adjacent_tiles_to_creature(map, creature);
 
     for (const auto& tile_pair : tdm)
     {
@@ -44,20 +99,43 @@ bool ThieverySkillProcessor::check_for_adjacent_creatures(CreaturePtr creature, 
 
       if (tile != nullptr && tile->has_creature())
       {
-        adj_creatures = true;
-        break;
+        result.first = true;
+        result.second.insert(tile_pair);
       }
     }
   }
 
-  if (!adj_creatures && creature && creature->get_is_player())
+  if (!result.first && creature && creature->get_is_player())
   {
     IMessageManager& manager = MessageManagerFactory::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_THIEVERY_NO_TARGETS));
     manager.send();
   }
 
-  return adj_creatures;
+  return result;
+}
+
+// Process the steal: first check to see if the creature we're trying to steal
+// from is the stealing creature, and if not, to the necessary checks to see
+// if the thievery was successful.
+ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& manager)
+{
+  ActionCostValue acv = get_default_skill_action_cost_value(stealing_creature);
+
+  if (stealing_creature != nullptr && steal_creature != nullptr)
+  {
+    if (stealing_creature->get_id() == steal_creature->get_id())
+    {
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_THIEVERY_SELF_TARGET));
+      manager.send();
+    }
+    else
+    {
+
+    }
+  }
+
+  return acv;
 }
 
 ActionCostValue ThieverySkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const

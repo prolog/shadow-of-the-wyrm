@@ -1,5 +1,7 @@
 #pragma once
 #include "SkillProcessor.hpp"
+#include "MapUtils.hpp"
+#include "MessageManagerFactory.hpp"
 
 class ThieverySkillProcessor : public SkillProcessor
 {
@@ -9,7 +11,8 @@ class ThieverySkillProcessor : public SkillProcessor
     virtual ActionCostValue process(CreaturePtr creature, MapPtr map) override;
 
   protected:
-    bool check_for_adjacent_creatures(CreaturePtr creature, MapPtr map);
+    std::pair<bool, TileDirectionMap> check_for_adjacent_creatures(CreaturePtr creature, MapPtr map);
+    ActionCostValue process_steal(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& manager);
 
     ActionCostValue get_default_skill_action_cost_value(CreaturePtr creature) const override;
 };
