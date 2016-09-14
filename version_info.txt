@@ -22,7 +22,7 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 - Added a setting to enforce the character's name being the same as the
   player's username, for the full nethack/DCSS experience.
 
-- Linux support.
+- Support for Linux builds.
 
 - Some refactoring in the Lua and C++ code.
 

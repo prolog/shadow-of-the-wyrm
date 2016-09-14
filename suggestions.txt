@@ -1,7 +1,7 @@
 Me:
+- Add "view highscores" after Load Game in main menu
 - Get static linking working with premake and the Linux build for a sane
   distribution.
-- High scores not being updated!
 - New spell: vorpal bolt
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
