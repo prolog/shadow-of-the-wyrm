@@ -1,5 +1,6 @@
 Me:
 - Add "view highscores" after Load Game in main menu
+- Finish thievery skill implementation
 - Get static linking working with premake and the Linux build for a sane
   distribution.
 - New spell: vorpal bolt
@@ -16,7 +17,7 @@ Me:
   melee weapon groups, and ranged ammunition.  Remove all the individual
   branded-like items from the game configuration.
 - Implement a draining flag (50% chance return 1/4 damage to attacker).
-- Ensure item describers properly handle the brads, plus draining/vorpal/
+- Ensure item describers properly handle the brands, plus draining/vorpal/
   piercing/chaotic.
 - Special rooms: beer hall, magical workshop, armory.
 - Initial Music skill implementation.

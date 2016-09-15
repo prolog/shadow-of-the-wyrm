@@ -468,7 +468,7 @@ the princeling lay within the gentle flowers, %b
 and watched the mist above him teem and roil. %b
 The sun obscured, uncertain of the hour, %b
 it seemed to Tel that something in the haze %b
-stood still.  A glint.  A glimmer.  Sheen of gold %b
+stood still.  A glint.  A glimmer.  Hint of gold %b
 and muscle.  Then, it turned and held his gaze. %b
 The deer!  A thing of magic in the cold %b
 grey morning, proud and wondrous, grim and hale and bold.
@@ -482,4 +482,14 @@ toward the stripling, winded in his bower %b
 beneath a mountain ash.  The fairy thane %b
 stood up.  He drew his bow with all his power, %b
 and sent an arrow shrieking in that morning hour.
+%p
+The arrow arced by magic, seemed to float, %b
+meander through the trees, and disappear. %b
+The stag raised up its head, and shook its coat. %b
+A sheen of something human in that deer, %b
+a throaty kind of laugh, a knowing glance %b
+toward the gobsmacked prince.  A sudden roar %b
+from somewhere in the distance, that expanse %b
+of dying brush, the hart now gone: before %b
+the prince, the kind of test that he'd been dying for.
 %p
