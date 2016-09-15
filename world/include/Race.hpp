@@ -32,6 +32,9 @@ class Race
     void set_leaves_corpse(const bool new_leaves_corpse);
     bool get_leaves_corpse() const;
 
+    void set_has_pockets(const bool new_has_pockets);
+    bool get_has_pockets() const;
+
     void set_has_random_villages(const bool rand_villages);
     bool get_has_random_villages() const;
     
@@ -129,6 +132,7 @@ class Race
     std::string parent_race_id;
     bool user_playable;
     bool leaves_corpse;
+    bool has_pockets;
     bool has_random_villages;
     SettlementType settlement_type;
     TileType settlement_tile_subtype;

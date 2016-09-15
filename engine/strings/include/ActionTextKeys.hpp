@@ -27,6 +27,7 @@ class ActionTextKeys
     static std::string get_seed_planted_message(const bool blind, const std::string& seed_usage_desc);
     static std::string get_random_bait_message();
     static std::string get_fishing_outcome_message(const FishingOutcomeType fot);
+    static std::string get_already_stolen_message(const std::string& desc_sid);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -186,4 +187,5 @@ class ActionTextKeys
     static const std::string ACTION_ITEM_BREAKAGE_MONSTER;
     static const std::string ACTION_SPIT_OUT_SEED;
     static const std::string ACTION_SEED_PLANTED;
+    static const std::string ACTION_THIEVERY_ALREADY_STOLEN;
 };

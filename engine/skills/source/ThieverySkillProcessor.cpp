@@ -2,6 +2,9 @@
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
 #include "CommandFactory.hpp"
+#include "Conversion.hpp"
+#include "CreatureProperties.hpp"
+#include "DescriberFactory.hpp"
 #include "Game.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "MapUtils.hpp"
@@ -122,20 +125,54 @@ ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creat
 {
   ActionCostValue acv = get_default_skill_action_cost_value(stealing_creature);
 
+  // Used for only sending messages the player should see.
+  IMessageManager& pl_manager = MessageManagerFactory::instance(stealing_creature, stealing_creature && stealing_creature->get_is_player());
+
   if (stealing_creature != nullptr && steal_creature != nullptr)
   {
     if (stealing_creature->get_id() == steal_creature->get_id())
     {
-      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_THIEVERY_SELF_TARGET));
-      manager.send();
+      pl_manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_THIEVERY_SELF_TARGET));
+      pl_manager.send();
     }
     else
     {
+      if (already_stolen_from(steal_creature))
+      {
+        IDescriberPtr describer = DescriberFactory::create_describer(stealing_creature, steal_creature);
 
+        if (describer != nullptr)
+        {
+          pl_manager.add_new_message(ActionTextKeys::get_already_stolen_message(describer->describe()));
+          pl_manager.send();
+        }
+      }
+      else
+      {
+        // Can we steal from this creature?  E.g., insects don't have pockets.
+        //  JCD TODO
+
+        // ...
+
+        steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
+      }
     }
   }
 
   return acv;
+}
+
+// Has the targetted creature already been pilfered?
+bool ThieverySkillProcessor::already_stolen_from(CreaturePtr creature)
+{
+  bool stolen = false;
+
+  if (creature != nullptr && !creature->get_is_player())
+  {
+    stolen = String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM));
+  }
+
+  return stolen;
 }
 
 ActionCostValue ThieverySkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const

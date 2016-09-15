@@ -4,6 +4,7 @@
 #include "CreatureDescriber.hpp"
 #include "CreatureTranslator.hpp"
 #include "Conversion.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "RaceManager.hpp"
 #include "ClassManager.hpp"
 #include "StringTable.hpp"
@@ -37,12 +38,21 @@ string CreatureDescriber::describe() const
     }
     else
     {
-      string creature_name = creature->get_name();
-      creature_desc = StringTable::get(creature->get_description_sid());
+      CurrentCreatureAbilities cca;
 
-      if (!creature_name.empty())
+      if (!cca.can_see(viewing_creature))
       {
-        creature_desc = creature_name + ", " + creature_desc;
+        creature_desc = StringTable::get(TextKeys::SOMETHING);
+      }
+      else
+      {
+        string creature_name = creature->get_name();
+        creature_desc = StringTable::get(creature->get_description_sid());
+
+        if (!creature_name.empty())
+        {
+          creature_desc = creature_name + ", " + creature_desc;
+        }
       }
     }
 

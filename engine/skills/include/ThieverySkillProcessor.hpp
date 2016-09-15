@@ -9,6 +9,7 @@ class ThieverySkillProcessor : public SkillProcessor
     ThieverySkillProcessor();
 
     virtual ActionCostValue process(CreaturePtr creature, MapPtr map) override;
+    virtual bool already_stolen_from(CreaturePtr creature);
 
   protected:
     std::pair<bool, TileDirectionMap> check_for_adjacent_creatures(CreaturePtr creature, MapPtr map);
