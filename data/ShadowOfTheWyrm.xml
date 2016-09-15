@@ -362,6 +362,7 @@
 		<Race id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>0</HasPockets>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -423,6 +424,7 @@
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>0</HasPockets>
 			<NameSID>BIRD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -484,6 +486,7 @@
 		<Race id="_construct">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>CONSTRUCT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -545,6 +548,7 @@
 		<Race id="_demon">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>DEMON_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -606,6 +610,7 @@
 		<Race id="_divine">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -667,6 +672,7 @@
 		<Race id="_humanoid">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>HUMANOID_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -728,6 +734,7 @@
 		<Race id="_insect">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>0</HasPockets>
 			<NameSID>INSECT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -789,6 +796,7 @@
 		<Race id="_jelly">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>JELLY_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -850,6 +858,7 @@
 		<Race id="_monster">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -911,6 +920,7 @@
 		<Race id="_plant">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<HasPockets>0</HasPockets>
 			<NameSID>PLANT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -972,6 +982,7 @@
 		<Race id="_undead">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1028,6 +1039,7 @@
 		<Race id="_corporeal_undead" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1087,6 +1099,7 @@
 		<Race id="_spirit" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1145,6 +1158,7 @@
 		<Race id="_dragon">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<NameSID>DRAGON_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1200,6 +1214,7 @@
 		<Race id="01_human" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
@@ -1283,6 +1298,7 @@
 		<Race id="02_woodelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
@@ -1358,6 +1374,7 @@
 		<Race id="03_mountainelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
@@ -1434,6 +1451,7 @@
 		<Race id="04_snakeling" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
@@ -1507,6 +1525,7 @@
 		<Race id="05_fae" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<HasRandomVillages>0</HasRandomVillages>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -1582,6 +1601,7 @@
 		<Race id="06_dwarf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
@@ -1656,6 +1676,7 @@
 		<Race id="07_goblin" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
@@ -1731,6 +1752,7 @@
 		<Race id="08_ogre" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
@@ -1802,6 +1824,7 @@
 		<Race id="09_giant" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
@@ -1874,6 +1897,7 @@
 		<Race id="10_gnome" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<HasPockets>1</HasPockets>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>

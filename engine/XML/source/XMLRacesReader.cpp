@@ -63,6 +63,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool leaves_corpse = XMLUtils::get_child_node_bool_value(race_node, "LeavesCorpse");
     race->set_leaves_corpse(leaves_corpse);
 
+    bool has_pockets = XMLUtils::get_child_node_bool_value(race_node, "HasPockets");
+    race->set_has_pockets(has_pockets);
+
     bool has_random_villages = XMLUtils::get_child_node_bool_value(race_node, "HasRandomVillages", true);
     race->set_has_random_villages(has_random_villages);
     

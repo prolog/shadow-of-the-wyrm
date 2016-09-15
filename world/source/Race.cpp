@@ -8,6 +8,7 @@ using namespace std;
 Race::Race()
 : user_playable(false)
 , leaves_corpse(true)
+, has_pockets(false)
 , has_random_villages(true)
 , settlement_type(SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE)
 , settlement_tile_subtype(TileType::TILE_TYPE_FIELD)
@@ -81,6 +82,16 @@ void Race::set_leaves_corpse(const bool new_leaves_corpse)
 bool Race::get_leaves_corpse() const
 {
   return leaves_corpse;
+}
+
+void Race::set_has_pockets(const bool new_has_pockets)
+{
+  has_pockets = new_has_pockets;
+}
+
+bool Race::get_has_pockets() const
+{
+  return has_pockets;
 }
 
 void Race::set_has_random_villages(const bool new_has_random_villages)
