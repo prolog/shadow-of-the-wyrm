@@ -1,4 +1,10 @@
 Me:
+- Clean up the ThieverySkillProcessor code.
+- When creatures try to open locked doors, you get "You do not have the
+  correct key for this lock.  The way is blocked."  In
+  MessageManagerFactory::instance, add an extra parameter to check
+  player_affected only.  Go through the code and determine when this
+  should actually be set.
 - Add "view highscores" after Load Game in main menu
 - Finish thievery skill implementation
 - Get static linking working with premake and the Linux build for a sane

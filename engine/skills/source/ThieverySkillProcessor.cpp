@@ -3,12 +3,15 @@
 #include "Commands.hpp"
 #include "CommandFactory.hpp"
 #include "Conversion.hpp"
+#include "CreatureDescriber.hpp"
 #include "CreatureProperties.hpp"
-#include "DescriberFactory.hpp"
 #include "Game.hpp"
+#include "HostilityManager.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "MapUtils.hpp"
 #include "RaceManager.hpp"
+#include "TextKeys.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -22,7 +25,9 @@ ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map
 
   if (creature && map)
   {
-    acv = get_default_skill_action_cost_value(creature);
+    // Redraw the main map so any prompts don't look odd.
+    Game& game = Game::instance();
+    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
 
     pair<bool, TileDirectionMap> adj_creatures_pair = check_for_adjacent_creatures(creature, map);
     IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
@@ -49,9 +54,6 @@ ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map
       {
         CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
         KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
-
-        Game& game = Game::instance();
-        game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
 
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
         manager.send();
@@ -138,15 +140,12 @@ ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creat
     }
     else
     {
-      IDescriberPtr describer = DescriberFactory::create_describer(stealing_creature, steal_creature);
+      CreatureDescriber cd(stealing_creature, steal_creature, true);
       
       if (already_stolen_from(steal_creature))
       {
-        if (describer != nullptr)
-        {
-          pl_manager.add_new_message(ActionTextKeys::get_already_stolen_message(describer->describe()));
-          pl_manager.send();
-        }
+        pl_manager.add_new_message(ActionTextKeys::get_already_stolen_message(cd.describe()));
+        pl_manager.send();
       }
       else
       {
@@ -156,15 +155,38 @@ ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creat
 
         if (steal_race && steal_race->get_has_pockets())
         {
-          //  JCD TODO
+          bool steal = false;
 
-          // ...
-          steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
-          acv = get_default_skill_action_cost_value(stealing_creature);
+          // Stealing from hostile creatures is always okay...
+          if (steal_creature->get_decision_strategy()->get_threats_ref().has_threat(stealing_creature->get_id()).first)
+          {
+            steal = true;
+          }
+          // ...it's the innocents that some of the deities have issues with.
+          else
+          {
+            manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_STEAL_FRIENDLY_CREATURE));
+            steal = stealing_creature->get_decision_strategy()->get_confirmation();
+
+            if (steal)
+            {
+              // Attacking and stealing are considered one and the same by the Nine.
+              Game::instance().get_deity_action_manager_ref().notify_action(stealing_creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+            }
+          }
+
+          if (steal)
+          {
+            HostilityManager hm;
+            hm.set_hostility_to_creature(steal_creature, stealing_creature->get_id());
+            steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
+
+            acv = get_default_skill_action_cost_value(stealing_creature);
+          }
         }
         else
         {
-          pl_manager.add_new_message(ActionTextKeys::get_no_pockets_message(describer->describe()));
+          pl_manager.add_new_message(ActionTextKeys::get_no_pockets_message(cd.describe()));
           pl_manager.send();
         }
       }

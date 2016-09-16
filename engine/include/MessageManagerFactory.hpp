@@ -17,6 +17,8 @@ class MessageManagerFactory
   public:
     static IMessageManager& instance();
 
+    static IMessageManager& instance(std::shared_ptr<Creature> creature);
+
     // The player is affected if the calling function says so, or if a valid
     // CreaturePtr is provided and that creature is in the player's LOS.
     static IMessageManager& instance(std::shared_ptr<Creature> creature, bool player_is_affected);
