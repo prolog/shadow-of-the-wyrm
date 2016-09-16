@@ -8,6 +8,7 @@
 #include "Game.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "MapUtils.hpp"
+#include "RaceManager.hpp"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ ThieverySkillProcessor::ThieverySkillProcessor()
 
 ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = -1;
 
   if (creature && map)
   {
@@ -123,7 +124,7 @@ pair<bool, TileDirectionMap> ThieverySkillProcessor::check_for_adjacent_creature
 // if the thievery was successful.
 ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& manager)
 {
-  ActionCostValue acv = get_default_skill_action_cost_value(stealing_creature);
+  ActionCostValue acv = -1;
 
   // Used for only sending messages the player should see.
   IMessageManager& pl_manager = MessageManagerFactory::instance(stealing_creature, stealing_creature && stealing_creature->get_is_player());
@@ -137,10 +138,10 @@ ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creat
     }
     else
     {
+      IDescriberPtr describer = DescriberFactory::create_describer(stealing_creature, steal_creature);
+      
       if (already_stolen_from(steal_creature))
       {
-        IDescriberPtr describer = DescriberFactory::create_describer(stealing_creature, steal_creature);
-
         if (describer != nullptr)
         {
           pl_manager.add_new_message(ActionTextKeys::get_already_stolen_message(describer->describe()));
@@ -150,11 +151,22 @@ ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creat
       else
       {
         // Can we steal from this creature?  E.g., insects don't have pockets.
-        //  JCD TODO
+        RaceManager rm;
+        RacePtr steal_race = rm.get_race(steal_creature->get_race_id());
 
-        // ...
+        if (steal_race && steal_race->get_has_pockets())
+        {
+          //  JCD TODO
 
-        steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
+          // ...
+          steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
+          acv = get_default_skill_action_cost_value(stealing_creature);
+        }
+        else
+        {
+          pl_manager.add_new_message(ActionTextKeys::get_no_pockets_message(describer->describe()));
+          pl_manager.send();
+        }
       }
     }
   }

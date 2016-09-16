@@ -296,6 +296,16 @@ string ActionTextKeys::get_already_stolen_message(const string& desc)
   return msg;
 }
 
+string ActionTextKeys::get_no_pockets_message(const string& desc)
+{
+  string msg = StringTable::get(ACTION_THIEVERY_NO_POCKETS);
+
+  boost::replace_first(msg, "%s", desc);
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -449,4 +459,5 @@ const string ActionTextKeys::ACTION_INTRODUCTION_ROGUELIKES       = "ACTION_INTR
 const string ActionTextKeys::ACTION_SOTW_HISTORY                  = "ACTION_SOTW_HISTORY";
 const string ActionTextKeys::ACTION_STRATEGY_BASICS               = "ACTION_STRATEGY_BASICS";
 const string ActionTextKeys::ACTION_THIEVERY_ALREADY_STOLEN       = "ACTION_THIEVERY_ALREADY_STOLEN";
+const string ActionTextKeys::ACTION_THIEVERY_NO_POCKETS           = "ACTION_THIEVERY_NO_POCKETS";
 
