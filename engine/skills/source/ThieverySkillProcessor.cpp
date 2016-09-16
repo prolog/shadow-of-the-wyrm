@@ -28,59 +28,15 @@ ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map
     // Redraw the main map so any prompts don't look odd.
     Game& game = Game::instance();
     game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
-
     pair<bool, TileDirectionMap> adj_creatures_pair = check_for_adjacent_creatures(creature, map);
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
 
     if (adj_creatures_pair.first && !adj_creatures_pair.second.empty())
     {
-      TileDirectionMap tdm = adj_creatures_pair.second;
-      size_t tdm_sz = tdm.size();
-      Direction d;
-      CreaturePtr steal_creature;
-      TilePtr steal_tile;
-
-      if (tdm_sz == 1)
-      {
-        d = tdm.begin()->first;
-        steal_tile = tdm.begin()->second;
-
-        if (steal_tile)
-        {
-          steal_creature = steal_tile->get_creature();
-        }
-      }
-      else
-      {
-        CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
-        KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
-
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
-        manager.send();
-
-        CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, 0);
-
-        if (base_command)
-        {
-          // Check to see if it's an actual directional command
-          std::shared_ptr<DirectionalCommand> dcommand;
-          dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
-
-          if (dcommand)
-          {
-            TilePtr tile = MapUtils::get_adjacent_tile(map, creature, dcommand->get_direction());
-
-            if (tile && tile->has_creature())
-            {
-              steal_creature = tile->get_creature();
-            }
-          }
-        }
-      }
+      CreaturePtr steal_creature = get_steal_creature(adj_creatures_pair.second, creature, map);
 
       if (steal_creature != nullptr)
       {
-        acv = process_steal(creature, steal_creature, manager);
+        acv = process_steal(creature, steal_creature);
       }
     }
   }
@@ -121,92 +77,162 @@ pair<bool, TileDirectionMap> ThieverySkillProcessor::check_for_adjacent_creature
   return result;
 }
 
+// Get the creature to steal from.  When there is only one adjacent creature,
+// use that.  Otherwise, prompt which to steal from.
+CreaturePtr ThieverySkillProcessor::get_steal_creature(const TileDirectionMap& tdm, CreaturePtr creature, MapPtr map)
+{
+  size_t tdm_sz = tdm.size();
+  Direction d;
+  CreaturePtr steal_creature;
+  TilePtr steal_tile;
+
+  if (tdm_sz == 1)
+  {
+    d = tdm.begin()->first;
+    steal_tile = tdm.begin()->second;
+
+    if (steal_tile)
+    {
+      steal_creature = steal_tile->get_creature();
+    }
+  }
+  else
+  {
+    CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
+    KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
+    manager.send();
+
+    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, 0);
+
+    if (base_command)
+    {
+      // Check to see if it's an actual directional command
+      std::shared_ptr<DirectionalCommand> dcommand;
+      dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+
+      if (dcommand)
+      {
+        TilePtr tile = MapUtils::get_adjacent_tile(map, creature, dcommand->get_direction());
+
+        if (tile && tile->has_creature())
+        {
+          steal_creature = tile->get_creature();
+        }
+      }
+    }
+  }
+
+  return steal_creature;
+}
+
 // Process the steal: first check to see if the creature we're trying to steal
 // from is the stealing creature, and if not, to the necessary checks to see
 // if the thievery was successful.
-ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& manager)
+ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creature, CreaturePtr steal_creature)
 {
   ActionCostValue acv = -1;
 
   // Used for only sending messages the player should see.
-  IMessageManager& pl_manager = MessageManagerFactory::instance(stealing_creature, stealing_creature && stealing_creature->get_is_player());
+  IMessageManager& pl_manager = MessageManagerFactory::instance(stealing_creature);
 
   if (stealing_creature != nullptr && steal_creature != nullptr)
   {
-    if (stealing_creature->get_id() == steal_creature->get_id())
+    if (!is_stealing_from_self(stealing_creature, steal_creature, pl_manager) &&
+        !is_already_stolen_from(stealing_creature, steal_creature, pl_manager) &&
+        has_pockets(stealing_creature, steal_creature, pl_manager) &&
+        confirm_steal(stealing_creature, steal_creature, pl_manager))
     {
-      pl_manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_THIEVERY_SELF_TARGET));
-      pl_manager.send();
-    }
-    else
-    {
-      CreatureDescriber cd(stealing_creature, steal_creature, true);
-      
-      if (already_stolen_from(steal_creature))
-      {
-        pl_manager.add_new_message(ActionTextKeys::get_already_stolen_message(cd.describe()));
-        pl_manager.send();
-      }
-      else
-      {
-        // Can we steal from this creature?  E.g., insects don't have pockets.
-        RaceManager rm;
-        RacePtr steal_race = rm.get_race(steal_creature->get_race_id());
+      HostilityManager hm;
+      hm.set_hostility_to_creature(steal_creature, stealing_creature->get_id());
+      steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
 
-        if (steal_race && steal_race->get_has_pockets())
-        {
-          bool steal = false;
-
-          // Stealing from hostile creatures is always okay...
-          if (steal_creature->get_decision_strategy()->get_threats_ref().has_threat(stealing_creature->get_id()).first)
-          {
-            steal = true;
-          }
-          // ...it's the innocents that some of the deities have issues with.
-          else
-          {
-            manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_STEAL_FRIENDLY_CREATURE));
-            steal = stealing_creature->get_decision_strategy()->get_confirmation();
-
-            if (steal)
-            {
-              // Attacking and stealing are considered one and the same by the Nine.
-              Game::instance().get_deity_action_manager_ref().notify_action(stealing_creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
-            }
-          }
-
-          if (steal)
-          {
-            HostilityManager hm;
-            hm.set_hostility_to_creature(steal_creature, stealing_creature->get_id());
-            steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
-
-            acv = get_default_skill_action_cost_value(stealing_creature);
-          }
-        }
-        else
-        {
-          pl_manager.add_new_message(ActionTextKeys::get_no_pockets_message(cd.describe()));
-          pl_manager.send();
-        }
-      }
+      acv = get_default_skill_action_cost_value(stealing_creature);
     }
   }
 
   return acv;
 }
 
-// Has the targetted creature already been pilfered?
-bool ThieverySkillProcessor::already_stolen_from(CreaturePtr creature)
+bool ThieverySkillProcessor::is_stealing_from_self(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& pl_manager)
+{
+  bool self_steal = false;
+
+  if (stealing_creature->get_id() == steal_creature->get_id())
+  {
+    self_steal = true;
+
+    pl_manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_THIEVERY_SELF_TARGET));
+    pl_manager.send();
+  }
+
+  return self_steal;
+}
+
+// Has the targetted creature already been pilfered?  Potentially add a message 
+// if so.
+bool ThieverySkillProcessor::is_already_stolen_from(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& pl_manager)
 {
   bool stolen = false;
 
-  if (creature != nullptr && !creature->get_is_player())
+  if (steal_creature != nullptr && !steal_creature->get_is_player())
   {
-    stolen = String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM));
+    stolen = String::to_bool(steal_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM));
+  }
+
+  CreatureDescriber cd(stealing_creature, steal_creature, true);
+
+  if (stolen)
+  {
+    pl_manager.add_new_message(ActionTextKeys::get_already_stolen_message(cd.describe()));
+    pl_manager.send();
   }
 
   return stolen;
+}
+
+bool ThieverySkillProcessor::has_pockets(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& pl_manager)
+{
+  RaceManager rm;
+  RacePtr steal_race = rm.get_race(steal_creature->get_race_id());
+
+  bool has_pockets = (steal_race && steal_race->get_has_pockets());
+  CreatureDescriber cd(stealing_creature, steal_creature, true);
+
+  if (!has_pockets)
+  {
+    pl_manager.add_new_message(ActionTextKeys::get_no_pockets_message(cd.describe()));
+    pl_manager.send();
+  }
+
+  return has_pockets;
+}
+
+bool ThieverySkillProcessor::confirm_steal(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& pl_manager)
+{
+  bool steal = false;
+
+  // Stealing from hostile creatures is always okay...
+  if (steal_creature->get_decision_strategy()->get_threats_ref().has_threat(stealing_creature->get_id()).first)
+  {
+    steal = true;
+  }
+  // ...it's the innocents that some of the deities have issues with.
+  else
+  {
+    pl_manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_STEAL_FRIENDLY_CREATURE));
+    steal = stealing_creature->get_decision_strategy()->get_confirmation();
+
+    if (steal)
+    {
+      // Attacking and stealing are considered one and the same by the Nine.
+      Game::instance().get_deity_action_manager_ref().notify_action(stealing_creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+    }
+  }
+
+  return steal;
 }
 
 ActionCostValue ThieverySkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
