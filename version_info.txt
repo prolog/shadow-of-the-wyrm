@@ -22,9 +22,18 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 - Added a setting to enforce the character's name being the same as the
   player's username, for the full nethack/DCSS experience.
 
-- Thieves can now steal from other creatures.  A creature can only be
-  stolen from once, if not the player.  This sets a flag, preventing the
-  creature from being stolen from again (farming).
+- Thieves can now steal from other creatures.  
+
+  - A creature can only be stolen from once, if not the player.  This 
+    sets a flag, preventing the creature from being stolen from again.  
+  
+  - Creatures without pockets (insects, birds, etc) can't be pickpocketed.
+    Any other creature can be stolen from.
+  
+  - Certain deities do not appreciate stealing from innocent creatures.  
+  
+  - When stealing, any item from level 1 to the target creature's level 
+    can be generated.
 
 - Support for Linux builds.
 

@@ -5,13 +5,21 @@
 #include "Conversion.hpp"
 #include "CreatureDescriber.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
+#include "ItemEnchantmentCalculator.hpp"
+#include "ItemGenerationManager.hpp"
+#include "ItemIdentifier.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "MapUtils.hpp"
 #include "RaceManager.hpp"
+#include "RNG.hpp"
+#include "SkillManager.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
+#include "ThieveryCalculator.hpp"
 
 using namespace std;
 
@@ -36,7 +44,7 @@ ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map
 
       if (steal_creature != nullptr)
       {
-        acv = process_steal(creature, steal_creature);
+        acv = process_steal(creature, steal_creature, map);
       }
     }
   }
@@ -131,24 +139,47 @@ CreaturePtr ThieverySkillProcessor::get_steal_creature(const TileDirectionMap& t
 // Process the steal: first check to see if the creature we're trying to steal
 // from is the stealing creature, and if not, to the necessary checks to see
 // if the thievery was successful.
-ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creature, CreaturePtr steal_creature)
+ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creature, CreaturePtr steal_creature, MapPtr map)
 {
   ActionCostValue acv = -1;
 
+  IMessageManager& manager = MessageManagerFactory::instance(steal_creature, steal_creature && steal_creature->get_is_player());
+  CreatureDescriber cd(stealing_creature, steal_creature, true);
+
   // Used for only sending messages the player should see.
   IMessageManager& pl_manager = MessageManagerFactory::instance(stealing_creature);
+  CurrentCreatureAbilities cca;
 
   if (stealing_creature != nullptr && steal_creature != nullptr)
   {
-    if (!is_stealing_from_self(stealing_creature, steal_creature, pl_manager) &&
+    if (cca.can_see(stealing_creature, true) &&
+        !is_stealing_from_self(stealing_creature, steal_creature, pl_manager) &&
         !is_already_stolen_from(stealing_creature, steal_creature, pl_manager) &&
         has_pockets(stealing_creature, steal_creature, pl_manager) &&
         confirm_steal(stealing_creature, steal_creature, pl_manager))
     {
-      HostilityManager hm;
-      hm.set_hostility_to_creature(steal_creature, stealing_creature->get_id());
-      steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
+      ThieveryCalculator tc;
+      bool steal_result = false;
 
+      if (RNG::percent_chance(tc.calculate_pct_chance_steal(stealing_creature, steal_creature)))
+      {
+        steal_result = true;
+        ItemPtr stolen_item = create_stolen_item(steal_creature);
+        transfer_stolen_item(stealing_creature, stolen_item, map, pl_manager, manager);
+        set_flags_on_target_creature(stealing_creature, steal_creature);
+
+        ItemIdentifier iid;
+        manager.add_new_message(ActionTextKeys::get_steal_successful_message(cd.describe(), iid.get_appropriate_usage_description(stolen_item), stealing_creature->get_is_player()));
+        manager.send();
+      }
+      else
+      {
+        pl_manager.add_new_message(ActionTextKeys::get_steal_unsuccessful_message(stealing_creature->get_description_sid(), steal_creature->get_description_sid(), stealing_creature->get_is_player()));
+        pl_manager.send();
+      }
+
+      SkillManager sm;
+      sm.mark_skill(stealing_creature, SkillType::SKILL_GENERAL_THIEVERY, steal_result);
       acv = get_default_skill_action_cost_value(stealing_creature);
     }
   }
@@ -233,6 +264,50 @@ bool ThieverySkillProcessor::confirm_steal(CreaturePtr stealing_creature, Creatu
   }
 
   return steal;
+}
+
+ItemPtr ThieverySkillProcessor::create_stolen_item(CreaturePtr steal_creature)
+{
+  Game& game = Game::instance();
+  Rarity rarity = Rarity::RARITY_VERY_RARE;
+  ItemEnchantmentCalculator iec;
+  ItemGenerationManager igm;
+
+  int danger_level = steal_creature->get_level().get_current();
+  ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, danger_level, rarity);
+  int enchant_points = iec.calculate_enchantments(danger_level);
+  ItemPtr stolen_item = igm.generate_item(game.get_action_manager_ref(), generation_vec, rarity, enchant_points);
+
+  return stolen_item;
+}
+
+void ThieverySkillProcessor::transfer_stolen_item(CreaturePtr stealing_creature, ItemPtr stolen_item, MapPtr map, IMessageManager& pl_manager, IMessageManager& general_manager)
+{
+  if (stealing_creature != nullptr && stolen_item != nullptr && map != nullptr)
+  {
+    if (CreatureUtils::can_pick_up(stealing_creature, stolen_item))
+    {
+      stealing_creature->get_inventory()->merge_or_add(stolen_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+    }
+    else
+    {
+      pl_manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_THIEVERY_TOO_MANY_ITEMS));
+      pl_manager.send();
+
+      TilePtr creature_tile = MapUtils::get_tile_for_creature(map, stealing_creature);
+      creature_tile->get_items()->add_front(stolen_item);
+    }
+  }
+}
+
+void ThieverySkillProcessor::set_flags_on_target_creature(CreaturePtr stealing_creature, CreaturePtr steal_creature)
+{
+  if (stealing_creature != nullptr && steal_creature != nullptr)
+  {
+    HostilityManager hm;
+    hm.set_hostility_to_creature(steal_creature, stealing_creature->get_id());
+    steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
+  }
 }
 
 ActionCostValue ThieverySkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const

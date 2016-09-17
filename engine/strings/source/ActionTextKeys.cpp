@@ -306,6 +306,40 @@ string ActionTextKeys::get_no_pockets_message(const string& desc)
   return msg;
 }
 
+string ActionTextKeys::get_steal_successful_message(const string& creature_desc, const string& item_desc, const bool is_player)
+{
+  string msg = ACTION_THIEVERY_STEAL_SUCCESSFUL_PLAYER;
+
+  if (!is_player)
+  {
+    msg = ACTION_THIEVERY_STEAL_SUCCESSFUL_MONSTER;
+  }
+
+  msg = StringTable::get(msg);
+  boost::replace_first(msg, "%s1", creature_desc);
+  boost::replace_first(msg, "%s2", item_desc);
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
+string ActionTextKeys::get_steal_unsuccessful_message(const string& stealing_desc, const string& steal_desc, const bool is_player)
+{
+  string msg = ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER;
+
+  if (!is_player)
+  {
+    msg = ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER;
+  }
+
+  msg = StringTable::get(msg);
+  boost::replace_first(msg, "%s1", StringTable::get(steal_desc));
+  boost::replace_first(msg, "%s2", StringTable::get(stealing_desc));
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -417,6 +451,7 @@ const string ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_FAIL  = "ACTION_DISARM_
 const string ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_TRIGGER = "ACTION_DISARM_TRAPS_OUTCOME_TRIGGER";
 const string ActionTextKeys::ACTION_THIEVERY_NO_TARGETS        = "ACTION_THIEVERY_NO_TARGETS";
 const string ActionTextKeys::ACTION_THIEVERY_SELF_TARGET       = "ACTION_THIEVERY_SELF_TARGET";
+const string ActionTextKeys::ACTION_THIEVERY_TOO_MANY_ITEMS    = "ACTION_THIEVERY_TOO_MANY_ITEMS";
 const string ActionTextKeys::ACTION_INSCRIBE_WORLD_MAP         = "ACTION_INSCRIBE_WORLD_MAP";
 const string ActionTextKeys::ACTION_INSCRIBE_WATER             = "ACTION_INSCRIBE_WATER";
 const string ActionTextKeys::ACTION_INSCRIBE_AIR               = "ACTION_INSCRIBE_AIR";
@@ -460,4 +495,9 @@ const string ActionTextKeys::ACTION_SOTW_HISTORY                  = "ACTION_SOTW
 const string ActionTextKeys::ACTION_STRATEGY_BASICS               = "ACTION_STRATEGY_BASICS";
 const string ActionTextKeys::ACTION_THIEVERY_ALREADY_STOLEN       = "ACTION_THIEVERY_ALREADY_STOLEN";
 const string ActionTextKeys::ACTION_THIEVERY_NO_POCKETS           = "ACTION_THIEVERY_NO_POCKETS";
+const string ActionTextKeys::ACTION_THIEVERY_STEAL_SUCCESSFUL_PLAYER = "ACTION_THIEVERY_STEAL_SUCCESSFUL_PLAYER";
+const string ActionTextKeys::ACTION_THIEVERY_STEAL_SUCCESSFUL_MONSTER = "ACTION_THIEVERY_STEAL_SUCCESSFUL_MONSTER";
+const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER = "ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER";
+const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER = "ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER";
+
 
