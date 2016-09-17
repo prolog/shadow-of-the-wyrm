@@ -5,10 +5,12 @@ start, ensure you have your distribution's developer packages for:
 
 - premake4
 - Boost (1.60)
-- Google Test 1.7, if you want to build debug mode, which includes unit tests
+- Google Test 1.7, if you want to build debug mode, which includes unit 
+  tests
 - Xerces-C 3.1
 - Zlib-1.2.8
 - ncurses or equivalent
+- Lua 5.1
 
 You will also need to know where your libraries are installed, and update
 the location in "copy_libs.lua" appropriately.  The values in that file are
@@ -22,3 +24,4 @@ translation units.  Sorry.
 The Linux build has been tested using g++.
 
 Happy hacking!
+
