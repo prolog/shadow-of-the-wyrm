@@ -493,3 +493,13 @@ from somewhere in the distance, that expanse %b
 of dying brush, the hart now gone: before %b
 the prince, the kind of test that he'd been dying for.
 %p
+He heard the thing before he saw it.  Thrum - %b
+reverberating, hanging in the air, %b
+an echo in the woods, a warning.  Thrum - %b
+a heavy beat, a drum-shot, deep and spare. %b
+The leaves and flowers bent down softly.  Thrum - %b
+now closer, louder.  Trembling in the sway %b
+of alder branches, slender starlings.  Thrum %b
+and crash!  The woods themselves in disarray: %b
+a giant roared and raised his blade towards the fae.
+%p
