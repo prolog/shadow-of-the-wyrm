@@ -30,7 +30,7 @@ int Marks::get_value() const
 
 void Marks::incr()
 {
-  marks = marks + 1;
+  marks++;
 }
 
 bool Marks::serialize(ostream& stream) const

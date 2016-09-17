@@ -29,6 +29,8 @@ class ActionTextKeys
     static std::string get_fishing_outcome_message(const FishingOutcomeType fot);
     static std::string get_already_stolen_message(const std::string& desc);
     static std::string get_no_pockets_message(const std::string& desc);
+    static std::string get_steal_successful_message(const std::string& creature_desc, const std::string& item_desc, const bool is_player);
+    static std::string get_steal_unsuccessful_message(const std::string& stealing_desc, const std::string& steal_desc, const bool is_player);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -144,6 +146,7 @@ class ActionTextKeys
     static const std::string ACTION_DISARM_TRAPS_OUTCOME_TRIGGER;
     static const std::string ACTION_THIEVERY_NO_TARGETS;
     static const std::string ACTION_THIEVERY_SELF_TARGET;
+    static const std::string ACTION_THIEVERY_TOO_MANY_ITEMS;
     static const std::string ACTION_INSCRIBE_WORLD_MAP;
     static const std::string ACTION_INSCRIBE_WATER;
     static const std::string ACTION_INSCRIBE_AIR;
@@ -190,4 +193,8 @@ class ActionTextKeys
     static const std::string ACTION_SEED_PLANTED;
     static const std::string ACTION_THIEVERY_ALREADY_STOLEN;
     static const std::string ACTION_THIEVERY_NO_POCKETS;
+    static const std::string ACTION_THIEVERY_STEAL_SUCCESSFUL_PLAYER;
+    static const std::string ACTION_THIEVERY_STEAL_SUCCESSFUL_MONSTER;
+    static const std::string ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER;
+    static const std::string ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER;
 };
