@@ -35,6 +35,9 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   - When stealing, any item from level 1 to the target creature's level 
     can be generated.
 
+- Ironsword's damage has been toned down, and now only gives poison
+  resistance.
+
 - Support for Linux builds.
 
 - Some refactoring in the Lua and C++ code.
