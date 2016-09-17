@@ -26185,15 +26185,14 @@
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
-					<Acid>0.15</Acid>
-					<Poison>0.15</Poison>
+					<Poison>0.20</Poison>
 				</Resistances>
 				<Skill>1002</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>48</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
-					<NumDice>6</NumDice>
+					<NumDice>3</NumDice>
 					<NumSides>12</NumSides>
 					<Type>0</Type>
 				</Damage>
