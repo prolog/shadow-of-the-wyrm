@@ -38,6 +38,8 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 - Ironsword's damage has been toned down, and now only gives poison
   resistance.
 
+- The welcome screen now has an option to show the high scores.
+
 - Support for Linux builds.
 
 - Some refactoring in the Lua and C++ code.
