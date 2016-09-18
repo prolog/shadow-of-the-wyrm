@@ -10,6 +10,12 @@ class Barrel : public Feature
 
     virtual uchar get_symbol() const override;
 
+    virtual void set_drinks(const int new_drinks);
+    int get_drinks() const;
+
+    virtual bool can_pour() const;
+    virtual bool pour();
+
     virtual void set_tap(const bool new_tap);
     virtual bool get_tap() const;
 
@@ -21,10 +27,14 @@ class Barrel : public Feature
 
   protected:
     virtual std::string get_description_sid() const override;
+    virtual void initialize_drinks();
 
+    int drinks;
     bool tap;
     std::string pour_item_id;
 
+    static const int MIN_DRINKS;
+    static const int MAX_DRINKS;
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };

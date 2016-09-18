@@ -40,6 +40,9 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 
 - The welcome screen now has an option to show the high scores.
 
+- Barrels now have a specified number of drinks, and so can't dispense
+  infinite booze.
+
 - Support for Linux builds.
 
 - Some refactoring in the Lua and C++ code.
