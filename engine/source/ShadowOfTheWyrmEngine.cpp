@@ -11,6 +11,7 @@
 #include "DisplayTile.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
+#include "HighScoreScreen.hpp"
 #include "ItemDescriptionRandomizer.hpp"
 #include "ItemIdentifier.hpp"
 #include "LoadGameScreen.hpp"
@@ -56,6 +57,11 @@ bool EngineStateManager::start_new_game_random() const
   return (current_state == EngineStateEnum::ENGINE_STATE_START_NEW_GAME_RANDOM);
 }
 
+bool EngineStateManager::show_high_scores() const
+{
+  return (current_state == EngineStateEnum::ENGINE_STATE_SHOW_HIGH_SCORES);
+}
+
 bool EngineStateManager::load_existing_game() const
 {
   return (current_state == EngineStateEnum::ENGINE_STATE_LOAD_GAME);
@@ -79,6 +85,7 @@ void ShadowOfTheWyrmEngine::initialize_game_option_map()
   game_option_map = GameOptionMap{ { "a", EngineStateEnum::ENGINE_STATE_START_NEW_GAME },
                                    { "b", EngineStateEnum::ENGINE_STATE_START_NEW_GAME_RANDOM },
                                    { "c", EngineStateEnum::ENGINE_STATE_LOAD_GAME },
+                                   { "d", EngineStateEnum::ENGINE_STATE_SHOW_HIGH_SCORES },
                                    { "z", EngineStateEnum::ENGINE_STATE_STOP } };
 }
 
@@ -86,6 +93,7 @@ void ShadowOfTheWyrmEngine::initialize_game_flow_map()
 {
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_START_NEW_GAME, &ShadowOfTheWyrmEngine::process_new_game));
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_START_NEW_GAME_RANDOM, &ShadowOfTheWyrmEngine::process_new_game_random));
+  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_SHOW_HIGH_SCORES, &ShadowOfTheWyrmEngine::process_show_high_scores));
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_LOAD_GAME, &ShadowOfTheWyrmEngine::process_load_game));
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_STOP, &ShadowOfTheWyrmEngine::process_exit_game));
 }
@@ -493,6 +501,17 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   game.get_script_engine_ref().execute(game.get_script(ScriptConstants::SPECIAL_DAY_SCRIPT), {});
 
   return true;
+}
+
+bool ShadowOfTheWyrmEngine::process_show_high_scores()
+{
+  Game& game = Game::instance();
+  ScoreFile sf;
+
+  HighScoreScreen hss(game.get_display(), sf.get_entries());
+  hss.display();
+
+  return false;
 }
 
 // Process a load game command

@@ -57,6 +57,10 @@ void WelcomeScreen::initialize()
   load_game.set_id(option_id++);
   load_game.set_description(StringTable::get(TextKeys::SW_TITLE_LOAD_GAME));
 
+  Option show_high_scores;
+  show_high_scores.set_id(option_id++);
+  show_high_scores.set_description(StringTable::get(TextKeys::SW_TITLE_HIGH_SCORES));
+
   Option quit;
   quit.set_id(25); // 'z'
   quit.set_description(StringTable::get(TextKeys::SW_TITLE_QUIT_GAME));
@@ -68,6 +72,9 @@ void WelcomeScreen::initialize()
   options->add_option_description("");
 
   options->add_option(load_game);
+  options->add_option_description("");
+
+  options->add_option(show_high_scores);
   options->add_option_description("");
 
   options->add_option(quit);

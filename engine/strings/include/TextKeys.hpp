@@ -13,6 +13,7 @@ class TextKeys
     static const std::string SW_TITLE_NEW_GAME_RANDOM;
     static const std::string CHARACTER_ALREADY_EXISTS;
     static const std::string SW_TITLE_LOAD_GAME;
+    static const std::string SW_TITLE_HIGH_SCORES;
     static const std::string SW_TITLE_QUIT_GAME;
     static const std::string SW_PROBLEM_GAME_SAVED;
     static const std::string RANDOM_SELECTION;
