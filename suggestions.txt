@@ -1,19 +1,13 @@
 Me:
-- Clean up the ThieverySkillProcessor code.
 - When creatures try to open locked doors, you get "You do not have the
   correct key for this lock.  The way is blocked."  In
   MessageManagerFactory::instance, add an extra parameter to check
   player_affected only.  Go through the code and determine when this
   should actually be set.
-- Add "view highscores" after Load Game in main menu
-- Finish thievery skill implementation
-- Get static linking working with premake and the Linux build for a sane
-  distribution.
 - New spell: vorpal bolt
 - Traps that fire and kill a creature are giving the player exp?
 - Equipping from a stack of rings (maybe other objects, too) doesn't
   properly identify on use.
-- Update ResistancesTranslator to make use of Resistance::get_value_str()
 - Test clearing all shrines
 - Implement proper branded weapons.  These should allow for any "magical"
   damage type (heat through lightning in the damage enum) to be the weapon
@@ -48,8 +42,6 @@ Me:
 - Crash bug is still present: find out what's causing it!
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
-- Capacities on barrels, so that they don't contain an infinite amount
-  of booze.
 - Define all monsters as good/neutral/evil
 - Monsters should have a chance of being generated friendly when same
   alignment.

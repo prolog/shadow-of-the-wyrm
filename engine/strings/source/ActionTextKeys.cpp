@@ -457,6 +457,7 @@ const string ActionTextKeys::ACTION_INSCRIBE_WATER             = "ACTION_INSCRIB
 const string ActionTextKeys::ACTION_INSCRIBE_AIR               = "ACTION_INSCRIBE_AIR";
 const string ActionTextKeys::ACTION_INSCRIBE_GROUND            = "ACTION_INSCRIBE_GROUND";
 const string ActionTextKeys::ACTION_INSCRIBE_QUERY             = "ACTION_INSCRIBE_QUERY";
+const string ActionTextKeys::ACTION_POUR_EMPTY                 = "ACTION_POUR_EMPTY";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

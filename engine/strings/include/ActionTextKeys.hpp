@@ -152,6 +152,7 @@ class ActionTextKeys
     static const std::string ACTION_INSCRIBE_AIR;
     static const std::string ACTION_INSCRIBE_GROUND;
     static const std::string ACTION_INSCRIBE_QUERY;
+    static const std::string ACTION_POUR_EMPTY;
 
   protected:
     ActionTextKeys();

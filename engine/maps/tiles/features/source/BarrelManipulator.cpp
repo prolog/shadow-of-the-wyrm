@@ -32,25 +32,29 @@ bool BarrelManipulator::handle(TilePtr tile, CreaturePtr creature)
   {
     if (creature && barrel->get_tap())
     {
-      string pour_item_id = barrel->get_pour_item_id();
-
-      if (!pour_item_id.empty())
+      if (barrel->can_pour())
       {
-        ItemPtr item = ItemManager::create_item(pour_item_id);
+        barrel->pour();
+
+        ItemPtr item = ItemManager::create_item(barrel->get_pour_item_id());
+        
         if (item != nullptr)
         {
           IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
           IInventoryPtr inv = tile->get_items();
-          inv->add(item);
+          inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
 
           manager.add_new_message(ActionTextKeys::get_pour_message(creature->get_description_sid(), item->get_usage_description_sid(), creature->get_is_player()));
           manager.send();
         }
       }
-    }
-    else
-    {
+      else
+      {
+        IMessageManager& pl_manager = MessageManagerFactory::instance(creature);
+        pl_manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_POUR_EMPTY));
+        pl_manager.send();
+      }
     }
   }
 
