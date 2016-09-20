@@ -43,7 +43,8 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 - Barrels now have a specified number of drinks, and so can't dispense
   infinite booze.
 
-- Support for Linux builds.
+- Support for Linux builds.  Added build instructions/guidance to a new file,
+  README.build.linux
 
 - Some refactoring in the Lua and C++ code.
 

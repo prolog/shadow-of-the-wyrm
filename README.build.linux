@@ -21,6 +21,14 @@ To create the makefile, run "premake4 gmake".  Build the makefile with
 files into a "sotw" subdirectory.  It will take a while.  There are a lot of
 translation units.  Sorry.
 
+If you are using a Linux distribution where lua is not 5.1 by default, but you
+have 5.1 installed, you'll likely need to add the Lua header directory to the
+include directories in the makefile, and also to set the appropriate link
+library.  For example, if the Lua 5.1 headers were in /usr/local/lua5.1
+and you wanted to link against lua5.1 instead of lua, you would use:
+
+premake4 --lua_include=/usr/local/lua5.1 --lua_link=lua5.1 gmake
+
 The Linux build has been tested using g++.
 
 Happy hacking!

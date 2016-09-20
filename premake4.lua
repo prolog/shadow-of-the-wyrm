@@ -1,4 +1,23 @@
 #!lua
+-- Additional include dir for Lua, if necessary.
+newoption {
+  trigger = "lua_include",
+  value = "",
+  description = "Specify an additional include directory for the Lua 5.1 includes."
+}
+
+-- What Lua should be linked against?
+-- Default is "lua", but SotW requires Lua 5.1, and some distros will need
+-- to use Lua 5.1 instead.
+newoption {
+  trigger = "lua_link",
+  value = "lua",
+  description = "Specify the Lua library to use for linking."
+}
+
+if not _OPTIONS["lua_link"] then
+  _OPTIONS["lua_link"] = "lua"
+end
 
 -- For the moment, there are two sets of build files: the Visual Studio files
 -- themselves, and this premake4 file, which at the moment is only intended
@@ -21,6 +40,7 @@ project "ShadowOfTheWyrm"
   excludes { "source/SaveConverter.cpp", "source/MapTester.cpp" }
 
   includedirs { "include",
+                _OPTIONS["lua_include"],
                 "controller/include",
                 "display/include",
                 "display/animation/include",
@@ -78,7 +98,7 @@ project "ShadowOfTheWyrm"
                 "world/tiles/include",
                 "world/tiles/features/include" }
   excludes { "**_test.cpp" }
-  links { "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", "boost_thread", "boost_regex", "lua", "xerces-c", "ncurses", "gtest" }
+  links { "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", "boost_thread", "boost_regex", _OPTIONS["lua_link"], "xerces-c", "ncurses", "gtest" }
   flags { "ExtraWarnings" }
 
   -- Ignore SaveConverter, MapTester configs.
