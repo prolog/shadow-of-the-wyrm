@@ -27,7 +27,6 @@ Coordinate CreatureCoordinateCalculator::calculate_display_coordinate(const MapD
   Dimensions d = current_map->size();
   int map_height = d.get_y();
   int map_width  = d.get_x();
-  Coordinate engine_coord = calculate_engine_coordinate(display_area, current_map, reference_coords);
   
   // Ignore the decimal part - we only care about the int part.
   int engine_map_start_row = std::min(map_height - display_height, ((int)(cursor_row / display_height)) * display_height);
