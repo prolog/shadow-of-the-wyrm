@@ -6,8 +6,6 @@ Me:
   should actually be set.
 - New spell: vorpal bolt
 - Traps that fire and kill a creature are giving the player exp?
-- Equipping from a stack of rings (maybe other objects, too) doesn't
-  properly identify on use.
 - Test clearing all shrines
 - Implement proper branded weapons.  These should allow for any "magical"
   damage type (heat through lightning in the damage enum) to be the weapon
@@ -50,6 +48,8 @@ Me:
   and so on properly check slays.
 - Discover traps on search?  Passive search at the end of each turn for
   traps?
+- Guilds and membership, mutual exclusivity, etc.
+- In-game gambling: arena fights, games of chance, etc.
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
