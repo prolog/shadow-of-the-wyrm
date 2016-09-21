@@ -503,3 +503,13 @@ of alder branches, slender starlings.  Thrum %b
 and crash!  The woods themselves in disarray: %b
 a giant roared and raised his blade towards the fae.
 %p
+As high up on a mountain, bits of rock %b
+fall loose and tumble down, increasing speed %b
+and fury, so the massive giant shocked %b
+the prince.  A force of hell, it tore the trees %b
+apart, but staggered, arrow in the eye - %b
+that shot that wove by magic past the deer %b
+had caught the towering hunter by surprise. %b
+The thing was dying - arrow sunk and pierced %b
+his brain, and yet his judgement, full of hate, was clear.
+%p
