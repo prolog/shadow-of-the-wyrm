@@ -55,6 +55,9 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   - Improving statistics when not going through the NPC was not
     incrementing the marks properly.
 
+  - The code that handled equipping from a stack of items wasn't properly
+    identifying wearable items, or handling auto-cursing.
+
 Shadow of the Wyrm v0.5.4 "Barrios"
 - Version declared July 2, 2016.  Version finalized September 3, 2016.
 

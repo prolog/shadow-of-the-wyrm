@@ -329,21 +329,7 @@ ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creatur
     
     if (eq.set_item(item, eq_worn_slot))
     {
-      WearablePtr wearable = std::dynamic_pointer_cast<Wearable>(item);
-
-      // If wearable, identify it.
-      if (wearable != nullptr)
-      {
-        ItemIdentifier iid;
-        iid.set_item_identified(creature, item, item->get_base_id(), true);
-      }
-
-      // If auto-cursing, curse it.
-      if (item->get_auto_curse())
-      {
-        item->set_status(ItemStatus::ITEM_STATUS_CURSED);
-        item->set_status_identified(true);
-      }
+      handle_item_identification_and_statuses(creature, item);
 
       // Remove from inventory.
       action_cost_value = get_action_cost_value(creature);
@@ -375,6 +361,8 @@ ActionCostValue ItemManager::equip_and_reduce_inventory_quantity(CreaturePtr cre
       
       if (inv_item_quantity == 0) creature->get_inventory()->remove(item->get_id());
       
+      handle_item_identification_and_statuses(creature, new_item);
+
       action_cost_value = 1;
     }
   }
@@ -392,6 +380,28 @@ ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item)
   }
   
   return equipped_item;
+}
+
+void ItemManager::handle_item_identification_and_statuses(CreaturePtr creature, ItemPtr item)
+{
+  if (item != nullptr)
+  {
+    WearablePtr wearable = std::dynamic_pointer_cast<Wearable>(item);
+
+    // If wearable, identify it.
+    if (wearable != nullptr)
+    {
+      ItemIdentifier iid;
+      iid.set_item_identified(creature, item, item->get_base_id(), true);
+    }
+
+    // If auto-cursing, curse it.
+    if (item->get_auto_curse())
+    {
+      item->set_status(ItemStatus::ITEM_STATUS_CURSED);
+      item->set_status_identified(true);
+    }
+  }
 }
 
 // Remove an item from a particular slot in the creature's equipment.
