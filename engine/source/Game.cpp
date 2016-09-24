@@ -1,3 +1,5 @@
+#include <chrono>
+#include <ctime>
 #include <boost/timer/timer.hpp>
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
@@ -101,6 +103,16 @@ void Game::set_display_settings()
 void Game::set_world_settings()
 {
   uint days_elapsed = String::to_uint(settings.get_setting("days_elapsed"));
+  bool current_month_is_start_month = String::to_bool(settings.get_setting("current_month_is_start_month"));
+
+  if (current_month_is_start_month)
+  {    
+    std::time_t now_c = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    struct tm *parts = std::localtime(&now_c);
+
+    days_elapsed = (parts->tm_mon * 30);
+  }
+
   WorldPtr world = get_current_world();
 
   // If we're just starting up, the world may not have been instantiated yet.

@@ -49,6 +49,10 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   returned.  This should hopefully fix a class of bugs and will probably
   open another.
 
+- Added a new setting, current_month_is_start_month.  This defaults to
+  false, but when set to true, the game will start with its calendar set to
+  the first day of the current month.
+
 - Support for Linux builds.  Added build instructions/guidance to a new file,
   README.build.linux
 
