@@ -77,7 +77,7 @@ pair<bool, TileDirectionMap> ThieverySkillProcessor::check_for_adjacent_creature
 
   if (!result.first && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_THIEVERY_NO_TARGETS));
     manager.send();
   }
@@ -109,7 +109,7 @@ CreaturePtr ThieverySkillProcessor::get_steal_creature(const TileDirectionMap& t
     CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
     KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
 
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
     manager.send();
 
@@ -143,11 +143,11 @@ ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creat
 {
   ActionCostValue acv = -1;
 
-  IMessageManager& manager = MessageManagerFactory::instance(steal_creature, steal_creature && steal_creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::FOV, steal_creature, steal_creature && steal_creature->get_is_player());
   CreatureDescriber cd(stealing_creature, steal_creature, true);
 
   // Used for only sending messages the player should see.
-  IMessageManager& pl_manager = MessageManagerFactory::instance(stealing_creature);
+  IMessageManager& pl_manager = MM::instance(MessageTransmit::SELF, stealing_creature, stealing_creature && stealing_creature->get_is_player());
   CurrentCreatureAbilities cca;
 
   if (stealing_creature != nullptr && steal_creature != nullptr)

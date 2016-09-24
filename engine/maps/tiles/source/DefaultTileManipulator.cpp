@@ -34,7 +34,7 @@ bool DefaultTileManipulator::dig(CreaturePtr creature, MapPtr map, TilePtr tile)
 
     if (creature->get_is_player())
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MM::instance();
 
       auto s_it = super_type_message_sids.find(super_type);
       if (s_it != super_type_message_sids.end())
@@ -107,7 +107,7 @@ void DefaultTileManipulator::add_undead_if_necessary(CreaturePtr creature, MapPt
         // Add a message about the dead rising...
         if (placed && creature->get_is_player())
         {
-          IMessageManager& manager = MessageManagerFactory::instance();
+          IMessageManager& manager = MM::instance();
 
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_UNDEAD_FOUND));
           manager.send();
@@ -166,7 +166,7 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
 
       if (items_placed && creature->get_is_player())
       {
-        IMessageManager& manager = MessageManagerFactory::instance();
+        IMessageManager& manager = MM::instance();
 
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_ITEM_FOUND));
         manager.send();

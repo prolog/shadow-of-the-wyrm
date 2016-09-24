@@ -97,7 +97,7 @@ ActionCostValue DigAction::dig_through(CreaturePtr creature, ItemPtr dig_item, M
 bool DigAction::add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr map) const
 {
   bool added_msg = false;
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   // Is there something preventing digging on this map?
   string no_dig = map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG);
@@ -141,7 +141,7 @@ void DigAction::add_new_tile_to_dig_location(TilePtr new_tile, MapPtr map, const
 
 void DigAction::add_successful_dig_message(CreaturePtr creature) const
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (creature->get_is_player())
   {
@@ -154,7 +154,7 @@ void DigAction::add_cannot_dig_on_tile_super_type_message(CreaturePtr creature) 
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
 
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE));
     manager.send();
@@ -172,7 +172,7 @@ void DigAction::handle_potential_item_breakage(CreaturePtr creature, ItemPtr ite
       creature->get_equipment().remove_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 
       ItemIdentifier iid;
-      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
       manager.add_new_message(ActionTextKeys::get_item_breakage_message(creature->get_description_sid(), creature->get_is_player(), iid.get_appropriate_description(item)));
       manager.send();
     }

@@ -145,9 +145,8 @@ Spell QuaffAction::create_potion_spell(PotionPtr potion)
 
 void QuaffAction::add_quaff_message(CreaturePtr creature, const string& quaff_message)
 {
-  
   // Display an appropriate message
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   
   manager.add_new_message(quaff_message);
   manager.send();

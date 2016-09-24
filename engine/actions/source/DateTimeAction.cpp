@@ -14,7 +14,7 @@ DateTimeAction::DateTimeAction()
 ActionCostValue DateTimeAction::date_and_time()
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance();
+  IMessageManager& manager = MM::instance();
   
   if (!game.worlds.empty())
   {

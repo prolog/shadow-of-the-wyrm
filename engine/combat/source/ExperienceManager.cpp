@@ -66,7 +66,7 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
 
       if (skill_pts > 0)
       {
-        IMessageManager& manager = MessageManagerFactory::instance();
+        IMessageManager& manager = MM::instance();
 
         // Pause so the player can see the accumulated messages.
         manager.add_new_message_with_pause("");
@@ -192,7 +192,7 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature)
 // Gain a level, increase HP/AP, and do anything else that needs to be done.
 void ExperienceManager::level_up(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature)
   {

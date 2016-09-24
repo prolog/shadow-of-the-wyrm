@@ -4,27 +4,42 @@
 
 class Creature;
 
-// MessageManagerFactory returns the correct instance of the
-// MessageManager.  If the creature is the player, this is the real 
-// message manager, which outputs the messages on screen, etc.  If the
-// creature is not the player, then the message manager is selected based
-// on whether the creature is within the player's view map.  If it is,
-// then the real message manager is selected.  Otherwise, the null
-// message manager is selected.  This ensures that creatures across the
-// map don't have their messages broadcast.
+// The MessageTransmit values are intentionally kept short to keep the code
+// neater.
+enum struct MessageTransmit
+{
+  NONE = 0,
+  SELF = 1,
+  FOV = 2,
+  MAP = 3
+};
+
 class MessageManagerFactory
 {
   public:
+    // Always get the real message manager
     static IMessageManager& instance();
 
-    static IMessageManager& instance(std::shared_ptr<Creature> creature);
-
-    // The player is affected if the calling function says so, or if a valid
-    // CreaturePtr is provided and that creature is in the player's LOS.
-    static IMessageManager& instance(std::shared_ptr<Creature> creature, bool player_is_affected);
+    // Get the appropriate instance based on the creature details and the
+    // message transmission type:
+    //
+    // If the message transmission type is MAP:
+    // - Always return the real message manager
+    //
+    // If the message transmission type is FOV:
+    // - Return the real message manager when the player is the creature or
+    //   is in the creature's FOV.  
+    // - Return the null message manager otherwise.
+    //
+    // If the message transmission type is SELF:
+    // - Return the real message manager when the creature is the player.
+    // - Return the null message manager otherwise.
+    static IMessageManager& instance(const MessageTransmit mt, std::shared_ptr<Creature> creature, bool player_is_affected);
 
   protected:
     static MessageManager& mm_instance();
     static NullMessageManager& nmm_instance();
 };
+
+using MM = MessageManagerFactory;
 

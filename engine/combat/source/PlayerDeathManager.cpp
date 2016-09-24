@@ -21,7 +21,7 @@ void PlayerDeathManager::die() const
   if (map && dead_creature)
   {
     ReligionManager rm;
-    IMessageManager& manager = MessageManagerFactory::instance(dead_creature, true /* It IS the player death manager... */);
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, dead_creature, true /* It IS the player death manager... */);
 
     // Update the screen so that the player can see their final statistics 
     // (otherwise, it will just show the start-of-turn values).

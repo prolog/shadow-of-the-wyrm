@@ -115,7 +115,7 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
 // it can hold.
 void PickupAction::handle_max_item_pickup(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (creature && creature->get_is_player())
   {
@@ -129,7 +129,7 @@ void PickupAction::handle_max_item_pickup(CreaturePtr creature)
 // Handle the case where we're trying to pick up on the world map, which is an invalid case.
 void PickupAction::handle_world_map_pickup(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature && creature->get_is_player())
   {
@@ -143,7 +143,7 @@ void PickupAction::handle_world_map_pickup(CreaturePtr creature)
 // Handle the case where we're trying to pick up from a tile that contains no items.
 void PickupAction::handle_empty_tile_pickup(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature && creature->get_is_player())
   {
@@ -178,7 +178,7 @@ bool PickupAction::merge_into_equipment(CreaturePtr creature, ItemPtr item)
       string item_merged_into_equipment;
 
       // Only broadcast if it's the player, or the monster's in range.
-      IMessageManager& manager = MessageManagerFactory::instance(creature, GameUtils::is_player_among_creatures(creature, player));
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_player_among_creatures(creature, player));
 
       if (!player_blind || (player_blind && creature->get_is_player()))
       {
@@ -217,7 +217,7 @@ bool PickupAction::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr ite
     bool player_blind = !cca.can_see(player);
 
     // Only broadcast if it's the player, or the monster's in range.
-    IMessageManager& manager = MessageManagerFactory::instance(creature, GameUtils::is_player_among_creatures(creature, player));
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_player_among_creatures(creature, player));
 
     // Display a message if necessary
     string pick_up_message;

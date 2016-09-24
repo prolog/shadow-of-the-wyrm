@@ -22,7 +22,7 @@ DoorGateManipulator::DoorGateManipulator(FeaturePtr feature)
 
 void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (creature && current_map)
   {
@@ -104,7 +104,7 @@ void DoorGateManipulator::break_down_door(CreaturePtr creature, TilePtr tile)
 {
   if (creature && tile)
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_DESTROYED));
 
     tile->remove_feature();
@@ -119,7 +119,7 @@ void DoorGateManipulator::handle_sprain_if_necessary(CreaturePtr creature, const
   {
     if (RNG::percent_chance(pct_chance))
     {
-      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SPRAIN_LEG));
       manager.send();
 

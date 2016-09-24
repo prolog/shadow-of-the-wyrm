@@ -20,7 +20,7 @@ void ForgeManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fe
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_FORGE));
     manager.send();
   }
@@ -52,7 +52,7 @@ bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
       // is not an artifact.
       if (selected_item)
       {
-        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
         if (selected_item->get_artifact())
         {
@@ -104,7 +104,7 @@ bool ForgeManipulator::check_creature_knows_smithing(CreaturePtr creature)
   {
     if (smithing_skill->get_value() <= 0)
     {
-      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_NO_SMITHING_SKILL));
       manager.send();
@@ -130,7 +130,7 @@ bool ForgeManipulator::check_creature_wielding_hammer(CreaturePtr creature)
   if (!((weapon1 && weapon1->get_trained_skill() == SkillType::SKILL_MELEE_BLUDGEONS) ||
     (weapon2 && weapon2->get_trained_skill() == SkillType::SKILL_MELEE_BLUDGEONS)))
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     // Inform the creature of the lack of suitable hammer.
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_NO_SUITABLE_HAMMER));
@@ -149,7 +149,7 @@ bool ForgeManipulator::check_creature_has_ingots(CreaturePtr creature)
   // Have a chunk of ore or something similar?
   if (!creature->get_inventory()->has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE))
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_NO_INGOTS));
     manager.send();
@@ -194,7 +194,7 @@ ItemPtr ForgeManipulator::get_selected_item(CreaturePtr creature, ItemPtr select
 // Improve an item: add new resistances, damage/evade/soak, etc.
 void ForgeManipulator::improve_item(CreaturePtr creature, ItemPtr selected_item, ItemPtr selected_ingot)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   // Use up an ingot.
   int num_ingot = selected_ingot->get_quantity();

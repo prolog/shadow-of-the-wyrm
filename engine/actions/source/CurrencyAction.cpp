@@ -17,7 +17,7 @@ ActionCostValue CurrencyAction::count_currency(CreaturePtr creature)
 
 void CurrencyAction::add_currency_message_if_necessary(CreaturePtr creature, const uint currency_quantity)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     
   string currency_message = TextMessages::get_currency_amount_message(currency_quantity);
       

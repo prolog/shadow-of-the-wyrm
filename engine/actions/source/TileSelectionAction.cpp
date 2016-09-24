@@ -97,7 +97,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
   pair<bool, ActionCostValue> command_result(false, 0);
   
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature)
   {
@@ -237,7 +237,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Sel
 ActionCostValue TileSelectionAction::select_tile_cancel(CreaturePtr creature)
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature)
   {
@@ -262,8 +262,7 @@ ActionCostValue TileSelectionAction::get_action_cost_value(CreaturePtr creature)
 // Describe the currently selected tile.
 void TileSelectionAction::describe_current_tile(CreaturePtr creature, TilePtr selected_tile, const bool tile_exists_in_fov_map)
 {
-  // Should only be called by the player, anyway.
-  IMessageManager& manager = MessageManagerFactory::instance();
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   TileDescription td(show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
   string tile_desc = td.describe(creature, selected_tile, tile_exists_in_fov_map);
 
@@ -286,7 +285,7 @@ bool TileSelectionAction::is_tile_in_range_and_add_message_if_not(CreaturePtr cr
   {
     tile_in_range = false;
     
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     
     string target_too_far = StringTable::get(CombatTextKeys::COMBAT_TARGET_TOO_FAR_AWAY);
     manager.clear_if_necessary();

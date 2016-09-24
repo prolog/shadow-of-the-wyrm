@@ -59,7 +59,7 @@ bool FishingSkillProcessor::check_for_fishing_equipment(CreaturePtr creature)
 
     if (!has_fishing_eq && creature->get_is_player())
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MM::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_NO_EQUIPMENT));
       manager.send();
     }
@@ -95,7 +95,7 @@ pair<bool, WaterType> FishingSkillProcessor::check_for_adjacent_water_tile(Creat
 
     if (!adj_water.first && creature->get_is_player())
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MM::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_NO_WATER));
       manager.send();
     }
@@ -119,7 +119,7 @@ void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const WaterTy
       // Add a message about fishing, if appropriate
       if (creature && creature->get_is_player())
       {
-        IMessageManager& manager = MessageManagerFactory::instance();
+        IMessageManager& manager = MM::instance();
         manager.add_new_message(ActionTextKeys::get_random_bait_message());
         manager.add_new_message(ActionTextKeys::get_fishing_outcome_message(fot));
         manager.send();
@@ -172,7 +172,7 @@ void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const WaterTy
               {
                 if (creature && creature->get_is_player())
                 {
-                  IMessageManager& manager = MessageManagerFactory::instance();
+                  IMessageManager& manager = MM::instance();
                   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_THROW_BACK));
                   manager.send();
                 }

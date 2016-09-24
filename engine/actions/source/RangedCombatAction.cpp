@@ -39,8 +39,7 @@ bool RangedCombatAction::operator==(const RangedCombatAction& rca) const
 ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature, const bool skip_targetting)
 {
   ActionCostValue action_cost_value = 0;
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-  
+
   if (creature)
   {
     RangedCombatApplicabilityChecker rcec;
@@ -71,8 +70,9 @@ ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature, const boo
       // that was generated regarding this.
       if (creature->get_is_player())
       {
-        manager.add_new_message(ranged_combat_info.second);
-        manager.send();
+        IMessageManager& man = MM::instance();
+        man.add_new_message(ranged_combat_info.second);
+        man.send();
       }
     }
   }
@@ -291,7 +291,7 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
 
       if (!ranged_attack_message.empty())
       {
-        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+        IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
         manager.add_new_message(ranged_attack_message);
         manager.send();
       }
@@ -356,7 +356,7 @@ pair<bool, bool> RangedCombatAction::check_target_tile_for_friendly_creature(Cre
     {
       if (creature->get_is_player())
       {
-        IMessageManager& manager = MessageManagerFactory::instance();
+        IMessageManager& manager = MM::instance();
         manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
         firing_details.first = creature->get_decision_strategy()->get_confirmation();
 

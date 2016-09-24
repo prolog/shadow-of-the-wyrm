@@ -13,7 +13,7 @@ ActionCostValue SearchAction::search(CreaturePtr creature)
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+    IMessageManager& manager = MM::instance();
     CurrentCreatureAbilities cca;
 
     string search_message;
@@ -26,7 +26,6 @@ ActionCostValue SearchAction::search(CreaturePtr creature)
     {
       search_message = StringTable::get(ActionTextKeys::ACTION_SEARCH_BLIND);
     }
-
 
     manager.add_new_message(search_message);
     manager.send();

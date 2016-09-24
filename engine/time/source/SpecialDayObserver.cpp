@@ -30,7 +30,7 @@ void SpecialDayObserver::check_special_day(const std::map<int, CalendarDay>& cal
     CalendarDay cd = cd_it->second;
     string day_message = TextMessages::get_special_day_message(cd.get_name_sid(), cd.get_description_sid());
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(day_message);
 
     manager.send();

@@ -76,11 +76,11 @@ bool DisarmTrapsSkillProcessor::disarm_trap(const std::pair<int, TileDirectionMa
 {
   bool attempted_disarm = false;
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance();
+  IMessageManager& manager = MM::instance();
 
   if (creature == nullptr || creature->get_is_player() == false)
   {
-    manager = MessageManagerFactory::instance(nullptr, false);
+    manager = MM::instance(MessageTransmit::SELF, nullptr, false);
   }
 
   if (creature != nullptr && map != nullptr)
@@ -156,7 +156,7 @@ void DisarmTrapsSkillProcessor::add_no_nearby_trap_message(CreaturePtr creature)
 {
   if (creature != nullptr && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DISARM_TRAPS_NO_TRAPS));
     manager.send();
   }
