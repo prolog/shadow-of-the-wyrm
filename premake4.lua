@@ -40,7 +40,6 @@ project "ShadowOfTheWyrm"
   excludes { "source/SaveConverter.cpp", "source/MapTester.cpp" }
 
   includedirs { "include",
-                _OPTIONS["lua_include"],
                 "controller/include",
                 "display/include",
                 "display/animation/include",
@@ -96,7 +95,9 @@ project "ShadowOfTheWyrm"
                 "world/religion/include",
                 "world/seasons/include",
                 "world/tiles/include",
-                "world/tiles/features/include" }
+                "world/tiles/features/include",
+                _OPTIONS["lua_include"]
+                }
   excludes { "**_test.cpp" }
   links { "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", "boost_thread", "boost_regex", _OPTIONS["lua_link"], "xerces-c", "ncurses", "gtest" }
   flags { "ExtraWarnings" }
