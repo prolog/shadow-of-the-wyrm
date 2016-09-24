@@ -513,3 +513,13 @@ had caught the towering hunter by surprise. %b
 The thing was dying - arrow sunk and pierced %b
 his brain, and yet his judgement, full of hate, was clear.
 %p
+A seventeen-foot blade, a cleaver forged %b
+with breathless skill, the massive sword smashed through %b
+the brittle trunks like matchwood.  Bit and gorged %b
+on starlings.  Shook the earth.  The princeling knew %b
+that blade meant death.  He feinted left and rolled %b
+into a slough, a reedy, dried up ditch. %b
+He grabbed his horn, and from his lips he tolled %b
+a single note and held it, something which %b
+he knew would call the riders to this roll and pitch.
+%p
