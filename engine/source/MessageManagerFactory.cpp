@@ -9,27 +9,7 @@ IMessageManager& MessageManagerFactory::instance()
   return mm_instance();
 }
 
-// If the creature passed is the player, return the message manager;
-// otherwise, return the null message manager.
-//
-// This is the message manager factory function that should be used for
-// messages that "only the creature itself cares about" - messages that
-// would only be known to it, and have no effect on the outside world.
-IMessageManager& MessageManagerFactory::instance(CreaturePtr creature)
-{
-  if (creature && creature->get_is_player())
-  {
-    return mm_instance();
-  }
-  else
-  {
-    return nmm_instance();
-  }
-}
-
-// Select the correct message manager based on whether the creature is
-// the player, or at least present within the player's view map.
-IMessageManager& MessageManagerFactory::instance(CreaturePtr creature, bool player_is_affected)
+IMessageManager& MessageManagerFactory::instance(const MessageTransmit mt, CreaturePtr creature, bool player_is_affected)
 {
   Game& game = Game::instance();
 
@@ -38,16 +18,22 @@ IMessageManager& MessageManagerFactory::instance(CreaturePtr creature, bool play
     return mm_instance();
   }
 
-  if (creature)
+  if (mt == MessageTransmit::MAP)
   {
-    if (creature->get_is_player() || GameUtils::is_creature_in_player_view_map(game, creature->get_id()) || GameUtils::is_creature_adjacent(game, creature, game.get_current_player()))
-    {
-      return mm_instance();
-    }
+    return mm_instance();
+  }
+
+  if (mt == MessageTransmit::SELF && creature && creature->get_is_player())
+  {
+    return mm_instance();
+  }
+
+  if (player_is_affected || (mt == MessageTransmit::FOV && creature && (creature->get_is_player() || GameUtils::is_creature_in_player_view_map(game, creature->get_id()) || GameUtils::is_creature_adjacent(game, creature, game.get_current_player()))))
+  {
+    return mm_instance();
   }
 
   return nmm_instance();
-
 }
 
 MessageManager& MessageManagerFactory::mm_instance()

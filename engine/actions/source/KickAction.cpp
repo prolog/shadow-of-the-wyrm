@@ -55,7 +55,7 @@ ActionCostValue KickAction::kick_on_world_map(CreaturePtr creature, MapPtr curre
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance();
 
     string kick_msg = StringTable::get(ActionTextKeys::ACTION_KICK_WORLD_MAP);
     manager.add_new_message(kick_msg);
@@ -70,11 +70,11 @@ ActionCostValue KickAction::kick_on_regular_map(CreaturePtr creature, MapPtr cur
 {
   if (creature)
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
     // If the creature is the player, get the kicking direction.
     if (creature->get_is_player())
     {
+      IMessageManager& manager = MM::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
       manager.send();
     }
@@ -110,7 +110,7 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
   if (creature && current_map)
   {
     TilePtr k_tile = MapUtils::get_adjacent_tile(current_map, creature, direction);
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
     if (k_tile)
     {
@@ -154,8 +154,9 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
     {
       if (creature->get_is_player())
       {
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_NOTHING_TO_KICK_AT));
-        manager.send();
+        IMessageManager& man = MM::instance();
+        man.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_NOTHING_TO_KICK_AT));
+        man.send();
       }
     }
 
@@ -176,7 +177,7 @@ ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, Creature
     // confirmation.
     if (!kicked_creature->get_decision_strategy()->get_threats_ref().has_threat(kicking_creature->get_id()).first)
     {
-      IMessageManager& manager = MessageManagerFactory::instance(kicking_creature, kicking_creature && kicking_creature->get_is_player());
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, kicking_creature, kicking_creature && kicking_creature->get_is_player());
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
       attack = kicking_creature->get_decision_strategy()->get_confirmation();
     }
@@ -200,7 +201,7 @@ ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_ma
 
     // Add a message about kicking the feature, whether it can be seen,
     // or not.
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     CurrentCreatureAbilities cca;
     bool creature_blind = creature->get_is_player() && !cca.can_see(creature);
     FeatureDescriberPtr fd = FeatureDescriberFactory::create_feature_describer(creature_blind, kick_feature);
@@ -245,7 +246,7 @@ ActionCostValue KickAction::kick_item(CreaturePtr creature, TilePtr kick_tile, T
     // original tile.
     if (new_tile && !new_tile->get_is_blocking_for_item(item))
     {
-      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
       manager.add_new_message(kick_msg);
 
       kick_tile->get_items()->remove(item->get_id());
@@ -259,7 +260,7 @@ ActionCostValue KickAction::kick_item(CreaturePtr creature, TilePtr kick_tile, T
 // Kick at a particular tile, being sure to handle the incorporeal case.
 ActionCostValue KickAction::kick_tile(CreaturePtr creature, TilePtr kick_tile)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
   // Creatures can't kick solid tiles, unless they're incorporeal, or can
   // otherwise pass through such things.

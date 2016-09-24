@@ -65,7 +65,7 @@ void Effect::identify_effect_if_player(std::shared_ptr<Creature> creature) const
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+    IMessageManager& manager = MM::instance();
     string effect_message = get_effect_identification_message(creature);
     
     manager.add_new_message(effect_message);
@@ -78,7 +78,7 @@ void Effect::inform_unidentified_if_player(std::shared_ptr<Creature> creature) c
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+    IMessageManager& manager = MM::instance();
     string nothing_happens = StringTable::get(ActionTextKeys::ACTION_NOTHING_HAPPENS);
 
     manager.add_new_message(nothing_happens);

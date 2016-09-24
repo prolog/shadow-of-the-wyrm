@@ -25,7 +25,7 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
 
     if (map && map->get_map_type() == MapType::MAP_TYPE_WORLD)
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MM::instance();
 
       manager.add_new_message(StringTable::get(DeityTextKeys::PRAYER_WORLD_MAP));
       manager.send();
@@ -61,11 +61,10 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
 // If the creature is the player, say a prayer (add a message).
 void PrayerAction::say_prayer(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-  ReligionManager rm;
-  
   if (creature && creature->get_is_player())
   {
+    ReligionManager rm;
+    IMessageManager& manager = MM::instance();
     string deity_name_sid = rm.get_deity_name_sid(creature->get_religion().get_active_deity_id());
     string prayer_message = DeityTextKeys::get_prayer_message(deity_name_sid);
     
@@ -98,8 +97,7 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   
   if (creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-    
+    IMessageManager& manager = MM::instance();    
     string prayer_message = StringTable::get(decision_implications.get_message_sid());
       
     manager.add_new_message(prayer_message);

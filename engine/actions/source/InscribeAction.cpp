@@ -58,7 +58,7 @@ void InscribeAction::create_inscription(CreaturePtr creature, TilePtr tile) cons
 {
   if (creature != nullptr && tile != nullptr)
   {
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
 
     // Get/shorten the inscription.
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_INSCRIBE_QUERY));
@@ -83,7 +83,7 @@ void InscribeAction::create_inscription(CreaturePtr creature, TilePtr tile) cons
 
 void InscribeAction::add_inscribe_on_world_map_message() const
 {
-  IMessageManager& manager = MessageManagerFactory::instance();
+  IMessageManager& manager = MM::instance();
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_INSCRIBE_WORLD_MAP));
   manager.send();
@@ -97,7 +97,7 @@ void InscribeAction::add_inscription_super_type_message(const TileSuperType tst)
   {
     string ts_sid = ts_it->second;
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(StringTable::get(ts_sid));
     manager.send();
   }

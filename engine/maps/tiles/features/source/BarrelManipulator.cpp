@@ -15,7 +15,7 @@ void BarrelManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr f
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_BARREL));
     manager.send();
   }
@@ -40,7 +40,7 @@ bool BarrelManipulator::handle(TilePtr tile, CreaturePtr creature)
         
         if (item != nullptr)
         {
-          IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+          IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
           IInventoryPtr inv = tile->get_items();
           inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
@@ -51,7 +51,7 @@ bool BarrelManipulator::handle(TilePtr tile, CreaturePtr creature)
       }
       else
       {
-        IMessageManager& pl_manager = MessageManagerFactory::instance(creature);
+        IMessageManager& pl_manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
         pl_manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_POUR_EMPTY));
         pl_manager.send();
       }

@@ -369,7 +369,7 @@ void Game::go()
 
     string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), !reloaded_game);
 
-    IMessageManager& manager = MessageManagerFactory::instance(current_player, true);
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(welcome_message);
     manager.send();
 
@@ -653,7 +653,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         // player's next action input, the messages will be gone.
         if (current_creature->get_is_player() && command->get_allow_clear_message_buffer())
         {
-          MessageManagerFactory::instance(current_creature, true).clear_if_necessary();
+          MM::instance().clear_if_necessary();
         }
 
         action_cost = CommandProcessor::process(current_creature, command, display);
@@ -702,7 +702,7 @@ void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions, cons
     if (String::to_bool(game.get_settings_ref().get_setting("prompt_for_character_dump_on_exit")))
     {
       // Prompt the player if they want an identified character dump created.
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MM::instance();
 
       ExitGameAction ega;
       ega.create_dump_if_necessary(manager, &actions, creature);

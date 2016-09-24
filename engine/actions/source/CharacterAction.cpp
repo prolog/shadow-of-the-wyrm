@@ -61,7 +61,7 @@ ActionCostValue CharacterAction::dump_character(CreaturePtr creature)
 {
   if (creature)
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
     string name = creature->get_name();
     string dump_message = TextMessages::get_dumping_character_message(name);
     manager.add_new_message(dump_message);

@@ -100,7 +100,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
       // Resting?
       if (d == Direction::DIRECTION_NULL)
       {
-        IMessageManager& manager = MessageManagerFactory::instance();
+        IMessageManager& manager = MM::instance();
 
         // Add another period to the "Resting......." message.
         manager.add_new_message(".");
@@ -124,7 +124,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
 
       if (!first_message.empty() && creature->get_is_player())
       {
-        IMessageManager& manager = MessageManagerFactory::instance();
+        IMessageManager& manager = MM::instance();
         manager.add_new_message(StringTable::get(first_message));
         manager.send();
       }
@@ -153,7 +153,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(
 
   if (!status_ok && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
 
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_AUTOMOVE_BAD_STATUSES));
     manager.send();

@@ -305,7 +305,7 @@ int add_message_with_pause(lua_State* ls)
 
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
 
     if (clear_buffer)
     {
@@ -343,7 +343,7 @@ int clear_and_add_message(lua_State* ls)
   {
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.clear_if_necessary();
     manager.add_new_message(message);
     manager.send();
@@ -368,7 +368,7 @@ int add_message(lua_State* ls)
   {
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(message);
     manager.send();
   }
@@ -391,7 +391,7 @@ int add_message_direct(lua_State* ls)
   {
     string message = lua_tostring(ls, 1);
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(message);
     manager.send();
   }
@@ -431,7 +431,7 @@ int add_debug_message(lua_State* ls)
       boost::replace_first(debug, "%s", value);
     }
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.clear_if_necessary();
     manager.add_new_message(debug);
     manager.send();
@@ -458,7 +458,7 @@ int add_confirmation_message(lua_State* ls)
     CreaturePtr player = game.get_current_player();
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.clear_if_necessary();
     manager.add_new_confirmation_message(TextMessages::get_confirmation_message(message));
     confirm = player->get_decision_strategy()->get_confirmation();
@@ -488,7 +488,7 @@ int add_prompt_message(lua_State* ls)
     CreaturePtr player = game.get_current_player();
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.clear_if_necessary();
     prompt_val = manager.add_new_message_with_prompt(message);
 
@@ -517,7 +517,7 @@ int add_char_message(lua_State* ls)
     CreaturePtr player = game.get_current_player();
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.clear_if_necessary();
     manager.add_new_message(message);
     manager.send();
@@ -547,7 +547,7 @@ int add_message_for_creature(lua_State* ls)
 
     if (creature != nullptr)
     {
-      IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
       manager.add_new_message(message);
       manager.send();
     }
@@ -3046,7 +3046,7 @@ int report_coords(lua_State* ls)
       ostringstream msg;
       msg << "(" << c.first << "," << c.second << ")";
 
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MM::instance();
       manager.clear_if_necessary();
       manager.add_new_message(msg.str());
       manager.send();

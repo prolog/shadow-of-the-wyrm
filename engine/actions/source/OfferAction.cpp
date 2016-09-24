@@ -57,7 +57,7 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
 
   if (creature)
   {
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
 
     if (creature->get_inventory()->empty() && creature->get_is_player())
     {
@@ -210,7 +210,7 @@ bool OfferAction::sacrifice_on_crossaligned_altar(CreaturePtr creature, TilePtr 
       tile->set_feature(new_altar);
 
       // Add a message about the altar's conversion.
-      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       string altar_conversion_msg = SacrificeTextKeys::get_altar_conversion_message(deity->get_name_sid());
 
       manager.add_new_message(altar_conversion_msg);
@@ -253,7 +253,7 @@ void OfferAction::add_no_altar_message(CreaturePtr creature)
   if (creature->get_is_player())
   {
     string no_altar_msg = StringTable::get(SacrificeTextKeys::SACRIFICE_NO_ALTAR);
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
 
     manager.add_new_message(no_altar_msg);
     manager.send();
@@ -267,7 +267,7 @@ void OfferAction::add_piety_message_if_player(CreaturePtr creature)
     ReligionManager rm;
     int new_creature_piety = rm.get_piety_for_active_deity(creature);
 
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     string sac_piety_message = SacrificeTextKeys::get_piety_message(new_creature_piety);
 
     manager.add_new_message(sac_piety_message);

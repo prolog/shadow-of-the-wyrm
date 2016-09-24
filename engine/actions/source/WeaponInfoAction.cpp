@@ -41,7 +41,7 @@ ActionCostValue WeaponInfoAction::weapon_info(CreaturePtr creature, const Weapon
 // creature is the player.
 ActionCostValue WeaponInfoAction::melee_weapon_info(CreaturePtr creature) const
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature)
   {
@@ -59,7 +59,7 @@ ActionCostValue WeaponInfoAction::melee_weapon_info(CreaturePtr creature) const
 
 ActionCostValue WeaponInfoAction::ranged_weapon_info(CreaturePtr creature) const
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature)
   {

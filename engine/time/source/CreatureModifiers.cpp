@@ -96,7 +96,7 @@ void CreatureModifiers::add_removal_message(CreaturePtr creature, const string& 
       // Get the appropriate message manager and set the appropriate message.
       // If the creature is the player, use the spell wear off sid.
       // Otherwise, use the generic spell wear off message for creatures.
-      IMessageManager& manager = MessageManagerFactory::instance(creature, affects_player);
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, affects_player);
 
       if (creature->get_is_player())
       {

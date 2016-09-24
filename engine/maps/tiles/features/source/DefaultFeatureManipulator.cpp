@@ -19,7 +19,7 @@ bool DefaultFeatureManipulator::handle(TilePtr tile, CreaturePtr creature)
   {
     if (creature && creature->get_is_player())
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MM::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_HANDLE_DEFAULT));
       manager.send();
     }

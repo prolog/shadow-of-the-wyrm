@@ -20,7 +20,7 @@ void SarcophagusManipulator::kick(CreaturePtr creature, MapPtr current_map, Tile
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance();
+    IMessageManager& manager = MM::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SARCOPHAGUS));
     manager.send();
   }
@@ -34,7 +34,7 @@ bool SarcophagusManipulator::handle(TilePtr tile, CreaturePtr creature)
 
   if (tile != nullptr && creature != nullptr && feature != nullptr)
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     bool already_opened = String::to_bool(feature->get_additional_property(FeatureProperties::FEATURE_PROPERTIES_OPEN));
 
     if (already_opened)

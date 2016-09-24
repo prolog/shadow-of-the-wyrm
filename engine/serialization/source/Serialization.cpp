@@ -64,7 +64,7 @@ void Serialization::save(CreaturePtr creature)
     // Write the remaining settings: RNG, message buffer.
     // These are not massive, so they can be left uncompressed.
     Serialize::write_uint(stream, RNG::get_seed());
-    MessageBuffer mb = MessageManagerFactory::instance().get_message_buffer();
+    MessageBuffer mb = MM::instance().get_message_buffer();
     mb.serialize(stream);
 
     // Save the game details.  This is where the bulk of the size comes from -
@@ -151,7 +151,7 @@ void Serialization::read_savefile(std::ifstream& stream)
 
   MessageBuffer mb;
   mb.deserialize(stream);
-  MessageManagerFactory::instance().set_message_buffer(mb);
+  MM::instance().set_message_buffer(mb);
 
   try
   {

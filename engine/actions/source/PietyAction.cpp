@@ -22,7 +22,7 @@ ActionCostValue PietyAction::piety(CreaturePtr creature, ActionManager * const a
     // Create a message about the piety level.
     if (creature->get_is_player())
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MM::instance();
       manager.add_new_message(SacrificeTextKeys::get_piety_message(piety));
       manager.send();
     }

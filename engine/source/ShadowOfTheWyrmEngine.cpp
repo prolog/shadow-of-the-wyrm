@@ -200,7 +200,7 @@ void ShadowOfTheWyrmEngine::setup_game()
   game.set_custom_maps(custom_maps);
 
   // Set up the message manager also.
-  IMessageManager& manager = MessageManagerFactory::instance();
+  IMessageManager& manager = MM::instance();
   manager.set_display(display);
 }
 
@@ -552,7 +552,7 @@ bool ShadowOfTheWyrmEngine::process_exit_game()
 bool ShadowOfTheWyrmEngine::is_new_game_allowed()
 {
   bool allowed = true;
-  IMessageManager& manager = MessageManagerFactory::instance();
+  IMessageManager& manager = MM::instance();
   Game& game = Game::instance();
   Settings& settings = game.get_settings_ref();
   string max_chars = settings.get_setting("max_characters_per_user");

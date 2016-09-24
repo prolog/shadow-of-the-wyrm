@@ -43,6 +43,12 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 - Barrels now have a specified number of drinks, and so can't dispense
   infinite booze.
 
+- Created support for transmission types when getting a message manager
+  instance.  This takes not only creature details, but also a transmission
+  type.  The combination of the two drive the type of message manager
+  returned.  This should hopefully fix a class of bugs and will probably
+  open another.
+
 - Support for Linux builds.  Added build instructions/guidance to a new file,
   README.build.linux
 

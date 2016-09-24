@@ -414,7 +414,7 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
     
     if (!message_sid.empty())
     {
-      IMessageManager& manager = MessageManagerFactory::instance(attacked_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
       manager.add_new_message(StringTable::get(message_sid));
     }
     
@@ -515,13 +515,13 @@ void CombatManager::add_combat_message(CreaturePtr creature, CreaturePtr attacke
   DamageText dt;
 
   // Display combat information.
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   manager.add_new_message(combat_message, dt.get_colour(attacked_creature));
 }
 
 void CombatManager::send_combat_messages(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   manager.send();
 }
 
@@ -656,7 +656,7 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
   // Show a message if the player is in the field of view of either creature.
   if (knocked_back && cca.can_see(attacking_creature))
   {
-    IMessageManager& manager = MessageManagerFactory::instance(attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
     string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
 
     manager.add_new_message(knock_back_msg);

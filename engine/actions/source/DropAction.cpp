@@ -53,7 +53,7 @@ void DropAction::handle_world_drop(CreaturePtr creature)
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
     string drop_not_allowed = StringTable::get(ActionTextKeys::ACTION_DROP_NOT_ALLOWED);
     
     manager.add_new_message(drop_not_allowed);
@@ -66,7 +66,7 @@ void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
     manager.clear_if_necessary();
     string invalid_drop_quantity = StringTable::get(ActionTextKeys::ACTION_DROP_INVALID_QUANTITY);
     manager.add_new_message(invalid_drop_quantity);
@@ -79,7 +79,7 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
 {  
   if (item && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
 
     manager.clear_if_necessary();
     
@@ -102,7 +102,7 @@ void DropAction::handle_no_item_dropped(CreaturePtr creature)
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
     string no_item_to_drop = StringTable::get(ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED);
     
     manager.add_new_message(no_item_to_drop);
@@ -115,7 +115,7 @@ void DropAction::handle_seed_planted_message(CreaturePtr creature, ItemPtr seed)
   if (creature != nullptr && seed != nullptr && creature->get_is_player())
   {
     CurrentCreatureAbilities cca;
-    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
     ItemIdentifier iid;
 
     string seed_message = ActionTextKeys::get_seed_planted_message(!cca.can_see(creature), iid.get_appropriate_usage_description(seed));
@@ -199,7 +199,7 @@ uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
     Game& game = Game::instance();
     game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
               

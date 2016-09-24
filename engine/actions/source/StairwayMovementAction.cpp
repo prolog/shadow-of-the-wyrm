@@ -25,7 +25,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
   if (creature->get_is_player())
   {
     Game& game = Game::instance();
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     
     MapPtr current_map = game.get_current_map();
 
@@ -78,9 +78,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
 ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAction * const ma)
 {
   ActionCostValue descend_success = 0;
- 
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-  
+   
   if (creature->get_is_player())
   {
     // If we're on the world map, we can always descend.
@@ -149,7 +147,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
               {
                 // Let the player know there is no exit.
                 string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT);
-
+                IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
                 manager.add_new_message(no_exit);
                 manager.send();
               }

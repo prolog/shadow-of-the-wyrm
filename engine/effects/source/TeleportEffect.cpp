@@ -82,7 +82,7 @@ bool TeleportEffect::teleport(CreaturePtr creature)
   {
     if (creature->get_is_player())
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MM::instance();
       manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_TELEPORT_CANNOT_TELEPORT));
       manager.send();
     }

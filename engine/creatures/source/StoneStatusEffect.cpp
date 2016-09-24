@@ -19,7 +19,7 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
 {
   Game& game = Game::instance();
   MapPtr current_map = game.get_current_map();
-  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
   CombatManager cm;
   CreaturePtr no_creature;
