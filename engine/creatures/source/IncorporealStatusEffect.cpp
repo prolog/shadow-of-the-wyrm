@@ -37,8 +37,11 @@ void IncorporealStatusEffect::after_undo(CreaturePtr creature) const
       CombatManager cm;
       CreaturePtr no_attacker;
       string torn_apart_message_sid = ActionTextKeys::ACTION_PLAYER_OBLITERATED;
+      int torn_apart_damage = creature->get_hit_points().get_current() + 1;
+      Damage torn_apart_default;
+      torn_apart_default.set_modifier(torn_apart_damage);
 
-      cm.deal_damage(no_attacker, creature, creature->get_hit_points().get_current() + 1, torn_apart_message_sid);
+      cm.deal_damage(no_attacker, creature, torn_apart_damage, torn_apart_default, torn_apart_message_sid);
     }
   }
 }

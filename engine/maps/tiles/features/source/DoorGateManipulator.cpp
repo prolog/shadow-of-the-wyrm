@@ -126,7 +126,11 @@ void DoorGateManipulator::handle_sprain_if_necessary(CreaturePtr creature, const
       // Deal damage.
       CreaturePtr no_attacker;
       CombatManager cm;
-      cm.deal_damage(no_attacker, creature, RNG::range(SPRAIN_DAMAGE_MIN, SPRAIN_DAMAGE_MAX));
+      int sprain_damage = RNG::range(SPRAIN_DAMAGE_MIN, SPRAIN_DAMAGE_MAX);
+      Damage sprain_default;
+      sprain_default.set_modifier(sprain_damage);
+
+      cm.deal_damage(no_attacker, creature, sprain_damage, sprain_default);
 
       // Potentially add slow status, due to the gimpy leg.
       StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_SLOWNESS);

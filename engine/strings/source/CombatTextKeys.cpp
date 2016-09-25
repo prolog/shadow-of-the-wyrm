@@ -100,6 +100,25 @@ string CombatTextKeys::get_vorpal_message(const bool attacker_is_player, const b
   return vorpal_msg;
 }
 
+string CombatTextKeys::get_drain_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target)
+{
+  pair<string, string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, target);
+  string app_attack = attacker_and_target.first;
+  string app_target = attacker_and_target.second;
+
+  string drain_msg = StringTable::get(CombatTextKeys::COMBAT_DRAIN_MESSAGE_NP);
+
+  if (attacked_is_player)
+  {
+    drain_msg = StringTable::get(CombatTextKeys::COMBAT_DRAIN_MESSAGE);
+  }
+
+  boost::replace_first(drain_msg, "%s", app_target);
+  drain_msg[0] = toupper(drain_msg[0]);
+
+  return drain_msg;
+}
+
 string CombatTextKeys::get_incorporeal_attack_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target)
 {
   pair<string, string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, target);
@@ -390,6 +409,8 @@ const string CombatTextKeys::COMBAT_PIERCE_MESSAGE         = "COMBAT_PIERCE_MESS
 const string CombatTextKeys::COMBAT_PIERCE_MESSAGE_NP      = "COMBAT_PIERCE_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_VORPAL_MESSAGE         = "COMBAT_VORPAL_MESSAGE";
 const string CombatTextKeys::COMBAT_VORPAL_MESSAGE_NP      = "COMBAT_VORPAL_MESSAGE_NP";
+const string CombatTextKeys::COMBAT_DRAIN_MESSAGE          = "COMBAT_DRAIN_MESSAGE";
+const string CombatTextKeys::COMBAT_DRAIN_MESSAGE_NP       = "COMBAT_DRAIN_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_INCORPOREAL_MESSAGE    = "COMBAT_INCORPOREAL_MESSAGE";
 const string CombatTextKeys::COMBAT_INCORPOREAL_MESSAGE_NP = "COMBAT_INCORPOREAL_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAGE";

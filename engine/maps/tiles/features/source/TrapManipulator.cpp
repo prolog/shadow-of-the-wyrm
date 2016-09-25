@@ -121,12 +121,14 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
 
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
   int damage_dealt = damage_calc->calculate(creature, slays_race, damage, dmg_roll, soak_mult);
+  Damage damage_default;
+  damage_default.set_modifier(damage_dealt);
 
   // Only apply the effect if there is damage to be dealt.
   if (damage_dealt > 0)
   {
     cm.handle_damage_effects(creature, damage_dealt, dt, effect_bonus, status_ailments);
-    cm.deal_damage(nullptr, creature, damage_dealt, message);
+    cm.deal_damage(nullptr, creature, damage_dealt, damage_default, message);
   }
 }
 

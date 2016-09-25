@@ -19,7 +19,10 @@ void PoisonStatusEffect::tick(CreaturePtr creature) const
   PoisonCalculator pc;
 
   // Poison always deals a single point of damage per minute.
-  cm.deal_damage(no_creature, creature, pc.calculate_damage_per_tick(creature));
+  Damage poison_dmg;
+  int damage = pc.calculate_damage_per_tick(creature);
+  poison_dmg.set_modifier(damage);
+  cm.deal_damage(no_creature, creature, damage, poison_dmg);
 }
 
 string PoisonStatusEffect::get_player_application_message() const

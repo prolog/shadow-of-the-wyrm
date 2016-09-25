@@ -25,7 +25,8 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
   CreaturePtr no_creature;
   string message_sid = StatusAilmentTextKeys::STATUS_MESSAGE_STONE_FINALIZE;
  
-  cm.deal_damage(no_creature, creature, creature->get_hit_points().get_base());
+  Damage stone_default;
+  cm.deal_damage(no_creature, creature, creature->get_hit_points().get_base(), stone_default);
 
   TilePtr creature_tile = MapUtils::get_tile_for_creature(current_map, creature);
 

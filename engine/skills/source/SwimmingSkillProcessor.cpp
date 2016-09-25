@@ -22,8 +22,11 @@ ActionCostValue SwimmingSkillProcessor::process(CreaturePtr creature, MapPtr map
     CombatManager cm;
     SwimmingCalculator sc;
     CreaturePtr no_attacker;
+    int swimming_damage = sc.calculate_swimming_damage(creature, creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL));
+    Damage swimming_default;
+    swimming_default.set_modifier(swimming_damage);
 
-    cm.deal_damage(no_attacker, creature, sc.calculate_swimming_damage(creature, creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL)), drowning_message_sid);    
+    cm.deal_damage(no_attacker, creature, swimming_damage, swimming_default, drowning_message_sid);    
   }
 
   return get_default_skill_action_cost_value(creature);

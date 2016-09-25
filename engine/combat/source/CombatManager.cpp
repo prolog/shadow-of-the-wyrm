@@ -9,6 +9,7 @@
 #include "DamageText.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
+#include "EffectTextKeys.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -20,6 +21,7 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PhaseOfMoonCalculator.hpp"
+#include "PointsTransfer.hpp"
 #include "RaceManager.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
@@ -270,7 +272,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
     // If this attack is vorpal and passes the vorpal check, update the damage 
     // to match the creature's remaining HP
     handle_vorpal_if_necessary(attacking_creature, attacked_creature, damage_info, damage_dealt);
-    deal_damage(attacking_creature, attacked_creature, damage_dealt);
+    deal_damage(attacking_creature, attacked_creature, damage_dealt, damage_info);
   }
   else
   {
@@ -307,6 +309,29 @@ void CombatManager::handle_vorpal_if_necessary(CreaturePtr attacking_creature, C
       string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
       string vorpal_message = CombatTextKeys::get_vorpal_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
       add_combat_message(attacking_creature, attacked_creature, vorpal_message);
+    }
+  }
+}
+
+void CombatManager::handle_draining_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info)
+{
+  if (damage_info.get_draining() && RNG::percent_chance(CombatConstants::PCT_CHANCE_DRAIN))
+  {
+    PointsTransfer pt;
+    int max_drain = std::max<int>(static_cast<int>(damage_dealt * CombatConstants::DRAIN_MULTIPLIER), 1);
+    int drain_amt = pt.transfer(attacking_creature, max_drain, PointsTransferType::POINTS_TRANSFER_HP);
+
+    if (drain_amt > 0)
+    {
+      string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
+      string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+      string drain_message = CombatTextKeys::get_drain_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
+      string healing_message = EffectTextKeys::get_healing_effect_message(attacking_creature_desc, attacking_creature && attacking_creature->get_is_player());
+
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
+      manager.add_new_message(drain_message);
+      manager.add_new_message(healing_message);
+      manager.send();
     }
   }
 }
@@ -403,13 +428,15 @@ void CombatManager::apply_damage_effect(CreaturePtr creature, StatusEffectPtr st
 // Once damage is dealt, check for death.  If the attack has lowered the attacked creature's
 // HP to 0, kill it, and award the dead creature's experience value to the attacking
 // creature.
-void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const string message_sid)
+void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info, const string message_sid)
 {
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
   
   if (map && attacked_creature)
   {
+    PointsTransfer pt;
+    int hp_trans = pt.get_points_for_transfer(attacked_creature, damage_dealt, PointsTransferType::POINTS_TRANSFER_HP);
     int current_hp = attacked_creature->decrement_hit_points(damage_dealt);
     
     if (!message_sid.empty())
@@ -417,7 +444,13 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
       IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
       manager.add_new_message(StringTable::get(message_sid));
     }
-    
+
+    if (attacking_creature)
+    {
+      handle_draining_if_necessary(attacking_creature, attacked_creature, hp_trans, damage_info);
+      // handle_ethereal(attacking_creature, damage_dealt, damage_info);
+    }
+
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
     {      
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);

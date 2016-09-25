@@ -17,6 +17,8 @@ class CombatConstants
     static const int THREAT_RATING_INCREMENT;
     static const double RACE_SLAY_MULTIPLIER;
     static const int PCT_CHANCE_VORPAL;
+    static const int PCT_CHANCE_DRAIN;
+    static const float DRAIN_MULTIPLIER;
 
   protected:
     CombatConstants();

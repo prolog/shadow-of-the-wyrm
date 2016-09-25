@@ -53,6 +53,9 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
     bool vorpal = XMLUtils::get_attribute_bool_value(damage_node, "vorpal");
     damage.set_vorpal(vorpal);
 
+    bool draining = XMLUtils::get_attribute_bool_value(damage_node, "draining");
+    damage.set_draining(draining);
+
     bool piercing = XMLUtils::get_attribute_bool_value(damage_node, "piercing");
     damage.set_piercing(piercing);
 
