@@ -71,6 +71,8 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 
 - Added draining and ethereal to crones.
 
+- Added more useful and useless inscriptions.
+
 - Support for Linux builds.  Added build instructions/guidance to a new file,
   README.build.linux
 
