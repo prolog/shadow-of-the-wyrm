@@ -14,7 +14,9 @@ const int CombatConstants::THREAT_RATING_INCREMENT = 25;
 const double CombatConstants::RACE_SLAY_MULTIPLIER = 2.0;
 const int CombatConstants::PCT_CHANCE_VORPAL = 3;
 const int CombatConstants::PCT_CHANCE_DRAIN = 20;
-const float CombatConstants::DRAIN_MULTIPLIER = 0.20;
+const int CombatConstants::PCT_CHANCE_ETHEREAL = 20;
+const float CombatConstants::DRAIN_MULTIPLIER = 0.20f;
+const float CombatConstants::ETHEREAL_MULTIPLIER = 0.20f;
 
 CombatConstants::CombatConstants()
 {

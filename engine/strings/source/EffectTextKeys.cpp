@@ -35,7 +35,15 @@ string EffectTextKeys::get_general_effect_message(const string& monster_desc_sid
   if (!is_player)
   {
     message = StringTable::get(monster_msg_sid);
-    boost::replace_first(message, "%s", StringTable::get(monster_desc_sid));
+
+    string monster_desc = StringTable::get(monster_desc_sid);
+
+    if (monster_desc.empty())
+    {
+      monster_desc = monster_desc_sid;
+    }
+
+    boost::replace_first(message, "%s", monster_desc);
     message[0] = toupper(message[0]);
   }
   

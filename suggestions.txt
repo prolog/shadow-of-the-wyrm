@@ -10,7 +10,6 @@ Me:
   as necessary during item generation.  Have one weapon for each of the
   melee weapon groups, and ranged ammunition.  Remove all the individual
   branded-like items from the game configuration.
-- Implement a draining flag (50% chance return 1/4 damage to attacker).
 - Ensure item describers properly handle the brands, plus draining/vorpal/
   piercing/chaotic.
 - Special rooms: beer hall, magical workshop, armory.
