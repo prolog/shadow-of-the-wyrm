@@ -123,6 +123,7 @@ class TextKeys
     static const std::string DAMAGE_RANGED;
     static const std::string DAMAGE_PIERCING;
     static const std::string DAMAGE_CHAOTIC;
+    static const std::string DAMAGE_DRAINING;
     static const std::string DAMAGE_VORPAL;
     static const std::string DAMAGE_SLAYS;
 
