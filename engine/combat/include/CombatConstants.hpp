@@ -18,7 +18,9 @@ class CombatConstants
     static const double RACE_SLAY_MULTIPLIER;
     static const int PCT_CHANCE_VORPAL;
     static const int PCT_CHANCE_DRAIN;
+    static const int PCT_CHANCE_ETHEREAL;
     static const float DRAIN_MULTIPLIER;
+    static const float ETHEREAL_MULTIPLIER;
 
   protected:
     CombatConstants();

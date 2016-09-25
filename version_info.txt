@@ -57,12 +57,30 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   a portion of the damage dealt to the attacker.  Added the draining flag to
   Bloodsinger.
 
+- When no AP is specified for a creature, the AP will default to 50% of
+  the creature's HP when generating the creature.
+
+- Implemented a new damage flag, ethereal.  Ethereal acts like draining,
+  but on Arcana Points instead of Hit Points.  The attack always does
+  damage against HP, but when the ethereal check passes, the attack does
+  the same amount against the creature's AP, and transfers a portion back
+  to the attacker.
+  
+- Created a new artifact, Elcrynn, that has the draining flag.  This can be 
+  gifted by The Lady, The Trickster, and Shiver.
+
+- Added draining and ethereal to crones.
+
 - Support for Linux builds.  Added build instructions/guidance to a new file,
   README.build.linux
 
 - Some refactoring in the Lua and C++ code.
 
 - More stanzas for "Tel and Floridel".
+
+- New creatures: seeper.
+
+- New artifacts: ethereal staff "Elcrynn".
 
 - Bug fixes:
 

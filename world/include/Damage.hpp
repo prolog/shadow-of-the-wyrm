@@ -12,7 +12,7 @@ class Damage : public Dice
 {
   public:
     explicit Damage();
-    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const std::vector<std::string>& rslays, const bool chaos, const bool vorp, const bool drain, const bool piercing, const bool incorporeal, const int ebonus, const StatusAilments& sa);
+    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const std::vector<std::string>& rslays, const bool chaos, const bool vorp, const bool drain, const bool ether, const bool piercing, const bool incorporeal, const int ebonus, const StatusAilments& sa);
     Damage(const Damage& d);
     Damage&  operator= (const Damage& d);
     bool     operator==(const Damage& d) const;
@@ -33,6 +33,9 @@ class Damage : public Dice
 
     void set_draining(const bool new_draining);
     bool get_draining() const;
+
+    void set_ethereal(const bool new_ethereal);
+    bool get_ethereal() const;
 
     void set_piercing(const bool new_piercing);
     bool get_piercing() const;
@@ -70,6 +73,7 @@ class Damage : public Dice
     bool chaotic;
     bool vorpal; // chance to insta-kill
     bool draining; // chance to increase damage dealer's HP
+    bool ethereal; // Ditto, but AP.
     bool piercing; // ignore soak
     bool incorporeal; // only a quarter of the soak is used
     DamageType damage_type;

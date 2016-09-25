@@ -321,18 +321,46 @@ void CombatManager::handle_draining_if_necessary(CreaturePtr attacking_creature,
     int max_drain = std::max<int>(static_cast<int>(damage_dealt * CombatConstants::DRAIN_MULTIPLIER), 1);
     int drain_amt = pt.transfer(attacking_creature, max_drain, PointsTransferType::POINTS_TRANSFER_HP);
 
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
+    string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+    string drain_message = CombatTextKeys::get_drain_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
+    manager.add_new_message(drain_message);
+
     if (drain_amt > 0)
     {
-      string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
-      string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
-      string drain_message = CombatTextKeys::get_drain_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
       string healing_message = EffectTextKeys::get_healing_effect_message(attacking_creature_desc, attacking_creature && attacking_creature->get_is_player());
-
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
-      manager.add_new_message(drain_message);
       manager.add_new_message(healing_message);
-      manager.send();
     }
+
+    manager.send();
+  }
+}
+
+void CombatManager::handle_ethereal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info)
+{
+  if (damage_info.get_ethereal() && RNG::percent_chance(CombatConstants::PCT_CHANCE_ETHEREAL))
+  {
+    attacked_creature->decrement_arcana_points(damage_dealt);
+
+    PointsTransfer pt;
+    int max_eth = std::max<int>(static_cast<int>(damage_dealt * CombatConstants::ETHEREAL_MULTIPLIER), 1);
+    int ethereal_amt = pt.transfer(attacking_creature, max_eth, PointsTransferType::POINTS_TRANSFER_AP);
+
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
+    string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+
+    string ethereal_message = CombatTextKeys::get_ethereal_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
+    manager.add_new_message(ethereal_message);
+
+    if (ethereal_amt > 0)
+    {
+      string ether_message = EffectTextKeys::get_ether_effect_message(attacking_creature_desc, attacking_creature && attacking_creature->get_is_player());
+      manager.add_new_message(ether_message);
+    }
+
+    manager.send();
   }
 }
 
@@ -437,6 +465,8 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
   {
     PointsTransfer pt;
     int hp_trans = pt.get_points_for_transfer(attacked_creature, damage_dealt, PointsTransferType::POINTS_TRANSFER_HP);
+    int ap_trans = pt.get_points_for_transfer(attacked_creature, damage_dealt, PointsTransferType::POINTS_TRANSFER_AP);
+    
     int current_hp = attacked_creature->decrement_hit_points(damage_dealt);
     
     if (!message_sid.empty())
@@ -448,7 +478,7 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
     if (attacking_creature)
     {
       handle_draining_if_necessary(attacking_creature, attacked_creature, hp_trans, damage_info);
-      // handle_ethereal(attacking_creature, damage_dealt, damage_info);
+      handle_ethereal_if_necessary(attacking_creature, attacked_creature, ap_trans, damage_info);
     }
 
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)

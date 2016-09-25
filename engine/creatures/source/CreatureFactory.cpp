@@ -97,6 +97,13 @@ CreaturePtr CreatureFactory::create_by_creature_id
     Dice initial_ap_range = cgv.get_initial_arcana_points();
     Statistic arcana_points(RNG::dice(initial_ap_range));
     creature->set_arcana_points(arcana_points);
+
+    // If no AP is specified, let AP be 50% of the current HP.
+    if (creature->get_arcana_points().get_current() == 0)
+    {
+      Statistic new_ap(static_cast<int>(hit_points.get_current() * 0.5f));
+      creature->set_arcana_points(new_ap);
+    }
       
     // Set the exp value to a randomly generated value around the base.
     uint base_experience_value = cgv.get_base_experience_value();

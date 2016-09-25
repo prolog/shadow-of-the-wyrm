@@ -56,6 +56,9 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
     bool draining = XMLUtils::get_attribute_bool_value(damage_node, "draining");
     damage.set_draining(draining);
 
+    bool ethereal = XMLUtils::get_attribute_bool_value(damage_node, "ethereal");
+    damage.set_ethereal(ethereal);
+
     bool piercing = XMLUtils::get_attribute_bool_value(damage_node, "piercing");
     damage.set_piercing(piercing);
 
