@@ -124,6 +124,11 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
     dmg_flags.push_back(TextKeys::DAMAGE_VORPAL);
   }
 
+  if (damage.get_draining())
+  {
+    dmg_flags.push_back(TextKeys::DAMAGE_DRAINING);
+  }
+
   if (damage.get_piercing())
   {
     dmg_flags.push_back(TextKeys::DAMAGE_PIERCING);
