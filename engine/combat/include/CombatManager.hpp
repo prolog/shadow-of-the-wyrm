@@ -23,15 +23,16 @@ class CombatManager
                            const bool mark_skills = true, 
                            DamagePtr damage = DamagePtr());
 
-    void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const std::string combat_message = "");
+    void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage, const std::string combat_message = "");
     void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments);
 
   protected:
     // Apply a particular status effect.
     void apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus);
 
-    // Handle vorpal as necessary
+    // Handle vorpal and other damage flags as necessary
     void handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt);
+    void handle_draining_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info);
     
     // Functions to handle the attacking mechanics and add messages as necessary.
     bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type);

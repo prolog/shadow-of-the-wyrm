@@ -57,7 +57,10 @@ DeityDecisionImplications SmiteDeityDecisionStrategyHandler::handle_decision(Cre
       if (adj_creature != nullptr && adj_creature->hostile_to(creature->get_id()))
       {
         int damage = creature->get_level().get_current() * SMITE_LEVEL_DAMAGE_MULTIPLIER;
-        cm.deal_damage(nullptr, adj_creature, damage);
+        Damage smite_damage;
+        smite_damage.set_modifier(damage);
+
+        cm.deal_damage(nullptr, adj_creature, damage, smite_damage);
       }
     }
   }

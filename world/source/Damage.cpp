@@ -8,17 +8,17 @@
 using namespace std;
 
 Damage::Damage()
-: Dice(0, 0, 0), chaotic(false), vorpal(false), piercing(false), incorporeal(false), damage_type(DamageType::DAMAGE_TYPE_SLASH), effect_bonus(0)
+: Dice(0, 0, 0), chaotic(false), vorpal(false), draining(false), piercing(false), incorporeal(false), damage_type(DamageType::DAMAGE_TYPE_SLASH), effect_bonus(0)
 {
 }
 
-Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const vector<string>& rslays, const bool chaos, const bool vorp, const bool pierce, const bool incorp, const int eb, const StatusAilments& ailments)
-: Dice(dice, sides, mod), chaotic(chaos), vorpal(vorp), piercing(pierce), incorporeal(incorp), damage_type(dtype), slays_races(rslays), effect_bonus(eb), status_ailments(ailments)
+Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const vector<string>& rslays, const bool chaos, const bool vorp, const bool drain, const bool pierce, const bool incorp, const int eb, const StatusAilments& ailments)
+: Dice(dice, sides, mod), chaotic(chaos), vorpal(vorp), draining(drain), piercing(pierce), incorporeal(incorp), damage_type(dtype), slays_races(rslays), effect_bonus(eb), status_ailments(ailments)
 {
 }
 
 Damage::Damage(const Damage& d)
-: Dice(d.num_dice, d.dice_sides, d.modifier), chaotic(d.chaotic), vorpal(d.vorpal), piercing(d.piercing), incorporeal(d.incorporeal), damage_type(d.damage_type), slays_races(d.slays_races), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
+: Dice(d.num_dice, d.dice_sides, d.modifier), chaotic(d.chaotic), vorpal(d.vorpal), draining(d.draining), piercing(d.piercing), incorporeal(d.incorporeal), damage_type(d.damage_type), slays_races(d.slays_races), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
 {
   DamagePtr addl_damage = d.get_additional_damage();
   
@@ -39,6 +39,7 @@ Damage& Damage::operator=(const Damage& d)
     slays_races = d.slays_races;
     chaotic     = d.chaotic;
     vorpal      = d.vorpal;
+    draining    = d.draining;
     piercing    = d.piercing;
     incorporeal = d.incorporeal;
     effect_bonus= d.effect_bonus;
@@ -73,6 +74,7 @@ bool Damage::operator==(const Damage& d) const
 
     match = match && (chaotic     == d.get_chaotic()    );
     match = match && (vorpal      == d.get_vorpal()     );
+    match = match && (draining    == d.get_draining()   );
     match = match && (piercing    == d.get_piercing()   );
     match = match && (incorporeal == d.get_incorporeal());
     match = match && (effect_bonus == d.get_effect_bonus());
@@ -164,6 +166,16 @@ void Damage::set_vorpal(const bool new_vorpal)
 bool Damage::get_vorpal() const
 {
   return vorpal;
+}
+
+void Damage::set_draining(const bool new_draining)
+{
+  draining = new_draining;
+}
+
+bool Damage::get_draining() const
+{
+  return draining;
 }
 
 void Damage::set_piercing(const bool new_piercing)
@@ -265,6 +277,7 @@ bool Damage::serialize(ostream& stream) const
   Serialize::write_enum(stream, damage_type);
   Serialize::write_bool(stream, chaotic);
   Serialize::write_bool(stream, vorpal);
+  Serialize::write_bool(stream, draining);
   Serialize::write_bool(stream, piercing);
   Serialize::write_bool(stream, incorporeal);
   Serialize::write_int(stream, effect_bonus);
@@ -291,6 +304,7 @@ bool Damage::deserialize(istream& stream)
   Serialize::read_enum(stream, damage_type);
   Serialize::read_bool(stream, chaotic);
   Serialize::read_bool(stream, vorpal);
+  Serialize::read_bool(stream, draining);
   Serialize::read_bool(stream, piercing);
   Serialize::read_bool(stream, incorporeal);
   Serialize::read_int(stream, effect_bonus);

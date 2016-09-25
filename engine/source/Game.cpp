@@ -100,6 +100,7 @@ void Game::set_display_settings()
     }
   }
 }
+
 void Game::set_world_settings()
 {
   uint days_elapsed = String::to_uint(settings.get_setting("days_elapsed"));

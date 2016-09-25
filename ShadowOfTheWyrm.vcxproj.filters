@@ -3819,6 +3819,9 @@
     <ClInclude Include="engine\calculators\include\CalcUtils.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\combat\include\PointsTransfer.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7483,6 +7486,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\CalcUtils.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\PointsTransfer.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\unit_tests\PointsTransfer_test.cpp">
+      <Filter>Source Files\engine\combat\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

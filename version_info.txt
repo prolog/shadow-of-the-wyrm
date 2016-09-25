@@ -53,6 +53,11 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   false, but when set to true, the game will start with its calendar set to
   the first day of the current month.
 
+- Implemented a new damage flag, draining, which has a chance to transfer
+  a portion of the damage dealt to the attacker, when the attack does not
+  outright kill the target creature.  Added the draining flag to
+  Bloodsinger.
+
 - Support for Linux builds.  Added build instructions/guidance to a new file,
   README.build.linux
 

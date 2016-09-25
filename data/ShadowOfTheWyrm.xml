@@ -26695,7 +26695,7 @@
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>43</Difficulty>
 				<Speed>2</Speed>
-				<Damage>
+				<Damage draining="1">
 					<NumDice>6</NumDice>
 					<NumSides>4</NumSides>
 					<Modifier>6</Modifier>

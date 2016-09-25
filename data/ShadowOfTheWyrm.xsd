@@ -863,6 +863,7 @@
 			<xs:attribute name="piercing" type="xs:boolean" use="optional" default="0"/>
 			<xs:attribute name="incorporeal" type="xs:boolean" use="optional" default="0"/>
 			<xs:attribute name="vorpal" type="xs:boolean" use="optional" default="0"/>
+			<xs:attribute name="draining" type="xs:boolean" use="optional" default="0"/>
 		</xs:extension>
 	</xs:complexContent>
 </xs:complexType>

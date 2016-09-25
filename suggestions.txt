@@ -1,9 +1,5 @@
 Me:
-- When creatures try to open locked doors, you get "You do not have the
-  correct key for this lock.  The way is blocked."  In
-  MessageManagerFactory::instance, add an extra parameter to check
-  player_affected only.  Go through the code and determine when this
-  should actually be set.
+- More helpful/unhelpful inscriptions (don't read the comments, etc)
 - New spell: vorpal bolt
 - Traps that fire and kill a creature are giving the player exp?
 - Test clearing all shrines

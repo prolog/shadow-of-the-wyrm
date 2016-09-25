@@ -112,6 +112,10 @@ void CreatureAlcoholTimer::check_for_alcohol_poisoning_death(CreaturePtr creatur
     CombatManager cm;
 
     CreaturePtr no_attacker;
-    cm.deal_damage(no_attacker, creature, creature->get_hit_points().get_current() + 1);
+    int alcohol_damage = creature->get_hit_points().get_current() + 1;
+    Damage alcohol_default;
+    alcohol_default.set_modifier(alcohol_damage);
+
+    cm.deal_damage(no_attacker, creature, alcohol_damage, alcohol_default);
   }
 }
