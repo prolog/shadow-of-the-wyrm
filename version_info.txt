@@ -80,7 +80,7 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 
 - More stanzas for "Tel and Floridel".
 
-- New creatures: seeper.
+- New creatures: seeper, redback spider.
 
 - New artifacts: ethereal staff "Elcrynn".
 
