@@ -1,5 +1,10 @@
 Me:
-- More helpful/unhelpful inscriptions (don't read the comments, etc)
+- Get another piece of content in before next release!
+- A refactoring introduced in early 2015 broke soak for mighty blows and
+  critical hits.  Update CombatManager::hit so that soak_multiplier uses
+  the to-hit calculator's soak multiplier.  This multiplier can then be
+  passed into the damage calculator, which can use it (physical) or not
+  (magical) as necessary.  Make sure to update version_info.txt for this one!
 - New spell: vorpal bolt
 - Traps that fire and kill a creature are giving the player exp?
 - Test clearing all shrines
@@ -18,6 +23,7 @@ Me:
 - Keep marking general skills as applicable when using them.
 - Scent maps/track by scent.
 - Stores
+- Bones files
 - More monsters with special attacks or death events.
 - Code should handle being started from outside the game's directory.
 - Additional phase-of-moon effects.
