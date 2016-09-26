@@ -5,7 +5,7 @@ Me:
 - Test clearing all shrines
 - Implement proper branded weapons.  These should allow for any "magical"
   damage type (heat through lightning in the damage enum) to be the weapon
-  damage instead.  Should also allow for chaotic or piercing flags.  Gives
+  damage instead.  Should also allow for chaos/pierce/eth flags.  Gives
   extra dice or modifier.  Should have "branded" flag on Weapon, config
   as necessary during item generation.  Have one weapon for each of the
   melee weapon groups, and ranged ammunition.  Remove all the individual
