@@ -5,10 +5,10 @@
 
 using namespace std;
 
-// Mighty blows do max damage, regular soak.
+// Mighty blows do max damage, 75% soak.
 float MightyHitTypeCalculator::get_soak_multiplier() const
 {
-  return 1.0f;
+  return 0.75f;
 }
 
 string MightyHitTypeCalculator::get_combat_message() const

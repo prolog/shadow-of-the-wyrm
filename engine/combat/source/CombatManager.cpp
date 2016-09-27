@@ -223,7 +223,6 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   DamageType damage_type = damage_info.get_damage_type();
   int effect_bonus = damage_info.get_effect_bonus();
   int base_damage = 0;
-  float soak_multiplier = 1.0;
   
   bool use_mult_dam_type_msgs = String::to_bool(game.get_settings_ref().get_setting("multiple_damage_type_messages"));
   string combat_message = CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc, use_mult_dam_type_msgs);
@@ -253,6 +252,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 
   bool slays_race = does_attack_slay_creature_race(attacking_creature, attacked_creature, attack_type);
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
+  float soak_multiplier = hit_calculator->get_soak_multiplier();
   int damage_dealt = damage_calc->calculate(attacked_creature, slays_race, damage_info, base_damage, soak_multiplier);
 
   // Add the text so far.

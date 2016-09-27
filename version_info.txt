@@ -69,6 +69,8 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 - Created a new artifact, Elcrynn, that has the draining flag.  This can be 
   gifted by The Lady, The Trickster, and Shiver.
 
+- Mighty blows now do max damage at 75% soak.
+
 - Added draining and ethereal to crones.
 
 - Added more useful and useless inscriptions.
@@ -95,6 +97,9 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   - The W/R weapon info commands weren't properly respecting player
     blindness.  Full weapon details are now shown when not blind, or when
     blind and either unarmed or wielding a glowing weapon.
+
+  - Due to a bad refactoring prior to the first release, mighty blows and 
+    critical hits did not reduce soak appropriately when applying the damage.
 
 Shadow of the Wyrm v0.5.4 "Barrios"
 - Version declared July 2, 2016.  Version finalized September 3, 2016.
