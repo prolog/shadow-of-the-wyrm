@@ -30572,6 +30572,24 @@
 				<SpellID/>
 				<Difficulty>0</Difficulty>
 			</Spellbook>
+			<Spellbook id="the_nine">
+				<DescriptionSID>THE_NINE_SID</DescriptionSID>
+				<UsageDescriptionSID>THE_NINE_USAGE_SID</UsageDescriptionSID>
+				<Value>25</Value>
+				<Weight>
+					<Pounds>4</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<TextSID>THE_NINE_TEXT_SID</TextSID>
+				<SpellID/>
+				<Difficulty>0</Difficulty>
+			</Spellbook>
 			<Spellbook id="on_eternalism">
 				<DescriptionSID>ON_ETERNALISM_SID</DescriptionSID>
 				<UsageDescriptionSID>ON_ETERNALISM_USAGE_SID</UsageDescriptionSID>

@@ -205,6 +205,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>the_nine</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>58</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>isen_dun_chronicle</ID>
 				<Coord>
 					<Row>13</Row>
