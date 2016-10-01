@@ -1,6 +1,4 @@
 Me:
-- Get another piece of content in before next release!
-- Telari, the Drowned Isle
 - Need a way to bless things - potions, weapons, etc.  Add a Bless effect and
   spell (Mystic).  Should take a lot of AP!
 - New spell: vorpal bolt
@@ -37,6 +35,7 @@ Me:
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
 - Crash bug is still present: find out what's causing it!
+- Telari, the Drowned Isle
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
 - Define all monsters as good/neutral/evil
