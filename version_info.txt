@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.5.5 "Weiss"
-- Version declared September 3, 2016.
+- Version declared September 3, 2016.  Version finalized October 1, 2016.
 
 - Stats can now be marked periodically.  Every three hours, the game
   checks for:
@@ -66,7 +66,7 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   the same amount against the creature's AP, and transfers a portion back
   to the attacker.
   
-- Created a new artifact, Elcrynn, that has the draining flag.  This can be 
+- Created a new artifact, Elcrynn, that has the ethereal flag.  This can be 
   gifted by The Lady, The Trickster, and Shiver.
 
 - Mighty blows now do max damage at 75% soak.
