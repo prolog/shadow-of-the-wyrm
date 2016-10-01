@@ -49,10 +49,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // A contemporary of Bach, Sylvius Leopold Weiss was one of the great
-  // lutenists and composers of the baroque era, writing music that I
-  // enjoy more than that of Bach himself.
-  return "\"Weiss\"";
+  // One of the great baroque composers, Antonio Vivaldi wrote a number
+  // of concerti for the lute.
+  return "\"Vivaldi\"";
 }
 
 string Metadata::get_game_version_synopsis() const
