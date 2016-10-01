@@ -1,7 +1,7 @@
 First, there was Celeste.  Empress of the Heavens, the Creator of All Things,
-she created the universe from nothing and sheer force of will.  She made
+she created the universe from nothing but her sheer force of will.  She made
 the stars and galaxies, the planets, and the vast, empty space.  And when this
-was done, she created seven other beings, to dwell with her in and above the
+was done, she created seven other beings, to dwell with her, in and above the
 cosmos, beyond the trivialities of living things.  Celeste is known to all
 people, for all cultures have some theory of creation.  Even if her name
 may differ from place to place, the stories are the same - of a divine force
@@ -33,11 +33,11 @@ have said that she appears to them directly as a young woman of impossible
 beauty.  She has been reported with black hair, red hair, grey eyes, green
 eyes; and she carries a small flute, from which she plays sweet and haunting
 melodies.  Certainly of the three good and noble deities, she figures least
-prominent in the histories - Aurelion and Celeste represent a kind of
+prominently in the histories - Aurelion and Celeste represent a kind of
 righteousness and power to which many civilizations aspire.  But The Lady
 has always had a small number of worshippers, often simple folk such as
 peasants or shepherds.  She provides a kind of basic joy and happiness, and
-her devotees claim a reciprocal closeness which the other deities do not
+her devotees claim a closeness to the divine which the other deities do not
 provide.
 %p
 To balance these forces of good, Celeste then created two beings from the
@@ -51,7 +51,7 @@ delights in hardship and toil.  But to her worshippers, Shiver grants great
 secrets.  In exchange for blood sacrifice, she imparts ancient powers,
 teaching arcana that was lost when the world was young.
 %p
-If Shiver represents a cold cunning, her ally embodies apocalyptic
+But if Shiver represents a cold cunning, her ally embodies catastrophic
 strength.  Formed of dark matter, the being known as Urgoth was made by Celeste
 as a counter-balance to Aurelion.  Seen in earthly form as a massive shadow,
 taller than the highest mountain, Urgoth commands a terrifying horde of
@@ -73,7 +73,7 @@ missing balance.  To counter this, she created three more of her kind, with
 the desire that they would play the part of mediators and judges, that they
 would help protect the universe from the sparring of the divine.
 %p
-To put life on the rocky world, she took the rock and water and nascent air
+To put life on the rocky world, she took stone and water and nascent air
 and made herself another creator.  Vedere was his name.  Bringing him into
 being, Celeste taught him how to create and name things.  He made oceans and
 land, birds and insects, all manner of life.  He breathed life into everything
@@ -85,13 +85,43 @@ dwarves, gnomes, goblins and ogres, man.  Though bound to neutrality, Vedere
 most frequently sides with the side of good, as it is said that Celeste
 granted a large portion of her own being when she created him.
 %p
-...
+Within the earth, she placed a massive wyrm, a world-snake whose anger
+shakes the earth.  Though Vedere created the initial placement of the world,
+Voros enacts change through his wrath, raising mountains and erupting volcanos.
+The subterranean folk of the world, and particularly the gnomes, have long felt
+a deep affinity for Voros.  Living deep within the world, Voros sits apart
+from the rest of the divine, rarely speaking, rarely taking sides, content to
+watch the way things unfold.  His strength is apocalyptic: tens of thousands of
+feet long, it is said he could reach from the earth and touch the moons in the
+heavens.  His scales are said to glow a deep crimson, as if he is made from
+magma himself, and his eyes are a deep and unsettling yellow.  Throughout
+history, people have long associated him with dragon-kind.  Wyrms are made in
+his image, of course, and it is believed that his worship peaked during the
+historical period known as the Dragon Age.
 %p
-She made only seven.  Eight, including her, but the deities are unerringly
-referred to as the Nine.  The ninth was not made by her, but is something
-else entirely.  A beast that existed before the universe, and that shall
-surely last beyond.  Pure blackness, pure evil, a force so terrible that the
-others imprisoned it in a place beyond the universe, in another reality
+Finally, Celeste made one more creature.  She looked down at the world and
+saw that it was beautiful, but static.  Seasons came and went, but the world
+seemed to follow a set course.  Vedere had created a beautiful thing, but even
+with Voros acting upon the world from below, the earth seemed predictable.
+So she made an agent of unpredictable change, a creature woven from
+probability and unpredictability who would walk the earth, causing strange
+and unexplainable events.  She made him appear as a normal man, though
+cloaked.  She granted him a companion, plucking a raven from a mountain ash
+and granting it immortality.  And then, she set him loose.  He wanders the
+plains and forests, crosses the oceans on his back with his raven on his
+chest.  And everywhere he goes, there are strange, unexplainable events.  It
+is said that he makes buildings collapse, or lovers meet; that empires have
+fallen at his whim, and that others have formed in his wake.  He was named by
+the tribes of the western plains as The Trickster, after he passed through
+their camp and a birthing buffalo produced a pure white calf.  As this story
+spread, so did his name, and this divine being has been known as The Trickster
+since.
+%p
+She made only seven: eight gods and goddesses, including her, but they are
+unerringly referred to as the Nine.  The ninth was not made by her, but is
+something else entirely.  A beast that existed before the universe, and that
+shall surely last beyond.  Pure blackness, pure evil, a force so terrible that
+the others imprisoned it in a place beyond the universe, in another reality
 altogether.  Sceadugenga: a word from the Wolf Age, it means shadow-walker,
 light-eater.  Though trapped in its unreality, parts of it poke and probe at
 the edges, testing its prison, manifesting briefly in the physical realm.  
@@ -99,5 +129,5 @@ These appear as masses of tendrils that writhe like a million snakes, and
 attack with such force as to raze entire islands.  Sceadugenga attracts the
 most cruel and nihilistic creatures, those who seek the wholesale destruction
 of all things.  Its servants can be identified by an ugly black mark on their
-foreheads, a rune that pulses and bleeds, marking the servants of the black
+foreheads, a rune that pulses and bleeds, naming them as servants of the black
 god.
