@@ -76,7 +76,7 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 - Added more useful and useless inscriptions.
 
 - There is now a text describing some of the lore of the Nine in the rectory 
-  in Isen Dun (cheapmiami).
+  in Isen Dun (Cheap Miami Records).
 
 - Support for Linux builds.  Added build instructions/guidance to a new file,
   README.build.linux
