@@ -23023,6 +23023,25 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="a_15_vorpal_bolt">
+			<NameSID>VORPAL_BOLT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>VORPAL_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>VORPAL_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>25</APCost>
+			<Speed>1</Speed>
+			<Range>6</Range>
+			<Range>4</Range>
+			<Shape>1</Shape>
+			<Damage vorpal="1">
+				<NumDice>3</NumDice>
+				<NumSides>6</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -31208,6 +31227,25 @@
 				<Rarity>1</Rarity>
 				<SpellID>a_14_absolute_zero</SpellID>
 				<Difficulty>150</Difficulty>
+			</Spellbook>
+			<Spellbook id="vorpal_bolt_spellbook">
+				<DescriptionSID>VORPAL_BOLT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_VORPAL_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>VORPAL_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_VORPAL_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>600</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_15_vorpal_bolt</SpellID>
+				<Difficulty>110</Difficulty>
 			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
