@@ -1,9 +1,14 @@
 Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Version declared October 1, 2016.
 
-- New spells/spellbooks: vorpal bolt (Arcane).
+- New effect type, Bless.  When the effect type is cursed, an item is only
+  turned uncursed, and only if it is currently cursed.  When the effect type
+  is uncursed, the selected inventory item is blessed, and when the effect
+  type is blessed, all items of that type in the inventory are blessed.
 
-- New items: vorpal bolt wand.
+- New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
+
+- New items: vorpal bolt wand, scroll of blessing.
 
 Shadow of the Wyrm v0.5.5 "Weiss"
 - Version declared September 3, 2016.  Version finalized October 1, 2016.

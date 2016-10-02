@@ -1,6 +1,8 @@
 Me:
 - Need a way to bless things - potions, weapons, etc.  Add a Bless effect and
   spell (Mystic).  Should take a lot of AP!
+- Dropping a non-blessed item on an aligned altar should bless it, at the
+  cost of some amount of piety.
 - Traps that fire and kill a creature are giving the player exp?
 - Test clearing all shrines
 - Implement proper branded weapons.  These should allow for any "magical"
