@@ -1,6 +1,8 @@
 Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Version declared October 1, 2016.
 
+- New spells/spellbooks: vorpal bolt (Arcane).
+
 Shadow of the Wyrm v0.5.5 "Weiss"
 - Version declared September 3, 2016.  Version finalized October 1, 2016.
 
