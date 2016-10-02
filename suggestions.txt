@@ -41,8 +41,6 @@ Me:
 - Monsters should have a chance of being generated friendly when same
   alignment.
 - Sacrifices should generate more piety when non-aligned.
-- Now that damage slays, and not weapons, ensure that magical damage/traps
-  and so on properly check slays.
 - Discover traps on search?  Passive search at the end of each turn for
   traps?
 - Guilds and membership, mutual exclusivity, etc.

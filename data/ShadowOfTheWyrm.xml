@@ -30553,6 +30553,31 @@
 				<Range>3</Range>
 				<Colour>1</Colour>
 			</Wand>
+			<Wand id="vorpal_bolt_wand">
+				<DescriptionSID>VORPAL_BOLT_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_VORPAL_BOLT_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>VORPAL_BOLT_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_VORPAL_BOLT_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>700</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+					<Type>9</Type>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
+				<Colour>7</Colour>
+			</Wand>
 		</Wands>
 		<Spellbooks>
 			<Spellbook id="isen_dun_chronicle">
