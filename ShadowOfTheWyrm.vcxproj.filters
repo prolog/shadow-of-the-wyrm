@@ -3822,6 +3822,9 @@
     <ClInclude Include="engine\combat\include\PointsTransfer.hpp">
       <Filter>Header Files\engine\combat\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\BlessEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7492,6 +7495,9 @@
     </ClCompile>
     <ClCompile Include="engine\combat\source\unit_tests\PointsTransfer_test.cpp">
       <Filter>Source Files\engine\combat\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\BlessEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
