@@ -103,6 +103,11 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
   return handled;
 }
 
+bool TanneryManipulator::drop(CreaturePtr creature, ItemPtr item)
+{
+  return false;
+}
+
 // Create an appropriate piece of hide armour from the given skin.
 ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr selected_skin, const EquipmentWornLocation slot)
 {

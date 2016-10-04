@@ -24,6 +24,4 @@ class OfferAction : public IActionManager
     bool sacrifice_on_coaligned_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item);
     bool sacrifice_on_crossaligned_altar(CreaturePtr creature, TilePtr tile, FeaturePtr feature, ItemPtr item);
 
-    // Returns the increase in piety as the result of the sacrifice.
-    int adjust_creature_piety(CreaturePtr creature, const DeityDecisionImplications& ddi);
 };

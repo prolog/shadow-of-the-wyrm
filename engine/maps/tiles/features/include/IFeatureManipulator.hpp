@@ -22,6 +22,10 @@ class IFeatureManipulator
     // whether the creature is the player or not.
     virtual bool handle(TilePtr tile, CreaturePtr creature) = 0;
 
+    // Dropping something on a feature usually does nothing, with the exception
+    // of things like altars.
+    virtual bool drop(CreaturePtr dropping_creature, ItemPtr item) = 0;
+
   protected:
     FeaturePtr feature;
 };
