@@ -61,4 +61,9 @@ bool BarrelManipulator::handle(TilePtr tile, CreaturePtr creature)
   return true;
 }
 
+bool BarrelManipulator::drop(CreaturePtr creature, ItemPtr item)
+{
+  return false;
+}
+
 

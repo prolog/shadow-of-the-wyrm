@@ -107,6 +107,11 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
   return handled;
 }
 
+bool WheelAndLoomManipulator::drop(CreaturePtr creature, ItemPtr item)
+{
+  return false;
+}
+
 ItemPtr WheelAndLoomManipulator::create_woven_armour(CreaturePtr creature, ItemPtr fibre, const EquipmentWornLocation slot)
 {
   ItemPtr armour;

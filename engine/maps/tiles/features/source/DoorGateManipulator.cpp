@@ -99,6 +99,11 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
   return result;
 }
 
+bool DoorGateManipulator::drop(CreaturePtr creature, ItemPtr item)
+{
+  return false;
+}
+
 // Break down the door by removing the door from the tile.
 void DoorGateManipulator::break_down_door(CreaturePtr creature, TilePtr tile)
 {

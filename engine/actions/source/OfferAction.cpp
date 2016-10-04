@@ -166,13 +166,9 @@ bool OfferAction::sacrifice_on_coaligned_altar(CreaturePtr creature, FeaturePtr 
     DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
 
     // Adjust piety and alignment.
-    int piety = adjust_creature_piety(creature, decision_implications);
+    int piety_delta = decision_implications.adjust_creature_piety(creature, feature);
 
-    AlignmentCalculator ac;
-    int new_alignment = ac.calculate_alignment_for_sacrifice_on_coaligned_altar(creature->get_alignment().get_alignment(), feature->get_alignment_range());
-    CreatureUtils::handle_alignment_change(creature, new_alignment);
-    
-    if (piety > 0)
+    if (piety_delta > 0)
     {
       result = true;
       add_piety_message_if_player(creature);
@@ -223,28 +219,6 @@ bool OfferAction::sacrifice_on_crossaligned_altar(CreaturePtr creature, TilePtr 
   }
 
   return result;
-}
-
-// Alter the creature's piety as a result of the sacrifice.
-int OfferAction::adjust_creature_piety(CreaturePtr creature, const DeityDecisionImplications& decision_implications)
-{
-  int piety_gain = decision_implications.get_piety_gain();
-
-  // Get the deity and the creature's status with that deity.
-  ReligionManager rm;
-  ClassManager cm;
-
-  Religion& religion = creature->get_religion_ref();
-  string deity_id = religion.get_active_deity_id();
-  DeityPtr creature_deity = rm.get_deity(deity_id);
-  DeityStatus status = religion.get_deity_status(deity_id);
-
-  ClassPtr cur_class = cm.get_class(creature->get_class_id());
-
-  status.increment_piety(piety_gain);
-  religion.set_deity_status(deity_id, status);
-
-  return piety_gain;
 }
 
 void OfferAction::add_no_altar_message(CreaturePtr creature)
