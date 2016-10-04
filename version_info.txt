@@ -6,6 +6,8 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
   is uncursed, the selected inventory item is blessed, and when the effect
   type is blessed, all items of that type in the inventory are blessed.
 
+- More stanzas for "Tel and Floridel".
+
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
 
 - New items: vorpal bolt wand, scroll of blessing.
