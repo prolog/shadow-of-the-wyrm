@@ -99,7 +99,7 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
   return result;
 }
 
-bool DoorGateManipulator::drop(CreaturePtr creature, ItemPtr item)
+bool DoorGateManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
 {
   return false;
 }

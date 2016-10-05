@@ -75,7 +75,7 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
   return true;
 }
 
-bool TrapManipulator::drop(CreaturePtr creature, ItemPtr item)
+bool TrapManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
 {
   return false;
 }

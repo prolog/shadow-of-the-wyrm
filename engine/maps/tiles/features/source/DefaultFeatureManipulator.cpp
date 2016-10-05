@@ -28,7 +28,7 @@ bool DefaultFeatureManipulator::handle(TilePtr tile, CreaturePtr creature)
   return true;
 }
 
-bool DefaultFeatureManipulator::drop(CreaturePtr creature, ItemPtr item)
+bool DefaultFeatureManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
 {
   return false;
 }

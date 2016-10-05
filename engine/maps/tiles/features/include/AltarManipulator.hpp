@@ -8,6 +8,6 @@ class AltarManipulator : public IFeatureManipulator
     AltarManipulator(FeaturePtr feature);
 
     bool handle(TilePtr tile, CreaturePtr creature) override;
-    bool drop(CreaturePtr dropping_creature, ItemPtr item) override;
+    bool drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item) override;
 };
 

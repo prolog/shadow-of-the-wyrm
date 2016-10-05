@@ -107,7 +107,7 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
   return handled;
 }
 
-bool WheelAndLoomManipulator::drop(CreaturePtr creature, ItemPtr item)
+bool WheelAndLoomManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
 {
   return false;
 }

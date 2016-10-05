@@ -30,3 +30,5 @@ class Altar : public Feature
   private:
     ClassIdentifier internal_class_identifier() const override;
 };
+
+using AltarPtr = std::shared_ptr<Altar>;

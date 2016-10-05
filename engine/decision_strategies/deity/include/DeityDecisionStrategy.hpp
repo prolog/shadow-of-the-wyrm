@@ -12,6 +12,7 @@ class DeityDecisionStrategy : public IDeityDecisionStrategy
     
     DeityDecisionStrategyHandlerPtr get_decision(CreaturePtr creature) override;
     DeityDecisionStrategyHandlerPtr get_decision_for_sacrifice(CreaturePtr creature, ItemPtr item) override;
+    DeityDecisionStrategyHandlerPtr get_decision_for_altar_drop(CreaturePtr dropping_creature, FeaturePtr feature, ItemPtr item) override;
 
   protected:
     // Should be initialized differently by deity.

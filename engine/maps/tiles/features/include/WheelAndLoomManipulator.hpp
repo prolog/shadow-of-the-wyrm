@@ -9,7 +9,7 @@ class WheelAndLoomManipulator : public IFeatureManipulator
 
     void kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature) override;
     bool handle(TilePtr tile, CreaturePtr creature) override;
-    bool drop(CreaturePtr dropping_creature, ItemPtr item) override;
+    bool drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item) override;
 
   protected:
     void add_no_weaving_skill_message(CreaturePtr creature);
