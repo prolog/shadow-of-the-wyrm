@@ -24,7 +24,7 @@ class IFeatureManipulator
 
     // Dropping something on a feature usually does nothing, with the exception
     // of things like altars.
-    virtual bool drop(CreaturePtr dropping_creature, ItemPtr item) = 0;
+    virtual bool drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item) = 0;
 
   protected:
     FeaturePtr feature;

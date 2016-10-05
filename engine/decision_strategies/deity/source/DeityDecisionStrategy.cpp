@@ -1,5 +1,6 @@
 #include "DeityDecisionConstants.hpp"
 #include "DeityDecisionStrategy.hpp"
+#include "AltarDropDeityDecisionStrategyHandler.hpp"
 #include "CrowningDeityDecisionStrategyHandler.hpp"
 #include "FullAPDeityDecisionStrategyHandler.hpp"
 #include "FullHPDeityDecisionStrategyHandler.hpp"
@@ -79,4 +80,11 @@ DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision_for_sacrific
   DeityDecisionStrategyHandlerPtr sacrifice = std::make_shared<SacrificeDeityDecisionStrategyHandler>(deity_id, creature, item);
 
   return sacrifice;
+}
+
+DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision_for_altar_drop(CreaturePtr dropping_creature, FeaturePtr altar, ItemPtr item)
+{
+  DeityDecisionStrategyHandlerPtr item_drop = std::make_shared<AltarDropDeityDecisionStrategyHandler>(deity_id, dropping_creature, altar, item);
+
+  return item_drop;
 }

@@ -1,5 +1,7 @@
 #include "ActionTextKeys.hpp"
+#include "Altar.hpp"
 #include "AltarManipulator.hpp"
+#include "DeityDecisionStrategyFactory.hpp"
 #include "MessageManagerFactory.hpp"
 
 using namespace std;
@@ -21,22 +23,32 @@ bool AltarManipulator::handle(TilePtr tile, CreaturePtr creature)
   return true;
 }
 
-bool AltarManipulator::drop(CreaturePtr creature, ItemPtr item)
+bool AltarManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
 {
   bool item_altered = false;
 
-  if (creature != nullptr && item != nullptr)
+  if (dropping_creature != nullptr && item != nullptr)
   {
-    AlignmentRange altar_range = feature->get_alignment_range();
-    AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
+    AltarPtr altar = dynamic_pointer_cast<Altar>(feature);
 
-    if (altar_range == creature_range)
+    if (altar != nullptr)
     {
-      // ...
-    }
-    else
-    {
-      // ...
+      string deity_id = altar->get_deity_id();
+
+      IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy(deity_id);
+      DeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision_for_altar_drop(dropping_creature, feature, item);
+      
+      if (deity_decision_handler->decide(dropping_creature))
+      {
+        DeityDecisionImplications ddi = deity_decision_handler->handle_decision(dropping_creature, tile);
+        int piety_loss = ddi.adjust_creature_piety(dropping_creature, feature);
+
+        // TODO: Item alteration message based on piety loss.
+        // 0 piety = cross-aligned, item cursed
+        // > 0 piety = co-aligned, item blessed
+
+        item_altered = true;
+      }
     }
   }
 

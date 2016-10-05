@@ -103,7 +103,7 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
   return handled;
 }
 
-bool TanneryManipulator::drop(CreaturePtr creature, ItemPtr item)
+bool TanneryManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
 {
   return false;
 }
