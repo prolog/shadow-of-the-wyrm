@@ -1,5 +1,8 @@
 #include "AltarDropDeityDecisionStrategyHandler.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
+#include "EffectTextKeys.hpp"
+#include "ItemIdentifier.hpp"
+#include "MessageManagerFactory.hpp"
 
 using namespace std;
 
@@ -45,16 +48,41 @@ bool AltarDropDeityDecisionStrategyHandler::decide(CreaturePtr creature)
     }
   }
 
-  return true;
+  return decision;
 }
 
 DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
+  string decision_msg;
+
   // Bless/curse the item as necessary
-  // ...
+  if (drop_item)
+  {
+    AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
+    AlignmentRange altar_range = altar->get_alignment_range();
+    ItemStatus status = ItemStatus::ITEM_STATUS_BLESSED;
+    ItemIdentifier iid;
+    string item_desc = iid.get_appropriate_usage_description(drop_item);
+
+    decision_msg = EffectTextKeys::get_bless_effect_message(item_desc, false);
+
+    if (creature_range != altar_range)
+    {
+      status = ItemStatus::ITEM_STATUS_CURSED;
+      decision_msg = EffectTextKeys::get_cursed_enchant_message(item_desc);
+    }
+
+    drop_item->set_status(status);
+    drop_item->set_status_identified(true);
+  }
 
   // Add a message?
-  // ...
+  if (!decision_msg.empty())
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    manager.add_new_message(decision_msg);
+    manager.send();
+  }
 
   return get_deity_decision_implications(creature, tile);
 }
