@@ -60,6 +60,6 @@ class EffectTextKeys
     static const std::string EFFECT_DETECT_TRAPS_PLAYER;
     static const std::string EFFECT_DETECT_TRAPS_MONSTER;
     static const std::string EFFECT_BLESS_PLAYER;
-    static const std::string EFFECT_BLESS_MONSTER;
+    static const std::string EFFECT_BLESS_MONSTER_OR_ITEM;
 };
 
