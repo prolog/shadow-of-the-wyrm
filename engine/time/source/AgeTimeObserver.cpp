@@ -47,9 +47,6 @@ void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_ma
       age.set_current(age.get_current() + 1);
 
       RacePtr creature_race = rm.get_race(creature->get_race_id());
-      AgeInfo age_info = creature_race->get_age_info();
-      Range<uint> max_age_range = age_info.get_maximum_age();
-      uint max = RNG::range(max_age_range.get_min(), max_age_range.get_max());
 
       if (age.get_current() > age.get_base())
       {

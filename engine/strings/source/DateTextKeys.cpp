@@ -87,6 +87,8 @@ string DateTextKeys::get_phase_of_moon_sid(const PhaseOfMoonType pom)
     case PhaseOfMoonType::PHASE_OF_MOON_WANING:
       val = DateTextKeys::PHASE_OF_MOON_WANING;
       break;
+    case PhaseOfMoonType::PHASE_OF_MOON_NULL:
+      break;
   }
 
   return val;
