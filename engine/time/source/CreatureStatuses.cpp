@@ -9,9 +9,6 @@ void CreatureStatuses::tick(CreaturePtr creature, TilePtr tile, const ulonglong 
 {
   if (creature)
   {
-    Game& game = Game::instance();
-    double current_seconds = GameUtils::get_seconds(game);
-
     CreatureStatusMap statuses = creature->get_statuses();
 
     // For each status, apply a "tick" - poisoned creatures take damage, etc.

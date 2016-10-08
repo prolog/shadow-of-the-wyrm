@@ -41,11 +41,7 @@ bool AltarManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr
       if (deity_decision_handler->decide(dropping_creature))
       {
         DeityDecisionImplications ddi = deity_decision_handler->handle_decision(dropping_creature, tile);
-        int piety_loss = ddi.adjust_creature_piety(dropping_creature, feature);
-
-        // TODO: Item alteration message based on piety loss.
-        // 0 piety = cross-aligned, item cursed
-        // > 0 piety = co-aligned, item blessed
+        ddi.adjust_creature_piety(dropping_creature, feature);
 
         item_altered = true;
       }
