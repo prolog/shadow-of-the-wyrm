@@ -3828,6 +3828,9 @@
     <ClInclude Include="engine\decision_strategies\deity\include\AltarDropDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\conversion\include\ArtifactDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7504,6 +7507,9 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\AltarDropDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\ArtifactDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
