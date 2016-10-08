@@ -1,10 +1,6 @@
 Me:
-- Dropping a non-blessed item on an aligned altar should bless it, at the
-  cost of some amount of piety.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
-- Set a data structure that tracks generated artifacts, and adds a section
-  to the character dump.
 - Fire effects on a tile (gas, spells, etc) should have a chance of destroying
   scrolls and spellbooks.
 - Cold effects on a tile should have a chance of destroying potions.

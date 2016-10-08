@@ -26431,7 +26431,7 @@
 				<Damage>
 					<NumDice>3</NumDice>
 					<NumSides>12</NumSides>
-					<Modifier>6</Modifier>
+					<Modifier>4</Modifier>
 					<Type>2</Type>
 					<Slays>
 						<Slay>_construct</Slay>
@@ -26488,7 +26488,7 @@
 				<Difficulty>47</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
-					<NumDice>12</NumDice>
+					<NumDice>6</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
 				</Damage>

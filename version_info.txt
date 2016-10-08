@@ -10,11 +10,25 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
   the altar is co-aligned, the item/stack are blessed, and piety is decreased.
   If the creature and the altar are cross-aligned, the item becomes cursed.
 
+- Character dumps now include all the artifacts that have been generated
+  as part of the current game.  This includes maps that have been generated
+  but not yet visited (custom areas).
+
+- Toned down Stormstaff.  The damage on the staff of the artificer has been
+  reduced as well - damage is now 12d4 instead of 12d6 to be consistent with
+  other staves.
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
 
 - New items: vorpal bolt wand, scroll of blessing.
+
+- Bug fixes:
+
+  - "You see..." messages for items were being shown when walking over a
+    tile when blind.  It was still "You see something", but this wasn't
+    quite correct - when you're blind, you can't see anything.
 
 Shadow of the Wyrm v0.5.5 "Weiss"
 - Version declared September 3, 2016.  Version finalized October 1, 2016.
