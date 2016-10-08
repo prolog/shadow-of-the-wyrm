@@ -85,9 +85,6 @@ bool StringTable::is_external_file(const string& value)
 
   if (val_trim_size >= 4)
   {
-    char first_char = val_trim.at(0);
-    char last_char = val_trim.at(val_trim_size - 1);
-
     if (val_trim.at(0) == '[' && 
         val_trim.at(1) == '[' &&
         val_trim.at(val_trim_size-1) == ']' &&
