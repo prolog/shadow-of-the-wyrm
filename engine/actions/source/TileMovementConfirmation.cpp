@@ -1,4 +1,5 @@
 #include "MapUtils.hpp"
+#include "MovementTextKeys.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "TileMovementConfirmation.hpp"
@@ -13,11 +14,21 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
   confirmation_details.first = false;
   bool is_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
   bool is_flying = creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
-  
-  if (new_tile->get_dangerous(creature) && !is_incorporeal && !is_flying)
+  FeaturePtr new_tile_feature = new_tile->get_feature();
+  bool feature_dangerous = new_tile_feature && new_tile_feature->get_is_dangerous();
+
+  if ((new_tile->get_dangerous(creature) && !is_incorporeal && !is_flying) || 
+      (feature_dangerous))
   {
     confirmation_details.first = true;
-    confirmation_details.second = TextMessages::get_confirmation_message(new_tile->get_danger_confirmation_sid());
+    string confirmation_sid = new_tile->get_danger_confirmation_sid();
+
+    if (feature_dangerous)
+    {
+      confirmation_sid = MovementTextKeys::ACTION_MOVE_DANGEROUS_FEATURE;
+    }
+
+    confirmation_details.second = TextMessages::get_confirmation_message(confirmation_sid);
   }
   else
   {

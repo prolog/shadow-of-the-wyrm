@@ -1,4 +1,5 @@
 Me:
+- For checking dangerous tiles, only check when the player is not blind.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
 - Fire effects on a tile (gas, spells, etc) should have a chance of destroying
