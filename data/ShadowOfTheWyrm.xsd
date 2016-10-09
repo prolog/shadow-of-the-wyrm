@@ -508,6 +508,7 @@
 			<xs:element name="Swimming" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Tanning" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Thievery" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Wandcraft" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Weaving" type="tns:PercentageStatistic" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -1549,7 +1550,7 @@
 	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="49"/>
+		<xs:maxInclusive value="50"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="MagicSkillType">

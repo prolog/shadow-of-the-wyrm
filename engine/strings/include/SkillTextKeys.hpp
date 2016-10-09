@@ -109,6 +109,8 @@ class SkillTextKeys
     static const std::string SKILL_GENERAL_TANNING_INCREMENT;
     static const std::string SKILL_GENERAL_THIEVERY;
     static const std::string SKILL_GENERAL_THIEVERY_INCREMENT;
+    static const std::string SKILL_GENERAL_WANDCRAFT;
+    static const std::string SKILL_GENERAL_WANDCRAFT_INCREMENT;
     static const std::string SKILL_GENERAL_WEAVING;
     static const std::string SKILL_GENERAL_WEAVING_INCREMENT;
 
@@ -201,6 +203,7 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_SMITHING;
     static const std::string SKILL_USAGE_SWIMMING;
     static const std::string SKILL_USAGE_TANNING;
+    static const std::string SKILL_USAGE_WANDCRAFT;
     static const std::string SKILL_USAGE_WEAVING;
 
     static std::string get_skill_improvement_message(const std::string& skill_improvement_sid, const int points_remaining);

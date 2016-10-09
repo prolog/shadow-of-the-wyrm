@@ -43,12 +43,13 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_SWIMMING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SWIMMING)),
                make_pair(SkillType::SKILL_GENERAL_TANNING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_TANNING)),
                make_pair(SkillType::SKILL_GENERAL_THIEVERY, make_shared<ThieverySkillProcessor>()),
+               make_pair(SkillType::SKILL_GENERAL_WANDCRAFT, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_WANDCRAFT)),
                make_pair(SkillType::SKILL_GENERAL_WEAVING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_WEAVING))};
 }
 
 SkillProcessorPtr SkillProcessorFactory::create(const SkillType st)
 {
-  static_assert(SkillType::SKILL_GENERAL_LAST == static_cast<SkillType>(49), "Unexpected SKILL_GENERAL_LAST");
+  static_assert(SkillType::SKILL_GENERAL_LAST == static_cast<SkillType>(50), "Unexpected SKILL_GENERAL_LAST");
   static_assert(SkillType::SKILL_MELEE_LAST == static_cast<SkillType>(1010), "Unexpected SKILL_MELEE_LAST");
   static_assert(SkillType::SKILL_RANGED_LAST == static_cast<SkillType>(2010), "Unexpected SKILL_RANGED_LAST");
   static_assert(SkillType::SKILL_MAGIC_LAST == static_cast<SkillType>(3005), "Unexpected SKILL_MAGIC_LAST");

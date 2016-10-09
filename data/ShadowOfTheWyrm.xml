@@ -3408,6 +3408,7 @@
 					<Papercraft>15</Papercraft>
 					<Religion>20</Religion>
 					<Scribing>20</Scribing>
+					<Wandcraft>15</Wandcraft>
 					<Weaving>15</Weaving>
 				</GeneralSkills>
 				<MagicSkills>
@@ -4305,6 +4306,7 @@
 					<Magic>25</Magic>
 					<Papercraft>15</Papercraft>
 					<Scribing>15</Scribing>
+					<Wandcraft>10</Wandcraft>
 					<Weaving>15</Weaving>
 				</GeneralSkills>
 				<WeaponSkills>
