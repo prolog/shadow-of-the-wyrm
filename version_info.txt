@@ -24,7 +24,10 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Created a new skill, Wandcraft.  Wizards and Sages start with this skill,
   though it can be learned by anyone from a quest from Cynwise in Isen
   Dun.  Wandcraft acts in the same way Combat does for melee combat, or
-  Archery for ranged combat - it enhances the damage done by wands.
+  Archery for ranged combat - it enhances the damage done by wands.  It
+  also allows for the chance to use a wand without burning a charge.
+
+- High willpower scores now modify wand damage by a small amount.
 
 - The player is no longer prompted before moving onto a dangerous tile when
   blind.

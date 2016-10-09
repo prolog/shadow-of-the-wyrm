@@ -9,12 +9,15 @@
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
+#include "SkillManager.hpp"
 #include "SpellConstants.hpp"
 #include "SpellcastingProcessor.hpp"
 #include "SpellShapeFactory.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "EvokeAction.hpp"
 #include "StatisticsMarker.hpp"
+#include "WandCalculator.hpp"
 
 using namespace std;
 using std::dynamic_pointer_cast;
@@ -112,14 +115,18 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
         Coordinate caster_coord = map->get_location(creature->get_id());
 
         // Create a temporary spell based on the wand's characteristics.
-        Spell wand_spell = create_wand_spell(wand, evoke_result.second);
+        Spell wand_spell = create_wand_spell(creature, wand, evoke_result.second);
 
         // Add a message about evoking.
         add_evocation_message(creature, wand, item_id);
       
+        // Train Wandcraft
+        SkillManager sm;
+        sm.mark_skill(creature, SkillType::SKILL_GENERAL_WANDCRAFT, true);
+
         // Reduce the charges on the wand.
         Statistic original_charges = wand->get_charges();
-        reduce_wand_charges_if_necessary(wand);
+        reduce_wand_charges_if_necessary(creature, wand);
 
         // Process the damage and spell on the wand.  If there are no charges,
         // the effect returned will be null, and has_damage will return false.
@@ -218,13 +225,20 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature,
 
 // Create a temporary spell for use by the spell processor, based on the
 // wand's characteristics.
-Spell EvokeAction::create_wand_spell(WandPtr wand, const Direction dir) const
+Spell EvokeAction::create_wand_spell(CreaturePtr creature, WandPtr wand, const Direction dir) const
 {
   Spell wand_spell;
 
   wand_spell.set_has_damage(wand->get_has_damage());
-  wand_spell.set_damage(wand->get_damage());
+
+  Damage dmg = wand->get_damage();
+
   wand_spell.set_effect(wand->get_effect_type());
+
+  WandCalculator wc;
+  int damage_bonus = wc.calc_damage_bonus(creature);
+  dmg.set_modifier(dmg.get_modifier() + damage_bonus);
+  wand_spell.set_damage(wand->get_damage());
 
   if (dir == Direction::DIRECTION_NULL)
   {
@@ -243,14 +257,18 @@ Spell EvokeAction::create_wand_spell(WandPtr wand, const Direction dir) const
 }
 
 // If the wand has any charges left, reduce the total number of charges by 1.
-void EvokeAction::reduce_wand_charges_if_necessary(WandPtr wand) const
+void EvokeAction::reduce_wand_charges_if_necessary(CreaturePtr creature, WandPtr wand) const
 {
   Statistic charges = wand->get_charges();
 
   if (charges.get_current() > 0)
   {
-    charges.set_current(charges.get_current() - 1);
-    wand->set_charges(charges);
+    WandCalculator wc;
+    if (RNG::percent_chance(wc.calc_pct_chance_free_charge(creature)) == false)
+    {
+      charges.set_current(charges.get_current() - 1);
+      wand->set_charges(charges);
+    }
   }
 }
 
