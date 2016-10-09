@@ -162,6 +162,7 @@ void SkillFactory::initialize_skill_map()
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_SWIMMING, swimming));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_TANNING, tanning));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_THIEVERY, thievery));
+  skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_WANDCRAFT, wandcraft));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_WEAVING, weaving));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_AXES, axes));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_SHORT_BLADES, short_blades));

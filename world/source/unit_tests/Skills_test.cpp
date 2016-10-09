@@ -117,6 +117,7 @@ TEST(SW_World_Skills, serialization_ids_general_skills)
   SwimmingSkill swimming;
   TanningSkill tanning;
   ThieverySkill thievery;
+  WandcraftSkill wandcraft;
   WeavingSkill weaving;
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_ARCHERY, archery.get_class_identifier());
@@ -168,6 +169,7 @@ TEST(SW_World_Skills, serialization_ids_general_skills)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_SWIMMING, swimming.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_TANNING, tanning.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_THIEVERY, thievery.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_WANDCRAFT, wandcraft.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_WEAVING, weaving.get_class_identifier());
 }
 
