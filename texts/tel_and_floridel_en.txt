@@ -543,3 +543,14 @@ the tallgrass bending low as if to pray %b
 to be released from fury amplified %b
 by ankle bones laid bare and tendons slashed aside.
 %p
+Unsteady, now, the giant snarled with hate: %b
+"You petty thing, you gnome-beneath-the-earth, %b
+you thought that magic deer would be your fate? %b
+You'd shoot it dead, its hide to show your worth %b
+within your court?  You fool.  Your actions reek %b
+of pride and ruin, your hubris shining bright %b
+as dragon-gold.  I swear my sword will seek %b
+an ending, both of you and all your knights: %b
+I'll have it said that Choro stood and made his fight."
+%p
+

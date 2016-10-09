@@ -1,6 +1,4 @@
 Me:
-- Ensure Hild's quest is still good after the recent skill enum changes.
-- Mountain/wood elves: swap alignments?
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
 - Fire effects on a tile (gas, spells, etc) should have a chance of destroying
