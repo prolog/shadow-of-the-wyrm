@@ -1117,6 +1117,24 @@ ClassIdentifier ThieverySkill::internal_class_identifier() const
   return ClassIdentifier::CLASS_ID_SKILL_THIEVERY;
 }
 
+// Wandcraft
+WandcraftSkill::WandcraftSkill()
+: GeneralSkill()
+{
+  skill_name_sid = SkillTextKeys::SKILL_GENERAL_WANDCRAFT;
+  skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_WANDCRAFT_INCREMENT;
+}
+
+Skill* WandcraftSkill::clone()
+{
+  return new WandcraftSkill(*this);
+}
+
+ClassIdentifier WandcraftSkill::internal_class_identifier() const
+{
+  return ClassIdentifier::CLASS_ID_SKILL_WANDCRAFT;
+}
+
 // Weaving
 WeavingSkill::WeavingSkill()
 : GeneralSkill()
@@ -1899,6 +1917,7 @@ void Skills::initialize_general_skills()
   std::shared_ptr<SwimmingSkill> swimming = std::make_shared<SwimmingSkill>();
   std::shared_ptr<TanningSkill> tanning = std::make_shared<TanningSkill>();
   std::shared_ptr<ThieverySkill> thievery = std::make_shared<ThieverySkill>();
+  std::shared_ptr<WandcraftSkill> wandcraft = std::make_shared<WandcraftSkill>();
   std::shared_ptr<WeavingSkill> weaving = std::make_shared<WeavingSkill>();
 
   skills.insert(make_pair(SkillType::SKILL_GENERAL_ARCHERY, archery));
@@ -1949,6 +1968,7 @@ void Skills::initialize_general_skills()
   skills.insert(make_pair(SkillType::SKILL_GENERAL_SWIMMING, swimming));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_TANNING, tanning));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_THIEVERY, thievery));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_WANDCRAFT, wandcraft));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_WEAVING, weaving));
 }
 
