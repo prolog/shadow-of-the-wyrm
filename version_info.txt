@@ -43,6 +43,12 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 
 - Placed a guaranteed magici shard in Siriath's lair.
 
+- Created a quest from Cynwise (between her Sun Gem and Wintersea quests)
+  to retrieve her a magici shard.  As a reward, she either grants a lot of
+  training in Wandcraft, or, if the skill is maxed, she gives a wand of
+  dragon breath, two potions of gain attributes, and three scrolls of
+  enchanting.
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
