@@ -1,4 +1,9 @@
 Me:
+- Quest for magici shards.
+- Magici shards/branches/spells should create custom wands when the player
+  has Wandcraft skills.  This will allow wizards/sages/spellcasting gnomes
+  to create wands.
+  Update docs to mention new use of Wandcraft.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
 - Fire effects on a tile (gas, spells, etc) should have a chance of destroying
