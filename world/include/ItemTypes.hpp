@@ -45,7 +45,9 @@ class ItemIdKeys
   public:
     static const std::string ITEM_ID_CURRENCY;
     static const std::string ITEM_ID_BRANCH;
+    static const std::string ITEM_ID_DIRT;
     static const std::string ITEM_ID_ROCK;
+    static const std::string ITEM_ID_MAGICI_SHARD;
     static const std::string ITEM_ID_KINGFLOWER;
     static const std::string ITEM_ID_FIDDLEHEAD_GREEN;
     static const std::string ITEM_ID_FERN;

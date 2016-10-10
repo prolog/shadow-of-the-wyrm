@@ -31919,7 +31919,7 @@
 					<Pounds>5</Pounds>
 				</Weight>
 				<Material>6</Material>
-				<DangerLevel>-1</DangerLevel>
+				<DangerLevel>8</DangerLevel>
 				<Properties>
 					<Property>
 						<Name>sm_con_mat_type</Name>

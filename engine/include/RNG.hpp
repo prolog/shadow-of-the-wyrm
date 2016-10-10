@@ -16,6 +16,7 @@ class RNG
     static int range(double min, double max);
 		static bool percent_chance(const int percent_chance);
     static bool x_in_y_chance(const int x, const int y);
+    static bool x_in_y_chance(const std::pair<int, int>& x_y);
     static bool initialize();
     static void set_seed(const uint32_t new_seed);
     static uint32_t get_seed();
