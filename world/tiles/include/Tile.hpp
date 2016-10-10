@@ -105,7 +105,11 @@ class Tile : public ISerializable
     virtual TileType get_tile_type() const;
     virtual TileSuperType get_tile_super_type() const;
     virtual TileType get_decomposition_tile_type() const; // When digging, what does the tile break down into?
-    virtual std::string get_decomposition_item_id() const;
+
+    // The returned vector is a list of potential items:
+    // - The first element of the pair is an x-in-y chance the item is generated
+    // - The second element is the item ID.
+    virtual std::vector<std::pair<std::pair<int, int>, std::string>> get_decomposition_item_ids() const;
 
     virtual void     set_tile_subtype(const TileType new_tile_subtype);
     virtual TileType get_tile_subtype() const;

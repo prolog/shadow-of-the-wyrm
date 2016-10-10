@@ -421,10 +421,10 @@ TileType Tile::get_decomposition_tile_type() const
   return tile_type;
 }
 
-std::string Tile::get_decomposition_item_id() const
+vector<pair<pair<int, int>, string>> Tile::get_decomposition_item_ids() const
 {
-  string no_item;
-  return no_item;
+  vector<pair<pair<int, int>, string>> no_items;
+  return no_items;
 }
 
 void Tile::set_hardness(const int new_hardness)

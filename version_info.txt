@@ -35,6 +35,12 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Created a new item, magici shards.  These are used, together with branches
   and known spells, to create magic wands.
 
+- Tiles that can decompose into items (rock and earth) can now decompose into
+  one of a number of items, probabilistically.  Previously, they would always
+  decompose into a particular item type.  Rock tiles now have a very small
+  chance to be broken up into magici shards, but will usually be broken up
+  into smaller rocks.
+
 - Placed a guaranteed magici shard in Siriath's lair.
 
 - More stanzas for "Tel and Floridel".
