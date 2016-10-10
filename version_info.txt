@@ -32,11 +32,16 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - The player is no longer prompted before moving onto a dangerous tile when
   blind.
 
+- Created a new item, magici shards.  These are used, together with branches
+  and known spells, to create magic wands.
+
+- Placed a guaranteed magici shard in Siriath's lair.
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
 
-- New items: vorpal bolt wand, scroll of blessing.
+- New items: vorpal bolt wand, scroll of blessing, magici shard.
 
 - Bug fixes:
 

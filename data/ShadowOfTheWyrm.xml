@@ -31943,6 +31943,16 @@
 					</Property>
 				</Properties>
 			</Item>
+			<Item id="_magici_shard">
+				<DescriptionSID>MAGICI_SHARD_SID</DescriptionSID>
+				<UsageDescriptionSID>MAGICI_SHARD_USAGE_SID</UsageDescriptionSID>
+				<Value>800</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>10</Material>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_skin">
 				<DescriptionSID>SKIN_SID</DescriptionSID>
 				<UsageDescriptionSID>SKIN_USAGE_SID</UsageDescriptionSID>
