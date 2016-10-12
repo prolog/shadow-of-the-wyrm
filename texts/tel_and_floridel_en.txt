@@ -553,4 +553,14 @@ as dragon-gold.  I swear my sword will seek %b
 an ending, both of you and all your knights: %b
 I'll have it said that Choro stood and made his fight."
 %p
+For as he spoke, the tell-tale sound of hooves - %b
+the king and riders heard the note, and came %b
+like ghosts upon their mounts.  The dry grass moved %b
+to part.  Beneath the clouds, the weather waned %b
+to cold, a frost now settling on their arms %b
+and mail.  A fairy ring, a circle formed %b
+to keep the fairy prince from ill and harm. %b
+Each rider knew the task he must perform: %b
+to shelter king and son within the coming storm.
+%p
 
