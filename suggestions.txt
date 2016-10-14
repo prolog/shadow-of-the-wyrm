@@ -31,6 +31,8 @@ Me:
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
 - Multi-map areas (the central city!)
+- Different types of branches (species) should have different wand
+  properties.
 - Investigate targetting not staying properly some (all?) of the time.
 - General performance improvements.
 - Item generation: get rarity working properly, and then do some test

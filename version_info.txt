@@ -26,6 +26,9 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
   Cynwise in Isen Dun.  Wandcraft acts in the same way Combat does for melee 
   combat, or Archery for ranged combat - it enhances the damage done by 
   wands, and allows for a chance to use a wand without burning a charge.
+  When a creature has skill in Wandcraft, as well as a branch, a shard of
+  magici, and an external (beam/cone/storm/ball) spell, a wand can be
+  created.
 
 - High willpower scores now modify wand damage by a small amount.
 
@@ -48,6 +51,8 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
   training in Wandcraft, or, if the skill is maxed, she gives a wand of
   dragon breath, two potions of gain attributes, and three scrolls of
   enchanting.
+
+- Additional useful and useless inscriptions.
 
 - More stanzas for "Tel and Floridel".
 
