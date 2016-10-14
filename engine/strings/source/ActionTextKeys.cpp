@@ -458,6 +458,8 @@ const string ActionTextKeys::ACTION_INSCRIBE_AIR               = "ACTION_INSCRIB
 const string ActionTextKeys::ACTION_INSCRIBE_GROUND            = "ACTION_INSCRIBE_GROUND";
 const string ActionTextKeys::ACTION_INSCRIBE_QUERY             = "ACTION_INSCRIBE_QUERY";
 const string ActionTextKeys::ACTION_POUR_EMPTY                 = "ACTION_POUR_EMPTY";
+const string ActionTextKeys::ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS = "ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS";
+const string ActionTextKeys::ACTION_WANDCRAFT_NO_SPELLS        = "ACTION_WANDCRAFT_NO_SPELLS";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

@@ -211,7 +211,6 @@ const string SkillTextKeys::SKILL_USAGE_SKINNING = "SKILL_USAGE_SKINNING";
 const string SkillTextKeys::SKILL_USAGE_SMITHING = "SKILL_USAGE_SMITHING";
 const string SkillTextKeys::SKILL_USAGE_SWIMMING = "SKILL_USAGE_SWIMMING";
 const string SkillTextKeys::SKILL_USAGE_TANNING = "SKILL_USAGE_TANNING";
-const string SkillTextKeys::SKILL_USAGE_WANDCRAFT = "SKILL_USAGE_WANDCRAFT";
 const string SkillTextKeys::SKILL_USAGE_WEAVING = "SKILL_USAGE_WEAVING";
 
 string SkillTextKeys::get_skill_improvement_message(const string& title_text_sid, const int pts_remaining)
