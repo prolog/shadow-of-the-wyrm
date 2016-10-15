@@ -4,6 +4,7 @@
 #include "MessageManagerFactory.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
+#include "SpellSelectionScreen.hpp"
 
 using namespace std;
 
@@ -20,7 +21,12 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
     if (check_for_components(creature) &&
         check_for_spells(creature))
     {
+      DisplayPtr display = Game::instance().get_display();
+      SpellScreenDisplayStrategyPtr sds = std::make_shared<WandcraftSpellScreenDisplayStrategy>();
+      SpellSelectionScreen ss(display, creature, sds);
+
       // ...
+
       acv = get_default_skill_action_cost_value(creature);
     }
   }
