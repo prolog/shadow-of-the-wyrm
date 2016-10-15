@@ -15,6 +15,7 @@ const string ItemIdKeys::ITEM_ID_CURRENCY         = "_currency";
 const string ItemIdKeys::ITEM_ID_BRANCH           = "_branch";
 const string ItemIdKeys::ITEM_ID_DIRT             = "_dirt";
 const string ItemIdKeys::ITEM_ID_ROCK             = "_rock";
+const string ItemIdKeys::ITEM_ID_STONE            = "_stone";
 const string ItemIdKeys::ITEM_ID_MAGICI_SHARD     = "_magici_shard";
 const string ItemIdKeys::ITEM_ID_KINGFLOWER       = "_kingflower";
 const string ItemIdKeys::ITEM_ID_FIDDLEHEAD_GREEN = "_fiddlehead_green";

@@ -54,11 +54,15 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 
 - Additional useful and useless inscriptions.
 
+- Places where rocks can be generated (on field/cairn tiles, etc) can now
+  also generate stones.  Stones are smaller and only deal 1d2 damage.  They
+  only weigh 3 ounces, however, much less than the 12 that rocks weight.
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
 
-- New items: vorpal bolt wand, scroll of blessing, magici shard.
+- New items: vorpal bolt wand, scroll of blessing, magici shard, small stone.
 
 - Bug fixes:
 
