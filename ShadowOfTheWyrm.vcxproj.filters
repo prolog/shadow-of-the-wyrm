@@ -7526,5 +7526,8 @@
     <ClCompile Include="engine\skills\source\WandcraftSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\magic\source\unit_tests\SpellShape_test.cpp">
+      <Filter>Source Files\world\magic\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

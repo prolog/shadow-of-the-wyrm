@@ -43,7 +43,7 @@ string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, boo
       {
         FeaturePtr feature = tile->get_feature();
 
-        if (feature && !feature->get_is_hidden())
+        if (feature != nullptr && !feature->get_is_hidden())
         {
           describer = DescriberFactory::create_describer(feature);
           tile_info_strings.push_back(describer->describe());

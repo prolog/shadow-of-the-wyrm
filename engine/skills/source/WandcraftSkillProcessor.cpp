@@ -1,5 +1,6 @@
 #include "WandcraftSkillProcessor.hpp"
 #include "ActionTextKeys.hpp"
+#include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
@@ -63,7 +64,27 @@ bool WandcraftSkillProcessor::check_for_spells(CreaturePtr creature)
 
   if (creature != nullptr)
   {
-    // ...
+    Game& game = Game::instance();
+    const SpellMap& sm = game.get_spells_ref();
+    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+    SpellKnowledgeMap skm = sk.get_known_spells();
+
+    for (const auto& skm_pair : skm)
+    {
+      string spell_id = skm_pair.first;
+
+      const auto sm_it = sm.find(spell_id);
+      if (sm_it != sm.end())
+      {
+        SpellShape ss = sm_it->second.get_shape();
+
+        if (ss.get_is_external())
+        {
+          has_spells = true;
+          break;
+        }
+      }
+    }
   }
 
   if (!has_spells && creature && creature->get_is_player())
