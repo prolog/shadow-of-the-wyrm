@@ -39,3 +39,11 @@ uint SpellShape::get_radius() const
   return radius;
 }
 
+bool SpellShape::get_is_external() const
+{
+  return (spell_shape_type != SpellShapeType::SPELL_SHAPE_TARGET_SELF);
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/SpellShape_test.cpp"
+#endif

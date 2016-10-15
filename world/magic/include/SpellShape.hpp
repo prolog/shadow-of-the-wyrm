@@ -16,6 +16,9 @@ class SpellShape
     DirectionCategory get_direction_category() const;
     uint get_radius() const;
 
+    // Does the spell affect the external world? (ie, not TargetSelf)
+    bool get_is_external() const;
+
   protected:
     SpellShapeType spell_shape_type;
     DirectionCategory direction_category;
