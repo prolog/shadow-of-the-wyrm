@@ -10,10 +10,20 @@
 
 using namespace std;
 
+bool DefaultSpellScreenDisplayStrategy::display_spell(const Spell& spell) const
+{
+  return true;
+}
+
+bool WandcraftSpellScreenDisplayStrategy::display_spell(const Spell& spell) const
+{
+  return spell.get_shape().get_is_external();
+}
+
 const int SpellSelectionScreen::SPELLS_PER_PAGE = 15;
 
-SpellSelectionScreen::SpellSelectionScreen(DisplayPtr new_display, CreaturePtr player /* should only be shown for player! */)
-: Screen(new_display), creature(player)
+SpellSelectionScreen::SpellSelectionScreen(DisplayPtr new_display, CreaturePtr player /* should only be shown for player! */, SpellScreenDisplayStrategyPtr ssds)
+: Screen(new_display), creature(player), strategy(ssds)
 {
   initialize();
 }
@@ -76,6 +86,12 @@ void SpellSelectionScreen::initialize()
         }
 
         Spell spell = spells.find(spell_id)->second;
+
+        if (strategy == nullptr || (strategy && !strategy->display_spell(spell)))
+        {
+          continue;
+        }
+
         IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
         string spell_desc = describer->describe();
 
