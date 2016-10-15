@@ -42,8 +42,12 @@ string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, boo
       if (show_feature)
       {
         FeaturePtr feature = tile->get_feature();
-        describer = DescriberFactory::create_describer(feature);
-        tile_info_strings.push_back(describer->describe());
+
+        if (feature && !feature->get_is_hidden())
+        {
+          describer = DescriberFactory::create_describer(feature);
+          tile_info_strings.push_back(describer->describe());
+        }
       }
 
       if (tile_is_in_fov)
