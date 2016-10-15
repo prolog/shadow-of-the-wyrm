@@ -2384,10 +2384,10 @@
 						</Race>
 						<Race>
 							<RaceID>05_fae</RaceID>
-							<ID>_rock</ID>
+							<ID>_stone</ID>
 							<Quantity>
 								<Random>
-									<NumDice>4</NumDice>
+									<NumDice>10</NumDice>
 									<NumSides>3</NumSides>
 								</Random>
 							</Quantity>
@@ -28293,6 +28293,32 @@
 			</Weapon>
 		</RangedWeapons>
 		<Ammunition>
+			<Missile id="_stone">
+				<DescriptionSID>STONE_SID</DescriptionSID>
+				<UsageDescriptionSID>STONE_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2006</RangedSkill>
+				<Difficulty>43</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>2</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Missile>
 			<Missile id="_rock">
 				<DescriptionSID>ROCK_SID</DescriptionSID>
 				<UsageDescriptionSID>ROCK_USAGE_SID</UsageDescriptionSID>
