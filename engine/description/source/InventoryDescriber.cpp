@@ -8,7 +8,7 @@ using std::list;
 using std::string;
 
 InventoryDescriber::InventoryDescriber(const bool player_blind, const IInventoryPtr inv)
-: inventory(inv), blind(player_blind)
+: blind(player_blind), inventory(inv)
 {
 }
 
