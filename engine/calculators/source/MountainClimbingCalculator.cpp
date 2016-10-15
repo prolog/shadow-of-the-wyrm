@@ -18,7 +18,6 @@ int MountainClimbingCalculator::calculate_max_mountain_climbing_time(const int m
 
 bool MountainClimbingCalculator::generate_does_fall_from_exhaustion(const int mountaineering_skill_value, const bool is_incorporeal) const
 {
-  int val = RNG::range(1, mountaineering_skill_value * FALLING_CHANCE_MULTIPLIER);
   bool falls_from_exhaustion = (RNG::range(1, mountaineering_skill_value * FALLING_CHANCE_MULTIPLIER) == 1);
 
   if (is_incorporeal)
