@@ -2,30 +2,32 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Version declared October 1, 2016.
 
 - New effect type, Bless.  When the effect type is cursed, an item is only
-  turned uncursed, and only if it is currently cursed.  When the effect type
-  is uncursed, the selected inventory item is blessed, and when the effect
-  type is blessed, all items of that type in the inventory are blessed.
+  turned uncursed, and only if it is currently cursed.  When the effect 
+  type is uncursed, the selected inventory item is blessed, and when the 
+  effect type is blessed, all items of that type in the inventory are 
+  blessed.
 
-- When an item is dropped on an altar, if the dropping creature is pious and
-  the altar is co-aligned, the item/stack are blessed, and piety is decreased.
-  If the creature and the altar are cross-aligned, the item becomes cursed.
+- When an item is dropped on an altar, if the dropping creature is pious 
+  and the altar is co-aligned, the item/stack are blessed, and piety is 
+  decreased.  If the creature and the altar are cross-aligned, the item 
+  becomes cursed.
 
 - Character dumps now include all the artifacts that have been generated
-  as part of the current game.  This includes maps that have been generated
-  but not yet visited (custom areas).
+  as part of the current game.  This includes maps that have been 
+  generated but not yet visited (custom areas).
 
 - Toned down Stormstaff.  The damage on the staff of the artificer has been
-  reduced as well - damage is now 12d4 instead of 12d6 to be consistent with
-  other staves.
+  reduced as well - damage is now 12d4 instead of 12d6 to be consistent 
+  with other staves.
 
 - The player is now prompted before moving on to a tile with a dangerous
   feature, such as a known trap.
 
 - Created a new skill, Wandcraft.  Wizards and Sages start with this skill,
   as well as Gnomes, though it can be learned by anyone from a quest from 
-  Cynwise in Isen Dun.  Wandcraft acts in the same way Combat does for melee 
-  combat, or Archery for ranged combat - it enhances the damage done by 
-  wands, and allows for a chance to use a wand without burning a charge.
+  Cynwise in Isen Dun.  Wandcraft acts in the same way Combat does for 
+  melee combat, or Archery for ranged combat - it enhances the damage done
+  by wands, and allows for a chance to use a wand without burning a charge.
   When a creature has skill in Wandcraft, as well as a branch, a shard of
   magici, and an external (beam/cone/storm/ball) spell, a wand can be
   created.
@@ -35,14 +37,14 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - The player is no longer prompted before moving onto a dangerous tile when
   blind.
 
-- Created a new item, magici shards.  These are used, together with branches
-  and known spells, to create magic wands.
+- Created a new item, magici shards.  These are used, together with 
+  branches and known spells, to create magic wands.
 
-- Tiles that can decompose into items (rock and earth) can now decompose into
-  one of a number of items, probabilistically.  Previously, they would always
-  decompose into a particular item type.  Rock tiles now have a very small
-  chance to be broken up into magici shards, but will usually be broken up
-  into smaller rocks.
+- Tiles that can decompose into items (rock and earth) can now decompose 
+  into one of a number of items, probabilistically.  Previously, they 
+  would always decompose into a particular item type.  Rock tiles now have
+  a very small chance to be broken up into magici shards, but will usually
+  be broken up into smaller rocks.
 
 - Placed a guaranteed magici shard in Siriath's lair.
 
@@ -62,13 +64,17 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
 
-- New items: vorpal bolt wand, scroll of blessing, magici shard, small stone.
+- New items: vorpal bolt wand, scroll of blessing, magici shard, small 
+  stone.
 
 - Bug fixes:
 
   - "You see..." messages for items were being shown when walking over a
     tile when blind.  It was still "You see something", but this wasn't
     quite correct - when you're blind, you can't see anything.
+
+  - Traps could be seen via the "L"ook command even when untriggered
+    (mibert).
 
 Shadow of the Wyrm v0.5.5 "Weiss"
 - Version declared September 3, 2016.  Version finalized October 1, 2016.
@@ -126,8 +132,8 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   the first day of the current month.
 
 - Implemented a new damage flag, draining, which has a chance to transfer
-  a portion of the damage dealt to the attacker.  Added the draining flag to
-  Bloodsinger.
+  a portion of the damage dealt to the attacker.  Added the draining flag 
+  to Bloodsinger.
 
 - When no AP is specified for a creature, the AP will default to 50% of
   the creature's HP when generating the creature.
@@ -138,8 +144,8 @@ Shadow of the Wyrm v0.5.5 "Weiss"
   the same amount against the creature's AP, and transfers a portion back
   to the attacker.
   
-- Created a new artifact, Elcrynn, that has the ethereal flag.  This can be 
-  gifted by The Lady, The Trickster, and Shiver.
+- Created a new artifact, Elcrynn, that has the ethereal flag.  This can 
+  be gifted by The Lady, The Trickster, and Shiver.
 
 - Mighty blows now do max damage at 75% soak.
 
@@ -147,11 +153,11 @@ Shadow of the Wyrm v0.5.5 "Weiss"
 
 - Added more useful and useless inscriptions.
 
-- There is now a text describing some of the lore of the Nine in the rectory 
-  in Isen Dun (Cheap Miami Records).
+- There is now a text describing some of the lore of the Nine in the 
+  rectory in Isen Dun (Cheap Miami Records).
 
-- Support for Linux builds.  Added build instructions/guidance to a new file,
-  README.build.linux
+- Support for Linux builds.  Added build instructions/guidance to a new 
+  file, README.build.linux
 
 - Some refactoring in the Lua and C++ code.
 
@@ -174,7 +180,8 @@ Shadow of the Wyrm v0.5.5 "Weiss"
     blind and either unarmed or wielding a glowing weapon.
 
   - Due to a bad refactoring prior to the first release, mighty blows and 
-    critical hits did not reduce soak appropriately when applying the damage.
+    critical hits did not reduce soak appropriately when applying the 
+    damage.
 
 Shadow of the Wyrm v0.5.4 "Barrios"
 - Version declared July 2, 2016.  Version finalized September 3, 2016.
