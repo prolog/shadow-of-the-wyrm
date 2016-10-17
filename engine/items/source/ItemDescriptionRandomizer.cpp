@@ -16,7 +16,7 @@ ItemDescriptionRandomizer::ItemDescriptionRandomizer(const vector<ItemType>& ran
 
 void ItemDescriptionRandomizer::randomize(ItemMap& items)
 {
-  bool type_inclusion[static_cast<int>(ItemType::ITEM_TYPE_LAST)] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  std::array<bool, static_cast<int>(ItemType::ITEM_TYPE_LAST)> type_inclusion = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
   RandomizedDescriptionMap randomized_entries;
 
   // For each type to randomize, mark the appropriate location in the lookup

@@ -30411,6 +30411,27 @@
 			</Tool>
 		</Tools>
 		<Wands>
+			<!-- This wand is used as the template when using wandcraft to
+			     create a wand. -->
+			<Wand id="_template_wand">
+				<DescriptionSID>TEMPLATE_WAND_SID</DescriptionSID>
+				<UsageDescriptionSID>TEMPLATE_WAND_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>0</Effect>
+				<BeamType>1</BeamType>
+				<Range>1</Range>
+				<Colour>7</Colour>
+			</Wand>
 			<Wand id="teleport_wand">
 				<DescriptionSID>TELEPORT_WAND_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_TELEPORT_WAND_SID</UnidentifiedDescriptionSID>
@@ -30628,7 +30649,7 @@
 				</TextDetails>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
-				<Damage>
+				<Damage vorpal="1">
 					<NumDice>3</NumDice>
 					<NumSides>6</NumSides>
 					<Type>9</Type>

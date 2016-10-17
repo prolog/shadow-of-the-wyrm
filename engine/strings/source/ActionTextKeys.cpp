@@ -460,6 +460,7 @@ const string ActionTextKeys::ACTION_INSCRIBE_QUERY             = "ACTION_INSCRIB
 const string ActionTextKeys::ACTION_POUR_EMPTY                 = "ACTION_POUR_EMPTY";
 const string ActionTextKeys::ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS = "ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS";
 const string ActionTextKeys::ACTION_WANDCRAFT_NO_SPELLS        = "ACTION_WANDCRAFT_NO_SPELLS";
+const string ActionTextKeys::ACTION_WANDCRAFT_WAND_CREATED     = "ACTION_WANDCRAFT_WAND_CREATED";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

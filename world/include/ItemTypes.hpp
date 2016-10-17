@@ -92,6 +92,9 @@ class ItemIdKeys
     static const std::string ITEM_ID_TUNA;
     static const std::string ITEM_ID_COD;
 
+    // Wandcraft
+    static const std::string ITEM_ID_TEMPLATE_WAND;
+
   protected:
     ItemIdKeys();
     ~ItemIdKeys();
