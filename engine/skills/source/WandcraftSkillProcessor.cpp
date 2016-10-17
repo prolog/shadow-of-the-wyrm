@@ -143,7 +143,15 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const string&
       IndividualSpellKnowledge isk = creature->get_spell_knowledge_ref().get_spell_knowledge(spell_id);
       int castings = isk.get_castings();
       int cpc = wc.calc_spell_castings_per_charge(creature);
-      int max_charges = wc.calc_num_charges(creature);
+      int possible_charges = castings / cpc;
+      int num_charges = wc.calc_num_charges(creature);
+
+      if (possible_charges < num_charges)
+      {
+        num_charges = possible_charges;
+      }
+
+      int casting_cost = num_charges * cpc;
 
       // Remove a branch and magici shard.
       // Create a template wand, and populate it properly.
@@ -163,13 +171,17 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const string&
 
         wand->set_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID, spell.get_spell_name_sid());
         wand->set_effect_type(spell.get_effect());
+        wand->set_charges(num_charges);
 
-        // JCD FIXME testing!
-        // TODO: Num charges
+        // JCD FIXME testing!  Fix the value!
         // TODO: Confirmation?
         wand->set_value(10 * wand->get_charges().get_current());
 
         created_wand = wand;
+
+        // Reduce the spell knowledge.
+        isk.set_castings(isk.get_castings() - casting_cost);
+        creature->get_spell_knowledge_ref().set_spell_knowledge(spell_id, isk);
       }
     }
   }
