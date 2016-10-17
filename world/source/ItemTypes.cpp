@@ -50,6 +50,7 @@ const string ItemIdKeys::ITEM_ID_PIKE             = "_pike";
 const string ItemIdKeys::ITEM_ID_SALMON           = "_salmon";
 const string ItemIdKeys::ITEM_ID_TUNA             = "_tuna";
 const string ItemIdKeys::ITEM_ID_COD              = "_cod";
+const string ItemIdKeys::ITEM_ID_TEMPLATE_WAND    = "_template_wand";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()

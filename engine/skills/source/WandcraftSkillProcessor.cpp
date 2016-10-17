@@ -1,10 +1,14 @@
 #include "WandcraftSkillProcessor.hpp"
 #include "ActionTextKeys.hpp"
 #include "Game.hpp"
+#include "ItemProperties.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
 #include "SpellSelectionScreen.hpp"
+#include "Wand.hpp"
+#include "WandCalculator.hpp"
 
 using namespace std;
 
@@ -25,9 +29,26 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
       SpellScreenDisplayStrategyPtr sds = std::make_shared<WandcraftSpellScreenDisplayStrategy>();
       SpellSelectionScreen ss(display, creature, sds);
 
-      // ...
+      string display_s = ss.display();
+      string spell_id = ss.get_selected_spell(display_s.at(0));
 
-      acv = get_default_skill_action_cost_value(creature);
+      if (!spell_id.empty())
+      {
+        Game& game = Game::instance();
+        ItemPtr wand = create_wand(creature, spell_id);
+
+        if (wand != nullptr)
+        {
+          acv = get_default_skill_action_cost_value(creature);
+
+          TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
+          creature_tile->get_items()->merge_or_add(wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+          IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_WAND_CREATED));
+          manager.send();
+        }
+      }
     }
   }
 
@@ -103,6 +124,59 @@ bool WandcraftSkillProcessor::check_for_spells(CreaturePtr creature)
 
   return has_spells;
 }
+
+ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const string& spell_id)
+{
+  ItemPtr created_wand;
+
+  if (creature != nullptr)
+  {
+    Game& game = Game::instance();
+    const SpellMap& spells = game.get_spells_ref();
+    auto s_it = spells.find(spell_id);
+
+    if (s_it != spells.end())
+    {
+      WandCalculator wc;
+      Spell spell = s_it->second;
+
+      IndividualSpellKnowledge isk = creature->get_spell_knowledge_ref().get_spell_knowledge(spell_id);
+      int castings = isk.get_castings();
+      int cpc = wc.calc_spell_castings_per_charge(creature);
+      int max_charges = wc.calc_num_charges(creature);
+
+      // Remove a branch and magici shard.
+      // Create a template wand, and populate it properly.
+      ItemManager im;
+      im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BRANCH);
+      im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_MAGICI_SHARD);
+
+      ItemPtr iwand = ItemManager::create_item(ItemIdKeys::ITEM_ID_TEMPLATE_WAND);
+      WandPtr wand = dynamic_pointer_cast<Wand>(iwand);
+
+      if (wand != nullptr)
+      {
+        if (spell.get_has_damage())
+        {
+          wand->set_damage(spell.get_damage());
+        }
+
+        wand->set_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID, spell.get_spell_name_sid());
+        wand->set_effect_type(spell.get_effect());
+
+        // JCD FIXME testing!
+        // TODO: Num charges
+        // TODO: Confirmation?
+        wand->set_value(10 * wand->get_charges().get_current());
+
+        created_wand = wand;
+      }
+    }
+  }
+
+  return created_wand;
+}
+
 ActionCostValue WandcraftSkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
 {
   return 200;

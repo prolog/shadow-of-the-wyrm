@@ -4,10 +4,12 @@
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemProperties.hpp"
 #include "ItemStatusTextKeys.hpp"
 #include "SkinningConstants.hpp"
 #include "StatisticsMarker.hpp"
 #include "StringTable.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -190,6 +192,7 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
     // creature description SID.
     string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID);
     string creature_skin_desc_sid = item->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID);
+    string replacement_sid = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID);
 
     if (!creature_desc_sid.empty())
     {
@@ -200,6 +203,12 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
     else if (!creature_skin_desc_sid.empty())
     {
       desc << CorpseTextKeys::get_skin_description(StringTable::get(item->get_description_sid()), StringTable::get(creature_skin_desc_sid));
+    }
+    // If there's a general substitution (user-created wands, etc)
+    // handle that case:
+    else if (!replacement_sid.empty())
+    {
+      desc << TextMessages::get_replacement_message(StringTable::get(item->get_description_sid()), StringTable::get(replacement_sid));
     }
     // Corpses are a special case.  For all other items, check the identified
     // status, and base the description on whether it's identified or not.
@@ -257,6 +266,7 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     // style "a foo corpse".
     string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
     string creature_skin_desc_sid = item->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID);
+    string replacement_sid = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID);
 
     if (!creature_desc_sid.empty())
     {
@@ -268,7 +278,12 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     {
       full_desc = CorpseTextKeys::get_skin_description(StringTable::get(item->get_description_sid()), StringTable::get(creature_skin_desc_sid));
     }
-    //
+    // If there's a general substitution (user-created wands, etc)
+    // handle that case:
+    else if (!replacement_sid.empty())
+    {
+      full_desc = TextMessages::get_replacement_message(StringTable::get(item->get_usage_description_sid()), StringTable::get(replacement_sid));
+    }
     // If the item is identified, or if its identity is not hidden (food,
     // etc)
     else if (get_item_identified(item->get_base_id()) || item->get_unidentified_usage_description_sid().empty())

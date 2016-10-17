@@ -15,3 +15,5 @@ const string ItemProperties::ITEM_PROPERTIES_DIG_BREAKAGE_PCT_CHANCE = "dig_brea
 const string ItemProperties::ITEM_PROPERTIES_SEED_ITEM_ID = "seed_item_id";
 const string ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID = "tree_species_id";
 const string ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE = "destruction_pct_chance";
+const string ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID = "replacement_sid";
+

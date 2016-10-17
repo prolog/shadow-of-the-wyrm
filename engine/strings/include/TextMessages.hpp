@@ -32,6 +32,7 @@ class TextMessages
     static std::string get_special_day_message(const std::string& day_name_sid, const std::string& day_desc_sid);
     static std::string get_engraving_message(const std::string& engraving_sid);
     static std::string get_inscription_message(const std::string& inscription_sid);
+    static std::string get_replacement_message(const std::string& message, const std::string& replace);
 
   protected:
     TextMessages();
