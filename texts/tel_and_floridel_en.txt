@@ -577,7 +577,7 @@ He charged with speed, a rider at each side. %b
 The three of them rode hard, and dug their spurs %b
 in tight, assured that this must turn the tide: %b
 a royal charge, the kind of noble corps %b
-that poets loved, that sounded lutes and harps %b
+the poets love, that sound the lutes and harps %b
 when told by torchlight in the warmth of halls %b
 on winter nights.  Here now the king, his sharp %b
 and singing sword; here now the spit and squall, %b
@@ -592,4 +592,14 @@ a smell of something burning, smoke and lye. %b
 Sometimes they cling and hold like dampened earth, %b
 the way a rotting body sticks to lime. %b
 Sometimes the falsehoods sweeten, harden, ossify.
+%p
+When lauding dying kings, the minstrels say, %b
+"His end was gentle, glorious his reign." %b
+They never speak of violence, of the way %b
+he bled to death, or how his guts and brains %b
+were splayed across the earth.  When Choros caught %b
+the king, he brought a branch across his face %b
+with so much strength, it seemed as if it ought %b
+to pry his head apart.  An ugly fate, %b
+a sick and bloody end for such a man of grace.
 %p
