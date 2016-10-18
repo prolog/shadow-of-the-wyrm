@@ -7,6 +7,7 @@
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
 #include "SpellSelectionScreen.hpp"
+#include "TextMessages.hpp"
 #include "Wand.hpp"
 #include "WandCalculator.hpp"
 
@@ -35,18 +36,35 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
       if (!spell_id.empty())
       {
         Game& game = Game::instance();
-        ItemPtr wand = create_wand(creature, spell_id);
+        const SpellMap& spells = game.get_spells_ref();
+        auto s_it = spells.find(spell_id);
 
-        if (wand != nullptr)
+        if (s_it != spells.end())
         {
-          acv = get_default_skill_action_cost_value(creature);
+          Spell spell = s_it->second;
+          WandCalculator wc;
 
-          TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
-          creature_tile->get_items()->merge_or_add(wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          IndividualSpellKnowledge isk = creature->get_spell_knowledge_ref().get_spell_knowledge(spell_id);
+          int castings = isk.get_castings();
+          int cpc = wc.calc_spell_castings_per_charge(creature);
+          int possible_charges = castings / cpc;
+          int num_charges = std::min<int>(possible_charges, wc.calc_num_charges(creature));
 
-          IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
-          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_WAND_CREATED));
-          manager.send();
+          WandCreationParameters wcp(spell_id, num_charges, cpc);
+
+          ItemPtr wand = create_wand(creature, wcp);
+
+          if (wand != nullptr)
+          {
+            acv = get_default_skill_action_cost_value(creature);
+
+            TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
+            creature_tile->get_items()->merge_or_add(wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+            IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_WAND_CREATED));
+            manager.send();
+          }
         }
       }
     }
@@ -125,7 +143,7 @@ bool WandcraftSkillProcessor::check_for_spells(CreaturePtr creature)
   return has_spells;
 }
 
-ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const string& spell_id)
+ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCreationParameters& wcp)
 {
   ItemPtr created_wand;
 
@@ -133,24 +151,13 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const string&
   {
     Game& game = Game::instance();
     const SpellMap& spells = game.get_spells_ref();
-    auto s_it = spells.find(spell_id);
+    auto s_it = spells.find(wcp.get_spell_id());
 
     if (s_it != spells.end())
     {
-      WandCalculator wc;
-      Spell spell = s_it->second;
-
-      IndividualSpellKnowledge isk = creature->get_spell_knowledge_ref().get_spell_knowledge(spell_id);
-      int castings = isk.get_castings();
-      int cpc = wc.calc_spell_castings_per_charge(creature);
-      int possible_charges = castings / cpc;
-      int num_charges = wc.calc_num_charges(creature);
-
-      if (possible_charges < num_charges)
-      {
-        num_charges = possible_charges;
-      }
-
+      string spell_id = wcp.get_spell_id();
+      int num_charges = wcp.get_num_charges();
+      int cpc = wcp.get_castings_per_charge();
       int casting_cost = num_charges * cpc;
 
       // Remove a branch and magici shard.
@@ -161,6 +168,7 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const string&
 
       ItemPtr iwand = ItemManager::create_item(ItemIdKeys::ITEM_ID_TEMPLATE_WAND);
       WandPtr wand = dynamic_pointer_cast<Wand>(iwand);
+      Spell spell = s_it->second;
 
       if (wand != nullptr)
       {
@@ -180,6 +188,7 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const string&
         created_wand = wand;
 
         // Reduce the spell knowledge.
+        IndividualSpellKnowledge isk = creature->get_spell_knowledge().get_spell_knowledge(spell_id);
         isk.set_castings(isk.get_castings() - casting_cost);
         creature->get_spell_knowledge_ref().set_spell_knowledge(spell_id, isk);
       }

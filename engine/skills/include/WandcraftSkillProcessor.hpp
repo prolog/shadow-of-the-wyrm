@@ -1,5 +1,6 @@
 #pragma once
 #include "SkillProcessor.hpp"
+#include "WandCreationParameters.hpp"
 #include "WaterTypes.hpp"
 
 class WandcraftSkillProcessor : public SkillProcessor
@@ -13,7 +14,7 @@ class WandcraftSkillProcessor : public SkillProcessor
     bool check_for_components(CreaturePtr creature);
     bool check_for_spells(CreaturePtr creature);
 
-    ItemPtr create_wand(CreaturePtr creature, const std::string& spell_id);
+    ItemPtr create_wand(CreaturePtr creature, const WandCreationParameters& wcp);
 
     ActionCostValue get_default_skill_action_cost_value(CreaturePtr creature) const override;
 };

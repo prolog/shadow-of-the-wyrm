@@ -3837,6 +3837,9 @@
     <ClInclude Include="engine\skills\include\WandcraftSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\skills\include\WandCreationParameters.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7528,6 +7531,9 @@
     </ClCompile>
     <ClCompile Include="world\magic\source\unit_tests\SpellShape_test.cpp">
       <Filter>Source Files\world\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\WandCreationParameters.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

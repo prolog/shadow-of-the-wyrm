@@ -912,6 +912,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\skills\include\SwimmingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\ThieverySkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\WandcraftSkillProcessor.hpp" />
+    <ClInclude Include="engine\skills\include\WandCreationParameters.hpp" />
     <ClInclude Include="engine\strings\include\ActionTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ColourTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\CombatTextKeys.hpp" />
@@ -1525,6 +1526,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\skills\source\SwimmingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\ThieverySkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\WandcraftSkillProcessor.cpp" />
+    <ClCompile Include="engine\skills\source\WandCreationParameters.cpp" />
     <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
     <ClCompile Include="engine\source\unit_tests\CharacterCreationDetails_test.cpp">
