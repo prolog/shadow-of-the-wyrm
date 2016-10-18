@@ -7,7 +7,6 @@
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
 #include "SpellSelectionScreen.hpp"
-#include "TextMessages.hpp"
 #include "Wand.hpp"
 #include "WandCalculator.hpp"
 
@@ -151,11 +150,11 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
   {
     Game& game = Game::instance();
     const SpellMap& spells = game.get_spells_ref();
-    auto s_it = spells.find(wcp.get_spell_id());
+    string spell_id = wcp.get_spell_id();
+    auto s_it = spells.find(spell_id);
 
     if (s_it != spells.end())
     {
-      string spell_id = wcp.get_spell_id();
       int num_charges = wcp.get_num_charges();
       int cpc = wcp.get_castings_per_charge();
       int casting_cost = num_charges * cpc;
