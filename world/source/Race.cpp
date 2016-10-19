@@ -94,6 +94,16 @@ bool Race::get_has_pockets() const
   return has_pockets;
 }
 
+void Race::set_drops(const map<string, DropParameters>& new_drops)
+{
+  drops = new_drops;
+}
+
+map<string, DropParameters> Race::get_drops() const
+{
+  return drops;
+}
+
 void Race::set_has_random_villages(const bool new_has_random_villages)
 {
   has_random_villages = new_has_random_villages;

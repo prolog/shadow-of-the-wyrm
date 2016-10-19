@@ -5,6 +5,7 @@
 #include <vector>
 #include "AgeInfo.hpp"
 #include "BoolStatistic.hpp"
+#include "DropParameters.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
 #include "CreatureFeatures.hpp"
@@ -34,6 +35,9 @@ class Race
 
     void set_has_pockets(const bool new_has_pockets);
     bool get_has_pockets() const;
+
+    void set_drops(const std::map<std::string, DropParameters>& new_drops);
+    std::map<std::string, DropParameters> get_drops() const;
 
     void set_has_random_villages(const bool rand_villages);
     bool get_has_random_villages() const;
@@ -133,6 +137,7 @@ class Race
     bool user_playable;
     bool leaves_corpse;
     bool has_pockets;
+    std::map<std::string, DropParameters> drops;
     bool has_random_villages;
     SettlementType settlement_type;
     TileType settlement_tile_subtype;

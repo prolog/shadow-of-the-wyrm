@@ -17,19 +17,3 @@ TEST(SW_Engine_Calculators_ItemDropRateCalculator, calculate_pct_chance_item_dro
   EXPECT_EQ(9, idrc.calculate_pct_chance_item_drop(creature));
 }
 
-TEST(SW_Engine_Calculators_ItemDropRateCalculator, calculate_pct_chance_currency_drop)
-{
-  CreaturePtr creature;
-  ItemDropRateCalculator idrc;
-
-  EXPECT_EQ(10, idrc.calculate_pct_chance_currency_drop(creature));
-
-  creature = std::make_shared<Creature>();
-  creature->get_skills().set_value(SkillType::SKILL_GENERAL_DUNGEONEERING, 42);
-
-  EXPECT_EQ(14, idrc.calculate_pct_chance_currency_drop(creature));
-
-  creature->get_skills().set_value(SkillType::SKILL_GENERAL_DUNGEONEERING, 90);
-
-  EXPECT_EQ(19, idrc.calculate_pct_chance_currency_drop(creature));
-}
