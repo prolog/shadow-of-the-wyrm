@@ -490,6 +490,12 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<Drops>
+				<Drop>
+					<ID>_magici_shard</ID>
+					<PercentChance>10</PercentChance>
+				</Drop>
+			</Drops>
 			<NameSID>CONSTRUCT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1170,6 +1176,12 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<Drops>
+				<Drop>
+					<ID>_magici_shard</ID>
+					<PercentChance>5</PercentChance>
+				</Drop>
+			</Drops>
 			<NameSID>DRAGON_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -5109,6 +5121,51 @@
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
 				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="animated_broom">
+			<RaceID>_construct</RaceID>
+			<ShortDescriptionSID>ANIMATED_BROOM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ANIMATED_BROOM_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ANIMATED_BROOM_TEXT_DETAILS_SID</TextDetailsSID>
+ 			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>|</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>4</Exp>
+			</CreatureGeneration>
+			<Level>3</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
 			</Damage>
 		</Creature>
 		<Creature id="woodsman">
@@ -32001,11 +32058,15 @@
 			<Item id="_magici_shard">
 				<DescriptionSID>MAGICI_SHARD_SID</DescriptionSID>
 				<UsageDescriptionSID>MAGICI_SHARD_USAGE_SID</UsageDescriptionSID>
-				<Value>800</Value>
+				<Value>20</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>10</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_skin">
