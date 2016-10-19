@@ -3840,6 +3840,9 @@
     <ClInclude Include="engine\skills\include\WandCreationParameters.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\DropParameters.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7534,6 +7537,9 @@
     </ClCompile>
     <ClCompile Include="engine\skills\source\WandCreationParameters.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\DropParameters.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -676,6 +676,14 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<Drops>
+				<Drop>
+					<ID>_currency</ID>
+					<PercentChance>10</PercentChance>
+					<Min>4</Min>
+					<Max>6</Max>
+				</Drop>
+			</Drops>
 			<NameSID>HUMANOID_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>

@@ -220,6 +220,7 @@
 			<xs:element name="UserPlayable" type="xs:boolean"/>
 			<xs:element name="LeavesCorpse" type="xs:boolean"/>
 			<xs:element name="HasPockets" type="xs:boolean"/> <!-- Can we steal from the creature? -->
+			<xs:element name="Drops" type="tns:DropsType" minOccurs="0"/>
 			<xs:element name="HasRandomVillages" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="SettlementType" type="tns:SettlementType" minOccurs="0"/>
 			<xs:element name="SettlementTileSubtype" type="tns:SettlementTileSubtype" minOccurs="0"/>
@@ -593,7 +594,7 @@
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="Level" type="xs:int"/>
+			<xs:element name="Level" type="xs:integer"/>
 			<xs:element name="SID" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -779,7 +780,7 @@
 		<!-- Item is an item id, and used if the trap has a chance of generating an item (e.g, an arrow, a rock) when triggered. -->
 		<xs:element name="Item" type="tns:Identifier" minOccurs="0"/>
 		<xs:element name="Damage" type="tns:Damage"/>
-		<xs:element name="Uses" type="xs:int"/>
+		<xs:element name="Uses" type="xs:integer"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>
 </xs:complexType>
@@ -1115,6 +1116,22 @@
 	<xs:sequence>
 		<xs:element name="Min" type="tns:NonNegativeInt"/>
 		<xs:element name="Max" type="tns:NonNegativeInt"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DropsType">
+	<xs:annotation>
+		<xs:documentation>Describes the chance to drop a particular type of item.</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Drop" type="tns:DropType" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DropType">
+	<xs:sequence>
+		<xs:element name="ID" type="tns:Identifier"/>
+		<xs:element name="PercentChance" type="tns:PercentageStatistic"/>
+		<xs:element name="Min" type="xs:integer" minOccurs="0"/>
+		<xs:element name="Max" type="xs:integer" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->

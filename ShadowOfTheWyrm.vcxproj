@@ -1079,6 +1079,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\ConductTypes.hpp" />
     <ClInclude Include="world\include\ConsumableConstants.hpp" />
     <ClInclude Include="world\include\CreatureGenerationOptions.hpp" />
+    <ClInclude Include="world\include\DropParameters.hpp" />
     <ClInclude Include="world\include\IInventory.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
     <ClInclude Include="world\include\ItemProperties.hpp" />
@@ -3205,6 +3206,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\Conducts.cpp" />
     <ClCompile Include="world\source\ConsumableConstants.cpp" />
     <ClCompile Include="world\source\CreatureGenerationOptions.cpp" />
+    <ClCompile Include="world\source\DropParameters.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\ItemProperties.cpp" />
     <ClCompile Include="world\source\MapTypes.cpp" />
