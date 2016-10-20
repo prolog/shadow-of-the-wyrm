@@ -1,7 +1,6 @@
 Me:
-- Magici shards/branches/spells should create custom wands when the player
-  has Wandcraft skills.  This will allow wizards/sages/spellcasting gnomes
-  to create wands.
+- Cadlind and Kew should have some info on how to find magici shards in 
+  the wild.
 - Update docs to mention new use of Wandcraft.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
