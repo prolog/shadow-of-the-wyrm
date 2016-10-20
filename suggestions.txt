@@ -1,11 +1,8 @@
 Me:
-- Cadlind and Kew should have some info on how to find magici shards in 
-  the wild.
-- Update docs to mention new use of Wandcraft.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
-- Fire effects on a tile (gas, spells, etc) should have a chance of destroying
-  scrolls and spellbooks.
+- Fire effects on a tile (gas, spells, etc) should have a chance of 
+  destroying scrolls and spellbooks.
 - Cold effects on a tile should have a chance of destroying potions.
 - Traps that fire and kill a creature are giving the player exp?
 - Test clearing all shrines
