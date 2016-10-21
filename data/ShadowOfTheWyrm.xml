@@ -428,6 +428,12 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>0</HasPockets>
+			<Drops>
+				<Drop>
+					<ID>_quill</ID>
+					<PercentChance>10</PercentChance>
+				</Drop>
+			</Drops>
 			<NameSID>BIRD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -31894,6 +31900,28 @@
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
+			<Item id="_quill">
+				<DescriptionSID>QUILL_SID</DescriptionSID>
+				<UsageDescriptionSID>QUILL_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_inkpot">
+				<DescriptionSID>INKPOT_SID</DescriptionSID>
+				<UsageDescriptionSID>INKPOT_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<Material>2</Material>
+				<DangerLevel>2</DangerLevel>
+			</Item>			
 			<Item id="_dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>
 				<UsageDescriptionSID>DIRT_USAGE_SID</UsageDescriptionSID>
