@@ -2539,6 +2539,9 @@
 				<WeaponSkills>
 					<Daggers>2</Daggers>
 				</WeaponSkills>
+				<MagicSkills>
+					<Cantrips>5</Cantrips>
+				</MagicSkills>
 			</Skills>
 			<Titles>
 				<Default>ARTISAN_DEFAULT_TITLE</Default>

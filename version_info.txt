@@ -78,7 +78,7 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 
 - Blank scrolls do not vanish when read.
 
-- Artisans now start with a small amount of Literacy.
+- Artisans now start with a small amount of Literacy, as well as Cantrips.
 
 - More stanzas for "Tel and Floridel".
 
