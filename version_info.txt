@@ -76,12 +76,14 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Added chat text for Kew and Cadlind to let the player know that
   constructs and dragons can drop magici shards.
 
+- Blank scrolls do not vanish when read.
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
 
 - New items: vorpal bolt wand, scroll of blessing, magici shard, small 
-  stone, quill, inkpot.
+  stone, quill, inkpot, blank scroll.
 
 - New creatures: animated broom.
 

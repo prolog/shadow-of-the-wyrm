@@ -30071,6 +30071,28 @@
 			</Potion>
 		</Potions>
 		<Scrolls>
+			<Scroll id="_blank_scroll">
+				<DescriptionSID>BLANK_SCROLL_SID</DescriptionSID>
+				<UsageDescriptionSID>BLANK_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<Value>5</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<Properties>
+					<Property>
+						<Name>blank</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Effect>0</Effect>
+			</Scroll>
 			<Scroll id="identify_scroll">
 				<DescriptionSID>IDENTIFY_SCROLL_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_IDENTIFY_SCROLL_SID</UnidentifiedDescriptionSID>

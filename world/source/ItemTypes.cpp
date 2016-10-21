@@ -51,6 +51,9 @@ const string ItemIdKeys::ITEM_ID_SALMON           = "_salmon";
 const string ItemIdKeys::ITEM_ID_TUNA             = "_tuna";
 const string ItemIdKeys::ITEM_ID_COD              = "_cod";
 const string ItemIdKeys::ITEM_ID_TEMPLATE_WAND    = "_template_wand";
+const string ItemIdKeys::ITEM_ID_QUILL            = "_quill";
+const string ItemIdKeys::ITEM_ID_INKPOT           = "_inkpot";
+const string ItemIdKeys::ITEM_ID_BLANK_SCROLL     = "_blank_scroll";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()
