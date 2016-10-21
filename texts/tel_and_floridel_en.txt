@@ -623,3 +623,13 @@ down hard.  His body hit the rocky ground, %b
 his plate-mail seeping.  But the other flashed %b
 his sabre by the giant's wrist, began to slash -
 %p
+The blade hit skin, then muscle, blood, and bone. %b
+He missed the wrist, but caught the forearm flush %b
+and cut it cleanly.  He could not atone %b
+for having failed his king, perhaps to rush %b
+ahead, and take the blow instead - but this %b
+was something.  Comfort?  No.  But something, still. %b
+Emboldened, any lingering fear dismissed, %b
+the new king and his riders in the chill %b
+of morning rode towards the giant for the kill.
+%p
