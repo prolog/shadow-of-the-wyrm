@@ -95,6 +95,11 @@ class ItemIdKeys
     // Wandcraft
     static const std::string ITEM_ID_TEMPLATE_WAND;
 
+    // Scribing
+    static const std::string ITEM_ID_QUILL;
+    static const std::string ITEM_ID_INKPOT;
+    static const std::string ITEM_ID_BLANK_SCROLL;
+
   protected:
     ItemIdKeys();
     ~ItemIdKeys();

@@ -1,6 +1,8 @@
+#include "Conversion.hpp"
 #include "EffectFactory.hpp"
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
+#include "ItemProperties.hpp"
 #include "MessageManager.hpp"
 #include "ScrollReadStrategy.hpp"
 #include "SpellcastingTextKeys.hpp"
