@@ -234,6 +234,7 @@ Spell EvokeAction::create_wand_spell(CreaturePtr creature, WandPtr wand, const D
   Damage dmg = wand->get_damage();
 
   wand_spell.set_effect(wand->get_effect_type());
+  wand_spell.set_modifier(wand->get_modifier());
 
   WandCalculator wc;
   int damage_bonus = wc.calc_damage_bonus(creature);

@@ -139,6 +139,7 @@ Spell QuaffAction::create_potion_spell(PotionPtr potion)
   }
 
   potion_spell.set_effect(potion->get_effect_type());
+  potion_spell.set_modifier(potion->get_modifier());
 
   return potion_spell;
 }

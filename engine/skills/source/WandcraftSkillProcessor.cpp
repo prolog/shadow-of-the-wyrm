@@ -157,6 +157,7 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
         }
 
         wand->set_effect_type(spell.get_effect());
+        wand->set_modifier(spell.get_modifier());
         wand->set_charges(num_charges);
 
         // JCD TODO: figure out some sort of formula for this.

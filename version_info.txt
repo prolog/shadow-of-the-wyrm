@@ -103,6 +103,9 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
   - Traps could be seen via the "L"ook command even when untriggered
     (mibert).
 
+  - Spell modifiers (for spells such as Divine Wind) weren't being
+    carried over properly to items such as wands, scrolls, and potions.
+
 Shadow of the Wyrm v0.5.5 "Weiss"
 - Version declared September 3, 2016.  Version finalized October 1, 2016.
 
