@@ -48,18 +48,27 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
 
           WandCreationParameters wcp(spell_id, num_charges, cpc);
 
-          ItemPtr wand = create_wand(creature, wcp);
-
-          if (wand != nullptr)
+          if (num_charges <= 0)
           {
-            acv = get_default_skill_action_cost_value(creature);
-
-            TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
-            creature_tile->get_items()->merge_or_add(wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
-
-            IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
-            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_WAND_CREATED));
+            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_INSUFFICIENT_CASTINGS));
             manager.send();
+          }
+          else
+          {
+            ItemPtr wand = create_wand(creature, wcp);
+
+            if (wand != nullptr)
+            {
+              acv = get_default_skill_action_cost_value(creature);
+
+              TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
+              creature_tile->get_items()->merge_or_add(wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+              IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+              manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_WAND_CREATED));
+              manager.send();
+            }
           }
         }
       }
@@ -156,9 +165,14 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
           wand->set_additional_property(s_pair.first, s_pair.second);
         }
 
+        // JCD FIXME SpellFactory refactor
         wand->set_effect_type(spell.get_effect());
+        wand->set_has_damage(spell.get_has_damage());
         wand->set_modifier(spell.get_modifier());
         wand->set_charges(num_charges);
+        wand->set_spell_colour(spell.get_colour());
+        wand->set_spell_shape_type(spell.get_shape().get_spell_shape_type());
+        wand->set_range(spell.get_range());
 
         // JCD TODO: figure out some sort of formula for this.
         wand->set_value(10 * wand->get_charges().get_current());
