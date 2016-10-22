@@ -1,4 +1,6 @@
 Me:
+- Dying adventurer outside Zaeda's tower should have a small, optional
+  quest.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
 - Fire effects on a tile (gas, spells, etc) should have a chance of 

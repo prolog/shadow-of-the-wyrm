@@ -156,6 +156,10 @@ class ActionTextKeys
     static const std::string ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS;
     static const std::string ACTION_WANDCRAFT_NO_SPELLS;
     static const std::string ACTION_WANDCRAFT_WAND_CREATED;
+    static const std::string ACTION_SCRIBING_INSUFFICIENT_COMPONENTS;
+    static const std::string ACTION_SCRIBING_INSUFFICIENT_CASTINGS;
+    static const std::string ACTION_SCRIBING_NO_SPELLS;
+    static const std::string ACTION_SCRIBING_SCROLL_CREATED;
 
   protected:
     ActionTextKeys();

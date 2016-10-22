@@ -15,9 +15,14 @@ bool DefaultSpellScreenDisplayStrategy::display_spell(const Spell& spell) const
   return true;
 }
 
-bool WandcraftSpellScreenDisplayStrategy::display_spell(const Spell& spell) const
+SituationTypeSpellScreenDisplayStrategy::SituationTypeSpellScreenDisplayStrategy(const SpellSituationType new_sst)
+: sst(new_sst)
 {
-  return spell.get_shape().get_is_external();
+}
+
+bool SituationTypeSpellScreenDisplayStrategy::display_spell(const Spell& spell) const
+{
+  return (sst == spell.get_shape().get_spell_situation());
 }
 
 const int SpellSelectionScreen::SPELLS_PER_PAGE = 15;
@@ -69,7 +74,6 @@ void SpellSelectionScreen::initialize()
     for (const SpellKnowledgeMap::value_type& spell_pair : known_spells)
     {
       string spell_id = spell_pair.first;
-      selection_map.insert(make_pair('a' + i, spell_id));
 
       if (sk.get_spell_knowledge(spell_id).get_castings() > 0)
       {
@@ -91,6 +95,10 @@ void SpellSelectionScreen::initialize()
         {
           continue;
         }
+
+        // Only add the spell to the display if it passes the castings/
+        // filters/etc tests.
+        selection_map.insert(make_pair('a' + i, spell_id));
 
         IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
         string spell_desc = describer->describe();

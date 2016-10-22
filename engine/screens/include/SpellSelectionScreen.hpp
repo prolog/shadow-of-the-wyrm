@@ -5,6 +5,7 @@
 #include "Screen.hpp"
 #include "Display.hpp"
 #include "Spell.hpp"
+#include "SpellTypes.hpp"
 
 class SpellScreenDisplayStrategy
 {
@@ -18,10 +19,15 @@ class DefaultSpellScreenDisplayStrategy : public SpellScreenDisplayStrategy
     bool display_spell(const Spell& spell) const;
 };
 
-class WandcraftSpellScreenDisplayStrategy : public SpellScreenDisplayStrategy
+class SituationTypeSpellScreenDisplayStrategy : public SpellScreenDisplayStrategy
 {
   public:
+    SituationTypeSpellScreenDisplayStrategy(const SpellSituationType new_sst);
+
     bool display_spell(const Spell& spell) const;
+
+  protected:
+    SpellSituationType sst;
 };
 
 using SpellScreenDisplayStrategyPtr = std::shared_ptr<SpellScreenDisplayStrategy>;

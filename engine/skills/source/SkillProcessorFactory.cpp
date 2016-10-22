@@ -1,5 +1,6 @@
 #include "DisarmTrapsSkillProcessor.hpp"
 #include "FishingSkillProcessor.hpp"
+#include "ScribingSkillProcessor.hpp"
 #include "SkillProcessorFactory.hpp"
 #include "SkillProcessors.hpp"
 #include "SkillTextKeys.hpp"
@@ -39,6 +40,7 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_MEDICINE, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MEDICINE)),
                make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MOUNTAINEERING)),
                make_pair(SkillType::SKILL_GENERAL_RELIGION, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_RELIGION)),
+               make_pair(SkillType::SKILL_GENERAL_SCRIBING, make_shared<ScribingSkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_SKINNING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SKINNING)),
                make_pair(SkillType::SKILL_GENERAL_SMITHING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SMITHING)),
                make_pair(SkillType::SKILL_GENERAL_SWIMMING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SWIMMING)),

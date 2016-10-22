@@ -99,6 +99,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_QUILL;
     static const std::string ITEM_ID_INKPOT;
     static const std::string ITEM_ID_BLANK_SCROLL;
+    static const std::string ITEM_ID_TEMPLATE_SCROLL;
 
   protected:
     ItemIdKeys();
