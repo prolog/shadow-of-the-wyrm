@@ -1,5 +1,6 @@
 #include "WandcraftSkillProcessor.hpp"
 #include "ActionTextKeys.hpp"
+#include "CreatureUtils.hpp"
 #include "Game.hpp"
 #include "ItemProperties.hpp"
 #include "MapUtils.hpp"
@@ -12,10 +13,6 @@
 
 using namespace std;
 
-WandcraftSkillProcessor::WandcraftSkillProcessor()
-{
-}
-
 ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
   ActionCostValue acv = -1;
@@ -25,8 +22,9 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
     if (check_for_components(creature) &&
         check_for_spells(creature))
     {
-      DisplayPtr display = Game::instance().get_display();
-      SpellScreenDisplayStrategyPtr sds = std::make_shared<WandcraftSpellScreenDisplayStrategy>();
+      Game& game = Game::instance();
+      DisplayPtr display = game.get_display();
+      SpellScreenDisplayStrategyPtr sds = std::make_shared<SituationTypeSpellScreenDisplayStrategy>(SpellSituationType::SPELL_SITUATION_EXTERNAL);
       SpellSelectionScreen ss(display, creature, sds);
 
       string display_s = ss.display();
@@ -34,7 +32,6 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
 
       if (!spell_id.empty())
       {
-        Game& game = Game::instance();
         const SpellMap& spells = game.get_spells_ref();
         auto s_it = spells.find(spell_id);
 
@@ -104,32 +101,7 @@ bool WandcraftSkillProcessor::check_for_components(CreaturePtr creature)
 // spells.
 bool WandcraftSkillProcessor::check_for_spells(CreaturePtr creature)
 {
-  bool has_spells = false;
-
-  if (creature != nullptr)
-  {
-    Game& game = Game::instance();
-    const SpellMap& sm = game.get_spells_ref();
-    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-    SpellKnowledgeMap skm = sk.get_known_spells();
-
-    for (const auto& skm_pair : skm)
-    {
-      string spell_id = skm_pair.first;
-
-      const auto sm_it = sm.find(spell_id);
-      if (sm_it != sm.end())
-      {
-        SpellShape ss = sm_it->second.get_shape();
-
-        if (ss.get_is_external())
-        {
-          has_spells = true;
-          break;
-        }
-      }
-    }
-  }
+  bool has_spells = CreatureUtils::has_spell_for_situation_type(creature, SpellSituationType::SPELL_SITUATION_EXTERNAL);
 
   if (!has_spells && creature && creature->get_is_player())
   {
@@ -177,11 +149,17 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
         }
 
         wand->set_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID, spell.get_spell_name_sid());
+
+        map<string, string> properties = spell.get_properties();
+        for (const auto& s_pair : properties)
+        {
+          wand->set_additional_property(s_pair.first, s_pair.second);
+        }
+
         wand->set_effect_type(spell.get_effect());
         wand->set_charges(num_charges);
 
-        // JCD FIXME testing!  Fix the value!
-        // TODO: Confirmation?
+        // JCD TODO: figure out some sort of formula for this.
         wand->set_value(10 * wand->get_charges().get_current());
 
         created_wand = wand;

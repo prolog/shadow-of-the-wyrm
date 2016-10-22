@@ -1,8 +1,7 @@
 #pragma once
 #include "SkillProcessor.hpp"
-#include "WandCreationParameters.hpp"
 
-class WandcraftSkillProcessor : public SkillProcessor
+class ScribingSkillProcessor : public SkillProcessor
 {
   public:
     virtual ActionCostValue process(CreaturePtr creature, MapPtr map) override;
@@ -11,7 +10,7 @@ class WandcraftSkillProcessor : public SkillProcessor
     bool check_for_components(CreaturePtr creature);
     bool check_for_spells(CreaturePtr creature);
 
-    ItemPtr create_wand(CreaturePtr creature, const WandCreationParameters& wcp);
+    ItemPtr create_scroll(CreaturePtr creature, const std::string& spell_id);
 
     ActionCostValue get_default_skill_action_cost_value(CreaturePtr creature) const override;
 };

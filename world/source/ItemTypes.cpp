@@ -54,6 +54,7 @@ const string ItemIdKeys::ITEM_ID_TEMPLATE_WAND    = "_template_wand";
 const string ItemIdKeys::ITEM_ID_QUILL            = "_quill";
 const string ItemIdKeys::ITEM_ID_INKPOT           = "_inkpot";
 const string ItemIdKeys::ITEM_ID_BLANK_SCROLL     = "_blank_scroll";
+const string ItemIdKeys::ITEM_ID_TEMPLATE_SCROLL  = "_template_scroll";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()
