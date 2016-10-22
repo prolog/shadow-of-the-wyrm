@@ -37,6 +37,20 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>tentacled_spider</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>tentacled_spider</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>siriath</ID>
 				<Coord>
 					<Row>16</Row>
@@ -87,6 +101,14 @@
 			</Placement>
 		</Creatures>
 		<Items>
+			<Placement>
+				<ID>_blank_scroll</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>40</Col>
+				</Coord>
+				<Quantity>3</Quantity>
+			</Placement>
 			<Placement>
 				<ID>clay_pot</ID>
 				<Coord>
