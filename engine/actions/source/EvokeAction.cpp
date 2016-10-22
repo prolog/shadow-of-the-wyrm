@@ -251,7 +251,7 @@ Spell EvokeAction::create_wand_spell(CreaturePtr creature, WandPtr wand, const D
   }
 
   wand_spell.set_allows_bonus(false);
-  wand_spell.set_shape(SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type(), SpellConstants::DEFAULT_BEAM_RADIUS));
+  wand_spell.set_shape(SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type(), wand->get_radius()));
   wand_spell.set_colour(wand->get_spell_colour());
 
   return wand_spell;
