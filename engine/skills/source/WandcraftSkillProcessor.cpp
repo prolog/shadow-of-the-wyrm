@@ -8,6 +8,7 @@
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
 #include "SpellSelectionScreen.hpp"
+#include "SpellTransfer.hpp"
 #include "Wand.hpp"
 #include "WandCalculator.hpp"
 
@@ -152,31 +153,12 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
 
       if (wand != nullptr)
       {
-        if (spell.get_has_damage())
-        {
-          wand->set_damage(spell.get_damage());
-        }
-
-        wand->set_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID, spell.get_spell_name_sid());
-
-        map<string, string> properties = spell.get_properties();
-        for (const auto& s_pair : properties)
-        {
-          wand->set_additional_property(s_pair.first, s_pair.second);
-        }
-
-        // JCD FIXME SpellFactory/SpellTransfer refactor
-        wand->set_effect_type(spell.get_effect());
-        wand->set_has_damage(spell.get_has_damage());
-        wand->set_modifier(spell.get_modifier());
-        wand->set_charges(num_charges);
-        wand->set_spell_colour(spell.get_colour());
-        wand->set_spell_shape_type(spell.get_shape().get_spell_shape_type());
-        wand->set_range(spell.get_range());
-        wand->set_radius(spell.get_shape().get_radius());
+        SpellTransfer st;
+        st.to_wand(spell, wand);
 
         // JCD TODO: figure out some sort of formula for this.
         wand->set_value(10 * wand->get_charges().get_current());
+        wand->set_charges(num_charges);
 
         created_wand = wand;
 

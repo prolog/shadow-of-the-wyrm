@@ -10,6 +10,7 @@
 #include "ScribingCalculator.hpp"
 #include "Scroll.hpp"
 #include "SpellSelectionScreen.hpp"
+#include "SpellTransfer.hpp"
 
 using namespace std;
 
@@ -139,18 +140,8 @@ ItemPtr ScribingSkillProcessor::create_scroll(CreaturePtr creature, const string
           im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BLANK_SCROLL);
 
           // Next, add the necessary effects, properties, and so on.
-          sscroll->set_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID, spell.get_spell_name_sid());
-          sscroll->set_effect_type(spell.get_effect());
-          sscroll->set_modifier(spell.get_modifier());
-
-          map<string, string> spell_props = spell.get_properties();
-
-          // Set any properties needed by spells that set modifiers, etc.
-          for (const auto& s_pair : spell_props)
-          {
-            sscroll->set_additional_property(s_pair.first, s_pair.second);
-          }
-
+          SpellTransfer st;
+          st.to_scroll(spell, sscroll);
           sscroll->set_value(spell.get_ap_cost());
 
           // Now that the scroll is created, reduce the number of spell
