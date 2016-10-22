@@ -141,6 +141,7 @@ ItemPtr ScribingSkillProcessor::create_scroll(CreaturePtr creature, const string
           // Next, add the necessary effects, properties, and so on.
           sscroll->set_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID, spell.get_spell_name_sid());
           sscroll->set_effect_type(spell.get_effect());
+          sscroll->set_modifier(spell.get_modifier());
 
           map<string, string> spell_props = spell.get_properties();
 

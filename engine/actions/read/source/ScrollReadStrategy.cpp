@@ -43,6 +43,7 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
 
       Spell scroll_spell = SpellFactory::create_self_targetted_item_spell();
       scroll_spell.set_effect(readable->get_effect_type());
+      scroll_spell.set_modifier(readable->get_modifier());
 
       SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(scroll_spell.get_shape().get_spell_shape_type());
       bool effect_identified = false;
