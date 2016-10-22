@@ -31,6 +31,9 @@ void XMLWandReader::parse(WandPtr wand, GenerationValues& gv, const XMLNode& wan
     uint range = XMLUtils::get_child_node_int_value(wand_node, "Range");
     wand->set_range(range);
 
+    uint radius = XMLUtils::get_child_node_int_value(wand_node, "Radius", wand->get_radius());
+    wand->set_radius(radius);
+
     SpellShapeType spell_shape = static_cast<SpellShapeType>(XMLUtils::get_child_node_int_value(wand_node, "BeamType", static_cast<int>(SpellShapeType::SPELL_SHAPE_BEAM)));
     wand->set_spell_shape_type(spell_shape);
 

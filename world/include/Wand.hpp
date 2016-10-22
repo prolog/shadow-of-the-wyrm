@@ -19,6 +19,9 @@ class Wand : public Item
     void set_range(const uint new_range);
     uint get_range() const;
 
+    void set_radius(const uint new_radius);
+    uint get_radius() const;
+
     void set_spell_shape_type(const SpellShapeType new_shape_type);
     SpellShapeType get_spell_shape_type() const;
 
@@ -48,6 +51,7 @@ class Wand : public Item
     virtual void do_enchant_item(const int points) override;
 
     uint range;
+    uint radius;
     SpellShapeType shape;
     bool has_damage;
     Damage damage;

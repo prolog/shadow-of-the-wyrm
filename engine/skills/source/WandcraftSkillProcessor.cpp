@@ -165,7 +165,7 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
           wand->set_additional_property(s_pair.first, s_pair.second);
         }
 
-        // JCD FIXME SpellFactory refactor
+        // JCD FIXME SpellFactory/SpellTransfer refactor
         wand->set_effect_type(spell.get_effect());
         wand->set_has_damage(spell.get_has_damage());
         wand->set_modifier(spell.get_modifier());
@@ -173,6 +173,7 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
         wand->set_spell_colour(spell.get_colour());
         wand->set_spell_shape_type(spell.get_shape().get_spell_shape_type());
         wand->set_range(spell.get_range());
+        wand->set_radius(spell.get_shape().get_radius());
 
         // JCD TODO: figure out some sort of formula for this.
         wand->set_value(10 * wand->get_charges().get_current());
