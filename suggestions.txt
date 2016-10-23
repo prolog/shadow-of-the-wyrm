@@ -1,9 +1,6 @@
 Me:
 - For wands, need to carry over spell colour, range, shape.  Test case
   should be Flame Dart, + others.
-- There are a bunch of places where spells are created from other
-  spells, items, etc.  Refactor into a common function(s).  There is
-  already a class - use Spellfactory!
 - Dying adventurer outside Zaeda's tower should have a small, optional
   quest.
 - Set a number of artifacts with danger levels > -1, so that they can be

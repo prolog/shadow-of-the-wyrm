@@ -157,6 +157,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_spell_castings", add_spell_castings);
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "add_creature_to_map", add_creature_to_map);
+  lua_register(L, "remove_creature_from_map", remove_creature_from_map);
   lua_register(L, "add_status_to_creature", add_status_to_creature);
   lua_register(L, "add_status_to_creature_at", add_status_to_creature_at);
   lua_register(L, "stop_playing_game", stop_playing_game);
@@ -1197,6 +1198,43 @@ int add_creature_to_map(lua_State* ls)
   return 0;
 }
 
+// Returns a boolean - true if a creature was removed, false otherwise.
+int remove_creature_from_map(lua_State* ls)
+{
+  bool creature_removed = false;
+
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, 1)))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    string creature_id_or_base = lua_tostring(ls, 1);
+    const CreatureMap& creatures = map->get_creatures();
+
+    for (const auto creature_pair : creatures)
+    {
+      CreaturePtr creature = creature_pair.second;
+
+      if (creature != nullptr &&
+        (creature->get_id() == creature_id_or_base || creature->get_original_id() == creature_id_or_base))
+      {
+        MapUtils::remove_creature(map, creature);
+
+        creature_removed = true;
+        break;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to remove_creature_from_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, creature_removed);
+  return 1;
+}
+
 // Add a particular status to a particular creature for a particular duration
 // in minutes.
 //
@@ -1360,12 +1398,32 @@ int get_creature_yx(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
     // Find the creature in the map
-    string creature_id = lua_tostring(ls, 1);
-    Coordinate c = Game::instance().get_current_map()->get_location(creature_id);
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    string creature_id_or_base = lua_tostring(ls, 1);
+    
+    Coordinate c(-1,-1);
+    const CreatureMap& creatures = current_map->get_creatures_ref();
 
-    // Set the return coordinates to the values from the lookup.
-    y = c.first;
-    x = c.second;
+    for (const auto& creature_pair : creatures)
+    {
+      CreaturePtr creature = creature_pair.second;
+
+      if (creature != nullptr)
+      {
+        if (creature &&
+          (creature->get_id() == creature_id_or_base || creature->get_original_id() == creature_id_or_base))
+        {
+          c = current_map->get_location(creature->get_id());
+
+          // Set the return coordinates to the values from the lookup.
+          y = c.first;
+          x = c.second;
+
+          break;
+        }
+      }
+    }
   }
   else
   {
