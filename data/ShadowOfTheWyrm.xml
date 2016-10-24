@@ -24643,6 +24643,23 @@
 				<Evade>8</Evade>
 				<Soak>5</Soak>
 			</Armour>
+			<Armour id="scrimshaw_hairpin">
+				<DescriptionSID>SCRIMSHAW_HAIRPIN_SID</DescriptionSID>
+				<UsageDescriptionSID>SCRIMSHAW_HAIRPIN_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>5</Ounces>
+				</Weight>
+				<WornLocation>0</WornLocation>
+				<Material>11</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Cold>0.25</Cold>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>0</Soak>
+			</Armour>
 			<Armour id="crown_of_tyranny">
 				<DescriptionSID>CROWN_OF_TYRANNY_SID</DescriptionSID>
 				<UsageDescriptionSID>CROWN_OF_TYRANNY_USAGE_SID</UsageDescriptionSID>

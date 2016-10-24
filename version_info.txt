@@ -91,14 +91,16 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Added a new, small quest.  There are now a pair of dying adventurers
   at the base of Zaeda's tower.  Cornel has a locket given to him by
   an adventurer the player is likely to meet early on.  When Cornel
-  dies, he leaves this locket to the player.
+  dies, he leaves this locket to the player.  Returning the locket to
+  its rightful owner gains the player a scrimshaw hairpin that protects
+  very well against the cold.
 
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
 
 - New items: vorpal bolt wand, scroll of blessing, magici shard, small 
-  stone, quill, inkpot, blank scroll.
+  stone, quill, inkpot, blank scroll, wave locket, scrimshaw hairpin.
 
 - New creatures: animated broom, Cornel.
 
