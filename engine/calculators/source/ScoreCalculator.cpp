@@ -1,4 +1,5 @@
 #include "ScoreCalculator.hpp"
+#include "Game.hpp"
 #include "ScoreConstants.hpp"
 
 using namespace std;
@@ -17,6 +18,7 @@ long long ScoreCalculator::calculate_score(CreaturePtr creature)
     update_score_artifacts(creature, score);
     update_score_spells(creature, score);
     update_score_conducts(creature, score);
+    update_score_quests_complete(creature, score);
   }
 
   return score;
@@ -193,6 +195,20 @@ void ScoreCalculator::update_score_conducts(CreaturePtr creature, long long& sco
         score += (100 * level);
       }
     }
+  }
+}
+
+void ScoreCalculator::update_score_quests_complete(CreaturePtr creature, long long& score)
+{
+  if (creature != nullptr)
+  {
+    // Each quest complete is worth 100 points/level at the end of the game.
+    Game& game = Game::instance();
+    Quests& quests = game.get_quests_ref();
+    QuestMap completed_quests = quests.get_completed_quests();
+    int level = creature->get_level().get_current();
+
+    score += (completed_quests.size() * 100 * level);
   }
 }
 
