@@ -88,12 +88,18 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - In the Lua API functions, get_creature_yx will now search creatures both
   by ID and original ID when given an identifier.
 
-- Added a new, small quest.  There are now a pair of dying adventurers
+- Added a new, small quest.  There is now a second dying adventurer
   at the base of Zaeda's tower.  Cornel has a locket given to him by
   an adventurer the player is likely to meet early on.  When Cornel
   dies, he leaves this locket to the player.  Returning the locket to
   its rightful owner gains the player a scrimshaw hairpin that protects
   very well against the cold.
+
+- Each completed quest now provides a per-level adjustment to the score
+  at the end of the game.
+
+- Additional compound name fragments, with special attention paid so that
+  the names "Heman" and "Shera" can be randomly generated.
 
 - More stanzas for "Tel and Floridel".
 
