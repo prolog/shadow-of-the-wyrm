@@ -633,3 +633,13 @@ Emboldened, any lingering fear dismissed, %b
 the new king and his riders in the chill %b
 of morning rode towards the giant for the kill.
 %p
+They hacked and hewed.  The giant stood no chance, %b
+his good arm gone, his ankle slashed to threads. %b
+He dodged a blade, but faltered.  In that stance, %b
+uncertain in the outcome, in his legs, %b
+perhaps in how the bards would sing his name. %b
+But Choros was committed.  Did he not %b
+just fell the fairy king?  Well, now the same %b
+would be their fate.  The minstrels say he fought %b
+ferociously, his very life an afterthought.
+%p
