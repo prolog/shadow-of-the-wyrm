@@ -18,10 +18,12 @@ local function cadlind_locket_quest_completion_fn()
   add_message_with_pause("CADLIND_LOCKET_QUEST_COMPLETE_SID")
   add_message_with_pause("CADLIND_LOCKET_QUEST_COMPLETE2_SID")
   add_message_with_pause("CADLIND_LOCKET_QUEST_COMPLETE3_SID")
-  clear_and_add_message("CADLIND_LOCKET_QUEST_COMPLETE4_SID")
+  add_message_with_pause("CADLIND_LOCKET_QUEST_COMPLETE4_SID")
+  clear_and_add_message("CADLIND_LOCKET_QUEST_COMPLETE5_SID")
 
   remove_object_from_player("wave_locket")
   add_object_to_player_tile("scrimshaw_hairpin")
+  remove_creature_from_map("cadlind")
 
   return true
 end
