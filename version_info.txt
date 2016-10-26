@@ -122,6 +122,11 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
   - Spell modifiers (for spells such as Divine Wind) weren't being
     carried over properly to items such as wands, scrolls, and potions.
 
+  - Settings were reloading with F12, which I'm pretty sure was
+    intentional at one point.  However, given that this also resets the
+    in-game date, that has been removed, and F12 now reloads Lua state
+    and SIDs only.
+
 Shadow of the Wyrm v0.5.5 "Weiss"
 - Version declared September 3, 2016.  Version finalized October 1, 2016.
 
