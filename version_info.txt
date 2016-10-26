@@ -101,12 +101,20 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Additional compound name fragments, with special attention paid so that
   the names "Heman" and "Shera" can be randomly generated.
 
+- After the stanzas in the epic poem on the giant Choros, created a new
+  artifact, the seventeen-foot greatsword wielded by Choros against the
+  hunting party.  The damage is good, though the weakest of the
+  greatswords, but its primary advantage is a hefty boost to Slash
+  resistance.
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
 
 - New items: vorpal bolt wand, scroll of blessing, magici shard, small 
   stone, quill, inkpot, blank scroll, wave locket, scrimshaw hairpin.
+
+- New artifacts: greatsword of Choros.
 
 - New creatures: animated broom, Cornel.
 
