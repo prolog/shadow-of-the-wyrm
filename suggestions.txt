@@ -1,7 +1,6 @@
 Me:
 - For wands, need to carry over spell colour, range, shape.  Test case
   should be Flame Dart, + others.
-- Reloading strings/Lua stuff is resetting the date!
 - Day/night.  Display differently, display a message when it changes, etc.
   Start game at 8am in-game.  Show day/night in "T"ime command.
 - Set a number of artifacts with danger levels > -1, so that they can be
