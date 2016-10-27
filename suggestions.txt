@@ -1,4 +1,6 @@
 Me:
+- Fully test Thesilea's script: garbage, negative, positive, items
+  properly removed/given, etc.
 - For wands, need to carry over spell colour, range, shape.  Test case
   should be Flame Dart, + others.
 - Day/night.  Display differently, display a message when it changes, etc.
