@@ -9,6 +9,7 @@
 #include "MessageManagerFactory.hpp"
 #include "ScribingCalculator.hpp"
 #include "Scroll.hpp"
+#include "SkillManager.hpp"
 #include "SpellSelectionScreen.hpp"
 #include "SpellTransfer.hpp"
 
@@ -148,6 +149,10 @@ ItemPtr ScribingSkillProcessor::create_scroll(CreaturePtr creature, const string
           // castings for the creature's memorized spell.
           isk.set_castings(isk.get_castings() - cps);
           creature->get_spell_knowledge_ref().set_spell_knowledge(spell_id, isk);
+
+          // Creating a scroll trains Scribing.
+          SkillManager sm;
+          sm.mark_skill(creature, SkillType::SKILL_GENERAL_SCRIBING, true);
         }
       }
     }
