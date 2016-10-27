@@ -7,6 +7,7 @@
 #include "MessageManagerFactory.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
+#include "SkillManager.hpp"
 #include "SpellSelectionScreen.hpp"
 #include "SpellTransfer.hpp"
 #include "Wand.hpp"
@@ -161,6 +162,12 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
         wand->set_charges(num_charges);
 
         created_wand = wand;
+
+        SkillManager sm;
+        for (int i = 0; i < num_charges; i++)
+        {
+          sm.mark_skill(creature, SkillType::SKILL_GENERAL_WANDCRAFT, true);
+        }
 
         // Reduce the spell knowledge.
         IndividualSpellKnowledge isk = creature->get_spell_knowledge().get_spell_knowledge(spell_id);
