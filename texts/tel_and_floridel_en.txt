@@ -663,3 +663,13 @@ The days when folk could live their lives content, %b
 a moment in the past made visceral. %b
 A songbird in the morning, longed-for, temporal.
 %p
+Tel cleaned his sword on speargrass, raised his voice, %b
+and spoke.  "I never thought that I would be %b
+made king this way.  For if it were my choice, %b
+I'd spend my life in happy waiting, free %b
+to hold my aging father in my arms. %b
+What stars could ever cast aside this man, %b
+this man of men, this king who would disarm %b
+the world?  So hear me, now, and understand - %b
+we'll never see his like again within this land."
+%p
