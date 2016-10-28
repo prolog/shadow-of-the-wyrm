@@ -108,7 +108,6 @@ CreaturePtr get_creature(const string& creature_id)
 // Get a particular tile from the given map
 TilePtr get_tile(const string& map_id, const Coordinate& c)
 {
-
   Game& game = Game::instance();
   MapRegistry& mr = game.get_map_registry_ref();
   MapPtr map = mr.get_map(map_id);
@@ -243,6 +242,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_unarmed_slay", add_unarmed_slay);
   lua_register(L, "get_race_name", get_race_name);
   lua_register(L, "set_inscription", set_inscription);
+  lua_register(L, "get_map_dimensions", get_map_dimensions);
 }
 
 // Lua API helper functions
@@ -3702,6 +3702,38 @@ int set_inscription(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_map_dimensions(lua_State* ls)
+{
+  int rows = 0;
+  int cols = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string map_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapRegistry& mr = game.get_map_registry_ref();
+    MapPtr map = mr.get_map(map_id);
+
+    if (map != nullptr)
+    {
+      Dimensions dim = map->size();
+      rows = dim.get_y();
+      cols = dim.get_x();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_map_dimensions");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, rows);
+  lua_pushnumber(ls, cols);
+
+  return 2;
 }
 
 int stop_playing_game(lua_State* ls)
