@@ -3852,6 +3852,9 @@
     <ClInclude Include="engine\magic\include\SpellTransfer.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7564,6 +7567,9 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Date_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

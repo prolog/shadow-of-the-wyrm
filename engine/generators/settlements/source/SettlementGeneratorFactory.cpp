@@ -1,4 +1,5 @@
 #include "SettlementGeneratorFactory.hpp"
+#include "CityGenerator.hpp"
 #include "SettlementGenerator.hpp"
 #include "HamletGenerator.hpp"
 #include "WalledSettlementGenerator.hpp"
@@ -30,6 +31,9 @@ GeneratorPtr SettlementGeneratorFactory::create_settlement_generator(const Settl
       break;
     case SettlementType::SETTLEMENT_TYPE_SCATTERED:
       settlement_generator = std::make_shared<ScatteredSettlementGenerator>(base_map);
+      break;
+    case SettlementType::SETTLEMENT_TYPE_CITY:
+      settlement_generator = std::make_shared<CityGenerator>(base_map);
       break;
     default:
       break;
