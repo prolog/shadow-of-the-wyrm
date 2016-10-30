@@ -1,6 +1,8 @@
 #pragma once
 #include "Generator.hpp"
+#include "BuildingGenerationParameters.hpp"
 #include "GardenTypes.hpp"
+
 class BaseSettlementGenerator : public SOTW::Generator
 {
   public:
@@ -18,7 +20,7 @@ class BaseSettlementGenerator : public SOTW::Generator
 
     bool is_rows_and_cols_in_range(const Dimensions& dim, const int start_row, const int end_row, const int start_col, const int end_col);
     bool generate_garden_if_possible(MapPtr map, const GardenType garden_type, const int start_row, const int end_row, const int start_col, const int end_col);
-    bool generate_building_if_possible(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, const CardinalDirection door_direction);
+    bool generate_building_if_possible(MapPtr map, const BuildingGenerationParameters& bgp);
     std::pair<int, int> get_door_location(const int start_row, const int end_row, const int start_col, const int end_col, const CardinalDirection direction);
 
     void generate_road_north(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_size_modifier = 0, bool recurse = true);

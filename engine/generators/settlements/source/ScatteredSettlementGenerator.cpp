@@ -90,7 +90,8 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
     
     if (can_building_be_placed(row, col, height, width))
     {
-      generate_building_if_possible(map, row, row+height, col, col+width, door_direction);
+      BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false);
+      generate_building_if_possible(map, bgp);
       
       Room room(no_features, attempts, col, col+width, row, row+width);
       current_buildings.push_back(room);
