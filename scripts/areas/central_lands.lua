@@ -14,21 +14,32 @@ local potential_spots = get_coords_with_tile_type_in_range(WORLD_MAP_ID, 0 + y_o
 -- anywhere.
 local num_spots = table.getn(potential_spots)
 if num_spots == 0 then
-  y_off = 0
-  x_off = 0
-
   -- Empire was founded somewhere funny this time!
   potential_spots = get_coords_with_tile_type_in_range(WORLD_MAP_ID, 0, 0, rows - 1, cols - 1, field_tiles)
 end
 
-local c_coords = potential_spots[RNG_range(1, table.getn(potential_spots))]
+-- Make sure we pick a spot without a custom map ID.  Don't overwrite
+-- any of the predefined areas!
+local c_coords
 
-log(CLOG_DEBUG, "Carcassia location: " .. c_coords[1] .. "," .. c_coords[2])
+for i = 1, 10 do
+  c_coords = potential_spots[RNG_range(1, table.getn(potential_spots))]
+  local map_id = get_custom_map_id(WORLD_MAP_ID, c_coords[1], c_coords[2])
 
--- Now that a tile has been selected, add Carcassia to the world map.
-local carcassia = Area:new(c_coords[1], c_coords[2])
+  if s == "" then
+    break
+  end
+end
 
--- Set up the city tile appropriately.
--- JCD FIXME uncomment when release-ready.
-carcassia:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_CARCASSIA")
--- carcassia:insert()
+if c_coords ~= nil then
+  log(CLOG_DEBUG, "Carcassia location: " .. c_coords[1] .. "," .. c_coords[2])
+
+  -- Now that a tile has been selected, add Carcassia to the world map.
+  local carcassia = Area:new(c_coords[1], c_coords[2])
+
+  -- Set up the city tile appropriately.
+  -- JCD FIXME uncomment when release-ready.
+  carcassia:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_CARCASSIA")
+  -- carcassia:insert()
+end
+
