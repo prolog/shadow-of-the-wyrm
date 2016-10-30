@@ -737,6 +737,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\rooms\include\RoomTypes.hpp" />
     <ClInclude Include="engine\generators\rooms\include\XRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BaseSettlementGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp" />
     <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\ScatteredSettlementGenerator.hpp" />
@@ -1502,6 +1503,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp" />
     <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp" />
     <ClCompile Include="engine\generators\source\CrossShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />

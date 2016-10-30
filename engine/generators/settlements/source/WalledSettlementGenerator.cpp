@@ -151,7 +151,9 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
     
     if (!does_building_overlap(map, row, row+height+1, col, col+width+1, offset_extra))
     {
-      generate_building_if_possible(map, row, row+height, col, col+width, dir);
+      BuildingGenerationParameters bgp(row, row + height, col, col + width, dir, false);
+
+      generate_building_if_possible(map, bgp);
       cur_buildings_generated++;
     }
 

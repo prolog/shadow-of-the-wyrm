@@ -106,8 +106,10 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   int end_row   = circle_row - hamlet_size - 1;
   int start_col = circle_col - (width / 2);
   int end_col   = circle_col + (width / 2);
-  
-  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_SOUTH))
+
+  BuildingGenerationParameters bgpn(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false);
+
+  if (generate_building_if_possible(map, bgpn))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -119,7 +121,9 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   end_row   = circle_row + hamlet_size + 1 + height;
   // start_col, end_col the same for North and South
   
-  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_NORTH))
+  BuildingGenerationParameters bgps(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_NORTH, false);
+
+  if (generate_building_if_possible(map, bgps))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -132,7 +136,9 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   start_col = circle_col + hamlet_size + 1;
   end_col   = circle_col + hamlet_size + width + 1;
   
-  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_WEST))
+  BuildingGenerationParameters bgpe(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_WEST, false);
+
+  if (generate_building_if_possible(map, bgpe))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -144,7 +150,9 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   start_col = circle_col - hamlet_size - width - 1;
   end_col   = circle_col - hamlet_size - 1;
   
-  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_EAST))
+  BuildingGenerationParameters bgpw(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_EAST, false);
+
+  if (generate_building_if_possible(map, bgpw))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
