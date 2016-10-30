@@ -244,6 +244,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_inscription", set_inscription);
   lua_register(L, "get_map_dimensions", get_map_dimensions);
   lua_register(L, "get_coords_with_tile_type_in_range", get_coords_with_tile_type_in_range);
+  lua_register(L, "get_custom_map_id", get_custom_map_id);
 }
 
 // Lua API helper functions
@@ -3794,6 +3795,33 @@ int get_coords_with_tile_type_in_range(lua_State* ls)
     lua_error(ls);
   }
 
+  return 1;
+}
+
+int get_custom_map_id(lua_State* ls)
+{
+  string custom_map_id;
+
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int row = lua_tointeger(ls, 2);
+    int col = lua_tointeger(ls, 3);
+
+    TilePtr tile = get_tile(map_id, make_pair(row, col));
+
+    if (tile != nullptr)
+    {
+      custom_map_id = tile->get_custom_map_id();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_custom_map_id");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, custom_map_id.c_str());
   return 1;
 }
 
