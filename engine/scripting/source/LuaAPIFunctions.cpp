@@ -243,6 +243,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_race_name", get_race_name);
   lua_register(L, "set_inscription", set_inscription);
   lua_register(L, "get_map_dimensions", get_map_dimensions);
+  lua_register(L, "get_coords_with_tile_type_in_range", get_coords_with_tile_type_in_range);
 }
 
 // Lua API helper functions
@@ -3734,6 +3735,66 @@ int get_map_dimensions(lua_State* ls)
   lua_pushnumber(ls, cols);
 
   return 2;
+}
+
+int get_coords_with_tile_type_in_range(lua_State* ls)
+{
+  // Get the args before creating the return table.
+  int num_args = lua_gettop(ls);
+
+  // Create the table - might be empty when we return it.
+  lua_newtable(ls);
+
+  if (num_args == 6 && lua_isstring(ls, 1) 
+                    && lua_isnumber(ls, 2) // y1
+                    && lua_isnumber(ls, 3) // x1
+                    && lua_isnumber(ls, 4) // y2
+                    && lua_isnumber(ls, 5) // x2
+                    && lua_isnumber(ls, 6)) // tile type
+  {
+    string map_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapRegistry& mr = game.get_map_registry_ref();
+    MapPtr map = mr.get_map(map_id);
+
+    if (map != nullptr)
+    {
+      int y1 = lua_tointeger(ls, 2);
+      int x1 = lua_tointeger(ls, 3);
+      int y2 = lua_tointeger(ls, 4);
+      int x2 = lua_tointeger(ls, 5);
+      TileType tt = static_cast<TileType>(lua_tointeger(ls, 6));
+      int cnt = 1;
+
+      for (int y = y1; y < y2; y++)
+      {
+        for (int x = x1; x < x2; x++)
+        {
+          TilePtr tile = map->at(y, x);
+
+          if (tile && tile->get_tile_type() == tt)
+          {
+            lua_newtable(ls);
+            lua_pushnumber(ls, y);
+            lua_rawseti(ls, -2, 1);
+            lua_pushnumber(ls, x);
+            lua_rawseti(ls, -2, 2);
+            lua_rawseti(ls, -2, cnt);
+
+            cnt++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_coords_with_tile_type_in_range");
+    lua_error(ls);
+  }
+
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)
