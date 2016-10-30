@@ -105,6 +105,12 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       MapPtr base_map = base_generator->generate();
       
       SettlementType settlement_type = SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE;
+
+      // Override if a value's been set on the tile.
+      if (tile->has_additional_property(TileProperties::TILE_PROPERTY_SETTLEMENT_TYPE))
+      {
+        settlement_type = static_cast<SettlementType>(String::to_int(tile->get_additional_property(TileProperties::TILE_PROPERTY_SETTLEMENT_TYPE)));
+      }
       
       VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
       

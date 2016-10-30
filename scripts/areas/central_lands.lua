@@ -40,6 +40,8 @@ if c_coords ~= nil then
   -- Set up the city tile appropriately.
   -- JCD FIXME uncomment when release-ready.
   carcassia:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_CARCASSIA")
+  carcassia:set_additional_property("TILE_PROPERTY_SETTLEMENT_TYPE", 4)
+
   -- carcassia:insert()
 end
 
