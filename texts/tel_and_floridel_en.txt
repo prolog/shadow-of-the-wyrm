@@ -673,3 +673,13 @@ this man of men, this king who would disarm %b
 the world?  So hear me, now, and understand - %b
 we'll never see his like again within this land."
 %p
+That evening, Tel's men headed north for wood %b
+to build a pyre, and let him come to grief. %b
+He knelt before his father, understood %b
+that soon he'd draw the spirit out with leaves %b
+and logs, a bed to lay the king-that-was %b
+to sleep.  A beacon in the night.  They built %b
+a crossing-bridge beneath the corpse.  Paused %b
+to say some words.  Tel lit the base, and felt %b
+a rush of anguish as he watched the body melt.
+%p
