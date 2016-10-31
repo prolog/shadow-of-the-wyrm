@@ -124,6 +124,8 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Played with the starting stats a little bit so that Gnomes get a little 
   bit more intelligence, and Mountain Elves a little more willpower.
 
+- Additional poem fragment for the title screen (Goblin Market).
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: vorpal bolt (Arcane), bless (Mystic).
