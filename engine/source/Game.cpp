@@ -104,6 +104,7 @@ void Game::set_display_settings()
 void Game::set_world_settings()
 {
   uint days_elapsed = String::to_uint(settings.get_setting("days_elapsed"));
+  uint hours_elapsed = String::to_uint(settings.get_setting("hours_elapsed"));
   bool current_month_is_start_month = String::to_bool(settings.get_setting("current_month_is_start_month"));
 
   if (current_month_is_start_month)
@@ -119,7 +120,7 @@ void Game::set_world_settings()
   // If we're just starting up, the world may not have been instantiated yet.
   if (world != nullptr)
   {
-    world->get_calendar().set_date(days_elapsed);
+    world->get_calendar().set_date(days_elapsed, hours_elapsed);
   }
 }
 
