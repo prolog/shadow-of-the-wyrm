@@ -33,6 +33,9 @@ class TileProperties
     // What type of castle is this?
     static const std::string TILE_PROPERTY_CASTLE_TYPE;
 
+    // What type of settlement is this?
+    static const std::string TILE_PROPERTY_SETTLEMENT_TYPE;
+
     // For certain dungeon tiles, should we avoid overwriting the tile
     // as part of dungeon generation?
     static const std::string TILE_PROPERTY_NO_OVERWRITE;

@@ -18,7 +18,7 @@ end
 -- If the player knows how to weave, she presents the Mantle of Wintersea
 -- instead.
 local function hild_weaving_completion_fn()
-  local weaving = 48
+  local weaving = 49
   local skill_value = get_skill_value(PLAYER_ID, weaving)
 
   if (skill_value < 80) then

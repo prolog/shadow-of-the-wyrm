@@ -25,9 +25,9 @@ bool Calendar::operator==(const Calendar& c) const
   return result;
 }
 
-void Calendar::set_date(const uint days_elapsed)
+void Calendar::set_date(const uint days_elapsed, const uint hours_elapsed)
 {
-  seconds = (days_elapsed) * 60 * 60 * 24;
+  seconds = (days_elapsed) * 60 * 60 * 24 + (hours_elapsed * 60 * 60);
   uint month_of_year = (days_elapsed / DateValues::NUMBER_OF_DAYS_PER_MONTH);
   season = SeasonFactory::create_season(month_of_year);
 }

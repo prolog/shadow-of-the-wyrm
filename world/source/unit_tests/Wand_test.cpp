@@ -12,6 +12,7 @@ TEST(SW_World_Wand, saveload)
   Wand wand, wand2;
 
   wand.set_quantity(2);
+  wand.set_radius(2);
   wand.set_effect_type(EffectType::EFFECT_TYPE_IDENTIFY);
   wand.set_range(12);
   wand.set_spell_shape_type(SpellShapeType::SPELL_SHAPE_REFLECTIVE_BEAM);

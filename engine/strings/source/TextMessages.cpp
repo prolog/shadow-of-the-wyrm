@@ -465,3 +465,12 @@ string TextMessages::get_inscription_message(const string& inscription_sid)
 
   return inscription_msg;
 }
+
+string TextMessages::get_replacement_message(const string& msg, const string& replace)
+{
+  string replace_msg = msg;
+  boost::replace_first(replace_msg, "%s", replace);
+
+  return replace_msg;
+}
+

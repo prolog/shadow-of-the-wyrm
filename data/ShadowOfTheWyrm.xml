@@ -72,6 +72,7 @@
 				<Artifact>helm_of_the_heavens</Artifact>
 				<Artifact>battle_armour_aurelion</Artifact>
 				<Artifact>vorpal_blade</Artifact>
+				<Artifact>choros_greatsword</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>titan</Summon>
@@ -193,6 +194,7 @@
 				<Artifact>earthcleaver</Artifact>
 				<Artifact>asturias</Artifact>
 				<Artifact>vorpal_blade</Artifact>
+				<Artifact>choros_greatsword</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>fire_elemental</Summon>
@@ -428,6 +430,12 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>0</HasPockets>
+			<Drops>
+				<Drop>
+					<ID>_quill</ID>
+					<PercentChance>10</PercentChance>
+				</Drop>
+			</Drops>
 			<NameSID>BIRD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -490,6 +498,12 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<Drops>
+				<Drop>
+					<ID>_magici_shard</ID>
+					<PercentChance>10</PercentChance>
+				</Drop>
+			</Drops>
 			<NameSID>CONSTRUCT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -676,6 +690,14 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<Drops>
+				<Drop>
+					<ID>_currency</ID>
+					<PercentChance>10</PercentChance>
+					<Min>4</Min>
+					<Max>6</Max>
+				</Drop>
+			</Drops>
 			<NameSID>HUMANOID_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1162,6 +1184,12 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<Drops>
+				<Drop>
+					<ID>_magici_shard</ID>
+					<PercentChance>5</PercentChance>
+				</Drop>
+			</Drops>
 			<NameSID>DRAGON_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1401,7 +1429,7 @@
 				<Agility>12</Agility>
 				<Health>10</Health>
 				<Intelligence>13</Intelligence>
-				<Willpower>12</Willpower>
+				<Willpower>13</Willpower>
 				<Charisma>9</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
@@ -1445,7 +1473,7 @@
 					<Slings>7</Slings>
 				</RangedWeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<ExperienceMultiplier>1.12</ExperienceMultiplier>
 			<HPRegenMultiplier>1.1</HPRegenMultiplier>
 			<APRegenMultiplier>1.05</APRegenMultiplier>
 			<SkillPoints>9</SkillPoints>
@@ -1858,9 +1886,9 @@
 			<Corporeal>1</Corporeal>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
-				<DeityID>01_celeste</DeityID>
-				<DeityID>02_aurelion</DeityID>
-				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
@@ -1923,7 +1951,7 @@
 				<Dexterity>12</Dexterity>
 				<Agility>12</Agility>
 				<Health>11</Health>
-				<Intelligence>13</Intelligence>
+				<Intelligence>14</Intelligence>
 				<Willpower>13</Willpower>
 				<Charisma>9</Charisma>
 				<Speed>48</Speed>
@@ -1931,9 +1959,9 @@
 			<Corporeal>1</Corporeal>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
-				<DeityID>04_vedere</DeityID>
-				<DeityID>05_voros</DeityID>
-				<DeityID>06_thetrickster</DeityID>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
@@ -1958,6 +1986,7 @@
 					<Literacy>5</Literacy>
 					<MountainLore>15</MountainLore>
 					<Spelunking>20</Spelunking>
+					<Wandcraft>5</Wandcraft>
 				</GeneralSkills>
 				<WeaponSkills>
 					<ShortBlades>7</ShortBlades>
@@ -2383,10 +2412,10 @@
 						</Race>
 						<Race>
 							<RaceID>05_fae</RaceID>
-							<ID>_rock</ID>
+							<ID>_stone</ID>
 							<Quantity>
 								<Random>
-									<NumDice>4</NumDice>
+									<NumDice>10</NumDice>
 									<NumSides>3</NumSides>
 								</Random>
 							</Quantity>
@@ -2502,6 +2531,7 @@
 					<Crafting>20</Crafting>
 					<Detection>15</Detection>
 					<Jeweler>15</Jeweler>
+					<Literacy>5</Literacy>
 					<Papercraft>15</Papercraft>
 					<Scribing>15</Scribing>
 					<Skinning>10</Skinning>
@@ -2511,6 +2541,9 @@
 				<WeaponSkills>
 					<Daggers>2</Daggers>
 				</WeaponSkills>
+				<MagicSkills>
+					<Cantrips>5</Cantrips>
+				</MagicSkills>
 			</Skills>
 			<Titles>
 				<Default>ARTISAN_DEFAULT_TITLE</Default>
@@ -3408,6 +3441,7 @@
 					<Papercraft>15</Papercraft>
 					<Religion>20</Religion>
 					<Scribing>20</Scribing>
+					<Wandcraft>15</Wandcraft>
 					<Weaving>15</Weaving>
 				</GeneralSkills>
 				<MagicSkills>
@@ -4305,6 +4339,7 @@
 					<Magic>25</Magic>
 					<Papercraft>15</Papercraft>
 					<Scribing>15</Scribing>
+					<Wandcraft>10</Wandcraft>
 					<Weaving>15</Weaving>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -5098,6 +5133,51 @@
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
 				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="animated_broom">
+			<RaceID>_construct</RaceID>
+			<ShortDescriptionSID>ANIMATED_BROOM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ANIMATED_BROOM_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ANIMATED_BROOM_TEXT_DETAILS_SID</TextDetailsSID>
+ 			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>|</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>4</Exp>
+			</CreatureGeneration>
+			<Level>3</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
 			</Damage>
 		</Creature>
 		<Creature id="woodsman">
@@ -14187,6 +14267,46 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="cornel">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>CORNEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CORNEL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CORNEL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CORNEL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>immobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>26</DangerLevel>
+				<Rarity>0</Rarity>
+				<!-- Cornel is at the verge of death. -->
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>26</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>-30</Evade>
+			<Soak>2</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/cornel.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>		
 		<Creature id="zaeda">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>ZAEDA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -17622,6 +17742,43 @@
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/twille.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="thesilea">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>THESILEA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THESILEA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THESILEA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THESILEA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>immobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>19</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>19</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>210</Exp>
+			</CreatureGeneration>
+			<Level>19</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>38</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/thesilea.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -23023,6 +23180,24 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="a_15_vorpal_bolt">
+			<NameSID>VORPAL_BOLT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>VORPAL_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>VORPAL_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>25</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>1</Shape>
+			<Damage vorpal="1">
+				<NumDice>3</NumDice>
+				<NumSides>6</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -23529,6 +23704,19 @@
 			<Range>0</Range>
 			<Shape>0</Shape>
 			<Effect>22</Effect>
+		</Spell>
+		<Spell id="m_15_bless">
+			<NameSID>BLESS_NAME_SID</NameSID>
+			<PlayerCastMessageSID>BLESS_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>BLESS_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>30</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>23</Effect>
 		</Spell>
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
@@ -24493,6 +24681,23 @@
 				</Resistances>
 				<Evade>8</Evade>
 				<Soak>5</Soak>
+			</Armour>
+			<Armour id="scrimshaw_hairpin">
+				<DescriptionSID>SCRIMSHAW_HAIRPIN_SID</DescriptionSID>
+				<UsageDescriptionSID>SCRIMSHAW_HAIRPIN_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>5</Ounces>
+				</Weight>
+				<WornLocation>0</WornLocation>
+				<Material>11</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Cold>0.25</Cold>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>0</Soak>
 			</Armour>
 			<Armour id="crown_of_tyranny">
 				<DescriptionSID>CROWN_OF_TYRANNY_SID</DescriptionSID>
@@ -26323,6 +26528,36 @@
 					</Slays>
 				</Damage>
 			</Weapon>
+			<Weapon id="choros_greatsword">
+				<DescriptionSID>CHOROS_GREATSWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>CHOROS_GREATSWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>2600</Value>
+				<Weight>
+					<Pounds>70</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.30</Slash>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>50</Difficulty>
+				<Speed>12</Speed>
+				<Damage>
+					<NumDice>8</NumDice>
+					<NumSides>10</NumSides>
+					<Type>0</Type>
+					<Slays>
+						<Slay>05_fae</Slay>
+						<Slay>02_woodelf</Slay>
+						<Slay>03_mountainelf</Slay>
+					</Slays>
+				</Damage>
+			</Weapon>
 			<Weapon id="erebus">
 				<DescriptionSID>EREBUS_SID</DescriptionSID>
 				<UsageDescriptionSID>EREBUS_USAGE_SID</UsageDescriptionSID>
@@ -26400,7 +26635,7 @@
 				<Damage>
 					<NumDice>3</NumDice>
 					<NumSides>12</NumSides>
-					<Modifier>6</Modifier>
+					<Modifier>4</Modifier>
 					<Type>2</Type>
 					<Slays>
 						<Slay>_construct</Slay>
@@ -26457,7 +26692,7 @@
 				<Difficulty>47</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
-					<NumDice>12</NumDice>
+					<NumDice>6</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
 				</Damage>
@@ -28259,6 +28494,32 @@
 			</Weapon>
 		</RangedWeapons>
 		<Ammunition>
+			<Missile id="_stone">
+				<DescriptionSID>STONE_SID</DescriptionSID>
+				<UsageDescriptionSID>STONE_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2006</RangedSkill>
+				<Difficulty>43</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>2</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Missile>
 			<Missile id="_rock">
 				<DescriptionSID>ROCK_SID</DescriptionSID>
 				<UsageDescriptionSID>ROCK_USAGE_SID</UsageDescriptionSID>
@@ -29940,6 +30201,44 @@
 			</Potion>
 		</Potions>
 		<Scrolls>
+			<Scroll id="_template_scroll">
+				<DescriptionSID>TEMPLATE_SCROLL_SID</DescriptionSID>
+				<UsageDescriptionSID>TEMPLATE_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>0</Effect>
+			</Scroll>
+			<Scroll id="_blank_scroll">
+				<DescriptionSID>BLANK_SCROLL_SID</DescriptionSID>
+				<UsageDescriptionSID>BLANK_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<Value>5</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<Properties>
+					<Property>
+						<Name>blank</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Effect>0</Effect>
+			</Scroll>
 			<Scroll id="identify_scroll">
 				<DescriptionSID>IDENTIFY_SCROLL_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_IDENTIFY_SCROLL_SID</UnidentifiedDescriptionSID>
@@ -30029,6 +30328,24 @@
 				<DangerLevel>2</DangerLevel>
 				<Rarity>1</Rarity>
 				<Effect>21</Effect>
+			</Scroll>
+			<Scroll id="bless_scroll">
+				<DescriptionSID>BLESS_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_BLESS_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>BLESS_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_BLESS_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>95</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>23</Effect>
 			</Scroll>
 			<Scroll id="detect_traps_scroll">
 				<DescriptionSID>DETECT_TRAPS_SCROLL_SID</DescriptionSID>
@@ -30333,6 +30650,27 @@
 			</Tool>
 		</Tools>
 		<Wands>
+			<!-- This wand is used as the template when using wandcraft to
+			     create a wand. -->
+			<Wand id="_template_wand">
+				<DescriptionSID>TEMPLATE_WAND_SID</DescriptionSID>
+				<UsageDescriptionSID>TEMPLATE_WAND_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>0</Effect>
+				<BeamType>1</BeamType>
+				<Range>1</Range>
+				<Colour>7</Colour>
+			</Wand>
 			<Wand id="teleport_wand">
 				<DescriptionSID>TELEPORT_WAND_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_TELEPORT_WAND_SID</UnidentifiedDescriptionSID>
@@ -30533,6 +30871,31 @@
 				<BeamType>4</BeamType>
 				<Range>3</Range>
 				<Colour>1</Colour>
+			</Wand>
+			<Wand id="vorpal_bolt_wand">
+				<DescriptionSID>VORPAL_BOLT_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_VORPAL_BOLT_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>VORPAL_BOLT_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_VORPAL_BOLT_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>700</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage vorpal="1">
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+					<Type>9</Type>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
+				<Colour>7</Colour>
 			</Wand>
 		</Wands>
 		<Spellbooks>
@@ -31209,6 +31572,25 @@
 				<SpellID>a_14_absolute_zero</SpellID>
 				<Difficulty>150</Difficulty>
 			</Spellbook>
+			<Spellbook id="vorpal_bolt_spellbook">
+				<DescriptionSID>VORPAL_BOLT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_VORPAL_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>VORPAL_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_VORPAL_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>600</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_15_vorpal_bolt</SpellID>
+				<Difficulty>110</Difficulty>
+			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HEALING_WORD_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -31665,8 +32047,49 @@
 				<SpellID>m_14_detect_traps</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
+			<Spellbook id="bless_spellbook">
+				<DescriptionSID>BLESS_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_BLESS_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>BLESS_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_BLESS_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>175</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_15_bless</SpellID>
+				<Difficulty>75</Difficulty>
+			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
+			<Item id="_quill">
+				<DescriptionSID>QUILL_SID</DescriptionSID>
+				<UsageDescriptionSID>QUILL_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_inkpot">
+				<DescriptionSID>INKPOT_SID</DescriptionSID>
+				<UsageDescriptionSID>INKPOT_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<Material>2</Material>
+				<DangerLevel>2</DangerLevel>
+			</Item>			
 			<Item id="_dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>
 				<UsageDescriptionSID>DIRT_USAGE_SID</UsageDescriptionSID>
@@ -31804,7 +32227,7 @@
 					<Pounds>5</Pounds>
 				</Weight>
 				<Material>6</Material>
-				<DangerLevel>-1</DangerLevel>
+				<DangerLevel>8</DangerLevel>
 				<Properties>
 					<Property>
 						<Name>sm_con_mat_type</Name>
@@ -31827,6 +32250,20 @@
 						<Value>13</Value>
 					</Property>
 				</Properties>
+			</Item>
+			<Item id="_magici_shard">
+				<DescriptionSID>MAGICI_SHARD_SID</DescriptionSID>
+				<UsageDescriptionSID>MAGICI_SHARD_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>10</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_skin">
 				<DescriptionSID>SKIN_SID</DescriptionSID>
@@ -31963,6 +32400,21 @@
 						<Value>13</Value>
 					</Property>
 				</Properties>
+			</Item>
+			<Item id="wave_locket">
+				<DescriptionSID>WAVE_LOCKET_SID</DescriptionSID>
+				<UsageDescriptionSID>WAVE_LOCKET_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>#</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
 			</Item>
 		</MiscItems>
 	</Items>

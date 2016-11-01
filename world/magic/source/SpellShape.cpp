@@ -39,3 +39,18 @@ uint SpellShape::get_radius() const
   return radius;
 }
 
+SpellSituationType SpellShape::get_spell_situation() const
+{
+  SpellSituationType sst = SpellSituationType::SPELL_SITUATION_EXTERNAL;
+
+  if (spell_shape_type == SpellShapeType::SPELL_SHAPE_TARGET_SELF)
+  {
+    sst = SpellSituationType::SPELL_SITUATION_INTERNAL;
+  }
+
+  return sst;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/SpellShape_test.cpp"
+#endif

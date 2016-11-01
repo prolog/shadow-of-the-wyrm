@@ -40,6 +40,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>cornel</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>3</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>great_serpent</ID>
 				<Coord>
 					<Row>9</Row>

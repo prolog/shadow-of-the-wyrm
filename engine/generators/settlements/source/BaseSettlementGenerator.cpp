@@ -155,10 +155,16 @@ bool BaseSettlementGenerator::generate_garden_if_possible(MapPtr map, const Gard
 
 // Generate a building if possible, returning true if a building could be generated,
 // and false otherwise.
-bool BaseSettlementGenerator::generate_building_if_possible(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, const CardinalDirection door_direction)
+bool BaseSettlementGenerator::generate_building_if_possible(MapPtr map, const BuildingGenerationParameters& bgp)
 {
   bool generated = false;
   TileGenerator tg;
+
+  int start_row = bgp.get_start_row();
+  int end_row = bgp.get_end_row();
+  int start_col = bgp.get_start_col();
+  int end_col = bgp.get_end_col();
+  CardinalDirection door_direction = bgp.get_door_direction();
 
   if (!is_rows_and_cols_in_range(map->size(), start_row, end_row, start_col, end_col))
   {
@@ -239,7 +245,8 @@ void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_ro
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              generate_building_if_possible(map, current_row, current_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST);
+              BuildingGenerationParameters bgp(current_row, current_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST, false);
+              generate_building_if_possible(map, bgp);
             }
           }
           else
@@ -258,7 +265,8 @@ void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_ro
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              generate_building_if_possible(map, current_row, current_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST);
+              BuildingGenerationParameters bgp(current_row, current_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST, false);
+              generate_building_if_possible(map, bgp);
             }
           }
           else
@@ -324,7 +332,8 @@ void BaseSettlementGenerator::generate_road_south(MapPtr map, const int start_ro
 
             if (building_size >= block_modifier)
             {
-              generate_building_if_possible(map, start_row, start_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST);
+              BuildingGenerationParameters bgp(start_row, start_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST, false);
+              generate_building_if_possible(map, bgp);
             }
           }
           else
@@ -343,7 +352,8 @@ void BaseSettlementGenerator::generate_road_south(MapPtr map, const int start_ro
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              generate_building_if_possible(map, start_row, start_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST);
+              BuildingGenerationParameters bgp(start_row, start_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST, false);
+              generate_building_if_possible(map, bgp);
             }
           }
           else
@@ -411,7 +421,8 @@ void BaseSettlementGenerator::generate_road_east(MapPtr map, const int start_row
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              generate_building_if_possible(map, start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH);
+              BuildingGenerationParameters bgp(start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false);
+              generate_building_if_possible(map, bgp);
             }
           }
           else
@@ -430,7 +441,8 @@ void BaseSettlementGenerator::generate_road_east(MapPtr map, const int start_row
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              generate_building_if_possible(map, start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH);
+              BuildingGenerationParameters bgp(start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH, false);
+              generate_building_if_possible(map, bgp);
             }
           }
           else
@@ -498,7 +510,8 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              generate_building_if_possible(map, start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH);
+              BuildingGenerationParameters bgp(start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false);
+              generate_building_if_possible(map, bgp);
             }
           }
           else
@@ -517,7 +530,8 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              generate_building_if_possible(map, start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH);
+              BuildingGenerationParameters bgp(start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH, false);
+              generate_building_if_possible(map, bgp);
             }
           }
           else

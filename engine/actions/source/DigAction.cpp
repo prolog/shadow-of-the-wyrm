@@ -125,9 +125,32 @@ TilePtr DigAction::dig_tile(TilePtr adjacent_tile) const
 
   // Potentially add some items created by breaking up the original tile.
   ItemManager im;
-  im.create_item_with_probability(DIG_PERCENT_CHANCE_ITEM, 100, new_tile->get_items(), adjacent_tile->get_decomposition_item_id(), static_cast<uint>(RNG::range(1, 6)));
+  string decomp_item_id = get_decomposition_item_id(adjacent_tile->get_decomposition_item_ids());
+
+  if (!decomp_item_id.empty())
+  {
+    im.create_item_with_probability(DIG_PERCENT_CHANCE_ITEM, 100, new_tile->get_items(), decomp_item_id, static_cast<uint>(RNG::range(1, 6)));
+  }
 
   return new_tile;
+}
+
+string DigAction::get_decomposition_item_id(const vector<pair<pair<int, int>, string>>& decomp_ids) const
+{
+  string decomp_item_id;
+
+  for (const auto& d_pair : decomp_ids)
+  {
+    pair<int, int> x_in_y = d_pair.first;
+
+    if (RNG::x_in_y_chance(x_in_y))
+    {
+      decomp_item_id = d_pair.second;
+      break;
+    }
+  }
+
+  return decomp_item_id;
 }
 
 void DigAction::add_new_tile_to_dig_location(TilePtr new_tile, MapPtr map, const std::string& creature_id, const Direction d) const

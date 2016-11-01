@@ -16,6 +16,10 @@ class SpellShape
     DirectionCategory get_direction_category() const;
     uint get_radius() const;
 
+    // Does the spell affect the external world? (ie, beam, bolt, ball...)
+    // Or is it internal? (targets the self)
+    SpellSituationType get_spell_situation() const;
+
   protected:
     SpellShapeType spell_shape_type;
     DirectionCategory direction_category;

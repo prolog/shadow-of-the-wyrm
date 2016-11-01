@@ -4,6 +4,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
 #include "GameUtils.hpp"
+#include "IFeatureManipulatorFactory.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemProperties.hpp"
@@ -17,30 +18,30 @@
 using namespace std;
 
 // Drop the item on to the square, if possible.
-ActionCostValue DropAction::drop(CreaturePtr creature, ActionManager * const am)
+ActionCostValue DropAction::drop(CreaturePtr dropping_creature, ActionManager * const am)
 {  
   ActionCostValue action_cost_value = 0;
   
   Game& game = Game::instance();
   
-  if (creature)
+  if (dropping_creature)
   {
     if (game.get_current_map()->get_map_type() == MapType::MAP_TYPE_WORLD)
     {
-      handle_world_drop(creature);
+      handle_world_drop(dropping_creature);
     }
     else
     {
       list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-      ItemPtr item_to_drop = am->inventory(creature, creature->get_inventory(), no_filter, {}, false);
+      ItemPtr item_to_drop = am->inventory(dropping_creature, dropping_creature->get_inventory(), no_filter, {}, false);
       
       if (!item_to_drop)
       {
-        handle_no_item_dropped(creature);
+        handle_no_item_dropped(dropping_creature);
       }
       else // Item selected
       {
-        action_cost_value = do_drop(creature, game.get_current_map(), item_to_drop);
+        action_cost_value = do_drop(dropping_creature, game.get_current_map(), item_to_drop);
       }      
     }
   }
@@ -177,6 +178,20 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
           // Display a message if appropriate.
           // If it's the player, remind the user what he or she dropped.
           handle_item_dropped_message(creature, new_item);
+
+          // If there's a feature present, invoke the manipulator to see
+          // if there are any actions that need to be done.  This really
+          // only matters for altars at the moment.
+          if (creatures_tile->has_feature())
+          {
+            FeaturePtr feature = creatures_tile->get_feature();
+            IFeatureManipulatorPtr feature_manip = IFeatureManipulatorFactory::create_manipulator(feature);
+
+            if (feature_manip != nullptr)
+            {
+              feature_manip->drop(creature, creatures_tile, new_item);
+            }
+          }
         }
       }
       

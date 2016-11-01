@@ -9,6 +9,7 @@
 #include "ISerializable.hpp"
 #include "ItemTypes.hpp"
 #include "MaterialTypes.hpp"
+#include "Modifier.hpp"
 #include "Resistances.hpp"
 #include "ScriptDetails.hpp"
 #include "Statistic.hpp"
@@ -125,6 +126,9 @@ class Item : public ISerializable
     Resistances get_resistances() const;
     Resistances& get_resistances_ref();
 
+    void set_modifier(const Modifier& new_modifier);
+    Modifier get_modifier() const;
+
     // Whether or not the item can be enchanted/smithed.
     // If the item is an artifact, it cannot be enchanted/smithed.
     // Otherwise, this function checks to see whether the maximum number
@@ -212,6 +216,7 @@ class Item : public ISerializable
     MaterialType material;
     bool glowing;
     Resistances resistances;
+    Modifier modifier;
     Statistic remaining_enchants;
     Statistic remaining_smithings;
     std::map<std::string, std::string> additional_properties;

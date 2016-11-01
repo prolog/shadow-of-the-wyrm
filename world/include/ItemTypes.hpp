@@ -45,7 +45,10 @@ class ItemIdKeys
   public:
     static const std::string ITEM_ID_CURRENCY;
     static const std::string ITEM_ID_BRANCH;
+    static const std::string ITEM_ID_DIRT;
     static const std::string ITEM_ID_ROCK;
+    static const std::string ITEM_ID_STONE;
+    static const std::string ITEM_ID_MAGICI_SHARD;
     static const std::string ITEM_ID_KINGFLOWER;
     static const std::string ITEM_ID_FIDDLEHEAD_GREEN;
     static const std::string ITEM_ID_FERN;
@@ -88,6 +91,15 @@ class ItemIdKeys
     static const std::string ITEM_ID_SALMON;
     static const std::string ITEM_ID_TUNA;
     static const std::string ITEM_ID_COD;
+
+    // Wandcraft
+    static const std::string ITEM_ID_TEMPLATE_WAND;
+
+    // Scribing
+    static const std::string ITEM_ID_QUILL;
+    static const std::string ITEM_ID_INKPOT;
+    static const std::string ITEM_ID_BLANK_SCROLL;
+    static const std::string ITEM_ID_TEMPLATE_SCROLL;
 
   protected:
     ItemIdKeys();

@@ -1,0 +1,9 @@
+"We must not look at goblin men, %b
+We must not buy their fruits: %b
+Who knows upon what soil they fed %b
+Their hungry thirsty roots?" %b
+"Come buy," call the goblins %b
+Hobbling down the glen. 
+%p
+- From "Goblin Market", Christina Rossetti
+%b

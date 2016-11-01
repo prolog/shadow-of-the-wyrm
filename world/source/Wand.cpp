@@ -22,6 +22,7 @@ Wand::Wand()
   type = ItemType::ITEM_TYPE_WAND;
   symbol ='\\';
   range = 0;
+  radius = 1;
   shape = SpellShapeType::SPELL_SHAPE_BEAM;
   has_damage = false;
   spell_colour = Colour::COLOUR_WHITE;
@@ -64,6 +65,7 @@ bool Wand::wand_properties_match(const Wand& rhs) const
   bool result = true;
 
   result = result && (range == rhs.range);
+  result = result && (radius == rhs.radius);
   result = result && (shape == rhs.shape);
   result = result && (has_damage == rhs.has_damage);
   result = result && (damage == rhs.damage);
@@ -97,6 +99,16 @@ uint Wand::get_range() const
   {
     return 0;
   }
+}
+
+void Wand::set_radius(const uint new_radius)
+{
+  radius = new_radius;
+}
+
+uint Wand::get_radius() const
+{
+  return radius;
 }
 
 void Wand::set_spell_shape_type(const SpellShapeType new_shape)
@@ -213,6 +225,7 @@ bool Wand::serialize(ostream& stream) const
   Item::serialize(stream);
 
   Serialize::write_uint(stream, range);
+  Serialize::write_uint(stream, radius);
   Serialize::write_enum(stream, shape);
   Serialize::write_bool(stream, has_damage);
   
@@ -229,6 +242,7 @@ bool Wand::deserialize(istream& stream)
   Item::deserialize(stream);
 
   Serialize::read_uint(stream, range);
+  Serialize::read_uint(stream, radius);
   Serialize::read_enum(stream, shape);
   Serialize::read_bool(stream, has_damage);
 

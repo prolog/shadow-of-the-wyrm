@@ -4,6 +4,7 @@
 #include "Race.hpp"
 #include "Class.hpp"
 #include "Deity.hpp"
+#include "SpellTypes.hpp"
 
 // Utility functions for creatures that are here (instead of on the
 // Creature class) because they require engine-specific work, such as
@@ -40,6 +41,8 @@ class CreatureUtils
     // Check to see if any of the creatures in a particular threat map exist
     // in the given map.
     static bool threat_exists_in_map(const ThreatMap& tm, MapPtr map);
+
+    static bool has_spell_for_situation_type(CreaturePtr creature, const SpellSituationType sst);
 
   protected:
     CreatureUtils();

@@ -1,4 +1,5 @@
 #include "EarthTile.hpp"
+#include "ItemTypes.hpp"
 
 using namespace std;
 
@@ -19,9 +20,10 @@ TileType EarthTile::get_decomposition_tile_type() const
   return TileType::TILE_TYPE_DUNGEON;
 }
 
-string EarthTile::get_decomposition_item_id() const
+vector<pair<pair<int, int>, string>> EarthTile::get_decomposition_item_ids() const
 {
-  return "_dirt";
+  vector<pair<pair<int, int>, string>> result = {{{1,1}, ItemIdKeys::ITEM_ID_DIRT}};
+  return result;
 }
 
 string EarthTile::get_tile_description_sid() const

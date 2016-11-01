@@ -95,6 +95,11 @@ bool RNG::x_in_y_chance(const int x, const int y)
   return (val <= x);
 }
 
+bool RNG::x_in_y_chance(const pair<int, int>& x_y)
+{
+  return x_in_y_chance(x_y.first, x_y.second);
+}
+
 bool RNG::percent_chance(const int percent_chance)
 {
   int val = RNG::range(1, 100);

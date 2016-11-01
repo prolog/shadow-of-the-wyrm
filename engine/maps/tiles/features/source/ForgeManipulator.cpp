@@ -76,6 +76,11 @@ bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
   return forge_used;
 }
 
+bool ForgeManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+{
+  return false;
+}
+
 // Does the creature know smithing? 
 // Is it wielding a hammer?
 // Does it have ingots?

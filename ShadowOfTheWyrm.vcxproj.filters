@@ -3822,6 +3822,42 @@
     <ClInclude Include="engine\combat\include\PointsTransfer.hpp">
       <Filter>Header Files\engine\combat\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\BlessEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\AltarDropDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\ArtifactDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\WandCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\WandcraftSkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\WandCreationParameters.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\DropParameters.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\ScribingSkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ScribingCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\magic\include\SpellTransfer.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7492,6 +7528,54 @@
     </ClCompile>
     <ClCompile Include="engine\combat\source\unit_tests\PointsTransfer_test.cpp">
       <Filter>Source Files\engine\combat\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\BlessEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\AltarDropDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\ArtifactDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WandCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WandCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\WandcraftSkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\unit_tests\SpellShape_test.cpp">
+      <Filter>Source Files\world\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\WandCreationParameters.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\DropParameters.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\ScribingSkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ScribingCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ScribingCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\SpellTransfer.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Date_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
