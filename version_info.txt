@@ -1,3 +1,6 @@
+Shadow of the Wyrm v0.5.7 "Cutting"
+- Version declared November 1, 2016.
+
 Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Version declared October 1, 2016.  Version finalized November 1, 2016.
 

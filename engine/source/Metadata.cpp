@@ -49,9 +49,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // One of the great baroque composers, Antonio Vivaldi wrote a number
-  // of concerti for the lute.
-  return "\"Vivaldi\"";
+  // English lutenist and composer in the late 16th/early 17th century.
+  return "\"Cutting\"";
 }
 
 string Metadata::get_game_version_synopsis() const
