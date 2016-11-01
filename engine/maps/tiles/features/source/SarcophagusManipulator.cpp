@@ -67,3 +67,8 @@ bool SarcophagusManipulator::handle(TilePtr tile, CreaturePtr creature)
 
   return sarc_opened;
 }
+
+bool SarcophagusManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+{
+  return false;
+}

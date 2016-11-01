@@ -378,7 +378,8 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
   bool cast_spells = true;
 
   Game& game = Game::instance();
-  SpellSelectionScreen sss(game.get_display(), creature);
+  SpellScreenDisplayStrategyPtr sds = std::make_shared<DefaultSpellScreenDisplayStrategy>();
+  SpellSelectionScreen sss(game.get_display(), creature, sds);
 
   string display_s = sss.display();
   int input = display_s.at(0);

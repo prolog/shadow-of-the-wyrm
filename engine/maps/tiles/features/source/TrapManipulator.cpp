@@ -75,6 +75,11 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
   return true;
 }
 
+bool TrapManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+{
+  return false;
+}
+
 void TrapManipulator::trigger_trap(TrapPtr trap, CreaturePtr creature)
 {
   string trigger_message = StringTable::get(trap->get_trigger_message_sid());

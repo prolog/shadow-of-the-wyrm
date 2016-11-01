@@ -636,15 +636,26 @@ class ThieverySkill : public GeneralSkill
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-class WeavingSkill : public GeneralSkill
+class WandcraftSkill : public GeneralSkill
 {
   public:
-    WeavingSkill();
+    WandcraftSkill();
 
     virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
+};
+
+class WeavingSkill : public GeneralSkill
+{
+public:
+  WeavingSkill();
+
+  virtual Skill* clone() override;
+
+private:
+  virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 // WEAPON SKILLS (MELEE)

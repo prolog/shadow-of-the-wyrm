@@ -16,6 +16,7 @@ class XMLRacesReader
     void parse_initial_deity_ids(RacePtr race, const XMLNode& initial_deity_ids_node);
     void parse_race_resistances(RacePtr race, const XMLNode& resistances_node);
     void parse_race_skills(RacePtr race, const XMLNode& skills_node);
+    void parse_race_drops(RacePtr race, const XMLNode& drops_node);
     
     Range<uint> get_age(const XMLNode& age_node);
 };

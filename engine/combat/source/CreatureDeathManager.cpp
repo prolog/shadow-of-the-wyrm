@@ -108,20 +108,32 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
 
   if (dead_creature)
   {
-    if (rm.is_race_or_descendent(dead_creature->get_race_id(), RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
+    // Go through all the drops for the creature's race and parent races.
+    // See if any items should be generated.
+    RaceManager rm;
+    std::map<string, DropParameters> items = rm.get_all_drops(dead_creature->get_race_id());
+
+    for (const auto& item_gen_pair : items)
     {
-      // When a humanoid dies, there is a chance for a drop of ivory pieces.
-      if (RNG::percent_chance(idrc.calculate_pct_chance_currency_drop(attacking_creature)))
+      string item_base_id = item_gen_pair.first;
+      DropParameters dp = item_gen_pair.second;
+      int item_base_chance = dp.get_percent_chance();
+
+      if (RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attacking_creature, item_base_chance)))
       {
-        // Generate currency!
-        ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::dice(4, 6));
-        generated_items.push_back(ivory);
+        ItemPtr racial_item = ItemManager::create_item(item_base_id, RNG::dice(dp.get_min(), dp.get_max()));
+
+        if (racial_item != nullptr)
+        {
+          generated_items.push_back(racial_item);
+        }
       }
     }
   }
 
   // When a creature in general dies, there is a small chance it will drop 
-  // an item.
+  // a randomly generated item that is not part of a set of pre-specified
+  // racial items.
   if (RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attacking_creature)))
   {
     Rarity rarity = CreationUtils::generate_rarity();

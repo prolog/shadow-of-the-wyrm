@@ -66,7 +66,6 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
         
         if (selection_command)
         {
-          int key = selection_command->get_key();       
           selected_item = inv->get_from_id(item_id);
           
           if (!inventory_is_read_only && selected_item)

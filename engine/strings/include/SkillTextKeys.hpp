@@ -109,6 +109,8 @@ class SkillTextKeys
     static const std::string SKILL_GENERAL_TANNING_INCREMENT;
     static const std::string SKILL_GENERAL_THIEVERY;
     static const std::string SKILL_GENERAL_THIEVERY_INCREMENT;
+    static const std::string SKILL_GENERAL_WANDCRAFT;
+    static const std::string SKILL_GENERAL_WANDCRAFT_INCREMENT;
     static const std::string SKILL_GENERAL_WEAVING;
     static const std::string SKILL_GENERAL_WEAVING_INCREMENT;
 

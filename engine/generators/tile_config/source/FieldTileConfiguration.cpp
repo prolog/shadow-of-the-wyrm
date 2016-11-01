@@ -11,7 +11,14 @@ FieldTileConfiguration::FieldTileConfiguration()
 
 void FieldTileConfiguration::configure(TilePtr tile, const Season season) const
 {
-  bool created_rock = ItemManager::create_item_with_probability(1, 200, tile->get_items(), ItemIdKeys::ITEM_ID_ROCK);
+  IInventoryPtr tile_items = tile->get_items();
+
+  bool created_rock = ItemManager::create_item_with_probability(1, 200, tile_items, ItemIdKeys::ITEM_ID_ROCK);
+
+  if (!created_rock)
+  {
+    created_rock = ItemManager::create_item_with_probability(1, 200, tile_items, ItemIdKeys::ITEM_ID_STONE);
+  }
 
   if (!created_rock)
   {

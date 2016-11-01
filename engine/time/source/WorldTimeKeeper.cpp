@@ -97,8 +97,6 @@ bool WorldTimeKeeper::serialize_observers(ostream& stream) const
 
   for (const WorldTimeKeeperObserverMap::value_type& observer_pair : observers)
   {
-    uint pair_first = observer_pair.first;
-
     Serialize::write_uint(stream, observer_pair.first);
 
     TimeObserverMap pair_second = observer_pair.second;

@@ -1,3 +1,5 @@
+#include "Conversion.hpp"
+#include "ItemProperties.hpp"
 #include "Scroll.hpp"
 
 using namespace std;
@@ -12,10 +14,11 @@ Scroll::~Scroll()
 {
 }
 
-// Scrolls are always gone once read.
+// Scrolls are always gone once read, unless blank.
 bool Scroll::destroy_on_read() const
 {
-  return true;
+  bool destroy = String::to_bool(get_additional_property(ItemProperties::ITEM_PROPERTIES_BLANK)) == false;
+  return destroy;
 }
 
 Item* Scroll::clone()

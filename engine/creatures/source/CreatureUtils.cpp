@@ -426,6 +426,38 @@ DeityPtr CreatureUtils::get_random_deity_for_race(RacePtr race)
   return deity;
 }
 
+bool CreatureUtils::has_spell_for_situation_type(CreaturePtr creature, const SpellSituationType sst)
+{
+  bool has_spells = false;
+
+  if (creature != nullptr)
+  {
+    Game& game = Game::instance();
+    const SpellMap& sm = game.get_spells_ref();
+    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+    SpellKnowledgeMap skm = sk.get_known_spells();
+
+    for (const auto& skm_pair : skm)
+    {
+      string spell_id = skm_pair.first;
+
+      const auto sm_it = sm.find(spell_id);
+      if (sm_it != sm.end())
+      {
+        SpellShape ss = sm_it->second.get_shape();
+
+        if (ss.get_spell_situation() == sst)
+        {
+          has_spells = true;
+          break;
+        }
+      }
+    }
+  }
+
+  return has_spells;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureUtils_test.cpp"
 #endif

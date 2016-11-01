@@ -90,13 +90,11 @@ pair<bool, TileDirectionMap> ThieverySkillProcessor::check_for_adjacent_creature
 CreaturePtr ThieverySkillProcessor::get_steal_creature(const TileDirectionMap& tdm, CreaturePtr creature, MapPtr map)
 {
   size_t tdm_sz = tdm.size();
-  Direction d;
   CreaturePtr steal_creature;
   TilePtr steal_tile;
 
   if (tdm_sz == 1)
   {
-    d = tdm.begin()->first;
     steal_tile = tdm.begin()->second;
 
     if (steal_tile)

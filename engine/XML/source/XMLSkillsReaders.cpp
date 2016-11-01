@@ -71,6 +71,7 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
     int swimming_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Swimming");
     int tanning_value          = XMLUtils::get_child_node_int_value(general_skills_node, "Tanning");
     int thievery_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Thievery");
+    int wandcraft_value        = XMLUtils::get_child_node_int_value(general_skills_node, "Wandcraft");
     int weaving_value          = XMLUtils::get_child_node_int_value(general_skills_node, "Weaving");
 
     skills.set_value(SkillType::SKILL_GENERAL_ARCHERY, archery_value);
@@ -121,6 +122,7 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
     skills.set_value(SkillType::SKILL_GENERAL_SWIMMING, swimming_value);
     skills.set_value(SkillType::SKILL_GENERAL_TANNING, tanning_value);
     skills.set_value(SkillType::SKILL_GENERAL_THIEVERY, thievery_value);
+    skills.set_value(SkillType::SKILL_GENERAL_WANDCRAFT, wandcraft_value);
     skills.set_value(SkillType::SKILL_GENERAL_WEAVING, weaving_value);
   }
 }

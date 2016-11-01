@@ -108,7 +108,6 @@ CreaturePtr get_creature(const string& creature_id)
 // Get a particular tile from the given map
 TilePtr get_tile(const string& map_id, const Coordinate& c)
 {
-
   Game& game = Game::instance();
   MapRegistry& mr = game.get_map_registry_ref();
   MapPtr map = mr.get_map(map_id);
@@ -157,6 +156,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_spell_castings", add_spell_castings);
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "add_creature_to_map", add_creature_to_map);
+  lua_register(L, "remove_creature_from_map", remove_creature_from_map);
   lua_register(L, "add_status_to_creature", add_status_to_creature);
   lua_register(L, "add_status_to_creature_at", add_status_to_creature_at);
   lua_register(L, "stop_playing_game", stop_playing_game);
@@ -242,6 +242,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_unarmed_slay", add_unarmed_slay);
   lua_register(L, "get_race_name", get_race_name);
   lua_register(L, "set_inscription", set_inscription);
+  lua_register(L, "get_map_dimensions", get_map_dimensions);
+  lua_register(L, "get_coords_with_tile_type_in_range", get_coords_with_tile_type_in_range);
+  lua_register(L, "get_custom_map_id", get_custom_map_id);
 }
 
 // Lua API helper functions
@@ -1197,6 +1200,43 @@ int add_creature_to_map(lua_State* ls)
   return 0;
 }
 
+// Returns a boolean - true if a creature was removed, false otherwise.
+int remove_creature_from_map(lua_State* ls)
+{
+  bool creature_removed = false;
+
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, 1)))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    string creature_id_or_base = lua_tostring(ls, 1);
+    const CreatureMap& creatures = map->get_creatures();
+
+    for (const auto creature_pair : creatures)
+    {
+      CreaturePtr creature = creature_pair.second;
+
+      if (creature != nullptr &&
+        (creature->get_id() == creature_id_or_base || creature->get_original_id() == creature_id_or_base))
+      {
+        MapUtils::remove_creature(map, creature);
+
+        creature_removed = true;
+        break;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to remove_creature_from_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, creature_removed);
+  return 1;
+}
+
 // Add a particular status to a particular creature for a particular duration
 // in minutes.
 //
@@ -1360,12 +1400,32 @@ int get_creature_yx(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
     // Find the creature in the map
-    string creature_id = lua_tostring(ls, 1);
-    Coordinate c = Game::instance().get_current_map()->get_location(creature_id);
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    string creature_id_or_base = lua_tostring(ls, 1);
+    
+    Coordinate c(-1,-1);
+    const CreatureMap& creatures = current_map->get_creatures_ref();
 
-    // Set the return coordinates to the values from the lookup.
-    y = c.first;
-    x = c.second;
+    for (const auto& creature_pair : creatures)
+    {
+      CreaturePtr creature = creature_pair.second;
+
+      if (creature != nullptr)
+      {
+        if (creature &&
+          (creature->get_id() == creature_id_or_base || creature->get_original_id() == creature_id_or_base))
+        {
+          c = current_map->get_location(creature->get_id());
+
+          // Set the return coordinates to the values from the lookup.
+          y = c.first;
+          x = c.second;
+
+          break;
+        }
+      }
+    }
   }
   else
   {
@@ -3644,6 +3704,125 @@ int set_inscription(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_map_dimensions(lua_State* ls)
+{
+  int rows = 0;
+  int cols = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string map_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapRegistry& mr = game.get_map_registry_ref();
+    MapPtr map = mr.get_map(map_id);
+
+    if (map != nullptr)
+    {
+      Dimensions dim = map->size();
+      rows = dim.get_y();
+      cols = dim.get_x();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_map_dimensions");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, rows);
+  lua_pushnumber(ls, cols);
+
+  return 2;
+}
+
+int get_coords_with_tile_type_in_range(lua_State* ls)
+{
+  // Get the args before creating the return table.
+  int num_args = lua_gettop(ls);
+
+  // Create the table - might be empty when we return it.
+  lua_newtable(ls);
+
+  if (num_args == 6 && lua_isstring(ls, 1) 
+                    && lua_isnumber(ls, 2) // y1
+                    && lua_isnumber(ls, 3) // x1
+                    && lua_isnumber(ls, 4) // y2
+                    && lua_isnumber(ls, 5) // x2
+                    && lua_isnumber(ls, 6)) // tile type
+  {
+    string map_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapRegistry& mr = game.get_map_registry_ref();
+    MapPtr map = mr.get_map(map_id);
+
+    if (map != nullptr)
+    {
+      int y1 = lua_tointeger(ls, 2);
+      int x1 = lua_tointeger(ls, 3);
+      int y2 = lua_tointeger(ls, 4);
+      int x2 = lua_tointeger(ls, 5);
+      TileType tt = static_cast<TileType>(lua_tointeger(ls, 6));
+      int cnt = 1;
+
+      for (int y = y1; y < y2; y++)
+      {
+        for (int x = x1; x < x2; x++)
+        {
+          TilePtr tile = map->at(y, x);
+
+          if (tile && tile->get_tile_type() == tt)
+          {
+            lua_newtable(ls);
+            lua_pushnumber(ls, y);
+            lua_rawseti(ls, -2, 1);
+            lua_pushnumber(ls, x);
+            lua_rawseti(ls, -2, 2);
+            lua_rawseti(ls, -2, cnt);
+
+            cnt++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_coords_with_tile_type_in_range");
+    lua_error(ls);
+  }
+
+  return 1;
+}
+
+int get_custom_map_id(lua_State* ls)
+{
+  string custom_map_id;
+
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int row = lua_tointeger(ls, 2);
+    int col = lua_tointeger(ls, 3);
+
+    TilePtr tile = get_tile(map_id, make_pair(row, col));
+
+    if (tile != nullptr)
+    {
+      custom_map_id = tile->get_custom_map_id();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_custom_map_id");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, custom_map_id.c_str());
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)

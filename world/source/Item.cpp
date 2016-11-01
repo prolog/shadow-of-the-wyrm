@@ -72,6 +72,7 @@ bool Item::operator==(const Item& i) const
   result = result && (material == i.material);
   result = result && (glowing == i.glowing);
   result = result && (resistances == i.resistances);
+  result = result && (modifier == i.modifier);
   result = result && (remaining_enchants == i.remaining_enchants);
   result = result && (remaining_smithings == i.remaining_smithings);
   result = result && (additional_properties == i.additional_properties);
@@ -343,6 +344,7 @@ bool Item::matches(std::shared_ptr<Item> i)
     match = match && (effect                == i->get_effect_type()          );
     match = match && (glowing               == i->get_glowing()              );
     match = match && (resistances           == i->get_resistances()          );
+    match = match && (modifier              == i->get_modifier()             );
     match = match && (additional_properties == i->additional_properties      );
     match = match && (event_scripts         == i->event_scripts              );
 
@@ -398,6 +400,16 @@ Resistances Item::get_resistances() const
 Resistances& Item::get_resistances_ref()
 {
   return resistances;
+}
+
+void Item::set_modifier(const Modifier& new_modifier)
+{
+  modifier = new_modifier;
+}
+
+Modifier Item::get_modifier() const
+{
+  return modifier;
 }
 
 Item* Item::create_with_new_id()
@@ -754,6 +766,7 @@ bool Item::serialize(ostream& stream) const
   Serialize::write_bool(stream, glowing);
 
   resistances.serialize(stream);
+  modifier.serialize(stream);
   remaining_enchants.serialize(stream);
   remaining_smithings.serialize(stream);
 
@@ -799,6 +812,7 @@ bool Item::deserialize(istream& stream)
   Serialize::read_bool(stream, glowing);
 
   resistances.deserialize(stream);
+  modifier.deserialize(stream);
   remaining_enchants.deserialize(stream);
   remaining_smithings.deserialize(stream);
 

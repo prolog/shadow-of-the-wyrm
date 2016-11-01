@@ -133,6 +133,12 @@ string EffectTextKeys::get_detect_traps_effect_message(const string& monster_des
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_DETECT_TRAPS_PLAYER, EFFECT_DETECT_TRAPS_MONSTER);
 }
 
+string EffectTextKeys::get_bless_effect_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_BLESS_PLAYER, EFFECT_BLESS_MONSTER_OR_ITEM);
+}
+
+
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
 const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
 const string EffectTextKeys::EFFECT_NULL = "EFFECT_NULL";
@@ -166,3 +172,5 @@ const string EffectTextKeys::EFFECT_UNCURSING_PLAYER = "EFFECT_UNCURSING_PLAYER"
 const string EffectTextKeys::EFFECT_UNCURSING_MONSTER = "EFFECT_UNCURSING_MONSTER";
 const string EffectTextKeys::EFFECT_DETECT_TRAPS_PLAYER = "EFFECT_DETECT_TRAPS_PLAYER";
 const string EffectTextKeys::EFFECT_DETECT_TRAPS_MONSTER = "EFFECT_DETECT_TRAPS_MONSTER";
+const string EffectTextKeys::EFFECT_BLESS_PLAYER = "EFFECT_BLESS_PLAYER";
+const string EffectTextKeys::EFFECT_BLESS_MONSTER_OR_ITEM = "EFFECT_BLESS_MONSTER_OR_ITEM";

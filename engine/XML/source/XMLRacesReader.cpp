@@ -66,6 +66,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool has_pockets = XMLUtils::get_child_node_bool_value(race_node, "HasPockets");
     race->set_has_pockets(has_pockets);
 
+    XMLNode drops_node = XMLUtils::get_next_element_by_local_name(race_node, "Drops");
+    parse_race_drops(race, drops_node);
+
     bool has_random_villages = XMLUtils::get_child_node_bool_value(race_node, "HasRandomVillages", true);
     race->set_has_random_villages(has_random_villages);
     
@@ -221,6 +224,28 @@ void XMLRacesReader::parse_race_skills(RacePtr race, const XMLNode& skills_node)
   Skills race_skills = skills_reader.get_skills(skills_node);
 
   race->set_skills(race_skills);
+}
+
+void XMLRacesReader::parse_race_drops(RacePtr race, const XMLNode& drops_node)
+{
+  if (race && !drops_node.is_null())
+  {
+    vector<XMLNode> drop_nodes = XMLUtils::get_elements_by_local_name(drops_node, "Drop");
+    map<string, DropParameters> drop_chances;
+
+    for (const auto& node : drop_nodes)
+    {
+      string id = XMLUtils::get_child_node_value(node, "ID");
+      int pct_chance = XMLUtils::get_child_node_int_value(node, "PercentChance");
+      int min = XMLUtils::get_child_node_int_value(node, "Min", 1);
+      int max = XMLUtils::get_child_node_int_value(node, "Max", 1);
+
+      DropParameters dp(id, pct_chance, min, max);
+      drop_chances[id] = dp;
+    }
+
+    race->set_drops(drop_chances);
+  }
 }
 
 Range<uint> XMLRacesReader::get_age(const XMLNode& age_node)

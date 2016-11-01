@@ -233,7 +233,6 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
       if (cca.can_move(creature, true))
       {
-        // JCD FIXME: Might want to update this once traps are done.
         if (confirm_move_to_tile_if_necessary(creature, creatures_old_tile, creatures_new_tile))
         {
           // Update the map info
@@ -789,7 +788,11 @@ bool MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
 {
   bool msg_added = false;
 
-  if (creature && creature->get_is_player())
+  // Ensure that a message about the item is only added when the creature
+  // is not blind.
+  CurrentCreatureAbilities cca;
+
+  if (creature && creature->get_is_player() && cca.can_see(creature, false))
   {
     IInventoryPtr tile_items = tile->get_items();
     

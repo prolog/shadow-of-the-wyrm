@@ -52,6 +52,52 @@ cynwise_sungem_quest = Quest:new("cynwise_sungem",
                                  cynwise_sun_gem_completion_condition_fn,
                                  cynwise_sun_gem_completion_fn)
 
+-- Cynwise wants to make wands, but is old and frail and the
+-- dungeon is dangerous.
+local function cynwise_magici_start_fn()
+  add_message_with_pause("CYNWISE_MAGICI_QUEST_START_SID")
+  add_message_with_pause("CYNWISE_MAGICI_QUEST_START2_SID")
+  clear_and_add_message("CYNWISE_MAGICI_QUEST_START3_SID")
+end
+
+local function cynwise_magici_completion_condition_fn()
+  return player_has_item("_magici_shard") == true
+end
+
+local function cynwise_magici_completion_fn()
+  -- Check for Wandcraft
+  local wandcraft_val = get_skill_value(PLAYER_ID, 48)
+
+    -- Give the player some skill in Wandcraft
+  if wandcraft_val < 100 then
+    set_skill_value(PLAYER_ID, 48, wandcraft_val + RNG_range(30, 40))
+    add_message("CYNWISE_MAGICI_QUEST_COMPLETE_WANDCRAFT_SID")
+  else
+    -- If the player is already loaded up on Wandcraft, Cynwise provides
+    -- some powerful items instead.
+    add_object_to_player_tile("dragon_breath_wand")
+    add_object_to_player_tile("gain_attributes_potion", 2)
+    add_object_to_player_tile("enchanting_scroll", 3)
+
+    add_message("CYNWISE_MAGICI_QUEST_COMPLETE_ITEMS_SID")
+  end
+
+  remove_object_from_player("_magici_shard")
+  return true
+end
+
+cynwise_magici_quest = Quest:new("cynwise_magici",
+                                 "CYNWISE_MAGICI_QUEST_TITLE_SID",
+                                 "CYNWISE_DESCRIPTION_SID",
+                                 "CYNWISE_MAGICI_DESCRIPTION_SID",
+                                 "CYNWISE_MAGICI_QUEST_COMPLETE_SID",
+                                 "CYNWISE_MAGICI_QUEST_REMINDER_SID",
+                                 truefn,
+                                 cynwise_magici_start_fn,
+                                 cynwise_magici_completion_condition_fn,
+                                 cynwise_magici_completion_fn)
+
+
 -- Wintersea Keep quest details
 local function cynwise_wintersea_start_fn()
   add_message_with_pause("CYNWISE_WINTERSEA_QUEST_START_SID")
@@ -136,10 +182,12 @@ cynwise_aeschburh_quest = Quest:new("cynwise_aeschburh_quest",
 -- Handle quest ordering for Cynwise.
 -- The Sun Gem quest comes first, then Wintersea, followed by Aeschburh.
 if cynwise_sungem_quest:execute() == false then
-  if wintersea_quest:execute() == false then
-    if cynwise_aeschburh_quest:execute() == false then
-      local replace = {get_player_title()}
-      add_message("CYNWISE_SPEECH_TEXT_SID", replace)
+  if cynwise_magici_quest:execute() == false then
+    if wintersea_quest:execute() == false then
+      if cynwise_aeschburh_quest:execute() == false then
+        local replace = {get_player_title()}
+        add_message("CYNWISE_SPEECH_TEXT_SID", replace)
+      end
     end
   end
 end

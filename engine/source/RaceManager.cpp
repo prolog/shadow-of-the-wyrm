@@ -25,7 +25,7 @@ RacePtr RaceManager::get_race(const string& race_id)
 }
 
 // Checks to see if one race is related to another
-bool RaceManager::is_race_or_descendent(const string race_id, const string& race_to_match)
+bool RaceManager::is_race_or_descendent(const string& race_id, const string& race_to_match)
 {
   bool matches = false;
 
@@ -72,4 +72,47 @@ bool RaceManager::is_race_or_descendent(const string race_id, const string& race
   }
 
   return matches;
+}
+
+map<string, DropParameters> RaceManager::get_all_drops(const string& race_id)
+{
+  map<string, DropParameters> drops;
+
+  Game& game = Game::instance();
+  RaceMap races = game.get_races_ref();
+  RacePtr current_race;
+  string current_race_id, parent_race_id;
+
+  RaceMap::iterator r_it = races.find(race_id);
+
+  if (r_it != races.end())
+  {
+    current_race = r_it->second;
+    parent_race_id = current_race->get_parent_race_id();
+    current_race_id = current_race->get_race_id();
+
+    // Walk up the race hierarchy, checking to see if the parent matches.
+    // Keep track of the races we've seen to break any cycles that occur.
+    set<string> seen_races;
+
+    // If the parent race isn't in the "seen" set yet, add it, and continue.
+    while (seen_races.find(current_race_id) == seen_races.end())
+    {
+      seen_races.insert(current_race_id);
+
+      map<string, DropParameters> cur_race_drops = current_race->get_drops();
+      drops.insert(cur_race_drops.begin(), cur_race_drops.end());
+
+      r_it = races.find(parent_race_id);
+
+      if (r_it != races.end())
+      {
+        current_race = r_it->second;
+        current_race_id = current_race->get_race_id();
+        parent_race_id = current_race->get_parent_race_id();
+      }
+    }
+  }
+
+  return drops;
 }

@@ -25,6 +25,18 @@ uint Date::get_hours() const
   return hours;
 }
 
+TimeOfDayType Date::get_time_of_day() const
+{
+  TimeOfDayType dtype = TimeOfDayType::TIME_OF_DAY_NIGHT;
+
+  if (hours >= 7 && hours < 19)
+  {
+    dtype = TimeOfDayType::TIME_OF_DAY_DAY;  
+  }
+
+  return dtype;
+}
+
 uint Date::get_day_of_week() const
 {
   return day_of_week;
@@ -59,3 +71,7 @@ uint Date::get_year() const
 {
   return year;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Date_test.cpp"
+#endif

@@ -1,11 +1,16 @@
 #pragma once
 #include <string>
+#include "Creature.hpp"
+#include "Feature.hpp"
 
 class DeityDecisionImplications
 {
   public:
     DeityDecisionImplications();
     DeityDecisionImplications(const int new_piety, const std::string new_message_sid);
+
+    // Returns the increase in piety as the result of the sacrifice.
+    int adjust_creature_piety(CreaturePtr creature, FeaturePtr feature);
 
     void set_piety_loss(const int new_piety);
     int get_piety_loss() const;

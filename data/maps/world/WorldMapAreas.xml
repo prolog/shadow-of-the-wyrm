@@ -126,5 +126,8 @@
 			<Row y="4" x="52">~~~</Row>
 			<Script>areas/eka.lua</Script>
 		</Area>
+		<Area id="central_lands">
+			<Script>areas/central_lands.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>

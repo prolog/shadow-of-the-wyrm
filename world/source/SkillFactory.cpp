@@ -33,6 +33,8 @@ SkillPtr SkillFactory::create_skill(const ClassIdentifier ci)
 
 void SkillFactory::initialize_skill_map()
 {
+  static_assert(SkillType::SKILL_GENERAL_LAST == SkillType(50), "Unexpected SkillType::SKILL_GENERAL_LAST");
+
   skill_map.clear();
 
   std::shared_ptr<ArcherySkill> archery = std::make_shared<ArcherySkill>();
@@ -84,6 +86,7 @@ void SkillFactory::initialize_skill_map()
   std::shared_ptr<SwimmingSkill> swimming = std::make_shared<SwimmingSkill>();
   std::shared_ptr<TanningSkill> tanning = std::make_shared<TanningSkill>();
   std::shared_ptr<ThieverySkill> thievery = std::make_shared<ThieverySkill>();
+  std::shared_ptr<WandcraftSkill> wandcraft = std::make_shared<WandcraftSkill>();
   std::shared_ptr<WeavingSkill> weaving = std::make_shared<WeavingSkill>();
   std::shared_ptr<AxesSkill> axes = std::make_shared<AxesSkill>();
   std::shared_ptr<ShortBladesSkill> short_blades = std::make_shared<ShortBladesSkill>();
@@ -159,6 +162,7 @@ void SkillFactory::initialize_skill_map()
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_SWIMMING, swimming));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_TANNING, tanning));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_THIEVERY, thievery));
+  skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_WANDCRAFT, wandcraft));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_WEAVING, weaving));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_AXES, axes));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_SHORT_BLADES, short_blades));

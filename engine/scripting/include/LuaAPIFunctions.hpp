@@ -44,6 +44,7 @@ int RNG_percent_chance(lua_State* ls);
 int add_spell_castings(lua_State* ls);
 int gain_experience(lua_State* ls);
 int add_creature_to_map(lua_State* ls);
+int remove_creature_from_map(lua_State* ls);
 int add_status_to_creature(lua_State* ls);
 int add_status_to_creature_at(lua_State* ls);
 int stop_playing_game(lua_State* ls);
@@ -129,6 +130,9 @@ int get_unarmed_slays(lua_State* ls);
 int add_unarmed_slay(lua_State* ls);
 int get_race_name(lua_State* ls);
 int set_inscription(lua_State* ls);
+int get_map_dimensions(lua_State* ls);
+int get_coords_with_tile_type_in_range(lua_State* ls);
+int get_custom_map_id(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

@@ -6,19 +6,12 @@
 int ItemDropRateCalculator::calculate_pct_chance_item_drop(CreaturePtr creature)
 {
   int pct_chance = CreatureGenerationConstants::CREATURE_DROP_RATE;
-
-  if (creature != nullptr)
-  {
-    float multiplier = 1.0f + static_cast<float>(creature->get_skills().get_value(SkillType::SKILL_GENERAL_DUNGEONEERING) / 100.0f);
-    pct_chance = static_cast<int>(pct_chance * multiplier);
-  }
-
-  return pct_chance;
+  return calculate_pct_chance_item_drop(creature, pct_chance);
 }
 
-int ItemDropRateCalculator::calculate_pct_chance_currency_drop(CreaturePtr creature)
+int ItemDropRateCalculator::calculate_pct_chance_item_drop(CreaturePtr creature, const int base_pct_chance)
 {
-  int pct_chance = CreatureGenerationConstants::HUMANOID_CURRENCY_RATE;
+  int pct_chance = base_pct_chance;
 
   if (creature != nullptr)
   {

@@ -2,6 +2,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
 #include "global_prototypes.hpp"
+#include "ArtifactDumper.hpp"
 #include "AttackDumper.hpp"
 #include "CharacterDumper.hpp"
 #include "ClassManager.hpp"
@@ -42,6 +43,7 @@ string CharacterDumper::str() const
 {
   ostringstream ss;
   
+  Game& game = Game::instance();
   Metadata meta;
   string version = meta.get_game_version_synopsis();
   ss << String::centre(version, num_cols) << endl << endl;
@@ -72,6 +74,9 @@ string CharacterDumper::str() const
     
   InventoryDumper inventory_dumper(creature, num_cols);
   ss << inventory_dumper.str() << endl << endl;
+
+  ArtifactDumper artifact_dumper(game.get_items_ref(), game.get_item_generation_values_ref(), num_cols);
+  ss << artifact_dumper.str() << endl << endl;
 
   AttackDumper attack_dumper(creature, num_cols);
   ss << attack_dumper.str() << endl << endl;

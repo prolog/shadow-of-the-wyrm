@@ -10,6 +10,12 @@ namespace DateValues
   static const int NUMBER_OF_DAYS_PER_YEAR = 360;
 };
 
+enum struct TimeOfDayType
+{
+  TIME_OF_DAY_DAY = 0,
+  TIME_OF_DAY_NIGHT = 1
+};
+
 class Date
 {
   public:
@@ -18,6 +24,7 @@ class Date
     uint get_seconds() const;
     uint get_minutes() const;
     uint get_hours() const;
+    TimeOfDayType get_time_of_day() const;
     uint get_day_of_week() const;
     std::string get_day_of_week_sid() const;
     uint get_day_of_month() const;

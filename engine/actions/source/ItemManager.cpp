@@ -262,17 +262,17 @@ ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
   return picked_up_item;
 }
 
-ActionCostValue ItemManager::drop(CreaturePtr creature, ItemPtr item)
+ActionCostValue ItemManager::drop(CreaturePtr dropping_creature, ItemPtr item)
 {
   ActionCostValue dropped_item = 0;
   
-  if (creature && item)
+  if (dropping_creature && item)
   {
-    IInventoryPtr inv = creature->get_inventory();
+    IInventoryPtr inv = dropping_creature->get_inventory();
     
     if (inv->remove(item->get_id()))
     {
-      dropped_item = get_action_cost_value(creature);
+      dropped_item = get_action_cost_value(dropping_creature);
     }
   }
   
