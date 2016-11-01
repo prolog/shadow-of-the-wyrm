@@ -124,6 +124,10 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Played with the starting stats a little bit so that Gnomes get a little 
   bit more intelligence, and Mountain Elves a little more willpower.
 
+- In preparation for eventually differentiating day and night visually,
+  added a new "hours_elapsed" setting that can control at what time
+  the game starts.  Set 8 a.m. as the default.
+
 - Additional poem fragment for the title screen (Goblin Market).
 
 - More stanzas for "Tel and Floridel".
@@ -133,7 +137,7 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
 - New items: vorpal bolt wand, scroll of blessing, magici shard, small 
   stone, quill, inkpot, blank scroll, wave locket, scrimshaw hairpin.
 
-- New artifacts: greatsword of Choros.
+- New artifacts: Greatsword of Choros.
 
 - New creatures: animated broom, Cornel, Thesilea.
 
