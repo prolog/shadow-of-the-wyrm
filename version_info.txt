@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.5.6 "Vivaldi"
-- Version declared October 1, 2016.
+- Version declared October 1, 2016.  Version finalized November 1, 2016.
 
 - New effect type, Bless.  When the effect type is cursed, an item is only
   turned uncursed, and only if it is currently cursed.  When the effect 
@@ -128,7 +128,8 @@ Shadow of the Wyrm v0.5.6 "Vivaldi"
   added a new "hours_elapsed" setting that can control at what time
   the game starts.  Set 8 a.m. as the default.
 
-- Additional poem fragment for the title screen (Goblin Market).
+- Additional poem fragments for the title screen (Goblin Market, The
+  Stolen Child).
 
 - More stanzas for "Tel and Floridel".
 
