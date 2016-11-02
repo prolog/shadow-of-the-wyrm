@@ -683,3 +683,13 @@ a crossing-bridge beneath the corpse.  Paused %b
 to say some words.  Tel lit the base, and felt %b
 a rush of anguish as he watched the body melt.
 %p
+The company returned, an empty hall %b
+their welcome home.  The silver had been set, %b
+amphorae placed, but absence is the pall %b
+of merriment.  They poured some wine, and wept. %b
+The clamour roused the sleepers.  Lanterns lit. %b
+Now all around the hall were laughs, delight %b
+the king had come - at last!  And bit by bit, %b
+subsided, as no glamour could disguise %b
+the heavy dwindling, the losses realized.
+%p
