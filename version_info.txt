@@ -10,6 +10,11 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
   - Fixed a few bestiary typos and wording issues (AgingMinotaur).
 
+  - Some tiles in the non-Windows builds had null inventories due to an
+    issue with one of the tile member variables not being properly
+    initialized in all cases.  This caused items to disappear on drop
+    (AgingMinotaur).
+
 Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Version declared October 1, 2016.  Version finalized November 1, 2016.
 
