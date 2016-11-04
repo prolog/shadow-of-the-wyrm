@@ -15,6 +15,9 @@ Shadow of the Wyrm v0.5.7 "Cutting"
     initialized in all cases.  This caused items to disappear on drop
     (AgingMinotaur).
 
+  - Backspace wasn't working properly in free-form text prompts in Linux
+    builds (AgingMinotaur).
+
 Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Version declared October 1, 2016.  Version finalized November 1, 2016.
 
