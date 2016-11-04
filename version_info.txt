@@ -1,6 +1,8 @@
 Shadow of the Wyrm v0.5.7 "Cutting"
 - Version declared November 1, 2016.
 
+- Log filenames now have the format "sotw-YYYYMMDD-i.log".
+
 - More stanzas for the epic poem.
 
 - Siriath is now a proper spellcaster.  He casts Wreath of Fire and
