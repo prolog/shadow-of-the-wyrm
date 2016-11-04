@@ -91,10 +91,6 @@ Avagart:
 AgingMinotaur:
 - The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
 - Rebalance regen rates.
-- Grass tiles and others causing dropped items to disappear, but no
-  "splash" message, etc.  Linux only?  Null inventory on tile, for some
-  reason (confirmed).
-- Backspace not working in Linux.
 - Only keep logs for a certain amount of time (configurable in swyrm.ini)
 - More feedback when selecting randomization of individual characteristics
   on the new game screen.

@@ -56,7 +56,7 @@ string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalph
   {
     getyx(window, y, x);
     
-    if (c == NC_BACKSPACE_KEY)
+    if (c == NC_BACKSPACE_KEY || c == NC_ALTERNATIVE_BACKSPACE_KEY)
     {
       if (prompt_text.length())
       {
