@@ -20739,7 +20739,11 @@
 					<NumDice>9</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>6</Exp>
+				<AP>
+					<NumDice>12</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>7</Exp>
 			</CreatureGeneration>
 			<Level>6</Level>
 			<Damage>
@@ -20747,6 +20751,16 @@
 				<NumSides>12</NumSides>
 				<Type>9</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>a_01_wreath_of_fire</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>c_02_flame_dart</SpellID>
+					<Castings>10</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="garros">
 			<RaceID>01_human</RaceID>

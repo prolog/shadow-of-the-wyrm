@@ -17,7 +17,7 @@ Tile::Tile(const int new_hardness)
 }
 
 Tile::Tile(const DigChances& dc)
-: dig_chances(dc)
+: hardness(0), dig_chances(dc)
 {
   init();
 }
