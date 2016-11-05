@@ -3,6 +3,9 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
 - Log filenames now have the format "sotw-YYYYMMDD-i.log".
 
+- Logs older than a week are now deleted on startup (AgingMinotaur).
+  The age period can be configured in swyrm.ini.
+
 - More stanzas for the epic poem.
 
 - Siriath is now a proper spellcaster.  He casts Wreath of Fire and
