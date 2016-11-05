@@ -3858,6 +3858,9 @@
     <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp">
       <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\LogFiles.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7576,6 +7579,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp">
       <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\LogFiles.cpp">
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

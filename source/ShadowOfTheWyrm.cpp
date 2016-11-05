@@ -10,11 +10,13 @@
 
 #include "CursesKeyboardController.hpp"
 
+#include "Conversion.hpp"
 #include "CursesDisplay.hpp"
 #include "DisplayConstants.hpp"
 #include "DisplayFactory.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
+#include "LogFiles.hpp"
 #include "Metadata.hpp"
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "Settings.hpp"
@@ -36,6 +38,7 @@ using namespace std;
 using namespace xercesc;
 
 void print_title();
+void remove_old_logfiles(const Settings& settings);
 bool check_write_permissions();
 int parse_command_line_arguments(int argc, char* argv[]);
 
@@ -108,6 +111,8 @@ int main(int argc, char* argv[])
     {
       Settings settings(true);
 
+      remove_old_logfiles(settings);
+
       // Set the default display and controller.  This is hard-coded, but c
       // JCD FIXME: Refactor.  This id should eventually be in a .rc
       // type file, so that each individual person can set their own
@@ -172,4 +177,15 @@ bool check_write_permissions()
   }
   
   return can_write;
+}
+
+void remove_old_logfiles(const Settings& settings)
+{
+  int days_old = String::to_int(settings.get_setting("remove_logs_days_old"));
+
+  if (days_old > -1)
+  {
+    LogFiles lf;
+    lf.remove_old(days_old);
+  }
 }

@@ -49,6 +49,7 @@ class Log
     bool trace_enabled() const;
 
   private:
+    friend class LogFiles;
     friend int main(int argc, char* argv[]);
     static Log* instance(const LoggingLevel level_to_set);
     Log(); // Open file
@@ -61,5 +62,6 @@ class Log
 
     static LoggingLevel level;
     static int counter;
+    static const std::string LOG_PREFIX;
     std::ofstream sl_log;
 };
