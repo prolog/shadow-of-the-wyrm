@@ -135,7 +135,11 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
     else if (!inv->empty() && !player_blinded) // If at least one item exists in the tile's inventory of items
     {
       ItemPtr item = inv->at(0); // Get the first item
-      display_tile = create_display_tile_from_item(item);
+
+      if (item != nullptr)
+      {
+        display_tile = create_display_tile_from_item(item);
+      }
     }
     else if (feature && !feature->get_is_hidden() && !player_blinded) // There's no creature, and no items.  Is there a feature?  Can it be seen?
     {

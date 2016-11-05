@@ -42,7 +42,7 @@ bool Inventory::add_front(ItemPtr item)
 {
   bool added_item = false;
   
-  if (items.size() < items.max_size())
+  if (items.size() < items.max_size() && item != nullptr)
   {
     items.push_front(item);
     added_item = true;
@@ -56,7 +56,7 @@ bool Inventory::add(ItemPtr item)
 {
   bool added_item = false;
   
-  if (items.size() < items.max_size())
+  if (items.size() < items.max_size() && item != nullptr)
   {
     // JCD FIXME: Eventually, this should be an insert into the correct position.
     // Maybe.

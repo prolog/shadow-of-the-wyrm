@@ -1,5 +1,4 @@
 Me:
-- Make sure that crypts are fixed for the next release!
 - Info at the top of each log file (username, character name, game
   version, datestamp).
 - Decision strategy flags or something for mobile creatures.  Add a
@@ -99,7 +98,6 @@ AgingMinotaur:
 - More feedback when selecting randomization of individual characteristics
   on the new game screen.
 - Stop walking on feature/branching corridor.
-- Crash still happening on central room in crypts, sometimes.
 - Update Detection so that the message makes more sense - should maybe
   only fire when out of depth creatures have been generated?
 - Friendly creatures should assist other friendly creatures who have been
