@@ -1,3 +1,5 @@
+#include <chrono>
+#include <ctime>
 #include <sstream>
 #include <limits>
 #include <boost/date_time/posix_time/posix_time.hpp>
@@ -10,6 +12,7 @@ using namespace boost::posix_time;
 
 LoggingLevel Log::level = LoggingLevel::LOG_NONE; // Logging is off by default.
 int Log::counter = 0;
+const string Log::LOG_PREFIX = "sotw-";
 
 Log::Log()
 {
@@ -131,11 +134,33 @@ bool Log::trace_enabled() const
 
 string Log::create_filename()
 {
-  string filename_prefix = "sl-";
   string filename_ext = ".log";
-
+  auto now = std::chrono::system_clock::now();
+  std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+  struct tm *parts = std::localtime(&now_c);
   ostringstream filename;
-  filename << filename_prefix << counter++ << filename_ext;
+  filename << LOG_PREFIX;
+  filename << (1900 + parts->tm_year);
+
+  int mon = 1 + parts->tm_mon;
+
+  if (mon <= 9)
+  {
+    filename << 0;
+  }
+
+  filename << mon;
+  
+  int day = parts->tm_mday;
+  
+  if (day <= 9)
+  {
+    filename << 0;
+  }
+  
+  filename << day;
+
+  filename << "-" << ++counter << filename_ext;
   return filename.str();
 }
 

@@ -43,14 +43,18 @@ string Metadata::get_version() const
 {
 	stringstream ss;
 	ss << MAJOR_VERSION << "." << MINOR_VERSION << "." << REVISION;
+
+  if (REVISION_PATCH > 0)
+  {
+    ss << "." << REVISION_PATCH;
+  }
+
 	string version = ss.str();
 	return version;
 }
 
 string Metadata::get_code_name() const
 { 
-  // One of the great baroque composers, Antonio Vivaldi wrote a number
-  // of concerti for the lute.
   return "\"Vivaldi\"";
 }
 

@@ -1,6 +1,16 @@
 Me:
+- Info at the top of each log file (username, character name, game
+  version, datestamp).
+- Decision strategy flags or something for mobile creatures.  Add a
+  sentinel flag: move when hostile, stay otherwise.  Review list of
+  immobile creatures and change as appropriate.
 - Day/night.  Display differently, display a message when it changes, etc.
   Start game at 8am in-game.  Show day/night in "T"ime command.
+- Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
+  away from the player, hits incredibly hard when attacked.  Chatting to
+  her grants a wish.  She should have a chance of vanishing, which then
+  decrements her generated counter to ensure she can appear again.  There
+  should be a creature that talks about her.
 - z-maps for settlements: test flying between multi-level maps and going
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
@@ -84,6 +94,17 @@ Avagart:
 
 AgingMinotaur:
 - The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
+- Rebalance regen rates.
+- More feedback when selecting randomization of individual characteristics
+  on the new game screen.
+- Stop walking on feature/branching corridor.
+- Update Detection so that the message makes more sense - should maybe
+  only fire when out of depth creatures have been generated?
+- Friendly creatures should assist other friendly creatures who have been
+  attacked - hostility should be transitive.  Test this by rampaging
+  through Isen Dun.
+- Scale poisons based on attacker level - L50 poisons should be very
+  dangerous!
 
 Kraphead:
 - auto-displace when bumping friendly creatures
