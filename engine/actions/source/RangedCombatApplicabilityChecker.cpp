@@ -15,35 +15,38 @@ pair<bool, string> RangedCombatApplicabilityChecker::can_creature_do_ranged_comb
   pair<bool, string> ranged_combat_info;
   ranged_combat_info.first = false;
   
-  if (!is_current_map_type_not_world())
+  if (creature != nullptr)
   {
-    ranged_combat_info.second = get_ranged_combat_on_world_map_not_allowed_message();
-  }
-  else if (is_ammunition_cursed(creature))
-  {
-    ranged_combat_info.second = get_ammunition_cursed_message();
-  }
-  else if (!is_ranged_weapon_equipped(creature))
-  {
-    ranged_combat_info.second = get_ranged_weapon_not_equipped_message();
-  }
-  else if (!is_ranged_weapon_and_ammunition_equipped(creature))
-  {
-    ranged_combat_info.second = get_ammunition_not_equipped_message();
-  }
-  else if (!is_ranged_weapon_required_and_equipped(creature))
-  {
-    ranged_combat_info.second = get_ammunition_requires_ranged_weapon_message();
-  }
-  else if (!does_ranged_weapon_match_ammunition(creature))
-  {
-    ranged_combat_info.second = get_weapon_and_ammunition_mismatch_message();
-  }
-  else
-  {
-    // Everything is good - update the pair so that the "success"
-    // boolean value is true.
-    ranged_combat_info.first = true;
+    if (!is_current_map_type_not_world())
+    {
+      ranged_combat_info.second = get_ranged_combat_on_world_map_not_allowed_message();
+    }
+    else if (is_ammunition_cursed(creature))
+    {
+      ranged_combat_info.second = get_ammunition_cursed_message();
+    }
+    else if (!is_ranged_weapon_equipped(creature))
+    {
+      ranged_combat_info.second = get_ranged_weapon_not_equipped_message();
+    }
+    else if (!is_ranged_weapon_and_ammunition_equipped(creature))
+    {
+      ranged_combat_info.second = get_ammunition_not_equipped_message();
+    }
+    else if (!is_ranged_weapon_required_and_equipped(creature))
+    {
+      ranged_combat_info.second = get_ammunition_requires_ranged_weapon_message();
+    }
+    else if (!does_ranged_weapon_match_ammunition(creature))
+    {
+      ranged_combat_info.second = get_weapon_and_ammunition_mismatch_message();
+    }
+    else
+    {
+      // Everything is good - update the pair so that the "success"
+      // boolean value is true.
+      ranged_combat_info.first = true;
+    }
   }
 
   return ranged_combat_info;

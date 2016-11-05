@@ -43,14 +43,19 @@ string Metadata::get_version() const
 {
 	stringstream ss;
 	ss << MAJOR_VERSION << "." << MINOR_VERSION << "." << REVISION;
+
+  if (REVISION_PATCH > 0)
+  {
+    ss << "." << REVISION_PATCH;
+  }
+
 	string version = ss.str();
 	return version;
 }
 
 string Metadata::get_code_name() const
 { 
-  // English lutenist and composer in the late 16th/early 17th century.
-  return "\"Cutting\"";
+  return "\"Vivaldi\"";
 }
 
 string Metadata::get_game_version_synopsis() const

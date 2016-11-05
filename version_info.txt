@@ -1,5 +1,5 @@
-Shadow of the Wyrm v0.5.7 "Cutting"
-- Version declared November 1, 2016.
+Shadow of the Wyrm v0.5.6.1 "Vivaldi"
+- Version declared November 1, 2016.  Version finalized November 5, 2016.
 
 - Log filenames now have the format "sotw-YYYYMMDD-i.log".
 
@@ -22,6 +22,13 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
   - Backspace wasn't working properly in free-form text prompts in Linux
     builds (AgingMinotaur).
+
+  - Fixed the vault-type crypt crash bug.  This was being caused when
+    the item generation code didn't generate anything; the null item
+    pointer was being added to the tile's inventory, and when trying
+    to render a tile with a null item and no creature on it, the game
+    crashed.  This was most evident in crypts, but definitely could
+    happen elsewhere, too (AgingMinotaur, barrabus, others).
 
 Shadow of the Wyrm v0.5.6 "Vivaldi"
 - Version declared October 1, 2016.  Version finalized November 1, 2016.
