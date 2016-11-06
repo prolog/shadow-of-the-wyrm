@@ -258,9 +258,9 @@ bool Modifier::is_resistances_part_negative() const
   return (total < 0);
 }
 
-void Modifier::set_status(const string& status, const bool value)
+void Modifier::set_status(const string& status, const bool value, const int danger_level)
 {
-  statuses[status] = value;
+  statuses[status] = make_pair(value, danger_level);
 }
 
 bool Modifier::has_status(const string& status_id) const
@@ -270,9 +270,9 @@ bool Modifier::has_status(const string& status_id) const
   return (s_it != statuses.end());
 }
 
-bool Modifier::get_status(const string& status_id) const
+pair<bool, int> Modifier::get_status(const string& status_id) const
 {
-  bool val = false;
+  pair<bool, int> val(false, 1);
 
   auto s_it = statuses.find(status_id);
 
@@ -284,19 +284,19 @@ bool Modifier::get_status(const string& status_id) const
   return val;
 }
 
-vector<string> Modifier::get_affected_status_keys() const
+vector<pair<string, int>> Modifier::get_affected_statuses() const
 {
-  vector<string> status_keys;
+  vector<pair<string, int>> status_keys_and_danger;
 
   for (const auto& map_pair : statuses)
   {
-    if (map_pair.second == true)
+    if (map_pair.second.first == true)
     {
-      status_keys.push_back(map_pair.first);
+      status_keys_and_danger.push_back(make_pair(map_pair.first, map_pair.second.second));
     }
   }
 
-  return status_keys;
+  return status_keys_and_danger;
 }
 
 vector<int> Modifier::get_raw_values() const
@@ -331,7 +331,8 @@ bool Modifier::serialize(ostream& stream) const
   for (const auto& s_pair : statuses)
   {
     Serialize::write_string(stream, s_pair.first);
-    Serialize::write_bool(stream, s_pair.second);
+    Serialize::write_bool(stream, s_pair.second.first);
+    Serialize::write_int(stream, s_pair.second.second);
   }
 
   resistances.serialize(stream);
@@ -359,11 +360,13 @@ bool Modifier::deserialize(istream& stream)
   {
     string status;
     bool value = false;
+    int danger_level = 1;
 
     Serialize::read_string(stream, status);
     Serialize::read_bool(stream, value);
+    Serialize::read_int(stream, danger_level);
 
-    statuses.insert(make_pair(status, value));
+    statuses.insert(make_pair(status, make_pair(value, danger_level)));
   }
 
   resistances.deserialize(stream);

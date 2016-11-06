@@ -1243,16 +1243,23 @@ int remove_creature_from_map(lua_State* ls)
 // Returns true if the status was added, false in all other cases.
 int add_status_to_creature(lua_State* ls)
 {
-  if ((lua_gettop(ls) == 2) && (lua_isstring(ls, 1) && (lua_isstring(ls, 2))))
+  if ((lua_gettop(ls) >= 2) && (lua_isstring(ls, 1) && (lua_isstring(ls, 2))))
   {
     string creature_id = lua_tostring(ls, 1);
     string status_id = lua_tostring(ls, 2);
+    int danger_level = 1;
+
+    if (lua_gettop(ls) == 3 && lua_isnumber(ls, 3))
+    {
+      danger_level = lua_tonumber(ls, 3);
+    }
+
     CreaturePtr creature = get_creature(creature_id);
 
     if (creature && !creature->has_status(status_id))
     {
       StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
-      se->apply_change(creature);
+      se->apply_change(creature, danger_level);
 
       lua_pushboolean(ls, true);
       return 1;
@@ -1272,13 +1279,19 @@ int add_status_to_creature_at(lua_State* ls)
 {
   bool added_status = false;
 
-  if ((lua_gettop(ls) == 3) && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  if ((lua_gettop(ls) >= 3) && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
   {
     Game& game = Game::instance();
 
     int y = lua_tointeger(ls, 1);
     int x = lua_tointeger(ls, 2);
     string status_id = lua_tostring(ls, 3);
+    int danger_level = 1;
+
+    if (lua_gettop(ls) == 4 && lua_isnumber(ls, 4))
+    {
+      danger_level = lua_tointeger(ls, 4);
+    }
 
     MapPtr cur_map = game.get_current_map();
 
@@ -1291,7 +1304,7 @@ int add_status_to_creature_at(lua_State* ls)
         CreaturePtr creature = tile->get_creature();
 
         StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
-        se->apply_change(creature);
+        se->apply_change(creature, danger_level);
 
         added_status = true;
       }

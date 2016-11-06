@@ -11,16 +11,18 @@ PoisonStatusEffect::PoisonStatusEffect()
   status_calc = std::make_shared<PoisonCalculator>();
 }
 
-void PoisonStatusEffect::tick(CreaturePtr creature) const
+void PoisonStatusEffect::tick(CreaturePtr creature, const int danger_level) const
 {
   CreaturePtr no_creature;
   CombatManager cm;
 
   PoisonCalculator pc;
 
-  // Poison always deals a single point of damage per minute.
+  // Poison deals damage over time.  The more powerful the creature (ie, higher
+  // the danger level), the more damage is dealt).
   Damage poison_dmg;
-  int damage = pc.calculate_damage_per_tick(creature);
+  poison_dmg.set_damage_type(DamageType::DAMAGE_TYPE_POISON);
+  int damage = pc.calculate_damage_per_tick(creature, danger_level);
   poison_dmg.set_modifier(damage);
   cm.deal_damage(no_creature, creature, damage, poison_dmg);
 }

@@ -35,7 +35,7 @@ class DecisionStrategy;
 
 using TargetMap = std::map<std::string, std::pair<std::string, Coordinate>>;
 using EventScriptsMap = std::map<std::string, ScriptDetails>;
-using CreatureStatusMap = std::map<std::string, bool>;
+using CreatureStatusMap = std::map<std::string, std::pair<bool, int>>; // int is danger level
 
 class Creature : public ISerializable
 {
@@ -266,7 +266,7 @@ class Creature : public ISerializable
     HungerClock& get_hunger_clock_ref();
 
     // Set/check if the creature poisoned, etc
-    void set_status(const std::string& status_id, const bool affected);
+    void set_status(const std::string& status_id, const bool affected, const int danger_level = 1);
     void remove_status(const std::string& status_id);
     bool has_status(const std::string& status_id) const;
     bool has_status() const;

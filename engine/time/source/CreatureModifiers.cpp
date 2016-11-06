@@ -59,15 +59,16 @@ void CreatureModifiers::process_current_modifiers(CreaturePtr creature, const ve
   {
     string spell_id = mod_pair.first;
     Modifier m = mod_pair.second;
-    vector<string> statuses = m.get_affected_status_keys();
+    vector<pair<string, int>> statuses = m.get_affected_statuses();
 
     add_removal_message(creature, spell_id);
 
     for (const auto& status : statuses)
     {
-      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status);
+      string status_id = status.first;
+      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status_id);
 
-      if (status_p && creature->has_status(status))
+      if (status_p && creature->has_status(status_id))
       {
         status_p->finalize_change(creature);
       }

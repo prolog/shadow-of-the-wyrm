@@ -65,16 +65,16 @@ TEST(SW_World_Modifier, statuses)
 {
   Modifier m;
   
-  m.set_status("fdsa", true);
-  m.set_status("asdf", false);
+  m.set_status("fdsa", true, 10);
+  m.set_status("asdf", false, 1);
 
-  EXPECT_EQ(true, m.get_status("fdsa"));
+  EXPECT_EQ(true, m.get_status("fdsa").first);
   EXPECT_EQ(true, m.has_status("fdsa"));
 
-  EXPECT_EQ(false, m.get_status("asdf"));
+  EXPECT_EQ(false, m.get_status("asdf").first);
   EXPECT_EQ(true, m.has_status("asdf"));
 
-  EXPECT_EQ(false, m.get_status("abab"));
+  EXPECT_EQ(false, m.get_status("abab").first);
   EXPECT_EQ(false, m.has_status("abab"));
 }
 
@@ -82,17 +82,17 @@ TEST(SW_World_Modifier, get_affected_statuses)
 {
   Modifier m;
 
-  vector<string> statuses = { "bad_teeth", "low_self_esteem", "rabies" };
+  vector<pair<string, int>> statuses = { {"bad_teeth", 2}, {"low_self_esteem", 50}, {"rabies",1} };
   
   for (const auto& status : statuses)
   {
-    m.set_status(status, true);
+    m.set_status(status.first, true, status.second);
   }
 
   m.set_status("talks_out_loud_all_day_while_I_try_to_work", false);
   m.set_status("slurps_coffee_and_then_burps_constantly", false);
 
-  EXPECT_EQ(statuses, m.get_affected_status_keys());
+  EXPECT_EQ(statuses, m.get_affected_statuses());
 }
 
 TEST(SW_World_Modifier, serialization_id)

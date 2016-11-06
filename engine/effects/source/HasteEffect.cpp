@@ -36,7 +36,7 @@ bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
   }
 
   StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE);
-  haste->apply_change(creature);
+  haste->apply_change(creature, creature->get_level().get_current());
 
   return true;
 }
@@ -58,7 +58,7 @@ bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am
   else
   {
     StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE);
-    haste->apply_change(creature);
+    haste->apply_change(creature, creature->get_level().get_current());
   }
 
   return true;

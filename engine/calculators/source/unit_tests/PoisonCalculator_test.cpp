@@ -26,10 +26,16 @@ TEST(SW_World_Calculator_PoisonCalculator, calc_damage_per_tick)
 
   PoisonCalculator pc;
 
-  EXPECT_EQ(2, pc.calculate_damage_per_tick(creature));
+  EXPECT_EQ(2, pc.calculate_damage_per_tick(creature, 1));
+  EXPECT_EQ(4, pc.calculate_damage_per_tick(creature, 5));
+  EXPECT_EQ(6, pc.calculate_damage_per_tick(creature, 12));
+  EXPECT_EQ(22, pc.calculate_damage_per_tick(creature, 50));
 
   creature->set_health(9);
   
-  EXPECT_EQ(1, pc.calculate_damage_per_tick(creature));
+  EXPECT_EQ(1, pc.calculate_damage_per_tick(creature, 1));
+  EXPECT_EQ(2, pc.calculate_damage_per_tick(creature, 7));
+  EXPECT_EQ(3, pc.calculate_damage_per_tick(creature, 14));
+  EXPECT_EQ(11, pc.calculate_damage_per_tick(creature, 50));
 }
 

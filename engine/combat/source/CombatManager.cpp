@@ -258,13 +258,15 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   // Add the text so far.
   add_combat_message(attacking_creature, attacked_creature, combat_message);
   add_any_necessary_damage_messages(attacking_creature, attacked_creature, damage_dealt, piercing, incorporeal);
+  
+  int danger_level = attacking_creature ? attacking_creature->get_level().get_current() : 1;
 
   // Do damage effects if damage was dealt, or if there is a bonus to the
   // effect.
   if (damage_dealt > 0 || effect_bonus > 0)
   {
     // Apply any effects (e.g., poison) that occur as the result of the damage)
-    handle_damage_effects(attacked_creature, damage_dealt, damage_type, effect_bonus, damage_info.get_status_ailments());
+    handle_damage_effects(attacked_creature, damage_dealt, damage_type, effect_bonus, damage_info.get_status_ailments(), danger_level);
   }
 
   if (damage_dealt > 0)
@@ -419,7 +421,7 @@ bool CombatManager::does_attack_slay_creature_race(CreaturePtr attacking_creatur
 // poison, etc.  Take into account whether or not the damage has overridden the status
 // effects.  If so, get the set of ailments off the status ailments, and use those
 // instead.
-void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments)
+void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level)
 {
   StatusEffectPtr status_effect;
 
@@ -430,21 +432,21 @@ void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage
     for (const string& ailment : ailments)
     {
       status_effect = StatusEffectFactory::create_status_effect(ailment);
-      apply_damage_effect(creature, status_effect, effect_bonus);
+      apply_damage_effect(creature, status_effect, effect_bonus, danger_level);
     }
   }
   else
   {
     status_effect = StatusEffectFactory::create_effect_for_damage_type(damage_type);
-    apply_damage_effect(creature, status_effect, effect_bonus);
+    apply_damage_effect(creature, status_effect, effect_bonus, danger_level);
   }
 }
 
-void CombatManager::apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus)
+void CombatManager::apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus, const int danger_level)
 {
   if (status_effect && status_effect->should_apply_change(creature, effect_bonus))
   {
-    status_effect->apply_change(creature);
+    status_effect->apply_change(creature, danger_level);
   }
 }
 

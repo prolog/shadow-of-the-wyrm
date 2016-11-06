@@ -7,7 +7,7 @@ void StatusActionProcessor::process_action(CreaturePtr creature, CreatureStatusM
 {
   auto s_it = statuses_before_action.find(StatusIdentifiers::STATUS_ID_TIMEWALK);
 
-  if (s_it != statuses_before_action.end() && s_it->second == true && action.get_cost() > 0)
+  if (s_it != statuses_before_action.end() && s_it->second.first == true && action.get_cost() > 0)
   {
     StatusEffectPtr se = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_TIMEWALK);    
     se->undo_change(creature);

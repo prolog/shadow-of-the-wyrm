@@ -6,7 +6,7 @@ class PoisonStatusEffect : public StatusEffect
   public:
     PoisonStatusEffect();
 
-    virtual void tick(std::shared_ptr<Creature> creature) const override;
+    virtual void tick(std::shared_ptr<Creature> creature, const int danger_level) const override;
   
   protected:
     virtual std::string get_player_application_message() const override;

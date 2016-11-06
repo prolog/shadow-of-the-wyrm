@@ -142,7 +142,7 @@ void DoorGateManipulator::handle_sprain_if_necessary(CreaturePtr creature, const
 
       if (status_effect && status_effect->should_apply_change(creature))
       {
-        status_effect->apply_change(creature);
+        status_effect->apply_change(creature, creature->get_level().get_current());
       }
     }
   }

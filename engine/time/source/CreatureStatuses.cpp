@@ -17,9 +17,15 @@ void CreatureStatuses::tick(CreaturePtr creature, TilePtr tile, const ulonglong 
     for (const CreatureStatusMap::value_type& status : statuses)
     {
       string status_id = status.first;
-      StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id);
+      bool affected = status.second.first;
+      int danger_level = status.second.second;
 
-      status_effect->tick(creature);
+      if (affected)
+      {
+        StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id);
+
+        status_effect->tick(creature, danger_level);
+      }
     }
   }
 }

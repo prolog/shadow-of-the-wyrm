@@ -24,11 +24,11 @@ class CombatManager
                            DamagePtr damage = DamagePtr());
 
     void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage, const std::string combat_message = "");
-    void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments);
+    void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level);
 
   protected:
     // Apply a particular status effect.
-    void apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus);
+    void apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus, const int danger_level);
 
     // Handle vorpal and other damage flags as necessary
     void handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt);
