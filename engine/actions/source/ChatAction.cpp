@@ -19,40 +19,54 @@ ActionCostValue ChatAction::chat(CreaturePtr creature) const
   CurrentCreatureAbilities cca;
   Game& game = Game::instance();
 
-  if (!cca.can_see(creature))
+  if (creature != nullptr)
   {
-    add_chat_message(creature, ActionTextKeys::ACTION_CHAT_NOBODY_NEARBY);
-  }
-  else
-  {
-    if (cca.can_speak(creature, true))
+    if (!cca.can_see(creature))
     {
-      MapPtr current_map = game.get_current_map();
-      bool spoke = false;
-
-      if (MapUtils::adjacent_creature_exists(creature, current_map))
+      add_chat_message(creature, ActionTextKeys::ACTION_CHAT_NOBODY_NEARBY);
+    }
+    else
+    {
+      // If the creature is timewalking, chatting isn't possible, as all the
+      // nearby creatures are frozen in time.
+      const CreatureStatusMap statuses = creature->get_statuses();
+      auto s_it = statuses.find(StatusIdentifiers::STATUS_ID_TIMEWALK);
+      if (s_it != statuses.end() && s_it->second.first == true)
       {
-        CreatureDirectionMap creature_map = MapUtils::get_adjacent_creatures(current_map, creature);
-
-        if (creature_map.size() == 1)
-        {
-          CreaturePtr speaking_creature = creature_map.begin()->second;
-          spoke = chat_single_creature(creature, speaking_creature);
-        }
-        else
-        {
-          spoke = chat_multiple_options(creature, creature_map);
-        }
-
-        if (spoke)
-        {
-          creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_SILENT);
-          action_cost = get_action_cost_value(creature);
-        }
+        add_chat_message(creature, ActionTextKeys::ACTION_CHAT_TIMEWALK);
       }
       else
       {
-        add_chat_message(creature, ActionTextKeys::ACTION_CHAT_NOBODY_NEARBY);
+        if (cca.can_speak(creature, true))
+        {
+          MapPtr current_map = game.get_current_map();
+          bool spoke = false;
+
+          if (MapUtils::adjacent_creature_exists(creature, current_map))
+          {
+            CreatureDirectionMap creature_map = MapUtils::get_adjacent_creatures(current_map, creature);
+
+            if (creature_map.size() == 1)
+            {
+              CreaturePtr speaking_creature = creature_map.begin()->second;
+              spoke = chat_single_creature(creature, speaking_creature);
+            }
+            else
+            {
+              spoke = chat_multiple_options(creature, creature_map);
+            }
+
+            if (spoke)
+            {
+              creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_SILENT);
+              action_cost = get_action_cost_value(creature);
+            }
+          }
+          else
+          {
+            add_chat_message(creature, ActionTextKeys::ACTION_CHAT_NOBODY_NEARBY);
+          }
+        }
       }
     }
   }

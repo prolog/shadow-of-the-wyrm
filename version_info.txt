@@ -24,6 +24,12 @@ Shadow of the Wyrm v0.5.7 "Cutting"
   - The damage dealt by poison each minute wasn't being considered
     Poison-type.
 
+  - You could chat during timewalking, despite the fact that everything
+    around the caster is supposed to be frozen in time.
+
+  - Timewalking wasn't always being applied properly, causing the caster
+    to immediately step back into time.
+
 Shadow of the Wyrm v0.5.6.1 "Vivaldi"
 - Version declared November 1, 2016.  Version finalized November 5, 2016.
 
