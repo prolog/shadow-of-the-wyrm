@@ -34,12 +34,12 @@ bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bo
   return status_should_apply;
 }
 
-void StatusEffect::apply_change(CreaturePtr creature) const
+void StatusEffect::apply_change(CreaturePtr creature, const int danger_level) const
 {
   bool status_applied = true;
 
   status_applied = before_apply(creature);
-  status_applied = status_applied && apply(creature);
+  status_applied = status_applied && apply(creature, danger_level);
   status_applied = status_applied && after_apply(creature);
 
   if (status_applied)
@@ -60,7 +60,7 @@ bool StatusEffect::before_apply(CreaturePtr creature) const
   return true;
 }
 
-bool StatusEffect::apply(CreaturePtr creature) const
+bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
 {
   if (creature)
   {
@@ -72,7 +72,7 @@ bool StatusEffect::apply(CreaturePtr creature) const
     double eff_dur_sec = current_seconds_since_game_start + (duration * 60);
 
     Modifier modifier = get_base_modifier(creature);
-    modifier.set_status(status_identifier, true);
+    modifier.set_status(status_identifier, true, danger_level);
 
     ModifyStatisticsEffect mse;
     mse.apply_modifiers(creature, modifier, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, eff_dur_sec);
@@ -264,7 +264,7 @@ string StatusEffect::get_npc_undo_message(CreaturePtr creature) const
   return no_message;
 }
 
-void StatusEffect::tick(CreaturePtr creature) const
+void StatusEffect::tick(CreaturePtr creature, const int danger_level) const
 {
 }
 

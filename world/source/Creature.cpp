@@ -1018,9 +1018,9 @@ HungerClock& Creature::get_hunger_clock_ref()
   return hunger;
 }
 
-void Creature::set_status(const string& status_id, const bool affected)
+void Creature::set_status(const string& status_id, const bool affected, const int danger_level)
 {
-  statuses[status_id] = affected;
+  statuses[status_id] = make_pair(affected, danger_level);
 }
 
 void Creature::remove_status(const string& status_id)
@@ -1036,7 +1036,7 @@ bool Creature::has_status(const string& status_id) const
 
   if (s_it != statuses.end())
   {
-    has_status = s_it->second;
+    has_status = (s_it->second.first == true);
   }
 
   return has_status;
@@ -1427,7 +1427,8 @@ bool Creature::serialize(ostream& stream) const
     for (const CreatureStatusMap::value_type& c_status : statuses)
     {
       Serialize::write_string(stream, c_status.first);
-      Serialize::write_bool(stream, c_status.second);
+      Serialize::write_bool(stream, c_status.second.first);
+      Serialize::write_int(stream, c_status.second.second);
     }
   }
 
@@ -1581,11 +1582,13 @@ bool Creature::deserialize(istream& stream)
     {
       string c_status_id;
       bool creature_affected = false;
+      int danger_level = 1;
 
       Serialize::read_string(stream, c_status_id);
       Serialize::read_bool(stream, creature_affected);
+      Serialize::read_int(stream, danger_level);
 
-      statuses.insert(make_pair(c_status_id, creature_affected));
+      statuses.insert(make_pair(c_status_id, make_pair(creature_affected, danger_level)));
     }
   }
 

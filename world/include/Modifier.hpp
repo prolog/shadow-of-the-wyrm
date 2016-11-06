@@ -50,10 +50,12 @@ class Modifier : public ISerializable
     // Is this, overall, a negative modifier?
     bool is_negative() const;
 
-    void set_status(const std::string& status_id, const bool value);
+    void set_status(const std::string& status_id, const bool value, const int danger_level = 1);
     bool has_status(const std::string& status_id) const;
-    bool get_status(const std::string& status_id) const;
-    std::vector<std::string> get_affected_status_keys() const; // returns all statuses whose value is true
+    std::pair<bool, int> get_status(const std::string& status_id) const;
+
+    // returns all statuses whose value is true, along with their danger level
+    std::vector<std::pair<std::string, int>> get_affected_statuses() const; 
 
     std::vector<int> get_raw_values() const;
 
@@ -79,7 +81,7 @@ class Modifier : public ISerializable
 
     Resistances resistances;
 
-    std::map<std::string, bool> statuses;
+    std::map<std::string, std::pair<bool, int>> statuses;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

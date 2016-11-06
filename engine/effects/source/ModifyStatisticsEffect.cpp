@@ -89,11 +89,11 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
     cr_sm[duration_end] = v_m;
 
     // Add any statuses on the modifier to the creature
-    vector<string> status_ids = m.get_affected_status_keys();
+    vector<pair<string, int>> statuses = m.get_affected_statuses();
 
-    for (const auto& status_id : status_ids)
+    for (const auto& status : statuses)
     {
-      creature->set_status(status_id, true);
+      creature->set_status(status.first, true, status.second);
     }
 
     // Update the creature's calculated values.

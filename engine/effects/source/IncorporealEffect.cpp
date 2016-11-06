@@ -28,7 +28,7 @@ bool IncorporealEffect::effect_blessed(CreaturePtr creature, ActionManager * con
 bool IncorporealEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
 {
   StatusEffectPtr incorp = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_INCORPOREAL);
-  incorp->apply_change(creature);
+  incorp->apply_change(creature, creature->get_level().get_current());
 
   return true;
 }

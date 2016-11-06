@@ -21,13 +21,13 @@ class StatusEffect
     // Methods to handle creating, updating, removing, etc., the status change.
     // Each of these simply calls the before, do, and after methods - these three
     // are the ones that should be overridden by subclasses as necessary.
-    virtual void apply_change(std::shared_ptr<Creature> creature) const;
+    virtual void apply_change(std::shared_ptr<Creature> creature, const int danger_level) const;
     virtual void finalize_change(std::shared_ptr<Creature> creature) const;
     virtual void undo_change(std::shared_ptr<Creature> creature) const;
 
     // By default, nothing happens each tick.  Subclasses should override
     // this behaviour as necessary.
-    virtual void tick(std::shared_ptr<Creature> creature) const;
+    virtual void tick(std::shared_ptr<Creature> creature, const int danger_level) const;
   protected:
     // Returns a modifier with any statistic changes, etc, that should be
     // applied as a part of this status effect.
@@ -38,7 +38,7 @@ class StatusEffect
     // there are times when it may not be (e.g., trying to apply haste when
     // the creature is slowed cancels out the statuses).
     virtual bool before_apply(std::shared_ptr<Creature> creature) const;
-    virtual bool apply(std::shared_ptr<Creature> creature) const;
+    virtual bool apply(std::shared_ptr<Creature> creature, const int danger_level) const;
     virtual bool after_apply(std::shared_ptr<Creature> creature) const;
     
     virtual std::string get_application_message(std::shared_ptr<Creature> creature) const;

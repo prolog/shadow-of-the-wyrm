@@ -51,10 +51,19 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
       // Much greater chance to get poisoned by consuming poisoned food/drink
       // than by getting attacked by a poisoned attack.
       StatusEffectPtr poison = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_POISON);
+      string base_id = consumable->get_base_id();
+      int danger_level = 1;
+      const auto item_map = Game::instance().get_item_generation_values_ref();
+
+      auto i_it = item_map.find(base_id);
+      if (i_it != item_map.end())
+      {
+        danger_level = i_it->second.get_danger_level();
+      }
 
       if (poison && poison->should_apply_change(creature, ConsumableConstants::FOOD_POISON_APPLICATION_BONUS))
       {
-        poison->apply_change(creature);
+        poison->apply_change(creature, danger_level);
       }
     }
 
