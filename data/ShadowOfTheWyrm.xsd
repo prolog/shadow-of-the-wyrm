@@ -1085,6 +1085,7 @@
 		<xs:element name="Strategy" type="xs:string"/>
 		<xs:element name="SuppressMagic" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Breeds" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="Sentinel" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="TextDetails">

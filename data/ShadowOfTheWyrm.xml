@@ -8083,7 +8083,8 @@
 			<TextDetailsSID>CARAVAN_MASTER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CARAVAN_MASTER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>f</Symbol>
@@ -17181,7 +17182,8 @@
 			<TextDetailsSID>ILRU_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ILRU_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>e</Symbol>
@@ -17646,7 +17648,8 @@
 			<TextDetailsSID>KIRIN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>KIRIN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>e</Symbol>
@@ -17683,7 +17686,8 @@
 			<TextDetailsSID>AKKARA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>AKKARA_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>e</Symbol>
@@ -17715,7 +17719,8 @@
 			<TextDetailsSID>TWILLE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>TWILLE_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>e</Symbol>
@@ -17752,7 +17757,8 @@
 			<TextDetailsSID>THESILEA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THESILEA_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>@</Symbol>
@@ -17789,7 +17795,8 @@
 			<TextDetailsSID>ILIRI_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ILIRI_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>e</Symbol>
@@ -17821,7 +17828,8 @@
 			<TextDetailsSID>MOUNTAIN_ELF_SCHOLAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MOUNTAIN_ELF_SCHOLAR_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>e</Symbol>
@@ -17887,7 +17895,8 @@
 			<TextDetailsSID>MOUNTAIN_ELF_BREWER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MOUNTAIN_ELF_BREWER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>e</Symbol>
@@ -18956,7 +18965,8 @@
 			<TextDetailsSID>CHRISTOF_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CHRISTOF_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>g</Symbol>
@@ -18995,7 +19005,8 @@
 			<TextDetailsSID>ELFRIC_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ELFRIC_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>g</Symbol>
@@ -19029,7 +19040,8 @@
 			<TextDetailsSID>ALFREDO_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ALFREDO_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>@</Symbol>
@@ -19096,7 +19108,8 @@
 			<TextDetailsSID>GNOMISH_BARKEEPER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GNOMISH_BARKEEPER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>g</Symbol>
@@ -19323,7 +19336,8 @@
 			<TextDetailsSID>GNORDVAR_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GNORDVAR_PRIEST_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -19639,7 +19653,8 @@
 			<TextDetailsSID>FISHERMAN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FISHERMAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -19674,7 +19689,8 @@
 			<TextDetailsSID>SEAWIFE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SEAWIFE_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -19707,7 +19723,8 @@
 			<TextDetailsSID>THE_PLOUGHMAN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THE_PLOUGHMAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -19746,7 +19763,8 @@
 			<TextDetailsSID>THE_BLACKSMITH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THE_BLACKSMITH_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -19820,7 +19838,8 @@
 			<TextDetailsSID>VILLAGE_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>VILLAGE_PRIEST_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -19893,7 +19912,8 @@
 			<TextDetailsSID>KEW_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>KEW_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>@</Symbol>
@@ -19969,7 +19989,8 @@
 			<TextDetailsSID>NAMA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>NAMA_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>@</Symbol>
@@ -20045,7 +20066,8 @@
 			<TextDetailsSID>EXILE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>EXILE_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>@</Symbol>
@@ -20611,7 +20633,8 @@
 			<TextDetailsSID>HILD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HILD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -20650,7 +20673,8 @@
 			<TextDetailsSID>TANNER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>TANNER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -20685,7 +20709,8 @@
 			<TextDetailsSID>HRIMGAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HRIMGAR_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -22081,7 +22106,8 @@
 			<TextDetailsSID>SKAAL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SKAAL_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>d</Symbol>
@@ -22120,7 +22146,8 @@
 			<TextDetailsSID>GILDI_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GILDI_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>d</Symbol>
@@ -22157,7 +22184,8 @@
 			<TextDetailsSID>THENGIL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THENGIL_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>d</Symbol>
@@ -22227,7 +22255,8 @@
 			<TextDetailsSID>DWARVEN_BODYGUARD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DWARVEN_BODYGUARD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>d</Symbol>

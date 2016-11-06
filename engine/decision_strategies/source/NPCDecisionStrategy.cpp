@@ -111,7 +111,7 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
     // If no custom decisions fired, attempt movement.
     if (command == nullptr && can_move())
     {
-      command = get_movement_decision(this_creature_id);
+      command = get_movement_decision(this_creature_id, view_map);
     }    
   }
 
@@ -398,7 +398,7 @@ CommandPtr NPCDecisionStrategy::get_custom_decision(const string& this_creature_
 
 // Get the decision for where to move.
 // Move stupidly (randomly) when no threat is present.
-CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creature_id)
+CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creature_id, MapPtr view_map)
 {   
   CommandPtr movement_command;
 
@@ -408,10 +408,22 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
 
   if (current_map != nullptr)
   {
-    Dimensions current_dimensions = current_map->size();
     Coordinate this_creature_coords = current_map->get_location(this_creature_id);
     TilePtr this_creature_tile = current_map->at(this_creature_coords);
     CreaturePtr this_creature = this_creature_tile->get_creature();
+
+    // Is the creature a sentinel?  Sentinels are just NPCs that stay in one
+    // place, moving only to pursue when attacked.
+    string sentinel_s = get_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL);
+    if (!sentinel_s.empty() && 
+       (String::to_bool(sentinel_s) == true) &&
+       this_creature &&
+       (MapUtils::hostile_creature_exists(this_creature_id, view_map) == false))
+    {
+      return movement_command;
+    }
+
+    Dimensions current_dimensions = current_map->size();
 
     int this_row = this_creature_coords.first;
     int this_col = this_creature_coords.second;
