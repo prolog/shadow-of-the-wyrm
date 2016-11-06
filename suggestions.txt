@@ -1,6 +1,4 @@
 Me:
-- Info at the top of each log file (username, character name, game
-  version, datestamp).
 - Decision strategy flags or something for mobile creatures.  Add a
   sentinel flag: move when hostile, stay otherwise.  Review list of
   immobile creatures and change as appropriate.

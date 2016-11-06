@@ -349,6 +349,9 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
     bool breeds = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Breeds", false);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_BREEDS, Bool::to_string(breeds));
 
+    bool sentinel = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Sentinel", false);
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, Bool::to_string(sentinel));
+
     creature->set_decision_strategy(decision_strategy);
   }
 }
