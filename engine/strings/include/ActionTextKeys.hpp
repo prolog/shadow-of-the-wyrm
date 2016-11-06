@@ -56,6 +56,7 @@ class ActionTextKeys
     static const std::string ACTION_FIRE;
     static const std::string ACTION_NOTHING_HAPPENS;
     static const std::string ACTION_CHAT_NOBODY_NEARBY;
+    static const std::string ACTION_CHAT_TIMEWALK;
     static const std::string ACTION_CHAT_NO_RESPONSE;
     static const std::string ACTION_GET_DIRECTION;
     static const std::string ACTION_GET_CARDINAL_DIRECTION;
