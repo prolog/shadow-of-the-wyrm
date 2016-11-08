@@ -693,3 +693,13 @@ the king had come - at last!  And bit by bit, %b
 subsided, as no glamour could disguise %b
 the heavy dwindling, the losses realized.
 %p
+The silence as the widow-queen arrived %b
+descended on the room, as if the air %b
+itself proclaimed the news: her son alive, %b
+her husband gone.  The grief she wore was bare %b
+and evident, her lovely face now gaunt, %b
+her skin stretched thin where once her happy smile %b
+had charmed them all.  This fated hunt would haunt %b
+her waning days; a sudden, sick surprise, %b
+as when one digs and finds a buried, broken child.
+%p
