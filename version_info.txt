@@ -19,6 +19,8 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - Poison damage is now always doubled for creatures with low (< 7)
   Health.
 
+- More stanzas for "Tel and Floridel".
+
 - Bug fixes:
 
   - The damage dealt by poison each minute wasn't being considered
@@ -38,7 +40,7 @@ Shadow of the Wyrm v0.5.6.1 "Vivaldi"
 - Logs older than a week are now deleted on startup (AgingMinotaur).
   The age period can be configured in swyrm.ini.
 
-- More stanzas for the epic poem.
+- More stanzas for "Tel and Floridel".
 
 - Siriath is now a proper spellcaster.  He casts Wreath of Fire and
   Flame Dart (AgingMinotaur).
