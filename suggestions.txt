@@ -6,6 +6,7 @@ Me:
   her grants a wish.  She should have a chance of vanishing, which then
   decrements her generated counter to ensure she can appear again.  There
   should be a creature that talks about her.
+- Directly searching via 's' doesn't look for traps, still.
 - z-maps for settlements: test flying between multi-level maps and going
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
@@ -65,6 +66,15 @@ For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
   ever, generated.
 - Revisit creature generation algorithm.
+
+The_Great_Goblin:
+- Describe evade/soak in guidebook.
+- Search not in guide/in-game help.
+
+VedVid:
+- Lack of space between "Resting" and "Not while near..."
+- Colourize HP, AP.
+- 207x66 - try reading text, all fu'd.
 
 Sean McKeague:
 - Ability to pick up partial stacks.
