@@ -109,6 +109,24 @@ TEST(SW_World_Modifier, export_raw)
   EXPECT_EQ(raw_values, m.get_raw_values());
 }
 
+TEST(SW_World_Modifier, statuses_saveload)
+{
+  Modifier m;
+  m.set_status("bork", true, 34);
+  m.set_status("aaa", true, 10);
+  m.set_status("fdsa", false, 1);
+
+  Modifier m2;
+  ostringstream ss;
+  m.serialize(ss);
+  istringstream iss(ss.str());
+  m2.deserialize(iss);
+
+  EXPECT_EQ(make_pair(true, 34), m2.get_status("bork"));
+  EXPECT_EQ(make_pair(true, 10), m2.get_status("aaa"));
+  EXPECT_EQ(make_pair(false, 1), m2.get_status("fdsa"));
+}
+
 TEST(SW_World_Modifier, saveload)
 {
   Modifier m(1,2,3,4,5,6,7);
