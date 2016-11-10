@@ -187,3 +187,22 @@ TEST(SW_World_Creature, count_items)
 
   EXPECT_EQ(7, c.count_items());
 }
+
+TEST(SW_World_Creature, status_details)
+{
+  Creature c;
+  c.set_status("poison", true, 10);
+  c.set_status("haste", false);
+  c.set_status("depression", true, 50);
+
+  Creature c2;
+  ostringstream ss;
+  c.serialize(ss);
+  istringstream iss(ss.str());
+  c2.deserialize(iss);
+  
+  CreatureStatusMap csm = c2.get_statuses();
+  EXPECT_EQ(make_pair(true, 10), csm.find("poison")->second);
+  EXPECT_EQ(make_pair(false, 1), csm.find("haste")->second);
+  EXPECT_EQ(make_pair(true, 50), csm.find("depression")->second);
+}
