@@ -103,8 +103,6 @@ AgingMinotaur:
 - Friendly creatures should assist other friendly creatures who have been
   attacked - hostility should be transitive.  Test this by rampaging
   through Isen Dun.
-- Scale poisons based on attacker level - L50 poisons should be very
-  dangerous!
 
 Kraphead:
 - auto-displace when bumping friendly creatures
