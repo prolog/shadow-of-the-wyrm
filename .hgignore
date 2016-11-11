@@ -14,7 +14,7 @@ MapTester.pdb
 xerces-c_3_1D.dll
 Debug
 dist
-sotw-[0-9]+.log
+sotw-(.+).log
 Release
 MapTester
 SaveConverter

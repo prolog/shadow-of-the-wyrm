@@ -6,6 +6,7 @@
 #include "Map.hpp"
 #include "MapFactory.hpp"
 #include "MapUtils.hpp"
+#include "NullInventory.hpp"
 #include "Serialize.hpp"
 #include "TileFactory.hpp"
 
@@ -237,6 +238,14 @@ bool Map::insert(int row, int col, TilePtr tile)
   if (creature != nullptr)
   {
     add_or_update_location(creature->get_id(), {row, col});
+  }
+
+  // If this is the world map, ensure that the inventory is a
+  // NullInventory
+  if (map_type == MapType::MAP_TYPE_WORLD)
+  {
+    IInventoryPtr null_inv = std::make_shared<NullInventory>();
+    tile->set_items(null_inv);
   }
 
   tiles[key] = tile;
