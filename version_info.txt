@@ -22,6 +22,10 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - Added searching to the command reference in the guidebook, and made
   a few updates to the section on secondary statistics (The_Great_Goblin).
 
+- When attacking friendly creatures, if they have a voice (and not all
+  races do), they will cry out, causing nearby friendly creatures to
+  also become hostile to the attacker (AgingMinotaur).
+
 - More stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -34,6 +38,9 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
   - Timewalking wasn't always being applied properly, causing the caster
     to immediately step back into time.
+
+  - Magici shard in Siriath's lair wasn't loading properly (Dallas 
+    Herrin).
 
 Shadow of the Wyrm v0.5.6.1 "Vivaldi"
 - Version declared November 1, 2016.  Version finalized November 5, 2016.

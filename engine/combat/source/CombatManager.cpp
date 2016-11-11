@@ -5,6 +5,7 @@
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureDescriber.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageText.hpp"
 #include "DeathManagerFactory.hpp"
@@ -114,6 +115,13 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
   CombatTargetNumberCalculatorPtr ctn_calculator = CombatTargetNumberCalculatorFactory::create_target_number_calculator(attack_type);
   ISpeedCalculatorPtr speed_calculator = SpeedCalculatorFactory::create_speed_calculator(attack_type);
 
+  // Once an attack is made, the creature becomes hostile, and if it was
+  // previously not hostile
+  if (attacking_creature && attacked_creature)
+  {
+    handle_hostility_implications(attacking_creature, attacked_creature);
+  }
+
   if (th_calculator && ctn_calculator)
   {
     Game& game = Game::instance();
@@ -173,14 +181,59 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     {
       mark_appropriately(attacking_creature, attack_type, th_calculator->get_statistic(attacking_creature), mark_for_weapon_and_combat_skills_and_stat);
     }
-
-    HostilityManager hm;
-    hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id());
   }
 
   send_combat_messages(attacking_creature);
   
   return action_cost_value;
+}
+
+void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+{
+  if (attacking_creature && attacked_creature && !attacked_creature->get_is_player())
+  {
+    HostilityManager hm;
+    CurrentCreatureAbilities cca;
+    RaceManager rm;
+    RacePtr race = rm.get_race(attacked_creature->get_race_id());
+    DecisionStrategyPtr d_strat = attacked_creature->get_decision_strategy();
+
+    if (d_strat->get_threats().has_threat(attacking_creature->get_id()).first == false &&
+        race != nullptr &&
+        race->get_has_voice() &&
+        cca.can_speak(attacked_creature))
+    {
+      // The creature cries out for help
+      CreatureDescriber cd(attacking_creature, attacked_creature, true);
+      string cry_out_message = ActionTextKeys::get_cry_out_message(cd.describe());
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacking_creature->get_is_player());
+      manager.add_new_message(cry_out_message);
+      manager.send();
+
+      // Nearby creatures friendly to the attacker, seeing which way the
+      // wind is blowing, decide that the attacker is not actually all
+      // that friendly.
+      MapPtr fov_map = d_strat->get_fov_map();
+      TilesContainer tiles = fov_map->get_tiles();
+
+      for (const auto& t_pair : tiles)
+      {
+        TilePtr tile = t_pair.second;
+
+        if (tile && tile->has_creature())
+        {
+          CreaturePtr tile_creature = tile->get_creature();
+
+          if (tile_creature && !tile_creature->get_is_player())
+          {
+            hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id());
+          }
+        }
+      }
+    }
+
+    hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id());
+  }
 }
 
 bool CombatManager::destroy_weapon_if_necessary(CreaturePtr attacking_creature, const AttackType attack_type)

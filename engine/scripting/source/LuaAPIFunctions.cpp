@@ -1251,7 +1251,7 @@ int add_status_to_creature(lua_State* ls)
 
     if (lua_gettop(ls) == 3 && lua_isnumber(ls, 3))
     {
-      danger_level = lua_tonumber(ls, 3);
+      danger_level = lua_tointeger(ls, 3);
     }
 
     CreaturePtr creature = get_creature(creature_id);

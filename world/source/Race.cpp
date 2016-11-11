@@ -9,6 +9,7 @@ Race::Race()
 : user_playable(false)
 , leaves_corpse(true)
 , has_pockets(false)
+, has_voice(false)
 , has_random_villages(true)
 , settlement_type(SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE)
 , settlement_tile_subtype(TileType::TILE_TYPE_FIELD)
@@ -92,6 +93,16 @@ void Race::set_has_pockets(const bool new_has_pockets)
 bool Race::get_has_pockets() const
 {
   return has_pockets;
+}
+
+void Race::set_has_voice(const bool new_has_voice)
+{
+  has_voice = new_has_voice;
+}
+
+bool Race::get_has_voice() const
+{
+  return has_voice;
 }
 
 void Race::set_drops(const map<string, DropParameters>& new_drops)

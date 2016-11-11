@@ -100,9 +100,6 @@ AgingMinotaur:
 - Stop walking on feature/branching corridor.
 - Update Detection so that the message makes more sense - should maybe
   only fire when out of depth creatures have been generated?
-- Friendly creatures should assist other friendly creatures who have been
-  attacked - hostility should be transitive.  Test this by rampaging
-  through Isen Dun.
 
 Kraphead:
 - auto-displace when bumping friendly creatures
@@ -118,3 +115,53 @@ roguecastergames:
 - sea monsters
 - pirates
 - ambushes
+
+Dallas Herrin:
+bugs:
+- The Health stat will not increase through training. Neither the trainer 
+  in the Forest of Yew nor the described method of not being hungry/full 
+  will improve it. Other methods, such as potions of Gain Attribute, racial
+  stat--ups, and class stat-ups do improve it.
+- In the manticore/gnome mine quest, the manticore will occasionally spawn 
+  in a cavern system with no path to the stairs.
+- If you complete the goblin-quest before you talk to the elf that gives it
+  to you, you miss out on Goblincrusher
+- Eating fruit on the world map (if not on a water tile) spawns seeds and 
+  pits that cannot be interacted with, but remain on that tile forever.
+- When you complete the mountain-elf-librarian book-quest that involves 
+  killing the sorcerer, talking to the questgiver again gives you that same
+  quest, again. It cannot be completed though, since there's only the one 
+  book.
+- Eating on the world map takes significantly more time than eating 
+  anywhere that isn't a world map tile. To see this, eat olives repeatedly
+  on the world map; they provide so little nutrition that you can actually 
+  starve to death while gorging yourself on them.
+
+Suggestions:
+
+- Make hunger less prohibitive on the world map, or make food easier to 
+  acquire. Currently, you have to eat every time you travel about 1/4 the 
+  length of a world map screen. Given how large the world map is, and how 
+  far apart most of the interesting things are, this means you need a lot 
+  of food. The easiest way to get food involves grinding that small field 
+  on the starter island for lots of fruit. The alternative is grinding 
+  monsters for corpses. Neither are particularly challenging or fun, just 
+  tedious. Suggestions for solutions:
+- Make the Fishing skill available to all races and backgrounds (through a 
+  relevant quest?), or make fishing not require the Fishing skill, just a 
+  rod.
+- Make it obvious somewhere how much certain spells do, and what mechanical
+  effect increasing spell levels has.
+- Do the same for the things described upon pressing W. Base/Total 
+  difficulty is obviously accuracy, and Speed is obviously how much time 
+  an attack takes, but I have no idea what those numbers actually translate
+  to.
+- Add an autosave function that triggers every time you descend or ascend. 
+  The game occasionally crashes (unrepeatablely, unfortunately), which is 
+  more than a little frustrating when you just descended 300' in the 
+  infinite dungeon without saving.
+- Add the ability to make macros and/or adjust the letters that spells map 
+  to. The useful buff spells that one might use regularly are currently 
+  being distributed at random throughout the many non-buff spells that one 
+  rarely uses. Even hotkeys would improve this by a great deal.
+

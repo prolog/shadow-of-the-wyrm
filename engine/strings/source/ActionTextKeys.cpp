@@ -340,6 +340,15 @@ string ActionTextKeys::get_steal_unsuccessful_message(const string& stealing_des
   return msg;
 }
 
+string ActionTextKeys::get_cry_out_message(const string& creature_desc)
+{
+  string msg = StringTable::get(ACTION_CRY_OUT);
+  boost::replace_first(msg, "%s", creature_desc);
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -509,4 +518,4 @@ const string ActionTextKeys::ACTION_THIEVERY_STEAL_SUCCESSFUL_PLAYER = "ACTION_T
 const string ActionTextKeys::ACTION_THIEVERY_STEAL_SUCCESSFUL_MONSTER = "ACTION_THIEVERY_STEAL_SUCCESSFUL_MONSTER";
 const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER = "ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER";
 const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER = "ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER";
-
+const string ActionTextKeys::ACTION_CRY_OUT                       = "ACTION_CRY_OUT";
