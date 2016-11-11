@@ -723,3 +723,13 @@ unfiltered truth of loss would come to form %b
 her narrative, her turn from strong to weak. %b
 And as she left, her battered son began to speak.
 %p 
+"I come to you in great humility. %b
+The great king Sel, the maker of our peace, %b
+is dead; so too the credibility %b
+of truce.  For in the ancient woods, I loosed %b
+an arrow at the golden hart.  It veered %b
+so swiftly.  What but magic could have claimed %b
+the course?  The shot was swift and true - a spear %b
+that caught a giant, split his eye, and maimed %b
+the bladed beast: enraged and bloodied, wild, untamed."
+%p
