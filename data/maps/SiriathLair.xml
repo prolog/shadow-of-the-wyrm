@@ -124,7 +124,7 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>magici_shard</ID>
+				<ID>_magici_shard</ID>
 				<Coord>
 					<Row>16</Row>
 					<Col>39</Col>

@@ -368,6 +368,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>0</HasPockets>
+			<HasVoice>0</HasVoice>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -430,6 +431,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>0</HasPockets>
+			<HasVoice>0</HasVoice>
 			<Drops>
 				<Drop>
 					<ID>_quill</ID>
@@ -498,6 +500,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>0</HasVoice>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -566,6 +569,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<NameSID>DEMON_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -628,6 +632,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -690,6 +695,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<Drops>
 				<Drop>
 					<ID>_currency</ID>
@@ -760,6 +766,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>0</HasPockets>
+			<HasVoice>0</HasVoice>
 			<NameSID>INSECT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -822,6 +829,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>0</HasVoice>
 			<NameSID>JELLY_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -884,6 +892,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -946,6 +955,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<HasPockets>0</HasPockets>
+			<HasVoice>0</HasVoice>
 			<NameSID>PLANT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1008,6 +1018,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1065,6 +1076,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1125,6 +1137,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1184,6 +1197,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -1246,6 +1260,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
@@ -1330,6 +1345,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
@@ -1406,6 +1422,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
@@ -1483,6 +1500,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
@@ -1557,6 +1575,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<HasRandomVillages>0</HasRandomVillages>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -1633,6 +1652,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
@@ -1708,6 +1728,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
@@ -1784,6 +1805,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
@@ -1856,6 +1878,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
@@ -1929,6 +1952,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>

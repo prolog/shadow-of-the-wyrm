@@ -36,6 +36,9 @@ class Race
     void set_has_pockets(const bool new_has_pockets);
     bool get_has_pockets() const;
 
+    void set_has_voice(const bool new_has_voice);
+    bool get_has_voice() const;
+
     void set_drops(const std::map<std::string, DropParameters>& new_drops);
     std::map<std::string, DropParameters> get_drops() const;
 
@@ -137,6 +140,7 @@ class Race
     bool user_playable;
     bool leaves_corpse;
     bool has_pockets;
+    bool has_voice;
     std::map<std::string, DropParameters> drops;
     bool has_random_villages;
     SettlementType settlement_type;

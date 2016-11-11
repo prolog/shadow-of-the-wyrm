@@ -66,6 +66,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool has_pockets = XMLUtils::get_child_node_bool_value(race_node, "HasPockets");
     race->set_has_pockets(has_pockets);
 
+    bool has_voice = XMLUtils::get_child_node_bool_value(race_node, "HasVoice");
+    race->set_has_voice(has_voice);
+
     XMLNode drops_node = XMLUtils::get_next_element_by_local_name(race_node, "Drops");
     parse_race_drops(race, drops_node);
 

@@ -34,6 +34,9 @@ class CombatManager
     void handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt);
     void handle_draining_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info);
     void handle_ethereal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info);
+
+    // Set the creature to hostile, and yell out for support.
+    void handle_hostility_implications(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     
     // Functions to handle the attacking mechanics and add messages as necessary.
     bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type);

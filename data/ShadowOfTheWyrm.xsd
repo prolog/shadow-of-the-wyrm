@@ -219,7 +219,10 @@
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
 			<xs:element name="LeavesCorpse" type="xs:boolean"/>
-			<xs:element name="HasPockets" type="xs:boolean"/> <!-- Can we steal from the creature? -->
+			<!-- Can we steal from the creature? -->
+			<xs:element name="HasPockets" type="xs:boolean"/> 
+			<!-- When it's attacked, does it yell and draw other friendly creatures into the fight? -->
+			<xs:element name="HasVoice" type="xs:boolean"/> 
 			<xs:element name="Drops" type="tns:DropsType" minOccurs="0"/>
 			<xs:element name="HasRandomVillages" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="SettlementType" type="tns:SettlementType" minOccurs="0"/>
