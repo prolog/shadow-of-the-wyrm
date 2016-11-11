@@ -383,6 +383,11 @@ CreaturePtr Tile::get_creature() const
   return creature;
 }
 
+void Tile::set_items(IInventoryPtr new_items)
+{
+  items = new_items;
+}
+
 IInventoryPtr Tile::get_items()
 {
   return items;

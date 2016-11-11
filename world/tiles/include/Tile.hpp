@@ -100,6 +100,7 @@ class Tile : public ISerializable
     virtual void remove_creature();
     virtual std::shared_ptr<Creature> get_creature() const;
     
+    virtual void set_items(IInventoryPtr new_items);
     virtual IInventoryPtr get_items();
 
     virtual TileType get_tile_type() const;

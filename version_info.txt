@@ -42,6 +42,10 @@ Shadow of the Wyrm v0.5.7 "Cutting"
   - Magici shard in Siriath's lair wasn't loading properly (Dallas 
     Herrin).
 
+  - It's no longer possible to spit out a fruit seed/pit on the world
+    map and have that tile's inventory updated.  Tiles on the world map
+    now always have null inventories (Dallas Herrin).
+
 Shadow of the Wyrm v0.5.6.1 "Vivaldi"
 - Version declared November 1, 2016.  Version finalized November 5, 2016.
 
