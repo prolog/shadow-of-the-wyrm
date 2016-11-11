@@ -19,6 +19,9 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - Poison damage is now always doubled for creatures with low (< 7)
   Health.
 
+- Added searching to the command reference in the guidebook, and made
+  a few updates to the section on secondary statistics (The_Great_Goblin).
+
 - More stanzas for "Tel and Floridel".
 
 - Bug fixes:

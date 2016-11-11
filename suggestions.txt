@@ -49,7 +49,6 @@ Me:
 - Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
-- Crash bug is still present: find out what's causing it!
 - Telari, the Drowned Isle
 - Update MapTester config so that "generation runs" of creatures and
   items can be done and dumped to disk.
@@ -66,10 +65,6 @@ For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
   ever, generated.
 - Revisit creature generation algorithm.
-
-The_Great_Goblin:
-- Describe evade/soak in guidebook.
-- Search not in guide/in-game help.
 
 VedVid:
 - Lack of space between "Resting" and "Not while near..."
