@@ -24,6 +24,8 @@ their home.
 616 With calm winds, we had many visitors this year.  One told of a village of gnomes called Gnordvar, far to the north.  We are told it is up against a 
 mountainside and the gnomes are friendly. 
 %p 
+617 Emissaries from the north - a small group have come to settle the north-east islet we call Rowan Head.  These people are the Roani, who we have named for the pale brown colour of their hair.  They have brought us a fresh catch of fish, and strong, dark beer.  It is good to find friendly folk in this world.
+%p
 622 The steel men returned.  They came from the north but found only cliffs.  We rained fire arrows and pitch and the steel men fled. 
 %p 
 623 A mercenary named Cinas has taught us to make catapults.  We have made four, should the raiders return. 
@@ -70,7 +72,9 @@ He is son of Hrimhere, son of Eadbert, himself son of Aethelric, one of Aethelwu
 of salted fish.  The sailors told of a strange sight on one of the northern islands that is shaped like a cross.  They said that on this far-flung island, 
 they saw wagons, caravans, and heard the sweet music of flutes and fiddles.  They saw also many kinds of fruit trees, and said it was strange that this 
 beautiful island should be found at the end of the world. 
-%p 
+%p
+822 We have many ships leaving Rowan Head.  There are still lights, but we have had no word from the Roani.
+%p
 826 Strange tidings.  We have heard several accounts of a great tower rising out of the earth in the snake-lands, where previously there were only ruins. 
 %p 
 831 Rumblings from the north-west: something has stirred, something long quiet.  It is felt all over the world.  The winds are colder.  Great evils have 

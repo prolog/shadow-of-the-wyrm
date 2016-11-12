@@ -26,6 +26,10 @@ Shadow of the Wyrm v0.5.7 "Cutting"
   races do), they will cry out, causing nearby friendly creatures to
   also become hostile to the attacker (AgingMinotaur).
 
+- New area north-east of the starting island: the islet of Rowan Head.
+  Added a little bit of information to the Isen Dun Chronicle on this
+  island and its people.
+
 - More stanzas for "Tel and Floridel".
 
 - Bug fixes:

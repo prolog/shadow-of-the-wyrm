@@ -1,6 +1,8 @@
 <WorldMap xmlns="urn:shadow_of_the_wyrm:maps:world_map:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:world_map:1.0.0 ./WorldMapAreas.xsd">
 	<Areas>
 		<Area id="little_island">
+			<Row y="92" x="94">~~~~~~</Row>
+			<Row y="93" x="94">~~~~r~</Row>
 			<Row y="94" x="94">~~~~~~</Row>
 			<Row y="95" x="94">~KF~~~</Row>
 			<Row y="96" x="94">~~vgO~</Row>
