@@ -3,6 +3,12 @@ require('areas')
 -- Array containing the areas of Little Island.
 local little_island = {}
 
+-- Islet of Rowan Head
+local rowan_head = Area:new(93, 98)
+rowan_head:set_custom_map_id("rowan_head")
+rowan_head:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ROWAN_HEAD")
+
+-- Little Island itself
 local wintersea_keep = Area:new(95, 95)
 wintersea_keep:set_custom_map_id("wintersea_keep")
 wintersea_keep:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_WINTERSEA_KEEP")
@@ -22,6 +28,7 @@ dungeon:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON")
 dungeon:set_additional_property(siriath_custom_map_id_key, "siriath_lair")
 dungeon:set_additional_property("UNDERWORLD_STRUCTURE_MAX_DEPTH", 25)
 
+table.insert(little_island, rowan_head)
 table.insert(little_island, wintersea_keep)
 table.insert(little_island, isen_dun)
 table.insert(little_island, barrows)
