@@ -90,6 +90,7 @@ class String
     static uint to_uint(const std::string& str);
     static float to_float(const std::string& str);
     static double to_double(const std::string& str);
+    static Colour to_colour(const std::string& str, const Colour default_colour);
     static bool is_whitespace(const std::string& str);
     static std::string add_trailing_spaces(const std::string& str, const uint max_size);
 

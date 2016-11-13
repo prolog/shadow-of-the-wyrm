@@ -39,6 +39,14 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
   - Fixed some message formatting issues around resting/automove (VedVid).
 
+- Added optional settings to colourize HP and AP on the display for easier
+  scanability.  These are "default_hp_colour" and "default_ap_colour", 
+  and if not set, will default to the usual white (VedVid).
+
+- As you select sex, race, and class, the information is displayed at the
+  top of the next screen.  This provides better feedback when choosing
+  to randomize individual elements (AgingMinotaur).
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: Maisy, Old Toller, Franck.
