@@ -10,6 +10,7 @@
 #include "CursesProperties.hpp"
 #include "DisplaySettings.hpp"
 #include "EquipmentTextKeys.hpp"
+#include "Game.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "Screen.hpp"
@@ -828,6 +829,9 @@ void CursesDisplay::clear_screen()
 // Display the player data
 void CursesDisplay::display(const DisplayStatistics& player_stats)
 {
+  Game& game = Game::instance();
+  Settings& settings = game.get_settings_ref();
+
   string name         = player_stats.get_name();
   string synopsis     = player_stats.get_synopsis();
 
@@ -847,7 +851,10 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
   pair<string, Colour> alignment = player_stats.get_alignment();
 
   string hit_points   = player_stats.get_hit_points();
+  Colour hit_points_colour = String::to_colour(settings.get_setting("default_hp_colour"), Colour::COLOUR_WHITE);
+
   string arc_points   = player_stats.get_arcana_points();
+  Colour arc_points_colour = String::to_colour(settings.get_setting("default_ap_colour"), Colour::COLOUR_WHITE);
 
   string map_depth    = player_stats.get_map_depth();
 
@@ -877,8 +884,8 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, alignment.first);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, alignment.first, speed, alignment.second);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, arc_points, map_depth);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points, hit_points_colour);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, arc_points, map_depth, arc_points_colour);
   mvprintw(current_row, current_col, map_depth.c_str());
 
   // Last row: status ailments

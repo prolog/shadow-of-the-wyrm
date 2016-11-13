@@ -94,6 +94,18 @@ bool String::to_bool(const string& convert)
   return false;
 }
 
+Colour String::to_colour(const string& str_colour, const Colour default_colour)
+{
+  Colour c = default_colour;
+
+  if (!str_colour.empty())
+  {
+    c = static_cast<Colour>(String::to_int(str_colour));
+  }
+
+  return c;
+}
+
 vector<string> String::tokenize(const string& tok_str, const string& delim, const bool include_delims)
 {
   vector<string> output;

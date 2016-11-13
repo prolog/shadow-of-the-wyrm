@@ -40,6 +40,15 @@ TEST(SW_Engine_ConversionRoutines, string_to_float)
   EXPECT_FLOAT_EQ(54.95f, String::to_float(test_3));
 }
 
+TEST(SW_Engine_ConversionRoutines, string_to_colour)
+{
+  EXPECT_EQ(Colour::COLOUR_WHITE, String::to_colour("", Colour::COLOUR_WHITE));
+  EXPECT_EQ(Colour::COLOUR_BLUE, String::to_colour("", Colour::COLOUR_BLUE));
+
+  EXPECT_EQ(Colour::COLOUR_BOLD_RED, String::to_colour("9", Colour::COLOUR_WHITE));
+  EXPECT_EQ(Colour::COLOUR_GREEN, String::to_colour("2", Colour::COLOUR_WHITE));
+}
+
 TEST(SW_Engine_ConversionRoutines, char_to_string)
 {
   char x = 'x';

@@ -9,8 +9,8 @@
 
 using namespace std;
 
-ClassSelectionScreen::ClassSelectionScreen(DisplayPtr new_display)
-: Screen(new_display)
+ClassSelectionScreen::ClassSelectionScreen(DisplayPtr new_display, const string& synop)
+: Screen(new_display), creature_synopsis(synop)
 {
   initialize();
 }
@@ -24,6 +24,9 @@ void ClassSelectionScreen::initialize()
 {
   Game& game_instance = Game::instance();
   ClassMap classes = game_instance.get_classes_ref();
+  ostringstream synop;
+
+  synop << "[" << creature_synopsis << "]";
 
   TextComponentPtr class_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_CLASS));
 
@@ -57,6 +60,7 @@ void ClassSelectionScreen::initialize()
   options->add_option_description("");
 
   vector<ScreenComponentPtr> cur_page;
+  cur_page.push_back(make_shared<TextComponent>(synop.str()));
   cur_page.push_back(class_selection_text);
   cur_page.push_back(options);
 

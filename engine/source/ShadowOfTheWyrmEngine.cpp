@@ -19,6 +19,7 @@
 #include "MessageManagerFactory.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
+#include "RaceManager.hpp"
 #include "RaceSelectionScreen.hpp"
 #include "RNG.hpp"
 #include "ScriptConstants.hpp"
@@ -325,7 +326,9 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_race_selection)
   {
-    RaceSelectionScreen race_selection(display);
+    string creature_synopsis = TextMessages::get_sex(sex);
+
+    RaceSelectionScreen race_selection(display, creature_synopsis);
     string race_index = race_selection.display();
 
     if (opt.is_random_option(race_index.at(0)))
@@ -362,7 +365,11 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_class_selection)
   {
-    ClassSelectionScreen class_selection(display);
+    RaceManager rm;
+    RacePtr sel_race = rm.get_race(selected_race_id);
+    string creature_synopsis = TextMessages::get_sex(sex) + " " + StringTable::get(sel_race ? sel_race->get_race_name_sid() : "");
+
+    ClassSelectionScreen class_selection(display, creature_synopsis);
     string class_index = class_selection.display();
 
     if (opt.is_random_option(class_index.at(0)))
@@ -397,7 +404,9 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_deity_selection)
   {
-    DeitySelectionScreen deity_selection(display, selected_race);
+    string creature_synopsis = TextMessages::get_sex(sex) + " " + StringTable::get(selected_race->get_race_name_sid()) + " " + StringTable::get(selected_class->get_class_name_sid());
+
+    DeitySelectionScreen deity_selection(display, selected_race, creature_synopsis);
     string deity_index = deity_selection.display();
 
     if (opt.is_random_option(deity_index.at(0)))

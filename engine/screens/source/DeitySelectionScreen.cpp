@@ -7,8 +7,8 @@
 
 using namespace std;
 
-DeitySelectionScreen::DeitySelectionScreen(DisplayPtr new_display, RacePtr selected_race)
-: Screen(new_display), race(selected_race)
+DeitySelectionScreen::DeitySelectionScreen(DisplayPtr new_display, RacePtr selected_race, const string& synop)
+: Screen(new_display), race(selected_race), creature_synopsis(synop)
 {
   initialize();
 }
@@ -26,7 +26,11 @@ void DeitySelectionScreen::initialize()
     Game& game_instance = Game::instance();
     DeityMap deities = game_instance.get_deities_ref();
     vector<string> deity_ids = race->get_initial_deity_ids();
+    ostringstream synop;
 
+    synop << "[" << creature_synopsis << "]";
+
+    TextComponentPtr synopsis_text = std::make_shared<TextComponent>(synop.str());
     TextComponentPtr deity_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_DEITY));
     OptionsComponentPtr options = std::make_shared<OptionsComponent>();
     int current_id = 0;
@@ -74,6 +78,7 @@ void DeitySelectionScreen::initialize()
     options->add_option(random_option);
     options->add_option_description("");
 
+    deity_screen.push_back(synopsis_text);
     deity_screen.push_back(deity_selection_text);
     deity_screen.push_back(options);
   }
