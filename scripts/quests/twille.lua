@@ -18,6 +18,8 @@ local function twille_book_completion_fn()
   clear_and_add_message("TWILLE_BOOK_QUEST_COMPLETE3_SID")
   remove_object_from_player("history_kell_empire")
   add_object_to_player_tile("amagari")
+
+  return true
 end
 
 twille_quest = Quest:new("twille_book",
