@@ -28,9 +28,11 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
 - New area north-east of the starting island: the islet of Rowan Head.
   Added a little bit of information to the Isen Dun Chronicle on this
-  island and its people.
+  island and its people.  My deepest apologies to Robin Robertson.
 
 - More stanzas for "Tel and Floridel".
+
+- New creatures: Maisy, Old Toller, Franck.
 
 - Bug fixes:
 

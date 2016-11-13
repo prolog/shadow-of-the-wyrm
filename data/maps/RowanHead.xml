@@ -18,8 +18,8 @@
 	SSSSSSSSSSSSSSSSSSSSSSSSSSR,,RRRTRR,RRTRR,RR,,RRRRR,R#.......#RR0RRRRSSSSSSSSSSS
 	SSSSSSSSSSSSSSSSSSSSSR,RR,RRRRR,,R,,,,RRRR,RRRR,,RRRR........#RRTRRRRSSSSSSSSSSS
 	SSSSSSSSSSSSSSSSSSSSRRR,,RRR,RRRR,RR,RR,RRRR,RRRRRRRR#.......#,R0RRSSSSSSSSSSSSS
-	SSSSSSSSSSSSSSRSSSSRR,RRRR,RRRR,RR,,R,R,RR,RR,RRR,RRR#########RRSSSSSSSSSSSSSSSS
-	SSSSSSSSSSSSSRRSSSSRRRR,RRRRR,RR,RR,,RR,R,,,,RR,RRR,RRR,RTR,RSSSSSSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSPPSSSSRR,RRRR,RRRR,RR,,R,R,RR,RR,RRR,RRR#########RRSSSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSPPSSSSRRRR,RRRRR,RR,RR,,RR,R,,,,RR,RRR,RRR,RTR,RSSSSSSSSSSSSSSSSSSS
 	SSSSSSSSSSSRRRRR,RR,,R,R,,R,R,RRRRR,,RRR,RR,RR,R,RRTRRRTRRRSSSSSSSSSSSSSSSSSSSSS
 	SSSSSSSSSTRR,RR,RRRRR,RRRR#######.#######R,RR,RRRRR,RRRRRRSSSSSSSSSSSSSSSSSSSSSS
 	SSSSSSSSSSSRRRRRRR,RRRRRRR#.............#RRR,RR,R,RR,,RRRR,RRSSSSSSSSSSSSSSSSSSS
@@ -31,33 +31,102 @@
 	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 	</Tiles>
 	<InitialPlacements>
-		<Creatures/>
-		<Items/>
-		<Features>
-			<FeaturePlacement>
+		<Creatures>
+			<Placement>
+				<ID>maisy</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>57</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>old_toller</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>28</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>franck</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>33</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
+		<Items>
+			<Placement>
+				<ID>_fishing_rod</ID>
 				<Coord>
 					<Row>13</Row>
-					<Col>30</Col>
+					<Col>37</Col>
 				</Coord>
-				<Door>
-					<Material>3</Material>
-					<Entrance>
-						<EntranceState>2</EntranceState>
-					</Entrance>
-				</Door>
-			</FeaturePlacement>
-			<FeaturePlacement>
+			</Placement>
+			<Placement>
+				<ID>raft</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>37</Col>
+				</Coord>
+			</Placement>			
+			<Placement>
+				<ID>salted_fish</ID>
 				<Coord>
 					<Row>13</Row>
-					<Col>36</Col>
+					<Col>38</Col>
 				</Coord>
-				<Door>
-					<Material>3</Material>
-					<Entrance>
-						<EntranceState>2</EntranceState>
-					</Entrance>
-				</Door>
-			</FeaturePlacement>
-		</Features>
+				<Quantity>4</Quantity>
+			</Placement>
+			<Placement>
+				<ID>salted_fish</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>4</Quantity>
+			</Placement>
+			<Placement>
+				<ID>salted_fish</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>39</Col>
+				</Coord>
+				<Quantity>4</Quantity>
+			</Placement>
+			<Placement>
+				<ID>salted_fish</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>39</Col>
+				</Coord>
+				<Quantity>4</Quantity>
+			</Placement>
+		</Items>
 	</InitialPlacements>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>13</Row>
+				<Col>30</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>13</Row>
+				<Col>36</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>
