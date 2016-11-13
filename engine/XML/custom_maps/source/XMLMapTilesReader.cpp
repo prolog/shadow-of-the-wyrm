@@ -1,7 +1,5 @@
 #include <cctype>
 #include "MapUtils.hpp"
-#include "TileGenerator.hpp"
-#include "SpringsTile.hpp"
 #include "XMLMapTilesReader.hpp"
 #include "XMLTileMapper.hpp"
 

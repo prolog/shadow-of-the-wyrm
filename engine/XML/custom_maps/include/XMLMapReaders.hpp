@@ -22,4 +22,6 @@ class XMLMapReader
 
     std::pair<int, int> parse_placement_range(const XMLNode& node);
     void parse_random_creature_placements(const XMLNode& creatures_node, MapPtr map);
+
+    void log_placement_error(MapPtr map, const std::string& bad_id);
 };

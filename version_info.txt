@@ -27,8 +27,17 @@ Shadow of the Wyrm v0.5.7 "Cutting"
   also become hostile to the attacker (AgingMinotaur).
 
 - New area north-east of the starting island: the islet of Rowan Head.
-  Added a little bit of information to the Isen Dun Chronicle on this
-  island and its people.  My deepest apologies to Robin Robertson.
+  
+  - Added a little bit of information to the Isen Dun Chronicle on this
+    island and its people.
+    
+  - Maisy's story is a direct retelling of Robin Robertson's poem, "At 
+    Roane Head" (my deepest apologies to the poet).
+
+  - Franck offers to teach the player fishing for a fee, if they don't
+    already know it.
+
+  - Fixed some message formatting issues around resting/automove (VedVid).
 
 - More stanzas for "Tel and Floridel".
 
