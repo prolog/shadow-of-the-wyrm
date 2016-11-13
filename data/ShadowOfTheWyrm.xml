@@ -20083,6 +20083,107 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="maisy">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>MAISY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MAISY_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MAISY_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/maisy.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="old_toller">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>OLD_TOLLER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>OLD_TOLLER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>OLD_TOLLER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>OLD_TOLLER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>9</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>6</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>12</NumSides>
+				<Type>0</Type>
+			</Damage>
+		</Creature>
+		<Creature id="franck">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>FRANCK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FRANCK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FRANCK_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="exile">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>EXILE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -29833,6 +29934,17 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 			</Boat>
+			<Boat id="coracle">
+				<DescriptionSID>RAFT_SID</DescriptionSID>
+				<UsageDescriptionSID>RAFT_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>30</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>1</Rarity>
+			</Boat>			
 			<Boat id="rowboat">
 				<DescriptionSID>ROWBOAT_SID</DescriptionSID>
 				<UsageDescriptionSID>ROWBOAT_USAGE_SID</UsageDescriptionSID>
