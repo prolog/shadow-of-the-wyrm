@@ -20183,6 +20183,11 @@
 				<NumSides>16</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/franck.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="exile">
 			<RaceID>01_human</RaceID>
@@ -29934,7 +29939,7 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 			</Boat>
-			<Boat id="coracle">
+			<Boat id="raft">
 				<DescriptionSID>RAFT_SID</DescriptionSID>
 				<UsageDescriptionSID>RAFT_USAGE_SID</UsageDescriptionSID>
 				<Value>20</Value>

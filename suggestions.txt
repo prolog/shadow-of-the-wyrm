@@ -1,6 +1,4 @@
 Me:
-- Rowan Head: Maisy, Old Toller, Franck.  Spring.
-- Log an error when a map placement can't happen.
 - Day/night.  Display differently, display a message when it changes, etc.
   Start game at 8am in-game.  Show day/night in "T"ime command.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
@@ -69,7 +67,6 @@ For v1:
 - Revisit creature generation algorithm.
 
 VedVid:
-- Lack of space between "Resting" and "Not while near..."
 - Colourize HP, AP.
 - 207x66 - try reading text, all fu'd.
 

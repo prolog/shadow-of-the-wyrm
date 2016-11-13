@@ -1,6 +1,7 @@
 #include <sstream>
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
+#include "Log.hpp"
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
@@ -222,6 +223,10 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
           MapUtils::add_or_update_location(map, creature, coord);
         }
       }
+      else
+      {
+        log_placement_error(map, id);
+      }
     }
   }
 }
@@ -253,6 +258,10 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
         {
           tile->get_items()->add(item);
         }
+      }
+      else
+      {
+        log_placement_error(map, id);
       }
     }
   }
@@ -295,3 +304,19 @@ void XMLMapReader::parse_random_creature_placements(const XMLNode& creatures_nod
   }
 }
 
+void XMLMapReader::log_placement_error(MapPtr map, const string& bad_id)
+{
+  ostringstream ss;
+  ss << "Could not set creature or item with id " << bad_id << " on map ID ";
+
+  if (map != nullptr)
+  {
+    ss << map->get_map_id();
+  }
+  else
+  {
+    ss << "(null)";
+  }
+
+  Log::instance().error(ss.str());
+}
