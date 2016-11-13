@@ -120,10 +120,6 @@ bugs:
   stat--ups, and class stat-ups do improve it.
 - In the manticore/gnome mine quest, the manticore will occasionally spawn 
   in a cavern system with no path to the stairs.
-- When you complete the mountain-elf-librarian book-quest that involves 
-  killing the sorcerer, talking to the questgiver again gives you that same
-  quest, again. It cannot be completed though, since there's only the one 
-  book.
 - Eating on the world map takes significantly more time than eating 
   anywhere that isn't a world map tile. To see this, eat olives repeatedly
   on the world map; they provide so little nutrition that you can actually 
@@ -141,10 +137,6 @@ Suggestions:
   tedious. Suggestions for solutions:
 - Make it obvious somewhere how much certain spells do, and what mechanical
   effect increasing spell levels has.
-- Do the same for the things described upon pressing W. Base/Total 
-  difficulty is obviously accuracy, and Speed is obviously how much time 
-  an attack takes, but I have no idea what those numbers actually translate
-  to.
 - Add an autosave function that triggers every time you descend or ascend. 
   The game occasionally crashes (unrepeatablely, unfortunately), which is 
   more than a little frustrating when you just descended 300' in the 
