@@ -733,3 +733,13 @@ the course?  The shot was swift and true - a spear %b
 that caught a giant, split his eye, and maimed %b
 the bladed beast: enraged and bloodied, wild, untamed."
 %p
+"I called them with my horn, those noble men %b
+of Cithriel, but this was not a day %b
+for bloodless glory.  Riding down the glen, %b
+my father felt his spirit fade away %b
+when caught across the face - an aspen trunk, %b
+as nimble as a rod in giant hands. %b
+We slew the beast, then made a pyre from hunks %b
+of knotted oak, a boat built high and grand %b
+to sail my father deep into the quiet land."
+%p
