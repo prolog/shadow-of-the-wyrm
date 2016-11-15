@@ -50,6 +50,8 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - Made the Guidebook clearer on how attack difficulty, speed, and damage
   work (Dallas Herrin).
 
+- Messages on day/night transition when on an overworld map.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: Maisy, Old Toller, Franck.

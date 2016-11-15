@@ -108,7 +108,10 @@ ITimeObserver* CreatureTimeObserver::clone()
 
   // Ensure that the new CreatureTimeObserver points to a *different*
   // set of regeneration helpers than the current object.
-  creature_observer->initialize_regeneration_helpers();
+  if (creature_observer != nullptr)
+  {
+    creature_observer->initialize_regeneration_helpers();
+  }
 
   return creature_observer;
 }

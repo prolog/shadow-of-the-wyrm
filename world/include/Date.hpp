@@ -16,6 +16,13 @@ enum struct TimeOfDayType
   TIME_OF_DAY_NIGHT = 1
 };
 
+class TimeOfDayConstants
+{
+  public:
+    static const uint TIME_OF_DAY_DAWN;
+    static const uint TIME_OF_DAY_DUSK;
+};
+
 class Date
 {
   public:
