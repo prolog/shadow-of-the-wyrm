@@ -99,6 +99,8 @@ string DateTextKeys::get_phase_of_moon_sid(const PhaseOfMoonType pom)
 
 const string DateTextKeys::TIME_OF_DAY_DAY = "TIME_OF_DAY_DAY";
 const string DateTextKeys::TIME_OF_DAY_NIGHT = "TIME_OF_DAY_NIGHT";
+const string DateTextKeys::TIME_TRANSITION_DAWN = "TIME_TRANSITION_DAWN";
+const string DateTextKeys::TIME_TRANSITION_DUSK = "TIME_TRANSITION_DUSK";
 const string DateTextKeys::PHASE_OF_MOON_NEW = "PHASE_OF_MOON_NEW";
 const string DateTextKeys::PHASE_OF_MOON_WAXING = "PHASE_OF_MOON_WAXING";
 const string DateTextKeys::PHASE_OF_MOON_FULL = "PHASE_OF_MOON_FULL";

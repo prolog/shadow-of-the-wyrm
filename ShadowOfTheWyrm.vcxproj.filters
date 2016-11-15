@@ -3861,6 +3861,9 @@
     <ClInclude Include="engine\include\LogFiles.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\WorldTimeObserver.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7582,6 +7585,9 @@
     </ClCompile>
     <ClCompile Include="engine\source\LogFiles.cpp">
       <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\WorldTimeObserver.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

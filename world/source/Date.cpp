@@ -2,6 +2,9 @@
 
 using std::string;
 
+const uint TimeOfDayConstants::TIME_OF_DAY_DAWN = 7;
+const uint TimeOfDayConstants::TIME_OF_DAY_DUSK = 19;
+
 string Date::month_sids[DateValues::NUMBER_OF_MONTHS] = {"MONTH_1", "MONTH_2", "MONTH_3", "MONTH_4", "MONTH_5", "MONTH_6", "MONTH_7", "MONTH_8", "MONTH_9", "MONTH_10", "MONTH_11", "MONTH_12"};
 string Date::day_of_week_sids[DateValues::NUMBER_OF_DAYS] = {"DAY_1", "DAY_2", "DAY_3", "DAY_4", "DAY_5", "DAY_6", "DAY_7"};
 
@@ -29,7 +32,7 @@ TimeOfDayType Date::get_time_of_day() const
 {
   TimeOfDayType dtype = TimeOfDayType::TIME_OF_DAY_NIGHT;
 
-  if (hours >= 7 && hours < 19)
+  if (hours >= TimeOfDayConstants::TIME_OF_DAY_DAWN && hours < TimeOfDayConstants::TIME_OF_DAY_DUSK)
   {
     dtype = TimeOfDayType::TIME_OF_DAY_DAY;  
   }
