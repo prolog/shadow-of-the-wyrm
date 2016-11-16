@@ -743,3 +743,13 @@ We slew the beast, then made a pyre from hunks %b
 of knotted oak, a boat built high and grand %b
 to sail my father deep into the quiet land."
 %p
+As Tel was speaking, Floridel emerged %b
+to stand before the crowd.  Though all the lords %b
+and ladies watched, she never felt the urge %b
+to wilt.  Their knowing stares might underscore %b
+that these were not her folk, but he was hers. %b
+Her fairy king.  Her rider on the moor. %b
+He'd stolen her away; she'd not demur %b
+to any courtesan.  So, tall and pure, %b
+she spoke, her voice commanding, high and proud and sure.
+%p
