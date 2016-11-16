@@ -27,6 +27,14 @@ void DisplayTile::set_colour(const int new_colour)
   colours[current_season] = new_colour;
 }
 
+void DisplayTile::set_all_colours(const int new_colour)
+{
+  for (auto& c_pair : colours)
+  {
+    colours[c_pair.first] = new_colour;
+  }
+}
+
 int DisplayTile::get_colour() const
 {
   return get_colour(current_season);

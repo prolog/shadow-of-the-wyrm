@@ -28,6 +28,7 @@ class DisplayTile
     Season get_season() const;
 
     void set_colours(const SeasonTileColourMap& new_colours);
+    void set_all_colours(const int new_colour);
     void set_colour(const Season season, const int new_colour);
     int  get_colour(const Season season) const;
     SeasonTileColourMap get_colours() const;

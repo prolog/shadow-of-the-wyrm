@@ -1,6 +1,8 @@
 #pragma once
-#include "common.hpp"
+#include <map>
 #include <string>
+#include "common.hpp"
+#include "Colours.hpp"
 
 namespace DateValues
 {
@@ -19,8 +21,17 @@ enum struct TimeOfDayType
 class TimeOfDayConstants
 {
   public:
+    static std::pair<Colour, Colour> get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map);
+
     static const uint TIME_OF_DAY_DAWN;
     static const uint TIME_OF_DAY_DUSK;
+
+  protected:
+    static void initialize_colour_overrides();
+
+    // First colour is tile colour, if nothing there.
+    // Second colour is if anything (creature, item, feature) is on tile.
+    static std::map<TimeOfDayType, std::pair<Colour, Colour>> time_of_day_colour_overrides;
 };
 
 class Date
