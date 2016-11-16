@@ -127,13 +127,16 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
 ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, const ActionCostValue fire_acv)
 {
   Game& game = Game::instance();
-  
+  Calendar& calendar = game.get_current_world()->get_calendar();
+  MapPtr map = game.get_current_map();
+  pair<Colour, Colour> tod_overrides = TimeOfDayConstants::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
+
   if (creature)
   {
     TargetMap& tile_map = creature->get_target_map_ref();
     
     TargetMap::iterator t_it = tile_map.find(std::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED)));
-    DisplayTile projectile_disp = MapTranslator::create_display_tile_from_item(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
+    DisplayTile projectile_disp = MapTranslator::create_display_tile_from_item(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION), tod_overrides.second);
     
     if (t_it != tile_map.end())
     {

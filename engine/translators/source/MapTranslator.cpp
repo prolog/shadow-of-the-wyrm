@@ -23,8 +23,13 @@ DisplayMap MapTranslator::create_display_map(const bool player_blinded, const Ma
   int actual_row, actual_col;
 
   // Get the current season and set it into the copy.
-  // I believe this is what people call "a train wreck":
-  Season season = Game::instance().get_current_world()->get_calendar().get_season()->get_season();
+  // Get the time information, too, for overriding colours for day/night.
+  Game& game = Game::instance();
+  Calendar& calendar = game.get_current_world()->get_calendar();
+  Season season = calendar.get_season()->get_season();
+  MapPtr current_map = game.get_current_map();
+  Date date = calendar.get_date();
+  pair<Colour, Colour> tod_overrides = TimeOfDayConstants::get_time_of_day_colours(date.get_time_of_day(), current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
 
   int cursor_row = reference_coords.first;
   int cursor_col = reference_coords.second;
@@ -75,7 +80,7 @@ DisplayMap MapTranslator::create_display_map(const bool player_blinded, const Ma
       actual_row = engine_coord.first + d_row;
       actual_col = engine_coord.second + d_col;
 
-      DisplayTile display_tile = translate_coordinate_into_display_tile(player_blinded, map, fov_map, actual_row, actual_col);
+      DisplayTile display_tile = translate_coordinate_into_display_tile(player_blinded, tod_overrides, map, fov_map, actual_row, actual_col);
 
       // Set the cursor coordinates.  Update the game's tracked display
       // coordinates, so that a full redraw can be performed.
@@ -96,7 +101,7 @@ DisplayMap MapTranslator::create_display_map(const bool player_blinded, const Ma
 
 // Create a display tile from a given coordinate, given the current map
 // and the current FOV map.
-DisplayTile MapTranslator::translate_coordinate_into_display_tile(const bool player_blinded, const MapPtr& map, const MapPtr& fov_map, const int actual_row, const int actual_col)
+DisplayTile MapTranslator::translate_coordinate_into_display_tile(const bool player_blinded, const pair<Colour, Colour>& tod_overrides, const MapPtr& map, const MapPtr& fov_map, const int actual_row, const int actual_col)
 {
   // Get the map tile
   TilePtr map_tile = map->at(actual_row, actual_col);
@@ -105,14 +110,14 @@ DisplayTile MapTranslator::translate_coordinate_into_display_tile(const bool pla
   TilePtr fov_map_tile = fov_map->at(actual_row, actual_col);
 
   // Translate the map tile
-  return create_display_tile(player_blinded, map_tile, fov_map_tile);
+  return create_display_tile(player_blinded, tod_overrides, map_tile, fov_map_tile);
 }
 
 // Create the tile to display, based on the tile's properties, and whether or
 // not the player's been blinded.  If the player's been blinded, the tile will
 // be black, unless it is the player's tile, in which case the player will be
 // displayed.
-DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const TilePtr& actual_tile, const TilePtr& fov_tile)
+DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const pair<Colour, Colour>& tod_overrides, const TilePtr& actual_tile, const TilePtr& fov_tile)
 {
   DisplayTile display_tile;
 
@@ -130,7 +135,7 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
     // creature (presumably, the player always has a sense of where they are!).
     if (creature)
     {
-      display_tile = create_display_tile_from_creature(creature);
+      display_tile = create_display_tile_from_creature(creature, tod_overrides.second);
     }
     else if (!inv->empty() && !player_blinded) // If at least one item exists in the tile's inventory of items
     {
@@ -138,29 +143,29 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
 
       if (item != nullptr)
       {
-        display_tile = create_display_tile_from_item(item);
+        display_tile = create_display_tile_from_item(item, tod_overrides.second);
       }
     }
     else if (feature && !feature->get_is_hidden() && !player_blinded) // There's no creature, and no items.  Is there a feature?  Can it be seen?
     {
-      display_tile = create_display_tile_from_feature(feature);
+      display_tile = create_display_tile_from_feature(feature, tod_overrides.second);
     }
     else // Nothing else, or the player is blind - display the tile only.
     {
-      display_tile = create_display_tile_from_tile(actual_tile);
+      display_tile = create_display_tile_from_tile(actual_tile, tod_overrides.first);
     }      
   }
   else
   {
     if (actual_tile->get_explored() && !player_blinded)
     {
-      display_tile = create_unseen_and_explored_display_tile(actual_tile);
+      display_tile = create_unseen_and_explored_display_tile(actual_tile, tod_overrides);
     }
     else
     {
       if (actual_tile->get_viewed() && !player_blinded)
       {
-        display_tile = create_unseen_and_previously_viewed_display_tile(actual_tile);          
+        display_tile = create_unseen_and_previously_viewed_display_tile(actual_tile, tod_overrides);
       }
       else
       {
@@ -173,25 +178,25 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
 }
 
 // Create a display tile from a given creature
-DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& creature)
+DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& creature, const Colour override_colour)
 {
-  return create_display_tile_from_symbol_and_colour(creature->get_symbol(), creature->get_colour());
+  return create_display_tile_from_symbol_and_colour(creature->get_symbol(), override_colour != Colour::COLOUR_UNDEFINED ? override_colour : creature->get_colour());
 }
 
 // Create a display tile from a given tile feature
-DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& feature)
+DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& feature, const Colour override_colour)
 {
-  return create_display_tile_from_symbol_and_colour(feature->get_symbol(), feature->get_colour());
+  return create_display_tile_from_symbol_and_colour(feature->get_symbol(), override_colour != Colour::COLOUR_UNDEFINED ? override_colour : feature->get_colour());
 }
 
 // Create a display tile from a given item
-DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item)
+DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item, const Colour override_colour)
 {
-  return create_display_tile_from_symbol_and_colour(item->get_symbol(), item->get_colour());
+  return create_display_tile_from_symbol_and_colour(item->get_symbol(), override_colour != Colour::COLOUR_UNDEFINED ? override_colour : item->get_colour());
 }
 
 // Create a display tile from a given tile
-DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile)
+DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, const Colour override_colour)
 {
   DisplayTile display_tile;
   Game& game = Game::instance();
@@ -200,6 +205,11 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile)
   vector<DisplayTile> tiles_info = game.get_tile_display_info_ref();
   DisplayTile tile_info = tiles_info.at(static_cast<int>(tile->get_tile_type()));
   display_tile = tile_info;
+
+  if (override_colour != Colour::COLOUR_UNDEFINED)
+  {
+    display_tile.set_all_colours(static_cast<int>(override_colour));
+  }
 
   return display_tile;
 }
@@ -211,29 +221,30 @@ DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const ucha
   return display_tile;  
 }
 
-DisplayTile MapTranslator::create_unseen_and_previously_viewed_display_tile(const TilePtr& tile)
+DisplayTile MapTranslator::create_unseen_and_previously_viewed_display_tile(const TilePtr& tile, const pair<Colour, Colour>& tod_overrides)
 {
   // JCD FIXME LATER
-  return create_unseen_and_explored_display_tile(tile);
+  return create_unseen_and_explored_display_tile(tile, tod_overrides);
 }
 
-DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr& tile)
+DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr& tile, const pair<Colour, Colour>& tod_overrides)
 {
   DisplayTile display_tile;
   
   if (tile->has_feature() && !tile->get_feature()->get_is_hidden())
   {
     FeaturePtr feature = tile->get_feature();
-    display_tile = create_display_tile_from_feature(feature);
+    display_tile = create_display_tile_from_feature(feature, tod_overrides.second);
   }
   else
   {
-    display_tile = create_display_tile_from_tile(tile);
+    display_tile = create_display_tile_from_tile(tile, tod_overrides.first);
   }
-  
+
   return display_tile;
 }
 
+// Always black - no overrides!
 DisplayTile MapTranslator::create_unseen_and_unexplored_display_tile()
 {
   DisplayTile display_tile;

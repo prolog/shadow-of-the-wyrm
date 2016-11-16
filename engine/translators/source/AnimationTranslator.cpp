@@ -1,4 +1,6 @@
 #include "AnimationTranslator.hpp"
+#include "Date.hpp"
+#include "Game.hpp"
 #include "MapTranslator.hpp"
 
 using namespace std;
@@ -20,6 +22,10 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
   }
 
   uint num_steps = movement_path.size();
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+  Calendar& calendar = game.get_current_world()->get_calendar();
+  pair<Colour, Colour> tod_overrides = TimeOfDayConstants::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
 
   for (uint i = 0; i < num_steps; i++)
   {
@@ -38,7 +44,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
       // Guard against a range outside the FOV/map.
       if (!game_tile || !fov_tile) continue;
 
-      DisplayTile previously_displayed = MapTranslator::create_display_tile(player_blinded, game_tile, fov_tile);
+      DisplayTile previously_displayed = MapTranslator::create_display_tile(player_blinded, tod_overrides, game_tile, fov_tile);
       previously_displayed.set_season(current_season);
     
       // Add the updated coordinate value to the in-frame list.

@@ -1,5 +1,5 @@
 Me:
-- Day/night.  Display differently on overworld map at night.
+- Day/night.  Test animations (spells, ranged weapons, etc).
   Start game at 8am in-game.  Show day/night in "T"ime command.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
   away from the player, hits incredibly hard when attacked.  Chatting to

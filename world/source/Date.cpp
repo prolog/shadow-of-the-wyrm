@@ -1,9 +1,35 @@
 #include "Date.hpp"
 
-using std::string;
+using namespace std;
 
 const uint TimeOfDayConstants::TIME_OF_DAY_DAWN = 7;
 const uint TimeOfDayConstants::TIME_OF_DAY_DUSK = 19;
+std::map<TimeOfDayType, std::pair<Colour, Colour>> TimeOfDayConstants::time_of_day_colour_overrides;
+
+pair<Colour, Colour> TimeOfDayConstants::get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map)
+{
+  if (time_of_day_colour_overrides.empty())
+  {
+    initialize_colour_overrides();
+  }
+
+  pair<Colour, Colour> overrides = make_pair(Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED);
+  auto t_it = time_of_day_colour_overrides.find(tod);
+
+  if (on_overworld_map && t_it != time_of_day_colour_overrides.end())
+  {
+    overrides = t_it->second;
+  }
+
+  return overrides;
+}
+
+void TimeOfDayConstants::initialize_colour_overrides()
+{
+  time_of_day_colour_overrides.clear();
+
+  time_of_day_colour_overrides = { {TimeOfDayType::TIME_OF_DAY_NIGHT, make_pair(Colour::COLOUR_BLUE, Colour::COLOUR_BOLD_BLUE)} };
+}
 
 string Date::month_sids[DateValues::NUMBER_OF_MONTHS] = {"MONTH_1", "MONTH_2", "MONTH_3", "MONTH_4", "MONTH_5", "MONTH_6", "MONTH_7", "MONTH_8", "MONTH_9", "MONTH_10", "MONTH_11", "MONTH_12"};
 string Date::day_of_week_sids[DateValues::NUMBER_OF_DAYS] = {"DAY_1", "DAY_2", "DAY_3", "DAY_4", "DAY_5", "DAY_6", "DAY_7"};
