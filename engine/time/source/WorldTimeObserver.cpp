@@ -26,11 +26,11 @@ void WorldTimeObserver::notify(const ulonglong minutes_this_tick)
     bool update_time_of_day = false;
     TimeOfDayType tod = TimeOfDayType::TIME_OF_DAY_DAY;
 
-    if (cur_hour == TimeOfDayConstants::TIME_OF_DAY_DAWN)
+    if (cur_hour == TimeOfDay::TIME_OF_DAY_DAWN)
     {
       update_time_of_day = true;
     }
-    else if (cur_hour == TimeOfDayConstants::TIME_OF_DAY_DUSK)
+    else if (cur_hour == TimeOfDay::TIME_OF_DAY_DUSK)
     {
       update_time_of_day = true;
       tod = TimeOfDayType::TIME_OF_DAY_NIGHT;

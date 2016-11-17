@@ -25,7 +25,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
   Calendar& calendar = game.get_current_world()->get_calendar();
-  pair<Colour, Colour> tod_overrides = TimeOfDayConstants::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
+  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
 
   for (uint i = 0; i < num_steps; i++)
   {

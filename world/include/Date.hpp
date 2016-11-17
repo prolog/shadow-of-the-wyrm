@@ -18,7 +18,7 @@ enum struct TimeOfDayType
   TIME_OF_DAY_NIGHT = 1
 };
 
-class TimeOfDayConstants
+class TimeOfDay
 {
   public:
     static std::pair<Colour, Colour> get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map);

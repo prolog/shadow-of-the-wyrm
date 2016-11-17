@@ -129,7 +129,7 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
   Game& game = Game::instance();
   Calendar& calendar = game.get_current_world()->get_calendar();
   MapPtr map = game.get_current_map();
-  pair<Colour, Colour> tod_overrides = TimeOfDayConstants::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
+  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
 
   if (creature)
   {
