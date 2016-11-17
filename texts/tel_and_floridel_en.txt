@@ -753,3 +753,13 @@ He'd stolen her away; she'd not demur %b
 to any courtesan.  So, tall and pure, %b
 she spoke, her voice commanding, high and proud and sure.
 %p
+"The peaceful days we've loved," she said, "will change. %b
+I know of giant-kind.  They're neither cruel %b
+nor merciful, but strong, and have a strange %b
+and keen intelligence.  We would be fools %b
+to think our merriment will carry through %b
+the coming night with darker days in store. %b
+So light the forges, take up arms - eschew %b
+the pleasantries, and face the jaws of war! %b
+For only then we'll find the things worth dying for."
+%p
