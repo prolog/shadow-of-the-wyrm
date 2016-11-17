@@ -2,11 +2,11 @@
 
 using namespace std;
 
-const uint TimeOfDayConstants::TIME_OF_DAY_DAWN = 7;
-const uint TimeOfDayConstants::TIME_OF_DAY_DUSK = 19;
-std::map<TimeOfDayType, std::pair<Colour, Colour>> TimeOfDayConstants::time_of_day_colour_overrides;
+const uint TimeOfDay::TIME_OF_DAY_DAWN = 7;
+const uint TimeOfDay::TIME_OF_DAY_DUSK = 19;
+std::map<TimeOfDayType, std::pair<Colour, Colour>> TimeOfDay::time_of_day_colour_overrides;
 
-pair<Colour, Colour> TimeOfDayConstants::get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map)
+pair<Colour, Colour> TimeOfDay::get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map)
 {
   if (time_of_day_colour_overrides.empty())
   {
@@ -24,7 +24,7 @@ pair<Colour, Colour> TimeOfDayConstants::get_time_of_day_colours(const TimeOfDay
   return overrides;
 }
 
-void TimeOfDayConstants::initialize_colour_overrides()
+void TimeOfDay::initialize_colour_overrides()
 {
   time_of_day_colour_overrides.clear();
 
@@ -58,7 +58,7 @@ TimeOfDayType Date::get_time_of_day() const
 {
   TimeOfDayType dtype = TimeOfDayType::TIME_OF_DAY_NIGHT;
 
-  if (hours >= TimeOfDayConstants::TIME_OF_DAY_DAWN && hours < TimeOfDayConstants::TIME_OF_DAY_DUSK)
+  if (hours >= TimeOfDay::TIME_OF_DAY_DAWN && hours < TimeOfDay::TIME_OF_DAY_DUSK)
   {
     dtype = TimeOfDayType::TIME_OF_DAY_DAY;  
   }

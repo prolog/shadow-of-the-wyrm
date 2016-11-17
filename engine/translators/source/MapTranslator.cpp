@@ -29,7 +29,7 @@ DisplayMap MapTranslator::create_display_map(const bool player_blinded, const Ma
   Season season = calendar.get_season()->get_season();
   MapPtr current_map = game.get_current_map();
   Date date = calendar.get_date();
-  pair<Colour, Colour> tod_overrides = TimeOfDayConstants::get_time_of_day_colours(date.get_time_of_day(), current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
+  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(date.get_time_of_day(), current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
 
   int cursor_row = reference_coords.first;
   int cursor_col = reference_coords.second;
@@ -192,7 +192,15 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
 // Create a display tile from a given item
 DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item, const Colour override_colour)
 {
-  return create_display_tile_from_symbol_and_colour(item->get_symbol(), override_colour != Colour::COLOUR_UNDEFINED ? override_colour : item->get_colour());
+  bool apply_override = (override_colour != Colour::COLOUR_UNDEFINED && !item->get_glowing());
+  Colour colour = item->get_colour();
+
+  if (apply_override)
+  {
+    colour = override_colour;
+  }
+
+  return create_display_tile_from_symbol_and_colour(item->get_symbol(), colour);
 }
 
 // Create a display tile from a given tile
