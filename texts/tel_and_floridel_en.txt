@@ -759,7 +759,17 @@ nor merciful, but strong, and have a strange %b
 and keen intelligence.  We would be fools %b
 to think our merriment will carry through %b
 the coming night with darker days in store. %b
-So light the forges, take up arms - eschew %b
+So light the fires, and take up arms - eschew %b
 the pleasantries, and face the jaws of war! %b
 For only then we'll find the things worth dying for."
+%p
+A murmur as the fickle crowd approved %b
+the fire of Floridel.  Here was a girl %b
+they knew was not their own, and yet still moved %b
+and spoke as fairy-kind.  Whose grace and snarl %b
+was startling.  This was no shepherdess %b
+who sat by oaten reeds and watched the wolves %b
+devour her flock.  And as the queen addressed %b
+the hall, the people sensed a sudden pull, %b
+their fate careening, tumbling, irreversible.
 %p
