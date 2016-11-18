@@ -1,5 +1,6 @@
 Me:
-- Dawn/dusk as well as day/night.
+- Dawn/dusk as well as day/night.  Test text for "T" command.  Test
+  transition on an overworld map.  Test entering an overworld map.
 - More poem fragments for start.
 - In text display screen, p to page to a particular page.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
@@ -61,6 +62,7 @@ Me:
   traps?
 - Guilds and membership, mutual exclusivity, etc.
 - In-game gambling: arena fights, games of chance, etc.
+- LOS reduction at night-time, can be negated by skill in Blindfighting.
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 

@@ -3,7 +3,10 @@
 using namespace std;
 
 const uint TimeOfDay::TIME_OF_DAY_DAWN = 7;
+const uint TimeOfDay::TIME_OF_DAY_DAY = 8;
 const uint TimeOfDay::TIME_OF_DAY_DUSK = 19;
+const uint TimeOfDay::TIME_OF_DAY_NIGHT = 20;
+
 std::map<TimeOfDayType, std::pair<Colour, Colour>> TimeOfDay::time_of_day_colour_overrides;
 
 pair<Colour, Colour> TimeOfDay::get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map)
@@ -24,11 +27,35 @@ pair<Colour, Colour> TimeOfDay::get_time_of_day_colours(const TimeOfDayType tod,
   return overrides;
 }
 
+pair<bool, TimeOfDayType> TimeOfDay::get_is_transition_hour(const uint hour)
+{
+  if (hour == TIME_OF_DAY_DAWN)
+  {
+    return make_pair(true, TimeOfDayType::TIME_OF_DAY_DAWN);
+  }
+  else if (hour == TIME_OF_DAY_DAY)
+  {
+    return make_pair(true, TimeOfDayType::TIME_OF_DAY_DAY);
+  }
+  else if (hour == TIME_OF_DAY_DUSK)
+  { 
+    return make_pair(true, TimeOfDayType::TIME_OF_DAY_DUSK);
+  }
+  else if (hour == TIME_OF_DAY_NIGHT)
+  {
+    return make_pair(true, TimeOfDayType::TIME_OF_DAY_NIGHT);
+  }
+
+  return make_pair(false, TimeOfDayType::TIME_OF_DAY_UNDEFINED);
+}
+
 void TimeOfDay::initialize_colour_overrides()
 {
   time_of_day_colour_overrides.clear();
 
-  time_of_day_colour_overrides = { {TimeOfDayType::TIME_OF_DAY_NIGHT, make_pair(Colour::COLOUR_BLUE, Colour::COLOUR_BOLD_BLUE)} };
+  time_of_day_colour_overrides = { {TimeOfDayType::TIME_OF_DAY_NIGHT, make_pair(Colour::COLOUR_BLUE, Colour::COLOUR_BOLD_BLUE)},
+                                   {TimeOfDayType::TIME_OF_DAY_DAWN, make_pair(Colour::COLOUR_BOLD_RED, Colour::COLOUR_UNDEFINED)},
+                                   {TimeOfDayType::TIME_OF_DAY_DUSK, make_pair(Colour::COLOUR_BOLD_YELLOW, Colour::COLOUR_UNDEFINED)} };
 }
 
 string Date::month_sids[DateValues::NUMBER_OF_MONTHS] = {"MONTH_1", "MONTH_2", "MONTH_3", "MONTH_4", "MONTH_5", "MONTH_6", "MONTH_7", "MONTH_8", "MONTH_9", "MONTH_10", "MONTH_11", "MONTH_12"};
@@ -58,9 +85,17 @@ TimeOfDayType Date::get_time_of_day() const
 {
   TimeOfDayType dtype = TimeOfDayType::TIME_OF_DAY_NIGHT;
 
-  if (hours >= TimeOfDay::TIME_OF_DAY_DAWN && hours < TimeOfDay::TIME_OF_DAY_DUSK)
+  if (hours >= TimeOfDay::TIME_OF_DAY_DAWN && hours < TimeOfDay::TIME_OF_DAY_DAY)
   {
-    dtype = TimeOfDayType::TIME_OF_DAY_DAY;  
+    dtype = TimeOfDayType::TIME_OF_DAY_DAWN;
+  }
+  else if (hours >= TimeOfDay::TIME_OF_DAY_DAY && hours < TimeOfDay::TIME_OF_DAY_DUSK)
+  {
+    dtype = TimeOfDayType::TIME_OF_DAY_DAY;
+  }
+  else if (hours >= TimeOfDay::TIME_OF_DAY_DUSK && hours < TimeOfDay::TIME_OF_DAY_NIGHT)
+  {
+    dtype = TimeOfDayType::TIME_OF_DAY_DUSK;
   }
 
   return dtype;

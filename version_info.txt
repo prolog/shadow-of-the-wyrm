@@ -50,9 +50,10 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - Made the Guidebook clearer on how attack difficulty, speed, and damage
   work (Dallas Herrin).
 
-- Messages on day/night transition when on an overworld map.  The map
-  itself changes, too: abruptly to a blue-ish colour scheme at night.
-
+- Messages on time of day transitions when on an overworld map.  The map
+  itself changes to red at dawn, regular colours during the day, yellow
+  at dusk, and blue at night.
+  
 - More stanzas for "Tel and Floridel".
 
 - New creatures: Maisy, Old Toller, Franck.
