@@ -17,6 +17,8 @@ class DateTextKeys
     static const std::string DATE_TIME_MESSAGE;
     static const std::string TIME_OF_DAY_DAY;
     static const std::string TIME_OF_DAY_NIGHT;
+    static const std::string TIME_OF_DAY_DAWN;
+    static const std::string TIME_OF_DAY_DUSK;
     static const std::string PHASE_OF_MOON_NEW;
     static const std::string PHASE_OF_MOON_WAXING;
     static const std::string PHASE_OF_MOON_FULL;

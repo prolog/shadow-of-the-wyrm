@@ -14,17 +14,23 @@ namespace DateValues
 
 enum struct TimeOfDayType
 {
-  TIME_OF_DAY_DAY = 0,
-  TIME_OF_DAY_NIGHT = 1
+  TIME_OF_DAY_UNDEFINED = -1,
+  TIME_OF_DAY_DAWN = 0,
+  TIME_OF_DAY_DAY = 1,
+  TIME_OF_DAY_DUSK = 2,
+  TIME_OF_DAY_NIGHT = 3
 };
 
 class TimeOfDay
 {
   public:
     static std::pair<Colour, Colour> get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map);
+    static std::pair<bool, TimeOfDayType> get_is_transition_hour(const uint current_hour);
 
     static const uint TIME_OF_DAY_DAWN;
+    static const uint TIME_OF_DAY_DAY;
     static const uint TIME_OF_DAY_DUSK;
+    static const uint TIME_OF_DAY_NIGHT;
 
   protected:
     static void initialize_colour_overrides();

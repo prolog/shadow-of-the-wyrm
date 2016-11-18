@@ -23,22 +23,12 @@ void WorldTimeObserver::notify(const ulonglong minutes_this_tick)
     Date date = calendar.get_date();
 
     uint cur_hour = date.get_hours();
-    bool update_time_of_day = false;
-    TimeOfDayType tod = TimeOfDayType::TIME_OF_DAY_DAY;
-
-    if (cur_hour == TimeOfDay::TIME_OF_DAY_DAWN)
-    {
-      update_time_of_day = true;
-    }
-    else if (cur_hour == TimeOfDay::TIME_OF_DAY_DUSK)
-    {
-      update_time_of_day = true;
-      tod = TimeOfDayType::TIME_OF_DAY_NIGHT;
-    }
+    auto tod_details = TimeOfDay::get_is_transition_hour(cur_hour);
+    bool update_time_of_day = tod_details.first;
 
     if (update_time_of_day)
     {
-      redraw_and_update_time_of_day(tod);
+      redraw_and_update_time_of_day(tod_details.second);
     }
   }
 }
@@ -64,9 +54,12 @@ void WorldTimeObserver::redraw_and_update_time_of_day(const TimeOfDayType tod)
       // Show a message about the time change.
       string time_sid = t_it->second;
 
-      IMessageManager& manager = MM::instance();
-      manager.add_new_message(StringTable::get(time_sid));
-      manager.send();
+      if (!time_sid.empty())
+      {
+        IMessageManager& manager = MM::instance();
+        manager.add_new_message(StringTable::get(time_sid));
+        manager.send();
+      }
     }
   }
 }

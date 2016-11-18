@@ -22,7 +22,7 @@ string DateTextKeys::get_date_time_message(const Date& date, const string& seaso
   string date_time_message = StringTable::get(DateTextKeys::DATE_TIME_MESSAGE);
   string season = StringTable::get(season_sid);
  
-  std::map<TimeOfDayType, std::string> tod_sids = { {TimeOfDayType::TIME_OF_DAY_DAY, DateTextKeys::TIME_OF_DAY_DAY}, {TimeOfDayType::TIME_OF_DAY_NIGHT, DateTextKeys::TIME_OF_DAY_NIGHT} };
+  std::map<TimeOfDayType, std::string> tod_sids = { {TimeOfDayType::TIME_OF_DAY_DAWN, DateTextKeys::TIME_OF_DAY_DAWN}, {TimeOfDayType::TIME_OF_DAY_DUSK, DateTextKeys::TIME_OF_DAY_DUSK}, {TimeOfDayType::TIME_OF_DAY_DAY, DateTextKeys::TIME_OF_DAY_DAY}, {TimeOfDayType::TIME_OF_DAY_NIGHT, DateTextKeys::TIME_OF_DAY_NIGHT} };
   string time = DateTextKeys::get_time(date);
   string day_or_night = StringTable::get(tod_sids[date.get_time_of_day()]);
   string day_of_week = StringTable::get(date.get_day_of_week_sid());
@@ -99,6 +99,8 @@ string DateTextKeys::get_phase_of_moon_sid(const PhaseOfMoonType pom)
 
 const string DateTextKeys::TIME_OF_DAY_DAY = "TIME_OF_DAY_DAY";
 const string DateTextKeys::TIME_OF_DAY_NIGHT = "TIME_OF_DAY_NIGHT";
+const string DateTextKeys::TIME_OF_DAY_DAWN = "TIME_OF_DAY_DAWN";
+const string DateTextKeys::TIME_OF_DAY_DUSK = "TIME_OF_DAY_DUSK";
 const string DateTextKeys::TIME_TRANSITION_DAWN = "TIME_TRANSITION_DAWN";
 const string DateTextKeys::TIME_TRANSITION_DUSK = "TIME_TRANSITION_DUSK";
 const string DateTextKeys::PHASE_OF_MOON_NEW = "PHASE_OF_MOON_NEW";
