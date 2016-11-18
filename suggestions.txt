@@ -1,6 +1,7 @@
 Me:
-- Day/night.  Test animations (spells, ranged weapons, etc).
-  Start game at 8am in-game.  Show day/night in "T"ime command.
+- Dawn/dusk as well as day/night.
+- More poem fragments for start.
+- In text display screen, p to page to a particular page.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
   away from the player, hits incredibly hard when attacked.  Chatting to
   her grants a wish.  She should have a chance of vanishing, which then
