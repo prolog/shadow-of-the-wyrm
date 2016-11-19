@@ -58,6 +58,7 @@ class MapUtils
     static bool is_moving_from_land_type_tile_to_water_type_tile(TilePtr creatures_old_tile, TilePtr creatures_new_tile);
     
     static bool hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
+    static std::vector<CreaturePtr> get_hostile_creatures(const std::string& creature_id_for_threat_check, MapPtr map);
     static bool adjacent_creature_exists(CreaturePtr creature, MapPtr map);
     static bool adjacent_creature_exists(const int row, const int col, MapPtr map);
     static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);

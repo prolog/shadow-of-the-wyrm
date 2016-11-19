@@ -53,7 +53,11 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - Messages on time of day transitions when on an overworld map.  The map
   itself changes to red at dawn, regular colours during the day, yellow
   at dusk, and blue at night.
-  
+
+- Detection no longer gives messages for when it senses creatures, as
+  that's pretty common.  It now checks for out of depth, dangerous hostile
+  creatures (AgingMinotaur).
+    
 - More stanzas for "Tel and Floridel".
 
 - New creatures: Maisy, Old Toller, Franck.

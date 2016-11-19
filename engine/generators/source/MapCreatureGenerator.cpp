@@ -98,7 +98,6 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   }
 
   CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
-  bool out_of_depth_msg_added = false;
   IMessageManager& manager = MM::instance();
 
   while (!maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
@@ -114,7 +113,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
       if (MapUtils::is_tile_available_for_creature(generated_creature, tile))
       {
-        add_creature_to_map_and_potentially_notify(game, generated_creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated, out_of_depth_msg_added);
+        add_creature_to_map(game, generated_creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated);
       }
       else
       {
@@ -172,9 +171,8 @@ Coordinate MapCreatureGenerator::get_coordinate_for_creature(MapPtr map, Creatur
 }
 
 // Add the creature to the map.  Update necessary values/counters surrounding
-// creature generation.  If the creature is out of depth, potentially add a
-// message about this.
-void MapCreatureGenerator::add_creature_to_map_and_potentially_notify(Game& game, CreaturePtr generated_creature, MapPtr map, IMessageManager& manager, const int danger_level, const int creature_row, const int creature_col, unsigned int& current_creatures_placed, tuple<bool, int, Rarity>& creatures_generated, bool& out_of_depth_msg_added)
+// creature generation.
+void MapCreatureGenerator::add_creature_to_map(Game& game, CreaturePtr generated_creature, MapPtr map, IMessageManager& manager, const int danger_level, const int creature_row, const int creature_col, unsigned int& current_creatures_placed, tuple<bool, int, Rarity>& creatures_generated)
 {
   Coordinate coords(creature_row, creature_col);
   GameUtils::add_new_creature_to_map(game, generated_creature, map, coords);
@@ -185,14 +183,6 @@ void MapCreatureGenerator::add_creature_to_map_and_potentially_notify(Game& game
   }
 
   std::get<1>(creatures_generated) = std::max<int>(std::get<1>(creatures_generated), generated_creature->get_level().get_base());
-
-  if (!out_of_depth_msg_added && generated_creature->get_level().get_base() > danger_level)
-  {
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DETECTED_OUT_OF_DEPTH_CREATURES));
-    manager.send();
-
-    out_of_depth_msg_added = true;
-  }
 
   current_creatures_placed++;
 }
