@@ -1,5 +1,6 @@
 #include "CreatureStatisticsMarkerChecker.hpp"
 #include "Conversion.hpp"
+#include "RaceManager.hpp"
 #include "StatisticsMarker.hpp"
 
 using namespace std;
@@ -54,12 +55,19 @@ void CreatureStatisticsMarkerChecker::check_strength_conditions(CreaturePtr crea
 // nor hungry, this will increase their overall health.
 void CreatureStatisticsMarkerChecker::check_health_conditions(CreaturePtr creature)
 {
-  HungerLevel hl = HungerLevelConverter::to_hunger_level(creature->get_hunger_clock().get_hunger());
-
-  if (hl == HungerLevel::HUNGER_LEVEL_NORMAL)
+  if (creature != nullptr)
   {
-    StatisticsMarker sm;
-    sm.mark_health(creature);
+    HungerLevel hl = HungerLevelConverter::to_hunger_level(creature->get_hunger_clock().get_hunger());
+    RaceManager rm;
+    RacePtr race = rm.get_race(creature->get_race_id());
+  
+    // Ensure that hungerless races like the fae don't max out Health simply by
+    // existing.
+    if (hl == HungerLevel::HUNGER_LEVEL_NORMAL && race && !race->get_hungerless())
+    {
+      StatisticsMarker sm;
+      sm.mark_health(creature);
+    }
   }
 }
 
