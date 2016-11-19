@@ -7,7 +7,10 @@
 using namespace std;
 
 WorldTimeObserver::WorldTimeObserver()
-: ITimeObserver(), tod_transition_sids({{TimeOfDayType::TIME_OF_DAY_DAY, DateTextKeys::TIME_TRANSITION_DAWN}, {TimeOfDayType::TIME_OF_DAY_NIGHT, DateTextKeys::TIME_TRANSITION_DUSK}})
+: ITimeObserver(), tod_transition_sids({{TimeOfDayType::TIME_OF_DAY_DAWN, DateTextKeys::TIME_TRANSITION_DAWN},
+                                        {TimeOfDayType::TIME_OF_DAY_DAY, DateTextKeys::TIME_TRANSITION_DAY}, 
+                                        {TimeOfDayType::TIME_OF_DAY_DUSK, DateTextKeys::TIME_TRANSITION_DUSK},
+                                        {TimeOfDayType::TIME_OF_DAY_NIGHT, DateTextKeys::TIME_TRANSITION_NIGHT}})
 {
 }
 

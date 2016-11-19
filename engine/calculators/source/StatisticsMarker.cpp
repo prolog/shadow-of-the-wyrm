@@ -47,6 +47,7 @@ bool StatisticsMarker::mark_statistic(Statistic& stat, const StatisticsMarkerPro
     if (RNG::x_in_y_chance(x, y))
     {
       marks.incr();
+      marked = true;
     }
   }
 

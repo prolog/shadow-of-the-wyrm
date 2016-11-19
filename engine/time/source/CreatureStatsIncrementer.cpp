@@ -30,6 +30,7 @@ void CreatureStatsIncrementer::tick(CreaturePtr creature, TilePtr tile, const ul
       vector<pair<Statistic&, string>> stat_and_incr = {{creature->get_strength_ref(), StatisticTextKeys::STATISTIC_GAIN_STRENGTH},
                                                         {creature->get_dexterity_ref(), StatisticTextKeys::STATISTIC_GAIN_DEXTERITY},
                                                         {creature->get_agility_ref(), StatisticTextKeys::STATISTIC_GAIN_AGILITY},
+                                                        {creature->get_health_ref(), StatisticTextKeys::STATISTIC_GAIN_HEALTH},
                                                         {creature->get_intelligence_ref(), StatisticTextKeys::STATISTIC_GAIN_INTELLIGENCE},
                                                         {creature->get_willpower_ref(), StatisticTextKeys::STATISTIC_GAIN_WILLPOWER},
                                                         {creature->get_charisma_ref(), StatisticTextKeys::STATISTIC_GAIN_CHARISMA}};

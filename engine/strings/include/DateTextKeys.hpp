@@ -11,7 +11,9 @@ class DateTextKeys
     static std::string get_phase_of_moon_sid(const PhaseOfMoonType pom);
 
     static const std::string TIME_TRANSITION_DAWN;
+    static const std::string TIME_TRANSITION_DAY;
     static const std::string TIME_TRANSITION_DUSK;
+    static const std::string TIME_TRANSITION_NIGHT;
 
   protected:
     static const std::string DATE_TIME_MESSAGE;
