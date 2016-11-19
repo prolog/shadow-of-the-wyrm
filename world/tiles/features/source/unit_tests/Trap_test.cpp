@@ -15,6 +15,19 @@ TEST(SW_World_Tiles_Features_Trap, triggered)
   EXPECT_FALSE(trap.get_is_hidden());
 }
 
+TEST(SW_World_Tiles_Features_Trap, set_hidden)
+{
+  Trap trap;
+  trap.set_triggered(false);
+
+  EXPECT_TRUE(trap.get_is_hidden());
+
+  trap.set_is_hidden(false);
+
+  EXPECT_TRUE(trap.get_triggered());
+  EXPECT_FALSE(trap.get_is_hidden());
+}
+
 TEST(SW_World_Tiles_Features_Trap, serialization_id)
 {
   Trap trap;

@@ -1,5 +1,4 @@
 Me:
-- Restrict Health-marking for no-hunger to races that have to eat.
 - More poem fragments for start.
 - In text display screen, p to page to a particular page.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
@@ -7,7 +6,7 @@ Me:
   her grants a wish.  She should have a chance of vanishing, which then
   decrements her generated counter to ensure she can appear again.  There
   should be a creature that talks about her.
-- Directly searching via 's' doesn't look for traps, still.
+- Small chance to search surrounding tiles when moving.
 - z-maps for settlements: test flying between multi-level maps and going
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
@@ -57,8 +56,7 @@ Me:
 - Monsters should have a chance of being generated friendly when same
   alignment.
 - Sacrifices should generate more piety when non-aligned.
-- Discover traps on search?  Passive search at the end of each turn for
-  traps?
+- Passive search at the end of each turn for traps?
 - Guilds and membership, mutual exclusivity, etc.
 - In-game gambling: arena fights, games of chance, etc.
 - LOS reduction at night-time, can be negated by skill in Blindfighting.

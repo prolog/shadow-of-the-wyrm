@@ -13,6 +13,7 @@ class Trap : public Feature
     Trap* clone() override;
     Trap* clone_and_randomize_uses();
 
+    virtual void set_is_hidden(const bool new_hidden) override;
     virtual bool get_is_hidden() const override;
     virtual bool get_is_dangerous() const override;
 

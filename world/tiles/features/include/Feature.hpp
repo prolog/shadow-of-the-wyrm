@@ -32,6 +32,7 @@ class Feature : public ISerializable
 
     // If a feature is hidden, it won't be displayed over the tile
     // when rendering the map.
+    virtual void set_is_hidden(const bool new_hidden);
     virtual bool get_is_hidden() const;
 
     // Is the feature dangerous in some sense?  E.g., traps are,
