@@ -617,6 +617,28 @@ bool MapUtils::is_moving_from_land_type_tile_to_water_type_tile(TilePtr old_tile
   return moving_from_land_to_water;
 }
 
+// Get all the creatures hostile to a particular creature.
+vector<CreaturePtr> MapUtils::get_hostile_creatures(const string& creature_id, MapPtr current_map)
+{
+  vector<CreaturePtr> hostile_creatures;
+
+  if (current_map != nullptr)
+  {
+    map<std::string, CreaturePtr>& creature_map = current_map->get_creatures_ref();
+    for (auto& cr_pair : creature_map)
+    {
+      CreaturePtr creature = cr_pair.second;
+
+      if (creature && creature->hostile_to(creature_id))
+      {
+        hostile_creatures.push_back(creature);
+      }
+    }
+  }
+
+  return hostile_creatures;
+}
+
 // Check to see if there are any creatures hostile to the given creature ID on the map
 bool MapUtils::hostile_creature_exists(const string& creature_id, MapPtr current_map)
 {
@@ -628,7 +650,7 @@ bool MapUtils::hostile_creature_exists(const string& creature_id, MapPtr current
     {
       CreaturePtr creature = cr_it->second;
       
-      if (creature->hostile_to(creature_id))
+      if (creature && creature->hostile_to(creature_id))
       {
         return true;
       }
