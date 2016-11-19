@@ -352,6 +352,8 @@ string ActionTextKeys::get_cry_out_message(const string& creature_desc)
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
+const string ActionTextKeys::ACTION_SEARCH_FOUND               = "ACTION_SEARCH_FOUND";
+const string ActionTextKeys::ACTION_SEARCH_FOUND_MULTIPLE      = "ACTION_SEARCH_FOUND_MULTIPLE";
 const string ActionTextKeys::ACTION_SEARCH_BLIND               = "ACTION_SEARCH_BLIND";
 const string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_ALLOWED";
 const string ActionTextKeys::ACTION_DROP_NOT_ALLOWED           = "ACTION_DROP_NOT_ALLOWED";

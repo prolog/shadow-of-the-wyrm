@@ -60,6 +60,11 @@ Trap* Trap::clone_and_randomize_uses()
   return trap;
 }
 
+void Trap::set_is_hidden(const bool new_hidden)
+{
+  triggered = (new_hidden == false);
+}
+
 bool Trap::get_is_hidden() const
 {
   return !triggered;

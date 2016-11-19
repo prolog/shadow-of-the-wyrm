@@ -60,7 +60,10 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
 - Hungerless races (Fae) don't have their Health marked when neither
   hungry nor full.
-      
+
+- The 's'earch command now actually searches for hidden traps around the
+  player.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: Maisy, Old Toller, Franck.

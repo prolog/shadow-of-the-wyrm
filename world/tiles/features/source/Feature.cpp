@@ -52,6 +52,10 @@ bool Feature::operator==(const Feature& feature) const
 }
 
 // At the moment, only traps are hidden - everything else is visible.
+void Feature::set_is_hidden(const bool new_hidden)
+{
+}
+
 bool Feature::get_is_hidden() const
 {
   return false;
