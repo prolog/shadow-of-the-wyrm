@@ -1,6 +1,5 @@
 Me:
-- Dawn/dusk as well as day/night.  Test text for "T" command.  Test
-  transition on an overworld map.  Test entering an overworld map.
+- Restrict Health-marking for no-hunger to races that have to eat.
 - More poem fragments for start.
 - In text display screen, p to page to a particular page.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
@@ -92,6 +91,7 @@ Kyzrati:
 
 Avagart:
 - Eventually, have automovement stop only on new items.
+- On start, resize the window to some minimum size when too small
 
 AgingMinotaur:
 - The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
@@ -117,10 +117,6 @@ roguecastergames:
 
 Dallas Herrin:
 bugs:
-- The Health stat will not increase through training. Neither the trainer 
-  in the Forest of Yew nor the described method of not being hungry/full 
-  will improve it. Other methods, such as potions of Gain Attribute, racial
-  stat--ups, and class stat-ups do improve it.
 - In the manticore/gnome mine quest, the manticore will occasionally spawn 
   in a cavern system with no path to the stairs.
 - Eating on the world map takes significantly more time than eating 
