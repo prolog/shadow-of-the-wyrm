@@ -61,8 +61,13 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - Hungerless races (Fae) don't have their Health marked when neither
   hungry nor full.
 
-- The 's'earch command now actually searches for hidden traps around the
-  player.
+- The search command now actually searches for hidden traps around the
+  player.  The Detection skill is checked.
+
+- When the game is starting up, if the terminal size is less than 80x24,
+  the game will prompt the player to resize to at least that size and
+  hit enter, rather than just exiting.  This fixes a reported issue where
+  reinstalling the game was necessary (Avagart).
 
 - More stanzas for "Tel and Floridel".
 
