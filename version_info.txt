@@ -69,6 +69,9 @@ Shadow of the Wyrm v0.5.7 "Cutting"
   hit enter, rather than just exiting.  This fixes a reported issue where
   reinstalling the game was necessary (Avagart).
 
+- Additional poem fragment for the title screen ("Consecration", John
+  Masefield).
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: Maisy, Old Toller, Franck, ancient terror.

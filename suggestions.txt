@@ -1,3 +1,6 @@
+Required for next version:
+- HP regen rejig.
+
 Me:
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
   levels like the DW mines.
