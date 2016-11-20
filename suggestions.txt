@@ -1,4 +1,6 @@
 Me:
+- Do the mine generation issue.  Rewrite MineGenerator - should create 
+  levels like the DW mines.
 - More poem fragments for start.
 - In text display screen, p to page to a particular page.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
@@ -89,7 +91,6 @@ Kyzrati:
 
 Avagart:
 - Eventually, have automovement stop only on new items.
-- On start, resize the window to some minimum size when too small
 
 AgingMinotaur:
 - The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.

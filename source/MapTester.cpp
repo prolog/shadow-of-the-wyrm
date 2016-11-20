@@ -173,7 +173,7 @@ string map_to_string(MapPtr map, bool use_html)
         }
         else
         {
-          DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, tile, tile);
+          DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, {Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED} /* ditto for colour overrides */, tile, tile);
           if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
           ostringstream ss;
           ss << dt.get_symbol();

@@ -38,6 +38,7 @@ using namespace std;
 using namespace xercesc;
 
 void print_title();
+void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings);
 void remove_old_logfiles(const Settings& settings);
 bool check_write_permissions();
 int parse_command_line_arguments(int argc, char* argv[]);
@@ -132,20 +133,31 @@ int main(int argc, char* argv[])
 
       if (display && display->create())
       {
-        ShadowOfTheWyrmEngine engine;
-
-        // set the default display into the engine
-        engine.set_display(display);
-        engine.set_controller(controller);
-        engine.start(settings);
-
-        display->tear_down();
+        run_game(display, controller, settings);
       }
       else
       {
+        // Reset the display, try again.
+        if (display)
+        {
+          display->tear_down();
+        }
+
         log.error("main - Could not create display!");
-        cerr << "Could not create display - exiting.";
-        throw "error";
+       
+        cerr << "Could not create display.  Resize terminal to 80x24 and hit enter." << endl;
+        string foo;
+        std::getline(cin, foo);
+
+        if (display && display->create())
+        {
+          run_game(display, controller, settings);
+        }
+        else
+        {
+          cerr << "\nCould not create display.";
+          throw "error";
+        }
       }
     }
   }
@@ -156,6 +168,20 @@ int main(int argc, char* argv[])
   }
 
   return 0;
+}
+
+void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings)
+{
+  cout << "\nLoading Shadow of the Wyrm..." << endl;
+
+  ShadowOfTheWyrmEngine engine;
+
+  // set the default display into the engine
+  engine.set_display(display);
+  engine.set_controller(controller);
+  engine.start(settings);
+
+  display->tear_down();
 }
 
 bool check_write_permissions()
