@@ -71,7 +71,7 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
 - More stanzas for "Tel and Floridel".
 
-- New creatures: Maisy, Old Toller, Franck.
+- New creatures: Maisy, Old Toller, Franck, ancient terror.
 
 - Bug fixes:
 
