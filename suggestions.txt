@@ -1,5 +1,6 @@
 Required for next version:
 - HP regen rejig.
+- Water-breathing creatures are coming on land.
 
 Me:
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
@@ -12,6 +13,7 @@ Me:
   decrements her generated counter to ensure she can appear again.  There
   should be a creature that talks about her.
 - Small chance to search surrounding tiles when moving.
+- Prevent creatures from being initially placed adjacent to up staircases.
 - z-maps for settlements: test flying between multi-level maps and going
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be

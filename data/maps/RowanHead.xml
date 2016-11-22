@@ -33,6 +33,27 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>seal</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>77</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>seal</ID>
+				<Coord>
+					<Row>0</Row>
+					<Col>76</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>seal</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>79</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>maisy</ID>
 				<Coord>
 					<Row>7</Row>
