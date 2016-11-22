@@ -773,3 +773,15 @@ devour her flock.  And as the queen addressed %b
 the hall, the people sensed a sudden pull, %b
 their fate careening, tumbling, irreversible.
 %p
+III
+%p
+A longhouse built of greystone, walled by tusks %b
+of conquered mastodons, the giant hall %b
+called Farstead stood and watched the coming dusk. %b
+Its stones were massive, finely cut, and hauled %b
+from lowland quarries through the winding plains %b
+whose grasses sway and shiver.  Up towards %b
+the central gate a pair of figures came, %b
+exhausted, but their faces set and hard, %b
+and in their arms, a body and a massive sword.
+%p
