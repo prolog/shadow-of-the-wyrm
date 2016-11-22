@@ -125,15 +125,15 @@
 			<Placement>
 				<ID>clay_pot</ID>
 				<Coord>
-					<Row>5</Row>
+					<Row>4</Row>
 					<Col>54</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>clay_pot</ID>
 				<Coord>
-					<Row>5</Row>
-					<Col>55</Col>
+					<Row>6</Row>
+					<Col>54</Col>
 				</Coord>
 			</Placement>
 			<Placement>
