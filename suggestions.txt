@@ -1,6 +1,5 @@
 Required for next version:
 - HP regen rejig.
-- Water-breathing creatures are coming on land.
 
 Me:
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
