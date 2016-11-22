@@ -99,6 +99,8 @@ Shadow of the Wyrm v0.5.7 "Cutting"
   - The code responsible for incrementing trained statistics wasn't
     handling Health correctly (Dallas Herrin).
 
+  - Miscellaneous typo fixes in the bestiary (The_Great_Goblin).
+
 Shadow of the Wyrm v0.5.6.1 "Vivaldi"
 - Version declared November 1, 2016.  Version finalized November 5, 2016.
 
