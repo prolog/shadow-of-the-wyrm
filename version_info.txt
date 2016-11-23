@@ -72,6 +72,8 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - Additional poem fragment for the title screen ("Consecration", John
   Masefield).
 
+- Minimum/recommended terminal size is now 80x25, not 80x24.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: Maisy, Old Toller, Franck, ancient terror.

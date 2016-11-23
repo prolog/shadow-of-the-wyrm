@@ -1,5 +1,7 @@
 Required for next version:
 - HP regen rejig.
+- Ensure that 80x25 is ref'd, not 80x24
+- The_Great_Goblin: F3 missing from keybinding list in-game.
 
 Me:
 - Do the mine generation issue.  Rewrite MineGenerator - should create 

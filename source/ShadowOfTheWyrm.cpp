@@ -145,7 +145,7 @@ int main(int argc, char* argv[])
 
         log.error("main - Could not create display!");
        
-        cerr << "Could not create display.  Resize terminal to 80x24 and hit enter." << endl;
+        cerr << "Could not create display.  Resize terminal to 80x25 and hit enter." << endl;
         string foo;
         std::getline(cin, foo);
 
