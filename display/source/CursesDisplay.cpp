@@ -309,9 +309,9 @@ bool CursesDisplay::create()
 
   refresh_terminal_size();
 
-  if ((TERMINAL_MAX_ROWS < 24) || (TERMINAL_MAX_COLS < 80))
+  if ((TERMINAL_MAX_ROWS < 25) || (TERMINAL_MAX_COLS < 80))
   {
-    printw("Shadow of the Wyrm requires a terminal of 80x24 or larger.\n");
+    printw("Shadow of the Wyrm requires a terminal of 80x25 or larger.\n");
     creation_success = false;
   }
 
