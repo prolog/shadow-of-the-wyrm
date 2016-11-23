@@ -106,6 +106,13 @@ Shadow of the Wyrm v0.5.7 "Cutting"
   - Water-breathing creatures would pursue threats on land, despite not
     being able to breathe air.
 
+  - The skill command (F3) was missing from the keybindings in the help
+    menu (The_Great_Goblin).
+
+  - HP regeneration had a bug where the race- and class-based multipliers
+    were being applied twice, resulting in incredible regen rates
+    with ogre warriors, dwarf pugilists, etc (AgingMinotaur).
+
 Shadow of the Wyrm v0.5.6.1 "Vivaldi"
 - Version declared November 1, 2016.  Version finalized November 5, 2016.
 

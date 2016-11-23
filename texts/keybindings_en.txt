@@ -1,10 +1,7 @@
-  Movement:
-%p
+%b
 7,y          8,k,up        9,u %b
 4,h,left      s,.        6,l,left %b
 1,b         2,j,down       3,n
-%p
-General:
 %p
 w - Automatic Movement        > - Descend, Dig        < - Ascend %b
 5 - Rest                      , - Pick up             d - Drop %b
@@ -18,4 +15,5 @@ v - Evoke wand                K - Kick                O - Sacrifice %b
 S - Save and quit             Q - Quit                M - Message buffer %b
 W - Melee info                R - Ranged info         V - Version %b
 T - Game date/time            @ - Character details   # - Character dump %b
-F1 - Resistances              F2 - Conduct details    F12 - Reload strings
+F1 - Resistances              F2 - Conduct details    F3 - Skills %b
+F12 - Reload strings
