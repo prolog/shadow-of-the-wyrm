@@ -1,8 +1,3 @@
-Required for next version:
-- HP regen rejig.
-- Ensure that 80x25 is ref'd, not 80x24
-- The_Great_Goblin: F3 missing from keybinding list in-game.
-
 Me:
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
   levels like the DW mines.
@@ -100,7 +95,6 @@ Avagart:
 
 AgingMinotaur:
 - The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
-- Rebalance regen rates.
 - Stop walking on feature/branching corridor.
 
 Kraphead:
