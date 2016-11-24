@@ -795,3 +795,13 @@ They fixed their helmets, grabbed at spears, stepped out %b
 into the autumn air.  This day would hail %b
 a terrifying war; the hope of peace had failed.
 %p
+A parting in the crowd.  Throughout the throng %b
+of able fighters came their warchief.  Known %b
+as death in battle, he'd been serving long %b
+enough to stitch his armour with the bones %b
+of those he'd fought and felled.  He understood %b
+the way to split and hew, to show the fae %b
+he wasn't some mere trifle in the woods. %b
+He'd cleave the earth and any in his way: %b
+Arkadios, the champion, would have his say.
+%p
