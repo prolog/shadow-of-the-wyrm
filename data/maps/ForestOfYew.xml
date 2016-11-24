@@ -94,6 +94,14 @@
 				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
+				<ID>wood_elf_sentry</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>53</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
 				<ID>thrall</ID>
 				<Coord>
 					<Row>6</Row>
