@@ -79,6 +79,9 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - New creatures: Maisy, Old Toller, Franck, ancient terror, wood elf
   sentry.
 
+- Being burdened now gives a 1.5 multiplier to speed, strained 2.0, and 
+  overburdened 3.0.
+
 - Bug fixes:
 
   - The damage dealt by poison each minute wasn't being considered

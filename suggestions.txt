@@ -1,4 +1,5 @@
 Me:
+- Prevent pickup when some maximum is reached
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
   levels like the DW mines.
 - More poem fragments for start.
@@ -63,6 +64,8 @@ Me:
 - Guilds and membership, mutual exclusivity, etc.
 - In-game gambling: arena fights, games of chance, etc.
 - LOS reduction at night-time, can be negated by skill in Blindfighting.
+- Invisibility status, spell, potion
+- See Invis status, spell, scroll
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 

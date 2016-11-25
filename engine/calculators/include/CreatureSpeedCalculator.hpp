@@ -12,5 +12,6 @@ class CreatureSpeedCalculator
 
     const static float BURDENED_SPEED_MULTIPLIER;
     const static float STRAINED_SPEED_MULTIPLIER;
+    const static float OVERBURDENED_SPEED_MULTIPLIER;
 };
 

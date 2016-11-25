@@ -2,8 +2,9 @@
 #include "CarryingCapacityCalculator.hpp"
 #include "Wearable.hpp"
 
-const float CreatureSpeedCalculator::BURDENED_SPEED_MULTIPLIER = 1.20f;
-const float CreatureSpeedCalculator::STRAINED_SPEED_MULTIPLIER = 1.5f;
+const float CreatureSpeedCalculator::BURDENED_SPEED_MULTIPLIER = 1.5f;
+const float CreatureSpeedCalculator::STRAINED_SPEED_MULTIPLIER = 2.0f;
+const float CreatureSpeedCalculator::OVERBURDENED_SPEED_MULTIPLIER = 3.0f;
 
 int CreatureSpeedCalculator::calculate(CreaturePtr creature) const
 {
@@ -53,7 +54,11 @@ float CreatureSpeedCalculator::get_multiplier(CreaturePtr creature) const
 
     CarryingCapacityCalculator ccc;
 
-    if (weight_in_oz >= ccc.calculate_strained_weight(creature))
+    if (weight_in_oz >= ccc.calculate_overburdened_weight(creature))
+    {
+      mult = OVERBURDENED_SPEED_MULTIPLIER;
+    }
+    else if (weight_in_oz >= ccc.calculate_strained_weight(creature))
     {
       mult = STRAINED_SPEED_MULTIPLIER;
     }
