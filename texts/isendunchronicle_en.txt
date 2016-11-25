@@ -60,7 +60,7 @@ destroyed the monsters, and captured their longships.
 798 Eighteen winters after Aeschere left, that island has sent two ships to trade with us.  We have traded skins and ore for spice wine and silver.  
 Our silver-smith Wilfrid has been given a measure of the silver and tasked with making mead-cups, cloak-clasps, and ornaments. 
 %p 
-804 A ship of wood-elves has come to trade and told us that the last fae have been found.  Their land lies as far north as we are south. 
+804 A ship of elves from the Yew forest has come to trade and told us that the last fae have been found.  Their land lies as far north as we are south. 
 %p 
 808 The goblins have sacked Aeschburh, and put every man to the sword.  Their fortress lies empty now, though some have said at night there are lights 
 that dance in the dark. 
@@ -73,7 +73,7 @@ of salted fish.  The sailors told of a strange sight on one of the northern isla
 they saw wagons, caravans, and heard the sweet music of flutes and fiddles.  They saw also many kinds of fruit trees, and said it was strange that this 
 beautiful island should be found at the end of the world. 
 %p
-822 We have many ships leaving Rowan Head.  There are still lights, but we have had no word from the Roani.
+822 We have seen many ships leaving Rowan Head - north-west, skirting past Yew.  There are still lights on the island, but we have had no word from the Roani.
 %p
 826 Strange tidings.  We have heard several accounts of a great tower rising out of the earth in the snake-lands, where previously there were only ruins. 
 %p 
