@@ -805,3 +805,13 @@ he wasn't some mere trifle in the woods. %b
 He'd cleave the earth and any in his way: %b
 Arkadios, the champion, would have his say.
 %p
+"Brave Choros!" roared Arkadios.  "I'll see %b
+your death avenged a thousand fold.  I swear %b
+I'll bring the fair folk low, and make them plead %b
+for mercy I don't have.  I'll lay them bare! %b
+I loathe those gussied, gilded fops - they make %b
+a hard-fought peace, and break it just as fast. %b
+They'll die beneath my axe, and if it slakes %b
+my grief, then may you find some rest at last. %b
+So let us mourn our brother; now the die is cast."
+%p
