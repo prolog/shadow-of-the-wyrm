@@ -31,12 +31,16 @@ TEST(SW_Engine_Calculators_CreatureSpeedCalculator, calculate_burdened_and_strai
   c->get_inventory()->add_front(amulet);
 
   CreatureSpeedCalculator csc;
-  
-  int exp_speed = static_cast<int>(50 * 1.2);
+  int exp_speed = static_cast<int>(50 * 1.5);
   EXPECT_EQ(exp_speed, csc.calculate(c));
 
-  amulet->set_quantity(200);
+  amulet->set_quantity(150);
 
-  exp_speed = static_cast<int>(50 * 1.5);
+  exp_speed = static_cast<int>(50 * 2.0);
+  EXPECT_EQ(exp_speed, csc.calculate(c));
+
+  amulet->set_quantity(2000);
+
+  exp_speed = static_cast<int>(50 * 3.0);
   EXPECT_EQ(exp_speed, csc.calculate(c));
 }
