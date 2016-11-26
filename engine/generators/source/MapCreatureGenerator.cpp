@@ -119,6 +119,10 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
       if (MapUtils::is_tile_available_for_creature(generated_creature, tile) &&
           MapUtils::does_area_around_tile_allow_creature_generation(map, c))
       {
+        //  If pack creatures are generated, the maximum for the level is
+        // adjusted as well.
+        int addl_pack_creatures = 0;
+
         if (RNG::percent_chance(PACK_CHANCE))
         {
           // Pack generation: packs are meaner, are not suppressed from appearing
@@ -133,7 +137,8 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
             if (MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
             {
-              add_creature_to_map(game, generated_creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated);
+              addl_pack_creatures++;
+              add_creature_to_map(game, pack_creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated);
             }
           }
         }
@@ -142,6 +147,9 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
         // When there's no pack, this will always be called.
         // When there's a pack, this creature will just be at the centre.
         add_creature_to_map(game, generated_creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated);
+
+        // Ensure that pack creatures don't count against the level's maximum.
+        num_creatures_to_place += addl_pack_creatures;
       }
       else
       {
