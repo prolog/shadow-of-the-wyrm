@@ -14,6 +14,36 @@
 using namespace std;
 using namespace boost;
 
+// Does the area around a tile allow creature generation?
+// Creatures can't be generated within a couple of steps of a stairway.
+bool MapUtils::does_area_around_tile_allow_creature_generation(MapPtr map, const Coordinate& c)
+{
+  bool gen_ok = true;
+
+  if (map != nullptr)
+  {
+    vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second, 2);
+
+    for (const Coordinate& adj : adjacent_coordinates)
+    {
+      TilePtr tile = map->at(adj);
+
+      if (tile)
+      {
+        TileType tt = tile->get_tile_type();
+
+        if (tt == TileType::TILE_TYPE_UP_STAIRCASE || tt == TileType::TILE_TYPE_DOWN_STAIRCASE)
+        {
+          gen_ok = false;
+          break;
+        }
+      }
+    }
+  }
+
+  return gen_ok;
+}
+
 // Check to see if a tile is available for a creature by checking:
 // - if a creature is present
 // - (if a blocking feature is present and if the tile type permits movement), 

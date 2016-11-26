@@ -41,6 +41,7 @@ class MapUtils
     static bool is_blocking_feature_present(TilePtr tile);
     static bool is_creature_present(TilePtr tile);
     
+    static bool does_area_around_tile_allow_creature_generation(MapPtr map, const Coordinate& c);
     static bool is_tile_available_for_creature(CreaturePtr creature, TilePtr tile);
     static bool is_tile_available_for_item(TilePtr tile);
 

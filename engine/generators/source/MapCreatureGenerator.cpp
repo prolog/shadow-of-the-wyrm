@@ -111,7 +111,8 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
       // Check to see if the spot is empty, and if a creature can be added there.
       TilePtr tile = map->at(c.first, c.second);
 
-      if (MapUtils::is_tile_available_for_creature(generated_creature, tile))
+      if (MapUtils::is_tile_available_for_creature(generated_creature, tile) &&
+          MapUtils::does_area_around_tile_allow_creature_generation(map, c))
       {
         add_creature_to_map(game, generated_creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated);
       }

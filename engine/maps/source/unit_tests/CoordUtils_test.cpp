@@ -1,5 +1,28 @@
 #include "gtest/gtest.h"
 
+TEST(SW_Engine_Maps_CoordUtils, get_adjacent_map_coords)
+{
+  Dimensions d;
+  MapPtr map = std::make_shared<Map>(d);
+  Coordinate c(1,1);
+  vector<Coordinate> exp = {{0,0}, {0,1}, {0,2}, {1,0}, {1,2}, {2,0}, {2,1}, {2,2}};
+  std::sort(exp.begin(), exp.end());
+
+  vector<Coordinate> actual = CoordUtils::get_adjacent_map_coordinates(d, 1, 1);
+  std::sort(actual.begin(), actual.end());
+
+  EXPECT_TRUE(exp == actual);
+
+  c = {2,2};
+  exp = {{0,0}, {0,1}, {0,2}, {0,3}, {0,4}, {1,0}, {1,1}, {1,2}, {1,3}, {1,4}, {2,0}, {2,1}, {2,3}, {2,4}, {3,0}, {3,1}, {3,2}, {3,3}, {3,4}, {4,0}, {4,1}, {4,2}, {4,3}, {4,4}};
+  std::sort(exp.begin(), exp.end());
+
+  actual = CoordUtils::get_adjacent_map_coordinates(d, 2, 2, 2);
+
+  std::sort(actual.begin(), actual.end());
+  EXPECT_TRUE(exp == actual);
+}
+
 TEST(SW_Engine_Maps_CoordUtils, incr)
 {
   Dimensions d; // Bog standard 20x80.

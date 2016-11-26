@@ -46,7 +46,7 @@ class CoordUtils
     static Direction get_direction(const Coordinate& start_coord, const Coordinate& end_coord);
 
     // Get all the adjacent coordinates for the current row and column, given the map's dimensions.
-    static std::vector<Coordinate> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col);
+    static std::vector<Coordinate> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col, const int steps = 1);
 
     // Are the two line segments "joinable"?  Two segments are joinable iff
     // there is a coordinate adjacent to both.
