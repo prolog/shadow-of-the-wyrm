@@ -283,13 +283,15 @@ void ThieverySkillProcessor::transfer_stolen_item(CreaturePtr stealing_creature,
 {
   if (stealing_creature != nullptr && stolen_item != nullptr && map != nullptr)
   {
-    if (CreatureUtils::can_pick_up(stealing_creature, stolen_item))
+    pair<bool, string> steal = CreatureUtils::can_pick_up(stealing_creature, stolen_item);
+
+    if (steal.first)
     {
       stealing_creature->get_inventory()->merge_or_add(stolen_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
     }
     else
     {
-      pl_manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_THIEVERY_TOO_MANY_ITEMS));
+      pl_manager.add_new_message(StringTable::get(steal.second));
       pl_manager.send();
 
       TilePtr creature_tile = MapUtils::get_tile_for_creature(map, stealing_creature);

@@ -1,3 +1,4 @@
+#include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CarryingCapacityCalculator.hpp"
 #include "CreatureUtils.hpp"
@@ -340,16 +341,31 @@ void CreatureUtils::incr_cha(CreaturePtr creature, const bool add_msg)
   }
 }
 
-bool CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
+pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
 {
-  bool can_pu = false;
+  pair<bool, string> can_pu;
+  can_pu.first = false;
 
   if (c != nullptr && i != nullptr)
   {
     CarryingCapacityCalculator ccc;
     uint total_items = ccc.calculate_carrying_capacity_total_items(c);
 
-    can_pu = (i->get_type() == ItemType::ITEM_TYPE_CURRENCY || c->count_items() + i->get_quantity() <= total_items);
+    can_pu.first = (i->get_type() == ItemType::ITEM_TYPE_CURRENCY || c->count_items() + i->get_quantity() <= total_items);
+
+    if (!can_pu.first)
+    {
+      can_pu.second = ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS;
+    }
+    else
+    {
+      can_pu.first = c->get_weight_carried() < ccc.calculate_overburdened_weight(c);
+
+      if (!can_pu.first)
+      {
+        can_pu.second = ActionTextKeys::ACTION_PICK_UP_MAX_WEIGHT;
+      }
+    }
   }
 
   return can_pu;

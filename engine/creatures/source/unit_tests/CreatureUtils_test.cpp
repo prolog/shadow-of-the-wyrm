@@ -21,10 +21,10 @@ TEST(SW_Engine_Creatures_CreatureUtils, can_pick_up)
 
   // Carrying capacity should be 100, so a proposed new total of 93
   // is fine.
-  EXPECT_TRUE(CreatureUtils::can_pick_up(c, amulet2));
+  EXPECT_TRUE(CreatureUtils::can_pick_up(c, amulet2).first);
 
   // Carrying capacity should be 100, so a proposed new total of 120
   // should not be allowed.
-  EXPECT_FALSE(CreatureUtils::can_pick_up(c, amulet3));
+  EXPECT_FALSE(CreatureUtils::can_pick_up(c, amulet3).first);
 }
 
