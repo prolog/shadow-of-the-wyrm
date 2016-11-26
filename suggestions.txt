@@ -2,7 +2,6 @@ Me:
 - Prevent pickup when some maximum is reached
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
   levels like the DW mines.
-- More poem fragments for start.
 - In text display screen, p to page to a particular page.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
   away from the player, hits incredibly hard when attacked.  Chatting to
@@ -44,7 +43,6 @@ Me:
 - Multi-map areas (the central city!)
 - Different types of branches (species) should have different wand
   properties.
-- Investigate targetting not staying properly some (all?) of the time.
 - General performance improvements.
 - Item generation: get rarity working properly, and then do some test
   runs.  Once that works, create some more artifacts/great items for
@@ -66,6 +64,7 @@ Me:
 - LOS reduction at night-time, can be negated by skill in Blindfighting.
 - Invisibility status, spell, potion
 - See Invis status, spell, scroll
+- More poem fragments for start.
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 

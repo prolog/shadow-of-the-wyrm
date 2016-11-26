@@ -15,7 +15,7 @@ class PickupAction : public IActionManager
   protected:
     void handle_world_map_pickup(CreaturePtr creature);
     void handle_empty_tile_pickup(CreaturePtr creature);
-    void handle_max_item_pickup(CreaturePtr creature);
+    void handle_cannot_pickup(CreaturePtr creature, const std::string& msg_sid);
 
     ActionCostValue handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am);    
 };

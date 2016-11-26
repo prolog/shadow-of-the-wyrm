@@ -58,20 +58,24 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
         // If there is one item, pick it up.
         uint num_items = inv->size();
         bool can_pick_up = true;
-        
+        string pickup_sid;
+
         ItemPtr pick_up_item;
         
         if (num_items == 1)
         {
-          ItemPtr item = inv->at(0);
+          pick_up_item = inv->at(0);
 
-          if (CreatureUtils::can_pick_up(creature, item))
+          pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
+
+          if (pickup_details.first)
           {
-            pick_up_item = item;
+            can_pick_up = true;
           }
           else
           {
             can_pick_up = false;
+            pickup_sid = pickup_details.second;
           }
         }
 
@@ -81,12 +85,14 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
           list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
           pick_up_item = am->inventory(creature, inv, no_filter, {}, false);
 
-          can_pick_up = CreatureUtils::can_pick_up(creature, pick_up_item);
+          pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
+          can_pick_up = pickup_details.first;
+          pickup_sid = pickup_details.second;
         }
         
         if (pick_up_item != nullptr && !can_pick_up)
         {
-          handle_max_item_pickup(creature);
+          handle_cannot_pickup(creature, pickup_sid);
         }
         else
         {
@@ -113,13 +119,13 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
 
 // Handle the case where the creature already has the maximum number of items
 // it can hold.
-void PickupAction::handle_max_item_pickup(CreaturePtr creature)
+void PickupAction::handle_cannot_pickup(CreaturePtr creature, const string& pickup_details_sid)
 {
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-  if (creature && creature->get_is_player())
+  if (creature && creature->get_is_player() && !pickup_details_sid.empty())
   {
-    string pick_up_not_allowed = StringTable::get(ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS);
+    string pick_up_not_allowed = StringTable::get(pickup_details_sid);
 
     manager.add_new_message(pick_up_not_allowed);
     manager.send();

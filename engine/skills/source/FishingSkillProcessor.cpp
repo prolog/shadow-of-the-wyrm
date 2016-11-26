@@ -159,7 +159,7 @@ void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const WaterTy
               GameUtils::make_map_permanent(game, creature, map);
 
               // Add the fish to the inventory, if possible.
-              if (CreatureUtils::can_pick_up(creature, fish))
+              if (CreatureUtils::can_pick_up(creature, fish).first)
               {
                 IInventoryPtr inv = creature->get_inventory();
                 if (!inv->merge(fish))

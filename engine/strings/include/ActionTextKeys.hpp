@@ -45,6 +45,7 @@ class ActionTextKeys
     static const std::string ACTION_DROP_INVALID_QUANTITY;
     static const std::string ACTION_PICK_UP_NOTHING_ON_GROUND;
     static const std::string ACTION_PICK_UP_MAX_ITEMS;
+    static const std::string ACTION_PICK_UP_MAX_WEIGHT;
     static const std::string ACTION_MOVEMENT_BLOCKED;
     static const std::string ACTION_PLAYER_DROWNING;
     static const std::string ACTION_PLAYER_FALLING;
@@ -149,7 +150,6 @@ class ActionTextKeys
     static const std::string ACTION_DISARM_TRAPS_OUTCOME_TRIGGER;
     static const std::string ACTION_THIEVERY_NO_TARGETS;
     static const std::string ACTION_THIEVERY_SELF_TARGET;
-    static const std::string ACTION_THIEVERY_TOO_MANY_ITEMS;
     static const std::string ACTION_INSCRIBE_WORLD_MAP;
     static const std::string ACTION_INSCRIBE_WATER;
     static const std::string ACTION_INSCRIBE_AIR;
