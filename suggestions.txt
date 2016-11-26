@@ -63,6 +63,7 @@ Me:
 - Invisibility status, spell, potion
 - See Invis status, spell, scroll
 - More poem fragments for start.
+- Smarter pack logic: not just by creature type, but maybe by race, etc.
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
