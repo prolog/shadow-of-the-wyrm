@@ -1,4 +1,6 @@
 #include "ActionTextKeys.hpp"
+#include "CoordUtils.hpp"
+#include "CreatureFactory.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "Conversion.hpp"
 #include "CreationUtils.hpp"
@@ -12,6 +14,8 @@
 using namespace std;
 
 const int MapCreatureGenerator::OUT_OF_DEPTH_CREATURES_CHANCE = 15;
+const int MapCreatureGenerator::PACK_CHANCE = 1;
+const int MapCreatureGenerator::PACK_TILE_CHANCE = 90;
 
 // Generate the creatures.  Returns true if creatures were created, false otherwise.
 tuple<bool, int, Rarity> MapCreatureGenerator::generate_creatures(MapPtr map, const int danger_level, const std::map<std::string, std::string>& additional_properties)
@@ -99,6 +103,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
   CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
   IMessageManager& manager = MM::instance();
+  CreatureFactory cf;
 
   while (!maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
@@ -114,6 +119,28 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
       if (MapUtils::is_tile_available_for_creature(generated_creature, tile) &&
           MapUtils::does_area_around_tile_allow_creature_generation(map, c))
       {
+        if (RNG::percent_chance(PACK_CHANCE))
+        {
+          // Pack generation: packs are meaner, are not suppressed from appearing
+          // by stairs.
+          string creature_id = generated_creature->get_original_id();
+          vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second);
+
+          for (const Coordinate& adj : coords)
+          {
+            TilePtr tile = map->at(adj);
+            CreaturePtr pack_creature = cf.create_by_creature_id(am, creature_id);
+
+            if (MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
+            {
+              add_creature_to_map(game, generated_creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated);
+            }
+          }
+        }
+
+        // Regular creature generation: away from stairs.
+        // When there's no pack, this will always be called.
+        // When there's a pack, this creature will just be at the centre.
         add_creature_to_map(game, generated_creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated);
       }
       else

@@ -86,6 +86,8 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
 - Creatures are no longer generated immediately next to staircases.
 
+- Creatures now have a small chance to be generated in packs.
+
 - Bug fixes:
 
   - The damage dealt by poison each minute wasn't being considered
