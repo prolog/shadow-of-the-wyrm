@@ -815,3 +815,13 @@ They'll die beneath my axe, and if it slakes %b
 my grief, then may you find some rest at last. %b
 So let us mourn our brother; now the die is cast."
 %p
+Held crooked beneath his arm, a monstrous helm %b
+of ancient silver.  Not the king's demand %b
+for torques and rings, whose shimmer overwhelms, %b
+but rarer, built up as the world began %b
+to take its shape, an alloy hard as steel. %b
+The mask was like a dragon's face, so when %b
+he placed the helmet on his head, the feel %b
+was real: a giant for a moment, then %b
+appearing as a creature from the darkest fens.
+%p
