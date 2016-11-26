@@ -84,6 +84,8 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 - Being burdened now gives a 1.5 multiplier to speed, strained 2.0, and 
   overburdened 3.0.
 
+- Creatures are no longer generated immediately next to staircases.
+
 - Bug fixes:
 
   - The damage dealt by poison each minute wasn't being considered

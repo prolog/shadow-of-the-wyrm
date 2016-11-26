@@ -196,16 +196,16 @@ Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& e
 }
 
 // Get the coordinates adjacent to a given set within the current dimensions
-vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col)
+vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col, const int step_size)
 {
   vector<Coordinate> adjacent_coordinates;
 
   int max_rows = dim.get_y();
   int max_cols = dim.get_x();
 
-  for (int cur_row = row - 1; cur_row <= row+1; cur_row++)
+  for (int cur_row = row - step_size; cur_row <= row + step_size; cur_row++)
   {
-    for (int cur_col = col - 1; cur_col <= col+1; cur_col++)
+    for (int cur_col = col - step_size; cur_col <= col + step_size; cur_col++)
     {
       // Check bounds
       if (cur_row >= 0 && cur_row < max_rows && cur_col >= 0 && cur_col < max_cols)
