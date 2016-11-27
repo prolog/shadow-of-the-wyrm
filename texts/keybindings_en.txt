@@ -4,16 +4,16 @@
 1,b         2,j,down       3,n
 %p
 w - Automatic Movement        > - Descend, Dig        < - Ascend %b
-5 - Rest                      , - Pick up             d - Drop %b
-i - View equipment/items      I - View items          _ - Pray %b
-L - Look at nearby tiles      f - Fire a missile      D - Drink %b
-r - Read scroll/book          $ - Count currency      e - Eat %b
-c - Chat                      a - Apply feature       N - Inscribe %b
-q - Quests                    z - Cast spell          B - Bestiary %b
-v - Evoke wand                K - Kick                O - Sacrifice %b
-/ - Skin corpse               P - Show piety          X - Experience %b
-S - Save and quit             Q - Quit                M - Message buffer %b
-W - Melee info                R - Ranged info         V - Version %b
-T - Game date/time            @ - Character details   # - Character dump %b
-F1 - Resistances              F2 - Conduct details    F3 - Skills %b
-F12 - Reload strings
+5 - Rest                      , - Pick up             ; - Pick up all %b
+d - Drop                      i - View equip/items    I - View items %b
+_ - Pray                      L - Look at tiles       f - Fire a missile %b
+D - Drink                     r - Read scroll/book    $ - Count currency %b
+e - Eat                       C - Chat                a - Apply feature %b
+N - Inscribe                  q - Quests              z - Cast spell %b
+B - Bestiary                  v - Evoke wand          K - Kick %b
+O - Sacrifice                 / - Skin corpse         P - Show piety %b
+X - Experience                S - Save and quit       Q - Quit %b
+M - Message buffer            W - Melee info          R - Ranged info %b
+V - Version                   T - Game date/time      @ - Character info %b
+# - Character dump            F1 - Resistances        F2 - Conducts %b
+F3 - Skills                   F12 - Reload strings

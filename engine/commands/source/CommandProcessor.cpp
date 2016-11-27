@@ -88,7 +88,11 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::PICK_UP_ITEM)
       {
-        ac = game.actions.pick_up(creature);
+        ac = game.actions.pick_up(creature, PickUpType::PICK_UP_SINGLE);
+      }
+      else if (command_name == CommandKeys::PICK_UP_ALL)
+      {
+        ac = game.actions.pick_up(creature, PickUpType::PICK_UP_ALL);
       }
       else if (command_name == CommandKeys::DROP_ITEM)
       {

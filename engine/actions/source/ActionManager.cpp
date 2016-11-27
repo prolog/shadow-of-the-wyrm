@@ -442,10 +442,10 @@ ActionCost ActionManager::experience(CreaturePtr creature)
 }
 
 // Pick up an item, doing any necessary checks first.
-ActionCost ActionManager::pick_up(CreaturePtr creature)
+ActionCost ActionManager::pick_up(CreaturePtr creature, const PickUpType pick_up_type)
 {
   PickupAction pa;
-  return get_action_cost(creature, pa.pick_up(creature, this));
+  return get_action_cost(creature, pa.pick_up(creature, this, pick_up_type));
 }
 
 // Drop an item, doing any necessary checks first.

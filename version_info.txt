@@ -88,6 +88,12 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
 - Creatures now have a small chance to be generated in packs.
 
+- New pick up all command (";").  Use carefully, as it will take longer
+  to pick up more items, and nearby creatures might be able to get in
+  multiple attacks (Legend).
+
+- Failing to pick up no longer advances the turn.
+
 - Bug fixes:
 
   - The damage dealt by poison each minute wasn't being considered

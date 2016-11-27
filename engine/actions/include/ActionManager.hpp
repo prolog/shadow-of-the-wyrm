@@ -7,6 +7,7 @@
 #include "ISerializable.hpp"
 #include "ItemManager.hpp"
 #include "MovementAction.hpp"
+#include "PickupAction.hpp"
 #include "QuaffAction.hpp"
 #include "RangedCombatAction.hpp"
 #include "SelectTileTypes.hpp"
@@ -40,7 +41,7 @@ class ActionManager : public ISerializable
     ActionCost descend(CreaturePtr creature);
 
     // Pick up/drop check the map type before proceeding.
-    ActionCost pick_up(CreaturePtr creature);
+    ActionCost pick_up(CreaturePtr creature, const PickUpType pick_up);
     ActionCost drop(CreaturePtr creature);
     ActionCost equipment(CreaturePtr creature);
 

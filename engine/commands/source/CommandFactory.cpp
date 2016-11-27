@@ -82,6 +82,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<PickUpCommand>(key);
   }
+  else if (command_name == CommandKeys::PICK_UP_ALL)
+  {
+    command = std::make_shared<PickUpAllCommand>(key);
+  }
   else if (command_name == CommandKeys::DROP_ITEM)
   {
     command = std::make_shared<DropCommand>(key);

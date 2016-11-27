@@ -1,11 +1,13 @@
 #include <list>
 #include "ActionTextKeys.hpp"
+#include "CreatureSpeedCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "Inventory.hpp"
 #include "ItemFilterFactory.hpp"
+#include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PickupAction.hpp"
@@ -14,7 +16,7 @@
 using namespace std;
 
 // Try to pick up.
-ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * const am)
+ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * const am, const PickUpType pick_up)
 {  
   ActionCostValue action_cost_value = 0;
   Game& game = Game::instance();
@@ -29,14 +31,14 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * cons
     }
     else
     {
-      action_cost_value = handle_pickup(creature, map, am);
+      action_cost_value = handle_pickup(creature, map, am, pick_up);
     }
   }
 
   return action_cost_value;
 }
 
-ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am)
+ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am, const PickUpType pick_up)
 {
   ActionCostValue action_cost_value = 0;
   
@@ -55,66 +57,147 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
       }
       else
       {
-        // If there is one item, pick it up.
-        uint num_items = inv->size();
-        bool can_pick_up = true;
-        string pickup_sid;
-
-        ItemPtr pick_up_item;
-        
-        if (num_items == 1)
+        if (pick_up == PickUpType::PICK_UP_SINGLE)
         {
-          pick_up_item = inv->at(0);
-
-          pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
-
-          if (pickup_details.first)
-          {
-            can_pick_up = true;
-          }
-          else
-          {
-            can_pick_up = false;
-            pickup_sid = pickup_details.second;
-          }
+          action_cost_value = handle_pickup_single(creature, map, am, tile);
         }
-
-        // If there are many items, get one of them.
-        else
+        else if (pick_up == PickUpType::PICK_UP_ALL)
         {
-          list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-          pick_up_item = am->inventory(creature, inv, no_filter, {}, false);
-
-          pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
-          can_pick_up = pickup_details.first;
-          pickup_sid = pickup_details.second;
-        }
-        
-        if (pick_up_item != nullptr && !can_pick_up)
-        {
-          handle_cannot_pickup(creature, pickup_sid);
+          action_cost_value = handle_pickup_all(creature, map, am, tile);
         }
         else
         {
-          if (pick_up_item)
-          {
-            // Remove the item from the ground.
-            inv->remove(pick_up_item->get_id());
-
-            if (!merge_into_equipment(creature, pick_up_item))
-            {
-              merge_or_add_into_inventory(creature, pick_up_item);
-            }
-          }
+          Log::instance().error("Tried to pick up, but an unrecognized pick up type was received.");
         }
-        
-        // Advance the turn
-        action_cost_value = get_action_cost_value(creature);
       }   
     }      
   }
   
   return action_cost_value;
+}
+
+ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile)
+{
+  ActionCostValue action_cost_value = 0;
+
+  if (creature != nullptr && map != nullptr && tile != nullptr)
+  {
+    IInventoryPtr inv = tile->get_items();
+
+    if (inv != nullptr)
+    {
+      // If there is one item, pick it up.
+      uint num_items = inv->size();
+      bool can_pick_up = true;
+      string pickup_sid;
+
+      ItemPtr pick_up_item;
+
+      if (num_items == 1)
+      {
+        pick_up_item = inv->at(0);
+
+        pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
+
+        if (pickup_details.first)
+        {
+          can_pick_up = true;
+        }
+        else
+        {
+          can_pick_up = false;
+          pickup_sid = pickup_details.second;
+        }
+      }
+
+      // If there are many items, get one of them.
+      else
+      {
+        list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
+        pick_up_item = am->inventory(creature, inv, no_filter, {}, false);
+
+        pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
+        can_pick_up = pickup_details.first;
+        pickup_sid = pickup_details.second;
+      }
+
+      if (pick_up_item != nullptr && !can_pick_up)
+      {
+        handle_cannot_pickup(creature, pickup_sid);
+      }
+      else
+      {
+        take_item_and_give_to_creature(pick_up_item, inv, creature);
+
+        // Advance the turn
+        action_cost_value = get_action_cost_value(creature);
+      }
+    }
+  }
+
+  return action_cost_value;
+}
+
+ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile)
+{
+  ActionCostValue action_cost_value = 0;
+
+  if (creature != nullptr && tile != nullptr && map != nullptr)
+  {
+    bool picked_up = false;
+    int addl_stacks_taken = -1;
+    IInventoryPtr inv = tile->get_items();
+    list<ItemPtr> items = inv->get_items_ref();
+
+    for (ItemPtr item : items)
+    {
+      pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, item);
+      
+      if (pickup_details.first == false)
+      {
+        handle_cannot_pickup(creature, pickup_details.second);
+        break;
+      }
+      else
+      {
+        picked_up = true;
+        take_item_and_give_to_creature(item, inv, creature);
+
+        addl_stacks_taken++;
+      }
+    }
+
+    if (picked_up)
+    {
+      addl_stacks_taken = std::max<int>(0, addl_stacks_taken);
+
+      // The speed of picking up one item/stack is 1, with this value being
+      // added to the creature's speed once the command has finish processing.
+      // So the speed of picking up a number of stacks is the number of
+      // additional stacks times the creature's speed, plus one.  When this
+      // value is returned, it will be added to the creature's speed to
+      // make the final total, as usual.
+      CreatureSpeedCalculator csc;
+      int creature_speed = csc.calculate(creature);
+      action_cost_value = (addl_stacks_taken * creature_speed) + get_action_cost_value(creature);
+    }
+  }
+
+  return action_cost_value;
+}
+
+void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature)
+{
+  if (pick_up_item != nullptr && inv != nullptr && creature != nullptr)
+  {
+    // Remove the item from the ground.
+    inv->remove(pick_up_item->get_id());
+
+    if (!merge_into_equipment(creature, pick_up_item))
+    {
+      merge_or_add_into_inventory(creature, pick_up_item);
+    }
+  }
 }
 
 // Handle the case where the creature already has the maximum number of items

@@ -149,6 +149,17 @@ PickUpCommand::~PickUpCommand()
 {
 }
 
+// Pick up all
+
+PickUpAllCommand::PickUpAllCommand(const int key)
+: Command(CommandKeys::PICK_UP_ALL, key)
+{
+}
+
+PickUpAllCommand::~PickUpAllCommand()
+{
+}
+
 // Drop
 DropCommand::DropCommand(const int key)
 : Command(CommandKeys::DROP_ITEM, key)

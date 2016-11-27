@@ -99,6 +99,13 @@ class PickUpCommand : public Command
     ~PickUpCommand();
 };
 
+class PickUpAllCommand : public Command
+{
+  public:
+    PickUpAllCommand(int key);
+    ~PickUpAllCommand();
+};
+
 class DropCommand : public Command
 {
   public:
