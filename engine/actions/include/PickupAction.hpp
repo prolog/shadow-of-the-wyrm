@@ -2,10 +2,16 @@
 #include "Creature.hpp"
 #include "IActionManager.hpp"
 
+enum struct PickUpType
+{
+  PICK_UP_SINGLE = 0,
+  PICK_UP_ALL = 1
+};
+
 class PickupAction : public IActionManager
 {
   public:
-    ActionCostValue pick_up(CreaturePtr creature, ActionManager * const am);
+    ActionCostValue pick_up(CreaturePtr creature, ActionManager * const am, const PickUpType pick_up);
 
     bool merge_into_equipment(CreaturePtr creature, ItemPtr item);
     bool merge_or_add_into_inventory(CreaturePtr creature, ItemPtr item);
@@ -17,5 +23,8 @@ class PickupAction : public IActionManager
     void handle_empty_tile_pickup(CreaturePtr creature);
     void handle_cannot_pickup(CreaturePtr creature, const std::string& msg_sid);
 
-    ActionCostValue handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am);    
+    ActionCostValue handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am, const PickUpType pick_up);    
+    ActionCostValue handle_pickup_single(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile);
+    ActionCostValue handle_pickup_all(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile);
+    void take_item_and_give_to_creature(ItemPtr item, IInventoryPtr inv, CreaturePtr creature);
 };

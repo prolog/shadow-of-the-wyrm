@@ -29,6 +29,7 @@ class CommandKeys
     static const std::string ATTACK_SOUTH;
     static const std::string ATTACK_SOUTHEAST;
     static const std::string PICK_UP_ITEM;
+    static const std::string PICK_UP_ALL;
     static const std::string DROP_ITEM;
     static const std::string CHAR_DETAILS;
     static const std::string CHAR_DUMP;
