@@ -8,6 +8,7 @@
 #include "DisplayTile.hpp"
 #include "EffectFactory.hpp"
 #include "SpellShapeProcessor.hpp"
+#include "TileDamageProcessorFactory.hpp"
 
 using namespace std;
 
@@ -65,6 +66,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
   // a wand with no damage and a null effect would not.
   bool spell_identified = spell.get_has_damage();
 
+  // First, apply the damage to the creature
   CreaturePtr tile_creature = tile->get_creature();
   if (tile && spell.get_has_damage() && tile_creature)
   {
@@ -85,6 +87,18 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
 
 
     spell_identified = true;
+  }
+
+  // Next, apply the damage to any affected items on the tile.
+  if (tile && spell.get_has_damage())
+  {
+    TileDamageProcessorFactory tdpf;
+    TileDamageProcessorPtr dam_proc = tdpf.create_tile_damage_processor(spell.get_damage().get_damage_type());
+
+    if (dam_proc != nullptr)
+    {
+      dam_proc->process(tile);
+    }
   }
 
   return spell_identified;

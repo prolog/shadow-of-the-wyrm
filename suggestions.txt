@@ -1,5 +1,3 @@
-- Ensure that packs are working right!
-
 Me:
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
   levels like the DW mines.
@@ -144,3 +142,5 @@ Suggestions:
   being distributed at random throughout the many non-buff spells that one 
   rarely uses. Even hotkeys would improve this by a great deal.
 
+Samildanach:
+- Make it more obvious what skills do and how they work.

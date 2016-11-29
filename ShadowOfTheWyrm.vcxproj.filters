@@ -3867,6 +3867,15 @@
     <ClInclude Include="engine\creatures\include\GroundSafetyCondition.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\TileDamageProcessor.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\TileDamageProcessorFactory.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\NullTileDamageProcessor.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7594,6 +7603,15 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\GroundSafetyCondition.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\source\NullTileDamageProcessor.cpp">
+      <Filter>Source Files\engine\maps\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\source\TileDamageProcessorFactory.cpp">
+      <Filter>Source Files\engine\maps\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\source\TileDamageProcessor.cpp">
+      <Filter>Source Files\engine\maps\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
