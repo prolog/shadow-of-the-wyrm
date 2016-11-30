@@ -825,3 +825,13 @@ he placed the helmet on his head, the feel %b
 was real: a giant for a moment, then %b
 appearing as a creature from the darkest fens.
 %p
+He stormed into the guardhouse for his axe - %b
+taboo to bring one's weapons in the hall - %b
+and found that cleaver propped within the racks %b
+of lesser soldiers' halberds, swords, and mauls. %b
+A jagged edge, a wicked, arcing curve, %b
+and written in the metal was its name. %b
+They called it Blood and Glory, I have heard. %b
+Its forger was a smith of much acclaim - %b
+an artist in his craft, a servant of the flame.
+%p
