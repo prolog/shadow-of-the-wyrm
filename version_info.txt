@@ -79,11 +79,6 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
 - Creatures can no longer pick up items once they become overburdened.
 
-- More stanzas for "Tel and Floridel".
-
-- New creatures: Maisy, Old Toller, Franck, ancient terror, wood elf
-  sentry.
-
 - Being burdened now gives a 1.5 multiplier to speed, strained 2.0, and 
   overburdened 3.0.
 
@@ -96,6 +91,13 @@ Shadow of the Wyrm v0.5.7 "Cutting"
   multiple attacks (Legend).
 
 - Failing to pick up no longer advances the turn.
+
+- More stanzas for "Tel and Floridel".
+
+- New creatures: Maisy, Old Toller, Franck, ancient terror, wood elf
+  sentry.
+
+- New artifacts: giant greataxe "Blood and Glory."
 
 - Bug fixes:
 

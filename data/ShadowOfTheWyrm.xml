@@ -155,6 +155,7 @@
 				<Artifact>creators_might</Artifact>
 				<Artifact>sword_fairy_king</Artifact>
 				<Artifact>vorpal_blade</Artifact>
+				<Artifact>blood_and_glory</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>earth_elemental</Summon>
@@ -195,6 +196,7 @@
 				<Artifact>asturias</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>choros_greatsword</Artifact>
+				<Artifact>blood_and_glory</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>fire_elemental</Summon>
@@ -238,6 +240,7 @@
 				<Artifact>fatebender</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>elcrynn</Artifact>
+				<Artifact>blood_and_glory</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>air_elemental</Summon>
@@ -28141,6 +28144,32 @@
 				<Speed>8</Speed>
 				<Damage>
 					<NumDice>4</NumDice>
+					<NumSides>20</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>			
+			<Weapon id="blood_and_glory">
+				<DescriptionSID>BLOOD_AND_GLORY_SID</DescriptionSID>
+				<UsageDescriptionSID>BLOOD_AND_GLORY_USAGE_SID</UsageDescriptionSID>
+				<Value>2424</Value>
+				<Weight>
+					<Pounds>25</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.20</Holy>
+					<Shadow>0.25</Shadow>
+				</Resistances>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>3</NumDice>
 					<NumSides>20</NumSides>
 					<Type>0</Type>
 				</Damage>
