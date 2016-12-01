@@ -97,7 +97,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
 
     if (dam_proc != nullptr)
     {
-      dam_proc->process(tile);
+      dam_proc->process(tile, caster);
     }
   }
 

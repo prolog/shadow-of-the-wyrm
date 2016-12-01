@@ -14,7 +14,6 @@ Me:
   generated.
 - Fire effects on a tile (gas, spells, etc) should have a chance of 
   destroying scrolls and spellbooks.
-- Cold effects on a tile should have a chance of destroying potions.
 - Traps that fire and kill a creature are giving the player exp?
 - Test clearing all shrines
 - Implement proper branded weapons.  These should allow for any "magical"

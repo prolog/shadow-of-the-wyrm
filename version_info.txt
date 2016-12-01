@@ -74,6 +74,9 @@ Shadow of the Wyrm v0.5.7 "Cutting"
 
 - Minimum/recommended terminal size is now 80x25, not 80x24.
 
+- Cold spells/wands/etc now have a chance to shatter glass items
+  (mainly potions) on the ground.
+
 - Creatures can no longer pick up items once they become overburdened.
 
 - More stanzas for "Tel and Floridel".

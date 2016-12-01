@@ -866,6 +866,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\maps\tiles\features\include\TanneryManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\TrapManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\WheelAndLoomManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\include\ColdTileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\DefaultTileManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\GraveTileManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\ITileManipulator.hpp" />
@@ -1537,6 +1538,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     </ClCompile>
     <ClCompile Include="engine\magic\source\SpellTransfer.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />
+    <ClCompile Include="engine\maps\tiles\source\ColdTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\NullTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessorFactory.cpp" />
