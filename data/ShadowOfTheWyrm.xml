@@ -28172,6 +28172,10 @@
 					<NumDice>3</NumDice>
 					<NumSides>20</NumSides>
 					<Type>0</Type>
+					<Slays>
+						<Slay>_humanoid</Slay>
+						<Slay>_divine</Slay>
+					</Slays>
 				</Damage>
 			</Weapon>			
 			<Weapon id="delver">
