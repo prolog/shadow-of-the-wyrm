@@ -55,9 +55,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // English lutenist and composer of the late 16th century.
-  // His best known work is probably "Packington's Pound".
-  return "\"Cutting\"";
+  // Argentinian classical guitarist and composer.
+  return "\"Merlin\"";
 }
 
 string Metadata::get_game_version_synopsis() const
