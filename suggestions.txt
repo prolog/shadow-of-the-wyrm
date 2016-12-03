@@ -1,5 +1,6 @@
 Me:
-- Undead corpses should be poisoned on generation.
+- Undead corpses should be poisoned on generation, also any corpses of
+  creatures that do poison damtype.
 - Acid damage should dissolve items on ground
 - Potions aren't randomizing properly, maybe others.
 - Do the mine generation issue.  Rewrite MineGenerator - should create 

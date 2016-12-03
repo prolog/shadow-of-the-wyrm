@@ -370,6 +370,7 @@
 		<Race id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
@@ -433,6 +434,7 @@
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<Drops>
@@ -502,6 +504,7 @@
 		<Race id="_construct">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<Drops>
@@ -571,6 +574,7 @@
 		<Race id="_demon">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>DEMON_RACE_NAME</NameSID>
@@ -634,6 +638,7 @@
 		<Race id="_divine">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
@@ -697,6 +702,7 @@
 		<Race id="_humanoid">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<Drops>
@@ -768,6 +774,7 @@
 		<Race id="_insect">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>INSECT_RACE_NAME</NameSID>
@@ -831,6 +838,7 @@
 		<Race id="_jelly">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>JELLY_RACE_NAME</NameSID>
@@ -894,6 +902,7 @@
 		<Race id="_monster">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
@@ -957,6 +966,7 @@
 		<Race id="_plant">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>PLANT_RACE_NAME</NameSID>
@@ -1020,6 +1030,7 @@
 		<Race id="_undead">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>1</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
@@ -1078,6 +1089,7 @@
 		<Race id="_corporeal_undead" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>1</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
@@ -1139,6 +1151,7 @@
 		<Race id="_spirit" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
@@ -1199,6 +1212,7 @@
 		<Race id="_dragon">
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<Drops>
@@ -1262,6 +1276,7 @@
 		<Race id="01_human" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>0</SettlementType>
@@ -1347,6 +1362,7 @@
 		<Race id="02_woodelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>0</SettlementType>
@@ -1424,6 +1440,7 @@
 		<Race id="03_mountainelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1502,6 +1519,7 @@
 		<Race id="04_snakeling" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>3</SettlementType>
@@ -1577,6 +1595,7 @@
 		<Race id="05_fae" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasRandomVillages>0</HasRandomVillages>
@@ -1654,6 +1673,7 @@
 		<Race id="06_dwarf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1730,6 +1750,7 @@
 		<Race id="07_goblin" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1807,6 +1828,7 @@
 		<Race id="08_ogre" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1880,6 +1902,7 @@
 		<Race id="09_giant" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>1</SettlementType>
@@ -1954,6 +1977,7 @@
 		<Race id="10_gnome" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>3</SettlementType>

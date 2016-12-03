@@ -162,6 +162,7 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
 void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_creature, CreaturePtr dead_creature, IInventoryPtr ground) const
 {
   bool leaves_corpse = false;
+  bool corpse_poisoned = false;
 
   if (dead_creature)
   {
@@ -171,6 +172,7 @@ void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_cre
     if (race)
     {
       leaves_corpse = race->get_leaves_corpse();
+      corpse_poisoned = (dead_creature->get_base_damage().get_damage_type() == DamageType::DAMAGE_TYPE_POISON || race->get_corpse_poisoned());
     }
 
     string leaves_corpse_prop = dead_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_CORPSE);
@@ -190,6 +192,14 @@ void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_cre
 
     if (corpse != nullptr)
     {
+      // Poison it if applicable
+      ConsumablePtr consum = std::dynamic_pointer_cast<Consumable>(corpse);
+
+      if (consum != nullptr && corpse_poisoned)
+      {
+        consum->set_poisoned(true);
+      }
+
       ground->add_front(corpse);
     }
   }
