@@ -23262,7 +23262,7 @@
 			<Damage>
 				<NumDice>6</NumDice>
 				<NumSides>4</NumSides>
-				<Type>5</Type>
+				<Type>3</Type>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>		
@@ -31070,6 +31070,33 @@
 				<BeamType>1</BeamType>
 				<Range>4</Range>
 				<Colour>15</Colour>
+			</Wand>
+			<Wand id="acid_wand">
+				<DescriptionSID>ACID_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_ACID_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>ACID_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_ACID_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>180</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage>
+					<NumDice>3</NumDice>
+					<NumSides>12</NumSides>
+					<Modifier>5</Modifier>
+					<Type>5</Type>
+					<EffectBonus>25</EffectBonus>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
+				<Colour>2</Colour>
 			</Wand>
 			<Wand id="flame_wand">
 				<DescriptionSID>FLAME_WAND_SID</DescriptionSID>

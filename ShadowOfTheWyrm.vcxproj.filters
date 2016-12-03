@@ -3882,6 +3882,9 @@
     <ClInclude Include="engine\maps\tiles\include\PoisonTileDamageProcessor.hpp">
       <Filter>Header Files\engine\maps\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\AcidTileDamageProcessor.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7623,6 +7626,9 @@
       <Filter>Source Files\engine\maps\tiles\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\source\PoisonTileDamageProcessor.cpp">
+      <Filter>Source Files\engine\maps\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\source\AcidTileDamageProcessor.cpp">
       <Filter>Source Files\engine\maps\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,4 +1,5 @@
 #include "TileDamageProcessorFactory.hpp"
+#include "AcidTileDamageProcessor.hpp"
 #include "ColdTileDamageProcessor.hpp"
 #include "NullTileDamageProcessor.hpp"
 #include "PoisonTileDamageProcessor.hpp"
@@ -17,11 +18,13 @@ TileDamageProcessorPtr TileDamageProcessorFactory::create_tile_damage_processor(
     case DamageType::DAMAGE_TYPE_POISON:
       dam_proc = std::make_shared<PoisonTileDamageProcessor>();
       break;
+    case DamageType::DAMAGE_TYPE_ACID:
+      dam_proc = std::make_shared<AcidTileDamageProcessor>();
+      break;
     case DamageType::DAMAGE_TYPE_SLASH:
     case DamageType::DAMAGE_TYPE_PIERCE:
     case DamageType::DAMAGE_TYPE_POUND:
     case DamageType::DAMAGE_TYPE_HEAT:
-    case DamageType::DAMAGE_TYPE_ACID:
     case DamageType::DAMAGE_TYPE_HOLY:
     case DamageType::DAMAGE_TYPE_SHADOW:
     case DamageType::DAMAGE_TYPE_ARCANE:
