@@ -871,6 +871,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\maps\tiles\include\GraveTileManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\ITileManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\NullTileDamageProcessor.hpp" />
+    <ClInclude Include="engine\maps\tiles\include\PoisonTileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\TileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\TileDamageProcessorFactory.hpp" />
     <ClInclude Include="engine\maps\tiles\include\TileManipulatorFactory.hpp" />
@@ -1540,6 +1541,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\source\ColdTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\NullTileDamageProcessor.cpp" />
+    <ClCompile Include="engine\maps\tiles\source\PoisonTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessorFactory.cpp" />
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
