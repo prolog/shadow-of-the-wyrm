@@ -11,10 +11,12 @@ class TileDamageProcessor
     void process(TilePtr tile, CreaturePtr creature);
 
   protected:
+    virtual bool destroy_item() const;
+    virtual void process_item(ItemPtr item);
     virtual std::string get_message_sid() const;
     virtual int get_pct_chance() const;
     virtual bool affects_item(ItemPtr item) = 0;
-    virtual std::string get_item_destruction_message(ItemPtr item);
+    virtual std::string get_item_processed_message(ItemPtr item);
 };
 
 using TileDamageProcessorPtr = std::shared_ptr<TileDamageProcessor>;

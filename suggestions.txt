@@ -1,4 +1,7 @@
 Me:
+- Undead corpses should be poisoned on generation.
+- Acid damage should dissolve items on ground
+- Potions aren't randomizing properly, maybe others.
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
   levels like the DW mines.
 - In text display screen, p to page to a particular page.
@@ -14,6 +17,7 @@ Me:
   generated.
 - Fire effects on a tile (gas, spells, etc) should have a chance of 
   destroying scrolls and spellbooks.
+- Poison effects on a tile should poison any food.
 - Traps that fire and kill a creature are giving the player exp?
 - Test clearing all shrines
 - Implement proper branded weapons.  These should allow for any "magical"

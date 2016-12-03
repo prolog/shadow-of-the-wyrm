@@ -63,6 +63,7 @@ class TileTextKeys
     static const std::string TILE_EXTRA_DESCRIPTION_NETHER_SHRINE;
 
     static const std::string TILE_DAMAGE_COLD;
+    static const std::string TILE_DAMAGE_POISON;
 
   protected:
     TileTextKeys();

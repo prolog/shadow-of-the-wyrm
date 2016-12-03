@@ -16,16 +16,20 @@ void TileDamageProcessor::process(TilePtr tile, CreaturePtr creature)
     {
       list<ItemPtr>& items = inv->get_items_ref();
       int pct_chance = get_pct_chance();
-      vector<string> destroyed_items;
+      auto i_it = items.begin();
 
-      for (ItemPtr item : items)
+      while (i_it != items.end())
       {
-        // Artifacts cannot be destroyed.
+        ItemPtr item = *i_it;
+        bool processed = false;
+
+        // Artifacts cannot be destroyed/altered.
         if (!item->get_artifact() && affects_item(item) && RNG::percent_chance(pct_chance))
         {
-          // Mark the item for destruction, and add a message.
-          destroyed_items.push_back(item->get_id());
-          string message = get_item_destruction_message(item);
+          process_item(item);
+          processed = true;
+
+          string message = get_item_processed_message(item);
 
           if (!message.empty())
           {
@@ -33,14 +37,18 @@ void TileDamageProcessor::process(TilePtr tile, CreaturePtr creature)
             manager.send();
           }
         }
-      }
 
-      for (const string& id : destroyed_items)
-      {
-        inv->remove(id);
+        if (processed && destroy_item())
+        {
+          i_it = items.erase(i_it);
+        }
+        else
+        {
+          ++i_it;
+        }
       }
     }
-    }
+  }
 }
 
 int TileDamageProcessor::get_pct_chance() const
@@ -54,7 +62,7 @@ string TileDamageProcessor::get_message_sid() const
   return no_msg;
 }
 
-string TileDamageProcessor::get_item_destruction_message(ItemPtr item)
+string TileDamageProcessor::get_item_processed_message(ItemPtr item)
 {
   string message;
 
@@ -72,4 +80,13 @@ string TileDamageProcessor::get_item_destruction_message(ItemPtr item)
   }
 
   return message;
+}
+
+bool TileDamageProcessor::destroy_item() const
+{
+  return true;
+}
+
+void TileDamageProcessor::process_item(ItemPtr item)
+{
 }
