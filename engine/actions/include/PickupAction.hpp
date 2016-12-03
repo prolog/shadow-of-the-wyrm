@@ -2,6 +2,8 @@
 #include "Creature.hpp"
 #include "IActionManager.hpp"
 
+class ActionManager;
+
 enum struct PickUpType
 {
   PICK_UP_SINGLE = 0,
