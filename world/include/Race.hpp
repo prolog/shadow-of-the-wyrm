@@ -33,6 +33,9 @@ class Race
     void set_leaves_corpse(const bool new_leaves_corpse);
     bool get_leaves_corpse() const;
 
+    void set_corpse_poisoned(const bool new_corpse_poisoned);
+    bool get_corpse_poisoned() const;
+
     void set_has_pockets(const bool new_has_pockets);
     bool get_has_pockets() const;
 
@@ -139,6 +142,7 @@ class Race
     std::string parent_race_id;
     bool user_playable;
     bool leaves_corpse;
+    bool corpse_poisoned;
     bool has_pockets;
     bool has_voice;
     std::map<std::string, DropParameters> drops;

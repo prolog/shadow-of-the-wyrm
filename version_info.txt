@@ -4,6 +4,9 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 - Poison spells now can affect any consumables on the ground.  This
   doesn't destroy the item, but makes it poisonous, instead.
 
+- Undead now leave poisoned corpses, as do any creatures that deal poison
+  damage with their regular attack.
+
 Shadow of the Wyrm v0.5.7 "Cutting"
 - Version declared November 5, 2016.  Version finalized December 1, 2016.
 
