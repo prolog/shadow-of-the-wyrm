@@ -62,6 +62,7 @@ class TileTextKeys
     static const std::string TILE_EXTRA_DESCRIPTION_WORLD_SHRINE;
     static const std::string TILE_EXTRA_DESCRIPTION_NETHER_SHRINE;
 
+    static const std::string TILE_DAMAGE_HEAT;
     static const std::string TILE_DAMAGE_COLD;
     static const std::string TILE_DAMAGE_ACID;
     static const std::string TILE_DAMAGE_POISON;
