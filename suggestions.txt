@@ -1,5 +1,4 @@
 Me:
-- Acid damage should dissolve items on ground
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
   levels like the DW mines.
 - In text display screen, p to page to a particular page.
@@ -13,8 +12,6 @@ Me:
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
-- Fire effects on a tile (gas, spells, etc) should have a chance of 
-  destroying scrolls and spellbooks.
 - Poison effects on a tile should poison any food.
 - Traps that fire and kill a creature are giving the player exp?
 - Test clearing all shrines

@@ -6,6 +6,8 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
 - Acid spells/wands can now dissolve any item on the ground.
 
+- Fire spells/wand can burn cloth, paper, and wood.
+
 - Undead now leave poisoned corpses, as do any creatures that deal poison
   damage with their regular attack.
 
