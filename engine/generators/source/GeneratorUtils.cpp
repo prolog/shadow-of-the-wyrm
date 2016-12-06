@@ -1,3 +1,4 @@
+#include "CoordUtils.hpp"
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "Game.hpp"
@@ -23,60 +24,26 @@ void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
-  
-  if ((position_in_range(0, rows-1, row_centre - radius)) 
-   && (position_in_range(0, rows-1, row_centre + radius))
-   && (position_in_range(0, cols-1, col_centre - radius))
-   && (position_in_range(0, cols+1, col_centre + radius)))
-  {
-    // Midpoint circle algorithm.  Thank you, internets.
-    // (Both of you - you're super.)
-    //
-    // Really, I wonder how I wrote code when I was a kid,
-    // hacking C in djgpp, with no knowledge of data structures
-    // and types outside of ints, chars, and arrays.
+  bool generate = true;
 
-    // A midpoint circle
-    // Math from basic principles:
-    // Knowledge gone like ghosts.
-    int y0 = row_centre;
-    int x0 = col_centre;
-    
-    int f = 1 - radius;
-    int ddF_x = 1;
-    int ddF_y = -2 * radius;
-    int x = 0;
-    int y = radius;
-    
-    generate_tile(map, y0+radius, x0, tile_type);
-    generate_tile(map, y0-radius, x0, tile_type);
-    generate_tile(map, y0, x0+radius, tile_type);
-    generate_tile(map, y0, x0-radius, tile_type);
-    
-    while (x < y)
+  vector<Coordinate> circle_coords = CoordUtils::get_circle_coordinates(row_centre, col_centre, radius);
+
+  // Circle in range?
+  for (const Coordinate& c : circle_coords)
+  {
+    if (!(c.first >= 0 && c.first <= rows - 1 && c.second >= 0 && c.second <= cols - 1))
     {
-      // ddF_x = 2 * x + 1;
-      // ddF_y = -2 * y;
-      // f == x*x + y*y - radius*radius + 2*x - y+1;
-      if (f >= 0)
-      {
-        y--;
-        ddF_y += 2;
-        f += ddF_x;
-      }
-      
-      x++;
-      ddF_x += 2;
-      f += ddF_x;
-      
-      generate_tile(map, y0 + y, x0 + x, tile_type);
-      generate_tile(map, y0 + y, x0 - x, tile_type);
-      generate_tile(map, y0 - y, x0 + x, tile_type);
-      generate_tile(map, y0 - y, x0 - x, tile_type);
-      generate_tile(map, y0 + x, x0 + y, tile_type);
-      generate_tile(map, y0 + x, x0 - y, tile_type);
-      generate_tile(map, y0 - x, x0 + y, tile_type);
-      generate_tile(map, y0 - x, x0 - y, tile_type);
+      generate = false;
+      break;
+    }
+  }
+
+  // If the circle's in range, generate it.
+  if (generate)
+  {
+    for (const Coordinate& c : circle_coords)
+    {
+      generate_tile(map, c.first, c.second, tile_type);
     }
   }
 }

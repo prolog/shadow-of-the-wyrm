@@ -1,12 +1,15 @@
 Me:
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
   levels like the DW mines.
+- Arcane damage should destroy wands, rings, potions, scrolls, texts.
+  Try to limit to "magic only".
 - In text display screen, p to page to a particular page.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
   away from the player, hits incredibly hard when attacked.  Chatting to
   her grants a wish.  She should have a chance of vanishing, which then
   decrements her generated counter to ensure she can appear again.  There
   should be a creature that talks about her.
+- Some sort of ship area - raiders, ghost ship, etc.
 - Small chance to search surrounding tiles when moving.
 - z-maps for settlements: test flying between multi-level maps and going
   up/down stairs.

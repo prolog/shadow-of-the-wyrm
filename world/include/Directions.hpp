@@ -31,6 +31,7 @@ enum struct Direction
 // More general - used in terrain generation, etc.
 enum struct CardinalDirection
 {
+  CARDINAL_DIRECTION_NULL = -1,
   CARDINAL_DIRECTION_NORTH = 0,
   CARDINAL_DIRECTION_EAST  = 1,
   CARDINAL_DIRECTION_SOUTH = 2,
