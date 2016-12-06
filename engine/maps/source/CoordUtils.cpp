@@ -308,6 +308,63 @@ vector<Coordinate> CoordUtils::get_beam_coordinates(const Coordinate& centre_coo
   return beam;
 }
 
+vector<Coordinate> CoordUtils::get_circle_coordinates(const int row_centre, const int col_centre, const int radius)
+{
+  vector<Coordinate> coords;
+
+  // Midpoint circle algorithm.  Thank you, internets.
+  // (Both of you - you're super.)
+  //
+  // Really, I wonder how I wrote code when I was a kid,
+  // hacking C in djgpp, with no knowledge of data structures
+  // and types outside of ints, chars, and arrays.
+
+  // A midpoint circle
+  // Math from basic principles:
+  // Knowledge gone like ghosts.
+  int y0 = row_centre;
+  int x0 = col_centre;
+
+  int f = 1 - radius;
+  int ddF_x = 1;
+  int ddF_y = -2 * radius;
+  int x = 0;
+  int y = radius;
+
+  coords.push_back({y0 + radius, x0});
+  coords.push_back({y0 - radius, x0});
+  coords.push_back({y0, x0 + radius});
+  coords.push_back({y0, x0 - radius});
+
+  while (x < y)
+  {
+    // ddF_x = 2 * x + 1;
+    // ddF_y = -2 * y;
+    // f == x*x + y*y - radius*radius + 2*x - y+1;
+    if (f >= 0)
+    {
+      y--;
+      ddF_y += 2;
+      f += ddF_x;
+    }
+
+    x++;
+    ddF_x += 2;
+    f += ddF_x;
+
+    coords.push_back({y0 + y, x0 + x});
+    coords.push_back({y0 + y, x0 - x});
+    coords.push_back({y0 - y, x0 + x});
+    coords.push_back({y0 - y, x0 - x});
+    coords.push_back({y0 + x, x0 + y});
+    coords.push_back({y0 + x, x0 - y});
+    coords.push_back({y0 - x, x0 + y});
+    coords.push_back({y0 - x, x0 - y});
+  }
+
+  return coords;
+}
+
 map<CardinalDirection, Coordinate> CoordUtils::get_midway_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
 {
   int height = bottom_right.first - top_left.first;

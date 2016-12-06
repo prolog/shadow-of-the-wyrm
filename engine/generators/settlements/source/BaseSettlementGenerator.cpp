@@ -208,8 +208,9 @@ bool BaseSettlementGenerator::generate_building_if_possible(MapPtr map, const Bu
 
     FeaturePtr door = FeatureGenerator::generate_door();
     door_tile->set_feature(door);
-
+    
     map->insert(door_location.first, door_location.second, door_tile);
+
     generated = true;
   }
   
