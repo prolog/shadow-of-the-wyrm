@@ -416,3 +416,63 @@ TEST(SW_Engine_Maps_CoordUtils, beam_coords_invalid)
     EXPECT_EQ(exp, c);
   }
 }
+
+TEST(SW_Engine_Maps_CoordUtils, get_t_coordinates)
+{
+  Coordinate sp = {10, 10};
+
+  // Length 0
+  // *
+  EXPECT_EQ(vector<Coordinate>({{10,10}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_NORTH, 0));
+  EXPECT_EQ(vector<Coordinate>({{10,10}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_SOUTH, 0));
+  EXPECT_EQ(vector<Coordinate>({{10,10}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_EAST, 0));
+  EXPECT_EQ(vector<Coordinate>({{10,10}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_WEST, 0));
+
+  // Length 1
+  // ***  *
+  //  *  ***  etc
+  EXPECT_EQ(vector<Coordinate>({{10,10},{9,10},{9,11},{9,9}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_NORTH, 1));
+  EXPECT_EQ(vector<Coordinate>({{10,10},{11,10},{11,11},{11,9}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_SOUTH, 1));
+  EXPECT_EQ(vector<Coordinate>({{10,10},{10,11},{9,11},{11,11}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_EAST, 1));
+  EXPECT_EQ(vector<Coordinate>({{10,10},{10,9},{9,9},{11,9}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_WEST, 1));
+
+  // Length 2
+  EXPECT_EQ(vector<Coordinate>({{10,10},{9,10},{8,10},{8,11},{8,9},{8,12},{8,8}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_NORTH, 2));
+  EXPECT_EQ(vector<Coordinate>({{10,10},{11,10},{12,10},{12,11},{12,9},{12,12},{12,8}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_SOUTH, 2));
+  EXPECT_EQ(vector<Coordinate>({{10,10},{10,11},{10,12},{9,12},{11,12},{8,12},{12,12}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_EAST, 2));
+  EXPECT_EQ(vector<Coordinate>({{10,10},{10,9},{10,8},{9,8},{11,8},{8,8},{12,8}}), CoordUtils::get_t_coordinates(sp, CardinalDirection::CARDINAL_DIRECTION_WEST, 2));
+}
+
+TEST(SW_Engine_Maps_CoordUtils, get_stepped_coordinates)
+{
+  Coordinate start(10,10);
+
+  // 0 length steps - should only include the starting point.
+  EXPECT_EQ(vector<Coordinate>({{10,10}}), CoordUtils::get_stepped_coordinates(start, {}, 0));
+  EXPECT_EQ(vector<Coordinate>({{10,10}}), CoordUtils::get_stepped_coordinates(start, {}, 20));
+  EXPECT_EQ(vector<Coordinate>({{10,10}}), CoordUtils::get_stepped_coordinates(start, {CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_EAST}, 0));
+
+  // steps in one particular direction
+  EXPECT_EQ(vector<Coordinate>({{10,10},{9,10}}), CoordUtils::get_stepped_coordinates(start, {CardinalDirection::CARDINAL_DIRECTION_NORTH}, 1));
+  EXPECT_EQ(vector<Coordinate>({{10,10},{10,11},{10,12}}), CoordUtils::get_stepped_coordinates(start, {CardinalDirection::CARDINAL_DIRECTION_EAST}, 2));
+
+  // steps with several turns
+  EXPECT_EQ(vector<Coordinate>({{10,10},{10,11},{11,11}}), CoordUtils::get_stepped_coordinates(start, {CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_SOUTH}, 1));
+  EXPECT_EQ(vector<Coordinate>({{10,10},{10,11},{10,12},{9,12},{8,12}}), CoordUtils::get_stepped_coordinates(start, {CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_NORTH}, 2));
+  EXPECT_EQ(vector<Coordinate>({{10,10},{10,9},{10,8},{9,8},{8,8},{8,9},{8,10}}), CoordUtils::get_stepped_coordinates(start, {CardinalDirection::CARDINAL_DIRECTION_WEST, CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_EAST}, 2));
+}
+
+TEST(SW_Engine_Maps_CoordUtils, get_minimum_bounding_box)
+{
+  vector<Coordinate> points = {};
+
+  Dimensions dim;
+
+  EXPECT_EQ(make_pair(make_pair(0,0),make_pair(19,79)), CoordUtils::get_minimum_bounding_box(dim, points, 0));
+  EXPECT_EQ(make_pair(make_pair(0,0), make_pair(19,79)), CoordUtils::get_minimum_bounding_box(dim, points, 10));
+
+  points = {{3,4},{7,5},{17,3},{5,12}};
+
+  EXPECT_EQ(make_pair(make_pair(3,3), make_pair(17,12)), CoordUtils::get_minimum_bounding_box(dim, points, 0));
+  EXPECT_EQ(make_pair(make_pair(2,2), make_pair(18,13)), CoordUtils::get_minimum_bounding_box(dim, points, 0));
+}
