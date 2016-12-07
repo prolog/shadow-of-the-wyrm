@@ -1,4 +1,5 @@
 #include "CoordUtils.hpp"
+#include "DirectionUtils.hpp"
 #include "MapUtils.hpp"
 
 using namespace std;
@@ -363,6 +364,115 @@ vector<Coordinate> CoordUtils::get_circle_coordinates(const int row_centre, cons
   }
 
   return coords;
+}
+
+vector<Coordinate> CoordUtils::get_t_coordinates(const Coordinate& sp, const CardinalDirection cd, const int segment_length)
+{
+  vector<Coordinate> coords;
+  Coordinate next = sp;
+
+  coords.push_back(next);
+
+  // First segment
+  for (int i = 0; i < segment_length; i++)
+  {
+    next = get_new_coordinate(next, DirectionUtils::to_direction(cd));
+
+    coords.push_back(next);
+  }
+
+  // Second segment.  Form the "T" by going east/west if this is a N/S stem,
+  // and vice versa.
+  vector<Direction> t_dirs = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH};
+
+  if (cd == CardinalDirection::CARDINAL_DIRECTION_NORTH || cd == CardinalDirection::CARDINAL_DIRECTION_SOUTH)
+  {
+    t_dirs = {Direction::DIRECTION_EAST, Direction::DIRECTION_WEST};
+  }
+
+  for (int i = 1; i <= segment_length; i++)
+  {
+    coords.push_back(get_new_coordinate(next, t_dirs[0], i));
+    coords.push_back(get_new_coordinate(next, t_dirs[1], i));
+  }
+
+  return coords;
+}
+
+// Gets coordinates in an equal, sequential stepping pattern from a given 
+// starting point.
+// 
+// E.g.: North 2, East 2, North 2, West 2, North 2...
+vector<Coordinate> CoordUtils::get_stepped_coordinates(const Coordinate& sp, const vector<CardinalDirection>& directions, const int step_length)
+{
+  vector<Coordinate> coords;
+
+  Coordinate c = sp;
+  coords.push_back(c);
+
+  for (const CardinalDirection cd : directions)
+  {
+    Direction d = DirectionUtils::to_direction(cd);
+
+    for (int i = 0; i < step_length; i++)
+    {
+      c = get_new_coordinate(c, d);
+      coords.push_back(c);
+    }
+  }
+
+  return coords;
+}
+
+
+// Return the top left/bottom right coordinate of the minimum bounding box
+pair<Coordinate, Coordinate> CoordUtils::get_minimum_bounding_box(const Dimensions& dim, const vector<Coordinate>& points, const int padding)
+{
+  pair<Coordinate, Coordinate> bounds = {{dim.get_y(), dim.get_x()},{-1,-1}};
+
+  if (points.empty())
+  {
+    bounds = {{0,0},{dim.get_y()-1,dim.get_x()-1}};
+  }
+  else
+  {
+    for (const Coordinate& c : points)
+    {
+      if (c.first < bounds.first.first)
+      {
+        bounds.first.first = c.first;
+      }
+
+      if (c.second < bounds.first.second)
+      {
+        bounds.first.second = c.second;
+      }
+
+      if (c.first > bounds.second.first)
+      {
+        bounds.second.first = c.first;
+      }
+
+      if (c.second > bounds.second.second)
+      {
+        bounds.second.second = c.second;
+      }
+    }
+  }
+
+  bounds.first.first -= padding;
+  bounds.first.second -= padding;
+
+  bounds.second.first += padding;
+  bounds.second.second += padding;
+
+  bounds.first.first = std::max<int>(0, bounds.first.first);
+  bounds.first.second = std::max<int>(0, bounds.first.second);
+
+  bounds.second.first = std::min<int>(dim.get_y()-1, bounds.second.first);
+  bounds.second.second = std::min<int>(dim.get_x()-1, bounds.second.second);
+
+  return bounds;
 }
 
 map<CardinalDirection, Coordinate> CoordUtils::get_midway_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)

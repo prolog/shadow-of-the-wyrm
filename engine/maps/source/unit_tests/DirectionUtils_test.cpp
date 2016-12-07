@@ -25,6 +25,15 @@ TEST(SW_Engine_Maps_DirectionUtils, is_ordinal)
   EXPECT_FALSE(DirectionUtils::is_ordinal(Direction::DIRECTION_DOWN));
 }
 
+TEST(SW_Engine_Maps_DirectionUtils, to_direction)
+{
+  EXPECT_EQ(Direction::DIRECTION_NULL, DirectionUtils::to_direction(CardinalDirection::CARDINAL_DIRECTION_NULL));
+  EXPECT_EQ(Direction::DIRECTION_SOUTH, DirectionUtils::to_direction(CardinalDirection::CARDINAL_DIRECTION_SOUTH));
+  EXPECT_EQ(Direction::DIRECTION_WEST, DirectionUtils::to_direction(CardinalDirection::CARDINAL_DIRECTION_WEST));
+  EXPECT_EQ(Direction::DIRECTION_NORTH, DirectionUtils::to_direction(CardinalDirection::CARDINAL_DIRECTION_NORTH));
+  EXPECT_EQ(Direction::DIRECTION_EAST, DirectionUtils::to_direction(CardinalDirection::CARDINAL_DIRECTION_EAST));
+}
+
 TEST(SW_Engine_Maps_DirectionUtils, get_opposite_direction)
 {
   EXPECT_EQ(Direction::DIRECTION_SOUTH_EAST, DirectionUtils::get_opposite_direction(Direction::DIRECTION_NORTH_WEST));
