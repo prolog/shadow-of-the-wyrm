@@ -1,6 +1,6 @@
 %b
 7,y          8,k,up        9,u %b
-4,h,left      s,.        6,l,left %b
+4,h,left      s,.        6,l,right %b
 1,b         2,j,down       3,n
 %p
 w - Automatic Movement        > - Descend, Dig        < - Ascend %b
