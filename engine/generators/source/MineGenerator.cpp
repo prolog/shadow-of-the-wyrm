@@ -1,4 +1,5 @@
 #include "CoordUtils.hpp"
+#include "DirectionUtils.hpp"
 #include "GeneratorUtils.hpp"
 #include "MineGenerator.hpp"
 #include "RNG.hpp"
@@ -68,9 +69,13 @@ void MineGenerator::generate_ew_wall_segments(MapPtr map)
     {
       att++;
 
-      CardinalDirection wall = get_random_direction({CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST});
+      CardinalDirection wall_dir = get_random_direction({CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST});
+      int wall_y = RNG::range(2, dim.get_y()-3);
+      int wall_x = wall_dir == CardinalDirection::CARDINAL_DIRECTION_WEST ? 1 : dim.get_x() - 2;
 
-      // ...
+      vector<Coordinate> feature = generate_random_feature(wall_y, wall_x, wall_dir);
+      Direction shift_dir = DirectionUtils::get_opposite_direction(DirectionUtils::to_direction(wall_dir));
+      BoundingBox bb = CoordUtils::get_new_bounding_box(CoordUtils::get_minimum_bounding_box(dim, feature, 1), shift_dir);
     }
   }
 }
@@ -87,11 +92,37 @@ void MineGenerator::generate_ns_wall_segments(MapPtr map)
     {
       att++;
 
-      CardinalDirection wall = get_random_direction({CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH});
+      CardinalDirection wall_dir = get_random_direction({CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH});
+      int wall_x = RNG::range(2, dim.get_x()-3);
+      int wall_y = wall_dir == CardinalDirection::CARDINAL_DIRECTION_NORTH ? 1 : dim.get_y() - 2;
 
-      // ...
+      vector<Coordinate> feature = generate_random_feature(wall_y, wall_x, wall_dir);
+      Direction shift_dir = DirectionUtils::get_opposite_direction(DirectionUtils::to_direction(wall_dir));
+      BoundingBox bb = CoordUtils::get_new_bounding_box(CoordUtils::get_minimum_bounding_box(dim, feature, 1), shift_dir);
     }
   }
+}
+
+vector<Coordinate> MineGenerator::generate_random_feature(const int y, const int x, const CardinalDirection cd)
+{
+  vector<Coordinate> feature_coords;
+  int feat_type = RNG::range(1, 3);
+  Coordinate start = {y, x};
+
+  if (feat_type == 1)
+  {
+    feature_coords = CoordUtils::get_beam_coordinates(start, DirectionUtils::to_direction(cd), RNG::range(2, 5));
+  }
+  else if (feat_type == 2)
+  {
+    feature_coords = CoordUtils::get_t_coordinates(start, cd, RNG::range(1, 3));
+  }
+  else
+  {
+    feature_coords = CoordUtils::get_stepped_coordinates(start, {}, 2);
+  }
+
+  return feature_coords;
 }
 
 // Place the stairs randomly.

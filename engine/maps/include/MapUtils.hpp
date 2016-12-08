@@ -1,11 +1,11 @@
 #pragma once
+#include "BoundingBox.hpp"
 #include "Directions.hpp"
 #include "Map.hpp"
 #include "Dimensions.hpp"
 #include <set>
 #include <utility>
 
-//class MapComponents;
 using MapComponents = std::vector<std::set<Coordinate>>;
 using MapComponentsItc = std::vector<std::set<Coordinate>>::const_iterator;
 using Component = std::set<Coordinate>;
@@ -33,6 +33,7 @@ class MapUtils
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
     static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
     static bool remove_creature(const MapPtr& map, const CreaturePtr& creature);
+    static bool tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, const TileType tt);
 
     static bool place_creature_randomly(MapPtr map, const std::string& creature_id);
     

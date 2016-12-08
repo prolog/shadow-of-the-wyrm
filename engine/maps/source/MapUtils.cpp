@@ -535,6 +535,48 @@ bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
   return result;
 }
 
+bool MapUtils::tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, const TileType tt)
+{
+  bool match = false;
+
+  if (map != nullptr)
+  {
+    match = true;
+
+    Coordinate top_left = bb.get_c1();
+    Coordinate bottom_right = bb.get_c2();
+
+    for (int y = top_left.first; y <= bottom_right.first; y++)
+    {
+      for (int x = top_left.second; x <= bottom_right.second; x++)
+      {
+        TilePtr tile = map->at(y,x);
+
+        if (!tile)
+        {
+          match = false;
+          break;
+        }
+        else
+        {
+          if (tile->get_tile_type() != tt)
+          {
+            match = false;
+            break;
+          }
+        }
+      }
+
+      if (!match)
+      {
+        break;
+      }
+    }
+  }
+
+  return match;
+}
+
 bool MapUtils::can_exit_map(MapExitPtr map_exit)
 {
   bool can_exit = false;

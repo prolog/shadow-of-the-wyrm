@@ -3888,6 +3888,9 @@
     <ClInclude Include="engine\maps\tiles\include\HeatTileDamageProcessor.hpp">
       <Filter>Header Files\engine\maps\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\BoundingBox.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7636,6 +7639,12 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\source\HeatTileDamageProcessor.cpp">
       <Filter>Source Files\engine\maps\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\BoundingBox_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\BoundingBox.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

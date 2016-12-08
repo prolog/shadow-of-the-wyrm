@@ -131,6 +131,14 @@ Coordinate CoordUtils::get_new_coordinate(const Coordinate& c, const Direction d
   return new_coord;
 }
 
+// Given a particular bounding box, return a new bounding box that represents
+// shifting it in a particular direction.
+BoundingBox CoordUtils::get_new_bounding_box(const BoundingBox& bb, const Direction d)
+{
+  BoundingBox shifted_bb(get_new_coordinate(bb.get_c1(), d), get_new_coordinate(bb.get_c2(), d));
+  return shifted_bb;
+}
+
 // Get the direction given start/end coordinates.
 Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& end)
 {
@@ -426,7 +434,7 @@ vector<Coordinate> CoordUtils::get_stepped_coordinates(const Coordinate& sp, con
 
 
 // Return the top left/bottom right coordinate of the minimum bounding box
-pair<Coordinate, Coordinate> CoordUtils::get_minimum_bounding_box(const Dimensions& dim, const vector<Coordinate>& points, const int padding)
+BoundingBox CoordUtils::get_minimum_bounding_box(const Dimensions& dim, const vector<Coordinate>& points, const int padding)
 {
   pair<Coordinate, Coordinate> bounds = {{dim.get_y(), dim.get_x()},{-1,-1}};
 
@@ -472,7 +480,8 @@ pair<Coordinate, Coordinate> CoordUtils::get_minimum_bounding_box(const Dimensio
   bounds.second.first = std::min<int>(dim.get_y()-1, bounds.second.first);
   bounds.second.second = std::min<int>(dim.get_x()-1, bounds.second.second);
 
-  return bounds;
+  BoundingBox bb(bounds.first, bounds.second);
+  return bb;
 }
 
 map<CardinalDirection, Coordinate> CoordUtils::get_midway_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
