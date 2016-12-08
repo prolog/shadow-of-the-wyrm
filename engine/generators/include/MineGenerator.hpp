@@ -18,6 +18,7 @@ class MineGenerator : public SOTW::Generator
     void generate_ew_wall_segments(MapPtr map);
     void generate_ns_wall_segments(MapPtr map);
     CardinalDirection get_random_direction(const std::vector<CardinalDirection>& cd);
+    std::vector<Coordinate> generate_random_feature(const int y, const int x, const CardinalDirection cd);
 
     void generate_traps(MapPtr map);
     void place_staircases(MapPtr map);

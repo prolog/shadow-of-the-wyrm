@@ -67,6 +67,7 @@ Me:
 - See Invis status, spell, scroll
 - More poem fragments for start.
 - Smarter pack logic: not just by creature type, but maybe by race, etc.
+- Weather, weather patterns, effects
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri

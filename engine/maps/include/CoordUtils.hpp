@@ -2,6 +2,7 @@
 #include <set>
 #include <map>
 #include <vector>
+#include "BoundingBox.hpp"
 #include "common.hpp"
 #include "Dimensions.hpp"
 #include "Directions.hpp"
@@ -21,6 +22,7 @@ class CoordUtils
     
     // Get new coordinates.  "is_valid_move" should always be called first!
     static Coordinate get_new_coordinate(const Coordinate& c, const Direction d, const int offset = 1);
+    static BoundingBox get_new_bounding_box(const BoundingBox& bb, const Direction d);
 
     static int get_perimeter_length(const Coordinate& top_left, const Coordinate& bottom_right);
 
@@ -38,7 +40,7 @@ class CoordUtils
     static std::vector<Coordinate> get_circle_coordinates(const int row_centre, const int col_centre, const int radius);
     static std::vector<Coordinate> get_t_coordinates(const Coordinate& starting_point, const CardinalDirection cd, const int segment_length);
     static std::vector<Coordinate> get_stepped_coordinates(const Coordinate& starting_point, const std::vector<CardinalDirection>& directions, const int step_length);
-    static std::pair<Coordinate, Coordinate> get_minimum_bounding_box(const Dimensions& dim, const std::vector<Coordinate>& coords, const int padding);
+    static BoundingBox get_minimum_bounding_box(const Dimensions& dim, const std::vector<Coordinate>& coords, const int padding);
 
     // Get the midway points, given the bounding box.
     static std::map<CardinalDirection, Coordinate> get_midway_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);

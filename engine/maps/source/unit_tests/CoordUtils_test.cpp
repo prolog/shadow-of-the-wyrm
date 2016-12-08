@@ -468,11 +468,11 @@ TEST(SW_Engine_Maps_CoordUtils, get_minimum_bounding_box)
 
   Dimensions dim;
 
-  EXPECT_EQ(make_pair(make_pair(0,0),make_pair(19,79)), CoordUtils::get_minimum_bounding_box(dim, points, 0));
-  EXPECT_EQ(make_pair(make_pair(0,0), make_pair(19,79)), CoordUtils::get_minimum_bounding_box(dim, points, 10));
+  EXPECT_EQ(BoundingBox(make_pair(0,0),make_pair(19,79)), CoordUtils::get_minimum_bounding_box(dim, points, 0));
+  EXPECT_EQ(BoundingBox(make_pair(0,0), make_pair(19,79)), CoordUtils::get_minimum_bounding_box(dim, points, 10));
 
   points = {{3,4},{7,5},{17,3},{5,12}};
 
-  EXPECT_EQ(make_pair(make_pair(3,3), make_pair(17,12)), CoordUtils::get_minimum_bounding_box(dim, points, 0));
-  EXPECT_EQ(make_pair(make_pair(2,2), make_pair(18,13)), CoordUtils::get_minimum_bounding_box(dim, points, 0));
+  EXPECT_EQ(BoundingBox(make_pair(3,3), make_pair(17,12)), CoordUtils::get_minimum_bounding_box(dim, points, 0));
+  EXPECT_EQ(BoundingBox(make_pair(2,2), make_pair(18,13)), CoordUtils::get_minimum_bounding_box(dim, points, 1));
 }
