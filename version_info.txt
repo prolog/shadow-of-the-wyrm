@@ -11,6 +11,15 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 - Undead now leave poisoned corpses, as do any creatures that deal poison
   damage with their regular attack.
 
+- Mines were generating in such a way that unconnected pieces were
+  possible.  The black manticore quest from Gnordvar could then generate
+  the manticore within the unconnected piece.  Rewrote MineGenerator to
+  generate an empty room, and then scatter rock segments throughout the
+  floor.  Connectedness should now be guaranteed as pieces are only placed
+  if their enlarged bounding box (which is not minimal - should bound
+  with distance 1 to the nearest outside point) can be placed on a set
+  of floor tiles.
+
 - New items: wand of acid.
 
 - Bug fixes:

@@ -464,6 +464,28 @@ vector<Coordinate> CoordUtils::get_cross(const Coordinate& origin, const int siz
   return points;
 }
 
+vector<Coordinate> CoordUtils::get_line_segment(const Coordinate& origin, const CardinalDirection cd, const int length)
+{
+  return get_line_segment(origin, DirectionUtils::to_direction(cd), length);
+}
+
+vector<Coordinate> CoordUtils::get_line_segment(const Coordinate& origin, const Direction d, const int length)
+{
+  vector<Coordinate> seg;
+
+  if (length > 0)
+  {
+    seg.push_back(origin);
+
+    for (int i = 1; i < length; i++)
+    {
+      seg.push_back(get_new_coordinate(origin, d, i));
+    }
+  }
+
+  return seg;
+}
+
 // Return the top left/bottom right coordinate of the minimum bounding box
 BoundingBox CoordUtils::get_minimum_bounding_box(const Dimensions& dim, const vector<Coordinate>& points, const int padding)
 {
