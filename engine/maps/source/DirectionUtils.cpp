@@ -34,6 +34,28 @@ bool DirectionUtils::is_ordinal(const Direction d)
   }
 }
 
+vector<CardinalDirection> DirectionUtils::get_perpendicular_directions(const CardinalDirection cd)
+{
+  vector<CardinalDirection> dirs;
+
+  switch (cd)
+  {
+    case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+    case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+      dirs = {CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST};
+      break;
+    case CardinalDirection::CARDINAL_DIRECTION_EAST:
+    case CardinalDirection::CARDINAL_DIRECTION_WEST:
+      dirs = {CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH};
+      break;
+    case CardinalDirection::CARDINAL_DIRECTION_NULL:
+    default:
+      break;
+  }
+
+  return dirs;
+}
+
 Direction DirectionUtils::to_direction(const CardinalDirection cd)
 {
   Direction d = Direction::DIRECTION_NULL;

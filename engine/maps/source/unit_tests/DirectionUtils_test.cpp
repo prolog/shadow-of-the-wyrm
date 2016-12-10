@@ -78,3 +78,16 @@ TEST(SW_Engine_Maps_DirectionUtils, direction_matches_category)
     EXPECT_EQ(dir_pair.second.second, DirectionUtils::direction_matches_category(dir_pair.first, DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL));
   }
 }
+
+TEST(SW_Engine_Maps_DirectionUtils, get_perpendicular_directions)
+{
+  EXPECT_EQ(vector<CardinalDirection>({}), DirectionUtils::get_perpendicular_directions(CardinalDirection::CARDINAL_DIRECTION_NULL));
+
+  vector<CardinalDirection> dirs = {CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH};
+  EXPECT_EQ(dirs, DirectionUtils::get_perpendicular_directions(CardinalDirection::CARDINAL_DIRECTION_EAST));
+  EXPECT_EQ(dirs, DirectionUtils::get_perpendicular_directions(CardinalDirection::CARDINAL_DIRECTION_WEST));
+
+  dirs = {CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST};
+  EXPECT_EQ(dirs, DirectionUtils::get_perpendicular_directions(CardinalDirection::CARDINAL_DIRECTION_NORTH));
+  EXPECT_EQ(dirs, DirectionUtils::get_perpendicular_directions(CardinalDirection::CARDINAL_DIRECTION_SOUTH));
+}

@@ -15,26 +15,16 @@ class MineGenerator : public SOTW::Generator
     void generate_room(MapPtr map);
 
     void generate_wall_segments(MapPtr map);
-    void generate_ew_wall_segments(MapPtr map);
-    void generate_ns_wall_segments(MapPtr map);
     CardinalDirection get_random_direction(const std::vector<CardinalDirection>& cd);
     std::vector<Coordinate> generate_random_feature(const int y, const int x, const CardinalDirection cd);
+    void generate_rock_feature(MapPtr map, const std::vector<Coordinate>& feature);
 
     void generate_traps(MapPtr map);
     void place_staircases(MapPtr map);
     bool get_permanence_default() const override;
 
     static const int MINE_MIN_TRAPS;
-    static const int MINE_MAX_TRAPS;
-
-    static const int MIN_EW_SEGMENTS;
-    static const int MIN_NS_SEGMENTS;
-    static const int MAX_EW_DIVISOR;
-    static const int MAX_NS_DIVISOR;
-    static const int MAX_SEGMENT_ATTEMPTS;
-    static const int MIN_SEGMENT_WIDTH;
-    static const int MAX_SEGMENT_WIDTH;
-    static const int MIN_SEGMENT_HEIGHT;
-    static const int MAX_SEGMENT_HEIGHT;
+    static const int MINE_MAX_TRAPS_DIVISOR;
+    static const int MINE_MAX_SEGMENTS_MULTIPLIER;
 };
 

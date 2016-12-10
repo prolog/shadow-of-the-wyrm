@@ -432,6 +432,37 @@ vector<Coordinate> CoordUtils::get_stepped_coordinates(const Coordinate& sp, con
   return coords;
 }
 
+// Creates a cross like:
+//
+//  *
+// *** (size 1)
+//  *
+//
+//    *
+//    *
+//  ***** (size 2)
+//    *
+//    *
+//
+// Centre point is always added.  Size is number of coordinates generated
+// in each direction.
+vector<Coordinate> CoordUtils::get_cross(const Coordinate& origin, const int size)
+{
+  vector<Coordinate> points;
+
+  points.push_back(origin);
+  vector<Direction> directions = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST};
+
+  for (int i = 0; i < size; i++)
+  {
+    for (const Direction d : directions)
+    {
+      points.push_back(get_new_coordinate(origin, d, i + 1));
+    }
+  }
+
+  return points;
+}
 
 // Return the top left/bottom right coordinate of the minimum bounding box
 BoundingBox CoordUtils::get_minimum_bounding_box(const Dimensions& dim, const vector<Coordinate>& points, const int padding)
