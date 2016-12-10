@@ -86,7 +86,7 @@ void MineGenerator::generate_rock_feature(MapPtr map, const vector<Coordinate>& 
 vector<Coordinate> MineGenerator::generate_random_feature(const int y, const int x, const CardinalDirection cd)
 {
   vector<Coordinate> feature_coords;
-  int feat_type = RNG::range(1, 3);
+  int feat_type = RNG::range(1, 4);
   Coordinate start = {y, x};
 
   if (feat_type == 1)
@@ -96,6 +96,10 @@ vector<Coordinate> MineGenerator::generate_random_feature(const int y, const int
   else if (feat_type == 2)
   {
     feature_coords = CoordUtils::get_cross(start, RNG::range(1, 2));
+  }
+  else if (feat_type == 3)
+  {
+    feature_coords = CoordUtils::get_line_segment(start, DirectionUtils::to_direction(cd), RNG::range(2, 4));
   }
   else
   {

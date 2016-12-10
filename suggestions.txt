@@ -1,7 +1,4 @@
 Me:
-- Do the mine generation issue.  Rewrite MineGenerator - should create 
-  levels like the DW mines.
-- Add more segment types to mines.
 - If mines aren't already placing on the world map, fix this.  Test multi
   level mines.  Ensure creatures generate, etc.
 - Arcane damage should destroy wands, rings, potions, scrolls, texts,

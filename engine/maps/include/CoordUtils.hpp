@@ -41,6 +41,8 @@ class CoordUtils
     static std::vector<Coordinate> get_t_coordinates(const Coordinate& starting_point, const CardinalDirection cd, const int segment_length);
     static std::vector<Coordinate> get_stepped_coordinates(const Coordinate& starting_point, const std::vector<CardinalDirection>& directions, const int step_length);
     static std::vector<Coordinate> get_cross(const Coordinate& origin, const int size);
+    static std::vector<Coordinate> get_line_segment(const Coordinate& origin, const CardinalDirection cd, const int length);
+    static std::vector<Coordinate> get_line_segment(const Coordinate& origin, const Direction d, const int length);
 
     static BoundingBox get_minimum_bounding_box(const Dimensions& dim, const std::vector<Coordinate>& coords, const int padding);
 

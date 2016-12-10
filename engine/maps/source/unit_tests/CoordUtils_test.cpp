@@ -478,6 +478,22 @@ TEST(SW_Engine_Maps_CoordUtils, get_cross)
   coords = {{10,10},{9,10},{11,10},{10,11},{10,9},{8,10},{12,10},{10,12},{10,8}};
 }
 
+TEST(SW_Engine_Maps_CoordUtils, get_line_segment)
+{
+  Coordinate c(15,15);
+  vector<Coordinate> coords;
+
+  EXPECT_EQ(coords, CoordUtils::get_line_segment(c, Direction::DIRECTION_NORTH, 0));
+
+  coords = {{15,15},{14,15}};
+
+  EXPECT_EQ(coords, CoordUtils::get_line_segment(c, Direction::DIRECTION_NORTH, 2));
+
+  coords = {{15,15},{15,16},{15,17},{15,18}};
+
+  EXPECT_EQ(coords, CoordUtils::get_line_segment(c, Direction::DIRECTION_EAST, 4));
+}
+
 TEST(SW_Engine_Maps_CoordUtils, get_minimum_bounding_box)
 {
   vector<Coordinate> points = {};
