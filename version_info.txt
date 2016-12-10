@@ -20,6 +20,10 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   with distance 1 to the nearest outside point) can be placed on a set
   of floor tiles.
 
+- Mines now generate on the world map.  Their symbol is still 'o', but
+  has been changed to bold yellow to differentiate them from caverns and
+  dungeons.
+
 - New items: wand of acid.
 
 - Bug fixes:
