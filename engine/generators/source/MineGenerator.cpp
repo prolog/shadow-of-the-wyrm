@@ -41,7 +41,7 @@ void MineGenerator::generate_room(MapPtr map)
   int rows = dim.get_y();
   int cols = dim.get_x();
 
-  GeneratorUtils::generate_building(map, 0, 0, rows - 1, cols - 1);
+  GeneratorUtils::generate_building(map, 0, 0, rows, cols);
 }
 
 void MineGenerator::generate_wall_segments(MapPtr map)

@@ -41,7 +41,8 @@ WorldGenerator::WorldGenerator()
 // variance, and can be anywhere from 1 to 50 levels deep.
 , tile_depth_options({{TileType::TILE_TYPE_DUNGEON_COMPLEX, TileDepthOptions(10, 50, vector<int>({50, 45}))},
                       {TileType::TILE_TYPE_SEWER_COMPLEX, TileDepthOptions(5, 50, vector<int>({50}))},
-                      {TileType::TILE_TYPE_CAVERN, TileDepthOptions(1, 50)}})
+                      {TileType::TILE_TYPE_CAVERN, TileDepthOptions(1, 50)},
+                      {TileType::TILE_TYPE_MINE, TileDepthOptions(5, 50, vector<int>({50,30}))}})
 , tg(false)
 {
 }
@@ -318,6 +319,10 @@ TilePtr WorldGenerator::generate_feature_or_default(const vector<pair<int, pair<
       result = tg.generate(tile_type, tile_subtype);
       set_tile_properties(result, tile_type, row, col);
 
+      ostringstream ss;
+      ss << "Generated tile type " << static_cast<int>(tile_type) << " at (" << row << "," << col << ")";
+      Log::instance().debug(ss.str());
+
       break;
     }
   }
@@ -401,6 +406,7 @@ void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, con
     vector<pair<int, pair<TileType, TileType>>> mountain_special_types;
     mountain_special_types = { { 50, { TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED } },
                                { 50, { TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED } },
+                               { 60, { TileType::TILE_TYPE_MINE, TileType::TILE_TYPE_UNDEFINED } },
                                { 33, { TileType::TILE_TYPE_CAVERN, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(mountain_special_types, TileType::TILE_TYPE_MOUNTAINS, row, col);
