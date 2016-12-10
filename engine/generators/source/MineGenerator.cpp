@@ -1,6 +1,7 @@
 #include "CoordUtils.hpp"
 #include "DirectionUtils.hpp"
 #include "GeneratorUtils.hpp"
+#include "MapUtils.hpp"
 #include "MineGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -8,16 +9,8 @@
 using namespace std;
 
 const int MineGenerator::MINE_MIN_TRAPS = 0;
-const int MineGenerator::MINE_MAX_TRAPS = 12;
-const int MineGenerator::MIN_EW_SEGMENTS = 1;
-const int MineGenerator::MIN_NS_SEGMENTS = 1;
-const int MineGenerator::MAX_EW_DIVISOR = 15;
-const int MineGenerator::MAX_NS_DIVISOR = 4;
-const int MineGenerator::MAX_SEGMENT_ATTEMPTS = 100;
-const int MineGenerator::MIN_SEGMENT_WIDTH = 3;
-const int MineGenerator::MAX_SEGMENT_WIDTH = 7;
-const int MineGenerator::MIN_SEGMENT_HEIGHT = 3;
-const int MineGenerator::MAX_SEGMENT_HEIGHT = 5;
+const int MineGenerator::MINE_MAX_TRAPS_DIVISOR = 6;
+const int MineGenerator::MINE_MAX_SEGMENTS_MULTIPLIER = 3;
 
 MineGenerator::MineGenerator(const std::string& map_exit_id)
 : Generator(map_exit_id, TileType::TILE_TYPE_MINE)
@@ -48,58 +41,45 @@ void MineGenerator::generate_room(MapPtr map)
   int rows = dim.get_y();
   int cols = dim.get_x();
 
-  GeneratorUtils::generate_building(map, 1, 1, rows - 3, cols - 3);
+  GeneratorUtils::generate_building(map, 0, 0, rows - 1, cols - 1);
 }
 
 void MineGenerator::generate_wall_segments(MapPtr map)
 {
-  generate_ew_wall_segments(map);
-  generate_ns_wall_segments(map);
-}
-
-void MineGenerator::generate_ew_wall_segments(MapPtr map)
-{
   if (map != nullptr)
   {
     Dimensions dim = map->size();
-    int num_segments = RNG::range(MIN_EW_SEGMENTS, dim.get_x() / MAX_EW_DIVISOR);
     int att = 0;
+    int max_segment_attempts = dim.get_x() * MINE_MAX_SEGMENTS_MULTIPLIER;
 
-    while (att < MAX_SEGMENT_ATTEMPTS)
+    while (att < max_segment_attempts)
     {
       att++;
 
-      CardinalDirection wall_dir = get_random_direction({CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST});
-      int wall_y = RNG::range(2, dim.get_y()-3);
-      int wall_x = wall_dir == CardinalDirection::CARDINAL_DIRECTION_WEST ? 1 : dim.get_x() - 2;
+      CardinalDirection feature_dir = get_random_direction({ CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST, CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH });
+      int seg_y = RNG::range(1, dim.get_y() - 1);
+      int seg_x = RNG::range(1, dim.get_x() - 1);
 
-      vector<Coordinate> feature = generate_random_feature(wall_y, wall_x, wall_dir);
-      Direction shift_dir = DirectionUtils::get_opposite_direction(DirectionUtils::to_direction(wall_dir));
-      BoundingBox bb = CoordUtils::get_new_bounding_box(CoordUtils::get_minimum_bounding_box(dim, feature, 1), shift_dir);
+      vector<Coordinate> feature = generate_random_feature(seg_y, seg_x, feature_dir);
+      BoundingBox bb = CoordUtils::get_new_bounding_box(CoordUtils::get_minimum_bounding_box(dim, feature, 1), DirectionUtils::to_direction(feature_dir));
+      bool tiles_ok = MapUtils::tiles_in_range_match_type(map, bb, TileType::TILE_TYPE_DUNGEON);
+
+      if (tiles_ok)
+      {
+        generate_rock_feature(map, feature);
+      }
     }
   }
 }
 
-void MineGenerator::generate_ns_wall_segments(MapPtr map)
+void MineGenerator::generate_rock_feature(MapPtr map, const vector<Coordinate>& feature)
 {
-  if (map != nullptr)
+  TileGenerator tg;
+
+  for (const Coordinate& fc : feature)
   {
-    Dimensions dim = map->size();
-    int num_segments = RNG::range(MIN_NS_SEGMENTS, dim.get_y() / MAX_NS_DIVISOR);
-    int att = 0;
-
-    while (att < MAX_SEGMENT_ATTEMPTS)
-    {
-      att++;
-
-      CardinalDirection wall_dir = get_random_direction({CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH});
-      int wall_x = RNG::range(2, dim.get_x()-3);
-      int wall_y = wall_dir == CardinalDirection::CARDINAL_DIRECTION_NORTH ? 1 : dim.get_y() - 2;
-
-      vector<Coordinate> feature = generate_random_feature(wall_y, wall_x, wall_dir);
-      Direction shift_dir = DirectionUtils::get_opposite_direction(DirectionUtils::to_direction(wall_dir));
-      BoundingBox bb = CoordUtils::get_new_bounding_box(CoordUtils::get_minimum_bounding_box(dim, feature, 1), shift_dir);
-    }
+    TilePtr tile = tg.generate(TileType::TILE_TYPE_ROCK);
+    map->insert(fc, tile);
   }
 }
 
@@ -111,15 +91,21 @@ vector<Coordinate> MineGenerator::generate_random_feature(const int y, const int
 
   if (feat_type == 1)
   {
-    feature_coords = CoordUtils::get_beam_coordinates(start, DirectionUtils::to_direction(cd), RNG::range(2, 5));
+    feature_coords = CoordUtils::get_t_coordinates(start, cd, RNG::range(1, 3));
   }
   else if (feat_type == 2)
   {
-    feature_coords = CoordUtils::get_t_coordinates(start, cd, RNG::range(1, 3));
+    feature_coords = CoordUtils::get_cross(start, RNG::range(1, 2));
   }
   else
   {
-    feature_coords = CoordUtils::get_stepped_coordinates(start, {}, 2);
+    vector<CardinalDirection> potential_dirs = DirectionUtils::get_perpendicular_directions(cd);
+    vector<CardinalDirection> step_dirs = {cd, potential_dirs.at(RNG::range(0, potential_dirs.size() - 1))};
+
+    if (!potential_dirs.empty())
+    {
+      feature_coords = CoordUtils::get_stepped_coordinates(start, step_dirs, RNG::range(1,3));
+    }
   }
 
   return feature_coords;
@@ -179,7 +165,8 @@ bool MineGenerator::get_permanence_default() const
 // Generate a few traps throughout the mines.
 void MineGenerator::generate_traps(MapPtr map)
 {
-  int num_traps = RNG::range(MINE_MIN_TRAPS, MINE_MAX_TRAPS);
+  int max_traps = map->size().get_x() / MINE_MAX_TRAPS_DIVISOR;
+  int num_traps = RNG::range(MINE_MIN_TRAPS, max_traps);
   GeneratorUtils::generate_traps(map, num_traps);
 }
 

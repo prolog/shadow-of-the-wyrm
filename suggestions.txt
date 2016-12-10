@@ -1,6 +1,9 @@
 Me:
 - Do the mine generation issue.  Rewrite MineGenerator - should create 
   levels like the DW mines.
+- Add more segment types to mines.
+- If mines aren't already placing on the world map, fix this.  Test multi
+  level mines.  Ensure creatures generate, etc.
 - Arcane damage should destroy wands, rings, potions, scrolls, texts,
   some of the time (30%).  There should be a 10% chance of actually
   enchanting the item, though.  Try to limit to "magic only".

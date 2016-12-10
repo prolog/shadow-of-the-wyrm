@@ -1,11 +1,13 @@
 #pragma once
 #include <set>
+#include <vector>
 #include "Directions.hpp"
 
 class DirectionUtils
 {
   public:
     static bool is_cardinal(const Direction d);
+    static std::vector<CardinalDirection> get_perpendicular_directions(const CardinalDirection cd);
     static bool is_ordinal(const Direction d);
     static Direction to_direction(const CardinalDirection cd);
     static CardinalDirection get_opposite_direction(const CardinalDirection cd);

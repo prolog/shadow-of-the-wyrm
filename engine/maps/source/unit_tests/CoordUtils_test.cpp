@@ -462,6 +462,22 @@ TEST(SW_Engine_Maps_CoordUtils, get_stepped_coordinates)
   EXPECT_EQ(vector<Coordinate>({{10,10},{10,9},{10,8},{9,8},{8,8},{8,9},{8,10}}), CoordUtils::get_stepped_coordinates(start, {CardinalDirection::CARDINAL_DIRECTION_WEST, CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_EAST}, 2));
 }
 
+TEST(SW_Engine_Maps_CoordUtils, get_cross)
+{
+  Coordinate c(10, 10);
+
+  vector<Coordinate> coords = {{10, 10}};
+
+  EXPECT_EQ(coords, CoordUtils::get_cross(c, -5));
+  EXPECT_EQ(coords, CoordUtils::get_cross(c, 0));
+
+  coords = {{10,10},{9,10},{11,10},{10,11},{10,9}};
+
+  EXPECT_EQ(coords, CoordUtils::get_cross(c, 1));
+
+  coords = {{10,10},{9,10},{11,10},{10,11},{10,9},{8,10},{12,10},{10,12},{10,8}};
+}
+
 TEST(SW_Engine_Maps_CoordUtils, get_minimum_bounding_box)
 {
   vector<Coordinate> points = {};
