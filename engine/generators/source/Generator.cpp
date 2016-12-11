@@ -53,7 +53,8 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
   MapPtr map = generate(dim);
   initialize(map, danger_level);
   create_properties_and_copy_to_map(map);
-  
+  map->set_map_type(get_map_type());
+    
   return map;
 }
 
