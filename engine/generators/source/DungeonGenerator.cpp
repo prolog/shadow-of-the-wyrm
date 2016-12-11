@@ -61,7 +61,6 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
     
     if (!success) continue;
     
-    result_map->set_map_type(MapType::MAP_TYPE_UNDERWORLD); 
     return result_map;
   }
 

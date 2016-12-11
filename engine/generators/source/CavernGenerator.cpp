@@ -35,8 +35,6 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
   update_depth_details(result_map);
   generate_staircases(result_map);
   
-  result_map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
-  
   return result_map;
 }
 

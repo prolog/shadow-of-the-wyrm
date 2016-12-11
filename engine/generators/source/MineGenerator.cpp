@@ -24,6 +24,8 @@ MapPtr MineGenerator::generate(const Dimensions& dim)
   generate_room(map);
   generate_wall_segments(map);
   generate_traps(map);
+
+  update_depth_details(map);
   place_staircases(map);
 
   return map;
