@@ -24,6 +24,8 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   has been changed to bold yellow to differentiate them from caverns and
   dungeons.
 
+- Green slimes and red oozes are now mobile.
+
 - New items: wand of acid.
 
 - Bug fixes:

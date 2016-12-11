@@ -10948,7 +10948,7 @@
 			<DescriptionSID>GREEN_SLIME_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GREEN_SLIME_TEXT_DETAILS_SID</TextDetailsSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>j</Symbol>
@@ -11495,7 +11495,7 @@
 			<DescriptionSID>RED_OOZE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RED_OOZE_TEXT_DETAILS_SID</TextDetailsSID>
 			<DecisionStrategy>
-				<Strategy>immobile</Strategy>
+				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>j</Symbol>
