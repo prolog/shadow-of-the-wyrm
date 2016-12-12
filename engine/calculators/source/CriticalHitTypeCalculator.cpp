@@ -5,10 +5,10 @@
 
 using namespace std;
 
-// Critical blows do max damage, with 1/4 soak.
+// Critical blows do max damage, with 50% soak.
 float CriticalHitTypeCalculator::get_soak_multiplier() const
 {
-  return 0.25f;
+  return 0.50f;
 }
 
 string CriticalHitTypeCalculator::get_combat_message() const
