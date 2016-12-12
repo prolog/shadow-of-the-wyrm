@@ -835,3 +835,14 @@ They called it Blood and Glory, I have heard. %b
 Its forger was a smith of much acclaim - %b
 an artist in his craft, a servant of the flame.
 %p
+He snarled, "So which of you now standing here %b
+will help avenge his death?  And which of you %b
+want blood, but also keep a mind as clear %b
+as fresh-burnt woods?  I have no truck, no use %b
+for those whose deeds are timorous and meek. %b
+We'll ride in like a storm comes off the sea: %b
+pent up, raging.  Let them say we reek %b
+of blood and lust for death.  I swear we'll see %b
+an end to all this prattle on the fae mystique."
+%p
+
