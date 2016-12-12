@@ -26,6 +26,10 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
 - Green slimes and red oozes are now mobile.
 
+- Mighty blows now do 80% of the max damage roll (instead of 100%) and
+  allow 75% of soak (instead of 50%).  Critical hits still do max damage,
+  but allow 50% of soak (instead of 25%).
+
 - New items: wand of acid.
 
 - Bug fixes:

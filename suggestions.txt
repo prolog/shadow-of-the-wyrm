@@ -73,6 +73,7 @@ Me:
 - Add splitting behaviour to all jellies: when hit, they have some
   chance (10-20%?) of splitting.  Each creature in the split has half
   the current HP of the original.
+- Witchthorns should have a chance of doing a 1 dmg piercing attack.
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
