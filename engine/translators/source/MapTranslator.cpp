@@ -157,13 +157,13 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
   }
   else
   {
-    if (actual_tile->get_explored() && !player_blinded)
+    if (actual_tile && actual_tile->get_explored() && !player_blinded)
     {
       display_tile = create_unseen_and_explored_display_tile(actual_tile, tod_overrides);
     }
     else
     {
-      if (actual_tile->get_viewed() && !player_blinded)
+      if (actual_tile && actual_tile->get_viewed() && !player_blinded)
       {
         display_tile = create_unseen_and_previously_viewed_display_tile(actual_tile, tod_overrides);
       }
@@ -180,13 +180,27 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
 // Create a display tile from a given creature
 DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& creature, const Colour override_colour)
 {
-  return create_display_tile_from_symbol_and_colour(creature->get_symbol(), override_colour != Colour::COLOUR_UNDEFINED ? override_colour : creature->get_colour());
+  uchar symbol = '?';
+  
+  if (creature != nullptr)
+  {
+    symbol = creature->get_symbol();
+  }
+
+  return create_display_tile_from_symbol_and_colour(symbol, override_colour != Colour::COLOUR_UNDEFINED ? override_colour : creature->get_colour());
 }
 
 // Create a display tile from a given tile feature
 DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& feature, const Colour override_colour)
 {
-  return create_display_tile_from_symbol_and_colour(feature->get_symbol(), override_colour != Colour::COLOUR_UNDEFINED ? override_colour : feature->get_colour());
+  uchar symbol = '?';
+
+  if (feature != nullptr)
+  {
+    symbol = feature->get_symbol();
+  }
+
+  return create_display_tile_from_symbol_and_colour(symbol, override_colour != Colour::COLOUR_UNDEFINED ? override_colour : feature->get_colour());
 }
 
 // Create a display tile from a given item
@@ -200,7 +214,14 @@ DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item, co
     colour = override_colour;
   }
 
-  return create_display_tile_from_symbol_and_colour(item->get_symbol(), colour);
+  uchar symbol = '?';
+  
+  if (item != nullptr)
+  {
+    symbol = item->get_symbol();
+  }
+
+  return create_display_tile_from_symbol_and_colour(symbol, colour);
 }
 
 // Create a display tile from a given tile

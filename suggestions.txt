@@ -1,6 +1,8 @@
 kraphead:
 - There's some sort of spell crash in the Wyrmeswraec temple with Lich
   Kings and their fire spells.
+- Crash (no dump) when automoving by a grey 'u'?  What else can access
+  pointers turn to turn?  Traps?  Spells?  Creature decision/LOS code?
 
 Me:
 - 50% chance to generate 1d3 magici shards somewhere on the floor of a 

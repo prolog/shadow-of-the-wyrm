@@ -87,7 +87,7 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
       
     for (ICreatureRegenerationPtr regen_helper : regen)
     {
-      if (game.should_keep_playing())
+      if (game.should_keep_playing() && creature != nullptr)
       {
         if (regen_helper)
         {
