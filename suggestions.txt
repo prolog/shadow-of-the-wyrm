@@ -1,3 +1,7 @@
+kraphead:
+- There's some sort of spell crash in the Wyrmeswraec temple with Lich
+  Kings and their fire spells.
+
 Me:
 - 50% chance to generate 1d3 magici shards somewhere on the floor of a 
   mine.
@@ -77,9 +81,6 @@ Me:
   the current HP of the original.
 - Witchthorns should have a chance of doing a 1 dmg piercing attack.
 
-kraphead:
-- There's some sort of spell crash in the Wyrmeswraec temple with Lich
-  Kings and their fire spells.
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
 
