@@ -48,6 +48,9 @@ Shadow of the Wyrm v0.5.8 "Merlin"
     per-map code into a common function to ensure this always gets set
     correctly.
 
+  - Various bug fixes surrounding displaying text in larger resolutions.
+    (VedVid)
+
 Shadow of the Wyrm v0.5.7 "Cutting"
 - Version declared November 5, 2016.  Version finalized December 1, 2016.
 

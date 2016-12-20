@@ -32,10 +32,10 @@ class Screen
     void set_prompt(PromptPtr new_prompt);
     PromptPtr get_prompt() const;
 
+    static int get_lines_displayable_area(DisplayPtr display);
+
     std::vector<std::vector<ScreenComponentPtr>> get_components() const;
     std::vector<ScreenComponentPtr> get_current_page() const;
-
-    static const int LINES_DISPLAYABLE_AREA;
 
   protected:
     virtual void initialize();
@@ -63,6 +63,7 @@ class Screen
     DisplayPtr game_display;
     uint line_increment;
     uint cur_page_idx;
+    int lines_displayable_area;
 
   private:
     std::vector<std::vector<ScreenComponentPtr>> components;
