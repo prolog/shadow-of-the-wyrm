@@ -48,7 +48,7 @@ ActionCostValue HelpAction::keybindings() const
   Game& game = Game::instance();
 
   TextDisplayFormatter tdf;
-  vector<string> kb_formatted = tdf.format_text(StringTable::get(ActionTextKeys::ACTION_KEYBINDINGS), Screen::LINES_DISPLAYABLE_AREA);
+  vector<string> kb_formatted = tdf.format_text(StringTable::get(ActionTextKeys::ACTION_KEYBINDINGS), Screen::get_lines_displayable_area(game.get_display()));
   vector<TextDisplayPair> kb_text;
 
   for (size_t i = 0; i < kb_formatted.size(); i++)

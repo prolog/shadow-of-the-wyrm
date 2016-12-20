@@ -6,14 +6,13 @@
 
 using namespace std;
 
-const int Screen::LINES_DISPLAYABLE_AREA = 21;
-
 // Any base initialization for the Screen
 Screen::Screen(DisplayPtr new_display)
-: line_increment(2), cur_page_idx(0)
+: line_increment(2), cur_page_idx(0), lines_displayable_area(21)
 {
   game_display = new_display;
   user_prompt = std::make_shared<NullPrompt>();
+  lines_displayable_area = Screen::get_lines_displayable_area(new_display);
 }
 
 Screen::~Screen()
@@ -21,6 +20,17 @@ Screen::~Screen()
   game_display->clear_screen();
 }
 
+int Screen::get_lines_displayable_area(DisplayPtr display)
+{
+  int num_lines = 0;
+
+  if (display != nullptr)
+  {
+    num_lines = std::max<int>(display->get_height() - 3, num_lines);
+  }
+
+  return num_lines;
+}
 // Do whatever work is necessary to initialize the Screen
 void Screen::initialize()
 {
@@ -156,7 +166,7 @@ bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenCom
 
   // We've gone over the max displayable area.  Add the current page to the
   // screen, and reset the line count and the option ID.
-  if (cnt >= LINES_DISPLAYABLE_AREA)
+  if (cnt >= lines_displayable_area)
   {
     cnt = 0;
     current_option_id = 0;

@@ -4,6 +4,9 @@ kraphead:
 - Crash (no dump) when automoving by a grey 'u'?  What else can access
   pointers turn to turn?  Traps?  Spells?  Creature decision/LOS code?
 
+VedVid:
+- Something in text display formatter adding extra, blank lines?
+
 Me:
 - 50% chance to generate 1d3 magici shards somewhere on the floor of a 
   mine.
@@ -90,9 +93,6 @@ For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
   ever, generated.
 - Revisit creature generation algorithm.
-
-VedVid:
-- 207x66 - try reading text, all fu'd.
 
 Sean McKeague:
 - Ability to pick up partial stacks.
