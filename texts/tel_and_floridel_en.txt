@@ -845,4 +845,23 @@ pent up, raging.  Let them say we reek %b
 of blood and lust for death.  I swear we'll see %b
 an end to all this prattle on the fae mystique."
 %p
-
+Two figures pushed the other folk aside. %b
+The first, a slender creature, flashed a smile %b
+that glinted like a brace of open knives. %b
+The other one was thick and scarred, a vile, %b
+unpleasant man known mainly for his acts %b
+of sex and violence carried out on raids %b
+along the coast.  "Arkadios!  A pact!" %b
+the slender one proclaimed.  "Before this day %b
+is done we'll drain the bathers in their sacred glade."
+%p
+A shudder shook the crowd, for each one knew %b
+the fair folk's virgin girls would come to bathe %b
+tomorrow in a copse of elm and yew - %b
+a warm spring bubbled there, and people say %b
+that place was sacred ground for gods and men. %b
+That there the first folk sacrificed at night, %b
+beneath the sprawling heavens, when, it's said, %b
+the world was strange and new.  And now, alight: %b
+with spit and crackle, kindling catching, burning bright.
+%p
