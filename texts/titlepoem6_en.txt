@@ -4,4 +4,4 @@ With a faery, hand in hand, %b
 For the world's more full of weeping than you can understand.
 %p
 - From "The Stolen Child", W.B. Yeats
-%b
+%p

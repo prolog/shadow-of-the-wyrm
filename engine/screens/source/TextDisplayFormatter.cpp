@@ -55,7 +55,17 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
   // the "%p" token.
   // JCD FIXME: If I add quite a few more text format specifiers, break
   // this up into some kind of processing class.
-  if (current_token == TextFormatSpecifiers::NEW_PARAGRAPH)
+  if (!should_process_token(current_token, cur_pos))
+  {
+    // These end up being stripped off to avoid things looking bad, anyway.
+    // So don't even add them - discard the token and start the line with
+    // non-whitespace.
+    //
+    // If this ever becomes a problem, define a new TextFormatSpecifier for
+    // a hard space.
+    return;
+  }
+  else if (current_token == TextFormatSpecifiers::NEW_PARAGRAPH)
   {
     result.push_back(current_str);
     current_str.clear();
@@ -100,6 +110,11 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
       cur_line++;
     }
 
+    if (!should_process_token(current_token, cur_pos))
+    {
+      return;
+    }
+
     current_str.append(current_token);
     cur_pos += current_token.size();
   }
@@ -109,4 +124,16 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
   {
     cur_line = 0;
   }
+}
+
+bool TextDisplayFormatter::should_process_token(const string& token, const uint pos) const
+{
+  bool can_process = true;
+
+  if (token == " " && pos == 0)
+  {
+    can_process = false;
+  }
+
+  return can_process;
 }
