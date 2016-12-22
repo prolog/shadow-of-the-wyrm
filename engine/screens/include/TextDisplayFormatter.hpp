@@ -13,5 +13,6 @@ class TextDisplayFormatter
 
   protected:
     void process_token(const std::string& token, std::vector<std::string>& result, std::string& current_str, uint& cur_pos, const uint width, const int lines_displayable_area, int& cur_line) const;
+    bool should_process_token(const std::string& token, const uint cur_pos) const;
 };
 

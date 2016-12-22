@@ -1,5 +1,5 @@
-540 In this year Wulf Hrimling sailed to this island of fifty miles long and twelve miles across.  And he found a point with tombs already dug and a 
-silver tree above, and he built a keep atop the tombs, and called it Wintersea. 
+540 In this year Wulf Hrimling sailed to this island of fifty miles long and twelve miles across.  And he found a point with tombs already dug and a silver tree above, and he built a keep atop the tombs, and called it Wintersea.
+
 %p 
 541 In this year Wulf founded a village on the hill, called Isen Dun. 
 %p 
@@ -16,10 +16,7 @@ elf wine.
 %p 
 607 Here a priest came and brought the word of Celeste to Isen Dun.  For three years we laboured to build a small church in Her name. 
 %p 
-610 Midwinter a small ship approached this island.  On it were three travellers, a small party, looking for respite from the bleak weather.  They ate our fish 
-and shared their pear brandy.  They had been travelling for years, they said, and told us that they came from the northern lands, where their village had been 
-put to torch by the cursed snakelings.  Our priest consulted his texts and found reference to a marshy island in the far north-east where the snake-things make 
-their home. 
+610 Midwinter a small ship approached this island.  On it were three travellers, a small party, looking for respite from the bleak weather.  They ate our fish and shared their pear brandy.  They had been travelling for years, they said, and told us that they came from the northern lands, where their village had been put to torch by the cursed snakelings.  Our priest consulted his texts and found reference to a marshy island in the far north-east where the snake-things make their home. 
 %p 
 616 With calm winds, we had many visitors this year.  One told of a village of gnomes called Gnordvar, far to the north.  We are told it is up against a 
 mountainside and the gnomes are friendly. 
@@ -32,22 +29,17 @@ mountainside and the gnomes are friendly.
 %p 
 644 In this year the sea was teeming with fish.  We have salted away many for the winter. 
 %p 
-657 Here we met dwarves, stout explorers who sailed their ships here, at the edge of the world.  We gave them fresh water and salt fish, and they gifted 
-us a pot still for whisky.  They told us their home was far, far north west. %p 668 Mountain elves visited, strong-elves from the west.  Their village is 
-on a small, mountainous island.  They told us the dwarves had spoken of us.  These men did not talk much, but were not unkind.  We had a feast with boar 
-and mead in their honour. 
+657 Here we met dwarves, stout explorers who sailed their ships here, at the edge of the world.  We gave them fresh water and salt fish, and they gifted us a pot still for whisky.  They told us their home was far, far north west. 
+%p
+668 Mountain elves visited, strong-elves from the west.  Their village is on a small, mountainous island.  They told us the dwarves had spoken of us.  These men did not talk much, but were not unkind.  We had a feast with boar and mead in their honour. 
 %p 
-674 In this year an emissary of the High Church was sent.  Aethelwulf Isenking received him, and the emissary was pleased with the village, for we are all 
-of us devoted to Celeste, glory to her name.  He stayed for two winters and helped us build a rectory.  We sent a boy with him to be trained as a priest. 
+674 In this year an emissary of the High Church was sent.  Aethelwulf Isenking received him, and the emissary was pleased with the village, for we are all of us devoted to Celeste, glory to her name.  He stayed for two winters and helped us build a rectory.  We sent a boy with him to be trained as a priest. 
 %p 
-678 Cadbert returned from the high church and here he lived for sixty years. 
-%p 
+678 Cadbert returned from the high church and here he lived for sixty years.
+%p
 692 A great plague came on the air.  Many of us fell sick of the mouth-bleeding.  Garamund, a learned man, brought great magic to ward off the sickness. 
 %p 
-740 After many years of peace, raiders came on a great storm.  I have heard there were dragons overhead lighting the way.  Ten longships came, teeming 
-with goblins.  They had with them ogres and many beasts.  We laid traps and magics leading inland, and every man had a bow and sixty arrows.  Still, half 
-the village was burnt, and only the church was saved by Celeste's grace.  We fought them to the death and we lost many men, many good men.  But we 
-destroyed the monsters, and captured their longships. 
+740 After many years of peace, raiders came on a great storm.  I have heard there were dragons overhead lighting the way.  Ten longships came, teeming with goblins.  They had with them ogres and many beasts.  We laid traps and magics leading inland, and every man had a bow and sixty arrows.  Still, half the village was burnt, and only the church was saved by Celeste's grace.  We fought them to the death and we lost many men, many good men.  But we destroyed the monsters, and captured their longships. 
 %p 
 747 Sailors from the west have said that the goblins and ogres came from the far side of the world. 
 %p 
@@ -57,16 +49,13 @@ destroyed the monsters, and captured their longships.
 %p 
 785 We have heard that Aeschere's men made home on a small island they call Aeschburh. 
 %p 
-798 Eighteen winters after Aeschere left, that island has sent two ships to trade with us.  We have traded skins and ore for spice wine and silver.  
-Our silver-smith Wilfrid has been given a measure of the silver and tasked with making mead-cups, cloak-clasps, and ornaments. 
+798 Eighteen winters after Aeschere left, that island has sent two ships to trade with us.  We have traded skins and ore for spice wine and silver.  Our silver-smith Wilfrid has been given a measure of the silver and tasked with making mead-cups, cloak-clasps, and ornaments. 
 %p 
 804 A ship of elves from the Yew forest has come to trade and told us that the last fae have been found.  Their land lies as far north as we are south. 
 %p 
-808 The goblins have sacked Aeschburh, and put every man to the sword.  Their fortress lies empty now, though some have said at night there are lights 
-that dance in the dark. 
+808 The goblins have sacked Aeschburh, and put every man to the sword.  Their fortress lies empty now, though some have said at night there are lights that dance in the dark. 
 %p 
-812 In this year, a young man has come to lead our sermons and prayers.  His name is Oswyn, a good man of the south.  Also Hrimgar has been made chief.  
-He is son of Hrimhere, son of Eadbert, himself son of Aethelric, one of Aethelwulf's kin. 
+812 In this year, a young man has come to lead our sermons and prayers.  His name is Oswyn, a good man of the south.  Also Hrimgar has been made chief.  He is son of Hrimhere, son of Eadbert, himself son of Aethelric, one of Aethelwulf's kin. 
 %p 
 820 We sent our ships far north, where we heard the sea was teeming with cod.  This was true, and late in the year the ships returned, their holds full 
 of salted fish.  The sailors told of a strange sight on one of the northern islands that is shaped like a cross.  They said that on this far-flung island, 

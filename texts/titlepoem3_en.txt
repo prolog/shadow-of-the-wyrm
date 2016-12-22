@@ -9,4 +9,5 @@ Run aye in the way %b
 Till the bird of day %b
 And the luckier lot betide you!
 %p
-- Ben Jonson, "Gypsy Songs", I %b
+- Ben Jonson, "Gypsy Songs", I
+%p
