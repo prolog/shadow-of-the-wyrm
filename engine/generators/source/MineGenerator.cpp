@@ -1,7 +1,10 @@
 #include "CoordUtils.hpp"
 #include "DirectionUtils.hpp"
 #include "GeneratorUtils.hpp"
+#include "ItemManager.hpp"
+#include "ItemProperties.hpp"
 #include "MapUtils.hpp"
+#include "MineCalculator.hpp"
 #include "MineGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -24,6 +27,7 @@ MapPtr MineGenerator::generate(const Dimensions& dim)
   generate_room(map);
   generate_wall_segments(map);
   generate_traps(map);
+  generate_magici_shards(map);
 
   update_depth_details(map);
   place_staircases(map);
@@ -174,6 +178,36 @@ void MineGenerator::generate_traps(MapPtr map)
   int max_traps = map->size().get_x() / MINE_MAX_TRAPS_DIVISOR;
   int num_traps = RNG::range(MINE_MIN_TRAPS, max_traps);
   GeneratorUtils::generate_traps(map, num_traps);
+}
+
+void MineGenerator::generate_magici_shards(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    MineCalculator mc;
+
+    if (RNG::percent_chance(mc.calculate_pct_chance_magici_shards(danger_level)))
+    {
+      Dimensions dim = map->size();
+      int num_shards = RNG::range(1, 3);
+
+      for (int i = 0; i < 50; i++)
+      {
+        int sh_y = RNG::range(0, dim.get_y() - 1);
+        int sh_x = RNG::range(0, dim.get_x() - 1);
+
+        TilePtr tile = map->at(sh_y, sh_x);
+
+        if (tile != nullptr && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
+        {
+          ItemPtr shard = ItemManager::create_item(ItemIdKeys::ITEM_ID_MAGICI_SHARD);
+          tile->get_items()->merge_or_add(shard, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+
+          break;
+        }
+      }
+    }
+  }
 }
 
 CardinalDirection MineGenerator::get_random_direction(const vector<CardinalDirection>& cd)
