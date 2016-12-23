@@ -161,8 +161,6 @@ Not bugs, but probably not working as intended:
   single move.
 - Similarly, resting while blind doesn't stop if you're attacked by an 
   unseen monster.
-- The guide PDF says that your starter deity provides a +1 to one 
-  attribute, but the changelog and .xml say that they provide a +2.
 - The gem-shrines aren't "permanent." Like any given forest or field tile, 
   they don't have persistent item memory; if you don't get the Gem on the 
   first attempt, it's gone forever. Also like any given forest or field 

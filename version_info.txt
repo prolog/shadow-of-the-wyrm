@@ -65,6 +65,9 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   - Fixed a number of instances where custom maps had the wrong map type,
     causing day/night transitions. (Dallas Herrin)
 
+  - The guidebook wasn't referencing the new deity stat modifiers.
+    (Dallas Herrin)
+
 Shadow of the Wyrm v0.5.7 "Cutting"
 - Version declared November 5, 2016.  Version finalized December 1, 2016.
 
