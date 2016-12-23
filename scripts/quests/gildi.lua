@@ -14,7 +14,13 @@ end
 
 local function gildi_orb_completion_fn()
   add_message_with_pause("GILDI_ORB_QUEST_COMPLETE_SID")
-  clear_and_add_message("GILDI_ORB_QUEST_COMPLETE2_SID")
+  add_message_with_pause("GILDI_ORB_QUEST_COMPLETE2_SID")
+  add_message_with_pause("GILDI_ORB_QUEST_COMPLETE3_SID")
+  add_message_with_pause("GILDI_ORB_QUEST_COMPLETE4_SID")
+  add_message_with_pause("GILDI_ORB_QUEST_COMPLETE5_SID")
+  add_message_with_pause("GILDI_ORB_QUEST_COMPLETE6_SID")
+  add_message_with_pause("GILDI_ORB_QUEST_COMPLETE7_SID")
+  clear_and_add_message("GILDI_ORB_QUEST_COMPLETE8_SID")
   
   remove_object_from_player("black_orb")  
   add_object_to_player_tile("gildis_cloak")

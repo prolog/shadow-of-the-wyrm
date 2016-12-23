@@ -15,6 +15,7 @@ class MineGenerator : public SOTW::Generator
     void generate_room(MapPtr map);
 
     void generate_wall_segments(MapPtr map);
+    void generate_magici_shards(MapPtr map);
     CardinalDirection get_random_direction(const std::vector<CardinalDirection>& cd);
     std::vector<Coordinate> generate_random_feature(const int y, const int x, const CardinalDirection cd);
     void generate_rock_feature(MapPtr map, const std::vector<Coordinate>& feature);

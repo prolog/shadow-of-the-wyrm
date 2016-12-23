@@ -4,12 +4,7 @@ kraphead:
 - Crash (no dump) when automoving by a grey 'u'?  What else can access
   pointers turn to turn?  Traps?  Spells?  Creature decision/LOS code?
 
-VedVid:
-- Something in text display formatter adding extra, blank lines?
-
 Me:
-- 50% chance to generate 1d3 magici shards somewhere on the floor of a 
-  mine.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Creatures should be smarter about the use of spells given that creatures
@@ -135,23 +130,62 @@ roguecastergames:
 
 Dallas Herrin:
 bugs:
-- In the manticore/gnome mine quest, the manticore will occasionally spawn 
-  in a cavern system with no path to the stairs.
 - Eating on the world map takes significantly more time than eating 
   anywhere that isn't a world map tile. To see this, eat olives repeatedly
   on the world map; they provide so little nutrition that you can actually 
   starve to death while gorging yourself on them.
 
-Suggestions:
+- The Snakeling Tower repeatedly crashes the game once you reach the 
+  center of the second floor; you may skirt the edges as long as you wish, 
+  but once you reach a certain distance from the center (probably the 
+  limit of your LoS), it crashes.
+- Sometimes, the stone key that you pick up on the stairs in RNG crypts 
+  does not fit the lock on the sealed tomb.
 
-- Make hunger less prohibitive on the world map, or make food easier to 
-  acquire. Currently, you have to eat every time you travel about 1/4 the 
-  length of a world map screen. Given how large the world map is, and how 
-  far apart most of the interesting things are, this means you need a lot 
-  of food. The easiest way to get food involves grinding that small field 
-  on the starter island for lots of fruit. The alternative is grinding 
-  monsters for corpses. Neither are particularly challenging or fun, just 
-  tedious. Suggestions for solutions:
+
+Not bugs, but probably not working as intended:
+
+- The dawn/dusk filters color everything but items/characters, while the 
+  night filter colors everything. That is; during dawn/dusk, items appear 
+  as normal, but once it turns to night, everything goes vaguely blue.
+- Several locations (for example Wyrmwraeth, Eka, and the Snakeling Tower) 
+  are diggable. Given that other locations, like the starter village, the 
+  Wintersea Tombs, the second floor of the Wintersea Keep, etc. that are 
+  similarly story-important are undiggable, I found it a likely enough 
+  oversight to mention it.
+- Spellcasting enemies have a tendency to hit all their friends with 
+  spells and get smashed even without your intervention. If their friends 
+  are also spellcasters, this can lead to a hilarious chain reaction that 
+  while funny, is probably not intended to happen.
+- Spellcasting enemies, specifically the ones that have large AoE ball 
+  spells, have a tendency to cast their spells around corners, hitting you 
+  up to three times without ever seeing you.
+- Leading off of that, the (w)alk command doesn't actually stop when 
+  damage happens. I know this because the #4 "Not bug but probably not 
+  working as intended" killed two characters of mine in the same way; I 
+  would engage the (w)alk command and head down an unexplored corridor. 
+  As I neared a corner, I would suddenly be hit by a fireball from an 
+  unseen Lich; the (w)alk continued undeterred, the fireball casting did 
+  too, and so two steps later I was dead without the chance to make even a 
+  single move.
+- Similarly, resting while blind doesn't stop if you're attacked by an 
+  unseen monster.
+- The guide PDF says that your starter deity provides a +1 to one 
+  attribute, but the changelog and .xml say that they provide a +2.
+- The gem-shrines aren't "permanent." Like any given forest or field tile, 
+  they don't have persistent item memory; if you don't get the Gem on the 
+  first attempt, it's gone forever. Also like any given forest or field 
+  tile, tombs and graves may spawn that make it permanent.
+- The guide PDF mentions Fishing as the ability to "Catch and salt fish." 
+  However, only the ability to catch fish is currently available.
+- Thoughts on Eka: how are you "supposed" to get in there? I found it only 
+  by accident, and I was only able to enter Eakarui's prison cell by that 
+  digging oversight. As far as I can tell, only a few books and Thengil 
+  even mention the place; it has totally stumped me.
+- Thoughts on Eakauri: when your comments call it a super boss, you were 
+  not joking. I'm currently trying to kill the thing, but I'm pretty sure 
+  that Fae are actually incapable of it (picture related), which is- 
+  lore-friendly, I suppose.
 - Make it obvious somewhere how much certain spells do, and what mechanical
   effect increasing spell levels has.
 - Add an autosave function that triggers every time you descend or ascend. 

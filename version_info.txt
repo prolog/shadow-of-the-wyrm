@@ -18,7 +18,7 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   floor.  Connectedness should now be guaranteed as pieces are only placed
   if their enlarged bounding box (which is not minimal - should bound
   with distance 1 to the nearest outside point) can be placed on a set
-  of floor tiles.
+  of floor tiles. (Dallas Herrin)
 
 - Mines now generate on the world map.  Their symbol is still 'o', but
   has been changed to bold yellow to differentiate them from caverns and
@@ -34,7 +34,7 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
 - More stanzas for the epic poem.
 
-- New items: wand of acid.
+- New items: wand of acid, Eka key.
 
 - Bug fixes:
 
@@ -53,6 +53,14 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
   - Text would sometimes double-line-break, when a line was just up
     against the maximum width.
+
+  - The key to Eka was not actually being placed.  Placed it hidden in the
+    rock in Cithriel, protected by divine avengers within the chamber.
+    Added a clue to the whereabouts at the end of Gildi's quest for the
+    Black Orb. (Dallas Herrin)
+
+  - Fixed a number of instances where custom maps had the wrong map type,
+    causing day/night transitions. (Dallas Herrin)
 
 Shadow of the Wyrm v0.5.7 "Cutting"
 - Version declared November 5, 2016.  Version finalized December 1, 2016.
