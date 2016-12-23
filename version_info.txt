@@ -30,6 +30,9 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   allow 75% of soak (instead of 50%).  Critical hits still do max damage,
   but allow 50% of soak (instead of 25%).
 
+- Eka and Zaeda's Tower are protected by strong magics and are no longer
+  diggable. (Dallas Herrin)
+
 - Additional names and name fragments for randomly chosen names.
 
 - More stanzas for the epic poem.
