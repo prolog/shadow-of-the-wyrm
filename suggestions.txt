@@ -129,16 +129,12 @@ roguecastergames:
 - ambushes
 
 Dallas Herrin:
-bugs:
-- Eating on the world map takes significantly more time than eating 
-  anywhere that isn't a world map tile. To see this, eat olives repeatedly
-  on the world map; they provide so little nutrition that you can actually 
-  starve to death while gorging yourself on them.
 
 - The Snakeling Tower repeatedly crashes the game once you reach the 
   center of the second floor; you may skirt the edges as long as you wish, 
   but once you reach a certain distance from the center (probably the 
   limit of your LoS), it crashes.
+
 - Sometimes, the stone key that you pick up on the stairs in RNG crypts 
   does not fit the lock on the sealed tomb.
 
@@ -148,11 +144,6 @@ Not bugs, but probably not working as intended:
 - The dawn/dusk filters color everything but items/characters, while the 
   night filter colors everything. That is; during dawn/dusk, items appear 
   as normal, but once it turns to night, everything goes vaguely blue.
-- Several locations (for example Wyrmwraeth, Eka, and the Snakeling Tower) 
-  are diggable. Given that other locations, like the starter village, the 
-  Wintersea Tombs, the second floor of the Wintersea Keep, etc. that are 
-  similarly story-important are undiggable, I found it a likely enough 
-  oversight to mention it.
 - Spellcasting enemies have a tendency to hit all their friends with 
   spells and get smashed even without your intervention. If their friends 
   are also spellcasters, this can lead to a hilarious chain reaction that 
