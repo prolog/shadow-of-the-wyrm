@@ -35,6 +35,11 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
 - Additional names and name fragments for randomly chosen names.
 
+- Automove now breaks when receiving damage, or a change in a status like
+  blindness. (Dallas Herrin)
+
+- Automove also breaks when you're attacked, and missed.
+
 - More stanzas for the epic poem.
 
 - New items: wand of acid, Eka key.

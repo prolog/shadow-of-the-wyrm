@@ -122,6 +122,12 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     handle_hostility_implications(attacking_creature, attacked_creature);
   }
 
+  // Getting attacked has a way of breaking concentration.
+  if (attacked_creature != nullptr)
+  {
+    attacked_creature->get_automatic_movement_ref().set_engaged(false);
+  }
+
   if (th_calculator && ctn_calculator)
   {
     Game& game = Game::instance();
@@ -578,7 +584,7 @@ bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attac
   // Close misses are considered misses that the creature narrowly avoided
   // due to quick reflexes - always mark Agility.
   sm.mark_agility(attacked_creature);
-
+  
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_close_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
   add_combat_message(attacking_creature, attacked_creature, combat_message);

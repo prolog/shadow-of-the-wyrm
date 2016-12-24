@@ -873,6 +873,6 @@ we cannot cross: there's victory, or else %b
 there's total loss.  We'll let their bodies lie %b
 like offerings, laid out to bleed in rows %b
 or simply left to rot.  Beneath the sky, %b
-we'll pile them four feet up.  So let the crows %b
+we'll stack them four feet up.  So let the crows %b
 and buzzards salivate - we'll feed them as we go."
 %p
