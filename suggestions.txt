@@ -5,7 +5,7 @@ kraphead:
   pointers turn to turn?  Traps?  Spells?  Creature decision/LOS code?
 
 Me:
-- Allow spearfishing.
+- Allow spearfishing when fishing and standing on a land tile.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Creatures should be smarter about the use of spells given that creatures
@@ -81,6 +81,7 @@ Me:
   chance (10-20%?) of splitting.  Each creature in the split has half
   the current HP of the original.
 - Witchthorns should have a chance of doing a 1 dmg piercing attack.
+- Recall spell that takes you back to the overworld.
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
@@ -152,16 +153,6 @@ Not bugs, but probably not working as intended:
 - Spellcasting enemies, specifically the ones that have large AoE ball 
   spells, have a tendency to cast their spells around corners, hitting you 
   up to three times without ever seeing you.
-- Leading off of that, the (w)alk command doesn't actually stop when 
-  damage happens. I know this because the #4 "Not bug but probably not 
-  working as intended" killed two characters of mine in the same way; I 
-  would engage the (w)alk command and head down an unexplored corridor. 
-  As I neared a corner, I would suddenly be hit by a fireball from an 
-  unseen Lich; the (w)alk continued undeterred, the fireball casting did 
-  too, and so two steps later I was dead without the chance to make even a 
-  single move.
-- Similarly, resting while blind doesn't stop if you're attacked by an 
-  unseen monster.
 - The gem-shrines aren't "permanent." Like any given forest or field tile, 
   they don't have persistent item memory; if you don't get the Gem on the 
   first attempt, it's gone forever. Also like any given forest or field 
