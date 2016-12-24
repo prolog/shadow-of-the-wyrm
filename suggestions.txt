@@ -5,6 +5,7 @@ kraphead:
   pointers turn to turn?  Traps?  Spells?  Creature decision/LOS code?
 
 Me:
+- Allow spearfishing.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Creatures should be smarter about the use of spells given that creatures
@@ -165,8 +166,6 @@ Not bugs, but probably not working as intended:
   they don't have persistent item memory; if you don't get the Gem on the 
   first attempt, it's gone forever. Also like any given forest or field 
   tile, tombs and graves may spawn that make it permanent.
-- The guide PDF mentions Fishing as the ability to "Catch and salt fish." 
-  However, only the ability to catch fish is currently available.
 - Thoughts on Eka: how are you "supposed" to get in there? I found it only 
   by accident, and I was only able to enter Eakarui's prison cell by that 
   digging oversight. As far as I can tell, only a few books and Thengil 
