@@ -865,3 +865,14 @@ beneath the sprawling heavens, when, it's said, %b
 the world was strange and new.  And now, alight: %b
 with spit and crackle, kindling catching, burning bright.
 %p
+Arkadios just nodded.  "There are times %b
+when people cast civility aside. %b
+I feel that your suggestion will define %b
+this war.  I'll have no talk of it, of lines %b
+we cannot cross: there's victory, or else %b
+there's total loss.  We'll let their bodies lie %b
+like offerings, laid out to bleed in rows %b
+or simply left to rot.  Beneath the sky, %b
+we'll pile them four feet up.  So let the crows %b
+and buzzards salivate - we'll feed them as we go."
+%p
