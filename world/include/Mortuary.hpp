@@ -28,9 +28,9 @@ class Mortuary : public ISerializable
     
     MortuaryCountMap get_creatures_killed() const;
 
-    uint get_num_creature_killed(const std::string& creature_id) const;
-    uint get_num_creatures_killed() const;
-    uint get_num_uniques_killed() const;
+    int get_num_creature_killed(const std::string& creature_id) const;
+    int get_num_creatures_killed() const;
+    int get_num_uniques_killed() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

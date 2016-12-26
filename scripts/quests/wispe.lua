@@ -8,7 +8,7 @@ local function wispe_uniques_start_fn()
 end
 
 local function wispe_uniques_completion_condition_fn()
-  return (get_num_uniques_killed_global() >= 3)
+  return (get_num_uniques_killed_global() >= 4)
 end
 
 local function wispe_uniques_completion_fn()

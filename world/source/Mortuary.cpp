@@ -49,7 +49,7 @@ MortuaryCountMap Mortuary::get_creatures_killed() const
 }
 
 // Get the number of a particular type of creature that have been killed.
-uint Mortuary::get_num_creature_killed(const string& creature_id) const
+int Mortuary::get_num_creature_killed(const string& creature_id) const
 {
   uint num_killed = 0;
 
@@ -60,11 +60,11 @@ uint Mortuary::get_num_creature_killed(const string& creature_id) const
     num_killed = m_it->second.count;
   }
 
-  return num_killed;
+  return static_cast<int>(num_killed);
 }
 
 // Get the total number of creatures killed.
-uint Mortuary::get_num_creatures_killed() const
+int Mortuary::get_num_creatures_killed() const
 {
   uint num_killed = 0;
 
@@ -73,11 +73,11 @@ uint Mortuary::get_num_creatures_killed() const
     num_killed += pair.second.count;
   }
 
-  return num_killed;
+  return static_cast<int>(num_killed);
 }
 
 // Get the number of uniques killed.
-uint Mortuary::get_num_uniques_killed() const
+int Mortuary::get_num_uniques_killed() const
 {
   uint num_killed = 0;
 
@@ -89,7 +89,7 @@ uint Mortuary::get_num_uniques_killed() const
     }
   }
 
-  return num_killed;
+  return static_cast<int>(num_killed);
 }
 
 bool Mortuary::serialize(ostream& stream) const
