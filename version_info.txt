@@ -40,6 +40,9 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
 - Automove also breaks when you're attacked, and missed.
 
+- You can now fish using a spear, but only while standing on a land tile,
+  and only if the spear is wielded - it can't be held in your off-hand.
+
 - More stanzas for the epic poem.
 
 - New items: wand of acid, Eka key.

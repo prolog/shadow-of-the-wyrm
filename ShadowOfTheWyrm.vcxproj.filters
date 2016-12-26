@@ -3894,6 +3894,9 @@
     <ClInclude Include="engine\calculators\include\MineCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\skills\include\FishingTypes.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">

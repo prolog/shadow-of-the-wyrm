@@ -10,6 +10,7 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "Weapon.hpp"
 
 using namespace std;
 
@@ -26,7 +27,9 @@ ActionCostValue FishingSkillProcessor::process(CreaturePtr creature, MapPtr map)
   if (creature && map)
   {
     // Does the creature have the necessary equipment?
-    bool has_fishing_eq = check_for_fishing_equipment(creature);
+    TilePtr creature_tile = MapUtils::get_tile_for_creature(map, creature);
+    pair<bool, FishingType> fishing_details = check_for_fishing_equipment(creature, creature_tile);
+    bool has_fishing_eq = fishing_details.first;
 
     if (has_fishing_eq)
     {
@@ -35,7 +38,7 @@ ActionCostValue FishingSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
       if (adj_water.first)
       {
-        fish(creature, map, adj_water.second);
+        fish(creature, map, fishing_details.second, adj_water.second);
       }
     }
   }
@@ -43,29 +46,48 @@ ActionCostValue FishingSkillProcessor::process(CreaturePtr creature, MapPtr map)
   return acv;
 }
 
-bool FishingSkillProcessor::check_for_fishing_equipment(CreaturePtr creature)
+pair<bool, FishingType> FishingSkillProcessor::check_for_fishing_equipment(CreaturePtr creature, TilePtr creature_tile)
 {
-  bool has_fishing_eq = false;
+  pair<bool, FishingType> fishing_details = make_pair(false, FishingType::FISHING_TYPE_NONE);
 
-  if (creature != nullptr)
+  if (creature != nullptr && creature_tile != nullptr)
   {
     ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
     ItemPtr off_hand = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND);
+    WeaponPtr wielded_weap = std::dynamic_pointer_cast<Weapon>(wielded);
+    string bad_eq_msg = ActionTextKeys::ACTION_FISHING_NO_EQUIPMENT;
 
     if ((wielded != nullptr && wielded->get_base_id() == ItemIdKeys::ITEM_ID_FISHING_ROD) || (off_hand != nullptr && off_hand->get_base_id() == ItemIdKeys::ITEM_ID_FISHING_ROD))
     {
-      has_fishing_eq = true;
+      fishing_details.first = true;
+      fishing_details.second = FishingType::FISHING_TYPE_ROD_AND_LINE;
     }
 
-    if (!has_fishing_eq && creature->get_is_player())
+    // Spearfishing only works if you're wielding the spear - it doesn't work
+    // in your off hand.
+    if (wielded_weap && wielded_weap->get_trained_skill() == SkillType::SKILL_MELEE_SPEARS)
+    {
+      fishing_details.second = FishingType::FISHING_TYPE_SPEAR;
+
+      if (creature_tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
+      {
+        bad_eq_msg = ActionTextKeys::ACTION_FISHING_SPEARFISHING_WATER;
+      }
+      else
+      {
+        fishing_details.first = true;
+      }
+    }
+
+    if (!fishing_details.first && creature->get_is_player())
     {
       IMessageManager& manager = MM::instance();
-      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_NO_EQUIPMENT));
+      manager.add_new_message(StringTable::get(bad_eq_msg));
       manager.send();
     }
   }
 
-  return has_fishing_eq;
+  return fishing_details;
 }
 
 pair<bool, WaterType> FishingSkillProcessor::check_for_adjacent_water_tile(CreaturePtr creature, MapPtr map)
@@ -104,7 +126,7 @@ pair<bool, WaterType> FishingSkillProcessor::check_for_adjacent_water_tile(Creat
   return adj_water;
 }
 
-void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const WaterType water)
+void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const FishingType fishing, const WaterType water)
 {
   FishingCalculator fc;
   Game& game = Game::instance();
@@ -120,8 +142,8 @@ void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const WaterTy
       if (creature && creature->get_is_player())
       {
         IMessageManager& manager = MM::instance();
-        manager.add_new_message(ActionTextKeys::get_random_bait_message());
-        manager.add_new_message(ActionTextKeys::get_fishing_outcome_message(fot));
+        manager.add_new_message(ActionTextKeys::get_random_bait_message(fishing));
+        manager.add_new_message(ActionTextKeys::get_fishing_outcome_message(fishing, fot));
         manager.send();
       }
 

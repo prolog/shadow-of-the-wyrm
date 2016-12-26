@@ -252,15 +252,35 @@ string ActionTextKeys::get_seed_planted_message(const bool blind, const string& 
   return msg;
 }
 
-string ActionTextKeys::get_random_bait_message()
+string ActionTextKeys::get_random_bait_message(const FishingType fishing)
 {
-  vector<string> bait_msgs = {ACTION_FISHING_BAIT1, ACTION_FISHING_BAIT2, ACTION_FISHING_BAIT3};
-  return StringTable::get(bait_msgs.at(RNG::range(0, bait_msgs.size()-1)));
+  string bait_msg;
+  map<FishingType, vector<string>> bait_msgs = {{FishingType::FISHING_TYPE_ROD_AND_LINE, {ACTION_FISHING_BAIT1, ACTION_FISHING_BAIT2, ACTION_FISHING_BAIT3}},
+                                                {FishingType::FISHING_TYPE_SPEAR, {ACTION_FISHING_SPEAR1, ACTION_FISHING_SPEAR2, ACTION_FISHING_SPEAR3}}};
+  auto b_it = bait_msgs.find(fishing);
+
+  if (b_it != bait_msgs.end())
+  {
+    vector<string> bait_vmsg = b_it->second;
+
+    if (!bait_vmsg.empty())
+    {
+      bait_msg = StringTable::get(bait_vmsg.at(RNG::range(0, bait_vmsg.size() - 1)));
+    }
+  }
+
+
+  return bait_msg;
 }
 
-string ActionTextKeys::get_fishing_outcome_message(const FishingOutcomeType fot)
+string ActionTextKeys::get_fishing_outcome_message(const FishingType fishing, const FishingOutcomeType fot)
 {
   string msg_sid;
+
+  // JCD FIXME: account for fishing type
+  map<FishingType, string> escape_messages = {{FishingType::FISHING_TYPE_ROD_AND_LINE, ACTION_FISHING_ESCAPE}, {FishingType::FISHING_TYPE_SPEAR, ACTION_FISHING_NEAR_SPEAR}};
+  map<FishingType, string> nibble_messages = {{FishingType::FISHING_TYPE_ROD_AND_LINE, ACTION_FISHING_NIBBLE}, {FishingType::FISHING_TYPE_SPEAR, ACTION_FISHING_NEAR_SPEAR}};
+  map<FishingType, string> catch_messages = {{FishingType::FISHING_TYPE_ROD_AND_LINE, ACTION_FISHING_CATCH}, {FishingType::FISHING_TYPE_SPEAR, ACTION_FISHING_CATCH_SPEAR}};
 
   switch (fot)
   {
@@ -268,14 +288,38 @@ string ActionTextKeys::get_fishing_outcome_message(const FishingOutcomeType fot)
       msg_sid = ACTION_FISHING_NO_CATCH;
       break;
     case FishingOutcomeType::FISHING_OUTCOME_ESCAPE:
-      msg_sid = ACTION_FISHING_ESCAPE;
+    {
+      auto e_it = escape_messages.find(fishing);
+
+      if (e_it != escape_messages.end())
+      {
+        msg_sid = e_it->second;
+      }
+
       break;
+    }
     case FishingOutcomeType::FISHING_OUTCOME_NIBBLE:
-      msg_sid = ACTION_FISHING_NIBBLE;
+    {
+      auto n_it = nibble_messages.find(fishing);
+     
+      if (n_it != nibble_messages.end())
+      {
+        msg_sid = n_it->second;
+      }
+
       break;
+    }
     case FishingOutcomeType::FISHING_OUTCOME_CATCH:
-      msg_sid = ACTION_FISHING_CATCH;
+    {
+      auto c_it = catch_messages.find(fishing);
+
+      if (c_it != catch_messages.end())
+      {
+        msg_sid = c_it->second;
+      }
+
       break;
+    }
     case FishingOutcomeType::FISHING_OUTCOME_UNDEFINED:
     default:
       break;
@@ -446,14 +490,20 @@ const string ActionTextKeys::ACTION_HANDLE_ALTAR               = "ACTION_HANDLE_
 const string ActionTextKeys::ACTION_HANDLE_PEW                 = "ACTION_HANDLE_PEW";
 const string ActionTextKeys::ACTION_EVOKE_FAILED               = "ACTION_EVOKE_FAILED";
 const string ActionTextKeys::ACTION_FISHING_NO_WATER           = "ACTION_FISHING_NO_WATER";
+const string ActionTextKeys::ACTION_FISHING_SPEARFISHING_WATER = "ACTION_FISHING_SPEARFISHING_WATER";
 const string ActionTextKeys::ACTION_FISHING_NO_EQUIPMENT       = "ACTION_FISHING_NO_EQUIPMENT";
 const string ActionTextKeys::ACTION_FISHING_BAIT1              = "ACTION_FISHING_BAIT1";
 const string ActionTextKeys::ACTION_FISHING_BAIT2              = "ACTION_FISHING_BAIT2";
 const string ActionTextKeys::ACTION_FISHING_BAIT3              = "ACTION_FISHING_BAIT3";
+const string ActionTextKeys::ACTION_FISHING_SPEAR1             = "ACTION_FISHING_SPEAR1";
+const string ActionTextKeys::ACTION_FISHING_SPEAR2             = "ACTION_FISHING_SPEAR2";
+const string ActionTextKeys::ACTION_FISHING_SPEAR3             = "ACTION_FISHING_SPEAR3";
+const string ActionTextKeys::ACTION_FISHING_NEAR_SPEAR         = "ACTION_FISHING_NEAR_SPEAR";
 const string ActionTextKeys::ACTION_FISHING_NO_CATCH           = "ACTION_FISHING_NO_CATCH";
 const string ActionTextKeys::ACTION_FISHING_ESCAPE             = "ACTION_FISHING_ESCAPE";
 const string ActionTextKeys::ACTION_FISHING_NIBBLE             = "ACTION_FISHING_NIBBLE";
 const string ActionTextKeys::ACTION_FISHING_CATCH              = "ACTION_FISHING_CATCH";
+const string ActionTextKeys::ACTION_FISHING_CATCH_SPEAR        = "ACTION_FISHING_CATCH_SPEAR";
 const string ActionTextKeys::ACTION_FISHING_THROW_BACK         = "ACTION_FISHING_THROW_BACK";
 const string ActionTextKeys::ACTION_DISARM_TRAPS_NO_TRAPS      = "ACTION_DISARM_TRAPS_NO_TRAPS";
 const string ActionTextKeys::ACTION_DISARM_TRAPS_NO_TRAP       = "ACTION_DISARM_TRAPS_NO_TRAP";
