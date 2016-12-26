@@ -5,6 +5,9 @@ kraphead:
   pointers turn to turn?  Traps?  Spells?  Creature decision/LOS code?
 
 Me:
+- Crying out should only make other creatures hostile when the attacking
+  and attacked creatures are not the same - ie, disallow it for stunned
+  creatures.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Creatures should be smarter about the use of spells given that creatures
