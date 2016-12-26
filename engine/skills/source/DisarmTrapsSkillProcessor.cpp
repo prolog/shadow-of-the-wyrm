@@ -134,18 +134,21 @@ bool DisarmTrapsSkillProcessor::disarm_trap(const std::pair<int, TileDirectionMa
       }
     }
 
-    TrapPtr trap = dynamic_pointer_cast<Trap>(tile->get_feature());
-
-    DisarmTrapsCalculator dtc;
-    DisarmTrapsOutcome dto = dtc.calculate_disarm_traps_outcome(creature, trap && trap->has_items());
-
-    // Process the outcome.
-    auto d_it = disarm_traps_outcome_functions.find(dto);
-
-    if (d_it != disarm_traps_outcome_functions.end())
+    if (tile != nullptr)
     {
-      (this->*(d_it->second))(creature, map, d, tile, manager);
-      attempted_disarm = true;
+      TrapPtr trap = dynamic_pointer_cast<Trap>(tile->get_feature());
+
+      DisarmTrapsCalculator dtc;
+      DisarmTrapsOutcome dto = dtc.calculate_disarm_traps_outcome(creature, trap && trap->has_items());
+
+      // Process the outcome.
+      auto d_it = disarm_traps_outcome_functions.find(dto);
+
+      if (d_it != disarm_traps_outcome_functions.end())
+      {
+        (this->*(d_it->second))(creature, map, d, tile, manager);
+        attempted_disarm = true;
+      }
     }
   }
 

@@ -76,6 +76,16 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   - The guidebook wasn't referencing the new deity stat modifiers.
     (Dallas Herrin)
 
+  - The game could crash when there were multiple tiles present with
+    traps, and the user selected an invalid direction in which to disarm.
+    (Dallas Herrin)
+
+  - The monster decision code to figure out what spell to cast would
+    crash when given a spell ID that didn't exist. (Dallas Herrin)
+
+  - Zaeda is able to cast Lightning Bolt, but the spell ID was typo'd,
+    which would cause the crash described above.
+
 Shadow of the Wyrm v0.5.7 "Cutting"
 - Version declared November 5, 2016.  Version finalized December 1, 2016.
 

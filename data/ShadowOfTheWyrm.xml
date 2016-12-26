@@ -14444,7 +14444,7 @@
 			<Speed>40</Speed>
 			<Spells>
 				<Spell>
-					<SpellID>c_03_lightning_bolt</SpellID>
+					<SpellID>a_03_lightning_bolt</SpellID>
 					<Castings>5</Castings>
 				</Spell>
 				<Spell>

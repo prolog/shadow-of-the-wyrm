@@ -159,7 +159,7 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
           {
             if (s_it == spell_map.end())
             {
-              Log::instance().error("Spell ID " + s_it->first + " not found for creature base ID " + creature->get_original_id());
+              Log::instance().error("Spell ID " + skm_pair.first + " not found for creature base ID " + creature->get_original_id());
               continue;
             }
             else
