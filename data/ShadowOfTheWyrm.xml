@@ -1178,7 +1178,7 @@
 			</RaceInitialStatistics>
 			<Corporeal>0</Corporeal>
 			<Undead>1</Undead>
-			<Flying>0</Flying>
+			<Flying>1</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
