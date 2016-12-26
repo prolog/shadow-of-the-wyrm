@@ -47,6 +47,8 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
 - New items: wand of acid, Eka key.
 
+- Added a dev script to check for creature spells with bad IDs.
+
 - Bug fixes:
 
   - Dragon breath wands were correct - flame - but the spell itself was
