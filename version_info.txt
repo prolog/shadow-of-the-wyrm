@@ -54,7 +54,7 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   - Dragon breath wands were correct - flame - but the spell itself was
     acidic.
 
-  - Typo fixes in keybindings (Larzid).
+  - Typo fixes in keybindings (Larzid) and game text (Dallas Herrin).
 
   - Mines and sewers were showing day/night transition because the map 
     type wasn't being properly set during generation.  Refactored some
@@ -87,6 +87,9 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
   - Zaeda is able to cast Lightning Bolt, but the spell ID was typo'd,
     which would cause the crash described above.
+
+  - Spirits weren't tagged as flying, so weren't moving over water
+    properly (Dallas Herrin).
 
 Shadow of the Wyrm v0.5.7 "Cutting"
 - Version declared November 5, 2016.  Version finalized December 1, 2016.

@@ -5,7 +5,6 @@ kraphead:
   pointers turn to turn?  Traps?  Spells?  Creature decision/LOS code?
 
 Me:
-- Allow spearfishing when fishing and standing on a land tile.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Creatures should be smarter about the use of spells given that creatures
@@ -132,14 +131,10 @@ roguecastergames:
 
 Dallas Herrin:
 
-- The Snakeling Tower repeatedly crashes the game once you reach the 
-  center of the second floor; you may skirt the edges as long as you wish, 
-  but once you reach a certain distance from the center (probably the 
-  limit of your LoS), it crashes.
+- Issues with Wispe: occasional crash?
 
 - Sometimes, the stone key that you pick up on the stairs in RNG crypts 
   does not fit the lock on the sealed tomb.
-
 
 Not bugs, but probably not working as intended:
 
