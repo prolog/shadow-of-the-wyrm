@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Spell.hpp"
+#include "FishingTypes.hpp"
 #include "WaterTypes.hpp"
 
 class ActionTextKeys
@@ -25,8 +26,8 @@ class ActionTextKeys
     static std::string get_item_breakage_message(const std::string& creature_desc_sid, const bool is_player, const std::string& item_desc);
     static std::string get_spit_out_message(const std::string& seed_usage_desc);
     static std::string get_seed_planted_message(const bool blind, const std::string& seed_usage_desc);
-    static std::string get_random_bait_message();
-    static std::string get_fishing_outcome_message(const FishingOutcomeType fot);
+    static std::string get_random_bait_message(const FishingType fishing);
+    static std::string get_fishing_outcome_message(const FishingType fishing, const FishingOutcomeType fot);
     static std::string get_already_stolen_message(const std::string& desc);
     static std::string get_no_pockets_message(const std::string& desc);
     static std::string get_steal_successful_message(const std::string& creature_desc, const std::string& item_desc, const bool is_player);
@@ -133,14 +134,20 @@ class ActionTextKeys
     static const std::string ACTION_SOTW_HISTORY;
     static const std::string ACTION_STRATEGY_BASICS;
     static const std::string ACTION_FISHING_NO_WATER;
+    static const std::string ACTION_FISHING_SPEARFISHING_WATER;
     static const std::string ACTION_FISHING_NO_EQUIPMENT;
     static const std::string ACTION_FISHING_BAIT1;
     static const std::string ACTION_FISHING_BAIT2;
     static const std::string ACTION_FISHING_BAIT3;
+    static const std::string ACTION_FISHING_SPEAR1;
+    static const std::string ACTION_FISHING_SPEAR2;
+    static const std::string ACTION_FISHING_SPEAR3;
+    static const std::string ACTION_FISHING_NEAR_SPEAR;
     static const std::string ACTION_FISHING_NO_CATCH;
     static const std::string ACTION_FISHING_ESCAPE;
     static const std::string ACTION_FISHING_NIBBLE;
     static const std::string ACTION_FISHING_CATCH;
+    static const std::string ACTION_FISHING_CATCH_SPEAR;
     static const std::string ACTION_FISHING_THROW_BACK;
     static const std::string ACTION_DISARM_TRAPS_NO_TRAPS;
     static const std::string ACTION_DISARM_TRAPS_NO_TRAP;
