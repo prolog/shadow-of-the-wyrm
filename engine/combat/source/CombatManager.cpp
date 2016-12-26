@@ -204,7 +204,8 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
     RacePtr race = rm.get_race(attacked_creature->get_race_id());
     DecisionStrategyPtr d_strat = attacked_creature->get_decision_strategy();
 
-    if (d_strat->get_threats().has_threat(attacking_creature->get_id()).first == false &&
+    if (d_strat && 
+        d_strat->get_threats().has_threat(attacking_creature->get_id()).first == false &&
         race != nullptr &&
         race->get_has_voice() &&
         cca.can_speak(attacked_creature))
@@ -220,19 +221,23 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
       // wind is blowing, decide that the attacker is not actually all
       // that friendly.
       MapPtr fov_map = d_strat->get_fov_map();
-      TilesContainer tiles = fov_map->get_tiles();
 
-      for (const auto& t_pair : tiles)
+      if (fov_map != nullptr)
       {
-        TilePtr tile = t_pair.second;
+        TilesContainer tiles = fov_map->get_tiles();
 
-        if (tile && tile->has_creature())
+        for (const auto& t_pair : tiles)
         {
-          CreaturePtr tile_creature = tile->get_creature();
+          TilePtr tile = t_pair.second;
 
-          if (tile_creature && !tile_creature->get_is_player())
+          if (tile && tile->has_creature())
           {
-            hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id());
+            CreaturePtr tile_creature = tile->get_creature();
+
+            if (tile_creature && !tile_creature->get_is_player())
+            {
+              hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id());
+            }
           }
         }
       }
