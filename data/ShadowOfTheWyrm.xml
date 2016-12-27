@@ -19880,6 +19880,78 @@
 			<Evade>3</Evade>
 			<Soak>0</Soak>
 		</Creature>
+		<Creature id="worried_mother">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>WORRIED_MOTHER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WORRIED_MOTHER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WORRIED_MOTHER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WORRIED_MOTHER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>3</Evade>
+			<Soak>0</Soak>
+		</Creature>
+		<!-- Ead is just a kid, but spectacularly powerful, damage-wise. -->
+		<Creature id="ead">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>EAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EAD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EAD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EAD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>100</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Evade>3</Evade>
+			<Soak>0</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/ead.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="the_ploughman">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THE_PLOUGHMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

@@ -33,6 +33,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>worried_mother</ID>
+				<Coord>
+					<Row>0</Row>
+					<Col>16</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>hrimgar</ID>
 				<Coord>
 					<Row>3</Row>
