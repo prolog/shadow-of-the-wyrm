@@ -196,7 +196,10 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 
 void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
-  if (attacking_creature && attacked_creature && !attacked_creature->get_is_player())
+  if (attacking_creature && 
+      attacked_creature && 
+      (attacking_creature->get_id() != attacked_creature->get_id()) && 
+      !attacked_creature->get_is_player())
   {
     HostilityManager hm;
     CurrentCreatureAbilities cca;
