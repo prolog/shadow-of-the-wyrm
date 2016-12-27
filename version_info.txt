@@ -49,6 +49,13 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
 - Added a dev script to check for creature spells with bad IDs.
 
+- Isen Dun has a new character (worried mother).  Her son is somewhere
+  in the Barrows new, very minor quest out of Isen Dun that will give the
+  player a couple of silverweeds, but is more for flavour and lore than
+  anything else.
+
+- New creatures: worried mother, Ead.
+
 - Bug fixes:
 
   - Dragon breath wands were correct - flame - but the spell itself was
