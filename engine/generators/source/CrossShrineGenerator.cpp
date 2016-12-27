@@ -10,12 +10,7 @@ CrossShrineGenerator::CrossShrineGenerator(MapPtr new_base_map)
 {
 }
 
-MapPtr CrossShrineGenerator::generate(const Dimensions& dim)
-{
-  return generate();
-}
-
-MapPtr CrossShrineGenerator::generate()
+MapPtr CrossShrineGenerator::generate_shrine()
 {
   MapPtr map = make_shared<Map>(*base_map);
   Dimensions dim = map->size();
@@ -44,6 +39,7 @@ MapPtr CrossShrineGenerator::generate()
   place_relic(map, relic_loc.first, relic_loc.second);
 
   add_dungeon_tiles_to_preset_locations(map);
+  map->set_permanent(true);
 
   return map;
 }

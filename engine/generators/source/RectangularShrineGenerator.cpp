@@ -11,12 +11,7 @@ RectangularShrineGenerator::RectangularShrineGenerator(MapPtr new_base_map)
 {
 }
 
-MapPtr RectangularShrineGenerator::generate(const Dimensions& dim)
-{
-  return generate();
-}
-
-MapPtr RectangularShrineGenerator::generate()
+MapPtr RectangularShrineGenerator::generate_shrine()
 {
   MapPtr map = make_shared<Map>(*base_map);
 
@@ -37,7 +32,7 @@ MapPtr RectangularShrineGenerator::generate()
   place_pillars_and_statues(map, start_row, start_col, shrine_height, shrine_width, mid_row, mid_col);
   place_relic(map, mid_row, mid_col);
   add_dungeon_tiles_to_preset_locations(map);
-
+  map->set_permanent(true);
   return map;
 }
 

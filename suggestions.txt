@@ -1,13 +1,7 @@
-kraphead:
-- There's some sort of spell crash in the Wyrmeswraec temple with Lich
-  Kings and their fire spells.
-- Crash (no dump) when automoving by a grey 'u'?  What else can access
-  pointers turn to turn?  Traps?  Spells?  Creature decision/LOS code?
+Dallas Herrin:
+- Shrines non-permanent.
 
 Me:
-- Crying out should only make other creatures hostile when the attacking
-  and attacked creatures are not the same - ie, disallow it for stunned
-  creatures.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Creatures should be smarter about the use of spells given that creatures
@@ -27,7 +21,6 @@ Me:
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
-- Poison effects on a tile should poison any food.
 - Traps that fire and kill a creature are giving the player exp?
 - Test clearing all shrines
 - Implement proper branded weapons.  These should allow for any "magical"
@@ -151,14 +144,6 @@ Not bugs, but probably not working as intended:
 - Spellcasting enemies, specifically the ones that have large AoE ball 
   spells, have a tendency to cast their spells around corners, hitting you 
   up to three times without ever seeing you.
-- The gem-shrines aren't "permanent." Like any given forest or field tile, 
-  they don't have persistent item memory; if you don't get the Gem on the 
-  first attempt, it's gone forever. Also like any given forest or field 
-  tile, tombs and graves may spawn that make it permanent.
-- Thoughts on Eka: how are you "supposed" to get in there? I found it only 
-  by accident, and I was only able to enter Eakarui's prison cell by that 
-  digging oversight. As far as I can tell, only a few books and Thengil 
-  even mention the place; it has totally stumped me.
 - Thoughts on Eakauri: when your comments call it a super boss, you were 
   not joking. I'm currently trying to kill the thing, but I'm pretty sure 
   that Fae are actually incapable of it (picture related), which is- 
