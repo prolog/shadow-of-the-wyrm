@@ -94,6 +94,9 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   - Fixed a crash with setting hostility for far-off creatures outside the
     player's LOS (kraphead, Dallas Herrin).
 
+  - Self-attacking creatures were drawing the hate of other creatures,
+    which was not intended.
+
 Shadow of the Wyrm v0.5.7 "Cutting"
 - Version declared November 5, 2016.  Version finalized December 1, 2016.
 
