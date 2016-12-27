@@ -10,6 +10,21 @@ ShrineGenerator::ShrineGenerator(MapPtr new_base_map)
 {
 }
 
+MapPtr ShrineGenerator::generate(const Dimensions& d)
+{
+  return generate();
+}
+
+// Ensure that all shrines, regardless of type, are set as permanent so that
+// the shrine gems are not lost.
+MapPtr ShrineGenerator::generate()
+{
+  MapPtr map = generate_shrine();
+  map->set_permanent(get_permanence());
+
+  return map;
+}
+
 // Shrines have a list of creatures, and a list of preset locations.  Each
 // preset should have a creature.  Right now, for shrines, these preset
 // locations are all the floor (dungeon) tiles, so go through the tiles
@@ -58,4 +73,9 @@ void ShrineGenerator::place_relic(MapPtr map, const int mid_row, const int mid_c
       }
     }
   }
+}
+
+bool ShrineGenerator::get_permanence_default() const
+{
+  return true;
 }

@@ -97,6 +97,10 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   - Self-attacking creatures were drawing the hate of other creatures,
     which was not intended.
 
+  - Shrines were not being marked as permanent.  If you left/came back,
+    the shrine would be re-generated and the shrine gem would be gone,
+    since it can only be generated once. (Dallas Herrin)
+
 Shadow of the Wyrm v0.5.7 "Cutting"
 - Version declared November 5, 2016.  Version finalized December 1, 2016.
 

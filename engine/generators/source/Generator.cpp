@@ -62,6 +62,10 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
 void Generator::initialize(MapPtr map, const int danger_level)
 {
   map->set_terrain_type(map_terrain_type);
+
+  // Make sure this gets set initially so that if another call comes later
+  // (e.g., from a different generator in a multi-stage map, like Shrines), 
+  // that call can take precedence.
   set_map_permanence(map);
 
   // If a generated map ID has been set, update the map ID with that.
