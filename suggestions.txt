@@ -1,6 +1,3 @@
-Dallas Herrin:
-- Shrines non-permanent.
-
 Me:
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.

@@ -822,7 +822,7 @@ but rarer, built up as the world began %b
 to take its shape, an alloy hard as steel. %b
 The mask was like a dragon's face, so when %b
 he placed the helmet on his head, the feel %b
-was real: a giant for a moment, then %b
+was fear: a giant for a moment, then %b
 appearing as a creature from the darkest fens.
 %p
 He stormed into the guardhouse for his axe - %b
@@ -875,4 +875,14 @@ like offerings, laid out to bleed in rows %b
 or simply left to rot.  Beneath the sky, %b
 we'll stack them four feet up.  So let the crows %b
 and buzzards salivate - we'll feed them as we go."
+%p
+The three of them loped off, toward the plains %b
+that ranged into the distance, like a sea %b
+of speargrass, oats and rye cut through with veins %b
+of wildflowers.  Here and there, a bumblebee, %b
+its lazy spiral.  Rustles underneath - %b
+a rabbit, keen to lose a trailing hawk. %b
+The grasses formed a halor or a wreath %b
+about those savages.  They did not talk. %b
+The coming murder sped them, silent as they stalked.
 %p
