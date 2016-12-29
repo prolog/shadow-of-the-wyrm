@@ -13,7 +13,6 @@ Me:
   decrements her generated counter to ensure she can appear again.  There
   should be a creature that talks about her.
 - Some sort of ship area - raiders, ghost ship, etc.
-- Small chance to search surrounding tiles when moving.
 - z-maps for settlements: test flying between multi-level maps and going
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
@@ -60,7 +59,6 @@ Me:
 - Monsters should have a chance of being generated friendly when same
   alignment.
 - Sacrifices should generate more piety when non-aligned.
-- Passive search at the end of each turn for traps?
 - Guilds and membership, mutual exclusivity, etc.
 - In-game gambling: arena fights, games of chance, etc.
 - LOS reduction at night-time, can be negated by skill in Blindfighting.

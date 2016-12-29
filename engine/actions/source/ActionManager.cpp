@@ -98,7 +98,7 @@ ActionCost ActionManager::dump_character(CreaturePtr creature)
 ActionCost ActionManager::search(CreaturePtr creature)
 {
   SearchAction sa;
-  return get_action_cost(creature, sa.search(creature));
+  return get_action_cost(creature, sa.search(creature, true));
 }
 
 ActionCost ActionManager::move(CreaturePtr creature, const Direction direction)

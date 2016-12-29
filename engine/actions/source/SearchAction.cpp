@@ -12,7 +12,7 @@ SearchAction::SearchAction()
 {
 }
 
-ActionCostValue SearchAction::search(CreaturePtr creature)
+ActionCostValue SearchAction::search(CreaturePtr creature, const bool actively_searching)
 {
   if (creature && creature->get_is_player())
   {
@@ -52,8 +52,14 @@ ActionCostValue SearchAction::search(CreaturePtr creature)
       search_message = StringTable::get(ActionTextKeys::ACTION_SEARCH_BLIND);
     }
 
-    manager.add_new_message(search_message);
-    manager.send();
+    // Only show the "You look around" type message if the creature is actually
+    // doing an active search.  If the creature is passively searchig while
+    // doing another action, such as moving, the message should be suppressed.
+    if (actively_searching)
+    {
+      manager.add_new_message(search_message);
+      manager.send();
+    }
 
     if (found_hidden_cnt == 1)
     {

@@ -5,11 +5,12 @@
 class SearchAction : public IActionManager
 {
   public:
-    ActionCostValue search(CreaturePtr creature);
+    ActionCostValue search(CreaturePtr creature, const bool actively_searching);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
   protected:
     friend class ActionManager;
+    friend class MovementAction;
     SearchAction();
 };

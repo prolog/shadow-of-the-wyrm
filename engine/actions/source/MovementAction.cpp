@@ -11,17 +11,18 @@
 #include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
+#include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
 #include "MapTypeQueryFactory.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementAction.hpp"
-#include "StairwayMovementAction.hpp"
-#include "MapExitUtils.hpp"
-#include "MapUtils.hpp"
 #include "MovementTextKeys.hpp"
 #include "MovementTypes.hpp"
 #include "RNG.hpp"
+#include "SearchAction.hpp"
 #include "SkillManager.hpp"
+#include "StairwayMovementAction.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -167,7 +168,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
   bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-  if (creatures_new_tile)
+  if (creature && creatures_new_tile)
   {
     if (MapUtils::is_creature_present(creatures_new_tile))
     {
@@ -257,6 +258,18 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
           }
         }
       }
+    }
+
+    // After moving, there is a chance to get a free search of the surrounding
+    // tiles.
+    //
+    // For the initial check, don't mark the skill.  Detection should only
+    // be marked if there's something to be found - let SearchAction handle
+    // that.
+    if (RNG::percent_chance(creature->get_skills().get_value(SkillType::SKILL_GENERAL_DETECTION)))
+    {
+      SearchAction search;
+      search.search(creature, false);
     }
   }
   
