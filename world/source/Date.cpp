@@ -53,9 +53,9 @@ void TimeOfDay::initialize_colour_overrides()
 {
   time_of_day_colour_overrides.clear();
 
-  time_of_day_colour_overrides = { {TimeOfDayType::TIME_OF_DAY_NIGHT, make_pair(Colour::COLOUR_BLUE, Colour::COLOUR_BOLD_BLUE)},
-                                   {TimeOfDayType::TIME_OF_DAY_DAWN, make_pair(Colour::COLOUR_BOLD_RED, Colour::COLOUR_UNDEFINED)},
-                                   {TimeOfDayType::TIME_OF_DAY_DUSK, make_pair(Colour::COLOUR_BOLD_YELLOW, Colour::COLOUR_UNDEFINED)} };
+  time_of_day_colour_overrides = { {TimeOfDayType::TIME_OF_DAY_NIGHT, make_pair(Colour::COLOUR_BLUE, Colour::COLOUR_BOLD_CYAN)},
+                                   {TimeOfDayType::TIME_OF_DAY_DAWN, make_pair(Colour::COLOUR_RED, Colour::COLOUR_BOLD_RED)},
+                                   {TimeOfDayType::TIME_OF_DAY_DUSK, make_pair(Colour::COLOUR_YELLOW, Colour::COLOUR_BOLD_YELLOW)} };
 }
 
 string Date::month_sids[DateValues::NUMBER_OF_MONTHS] = {"MONTH_1", "MONTH_2", "MONTH_3", "MONTH_4", "MONTH_5", "MONTH_6", "MONTH_7", "MONTH_8", "MONTH_9", "MONTH_10", "MONTH_11", "MONTH_12"};
