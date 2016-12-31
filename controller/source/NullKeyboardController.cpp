@@ -11,6 +11,11 @@ int NullKeyboardController::get_char_as_int()
   return -1;
 }
 
+std::pair<bool, int> NullKeyboardController::get_char_as_int_nb()
+{
+  return std::make_pair(false, -1);
+}
+
 Controller* NullKeyboardController::clone()
 {
   return new NullKeyboardController(*this);

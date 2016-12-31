@@ -12,6 +12,11 @@ class Controller : public ISerializable
     virtual std::string get_line() = 0;
     virtual int get_char_as_int() = 0;
 
+    // Non-blocking version.  Returns true when input is present, false
+    // otherwise.  When pair.first is false, pair.second will always be
+    // -1.
+    virtual std::pair<bool, int> get_char_as_int_nb() = 0;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 

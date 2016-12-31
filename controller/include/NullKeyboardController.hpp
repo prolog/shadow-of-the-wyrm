@@ -8,6 +8,7 @@ class NullKeyboardController : public Controller
   public:
     std::string get_line() override;
     int get_char_as_int() override;
+    std::pair<bool, int> get_char_as_int_nb() override;
 
     virtual Controller* clone() override;
 

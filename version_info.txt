@@ -35,10 +35,13 @@ Shadow of the Wyrm v0.5.8 "Merlin"
 
 - Additional names and name fragments for randomly chosen names.
 
-- Automove now breaks when receiving damage, or a change in a status like
-  blindness. (Dallas Herrin)
+- Changes to automove:
 
-- Automove also breaks when you're attacked, and missed.
+  - Automove now breaks when receiving damage, or a change in a status 
+    like blindness (Dallas Herrin).  It also breaks when you're attacked,
+    and missed.
+
+  - Automove can be interrupted by pressing a key. (Lagi)
 
 - You can now fish using a spear, but only while standing on a land tile,
   and only if the spear is wielded - it can't be held in your off-hand.
