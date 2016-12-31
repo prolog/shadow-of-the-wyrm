@@ -61,6 +61,15 @@ Shadow of the Wyrm v0.5.8 "Merlin"
   without having to actively spend a turn doing so.  This is based on the
   Detection skill.
 
+- Dusk and dawn now shade items and creatures as well (Dallas Herrin).
+  Also rejigged the colours:
+
+  - Night is now dark blue (surroundings) and bold cyan (creatures/items).
+
+  - Dawn is red/bold red.
+
+  - Dusk is yellow/bold yellow.
+  
 - New creatures: worried mother, Ead.
 
 - Bug fixes:
