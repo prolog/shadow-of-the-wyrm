@@ -200,7 +200,7 @@ void MineGenerator::generate_magici_shards(MapPtr map)
 
         if (tile != nullptr && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
         {
-          ItemPtr shard = ItemManager::create_item(ItemIdKeys::ITEM_ID_MAGICI_SHARD);
+          ItemPtr shard = ItemManager::create_item(ItemIdKeys::ITEM_ID_MAGICI_SHARD, num_shards);
           tile->get_items()->merge_or_add(shard, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
 
           break;
