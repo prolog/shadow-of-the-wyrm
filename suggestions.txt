@@ -109,7 +109,6 @@ Kraphead:
 - auto-displace when bumping friendly creatures
 
 Lagi:
-- something to allow "breaking" walking.  Eg., if a key is pressed, stop.
 - alternative inventory management: when in the stateless inventory
   screen ("I"), items should be selectable, and then another menu should
   be overlaid allowing equipping into various slots, dropping, evoking,
@@ -122,16 +121,11 @@ roguecastergames:
 
 Dallas Herrin:
 
-- Issues with Wispe: occasional crash?
-
 - Sometimes, the stone key that you pick up on the stairs in RNG crypts 
   does not fit the lock on the sealed tomb.
 
 Not bugs, but probably not working as intended:
 
-- The dawn/dusk filters color everything but items/characters, while the 
-  night filter colors everything. That is; during dawn/dusk, items appear 
-  as normal, but once it turns to night, everything goes vaguely blue.
 - Spellcasting enemies have a tendency to hit all their friends with 
   spells and get smashed even without your intervention. If their friends 
   are also spellcasters, this can lead to a hilarious chain reaction that 

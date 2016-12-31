@@ -35,6 +35,11 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   bool auto_movement_engaged = false;
   TilePtr direction_tile = map->at(CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), cur_dir));
 
+  // Keyboard interrupts stop auto move.
+  pair<bool, vector<string>> kb_results = controller_allows_auto_move(creature);
+  bool controller_move = kb_results.first;
+  copy(kb_results.second.begin(), kb_results.second.end(), back_inserter(message_sids));
+
   pair<bool, vector<string>> creature_results = creature_can_auto_move(creature);
   bool creature_move = creature_results.first;
   copy(creature_results.second.begin(), creature_results.second.end(), back_inserter(message_sids));
@@ -67,7 +72,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   pair<bool, vector<string>> visit_results = prev_visited_coords_allow_auto_move(creature, new_coord, amf);
   bool visit_move = visit_results.first;
 
-  if (creature_move && creature_pos_move && tile_move && map_move && visit_move)
+  if (controller_move && creature_move && creature_pos_move && tile_move && map_move && visit_move)
   {
     add_coordinate_to_automove_visited(creature, new_coord, amf);
     update_turns_if_necessary(creature);
@@ -184,6 +189,26 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(
   return move_details;
 }
 
+// Does the controller allow automove?  Only automove if a key has not been pressed.
+pair<bool, vector<string>> AutomaticMovementCoordinator::controller_allows_auto_move(CreaturePtr creature)
+{
+  pair<bool, vector<string>> controller_details = {true, {}};
+
+  if (creature != nullptr)
+  {
+    pair<bool, int> auto_break = creature->get_decision_strategy()->get_controller()->get_char_as_int_nb();
+
+    // If the user's pressed a key, stop automovement and throw up a message
+    // stating that movement has been interrupted.
+    if (auto_break.first)
+    {
+      controller_details.first = false;
+      controller_details.second.push_back(ActionTextKeys::ACTION_AUTOMOVE_INTERRUPT);
+    }
+  }
+
+  return controller_details;
+}
 // Does the creature's position (current tile, and the surrounding ones) allow
 // auto movement?
 pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allows_auto_move(CreaturePtr creature, MapPtr map, const AutomaticMovementFlags& amf)

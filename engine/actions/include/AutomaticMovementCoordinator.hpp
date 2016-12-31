@@ -19,6 +19,7 @@ class AutomaticMovementCoordinator
     // Each auto-move check returns a bool (indicating whether auto-move is
     // allowed) and a string (potentially empty, which represents a string ID
     // to display if the creature is the player.
+    std::pair<bool, std::vector<std::string>> controller_allows_auto_move(CreaturePtr creature);
     std::pair<bool, std::vector<std::string>> creature_can_auto_move(CreaturePtr creature);
     std::pair<bool, std::vector<std::string>> creature_position_allows_auto_move(CreaturePtr creature, MapPtr map, const AutomaticMovementFlags& amf);
     std::pair<bool, std::vector<std::string>> hunger_allows_auto_move(CreaturePtr creature);

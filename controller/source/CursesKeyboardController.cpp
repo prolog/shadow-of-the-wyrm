@@ -33,6 +33,36 @@ int CursesKeyboardController::get_char_as_int()
   return character;
 }
 
+pair<bool, int> CursesKeyboardController::get_char_as_int_nb()
+{
+  pair<bool, int> character = make_pair(false, -1);
+
+  DisplayPtr display = Game::instance().get_display();
+  std::shared_ptr<CursesDisplay> cdisplay = std::dynamic_pointer_cast<CursesDisplay>(display);
+
+  WINDOW* cur_win = nullptr;
+
+  if (cdisplay && ((cur_win = cdisplay->get_current_screen()) != nullptr))
+  {
+    // Turn on nodelay to try to get a character without blocking
+    nodelay(stdscr, true);
+
+    int win_char = wgetch(cur_win);
+    
+    if (win_char != ERR)
+    {
+      character.first = true;
+      character.second = win_char;
+    }
+
+    // Once we're done, turn off nodelay so that we're back to
+    // polling for input.
+    nodelay(stdscr, false);
+  }
+
+  return character;
+}
+
 Controller* CursesKeyboardController::clone()
 {
   return new CursesKeyboardController(*this);
