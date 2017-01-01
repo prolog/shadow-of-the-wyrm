@@ -7459,6 +7459,12 @@
 				<NumSides>4</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<EventScripts>
+				<DecisionScript>
+					<Script>decision/witchthorn.lua</Script>
+					<Chance>40</Chance>
+				</DecisionScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="treow">
 			<RaceID>_plant</RaceID>

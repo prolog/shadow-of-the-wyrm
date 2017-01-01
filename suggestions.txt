@@ -1,4 +1,7 @@
 Me:
+- Update the witchthorn special attack so that it calls CombatManager::hit
+  instead of ::deal_damage.  This will correctly call the various hit 
+  and damage messages, potentially knock back the creature, etc.
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.
@@ -73,7 +76,6 @@ Me:
 - Add splitting behaviour to all jellies: when hit, they have some
   chance (10-20%?) of splitting.  Each creature in the split has half
   the current HP of the original.
-- Witchthorns should have a chance of doing a 1 dmg piercing attack.
 - Recall spell that takes you back to the overworld.
 
 Anon: 
