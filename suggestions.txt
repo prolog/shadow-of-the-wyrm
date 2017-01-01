@@ -1,4 +1,7 @@
 Me:
+- Creatures should have a chance to follow up/down stairs with special
+  case for returning to overworld.  Chance should be based on hostility
+  and an Escape roll.  Update Guidebook.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Creatures should be smarter about the use of spells given that creatures

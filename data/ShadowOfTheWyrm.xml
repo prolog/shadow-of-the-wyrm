@@ -2950,6 +2950,12 @@
 				</Ranged>
 				<Ammunition>
 					<ID>bolt</ID>
+					<Quantity>
+						<Random>
+							<NumDice>7</NumDice>
+							<NumSides>4</NumSides>
+						</Random>
+					</Quantity>
 				</Ammunition>
 				<InitialInventory>
 					<InitialItem>
