@@ -247,7 +247,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_map_dimensions", get_map_dimensions);
   lua_register(L, "get_coords_with_tile_type_in_range", get_coords_with_tile_type_in_range);
   lua_register(L, "get_custom_map_id", get_custom_map_id);
-  lua_register(L, "deal_damage", deal_damage);
+  lua_register(L, "ranged_attack", ranged_attack);
 }
 
 // Lua API helper functions
@@ -3865,7 +3865,7 @@ int get_custom_map_id(lua_State* ls)
   return 1;
 }
 
-int deal_damage(lua_State* ls)
+int ranged_attack(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
 
@@ -3876,16 +3876,10 @@ int deal_damage(lua_State* ls)
     int damage_amount = lua_tointeger(ls, 3);
     DamageType dtype = static_cast<DamageType>(lua_tointeger(ls, 4));
     bool piercing = false;
-    string message_sid;
 
     if (num_args >= 5)
     {
       piercing = lua_toboolean(ls, 5) != 0;
-    }
-
-    if (num_args >= 6)
-    {
-      message_sid = lua_tostring(ls, 6);
     }
 
     CreaturePtr attacking_creature;
@@ -3901,17 +3895,18 @@ int deal_damage(lua_State* ls)
       attacked_creature = get_creature(attacked_creature_id);
     }
 
-    Damage damage;
-    damage.set_num_dice(damage_amount);
-    damage.set_dice_sides(1);
-    damage.set_piercing(piercing);
+    DamagePtr damage = std::make_shared<Damage>();
+    damage->set_damage_type(dtype);
+    damage->set_num_dice(damage_amount);
+    damage->set_dice_sides(1);
+    damage->set_piercing(piercing);
 
     CombatManager cm;
-    cm.deal_damage(attacking_creature, attacked_creature, damage_amount, damage, message_sid);
+    cm.attack(attacking_creature, attacked_creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY, false, damage);
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to deal_damage");
+    lua_pushstring(ls, "Incorrect arguments to ranged_attack");
     lua_error(ls);
   }
 

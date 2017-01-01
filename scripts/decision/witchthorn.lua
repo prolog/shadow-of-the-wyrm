@@ -14,8 +14,9 @@ local function fire_thorns(creature_id)
   for i, attacked_cr_id in ipairs(creature_ids) do
     add_fov_message(creature_id, attacked_cr_id, "WITCHTHORN_THORN_FIRED")
     
-    -- Deal 1d3 DamageType::DAMAGE_TYPE_PIERCE (1) damage, piercing = true
-    deal_damage(creature_id, attacked_cr_id, RNG_range(1, 3), 1, true)
+    -- Attack, dealing 1d3 DamageType::DAMAGE_TYPE_PIERCE (1) damage, 
+    -- with piercing = true
+    ranged_attack(creature_id, attacked_cr_id, RNG_range(1, 3), 1, true)
     thorns_fired = thorns_fired + 1
   end
 

@@ -39,6 +39,8 @@ class CombatManager
     void handle_hostility_implications(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     
     // Functions to handle the attacking mechanics and add messages as necessary.
+    //
+    // These are generally not called directly, other than via the Lua API.
     bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type);
     bool miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     bool close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
