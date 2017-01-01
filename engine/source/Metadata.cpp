@@ -55,8 +55,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // Argentinian classical guitarist and composer.
-  return "\"Merlin\"";
+  // Italian lutenist and composer, father of a well-known lutenist
+  // and an even more well-known astronomer.
+  return "\"Galilei\"";
 }
 
 string Metadata::get_game_version_synopsis() const
