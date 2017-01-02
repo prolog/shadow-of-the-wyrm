@@ -1,7 +1,8 @@
 Me:
-- Update the witchthorn special attack so that it calls CombatManager::hit
-  instead of ::deal_damage.  This will correctly call the various hit 
-  and damage messages, potentially knock back the creature, etc.
+- Add branding as part of enchantment.  Test.  Remove all the damtype-
+  specific weapons and armours (+ amulets/etc?).  Test every single
+  brandable weapon and armour pre and post brand.
+- Brands should also add some value multiplier...
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.
@@ -23,8 +24,6 @@ Me:
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
-- Traps that fire and kill a creature are giving the player exp?
-- Test clearing all shrines
 - Implement proper branded weapons.  These should allow for any "magical"
   damage type (heat through lightning in the damage enum) to be the weapon
   damage instead.  Should also allow for chaos/pierce/eth flags.  Gives

@@ -6,6 +6,22 @@ Shadow of the Wyrm v0.5.9 "Galilei"
 - Witchthorns are far more dangerous for early game characters.  They have
   a chance to do a ranged attack: 1d3 damage, piercing.
 
+- Added a "brandable" flag.  This allows a weapon or piece of armour to
+  take on a particular non-physical (slash, pierce, pound) damage brand:
+  holy, shadow, flame, etc.  For weapons, this will switch its damage
+  type to the appropriate flag, and add a couple of extra damage dice to
+  the base value.  For armour, this will add resistance to the appropriate
+  damage type.  The brands and corresponding damage types are flaming 
+  (heat), freezing (cold), poisonous (poison), acidic (acid), holy 
+  (holy), shadowy (shadow), arcane (arcane), crackling (lightning).
+
+- Removed the old hard-coded branded weapons to make way for the
+  dynamically-generated ones.
+
+- Almost all weapons and armour are brandable.  The exceptions tend to
+  be specific-damtype items like poison darts and shadow bombs.  Armour
+  created via skins is also not brandable.
+
 Shadow of the Wyrm v0.5.8 "Merlin"
 - Version declared December 1, 2016.  Version finalized January 1, 2017.
 

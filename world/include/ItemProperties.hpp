@@ -11,6 +11,8 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_TREE_SPECIES_ID;
     static const std::string ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE;
     static const std::string ITEM_PROPERTIES_REPLACEMENT_SID;
+    static const std::string ITEM_PROPERTIES_BRANDABLE;
+    static const std::string ITEM_PROPERTIES_BRANDED;
 
   protected:
     ItemProperties();
