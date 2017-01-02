@@ -2,6 +2,8 @@
 #include "Random.hpp"
 #include "RNG.hpp"
 
+const int ItemEnchantmentCalculator::BASE_CHANCE_BRAND = 15;
+
 // Poisson distributions must have a non-zero mean (1, 2, etc).  Because of
 // this, Poisson is only used when the danger level gets to a point where
 // danger/6 is 1 or greater.  Before that, there is a chance for an
@@ -18,3 +20,22 @@ int ItemEnchantmentCalculator::calculate_enchantments(const int danger_level)
 
   return enchants;
 }
+
+int ItemEnchantmentCalculator::calculate_pct_chance_brand(const float pct_chance_multiplier, const bool brandable, const bool artifact)
+{
+  int chance = static_cast<int>(BASE_CHANCE_BRAND * pct_chance_multiplier);
+
+  chance = std::max<int>(chance, 0);
+  chance = std::min<int>(chance, 100);
+
+  if (!brandable || artifact)
+  {
+    chance = 0;
+  }
+
+  return chance;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ItemEnchantmentCalculator_test.cpp"
+#endif
