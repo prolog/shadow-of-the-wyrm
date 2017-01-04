@@ -1,4 +1,5 @@
 #include <sstream>
+#include "BrandConstants.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
 #include "Weapon.hpp"
@@ -162,6 +163,17 @@ void Weapon::do_improve_item(const int points)
     default:
       break;
   }
+}
+
+DamageType Weapon::do_brand()
+{
+  DamageType brand = get_random_brand();
+
+  damage.set_damage_type(brand);
+  damage.set_num_dice(damage.get_num_dice() + BrandConstants::BRAND_ADDITIONAL_WEAPON_DICE);
+  damage.set_modifier(damage.get_modifier() + BrandConstants::BRAND_DAMAGE_MODIFIER);
+
+  return brand;
 }
 
 string Weapon::get_synopsis() const

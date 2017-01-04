@@ -19,4 +19,5 @@ const string ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE = "destructi
 const string ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID = "replacement_sid";
 const string ItemProperties::ITEM_PROPERTIES_BRANDABLE = "brandable";
 const string ItemProperties::ITEM_PROPERTIES_BRANDED = "branded";
+const string ItemProperties::ITEM_PROPERTIES_BRAND = "brand";
 

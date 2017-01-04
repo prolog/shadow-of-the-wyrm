@@ -42,6 +42,7 @@ class Weapon : public Wearable
     virtual void do_enchant_item(const int points) override;
     virtual void do_smith_item(const int points) override;
     virtual void do_improve_item(const int points) override;
+    virtual DamageType do_brand() override;
 
     int difficulty;
     int speed;

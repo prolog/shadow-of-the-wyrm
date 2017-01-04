@@ -1,8 +1,10 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include "BrandConstants.hpp"
 #include "Conversion.hpp"
 #include "global_prototypes.hpp"
 #include "Item.hpp"
+#include "ItemProperties.hpp"
 #include "NullEffect.hpp"
 #include "MaterialFactory.hpp"
 #include "RNG.hpp"
@@ -499,9 +501,22 @@ bool Item::can_smith() const
 // always work, and to not take up any of the possible number of
 // enchantments an item can have.  This allows great items to be
 // generated, and to allow additional enchantments as well.
-bool Item::enchant(const int enchant_points)
+bool Item::enchant(const int pct_chance_brand, const int enchant_points)
 {
-  do_enchant_item(enchant_points);
+  if (RNG::percent_chance(pct_chance_brand))
+  {
+    brand();
+    int rem_points = enchant_points - 1;
+
+    if (rem_points > 0)
+    {
+      do_enchant_item(rem_points);
+    }
+  }
+  else
+  {
+    do_enchant_item(enchant_points);
+  }
 
   return true;
 }
@@ -521,16 +536,46 @@ bool Item::smith(const int smith_points)
   }
 }
 
-bool Item::enchant(const float enchant_mult)
+bool Item::brand()
+{
+  if (remaining_enchants.get_current() > 0)
+  {
+    DamageType brand = do_brand();
+
+    set_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED, Bool::to_string(true));
+    set_additional_property(ItemProperties::ITEM_PROPERTIES_BRAND, to_string(static_cast<int>(brand)));
+    remaining_enchants.set_current(remaining_enchants.get_current() - 1);
+
+    // Branding doubles the item's value.
+    value *= 2;
+
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+bool Item::enchant(const int pct_chance_brand, const float enchant_mult)
 {
   bool enchanted = false;
   
   if (can_enchant())
   {
     int points = static_cast<int>(RNG::range(ItemEnchantingSmithing::MIN_POINTS, ItemEnchantingSmithing::MAX_POINTS) * enchant_mult);
-    do_enchant_item(points);
 
-    remaining_enchants.set_current(remaining_enchants.get_current() - 1);
+    if (RNG::percent_chance(pct_chance_brand))
+    {
+      brand();
+      points--;
+    }
+
+    if (points > 0)
+    {
+      do_enchant_item(points);
+      remaining_enchants.set_current(remaining_enchants.get_current() - 1);
+    }
 
     enchanted = true;
   }
@@ -657,6 +702,29 @@ void Item::do_smith_item(const int points)
 
   float smith_amt = points / 100.0f;
   resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + smith_amt);
+}
+
+DamageType Item::do_brand()
+{
+  DamageType brand = get_random_brand();
+  ResistancePtr brand_res = resistances.get_resistance(brand);
+
+  if (brand_res != nullptr)
+  {
+    double res_val = std::max<double>(brand_res->get_value() - BrandConstants::BRAND_RESISTANCE_AMOUNT, 0.0);
+    brand_res->set_value(res_val);
+  }
+
+  return brand;
+}
+
+DamageType Item::get_random_brand()
+{
+  DamageType brand = DamageType::DAMAGE_TYPE_HEAT;
+
+  brand = static_cast<DamageType>(RNG::range(static_cast<int>(DamageType::DAMAGE_TYPE_HEAT), static_cast<int>(DamageType::DAMAGE_TYPE_LIGHTNING)));
+
+  return brand;
 }
 
 void Item::set_additional_properties(const map<string, string>& new_additional_properties)
