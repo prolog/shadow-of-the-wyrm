@@ -1,5 +1,55 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Damage, set_damage_flags)
+{
+  StatusAilments sa;
+  Damage damage(1, 4, 1, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, false, 0, sa);
+
+  static_assert(DamageFlag::DAMAGE_FLAG_LAST == DamageFlag(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+
+  map<DamageFlag, bool> dflags = {{DamageFlag::DAMAGE_FLAG_CHAOTIC, false},
+                                  {DamageFlag::DAMAGE_FLAG_VORPAL, false},
+                                  {DamageFlag::DAMAGE_FLAG_DRAINING, false},
+                                  {DamageFlag::DAMAGE_FLAG_ETHEREAL, false},
+                                  {DamageFlag::DAMAGE_FLAG_PIERCING, false},
+                                  {DamageFlag::DAMAGE_FLAG_INCORPOREAL, false}};
+  
+  // Flags should all be false at this point.
+
+  for (const auto& dpair : dflags)
+  {
+    EXPECT_FALSE(damage.get_damage_flag(dpair.first));
+  }
+
+  dflags = {{DamageFlag::DAMAGE_FLAG_CHAOTIC, true},
+            {DamageFlag::DAMAGE_FLAG_VORPAL, true},
+            {DamageFlag::DAMAGE_FLAG_DRAINING, true},
+            {DamageFlag::DAMAGE_FLAG_ETHEREAL, true},
+            {DamageFlag::DAMAGE_FLAG_PIERCING, true},
+            {DamageFlag::DAMAGE_FLAG_INCORPOREAL, true}};
+
+  damage.set_damage_flags(dflags);
+
+  for (const auto& dpair : dflags)
+  {
+    EXPECT_TRUE(damage.get_damage_flag(dpair.first));
+  }
+
+  dflags = {{DamageFlag::DAMAGE_FLAG_CHAOTIC, false},
+            {DamageFlag::DAMAGE_FLAG_VORPAL, true},
+            {DamageFlag::DAMAGE_FLAG_DRAINING, false},
+            {DamageFlag::DAMAGE_FLAG_ETHEREAL, true},
+            {DamageFlag::DAMAGE_FLAG_PIERCING, true},
+            {DamageFlag::DAMAGE_FLAG_INCORPOREAL, false}};
+
+  damage.set_damage_flags(dflags);
+
+  for (const auto& dpair : dflags)
+  {
+    EXPECT_EQ(dpair.second, damage.get_damage_flag(dpair.first));
+  }
+}
+
 TEST(SW_World_Damage, contains_dam_type)
 {
   StatusAilments sa;
