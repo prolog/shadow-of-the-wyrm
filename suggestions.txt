@@ -1,4 +1,8 @@
 Me:
+- Allow the weapon flags to also get triggered during weapon enchantment.
+  Should be a 25% chance.
+- Ensure item describers properly handle the brands, plus draining/vorpal/
+  piercing/chaotic.
 - Add damage type to weapon info.
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
@@ -21,15 +25,6 @@ Me:
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
-- Implement proper branded weapons.  These should allow for any "magical"
-  damage type (heat through lightning in the damage enum) to be the weapon
-  damage instead.  Should also allow for chaos/pierce/eth flags.  Gives
-  extra dice or modifier.  Should have "branded" flag on Weapon, config
-  as necessary during item generation.  Have one weapon for each of the
-  melee weapon groups, and ranged ammunition.  Remove all the individual
-  branded-like items from the game configuration.
-- Ensure item describers properly handle the brands, plus draining/vorpal/
-  piercing/chaotic.
 - Cancellation effect type
 - Special rooms: beer hall, magical workshop, armory.
 - Travelling bazaars.

@@ -121,11 +121,18 @@ bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i)
 // or both.  It may also grant resistances.
 void Weapon::do_enchant_item(const int points)
 {
+  // Resists.
   if (RNG::percent_chance(50))
   {
     Item::do_enchant_item(points);
   }
+  // Very small chance to set one of the damage flags
+  // like vorpal, draining, etc.
+  // else if ...
+  // {
+  // }
 
+  // To-hit, damage, etc.  Shared by both enchanting and smithing.
   do_improve_item(points);
 }
 
