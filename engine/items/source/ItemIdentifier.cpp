@@ -7,6 +7,7 @@
 #include "ItemFilterFactory.hpp"
 #include "ItemProperties.hpp"
 #include "ItemStatusTextKeys.hpp"
+#include "ResistanceTextKeys.hpp"
 #include "SkinningConstants.hpp"
 #include "StatisticsMarker.hpp"
 #include "StringTable.hpp"
@@ -204,13 +205,15 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
     else if (brandable)
     {
       string br_desc = StringTable::get(item->get_description_sid());
+      desc << br_desc;
 
       if (branded)
       {
+        DamageType brand = static_cast<DamageType>(String::to_int(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRAND)));
+        
         // Add the brand to the end of the description, in parentheses.
+        desc << " (" << ResistanceTextKeys::get_resistance_for_damage_type(brand) << ")";
       }
-
-      desc << br_desc;
     }
     // If the item requires creating a message with substitutions (e.g.,
     // "red dragon skin"), handle that case:
@@ -290,14 +293,18 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     }
     else if (brandable)
     {
-      string br_desc = StringTable::get(item->get_usage_description_sid());
+      ostringstream ss;
+      ss << StringTable::get(item->get_usage_description_sid());
 
       if (branded)
       {
-        // To the end of the description, add the brand in parentheses.
+        DamageType brand = static_cast<DamageType>(String::to_int(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRAND)));
+
+        // Add the brand to the end of the description, in parentheses.
+        ss << " (" << ResistanceTextKeys::get_resistance_for_damage_type(brand) << ")";
       }
 
-      full_desc = br_desc;
+      full_desc = ss.str();
     }
     // If the item requires creating a message with substitutions (e.g.,
     // "red dragon skin"), handle that case:

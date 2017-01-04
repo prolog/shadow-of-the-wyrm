@@ -13,6 +13,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_REPLACEMENT_SID;
     static const std::string ITEM_PROPERTIES_BRANDABLE;
     static const std::string ITEM_PROPERTIES_BRANDED;
+    static const std::string ITEM_PROPERTIES_BRAND;
 
   protected:
     ItemProperties();

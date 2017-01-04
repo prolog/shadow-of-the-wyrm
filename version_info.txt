@@ -8,19 +8,24 @@ Shadow of the Wyrm v0.5.9 "Galilei"
 
 - Added a "brandable" flag.  This allows a weapon or piece of armour to
   take on a particular non-physical (slash, pierce, pound) damage brand:
-  holy, shadow, flame, etc.  For weapons, this will switch its damage
-  type to the appropriate flag, and add a couple of extra damage dice to
-  the base value.  For armour, this will add resistance to the appropriate
-  damage type.  The brands and corresponding damage types are flaming 
-  (heat), freezing (cold), poisonous (poison), acidic (acid), holy 
-  (holy), shadowy (shadow), arcane (arcane), crackling (lightning).
+  holy, shadow, flame, etc.  
 
 - Removed the old hard-coded branded weapons to make way for the
   dynamically-generated ones.
 
-- Almost all weapons and armour are brandable.  The exceptions tend to
+- Almost all weapons and armour are now brandable.  The exceptions tend to
   be specific-damtype items like poison darts and shadow bombs.  Armour
   created via skins is also not brandable.
+
+- An brandable item has a 15% chance to be branded when enchanted.  This 
+  is modified to 0% (when reading a cursed enchanting scroll), or 30%
+  (blessed).  Once an item is branded, its brand is fixed, and it cannot
+  be branded again.
+
+- Branding will associate a particular damage type with the item.
+  For armour, this will give an additional 15 percentage points of
+  resistance.  For weapons, it will switch to that damage type, and
+  add an additional die of damage, and +1 to the modifier.
 
 Shadow of the Wyrm v0.5.8 "Merlin"
 - Version declared December 1, 2016.  Version finalized January 1, 2017.

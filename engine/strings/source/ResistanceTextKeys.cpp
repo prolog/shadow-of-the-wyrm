@@ -1,4 +1,5 @@
 #include "ResistanceTextKeys.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 
@@ -9,6 +10,54 @@ ResistanceTextKeys::ResistanceTextKeys()
 
 ResistanceTextKeys::~ResistanceTextKeys()
 {
+}
+
+string ResistanceTextKeys::get_resistance_for_damage_type(const DamageType dt)
+{
+  string res;
+
+  switch (dt)
+  {
+    case DamageType::DAMAGE_TYPE_SLASH:
+      res = RESISTANCE_SLASH;
+      break;
+    case DamageType::DAMAGE_TYPE_PIERCE:
+      res = RESISTANCE_PIERCE;
+      break;
+    case DamageType::DAMAGE_TYPE_POUND:
+      res = RESISTANCE_POUND;
+      break;
+    case DamageType::DAMAGE_TYPE_HEAT:
+      res = RESISTANCE_HEAT;
+      break;
+    case DamageType::DAMAGE_TYPE_COLD:
+      res = RESISTANCE_COLD;
+      break;
+    case DamageType::DAMAGE_TYPE_ACID:
+      res = RESISTANCE_ACID;
+      break;
+    case DamageType::DAMAGE_TYPE_POISON:
+      res = RESISTANCE_POISON;
+      break;
+    case DamageType::DAMAGE_TYPE_HOLY:
+      res = RESISTANCE_HOLY;
+      break;
+    case DamageType::DAMAGE_TYPE_SHADOW:
+      res = RESISTANCE_SHADOW;
+      break;
+    case DamageType::DAMAGE_TYPE_ARCANE:
+      res = RESISTANCE_ARCANE;
+      break;
+    case DamageType::DAMAGE_TYPE_LIGHTNING:
+      res = RESISTANCE_LIGHTNING;
+      break;
+    case DamageType::DAMAGE_TYPE_NULL:
+    default:
+      break;
+  }
+
+  res = StringTable::get(res);
+  return res;
 }
 
 const string ResistanceTextKeys::RESISTANCES_ABRV          = "RESISTANCES_ABRV";

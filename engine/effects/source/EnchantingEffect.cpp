@@ -1,9 +1,12 @@
 #include "ActionManager.hpp"
+#include "Conversion.hpp"
 #include "EffectTextKeys.hpp"
 #include "EnchantingEffect.hpp"
+#include "ItemEnchantmentCalculator.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -77,7 +80,9 @@ bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, c
       // If it can, enchant it, and display a message.
       else
       {
-        item->enchant(enchantment_multiplier);
+        ItemEnchantmentCalculator iec;
+        int pct_chance_brand = iec.calculate_pct_chance_brand(enchantment_multiplier, item);
+        item->enchant(pct_chance_brand, enchantment_multiplier);
 
         if (item_status == ItemStatus::ITEM_STATUS_CURSED)
         {

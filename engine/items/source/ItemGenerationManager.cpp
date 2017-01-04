@@ -1,8 +1,11 @@
 #include <iterator>
 #include "AmmunitionCalculator.hpp"
+#include "Conversion.hpp"
 #include "Game.hpp"
+#include "ItemEnchantmentCalculator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "ItemManager.hpp"
+#include "ItemProperties.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -125,16 +128,20 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
     if (enchant_points > 0)
     {
       bool enchant_all_at_once = RNG::percent_chance(50);
+      ItemEnchantmentCalculator iec;
+      int pct_chance_brand = 0;
 
       if (enchant_all_at_once)
       {
-        generated_item->enchant(enchant_points);
+        pct_chance_brand = iec.calculate_pct_chance_brand(1.0, generated_item);
+        generated_item->enchant(pct_chance_brand, enchant_points);
       }
       else
       {
         for (int i = 0; i < enchant_points; i++)
         {
-          generated_item->enchant(1);
+          pct_chance_brand = iec.calculate_pct_chance_brand(1.0, generated_item);
+          generated_item->enchant(pct_chance_brand, 1);
         }
       }
     }

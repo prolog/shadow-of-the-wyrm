@@ -1,8 +1,5 @@
 Me:
-- Add branding as part of enchantment.  Test.  Remove all the damtype-
-  specific weapons and armours (+ amulets/etc?).  Test every single
-  brandable weapon and armour pre and post brand.
-- Brands should also add some value multiplier...
+- Add damage type to weapon info.
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.
