@@ -371,6 +371,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
@@ -435,6 +436,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<Drops>
@@ -505,6 +507,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<Drops>
@@ -575,6 +578,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>DEMON_RACE_NAME</NameSID>
@@ -639,6 +643,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
@@ -703,6 +708,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<Drops>
@@ -775,6 +781,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>INSECT_RACE_NAME</NameSID>
@@ -839,6 +846,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>1</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>JELLY_RACE_NAME</NameSID>
@@ -903,6 +911,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
@@ -967,6 +976,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>PLANT_RACE_NAME</NameSID>
@@ -1031,6 +1041,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
@@ -1090,6 +1101,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
@@ -1152,6 +1164,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
@@ -1213,6 +1226,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<Drops>
@@ -1277,6 +1291,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>0</SettlementType>
@@ -1363,6 +1378,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>0</SettlementType>
@@ -1441,6 +1457,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1520,6 +1537,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>3</SettlementType>
@@ -1596,6 +1614,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasRandomVillages>0</HasRandomVillages>
@@ -1674,6 +1693,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1751,6 +1771,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1829,6 +1850,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1903,6 +1925,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>1</SettlementType>
@@ -1978,6 +2001,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>3</SettlementType>

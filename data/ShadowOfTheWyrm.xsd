@@ -220,6 +220,7 @@
 			<xs:element name="UserPlayable" type="xs:boolean"/>
 			<xs:element name="LeavesCorpse" type="xs:boolean"/>
 			<xs:element name="CorpsePoisoned" type="xs:boolean"/>
+			<xs:element name="Splits" type="xs:boolean"/>
 			<!-- Can we steal from the creature? -->
 			<xs:element name="HasPockets" type="xs:boolean"/> 
 			<!-- When it's attacked, does it yell and draw other friendly creatures into the fight? -->
