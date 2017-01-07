@@ -5,6 +5,8 @@
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureFactory.hpp"
+#include "CreatureSplitCalculator.hpp"
 #include "CreatureDescriber.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageText.hpp"
@@ -433,6 +435,46 @@ void CombatManager::handle_ethereal_if_necessary(CreaturePtr attacking_creature,
   }
 }
 
+void CombatManager::handle_split_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, RacePtr creature_race, MapPtr current_map)
+{
+  if (attacked_creature && creature_race)
+  {
+    CreatureSplitCalculator csc;
+
+    if (RNG::percent_chance(csc.calculate_pct_chance_split(attacked_creature, creature_race, current_map)))
+    {
+      // Create the new creature, and adjust HP/AP.
+      Game& game = Game::instance();
+      CreatureFactory cf;
+      CreaturePtr split_creature = cf.create_by_creature_id(game.get_action_manager_ref(), attacked_creature->get_original_id());
+
+      if (split_creature != nullptr)
+      {
+        // Adjust its HP
+        split_creature->get_hit_points_ref().set_current(csc.calculate_split_hit_points(attacked_creature));
+
+        // Add it nearby.
+        TileDirectionMap adjacent_tiles = MapUtils::get_adjacent_tiles_to_creature(current_map, attacked_creature);
+
+        for (const auto& t_pair : adjacent_tiles)
+        {
+          if (MapUtils::is_tile_available_for_creature(split_creature, t_pair.second))
+          {
+            Coordinate adj_coords = CoordUtils::get_new_coordinate(current_map->get_location(attacked_creature->get_id()), t_pair.first);
+            GameUtils::add_new_creature_to_map(game, split_creature, current_map, adj_coords);
+
+            break;
+          }
+        }
+
+        // Add a split message.
+        string split_msg = CombatTextKeys::get_split_message(StringTable::get(attacked_creature->get_description_sid()));
+        add_combat_message(attacking_creature, attacked_creature, split_msg);
+      }
+    }
+  }
+}
+
 // After attacking, check to see if there is an associated attack script.
 // If there is, run it according to the associated probability.
 //
@@ -565,6 +607,13 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
         uint experience_value = attacked_creature->get_experience_value();
         em.gain_experience(attacking_creature, experience_value);
       }
+    }
+    else
+    {
+      // Does the creature split, potentially?
+      RaceManager rm;
+      RacePtr creature_race = rm.get_race(attacked_creature->get_race_id());
+      handle_split_if_necessary(attacking_creature, attacked_creature, creature_race, map);
     }
   }
 }

@@ -35,6 +35,9 @@ class CombatManager
     void handle_draining_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info);
     void handle_ethereal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info);
 
+    // Can the creature split when hit?
+    void handle_split_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, RacePtr creature_race, MapPtr current_map);
+
     // Set the creature to hostile, and yell out for support.
     void handle_hostility_implications(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     

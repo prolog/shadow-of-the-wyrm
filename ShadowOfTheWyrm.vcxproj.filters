@@ -3900,6 +3900,9 @@
     <ClInclude Include="world\include\BrandConstants.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\CreatureSplitCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7666,6 +7669,9 @@
     </ClCompile>
     <ClCompile Include="world\source\BrandConstants.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CreatureSplitCalculator.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
