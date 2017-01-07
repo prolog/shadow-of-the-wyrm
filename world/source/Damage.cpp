@@ -218,6 +218,44 @@ bool Damage::get_damage_flag(const DamageFlag df) const
   return flag;
 }
 
+vector<DamageFlag> Damage::get_damage_flags_by_value(const bool value) const
+{
+  static_assert(DamageFlag::DAMAGE_FLAG_LAST == DamageFlag(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+  vector<DamageFlag> damage_flags;
+
+  if (chaotic == value)
+  {
+    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_CHAOTIC);
+  }
+
+  if (vorpal == value)
+  {
+    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_VORPAL);
+  }
+
+  if (draining == value)
+  {
+    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_DRAINING);
+  }
+
+  if (ethereal == value)
+  {
+    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_ETHEREAL);
+  }
+
+  if (piercing == value)
+  {
+    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_PIERCING);
+  }
+
+  if (incorporeal == value)
+  {
+    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_INCORPOREAL);
+  }
+
+  return damage_flags;
+}
+
 void Damage::set_chaotic(const bool new_chaotic)
 {
   chaotic = new_chaotic;

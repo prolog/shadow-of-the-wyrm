@@ -50,6 +50,32 @@ TEST(SW_World_Damage, set_damage_flags)
   }
 }
 
+TEST(SW_World_Damage, get_damage_flags_by_type)
+{
+  StatusAilments sa;
+  Damage damage(1, 4, 1, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, false, 0, sa);
+
+  EXPECT_TRUE(damage.get_damage_flags_by_value(true).empty());
+  EXPECT_TRUE(damage.get_damage_flags_by_value(false).size() == 6);
+
+  damage.set_vorpal(true);
+  damage.set_incorporeal(true);
+
+  vector<DamageFlag> dflags = damage.get_damage_flags_by_value(true);
+
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlag::DAMAGE_FLAG_VORPAL) != dflags.end());
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlag::DAMAGE_FLAG_INCORPOREAL) != dflags.end());
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlag::DAMAGE_FLAG_DRAINING) == dflags.end());
+  EXPECT_TRUE(dflags.size() == 2);
+
+  damage.set_damage_flag(DamageFlag::DAMAGE_FLAG_DRAINING, true);
+
+  dflags = damage.get_damage_flags_by_value(true);
+
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlag::DAMAGE_FLAG_DRAINING) != dflags.end());
+  EXPECT_TRUE(dflags.size() == 3);
+}
+
 TEST(SW_World_Damage, contains_dam_type)
 {
   StatusAilments sa;
