@@ -378,6 +378,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\CreatureCoordinateCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreaturePietyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureSpeedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\CreatureSplitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CriticalHitTypeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DamageCalculator.hpp" />
@@ -1329,6 +1330,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\AmmunitionCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CalcUtils.cpp" />
     <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\CreatureSplitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DisarmTrapsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FishingCalculator.cpp" />

@@ -22,6 +22,7 @@ class CombatTextKeys
     static std::string get_monster_dies_message(const std::string& monster_name);
     static std::string get_no_damage_message(const bool target_is_player, const std::string& target);
     static std::string get_ranged_attack_message(const bool attacker_is_player, const bool attacked_is_player, const bool uses_launcher, const std::string& attacker, const std::string& ammunition, const std::string& target);
+    static std::string get_split_message(const std::string& split_creature);
 
     static const std::string COMBAT_TARGET_TOO_FAR_AWAY;
     static const std::string COMBAT_CRITICAL_HIT_MESSAGE; // Common to both - no substitutions
@@ -61,6 +62,9 @@ class CombatTextKeys
     static const std::string COMBAT_INCORPOREAL_MESSAGE;
     static const std::string COMBAT_INCORPOREAL_MESSAGE_NP;
     
+    // Splitting is NPC only.
+    static const std::string COMBAT_SPLIT_MESSAGE;
+
     static void populate_combat_messages();
     static std::string create_key(const bool is_player, const DamageType damage_type);
     static std::map<std::string, std::vector<std::string>> combat_damage_hit_messages;

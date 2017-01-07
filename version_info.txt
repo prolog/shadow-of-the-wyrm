@@ -27,6 +27,10 @@ Shadow of the Wyrm v0.5.9 "Galilei"
   resistance.  For weapons, it will switch to that damage type, and
   add an additional die of damage, and +1 to the modifier.
 
+- Jellies can now split in half when they're wounded and have more than
+  half their maximum HP.  The creature that splits off has half of their
+  current HP, so will not split itself.
+
 Shadow of the Wyrm v0.5.8 "Merlin"
 - Version declared December 1, 2016.  Version finalized January 1, 2017.
 

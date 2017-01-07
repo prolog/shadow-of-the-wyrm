@@ -1,3 +1,7 @@
+Esran Zarnath:
+- Freeze when ascending/descending into a zoo.  Possibly other cases where
+  there's an unexpected creature present? (+ credits)
+
 Me:
 - Allow the weapon flags to also get triggered during weapon enchantment.
   Should be a 25% chance.
