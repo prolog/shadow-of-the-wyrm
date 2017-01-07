@@ -121,19 +121,30 @@ bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i)
 // or both.  It may also grant resistances.
 void Weapon::do_enchant_item(const int points)
 {
+  vector<DamageFlag> dflags = damage.get_damage_flags_by_value(false);
+
   // Resists.
-  if (RNG::percent_chance(50))
+  if (RNG::percent_chance(25))
   {
     Item::do_enchant_item(points);
   }
-  // Very small chance to set one of the damage flags
-  // like vorpal, draining, etc.
-  // else if ...
-  // {
-  // }
+  else
+  {
+    int rem_points = points;
 
-  // To-hit, damage, etc.  Shared by both enchanting and smithing.
-  do_improve_item(points);
+    // Very small chance to set one of the damage flags
+    // like vorpal, draining, etc.
+    if (rem_points > 0 && !dflags.empty() && RNG::percent_chance(2))
+    {
+      DamageFlag df = dflags.at(RNG::range(0, dflags.size()-1));
+      damage.set_damage_flag(df, true);
+
+      rem_points--;
+    }
+
+    // To-hit, damage, etc.  Shared by both enchanting and smithing.
+    do_improve_item(rem_points);
+  }
 }
 
 void Weapon::do_smith_item(const int points)

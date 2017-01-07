@@ -27,6 +27,12 @@ Shadow of the Wyrm v0.5.9 "Galilei"
   resistance.  For weapons, it will switch to that damage type, and
   add an additional die of damage, and +1 to the modifier.
 
+- Weapons have a very small chance, upon enchantment, to gain a damage
+  flag such as vorpal, draining, chaotic, etc.
+
+- Weapons are now less likely to gain resistances when being enchanted.
+  The chance has been halved.
+
 - Jellies can now split in half when they're wounded and have more than
   half their maximum HP.  The creature that splits off has half of their
   current HP, so will not split itself.

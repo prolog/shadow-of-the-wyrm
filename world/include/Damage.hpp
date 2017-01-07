@@ -29,6 +29,7 @@ class Damage : public Dice
     void set_damage_flags(const std::map<DamageFlag, bool>& dflags);
     void set_damage_flag(const DamageFlag df, const bool value);
     bool get_damage_flag(const DamageFlag df) const;
+    std::vector<DamageFlag> get_damage_flags_by_value(const bool val) const;
 
     void set_chaotic(const bool new_chaotic);
     bool get_chaotic() const;
