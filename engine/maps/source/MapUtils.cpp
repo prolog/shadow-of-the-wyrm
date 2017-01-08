@@ -263,6 +263,15 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   bool added_location = false;
 
   TilePtr creatures_new_tile = map->at(c);
+
+  /*std::map<string, Coordinate> locations = map->get_locations();
+  for (const auto& l_pair : locations)
+  {
+    if (l_pair.second == c)
+    {
+      int x = 1;
+    }
+  } */
   
   if (creature->get_is_player())
   {
@@ -270,7 +279,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   }
 
   map->add_or_update_location(creature->get_id(), c);
-  
+
   // Did the creature belong to a previous tile?  Can we move it to the new tile?  If so, then
   // remove from the old tile, and add to the new.
   if (creatures_new_tile && is_tile_available_for_creature(creature, creatures_new_tile))
@@ -804,7 +813,7 @@ bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPt
   return false;
 }
 
-void MapUtils::place_creature_on_previous_or_first_available_location(MapPtr map, CreaturePtr creature, const string& player_loc)
+void MapUtils::place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const string& player_loc)
 {
   Coordinate coords(0,0);
 
@@ -822,17 +831,20 @@ void MapUtils::place_creature_on_previous_or_first_available_location(MapPtr map
   {
     coords = map->get_location(player_loc);
   }
-                
-  bool placed_creature = false;
-  while (placed_creature == false && (CoordUtils::is_end(coords) == false))
-  {
-    placed_creature = MapUtils::add_or_update_location(map, creature, coords);
+  
+  TilePtr placement_tile = map->at(coords);
 
-    // If we still haven't placed the creature, try the next tile...
-    if (!placed_creature)
+  if (placement_tile != nullptr)
+  {
+    // Anything here? If so, remove it - the creature moving to the tile always
+    // gets priority.
+    if (placement_tile->has_creature())
     {
-      coords = CoordUtils::incr(coords, map->size());
+      CreaturePtr existing_creature = placement_tile->get_creature();
+      MapUtils::remove_creature(map, existing_creature);
     }
+
+    MapUtils::add_or_update_location(map, creature, coords);
   }
 }
 

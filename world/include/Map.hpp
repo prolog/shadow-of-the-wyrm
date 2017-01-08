@@ -78,6 +78,7 @@ class Map : public ISerializable
     void remove_location(const std::string& location);
     bool has_location(const std::string& location);
     Coordinate get_location(const std::string& location) const;
+    std::map<std::string, Coordinate> get_locations() const;
     std::shared_ptr<Tile> get_tile_at_location(const std::string& location);
     
     void set_map_exit(MapExitPtr new_map_exit);

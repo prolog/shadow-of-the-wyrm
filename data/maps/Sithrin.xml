@@ -168,20 +168,18 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>poison_arrow</ID>
+				<ID>abyssal_hide</ID>
 				<Coord>
 					<Row>14</Row>
 					<Col>47</Col>
 				</Coord>
-				<Quantity>20</Quantity>
 			</Placement>
 			<Placement>
-				<ID>freezing_arrow</ID>
+				<ID>guildmasters_ring</ID>
 				<Coord>
 					<Row>16</Row>
 					<Col>47</Col>
 				</Coord>
-				<Quantity>20</Quantity>
 			</Placement>
 			<Placement>
 				<ID>dragon_breath_spellbook</ID>
