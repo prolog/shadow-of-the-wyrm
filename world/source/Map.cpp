@@ -349,10 +349,7 @@ void Map::remove_location(const string& location)
 
 Coordinate Map::get_location(const string& location) const
 {
-  Coordinate c;
-
-  c.first = 0;
-  c.second = 0;
+  Coordinate c(0,0);
 
   NamedMapLocations::const_iterator l_it = locations.find(location);
 
@@ -362,6 +359,11 @@ Coordinate Map::get_location(const string& location) const
   }
 
   return c;
+}
+
+map<string, Coordinate> Map::get_locations() const
+{
+  return locations;
 }
 
 bool Map::has_location(const string& location)

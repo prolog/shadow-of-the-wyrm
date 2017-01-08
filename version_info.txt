@@ -37,6 +37,16 @@ Shadow of the Wyrm v0.5.9 "Galilei"
   half their maximum HP.  The creature that splits off has half of their
   current HP, so will not split itself.
 
+- Bug fixes:
+
+  - Fixed a looping issue with entering a map where the entry tile is 
+    occupied by an NPC (Esran).
+
+  - All-zoo dungeon levels weren't allowing stair placement.
+
+  - Tile-related messages were not always being displayed correctly when
+    moving to a new map.
+
 Shadow of the Wyrm v0.5.8 "Merlin"
 - Version declared December 1, 2016.  Version finalized January 1, 2017.
 

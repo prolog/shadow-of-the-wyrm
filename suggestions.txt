@@ -3,6 +3,7 @@ Esran Zarnath:
   there's an unexpected creature present? (+ credits)
 
 Me:
+- Ensure both stairs in dungeon avoid zoos
 - Ensure item describers properly handle damage flags.
 - Add damage type to weapon info.
 - Creatures should have a chance to follow up/down stairs with special

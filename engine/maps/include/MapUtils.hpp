@@ -65,7 +65,7 @@ class MapUtils
     static bool adjacent_creature_exists(const int row, const int col, MapPtr map);
     static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
 
-    static void place_creature_on_previous_or_first_available_location(MapPtr map, CreaturePtr creature, const std::string& player_loc);
+    static void place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const std::string& player_loc);
     
     // Check to see if the given tile is a "corner tile", given a corner direction.
     static bool is_corner(const Coordinate& c, const Direction d, MapPtr map);
