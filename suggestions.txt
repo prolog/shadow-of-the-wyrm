@@ -4,8 +4,14 @@ Esran Zarnath:
 
 Me:
 - Ensure both stairs in dungeon avoid zoos
+- There are problems with map generation in that multiple creatures appear
+  to be generated on a single tile, but somehow avoid the is_tile_avail
+  check...
+- Unnecessary refresh being called for generator? (refreshing overworld
+  when it shouldn't)
 - Ensure item describers properly handle damage flags.
 - Add damage type to weapon info.
+- Game won't start when a log file is locked/open.
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.

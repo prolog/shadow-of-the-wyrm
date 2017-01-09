@@ -104,6 +104,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
   IMessageManager& manager = MM::instance();
   CreatureFactory cf;
+  CreatureGenerationValuesMap& cgvm = game.get_creature_generation_values_ref();
 
   while (!maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
@@ -122,8 +123,15 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
         //  If pack creatures are generated, the maximum for the level is
         // adjusted as well.
         int addl_pack_creatures = 0;
+        auto c_it = cgvm.find(generated_creature->get_original_id());
+        bool can_generate_pack = false;
 
-        if (RNG::percent_chance(PACK_CHANCE))
+        if (c_it != cgvm.end())
+        {
+          can_generate_pack = (c_it->second.is_maximum_reached() == false);
+        }
+
+        if (can_generate_pack && RNG::percent_chance(PACK_CHANCE))
         {
           // Pack generation: packs are meaner, are not suppressed from appearing
           // by stairs.
@@ -135,7 +143,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
             TilePtr tile = map->at(adj);
             CreaturePtr pack_creature = cf.create_by_creature_id(am, creature_id);
 
-            if (MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
+            if (pack_creature != nullptr && MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
             {
               addl_pack_creatures++;
               add_creature_to_map(game, pack_creature, map, manager, base_danger_level, adj.first, adj.second, current_creatures_placed, creatures_generated);

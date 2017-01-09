@@ -1,4 +1,4 @@
-Shadow of the Wyrm v0.5.9 "Galilei"
+Shadow of the Wyrm v0.5.8.1 "Merlin"
 - Version declared January 1, 2017.
 
 - Nobles now start with a number of crossbow bolts, instead of just one.
@@ -38,6 +38,8 @@ Shadow of the Wyrm v0.5.9 "Galilei"
   current HP, so will not split itself.
 
 - Bug fixes:
+
+  - Pack generation shouldn't be attempted for uniques (Esran).
 
   - Fixed a looping issue with entering a map where the entry tile is 
     occupied by an NPC (Esran).
