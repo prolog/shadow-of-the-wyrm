@@ -236,6 +236,10 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       {
         if (confirm_move_to_tile_if_necessary(creature, creatures_old_tile, creatures_new_tile))
         {
+          ostringstream ss;
+          ss << "Moving within map: ID " << creature->get_id() << " to " << new_coords.first << "," << new_coords.second;
+          Log::instance().debug(ss.str());
+
           // Update the map info
           MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
           TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);

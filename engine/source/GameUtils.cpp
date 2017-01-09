@@ -1,6 +1,7 @@
 #include "CoordUtils.hpp"
 #include "GameUtils.hpp"
 #include "Game.hpp"
+#include "Log.hpp"
 #include "MapUtils.hpp"
 
 using namespace std;
@@ -45,21 +46,28 @@ void GameUtils::make_map_permanent(Game& game, CreaturePtr creature, MapPtr curr
 // appropriately to the Game's ActionCoordinator.
 void GameUtils::add_new_creature_to_map(Game& game, CreaturePtr new_creature, MapPtr map, const Coordinate& coords)
 {
-  // Add the creature to the map.
-  MapUtils::add_or_update_location(map, new_creature, coords);
-
-  // Potentially add the creature to the action coordinator, if the
-  // map is the current game map.
-  MapPtr game_current_map = game.get_current_map();
-
-  if (map->get_map_id() == game_current_map->get_map_id())
+  if (new_creature != nullptr)
   {
-    ActionCoordinator& ac = game.get_action_coordinator_ref();
-    ActionCost cost = ac.get_current_action_cost();
-    cost.set_cost(cost.get_cost() + 1);
+    ostringstream ss;
+    ss << "Adding new creature " << new_creature->get_id() << " to map at " << coords.first << "," << coords.second;
+    Log::instance().debug(ss.str());
 
-    // Set the action cost to one more than the current.
-    game.get_action_coordinator_ref().add(cost, new_creature->get_id());
+    // Add the creature to the map.
+    MapUtils::add_or_update_location(map, new_creature, coords);
+
+    // Potentially add the creature to the action coordinator, if the
+    // map is the current game map.
+    MapPtr game_current_map = game.get_current_map();
+
+    if (map->get_map_id() == game_current_map->get_map_id())
+    {
+      ActionCoordinator& ac = game.get_action_coordinator_ref();
+      ActionCost cost = ac.get_current_action_cost();
+      cost.set_cost(cost.get_cost() + 1);
+
+      // Set the action cost to one more than the current.
+      game.get_action_coordinator_ref().add(cost, new_creature->get_id());
+    }
   }
 }
 

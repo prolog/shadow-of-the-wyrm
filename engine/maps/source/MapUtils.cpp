@@ -4,6 +4,7 @@
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
@@ -65,17 +66,24 @@ bool MapUtils::is_tile_available_for_item(TilePtr tile)
 // Swap two creatures on their tiles.
 void MapUtils::swap_places(MapPtr map, CreaturePtr creature, CreaturePtr adjacent_creature)
 {
-  // Get the location info.
-  Coordinate cr_loc = map->get_location(creature->get_id());
-  Coordinate adj_loc = map->get_location(adjacent_creature->get_id());
-  TilePtr creatures_current_tile = map->at(cr_loc);
+  if (creature && adjacent_creature)
+  {
+    ostringstream ss;
+    ss << "Swapping " << creature->get_id() << " and " << adjacent_creature->get_id();
+    Log::instance().debug(ss.str());
 
-  // Remove the creatures, then add them in the new location.
-  MapUtils::remove_creature(map, creature);
-  MapUtils::remove_creature(map, adjacent_creature);
+    // Get the location info.
+    Coordinate cr_loc = map->get_location(creature->get_id());
+    Coordinate adj_loc = map->get_location(adjacent_creature->get_id());
+    TilePtr creatures_current_tile = map->at(cr_loc);
 
-  MapUtils::add_or_update_location(map, creature, adj_loc);
-  MapUtils::add_or_update_location(map, adjacent_creature, cr_loc);
+    // Remove the creatures, then add them in the new location.
+    MapUtils::remove_creature(map, creature);
+    MapUtils::remove_creature(map, adjacent_creature);
+
+    MapUtils::add_or_update_location(map, creature, adj_loc);
+    MapUtils::add_or_update_location(map, adjacent_creature, cr_loc);
+  }
 }
 
 // Check to see if the creature can squeeze by into the next tile.
@@ -97,11 +105,19 @@ bool MapUtils::squeeze_by(MapPtr map, CreaturePtr creature, const Coordinate& ne
   Coordinate potential_squeeze_coords = CoordUtils::get_new_coordinate(new_coords, d, 1);
   TilePtr potential_squeeze_tile = map->at(potential_squeeze_coords);
 
-  if (potential_squeeze_tile != nullptr && MapUtils::is_tile_available_for_creature(creature, potential_squeeze_tile))
+  if (creature != nullptr)
   {
-    MapUtils::remove_creature(map, creature);
-    MapUtils::add_or_update_location(map, creature, potential_squeeze_coords);
-    movement_success = true;
+    ostringstream ss;
+
+    ss << "Creature " << creature->get_id() << " is squeezing by " << new_coords.first << "," << new_coords.second;
+    Log::instance().debug(ss.str());
+
+    if (potential_squeeze_tile != nullptr && MapUtils::is_tile_available_for_creature(creature, potential_squeeze_tile))
+    {
+      MapUtils::remove_creature(map, creature);
+      MapUtils::add_or_update_location(map, creature, potential_squeeze_coords);
+      movement_success = true;
+    }
   }
 
   return movement_success;
@@ -179,6 +195,10 @@ bool MapUtils::place_creature_randomly(MapPtr map, const string& creature_id)
 
       if (MapUtils::is_tile_available_for_creature(creature, tile))
       {
+        ostringstream ss;
+        ss << "Placing creature " << creature->get_id() << " randomly at " << creature_row << "," << creature_col;
+        Log::instance().debug(ss.str());
+
         Coordinate coords(creature_row, creature_col);
         MapUtils::add_or_update_location(map, creature, coords);
         creatures_generated = true;
@@ -262,9 +282,17 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
 {
   bool added_location = false;
 
+  ostringstream ss;
+
+  if (creature != nullptr)
+  {
+    ss << "Adding creature with id " << creature->get_id() << " to " << c.first << "," << c.second;
+    Log::instance().debug("Adding creature to " + ss.str());
+  }
+  
   TilePtr creatures_new_tile = map->at(c);
 
-  /*std::map<string, Coordinate> locations = map->get_locations();
+/*  std::map<string, Coordinate> locations = map->get_locations();
   for (const auto& l_pair : locations)
   {
     if (l_pair.second == c)
