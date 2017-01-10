@@ -11,7 +11,7 @@ class ItemDescriber : public IDescriber
 
     virtual std::string describe() const override;
     virtual std::string describe_usage() const;
-    virtual std::string describe_resists() const;
+    virtual std::string describe_resists_and_flags() const;
 
   protected:
     ItemPtr item;

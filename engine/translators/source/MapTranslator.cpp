@@ -107,7 +107,11 @@ DisplayTile MapTranslator::translate_coordinate_into_display_tile(const bool pla
   TilePtr map_tile = map->at(actual_row, actual_col);
       
   // Check to see if a corresponding FOV tile exists
-  TilePtr fov_map_tile = fov_map->at(actual_row, actual_col);
+  TilePtr fov_map_tile;
+  if (fov_map != nullptr)
+  {
+    fov_map_tile = fov_map->at(actual_row, actual_col);
+  }
 
   // Translate the map tile
   return create_display_tile(player_blinded, tod_overrides, map_tile, fov_map_tile);

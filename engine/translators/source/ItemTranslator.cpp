@@ -25,7 +25,7 @@ DisplayItem ItemTranslator::create_display_item(const bool blind, const ItemPtr&
   {
     ItemDescriberPtr item_describer = ItemDescriberFactory::create_item_describer(blind, item);
     string desc = item_describer->describe();
-    string res_desc = item_describer->describe_resists();
+    string res_desc = item_describer->describe_resists_and_flags();
     
     string id = item->get_id();
 

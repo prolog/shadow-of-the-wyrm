@@ -286,21 +286,17 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
 
   if (creature != nullptr)
   {
-    ss << "Adding creature with id " << creature->get_id() << " to " << c.first << "," << c.second;
-    Log::instance().debug("Adding creature to " + ss.str());
+    Log& log = Log::instance();
+
+    if (log.debug_enabled())
+    {
+      ss << "Adding creature with id " << creature->get_id() << " to " << c.first << "," << c.second;
+      log.debug(ss.str());
+    }
   }
   
   TilePtr creatures_new_tile = map->at(c);
 
-/*  std::map<string, Coordinate> locations = map->get_locations();
-  for (const auto& l_pair : locations)
-  {
-    if (l_pair.second == c)
-    {
-      int x = 1;
-    }
-  } */
-  
   if (creature->get_is_player())
   {
     map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);

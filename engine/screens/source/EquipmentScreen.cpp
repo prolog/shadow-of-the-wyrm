@@ -4,7 +4,6 @@
 #include "EquipmentTranslator.hpp"
 #include "Game.hpp"
 #include "OptionsComponent.hpp"
-#include "ResistanceTextKeys.hpp"
 #include "TextComponent.hpp"
 #include "TextKeys.hpp"
 
@@ -78,7 +77,7 @@ void EquipmentScreen::initialize()
 
     eq_screen.push_back(options);
 
-    string res_abrv = StringTable::get(ResistanceTextKeys::RESISTANCES_ABRV);
+    string res_abrv = StringTable::get(EquipmentTextKeys::EQUIPMENT_RESISTS_FLAGS);
     string item_addl_desc;
     string di_addl_desc = display_item.get_additional_description();
     String::reset_and_pad(item_addl_desc, 6 /* 6 = extra padding for '[a] : ' */);

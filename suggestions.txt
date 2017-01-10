@@ -1,12 +1,5 @@
-Esran Zarnath:
-- Freeze when ascending/descending into a zoo.  Possibly other cases where
-  there's an unexpected creature present? (+ credits)
-
 Me:
 - Ensure both stairs in dungeon avoid zoos
-- There are problems with map generation in that multiple creatures appear
-  to be generated on a single tile, but somehow avoid the is_tile_avail
-  check...
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - Ensure item describers properly handle damage flags.
@@ -76,6 +69,7 @@ Me:
   chance (10-20%?) of splitting.  Each creature in the split has half
   the current HP of the original.
 - Recall spell that takes you back to the overworld.
+- Armour flags
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri

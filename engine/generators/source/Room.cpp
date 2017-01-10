@@ -1,6 +1,7 @@
 #include <algorithm>
 #include "CoordUtils.hpp"
 #include "Room.hpp"
+#include "RoomFeatures.hpp"
 
 using namespace std;
 
@@ -38,9 +39,14 @@ Coordinate Room::get_centre() const
   return c;
 }
 
-bool Room::has_feature(const string& feature_name)
+bool Room::has_feature(const string& feature_name) const
 {
   return (find(features.begin(), features.end(), feature_name) != features.end());
+}
+
+bool Room::stairs_allowed() const
+{
+  return (has_feature(RoomFeatures::ROOM_FEATURE_ZOO) == false);
 }
 
 bool Room::compare_rooms(const Room& r1, const Room& r2)
