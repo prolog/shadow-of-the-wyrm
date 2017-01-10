@@ -4,7 +4,7 @@
 #include "ResistancesTranslator.hpp"
 #include "StringTable.hpp"
 
-using std::string;
+using namespace std;
 
 ItemDescriber::ItemDescriber(ItemPtr new_item)
 : item(new_item)
@@ -58,9 +58,9 @@ string ItemDescriber::describe_usage() const
   return item_description;
 }
 
-string ItemDescriber::describe_resists() const
+string ItemDescriber::describe_resists_and_flags() const
 {
-  string res_desc;
+  string rf_desc;
 
   if (item)
   {
@@ -68,12 +68,40 @@ string ItemDescriber::describe_resists() const
 
     if (item_id.get_item_identified(item->get_base_id()))
     {
+      ostringstream ss;
       Resistances res = item->get_resistances();
 
       ResistancesTranslator rt;
-      res_desc = rt.create_description(res);
+      string rt_desc = rt.create_description(res);
+
+      vector<string> flag_sids = item->get_flag_sids();
+
+      if (!rt_desc.empty())
+      {
+        ss << rt_desc << " ";
+      }
+
+      bool has_flags = !flag_sids.empty();
+
+      if (has_flags)
+      {
+        ss << "(";
+      }
+
+      for (const auto& flag_sid : flag_sids)
+      {
+        ss << StringTable::get(flag_sid);
+        ss << " ";
+      }
+
+      if (has_flags)
+      {
+        ss << ")";
+      }
+
+      rf_desc = ss.str();
     }
   }
 
-  return res_desc;
+  return rf_desc;
 }

@@ -12,7 +12,8 @@ struct Room
   std::shared_ptr<Room> centre_room;
   bool contains(Coordinate c) const;
   Coordinate get_centre() const;
-  bool has_feature(const std::string& feat);
+  bool has_feature(const std::string& feat) const;
+  bool stairs_allowed() const;
 
   static bool compare_rooms(const Room& r1, const Room& r2);
   

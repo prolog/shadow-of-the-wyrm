@@ -1,10 +1,10 @@
 #include <sstream>
 #include "CurrentCreatureAbilities.hpp"
 #include "DisplayItem.hpp"
+#include "EquipmentTextKeys.hpp"
 #include "ItemDumper.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemTranslator.hpp"
-#include "ResistanceTextKeys.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -47,7 +47,7 @@ string ItemDumper::str() const
     {
       if (!additional_desc.empty())
       {
-        ss << StringTable::get(ResistanceTextKeys::RESISTANCES_ABRV) << ": " << additional_desc << endl;
+        ss << StringTable::get(EquipmentTextKeys::EQUIPMENT_RESISTS_FLAGS) << ": " << additional_desc << endl;
       }
 
       ss << endl;

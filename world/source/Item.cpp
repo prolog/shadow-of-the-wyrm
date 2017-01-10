@@ -557,6 +557,12 @@ bool Item::brand()
   }
 }
 
+vector<string> Item::get_flag_sids() const
+{
+  vector<string> flag_sids;
+  return flag_sids;
+}
+
 bool Item::enchant(const int pct_chance_brand, const float enchant_mult)
 {
   bool enchanted = false;

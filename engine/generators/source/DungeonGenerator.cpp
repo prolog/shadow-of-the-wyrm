@@ -611,6 +611,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   update_depth_details(map);
 
   Depth depth = map->size().depth();
+  int cnt = 0;
 
   // Generate a down staircase if:
   // - The max_depth property is defined
@@ -619,8 +620,11 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   {
     while (!location_found)
     {
+      cnt++;
+
       Room r = connected_rooms.at(RNG::range(0, connected_rooms.size()-1));
-        
+      if (r.stairs_allowed() == false || cnt < 20) continue;
+
       bool placed = false;
       
       while (placed == false)
@@ -636,14 +640,14 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   }
   
   location_found = false;
-  
+  cnt = 0;
+
   while (!location_found)
   {
+    cnt++;
     Room r = connected_rooms.at(RNG::range(0, connected_rooms.size()-1));
     
-    // Stairs need to be in different rooms, and up staircases shouldn't be
-    // in a zoo, or else the player will get pummelled.
-    if (r == first_staircase_room || r.has_feature(RoomFeatures::ROOM_FEATURE_ZOO)) continue;
+    if (r.stairs_allowed() == false || cnt < 20) continue;
         
     bool placed = false;
 
