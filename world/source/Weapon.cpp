@@ -1,5 +1,6 @@
 #include <sstream>
 #include "BrandConstants.hpp"
+#include "DamageFlagFactory.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
 #include "Weapon.hpp"
@@ -121,7 +122,7 @@ bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i)
 // or both.  It may also grant resistances.
 void Weapon::do_enchant_item(const int points)
 {
-  vector<DamageFlag> dflags = damage.get_damage_flags_by_value(false);
+  vector<DamageFlagType> dflags = damage.get_damage_flags_by_value(false);
 
   // Resists.
   if (RNG::percent_chance(25))
@@ -136,7 +137,7 @@ void Weapon::do_enchant_item(const int points)
     // like vorpal, draining, etc.
     if (rem_points > 0 && !dflags.empty() && RNG::percent_chance(2))
     {
-      DamageFlag df = dflags.at(RNG::range(0, dflags.size()-1));
+      DamageFlagType df = dflags.at(RNG::range(0, dflags.size()-1));
       damage.set_damage_flag(df, true);
 
       rem_points--;
@@ -202,6 +203,22 @@ string Weapon::get_synopsis() const
   ss << Wearable::get_synopsis() << "(" << dmg << ") ";
 
   return ss.str();
+}
+
+vector<string> Weapon::get_flag_sids() const
+{
+  vector<string> flag_sids;
+  DamageFlagFactory dff;
+
+  // The only flags associated with a weapon are those associated with its
+  // damage.
+  vector<DamageFlagType> dflags = damage.get_damage_flags_by_value(true);
+  for (const auto& df : dflags)
+  {
+    flag_sids.push_back(dff.create_damage_flag(df).get_description_sid());
+  }
+
+  return flag_sids;
 }
 
 bool Weapon::serialize(ostream& stream) const

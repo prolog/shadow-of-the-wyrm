@@ -126,6 +126,7 @@ class TextKeys
     static const std::string DAMAGE_DRAINING;
     static const std::string DAMAGE_ETHEREAL;
     static const std::string DAMAGE_VORPAL;
+    static const std::string DAMAGE_INCORPOREAL;
     static const std::string DAMAGE_SLAYS;
 
     static const std::string ATTACK_DETAILS;

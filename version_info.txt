@@ -17,8 +17,8 @@ Shadow of the Wyrm v0.5.8.1 "Merlin"
   be specific-damtype items like poison darts and shadow bombs.  Armour
   created via skins is also not brandable.
 
-- An brandable item has a 15% chance to be branded when enchanted.  This 
-  is modified to 0% (when reading a cursed enchanting scroll), or 30%
+- A brandable item has a ~15% chance to be branded when enchanted.  This 
+  is modified to 0% (when reading a cursed enchanting scroll), or ~30%
   (blessed).  Once an item is branded, its brand is fixed, and it cannot
   be branded again.
 
@@ -30,19 +30,21 @@ Shadow of the Wyrm v0.5.8.1 "Merlin"
 - Weapons have a very small chance, upon enchantment, to gain a damage
   flag such as vorpal, draining, chaotic, etc.
 
+- Now that damage flags are available to weapons outside of artifacts,
+  any damage flags will be shown on the second line of the equipment
+  screen (in addition to the "W" command).  The "Resists" line is now
+  "Resists/Flags".
+
 - Weapons are now less likely to gain resistances when being enchanted.
   The chance has been halved.
 
 - Jellies can now split in half when they're wounded and have more than
-  half their maximum HP.  The creature that splits off has half of their
-  current HP, so will not split itself.
+  a third of their maximum HP.  The creature that splits off has half of 
+  their current HP.
 
 - Up staircases should no longer lead to a zoo.  But they can, like
   down staircases, once a certain amount of placement tries has been
-  reached.  This is however very unlikely.
-
-- Updated the second line on the equipment screen/character dump for
-  equipped items to show any flags associated with the item.
+  reached.  This should be very unlikely.
 
 - Bug fixes:
 
@@ -62,7 +64,6 @@ Shadow of the Wyrm v0.5.8.1 "Merlin"
 
   - In some cases, a creature could try to act with a null FOV map, which
     would cause a crash.
-
 
 Shadow of the Wyrm v0.5.8 "Merlin"
 - Version declared December 1, 2016.  Version finalized January 1, 2017.

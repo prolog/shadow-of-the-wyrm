@@ -17,7 +17,7 @@ enum struct DamageType
   DAMAGE_TYPE_MAX = 11
 };
 
-enum struct DamageFlag
+enum struct DamageFlagType
 {
   DAMAGE_FLAG_CHAOTIC = 0,
   DAMAGE_FLAG_VORPAL = 1,

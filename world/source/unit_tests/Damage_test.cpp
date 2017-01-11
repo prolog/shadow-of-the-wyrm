@@ -5,14 +5,14 @@ TEST(SW_World_Damage, set_damage_flags)
   StatusAilments sa;
   Damage damage(1, 4, 1, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, false, 0, sa);
 
-  static_assert(DamageFlag::DAMAGE_FLAG_LAST == DamageFlag(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(5), "Unexpected DamageFlagType::DAMAGE_FLAG_LAST");
 
-  map<DamageFlag, bool> dflags = {{DamageFlag::DAMAGE_FLAG_CHAOTIC, false},
-                                  {DamageFlag::DAMAGE_FLAG_VORPAL, false},
-                                  {DamageFlag::DAMAGE_FLAG_DRAINING, false},
-                                  {DamageFlag::DAMAGE_FLAG_ETHEREAL, false},
-                                  {DamageFlag::DAMAGE_FLAG_PIERCING, false},
-                                  {DamageFlag::DAMAGE_FLAG_INCORPOREAL, false}};
+  map<DamageFlagType, bool> dflags = {{DamageFlagType::DAMAGE_FLAG_CHAOTIC, false},
+                                      {DamageFlagType::DAMAGE_FLAG_VORPAL, false},
+                                      {DamageFlagType::DAMAGE_FLAG_DRAINING, false},
+                                      {DamageFlagType::DAMAGE_FLAG_ETHEREAL, false},
+                                      {DamageFlagType::DAMAGE_FLAG_PIERCING, false},
+                                      {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, false}};
   
   // Flags should all be false at this point.
 
@@ -21,12 +21,12 @@ TEST(SW_World_Damage, set_damage_flags)
     EXPECT_FALSE(damage.get_damage_flag(dpair.first));
   }
 
-  dflags = {{DamageFlag::DAMAGE_FLAG_CHAOTIC, true},
-            {DamageFlag::DAMAGE_FLAG_VORPAL, true},
-            {DamageFlag::DAMAGE_FLAG_DRAINING, true},
-            {DamageFlag::DAMAGE_FLAG_ETHEREAL, true},
-            {DamageFlag::DAMAGE_FLAG_PIERCING, true},
-            {DamageFlag::DAMAGE_FLAG_INCORPOREAL, true}};
+  dflags = {{DamageFlagType::DAMAGE_FLAG_CHAOTIC, true},
+            {DamageFlagType::DAMAGE_FLAG_VORPAL, true},
+            {DamageFlagType::DAMAGE_FLAG_DRAINING, true},
+            {DamageFlagType::DAMAGE_FLAG_ETHEREAL, true},
+            {DamageFlagType::DAMAGE_FLAG_PIERCING, true},
+            {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, true}};
 
   damage.set_damage_flags(dflags);
 
@@ -35,12 +35,12 @@ TEST(SW_World_Damage, set_damage_flags)
     EXPECT_TRUE(damage.get_damage_flag(dpair.first));
   }
 
-  dflags = {{DamageFlag::DAMAGE_FLAG_CHAOTIC, false},
-            {DamageFlag::DAMAGE_FLAG_VORPAL, true},
-            {DamageFlag::DAMAGE_FLAG_DRAINING, false},
-            {DamageFlag::DAMAGE_FLAG_ETHEREAL, true},
-            {DamageFlag::DAMAGE_FLAG_PIERCING, true},
-            {DamageFlag::DAMAGE_FLAG_INCORPOREAL, false}};
+  dflags = {{DamageFlagType::DAMAGE_FLAG_CHAOTIC, false},
+            {DamageFlagType::DAMAGE_FLAG_VORPAL, true},
+            {DamageFlagType::DAMAGE_FLAG_DRAINING, false},
+            {DamageFlagType::DAMAGE_FLAG_ETHEREAL, true},
+            {DamageFlagType::DAMAGE_FLAG_PIERCING, true},
+            {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, false}};
 
   damage.set_damage_flags(dflags);
 
@@ -61,18 +61,18 @@ TEST(SW_World_Damage, get_damage_flags_by_type)
   damage.set_vorpal(true);
   damage.set_incorporeal(true);
 
-  vector<DamageFlag> dflags = damage.get_damage_flags_by_value(true);
+  vector<DamageFlagType> dflags = damage.get_damage_flags_by_value(true);
 
-  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlag::DAMAGE_FLAG_VORPAL) != dflags.end());
-  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlag::DAMAGE_FLAG_INCORPOREAL) != dflags.end());
-  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlag::DAMAGE_FLAG_DRAINING) == dflags.end());
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_VORPAL) != dflags.end());
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_INCORPOREAL) != dflags.end());
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_DRAINING) == dflags.end());
   EXPECT_TRUE(dflags.size() == 2);
 
-  damage.set_damage_flag(DamageFlag::DAMAGE_FLAG_DRAINING, true);
+  damage.set_damage_flag(DamageFlagType::DAMAGE_FLAG_DRAINING, true);
 
   dflags = damage.get_damage_flags_by_value(true);
 
-  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlag::DAMAGE_FLAG_DRAINING) != dflags.end());
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_DRAINING) != dflags.end());
   EXPECT_TRUE(dflags.size() == 3);
 }
 
