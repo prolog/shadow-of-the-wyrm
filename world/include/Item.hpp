@@ -146,7 +146,7 @@ class Item : public ISerializable
     
     // Get the resource string IDs for any flags associated with the item.
     // Generally, only weapons and armour will have flags.
-    std::vector<std::string> get_flag_sids() const;
+    virtual std::vector<std::string> get_flag_sids() const;
 
     // Assume an enchant_mult of 1.0 and allow a single point of enchantment.
     // This function is used when generating better items based on the

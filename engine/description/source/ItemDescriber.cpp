@@ -86,16 +86,18 @@ string ItemDescriber::describe_resists_and_flags() const
       if (has_flags)
       {
         ss << "(";
-      }
+        size_t sz = flag_sids.size();
 
-      for (const auto& flag_sid : flag_sids)
-      {
-        ss << StringTable::get(flag_sid);
-        ss << " ";
-      }
+        for (size_t i = 0; i < sz; i++)
+        {
+          ss << StringTable::get(flag_sids.at(i));
 
-      if (has_flags)
-      {
+          if (i < sz - 1)
+          {
+            ss << ", ";
+          }
+        }
+
         ss << ")";
       }
 

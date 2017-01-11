@@ -150,7 +150,7 @@ DamagePtr Damage::get_additional_damage() const
   return additional_damage;
 }
 
-void Damage::set_damage_flags(const map<DamageFlag, bool>& dflags)
+void Damage::set_damage_flags(const map<DamageFlagType, bool>& dflags)
 {
   for (const auto& dpair : dflags)
   {
@@ -158,28 +158,28 @@ void Damage::set_damage_flags(const map<DamageFlag, bool>& dflags)
   }
 }
 
-void Damage::set_damage_flag(const DamageFlag df, const bool value)
+void Damage::set_damage_flag(const DamageFlagType df, const bool value)
 {
-  static_assert(DamageFlag::DAMAGE_FLAG_LAST == DamageFlag(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
 
   switch (df)
   {
-    case DamageFlag::DAMAGE_FLAG_CHAOTIC:
+    case DamageFlagType::DAMAGE_FLAG_CHAOTIC:
       chaotic = value;
       break;
-    case DamageFlag::DAMAGE_FLAG_VORPAL:
+    case DamageFlagType::DAMAGE_FLAG_VORPAL:
       vorpal = value;
       break;
-    case DamageFlag::DAMAGE_FLAG_DRAINING:
+    case DamageFlagType::DAMAGE_FLAG_DRAINING:
       draining = value;
       break;
-    case DamageFlag::DAMAGE_FLAG_ETHEREAL:
+    case DamageFlagType::DAMAGE_FLAG_ETHEREAL:
       ethereal = value;
       break;
-    case DamageFlag::DAMAGE_FLAG_PIERCING:
+    case DamageFlagType::DAMAGE_FLAG_PIERCING:
       piercing = value;
       break;
-    case DamageFlag::DAMAGE_FLAG_INCORPOREAL:
+    case DamageFlagType::DAMAGE_FLAG_INCORPOREAL:
       incorporeal = value;
       break;
     default:
@@ -187,28 +187,28 @@ void Damage::set_damage_flag(const DamageFlag df, const bool value)
   }
 }
 
-bool Damage::get_damage_flag(const DamageFlag df) const
+bool Damage::get_damage_flag(const DamageFlagType df) const
 {
   bool flag = false;
 
   switch (df)
   {
-    case DamageFlag::DAMAGE_FLAG_CHAOTIC:
+    case DamageFlagType::DAMAGE_FLAG_CHAOTIC:
       flag = chaotic;
       break;
-    case DamageFlag::DAMAGE_FLAG_VORPAL:
+    case DamageFlagType::DAMAGE_FLAG_VORPAL:
       flag = vorpal;
       break;
-    case DamageFlag::DAMAGE_FLAG_DRAINING:
+    case DamageFlagType::DAMAGE_FLAG_DRAINING:
       flag = draining;
       break;
-    case DamageFlag::DAMAGE_FLAG_ETHEREAL:
+    case DamageFlagType::DAMAGE_FLAG_ETHEREAL:
       flag = ethereal;
       break;
-    case DamageFlag::DAMAGE_FLAG_PIERCING:
+    case DamageFlagType::DAMAGE_FLAG_PIERCING:
       flag = piercing;
       break;
-    case DamageFlag::DAMAGE_FLAG_INCORPOREAL:
+    case DamageFlagType::DAMAGE_FLAG_INCORPOREAL:
       flag = incorporeal;
       break;
     default:
@@ -218,39 +218,39 @@ bool Damage::get_damage_flag(const DamageFlag df) const
   return flag;
 }
 
-vector<DamageFlag> Damage::get_damage_flags_by_value(const bool value) const
+vector<DamageFlagType> Damage::get_damage_flags_by_value(const bool value) const
 {
-  static_assert(DamageFlag::DAMAGE_FLAG_LAST == DamageFlag(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
-  vector<DamageFlag> damage_flags;
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+  vector<DamageFlagType> damage_flags;
 
   if (chaotic == value)
   {
-    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_CHAOTIC);
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_CHAOTIC);
   }
 
   if (vorpal == value)
   {
-    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_VORPAL);
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_VORPAL);
   }
 
   if (draining == value)
   {
-    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_DRAINING);
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_DRAINING);
   }
 
   if (ethereal == value)
   {
-    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_ETHEREAL);
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_ETHEREAL);
   }
 
   if (piercing == value)
   {
-    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_PIERCING);
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_PIERCING);
   }
 
   if (incorporeal == value)
   {
-    damage_flags.push_back(DamageFlag::DAMAGE_FLAG_INCORPOREAL);
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_INCORPOREAL);
   }
 
   return damage_flags;
