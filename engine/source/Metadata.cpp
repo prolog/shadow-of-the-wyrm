@@ -55,7 +55,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  return "\"Merlin\"";
+  // Italian renaissance lute composer.
+  // Father of a lutenist, and a particularly well-known astronomer.
+  return "\"Galilei\"";
 }
 
 string Metadata::get_game_version_synopsis() const

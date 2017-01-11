@@ -13,7 +13,6 @@ int CreatureSplitCalculator::calculate_pct_chance_split(CreaturePtr creature, Ra
     bool race_splits = race->get_splits();
     Statistic hit_points = creature->get_hit_points();
     int cur_hp = hit_points.get_current();
-    int half_max_hp = hit_points.get_base() / 2;
 
     if (race_splits && cur_hp > (hit_points.get_base() / HP_SPLIT_DIVISOR) && !creature->get_is_player())
     {

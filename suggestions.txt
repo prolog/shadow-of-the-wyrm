@@ -1,10 +1,8 @@
 Me:
-- Ensure both stairs in dungeon avoid zoos
+- Allow hungerless races to gain health over time, just very, very
+  slowly.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
-- Ensure item describers properly handle damage flags.
-- Add damage type to weapon info.
-- Game won't start when a log file is locked/open.
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.
@@ -105,12 +103,6 @@ AgingMinotaur:
 
 Kraphead:
 - auto-displace when bumping friendly creatures
-
-Lagi:
-- alternative inventory management: when in the stateless inventory
-  screen ("I"), items should be selectable, and then another menu should
-  be overlaid allowing equipping into various slots, dropping, evoking,
-  drinking, and so on.
 
 roguecastergames:
 - sea monsters
