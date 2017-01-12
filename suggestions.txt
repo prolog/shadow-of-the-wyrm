@@ -1,4 +1,5 @@
 Me:
+- Too long names: SulTanak was generated.
 - Allow hungerless races to gain health over time, just very, very
   slowly.
 - Unnecessary refresh being called for generator? (refreshing overworld
@@ -71,6 +72,7 @@ Me:
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
+- Character dumps while blinded show all items as "something"
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
