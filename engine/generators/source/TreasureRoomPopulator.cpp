@@ -1,9 +1,11 @@
 #include "TreasureRoomPopulator.hpp"
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "ItemEnchantmentCalculator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "RNG.hpp"
 
@@ -123,7 +125,9 @@ void TreasureRoomPopulator::generate_treasure(MapPtr current_map, const int dang
       if (generated_item)
       {
         // Add a number of extra enchants, and then add the item to the tile.
-        generated_item->enchant(RNG::range(2, 3));
+        ItemEnchantmentCalculator iec;
+        int pct_chance_brand = iec.calculate_pct_chance_brand(1.0, generated_item);
+        generated_item->enchant(pct_chance_brand, RNG::range(2, 3));
         tile->get_items()->add(generated_item);
       }
     }

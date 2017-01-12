@@ -371,6 +371,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
@@ -435,6 +436,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<Drops>
@@ -505,6 +507,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<Drops>
@@ -575,6 +578,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>DEMON_RACE_NAME</NameSID>
@@ -639,6 +643,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
@@ -703,6 +708,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<Drops>
@@ -775,6 +781,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>INSECT_RACE_NAME</NameSID>
@@ -839,6 +846,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>1</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>JELLY_RACE_NAME</NameSID>
@@ -903,6 +911,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
@@ -967,6 +976,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<NameSID>PLANT_RACE_NAME</NameSID>
@@ -1031,6 +1041,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
@@ -1090,6 +1101,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
@@ -1152,6 +1164,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
@@ -1213,6 +1226,7 @@
 			<UserPlayable>0</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<Drops>
@@ -1277,6 +1291,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>0</SettlementType>
@@ -1363,6 +1378,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>0</SettlementType>
@@ -1441,6 +1457,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1520,6 +1537,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>3</SettlementType>
@@ -1596,6 +1614,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasRandomVillages>0</HasRandomVillages>
@@ -1674,6 +1693,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1751,6 +1771,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1829,6 +1850,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>2</SettlementType>
@@ -1903,6 +1925,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>1</SettlementType>
@@ -1978,6 +2001,7 @@
 			<UserPlayable>1</UserPlayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<SettlementType>3</SettlementType>
@@ -2950,6 +2974,12 @@
 				</Ranged>
 				<Ammunition>
 					<ID>bolt</ID>
+					<Quantity>
+						<Random>
+							<NumDice>7</NumDice>
+							<NumSides>4</NumSides>
+						</Random>
+					</Quantity>
 				</Ammunition>
 				<InitialInventory>
 					<InitialItem>
@@ -7453,6 +7483,12 @@
 				<NumSides>4</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<EventScripts>
+				<DecisionScript>
+					<Script>decision/witchthorn.lua</Script>
+					<Chance>40</Chance>
+				</DecisionScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="treow">
 			<RaceID>_plant</RaceID>
@@ -24941,6 +24977,12 @@
 				<WornLocation>0</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>4</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -24969,6 +25011,12 @@
 				<WornLocation>0</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>4</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>10</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -24983,6 +25031,12 @@
 				<WornLocation>0</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>6</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>15</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -24996,6 +25050,12 @@
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>3</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -25009,6 +25069,12 @@
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -25022,6 +25088,12 @@
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>4</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>4</Soak>
 			</Armour>
@@ -25035,6 +25107,12 @@
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
 				<DangerLevel>6</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>6</Soak>
 			</Armour>
@@ -25048,6 +25126,12 @@
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
 				<DangerLevel>8</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>8</Soak>
 			</Armour>
@@ -25064,6 +25148,12 @@
 				<Resistances>
 					<Heat>0.10</Heat>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>8</Evade>
 				<Soak>5</Soak>
 			</Armour>
@@ -25131,6 +25221,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>3</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>1</Evade>
 				<Soak>3</Soak>
 			</Armour>
@@ -25144,6 +25240,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>5</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>5</Soak>
 			</Armour>
@@ -25158,6 +25260,12 @@
 				<Material>3</Material>
 				<DangerLevel>7</DangerLevel>
 				<Rarity>1</Rarity>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>6</Evade>
 				<Soak>5</Soak>
 			</Armour>
@@ -25268,6 +25376,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>6</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>-2</Evade>
 				<Soak>7</Soak>
 			</Armour>			
@@ -25281,6 +25395,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>8</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>-4</Evade>
 				<Soak>10</Soak>
 			</Armour>
@@ -25294,6 +25414,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>6</Material>
 				<DangerLevel>14</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>-8</Evade>
 				<Soak>18</Soak>
 			</Armour>
@@ -25310,6 +25436,12 @@
 				<Resistances>
 					<Heat>0.25</Heat>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>15</Soak>
 			</Armour>
@@ -25326,6 +25458,12 @@
 				<Resistances>
 					<Lightning>0.20</Lightning>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>-9</Evade>
 				<Soak>22</Soak>
 			</Armour>
@@ -25344,6 +25482,12 @@
 					<Acid>0.10</Acid>
 					<Poison>0.10</Poison>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>-30</Evade>
 				<Soak>30</Soak>
 			</Armour>
@@ -25362,6 +25506,12 @@
 					<Slash>0.15</Slash>
 					<Pierce>0.15</Pierce>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>-20</Evade>
 				<Soak>35</Soak>
 			</Armour>			
@@ -25375,6 +25525,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>3</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -25391,6 +25547,12 @@
 				<Resistances>
 					<Arcane>0.10</Arcane>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>7</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -25409,6 +25571,12 @@
 					<Shadow>0.10</Shadow>
 					<Arcane>0.05</Arcane>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>11</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -25426,6 +25594,12 @@
 					<Slash>0.10</Slash>
 					<Cold>0.05</Cold>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>9</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -25443,6 +25617,12 @@
 					<Cold>0.10</Cold>
 					<Shadow>0.10</Shadow>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>14</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -25460,6 +25640,12 @@
 					<Holy>0.10</Holy>
 					<Lightning>0.10</Lightning>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>17</Evade>
 				<Soak>3</Soak>
 			</Armour>
@@ -25473,6 +25659,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>12</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>25</Evade>
 				<Soak>2</Soak>
 			</Armour>			
@@ -25486,6 +25678,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>15</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>30</Evade>
 				<Soak>4</Soak>
 			</Armour>
@@ -25499,6 +25697,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>20</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>35</Evade>
 				<Soak>6</Soak>
 			</Armour>
@@ -25512,6 +25716,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>2</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -25525,6 +25735,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>1</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -25538,6 +25754,12 @@
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -25564,6 +25786,12 @@
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>3</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -25580,6 +25808,12 @@
 				<Resistances>
 					<Arcane>0.05</Arcane>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>7</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -25597,6 +25831,12 @@
 					<Holy>0.05</Holy>
 					<Lightning>0.05</Lightning>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>12</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -25615,6 +25855,12 @@
 					<Cold>0.10</Cold>
 					<Lightning>0.10</Lightning>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>4</Evade>
 				<Soak>4</Soak>
 			</Armour>
@@ -25664,6 +25910,12 @@
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>3</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>3</Soak>
 			</Armour>
@@ -25677,6 +25929,12 @@
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>6</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>6</Soak>
 			</Armour>
@@ -25693,6 +25951,12 @@
 				<Resistances>
 					<Heat>0.15</Heat>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>8</Evade>
 				<Soak>5</Soak>
 			</Armour>
@@ -25706,6 +25970,12 @@
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>7</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>-5</Evade>
 				<Soak>9</Soak>
 			</Armour>			
@@ -25719,6 +25989,12 @@
 				<WornLocation>7</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>2</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -25745,6 +26021,12 @@
 				<WornLocation>7</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>4</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>8</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -25758,6 +26040,12 @@
 				<WornLocation>7</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>3</Soak>
 			</Armour>
@@ -25856,6 +26144,12 @@
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>3</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -25882,6 +26176,12 @@
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>4</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>7</Evade>
 				<Soak>1</Soak>
 			</Armour>			
@@ -25895,6 +26195,12 @@
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>7</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>15</Evade>
 				<Soak>0</Soak>
 			</Armour>			
@@ -25908,6 +26214,12 @@
 				<WornLocation>8</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -25921,6 +26233,12 @@
 				<WornLocation>8</WornLocation>
 				<Material>6</Material>
 				<DangerLevel>4</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>4</Soak>
 			</Armour>
@@ -25937,6 +26255,12 @@
 				<Resistances>
 					<Heat>0.10</Heat>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>5</Evade>
 				<Soak>6</Soak>
 			</Armour>
@@ -25950,6 +26274,12 @@
 				<WornLocation>8</WornLocation>
 				<Material>6</Material>
 				<DangerLevel>8</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>0</Evade>
 				<Soak>8</Soak>
 			</Armour>			
@@ -25963,6 +26293,12 @@
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Evade>2</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -26339,6 +26675,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1007</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>40</Difficulty>
@@ -26360,6 +26702,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1007</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>41</Difficulty>
@@ -26381,6 +26729,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>3</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1007</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>42</Difficulty>
@@ -26402,6 +26756,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -26422,6 +26782,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1004</Skill>
 				<RangedSkill>2005</RangedSkill>
 				<Difficulty>40</Difficulty>
@@ -26430,31 +26796,6 @@
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
 					<Type>1</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="poisoned_dagger">
-				<DescriptionSID>POISONED_DAGGER_SID</DescriptionSID>
-				<UsageDescriptionSID>POISONED_DAGGER_USAGE_SID</UsageDescriptionSID>
-				<Value>120</Value>
-				<Weight>
-					<Pounds>1</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>2</Colour>
-				</TextDetails>
-				<DangerLevel>3</DangerLevel>
-				<Skill>1004</Skill>
-				<RangedSkill>2005</RangedSkill>
-				<Difficulty>40</Difficulty>
-				<Speed>2</Speed>
-				<Damage>
-					<NumDice>1</NumDice>
-					<NumSides>4</NumSides>
-					<Modifier>4</Modifier>
-					<Type>6</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="poison_dart">
@@ -26543,56 +26884,6 @@
 					<EffectBonus>30</EffectBonus>
 				</Damage>
 			</Weapon>
-			<Weapon id="arcane_dagger">
-				<DescriptionSID>ARCANE_DAGGER_SID</DescriptionSID>
-				<UsageDescriptionSID>ARCANE_DAGGER_USAGE_SID</UsageDescriptionSID>
-				<Value>120</Value>
-				<Weight>
-					<Pounds>1</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>13</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1004</Skill>
-				<RangedSkill>2005</RangedSkill>
-				<Difficulty>40</Difficulty>
-				<Speed>2</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>4</NumSides>
-					<Modifier>2</Modifier>
-					<Type>9</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="acid_dagger">
-				<DescriptionSID>ACID_DAGGER_SID</DescriptionSID>
-				<UsageDescriptionSID>ACID_DAGGER_USAGE_SID</UsageDescriptionSID>
-				<Value>120</Value>
-				<Weight>
-					<Pounds>1</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>3</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1004</Skill>
-				<RangedSkill>2005</RangedSkill>
-				<Difficulty>40</Difficulty>
-				<Speed>2</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>4</NumSides>
-					<Modifier>3</Modifier>
-					<Type>5</Type>
-				</Damage>
-			</Weapon>
 			<Weapon id="athame">
 				<DescriptionSID>ATHAME_SID</DescriptionSID>
 				<UsageDescriptionSID>ATHAME_USAGE_SID</UsageDescriptionSID>
@@ -26606,6 +26897,12 @@
 				<Resistances>
 					<Arcane>0.20</Arcane>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1004</Skill>
 				<RangedSkill>2005</RangedSkill>
 				<Difficulty>40</Difficulty>
@@ -26720,6 +27017,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1001</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -26728,56 +27031,6 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 					<Type>0</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="arcane_short_sword">
-				<DescriptionSID>ARCANE_SHORT_SWORD_SID</DescriptionSID>
-				<UsageDescriptionSID>ARCANE_SHORT_SWORD_USAGE_SID</UsageDescriptionSID>
-				<Value>150</Value>
-				<Weight>
-					<Pounds>4</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>13</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1001</Skill>
-				<RangedSkill>2001</RangedSkill>
-				<Difficulty>44</Difficulty>
-				<Speed>5</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>2</Modifier>
-					<Type>9</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="shadow_blade">
-				<DescriptionSID>SHADOW_BLADE_SID</DescriptionSID>
-				<UsageDescriptionSID>SHADOW_BLADE_USAGE_SID</UsageDescriptionSID>
-				<Value>200</Value>
-				<Weight>
-					<Pounds>3</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>4</Colour>
-				</TextDetails>
-				<DangerLevel>6</DangerLevel>
-				<Skill>1001</Skill>
-				<RangedSkill>2001</RangedSkill>
-				<Difficulty>44</Difficulty>
-				<Speed>5</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>4</Modifier>
-					<Type>8</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="lora">
@@ -27733,6 +27986,12 @@
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>1</Rarity>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1001</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>40</Difficulty>
@@ -27755,6 +28014,12 @@
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
 				<Rarity>1</Rarity>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1001</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>40</Difficulty>
@@ -27775,6 +28040,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1002</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -27796,6 +28067,12 @@
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1002</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>48</Difficulty>
@@ -27806,81 +28083,6 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
-			<Weapon id="lightning_sword">
-				<DescriptionSID>LIGHTNING_SWORD_SID</DescriptionSID>
-				<UsageDescriptionSID>LIGHTNING_SWORD_USAGE_SID</UsageDescriptionSID>
-				<Value>130</Value>
-				<Weight>
-					<Pounds>10</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>11</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1002</Skill>
-				<RangedSkill>2001</RangedSkill>
-				<Difficulty>46</Difficulty>
-				<Speed>7</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>8</NumSides>
-					<Modifier>2</Modifier>
-					<Type>10</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="holy_sword">
-				<DescriptionSID>HOLY_SWORD_SID</DescriptionSID>
-				<UsageDescriptionSID>HOLY_SWORD_USAGE_SID</UsageDescriptionSID>
-				<Value>130</Value>
-				<Weight>
-					<Pounds>10</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>15</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1002</Skill>
-				<RangedSkill>2001</RangedSkill>
-				<Difficulty>46</Difficulty>
-				<Speed>7</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>8</NumSides>
-					<Modifier>2</Modifier>
-					<Type>7</Type>
-				</Damage>
-			</Weapon>			
-			<Weapon id="flame_sword">
-				<DescriptionSID>FLAME_SWORD_SID</DescriptionSID>
-				<UsageDescriptionSID>FLAME_SWORD_USAGE_SID</UsageDescriptionSID>
-				<Value>130</Value>
-				<Weight>
-					<Pounds>10</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>9</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1002</Skill>
-				<RangedSkill>2001</RangedSkill>
-				<Difficulty>46</Difficulty>
-				<Speed>7</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>8</NumSides>
-					<Modifier>2</Modifier>
-					<Type>3</Type>
-				</Damage>
-			</Weapon>			
 			<Weapon id="mace">
 				<DescriptionSID>MACE_SID</DescriptionSID>
 				<UsageDescriptionSID>MACE_USAGE_SID</UsageDescriptionSID>
@@ -27891,6 +28093,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -27899,31 +28107,6 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 					<Type>2</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="holy_mace">
-				<DescriptionSID>HOLY_MACE_SID</DescriptionSID>
-				<UsageDescriptionSID>HOLY_MACE_USAGE_SID</UsageDescriptionSID>
-				<Value>140</Value>
-				<Weight>
-					<Pounds>10</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>15</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1003</Skill>
-				<RangedSkill>2002</RangedSkill>
-				<Difficulty>44</Difficulty>
-				<Speed>5</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>2</Modifier>
-					<Type>7</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="great_mace_torasin">
@@ -27991,6 +28174,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>7</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -27999,31 +28188,6 @@
 					<NumDice>2</NumDice>
 					<NumSides>3</NumSides>
 					<Type>2</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="lightning_hammer">
-				<DescriptionSID>LIGHTNING_HAMMER_SID</DescriptionSID>
-				<UsageDescriptionSID>LIGHTNING_HAMMER_USAGE_SID</UsageDescriptionSID>
-				<Value>160</Value>
-				<Weight>
-					<Pounds>6</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>7</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>11</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1003</Skill>
-				<RangedSkill>2002</RangedSkill>
-				<Difficulty>45</Difficulty>
-				<Speed>5</Speed>
-				<Damage>
-					<NumDice>4</NumDice>
-					<NumSides>3</NumSides>
-					<Modifier>2</Modifier>
-					<Type>10</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="pick_axe">
@@ -28037,6 +28201,10 @@
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
 					<Property>
 						<Name>dig_hardness</Name>
 						<Value>10</Value>
@@ -28068,6 +28236,10 @@
 				<DangerLevel>5</DangerLevel>
 				<Properties>
 					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
 						<Name>dig_hardness</Name>
 						<Value>15</Value>
 					</Property>
@@ -28097,6 +28269,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -28117,6 +28295,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
 				<Difficulty>47</Difficulty>
@@ -28138,6 +28322,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -28158,6 +28348,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
 				<Difficulty>49</Difficulty>
@@ -28168,56 +28364,6 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
-			<Weapon id="frost_axe">
-				<DescriptionSID>FROST_AXE_SID</DescriptionSID>
-				<UsageDescriptionSID>FROST_AXE_USAGE_SID</UsageDescriptionSID>
-				<Value>160</Value>
-				<Weight>
-					<Pounds>10</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>6</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1000</Skill>
-				<RangedSkill>2000</RangedSkill>
-				<Difficulty>46</Difficulty>
-				<Speed>6</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>8</NumSides>
-					<Modifier>3</Modifier>
-					<Type>4</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="acid_axe">
-				<DescriptionSID>ACID_AXE_SID</DescriptionSID>
-				<UsageDescriptionSID>ACID_AXE_USAGE_SID</UsageDescriptionSID>
-				<Value>140</Value>
-				<Weight>
-					<Pounds>10</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>3</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1000</Skill>
-				<RangedSkill>2000</RangedSkill>
-				<Difficulty>46</Difficulty>
-				<Speed>6</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>8</NumSides>
-					<Modifier>3</Modifier>
-					<Type>5</Type>
-				</Damage>
-			</Weapon>			
 			<Weapon id="earthcleaver">
 				<DescriptionSID>EARTHCLEAVER_SID</DescriptionSID>
 				<UsageDescriptionSID>EARTHCLEAVER_USAGE_SID</UsageDescriptionSID>
@@ -28316,6 +28462,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -28324,56 +28476,6 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="frost_spear">
-				<DescriptionSID>FROST_SPEAR_SID</DescriptionSID>
-				<UsageDescriptionSID>FROST_SPEAR_USAGE_SID</UsageDescriptionSID>
-				<Value>130</Value>
-				<Weight>
-					<Pounds>7</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>6</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1006</Skill>
-				<RangedSkill>2008</RangedSkill>
-				<Difficulty>45</Difficulty>
-				<Speed>6</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>2</Modifier>
-					<Type>4</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="poisoned_spear">
-				<DescriptionSID>POISONED_SPEAR_SID</DescriptionSID>
-				<UsageDescriptionSID>POISONED_SPEAR_USAGE_SID</UsageDescriptionSID>
-				<Value>130</Value>
-				<Weight>
-					<Pounds>7</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>2</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1006</Skill>
-				<RangedSkill>2008</RangedSkill>
-				<Difficulty>45</Difficulty>
-				<Speed>6</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>2</Modifier>
-					<Type>6</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="long_spear">
@@ -28387,6 +28489,12 @@
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>3</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>47</Difficulty>
@@ -28407,6 +28515,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -28427,6 +28541,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -28448,6 +28568,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1005</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -28458,56 +28584,6 @@
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
-			<Weapon id="holy_rod">
-				<DescriptionSID>HOLY_ROD_SID</DescriptionSID>
-				<UsageDescriptionSID>HOLY_ROD_USAGE_SID</UsageDescriptionSID>
-				<Value>130</Value>
-				<Weight>
-					<Pounds>6</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>15</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1005</Skill>
-				<RangedSkill>2002</RangedSkill>
-				<Difficulty>44</Difficulty>
-				<Speed>6</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>2</Modifier>
-					<Type>7</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="flame_rod">
-				<DescriptionSID>FLAME_ROD_SID</DescriptionSID>
-				<UsageDescriptionSID>FLAME_ROD_USAGE_SID</UsageDescriptionSID>
-				<Value>150</Value>
-				<Weight>
-					<Pounds>6</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>9</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1005</Skill>
-				<RangedSkill>2002</RangedSkill>
-				<Difficulty>44</Difficulty>
-				<Speed>6</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>2</Modifier>
-					<Type>3</Type>
-				</Damage>
-			</Weapon>			
 			<Weapon id="creators_might">
 				<DescriptionSID>CREATORS_MIGHT_SID</DescriptionSID>
 				<UsageDescriptionSID>CREATORS_MIGHT_USAGE_SID</UsageDescriptionSID>
@@ -28581,6 +28657,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1008</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -28601,6 +28683,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1008</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -28609,56 +28697,6 @@
 					<NumDice>2</NumDice>
 					<NumSides>4</NumSides>
 					<Type>1</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="frost_whip">
-				<DescriptionSID>FROST_WHIP_SID</DescriptionSID>
-				<UsageDescriptionSID>FROST_WHIP_USAGE_SID</UsageDescriptionSID>
-				<Value>160</Value>
-				<Weight>
-					<Pounds>5</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>4</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>6</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1008</Skill>
-				<RangedSkill>2009</RangedSkill>
-				<Difficulty>46</Difficulty>
-				<Speed>4</Speed>
-				<Damage>
-					<NumDice>3</NumDice>
-					<NumSides>4</NumSides>
-					<Modifier>1</Modifier>
-					<Type>4</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="flame_whip">
-				<DescriptionSID>FLAME_WHIP_SID</DescriptionSID>
-				<UsageDescriptionSID>FLAME_WHIP_USAGE_SID</UsageDescriptionSID>
-				<Value>160</Value>
-				<Weight>
-					<Pounds>5</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>4</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>9</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1008</Skill>
-				<RangedSkill>2009</RangedSkill>
-				<Difficulty>46</Difficulty>
-				<Speed>4</Speed>
-				<Damage>
-					<NumDice>3</NumDice>
-					<NumSides>4</NumSides>
-					<Modifier>1</Modifier>
-					<Type>3</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="shepherd_crook">
@@ -28671,6 +28709,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1005</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -28691,6 +28735,12 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1005</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -28699,31 +28749,6 @@
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="shadow_staff">
-				<DescriptionSID>SHADOW_STAFF_SID</DescriptionSID>
-				<UsageDescriptionSID>SHADOW_STAFF_USAGE_SID</UsageDescriptionSID>
-				<Value>145</Value>
-				<Weight>
-					<Pounds>3</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
-					<Colour>4</Colour>
-				</TextDetails>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1005</Skill>
-				<RangedSkill>2002</RangedSkill>
-				<Difficulty>45</Difficulty>
-				<Speed>5</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>4</NumSides>
-					<Modifier>2</Modifier>
-					<Type>8</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="_branch">
@@ -28783,6 +28808,12 @@
 				<WornLocation>9</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2007</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -28833,6 +28864,12 @@
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<Difficulty>45</Difficulty>
@@ -28853,6 +28890,12 @@
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<Difficulty>41</Difficulty>
@@ -28873,6 +28916,12 @@
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<Difficulty>43</Difficulty>
@@ -29039,6 +29088,12 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -29048,58 +29103,6 @@
 					<NumDice>1</NumDice>
 					<NumSides>2</NumSides>
 					<Type>1</Type>
-				</Damage>
-			</Missile>
-			<Missile id="freezing_arrow">
-				<DescriptionSID>FREEZING_ARROW_SID</DescriptionSID>
-				<UsageDescriptionSID>FREEZING_ARROW_USAGE_SID</UsageDescriptionSID>
-				<Value>10</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>9</Ounces>
-				</Weight>
-				<WornLocation>10</WornLocation>
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
-					<Colour>15</Colour>
-				</TextDetails>
-				<DangerLevel>4</DangerLevel>
-				<Skill>1009</Skill>
-				<RangedSkill>2003</RangedSkill>
-				<RequiresRangedWeapon>1</RequiresRangedWeapon>
-				<Difficulty>43</Difficulty>
-				<Speed>3</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Type>4</Type>
-				</Damage>
-			</Missile>
-			<Missile id="poison_arrow">
-				<DescriptionSID>POISON_ARROW_SID</DescriptionSID>
-				<UsageDescriptionSID>POISON_ARROW_USAGE_SID</UsageDescriptionSID>
-				<Value>10</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>9</Ounces>
-				</Weight>
-				<WornLocation>10</WornLocation>
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
-					<Colour>2</Colour>
-				</TextDetails>
-				<DangerLevel>4</DangerLevel>
-				<Skill>1009</Skill>
-				<RangedSkill>2003</RangedSkill>
-				<RequiresRangedWeapon>1</RequiresRangedWeapon>
-				<Difficulty>43</Difficulty>
-				<Speed>3</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Type>6</Type>
 				</Damage>
 			</Missile>
 			<Missile id="avernal_arrow">
@@ -29143,6 +29146,12 @@
 					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -29152,58 +29161,6 @@
 					<NumDice>1</NumDice>
 					<NumSides>2</NumSides>
 					<Type>1</Type>
-				</Damage>
-			</Missile>
-			<Missile id="flame_bolt">
-				<DescriptionSID>FLAME_BOLT_SID</DescriptionSID>
-				<UsageDescriptionSID>FLAME_BOLT_USAGE_SID</UsageDescriptionSID>
-				<Value>8</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>8</Ounces>
-				</Weight>
-				<WornLocation>10</WornLocation>
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
-					<Colour>1</Colour>
-				</TextDetails>
-				<DangerLevel>4</DangerLevel>
-				<Skill>1009</Skill>
-				<RangedSkill>2004</RangedSkill>
-				<RequiresRangedWeapon>1</RequiresRangedWeapon>
-				<Difficulty>43</Difficulty>
-				<Speed>3</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Type>3</Type>
-				</Damage>
-			</Missile>
-			<Missile id="arcane_bolt">
-				<DescriptionSID>ARCANE_BOLT_SID</DescriptionSID>
-				<UsageDescriptionSID>ARCANE_BOLT_USAGE_SID</UsageDescriptionSID>
-				<Value>8</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>8</Ounces>
-				</Weight>
-				<WornLocation>10</WornLocation>
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
-					<Colour>15</Colour>
-				</TextDetails>
-				<DangerLevel>4</DangerLevel>
-				<Skill>1009</Skill>
-				<RangedSkill>2004</RangedSkill>
-				<RequiresRangedWeapon>1</RequiresRangedWeapon>
-				<Difficulty>43</Difficulty>
-				<Speed>3</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Type>9</Type>
 				</Damage>
 			</Missile>
 			<Missile id="javelin">
@@ -29216,6 +29173,12 @@
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -29236,6 +29199,12 @@
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -29256,6 +29225,12 @@
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>4</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -29276,6 +29251,12 @@
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -29296,6 +29277,12 @@
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>5</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>52</Difficulty>

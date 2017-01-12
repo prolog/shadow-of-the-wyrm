@@ -186,6 +186,7 @@ class Creature : public ISerializable
     int increment_hit_points(int amount);
     int decrement_hit_points(int amount);
     Statistic get_hit_points() const;
+    Statistic& get_hit_points_ref();
     bool is_hp_full() const;
     bool is_ap_full() const;
 
@@ -193,7 +194,7 @@ class Creature : public ISerializable
     int increment_arcana_points(int amount);
     int decrement_arcana_points(int amount);
     Statistic get_arcana_points() const;
-
+    Statistic& get_arcana_points_ref();
 
     // Set/get protective statistics.  The "base_evade" and "base_soak" are
     // stored (not calculated) values that exist regardless of any armour worn.

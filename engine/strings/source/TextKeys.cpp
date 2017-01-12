@@ -130,6 +130,7 @@ const string TextKeys::DAMAGE_CHAOTIC    = "DAMAGE_CHAOTIC";
 const string TextKeys::DAMAGE_VORPAL     = "DAMAGE_VORPAL";
 const string TextKeys::DAMAGE_DRAINING   = "DAMAGE_DRAINING";
 const string TextKeys::DAMAGE_ETHEREAL   = "DAMAGE_ETHEREAL";
+const string TextKeys::DAMAGE_INCORPOREAL = "DAMAGE_INCORPOREAL";
 const string TextKeys::DAMAGE_SLAYS      = "DAMAGE_SLAYS";
 
 const string TextKeys::ATTACK_DETAILS    = "ATTACK_DETAILS";

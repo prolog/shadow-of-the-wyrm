@@ -138,12 +138,20 @@ class Item : public ISerializable
 
     // Enchant/smith the item if possible; if this is successful, reduce the
     // number of allowable enchantments/smithings by one.
-    virtual bool enchant(const float enchant_mult);
- 
+    virtual bool enchant(const int pct_chance_brand, const float enchant_mult);
+
+    // Brand the item, typically if it's a weapon or armour.  Reduce the number
+    // of allowable enchantments/smithings by one.
+    virtual bool brand();
+    
+    // Get the resource string IDs for any flags associated with the item.
+    // Generally, only weapons and armour will have flags.
+    virtual std::vector<std::string> get_flag_sids() const;
+
     // Assume an enchant_mult of 1.0 and allow a single point of enchantment.
     // This function is used when generating better items based on the
     // danger level of the current location.
-    bool enchant(const int enchant_points);
+    bool enchant(const int pct_chance_brand, const int enchant_points);
     virtual bool smith(const int smith_points);
 
     void set_remaining_enchants(const Statistic& new_remaining);
@@ -187,10 +195,13 @@ class Item : public ISerializable
 
     // The base item class enchants/smiths by updating resistances.
     // Other items may modify nutrition (consumables), evade/soak (wearables),
-    // etc.  Smithing only updates physical damage types.
+    // etc.  Smithing only updates physical damage types.  Branding only
+    // works for wearables and weapons.
     virtual void do_enchant_item(const int points);
     virtual void do_smith_item(const int points);
-    
+    virtual DamageType do_brand();
+    DamageType get_random_brand();
+
     std::string id;
     std::string base_id;
     uint quantity; // the number of items in the stack

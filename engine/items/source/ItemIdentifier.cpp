@@ -1,4 +1,5 @@
 #include <sstream>
+#include "Conversion.hpp"
 #include "CorpseTextKeys.hpp"
 #include "ConsumableConstants.hpp"
 #include "Game.hpp"
@@ -6,6 +7,7 @@
 #include "ItemFilterFactory.hpp"
 #include "ItemProperties.hpp"
 #include "ItemStatusTextKeys.hpp"
+#include "ResistanceTextKeys.hpp"
 #include "SkinningConstants.hpp"
 #include "StatisticsMarker.hpp"
 #include "StringTable.hpp"
@@ -193,10 +195,25 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
     string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID);
     string creature_skin_desc_sid = item->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID);
     string replacement_sid = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID);
+    bool brandable = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDABLE));
+    bool branded = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
 
     if (!creature_desc_sid.empty())
     {
       desc << CorpseTextKeys::get_corpse_description(StringTable::get(creature_desc_sid));
+    }
+    else if (brandable)
+    {
+      string br_desc = StringTable::get(item->get_description_sid());
+      desc << br_desc;
+
+      if (branded)
+      {
+        DamageType brand = static_cast<DamageType>(String::to_int(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRAND)));
+        
+        // Add the brand to the end of the description, in parentheses.
+        desc << " (" << ResistanceTextKeys::get_resistance_for_damage_type(brand) << ")";
+      }
     }
     // If the item requires creating a message with substitutions (e.g.,
     // "red dragon skin"), handle that case:
@@ -267,10 +284,27 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
     string creature_skin_desc_sid = item->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID);
     string replacement_sid = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID);
+    bool brandable = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDABLE));
+    bool branded = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
 
     if (!creature_desc_sid.empty())
     {
       full_desc = CorpseTextKeys::get_corpse_description(StringTable::get(creature_desc_sid));
+    }
+    else if (brandable)
+    {
+      ostringstream ss;
+      ss << StringTable::get(item->get_usage_description_sid());
+
+      if (branded)
+      {
+        DamageType brand = static_cast<DamageType>(String::to_int(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRAND)));
+
+        // Add the brand to the end of the description, in parentheses.
+        ss << " (" << ResistanceTextKeys::get_resistance_for_damage_type(brand) << ")";
+      }
+
+      full_desc = ss.str();
     }
     // If the item requires creating a message with substitutions (e.g.,
     // "red dragon skin"), handle that case:

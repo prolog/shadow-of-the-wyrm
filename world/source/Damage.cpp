@@ -150,6 +150,112 @@ DamagePtr Damage::get_additional_damage() const
   return additional_damage;
 }
 
+void Damage::set_damage_flags(const map<DamageFlagType, bool>& dflags)
+{
+  for (const auto& dpair : dflags)
+  {
+    set_damage_flag(dpair.first, dpair.second);
+  }
+}
+
+void Damage::set_damage_flag(const DamageFlagType df, const bool value)
+{
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+
+  switch (df)
+  {
+    case DamageFlagType::DAMAGE_FLAG_CHAOTIC:
+      chaotic = value;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_VORPAL:
+      vorpal = value;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_DRAINING:
+      draining = value;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_ETHEREAL:
+      ethereal = value;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_PIERCING:
+      piercing = value;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_INCORPOREAL:
+      incorporeal = value;
+      break;
+    default:
+      break;
+  }
+}
+
+bool Damage::get_damage_flag(const DamageFlagType df) const
+{
+  bool flag = false;
+
+  switch (df)
+  {
+    case DamageFlagType::DAMAGE_FLAG_CHAOTIC:
+      flag = chaotic;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_VORPAL:
+      flag = vorpal;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_DRAINING:
+      flag = draining;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_ETHEREAL:
+      flag = ethereal;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_PIERCING:
+      flag = piercing;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_INCORPOREAL:
+      flag = incorporeal;
+      break;
+    default:
+      break;
+  }
+
+  return flag;
+}
+
+vector<DamageFlagType> Damage::get_damage_flags_by_value(const bool value) const
+{
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+  vector<DamageFlagType> damage_flags;
+
+  if (chaotic == value)
+  {
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_CHAOTIC);
+  }
+
+  if (vorpal == value)
+  {
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_VORPAL);
+  }
+
+  if (draining == value)
+  {
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_DRAINING);
+  }
+
+  if (ethereal == value)
+  {
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_ETHEREAL);
+  }
+
+  if (piercing == value)
+  {
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_PIERCING);
+  }
+
+  if (incorporeal == value)
+  {
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_INCORPOREAL);
+  }
+
+  return damage_flags;
+}
+
 void Damage::set_chaotic(const bool new_chaotic)
 {
   chaotic = new_chaotic;

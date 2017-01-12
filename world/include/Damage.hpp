@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -24,6 +25,11 @@ class Damage : public Dice
 
     virtual void set_slays_races(const std::vector<std::string>& new_slay_races);
     std::vector<std::string> get_slays_races() const;
+
+    void set_damage_flags(const std::map<DamageFlagType, bool>& dflags);
+    void set_damage_flag(const DamageFlagType df, const bool value);
+    bool get_damage_flag(const DamageFlagType df) const;
+    std::vector<DamageFlagType> get_damage_flags_by_value(const bool val) const;
 
     void set_chaotic(const bool new_chaotic);
     bool get_chaotic() const;

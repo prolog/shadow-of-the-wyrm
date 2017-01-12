@@ -425,6 +425,19 @@ void Game::go()
         if (c_it != map_creatures.end())
         {
           current_creature = c_it->second;
+
+          // Now, sanity check - is the creature still at its
+          // stated location?
+          if (current_creature != nullptr)
+          {
+            TilePtr cur_cr_tile = current_map->at(current_map->get_location(current_creature->get_id()));
+
+            if (cur_cr_tile && (!cur_cr_tile->has_creature() || cur_cr_tile->get_creature()->get_id() != current_creature->get_id()))
+            {
+              current_map->remove_creature(current_creature->get_id());
+              current_creature = nullptr;
+            }
+          }
         }
 
         if (!current_creature)
@@ -577,7 +590,8 @@ void Game::process_elapsed_time(const int seconds)
 ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPtr current_map, const bool reloaded_game)
 {
   ActionCost action_cost;
-  
+  Log& log = Log::instance();
+
   if (current_creature)
   {
     // Don't try to get an action for the creature if it cannot act.  Instead,
@@ -660,6 +674,13 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         DecisionStrategyPtr command_strategy = DecisionStrategySelector::select_decision_strategy(current_creature);
         CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
         
+        if (log.debug_enabled())
+        {
+          ostringstream ss;
+          ss << current_creature->get_id() << " performs " << command->get_name();
+          log.debug(ss.str());
+        }
+
         // Clear the stored messages if we're about to receive the player's action.
         // The player will already have had a chance to read the messages.  The
         // exception to this is if the creature is automatically moving - we don't

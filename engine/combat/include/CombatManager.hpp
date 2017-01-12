@@ -23,7 +23,7 @@ class CombatManager
                            const bool mark_skills = true, 
                            DamagePtr damage = DamagePtr());
 
-    void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage, const std::string combat_message = "");
+    void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage, const std::string combat_message_sid = "");
     void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level);
 
   protected:
@@ -35,10 +35,15 @@ class CombatManager
     void handle_draining_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info);
     void handle_ethereal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info);
 
+    // Can the creature split when hit?
+    void handle_split_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, RacePtr creature_race, MapPtr current_map);
+
     // Set the creature to hostile, and yell out for support.
     void handle_hostility_implications(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     
     // Functions to handle the attacking mechanics and add messages as necessary.
+    //
+    // These are generally not called directly, other than via the Lua API.
     bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type);
     bool miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     bool close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);

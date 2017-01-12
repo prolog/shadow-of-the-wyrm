@@ -1,4 +1,12 @@
 Me:
+- Too long names: SulTanak was generated.
+- Allow hungerless races to gain health over time, just very, very
+  slowly.
+- Unnecessary refresh being called for generator? (refreshing overworld
+  when it shouldn't)
+- Creatures should have a chance to follow up/down stairs with special
+  case for returning to overworld.  Chance should be based on hostility
+  and an Escape roll.  Update Guidebook.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Creatures should be smarter about the use of spells given that creatures
@@ -17,17 +25,6 @@ Me:
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
-- Traps that fire and kill a creature are giving the player exp?
-- Test clearing all shrines
-- Implement proper branded weapons.  These should allow for any "magical"
-  damage type (heat through lightning in the damage enum) to be the weapon
-  damage instead.  Should also allow for chaos/pierce/eth flags.  Gives
-  extra dice or modifier.  Should have "branded" flag on Weapon, config
-  as necessary during item generation.  Have one weapon for each of the
-  melee weapon groups, and ranged ammunition.  Remove all the individual
-  branded-like items from the game configuration.
-- Ensure item describers properly handle the brands, plus draining/vorpal/
-  piercing/chaotic.
 - Cancellation effect type
 - Special rooms: beer hall, magical workshop, armory.
 - Travelling bazaars.
@@ -70,11 +67,12 @@ Me:
 - Add splitting behaviour to all jellies: when hit, they have some
   chance (10-20%?) of splitting.  Each creature in the split has half
   the current HP of the original.
-- Witchthorns should have a chance of doing a 1 dmg piercing attack.
 - Recall spell that takes you back to the overworld.
+- Armour flags
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
+- Character dumps while blinded show all items as "something"
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
@@ -107,12 +105,6 @@ AgingMinotaur:
 
 Kraphead:
 - auto-displace when bumping friendly creatures
-
-Lagi:
-- alternative inventory management: when in the stateless inventory
-  screen ("I"), items should be selectable, and then another menu should
-  be overlaid allowing equipping into various slots, dropping, evoking,
-  drinking, and so on.
 
 roguecastergames:
 - sea monsters
