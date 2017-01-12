@@ -1,3 +1,13 @@
+Shadow of the Wyrm v0.6.0 "Capirola"
+- Version declared January 11, 2017.
+
+- More potential random names for character creation.
+
+- Bug fixes:
+
+  - Missed comma in one of the naming options was leading to
+    three-syllable names like "SulTanak."
+
 Shadow of the Wyrm v0.5.9 "Galilei"
 - Version declared January 1, 2017.  Version finalized January 11, 2017.
 

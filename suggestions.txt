@@ -1,5 +1,5 @@
 Me:
-- Too long names: SulTanak was generated.
+- Implement fletchery.
 - Allow hungerless races to gain health over time, just very, very
   slowly.
 - Unnecessary refresh being called for generator? (refreshing overworld
@@ -113,8 +113,28 @@ roguecastergames:
 
 Dallas Herrin:
 
-- Sometimes, the stone key that you pick up on the stairs in RNG crypts 
-  does not fit the lock on the sealed tomb.
+- Praying removes the Disfiguration status, but does not remove the stat 
+  malus instantly; it goes away eventually, though. I have been unable to 
+  test other status effects because of how rarely they occur
+- At Archery 70 and above, projectiles will rarely hit, except at 
+  point-blank range. There's not even a message about missing. Everything 
+  else goes as usual, though, the ammo disappears from your inventory, the 
+  attack animation is carried out, and it goes to the right place, it just 
+  fails to produce any message, about hitting or otherwise. Higher values 
+  of Archery fail to hit/produce a message more often; at Archery 100, it 
+  is impossible to hit anyone unless they are literally beside you- or at 
+  least, it's very unlikely.
+- Figured out the issue with the crypt-keys; they stack with other crypt 
+  keys that you might be carrying, which I suppose breaks the connection 
+  it's supposed to have with the lock.
+- The 'searing light' traps can't be disarmed, even at Disarm Traps 100. 
+  Presumably because it doesn't break down into items like fire traps or 
+  poison traps?
+- The speed of using the Thievery skill doesn't seem to scale with speed 
+  (e.g. like moving one space or making an attack does).
+- Divine avengers sent by an angry god can spawn friendly if you're 
+  charismatic enough.
+- A god's divine lightning stops regeneration of HP and AP, permanently.
 
 Not bugs, but probably not working as intended:
 
