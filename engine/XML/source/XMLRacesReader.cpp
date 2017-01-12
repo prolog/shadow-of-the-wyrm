@@ -66,6 +66,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool corpse_poisoned = XMLUtils::get_child_node_bool_value(race_node, "CorpsePoisoned");
     race->set_corpse_poisoned(corpse_poisoned);
 
+    bool splits = XMLUtils::get_child_node_bool_value(race_node, "Splits");
+    race->set_splits(splits);
+
     bool has_pockets = XMLUtils::get_child_node_bool_value(race_node, "HasPockets");
     race->set_has_pockets(has_pockets);
 

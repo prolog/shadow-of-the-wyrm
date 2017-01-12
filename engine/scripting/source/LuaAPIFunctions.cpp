@@ -1,5 +1,6 @@
 #include "LuaAPIFunctions.hpp"
 #include "ClassManager.hpp"
+#include "CombatManager.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureDescriber.hpp"
@@ -128,6 +129,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_message_with_pause", add_message_with_pause);
   lua_register(L, "clear_and_add_message", clear_and_add_message);
   lua_register(L, "add_message", add_message);
+  lua_register(L, "add_fov_message", add_fov_message);
   lua_register(L, "add_message_direct", add_message_direct);
   lua_register(L, "add_debug_message", add_debug_message);
   lua_register(L, "add_confirmation_message", add_confirmation_message);
@@ -245,6 +247,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_map_dimensions", get_map_dimensions);
   lua_register(L, "get_coords_with_tile_type_in_range", get_coords_with_tile_type_in_range);
   lua_register(L, "get_custom_map_id", get_custom_map_id);
+  lua_register(L, "ranged_attack", ranged_attack);
 }
 
 // Lua API helper functions
@@ -535,6 +538,30 @@ int add_char_message(lua_State* ls)
 
   lua_pushstring(ls, key_val.c_str());
   return 1;
+}
+
+int add_fov_message(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string aff_creature_id = lua_tostring(ls, 2);
+    string message_sid = lua_tostring(ls, 3);
+    CreaturePtr creature = get_creature(creature_id);
+
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, aff_creature_id == PlayerConstants::PLAYER_CREATURE_ID);
+    manager.add_new_message(StringTable::get(message_sid));
+    manager.send();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_fov_message");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int add_message_for_creature(lua_State* ls)
@@ -3836,6 +3863,54 @@ int get_custom_map_id(lua_State* ls)
 
   lua_pushstring(ls, custom_map_id.c_str());
   return 1;
+}
+
+int ranged_attack(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 4 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string attacking_creature_id = lua_tostring(ls, 1);
+    string attacked_creature_id = lua_tostring(ls, 2);
+    int damage_amount = lua_tointeger(ls, 3);
+    DamageType dtype = static_cast<DamageType>(lua_tointeger(ls, 4));
+    bool piercing = false;
+
+    if (num_args >= 5)
+    {
+      piercing = lua_toboolean(ls, 5) != 0;
+    }
+
+    CreaturePtr attacking_creature;
+    CreaturePtr attacked_creature;
+
+    if (!attacking_creature_id.empty())
+    {
+      attacking_creature = get_creature(attacking_creature_id);
+    }
+
+    if (!attacked_creature_id.empty())
+    {
+      attacked_creature = get_creature(attacked_creature_id);
+    }
+
+    DamagePtr damage = std::make_shared<Damage>();
+    damage->set_damage_type(dtype);
+    damage->set_num_dice(damage_amount);
+    damage->set_dice_sides(1);
+    damage->set_piercing(piercing);
+
+    CombatManager cm;
+    cm.attack(attacking_creature, attacked_creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY, false, damage);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to ranged_attack");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)

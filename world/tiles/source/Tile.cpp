@@ -1,7 +1,9 @@
+#include <sstream>
 #include "DigChancesFactory.hpp"
 #include "Inventory.hpp"
 #include "FeatureFactory.hpp"
 #include "InventoryFactory.hpp"
+#include "Log.hpp"
 #include "MapFactory.hpp"
 #include "NullInventory.hpp"
 #include "Serialize.hpp"
@@ -365,6 +367,14 @@ bool Tile::has_creature() const
 
 void Tile::set_creature(const CreaturePtr& new_creature)
 {
+  ostringstream ss;
+  
+  if (creature != nullptr && new_creature != nullptr)
+  {
+    ss << creature->get_id() << " being replaced by " << new_creature->get_id();
+    Log::instance().debug(ss.str());
+  }
+
   creature = new_creature;
   
   if (creature->get_is_player())

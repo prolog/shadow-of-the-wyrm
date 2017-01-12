@@ -365,6 +365,15 @@ string CombatTextKeys::get_ranged_attack_message(const bool attacker_is_player, 
   return ranged_attack_message;
 }
 
+string CombatTextKeys::get_split_message(const string& split_creature)
+{
+  string split_msg = StringTable::get(COMBAT_SPLIT_MESSAGE);
+  boost::replace_first(split_msg, "%s", split_creature);
+  split_msg[0] = toupper(split_msg[0]);
+
+  return split_msg;
+}
+
 void CombatTextKeys::populate_combat_messages()
 {
   combat_damage_hit_messages.insert(make_pair<string, vector<string>>(create_key(0, DamageType::DAMAGE_TYPE_SLASH), {"COMBAT_HIT_SLASH_NP", "COMBAT_HIT_SLASH2_NP"}));
@@ -438,5 +447,6 @@ const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAG
 const string CombatTextKeys::COMBAT_MISS_MESSAGE_NP        = "COMBAT_MISS_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_CRITICAL_HIT_MESSAGE   = "COMBAT_CRITICAL_HIT_MESSAGE";
 const string CombatTextKeys::COMBAT_MIGHTY_BLOW_MESSAGE    = "COMBAT_MIGHTY_BLOW_MESSAGE";
+const string CombatTextKeys::COMBAT_SPLIT_MESSAGE          = "COMBAT_SPLIT_MESSAGE";
 
 map<string, vector<string>> CombatTextKeys::combat_damage_hit_messages;

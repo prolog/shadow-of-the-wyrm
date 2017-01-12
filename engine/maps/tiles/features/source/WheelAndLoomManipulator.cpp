@@ -139,7 +139,11 @@ ItemPtr WheelAndLoomManipulator::create_woven_armour(CreaturePtr creature, ItemP
         int max_points = wc.calculate_max_enchant_points(creature);
 
         int num_points = RNG::range(min_points, max_points);
-        wearable->enchant(num_points);
+
+        // High weaving skill can improve an item as if by enchantments, but
+        // cannot brand it, which is why enchant is called with a pct_chance
+        // of 0 for branding.
+        wearable->enchant(0 /* weaving doesn't brand */, num_points);
       }
     }
   }

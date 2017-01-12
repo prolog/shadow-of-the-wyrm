@@ -236,6 +236,10 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       {
         if (confirm_move_to_tile_if_necessary(creature, creatures_old_tile, creatures_new_tile))
         {
+          ostringstream ss;
+          ss << "Moving within map: ID " << creature->get_id() << " to " << new_coords.first << "," << new_coords.second;
+          Log::instance().debug(ss.str());
+
           // Update the map info
           MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
           TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
@@ -553,8 +557,6 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     string player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
     Coordinate starting_coords;
     
-    TilePtr new_creature_tile = new_map->at(starting_coords);
-
     // If we're moving on to an existing map, handle any tile properties
     // that may be present.  Don't worry about this when we're moving
     // to a brand-new map, as tile properties will be automatically 
@@ -563,7 +565,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     handle_properties_and_move_to_new_map(tile, map, new_map);
                 
     add_initial_map_messages(creature, new_map, tile_type);                
-    add_tile_related_messages(creature, new_creature_tile);
+    add_tile_related_messages(creature, MapUtils::get_tile_for_creature(new_map, creature));
 
     action_cost_value = get_action_cost_value(creature);
   }
@@ -665,7 +667,7 @@ void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPt
     CreaturePtr current_creature = current_tile->get_creature();
     MapUtils::remove_creature(old_map, current_creature);
 
-    MapUtils::place_creature_on_previous_or_first_available_location(new_map, current_creature, current_creature->get_id());
+    MapUtils::place_creature_on_previous_location(new_map, current_creature, current_creature->get_id());
 
     // Set the new map to be loaded in the next iteration of the game loop.
     game.set_current_map(new_map);

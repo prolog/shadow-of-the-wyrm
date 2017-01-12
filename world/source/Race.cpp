@@ -9,6 +9,7 @@ Race::Race()
 : user_playable(false)
 , leaves_corpse(true)
 , corpse_poisoned(false)
+, splits(false)
 , has_pockets(false)
 , has_voice(false)
 , has_random_villages(true)
@@ -94,6 +95,16 @@ void Race::set_corpse_poisoned(const bool new_corpse_poisoned)
 bool Race::get_corpse_poisoned() const
 {
   return corpse_poisoned;
+}
+
+void Race::set_splits(const bool new_splits)
+{
+  splits = new_splits;
+}
+
+bool Race::get_splits() const
+{
+  return splits;
 }
 
 void Race::set_has_pockets(const bool new_has_pockets)

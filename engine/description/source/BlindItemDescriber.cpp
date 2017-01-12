@@ -21,8 +21,8 @@ string BlindItemDescriber::describe_usage() const
 }
 
 // Nothing shows up for the resists when blind.
-string BlindItemDescriber::describe_resists() const
+string BlindItemDescriber::describe_resists_and_flags() const
 {
-  string no_res;
-  return no_res;
+  string no_res_or_flags;
+  return no_res_or_flags;
 }

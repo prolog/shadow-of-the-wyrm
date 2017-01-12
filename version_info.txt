@@ -1,3 +1,70 @@
+Shadow of the Wyrm v0.5.9 "Galilei"
+- Version declared January 1, 2017.  Version finalized January 11, 2017.
+
+- Nobles now start with a number of crossbow bolts, instead of just one.
+
+- Witchthorns are far more dangerous for early game characters.  They have
+  a chance to do a ranged attack: 1d3 damage, piercing.
+
+- Added a "brandable" flag.  This allows a weapon or piece of armour to
+  take on a particular non-physical (slash, pierce, pound) damage brand:
+  holy, shadow, flame, etc.  
+
+- Removed the old hard-coded branded weapons to make way for the
+  dynamically-generated ones.
+
+- Almost all weapons and armour are now brandable.  The exceptions tend to
+  be specific-damtype items like poison darts and shadow bombs.  Armour
+  created via skins is also not brandable.
+
+- A brandable item has a ~15% chance to be branded when enchanted.  This 
+  is modified to 0% (when reading a cursed enchanting scroll), or ~30%
+  (blessed).  Once an item is branded, its brand is fixed, and it cannot
+  be branded again.
+
+- Branding will associate a particular damage type with the item.
+  For armour, this will give an additional 15 percentage points of
+  resistance.  For weapons, it will switch to that damage type, and
+  add an additional die of damage, and +1 to the modifier.
+
+- Weapons have a very small chance, upon enchantment, to gain a damage
+  flag such as vorpal, draining, chaotic, etc.
+
+- Now that damage flags are available to weapons outside of artifacts,
+  any damage flags will be shown on the second line of the equipment
+  screen (in addition to the "W" command).  The "Resists" line is now
+  "Resists/Flags".
+
+- Weapons are now less likely to gain resistances when being enchanted.
+  The chance has been halved.
+
+- Jellies can now split in half when they're wounded and have more than
+  a third of their maximum HP.  The creature that splits off has half of 
+  their current HP.
+
+- Up staircases should no longer lead to a zoo.  But they can, like
+  down staircases, once a certain amount of placement tries has been
+  reached.  This should be very unlikely.
+
+- Bug fixes:
+
+  - Pack generation shouldn't be attempted for uniques (Esran).
+
+  - Fixed a looping issue with entering a map where the entry tile is 
+    occupied by an NPC (Esran).
+
+  - All-zoo dungeon levels weren't allowing stair placement.
+
+  - Tile-related messages were not always being displayed correctly when
+    moving to a new map.
+
+  - In certain situations on map creation, creatures weren't being
+    removed properly which caused the player to be not placed properly.
+    (Esran)
+
+  - In some cases, a creature could try to act with a null FOV map, which
+    would cause a crash.
+
 Shadow of the Wyrm v0.5.8 "Merlin"
 - Version declared December 1, 2016.  Version finalized January 1, 2017.
 

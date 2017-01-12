@@ -35,6 +35,8 @@ class Weapon : public Wearable
 
     std::string get_synopsis() const override;
 
+    std::vector<std::string> get_flag_sids() const override;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
@@ -42,6 +44,7 @@ class Weapon : public Wearable
     virtual void do_enchant_item(const int points) override;
     virtual void do_smith_item(const int points) override;
     virtual void do_improve_item(const int points) override;
+    virtual DamageType do_brand() override;
 
     int difficulty;
     int speed;

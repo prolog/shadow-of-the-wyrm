@@ -774,6 +774,11 @@ Statistic Creature::get_hit_points() const
   return hit_points;
 }
 
+Statistic& Creature::get_hit_points_ref()
+{
+  return hit_points;
+}
+
 bool Creature::is_hp_full() const
 {
   return (hit_points.get_base() <= hit_points.get_current());
@@ -802,6 +807,11 @@ int Creature::decrement_arcana_points(const int amount)
 }
 
 Statistic Creature::get_arcana_points() const
+{
+  return arcana_points;
+}
+
+Statistic& Creature::get_arcana_points_ref()
 {
   return arcana_points;
 }
