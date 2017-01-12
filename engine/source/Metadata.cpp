@@ -55,9 +55,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // Italian renaissance lute composer.
-  // Father of a lutenist, and a particularly well-known astronomer.
-  return "\"Galilei\"";
+  // Venetian lute composer of the 16th century.
+  return "\"Capirola\"";
 }
 
 string Metadata::get_game_version_synopsis() const
