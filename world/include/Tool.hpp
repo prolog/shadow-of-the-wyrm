@@ -14,6 +14,8 @@ class Tool : public Item
 
     Item* clone() override;
 
+    bool additional_item_attributes_match(std::shared_ptr<Item> i) override;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

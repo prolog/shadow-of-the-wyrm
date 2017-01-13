@@ -8,6 +8,9 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   - Missed comma in one of the naming options was leading to
     three-syllable names like "SulTanak."
 
+  - Keys were stacking incorrectly, causing different crypt keys to be
+    grouped together and lose track of the lock they open. (Dallas Herrin)
+
 Shadow of the Wyrm v0.5.9 "Galilei"
 - Version declared January 1, 2017.  Version finalized January 11, 2017.
 
