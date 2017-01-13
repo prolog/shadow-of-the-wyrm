@@ -38,7 +38,7 @@
 #include "StringTable.hpp"
 #include "TextMessages.hpp"
 #include "TileGenerator.hpp"
-
+#include "Tool.hpp"
 using namespace std;
 
 CreaturePtr local_creature;
@@ -142,6 +142,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
+  lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "remove_active_quest", remove_active_quest);
@@ -794,6 +795,47 @@ int add_object_to_tile(lua_State* ls)
   }
 
   lua_pushboolean(ls, result);
+  return 1;
+}
+
+// Add a key to the player tile.
+// arg 1 = item id
+// arg 2 = lock id
+int add_key_to_player_tile(lua_State* ls)
+{
+  bool added = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string key_id = lua_tostring(ls, 1);
+    string lock_id = lua_tostring(ls, 2);
+
+    ItemPtr item = ItemManager::create_item(key_id);
+    ToolPtr key = dynamic_pointer_cast<Tool>(item);
+
+    if (key != nullptr)
+    {
+      key->set_lock_id(lock_id);
+
+      MapPtr map = Game::instance().get_current_map();
+
+      if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+      {
+        CreaturePtr player = Game::instance().get_current_player();
+        TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+
+        player_tile->get_items()->merge_or_add(key, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        added = true;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_key_to_player_tile");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added);
   return 1;
 }
 
