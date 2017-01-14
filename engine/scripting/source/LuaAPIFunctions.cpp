@@ -2453,11 +2453,12 @@ int get_deity_summons(lua_State* ls)
 
 int summon_monsters_around_creature(lua_State* ls)
 {
-  if (lua_gettop(ls) == 3 && lua_istable(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3))
+  if (lua_gettop(ls) == 4 && lua_istable(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3))
   {
     vector<string> monsters = LuaUtils::get_string_array_from_table(ls, 1);
     string creature_id = lua_tostring(ls, 2);
     int num_to_summon = lua_tointeger(ls, 3);
+    bool override_hostility = lua_toboolean(ls, 4) != 0;
 
     if (!monsters.empty())
     {
@@ -2484,6 +2485,13 @@ int summon_monsters_around_creature(lua_State* ls)
 
           CreatureFactory cf;
           CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), summon_id);
+
+          if (override_hostility)
+          {
+            HostilityManager hm;
+            hm.set_hostility_to_player(creature);
+          }
+
           GameUtils::add_new_creature_to_map(game, creature, current_map, c);
 
           cnt++;
