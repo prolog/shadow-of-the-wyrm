@@ -312,5 +312,5 @@ void ThieverySkillProcessor::set_flags_on_target_creature(CreaturePtr stealing_c
 
 ActionCostValue ThieverySkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
 {
-  return 20;
+  return 1;
 }

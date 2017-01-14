@@ -1,6 +1,4 @@
 Me:
-- additional_item_attributes_match should be pure virtual in Item, to
-  force implementation to avoid the key lock ID-type issues in future.
 - Implement fletchery.
 - Allow hungerless races to gain health over time, just very, very
   slowly.
@@ -127,11 +125,6 @@ Dallas Herrin:
   of Archery fail to hit/produce a message more often; at Archery 100, it 
   is impossible to hit anyone unless they are literally beside you- or at 
   least, it's very unlikely.
-- The speed of using the Thievery skill doesn't seem to scale with speed 
-  (e.g. like moving one space or making an attack does).
-- Divine avengers sent by an angry god can spawn friendly if you're 
-  charismatic enough.
-- A god's divine lightning stops regeneration of HP and AP, permanently.
 
 Not bugs, but probably not working as intended:
 
