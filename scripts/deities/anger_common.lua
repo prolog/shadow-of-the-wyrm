@@ -29,7 +29,9 @@ end
 -- Summon a bunch of nasties!
 local function deity_anger_summon_creatures(creature_id, deity_id)
   local monsters = get_deity_summons(deity_id)
-  summon_monsters_around_creature(monsters, creature_id, 3)
+  local override_hostility = true
+
+  summon_monsters_around_creature(monsters, creature_id, 3, override_hostility)
 
   add_message("DEITY_ACTION_DISPLEASED_SUMMON")
 end

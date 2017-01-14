@@ -3,7 +3,7 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 
 - More potential random names for character creation.
 
-- Witchlings and sages get fewer castings per level (Esran).
+- Witchlings and sages now get fewer castings per level (Esran).
 
 - Bug fixes:
 
@@ -16,6 +16,9 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   - Traps without components (light traps, etc) couldn't be disarmed.
 
   - Alcien and Rukhala weren't specified as unique (Esran).
+
+  - When deities summoned creatures around the player when angry, these
+    could (like regular creatures) be generated friendly. (Dallas Herrin)
 
 Shadow of the Wyrm v0.5.9 "Galilei"
 - Version declared January 1, 2017.  Version finalized January 11, 2017.
