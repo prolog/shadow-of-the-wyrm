@@ -108,13 +108,13 @@ class Item : public ISerializable
     ItemIdentificationType get_identification_type() const;
     
     // Functions for stack management
-    virtual bool matches(std::shared_ptr<Item> item);
+    virtual bool matches(std::shared_ptr<Item> item) const;
     
     // additional_item_attributes_match needs to be implemented by the subclasses of item.
     // It is included in the checks in matches, and is used to determine item type-specific
     // match behaviour. (e.g., potions need to match on spells, weapons need to match on
     // to-hit and damage, etc.).  The base class version just returns true.
-    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) const = 0;
 
     virtual void set_effect_type(const EffectType new_effect_type);
     virtual EffectType get_effect_type() const;

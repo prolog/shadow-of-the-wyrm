@@ -11,7 +11,7 @@ class Wand : public Item
     ~Wand();
 
     bool operator==(const Wand& rhs) const;
-    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) const;
     bool wand_properties_match(const Wand& rhs) const;
 
     virtual std::string get_synopsis() const;
