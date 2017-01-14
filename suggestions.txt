@@ -71,6 +71,7 @@ Me:
   the current HP of the original.
 - Recall spell that takes you back to the overworld.
 - Armour flags
+- Food rotting for caught fish, other foods?
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
@@ -158,3 +159,11 @@ Not bugs, but probably not working as intended:
 
 Samildanach:
 - Make it more obvious what skills do and how they work.
+
+Esran:
+- You can abuse fishing to get crowned easily.
+- Once monsters are smarter, create spells that allow hitting monsters
+  past walls.
+- Flag to allow toggling of creature/lighting effect during day/night
+  stuff.
+- Dungeons: when random, prompt for "descend to what depth (ft)?

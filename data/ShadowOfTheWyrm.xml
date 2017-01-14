@@ -6707,6 +6707,7 @@
 				<Colour>7</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
 					<TileType>1</TileType>
@@ -6755,6 +6756,7 @@
 				<Colour>8</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
 					<TileType>1</TileType>
@@ -7982,6 +7984,7 @@
 				<Colour>4</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<DangerLevel>13</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10776,6 +10779,7 @@
 				<Colour>11</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<DangerLevel>20</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18171,6 +18175,7 @@
 				<Colour>12</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<DangerLevel>17</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19964,6 +19969,7 @@
 				<Colour>6</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
