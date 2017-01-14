@@ -5,6 +5,9 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 
 - Witchlings and sages now get fewer castings per level (Esran).
 
+- Thievery is no longer a slow action - it should be about the same as
+  attacking. (Dallas Herrin)
+
 - Bug fixes:
 
   - Missed comma in one of the naming options was leading to
