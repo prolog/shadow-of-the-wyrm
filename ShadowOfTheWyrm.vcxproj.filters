@@ -7691,5 +7691,11 @@
     <ClCompile Include="world\source\DamageFlagFactory.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Readable_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Consumable_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

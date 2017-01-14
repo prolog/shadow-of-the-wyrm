@@ -326,7 +326,7 @@ ItemIdentificationType Item::get_identification_type() const
   return identification_type;
 }
 
-bool Item::matches(std::shared_ptr<Item> i)
+bool Item::matches(std::shared_ptr<Item> i) const
 {
   bool match = (i != nullptr);
 
@@ -360,13 +360,6 @@ bool Item::matches(std::shared_ptr<Item> i)
   }
   
   return match;
-}
-
-// This function always returns true.  Any type-specific behaviour must
-// be implemented in the various Item subclasses.
-bool Item::additional_item_attributes_match(std::shared_ptr<Item> i)
-{
-  return true;
 }
 
 void Item::set_effect_type(const EffectType new_effect)

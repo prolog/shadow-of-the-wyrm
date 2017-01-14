@@ -37,7 +37,7 @@ Item* Tool::clone()
   return new Tool(*this);
 }
 
-bool Tool::additional_item_attributes_match(ItemPtr item)
+bool Tool::additional_item_attributes_match(ItemPtr item) const
 {
   bool matches = false;
 

@@ -12,6 +12,11 @@ Staff::~Staff()
 {
 }
 
+bool Staff::additional_item_attributes_match(ItemPtr item) const
+{
+  return true;
+}
+
 Item* Staff::clone()
 {
   return new Staff(*this);

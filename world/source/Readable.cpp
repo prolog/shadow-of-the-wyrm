@@ -33,6 +33,19 @@ string Readable::get_text_sid() const
   return text_sid;
 }
 
+bool Readable::additional_item_attributes_match(ItemPtr item) const
+{
+  bool match = false;
+  ReadablePtr readable = dynamic_pointer_cast<Readable>(item);
+
+  if (readable != nullptr)
+  {
+    match = (text_sid == readable->get_text_sid());
+  }
+  
+  return match;
+}
+
 bool Readable::serialize(ostream& stream) const
 {
   Item::serialize(stream);
@@ -48,3 +61,7 @@ bool Readable::deserialize(istream& stream)
 
   return true;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Readable_test.cpp"
+#endif

@@ -43,7 +43,7 @@ bool Wand::operator==(const Wand& rhs) const
   return result;
 }
 
-bool Wand::additional_item_attributes_match(ItemPtr item)
+bool Wand::additional_item_attributes_match(ItemPtr item) const
 {
   bool attributes_match = true;
 

@@ -1,5 +1,19 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Tool, additional_item_attributes)
+{
+  ToolPtr tool1 = std::make_shared<Tool>();
+  ToolPtr tool2 = std::make_shared<Tool>();
+
+  EXPECT_TRUE(tool1->additional_item_attributes_match(tool2));
+  
+  tool2->set_lock_id("door1");
+
+  EXPECT_FALSE(tool1->additional_item_attributes_match(tool2));
+
+  tool1->set_lock_id("door1");
+}
+
 TEST(SW_World_Tool, serialization_id)
 {
   Tool tool;

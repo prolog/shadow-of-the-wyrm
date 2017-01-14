@@ -21,7 +21,7 @@ DisarmTrapsOutcome DisarmTrapsCalculator::calculate_disarm_traps_outcome(Creatur
     int val = creature->get_skills().get_value(SkillType::SKILL_GENERAL_DISARM_TRAPS);
     int disarm_chance = static_cast<int>(val * DISARM_TRAPS_SKILL_MULTIPLIER);
 
-    if (has_component_items && RNG::percent_chance(disarm_chance))
+    if (RNG::percent_chance(disarm_chance))
     {
       dto = DisarmTrapsOutcome::DISARM_TRAPS_DISARM;
 
@@ -29,7 +29,7 @@ DisarmTrapsOutcome DisarmTrapsCalculator::calculate_disarm_traps_outcome(Creatur
       // dismantling the trap and getting something useful.
       int dismantle_chance = static_cast<int>(val * DISMANTLE_TRAPS_SKILL_MULTIPLIER);
 
-      if (RNG::percent_chance(dismantle_chance))
+      if (has_component_items && RNG::percent_chance(dismantle_chance))
       {
         dto = DisarmTrapsOutcome::DISARM_TRAPS_DISMANTLE;
       }

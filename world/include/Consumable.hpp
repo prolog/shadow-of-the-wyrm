@@ -25,6 +25,9 @@ class Consumable : public Item
     void set_poisoned(const bool new_poisoned);
     bool get_poisoned() const;
 
+    bool additional_item_attributes_match(ItemPtr item) const override;
+    bool consumable_properties_match(const Consumable& cons) const;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
