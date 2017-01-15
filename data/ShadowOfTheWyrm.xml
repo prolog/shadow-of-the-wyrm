@@ -29316,7 +29316,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1150</Nutrition>
+				<Nutrition>1950</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="_intact_skeleton">
@@ -29760,7 +29760,7 @@
 			<Food id="food_ration">
 				<DescriptionSID>FOOD_RATION_SID</DescriptionSID>
 				<UsageDescriptionSID>FOOD_RATION_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>12</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -29808,7 +29808,7 @@
 					<Colour>7</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1050</Nutrition>
+				<Nutrition>990</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="_pike">
@@ -29844,7 +29844,7 @@
 					<Colour>7</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1120</Nutrition>
+				<Nutrition>930</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="_tuna">
@@ -29862,7 +29862,7 @@
 					<Colour>7</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1590</Nutrition>
+				<Nutrition>900</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="_cod">
@@ -29880,13 +29880,13 @@
 					<Colour>7</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1000</Nutrition>
+				<Nutrition>875</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="trail_ration">
 				<DescriptionSID>TRAIL_RATION_SID</DescriptionSID>
 				<UsageDescriptionSID>TRAIL_RATION_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>20</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 					<Ounces>8</Ounces>

@@ -1,4 +1,6 @@
 Me:
+- Ensure that altars can't be converted unless the item generates enough
+  piety.  Test at Wintersea with a wood elf sacrificing trout.
 - Implement fletchery.
 - Allow hungerless races to gain health over time, just very, very
   slowly.
@@ -114,6 +116,8 @@ roguecastergames:
 
 Dallas Herrin:
 
+- HP/AP regen happening when stats over 100.
+- Stats should max out at 99.
 - Praying removes the Disfiguration status, but does not remove the stat 
   malus instantly; it goes away eventually, though. I have been unable to 
   test other status effects because of how rarely they occur
@@ -154,6 +158,8 @@ Samildanach:
 - Make it more obvious what skills do and how they work.
 
 Esran:
+- The creatures who applied statuses aren't tracked, so players aren't
+  getting exp from e.g. poison.
 - You can abuse fishing to get crowned easily.
 - Once monsters are smarter, create spells that allow hitting monsters
   past walls.

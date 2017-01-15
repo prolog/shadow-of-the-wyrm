@@ -710,7 +710,7 @@ DamageType Item::do_brand()
 
   if (brand_res != nullptr)
   {
-    double res_val = std::max<double>(brand_res->get_value() - BrandConstants::BRAND_RESISTANCE_AMOUNT, 0.0);
+    double res_val = std::max<double>(brand_res->get_value() + BrandConstants::BRAND_RESISTANCE_AMOUNT, 0.0);
     brand_res->set_value(res_val);
   }
 
