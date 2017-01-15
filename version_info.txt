@@ -8,6 +8,12 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 - Thievery is no longer a slow action - it should be about the same as
   attacking. (Dallas Herrin)
 
+- When sacrificing consumables, there are now additional checks for the
+  item to be accepted by a deity.  It must have either a large amount of
+  nutrition, or have some sort of magical effect.  For food, things such 
+  as corpses, silverweed, food rations are all okay; fish and roots and 
+  such won't meet the minimum. (Esran)
+
 - Bug fixes:
 
   - Missed comma in one of the naming options was leading to
@@ -21,8 +27,11 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   - Alcien and Rukhala weren't specified as unique (Esran).
 
   - When deities summoned creatures around the player when angry, these
-    could (like regular creatures) be generated friendly. (Dallas Herrin)
+    could, like regular creatures, be generated friendly. (Dallas Herrin)
 
+  - Branding was not properly adding resistances for armour. (Dallas
+    Herrin)
+  
 Shadow of the Wyrm v0.5.9 "Galilei"
 - Version declared January 1, 2017.  Version finalized January 11, 2017.
 
