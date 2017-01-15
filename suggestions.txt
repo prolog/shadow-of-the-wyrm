@@ -1,6 +1,4 @@
 Me:
-- Ensure that altars can't be converted unless the item generates enough
-  piety.  Test at Wintersea with a wood elf sacrificing trout.
 - Implement fletchery.
 - Allow hungerless races to gain health over time, just very, very
   slowly.
