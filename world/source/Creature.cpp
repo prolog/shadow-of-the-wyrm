@@ -40,7 +40,16 @@ Creature::Creature()
   
   // Base speed is 50.  This needs to be set or slimes get 25 actions to your 1 (23 or 24 if you're quick!).
   set_speed(50);
-  
+
+  // Ensure maximums are set for the primary statistics.
+  strength.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  dexterity.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  agility.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  health.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  intelligence.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  willpower.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  charisma.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+
   Damage dam(1, 2, 0, DamageType::DAMAGE_TYPE_POUND, {}, false, false, false, false, false, false, 0, {});
   set_base_damage(dam);
 
@@ -466,6 +475,7 @@ string Creature::get_class_id() const
 void Creature::set_strength(const Statistic& new_strength)
 {
   strength = new_strength;
+  strength.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic& Creature::get_statistic_ref(const PrimaryStatisticType pr_st)
@@ -510,6 +520,7 @@ Statistic& Creature::get_strength_ref()
 void Creature::set_dexterity(const Statistic& new_dexterity)
 {
   dexterity = new_dexterity;
+  dexterity.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_dexterity() const
@@ -525,6 +536,7 @@ Statistic& Creature::get_dexterity_ref()
 void Creature::set_agility(const Statistic& new_agility)
 {
   agility = new_agility;
+  agility.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_agility() const
@@ -540,6 +552,7 @@ Statistic& Creature::get_agility_ref()
 void Creature::set_health(const Statistic& new_health)
 {
   health = new_health;
+  health.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_health() const
@@ -555,6 +568,7 @@ Statistic& Creature::get_health_ref()
 void Creature::set_intelligence(const Statistic& new_intelligence)
 {
   intelligence = new_intelligence;
+  intelligence.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_intelligence() const
@@ -570,6 +584,7 @@ Statistic& Creature::get_intelligence_ref()
 void Creature::set_willpower(const Statistic& new_willpower)
 {
   willpower = new_willpower;
+  willpower.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_willpower() const
@@ -585,6 +600,7 @@ Statistic& Creature::get_willpower_ref()
 void Creature::set_charisma(const Statistic& new_charisma)
 {
   charisma = new_charisma;
+  charisma.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_charisma() const
@@ -1256,10 +1272,10 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 1088, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1152, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 992, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1056, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
   // Works for gcc in debug

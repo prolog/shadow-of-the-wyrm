@@ -57,6 +57,36 @@ TEST(SW_World_Creature, get_statistics)
   }
 }
 
+TEST(SW_World_Creature, primary_stat_maxima)
+{
+  Creature c;
+
+  c.get_strength_ref().set_base_current(14);
+
+  EXPECT_EQ(14, c.get_strength().get_base());
+  EXPECT_EQ(14, c.get_strength().get_current());
+
+  // Should fail, > 99
+  c.get_strength_ref().set_base_current(1000);
+
+  EXPECT_EQ(14, c.get_strength().get_base());
+  EXPECT_EQ(14, c.get_strength().get_current());
+
+  Statistic new_str(17);
+  new_str.set_max(1000); // Try to bypass the maximum by setting a new str stat
+  c.set_strength(new_str);
+  c.get_strength_ref().set_base_current(500);
+
+  // The attempted bypass should fail: creatures will enforce the primary
+  // stat maximum whenever a statistic is set.
+  //
+  // I guess it's still possible to get it by calling get_strength_ref
+  // and then setting the maximum, but that gets into the realm of,
+  // "Look, I know what I'm doing, this is intentional."
+  EXPECT_EQ(17, c.get_strength().get_base());
+  EXPECT_EQ(17, c.get_strength().get_current());  
+}
+
 TEST(SW_World_Creature, skill_points)
 {
   Creature c;

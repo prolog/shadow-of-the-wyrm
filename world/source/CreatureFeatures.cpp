@@ -12,6 +12,7 @@ CreatureConstants::~CreatureConstants()
 
 const int CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH = 6;
 const unsigned int CreatureConstants::MAX_CREATURE_LEVEL = 50;
+const int CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE = 99;
 
 CreatureEventScripts::CreatureEventScripts()
 {
