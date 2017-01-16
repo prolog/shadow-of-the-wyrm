@@ -14,6 +14,9 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   as corpses, silverweed, food rations are all okay; fish and roots and 
   such won't meet the minimum. (Esran)
 
+- Primary statistics (strength, dexterity, agility, health, intelligence,
+  willpower, charisma) are now capped at 99.
+
 - Bug fixes:
 
   - Missed comma in one of the naming options was leading to

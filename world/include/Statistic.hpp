@@ -18,6 +18,9 @@ class Statistic : public ISerializable
     void set_current(int new_current);
     int  get_current() const;
 
+    void set_max(const int new_max);
+    int get_max() const;
+
     int get_lowest() const;
 
     bool get_full() const;
@@ -33,6 +36,7 @@ class Statistic : public ISerializable
 	protected:
 		int base;
 		int current;
+    int max;
     Marks marks;
 
   private:

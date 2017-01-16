@@ -114,8 +114,6 @@ roguecastergames:
 
 Dallas Herrin:
 
-- HP/AP regen happening when stats over 100.
-- Stats should max out at 99.
 - Praying removes the Disfiguration status, but does not remove the stat 
   malus instantly; it goes away eventually, though. I have been unable to 
   test other status effects because of how rarely they occur
@@ -158,7 +156,6 @@ Samildanach:
 Esran:
 - The creatures who applied statuses aren't tracked, so players aren't
   getting exp from e.g. poison.
-- You can abuse fishing to get crowned easily.
 - Once monsters are smarter, create spells that allow hitting monsters
   past walls.
 - Flag to allow toggling of creature/lighting effect during day/night
