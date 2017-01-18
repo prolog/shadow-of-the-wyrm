@@ -78,6 +78,9 @@
 			<xs:element name="Effect" type="tns:EffectType"/>
 			<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 		</xs:sequence>
+		<!-- Note: the spell ID should not begin with an underscore, or else
+			 conflicts may emerge with effect removal for status 
+			 identifiers. -->
 		<xs:attribute name="id" type="tns:Identifier"/>
 	</xs:complexType>
 </xs:element>

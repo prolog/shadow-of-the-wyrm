@@ -140,7 +140,7 @@ Resistances ResistancesCalculator::calculate_modifier_resistances(CreaturePtr cr
 
   if (creature != nullptr)
   {
-    const map<double, vector<pair<string, Modifier>>>& modifiers = creature->get_modifiers_ref();
+    const map<double, vector<pair<string, Modifier>>> modifiers = creature->get_active_modifiers();
 
     for (const auto& mod_pair : modifiers)
     {

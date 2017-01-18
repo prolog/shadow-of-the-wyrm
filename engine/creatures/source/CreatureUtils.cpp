@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CarryingCapacityCalculator.hpp"
+#include "CreatureCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"
 #include "Game.hpp"
@@ -8,8 +9,10 @@
 #include "PlayerConstants.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "SpellAdditionalProperties.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusAilmentTextKeys.hpp"
+#include "StatusEffectFactory.hpp"
 
 using namespace std;
 
@@ -472,6 +475,147 @@ bool CreatureUtils::has_spell_for_situation_type(CreaturePtr creature, const Spe
   }
 
   return has_spells;
+}
+
+void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const string& identifier)
+{
+  if (creature != nullptr && !identifier.empty())
+  {
+    map<double, vector<pair<string, Modifier>>>& creature_modifiers = creature->get_modifiers_ref();
+
+    for (auto& cm_pair : creature_modifiers)
+    {
+      double modifier_expiry = cm_pair.first;
+      vector<pair<string, Modifier>>& modifiers = cm_pair.second;
+      auto m_it = modifiers.begin();
+
+      for (auto& mod : modifiers)
+      {
+        if (mod.first == identifier)
+        {
+          process_creature_modifier(creature, mod);
+        }
+      }
+    }
+  }
+}
+
+void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const double current_seconds)
+{
+  if (creature != nullptr)
+  {
+    map<double, vector<pair<string, Modifier>>>& creature_modifiers = creature->get_modifiers_ref();
+    auto m_it = creature_modifiers.begin();
+
+    while (m_it != creature_modifiers.end())
+    {
+      double modifier_expiry = m_it->first;
+
+      if ((modifier_expiry > 0) && (modifier_expiry <= current_seconds))
+      {
+        process_creature_modifiers(creature, m_it->second);
+      }
+      else
+      {
+        // Since std::map is ordered by key, once we've hit modifiers that
+        // are past the present moment in time, we can stop iterating.
+        break;
+      }
+
+      m_it++;
+    }
+  }
+}
+
+// Process the current set of modifiers for the given second.
+// Mark them as deleted, as well as any modifiers they're linked to.
+void CreatureUtils::process_creature_modifiers(CreaturePtr creature, vector<pair<string, Modifier>>& modifiers)
+{
+  for (auto& mod_pair : modifiers)
+  {
+    process_creature_modifier(creature, mod_pair);
+  }
+}
+
+void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string, Modifier>& mod_pair)
+{
+  string spell_id = mod_pair.first;
+  mod_pair.second.set_delete(true);
+
+  Modifier m = mod_pair.second;
+  vector<pair<string, int>> statuses = m.get_affected_statuses();
+
+  add_removal_message(creature, spell_id);
+
+  for (const auto& status : statuses)
+  {
+    string status_id = status.first;
+    StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status_id);
+
+    if (status_p && creature->has_status(status_id))
+    {
+      status_p->finalize_change(creature);
+    }
+  }
+}
+
+void CreatureUtils::remove_modifiers(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    map<double, vector<pair<string, Modifier>>>& creature_modifiers = creature->get_modifiers_ref();
+
+    for (auto& cm_it = creature_modifiers.begin(); cm_it != creature_modifiers.end(); )
+    {
+      vector<pair<string, Modifier>>& t_mods = cm_it->second;
+
+      // Remove any marked modifiers at the current time
+      for (auto& t_it = t_mods.begin(); t_it != t_mods.end(); )
+      {
+        t_it->second.get_delete() ? t_it = t_mods.erase(t_it) : t_it++;
+      }
+
+      // If there are no more modifiers, remove the creature modifier entry.
+      t_mods.empty() ? cm_it = creature_modifiers.erase(cm_it) : cm_it++;
+    }
+  }
+}
+
+void CreatureUtils::add_removal_message(CreaturePtr creature, const string& spell_id)
+{
+  if (!spell_id.empty() && creature != nullptr)
+  {
+    Game& game = Game::instance();
+    string creature_id = creature->get_id();
+
+    const SpellMap& spells = game.get_spells_ref();
+    auto spell_it = spells.find(spell_id);
+
+    if (spell_it != spells.end())
+    {
+      Spell spell = spell_it->second;
+      string spell_wear_off_sid = spell.get_property(SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_WEAR_OFF_SID);
+
+      // Check to see if the creature is the player, or in view of the player.
+      bool affects_player = CreatureUtils::is_player_or_in_los(creature);
+
+      // Get the appropriate message manager and set the appropriate message.
+      // If the creature is the player, use the spell wear off sid.
+      // Otherwise, use the generic spell wear off message for creatures.
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, affects_player);
+
+      if (creature->get_is_player())
+      {
+        manager.add_new_message(StringTable::get(spell_wear_off_sid));
+      }
+      else
+      {
+        manager.add_new_message(ActionTextKeys::get_generic_wear_off_message(StringTable::get(creature->get_description_sid())));
+      }
+
+      manager.send();
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

@@ -1,5 +1,6 @@
 Me:
 - Implement fletchery.
+- Reduce the number of castings learned from books.
 - Allow hungerless races to gain health over time, just very, very
   slowly.
 - Unnecessary refresh being called for generator? (refreshing overworld
@@ -114,9 +115,6 @@ roguecastergames:
 
 Dallas Herrin:
 
-- Praying removes the Disfiguration status, but does not remove the stat 
-  malus instantly; it goes away eventually, though. I have been unable to 
-  test other status effects because of how rarely they occur
 - At Archery 70 and above, projectiles will rarely hit, except at 
   point-blank range. There's not even a message about missing. Everything 
   else goes as usual, though, the ammo disappears from your inventory, the 
