@@ -1,8 +1,6 @@
 Me:
 - Implement fletchery.
 - Reduce the number of castings learned from books.
-- Allow hungerless races to gain health over time, just very, very
-  slowly.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - Creatures should have a chance to follow up/down stairs with special

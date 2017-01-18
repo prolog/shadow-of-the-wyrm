@@ -17,6 +17,10 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 - Primary statistics (strength, dexterity, agility, health, intelligence,
   willpower, charisma) are now capped at 99.
 
+- Hungerless races like the Fae now can now mark Health when being neither
+  hungry nor full, but at a greatly reduced rate compared to other races -
+  they only get a 20% chance to mark the stat.
+
 - Bug fixes:
 
   - Missed comma in one of the naming options was leading to
