@@ -485,9 +485,7 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const stri
 
     for (auto& cm_pair : creature_modifiers)
     {
-      double modifier_expiry = cm_pair.first;
       vector<pair<string, Modifier>>& modifiers = cm_pair.second;
-      auto m_it = modifiers.begin();
 
       for (auto& mod : modifiers)
       {
@@ -565,12 +563,12 @@ void CreatureUtils::remove_modifiers(CreaturePtr creature)
   {
     map<double, vector<pair<string, Modifier>>>& creature_modifiers = creature->get_modifiers_ref();
 
-    for (auto& cm_it = creature_modifiers.begin(); cm_it != creature_modifiers.end(); )
+    for (auto cm_it = creature_modifiers.begin(); cm_it != creature_modifiers.end(); )
     {
       vector<pair<string, Modifier>>& t_mods = cm_it->second;
 
       // Remove any marked modifiers at the current time
-      for (auto& t_it = t_mods.begin(); t_it != t_mods.end(); )
+      for (auto t_it = t_mods.begin(); t_it != t_mods.end(); )
       {
         t_it->second.get_delete() ? t_it = t_mods.erase(t_it) : t_it++;
       }
