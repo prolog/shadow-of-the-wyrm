@@ -14,7 +14,8 @@ willpower_modifier(0),
 charisma_modifier(0),
 evade_modifier(0),
 soak_modifier(0),
-to_hit_modifier(0)
+to_hit_modifier(0),
+mark_delete(false)
 {
   resistances.set_all_resistances_to(0);
 }
@@ -39,7 +40,8 @@ willpower_modifier(new_willpower_modifier),
 charisma_modifier(new_charisma_modifier),
 evade_modifier(0),
 soak_modifier(0),
-to_hit_modifier(0)
+to_hit_modifier(0),
+mark_delete(false)
 {
   resistances.set_all_resistances_to(0);
 }
@@ -55,7 +57,8 @@ willpower_modifier(0),
 charisma_modifier(0),
 evade_modifier(0),
 soak_modifier(0),
-to_hit_modifier(0)
+to_hit_modifier(0),
+mark_delete(false)
 {
   int size = args.size();
 
@@ -105,6 +108,7 @@ bool Modifier::operator==(const Modifier& m) const
   result = result && soak_modifier == m.soak_modifier;
   result = result && to_hit_modifier == m.to_hit_modifier;
   result = result && statuses == m.statuses;
+  result = result && mark_delete == m.mark_delete;
 
   return result;
 }
@@ -313,6 +317,17 @@ vector<int> Modifier::get_raw_values() const
           to_hit_modifier};
 }
 
+// Should the modifier be marked for later deletion?
+void Modifier::set_delete(const bool new_delete)
+{
+  mark_delete = new_delete;
+}
+
+bool Modifier::get_delete() const
+{
+  return mark_delete;
+}
+
 bool Modifier::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, strength_modifier);
@@ -336,6 +351,7 @@ bool Modifier::serialize(ostream& stream) const
   }
 
   resistances.serialize(stream);
+  Serialize::write_bool(stream, mark_delete);
 
   return true;
 }
@@ -370,6 +386,7 @@ bool Modifier::deserialize(istream& stream)
   }
 
   resistances.deserialize(stream);
+  Serialize::read_bool(stream, mark_delete);
 
   return true;
 }

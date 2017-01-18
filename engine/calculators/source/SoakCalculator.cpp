@@ -76,7 +76,7 @@ int SoakCalculator::get_modifier_bonus(const CreaturePtr& c)
 
   if (c)
   {
-    const map<double, vector<pair<string, Modifier>>>& modifiers = c->get_modifiers_ref();
+    const map<double, vector<pair<string, Modifier>>> modifiers = c->get_active_modifiers();
 
     for (const auto& mod_pair : modifiers)
     {

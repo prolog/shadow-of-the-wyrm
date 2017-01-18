@@ -290,7 +290,8 @@ class Creature : public ISerializable
     AutomaticMovement& get_automatic_movement_ref();
 
     void set_modifiers(const std::map<double, std::vector<std::pair<std::string, Modifier>>>& new_modifiers);
-    std::map<double, std::vector<std::pair<std::string, Modifier>>>& get_modifiers_ref();
+    std::map<double, std::vector<std::pair<std::string, Modifier>>> get_active_modifiers() const; // get all modifiers not marked for deletion
+    std::map<double, std::vector<std::pair<std::string, Modifier>>>& get_modifiers_ref(); // get all modifiers, including those marked for deletion
     bool is_affected_by_modifier_spell(const std::string& spell_id) const;
 
     // Additional traits not all creatures will have, so a bit of space is saved

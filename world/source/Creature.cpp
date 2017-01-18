@@ -1232,6 +1232,33 @@ void Creature::set_modifiers(const map<double, vector<pair<string, Modifier>>>& 
   modifiers = new_modifiers;
 }
 
+// Get only the active modifiers.  Active modifiers are those
+// not marked for deletion.
+map<double, vector<pair<string, Modifier>>> Creature::get_active_modifiers() const
+{
+  map<double, vector<pair<string, Modifier>>> active_modifiers;
+
+  for (const auto& modifiers_pair : modifiers)
+  {
+    vector<pair<string, Modifier>> mod_vec;
+
+    for (const auto& mod_pair : modifiers_pair.second)
+    {
+      if (mod_pair.second.get_delete() == false)
+      {
+        mod_vec.push_back(mod_pair);
+      }
+    }
+
+    if (!mod_vec.empty())
+    {
+      active_modifiers[modifiers_pair.first] = mod_vec;
+    }
+  }
+
+  return active_modifiers;
+}
+
 map<double, vector<pair<string, Modifier>>>& Creature::get_modifiers_ref()
 {
   return modifiers;
