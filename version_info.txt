@@ -21,6 +21,8 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   hungry nor full, but at a greatly reduced rate compared to other races -
   they only get a 20% chance to mark the stat.
 
+- More stanzas for the epic poem.
+
 - Bug fixes:
 
   - Missed comma in one of the naming options was leading to
