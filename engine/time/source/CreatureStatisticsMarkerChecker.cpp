@@ -1,6 +1,8 @@
 #include "CreatureStatisticsMarkerChecker.hpp"
 #include "Conversion.hpp"
+#include "HungerCalculator.hpp"
 #include "RaceManager.hpp"
+#include "RNG.hpp"
 #include "StatisticsMarker.hpp"
 
 using namespace std;
@@ -61,12 +63,18 @@ void CreatureStatisticsMarkerChecker::check_health_conditions(CreaturePtr creatu
     RaceManager rm;
     RacePtr race = rm.get_race(creature->get_race_id());
   
-    // Ensure that hungerless races like the fae don't max out Health simply by
-    // existing.
-    if (hl == HungerLevel::HUNGER_LEVEL_NORMAL && race && !race->get_hungerless())
+    // Ensure that hungerless races like the fae don't easily max out Health 
+    // simply by existing.  Hungerless races can still increase health over
+    // time, but at a much reduced rate.
+    if (race != nullptr)
     {
-      StatisticsMarker sm;
-      sm.mark_health(creature);
+      HungerCalculator hc;
+
+      if (RNG::percent_chance(hc.calculate_pct_chance_mark_health(hl, race->get_hungerless())))
+      {
+        StatisticsMarker sm;
+        sm.mark_health(creature);
+      }
     }
   }
 }

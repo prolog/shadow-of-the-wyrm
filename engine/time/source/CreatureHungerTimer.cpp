@@ -46,7 +46,7 @@ void CreatureHungerTimer::apply_hunger_damage_if_appropriate(CreaturePtr creatur
 
       CombatManager cm;
       CreaturePtr no_attacker;
-      int hunger_damage = hdc.calculate_hunger_damage(creature, minutes_this_tick);
+      int hunger_damage = hc.calculate_hunger_damage(creature, minutes_this_tick);
       Damage hunger_default;
       hunger_default.set_modifier(hunger_damage);
 
