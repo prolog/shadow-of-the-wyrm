@@ -1,4 +1,6 @@
 Me:
+- For the archery bug, it looks like sometimes the tracked tile is off by
+  1?
 - Implement fletchery.
 - Reduce the number of castings learned from books.
 - Unnecessary refresh being called for generator? (refreshing overworld
@@ -112,15 +114,6 @@ roguecastergames:
 - ambushes
 
 Dallas Herrin:
-
-- At Archery 70 and above, projectiles will rarely hit, except at 
-  point-blank range. There's not even a message about missing. Everything 
-  else goes as usual, though, the ammo disappears from your inventory, the 
-  attack animation is carried out, and it goes to the right place, it just 
-  fails to produce any message, about hitting or otherwise. Higher values 
-  of Archery fail to hit/produce a message more often; at Archery 100, it 
-  is impossible to hit anyone unless they are literally beside you- or at 
-  least, it's very unlikely.
 
 Not bugs, but probably not working as intended:
 
