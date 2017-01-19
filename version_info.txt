@@ -46,7 +46,11 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   - Status effects that applied modifiers, such as blindness with evade
     and disfiguration with the primary statistics, weren't having these
     modifiers properly removed when the effect was undone. (Dallas Herrin)
-  
+
+  - The "fire through" code for archery had a bug in it that was
+    preventing the proper targetting of creatures at high Archery skill
+    values. (Dallas Herrin)
+      
 Shadow of the Wyrm v0.5.9 "Galilei"
 - Version declared January 1, 2017.  Version finalized January 11, 2017.
 
