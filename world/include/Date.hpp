@@ -24,7 +24,7 @@ enum struct TimeOfDayType
 class TimeOfDay
 {
   public:
-    static std::pair<Colour, Colour> get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map);
+    static std::pair<Colour, Colour> get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map, const bool shade_terrain, const bool shade_creatures_items);
     static std::pair<bool, TimeOfDayType> get_is_transition_hour(const uint current_hour);
 
     static const uint TIME_OF_DAY_DAWN;

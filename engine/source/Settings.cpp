@@ -1,5 +1,6 @@
 #include <boost/property_tree/ini_parser.hpp>
 #include <boost/filesystem.hpp>
+#include "Conversion.hpp"
 #include "Environment.hpp"
 #include "Serialize.hpp"
 #include "Settings.hpp"
@@ -42,6 +43,19 @@ string Settings::get_setting(const string& key) const
   setting = settings_tree.get<string>(key, "");
 
   return setting;
+}
+
+bool Settings::get_setting_as_bool(const string& key, const bool default_val) const
+{
+  string setting = get_setting(key);
+  bool settingb = default_val;
+
+  if (!setting.empty())
+  {
+    settingb = String::to_bool(get_setting(key));
+  }
+
+  return settingb;  
 }
 
 bool Settings::serialize(ostream& stream) const

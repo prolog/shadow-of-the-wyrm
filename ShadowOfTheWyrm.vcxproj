@@ -799,6 +799,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\include\ScoreFile.hpp" />
     <ClInclude Include="engine\include\ScoreFileEntry.hpp" />
     <ClInclude Include="engine\include\SelectionUtils.hpp" />
+    <ClInclude Include="engine\include\Setting.hpp" />
     <ClInclude Include="engine\include\SettingKeybindings.hpp" />
     <ClInclude Include="engine\include\Settings.hpp" />
     <ClInclude Include="engine\include\ShadowOfTheWyrmEngine.hpp" />
@@ -1596,6 +1597,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\skills\source\WandCreationParameters.cpp" />
     <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />
     <ClCompile Include="engine\source\LogFiles.cpp" />
+    <ClCompile Include="engine\source\Setting.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
     <ClCompile Include="engine\source\unit_tests\CharacterCreationDetails_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

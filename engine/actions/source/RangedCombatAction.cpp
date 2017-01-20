@@ -21,6 +21,7 @@
 #include "RNG.hpp"
 #include "ScriptEngine.hpp"
 #include "SelectionUtils.hpp"
+#include "Setting.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "TileSelectionAction.hpp"
@@ -129,7 +130,8 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
   Game& game = Game::instance();
   Calendar& calendar = game.get_current_world()->get_calendar();
   MapPtr map = game.get_current_map();
-  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
+  Settings& settings = game.get_settings_ref();
+  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD, settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
 
   if (creature)
   {

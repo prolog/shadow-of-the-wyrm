@@ -1,7 +1,7 @@
 Me:
-- For the archery bug, it looks like sometimes the tracked tile is off by
-  1?
-- Implement fletchery.
+- All setting strings into Setting.
+- Implement Bowyer (+docs)
+- Implement Fletchery. (+docs)
 - Reduce the number of castings learned from books.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
