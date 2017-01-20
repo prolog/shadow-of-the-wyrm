@@ -28803,6 +28803,27 @@
 			</Weapon>
 		</Weapons>
 		<RangedWeapons>
+			<Weapon id="_hide_sling">
+				<DescriptionSID>HIDE_SLING_SID</DescriptionSID>
+				<UsageDescriptionSID>HIDE_SLING_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>9</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2007</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>2</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="sling">
 				<DescriptionSID>SLING_SID</DescriptionSID>
 				<UsageDescriptionSID>SLING_USAGE_SID</UsageDescriptionSID>
