@@ -19,7 +19,12 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 
 - Hungerless races like the Fae now can now mark Health when being neither
   hungry nor full, but at a greatly reduced rate compared to other races -
-  they only get a 20% chance to mark the stat.
+  they only get a 20% chance to mark the stat, compared to 100% for the
+  other races.
+
+- When treating skins at a tannery, you can now select the ranged weapon
+  slot, which will allow you to create a sling.  These can take on
+  evade/soak/resistances based on the corpse like other tanned equipment.
 
 - More stanzas for the epic poem.
 
@@ -45,7 +50,8 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 
   - Status effects that applied modifiers, such as blindness with evade
     and disfiguration with the primary statistics, weren't having these
-    modifiers properly removed when the effect was undone. (Dallas Herrin)
+    modifiers properly removed when the effect was undone via prayer. 
+    (Dallas Herrin)
 
   - The "fire through" code for archery had a bug in it that was
     preventing the proper targetting of creatures at high Archery skill
