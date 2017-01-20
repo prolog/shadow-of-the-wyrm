@@ -5,6 +5,7 @@
 #include "Game.hpp"
 #include "MapDisplayArea.hpp"
 #include "MapTranslator.hpp"
+#include "Setting.hpp"
 
 using namespace std;
 
@@ -29,7 +30,8 @@ DisplayMap MapTranslator::create_display_map(const bool player_blinded, const Ma
   Season season = calendar.get_season()->get_season();
   MapPtr current_map = game.get_current_map();
   Date date = calendar.get_date();
-  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(date.get_time_of_day(), current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD);
+  Settings& settings = game.get_settings_ref();
+  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(date.get_time_of_day(), current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD, settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
 
   int cursor_row = reference_coords.first;
   int cursor_col = reference_coords.second;

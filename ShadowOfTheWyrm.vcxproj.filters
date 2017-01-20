@@ -3909,6 +3909,9 @@
     <ClInclude Include="engine\calculators\include\HungerCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\Setting.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7696,6 +7699,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\HungerCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Setting.cpp">
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

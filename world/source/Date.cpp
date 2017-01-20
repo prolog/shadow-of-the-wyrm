@@ -9,7 +9,7 @@ const uint TimeOfDay::TIME_OF_DAY_NIGHT = 20;
 
 std::map<TimeOfDayType, std::pair<Colour, Colour>> TimeOfDay::time_of_day_colour_overrides;
 
-pair<Colour, Colour> TimeOfDay::get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map)
+pair<Colour, Colour> TimeOfDay::get_time_of_day_colours(const TimeOfDayType tod, const bool on_overworld_map, const bool shade_terrain, const bool shade_creatures_and_items)
 {
   if (time_of_day_colour_overrides.empty())
   {
@@ -22,6 +22,16 @@ pair<Colour, Colour> TimeOfDay::get_time_of_day_colours(const TimeOfDayType tod,
   if (on_overworld_map && t_it != time_of_day_colour_overrides.end())
   {
     overrides = t_it->second;
+  }
+
+  if (shade_terrain == false)
+  {
+    overrides.first = Colour::COLOUR_UNDEFINED;
+  }
+
+  if (shade_creatures_and_items == false)
+  {
+    overrides.second = Colour::COLOUR_UNDEFINED;
   }
 
   return overrides;

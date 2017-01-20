@@ -12,6 +12,7 @@ class Settings : public ISerializable
     // is actually called for/needed.  If they are needed in multiple locations,
     // consider creating some sort of class to hold all the constants.
     std::string get_setting(const std::string& key) const;
+    bool get_setting_as_bool(const std::string& key, const bool default_val = false) const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
