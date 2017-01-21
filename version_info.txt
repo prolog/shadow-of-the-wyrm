@@ -32,6 +32,9 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 
 - Character info/dumps now also tracks the number of turns taken.
 
+- Puglists now deal more damage.  They deal 1d(level) from 1 to 25, and
+  1d(50 + (level-25) * 3) from 26 to 50. (4chan /rlg)
+
 - More stanzas for the epic poem.
 
 - Bug fixes:
