@@ -26,6 +26,10 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   slot, which will allow you to create a sling.  These can take on
   evade/soak/resistances based on the corpse like other tanned equipment.
 
+- The mortuary now tracks the maximum difference between a slain 
+  creature's danger level and the player's level when that creature was
+  killed.
+
 - More stanzas for the epic poem.
 
 - Bug fixes:

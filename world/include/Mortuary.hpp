@@ -22,6 +22,8 @@ using MortuaryCountMap = std::map<std::string, MortuaryEntry>;
 class Mortuary : public ISerializable
 {
   public:
+    Mortuary();
+
     bool operator==(const Mortuary& m) const;
 
     void add_creature_kill(const std::string& creature_id, const bool is_unique = false);
@@ -32,11 +34,15 @@ class Mortuary : public ISerializable
     int get_num_creatures_killed() const;
     int get_num_uniques_killed() const;
 
+    void set_max_level_difference(const std::pair<int, std::string>& new_max_level_difference);
+    std::pair<int, std::string> get_max_level_difference() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
   protected:
     MortuaryCountMap creatures_killed;
+    std::pair<int, std::string> max_level_difference;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

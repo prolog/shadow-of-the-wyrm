@@ -788,8 +788,9 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const stri
 {
   // Get whether the creature is a unique or not.
   Game& game = Game::instance();
-  bool is_unique = (game.get_creature_generation_values_ref()[killed_creature_id].get_maximum() == 1);
-
+  CreatureGenerationValues cgv = game.get_creature_generation_values_ref()[killed_creature_id];
+  bool is_unique = (cgv.get_maximum() == 1);
+  
   // Update the game's and creature's mortuary with the kill info.
   Mortuary& game_mortuary = Game::instance().get_mortuary_ref();
   game_mortuary.add_creature_kill(killed_creature_id, is_unique);
@@ -798,6 +799,14 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const stri
   {
     Mortuary& creature_mortuary = attacking_creature->get_mortuary_ref();
     creature_mortuary.add_creature_kill(killed_creature_id, is_unique);
+
+    int level_diff = cgv.get_danger_level() - attacking_creature->get_level().get_current();
+    pair<int, string> max_diff = creature_mortuary.get_max_level_difference();
+
+    if (level_diff > max_diff.first)
+    {
+      creature_mortuary.set_max_level_difference(make_pair(level_diff, killed_creature_id));
+    }
   }
 }
 
