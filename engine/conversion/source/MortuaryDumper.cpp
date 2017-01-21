@@ -54,11 +54,9 @@ string MortuaryDumper::get_mortuary() const
 
     if (m_it != cmap.end())
     {
-      ss << " (" << StringTable::get(m_it->second->get_short_description_sid()) << ")";
+      ss << " (" << StringTable::get(m_it->second->get_short_description_sid()) << ")" << endl;
     }
   }
-
-  ss << endl;
 
   return ss.str();
 }

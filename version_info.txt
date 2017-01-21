@@ -30,6 +30,8 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   creature's danger level and the player's level when that creature was
   killed.
 
+- Character info/dumps now also tracks the number of turns taken.
+
 - More stanzas for the epic poem.
 
 - Bug fixes:

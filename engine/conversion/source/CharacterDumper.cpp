@@ -87,6 +87,8 @@ string CharacterDumper::str() const
   MortuaryDumper mortuary_dumper(creature, num_cols);
   ss << mortuary_dumper.str() << endl << endl;
 
+  ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;
+
   return ss.str();
 }
 

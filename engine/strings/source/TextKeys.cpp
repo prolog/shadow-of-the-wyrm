@@ -31,6 +31,7 @@ const string TextKeys::HERSELF = "HERSELF";
 const string TextKeys::ITSELF = "ITSELF";
 const string TextKeys::TOTAL = "TOTAL";
 const string TextKeys::MAXIMUM_LEVEL_DIFFERENCE = "MAXIMUM_LEVEL_DIFFERENCE";
+const string TextKeys::TURNS = "TURNS";
 const string TextKeys::MORTUARY = "MORTUARY";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";

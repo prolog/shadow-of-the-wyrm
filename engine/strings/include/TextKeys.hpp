@@ -29,6 +29,7 @@ class TextKeys
     static const std::string STATUSES;
     static const std::string TOTAL;
     static const std::string MAXIMUM_LEVEL_DIFFERENCE;
+    static const std::string TURNS;
     static const std::string NPC_ESCAPES_MESSAGE;
     static const std::string SEX;
     static const std::string SELECT_SEX;
