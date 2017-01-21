@@ -3,6 +3,11 @@
 
 using namespace std;
 
+Mortuary::Mortuary()
+: max_level_difference({ -1, "" })
+{
+}
+
 bool MortuaryEntry::operator==(const MortuaryEntry& me) const
 {
   bool result = true;
@@ -18,6 +23,7 @@ bool Mortuary::operator==(const Mortuary& m) const
   bool result = true;
 
   result = result && (creatures_killed == m.creatures_killed);
+  result = result && (max_level_difference == m.max_level_difference);
 
   return result;
 }
@@ -92,6 +98,16 @@ int Mortuary::get_num_uniques_killed() const
   return static_cast<int>(num_killed);
 }
 
+void Mortuary::set_max_level_difference(const pair<int, string>& new_max_level_difference)
+{
+  max_level_difference = new_max_level_difference;
+}
+
+pair<int, string> Mortuary::get_max_level_difference() const
+{
+  return max_level_difference;
+}
+
 bool Mortuary::serialize(ostream& stream) const
 {
   size_t ck_size = creatures_killed.size();
@@ -106,6 +122,9 @@ bool Mortuary::serialize(ostream& stream) const
       Serialize::write_int(stream, pair.second.count);
     }
   }
+
+  Serialize::write_int(stream, max_level_difference.first);
+  Serialize::write_string(stream, max_level_difference.second);
 
   return true;
 }
@@ -138,6 +157,9 @@ bool Mortuary::deserialize(istream& stream)
       creatures_killed.insert(make_pair(creature_id, me));
     }
   }
+
+  Serialize::read_int(stream, max_level_difference.first);
+  Serialize::read_string(stream, max_level_difference.second);
 
   return true;
 }
