@@ -26,6 +26,7 @@
 #include "PhaseOfMoonCalculator.hpp"
 #include "PointsTransfer.hpp"
 #include "RaceManager.hpp"
+#include "Setting.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
@@ -293,7 +294,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   int effect_bonus = damage_info.get_effect_bonus();
   int base_damage = 0;
   
-  bool use_mult_dam_type_msgs = String::to_bool(game.get_settings_ref().get_setting("multiple_damage_type_messages"));
+  bool use_mult_dam_type_msgs = String::to_bool(game.get_settings_ref().get_setting(Setting::MULTIPLE_DAMAGE_TYPE_MESSAGES));
   string combat_message = CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc, use_mult_dam_type_msgs);
 
   HitTypeEnum hit_type_enum = HitTypeEnumConverter::from_successful_to_hit_roll(d100_roll);

@@ -25,6 +25,7 @@
 #include "ScriptConstants.hpp"
 #include "Serialization.hpp"
 #include "Settings.hpp"
+#include "Setting.hpp"
 #include "SexSelectionScreen.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -282,7 +283,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   
   Option opt;
 
-  string default_sex = game.get_settings_ref().get_setting("default_sex");
+  string default_sex = game.get_settings_ref().get_setting(Setting::DEFAULT_SEX);
   bool prompt_user_for_sex = true;
 
   if (!default_sex.empty())
@@ -308,7 +309,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  string default_race_id = game.get_settings_ref().get_setting("default_race_id");
+  string default_race_id = game.get_settings_ref().get_setting(Setting::DEFAULT_RACE_ID);
   const auto r_it = races.find(default_race_id);
   bool prompt_user_for_race_selection = true;
   string selected_race_id;
@@ -347,7 +348,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  string default_class_id = game.get_settings_ref().get_setting("default_class_id");
+  string default_class_id = game.get_settings_ref().get_setting(Setting::DEFAULT_CLASS_ID);
   const auto c_it = classes.find(default_class_id);
   bool prompt_user_for_class_selection = true;
   string selected_class_id;
@@ -391,7 +392,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   RacePtr selected_race = races[selected_race_id];
   ClassPtr selected_class = classes[selected_class_id];
 
-  string default_deity_id = game.get_settings_ref().get_setting("default_deity_id");
+  string default_deity_id = game.get_settings_ref().get_setting(Setting::DEFAULT_DEITY_ID);
   bool prompt_user_for_deity_selection = true;
   vector<string> deity_ids = selected_race->get_initial_deity_ids();
   string selected_deity_id;
@@ -457,8 +458,8 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   while (user_and_character_exist)
   {
     Settings& settings = game.get_settings_ref();
-    string default_name = settings.get_setting("default_name");
-    bool username_is_character_name = String::to_bool(settings.get_setting("username_is_character_name"));
+    string default_name = settings.get_setting(Setting::DEFAULT_NAME);
+    bool username_is_character_name = String::to_bool(settings.get_setting(Setting::USERNAME_IS_CHARACTER_NAME));
     
     if (username_is_character_name)
     {
@@ -564,8 +565,8 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
   IMessageManager& manager = MM::instance();
   Game& game = Game::instance();
   Settings& settings = game.get_settings_ref();
-  string max_chars = settings.get_setting("max_characters_per_user");
-  bool username_is_character_name = String::to_bool(settings.get_setting("username_is_character_name"));
+  string max_chars = settings.get_setting(Setting::MAX_CHARACTERS_PER_USER);
+  bool username_is_character_name = String::to_bool(settings.get_setting(Setting::USERNAME_IS_CHARACTER_NAME));
   int num_allowed = -1;
 
   if (!max_chars.empty())
