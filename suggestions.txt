@@ -1,4 +1,8 @@
 Me:
+- Char dump differences between @ and #
+- Mortuary should track the max level difference between creature and
+  killed, give IDs.
+- Track # of turns in dump, etc.
 - Ensure that branded ranged weapons take on the brand of the launcher.
   Or maybe shouldn't be brandable?
 - All setting strings into Setting.

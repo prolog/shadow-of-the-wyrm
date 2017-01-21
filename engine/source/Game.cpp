@@ -35,6 +35,7 @@
 #include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
 #include "Serialization.hpp"
+#include "Setting.hpp"
 #include "StatusActionProcessor.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -70,10 +71,10 @@ void Game::set_settings(const Settings& new_settings)
 {
   settings = new_settings;
 
-  string language_file = settings.get_setting("language_file");
+  string language_file = settings.get_setting(Setting::LANGUAGE_FILE);
   set_sid_ini_filename(language_file);
 
-  string log_level = settings.get_setting("log_level");
+  string log_level = settings.get_setting(Setting::LOG_LEVEL);
   LoggingLevel ll = static_cast<LoggingLevel>(String::to_int(log_level));
 
   if (ll >= LoggingLevel::LOG_LOWEST && ll < LoggingLevel::LOG_HIGHEST)
@@ -87,7 +88,7 @@ void Game::set_settings(const Settings& new_settings)
 
 void Game::set_display_settings()
 {
-  string cursor_mode = settings.get_setting("cursor_mode");
+  string cursor_mode = settings.get_setting(Setting::CURSOR_MODE);
   CursorMode cm = static_cast<CursorMode>(String::to_int(cursor_mode));
 
   // Game may just be starting up.
@@ -103,9 +104,9 @@ void Game::set_display_settings()
 
 void Game::set_world_settings()
 {
-  uint days_elapsed = String::to_uint(settings.get_setting("days_elapsed"));
-  uint hours_elapsed = String::to_uint(settings.get_setting("hours_elapsed"));
-  bool current_month_is_start_month = String::to_bool(settings.get_setting("current_month_is_start_month"));
+  uint days_elapsed = String::to_uint(settings.get_setting(Setting::DAYS_ELAPSED));
+  uint hours_elapsed = String::to_uint(settings.get_setting(Setting::HOURS_ELAPSED));
+  bool current_month_is_start_month = String::to_bool(settings.get_setting(Setting::CURRENT_MONTH_IS_START_MONTH));
 
   if (current_month_is_start_month)
   {    
@@ -734,7 +735,7 @@ void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions, cons
   {
     Game& game = Game::instance();
 
-    if (String::to_bool(game.get_settings_ref().get_setting("prompt_for_character_dump_on_exit")))
+    if (String::to_bool(game.get_settings_ref().get_setting(Setting::PROMPT_FOR_CHARACTER_DUMP_ON_EXIT)))
     {
       // Prompt the player if they want an identified character dump created.
       IMessageManager& manager = MM::instance();
