@@ -1,5 +1,4 @@
 Me:
-- Track # of turns in dump and high score.
 - Ensure that branded ranged weapons take on the brand of the launcher.
   Or maybe shouldn't be brandable?
 - Implement Bowyer (+docs)
