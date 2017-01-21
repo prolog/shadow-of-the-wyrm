@@ -1,17 +1,17 @@
 Me:
-- Char dump differences between @ and #
 - Mortuary should track the max level difference between creature and
   killed, give IDs.
-- Track # of turns in dump, etc.
+- Track # of turns in dump and high score.
 - Ensure that branded ranged weapons take on the brand of the launcher.
   Or maybe shouldn't be brandable?
-- All setting strings into Setting.
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)
 - Allow Tanning to make slings?
 - Reduce the number of castings learned from books.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
+- Oracles should get xp bonus when killing a creature that has a status
+  ailment.
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.

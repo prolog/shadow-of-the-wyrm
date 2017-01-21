@@ -9,10 +9,15 @@
 class TextDisplayFormatter
 {
   public:
+    TextDisplayFormatter();
+    TextDisplayFormatter(const bool new_keep_leading_whitespace);
+
     std::vector<std::string> format_text(const std::string& text, const int lines_displayable_area = -1) const;
 
   protected:
     void process_token(const std::string& token, std::vector<std::string>& result, std::string& current_str, uint& cur_pos, const uint width, const int lines_displayable_area, int& cur_line) const;
     bool should_process_token(const std::string& token, const uint cur_pos) const;
+
+    bool keep_leading_whitespace;
 };
 

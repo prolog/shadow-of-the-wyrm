@@ -6,6 +6,16 @@
 using namespace std;
 using namespace boost;
 
+TextDisplayFormatter::TextDisplayFormatter()
+: keep_leading_whitespace(false)
+{
+}
+
+TextDisplayFormatter::TextDisplayFormatter(const bool new_keep_leading_whitespace)
+: keep_leading_whitespace(new_keep_leading_whitespace)
+{
+}
+
 vector<string> TextDisplayFormatter::format_text(const string& text, const int lines_displayable_area) const
 {
   vector<string> result;
@@ -132,7 +142,7 @@ bool TextDisplayFormatter::should_process_token(const string& token, const uint 
 
   if (token == " " && pos == 0)
   {
-    can_process = false;
+    can_process = keep_leading_whitespace;
   }
 
   return can_process;
