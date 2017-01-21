@@ -3,7 +3,6 @@ Me:
   Or maybe shouldn't be brandable?
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)
-- Allow Tanning to make slings?
 - Reduce the number of castings learned from books.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)

@@ -1295,18 +1295,18 @@ bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
 {
-  // VS 2012
+  // VS 2015
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
     static_assert(sizeof(*this) == 1184, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 1056, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1080, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
   // Works for gcc in release
-  static_assert(sizeof(*this) == 2080, "Unexpected sizeof Creature.");
+  static_assert(sizeof(*this) == 2120, "Unexpected sizeof Creature.");
   #endif
 }
 
