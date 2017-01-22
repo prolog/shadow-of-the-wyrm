@@ -6,6 +6,7 @@ extern "C"
 }
 
 #include "KillScript.hpp"
+#include "ClassManager.hpp"
 #include "Log.hpp"
 #include "ScriptEngine.hpp"
 
@@ -36,18 +37,21 @@ bool KillScript::execute(ScriptEngine& se, const string& event_script, CreatureP
       dead_creature_base_id = dead_creature->get_original_id();
     }
 
+    string attacking_creature_class_id;
+
     if (attacking_creature != nullptr)
     {
       attacking_creature_id = attacking_creature->get_id();
+      attacking_creature_class_id = attacking_creature->get_class_id();
     }
 
     // Set up the function call parameters.
     lua_State* L = se.get_current_state();
     lua_getglobal(L, KILL_MODULE_NAME.c_str());
     lua_getfield(L, -1, KILL_FUNCTION_NAME.c_str());
-    lua_pushstring(L, dead_creature_id.c_str());
-    lua_pushstring(L, dead_creature_base_id.c_str());
     lua_pushstring(L, attacking_creature_id.c_str());
+    lua_pushstring(L, attacking_creature_class_id.c_str());
+    lua_pushstring(L, dead_creature_id.c_str());
 
     // Do the function call.  The "kill" function returns nothing.
     if (lua_pcall(L, 3, 0, 0) != 0)

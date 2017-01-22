@@ -38,6 +38,9 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 - When firing a branded ranged weapon with ammunition, the ammunition's
   damage type becomes that of the launcher.
 
+- Oracles get a 5% bonus on experience points when killing a creature
+  that has at least one status.
+
 - More stanzas for the epic poem.
 
 - Bug fixes:

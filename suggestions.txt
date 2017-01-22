@@ -1,6 +1,5 @@
 Me:
-- Oracles should get xp bonus when killing a creature that has a status
-  ailment.
+- Avoid triggering known traps with high Alertness.
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)
 - Reduce the number of castings learned from books.
