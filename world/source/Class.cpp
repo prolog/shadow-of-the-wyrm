@@ -208,6 +208,16 @@ string Class::get_level_script() const
   return level_script;
 }
 
+void Class::set_kill_script(const string& new_kill_script)
+{
+  kill_script = new_kill_script;
+}
+
+string Class::get_kill_script() const
+{
+  return kill_script;
+}
+
 void Class::set_titles(const map<int, string>& new_titles)
 {
   titles = new_titles;
@@ -263,6 +273,7 @@ string Class::str() const
   }
 
   class_details << level_script << endl;
+  class_details << kill_script << endl;
 
   return class_details.str();
 }

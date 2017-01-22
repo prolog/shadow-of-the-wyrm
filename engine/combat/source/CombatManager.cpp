@@ -1,5 +1,6 @@
 #include "ActionTextKeys.hpp"
 #include "AttackScript.hpp"
+#include "ClassManager.hpp"
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
@@ -19,6 +20,7 @@
 #include "HostilityManager.hpp"
 #include "IHitTypeFactory.hpp"
 #include "ItemProperties.hpp"
+#include "KillScript.hpp"
 #include "ToHitCalculatorFactory.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
@@ -595,6 +597,23 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
 
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
     {      
+      // Run any kill scripts before the DeathManager is invoked, to ensure
+      // that the killed creature is still present on the map.
+      if (attacking_creature != nullptr)
+      {
+        ClassManager cm;
+        ClassPtr cr_class = cm.get_class(attacking_creature->get_class_id());
+
+        if (cr_class != nullptr)
+        {
+          ScriptEngine& se = Game::instance().get_script_engine_ref();
+          KillScript ks;
+          string kill_script_name = cr_class->get_kill_script();
+
+          ks.execute(se, kill_script_name, attacked_creature, attacking_creature);
+        }
+      }
+
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
 
       // Kill the creature, and run the death event function, if necessary.

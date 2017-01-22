@@ -3124,6 +3124,7 @@
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
 			<LevelScript>level/oracle.lua</LevelScript>
+			<KillScript>kill/oracle.lua</KillScript>
 		</Class>
 		<Class id="pilgrim">
 			<UserPlayable>1</UserPlayable>

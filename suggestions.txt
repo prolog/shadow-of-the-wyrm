@@ -1,11 +1,11 @@
 Me:
+- Oracles should get xp bonus when killing a creature that has a status
+  ailment.
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)
 - Reduce the number of castings learned from books.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
-- Oracles should get xp bonus when killing a creature that has a status
-  ailment.
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.

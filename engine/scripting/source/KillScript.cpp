@@ -5,17 +5,17 @@ extern "C"
 #include "lauxlib.h"
 }
 
-#include "DeathScript.hpp"
+#include "KillScript.hpp"
 #include "Log.hpp"
 #include "ScriptEngine.hpp"
 
 using namespace std;
 
-const string DeathScript::DEATH_MODULE_NAME = "death";
-const string DeathScript::DEATH_FUNCTION_NAME = "die";
+const string KillScript::KILL_MODULE_NAME = "kill";
+const string KillScript::KILL_FUNCTION_NAME = "kill";
 
 // Return true if the script executed successfully, false otherwise.
-bool DeathScript::execute(ScriptEngine& se, const string& event_script, CreaturePtr dead_creature, CreaturePtr attacking_creature)
+bool KillScript::execute(ScriptEngine& se, const string& event_script, CreaturePtr dead_creature, CreaturePtr attacking_creature)
 {
   if (event_script.empty())
   {
@@ -43,26 +43,27 @@ bool DeathScript::execute(ScriptEngine& se, const string& event_script, Creature
 
     // Set up the function call parameters.
     lua_State* L = se.get_current_state();
-    lua_getglobal(L, DEATH_MODULE_NAME.c_str());
-    lua_getfield(L, -1, DEATH_FUNCTION_NAME.c_str());
+    lua_getglobal(L, KILL_MODULE_NAME.c_str());
+    lua_getfield(L, -1, KILL_FUNCTION_NAME.c_str());
     lua_pushstring(L, dead_creature_id.c_str());
     lua_pushstring(L, dead_creature_base_id.c_str());
     lua_pushstring(L, attacking_creature_id.c_str());
 
-    // Do the function call.  The "die" function returns nothing.
+    // Do the function call.  The "kill" function returns nothing.
     if (lua_pcall(L, 3, 0, 0) != 0)
     {
       string l_err = lua_tostring(L, -1);
-      string error_msg = "DeathScript::execute - error running Lua function `" + DEATH_FUNCTION_NAME + "': " + l_err;
+      string error_msg = "KillScript::execute - error running Lua function `" + KILL_FUNCTION_NAME + "': " + l_err;
       Log::instance().error(error_msg);
       result = false;
     }
   }
   else
   {
-    Log::instance().error("DeathScript::execute - did not run Lua function due to script failure: " + event_script);
+    Log::instance().error("KillScript::execute - did not run Lua function due to script failure: " + event_script);
     result = false;
   }
 
   return result;
 }
+
