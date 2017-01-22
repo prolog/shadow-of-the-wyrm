@@ -1,6 +1,4 @@
 Me:
-- Ensure that branded ranged weapons take on the brand of the launcher.
-  Or maybe shouldn't be brandable?
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)
 - Reduce the number of castings learned from books.
