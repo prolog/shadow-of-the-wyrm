@@ -18,6 +18,11 @@ const string AttackScript::ATTACK_FUNCTION_NAME = "attack";
 // Return true if the script executed successfully, false otherwise.
 bool AttackScript::execute(ScriptEngine& se, const string& attack_script, CreaturePtr attacking_creature, const string& attacked_creature_id)
 {
+  if (attack_script.empty())
+  {
+    return false;
+  }
+
   bool result = true;
 
   if (se.execute(attack_script, {}))

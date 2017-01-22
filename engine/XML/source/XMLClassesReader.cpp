@@ -108,6 +108,9 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
     string level_script = XMLUtils::get_child_node_value(class_node, "LevelScript");
     current_class->set_level_script(level_script);
+
+    string kill_script = XMLUtils::get_child_node_value(class_node, "KillScript");
+    current_class->set_kill_script(kill_script);
   }
 
   return current_class;

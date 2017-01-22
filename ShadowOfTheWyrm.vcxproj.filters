@@ -3912,6 +3912,9 @@
     <ClInclude Include="engine\include\Setting.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripting\include\KillScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7702,6 +7705,9 @@
     </ClCompile>
     <ClCompile Include="engine\source\Setting.cpp">
       <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\KillScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
