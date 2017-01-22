@@ -1,5 +1,7 @@
 #include "Ammunition.hpp"
 #include "CombatConstants.hpp"
+#include "Conversion.hpp"
+#include "ItemProperties.hpp"
 #include "PhysicalDamageCalculator.hpp"
 #include "WeaponDifficultyCalculator.hpp"
 #include "WeaponManager.hpp"
@@ -205,7 +207,7 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
   Equipment& equipment = creature->get_equipment();
   WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
   WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
-  
+
   if (ranged_weapon)
   {
     d = ranged_weapon->get_damage();
@@ -225,6 +227,11 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
       DamagePtr additional_damage = std::make_shared<Damage>(ammunition_damage);
       d.set_additional_damage(additional_damage);
     }
+  }
+
+  if (ranged_weapon && String::to_bool(ranged_weapon->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED)))
+  {
+    d.set_damage_type(ranged_weapon->get_damage().get_damage_type());
   }
   
   return d;

@@ -29115,12 +29115,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Properties>
-					<Property>
-						<Name>brandable</Name>
-						<Value>1</Value>
-					</Property>
-				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -29173,12 +29167,6 @@
 					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Properties>
-					<Property>
-						<Name>brandable</Name>
-						<Value>1</Value>
-					</Property>
-				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
