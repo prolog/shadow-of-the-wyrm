@@ -158,10 +158,12 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
   lua_register(L, "add_spell_castings", add_spell_castings);
   lua_register(L, "gain_experience", gain_experience);
+  lua_register(L, "get_experience_value", get_experience_value);
   lua_register(L, "add_creature_to_map", add_creature_to_map);
   lua_register(L, "remove_creature_from_map", remove_creature_from_map);
   lua_register(L, "add_status_to_creature", add_status_to_creature);
   lua_register(L, "add_status_to_creature_at", add_status_to_creature_at);
+  lua_register(L, "get_creature_statuses", get_creature_statuses);
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
   lua_register(L, "set_creature_speed", set_creature_speed);
@@ -1241,6 +1243,31 @@ int gain_experience(lua_State* ls)
   return 0;
 }
 
+// Get a particular creature's experience value
+int get_experience_value(lua_State* ls)
+{
+  int xp_val = 0;
+
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, 1)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      xp_val = static_cast<int>(creature->get_experience_value());
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_experience_value");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, xp_val);
+  return 1;
+}
+
 // Add a creature to the map at a particular (y, x) coordinate
 int add_creature_to_map(lua_State* ls)
 {
@@ -1387,6 +1414,43 @@ int add_status_to_creature_at(lua_State* ls)
 
   lua_pushboolean(ls, added_status);
   return 1;
+}
+
+// Get all the status IDs currently in force for the given creature.
+int get_creature_statuses(lua_State* ls)
+{
+  vector<string> statuses;
+
+  if ((lua_gettop(ls) == 1) && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      CreatureStatusMap csm = creature->get_statuses();
+
+      for (const auto& csm_pair : csm)
+      {
+        if (csm_pair.second.first == true)
+        {
+          statuses.push_back(csm_pair.first);
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_statuses");
+    lua_error(ls);
+  }
+
+  for (const string& status : statuses)
+  {
+    lua_pushstring(ls, status.c_str());
+  }
+
+  return statuses.size();
 }
 
 // Set a creature's base (bare-handed) damage.
