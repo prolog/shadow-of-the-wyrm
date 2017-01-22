@@ -67,6 +67,11 @@
 			<Row y="94" x="13">~~~~~~~~</Row>
 			<Script>areas/atua_elar.lua</Script>
 		</Area>
+		<Area id="whalings_end">
+			<Row y="98" x="56">~~~~~~~</Row>
+			<Row y="99" x="56">~~rrr~~</Row>
+			<Script>areas/whalings_end.lua</Script>
+		</Area>
 		<!-- Dwarf Lands contains the world-shrine as well -->
 		<Area id="dwarf_lands">
 			<Row y="4" x="7" >~~~~~~~~~~~~~~~</Row>

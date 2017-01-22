@@ -1,4 +1,5 @@
 Me:
+- Whaling's End
 - Avoid triggering known traps with high Alertness.
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)

@@ -53,6 +53,8 @@ mountainside and the gnomes are friendly.
 %p 
 804 A ship of elves from the Yew forest has come to trade and told us that the last fae have been found.  Their land lies as far north as we are south. 
 %p 
+805 Cynwise's nephew, Hrethel, has been stricken by wanderlust.  Halfway through his studies, he has bought passage on a whaling ship, and is bound for Whaling's End, the southernmost isle.
+%p 
 808 The goblins have sacked Aeschburh, and put every man to the sword.  Their fortress lies empty now, though some have said at night there are lights that dance in the dark. 
 %p 
 812 In this year, a young man has come to lead our sermons and prayers.  His name is Oswyn, a good man of the south.  Also Hrimgar has been made chief.  He is son of Hrimhere, son of Eadbert, himself son of Aethelric, one of Aethelwulf's kin. 

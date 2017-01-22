@@ -41,6 +41,8 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 - Oracles get a 5% bonus on experience points when killing a creature
   that has at least one status.
 
+- Added a new map, Whaling's End, at the south-most part of the world.
+
 - More stanzas for the epic poem.
 
 - Bug fixes:
