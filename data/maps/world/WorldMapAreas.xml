@@ -68,8 +68,8 @@
 			<Script>areas/atua_elar.lua</Script>
 		</Area>
 		<Area id="whalings_end">
-			<Row y="98" x="56">~~~~~~~</Row>
-			<Row y="99" x="56">~~rrr~~</Row>
+			<Row y="98" x="78">~~~~~~~</Row>
+			<Row y="99" x="78">~~~r~~~</Row>
 			<Script>areas/whalings_end.lua</Script>
 		</Area>
 		<!-- Dwarf Lands contains the world-shrine as well -->

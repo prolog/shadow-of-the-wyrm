@@ -31,6 +31,7 @@
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SkillManager.hpp"
+#include "Spellbook.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatisticsMarker.hpp"
 #include "StatisticTextKeys.hpp"
@@ -39,6 +40,7 @@
 #include "TextMessages.hpp"
 #include "TileGenerator.hpp"
 #include "Tool.hpp"
+
 using namespace std;
 
 CreaturePtr local_creature;
@@ -251,6 +253,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_coords_with_tile_type_in_range", get_coords_with_tile_type_in_range);
   lua_register(L, "get_custom_map_id", get_custom_map_id);
   lua_register(L, "ranged_attack", ranged_attack);
+  lua_register(L, "get_spellbooks", get_spellbooks);
 }
 
 // Lua API helper functions
@@ -1450,7 +1453,7 @@ int get_creature_statuses(lua_State* ls)
     lua_pushstring(ls, status.c_str());
   }
 
-  return statuses.size();
+  return static_cast<int>(statuses.size());
 }
 
 // Set a creature's base (bare-handed) damage.
@@ -4025,6 +4028,57 @@ int ranged_attack(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_spellbooks(lua_State* ls)
+{
+  vector<string> spellbook_ids;
+
+  int num_args = lua_gettop(ls);
+
+  if (lua_gettop(ls) == 0)
+  {
+    Game& game = Game::instance();
+    const ItemMap& items = game.get_items_ref();
+
+    for (const auto& item_pair : items)
+    {
+      ItemPtr item = item_pair.second;
+
+      if (item != nullptr && item->get_type() == ItemType::ITEM_TYPE_SPELLBOOK)
+      {
+        SpellbookPtr book = dynamic_pointer_cast<Spellbook>(item);
+
+        if (book != nullptr)
+        {
+          if (!book->get_spell_id().empty())
+          {
+            spellbook_ids.push_back(item_pair.first);
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_spellbooks");
+    lua_error(ls);
+  }
+
+  size_t sp_size = spellbook_ids.size();
+
+  // Create an array with n-array elements and 0 non-array elements.
+  lua_createtable(ls, static_cast<int>(sp_size), 0);
+
+  for (uint i = 0; i < sp_size; i++)
+  {
+    string cur_spbk_id = spellbook_ids.at(i);
+
+    lua_pushstring(ls, cur_spbk_id.c_str());
+    lua_rawseti(ls, -2, i + 1);
+  }
+
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)
