@@ -61,7 +61,7 @@ local function cynwise_magici_start_fn()
 end
 
 local function cynwise_magici_completion_condition_fn()
-  return player_has_item("_magici_shard") == true
+  return player_has_item(MAGICI_SHARD_ID) == true
 end
 
 local function cynwise_magici_completion_fn()
@@ -82,7 +82,7 @@ local function cynwise_magici_completion_fn()
     add_message("CYNWISE_MAGICI_QUEST_COMPLETE_ITEMS_SID")
   end
 
-  remove_object_from_player("_magici_shard")
+  remove_object_from_player(MAGICI_SHARD_ID)
   return true
 end
 
