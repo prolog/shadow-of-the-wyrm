@@ -20338,6 +20338,37 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="whaler">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>WHALER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WHALER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WHALER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WHALER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="hrethel">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>HRETHEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

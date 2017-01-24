@@ -33,6 +33,41 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>seal</ID>
+				<Coord>
+					<Row>19</Row>
+					<Col>24</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>seal</ID>
+				<Coord>
+					<Row>19</Row>
+					<Col>71</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gnomish_sailor</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gnomish_sailor</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>whaler</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>38</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>hrethel</ID>
 				<Coord>
 					<Row>5</Row>

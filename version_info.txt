@@ -43,14 +43,14 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 
 - Added a new map, Whaling's End, at the south-most part of the world.
   An ancient citadel, it has been repurposed by traders as the last
-  outpost at the south of the world.
+  outpost at the edge of the map.
 
   - Hrethel, the hedge wizard of Whaling's End, will trade you one of his
     many spellbooks in exchange for a score of magici shards.
 
 - More stanzas for the epic poem.
 
-- New creatures: Hrethel.
+- New creatures: Hrethel, whaler.
 
 - Bug fixes:
 
