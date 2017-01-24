@@ -1,5 +1,5 @@
 Me:
-- Whaling's End
+- Whaling's End.  Scrimshander.
 - Avoid triggering known traps with high Alertness.
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)
