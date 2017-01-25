@@ -108,6 +108,20 @@ CreaturePtr get_creature(const string& creature_id)
   return null_creature;
 }
 
+CreaturePtr get_creature_from_map(const string& creature_id, const string& map_id)
+{
+  CreaturePtr creature;
+  Game& game = Game::instance();
+  MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+  if (map != nullptr)
+  {
+    creature = map->get_creature(creature_id);
+  }
+
+  return creature;
+}
+
 // Get a particular tile from the given map
 TilePtr get_tile(const string& map_id, const Coordinate& c)
 {
@@ -171,6 +185,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
   lua_register(L, "get_creature_yx", get_creature_yx);
+  lua_register(L, "get_creature_id", get_creature_id);
   lua_register(L, "get_current_map_id", get_current_map_id);
   lua_register(L, "gain_level", gain_level);
   lua_register(L, "goto_level", goto_level);
@@ -254,6 +269,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_custom_map_id", get_custom_map_id);
   lua_register(L, "ranged_attack", ranged_attack);
   lua_register(L, "get_spellbooks", get_spellbooks);
+  lua_register(L, "set_shop_shopkeeper_id", set_shop_shopkeeper_id);
 }
 
 // Lua API helper functions
@@ -1587,6 +1603,53 @@ int get_creature_yx(lua_State* ls)
   return 2;
 }
 
+// Get the ID for a creature at the given coordinates
+int get_creature_id(lua_State* ls)
+{
+  string creature_id;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  { 
+    int cy = lua_tointeger(ls, 1);
+    int cx = lua_tointeger(ls, 2);
+    string map_id;
+
+    if (num_args == 3 && lua_isstring(ls, 3))
+    {
+      map_id = lua_tostring(ls, 3);
+    }
+
+    Game& game = Game::instance();
+    MapPtr map;
+    
+    if (map_id.empty())
+    {
+      map = game.get_current_map();
+    }
+    else
+    {
+      map = game.get_map_registry_ref().get_map(map_id);
+    }
+
+    TilePtr tile = map->at(cy, cx);
+
+    if (tile != nullptr && tile->has_creature())
+    {
+      CreaturePtr creature = tile->get_creature();
+      creature_id = creature->get_id();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_id");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, creature_id.c_str());
+  return 1;
+}
+
 // Return the ID of the current map
 int get_current_map_id(lua_State* ls)
 {
@@ -2397,15 +2460,32 @@ int set_creature_current_ap(lua_State* ls)
 int set_creature_name(lua_State* ls)
 {
   bool changed_name = false;
+  int num_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
   {
     string creature_id = lua_tostring(ls, 1);
     string name = lua_tostring(ls, 2);
 
     if (!name.empty())
     {
-      CreaturePtr creature = get_creature(creature_id);
+      string map_id;
+
+      if (num_args == 3 && lua_isstring(ls, 3))
+      {
+        map_id = lua_tostring(ls, 3);
+      }
+
+      CreaturePtr creature;
+      
+      if (map_id.empty())
+      {
+        creature = get_creature(creature_id);
+      }
+      else
+      {
+        creature = get_creature_from_map(creature_id, map_id);
+      }
 
       if (creature != nullptr)
       {
@@ -4079,6 +4159,52 @@ int get_spellbooks(lua_State* ls)
   }
 
   return 1;
+}
+
+int set_shop_shopkeeper_id(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string shop_id = lua_tostring(ls, 1);
+    string shopkeeper_id = lua_tostring(ls, 2);
+    string map_id;
+
+    if (num_args == 3 && lua_isstring(ls, 3))
+    {
+      map_id = lua_tostring(ls, 3);
+    }
+
+    MapPtr map;
+
+    if (map_id.empty())
+    {
+      map = Game::instance().get_current_map();
+    }
+    else
+    {
+      map = Game::instance().get_map_registry_ref().get_map(map_id);
+    }
+
+    if (map != nullptr)
+    {
+      std::map<string, Shop>& shops = map->get_shops_ref();
+      auto m_it = shops.find(shop_id);
+
+      if (m_it != shops.end())
+      {
+        m_it->second.set_shopkeeper_id(shopkeeper_id);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_shop_shopkeeper_id");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)

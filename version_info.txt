@@ -50,7 +50,9 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 
 - More stanzas for the epic poem.
 
-- New creatures: Hrethel, whaler.
+- New creatures: Hrethel, whaler, scrimshander, shopkeepers.
+
+- New items: lunch.
 
 - Bug fixes:
 

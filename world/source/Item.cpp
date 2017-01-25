@@ -34,7 +34,7 @@ Item::Item()
 : quantity(1), readable(false), worn_location(EquipmentWornLocation::EQUIPMENT_WORN_NONE), status(ItemStatus::ITEM_STATUS_UNCURSED), status_identified(false), 
 item_identified(false), auto_curse(false), artifact(false), hands_required(1), type(ItemType::ITEM_TYPE_MISC), symbol('?'), colour(Colour::COLOUR_UNDEFINED), 
 identification_type(ItemIdentificationType::ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EffectType::EFFECT_TYPE_NULL), material(MaterialType::MATERIAL_TYPE_WOOD),
-glowing(false)
+glowing(false), unpaid(false)
 {
   resistances.set_all_resistances_to(0);
   initialize_remaining_enchants();
@@ -79,6 +79,7 @@ bool Item::operator==(const Item& i) const
   result = result && (remaining_smithings == i.remaining_smithings);
   result = result && (additional_properties == i.additional_properties);
   result = result && (event_scripts == i.event_scripts);
+  result = result && (unpaid == i.unpaid);
 
   return result;
 }
@@ -349,6 +350,7 @@ bool Item::matches(std::shared_ptr<Item> i) const
     match = match && (modifier              == i->get_modifier()             );
     match = match && (additional_properties == i->additional_properties      );
     match = match && (event_scripts         == i->event_scripts              );
+    match = match && (unpaid                == i->unpaid                     );
 
     // Originally, I didn't want to consier remaining enchantments/smithings
     // for purposes of matching.  But then the additional properties were used
@@ -802,6 +804,15 @@ ScriptDetails Item::get_event_script(const string& event_name) const
   return sd;
 }
 
+void Item::set_unpaid(const bool new_unpaid)
+{
+  unpaid = new_unpaid;
+}
+
+bool Item::get_unpaid() const
+{
+  return unpaid;
+}
 
 bool Item::serialize(ostream& stream) const
 {
@@ -845,6 +856,8 @@ bool Item::serialize(ostream& stream) const
     Serialize::write_string(stream, script_pair.first);
     script_pair.second.serialize(stream);
   }
+  
+  Serialize::write_bool(stream, unpaid);
 
   return true;
 }
@@ -898,6 +911,8 @@ bool Item::deserialize(istream& stream)
     sd.deserialize(stream);
     event_scripts.insert(make_pair(script_id, sd));
   }
+
+  Serialize::read_bool(stream, unpaid);
 
   return true;
 }

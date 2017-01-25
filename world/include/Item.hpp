@@ -172,6 +172,9 @@ class Item : public ISerializable
     bool has_event_script(const std::string& event_name);
     ScriptDetails get_event_script(const std::string& event_name) const;
 
+    void set_unpaid(const bool new_unpaid);
+    bool get_unpaid() const;
+
     virtual Item* create_with_new_id();
     virtual Item* create();
     virtual Item* clone() = 0;
@@ -232,6 +235,7 @@ class Item : public ISerializable
     Statistic remaining_smithings;
     std::map<std::string, std::string> additional_properties;
     std::map<std::string, ScriptDetails> event_scripts;
+    bool unpaid;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

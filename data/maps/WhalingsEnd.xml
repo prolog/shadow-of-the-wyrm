@@ -68,10 +68,31 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>shopkeeper</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>22</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>shopkeeper</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>55</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>hrethel</ID>
 				<Coord>
 					<Row>5</Row>
 					<Col>71</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>scrimshander</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>73</Col>
 				</Coord>
 			</Placement>
 		</Creatures>
@@ -141,6 +162,43 @@
 			</Door>
 		</FeaturePlacement>
 	</Features>
+	<Shops>
+		<Shop id="davos_shop">
+			<StartCoord>
+				<Row>5</Row>
+				<Col>20</Col>
+			</StartCoord>
+			<EndCoord>
+				<Row>8</Row>
+				<Col>23</Col>
+			</EndCoord>
+			<StockedItemTypes>
+				<ItemType>1</ItemType>
+				<ItemType>2</ItemType>
+				<ItemType>10</ItemType>
+				<ItemType>11</ItemType>
+			</StockedItemTypes>
+		</Shop>
+		<Shop id="itzchak_shop">
+			<StartCoord>
+				<Row>5</Row>
+				<Col>55</Col>
+			</StartCoord>
+			<EndCoord>
+				<Row>8</Row>
+				<Col>58</Col>
+			</EndCoord>
+			<StockedItemTypes>
+				<ItemType>3</ItemType>
+				<ItemType>4</ItemType>
+				<ItemType>5</ItemType>
+				<ItemType>6</ItemType>
+				<ItemType>7</ItemType>
+				<ItemType>8</ItemType>
+				<ItemType>9</ItemType>
+			</StockedItemTypes>
+		</Shop>
+	</Shops>
 	<Properties>
 		<Property>
 			<Name>MAP_PROPERTIES_CANNOT_DIG</Name>

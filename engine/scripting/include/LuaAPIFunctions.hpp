@@ -10,6 +10,7 @@ extern "C" {
 
 void set_local_creature(CreaturePtr creature);
 CreaturePtr get_creature(const std::string& creature_id);
+CreaturePtr get_creature_from_map(const std::string& creature_id, const std::string& map_id);
 TilePtr get_tile(const std::string& map_id, const Coordinate& c);
 
 // API prototypes
@@ -56,6 +57,7 @@ int set_creature_base_damage(lua_State* ls);
 int set_creature_speed(lua_State* ls);
 int get_creature_speed(lua_State* ls);
 int get_creature_yx(lua_State* ls);
+int get_creature_id(lua_State* ls);
 int get_current_map_id(lua_State* ls);
 int incr_str(lua_State* ls);
 int incr_dex(lua_State* ls);
@@ -139,6 +141,7 @@ int get_coords_with_tile_type_in_range(lua_State* ls);
 int get_custom_map_id(lua_State* ls);
 int ranged_attack(lua_State* ls);
 int get_spellbooks(lua_State* ls);
+int set_shop_shopkeeper_id(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

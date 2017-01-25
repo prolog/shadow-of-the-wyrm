@@ -84,6 +84,7 @@ bool Map::operator==(const Map& map) const
   result = result && (properties == map.properties);
   result = result && (tile_transforms == map.tile_transforms);
   result = result && (preset_locations == map.preset_locations);
+  result = result && (shops == map.shops);
 
   return result;
 }
@@ -532,6 +533,21 @@ vector<Coordinate>& Map::get_preset_locations_ref()
   return preset_locations;
 }
 
+void Map::set_shops(const map<string, Shop>& new_shops)
+{
+  shops = new_shops;
+}
+
+map<string, Shop>& Map::get_shops_ref()
+{
+  return shops;
+}
+
+map<string, Shop> Map::get_shops() const
+{
+  return shops;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
@@ -617,6 +633,13 @@ bool Map::serialize(ostream& stream) const
   {
     Serialize::write_int(stream, c.first);
     Serialize::write_int(stream, c.second);
+  }
+
+  Serialize::write_size_t(stream, shops.size());
+  for (const auto& shop_pair : shops)
+  {
+    Serialize::write_string(stream, shop_pair.first);
+    shop_pair.second.serialize(stream);
   }
 
   return true;
@@ -756,6 +779,22 @@ bool Map::deserialize(istream& stream)
     Serialize::read_int(stream, x);
 
     preset_locations.push_back(make_pair(y, x));
+  }
+
+  size_t shops_sz = 0;
+  Serialize::read_size_t(stream, shops_sz);
+  shops.clear();
+
+  for (size_t sz = 0; sz < shops_sz; sz++)
+  {
+    Shop shop;
+
+    string shop_id;
+
+    Serialize::read_string(stream, shop_id);
+    shop.deserialize(stream);
+
+    shops[shop_id] = shop;
   }
 
   return true;
