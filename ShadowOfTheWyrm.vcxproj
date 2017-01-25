@@ -1112,6 +1112,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\NullInventory.hpp" />
     <ClInclude Include="world\include\RaceConstants.hpp" />
     <ClInclude Include="world\include\ScriptDetails.hpp" />
+    <ClInclude Include="world\include\Shop.hpp" />
     <ClInclude Include="world\include\SkinningConstants.hpp" />
     <ClInclude Include="world\include\SmithingConstants.hpp" />
     <ClInclude Include="world\include\Spellbook.hpp" />
@@ -3283,6 +3284,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\NullInventory.cpp" />
     <ClCompile Include="world\source\RaceConstants.cpp" />
     <ClCompile Include="world\source\ScriptDetails.cpp" />
+    <ClCompile Include="world\source\Shop.cpp" />
     <ClCompile Include="world\source\SkinningConstants.cpp" />
     <ClCompile Include="world\source\SmithingConstants.cpp" />
     <ClCompile Include="world\source\Spellbook.cpp" />
@@ -3492,6 +3494,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Shop_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Spellbook_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

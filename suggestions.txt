@@ -30,6 +30,7 @@ Me:
 - Cancellation effect type
 - Special rooms: beer hall, magical workshop, armory.
 - Travelling bazaars.
+- Merchants should get half off in shops.
 - Initial Music skill implementation.
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
