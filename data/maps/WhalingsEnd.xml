@@ -5,7 +5,7 @@
 	</Dimensions>
 	<LevelRange>
 		<Min>10</Min>
-		<Max>30</Max>
+		<Max>15</Max>
 	</LevelRange>
 	<MapType>1</MapType>
 	<Tiles>
@@ -17,8 +17,8 @@
 	SSSSSSSSSSSssSSRR,R#...######..#####.#..#.#####..######...#RRRRSSSSR,#...#,RSsSS
 	SSSSSSSSSSSSSSSssRR#.................#..#.................#,RRRRSTRRR#...#RRTSSS
 	SSSSSSSSSSSSSSsRRRR#...#............##..##............#...#TR,RSSSRRR#####RRsSSS
-	SSSSRSSSSRRSsSR,,RR#...#..............................#...#RRRRSSSsSRR,RRRTRSSSS
-	SSSRRSSSSRSSSSRRRRR#####..............................#####RR,RRSSSSSRRR,RRSSSSS
+	SSSSRSSSSRRSsSR,,RR#####..............................#####RRRRSSSsSRR,RRRTRSSSS
+	SSSRRSSSSRSSSSRRRRR#......................................#RR,RRSSSSSRRR,RRSSSSS
 	SSSRSSSSSRRSSsSRR,R#......................................#RRRRRSRSSSSsSsSSsSSSS
 	SSSRRSSSSSRsSSSsRRR#...........#..............#...........#RRRRRRRSsSSSSSSSSSSSS
 	SSSRRSSSSRRSsSRRRRR#...........#..............#...........#R,,RRRRSSSSSSSSRTSSSS
@@ -163,14 +163,14 @@
 		</FeaturePlacement>
 	</Features>
 	<Shops>
-		<Shop id="davos_shop">
+		<Shop id="noah_shop">
 			<StartCoord>
 				<Row>5</Row>
 				<Col>20</Col>
 			</StartCoord>
 			<EndCoord>
-				<Row>8</Row>
-				<Col>23</Col>
+				<Row>7</Row>
+				<Col>22</Col>
 			</EndCoord>
 			<StockedItemTypes>
 				<ItemType>1</ItemType>
@@ -185,8 +185,8 @@
 				<Col>55</Col>
 			</StartCoord>
 			<EndCoord>
-				<Row>8</Row>
-				<Col>58</Col>
+				<Row>7</Row>
+				<Col>57</Col>
 			</EndCoord>
 			<StockedItemTypes>
 				<ItemType>3</ItemType>

@@ -31,6 +31,7 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
   result = result && (initial_equipment == cgv.initial_equipment);
   result = result && (initial_inventory == cgv.initial_inventory);
   result = result && (generator_filters == cgv.generator_filters);
+  result = result && (modifier == cgv.modifier);
 
   return result;
 }
@@ -160,6 +161,16 @@ vector<string> CreatureGenerationValues::get_generator_filters() const
   return generator_filters;
 }
 
+void CreatureGenerationValues::set_modifier(const Modifier& new_modifier)
+{
+  modifier = new_modifier;
+}
+
+Modifier CreatureGenerationValues::get_modifier() const
+{
+  return modifier;
+}
+
 bool CreatureGenerationValues::serialize(ostream& stream) const
 {
   GenerationValues::serialize(stream);
@@ -203,6 +214,7 @@ bool CreatureGenerationValues::serialize(ostream& stream) const
   }
 
   Serialize::write_string_vector(stream, generator_filters);
+  modifier.serialize(stream);
 
   return true;
 }
@@ -265,6 +277,7 @@ bool CreatureGenerationValues::deserialize(istream& stream)
 
   generator_filters.clear();
   Serialize::read_string_vector(stream, generator_filters);
+  modifier.deserialize(stream);
 
   return true;
 }

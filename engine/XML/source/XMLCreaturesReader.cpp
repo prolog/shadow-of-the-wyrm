@@ -6,6 +6,7 @@
 #include "DecisionStrategyFactory.hpp"
 #include "DecisionStrategyProperties.hpp"
 #include "XMLCreaturesReader.hpp"
+#include "XMLModifierReader.hpp"
 #include "XMLScriptsReader.hpp"
 
 using namespace std;
@@ -274,6 +275,13 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
       Skills skills = skill_reader.get_skills(skills_node);
       cgv.set_skills(skills);
     }
+
+    // Optional modifiers node.
+    XMLNode initial_modifiers_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "InitialModifiers");
+    XMLModifierReader modifier_reader;
+
+    Modifier m = modifier_reader.get_modifier(initial_modifiers_node);
+    cgv.set_modifier(m);
 
     // Optional equipment/inventory node.
     XMLNode eq_inv_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "InitialEquipmentAndInventory");

@@ -20372,14 +20372,23 @@
 				<DangerLevel>30</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>30</NumDice>
+					<NumDice>45</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>4000</Exp>
+				<InitialModifiers>
+					<StrengthModifier>80</StrengthModifier>
+				</InitialModifiers>
 				<InitialEquipmentAndInventory>
 					<InitialInventory>
 						<InitialItem>
 							<ID>lunch</ID>
+						</InitialItem>
+						<InitialItem>
+							<ID>_currency</ID>
+							<Quantity>
+								<Amount>3000</Amount>
+							</Quantity>
 						</InitialItem>
 					</InitialInventory>
 				</InitialEquipmentAndInventory>
@@ -20389,6 +20398,11 @@
 				<NumDice>1</NumDice>
 				<NumSides>60</NumSides>
 				<Type>0</Type>
+				<StatusAilments>
+					<Status>_poison</Status>
+					<Status>_slow</Status>
+					<Status>_stone</Status>
+				</StatusAilments>
 			</Damage>
 			<Speed>30</Speed>
 		</Creature>

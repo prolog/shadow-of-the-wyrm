@@ -21,6 +21,7 @@
 #include "LuaUtils.hpp"
 #include "ItemManager.hpp"
 #include "MapExitUtils.hpp"
+#include "MapItemGenerator.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "Naming.hpp"
@@ -270,6 +271,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "ranged_attack", ranged_attack);
   lua_register(L, "get_spellbooks", get_spellbooks);
   lua_register(L, "set_shop_shopkeeper_id", set_shop_shopkeeper_id);
+  lua_register(L, "repop_shop", repop_shop);
 }
 
 // Lua API helper functions
@@ -4205,6 +4207,45 @@ int set_shop_shopkeeper_id(lua_State* ls)
   }
 
   return 0;
+}
+
+int repop_shop(lua_State* ls)
+{
+  bool repopped = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 1 && lua_isstring(ls, 1))
+  {
+    string shop_id = lua_tostring(ls, 1);
+    string map_id;
+
+    if (num_args == 2 && lua_isstring(ls, 2))
+    {
+      map_id = lua_tostring(ls, 2);
+    }
+
+    MapPtr map;
+
+    if (map_id.empty())
+    {
+      map = Game::instance().get_current_map();
+    }
+    else
+    {
+      map = Game::instance().get_map_registry_ref().get_map(map_id);
+    }
+
+    MapItemGenerator mig;
+    repopped = mig.repop_shop(map, shop_id);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to repop_shop");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, repopped);
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)

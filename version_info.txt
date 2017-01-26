@@ -48,6 +48,10 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   - Hrethel, the hedge wizard of Whaling's End, will trade you one of his
     many spellbooks in exchange for a score of magici shards.
 
+  - There are two shops: Noah and Itzchak have a variety of goods
+    for sale.  Unpaid goods will list the total price when you look at
+    them.
+
 - More stanzas for the epic poem.
 
 - New creatures: Hrethel, whaler, scrimshander, shopkeepers.

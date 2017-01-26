@@ -1,5 +1,9 @@
 Me:
-- Whaling's End.  Scrimshander.
+- Don't allow doors to shut when there is something in the way.
+- Show unpaid/value when items are unpaid.  Show both in inventory and
+  when moving over items.
+- More shopkeeper stuff...
+- Whaling's End.  Shopkeepers and shops.
 - Avoid triggering known traps with high Alertness.
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)

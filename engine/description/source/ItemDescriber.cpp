@@ -1,6 +1,7 @@
 #include "Conversion.hpp"
 #include "ItemDescriber.hpp"
 #include "ItemIdentifier.hpp"
+#include "ItemTextKeys.hpp"
 #include "ResistancesTranslator.hpp"
 #include "StringTable.hpp"
 
@@ -17,19 +18,15 @@ string ItemDescriber::describe() const
 
   if (item)
   {
+    ostringstream ss;
+
     ItemIdentifier item_id;
-    item_description = item_id.get_appropriate_description(item);
-    
-    uint quantity = item->get_quantity();
-    
-    // Add quantity as necessary
-    if (quantity > 1)
-    {
-      item_description += " (" + std::to_string(quantity) + ")";
-    }
+    ss << item_id.get_appropriate_description(item);
+    ss << describe_quantity_and_value();
 
     // Add weight
-    item_description += " [" + item->get_total_weight().str() + "]";
+    ss << " [" << item->get_total_weight().str() << "]";
+    item_description = ss.str();
   }
 
   return item_description;
@@ -41,18 +38,14 @@ string ItemDescriber::describe_usage() const
 
   if (item)
   {
+    ostringstream ss;
+
     ItemIdentifier item_id;
-    item_description = item_id.get_appropriate_usage_description(item);
-
-    uint quantity = item->get_quantity();
-
-    // Add quantity
-    if (quantity > 1)
-    {
-      item_description += " (" + std::to_string(quantity) + ")";
-    }
+    ss << item_id.get_appropriate_usage_description(item);
+    ss << describe_quantity_and_value();
 
     // No need to add weight to the usage description.
+    item_description = ss.str();
   }
 
   return item_description;
@@ -106,4 +99,44 @@ string ItemDescriber::describe_resists_and_flags() const
   }
 
   return rf_desc;
+}
+
+string ItemDescriber::describe_quantity_and_value() const
+{
+  ostringstream ss;
+  vector<string> quantity_and_unpaid_value;
+
+  uint quantity = item->get_quantity();
+
+  // Add quantity as necessary
+  if (quantity > 1)
+  {
+    quantity_and_unpaid_value.push_back(std::to_string(quantity));
+  }
+
+  // If this is from a shop, and unpaid, add the necessary info.
+  if (item->get_unpaid())
+  {
+    quantity_and_unpaid_value.push_back(ItemTextKeys::get_value(item->get_total_value()));
+  }
+
+  if (!quantity_and_unpaid_value.empty())
+  {
+    ss << " (";
+
+    for (size_t i = 0; i < quantity_and_unpaid_value.size(); i++)
+    {
+      string cur = quantity_and_unpaid_value.at(i);
+      ss << cur;
+
+      if (i != quantity_and_unpaid_value.size() - 1)
+      {
+        ss << "; ";
+      }
+    }
+
+    ss << ")";
+  }
+
+  return ss.str();
 }

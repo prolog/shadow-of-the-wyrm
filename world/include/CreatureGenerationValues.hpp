@@ -7,6 +7,7 @@
 #include "GenerationValues.hpp"
 #include "InitialItem.hpp"
 #include "tiles.hpp"
+#include "Modifier.hpp"
 #include "Skills.hpp"
 
 // Values that are used to generate a creature, without being a necessary
@@ -54,6 +55,9 @@ class CreatureGenerationValues : public GenerationValues
     void set_generator_filters(const std::vector<std::string>& new_generator_filters);
     std::vector<std::string> get_generator_filters() const;
 
+    void set_modifier(const Modifier& new_modifier);
+    Modifier get_modifier() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -92,6 +96,8 @@ class CreatureGenerationValues : public GenerationValues
     // after the tile has been matched.  Some tiles (e.g., sites of worship)
     // have generator-based restrictions.
     std::vector<std::string> generator_filters;
+
+    Modifier modifier;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

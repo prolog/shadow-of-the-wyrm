@@ -56,7 +56,7 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
   }
 
   // Generate the vector of possible items for this map.
-  ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, max_danger_level, rarity);
+  ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, max_danger_level, rarity, {});
   ItemEnchantmentCalculator iec;
 
   while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
@@ -99,3 +99,60 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
   return items_generated;
 }
 
+bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
+{
+  bool repop = false;
+
+  if (map != nullptr)
+  {
+    std::map<string, Shop> shops = map->get_shops();
+    auto s_it = shops.find(shop_id);
+
+    if (s_it != shops.end())
+    {
+      repop = true;
+
+      Shop shop = s_it->second;
+      Coordinate start = shop.get_start();
+      Coordinate end = shop.get_end();
+      vector<ItemType> stocked_types = shop.get_stocked_item_types();
+      int danger_level = map->get_danger();
+      Rarity rarity = Rarity::RARITY_VERY_RARE;
+
+      // Repopulate...
+      ItemGenerationManager igm;
+      ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, danger_level, rarity, stocked_types);
+      ItemEnchantmentCalculator iec;
+      Game& game = Game::instance();
+      ActionManager am = game.get_action_manager_ref();
+
+      for (int row = start.first; row <= end.first; row++)
+      {
+        for (int col = start.second; col <= end.second; col++)
+        {
+          int enchant_points = iec.calculate_enchantments(danger_level);
+          ItemPtr shop_item = igm.generate_item(am, generation_vec, rarity, enchant_points);
+
+          if (shop_item != nullptr)
+          {
+            shop_item->set_unpaid(true);
+
+            TilePtr tile = map->at(row, col);
+
+            if (tile != nullptr)
+            {
+              IInventoryPtr inv = tile->get_items();
+
+              if (inv != nullptr)
+              {
+                inv->merge_or_add(shop_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return repop;
+}
