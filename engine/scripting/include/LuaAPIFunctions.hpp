@@ -142,6 +142,7 @@ int get_custom_map_id(lua_State* ls);
 int ranged_attack(lua_State* ls);
 int get_spellbooks(lua_State* ls);
 int set_shop_shopkeeper_id(lua_State* ls);
+int repop_shop(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

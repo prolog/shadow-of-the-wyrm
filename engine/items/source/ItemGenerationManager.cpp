@@ -2,6 +2,7 @@
 #include "AmmunitionCalculator.hpp"
 #include "Conversion.hpp"
 #include "Game.hpp"
+#include "GenerationProperties.hpp"
 #include "ItemEnchantmentCalculator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "ItemManager.hpp"
@@ -18,7 +19,7 @@ ItemGenerationManager::ItemGenerationManager()
 }
 
 // Generate an item generation map for the given danger level and rarity.
-ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int min_danger_level, const int max_danger_level, const Rarity rarity)
+ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int min_danger_level, const int max_danger_level, const Rarity rarity, const vector<ItemType>& item_type_restrictions)
 {
   int min_danger = max(min_danger_level, 1);
   ItemGenerationVec generation_vec;
@@ -38,7 +39,7 @@ ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int 
       ItemPtr item = i_it->second;
       GenerationValues igvals = igv_map[item_id];
 
-      if (does_item_match_generation_criteria(igvals, min_danger, max_danger_level, rarity))
+      if (does_item_match_generation_criteria(igvals, min_danger, max_danger_level, rarity, item_type_restrictions))
       {
         generation_vec[igvals.get_rarity()].push_back(make_pair(item_id, make_pair(item, igvals)));
       }
@@ -151,13 +152,24 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
 }
 
 // Check to see if the item matches the given danger level and rarity.
-bool ItemGenerationManager::does_item_match_generation_criteria(const GenerationValues& cgv, const int min_danger_level, const int max_danger_level, const Rarity rarity)
+bool ItemGenerationManager::does_item_match_generation_criteria(const GenerationValues& cgv, const int min_danger_level, const int max_danger_level, const Rarity rarity, const vector<ItemType>& item_type_restrictions)
 {
+  ItemType itype = ItemType::ITEM_TYPE_NULL;
+  string prop_itype = cgv.get_property(GenerationProperties::GENERATION_PROPERTIES_ITEM_TYPE);
+
+  if (!prop_itype.empty())
+  {
+    itype = static_cast<ItemType>(String::to_int(prop_itype));
+  }
+
   int cgv_danger_level = cgv.get_danger_level();
 
   if ( cgv_danger_level >= 0 /* Exclude danger level of -1, which means "don't generate" */
     && cgv_danger_level >= min_danger_level
     && cgv_danger_level <= max_danger_level
+    // If the item type restrictions vector is empty - no restrictions
+    // Otherwise, the item type has to be found within the container.
+    && (item_type_restrictions.empty() || (std::find(item_type_restrictions.begin(), item_type_restrictions.end(), itype) != item_type_restrictions.end()))
     && cgv.get_rarity() <= rarity )
   {
     return true;

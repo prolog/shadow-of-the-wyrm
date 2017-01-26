@@ -25,6 +25,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
   if (!custom_map_node.is_null())
   {
     XMLNode dimensions_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Dimensions");
+    XMLNode level_range_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "LevelRange");
     XMLNode tiles_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Tiles");
     XMLNode player_start_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "PlayerStart");
     XMLNode initial_placements_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "InitialPlacements");
@@ -79,6 +80,14 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     // Generate the list of creatures on the map, so that it can be accessed
     // later on.
     custom_map->create_creatures();
+
+    int danger_level = 1;
+    if (!level_range_node.is_null())
+    {
+      danger_level = XMLUtils::get_child_node_int_value(level_range_node, "Max");
+    }
+
+    custom_map->set_danger(danger_level);
   }
 
   return custom_map;

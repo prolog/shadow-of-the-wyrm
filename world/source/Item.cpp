@@ -185,6 +185,11 @@ uint Item::get_value() const
   return value;
 }
 
+uint Item::get_total_value() const
+{
+  return value * quantity;
+}
+
 void Item::set_weight(const Weight& new_weight)
 {
   weight = new_weight;

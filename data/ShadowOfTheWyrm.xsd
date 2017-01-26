@@ -290,6 +290,7 @@
 			<!-- Most creatures don't use spells, so this is optional. -->
 			<xs:element name="AP" type="tns:Dice" minOccurs="0"/>
 			<xs:element name="Exp" type="xs:unsignedInt"/>
+			<xs:element name="InitialModifiers" type="tns:InitialStatisticsModifiers" minOccurs="0"/>
 			<xs:element ref="tns:Skills" minOccurs="0"/>
 			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 		</xs:sequence>
