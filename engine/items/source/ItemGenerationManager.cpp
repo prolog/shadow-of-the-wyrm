@@ -19,9 +19,9 @@ ItemGenerationManager::ItemGenerationManager()
 }
 
 // Generate an item generation map for the given danger level and rarity.
-ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int min_danger_level, const int max_danger_level, const Rarity rarity, const vector<ItemType>& item_type_restrictions)
+ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const ItemGenerationConstraints& igc)
 {
-  int min_danger = max(min_danger_level, 1);
+  int min_danger = max(igc.get_min_danger_level(), 1);
   ItemGenerationVec generation_vec;
 
   ItemPtr generated_creature;
@@ -39,7 +39,8 @@ ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int 
       ItemPtr item = i_it->second;
       GenerationValues igvals = igv_map[item_id];
 
-      if (does_item_match_generation_criteria(igvals, min_danger, max_danger_level, rarity, item_type_restrictions))
+      // JCD TODO: INCORPORATE VALUE
+      if (does_item_match_generation_criteria(igvals, min_danger, igc.get_max_danger_level(), igc.get_rarity(), igc.get_item_type_restrictions()))
       {
         generation_vec[igvals.get_rarity()].push_back(make_pair(item_id, make_pair(item, igvals)));
       }

@@ -651,6 +651,34 @@ bool MapUtils::is_creature_present(TilePtr tile)
   return false;
 }
 
+pair<bool, string> MapUtils::is_in_shop_or_adjacent(MapPtr map, const Coordinate& c)
+{
+  pair<bool, string> result = make_pair(false, "");
+
+  if (map != nullptr)
+  {
+    std::map<string, Shop> shops = map->get_shops();
+
+    for (const auto& shop_pair : shops)
+    {
+      Shop shop = shop_pair.second;
+
+      Coordinate start = shop.get_start();
+      Coordinate end = shop.get_end();
+
+      if (c.first >= start.first-1 && c.first <= end.first+1 && c.second >= start.second-1 && c.second <= end.second+1)
+      {
+        result.first = true;
+        result.second = shop_pair.first;
+
+        break;
+      }
+    }
+  }
+
+  return result;
+}
+
 // Iterate through the existing components of the map, searching each one to see if the coordinates are contained within
 // any one of them.
 bool MapUtils::is_tile_contained_in_an_existing_component(const Coordinate& coord, const MapComponents& components)

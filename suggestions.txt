@@ -1,8 +1,9 @@
 Me:
-- Don't allow doors to shut when there is something in the way.
-- Show unpaid/value when items are unpaid.  Show both in inventory and
-  when moving over items.
-- More shopkeeper stuff...
+- More shopkeeper stuff:
+  - Angry when they see you outside the shop with unpaid merch (need to
+    track shop ID for unpaid items...)
+  - Chat to pay
+- Names should work into combat messages, etc
 - Whaling's End.  Shopkeepers and shops.
 - Avoid triggering known traps with high Alertness.
 - Implement Bowyer (+docs)

@@ -9,7 +9,7 @@ DefaultFeatureManipulator::DefaultFeatureManipulator(FeaturePtr feature)
 {
 }
 
-void DefaultFeatureManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
+void DefaultFeatureManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
 {
 }
 

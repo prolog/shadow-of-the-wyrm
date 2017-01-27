@@ -14,7 +14,7 @@ JewelerWorkbenchManipulator::JewelerWorkbenchManipulator(FeaturePtr feature)
 {
 }
 
-void JewelerWorkbenchManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
+void JewelerWorkbenchManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
 {
   if (creature && creature->get_is_player())
   {

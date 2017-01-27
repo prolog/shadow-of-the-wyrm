@@ -17,7 +17,7 @@ loom_map({ {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_cloak"}, {Equip
 {
 }
 
-void WheelAndLoomManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
+void WheelAndLoomManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
 {
   if (creature && creature->get_is_player())
   {

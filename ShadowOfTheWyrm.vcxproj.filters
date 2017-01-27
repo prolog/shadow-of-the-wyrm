@@ -3921,6 +3921,9 @@
     <ClInclude Include="world\include\GenerationProperties.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\items\include\ItemGenerationConstraints.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7726,6 +7729,9 @@
     </ClCompile>
     <ClCompile Include="world\source\GenerationProperties.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemGenerationConstraints.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
