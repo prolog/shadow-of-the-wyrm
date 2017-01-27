@@ -548,33 +548,6 @@ map<string, Shop> Map::get_shops() const
   return shops;
 }
 
-bool Map::is_in_shop(const string& creature_id) const
-{
-  Coordinate c = get_location(creature_id);
-  return is_in_shop(c);
-}
-
-bool Map::is_in_shop(const Coordinate& c) const
-{
-  bool in_shop = false;
-
-  for (const auto& shop_pair : shops)
-  {
-    Shop shop = shop_pair.second;
-
-    Coordinate start = shop.get_start();
-    Coordinate end = shop.get_end();
-
-    if (c.first >= start.first && c.first <= end.first && c.second >= start.second && c.second <= end.second)
-    {
-      in_shop = true;
-      break;
-    }
-  }
-
-  return in_shop;
-}
-
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.

@@ -3,6 +3,9 @@
 #include "DoorGateManipulator.hpp"
 #include "Door.hpp"
 #include "DoorBreakageCalculator.hpp"
+#include "Game.hpp"
+#include "HostilityManager.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "StatisticsMarker.hpp"
@@ -20,7 +23,7 @@ DoorGateManipulator::DoorGateManipulator(FeaturePtr feature)
 {
 }
 
-void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
+void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
 {
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
@@ -38,12 +41,32 @@ void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr
       {
         if (RNG::percent_chance(break_chance))
         {
+          MapPtr current_map = Game::instance().get_current_map();
+
           break_down_door(creature, feature_tile);
+          pair<bool, string> shop_adjacency = MapUtils::is_in_shop_or_adjacent(current_map, feature_coord);
+          if (shop_adjacency.first)
+          {
+            std::map<string, Shop> shops = current_map->get_shops();
+            auto s_it = shops.find(shop_adjacency.second);
+            if (s_it != shops.end())
+            {
+              // The shopkeeper is justifiably pissed!
+              HostilityManager hm;
+              hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), creature->get_id());
+            }            
+          }
+
+          // Breaking down a shop's door will anger the shopkeeper.
 
           // Breaking down doors with a solid kick is pretty impressive,
           // and marks Strength.
           StatisticsMarker sm;
-          sm.mark_strength(creature);
+
+          for (int i = 0; i < RNG::range(2, 4); i++)
+          {
+            sm.mark_strength(creature);
+          }
         }
         else
         {
@@ -71,28 +94,40 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
 
   shared_ptr<Door> door = dynamic_pointer_cast<Door>(feature);
 
-  if (door != nullptr)
+  if (door != nullptr && tile != nullptr)
   {
     LockPtr lock = door->get_lock();
     EntranceState& entrance_state = door->get_state_ref();
     EntranceStateType state = entrance_state.get_state();
 
-    switch (state)
+    // Is there something in the way?
+    bool items_block_doorway = tile->get_items()->has_items();
+
+    if (items_block_doorway)
     {
-        // If the door is smashed, nothing can be done.
-      case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
-        break;
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DOOR_BLOCKED));
+      manager.send();
+    }
+    else
+    {
+      switch (state)
+      {
+          // If the door is smashed, nothing can be done.
+        case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
+          break;
 
-      case EntranceStateType::ENTRANCE_TYPE_OPEN:
-        result = door->close();
-        break;
+        case EntranceStateType::ENTRANCE_TYPE_OPEN:
+          result = door->close();
+          break;
 
-      case EntranceStateType::ENTRANCE_TYPE_CLOSED:
-        // If the door is closed and locked, try to unlock it.
-        // If the door is closed and unlocked, open it.
-      default:
-        result = door->open();
-        break;
+        case EntranceStateType::ENTRANCE_TYPE_CLOSED:
+          // If the door is closed and locked, try to unlock it.
+          // If the door is closed and unlocked, open it.
+        default:
+          result = door->open();
+          break;
+      }
     }
   }
 

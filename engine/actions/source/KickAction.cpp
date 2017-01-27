@@ -110,6 +110,8 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
   if (creature && current_map)
   {
     TilePtr k_tile = MapUtils::get_adjacent_tile(current_map, creature, direction);
+    Coordinate k_coord = CoordUtils::get_new_coordinate(current_map->get_location(creature->get_id()), direction);
+
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
     if (k_tile)
@@ -138,7 +140,7 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
       {
         if (!creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
         {
-          acv = kick_feature(creature, current_map, k_tile, k_tile->get_feature());
+          acv = kick_feature(creature, current_map, k_tile, k_coord, k_tile->get_feature());
         }
         else
         {
@@ -193,7 +195,7 @@ ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, Creature
   return acv;
 }
 
-ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, FeaturePtr kick_feature)
+ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, const Coordinate& kick_coord, FeaturePtr kick_feature)
 {
   if (creature && current_map && kick_tile && kick_feature)
   {
@@ -215,7 +217,7 @@ ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_ma
     if (manipulator)
     {
       // Do any specific logic required due to the kicking.
-      manipulator->kick(creature, current_map, kick_tile, kick_feature);
+      manipulator->kick(creature, current_map, kick_tile, kick_coord, kick_feature);
     }
   }
 

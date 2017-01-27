@@ -69,3 +69,15 @@ ItemEventScripts::~ItemEventScripts()
 // ensure those are updated as well!
 const string ItemEventScripts::ITEM_EVENT_AMMO_DESTRUCT = "ITEM_EVENT_AMMO_DESTRUCT";
 
+// Item values
+ItemValues::ItemValues()
+{
+}
+
+ItemValues::~ItemValues()
+{
+}
+
+const int ItemValues::DEFAULT_MIN_GENERATION_VALUE = -1;
+const int ItemValues::DEFAULT_MIN_SHOP_VALUE = 10;
+

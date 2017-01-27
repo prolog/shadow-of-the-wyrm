@@ -122,8 +122,6 @@ class Map : public ISerializable
     void set_shops(const std::map<std::string, Shop>& new_shops);
     std::map<std::string, Shop>& get_shops_ref();
     std::map<std::string, Shop> get_shops() const;
-    bool is_in_shop(const std::string& creature_id) const;
-    bool is_in_shop(const Coordinate& c) const;
     
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
