@@ -41,6 +41,8 @@ Shadow of the Wyrm v0.6.0 "Capirola"
 - Oracles get a 5% bonus on experience points when killing a creature
   that has at least one status.
 
+- Creatures now get angry at you if you teleport them.
+
 - Added a new map, Whaling's End, at the south-most part of the world.
   An ancient citadel, it has been repurposed by traders as the last
   outpost at the edge of the map.
@@ -54,7 +56,8 @@ Shadow of the Wyrm v0.6.0 "Capirola"
     value, so very low value items (rocks, turnips, etc) won't be
     generated.
 
-  - Shopkeepers don't enjoy literal door-crashers.
+  - Shopkeepers don't enjoy literal door-crashers.  They also don't like
+    people kicking the wares.
 
 - More stanzas for the epic poem.
 

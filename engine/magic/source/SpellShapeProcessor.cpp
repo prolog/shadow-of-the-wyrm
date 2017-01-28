@@ -114,11 +114,11 @@ bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const S
     EffectPtr effect = EffectFactory::create_effect(effect_type, spell.get_modifier(), spell.get_properties(), spell.get_spell_id());
     CreaturePtr creature = tile->get_creature();
 
-    if (effect && creature)
+    if (effect && creature && caster)
     {
       bool negative_effect = effect->is_negative_effect();
 
-      if (negative_effect)
+      if (negative_effect && (caster->get_id() != (creature->get_id())))
       {
         HostilityManager hm;
         hm.set_hostility_to_creature(creature, caster->get_id());

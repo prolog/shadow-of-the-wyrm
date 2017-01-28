@@ -18,6 +18,6 @@ class KickAction : public IActionManager
     ActionCostValue kick_in_direction(CreaturePtr creature, MapPtr current_map, const Direction direction);
     ActionCostValue kick_creature(CreaturePtr kicking_creature, CreaturePtr kicked_creature);
     ActionCostValue kick_feature(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, const Coordinate& kick_coord, FeaturePtr tile_feature);
-    ActionCostValue kick_item(CreaturePtr creature, TilePtr kick_tile, TilePtr new_tile, const Direction direction);
+    ActionCostValue kick_item(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, TilePtr new_tile, const Direction direction);
     ActionCostValue kick_tile(CreaturePtr creature, TilePtr kick_tile);
 };

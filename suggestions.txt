@@ -3,6 +3,7 @@ Me:
   - Angry when they see you outside the shop with unpaid merch (need to
     track shop ID for unpaid items...)
   - Chat to pay
+- Gourmand amulet
 - Names should work into combat messages, etc
 - Whaling's End.  Shopkeepers and shops.
 - Avoid triggering known traps with high Alertness.

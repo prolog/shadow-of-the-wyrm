@@ -1,16 +1,17 @@
+#include <boost/tokenizer.hpp>
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "HostilityManager.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
 #include "RNG.hpp"
 #include "WorldMapLocationTextKeys.hpp"
-#include <boost/tokenizer.hpp>
 
 using namespace std;
 using namespace boost;
@@ -1025,6 +1026,25 @@ map<TileType, vector<TilePtr>> MapUtils::partition_tiles(MapPtr current_map)
   }
 
   return part_tiles;
+}
+
+void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current_map, CreaturePtr anger_creature)
+{
+  if (current_map != nullptr && anger_creature != nullptr)
+  {
+    pair<bool, string> shop_adjacency = MapUtils::is_in_shop_or_adjacent(current_map, c);
+    if (shop_adjacency.first)
+    {
+      std::map<string, Shop> shops = current_map->get_shops();
+      auto s_it = shops.find(shop_adjacency.second);
+      if (s_it != shops.end())
+      {
+        // The shopkeeper is justifiably pissed!
+        HostilityManager hm;
+        hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id());
+      }
+    }
+  }
 }
 
 #ifdef UNIT_TESTS
