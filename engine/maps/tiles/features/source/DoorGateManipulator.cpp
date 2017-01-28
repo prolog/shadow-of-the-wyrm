@@ -44,18 +44,7 @@ void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr
           MapPtr current_map = Game::instance().get_current_map();
 
           break_down_door(creature, feature_tile);
-          pair<bool, string> shop_adjacency = MapUtils::is_in_shop_or_adjacent(current_map, feature_coord);
-          if (shop_adjacency.first)
-          {
-            std::map<string, Shop> shops = current_map->get_shops();
-            auto s_it = shops.find(shop_adjacency.second);
-            if (s_it != shops.end())
-            {
-              // The shopkeeper is justifiably pissed!
-              HostilityManager hm;
-              hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), creature->get_id());
-            }            
-          }
+          MapUtils::anger_shopkeeper_if_necessary(feature_coord, current_map, creature);
 
           // Breaking down a shop's door will anger the shopkeeper.
 
