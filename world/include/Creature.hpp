@@ -176,8 +176,9 @@ class Creature : public ISerializable
     // Get the weight carried, in oz
     uint get_weight_carried() const;
 
-    // Does the creature have any equipped or worn items?
+    // Does the creature have any equipped or worn items?  Are any unpaid?
     bool has_items() const;
+    bool has_unpaid_items() const;
     uint count_items() const;
     
     // Set/get point-based statistics

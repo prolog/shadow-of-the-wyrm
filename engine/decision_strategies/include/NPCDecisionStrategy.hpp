@@ -12,6 +12,8 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map = nullptr, int* key_p = 0) override;
     virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p) override;
 
+    virtual void set_fov_map(MapPtr map) override;
+
     virtual uint get_count(const uint max_count) override;
     virtual bool get_confirmation(const bool confirmation_default_value = false) override;
     
@@ -31,6 +33,8 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual CommandPtr get_decision_for_inventory(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) = 0;
     virtual CommandPtr get_decision_for_equipment(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) = 0; 
     virtual CommandPtr get_decision_for_tile_selection(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) = 0;
+
+    virtual void update_threats_if_shopkeeper(MapPtr current_fov_map);
 
     static const int PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET;
     static const int PERCENT_CHANCE_CONSIDER_USING_MAGIC;

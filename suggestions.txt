@@ -1,8 +1,8 @@
 Me:
 - More shopkeeper stuff:
-  - Angry when they see you outside the shop with unpaid merch (need to
-    track shop ID for unpaid items...)
   - Chat to pay
+  - Move within shop only
+  - Add support to "$" to show unpaid total when > 0
 - Gourmand amulet
 - Names should work into combat messages, etc
 - Whaling's End.  Shopkeepers and shops.

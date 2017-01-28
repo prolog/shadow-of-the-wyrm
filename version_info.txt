@@ -59,6 +59,9 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   - Shopkeepers don't enjoy literal door-crashers.  They also don't like
     people kicking the wares.
 
+  - Shopkeepers also look out for each other - if they see you outside a
+    shop with unpaid goods, they will seek revenge.
+
 - More stanzas for the epic poem.
 
 - New creatures: Hrethel, whaler, scrimshander, shopkeepers.

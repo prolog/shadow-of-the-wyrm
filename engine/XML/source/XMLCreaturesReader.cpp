@@ -360,6 +360,9 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
     bool sentinel = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Sentinel", false);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, Bool::to_string(sentinel));
 
+    bool shopkeeper = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Shopkeeper", false);
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER, Bool::to_string(shopkeeper));
+
     creature->set_decision_strategy(decision_strategy);
   }
 }

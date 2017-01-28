@@ -20361,6 +20361,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Shopkeeper>1</Shopkeeper>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -20404,7 +20405,7 @@
 					<Status>_stone</Status>
 				</StatusAilments>
 			</Damage>
-			<Speed>30</Speed>
+			<Speed>25</Speed>
 		</Creature>
 		<Creature id="hrethel">
 			<RaceID>01_human</RaceID>

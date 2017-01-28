@@ -762,6 +762,34 @@ bool Creature::has_items() const
   return false;
 }
 
+bool Creature::has_unpaid_items() const
+{
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = equipment.get_item(ewl);
+    if (item != nullptr && item->get_unpaid())
+    {
+      return true;
+    }
+  }
+
+  if (inventory != nullptr)
+  {
+    const list<ItemPtr> raw_items = inventory->get_items_cref();
+    
+    for (ItemPtr item : raw_items)
+    {
+      if (item && item->get_unpaid())
+      {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 uint Creature::count_items() const
 {
   uint count = equipment.count_items() + inventory->count_items();
