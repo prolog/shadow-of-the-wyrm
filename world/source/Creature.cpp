@@ -826,6 +826,32 @@ uint Creature::get_unpaid_amount() const
   return total;
 }
 
+void Creature::set_items_paid()
+{
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = equipment.get_item(ewl);
+    if (item != nullptr)
+    {
+      item->set_unpaid(false);
+    }
+  }
+
+  if (inventory != nullptr)
+  {
+    const list<ItemPtr> raw_items = inventory->get_items_cref();
+
+    for (ItemPtr item : raw_items)
+    {
+      if (item)
+      {
+        item->set_unpaid(false);
+      }
+    }
+  }
+}
+
 void Creature::set_hit_points(const Statistic& new_hit_points)
 {
   hit_points = new_hit_points;

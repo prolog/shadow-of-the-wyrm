@@ -20405,6 +20405,11 @@
 				</StatusAilments>
 			</Damage>
 			<Speed>25</Speed>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/shopkeeper.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="hrethel">
 			<RaceID>01_human</RaceID>

@@ -62,7 +62,8 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   - Shopkeepers also look out for each other - if they see you outside a
     shop with unpaid goods, they will seek revenge.
 
-  - The total amount owing can now be seen with the "$" command.
+  - The total amount owing can now be seen with the "$" command.  You can
+    pay for unpaid merchandise by chatting to the shopkeeper.
 
 - More stanzas for the epic poem.
 
