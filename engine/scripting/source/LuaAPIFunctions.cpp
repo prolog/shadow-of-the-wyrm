@@ -272,6 +272,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_spellbooks", get_spellbooks);
   lua_register(L, "set_shop_shopkeeper_id", set_shop_shopkeeper_id);
   lua_register(L, "repop_shop", repop_shop);
+  lua_register(L, "get_unpaid_amount", get_unpaid_amount);
+  lua_register(L, "set_items_paid", set_items_paid);
 }
 
 // Lua API helper functions
@@ -4246,6 +4248,51 @@ int repop_shop(lua_State* ls)
 
   lua_pushboolean(ls, repopped);
   return 1;
+}
+
+int get_unpaid_amount(lua_State* ls)
+{
+  int amount = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      amount = creature->get_unpaid_amount();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_unpaid_amount");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, amount);
+  return 1;
+}
+
+int set_items_paid(lua_State* ls)
+{
+  if (lua_gettop(ls) && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->set_items_paid();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_items_paid");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)

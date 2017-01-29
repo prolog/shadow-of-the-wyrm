@@ -1,11 +1,10 @@
 Me:
 - More shopkeeper stuff:
-  - Chat to pay
   - Pay/flag on confirmation on drop
   - Itzchak's shop should have scrolls and books too
 - Gourmand amulet
 - Names should work into combat messages, etc
-- Whaling's End.  Shopkeepers and shops.
+- Whaling's End.  Shopkeepers and shops.  More NPCs.
 - Avoid triggering known traps with high Alertness.
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)
