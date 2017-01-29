@@ -180,6 +180,7 @@ class Creature : public ISerializable
     bool has_items() const;
     bool has_unpaid_items() const;
     uint count_items() const;
+    uint get_unpaid_amount() const;
     
     // Set/get point-based statistics
 

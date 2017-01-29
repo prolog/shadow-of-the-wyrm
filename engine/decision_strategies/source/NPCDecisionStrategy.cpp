@@ -464,12 +464,31 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
     vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(current_dimensions, this_row, this_col);
     vector<Coordinate> choice_coordinates = get_adjacent_safe_coordinates_without_creatures(current_map, adjacent_coordinates, this_creature);
 
-    // Pick a tile if not empty
-    if (!choice_coordinates.empty())
+    // If the creature is a shopkeeper, prefer movement on to shop tiles when
+    // in a shop.
+    bool shopkeeper = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER));
+    if (shopkeeper && MapUtils::is_in_shop_or_adjacent(current_map, current_map->get_location(this_creature_id)).first)
     {
-      Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size() - 1));
-      Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
-      movement_command = std::make_shared<MovementCommand>(direction, -1);
+      std::shuffle(choice_coordinates.begin(), choice_coordinates.end(), RNG::get_engine());
+
+      for (const Coordinate& cc : choice_coordinates)
+      {
+        if (MapUtils::is_in_shop_or_adjacent(current_map, cc).first)
+        {
+          movement_command = std::make_shared<MovementCommand>(CoordUtils::get_direction(this_creature_coords, cc), -1);
+          break;
+        }
+      }
+    }
+    else
+    {
+      // Pick a random empty coordinate.
+      if (!choice_coordinates.empty())
+      {
+        Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size() - 1));
+        Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
+        movement_command = std::make_shared<MovementCommand>(direction, -1);
+      }
     }
   }
 

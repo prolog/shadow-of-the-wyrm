@@ -20360,7 +20360,6 @@
 			<SpeechTextSID>SHOPKEEPER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
-				<Sentinel>1</Sentinel>
 				<Shopkeeper>1</Shopkeeper>
 			</DecisionStrategy>
 			<Text>
