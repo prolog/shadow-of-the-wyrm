@@ -1,8 +1,8 @@
 Me:
 - More shopkeeper stuff:
   - Chat to pay
-  - Move within shop only
-  - Add support to "$" to show unpaid total when > 0
+  - Pay/flag on confirmation on drop
+  - Itzchak's shop should have scrolls and books too
 - Gourmand amulet
 - Names should work into combat messages, etc
 - Whaling's End.  Shopkeepers and shops.
@@ -17,6 +17,9 @@ Me:
   and an Escape roll.  Update Guidebook.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
+- Allow shopkeepers to be any of the selectable races.
+- Allow shopkeepers to sell for different prices dependending on their
+  race, and the buying creature's.
 - Creatures should be smarter about the use of spells given that creatures
   will fight back and summon help.
 - Arcane damage should destroy wands, rings, potions, scrolls, texts,

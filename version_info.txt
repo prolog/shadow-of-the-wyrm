@@ -62,6 +62,8 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   - Shopkeepers also look out for each other - if they see you outside a
     shop with unpaid goods, they will seek revenge.
 
+  - The total amount owing can now be seen with the "$" command.
+
 - More stanzas for the epic poem.
 
 - New creatures: Hrethel, whaler, scrimshander, shopkeepers.
