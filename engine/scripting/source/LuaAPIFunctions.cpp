@@ -1,4 +1,5 @@
 #include "LuaAPIFunctions.hpp"
+#include "BuySellCalculator.hpp"
 #include "ClassManager.hpp"
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
@@ -274,6 +275,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "repop_shop", repop_shop);
   lua_register(L, "get_unpaid_amount", get_unpaid_amount);
   lua_register(L, "set_items_paid", set_items_paid);
+  lua_register(L, "bargain_discount", bargain_discount);
 }
 
 // Lua API helper functions
@@ -3001,8 +3003,8 @@ int transfer_item(lua_State* ls)
 
   if (args_ok)
   {
-    string old_creature_id = lua_tostring(ls, 1);
-    string new_creature_id = lua_tostring(ls, 2);
+    string transfer_to_creature_id = lua_tostring(ls, 1);
+    string transfer_from_creature_id = lua_tostring(ls, 2);
     string item_base_id = lua_tostring(ls, 3);
     int quantity = 1;
 
@@ -3011,16 +3013,16 @@ int transfer_item(lua_State* ls)
       quantity = lua_tointeger(ls, 4);
     }
 
-    CreaturePtr transfer_creature = get_creature(old_creature_id);
-    CreaturePtr creature = get_creature(new_creature_id);
+    CreaturePtr transfer_to_creature = get_creature(transfer_to_creature_id);
+    CreaturePtr transfer_from_creature = get_creature(transfer_from_creature_id);
 
-    if (transfer_creature != nullptr && creature != nullptr)
+    if (transfer_to_creature != nullptr && transfer_from_creature != nullptr)
     {
       // Transfer the items from one inventory to the other.
       ItemManager im;
-      pair<bool, vector<ItemPtr>> items = im.remove_item_from_eq_or_inv(creature, item_base_id, quantity);
+      pair<bool, vector<ItemPtr>> items = im.remove_item_from_eq_or_inv(transfer_from_creature, item_base_id, quantity);
 
-      IInventoryPtr inv = transfer_creature->get_inventory();
+      IInventoryPtr inv = transfer_to_creature->get_inventory();
 
       for (ItemPtr item : items.second)
       {
@@ -4118,8 +4120,6 @@ int get_spellbooks(lua_State* ls)
 {
   vector<string> spellbook_ids;
 
-  int num_args = lua_gettop(ls);
-
   if (lua_gettop(ls) == 0)
   {
     Game& game = Game::instance();
@@ -4293,6 +4293,42 @@ int set_items_paid(lua_State* ls)
   }
 
   return 0;
+}
+
+int bargain_discount(lua_State* ls)
+{
+  bool got_discount = false;
+  int discount_amount = 0;
+
+  if (lua_gettop(ls) && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      BuySellCalculator bsc;
+
+      int pct_chance_bargain = bsc.calc_pct_chance_bargain(creature);
+      int discount_pct = bsc.calc_pct_discount_buy(creature);
+
+      if (RNG::percent_chance(pct_chance_bargain))
+      {
+        got_discount = true;
+        discount_amount = discount_pct;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to bargain_discount");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, got_discount);
+  lua_pushinteger(ls, discount_amount);
+
+  return 2;
 }
 
 int stop_playing_game(lua_State* ls)

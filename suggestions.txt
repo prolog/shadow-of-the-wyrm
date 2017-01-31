@@ -1,6 +1,6 @@
 Me:
 - More shopkeeper stuff:
-  - Pay/flag on confirmation on drop
+  - Pay/flag on confirmation on drop, +prem
   - Itzchak's shop should have scrolls and books too
 - Gourmand amulet
 - Names should work into combat messages, etc

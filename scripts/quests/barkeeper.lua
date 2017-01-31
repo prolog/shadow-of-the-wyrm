@@ -3,7 +3,7 @@ require('constants')
 local currency_amount = get_item_count(PLAYER_ID, CURRENCY_ID)
 
 if (currency_amount > 3) then
-  local sc_id = args["speaking_creature_id"]
+  local sc_id = args[SPEAKING_CREATURE_ID]
   local foods = {get_creature_additional_property_csv(sc_id, "BARKEEPER_FOOD")}
   local drinks = {get_creature_additional_property_csv(sc_id, "BARKEEPER_DRINK")}
   
