@@ -95,6 +95,85 @@ void ScriptEngine::set_constants(lua_State* ls)
 
   lua_exportConst(ls, CITEM_FILTER_NONE);
   lua_exportConst(ls, CITEM_FILTER_UNIDENTIFIED);
+
+  lua_exportConst(ls, CSKILL_GENERAL_ARCHERY);
+  lua_exportConst(ls, CSKILL_GENERAL_AWARENESS);
+  lua_exportConst(ls, CSKILL_GENERAL_BARGAINING);
+  lua_exportConst(ls, CSKILL_GENERAL_BEASTMASTERY);
+  lua_exportConst(ls, CSKILL_GENERAL_BLIND_FIGHTING);
+  lua_exportConst(ls, CSKILL_GENERAL_BOATING);
+  lua_exportConst(ls, CSKILL_GENERAL_BOWYER);
+  lua_exportConst(ls, CSKILL_GENERAL_BREWING);
+  lua_exportConst(ls, CSKILL_GENERAL_CARRYING);
+  lua_exportConst(ls, CSKILL_GENERAL_COMBAT);
+  lua_exportConst(ls, CSKILL_GENERAL_CRAFTING);
+  lua_exportConst(ls, CSKILL_GENERAL_DESERT_LORE);
+  lua_exportConst(ls, CSKILL_GENERAL_DETECTION);
+  lua_exportConst(ls, CSKILL_GENERAL_DISARM_TRAPS);
+  lua_exportConst(ls, CSKILL_GENERAL_DUAL_WIELD);
+  lua_exportConst(ls, CSKILL_GENERAL_DUNGEONEERING);
+  lua_exportConst(ls, CSKILL_GENERAL_ESCAPE);
+  lua_exportConst(ls, CSKILL_GENERAL_FISHING);
+  lua_exportConst(ls, CSKILL_GENERAL_FLETCHERY);
+  lua_exportConst(ls, CSKILL_GENERAL_FORAGING);
+  lua_exportConst(ls, CSKILL_GENERAL_FOREST_LORE);
+  lua_exportConst(ls, CSKILL_GENERAL_HERBALISM);
+  lua_exportConst(ls, CSKILL_GENERAL_HIDING);
+  lua_exportConst(ls, CSKILL_GENERAL_HUNTING);
+  lua_exportConst(ls, CSKILL_GENERAL_INTIMIDATION);
+  lua_exportConst(ls, CSKILL_GENERAL_JEWELER);
+  lua_exportConst(ls, CSKILL_GENERAL_JUMPING);
+  lua_exportConst(ls, CSKILL_GENERAL_LEADERSHIP);
+  lua_exportConst(ls, CSKILL_GENERAL_LITERACY);
+  lua_exportConst(ls, CSKILL_GENERAL_LORE);
+  lua_exportConst(ls, CSKILL_GENERAL_MAGIC);
+  lua_exportConst(ls, CSKILL_GENERAL_MARSH_LORE);
+  lua_exportConst(ls, CSKILL_GENERAL_MEDICINE);
+  lua_exportConst(ls, CSKILL_GENERAL_MOUNTAINEERING);
+  lua_exportConst(ls, CSKILL_GENERAL_MOUNTAIN_LORE);
+  lua_exportConst(ls, CSKILL_GENERAL_MUSIC);
+  lua_exportConst(ls, CSKILL_GENERAL_NIGHT_SIGHT);
+  lua_exportConst(ls, CSKILL_GENERAL_OCEANOGRAPHY);
+  lua_exportConst(ls, CSKILL_GENERAL_PAPERCRAFT);
+  lua_exportConst(ls, CSKILL_GENERAL_RELIGION);
+  lua_exportConst(ls, CSKILL_GENERAL_SCRIBING);
+  lua_exportConst(ls, CSKILL_GENERAL_SKINNING);
+  lua_exportConst(ls, CSKILL_GENERAL_SMITHING);
+  lua_exportConst(ls, CSKILL_GENERAL_SPELUNKING);
+  lua_exportConst(ls, CSKILL_GENERAL_STEALTH);
+  lua_exportConst(ls, CSKILL_GENERAL_SWIMMING);
+  lua_exportConst(ls, CSKILL_GENERAL_TANNING);
+  lua_exportConst(ls, CSKILL_GENERAL_THIEVERY);
+  lua_exportConst(ls, CSKILL_GENERAL_WANDCRAFT);
+  lua_exportConst(ls, CSKILL_GENERAL_WEAVING);
+
+  lua_exportConst(ls, CSKILL_MELEE_AXES);
+  lua_exportConst(ls, CSKILL_MELEE_BLUDGEONS);
+  lua_exportConst(ls, CSKILL_MELEE_DAGGERS);
+  lua_exportConst(ls, CSKILL_MELEE_EXOTIC);
+  lua_exportConst(ls, CSKILL_MELEE_LONG_BLADES);
+  lua_exportConst(ls, CSKILL_MELEE_RODS_AND_STAVES);
+  lua_exportConst(ls, CSKILL_MELEE_SHORT_BLADES);
+  lua_exportConst(ls, CSKILL_MELEE_SPEARS);
+  lua_exportConst(ls, CSKILL_MELEE_UNARMED);
+  lua_exportConst(ls, CSKILL_MELEE_WHIPS);
+
+  lua_exportConst(ls, CSKILL_RANGED_AXES);
+  lua_exportConst(ls, CSKILL_RANGED_BLADES);
+  lua_exportConst(ls, CSKILL_RANGED_BLUDGEONS);
+  lua_exportConst(ls, CSKILL_RANGED_BOWS);
+  lua_exportConst(ls, CSKILL_RANGED_CROSSBOWS);
+  lua_exportConst(ls, CSKILL_RANGED_DAGGERS);
+  lua_exportConst(ls, CSKILL_RANGED_EXOTIC);
+  lua_exportConst(ls, CSKILL_RANGED_ROCKS);
+  lua_exportConst(ls, CSKILL_RANGED_SLINGS);
+  lua_exportConst(ls, CSKILL_RANGED_SPEARS);
+
+  lua_exportConst(ls, CSKILL_MAGIC_ARCANE);
+  lua_exportConst(ls, CSKILL_MAGIC_CANTRIPS);
+  lua_exportConst(ls, CSKILL_MAGIC_DIVINE);
+  lua_exportConst(ls, CSKILL_MAGIC_MYSTIC);
+  lua_exportConst(ls, CSKILL_MAGIC_PRIMORDIAL);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

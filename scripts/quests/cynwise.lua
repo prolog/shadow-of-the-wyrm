@@ -22,7 +22,7 @@ end
 local function cynwise_sun_gem_completion_fn()
   add_message_with_pause("CYNWISE_SUNGEM_QUEST_COMPLETE_SID")
 
-  local literacy_value = get_skill_value(PLAYER_ID, 28)
+  local literacy_value = get_skill_value(PLAYER_ID, CSKILL_GENERAL_LITERACY)
 
   if (literacy_value > 0) then
     clear_and_add_message("CYNWISE_SUNGEM_QUEST_COMPLETE2_SID")
@@ -30,7 +30,7 @@ local function cynwise_sun_gem_completion_fn()
   else
     add_object_to_player_tile("identify_scroll", 2)
     literacy_value = RNG_range(3, 15)
-    set_skill_value(PLAYER_ID, 28, literacy_value)
+    set_skill_value(PLAYER_ID, CSKILL_GENERAL_LITERACY, literacy_value)
     clear_and_add_message("CYNWISE_SUNGEM_QUEST_COMPLETE_LITERACY_SID")
   end
 
@@ -66,11 +66,11 @@ end
 
 local function cynwise_magici_completion_fn()
   -- Check for Wandcraft
-  local wandcraft_val = get_skill_value(PLAYER_ID, 48)
+  local wandcraft_val = get_skill_value(PLAYER_ID, CSKILL_GENERAL_WANDCRAFT)
 
     -- Give the player some skill in Wandcraft
   if wandcraft_val < 100 then
-    set_skill_value(PLAYER_ID, 48, wandcraft_val + RNG_range(30, 40))
+    set_skill_value(PLAYER_ID, CSKILL_GENERAL_WANDCRAFT, wandcraft_val + RNG_range(30, 40))
     add_message("CYNWISE_MAGICI_QUEST_COMPLETE_WANDCRAFT_SID")
   else
     -- If the player is already loaded up on Wandcraft, Cynwise provides
@@ -111,22 +111,22 @@ end
 
 local function cynwise_wintersea_completion_fn()
   -- Does the player have Herbalism?
-  if get_skill_value(PLAYER_ID, 22) == 0 then
-    set_skill_value(PLAYER_ID, 22, RNG_range(15, 20))
+  if get_skill_value(PLAYER_ID, CSKILL_GENERAL_HERBALISM) == 0 then
+    set_skill_value(PLAYER_ID, CSKILL_GENERAL_HERBALISM, RNG_range(15, 20))
     -- Give the player some skill in Herbalism.
     add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_HERBALISM_SID")
   else
-    magic_skill_value = get_skill_value(PLAYER_ID, 31)
+    magic_skill_value = get_skill_value(PLAYER_ID, CSKILL_GENERAL_MAGIC)
     -- If the player has Herbalism, and has Magic, and has not maxed out
     -- Magic, Cynwise will teach the player.
     if (magic_skill_value > 0 and magic_skill_value < 100) then
       new_magic_value = magic_skill_value + RNG_range(15, 20)
-      set_skill_value(PLAYER_ID, 31, new_magic_value)
+      set_skill_value(PLAYER_ID, CSKILL_GENERAL_MAGIC, new_magic_value)
       add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_MAGIC_SID")
     else
       -- Has Herbalism, but doesn't have Magic: Cynwise has nothing
       -- to teach, and provides some money.
-      add_object_to_player_tile(CURRENCY_ID, 150);
+      add_object_to_player_tile(CURRENCY_ID, 400);
       add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_CURRENCY_SID")
     end
   end
