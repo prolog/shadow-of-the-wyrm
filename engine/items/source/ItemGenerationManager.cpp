@@ -15,7 +15,8 @@ ItemGenerationManager::ItemGenerationManager()
 {
   rarity_chances = { { Rarity::RARITY_COMMON,   { { Rarity::RARITY_COMMON, 100 } } },
                      { Rarity::RARITY_UNCOMMON, { { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } },
-                     { Rarity::RARITY_RARE,     { { Rarity::RARITY_RARE, 60 }, { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } } };
+                     { Rarity::RARITY_RARE,     { { Rarity::RARITY_RARE, 60 }, { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } },
+                     { Rarity::RARITY_VERY_RARE,{ { Rarity::RARITY_VERY_RARE, 40 }, { Rarity::RARITY_RARE, 80 }, { Rarity::RARITY_UNCOMMON, 90 }, { Rarity::RARITY_COMMON, 100 } } } };
 }
 
 // Generate an item generation map for the given danger level and rarity.

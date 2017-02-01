@@ -1,7 +1,8 @@
 Me:
+- When reloading, need to ensure all the creatures have their FOV maps
+  created.
 - More shopkeeper stuff:
   - Pay/flag on confirmation on drop, +prem
-  - Itzchak's shop should have scrolls and books too
 - Gourmand amulet
 - Names should work into combat messages, etc
 - Whaling's End.  Shopkeepers and shops.  More NPCs.
@@ -36,6 +37,7 @@ Me:
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
 - Cancellation effect type
+- Once a month, repop shops
 - Special rooms: beer hall, magical workshop, armory.
 - Travelling bazaars.
 - Merchants should get half off in shops.

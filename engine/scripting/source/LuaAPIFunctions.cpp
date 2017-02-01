@@ -276,6 +276,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_unpaid_amount", get_unpaid_amount);
   lua_register(L, "set_items_paid", set_items_paid);
   lua_register(L, "bargain_discount", bargain_discount);
+  lua_register(L, "get_item_type", get_item_type);
+  lua_register(L, "get_shop_id", get_shop_id);
+  lua_register(L, "get_stocked_item_types", get_stocked_item_types);
 }
 
 // Lua API helper functions
@@ -4329,6 +4332,125 @@ int bargain_discount(lua_State* ls)
   lua_pushinteger(ls, discount_amount);
 
   return 2;
+}
+
+int get_item_type(lua_State* ls)
+{
+  ItemType item_type = ItemType::ITEM_TYPE_NULL;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string item_base_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    const ItemMap items = game.get_items_ref();
+    auto i_it = items.find(item_base_id);
+
+    if (i_it != items.end())
+    {
+      ItemPtr item = i_it->second;
+
+      if (item != nullptr)
+      {
+        item_type = item->get_type();
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_item_type");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, static_cast<int>(item_type));
+  return 1;
+}
+
+int get_shop_id(lua_State* ls)
+{
+  string shop_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string shopkeeper_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
+    if (current_map != nullptr)
+    {
+      map<string, Shop> shops = current_map->get_shops();
+
+      for (const auto& s_pair : shops)
+      {
+        Shop shop = s_pair.second;
+        string shop_sk_id = shop.get_shopkeeper_id();
+
+        if (shop_sk_id == shopkeeper_id)
+        {
+          shop_id = shop.get_shop_id();
+          break;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_shop_id");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, shop_id.c_str());
+  return 1;
+}
+
+int get_stocked_item_types(lua_State* ls)
+{
+  vector<ItemType> stocked_item_types;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string shop_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
+    if (current_map != nullptr)
+    {
+      map<string, Shop> shops = current_map->get_shops();
+
+      for (const auto& s_pair : shops)
+      {
+        Shop shop = s_pair.second;
+
+        if (shop.get_shop_id() == shop_id)
+        {
+          stocked_item_types = shop.get_stocked_item_types();
+          break;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_stocked_item_types");
+    lua_error(ls);
+  }
+
+  size_t itypes_size = stocked_item_types.size();
+
+  // Create an array with n-array elements and 0 non-array elements.
+  lua_createtable(ls, static_cast<int>(itypes_size), 0);
+
+  for (uint i = 0; i < itypes_size; i++)
+  {
+    ItemType cur_itype = stocked_item_types.at(i);
+
+    lua_pushinteger(ls, static_cast<int>(cur_itype));
+    lua_rawseti(ls, -2, i + 1);
+  }
+
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)

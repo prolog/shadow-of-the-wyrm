@@ -3,6 +3,7 @@
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureProperties.hpp"
+#include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
@@ -11,6 +12,7 @@
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
 #include "RNG.hpp"
+#include "ViewMapTranslator.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -1042,6 +1044,31 @@ void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current
         // The shopkeeper is justifiably pissed!
         HostilityManager hm;
         hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id());
+      }
+    }
+  }
+}
+
+void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
+{
+  std::map<string, CreaturePtr> map_creatures = current_map->get_creatures();
+
+  for (const auto& cr_pair : map_creatures)
+  {
+    CreaturePtr current_creature = cr_pair.second;
+
+    if (current_creature)
+    {
+      Coordinate creature_coords = current_map->get_location(current_creature->get_id());
+      MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+
+      FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
+      MapPtr fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+      DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+
+      if (strategy)
+      {
+        strategy->set_fov_map(fov_map);
       }
     }
   }
