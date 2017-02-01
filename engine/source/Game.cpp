@@ -8,6 +8,7 @@
 #include "CreatureDescriber.hpp"
 #include "CreatureCoordinateCalculator.hpp"
 #include "CreatureFeatures.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "CursesProperties.hpp"
 #include "CustomAreaGenerator.hpp"
@@ -381,6 +382,12 @@ void Game::go()
     // a map, yet.  If there isn't, the game hasn't been restored, so it must be a
     // new game.
     bool reloaded_game = !ac.get_current_map_id().empty();
+
+    if (reloaded_game)
+    {
+      MapPtr current_map = get_current_map();
+      MapUtils::calculate_fov_maps_for_all_creatures(current_map);
+    }
 
     string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), !reloaded_game);
 
@@ -791,6 +798,9 @@ void Game::set_current_map(MapPtr map)
   // Make the new map the current
   current_map_id = map->get_map_id();
   map_registry.set_map(current_map_id, map);
+
+  // Do an initial calculation of all the FOV maps.
+  MapUtils::calculate_fov_maps_for_all_creatures(map);
 }
 
 // Get the current map from the map registry.

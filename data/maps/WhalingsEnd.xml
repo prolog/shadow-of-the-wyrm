@@ -61,10 +61,31 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>swabbie</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>29</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>seadog</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>41</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>whaler</ID>
 				<Coord>
 					<Row>13</Row>
 					<Col>38</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>harlot</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>39</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -79,6 +100,48 @@
 				<Coord>
 					<Row>7</Row>
 					<Col>55</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>thief</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>22</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>thief</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>29</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>thief</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>58</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>thief</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>48</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>blackguard</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>22</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>blackguard</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>56</Col>
 				</Coord>
 			</Placement>
 			<Placement>

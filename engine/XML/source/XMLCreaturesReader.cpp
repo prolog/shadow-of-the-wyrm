@@ -310,7 +310,8 @@ void XMLCreaturesReader::parse_event_scripts(const XMLNode& event_scripts_node, 
     vector<pair<string, string>> node_details = { { "DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH }, 
                                                   { "AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK },
                                                   { "ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT },
-                                                  { "DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION } };
+                                                  { "DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION },
+                                                  { "DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP } };
 
     for (const auto& details : node_details)
     {
