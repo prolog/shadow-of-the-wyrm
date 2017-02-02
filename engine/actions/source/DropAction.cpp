@@ -133,7 +133,11 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 {
   ActionCostValue action_cost_value = 0;
   TilePtr creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
+
+  // Redraw the main screen so that any interaction via scripts looks good.
   Game& game = Game::instance();
+  game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+  game.get_display()->redraw();
 
   if (item_to_drop)
   {
@@ -303,7 +307,7 @@ void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, Map
           if (RNG::percent_chance(sd.get_chance()))
           {
             DropScript ds;
-            ds.execute(game.get_script_engine_ref(), sd.get_script(), creature->get_id(), reacting_creature, new_item->get_base_id(), drop_coord);
+            ds.execute(game.get_script_engine_ref(), sd.get_script(), creature->get_id(), reacting_creature, new_item, drop_coord);
           }
         }
       }

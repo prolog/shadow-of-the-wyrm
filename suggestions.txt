@@ -1,11 +1,7 @@
 Me:
-- When reloading, need to ensure all the creatures have their FOV maps
-  created.
-- More shopkeeper stuff:
-  - Pay/flag on confirmation on drop, +prem
+- 0-value food showing up in Noah's shop
 - Gourmand amulet
 - Names should work into combat messages, etc
-- Whaling's End.  Shopkeepers and shops.  More NPCs.
 - Avoid triggering known traps with high Alertness.
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)
