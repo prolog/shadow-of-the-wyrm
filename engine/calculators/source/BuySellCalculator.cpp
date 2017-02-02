@@ -1,6 +1,20 @@
 #include "BuySellCalculator.hpp"
 
 const int BuySellCalculator::PREMIUM_DISCOUNT_DIVISOR = 2;
+const int BuySellCalculator::SALE_DIVISOR = 3;
+
+// Items sell for a third of their value.
+int BuySellCalculator::get_sale_price(ItemPtr item)
+{
+  int sale_price = 0;
+
+  if (item != nullptr)
+  {
+    sale_price = item->get_total_value() / SALE_DIVISOR;
+  }
+
+  return sale_price;
+}
 
 // The percent chance to negotiate a discount or premium is directly
 // proportional to a creature's Bargaining skill.

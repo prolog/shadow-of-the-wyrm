@@ -22,7 +22,7 @@ local function get_purchase_amount(unpaid_amount)
   local bargain, amount_pct = bargain_discount(PLAYER_ID)
 
   if bargain == true then
-    purchase_amount = purchase_amount * (1 - (amount_pct / 100))
+    purchase_amount = math.floor(purchase_amount * (1 - (amount_pct / 100)))
   end
 
   return purchase_amount

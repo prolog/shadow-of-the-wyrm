@@ -90,6 +90,7 @@ int get_player_title(lua_State* ls);
 int set_creature_current_hp(lua_State* ls);
 int set_creature_current_ap(lua_State* ls);
 int set_creature_name(lua_State* ls);
+int get_creature_name(lua_State* ls);
 int destroy_creature_equipment(lua_State* ls);
 int destroy_creature_inventory(lua_State* ls);
 int get_deity_summons(lua_State* ls);
@@ -146,9 +147,14 @@ int repop_shop(lua_State* ls);
 int get_unpaid_amount(lua_State* ls);
 int set_items_paid(lua_State* ls);
 int bargain_discount(lua_State* ls);
+int bargain_premium(lua_State* ls);
 int get_item_type(lua_State* ls);
 int get_shop_id(lua_State* ls);
 int get_stocked_item_types(lua_State* ls);
+int get_sale_price(lua_State* ls);
+int set_item_unpaid(lua_State* ls);
+int is_in_shop(lua_State* ls);
+int is_item_unpaid(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

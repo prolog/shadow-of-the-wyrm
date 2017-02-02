@@ -220,6 +220,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
   lua_register(L, "set_creature_current_ap", set_creature_current_ap);
   lua_register(L, "set_creature_name", set_creature_name);
+  lua_register(L, "get_creature_name", get_creature_name);
   lua_register(L, "destroy_creature_equipment", destroy_creature_equipment);
   lua_register(L, "destroy_creature_inventory", destroy_creature_inventory);
   lua_register(L, "get_deity_summons", get_deity_summons);
@@ -276,9 +277,14 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_unpaid_amount", get_unpaid_amount);
   lua_register(L, "set_items_paid", set_items_paid);
   lua_register(L, "bargain_discount", bargain_discount);
+  lua_register(L, "bargain_premium", bargain_premium);
   lua_register(L, "get_item_type", get_item_type);
   lua_register(L, "get_shop_id", get_shop_id);
   lua_register(L, "get_stocked_item_types", get_stocked_item_types);
+  lua_register(L, "get_sale_price", get_sale_price);
+  lua_register(L, "set_item_unpaid", set_item_unpaid);
+  lua_register(L, "is_in_shop", is_in_shop);
+  lua_register(L, "is_item_unpaid", is_item_unpaid);
 }
 
 // Lua API helper functions
@@ -496,7 +502,6 @@ int add_confirmation_message(lua_State* ls)
     string message = read_sid_and_replace_values(ls);
 
     IMessageManager& manager = MM::instance();
-    manager.clear_if_necessary();
     manager.add_new_confirmation_message(TextMessages::get_confirmation_message(message));
     confirm = player->get_decision_strategy()->get_confirmation();
 
@@ -2514,6 +2519,25 @@ int set_creature_name(lua_State* ls)
   return 1;
 }
 
+int get_creature_name(lua_State* ls)
+{
+  string creature_name;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature_name = creature->get_name();
+    }
+  }
+
+  lua_pushstring(ls, creature_name.c_str());
+  return 1;
+}
+
 int destroy_creature_equipment(lua_State* ls)
 {
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
@@ -4334,6 +4358,42 @@ int bargain_discount(lua_State* ls)
   return 2;
 }
 
+int bargain_premium(lua_State* ls)
+{
+  bool got_prem = false;
+  int prem_amount = 0;
+
+  if (lua_gettop(ls) && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      BuySellCalculator bsc;
+
+      int pct_chance_bargain = bsc.calc_pct_chance_bargain(creature);
+      int prem_pct = bsc.calc_pct_premium_sell(creature);
+
+      if (RNG::percent_chance(pct_chance_bargain))
+      {
+        got_prem = true;
+        prem_amount = prem_pct;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to bargain_premium");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, got_prem);
+  lua_pushinteger(ls, prem_amount);
+
+  return 2;
+}
+
 int get_item_type(lua_State* ls)
 {
   ItemType item_type = ItemType::ITEM_TYPE_NULL;
@@ -4450,6 +4510,144 @@ int get_stocked_item_types(lua_State* ls)
     lua_rawseti(ls, -2, i + 1);
   }
 
+  return 1;
+}
+
+int get_sale_price(lua_State* ls)
+{
+  int sale_price = 0;
+
+  if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  {
+    int drop_y = lua_tointeger(ls, 1);
+    int drop_x = lua_tointeger(ls, 2);
+    string item_id = lua_tostring(ls, 3);
+
+    MapPtr map = Game::instance().get_current_map();
+    
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(drop_y, drop_x);
+
+      if (tile != nullptr)
+      {
+        ItemPtr item = tile->get_items()->get_from_id(item_id);
+
+        BuySellCalculator bsc;
+        sale_price = bsc.get_sale_price(item);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_sale_price");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, sale_price);
+  return 1;
+}
+
+int set_item_unpaid(lua_State* ls)
+{
+  if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  {
+    int drop_y = lua_tointeger(ls, 1);
+    int drop_x = lua_tointeger(ls, 2);
+    string item_id = lua_tostring(ls, 3);
+
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(drop_y, drop_x);
+
+      if (tile != nullptr)
+      {
+        ItemPtr item = tile->get_items()->get_from_id(item_id);
+
+        if (item != nullptr)
+        {
+          item->set_unpaid(true);
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_item_unpaid");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int is_in_shop(lua_State* ls)
+{
+  bool in_shop = false;
+
+  if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  {
+    int drop_y = lua_tointeger(ls, 1);
+    int drop_x = lua_tointeger(ls, 2);
+    string shop_id = lua_tostring(ls, 3);
+
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      pair<bool, string> adjacency = MapUtils::is_in_shop_or_adjacent(map, make_pair(drop_y, drop_x));
+
+      if (adjacency.first && adjacency.second == shop_id)
+      {
+        in_shop = true;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_in_shop");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, in_shop);
+  return 1;
+}
+
+int is_item_unpaid(lua_State* ls)
+{
+  bool is_unpaid = true;
+
+  if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  {
+    int drop_y = lua_tointeger(ls, 1);
+    int drop_x = lua_tointeger(ls, 2);
+    string item_id = lua_tostring(ls, 3);
+
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(drop_y, drop_x);
+
+      if (tile != nullptr)
+      {
+        ItemPtr item = tile->get_items()->get_from_id(item_id);
+
+        if (item != nullptr)
+        {
+          is_unpaid = item->get_unpaid();
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_item_unpaid");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, is_unpaid);
   return 1;
 }
 

@@ -16,7 +16,7 @@ const string DropScript::DROP_FUNCTION_NAME = "drop";
 
 // Execute a drop script.
 // Return true if the script executed successfully, false otherwise.
-bool DropScript::execute(ScriptEngine& se, const string& drop_script, const string& dropping_creature_id, CreaturePtr reacting_creature, const string& item_base_id, const Coordinate& drop_coords)
+bool DropScript::execute(ScriptEngine& se, const string& drop_script, const string& dropping_creature_id, CreaturePtr reacting_creature, ItemPtr item, const Coordinate& drop_coords)
 {
   if (drop_script.empty())
   {
@@ -29,6 +29,8 @@ bool DropScript::execute(ScriptEngine& se, const string& drop_script, const stri
   {
     string reacting_creature_base_id;
     string reacting_creature_id;
+    string item_id;
+    string item_base_id;
 
     if (reacting_creature != nullptr)
     {
@@ -36,7 +38,13 @@ bool DropScript::execute(ScriptEngine& se, const string& drop_script, const stri
       reacting_creature_id = reacting_creature->get_id();
     }
 
-    if (reacting_creature_base_id.empty() || reacting_creature_id.empty())
+    if (item != nullptr)
+    {
+      item_id = item->get_id();
+      item_base_id = item->get_base_id();
+    }
+
+    if (reacting_creature_base_id.empty() || reacting_creature_id.empty() || (item == nullptr))
     {
       return false;
     }
@@ -48,12 +56,13 @@ bool DropScript::execute(ScriptEngine& se, const string& drop_script, const stri
     lua_pushstring(L, dropping_creature_id.c_str());
     lua_pushstring(L, reacting_creature_id.c_str());
     lua_pushstring(L, reacting_creature_base_id.c_str());
+    lua_pushstring(L, item_id.c_str());
     lua_pushstring(L, item_base_id.c_str());
     lua_pushinteger(L, drop_coords.first);
     lua_pushinteger(L, drop_coords.second);
 
     // Do the function call.  The drop function returns nothing.
-    if (lua_pcall(L, 6, 0, 0) != 0)
+    if (lua_pcall(L, 7, 0, 0) != 0)
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "DropScript::execute - error running Lua function `" + DROP_FUNCTION_NAME + "': " + l_err;
