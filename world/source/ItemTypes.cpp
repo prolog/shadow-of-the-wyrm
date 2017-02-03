@@ -79,5 +79,5 @@ ItemValues::~ItemValues()
 }
 
 const int ItemValues::DEFAULT_MIN_GENERATION_VALUE = -1;
-const int ItemValues::DEFAULT_MIN_SHOP_VALUE = 10;
+const int ItemValues::DEFAULT_MIN_SHOP_VALUE = 5;
 

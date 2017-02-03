@@ -69,6 +69,10 @@ Shadow of the Wyrm v0.6.0 "Capirola"
     Charisma, determine if you can get a reduced price on a purchase or
     a better price on a sale, and if so, by how much.
 
+- Added a shop to Isen Dun, selling food, weapons, and ammunition.
+
+- Now that money is more useful, nobles now start with more money.
+
 - More stanzas for the epic poem.
 
 - New creatures: Hrethel, whaler, scrimshander, shopkeeper, seadog,

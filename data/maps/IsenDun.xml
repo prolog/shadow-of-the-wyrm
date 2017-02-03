@@ -5,7 +5,7 @@
 	</Dimensions>
 	<LevelRange>
 		<Min>1</Min>
-		<Max>30</Max>
+		<Max>6</Max>
 	</LevelRange>
 	<MapType>1</MapType>
 	<Tiles>
@@ -32,6 +32,13 @@
 	</Tiles>
 	<InitialPlacements>
 		<Creatures>
+			<Placement>
+				<ID>shopkeeper</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>28</Col>
+				</Coord>
+			</Placement>
 			<Placement>
 				<ID>worried_mother</ID>
 				<Coord>
@@ -359,6 +366,18 @@
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
+				<Row>13</Row>
+				<Col>28</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>15</Row>
 				<Col>46</Col>
 			</Coord>
@@ -472,6 +491,23 @@
 			<WheelAndLoom/>
 		</FeaturePlacement>
 	</Features>
+	<Shops>
+		<Shop id="edmund_shop">
+			<StartCoord>
+				<Row>14</Row>
+				<Col>26</Col>
+			</StartCoord>
+			<EndCoord>
+				<Row>15</Row>
+				<Col>31</Col>
+			</EndCoord>
+			<StockedItemTypes>
+				<ItemType>1</ItemType>
+				<ItemType>10</ItemType>
+				<ItemType>11</ItemType>
+			</StockedItemTypes>
+		</Shop>
+	</Shops>
 	<Properties>
 		<Property>
 			<Name>MAP_PROPERTIES_CANNOT_DIG</Name>
