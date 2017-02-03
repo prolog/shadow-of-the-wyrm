@@ -1,5 +1,7 @@
 require('areas')
 
+local isen_dun_id = "isen_dun"
+
 -- Array containing the areas of Little Island.
 local little_island = {}
 
@@ -14,7 +16,7 @@ wintersea_keep:set_custom_map_id("wintersea_keep")
 wintersea_keep:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_WINTERSEA_KEEP")
 
 local isen_dun = Area:new(96, 96)
-isen_dun:set_custom_map_id("isen_dun")
+isen_dun:set_custom_map_id(isen_dun_id)
 isen_dun:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ISEN_DUN")
 
 local barrows = Area:new(96, 97)
@@ -41,4 +43,9 @@ end
 
 -- The game starts out on Little Island, at Isen Dun.
 map_add_location("world_map", "STARTING_LOCATION", 96, 96)
+
+-- Shop details for Isen Dun
+local shopkeeper_id = get_creature_id(15, 28, isen_dun_id)
+set_creature_name(shopkeeper_id, "Edmund", isen_dun_id)
+repop_shop("edmund_shop", isen_dun_id)
 

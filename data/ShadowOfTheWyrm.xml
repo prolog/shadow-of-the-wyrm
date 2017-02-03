@@ -2980,8 +2980,8 @@
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>
-								<NumDice>30</NumDice>
-								<NumSides>10</NumSides>
+								<NumDice>100</NumDice>
+								<NumSides>7</NumSides>
 							</Random>
 						</Quantity>
 					</InitialItem>
