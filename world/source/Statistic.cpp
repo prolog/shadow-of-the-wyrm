@@ -4,15 +4,13 @@
 using namespace std;
 
 Statistic::Statistic()
+: base(1), current(1), max(-1), marks(0)
 {
-  base = 1;
-  current = 1;
 }
 
 Statistic::Statistic(const int new_base_and_current)
+: base(new_base_and_current), current(new_base_and_current), max(-1), marks(0)
 {
-  base = new_base_and_current;
-  current = base;
 }
 
 Statistic& Statistic::operator=(const int& rhs)
@@ -27,6 +25,7 @@ bool Statistic::operator==(const Statistic& stat) const
 
   result = result && (base == stat.base);
   result = result && (current == stat.current);
+  result = result && (max == stat.max);
   result = result && (marks == stat.marks);
 
   return result;
@@ -34,17 +33,20 @@ bool Statistic::operator==(const Statistic& stat) const
 
 void Statistic::set_base_current(int new_base_and_current)
 {
-  base = new_base_and_current;
-  current = new_base_and_current;
+  set_base(new_base_and_current);
+  set_current(new_base_and_current);
 }
 
 // Get and set the base value of the statistic.  The base value can't
 // go below 0, though the current can.
 void Statistic::set_base(int new_base)
 {
-  if (new_base > 0)
+  if (max == -1 || new_base <= max)
   {
-    base = new_base;
+    if (new_base > 0)
+    {
+      base = new_base;
+    }
   }
 }
 
@@ -56,12 +58,25 @@ int Statistic::get_base() const
 // Get and set the current value of the statistic.
 void Statistic::set_current(int new_current)
 {
-	current = new_current;
+  if (max == -1 || new_current <= max)
+  {
+    current = new_current;
+  }
 }
 
 int Statistic::get_current() const
 {
 	return current;
+}
+
+void Statistic::set_max(const int new_max)
+{
+  max = new_max;
+}
+
+int Statistic::get_max() const
+{
+  return max;
 }
 
 int Statistic::get_lowest() const
@@ -106,6 +121,7 @@ bool Statistic::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, base);
   Serialize::write_int(stream, current);
+  Serialize::write_int(stream, max);
   marks.serialize(stream);
 
   return true;
@@ -115,6 +131,7 @@ bool Statistic::deserialize(istream& stream)
 {
   Serialize::read_int(stream, base);
   Serialize::read_int(stream, current);
+  Serialize::read_int(stream, max);
   marks.deserialize(stream);
 
   return false;

@@ -31,7 +31,7 @@ class Weapon : public Wearable
     virtual void set_requires_ranged_weapon(const bool new_requires_ranged_weapon);
     virtual bool get_requires_ranged_weapon() const;
     
-    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) override;
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) const override;
 
     std::string get_synopsis() const override;
 

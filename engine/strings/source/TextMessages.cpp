@@ -31,6 +31,7 @@ const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER = "ITEM_PICK_U
 const string TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_DESCRIPTION_MESSAGE";
 const string TextMessages::CURRENCY_MESSAGE_SINGLE            = "CURRENCY_MESSAGE_SINGLE";
 const string TextMessages::CURRENCY_MESSAGE_MULTIPLE          = "CURRENCY_MESSAGE_MULTIPLE";
+const string TextMessages::CURRENCY_OWING_MESSAGE             = "CURRENCY_OWING_MESSAGE";
 const string TextMessages::NAME_TITLE_MESSAGE                 = "NAME_TITLE_MESSAGE";
 const string TextMessages::EXPERIENCE_SYNOPSIS_MESSAGE        = "EXPERIENCE_SYNOPSIS_MESSAGE";
 const string TextMessages::EXPERIENCE_SYNOPSIS_MAX_MESSAGE    = "EXPERIENCE_SYNOPSIS_MAX_MESSAGE";
@@ -365,6 +366,13 @@ string TextMessages::get_currency_amount_message(const uint currency_amount)
     boost::replace_first(currency_message, "%s", std::to_string(currency_amount));
   }
   
+  return currency_message;
+}
+
+string TextMessages::get_unpaid_amount_message(const uint unpaid_amount)
+{
+  string currency_message = StringTable::get(CURRENCY_OWING_MESSAGE);
+  boost::replace_first(currency_message, "%s", to_string(unpaid_amount));
   return currency_message;
 }
 

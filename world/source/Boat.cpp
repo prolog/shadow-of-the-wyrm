@@ -12,6 +12,11 @@ Boat::~Boat()
 {
 }
 
+bool Boat::additional_item_attributes_match(ItemPtr item) const
+{
+  return true;
+}
+
 Item* Boat::clone()
 {
   return new Boat(*this);

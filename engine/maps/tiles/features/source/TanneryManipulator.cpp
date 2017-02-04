@@ -15,11 +15,11 @@ using namespace std;
 
 TanneryManipulator::TanneryManipulator(FeaturePtr feature)
 : IFeatureManipulator(feature),
-skin_items({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_hide_armour"}, {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_hide_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_FEET, "_hide_boots"} })
+skin_items({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_hide_armour"}, {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_hide_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_FEET, "_hide_boots"}, { EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON, "_hide_sling" } })
 {
 }
 
-void TanneryManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
+void TanneryManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
 {
   if (creature && creature->get_is_player())
   {
@@ -74,8 +74,8 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
           {
             EquipmentWornLocation slot = static_cast<EquipmentWornLocation>(selection);
 
-            // Create the armour.
-            ItemPtr armour = create_hide_armour(creature, selected_skin, slot);
+            // Create the armour or sling.
+            ItemPtr armour = create_hide_equipment(creature, selected_skin, slot);
 
             if (armour)
             {
@@ -108,10 +108,11 @@ bool TanneryManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemP
   return false;
 }
 
-// Create an appropriate piece of hide armour from the given skin.
-ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr selected_skin, const EquipmentWornLocation slot)
+// Create an appropriate piece of hide equipment from the given skin for the
+// given slot.
+ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr selected_skin, const EquipmentWornLocation slot)
 {
-  ItemPtr armour;
+  ItemPtr item;
 
   if (creature && selected_skin)
   {
@@ -123,8 +124,8 @@ ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr sel
       string item_id = slot_item_it->second;
 
       // Create the item.
-      armour = ItemManager::create_item(item_id);
-      WearablePtr wearable = dynamic_pointer_cast<Wearable>(armour);
+      item = ItemManager::create_item(item_id);
+      WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
 
       // Set the skin details: creature description, resistances, etc.
       // Additional evade and soak may be added if the tanner is skilled, and
@@ -142,16 +143,16 @@ ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr sel
         wearable->set_evade(hide_evade);
         wearable->set_soak(hide_soak);
 
-        armour->set_resistances(tc.calculate_item_resistances(creature, selected_skin->get_resistances()));
-        armour->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));
-    		armour->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID));
+        item->set_resistances(tc.calculate_item_resistances(creature, selected_skin->get_resistances()));
+        item->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));
+    		item->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID));
 
         creature->get_skills().mark(SkillType::SKILL_GENERAL_TANNING);
 	    }
     }
   }
 
-  return armour;
+  return item;
 }
 
 // Add a message that the armour was created successfully.

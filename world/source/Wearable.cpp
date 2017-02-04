@@ -132,7 +132,7 @@ void Wearable::do_improve_item(const int points)
   }
 }
 
-bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i)
+bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i) const
 {
   bool match = (i != nullptr);
   WearablePtr i_wear = dynamic_pointer_cast<Wearable>(i);

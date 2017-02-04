@@ -40,7 +40,16 @@ Creature::Creature()
   
   // Base speed is 50.  This needs to be set or slimes get 25 actions to your 1 (23 or 24 if you're quick!).
   set_speed(50);
-  
+
+  // Ensure maximums are set for the primary statistics.
+  strength.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  dexterity.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  agility.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  health.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  intelligence.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  willpower.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+  charisma.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
+
   Damage dam(1, 2, 0, DamageType::DAMAGE_TYPE_POUND, {}, false, false, false, false, false, false, 0, {});
   set_base_damage(dam);
 
@@ -466,6 +475,7 @@ string Creature::get_class_id() const
 void Creature::set_strength(const Statistic& new_strength)
 {
   strength = new_strength;
+  strength.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic& Creature::get_statistic_ref(const PrimaryStatisticType pr_st)
@@ -510,6 +520,7 @@ Statistic& Creature::get_strength_ref()
 void Creature::set_dexterity(const Statistic& new_dexterity)
 {
   dexterity = new_dexterity;
+  dexterity.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_dexterity() const
@@ -525,6 +536,7 @@ Statistic& Creature::get_dexterity_ref()
 void Creature::set_agility(const Statistic& new_agility)
 {
   agility = new_agility;
+  agility.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_agility() const
@@ -540,6 +552,7 @@ Statistic& Creature::get_agility_ref()
 void Creature::set_health(const Statistic& new_health)
 {
   health = new_health;
+  health.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_health() const
@@ -555,6 +568,7 @@ Statistic& Creature::get_health_ref()
 void Creature::set_intelligence(const Statistic& new_intelligence)
 {
   intelligence = new_intelligence;
+  intelligence.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_intelligence() const
@@ -570,6 +584,7 @@ Statistic& Creature::get_intelligence_ref()
 void Creature::set_willpower(const Statistic& new_willpower)
 {
   willpower = new_willpower;
+  willpower.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_willpower() const
@@ -585,6 +600,7 @@ Statistic& Creature::get_willpower_ref()
 void Creature::set_charisma(const Statistic& new_charisma)
 {
   charisma = new_charisma;
+  charisma.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Creature::get_charisma() const
@@ -746,10 +762,94 @@ bool Creature::has_items() const
   return false;
 }
 
+bool Creature::has_unpaid_items() const
+{
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = equipment.get_item(ewl);
+    if (item != nullptr && item->get_unpaid())
+    {
+      return true;
+    }
+  }
+
+  if (inventory != nullptr)
+  {
+    const list<ItemPtr> raw_items = inventory->get_items_cref();
+    
+    for (ItemPtr item : raw_items)
+    {
+      if (item && item->get_unpaid())
+      {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 uint Creature::count_items() const
 {
   uint count = equipment.count_items() + inventory->count_items();
   return count;
+}
+
+uint Creature::get_unpaid_amount() const
+{
+  uint total = 0;
+
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = equipment.get_item(ewl);
+    if (item != nullptr && item->get_unpaid())
+    {
+      total += item->get_total_value();
+    }
+  }
+
+  if (inventory != nullptr)
+  {
+    const list<ItemPtr> raw_items = inventory->get_items_cref();
+
+    for (ItemPtr item : raw_items)
+    {
+      if (item && item->get_unpaid())
+      {
+        total += item->get_total_value();
+      }
+    }
+  }
+
+  return total;
+}
+
+void Creature::set_items_paid()
+{
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = equipment.get_item(ewl);
+    if (item != nullptr)
+    {
+      item->set_unpaid(false);
+    }
+  }
+
+  if (inventory != nullptr)
+  {
+    const list<ItemPtr> raw_items = inventory->get_items_cref();
+
+    for (ItemPtr item : raw_items)
+    {
+      if (item)
+      {
+        item->set_unpaid(false);
+      }
+    }
+  }
 }
 
 void Creature::set_hit_points(const Statistic& new_hit_points)
@@ -1216,6 +1316,33 @@ void Creature::set_modifiers(const map<double, vector<pair<string, Modifier>>>& 
   modifiers = new_modifiers;
 }
 
+// Get only the active modifiers.  Active modifiers are those
+// not marked for deletion.
+map<double, vector<pair<string, Modifier>>> Creature::get_active_modifiers() const
+{
+  map<double, vector<pair<string, Modifier>>> active_modifiers;
+
+  for (const auto& modifiers_pair : modifiers)
+  {
+    vector<pair<string, Modifier>> mod_vec;
+
+    for (const auto& mod_pair : modifiers_pair.second)
+    {
+      if (mod_pair.second.get_delete() == false)
+      {
+        mod_vec.push_back(mod_pair);
+      }
+    }
+
+    if (!mod_vec.empty())
+    {
+      active_modifiers[modifiers_pair.first] = mod_vec;
+    }
+  }
+
+  return active_modifiers;
+}
+
 map<double, vector<pair<string, Modifier>>>& Creature::get_modifiers_ref()
 {
   return modifiers;
@@ -1252,18 +1379,18 @@ bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
 {
-  // VS 2012
+  // VS 2015
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 1088, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1184, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 992, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1080, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
-  // Works for gcc in debug
-  static_assert(sizeof(*this) == 1936, "Unexpected sizeof Creature.");
+  // Works for gcc in release
+  static_assert(sizeof(*this) == 2120, "Unexpected sizeof Creature.");
   #endif
 }
 

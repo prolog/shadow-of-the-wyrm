@@ -20,6 +20,7 @@
 #include "Metadata.hpp"
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "Settings.hpp"
+#include "Setting.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 #include "UnhandledExceptions.hpp"
@@ -118,7 +119,7 @@ int main(int argc, char* argv[])
       // JCD FIXME: Refactor.  This id should eventually be in a .rc
       // type file, so that each individual person can set their own
       // settings...
-      string display_id = settings.get_setting("display");
+      string display_id = settings.get_setting(Setting::DISPLAY);
       pair<DisplayPtr, ControllerPtr> display_details = DisplayFactory::create_display_details(display_id);
       DisplayPtr display = display_details.first;
       ControllerPtr controller = display_details.second;
@@ -207,7 +208,7 @@ bool check_write_permissions()
 
 void remove_old_logfiles(const Settings& settings)
 {
-  int days_old = String::to_int(settings.get_setting("remove_logs_days_old"));
+  int days_old = String::to_int(settings.get_setting(Setting::REMOVE_LOGS_DAYS_OLD));
 
   if (days_old > -1)
   {

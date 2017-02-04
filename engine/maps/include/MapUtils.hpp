@@ -42,6 +42,8 @@ class MapUtils
     static bool is_blocking_feature_present(TilePtr tile);
     static bool is_creature_present(TilePtr tile);
     
+    static std::pair<bool, std::string> is_in_shop_or_adjacent(MapPtr map, const Coordinate& c);
+
     static bool does_area_around_tile_allow_creature_generation(MapPtr map, const Coordinate& c);
     static bool is_tile_available_for_creature(CreaturePtr creature, TilePtr tile);
     static bool is_tile_available_for_item(TilePtr tile);
@@ -76,6 +78,10 @@ class MapUtils
     static std::multimap<int, std::pair<std::string, Coordinate>> create_distance_map(CreaturePtr creature, MapPtr map, bool hostile_only);
 
     static std::map<TileType, std::vector<TilePtr>> partition_tiles(MapPtr map);
+
+    static void anger_shopkeeper_if_necessary(const Coordinate& current_coords, MapPtr current_map, CreaturePtr anger_creature);
+
+    static void calculate_fov_maps_for_all_creatures(MapPtr map);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

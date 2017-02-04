@@ -3,10 +3,12 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DigAction.hpp"
+#include "HostilityManager.hpp"
 #include "ItemBreakageCalculator.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemManager.hpp"
 #include "MapProperties.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "StatisticsMarker.hpp"
@@ -76,6 +78,10 @@ ActionCostValue DigAction::dig_through(CreaturePtr creature, ItemPtr dig_item, M
   {
     bool added_msg = add_cannot_dig_message_if_necessary(creature, map);
     if (added_msg) return acv;
+
+    // If we're digging in a shop, that is not appreciated, not at all.
+    Coordinate dig_coord = CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), d);
+    MapUtils::anger_shopkeeper_if_necessary(dig_coord, map, creature);
 
     // Do the actual decomposition, then re-add the tile, check for dig item
     // breakage, and add an appropriate message.

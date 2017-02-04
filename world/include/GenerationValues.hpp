@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <string>
 #include "common.hpp"
 #include "ISerializable.hpp"
 #include "RarityTypes.hpp"
@@ -28,6 +29,12 @@ class GenerationValues : public ISerializable
     void set_rarity(const Rarity new_rarity);
     Rarity get_rarity() const;
 
+    void set_property(const std::string& key, const std::string& val);
+    void set_properties(const std::map<std::string, std::string>& new_properties);
+    std::string get_property(const std::string& key) const;
+    std::map<std::string, std::string> get_properties() const;
+    std::map<std::string, std::string>& get_properties_ref();
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
@@ -44,6 +51,10 @@ class GenerationValues : public ISerializable
 
     // The more rare something is, the less chance of it getting generated in a given spawn.
     Rarity rarity;
+
+    // Any additional properties that need to be set that aren't general enough
+    // to apply to both creatures and items.
+    std::map<std::string, std::string> properties;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

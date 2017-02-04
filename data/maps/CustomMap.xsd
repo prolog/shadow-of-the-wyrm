@@ -19,6 +19,7 @@
 				<xs:element name="RandomPlacements" type="tns:RandomPlacements" minOccurs="0"/>
 				<xs:element name="Exits" type="tns:Exits" minOccurs="0"/>
 				<xs:element name="Features" type="tns:Features" minOccurs="0"/>
+				<xs:element name="Shops" type="tns:Shops" minOccurs="0"/>
 				<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="id" type="xs:string" use="required"/>
@@ -104,6 +105,33 @@
 			<xs:element name="Min" type="xs:integer"/>
 			<xs:element name="Max" type="xs:integer"/>
 			<xs:element name="IDList" type="tns:IDList"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Shops">
+		<xs:annotation>
+			<xs:documentation>Contains locations and identifiers for any shops in the map.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Shop" type="tns:Shop" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Shop">
+		<xs:annotation>
+			<xs:documentation>Contains details about a particular shop on the map</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<!-- Shopkeeper ID is generally not known until the creature is generated.
+			     The Lua scripts will look up the ID and set it. -->
+			<xs:element name="ShopkeeperID" type="xs:string" minOccurs="0"/>
+			<xs:element name="StartCoord" type="tns:Coord"/>
+			<xs:element name="EndCoord" type="tns:Coord"/>
+			<xs:element name="StockedItemTypes" type="tns:StockedItemType"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="StockedItemType">
+		<xs:sequence>
+			<xs:element name="ItemType" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Exits">

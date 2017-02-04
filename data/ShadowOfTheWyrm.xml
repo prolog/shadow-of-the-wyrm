@@ -2184,9 +2184,6 @@
 					</InitialItem>
 					<InitialItem>
 						<ID>trail_ration</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>healing_potion</ID>
@@ -2199,15 +2196,9 @@
 					</InitialItem>
 					<InitialItem>
 						<ID>identify_scroll</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>enchanting_scroll</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>_currency</ID>
@@ -2869,9 +2860,6 @@
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 						<Random>
 							<ID>lute</ID>
 							<ID>fife</ID>
@@ -2992,8 +2980,8 @@
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>
-								<NumDice>30</NumDice>
-								<NumSides>10</NumSides>
+								<NumDice>100</NumDice>
+								<NumSides>7</NumSides>
 							</Random>
 						</Quantity>
 					</InitialItem>
@@ -3094,18 +3082,12 @@
 						<ID>lituus</ID>
 					</InitialItem>
 					<InitialItem>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 						<Random>
 							<ID>poison_spellbook</ID>
 							<ID>blind_spellbook</ID>
 						</Random>
 					</InitialItem>
 					<InitialItem>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 						<Random>
 							<ID>aim_spellbook</ID>
 							<ID>haze_spellbook</ID>
@@ -3124,6 +3106,7 @@
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
 			<LevelScript>level/oracle.lua</LevelScript>
+			<KillScript>kill/oracle.lua</KillScript>
 		</Class>
 		<Class id="pilgrim">
 			<UserPlayable>1</UserPlayable>
@@ -3221,9 +3204,6 @@
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 						<Random>
 							<ID>smite_spellbook</ID>
 							<ID>healing_word_spellbook</ID>
@@ -3329,9 +3309,6 @@
 					</InitialItem>
 					<InitialItem>
 						<ID>brass_knuckles</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>_currency</ID>
@@ -3456,15 +3433,9 @@
 					</InitialItem>
 					<InitialItem>
 						<ID>dagger</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>_fishing_rod</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>_currency</ID>
@@ -3565,9 +3536,6 @@
 				</Feet>
 				<InitialInventory>
 					<InitialItem>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 						<Random>
 							<ID>wreath_of_fire_spellbook</ID>
 							<ID>blind_spellbook</ID>
@@ -3689,9 +3657,6 @@
 					</InitialItem>
 					<InitialItem>
 						<ID>_fishing_rod</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>coracle</ID>
@@ -3907,9 +3872,6 @@
 					</InitialItem>
 					<InitialItem>
 						<ID>_iron_ingot</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>_currency</ID>
@@ -3922,9 +3884,6 @@
 					</InitialItem>
 					<InitialItem>
 						<ID>pick_axe</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 						<Races>
 							<Race>
 								<RaceID>06_dwarf</RaceID>
@@ -4464,9 +4423,6 @@
 				<InitialInventory>
 					<InitialItem>
 						<ID>wreath_of_fire_spellbook</ID>
-						<Quantity>
-							<Amount>1</Amount>
-						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>food_ration</ID>
@@ -6707,6 +6663,7 @@
 				<Colour>7</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
 					<TileType>1</TileType>
@@ -6755,6 +6712,7 @@
 				<Colour>8</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
 					<TileType>1</TileType>
@@ -7982,6 +7940,7 @@
 				<Colour>4</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<DangerLevel>13</DangerLevel>
 				<Rarity>0</Rarity>
@@ -10776,6 +10735,7 @@
 				<Colour>11</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<DangerLevel>20</DangerLevel>
 				<Rarity>0</Rarity>
@@ -18171,6 +18131,7 @@
 				<Colour>12</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<DangerLevel>17</DangerLevel>
 				<Rarity>0</Rarity>
@@ -19823,9 +19784,6 @@
 					<InitialInventory>
 						<InitialItem>
 							<ID>cosmos_stone</ID>
-							<Quantity>
-								<Amount>1</Amount>
-							</Quantity>
 						</InitialItem>
 					</InitialInventory>
 				</InitialEquipmentAndInventory>
@@ -19964,6 +19922,7 @@
 				<Colour>6</Colour>
 			</Text>
 			<CreatureGeneration>
+				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
@@ -20331,6 +20290,282 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="whaler">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>WHALER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WHALER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WHALER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WHALER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="scrimshander">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SCRIMSHANDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SCRIMSHANDER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SCRIMSHANDER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SCRIMSHANDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="shopkeeper">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SHOPKEEPER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SHOPKEEPER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SHOPKEEPER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SHOPKEEPER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Shopkeeper>1</Shopkeeper>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>45</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>4000</Exp>
+				<InitialModifiers>
+					<StrengthModifier>80</StrengthModifier>
+				</InitialModifiers>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>lunch</ID>
+						</InitialItem>
+						<InitialItem>
+							<ID>_currency</ID>
+							<Quantity>
+								<Amount>3000</Amount>
+							</Quantity>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>0</Type>
+				<StatusAilments>
+					<Status>_poison</Status>
+					<Status>_slow</Status>
+					<Status>_stone</Status>
+				</StatusAilments>
+			</Damage>
+			<Speed>25</Speed>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/shopkeeper.lua</Script>
+				</ChatScript>
+				<DropScript>
+					<Script>drop/shopkeeper.lua</Script>
+					<Chance>100</Chance>
+				</DropScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="swabbie">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SWABBIE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SWABBIE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SWABBIE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SWABBIE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>s</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>0</Type>
+			</Damage>
+		</Creature>
+		<Creature id="seadog">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SEADOG_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SEADOG_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SEADOG_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SEADOG_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>s</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>12</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>12</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>100</Exp>
+			</CreatureGeneration>
+			<Level>12</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>24</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
+		<Creature id="harlot">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>HARLOT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HARLOT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HARLOT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HARLOT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="hrethel">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>HRETHEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HRETHEL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HRETHEL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HRETHEL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>16</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>110</Exp>
+			</CreatureGeneration>
+			<Level>16</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>32</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Evade>7</Evade>
+			<Soak>4</Soak>
+			<Speed>42</Speed>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/hrethel.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>a_01_wreath_of_fire</SpellID>
+					<Castings>10</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_06_cross_of_flame</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
 		<Creature id="maisy">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>MAISY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -20510,7 +20745,6 @@
 				<Type>1</Type>
 			</Damage>
 			<Evade>3</Evade>
-			<Soak>0</Soak>
 		</Creature>
 		<Creature id="layperson">
 			<RaceID>01_human</RaceID>
@@ -20546,7 +20780,6 @@
 				<Type>7</Type>
 			</Damage>
 			<Evade>3</Evade>
-			<Soak>0</Soak>
 		</Creature>
 		<Creature id="devotee">
 			<RaceID>01_human</RaceID>
@@ -20616,7 +20849,6 @@
 				<Type>7</Type>
 			</Damage>
 			<Evade>3</Evade>
-			<Soak>0</Soak>
 		</Creature>
 		<Creature id="apostle">
 			<RaceID>01_human</RaceID>
@@ -21037,7 +21269,6 @@
 				<Type>1</Type>
 			</Damage>
 			<Evade>7</Evade>
-			<Soak>0</Soak>
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/hild.lua</Script>
@@ -25259,7 +25490,6 @@
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>7</DangerLevel>
-				<Rarity>1</Rarity>
 				<Properties>
 					<Property>
 						<Name>brandable</Name>
@@ -26494,7 +26724,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Slash>0.05</Slash>
 					<Pierce>0.10</Pierce>
@@ -27985,7 +28214,6 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<Properties>
 					<Property>
 						<Name>brandable</Name>
@@ -28013,7 +28241,6 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<Properties>
 					<Property>
 						<Name>brandable</Name>
@@ -28797,6 +29024,27 @@
 			</Weapon>
 		</Weapons>
 		<RangedWeapons>
+			<Weapon id="_hide_sling">
+				<DescriptionSID>HIDE_SLING_SID</DescriptionSID>
+				<UsageDescriptionSID>HIDE_SLING_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>9</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2007</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>2</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="sling">
 				<DescriptionSID>SLING_SID</DescriptionSID>
 				<UsageDescriptionSID>SLING_USAGE_SID</UsageDescriptionSID>
@@ -29076,7 +29324,7 @@
 			<Missile id="arrow">
 				<DescriptionSID>ARROW_SID</DescriptionSID>
 				<UsageDescriptionSID>ARROW_USAGE_SID</UsageDescriptionSID>
-				<Value>3</Value>
+				<Value>5</Value>
 				<Weight>
 					<Pounds>0</Pounds>
 					<Ounces>9</Ounces>
@@ -29088,12 +29336,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Properties>
-					<Property>
-						<Name>brandable</Name>
-						<Value>1</Value>
-					</Property>
-				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -29108,7 +29350,7 @@
 			<Missile id="avernal_arrow">
 				<DescriptionSID>AVERNAL_ARROW_SID</DescriptionSID>
 				<UsageDescriptionSID>AVERNAL_ARROW_USAGE_SID</UsageDescriptionSID>
-				<Value>30</Value>
+				<Value>15</Value>
 				<Weight>
 					<Pounds>0</Pounds>
 					<Ounces>9</Ounces>
@@ -29146,12 +29388,6 @@
 					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Properties>
-					<Property>
-						<Name>brandable</Name>
-						<Value>1</Value>
-					</Property>
-				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -29166,7 +29402,7 @@
 			<Missile id="javelin">
 				<DescriptionSID>JAVELIN_SID</DescriptionSID>
 				<UsageDescriptionSID>JAVELIN_USAGE_SID</UsageDescriptionSID>
-				<Value>40</Value>
+				<Value>10</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -29184,7 +29420,7 @@
 				<Difficulty>46</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
-					<NumDice>2</NumDice>
+					<NumDice>3</NumDice>
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
@@ -29192,7 +29428,7 @@
 			<Missile id="barbed_spear">
 				<DescriptionSID>BARBED_SPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>BARBED_SPEAR_USAGE_SID</UsageDescriptionSID>
-				<Value>45</Value>
+				<Value>20</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -29218,7 +29454,7 @@
 			<Missile id="winged_javelin">
 				<DescriptionSID>WINGED_JAVELIN_SID</DescriptionSID>
 				<UsageDescriptionSID>WINGED_JAVELIN_USAGE_SID</UsageDescriptionSID>
-				<Value>50</Value>
+				<Value>30</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -29236,7 +29472,7 @@
 				<Difficulty>46</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
-					<NumDice>6</NumDice>
+					<NumDice>7</NumDice>
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
@@ -29244,7 +29480,7 @@
 			<Missile id="throwing_club">
 				<DescriptionSID>THROWING_CLUB_SID</DescriptionSID>
 				<UsageDescriptionSID>THROWING_CLUB_USAGE_SID</UsageDescriptionSID>
-				<Value>20</Value>
+				<Value>8</Value>
 				<Weight>
 					<Pounds>6</Pounds>
 				</Weight>
@@ -29310,7 +29546,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1150</Nutrition>
+				<Nutrition>1950</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="_intact_skeleton">
@@ -29754,7 +29990,7 @@
 			<Food id="food_ration">
 				<DescriptionSID>FOOD_RATION_SID</DescriptionSID>
 				<UsageDescriptionSID>FOOD_RATION_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>12</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -29767,6 +30003,24 @@
 				</TextDetails>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>1440</Nutrition>
+				<FoodType>1</FoodType>
+			</Food>
+			<Food id="lunch">
+				<DescriptionSID>LUNCH_SID</DescriptionSID>
+				<UsageDescriptionSID>LUNCH_USAGE_SID</UsageDescriptionSID>
+				<Value>5</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>				
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>1001</Nutrition>
 				<FoodType>1</FoodType>
 			</Food>
 			<Food id="_trout">
@@ -29802,7 +30056,7 @@
 					<Colour>7</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1050</Nutrition>
+				<Nutrition>990</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="_pike">
@@ -29838,7 +30092,7 @@
 					<Colour>7</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1120</Nutrition>
+				<Nutrition>930</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="_tuna">
@@ -29856,7 +30110,7 @@
 					<Colour>7</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1590</Nutrition>
+				<Nutrition>900</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="_cod">
@@ -29874,13 +30128,13 @@
 					<Colour>7</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1000</Nutrition>
+				<Nutrition>875</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
 			<Food id="trail_ration">
 				<DescriptionSID>TRAIL_RATION_SID</DescriptionSID>
 				<UsageDescriptionSID>TRAIL_RATION_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>20</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 					<Ounces>8</Ounces>
@@ -29931,7 +30185,6 @@
 					<Colour>3</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>1700</Nutrition>	
 				<FoodType>2</FoodType>
 			</Food>
@@ -30195,7 +30448,7 @@
 			<Potion id="dram_gin">
 				<DescriptionSID>GIN_SID</DescriptionSID>
 				<UsageDescriptionSID>GIN_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>5</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -30214,7 +30467,7 @@
 			<Potion id="dram_mead">
 				<DescriptionSID>MEAD_SID</DescriptionSID>
 				<UsageDescriptionSID>MEAD_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>6</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -30233,7 +30486,7 @@
 			<Potion id="dram_whisky">
 				<DescriptionSID>WHISKY_SID</DescriptionSID>
 				<UsageDescriptionSID>WHISKY_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>8</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -30252,7 +30505,7 @@
 			<Potion id="gnomish_stout">
 				<DescriptionSID>GNOMISH_STOUT_SID</DescriptionSID>
 				<UsageDescriptionSID>GNOMISH_STOUT_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>2</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -30271,7 +30524,7 @@
 			<Potion id="fortified_dwarven_wine">
 				<DescriptionSID>FORTIFIED_DWARVEN_WINE_SID</DescriptionSID>
 				<UsageDescriptionSID>FORTIFIED_DWARVEN_WINE_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>3</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -30290,7 +30543,7 @@
 			<Potion id="elven_brandy">
 				<DescriptionSID>ELVEN_BRANDY_SID</DescriptionSID>
 				<UsageDescriptionSID>ELVEN_BRANDY_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>12</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -30309,7 +30562,7 @@
 			<Potion id="goblin_moonshine">
 				<DescriptionSID>GOBLIN_MOONSHINE_SID</DescriptionSID>
 				<UsageDescriptionSID>GOBLIN_MOONSHINE_USAGE_SID</UsageDescriptionSID>
-				<Value>0</Value>
+				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>

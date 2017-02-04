@@ -26,7 +26,10 @@ class DecisionStrategy : public ISerializable
     ThreatRatings& get_threats_ref();
     ThreatRatings  get_threats() const;
 
-    void set_fov_map(std::shared_ptr<Map> new_fov_map);
+    // Overridden because in some cases, creatures will want to do things based
+    // on the content of the newly-set map.  For instance, shopkeepers will get
+    // angry at creatures carrying unpaid merchandise.
+    virtual void set_fov_map(std::shared_ptr<Map> new_fov_map);
     std::shared_ptr<Map> get_fov_map();
 
     virtual ControllerPtr get_controller();

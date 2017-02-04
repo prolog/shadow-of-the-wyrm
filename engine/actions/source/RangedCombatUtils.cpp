@@ -47,14 +47,25 @@ vector<Coordinate> RangedCombatUtils::get_actual_coordinates_given_missile_path(
 
       if (tile_creature != nullptr)
       {
-        // There's a creature here - use this tile for targetting/dropping ammo,
-        // if the corresponding check fails.
-        pct_chance_fire_through = ctnc->calculate_pct_chance_pass_through_untargetted_square(firing_creature, tile_creature);
-
-        if (!RNG::percent_chance(pct_chance_fire_through))
+        // If we're at the target coordinates with the creature present,
+        // always add the coordinates to the flight path.
+        if (c == target_coords)
         {
           actual_coordinates.push_back(c);
-          break;
+        }
+        else
+        {
+          // There's a creature here, and it's not the creature being
+          // targetted - it's an intermediate creature on the flight path.
+          // Use this tile for targetting/dropping ammo, if the corresponding 
+          // pass-through check fails.
+          pct_chance_fire_through = ctnc->calculate_pct_chance_pass_through_untargetted_square(firing_creature, tile_creature);
+
+          if (!RNG::percent_chance(pct_chance_fire_through))
+          {
+            actual_coordinates.push_back(c);
+            break;
+          }
         }
       }
     }

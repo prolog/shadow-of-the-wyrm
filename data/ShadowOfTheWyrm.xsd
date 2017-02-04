@@ -78,6 +78,9 @@
 			<xs:element name="Effect" type="tns:EffectType"/>
 			<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 		</xs:sequence>
+		<!-- Note: the spell ID should not begin with an underscore, or else
+			 conflicts may emerge with effect removal for status 
+			 identifiers. -->
 		<xs:attribute name="id" type="tns:Identifier"/>
 	</xs:complexType>
 </xs:element>
@@ -287,6 +290,7 @@
 			<!-- Most creatures don't use spells, so this is optional. -->
 			<xs:element name="AP" type="tns:Dice" minOccurs="0"/>
 			<xs:element name="Exp" type="xs:unsignedInt"/>
+			<xs:element name="InitialModifiers" type="tns:InitialStatisticsModifiers" minOccurs="0"/>
 			<xs:element ref="tns:Skills" minOccurs="0"/>
 			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 		</xs:sequence>
@@ -400,6 +404,7 @@
 			<xs:element name="AttackScript" type="tns:ScriptDetails" minOccurs="0"/>
 			<xs:element name="ChatScript" type="tns:ScriptDetails" minOccurs="0"/>
 			<xs:element name="DecisionScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="DropScript" type="tns:ScriptDetails" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -438,6 +443,7 @@
 			<xs:element ref="tns:DeityDislikeMultipliers" minOccurs="0"/>
 			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 			<xs:element name="LevelScript" type="xs:string" minOccurs="0"/>
+			<xs:element name="KillScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
 	</xs:complexType>
@@ -1091,6 +1097,7 @@
 		<xs:element name="SuppressMagic" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Breeds" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Sentinel" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="Shopkeeper" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="TextDetails">

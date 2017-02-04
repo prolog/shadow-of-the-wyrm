@@ -2088,9 +2088,6 @@
     <ClInclude Include="engine\time\include\CreatureHungerTimer.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\HungerDamageCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\StatusTypes.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -3909,6 +3906,30 @@
     <ClInclude Include="world\include\DamageFlagFactory.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\HungerCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\Setting.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\scripting\include\KillScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Shop.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\GenerationProperties.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\ItemGenerationConstraints.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\BuySellCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\scripting\include\DropScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5249,17 +5270,11 @@
     <ClCompile Include="engine\time\source\CreatureHungerTimer.cpp">
       <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\HungerDamageCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\translators\source\IStatusAilmentTranslator.cpp">
       <Filter>Source Files\engine\translators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\translators\source\StatusAilmentTranslators.cpp">
       <Filter>Source Files\engine\translators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\HungerDamageCalculator_test.cpp">
-      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\HungerClock_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
@@ -7690,6 +7705,54 @@
     </ClCompile>
     <ClCompile Include="world\source\DamageFlagFactory.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Readable_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Consumable_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\HungerCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\HungerCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Setting.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\KillScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Shop.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Shop_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\GenerationValues_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\GenerationProperties.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemGenerationConstraints.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\BuySellCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\BuySellCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\DropScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\RarityTypes.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\RarityTypes_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

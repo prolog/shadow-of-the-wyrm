@@ -12,6 +12,11 @@ Currency::~Currency()
 {
 }
 
+bool Currency::additional_item_attributes_match(ItemPtr item) const
+{
+  return true;
+}
+
 Item* Currency::clone()
 {
   return new Currency(*this);

@@ -6,6 +6,7 @@
 #include "DecisionStrategyFactory.hpp"
 #include "DecisionStrategyProperties.hpp"
 #include "XMLCreaturesReader.hpp"
+#include "XMLModifierReader.hpp"
 #include "XMLScriptsReader.hpp"
 
 using namespace std;
@@ -275,6 +276,13 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
       cgv.set_skills(skills);
     }
 
+    // Optional modifiers node.
+    XMLNode initial_modifiers_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "InitialModifiers");
+    XMLModifierReader modifier_reader;
+
+    Modifier m = modifier_reader.get_modifier(initial_modifiers_node);
+    cgv.set_modifier(m);
+
     // Optional equipment/inventory node.
     XMLNode eq_inv_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "InitialEquipmentAndInventory");
     if (!eq_inv_node.is_null())
@@ -302,7 +310,8 @@ void XMLCreaturesReader::parse_event_scripts(const XMLNode& event_scripts_node, 
     vector<pair<string, string>> node_details = { { "DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH }, 
                                                   { "AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK },
                                                   { "ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT },
-                                                  { "DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION } };
+                                                  { "DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION },
+                                                  { "DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP } };
 
     for (const auto& details : node_details)
     {
@@ -351,6 +360,9 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
 
     bool sentinel = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Sentinel", false);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, Bool::to_string(sentinel));
+
+    bool shopkeeper = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Shopkeeper", false);
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER, Bool::to_string(shopkeeper));
 
     creature->set_decision_strategy(decision_strategy);
   }

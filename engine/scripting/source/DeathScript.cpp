@@ -17,6 +17,11 @@ const string DeathScript::DEATH_FUNCTION_NAME = "die";
 // Return true if the script executed successfully, false otherwise.
 bool DeathScript::execute(ScriptEngine& se, const string& event_script, CreaturePtr dead_creature, CreaturePtr attacking_creature)
 {
+  if (event_script.empty())
+  {
+    return false;
+  }
+
   bool result = true;
 
   if (se.execute(event_script, {}))

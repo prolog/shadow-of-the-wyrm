@@ -59,6 +59,9 @@ class Modifier : public ISerializable
 
     std::vector<int> get_raw_values() const;
 
+    void set_delete(const bool new_delete);
+    bool get_delete() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -82,6 +85,8 @@ class Modifier : public ISerializable
     Resistances resistances;
 
     std::map<std::string, std::pair<bool, int>> statuses;
+
+    bool mark_delete;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

@@ -116,6 +116,17 @@ enum struct FoodType
   FOOD_TYPE_LAST = 5
 };
 
+class ItemValues
+{
+  public:
+    static const int DEFAULT_MIN_GENERATION_VALUE;
+    static const int DEFAULT_MIN_SHOP_VALUE;
+
+  protected:
+    ItemValues();
+    ~ItemValues();
+};
+
 enum struct ForagableType
 {
   FORAGABLE_TYPE_FORAGABLES = 0,

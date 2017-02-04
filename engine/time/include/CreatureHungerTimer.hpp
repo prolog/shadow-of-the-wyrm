@@ -1,5 +1,5 @@
 #pragma once
-#include "HungerDamageCalculator.hpp"
+#include "HungerCalculator.hpp"
 #include "ICreatureRegeneration.hpp"
 
 class CreatureHungerTimer : public ICreatureRegeneration
@@ -10,6 +10,6 @@ class CreatureHungerTimer : public ICreatureRegeneration
   protected:
     void apply_hunger_damage_if_appropriate(CreaturePtr creature, const ulonglong minutes_this_tick);
 
-    HungerDamageCalculator hdc;
+    HungerCalculator hc;
 };
 

@@ -1,4 +1,5 @@
 #include "Creature.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DefaultStatusEffectCalculator.hpp"
 #include "Game.hpp"
@@ -75,6 +76,7 @@ bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
     modifier.set_status(status_identifier, true, danger_level);
 
     ModifyStatisticsEffect mse;
+    mse.set_spell_id(status_identifier);
     mse.apply_modifiers(creature, modifier, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, eff_dur_sec);
   }
 
@@ -202,6 +204,7 @@ void StatusEffect::undo(CreaturePtr creature) const
   if (creature)
   {
     creature->remove_status(get_status_identifier());
+    CreatureUtils::mark_modifiers_for_deletion(creature, get_status_identifier());
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
 

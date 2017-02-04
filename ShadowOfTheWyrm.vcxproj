@@ -369,6 +369,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BlindedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BloodiedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\BuySellCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CalcUtils.hpp" />
     <ClInclude Include="engine\calculators\include\CarryingCapacityCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
@@ -398,7 +399,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HitPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HPRegenerationCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\HungerDamageCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\HungerCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IHitTypeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IHitTypeFactory.hpp" />
@@ -799,6 +800,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\include\ScoreFile.hpp" />
     <ClInclude Include="engine\include\ScoreFileEntry.hpp" />
     <ClInclude Include="engine\include\SelectionUtils.hpp" />
+    <ClInclude Include="engine\include\Setting.hpp" />
     <ClInclude Include="engine\include\SettingKeybindings.hpp" />
     <ClInclude Include="engine\include\Settings.hpp" />
     <ClInclude Include="engine\include\ShadowOfTheWyrmEngine.hpp" />
@@ -811,6 +813,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\items\include\ItemDescriptionRandomizer.hpp" />
     <ClInclude Include="engine\items\include\ItemFactory.hpp" />
     <ClInclude Include="engine\items\include\ItemFilterFactory.hpp" />
+    <ClInclude Include="engine\items\include\ItemGenerationConstraints.hpp" />
     <ClInclude Include="engine\items\include\ItemGenerationManager.hpp" />
     <ClInclude Include="engine\items\include\ItemIdentifier.hpp" />
     <ClInclude Include="engine\items\include\ItemMaterialFilter.hpp" />
@@ -906,7 +909,9 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\scripting\include\AttackScript.hpp" />
     <ClInclude Include="engine\scripting\include\DeathScript.hpp" />
     <ClInclude Include="engine\scripting\include\DecisionScript.hpp" />
+    <ClInclude Include="engine\scripting\include\DropScript.hpp" />
     <ClInclude Include="engine\scripting\include\ItemScript.hpp" />
+    <ClInclude Include="engine\scripting\include\KillScript.hpp" />
     <ClInclude Include="engine\scripting\include\LevelScript.hpp" />
     <ClInclude Include="engine\scripting\include\LuaAPIFunctions.hpp" />
     <ClInclude Include="engine\scripting\include\LuaUtils.hpp" />
@@ -1102,6 +1107,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\DamageFlag.hpp" />
     <ClInclude Include="world\include\DamageFlagFactory.hpp" />
     <ClInclude Include="world\include\DropParameters.hpp" />
+    <ClInclude Include="world\include\GenerationProperties.hpp" />
     <ClInclude Include="world\include\IInventory.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
     <ClInclude Include="world\include\ItemProperties.hpp" />
@@ -1110,6 +1116,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\NullInventory.hpp" />
     <ClInclude Include="world\include\RaceConstants.hpp" />
     <ClInclude Include="world\include\ScriptDetails.hpp" />
+    <ClInclude Include="world\include\Shop.hpp" />
     <ClInclude Include="world\include\SkinningConstants.hpp" />
     <ClInclude Include="world\include\SmithingConstants.hpp" />
     <ClInclude Include="world\include\Spellbook.hpp" />
@@ -1330,6 +1337,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\AmmunitionCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\BuySellCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CalcUtils.cpp" />
     <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureSplitCalculator.cpp" />
@@ -1337,6 +1345,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FishingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ForagablesCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\HungerCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemDropRateCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
@@ -1350,6 +1359,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\TertiaryUnarmedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ThieveryCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\unit_tests\BuySellCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\CalcUtils_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1372,6 +1388,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ForagablesCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\HungerCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -1554,6 +1577,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\items\source\HandsRequiredItemFilter.cpp" />
+    <ClCompile Include="engine\items\source\ItemGenerationConstraints.cpp" />
     <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp" />
     <ClCompile Include="engine\items\source\unit_tests\HandsRequiredItemFilter_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1574,6 +1598,8 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
+    <ClCompile Include="engine\scripting\source\DropScript.cpp" />
+    <ClCompile Include="engine\scripting\source\KillScript.cpp" />
     <ClCompile Include="engine\skills\source\DetectionSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\DisarmTrapsSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\FishingSkillProcessor.cpp" />
@@ -1588,6 +1614,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\skills\source\WandCreationParameters.cpp" />
     <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />
     <ClCompile Include="engine\source\LogFiles.cpp" />
+    <ClCompile Include="engine\source\Setting.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
     <ClCompile Include="engine\source\unit_tests\CharacterCreationDetails_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1771,7 +1798,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\HeavyWeaponToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HitPointsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HPRegenerationCalculator.cpp" />
-    <ClCompile Include="engine\calculators\source\HungerDamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\IHitTypeFactory.cpp" />
     <ClCompile Include="engine\calculators\source\IncorporealCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\IPhysicalAttackSpeedCalculator.cpp" />
@@ -1933,13 +1959,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\HPRegenerationCalculator_test.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\HungerDamageCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
@@ -3271,6 +3290,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\DamageFlag.cpp" />
     <ClCompile Include="world\source\DamageFlagFactory.cpp" />
     <ClCompile Include="world\source\DropParameters.cpp" />
+    <ClCompile Include="world\source\GenerationProperties.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\ItemProperties.cpp" />
     <ClCompile Include="world\source\MapTypes.cpp" />
@@ -3278,7 +3298,9 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\Modifier.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
     <ClCompile Include="world\source\RaceConstants.cpp" />
+    <ClCompile Include="world\source\RarityTypes.cpp" />
     <ClCompile Include="world\source\ScriptDetails.cpp" />
+    <ClCompile Include="world\source\Shop.cpp" />
     <ClCompile Include="world\source\SkinningConstants.cpp" />
     <ClCompile Include="world\source\SmithingConstants.cpp" />
     <ClCompile Include="world\source\Spellbook.cpp" />
@@ -3405,6 +3427,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Consumable_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\source\unit_tests\CreatureGenerationOptions_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -3427,6 +3456,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Date_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\GenerationValues_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -3468,12 +3504,33 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\RarityTypes_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Readable_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\source\unit_tests\ScriptDetails_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Shop_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Spellbook_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

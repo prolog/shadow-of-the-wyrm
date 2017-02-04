@@ -1,3 +1,4 @@
+#include "CombatConstants.hpp"
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
@@ -38,6 +39,38 @@ uint NPCDecisionStrategy::get_count(const uint max_count)
 bool NPCDecisionStrategy::get_confirmation(const bool confirmation_default_value)
 {
   return true;
+}
+
+void NPCDecisionStrategy::set_fov_map(MapPtr new_fov_map)
+{
+  current_fov_map = new_fov_map;
+  update_threats_if_shopkeeper(current_fov_map);
+}
+
+void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr current_fov_map)
+{
+  if (current_fov_map != nullptr && String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER)))
+  {
+    CreatureMap potential_thieves = current_fov_map->get_creatures();
+
+    for (const auto& pt_pair : potential_thieves)
+    {
+      CreaturePtr creature = pt_pair.second;
+
+      if (creature != nullptr && creature->has_unpaid_items() && !threat_ratings.has_threat(creature->get_id()).first)
+      {
+        MapPtr current_map = Game::instance().get_current_map();
+        Coordinate creature_coord = current_map->get_location(creature->get_id());
+
+        // If the creature has unpaid items and is standard outside of a shop
+        // perimeter, become hostile.
+        if (!MapUtils::is_in_shop_or_adjacent(current_map, creature_coord).first)
+        {
+          threat_ratings.add_threat(creature->get_id(), CombatConstants::INITIAL_THREAT_RATING);
+        }
+      }
+    }
+  }
 }
 
 // The basic decision structure for NPCs.  The individual get_decision_for functions are pure virtual within this class,
@@ -431,12 +464,31 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
     vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(current_dimensions, this_row, this_col);
     vector<Coordinate> choice_coordinates = get_adjacent_safe_coordinates_without_creatures(current_map, adjacent_coordinates, this_creature);
 
-    // Pick a tile if not empty
-    if (!choice_coordinates.empty())
+    // If the creature is a shopkeeper, prefer movement on to shop tiles when
+    // in a shop.
+    bool shopkeeper = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER));
+    if (shopkeeper && MapUtils::is_in_shop_or_adjacent(current_map, current_map->get_location(this_creature_id)).first)
     {
-      Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size() - 1));
-      Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
-      movement_command = std::make_shared<MovementCommand>(direction, -1);
+      std::shuffle(choice_coordinates.begin(), choice_coordinates.end(), RNG::get_engine());
+
+      for (const Coordinate& cc : choice_coordinates)
+      {
+        if (MapUtils::is_in_shop_or_adjacent(current_map, cc).first)
+        {
+          movement_command = std::make_shared<MovementCommand>(CoordUtils::get_direction(this_creature_coords, cc), -1);
+          break;
+        }
+      }
+    }
+    else
+    {
+      // Pick a random empty coordinate.
+      if (!choice_coordinates.empty())
+      {
+        Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size() - 1));
+        Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
+        movement_command = std::make_shared<MovementCommand>(direction, -1);
+      }
     }
   }
 

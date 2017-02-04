@@ -1,16 +1,19 @@
+#include <boost/tokenizer.hpp>
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureProperties.hpp"
+#include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "HostilityManager.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
 #include "RNG.hpp"
+#include "ViewMapTranslator.hpp"
 #include "WorldMapLocationTextKeys.hpp"
-#include <boost/tokenizer.hpp>
 
 using namespace std;
 using namespace boost;
@@ -651,6 +654,34 @@ bool MapUtils::is_creature_present(TilePtr tile)
   return false;
 }
 
+pair<bool, string> MapUtils::is_in_shop_or_adjacent(MapPtr map, const Coordinate& c)
+{
+  pair<bool, string> result = make_pair(false, "");
+
+  if (map != nullptr)
+  {
+    std::map<string, Shop> shops = map->get_shops();
+
+    for (const auto& shop_pair : shops)
+    {
+      Shop shop = shop_pair.second;
+
+      Coordinate start = shop.get_start();
+      Coordinate end = shop.get_end();
+
+      if (c.first >= start.first-1 && c.first <= end.first+1 && c.second >= start.second-1 && c.second <= end.second+1)
+      {
+        result.first = true;
+        result.second = shop_pair.first;
+
+        break;
+      }
+    }
+  }
+
+  return result;
+}
+
 // Iterate through the existing components of the map, searching each one to see if the coordinates are contained within
 // any one of them.
 bool MapUtils::is_tile_contained_in_an_existing_component(const Coordinate& coord, const MapComponents& components)
@@ -997,6 +1028,50 @@ map<TileType, vector<TilePtr>> MapUtils::partition_tiles(MapPtr current_map)
   }
 
   return part_tiles;
+}
+
+void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current_map, CreaturePtr anger_creature)
+{
+  if (current_map != nullptr && anger_creature != nullptr)
+  {
+    pair<bool, string> shop_adjacency = MapUtils::is_in_shop_or_adjacent(current_map, c);
+    if (shop_adjacency.first)
+    {
+      std::map<string, Shop> shops = current_map->get_shops();
+      auto s_it = shops.find(shop_adjacency.second);
+      if (s_it != shops.end())
+      {
+        // The shopkeeper is justifiably pissed!
+        HostilityManager hm;
+        hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id());
+      }
+    }
+  }
+}
+
+void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
+{
+  std::map<string, CreaturePtr> map_creatures = current_map->get_creatures();
+
+  for (const auto& cr_pair : map_creatures)
+  {
+    CreaturePtr current_creature = cr_pair.second;
+
+    if (current_creature)
+    {
+      Coordinate creature_coords = current_map->get_location(current_creature->get_id());
+      MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+
+      FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
+      MapPtr fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+      DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+
+      if (strategy)
+      {
+        strategy->set_fov_map(fov_map);
+      }
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

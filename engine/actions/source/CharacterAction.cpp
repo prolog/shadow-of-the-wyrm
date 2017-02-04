@@ -28,7 +28,7 @@ ActionCostValue CharacterAction::display_character(CreaturePtr creature)
 
     vector<string> char_text = String::tokenize(dumper.str(), "\n", true);
     vector<TextDisplayPair> char_details_text;
-    TextDisplayFormatter tdf;
+    TextDisplayFormatter tdf(true);
 
     for (const string& str : char_text)
     {

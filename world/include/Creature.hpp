@@ -176,9 +176,12 @@ class Creature : public ISerializable
     // Get the weight carried, in oz
     uint get_weight_carried() const;
 
-    // Does the creature have any equipped or worn items?
+    // Does the creature have any equipped or worn items?  Are any unpaid?
     bool has_items() const;
+    bool has_unpaid_items() const;
     uint count_items() const;
+    uint get_unpaid_amount() const;
+    void set_items_paid();
     
     // Set/get point-based statistics
 
@@ -290,7 +293,8 @@ class Creature : public ISerializable
     AutomaticMovement& get_automatic_movement_ref();
 
     void set_modifiers(const std::map<double, std::vector<std::pair<std::string, Modifier>>>& new_modifiers);
-    std::map<double, std::vector<std::pair<std::string, Modifier>>>& get_modifiers_ref();
+    std::map<double, std::vector<std::pair<std::string, Modifier>>> get_active_modifiers() const; // get all modifiers not marked for deletion
+    std::map<double, std::vector<std::pair<std::string, Modifier>>>& get_modifiers_ref(); // get all modifiers, including those marked for deletion
     bool is_affected_by_modifier_spell(const std::string& spell_id) const;
 
     // Additional traits not all creatures will have, so a bit of space is saved

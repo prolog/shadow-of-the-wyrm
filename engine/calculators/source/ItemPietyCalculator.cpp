@@ -3,6 +3,7 @@
 #include "Consumable.hpp"
 
 const int ItemPietyCalculator::MINIMUM_PIETY = 10;
+const int ItemPietyCalculator::MINIMUM_NUTRITION_FOR_PIETY = 1000;
 const int ItemPietyCalculator::BASE_DIVISOR = 10;
 const int ItemPietyCalculator::CORPSE_DIVISOR = 4;
 
@@ -49,7 +50,12 @@ int ItemPietyCalculator::get_base_value(ItemPtr item)
 
       if (consumable)
       {
-        base_value = consumable->get_nutrition();
+        int nutrition = consumable->get_nutrition();
+
+        if (nutrition >= MINIMUM_NUTRITION_FOR_PIETY || consumable->get_effect_type() != EffectType::EFFECT_TYPE_NULL)
+        {
+          base_value = nutrition;
+        }
       }
     }
     else

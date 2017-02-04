@@ -6,6 +6,8 @@ class Boat : public Item
   public:
     Boat();
     ~Boat();
+
+    bool additional_item_attributes_match(ItemPtr item) const override;
     
     Item* clone() override;
 

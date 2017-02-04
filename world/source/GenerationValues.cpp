@@ -23,7 +23,7 @@ bool GenerationValues::operator==(const GenerationValues& gv) const
   result = result && (maximum == gv.maximum);
   result = result && (rarity == gv.rarity);
   result = result && (danger_level == gv.danger_level);
-
+  result = result && (properties == gv.properties);
   return result;
 }
 
@@ -79,12 +79,46 @@ Rarity GenerationValues::get_rarity() const
   return rarity;
 }
 
+void GenerationValues::set_property(const string& key, const string& val)
+{
+  properties[key] = val;
+}
+
+void GenerationValues::set_properties(const map<string, string>& new_properties)
+{
+  properties = new_properties;
+}
+
+string GenerationValues::get_property(const string& key) const
+{
+  string val;
+
+  auto p_it = properties.find(key);
+  if (p_it != properties.end())
+  {
+    val = p_it->second;
+  }
+
+  return val;
+}
+
+map<string, string> GenerationValues::get_properties() const
+{
+  return properties;
+}
+
+map<string, string>& GenerationValues::get_properties_ref()
+{
+  return properties;
+}
+
 bool GenerationValues::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, current);
   Serialize::write_int(stream, maximum);
   Serialize::write_enum(stream, rarity);
   Serialize::write_uint(stream, danger_level);
+  Serialize::write_string_map(stream, properties);
 
   return true;
 }
@@ -95,6 +129,7 @@ bool GenerationValues::deserialize(istream& stream)
   Serialize::read_int(stream, maximum);
   Serialize::read_enum(stream, rarity);
   Serialize::read_enum(stream, danger_level);
+  Serialize::read_string_map(stream, properties);
 
   return true;
 }
@@ -103,3 +138,7 @@ ClassIdentifier GenerationValues::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_GENERATION_VALUES;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/GenerationValues_test.cpp"
+#endif

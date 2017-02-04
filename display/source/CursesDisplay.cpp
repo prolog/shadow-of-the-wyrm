@@ -19,6 +19,7 @@
 #include "MapDisplayArea.hpp"
 #include "OptionsComponent.hpp"
 #include "Serialize.hpp"
+#include "Setting.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 
@@ -851,10 +852,10 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
   pair<string, Colour> alignment = player_stats.get_alignment();
 
   string hit_points   = player_stats.get_hit_points();
-  Colour hit_points_colour = String::to_colour(settings.get_setting("default_hp_colour"), Colour::COLOUR_WHITE);
+  Colour hit_points_colour = String::to_colour(settings.get_setting(Setting::DEFAULT_HP_COLOUR), Colour::COLOUR_WHITE);
 
   string arc_points   = player_stats.get_arcana_points();
-  Colour arc_points_colour = String::to_colour(settings.get_setting("default_ap_colour"), Colour::COLOUR_WHITE);
+  Colour arc_points_colour = String::to_colour(settings.get_setting(Setting::DEFAULT_AP_COLOUR), Colour::COLOUR_WHITE);
 
   string map_depth    = player_stats.get_map_depth();
 

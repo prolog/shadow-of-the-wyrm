@@ -2,6 +2,7 @@
 #include "AmmunitionCalculator.hpp"
 #include "Conversion.hpp"
 #include "Game.hpp"
+#include "GenerationProperties.hpp"
 #include "ItemEnchantmentCalculator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "ItemManager.hpp"
@@ -14,13 +15,14 @@ ItemGenerationManager::ItemGenerationManager()
 {
   rarity_chances = { { Rarity::RARITY_COMMON,   { { Rarity::RARITY_COMMON, 100 } } },
                      { Rarity::RARITY_UNCOMMON, { { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } },
-                     { Rarity::RARITY_RARE,     { { Rarity::RARITY_RARE, 60 }, { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } } };
+                     { Rarity::RARITY_RARE,     { { Rarity::RARITY_RARE, 60 }, { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } },
+                     { Rarity::RARITY_VERY_RARE,{ { Rarity::RARITY_VERY_RARE, 40 }, { Rarity::RARITY_RARE, 80 }, { Rarity::RARITY_UNCOMMON, 90 }, { Rarity::RARITY_COMMON, 100 } } } };
 }
 
 // Generate an item generation map for the given danger level and rarity.
-ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int min_danger_level, const int max_danger_level, const Rarity rarity)
+ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const ItemGenerationConstraints& igc)
 {
-  int min_danger = max(min_danger_level, 1);
+  int min_danger = max(igc.get_min_danger_level(), 1);
   ItemGenerationVec generation_vec;
 
   ItemPtr generated_creature;
@@ -38,7 +40,7 @@ ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int 
       ItemPtr item = i_it->second;
       GenerationValues igvals = igv_map[item_id];
 
-      if (does_item_match_generation_criteria(igvals, min_danger, max_danger_level, rarity))
+      if (does_item_match_generation_criteria(igvals, min_danger, igc.get_max_danger_level(), igc.get_rarity(), igc.get_item_type_restrictions(), igc.get_min_value()))
       {
         generation_vec[igvals.get_rarity()].push_back(make_pair(item_id, make_pair(item, igvals)));
       }
@@ -98,11 +100,12 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
       {
         if (item_rarity == Rarity::RARITY_COMMON)
         {
+          // Bust out of this loop - nothing can be generated
           return generated_item;
         }
         else
         {
-          item_rarity = Rarity::RARITY_COMMON;
+          item_rarity--;
         }
       }
     }
@@ -151,13 +154,32 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
 }
 
 // Check to see if the item matches the given danger level and rarity.
-bool ItemGenerationManager::does_item_match_generation_criteria(const GenerationValues& cgv, const int min_danger_level, const int max_danger_level, const Rarity rarity)
+bool ItemGenerationManager::does_item_match_generation_criteria(const GenerationValues& cgv, const int min_danger_level, const int max_danger_level, const Rarity rarity, const vector<ItemType>& item_type_restrictions, const int min_value)
 {
+  ItemType itype = ItemType::ITEM_TYPE_NULL;
+  string prop_itype = cgv.get_property(GenerationProperties::GENERATION_PROPERTIES_ITEM_TYPE);
+  string prop_value = cgv.get_property(GenerationProperties::GENERATION_PROPERTIES_VALUE);
+  int cgv_min_val = -1;
+
+  if (!prop_itype.empty())
+  {
+    itype = static_cast<ItemType>(String::to_int(prop_itype));
+  }
+
+  if (!prop_value.empty())
+  {
+    cgv_min_val = String::to_int(prop_value);
+  }
+
   int cgv_danger_level = cgv.get_danger_level();
 
   if ( cgv_danger_level >= 0 /* Exclude danger level of -1, which means "don't generate" */
     && cgv_danger_level >= min_danger_level
     && cgv_danger_level <= max_danger_level
+    && cgv_min_val >= min_value
+    // If the item type restrictions vector is empty - no restrictions
+    // Otherwise, the item type has to be found within the container.
+    && (item_type_restrictions.empty() || (std::find(item_type_restrictions.begin(), item_type_restrictions.end(), itype) != item_type_restrictions.end()))
     && cgv.get_rarity() <= rarity )
   {
     return true;

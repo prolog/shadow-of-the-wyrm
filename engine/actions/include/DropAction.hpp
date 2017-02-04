@@ -17,6 +17,7 @@ class DropAction : public IActionManager
     void handle_seed_planted_message(CreaturePtr creature, ItemPtr seed);
     void handle_no_item_dropped(CreaturePtr creature);
     void handle_invalid_drop_quantity(CreaturePtr creature);
+    void handle_reacting_creature_drop_scripts(CreaturePtr creature, MapPtr current_map, ItemPtr new_item, const Coordinate& drop_coord);
     bool plant_seed(CreaturePtr creature, const std::string& tree_species_id, const Coordinate& coords, TilePtr tile, MapPtr current_map);
     void make_map_permanent(Game& game, CreaturePtr creature, MapPtr current_map);
     

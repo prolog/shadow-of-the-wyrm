@@ -100,7 +100,7 @@ bool Weapon::get_requires_ranged_weapon() const
   return requires_ranged_weapon;
 }
 
-bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i)
+bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i) const
 {
   bool match = (i != nullptr);
   WeaponPtr i_weap = dynamic_pointer_cast<Weapon>(i);

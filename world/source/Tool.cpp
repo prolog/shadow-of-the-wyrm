@@ -37,6 +37,20 @@ Item* Tool::clone()
   return new Tool(*this);
 }
 
+bool Tool::additional_item_attributes_match(ItemPtr item) const
+{
+  bool matches = false;
+
+  ToolPtr tool = dynamic_pointer_cast<Tool>(item);
+
+  if (tool != nullptr)
+  {
+    matches = (lock_id == tool->get_lock_id());
+  }
+
+  return matches;
+}
+
 ClassIdentifier Tool::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_TOOL;
