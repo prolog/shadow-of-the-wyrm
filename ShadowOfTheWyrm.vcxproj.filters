@@ -7748,5 +7748,11 @@
     <ClCompile Include="engine\scripting\source\DropScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\RarityTypes.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\RarityTypes_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

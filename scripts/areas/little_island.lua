@@ -45,7 +45,9 @@ end
 map_add_location("world_map", "STARTING_LOCATION", 96, 96)
 
 -- Shop details for Isen Dun
+local shop_id = "edmund_shop"
 local shopkeeper_id = get_creature_id(15, 28, isen_dun_id)
 set_creature_name(shopkeeper_id, "Edmund", isen_dun_id)
-repop_shop("edmund_shop", isen_dun_id)
+set_shop_shopkeeper_id(shop_id, shopkeeper_id, isen_dun_id)
+repop_shop(shop_id, isen_dun_id)
 

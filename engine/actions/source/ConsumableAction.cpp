@@ -4,6 +4,7 @@
 #include "CreatureUtils.hpp"
 #include "EffectFactory.hpp"
 #include "Game.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RaceManager.hpp"
 #include "ResistancesCalculator.hpp"
@@ -23,6 +24,8 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
   if (creature && consumable)
   {
     Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
     HungerClock& hunger = creature->get_hunger_clock_ref();
     int hunger_before = hunger.get_hunger();
 
@@ -65,6 +68,12 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
       {
         poison->apply_change(creature, danger_level);
       }
+    }
+
+    // Shopkeepers don't appreciate sampling.
+    if (consumable->get_unpaid())
+    {
+      MapUtils::anger_shopkeeper_if_necessary(current_map->get_location(creature->get_id()), current_map, creature);
     }
 
     if (nutrition > 0)

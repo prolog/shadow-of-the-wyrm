@@ -5,16 +5,16 @@
 	</Dimensions>
 	<LevelRange>
 		<Min>2</Min>
-		<Max>20</Max>
+		<Max>15</Max>
 	</LevelRange>
 	<MapType>1</MapType>
 	<Tiles>
 	TT,TT,,T,TT,,TTT,,T,T,,TTT,TT,TTTTT,T,TT,TT,TT,TT,TT,T,T,TTT,T,TT,T,TTTTT,TT,TTT
-	T,,T,T,TT,,T,TT,TTT,TT,T,T,,,,,,,,,,,,,,,,####,T,TTT,T,TT,,,T,TT,,TTTT,,TTTT,T,T
-	,,T,TT,,,T,TT,T,T,,T,,TT,T,,###########,,,#..#,,T,,,TTT,TTTT,TTT,T,TTT,,TT,,,T,T
-	,T,,,,T,,T,,T,TTT,TTT,TTTT,,#.........#,T,#.##,T,,TT,,,TT,,TTTT,T,T,,,TT,,TT,,,,
-	,,,T,T,T,TTT,TT,T,,,TTT,,T,,#.........#,,,,,,,,,TTT,TTTT,T,TT,,,,,TT,TT,TT,T,T,T
-	T,,T,T,TT,,T,,TTTT,T,,TTTT,,#.........#,,,,,,T,,,,TTT,T,T,,,,T,TT,,,T,,T,,TTT,,,
+	T,,T,T,TT,,T,TT,TTT,TT,T,T,,,,,,,,,,,,,,,,####,T,TT####TT,,,T,TT,,TTTT,,TTTT,T,T
+	,,T,TT,,,T,TT,T,T,,T,,TT,T,,###########,,,#..#,,T,,...#,TTTT,TTT,T,TTT,,TT,,,T,T
+	,T,,,,T,,T,,T,TTT,TTT,TTTT,,#.........#,T,#.##,T,,T#..#TT,,TTTT,T,T,,,TT,,TT,,,,
+	,,,T,T,T,TTT,TT,T,,,TTT,,T,,#.........#,,,,,,,,,TTT#..#T,T,TT,,,,,TT,TT,TT,T,T,T
+	T,,T,T,TT,,T,,TTTT,T,,TTTT,,#.........#,,,,,,T,,,,T####,T,,,,T,TT,,,T,,T,,TTT,,,
 	T,T,,T,T,T,,T,T,T,,,T,T,,T,,#.........#,T,######,,T,T,T,,,,TT,TT,,TTTT,,TT,T,,,T
 	T,,,T,,TT,,,,T,TTT,TT,,TT,,,#.........#,,,.....#,,,,,,T,T,TT,,,,TTT,,,TT,,,,TT,,
 	,,T,,T,,,,T,T,TT,T,TTT,,,T,,##.......##,,,#....#,,T,T,,,T,,TT,TT,,T,TT,,,TT,,T,,
@@ -32,6 +32,13 @@
 	</Tiles>
 	<InitialPlacements>
 		<Creatures>
+			<Placement>
+				<ID>shopkeeper</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>53</Col>
+				</Coord>
+			</Placement>
 			<Placement>
 				<ID>melura</ID>
 				<Coord>
@@ -163,6 +170,18 @@
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
+				<Row>2</Row>
+				<Col>51</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>11</Row>
 				<Col>25</Col>
 			</Coord>
@@ -174,4 +193,19 @@
 			</Door>
 		</FeaturePlacement>
 	</Features>
+	<Shops>
+		<Shop id="bree_shop">
+			<StartCoord>
+				<Row>2</Row>
+				<Col>52</Col>
+			</StartCoord>
+			<EndCoord>
+				<Row>4</Row>
+				<Col>53</Col>
+			</EndCoord>
+			<StockedItemTypes>
+				<ItemType>6</ItemType>
+			</StockedItemTypes>
+		</Shop>
+	</Shops>
 </CustomMap>

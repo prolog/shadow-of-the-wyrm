@@ -8,3 +8,6 @@ enum struct Rarity
   RARITY_VERY_RARE = 3
 };
 
+// Decrement rarity - no wrapping.
+Rarity& operator--(Rarity &r);
+Rarity operator--(Rarity& r, int);

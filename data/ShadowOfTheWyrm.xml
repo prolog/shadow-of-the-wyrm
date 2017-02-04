@@ -25490,7 +25490,6 @@
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>7</DangerLevel>
-				<Rarity>1</Rarity>
 				<Properties>
 					<Property>
 						<Name>brandable</Name>
@@ -26725,7 +26724,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Slash>0.05</Slash>
 					<Pierce>0.10</Pierce>
@@ -28216,7 +28214,6 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<Properties>
 					<Property>
 						<Name>brandable</Name>
@@ -28244,7 +28241,6 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<Properties>
 					<Property>
 						<Name>brandable</Name>
@@ -29328,7 +29324,7 @@
 			<Missile id="arrow">
 				<DescriptionSID>ARROW_SID</DescriptionSID>
 				<UsageDescriptionSID>ARROW_USAGE_SID</UsageDescriptionSID>
-				<Value>3</Value>
+				<Value>5</Value>
 				<Weight>
 					<Pounds>0</Pounds>
 					<Ounces>9</Ounces>
@@ -29354,7 +29350,7 @@
 			<Missile id="avernal_arrow">
 				<DescriptionSID>AVERNAL_ARROW_SID</DescriptionSID>
 				<UsageDescriptionSID>AVERNAL_ARROW_USAGE_SID</UsageDescriptionSID>
-				<Value>30</Value>
+				<Value>15</Value>
 				<Weight>
 					<Pounds>0</Pounds>
 					<Ounces>9</Ounces>
@@ -29406,7 +29402,7 @@
 			<Missile id="javelin">
 				<DescriptionSID>JAVELIN_SID</DescriptionSID>
 				<UsageDescriptionSID>JAVELIN_USAGE_SID</UsageDescriptionSID>
-				<Value>40</Value>
+				<Value>10</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -29424,7 +29420,7 @@
 				<Difficulty>46</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
-					<NumDice>2</NumDice>
+					<NumDice>3</NumDice>
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
@@ -29432,7 +29428,7 @@
 			<Missile id="barbed_spear">
 				<DescriptionSID>BARBED_SPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>BARBED_SPEAR_USAGE_SID</UsageDescriptionSID>
-				<Value>45</Value>
+				<Value>20</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -29458,7 +29454,7 @@
 			<Missile id="winged_javelin">
 				<DescriptionSID>WINGED_JAVELIN_SID</DescriptionSID>
 				<UsageDescriptionSID>WINGED_JAVELIN_USAGE_SID</UsageDescriptionSID>
-				<Value>50</Value>
+				<Value>30</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -29476,7 +29472,7 @@
 				<Difficulty>46</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
-					<NumDice>6</NumDice>
+					<NumDice>7</NumDice>
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
@@ -29484,7 +29480,7 @@
 			<Missile id="throwing_club">
 				<DescriptionSID>THROWING_CLUB_SID</DescriptionSID>
 				<UsageDescriptionSID>THROWING_CLUB_USAGE_SID</UsageDescriptionSID>
-				<Value>20</Value>
+				<Value>8</Value>
 				<Weight>
 					<Pounds>6</Pounds>
 				</Weight>
@@ -30189,7 +30185,6 @@
 					<Colour>3</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>1700</Nutrition>	
 				<FoodType>2</FoodType>
 			</Food>

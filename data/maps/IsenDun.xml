@@ -502,9 +502,7 @@
 				<Col>31</Col>
 			</EndCoord>
 			<StockedItemTypes>
-				<ItemType>1</ItemType>
 				<ItemType>10</ItemType>
-				<ItemType>11</ItemType>
 			</StockedItemTypes>
 		</Shop>
 	</Shops>
