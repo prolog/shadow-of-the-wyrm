@@ -1,6 +1,4 @@
 Me:
-- Shopkeepers should get angry when reading/consuming in shop
-- 0-value food showing up in Noah's shop
 - Gourmand amulet
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.

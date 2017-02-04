@@ -1,3 +1,6 @@
+Shadow of the Wyrm v0.6.1 "Riquier"
+- Version declared February 3, 2017.
+
 Shadow of the Wyrm v0.6.0 "Capirola"
 - Version declared January 11, 2017.  Version finalized February 3, 2017.
 
