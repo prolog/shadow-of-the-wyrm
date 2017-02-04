@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.6.0 "Capirola"
-- Version declared January 11, 2017.
+- Version declared January 11, 2017.  Version finalized February 3, 2017.
 
 - More potential random names for character creation.
 
@@ -50,17 +50,18 @@ Shadow of the Wyrm v0.6.0 "Capirola"
   - Hrethel, the hedge wizard of Whaling's End, will trade you one of his
     many spellbooks in exchange for a score of magici shards.
 
-  - There are two shops: Noah and Itzchak have a variety of goods
-    for sale.  Unpaid goods will list the total price when you look at
-    them.  The shops, and all shops going forward, have a minimum item
-    value, so very low value items (rocks, turnips, etc) won't be
-    generated.
+  - There are two shops in Whaling's End: Noah and Itzchak have a variety 
+    of goods for sale.  Unpaid goods will list the total price when you 
+    look at them.  All shops have a minimum item value, so very low value 
+    items (rocks, turnips, etc) won't be generated.
 
   - Shopkeepers don't enjoy literal door-crashers.  They also don't like
-    people kicking the wares.
+    people kicking the wares, reading the wares, eating the wares,
+    quaffing the wares, or generally acting antisocial with regards to
+    the wares.  In fact, they're rather unpleasant.
 
   - Shopkeepers also look out for each other - if they see you outside a
-    shop with unpaid goods, they will seek revenge.
+    shop with unpaid goods, from any shop, they will seek revenge.
 
   - The total amount owing can now be seen with the "$" command.  You can
     pay for unpaid merchandise by chatting to the shopkeeper.
@@ -69,7 +70,8 @@ Shadow of the Wyrm v0.6.0 "Capirola"
     Charisma, determine if you can get a reduced price on a purchase or
     a better price on a sale, and if so, by how much.
 
-- Added a shop to Isen Dun, selling food, weapons, and ammunition.
+- Added a shop to Isen Dun (food, weapons, ammunition), Forest of Yew
+  (wands), and Atua-Elar (books).
 
 - Now that money is more useful, nobles now start with more money.
 

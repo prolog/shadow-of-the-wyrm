@@ -100,11 +100,12 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
       {
         if (item_rarity == Rarity::RARITY_COMMON)
         {
+          // Bust out of this loop - nothing can be generated
           return generated_item;
         }
         else
         {
-          item_rarity = Rarity::RARITY_COMMON;
+          item_rarity--;
         }
       }
     }

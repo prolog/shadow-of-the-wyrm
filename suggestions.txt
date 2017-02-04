@@ -1,8 +1,10 @@
 Me:
+- Shopkeepers should get angry when reading/consuming in shop
 - 0-value food showing up in Noah's shop
 - Gourmand amulet
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
+- More shops in set locations.
 - Implement Bowyer (+docs)
 - Implement Fletchery. (+docs)
 - Reduce the number of castings learned from books.
@@ -35,7 +37,9 @@ Me:
 - Cancellation effect type
 - Once a month, repop shops
 - Special rooms: beer hall, magical workshop, armory.
-- Travelling bazaars.
+- Travelling bazaars (make fields/deserts/hills permanent).
+- Add shops to the random villages.
+- Add shops to dungeons.
 - Merchants should get half off in shops.
 - Initial Music skill implementation.
 - You should be able to ride the bucket down to the bottom of wells.
@@ -53,7 +57,9 @@ Me:
 - General performance improvements.
 - Item generation: get rarity working properly, and then do some test
   runs.  Once that works, create some more artifacts/great items for
-  random generation.
+  random generation.  Also, as part of the initial shop code, certain
+  weapons were made common (elven short sword, rapier) to make shops ok.
+  Consider making these uncommon again when the code sucks less.
 - Potion components of some sort?  Weeds should be "pickable"?
 - Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
