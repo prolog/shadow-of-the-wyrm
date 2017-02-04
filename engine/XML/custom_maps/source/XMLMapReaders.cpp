@@ -25,6 +25,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
   if (!custom_map_node.is_null())
   {
     XMLNode dimensions_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Dimensions");
+    XMLNode level_range_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "LevelRange");
     XMLNode tiles_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Tiles");
     XMLNode player_start_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "PlayerStart");
     XMLNode initial_placements_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "InitialPlacements");
@@ -32,6 +33,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLNode exits_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Exits");
     XMLNode features_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Features");
     XMLNode properties_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Properties");
+    XMLNode shops_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Shops");
 
     string map_id = XMLUtils::get_attribute_value(custom_map_node, "id");
     MapType map_type = static_cast<MapType>(XMLUtils::get_child_node_int_value(custom_map_node, "MapType"));
@@ -69,6 +71,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLMapFeaturesReader features_reader;
     features_reader.parse_features(features_node, custom_map);
 
+    parse_shops(shops_node, custom_map);
     parse_properties(properties_node, custom_map);
 
     // Custom maps currently don't allow creature updates.
@@ -77,6 +80,14 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     // Generate the list of creatures on the map, so that it can be accessed
     // later on.
     custom_map->create_creatures();
+
+    int danger_level = 1;
+    if (!level_range_node.is_null())
+    {
+      danger_level = XMLUtils::get_child_node_int_value(level_range_node, "Max");
+    }
+
+    custom_map->set_danger(danger_level);
   }
 
   return custom_map;
@@ -301,6 +312,56 @@ void XMLMapReader::parse_random_creature_placements(const XMLNode& creatures_nod
         MapUtils::place_creature_randomly(map, creature_id);
       }
     }
+  }
+}
+
+void XMLMapReader::parse_shops(const XMLNode& shops_node, MapPtr map)
+{
+  if (!shops_node.is_null())
+  {
+    vector<XMLNode> shop_nodes = XMLUtils::get_elements_by_local_name(shops_node, "Shop");
+    XMLMapCoordinateReader coord_reader;
+    std::map<string, Shop> shops;
+
+    for (const XMLNode& shop_node : shop_nodes)
+    {
+      Shop shop;
+
+      string shop_id = XMLUtils::get_attribute_value(shop_node, "id");
+      shop.set_shop_id(shop_id);
+
+      string shopkeeper_id = XMLUtils::get_child_node_value(shop_node, "ShopkeeperID");
+      shop.set_shopkeeper_id(shopkeeper_id);
+
+      XMLNode start_coord_node = XMLUtils::get_next_element_by_local_name(shop_node, "StartCoord");
+      XMLNode end_coord_node = XMLUtils::get_next_element_by_local_name(shop_node, "EndCoord");
+
+      Coordinate start_coord = coord_reader.parse_fixed_coordinate(start_coord_node);
+      shop.set_start(start_coord);
+
+      Coordinate end_coord = coord_reader.parse_fixed_coordinate(end_coord_node);
+      shop.set_end(end_coord);
+
+      XMLNode item_types_node = XMLUtils::get_next_element_by_local_name(shop_node, "StockedItemTypes");
+      vector<ItemType> stocked_item_types;
+
+      if (!item_types_node.is_null())
+      {
+        vector<XMLNode> itype_nodes = XMLUtils::get_elements_by_local_name(item_types_node, "ItemType");
+
+        for (const XMLNode& itype_node : itype_nodes)
+        {
+          ItemType itype = static_cast<ItemType>(XMLUtils::get_node_int_value(itype_node));
+          stocked_item_types.push_back(itype);
+        }
+      }
+
+      shop.set_stocked_item_types(stocked_item_types);
+
+      shops[shop_id] = shop;
+    }
+
+    map->set_shops(shops);
   }
 }
 

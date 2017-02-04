@@ -3,6 +3,7 @@
 #include "ActionManager.hpp"
 #include "Creature.hpp"
 #include "Deity.hpp"
+#include "CreatureGenerationValues.hpp"
 
 class CreatureFactory
 {
@@ -19,6 +20,7 @@ class CreatureFactory
 
     void set_age(CreaturePtr creature, const AgeInfo& age_info);
     void set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, DeityPtr deity);
+    void set_initial_statistics_modifiers(CreaturePtr creature, const CreatureGenerationValues& cgv);
     void set_default_resistances(CreaturePtr creature);
     void set_initial_resistances(CreaturePtr creature, RacePtr race, ClassPtr char_class);
     void set_initial_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class);

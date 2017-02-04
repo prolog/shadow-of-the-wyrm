@@ -1,5 +1,6 @@
 #include "ActionTextKeys.hpp"
 #include "AttackScript.hpp"
+#include "ClassManager.hpp"
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
@@ -19,6 +20,7 @@
 #include "HostilityManager.hpp"
 #include "IHitTypeFactory.hpp"
 #include "ItemProperties.hpp"
+#include "KillScript.hpp"
 #include "ToHitCalculatorFactory.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
@@ -26,6 +28,7 @@
 #include "PhaseOfMoonCalculator.hpp"
 #include "PointsTransfer.hpp"
 #include "RaceManager.hpp"
+#include "Setting.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
@@ -293,7 +296,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   int effect_bonus = damage_info.get_effect_bonus();
   int base_damage = 0;
   
-  bool use_mult_dam_type_msgs = String::to_bool(game.get_settings_ref().get_setting("multiple_damage_type_messages"));
+  bool use_mult_dam_type_msgs = String::to_bool(game.get_settings_ref().get_setting(Setting::MULTIPLE_DAMAGE_TYPE_MESSAGES));
   string combat_message = CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc, use_mult_dam_type_msgs);
 
   HitTypeEnum hit_type_enum = HitTypeEnumConverter::from_successful_to_hit_roll(d100_roll);
@@ -594,6 +597,23 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
 
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
     {      
+      // Run any kill scripts before the DeathManager is invoked, to ensure
+      // that the killed creature is still present on the map.
+      if (attacking_creature != nullptr)
+      {
+        ClassManager cm;
+        ClassPtr cr_class = cm.get_class(attacking_creature->get_class_id());
+
+        if (cr_class != nullptr)
+        {
+          ScriptEngine& se = Game::instance().get_script_engine_ref();
+          KillScript ks;
+          string kill_script_name = cr_class->get_kill_script();
+
+          ks.execute(se, kill_script_name, attacked_creature, attacking_creature);
+        }
+      }
+
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
 
       // Kill the creature, and run the death event function, if necessary.
@@ -787,8 +807,9 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const stri
 {
   // Get whether the creature is a unique or not.
   Game& game = Game::instance();
-  bool is_unique = (game.get_creature_generation_values_ref()[killed_creature_id].get_maximum() == 1);
-
+  CreatureGenerationValues cgv = game.get_creature_generation_values_ref()[killed_creature_id];
+  bool is_unique = (cgv.get_maximum() == 1);
+  
   // Update the game's and creature's mortuary with the kill info.
   Mortuary& game_mortuary = Game::instance().get_mortuary_ref();
   game_mortuary.add_creature_kill(killed_creature_id, is_unique);
@@ -797,6 +818,14 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const stri
   {
     Mortuary& creature_mortuary = attacking_creature->get_mortuary_ref();
     creature_mortuary.add_creature_kill(killed_creature_id, is_unique);
+
+    int level_diff = cgv.get_danger_level() - attacking_creature->get_level().get_current();
+    pair<int, string> max_diff = creature_mortuary.get_max_level_difference();
+
+    if (level_diff > max_diff.first)
+    {
+      creature_mortuary.set_max_level_difference(make_pair(level_diff, killed_creature_id));
+    }
   }
 }
 

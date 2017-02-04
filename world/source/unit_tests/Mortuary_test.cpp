@@ -34,6 +34,22 @@ TEST(SW_World_Mortuary, num_uniques_killed)
   EXPECT_EQ(1, m.get_num_uniques_killed());
 }
 
+TEST(SW_World_Mortuary, max_level_difference)
+{
+  Mortuary m;
+
+  pair<int, string> actual = m.get_max_level_difference();
+  
+  EXPECT_EQ(-1, actual.first);
+  EXPECT_EQ("", actual.second);
+
+  m.set_max_level_difference(make_pair(2, "creature_1"));
+  actual = m.get_max_level_difference();
+  
+  EXPECT_EQ(2, actual.first);
+  EXPECT_EQ("creature_1", actual.second);
+}
+
 TEST(SW_World_Mortuary, serialization_id)
 {
   Mortuary m;

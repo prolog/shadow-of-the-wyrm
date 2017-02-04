@@ -44,5 +44,19 @@ string MortuaryDumper::get_mortuary() const
 
   ss << endl << StringTable::get(TextKeys::TOTAL) << ": " << mortuary.get_num_creatures_killed() << endl;
 
+  pair<int, string> max_level_diff = mortuary.get_max_level_difference();
+  string creature_id = max_level_diff.second;
+
+  if (!creature_id.empty())
+  {
+    ss << StringTable::get(TextKeys::MAXIMUM_LEVEL_DIFFERENCE) << ": " << max_level_diff.first;
+    auto m_it = cmap.find(creature_id);
+
+    if (m_it != cmap.end())
+    {
+      ss << " (" << StringTable::get(m_it->second->get_short_description_sid()) << ")" << endl;
+    }
+  }
+
   return ss.str();
 }

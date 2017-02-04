@@ -16,6 +16,8 @@ class Readable : public Item
     virtual void set_text_sid(const std::string& new_text_sid);
     virtual std::string get_text_sid() const;
 
+    virtual bool additional_item_attributes_match(ItemPtr item) const override;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
     

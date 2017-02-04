@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
+#include "DropScript.hpp"
 #include "GameUtils.hpp"
 #include "IFeatureManipulatorFactory.hpp"
 #include "ItemFilterFactory.hpp"
@@ -10,6 +11,7 @@
 #include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "SeedCalculator.hpp"
 #include "TextMessages.hpp"
 #include "Tile.hpp"
@@ -132,6 +134,11 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
   ActionCostValue action_cost_value = 0;
   TilePtr creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
 
+  // Redraw the main screen so that any interaction via scripts looks good.
+  Game& game = Game::instance();
+  game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+  game.get_display()->redraw();
+
   if (item_to_drop)
   {
     uint quantity = item_to_drop->get_quantity();
@@ -170,14 +177,19 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       }
       else
       {
-        if (creatures_tile)
+        if (creatures_tile && creature)
         {
+          Coordinate drop_coord = current_map->get_location(creature->get_id());
+
           IInventoryPtr inv = creatures_tile->get_items();
           inv->merge_or_add(new_item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
 
           // Display a message if appropriate.
           // If it's the player, remind the user what he or she dropped.
           handle_item_dropped_message(creature, new_item);
+
+          // Do any of the creatures watching this have drop scripts?
+          handle_reacting_creature_drop_scripts(creature, current_map, new_item, drop_coord);
 
           // If there's a feature present, invoke the manipulator to see
           // if there are any actions that need to be done.  This really
@@ -268,6 +280,39 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
   }
   
   return planted;
+}
+
+void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, MapPtr current_map, ItemPtr new_item, const Coordinate& drop_coord)
+{
+  Game& game = Game::instance();
+
+  // For all the creatures that can see the dropping creature, run
+  // any associated drop scripts.
+  map<string, CreaturePtr> creatures = current_map->get_creatures();
+  for (const auto& cr_pair : creatures)
+  {
+    CreaturePtr reacting_creature = cr_pair.second;
+
+    if (reacting_creature != nullptr)
+    {
+      MapPtr fov_map = cr_pair.second->get_decision_strategy()->get_fov_map();
+
+      if (fov_map)
+      {
+        map<string, CreaturePtr> fov_creatures = fov_map->get_creatures();
+        if (fov_creatures.find(creature->get_id()) != fov_creatures.end())
+        {
+          ScriptDetails sd = reacting_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP);
+
+          if (RNG::percent_chance(sd.get_chance()))
+          {
+            DropScript ds;
+            ds.execute(game.get_script_engine_ref(), sd.get_script(), creature->get_id(), reacting_creature, new_item, drop_coord);
+          }
+        }
+      }
+    }
+  }
 }
 
 // Dropping always has a base action cost of 1.

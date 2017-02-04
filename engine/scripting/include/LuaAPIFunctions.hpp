@@ -10,6 +10,7 @@ extern "C" {
 
 void set_local_creature(CreaturePtr creature);
 CreaturePtr get_creature(const std::string& creature_id);
+CreaturePtr get_creature_from_map(const std::string& creature_id, const std::string& map_id);
 TilePtr get_tile(const std::string& map_id, const Coordinate& c);
 
 // API prototypes
@@ -29,6 +30,7 @@ int get_num_creature_killed_global(lua_State* ls);
 int get_num_uniques_killed_global(lua_State* ls);
 int add_object_to_player_tile(lua_State* ls);
 int add_object_to_tile(lua_State* ls);
+int add_key_to_player_tile(lua_State* ls);
 int add_feature_to_player_tile(lua_State* ls);
 int mark_quest_completed(lua_State* ls);
 int remove_active_quest(lua_State* ls);
@@ -44,15 +46,18 @@ int RNG_range(lua_State* ls);
 int RNG_percent_chance(lua_State* ls);
 int add_spell_castings(lua_State* ls);
 int gain_experience(lua_State* ls);
+int get_experience_value(lua_State* ls);
 int add_creature_to_map(lua_State* ls);
 int remove_creature_from_map(lua_State* ls);
 int add_status_to_creature(lua_State* ls);
 int add_status_to_creature_at(lua_State* ls);
+int get_creature_statuses(lua_State* ls);
 int stop_playing_game(lua_State* ls);
 int set_creature_base_damage(lua_State* ls);
 int set_creature_speed(lua_State* ls);
 int get_creature_speed(lua_State* ls);
 int get_creature_yx(lua_State* ls);
+int get_creature_id(lua_State* ls);
 int get_current_map_id(lua_State* ls);
 int incr_str(lua_State* ls);
 int incr_dex(lua_State* ls);
@@ -85,6 +90,7 @@ int get_player_title(lua_State* ls);
 int set_creature_current_hp(lua_State* ls);
 int set_creature_current_ap(lua_State* ls);
 int set_creature_name(lua_State* ls);
+int get_creature_name(lua_State* ls);
 int destroy_creature_equipment(lua_State* ls);
 int destroy_creature_inventory(lua_State* ls);
 int get_deity_summons(lua_State* ls);
@@ -135,6 +141,20 @@ int get_map_dimensions(lua_State* ls);
 int get_coords_with_tile_type_in_range(lua_State* ls);
 int get_custom_map_id(lua_State* ls);
 int ranged_attack(lua_State* ls);
+int get_spellbooks(lua_State* ls);
+int set_shop_shopkeeper_id(lua_State* ls);
+int repop_shop(lua_State* ls);
+int get_unpaid_amount(lua_State* ls);
+int set_items_paid(lua_State* ls);
+int bargain_discount(lua_State* ls);
+int bargain_premium(lua_State* ls);
+int get_item_type(lua_State* ls);
+int get_shop_id(lua_State* ls);
+int get_stocked_item_types(lua_State* ls);
+int get_sale_price(lua_State* ls);
+int set_item_unpaid(lua_State* ls);
+int is_in_shop(lua_State* ls);
+int is_item_unpaid(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

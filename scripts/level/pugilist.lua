@@ -43,8 +43,16 @@ local function pugilist_stat_gain_fn(creature_id, level)
   end
 end
 
+-- Pugilists do 1d(2 * level) up to level 25.
+-- From level 26 on, they do 1d(50 + 3 * level)
 local function pugilist_level_fn(creature_id, level)
-  set_creature_base_damage(creature_id, 1, 2 * level)
+  local damage_dice = 2 * level
+
+  if level > 25 then
+    damage_dice = 50 + ((level - 25) * 3)
+  end
+
+  set_creature_base_damage(creature_id, 1, damage_dice)
 end
 
 -- Set up the pugilist class functions.

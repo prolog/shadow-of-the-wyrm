@@ -51,7 +51,7 @@ string CreatureDescriber::describe() const
 
         if (!creature_name.empty())
         {
-          creature_desc = creature_name + ", " + creature_desc;
+          creature_desc = creature_name;
         }
       }
     }

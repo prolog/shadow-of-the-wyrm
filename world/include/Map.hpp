@@ -6,9 +6,10 @@
 #include "common.hpp"
 #include "Dimensions.hpp"
 #include "ISerializable.hpp"
-#include "Tile.hpp"
 #include "MapExit.hpp"
 #include "MapTypes.hpp"
+#include "Shop.hpp"
+#include "Tile.hpp"
 #include "TileTransform.hpp"
 
 // Forward declarations.
@@ -118,6 +119,10 @@ class Map : public ISerializable
     std::vector<Coordinate> get_preset_locations() const;
     std::vector<Coordinate>& get_preset_locations_ref();
 
+    void set_shops(const std::map<std::string, Shop>& new_shops);
+    std::map<std::string, Shop>& get_shops_ref();
+    std::map<std::string, Shop> get_shops() const;
+    
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -148,6 +153,7 @@ class Map : public ISerializable
     std::map<std::string, std::string> properties;
     TileTransformContainer tile_transforms;
     std::vector<Coordinate> preset_locations; // used for generating creatures onto specific locations
+    std::map<std::string, Shop> shops;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

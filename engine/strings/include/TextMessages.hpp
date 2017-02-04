@@ -27,6 +27,7 @@ class TextMessages
     static std::string get_item_pick_up_and_merge_message(const bool player_blind, CreaturePtr creature, ItemPtr item);
     static std::string get_item_on_ground_description_message(const bool blind, ItemPtr item);
     static std::string get_currency_amount_message(const uint currency_amount);
+    static std::string get_unpaid_amount_message(const uint unpaid_amount);
     static std::string get_reflexive_pronoun(CreaturePtr creature);
     static std::string get_experience_synopsis(const int level, const int exp, const int exp_required, const int next_level, const std::string& race_name, const float r_mult, const std::string class_name, const float c_mult);
     static std::string get_special_day_message(const std::string& day_name_sid, const std::string& day_desc_sid);
@@ -49,6 +50,7 @@ class TextMessages
     static const std::string ITEM_ON_GROUND_DESCRIPTION_MESSAGE;
     static const std::string CURRENCY_MESSAGE_SINGLE;
     static const std::string CURRENCY_MESSAGE_MULTIPLE;
+    static const std::string CURRENCY_OWING_MESSAGE;
     static const std::string NAME_TITLE_MESSAGE;
     static const std::string EXPERIENCE_SYNOPSIS_MESSAGE;
     static const std::string EXPERIENCE_SYNOPSIS_MAX_MESSAGE;

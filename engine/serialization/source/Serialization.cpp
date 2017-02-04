@@ -16,6 +16,7 @@
 #include "RNG.hpp"
 #include "Serialization.hpp"
 #include "Serialize.hpp"
+#include "Setting.hpp"
 
 using namespace std;
 using namespace boost::algorithm;
@@ -56,8 +57,8 @@ void Serialization::save(CreaturePtr creature)
     meta.serialize(stream);
 
     Settings& settings = game.get_settings_ref();
-    bool use_compression = String::to_bool(settings.get_setting("savefile_compression"));
-    int compression_level = String::to_int(settings.get_setting("compression_level"));
+    bool use_compression = String::to_bool(settings.get_setting(Setting::SAVEFILE_COMPRESSION));
+    int compression_level = String::to_int(settings.get_setting(Setting::COMPRESSION_LEVEL));
     Serialize::write_bool(stream, use_compression);
     Serialize::write_int(stream, compression_level);
 

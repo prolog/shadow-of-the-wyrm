@@ -37,6 +37,7 @@
 #include "QuestListAction.hpp"
 #include "ReadAction.hpp"
 #include "SearchAction.hpp"
+#include "Setting.hpp"
 #include "ShowConductsAction.hpp"
 #include "ShowResistancesAction.hpp"
 #include "SkinAction.hpp"
@@ -586,7 +587,7 @@ ActionCost ActionManager::rest(CreaturePtr creature)
 {
   Game& game = Game::instance();
   Settings& settings = game.get_settings_ref();
-  int rest_turns = String::to_int(settings.get_setting("rest_turns"));
+  int rest_turns = String::to_int(settings.get_setting(Setting::REST_TURNS));
   creature->get_automatic_movement_ref().set_turns(rest_turns);
 
   if (creature && creature->get_is_player())

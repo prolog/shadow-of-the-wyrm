@@ -18,6 +18,11 @@ class ItemPietyCalculator
     // value.  Deities don't like pitiful offerings.
     static const int MINIMUM_PIETY;
 
+    // How much nutrition does something have before it can be considered for
+    // piety?  E.g., silverweed is very nutritious, and is fine; corpses are
+    // also fine; harvested fish doesn't meet the requirements.
+    static const int MINIMUM_NUTRITION_FOR_PIETY;
+
     // The base divisor to arrive at piety - used for most items (all but
     // corpses, which deities especially like).
     static const int BASE_DIVISOR;

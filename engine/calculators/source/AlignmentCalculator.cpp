@@ -84,7 +84,7 @@ int AlignmentCalculator::calculate_alignment_for_sacrifice_on_crossaligned_altar
   return new_alignment;
 }
 
-// Get the percent chance that an altar
+// Get the percent chance that an altar is converted.
 int AlignmentCalculator::calculate_pct_chance_for_altar_conversion(ItemPtr item, const AlignmentRange current_alignment_range, const AlignmentRange altar_alignment_range)
 {
   int pct_chance = 0;
@@ -103,7 +103,7 @@ int AlignmentCalculator::calculate_pct_chance_for_altar_conversion(ItemPtr item,
       pct_chance = static_cast<int>(pct_chance * 0.75);
     }
 
-    // There's always a slim chance to convert an altar.
+    // There's always a slim chance to convert an altar...
     pct_chance = std::max<int>(pct_chance, 1);
   }
 

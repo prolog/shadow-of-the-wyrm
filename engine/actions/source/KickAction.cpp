@@ -110,6 +110,8 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
   if (creature && current_map)
   {
     TilePtr k_tile = MapUtils::get_adjacent_tile(current_map, creature, direction);
+    Coordinate k_coord = CoordUtils::get_new_coordinate(current_map->get_location(creature->get_id()), direction);
+
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
     if (k_tile)
@@ -131,14 +133,14 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
       {
         // Kick the top item in the pile in the given direction.
         TilePtr new_tile = MapUtils::get_adjacent_tile(current_map, creature, direction, 2);
-        acv = kick_item(creature, k_tile, new_tile, direction);
+        acv = kick_item(creature, current_map, k_tile, new_tile, direction);
       }
       // No creature to kick.  Is there a feature?
       else if (k_tile->has_feature())
       {
         if (!creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
         {
-          acv = kick_feature(creature, current_map, k_tile, k_tile->get_feature());
+          acv = kick_feature(creature, current_map, k_tile, k_coord, k_tile->get_feature());
         }
         else
         {
@@ -193,7 +195,7 @@ ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, Creature
   return acv;
 }
 
-ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, FeaturePtr kick_feature)
+ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, const Coordinate& kick_coord, FeaturePtr kick_feature)
 {
   if (creature && current_map && kick_tile && kick_feature)
   {
@@ -215,7 +217,7 @@ ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_ma
     if (manipulator)
     {
       // Do any specific logic required due to the kicking.
-      manipulator->kick(creature, current_map, kick_tile, kick_feature);
+      manipulator->kick(creature, current_map, kick_tile, kick_coord, kick_feature);
     }
   }
 
@@ -224,11 +226,11 @@ ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_ma
 
 // Kick an item in the given tile.  Kicking moves the top item over by one
 // tile, assuming that's a legal move (the new tile isn't null, etc).
-ActionCostValue KickAction::kick_item(CreaturePtr creature, TilePtr kick_tile, TilePtr new_tile, const Direction direction)
+ActionCostValue KickAction::kick_item(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, TilePtr new_tile, const Direction direction)
 {
   ActionCostValue acv = get_action_cost_value(creature);
 
-  if (creature && kick_tile && !kick_tile->get_items()->empty())
+  if (creature && current_map && kick_tile && !kick_tile->get_items()->empty())
   {
     // First, get the item.
     ItemPtr item = kick_tile->get_items()->at(0);
@@ -240,6 +242,13 @@ ActionCostValue KickAction::kick_item(CreaturePtr creature, TilePtr kick_tile, T
     ItemDescriberPtr describer = ItemDescriberFactory::create_item_describer(creature_blind, item);
     string object_desc = describer->describe_usage();
     string kick_msg = ActionTextKeys::get_kick_object_message(creature->get_description_sid(), object_desc, creature->get_is_player());
+
+    // Kicking an unpaid item in a shop angers the shopkeeper.
+    if (item->get_unpaid())
+    {
+      Coordinate kick_coord = current_map->get_location(creature->get_id());
+      MapUtils::anger_shopkeeper_if_necessary(kick_coord, current_map, creature);
+    }
 
     // If the new tile actually exists, and is not blocking (a wall, etc)
     // then add the item to its inventory and remove the item from its 

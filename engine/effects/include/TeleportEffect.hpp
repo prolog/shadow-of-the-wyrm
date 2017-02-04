@@ -9,6 +9,9 @@ class TeleportEffect : public Effect
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual void read_properties(const std::map<std::string, std::string>& properties) override;
 
+    // Creatures get angry when wrenched randomly around maps.
+    virtual bool is_negative_effect() const override;
+
     virtual Effect* clone() override;
 
   protected:

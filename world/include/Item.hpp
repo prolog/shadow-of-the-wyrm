@@ -67,6 +67,7 @@ class Item : public ISerializable
     
     virtual void set_value(const uint new_value);
     virtual uint get_value() const;
+    virtual uint get_total_value() const;
 
     virtual void set_weight(const Weight& new_weight);
     virtual Weight get_weight() const;
@@ -108,13 +109,13 @@ class Item : public ISerializable
     ItemIdentificationType get_identification_type() const;
     
     // Functions for stack management
-    virtual bool matches(std::shared_ptr<Item> item);
+    virtual bool matches(std::shared_ptr<Item> item) const;
     
     // additional_item_attributes_match needs to be implemented by the subclasses of item.
     // It is included in the checks in matches, and is used to determine item type-specific
     // match behaviour. (e.g., potions need to match on spells, weapons need to match on
     // to-hit and damage, etc.).  The base class version just returns true.
-    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) const = 0;
 
     virtual void set_effect_type(const EffectType new_effect_type);
     virtual EffectType get_effect_type() const;
@@ -171,6 +172,9 @@ class Item : public ISerializable
     void add_event_script(const std::string& event_name, const ScriptDetails& sd);
     bool has_event_script(const std::string& event_name);
     ScriptDetails get_event_script(const std::string& event_name) const;
+
+    void set_unpaid(const bool new_unpaid);
+    bool get_unpaid() const;
 
     virtual Item* create_with_new_id();
     virtual Item* create();
@@ -232,6 +236,7 @@ class Item : public ISerializable
     Statistic remaining_smithings;
     std::map<std::string, std::string> additional_properties;
     std::map<std::string, ScriptDetails> event_scripts;
+    bool unpaid;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

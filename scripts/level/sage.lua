@@ -16,7 +16,7 @@ end
 local function sage_level_fn(creature_id, lvl)
   
   -- Sages start with shadow flame, and gain fewer castings.
-  add_spell_castings(creature_id, "p_01_shadow_flame", 2 * lvl)
+  add_spell_castings(creature_id, "p_01_shadow_flame", 1.5 * lvl)
 
   -- Sages can protect themselves against shadow damage at level 6.
   if (lvl >= 6) then
@@ -28,12 +28,12 @@ local function sage_level_fn(creature_id, lvl)
 
   -- Start adding castings of Nether Bolt at level 10.
   if (lvl >= 10) then
-    add_spell_castings(creature_id, "p_04_nether_bolt", lvl)
+    add_spell_castings(creature_id, "p_04_nether_bolt", lvl * 0.75)
   end
 
   -- Start adding castings of Chaos Aura at level 25.
   if (lvl >= 25) then
-    add_spell_castings(creature_id, "p_05_chaos_aura", lvl)
+    add_spell_castings(creature_id, "p_05_chaos_aura", lvl * 0.75)
   end
 
   -- Start adding castings of Nightfire at level 40.

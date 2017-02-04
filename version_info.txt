@@ -1,3 +1,123 @@
+Shadow of the Wyrm v0.6.0 "Capirola"
+- Version declared January 11, 2017.  Version finalized February 3, 2017.
+
+- More potential random names for character creation.
+
+- Witchlings and sages now get fewer castings per level (Esran).
+
+- Thievery is no longer a slow action - it should be about the same as
+  attacking. (Dallas Herrin)
+
+- When sacrificing consumables, there are now additional checks for the
+  item to be accepted by a deity.  It must have either a large amount of
+  nutrition, or have some sort of magical effect.  For food, things such 
+  as corpses, silverweed, food rations are all okay; fish and roots and 
+  such won't meet the minimum. (Esran)
+
+- Primary statistics (strength, dexterity, agility, health, intelligence,
+  willpower, charisma) are now capped at 99.
+
+- Hungerless races like the Fae now can now mark Health when being neither
+  hungry nor full, but at a greatly reduced rate compared to other races -
+  they only get a 20% chance to mark the stat, compared to 100% for the
+  other races.
+
+- When treating skins at a tannery, you can now select the ranged weapon
+  slot, which will allow you to create a sling.  These can take on
+  evade/soak/resistances based on the corpse like other tanned equipment.
+
+- The mortuary now tracks the maximum difference between a slain 
+  creature's danger level and the player's level when that creature was
+  killed.
+
+- Character info/dumps now also tracks the number of turns taken.
+
+- Puglists now deal more damage.  They deal 1d(level) from 1 to 25, and
+  1d(50 + (level-25) * 3) from 26 to 50. (4chan /rlg)
+
+- When firing a branded ranged weapon with ammunition, the ammunition's
+  damage type becomes that of the launcher.
+
+- Oracles get a 5% bonus on experience points when killing a creature
+  that has at least one status.
+
+- Creatures now get angry at you if you teleport them.
+
+- Added a new map, Whaling's End, at the south-most part of the world.
+  An ancient citadel, it has been repurposed by traders as the last
+  outpost at the edge of the map.
+
+  - Hrethel, the hedge wizard of Whaling's End, will trade you one of his
+    many spellbooks in exchange for a score of magici shards.
+
+  - There are two shops in Whaling's End: Noah and Itzchak have a variety 
+    of goods for sale.  Unpaid goods will list the total price when you 
+    look at them.  All shops have a minimum item value, so very low value 
+    items (rocks, turnips, etc) won't be generated.
+
+  - Shopkeepers don't enjoy literal door-crashers.  They also don't like
+    people kicking the wares, reading the wares, eating the wares,
+    quaffing the wares, or generally acting antisocial with regards to
+    the wares.  In fact, they're rather unpleasant.
+
+  - Shopkeepers also look out for each other - if they see you outside a
+    shop with unpaid goods, from any shop, they will seek revenge.
+
+  - The total amount owing can now be seen with the "$" command.  You can
+    pay for unpaid merchandise by chatting to the shopkeeper.
+
+  - When you buy or sell, the Bargaining skill, in conjunction with your
+    Charisma, determine if you can get a reduced price on a purchase or
+    a better price on a sale, and if so, by how much.
+
+- Added a shop to Isen Dun (food, weapons, ammunition), Forest of Yew
+  (wands), and Atua-Elar (books).
+
+- Now that money is more useful, nobles now start with more money.
+
+- More stanzas for the epic poem.
+
+- New creatures: Hrethel, whaler, scrimshander, shopkeeper, seadog,
+  swabbie, harlot.
+
+- New items: lunch.
+
+- Bug fixes:
+
+  - Missed comma in one of the naming options was leading to
+    three-syllable names like "SulTanak."
+
+  - Keys were stacking incorrectly, causing different crypt keys to be
+    grouped together and lose track of the lock they open. (Dallas Herrin)
+
+  - Traps without components (light traps, etc) couldn't be disarmed.
+
+  - Alcien and Rukhala weren't specified as unique (Esran).
+
+  - When deities summoned creatures around the player when angry, these
+    could, like regular creatures, be generated friendly. (Dallas Herrin)
+
+  - Branding was not properly adding resistances for armour. (Dallas
+    Herrin)
+
+  - Altars could be converted by offering items that generated no piety.
+
+  - Status effects that applied modifiers, such as blindness with evade
+    and disfiguration with the primary statistics, weren't having these
+    modifiers properly removed when the effect was undone via prayer. 
+    (Dallas Herrin)
+
+  - The "fire through" code for archery had a bug in it that was
+    preventing the proper targetting of creatures at high Archery skill
+    values. (Dallas Herrin)
+
+  - In-game character dumps were trimming left spaces on each line.
+
+  - Doors could open and shut when there was an item present on the tile.
+
+  - Rarity probabilities weren't properly defined for the "very rare"
+    rarity, which is used for shops.
+        
 Shadow of the Wyrm v0.5.9 "Galilei"
 - Version declared January 1, 2017.  Version finalized January 11, 2017.
 

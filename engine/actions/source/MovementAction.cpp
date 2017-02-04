@@ -21,6 +21,7 @@
 #include "MovementTypes.hpp"
 #include "RNG.hpp"
 #include "SearchAction.hpp"
+#include "Setting.hpp"
 #include "SkillManager.hpp"
 #include "StairwayMovementAction.hpp"
 #include "TerrainGeneratorFactory.hpp"
@@ -612,7 +613,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Til
 
     Game& game = Game::instance();
     Settings& settings = game.get_settings_ref();
-    bool never_move_to_danger = String::to_bool(settings.get_setting("never_move_to_danger_tiles"));
+    bool never_move_to_danger = String::to_bool(settings.get_setting(Setting::NEVER_MOVE_TO_DANGER_TILES));
 
     if (never_move_to_danger == false)
     {

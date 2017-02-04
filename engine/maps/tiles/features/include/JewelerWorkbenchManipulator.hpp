@@ -10,7 +10,7 @@ class JewelerWorkbenchManipulator : public ForgeManipulator
   public:
     JewelerWorkbenchManipulator(FeaturePtr feature);
 
-    void kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature) override;
+    void kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature) override;
 
   protected:
     virtual bool check_creature_passes_prerequisites(CreaturePtr creature) override;

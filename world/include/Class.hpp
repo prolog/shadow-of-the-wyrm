@@ -76,6 +76,9 @@ class Class
     void set_level_script(const std::string& new_level_script);
     std::string get_level_script() const;
 
+    void set_kill_script(const std::string& new_kill_script);
+    std::string get_kill_script() const;
+
     void set_titles(const std::map<int, std::string>& new_titles);
     std::map<int, std::string> get_titles() const;
 
@@ -119,6 +122,11 @@ class Class
     // to be somewhat interesting, rather than just a collection of
     // stats.
     std::string level_script;
+
+    // Ditto for when a creature is killed.  Do certain things happen
+    // when they kill creatures?  Is more experience granted in certain
+    // cases?
+    std::string kill_script;
 
     // A map of levels to titles.
     std::map<int, std::string> titles;

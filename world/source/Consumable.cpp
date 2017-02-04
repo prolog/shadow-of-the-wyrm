@@ -19,10 +19,7 @@ bool Consumable::operator==(const Consumable& consumable) const
   bool result = true;
 
   result = result && Item::operator==(consumable);
-  result = result && (nutrition == consumable.nutrition);
-  result = result && (standard_drinks == consumable.standard_drinks);
-  result = result && (food_type == consumable.food_type);
-  result = result && (poisoned == consumable.poisoned);
+  result = result && consumable_properties_match(consumable);
 
   return result;
 }
@@ -83,6 +80,31 @@ bool Consumable::get_poisoned() const
   return poisoned;
 }
 
+bool Consumable::additional_item_attributes_match(ItemPtr item) const
+{
+  bool match = false;
+  ConsumablePtr consumable = dynamic_pointer_cast<Consumable>(item);
+
+  if (consumable != nullptr)
+  {
+    match = consumable_properties_match(*consumable);
+  }
+
+  return match;
+}
+
+bool Consumable::consumable_properties_match(const Consumable& cons) const
+{
+  bool result = true;
+  
+  result = (nutrition == cons.nutrition);
+  result = result && (standard_drinks == cons.standard_drinks);
+  result = result && (food_type == cons.food_type);
+  result = result && (poisoned == cons.poisoned);
+
+  return result;
+}
+
 // Food becomes more or less nutritious, based on whether the enchantment's BUC
 // status.  Any poison is also removed.
 void Consumable::do_enchant_item(const int points)
@@ -112,3 +134,7 @@ bool Consumable::deserialize(istream& stream)
 
   return true;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Consumable_test.cpp"
+#endif

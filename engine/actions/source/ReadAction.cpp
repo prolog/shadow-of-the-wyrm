@@ -2,9 +2,12 @@
 #include "ActionTextKeys.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "EffectFactory.hpp"
+#include "Game.hpp"
+#include "HostilityManager.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ReadStrategyFactory.hpp"
 #include "ItemIdentifier.hpp"
+#include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "ReadAction.hpp"
 
@@ -41,11 +44,21 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
 
         if (read_strategy)
         {
+          Game& game = Game::instance();
+          MapPtr map = game.get_current_map();
+
           // Cast or learn the spell from the scroll/spellbook/etc.
           action_cost_value = read_strategy->read(creature, am, readable);
 
           // Break the illiterate conduct.
           creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_ILLITERATE);
+
+          // If we're in a shop, anger the shopkeeper.
+          // Shops aren't libraries!
+          if (readable->get_unpaid())
+          {
+            MapUtils::anger_shopkeeper_if_necessary(map->get_location(creature->get_id()), map, creature);
+          }
 
           creature->get_skills().mark(SkillType::SKILL_GENERAL_LITERACY);
         }

@@ -426,6 +426,7 @@ const string ActionTextKeys::ACTION_GET_DIRECTION              = "ACTION_GET_DIR
 const string ActionTextKeys::ACTION_GET_CARDINAL_DIRECTION     = "ACTION_GET_CARDINAL_DIRECTION";
 const string ActionTextKeys::ACTION_OPEN_DOOR                  = "ACTION_OPEN_DOOR";
 const string ActionTextKeys::ACTION_CLOSE_DOOR                 = "ACTION_CLOSE_DOOR";
+const string ActionTextKeys::ACTION_DOOR_BLOCKED               = "ACTION_DOOR_BLOCKED";
 const string ActionTextKeys::ACTION_OPEN_SARCOPHAGUS           = "ACTION_OPEN_SARCOPHAGUS";
 const string ActionTextKeys::ACTION_OPEN_SARCOPHAGUS_CONFIRM   = "ACTION_OPEN_SARCOPHAGUS_CONFIRM";
 const string ActionTextKeys::ACTION_OPEN_SARCOPHAGUS_ALREADY_OPEN = "ACTION_OPEN_SARCOPHAGUS_ALREADY_OPEN";

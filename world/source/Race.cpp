@@ -240,6 +240,7 @@ AgeInfo Race::get_age_info() const
 void Race::set_starting_strength(const Statistic& new_starting_strength)
 {
   starting_strength = new_starting_strength;
+  starting_strength.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Race::get_starting_strength() const
@@ -250,6 +251,7 @@ Statistic Race::get_starting_strength() const
 void Race::set_starting_dexterity(const Statistic& new_starting_dexterity)
 {
   starting_dexterity = new_starting_dexterity;
+  starting_dexterity.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Race::get_starting_dexterity() const
@@ -260,6 +262,7 @@ Statistic Race::get_starting_dexterity() const
 void Race::set_starting_agility(const Statistic& new_starting_agility)
 {
   starting_agility = new_starting_agility;
+  starting_agility.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Race::get_starting_agility() const
@@ -270,6 +273,7 @@ Statistic Race::get_starting_agility() const
 void Race::set_starting_health(const Statistic& new_starting_health)
 {
   starting_health = new_starting_health;
+  starting_health.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Race::get_starting_health() const
@@ -280,6 +284,7 @@ Statistic Race::get_starting_health() const
 void Race::set_starting_intelligence(const Statistic& new_starting_intelligence)
 {
   starting_intelligence = new_starting_intelligence;
+  starting_intelligence.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Race::get_starting_intelligence() const
@@ -290,6 +295,7 @@ Statistic Race::get_starting_intelligence() const
 void Race::set_starting_willpower(const Statistic& new_starting_willpower)
 {
   starting_willpower = new_starting_willpower;
+  starting_willpower.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Race::get_starting_willpower() const
@@ -300,6 +306,7 @@ Statistic Race::get_starting_willpower() const
 void Race::set_starting_charisma(const Statistic& new_starting_charisma)
 {
   starting_charisma = new_starting_charisma;
+  starting_charisma.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 }
 
 Statistic Race::get_starting_charisma() const

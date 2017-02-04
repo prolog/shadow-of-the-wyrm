@@ -63,7 +63,7 @@ class CreatureConstants
   public:
     static const int DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH;
     static const unsigned int MAX_CREATURE_LEVEL;
-  
+    static const int MAX_CREATURE_PRIMARY_STATISTIC_VALUE; // str, dex, etc, but not speed, hp, etc.
   protected:
     CreatureConstants();
     ~CreatureConstants();
@@ -76,6 +76,7 @@ class CreatureEventScripts
     static const std::string CREATURE_EVENT_SCRIPT_ATTACK;
     static const std::string CREATURE_EVENT_SCRIPT_CHAT;
     static const std::string CREATURE_EVENT_SCRIPT_DECISION;
+    static const std::string CREATURE_EVENT_SCRIPT_DROP;
 
   protected:
     CreatureEventScripts();

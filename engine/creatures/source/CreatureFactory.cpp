@@ -110,6 +110,9 @@ CreaturePtr CreatureFactory::create_by_creature_id
     uint actual_experience_value = RNG::range(ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_LOWER_MULTIPLIER), ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_UPPER_MULTIPLIER));
     creature->set_experience_value(actual_experience_value);
 
+    // Update the statistics based on what's in the initial statistics modifiers.
+    set_initial_statistics_modifiers(creature, cgv);
+
     // Increment the creature's skills based on the skills in the generation
     // values.
     Skills& skills = creature->get_skills();
@@ -357,6 +360,36 @@ void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race,
 
   // Calculate AP bonus:
   creature->set_arcana_points(initial_ap + ap_bonus);
+}
+
+// Primary stats can be modified for creatures not created via race/class
+void CreatureFactory::set_initial_statistics_modifiers(CreaturePtr creature, const CreatureGenerationValues& cgv)
+{
+  if (creature != nullptr)
+  {
+    Modifier stat_mod = cgv.get_modifier();
+
+    Statistic& strength = creature->get_strength_ref();
+    strength.set_base_current(strength.get_base() + stat_mod.get_strength_modifier());
+
+    Statistic& dexterity = creature->get_dexterity_ref();
+    dexterity.set_base_current(dexterity.get_base() + stat_mod.get_dexterity_modifier());
+
+    Statistic& agility = creature->get_agility_ref();
+    agility.set_base_current(agility.get_base() + stat_mod.get_agility_modifier());
+
+    Statistic& health = creature->get_health_ref();
+    health.set_base_current(health.get_base() + stat_mod.get_health_modifier());
+
+    Statistic& intelligence = creature->get_intelligence_ref();
+    intelligence.set_base_current(intelligence.get_base() + stat_mod.get_intelligence_modifier());
+
+    Statistic& willpower = creature->get_willpower_ref();
+    willpower.set_base_current(willpower.get_base() + stat_mod.get_willpower_modifier());
+
+    Statistic& charisma = creature->get_charisma_ref();
+    charisma.set_base_current(charisma.get_base() + stat_mod.get_charisma_modifier());
+  }
 }
 
 void CreatureFactory::set_age(CreaturePtr creature, const AgeInfo& age_info)

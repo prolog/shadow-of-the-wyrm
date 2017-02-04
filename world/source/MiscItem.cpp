@@ -12,6 +12,11 @@ MiscItem::~MiscItem()
 {
 }
 
+bool MiscItem::additional_item_attributes_match(ItemPtr item) const
+{
+  return true;
+}
+
 Item* MiscItem::clone()
 {
   return new MiscItem(*this);

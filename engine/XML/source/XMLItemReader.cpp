@@ -1,4 +1,5 @@
 #include "XMLItemReader.hpp"
+#include "GenerationProperties.hpp"
 #include "ItemTypes.hpp"
 #include "XMLResistancesReader.hpp"
 #include "XMLScriptsReader.hpp"
@@ -54,8 +55,10 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     if (!value_node.is_null())
     {
       uint value = static_cast<uint>(XMLUtils::get_node_int_value(value_node, 0));
-
       item->set_value(value);
+
+      // The generation values needs the value as well
+      gv.set_property(GenerationProperties::GENERATION_PROPERTIES_VALUE, to_string(static_cast<int>(item->get_value())));
     }
 
     XMLNode weight_node = XMLUtils::get_next_element_by_local_name(item_node, "Weight");
@@ -115,6 +118,9 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     // Rarity
     Rarity rarity = static_cast<Rarity>(XMLUtils::get_child_node_int_value(item_node, "Rarity"));
     gv.set_rarity(rarity);
+
+    // The generation values needs the item type
+    gv.set_property(GenerationProperties::GENERATION_PROPERTIES_ITEM_TYPE, to_string(static_cast<int>(item->get_type())));
 
     // Resistances
     XMLNode resistances_node = XMLUtils::get_next_element_by_local_name(item_node, "Resistances");

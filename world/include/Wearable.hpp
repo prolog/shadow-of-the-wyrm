@@ -27,7 +27,7 @@ class Wearable : public Item
 
     std::string get_synopsis() const override;
     
-    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) override;
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) const override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

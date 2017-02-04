@@ -33,6 +33,11 @@ string TeleportEffect::get_effect_identification_message(CreaturePtr creature) c
   return effect_msg;
 }
 
+bool TeleportEffect::is_negative_effect() const
+{
+  return true;
+}
+
 Effect* TeleportEffect::clone()
 {
   return new TeleportEffect(*this);

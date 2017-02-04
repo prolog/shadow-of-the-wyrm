@@ -8,6 +8,33 @@ TEST(SW_World_Statistic, InitialValueIs1)
   EXPECT_EQ(1, stat.get_current());
 }
 
+TEST(SW_World_Statistic, Maximum)
+{
+  Statistic stat;
+  Statistic stat2(55);
+
+  EXPECT_EQ(-1, stat.get_max());
+  EXPECT_EQ(-1, stat2.get_max());
+
+  Statistic stat3(55);
+  stat3.set_max(55);
+
+  stat3.set_current(57);
+
+  EXPECT_EQ(55, stat3.get_current());
+
+  stat3.set_base(59);
+
+  EXPECT_EQ(55, stat3.get_base());
+
+  stat3.set_max(66);
+
+  stat3.set_base_current(62);
+
+  EXPECT_EQ(62, stat3.get_base());
+  EXPECT_EQ(62, stat3.get_current());
+}
+
 TEST(SW_World_Statistic, get_max_marks)
 {
   Statistic test(16);
