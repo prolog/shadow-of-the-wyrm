@@ -55,8 +55,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // Venetian lute composer of the 16th century.
-  return "\"Capirola\"";
+  // One of the last Occitan troubadours
+  return "\"Riquier\"";
 }
 
 string Metadata::get_game_version_synopsis() const
