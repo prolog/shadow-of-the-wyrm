@@ -1,6 +1,7 @@
 #include "HungerCalculator.hpp"
 
 const int HungerCalculator::HUNGER_DAMAGE_PER_TICK = 10;
+const int HungerCalculator::PCT_CHANCE_HUNGER_WHILE_SATED = 15;
 
 int HungerCalculator::calculate_hunger_damage(CreaturePtr creature, const ulonglong num_ticks) const
 {
@@ -24,6 +25,11 @@ int HungerCalculator::calculate_pct_chance_mark_health(const HungerLevel hl, con
   }
 
   return pct_chance;
+}
+
+int HungerCalculator::calculate_pct_chance_hunger_while_sated() const
+{
+  return PCT_CHANCE_HUNGER_WHILE_SATED;
 }
 
 #ifdef UNIT_TESTS

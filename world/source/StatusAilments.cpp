@@ -38,6 +38,11 @@ set<string> StatusAilments::get_ailments() const
   return ailments;
 }
 
+bool StatusAilments::has_ailments() const
+{
+  return (ailments.empty() == false);
+}
+
 bool StatusAilments::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, override_defaults);

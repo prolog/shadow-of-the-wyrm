@@ -1,6 +1,14 @@
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.
 
+- Wearables can now apply status ailments when equipped, and undo them 
+  when unequipped.
+
+- Satiation effect type.  When in place, a creature's hunger clock
+  decrements at ~15% the normal speed.
+
+- New items: satiative amulet.
+
 Shadow of the Wyrm v0.6.0 "Capirola"
 - Version declared January 11, 2017.  Version finalized February 3, 2017.
 

@@ -132,6 +132,16 @@ void Wearable::do_improve_item(const int points)
   }
 }
 
+void Wearable::set_status_ailments(const StatusAilments& new_status_ailments)
+{
+  status_ailments = new_status_ailments;
+}
+
+StatusAilments Wearable::get_status_ailments() const
+{
+  return status_ailments;
+}
+
 bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i) const
 {
   bool match = (i != nullptr);
@@ -146,6 +156,7 @@ bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i) const
     match = match && (speed_bonus == i_wear->get_speed_bonus());
     match = match && (to_hit == i_wear->get_to_hit());
     match = match && (addl_damage == i_wear->get_addl_damage());
+    match = match && (status_ailments == i_wear->get_status_ailments());
   }
   
   return match;
@@ -154,11 +165,13 @@ bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i) const
 bool Wearable::serialize(ostream& stream) const
 {
   Item::serialize(stream);
+
   Serialize::write_int(stream, evade);
   Serialize::write_int(stream, soak);
   Serialize::write_int(stream, speed_bonus);
   Serialize::write_int(stream, to_hit);
   Serialize::write_int(stream, addl_damage);
+  status_ailments.serialize(stream);
 
   return true;
 }
@@ -166,11 +179,13 @@ bool Wearable::serialize(ostream& stream) const
 bool Wearable::deserialize(istream& stream)
 {
   Item::deserialize(stream);
+
   Serialize::read_int(stream, evade);
   Serialize::read_int(stream, soak);
   Serialize::read_int(stream, speed_bonus);
   Serialize::read_int(stream, to_hit);
   Serialize::read_int(stream, addl_damage);
+  status_ailments.deserialize(stream);
 
   return true;
 }

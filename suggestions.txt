@@ -1,5 +1,6 @@
 Me:
-- Gourmand amulet
+- Negative rings/amulets: ring of poison, spellbound amulet.
+- Lore should give you an x% chance of status identification on pickup.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
 - More shops in set locations.
@@ -11,6 +12,11 @@ Me:
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.
+- Before making negative amulets with statuses (e.g., poisoned amulet),
+  make status identifier map calculated by going through the modifiers.
+  Otherwise, it's stupid trying to figure out if a creature is still
+  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
+  amulet.  Should still be poisoned when either of the two wear off.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Allow shopkeepers to be any of the selectable races.
@@ -156,6 +162,7 @@ Samildanach:
 - Make it more obvious what skills do and how they work.
 
 Esran:
+- Allow keybindings to be updated after reloading.
 - The creatures who applied statuses aren't tracked, so players aren't
   getting exp from e.g. poison.
 - Once monsters are smarter, create spells that allow hitting monsters

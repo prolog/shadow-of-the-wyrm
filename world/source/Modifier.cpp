@@ -15,7 +15,8 @@ charisma_modifier(0),
 evade_modifier(0),
 soak_modifier(0),
 to_hit_modifier(0),
-mark_delete(false)
+mark_delete(false),
+permanent(false)
 {
   resistances.set_all_resistances_to(0);
 }
@@ -41,7 +42,8 @@ charisma_modifier(new_charisma_modifier),
 evade_modifier(0),
 soak_modifier(0),
 to_hit_modifier(0),
-mark_delete(false)
+mark_delete(false),
+permanent(false)
 {
   resistances.set_all_resistances_to(0);
 }
@@ -58,7 +60,8 @@ charisma_modifier(0),
 evade_modifier(0),
 soak_modifier(0),
 to_hit_modifier(0),
-mark_delete(false)
+mark_delete(false),
+permanent(false)
 {
   int size = args.size();
 
@@ -109,6 +112,7 @@ bool Modifier::operator==(const Modifier& m) const
   result = result && to_hit_modifier == m.to_hit_modifier;
   result = result && statuses == m.statuses;
   result = result && mark_delete == m.mark_delete;
+  result = result && permanent == m.permanent;
 
   return result;
 }
@@ -328,6 +332,17 @@ bool Modifier::get_delete() const
   return mark_delete;
 }
 
+// Is the modifier permanent? (e.g., incorporeal for spirits)
+void Modifier::set_permanent(const bool new_permanent)
+{
+  permanent = new_permanent;
+}
+
+bool Modifier::get_permanent() const
+{
+  return permanent;
+}
+
 bool Modifier::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, strength_modifier);
@@ -352,6 +367,7 @@ bool Modifier::serialize(ostream& stream) const
 
   resistances.serialize(stream);
   Serialize::write_bool(stream, mark_delete);
+  Serialize::write_bool(stream, permanent);
 
   return true;
 }
@@ -387,6 +403,7 @@ bool Modifier::deserialize(istream& stream)
 
   resistances.deserialize(stream);
   Serialize::read_bool(stream, mark_delete);
+  Serialize::read_bool(stream, permanent);
 
   return true;
 }

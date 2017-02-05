@@ -8,6 +8,7 @@
 #include "MutenessStatusEffect.hpp"
 #include "ParalysisStatusEffect.hpp"
 #include "PoisonStatusEffect.hpp"
+#include "SatedStatusEffect.hpp"
 #include "SlownessStatusEffect.hpp"
 #include "SpellboundStatusEffect.hpp"
 #include "StatusEffectFactory.hpp"
@@ -126,6 +127,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_TIMEWALK)
   {
     status_effect = std::make_shared<TimewalkStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_SATED)
+  {
+    status_effect = std::make_shared<SatedStatusEffect>();
   }
   else
   {

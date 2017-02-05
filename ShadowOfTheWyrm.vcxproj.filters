@@ -3930,6 +3930,9 @@
     <ClInclude Include="engine\scripting\include\DropScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\creatures\include\SatedStatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7753,6 +7756,9 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\RarityTypes_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\SatedStatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -25086,6 +25086,29 @@
 				<Evade>17</Evade>
 				<Soak>7</Soak>
 			</Amulet>
+			<Amulet id="satiative_amulet">
+				<DescriptionSID>SATIATIVE_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SATIATIVE_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SATIATIVE_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SATIATIVE_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>177</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<TextDetails>
+					<Symbol>#</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Evade>2</Evade>
+				<Soak>1</Soak>
+				<StatusAilments>
+					<Status>_sat</Status>
+				</StatusAilments>
+			</Amulet>
 			<Amulet id="protective_amulet">
 				<DescriptionSID>PROTECTIVE_AMULET_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_PROTECTIVE_AMULET_SID</UnidentifiedDescriptionSID>
