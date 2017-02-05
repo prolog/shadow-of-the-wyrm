@@ -14,6 +14,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_BRANDABLE;
     static const std::string ITEM_PROPERTIES_BRANDED;
     static const std::string ITEM_PROPERTIES_BRAND;
+    static const std::string ITEM_PROPERTIES_LORE_CHECKED;
 
   protected:
     ItemProperties();
