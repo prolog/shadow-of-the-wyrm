@@ -111,6 +111,12 @@ class StatusAilmentTextKeys
     static const std::string get_npc_incorporeal_message(std::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_incorporeal_message(std::shared_ptr<Creature> creature);
 
+    static const std::string STATUS_SATED;
+    static const std::string STATUS_MESSAGE_PLAYER_SATED;
+    static const std::string STATUS_MESSAGE_PLAYER_SATED_CURED;
+    static const std::string get_npc_sated_message(std::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_sated_message(std::shared_ptr<Creature> creature);
+
     static const std::string STATUS_DRUNK;
     static const std::string STATUS_MESSAGE_PLAYER_DRUNK;
     static const std::string STATUS_MESSAGE_PLAYER_SOBER;
@@ -173,6 +179,9 @@ class StatusAilmentTextKeys
 
     static const std::string STATUS_MESSAGE_NPC_INCORPOREAL;
     static const std::string STATUS_MESSAGE_NPC_UNDO_INCORPOREAL;
+
+    static const std::string STATUS_MESSAGE_NPC_SATED;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_SATED;
 
     static const std::string STATUS_MESSAGE_NPC_DRUNK;
     static const std::string STATUS_MESSAGE_NPC_SOBER;

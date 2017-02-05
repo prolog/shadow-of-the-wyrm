@@ -62,6 +62,9 @@ class Modifier : public ISerializable
     void set_delete(const bool new_delete);
     bool get_delete() const;
 
+    void set_permanent(const bool new_permanent);
+    bool get_permanent() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -87,6 +90,7 @@ class Modifier : public ISerializable
     std::map<std::string, std::pair<bool, int>> statuses;
 
     bool mark_delete;
+    bool permanent;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

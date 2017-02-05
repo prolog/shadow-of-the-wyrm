@@ -1,4 +1,5 @@
 #include <algorithm>
+#include "CreatureUtils.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "EquipmentManager.hpp"
@@ -6,6 +7,7 @@
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
+#include "StatusEffectFactory.hpp"
 #include "Wearable.hpp"
 
 using namespace std;
@@ -311,7 +313,13 @@ ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item, const Equ
       {
         action_cost_value = equip_and_reduce_inventory_quantity(creature, item, eq_worn_slot, quantity);
       }
-    }    
+    }
+
+    if (action_cost_value > 0 && item)
+    {
+      WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
+      CreatureUtils::apply_status_ailments(wearable, creature);
+    }
   }
   
   return action_cost_value; 
@@ -414,6 +422,9 @@ ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation lo
   {
     Equipment& eq = creature->get_equipment();
     item = eq.remove_item(location);
+
+    WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
+    CreatureUtils::remove_status_ailments_from_wearable(wearable, creature);
     
     if (transfer_to_inventory)
     {

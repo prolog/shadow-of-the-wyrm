@@ -221,6 +221,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
       Modifier m;
       creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
       m.set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
+      m.set_permanent(true);
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
 

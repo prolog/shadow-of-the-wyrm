@@ -1,5 +1,6 @@
 #pragma once
 #include "Item.hpp"
+#include "StatusAilments.hpp"
 
 // Wearable is an abstract class that is the parent of Weapon, Armour,
 // and any other type of Item that can be worn.  It defines bonuses to
@@ -25,6 +26,9 @@ class Wearable : public Item
     void set_speed_bonus(const int new_speed_bonus);
     int get_speed_bonus() const;
 
+    void set_status_ailments(const StatusAilments& new_status_ailments);
+    StatusAilments get_status_ailments() const;
+
     std::string get_synopsis() const override;
     
     virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) const override;
@@ -38,6 +42,7 @@ class Wearable : public Item
     virtual void do_improve_item(const int points);
 
     int evade, soak, speed_bonus, to_hit, addl_damage;
+    StatusAilments status_ailments;
 };
 
 using WearablePtr = std::shared_ptr<Wearable>;

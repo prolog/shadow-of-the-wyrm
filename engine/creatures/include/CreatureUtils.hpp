@@ -5,6 +5,7 @@
 #include "Class.hpp"
 #include "Deity.hpp"
 #include "SpellTypes.hpp"
+#include "Wearable.hpp"
 
 // Utility functions for creatures that are here (instead of on the
 // Creature class) because they require engine-specific work, such as
@@ -45,18 +46,22 @@ class CreatureUtils
     static bool has_spell_for_situation_type(CreaturePtr creature, const SpellSituationType sst);
 
     // Mark modifiers older than a certain time, or by spell/status.
-    static void mark_modifiers_for_deletion(CreaturePtr creature, const double seconds);
+    static void mark_modifiers_for_deletion(CreaturePtr creature, const double seconds, const double min_expiry = 0.0);
     static void mark_modifiers_for_deletion(CreaturePtr creature, const std::string& identifier);
 
     // Remove any marked modifiers
     static void remove_modifiers(CreaturePtr creature);
+    static void process_creature_modifiers(CreaturePtr creature, std::vector<std::pair<std::string, Modifier>>& modifiers);
+    static void process_creature_modifier(CreaturePtr creature, std::pair<std::string, Modifier>& modifier);
+
+    // Apply/remove status ailments from the wearable to the creature
+    static void apply_status_ailments(WearablePtr wearable, CreaturePtr creature);
+    static void remove_status_ailments_from_wearable(WearablePtr wearable, CreaturePtr creature);
 
   protected:
     CreatureUtils();
     ~CreatureUtils();
 
-    static void process_creature_modifiers(CreaturePtr creature, std::vector<std::pair<std::string, Modifier>>& modifiers);
-    static void process_creature_modifier(CreaturePtr creature, std::pair<std::string, Modifier>& modifier);
     static void add_removal_message(CreaturePtr creature, const std::string& spell_id);
 
     static void initialize_hunger_message_sid_map();
