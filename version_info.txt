@@ -7,6 +7,10 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 - Satiation effect type.  When in place, a creature's hunger clock
   decrements at ~15% the normal speed.
 
+- Implemented the Lore skill.  This gives a chance to identify the status
+  of an item the first time the player picks it up.  The chance is 
+  directly proportional to the skill value.
+
 - New items: satiative amulet.
 
 Shadow of the Wyrm v0.6.0 "Capirola"

@@ -1,5 +1,6 @@
 #include <list>
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
 #include "CreatureSpeedCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -7,10 +8,12 @@
 #include "GameUtils.hpp"
 #include "Inventory.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PickupAction.hpp"
+#include "RNG.hpp"
 #include "TextMessages.hpp"
 
 using namespace std;
@@ -193,6 +196,9 @@ void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInvento
     // Remove the item from the ground.
     inv->remove(pick_up_item->get_id());
 
+    // Check the creature's Lore skill to see if its status is identified.
+    potentially_identify_status(creature, pick_up_item);
+
     if (!merge_into_equipment(creature, pick_up_item))
     {
       merge_or_add_into_inventory(creature, pick_up_item);
@@ -325,6 +331,23 @@ bool PickupAction::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr ite
   }
   
   return false;
+}
+
+void PickupAction::potentially_identify_status(CreaturePtr creature, ItemPtr item)
+{
+  if (creature != nullptr && item != nullptr)
+  {
+    if (String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED)) == false)
+    {
+      item->set_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED, Bool::to_string(true));
+      int lore_val = creature->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_LORE);
+
+      if (RNG::percent_chance(lore_val))
+      {
+        item->set_status_identified(true);
+      }
+    }
+  }
 }
 
 // Base action cost value is 1.

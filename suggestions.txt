@@ -1,6 +1,5 @@
 Me:
 - Negative rings/amulets: ring of poison, spellbound amulet.
-- Lore should give you an x% chance of status identification on pickup.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
 - More shops in set locations.
