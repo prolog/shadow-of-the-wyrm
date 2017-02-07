@@ -2417,15 +2417,15 @@
 					<Races>
 						<Race>
 							<RaceID>01_human</RaceID>
-							<ID>yew_bow</ID>
+							<ID>bow</ID>
 						</Race>
 						<Race>
 							<RaceID>02_woodelf</RaceID>
-							<ID>ash_bow</ID>
+							<ID>bow</ID>
 						</Race>
 						<Race>
 							<RaceID>03_mountainelf</RaceID>
-							<ID>ash_bow</ID>
+							<ID>bow</ID>
 						</Race>
 						<Race>
 							<RaceID>04_snakeling</RaceID>
@@ -9916,7 +9916,7 @@
 				</Skills>
 				<InitialEquipmentAndInventory>
 					<Ranged>
-						<ID>ash_bow</ID>
+						<ID>bow</ID>
 					</Ranged>
 					<Ammunition>
 						<ID>avernal_arrow</ID>
@@ -21216,7 +21216,7 @@
 				</Skills>
 				<InitialEquipmentAndInventory>
 					<Ranged>
-						<ID>yew_bow</ID>
+						<ID>bow</ID>
 					</Ranged>
 					<Ammunition>
 						<ID>arrow</ID>
@@ -29006,7 +29006,7 @@
 				<UsageDescriptionSID>BRANCH_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight>
-					<Pounds>2</Pounds>
+					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
@@ -29018,6 +29018,26 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="_bough">
+				<DescriptionSID>BOUGH_SID</DescriptionSID>
+				<UsageDescriptionSID>BOUGH_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>10</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>52</Difficulty>
+				<Speed>8</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
@@ -29125,9 +29145,9 @@
 					</Slays>
 				</Damage>
 			</Weapon>
-			<Weapon id="yew_bow">
-				<DescriptionSID>YEW_BOW_SID</DescriptionSID>
-				<UsageDescriptionSID>YEW_BOW_USAGE_SID</UsageDescriptionSID>
+			<Weapon id="bow">
+				<DescriptionSID>BOW_SID</DescriptionSID>
+				<UsageDescriptionSID>BOW_USAGE_SID</UsageDescriptionSID>
 				<Value>65</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -29140,6 +29160,10 @@
 						<Name>brandable</Name>
 						<Value>1</Value>
 					</Property>
+					<Property>
+						<Name>creation_skill</Name>
+						<Value>6</Value>
+					</Property>
 				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
@@ -29148,32 +29172,6 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
-					<Type>1</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="ash_bow">
-				<DescriptionSID>ASH_BOW_SID</DescriptionSID>
-				<UsageDescriptionSID>ASH_BOW_USAGE_SID</UsageDescriptionSID>
-				<Value>80</Value>
-				<Weight>
-					<Pounds>2</Pounds>
-				</Weight>
-				<WornLocation>9</WornLocation>
-				<Material>8</Material>
-				<DangerLevel>1</DangerLevel>
-				<Properties>
-					<Property>
-						<Name>brandable</Name>
-						<Value>1</Value>
-					</Property>
-				</Properties>
-				<Skill>1009</Skill>
-				<RangedSkill>2003</RangedSkill>
-				<Difficulty>41</Difficulty>
-				<Speed>4</Speed>
-				<Damage>
-					<NumDice>1</NumDice>
-					<NumSides>4</NumSides>
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
@@ -29191,6 +29189,10 @@
 					<Property>
 						<Name>brandable</Name>
 						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>creation_skill</Name>
+						<Value>6</Value>
 					</Property>
 				</Properties>
 				<Skill>1009</Skill>

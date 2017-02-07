@@ -11,7 +11,13 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   of an item the first time the player picks it up.  The chance is 
   directly proportional to the skill value.
 
-- New items: satiative amulet.
+- The bowyer skill is implemented as well.  When you have a bough, you 
+  can use it to create a bow or a crossbow.  Higher skill values will add 
+  to-hit or damage bonuses.
+
+- Tree tiles now have a chance of generating a bough instead of a branch.
+
+- New items: satiative amulet, bough.
 
 Shadow of the Wyrm v0.6.0 "Capirola"
 - Version declared January 11, 2017.  Version finalized February 3, 2017.

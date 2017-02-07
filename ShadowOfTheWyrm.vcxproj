@@ -885,6 +885,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\maps\tiles\include\TileManipulatorFactory.hpp" />
     <ClInclude Include="engine\screens\include\ClassSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\ComponentAlignment.hpp" />
+    <ClInclude Include="engine\screens\include\CreateItemScreen.hpp" />
     <ClInclude Include="engine\screens\include\DeitySelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\EquipmentScreen.hpp" />
     <ClInclude Include="engine\screens\include\HelpScreen.hpp" />
@@ -922,6 +923,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\serialization\include\SerializationExceptions.hpp" />
     <ClInclude Include="engine\serialization\include\SerializationTypes.hpp" />
     <ClInclude Include="engine\serialization\include\Serialize.hpp" />
+    <ClInclude Include="engine\skills\include\BowyerSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\DetectionSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\DisarmTrapsSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\FishingSkillProcessor.hpp" />
@@ -1597,11 +1599,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\maps\tiles\source\PoisonTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessorFactory.cpp" />
+    <ClCompile Include="engine\screens\source\CreateItemScreen.cpp" />
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
     <ClCompile Include="engine\scripting\source\DropScript.cpp" />
     <ClCompile Include="engine\scripting\source\KillScript.cpp" />
+    <ClCompile Include="engine\skills\source\BowyerSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\DetectionSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\DisarmTrapsSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\FishingSkillProcessor.cpp" />

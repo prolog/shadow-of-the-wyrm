@@ -173,6 +173,7 @@ class ActionTextKeys
     static const std::string ACTION_SCRIBING_INSUFFICIENT_CASTINGS;
     static const std::string ACTION_SCRIBING_NO_SPELLS;
     static const std::string ACTION_SCRIBING_SCROLL_CREATED;
+    static const std::string ACTION_BOWYER_INSUFFICIENT_COMPONENTS;
 
   protected:
     ActionTextKeys();

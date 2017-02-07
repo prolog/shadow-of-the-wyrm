@@ -1,3 +1,4 @@
+#include "BowyerSkillProcessor.hpp"
 #include "DisarmTrapsSkillProcessor.hpp"
 #include "FishingSkillProcessor.hpp"
 #include "ScribingSkillProcessor.hpp"
@@ -24,6 +25,7 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map = {make_pair(SkillType::SKILL_GENERAL_ARCHERY, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_ARCHERY)),
                make_pair(SkillType::SKILL_GENERAL_AWARENESS, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_AWARENESS)),
                make_pair(SkillType::SKILL_GENERAL_BLIND_FIGHTING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_BLIND_FIGHTING)),
+               make_pair(SkillType::SKILL_GENERAL_BOWYER, make_shared<BowyerSkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_CARRYING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_CARRYING)),
                make_pair(SkillType::SKILL_GENERAL_COMBAT, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_COMBAT)),
                make_pair(SkillType::SKILL_GENERAL_DETECTION, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DETECTION)),
