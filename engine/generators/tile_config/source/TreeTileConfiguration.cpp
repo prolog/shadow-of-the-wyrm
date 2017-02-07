@@ -56,20 +56,29 @@ TreeSpeciesID TreeTileConfiguration::get_species(TilePtr tile) const
 
 void TreeTileConfiguration::configure(TilePtr tile, const Season season) const
 {
-  ItemManager::create_item_with_probability(1, 100, tile->get_items(), ItemIdKeys::ITEM_ID_BRANCH);
-
-  // If a species ID has already been provided, use that; otherwise, generate
-  // a random allowable species.
-  TreeSpeciesID species_id = get_species(tile);
-
-  auto s_it = tree_species_description_sids.find(species_id);
-
-  if (s_it != tree_species_description_sids.end())
+  if (tile != nullptr)
   {
-    tile->set_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID, s_it->second);
-  }
+    IInventoryPtr tile_inv = tile->get_items();
+    bool branch_created = ItemManager::create_item_with_probability(1, 100, tile_inv, ItemIdKeys::ITEM_ID_BRANCH);
 
-  configure_additional_features(tile, season, species_id);
+    if (!branch_created)
+    {
+      ItemManager::create_item_with_probability(1, 400, tile_inv, ItemIdKeys::ITEM_ID_BOUGH);
+    }
+
+    // If a species ID has already been provided, use that; otherwise, generate
+    // a random allowable species.
+    TreeSpeciesID species_id = get_species(tile);
+
+    auto s_it = tree_species_description_sids.find(species_id);
+
+    if (s_it != tree_species_description_sids.end())
+    {
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID, s_it->second);
+    }
+
+    configure_additional_features(tile, season, species_id);
+  }
 }
 
 // Configure any additional features of the tree - this will typically be

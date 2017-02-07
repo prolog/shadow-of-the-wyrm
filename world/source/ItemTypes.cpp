@@ -13,6 +13,7 @@ ItemIdKeys::~ItemIdKeys()
 
 const string ItemIdKeys::ITEM_ID_CURRENCY         = "_currency";
 const string ItemIdKeys::ITEM_ID_BRANCH           = "_branch";
+const string ItemIdKeys::ITEM_ID_BOUGH            = "_bough";
 const string ItemIdKeys::ITEM_ID_DIRT             = "_dirt";
 const string ItemIdKeys::ITEM_ID_ROCK             = "_rock";
 const string ItemIdKeys::ITEM_ID_STONE            = "_stone";
