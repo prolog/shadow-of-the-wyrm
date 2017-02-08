@@ -929,6 +929,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\skills\include\DisarmTrapsSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\FishingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\FishingTypes.hpp" />
+    <ClInclude Include="engine\skills\include\FletcherySkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\ScribingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\SkillManager.hpp" />
@@ -1618,6 +1619,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\skills\source\DetectionSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\DisarmTrapsSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\FishingSkillProcessor.cpp" />
+    <ClCompile Include="engine\skills\source\FletcherySkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\ScribingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessor.cpp" />

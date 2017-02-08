@@ -400,6 +400,13 @@ string ActionTextKeys::get_bowyer_message(const string& item_usage_desc_sid)
   return msg;
 }
 
+string ActionTextKeys::get_fletchery_message(const string& item_usage_desc_sid)
+{
+  string msg = StringTable::get(ACTION_FLETCHERY_CREATE);
+  boost::replace_first(msg, "%s", StringTable::get(item_usage_desc_sid));
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -537,6 +544,7 @@ const string ActionTextKeys::ACTION_SCRIBING_INSUFFICIENT_CASTINGS = "ACTION_SCR
 const string ActionTextKeys::ACTION_SCRIBING_NO_SPELLS         = "ACTION_SCRIBING_NO_SPELLS";
 const string ActionTextKeys::ACTION_SCRIBING_SCROLL_CREATED    = "ACTION_SCRIBING_SCROLL_CREATED";
 const string ActionTextKeys::ACTION_BOWYER_INSUFFICIENT_COMPONENTS = "ACTION_BOWYER_INSUFFICIENT_COMPONENTS";
+const string ActionTextKeys::ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS = "ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
@@ -581,4 +589,5 @@ const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER = "ACTION
 const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER = "ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER";
 const string ActionTextKeys::ACTION_CRY_OUT                       = "ACTION_CRY_OUT";
 const string ActionTextKeys::ACTION_BOWYER_CREATE                 = "ACTION_BOWYER_CREATE";
+const string ActionTextKeys::ACTION_FLETCHERY_CREATE              = "ACTION_FLETCHERY_CREATE";
 
