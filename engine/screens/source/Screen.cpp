@@ -202,7 +202,14 @@ vector<vector<ScreenComponentPtr>> Screen::get_components() const
 
 vector<ScreenComponentPtr> Screen::get_current_page() const
 {
-  return components.at(cur_page_idx);
+  vector<ScreenComponentPtr> cur_page;
+
+  if (!components.empty())
+  {
+    cur_page = components.at(cur_page_idx);
+  }
+
+  return cur_page;
 }
 
 // Get the line spacing.

@@ -393,6 +393,13 @@ string ActionTextKeys::get_cry_out_message(const string& creature_desc)
   return msg;
 }
 
+string ActionTextKeys::get_bowyer_message(const string& item_usage_desc_sid)
+{
+  string msg = StringTable::get(ACTION_BOWYER_CREATE);
+  boost::replace_first(msg, "%s", StringTable::get(item_usage_desc_sid));
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -573,3 +580,5 @@ const string ActionTextKeys::ACTION_THIEVERY_STEAL_SUCCESSFUL_MONSTER = "ACTION_
 const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER = "ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER";
 const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER = "ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER";
 const string ActionTextKeys::ACTION_CRY_OUT                       = "ACTION_CRY_OUT";
+const string ActionTextKeys::ACTION_BOWYER_CREATE                 = "ACTION_BOWYER_CREATE";
+

@@ -30,3 +30,4 @@ const string PromptTextKeys::PROMPT_ENTER_YOUR_NAME = "PROMPT_ENTER_YOUR_NAME";
 const string PromptTextKeys::PROMPT_RUN_SCRIPT = "PROMPT_RUN_SCRIPT";
 const string PromptTextKeys::PROMPT_HELP = "PROMPT_HELP";
 const string PromptTextKeys::PROMPT_SKILLS = "PROMPT_SKILLS";
+const string PromptTextKeys::PROMPT_CREATE_ITEM = "PROMPT_CREATE_ITEM";

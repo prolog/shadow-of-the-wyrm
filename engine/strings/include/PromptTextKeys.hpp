@@ -14,6 +14,7 @@ class PromptTextKeys
     static const std::string PROMPT_RUN_SCRIPT;
     static const std::string PROMPT_HELP;
     static const std::string PROMPT_SKILLS;
+    static const std::string PROMPT_CREATE_ITEM;
 
   protected:
     PromptTextKeys();
