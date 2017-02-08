@@ -33,6 +33,7 @@ class ActionTextKeys
     static std::string get_steal_successful_message(const std::string& creature_desc, const std::string& item_desc, const bool is_player);
     static std::string get_steal_unsuccessful_message(const std::string& stealing_desc, const std::string& steal_desc, const bool is_player);
     static std::string get_cry_out_message(const std::string& attacked_desc);
+    static std::string get_bowyer_message(const std::string& item_usage_desc_sid);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -220,4 +221,5 @@ class ActionTextKeys
     static const std::string ACTION_THIEVERY_STEAL_UNSUCCESSFUL_PLAYER;
     static const std::string ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER;
     static const std::string ACTION_CRY_OUT;
+    static const std::string ACTION_BOWYER_CREATE;
 };

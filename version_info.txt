@@ -11,11 +11,15 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   of an item the first time the player picks it up.  The chance is 
   directly proportional to the skill value.
 
-- The bowyer skill is implemented as well.  When you have a bough, you 
+- The Bowyer skill is implemented as well.  When you have a bough, you 
   can use it to create a bow or a crossbow.  Higher skill values will add 
-  to-hit or damage bonuses.
+  to-hit or damage bonuses, in the same way that this is done for e.g.
+  Smithing.  The Crafting skill also plays a role in the total potential
+  improvements points, though to a lesser extent than Bowyer.
 
 - Tree tiles now have a chance of generating a bough instead of a branch.
+
+- More stanzas for "Tel and Floridel".
 
 - New items: satiative amulet, bough.
 
