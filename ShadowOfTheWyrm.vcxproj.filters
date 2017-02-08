@@ -3942,6 +3942,9 @@
     <ClInclude Include="engine\calculators\include\CreateItemCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\skills\include\FletcherySkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7780,6 +7783,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\CreateItemCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\FletcherySkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

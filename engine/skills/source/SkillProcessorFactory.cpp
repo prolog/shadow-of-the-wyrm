@@ -1,6 +1,7 @@
 #include "BowyerSkillProcessor.hpp"
 #include "DisarmTrapsSkillProcessor.hpp"
 #include "FishingSkillProcessor.hpp"
+#include "FletcherySkillProcessor.hpp"
 #include "ScribingSkillProcessor.hpp"
 #include "SkillProcessorFactory.hpp"
 #include "SkillProcessors.hpp"
@@ -34,6 +35,7 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_DUNGEONEERING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DUNGEONEERING)),
                make_pair(SkillType::SKILL_GENERAL_ESCAPE, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_ESCAPE)),
                make_pair(SkillType::SKILL_GENERAL_FISHING, make_shared<FishingSkillProcessor>()),
+               make_pair(SkillType::SKILL_GENERAL_FLETCHERY, make_shared<FletcherySkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_FORAGING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_FORAGING)),
                make_pair(SkillType::SKILL_GENERAL_HERBALISM, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HERBALISM)),
                make_pair(SkillType::SKILL_GENERAL_HUNTING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HUNTING)),

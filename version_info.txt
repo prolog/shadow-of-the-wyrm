@@ -17,6 +17,12 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   Smithing.  The Crafting skill also plays a role in the total potential
   improvements points, though to a lesser extent than Bowyer.
 
+- Fletchery has also been implemented.  A branch can now be turned into
+  arrows, bolts, javelins, or throwing clubs.  The quantity created is
+  based on the per-item weight and the weight of the branch.  The
+  ammunition created will get better and better with higher Fletchery and
+  Crafting values.
+
 - Tree tiles now have a chance of generating a bough instead of a branch.
 
 - More stanzas for "Tel and Floridel".

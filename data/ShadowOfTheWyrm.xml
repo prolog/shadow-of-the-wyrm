@@ -29006,7 +29006,7 @@
 				<UsageDescriptionSID>BRANCH_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight>
-					<Pounds>1</Pounds>
+					<Pounds>6</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
@@ -29361,6 +29361,12 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>creation_skill</Name>
+						<Value>18</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -29413,6 +29419,12 @@
 					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>creation_skill</Name>
+						<Value>18</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -29439,7 +29451,11 @@
 						<Name>brandable</Name>
 						<Value>1</Value>
 					</Property>
-				</Properties>
+					<Property>
+						<Name>creation_skill</Name>
+						<Value>18</Value>
+					</Property>
+ 				</Properties>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -29507,7 +29523,7 @@
 				<UsageDescriptionSID>THROWING_CLUB_USAGE_SID</UsageDescriptionSID>
 				<Value>8</Value>
 				<Weight>
-					<Pounds>6</Pounds>
+					<Pounds>3</Pounds>
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
@@ -29516,6 +29532,10 @@
 					<Property>
 						<Name>brandable</Name>
 						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>creation_skill</Name>
+						<Value>18</Value>
 					</Property>
 				</Properties>
 				<Skill>1003</Skill>

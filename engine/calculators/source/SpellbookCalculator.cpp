@@ -30,6 +30,7 @@ void SpellbookCalculator::initialize_status_casting_multipliers()
 //
 // - Roll 1d100
 // - Add (Magic General Skill / 2)
+// - Add (Literacy Skill / 4)
 // - Add appropriate magic skill, if > 0; otherwise, Subtract 100.
 // - Add (Int / 5)
 // - Add (Will / 5)
