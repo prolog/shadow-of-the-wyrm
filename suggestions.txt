@@ -1,4 +1,5 @@
 Me:
+- High health scores should give bonuses to resists. + docs?
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
@@ -39,7 +40,6 @@ Me:
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
 - Cancellation effect type
-- Once a month, repop shops
 - Special rooms: beer hall, magical workshop, armory.
 - Travelling bazaars (make fields/deserts/hills permanent).
 - Add shops to the random villages.
@@ -88,6 +88,7 @@ Me:
   the current HP of the original.
 - Recall spell that takes you back to the overworld.
 - Armour flags
+- Cantrip to set glow flag on items
 - Food rotting for caught fish, other foods?
 
 Larzid:
@@ -96,10 +97,13 @@ Larzid:
 Rob Ayres:
 - Auto-fish/eat when travelling over water and having a spear/fishing rod.
 - Shopkeepers should disallow switching places.
--  When I sell stuff in stores, the pieces of ivory don't stack correctly 
-   and end up taking multiple slots.  If I sell things all in one 
-   sessions, they form a separate stack from the ivory pieces in my 
-   inventory before selling. (not merging?)
+- When I sell stuff in stores, the pieces of ivory don't stack correctly 
+  and end up taking multiple slots.  If I sell things all in one 
+  sessions, they form a separate stack from the ivory pieces in my 
+  inventory before selling. (not merging?)
+- Mark health when taking damage from a creature of your danger level or
+  higher.
+- HP/AP not being affected by stats on stat gain or level.
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri

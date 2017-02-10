@@ -2,6 +2,7 @@
 #include "CreatureTimeObserver.hpp"
 #include "MapTimeObserver.hpp"
 #include "SeasonsTimeObserver.hpp"
+#include "ShopsTimeObserver.hpp"
 #include "SpecialDayObserver.hpp"
 #include "TileTransformObserver.hpp"
 #include "WorldTimeKeeperCoordinator.hpp"
@@ -14,6 +15,7 @@
 // - Creature observers
 // - Tile observers
 // - Season observers
+// - Misc observers such as for shops, etc
 // -- etc
 void WorldTimeKeeperCoordinator::setup_time_keeper(WorldTimeKeeper& time_keeper)
 {
@@ -23,6 +25,7 @@ void WorldTimeKeeperCoordinator::setup_time_keeper(WorldTimeKeeper& time_keeper)
   ITimeObserverPtr age_observer = std::make_shared<AgeTimeObserver>();
   ITimeObserverPtr tile_transform_observer = std::make_shared<TileTransformObserver>();
   ITimeObserverPtr special_day_observer = std::make_shared<SpecialDayObserver>();
+  ITimeObserverPtr shops_observer = std::make_shared<ShopsTimeObserver>();
   ITimeObserverPtr world_time_observer = std::make_shared<WorldTimeObserver>();
 
   time_keeper.register_observer(1, creature_minute_tick);
@@ -44,6 +47,9 @@ void WorldTimeKeeperCoordinator::setup_time_keeper(WorldTimeKeeper& time_keeper)
 
   // Also daily, check each map to see what tile transformations need to occur.
   time_keeper.register_observer(1440, tile_transform_observer);
+
+  // Once a month, repop each shop in the world.
+  time_keeper.register_observer(43200, shops_observer);
 
   // Once a year, age everything touched by time.
   time_keeper.register_observer(525600, age_observer);

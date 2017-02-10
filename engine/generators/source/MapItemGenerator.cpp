@@ -130,6 +130,20 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
       {
         for (int col = start.second; col <= end.second; col++)
         {
+          // Are there any unpaid items here?  If so, skip item generation
+          // for that tile.
+          TilePtr tile = map->at(row, col);
+
+          if (tile)
+          {
+            IInventoryPtr items = tile->get_items();
+
+            if (items != nullptr && items->has_unpaid_items())
+            {
+              continue;
+            }
+          }
+
           int enchant_points = iec.calculate_enchantments(danger_level);
           ItemPtr shop_item = igm.generate_item(am, generation_vec, rarity, enchant_points);
 

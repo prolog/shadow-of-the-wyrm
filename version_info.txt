@@ -23,6 +23,9 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   ammunition created will get better and better with higher Fletchery and
   Crafting values.
 
+- In-game shops have their items restocked on a monthly basis.  This 
+  covers all shops on all persistent maps.
+
 - Tree tiles now have a chance of generating a bough instead of a branch.
 
 - More stanzas for "Tel and Floridel".
