@@ -776,15 +776,7 @@ bool Creature::has_unpaid_items() const
 
   if (inventory != nullptr)
   {
-    const list<ItemPtr> raw_items = inventory->get_items_cref();
-    
-    for (ItemPtr item : raw_items)
-    {
-      if (item && item->get_unpaid())
-      {
-        return true;
-      }
-    }
+    return inventory->has_unpaid_items();
   }
 
   return false;
