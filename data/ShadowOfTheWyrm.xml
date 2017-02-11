@@ -30634,7 +30634,7 @@
 				<UnidentifiedDescriptionSID>UNID_HEALING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HEALING_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_HEALING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>100</Value>
+				<Value>60</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
