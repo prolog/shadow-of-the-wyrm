@@ -6,7 +6,6 @@ Me:
 - Revisit smithing.
 - Revisit how values are updated after enchantment.
 - Magic mappings effect.
-- Reduce the number of castings learned from books.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - Creatures should have a chance to follow up/down stairs with special

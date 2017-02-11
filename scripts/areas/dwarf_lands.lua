@@ -1,5 +1,6 @@
 require('areas')
 
+local stoneheim_id = "stoneheim"
 local creature = require('creature')
 local creature_list = {{"avernal_bat", 25, 35}, {"mist_wraith", 10, 20}}
 
@@ -20,11 +21,17 @@ caldera:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_CALDERA")
 caldera:set_additional_properties({["MAP_PROPERTIES_INITIAL_CREATURES"] = creatures_csv})
 
 local stoneheim = Area:new(9, 19)
-stoneheim:set_custom_map_id("stoneheim")
+stoneheim:set_custom_map_id(stoneheim_id)
 stoneheim:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_STONEHEIM")
 
 world_shrine:insert()
 wyrmeswraec:insert()
 caldera:insert()
 stoneheim:insert()
+
+local shop_id = "hjalmar_shop"
+local shopkeeper_id = get_creature_id(8, 71, stoneheim_id)
+set_creature_name(shopkeeper_id, "Hjalmar", stoneheim_id)
+set_shop_shopkeeper_id(shop_id, shopkeeper_id, stoneheim_id)
+repop_shop(shop_id, stoneheim_id)
 

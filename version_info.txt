@@ -39,6 +39,8 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 
 - More stanzas for "Tel and Floridel".
 
+- New shops: potion shop in Gnordvar, general store in Stoneheim.
+
 - New items: satiative amulet, bough.
 
 - Bug fixes:
