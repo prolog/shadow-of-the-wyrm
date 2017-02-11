@@ -32,6 +32,11 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 
 - Blackwater traps are now light blue instead of dark. (Rob Ayres)
 
+- Spellbooks now provide fewer castings when read.
+
+- Adventurers also start with a wand they've found on their travels,
+  either lightning bolt or teleport.
+
 - More stanzas for "Tel and Floridel".
 
 - New items: satiative amulet, bough.

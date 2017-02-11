@@ -2186,6 +2186,12 @@
 						<ID>trail_ration</ID>
 					</InitialItem>
 					<InitialItem>
+						<Random>
+							<ID>lightning_wand</ID>
+							<ID>teleport_wand</ID>
+						</Random>
+					</InitialItem>
+					<InitialItem>
 						<ID>healing_potion</ID>
 						<Quantity>
 							<Random>
