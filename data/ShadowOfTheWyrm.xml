@@ -25006,7 +25006,7 @@
 			<TriggerMessageSID>TRAP_BLACKWATER_TRIGGER_SID</TriggerMessageSID>
 			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_BLACKWATER_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>4</Colour>
+			<Colour>12</Colour>
 			<Item>shadow_bomb</Item>
 			<Damage piercing="1">
 				<NumDice>3</NumDice>

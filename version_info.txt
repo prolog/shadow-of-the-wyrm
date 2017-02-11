@@ -24,13 +24,22 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   Crafting values.
 
 - In-game shops have their items restocked on a monthly basis.  This 
-  covers all shops on all persistent maps.
+  covers all shops on all persistent maps.  If the player is on a map
+  with a shop when the repop occurs, he or she will see a message about
+  it.
 
 - Tree tiles now have a chance of generating a bough instead of a branch.
+
+- Blackwater traps are now light blue instead of dark. (Rob Ayres)
 
 - More stanzas for "Tel and Floridel".
 
 - New items: satiative amulet, bough.
+
+- Bug fixes:
+
+  - The Literacy skill's improvement message was the same as Leadership
+    (Rob Ayres).
 
 Shadow of the Wyrm v0.6.0 "Capirola"
 - Version declared January 11, 2017.  Version finalized February 3, 2017.

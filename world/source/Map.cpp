@@ -7,6 +7,7 @@
 #include "MapFactory.hpp"
 #include "MapUtils.hpp"
 #include "NullInventory.hpp"
+#include "PlayerConstants.hpp"
 #include "Serialize.hpp"
 #include "TileFactory.hpp"
 
@@ -121,6 +122,16 @@ bool Map::has_creature(const string& creature_id)
   }
 
   return (creatures.find(creature_id) != creatures.end());
+}
+
+bool Map::has_player()
+{
+  if (creatures.empty())
+  {
+    create_creatures();
+  }
+
+  return has_creature(PlayerConstants::PLAYER_CREATURE_ID);
 }
 
 void Map::add_creature(CreaturePtr creature)
