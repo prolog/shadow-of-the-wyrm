@@ -963,7 +963,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\strings\include\SacrificeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ScreenTitleTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MovementTextKeys.hpp" />
-    <ClInclude Include="engine\strings\include\PlayerConstants.hpp" />
     <ClInclude Include="engine\strings\include\PromptTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\RangedCombatTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ResistanceTextKeys.hpp" />
@@ -1120,6 +1119,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\Marks.hpp" />
     <ClInclude Include="world\include\Modifier.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
+    <ClInclude Include="world\include\PlayerConstants.hpp" />
     <ClInclude Include="world\include\RaceConstants.hpp" />
     <ClInclude Include="world\include\ScriptDetails.hpp" />
     <ClInclude Include="world\include\Shop.hpp" />
@@ -2978,7 +2978,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\strings\source\SacrificeTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ScreenTitleTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MovementTextKeys.cpp" />
-    <ClCompile Include="engine\strings\source\PlayerConstants.cpp" />
     <ClCompile Include="engine\strings\source\PromptTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\RangedCombatTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ResistanceTextKeys.cpp" />
@@ -3323,6 +3322,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\Marks.cpp" />
     <ClCompile Include="world\source\Modifier.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
+    <ClCompile Include="world\source\PlayerConstants.cpp" />
     <ClCompile Include="world\source\RaceConstants.cpp" />
     <ClCompile Include="world\source\RarityTypes.cpp" />
     <ClCompile Include="world\source\ScriptDetails.cpp" />

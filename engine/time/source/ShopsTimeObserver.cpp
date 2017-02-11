@@ -1,6 +1,9 @@
 #include "ShopsTimeObserver.hpp"
+#include "ActionTextKeys.hpp"
 #include "Game.hpp"
 #include "MapItemGenerator.hpp"
+#include "MessageManagerFactory.hpp"
+#include "PlayerConstants.hpp"
 
 using namespace std;
 
@@ -22,6 +25,13 @@ void ShopsTimeObserver::notify(const ulonglong minutes_passed)
     if (cur_map != nullptr)
     {
       map<string, Shop> shops = cur_map->get_shops();
+
+      if (!shops.empty() && cur_map->has_player())
+      {
+        IMessageManager& manager = MM::instance();
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_REPOP_SHOP));
+        manager.send();
+      }
 
       for (const auto& s_pair : shops)
       {

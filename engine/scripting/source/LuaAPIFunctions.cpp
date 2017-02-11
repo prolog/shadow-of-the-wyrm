@@ -215,6 +215,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_add_location", map_add_location);
   lua_register(L, "map_transform_tile", map_transform_tile);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
+  lua_register(L, "map_set_explored", map_set_explored);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
@@ -2369,6 +2370,39 @@ int map_add_tile_exit(lua_State* ls)
   lua_pushboolean(ls, result);
   return 1;
 }
+
+// Set the entire current map explored.
+int map_set_explored(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    Game& game = Game::instance();
+    MapPtr cur_map = game.get_current_map();
+
+    if (cur_map != nullptr)
+    {
+      TilesContainer tiles = cur_map->get_tiles();
+
+      for (const auto& tile_pair : tiles)
+      {
+        TilePtr tile = tile_pair.second;
+
+        if (tile != nullptr)
+        {
+          tile->set_explored(true);
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_set_explored");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
 // log some text in the given log level.
 // returns true if it was logged, false otherwise
 // (log is not in that level, etc)

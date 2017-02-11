@@ -33,6 +33,7 @@ class Map : public ISerializable
 		// These functions work on a list built up from the map itself.
 		// This allows for quicker lookup.
 		bool has_creature(const std::string& creature_id);
+    bool has_player();
 		std::shared_ptr<Creature> get_creature(const std::string& creature_id);
 		std::map<std::string, std::shared_ptr<Creature>> get_creatures();
 		std::map<std::string, std::shared_ptr<Creature>>& get_creatures_ref();

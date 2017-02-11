@@ -2277,9 +2277,6 @@
     <ClInclude Include="engine\strings\include\FileConstants.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\strings\include\PlayerConstants.hpp">
-      <Filter>Header Files\engine\strings\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
@@ -3947,6 +3944,9 @@
     </ClInclude>
     <ClInclude Include="engine\time\include\ShopsTimeObserver.hpp">
       <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\PlayerConstants.hpp">
+      <Filter>Header Files\world\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5787,9 +5787,6 @@
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\FileConstants.cpp">
-      <Filter>Source Files\engine\strings\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\strings\source\PlayerConstants.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\MaterialTextKeys.cpp">
@@ -7795,6 +7792,9 @@
     </ClCompile>
     <ClCompile Include="engine\time\source\unit_tests\ShopsTimeObserver_test.cpp">
       <Filter>Source Files\engine\time\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\PlayerConstants.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
