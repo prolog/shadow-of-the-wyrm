@@ -799,6 +799,9 @@
     <Filter Include="Source Files\engine\commands\skills\source\unit_tests">
       <UniqueIdentifier>{176e97df-8073-4015-ba1d-aa4741c86ca3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\generators\settlements\source\unit_tests">
+      <UniqueIdentifier>{4acb38fe-43e5-4765-ba0d-517d34e5a5ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -3947,6 +3950,9 @@
     </ClInclude>
     <ClInclude Include="world\include\PlayerConstants.hpp">
       <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\Building.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7795,6 +7801,12 @@
     </ClCompile>
     <ClCompile Include="world\source\PlayerConstants.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\Building.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\unit_tests\Building_test.cpp">
+      <Filter>Source Files\engine\generators\settlements\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

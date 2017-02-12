@@ -160,3 +160,8 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
     cur_attempts++;
   }
 }
+
+int WalledSettlementGenerator::get_pct_chance_shop() const
+{
+  return 80;
+}

@@ -743,6 +743,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\rooms\include\RoomTypes.hpp" />
     <ClInclude Include="engine\generators\rooms\include\XRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BaseSettlementGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\Building.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp" />
     <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp" />
@@ -1575,8 +1576,16 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\Building.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp" />
     <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\unit_tests\Building_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\generators\source\CrossShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
     <ClCompile Include="engine\generators\source\RectangularShrineGenerator.cpp" />

@@ -177,8 +177,10 @@ void HamletGenerator::generate_additional_random_buildings(MapPtr map, const int
     
     int row = RNG::range(0, rows-height-1);
     int col = RNG::range(0, cols-width-1);
-    
-    if (!does_building_overlap(map, row, row+height, col, col+width))
+    int row_end = row+height;
+    int col_end = col+width;
+
+    if (!does_building_overlap(map, row, row_end, col, col_end))
     {
       GeneratorUtils::generate_building(map, row, col, height, width);
       CardinalDirection cd = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
@@ -192,7 +194,8 @@ void HamletGenerator::generate_additional_random_buildings(MapPtr map, const int
       
       Coordinate door_coords = get_door_location(row, row+height-1, col, col+width-1, cd);
       GeneratorUtils::generate_door(map, door_coords.first, door_coords.second);
-      
+      buildings.push_back({{row, col}, {row_end, col_end}, door_coords});
+
       potentially_generate_vegetable_garden(map, row, row+height, col, col+width, 30);
       
       cur_addl_buildings++;
