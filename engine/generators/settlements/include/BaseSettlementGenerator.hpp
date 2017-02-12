@@ -1,5 +1,7 @@
 #pragma once
+#include <vector>
 #include "Generator.hpp"
+#include "Building.hpp"
 #include "BuildingGenerationParameters.hpp"
 #include "GardenTypes.hpp"
 
@@ -14,6 +16,7 @@ class BaseSettlementGenerator : public SOTW::Generator
 
   protected:
     virtual bool get_permanence_default() const override;
+    virtual int get_pct_chance_shop() const;
 
     virtual bool does_building_overlap(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, const int offset_extra = 0);
     virtual bool does_tile_overlap(MapPtr map, const int row, const int col);
@@ -39,4 +42,6 @@ class BaseSettlementGenerator : public SOTW::Generator
     const int BLOCK_SIZE;
     const int NS_DIVISOR;
     const int EW_DIVISOR;
+
+    std::vector<Building> buildings;
 };
