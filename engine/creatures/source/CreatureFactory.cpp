@@ -18,7 +18,6 @@
 #include "ReligionFactory.hpp"
 #include "RNG.hpp"
 #include "NullKeyboardController.hpp"
-#include "PlayerConstants.hpp"
 #include "ModifyStatisticsEffect.hpp"
 
 using namespace std;
@@ -52,7 +51,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
   CreatureMap creature_map = game.get_creatures_ref();
     
   CreatureMap::iterator c_it = creature_map.find(creature_id);
-  CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
+    CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
 
   if (!creature_id.empty() && c_it != creature_map.end() && cgv_it != cgv_map.end())
   {
@@ -127,7 +126,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
     }
 
     map<string, bool> hostility_map = cgo.get_hostility_map();
-    auto h_it = hostility_map.find(PlayerConstants::PLAYER_CREATURE_ID);
+    auto h_it = hostility_map.find(CreatureID::CREATURE_ID_PLAYER);
 
     if (h_it != hostility_map.end())
     {
@@ -468,7 +467,7 @@ void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
   // the game will not have a map.
   if (map)
   {
-    CreaturePtr player = map->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
+    CreaturePtr player = map->get_creature(CreatureID::CREATURE_ID_PLAYER);
     
     if (player && (RNG::percent_chance(100 - player->get_charisma().get_current())))
     {

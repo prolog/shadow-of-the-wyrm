@@ -7,7 +7,6 @@
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ModifyStatisticsEffect.hpp"
-#include "PlayerConstants.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SpellAdditionalProperties.hpp"
@@ -184,7 +183,7 @@ bool CreatureUtils::is_player_or_in_los(CreaturePtr creature)
   {
     string creature_id = creature->get_id();
 
-    if (creature_id == PlayerConstants::PLAYER_CREATURE_ID)
+    if (creature_id == CreatureID::CREATURE_ID_PLAYER)
     {
       result = true;
     }

@@ -752,6 +752,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\settlements\include\SettlementGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SettlementRuinsGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SettlementTypes.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\WalledSettlementGenerator.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\CairnTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\DefaultTileConfiguration.hpp" />
@@ -1120,7 +1121,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\Marks.hpp" />
     <ClInclude Include="world\include\Modifier.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
-    <ClInclude Include="world\include\PlayerConstants.hpp" />
     <ClInclude Include="world\include\RaceConstants.hpp" />
     <ClInclude Include="world\include\ScriptDetails.hpp" />
     <ClInclude Include="world\include\Shop.hpp" />
@@ -1579,6 +1579,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\generators\settlements\source\Building.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp" />
     <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\ShopGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\unit_tests\Building_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -3331,7 +3332,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\Marks.cpp" />
     <ClCompile Include="world\source\Modifier.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
-    <ClCompile Include="world\source\PlayerConstants.cpp" />
     <ClCompile Include="world\source\RaceConstants.cpp" />
     <ClCompile Include="world\source\RarityTypes.cpp" />
     <ClCompile Include="world\source\ScriptDetails.cpp" />

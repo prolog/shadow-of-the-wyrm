@@ -3948,10 +3948,10 @@
     <ClInclude Include="engine\time\include\ShopsTimeObserver.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\include\PlayerConstants.hpp">
-      <Filter>Header Files\world\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\settlements\include\Building.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -7799,14 +7799,14 @@
     <ClCompile Include="engine\time\source\unit_tests\ShopsTimeObserver_test.cpp">
       <Filter>Source Files\engine\time\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="world\source\PlayerConstants.cpp">
-      <Filter>Source Files\world\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\Building.cpp">
       <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\unit_tests\Building_test.cpp">
       <Filter>Source Files\engine\generators\settlements\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\ShopGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

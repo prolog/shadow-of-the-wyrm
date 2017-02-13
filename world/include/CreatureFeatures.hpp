@@ -83,3 +83,13 @@ class CreatureEventScripts
     ~CreatureEventScripts();
 };
 
+class CreatureID
+{
+  public:
+    static const std::string CREATURE_ID_SHOPKEEPER;
+    static const std::string CREATURE_ID_PLAYER;
+
+  protected:
+    CreatureID();
+    ~CreatureID();
+};

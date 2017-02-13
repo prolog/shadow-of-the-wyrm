@@ -18,6 +18,8 @@ class SettlementGenerator : public BaseSettlementGenerator
      MapPtr populate_settlement(MapPtr map);
 
      MapPtr generate_square(MapPtr map, const int start_row, const int start_col, const int square_size);
+
+     virtual int get_pct_chance_shop() const;
 };
 
 using SettlementGeneratorPtr = std::shared_ptr<SettlementGenerator>;

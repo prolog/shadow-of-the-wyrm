@@ -3,7 +3,6 @@
 #include "Game.hpp"
 #include "MapItemGenerator.hpp"
 #include "MessageManagerFactory.hpp"
-#include "PlayerConstants.hpp"
 
 using namespace std;
 

@@ -1,7 +1,6 @@
 #include "CombatConstants.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
-#include "PlayerConstants.hpp"
 
 using namespace std;
 
@@ -36,15 +35,15 @@ void HostilityManager::set_hostility_to_player(CreaturePtr creature, const bool 
 {
   if (hostile)
   {
-    set_hostility_to_creature(creature, PlayerConstants::PLAYER_CREATURE_ID);
+    set_hostility_to_creature(creature, CreatureID::CREATURE_ID_PLAYER);
   }
   else
   {
     DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
     ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
 
-    pair<bool, int> threat_exists = threat_ratings.has_threat(PlayerConstants::PLAYER_CREATURE_ID);
-    threat_ratings.remove_threat(PlayerConstants::PLAYER_CREATURE_ID, threat_exists.second);
+    pair<bool, int> threat_exists = threat_ratings.has_threat(CreatureID::CREATURE_ID_PLAYER);
+    threat_ratings.remove_threat(CreatureID::CREATURE_ID_PLAYER, threat_exists.second);
   }
 }
 

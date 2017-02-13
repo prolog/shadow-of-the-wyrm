@@ -27,3 +27,15 @@ const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK = "CREATURE_EVEN
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT = "CREATURE_EVENT_SCRIPT_CHAT";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION = "CREATURE_EVENT_SCRIPT_DECISION";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP = "CREATURE_EVENT_SCRIPT_DROP";
+
+CreatureID::CreatureID()
+{
+}
+
+CreatureID::~CreatureID()
+{
+}
+
+const string CreatureID::CREATURE_ID_SHOPKEEPER = "_shopkeeper";
+const string CreatureID::CREATURE_ID_PLAYER = "player";
+
