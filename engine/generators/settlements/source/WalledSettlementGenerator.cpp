@@ -35,6 +35,7 @@ MapPtr WalledSettlementGenerator::generate()
   MapPtr map = std::make_shared<Map>(*base_map);
 
   generate_walled_settlement(map);
+  generate_shop_if_necessary(map);
 
   return map;
 }

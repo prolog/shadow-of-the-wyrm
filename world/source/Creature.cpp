@@ -3,7 +3,6 @@
 #include "CreatureProperties.hpp"
 #include "DecisionStrategyFactory.hpp"
 #include "InventoryFactory.hpp"
-#include "PlayerConstants.hpp"
 #include "PlayerDecisionStrategy.hpp"
 #include "Serialize.hpp"
 
@@ -253,7 +252,7 @@ void Creature::set_is_player(const bool player, ControllerPtr controller)
     set_symbol('@');
     
     // Players always use "player" as their ID.
-    set_id(PlayerConstants::PLAYER_CREATURE_ID);
+    set_id(CreatureID::CREATURE_ID_PLAYER);
   }
 }
 

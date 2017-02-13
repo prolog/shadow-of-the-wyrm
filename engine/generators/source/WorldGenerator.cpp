@@ -10,7 +10,6 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "WorldGenerator.hpp"
-#include "PlayerConstants.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 #include "CellularAutomataGenerator.hpp"
@@ -550,7 +549,7 @@ vector<string> WorldGenerator::get_potential_creatures(const string& village_rac
       cgo.set_id(cgv_pair.first);
 
       // All creatures generated in villages should be docile.
-      cgo.set_hostility(PlayerConstants::PLAYER_CREATURE_ID, false);
+      cgo.set_hostility(CreatureID::CREATURE_ID_PLAYER, false);
 
       CreatureGenerationOptionsStringBuilder cgob;
       valid_creature_ids.push_back(cgob.build(cgo));

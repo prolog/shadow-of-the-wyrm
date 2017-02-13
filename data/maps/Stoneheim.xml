@@ -145,7 +145,7 @@
 				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
-				<ID>shopkeeper</ID>
+				<ID>_shopkeeper</ID>
 				<Coord>
 					<Row>8</Row>
 					<Col>71</Col>

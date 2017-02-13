@@ -94,6 +94,7 @@ void HamletGenerator::generate_circular_hamlet(MapPtr map)
   generate_core_hamlet_buildings(map, circle_row, circle_col, hamlet_size);
   
   generate_additional_random_buildings(map, circle_row, road_start_col, road_end_col);
+  generate_shop_if_necessary(map);
 }
 
 // Generate buildings around the circular road, if possible.

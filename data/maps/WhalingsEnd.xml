@@ -89,14 +89,14 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>shopkeeper</ID>
+				<ID>_shopkeeper</ID>
 				<Coord>
 					<Row>7</Row>
 					<Col>22</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>shopkeeper</ID>
+				<ID>_shopkeeper</ID>
 				<Coord>
 					<Row>7</Row>
 					<Col>55</Col>

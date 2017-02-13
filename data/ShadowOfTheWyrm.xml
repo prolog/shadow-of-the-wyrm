@@ -20358,7 +20358,7 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
-		<Creature id="shopkeeper">
+		<Creature id="_shopkeeper">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>SHOPKEEPER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHOPKEEPER_DESCRIPTION_SID</DescriptionSID>

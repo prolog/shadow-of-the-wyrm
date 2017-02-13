@@ -37,6 +37,11 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 - Adventurers also start with a wand they've found on their travels,
   either lightning bolt or teleport.
 
+- The random villages that are scattered throughout the world now have
+  a chance to contain a shop: 40% for a hamlet or scattered settlement,
+  75% for a regular settlement, 85% for a walled settlement, 100% for
+  a city.
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.

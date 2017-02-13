@@ -33,7 +33,7 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
-				<ID>shopkeeper</ID>
+				<ID>_shopkeeper</ID>
 				<Coord>
 					<Row>4</Row>
 					<Col>53</Col>

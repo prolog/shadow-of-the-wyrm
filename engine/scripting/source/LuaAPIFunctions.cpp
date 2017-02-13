@@ -27,7 +27,6 @@
 #include "MessageManagerFactory.hpp"
 #include "Naming.hpp"
 #include "PickupAction.hpp"
-#include "PlayerConstants.hpp"
 #include "RaceManager.hpp"
 #include "Quests.hpp"
 #include "ReligionManager.hpp"
@@ -588,7 +587,7 @@ int add_fov_message(lua_State* ls)
     string message_sid = lua_tostring(ls, 3);
     CreaturePtr creature = get_creature(creature_id);
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, aff_creature_id == PlayerConstants::PLAYER_CREATURE_ID);
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, aff_creature_id == CreatureID::CREATURE_ID_PLAYER);
     manager.add_new_message(StringTable::get(message_sid));
     manager.send();
   }
@@ -1741,7 +1740,7 @@ int is_player(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
     string creature_id = lua_tostring(ls, 1);
-    is_creature_player = (creature_id == PlayerConstants::PLAYER_CREATURE_ID);
+    is_creature_player = (creature_id == CreatureID::CREATURE_ID_PLAYER);
   }
   else
   {
@@ -3836,7 +3835,7 @@ int redraw(lua_State* ls)
 {
   if (lua_gettop(ls) == 0)
   {
-    string creature_id = PlayerConstants::PLAYER_CREATURE_ID;
+    string creature_id = CreatureID::CREATURE_ID_PLAYER;
     Game& game = Game::instance();
     MapPtr cur_map = game.get_current_map();
     CreaturePtr creature = get_creature(creature_id);
