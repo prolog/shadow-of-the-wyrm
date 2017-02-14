@@ -56,6 +56,9 @@ class Map : public ISerializable
 		std::shared_ptr<Tile> at(int row, int col);
 		std::shared_ptr<Tile> at(const Coordinate& c);
 
+    void set_name_sid(const std::string& new_name_sid);
+    std::string get_name_sid() const;
+
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
     Dimensions& size_ref();
@@ -141,6 +144,7 @@ class Map : public ISerializable
     std::map<Direction, std::vector<Coordinate>> tile_exits;
 
     TilesContainer tiles;
+    std::string name_sid;
     Dimensions dimensions;
     Dimensions original_dimensions;
     NamedMapLocations locations;
