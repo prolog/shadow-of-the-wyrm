@@ -215,6 +215,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_transform_tile", map_transform_tile);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
   lua_register(L, "map_set_explored", map_set_explored);
+  lua_register(L, "map_get_name_sid", map_get_name_sid);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
@@ -640,9 +641,10 @@ int add_new_quest(lua_State* ls)
     string quest_id = lua_tostring(ls, 1);
     string quest_title_sid = se.get_table_str(ls, "quest_title_sid");
     string questmaster_name_sid = se.get_table_str(ls, "questmaster_name_sid");
+    string map_name_sid = se.get_table_str(ls, "map_name_sid");
     string quest_description_sid = se.get_table_str(ls, "quest_description_sid");
 
-    Quest new_quest(quest_id, quest_title_sid, questmaster_name_sid, quest_description_sid);
+    Quest new_quest(quest_id, quest_title_sid, questmaster_name_sid, map_name_sid, quest_description_sid);
 
     game.get_quests_ref().add_new_quest(quest_id, new_quest);
 
@@ -2400,6 +2402,47 @@ int map_set_explored(lua_State* ls)
   }
 
   return 0;
+}
+
+int map_get_name_sid(lua_State* ls)
+{
+  string map_name_sid;
+  int num_args = lua_gettop(ls);
+
+  if (num_args <= 1)
+  {
+    Game& game = Game::instance();
+    MapPtr map_to_check;
+    
+    if (num_args == 0)
+    {
+      map_to_check = game.get_current_map();
+    }
+    else
+    {
+      string map_id;
+
+      if (lua_isstring(ls, 1))
+      {
+        map_id = lua_tostring(ls, 1);
+      }
+
+      map_to_check = game.get_map_registry_ref().get_map(map_id);
+    } 
+
+    if (map_to_check != nullptr)
+    {
+      map_name_sid = map_to_check->get_name_sid();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_get_name_sid");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, map_name_sid.c_str());
+  return 1;
 }
 
 // log some text in the given log level.

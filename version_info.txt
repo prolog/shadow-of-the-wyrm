@@ -42,11 +42,16 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   75% for a regular settlement, 85% for a walled settlement, 100% for
   a city.
 
+- Quests now show not just the questmaster, but the map that they're
+  from.
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.
 
 - New items: satiative amulet, bough.
+
+- New creatures: kingspirit.
 
 - Bug fixes:
 

@@ -9,8 +9,8 @@ Quest::Quest()
 {
 }
 
-Quest::Quest(const string& new_id, const string& new_qtitle, const string& new_qmaster, const string& new_qdesc)
-: quest_id(new_id), quest_title_sid(new_qtitle), questmaster_name_sid(new_qmaster), quest_description_sid(new_qdesc)
+Quest::Quest(const string& new_id, const string& new_qtitle, const string& new_qmaster, const string& new_map_name_sid, const string& new_qdesc)
+: quest_id(new_id), quest_title_sid(new_qtitle), questmaster_name_sid(new_qmaster), map_name_sid(new_map_name_sid), quest_description_sid(new_qdesc)
 {
 }
 
@@ -21,6 +21,7 @@ bool Quest::operator==(const Quest& q) const
   result = result && (quest_id == q.quest_id);
   result = result && (quest_title_sid == q.quest_title_sid);
   result = result && (questmaster_name_sid == q.questmaster_name_sid);
+  result = result && (map_name_sid == q.map_name_sid);
   result = result && (quest_description_sid == q.quest_description_sid);
 
   return result;
@@ -56,6 +57,16 @@ string Quest::get_questmaster_name_sid() const
   return questmaster_name_sid;
 }
 
+void Quest::set_map_name_sid(const string& new_map_name_sid)
+{
+  map_name_sid = new_map_name_sid;
+}
+
+string Quest::get_map_name_sid() const
+{
+  return map_name_sid;
+}
+
 void Quest::set_quest_description_sid(const string& new_quest_description_sid)
 {
   quest_description_sid = new_quest_description_sid;
@@ -71,6 +82,7 @@ bool Quest::serialize(ostream& stream) const
   Serialize::write_string(stream, quest_id);
   Serialize::write_string(stream, quest_title_sid);
   Serialize::write_string(stream, questmaster_name_sid);
+  Serialize::write_string(stream, map_name_sid);
   Serialize::write_string(stream, quest_description_sid);
 
   return true;
@@ -81,6 +93,7 @@ bool Quest::deserialize(istream& stream)
   Serialize::read_string(stream, quest_id);
   Serialize::read_string(stream, quest_title_sid);
   Serialize::read_string(stream, questmaster_name_sid);
+  Serialize::read_string(stream, map_name_sid);
   Serialize::read_string(stream, quest_description_sid);
 
   return true;

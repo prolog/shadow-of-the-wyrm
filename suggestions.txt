@@ -1,11 +1,9 @@
 Me:
-- Villages need to have a danger level set for the shops to generate
-  items.
-- Now that there is a CreatureID class, merge that with PlayerConstants.
+- Fix the item generation weirdness and test in village shops with high
+  danger levels.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
-- More shops in set locations.
 - Revisit smithing.
 - Revisit how values are updated after enchantment.
 - Magic mappings effect.
@@ -44,6 +42,7 @@ Me:
   generated.
 - Cancellation effect type
 - Special rooms: beer hall, magical workshop, armory.
+- More shops in set locations.
 - Travelling bazaars (make fields/deserts/hills permanent).
 - Add shops to the random villages.
 - Add shops to dungeons.
@@ -107,7 +106,6 @@ Rob Ayres:
 - Mark health when taking damage from a creature of your danger level or
   higher.
 - HP/AP not being affected by stats on stat gain or level.
-- Quests should show originating map
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
