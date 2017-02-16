@@ -45,6 +45,10 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 - Quests now show not just the questmaster, but the map that they're
   from.
 
+- Currency is now fixed at uncursed status, always identified, and cannot 
+  be blessed or cursed.  This will allow proper ivory stacking in the 
+  player's inventory.
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.
@@ -57,6 +61,9 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 
   - The Literacy skill's improvement message was the same as Leadership
     (Rob Ayres).
+
+  - Ivory pieces were forming separate stacks when selling, rather than
+    being merged into the player's existing amount (Rob Ayres).
 
 Shadow of the Wyrm v0.6.0 "Capirola"
 - Version declared January 11, 2017.  Version finalized February 3, 2017.

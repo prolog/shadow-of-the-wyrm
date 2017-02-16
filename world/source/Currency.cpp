@@ -6,9 +6,21 @@ Currency::Currency()
 {
   type = ItemType::ITEM_TYPE_CURRENCY;
   symbol = '$';
+  status = ItemStatus::ITEM_STATUS_UNCURSED;
+  status_identified = true;
 }
 
 Currency::~Currency()
+{
+}
+
+// Currency is always generated uncursed and shouldn't ever be set to another
+// status.
+void Currency::set_status(const ItemStatus status_to_ignore)
+{
+}
+
+void Currency::set_status_identified(const bool new_status_identified)
 {
 }
 

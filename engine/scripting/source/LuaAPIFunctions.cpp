@@ -3129,7 +3129,7 @@ int transfer_item(lua_State* ls)
 
       for (ItemPtr item : items.second)
       {
-        inv->add(item);
+        inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
       }
 
       item_transferred = items.first;
