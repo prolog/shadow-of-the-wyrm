@@ -99,17 +99,12 @@ Larzid:
 Rob Ayres:
 - Auto-fish/eat when travelling over water and having a spear/fishing rod.
 - Shopkeepers should disallow switching places.
-- When I sell stuff in stores, the pieces of ivory don't stack correctly 
-  and end up taking multiple slots.  If I sell things all in one 
-  sessions, they form a separate stack from the ivory pieces in my 
-  inventory before selling. (not merging?)
 - Mark health when taking damage from a creature of your danger level or
   higher.
 - HP/AP not being affected by stats on stat gain or level.
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
-- Character dumps while blinded show all items as "something"
 - Increase stat-based damage bonuses
 
 For v1:
