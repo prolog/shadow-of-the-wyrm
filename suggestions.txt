@@ -1,6 +1,4 @@
 Me:
-- Fix the item generation weirdness and test in village shops with high
-  danger levels.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
@@ -61,18 +59,12 @@ Me:
 - Different types of branches (species) should have different wand
   properties.
 - General performance improvements.
-- Item generation: get rarity working properly, and then do some test
-  runs.  Once that works, create some more artifacts/great items for
-  random generation.  Also, as part of the initial shop code, certain
-  weapons were made common (elven short sword, rapier) to make shops ok.
-  Consider making these uncommon again when the code sucks less.
 - Potion components of some sort?  Weeds should be "pickable"?
 - Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
 - Telari, the Drowned Isle
-- Update MapTester config so that "generation runs" of creatures and
-  items can be done and dumped to disk.
+- Update MapTester config for generation runs of creatures
 - Define all monsters as good/neutral/evil
 - Monsters should have a chance of being generated friendly when same
   alignment.
@@ -85,9 +77,6 @@ Me:
 - More poem fragments for start.
 - Smarter pack logic: not just by creature type, but maybe by race, etc.
 - Weather, weather patterns, effects
-- Add splitting behaviour to all jellies: when hit, they have some
-  chance (10-20%?) of splitting.  Each creature in the split has half
-  the current HP of the original.
 - Recall spell that takes you back to the overworld.
 - Armour flags
 - Cantrip to set glow flag on items

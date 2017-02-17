@@ -56,13 +56,14 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
   }
 
   // Generate the vector of possible items for this map.
-  ItemGenerationVec generation_vec = igm.generate_item_generation_vec({1, max_danger_level, rarity, {}, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
+  vector<ItemType> i_restr = {};
+  ItemGenerationMap generation_map = igm.generate_item_generation_map({1, max_danger_level, rarity, i_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
   ItemEnchantmentCalculator iec;
 
   while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
   {
     int enchant_points = iec.calculate_enchantments(danger_level);
-    ItemPtr generated_item = igm.generate_item(am, generation_vec, rarity, enchant_points);
+    ItemPtr generated_item = igm.generate_item(am, generation_map, rarity, i_restr, enchant_points);
 
     bool placed_item = false;
 
@@ -121,7 +122,7 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
 
       // Repopulate...
       ItemGenerationManager igm;
-      ItemGenerationVec generation_vec = igm.generate_item_generation_vec({1, danger_level, rarity, stocked_types, ItemValues::DEFAULT_MIN_SHOP_VALUE});
+      ItemGenerationMap generation_map = igm.generate_item_generation_map({1, danger_level, rarity, stocked_types, ItemValues::DEFAULT_MIN_SHOP_VALUE});
       ItemEnchantmentCalculator iec;
       Game& game = Game::instance();
       ActionManager am = game.get_action_manager_ref();
@@ -145,7 +146,7 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
           }
 
           int enchant_points = iec.calculate_enchantments(danger_level);
-          ItemPtr shop_item = igm.generate_item(am, generation_vec, rarity, enchant_points);
+          ItemPtr shop_item = igm.generate_item(am, generation_map, rarity, stocked_types, enchant_points);
 
           if (shop_item != nullptr)
           {
