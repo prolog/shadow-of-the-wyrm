@@ -272,9 +272,10 @@ ItemPtr ThieverySkillProcessor::create_stolen_item(CreaturePtr steal_creature)
   ItemGenerationManager igm;
 
   int danger_level = steal_creature->get_level().get_current();
-  ItemGenerationVec generation_vec = igm.generate_item_generation_vec({1, danger_level, rarity, {}, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
+  vector<ItemType> i_restr = {};
+  ItemGenerationMap generation_map = igm.generate_item_generation_map({1, danger_level, rarity, i_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
   int enchant_points = iec.calculate_enchantments(danger_level);
-  ItemPtr stolen_item = igm.generate_item(game.get_action_manager_ref(), generation_vec, rarity, enchant_points);
+  ItemPtr stolen_item = igm.generate_item(game.get_action_manager_ref(), generation_map, rarity, i_restr, enchant_points);
 
   return stolen_item;
 }

@@ -7808,5 +7808,8 @@
     <ClCompile Include="engine\generators\settlements\source\ShopGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\items\source\unit_tests\ItemGenerationManager_test.cpp">
+      <Filter>Source Files\engine\items\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

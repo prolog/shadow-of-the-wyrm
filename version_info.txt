@@ -49,6 +49,18 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   be blessed or cursed.  This will allow proper ivory stacking in the 
   player's inventory.
 
+- Reworked the item generation algorithm.  The previous algorithm was
+  based purely on an item's danger level and rarity, and did not take
+  type into account at all.  After the rework, almost all items are now
+  "common" for their specified danger level.  The algorithm now first 
+  picks an item type (weapon, potion, etc) and then tries to generate an 
+  item of that type based on the danger level and selected rarity.  This 
+  ensures a more even distribution of item types throughout the game, as 
+  previously scrolls, potions, and so on, were notoriously rare, getting
+  passed over in the selection process by more common items.  The 
+  algorithm is a work in progress and is likely to be reworked or tweaked 
+  in future versions.
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.

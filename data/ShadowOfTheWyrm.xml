@@ -25805,7 +25805,6 @@
 				<WornLocation>6</WornLocation>
 				<Material>7</Material>
 				<DangerLevel>35</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Slash>0.15</Slash>
 					<Pierce>0.15</Pierce>
@@ -26819,7 +26818,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Heat>0.25</Heat>
 				</Resistances>
@@ -26839,7 +26837,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Cold>0.25</Cold>
 				</Resistances>
@@ -26859,7 +26856,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Acid>0.25</Acid>
 				</Resistances>
@@ -26879,7 +26875,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Poison>0.25</Poison>
 				</Resistances>
@@ -26899,7 +26894,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Holy>0.25</Holy>
 				</Resistances>
@@ -26919,7 +26913,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Shadow>0.25</Shadow>
 				</Resistances>
@@ -26939,7 +26932,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Arcane>0.25</Arcane>
 				</Resistances>
@@ -26959,7 +26951,6 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Resistances>
 					<Lightning>0.25</Lightning>
 				</Resistances>
@@ -30515,7 +30506,6 @@
 				</Weight>
 				<Material>8</Material>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 			</Boat>
 			<Boat id="raft">
 				<DescriptionSID>RAFT_SID</DescriptionSID>
@@ -30526,7 +30516,6 @@
 				</Weight>
 				<Material>8</Material>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
 			</Boat>			
 			<Boat id="rowboat">
 				<DescriptionSID>ROWBOAT_SID</DescriptionSID>
@@ -30555,7 +30544,6 @@
 					<Colour>7</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>0</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
@@ -30574,7 +30562,6 @@
 					<Colour>11</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>0</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
@@ -30593,7 +30580,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>0</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
@@ -30612,7 +30598,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>400</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
@@ -30631,7 +30616,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>400</Nutrition>
 				<StandardDrinks>1.5</StandardDrinks>
 				<Effect>0</Effect>
@@ -30690,7 +30674,6 @@
 					<Colour>14</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>1</Effect>
 			</Potion>
@@ -30710,7 +30693,6 @@
 					<Colour>1</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>6</Effect>
 			</Potion>
@@ -30730,7 +30712,6 @@
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>7</Effect>
 			</Potion>
@@ -30750,7 +30731,6 @@
 					<Colour>13</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>8</Effect>
 			</Potion>
@@ -30770,7 +30750,6 @@
 					<Colour>4</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>9</Effect>
 			</Potion>
@@ -30790,7 +30769,6 @@
 					<Colour>10</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>10</Effect>
 			</Potion>			
@@ -30810,7 +30788,6 @@
 					<Colour>10</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>4000</Nutrition>
 				<Effect>0</Effect>
 			</Potion>			
@@ -30830,7 +30807,6 @@
 					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>11</Effect>
 			</Potion>			
@@ -30851,7 +30827,6 @@
 					<Colour>14</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>12</Effect>
 			</Potion>			
@@ -30871,7 +30846,6 @@
 					<Colour>1</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>16</Effect>
 			</Potion>			
@@ -30912,7 +30886,6 @@
 					<Colour>9</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>0</Effect>
 				<Damage>
@@ -30937,7 +30910,6 @@
 					<Colour>5</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>200</Nutrition>
 				<Effect>3</Effect>
 			</Potion>
@@ -30957,7 +30929,6 @@
 					<Colour>9</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Nutrition>300</Nutrition>
 				<Effect>4</Effect>
 			</Potion>
@@ -30976,7 +30947,6 @@
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>0</Effect>
 			</Scroll>
 			<Scroll id="_blank_scroll">
@@ -30991,8 +30961,7 @@
 					<Symbol>?</Symbol>
 					<Colour>15</Colour>
 				</TextDetails>
-				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
+				<DangerLevel>3</DangerLevel>
 				<Properties>
 					<Property>
 						<Name>blank</Name>
@@ -31016,7 +30985,6 @@
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>2</Effect>				
 			</Scroll>
 			<Scroll id="recharging_scroll">
@@ -31034,7 +31002,6 @@
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>8</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>13</Effect>				
 			</Scroll>
 			<Scroll id="enchanting_scroll">
@@ -31052,7 +31019,6 @@
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>10</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>15</Effect>				
 			</Scroll>
 			<Scroll id="cleansing_scroll">
@@ -31070,7 +31036,6 @@
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>20</Effect>
 			</Scroll>
 			<Scroll id="uncursing_scroll">
@@ -31088,7 +31053,6 @@
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>21</Effect>
 			</Scroll>
 			<Scroll id="bless_scroll">
@@ -31106,7 +31070,6 @@
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>23</Effect>
 			</Scroll>
 			<Scroll id="detect_traps_scroll">
@@ -31124,7 +31087,6 @@
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>22</Effect>
 			</Scroll>
 		</Scrolls>
@@ -31427,7 +31389,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>0</Effect>
 				<BeamType>1</BeamType>
 				<Range>1</Range>
@@ -31448,7 +31409,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>8</DangerLevel>
-				<Rarity>1</Rarity>
 				<Effect>5</Effect>
 				<BeamType>1</BeamType>
 				<Range>1</Range>
@@ -31469,7 +31429,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>4</NumDice>
 					<NumSides>12</NumSides>
@@ -31494,7 +31453,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>3</NumDice>
 					<NumSides>12</NumSides>
@@ -31521,7 +31479,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>5</NumDice>
 					<NumSides>10</NumSides>
@@ -31546,7 +31503,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>5</NumDice>
 					<NumSides>8</NumSides>
@@ -31573,7 +31529,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>6</NumDice>
 					<NumSides>6</NumSides>
@@ -31600,7 +31555,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>12</DangerLevel>
-				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>10</NumDice>
 					<NumSides>8</NumSides>
@@ -31626,7 +31580,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>6</NumDice>
 					<NumSides>8</NumSides>
@@ -31651,7 +31604,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>12</NumDice>
 					<NumSides>4</NumSides>
@@ -31676,7 +31628,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>8</DangerLevel>
-				<Rarity>1</Rarity>
 				<Damage vorpal="1">
 					<NumDice>3</NumDice>
 					<NumSides>6</NumSides>
@@ -31701,7 +31652,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>ISEN_DUN_CHRONICLE_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31719,7 +31669,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>BOOK_OF_DAYS_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31737,7 +31686,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>THE_NINE_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31755,7 +31703,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>ON_ETERNALISM_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31773,7 +31720,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>ON_FAERIE_FRAGMENTS_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31791,7 +31737,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>TEL_AND_FLORIDEL_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31809,7 +31754,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>STONEHEIM_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31827,7 +31771,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>GNORDVAR_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31845,7 +31788,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>YEW_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31863,7 +31805,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>SHRINES_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31881,7 +31822,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
 				<TextSID>HISTORY_KELL_EMPIRE_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -31901,7 +31841,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_01_minor_healing</SpellID>
 				<Difficulty>30</Difficulty>
 			</Spellbook>
@@ -31920,7 +31859,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_02_flame_dart</SpellID>
 				<Difficulty>30</Difficulty>
 			</Spellbook>
@@ -31939,7 +31877,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_03_steel_wind</SpellID>
 				<Difficulty>35</Difficulty>
 			</Spellbook>
@@ -31958,7 +31895,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_04_blink</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -31977,7 +31913,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>7</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_05_spirit_bolt</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -31996,7 +31931,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_06_purify</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -32015,7 +31949,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_07_antimagic_shield</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -32034,7 +31967,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_08_bravery</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -32053,7 +31985,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_09_force_bolt</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -32072,7 +32003,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_10_cleansing</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -32091,7 +32021,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>c_11_blast</SpellID>
 				<Difficulty>36</Difficulty>
 			</Spellbook>
@@ -32110,7 +32039,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_01_wreath_of_fire</SpellID>
 				<Difficulty>110</Difficulty>
 			</Spellbook>
@@ -32129,7 +32057,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_03_lightning_bolt</SpellID>
 				<Difficulty>75</Difficulty>
 			</Spellbook>
@@ -32148,7 +32075,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>12</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_02_dragon_breath</SpellID>
 				<Difficulty>100</Difficulty>
 			</Spellbook>
@@ -32167,7 +32093,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>18</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_04_shockwave</SpellID>
 				<Difficulty>115</Difficulty>
 			</Spellbook>
@@ -32186,7 +32111,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>30</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_05_flight</SpellID>
 				<Difficulty>100</Difficulty>
 			</Spellbook>
@@ -32205,7 +32129,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_06_cross_of_flame</SpellID>
 				<Difficulty>125</Difficulty>
 			</Spellbook>
@@ -32224,7 +32147,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_07_fireball</SpellID>
 				<Difficulty>125</Difficulty>
 			</Spellbook>
@@ -32243,7 +32165,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>8</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_08_elemental_mastery</SpellID>
 				<Difficulty>85</Difficulty>
 			</Spellbook>
@@ -32262,7 +32183,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_09_frost_bolt</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -32281,7 +32201,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>16</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_10_fire_storm</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>
@@ -32300,7 +32219,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>16</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_11_ice_storm</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>
@@ -32319,7 +32237,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>16</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_12_lightning_storm</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>
@@ -32338,7 +32255,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_13_maelstrom</SpellID>
 				<Difficulty>135</Difficulty>
 			</Spellbook>
@@ -32357,7 +32273,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>10</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_14_absolute_zero</SpellID>
 				<Difficulty>150</Difficulty>
 			</Spellbook>
@@ -32376,7 +32291,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>8</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>a_15_vorpal_bolt</SpellID>
 				<Difficulty>110</Difficulty>
 			</Spellbook>
@@ -32395,7 +32309,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_01_healing_word</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -32414,7 +32327,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_02_smite</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -32433,7 +32345,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>32</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_03_holy</SpellID>
 				<Difficulty>120</Difficulty>
 			</Spellbook>
@@ -32452,7 +32363,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_04_divine_wind</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -32471,7 +32381,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_05_divine_shield</SpellID>
 				<Difficulty>75</Difficulty>
 			</Spellbook>			
@@ -32490,7 +32399,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_06_cure</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>			
@@ -32509,7 +32417,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_07_soften</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -32528,7 +32435,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>18</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_08_benediction</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>			
@@ -32547,7 +32453,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_09_heavenly_hand</SpellID>
 				<Difficulty>80</Difficulty>
 			</Spellbook>			
@@ -32566,7 +32471,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>d_10_radiant_beam</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>			
@@ -32585,7 +32489,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>30</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_01_wraith_form</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>
@@ -32604,7 +32507,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_02_poison</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -32623,7 +32525,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_03_blind</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -32642,7 +32543,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_04_mute</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -32661,7 +32561,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_05_spellbind</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>
@@ -32680,7 +32579,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_06_haste</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -32699,7 +32597,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_07_slow</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -32718,7 +32615,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_08_stone</SpellID>
 				<Difficulty>115</Difficulty>
 			</Spellbook>
@@ -32737,7 +32633,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_09_curse</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -32775,7 +32670,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_11_haze</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>
@@ -32794,7 +32688,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>15</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_12_timewalk</SpellID>
 				<Difficulty>80</Difficulty>
 			</Spellbook>
@@ -32813,7 +32706,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>7</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_13_uncurse</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -32832,7 +32724,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_14_detect_traps</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -32851,7 +32742,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_15_bless</SpellID>
 				<Difficulty>75</Difficulty>
 			</Spellbook>
