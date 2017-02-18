@@ -6,6 +6,7 @@
 #include "FullHPDeityDecisionStrategyHandler.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "DoNothingDeityDecisionStrategyHandler.hpp"
+#include "HaltBreedingDeityDecisionStrategyHandler.hpp"
 #include "ReligionConstants.hpp"
 #include "ReligionManager.hpp"
 #include "ProtectionDeityDecisionStrategyHandler.hpp"
@@ -39,6 +40,9 @@ void DeityDecisionStrategy::initialize_decisions()
   cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
+  cur_decision = std::make_shared<HaltBreedingDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(cur_decision);
+   
   cur_decision = std::make_shared<SmiteDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 

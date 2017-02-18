@@ -66,6 +66,10 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 - Shopkeepers don't like being outside their shop, so they will not allow
   the player to switch places with them. (Rob Ayres)
 
+- Praying can now cause a deity to neuter all breeders on the level,
+  preventing them from breeding.  Subsequently generated breeders are not
+  affected.
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.

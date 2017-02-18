@@ -20415,8 +20415,8 @@
 				<ResistSwitch>1</ResistSwitch>
 			</DecisionStrategy>
 			<Text>
-				<Symbol>t</Symbol>
 				<Colour>13</Colour>
+				<Symbol>t</Symbol>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
