@@ -61,11 +61,13 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   algorithm is a work in progress and is likely to be reworked or tweaked 
   in future versions.
 
+- Teleport wands will appear earlier.
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.
 
-- New items: satiative amulet, bough.
+- New items: satiative amulet, bough, wand of wrath, wand of arcana.
 
 - New creatures: kingspirit.
 
