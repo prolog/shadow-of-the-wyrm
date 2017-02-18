@@ -150,6 +150,7 @@ class TextKeys
     static const std::string DECISION_ATTACK_FRIENDLY_CREATURE;
     static const std::string DECISION_SWITCH_FRIENDLY_CREATURE;
     static const std::string DECISION_SQUEEZE_FRIENDLY_CREATURE;
+    static const std::string DECISION_RESIST_SWITCH;
     static const std::string DECISION_STEAL_FRIENDLY_CREATURE;
     static const std::string DECISION_CREATE_IDENTIFIED_DUMP;
 

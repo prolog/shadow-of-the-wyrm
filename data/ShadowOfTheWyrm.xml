@@ -20412,6 +20412,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Shopkeeper>1</Shopkeeper>
+				<ResistSwitch>1</ResistSwitch>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
