@@ -1099,6 +1099,7 @@
 		<xs:element name="Breeds" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Sentinel" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Shopkeeper" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="ResistSwitch" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="TextDetails">

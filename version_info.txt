@@ -63,6 +63,9 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 
 - Teleport wands will appear earlier.
 
+- Shopkeepers don't like being outside their shop, so they will not allow
+  the player to switch places with them. (Rob Ayres)
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.

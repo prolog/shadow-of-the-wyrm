@@ -1,4 +1,5 @@
 Me:
+- Pray to suppress breeding on a level when breeders present
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
@@ -87,7 +88,6 @@ Larzid:
 
 Rob Ayres:
 - Auto-fish/eat when travelling over water and having a spear/fishing rod.
-- Shopkeepers should disallow switching places.
 - Mark health when taking damage from a creature of your danger level or
   higher.
 - HP/AP not being affected by stats on stat gain or level.
