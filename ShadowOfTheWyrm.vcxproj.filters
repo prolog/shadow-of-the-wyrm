@@ -3954,6 +3954,9 @@
     <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\HaltBreedingDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7810,6 +7813,9 @@
     </ClCompile>
     <ClCompile Include="engine\items\source\unit_tests\ItemGenerationManager_test.cpp">
       <Filter>Source Files\engine\items\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\HaltBreedingDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 Me:
-- Pray to suppress breeding on a level when breeders present
+- A few more breeders.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
