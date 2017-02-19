@@ -70,13 +70,17 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   preventing them from breeding.  Subsequently generated breeders are not
   affected.
 
+- The chance of a breeder to breed on a given turn has increased from
+  10% to 15%.
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.
 
 - New items: satiative amulet, bough, wand of wrath, wand of arcana.
 
-- New creatures: kingspirit.
+- New creatures: kingspirit, roiling slime, splitting shrike, marsh 
+  wraith.
 
 - Bug fixes:
 

@@ -1,5 +1,5 @@
 Me:
-- A few more breeders.
+- A few more breeders.  Ancient worm
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
