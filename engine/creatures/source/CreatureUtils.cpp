@@ -553,10 +553,11 @@ void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string,
   for (const auto& status : statuses)
   {
     string status_id = status.first;
-    StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status_id);
 
-    if (status_p && creature->has_status(status_id))
+    if (creature->has_status(status_id))
     {
+      Status st = creature->get_status(status_id);
+      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status_id, st.get_source_id());
       status_p->finalize_change(creature);
     }
   }
@@ -568,6 +569,7 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
   {
     if (wearable != nullptr)
     {
+      string creature_id = creature->get_id();
       StatusAilments sa = wearable->get_status_ailments();
       set<string> ailments = sa.get_ailments();
 
@@ -576,7 +578,7 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
         ModifyStatisticsEffect mse;
         Modifier m;
 
-        creature->set_status(ailment, true);
+        creature->set_status(ailment, {ailment, true, 1 /* JCD FIXME? */, creature_id});
         m.set_status(ailment, true);
         mse.set_spell_id(StatusIdentifiers::STATUS_ID_SATED); // set for easy rollback
         mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);

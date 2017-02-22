@@ -8,8 +8,8 @@
 class StatusEffectFactory
 {
   public:
-    static StatusEffectPtr create_effect_for_damage_type(const DamageType damage_type);
-    static StatusEffectPtr create_status_effect(const std::string& status_identifier);
+    static StatusEffectPtr create_effect_for_damage_type(const DamageType damage_type, const std::string& source_id);
+    static StatusEffectPtr create_status_effect(const std::string& status_identifier, const std::string& source_id);
 
   protected:
     StatusEffectFactory();

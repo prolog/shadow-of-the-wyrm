@@ -6,6 +6,16 @@
 
 using namespace std;
 
+void Effect::set_source_id(const string& new_source_id)
+{
+  source_id = new_source_id;
+}
+
+string Effect::get_source_id() const
+{
+  return source_id;
+}
+
 // Call the correct item effect function based on the item status.  Blessed effects can often be
 // much better than uncursed, and cursed are often more hurtful than helpful.
 bool Effect::effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status, const bool show_msg_on_unid) 

@@ -109,9 +109,11 @@ bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const S
 {
   if (tile)
   {
+    string caster_id = caster != nullptr ? caster->get_id() : "";
+
     EffectType effect_type = spell.get_effect();
 
-    EffectPtr effect = EffectFactory::create_effect(effect_type, spell.get_modifier(), spell.get_properties(), spell.get_spell_id());
+    EffectPtr effect = EffectFactory::create_effect(effect_type, spell.get_modifier(), spell.get_properties(), spell.get_spell_id(), caster_id);
     CreaturePtr creature = tile->get_creature();
 
     if (effect && creature && caster)

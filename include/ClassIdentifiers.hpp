@@ -287,4 +287,5 @@ enum struct ClassIdentifier
   CLASS_ID_MARKS,
   CLASS_ID_SHOP,
   CLASS_ID_SHOPS_TIME_OBSERVER,
+  CLASS_ID_STATUS
 };

@@ -59,8 +59,9 @@ DeityDecisionImplications SmiteDeityDecisionStrategyHandler::handle_decision(Cre
         int damage = creature->get_level().get_current() * SMITE_LEVEL_DAMAGE_MULTIPLIER;
         Damage smite_damage;
         smite_damage.set_modifier(damage);
+        string source_id = ""; // source id - deity is causing the damage, but doesn't actually exist and so doesn't get exp
 
-        cm.deal_damage(nullptr, adj_creature, damage, smite_damage);
+        cm.deal_damage(nullptr, adj_creature, source_id, damage, smite_damage);
       }
     }
   }

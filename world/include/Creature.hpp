@@ -28,6 +28,7 @@
 #include "SpellKnowledge.hpp"
 #include "Statistic.hpp"
 #include "StatisticTypes.hpp"
+#include "Status.hpp"
 #include "StatusTypes.hpp"
 
 // Forward declarations.
@@ -35,7 +36,7 @@ class DecisionStrategy;
 
 using TargetMap = std::map<std::string, std::pair<std::string, Coordinate>>;
 using EventScriptsMap = std::map<std::string, ScriptDetails>;
-using CreatureStatusMap = std::map<std::string, std::pair<bool, int>>; // int is danger level
+using CreatureStatusMap = std::map<std::string, Status>;
 
 class Creature : public ISerializable
 {
@@ -270,10 +271,11 @@ class Creature : public ISerializable
     HungerClock& get_hunger_clock_ref();
 
     // Set/check if the creature poisoned, etc
-    void set_status(const std::string& status_id, const bool affected, const int danger_level = 1);
+    void set_status(const std::string& status_id, const Status& status);
     void remove_status(const std::string& status_id);
     bool has_status(const std::string& status_id) const;
     bool has_status() const;
+    Status get_status(const std::string& status_id) const;
     CreatureStatusMap get_statuses() const;
 
     void clear_event_scripts();

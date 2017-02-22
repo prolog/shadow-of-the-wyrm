@@ -46,7 +46,7 @@ void CreatureAlcoholTimer::absorb_alcohol(CreaturePtr creature)
   {
     if (!creature->has_status(StatusIdentifiers::STATUS_ID_DRUNK))
     {
-      creature->set_status(StatusIdentifiers::STATUS_ID_DRUNK, true);
+      creature->set_status(StatusIdentifiers::STATUS_ID_DRUNK, {StatusIdentifiers::STATUS_ID_DRUNK, true, 1, creature->get_id()});
     }
   }
 }
@@ -116,6 +116,6 @@ void CreatureAlcoholTimer::check_for_alcohol_poisoning_death(CreaturePtr creatur
     Damage alcohol_default;
     alcohol_default.set_modifier(alcohol_damage);
 
-    cm.deal_damage(no_attacker, creature, alcohol_damage, alcohol_default);
+    cm.deal_damage(no_attacker, creature, "", alcohol_damage, alcohol_default);
   }
 }

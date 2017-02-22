@@ -56,7 +56,7 @@ void CreatureHungerTimer::apply_hunger_damage_if_appropriate(CreaturePtr creatur
       Damage hunger_default;
       hunger_default.set_modifier(hunger_damage);
 
-      cm.deal_damage(no_attacker, creature, hunger_damage, hunger_default, hunger_message_sid);
+      cm.deal_damage(no_attacker, creature, "", hunger_damage, hunger_default, hunger_message_sid);
     }
   }
 }

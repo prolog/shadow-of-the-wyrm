@@ -13,7 +13,11 @@ class StatusEffect
 {
   public:
     StatusEffect();
+    StatusEffect(const std::string& new_source_id);
     virtual ~StatusEffect();
+
+    void set_source_id(const std::string& new_source_id);
+    std::string get_source_id() const;
 
     // Method to check whether the status should be applied.
     bool should_apply_change(std::shared_ptr<Creature> creature, const int effect_bonus = 0) const;
@@ -65,6 +69,7 @@ class StatusEffect
     virtual std::string get_status_identifier() const;
 
     StatusEffectCalculatorPtr status_calc;
+    std::string source_id;
 };
 
 using StatusEffectPtr = std::shared_ptr<StatusEffect>;

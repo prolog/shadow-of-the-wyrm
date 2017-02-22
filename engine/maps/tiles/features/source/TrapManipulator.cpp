@@ -128,12 +128,13 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   int damage_dealt = damage_calc->calculate(creature, slays_race, damage, dmg_roll, soak_mult);
   Damage damage_default;
   damage_default.set_modifier(damage_dealt);
+  string source_id; // sprung traps don't give exp when they kill creatures.
 
   // Only apply the effect if there is damage to be dealt.
   if (damage_dealt > 0)
   {
-    cm.handle_damage_effects(creature, damage_dealt, dt, effect_bonus, status_ailments, 1);
-    cm.deal_damage(nullptr, creature, damage_dealt, damage_default, message);
+    cm.handle_damage_effects(nullptr, creature, damage_dealt, dt, effect_bonus, status_ailments, 1);
+    cm.deal_damage(nullptr, creature, source_id, damage_dealt, damage_default, message);
   }
 }
 

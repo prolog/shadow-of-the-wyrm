@@ -31,7 +31,7 @@ ActionCostValue ChatAction::chat(CreaturePtr creature) const
       // nearby creatures are frozen in time.
       const CreatureStatusMap statuses = creature->get_statuses();
       auto s_it = statuses.find(StatusIdentifiers::STATUS_ID_TIMEWALK);
-      if (s_it != statuses.end() && s_it->second.first == true)
+      if (s_it != statuses.end() && s_it->second.get_value() == true)
       {
         add_chat_message(creature, ActionTextKeys::ACTION_CHAT_TIMEWALK);
       }

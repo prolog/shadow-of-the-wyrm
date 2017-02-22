@@ -1389,7 +1389,7 @@ int add_status_to_creature(lua_State* ls)
 
     if (creature && !creature->has_status(status_id))
     {
-      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
       se->apply_change(creature, danger_level);
 
       lua_pushboolean(ls, true);
@@ -1434,7 +1434,7 @@ int add_status_to_creature_at(lua_State* ls)
       {
         CreaturePtr creature = tile->get_creature();
 
-        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
+        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
         se->apply_change(creature, danger_level);
 
         added_status = true;
@@ -1467,9 +1467,11 @@ int get_creature_statuses(lua_State* ls)
 
       for (const auto& csm_pair : csm)
       {
-        if (csm_pair.second.first == true)
+        Status status = csm_pair.second;
+
+        if (status.get_value() == true)
         {
-          statuses.push_back(csm_pair.first);
+          statuses.push_back(status.get_id());
         }
       }
     }
@@ -3045,7 +3047,7 @@ int teleport(lua_State* ls)
       }
       else
       {
-        EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT);
+        EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT, {}, {}, "", "");
         teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
       }
     }

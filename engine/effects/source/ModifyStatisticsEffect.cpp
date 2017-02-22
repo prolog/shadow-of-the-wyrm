@@ -28,6 +28,16 @@ string ModifyStatisticsEffect::get_spell_id() const
   return spell_id;
 }
 
+void ModifyStatisticsEffect::set_source_id(const string& new_source_id)
+{
+  source_id = new_source_id;
+}
+
+string ModifyStatisticsEffect::get_source_id() const
+{
+  return source_id;
+}
+
 string ModifyStatisticsEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const
 {
   string creature_desc_sid;
@@ -93,7 +103,7 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
 
     for (const auto& status : statuses)
     {
-      creature->set_status(status.first, true, status.second);
+      creature->set_status(status.first, {status.first, true, status.second, source_id});
     }
 
     // Update the creature's calculated values.
