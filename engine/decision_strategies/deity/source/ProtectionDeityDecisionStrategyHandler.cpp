@@ -59,6 +59,9 @@ DeityDecisionImplications ProtectionDeityDecisionStrategyHandler::handle_decisio
 
     mse.set_modifier(m);
 
+    // JCD TODO: Do we need to set deity ID as the source of the modifiers?
+    // Will that ever matter?
+
     ActionManager& am = game.get_action_manager_ref();
     mse.effect(creature, &am, ItemStatus::ITEM_STATUS_UNCURSED);
   }

@@ -1119,9 +1119,9 @@ HungerClock& Creature::get_hunger_clock_ref()
   return hunger;
 }
 
-void Creature::set_status(const string& status_id, const bool affected, const int danger_level)
+void Creature::set_status(const string& status_id, const Status& status)
 {
-  statuses[status_id] = make_pair(affected, danger_level);
+  statuses[status_id] = status;
 }
 
 void Creature::remove_status(const string& status_id)
@@ -1137,7 +1137,7 @@ bool Creature::has_status(const string& status_id) const
 
   if (s_it != statuses.end())
   {
-    has_status = (s_it->second.first == true);
+    has_status = (s_it->second.get_value() == true);
   }
 
   return has_status;
@@ -1151,6 +1151,19 @@ bool Creature::has_status() const
 CreatureStatusMap Creature::get_statuses() const
 {
   return statuses;
+}
+
+Status Creature::get_status(const string& status_id) const
+{
+  Status st;
+  auto s_it = statuses.find(status_id);
+
+  if (s_it != statuses.end())
+  {
+    st = s_it->second;
+  }
+
+  return st;
 }
 
 void Creature::clear_event_scripts()
@@ -1555,8 +1568,7 @@ bool Creature::serialize(ostream& stream) const
     for (const CreatureStatusMap::value_type& c_status : statuses)
     {
       Serialize::write_string(stream, c_status.first);
-      Serialize::write_bool(stream, c_status.second.first);
-      Serialize::write_int(stream, c_status.second.second);
+      c_status.second.serialize(stream);
     }
   }
 
@@ -1709,14 +1721,12 @@ bool Creature::deserialize(istream& stream)
     for (unsigned int i = 0; i < statuses_size; i++)
     {
       string c_status_id;
-      bool creature_affected = false;
-      int danger_level = 1;
+      Status status;
 
       Serialize::read_string(stream, c_status_id);
-      Serialize::read_bool(stream, creature_affected);
-      Serialize::read_int(stream, danger_level);
+      status.deserialize(stream);
 
-      statuses.insert(make_pair(c_status_id, make_pair(creature_affected, danger_level)));
+      statuses[c_status_id] = status;
     }
   }
 

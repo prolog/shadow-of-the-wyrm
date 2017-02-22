@@ -18,6 +18,9 @@ class Effect
   public:
     virtual ~Effect() {};
 
+    void set_source_id(const std::string& new_source_id);
+    std::string get_source_id() const;
+
     virtual bool effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status, const bool show_message_on_unid = true);
 
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const = 0;
@@ -49,6 +52,9 @@ class Effect
     // Additional messages that are displayed regardless of identification
     // success or failure.
     std::vector<AdditionalEffectMessagePtr> additional_effect_messages;
+
+    // Where did the effect originally come from?
+    std::string source_id;
 };
 
 using EffectPtr = std::shared_ptr<Effect>;

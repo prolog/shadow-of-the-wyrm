@@ -1,5 +1,7 @@
 Me:
-- A few more breeders.  Ancient worm
+- Corpses not turning into statues properly.
+- Archery issues again?  Firing shadow bombs at apprentice in Isen Dun,
+  some don't seem to reach the whole way.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
@@ -164,10 +166,6 @@ Samildanach:
 
 Esran:
 - Allow keybindings to be updated after reloading.
-- The creatures who applied statuses aren't tracked, so players aren't
-  getting exp from e.g. poison.
 - Once monsters are smarter, create spells that allow hitting monsters
   past walls.
-- Flag to allow toggling of creature/lighting effect during day/night
-  stuff.
 - Dungeons: when random, prompt for "descend to what depth (ft)?

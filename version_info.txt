@@ -75,6 +75,10 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 
 - There are a few more creatures at the start of Amaurosis' lair.
 
+- The game now keeps track of which creature gave each status ailment.
+  Experience is now properly granted when killing a creature with a
+  time-delayed effect, such as poison or petrification (Esran).
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.

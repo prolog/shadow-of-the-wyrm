@@ -20,6 +20,9 @@ class ModifyStatisticsEffect : public Effect
     void set_spell_id(const std::string& new_spell_id);
     std::string get_spell_id() const;
 
+    void set_source_id(const std::string& new_source_id);
+    std::string get_source_id() const;
+
     virtual bool apply_modifiers(std::shared_ptr<Creature>, const Modifier& m, const ModifyStatisticsDuration msd, const double duration = -1) const;
     virtual bool is_negative_effect() const override;
 
@@ -36,5 +39,6 @@ class ModifyStatisticsEffect : public Effect
 
     Modifier m;
     std::string spell_id;
+    std::string source_id;
 };
 

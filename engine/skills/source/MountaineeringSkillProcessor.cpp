@@ -30,7 +30,7 @@ ActionCostValue MountaineeringSkillProcessor::process(CreaturePtr creature, MapP
       Damage falling_default;
       falling_default.set_modifier(falling_damage);
 
-      cm.deal_damage(no_attacker, creature, falling_damage, falling_default, fall_message_sid);
+      cm.deal_damage(no_attacker, creature, "", falling_damage, falling_default, fall_message_sid);
 
       // Reset counter, since we're no longer "on" the mt.
       creature->get_movement_accumulation_ref().set_minutes_on_tile_type_given_movement(0); 

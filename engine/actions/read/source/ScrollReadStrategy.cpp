@@ -19,7 +19,7 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
 
   if (creature && readable)
   {
-    EffectPtr spell_effect = EffectFactory::create_effect(readable->get_effect_type());
+    EffectPtr spell_effect = EffectFactory::create_effect(readable->get_effect_type(), {}, {}, "", creature->get_id());
     
     if (spell_effect)
     {

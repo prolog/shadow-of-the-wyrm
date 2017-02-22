@@ -209,6 +209,11 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   if (race && char_class && deity)
   {
+    // This'll probably be blank at this point.
+    // But for permanent statuses, such as incorporeal/flying, it doesn't
+    // really matter.
+    string creature_id = creaturep->get_id();
+
     // Statistics, HP, and AP
     set_initial_statistics(creaturep, race, char_class, deity);
 
@@ -218,7 +223,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     if (race->get_corporeal().get_base() == false)
     {
       Modifier m;
-      creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, {StatusIdentifiers::STATUS_ID_INCORPOREAL, true, 1, ""});
       m.set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
       m.set_permanent(true);
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
@@ -227,7 +232,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     if (race->get_flying().get_base() == true)
     {
       Modifier m;
-      creaturep->set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_FLYING, {StatusIdentifiers::STATUS_ID_FLYING, true, 1, ""});
       m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
