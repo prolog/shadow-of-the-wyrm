@@ -24,11 +24,13 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
   CombatManager cm;
   CreaturePtr no_creature;
   string message_sid = StatusAilmentTextKeys::STATUS_MESSAGE_STONE_FINALIZE;
- 
+
+  // Get the tile before dealing damage so that the creature is still on the
+  // map, and thus has tracked coordinates.
+  TilePtr creature_tile = MapUtils::get_tile_for_creature(current_map, creature);
+
   Damage stone_default;
   cm.deal_damage(no_creature, creature, source_id, creature->get_hit_points().get_base(), stone_default);
-
-  TilePtr creature_tile = MapUtils::get_tile_for_creature(current_map, creature);
 
   // Ensure that the tile doesn't already have a feature.
   if (creature_tile && !creature_tile->has_feature())
