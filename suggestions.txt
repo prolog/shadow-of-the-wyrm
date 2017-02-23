@@ -1,7 +1,4 @@
 Me:
-- Creatures can leave a corpse as well as a statue.
-- Archery issues again?  Firing shadow bombs at apprentice in Isen Dun,
-  some don't seem to reach the whole way.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
