@@ -8,6 +8,7 @@
 using namespace std;
 
 const string Settings::SETTINGS_FILENAME = "swyrm.ini";
+const string Settings::KEYBINDING_PREFIX = "key_";
 
 // Find the ini file (first check the user's home directory, then the
 // game directory).  Parse it into the boost::ptree so that it can be
@@ -43,6 +44,25 @@ string Settings::get_setting(const string& key) const
   setting = settings_tree.get<string>(key, "");
 
   return setting;
+}
+
+// Get all the keybindings.  Keybindings are the settings that start with 
+// "key_".
+map<string, string> Settings::get_keybindings() const
+{
+  map<string, string> keybindings;
+
+  for (boost::property_tree::ptree::const_iterator iter = settings_tree.begin(); iter != settings_tree.end(); iter++)
+  {
+    string key = iter->first;
+
+    if (boost::starts_with(key, KEYBINDING_PREFIX))
+    {
+      keybindings[iter->first] = iter->second.data();
+    }
+  }
+
+  return keybindings;
 }
 
 bool Settings::get_setting_as_bool(const string& key, const bool default_val) const

@@ -78,21 +78,32 @@ void CreatureDeathManager::remove_creature_equipment_and_drop_inventory_on_tile(
 {
   Game& game = Game::instance();
 
-  // Remove all equipment.
-  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  bool drop_eq = true;
+  string drop_eq_prop = dead_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_EQUIPMENT);
+
+  if (!drop_eq_prop.empty())
   {
-    EquipmentWornLocation worn_slot = static_cast<EquipmentWornLocation>(e);
-    game.actions.remove_item(dead_creature, static_cast<EquipmentWornLocation>(worn_slot));
+    drop_eq = String::to_bool(drop_eq_prop);
   }
 
-  // Drop inventory on to the creature's tile.
-  IInventoryPtr inv = dead_creature->get_inventory();
-
-  while (!inv->empty())
+  if (drop_eq)
   {
-    ItemPtr current_item = inv->at(0);
-    inv->remove(current_item->get_id());
-    ground->add_front(current_item);
+    // Remove all equipment.
+    for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+    {
+      EquipmentWornLocation worn_slot = static_cast<EquipmentWornLocation>(e);
+      game.actions.remove_item(dead_creature, static_cast<EquipmentWornLocation>(worn_slot));
+    }
+
+    // Drop inventory on to the creature's tile.
+    IInventoryPtr inv = dead_creature->get_inventory();
+
+    while (!inv->empty())
+    {
+      ItemPtr current_item = inv->at(0);
+      inv->remove(current_item->get_id());
+      ground->add_front(current_item);
+    }
   }
 }
 
@@ -105,27 +116,38 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
   ItemManager im;
   RaceManager rm;
   ItemDropRateCalculator idrc;
+  bool consider_random_drop = true;
 
   if (dead_creature)
   {
-    // Go through all the drops for the creature's race and parent races.
-    // See if any items should be generated.
-    RaceManager rm;
-    std::map<string, DropParameters> items = rm.get_all_drops(dead_creature->get_race_id());
+    string consider_random_drop_prop = dead_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_ALLOWS_RANDOM_DROPS);
 
-    for (const auto& item_gen_pair : items)
+    if (!consider_random_drop_prop.empty())
     {
-      string item_base_id = item_gen_pair.first;
-      DropParameters dp = item_gen_pair.second;
-      int item_base_chance = dp.get_percent_chance();
+      consider_random_drop = String::to_bool(consider_random_drop_prop);
+    }
 
-      if (RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attacking_creature, item_base_chance)))
+    if (consider_random_drop)
+    {
+      // Go through all the drops for the creature's race and parent races.
+      // See if any items should be generated.
+      RaceManager rm;
+      std::map<string, DropParameters> items = rm.get_all_drops(dead_creature->get_race_id());
+
+      for (const auto& item_gen_pair : items)
       {
-        ItemPtr racial_item = ItemManager::create_item(item_base_id, RNG::dice(dp.get_min(), dp.get_max()));
+        string item_base_id = item_gen_pair.first;
+        DropParameters dp = item_gen_pair.second;
+        int item_base_chance = dp.get_percent_chance();
 
-        if (racial_item != nullptr)
+        if (RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attacking_creature, item_base_chance)))
         {
-          generated_items.push_back(racial_item);
+          ItemPtr racial_item = ItemManager::create_item(item_base_id, RNG::dice(dp.get_min(), dp.get_max()));
+
+          if (racial_item != nullptr)
+          {
+            generated_items.push_back(racial_item);
+          }
         }
       }
     }
@@ -134,7 +156,7 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
   // When a creature in general dies, there is a small chance it will drop 
   // a randomly generated item that is not part of a set of pre-specified
   // racial items.
-  if (RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attacking_creature)))
+  if (consider_random_drop && RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attacking_creature)))
   {
     Rarity rarity = CreationUtils::generate_rarity();
     int danger_level = dead_creature->get_level().get_current();

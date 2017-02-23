@@ -96,6 +96,15 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   - Ivory pieces were forming separate stacks when selling, rather than
     being merged into the player's existing amount (Rob Ayres).
 
+  - Petrification wasn't leaving a corpse on the right tile.
+
+  - Creatures could leave both corpses and statues when petrified.
+
+  - Creatures could drop their equipment and generate death drops when
+    petrified, but these items would be unreachable due to statues being
+    blocking features.  Suppressed item drops/generation on petrification,
+    as any items should be considered part of the statue.
+
 Shadow of the Wyrm v0.6.0 "Capirola"
 - Version declared January 11, 2017.  Version finalized February 3, 2017.
 
