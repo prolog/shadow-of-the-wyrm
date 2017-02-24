@@ -17,6 +17,9 @@ class Settings : public ISerializable
     // Get all the keybindings (settings whose key starts with "key_")
     std::map<std::string, std::string> get_keybindings() const;
 
+    // Set/replace additional settings within the ptree.
+    void set_settings(const std::map<std::string, std::string>& addl_settings);
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
