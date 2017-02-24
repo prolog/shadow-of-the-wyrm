@@ -524,10 +524,13 @@ bool ShadowOfTheWyrmEngine::process_show_high_scores()
   return false;
 }
 
-// Process a load game command
+// Process a load game command. Load the game and then reload the keybindings
+// from disk, as the saved game will have settings based on when the savefile
+// was originally created.
 bool ShadowOfTheWyrmEngine::process_load_game()
 {
   bool result = false;
+  Game& game = Game::instance();
 
   LoadGameScreen load_game(display);
   string option = load_game.display();
@@ -540,12 +543,16 @@ bool ShadowOfTheWyrmEngine::process_load_game()
 
     if (src == SerializationReturnCode::SERIALIZATION_OK)
     {
-      Game& game = Game::instance();
       game.set_current_loaded_savefile(filename);
 
       result = true;
     }
   }
+
+  Settings kb_settings(true);
+  map<string, string> keybinding_settings = kb_settings.get_keybindings();
+
+  game.get_settings_ref().set_settings(keybinding_settings);
 
   return result;
 }

@@ -1,4 +1,5 @@
 Me:
+- Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
@@ -42,8 +43,6 @@ Me:
 - Special rooms: beer hall, magical workshop, armory.
 - More shops in set locations.
 - Travelling bazaars (make fields/deserts/hills permanent).
-- Add shops to the random villages.
-- Add shops to dungeons.
 - Merchants should get half off in shops.
 - Initial Music skill implementation.
 - You should be able to ride the bucket down to the bottom of wells.
@@ -162,7 +161,6 @@ Samildanach:
 - Make it more obvious what skills do and how they work.
 
 Esran:
-- Allow keybindings to be updated after reloading.
 - Once monsters are smarter, create spells that allow hitting monsters
   past walls.
 - Dungeons: when random, prompt for "descend to what depth (ft)?

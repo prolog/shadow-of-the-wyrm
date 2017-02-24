@@ -46,6 +46,14 @@ string Settings::get_setting(const string& key) const
   return setting;
 }
 
+void Settings::set_settings(const map<string, string>& addl_settings)
+{
+  for (const auto& s_pair : addl_settings)
+  {
+    settings_tree.put(s_pair.first, s_pair.second);
+  }
+}
+
 // Get all the keybindings.  Keybindings are the settings that start with 
 // "key_".
 map<string, string> Settings::get_keybindings() const

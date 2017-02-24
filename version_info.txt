@@ -79,6 +79,9 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   Experience is now properly granted when killing a creature with a
   time-delayed effect, such as poison or petrification (Esran).
 
+- Keybindings are now reloaded whenever the game runs, not just when a
+  character is first created (Esran).
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.
