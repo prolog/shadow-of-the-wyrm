@@ -38,6 +38,7 @@ class WorldGenerator : public SOTW::Generator
     void remove_village_coordinates_if_present(const Coordinate& c);
     void set_tile_properties(TilePtr tile, TileType tile_type, const int row, const int col);
     TilePtr generate_feature_or_default(const std::vector<std::pair<int, std::pair<TileType, TileType>>>& special_features, TileType default_tile_type, const int row, const int col);
+    void potentially_add_properties_on_type_match(const int row, const int col, TilePtr tile, const TileType tile_type, const std::vector<std::pair<int, std::pair<std::string, std::string>>>& prop_pairs);
     
     void set_initial_creatures_for_village(TilePtr village_tile, const std::string& village_race_id);
     std::vector<std::string> get_potential_creatures(const std::string& village_race_id);

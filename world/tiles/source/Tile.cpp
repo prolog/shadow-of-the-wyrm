@@ -108,14 +108,34 @@ void Tile::set_extra_description_sid(const string& new_extra_description_sid)
   set_additional_property(TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_SID, new_extra_description_sid);
 }
 
-string Tile::get_extra_description_sid() const
+// Get all the extra descriptions that should be displayed for the tile.
+// These are any properties that contain "EXTRA_DESCRIPTION" in their key.
+vector<string> Tile::get_extra_description_sids() const
 {
-  return get_additional_property(TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
+  vector<string> extra_sids;
+
+  for (const auto& p_pair : additional_properties)
+  {
+    if (p_pair.first.find("EXTRA_DESCRIPTION") != std::string::npos)
+    {
+      extra_sids.push_back(p_pair.second);
+    }
+  }
+
+  return extra_sids;
 }
 
 bool Tile::has_extra_description() const
 {
-  return has_additional_property(TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
+  for (const auto& p_pair : additional_properties)
+  {
+    if (p_pair.first.find("EXTRA_DESCRIPTION") != std::string::npos)
+    {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 void Tile::set_engraving_sid(const string& new_engraving_sid)

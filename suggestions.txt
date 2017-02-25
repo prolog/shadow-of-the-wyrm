@@ -1,4 +1,7 @@
 Me:
+- Revert swyrm.ini changes
+- Way to show a variety of extra descs automatically?  Search properties 
+  for any with "EXTRA_DESCRIPTION"?
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
