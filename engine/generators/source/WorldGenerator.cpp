@@ -62,12 +62,16 @@ MapPtr WorldGenerator::generate()
 
 MapPtr WorldGenerator::generate(const Dimensions& dimensions)
 {
+  MapPtr result_map = std::make_shared<Map>(dimensions);
+
+  result_map->set_permanent(true);
+  result_map->set_map_type(MapType::MAP_TYPE_WORLD);
+  result_map->set_map_id(MapID::MAP_ID_WORLD_MAP);
+
   // Clear the state variables, in case this generator has already had a run.
   village_coordinates.clear();
   initial_race_ids.clear();
   
-  MapPtr result_map = std::make_shared<Map>(dimensions);
-
   // Fill the world with water.
   fill(result_map, TileType::TILE_TYPE_SEA);
 
@@ -77,11 +81,7 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   // Generate villages and their surroundings
   populate_race_information();
   set_village_races(result_map);
-  generate_village_surroundings(result_map);  
-  
-  result_map->set_map_type(MapType::MAP_TYPE_WORLD);
-  result_map->set_map_id(MapID::MAP_ID_WORLD_MAP);
-  result_map->set_permanent(true);
+  generate_village_surroundings(result_map);    
 
   return result_map;
 }
@@ -192,7 +192,31 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
                            {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
 
     tile = generate_feature_or_default(field_special_types, TileType::TILE_TYPE_FIELD, row, col);
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_FIELD, {{200, {TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_BAZAAR, to_string(true)}}});
+
     result_map->insert(row, col, tile);
+  }
+}
+
+void WorldGenerator::potentially_add_properties_on_type_match(const int row, const int col, TilePtr tile, const TileType tile_type, const vector<pair<int, pair<string, string>>>& prob_and_props)
+{
+  if (tile != nullptr && tile->get_tile_type() == tile_type)
+  {
+    for (const auto& p_pair : prob_and_props)
+    {
+      if (RNG::x_in_y_chance(1, p_pair.first))
+      {
+        if (Log::instance().debug_enabled())
+        {
+          ostringstream ss;
+          ss << "Bazaar generated at " << row << "," << col;
+          
+          Log::instance().debug(ss.str());
+        }
+
+        tile->set_additional_property(p_pair.second.first, p_pair.second.second);
+      }
+    }
   }
 }
 
@@ -300,6 +324,8 @@ void WorldGenerator::process_hill_cell(MapPtr result_map, const int row, const i
                            { 650, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(hill_special_types, TileType::TILE_TYPE_HILLS, row, col);
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_HILLS, {{400, {TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_BAZAAR, to_string(true)}}});
+
     result_map->insert(row, col, tile);
   }
 }
@@ -390,6 +416,8 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   if (desert_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && scrub_val == CellValue::CELL_OFF)
   {
     tile = generate_feature_or_default({}, TileType::TILE_TYPE_DESERT, row, col);
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_DESERT, {{200, {TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_BAZAAR, to_string(true)}}});
+
     result_map->insert(row, col, tile);
   }
 }

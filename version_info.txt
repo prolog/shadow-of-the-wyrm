@@ -82,6 +82,8 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 - Keybindings are now reloaded whenever the game runs, not just when a
   character is first created (Esran).
 
+- More combinations for random name generation.
+
 - More stanzas for "Tel and Floridel".
 
 - New shops: potion shop in Gnordvar, general store in Stoneheim.

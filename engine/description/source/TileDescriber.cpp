@@ -4,7 +4,7 @@
 #include "TextMessages.hpp"
 #include "TileTextKeys.hpp"
 
-using std::string;
+using namespace std;
 
 TileDescriber::TileDescriber(TilePtr new_tile)
 : tile(new_tile)
@@ -31,9 +31,13 @@ string TileDescriber::describe() const
       description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_PLANTED);
     }
 
-    if (tile->has_extra_description())
+    vector<string> extra_sids = tile->get_extra_description_sids();
+    if (!extra_sids.empty())
     {
-      description = description + " " + StringTable::get(tile->get_extra_description_sid());
+      for (const auto& sid : extra_sids)
+      {
+        description = description + " " + StringTable::get(sid);
+      }
     }
 
     if (tile->has_engraving())
