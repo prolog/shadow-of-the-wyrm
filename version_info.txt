@@ -82,6 +82,10 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 - Keybindings are now reloaded whenever the game runs, not just when a
   character is first created (Esran).
 
+- Bazaars can now be generated in the wilderness.  They can be generated
+  on field, scrub, hill, and desert locations, and will display a message
+  when moving on to the tile on the world map.
+
 - More combinations for random name generation.
 
 - More stanzas for "Tel and Floridel".

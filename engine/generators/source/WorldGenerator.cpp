@@ -192,7 +192,7 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
                            {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
 
     tile = generate_feature_or_default(field_special_types, TileType::TILE_TYPE_FIELD, row, col);
-    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_FIELD, {{200, {TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_BAZAAR, to_string(true)}}});
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_FIELD, {{200, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}}});
 
     result_map->insert(row, col, tile);
   }
@@ -324,7 +324,7 @@ void WorldGenerator::process_hill_cell(MapPtr result_map, const int row, const i
                            { 650, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(hill_special_types, TileType::TILE_TYPE_HILLS, row, col);
-    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_HILLS, {{400, {TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_BAZAAR, to_string(true)}}});
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_HILLS, {{400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}}});
 
     result_map->insert(row, col, tile);
   }
@@ -404,6 +404,8 @@ void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const 
                             { 500, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(scrub_special_types, TileType::TILE_TYPE_SCRUB, row, col);
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_SCRUB, {{450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}}});
+
     result_map->insert(row, col, tile);
   }
 }
@@ -416,7 +418,7 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   if (desert_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && scrub_val == CellValue::CELL_OFF)
   {
     tile = generate_feature_or_default({}, TileType::TILE_TYPE_DESERT, row, col);
-    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_DESERT, {{200, {TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_BAZAAR, to_string(true)}}});
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_DESERT, {{400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}}});
 
     result_map->insert(row, col, tile);
   }
