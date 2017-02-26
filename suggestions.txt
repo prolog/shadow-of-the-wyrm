@@ -1,5 +1,5 @@
 Me:
-- Spring fairy.
+- Spring fairy.  Full HP, AP, hunger.
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
