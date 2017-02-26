@@ -55,9 +55,6 @@ class TileProperties
     // If this is a water tile, is it freshwater?  Saltwater?
     static const std::string TILE_PROPERTY_WATER_TYPE;
 
-    // Has someone set up a bazaar?
-    static const std::string TILE_PROPERTY_EXTRA_DESCRIPTION_BAZAAR;
-
     // Generates the map key that identifies the custom map ID for
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);

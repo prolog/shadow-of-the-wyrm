@@ -1,3 +1,4 @@
+#include "GeneratorUtils.hpp"
 #include "HillsGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -63,6 +64,8 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
     result_map->insert(gr_row, gr_col, barrow);
     result_map->set_permanent(true);
   }
+
+  GeneratorUtils::generate_bazaar_if_necessary(result_map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR));
 
   return result_map;
 }

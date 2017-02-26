@@ -40,6 +40,21 @@ TEST(SW_World_Tiles_Tile, correct_inventory_type)
   }
 }
 
+TEST(SW_World_Tiles_Tile, extra_desc_sids)
+{
+  DungeonTile tile;
+
+  tile.set_additional_property("PROPERTY1", "123");
+  tile.set_additional_property("PROPERTY_EXTRA_DESCRIPTION", "123");
+  tile.set_additional_property("PROPERTY1_EXTRA_DESCRIPTION_MORETEXTHERE", "123");
+  tile.set_additional_property("PROPERTY1_NOTEXTRA_DESC_RIPTION", "123");
+  tile.set_additional_property("PROPERTY17", "123");
+  tile.set_additional_property("PROPERTY11", "123");
+  tile.set_additional_property("PROPERTY22", "123");
+
+  EXPECT_EQ(2, tile.get_extra_description_sids().size());
+}
+
 TEST(SW_World_Tiles_Tile, set_default_properties)
 {
   DungeonTile tile;
