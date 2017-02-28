@@ -1,5 +1,6 @@
 Me:
-- Spring fairy.  Full HP, AP, hunger.
+- Spring fairy should remove statuses.
+- Springs in dungeons.
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
@@ -22,6 +23,7 @@ Me:
 - Allow shopkeepers to be any of the selectable races.
 - Allow shopkeepers to sell for different prices dependending on their
   race, and the buying creature's.
+- Freshwater turns to ice in winter.
 - Creatures should be smarter about the use of spells given that creatures
   will fight back and summon help.
 - Exploding arrows.

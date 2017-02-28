@@ -219,7 +219,11 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
+  lua_register(L, "get_creature_current_hp", get_creature_current_hp);
+  lua_register(L, "get_creature_base_hp", get_creature_base_hp);
   lua_register(L, "set_creature_current_ap", set_creature_current_ap);
+  lua_register(L, "get_creature_current_ap", get_creature_current_ap);
+  lua_register(L, "get_creature_base_ap", get_creature_base_ap);
   lua_register(L, "set_creature_name", set_creature_name);
   lua_register(L, "get_creature_name", get_creature_name);
   lua_register(L, "destroy_creature_equipment", destroy_creature_equipment);
@@ -2523,6 +2527,54 @@ int set_creature_current_hp(lua_State* ls)
   return 0;
 }
 
+int get_creature_current_hp(lua_State* ls)
+{
+  int current_hp = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      current_hp = creature->get_hit_points().get_current();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_current_hp");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, current_hp);
+  return 1;
+}
+
+int get_creature_base_hp(lua_State* ls)
+{
+  int base_hp = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      base_hp = creature->get_hit_points().get_base();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_base_hp");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, base_hp);
+  return 1;
+}
+
 int set_creature_current_ap(lua_State* ls)
 {
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
@@ -2547,6 +2599,54 @@ int set_creature_current_ap(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_creature_current_ap(lua_State* ls)
+{
+  int current_ap = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      current_ap = creature->get_arcana_points().get_current();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_current_ap");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, current_ap);
+  return 1;
+}
+
+int get_creature_base_ap(lua_State* ls)
+{
+  int base_ap = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      base_ap = creature->get_arcana_points().get_base();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_base_ap");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, base_ap);
+  return 1;
 }
 
 int set_creature_name(lua_State* ls)

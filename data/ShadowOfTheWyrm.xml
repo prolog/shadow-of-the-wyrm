@@ -10687,7 +10687,7 @@
 			<Soak>20</Soak>
 			<Speed>70</Speed>
 		</Creature>
-		<Creature id="fairy_spirit">
+		<Creature id="_fairy_spirit">
 			<RaceID>_spirit</RaceID>
 			<ShortDescriptionSID>FAIRY_SPIRIT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FAIRY_SPIRIT_DESCRIPTION_SID</DescriptionSID>
@@ -10719,6 +10719,11 @@
 				<Type>9</Type>
 			</Damage>
 			<Speed>30</Speed>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/fairy_spirit.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="pelageus">
 			<RaceID>01_human</RaceID>

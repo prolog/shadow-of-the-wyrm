@@ -86,6 +86,11 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   on field, scrub, hill, and desert locations, and will display a message
   when moving on to the tile on the world map.
 
+- Springs in the wilderness can now generate a fairy spirit.  These are
+  the spirits of the fairy girls slaughtered by the giants in the sacred
+  glade.  If you talk to one of these spirits, you'll have HP/AP restored,
+  and hunger satiated.
+
 - More combinations for random name generation.
 
 - More stanzas for "Tel and Floridel".
@@ -95,7 +100,7 @@ Shadow of the Wyrm v0.6.1 "Riquier"
 - New items: satiative amulet, bough, wand of wrath, wand of arcana.
 
 - New creatures: kingspirit, roiling slime, splitting shrike, marsh 
-  wraith, ancient worm, Pelageus.
+  wraith, ancient worm, Pelageus, fairy spirit.
 
 - Bug fixes:
 

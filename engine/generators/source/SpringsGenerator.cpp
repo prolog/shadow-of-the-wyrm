@@ -1,6 +1,13 @@
+#include "CreatureFactory.hpp"
+#include "CreatureFeatures.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
+#include "RNG.hpp"
 #include "SpringsGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "SpringsTile.hpp"
+
+const int SpringsGenerator::PCT_CHANCE_FAIRY_SPIRIT = 50;
 
 MapPtr SpringsGenerator::generate(MapPtr map, const int start_row, const int start_col, const int springs_size, const SpringsType type)
 {
@@ -60,6 +67,8 @@ MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const in
     spring_size = spring_size - 1;
   }
 
+  add_fairy_spirit_if_necessary(result_map, centre_line, (start_col + springs_size / 2));
+
   return result_map;
 }
 
@@ -106,5 +115,22 @@ MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const in
     spring_size = spring_size - 1;
   }
 
+  add_fairy_spirit_if_necessary(result_map, start_row + (springs_size / 2), centre_line);
+
   return result_map;
+}
+
+void SpringsGenerator::add_fairy_spirit_if_necessary(MapPtr result_map, const int row, const int col)
+{
+  // Chance of generating a fairy spirit.
+  if (RNG::percent_chance(PCT_CHANCE_FAIRY_SPIRIT))
+  {
+    Game& game = Game::instance();
+    CreatureFactory cf;
+
+    CreaturePtr spirit = cf.create_by_creature_id(game.get_action_manager_ref(), CreatureID::CREATURE_ID_FAIRY_SPIRIT);
+    GameUtils::add_new_creature_to_map(game, spirit, result_map, {row, col});
+
+    result_map->set_permanent(true);
+  }
 }
