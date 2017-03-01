@@ -43,9 +43,9 @@ void ExitGameAction::create_dump_if_necessary(IMessageManager& manager, ActionMa
   manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_CREATE_IDENTIFIED_DUMP));
   bool create_dump = creature && creature->get_decision_strategy()->get_confirmation();
 
-  if (create_dump)
+  if (create_dump && creature != nullptr)
   {
-    EffectPtr identify = EffectFactory::create_effect(EffectType::EFFECT_TYPE_IDENTIFY);
+    EffectPtr identify = EffectFactory::create_effect(EffectType::EFFECT_TYPE_IDENTIFY, {}, {}, "", creature->get_id());
 
     if (identify != nullptr)
     {

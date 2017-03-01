@@ -1,25 +1,30 @@
 Me:
-- Shopkeepers should get angry when reading/consuming in shop
-- 0-value food showing up in Noah's shop
-- Gourmand amulet
+- Add shops to dungeons.
+- Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Avoid triggering known traps with high Alertness.
-- More shops in set locations.
-- Implement Bowyer (+docs)
-- Implement Fletchery. (+docs)
-- Reduce the number of castings learned from books.
+- Revisit smithing.
+- Revisit how values are updated after enchantment.
+- Magic mappings effect.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.
+- Before making negative amulets with statuses (e.g., poisoned amulet),
+  make status identifier map calculated by going through the modifiers.
+  Otherwise, it's stupid trying to figure out if a creature is still
+  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
+  amulet.  Should still be poisoned when either of the two wear off.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Allow shopkeepers to be any of the selectable races.
 - Allow shopkeepers to sell for different prices dependending on their
   race, and the buying creature's.
+- Freshwater turns to ice in winter.
 - Creatures should be smarter about the use of spells given that creatures
   will fight back and summon help.
+- Exploding arrows.
 - Arcane damage should destroy wands, rings, potions, scrolls, texts,
   some of the time (30%).  There should be a 10% chance of actually
   enchanting the item, though.  Try to limit to "magic only".
@@ -29,21 +34,21 @@ Me:
   her grants a wish.  She should have a chance of vanishing, which then
   decrements her generated counter to ensure she can appear again.  There
   should be a creature that talks about her.
+- Craft different launchers/projectiles as skill increases.
 - Some sort of ship area - raiders, ghost ship, etc.
 - z-maps for settlements: test flying between multi-level maps and going
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
 - Cancellation effect type
-- Once a month, repop shops
 - Special rooms: beer hall, magical workshop, armory.
+- More shops in set locations.
 - Travelling bazaars (make fields/deserts/hills permanent).
-- Add shops to the random villages.
-- Add shops to dungeons.
 - Merchants should get half off in shops.
 - Initial Music skill implementation.
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
+- Spring fairy should remove statuses.
 - Scent maps/track by scent.
 - Stores
 - Bones files
@@ -55,18 +60,12 @@ Me:
 - Different types of branches (species) should have different wand
   properties.
 - General performance improvements.
-- Item generation: get rarity working properly, and then do some test
-  runs.  Once that works, create some more artifacts/great items for
-  random generation.  Also, as part of the initial shop code, certain
-  weapons were made common (elven short sword, rapier) to make shops ok.
-  Consider making these uncommon again when the code sucks less.
 - Potion components of some sort?  Weeds should be "pickable"?
 - Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
 - Telari, the Drowned Isle
-- Update MapTester config so that "generation runs" of creatures and
-  items can be done and dumped to disk.
+- Update MapTester config for generation runs of creatures
 - Define all monsters as good/neutral/evil
 - Monsters should have a chance of being generated friendly when same
   alignment.
@@ -79,16 +78,22 @@ Me:
 - More poem fragments for start.
 - Smarter pack logic: not just by creature type, but maybe by race, etc.
 - Weather, weather patterns, effects
-- Add splitting behaviour to all jellies: when hit, they have some
-  chance (10-20%?) of splitting.  Each creature in the split has half
-  the current HP of the original.
 - Recall spell that takes you back to the overworld.
 - Armour flags
+- Cantrip to set glow flag on items
 - Food rotting for caught fish, other foods?
+
+Larzid:
+- Some sort of bank to ease the burden of carrying so much currency.
+
+Rob Ayres:
+- Auto-fish/eat when travelling over water and having a spear/fishing rod.
+- Mark health when taking damage from a creature of your danger level or
+  higher.
+- HP/AP not being affected by stats on stat gain or level.
 
 Anon: 
 - Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
-- Character dumps while blinded show all items as "something"
 - Increase stat-based damage bonuses
 
 For v1:
@@ -158,10 +163,6 @@ Samildanach:
 - Make it more obvious what skills do and how they work.
 
 Esran:
-- The creatures who applied statuses aren't tracked, so players aren't
-  getting exp from e.g. poison.
 - Once monsters are smarter, create spells that allow hitting monsters
   past walls.
-- Flag to allow toggling of creature/lighting effect during day/night
-  stuff.
 - Dungeons: when random, prompt for "descend to what depth (ft)?

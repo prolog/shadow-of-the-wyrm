@@ -81,5 +81,5 @@ end
 
 local shopkeeper_buy_fn = shopkeeper_buy
 
-drop.set_drop_fn("shopkeeper", shopkeeper_buy_fn)
+drop.set_drop_fn("_shopkeeper", shopkeeper_buy_fn)
 

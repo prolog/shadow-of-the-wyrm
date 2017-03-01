@@ -9,7 +9,7 @@ TEST(SW_World_Quest, serialization_id)
 
 TEST(SW_World_Quest, saveload)
 {
-  Quest q("a", "b", "c", "d");
+  Quest q("a", "b", "c", "map", "d");
   Quest q2;
 
   ostringstream ss;
@@ -26,7 +26,7 @@ TEST(SW_World_Quest, saveload)
 TEST(SW_World_Quests, add_quest)
 {
   Quests q;
-  Quest q1("a", "b", "c", "d");
+  Quest q1("a", "b", "c", "map", "d");
 
   q.add_new_quest("q", q1);
 
@@ -37,7 +37,7 @@ TEST(SW_World_Quests, add_quest)
 TEST(SW_World_Quests, move_quest_to_completed_status)
 {
   Quests q;
-  Quest q1("a", "b", "c", "d");
+  Quest q1("a", "b", "c", "map", "d");
 
   EXPECT_FALSE(q.is_quest_in_progress("q1"));
   q.add_new_quest("q1", q1);
@@ -60,9 +60,9 @@ TEST(SW_World_Quests, saveload)
   Quests q;
   Quests q_deser;
 
-  Quest q1("a", "b", "c", "d");
-  Quest q2("e", "f", "g", "h");
-  Quest q3("i", "j", "k", "l");
+  Quest q1("a", "b", "c", "map", "d");
+  Quest q2("e", "f", "g", "map2", "h");
+  Quest q3("i", "j", "k", "map3", "l");
 
   q.add_new_quest("q1", q1);
   q.add_new_quest("q2", q2);

@@ -35,3 +35,10 @@ TEST(SW_Engine_Calculators_HungerCalculator, chance_to_mark_health)
   EXPECT_EQ(0, hc.calculate_pct_chance_mark_health(HungerLevel::HUNGER_LEVEL_STUFFED, false));
 
 }
+
+TEST(SW_Engine_Calculators_HungerCalculator, pct_chance_hunger_while_sated)
+{
+  HungerCalculator hc;
+  EXPECT_EQ(15, hc.calculate_pct_chance_hunger_while_sated());
+}
+

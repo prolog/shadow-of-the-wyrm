@@ -29,5 +29,10 @@ void XMLWearableReader::parse(WearablePtr wearable, GenerationValues& gv, const 
 
     int addl_damage = XMLUtils::get_child_node_int_value(wearable_node, "AddlDamage");
     wearable->set_addl_damage(addl_damage);
+
+    XMLNode sa_node = XMLUtils::get_next_element_by_local_name(wearable_node, "StatusAilments");
+    StatusAilments sa;
+    parse_status_ailments(sa, sa_node);
+    wearable->set_status_ailments(sa);
   }
 }

@@ -69,6 +69,20 @@ void DecisionStrategy::set_property(const string& prop, const string& value)
   properties[prop] = value;
 }
 
+bool DecisionStrategy::remove_property(const string& prop)
+{
+  bool removed = false;
+
+  auto p_it = properties.find(prop);
+  if (p_it != properties.end())
+  {
+    properties.erase(p_it);
+    removed = true;
+  }
+
+  return removed;
+}
+
 string DecisionStrategy::get_property(const string& prop) const
 {
   string prop_val;

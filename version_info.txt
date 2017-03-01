@@ -1,3 +1,130 @@
+Shadow of the Wyrm v0.6.1 "Riquier"
+- Version declared February 3, 2017.  Version finalized March 1, 2017.
+
+- Wearables can now apply status ailments when equipped, and undo them 
+  when unequipped.
+
+- Satiation effect type.  When in place, a creature's hunger clock
+  decrements at ~15% the normal speed.
+
+- Implemented the Lore skill.  This gives a chance to identify the status
+  of an item the first time the player picks it up.  The chance is 
+  directly proportional to the skill value.
+
+- The Bowyer skill is implemented as well.  When you have a bough, you 
+  can use it to create a bow or a crossbow.  Higher skill values will add 
+  to-hit or damage bonuses, in the same way that this is done for e.g.
+  Smithing.  The Crafting skill also plays a role in the total potential
+  improvements points, though to a lesser extent than Bowyer.
+
+- Fletchery has also been implemented.  A branch can now be turned into
+  arrows, bolts, javelins, or throwing clubs.  The quantity created is
+  based on the per-item weight and the weight of the branch.  The
+  ammunition created will get better and better with higher Fletchery and
+  Crafting values.
+
+- In-game shops have their items restocked on a monthly basis.  This 
+  covers all shops on all persistent maps.  If the player is on a map
+  with a shop when the repop occurs, he or she will see a message about
+  it.
+
+- Tree tiles now have a chance of generating a bough instead of a branch.
+
+- Blackwater traps are now light blue instead of dark. (Rob Ayres)
+
+- Spellbooks now provide fewer castings when read.
+
+- Adventurers also start with a wand they've found on their travels,
+  either lightning bolt or teleport.
+
+- The random villages that are scattered throughout the world now have
+  a chance to contain a shop: 40% for a hamlet or scattered settlement,
+  75% for a regular settlement, 85% for a walled settlement, 100% for
+  a city.
+
+- Quests now show not just the questmaster, but the map that they're
+  from.
+
+- Currency is now fixed at uncursed status, always identified, and cannot 
+  be blessed or cursed.  This will allow proper ivory stacking in the 
+  player's inventory.
+
+- Reworked the item generation algorithm.  The previous algorithm was
+  based purely on an item's danger level and rarity, and did not take
+  type into account at all.  After the rework, almost all items are now
+  "common" for their specified danger level.  The algorithm now first 
+  picks an item type (weapon, potion, etc) and then tries to generate an 
+  item of that type based on the danger level and selected rarity.  This 
+  ensures a more even distribution of item types throughout the game, as 
+  previously scrolls, potions, and so on, were notoriously rare, getting
+  passed over in the selection process by more common items.  The 
+  algorithm is a work in progress and is likely to be reworked or tweaked 
+  in future versions.
+
+- Teleport wands will appear earlier.
+
+- Shopkeepers don't like being outside their shop, so they will not allow
+  the player to switch places with them. (Rob Ayres)
+
+- Praying can now cause a deity to neuter all breeders on the level,
+  preventing them from breeding.  Subsequently generated breeders are not
+  affected.
+
+- The chance of a breeder to breed on a given turn has increased from
+  10% to 15%.
+
+- There are a few more creatures at the start of Amaurosis' lair.
+
+- The game now keeps track of which creature gave each status ailment.
+  Experience is now properly granted when killing a creature with a
+  time-delayed effect, such as poison or petrification (Esran).
+
+- Keybindings are now reloaded whenever the game runs, not just when a
+  character is first created (Esran).
+
+- Bazaars can now be generated in the wilderness.  They can be generated
+  on field, scrub, hill, and desert locations, and will display a message
+  when moving on to the tile on the world map.
+
+- Springs in the wilderness can now generate a fairy spirit.  These are
+  the spirits of the fairy girls slaughtered by the giants in the sacred
+  glade.  If you talk to one of these spirits, you'll have HP/AP restored,
+  and hunger satiated.
+
+- Slightly increased the probability of generating a special room in a
+  dungeon.
+
+- Springs can now be generated in dungeons as well as forests.  In
+  dungeons, a fairy spirit will always be generated at the spring.
+
+- More combinations for random name generation.
+
+- More stanzas for "Tel and Floridel".
+
+- New shops: potion shop in Gnordvar, general store in Stoneheim.
+
+- New items: satiative amulet, bough, wand of wrath, wand of arcana.
+
+- New creatures: kingspirit, roiling slime, splitting shrike, marsh 
+  wraith, ancient worm, Pelageus, fairy spirit.
+
+- Bug fixes:
+
+  - The Literacy skill's improvement message was the same as Leadership
+    (Rob Ayres).
+
+  - Ivory pieces were forming separate stacks when selling, rather than
+    being merged into the player's existing amount (Rob Ayres).
+
+  - Petrification wasn't leaving a corpse on the right tile.
+
+  - Creatures could leave both corpses and statues when petrified.
+
+  - Creatures could drop their equipment and generate death drops when
+    petrified, but these items would be unreachable due to statues being
+    blocking features.  Suppressed item drops/generation on petrification,
+    as any items should be considered part of the statue.
+
 Shadow of the Wyrm v0.6.0 "Capirola"
 - Version declared January 11, 2017.  Version finalized February 3, 2017.
 

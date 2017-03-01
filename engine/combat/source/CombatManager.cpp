@@ -338,15 +338,17 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   if (damage_dealt > 0 || effect_bonus > 0)
   {
     // Apply any effects (e.g., poison) that occur as the result of the damage)
-    handle_damage_effects(attacked_creature, damage_dealt, damage_type, effect_bonus, damage_info.get_status_ailments(), danger_level);
+    handle_damage_effects(attacking_creature, attacked_creature, damage_dealt, damage_type, effect_bonus, damage_info.get_status_ailments(), danger_level);
   }
 
   if (damage_dealt > 0)
   {
     // If this attack is vorpal and passes the vorpal check, update the damage 
     // to match the creature's remaining HP
+    string source_id = attacking_creature != nullptr ? attacking_creature->get_id() : "";
+
     handle_vorpal_if_necessary(attacking_creature, attacked_creature, damage_info, damage_dealt);
-    deal_damage(attacking_creature, attacked_creature, damage_dealt, damage_info);
+    deal_damage(attacking_creature, attacked_creature, source_id, damage_dealt, damage_info);
   }
   else
   {
@@ -533,9 +535,15 @@ bool CombatManager::does_attack_slay_creature_race(CreaturePtr attacking_creatur
 // poison, etc.  Take into account whether or not the damage has overridden the status
 // effects.  If so, get the set of ailments off the status ailments, and use those
 // instead.
-void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level)
+void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, CreaturePtr creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level)
 {
   StatusEffectPtr status_effect;
+  string source_id;
+
+  if (attacking_creature != nullptr)
+  {
+    source_id = attacking_creature->get_id();
+  }
 
   if (status_ailments.get_override_defaults())
   {
@@ -543,13 +551,13 @@ void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage
 
     for (const string& ailment : ailments)
     {
-      status_effect = StatusEffectFactory::create_status_effect(ailment);
+      status_effect = StatusEffectFactory::create_status_effect(ailment, source_id);
       apply_damage_effect(creature, status_effect, effect_bonus, danger_level);
     }
   }
   else
   {
-    status_effect = StatusEffectFactory::create_effect_for_damage_type(damage_type);
+    status_effect = StatusEffectFactory::create_effect_for_damage_type(damage_type, source_id);
     apply_damage_effect(creature, status_effect, effect_bonus, danger_level);
   }
 }
@@ -570,13 +578,20 @@ void CombatManager::apply_damage_effect(CreaturePtr creature, StatusEffectPtr st
 // Once damage is dealt, check for death.  If the attack has lowered the attacked creature's
 // HP to 0, kill it, and award the dead creature's experience value to the attacking
 // creature.
-void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info, const string message_sid)
+void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreaturePtr attacked_creature, const string& source_id, const int damage_dealt, const Damage& damage_info, const string message_sid)
 {
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
   
   if (map && attacked_creature)
   {
+    CreaturePtr attacking_creature = combat_attacking_creature;
+
+    if (attacking_creature == nullptr && !source_id.empty())
+    {
+      attacking_creature = map->get_creature(source_id);
+    }
+
     PointsTransfer pt;
     int hp_trans = pt.get_points_for_transfer(attacked_creature, damage_dealt, PointsTransferType::POINTS_TRANSFER_HP);
     int ap_trans = pt.get_points_for_transfer(attacked_creature, damage_dealt, PointsTransferType::POINTS_TRANSFER_AP);

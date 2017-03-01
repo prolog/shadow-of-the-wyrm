@@ -7,7 +7,7 @@ class Quest : public ISerializable
 {
   public:
     Quest();
-    Quest(const std::string& new_quest_id, const std::string& new_quest_title_sid, const std::string& new_questmaster_name_sid, const std::string& new_quest_description_sid);
+    Quest(const std::string& new_quest_id, const std::string& new_quest_title_sid, const std::string& new_questmaster_name_sid, const std::string& new_map_name_sid, const std::string& new_quest_description_sid);
     bool operator==(const Quest& q) const;
 
     void set_quest_id(const std::string& new_quest_id);
@@ -19,6 +19,9 @@ class Quest : public ISerializable
     void set_questmaster_name_sid(const std::string& new_quest_id);
     std::string get_questmaster_name_sid() const;
 
+    void set_map_name_sid(const std::string& new_map_name_sid);
+    std::string get_map_name_sid() const;
+
     void set_quest_description_sid(const std::string& new_quest_id);
     std::string get_quest_description_sid() const;
 
@@ -29,6 +32,7 @@ class Quest : public ISerializable
     std::string quest_id;
     std::string quest_title_sid;
     std::string questmaster_name_sid;
+    std::string map_name_sid;
     std::string quest_description_sid;
 
   private:

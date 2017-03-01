@@ -6,7 +6,7 @@
 #include "DeityTextKeys.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
-#include "PlayerConstants.hpp"
+#include "ModifyStatisticsEffect.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SpellAdditionalProperties.hpp"
@@ -183,7 +183,7 @@ bool CreatureUtils::is_player_or_in_los(CreaturePtr creature)
   {
     string creature_id = creature->get_id();
 
-    if (creature_id == PlayerConstants::PLAYER_CREATURE_ID)
+    if (creature_id == CreatureID::CREATURE_ID_PLAYER)
     {
       result = true;
     }
@@ -498,7 +498,7 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const stri
   }
 }
 
-void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const double current_seconds)
+void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const double current_seconds, const double min_expiry)
 {
   if (creature != nullptr)
   {
@@ -509,7 +509,7 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const doub
     {
       double modifier_expiry = m_it->first;
 
-      if ((modifier_expiry > 0) && (modifier_expiry <= current_seconds))
+      if ((modifier_expiry >= min_expiry) && (modifier_expiry <= current_seconds))
       {
         process_creature_modifiers(creature, m_it->second);
       }
@@ -537,6 +537,11 @@ void CreatureUtils::process_creature_modifiers(CreaturePtr creature, vector<pair
 
 void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string, Modifier>& mod_pair)
 {
+  if (mod_pair.second.get_permanent() == true)
+  {
+    return;
+  }
+  
   string spell_id = mod_pair.first;
   mod_pair.second.set_delete(true);
 
@@ -548,12 +553,68 @@ void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string,
   for (const auto& status : statuses)
   {
     string status_id = status.first;
-    StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status_id);
 
-    if (status_p && creature->has_status(status_id))
+    if (creature->has_status(status_id))
     {
+      Status st = creature->get_status(status_id);
+      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status_id, st.get_source_id());
       status_p->finalize_change(creature);
     }
+  }
+}
+
+void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr creature)
+{
+  if (wearable != nullptr && creature != nullptr)
+  {
+    if (wearable != nullptr)
+    {
+      string creature_id = creature->get_id();
+      StatusAilments sa = wearable->get_status_ailments();
+      set<string> ailments = sa.get_ailments();
+
+      for (const auto& ailment : ailments)
+      {
+        ModifyStatisticsEffect mse;
+        Modifier m;
+
+        creature->set_status(ailment, {ailment, true, 1 /* JCD FIXME? */, creature_id});
+        m.set_status(ailment, true);
+        mse.set_spell_id(StatusIdentifiers::STATUS_ID_SATED); // set for easy rollback
+        mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+      }
+    }
+  }
+}
+
+void CreatureUtils::remove_status_ailments_from_wearable(WearablePtr wearable, CreaturePtr creature)
+{
+  if (wearable != nullptr && creature != nullptr)
+  {
+    StatusAilments sa = wearable->get_status_ailments();
+    set<string> ailments = sa.get_ailments();
+
+    auto& cr_mods = creature->get_modifiers_ref();
+    auto indefinite_mod_it = creature->get_modifiers_ref().find(-1);
+
+    if (indefinite_mod_it != cr_mods.end())
+    {
+      vector<pair<string, Modifier>>& mods = indefinite_mod_it->second;
+
+      for (pair<string, Modifier>& mod_pair : mods)
+      {
+        if (mod_pair.second.get_permanent() == false)
+        {
+          if (ailments.find(mod_pair.first) != ailments.end())
+          {
+            CreatureUtils::process_creature_modifier(creature, mod_pair);
+            mod_pair.second.set_delete(true);
+          }
+        }
+      }
+    }
+
+    CreatureUtils::remove_modifiers(creature);
   }
 }
 

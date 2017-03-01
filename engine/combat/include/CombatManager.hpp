@@ -23,8 +23,8 @@ class CombatManager
                            const bool mark_skills = true, 
                            DamagePtr damage = DamagePtr());
 
-    void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage, const std::string combat_message_sid = "");
-    void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level);
+    void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const std::string& source_id, const int damage_dealt, const Damage& damage, const std::string combat_message_sid = "");
+    void handle_damage_effects(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level);
 
   protected:
     // Apply a particular status effect.

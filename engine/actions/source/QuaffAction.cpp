@@ -65,9 +65,11 @@ void QuaffAction::explode_potion(CreaturePtr original_attacker, CreaturePtr crea
 void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreaturePtr caster, const string& message)
 {
   if (creature && potion)
-  {    
+  {
+    string caster_id = caster != nullptr ? caster->get_id() : "";
+
     EffectType et = potion->get_effect_type();
-    EffectPtr potion_effect = EffectFactory::create_effect(et);
+    EffectPtr potion_effect = EffectFactory::create_effect(et, {}, {}, "", caster_id);
 
     if (potion_effect)
     {

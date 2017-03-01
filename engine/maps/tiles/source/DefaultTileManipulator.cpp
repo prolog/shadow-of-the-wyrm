@@ -135,7 +135,8 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
       int danger_level = map->get_danger();
 
       ItemGenerationManager igm;
-      ItemGenerationVec igv = igm.generate_item_generation_vec({1, std::max<int>(danger_level, creature->get_level().get_current()), Rarity::RARITY_VERY_RARE, {}, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
+      vector<ItemType> i_restr = {};
+      ItemGenerationMap igmap = igm.generate_item_generation_map({1, std::max<int>(danger_level, creature->get_level().get_current()), Rarity::RARITY_VERY_RARE, i_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
 
       Game& game = Game::instance();
       ActionManager am = game.get_action_manager_ref();
@@ -149,7 +150,7 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
 
         if (item_ids.empty())
         {
-          item = igm.generate_item(am, igv, Rarity::RARITY_RARE, RNG::range(1, static_cast<int>(danger_level / 2)));
+          item = igm.generate_item(am, igmap, Rarity::RARITY_RARE, i_restr, RNG::range(1, static_cast<int>(danger_level / 2)));
         }
         else
         {

@@ -11,7 +11,7 @@ void ReadStrategy::add_read_message(const pair<string, string>& player_and_monst
 {
   if (creature && readable)
   {
-    EffectPtr effect = EffectFactory::create_effect(readable->get_effect_type());
+    EffectPtr effect = EffectFactory::create_effect(readable->get_effect_type(), {}, {}, "", creature->get_id());
     string player_message_sid = player_and_monster_read_message_sids.first;
     string monster_message_sid = player_and_monster_read_message_sids.second;
 

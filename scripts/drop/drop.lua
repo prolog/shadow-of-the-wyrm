@@ -16,5 +16,7 @@ function drop(dropping_creature_id, fov_creature_id, fov_creature_base_id, item_
 
   if drop_fn ~= nil then
     drop_fn(dropping_creature_id, fov_creature_id, item_id, item_base_id, drop_y, drop_x)
+  else
+    log(CLOG_ERROR, "Drop script defined but no function?  FOV creature base ID is " .. fov_creature_base_id)
   end
 end

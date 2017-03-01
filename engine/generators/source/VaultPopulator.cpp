@@ -54,14 +54,15 @@ void VaultPopulator::populate_vault_items(MapPtr map, const vector<Coordinate>& 
   ActionManager& am = game.get_action_manager_ref();
 
   ItemGenerationManager igm;
-  ItemGenerationVec generation_vec = igm.generate_item_generation_vec({danger_level / 2, danger_level, rarity, {}, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
+  vector<ItemType> i_restr = {};
+  ItemGenerationMap generation_map = igm.generate_item_generation_map({danger_level / 2, danger_level, rarity, i_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
 
   for (const Coordinate& c : coords)
   {
     // Items in vaults are always a little better than the random crap an
     // adventurer finds lying around a dungeon.  It's just one of those things.
     int enchant_points = RNG::range(2, std::max<int>(2, (danger_level / 2)));
-    ItemPtr generated_item = igm.generate_item(am, generation_vec, Rarity::RARITY_RARE, enchant_points);
+    ItemPtr generated_item = igm.generate_item(am, generation_map, Rarity::RARITY_RARE, i_restr, enchant_points);
 
     if (generated_item != nullptr)
     {

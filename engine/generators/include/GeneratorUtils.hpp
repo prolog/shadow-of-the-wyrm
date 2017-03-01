@@ -38,9 +38,18 @@ class GeneratorUtils
     // Generates a random trap from the game at the given coordinates.
     static void generate_trap(const MapPtr map, const int row, const int col, const std::vector<TrapPtr>& traps, const bool trap_triggered = false);
 
+    // Generates a bazaar somewhere on the map assuming the bazaar property
+    // is not empty.
+    static void generate_bazaar_if_necessary(const MapPtr map, const std::string& bazaar_property);
+
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
-    
+    static bool are_tiles_ok_for_bazaar(MapPtr map, const int y_start, const int x_start, const int height, const int width);
+
+    static const int BAZAAR_MIN_WIDTH;
+    static const int BAZAAR_MAX_WIDTH;
+    static const int BAZAAR_MIN_HEIGHT;
+    static const int BAZAAR_MAX_HEIGHT;
     GeneratorUtils();
     ~GeneratorUtils();
 };

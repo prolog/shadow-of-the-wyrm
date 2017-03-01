@@ -23,7 +23,7 @@ using namespace std;
 const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_RANGED_COMBAT = 80;
-const int NPCDecisionStrategy::PERCENT_CHANCE_BREED = 10;
+const int NPCDecisionStrategy::PERCENT_CHANCE_BREED = 15;
 
 NPCDecisionStrategy::NPCDecisionStrategy(ControllerPtr new_controller)
 : DecisionStrategy(new_controller)

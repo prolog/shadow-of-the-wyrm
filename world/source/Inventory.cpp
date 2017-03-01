@@ -246,6 +246,19 @@ bool Inventory::has_items() const
   return (items.empty() == false);
 }
 
+bool Inventory::has_unpaid_items() const
+{
+  for (ItemPtr i : items)
+  {
+    if (i && i->get_unpaid())
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 ItemPtr Inventory::at(const uint index)
 {
   ItemPtr selected_item;

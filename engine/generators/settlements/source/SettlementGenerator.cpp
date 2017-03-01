@@ -26,6 +26,7 @@ MapPtr SettlementGenerator::generate()
 
   result_map = generate_roads_and_buildings(result_map);
   result_map = populate_settlement(result_map);
+  generate_shop_if_necessary(result_map);
 
   return result_map;
 }
@@ -129,4 +130,9 @@ MapPtr SettlementGenerator::populate_settlement(MapPtr map)
   MapPtr result_map = std::make_shared<Map>(*map);
 
   return result_map;
+}
+
+int SettlementGenerator::get_pct_chance_shop() const
+{
+  return 75;
 }
