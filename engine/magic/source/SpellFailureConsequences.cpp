@@ -20,7 +20,7 @@ bool SpellFailureConsequences::damage_caster(CreaturePtr caster)
   int damage_in_hp = static_cast<int>(caster->get_hit_points().get_current() * damage_pct);
   Damage damage_default;
   damage_default.set_modifier(damage_in_hp);
-
+  string source_id; // nobody gets exp for the spellbook erupting and dealing damage.
   string spellbook_message_sid = get_damage_message_sid();
 
   // Marginal spell failures do nothing, so check to see if the creature's
@@ -29,7 +29,7 @@ bool SpellFailureConsequences::damage_caster(CreaturePtr caster)
   {
     CombatManager cm;
     CreaturePtr no_attacker;
-    cm.deal_damage(no_attacker, caster, damage_in_hp, damage_default, spellbook_message_sid);
+    cm.deal_damage(no_attacker, caster, source_id, damage_in_hp, damage_default, spellbook_message_sid);
 
     spellbook_destroyed = true;
   }

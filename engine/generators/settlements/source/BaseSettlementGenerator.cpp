@@ -4,6 +4,7 @@
 #include "GardenGenerator.hpp"
 #include "GardenGeneratorFactory.hpp"
 #include "RNG.hpp"
+#include "ShopGenerator.hpp"
 #include "TileGenerator.hpp"
 
 using std::pair;
@@ -208,7 +209,11 @@ bool BaseSettlementGenerator::generate_building_if_possible(MapPtr map, const Bu
 
     FeaturePtr door = FeatureGenerator::generate_door();
     door_tile->set_feature(door);
-    
+
+    // Track the building for later use - once all the buildings are generated
+    // in a settlement, some might be used for shops or other purposes.
+    buildings.push_back({{start_row, start_col}, {end_row, end_col}, door_location});
+
     map->insert(door_location.first, door_location.second, door_tile);
 
     generated = true;
@@ -563,5 +568,21 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
       current_length++;
       counter++;
     }
+  }
+}
+
+int BaseSettlementGenerator::get_pct_chance_shop() const
+{
+  return 40;
+}
+
+void BaseSettlementGenerator::generate_shop_if_necessary(MapPtr map)
+{
+  if (!buildings.empty() && map != nullptr && RNG::percent_chance(get_pct_chance_shop()))
+  {
+    Building shop_bldg = buildings.at(RNG::range(0, buildings.size()-1));
+    ShopGenerator sg;
+
+    sg.generate_shop(map, shop_bldg);
   }
 }

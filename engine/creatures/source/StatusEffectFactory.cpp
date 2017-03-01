@@ -8,6 +8,7 @@
 #include "MutenessStatusEffect.hpp"
 #include "ParalysisStatusEffect.hpp"
 #include "PoisonStatusEffect.hpp"
+#include "SatedStatusEffect.hpp"
 #include "SlownessStatusEffect.hpp"
 #include "SpellboundStatusEffect.hpp"
 #include "StatusEffectFactory.hpp"
@@ -44,7 +45,7 @@ void StatusEffectFactory::initialize_damage_status_ailments()
                                                              {DamageType::DAMAGE_TYPE_HEAT, StatusIdentifiers::STATUS_ID_BLINDED}};
 }
 
-StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageType dt)
+StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageType dt, const string& source_id)
 {
   string status_id;
 
@@ -60,10 +61,17 @@ StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageT
     status_id = a_it->second;
   }
 
-  return create_status_effect(status_id);
+  StatusEffectPtr status_effect = create_status_effect(status_id, source_id);
+
+  if (status_effect != nullptr)
+  {
+    status_effect->set_source_id(source_id);
+  }
+
+  return status_effect;
 }
 
-StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_id)
+StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_id, const string& source_id)
 {
   StatusEffectPtr status_effect;
 
@@ -127,11 +135,20 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   {
     status_effect = std::make_shared<TimewalkStatusEffect>();
   }
+  else if (status_id == StatusIdentifiers::STATUS_ID_SATED)
+  {
+    status_effect = std::make_shared<SatedStatusEffect>();
+  }
   else
   {
     // Default case - this basically does nothing for each callable
     // method.
     status_effect = std::make_shared<StatusEffect>();
+  }
+
+  if (status_effect != nullptr)
+  {
+    status_effect->set_source_id(source_id);
   }
 
   return status_effect;

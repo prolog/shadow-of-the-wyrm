@@ -1,4 +1,5 @@
 <CustomMap id="the_barrows" xmlns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:1.0.0 ./CustomMap.xsd">
+	<NameSID>MAP_NAME_BARROWS</NameSID>
 	<Dimensions>
 		<Rows>20</Rows>
 		<Columns>80</Columns>

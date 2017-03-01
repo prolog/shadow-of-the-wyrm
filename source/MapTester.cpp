@@ -20,9 +20,11 @@
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "FortifiedChurchGenerator.hpp"
+#include "Game.hpp"
 #include "GrandTempleGenerator.hpp"
 #include "GraveyardGeneratorFactory.hpp"
 #include "IslandSacrificeSiteGenerator.hpp"
+#include "ItemGenerationManager.hpp"
 #include "RockySacrificeSiteGenerator.hpp"
 #include "OvergrownSacrificeSiteGenerator.hpp"
 #include "RoadGenerator.hpp"
@@ -67,6 +69,7 @@ void test_poisson();
 // Miscellaneous testing
 void misc();
 void test_calendar();
+void test_item_generation();
 
 // Map testing stuff
 void test_bresenham_line();
@@ -782,6 +785,8 @@ void misc()
     cout << "-1 to quit." << endl;
     cout << "1. Bresenham's Line" << endl;
     cout << "2. Calendar" << endl;
+    cout << "3. Item Generation" << endl;
+
     cin >> choice;
     
     switch(choice)
@@ -790,8 +795,11 @@ void misc()
         test_bresenham_line();
         break;
       case 2:
-      default:
         test_calendar();
+        break;
+      case 3:
+      default:
+        test_item_generation();
         break;
     }
   }
@@ -821,6 +829,92 @@ void test_calendar()
     }
   }
 }
+
+void test_item_generation()
+{
+  int item_count = 0;
+  int danger_level = 0;
+  int irarity = 0;
+  Rarity rarity = Rarity::RARITY_COMMON;
+  string filename = "test.txt";
+  Game& game = Game::instance();
+
+  while (item_count > -1 && danger_level > -1 && !filename.empty())
+  {
+    cout << "Empty filename to quit" << endl;
+    cout << "Item Generation" << endl;
+    cout << "Items to generate: ";
+    cin >> item_count;
+    cout << "Danger level: ";
+    cin >> danger_level;
+    cout << "Rarity: ";
+    cin >> irarity;
+    
+    rarity = static_cast<Rarity>(irarity);
+
+    cout << "Filename: ";
+    cin >> filename;
+
+    if (item_count > -1 && danger_level > -1 && !filename.empty())
+    {
+      ItemGenerationManager igm;
+      ItemGenerationConstraints igc(1, danger_level, rarity, {}, -1);
+      auto igmap = igm.generate_item_generation_map(igc);
+      map<string, int> item_map;
+      map<ItemType, int> type_map;
+
+      for (int i = 0; i < item_count; i++)
+      {
+        ItemPtr item = igm.generate_item(game.get_action_manager_ref(), igmap, rarity, {}, 0);
+
+        if (item != nullptr)
+        {
+          string base_id = item->get_base_id();
+          ItemType type = item->get_type();
+
+          auto i_it = item_map.find(base_id);
+
+          if (i_it != item_map.end())
+          {
+            item_map[base_id]++;
+          }
+          else
+          {
+            item_map[base_id] = 1;
+          }
+
+          auto t_it = type_map.find(type);
+
+          if (t_it != type_map.end())
+          {
+            type_map[type]++;
+          }
+          else
+          {
+            type_map[type] = 1;
+          }
+        }
+      }
+
+      ofstream outfile(filename);
+      
+      for (const auto& item_pair : item_map)
+      {
+        outfile << item_pair.first << ": " << item_pair.second << endl;
+      }
+
+      for (const auto& type_pair : type_map)
+      {
+        float pct = ((float) type_pair.second / (float) item_count) * 100.0f;
+        outfile << "Item Type " << static_cast<int>(type_pair.first) << ": " << type_pair.second << "(" << pct << "%)" << endl;
+      }
+
+      outfile.close();
+      cout << "Wrote to " << filename << endl << endl;
+    }
+  }
+}
+
 void test_bresenham_line()
 {
   int start_y, start_x, end_y, end_x;

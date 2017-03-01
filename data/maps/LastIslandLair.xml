@@ -1,4 +1,5 @@
 <CustomMap id="last_island_lair" xmlns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:1.0.0 ./CustomMap.xsd">
+	<NameSID>MAP_NAME_LASTISLANDLAIR</NameSID>
 	<Dimensions>
 		<Rows>20</Rows>
 		<Columns>80</Columns>
@@ -36,6 +37,49 @@
 	</PlayerStart>
 	<InitialPlacements>
 		<Creatures>
+			<!-- Near the beginning -->
+			<Placement>
+				<ID>ancient_worm</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>4</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ancient_worm</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>4</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ancient_worm</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>3</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>old_lord</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>3</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>old_lord</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>3</Col>
+				</Coord>
+			</Placement>			
+			<Placement>
+				<ID>pelageus</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>5</Col>
+				</Coord>
+			</Placement>
 			<!-- Farthest point from beginning -->
 			<Placement>
 				<ID>end_boss</ID>

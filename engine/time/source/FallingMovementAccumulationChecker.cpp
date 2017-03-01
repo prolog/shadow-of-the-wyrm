@@ -22,6 +22,6 @@ void FallingMovementAccumulationChecker::check(CreaturePtr creature)
     Damage falling_default;
     falling_default.set_modifier(falling_damage);
 
-    cm.deal_damage(no_attacker, creature, falling_damage, falling_default, falling_message_sid);
+    cm.deal_damage(no_attacker, creature, "", falling_damage, falling_default, falling_message_sid);
   }
 }

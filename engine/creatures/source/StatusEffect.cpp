@@ -18,8 +18,23 @@ StatusEffect::StatusEffect()
   status_calc = std::make_shared<DefaultStatusEffectCalculator>();
 }
 
+StatusEffect::StatusEffect(const string& new_source_id)
+: source_id(new_source_id)
+{
+}
+
 StatusEffect::~StatusEffect()
 {
+}
+
+void StatusEffect::set_source_id(const string& new_source_id)
+{
+  source_id = new_source_id;
+}
+
+string StatusEffect::get_source_id() const
+{
+  return source_id;
 }
 
 bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bonus) const
@@ -76,6 +91,7 @@ bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
     modifier.set_status(status_identifier, true, danger_level);
 
     ModifyStatisticsEffect mse;
+    mse.set_source_id(source_id);
     mse.set_spell_id(status_identifier);
     mse.apply_modifiers(creature, modifier, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, eff_dur_sec);
   }

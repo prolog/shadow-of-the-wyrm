@@ -59,7 +59,7 @@ void GameUtils::add_new_creature_to_map(Game& game, CreaturePtr new_creature, Ma
     // map is the current game map.
     MapPtr game_current_map = game.get_current_map();
 
-    if (map->get_map_id() == game_current_map->get_map_id())
+    if (game_current_map != nullptr && map->get_map_id() == game_current_map->get_map_id())
     {
       ActionCoordinator& ac = game.get_action_coordinator_ref();
       ActionCost cost = ac.get_current_action_cost();

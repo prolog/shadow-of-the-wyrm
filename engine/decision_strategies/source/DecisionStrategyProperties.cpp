@@ -14,6 +14,7 @@ const string DecisionStrategyProperties::DECISION_STRATEGY_SUPPRESS_MAGIC = "sup
 const string DecisionStrategyProperties::DECISION_STRATEGY_BREEDS = "breeds";
 const string DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL = "sentinel";
 const string DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER = "shopkeeper";
+const string DecisionStrategyProperties::DECISION_STRATEGY_RESIST_SWITCH = "resist_switch";
 
 
 

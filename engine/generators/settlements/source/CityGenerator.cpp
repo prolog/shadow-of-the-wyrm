@@ -33,3 +33,7 @@ MapPtr CityGenerator::generate()
   return generate(base_dim);
 }
 
+int CityGenerator::get_pct_chance_shop() const
+{
+  return 100;
+}

@@ -1019,6 +1019,7 @@
 				<xs:element name="SpeedBonus" type="xs:integer" minOccurs="0"/>
 				<xs:element name="ToHit" type="xs:integer" minOccurs="0"/>
 				<xs:element name="AddlDamage" type="xs:integer" minOccurs="0"/>
+				<xs:element name="StatusAilments" type="tns:StatusAilments" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
@@ -1098,6 +1099,7 @@
 		<xs:element name="Breeds" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Sentinel" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Shopkeeper" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="ResistSwitch" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="TextDetails">
@@ -1679,6 +1681,7 @@
 		<xs:enumeration value="_blind"/>
 		<xs:enumeration value="_incorp"/>
 		<xs:enumeration value="_flying"/>
+		<xs:enumeration value="_sat"/>
 	</xs:restriction>
 </xs:simpleType>
 <!-- See CreatureFeatures.hpp -->

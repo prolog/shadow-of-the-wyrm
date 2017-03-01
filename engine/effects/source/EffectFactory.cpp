@@ -30,7 +30,7 @@ EffectFactory::~EffectFactory()
 {
 }
 
-EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m, map<string, string> properties, string spell_id)
+EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modifier& m, const map<string, string>& properties, const string& spell_id, const string& source_id)
 {
   static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(24), "Unexpected EFFECT_TYPE_LAST value.");
 
@@ -121,6 +121,7 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m,
 
   if (effect != nullptr)
   {
+    effect->set_source_id(source_id);
     effect->read_properties(properties);
   }
 

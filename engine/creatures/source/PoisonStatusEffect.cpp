@@ -24,7 +24,7 @@ void PoisonStatusEffect::tick(CreaturePtr creature, const int danger_level) cons
   poison_dmg.set_damage_type(DamageType::DAMAGE_TYPE_POISON);
   int damage = pc.calculate_damage_per_tick(creature, danger_level);
   poison_dmg.set_modifier(damage);
-  cm.deal_damage(no_creature, creature, damage, poison_dmg);
+  cm.deal_damage(no_creature, creature, source_id, damage, poison_dmg);
 }
 
 string PoisonStatusEffect::get_player_application_message() const

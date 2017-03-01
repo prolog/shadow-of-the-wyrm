@@ -27,7 +27,6 @@
 #include "Log.hpp"
 #include "MapCursor.hpp"
 #include "MapUtils.hpp"
-#include "PlayerConstants.hpp"
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
@@ -274,7 +273,7 @@ map<int, CalendarDay>& Game::get_calendar_days_ref()
 
 CreaturePtr Game::get_current_player() const
 {
-  CreaturePtr current_player = get_current_map()->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
+  CreaturePtr current_player = get_current_map()->get_creature(CreatureID::CREATURE_ID_PLAYER);
   return current_player;
 }
 

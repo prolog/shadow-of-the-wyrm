@@ -799,6 +799,9 @@
     <Filter Include="Source Files\engine\commands\skills\source\unit_tests">
       <UniqueIdentifier>{176e97df-8073-4015-ba1d-aa4741c86ca3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\generators\settlements\source\unit_tests">
+      <UniqueIdentifier>{4acb38fe-43e5-4765-ba0d-517d34e5a5ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -2275,9 +2278,6 @@
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\strings\include\FileConstants.hpp">
-      <Filter>Header Files\engine\strings\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\strings\include\PlayerConstants.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp">
@@ -3929,6 +3929,36 @@
     </ClInclude>
     <ClInclude Include="engine\scripting\include\DropScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\SatedStatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\BowyerSkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\CreateItemScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\CreateItemCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\FletcherySkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\ShopsTimeObserver.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\Building.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\HaltBreedingDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Status.hpp">
+      <Filter>Header Files\world\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5769,9 +5799,6 @@
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\FileConstants.cpp">
-      <Filter>Source Files\engine\strings\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\strings\source\PlayerConstants.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\MaterialTextKeys.cpp">
@@ -7752,6 +7779,51 @@
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\RarityTypes_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\SatedStatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\BowyerSkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\CreateItemScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CreateItemCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\CreateItemCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\FletcherySkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\ShopsTimeObserver.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\ShopsTimeObserver_test.cpp">
+      <Filter>Source Files\engine\time\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\Building.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\unit_tests\Building_test.cpp">
+      <Filter>Source Files\engine\generators\settlements\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\ShopGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\unit_tests\ItemGenerationManager_test.cpp">
+      <Filter>Source Files\engine\items\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\HaltBreedingDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Status.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Status_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>

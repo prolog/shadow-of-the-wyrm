@@ -10,21 +10,15 @@ using namespace std;
 //const int StreamGenerator::MIN_STREAM_WIDTH;
 //const int StreamGenerator::MAX_STREAM_WIDTH;
 
-MapPtr StreamGenerator::generate(MapPtr map)
+void StreamGenerator::generate(MapPtr map)
 {
-  MapPtr result_map = std::make_shared<Map>(*map);
   Dimensions dimensions = map->size();
-
-  result_map = generate_stream(map, RNG::range(0, dimensions.get_x()));
-
-  return result_map;
+  generate_stream(map, RNG::range(0, dimensions.get_x()));
 }
 
-MapPtr StreamGenerator::generate_stream(MapPtr map, const int start_col)
+void StreamGenerator::generate_stream(MapPtr result_map, const int start_col)
 {
   TileGenerator tg;
-
-  MapPtr result_map = std::make_shared<Map>(*map);
   Dimensions d = result_map->size();
 
   int max_rows = d.get_y();
@@ -49,5 +43,4 @@ MapPtr StreamGenerator::generate_stream(MapPtr map, const int start_col)
 
     current_col += modifier;
   }
-  return result_map;
-  }
+}

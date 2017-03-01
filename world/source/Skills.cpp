@@ -757,7 +757,7 @@ LiteracySkill::LiteracySkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_LITERACY;
-  skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_LEADERSHIP_INCREMENT;
+  skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_LITERACY_INCREMENT;
 }
 
 Skill* LiteracySkill::clone()

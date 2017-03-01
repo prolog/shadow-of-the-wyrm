@@ -4,6 +4,7 @@
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DangerLevelCalculatorFactory.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "DigAction.hpp"
 #include "FeatureAction.hpp"
 #include "ForagablesCalculator.hpp"
@@ -393,26 +394,40 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
   // Maybe the creature just wants to switch?
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-  if (adjacent_creature_can_move && creature_can_enter_adjacent_tile)
+  // Don't switch if the creature will resist.
+  string res_sw = adjacent_creature->get_decision_strategy()->get_property(DecisionStrategyProperties::DECISION_STRATEGY_RESIST_SWITCH);
+  if (!res_sw.empty() && (String::to_bool(res_sw) == true))
   {
-    manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SWITCH_FRIENDLY_CREATURE));
-    bool switch_places = creature->get_decision_strategy()->get_confirmation(true);
+    // Add a message about the creature not letting the player past.
+    manager.add_new_message(StringTable::get(TextKeys::DECISION_RESIST_SWITCH));
+    manager.send();
 
-    if (switch_places)
-    {
-      mtt = MovementThroughTileType::MOVEMENT_SWITCH;
-    }
+    // Switch back to the prompt for attack.
+    mtt = MovementThroughTileType::MOVEMENT_ATTACK;
   }
   else
   {
-    if (creature_can_enter_adjacent_tile)
-    { 
-      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SQUEEZE_FRIENDLY_CREATURE));
-      bool squeeze_past = creature->get_decision_strategy()->get_confirmation(true);
+    if (adjacent_creature_can_move && creature_can_enter_adjacent_tile)
+    {
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SWITCH_FRIENDLY_CREATURE));
+      bool switch_places = creature->get_decision_strategy()->get_confirmation(true);
 
-      if (squeeze_past)
+      if (switch_places)
       {
-        mtt = MovementThroughTileType::MOVEMENT_SQUEEZE;
+        mtt = MovementThroughTileType::MOVEMENT_SWITCH;
+      }
+    }
+    else
+    {
+      if (creature_can_enter_adjacent_tile)
+      {
+        manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SQUEEZE_FRIENDLY_CREATURE));
+        bool squeeze_past = creature->get_decision_strategy()->get_confirmation(true);
+
+        if (squeeze_past)
+        {
+          mtt = MovementThroughTileType::MOVEMENT_SQUEEZE;
+        }
       }
     }
   }

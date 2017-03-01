@@ -1,27 +1,34 @@
+#include "CreatureFactory.hpp"
+#include "CreatureFeatures.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
+#include "RNG.hpp"
 #include "SpringsGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "SpringsTile.hpp"
 
-MapPtr SpringsGenerator::generate(MapPtr map, const int start_row, const int start_col, const int springs_size, const SpringsType type)
-{
-  MapPtr result_map = std::make_shared<Map>(*map);
+const int SpringsGenerator::PCT_CHANCE_FAIRY_SPIRIT = 50;
 
+void SpringsGenerator::generate(MapPtr map, const int start_row, const int start_col, const int springs_size, const SpringsType type)
+{
+  generate(map, start_row, start_col, springs_size, type, PCT_CHANCE_FAIRY_SPIRIT);
+}
+
+void SpringsGenerator::generate(MapPtr result_map, const int start_row, const int start_col, const int springs_size, const SpringsType type, const int pct_chance_fairy)
+{
   if (type == SpringsType::SPRINGS_TYPE_WIDE)
   {
-    result_map = generate_wide(result_map, start_row, start_col, springs_size);
+    generate_wide(result_map, start_row, start_col, springs_size, pct_chance_fairy);
   }
   else if (type == SpringsType::SPRINGS_TYPE_TALL)
   {
-    result_map = generate_tall(result_map, start_row, start_col, springs_size);
+    generate_tall(result_map, start_row, start_col, springs_size, pct_chance_fairy);
   }
-
-  return result_map;
 }
 
-MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const int start_col, const int springs_size)
+void SpringsGenerator::generate_wide(MapPtr result_map, const int start_row, const int start_col, const int springs_size, const int pct_chance_fairy)
 {
   TileGenerator tg;
-  MapPtr result_map = std::make_shared<Map>(*map);
 
   int first_row;
   int second_row;
@@ -42,6 +49,8 @@ MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const in
     for (int col = col_start; col < (start_col + spring_size); col++)
     {
       TilePtr springs_tile = tg.generate(TileType::TILE_TYPE_SPRINGS);
+      springs_tile->set_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE, std::to_string(true));
+
       result_map->insert(first_row, col, springs_tile);
     }
 
@@ -50,6 +59,8 @@ MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const in
       for (int col = col_start; col < (start_col + spring_size); col++)
       {
         TilePtr second_springs_tile = tg.generate(TileType::TILE_TYPE_SPRINGS);
+        second_springs_tile->set_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE, std::to_string(true));
+
         result_map->insert(second_row, col, second_springs_tile);
       }
     }
@@ -60,13 +71,12 @@ MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const in
     spring_size = spring_size - 1;
   }
 
-  return result_map;
+  add_fairy_spirit_if_necessary(result_map, centre_line, (start_col + springs_size / 2), pct_chance_fairy);
 }
 
-MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const int start_col, const int springs_size)
+void SpringsGenerator::generate_tall(MapPtr result_map, const int start_row, const int start_col, const int springs_size, const int pct_chance_fairy)
 {
   TileGenerator tg;
-  MapPtr result_map = std::make_shared<Map>(*map);
 
   int first_col;
   int second_col;
@@ -87,6 +97,8 @@ MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const in
     for (int row = row_start; row < (start_row + spring_size); row++)
     {
       TilePtr springs_tile = tg.generate(TileType::TILE_TYPE_SPRINGS);
+      springs_tile->set_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE, std::to_string(true));
+
       result_map->insert(row, first_col, springs_tile);
     }
 
@@ -95,6 +107,8 @@ MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const in
       for (int row = row_start; row < (start_row + spring_size); row++)
       {
         TilePtr second_springs_tile = tg.generate(TileType::TILE_TYPE_SPRINGS);
+        second_springs_tile->set_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE, std::to_string(true));
+
         result_map->insert(row, second_col, second_springs_tile);
       }
     }
@@ -106,5 +120,20 @@ MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const in
     spring_size = spring_size - 1;
   }
 
-  return result_map;
+  add_fairy_spirit_if_necessary(result_map, start_row + (springs_size / 2), centre_line, pct_chance_fairy);
+}
+
+void SpringsGenerator::add_fairy_spirit_if_necessary(MapPtr result_map, const int row, const int col, const int pct_chance_fairy)
+{
+  // Chance of generating a fairy spirit.
+  if (RNG::percent_chance(pct_chance_fairy))
+  {
+    Game& game = Game::instance();
+    CreatureFactory cf;
+
+    CreaturePtr spirit = cf.create_by_creature_id(game.get_action_manager_ref(), CreatureID::CREATURE_ID_FAIRY_SPIRIT);
+    GameUtils::add_new_creature_to_map(game, spirit, result_map, {row, col});
+
+    result_map->set_permanent(true);
+  }
 }

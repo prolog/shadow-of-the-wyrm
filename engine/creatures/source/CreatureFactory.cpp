@@ -18,7 +18,6 @@
 #include "ReligionFactory.hpp"
 #include "RNG.hpp"
 #include "NullKeyboardController.hpp"
-#include "PlayerConstants.hpp"
 #include "ModifyStatisticsEffect.hpp"
 
 using namespace std;
@@ -52,7 +51,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
   CreatureMap creature_map = game.get_creatures_ref();
     
   CreatureMap::iterator c_it = creature_map.find(creature_id);
-  CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
+    CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
 
   if (!creature_id.empty() && c_it != creature_map.end() && cgv_it != cgv_map.end())
   {
@@ -127,7 +126,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
     }
 
     map<string, bool> hostility_map = cgo.get_hostility_map();
-    auto h_it = hostility_map.find(PlayerConstants::PLAYER_CREATURE_ID);
+    auto h_it = hostility_map.find(CreatureID::CREATURE_ID_PLAYER);
 
     if (h_it != hostility_map.end())
     {
@@ -210,6 +209,11 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   if (race && char_class && deity)
   {
+    // This'll probably be blank at this point.
+    // But for permanent statuses, such as incorporeal/flying, it doesn't
+    // really matter.
+    string creature_id = creaturep->get_id();
+
     // Statistics, HP, and AP
     set_initial_statistics(creaturep, race, char_class, deity);
 
@@ -219,15 +223,16 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     if (race->get_corporeal().get_base() == false)
     {
       Modifier m;
-      creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, {StatusIdentifiers::STATUS_ID_INCORPOREAL, true, 1, ""});
       m.set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
+      m.set_permanent(true);
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
 
     if (race->get_flying().get_base() == true)
     {
       Modifier m;
-      creaturep->set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_FLYING, {StatusIdentifiers::STATUS_ID_FLYING, true, 1, ""});
       m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
@@ -467,7 +472,7 @@ void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
   // the game will not have a map.
   if (map)
   {
-    CreaturePtr player = map->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
+    CreaturePtr player = map->get_creature(CreatureID::CREATURE_ID_PLAYER);
     
     if (player && (RNG::percent_chance(100 - player->get_charisma().get_current())))
     {

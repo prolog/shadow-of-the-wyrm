@@ -65,6 +65,7 @@ bool Map::operator==(const Map& map) const
     }
   }
 
+  result = result && (name_sid == map.name_sid);
   result = result && (dimensions == map.dimensions);
   result = result && (original_dimensions == map.original_dimensions);
   result = result && (locations == map.locations);
@@ -121,6 +122,16 @@ bool Map::has_creature(const string& creature_id)
   }
 
   return (creatures.find(creature_id) != creatures.end());
+}
+
+bool Map::has_player()
+{
+  if (creatures.empty())
+  {
+    create_creatures();
+  }
+
+  return has_creature(CreatureID::CREATURE_ID_PLAYER);
 }
 
 void Map::add_creature(CreaturePtr creature)
@@ -276,6 +287,16 @@ TilePtr Map::at(int row, int col)
 TilePtr Map::at(const Coordinate& c)
 {
   return at(c.first, c.second);
+}
+
+void Map::set_name_sid(const string& new_name_sid)
+{
+  name_sid = new_name_sid;
+}
+
+string Map::get_name_sid() const
+{
+  return name_sid;
 }
 
 void Map::set_size(const Dimensions& new_dimensions)
@@ -581,6 +602,7 @@ bool Map::serialize(ostream& stream) const
     tile->serialize(stream);
   }
 
+  Serialize::write_string(stream, name_sid);
   dimensions.serialize(stream);
   original_dimensions.serialize(stream);
 
@@ -699,6 +721,7 @@ bool Map::deserialize(istream& stream)
   // creatures - build up after deserialization
   create_creatures();
 
+  Serialize::read_string(stream, name_sid);
   dimensions.deserialize(stream);
   original_dimensions.deserialize(stream);
 

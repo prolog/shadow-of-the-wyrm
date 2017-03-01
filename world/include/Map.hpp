@@ -33,6 +33,7 @@ class Map : public ISerializable
 		// These functions work on a list built up from the map itself.
 		// This allows for quicker lookup.
 		bool has_creature(const std::string& creature_id);
+    bool has_player();
 		std::shared_ptr<Creature> get_creature(const std::string& creature_id);
 		std::map<std::string, std::shared_ptr<Creature>> get_creatures();
 		std::map<std::string, std::shared_ptr<Creature>>& get_creatures_ref();
@@ -54,6 +55,9 @@ class Map : public ISerializable
 
 		std::shared_ptr<Tile> at(int row, int col);
 		std::shared_ptr<Tile> at(const Coordinate& c);
+
+    void set_name_sid(const std::string& new_name_sid);
+    std::string get_name_sid() const;
 
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
@@ -140,6 +144,7 @@ class Map : public ISerializable
     std::map<Direction, std::vector<Coordinate>> tile_exits;
 
     TilesContainer tiles;
+    std::string name_sid;
     Dimensions dimensions;
     Dimensions original_dimensions;
     NamedMapLocations locations;

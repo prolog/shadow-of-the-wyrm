@@ -27,7 +27,6 @@
 #include "MessageManagerFactory.hpp"
 #include "Naming.hpp"
 #include "PickupAction.hpp"
-#include "PlayerConstants.hpp"
 #include "RaceManager.hpp"
 #include "Quests.hpp"
 #include "ReligionManager.hpp"
@@ -215,10 +214,16 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_add_location", map_add_location);
   lua_register(L, "map_transform_tile", map_transform_tile);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
+  lua_register(L, "map_set_explored", map_set_explored);
+  lua_register(L, "map_get_name_sid", map_get_name_sid);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
+  lua_register(L, "get_creature_current_hp", get_creature_current_hp);
+  lua_register(L, "get_creature_base_hp", get_creature_base_hp);
   lua_register(L, "set_creature_current_ap", set_creature_current_ap);
+  lua_register(L, "get_creature_current_ap", get_creature_current_ap);
+  lua_register(L, "get_creature_base_ap", get_creature_base_ap);
   lua_register(L, "set_creature_name", set_creature_name);
   lua_register(L, "get_creature_name", get_creature_name);
   lua_register(L, "destroy_creature_equipment", destroy_creature_equipment);
@@ -587,7 +592,7 @@ int add_fov_message(lua_State* ls)
     string message_sid = lua_tostring(ls, 3);
     CreaturePtr creature = get_creature(creature_id);
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, aff_creature_id == PlayerConstants::PLAYER_CREATURE_ID);
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, aff_creature_id == CreatureID::CREATURE_ID_PLAYER);
     manager.add_new_message(StringTable::get(message_sid));
     manager.send();
   }
@@ -640,9 +645,10 @@ int add_new_quest(lua_State* ls)
     string quest_id = lua_tostring(ls, 1);
     string quest_title_sid = se.get_table_str(ls, "quest_title_sid");
     string questmaster_name_sid = se.get_table_str(ls, "questmaster_name_sid");
+    string map_name_sid = se.get_table_str(ls, "map_name_sid");
     string quest_description_sid = se.get_table_str(ls, "quest_description_sid");
 
-    Quest new_quest(quest_id, quest_title_sid, questmaster_name_sid, quest_description_sid);
+    Quest new_quest(quest_id, quest_title_sid, questmaster_name_sid, map_name_sid, quest_description_sid);
 
     game.get_quests_ref().add_new_quest(quest_id, new_quest);
 
@@ -1387,7 +1393,7 @@ int add_status_to_creature(lua_State* ls)
 
     if (creature && !creature->has_status(status_id))
     {
-      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
       se->apply_change(creature, danger_level);
 
       lua_pushboolean(ls, true);
@@ -1432,7 +1438,7 @@ int add_status_to_creature_at(lua_State* ls)
       {
         CreaturePtr creature = tile->get_creature();
 
-        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
+        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
         se->apply_change(creature, danger_level);
 
         added_status = true;
@@ -1465,9 +1471,11 @@ int get_creature_statuses(lua_State* ls)
 
       for (const auto& csm_pair : csm)
       {
-        if (csm_pair.second.first == true)
+        Status status = csm_pair.second;
+
+        if (status.get_value() == true)
         {
-          statuses.push_back(csm_pair.first);
+          statuses.push_back(status.get_id());
         }
       }
     }
@@ -1740,7 +1748,7 @@ int is_player(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
     string creature_id = lua_tostring(ls, 1);
-    is_creature_player = (creature_id == PlayerConstants::PLAYER_CREATURE_ID);
+    is_creature_player = (creature_id == CreatureID::CREATURE_ID_PLAYER);
   }
   else
   {
@@ -2369,6 +2377,80 @@ int map_add_tile_exit(lua_State* ls)
   lua_pushboolean(ls, result);
   return 1;
 }
+
+// Set the entire current map explored.
+int map_set_explored(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    Game& game = Game::instance();
+    MapPtr cur_map = game.get_current_map();
+
+    if (cur_map != nullptr)
+    {
+      TilesContainer tiles = cur_map->get_tiles();
+
+      for (const auto& tile_pair : tiles)
+      {
+        TilePtr tile = tile_pair.second;
+
+        if (tile != nullptr)
+        {
+          tile->set_explored(true);
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_set_explored");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int map_get_name_sid(lua_State* ls)
+{
+  string map_name_sid;
+  int num_args = lua_gettop(ls);
+
+  if (num_args <= 1)
+  {
+    Game& game = Game::instance();
+    MapPtr map_to_check;
+    
+    if (num_args == 0)
+    {
+      map_to_check = game.get_current_map();
+    }
+    else
+    {
+      string map_id;
+
+      if (lua_isstring(ls, 1))
+      {
+        map_id = lua_tostring(ls, 1);
+      }
+
+      map_to_check = game.get_map_registry_ref().get_map(map_id);
+    } 
+
+    if (map_to_check != nullptr)
+    {
+      map_name_sid = map_to_check->get_name_sid();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_get_name_sid");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, map_name_sid.c_str());
+  return 1;
+}
+
 // log some text in the given log level.
 // returns true if it was logged, false otherwise
 // (log is not in that level, etc)
@@ -2445,6 +2527,54 @@ int set_creature_current_hp(lua_State* ls)
   return 0;
 }
 
+int get_creature_current_hp(lua_State* ls)
+{
+  int current_hp = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      current_hp = creature->get_hit_points().get_current();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_current_hp");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, current_hp);
+  return 1;
+}
+
+int get_creature_base_hp(lua_State* ls)
+{
+  int base_hp = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      base_hp = creature->get_hit_points().get_base();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_base_hp");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, base_hp);
+  return 1;
+}
+
 int set_creature_current_ap(lua_State* ls)
 {
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
@@ -2469,6 +2599,54 @@ int set_creature_current_ap(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_creature_current_ap(lua_State* ls)
+{
+  int current_ap = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      current_ap = creature->get_arcana_points().get_current();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_current_ap");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, current_ap);
+  return 1;
+}
+
+int get_creature_base_ap(lua_State* ls)
+{
+  int base_ap = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      base_ap = creature->get_arcana_points().get_base();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_base_ap");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, base_ap);
+  return 1;
 }
 
 int set_creature_name(lua_State* ls)
@@ -2969,7 +3147,7 @@ int teleport(lua_State* ls)
       }
       else
       {
-        EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT);
+        EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT, {}, {}, "", "");
         teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
       }
     }
@@ -3053,7 +3231,7 @@ int transfer_item(lua_State* ls)
 
       for (ItemPtr item : items.second)
       {
-        inv->add(item);
+        inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
       }
 
       item_transferred = items.first;
@@ -3802,7 +3980,7 @@ int redraw(lua_State* ls)
 {
   if (lua_gettop(ls) == 0)
   {
-    string creature_id = PlayerConstants::PLAYER_CREATURE_ID;
+    string creature_id = CreatureID::CREATURE_ID_PLAYER;
     Game& game = Game::instance();
     MapPtr cur_map = game.get_current_map();
     CreaturePtr creature = get_creature(creature_id);

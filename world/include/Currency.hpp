@@ -7,6 +7,9 @@ class Currency : public Item
     Currency();
     ~Currency();
 
+    void set_status(const ItemStatus new_status) override;
+    void set_status_identified(const bool new_status) override;
+
     bool additional_item_attributes_match(ItemPtr item) const override;
         
     Item* clone() override;

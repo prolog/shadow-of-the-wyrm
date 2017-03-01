@@ -31,11 +31,11 @@ bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
 
   if (creature->has_status(StatusIdentifiers::STATUS_ID_SLOWNESS))
   {
-    StatusEffectPtr slowness = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_SLOWNESS);
+    StatusEffectPtr slowness = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_SLOWNESS, source_id);
     slowness->undo_change(creature);
   }
 
-  StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE);
+  StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE, source_id);
   haste->apply_change(creature, creature->get_level().get_current());
 
   return true;
@@ -52,12 +52,12 @@ bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am
 
   if (creature->has_status(StatusIdentifiers::STATUS_ID_SLOWNESS))
   {
-    StatusEffectPtr slowness = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_SLOWNESS);
+    StatusEffectPtr slowness = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_SLOWNESS, source_id);
     slowness->undo_change(creature);
   }
   else
   {
-    StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE);
+    StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE, source_id);
     haste->apply_change(creature, creature->get_level().get_current());
   }
 

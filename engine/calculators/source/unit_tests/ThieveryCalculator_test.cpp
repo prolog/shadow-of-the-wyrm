@@ -21,7 +21,7 @@ TEST(SL_World_Calculators_ThieveryCalculator, pct_chance_steal)
   EXPECT_EQ(37, tc.calculate_pct_chance_steal(steal, target));
 
   // If target is blind, the above * 4.
-  target->set_status("_blind", true, 1);
+  target->set_status("_blind", {"_blind", true, 1, ""});
   EXPECT_EQ(100, tc.calculate_pct_chance_steal(steal, target));
 }
 

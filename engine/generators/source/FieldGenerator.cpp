@@ -41,6 +41,8 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
     result_map->set_permanent(true);
   }
 
+  GeneratorUtils::generate_bazaar_if_necessary(result_map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR));
+
   return result_map;
 }
 

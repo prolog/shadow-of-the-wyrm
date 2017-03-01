@@ -4,9 +4,18 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "RNG.hpp"
+#include "ShopGenerator.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
+
+// Implicit is an extra padding tile - when creating a shop/bazaar, there's
+// an "interior".  It's assumed that the bazaar coordinates define the exterior,
+// so the interior (where the items are laid out) will be slightly smaller.
+const int GeneratorUtils::BAZAAR_MIN_WIDTH = 4;
+const int GeneratorUtils::BAZAAR_MAX_WIDTH = 8;
+const int GeneratorUtils::BAZAAR_MIN_HEIGHT = 3;
+const int GeneratorUtils::BAZAAR_MAX_HEIGHT = 7;
 
 // Hidden away by protected access
 GeneratorUtils::GeneratorUtils()
@@ -250,4 +259,58 @@ void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int co
       }
     }
   }
+}
+
+void GeneratorUtils::generate_bazaar_if_necessary(const MapPtr map, const string& bazaar_property)
+{
+  if (map != nullptr && !bazaar_property.empty())
+  {
+    Dimensions d = map->size();
+    int max_attempts = 15;
+
+    for (int i = 0; i < max_attempts; i++)
+    {
+      int width = RNG::range(BAZAAR_MIN_WIDTH, BAZAAR_MAX_WIDTH);
+      int height = RNG::range(BAZAAR_MIN_HEIGHT, BAZAAR_MAX_HEIGHT);
+
+      // Try to place the bazaar somewhere on the map.
+      int y_start = RNG::range(0, d.get_y() - height - 1);
+      int x_start = RNG::range(0, d.get_x() - width - 1);
+
+      if (are_tiles_ok_for_bazaar(map, y_start, x_start, height, width))
+      {
+        Building bazaar({y_start, x_start}, {y_start+height, x_start+width}, {y_start, x_start});
+        ShopGenerator sg;
+
+        sg.generate_shop(map, bazaar);
+        map->set_permanent(true);
+
+        break;
+      }
+    }
+  }
+}
+
+bool GeneratorUtils::are_tiles_ok_for_bazaar(MapPtr map, const int y_start, const int x_start, const int height, const int width)
+{
+  bool bzr_ok = true;
+
+  if (map != nullptr)
+  {
+    for (int y = y_start; y < y_start + height; y++)
+    {
+      for (int x = x_start; x < x_start + width; x++)
+      {
+        TilePtr tile = map->at(y, x);
+
+        if (!(tile && tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND && tile->get_movement_multiplier() > 0))
+        {
+          bzr_ok = false;
+          break;
+        }
+      }
+    }
+  }
+
+  return bzr_ok;
 }

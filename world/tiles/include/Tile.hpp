@@ -32,9 +32,11 @@ class Tile : public ISerializable
 
     // The "extra" description is a description that is always shown when
     // moving over a tile, in addition to any other description that is
-    // shown.  Can be used for signposts, warnings, etc.
+    // shown.  Can be used for signposts, warnings, etc.  In the engine,
+    // these are considered any string in the additional properties that
+    // contains "EXTRA_DESCRIPTION" in the key.
     virtual void set_extra_description_sid(const std::string& new_extra_description_sid);
-    virtual std::string get_extra_description_sid() const;
+    virtual std::vector<std::string> get_extra_description_sids() const;
     virtual bool has_extra_description() const;
 
     // Sometimes, someone has engraved something on a particular tile...

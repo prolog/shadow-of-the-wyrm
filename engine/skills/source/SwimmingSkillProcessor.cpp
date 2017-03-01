@@ -26,7 +26,7 @@ ActionCostValue SwimmingSkillProcessor::process(CreaturePtr creature, MapPtr map
     Damage swimming_default;
     swimming_default.set_modifier(swimming_damage);
 
-    cm.deal_damage(no_attacker, creature, swimming_damage, swimming_default, drowning_message_sid);    
+    cm.deal_damage(no_attacker, creature, "", swimming_damage, swimming_default, drowning_message_sid);    
   }
 
   return get_default_skill_action_cost_value(creature);
