@@ -41,9 +41,8 @@ MapPtr ForestGenerator::generate(const Dimensions& dimensions)
 
   fill(result_map, TileType::TILE_TYPE_FIELD);
 
-  result_map = add_random_bushes_and_weeds (result_map);
-//  result_map = apply_conway_rules(result_map);
-  result_map = add_random_stream_or_springs(result_map);
+  add_random_bushes_and_weeds (result_map);
+  add_random_stream_or_springs(result_map);
 
   return result_map;
 }
@@ -54,17 +53,16 @@ TilePtr ForestGenerator::generate_tile(MapPtr current_map, int row, int col)
   return result_tile;
 }
 
-MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
+void ForestGenerator::add_random_bushes_and_weeds(MapPtr result_map)
 {
   TileGenerator tg;
 
-  MapPtr result_map = std::make_shared<Map>(*map);
   string world_location_map_key = get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION);
   int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
   Coordinate world_location = MapUtils::convert_map_key_to_coordinate(world_location_map_key);
   int pct_chance_evergreen = fc.calculate_pct_chance_evergreen(world_map_height, world_location);
 
-  Dimensions dim = map->size();
+  Dimensions dim = result_map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
 
@@ -105,8 +103,6 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
     result_map->insert(gr_row, gr_col, grave_or_barrow);
     result_map->set_permanent(true);
   }
-
-  return result_map;
 }
 
 TilePtr ForestGenerator::generate_tree_based_on_world_location(const int world_map_height, const Coordinate& world_coords, const int pct_chance_evergreen)
@@ -126,15 +122,13 @@ TilePtr ForestGenerator::generate_tree_based_on_world_location(const int world_m
   return tile;
 }
 
-MapPtr ForestGenerator::add_random_stream_or_springs(MapPtr map)
+void ForestGenerator::add_random_stream_or_springs(MapPtr result_map)
 {
-  MapPtr result_map = std::make_shared<Map>(*map);
-
   int additional_random_feature = RNG::range(1, 100);
 
   if (additional_random_feature < PCT_CHANCE_FOREST_STREAM)
   {
-    result_map = add_random_stream(result_map);
+    add_random_stream(result_map);
   }
   else
   {
@@ -142,17 +136,13 @@ MapPtr ForestGenerator::add_random_stream_or_springs(MapPtr map)
 
     if (additional_random_feature < PCT_CHANCE_FOREST_SPRINGS)
     {
-      result_map = add_random_springs(result_map);
+      add_random_springs(result_map);
     }
   }
-
-  return result_map;
 }
 
-MapPtr ForestGenerator::add_random_springs(MapPtr map)
+void ForestGenerator::add_random_springs(MapPtr result_map)
 {
-  MapPtr result_map = std::make_shared<Map>(*map);
-
   Dimensions dim = result_map->size();
   int springs_size = RNG::dice(3, 2); // min size should be 3.
   int start_y      = RNG::range(1, (dim.get_y() - springs_size - 1));
@@ -165,14 +155,10 @@ MapPtr ForestGenerator::add_random_springs(MapPtr map)
     springs_type = SpringsType::SPRINGS_TYPE_WIDE;
   }
 
-  result_map = SpringsGenerator::generate(result_map, start_y, start_x, springs_size, springs_type);
-
-  return result_map;
+  SpringsGenerator::generate(result_map, start_y, start_x, springs_size, springs_type);
 }
 
-MapPtr ForestGenerator::add_random_stream(MapPtr map)
+void ForestGenerator::add_random_stream(MapPtr map)
 {
-  MapPtr result_map = std::make_shared<Map>(*map);
-  result_map = StreamGenerator::generate(result_map);
-  return result_map;
+  StreamGenerator::generate(map);
 }

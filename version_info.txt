@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.6.1 "Riquier"
-- Version declared February 3, 2017.
+- Version declared February 3, 2017.  Version finalized March 1, 2017.
 
 - Wearables can now apply status ailments when equipped, and undo them 
   when unequipped.
@@ -90,6 +90,12 @@ Shadow of the Wyrm v0.6.1 "Riquier"
   the spirits of the fairy girls slaughtered by the giants in the sacred
   glade.  If you talk to one of these spirits, you'll have HP/AP restored,
   and hunger satiated.
+
+- Slightly increased the probability of generating a special room in a
+  dungeon.
+
+- Springs can now be generated in dungeons as well as forests.  In
+  dungeons, a fairy spirit will always be generated at the spring.
 
 - More combinations for random name generation.
 

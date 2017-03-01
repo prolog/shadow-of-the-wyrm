@@ -1,6 +1,4 @@
 Me:
-- Spring fairy should remove statuses.
-- Springs in dungeons.
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
@@ -50,6 +48,7 @@ Me:
 - Initial Music skill implementation.
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
+- Spring fairy should remove statuses.
 - Scent maps/track by scent.
 - Stores
 - Bones files

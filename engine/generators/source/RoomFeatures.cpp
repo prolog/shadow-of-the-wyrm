@@ -16,5 +16,6 @@ const string RoomFeatures::ROOM_FEATURE_TREASURE_ROOM = "ROOM_FEATURE_TREASURE_R
 const string RoomFeatures::ROOM_FEATURE_REST_ROOM = "ROOM_FEATURE_REST_ROOM";
 const string RoomFeatures::ROOM_FEATURE_NODE = "ROOM_FEATURE_NODE";
 const string RoomFeatures::ROOM_FEATURE_GRAVE = "ROOM_FEATURE_GRAVE";
+const string RoomFeatures::ROOM_FEATURE_SPRING = "ROOM_FEATURE_SPRING";
 
 
