@@ -20,7 +20,6 @@ bool ShopGenerator::generate_shop(MapPtr map, const Building& building)
 
     // Create a shop by determining the item types, setting up the shop
     // details, creating a shopkeeper, and naming it.
-    pair<Coordinate, Coordinate> shop_interior = building.get_interior_coords();
     vector<ItemType> stocked_types = get_random_item_types();
     string shopkeeper_name = Naming::generate_name(static_cast<CreatureSex>(RNG::range(0, 1)));
 
