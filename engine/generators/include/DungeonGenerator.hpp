@@ -38,6 +38,7 @@ class DungeonGenerator : public SOTW::Generator
     virtual bool    generate_rest_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual bool    generate_node(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual bool    generate_grave(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
+    virtual bool    generate_spring(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
 
     virtual std::pair<bool, TilePtr> centre_feature(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, FeaturePtr feature);
 
@@ -51,6 +52,7 @@ class DungeonGenerator : public SOTW::Generator
     const int DEFAULT_MAX_HEIGHT;
     const int DEFAULT_MIN_WIDTH;
     const int DEFAULT_MAX_WIDTH;
+    const int PCT_CHANCE_DUNGEON_SPRING_FAIRY;
     const int MIN_NUM_ROOMS;
     const int MAX_NUM_ROOMS;
 

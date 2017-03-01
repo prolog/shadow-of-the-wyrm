@@ -13,6 +13,7 @@
 #include "MapUtils.hpp"
 #include "RoomFeatures.hpp"
 #include "RoomGeneratorFactory.hpp"
+#include "SpringsGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "TileUtils.hpp"
 #include "TreasureRoomPopulator.hpp"
@@ -28,6 +29,7 @@ DungeonGenerator::DungeonGenerator(const std::string& new_map_exit_id)
 , DEFAULT_MAX_HEIGHT(7)
 , DEFAULT_MIN_WIDTH(5)
 , DEFAULT_MAX_WIDTH(9)
+, PCT_CHANCE_DUNGEON_SPRING_FAIRY(100)
 , MIN_NUM_ROOMS(8)
 , MAX_NUM_ROOMS(10)
 {
@@ -415,7 +417,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
 {
   vector<string> room_features;
 
-  bool generate_feature = RNG::x_in_y_chance(1, 60);
+  bool generate_feature = RNG::x_in_y_chance(1, 50);
 
   if (generate_feature)
   {
@@ -424,7 +426,8 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
                                                     {RoomFeatures::ROOM_FEATURE_ZOO, DungeonFeatureTextKeys::DUNGEON_FEATURE_ZOO},
                                                     {RoomFeatures::ROOM_FEATURE_REST_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_REST_ROOM},
                                                     {RoomFeatures::ROOM_FEATURE_NODE, DungeonFeatureTextKeys::DUNGEON_FEATURE_NODE},
-                                                    {RoomFeatures::ROOM_FEATURE_GRAVE, DungeonFeatureTextKeys::DUNGEON_FEATURE_GRAVE}};
+                                                    {RoomFeatures::ROOM_FEATURE_GRAVE, DungeonFeatureTextKeys::DUNGEON_FEATURE_GRAVE},
+                                                    {RoomFeatures::ROOM_FEATURE_SPRING, DungeonFeatureTextKeys::DUNGEON_FEATURE_SPRING}};
 
     shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
@@ -464,6 +467,10 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
         else if (feature == RoomFeatures::ROOM_FEATURE_GRAVE)
         {
           placed_feature = generate_grave(map, start_row, end_row, start_col, end_col);
+        }
+        else if (feature == RoomFeatures::ROOM_FEATURE_SPRING)
+        {
+          placed_feature = generate_spring(map, start_row, end_row, start_col, end_col);
         }
 
         if (placed_feature)
@@ -535,6 +542,21 @@ bool DungeonGenerator::generate_grave(MapPtr map, const int start_row, const int
   }
 
   return place_details.first;
+}
+
+bool DungeonGenerator::generate_spring(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{  
+  int springs_size = RNG::range(3, 4);
+  int y_start = RNG::range(start_row, (end_row - 1 - springs_size));
+
+  // Some rooms are very small.  Ensure the spring fits.
+  if (end_row - start_row - 1 >= springs_size)
+  {
+    SpringsGenerator::generate_tall(map, y_start, start_col, springs_size, PCT_CHANCE_DUNGEON_SPRING_FAIRY);
+    return true;
+  }
+  
+  return false;
 }
 
 bool DungeonGenerator::generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
