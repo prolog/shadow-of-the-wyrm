@@ -2,10 +2,8 @@ Me:
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
-- Avoid triggering known traps with high Alertness.
 - Revisit smithing.
 - Revisit how values are updated after enchantment.
-- Magic mappings effect.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - Creatures should have a chance to follow up/down stairs with special
@@ -43,8 +41,6 @@ Me:
 - Cancellation effect type
 - Special rooms: beer hall, magical workshop, armory.
 - More shops in set locations.
-- Travelling bazaars (make fields/deserts/hills permanent).
-- Merchants should get half off in shops.
 - Initial Music skill implementation.
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.

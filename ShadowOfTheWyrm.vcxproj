@@ -652,6 +652,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\effects\include\GainAttributesTypes.hpp" />
     <ClInclude Include="engine\effects\include\HasteEffect.hpp" />
     <ClInclude Include="engine\effects\include\IncorporealEffect.hpp" />
+    <ClInclude Include="engine\effects\include\MappingEffect.hpp" />
     <ClInclude Include="engine\effects\include\ModifyStatisticsEffect.hpp" />
     <ClInclude Include="engine\effects\include\RechargingEffect.hpp" />
     <ClInclude Include="engine\effects\include\RemoveStatusEffect.hpp" />
@@ -1576,6 +1577,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\BlessEffect.cpp" />
     <ClCompile Include="engine\effects\source\CleansingEffect.cpp" />
     <ClCompile Include="engine\effects\source\DetectTrapsEffect.cpp" />
+    <ClCompile Include="engine\effects\source\MappingEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />

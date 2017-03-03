@@ -30,6 +30,8 @@ class EffectTextKeys
     static const std::string EFFECT_ATTEMPT_ENCHANT_ARTIFACT;
     static const std::string EFFECT_TELEPORT_CANNOT_TELEPORT;
     static const std::string EFFECT_CLEANSING;
+    static const std::string EFFECT_MAPPING;
+    static const std::string EFFECT_MAPPING_FORGET;
 
   protected:
     EffectTextKeys();
