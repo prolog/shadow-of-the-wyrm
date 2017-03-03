@@ -23879,6 +23879,19 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="c_12_mapping">
+			<NameSID>MAPPING_NAME_SID</NameSID>
+			<PlayerCastMessageSID>MAPPING_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>MAPPING_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>24</Effect>
+		</Spell>		
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -31246,6 +31259,23 @@
 				<DangerLevel>1</DangerLevel>
 				<Effect>2</Effect>				
 			</Scroll>
+			<Scroll id="mapping_scroll">
+				<DescriptionSID>MAPPING_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_MAPPING_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>MAPPING_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_MAPPING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>50</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Effect>24</Effect>				
+			</Scroll>
 			<Scroll id="recharging_scroll">
 				<DescriptionSID>RECHARGING_SCROLL_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_RECHARGING_SCROLL_SID</UnidentifiedDescriptionSID>
@@ -32316,6 +32346,24 @@
 				<DangerLevel>4</DangerLevel>
 				<SpellID>c_10_cleansing</SpellID>
 				<Difficulty>40</Difficulty>
+			</Spellbook>
+			<Spellbook id="mapping_spellbook">
+				<DescriptionSID>MAPPING_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_MAPPING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>MAPPING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_MAPPING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<SpellID>c_12_mapping</SpellID>
+				<Difficulty>30</Difficulty>
 			</Spellbook>
 			<Spellbook id="blast_spellbook">
 				<DescriptionSID>BLAST_SPELLBOOK_SID</DescriptionSID>

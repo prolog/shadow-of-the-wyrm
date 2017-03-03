@@ -11,6 +11,7 @@
 #include "HealingEffect.hpp"
 #include "IdentifyEffect.hpp"
 #include "IncorporealEffect.hpp"
+#include "MappingEffect.hpp"
 #include "ModifyStatisticsEffect.hpp"
 #include "NullEffect.hpp"
 #include "FruitJuiceEffect.hpp"
@@ -32,7 +33,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modifier& m, const map<string, string>& properties, const string& spell_id, const string& source_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(24), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(25), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -112,6 +113,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modif
       break;
     case EffectType::EFFECT_TYPE_BLESS:
       effect = std::make_shared<BlessEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_MAPPING:
+      effect = std::make_shared<MappingEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:

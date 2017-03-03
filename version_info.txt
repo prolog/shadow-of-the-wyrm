@@ -1,7 +1,15 @@
 Shadow of the Wyrm v0.6.2 "de Visee"
 - Version declared March 1, 2017.
 
+- New effect type, mapping.  When blessed, the entire map's structure
+  is revealed.  When uncursed or cursed, tiles will be learned/forgotten
+  at random.
+
 - More stanzas for "Tel and Floridel".
+
+- New spells/spellbooks: mapping (Cantrips).
+
+- New items: scroll of mapping.
 
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.

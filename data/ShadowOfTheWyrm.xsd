@@ -1532,11 +1532,12 @@
 				Uncursing = 21
 				Detect Traps = 22
 				Bless = 23
+				Mapping = 24
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="23"/>
+		<xs:maxInclusive value="24"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">
