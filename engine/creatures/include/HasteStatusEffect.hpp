@@ -5,6 +5,8 @@ class HasteStatusEffect : public StatusEffect
 {
   public:
     HasteStatusEffect();
+
+    virtual bool is_negative() const override;
   
   protected:
     virtual bool after_apply(std::shared_ptr<Creature> creature) const override;

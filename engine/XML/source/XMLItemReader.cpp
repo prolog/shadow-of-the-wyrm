@@ -98,7 +98,7 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
 
     // Get whether the item is glowing (visible when blind).
     bool glow = XMLUtils::get_child_node_bool_value(item_node, "Glow", item->get_glowing());
-
+     
     if (is_artifact)
     {
       glow = true;

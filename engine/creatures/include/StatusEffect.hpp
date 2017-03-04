@@ -19,6 +19,8 @@ class StatusEffect
     void set_source_id(const std::string& new_source_id);
     std::string get_source_id() const;
 
+    virtual bool is_negative() const;
+
     // Method to check whether the status should be applied.
     bool should_apply_change(std::shared_ptr<Creature> creature, const int effect_bonus = 0) const;
 

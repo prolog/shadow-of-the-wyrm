@@ -559,6 +559,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationOptionsStringBuilder.hpp" />
+    <ClInclude Include="engine\creatures\include\CreatureStatusTypes.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureTileSafetyChecker.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureUtils.hpp" />
     <ClInclude Include="engine\creatures\include\CurrentCreatureAbilities.hpp" />

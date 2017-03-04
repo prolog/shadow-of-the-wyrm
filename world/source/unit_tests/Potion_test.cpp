@@ -7,6 +7,21 @@ TEST(SW_World_Potion, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_POTION, potion.get_class_identifier());
 }
 
+TEST(SW_World_Potion, glow_flag)
+{
+  Potion potion, potion2;
+
+  potion.set_glowing(true);
+
+  ostringstream ss;
+  potion.serialize(ss);
+  istringstream iss(ss.str());
+
+  potion2.deserialize(iss);
+
+  EXPECT_TRUE(potion == potion2);
+}
+
 TEST(SW_World_Potion, saveload)
 {
   Potion potion, potion2;
