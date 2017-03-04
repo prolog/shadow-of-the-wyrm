@@ -823,7 +823,7 @@ bool MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
   // is not blind.
   CurrentCreatureAbilities cca;
 
-  if (creature && creature->get_is_player() && cca.can_see(creature, false))
+  if (creature && creature->get_is_player())
   {
     IInventoryPtr tile_items = tile->get_items();
     
