@@ -8,6 +8,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - Fairy spirits will now also remove any negative status or spell
   effects that are in force.
 
+- New dungeon room type, wet, which generates with a proportion of its
+  tiles as water.
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: mapping (Cantrips).

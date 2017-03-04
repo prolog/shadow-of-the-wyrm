@@ -1,4 +1,6 @@
 Me:
+- More special terrain rooms, and then slightly lower the probability so
+  that dungeons are more interesting.
 - Add shops to dungeons.
 - Item should be shown when blind but glowing - on ground.  Inventory is
   fine.

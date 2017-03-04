@@ -3966,6 +3966,9 @@
     <ClInclude Include="engine\creatures\include\CreatureStatusTypes.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\WetRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7834,6 +7837,9 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\MappingEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\WetRoomGenerator.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
