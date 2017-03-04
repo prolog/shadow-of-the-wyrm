@@ -51,6 +51,7 @@ int add_creature_to_map(lua_State* ls);
 int remove_creature_from_map(lua_State* ls);
 int add_status_to_creature(lua_State* ls);
 int add_status_to_creature_at(lua_State* ls);
+int remove_negative_statuses_from_creature(lua_State* ls);
 int get_creature_statuses(lua_State* ls);
 int stop_playing_game(lua_State* ls);
 int set_creature_base_damage(lua_State* ls);

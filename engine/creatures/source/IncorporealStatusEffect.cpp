@@ -16,6 +16,11 @@ IncorporealStatusEffect::IncorporealStatusEffect()
   status_calc = std::make_shared<IncorporealCalculator>();
 }
 
+bool IncorporealStatusEffect::is_negative() const
+{
+  return false;
+}
+
 void IncorporealStatusEffect::after_undo(CreaturePtr creature) const
 {
   // First, check the parent class to make sure that floating down

@@ -5,6 +5,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   is revealed.  When uncursed or cursed, tiles will be learned/forgotten
   at random.
 
+- Fairy spirits will now also remove any negative status or spell
+  effects that are in force.
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: mapping (Cantrips).

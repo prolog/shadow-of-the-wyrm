@@ -180,6 +180,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "remove_creature_from_map", remove_creature_from_map);
   lua_register(L, "add_status_to_creature", add_status_to_creature);
   lua_register(L, "add_status_to_creature_at", add_status_to_creature_at);
+  lua_register(L, "remove_negative_statuses_from_creature", remove_negative_statuses_from_creature);
   lua_register(L, "get_creature_statuses", get_creature_statuses);
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
@@ -1453,6 +1454,45 @@ int add_status_to_creature_at(lua_State* ls)
 
   lua_pushboolean(ls, added_status);
   return 1;
+}
+
+int remove_negative_statuses_from_creature(lua_State* ls)
+{
+  int stat_count = 0;
+
+  if ((lua_gettop(ls) == 1) && lua_isstring(ls, 1))
+  {
+    Game& game = Game::instance();
+    ActionManager& am = game.get_action_manager_ref();
+
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      CreatureStatusMap csm = creature->get_statuses();
+
+      for (const auto& csm_pair : csm)
+      {
+        string status_id = csm_pair.first;
+        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+
+        if (se && se->is_negative())
+        {
+          CreatureUtils::mark_modifiers_for_deletion(creature, status_id, StatusRemovalType::STATUS_REMOVAL_UNDO);
+        }
+      }
+
+      CreatureUtils::remove_modifiers(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to remove_negative_statuses_from_creature");
+    lua_error(ls);
+  }
+
+  return stat_count;
 }
 
 // Get all the status IDs currently in force for the given creature.

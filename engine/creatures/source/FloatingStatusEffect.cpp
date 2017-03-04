@@ -4,6 +4,11 @@
 #include "MovementAccumulationUpdater.hpp"
 #include "TerrainMovementAccumulationCheckerFactory.hpp"
 
+bool FloatingStatusEffect::is_negative() const
+{
+  return false;
+}
+
 void FloatingStatusEffect::after_undo(CreaturePtr creature) const
 {
   if (creature)

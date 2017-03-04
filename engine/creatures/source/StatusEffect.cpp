@@ -27,6 +27,12 @@ StatusEffect::~StatusEffect()
 {
 }
 
+// Most status effects are negative.
+bool StatusEffect::is_negative() const
+{
+  return true;
+}
+
 void StatusEffect::set_source_id(const string& new_source_id)
 {
   source_id = new_source_id;
@@ -220,7 +226,7 @@ void StatusEffect::undo(CreaturePtr creature) const
   if (creature)
   {
     creature->remove_status(get_status_identifier());
-    CreatureUtils::mark_modifiers_for_deletion(creature, get_status_identifier());
+    CreatureUtils::mark_modifiers_for_deletion(creature, get_status_identifier(), StatusRemovalType::STATUS_REMOVAL_UNDO);
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
 
