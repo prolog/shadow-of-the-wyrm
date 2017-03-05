@@ -1,10 +1,12 @@
+#include "AllTiles.hpp"
 #include "Game.hpp"
+#include "InscriptionTextKeys.hpp"
+#include "ItemManager.hpp"
 #include "Log.hpp"
+#include "RNG.hpp"
 #include "TileConfigurationFactory.hpp"
 #include "TileGenerator.hpp"
-#include "ItemManager.hpp"
 #include "tiles.hpp"
-#include "AllTiles.hpp"
 
 using namespace std;
 
@@ -71,8 +73,16 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       result_tile = std::make_shared<ShoalsTile>();
       break;
     case TileType::TILE_TYPE_DUNGEON:
+    {
       result_tile = std::make_shared<DungeonTile>();
+
+      if (result_tile != nullptr && RNG::x_in_y_chance(1, 400))
+      {
+        result_tile->set_inscription_sid(InscriptionTextKeys::get_random_inscription_sid());
+      }
+
       break;
+    }
     case TileType::TILE_TYPE_ROCK:
       result_tile = std::make_shared<RockTile>();
       break;

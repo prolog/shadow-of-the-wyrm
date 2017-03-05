@@ -29,11 +29,6 @@ void WetRoomGenerator::generate(MapPtr map, const int start_row, const int end_r
       else
       {
         tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
-
-        if (tile != nullptr && RNG::x_in_y_chance(1, 400))
-        {
-          tile->set_inscription_sid(InscriptionTextKeys::get_random_inscription_sid());
-        }
       }
 
       map->insert(y, x, tile);
