@@ -8,8 +8,13 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - Fairy spirits will now also remove any negative status or spell
   effects that are in force.
 
-- New dungeon room type, wet, which generates with a proportion of its
-  tiles as water.
+- New dungeon room types.
+  
+  - Wet: a proportion of its tiles are water and reeds.
+
+  - Dank: as wet, but bushes, weeds, and rocky earth.
+
+  - Cave In: part of the inner portion of the room is collapsed rock.
 
 - More stanzas for "Tel and Floridel".
 

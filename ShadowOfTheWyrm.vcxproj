@@ -740,6 +740,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\include\WildOrchardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\WorldGenerator.hpp" />
     <ClInclude Include="engine\generators\rooms\include\BasicRoomGenerator.hpp" />
+    <ClInclude Include="engine\generators\rooms\include\CaveInRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\rooms\include\DankRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\rooms\include\IRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\rooms\include\NullRoomGenerator.hpp" />
@@ -1584,6 +1585,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
+    <ClCompile Include="engine\generators\rooms\source\CaveInRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\DankRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\WetRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\Building.cpp" />

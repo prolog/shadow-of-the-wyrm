@@ -1,7 +1,5 @@
 Me:
-- In wet rooms, reeds should have 30% chance to generate if adjacent to
-  water.
-- Dank room - weeds and bushes.
+- Wands of digging, and place one in Kew's pile.
 - More special terrain rooms, and then slightly lower the probability so
   that dungeons are more interesting.
 - Crafting room: wheel and loom, tannery.
