@@ -1,9 +1,14 @@
 Me:
+- In wet rooms, reeds should have 30% chance to generate if adjacent to
+  water.
+- Dank room - weeds and bushes.
 - More special terrain rooms, and then slightly lower the probability so
   that dungeons are more interesting.
+- Crafting room: wheel and loom, tannery.
+- Generate loom, tanneries in random villages.
+- Consider making inscriptions part of all dungeon tiles, and then removing
+  the explicit calls to add them in DungeonGenerator.
 - Add shops to dungeons.
-- Item should be shown when blind but glowing - on ground.  Inventory is
-  fine.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Revisit smithing.
