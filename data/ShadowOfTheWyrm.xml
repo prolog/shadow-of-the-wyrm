@@ -7983,6 +7983,52 @@
 			</Damage>
 			<Speed>40</Speed>
 		</Creature>
+		<Creature id="drowned_shade">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>DROWNED_SHADE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DROWNED_SHADE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DROWNED_SHADE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DROWNED_SHADE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Breeds>1</Breeds>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>X</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>34</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>34</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9700</Exp>
+			</CreatureGeneration>
+			<Level>34</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>68</NumSides>
+				<Type>4</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
 		<Creature id="seeper">
 			<RaceID>_spirit</RaceID>
 			<ShortDescriptionSID>SEEPER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

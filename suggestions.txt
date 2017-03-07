@@ -1,5 +1,6 @@
 Me:
 - Wands of digging, and place one in Kew's pile.
+- Monster trap.
 - More special terrain rooms, and then slightly lower the probability so
   that dungeons are more interesting.
 - Crafting room: wheel and loom, tannery.
@@ -24,6 +25,7 @@ Me:
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   are 2.
 - Allow shopkeepers to be any of the selectable races.
+- Towers/tower generators.
 - Allow shopkeepers to sell for different prices dependending on their
   race, and the buying creature's.
 - Freshwater turns to ice in winter.
@@ -67,7 +69,7 @@ Me:
 - Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
-- Telari, the Drowned Isle
+- Telari, the Drowned Shrine
 - Update MapTester config for generation runs of creatures
 - Define all monsters as good/neutral/evil
 - Monsters should have a chance of being generated friendly when same
@@ -168,4 +170,4 @@ Samildanach:
 Esran:
 - Once monsters are smarter, create spells that allow hitting monsters
   past walls.
-- Dungeons: when random, prompt for "descend to what depth (ft)?
+- Sewer/dungeons: when random, prompt for "descend to what depth (ft)?
