@@ -27002,6 +27002,26 @@
 				</Resistances>
 				<SpeedBonus>10</SpeedBonus>
 			</Ring>
+			<Ring id="aran_fee">
+				<DescriptionSID>ARAN_FEE_SID</DescriptionSID>
+				<UsageDescriptionSID>ARAN_FEE_USAGE_SID</UsageDescriptionSID>
+				<Value>2260</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>2</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Cold>0.20</Cold>
+					<Arcane>0.20</Arcane>
+				</Resistances>
+				<StatusAilments>
+					<Status>_wb</Status>
+				</StatusAilments>
+			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_FENCERS_RING_SID</UnidentifiedDescriptionSID>

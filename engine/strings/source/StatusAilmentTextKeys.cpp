@@ -82,6 +82,10 @@ const string StatusAilmentTextKeys::STATUS_SATED = "STATUS_SATED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SATED = "STATUS_MESSAGE_PLAYER_SATED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SATED_CURED = "STATUS_MESSAGE_PLAYER_SATED_CURED";
 
+const string StatusAilmentTextKeys::STATUS_WATER_BREATHING = "STATUS_WATER_BREATHING";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_WATER_BREATHING = "STATUS_MESSAGE_PLAYER_WATER_BREATHING";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_WATER_BREATHING_CURED = "STATUS_MESSAGE_PLAYER_WATER_BREATHING_CURED";
+
 const string StatusAilmentTextKeys::STATUS_DRUNK = "STATUS_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DRUNK = "STATUS_MESSAGE_PLAYER_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SOBER = "STATUS_MESSAGE_PLAYER_SOBER";
@@ -235,6 +239,16 @@ const string StatusAilmentTextKeys::get_npc_undo_sated_message(CreaturePtr creat
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SATED);
 }
 
+const string StatusAilmentTextKeys::get_npc_water_breathing_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_WATER_BREATHING);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_water_breathing_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_WATER_BREATHING);
+}
+
 const string StatusAilmentTextKeys::get_npc_drunk_message(CreaturePtr creature)
 {
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DRUNK);
@@ -319,6 +333,9 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_INCORPOREAL = "STATU
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SATED = "STATUS_MESSAGE_NPC_SATED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SATED = "STATUS_MESSAGE_NPC_UNDO_SATED";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_WATER_BREATHING = "STATUS_MESSAGE_NPC_WATER_BREATHING";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_WATER_BREATHING = "STATUS_MESSAGE_NPC_UNDO_WATER_BREATHING";
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DRUNK = "STATUS_MESSAGE_NPC_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SOBER = "STATUS_MESSAGE_NPC_SOBER";

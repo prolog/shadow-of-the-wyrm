@@ -3975,6 +3975,9 @@
     <ClInclude Include="engine\generators\rooms\include\CaveInRoomGenerator.hpp">
       <Filter>Header Files\engine\generators\rooms\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\creatures\include\WaterBreathingStatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7852,6 +7855,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\rooms\source\CaveInRoomGenerator.cpp">
       <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\WaterBreathingStatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

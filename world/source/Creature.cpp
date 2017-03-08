@@ -396,9 +396,31 @@ void Creature::set_breathes(const BreatheType new_breathes)
   breathes = new_breathes;
 }
 
-BreatheType Creature::get_breathes() const
+BreatheType Creature::get_base_breathes() const
 {
   return breathes;
+}
+
+vector<BreatheType> Creature::get_breathes() const
+{
+  vector<BreatheType> btypes = {breathes};
+
+  if (breathes != BreatheType::BREATHE_TYPE_WATER && has_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING))
+  {
+    btypes.push_back(BreatheType::BREATHE_TYPE_WATER);
+  }
+  
+  return btypes;
+}
+
+bool Creature::can_breathe(const BreatheType btype) const
+{
+  if (btype == breathes || (btype == BreatheType::BREATHE_TYPE_WATER && has_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING)))
+  {
+    return true;
+  }
+
+  return false;
 }
 
 void Creature::set_blood(const Blood& new_blood)
