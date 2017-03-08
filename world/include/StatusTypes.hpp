@@ -39,6 +39,7 @@ class StatusIdentifiers
     static const std::string STATUS_ID_FLYING;
     static const std::string STATUS_ID_TIMEWALK;
     static const std::string STATUS_ID_SATED;
+    static const std::string STATUS_ID_WATER_BREATHING;
 
   protected:
     StatusIdentifiers();

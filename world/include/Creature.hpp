@@ -95,7 +95,12 @@ class Creature : public ISerializable
     Handedness get_off_handedness() const;
     
     void set_breathes(const BreatheType new_breathes);
-    BreatheType get_breathes() const;
+    BreatheType get_base_breathes() const;
+
+    // Get everything that the creature can currently breathe - include water 
+    // if the creature has the water breathing status.
+    std::vector<BreatheType> get_breathes() const; 
+    bool can_breathe(const BreatheType btype) const;
 
     void set_blood(const Blood& new_blood);
     Blood get_blood() const;

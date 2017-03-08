@@ -1,15 +1,18 @@
 #include <algorithm>
 #include "SwimmingCalculator.hpp"
 
+using namespace std;
+
 const int SwimmingCalculator::MAXIMUM_SWIMMING_TIME_MULTIPLIER = 6;
 const float SwimmingCalculator::SWIMMING_DAMAGE_MAX_HP_MULTIPLIER = 0.10f;
 
-int SwimmingCalculator::calculate_maximum_swimming_time(const int swimming_skill_value, const bool is_incorporeal, const BreatheType breathes) const
+int SwimmingCalculator::calculate_maximum_swimming_time(const int swimming_skill_value, const bool is_incorporeal, const vector<BreatheType>& breathes) const
 {
   int max_swimming_time = swimming_skill_value * MAXIMUM_SWIMMING_TIME_MULTIPLIER;
+  bool can_breathe_water = std::find(breathes.begin(), breathes.end(), BreatheType::BREATHE_TYPE_WATER) != breathes.end();
 
   // Spirits and water-breathers clearly can do this for a while.
-  if (is_incorporeal || (breathes == BreatheType::BREATHE_TYPE_WATER))
+  if (is_incorporeal || can_breathe_water)
   {
     max_swimming_time = std::numeric_limits<int>::max();
   }

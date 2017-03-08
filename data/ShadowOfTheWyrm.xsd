@@ -1683,6 +1683,7 @@
 		<xs:enumeration value="_incorp"/>
 		<xs:enumeration value="_flying"/>
 		<xs:enumeration value="_sat"/>
+		<xs:enumeration value="_wb"/>
 	</xs:restriction>
 </xs:simpleType>
 <!-- See CreatureFeatures.hpp -->

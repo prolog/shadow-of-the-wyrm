@@ -1,5 +1,8 @@
 Me:
+- Creature breathing unit tests
+- Submerged tiles
 - Wands of digging, and place one in Kew's pile.
+- Water-breathing spell (Mystic).
 - Monster trap.
 - More special terrain rooms, and then slightly lower the probability so
   that dungeons are more interesting.

@@ -590,10 +590,18 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
         ModifyStatisticsEffect mse;
         Modifier m;
 
+        StatusEffectPtr status = StatusEffectFactory::create_status_effect(ailment, "");
         creature->set_status(ailment, {ailment, true, 1 /* JCD FIXME? */, creature_id});
         m.set_status(ailment, true);
-        mse.set_spell_id(StatusIdentifiers::STATUS_ID_SATED); // set for easy rollback
+        mse.set_spell_id(ailment); // set for easy rollback
         mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+
+        if (status != nullptr)
+        {
+          IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+          manager.add_new_message(status->get_application_message(creature));
+          manager.send();
+        }
       }
     }
   }

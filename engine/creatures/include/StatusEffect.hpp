@@ -24,6 +24,8 @@ class StatusEffect
     // Method to check whether the status should be applied.
     bool should_apply_change(std::shared_ptr<Creature> creature, const int effect_bonus = 0) const;
 
+    virtual std::string get_application_message(std::shared_ptr<Creature> creature) const;
+
     // Methods to handle creating, updating, removing, etc., the status change.
     // Each of these simply calls the before, do, and after methods - these three
     // are the ones that should be overridden by subclasses as necessary.
@@ -47,7 +49,6 @@ class StatusEffect
     virtual bool apply(std::shared_ptr<Creature> creature, const int danger_level) const;
     virtual bool after_apply(std::shared_ptr<Creature> creature) const;
     
-    virtual std::string get_application_message(std::shared_ptr<Creature> creature) const;
     virtual std::string get_player_application_message() const;
     virtual std::string get_npc_application_message(std::shared_ptr<Creature> creature) const;
 

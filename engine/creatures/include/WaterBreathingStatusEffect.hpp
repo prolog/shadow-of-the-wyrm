@@ -1,10 +1,10 @@
 #pragma once
 #include "StatusEffect.hpp"
 
-class SatedStatusEffect : public StatusEffect
+class WaterBreathingStatusEffect : public StatusEffect
 {
   public:
-    SatedStatusEffect();
+    WaterBreathingStatusEffect();
 
     virtual bool is_negative() const override;
 
