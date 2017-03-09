@@ -13,7 +13,7 @@ TileType RiverTile::get_tile_type() const
   return TileType::TILE_TYPE_RIVER;
 }
 
-TileSuperType RiverTile::get_tile_super_type() const
+TileSuperType RiverTile::get_tile_base_super_type() const
 {
   return TileSuperType::TILE_SUPER_TYPE_WATER;
 }

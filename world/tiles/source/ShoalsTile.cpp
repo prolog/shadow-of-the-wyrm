@@ -12,7 +12,7 @@ TileType ShoalsTile::get_tile_type() const
   return TileType::TILE_TYPE_SHOALS;
 }
 
-TileSuperType ShoalsTile::get_tile_super_type() const
+TileSuperType ShoalsTile::get_tile_base_super_type() const
 {
   return TileSuperType::TILE_SUPER_TYPE_WATER;
 }

@@ -53,6 +53,7 @@ bool Tile::operator==(const Tile& tile) const
   result = result && (illuminated == tile.illuminated);
   result = result && (explored == tile.explored);
   result = result && (viewed == tile.viewed);
+  result = result && (submerged == tile.submerged);
   result = result && (tile_type == tile.tile_type);
   result = result && (tile_subtype == tile.tile_subtype);
   result = result && (hardness == tile.hardness);
@@ -241,9 +242,10 @@ void Tile::set_default_properties()
   illuminated = true;
   explored    = false;
   viewed      = false;
+  submerged   = false;
 }
 
-void Tile::set_illuminated(bool new_illuminated)
+void Tile::set_illuminated(const bool new_illuminated)
 {
   illuminated = new_illuminated;
 }
@@ -327,7 +329,7 @@ int Tile::get_movement_multiplier() const
   return 1;
 }
 
-void Tile::set_explored(bool new_explored)
+void Tile::set_explored(const bool new_explored)
 {
   explored = new_explored;
 }
@@ -337,7 +339,7 @@ bool Tile::get_explored() const
   return explored;
 }
 
-void Tile::set_viewed(bool new_viewed)
+void Tile::set_viewed(const bool new_viewed)
 {
   viewed = new_viewed;
 }
@@ -345,6 +347,16 @@ void Tile::set_viewed(bool new_viewed)
 bool Tile::get_viewed() const
 {
   return viewed;
+}
+
+void Tile::set_submerged(const bool new_submerged)
+{
+  submerged = new_submerged;
+}
+
+bool Tile::get_submerged() const
+{
+  return submerged;
 }
 
 bool Tile::has_feature() const
@@ -429,8 +441,20 @@ TileType Tile::get_tile_type() const
   return tile_type;
 }
 
-// All tiles are assumed to be ground tiles, unless the derived class declares otherwise.
 TileSuperType Tile::get_tile_super_type() const
+{
+  if (submerged)
+  {
+    return TileSuperType::TILE_SUPER_TYPE_WATER;
+  }
+  else
+  {
+    return get_tile_base_super_type();
+  }
+}
+
+// All tiles are assumed to be ground tiles, unless the derived class declares otherwise.
+TileSuperType Tile::get_tile_base_super_type() const
 {
   return TileSuperType::TILE_SUPER_TYPE_GROUND;
 }
@@ -559,6 +583,7 @@ bool Tile::serialize(ostream& stream) const
   Serialize::write_bool(stream, illuminated);
   Serialize::write_bool(stream, explored);
   Serialize::write_bool(stream, viewed);
+  Serialize::write_bool(stream, submerged);
   Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, tile_subtype);
   Serialize::write_int(stream, hardness);
@@ -618,6 +643,7 @@ bool Tile::deserialize(istream& stream)
   Serialize::read_bool(stream, illuminated);
   Serialize::read_bool(stream, explored);
   Serialize::read_bool(stream, viewed);
+  Serialize::read_bool(stream, submerged);
   Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, tile_subtype);
   Serialize::read_int(stream, hardness);
