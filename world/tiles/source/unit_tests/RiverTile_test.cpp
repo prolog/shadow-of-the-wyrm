@@ -14,6 +14,14 @@ TEST(SW_World_Tiles_RiverTile, tile_super_type)
   EXPECT_EQ(TileSuperType::TILE_SUPER_TYPE_WATER, river_tile.get_tile_super_type());
 }
 
+TEST(SW_World_Tiles_RiverTile, tile_super_type_submerged)
+{
+  RiverTile river_tile;
+  river_tile.set_submerged(true);
+
+  EXPECT_EQ(TileSuperType::TILE_SUPER_TYPE_WATER, river_tile.get_tile_super_type());
+}
+
 TEST(SW_World_Tiles_RiverTile, serialization_id)
 {
   RiverTile river_tile;
