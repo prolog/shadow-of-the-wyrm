@@ -259,7 +259,12 @@ bool Map::insert(int row, int col, TilePtr tile)
     IInventoryPtr null_inv = std::make_shared<NullInventory>();
     tile->set_items(null_inv);
   }
-
+  // If this is an underwater map, turn on the submerged flag.
+  else if (map_type == MapType::MAP_TYPE_UNDERWATER)
+  {
+    tile->set_submerged(true);
+  }
+  
   tiles[key] = tile;
   return true;
 }

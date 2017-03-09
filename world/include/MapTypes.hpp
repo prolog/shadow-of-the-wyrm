@@ -8,6 +8,7 @@ enum struct MapType
   MAP_TYPE_WORLD = 0
 , MAP_TYPE_OVERWORLD = 1
 , MAP_TYPE_UNDERWORLD = 2
+, MAP_TYPE_UNDERWATER = 3
 };
 
 class MapID
