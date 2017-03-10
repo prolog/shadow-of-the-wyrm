@@ -218,6 +218,25 @@ TEST(SW_World_Creature, count_items)
   EXPECT_EQ(7, c.count_items());
 }
 
+TEST(SW_World_Creature, breathes_types)
+{
+  Creature water_creature;
+  water_creature.set_breathes(BreatheType::BREATHE_TYPE_WATER);
+
+  EXPECT_TRUE(water_creature.can_breathe(BreatheType::BREATHE_TYPE_WATER));
+
+  Creature land_creature;
+  land_creature.set_breathes(BreatheType::BREATHE_TYPE_AIR);
+
+  EXPECT_TRUE(land_creature.can_breathe(BreatheType::BREATHE_TYPE_AIR));
+  EXPECT_FALSE(land_creature.can_breathe(BreatheType::BREATHE_TYPE_WATER));
+
+  Status wb_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, true, 1, "");
+  land_creature.set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, wb_status);
+
+  EXPECT_TRUE(land_creature.can_breathe(BreatheType::BREATHE_TYPE_WATER));
+}
+
 TEST(SW_World_Creature, status_details)
 {
   Creature c;

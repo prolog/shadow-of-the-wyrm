@@ -20,6 +20,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   water within submerged tiles.  As long as a creature has this status
   it cannot drown.
 
+- New map type, underwater.  These have submerged tiles in which you'll
+  need to have water breathing or will die very quickly.
+
 - More stanzas for "Tel and Floridel".
 
 - New spells/spellbooks: mapping (Cantrips).
