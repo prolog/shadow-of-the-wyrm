@@ -33,6 +33,11 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New creatures: drowned shade.
 
+- Bug fixes: 
+
+  - The water in Stonewall and Wintersea Keep was marked as river, and
+    not sea.
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 

@@ -10,26 +10,26 @@
 	</LevelRange>
 	<MapType>1</MapType>
 	<Tiles>
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~,,,,,~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~,,,,,,,,~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~,#,###,,##,###,##,,,,,,,####,#,#######,#,~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~,,,,,,,,,,T,,,,,,,,,,,,,,,T,,,,,,,,,,,,T#~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~#,w,,,,#,,,,,,,,,,,,,,,,,,,,,,,,,##,,,,,#~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~#,,,,,##,,,,T,,,##,#,#,,,,,,TT,,,,,,,T,,#~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~#,,,T,,,,,,,,,,,,,,,,,,,,,,,,,#,,,#,,,,,#~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~#,,,,,,,,,TT,,,,#,,,,#,,,,,,,T,,,,,,,T,,#~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~,,,,T,,,,,,##,,,###,##,,,,,,,,,,,,,,,,,,#~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~#,,#,,,,,,,#,,,,,,,,,,,,,,T,,,,,T,,,T,,,,~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~#,,,,,,,T,,##,#,,,#,,#,,,,,,,,,,,,#,,,,,#~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~#,TT,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,T#~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~,#,#####,#########,####,####,######,###,#~~~~~~~,,,~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~,,,,,~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~,,,,,#,,~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~,,,#,,#~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~,,#T#,,~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS,,,,,SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS,,,,,,,,SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS,#,###,,##,###,##,,,,,,,####,#,#######,#,SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS,,,,,,,,,,T,,,,,,,,,,,,,,,T,,,,,,,,,,,,T#SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS#,w,,,,#,,,,,,,,,,,,,,,,,,,,,,,,,##,,,,,#SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS#,,,,,##,,,,T,,,##,#,#,,,,,,TT,,,,,,,T,,#SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS#,,,T,,,,,,,,,,,,,,,,,,,,,,,,,#,,,#,,,,,#SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS#,,,,,,,,,TT,,,,#,,,,#,,,,,,,T,,,,,,,T,,#SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS,,,,T,,,,,,##,,,###,##,,,,,,,,,,,,,,,,,,#SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS#,,#,,,,,,,#,,,,,,,,,,,,,,T,,,,,T,,,T,,,,SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS#,,,,,,,T,,##,#,,,#,,#,,,,,,,,,,,,#,,,,,#SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS#,TT,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,T#SSSSSSSSSSSSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSS,#,#####,#########,####,####,######,###,#SSSSSSS,,,SSSSS
+	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS,,,,,SS
+	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS,,,,,#,,S
+	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS,,,#,,#SSS
+	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS,,#T#,,SS
+	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 	</Tiles>
 	<PlayerStart>
 		<Row>0</Row>
