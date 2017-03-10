@@ -25,6 +25,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - More stanzas for "Tel and Floridel".
 
+- New poem fragment for the title screen.
+
 - New spells/spellbooks: mapping (Cantrips).
 
 - New items: scroll of mapping.

@@ -10,6 +10,12 @@ local rowan_head = Area:new(93, 98)
 rowan_head:set_custom_map_id("rowan_head")
 rowan_head:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ROWAN_HEAD")
 
+-- JCD FIXME TEMPORARY REMOVE LATER
+local telari = Area:new(93,95)
+telari:set_custom_map_id("telari")
+table.insert(little_island, telari)
+-- No extra desc, never accessed via main map
+
 -- Little Island itself
 local wintersea_keep = Area:new(95, 95)
 wintersea_keep:set_custom_map_id("wintersea_keep")
