@@ -1,9 +1,11 @@
 Me:
 - Submerged tiles: display
+- (Submerged) not showing up on custom map
 - REMOVE MAP LINK TO SUBMERGED MAP PRIOR TO RELEASE
 - Water in Wintersea Keep and Stonewall is river - should be sea
 - Wands of digging, and place one in Kew's pile.
 - Additional tile types: kelp (edible), aquatic vegetation, seabed.
+- Cockatrice
 - Monster trap.
 - More special terrain rooms, and then slightly lower the probability so
   that dungeons are more interesting.
@@ -18,6 +20,7 @@ Me:
 - Revisit how values are updated after enchantment.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
+- Third possible ending via ascending the Cloudspire.
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.

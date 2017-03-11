@@ -49,6 +49,11 @@ string TileDescriber::describe() const
     {
       description = description + " " + TextMessages::get_inscription_message(tile->get_inscription_sid());
     }
+
+    if (tile->get_submerged())
+    {
+      description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_SUBMERGED);
+    }
   }
 
   return description;

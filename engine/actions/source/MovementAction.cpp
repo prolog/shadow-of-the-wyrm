@@ -561,8 +561,10 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       }
     }
                 
-    // - Set the map's MapExitPtr to point to the previous map.
-    //   But only if it's an overworld map.
+    // Set the map's MapExitPtr to point to the previous map.  But only if 
+    // it's an overworld map.  Underworld maps (dungeons, sewers, etc)
+    // will have stairway exits.  Underwater maps (Telari and others)
+    // TBD.
     if (new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
     {
       MapExitUtils::add_exit_to_map(new_map, map->get_map_id());
