@@ -21,7 +21,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   it cannot drown.
 
 - New map type, underwater.  These have submerged tiles in which you'll
-  need to have water breathing or will die very quickly.
+  need to have water breathing or will die very quickly.  In normal water
+  (non-submerged), survival is based on your swimming skill.  In
+  submerged tiles, it's based on your Health.
 
 - More stanzas for "Tel and Floridel".
 
