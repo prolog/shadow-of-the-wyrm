@@ -238,6 +238,19 @@ void Map::remove_creature(const string& creature_id)
 void Map::set_tiles(const TilesContainer& new_tiles)
 {
   tiles = new_tiles;
+
+  if (map_type == MapType::MAP_TYPE_UNDERWATER)
+  {
+    for (auto& tile_pair : tiles)
+    {
+      TilePtr tile = tile_pair.second;
+
+      if (tile != nullptr)
+      {
+        tile->set_submerged(true);
+      }
+    }
+  }
 }
 
 bool Map::insert(int row, int col, TilePtr tile)

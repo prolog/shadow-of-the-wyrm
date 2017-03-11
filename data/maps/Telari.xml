@@ -5,8 +5,8 @@
 		<Columns>80</Columns>
 	</Dimensions>
 	<LevelRange>
-		<Min>2</Min>
-		<Max>17</Max>
+		<Min>25</Min>
+		<Max>50</Max>
 	</LevelRange>
 	<MapType>3</MapType>
 	<Tiles>

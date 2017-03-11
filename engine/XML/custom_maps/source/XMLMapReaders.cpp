@@ -40,6 +40,11 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     string name_sid = XMLUtils::get_child_node_value(custom_map_node, "NameSID");
     
     Dimensions dim = parse_dimensions(dimensions_node);
+    custom_map = MapPtr(new Map(dim));
+
+    // Ensure that the map type is set prior to parsing the tiles so that if
+    // the map is submerged, the flag will be set appropriately on each tile.
+    custom_map->set_map_type(map_type);
 
     XMLMapTilesReader tiles_reader;
     TilesContainer tiles = tiles_reader.parse_tiles(tiles_node, dim.get_y(), dim.get_x());
@@ -54,11 +59,8 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
 
     XMLMapCoordinateReader coord_reader;
     Coordinate player_start_location = coord_reader.parse_fixed_coordinate(player_start_node);
-
-    custom_map = MapPtr(new Map(dim));
     
     custom_map->set_map_id(map_id);
-    custom_map->set_map_type(map_type);
     custom_map->set_name_sid(name_sid);
     custom_map->set_tiles(tiles);
     custom_map->set_permanent(true); // custom maps are always permanent.
