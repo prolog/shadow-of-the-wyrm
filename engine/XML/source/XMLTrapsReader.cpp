@@ -34,6 +34,7 @@ void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
     string player_damage_message_sid = XMLUtils::get_child_node_value(trap_node, "PlayerDamageMessageSID");
     Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(trap_node, "Colour"));
     string item_id = XMLUtils::get_child_node_value(trap_node, "Item");
+    EffectType effect = static_cast<EffectType>(XMLUtils::get_child_node_int_value(trap_node, "Effect"));
 
     Damage dam;
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(trap_node, "Damage");
@@ -54,6 +55,7 @@ void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
     trap->set_colour(colour);
     trap->set_item_id(item_id);
     trap->set_damage(dam);
+    trap->set_effect(effect);
     trap->set_uses(uses);
   }
 }

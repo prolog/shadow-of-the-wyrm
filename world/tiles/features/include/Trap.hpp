@@ -48,6 +48,9 @@ class Trap : public Feature
     void set_damage(const Damage& new_damage);
     Damage get_damage() const;
 
+    void set_effect(const EffectType new_effect);
+    EffectType get_effect() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -63,6 +66,7 @@ class Trap : public Feature
     Colour colour;
     std::string item_id;
     Damage damage;
+    EffectType effect;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
