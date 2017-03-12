@@ -1,8 +1,6 @@
 Me:
 - Submerged tiles: display
-- (Submerged) not showing up on custom map
 - REMOVE MAP LINK TO SUBMERGED MAP PRIOR TO RELEASE
-- Water in Wintersea Keep and Stonewall is river - should be sea
 - Wands of digging, and place one in Kew's pile.
 - Additional tile types: kelp (edible), aquatic vegetation, seabed.
 - Cockatrice

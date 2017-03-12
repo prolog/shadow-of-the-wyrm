@@ -35,7 +35,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New artifacts: Ring of Aran Fee.
 
-- New creatures: drowned shade.
+- New creatures: drowned shade, cockatrice.
 
 - Bug fixes: 
 
