@@ -1,10 +1,9 @@
 Me:
+- Implement the monster summoning effect, and add it to the monster trap.
 - Submerged tiles: display
 - REMOVE MAP LINK TO SUBMERGED MAP PRIOR TO RELEASE
 - Wands of digging, and place one in Kew's pile.
 - Additional tile types: kelp (edible), aquatic vegetation, seabed.
-- Cockatrice
-- Monster trap.
 - More special terrain rooms, and then slightly lower the probability so
   that dungeons are more interesting.
 - Crafting room: wheel and loom, tannery.

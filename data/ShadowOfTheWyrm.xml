@@ -25451,6 +25451,20 @@
 			</Damage>
 			<Uses>5</Uses>
 		</Trap>
+		<Trap id="monster_trap">
+			<DescriptionSID>TRAP_MONSTER_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_MONSTER_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>#</TriggerSymbol>
+			<PlayerDamageMessageSID>TRAP_MONSTER_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>14</Colour>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>3</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Effect>0</Effect>
+			<Uses>1</Uses>
+		</Trap>
 	</Traps>
 	<Items>
 		<Amulets>

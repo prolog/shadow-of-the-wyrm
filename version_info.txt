@@ -25,6 +25,10 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   (non-submerged), survival is based on your swimming skill.  In
   submerged tiles, it's based on your Health.
 
+- Traps can now have effects.  The new monster trap has a new effect
+  type, monster summoning, which summons 1d4 nearby monsters of a danger 
+  level five greater than the map's level.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
@@ -34,6 +38,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - New items: scroll of mapping.
 
 - New artifacts: Ring of Aran Fee.
+
+- New traps: monster trap.
 
 - New creatures: drowned shade, cockatrice.
 

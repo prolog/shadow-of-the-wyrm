@@ -791,6 +791,7 @@
 		<!-- Item is an item id, and used if the trap has a chance of generating an item (e.g, an arrow, a rock) when triggered. -->
 		<xs:element name="Item" type="tns:Identifier" minOccurs="0"/>
 		<xs:element name="Damage" type="tns:Damage"/>
+		<xs:element name="Effect" type="tns:EffectType" minOccurs="0"/>
 		<xs:element name="Uses" type="xs:integer"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>

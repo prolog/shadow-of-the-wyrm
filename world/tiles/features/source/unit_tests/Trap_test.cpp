@@ -50,6 +50,7 @@ TEST(SW_World_Tiles_Features_Trap, saveload)
     t1.set_colour(Colour::COLOUR_BLUE);
     t1.set_player_damage_message_sid("thathurt");
     t1.set_item_id("arrow");
+    t1.set_effect(EffectType::EFFECT_TYPE_ANTIDOTE); // not real, obviously
 
     EXPECT_FALSE(t1 == t2);
 
@@ -60,6 +61,7 @@ TEST(SW_World_Tiles_Features_Trap, saveload)
     t2.deserialize(iss);
 
     EXPECT_TRUE(t1 == t2);
+    EXPECT_TRUE(t2.get_effect() == EffectType::EFFECT_TYPE_ANTIDOTE);
   }
   catch (std::exception e)
   {
