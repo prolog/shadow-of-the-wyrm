@@ -665,6 +665,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\effects\include\HealingEffect.hpp" />
     <ClInclude Include="engine\effects\include\IdentifyEffect.hpp" />
     <ClInclude Include="engine\effects\include\NullEffect.hpp" />
+    <ClInclude Include="engine\effects\include\SummonMonstersEffect.hpp" />
     <ClInclude Include="engine\effects\include\TeleportEffect.hpp" />
     <ClInclude Include="engine\effects\include\TimewalkEffect.hpp" />
     <ClInclude Include="engine\effects\include\UncursingEffect.hpp" />
@@ -1584,6 +1585,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\CleansingEffect.cpp" />
     <ClCompile Include="engine\effects\source\DetectTrapsEffect.cpp" />
     <ClCompile Include="engine\effects\source\MappingEffect.cpp" />
+    <ClCompile Include="engine\effects\source\SummonMonstersEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />

@@ -392,7 +392,7 @@ std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapP
   return result_map;
 }
 
-std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature)
+std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature, const int offset)
 {
   std::vector<TilePtr> result_map;
 
@@ -400,7 +400,7 @@ std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(const Map
   {
     Coordinate creature_coord = map->get_location(creature->get_id());
 
-    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
+    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second, offset);
 
     for (const Coordinate& c : adjacent_coords)
     {

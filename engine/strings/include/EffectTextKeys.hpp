@@ -32,6 +32,7 @@ class EffectTextKeys
     static const std::string EFFECT_CLEANSING;
     static const std::string EFFECT_MAPPING;
     static const std::string EFFECT_MAPPING_FORGET;
+    static const std::string EFFECT_SUMMON_MONSTERS;
 
   protected:
     EffectTextKeys();
