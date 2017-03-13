@@ -3978,6 +3978,9 @@
     <ClInclude Include="engine\creatures\include\WaterBreathingStatusEffect.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\SummonMonstersEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7858,6 +7861,9 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\WaterBreathingStatusEffect.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\SummonMonstersEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

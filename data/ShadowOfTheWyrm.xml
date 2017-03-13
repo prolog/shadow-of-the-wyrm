@@ -25459,11 +25459,11 @@
 			<Colour>14</Colour>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
-				<NumSides>3</NumSides>
+				<NumSides>6</NumSides>
 				<Type>9</Type>
 			</Damage>
-			<Effect>0</Effect>
-			<Uses>1</Uses>
+			<Effect>25</Effect>
+			<Uses>3</Uses>
 		</Trap>
 	</Traps>
 	<Items>
@@ -31503,6 +31503,23 @@
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
 				<Effect>22</Effect>
+			</Scroll>
+			<Scroll id="summon_monsters_scroll">
+				<DescriptionSID>SUMMON_MONSTERS_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SUMMON_MONSTERS_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SUMMON_MONSTERS_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SUMMON_MONSTERS_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>15</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Effect>25</Effect>
 			</Scroll>
 		</Scrolls>
 		<Currencies>

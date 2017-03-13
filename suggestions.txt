@@ -1,5 +1,8 @@
 Me:
-- Implement the monster summoning effect, and add it to the monster trap.
+- Add a message when avoiding setting off a trap.
+- Ensure that summoning works almost everywhere.  Set the terrain type
+  for custom maps (to a default for the super type) to ensure that wands
+  work when zapped in Isen Dun, etc.
 - Submerged tiles: display
 - REMOVE MAP LINK TO SUBMERGED MAP PRIOR TO RELEASE
 - Wands of digging, and place one in Kew's pile.

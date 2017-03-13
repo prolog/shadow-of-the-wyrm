@@ -6,6 +6,7 @@
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
+#include "EffectFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "ItemManager.hpp"
@@ -102,8 +103,10 @@ void TrapManipulator::trigger_trap(TrapPtr trap, CreaturePtr creature)
 
 void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creature)
 {
+  string creature_id = creature ? creature->get_id() : "";
   Damage damage = trap->get_damage();
   DamageType dt = damage.get_damage_type();
+  EffectType effect = trap->get_effect();
   int effect_bonus = damage.get_effect_bonus();
   StatusAilments status_ailments = damage.get_status_ailments();
   float soak_mult = 1.0f; // the creature's soak should use the standard multiplier.
@@ -130,7 +133,19 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   damage_default.set_modifier(damage_dealt);
   string source_id; // sprung traps don't give exp when they kill creatures.
 
-  // Only apply the effect if there is damage to be dealt.
+  // First apply the regular effect, assuming there is one.
+  if (effect != EffectType::EFFECT_TYPE_NULL)
+  {
+    Modifier m;
+    EffectPtr effectp = EffectFactory::create_effect(effect, m, {}, "", creature_id);
+    
+    if (effectp != nullptr)
+    {
+      effectp->effect(creature, &game.get_action_manager_ref(), ItemStatus::ITEM_STATUS_UNCURSED);
+    }
+  }
+
+  // Only apply the damage-based effect if there is damage to be dealt.
   if (damage_dealt > 0)
   {
     cm.handle_damage_effects(nullptr, creature, damage_dealt, dt, effect_bonus, status_ailments, 1);

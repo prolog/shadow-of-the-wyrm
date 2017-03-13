@@ -26,8 +26,10 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   submerged tiles, it's based on your Health.
 
 - Traps can now have effects.  The new monster trap has a new effect
-  type, monster summoning, which summons 1d4 nearby monsters of a danger 
-  level five greater than the map's level.
+  type, monster summoning, which summons a nunber of nearby monsters,
+  whose danger level is between the current danger level and 5 greater.
+  This effect is also present on a scroll, which makes read ID-ing
+  potentially more dangerous.
 
 - More stanzas for "Tel and Floridel".
 
@@ -35,7 +37,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New spells/spellbooks: mapping (Cantrips).
 
-- New items: scroll of mapping.
+- New items: scroll of mapping, scroll of monster summoning.
 
 - New artifacts: Ring of Aran Fee.
 
