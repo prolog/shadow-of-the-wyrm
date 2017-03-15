@@ -1,4 +1,7 @@
 Me:
+- Place the ring.
+- Clues that you should talk to Ead.
+- Clues about the use of the ring.  Kew?  Cadlind?
 - Add a message when avoiding setting off a trap.
 - Ensure that summoning works almost everywhere.  Set the terrain type
   for custom maps (to a default for the super type) to ensure that wands

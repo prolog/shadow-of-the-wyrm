@@ -31,6 +31,13 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   This effect is also present on a scroll, which makes read ID-ing
   potentially more dangerous.
 
+- The mad elf, Whitebard, now drops the Ring of Aran Fee.  This is
+  a special artifact that permits water breathing, which in turn allows
+  the player to talk to the little boy, Ead, in the Barrows, who with
+  his strange, magical powers will send the player to Telari, the
+  Cloudspire, and the fourth shrine.  These details are hinted at by
+  Cadlind, and by Kew.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.

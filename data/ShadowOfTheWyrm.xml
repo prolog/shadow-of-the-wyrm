@@ -7778,6 +7778,13 @@
 					<NumSides>6</NumSides>
 				</AP>
 				<Exp>850</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>aran_fee</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>19</Level>
 			<Damage>
