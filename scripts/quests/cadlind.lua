@@ -29,7 +29,8 @@ local function cadlind_locket_quest_completion_fn()
 end
 
 local chat_topics = {"CADLIND_SPEECH_TEXT_SID",
-                     "CADLIND_SPEECH_TEXT2_SID"}
+                     "CADLIND_SPEECH_TEXT2_SID",
+                     "CADLIND_SPEECH_TEXT3_SID"}
 
 -- Most strings are empty because the quest is either unattainable,
 -- or already complete, based on whether the player has the wave

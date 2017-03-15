@@ -144,6 +144,7 @@ TilePtr get_tile(const string& map_id, const Coordinate& c)
 void ScriptEngine::register_api_functions()
 {
   lua_register(L, "add_message_with_pause", add_message_with_pause);
+  lua_register(L, "clear_messages", clear_messages);
   lua_register(L, "clear_and_add_message", clear_and_add_message);
   lua_register(L, "add_message", add_message);
   lua_register(L, "add_fov_message", add_fov_message);
@@ -182,6 +183,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_status_to_creature_at", add_status_to_creature_at);
   lua_register(L, "remove_negative_statuses_from_creature", remove_negative_statuses_from_creature);
   lua_register(L, "get_creature_statuses", get_creature_statuses);
+  lua_register(L, "creature_has_status", creature_has_status);
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
   lua_register(L, "set_creature_speed", set_creature_speed);
@@ -380,6 +382,21 @@ int add_message_with_pause(lua_State* ls)
   return 0;
 }
 
+int clear_messages(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    IMessageManager& manager = MM::instance();
+    manager.clear_if_necessary();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to clear_messages");
+    lua_error(ls);
+  }
+
+  return 0;
+}
 // Clear the message manager and add a new message.
 // Arguments expected: 1-2.
 // Argument types: 
@@ -1530,6 +1547,33 @@ int get_creature_statuses(lua_State* ls)
   }
 
   return static_cast<int>(statuses.size());
+}
+
+// Does the creature have a particular status in force?
+int creature_has_status(lua_State* ls)
+{
+  bool has_status = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string status_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      has_status = creature->has_status(status_id);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to creature_has_status");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, has_status);
+  return 1;
 }
 
 // Set a creature's base (bare-handed) damage.

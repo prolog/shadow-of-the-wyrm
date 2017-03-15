@@ -15,6 +15,7 @@ TilePtr get_tile(const std::string& map_id, const Coordinate& c);
 
 // API prototypes
 int add_message_with_pause(lua_State* ls);
+int clear_messages(lua_State* ls);
 int clear_and_add_message(lua_State* ls);
 int add_message(lua_State* ls);
 int add_fov_message(lua_State* ls);
@@ -53,6 +54,7 @@ int add_status_to_creature(lua_State* ls);
 int add_status_to_creature_at(lua_State* ls);
 int remove_negative_statuses_from_creature(lua_State* ls);
 int get_creature_statuses(lua_State* ls);
+int creature_has_status(lua_State* ls);
 int stop_playing_game(lua_State* ls);
 int set_creature_base_damage(lua_State* ls);
 int set_creature_speed(lua_State* ls);
