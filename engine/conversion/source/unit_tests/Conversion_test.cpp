@@ -163,3 +163,11 @@ TEST(SW_Engine_ConversionRoutines, weight_to_burden_level)
 
   EXPECT_EQ(BurdenLevel::BURDEN_LEVEL_OVERBURDENED, BurdenLevelConverter::to_burden_level(c));
 }
+
+TEST(SW_Engine_Conversion_MapTileTypes, default_tile_type)
+{
+  EXPECT_EQ(TileType::TILE_TYPE_FIELD, MapTileTypes::map_type_to_default_tile_type(MapType::MAP_TYPE_WORLD));
+  EXPECT_EQ(TileType::TILE_TYPE_FIELD, MapTileTypes::map_type_to_default_tile_type(MapType::MAP_TYPE_OVERWORLD));
+  EXPECT_EQ(TileType::TILE_TYPE_DUNGEON, MapTileTypes::map_type_to_default_tile_type(MapType::MAP_TYPE_UNDERWORLD));
+  EXPECT_EQ(TileType::TILE_TYPE_SEA, MapTileTypes::map_type_to_default_tile_type(MapType::MAP_TYPE_UNDERWATER));
+}

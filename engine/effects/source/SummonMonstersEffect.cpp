@@ -58,7 +58,7 @@ bool SummonMonstersEffect::summon(CreaturePtr creature, MapPtr map, const int nu
     {
       if (!adjacent_coords.empty())
       {
-        int idx = RNG::range(0, adjacent_coords.size());
+        int idx = RNG::range(0, adjacent_coords.size()-1);
         Coordinate coords = adjacent_coords.at(idx);
         TilePtr tile = map->at(coords);
 

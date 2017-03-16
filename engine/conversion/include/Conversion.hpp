@@ -215,3 +215,13 @@ class AlcoholConverter
     AlcoholConverter();
     ~AlcoholConverter();
 };
+
+class MapTileTypes
+{
+  public:
+    static TileType map_type_to_default_tile_type(const MapType mt);
+
+  protected:
+    MapTileTypes();
+    ~MapTileTypes();
+};
