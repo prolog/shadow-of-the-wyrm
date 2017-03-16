@@ -1,4 +1,5 @@
 #include <sstream>
+#include "Conversion.hpp"
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
@@ -41,6 +42,11 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     
     Dimensions dim = parse_dimensions(dimensions_node);
     custom_map = MapPtr(new Map(dim));
+
+    // Terrain type is set for "normal" maps based on the overworld tile type.
+    // Ensure that it's set so that the player can't do sneaky stuff like
+    // retreat to a custom map to read-ID scrolls to avoid summoning.
+    custom_map->set_terrain_type(MapTileTypes::map_type_to_default_tile_type(map_type));
 
     // Ensure that the map type is set prior to parsing the tiles so that if
     // the map is submerged, the flag will be set appropriately on each tile.

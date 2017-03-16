@@ -592,6 +592,38 @@ float AlcoholConverter::standard_drinks_to_grams(const float std_drinks)
   return std_drinks * GRAMS_PER_STANDARD_DRINK;
 }
 
+// Tile and Map Type Conversions
+MapTileTypes::MapTileTypes()
+{
+}
+
+MapTileTypes::~MapTileTypes()
+{
+}
+
+TileType MapTileTypes::map_type_to_default_tile_type(const MapType mt)
+{
+  static_assert(MapType::MAP_TYPE_LAST_INC == MapType(3), "Unrecognized MAP_TYPE_LAST_INC");
+  TileType tt = TileType::TILE_TYPE_UNDEFINED;
+
+  switch (mt)
+  {
+    case MapType::MAP_TYPE_WORLD:
+    case MapType::MAP_TYPE_OVERWORLD:
+      tt = TileType::TILE_TYPE_FIELD;
+      break;
+    case MapType::MAP_TYPE_UNDERWORLD:
+      tt = TileType::TILE_TYPE_DUNGEON;
+      break;
+    case MapType::MAP_TYPE_UNDERWATER:
+      tt = TileType::TILE_TYPE_SEA;
+    default:
+      break;
+  }
+
+  return tt;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Conversion_test.cpp"
 #endif
