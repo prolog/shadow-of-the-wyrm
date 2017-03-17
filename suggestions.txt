@@ -1,5 +1,7 @@
 Me:
-- No prayer flag for certain maps.
+- Set map-switch to Telari via Ead
+- Drowning damage should be 10% of total HP
+- Ensure no-prayer flag is set for the Cloudspire.
 - REMOVE MAP LINK TO SUBMERGED MAP PRIOR TO RELEASE
 - Wands of digging, and place one in Kew's pile.
 - Additional tile types: kelp (edible), aquatic vegetation, seabed.

@@ -1,7 +1,9 @@
 #include "ClassManager.hpp"
+#include "Conversion.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
 #include "DeityTextKeys.hpp"
 #include "Game.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PrayerAction.hpp"
@@ -22,15 +24,34 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
   {
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
+    MapType mt = MapType::MAP_TYPE_WORLD;
 
-    if (map && map->get_map_type() == MapType::MAP_TYPE_WORLD)
+    if (map)
     {
+      mt = map->get_map_type();
       IMessageManager& manager = MM::instance();
 
-      manager.add_new_message(StringTable::get(DeityTextKeys::PRAYER_WORLD_MAP));
-      manager.send();
+      if (mt == MapType::MAP_TYPE_WORLD)
+      {
+        manager.add_new_message(StringTable::get(DeityTextKeys::PRAYER_WORLD_MAP));
+        manager.send();
 
-      return 0;
+        return 0;
+      }
+      else
+      {
+        // Is this a general map, but so far removed from the Nine that they cannot hear?
+        if (map->has_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY))
+        {
+          if (String::to_bool(map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY)))
+          {
+            manager.add_new_message(StringTable::get(DeityTextKeys::PRAYER_UNHEARD));
+            manager.send();
+            
+            return get_action_cost_value(creature);
+          }
+        }
+      }
     }
 
     // Say the prayer.
