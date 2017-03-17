@@ -524,6 +524,12 @@ void Map::set_properties(const map<string, string>& new_properties)
   properties = new_properties;
 }
 
+bool Map::has_property(const string& prop) const
+{
+  auto p_it = properties.find(prop);
+  return p_it != properties.end();
+}
+
 string Map::get_property(const string& prop) const
 {
   string val;

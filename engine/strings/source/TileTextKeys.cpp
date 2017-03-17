@@ -64,6 +64,9 @@ const string TileTextKeys::TILE_DESC_EARTH          = "TILE_DESC_EARTH";
 const string TileTextKeys::TILE_DESC_SEWER_COMPLEX  = "TILE_DESC_SEWER_COMPLEX";
 const string TileTextKeys::TILE_DESC_SEWER          = "TILE_DESC_SEWER";
 const string TileTextKeys::TILE_DESC_SHRINE         = "TILE_DESC_SHRINE";
+const string TileTextKeys::TILE_DESC_SEABED         = "TILE_DESC_SEABED";
+const string TileTextKeys::TILE_DESC_KELP           = "TILE_DESC_KELP";
+const string TileTextKeys::TILE_DESC_AQUATIC_VEGETATION = "TILE_DESC_AQUATIC_VEGETATION";
 
 const string TileTextKeys::TILE_EXTRA_DESCRIPTION_SKY_SHRINE    = "TILE_EXTRA_DESCRIPTION_SKY_SHRINE";
 const string TileTextKeys::TILE_EXTRA_DESCRIPTION_WORLD_SHRINE  = "TILE_EXTRA_DESCRIPTION_WORLD_SHRINE";

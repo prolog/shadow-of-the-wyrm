@@ -112,6 +112,7 @@ class Map : public ISerializable
     void set_property(const std::string& prop, const std::string& value);
     bool remove_property(const std::string& prop);
     void set_properties(const std::map<std::string, std::string>& new_properties);
+    bool has_property(const std::string& prop) const;
     std::string get_property(const std::string& prop) const;
     std::map<std::string, std::string> get_properties() const;
 

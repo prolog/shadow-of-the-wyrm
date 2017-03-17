@@ -43,6 +43,9 @@ class MapProperties
     // Can we teleport?
     static const std::string MAP_PROPERTIES_CANNOT_TELEPORT;
 
+    // Are we in another plane of existence where the Nine hold no sway?
+    static const std::string MAP_PROPERTIES_CANNOT_PRAY;
+
     // What is the creature generation rate?
     static const std::string MAP_PROPERTIES_CREATURE_GENERATION_RATE;
 

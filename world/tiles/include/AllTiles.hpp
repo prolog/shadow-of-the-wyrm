@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AirTile.hpp"
+#include "AquaticVegetationTile.hpp"
 #include "BarracksTile.hpp"
 #include "BarrowTile.hpp"
 #include "BeachTile.hpp"
@@ -34,6 +35,7 @@
 #include "RockTile.hpp"
 #include "ScrubTile.hpp"
 #include "SeaTile.hpp"
+#include "SeabedTile.hpp"
 #include "SewerComplexTile.hpp"
 #include "SewerTile.hpp"
 #include "ShoalsTile.hpp"

@@ -762,12 +762,14 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\settlements\include\SettlementTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\WalledSettlementGenerator.hpp" />
+    <ClInclude Include="engine\generators\tile_config\include\AquaticVegetationTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\CairnTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\DefaultTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\EvergreenTreeTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\FieldTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\FruitTreeTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\ITileConfiguration.hpp" />
+    <ClInclude Include="engine\generators\tile_config\include\KelpTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\TileConfigurationFactory.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\TreeTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\WeedsTileConfiguration.hpp" />
@@ -1272,6 +1274,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\tiles\features\include\WheelAndLoom.hpp" />
     <ClInclude Include="world\tiles\include\AirTile.hpp" />
     <ClInclude Include="world\tiles\include\AllTiles.hpp" />
+    <ClInclude Include="world\tiles\include\AquaticVegetationTile.hpp" />
     <ClInclude Include="world\tiles\include\BarracksTile.hpp" />
     <ClInclude Include="world\tiles\include\BarrowTile.hpp" />
     <ClInclude Include="world\tiles\include\BeachTile.hpp" />
@@ -1308,6 +1311,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\tiles\include\RockTile.hpp" />
     <ClInclude Include="world\tiles\include\RockyEarthTile.hpp" />
     <ClInclude Include="world\tiles\include\ScrubTile.hpp" />
+    <ClInclude Include="world\tiles\include\SeabedTile.hpp" />
     <ClInclude Include="world\tiles\include\SeaTile.hpp" />
     <ClInclude Include="world\tiles\include\SewerComplexTile.hpp" />
     <ClInclude Include="world\tiles\include\SewerTile.hpp" />
@@ -1617,6 +1621,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\AquaticVegetationTileConfiguration.cpp" />
     <ClCompile Include="engine\items\source\HandsRequiredItemFilter.cpp" />
     <ClCompile Include="engine\items\source\ItemGenerationConstraints.cpp" />
     <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp" />
@@ -4021,6 +4026,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\WheelAndLoom.cpp" />
     <ClCompile Include="world\tiles\source\AirTile.cpp" />
+    <ClCompile Include="world\tiles\source\AquaticVegetationTile.cpp" />
     <ClCompile Include="world\tiles\source\BarracksTile.cpp" />
     <ClCompile Include="world\tiles\source\BarrowTile.cpp" />
     <ClCompile Include="world\tiles\source\BeachTile.cpp" />
@@ -4057,6 +4063,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\tiles\source\RockTile.cpp" />
     <ClCompile Include="world\tiles\source\RockyEarthTile.cpp" />
     <ClCompile Include="world\tiles\source\ScrubTile.cpp" />
+    <ClCompile Include="world\tiles\source\SeabedTile.cpp" />
     <ClCompile Include="world\tiles\source\SeaTile.cpp" />
     <ClCompile Include="world\tiles\source\SewerComplexTile.cpp" />
     <ClCompile Include="world\tiles\source\SewerTile.cpp" />
@@ -4078,6 +4085,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\AquaticVegetationTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\BarracksTile_test.cpp">
@@ -4324,6 +4338,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SeabedTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\SeaTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

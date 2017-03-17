@@ -74,7 +74,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_BERRIES;
     static const std::string ITEM_ID_KELP;
 
-    // Herbs
+    // Herbs and plants
     static const std::string ITEM_ID_WHITE_BASIL; // cures poison
     static const std::string ITEM_ID_STONEFLOWER; // cures petrification
     static const std::string ITEM_ID_VERBENA; // increases AP

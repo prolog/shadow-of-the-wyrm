@@ -25313,6 +25313,18 @@
 				<Colour>5</Colour>
 			</Text>
 		</ShrineTile>
+		<SeabedTile>
+			<Text>
+				<Symbol>.</Symbol>
+				<Colour>4</Colour>
+			</Text>
+		</SeabedTile>
+		<AquaticVegetationTile>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>2</Colour>
+			</Text>
+		</AquaticVegetationTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">
@@ -27083,11 +27095,12 @@
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Cold>0.20</Cold>
-					<Arcane>0.20</Arcane>
 				</Resistances>
 				<StatusAilments>
 					<Status>_wb</Status>
 				</StatusAilments>
+				<Evade>8</Evade>
+				<Soak>1</Soak>
 			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
