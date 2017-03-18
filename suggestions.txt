@@ -1,5 +1,6 @@
 Me:
-- Set map-switch to Telari via Ead
+- Special spells for The Sorceror
+- Special witchling spell(s?)
 - Drowning damage should be 10% of total HP
 - Ensure no-prayer flag is set for the Cloudspire.
 - REMOVE MAP LINK TO SUBMERGED MAP PRIOR TO RELEASE
@@ -176,3 +177,8 @@ Esran:
 - Once monsters are smarter, create spells that allow hitting monsters
   past walls.
 - Sewer/dungeons: when random, prompt for "descend to what depth (ft)?
+
+kain:
+- corpse weights: mole same as dragon
+- autopickup options
+- multi-item drop

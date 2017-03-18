@@ -41,6 +41,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New poem fragment for the title screen.
 
+- New non-playable race: Elysian (builder).
+
 - New spells/spellbooks: mapping (Cantrips).
 
 - New items: scroll of mapping, scroll of monster summoning.
@@ -49,7 +51,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New traps: monster trap.
 
-- New creatures: drowned shade, cockatrice.
+- New creatures: drowned shade, cockatrice, The Sorceror.
 
 - Bug fixes: 
 

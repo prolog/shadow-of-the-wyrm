@@ -36,7 +36,15 @@
 		<Col>67</Col>
 	</PlayerStart>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<Coord>
+					<Row>15</Row>
+					<Col>67</Col>
+				</Coord>
+				<ID>the_sorceror</ID>
+			</Placement>
+		</Creatures>
 		<Items/>
 	</InitialPlacements>
 	<Exits/>

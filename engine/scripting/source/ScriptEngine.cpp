@@ -95,6 +95,7 @@ void ScriptEngine::set_constants(lua_State* ls)
 
   lua_exportConst(ls, CITEM_FILTER_NONE);
   lua_exportConst(ls, CITEM_FILTER_UNIDENTIFIED);
+  lua_exportConst(ls, CITEM_FILTER_ARTIFACT);
 
   lua_exportConst(ls, CSKILL_GENERAL_ARCHERY);
   lua_exportConst(ls, CSKILL_GENERAL_AWARENESS);
