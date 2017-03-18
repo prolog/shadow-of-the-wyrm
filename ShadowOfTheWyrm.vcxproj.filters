@@ -3993,6 +3993,9 @@
     <ClInclude Include="engine\generators\tile_config\include\AquaticVegetationTileConfiguration.hpp">
       <Filter>Header Files\engine\generators\tile_config\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\items\include\ArtifactItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7891,6 +7894,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\tile_config\source\AquaticVegetationTileConfiguration.cpp">
       <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ArtifactItemFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

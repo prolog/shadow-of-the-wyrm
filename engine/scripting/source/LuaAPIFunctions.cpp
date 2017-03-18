@@ -294,6 +294,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_in_shop", is_in_shop);
   lua_register(L, "is_item_unpaid", is_item_unpaid);
   lua_register(L, "load_map", load_map);
+  lua_register(L, "has_artifact_in_inventory", has_artifact_in_inventory);
 }
 
 // Lua API helper functions
@@ -4937,6 +4938,44 @@ int load_map(lua_State* ls)
   }
 
   lua_pushboolean(ls, loaded_map);
+  return 1;
+}
+
+int has_artifact_in_inventory(lua_State* ls)
+{
+  bool has_artifact = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      IInventoryPtr inv = creature->get_inventory();
+      
+      if (inv != nullptr)
+      {
+        const list<ItemPtr> items = inv->get_items_cref();
+
+        for (ItemPtr i : items)
+        {
+          if (i && i->get_artifact())
+          {
+            has_artifact = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to has_artifact_in_inventory");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, has_artifact);
   return 1;
 }
 
