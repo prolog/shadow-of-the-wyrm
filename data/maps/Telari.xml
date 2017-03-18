@@ -11,18 +11,18 @@
 	<MapType>3</MapType>
 	<Tiles>
 	SSbbbbabbbbbbbbbabbbbbbbabbbbbbbbbbbbbbbbbbbbbabSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSbbbbbbbabbbbbbbbbbabbbbbbbbbbbbabbbbbaabbbbbbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSSbbbbbbbbba######bbbbbbbbbbbbbbbbbbbbbbbbbabbbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSSSSbbbbb####....####bbbbbabbbbbbabbbbbbbabbbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSSSSbb###...........####bbababbbbbbbbbababbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+	SSSbbbbbbbabbbbbbbbbbabbbbbbbbbbbbabbbbbaabbbbbbbSSSSSSSbbbSSSSSSSSSSSSSSSbbSSSS
+	SSSSbbbbbbbbba######bbbbbbbbbbbbbbbbbbbbbbbbbabbbbSSSSSSSbbbbbbbSSSSSSSSSSbbbbSS
+	SSSSSSbbbbb####....####bbbbbabbbbbbabbbbbbbabbbbSSSSSSSSSSbbbbbbbSSSSSSSSSSbbbbS
+	SSSSSSbb###...........####bbababbbbbbbbbababbbSSSSSSSSSSSSSSbbbbSSSSSSSSSSSSSbbS
 	SSSSSSbb#......DDDD......#bbbbbbbbabbababbbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSSSbbb#......DDDD......#abbbaabbbbbbbbbbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSSbbbb#......DDDD......#bbbbbbbbbbbbbbbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSSSSSb####..........####bbbbbbbbbbbbbbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSSSSbbbbb####....####abbbabaabbbbbabbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSSSSSbbbbbba##..##babbbbbbbbbbbbbaabbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-	SSSSSSSSbbbbbbbbbabbbbbbbabbbbbbabbbbbSSSSSSSSSSSSSSSSSSSSSbbbbbbbbbbbbSSSSSSSSS
-	SSSSSSbbbbbbbaabbbbbbbbbbbbbaabbbbbbbSSSSSSSSSSSSSSSSSSSbbabb#bb##b###abbbbbSSSS
+	SSSSSbbb#......DDDD......#abbbaabbbbbbbbbbbSSSSSSSSSSSSSbbbSSSSSSSSSSSSSbbSSSSSS
+	SSSSbbbb#......DDDD......#bbbbbbbbbbbbbbbbSSSSSSSSSSSSSSbbSSSSSSSSSSSSSSbSSSSSSS
+	SSSbSSSb####..........####bbbbbbbbbbbbbbbSSSSSSSSSSSSSSbbSSSSSSSSSSSSSSbbSSSSSSS
+	SSSSbbbbbbb####....####abbbabaabbbbbabbbSSSSSSSSSSSSSbbbbSSSSSSSSSSSSSSbSSSSSSSS
+	SSSbSSSbbbbbba##..##babbbbbbbbbbbbbaabbSSSSSSSSSSSSSbbbSSSSSSSSSSSSSSSSSSSSSSSSS
+	SSbSSSSSbbbbbbbbbabbbbbbbabbbbbbabbbbbSSSSSSSSSSSSSSSSSSSSSbbbbbbbbbbbbSSSSSSSSS
+	SSbbSSbbbbbbbaabbbbbbbbbbbbbaabbbbbbbSSSSSSSSSSSSSSSSSSSbbabb#bb##b###abbbbbSSSS
 	SSSSSSSbbbbbbbbbbbbabbbbbbbbbbbbbbbbbbSSSSSSSSSSSSSSSSSbbbbb#........#bbbababSSS
 	SSSSSSSSbbbabbbbabbbbbbbbbbbbbabbbbbbbbbbbabbbbbbbbbbbbbabbbb........bbbbbbbbbbS
 	SSSSSSSSSbbbbbbbbbbbbbbbbabbbbbbbbbbbabbbbbbbbbabbbbbbbbbbbb#........#abbSSSSSSS
@@ -32,15 +32,58 @@
 	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 	</Tiles>
 	<PlayerStart>
-		<Row>0</Row>
-		<Col>0</Col>
+		<Row>14</Row>
+		<Col>67</Col>
 	</PlayerStart>
 	<InitialPlacements>
 		<Creatures/>
 		<Items/>
 	</InitialPlacements>
 	<Exits/>
-	<Features/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>13</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>20</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>8</Row>
+				<Col>13</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>8</Row>
+				<Col>20</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
+				<Col>10</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
+				<Col>23</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+	</Features>
 	<Properties>
 		<Property>
 			<Name>MAP_PROPERTIES_CANNOT_PRAY</Name>

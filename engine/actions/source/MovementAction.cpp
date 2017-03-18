@@ -9,6 +9,7 @@
 #include "FeatureAction.hpp"
 #include "ForagablesCalculator.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
@@ -676,21 +677,7 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
 
 void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
 {
-  Game& game = Game::instance();
-  
-  if (new_map)
-  {
-    // Remove the creature from its present tile, and from the temporary
-    // vector of creatures as well.
-    CreaturePtr current_creature = current_tile->get_creature();
-    MapUtils::remove_creature(old_map, current_creature);
-
-    MapUtils::place_creature_on_previous_location(new_map, current_creature, current_creature->get_id());
-
-    // Set the new map to be loaded in the next iteration of the game loop.
-    game.set_current_map(new_map);
-    game.reload_map();    
-  }
+  GameUtils::move_to_new_map(current_tile, old_map, new_map);
 }
 
 void MovementAction::handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit)

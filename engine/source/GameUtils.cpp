@@ -71,6 +71,24 @@ void GameUtils::add_new_creature_to_map(Game& game, CreaturePtr new_creature, Ma
   }
 }
 
+void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
+{
+  if (current_tile != nullptr && old_map != nullptr && new_map != nullptr)
+  {
+    // Remove the creature from its present tile, and from the temporary
+    // vector of creatures as well.
+    CreaturePtr current_creature = current_tile->get_creature();
+    MapUtils::remove_creature(old_map, current_creature);
+
+    MapUtils::place_creature_on_previous_location(new_map, current_creature, current_creature->get_id());
+
+    // Set the new map to be loaded in the next iteration of the game loop.
+    Game& game = Game::instance();
+    game.set_current_map(new_map);
+    game.reload_map();
+  }
+}
+
 // Check to see if a particular creature exists within the player's view map.
 bool GameUtils::is_creature_in_player_view_map(Game& game, const string& creature_id)
 {
