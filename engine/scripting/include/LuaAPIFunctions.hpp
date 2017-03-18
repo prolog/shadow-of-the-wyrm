@@ -164,6 +164,7 @@ int get_sale_price(lua_State* ls);
 int set_item_unpaid(lua_State* ls);
 int is_in_shop(lua_State* ls);
 int is_item_unpaid(lua_State* ls);
+int load_map(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

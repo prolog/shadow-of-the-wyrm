@@ -293,6 +293,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_item_unpaid", set_item_unpaid);
   lua_register(L, "is_in_shop", is_in_shop);
   lua_register(L, "is_item_unpaid", is_item_unpaid);
+  lua_register(L, "load_map", load_map);
 }
 
 // Lua API helper functions
@@ -4908,6 +4909,34 @@ int is_item_unpaid(lua_State* ls)
   }
 
   lua_pushboolean(ls, is_unpaid);
+  return 1;
+}
+
+int load_map(lua_State* ls)
+{
+  bool loaded_map = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string map_id = lua_tostring(ls, 2);
+
+    Game& game = Game::instance();
+    CreaturePtr creature = get_creature(creature_id);
+    MapPtr old_map = game.get_current_map();
+    MapPtr new_map = game.get_map_registry_ref().get_map(map_id);
+    TilePtr creature_tile = MapUtils::get_tile_for_creature(old_map, creature);
+    GameUtils::move_to_new_map(creature_tile, old_map, new_map);
+
+    loaded_map = true;
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to load_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, loaded_map);
   return 1;
 }
 

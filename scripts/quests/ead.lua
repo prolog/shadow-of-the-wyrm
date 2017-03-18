@@ -16,6 +16,7 @@ if creature_has_status(PLAYER_ID, "_wb") then
 
   if add_confirmation_message("EAD_TELARI_TEXT9_SID") then
     add_message_with_pause("EAD_TELARI_CONFIRM_SID")
+    load_map(PLAYER_ID, "telari")
   else
     clear_and_add_message("EAD_TELARI_DENY_SID")
   end

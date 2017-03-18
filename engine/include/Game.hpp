@@ -145,6 +145,7 @@ class Game : public ISerializable
     friend class SeasonsTimeObserver;
     friend class TileSelectionAction;
     friend class ShadowOfTheWyrmEngine;
+    friend class GameUtils;
     friend class SW_Engine_Game; // unit testing
 
     Game();
