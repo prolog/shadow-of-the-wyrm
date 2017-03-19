@@ -39,6 +39,69 @@
 		<Creatures>
 			<Placement>
 				<Coord>
+					<Row>0</Row>
+					<Col>74</Col>
+				</Coord>
+				<ID>comet_jellyfish</ID>
+			</Placement>
+			<Placement>
+				<Coord>
+					<Row>1</Row>
+					<Col>73</Col>
+				</Coord>
+				<ID>comet_jellyfish</ID>
+			</Placement>
+			<Placement>
+				<Coord>
+					<Row>1</Row>
+					<Col>76</Col>
+				</Coord>
+				<ID>comet_jellyfish</ID>
+			</Placement>
+			<Placement>
+				<Coord>
+					<Row>2</Row>
+					<Col>71</Col>
+				</Coord>
+				<ID>comet_jellyfish</ID>
+			</Placement>
+			<Placement>
+				<Coord>
+					<Row>2</Row>
+					<Col>77</Col>
+				</Coord>
+				<ID>comet_jellyfish</ID>
+			</Placement>
+			<Placement>
+				<Coord>
+					<Row>4</Row>
+					<Col>79</Col>
+				</Coord>
+				<ID>comet_jellyfish</ID>
+			</Placement>
+			<Placement>
+				<Coord>
+					<Row>5</Row>
+					<Col>75</Col>
+				</Coord>
+				<ID>comet_jellyfish</ID>
+			</Placement>
+			<Placement>
+				<Coord>
+					<Row>5</Row>
+					<Col>77</Col>
+				</Coord>
+				<ID>comet_jellyfish</ID>
+			</Placement>
+			<Placement>
+				<Coord>
+					<Row>2</Row>
+					<Col>76</Col>
+				</Coord>
+				<ID>the_sentry</ID>
+			</Placement>
+			<Placement>
+				<Coord>
 					<Row>15</Row>
 					<Col>67</Col>
 				</Coord>
