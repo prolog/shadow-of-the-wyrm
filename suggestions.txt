@@ -1,6 +1,8 @@
 Me:
 - Elysians should be water-breathing.  Add race-based support for Breathes,
   and set it before the creature override.
+- Test The Namer's script: naming stone, and default after.  Make it a
+  quest!
 - Special spells for The Sorceror
 - Special witchling spell(s?)
 - Drowning damage should be 10% of total HP
