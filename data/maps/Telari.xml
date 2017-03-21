@@ -107,6 +107,13 @@
 				</Coord>
 				<ID>the_sorceror</ID>
 			</Placement>
+			<Placement>
+				<Coord>
+					<Row>5</Row>
+					<Col>24</Col>
+				</Coord>
+				<ID>the_namer</ID>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>

@@ -47,12 +47,12 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New items: scroll of mapping, scroll of monster summoning.
 
-- New artifacts: Ring of Aran Fee.
+- New artifacts: Ring of Aran Fee, naming stone.
 
 - New traps: monster trap.
 
 - New creatures: drowned shade, cockatrice, The Sorceror, The Sentry,
-  comet jellyfish.
+  comet jellyfish, The Namer.
 
 - Bug fixes: 
 

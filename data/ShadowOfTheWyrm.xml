@@ -23871,6 +23871,7 @@
 		</Creature>
 		<Creature id="the_sorceror">
 			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>THE_SORCEROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_SORCEROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THE_SORCEROR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -23887,10 +23888,10 @@
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
-				<DangerLevel>50</DangerLevel>
+				<DangerLevel>60</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>50</NumDice>
+					<NumDice>60</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>200000</Exp>
@@ -23909,6 +23910,7 @@
 		</Creature>
 		<Creature id="the_sentry">
 			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>THE_SENTRY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_SENTRY_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THE_SENTRY_TEXT_DETAILS_SID</TextDetailsSID>
@@ -23925,10 +23927,10 @@
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
-				<DangerLevel>50</DangerLevel>
+				<DangerLevel>60</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>50</NumDice>
+					<NumDice>60</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>200000</Exp>
@@ -23940,6 +23942,46 @@
 				<Type>10</Type>
 				<EffectBonus>60</EffectBonus>
 			</Damage>
+		</Creature>
+		<Creature id="the_namer">
+			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>THE_NAMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_NAMER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_NAMER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_NAMER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>5</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_namer.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 	</Creatures>
 	<Spells>
@@ -31913,6 +31955,21 @@
 				<Value>500</Value>
 				<Weight>
 					<Pounds>3</Pounds>
+				</Weight>
+				<Artifact>1</Artifact>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Tool>
+			<Tool id="naming_stone">
+				<DescriptionSID>NAMING_STONE_SID</DescriptionSID>
+				<UsageDescriptionSID>NAMING_STONE_USAGE_SID</UsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
