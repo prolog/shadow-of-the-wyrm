@@ -37,6 +37,10 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   his strange, magical powers will send the player to Telari, the
   Cloudspire.  These details are hinted at by Cadlind and by Kew.
 
+- Added the ability for races to have the Water Breathing status, similar
+  to what already exists for flying and incorporeal.  Set this for
+  Elysians.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.

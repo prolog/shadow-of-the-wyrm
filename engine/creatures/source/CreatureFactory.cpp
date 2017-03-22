@@ -237,6 +237,14 @@ CreaturePtr CreatureFactory::create_by_race_and_class
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
 
+    if (race->get_water_breathing().get_base() == true)
+    {
+      Modifier m;
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, {StatusIdentifiers::STATUS_ID_WATER_BREATHING, true, 1, ""});
+      m.set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, true);
+      mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+    }
+
     // Resistances
     set_initial_resistances(creaturep, race, char_class);
 

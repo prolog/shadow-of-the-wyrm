@@ -1,10 +1,13 @@
 Me:
-- Elysians should be water-breathing.  Add race-based support for Breathes,
-  and set it before the creature override.
+- Elysians should breathe both air and water.  Add race-based support for 
+  Breathes, and set it before the creature override.
 - Test The Namer's script: naming stone, and default after.  Make it a
   quest!
+- The Smith (halfway up) should take three artifact weapons and create a 
+  sword based on them.
 - Special spells for The Sorceror
-- Special witchling spell(s?)
+- Special witchling spell(s?) from the Conjurer, small number of castings. 
+  If AP < spell AP, should set AP.
 - Drowning damage should be 10% of total HP
 - Ensure no-prayer flag is set for the Cloudspire.
 - REMOVE MAP LINK TO SUBMERGED MAP PRIOR TO RELEASE
@@ -186,3 +189,4 @@ kain:
 - corpse weights: mole same as dragon
 - autopickup options
 - multi-item drop
+- after identification, re-group items
