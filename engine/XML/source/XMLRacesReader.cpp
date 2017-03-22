@@ -120,6 +120,10 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     BoolStatistic flying_stat(flying);
     race->set_flying(flying_stat);
 
+    bool water_breathing = XMLUtils::get_child_node_bool_value(race_node, "WaterBreathing", false);
+    BoolStatistic water_breathing_stat(water_breathing);
+    race->set_water_breathing(water_breathing_stat);
+
     parse_race_initial_modifiers(race, initial_modifiers_node);
     parse_initial_deity_ids(race, initial_deity_ids_node);
     parse_race_resistances(race, resistances_node);

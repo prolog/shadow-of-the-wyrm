@@ -364,6 +364,16 @@ BoolStatistic Race::get_flying() const
   return flying;
 }
 
+void Race::set_water_breathing(const BoolStatistic& new_water_breathing)
+{
+  water_breathing = new_water_breathing;
+}
+
+BoolStatistic Race::get_water_breathing() const
+{
+  return water_breathing;
+}
+
 void Race::set_experience_multiplier(const float new_experience_multiplier)
 {
   experience_multiplier = new_experience_multiplier;

@@ -248,6 +248,7 @@
 			<xs:element name="Corporeal" type="xs:boolean"/>
 			<xs:element name="Undead" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="Flying" type="xs:boolean"/>
+			<xs:element name="WaterBreathing" type="xs:boolean" minOccurs="0"/>
 			<xs:element ref="tns:RaceInitialDeities"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>

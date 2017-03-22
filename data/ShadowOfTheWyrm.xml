@@ -809,6 +809,7 @@
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
 			<Flying>0</Flying>
+			<WaterBreathing>1</WaterBreathing>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
