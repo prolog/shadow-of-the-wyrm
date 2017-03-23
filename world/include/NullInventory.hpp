@@ -7,6 +7,9 @@ class NullInventory : public IInventory
   public:
     bool operator==(const IInventory& inv) const override;
 
+    void mark_for_restack() override;
+    bool get_marked_for_restack() const override;
+
     bool add_front(ItemPtr new_item) override;
     bool add(ItemPtr new_item) override;
     void merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) override;

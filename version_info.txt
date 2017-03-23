@@ -16,6 +16,10 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
   - Cave In: part of the inner portion of the room is collapsed rock.
 
+- The identify and bless effects now re-group inventory items after
+  invocation, to avoid ending up with stacks of the same item that have 
+  been picked up and identified or blessed at different times (kain).
+
 - New effect type, water breathing.  This allows boatless travel over
   water within submerged tiles.  As long as a creature has this status
   it cannot drown.

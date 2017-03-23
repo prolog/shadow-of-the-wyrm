@@ -104,6 +104,8 @@ bool UncursingEffect::uncurse(CreaturePtr creature, const UncursingEffectType ue
         }
       }
     }
+ 
+    creature->get_inventory()->mark_for_restack();
   }
 
   return uncursed;

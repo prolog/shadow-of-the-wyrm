@@ -865,6 +865,24 @@ void Creature::set_items_paid()
   }
 }
 
+// After a creature identifies items, or blesses something, or whatever, the
+// inventory needs to be restacked so that items form the appropriate groups.
+void Creature::restack_items()
+{
+  IInventoryPtr new_items = std::make_shared<Inventory>();
+  list<ItemPtr> raw_items = inventory->get_items_ref();
+
+  for (ItemPtr i : raw_items)
+  {
+    if (i != nullptr)
+    {
+      new_items->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+    }
+  }
+
+  inventory = new_items;
+}
+
 void Creature::set_hit_points(const Statistic& new_hit_points)
 {
   hit_points = new_hit_points;

@@ -48,7 +48,7 @@ bool BlessEffect::bless(CreaturePtr creature, const BlessEffectType bless_type, 
   bool effect_identified = true;
 
   // Select an item from the equipment or inventory.
-  if (am != nullptr)
+  if (creature != nullptr && am != nullptr)
   {
     list<IItemFilterPtr> empty_list = ItemFilterFactory::create_empty_filter();
     IInventoryPtr inv = creature->get_inventory();
@@ -90,6 +90,8 @@ bool BlessEffect::bless(CreaturePtr creature, const BlessEffectType bless_type, 
           }
           break;
       }
+
+      creature->get_inventory()->mark_for_restack();
     }
   }
 

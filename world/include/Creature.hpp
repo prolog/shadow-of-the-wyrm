@@ -188,6 +188,7 @@ class Creature : public ISerializable
     uint count_items() const;
     uint get_unpaid_amount() const;
     void set_items_paid();
+    void restack_items();
     
     // Set/get point-based statistics
 

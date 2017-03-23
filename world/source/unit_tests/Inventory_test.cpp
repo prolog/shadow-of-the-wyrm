@@ -20,6 +20,7 @@ TEST(SW_World_Inventory, saveload)
   book->set_quantity(12);
 
   inv->add_front(book);
+  inv->mark_for_restack();
 
   ostringstream ss;
 
@@ -30,6 +31,7 @@ TEST(SW_World_Inventory, saveload)
   sinv2->deserialize(iss);
 
   EXPECT_TRUE(*inv == *sinv2);
+  EXPECT_TRUE(sinv2->get_marked_for_restack());
 }
 
 TEST(SW_World_Inventory, has_item_with_property)
