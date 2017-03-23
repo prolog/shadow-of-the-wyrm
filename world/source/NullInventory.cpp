@@ -14,6 +14,15 @@ bool NullInventory::operator==(const IInventory& inv) const
   return result;
 }
 
+void NullInventory::mark_for_restack()
+{
+}
+
+bool NullInventory::get_marked_for_restack() const
+{
+  return false;
+}
+
 bool NullInventory::add_front(ItemPtr item)
 {
   return false;

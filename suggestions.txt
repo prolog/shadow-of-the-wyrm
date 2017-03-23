@@ -1,6 +1,4 @@
 Me:
-- Elysians should breathe both air and water.  Add race-based support for 
-  Breathes, and set it before the creature override.
 - Test The Namer's script: naming stone, and default after.  Make it a
   quest!
 - The Smith (halfway up) should take three artifact weapons and create a 
@@ -8,12 +6,9 @@ Me:
 - Special spells for The Sorceror
 - Special witchling spell(s?) from the Conjurer, small number of castings. 
   If AP < spell AP, should set AP.
-- Drowning damage should be 10% of total HP
 - Ensure no-prayer flag is set for the Cloudspire.
-- REMOVE MAP LINK TO SUBMERGED MAP PRIOR TO RELEASE
 - Wands of digging, and place one in Kew's pile.
-- Additional tile types: kelp (edible), aquatic vegetation, seabed.
-- More special terrain rooms, and then slightly lower the probability so
+- More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Crafting room: wheel and loom, tannery.
 - Generate loom, tanneries in random villages.

@@ -50,3 +50,12 @@ TEST(SW_World_NullInventory, count_items)
   NullInventory ni;
   EXPECT_EQ(0, ni.count_items());
 }
+
+TEST(SW_World_NullInventory, mark_is_useless)
+{
+  NullInventory ni;
+
+  ni.mark_for_restack();
+
+  EXPECT_FALSE(ni.get_marked_for_restack());
+}

@@ -95,5 +95,12 @@ void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
     ResistancesCalculator rc;
     Resistances resists = rc.calculate_resistances(c, rm.get_race(c->get_race_id()), cm.get_class(c->get_class_id()));
     c->set_resistances(resists);
+
+    // Rejiggle items into neater piles, if necessary
+    IInventoryPtr inv = c->get_inventory();
+    if (inv != nullptr && inv->get_marked_for_restack())
+    {
+      c->restack_items();
+    }
   }
 }
