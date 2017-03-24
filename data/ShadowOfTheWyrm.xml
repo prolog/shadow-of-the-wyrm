@@ -23984,6 +23984,46 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="the_worldsinger">
+			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>THE_WORLDSINGER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_WORLDSINGER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_WORLDSINGER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_WORLDSINGER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>6</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_worldsinger.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">

@@ -114,6 +114,13 @@
 				</Coord>
 				<ID>the_namer</ID>
 			</Placement>
+			<Placement>
+				<Coord>
+					<Row>5</Row>
+					<Col>9</Col>
+				</Coord>
+				<ID>the_worldsinger</ID>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>
