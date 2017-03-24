@@ -1,4 +1,6 @@
 Me:
+- Single user mode off
+- Remove the SaveConverter project stuff
 - Test The Namer's script: naming stone, and default after.  Make it a
   quest!
 - The Smith (halfway up) should take three artifact weapons and create a 
@@ -184,4 +186,6 @@ kain:
 - corpse weights: mole same as dragon
 - autopickup options
 - multi-item drop
-- after identification, re-group items
+- way to see resists on item without equipping
+- setting to ignore username on savefiles
+- Zapped wand moves to end of inventory?

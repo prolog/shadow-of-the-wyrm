@@ -20,6 +20,12 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   invocation, to avoid ending up with stacks of the same item that have 
   been picked up and identified or blessed at different times (kain).
 
+- Added a "single_user_mode" to bypass username verification of savefiles.
+  This is off by default.  If you want to use other people's savefiles
+  (passing games around, etc) turn the setting on.  The username who last
+  saved the savefile is always maintained, so you can later turn it back
+  on if needed.
+
 - New effect type, water breathing.  This allows boatless travel over
   water within submerged tiles.  As long as a creature has this status
   it cannot drown.
@@ -66,6 +72,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
   - The water in Stonewall and Wintersea Keep was marked as river, and
     not sea.
+
+  - When the "prompt_for_character_dump_on_exit" setting was set to
+    false, savefiles were not being deleted.
 
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.

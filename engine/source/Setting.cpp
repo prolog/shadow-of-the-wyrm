@@ -35,4 +35,5 @@ const string Setting::USERNAME_IS_CHARACTER_NAME = "username_is_character_name";
 const string Setting::MAX_CHARACTERS_PER_USER = "max_characters_per_user";
 const string Setting::DISPLAY = "max_characters_per_user";
 const string Setting::REMOVE_LOGS_DAYS_OLD = "remove_logs_days_old";
+const string Setting::SINGLE_USER_MODE = "single_user_mode";
 

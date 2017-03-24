@@ -748,17 +748,17 @@ void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions, cons
 
       ExitGameAction ega;
       ega.create_dump_if_necessary(manager, &actions, creature);
-
-      if (delete_savefile)
-      {
-        string current_savefile = game.get_current_loaded_savefile();
-
-        if (!current_savefile.empty())
-        {
-          Serialization::delete_savefile(current_savefile);
-        }
-      }
     }
+
+    if (delete_savefile)
+    {
+      string current_savefile = game.get_current_loaded_savefile();
+
+      if (!current_savefile.empty())
+      {
+        Serialization::delete_savefile(current_savefile);
+      }
+    }    
   }
 }
 

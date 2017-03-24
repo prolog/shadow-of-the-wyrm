@@ -25,6 +25,22 @@ ActionCostValue ExitGameAction::save(CreaturePtr creature) const
   Game& game = Game::instance();
   game.set_check_scores(false);
 
+  // We might be playing in single user mode.  If we are, and if
+  // we're using another user's savefile, we need to delete
+  // it before saving.  Otherwise, there will be two savefiles:
+  //
+  // - The original, whose filename is hashed from the first user's username
+  // - A new one, whose filename is hashed from the current user's username
+  //
+  // If we're playing in regular multi-user mode, this will just
+  // delete the savefile, and then re-create it.
+  string current_savefile = game.get_current_loaded_savefile();
+
+  if (!current_savefile.empty())
+  {
+    Serialization::delete_savefile(current_savefile);
+  }
+
   Serialization::save(creature);
   quit(creature, false);
 
