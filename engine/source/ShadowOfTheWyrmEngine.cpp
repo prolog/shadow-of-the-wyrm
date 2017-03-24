@@ -574,6 +574,8 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
   Settings& settings = game.get_settings_ref();
   string max_chars = settings.get_setting(Setting::MAX_CHARACTERS_PER_USER);
   bool username_is_character_name = String::to_bool(settings.get_setting(Setting::USERNAME_IS_CHARACTER_NAME));
+  bool single_user_mode = settings.get_setting_as_bool(Setting::SINGLE_USER_MODE);
+
   int num_allowed = -1;
 
   if (!max_chars.empty())
@@ -590,7 +592,7 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
   {
     // Get a list of savefiles for the user, and then see if the limit's been
     // reached, adding an alert if it has.
-    vector<pair<string, string>> savefile_details = Serialization::get_save_file_names();
+    vector<pair<string, string>> savefile_details = Serialization::get_save_file_names(single_user_mode);
     size_t num_savefiles = savefile_details.size();
 
     if (num_savefiles >= static_cast<size_t>(num_allowed) || (num_savefiles > 0 && username_is_character_name))

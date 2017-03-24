@@ -28,6 +28,7 @@ class Setting
     static const std::string MAX_CHARACTERS_PER_USER;
     static const std::string DISPLAY;
     static const std::string REMOVE_LOGS_DAYS_OLD;
+    static const std::string SINGLE_USER_MODE;
 
   protected:
     Setting();
