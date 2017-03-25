@@ -1,8 +1,7 @@
 Me:
-- Single user mode off
-- Remove the SaveConverter project stuff
-- Test The Namer's script: naming stone, and default after.  Make it a
-  quest!
+- Skill that affects AP regeneration (Magic?).
+- Within the tower: The Smith, The Armourer, The Conjurer.
+- The Namer's script: what happens after.
 - The Smith (halfway up) should take three artifact weapons and create a 
   sword based on them.
 - Special spells for The Sorceror

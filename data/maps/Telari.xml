@@ -121,6 +121,13 @@
 				</Coord>
 				<ID>the_worldsinger</ID>
 			</Placement>
+			<Placement>
+				<Coord>
+					<Row>8</Row>
+					<Col>16</Col>
+				</Coord>
+				<ID>the_speaker</ID>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>
