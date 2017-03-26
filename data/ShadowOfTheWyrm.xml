@@ -25623,6 +25623,12 @@
 				<Colour>2</Colour>
 			</Text>
 		</AquaticVegetationTile>
+		<FloatingTowerTile>
+			<Text>
+				<Symbol>|</Symbol>
+				<Colour>8</Colour>
+			</Text>
+		</FloatingTowerTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">

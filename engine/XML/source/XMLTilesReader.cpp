@@ -1,3 +1,4 @@
+#include <boost/assert.hpp>
 #include "XMLTilesReader.hpp"
 #include "DisplayTile.hpp"
 #include "tiles.hpp"
@@ -6,68 +7,31 @@ using namespace std;
 
 vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_tiles_node)
 {
-  static_assert(TileType::TILE_TYPE_LAST == static_cast<TileType>(52), "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == static_cast<TileType>(53), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   vector<DisplayTile> tiles;
+  vector<string> tile_names = {"FieldTile", "ScrubTile", "WheatTile", "CairnTile", "TreeTile", "DesertTile", "RoadTile",
+                               "RiverTile", "SeaTile", "ShoalsTile", "DungeonTile", "RockTile", "GraveTile", "MarshTile",
+                               "ReedsTile", "HillsTile", "MountainsTile", "BeachTile", "BushTile", "WeedsTile", "SpringsTile",
+                               "ForestTile", "UpStaircaseTile", "DownStaircaseTile", "CavernTile", "VillageTile", "DungeonComplexTile",
+                               "BarracksTile", "CastleTile", "ChurchTile", "GraveyardTile", "KeepTile", "LibraryTile", "SiteOfDeathTile",
+                               "TempleTile", "DaisTile", "PierTile", "BarrowTile", "WildOrchardTile", "FruitTreeTile", "EvergreenTreeTile",
+                               "RockyEarthTile", "MineTile", "WellTile", "CryptTile", "AirTile", "EarthTile", "SewerComplexTile",
+                               "SewerTile", "ShrineTile", "SeabedTile", "AquaticVegetationTile", "FloatingTowerTile"};
+  
   vector<XMLNode> tile_nodes;
   tiles.reserve(static_cast<int>(TileType::TILE_TYPE_LAST));
 
   if (!xml_configuration_tiles_node.is_null())
   {
     // These push back items into the tile details in order, so if you're defining
-    // a new tile type, add at appropriate place!
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "FieldTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "ScrubTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "WheatTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "CairnTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "TreeTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "DesertTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "RoadTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "RiverTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "SeaTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "ShoalsTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "DungeonTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "RockTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "GraveTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "MarshTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "ReedsTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "HillsTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "MountainsTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "BeachTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "BushTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "WeedsTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "SpringsTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "ForestTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "UpStaircaseTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "DownStaircaseTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "CavernTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "VillageTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "DungeonComplexTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "BarracksTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "CastleTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "ChurchTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "GraveyardTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "KeepTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "LibraryTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "SiteOfDeathTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "TempleTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "DaisTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "PierTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "BarrowTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "WildOrchardTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "FruitTreeTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "EvergreenTreeTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "RockyEarthTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "MineTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "WellTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "CryptTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "AirTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "EarthTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "SewerComplexTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "SewerTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "ShrineTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "SeabedTile"));
-    tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "AquaticVegetationTile"));
+    // a new tile type, add at appropriate place in the vector above!
+    for (const string& tile_n : tile_names)
+    {
+      tile_nodes.push_back(XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, tile_n));
+    }
+
+    BOOST_ASSERT(tile_nodes.size() == XMLUtils::get_child_nodes(xml_configuration_tiles_node).size());
 
     for (const auto& xml_tile : tile_nodes)
     {

@@ -25,6 +25,7 @@
 #include "KeepTile.hpp"
 #include "LibraryTile.hpp"
 #include "HillsTile.hpp"
+#include "FloatingTowerTile.hpp"
 #include "MarshTile.hpp"
 #include "MineTile.hpp"
 #include "MountainsTile.hpp"

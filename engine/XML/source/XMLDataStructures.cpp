@@ -164,6 +164,41 @@ bool XMLUtils::get_node_bool_value(const XMLNode& node, const bool default_value
   return default_value;
 }
 
+vector<XMLNode> XMLUtils::get_child_nodes(const XMLNode& parent_node)
+{
+  vector<XMLNode> child_nodes;
+
+  if (!parent_node.is_null())
+  {
+    XMLNodeImplPtr internal_node = parent_node.get_node();
+
+    if (internal_node != nullptr)
+    {
+      XMLNodeListImplPtr node_list = internal_node->getChildNodes();
+
+      if (node_list != nullptr)
+      {
+        XMLSize_t child_node_size = node_list->getLength();
+
+        for (XMLSize_t i = 0; i < child_node_size; i++)
+        {
+          XMLNodeImplPtr xr_cur_child_node = node_list->item(i);
+
+          if (xr_cur_child_node != nullptr && xr_cur_child_node->getNodeType() == DOMNode::ELEMENT_NODE)
+          {
+            XMLElementImplPtr element = static_cast<XMLElementImplPtr>(xr_cur_child_node);
+            XMLNode cur_child_node(element);
+
+            child_nodes.push_back(cur_child_node);
+          }
+        }
+      }
+    }
+  }
+
+  return child_nodes;
+}
+
 string XMLUtils::get_child_node_value(const XMLNode& parent_node, const string& child_node_name)
 {
   XMLNode node = XMLUtils::get_next_element_by_local_name(parent_node, child_node_name);

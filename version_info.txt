@@ -26,6 +26,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   saved the savefile is always maintained, so you can later turn it back
   on if needed.
 
+- The Magic skill now has an impact on how quickly a creature regenerates
+  AP.
+
 - New effect type, water breathing.  This allows boatless travel over
   water within submerged tiles.  As long as a creature has this status
   it cannot drown.

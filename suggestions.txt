@@ -1,5 +1,5 @@
 Me:
-- Skill that affects AP regeneration (Magic?).
+- Breathes = 1 not being set appropriately.  See: comet jellyfish.
 - Within the tower: The Smith, The Armourer, The Conjurer.
 - The Namer's script: what happens after.
 - The Smith (halfway up) should take three artifact weapons and create a 
@@ -35,6 +35,7 @@ Me:
   are 2.
 - Allow shopkeepers to be any of the selectable races.
 - Towers/tower generators.
+- Descent into the underworld.
 - Allow shopkeepers to sell for different prices dependending on their
   race, and the buying creature's.
 - Freshwater turns to ice in winter.
