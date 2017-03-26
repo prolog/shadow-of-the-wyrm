@@ -71,10 +71,10 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // Whether the creature breathes air, or water.  Only set the value if
     // explicitly set on the creature - most things will breathe air, and some
     // races will set a number of options.
-    XMLNode breathes_node = XMLUtils::get_next_element_by_local_name(creature_node, "Breathes");
-    if (!breathes_node.is_null())
+    XMLNode breathetype_node = XMLUtils::get_next_element_by_local_name(creature_node, "BreatheType");
+    if (!breathetype_node.is_null())
     {
-      BreatheType breathes = static_cast<BreatheType>(XMLUtils::get_child_node_int_value(creature_node, "BreatheType"));
+      BreatheType breathes = static_cast<BreatheType>(XMLUtils::get_node_int_value(breathetype_node));
       creature->set_breathes(breathes);
     }
     
