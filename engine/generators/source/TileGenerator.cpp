@@ -33,7 +33,7 @@ bool TileGenerator::get_generate_items() const
 TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type, const map<string, string>& properties)
 {
   // To make it easier to remember what needs to be updated:
-  static_assert(TileType::TILE_TYPE_LAST == TileType(52), "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(53), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   TilePtr result_tile;
 
@@ -206,6 +206,8 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
     case TileType::TILE_TYPE_AQUATIC_VEGETATION:
       result_tile = std::make_shared<AquaticVegetationTile>();
       break;
+    case TileType::TILE_TYPE_FLOATING_TOWER:
+      result_tile = std::make_shared<FloatingTowerTile>();
     default:
       break;
   }

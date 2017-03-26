@@ -61,6 +61,7 @@ class TileTextKeys
     static const std::string TILE_DESC_SEABED;
     static const std::string TILE_DESC_KELP;
     static const std::string TILE_DESC_AQUATIC_VEGETATION;
+    static const std::string TILE_DESC_FLOATING_TOWER;
 
     static const std::string TILE_EXTRA_DESCRIPTION_SKY_SHRINE;
     static const std::string TILE_EXTRA_DESCRIPTION_WORLD_SHRINE;

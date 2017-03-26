@@ -17,6 +17,7 @@ uint APRegenerationCalculator::calculate_minutes_per_ap_tick(CreaturePtr creatur
     {
       multiplier *= tile->get_ap_regeneration_multiplier();
       multiplier *= get_ap_tick_willpower_multiplier(creature);
+      multiplier *= get_ap_tick_magic_multiplier(creature);
 
       FeaturePtr feature = tile->get_feature();
 
@@ -82,6 +83,23 @@ float APRegenerationCalculator::get_ap_tick_willpower_multiplier(CreaturePtr cre
 
   return mult;
 }
+
+// The Magic skill also reduces the time between ticks for AP regeneration.
+float APRegenerationCalculator::get_ap_tick_magic_multiplier(CreaturePtr creature)
+{
+  float mult = 1.0f;
+
+  if (creature != nullptr)
+  {
+    float magic_mod = static_cast<float>(creature->get_skills().get_value(SkillType::SKILL_GENERAL_MAGIC));
+    magic_mod = (magic_mod / 2) * 0.01f;
+
+    mult -= magic_mod;
+  }
+
+  return mult;
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/APRegenerationCalculator_test.cpp"

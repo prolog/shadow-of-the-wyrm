@@ -26,7 +26,7 @@ int SwimmingCalculator::calculate_maximum_swimming_time(const bool submerged, Cr
     }
 
     bool is_incorporeal = creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
-    bool can_breathe_water = std::find(breathes.begin(), breathes.end(), BreatheType::BREATHE_TYPE_WATER) != breathes.end();
+    bool can_breathe_water = creature->can_breathe(BreatheType::BREATHE_TYPE_WATER);
 
     // Spirits and water-breathers clearly can do this for a while.
     if (is_incorporeal || can_breathe_water)
