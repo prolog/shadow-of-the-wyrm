@@ -18,6 +18,7 @@
 #include "CryptGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
+#include "FloatingTowerGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "FortifiedChurchGenerator.hpp"
 #include "Game.hpp"
@@ -109,6 +110,7 @@ string generate_castle();
 string generate_sewer();
 string generate_rectangular_shrine();
 string generate_cross_shrine();
+string generate_floating_tower();
 
 void   settlement_maps();
 void   city_maps();
@@ -612,6 +614,14 @@ string generate_cross_shrine()
   return map_to_string(shrine_map);
 }
 
+string generate_floating_tower()
+{
+  GeneratorPtr ft_gen = std::make_shared<FloatingTowerGenerator>("");
+  MapPtr ft_map = ft_gen->generate();
+  cout << map_to_string(ft_map, false);
+  return map_to_string(ft_map);
+}
+
 string generate_world()
 {
   // Add inputs for parameters later!
@@ -1040,6 +1050,7 @@ void city_maps()
     cout << "8. Sewer" << endl;
     cout << "9. Rectangular Shrine" << endl;
     cout << "10. Cross Shrine" << endl;
+    cout << "11. Floating Tower" << endl;
 
     cin >> city_adjacent_map;
     
@@ -1084,6 +1095,9 @@ void city_maps()
         map = generate_cross_shrine();
         output_map(map, "cross_shrine.html");
         break;
+      case 11:
+        map = generate_floating_tower();
+        output_map(map, "floating_tower.html");
       default:
         break;
     }

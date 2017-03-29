@@ -31586,8 +31586,7 @@
 					<Symbol>!</Symbol>
 					<Colour>1</Colour>
 				</TextDetails>
-				<DangerLevel>10</DangerLevel>
-				<Rarity>1</Rarity>
+				<DangerLevel>15</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>17</Effect>
 			</Potion>			
@@ -33492,7 +33491,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_10_aim</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>

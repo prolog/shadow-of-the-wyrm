@@ -115,6 +115,7 @@ project "ShadowOfTheWyrm"
                         "cp ShadowOfTheWyrm sotw/sotw",
                         "cp -R data sotw",
                         "mkdir sotw/docs",
+                        "mkdir sotw/logs",
                         "cp docs/*.pdf sotw/docs",
                         "cp -R licenses sotw",
                         "cp -R scripts sotw",
