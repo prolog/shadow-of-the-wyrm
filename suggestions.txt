@@ -189,3 +189,13 @@ kain:
 - way to see resists on item without equipping
 - setting to ignore username on savefiles
 - Zapped wand moves to end of inventory?
+- Not notified of anything on the ground when:
+  - Displacing friendly
+  - Stopped on automove by hostile
+- Log files to log directory
+- Character dumps should include XP totals
+- Can't complete Hrimgar's Amaurosis quest
+- Carrying isn't auto-trained
+- Magic skills aren't auto-trained
+- Still get improvement messages at 100
+

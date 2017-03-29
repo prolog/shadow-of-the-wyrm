@@ -5,6 +5,7 @@
 #include "DesertGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
+#include "FloatingTowerGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "Game.hpp"
 #include "GraveyardGeneratorFactory.hpp"
@@ -213,7 +214,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     }
     case TileType::TILE_TYPE_FLOATING_TOWER:
     { 
-      generator = std::make_shared<FieldGenerator>(map_exit_id); // JCD FIXME LATER
+      generator = std::make_shared<FloatingTowerGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_UNDEFINED:

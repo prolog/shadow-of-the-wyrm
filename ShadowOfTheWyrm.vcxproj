@@ -221,6 +221,7 @@ mkdir $(OutDir)scripts
 xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
 mkdir $(OutDir)texts
 xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts
+mkdir $(OutDir)logs
 xcopy "$(ZLIB_DIR)\zlib-1.2.8\*.dll" $(OutDir)
 xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
 </Command>
@@ -267,6 +268,7 @@ mkdir $(OutDir)scripts
 xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
 mkdir $(OutDir)texts
 xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts
+mkdir $(OutDir)logs
 xcopy "$(ZLIB_DIR)\zlib-1.2.8\*.dll" $(OutDir)
 xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
 </Command>
@@ -704,6 +706,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\include\DesertGenerator.hpp" />
     <ClInclude Include="engine\generators\include\DungeonGenerator.hpp" />
     <ClInclude Include="engine\generators\include\FieldGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\FloatingTowerGenerator.hpp" />
     <ClInclude Include="engine\generators\include\ForestGenerator.hpp" />
     <ClInclude Include="engine\generators\include\Generator.hpp" />
     <ClInclude Include="engine\generators\include\GeneratorUtils.hpp" />
@@ -1610,6 +1613,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\generators\source\CrossShrineGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\FloatingTowerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
     <ClCompile Include="engine\generators\source\RectangularShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\SewerGenerator.cpp" />

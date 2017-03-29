@@ -137,9 +137,10 @@ string Log::create_filename()
   string filename_ext = ".log";
   auto now = std::chrono::system_clock::now();
   std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+
   struct tm *parts = std::localtime(&now_c);
   ostringstream filename;
-  filename << LOG_PREFIX;
+  filename << "logs/" << LOG_PREFIX;
   filename << (1900 + parts->tm_year);
 
   int mon = 1 + parts->tm_mon;
