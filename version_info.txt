@@ -57,6 +57,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - Logs now generate tidily in a "logs" subdirectory instead of cluttering
   the main directory. (kain)
 
+- Carrying now gets trained when you walk around carrying a heavy load
+  (kain).
+
 - A few items in particular (spellbook of Aim, gain attributes potion)
   have had their rarity set to Common, which will actually make them less
   likely to generate, now, as there are many common items in their class.

@@ -4002,6 +4002,9 @@
     <ClInclude Include="engine\generators\include\FloatingTowerGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureSkillMarkerChecker.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7909,6 +7912,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\FloatingTowerGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureSkillMarkerChecker.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
