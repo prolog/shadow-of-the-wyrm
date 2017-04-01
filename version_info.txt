@@ -92,6 +92,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   - Skill training messages were still being triggered when skills were
     at the maximum value (kain).
 
+  - Hrimgar's quest to slay Amaurosis could not be completed if you chose
+    not to end your game (kain).
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 

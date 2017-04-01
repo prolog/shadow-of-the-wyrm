@@ -1,3 +1,4 @@
+require('constants')
 require('quest')
 
 -- Bandit quest details
@@ -37,16 +38,31 @@ local function wyrm_start_fn()
   clear_and_add_message("HRIMGAR_WYRM_QUEST_START3_SID")
 end
 
+local function wyrm_completion_condition_fn()
+  return (get_num_creature_killed_global("end_boss") > 0)
+end
+
+local function wyrm_completion_fn()
+  add_message_with_pause("HRIMGAR_WYRM_QUEST_COMPLETE_SID")
+  add_message_with_pause("HRIMGAR_WYRM_QUEST_COMPLETE2_SID")
+  add_message_with_pause("HRIMGAR_WYRM_QUEST_COMPLETE3_SID")
+  clear_and_add_message("HRIMGAR_WYRM_QUEST_COMPLETE4_SID")
+
+  add_object_to_player_tile(CURRENCY_ID, 15000)
+
+  return true
+end
+
 wyrm_quest = Quest:new("wyrm_quest",
                        "HRIMGAR_WYRM_QUEST_TITLE_SID",
                        "HRIMGAR_SHORT_DESCRIPTION_SID",
                        "HRIMGAR_WYRM_DESCRIPTION_SID",
-                       "", -- Can't actually return after slaying the wyrm
+                       "HRIMGAR_WYRM_QUEST_COMPLETE_SID",
                        "HRIMGAR_WYRM_QUEST_REMINDER_SID",
                        truefn,
                        wyrm_start_fn,
-                       true_fn,
-                       true_fn)
+                       wyrm_completion_condition_fn,
+                       wyrm_completion_fn)
 
 if bandit_quest:execute() == false then
   if wyrm_quest:execute() == false then
