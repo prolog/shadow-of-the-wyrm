@@ -132,6 +132,7 @@ void ItemIdentifier::set_item_identified(CreaturePtr identifying_creature, ItemP
     // Fully identify this particular item.
     item->set_item_identified(true);
     item->set_status_identified(true);
+    item->set_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED, Bool::to_string(true));
 
     if (identifying_creature != nullptr)
     {
