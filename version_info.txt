@@ -64,6 +64,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   have had their rarity set to Common, which will actually make them less
   likely to generate, now, as there are many common items in their class.
 
+- Items can now be picked up automatically by item type (kain).
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.

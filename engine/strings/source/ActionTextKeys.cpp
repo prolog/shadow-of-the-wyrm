@@ -3,6 +3,7 @@
 #include "RNG.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -407,6 +408,36 @@ string ActionTextKeys::get_fletchery_message(const string& item_usage_desc_sid)
   return msg;
 }
 
+string ActionTextKeys::get_toggle_autopickup_message(const bool autopickup_value, const vector<string>& item_type_names)
+{
+  string item_types;
+
+  if (item_type_names.empty())
+  {
+    item_types = "/";
+  }
+  else
+  {
+    size_t it_sz = item_type_names.size();
+
+    for (size_t i = 0; i < it_sz; i++)
+    {
+      item_types = item_types + item_type_names.at(i);
+
+      if (i < (it_sz - 1))
+      {
+        item_types += ", ";
+      }
+    }
+  }
+
+  string msg = StringTable::get(ACTION_TOGGLE_AUTOPICKUP);
+  boost::replace_first(msg, "%s1", StringTable::get(TextMessages::get_bool_sid(autopickup_value)));
+  boost::replace_first(msg, "%s2", item_types);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -591,4 +622,4 @@ const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER = "ACTIO
 const string ActionTextKeys::ACTION_CRY_OUT                       = "ACTION_CRY_OUT";
 const string ActionTextKeys::ACTION_BOWYER_CREATE                 = "ACTION_BOWYER_CREATE";
 const string ActionTextKeys::ACTION_FLETCHERY_CREATE              = "ACTION_FLETCHERY_CREATE";
-
+const string ActionTextKeys::ACTION_TOGGLE_AUTOPICKUP             = "ACTION_TOGGLE_AUTOPICKUP";

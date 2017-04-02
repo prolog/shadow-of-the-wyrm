@@ -482,3 +482,14 @@ string TextMessages::get_replacement_message(const string& msg, const string& re
   return replace_msg;
 }
 
+string TextMessages::get_bool_sid(const bool val)
+{
+  if (val)
+  {
+    return TextKeys::BOOL_TRUE;
+  }
+  else
+  {
+    return TextKeys::BOOL_FALSE;
+  }
+}

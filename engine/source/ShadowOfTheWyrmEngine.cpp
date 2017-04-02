@@ -493,6 +493,8 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), ccd.get_race_id(), ccd.get_class_id(), name, ccd.get_sex(), ccd.get_deity_id());
   player->set_is_player(true, controller);
 
+  setup_autopickup_settings(player);
+
   // Identify the player's equipment and inventory.  If any equipment is
   // cursed, make it uncursed.
   ItemIdentifier item_id;
@@ -549,6 +551,8 @@ bool ShadowOfTheWyrmEngine::process_load_game()
     }
   }
 
+  // JCD TODO: Add support for additional reloadable settings here.
+  // E.g., autopickup
   Settings kb_settings(true);
   map<string, string> keybinding_settings = kb_settings.get_keybindings();
 
@@ -603,4 +607,32 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
   }
 
   return allowed;
+}
+
+void ShadowOfTheWyrmEngine::setup_autopickup_settings(CreaturePtr player)
+{
+  if (player != nullptr)
+  {
+    Game& game = Game::instance();
+    Settings& settings = game.get_settings_ref();
+    bool autopickup = settings.get_setting_as_bool(Setting::AUTOPICKUP);
+    vector<string> auto_types_s = String::create_string_vector_from_csv_string(settings.get_setting(Setting::AUTOPICKUP_TYPES));
+    set<ItemType> itypes;
+
+    for (const auto& it_s : auto_types_s)
+    {
+      if (!it_s.empty())
+      {
+        ItemType it = static_cast<ItemType>(String::to_int(it_s));
+        itypes.insert(it);
+      }
+    }
+
+    DecisionStrategyPtr dec = player->get_decision_strategy();
+    if (dec != nullptr)
+    {
+      dec->set_autopickup(autopickup);
+      dec->set_autopickup_types(itypes);
+    }
+  }
 }
