@@ -1,7 +1,8 @@
 Me:
-- Breathes = 1 not being set appropriately.  See: comet jellyfish.
+- Autopickup toggle, + docs
+- Autopickup on move, switch, teleport, ...
 - Within the tower: The Smith, The Armourer, The Conjurer.
-- The Namer's script: what happens after.
+- The Namer's script: what happens after (prayer not working etc)
 - The Smith (halfway up) should take three artifact weapons and create a 
   sword based on them.
 - Special spells for The Sorceror
@@ -183,7 +184,6 @@ Esran:
 - Sewer/dungeons: when random, prompt for "descend to what depth (ft)?
 
 kain:
-- corpse weights: mole same as dragon
 - autopickup options
 - multi-item drop
 - way to see resists on item without equipping
@@ -192,7 +192,6 @@ kain:
   - Displacing friendly
   - Stopped on automove by hostile
 - Character dumps should include XP totals
-- Can't complete Hrimgar's Amaurosis quest
 - Magic skills aren't auto-trained
 - Still get improvement messages at 100
 

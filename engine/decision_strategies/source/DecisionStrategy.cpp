@@ -5,7 +5,7 @@
 using namespace std;
 
 DecisionStrategy::DecisionStrategy(ControllerPtr new_controller)
-: controller(new_controller)
+: controller(new_controller), autopickup(false)
 {
 }
 
@@ -32,6 +32,8 @@ bool DecisionStrategy::operator==(const DecisionStrategy& ds) const
   }
 
   result = result && (properties == ds.properties);
+  result = result && (autopickup == ds.autopickup);
+  result = result && (autopickup_types == ds.autopickup_types);
 
   return result;
 }
@@ -111,6 +113,26 @@ map<string, string> DecisionStrategy::get_properties() const
   return properties;
 }
 
+void DecisionStrategy::set_autopickup(const bool new_autopickup)
+{
+  autopickup = new_autopickup;
+}
+
+bool DecisionStrategy::get_autopickup() const
+{
+  return autopickup;
+}
+
+void DecisionStrategy::set_autopickup_types(const set<ItemType>& new_autopickup_types)
+{
+  autopickup_types = new_autopickup_types;
+}
+
+set<ItemType> DecisionStrategy::get_autopickup_types() const
+{
+  return autopickup_types;
+}
+
 bool DecisionStrategy::can_move() const
 {
   return true;
@@ -120,6 +142,13 @@ bool DecisionStrategy::serialize(ostream& stream) const
 {
   threat_ratings.serialize(stream);
   Serialize::write_string_map(stream, properties);
+  Serialize::write_bool(stream, autopickup);
+  
+  Serialize::write_size_t(stream, autopickup_types.size());
+  for (const ItemType it : autopickup_types)
+  {
+    Serialize::write_enum(stream, it);
+  }
 
   if (controller)
   {
@@ -138,6 +167,19 @@ bool DecisionStrategy::deserialize(istream& stream)
 {
   threat_ratings.deserialize(stream);
   Serialize::read_string_map(stream, properties);
+  Serialize::read_bool(stream, autopickup);
+
+  autopickup_types.clear();
+  size_t aptypes_sz = 0;
+  Serialize::read_size_t(stream, aptypes_sz);
+
+  for (size_t i = 0; i < aptypes_sz; i++)
+  {
+    ItemType it = ItemType::ITEM_TYPE_NULL;
+    Serialize::read_enum(stream, it);
+
+    autopickup_types.insert(it);
+  }
 
   ClassIdentifier cl_id = ClassIdentifier::CLASS_ID_NULL;
   Serialize::read_class_id(stream, cl_id);

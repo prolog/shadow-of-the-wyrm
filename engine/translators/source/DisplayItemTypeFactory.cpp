@@ -183,7 +183,13 @@ DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
   }
 
   // Copy the cached value, and return it.
-  DisplayItemTypePtr display_item_type = std::make_shared<DisplayItemType>(*display_map.find(item_type)->second);
+  DisplayItemTypePtr display_item_type;
+  auto d_it = display_map.find(item_type);
+  
+  if (d_it != display_map.end())
+  {
+    display_item_type = std::make_shared<DisplayItemType>(*d_it->second);
+  }
 
   return display_item_type;
 }

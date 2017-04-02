@@ -226,6 +226,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<InscribeCommand>(key);
   }
+  else if (command_name == CommandKeys::TOGGLE_AUTOPICKUP)
+  {
+    command = std::make_shared<ToggleAutopickupCommand>(key);
+  }
   else if (command_name == CommandKeys::BREED)
   {
     command = std::make_shared<BreedCommand>(key);

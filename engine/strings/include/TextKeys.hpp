@@ -25,6 +25,8 @@ class TextKeys
     static const std::string HIMSELF;
     static const std::string HERSELF;
     static const std::string ITSELF;
+    static const std::string BOOL_TRUE;
+    static const std::string BOOL_FALSE;
     static const std::string MORTUARY;
     static const std::string STATUSES;
     static const std::string TOTAL;

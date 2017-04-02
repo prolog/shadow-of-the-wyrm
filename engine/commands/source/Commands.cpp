@@ -511,6 +511,16 @@ InscribeCommand::~InscribeCommand()
 {
 }
 
+// Turn autopickup on or off.
+ToggleAutopickupCommand::ToggleAutopickupCommand(int key)
+: Command(CommandKeys::TOGGLE_AUTOPICKUP, key)
+{
+}
+
+ToggleAutopickupCommand::~ToggleAutopickupCommand()
+{
+}
+
 // NPC-only commands
 
 // Breed (create a new creature of the same ID on an adjacent tile)

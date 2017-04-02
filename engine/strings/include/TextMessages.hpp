@@ -34,6 +34,7 @@ class TextMessages
     static std::string get_engraving_message(const std::string& engraving_sid);
     static std::string get_inscription_message(const std::string& inscription_sid);
     static std::string get_replacement_message(const std::string& message, const std::string& replace);
+    static std::string get_bool_sid(const bool val);
 
   protected:
     TextMessages();
