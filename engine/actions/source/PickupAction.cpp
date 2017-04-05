@@ -20,7 +20,7 @@
 using namespace std;
 
 // Try to pick up.
-ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * const am, const PickUpType pick_up)
+ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * const am, const PickUpType pick_up, const set<ItemType>& pickup_types)
 {  
   ActionCostValue action_cost_value = 0;
   Game& game = Game::instance();
@@ -35,7 +35,7 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * cons
     }
     else
     {
-      action_cost_value = handle_pickup(creature, map, am, pick_up);
+      action_cost_value = handle_pickup(creature, map, am, pick_up, pickup_types);
     }
   }
 
@@ -76,7 +76,7 @@ ActionCostValue PickupAction::toggle_autopickup(CreaturePtr creature)
   return 0; // toggling autopickup is a free action
 }
 
-ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am, const PickUpType pick_up)
+ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am, const PickUpType pick_up, const set<ItemType>& pickup_types)
 {
   ActionCostValue action_cost_value = 0;
   
@@ -102,6 +102,10 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
         else if (pick_up == PickUpType::PICK_UP_ALL)
         {
           action_cost_value = handle_pickup_all(creature, map, am, tile);
+        }
+        else if (pick_up == PickUpType::PICK_UP_TYPES)
+        {
+          action_cost_value = handle_pickup_types(creature, map, am, tile, pickup_types);
         }
         else
         {
@@ -222,6 +226,19 @@ ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map
   }
 
   return action_cost_value;
+}
+
+ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile, const set<ItemType>& pickup_types)
+{
+  ActionCostValue acv = 0;
+
+  if (creature && map && tile)
+  {
+    // ...
+    acv = get_action_cost_value(creature);
+  }
+
+  return acv;
 }
 
 void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature)
