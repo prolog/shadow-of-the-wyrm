@@ -1,6 +1,13 @@
 Me:
 - Autopickup toggle, + docs
 - Autopickup on move, switch, teleport, ...
+- Tower should be five levels (with an increment of 250'), plus the special
+  top level:
+  - 75: The Abyss
+  - 80: Subterra
+  - 85: Terra
+  - 90: Stratosphere
+  - 100: Cosmos
 - Within the tower: The Smith, The Armourer, The Conjurer.
 - The Namer's script: what happens after (prayer not working etc)
 - The Smith (halfway up) should take three artifact weapons and create a 
@@ -13,6 +20,7 @@ Me:
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Crafting room: wheel and loom, tannery.
+- Penalties from bloodied, exposed should also scale with level.
 - Generate loom, tanneries in random villages.
 - Consider making inscriptions part of all dungeon tiles, and then removing
   the explicit calls to add them in DungeonGenerator.
