@@ -11,6 +11,7 @@
 #include "MapUtils.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
+#include "PickupAction.hpp"
 #include "RNG.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WorldMapLocationTextKeys.hpp"
@@ -309,7 +310,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
 
   // Did the creature belong to a previous tile?  Can we move it to the new tile?  If so, then
   // remove from the old tile, and add to the new.
-  if (creatures_new_tile && is_tile_available_for_creature(creature, creatures_new_tile))
+  if (creature && creatures_new_tile && is_tile_available_for_creature(creature, creatures_new_tile))
   {
     if (creatures_old_tile)
     {
@@ -323,6 +324,27 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     if (!creatures_old_tile)
     {
       map->add_creature(creature);
+    }
+
+    // Pick up any applicable items on the tile.
+    DecisionStrategyPtr dec = creature->get_decision_strategy();
+
+    if (dec != nullptr)
+    {
+      bool autopickup = dec->get_autopickup();
+
+      if (autopickup)
+      {
+        set<ItemType> auto_items = dec->get_autopickup_types();
+
+        if (!auto_items.empty())
+        {
+          Game& game = Game::instance();
+          PickupAction pa;
+
+          pa.pick_up(creature, &game.get_action_manager_ref(), PickUpType::PICK_UP_TYPES, auto_items);
+        }
+      }
     }
   }
 
