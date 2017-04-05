@@ -19189,6 +19189,45 @@
 			<Evade>15</Evade>
 			<Soak>10</Soak>
 		</Creature>
+		<Creature id="nether_hydra">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>NETHER_HYDRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>NETHER_HYDRA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>NETHER_HYDRA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>NETHER_HYDRA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>N</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>75</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>275000</Exp>
+			</CreatureGeneration>
+			<Level>50</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>150</NumSides>
+				<Type>4</Type>
+				<EffectBonus>50</EffectBonus>
+				<StatusAilments>
+					<Status>_poison</Status>
+					<Status>_slow</Status>
+				</StatusAilments>
+			</Damage>
+			<Evade>15</Evade>
+			<Soak>20</Soak>
+		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
