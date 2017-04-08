@@ -29,7 +29,7 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * cons
   {
     MapPtr map = game.get_current_map();
     
-    if (map->get_map_type() == MapType::MAP_TYPE_WORLD)
+    if (map->get_map_type() == MapType::MAP_TYPE_WORLD && pick_up != PickUpType::PICK_UP_TYPES)
     {
       handle_world_map_pickup(creature);
     }
@@ -89,7 +89,7 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
       IInventoryPtr inv = tile->get_items();
 
       // If there is no item, inform the user.
-      if (inv->empty())
+      if (inv->empty() && pick_up != PickUpType::PICK_UP_TYPES)
       {
         handle_empty_tile_pickup(creature);
       }
@@ -231,11 +231,36 @@ ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map
 ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile, const set<ItemType>& pickup_types)
 {
   ActionCostValue acv = 0;
+  bool picked_up = false;
 
   if (creature && map && tile)
   {
-    // ...
-    acv = get_action_cost_value(creature);
+    IInventoryPtr inv = tile->get_items();
+    list<ItemPtr> items = inv->get_items_ref();
+
+    for (ItemPtr item : items)
+    {
+      if (item != nullptr && pickup_types.find(item->get_type()) != pickup_types.end())
+      {
+        // Candidate for autopickup.  Check to see if the creature can handle
+        // the weight and the total number of items.
+        pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, item);
+
+        if (!pickup_details.first)
+        {
+          handle_cannot_pickup(creature, pickup_details.second);
+        }
+        else
+        {
+          take_item_and_give_to_creature(item, inv, creature);
+        }
+      }
+    }
+
+      if (picked_up)
+    {
+      acv = get_action_cost_value(creature);
+    }
   }
 
   return acv;
