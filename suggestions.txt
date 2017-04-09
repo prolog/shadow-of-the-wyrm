@@ -199,7 +199,5 @@ kain:
 - Not notified of anything on the ground when:
   - Displacing friendly
   - Stopped on automove by hostile
-- Character dumps should include XP totals
 - Magic skills aren't auto-trained
-- Still get improvement messages at 100
 

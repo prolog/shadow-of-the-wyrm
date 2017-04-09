@@ -66,6 +66,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - Items can now be picked up automatically by item type (kain).
 
+- Experience points are now included in character dumps (kain).
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
