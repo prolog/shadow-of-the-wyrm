@@ -199,5 +199,3 @@ kain:
 - Not notified of anything on the ground when:
   - Displacing friendly
   - Stopped on automove by hostile
-- Magic skills aren't auto-trained
-

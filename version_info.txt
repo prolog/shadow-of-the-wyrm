@@ -68,6 +68,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - Experience points are now included in character dumps (kain).
 
+- Casting spells now has a chance to train both the Magic skill, as well 
+  as the individual magic category (kain).
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
