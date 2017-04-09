@@ -120,6 +120,7 @@ class TextKeys
 
     static const std::string LEVEL;
     static const std::string LEVEL_ABRV;
+    static const std::string EXPERIENCE;
     static const std::string WINNER;
     static const std::string WINNER_EVIL;
     

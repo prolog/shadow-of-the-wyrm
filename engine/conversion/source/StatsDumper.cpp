@@ -48,6 +48,7 @@ string StatsDumper::get_stats() const
   string speed         = StringTable::get(TextKeys::SPEED)         + ": " + std::to_string(creature->get_speed().get_current());
   string evade         = StringTable::get(TextKeys::EVADE)         + ": " + std::to_string(creature->get_evade().get_current());
   string soak          = StringTable::get(TextKeys::SOAK)          + ": " + std::to_string(creature->get_soak().get_current());
+  string experience    = StringTable::get(TextKeys::EXPERIENCE)    + ": " + std::to_string(creature->get_experience_points());
 
   string current_line;
   current_line = String::add_trailing_spaces(current_line, num_cols);
@@ -77,6 +78,7 @@ string StatsDumper::get_stats() const
   String::reset_and_pad(current_line, num_cols);
   
   current_line.replace(0, willpower.size(), willpower);
+  current_line.replace(30, experience.size(), experience);
   ss << current_line << endl;
   String::reset_and_pad(current_line, num_cols);
   
