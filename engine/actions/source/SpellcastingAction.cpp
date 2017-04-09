@@ -11,6 +11,8 @@
 #include "MagicKeyboardCommandMap.hpp"
 #include "MagicCommandKeys.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
+#include "SkillManager.hpp"
 #include "SpellBonusUpdater.hpp"
 #include "SpellcastingTextKeys.hpp"
 #include "SpellSelectionScreen.hpp"
@@ -20,6 +22,9 @@
 #include "StringTable.hpp"
 
 using namespace std;
+
+const int SpellcastingAction::PCT_CHANCE_MARK_MAGIC = 50;
+const int SpellcastingAction::PCT_CHANCE_MARK_CATEGORY = 80;
 
 ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
 {
@@ -182,6 +187,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
             // Spells always use the "uncursed" effect status.
             sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
 
+            // Train the creature's magic skills
+            train_skills(creature, spell);
+
             // Indicate that a full redraw is needed.
             game.get_loaded_map_details_ref().update_spell_cast(true);
           }
@@ -223,6 +231,26 @@ void SpellcastingAction::update_spell_bonus(CreaturePtr caster, const Spell& spe
     // trained.
     StatisticsMarker sm;
     sm.mark_willpower(caster);
+  }
+}
+
+void SpellcastingAction::train_skills(CreaturePtr creature, const Spell& spell) const
+{
+  if (creature != nullptr)
+  {
+    // Mark the applicable skills.
+    vector<pair<SkillType, int>> marked_skills = {{SkillType::SKILL_GENERAL_MAGIC, PCT_CHANCE_MARK_MAGIC},
+                                                  {spell.get_magic_category(), PCT_CHANCE_MARK_CATEGORY}};
+
+    for (const auto& skill_pair : marked_skills)
+    {
+      SkillManager sm;
+
+      if (RNG::percent_chance(skill_pair.second))
+      {
+        sm.mark_skill(creature, skill_pair.first, true);
+      }
+    }
   }
 }
 
