@@ -245,9 +245,6 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
           // Update the map info
           MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
-          TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
-        
-          add_tile_related_messages(creature, new_tile);
           movement_acv = get_action_cost_value(creature);
         }
 
@@ -581,11 +578,8 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     // to a brand-new map, as tile properties will be automatically 
     // handled during map generation, and will be removed after creating
     // items and creatures.
+    add_initial_map_messages(creature, new_map, tile_type);
     handle_properties_and_move_to_new_map(tile, map, new_map);
-                
-    add_initial_map_messages(creature, new_map, tile_type);                
-    add_tile_related_messages(creature, MapUtils::get_tile_for_creature(new_map, creature));
-
     action_cost_value = get_action_cost_value(creature);
   }
 
@@ -758,92 +752,6 @@ ActionCostValue MovementAction::descend(CreaturePtr creature)
   }
 
   return movement_acv;
-}
-
-// Add any messages after moving to a particular tile:
-// - Should a message be displayed about the tile automatically? (staircases, etc)
-//       If so, add it.
-// - Are there any items on the tile?
-//       If so, add the appropriate message.
-void MovementAction::add_tile_related_messages(const CreaturePtr& creature, TilePtr tile)
-{
-  bool tile_message_added = add_message_about_tile_if_necessary(creature, tile);
-  bool item_message_added = add_message_about_items_on_tile_if_necessary(creature, tile);
-
-  if (tile_message_added || item_message_added)
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-    manager.send();
-  }
-}
-
-// Add a message about the tile if necessary.
-bool MovementAction::add_message_about_tile_if_necessary(const CreaturePtr& creature, TilePtr tile)
-{
-  bool msg_added = false;
-
-  if (creature && tile && creature->get_is_player())
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-
-    if (tile->display_description_on_arrival() || tile->has_extra_description())
-    {
-      TileDescriber td(tile);
-      manager.add_new_message(td.describe());
-      msg_added = true;
-    }
-    else if (tile->has_inscription())
-    {
-      manager.add_new_message(TextMessages::get_inscription_message(tile->get_inscription_sid()));
-      msg_added = true;
-    }
-  }
-
-  return msg_added;
-}
-
-// Add a message if the creature is the player, and if there are items on
-// the tile.
-bool MovementAction::add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, TilePtr tile)
-{
-  bool msg_added = false;
-
-  if (creature && creature->get_is_player())
-  {
-    IInventoryPtr tile_items = tile->get_items();
-    
-    if (!tile_items->empty())
-    {
-      string item_message;
-      
-      // One item
-      if (tile_items->size() == 1)
-      {
-        ItemPtr item_on_tile = tile_items->at(0);
-        
-        if (item_on_tile)
-        {
-          CurrentCreatureAbilities cca;
-          item_message = TextMessages::get_item_on_ground_description_message(!cca.can_see(creature), item_on_tile);
-        }
-      }
-      // Multiple items
-      else
-      {
-        item_message = StringTable::get(MovementTextKeys::ITEMS_ON_TILE);
-      }
-      
-      // Send the message
-      if (!item_message.empty())
-      {
-        IMessageManager& manager = MM::instance();
-        manager.add_new_message(item_message);
-        msg_added = true;
-      }
-    }
-  }
-
-  return msg_added;
 }
 
 void MovementAction::add_cannot_escape_message(const CreaturePtr& creature)

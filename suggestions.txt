@@ -1,6 +1,4 @@
 Me:
-- Autopickup toggle, + docs
-- Autopickup on move, switch, teleport, ...
 - Tower should be five levels (with an increment of 250'), plus the special
   top level:
   - 75: The Abyss
@@ -193,9 +191,5 @@ Esran:
 
 kain:
 - autopickup options
-- multi-item drop
 - way to see resists on item without equipping
 - Zapped wand moves to end of inventory?
-- Not notified of anything on the ground when:
-  - Displacing friendly
-  - Stopped on automove by hostile
