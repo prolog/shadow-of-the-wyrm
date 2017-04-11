@@ -107,6 +107,10 @@ Shadow of the Wyrm v0.6.2 "de Visee"
     stacking doesn't break when trying to add to an item the creature had
     originally (kain).
 
+  - Moving on to a new tile was inconsistent as to whether a message was
+    displayed about items.  Standardized this code so that it should be
+    called for all the various types of movement (kain).
+    
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 

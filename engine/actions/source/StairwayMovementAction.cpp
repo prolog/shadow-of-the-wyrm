@@ -168,12 +168,6 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature, Game& game, MovementAction* const ma)
 {
   ma->handle_properties_and_move_to_new_map(current_tile, current_map, map_exit);
-
-  // If the tile we've moved to has any items, notify the player, if the creature's a player.
-  MapPtr new_map = game.get_current_map();
-
-  TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
-  ma->add_message_about_items_on_tile_if_necessary(creature, creatures_current_tile);
 }
 
 ActionCostValue StairwayMovementAction::get_action_cost_value(CreaturePtr creature) const

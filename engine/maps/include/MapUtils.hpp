@@ -86,4 +86,8 @@ class MapUtils
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);
+
+    static void add_tile_related_messages(CreaturePtr creature, TilePtr tile);
+    static bool add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr tile);
+    static bool add_message_about_items_on_tile_if_necessary(CreaturePtr creature, TilePtr tile);
 };
