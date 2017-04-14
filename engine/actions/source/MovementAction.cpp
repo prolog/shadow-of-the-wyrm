@@ -582,7 +582,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     handle_properties_and_move_to_new_map(tile, map, new_map);
     action_cost_value = get_action_cost_value(creature);
   }
-
+ 
   return action_cost_value;
 }
 
