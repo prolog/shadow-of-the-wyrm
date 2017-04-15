@@ -81,6 +81,12 @@ bool Trap::get_is_dangerous() const
 
 bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
+  // If the creature is flying, the trap won't be triggered on movement.
+  if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+  {
+    return false;
+  }
+
   bool apply_trap = true;
 
   // A successful detection check is required to not trigger a trap.

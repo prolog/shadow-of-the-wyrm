@@ -25,7 +25,7 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
     // Tile confirmation only happens if the creature can see.  Otherwise,
     // the creature has no idea that the place they're moving into is dangerous.
     if ((new_tile->get_dangerous(creature) && !is_incorporeal && !is_flying) ||
-      (feature_dangerous))
+      (feature_dangerous && !is_flying))
     {
       confirmation_details.first = true;
       string confirmation_sid = new_tile->get_danger_confirmation_sid();
