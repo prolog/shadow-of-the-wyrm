@@ -24,15 +24,15 @@ class SpellShapeProcessor
     // Pure virtual function to get the affected tiles for a particular spell.
     // This will be dependant on the shape: beams generate a line, balls are
     // centered on the caster, etc.
-    virtual std::pair<std::vector<TilePtr>, Animation> get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell) = 0;
-    virtual bool process_damage_and_effect(CreaturePtr caster, const std::vector<TilePtr>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
+    virtual std::pair<std::vector<std::pair<Coordinate, TilePtr>>, Animation> get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell) = 0;
+    virtual bool process_damage_and_effect(CreaturePtr caster, const std::vector<std::pair<Coordinate, TilePtr>>& affected_coords_and_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
 
   protected:
-    virtual std::pair<std::vector<TilePtr>, Animation> create_affected_tiles_and_animation(CreaturePtr caster, MapPtr map, const std::vector<TilePtr>& affected_tiles, const MovementPath& movement_path);
+    virtual std::pair<std::vector<std::pair<Coordinate, TilePtr>>, Animation> create_affected_tiles_and_animation(CreaturePtr caster, MapPtr map, const std::vector<std::pair<Coordinate, TilePtr>>& affected_coords_and_tiles, const MovementPath& movement_path);
 
-    virtual bool apply_damage_and_effect(CreaturePtr caster, const std::vector<TilePtr>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
+    virtual bool apply_damage_and_effect(CreaturePtr caster, const std::vector<std::pair<Coordinate, TilePtr>>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
     virtual bool apply_damage(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am);
-    virtual bool apply_effect(CreaturePtr caster, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
+    virtual bool apply_effect(CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
 
     bool is_coordinate_adjacent_to_coordinate_in_previous_frame(const Coordinate& coord, const std::vector<Coordinate>& prev_frame);
 };

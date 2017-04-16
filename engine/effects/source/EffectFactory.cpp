@@ -2,6 +2,7 @@
 #include "BlessEffect.hpp"
 #include "CleansingEffect.hpp"
 #include "DetectTrapsEffect.hpp"
+#include "DiggingEffect.hpp"
 #include "EffectFactory.hpp"
 #include "EtherEffect.hpp"
 #include "EnchantingEffect.hpp"
@@ -34,7 +35,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modifier& m, const map<string, string>& properties, const string& spell_id, const string& source_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(26), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(27), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -120,6 +121,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modif
       break;
     case EffectType::EFFECT_TYPE_SUMMON_MONSTERS:
       effect = std::make_shared<SummonMonstersEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_DIGGING:
+      effect = std::make_shared<DiggingEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:

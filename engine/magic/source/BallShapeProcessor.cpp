@@ -7,9 +7,9 @@
 
 using namespace std;
 
-pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+pair<vector<pair<Coordinate, TilePtr>>, Animation> BallShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
-  vector<TilePtr> affected_tiles;
+  vector<pair<Coordinate, TilePtr>> affected_coords_and_tiles;
   uint spell_range = spell.get_range();
 
   DisplayTile dt('*', static_cast<int>(spell.get_colour()));
@@ -45,7 +45,7 @@ pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_anim
           if (tile && !tmc.does_tile_block_spell(tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(ball_coord, prev_coords))
           {
             current_coords.push_back(ball_coord);
-            affected_tiles.push_back(tile);
+            affected_coords_and_tiles.push_back(make_pair(ball_coord, tile));
           }
         }
       }
@@ -60,13 +60,13 @@ pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_anim
         if (east_tile && !tmc.does_tile_block_spell(east_tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(east_coord, prev_coords))
         {
           current_coords.push_back(east_coord);
-          affected_tiles.push_back(east_tile);
+          affected_coords_and_tiles.push_back(make_pair(east_coord, east_tile));
         }
 
         if (west_tile && !tmc.does_tile_block_spell(west_tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(west_coord, prev_coords))
         {
           current_coords.push_back(west_coord);
-          affected_tiles.push_back(west_tile);
+          affected_coords_and_tiles.push_back(make_pair(west_coord, west_tile));
         }
       }
     }
@@ -87,6 +87,6 @@ pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_anim
 
   // Create the animation.
   CreaturePtr caster = map->at(caster_coord)->get_creature();
-  return create_affected_tiles_and_animation(caster, map, affected_tiles, movement_path);
+  return create_affected_tiles_and_animation(caster, map, affected_coords_and_tiles, movement_path);
 }
 

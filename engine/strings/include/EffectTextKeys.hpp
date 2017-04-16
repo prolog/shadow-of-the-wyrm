@@ -19,6 +19,7 @@ class EffectTextKeys
     static std::string get_uncursing_effect_message(const std::string& monster_desc_sid, const bool is_player);
     static std::string get_detect_traps_effect_message(const std::string& monster_desc_sid, const bool is_player);
     static std::string get_bless_effect_message(const std::string& monster_desc_sid, const bool is_player);
+    static std::string get_digging_effect_message(const std::string& monster_desc_sid, const bool is_player);
 
     static const std::string EFFECT_NULL;
     static const std::string EFFECT_SWEET_TASTE;
@@ -47,6 +48,8 @@ class EffectTextKeys
     static const std::string EFFECT_IDENTIFY_ITEM;
     static const std::string EFFECT_TELEPORT_PLAYER;
     static const std::string EFFECT_TELEPORT_MONSTER;
+    static const std::string EFFECT_DIGGING_PLAYER;
+    static const std::string EFFECT_DIGGING_MONSTER;
     static const std::string EFFECT_RECHARGING;
     static const std::string EFFECT_RECHARGING_ALREADY_FULL;
     static const std::string EFFECT_ENCHANT_ITEM_MAX;

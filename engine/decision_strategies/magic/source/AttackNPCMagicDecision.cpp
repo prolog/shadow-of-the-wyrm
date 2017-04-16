@@ -25,10 +25,12 @@ pair<bool, Direction> AttackNPCMagicDecision::decide(CreaturePtr caster, MapPtr 
         // no need to also compute the animation.  So if this turns out to be
         // too expensive, refactor the code so that the animation is also not
         // computed.
-        pair<vector<TilePtr>, Animation> tiles_anim = ssp->get_affected_tiles_and_animation_for_spell(view_map, caster_loc, dir, spell);
+        pair<vector<pair<Coordinate, TilePtr>>, Animation> tiles_anim = ssp->get_affected_tiles_and_animation_for_spell(view_map, caster_loc, dir, spell);
 
-        for (TilePtr tile : tiles_anim.first)
+        for (const auto& t_pair : tiles_anim.first)
         {
+          TilePtr tile = t_pair.second;
+
           if (tile && tile->has_creature() && (creature_threats.find(tile->get_creature()->get_id()) != creature_threats.end()))
           {
             return make_pair(true, dir);
