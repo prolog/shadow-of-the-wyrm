@@ -44,7 +44,7 @@ void MappingEffect::map(MapPtr map, const MappingType mt)
   }
 }
 
-bool MappingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) 
+bool MappingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   if (creature)
   {
@@ -58,7 +58,7 @@ bool MappingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionMan
   return true;
 }
 
-bool MappingEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am)
+bool MappingEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   if (creature)
   {
@@ -72,7 +72,7 @@ bool MappingEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionMa
   return true;
 }
 
-bool MappingEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am)
+bool MappingEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   if (creature)
   {

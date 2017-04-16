@@ -287,12 +287,12 @@ bool Map::insert(const Coordinate& c, TilePtr tile)
   return insert(c.first, c.second, tile);
 }
 
-TilePtr Map::at(int row, int col)
+TilePtr Map::at(int row, int col) const
 {
   string key = MapUtils::convert_coordinate_to_map_key(row, col);
   TilePtr tile;
 
-  TilesContainer::iterator t_it = tiles.find(key);
+  TilesContainer::const_iterator t_it = tiles.find(key);
   
   if (t_it != tiles.end())
   {
@@ -302,7 +302,7 @@ TilePtr Map::at(int row, int col)
   return tile;
 }
 
-TilePtr Map::at(const Coordinate& c)
+TilePtr Map::at(const Coordinate& c) const
 {
   return at(c.first, c.second);
 }
@@ -399,6 +399,16 @@ Coordinate Map::get_location(const string& location) const
   }
 
   return c;
+}
+
+pair<Coordinate, TilePtr> Map::get_location_and_tile(const std::string& creature_id) const
+{
+  pair<Coordinate, TilePtr> result_pair({0,0}, nullptr);
+
+  result_pair.first = get_location(creature_id);
+  result_pair.second = at(result_pair.first);
+
+  return result_pair;
 }
 
 map<string, Coordinate> Map::get_locations() const

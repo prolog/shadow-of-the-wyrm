@@ -17,9 +17,9 @@ class MappingEffect : public Effect
   protected:
     virtual void map(MapPtr map, const MappingType mt);
 
-    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
+    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
     
     std::string mapping_msg;
 };

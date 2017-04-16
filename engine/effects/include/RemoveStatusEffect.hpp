@@ -11,9 +11,9 @@ class RemoveStatusEffect : public Effect
 
   protected:
     virtual bool remove_status(std::shared_ptr<Creature> creature);
-    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
+    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
 
     std::string status_id;
 };

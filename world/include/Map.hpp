@@ -53,8 +53,8 @@ class Map : public ISerializable
 		bool insert(int row, int col, std::shared_ptr<Tile> tile);
     bool insert(const Coordinate& c, std::shared_ptr<Tile> tile);
 
-		std::shared_ptr<Tile> at(int row, int col);
-		std::shared_ptr<Tile> at(const Coordinate& c);
+		std::shared_ptr<Tile> at(int row, int col) const;
+		std::shared_ptr<Tile> at(const Coordinate& c) const;
 
     void set_name_sid(const std::string& new_name_sid);
     std::string get_name_sid() const;
@@ -83,6 +83,7 @@ class Map : public ISerializable
     void remove_location(const std::string& location);
     bool has_location(const std::string& location);
     Coordinate get_location(const std::string& location) const;
+    std::pair<Coordinate, std::shared_ptr<Tile>> get_location_and_tile(const std::string& location) const;
     std::map<std::string, Coordinate> get_locations() const;
     std::shared_ptr<Tile> get_tile_at_location(const std::string& location);
     

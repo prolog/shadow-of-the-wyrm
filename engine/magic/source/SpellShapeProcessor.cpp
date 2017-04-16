@@ -130,9 +130,7 @@ bool SpellShapeProcessor::apply_effect(CreaturePtr caster, const Coordinate& coo
       }
 
       bool show_msg_on_unid = (creature && caster && caster->get_is_player() && creature->get_is_player());
-      
-      // JCD FIXME: PASS COORDINATE/TILE TO THIS AS WELL
-      return effect->effect(creature, am, effect_status, show_msg_on_unid);
+      return effect->effect(creature, am, effect_status, coord, tile, show_msg_on_unid);
     }
   }
 

@@ -19,13 +19,13 @@ Effect* IncorporealEffect::clone()
   return new IncorporealEffect(*this);
 }
 
-bool IncorporealEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
+bool IncorporealEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
-  return effect_uncursed(creature, am);
+  return effect_uncursed(creature, am, affected_coordinate, affected_tile);
 }
 
 // Add incorporeal status.
-bool IncorporealEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
+bool IncorporealEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   StatusEffectPtr incorp = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_INCORPOREAL, source_id);
   incorp->apply_change(creature, creature->get_level().get_current());
@@ -33,8 +33,8 @@ bool IncorporealEffect::effect_uncursed(CreaturePtr creature, ActionManager * co
   return true;
 }
 
-bool IncorporealEffect::effect_cursed(CreaturePtr creature, ActionManager * am)
+bool IncorporealEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
-  return effect_uncursed(creature, am);
+  return effect_uncursed(creature, am, affected_coordinate, affected_tile);
 }
 

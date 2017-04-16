@@ -15,9 +15,9 @@ class RechargingEffect : public Effect
     virtual bool has_rechargables(std::shared_ptr<Creature> creature);
     virtual bool recharge(CreaturePtr creature, ActionManager * const am, const ItemStatus item_status);
 
-    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
+    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
 
     virtual std::pair<int, int> get_charges_range(const ItemStatus item_status);
 

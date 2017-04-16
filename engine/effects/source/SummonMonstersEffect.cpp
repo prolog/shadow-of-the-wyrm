@@ -79,7 +79,7 @@ bool SummonMonstersEffect::summon(CreaturePtr creature, MapPtr map, const int nu
   return effect_id;
 }
 
-bool SummonMonstersEffect::effect_blessed(CreaturePtr creature, ActionManager * const am) 
+bool SummonMonstersEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   bool id = false;
 
@@ -92,7 +92,7 @@ bool SummonMonstersEffect::effect_blessed(CreaturePtr creature, ActionManager * 
   return id;
 }
 
-bool SummonMonstersEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
+bool SummonMonstersEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   bool id = false;
 
@@ -105,7 +105,7 @@ bool SummonMonstersEffect::effect_uncursed(CreaturePtr creature, ActionManager *
   return id;
 }
 
-bool SummonMonstersEffect::effect_cursed(CreaturePtr creature, ActionManager * const am)
+bool SummonMonstersEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   bool id = false;
 

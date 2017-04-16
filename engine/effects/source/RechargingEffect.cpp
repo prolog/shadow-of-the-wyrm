@@ -51,17 +51,17 @@ bool RechargingEffect::has_rechargables(CreaturePtr creature)
   return items_exist;
 }
 
-bool RechargingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
+bool RechargingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return recharge(creature, am, ItemStatus::ITEM_STATUS_BLESSED);
 }
 
-bool RechargingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
+bool RechargingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return recharge(creature, am, ItemStatus::ITEM_STATUS_UNCURSED);
 }
 
-bool RechargingEffect::effect_cursed(CreaturePtr creature, ActionManager * const am)
+bool RechargingEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return recharge(creature, am, ItemStatus::ITEM_STATUS_CURSED);
 }
