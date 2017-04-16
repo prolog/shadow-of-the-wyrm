@@ -14,6 +14,7 @@ MapTester.pdb
 xerces-c_3_1D.dll
 Debug
 dist
+\.vs
 sotw-(.+).log
 Release
 MapTester

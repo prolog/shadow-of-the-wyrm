@@ -62,22 +62,29 @@ DeityDecisionImplications RestoreStatusDeityDecisionStrategyHandler::handle_deci
   {
     Game& game = Game::instance();
     ActionManager& am = game.get_action_manager_ref();
+    MapPtr current_map = game.get_current_map();
 
-    // The piety loss for the first status.  The piety loss for each subsequent
-    // status is half of the previous.
-    int current_piety_loss = 200;
-
-    for (const string& status : watched_statuses)
+    if (current_map != nullptr)
     {
-      if (creature->has_status(status))
-      {
-        // Remove the status using the standard methods to ensure that for more
-        // complex statuses, like slowness, things are restored properly.
-        RemoveStatusEffect deity_decision(status);
-        deity_decision.effect(creature, &am, ItemStatus::ITEM_STATUS_UNCURSED);
+      Coordinate affected_coord = current_map->get_location(creature->get_id());
+      TilePtr affected_tile = current_map->at(affected_coord);
 
-        piety_loss += current_piety_loss;
-        current_piety_loss /= 2;
+      // The piety loss for the first status.  The piety loss for each subsequent
+      // status is half of the previous.
+      int current_piety_loss = 200;
+
+      for (const string& status : watched_statuses)
+      {
+        if (creature->has_status(status))
+        {
+          // Remove the status using the standard methods to ensure that for more
+          // complex statuses, like slowness, things are restored properly.
+          RemoveStatusEffect deity_decision(status);
+          deity_decision.effect(creature, &am, ItemStatus::ITEM_STATUS_UNCURSED, affected_coord, affected_tile);
+
+          piety_loss += current_piety_loss;
+          current_piety_loss /= 2;
+        }
       }
     }
   }

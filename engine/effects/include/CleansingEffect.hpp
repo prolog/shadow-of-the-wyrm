@@ -12,8 +12,8 @@ class CleansingEffect : public Effect
   protected:
     virtual bool cleansing(std::shared_ptr<Creature> creature, const float map_creature_regen_multiplier);
 
-    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
+    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
 };
 

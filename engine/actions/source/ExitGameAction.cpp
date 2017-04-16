@@ -61,11 +61,15 @@ void ExitGameAction::create_dump_if_necessary(IMessageManager& manager, ActionMa
 
   if (create_dump && creature != nullptr)
   {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    pair<Coordinate, TilePtr> creature_loc = current_map->get_location_and_tile(creature->get_id());
+
     EffectPtr identify = EffectFactory::create_effect(EffectType::EFFECT_TYPE_IDENTIFY, {}, {}, "", creature->get_id());
 
     if (identify != nullptr)
     {
-      identify->effect(creature, am, ItemStatus::ITEM_STATUS_BLESSED, false);
+      identify->effect(creature, am, ItemStatus::ITEM_STATUS_BLESSED, creature_loc.first, creature_loc.second, false);
     }
 
     CharacterAction ca;

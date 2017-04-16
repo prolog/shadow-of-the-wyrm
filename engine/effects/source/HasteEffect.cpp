@@ -22,7 +22,7 @@ Effect* HasteEffect::clone()
 // When blessed, cure any slowness, and add the haste effect.
 // Don't allow "double hasting" (being able to cast haste while hasted),
 // or else the game becomes ludicrously easy!
-bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
+bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   if (creature->has_status(StatusIdentifiers::STATUS_ID_HASTE))
   {
@@ -43,7 +43,7 @@ bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
 
 // When uncursed, cure any slowness, or if there is no slowness, add
 // the haste status effect.
-bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
+bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   if (creature->has_status(StatusIdentifiers::STATUS_ID_HASTE))
   {
@@ -65,7 +65,7 @@ bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am
 }
 
 // When cursed, nothing happens.
-bool HasteEffect::effect_cursed(CreaturePtr creature, ActionManager * am)
+bool HasteEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return false;
 }

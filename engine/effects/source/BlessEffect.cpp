@@ -28,17 +28,17 @@ Effect* BlessEffect::clone()
   return new BlessEffect(*this);
 }
 
-bool BlessEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
+bool BlessEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return bless(creature, BlessEffectType::BLESS_EFFECT_BLESS_ITEMS_OF_TYPE, am);
 }
 
-bool BlessEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
+bool BlessEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return bless(creature, BlessEffectType::BLESS_EFFECT_BLESS_ITEM, am);
 }
 
-bool BlessEffect::effect_cursed(CreaturePtr creature, ActionManager * am)
+bool BlessEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return bless(creature, BlessEffectType::BLESS_EFFECT_UNCURSE_ITEM, am);
 }

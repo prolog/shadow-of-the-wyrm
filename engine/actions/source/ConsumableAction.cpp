@@ -25,7 +25,7 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
   {
     Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
-
+    pair<Coordinate, TilePtr> creature_loc = current_map->get_location_and_tile(creature->get_id());
     HungerClock& hunger = creature->get_hunger_clock_ref();
     int hunger_before = hunger.get_hunger();
 
@@ -42,7 +42,7 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
     if (et != EffectType::EFFECT_TYPE_NULL && process_effect)
     {
       EffectPtr consumable_effect = EffectFactory::create_effect(et, {}, {}, "", creature->get_id());
-      consumable_effect->effect(creature, &game.get_action_manager_ref(), consumable->get_status());
+      consumable_effect->effect(creature, &game.get_action_manager_ref(), consumable->get_status(), creature_loc.first, creature_loc.second);
     }
 
     // Get any intrinsics from the resistances on the item being greater than

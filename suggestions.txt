@@ -1,7 +1,6 @@
 Me:
 - Need to test the following after the spell refactoring:
-  - Beam (+ wide beam), reflective beam, cross, ball, target self, storm
-  - digging
+  - reflective beam, cross, ball, target self, storm
   - Anything else?
 - Tower should be five levels (with an increment of 250'), plus the special
   top level:

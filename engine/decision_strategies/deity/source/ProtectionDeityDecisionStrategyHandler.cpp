@@ -5,7 +5,7 @@
 #include "ModifyStatisticsEffect.hpp"
 #include "ProtectionDeityDecisionStrategyHandler.hpp"
 
-using std::string;
+using namespace std;
 
 ProtectionDeityDecisionStrategyHandler::ProtectionDeityDecisionStrategyHandler(const string& new_deity_id)
 : DeityDecisionStrategyHandler(new_deity_id)
@@ -39,31 +39,35 @@ DeityDecisionImplications ProtectionDeityDecisionStrategyHandler::handle_decisio
   if (creature)
   {
     Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
 
-    int creature_level = creature->get_level().get_current();
-    Resistances protect_resists;
+    if (current_map != nullptr)
+    {
+      int creature_level = creature->get_level().get_current();
+      Resistances protect_resists;
 
-    ModifyStatisticsEffect mse;
-    Modifier m;
+      ModifyStatisticsEffect mse;
+      Modifier m;
 
-    // Calculate the evade and soak.
-    int soak = static_cast<int>(creature_level * DeityDecisionConstants::PROTECT_SOAK_PER_LEVEL);
-    int evade = static_cast<int>(creature_level * DeityDecisionConstants::PROTECT_EVADE_PER_LEVEL);
+      // Calculate the evade and soak.
+      int soak = static_cast<int>(creature_level * DeityDecisionConstants::PROTECT_SOAK_PER_LEVEL);
+      int evade = static_cast<int>(creature_level * DeityDecisionConstants::PROTECT_EVADE_PER_LEVEL);
 
-    // Set the resistances.
-    protect_resists.set_all_resistances_to(DeityDecisionConstants::PROTECT_RESISTANCE_MODIFIER);
+      // Set the resistances.
+      protect_resists.set_all_resistances_to(DeityDecisionConstants::PROTECT_RESISTANCE_MODIFIER);
 
-    m.set_soak_modifier(soak);
-    m.set_evade_modifier(evade);
-    m.set_resistances(protect_resists);
+      m.set_soak_modifier(soak);
+      m.set_evade_modifier(evade);
+      m.set_resistances(protect_resists);
 
-    mse.set_modifier(m);
+      mse.set_modifier(m);
 
-    // JCD TODO: Do we need to set deity ID as the source of the modifiers?
-    // Will that ever matter?
-
-    ActionManager& am = game.get_action_manager_ref();
-    mse.effect(creature, &am, ItemStatus::ITEM_STATUS_UNCURSED);
+      // JCD TODO: Do we need to set deity ID as the source of the modifiers?
+      // Will that ever matter?
+      pair<Coordinate, TilePtr> creature_loc = current_map->get_location_and_tile(creature->get_id());
+      ActionManager& am = game.get_action_manager_ref();
+      mse.effect(creature, &am, ItemStatus::ITEM_STATUS_UNCURSED, creature_loc.first, creature_loc.second);
+    }
   }
 
   return get_deity_decision_implications(creature, tile);

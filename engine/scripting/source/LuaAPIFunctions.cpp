@@ -3212,27 +3212,33 @@ int teleport(lua_State* ls)
   if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
   {
     Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
     ActionManager& am = game.get_action_manager_ref();
 
     string creature_id = lua_tostring(ls, 1);
-    CreaturePtr creature = get_creature(creature_id);
 
-    if (creature != nullptr)
+    if (current_map != nullptr)
     {
-      // This version of the function should generally only be used for debug
-      // testing.
-      if (lua_gettop(ls) == 3 && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
-      {
-        int y = lua_tointeger(ls, 2);
-        int x = lua_tointeger(ls, 3);
+      pair<Coordinate, TilePtr> creature_loc = current_map->get_location_and_tile(creature_id);
+      CreaturePtr creature = get_creature(creature_id);
 
-        MapPtr map = game.get_current_map();
-        MapUtils::add_or_update_location(map, creature, make_pair(y, x), MapUtils::get_tile_for_creature(map, creature));
-      }
-      else
+      if (creature != nullptr)
       {
-        EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT, {}, {}, "", "");
-        teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
+        // This version of the function should generally only be used for debug
+        // testing.
+        if (lua_gettop(ls) == 3 && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+        {
+          int y = lua_tointeger(ls, 2);
+          int x = lua_tointeger(ls, 3);
+
+          MapPtr map = game.get_current_map();
+          MapUtils::add_or_update_location(map, creature, make_pair(y, x), MapUtils::get_tile_for_creature(map, creature));
+        }
+        else
+        {
+          EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT, {}, {}, "", "");
+          teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED, creature_loc.first, creature_loc.second);
+        }
       }
     }
   }

@@ -124,6 +124,8 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   }
 
   Game& game = Game::instance();
+  MapPtr current_map = game.get_current_map();
+
   PhaseOfMoonCalculator pomc;
   PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
 
@@ -138,10 +140,15 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   {
     Modifier m;
     EffectPtr effectp = EffectFactory::create_effect(effect, m, {}, "", creature_id);
-    
-    if (effectp != nullptr)
+
+    if (creature != nullptr)
     {
-      effectp->effect(creature, &game.get_action_manager_ref(), ItemStatus::ITEM_STATUS_UNCURSED);
+      pair<Coordinate, TilePtr> creature_loc = current_map->get_location_and_tile(creature->get_id());
+
+      if (effectp != nullptr)
+      {
+        effectp->effect(creature, &game.get_action_manager_ref(), ItemStatus::ITEM_STATUS_UNCURSED, creature_loc.first, creature_loc.second);
+      }
     }
   }
 
