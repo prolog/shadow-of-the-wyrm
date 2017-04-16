@@ -19368,8 +19368,8 @@
 				<NumSides>200</NumSides>
 				<Type>0</Type>
 			</Damage>
-			<Speed>70</Speed>
 			<Soak>15</Soak>
+			<Speed>70</Speed>
 		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>
@@ -32637,6 +32637,26 @@
 					<NumSides>6</NumSides>
 					<Type>9</Type>
 				</Damage>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
+				<Colour>7</Colour>
+			</Wand>
+			<Wand id="digging_wand">
+				<DescriptionSID>DIGGING_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DIGGING_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DIGGING_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DIGGING_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>133</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Effect>26</Effect>
 				<BeamType>1</BeamType>
 				<Range>4</Range>
 				<Colour>7</Colour>

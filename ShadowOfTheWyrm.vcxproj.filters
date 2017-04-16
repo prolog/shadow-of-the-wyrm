@@ -4005,6 +4005,9 @@
     <ClInclude Include="engine\time\include\CreatureSkillMarkerChecker.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\DiggingEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7915,6 +7918,9 @@
     </ClCompile>
     <ClCompile Include="engine\time\source\CreatureSkillMarkerChecker.cpp">
       <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\DiggingEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -326,6 +326,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>digging_wand</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>65</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>buckler</ID>
 				<Coord>
 					<Row>2</Row>

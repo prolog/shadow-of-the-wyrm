@@ -70,7 +70,7 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr 
 }
 
 // Dig through an adjacent tile.
-ActionCostValue DigAction::dig_through(CreaturePtr creature, ItemPtr dig_item, MapPtr map, TilePtr adjacent_tile, const Direction d) const
+ActionCostValue DigAction::dig_through(CreaturePtr creature, ItemPtr dig_item, MapPtr map, TilePtr adjacent_tile, const Coordinate& dig_coord) const
 {
   ActionCostValue acv =  0;
 
@@ -80,19 +80,23 @@ ActionCostValue DigAction::dig_through(CreaturePtr creature, ItemPtr dig_item, M
     if (added_msg) return acv;
 
     // If we're digging in a shop, that is not appreciated, not at all.
-    Coordinate dig_coord = CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), d);
     MapUtils::anger_shopkeeper_if_necessary(dig_coord, map, creature);
 
     // Do the actual decomposition, then re-add the tile, check for dig item
     // breakage, and add an appropriate message.
     TilePtr new_tile = dig_tile(adjacent_tile);
-    add_new_tile_to_dig_location(new_tile, map, creature->get_id(), d);
+    map->insert(dig_coord, new_tile);
     add_successful_dig_message(creature);
     handle_potential_item_breakage(creature, dig_item);
 
     // Digging through a tile is strenuous, and always trains Strength.
-    StatisticsMarker sm;
-    sm.mark_strength(creature);
+    // Assuming, of course, the character is using an item and this isn't part
+    // of a spell.
+    if (dig_item != nullptr)
+    {
+      StatisticsMarker sm;
+      sm.mark_strength(creature);
+    }
 
     acv = get_action_cost_value(creature);
   }
@@ -157,15 +161,6 @@ string DigAction::get_decomposition_item_id(const vector<pair<pair<int, int>, st
   }
 
   return decomp_item_id;
-}
-
-void DigAction::add_new_tile_to_dig_location(TilePtr new_tile, MapPtr map, const std::string& creature_id, const Direction d) const
-{
-  // Get the necessary details for re-adding
-  Coordinate cr_loc = map->get_location(creature_id);
-  Coordinate new_cr_loc = CoordUtils::get_new_coordinate(cr_loc, d);
-
-  map->insert(new_cr_loc.first, new_cr_loc.second, new_tile);
 }
 
 void DigAction::add_successful_dig_message(CreaturePtr creature) const

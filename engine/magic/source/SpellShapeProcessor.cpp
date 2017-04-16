@@ -17,7 +17,7 @@ SpellShapeProcessor::~SpellShapeProcessor()
 }
 
 // Create the affected tiles and animation for the spell shape.
-pair<vector<TilePtr>, Animation> SpellShapeProcessor::create_affected_tiles_and_animation(CreaturePtr caster, MapPtr map, const std::vector<TilePtr>& affected_tiles, const MovementPath& movement_path)
+pair<vector<pair<Coordinate, TilePtr>>, Animation> SpellShapeProcessor::create_affected_tiles_and_animation(CreaturePtr caster, MapPtr map, const std::vector<pair<Coordinate, TilePtr>>& affected_coords_and_tiles, const MovementPath& movement_path)
 {
   MapPtr fov_map = caster->get_decision_strategy()->get_fov_map();
   Game& game = Game::instance();
@@ -26,28 +26,31 @@ pair<vector<TilePtr>, Animation> SpellShapeProcessor::create_affected_tiles_and_
   CreaturePtr player = game.get_current_player();
 
   Animation animation = at.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
-  pair<vector<TilePtr>, Animation> affected_tiles_and_animation(affected_tiles, animation);
+  pair<vector<pair<Coordinate, TilePtr>>, Animation> affected_tiles_and_animation(affected_coords_and_tiles, animation);
 
   return affected_tiles_and_animation;
 }
 
 // Process the shape.  This is done by generating all the affected tiles,
 // and then applying damage and spell effects to each.
-bool SpellShapeProcessor::process_damage_and_effect(CreaturePtr caster, const vector<TilePtr>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
+bool SpellShapeProcessor::process_damage_and_effect(CreaturePtr caster, const vector<pair<Coordinate, TilePtr>>& affected_coords_and_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
 {
   // Apply the spell's damage/effect to the tiles in order.
-  return apply_damage_and_effect(caster, affected_tiles, spell, effect_status, am);
+  return apply_damage_and_effect(caster, affected_coords_and_tiles, spell, effect_status, am);
 }
 
 // Apply a spell to a particular tile by applying its damage and spell effect.
-bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vector<TilePtr>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
+bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vector<pair<Coordinate, TilePtr>>& affected_coords_and_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
 {
   bool spell_identified = false;
 
-  for (TilePtr tile : affected_tiles)
+  for (const pair<Coordinate, TilePtr>& ct_pair : affected_coords_and_tiles)
   {
+    Coordinate coord = ct_pair.first;
+    TilePtr tile = ct_pair.second;
+
     bool damage_identified = apply_damage(caster, tile, spell, am);
-    bool effect_identified = apply_effect(caster, tile, spell, effect_status, am);
+    bool effect_identified = apply_effect(caster, coord, tile, spell, effect_status, am);
 
     if ((damage_identified || effect_identified) && !spell_identified)
     {
@@ -105,15 +108,15 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
 }
 
 // Apply a spell effect to a particular tile.
-bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
+bool SpellShapeProcessor::apply_effect(CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
 {
   if (tile)
   {
     string caster_id = caster != nullptr ? caster->get_id() : "";
 
     EffectType effect_type = spell.get_effect();
-
     EffectPtr effect = EffectFactory::create_effect(effect_type, spell.get_modifier(), spell.get_properties(), spell.get_spell_id(), caster_id);
+
     CreaturePtr creature = tile->get_creature();
 
     if (effect && creature && caster)
@@ -127,6 +130,8 @@ bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const S
       }
 
       bool show_msg_on_unid = (creature && caster && caster->get_is_player() && creature->get_is_player());
+      
+      // JCD FIXME: PASS COORDINATE/TILE TO THIS AS WELL
       return effect->effect(creature, am, effect_status, show_msg_on_unid);
     }
   }
