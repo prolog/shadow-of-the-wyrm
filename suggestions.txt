@@ -1,4 +1,7 @@
 Me:
+- Burrow
+- Beams aren't going through walls because of the beam-stopping code.
+  Update TileMagicChecker to also take an effect type...
 - Need to test the following after the spell refactoring:
   - reflective beam, cross, ball, target self, storm
   - Anything else?

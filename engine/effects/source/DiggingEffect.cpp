@@ -59,11 +59,18 @@ bool DiggingEffect::dig(CreaturePtr creature, const Coordinate& affected_coord)
 
   if (map_cannot_dig.empty() || (String::to_bool(map_cannot_dig) == false))
   {
-    DigAction da;
-    // JCD FIXME tile and dig_coords will be passed in eventually...
-    // da.dig_through(creature, nullptr, map, tile, dig_coords);
+    if (map != nullptr)
+    {
+      TilePtr affected_tile = map->at(affected_coord);
 
-    dug = true;
+      if (affected_tile != nullptr)
+      {
+        DigAction da;
+        da.dig_through(creature, nullptr, map, affected_tile, affected_coord);
+
+        dug = true;
+      }
+    }
   }
   else
   {
