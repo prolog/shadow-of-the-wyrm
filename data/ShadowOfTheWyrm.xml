@@ -24471,6 +24471,19 @@
 			<Shape>0</Shape>
 			<Effect>24</Effect>
 		</Spell>		
+		<Spell id="c_13_crumble">
+			<NameSID>CRUMBLE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>CRUMLBE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>CRUMBLE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Effect>26</Effect>
+		</Spell>		
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -33047,6 +33060,24 @@
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_12_mapping</SpellID>
 				<Difficulty>30</Difficulty>
+			</Spellbook>
+			<Spellbook id="crumble_spellbook">
+				<DescriptionSID>CRUMBLE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CRUMBLE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>CRUMBLE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_CRUMBLE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>22</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<SpellID>c_13_crumble</SpellID>
+				<Difficulty>25</Difficulty>
 			</Spellbook>
 			<Spellbook id="blast_spellbook">
 				<DescriptionSID>BLAST_SPELLBOOK_SID</DescriptionSID>
