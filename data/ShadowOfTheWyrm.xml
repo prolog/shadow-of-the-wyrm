@@ -24765,6 +24765,19 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="a_16_dig">
+			<NameSID>DIG_NAME_SID</NameSID>
+			<PlayerCastMessageSID>DIG_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>DIG_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>6</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>1</Shape>
+			<Effect>26</Effect>
+		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -33366,6 +33379,24 @@
 				<DangerLevel>8</DangerLevel>
 				<SpellID>a_15_vorpal_bolt</SpellID>
 				<Difficulty>110</Difficulty>
+			</Spellbook>
+			<Spellbook id="dig_spellbook">
+				<DescriptionSID>DIG_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DIG_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DIG_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DIG_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>200</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>3</DangerLevel>
+				<SpellID>a_16_dig</SpellID>
+				<Difficulty>70</Difficulty>
 			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
