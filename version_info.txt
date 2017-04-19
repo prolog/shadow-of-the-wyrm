@@ -83,7 +83,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New non-playable race: Elysian (builder).
 
-- New spells/spellbooks: mapping (Cantrips), crumble (Cantrips).
+- New spells/spellbooks: mapping (Cantrips), crumble (Cantrips), dig
+  (Arcane).
 
 - New items: scroll of mapping, scroll of monster summoning, wand of
   digging.
