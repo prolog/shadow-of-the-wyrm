@@ -7922,5 +7922,8 @@
     <ClCompile Include="engine\effects\source\DiggingEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\magic\source\unit_tests\TileMagicChecker_test.cpp">
+      <Filter>Source Files\engine\magic\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
