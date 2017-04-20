@@ -44,7 +44,7 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> ConeShapeProcessor::get_affec
         Coordinate c(centre_coord.first, col);
         TilePtr tile = map->at(c);
 
-        if (tile && !tmc.does_tile_block_spell(tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(c, previous_frame))
+        if (tile && !tmc.does_tile_block_spell(tile, spell) && is_coordinate_adjacent_to_coordinate_in_previous_frame(c, previous_frame))
         {
           current_frame.push_back(c);
           affected_coords_and_tiles.push_back(make_pair(c, tile));
@@ -59,7 +59,7 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> ConeShapeProcessor::get_affec
         Coordinate c(row, centre_coord.second);
         TilePtr tile = map->at(c);
 
-        if (tile && !tmc.does_tile_block_spell(tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(c, previous_frame))
+        if (tile && !tmc.does_tile_block_spell(tile, spell) && is_coordinate_adjacent_to_coordinate_in_previous_frame(c, previous_frame))
         {
           current_frame.push_back(c);
           affected_coords_and_tiles.push_back(make_pair(c, tile));

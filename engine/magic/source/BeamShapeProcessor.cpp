@@ -129,13 +129,13 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BeamShapeProcessor::create
     }
 
     // Check to see if the tile blocks the spell.
-    if (tmc.does_tile_block_spell(tile))
+    if (tmc.does_tile_block_spell(tile, spell))
     {
       if (should_beam_reflect())
       {
         // The beam is reflective. Update the direction based on the the
         // incoming direction and map characteristics.
-        current_direction = get_new_beam_direction_after_impact(current_direction, c, map);
+        current_direction = get_new_beam_direction_after_impact(current_direction, c, map, spell);
 
         // Ensure that each reflection also takes one off the range (again,
         // to prevent looping indefinitely).
@@ -234,7 +234,7 @@ bool BeamShapeProcessor::should_beam_reflect() const
 }
 
 // Get the new beam direction after an impact.
-Direction BeamShapeProcessor::get_new_beam_direction_after_impact(const Direction old_direction, const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_new_beam_direction_after_impact(const Direction old_direction, const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   if (DirectionUtils::is_cardinal(old_direction))
   {
@@ -245,26 +245,26 @@ Direction BeamShapeProcessor::get_new_beam_direction_after_impact(const Directio
   // (NW, SE, etc).  Figure out the correct reflection direction.
   if (old_direction == Direction::DIRECTION_NORTH_EAST)
   {
-    return get_ne_reflection(current_coord, map);
+    return get_ne_reflection(current_coord, map, spell);
   }
   else if (old_direction == Direction::DIRECTION_NORTH_WEST)
   {
-    return get_nw_reflection(current_coord, map);
+    return get_nw_reflection(current_coord, map, spell);
   }
   else if (old_direction == Direction::DIRECTION_SOUTH_EAST)
   {
-    return get_se_reflection(current_coord, map);
+    return get_se_reflection(current_coord, map, spell);
   }
   else if (old_direction == Direction::DIRECTION_SOUTH_WEST)
   {
-    return get_sw_reflection(current_coord, map);
+    return get_sw_reflection(current_coord, map, spell);
   }
 
   // Should never actually get to this, based on the above logic:
   return old_direction;
 }
 
-Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
 
@@ -280,7 +280,7 @@ Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord,
     // Are we firing at a northern wall?  Reflect south-east.
     TilePtr north_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_WEST));
 
-    if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile))
+    if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_SOUTH_EAST;
     }
@@ -293,7 +293,7 @@ Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord,
   return reflection;
 }
 
-Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
 
@@ -309,7 +309,7 @@ Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord,
     // Are we firing at a northern wall?  Reflect south-west.
     TilePtr north_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_EAST));
 
-    if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile))
+    if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_SOUTH_WEST;
     }
@@ -322,7 +322,7 @@ Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord,
   return reflection;
 }
 
-Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
   
@@ -338,7 +338,7 @@ Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord,
     // Are we firing at a southern wall?  Reflect north-east.
     TilePtr south_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_WEST));
 
-    if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile))
+    if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_NORTH_EAST;
     }
@@ -351,7 +351,7 @@ Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord,
   return reflection;
 }
 
-Direction BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
 
@@ -367,7 +367,7 @@ Direction BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord,
     // Are we firing at a southern wall?  Reflect north-east.
     TilePtr south_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_EAST));
 
-    if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile))
+    if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_NORTH_WEST;
     }

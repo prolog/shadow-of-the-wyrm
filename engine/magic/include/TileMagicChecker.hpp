@@ -1,4 +1,5 @@
 #pragma once
+#include "Spell.hpp"
 #include "Tile.hpp"
 
 // Class to check whether a tile blocks a spell.  If a tile is a wall, etc,
@@ -6,5 +7,5 @@
 class TileMagicChecker
 {
   public:
-    bool does_tile_block_spell(TilePtr tile) const;
+    bool does_tile_block_spell(TilePtr tile, const Spell& spell) const;
 };

@@ -49,7 +49,7 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> CrossShapeProcessor::get_affe
         // If the tile blocks the spell, stop trying to process whatever
         // direction we're currently working with.  This ensures that
         // spells won't be able to go through walls, etc.
-        if (tmc.does_tile_block_spell(tile))
+        if (tmc.does_tile_block_spell(tile, spell))
         {
           stop_vec.push_back(d);
         }

@@ -42,7 +42,7 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> BallShapeProcessor::get_affec
           Coordinate ball_coord(row, col);
           TilePtr tile = map->at(ball_coord);
 
-          if (tile && !tmc.does_tile_block_spell(tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(ball_coord, prev_coords))
+          if (tile && !tmc.does_tile_block_spell(tile, spell) && is_coordinate_adjacent_to_coordinate_in_previous_frame(ball_coord, prev_coords))
           {
             current_coords.push_back(ball_coord);
             affected_coords_and_tiles.push_back(make_pair(ball_coord, tile));
@@ -57,13 +57,13 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> BallShapeProcessor::get_affec
         TilePtr west_tile = map->at(west_coord);
         TilePtr east_tile = map->at(east_coord);
 
-        if (east_tile && !tmc.does_tile_block_spell(east_tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(east_coord, prev_coords))
+        if (east_tile && !tmc.does_tile_block_spell(east_tile, spell) && is_coordinate_adjacent_to_coordinate_in_previous_frame(east_coord, prev_coords))
         {
           current_coords.push_back(east_coord);
           affected_coords_and_tiles.push_back(make_pair(east_coord, east_tile));
         }
 
-        if (west_tile && !tmc.does_tile_block_spell(west_tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(west_coord, prev_coords))
+        if (west_tile && !tmc.does_tile_block_spell(west_tile, spell) && is_coordinate_adjacent_to_coordinate_in_previous_frame(west_coord, prev_coords))
         {
           current_coords.push_back(west_coord);
           affected_coords_and_tiles.push_back(make_pair(west_coord, west_tile));
