@@ -11,6 +11,7 @@
 using namespace std;
 
 DiggingEffect::DiggingEffect()
+: add_messages(true)
 {
 }
 
@@ -54,8 +55,9 @@ bool DiggingEffect::dig(CreaturePtr creature, const Coordinate& affected_coord)
   MapPtr map = game.get_current_map();
 
   // Get the creature's current tile and whether or not the map prevents digging
-  TilePtr cur_tile = map->at(map->get_location(creature->get_id()));  
+  TilePtr cur_tile = map->at(affected_coord);  
   string map_cannot_dig = map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG);
+  CreaturePtr source_creature = map->get_creature(source_id);
 
   if (map_cannot_dig.empty() || (String::to_bool(map_cannot_dig) == false))
   {
@@ -66,7 +68,7 @@ bool DiggingEffect::dig(CreaturePtr creature, const Coordinate& affected_coord)
       if (affected_tile != nullptr)
       {
         DigAction da;
-        da.dig_through(creature, nullptr, map, affected_tile, affected_coord);
+        da.dig_through(source_id, nullptr, map, affected_tile, affected_coord, add_messages);
 
         dug = true;
       }
@@ -74,7 +76,7 @@ bool DiggingEffect::dig(CreaturePtr creature, const Coordinate& affected_coord)
   }
   else
   {
-    if (creature->get_is_player())
+    if (add_messages && source_creature && source_creature->get_is_player())
     {
       IMessageManager& manager = MM::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CANNOT_DIG));
@@ -84,5 +86,8 @@ bool DiggingEffect::dig(CreaturePtr creature, const Coordinate& affected_coord)
     }
   }
 
+  // After the first dig (or non-dig), turn off messages so that the user
+  // doesn't get repeated messages.
+  add_messages = false;
   return dug;
 }
