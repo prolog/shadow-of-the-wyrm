@@ -70,14 +70,19 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr 
 }
 
 // Dig through an adjacent tile.
-ActionCostValue DigAction::dig_through(CreaturePtr creature, ItemPtr dig_item, MapPtr map, TilePtr adjacent_tile, const Coordinate& dig_coord) const
+ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_item, MapPtr map, TilePtr adjacent_tile, const Coordinate& dig_coord, const bool add_messages) const
 {
   ActionCostValue acv =  0;
 
-  if (creature != nullptr && map != nullptr && adjacent_tile != nullptr)
+  if (map != nullptr && adjacent_tile != nullptr)
   {
-    bool added_msg = add_cannot_dig_message_if_necessary(creature, map);
-    if (added_msg) return acv;
+    CreaturePtr creature = map->get_creature(creature_id);
+
+    if (add_messages)
+    {
+      bool added_msg = add_cannot_dig_message_if_necessary(creature, map);
+      if (added_msg) return acv;
+    }
 
     // If we're digging in a shop, that is not appreciated, not at all.
     MapUtils::anger_shopkeeper_if_necessary(dig_coord, map, creature);
@@ -86,7 +91,12 @@ ActionCostValue DigAction::dig_through(CreaturePtr creature, ItemPtr dig_item, M
     // breakage, and add an appropriate message.
     TilePtr new_tile = dig_tile(adjacent_tile);
     map->insert(dig_coord, new_tile);
-    add_successful_dig_message(creature);
+
+    if (add_messages)
+    {
+      add_successful_dig_message(creature);
+    }
+
     handle_potential_item_breakage(creature, dig_item);
 
     // Digging through a tile is strenuous, and always trains Strength.
@@ -128,21 +138,31 @@ bool DigAction::add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr
 TilePtr DigAction::dig_tile(TilePtr adjacent_tile) const
 {
   TileGenerator tg;
-  TilePtr new_tile = tg.generate(adjacent_tile->get_decomposition_tile_type());
 
-  // Copy over features and items.
-  new_tile->transform_from(adjacent_tile);
+  TileType decomp_tile_type = adjacent_tile->get_decomposition_tile_type();
 
-  // Potentially add some items created by breaking up the original tile.
-  ItemManager im;
-  string decomp_item_id = get_decomposition_item_id(adjacent_tile->get_decomposition_item_ids());
-
-  if (!decomp_item_id.empty())
+  if (decomp_tile_type != TileType::TILE_TYPE_UNDEFINED)
   {
-    im.create_item_with_probability(DIG_PERCENT_CHANCE_ITEM, 100, new_tile->get_items(), decomp_item_id, static_cast<uint>(RNG::range(1, 6)));
-  }
+    TilePtr new_tile = tg.generate(decomp_tile_type);
 
-  return new_tile;
+    // Copy over features and items.
+    new_tile->transform_from(adjacent_tile);
+
+    // Potentially add some items created by breaking up the original tile.
+    ItemManager im;
+    string decomp_item_id = get_decomposition_item_id(adjacent_tile->get_decomposition_item_ids());
+
+    if (!decomp_item_id.empty())
+    {
+      im.create_item_with_probability(DIG_PERCENT_CHANCE_ITEM, 100, new_tile->get_items(), decomp_item_id, static_cast<uint>(RNG::range(1, 6)));
+    }
+
+    return new_tile;
+  }
+  else
+  {
+    return adjacent_tile;
+  }
 }
 
 string DigAction::get_decomposition_item_id(const vector<pair<pair<int, int>, string>>& decomp_ids) const

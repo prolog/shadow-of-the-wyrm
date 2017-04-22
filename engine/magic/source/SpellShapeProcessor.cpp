@@ -44,13 +44,18 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
 {
   bool spell_identified = false;
 
+  // Get the effect and track it here.
+  string caster_id = caster != nullptr ? caster->get_id() : "";
+  EffectType effect_type = spell.get_effect();
+  EffectPtr effect = EffectFactory::create_effect(effect_type, spell.get_modifier(), spell.get_properties(), spell.get_spell_id(), caster_id);
+
   for (const pair<Coordinate, TilePtr>& ct_pair : affected_coords_and_tiles)
   {
     Coordinate coord = ct_pair.first;
     TilePtr tile = ct_pair.second;
 
     bool damage_identified = apply_damage(caster, tile, spell, am);
-    bool effect_identified = apply_effect(caster, coord, tile, spell, effect_status, am);
+    bool effect_identified = apply_effect(effect, caster, coord, tile, spell, effect_status, am);
 
     if ((damage_identified || effect_identified) && !spell_identified)
     {
@@ -108,28 +113,31 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
 }
 
 // Apply a spell effect to a particular tile.
-bool SpellShapeProcessor::apply_effect(CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
+bool SpellShapeProcessor::apply_effect(EffectPtr effect, CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
 {
   if (tile)
   {
-    string caster_id = caster != nullptr ? caster->get_id() : "";
-
-    EffectType effect_type = spell.get_effect();
-    EffectPtr effect = EffectFactory::create_effect(effect_type, spell.get_modifier(), spell.get_properties(), spell.get_spell_id(), caster_id);
-
     CreaturePtr creature = tile->get_creature();
 
-    if (effect && creature && caster)
+    if (effect)
     {
       bool negative_effect = effect->is_negative_effect();
+      bool show_msg_on_unid = false;
 
-      if (negative_effect && (caster->get_id() != (creature->get_id())))
+      // If there's an affected creature, set hostility, if applicable.  If
+      // there's a caster, we should also check to see if we need to show
+      // a message if applicable when the effect is not identified.
+      if (creature && caster)
       {
-        HostilityManager hm;
-        hm.set_hostility_to_creature(creature, caster->get_id());
+        if (negative_effect && (caster->get_id() != (creature->get_id())))
+        {
+          HostilityManager hm;
+          hm.set_hostility_to_creature(creature, caster->get_id());
+        }
+
+        show_msg_on_unid = (creature && caster && caster->get_is_player() && creature->get_is_player());
       }
 
-      bool show_msg_on_unid = (creature && caster && caster->get_is_player() && creature->get_is_player());
       return effect->effect(creature, am, effect_status, coord, tile, show_msg_on_unid);
     }
   }
