@@ -112,13 +112,15 @@ uint NullInventory::size() const
   return 0;
 }
 
-// JCD FIXME LATER
+void NullInventory::set_items(const list<ItemPtr>& items)
+{
+}
+
 list<ItemPtr>& NullInventory::get_items_ref()
 {
   return items;
 }
 
-// JCD FIXME LATER
 const list<ItemPtr>& NullInventory::get_items_cref() const
 {
   return items;

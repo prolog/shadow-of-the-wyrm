@@ -1,5 +1,8 @@
+#include "Amulet.hpp"
 #include "DungeonTile.hpp"
 #include "gtest/gtest.h"
+#include "RockTile.hpp"
+#include "RockyEarthTile.hpp"
 #include "TileGenerator.hpp"
 
 TEST(SW_World_Tiles_Tile, correct_inventory_type)
@@ -42,6 +45,21 @@ TEST(SW_World_Tiles_Tile, correct_inventory_type)
 
     EXPECT_EQ(expected_value, tile->get_items()->get_class_identifier());
   }
+}
+
+// Ensure that when a tile is transformed from a tile with a null inventory,
+// that the null inventory is not carried over from the old tile.
+TEST(SW_World_Tiles_Tile, transform_from_solid_rock_inventory)
+{
+  TilePtr rock_tile = std::make_shared<RockTile>();
+  TilePtr earth_tile = std::make_shared<RockyEarthTile>();
+
+  earth_tile->transform_from(rock_tile);
+  
+  ItemPtr amulet = std::make_shared<Amulet>();
+  earth_tile->get_items()->add_front(amulet);
+
+  EXPECT_EQ(1, earth_tile->get_items()->count_items());
 }
 
 TEST(SW_World_Tiles_Tile, extra_desc_sids)
