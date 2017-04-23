@@ -1,6 +1,4 @@
 Me:
-- The transformed, dug tiles have a NullInventory.  Probably transferred
-  off the original rock tile.
 - Need to test the following after the spell refactoring:
   - reflective beam, cross, ball, target self, storm
   - Anything else?

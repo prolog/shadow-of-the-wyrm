@@ -61,6 +61,7 @@ class IInventory : public ISerializable
     virtual uint count_items() const = 0;
     virtual uint count_currency() const = 0;
 
+    virtual void set_items(const std::list<ItemPtr>& items) = 0;
     virtual std::list<ItemPtr>& get_items_ref() = 0;
     virtual const std::list<ItemPtr>& get_items_cref() const = 0;
 

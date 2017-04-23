@@ -343,6 +343,11 @@ uint Inventory::size() const
   return items.size();
 }
 
+void Inventory::set_items(const list<ItemPtr>& new_items)
+{
+  items = new_items;
+}
+
 // Get the actual Items
 list<ItemPtr>& Inventory::get_items_ref()
 {

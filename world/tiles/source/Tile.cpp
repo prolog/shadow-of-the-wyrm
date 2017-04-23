@@ -534,9 +534,17 @@ void Tile::transform_from(std::shared_ptr<Tile> original_tile)
   {
     // Keep the properties.
     // Copy everything else.
+    // Copy over the inventory using the raw items.
     map<string, string> props = additional_properties;
-    
+    IInventoryPtr new_inv = items;
+
     *this = *original_tile;
+
+    // Ensure the inventory is of the right type, so that dug tiles have real
+    // inventories instead of null ones.
+    list<ItemPtr> raw_items = original_tile->get_items()->get_items_ref();
+    items = new_inv;
+    items->set_items(raw_items);
 
     for (const auto& p_pair : props)
     {
