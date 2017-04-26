@@ -11,4 +11,5 @@ class FloatingTowerGenerator : public SOTW::Generator
   protected:
     std::pair<Coordinate, Coordinate> generate_tower(MapPtr map);
     void place_staircases(MapPtr map, const std::pair<Coordinate, Coordinate>& tower_boundaries);
+    void generate_wall_structure(MapPtr map, const std::pair<Coordinate, Coordinate>& tower_boundaries);
 };
