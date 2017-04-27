@@ -1,5 +1,8 @@
 #include "FloatingTowerGenerator.hpp"
+#include "GeneratorUtils.hpp"
+#include "MapProperties.hpp"
 #include "RNG.hpp"
+#include "RockTile.hpp"
 
 using namespace std;
 
@@ -17,6 +20,11 @@ MapPtr FloatingTowerGenerator::generate(const Dimensions& dimensions)
   pair<Coordinate, Coordinate> tower_boundaries = generate_tower(map);
   place_staircases(map, tower_boundaries);
 
+  // Ensure that the level isn't diggable.
+  // Floating Towers are also outside the view of the divine.
+  map->set_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG, to_string(true));
+  map->set_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY, to_string(true));
+
   return map;
 }
 
@@ -31,7 +39,7 @@ pair<Coordinate, Coordinate> FloatingTowerGenerator::generate_tower(MapPtr map)
     int cols = dim.get_x();
 
     int width = RNG::range(cols * 0.6, cols * 0.8);
-    int height = RNG::range(cols * 0.6, cols * 0.8);
+    int height = RNG::range(rows * 0.6, rows * 0.8);
 
     int start_row = (rows / 2) - (height / 2);
     int start_col = (cols / 2) - (width / 2);
@@ -40,7 +48,8 @@ pair<Coordinate, Coordinate> FloatingTowerGenerator::generate_tower(MapPtr map)
 
     boundaries = {{start_row, start_col}, {end_row, end_col}};
 
-    generate_wall_structure(map, boundaries);
+    GeneratorUtils::generate_building(map, start_row, start_col, height, width);
+    generate_wall_structure(map, {{start_row+1, start_col+1}, {end_row-1, end_col-1}});
   }
 
   return boundaries;
@@ -74,9 +83,6 @@ void FloatingTowerGenerator::generate_wall_structure(MapPtr map, const pair<Coor
     {
       bool move_vertically = RNG::percent_chance(55);
 
-      // JCD TODO: Turtle stuff I have not yet implemented.
-      // No, you're procrastinating.
-
       if (move_vertically)
       {
         v_steps++;
@@ -85,7 +91,19 @@ void FloatingTowerGenerator::generate_wall_structure(MapPtr map, const pair<Coor
       {
         h_steps++;
       }
-    }
 
+      // Add rock tiles based on the turtle movement.
+      TilePtr rock_tile = std::make_shared<RockTile>();
+      map->insert({centre_y - v_steps, centre_x - h_steps}, rock_tile);
+
+      rock_tile = std::make_shared<RockTile>();
+      map->insert({centre_y - v_steps, centre_x + h_steps}, rock_tile);
+
+      rock_tile = std::make_shared<RockTile>();
+      map->insert({centre_y + v_steps, centre_x - h_steps}, rock_tile);
+
+      rock_tile = std::make_shared<RockTile>();
+      map->insert({centre_y + v_steps, centre_x + h_steps}, rock_tile);
+    }
   }
 }
