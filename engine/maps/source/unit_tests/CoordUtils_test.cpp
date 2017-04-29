@@ -508,3 +508,15 @@ TEST(SW_Engine_Maps_CoordUtils, get_minimum_bounding_box)
   EXPECT_EQ(BoundingBox(make_pair(3,3), make_pair(17,12)), CoordUtils::get_minimum_bounding_box(dim, points, 0));
   EXPECT_EQ(BoundingBox(make_pair(2,2), make_pair(18,13)), CoordUtils::get_minimum_bounding_box(dim, points, 1));
 }
+
+TEST(SW_Engine_Maps_CoordUtils, get_centre_coordinate)
+{
+  Coordinate centre = CoordUtils::get_centre_coordinate({10,10}, {14,14});
+  EXPECT_EQ(12, centre.first);
+  EXPECT_EQ(12, centre.second);
+
+  centre = CoordUtils::get_centre_coordinate({10, 12}, {16, 18});
+  EXPECT_EQ(13, centre.first);
+  EXPECT_EQ(15, centre.second);
+}
+

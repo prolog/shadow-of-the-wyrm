@@ -1,4 +1,5 @@
 #include "FloatingTowerGenerator.hpp"
+#include "CoordUtils.hpp"
 #include "GeneratorUtils.hpp"
 #include "MapProperties.hpp"
 #include "RNG.hpp"
@@ -38,8 +39,9 @@ pair<Coordinate, Coordinate> FloatingTowerGenerator::generate_tower(MapPtr map)
     int rows = dim.get_y();
     int cols = dim.get_x();
 
-    int width = RNG::range(cols * 0.6, cols * 0.8);
     int height = RNG::range(rows * 0.6, rows * 0.8);
+    if (height % 2 == 0) height++;
+    int width = 2 * height + 1;
 
     int start_row = (rows / 2) - (height / 2);
     int start_col = (cols / 2) - (width / 2);
@@ -59,6 +61,23 @@ void FloatingTowerGenerator::place_staircases(MapPtr map, const pair<Coordinate,
 {
   if (map != nullptr)
   {
+    // To find the staircase locations, start at the centre of the tower.
+    // Increment outward, step by step, until at least 2 possible tiles
+    // are open.
+    Coordinate centre = CoordUtils::get_centre_coordinate(tower_boundaries.first, tower_boundaries.second);
+    Depth depth = map->size().depth();
+    vector<Coordinate> potential_stair_locations = get_stair_locations(map, centre, tower_boundaries);
+    std::shuffle(potential_stair_locations.begin(), potential_stair_locations.end(), RNG::get_engine());
+
+    update_depth_details(map);
+
+    // Define an up staircase if:
+    //
+    // - The max depth property is defined
+    // - Current depth is less than max depth
+    if (depth.get_current() < depth.get_maximum())
+    {
+    }
   }
 }
 
@@ -73,15 +92,23 @@ void FloatingTowerGenerator::generate_wall_structure(MapPtr map, const pair<Coor
   {
     Coordinate top_left = tower_boundaries.first;
     Coordinate bottom_right = tower_boundaries.second;
+    Coordinate centre = CoordUtils::get_centre_coordinate(top_left, bottom_right);
 
-    int centre_y = (top_left.first + bottom_right.first) / 2;
-    int centre_x = (top_left.second + bottom_right.second) / 2;
+    int centre_y = centre.first;
+    int centre_x = centre.second;
     int v_steps = 0;
     int h_steps = 0;
 
+    // First, place solid rock at the very centre.
+    TilePtr rock_tile = std::make_shared<RockTile>();
+    map->insert({centre_y, centre_x}, rock_tile);
+
+    // Next, create a geometric-y pattern using turtle movement.
     while ((centre_y - v_steps > (top_left.first) + 1) && (centre_x - h_steps > (top_left.second) + 1))
     {
-      bool move_vertically = RNG::percent_chance(55);
+      // The probability is tilted more towards horizontal because there are
+      // more horizontal tiles and the resulting shape looks better.
+      bool move_vertically = RNG::percent_chance(38);
 
       if (move_vertically)
       {
@@ -93,7 +120,7 @@ void FloatingTowerGenerator::generate_wall_structure(MapPtr map, const pair<Coor
       }
 
       // Add rock tiles based on the turtle movement.
-      TilePtr rock_tile = std::make_shared<RockTile>();
+      rock_tile = std::make_shared<RockTile>();
       map->insert({centre_y - v_steps, centre_x - h_steps}, rock_tile);
 
       rock_tile = std::make_shared<RockTile>();
@@ -106,4 +133,37 @@ void FloatingTowerGenerator::generate_wall_structure(MapPtr map, const pair<Coor
       map->insert({centre_y + v_steps, centre_x + h_steps}, rock_tile);
     }
   }
+}
+
+vector<Coordinate> FloatingTowerGenerator::get_stair_locations(MapPtr map, const Coordinate& centre, const pair<Coordinate, Coordinate>& tower_boundaries)
+{
+  vector<Coordinate> stair_locs;
+
+  // Find some potential stair locations.  Once we have enough to create some
+  // variance (but still remain close to the centre of the map), break out of
+  // the loop.
+  for (int offset = 0; centre.first - offset > tower_boundaries.first.first && centre.second - offset > tower_boundaries.first.second; offset++)
+  {
+    vector<Coordinate> coords = { { centre.first - offset, centre.second - offset },
+    { centre.first - offset, centre.second + offset },
+    { centre.first + offset, centre.second - offset },
+    { centre.first + offset, centre.second + offset } };
+
+    for (const Coordinate& c : coords)
+    {
+      TilePtr tile = map->at(c);
+
+      if (tile && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
+      {
+        stair_locs.push_back(c);
+      }
+    }
+
+    if (stair_locs.size() > 8)
+    {
+      break;
+    }
+  }
+
+  return stair_locs;
 }

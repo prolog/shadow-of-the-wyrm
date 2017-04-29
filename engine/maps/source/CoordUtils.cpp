@@ -374,6 +374,11 @@ vector<Coordinate> CoordUtils::get_circle_coordinates(const int row_centre, cons
   return coords;
 }
 
+Coordinate CoordUtils::get_centre_coordinate(const Coordinate& top_left, const Coordinate& bottom_right)
+{
+  return {(top_left.first + bottom_right.first) / 2, (top_left.second + bottom_right.second) / 2};
+}
+
 vector<Coordinate> CoordUtils::get_t_coordinates(const Coordinate& sp, const CardinalDirection cd, const int segment_length)
 {
   vector<Coordinate> coords;
