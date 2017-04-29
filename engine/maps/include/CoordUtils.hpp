@@ -38,6 +38,7 @@ class CoordUtils
     //
     static std::vector<Coordinate> get_beam_coordinates(const Coordinate& centre_coord, const Direction d, const uint radius);
     static std::vector<Coordinate> get_circle_coordinates(const int row_centre, const int col_centre, const int radius);
+    static Coordinate get_centre_coordinate(const Coordinate& top_left, const Coordinate& bottom_right);
     static std::vector<Coordinate> get_t_coordinates(const Coordinate& starting_point, const CardinalDirection cd, const int segment_length);
     static std::vector<Coordinate> get_stepped_coordinates(const Coordinate& starting_point, const std::vector<CardinalDirection>& directions, const int step_length);
     static std::vector<Coordinate> get_cross(const Coordinate& origin, const int size);
