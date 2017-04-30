@@ -1064,7 +1064,7 @@ the kind that comes in snatches, quickly gone, %b
 a guest that finds its own way out, that creeps %b
 across the rafters, stirring dust and bones %b
 of mice and long-dead birds.  That fitful night %b
-was like the ones that find us weak, alone, %b
+was like the ones that find us weak, alone - %b
 a bleak aubade, where worry casts its blight %b
 and traps us in between the dusk and coming light.
 %p
@@ -1078,5 +1078,24 @@ that bowed beneath a skylight as it traced %b
 the outline of her form, and how she yearned %b
 to watch the fairy riders make a swift return.
 %p
-
+Her words were whispered, tiny little birds %b
+that settled in to roost within the light, %b
+its cracks and spaces.  Elsewhere, Tel began %b
+to plan a vicious slaughter, one that might %b
+cause reconsideration of this course %b
+among the giants.  Surely they'd expect %b
+retaliation, a quick display of force, %b
+acknowledgement toward the bloody debt, %b
+That there had been a cost, that now he must collect.
+%p
+A show of force was something that they'd lose, %b
+when taken man for man.  The fae were few, %b
+the giants fewer, yet he knew a ruse %b
+was necessary.  Something cunning, shrewd - %b
+he'd watched with horror deep within the woods %b
+as Choros tore apart his king and men, %b
+despite a severed tendon; understood %b
+how many unbled boys would die, and when %b
+the fae and giants met head-on, he couldn't win.
+%p
  
