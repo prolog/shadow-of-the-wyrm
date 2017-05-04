@@ -284,7 +284,7 @@ bool Generator::place_down_staircase(MapPtr map, const int row, const int col,co
   if (tile != nullptr)
   {
     tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
-    tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH));
+    tile->set_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH, get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH));
   }
   else
   {
@@ -614,7 +614,7 @@ map<TileType, vector<string>> Generator::get_foragables_for_season(ISeasonPtr se
 
 void Generator::update_depth_details(MapPtr map)
 {
-  string max_depth_property = get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH);
+  string max_depth_property = get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH);
   if (!max_depth_property.empty())
   {
     Depth depth = map->size().depth();

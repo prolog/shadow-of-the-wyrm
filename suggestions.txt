@@ -1,4 +1,8 @@
 Me:
+- remove min depth property
+- set the towers as permanent
+- in telari, set the necessary properties in the script: min depth,
+  increment, etc.
 - Need to test the following after the spell refactoring:
   - reflective beam, cross, ball, target self, storm
   - Anything else?

@@ -9,6 +9,8 @@ class FloatingTowerGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
+    virtual bool get_permanence_default() const override;
+
     std::pair<Coordinate, Coordinate> generate_tower(MapPtr map);
     void place_staircases(MapPtr map, const std::pair<Coordinate, Coordinate>& tower_boundaries);
     void generate_wall_structure(MapPtr map, const std::pair<Coordinate, Coordinate>& tower_boundaries);

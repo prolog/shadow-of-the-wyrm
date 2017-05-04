@@ -125,7 +125,7 @@ void SewerGenerator::place_staircases(MapPtr result_map)
 
   sec = retrieve_and_remove_random_section(sections_copy);
   sec_coords = CoordUtils::get_coordinates_in_range(sec.first, sec.second);
-  string max_depth_property = get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH);
+  string max_depth_property = get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH);
 
   update_depth_details(result_map);
   Depth depth = result_map->size().depth();

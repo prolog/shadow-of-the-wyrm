@@ -1,0 +1,14 @@
+Building Shadow of the Wyrm, Mac OS Edition
+
+See README.build.linux - most of the same will apply.  There are a couple
+of changes you will need to make to build the game, however:
+
+Run premake4, perhaps with something like:
+
+  premake4 --boost_thread=boost_thread-mt gmake
+
+After running premake4, edit ShadowOfTheWyrm.make, and at the end of the
+CFLAGS for each configuration, add "--std=c++14"
+
+Otherwise, the same process and commands should apply.  Build using
+make.

@@ -27,19 +27,8 @@ const string MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES = "MAP_PROPERTI
 const string MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS = "MAP_PROPERTIES_PCT_CHANCE_HERBS";
 const string MapProperties::MAP_PROPERTIES_RELIC_ID = "MAP_PROPERTIES_RELIC_ID";
 const string MapProperties::MAP_PROPERTIES_CREATURE_IDS = "MAP_PROPERTIES_CREATURE_IDS";
+const string MapProperties::MAP_PROPERTIES_DEPTH = "MAP_PROPERTIES_DEPTH";
+const string MapProperties::MAP_PROPERTIES_MIN_DEPTH = "MAP_PROPERTIES_MIN_DEPTH";
+const string MapProperties::MAP_PROPERTIES_MAX_DEPTH = "MAP_PROPERTIES_MAX_DEPTH";
 
-UnderworldProperties::UnderworldProperties()
-{
-}
-
-UnderworldProperties::~UnderworldProperties()
-{
-}
-
-// If present, used to set the depth of the map.
-const string UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH = "UNDERWORLD_STRUCTURE_DEPTH";
-
-// If present, used (along with the current depth) to determine whether down
-// staircases should be generated.
-const string UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH = "UNDERWORLD_STRUCTURE_MAX_DEPTH";
 
