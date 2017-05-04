@@ -20,7 +20,7 @@ yew:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_FOREST_OF_YEW")
 
 local grotto = Area:new(61, 80)
 grotto:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_LALOS_GROTTO")
-grotto:set_additional_properties({["UNDERWORLD_STRUCTURE_DEPTH"] = "14", ["UNDERWORLD_STRUCTURE_MAX_DEPTH"] = "14", ["MAP_PROPERTIES_INITIAL_CREATURES"] = creatures_csv})
+grotto:set_additional_properties({["MAP_PROPERTIES_DEPTH"] = "14", ["MAP_PROPERTIES_MAX_DEPTH"] = "14", ["MAP_PROPERTIES_INITIAL_CREATURES"] = creatures_csv})
 
 yew:insert()
 grotto:insert()

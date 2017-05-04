@@ -13,7 +13,7 @@ gnordvar:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_GNORDVAR")
 
 local gnordvar_mines = Area:new(50, 94)
 gnordvar_mines:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_GNORDVAR_MINES")
-gnordvar_mines:set_additional_properties({["UNDERWORLD_STRUCTURE_DEPTH"] = "20", ["UNDERWORLD_STRUCTURE_MAX_DEPTH"] = "20", ["MAP_PROPERTIES_INITIAL_CREATURES"] = creatures_csv})
+gnordvar_mines:set_additional_properties({["MAP_PROPERTIES_DEPTH"] = "20", ["MAP_PROPERTIES_MAX_DEPTH"] = "20", ["MAP_PROPERTIES_INITIAL_CREATURES"] = creatures_csv})
 
 gnordvar:insert()
 gnordvar_mines:insert()
