@@ -1,4 +1,5 @@
 #include "FloatingTowerGenerator.hpp"
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "GeneratorUtils.hpp"
 #include "MapProperties.hpp"
@@ -61,6 +62,10 @@ void FloatingTowerGenerator::place_staircases(MapPtr map, const pair<Coordinate,
 {
   if (map != nullptr)
   {
+    // JCD FIXME
+    string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+    bool place_player_on_down_staircase = (depth_increment.empty());
+    
     // To find the staircase locations, start at the centre of the tower.
     // Increment outward, step by step, until at least 2 possible tiles
     // are open.
@@ -71,12 +76,33 @@ void FloatingTowerGenerator::place_staircases(MapPtr map, const pair<Coordinate,
 
     update_depth_details(map);
 
-    // Define an up staircase if:
-    //
-    // - The max depth property is defined
-    // - Current depth is less than max depth
-    if (depth.get_current() < depth.get_maximum())
+    // Define an up staircase if we aren't as high up as we can go.
+    // ie, as long as current depth > min depth.
+    if (depth.get_current() > depth.get_minimum())
     {
+      Coordinate up_stairs = potential_stair_locations.back();
+      potential_stair_locations.pop_back();
+
+      place_up_staircase(map, up_stairs.first, up_stairs.second, TileType::TILE_TYPE_FLOATING_TOWER, Direction::DIRECTION_UP, false, !place_player_on_down_staircase);
+    }
+
+    // Define a down staircase if we haven't reached the minimum
+    // depth:
+    //
+    // - The min depth property is defined
+    // - Current depth is greater than min depth.
+    string min_depth_s = get_additional_property(MapProperties::MAP_PROPERTIES_MIN_DEPTH);
+    if (!min_depth_s.empty())
+    {
+      int min_depth = String::to_int(min_depth_s);
+
+      if (depth.get_current() > min_depth)
+      {
+        Coordinate up_stairs = potential_stair_locations.back();
+        potential_stair_locations.pop_back();
+
+        place_down_staircase(map, up_stairs.first, up_stairs.second, TileType::TILE_TYPE_FLOATING_TOWER, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase);
+      }
     }
   }
 }
@@ -166,4 +192,9 @@ vector<Coordinate> FloatingTowerGenerator::get_stair_locations(MapPtr map, const
   }
 
   return stair_locs;
+}
+
+bool FloatingTowerGenerator::get_permanence_default() const
+{
+  return true;
 }

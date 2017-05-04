@@ -19,6 +19,17 @@ if not _OPTIONS["lua_link"] then
   _OPTIONS["lua_link"] = "lua"
 end
 
+-- What boost-thread should be linked against?
+-- Default is "boost_thread", but MacOS apparently needs "boost_thread-mt".
+newoption {
+  trigger="boost_thread",
+  value="boost_thread"
+}
+
+if not _OPTIONS["boost_thread"] then
+  _OPTIONS["boost_thread"] = "boost_thread"
+end
+
 -- For the moment, there are two sets of build files: the Visual Studio files
 -- themselves, and this premake4 file, which at the moment is only intended
 -- to be used to create Unix makefiles.
@@ -99,13 +110,14 @@ project "ShadowOfTheWyrm"
                 _OPTIONS["lua_include"]
                 }
   excludes { "**_test.cpp" }
-  links { "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", "boost_thread", "boost_regex", _OPTIONS["lua_link"], "xerces-c", "ncurses", "gtest" }
+  links { "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", _OPTIONS["boost_thread"], "boost_regex", _OPTIONS["lua_link"], "xerces-c", "ncurses" }
   flags { "ExtraWarnings" }
 
   -- Ignore SaveConverter, MapTester configs.
   configuration "Debug"
     defines { "_DEBUG", "DEBUG", "UNIT_TESTS" }
     flags { "Symbols" }
+    links { "gtest" }
     excludes { "source/MapTester.cpp", "source/SaveConverter.cpp" }
 
   configuration "Release"

@@ -1481,7 +1481,6 @@ int remove_negative_statuses_from_creature(lua_State* ls)
 
   if ((lua_gettop(ls) == 1) && lua_isstring(ls, 1))
   {
-    Game& game = Game::instance();
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 

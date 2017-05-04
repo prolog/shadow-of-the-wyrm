@@ -2,6 +2,7 @@
 #ifdef _MSC_VER
 #include <curses.h>
 #else
+#define NCURSES_OPAQUE 0
 #include <ncurses.h>
 #endif
 #include <deque>

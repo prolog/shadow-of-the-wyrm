@@ -512,7 +512,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       {
         // If the tile has a set depth associated with it, then use that.
         // Otherwise, use the specified depth increment.
-        string initial_depth = tile->get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH);
+        string initial_depth = tile->get_additional_property(MapProperties::MAP_PROPERTIES_DEPTH);
         if (!initial_depth.empty())
         {
           int tile_initial_depth = String::to_int(initial_depth);

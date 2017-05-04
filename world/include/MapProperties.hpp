@@ -62,20 +62,12 @@ class MapProperties
     // based on danger level and tile type?
     static const std::string MAP_PROPERTIES_CREATURE_IDS;
 
+    static const std::string MAP_PROPERTIES_DEPTH;
+    static const std::string MAP_PROPERTIES_MIN_DEPTH;
+    static const std::string MAP_PROPERTIES_MAX_DEPTH;
+
   protected:
     MapProperties();
     ~MapProperties();
-};
-
-// Underworld properties: depth-related, etc.
-class UnderworldProperties
-{
-  public:
-    static const std::string UNDERWORLD_STRUCTURE_DEPTH;
-    static const std::string UNDERWORLD_STRUCTURE_MAX_DEPTH;
-
-  protected:
-    UnderworldProperties();
-    ~UnderworldProperties();
 };
 
