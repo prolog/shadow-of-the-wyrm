@@ -2,8 +2,8 @@
 #include "DungeonGenerator.hpp"
 TEST(SW_Engine_Calculators_UnderworldMapDangerLevelCalculator, calculate_danger_level)
 {
-  Depth depth(10, 0, 10);
-  Depth depth2(13, 0, 13);
+  Depth depth(10, 0, 10, 1);
+  Depth depth2(13, 0, 13, 1);
   Dimensions dim;
   dim.set_depth(depth);
 

@@ -9,7 +9,7 @@ class Depth : public ISerializable
 {
   public:
     Depth();
-    Depth(const int cur, const int min, const int max);
+    Depth(const int cur, const int min, const int max, const int increment);
     bool operator==(const Depth& d) const;
 
     void set_current(const int new_current);
@@ -20,6 +20,9 @@ class Depth : public ISerializable
 
     void set_maximum(const int new_maximum);
     int get_maximum() const;
+
+    void set_increment(const int new_increment);
+    int get_increment() const;
 
     std::string str() const;
 
@@ -32,7 +35,7 @@ class Depth : public ISerializable
   protected:
     // Negative depths: dungeons, caverns, etc.
     // Positive depths: towers, castles, etc.
-    int current, minimum, maximum;
+    int current, minimum, maximum, increment;
     static int DEPTH_MULTIPLIER;
 
   private:
