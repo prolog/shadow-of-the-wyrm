@@ -23,7 +23,8 @@ end
 -- Default is "boost_thread", but MacOS apparently needs "boost_thread-mt".
 newoption {
   trigger="boost_thread",
-  value="boost_thread"
+  value="boost_thread",
+  description="Specify the boost_thread library to use for linking."
 }
 
 if not _OPTIONS["boost_thread"] then
