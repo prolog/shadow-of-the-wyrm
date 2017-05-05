@@ -139,6 +139,9 @@
 			</Coord>
 			<Direction>10</Direction>
 			<TileType>52</TileType>
+			<!-- <Depth>-75</Depth>
+			<MaxDepth>-95</MaxDepth>
+			<DepthIncrement>-5</DepthIncrement> -->
 		</Exit>
 	</Exits>
 	<Features>
