@@ -18,6 +18,7 @@ bool MapExit::operator==(const MapExit& me) const
 
   result = result && (map_id == me.map_id);
   result = result && (terrain_type == me.terrain_type);
+  result = result && (properties == me.properties);
 
   return result;
 }
@@ -52,10 +53,40 @@ bool MapExit::is_using_terrain_type() const
   return (!is_using_map_id() && terrain_type != TileType::TILE_TYPE_UNDEFINED);
 }
 
+void MapExit::set_property(const string& prop, const string& val)
+{
+  properties[prop] = val;
+}
+
+string MapExit::get_property(const string& prop) const
+{
+  string val;
+
+  auto p_it = properties.find(prop);
+  if (p_it != properties.end())
+  {
+    val = p_it->second;
+  }
+
+  return val;
+}
+
+bool MapExit::has_property(const string& prop) const
+{
+  auto p_it = properties.find(prop);
+  return (p_it != properties.end());
+}
+
+map<string, string> MapExit::get_properties() const
+{
+  return properties;
+}
+
 bool MapExit::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, map_id);
   Serialize::write_enum(stream, terrain_type);
+  Serialize::write_string_map(stream, properties);
 
   return true;
 }
@@ -64,6 +95,7 @@ bool MapExit::deserialize(istream& stream)
 {
   Serialize::read_string(stream, map_id);
   Serialize::read_enum(stream, terrain_type);
+  Serialize::read_string_map(stream, properties);
 
   return true;
 }

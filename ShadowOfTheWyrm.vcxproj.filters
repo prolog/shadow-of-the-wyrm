@@ -4008,6 +4008,9 @@
     <ClInclude Include="engine\effects\include\DiggingEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\MapExitProperties.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7924,6 +7927,9 @@
     </ClCompile>
     <ClCompile Include="engine\magic\source\unit_tests\TileMagicChecker_test.cpp">
       <Filter>Source Files\engine\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\MapExitProperties.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

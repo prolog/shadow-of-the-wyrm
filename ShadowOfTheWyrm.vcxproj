@@ -1134,6 +1134,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\include\IInventory.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
     <ClInclude Include="world\include\ItemProperties.hpp" />
+    <ClInclude Include="world\include\MapExitProperties.hpp" />
     <ClInclude Include="world\include\Marks.hpp" />
     <ClInclude Include="world\include\Modifier.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
@@ -3367,6 +3368,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\GenerationProperties.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\ItemProperties.cpp" />
+    <ClCompile Include="world\source\MapExitProperties.cpp" />
     <ClCompile Include="world\source\MapTypes.cpp" />
     <ClCompile Include="world\source\Marks.cpp" />
     <ClCompile Include="world\source\Modifier.cpp" />
