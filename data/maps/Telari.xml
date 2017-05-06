@@ -138,10 +138,7 @@
 				<Col>16</Col>
 			</Coord>
 			<Direction>10</Direction>
-			<TileType>52</TileType>
-			<!-- <Depth>-75</Depth>
-			<MaxDepth>-95</MaxDepth>
-			<DepthIncrement>-5</DepthIncrement> -->
+			<MapID>telari_base</MapID>
 		</Exit>
 	</Exits>
 	<Features>

@@ -156,6 +156,9 @@
 					<xs:element name="TileType" type="sl:TileType"/>
 				</xs:sequence>
 			</xs:choice>
+			<xs:element name="Depth" type="xs:integer" minOccurs="0"/>
+			<xs:element name="MaxDepth" type="xs:integer" minOccurs="0"/>
+			<xs:element name="Increment" type="xs:integer" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Features">

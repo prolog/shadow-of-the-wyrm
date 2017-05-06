@@ -70,4 +70,3 @@ class MapProperties
     MapProperties();
     ~MapProperties();
 };
-
