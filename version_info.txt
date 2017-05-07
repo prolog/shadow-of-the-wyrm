@@ -89,13 +89,14 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - New items: scroll of mapping, scroll of monster summoning, wand of
   digging.
 
-- New artifacts: Ring of Aran Fee, naming stone.
+- New artifacts: Ring of Aran Fee, naming stone, Telarian Mail, Telarian
+  Shield, Telarian Helm.
 
 - New traps: monster trap.
 
 - New creatures: drowned shade, cockatrice, The Sorceror, The Sentry,
   comet jellyfish, The Namer, The Worldsinger, The Speaker, nether hydra,
-  sea worm, mesosaur, ghost ray, megalodon.
+  sea worm, mesosaur, ghost ray, megalodon, The Conjurer, The Armourer.
 
 - Bug fixes: 
 
