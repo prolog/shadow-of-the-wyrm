@@ -1,5 +1,7 @@
 Me:
-- set the towers as permanent
+- Email Nathan before next release re: Mac build, and update website to
+  mention that the game is buildable in Mac OS.
+- Need a script to populate the first level of Telari with consumables.
 - in telari, set the necessary properties in the script: min depth,
   increment, etc.
 - Need to test the following after the spell refactoring:

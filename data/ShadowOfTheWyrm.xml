@@ -24246,6 +24246,86 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="the_conjurer">
+			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>THE_CONJURER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_CONJURER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_CONJURER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_CONJURER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>9</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_conjurer.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="the_armourer">
+			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>THE_ARMOURER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_ARMOURER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_ARMOURER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_ARMOURER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>2</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_armourer.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">
@@ -26425,6 +26505,24 @@
 				<Evade>5</Evade>
 				<Soak>8</Soak>
 			</Armour>
+			<Armour id="telarian_helm">
+				<DescriptionSID>TELARIAN_HELM_SID</DescriptionSID>
+				<UsageDescriptionSID>TELARIAN_HELM_USAGE_SID</UsageDescriptionSID>
+				<Value>5000</Value>
+				<Weight>
+					<Pounds>5</Pounds>
+				</Weight>
+				<WornLocation>0</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>6</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.25</Holy>
+					<Shadow>0.75</Shadow>
+				</Resistances>
+				<Evade>20</Evade>
+				<Soak>20</Soak>
+			</Armour>
 			<Armour id="chain_scraps">
 				<DescriptionSID>CHAIN_SCRAPS_SID</DescriptionSID>
 				<UsageDescriptionSID>CHAIN_SCRAPS_USAGE_SID</UsageDescriptionSID>
@@ -26578,6 +26676,24 @@
 				</Resistances>
 				<Evade>9</Evade>
 				<Soak>10</Soak>
+			</Armour>
+			<Armour id="telarian_mail">
+				<DescriptionSID>TELARIAN_MAIL_SID</DescriptionSID>
+				<UsageDescriptionSID>TELARIAN_MAIL_USAGE_SID</UsageDescriptionSID>
+				<Value>10000</Value>
+				<Weight>
+					<Pounds>10</Pounds>
+				</Weight>
+				<WornLocation>6</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.50</Holy>
+					<Shadow>0.50</Shadow>
+				</Resistances>
+				<Evade>40</Evade>
+				<Soak>20</Soak>
 			</Armour>
 			<Armour id="shell_armour">
 				<DescriptionSID>SHELL_ARMOUR_SID</DescriptionSID>
@@ -27094,6 +27210,24 @@
 				</Resistances>
 				<Evade>20</Evade>
 				<Soak>5</Soak>
+			</Armour>
+			<Armour id="telarian_shield">
+				<DescriptionSID>TELARIAN_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>TELARIAN_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>5000</Value>
+				<Weight>
+					<Pounds>4</Pounds>
+				</Weight>
+				<WornLocation>5</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.75</Holy>
+					<Shadow>0.25</Shadow>
+				</Resistances>
+				<Evade>30</Evade>
+				<Soak>30</Soak>
 			</Armour>
 			<Armour id="wyrm_ward">
 				<DescriptionSID>WYRM_WARD_SID</DescriptionSID>

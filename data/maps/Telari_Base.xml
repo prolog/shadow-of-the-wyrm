@@ -32,19 +32,28 @@
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	</Tiles>
 	<PlayerStart>
-		<Row>10</Row>
-		<Col>11</Col>
+		<Row>8</Row>
+		<Col>40</Col>
 	</PlayerStart>
-	<InitialPlacements/>
+	<InitialPlacements>
+		<Creatures>
+			<Placement>
+				<ID>the_conjurer</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>25</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>the_armourer</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>54</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
+	</InitialPlacements>
 	<Exits>
-		<Exit>
-			<Coord>
-				<Row>8</Row>
-				<Col>40</Col>
-			</Coord>
-			<Direction>11</Direction>
-			<MapID>telari</MapID>
-		</Exit>
 		<Exit>
 			<Coord>
 				<Row>12</Row>
