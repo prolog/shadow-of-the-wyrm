@@ -25537,6 +25537,25 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="p_09_antimatter">
+			<NameSID>ANTIMATTER_NAME_SID</NameSID>
+			<PlayerCastMessageSID>ANTIMATTER_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>ANTIMATTER_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3003</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>4</Colour>
+			<APCost>150</APCost>
+			<Speed>1</Speed>
+			<Range>6</Range>
+			<Shape>1</Shape>
+			<Radius>3</Radius>
+			<Damage incorporeal="1">
+				<NumDice>2000</NumDice>
+				<NumSides>1</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 	</Spells>
 	<Tiles>
 		<FieldTile>
