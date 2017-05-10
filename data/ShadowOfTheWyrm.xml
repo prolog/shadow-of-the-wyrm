@@ -24553,7 +24553,7 @@
 		</Spell>		
 		<Spell id="c_13_crumble">
 			<NameSID>CRUMBLE_NAME_SID</NameSID>
-			<PlayerCastMessageSID>CRUMLBE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<PlayerCastMessageSID>CRUMBLE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CRUMBLE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
 			<MagicClassification>3</MagicClassification>
@@ -24564,6 +24564,25 @@
 			<Shape>1</Shape>
 			<Effect>26</Effect>
 		</Spell>		
+		<Spell id="c_14_inferno">
+			<NameSID>INFERNO_NAME_SID</NameSID>
+			<PlayerCastMessageSID>INFERNO_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>INFERNO_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>1</Colour>
+			<APCost>100</APCost>
+			<Speed>1</Speed>
+			<Range>6</Range>
+			<Shape>1</Shape>
+			<Radius>3</Radius>
+			<Damage>
+				<NumDice>6</NumDice>
+				<NumSides>250</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -24857,6 +24876,24 @@
 			<Range>4</Range>
 			<Shape>1</Shape>
 			<Effect>26</Effect>
+		</Spell>
+		<Spell id="a_17_holocaust">
+			<NameSID>HOLOCAUST_NAME_SID</NameSID>
+			<PlayerCastMessageSID>HOLOCAUST_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>HOLOCAUST_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>1</Colour>
+			<APCost>200</APCost>
+			<Speed>1</Speed>
+			<Range>5</Range>
+			<Shape>4</Shape>
+			<Damage incorporeal="1">
+				<NumDice>2500</NumDice>
+				<NumSides>1</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Effect>0</Effect>
 		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
@@ -25637,7 +25674,7 @@
 			<Colour>4</Colour>
 			<APCost>150</APCost>
 			<Speed>1</Speed>
-			<Range>6</Range>
+			<Range>7</Range>
 			<Shape>1</Shape>
 			<Radius>3</Radius>
 			<Damage incorporeal="1">
@@ -33354,6 +33391,24 @@
 				<SpellID>c_11_blast</SpellID>
 				<Difficulty>36</Difficulty>
 			</Spellbook>
+			<Spellbook id="inferno_spellbook">
+				<DescriptionSID>INFERNO_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_INFERNO_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>INFERNO_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_INFERNO_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<SpellID>c_14_inferno</SpellID>
+				<Difficulty>60</Difficulty>
+			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -33642,6 +33697,24 @@
 				<SpellID>a_16_dig</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
+			<Spellbook id="holocaust_spellbook">
+				<DescriptionSID>HOLOCAUST_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_HOLOCAUST_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>HOLOCAUST_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_HOLOCAUST_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<SpellID>a_17_holocaust</SpellID>
+				<Difficulty>100</Difficulty>
+			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HEALING_WORD_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -33836,7 +33909,7 @@
 					<Symbol>"</Symbol>
 					<Colour>3</Colour>
 				</TextDetails>
-				<DangerLevel>5</DangerLevel>
+				<DangerLevel>-1</DangerLevel>
 				<SpellID>d_11_divine_form</SpellID>
 				<Difficulty>90</Difficulty>
 			</Spellbook>			
@@ -34124,7 +34197,7 @@
 					<Symbol>"</Symbol>
 					<Colour>3</Colour>
 				</TextDetails>
-				<DangerLevel>4</DangerLevel>
+				<DangerLevel>-1</DangerLevel>
 				<SpellID>m_16_malediction</SpellID>
 				<Difficulty>95</Difficulty>
 			</Spellbook>
