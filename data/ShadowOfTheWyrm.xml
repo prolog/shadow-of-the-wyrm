@@ -32968,6 +32968,31 @@
 				<Range>4</Range>
 				<Colour>7</Colour>
 			</Wand>
+			<Wand id="inferno_wand">
+				<DescriptionSID>INFERNO_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_INFERNO_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>INFERNO_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_INFERNO_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>250</NumSides>
+					<Type>3</Type>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>6</Range>
+				<Radius>3</Radius>
+				<Colour>1</Colour>
+			</Wand>
 		</Wands>
 		<Spellbooks>
 			<Spellbook id="isen_dun_chronicle">

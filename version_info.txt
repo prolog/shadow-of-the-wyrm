@@ -88,7 +88,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   (Divine), holocaust (Arcane), inferno (Cantrips).
 
 - New items: scroll of mapping, scroll of monster summoning, wand of
-  digging.
+  digging, wand of inferno.
 
 - New artifacts: Ring of Aran Fee, naming stone, Telarian Mail, Telarian
   Shield, Telarian Helm.
