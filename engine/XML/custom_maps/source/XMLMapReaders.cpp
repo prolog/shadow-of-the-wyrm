@@ -4,7 +4,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "ItemManager.hpp"
-#include "MapScript.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "WorldMapLocationTextKeys.hpp"
@@ -101,13 +101,9 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
 
     custom_map->set_danger(danger_level);
 
-    // If the load script isn't empty, run it, passing in the map's ID.
     if (!load_script.empty())
     {
-      ScriptEngine& se = Game::instance().get_script_engine_ref();
-      MapScript ms;
-
-      ms.execute(se, load_script, custom_map);
+      custom_map->set_property(MapProperties::MAP_PROPERTIES_LOAD_SCRIPT, load_script);
     }
   }
 

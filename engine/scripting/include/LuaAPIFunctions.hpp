@@ -90,6 +90,8 @@ int map_transform_tile(lua_State* ls);
 int map_add_tile_exit(lua_State* ls);
 int map_set_explored(lua_State* ls);
 int map_get_name_sid(lua_State* ls);
+int map_get_dimensions(lua_State* ls);
+int map_get_tile(lua_State* ls);
 int log(lua_State* ls);
 int get_player_title(lua_State* ls);
 int set_creature_current_hp(lua_State* ls);

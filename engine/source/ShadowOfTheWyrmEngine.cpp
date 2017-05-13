@@ -16,6 +16,8 @@
 #include "ItemIdentifier.hpp"
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"
+#include "MapProperties.hpp"
+#include "MapScript.hpp"
 #include "MessageManagerFactory.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
@@ -200,6 +202,9 @@ void ShadowOfTheWyrmEngine::setup_game()
   // This switches files/namespaces - so should be last.
   vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
   game.set_custom_maps(custom_maps);
+
+  // Run any scripts associated with the custom maps.
+  run_map_scripts();
 
   // Set up the message manager also.
   IMessageManager& manager = MM::instance();
@@ -633,6 +638,34 @@ void ShadowOfTheWyrmEngine::setup_autopickup_settings(CreaturePtr player)
     {
       dec->set_autopickup(autopickup);
       dec->set_autopickup_types(itypes);
+    }
+  }
+}
+
+void ShadowOfTheWyrmEngine::run_map_scripts()
+{
+  Game& game = Game::instance();
+
+  // After the custom maps have been set into the registry, we need to run
+  // any custom load scripts on the maps.
+  MapRegistryMap& mrm = game.get_map_registry_ref().get_maps_ref();
+  for (const auto& mrm_pair : mrm)
+  {
+    MapPtr map = mrm_pair.second;
+    string load_script;
+
+    if (map != nullptr)
+    {
+      load_script = map->get_property(MapProperties::MAP_PROPERTIES_LOAD_SCRIPT);
+    }
+
+    // If the load script isn't empty, run it, passing in the map's ID.
+    if (!load_script.empty())
+    {
+      ScriptEngine& se = Game::instance().get_script_engine_ref();
+      MapScript ms;
+
+      ms.execute(se, load_script, map);
     }
   }
 }
