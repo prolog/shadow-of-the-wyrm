@@ -203,3 +203,8 @@ kain:
 - autopickup options
 - way to see resists on item without equipping
 - Zapped wand moves to end of inventory?
+- Towns not repopping with the same types of creatures as before (e.g.,
+  ogres).
+- Autorun: stop at intersections in sewers.
+- Holy presence but no altars?
+- Shops not generating fully stocked.
