@@ -4,6 +4,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "ItemManager.hpp"
+#include "MapScript.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "WorldMapLocationTextKeys.hpp"
@@ -39,6 +40,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     string map_id = XMLUtils::get_attribute_value(custom_map_node, "id");
     MapType map_type = static_cast<MapType>(XMLUtils::get_child_node_int_value(custom_map_node, "MapType"));
     string name_sid = XMLUtils::get_child_node_value(custom_map_node, "NameSID");
+    string load_script = XMLUtils::get_child_node_value(custom_map_node, "LoadScript");
     
     Dimensions dim = parse_dimensions(dimensions_node);
     custom_map = MapPtr(new Map(dim));
@@ -98,6 +100,15 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     }
 
     custom_map->set_danger(danger_level);
+
+    // If the load script isn't empty, run it, passing in the map's ID.
+    if (!load_script.empty())
+    {
+      ScriptEngine& se = Game::instance().get_script_engine_ref();
+      MapScript ms;
+
+      ms.execute(se, load_script, custom_map);
+    }
   }
 
   return custom_map;

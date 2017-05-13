@@ -32990,7 +32990,7 @@
 				</Damage>
 				<BeamType>1</BeamType>
 				<Range>6</Range>
-				<Radius>3</Radius>
+				<Radius>2</Radius>
 				<Colour>1</Colour>
 			</Wand>
 		</Wands>

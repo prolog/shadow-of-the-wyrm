@@ -4011,6 +4011,9 @@
     <ClInclude Include="world\include\MapExitProperties.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripting\include\MapScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7930,6 +7933,9 @@
     </ClCompile>
     <ClCompile Include="world\source\MapExitProperties.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\MapScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
