@@ -219,6 +219,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
   lua_register(L, "map_set_explored", map_set_explored);
   lua_register(L, "map_get_name_sid", map_get_name_sid);
+  lua_register(L, "map_get_dimensions", map_get_dimensions);
+  lua_register(L, "map_get_tile", map_get_tile);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
@@ -2532,6 +2534,73 @@ int map_get_name_sid(lua_State* ls)
 
   lua_pushstring(ls, map_name_sid.c_str());
   return 1;
+}
+
+int map_get_dimensions(lua_State* ls)
+{
+  int height = -1;
+  int width = -1;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string map_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+    
+    if (map != nullptr)
+    {
+      Dimensions dim = map->size();
+      height = dim.get_x();
+      width = dim.get_y();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_get_dimensions");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, height);
+  lua_pushinteger(ls, width);
+
+  return 2;
+}
+
+int map_get_tile(lua_State* ls)
+{
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    lua_newtable(ls);
+
+    string map_id = lua_tostring(ls, 1);
+    int row = lua_tointeger(ls, 2);
+    int col = lua_tointeger(ls, 3);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(row, col);
+
+      // JCD TODO: As additional fields are needed in future, add them to the
+      // table.
+      if (tile != nullptr)
+      {
+        LuaUtils::set_field(ls, "tile_type", static_cast<int>(tile->get_tile_type()));
+      }
+    }
+
+    return 1;
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_get_tile");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 // log some text in the given log level.
