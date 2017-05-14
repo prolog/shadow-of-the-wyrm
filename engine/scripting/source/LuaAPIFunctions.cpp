@@ -159,6 +159,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
   lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
+  lua_register(L, "add_object_to_map", add_object_to_map);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
@@ -812,6 +813,54 @@ int add_object_to_player_tile(lua_State* ls)
   }
 
   lua_pushboolean(ls, added);
+  return 1;
+}
+
+// Add an object to a particular tile.
+//
+// Argument 1: object base id
+//          2: map id
+//          3: row
+//          4: col
+//          5: quantity (optional, 1 assumed)
+//
+// Return value: true if added, false otherwise.
+int add_object_to_map(lua_State* ls)
+{
+  bool result = false;
+  int num_args = lua_gettop(ls);
+
+  if (lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && (num_args == 4 || (num_args == 5 && lua_isnumber(ls, 5))))
+  {
+    string base_item_id = lua_tostring(ls, 1);
+    string map_id = lua_tostring(ls, 2);
+    int row = lua_tointeger(ls, 3);
+    int col = lua_tointeger(ls, 4);
+
+    uint quantity = 1;
+
+    // Set the quantity if it was specified.    
+    if (num_args == 5)
+    {
+      quantity = static_cast<uint>(lua_tointeger(ls, 5));
+    }
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+    {
+      TilePtr tile = map->at(row, col);
+      result = ItemManager::create_item_with_probability(100, 100, tile->get_items(), base_item_id, quantity);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_object_to_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, result);
   return 1;
 }
 
@@ -2551,8 +2600,8 @@ int map_get_dimensions(lua_State* ls)
     if (map != nullptr)
     {
       Dimensions dim = map->size();
-      height = dim.get_x();
-      width = dim.get_y();
+      height = dim.get_y();
+      width = dim.get_x();
     }
   }
   else
@@ -2571,7 +2620,8 @@ int map_get_tile(lua_State* ls)
 {
   if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
   {
-    lua_newtable(ls);
+    // Create a table with 0 array elements and 1 keyed elements.
+    lua_createtable(ls, 0, 1);
 
     string map_id = lua_tostring(ls, 1);
     int row = lua_tointeger(ls, 2);
@@ -2584,8 +2634,8 @@ int map_get_tile(lua_State* ls)
     {
       TilePtr tile = map->at(row, col);
 
-      // JCD TODO: As additional fields are needed in future, add them to the
-      // table.
+      // As additional fields are needed in future, add them to the table.
+      // Remember to update the last argument to lua_createtable, above.
       if (tile != nullptr)
       {
         LuaUtils::set_field(ls, "tile_type", static_cast<int>(tile->get_tile_type()));
