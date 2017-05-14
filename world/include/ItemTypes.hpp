@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 
+// Item types for the C++ code.
 enum struct ItemType
 {
   ITEM_TYPE_NULL = -1,
@@ -23,6 +24,14 @@ enum struct ItemType
   ITEM_TYPE_TOOL = 15,
   ITEM_TYPE_LAST = 16
 };
+
+// Item types for the Lua code.
+#define CITEM_TYPE_POTION 3
+#define CITEM_TYPE_WAND 6
+#define CITEM_TYPE_SCROLL 5
+#define CITEM_TYPE_SPELLBOOK 4
+#define CITEM_TYPE_RING 8
+#define CITEM_TYPE_AMULET 9
 
 enum struct ItemStatus
 {
