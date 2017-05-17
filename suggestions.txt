@@ -1,4 +1,6 @@
 Me:
+- Create common function for determining biggest item in table, use in
+  conjurer script.
 - Email Nathan before next release re: Mac build, and update website to
   mention that the game is buildable in Mac OS.
 - Need a script to populate the first level of Telari with consumables.
