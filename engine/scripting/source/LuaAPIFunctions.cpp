@@ -172,6 +172,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_item_generated", get_num_item_generated);
   lua_register(L, "set_skill_value", set_skill_value);
   lua_register(L, "get_skill_value", get_skill_value);
+  lua_register(L, "get_magic_skills", get_magic_skills);
   lua_register(L, "check_skill", check_skill);
   lua_register(L, "RNG_range", RNG_range);
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
@@ -1221,6 +1222,47 @@ int get_skill_value(lua_State* ls)
   }
 
   lua_pushnumber(ls, skill_value);
+  return 1;
+}
+
+int get_magic_skills(lua_State* ls)
+{
+  map<SkillType, int> magic_skills = {{SkillType::SKILL_MAGIC_ARCANE, 0},
+                                      {SkillType::SKILL_MAGIC_CANTRIPS, 0},
+                                      {SkillType::SKILL_MAGIC_DIVINE, 0},
+                                      {SkillType::SKILL_MAGIC_MYSTIC, 0},
+                                      {SkillType::SKILL_MAGIC_PRIMORDIAL, 0}};
+
+  vector<SkillType> magic_keys = {SkillType::SKILL_MAGIC_ARCANE, SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_DIVINE, SkillType::SKILL_MAGIC_MYSTIC, SkillType::SKILL_MAGIC_PRIMORDIAL};
+
+  if ((lua_gettop(ls) == 1) && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      for (const auto& magic_key : magic_keys)
+      {
+        magic_skills[magic_key] = creature->get_skills().get_value(magic_key);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_magic_skills");
+    lua_error(ls);
+  }
+
+  // Create a table with keys for each magic skill
+  lua_createtable(ls, 0, magic_keys.size());
+
+  for (const auto& msk_pair : magic_skills)
+  {
+    string table_key = to_string(static_cast<int>(msk_pair.first));
+    LuaUtils::set_field(ls, table_key.c_str(), msk_pair.second);
+  }
+
   return 1;
 }
 
