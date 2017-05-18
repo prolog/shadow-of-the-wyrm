@@ -45,7 +45,7 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
         {
           if (String::to_bool(map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY)))
           {
-            manager.add_new_message(StringTable::get(DeityTextKeys::PRAYER_UNHEARD));
+            manager.add_new_message(StringTable::get(DeityTextKeys::DEITY_CANNOT_PRAY));
             manager.send();
             
             return get_action_cost_value(creature);

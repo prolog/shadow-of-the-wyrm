@@ -431,8 +431,11 @@ ActionCost ActionManager::skin(CreaturePtr creature)
 
 ActionCost ActionManager::piety(CreaturePtr creature)
 {
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
   PietyAction pa;
-  return get_action_cost(creature, pa.piety(creature, this));
+  return get_action_cost(creature, pa.piety(creature, map, this));
 }
 
 ActionCost ActionManager::experience(CreaturePtr creature)
