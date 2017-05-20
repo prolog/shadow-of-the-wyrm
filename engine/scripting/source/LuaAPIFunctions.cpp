@@ -216,6 +216,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_edesc", map_set_edesc);
   lua_register(L, "map_set_additional_property", map_set_additional_property);
   lua_register(L, "map_set_tile_subtype", map_set_tile_subtype);
+  lua_register(L, "map_set_tile_property", map_set_tile_property);
   lua_register(L, "map_add_location", map_add_location);
   lua_register(L, "map_transform_tile", map_transform_tile);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
@@ -2441,6 +2442,35 @@ int map_set_tile_subtype(lua_State* ls)
   }
 
   return 0;
+}
+
+int map_set_tile_property(lua_State* ls)
+{
+  bool added_property = false;
+
+  if (lua_gettop(ls) == 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4) && lua_isstring(ls, 5))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    string p_name = lua_tostring(ls, 4);
+    string p_val = lua_tostring(ls, 5);
+
+    TilePtr tile = get_tile(map_id, c);
+
+    if (tile)
+    {
+      tile->set_additional_property(p_name, p_val);
+      added_property = true;
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_set_tile_property");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added_property);
+  return 1;
 }
 
 // Add a location to the given map

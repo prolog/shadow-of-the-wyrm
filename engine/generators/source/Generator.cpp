@@ -521,6 +521,12 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
 
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_lvl_checks_val);
 
+  string creature_danger_level_fixed = get_additional_property(MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED);
+  if (!creature_danger_level_fixed.empty())
+  {
+    set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED, creature_danger_level_fixed);
+  }
+
   // Set any special feature messages that should be displayed the first time
   // the player enters a level.
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS, String::create_csv_from_string_vector(feature_entry_text_sids));
