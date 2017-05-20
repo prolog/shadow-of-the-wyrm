@@ -80,7 +80,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   uint unsuccessful_attempts = 0;
 
   // Generate the list of possible creatures for this map.
-  int min_danger_level = RNG::range(1, std::max<int>(1, (base_danger_level / 2)));
+  int min_danger_level = get_min_danger_level(map, base_danger_level);
   int max_danger_level = get_danger_level(map, base_danger_level);
 
   if (max_danger_level > min_danger_level)
@@ -88,7 +88,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
     min_danger_level = max_danger_level;
   }
 
-  while (RNG::percent_chance(OUT_OF_DEPTH_CREATURES_CHANCE))
+  while (RNG::percent_chance(get_pct_chance_out_of_depth_creatures(map)))
   {
     max_danger_level++;
 
@@ -253,6 +253,26 @@ int MapCreatureGenerator::get_num_creatures(MapPtr map, const int max_creatures)
   return num_creatures;
 }
 
+// Most of the time, the minimum danger level is somewhere between 1 and half
+// the base danger.  But certain maps have fixed danger levels for creature
+// generation.
+int MapCreatureGenerator::get_min_danger_level(MapPtr map, const int base_danger_level)
+{
+  int min_danger_level = RNG::range(1, std::max<int>(1, (base_danger_level / 2)));
+  
+  if (map != nullptr)
+  {
+    string fixed_cr_dlvl = map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED);
+
+    if (!fixed_cr_dlvl.empty() && String::to_bool(fixed_cr_dlvl))
+    {
+      min_danger_level = base_danger_level;
+    }
+  }
+
+  return min_danger_level;
+}
+
 // The creature generation rate, if it has been set, also affects the danger level
 // at the same rate.
 int MapCreatureGenerator::get_danger_level(MapPtr map, const int base_danger_level)
@@ -273,6 +293,23 @@ int MapCreatureGenerator::get_danger_level(MapPtr map, const int base_danger_lev
   }
 
   return danger_level;
+}
+
+int MapCreatureGenerator::get_pct_chance_out_of_depth_creatures(MapPtr map)
+{
+  int ood = OUT_OF_DEPTH_CREATURES_CHANCE;
+
+  if (map != nullptr)
+  {
+    string fixed_cr_dlvl = map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED);
+
+    if (!fixed_cr_dlvl.empty() && String::to_bool(fixed_cr_dlvl))
+    {
+      ood = 0;
+    }
+  }
+
+  return ood;
 }
 
 bool MapCreatureGenerator::maximum_creatures_reached(MapPtr map, const int current_creatures_placed, const int num_creatures_to_place)

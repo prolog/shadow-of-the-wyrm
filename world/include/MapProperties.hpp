@@ -25,8 +25,13 @@ class MapProperties
     static const std::string MAP_PROPERTIES_GENERATOR_FILTERS;
 
     // Should level checks be ignored when generating creatures?  Some places
-    // are just dangerous.
+    // are just dangerous. (vaults, etc)
     static const std::string MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS;
+
+    // Is the creature danger level equal to the level's danger level?
+    // If this is set, and you're on danger level 40, only danger level 40
+    // creatures will be generated.
+    static const std::string MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED;
 
     // Is a particular race required when generating creatures?  If so,
     // which one?  A race matches if it matches the given race, or the
