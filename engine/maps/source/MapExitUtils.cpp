@@ -35,6 +35,17 @@ void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direc
   }
 }
 
+void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, MapExitPtr map_exit)
+{
+  TilePtr tile = map->at(c);
+
+  if (tile)
+  {
+    TileExitMap& tile_exit_map = tile->get_tile_exit_map_ref();
+    tile_exit_map[direction] = map_exit;
+  }
+}
+
 // Attach a map exit to a tile, in a particular direction.
 void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, const string& map_exit_id)
 {

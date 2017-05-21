@@ -1,6 +1,7 @@
 #include <vector>
-#include "MapExitProperties.hpp"
 #include "MapExitUtils.hpp"
+#include "MapProperties.hpp"
+#include "TileProperties.hpp"
 #include "XMLMapCoordinateReader.hpp"
 #include "XMLMapExitReader.hpp"
 
@@ -47,8 +48,9 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
     {        
       TileType tt = TileType::TILE_TYPE_UNDEFINED;
       tt = static_cast<TileType>(XMLUtils::get_child_node_int_value(exit_node, "TileType", static_cast<int>(tt)));
+      map_exit->set_terrain_type(tt);
 
-      MapExitUtils::add_exit_to_tile(map, c, dir, tt);
+      MapExitUtils::add_exit_to_tile(map, c, dir, map_exit);
     }
   }
 }
@@ -61,21 +63,28 @@ void XMLMapExitReader::parse_depth_details(const XMLNode& exit_node, MapExitPtr 
     if (!depth_node.is_null())
     {
       int depth = XMLUtils::get_node_int_value(depth_node, -1);
-      map_exit->set_property(MapExitProperties::MAP_EXIT_PROPERTIES_DEPTH, to_string(depth));
+      map_exit->set_property(MapProperties::MAP_PROPERTIES_DEPTH, to_string(depth));
+    }
+
+    XMLNode min_depth_node = XMLUtils::get_next_element_by_local_name(exit_node, "MinDepth");
+    if (!min_depth_node.is_null())
+    {
+      int min_depth = XMLUtils::get_node_int_value(min_depth_node, -1);
+      map_exit->set_property(MapProperties::MAP_PROPERTIES_MIN_DEPTH, to_string(min_depth));
     }
 
     XMLNode max_depth_node = XMLUtils::get_next_element_by_local_name(exit_node, "MaxDepth");
     if (!max_depth_node.is_null())
     {
       int max_depth = XMLUtils::get_node_int_value(max_depth_node, -1);
-      map_exit->set_property(MapExitProperties::MAP_EXIT_PROPERTIES_MAX_DEPTH, to_string(max_depth));
+      map_exit->set_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH, to_string(max_depth));
     }
 
     XMLNode increment_node = XMLUtils::get_next_element_by_local_name(exit_node, "Increment");
     if (!increment_node.is_null())
     {
       int increment = XMLUtils::get_node_int_value(increment_node, 1);
-      map_exit->set_property(MapExitProperties::MAP_EXIT_PROPERTIES_INCREMENT, to_string(increment));
+      map_exit->set_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, to_string(increment));
     }
   }
 }
