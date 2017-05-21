@@ -158,6 +158,7 @@
 				</xs:sequence>
 			</xs:choice>
 			<xs:element name="Depth" type="xs:integer" minOccurs="0"/>
+			<xs:element name="MinDepth" type="xs:integer" minOccurs="0"/>
 			<xs:element name="MaxDepth" type="xs:integer" minOccurs="0"/>
 			<xs:element name="Increment" type="xs:integer" minOccurs="0"/>
 		</xs:sequence>

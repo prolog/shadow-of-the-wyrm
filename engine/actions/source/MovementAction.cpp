@@ -31,6 +31,7 @@
 #include "TextMessages.hpp"
 #include "TileDescriber.hpp"
 #include "TileMovementConfirmation.hpp"
+#include "TileUtils.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -458,7 +459,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
   if (creature && tile && map)
   {
-    return generate_and_move_to_new_map(creature, map, tile, tile->get_tile_type(), tile->get_tile_subtype(), depth_increment);
+    return generate_and_move_to_new_map(creature, map, tile, tile->get_tile_type(), tile->get_tile_subtype(), {}, depth_increment);
   }
 
   return action_cost_value;
@@ -466,7 +467,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
 // General version that can handle tile type/subtype from any source - the tile
 // itself, a map exit, etc.
-ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const int depth_increment)
+ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const int depth_increment)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -476,6 +477,12 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
   {
     tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID, map->get_map_id());
   }
+
+  // The exits may have properties - these are typically set on custom maps
+  // for things like dungeon depth increments, etc.  The properties should 
+  // be copied over to the tile prior to the creation of the generator, so 
+  // they can be properly re-applied to the map, potentially.
+  TileUtils::copy_exit_properties_to_tile(tile);
 
   GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
 
