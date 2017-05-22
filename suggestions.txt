@@ -1,5 +1,7 @@
 Me:
 - Test going to down to D2 and back in both a regular dungeon and the ID.
+- Fix creatures being generated in the air.
+- D:75 should be submerged.
 - Create common function for determining biggest item in table, use in
   conjurer script.
 - Email Nathan before next release re: Mac build, and update website to
