@@ -62,19 +62,19 @@ void FloatingTowerGenerator::place_staircases(MapPtr map, const pair<Coordinate,
 {
   if (map != nullptr)
   {
-    // JCD FIXME
+    // JCD FIXME FIXME FIXME
     string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
-    bool place_player_on_down_staircase = (depth_increment.empty());
+    bool place_player_on_up_staircase = (depth_increment.empty());
     
     // To find the staircase locations, start at the centre of the tower.
     // Increment outward, step by step, until at least 2 possible tiles
     // are open.
     Coordinate centre = CoordUtils::get_centre_coordinate(tower_boundaries.first, tower_boundaries.second);
-    Depth depth = map->size().depth();
     vector<Coordinate> potential_stair_locations = get_stair_locations(map, centre, tower_boundaries);
     std::shuffle(potential_stair_locations.begin(), potential_stair_locations.end(), RNG::get_engine());
 
     update_depth_details(map);
+    Depth depth = map->size().depth();
 
     // Define an up staircase if we aren't as high up as we can go.
     // ie, as long as current depth > min depth.
@@ -83,7 +83,7 @@ void FloatingTowerGenerator::place_staircases(MapPtr map, const pair<Coordinate,
       Coordinate up_stairs = potential_stair_locations.back();
       potential_stair_locations.pop_back();
 
-      place_up_staircase(map, up_stairs.first, up_stairs.second, TileType::TILE_TYPE_FLOATING_TOWER, Direction::DIRECTION_UP, false, !place_player_on_down_staircase);
+      place_up_staircase(map, up_stairs.first, up_stairs.second, TileType::TILE_TYPE_FLOATING_TOWER, Direction::DIRECTION_UP, false, place_player_on_up_staircase);
     }
 
     // Define a down staircase if we haven't reached the minimum
@@ -101,7 +101,7 @@ void FloatingTowerGenerator::place_staircases(MapPtr map, const pair<Coordinate,
         Coordinate up_stairs = potential_stair_locations.back();
         potential_stair_locations.pop_back();
 
-        place_down_staircase(map, up_stairs.first, up_stairs.second, TileType::TILE_TYPE_FLOATING_TOWER, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase);
+        place_down_staircase(map, up_stairs.first, up_stairs.second, TileType::TILE_TYPE_FLOATING_TOWER, Direction::DIRECTION_DOWN, false, !place_player_on_up_staircase);
       }
     }
   }

@@ -6,8 +6,8 @@
 		<Columns>80</Columns>
 	</Dimensions>
 	<LevelRange>
-		<Min>70</Min>
-		<Max>70</Max>
+		<Min>75</Min>
+		<Max>75</Max>
 	</LevelRange>
 	<MapType>1</MapType>
 	<Tiles>
@@ -63,8 +63,8 @@
 			<Direction>10</Direction>
 			<TileType>52</TileType>
 			<Depth>-75</Depth>
-			<MinDepth>-75</MinDepth>
-			<MaxDepth>-90</MaxDepth>
+			<MinDepth>-90</MinDepth>
+			<MaxDepth>-70</MaxDepth>
 			<Increment>5</Increment>
 		</Exit>
 	</Exits>
