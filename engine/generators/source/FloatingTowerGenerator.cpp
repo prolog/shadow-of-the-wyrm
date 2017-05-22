@@ -9,7 +9,7 @@
 using namespace std;
 
 FloatingTowerGenerator::FloatingTowerGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TileType::TILE_TYPE_AIR)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_FLOATING_TOWER)
 {
 }
 
