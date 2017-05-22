@@ -127,6 +127,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   - Inventories in dug tiles were maintaining the inventory type of the
     previous tile, meaning that items could be dropped and lost on open
     ground.
+
+  - Creatures could be generated in mid-air, causing them to immediately
+    plummet to their death.
     
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.

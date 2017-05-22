@@ -10,6 +10,7 @@
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
+#include "TileMovementConfirmation.hpp"
 
 using namespace std;
 
@@ -105,6 +106,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   IMessageManager& manager = MM::instance();
   CreatureFactory cf;
   CreatureGenerationValuesMap& cgvm = game.get_creature_generation_values_ref();
+  TileMovementConfirmation tmc;
 
   while (!maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
@@ -118,6 +120,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
       TilePtr tile = map->at(c.first, c.second);
 
       if (MapUtils::is_tile_available_for_creature(generated_creature, tile) &&
+          !tmc.get_confirmation_details(generated_creature, nullptr, tile).first &&
           MapUtils::does_area_around_tile_allow_creature_generation(map, c))
       {
         //  If pack creatures are generated, the maximum for the level is
