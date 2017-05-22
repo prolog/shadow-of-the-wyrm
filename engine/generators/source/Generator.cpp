@@ -624,7 +624,21 @@ void Generator::update_depth_details(MapPtr map)
   if (!max_depth_property.empty())
   {
     Depth depth = map->size().depth();
+
     depth.set_maximum(String::to_int(max_depth_property));
+
+    string depth_property = get_additional_property(MapProperties::MAP_PROPERTIES_DEPTH);
+    if (!depth_property.empty())
+    {
+      depth.set_current(String::to_int(depth_property));
+    }
+
+    string min_depth_property = get_additional_property(MapProperties::MAP_PROPERTIES_MIN_DEPTH);
+    if (!min_depth_property.empty())
+    {
+      depth.set_minimum(String::to_int(min_depth_property));
+    }
+
     map->size_ref().set_depth(depth);
   }
 }
