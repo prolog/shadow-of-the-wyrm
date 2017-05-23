@@ -1,4 +1,6 @@
 Me:
+- Implement depth increment instead of always +- 1.  Add this to ver_info
+- Get link between D75 and telari_base working
 - Test going to down to D2 and back in both a regular dungeon and the ID.
 - D:75 should be submerged.
 - Create common function for determining biggest item in table, use in

@@ -1103,6 +1103,23 @@ void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
   }
 }
 
+int MapUtils::calculate_depth_increment(MapPtr map)
+{
+  int depth_incr = 1;
+
+  if (map != nullptr)
+  {
+    string depthincr_s = map->get_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+
+    if (!depthincr_s.empty())
+    {
+      depth_incr = String::to_int(depthincr_s);
+    }
+  }
+
+  return depth_incr;
+}
+
 // Add any messages after moving to a particular tile:
 // - Should a message be displayed about the tile automatically? (staircases, etc)
 //       If so, add it.

@@ -64,7 +64,7 @@
 			<TileType>52</TileType>
 			<Depth>-75</Depth>
 			<MinDepth>-90</MinDepth>
-			<MaxDepth>-70</MaxDepth>
+			<MaxDepth>-75</MaxDepth>
 			<Increment>5</Increment>
 		</Exit>
 	</Exits>

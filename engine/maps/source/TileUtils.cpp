@@ -53,7 +53,7 @@ void TileUtils::copy_exit_properties_to_tile(TilePtr tile)
 
       if (exit != nullptr)
       {
-        map<string, string>& properties = exit->get_properties();
+        map<string, string> properties = exit->get_properties();
 
         for (const auto& p_pair : properties)
         {
