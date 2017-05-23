@@ -92,3 +92,17 @@ TEST(SW_Engine_Maps_MapUtils, coordinate_within_dimensions)
 
   EXPECT_FALSE(MapUtils::are_coordinates_within_dimensions(c, d));
 }
+
+TEST(SW_Engine_Maps_MapUtils, calculate_depth_incr)
+{
+  EXPECT_EQ(1, MapUtils::calculate_depth_increment(nullptr));
+
+  Dimensions dim;
+  MapPtr map = std::make_shared<Map>(dim);
+
+  EXPECT_EQ(1, MapUtils::calculate_depth_increment(map));
+
+  map->set_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, "5");
+
+  EXPECT_EQ(5, MapUtils::calculate_depth_increment(map));
+}

@@ -50,7 +50,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
       }
       else
       {
-        ascend_success = ma->generate_and_move_to_new_map(creature, current_map, current_tile, map_exit->get_terrain_type(), current_tile->get_tile_subtype(), map_exit->get_properties(), 1);
+        ascend_success = ma->generate_and_move_to_new_map(creature, current_map, current_tile, map_exit->get_terrain_type(), current_tile->get_tile_subtype(), map_exit->get_properties(), MapUtils::calculate_depth_increment(current_map));
       }
     }
     else
@@ -113,12 +113,12 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             }
             else
             {
-              descend_success = ma->generate_and_move_to_new_map(creature, map, tile, map_exit->get_terrain_type(), tile->get_tile_subtype(), map_exit->get_properties(), 1);
+              descend_success = ma->generate_and_move_to_new_map(creature, map, tile, map_exit->get_terrain_type(), tile->get_tile_subtype(), map_exit->get_properties(), MapUtils::calculate_depth_increment(map));
             }
           }
           else
           {
-            descend_success = ma->generate_and_move_to_new_map(creature, map, tile, 1);
+            descend_success = ma->generate_and_move_to_new_map(creature, map, tile, MapUtils::calculate_depth_increment(map));
           }
         }
         // If it's null, check to see if we're on the world map.
@@ -128,7 +128,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             
           if (map_type == MapType::MAP_TYPE_WORLD)
           {
-            descend_success = ma->generate_and_move_to_new_map(creature, map, tile, 1);
+            descend_success = ma->generate_and_move_to_new_map(creature, map, tile, MapUtils::calculate_depth_increment(map));
           }
           else
           {
