@@ -281,12 +281,7 @@ bool Generator::place_down_staircase(MapPtr map, const int row, const int col,co
   
   TilePtr tile = map->at(row, col);
 
-  if (tile != nullptr)
-  {
-    tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
-    tile->set_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH, get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH));
-  }
-  else
+  if (tile == nullptr)
   {
     placed = false;
   }
@@ -323,17 +318,27 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
 
     Depth depth = map->size().depth();
 
+    // Set the depth and original map ID so that these can be copied to all the
+    // maps in a particular generation chain.
+    new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH, get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH));
+    new_staircase_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
+
     // Handle exiting to a previous map in underworld maps like dungeons,
     // mines, crypts, etc.
-    if (get_map_type() == MapType::MAP_TYPE_UNDERWORLD && tile_type == TileType::TILE_TYPE_UP_STAIRCASE)
+    // 
+    // In these, an up staircase leads to the prev map.
+    //
+    // For things like floating towers, a down staircase leads to the previous.
+    //
+    if (does_tile_lead_to_previous_map(get_map_type(), tile_type))
     {
       // This may be empty, in which case, the custom map ID will be empty
       // and terrain will be checked instead, which is the desired behaviour.
       new_staircase_tile->set_custom_map_id(get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID));
-      new_staircase_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
+      // JCD FIXME: Make this the min depth.
       // If we're on level 1, set the custom map ID to be the original map ID.
-      if (depth.get_current() <= 1)
+      if (std::abs(depth.get_current()) <= 1)
       {
         string original_map_id = get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID);
         new_staircase_tile->set_custom_map_id(original_map_id);
@@ -356,6 +361,17 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     return true;
   }  
   
+  return false;
+}
+
+bool Generator::does_tile_lead_to_previous_map(const MapType map_type, const TileType tile_type)
+{
+  if (map_type == MapType::MAP_TYPE_UNDERWORLD && tile_type == TileType::TILE_TYPE_UP_STAIRCASE ||
+      map_type == MapType::MAP_TYPE_OVERWORLD && tile_type == TileType::TILE_TYPE_DOWN_STAIRCASE)
+  {
+    return true;
+  }
+
   return false;
 }
 

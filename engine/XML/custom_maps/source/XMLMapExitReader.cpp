@@ -25,10 +25,11 @@ void XMLMapExitReader::parse_exits(const XMLNode& exits_node, MapPtr map)
 // direction on to the appropriate tile.
 void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
 {
-  if (!exit_node.is_null())
+  if (!exit_node.is_null() && map != nullptr)
   {
     XMLNode coord_node = XMLUtils::get_next_element_by_local_name(exit_node, "Coord");
-    
+    string map_id = map->get_map_id();
+
     XMLMapCoordinateReader coord_reader;
     Coordinate c = coord_reader.parse_fixed_coordinate(coord_node);
     Direction dir = static_cast<Direction>(XMLUtils::get_child_node_int_value(exit_node, "Direction"));
@@ -49,6 +50,7 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
       TileType tt = TileType::TILE_TYPE_UNDEFINED;
       tt = static_cast<TileType>(XMLUtils::get_child_node_int_value(exit_node, "TileType", static_cast<int>(tt)));
       map_exit->set_terrain_type(tt);
+      map_exit->set_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID, map_id);
 
       MapExitUtils::add_exit_to_tile(map, c, dir, map_exit);
     }

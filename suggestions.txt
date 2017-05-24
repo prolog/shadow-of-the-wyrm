@@ -1,7 +1,8 @@
 Me:
-- Implement depth increment instead of always +- 1.  Add this to ver_info
-- Get link between D75 and telari_base working
+- Staircases in ID are f'd.  Not placing on correct staircase, up leads
+  down, etc.
 - Test going to down to D2 and back in both a regular dungeon and the ID.
+  Also, Gnordvar Mines.
 - D:75 should be submerged.
 - Create common function for determining biggest item in table, use in
   conjurer script.
