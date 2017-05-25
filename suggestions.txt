@@ -1,9 +1,7 @@
 Me:
-- Staircases in ID are f'd.  Not placing on correct staircase, up leads
-  down, etc.
 - Test going to down to D2 and back in both a regular dungeon and the ID.
   Also, Gnordvar Mines.
-- D:75 should be submerged.
+- D:80 should be submerged.
 - Create common function for determining biggest item in table, use in
   conjurer script.
 - Email Nathan before next release re: Mac build, and update website to
@@ -11,8 +9,6 @@ Me:
 - Need a script to populate the first level of Telari with consumables.
 - Script to add back down staircase to Telari once the Nine have been
   killed.
-- in telari, set the necessary properties in the script: min depth,
-  increment, etc.
 - Need to test the following after the spell refactoring:
   - reflective beam, cross, ball, target self, storm
   - Anything else?
