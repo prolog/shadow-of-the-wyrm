@@ -17,3 +17,8 @@ enum struct MovementThroughTileType
   MOVEMENT_SQUEEZE = 3
 };
 
+enum struct ExitMovementType
+{
+  EXIT_MOVEMENT_ASCEND,
+  EXIT_MOVEMENT_DESCEND
+};

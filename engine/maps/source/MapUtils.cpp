@@ -1103,7 +1103,7 @@ void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
   }
 }
 
-int MapUtils::calculate_depth_increment(MapPtr map)
+int MapUtils::calculate_depth_delta(MapPtr map, const ExitMovementType emt)
 {
   int depth_incr = 1;
 
@@ -1115,6 +1115,11 @@ int MapUtils::calculate_depth_increment(MapPtr map)
     {
       depth_incr = String::to_int(depthincr_s);
     }
+  }
+
+  if (emt == ExitMovementType::EXIT_MOVEMENT_ASCEND)
+  {
+    depth_incr *= -1;
   }
 
   return depth_incr;

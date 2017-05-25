@@ -19207,18 +19207,18 @@
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
 				</AllowableTerrainTypes>
-				<DangerLevel>75</DangerLevel>
+				<DangerLevel>80</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>75</NumDice>
+					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>275000</Exp>
 			</CreatureGeneration>
-			<Level>75</Level>
+			<Level>80</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>150</NumSides>
+				<NumSides>160</NumSides>
 				<Type>4</Type>
 				<EffectBonus>50</EffectBonus>
 				<StatusAilments>
@@ -19247,18 +19247,18 @@
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
 				</AllowableTerrainTypes>
-				<DangerLevel>75</DangerLevel>
+				<DangerLevel>80</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>75</NumDice>
+					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>275000</Exp>
 			</CreatureGeneration>
-			<Level>75</Level>
+			<Level>80</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>150</NumSides>
+				<NumSides>160</NumSides>
 				<Type>5</Type>
 				<EffectBonus>50</EffectBonus>
 				<StatusAilments>
@@ -19285,18 +19285,18 @@
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
 				</AllowableTerrainTypes>
-				<DangerLevel>75</DangerLevel>
+				<DangerLevel>80</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>75</NumDice>
+					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>275000</Exp>
 			</CreatureGeneration>
-			<Level>75</Level>
+			<Level>80</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>150</NumSides>
+				<NumSides>160</NumSides>
 				<Type>1</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
@@ -19320,18 +19320,18 @@
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
 				</AllowableTerrainTypes>
-				<DangerLevel>75</DangerLevel>
+				<DangerLevel>80</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>75</NumDice>
+					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>275000</Exp>
 			</CreatureGeneration>
-			<Level>75</Level>
+			<Level>80</Level>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
-				<NumSides>75</NumSides>
+				<NumSides>80</NumSides>
 				<Type>10</Type>
 			</Damage>
 			<Speed>40</Speed>
@@ -19354,15 +19354,15 @@
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
 				</AllowableTerrainTypes>
-				<DangerLevel>75</DangerLevel>
+				<DangerLevel>80</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>75</NumDice>
+					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>275000</Exp>
 			</CreatureGeneration>
-			<Level>75</Level>
+			<Level>80</Level>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
