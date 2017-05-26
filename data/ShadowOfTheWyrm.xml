@@ -19189,6 +19189,73 @@
 			<Evade>15</Evade>
 			<Soak>10</Soak>
 		</Creature>
+		<Creature id="red_witch">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>RED_WITCH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>RED_WITCH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>RED_WITCH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>RED_WITCH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>R</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>75</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>275000</Exp>
+			</CreatureGeneration>
+			<Level>75</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>150</NumSides>
+				<Type>3</Type>
+				<EffectBonus>10</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="solarian">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SOLARIAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SOLARIAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SOLARIAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SOLARIAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>118</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>75</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>275000</Exp>
+			</CreatureGeneration>
+			<Level>75</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>2</Type>
+				<EffectBonus>10</EffectBonus>
+			</Damage>
+			<Speed>70</Speed>
+		</Creature>
 		<Creature id="nether_hydra">
 			<RaceID>_monster</RaceID>
 			<BreatheType>1</BreatheType>
@@ -19220,7 +19287,7 @@
 				<NumDice>1</NumDice>
 				<NumSides>160</NumSides>
 				<Type>4</Type>
-				<EffectBonus>50</EffectBonus>
+				<EffectBonus>20</EffectBonus>
 				<StatusAilments>
 					<Status>_poison</Status>
 					<Status>_slow</Status>
@@ -19260,7 +19327,7 @@
 				<NumDice>1</NumDice>
 				<NumSides>160</NumSides>
 				<Type>5</Type>
-				<EffectBonus>50</EffectBonus>
+				<EffectBonus>20</EffectBonus>
 				<StatusAilments>
 					<Status>_para</Status>
 				</StatusAilments>
@@ -19298,7 +19365,7 @@
 				<NumDice>1</NumDice>
 				<NumSides>160</NumSides>
 				<Type>1</Type>
-				<EffectBonus>50</EffectBonus>
+				<EffectBonus>20</EffectBonus>
 			</Damage>
 			<Soak>15</Soak>
 		</Creature>
