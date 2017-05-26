@@ -100,7 +100,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New creatures: drowned shade, cockatrice, The Sorceror, The Sentry,
   comet jellyfish, The Namer, The Worldsinger, The Speaker, nether hydra,
-  sea worm, mesosaur, ghost ray, megalodon, The Conjurer, The Armourer.
+  sea worm, mesosaur, ghost ray, megalodon, The Conjurer, The Armourer,
+  red witch, solarian.
 
 - Bug fixes: 
 
