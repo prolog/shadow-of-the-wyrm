@@ -19326,7 +19326,46 @@
 				<Type>3</Type>
 				<EffectBonus>30</EffectBonus>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>a_18_wyrmfire</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+			</Spells>
 			<Soak>30</Soak>
+		</Creature>
+		<Creature id="lavos">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>LAVOS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LAVOS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LAVOS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LAVOS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>L</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>75</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>275000</Exp>
+			</CreatureGeneration>
+			<Level>75</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>150</NumSides>
+				<Type>3</Type>
+				<EffectBonus>30</EffectBonus>
+			</Damage>
 		</Creature>
 		<Creature id="nether_hydra">
 			<RaceID>_monster</RaceID>
@@ -19351,7 +19390,7 @@
 					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>275000</Exp>
+				<Exp>280000</Exp>
 			</CreatureGeneration>
 			<Level>80</Level>
 			<Damage>
@@ -19390,7 +19429,7 @@
 					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>275000</Exp>
+				<Exp>280000</Exp>
 			</CreatureGeneration>
 			<Level>80</Level>
 			<Damage>
@@ -19427,7 +19466,7 @@
 					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>275000</Exp>
+				<Exp>280000</Exp>
 			</CreatureGeneration>
 			<Level>80</Level>
 			<Damage>
@@ -19461,7 +19500,7 @@
 					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>275000</Exp>
+				<Exp>280000</Exp>
 			</CreatureGeneration>
 			<Level>80</Level>
 			<Damage piercing="1">
@@ -19494,7 +19533,7 @@
 					<NumDice>80</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>275000</Exp>
+				<Exp>280000</Exp>
 			</CreatureGeneration>
 			<Level>80</Level>
 			<Damage>
@@ -25026,6 +25065,29 @@
 				<NumDice>2500</NumDice>
 				<NumSides>1</NumSides>
 				<Type>3</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="a_18_wyrmfire"> <!-- no spellbook -->
+			<NameSID>WYRMFIRE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>WYRMFIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>WYRMFIRE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>1</Colour>
+			<APCost>50</APCost>
+			<Speed>1</Speed>
+			<Range>6</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>8</NumDice>
+				<NumSides>20</NumSides>
+				<Type>3</Type>
+				<EffectBonus>15</EffectBonus>
+				<StatusAilments>
+					<Status>_mute</Status>
+					<Status>_slow</Status>
+				</StatusAilments>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
