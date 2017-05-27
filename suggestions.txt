@@ -1,4 +1,7 @@
 Me:
+- Spell for infernal wyrm
+- Recursive settings
+- Recursively set no-pray in cloudspire.
 - Test going to down to D2 and back in both a regular dungeon and the ID.
   Also, Gnordvar Mines.
 - D:80 should be submerged.
