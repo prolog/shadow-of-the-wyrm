@@ -93,7 +93,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - New monster-only spells: wyrmfire (Arcane).
 
 - New items: scroll of mapping, scroll of monster summoning, wand of
-  digging, wand of inferno.
+  digging, wand of inferno, moloch armour.
 
 - New artifacts: Ring of Aran Fee, naming stone, Telarian Mail, Telarian
   Shield, Telarian Helm.
@@ -103,7 +103,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - New creatures: drowned shade, cockatrice, The Sorceror, The Sentry,
   comet jellyfish, The Namer, The Worldsinger, The Speaker, nether hydra,
   sea worm, mesosaur, ghost ray, megalodon, The Conjurer, The Armourer,
-  red witch, solarian, lavos.
+  red witch, solarian, lavos, ekakophia, myriadon, lamia, moloch.
 
 - Bug fixes: 
 

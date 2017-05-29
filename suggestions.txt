@@ -1,4 +1,5 @@
 Me:
+- Molochs can't move while carrying moloch armour!
 - Recursive settings
 - Recursively set no-pray in cloudspire.
 - Test going to down to D2 and back in both a regular dungeon and the ID.
