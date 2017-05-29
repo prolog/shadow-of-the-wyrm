@@ -19326,13 +19326,13 @@
 				<Type>3</Type>
 				<EffectBonus>30</EffectBonus>
 			</Damage>
+			<Soak>30</Soak>
 			<Spells>
 				<Spell>
 					<SpellID>a_18_wyrmfire</SpellID>
 					<Castings>5</Castings>
 				</Spell>
 			</Spells>
-			<Soak>30</Soak>
 		</Creature>
 		<Creature id="lavos">
 			<RaceID>_monster</RaceID>
@@ -19543,6 +19543,179 @@
 			</Damage>
 			<Soak>15</Soak>
 			<Speed>70</Speed>
+		</Creature>
+		<Creature id="ekakophia">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>EKAKOPHIA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EKAKOPHIA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EKAKOPHIA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EKAKOPHIA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>K</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>170</NumSides>
+				<Type>8</Type>
+				<EffectBonus>25</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="ekakophia">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>EKAKOPHIA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EKAKOPHIA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EKAKOPHIA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EKAKOPHIA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>K</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>170</NumSides>
+				<Type>8</Type>
+				<EffectBonus>30</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="myriadon">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>MYRIADON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MYRIADON_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MYRIADON_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MYRIADON_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>M</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>170</NumSides>
+				<Type>1</Type>
+				<EffectBonus>30</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="lamia">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>LAMIA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LAMIA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LAMIA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LAMIA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>L</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>170</NumSides>
+				<Type>9</Type>
+				<EffectBonus>30</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="moloch">
+			<RaceID>_demon</RaceID>
+			<ShortDescriptionSID>MOLOCH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MOLOCH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MOLOCH_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>M</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>moloch_armour</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>300</NumSides>
+				<Type>2</Type>
+				<EffectBonus>30</EffectBonus>
+			</Damage>
+			<Soak>60</Soak>
+			<Speed>90</Speed>
 		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>
@@ -27162,6 +27335,29 @@
 				</Properties>
 				<Evade>-30</Evade>
 				<Soak>30</Soak>
+			</Armour>
+			<Armour id="moloch_armour">
+				<DescriptionSID>MOLOCH_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>MOLOCH_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>300</Pounds>
+				</Weight>
+				<WornLocation>6</WornLocation>
+				<Material>7</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.30</Heat>
+					<Shadow>0.30</Shadow>
+				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>-40</Evade>
+				<Soak>100</Soak>
 			</Armour>
 			<Armour id="tarasque_armour">
 				<DescriptionSID>TARASQUE_ARMOUR_SID</DescriptionSID>
