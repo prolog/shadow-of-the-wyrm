@@ -19699,6 +19699,9 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>285000</Exp>
+				<InitialModifiers>
+					<StrengthModifier>80</StrengthModifier>
+				</InitialModifiers>
 				<InitialEquipmentAndInventory>
 					<InitialInventory>
 						<InitialItem>
@@ -19716,6 +19719,38 @@
 			</Damage>
 			<Soak>60</Soak>
 			<Speed>90</Speed>
+		</Creature>
+		<Creature id="titanic_slime">
+			<RaceID>_jelly</RaceID>
+			<ShortDescriptionSID>TITANIC_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TITANIC_SLIME_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TITANIC_SLIME_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>J</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>170</NumSides>
+				<Type>5</Type>
+				<EffectBonus>30</EffectBonus>
+			</Damage>
 		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>

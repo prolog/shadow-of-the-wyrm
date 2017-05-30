@@ -1,5 +1,6 @@
 Me:
-- Molochs can't move while carrying moloch armour!
+- Add a statistics function that sets to max if greater, set moloch str
+  to 99
 - Recursive settings
 - Recursively set no-pray in cloudspire.
 - Test going to down to D2 and back in both a regular dungeon and the ID.
