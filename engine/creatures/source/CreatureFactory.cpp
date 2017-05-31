@@ -376,6 +376,7 @@ void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race,
 }
 
 // Primary stats can be modified for creatures not created via race/class
+// If the modifier would take us over the maximum, take the max.
 void CreatureFactory::set_initial_statistics_modifiers(CreaturePtr creature, const CreatureGenerationValues& cgv)
 {
   if (creature != nullptr)
@@ -383,25 +384,25 @@ void CreatureFactory::set_initial_statistics_modifiers(CreaturePtr creature, con
     Modifier stat_mod = cgv.get_modifier();
 
     Statistic& strength = creature->get_strength_ref();
-    strength.set_base_current(strength.get_base() + stat_mod.get_strength_modifier());
+    strength.set_base_current(strength.get_base() + stat_mod.get_strength_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& dexterity = creature->get_dexterity_ref();
-    dexterity.set_base_current(dexterity.get_base() + stat_mod.get_dexterity_modifier());
+    dexterity.set_base_current(dexterity.get_base() + stat_mod.get_dexterity_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& agility = creature->get_agility_ref();
-    agility.set_base_current(agility.get_base() + stat_mod.get_agility_modifier());
+    agility.set_base_current(agility.get_base() + stat_mod.get_agility_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& health = creature->get_health_ref();
-    health.set_base_current(health.get_base() + stat_mod.get_health_modifier());
+    health.set_base_current(health.get_base() + stat_mod.get_health_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& intelligence = creature->get_intelligence_ref();
-    intelligence.set_base_current(intelligence.get_base() + stat_mod.get_intelligence_modifier());
+    intelligence.set_base_current(intelligence.get_base() + stat_mod.get_intelligence_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& willpower = creature->get_willpower_ref();
-    willpower.set_base_current(willpower.get_base() + stat_mod.get_willpower_modifier());
+    willpower.set_base_current(willpower.get_base() + stat_mod.get_willpower_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& charisma = creature->get_charisma_ref();
-    charisma.set_base_current(charisma.get_base() + stat_mod.get_charisma_modifier());
+    charisma.set_base_current(charisma.get_base() + stat_mod.get_charisma_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
   }
 }
 

@@ -7,7 +7,7 @@ class BloodiedStatusEffect : public StatusEffect
     BloodiedStatusEffect();
   
   protected:
-    virtual Modifier get_base_modifier(CreaturePtr creature) const override;
+    virtual Modifier get_base_modifier(CreaturePtr creature, const int danger_level) const override;
 
     virtual std::string get_player_application_message() const override;
     virtual std::string get_player_undo_message() const override;

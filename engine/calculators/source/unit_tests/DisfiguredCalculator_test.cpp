@@ -20,3 +20,27 @@ TEST(SW_World_Calculator_DisfiguredCalculator, calc_pct_chance_disfigured)
   EXPECT_EQ(3, dc.calculate_pct_chance_effect(creature));
 }
 
+TEST(SW_World_Calculator_DisfiguredCalculator, calculate_reduction_pcts)
+{
+  DisfiguredCalculator dc;
+
+  pair<int, int> r_pcts = dc.calculate_reduction_pcts(0);
+
+  EXPECT_EQ(20, r_pcts.first);
+  EXPECT_EQ(40, r_pcts.second);
+
+  r_pcts = dc.calculate_reduction_pcts(26);
+
+  EXPECT_EQ(33, r_pcts.first);
+  EXPECT_EQ(66, r_pcts.second);
+
+  r_pcts = dc.calculate_reduction_pcts(50);
+
+  EXPECT_EQ(45, r_pcts.first);
+  EXPECT_EQ(90, r_pcts.second);
+
+  r_pcts = dc.calculate_reduction_pcts(1000);
+
+  EXPECT_EQ(45, r_pcts.first);
+  EXPECT_EQ(90, r_pcts.second);
+}
