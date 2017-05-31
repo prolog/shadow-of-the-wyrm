@@ -93,7 +93,7 @@ bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
     int duration = status_calc->calculate_duration_in_minutes(creature);
     double eff_dur_sec = current_seconds_since_game_start + (duration * 60);
 
-    Modifier modifier = get_base_modifier(creature);
+    Modifier modifier = get_base_modifier(creature, danger_level);
     modifier.set_status(status_identifier, true, danger_level);
 
     ModifyStatisticsEffect mse;
@@ -293,7 +293,7 @@ void StatusEffect::tick(CreaturePtr creature, const int danger_level) const
 {
 }
 
-Modifier StatusEffect::get_base_modifier(CreaturePtr creature) const
+Modifier StatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
 {
   Modifier m;
   return m;

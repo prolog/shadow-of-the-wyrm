@@ -2,6 +2,12 @@
 #include "ISerializable.hpp"
 #include "Marks.hpp"
 
+enum SetStatisticFailure
+{
+  SET_STATISTIC_FAILURE_IGNORE = 0,
+  SET_STATISTIC_FAILURE_TAKE_HIGHEST = 1
+};
+
 class Statistic : public ISerializable
 {
 	public:
@@ -10,12 +16,12 @@ class Statistic : public ISerializable
     Statistic& operator=(const int& rhs);
     virtual bool operator==(const Statistic& stat) const;
 
-    void set_base_current(int new_base_and_current);
+    void set_base_current(int new_base_and_current, const SetStatisticFailure ssf = SetStatisticFailure::SET_STATISTIC_FAILURE_IGNORE);
 
-    void set_base(int new_base);
+    void set_base(int new_base, const SetStatisticFailure ssf = SetStatisticFailure::SET_STATISTIC_FAILURE_IGNORE);
     int  get_base() const;
 
-    void set_current(int new_current);
+    void set_current(int new_current, const SetStatisticFailure ssf = SetStatisticFailure::SET_STATISTIC_FAILURE_IGNORE);
     int  get_current() const;
 
     void set_max(const int new_max);

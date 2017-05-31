@@ -35,6 +35,42 @@ TEST(SW_World_Statistic, Maximum)
   EXPECT_EQ(62, stat3.get_current());
 }
 
+TEST(SW_World_Statistic, base_greater_than_max)
+{
+  Statistic st(55);
+  st.set_max(99);
+
+  st.set_base(105);
+
+  EXPECT_EQ(55, st.get_base());
+
+  st.set_base(105, SetStatisticFailure::SET_STATISTIC_FAILURE_IGNORE);
+
+  EXPECT_EQ(55, st.get_base());
+
+  st.set_base(105, SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
+  
+  EXPECT_EQ(st.get_max(), st.get_base());
+}
+
+TEST(SW_World_Statistic, current_greater_than_max)
+{
+  Statistic st(55);
+  st.set_max(99);
+
+  st.set_base_current(105);
+
+  EXPECT_EQ(55, st.get_current());
+
+  st.set_base_current(105, SetStatisticFailure::SET_STATISTIC_FAILURE_IGNORE);
+
+  EXPECT_EQ(55, st.get_current());
+
+  st.set_base_current(105, SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
+
+  EXPECT_EQ(st.get_max(), st.get_current());
+}
+
 TEST(SW_World_Statistic, get_max_marks)
 {
   Statistic test(16);
