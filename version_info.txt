@@ -80,6 +80,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - Custom maps can now define a load script, which allows for running a
   Lua script after the map has been created.
 
+- Divine creatures now have the ability to fly.
+
 - Disfiguration totals are now based on the danger level of the attack,
   with statistics being reduced more heavily based on the severity of the
   acid.
