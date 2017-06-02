@@ -669,7 +669,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
-			<Flying>0</Flying>
+			<Flying>1</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -19854,6 +19854,71 @@
 				<NumDice>1</NumDice>
 				<NumSides>180</NumSides>
 				<Type>4</Type>
+				<EffectBonus>40</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="noxious_plume">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>NOXIOUS_PLUME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>NOXIOUS_PLUME_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>NOXIOUS_PLUME_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>90</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>90</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>290000</Exp>
+			</CreatureGeneration>
+			<Level>90</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>180</NumSides>
+				<Type>6</Type>
+				<EffectBonus>40</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="demigod">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>DEMIGOD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DEMIGOD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DEMIGOD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DEMIGOD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>D</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>90</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>90</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>290000</Exp>
+			</CreatureGeneration>
+			<Level>90</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>180</NumSides>
+				<Type>2</Type>
 				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
