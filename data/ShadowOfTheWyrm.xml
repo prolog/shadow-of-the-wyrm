@@ -19574,39 +19574,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>170</NumSides>
 				<Type>8</Type>
-				<EffectBonus>25</EffectBonus>
-			</Damage>
-		</Creature>
-		<Creature id="ekakophia">
-			<RaceID>_monster</RaceID>
-			<ShortDescriptionSID>EKAKOPHIA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>EKAKOPHIA_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>EKAKOPHIA_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>EKAKOPHIA_SPEECH_TEXT_SID</SpeechTextSID>
-			<DecisionStrategy>
-				<Strategy>mobile</Strategy>
-			</DecisionStrategy>
-			<Text>
-				<Symbol>K</Symbol>
-				<Colour>12</Colour>
-			</Text>
-			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>52</TileType>
-				</AllowableTerrainTypes>
-				<DangerLevel>85</DangerLevel>
-				<Rarity>0</Rarity>
-				<HP>
-					<NumDice>85</NumDice>
-					<NumSides>6</NumSides>
-				</HP>
-				<Exp>285000</Exp>
-			</CreatureGeneration>
-			<Level>85</Level>
-			<Damage>
-				<NumDice>1</NumDice>
-				<NumSides>170</NumSides>
-				<Type>8</Type>
 				<EffectBonus>30</EffectBonus>
 			</Damage>
 		</Creature>
@@ -25131,6 +25098,25 @@
 				<NumDice>6</NumDice>
 				<NumSides>250</NumSides>
 				<Type>3</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="c_15_shards">
+			<NameSID>SHARDS_NAME_SID</NameSID>
+			<PlayerCastMessageSID>SHARDS_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>SHARDS_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>35</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>6</Shape>
+			<Radius>3</Radius>
+			<Damage>
+				<NumDice>4</NumDice>
+				<NumSides>20</NumSides>
+				<Type>2</Type>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
@@ -34030,6 +34016,24 @@
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>c_14_inferno</SpellID>
 				<Difficulty>60</Difficulty>
+			</Spellbook>
+			<Spellbook id="shards_spellbook">
+				<DescriptionSID>SHARDS_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SHARDS_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SHARDS_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SHARDS_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>25</DangerLevel>
+				<SpellID>c_15_shards</SpellID>
+				<Difficulty>50</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>

@@ -8,5 +8,5 @@ class StormShapeProcessor : public SpellShapeProcessor
 
   protected:
     virtual std::vector<Coordinate> generate_potential_coords(MapPtr map, const Coordinate& caster_coord, const Spell& spell);
-    virtual std::vector<std::pair<Coordinate, TilePtr>> select_storm_coords(MapPtr map, const std::vector<Coordinate>& coordinates, const uint num_tiles_affected);
+    virtual std::vector<std::pair<Coordinate, TilePtr>> select_storm_coords(MapPtr map, const Spell& spell, const Coordinate& caster_coord, const std::vector<Coordinate>& coordinates, const uint num_tiles_affected);
 };

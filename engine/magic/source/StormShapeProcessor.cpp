@@ -12,12 +12,25 @@ using namespace std;
 pair<vector<pair<Coordinate, TilePtr>>, Animation> StormShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
   uint spell_range = spell.get_range();
+  uint spell_radius = spell.get_shape().get_radius();
+  uint num_tiles_affected = 0;
+
   MovementPath movement_path;
   DisplayTile dt('*', static_cast<int>(spell.get_colour()));
-  uint num_tiles_affected = static_cast<uint>(pow(spell_range, 2));
+  
+  // If this is a regular storm (no beams), select more tiles than if this is
+  // a radiant storm with beams emanating from the selected points.
+  if (spell_radius <= 1)
+  {
+    num_tiles_affected = static_cast<uint>(pow(spell_range, 2));
+  }
+  else
+  {
+    num_tiles_affected = spell_range * 2;
+  }
 
   vector<Coordinate> potential_coords = generate_potential_coords(map, caster_coord, spell);
-  vector<pair<Coordinate, TilePtr>> storm_movement_path_and_tiles = select_storm_coords(map, potential_coords, num_tiles_affected);
+  vector<pair<Coordinate, TilePtr>> storm_movement_path_and_tiles = select_storm_coords(map, spell, caster_coord, potential_coords, num_tiles_affected);
 
   // Create a movement path for the animation that does one tile at a time,
   // rather than all at once.
@@ -60,10 +73,12 @@ vector<Coordinate> StormShapeProcessor::generate_potential_coords(MapPtr map, co
 
 // Select a number of the potential coordinates for the spell, allowing
 // duplicates.
-vector<pair<Coordinate, TilePtr>> StormShapeProcessor::select_storm_coords(MapPtr map, const vector<Coordinate>& coords, const uint num_tiles_affected)
+vector<pair<Coordinate, TilePtr>> StormShapeProcessor::select_storm_coords(MapPtr map, const Spell& spell, const Coordinate& caster_coord, const vector<Coordinate>& coords, const uint num_tiles_affected)
 {
   vector<pair<Coordinate, TilePtr>> result;
   size_t coords_size = coords.size();
+  uint spell_radius = spell.get_shape().get_radius();
+  Spell temp_beam_spell = spell;
 
   for (uint i = 0; i < num_tiles_affected; i++)
   {
@@ -71,6 +86,13 @@ vector<pair<Coordinate, TilePtr>> StormShapeProcessor::select_storm_coords(MapPt
     TilePtr tile = map->at(rand_coord);
 
     result.push_back(make_pair(rand_coord, tile));
+
+    // If this is a radiant storm, calculate the balls created from the random
+    // coordinate.  Ensure that the caster's coordinate is always excluded.
+    if (spell_radius > 0)
+    {
+      // JCD FIXME
+    }
   }
 
   return result;

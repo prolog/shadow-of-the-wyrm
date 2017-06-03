@@ -1,4 +1,6 @@
 Me:
+- Add Shards to some creatures
+- Tile effects for Cloudspire, a la ToEF
 - Crystalline being for astral plane
 - Repel (cantrip)
 - Recursive settings
