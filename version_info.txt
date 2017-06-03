@@ -86,6 +86,12 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   with statistics being reduced more heavily based on the severity of the
   acid.
 
+- Storm-shape spells can now be given a radius.  When less than 1, the
+  storm acts as before, applying the damage to random points around the
+  caster.  When >= 2, the storm becomes a radiant storm.  Fewer points
+  are selected, but these become the starting point for balls with a 
+  radius specified by the spell.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
@@ -94,7 +100,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New spells/spellbooks: mapping (Cantrips), crumble (Cantrips), dig
   (Arcane), antimatter (Primordial), malediction (Mystic), divine form
-  (Divine), holocaust (Arcane), inferno (Cantrips).
+  (Divine), holocaust (Arcane), inferno (Cantrips), shards (Cantrips).
 
 - New monster-only spells: wyrmfire (Arcane).
 

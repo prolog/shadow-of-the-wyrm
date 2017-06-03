@@ -74,27 +74,29 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
   // a wand with no damage and a null effect would not.
   bool spell_identified = spell.get_has_damage();
 
-  // First, apply the damage to the creature
-  CreaturePtr tile_creature = tile->get_creature();
-  if (tile && spell.get_has_damage() && tile_creature)
+  if (tile != nullptr)
   {
-    CombatManager cm;
-
-    if (spell.get_allows_bonus())
+    // First, apply the damage to the creature
+    CreaturePtr tile_creature = tile->get_creature();
+    if (tile && spell.get_has_damage() && tile_creature)
     {
-      cm.attack(caster, tile_creature, AttackType::ATTACK_TYPE_MAGICAL, true);
-    }
-    else
-    {
-      // If the spell doesn't allow a bonus, it's an adhoc spell not present
-      // in the game's list, and so the magical damage calculator isn't
-      // appropriate.  Pass the damage directly to the combat manager.
-      DamagePtr dmg = std::make_shared<Damage>(spell.get_damage());
-      cm.attack(caster, tile_creature, AttackType::ATTACK_TYPE_MAGICAL, false, dmg);
-    }
+      CombatManager cm;
 
+      if (spell.get_allows_bonus())
+      {
+        cm.attack(caster, tile_creature, AttackType::ATTACK_TYPE_MAGICAL, true);
+      }
+      else
+      {
+        // If the spell doesn't allow a bonus, it's an adhoc spell not present
+        // in the game's list, and so the magical damage calculator isn't
+        // appropriate.  Pass the damage directly to the combat manager.
+        DamagePtr dmg = std::make_shared<Damage>(spell.get_damage());
+        cm.attack(caster, tile_creature, AttackType::ATTACK_TYPE_MAGICAL, false, dmg);
+      }
 
-    spell_identified = true;
+      spell_identified = true;
+    }
   }
 
   // Next, apply the damage to any affected items on the tile.

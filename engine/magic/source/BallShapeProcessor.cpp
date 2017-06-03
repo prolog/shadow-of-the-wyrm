@@ -9,6 +9,15 @@ using namespace std;
 
 pair<vector<pair<Coordinate, TilePtr>>, Animation> BallShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
+  pair<vector<pair<Coordinate, TilePtr>>, MovementPath> affected_coords_and_tiles = get_affected_coords_and_tiles(map, spell, caster_coord);
+
+  // Create the animation.
+  CreaturePtr caster = map->at(caster_coord)->get_creature();
+  return create_affected_tiles_and_animation(caster, map, affected_coords_and_tiles.first, affected_coords_and_tiles.second);
+}
+
+pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_affected_coords_and_tiles(MapPtr map, const Spell& spell, const Coordinate& caster_coord)
+{
   vector<pair<Coordinate, TilePtr>> affected_coords_and_tiles;
   uint spell_range = spell.get_range();
 
@@ -85,8 +94,5 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> BallShapeProcessor::get_affec
     offset++;
   }
 
-  // Create the animation.
-  CreaturePtr caster = map->at(caster_coord)->get_creature();
-  return create_affected_tiles_and_animation(caster, map, affected_coords_and_tiles, movement_path);
+  return make_pair(affected_coords_and_tiles, movement_path);
 }
-
