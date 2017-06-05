@@ -3,6 +3,8 @@
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "MapTranslator.hpp"
+#include "Setting.hpp"
 #include "TileMagicChecker.hpp"
 
 using namespace std;
@@ -16,12 +18,17 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> BallShapeProcessor::get_affec
   return create_affected_tiles_and_animation(caster, map, affected_coords_and_tiles.first, affected_coords_and_tiles.second);
 }
 
-pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_affected_coords_and_tiles(MapPtr map, const Spell& spell, const Coordinate& caster_coord)
+pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_affected_coords_and_tiles(MapPtr map, const Spell& spell, const Coordinate& caster_coord, const bool use_tile_details)
 {
   vector<pair<Coordinate, TilePtr>> affected_coords_and_tiles;
   uint spell_range = spell.get_range();
-
-  DisplayTile dt('*', static_cast<int>(spell.get_colour()));
+  Game& game = Game::instance();
+  CurrentCreatureAbilities cca;
+  ISeasonPtr season = game.get_current_world()->get_calendar().get_season();
+  Settings& settings = game.get_settings_ref();
+  CreaturePtr player = game.get_current_player();
+  bool player_blind = !cca.can_see(player);
+  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(game.get_current_world()->get_calendar().get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD, settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
 
   vector<Coordinate> prev_coords;
   vector<Coordinate> current_coords;
@@ -83,6 +90,20 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
     vector<pair<DisplayTile, Coordinate>> frame;
     for (const Coordinate& c : current_coords)
     {
+      DisplayTile dt('*', static_cast<int>(spell.get_colour()));
+
+      if (use_tile_details)
+      {
+        TilePtr engine_tile = map->at(c);
+        TilePtr fov_tile = player ? player->get_decision_strategy()->get_fov_map()->at(c) : nullptr;
+
+        if (engine_tile != nullptr)
+        {
+          dt = MapTranslator::create_display_tile(player_blind, tod_overrides, engine_tile, fov_tile);
+          dt.set_season(season->get_season());
+        }
+      }
+
       frame.push_back(make_pair(dt, c));
     }
 

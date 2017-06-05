@@ -802,6 +802,9 @@
     <Filter Include="Source Files\engine\generators\settlements\source\unit_tests">
       <UniqueIdentifier>{4acb38fe-43e5-4765-ba0d-517d34e5a5ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\source\unit_tests">
+      <UniqueIdentifier>{d413f3f0-f1c3-4c59-91a8-1c81c5405c30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -4010,6 +4013,9 @@
     </ClInclude>
     <ClInclude Include="engine\scripting\include\MapScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ColourUtils.hpp">
+      <Filter>Header Files\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7930,6 +7936,12 @@
     </ClCompile>
     <ClCompile Include="engine\scripting\source\MapScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ColourUtils.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\unit_tests\ColourUtils_test.cpp">
+      <Filter>Source Files\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
