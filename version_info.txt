@@ -100,7 +100,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - New spells/spellbooks: mapping (Cantrips), crumble (Cantrips), dig
   (Arcane), antimatter (Primordial), malediction (Mystic), divine form
-  (Divine), holocaust (Arcane), inferno (Cantrips), shards (Cantrips).
+  (Divine), holocaust (Arcane), inferno (Cantrips), shards (Cantrips),
+  meteor (Arcane).
 
 - New monster-only spells: wyrmfire (Arcane).
 

@@ -1,10 +1,14 @@
 #include <cmath>
 #include "AnimationTranslator.hpp"
+#include "BallShapeProcessor.hpp"
 #include "StormShapeProcessor.hpp"
+#include "ColourUtils.hpp"
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "MapTranslator.hpp"
 #include "RNG.hpp"
+#include "Setting.hpp"
 #include "TileMagicChecker.hpp"
 
 using namespace std;
@@ -15,33 +19,23 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> StormShapeProcessor::get_affe
   uint spell_radius = spell.get_shape().get_radius();
   uint num_tiles_affected = 0;
 
-  MovementPath movement_path;
-  DisplayTile dt('*', static_cast<int>(spell.get_colour()));
-  
   // If this is a regular storm (no beams), select more tiles than if this is
   // a radiant storm with beams emanating from the selected points.
-  if (spell_radius <= 1)
+  if (spell_radius == 0)
   {
     num_tiles_affected = static_cast<uint>(pow(spell_range, 2));
   }
   else
   {
-    num_tiles_affected = spell_range * 2;
+    num_tiles_affected = spell_range + (spell_range / 2);
   }
 
   vector<Coordinate> potential_coords = generate_potential_coords(map, caster_coord, spell);
-  vector<pair<Coordinate, TilePtr>> storm_movement_path_and_tiles = select_storm_coords(map, spell, caster_coord, potential_coords, num_tiles_affected);
-
-  // Create a movement path for the animation that does one tile at a time,
-  // rather than all at once.
-  for (const pair<Coordinate, TilePtr>& tc_pair : storm_movement_path_and_tiles)
-  {
-    movement_path.push_back({make_pair(dt, tc_pair.first)});
-  }
+  pair<vector<pair<Coordinate, TilePtr>>, MovementPath> storm_tiles_and_movement = get_storm_tiles_and_movement(map, spell, caster_coord, potential_coords, num_tiles_affected);
 
   // Create the storm animation.
   CreaturePtr caster = map->at(caster_coord)->get_creature();
-  return create_affected_tiles_and_animation(caster, map, storm_movement_path_and_tiles, movement_path);
+  return create_affected_tiles_and_animation(caster, map, storm_tiles_and_movement.first, storm_tiles_and_movement.second);
 }
 
 // Generate all the potential coordinates - those in range with valid tiles,
@@ -73,27 +67,112 @@ vector<Coordinate> StormShapeProcessor::generate_potential_coords(MapPtr map, co
 
 // Select a number of the potential coordinates for the spell, allowing
 // duplicates.
-vector<pair<Coordinate, TilePtr>> StormShapeProcessor::select_storm_coords(MapPtr map, const Spell& spell, const Coordinate& caster_coord, const vector<Coordinate>& coords, const uint num_tiles_affected)
+pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_storm_tiles_and_movement(MapPtr map, const Spell& spell, const Coordinate& caster_coord, const vector<Coordinate>& coords, const uint num_tiles_affected)
 {
-  vector<pair<Coordinate, TilePtr>> result;
+  pair<vector<pair<Coordinate, TilePtr>>, MovementPath> result;
   size_t coords_size = coords.size();
   uint spell_radius = spell.get_shape().get_radius();
-  Spell temp_beam_spell = spell;
+  DisplayTile dt('*', static_cast<int>(spell.get_colour()));
+
+  Game& game = Game::instance();
+  CurrentCreatureAbilities cca;
+  ISeasonPtr season = game.get_current_world()->get_calendar().get_season();
+  Settings& settings = game.get_settings_ref();
+  CreaturePtr player = game.get_current_player();
+  bool player_blind = !cca.can_see(player);
+  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(game.get_current_world()->get_calendar().get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD, settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
+
+  Spell mini_burst = spell;
+  mini_burst.set_range(spell_radius);
+  Colour burst_colour = mini_burst.get_colour();
 
   for (uint i = 0; i < num_tiles_affected; i++)
   {
     Coordinate rand_coord = coords.at(RNG::range(0, coords_size-1));
     TilePtr tile = map->at(rand_coord);
+    TilePtr fov_tile = player ? player->get_decision_strategy()->get_fov_map()->at(rand_coord) : nullptr;
 
-    result.push_back(make_pair(rand_coord, tile));
+    result.first.push_back(make_pair(rand_coord, tile));
+
+    // Push back the selected coordinate (the eye of the mini-storm).
+    result.second.push_back({ make_pair(dt, rand_coord) });
 
     // If this is a radiant storm, calculate the balls created from the random
     // coordinate.  Ensure that the caster's coordinate is always excluded.
+    //
+    // We calculate two balls: one with the alternate hue, one with the regular
+    // one, and then add them both to the movement path.  This allows the path
+    // of any subsequent, overlapping balls to be easily seen.
     if (spell_radius > 0)
     {
-      // JCD FIXME
+      BallShapeProcessor bsp;
+
+      // Colour and whether to use the actual tile details in the ball,
+      // rather than the spell symbols.
+      vector<pair<Colour, bool>> colours = {{burst_colour, false}, 
+                                            {ColourUtils::get_alternate_hue(burst_colour), false}, 
+                                            {Colour::COLOUR_UNDEFINED, true}};
+      bool add_tile_details = true;
+      
+      for (const auto& colour : colours)
+      {
+        mini_burst.set_colour(colour.first);
+        auto ball_pair = bsp.get_affected_coords_and_tiles(map, mini_burst, rand_coord, colour.second);
+
+        remove_caster_details_from_ball(ball_pair, caster_coord);
+
+        // First time through the ball, add the affected coordinates and tiles.
+        if (add_tile_details)
+        {
+          vector<pair<Coordinate, TilePtr>> affected = ball_pair.first;
+
+          for (const auto& aff : affected)
+          {
+            result.first.push_back(aff);
+          }
+
+          add_tile_details = false;
+        }
+
+        // Push back the additional elements of the ball to the movement details.
+        for (const auto& ball_movement_frame : ball_pair.second)
+        {
+          result.second.push_back(ball_movement_frame);
+        }
+      }
+
+      // After the blast has dissipated, remove the epicenter.
+      dt = MapTranslator::create_display_tile(player_blind, tod_overrides, tile, fov_tile);
+      dt.set_season(season->get_season());
     }
   }
 
   return result;
+}
+
+// When creating a radiant storm, the caster should always be excluded from any
+// peripheral damage.
+void StormShapeProcessor::remove_caster_details_from_ball(pair<vector<pair<Coordinate, TilePtr>>, MovementPath>& ball_pair, const Coordinate& caster_coord)
+{
+  vector<pair<Coordinate, TilePtr>> ball_details = ball_pair.first;
+  MovementPath& mp = ball_pair.second;
+
+  auto new_end = std::remove_if(ball_details.begin(), ball_details.end(),
+    [caster_coord](const pair<Coordinate, TilePtr>& coord_pair)
+  {
+    return coord_pair.first == caster_coord;
+  });
+
+  ball_details.erase(new_end, ball_details.end());
+
+  for (auto& mp_vec : mp)
+  {
+    auto new_mp_end = std::remove_if(mp_vec.begin(), mp_vec.end(),
+      [caster_coord](const pair<DisplayTile, Coordinate>& dc_pair)
+    {
+      return dc_pair.second == caster_coord;
+    });
+
+    mp_vec.erase(new_mp_end, mp_vec.end());
+  }
 }

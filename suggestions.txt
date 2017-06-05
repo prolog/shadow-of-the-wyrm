@@ -1,5 +1,9 @@
 Me:
-- Add Shards to some creatures
+- Meteor not removing caster coords
+- Create an exclusion list for ball processor - should exclude any tile
+  from both affected/movement.  Initially should include the caster coord.
+- Test burst spell during day, night
+- Add Shards, Meteor to some creatures
 - Tile effects for Cloudspire, a la ToEF
 - Crystalline being for astral plane
 - Repel (cantrip)
