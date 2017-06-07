@@ -199,6 +199,7 @@ class Creature : public ISerializable
     Statistic& get_hit_points_ref();
     bool is_hp_full() const;
     bool is_ap_full() const;
+    bool is_dead() const;
 
     void set_arcana_points(const Statistic& new_arcana_points);
     int increment_arcana_points(int amount);

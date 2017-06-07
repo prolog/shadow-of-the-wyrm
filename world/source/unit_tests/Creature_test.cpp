@@ -259,3 +259,35 @@ TEST(SW_World_Creature, status_details)
   EXPECT_EQ(haste, csm.find("haste")->second);
   EXPECT_EQ(depression, csm.find("depression")->second);
 }
+
+TEST(SW_World_Creature, is_dead)
+{
+  Creature c;
+
+  Statistic hp(20);
+  hp.set_current(-5);
+
+  c.set_hit_points(hp);
+
+  EXPECT_TRUE(c.is_dead());
+
+  hp.set_current(-1);
+  c.set_hit_points(hp);
+
+  EXPECT_TRUE(c.is_dead());
+
+  hp.set_current(0);
+  c.set_hit_points(hp);
+
+  EXPECT_TRUE(c.is_dead());
+
+  hp.set_current(1);
+  c.set_hit_points(hp);
+
+  EXPECT_FALSE(c.is_dead());
+
+  hp.set_current(36);
+  c.set_hit_points(hp);
+
+  EXPECT_FALSE(c.is_dead());
+}
