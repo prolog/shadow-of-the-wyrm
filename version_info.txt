@@ -147,7 +147,10 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
   - Creatures could be generated in mid-air, causing them to immediately
     plummet to their death.
-    
+  
+  - If the player was killed and then damaged again, it would trigger
+    multiple DYWYPI-type messages.
+      
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 

@@ -920,6 +920,11 @@ bool Creature::is_ap_full() const
   return (arcana_points.get_base() <= arcana_points.get_current());
 }
 
+bool Creature::is_dead() const
+{
+  return (hit_points.get_current() <= 0);
+}
+
 void Creature::set_arcana_points(const Statistic& new_arcana_points)
 {
   arcana_points = new_arcana_points;

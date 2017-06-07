@@ -122,7 +122,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 
   // Once an attack is made, the creature becomes hostile, and if it was
   // previously not hostile
-  if (attacking_creature && attacked_creature)
+  if (attacking_creature && attacked_creature && !attacked_creature->is_dead())
   {
     handle_hostility_implications(attacking_creature, attacked_creature);
   }
@@ -133,7 +133,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     attacked_creature->get_automatic_movement_ref().set_engaged(false);
   }
 
-  if (th_calculator && ctn_calculator)
+  if (th_calculator && ctn_calculator && attacked_creature && !attacked_creature->is_dead())
   {
     Game& game = Game::instance();
     PhaseOfMoonCalculator pomc;
