@@ -89,6 +89,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
   for (uint i = 0; i < num_tiles_affected; i++)
   {
     Coordinate rand_coord = coords.at(RNG::range(0, coords_size-1));
+
     TilePtr tile = map->at(rand_coord);
     TilePtr fov_tile = player ? player->get_decision_strategy()->get_fov_map()->at(rand_coord) : nullptr;
 
@@ -154,7 +155,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
 // peripheral damage.
 void StormShapeProcessor::remove_caster_details_from_ball(pair<vector<pair<Coordinate, TilePtr>>, MovementPath>& ball_pair, const Coordinate& caster_coord)
 {
-  vector<pair<Coordinate, TilePtr>> ball_details = ball_pair.first;
+  vector<pair<Coordinate, TilePtr>>& ball_details = ball_pair.first;
   MovementPath& mp = ball_pair.second;
 
   auto new_end = std::remove_if(ball_details.begin(), ball_details.end(),
