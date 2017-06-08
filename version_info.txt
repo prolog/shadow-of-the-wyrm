@@ -92,6 +92,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   are selected, but these become the starting point for balls with a 
   radius specified by the spell.
 
+- Added Shards to spectral wizards, and Meteor to high wizards.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.

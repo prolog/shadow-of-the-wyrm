@@ -4890,6 +4890,10 @@
 					<SpellID>a_07_fireball</SpellID>
 					<Castings>1</Castings>
 				</Spell>
+				<Spell>
+					<SpellID>c_15_shards</SpellID>
+					<Castings>1</Castings>
+				</Spell>
 			</Spells>
 		</Creature>
 		<Creature id="spectral_lord">
@@ -10052,6 +10056,10 @@
 					<NumDice>46</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>46</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>180000</Exp>
 			</CreatureGeneration>
 			<Level>46</Level>
@@ -10071,6 +10079,10 @@
 				</Spell>
 				<Spell>
 					<SpellID>a_13_maelstrom</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_19_meteor</SpellID>
 					<Castings>1</Castings>
 				</Spell>
 			</Spells>
