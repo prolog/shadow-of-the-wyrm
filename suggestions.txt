@@ -1,6 +1,10 @@
 Me:
-- Test burst spell during day, night
-- Add Shards, Meteor to some creatures
+- Eye of the first meteor burst isn't being removed, and the subsequent
+  bursts aren't showing the centre.  Update this so that the centre is
+  always shown (and not removed).
+- When redrawing the tile underneath a burst, the creature's not shown.
+  Test case: spectral wizard with shard vs player.
+- Add Shards, Meteor to a couple more creatures
 - Tile effects for Cloudspire, a la ToEF
 - Crystalline being for astral plane
 - Repel (cantrip)

@@ -110,7 +110,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
 
       // Colour and whether to use the actual tile details in the ball,
       // rather than the spell symbols.
-      vector<pair<Colour, bool>> colours = {{burst_colour, false}, 
+       vector<pair<Colour, bool>> colours = {{burst_colour, false}, 
                                             {ColourUtils::get_alternate_hue(burst_colour), false}, 
                                             {Colour::COLOUR_UNDEFINED, true}};
       bool add_tile_details = true;
