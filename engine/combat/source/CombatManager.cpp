@@ -2,6 +2,7 @@
 #include "AttackScript.hpp"
 #include "ClassManager.hpp"
 #include "CombatConstants.hpp"
+#include "CombatCounterCalculator.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
@@ -110,7 +111,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 // The generated to-hit value is 100 (ignore Soak, 2x max damage, any resistance is min 100%)
 // The generated to-hit value is >= 96 (ignore Soak, max damage, any resistance is min 100%)
 // The generated to-hit value is >= the target number (regular damage)
-ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const bool mark_skills, DamagePtr predefined_damage)
+ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const AttackSequenceType ast, const bool mark_skills, DamagePtr predefined_damage)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -181,12 +182,17 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     {
       miss(attacking_creature, attacked_creature);
     }    
+
+    counter_strike_if_necessary(attacking_creature, attacked_creature, ast);
   }
 
   // If the attack was a PvM type attack, mark the weapon/spell-category and 
   // combat/magic skills of the attacking creature, and add the attacking 
   // creature as a threat to the attacked creature.
-  if (attacking_creature)
+  //
+  // Don't improve stats if the attacking creature is dead (as a result of a
+  // counter-strike, etc).
+  if (attacking_creature && !attacking_creature->is_dead())
   {
     if (mark_skills)
     {
@@ -278,6 +284,53 @@ bool CombatManager::destroy_weapon_if_necessary(CreaturePtr attacking_creature, 
   }
 
   return destroyed_weapon;
+}
+
+bool CombatManager::counter_strike_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackSequenceType ast)
+{
+  bool attack_countered = false;
+  MapPtr current_map = Game::instance().get_current_map();
+
+  if (current_map && 
+      attacking_creature && 
+      attacked_creature && 
+      attacking_creature->get_id() != attacked_creature->get_id() &&
+      ast == AttackSequenceType::ATTACK_SEQUENCE_INITIAL &&
+      MapUtils::are_creatures_adjacent(current_map, attacking_creature, attacked_creature))
+  {
+    CombatCounterCalculator ccc;
+
+    if (RNG::percent_chance(ccc.calc_pct_chance_counter_strike(attacked_creature)))
+    {
+      add_counter_strike_message(attacking_creature, attacked_creature);
+
+      // Mark Combat and Dex from the successful counter.
+      StatisticsMarker sm;
+      attacked_creature->get_skills().mark(SkillType::SKILL_GENERAL_COMBAT);
+      sm.mark_dexterity(attacked_creature);
+
+      // Deal the damage, flipping the attack sequence (the counter cannot be
+      // countered).
+      attack(attacked_creature, attacking_creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY, AttackSequenceType::ATTACK_SEQUENCE_COUNTER);
+      attack_countered = true;
+    }
+  }
+
+  return attack_countered;
+}
+
+void CombatManager::add_counter_strike_message(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+{
+  if (attacking_creature && attacked_creature)
+  {
+    CreatureDescriber cd(attacking_creature, attacked_creature);
+    string desc = cd.describe();
+    string counter_message = CombatTextKeys::get_counter_message(attacked_creature->get_is_player(), desc);
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, (attacking_creature->get_is_player() || attacked_creature->get_is_player()));
+
+    manager.add_new_message(counter_message);
+    manager.send();
+  }
 }
 
 bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)

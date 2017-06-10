@@ -63,6 +63,7 @@ class MapUtils
     
     static bool hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
     static std::vector<CreaturePtr> get_hostile_creatures(const std::string& creature_id_for_threat_check, MapPtr map);
+    static bool are_creatures_adjacent(MapPtr map, CreaturePtr c1, CreaturePtr c2);
     static bool adjacent_creature_exists(CreaturePtr creature, MapPtr map);
     static bool adjacent_creature_exists(const int row, const int col, MapPtr map);
     static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);

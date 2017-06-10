@@ -188,7 +188,7 @@ ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, Creature
     {
       // Do a kicking attack (force an unarmed, physical attack)
       CombatManager cm;
-      acv = cm.attack(kicking_creature, kicked_creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, true);
+      acv = cm.attack(kicking_creature, kicked_creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, AttackSequenceType::ATTACK_SEQUENCE_INITIAL, true);
     }
   }
 

@@ -10,3 +10,9 @@ enum struct AttackType
   // no use of anything in the inventory or equipment.
   ATTACK_TYPE_MELEE_TERTIARY_UNARMED = 4 
 };
+
+enum struct AttackSequenceType
+{
+  ATTACK_SEQUENCE_INITIAL = 0,
+  ATTACK_SEQUENCE_COUNTER = 1
+};

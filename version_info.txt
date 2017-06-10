@@ -94,6 +94,13 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - Added Shards to spectral wizards, and Meteor to high wizards.
 
+- Counter-strikes are now possible.  The possibility is based on having a
+  minimum amount of Combat skill, and then the chance is based on a
+  combination of Combat and Dexterity.  Any attack (melee, ranged, spell,
+  kicking, etc) can draw a counter strike so long as the creatures are 
+  adjacent.  Counter-strikes are free actions and do not affect the
+  counter-striking creature's action timers.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
