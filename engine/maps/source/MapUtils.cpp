@@ -804,6 +804,21 @@ vector<CreaturePtr> MapUtils::get_hostile_creatures(const string& creature_id, M
   return hostile_creatures;
 }
 
+bool MapUtils::are_creatures_adjacent(MapPtr current_map, CreaturePtr c1, CreaturePtr c2)
+{
+  bool adjacent = false;
+
+  if (current_map && c1 && c2)
+  {
+    Coordinate c1_coord = current_map->get_location(c1->get_id());
+    Coordinate c2_coord = current_map->get_location(c2->get_id());
+
+    adjacent = CoordUtils::are_coordinates_adjacent(c1_coord, c2_coord);
+  }
+
+  return adjacent;
+}
+
 // Check to see if there are any creatures hostile to the given creature ID on the map
 bool MapUtils::hostile_creature_exists(const string& creature_id, MapPtr current_map)
 {

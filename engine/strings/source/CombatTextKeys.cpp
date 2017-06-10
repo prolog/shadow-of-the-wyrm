@@ -157,6 +157,21 @@ string CombatTextKeys::get_incorporeal_attack_message(const bool attacker_is_pla
   return incorp_msg;
 }
 
+string CombatTextKeys::get_counter_message(const bool is_player, const string& desc)
+{
+  string counter_message = StringTable::get(COMBAT_COUNTER_MESSAGE);
+  auto counter = get_appropriate_attacker_and_target(is_player, is_player, desc, desc);
+
+  if (!is_player)
+  {
+    counter_message = StringTable::get(COMBAT_COUNTER_MESSAGE_NP);
+    boost::replace_first(counter_message, "%s", counter.first);
+  }
+
+  counter_message[0] = toupper(counter_message[0]);
+  return counter_message;
+}
+
 string CombatTextKeys::get_miss_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& miss_target)
 {
   pair<string,string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, miss_target);
@@ -443,6 +458,8 @@ const string CombatTextKeys::COMBAT_ETHEREAL_MESSAGE       = "COMBAT_ETHEREAL_ME
 const string CombatTextKeys::COMBAT_ETHEREAL_MESSAGE_NP    = "COMBAT_ETHEREAL_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_INCORPOREAL_MESSAGE    = "COMBAT_INCORPOREAL_MESSAGE";
 const string CombatTextKeys::COMBAT_INCORPOREAL_MESSAGE_NP = "COMBAT_INCORPOREAL_MESSAGE_NP";
+const string CombatTextKeys::COMBAT_COUNTER_MESSAGE        = "COMBAT_COUNTER_MESSAGE";
+const string CombatTextKeys::COMBAT_COUNTER_MESSAGE_NP     = "COMBAT_COUNTER_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAGE";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE_NP        = "COMBAT_MISS_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_CRITICAL_HIT_MESSAGE   = "COMBAT_CRITICAL_HIT_MESSAGE";

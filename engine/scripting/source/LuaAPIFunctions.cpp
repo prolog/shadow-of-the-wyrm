@@ -4590,7 +4590,7 @@ int ranged_attack(lua_State* ls)
     damage->set_piercing(piercing);
 
     CombatManager cm;
-    cm.attack(attacking_creature, attacked_creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY, false, damage);
+    cm.attack(attacking_creature, attacked_creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY, AttackSequenceType::ATTACK_SEQUENCE_INITIAL, false, damage);
   }
   else
   {

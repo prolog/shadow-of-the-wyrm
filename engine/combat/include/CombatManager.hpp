@@ -16,10 +16,14 @@ class CombatManager
     CombatManager();
     bool operator==(const CombatManager& cm) const;
     
+    // Convenient function
     ActionCostValue attack(CreaturePtr creature, const Direction d);
+
+    // The "real" attack function
     ActionCostValue attack(CreaturePtr attacking_creature, 
                            CreaturePtr attacked_creature, 
                            const AttackType = AttackType::ATTACK_TYPE_MELEE_PRIMARY, 
+                           const AttackSequenceType = AttackSequenceType::ATTACK_SEQUENCE_INITIAL,
                            const bool mark_skills = true, 
                            DamagePtr damage = DamagePtr());
 
@@ -61,6 +65,9 @@ class CombatManager
     bool is_automatic_hit(const int d100_roll);
 
     bool destroy_weapon_if_necessary(CreaturePtr creature, const AttackType attack_type);
+
+    bool counter_strike_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackSequenceType ast);
+    void add_counter_strike_message(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
 
     bool does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type);
     
