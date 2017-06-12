@@ -274,6 +274,32 @@ string DirectionEnum::to_attack_string(const Direction d)
   return command_key_direction;  
 }
 
+HandednessEnum::HandednessEnum()
+{
+}
+
+HandednessEnum::~HandednessEnum()
+{
+}
+
+RotationDirection HandednessEnum::to_rotation_direction(const Handedness h)
+{
+  RotationDirection rd = RotationDirection::ROTATION_DIRECTION_NULL;
+
+  switch (h)
+  {
+    case Handedness::LEFT_HANDED:
+      rd = RotationDirection::ROTATION_DIRECTION_CLOCKWISE;
+      break;
+    case Handedness::RIGHT_HANDED:
+    default:
+      rd = RotationDirection::ROTATION_DIRECTION_COUNTERCLOCKWISE;
+      break;
+  }
+
+  return rd;
+}
+
 String::String()
 {
 }

@@ -24,7 +24,7 @@ Modifier DisfiguredStatusEffect::get_base_modifier(CreaturePtr creature, const i
   // Disfiguration reduces stats by a percentage that goes up based on the
   // danger level of the attack.
   pair<int, int> r_pcts = dc.calculate_reduction_pcts(danger_level);
-  pair<float, float> r_mults = {r_pcts.first / 100.0, r_pcts.second / 100.0};
+  pair<float, float> r_mults = {r_pcts.first / 100.0f, r_pcts.second / 100.0f};
 
   // Str
   if (RNG::percent_chance(25))

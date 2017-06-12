@@ -101,6 +101,14 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   adjacent.  Counter-strikes are free actions and do not affect the
   counter-striking creature's action timers.
 
+- Added a new damage type, "scything".  When an attack is scything, it
+  has a chance to apply to creatures immediately adjacent to the one that
+  was originally attacked.  The chance is reduced significantly when the
+  original attack misses.
+
+- The artifact scythe "Whisperwind" now has the scything flag applied to
+  its damage.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
@@ -115,7 +123,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - New monster-only spells: wyrmfire (Arcane).
 
 - New items: scroll of mapping, scroll of monster summoning, wand of
-  digging, wand of inferno, moloch armour.
+  digging, wand of inferno, moloch armour, scythe.
 
 - New artifacts: Ring of Aran Fee, naming stone, Telarian Mail, Telarian
   Shield, Telarian Helm.

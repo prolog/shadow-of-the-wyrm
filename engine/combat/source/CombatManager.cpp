@@ -333,6 +333,32 @@ void CombatManager::add_counter_strike_message(CreaturePtr attacking_creature, C
   }
 }
 
+bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+{
+  bool scythed = false;
+  set<string> visited_creature_ids;
+  MapPtr current_map = Game::instance().get_current_map();
+
+  if (current_map && attacking_creature && attacked_creature)
+  {
+    Coordinate attack_creature_coord = current_map->get_location(attacking_creature->get_id());
+    Coordinate attacked_creature_coord = current_map->get_location(attacked_creature->get_id());
+    int radius = CoordUtils::chebyshev_distance(attack_creature_coord, attacked_creature_coord);
+
+    // Get the rotation direction based on the attacking creature's handedness.
+    RotationDirection rd = HandednessEnum::to_rotation_direction(attacking_creature->get_handedness());
+
+    // Generate the scything coordinates in a square (since SotW uses square
+    // LOS) around the attacking creature, based on the distance between the
+    // attacker and the current target.
+    vector<Coordinate> scythe_coords = CoordUtils::get_square_coordinates(attack_creature_coord.first, attack_creature_coord.second, radius);
+
+    // ...
+  }
+
+  return scythed;
+}
+
 bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)
 {
   WeaponManager wm;
@@ -414,6 +440,9 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 
   // If there are any scripts associated with the attack, run them.
   run_attack_script_if_necessary(attacking_creature, attacked_creature);
+
+  // If the attack is scything, continue the attack on nearby creatures.
+  handle_scything_if_necessary(attacking_creature, attacked_creature);
 
   return true;
 }

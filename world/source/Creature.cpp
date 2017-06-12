@@ -49,7 +49,7 @@ Creature::Creature()
   willpower.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
   charisma.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 
-  Damage dam(1, 2, 0, DamageType::DAMAGE_TYPE_POUND, {}, false, false, false, false, false, false, 0, {});
+  Damage dam(1, 2, 0, DamageType::DAMAGE_TYPE_POUND, {}, false, false, false, false, false, false, false, 0, {});
   set_base_damage(dam);
 
   intrinsic_resistances.set_all_resistances_to(0);

@@ -13,7 +13,7 @@ class Damage : public Dice
 {
   public:
     explicit Damage();
-    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const std::vector<std::string>& rslays, const bool chaos, const bool vorp, const bool drain, const bool ether, const bool piercing, const bool incorporeal, const int ebonus, const StatusAilments& sa);
+    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const std::vector<std::string>& rslays, const bool chaos, const bool vorp, const bool drain, const bool ether, const bool piercing, const bool incorporeal, const bool scything, const int ebonus, const StatusAilments& sa);
     Damage(const Damage& d);
     Damage&  operator= (const Damage& d);
     bool     operator==(const Damage& d) const;
@@ -49,6 +49,9 @@ class Damage : public Dice
     void set_incorporeal(const bool new_incorporeal);
     bool get_incorporeal() const;
 
+    void set_scything(const bool new_scything);
+    bool get_scything() const;
+
     void set_effect_bonus(const int new_bonus);
     int get_effect_bonus() const;
 
@@ -82,6 +85,8 @@ class Damage : public Dice
     bool ethereal; // Ditto, but AP.
     bool piercing; // ignore soak
     bool incorporeal; // only a quarter of the soak is used
+    bool scything; // damage may affect other targets nearby
+
     DamageType damage_type;
     std::vector<std::string> slays_races;
     int effect_bonus;
