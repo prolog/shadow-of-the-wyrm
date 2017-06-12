@@ -74,6 +74,16 @@ class DirectionEnum
     ~DirectionEnum();
 };
 
+class HandednessEnum
+{
+  public:
+    static RotationDirection to_rotation_direction(const Handedness h);
+
+  protected:
+    HandednessEnum();
+    ~HandednessEnum();
+};
+
 class String
 {
   public:

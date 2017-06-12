@@ -68,6 +68,7 @@ class CombatManager
 
     bool counter_strike_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackSequenceType ast);
     void add_counter_strike_message(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
+    bool handle_scything_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
 
     bool does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type);
     

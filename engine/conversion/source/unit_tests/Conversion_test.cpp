@@ -118,6 +118,12 @@ TEST(SW_Engine_ConversionRoutines, direction_to_string)
   EXPECT_EQ(CommandKeys::MOVE_NORTHEAST, DirectionEnum::to_string(Direction::DIRECTION_NORTH_EAST));
 }
 
+TEST(SW_Engine_ConversionRoutines, handedness_to_rotation_direction)
+{
+  EXPECT_EQ(RotationDirection::ROTATION_DIRECTION_CLOCKWISE, HandednessEnum::to_rotation_direction(Handedness::LEFT_HANDED));
+  EXPECT_EQ(RotationDirection::ROTATION_DIRECTION_COUNTERCLOCKWISE, HandednessEnum::to_rotation_direction(Handedness::RIGHT_HANDED));
+}
+
 TEST(SW_Engine_ConversionRoutines, raw_hunger_to_hunger_level)
 {
   EXPECT_EQ(HungerLevel::HUNGER_LEVEL_STUFFED, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_STUFFED));

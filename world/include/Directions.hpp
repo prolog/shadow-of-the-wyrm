@@ -38,6 +38,15 @@ enum struct CardinalDirection
   CARDINAL_DIRECTION_WEST  = 3
 };
 
+// Used for things like scything attack, where it
+// follows a rotation around some centre.
+enum struct RotationDirection
+{
+  ROTATION_DIRECTION_NULL = -1,
+  ROTATION_DIRECTION_CLOCKWISE = 0,
+  ROTATION_DIRECTION_COUNTERCLOCKWISE = 1
+};
+
 enum struct DirectionCategory
 {
   DIRECTION_CATEGORY_NONE = 0,

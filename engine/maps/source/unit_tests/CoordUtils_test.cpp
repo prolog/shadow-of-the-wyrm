@@ -520,3 +520,27 @@ TEST(SW_Engine_Maps_CoordUtils, get_centre_coordinate)
   EXPECT_EQ(15, centre.second);
 }
 
+TEST(SW_Engine_Maps_CoordUtils, get_square_coordinates)
+{
+  Coordinate centre = {12,12};
+  vector<Coordinate> square_coords = CoordUtils::get_square_coordinates(centre.first, centre.second, 1);
+  vector<Coordinate> expect = {{11,11},{11,12},{11,13},{12,11},{12,13},{13,11},{13,12},{13,13}};
+
+  for (const Coordinate& exp_coord : expect)
+  {
+    EXPECT_TRUE(std::find(square_coords.begin(), square_coords.end(), exp_coord) != square_coords.end());
+  }
+
+  centre = {0,0};
+  square_coords = CoordUtils::get_square_coordinates(centre.first, centre.second, 2);
+  expect = {{-2,-2},{-2,-1},{-2,0},{-2,1},{-2,2},
+            {-1,-2},                      {-1,2},
+            {0,-2},                       {0,2},
+            {1,-2},                       {1,2},
+            {2,-2},{2,-1},{2,0},{2,1},{2,2}}; // JCD FIXME
+
+  for (const Coordinate& exp_coord : expect)
+  {
+    EXPECT_TRUE(std::find(square_coords.begin(), square_coords.end(), exp_coord) != square_coords.end());
+  }
+}

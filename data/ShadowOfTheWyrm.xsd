@@ -883,6 +883,7 @@
 			<xs:attribute name="vorpal" type="xs:boolean" use="optional" default="0"/>
 			<xs:attribute name="draining" type="xs:boolean" use="optional" default="0"/>
 			<xs:attribute name="ethereal" type="xs:boolean" use="optional" default="0"/>
+			<xs:attribute name="scything" type="xs:boolean" use="optional" default="0"/>
 		</xs:extension>
 	</xs:complexContent>
 </xs:complexType>

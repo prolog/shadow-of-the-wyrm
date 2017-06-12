@@ -374,6 +374,28 @@ vector<Coordinate> CoordUtils::get_circle_coordinates(const int row_centre, cons
   return coords;
 }
 
+vector<Coordinate> CoordUtils::get_square_coordinates(const int row_centre, const int col_centre, const int radius)
+{
+  vector<Coordinate> coords;
+  int start_row = row_centre - radius;
+  int start_col = col_centre - radius;
+  int end_row = row_centre + radius;
+  int end_col = col_centre + radius;
+
+  for (int cur_row = start_row; cur_row <= end_row; cur_row++)
+  {
+    for (int cur_col = start_col; cur_col <= end_col; cur_col++)
+    {
+      if (cur_row == start_row || cur_row == end_row || cur_col == start_col || cur_col == end_col)
+      {
+        coords.push_back(make_pair(cur_row, cur_col));
+      }
+    }
+  }
+
+  return coords;
+}
+
 Coordinate CoordUtils::get_centre_coordinate(const Coordinate& top_left, const Coordinate& bottom_right)
 {
   return {(top_left.first + bottom_right.first) / 2, (top_left.second + bottom_right.second) / 2};
