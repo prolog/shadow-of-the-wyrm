@@ -381,15 +381,53 @@ vector<Coordinate> CoordUtils::get_square_coordinates(const int row_centre, cons
   int start_col = col_centre - radius;
   int end_row = row_centre + radius;
   int end_col = col_centre + radius;
+  bool iterate = true;
+  int dy = 0;
+  int dx = 0;
+  int cur_col = start_col;
+  int cur_row = start_row;
 
-  for (int cur_row = start_row; cur_row <= end_row; cur_row++)
+  // Iterate, turtle-like, around the coords.  Most algorithms don't care
+  // about the coordinate order, and the turtle-like iteration will satisfy
+  // those who need the coordinates "stepped".
+  //
+  // The iteration is clockwise.
+  while (iterate)
   {
-    for (int cur_col = start_col; cur_col <= end_col; cur_col++)
+    if (cur_col == start_col && cur_row == start_row)
     {
-      if (cur_row == start_row || cur_row == end_row || cur_col == start_col || cur_col == end_col)
-      {
-        coords.push_back(make_pair(cur_row, cur_col));
-      }
+      dy = 0;
+      dx = 1;
+    }
+    else if (cur_col == end_col && cur_row == start_row)
+    {
+      dy = 1;
+      dx = 0;
+    }
+    else if (cur_col == end_col && cur_row == end_row)
+    {
+      dy = 0;
+      dx = -1;
+    }
+    else if (cur_col == start_col && cur_row == end_row)
+    {
+      dy = -1;
+      dx = 0;
+    }
+
+    cur_row += dy;
+    cur_col += dx;
+
+    // If we've completed the iteration, break.
+    // Otherwise, add the current coordinates to our list of coordinates and
+    // continue the iteration.
+    if (std::find(coords.begin(), coords.end(), make_pair(cur_row, cur_col)) != coords.end())
+    {
+      iterate = false;
+    }
+    else
+    {
+      coords.push_back(make_pair(cur_row, cur_col));
     }
   }
 
