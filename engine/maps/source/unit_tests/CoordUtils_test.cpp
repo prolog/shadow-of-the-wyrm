@@ -522,8 +522,10 @@ TEST(SW_Engine_Maps_CoordUtils, get_centre_coordinate)
 
 TEST(SW_Engine_Maps_CoordUtils, get_square_coordinates)
 {
+  // JCD FIXME: negative/zero radius cases
+
   Coordinate centre = {12,12};
-  vector<Coordinate> square_coords = CoordUtils::get_square_coordinates(centre.first, centre.second, 1);
+  vector<Coordinate> square_coords = CoordUtils::get_square_coordinates(centre.first, centre.second, 1, RotationDirection::ROTATION_DIRECTION_CLOCKWISE);
   vector<Coordinate> expect = {{11,11},{11,12},{11,13},{12,11},{12,13},{13,11},{13,12},{13,13}};
 
   for (const Coordinate& exp_coord : expect)
@@ -532,7 +534,7 @@ TEST(SW_Engine_Maps_CoordUtils, get_square_coordinates)
   }
 
   centre = {0,0};
-  square_coords = CoordUtils::get_square_coordinates(centre.first, centre.second, 2);
+  square_coords = CoordUtils::get_square_coordinates(centre.first, centre.second, 2, RotationDirection::ROTATION_DIRECTION_CLOCKWISE);
   expect = {{-2,-2},{-2,-1},{-2,0},{-2,1},{-2,2},
             {-1,-2},                      {-1,2},
             {0,-2},                       {0,2},
@@ -543,4 +545,17 @@ TEST(SW_Engine_Maps_CoordUtils, get_square_coordinates)
   {
     EXPECT_TRUE(std::find(square_coords.begin(), square_coords.end(), exp_coord) != square_coords.end());
   }
+}
+
+TEST(SW_Engine_Maps_CoordUtils, get_square_coordinates_ordering)
+{
+  // JCD FIXME: negative/zero radius cases
+
+  Coordinate centre = { 12,12 };
+  vector<Coordinate> square_coords = CoordUtils::get_square_coordinates(centre.first, centre.second, 1, RotationDirection::ROTATION_DIRECTION_CLOCKWISE);
+  vector<Coordinate> expect    = { { 11,11 },{ 11,12 },{ 11,13 },{ 12,13 },{ 13,13 },{ 13,12 },{ 13,11 },{ 12,11 } };
+  vector<Coordinate> expect_cc = { { 11,11 },{ 12,11 },{ 13,11 },{ 13,12 },{ 13,13 },{ 12,13 },{ 11,13 },{ 11,12 } };
+
+  EXPECT_EQ(expect, CoordUtils::get_square_coordinates(centre.first, centre.second, 1, RotationDirection::ROTATION_DIRECTION_CLOCKWISE));
+  EXPECT_EQ(expect_cc, CoordUtils::get_square_coordinates(centre.first, centre.second, 1, RotationDirection::ROTATION_DIRECTION_COUNTERCLOCKWISE));
 }
