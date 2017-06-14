@@ -374,7 +374,7 @@ vector<Coordinate> CoordUtils::get_circle_coordinates(const int row_centre, cons
   return coords;
 }
 
-vector<Coordinate> CoordUtils::get_square_coordinates(const int row_centre, const int col_centre, const int radius)
+vector<Coordinate> CoordUtils::get_square_coordinates(const int row_centre, const int col_centre, const int radius, const RotationDirection rd)
 {
   vector<Coordinate> coords;
   int start_row = row_centre - radius;
@@ -386,48 +386,56 @@ vector<Coordinate> CoordUtils::get_square_coordinates(const int row_centre, cons
   int dx = 0;
   int cur_col = start_col;
   int cur_row = start_row;
+  Coordinate start_coord = {start_row, start_col};
+  int num_coords = 1;
 
   // Iterate, turtle-like, around the coords.  Most algorithms don't care
   // about the coordinate order, and the turtle-like iteration will satisfy
   // those who need the coordinates "stepped".
   //
   // The iteration is clockwise.
-  while (iterate)
+  if (radius > 0)
   {
-    if (cur_col == start_col && cur_row == start_row)
+    while (iterate)
     {
-      dy = 0;
-      dx = 1;
-    }
-    else if (cur_col == end_col && cur_row == start_row)
-    {
-      dy = 1;
-      dx = 0;
-    }
-    else if (cur_col == end_col && cur_row == end_row)
-    {
-      dy = 0;
-      dx = -1;
-    }
-    else if (cur_col == start_col && cur_row == end_row)
-    {
-      dy = -1;
-      dx = 0;
-    }
+      if (cur_col == start_col && cur_row == start_row)
+      {
+        dy = (rd == RotationDirection::ROTATION_DIRECTION_CLOCKWISE) ? 0 : 1;
+        dx = (rd == RotationDirection::ROTATION_DIRECTION_CLOCKWISE) ? 1 : 0;
+      }
+      else if (cur_col == end_col && cur_row == start_row)
+      {
+        dy = (rd == RotationDirection::ROTATION_DIRECTION_CLOCKWISE) ? 1 : 0;
+        dx = (rd == RotationDirection::ROTATION_DIRECTION_CLOCKWISE) ? 0 : -1;
+      }
+      else if (cur_col == end_col && cur_row == end_row)
+      {
+        dy = (rd == RotationDirection::ROTATION_DIRECTION_CLOCKWISE) ? 0 : -1;
+        dx = (rd == RotationDirection::ROTATION_DIRECTION_CLOCKWISE) ? -1 : 0;
+      }
+      else if (cur_col == start_col && cur_row == end_row)
+      {
+        dy = (rd == RotationDirection::ROTATION_DIRECTION_CLOCKWISE) ? -1 : 0;
+        dx = (rd == RotationDirection::ROTATION_DIRECTION_CLOCKWISE) ? 0 : 1;
+      }
 
-    cur_row += dy;
-    cur_col += dx;
+      Coordinate cur_coord = make_pair(cur_row, cur_col);
 
-    // If we've completed the iteration, break.
-    // Otherwise, add the current coordinates to our list of coordinates and
-    // continue the iteration.
-    if (std::find(coords.begin(), coords.end(), make_pair(cur_row, cur_col)) != coords.end())
-    {
-      iterate = false;
-    }
-    else
-    {
-      coords.push_back(make_pair(cur_row, cur_col));
+      // If we've completed the iteration, break.
+      // Otherwise, add the current coordinates to our list of coordinates and
+      // continue the iteration.
+      if (num_coords > 1 && cur_coord == start_coord)
+      {
+        iterate = false;
+      }
+      else
+      {
+        coords.push_back(cur_coord);
+      }
+
+      cur_row += dy;
+      cur_col += dx;
+      num_coords++;
     }
   }
 

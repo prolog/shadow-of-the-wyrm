@@ -351,9 +351,26 @@ bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature,
     // Generate the scything coordinates in a square (since SotW uses square
     // LOS) around the attacking creature, based on the distance between the
     // attacker and the current target.
-    vector<Coordinate> scythe_coords = CoordUtils::get_square_coordinates(attack_creature_coord.first, attack_creature_coord.second, radius);
+    vector<Coordinate> scythe_coords = CoordUtils::get_square_coordinates(attack_creature_coord.first, attack_creature_coord.second, radius, rd);
 
-    // ...
+    // Rotate the elements, using the attacked creature's coordinate as the
+    // pivot.
+
+    // JCD FIXME USE STD::ROTATE
+    auto at_it = std::find(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord);
+
+    if (at_it != scythe_coords.end())
+    {
+      if (at_it != scythe_coords.begin())
+      {
+        auto at_it2 = std::prev(at_it, 1);
+        scythe_coords.insert(scythe_coords.end(), scythe_coords.begin(), at_it);
+      }
+    }
+
+    // Finally, remove the attacked creature's coordinates from the scything
+    // list so that it's not attacked twice.
+    scythe_coords.erase(std::remove(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord));
   }
 
   return scythed;
