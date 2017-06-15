@@ -24,6 +24,7 @@ class CombatTextKeys
     static std::string get_ranged_attack_message(const bool attacker_is_player, const bool attacked_is_player, const bool uses_launcher, const std::string& attacker, const std::string& ammunition, const std::string& target);
     static std::string get_split_message(const std::string& split_creature);
     static std::string get_counter_message(const bool is_player, const std::string& target);
+    static std::string get_scything_message(const bool is_player, const std::string& attacker);
 
     static const std::string COMBAT_TARGET_TOO_FAR_AWAY;
     static const std::string COMBAT_CRITICAL_HIT_MESSAGE; // Common to both - no substitutions
@@ -68,6 +69,8 @@ class CombatTextKeys
 
     static const std::string COMBAT_COUNTER_MESSAGE;
     static const std::string COMBAT_COUNTER_MESSAGE_NP;
+    static const std::string COMBAT_SCYTHING_MESSAGE;
+    static const std::string COMBAT_SCYTHING_MESSAGE_NP;
 
     static void populate_combat_messages();
     static std::string create_key(const bool is_player, const DamageType damage_type);
