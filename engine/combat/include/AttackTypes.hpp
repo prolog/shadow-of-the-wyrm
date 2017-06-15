@@ -14,5 +14,6 @@ enum struct AttackType
 enum struct AttackSequenceType
 {
   ATTACK_SEQUENCE_INITIAL = 0,
-  ATTACK_SEQUENCE_COUNTER = 1
+  ATTACK_SEQUENCE_COUNTER = 1,
+  ATTACK_SEQUENCE_FOLLOW_THROUGH = 2
 };

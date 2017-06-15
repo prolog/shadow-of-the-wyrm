@@ -168,7 +168,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     // Hit
     else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
     {
-      hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type);
+      hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type, ast);
       mark_for_weapon_and_combat_skills_and_stat = true;
       destroy_weapon_if_necessary(attacking_creature, attack_type);
     }
@@ -333,13 +333,17 @@ void CombatManager::add_counter_strike_message(CreaturePtr attacking_creature, C
   }
 }
 
-bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const AttackSequenceType ast, const Damage& damage_info)
 {
   bool scythed = false;
   set<string> visited_creature_ids;
   MapPtr current_map = Game::instance().get_current_map();
 
-  if (current_map && attacking_creature && attacked_creature)
+  if (current_map && 
+      attacking_creature && 
+      attacked_creature && 
+      ast == AttackSequenceType::ATTACK_SEQUENCE_INITIAL &&
+      damage_info.get_scything())
   {
     Coordinate attack_creature_coord = current_map->get_location(attacking_creature->get_id());
     Coordinate attacked_creature_coord = current_map->get_location(attacked_creature->get_id());
@@ -354,29 +358,43 @@ bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature,
     vector<Coordinate> scythe_coords = CoordUtils::get_square_coordinates(attack_creature_coord.first, attack_creature_coord.second, radius, rd);
 
     // Rotate the elements, using the attacked creature's coordinate as the
-    // pivot.
+    // pivot.  Remove the attacked creature's coordinates from the scything
+    // list so that it's not attacked twice.
+    std::rotate(scythe_coords.begin(), std::find(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord), scythe_coords.end());
+    scythe_coords.erase(std::remove(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord));
+    bool message_shown = false;
 
-    // JCD FIXME USE STD::ROTATE
-    auto at_it = std::find(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord);
-
-    if (at_it != scythe_coords.end())
+    // Attack any hostile creatures in the scything sequence.
+    for (const Coordinate& c : scythe_coords)
     {
-      if (at_it != scythe_coords.begin())
+      TilePtr tile = current_map->at(c);
+
+      if (tile != nullptr)
       {
-        auto at_it2 = std::prev(at_it, 1);
-        scythe_coords.insert(scythe_coords.end(), scythe_coords.begin(), at_it);
+        CreaturePtr creature = tile->get_creature();
+
+        if (creature != nullptr && creature->get_decision_strategy()->get_threats_ref().has_threat(attacking_creature->get_id()).first)
+        {
+          // Show a "You/monster follow through!" message, but only once.
+          if (message_shown == false)
+          {
+            IMessageManager& manager = MM::instance(MessageTransmit::SELF, attacking_creature, attacking_creature->get_is_player());
+            manager.add_new_message(CombatTextKeys::get_scything_message(attacking_creature->get_is_player(), attacking_creature->get_description_sid()));
+            manager.send();
+
+            message_shown = true;
+          }
+
+          attack(attacking_creature, creature, attack_type, ast);
+        }
       }
     }
-
-    // Finally, remove the attacked creature's coordinates from the scything
-    // list so that it's not attacked twice.
-    scythe_coords.erase(std::remove(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord));
   }
 
   return scythed;
 }
 
-bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)
+bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type, const AttackSequenceType ast)
 {
   WeaponManager wm;
   Game& game = Game::instance();
@@ -459,7 +477,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   run_attack_script_if_necessary(attacking_creature, attacked_creature);
 
   // If the attack is scything, continue the attack on nearby creatures.
-  handle_scything_if_necessary(attacking_creature, attacked_creature);
+  handle_scything_if_necessary(attacking_creature, attacked_creature, attack_type, ast, damage_info);
 
   return true;
 }

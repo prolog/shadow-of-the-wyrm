@@ -141,6 +141,16 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
     dmg_flags.push_back(TextKeys::DAMAGE_PIERCING);
   }
 
+  if (damage.get_incorporeal())
+  {
+    dmg_flags.push_back(TextKeys::DAMAGE_INCORPOREAL);
+  }
+
+  if (damage.get_scything())
+  {
+    dmg_flags.push_back(TextKeys::DAMAGE_SCYTHING);
+  }
+
   bool has_slays = !slays.empty();
 
   if (!dmg_flags.empty() || !slays.empty())

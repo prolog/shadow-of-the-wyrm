@@ -48,7 +48,7 @@ class CombatManager
     // Functions to handle the attacking mechanics and add messages as necessary.
     //
     // These are generally not called directly, other than via the Lua API.
-    bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type);
+    bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type, const AttackSequenceType ast);
     bool miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     bool close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
         
@@ -68,7 +68,7 @@ class CombatManager
 
     bool counter_strike_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackSequenceType ast);
     void add_counter_strike_message(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
-    bool handle_scything_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
+    bool handle_scything_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const AttackSequenceType ast, const Damage& damage_info);
 
     bool does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type);
     
