@@ -385,7 +385,9 @@ bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature,
             message_shown = true;
           }
 
-          attack(attacking_creature, creature, attack_type, ast);
+          // Mark that the attack is a follow through to avoid the joy of
+          // infinite recursion.
+          attack(attacking_creature, creature, attack_type, AttackSequenceType::ATTACK_SEQUENCE_FOLLOW_THROUGH);
         }
       }
     }
