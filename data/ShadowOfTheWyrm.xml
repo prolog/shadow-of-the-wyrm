@@ -30653,7 +30653,7 @@
 				<Damage scything="1">
 					<NumDice>1</NumDice>
 					<NumSides>12</NumSides>
-					<Type>1</Type>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="club">
