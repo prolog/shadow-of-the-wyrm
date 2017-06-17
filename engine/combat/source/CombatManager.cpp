@@ -29,6 +29,7 @@
 #include "PhaseOfMoonCalculator.hpp"
 #include "PointsTransfer.hpp"
 #include "RaceManager.hpp"
+#include "ScythingCalculator.hpp"
 #include "Setting.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
@@ -362,7 +363,12 @@ bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature,
     // list so that it's not attacked twice.
     std::rotate(scythe_coords.begin(), std::find(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord), scythe_coords.end());
     scythe_coords.erase(std::remove(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord));
+    
     bool message_shown = false;
+    ScythingCalculator sc;
+    WeaponManager wm;
+    SkillType scything_skill = wm.get_appropriate_trained_skill(wm.get_weapon(attacking_creature, attack_type), attack_type);
+    int total_attacks = 1;
 
     // Attack any hostile creatures in the scything sequence.
     for (const Coordinate& c : scythe_coords)
@@ -372,6 +378,13 @@ bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature,
       if (tile != nullptr)
       {
         CreaturePtr creature = tile->get_creature();
+
+        int pct_chance_continue = sc.calc_pct_chance_scything_continues(attacking_creature, scything_skill, total_attacks);
+
+        if (!RNG::percent_chance(pct_chance_continue))
+        {
+          break;
+        }
 
         if (creature != nullptr && creature->get_decision_strategy()->get_threats_ref().has_threat(attacking_creature->get_id()).first)
         {
@@ -388,6 +401,7 @@ bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature,
           // Mark that the attack is a follow through to avoid the joy of
           // infinite recursion.
           attack(attacking_creature, creature, attack_type, AttackSequenceType::ATTACK_SEQUENCE_FOLLOW_THROUGH);
+          total_attacks++;
         }
       }
     }

@@ -103,8 +103,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - Added a new damage type, "scything".  When an attack is scything, it
   has a chance to apply to creatures immediately adjacent to the one that
-  was originally attacked.  The chance is reduced significantly when the
-  original attack misses.
+  was originally attacked.  This chance is based on the creature's skill
+  in the type of the scything weapon (scythes are typically spears).
 
 - The artifact scythe "Whisperwind" now has the scything flag applied to
   its damage.
@@ -167,7 +167,10 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   
   - If the player was killed and then damaged again, it would trigger
     multiple DYWYPI-type messages.
-      
+
+  - Incorporeal weapons were not being described properly with the "W"
+    command.
+          
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 
