@@ -24778,7 +24778,6 @@
 		</Creature>
 		<Creature id="the_conjurer">
 			<RaceID>_elysian</RaceID>
-			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>THE_CONJURER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_CONJURER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THE_CONJURER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -24818,7 +24817,6 @@
 		</Creature>
 		<Creature id="the_armourer">
 			<RaceID>_elysian</RaceID>
-			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>THE_ARMOURER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_ARMOURER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THE_ARMOURER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -24853,6 +24851,43 @@
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/the_armourer.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="the_smith">
+			<RaceID>_elysian</RaceID>
+			<ShortDescriptionSID>THE_SMITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_SMITH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_SMITH_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>0</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_smith.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -29863,6 +29898,45 @@
 					<Type>0</Type>
 					<Slays>
 						<Slay>*</Slay>
+					</Slays>
+				</Damage>
+			</Weapon>
+			<Weapon id="godblade">
+				<DescriptionSID>GODBLADE_SID</DescriptionSID>
+				<UsageDescriptionSID>GODBLADE_USAGE_SID</UsageDescriptionSID>
+				<Value>50000</Value>
+				<Weight>
+					<Pounds>50</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.30</Slash>
+					<Pierce>0.30</Pierce>
+					<Pound>0.30</Pound>
+					<Heat>0.30</Heat>
+					<Cold>0.30</Cold>
+					<Acid>0.30</Acid>
+					<Poison>0.30</Poison>
+					<Holy>0.30</Holy>
+					<Shadow>0.30</Shadow>
+					<Arcane>0.30</Arcane>
+					<Lightning>0.30</Lightning>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>50</Difficulty>
+				<Speed>12</Speed>
+				<Damage>
+					<NumDice>10</NumDice>
+					<NumSides>100</NumSides>
+					<Modifier>100</Modifier>
+					<Type>0</Type>
+					<Slays>
+						<Slay>_divine</Slay>
 					</Slays>
 				</Damage>
 			</Weapon>

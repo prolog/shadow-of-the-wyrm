@@ -40,5 +40,7 @@ map_set_tile_subtype(map_id, 12, 40, CTILE_TYPE_FLOATING_TOWER)
 -- can propagate up the tower.
 map_set_tile_property(map_id, 12, 40, "MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED", "1")
 
--- JCD FIXME: Set the tower peak details.
+-- Set the top of the tower custom map ID, so that after the air level,
+-- the player will get a brief respite.
+map_set_tile_property(map_id, 12, 40, "-95_CUSTOM_MAP_ID", "telari_top")
 

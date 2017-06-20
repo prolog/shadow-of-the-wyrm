@@ -1,5 +1,5 @@
 Me:
-- Scything follow through calculator
+- Add forge to top of Telari
 - Eye of the first meteor burst isn't being removed, and the subsequent
   bursts aren't showing the centre.  Update this so that the centre is
   always shown (and not removed).
