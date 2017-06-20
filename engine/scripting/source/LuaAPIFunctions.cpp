@@ -188,6 +188,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "creature_has_status", creature_has_status);
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
+  lua_register(L, "get_creature_base_damage", get_creature_base_damage);
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
   lua_register(L, "get_creature_yx", get_creature_yx);
@@ -195,6 +196,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_current_map_id", get_current_map_id);
   lua_register(L, "gain_level", gain_level);
   lua_register(L, "goto_level", goto_level);
+  lua_register(L, "get_creature_level", get_creature_level);
   lua_register(L, "is_player", is_player);
   lua_register(L, "incr_str", incr_str);
   lua_register(L, "incr_dex", incr_dex);
@@ -278,6 +280,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_race_ids", get_race_ids);
   lua_register(L, "get_unarmed_slays", get_unarmed_slays);
   lua_register(L, "add_unarmed_slay", add_unarmed_slay);
+  lua_register(L, "get_class_id", get_class_id);
   lua_register(L, "get_race_name", get_race_name);
   lua_register(L, "set_inscription", set_inscription);
   lua_register(L, "get_map_dimensions", get_map_dimensions);
@@ -1674,12 +1677,13 @@ int creature_has_status(lua_State* ls)
 // Set a creature's base (bare-handed) damage.
 int set_creature_base_damage(lua_State* ls)
 {
-  if ((lua_gettop(ls) == 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
+  int num_args = lua_gettop(ls);
+
+  if ((num_args >= 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
   {
     string creature_id = lua_tostring(ls, 1);
     int num_dice = lua_tointeger(ls, 2);
     int num_sides = lua_tointeger(ls, 3);
-
     CreaturePtr creature = get_creature(creature_id);
 
     if (creature != nullptr)
@@ -1687,6 +1691,12 @@ int set_creature_base_damage(lua_State* ls)
       Damage damage = creature->get_base_damage();
       damage.set_num_dice(num_dice);
       damage.set_dice_sides(num_sides);
+
+      if (num_args == 4 && lua_isnumber(ls, 4))
+      {
+        int modifier = lua_tointeger(ls, 4);
+        damage.set_modifier(modifier);
+      }
 
       creature->set_base_damage(damage);
     }
@@ -1698,6 +1708,40 @@ int set_creature_base_damage(lua_State* ls)
   }
 
   return 0;
+}
+
+// Get a creature's base damage
+int get_creature_base_damage(lua_State* ls)
+{
+  int num_dice = 0;
+  int num_sides = 0;
+  int modifier = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Damage damage = creature->get_base_damage();
+
+      num_dice = damage.get_num_dice();
+      num_sides = damage.get_dice_sides();
+      modifier = damage.get_modifier();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_base_damage");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, num_dice);
+  lua_pushinteger(ls, num_sides);
+  lua_pushinteger(ls, modifier);
+
+  return 3;
 }
 
 // Set a creature's speed.
@@ -1916,6 +1960,30 @@ int goto_level(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_creature_level(lua_State* ls)
+{
+  int level = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature)
+    {
+      level = creature->get_level().get_current();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_level");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, level);
+  return 1;
 }
 
 int is_player(lua_State* ls)
@@ -4377,6 +4445,30 @@ int add_unarmed_slay(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_class_id(lua_State* ls)
+{
+  string class_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      class_id = creature->get_class_id();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_class_id");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, class_id.c_str());
+  return 1;
 }
 
 int get_race_name(lua_State* ls)
