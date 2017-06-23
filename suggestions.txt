@@ -1,5 +1,4 @@
 Me:
-- Add forge to top of Telari
 - Eye of the first meteor burst isn't being removed, and the subsequent
   bursts aren't showing the centre.  Update this so that the centre is
   always shown (and not removed).
@@ -18,7 +17,6 @@ Me:
   conjurer script.
 - Email Nathan before next release re: Mac build, and update website to
   mention that the game is buildable in Mac OS.
-- Need a script to populate the first level of Telari with consumables.
 - Script to add back down staircase to Telari once the Nine have been
   killed.
 - Need to test the following after the spell refactoring:
@@ -31,10 +29,7 @@ Me:
   - 85: Terra
   - 90: Stratosphere
   - 100: Cosmos
-- Within the tower: The Smith, The Armourer, The Conjurer.
 - The Namer's script: what happens after (prayer not working etc)
-- The Smith (halfway up) should take three artifact weapons and create a 
-  sword based on them.
 - Special spells for The Sorceror
 - Special witchling spell(s?) from the Conjurer, small number of castings. 
   If AP < spell AP, should set AP.
