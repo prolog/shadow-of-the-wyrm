@@ -36,11 +36,14 @@ custom_map.set_map_fn(map_id, init_telari_base)
 -- Generate random floating tower levels.
 map_set_tile_subtype(map_id, 12, 40, CTILE_TYPE_FLOATING_TOWER)
 
--- On the up staircase, set the "danger level fixed" property so that it
--- can propagate up the tower.
-map_set_tile_property(map_id, 12, 40, "MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED", "1")
+local properties = {{"MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED", "1"},
+                    {"-95_CUSTOM_MAP_ID", "telari_top"},
+                    {"MAP_PROPERTIES_CANNOT_PRAY", "1"},
+                    {"MAP_PROPERTIES_CANNOT_PRAY_RECURSIVE", "1"},
+                    {"MAP_PROPERTIES_CANNOT_DIG", "1"},
+                    {"MAP_PROPERTIES_CANNOT_DIG_RECURSIVE", "1"}}
 
--- Set the top of the tower custom map ID, so that after the air level,
--- the player will get a brief respite.
-map_set_tile_property(map_id, 12, 40, "-95_CUSTOM_MAP_ID", "telari_top")
+for i,p_pair in ipairs(properties) do
+  map_set_tile_property(map_id, 12, 40, p_pair[1], p_pair[2])
+end
 

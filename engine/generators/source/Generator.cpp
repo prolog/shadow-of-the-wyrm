@@ -238,6 +238,35 @@ string Generator::get_additional_property(const string& property_name) const
   return property_value;
 }
 
+
+map<string, string> Generator::get_recursive_properties() const
+{
+  map<string, string> rec_props;
+  string rec_indicator = "_RECURSIVE";
+
+  for (const auto& p_pair : additional_properties)
+  {
+    string rec_prop = p_pair.first;
+
+    if (boost::algorithm::ends_with(rec_prop, rec_indicator))
+    {
+      rec_prop.erase(rec_prop.find(rec_indicator));
+
+      auto p_it = additional_properties.find(rec_prop);
+
+      // Include both the referant property, as well as the recursive
+      // property.
+      if (p_it != additional_properties.end())
+      {
+        rec_props[p_it->first] = p_it->second;
+        rec_props[p_pair.first] = p_pair.second;
+      }
+    }
+  }
+
+  return rec_props;
+}
+
 bool Generator::has_additional_property(const string& property_name) const
 {
   return (additional_properties.find(property_name) != additional_properties.end());
@@ -523,6 +552,13 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
     string generator_filter_csv = String::create_csv_from_string_vector(generator_filters);
 
     set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_GENERATOR_FILTERS, generator_filter_csv);
+  }
+
+  // Copy over any recursive properties.
+  std::map<string, string> recursive_properties = get_recursive_properties();
+  for (const auto& r_pr_pair : recursive_properties)
+  {
+    set_property_to_generator_and_map(map, r_pr_pair.first, r_pr_pair.second);
   }
 
   string ignore_lvl_checks_val = get_additional_property(MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS);

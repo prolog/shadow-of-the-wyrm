@@ -1,4 +1,6 @@
 Me:
+- Is this going to work e.g. past Siriath's lair?
+- Disallow certain races from random slays (Elysian)
 - Eye of the first meteor burst isn't being removed, and the subsequent
   bursts aren't showing the centre.  Update this so that the centre is
   always shown (and not removed).

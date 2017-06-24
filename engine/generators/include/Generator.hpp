@@ -42,6 +42,12 @@ namespace SOTW
       virtual void set_additional_properties(const std::map<std::string, std::string>& additional_properties);
       virtual bool has_additional_property(const std::string& property_name) const;
       virtual std::string get_additional_property(const std::string& property_name) const;
+      
+      // For each property with "RECURSIVE" at the end, strip off "RECURSIVE"
+      // and find that property in the additional properties, returning it as
+      // part of a map.  Also include the "RECURSIVE" properties themselves,
+      // so that they can be populated into future generators.
+      virtual std::map<std::string, std::string> get_recursive_properties() const;
 
       // Generator filters are used to generate creatures - creatures who match
       // the tile type and all the generator filters are included when considering
