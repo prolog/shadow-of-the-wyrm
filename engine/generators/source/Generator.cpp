@@ -238,7 +238,6 @@ string Generator::get_additional_property(const string& property_name) const
   return property_value;
 }
 
-
 map<string, string> Generator::get_recursive_properties() const
 {
   map<string, string> rec_props;
@@ -351,6 +350,13 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     // maps in a particular generation chain.
     new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH, get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH));
     new_staircase_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
+
+    // Ensure that depth increment is copied map to map, as well.
+    string depth_incr = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+    if (!depth_incr.empty())
+    {
+      new_staircase_tile->set_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, depth_incr);
+    }
 
     // Handle exiting to a previous map in underworld maps like dungeons,
     // mines, crypts, etc.

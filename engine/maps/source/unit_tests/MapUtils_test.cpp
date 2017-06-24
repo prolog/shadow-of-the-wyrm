@@ -93,19 +93,36 @@ TEST(SW_Engine_Maps_MapUtils, coordinate_within_dimensions)
   EXPECT_FALSE(MapUtils::are_coordinates_within_dimensions(c, d));
 }
 
-TEST(SW_Engine_Maps_MapUtils, calculate_depth_delta)
+TEST(SW_Engine_Maps_MapUtils, calculate_depth_delta_map)
 {
-  EXPECT_EQ(1, MapUtils::calculate_depth_delta(nullptr, ExitMovementType::EXIT_MOVEMENT_DESCEND));
-  EXPECT_EQ(-1, MapUtils::calculate_depth_delta(nullptr, ExitMovementType::EXIT_MOVEMENT_ASCEND));
+  EXPECT_EQ(1, MapUtils::calculate_depth_delta(nullptr, nullptr, ExitMovementType::EXIT_MOVEMENT_DESCEND));
+  EXPECT_EQ(-1, MapUtils::calculate_depth_delta(nullptr, nullptr, ExitMovementType::EXIT_MOVEMENT_ASCEND));
 
   Dimensions dim;
   MapPtr map = std::make_shared<Map>(dim);
 
-  EXPECT_EQ(1, MapUtils::calculate_depth_delta(map, ExitMovementType::EXIT_MOVEMENT_DESCEND));
-  EXPECT_EQ(-1, MapUtils::calculate_depth_delta(map, ExitMovementType::EXIT_MOVEMENT_ASCEND));
+  EXPECT_EQ(1, MapUtils::calculate_depth_delta(map, nullptr, ExitMovementType::EXIT_MOVEMENT_DESCEND));
+  EXPECT_EQ(-1, MapUtils::calculate_depth_delta(map, nullptr, ExitMovementType::EXIT_MOVEMENT_ASCEND));
 
   map->set_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, "5");
 
-  EXPECT_EQ(5, MapUtils::calculate_depth_delta(map, ExitMovementType::EXIT_MOVEMENT_DESCEND));
-  EXPECT_EQ(-5, MapUtils::calculate_depth_delta(map, ExitMovementType::EXIT_MOVEMENT_ASCEND));
+  EXPECT_EQ(5, MapUtils::calculate_depth_delta(map, nullptr, ExitMovementType::EXIT_MOVEMENT_DESCEND));
+  EXPECT_EQ(-5, MapUtils::calculate_depth_delta(map, nullptr, ExitMovementType::EXIT_MOVEMENT_ASCEND));
+}
+
+TEST(SW_Engine_Maps_MapUtils, calculate_depth_delta_tile)
+{
+  EXPECT_EQ(1, MapUtils::calculate_depth_delta(nullptr, nullptr, ExitMovementType::EXIT_MOVEMENT_DESCEND));
+  EXPECT_EQ(-1, MapUtils::calculate_depth_delta(nullptr, nullptr, ExitMovementType::EXIT_MOVEMENT_ASCEND));
+
+  Dimensions dim;
+  TilePtr tile = std::make_shared<FieldTile>();
+
+  EXPECT_EQ(1, MapUtils::calculate_depth_delta(nullptr, tile, ExitMovementType::EXIT_MOVEMENT_DESCEND));
+  EXPECT_EQ(-1, MapUtils::calculate_depth_delta(nullptr, tile, ExitMovementType::EXIT_MOVEMENT_ASCEND));
+
+  tile->set_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, "5");
+
+  EXPECT_EQ(5, MapUtils::calculate_depth_delta(nullptr, tile, ExitMovementType::EXIT_MOVEMENT_DESCEND));
+  EXPECT_EQ(-5, MapUtils::calculate_depth_delta(nullptr, tile, ExitMovementType::EXIT_MOVEMENT_ASCEND));
 }
