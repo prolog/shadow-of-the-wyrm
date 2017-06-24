@@ -198,3 +198,8 @@ bool FloatingTowerGenerator::get_permanence_default() const
 {
   return true;
 }
+
+pair<bool, bool> FloatingTowerGenerator::override_depth_update_defaults() const
+{
+  return make_pair(true, true);
+}

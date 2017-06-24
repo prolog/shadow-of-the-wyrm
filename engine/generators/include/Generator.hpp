@@ -32,6 +32,8 @@ namespace SOTW
       virtual void set_terrain_type(const TileType new_map_terrain_type);
       virtual TileType get_terrain_type() const;
 
+      virtual std::pair<bool, bool> override_depth_update_defaults() const;
+
       // Whether or not to create initial items - this will be true for a select
       // few generators (dungeons and caverns), and false for all others.
       virtual bool can_create_initial_items() const;

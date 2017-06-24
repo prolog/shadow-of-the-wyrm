@@ -8,6 +8,8 @@ class FloatingTowerGenerator : public SOTW::Generator
     
     virtual MapPtr generate(const Dimensions& dim) override;
 
+    virtual std::pair<bool, bool> override_depth_update_defaults() const override;
+
   protected:
     virtual bool get_permanence_default() const override;
 

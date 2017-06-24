@@ -133,6 +133,11 @@ TileType Generator::get_terrain_type() const
   return map_terrain_type;
 }
 
+pair<bool, bool> Generator::override_depth_update_defaults() const
+{
+  return make_pair(false, false);
+}
+
 void Generator::fill(const MapPtr map, const TileType& tile_type)
 {
   TileGenerator tg;
@@ -348,6 +353,7 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
 
     // Set the depth and original map ID so that these can be copied to all the
     // maps in a particular generation chain.
+    new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_MIN_DEPTH, get_additional_property(MapProperties::MAP_PROPERTIES_MIN_DEPTH));
     new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH, get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH));
     new_staircase_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
