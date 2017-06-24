@@ -170,7 +170,12 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
   - Incorporeal weapons were not being described properly with the "W"
     command.
-          
+    
+  - Lumps of gold (which are the raw material for the Jewelry skill)
+    are defined, but weren't set to a valid danger level, and so never
+    appeared in-game.  These should show up, now.  Sorry, anon. (4chan
+    /rlg)
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 
