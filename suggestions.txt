@@ -11,6 +11,7 @@ Me:
 - Add Shards, Meteor to a couple more creatures
 - Tile effects for Cloudspire, a la ToEF
 - Crystalline being for astral plane
+- Lumps of gold should be minable.
 - Repel (cantrip)
 - Recursive settings
 - Recursively set no-pray in cloudspire.
