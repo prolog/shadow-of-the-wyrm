@@ -1118,17 +1118,27 @@ void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
   }
 }
 
-int MapUtils::calculate_depth_delta(MapPtr map, const ExitMovementType emt)
+int MapUtils::calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovementType emt)
 {
   int depth_incr = 1;
 
   if (map != nullptr)
   {
-    string depthincr_s = map->get_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
-
-    if (!depthincr_s.empty())
+    string m_depthincr_s = map->get_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+    
+    if (!m_depthincr_s.empty())
     {
-      depth_incr = String::to_int(depthincr_s);
+      depth_incr = String::to_int(m_depthincr_s);
+    }
+  }
+
+  if (tile != nullptr)
+  {
+    string t_depthincr_s = tile->get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+
+    if (!t_depthincr_s.empty())
+    {
+      depth_incr = String::to_int(t_depthincr_s);
     }
   }
 

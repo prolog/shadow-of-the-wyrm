@@ -453,13 +453,13 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
 
 // Generate and move to the new map using the tile type and subtype present
 // on the tile, rather than a source like the map exit.
-ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const int depth_increment)
+ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const int depth_increment, const ExitMovementType emt)
 {
   ActionCostValue action_cost_value = 0;
 
   if (creature && tile && map)
   {
-    return generate_and_move_to_new_map(creature, map, tile, tile->get_tile_type(), tile->get_tile_subtype(), {}, depth_increment);
+    return generate_and_move_to_new_map(creature, map, tile, tile->get_tile_type(), tile->get_tile_subtype(), {}, depth_increment, emt);
   }
 
   return action_cost_value;
@@ -467,7 +467,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
 // General version that can handle tile type/subtype from any source - the tile
 // itself, a map exit, etc.
-ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const int depth_increment)
+ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const int depth_increment, const ExitMovementType emt)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -527,7 +527,15 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
         }
         else
         {
-          depth.set_current(depth.get_current() + depth_increment);
+          // Ensure that if we're moving up a staircase, that the depth is
+          // properly subtracted.
+          int incr = depth_increment;
+          if (emt == ExitMovementType::EXIT_MOVEMENT_ASCEND && incr > 0)
+          {
+            incr *= -1;
+          }
+
+          depth.set_current(depth.get_current() + incr);
         }
 
         if (depth_increment > 0) 

@@ -84,7 +84,7 @@ class MapUtils
 
     static void calculate_fov_maps_for_all_creatures(MapPtr map);
 
-    static int calculate_depth_delta(MapPtr map, const ExitMovementType emt);
+    static int calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovementType emt);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
