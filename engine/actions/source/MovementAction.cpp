@@ -512,10 +512,11 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       Dimensions dim = map->size();
       Depth& depth = dim.depth_ref();
       IMapTypeQueryPtr mtq = MapTypeQueryFactory::create_map_type_query(generator->get_map_type());
+      pair<bool, bool> override_depth = generator->override_depth_update_defaults();
 
       // Check to see if the depth should be updated.  For things like fields
       // and forests, it shouldn't, but for dungeons/caverns/etc., it should.
-      if (mtq && mtq->should_update_depth())
+      if (mtq && (mtq->should_update_depth() || (override_depth.first && override_depth.second)))
       {
         // If the tile has a set depth associated with it, then use that.
         // Otherwise, use the specified depth increment.
@@ -527,18 +528,10 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
         }
         else
         {
-          // Ensure that if we're moving up a staircase, that the depth is
-          // properly subtracted.
-          int incr = depth_increment;
-          if (emt == ExitMovementType::EXIT_MOVEMENT_ASCEND && incr > 0)
-          {
-            incr *= -1;
-          }
-
-          depth.set_current(depth.get_current() + incr);
+          depth.set_current(depth.get_current() + depth_increment);
         }
 
-        if (depth_increment > 0) 
+        if (depth_increment != 0) 
         {
           generator->set_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, std::to_string(depth_increment));
         }
