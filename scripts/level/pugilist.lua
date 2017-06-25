@@ -10,8 +10,18 @@ local function pugilist_stat_gain_fn(creature_id, level)
     -- Don't include user-playable races.  Revisit this later if there are
     -- ever a lot of any particular race.  Excluding these because
     -- otherwise the slays will not be particularly useful.
+    --
+    -- Also, there are certain races (Elysian) where there are a trivial
+    -- number of examples, and they only occur in a very optional
+    -- branch of the game.  And they're friendly.  In general, getting
+    -- "Slay Elysians!" would be pretty useless.
+    --
+    -- So, exclude them, too.
+    local include_user_playable = false
+    local include_non_slayable = false
+
     local exist_unarm_slay = {get_unarmed_slays(creature_id)}
-    local race_ids = {get_race_ids(false)}
+    local race_ids = {get_race_ids(include_user_playable, include_non_slayable)}
 
     for i,v in ipairs(exist_unarm_slay) do
       local rem_idx = 0

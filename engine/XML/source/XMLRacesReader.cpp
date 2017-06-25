@@ -60,6 +60,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool user_playable = XMLUtils::get_child_node_bool_value(race_node, "UserPlayable");
     race->set_user_playable(user_playable);
 
+    bool slayable = XMLUtils::get_child_node_bool_value(race_node, "Slayable");
+    race->set_slayable(slayable);
+
     bool leaves_corpse = XMLUtils::get_child_node_bool_value(race_node, "LeavesCorpse");
     race->set_leaves_corpse(leaves_corpse);
 
