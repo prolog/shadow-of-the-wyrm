@@ -1,4 +1,6 @@
 Me:
+- Enter to skip all msgs
+- Depth incr in wrong direction (3750 -> 3500 instead of 4000)
 - Depth increment not being carried over to the down staircase tile
   properly in the floating tower?  Seems to be calculating -1 initially,
   then the 5 should be copied over, but that's not happening.
