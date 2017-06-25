@@ -224,6 +224,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="Slayable" type="xs:boolean"/>
 			<xs:element name="LeavesCorpse" type="xs:boolean"/>
 			<xs:element name="CorpsePoisoned" type="xs:boolean"/>
 			<xs:element name="Splits" type="xs:boolean"/>

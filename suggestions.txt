@@ -1,8 +1,8 @@
 Me:
 - Depth increment not being carried over to the down staircase tile
-  properly in the floating tower?
+  properly in the floating tower?  Seems to be calculating -1 initially,
+  then the 5 should be copied over, but that's not happening.
 - Is this going to work e.g. past Siriath's lair
-- Disallow certain races from random slays (Elysian)
 - Eye of the first meteor burst isn't being removed, and the subsequent
   bursts aren't showing the centre.  Update this so that the centre is
   always shown (and not removed).

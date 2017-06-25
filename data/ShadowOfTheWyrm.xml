@@ -369,6 +369,7 @@
 	<Races>
 		<Race id="_animal">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -434,6 +435,7 @@
 		</Race>		
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -505,6 +507,7 @@
 		</Race>		
 		<Race id="_construct">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -576,6 +579,7 @@
 		</Race>		
 		<Race id="_demon">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -641,6 +645,7 @@
 		</Race>		
 		<Race id="_divine">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -706,6 +711,7 @@
 		</Race>		
 		<Race id="_humanoid">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -779,6 +785,7 @@
 		</Race>
 		<Race id="_elysian">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>0</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -846,6 +853,7 @@
 		</Race>
 		<Race id="_insect">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -911,6 +919,7 @@
 		</Race>		
 		<Race id="_jelly">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>1</Splits>
@@ -976,6 +985,7 @@
 		</Race>
 		<Race id="_monster">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1041,6 +1051,7 @@
 		</Race>		
 		<Race id="_plant">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1106,6 +1117,7 @@
 		</Race>		
 		<Race id="_undead">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1166,6 +1178,7 @@
 		</Race>
 		<Race id="_corporeal_undead" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1229,6 +1242,7 @@
 		</Race>
 		<Race id="_spirit" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1291,6 +1305,7 @@
 		</Race>
 		<Race id="_dragon">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1356,6 +1371,7 @@
 		</Race>
 		<Race id="01_human" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1443,6 +1459,7 @@
 		</Race>
 		<Race id="02_woodelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1522,6 +1539,7 @@
 		</Race>
 		<Race id="03_mountainelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1602,6 +1620,7 @@
 		</Race>
 		<Race id="04_snakeling" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1679,6 +1698,7 @@
 		</Race>
 		<Race id="05_fae" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1758,6 +1778,7 @@
 		</Race>
 		<Race id="06_dwarf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1836,6 +1857,7 @@
 		</Race>
 		<Race id="07_goblin" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1915,6 +1937,7 @@
 		</Race>
 		<Race id="08_ogre" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1990,6 +2013,7 @@
 		</Race>
 		<Race id="09_giant" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -2066,6 +2090,7 @@
 		</Race>
 		<Race id="10_gnome" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>

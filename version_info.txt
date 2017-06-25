@@ -109,6 +109,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - The artifact scythe "Whisperwind" now has the scything flag applied to
   its damage.
 
+- Certain races (Elysian) can now take a flag to exclude them from the
+  list of races generated for determining pugilist slays.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
@@ -123,7 +126,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - New monster-only spells: wyrmfire (Arcane).
 
 - New items: scroll of mapping, scroll of monster summoning, wand of
-  digging, wand of inferno, moloch armour, scythe.
+  digging, wand of inferno, moloch armour, scythe, lump of gold.
 
 - New artifacts: Ring of Aran Fee, naming stone, Telarian Mail, Telarian
   Shield, Telarian Helm, God-Blade.

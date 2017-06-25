@@ -4353,14 +4353,21 @@ int redraw(lua_State* ls)
 int get_race_ids(lua_State* ls)
 {
   int race_cnt = 0;
+  int n_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) <= 1)
+  if (n_args <= 2)
   {
     bool include_user_playable = false;
+    bool include_non_slayable = false;
 
-    if (lua_gettop(ls) == 1 && lua_isboolean(ls, 1))
+    if (n_args >= 1 && lua_isboolean(ls, 1))
     {
-      include_user_playable = (lua_toboolean(ls, 2) != 0);
+      include_user_playable = (lua_toboolean(ls, 1) != 0);
+    }
+
+    if (n_args >= 2 && lua_isboolean(ls, 2))
+    {
+      include_non_slayable = (lua_toboolean(ls, 2) != 0);
     }
 
     Game& game = Game::instance();
@@ -4370,7 +4377,10 @@ int get_race_ids(lua_State* ls)
     {
       RacePtr race = race_pair.second;
 
-      if (race != nullptr && !race_pair.first.empty() && (include_user_playable || !race->get_user_playable()))
+      if (race != nullptr && 
+          !race_pair.first.empty() && 
+          (include_user_playable || !race->get_user_playable()) &&
+          (include_non_slayable || race->get_slayable()))
       {
         lua_pushstring(ls, race_pair.first.c_str());
         race_cnt++;
