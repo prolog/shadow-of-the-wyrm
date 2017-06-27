@@ -1142,7 +1142,8 @@ int MapUtils::calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovement
     }
   }
 
-  if (emt == ExitMovementType::EXIT_MOVEMENT_ASCEND)
+  if ((emt == ExitMovementType::EXIT_MOVEMENT_ASCEND && depth_incr > 0) || 
+      (emt == ExitMovementType::EXIT_MOVEMENT_DESCEND && depth_incr < 0))
   {
     depth_incr *= -1;
   }
