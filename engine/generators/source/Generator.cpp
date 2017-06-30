@@ -390,6 +390,14 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
       // Handle the case where we need to link the new staircase to custom levels.
       set_custom_map_id_for_depth(new_staircase_tile, direction, depth, map->get_map_id());
       set_depth_custom_map_id_properties(new_staircase_tile);
+
+      // Copy over any recursive properties as long as we're not linking back
+      // to a previous map (only copy recursive properties forwards)
+      std::map<string, string> recursive_properties = get_recursive_properties();
+      for (const auto& r_pr_pair : recursive_properties)
+      {
+        new_staircase_tile->set_additional_property(r_pr_pair.first, r_pr_pair.second);
+      }
     }
 
     add_tile_exit(map, std::make_pair(row, col), direction, link_to_map_exit_id);
@@ -566,13 +574,6 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
     set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_GENERATOR_FILTERS, generator_filter_csv);
   }
 
-  // Copy over any recursive properties.
-  std::map<string, string> recursive_properties = get_recursive_properties();
-  for (const auto& r_pr_pair : recursive_properties)
-  {
-    set_property_to_generator_and_map(map, r_pr_pair.first, r_pr_pair.second);
-  }
-
   string ignore_lvl_checks_val = get_additional_property(MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS);
 
   // If there isn't a value defined at the map level, and there usually isn't,
@@ -584,12 +585,6 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
   }
 
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_lvl_checks_val);
-
-  string creature_danger_level_fixed = get_additional_property(MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED);
-  if (!creature_danger_level_fixed.empty())
-  {
-    set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED, creature_danger_level_fixed);
-  }
 
   // Set any special feature messages that should be displayed the first time
   // the player enters a level.

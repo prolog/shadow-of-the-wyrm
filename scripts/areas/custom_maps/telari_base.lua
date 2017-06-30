@@ -37,6 +37,7 @@ custom_map.set_map_fn(map_id, init_telari_base)
 map_set_tile_subtype(map_id, 12, 40, CTILE_TYPE_FLOATING_TOWER)
 
 local properties = {{"MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED", "1"},
+                    {"MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED_RECURSIVE", "1"},
                     {"-95_CUSTOM_MAP_ID", "telari_top"},
                     {"MAP_PROPERTIES_CANNOT_PRAY", "1"},
                     {"MAP_PROPERTIES_CANNOT_PRAY_RECURSIVE", "1"},
