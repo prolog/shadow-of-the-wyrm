@@ -21,14 +21,16 @@ int DepthBasedDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
     {
       Depth map_depth = map->size().depth();
       Depth new_map_depth = new_map->size().depth();
-      int delta = new_map_depth.get_current() - map_depth.get_current();
+      int new_map_cur_depth = new_map_depth.get_current();
+      int delta = new_map_cur_depth - map_depth.get_current();
 
-      // Ensure that if we're ascending on an overworld map (new depth < 0)
-      // that it gets *more* dangerous.  Think of this as climbing a tower,
-      // with more and more dangerous creatures the higher one goes.
-      if (delta < 0 && new_map_depth.get_current() < 0 && emt == ExitMovementType::EXIT_MOVEMENT_ASCEND)
+      if (is_more_dangerous(delta, new_map_cur_depth))
       {
-        delta *= -1;
+        delta = std::abs(delta);
+      }
+      else
+      {
+        delta = std::abs(delta) * -1;
       }
 
       danger_level += delta;
@@ -36,6 +38,30 @@ int DepthBasedDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
   }
 
   return danger_level;
+}
+
+bool DepthBasedDangerLevelCalculator::is_more_dangerous(const int delta, const int cur_depth) const
+{
+  bool more_danger = false;
+  
+  // Above ground
+  if (cur_depth < 0)
+  {
+    if (delta < 0)
+    {
+      more_danger = true;
+    }
+  }
+  // Below ground
+  else
+  {
+    if (delta > 0)
+    {
+      more_danger = true;
+    }
+  }
+
+  return more_danger;
 }
 
 #ifdef UNIT_TESTS
