@@ -2112,12 +2112,6 @@
     <ClInclude Include="engine\calculators\include\WorldMapDangerLevelCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\OverworldMapDangerLevelCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\calculators\include\UnderworldMapDangerLevelCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\tiles\include\TileProperties.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
@@ -4023,6 +4017,12 @@
     <ClInclude Include="engine\calculators\include\ScythingCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\DepthBasedDangerLevelCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\BaseDangerLevelCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5578,18 +5578,6 @@
     </ClCompile>
     <ClCompile Include="engine\commands\inventory\source\unit_tests\InventoryKeyboardCommandMap_test.cpp">
       <Filter>Source Files\engine\commands\inventory\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\OverworldMapDangerLevelCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\UnderworldMapDangerLevelCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\OverworldMapDangerLevelCalculator_test.cpp">
-      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\UnderworldMapDangerLevelCalculator_test.cpp">
-      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\WorldMapDangerLevelCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
@@ -7959,6 +7947,18 @@
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ScythingCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DepthBasedDangerLevelCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\BaseDangerLevelCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\BaseDangerLevelCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\DepthBasedDangerLevelCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>

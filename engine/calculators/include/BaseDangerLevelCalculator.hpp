@@ -1,7 +1,7 @@
 #pragma once
 #include "IDangerLevelCalculator.hpp"
 
-class OverworldMapDangerLevelCalculator : public IDangerLevelCalculator
+class BaseDangerLevelCalculator : public IDangerLevelCalculator
 {
   public:
     virtual int calculate(MapPtr old_map, MapPtr new_map) const override;

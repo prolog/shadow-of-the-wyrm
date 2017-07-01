@@ -1,6 +1,6 @@
-#include "OverworldMapDangerLevelCalculator.hpp"
+#include "BaseDangerLevelCalculator.hpp"
 
-// The danger for an overworld map is calculated by getting the current
+// The base danger for e.g. an overworld map is calculated by getting the current
 // danger for the given map.  This calculator is likely to be infrequently
 // used - most cases will involve the WorldMap generator (generating the
 // danger for a new Overworld or Underworld map, given the current World
@@ -8,7 +8,7 @@
 // previous dungeon or cavern level).
 //
 // The new map doesn't get used at all for the overworld calculations.
-int OverworldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
+int BaseDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
 {
   int danger_level = 0;
 
@@ -21,6 +21,6 @@ int OverworldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) con
 }
 
 #ifdef UNIT_TESTS
-#include "unit_tests/OverworldMapDangerLevelCalculator_test.cpp"
+#include "unit_tests/BaseDangerLevelCalculator_test.cpp"
 #endif
 
