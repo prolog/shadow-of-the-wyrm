@@ -506,13 +506,13 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     else
     {
       // Otherwise, if there's no custom map ID, generate the map:
-      IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type());
+      pair<bool, bool> override_depth = generator->override_depth_update_defaults();
+      IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type(), override_depth.second, emt);
       uint danger_level = calc->calculate(map);
 
       Dimensions dim = map->size();
       Depth& depth = dim.depth_ref();
       IMapTypeQueryPtr mtq = MapTypeQueryFactory::create_map_type_query(generator->get_map_type());
-      pair<bool, bool> override_depth = generator->override_depth_update_defaults();
 
       // Check to see if the depth should be updated.  For things like fields
       // and forests, it shouldn't, but for dungeons/caverns/etc., it should.

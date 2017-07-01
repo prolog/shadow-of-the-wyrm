@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "DungeonGenerator.hpp"
-TEST(SW_Engine_Calculators_UnderworldMapDangerLevelCalculator, calculate_danger_level)
+TEST(SW_Engine_Calculators_DepthBasedDangerLevelCalculator, calculate_danger_level)
 {
   Depth depth(10, 0, 10, 1);
   Depth depth2(13, 0, 13, 1);
@@ -16,7 +16,7 @@ TEST(SW_Engine_Calculators_UnderworldMapDangerLevelCalculator, calculate_danger_
   if (map && map2)
   {
     map->set_danger(4);
-    UnderworldMapDangerLevelCalculator calc;
+    DepthBasedDangerLevelCalculator calc(ExitMovementType::EXIT_MOVEMENT_DESCEND);
     int calculated = calc.calculate(map, map2);
 
     EXPECT_EQ(7, calculated);

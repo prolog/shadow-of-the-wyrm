@@ -1,5 +1,9 @@
 Me:
-- Depth incr in wrong direction (3750 -> 3500 instead of 4000)
+- The danger isn't increasing properly.  It looks like the danger level
+  calculator factory should be reworked so that instead of strictly 
+  considering map type, it just considers "depth-based".  The "depth-based"
+  flag should be set by the generator, which will be true for underworld,
+  generally false for overworld, but true for floating tower.
 - Is this going to work e.g. past Siriath's lair
 - Eye of the first meteor burst isn't being removed, and the subsequent
   bursts aren't showing the centre.  Update this so that the centre is
@@ -221,3 +225,6 @@ kain:
 - Autorun: stop at intersections in sewers.
 - Holy presence but no altars?
 - Shops not generating fully stocked.
+
+deadestbob:
+- Look command revealing more than it should?
