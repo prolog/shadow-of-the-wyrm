@@ -8,6 +8,8 @@ class DepthBasedDangerLevelCalculator : public IDangerLevelCalculator
     virtual int calculate(MapPtr old_map, MapPtr new_map) const override;
 
   protected:
+    bool is_more_dangerous(const int delta, const int current_depth) const;
+
     ExitMovementType emt;
 };
 
