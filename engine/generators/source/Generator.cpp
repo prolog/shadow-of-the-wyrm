@@ -441,6 +441,7 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
       std::map<string, string> depth_properties = get_depth_properties();
       for (const auto& d_pr_pair : depth_properties)
       {
+        
         new_staircase_tile->set_additional_property(d_pr_pair.first, d_pr_pair.second);
       }
     }
@@ -630,6 +631,14 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
   }
 
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_lvl_checks_val);
+
+  // The depth properties will be copied to the map as well as to any stairs,
+  // allowing it to propagate.
+  std::map<string, string> depth_props = get_depth_properties();
+  for (const auto& d_pair : depth_props)
+  {
+    set_property_to_generator_and_map(map, d_pair.first, d_pair.second);
+  }
 
   // Set any special feature messages that should be displayed the first time
   // the player enters a level.
