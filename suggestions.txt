@@ -1,5 +1,5 @@
 Me:
-- Resists seem okay.  Test with Eakauri?
+- Shimmer for floating tower levels.
 - Test going through dungeons for danger level ok
 - Is this going to work e.g. past Siriath's lair
 - Eye of the first meteor burst isn't being removed, and the subsequent
@@ -137,10 +137,6 @@ Rob Ayres:
 - Mark health when taking damage from a creature of your danger level or
   higher.
 - HP/AP not being affected by stats on stat gain or level.
-
-Anon: 
-- Look into resists and crits - had Heat -0.05, got one-shot by Eakauri
-- Increase stat-based damage bonuses
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
