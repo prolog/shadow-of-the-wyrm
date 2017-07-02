@@ -1,5 +1,6 @@
 Me:
 - Resists seem okay.  Test with Eakauri?
+- Test going through dungeons for danger level ok
 - Is this going to work e.g. past Siriath's lair
 - Eye of the first meteor burst isn't being removed, and the subsequent
   bursts aren't showing the centre.  Update this so that the centre is
