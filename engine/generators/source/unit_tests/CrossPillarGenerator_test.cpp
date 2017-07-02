@@ -24,6 +24,29 @@ TEST(SW_World_Generators_CrossPillarGenerator, recursive_properties)
   EXPECT_TRUE(r_it != rec_properties.end());
 }
 
+TEST(SW_World_Generators_CrossPillarGenreator, depth_properties)
+{
+  FieldGenerator fg("hi!");
+  map<string, string> properties = {{"AAA", "123"},
+                                    {"BBB", "test"},
+                                    {"CCC", "this should come through"},
+                                    {"CCC_RECURSIVE", std::to_string(true)},
+                                    {"DEPTH_THIS_IS_NOT_A_DEPTH_PROPERTY", "1"},
+                                    {"-55_DEPTH_SOME_PROP", "1"},
+                                    {"29_DEPTH_ANOTHER_DEPTH_PROP", "cookies"}};
+
+  fg.set_additional_properties(properties);
+  map<string, string> depth_props = fg.get_depth_properties();
+
+  EXPECT_EQ(2, depth_props.size());
+
+  auto d_it = depth_props.find("-55_DEPTH_SOME_PROP");
+  EXPECT_TRUE(d_it != depth_props.end());
+
+  d_it = depth_props.find("29_DEPTH_ANOTHER_DEPTH_PROP");
+  EXPECT_TRUE(d_it != depth_props.end());
+}
+
 TEST(SW_World_Generators_CrossPillarGenerator, expected_shape)
 {
   FieldGenerator fg("foo");

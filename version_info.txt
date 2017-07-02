@@ -112,6 +112,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - Certain races (Elysian) can now take a flag to exclude them from the
   list of races generated for determining pugilist slays.
 
+- General depth-specific properties are now automatically propagated
+  through dungeons, towers, etc.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.

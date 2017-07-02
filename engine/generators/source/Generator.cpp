@@ -21,6 +21,8 @@ using namespace SOTW;
 
 const int Generator::FORAGABLE_MIN = 0;
 const int Generator::FORAGABLE_MAX = 8;
+const string Generator::RECURSIVE_PROPERTY_SUFFIX = "_RECURSIVE";
+const string Generator::DEPTH_PROPERTY_PREFIX = "_DEPTH_";
 
 Generator::Generator(const string& new_map_exit_id, const TileType new_map_terrain_type)
 : map_exit_id(new_map_exit_id), map_terrain_type(new_map_terrain_type), danger_level(0)
@@ -246,15 +248,14 @@ string Generator::get_additional_property(const string& property_name) const
 map<string, string> Generator::get_recursive_properties() const
 {
   map<string, string> rec_props;
-  string rec_indicator = "_RECURSIVE";
 
   for (const auto& p_pair : additional_properties)
   {
     string rec_prop = p_pair.first;
 
-    if (boost::algorithm::ends_with(rec_prop, rec_indicator))
+    if (boost::algorithm::ends_with(rec_prop, RECURSIVE_PROPERTY_SUFFIX))
     {
-      rec_prop.erase(rec_prop.find(rec_indicator));
+      rec_prop.erase(rec_prop.find(RECURSIVE_PROPERTY_SUFFIX));
 
       auto p_it = additional_properties.find(rec_prop);
 
@@ -269,6 +270,43 @@ map<string, string> Generator::get_recursive_properties() const
   }
 
   return rec_props;
+}
+
+map<string, string> Generator::get_depth_properties() const
+{
+  map<string, string> depth_props;
+
+  for (const auto& prop_pair : additional_properties)
+  {
+    string p = prop_pair.first;
+    string::size_type p_loc = p.find("_");
+
+    if (p_loc != string::npos)
+    {
+      string numeric_part_s = p.substr(0, p_loc);
+
+      try
+      {
+        int numeric_part = std::stoi(numeric_part_s);
+
+        // If we got here, we got a property starting with a number.
+        // Remove the numeric part and then check the rest of the
+        // property name to see if it's a depth property.
+        p.erase(p.find(numeric_part_s), numeric_part_s.size());
+
+        if (boost::starts_with(p, DEPTH_PROPERTY_PREFIX))
+        {
+          depth_props[prop_pair.first] = prop_pair.second;
+        }
+      }
+      catch (...)
+      {
+        continue;
+      }
+    }
+  }
+
+  return depth_props;
 }
 
 bool Generator::has_additional_property(const string& property_name) const
@@ -397,6 +435,13 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
       for (const auto& r_pr_pair : recursive_properties)
       {
         new_staircase_tile->set_additional_property(r_pr_pair.first, r_pr_pair.second);
+      }
+
+      // Copy forward any depth-specific properties as well
+      std::map<string, string> depth_properties = get_depth_properties();
+      for (const auto& d_pr_pair : depth_properties)
+      {
+        new_staircase_tile->set_additional_property(d_pr_pair.first, d_pr_pair.second);
       }
     }
 

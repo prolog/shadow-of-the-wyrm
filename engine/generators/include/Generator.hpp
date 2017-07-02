@@ -51,6 +51,11 @@ namespace SOTW
       // so that they can be populated into future generators.
       virtual std::map<std::string, std::string> get_recursive_properties() const;
 
+      // Each property that starts with "<number>_DEPTH_" is a depth-specific
+      // property.  These are copied forward and backward to ensure that the
+      // maps at the specific depth always have the necessary properties.
+      virtual std::map<std::string, std::string> get_depth_properties() const;
+
       // Generator filters are used to generate creatures - creatures who match
       // the tile type and all the generator filters are included when considering
       // the set of creatures to generate.
@@ -98,6 +103,9 @@ namespace SOTW
       // JCD FIXME: If I ever go with larger maps, these could be divisors.
       static const int FORAGABLE_MIN;
       static const int FORAGABLE_MAX;
+      
+      static const std::string RECURSIVE_PROPERTY_SUFFIX;
+      static const std::string DEPTH_PROPERTY_PREFIX;
   };
 }
 
