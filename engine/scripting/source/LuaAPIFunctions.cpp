@@ -189,6 +189,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
   lua_register(L, "get_creature_base_damage", get_creature_base_damage);
+  lua_register(L, "set_creature_intrinsic_resist", set_creature_intrinsic_resist);
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
   lua_register(L, "get_creature_yx", get_creature_yx);
@@ -1742,6 +1743,31 @@ int get_creature_base_damage(lua_State* ls)
   lua_pushinteger(ls, modifier);
 
   return 3;
+}
+
+// Set a resistance on a creature.
+int set_creature_intrinsic_resist(lua_State* ls)
+{
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    DamageType dt = static_cast<DamageType>(lua_tointeger(ls, 2));
+    double resist_val = lua_tonumber(ls, 3);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_intrinsic_resistances_ref().set_resistance_value(dt, resist_val);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_intrinsic_resist");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 // Set a creature's speed.
