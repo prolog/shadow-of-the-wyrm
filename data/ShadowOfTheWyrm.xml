@@ -21018,7 +21018,6 @@
 				<Colour>95</Colour>
 			</Text>
 			<CreatureGeneration>
-				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<!-- Well, it starts off friendly... -->
 				<Friendly>1</Friendly>

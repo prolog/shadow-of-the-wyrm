@@ -40,7 +40,7 @@ int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bo
     
     double resistance_multiplier = defending_creature->get_resistances().get_resistance_value(damage_type);
     double pom_multiplier = get_phase_of_moon_multiplier(damage_type, pom_type);
-    double resisted_damage = base_damage * resistance_multiplier * pom_multiplier;
+    double resisted_damage = base_damage * std::max(resistance_multiplier, 0.0) * pom_multiplier;
     
     if (resisted_damage > 0)
     {

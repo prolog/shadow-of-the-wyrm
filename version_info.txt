@@ -182,6 +182,10 @@ Shadow of the Wyrm v0.6.2 "de Visee"
     appeared in-game.  These should show up, now.  Sorry, anon. (4chan
     /rlg)
 
+  - Damage resistances less than 0 (e.g., -0.35) were not acting as zero
+    multipliers in damage calculations, allowing characters with massive
+    resistances to still take damage. (4chan /rlg)
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 
