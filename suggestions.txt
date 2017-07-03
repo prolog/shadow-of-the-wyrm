@@ -1,5 +1,6 @@
 Me:
-- Shimmer for floating tower levels.
+- Get "shimmer" effect working.
+- Air level in Telari not creating an up staircase. (updated - test)
 - Test going through dungeons for danger level ok
 - Is this going to work e.g. past Siriath's lair
 - Eye of the first meteor burst isn't being removed, and the subsequent

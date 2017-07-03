@@ -205,6 +205,7 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
 {
   uchar symbol = '?';
   Colour colour = Colour::COLOUR_UNDEFINED;
+  Colour shimmer_colour = shimmer_colours.get_feature_colour();
 
   if (feature != nullptr)
   {
@@ -217,9 +218,12 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
     colour = override_colour;
   }
 
-  // JCD TODO SHIMMER COLOURS
+  if (shimmer_colour != Colour::COLOUR_UNDEFINED)
+  {
+    colour = shimmer_colour;
+  }
 
-  return create_display_tile_from_symbol_and_colour(symbol, override_colour != Colour::COLOUR_UNDEFINED ? override_colour : feature->get_colour());
+  return create_display_tile_from_symbol_and_colour(symbol, colour);
 }
 
 // Create a display tile from a given item
@@ -244,22 +248,38 @@ DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item, co
 }
 
 // Create a display tile from a given tile
-DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, const Colour override_colour, const ShimmerColours& shimmer_colours)
+DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, const Colour oc, const ShimmerColours& shimmer_colours)
 {
   DisplayTile display_tile;
   Game& game = Game::instance();
+  Colour override_colour = oc;
 
   // Make a copy of the prototype tile off the game.
   vector<DisplayTile> tiles_info = game.get_tile_display_info_ref();
   DisplayTile tile_info = tiles_info.at(static_cast<int>(tile->get_tile_type()));
   display_tile = tile_info;
 
+  bool passable = tile && (tile->get_movement_multiplier() > 0);
+  Colour shimmer_colour = Colour::COLOUR_UNDEFINED;
+
+  if (passable)
+  {
+    shimmer_colour = shimmer_colours.get_passable_colour();
+  }
+  else
+  {
+    shimmer_colour = shimmer_colours.get_impassable_colour();
+  }
+
+  if (shimmer_colour != Colour::COLOUR_UNDEFINED)
+  {
+    override_colour = shimmer_colour;
+  }
+
   if (override_colour != Colour::COLOUR_UNDEFINED)
   {
     display_tile.set_all_colours(static_cast<int>(override_colour));
   }
-
-  // JCD FIXME SHIMMER COLOURS
 
   return display_tile;
 }
