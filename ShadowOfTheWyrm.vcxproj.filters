@@ -4023,6 +4023,9 @@
     <ClInclude Include="engine\calculators\include\BaseDangerLevelCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\ShimmerColours.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7960,6 +7963,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\DepthBasedDangerLevelCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\ShimmerColours.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\ShimmerColours_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

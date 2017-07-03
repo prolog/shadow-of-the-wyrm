@@ -1,8 +1,10 @@
 #include "AnimationTranslator.hpp"
 #include "BallShapeProcessor.hpp"
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "MapProperties.hpp"
 #include "MapTranslator.hpp"
 #include "Setting.hpp"
 #include "TileMagicChecker.hpp"
@@ -29,6 +31,8 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
   CreaturePtr player = game.get_current_player();
   bool player_blind = !cca.can_see(player);
   pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(game.get_current_world()->get_calendar().get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD, settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
+  vector<Colour> scv = String::create_colour_vector_from_csv_string(map->get_property(MapProperties::MAP_PROPERTIES_SHIMMER_COLOURS));
+  ShimmerColours shimmer_colours(scv);
 
   vector<Coordinate> prev_coords;
   vector<Coordinate> current_coords;
@@ -99,7 +103,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
 
         if (engine_tile != nullptr)
         {
-          dt = MapTranslator::create_display_tile(player_blind, tod_overrides, engine_tile, fov_tile);
+          dt = MapTranslator::create_display_tile(player_blind, tod_overrides, shimmer_colours, engine_tile, fov_tile);
           dt.set_season(season->get_season());
         }
       }

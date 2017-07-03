@@ -1,6 +1,8 @@
 #include "AnimationTranslator.hpp"
+#include "Conversion.hpp"
 #include "Date.hpp"
 #include "Game.hpp"
+#include "MapProperties.hpp"
 #include "MapTranslator.hpp"
 #include "Setting.hpp"
 
@@ -28,6 +30,8 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
   Calendar& calendar = game.get_current_world()->get_calendar();
   Settings& settings = game.get_settings_ref();
   pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD, settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
+  vector<Colour> scv = String::create_colour_vector_from_csv_string(map->get_property(MapProperties::MAP_PROPERTIES_SHIMMER_COLOURS));
+  ShimmerColours shimmer_colours(scv);
 
   for (uint i = 0; i < num_steps; i++)
   {
@@ -46,7 +50,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
       // Guard against a range outside the FOV/map.
       if (!game_tile || !fov_tile) continue;
 
-      DisplayTile previously_displayed = MapTranslator::create_display_tile(player_blinded, tod_overrides, game_tile, fov_tile);
+      DisplayTile previously_displayed = MapTranslator::create_display_tile(player_blinded, tod_overrides, shimmer_colours, game_tile, fov_tile);
       previously_displayed.set_season(current_season);
     
       // Add the updated coordinate value to the in-frame list.

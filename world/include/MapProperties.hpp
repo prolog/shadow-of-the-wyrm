@@ -74,6 +74,15 @@ class MapProperties
     // Some custom maps have a script that's run after the map is loaded.
     static const std::string MAP_PROPERTIES_LOAD_SCRIPT;
 
+    // Shimmer colours exist on certain maps.  They are a CSV of
+    // numbers representing colours: "x,y,z"
+    //
+    // x = the colour of tiles with non-zero movement multipliers
+    // y = the colour of tiles with zero movement multipliers
+    // z = a "shimmer" that has a chance to override x and y on any
+    //     given turn.
+    static const std::string MAP_PROPERTIES_SHIMMER_COLOURS;
+
   protected:
     MapProperties();
     ~MapProperties();
