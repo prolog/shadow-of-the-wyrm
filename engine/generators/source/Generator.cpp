@@ -440,8 +440,7 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
       // Copy forward any depth-specific properties as well
       std::map<string, string> depth_properties = get_depth_properties();
       for (const auto& d_pr_pair : depth_properties)
-      {
-        
+      {        
         new_staircase_tile->set_additional_property(d_pr_pair.first, d_pr_pair.second);
       }
     }
@@ -632,13 +631,12 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
 
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_lvl_checks_val);
 
-  // The depth properties will be copied to the map as well as to any stairs,
-  // allowing it to propagate.
-  std::map<string, string> depth_props = get_depth_properties();
-  for (const auto& d_pair : depth_props)
-  {
-    set_property_to_generator_and_map(map, d_pair.first, d_pair.second);
-  }
+  // The depth properties will be copied to any stairs, allowing them to 
+  // propagate.  Any properties that are specific for this depth will be
+  // copied to the map.  We can safely call the function at this point
+  // because by now, the generator should be done and the depth should
+  // be known.
+  set_depth_properties_to_map(map);
 
   // Set any special feature messages that should be displayed the first time
   // the player enters a level.
@@ -648,7 +646,31 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
 void Generator::set_property_to_generator_and_map(MapPtr map, const string& prop, const string& val)
 {
   additional_properties[prop] = val;
-  map->set_property(prop, val);
+
+  if (map != nullptr)
+  {
+    map->set_property(prop, val);
+  }
+}
+
+void Generator::set_depth_properties_to_map(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    std::map<string, string> depth_props = get_depth_properties();
+    string depth_prefix = std::to_string(map->size().depth().get_current()) + DEPTH_PROPERTY_PREFIX;
+
+    for (const auto& d_pair : depth_props)
+    {
+      string prop = d_pair.first;
+
+      if (boost::starts_with(prop, depth_prefix))
+      {
+        prop.erase(prop.find(depth_prefix), depth_prefix.size());
+        set_property_to_generator_and_map(map, prop, d_pair.second);
+      }
+    }
+  }
 }
 
 // Generate roots, berries, etc., on the map, based on the seasons and the
