@@ -21,16 +21,16 @@ TEST(SW_World_Depth, lower)
 
 TEST(SW_World_Depth, higher)
 {
-  Depth d(5, -3, 0, 1);
+  Depth d(5, -3, 5, 1);
   Depth higher = d.higher();
 
   EXPECT_EQ(4, higher.get_current());
-  EXPECT_EQ(0, higher.get_maximum());
+  EXPECT_EQ(5, higher.get_maximum());
 
   higher = higher.higher();
 
   EXPECT_EQ(3, higher.get_current());
-  EXPECT_EQ(0, higher.get_maximum());
+  EXPECT_EQ(5, higher.get_maximum());
 
   for (int i = 0; i < 10; i++)
   {

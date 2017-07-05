@@ -1,6 +1,9 @@
 Me:
 - Get "shimmer" effect working.
-- Air level in Telari not creating an up staircase. (updated - test)
+- Air level in Telari isn't linking to the top of the tower properly.
+  Likely because depth increment isn't being set properly when the stairs
+  are being generated.  Should be -5, not -1!  Probably just need to
+  update Generator::update_depth_details.
 - Test going through dungeons for danger level ok
 - Is this going to work e.g. past Siriath's lair
 - Eye of the first meteor burst isn't being removed, and the subsequent
@@ -13,8 +16,9 @@ Me:
 - Crystalline being for astral plane
 - Lumps of gold should be minable.
 - Repel (cantrip)
-- Recursive settings
-- Recursively set no-pray in cloudspire.
+- Each floating tower level should have a "platform" generated outside
+  somewhere, with great items and a nasty flying creature.  There should
+  be a ring of flying made available.
 - Test going to down to D2 and back in both a regular dungeon and the ID.
   Also, Gnordvar Mines.
 - D:80 should be submerged.
