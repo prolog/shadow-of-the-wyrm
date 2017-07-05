@@ -774,6 +774,12 @@ void Generator::update_depth_details(MapPtr map)
       depth.set_minimum(String::to_int(min_depth_property));
     }
 
+    string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+    if (!depth_increment.empty())
+    {
+      depth.set_increment(String::to_int(depth_increment));
+    }
+
     map->size_ref().set_depth(depth);
   }
 }

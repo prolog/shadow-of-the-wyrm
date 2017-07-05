@@ -77,7 +77,7 @@ Depth Depth::lower() const
 
   if (current < maximum)
   {
-    d.set_current(current + increment);
+    d.set_current(current + std::abs(increment));
   }
 
   return d;
@@ -90,7 +90,7 @@ Depth Depth::higher() const
 
   if (current > minimum)
   {
-    d.set_current(current - increment);
+    d.set_current(current - std::abs(increment));
   }
 
   return d;
