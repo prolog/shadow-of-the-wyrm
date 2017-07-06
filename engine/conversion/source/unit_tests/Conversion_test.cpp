@@ -92,6 +92,26 @@ TEST(SW_Engine_ConversionRoutines, csv_to_vector)
   EXPECT_EQ("first", str_vec.back());
 }
 
+TEST(SW_Engine_ConversionRoutines, csv_to_int_vector)
+{
+  vector<int> expected = {1,5,3,4};
+  string csv = "1,5,fish,3,4";
+  vector<int> i_vec = String::create_int_vector_from_csv_string(csv);
+
+  EXPECT_EQ(4, i_vec.size());
+  EXPECT_EQ(expected, i_vec);
+}
+
+TEST(SW_Engine_ConversionRoutines, csv_to_colour_vector)
+{
+  vector<Colour> expected = {Colour::COLOUR_RED, Colour::COLOUR_YELLOW, Colour::COLOUR_BOLD_RED, Colour::COLOUR_BLUE};
+  string csv = "1,3,fish,9,4";
+  vector<Colour> c_vec = String::create_colour_vector_from_csv_string(csv);
+
+  EXPECT_EQ(4, c_vec.size());
+  EXPECT_EQ(expected, c_vec);
+}
+
 TEST(SW_Engine_ConversionRoutines, vector_to_csv)
 {
   vector<string> foo;

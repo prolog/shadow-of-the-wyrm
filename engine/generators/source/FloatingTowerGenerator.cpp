@@ -1,3 +1,4 @@
+#include <sstream>
 #include "FloatingTowerGenerator.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
@@ -20,6 +21,12 @@ MapPtr FloatingTowerGenerator::generate(const Dimensions& dimensions)
   fill(map, TileType::TILE_TYPE_AIR);
 
   pair<Coordinate, Coordinate> tower_boundaries = generate_tower(map);
+  stringstream ss;
+
+  // Ensure the tower wall is not included in the generation coords.
+  ss << tower_boundaries.first.first+1 << "," << tower_boundaries.first.second+1 << "," << tower_boundaries.second.first-1 << "," << tower_boundaries.second.second-1;
+  map->set_property(MapProperties::MAP_PROPERTIES_GENERATION_COORDINATES, ss.str());
+
   place_staircases(map, tower_boundaries);
 
   // Ensure that the level isn't diggable.

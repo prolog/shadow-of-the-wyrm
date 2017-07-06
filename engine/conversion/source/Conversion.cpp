@@ -67,6 +67,28 @@ vector<string> String::create_string_vector_from_csv_string(const string& csv_st
   return str_vec;
 }
 
+vector<int> String::create_int_vector_from_csv_string(const string& csv_str)
+{
+  vector<string> str_vec;
+  vector<int> ints;
+
+  boost::split(str_vec, csv_str, boost::is_any_of(","));
+
+  for (const string& s : str_vec)
+  {
+    try
+    {
+      ints.push_back(std::stoi(s));
+    }
+    catch (...)
+    {
+      continue;
+    }
+  }
+
+  return ints;
+}
+
 vector<Colour> String::create_colour_vector_from_csv_string(const string& csv_str)
 {
   vector<string> str_vec;

@@ -107,6 +107,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   CreatureFactory cf;
   CreatureGenerationValuesMap& cgvm = game.get_creature_generation_values_ref();
   TileMovementConfirmation tmc;
+  pair<Coordinate, Coordinate> coord_range = map->get_generation_coordinates();
 
   while (!maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
@@ -114,7 +115,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
     if (generated_creature)
     {
-      Coordinate c = get_coordinate_for_creature(map, generated_creature, rows, cols);
+      Coordinate c = get_coordinate_for_creature(map, generated_creature, coord_range);
 
       // Check to see if the spot is empty, and if a creature can be added there.
       TilePtr tile = map->at(c.first, c.second);
@@ -179,7 +180,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 // Get a coordinate for a newly-generated creature.  This will generally be a
 // random coordinate, unless the map has preset locations, in which case the
 // first of these that is unoccupied will be used.
-Coordinate MapCreatureGenerator::get_coordinate_for_creature(MapPtr map, CreaturePtr generated_creature, const int rows, const int cols)
+Coordinate MapCreatureGenerator::get_coordinate_for_creature(MapPtr map, CreaturePtr generated_creature, const pair<Coordinate, Coordinate>& coord_range)
 {
   Coordinate c;
 
@@ -189,8 +190,8 @@ Coordinate MapCreatureGenerator::get_coordinate_for_creature(MapPtr map, Creatur
 
     if (preset_locs.empty())
     {
-      c.first = RNG::range(0, rows - 1);
-      c.second = RNG::range(0, cols - 1);
+      c.first = RNG::range(coord_range.first.first, coord_range.second.first);
+      c.second = RNG::range(coord_range.first.second, coord_range.second.second);
     }
     else
     {
