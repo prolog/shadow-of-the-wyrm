@@ -125,6 +125,12 @@ class Map : public ISerializable
     std::vector<Coordinate> get_preset_locations() const;
     std::vector<Coordinate>& get_preset_locations_ref();
 
+    // Returns the range over which creatures and items
+    // can be generated.  Usually ranges from (0,0) to
+    // (row-1,col-1) but this may change depending on the
+    // value set by the generator, as an additional property.
+    std::pair<Coordinate, Coordinate> get_generation_coordinates() const;
+
     void set_shops(const std::map<std::string, Shop>& new_shops);
     std::map<std::string, Shop>& get_shops_ref();
     std::map<std::string, Shop> get_shops() const;

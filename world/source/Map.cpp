@@ -5,6 +5,7 @@
 #include "Conversion.hpp"
 #include "Map.hpp"
 #include "MapFactory.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "NullInventory.hpp"
 #include "Serialize.hpp"
@@ -586,6 +587,25 @@ vector<Coordinate> Map::get_preset_locations() const
 vector<Coordinate>& Map::get_preset_locations_ref()
 {
   return preset_locations;
+}
+
+pair<Coordinate, Coordinate> Map::get_generation_coordinates() const
+{
+  Dimensions d = size();
+  pair<Coordinate, Coordinate> g_coords = std::make_pair(make_pair(0,0), make_pair(d.get_y()-1, d.get_x()-1));
+  string range = get_property(MapProperties::MAP_PROPERTIES_GENERATION_COORDINATES);
+
+  if (!range.empty())
+  {
+    vector<int> coord_v = String::create_int_vector_from_csv_string(range);
+
+    if (coord_v.size() == 4)
+    {
+      g_coords = {{coord_v[0], coord_v[1]}, {coord_v[2], coord_v[3]}};
+    }
+  }
+
+  return g_coords;
 }
 
 void Map::set_shops(const map<string, Shop>& new_shops)

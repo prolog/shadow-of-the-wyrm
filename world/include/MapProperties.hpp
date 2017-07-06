@@ -83,6 +83,13 @@ class MapProperties
     //     given turn.
     static const std::string MAP_PROPERTIES_SHIMMER_COLOURS;
 
+    // Generation coordinates are used when a particular map is "more
+    // restricted" (e.g., floating tower, which has lots of air tiles
+    // that shouldn't be used for generation) and we want to ensure
+    // that creatures and items are only generated within a certain
+    // range.
+    static const std::string MAP_PROPERTIES_GENERATION_COORDINATES;
+
   protected:
     MapProperties();
     ~MapProperties();
