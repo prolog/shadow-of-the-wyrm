@@ -1,7 +1,4 @@
 Me:
-- unit tests for map->get_generation_coordinates()
-- apply Map::get_generation_range to the map item generation algorithm
-  as well
 - "go to previous" a la Siriath's lair is totally broken.
 - Get "shimmer" effect working.
 - Air level in Telari isn't linking to the top of the tower properly.
