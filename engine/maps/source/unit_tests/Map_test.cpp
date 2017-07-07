@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "FieldTile.hpp"
+#include "MapProperties.hpp"
 
 class SW_Engine_Map : public ::testing::Test
 {
@@ -143,4 +144,18 @@ TEST_F(SW_Engine_Map, underwater_maps_submerge_tiles)
   map->insert({4,4}, tile);
 
   EXPECT_TRUE(map->at({4,4})->get_submerged());
+}
+
+TEST_F(SW_Engine_Map, get_generation_coordinates)
+{
+  MapPtr map = make_map();
+  pair<Coordinate, Coordinate> expected = make_pair(make_pair(0,0), make_pair(19, 79));
+
+  EXPECT_EQ(expected, map->get_generation_coordinates());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_GENERATION_COORDINATES, "5,5,17,50");
+
+  expected = make_pair(make_pair(5,5), make_pair(17,50));
+
+  EXPECT_EQ(expected, map->get_generation_coordinates());
 }
