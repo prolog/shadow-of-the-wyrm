@@ -426,7 +426,7 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     else
     {
       // Handle the case where we need to link the new staircase to custom levels.
-      set_custom_map_id_for_depth(new_staircase_tile, direction, depth, map->get_map_id());
+      set_custom_map_linkage_for_depth(new_staircase_tile, direction, depth, map->get_map_id());
       set_depth_custom_map_id_properties(new_staircase_tile);
 
       // Copy over any recursive properties as long as we're not linking back
@@ -517,8 +517,8 @@ void Generator::add_tile_exit(MapPtr map, const Coordinate& c, const Direction d
 }
 
 // Get the custom map ID for a particular depth, and set it as the custom map ID
-// for the given tile.
-void Generator::set_custom_map_id_for_depth(TilePtr new_tile, const Direction exit_direction, const Depth& depth, const string& linkback_map_id)
+// for the given tile if the key exists.
+void Generator::set_custom_map_linkage_for_depth(TilePtr new_tile, const Direction exit_direction, const Depth& depth, const string& linkback_map_id)
 {
   Depth new_depth = depth;
   TileType tile_type = new_tile->get_tile_type();

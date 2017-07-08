@@ -42,6 +42,8 @@ void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direc
   if (tile)
   {
     TileExitMap& tile_exit_map = tile->get_tile_exit_map_ref();
+
+    add_map_tile_exit(map->get_tile_exits_ref(), direction, c);
     tile_exit_map[direction] = map_exit;
   }
 }
