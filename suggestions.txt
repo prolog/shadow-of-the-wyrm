@@ -1,10 +1,6 @@
 Me:
-- "go to previous" a la Siriath's lair is totally broken.
 - Get "shimmer" effect working.
-- Air level in Telari isn't linking to the top of the tower properly.
-  Likely because depth increment isn't being set properly when the stairs
-  are being generated.  Should be -5, not -1!  Probably just need to
-  update Generator::update_depth_details.
+- Confirm air -> top linkage works in both directions.
 - Test going through dungeons for danger level ok
 - Is this going to work e.g. past Siriath's lair
 - Eye of the first meteor burst isn't being removed, and the subsequent
