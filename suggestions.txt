@@ -1,15 +1,11 @@
 Me:
-- Get "shimmer" effect working.
-- Confirm air -> top linkage works in both directions.
 - Test going through dungeons for danger level ok
-- Is this going to work e.g. past Siriath's lair
 - Eye of the first meteor burst isn't being removed, and the subsequent
   bursts aren't showing the centre.  Update this so that the centre is
   always shown (and not removed).
 - When redrawing the tile underneath a burst, the creature's not shown.
   Test case: spectral wizard with shard vs player.
 - Add Shards, Meteor to a couple more creatures
-- Tile effects for Cloudspire, a la ToEF
 - Crystalline being for astral plane
 - Lumps of gold should be minable.
 - Repel (cantrip)
@@ -18,9 +14,6 @@ Me:
   be a ring of flying made available.
 - Test going to down to D2 and back in both a regular dungeon and the ID.
   Also, Gnordvar Mines.
-- D:80 should be submerged.
-- Create common function for determining biggest item in table, use in
-  conjurer script.
 - Email Nathan before next release re: Mac build, and update website to
   mention that the game is buildable in Mac OS.
 - Script to add back down staircase to Telari once the Nine have been

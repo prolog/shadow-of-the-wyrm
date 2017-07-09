@@ -7,6 +7,7 @@
 #include "MapDisplayArea.hpp"
 #include "MapProperties.hpp"
 #include "MapTranslator.hpp"
+#include "RNG.hpp"
 #include "Setting.hpp"
 
 using namespace std;
@@ -205,7 +206,7 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
 {
   uchar symbol = '?';
   Colour colour = Colour::COLOUR_UNDEFINED;
-  Colour shimmer_colour = shimmer_colours.get_feature_colour();
+  Colour shimmer_colour = RNG::percent_chance(shimmer_colours.get_pct_chance_shimmer()) ? shimmer_colours.get_shimmer_colour() : shimmer_colours.get_feature_colour();
 
   if (feature != nullptr)
   {
@@ -262,13 +263,20 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
   bool passable = tile && (tile->get_movement_multiplier() > 0);
   Colour shimmer_colour = Colour::COLOUR_UNDEFINED;
 
-  if (passable)
+  if (RNG::percent_chance(shimmer_colours.get_pct_chance_shimmer()))
   {
-    shimmer_colour = shimmer_colours.get_passable_colour();
+    shimmer_colour = shimmer_colours.get_shimmer_colour();
   }
   else
   {
-    shimmer_colour = shimmer_colours.get_impassable_colour();
+    if (passable)
+    {
+      shimmer_colour = shimmer_colours.get_passable_colour();
+    }
+    else
+    {
+      shimmer_colour = shimmer_colours.get_impassable_colour();
+    }
   }
 
   if (shimmer_colour != Colour::COLOUR_UNDEFINED)

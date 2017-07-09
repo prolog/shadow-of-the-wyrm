@@ -2,6 +2,7 @@
 
 using namespace std;
 
+const int ShimmerColours::PCT_CHANCE_SHIMMER = 10;
 const size_t ShimmerColours::PASSABLE_IDX = 0;
 const size_t ShimmerColours::IMPASSABLE_IDX = 1;
 const size_t ShimmerColours::FEATURE_IDX = 1;
@@ -31,6 +32,11 @@ Colour ShimmerColours::get_feature_colour() const
 Colour ShimmerColours::get_shimmer_colour() const
 {
   return get_colour_or_undefined(SHIMMER_IDX);
+}
+
+int ShimmerColours::get_pct_chance_shimmer() const
+{
+  return PCT_CHANCE_SHIMMER;
 }
 
 Colour ShimmerColours::get_colour_or_undefined(const size_t idx) const

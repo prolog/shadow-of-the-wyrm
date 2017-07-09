@@ -10,6 +10,7 @@ class ShimmerColours
     Colour get_impassable_colour() const;
     Colour get_feature_colour() const;
     Colour get_shimmer_colour() const;
+    int get_pct_chance_shimmer() const;
 
   protected:
     std::vector<Colour> colours;
@@ -17,6 +18,7 @@ class ShimmerColours
     bool is_valid() const;
     Colour get_colour_or_undefined(const size_t idx) const;
 
+    static const int PCT_CHANCE_SHIMMER;
     static const size_t PASSABLE_IDX;
     static const size_t IMPASSABLE_IDX;
     static const size_t FEATURE_IDX;
