@@ -121,6 +121,13 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - Mining rocks can now yield iron ingots, steel ingots, and lumps of gold,
   in addition to the usual chances for magici shards, rocks, and stones.
 
+- The algorithm for determining item probabilities when digging has been
+  simplified.  The chance specified in the tile is now the only value
+  used to determine if an item is generated when digging.
+
+- Multiple types of items can be generated at once when digging (e.g.,
+  a rock tile could yield an iron ingot and stones).
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.

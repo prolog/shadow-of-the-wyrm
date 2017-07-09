@@ -1,5 +1,6 @@
 Me:
-- Rejig item changes for rock tiles to account for the 8% chance of an item.
+- What affects pick axe breakage?  Should it be further reduced by
+  dungeoneering?  Mountain lore?
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
 - Crystalline being for astral plane

@@ -26,8 +26,6 @@ class DigAction : public IActionManager
     bool tile_super_type_supports_digging(const TileSuperType tst) const;
     void handle_potential_item_breakage(CreaturePtr creature, ItemPtr item) const;
     void add_successful_dig_message(CreaturePtr creature) const;
-    std::string get_decomposition_item_id(const std::vector<std::pair<std::pair<int, int>, std::string>>& decomp_item_ids) const;
 
-    static const int DIG_PERCENT_CHANCE_ITEM;
     static const int DIG_PERCENT_CHANCE_MARK_STATISTIC;
 };

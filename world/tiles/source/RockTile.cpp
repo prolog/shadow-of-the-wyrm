@@ -22,12 +22,12 @@ TileType RockTile::get_decomposition_tile_type() const
 
 vector<pair<pair<int, int>, string>> RockTile::get_decomposition_item_ids() const
 {
-  vector<pair<pair<int, int>, string>> result = {{{1,75}, ItemIdKeys::ITEM_ID_MAGICI_SHARD},
+  vector<pair<pair<int, int>, string>> result = {{{1,100}, ItemIdKeys::ITEM_ID_MAGICI_SHARD},
                                                  {{1,120}, ItemIdKeys::ITEM_ID_LUMP_GOLD},
                                                  {{1,30}, ItemIdKeys::ITEM_ID_IRON_INGOT},
                                                  {{1,50}, ItemIdKeys::ITEM_ID_STEEL_INGOT},
-                                                 {{1,5}, ItemIdKeys::ITEM_ID_STONE},
-                                                 {{1,1}, ItemIdKeys::ITEM_ID_ROCK}};
+                                                 {{1,6}, ItemIdKeys::ITEM_ID_STONE},
+                                                 {{1,6}, ItemIdKeys::ITEM_ID_ROCK}};
   return result;
 }
 
