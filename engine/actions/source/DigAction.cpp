@@ -165,9 +165,11 @@ TilePtr DigAction::dig_tile(TilePtr adjacent_tile) const
   }
 }
 
-string DigAction::get_decomposition_item_id(const vector<pair<pair<int, int>, string>>& decomp_ids) const
+string DigAction::get_decomposition_item_id(const vector<pair<pair<int, int>, string>>& d_ids) const
 {
   string decomp_item_id;
+  vector<pair<pair<int, int>, string>> decomp_ids = d_ids;
+  std::shuffle(decomp_ids.begin(), decomp_ids.end(), RNG::get_engine());
 
   for (const auto& d_pair : decomp_ids)
   {
