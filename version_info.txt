@@ -115,6 +115,12 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - General depth-specific properties are now automatically propagated
   through dungeons, towers, etc.
 
+- Added support for "shimmering colours" which allow for tiles to change 
+  colour from turn to turn.  Applied this to the Cloudspire.
+
+- Mining rocks can now yield iron ingots, steel ingots, and lumps of gold,
+  in addition to the usual chances for magici shards, rocks, and stones.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
@@ -178,7 +184,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
     command.
     
   - Lumps of gold (which are the raw material for the Jewelry skill)
-    are defined, but weren't set to a valid danger level, and so never
+    were defined, but weren't set to a valid danger level, and so never
     appeared in-game.  These should show up, now.  Sorry, anon. (4chan
     /rlg)
 

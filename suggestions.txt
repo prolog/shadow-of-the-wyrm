@@ -1,8 +1,8 @@
 Me:
+- Rejig item changes for rock tiles to account for the 8% chance of an item.
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
 - Crystalline being for astral plane
-- Lumps of gold should be minable.
 - Repel (cantrip)
 - Each floating tower level should have a "platform" generated outside
   somewhere, with great items and a nasty flying creature.  There should
