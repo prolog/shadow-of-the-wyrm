@@ -7,6 +7,7 @@
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "Log.hpp"
 #include "MapProperties.hpp"
 #include "MapTranslator.hpp"
 #include "RNG.hpp"
@@ -92,6 +93,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
 
   for (uint i = 0; i < num_tiles_affected; i++)
   {
+    stringstream ss;
     Coordinate rand_coord = coords.at(RNG::range(0, coords_size-1));
 
     TilePtr tile = map->at(rand_coord);
@@ -99,18 +101,20 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
 
     result.first.push_back(make_pair(rand_coord, tile));
 
-    // Push back the selected coordinate (the eye of the mini-storm).
-    result.second.push_back({ make_pair(dt, rand_coord) });
-
+    if (spell_radius == 0)
+    {
+      // Push back the selected coordinate (the eye of the mini-storm).
+      result.second.push_back({ make_pair(dt, rand_coord) });
+    }
     // If this is a radiant storm, calculate the balls created from the random
     // coordinate.  Ensure that the caster's coordinate is always excluded.
     //
     // We calculate two balls: one with the alternate hue, one with the regular
     // one, and then add them both to the movement path.  This allows the path
     // of any subsequent, overlapping balls to be easily seen.
-    if (spell_radius > 0)
+    else if (spell_radius > 0)
     {
-      BallShapeProcessor bsp;
+      BallShapeProcessor bsp(true);
 
       // Colour and whether to use the actual tile details in the ball,
       // rather than the spell symbols.
@@ -147,8 +151,8 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
       }
 
       // After the blast has dissipated, remove the epicenter.
-      dt = MapTranslator::create_display_tile(player_blind, tod_overrides, shimmer_colours, tile, fov_tile);
-      dt.set_season(season->get_season());
+      //dt = MapTranslator::create_display_tile(player_blind, tod_overrides, shimmer_colours, tile, fov_tile);
+      //dt.set_season(season->get_season());
     }
   }
 
