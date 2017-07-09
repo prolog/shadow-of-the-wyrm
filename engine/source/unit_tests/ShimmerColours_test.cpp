@@ -1,5 +1,11 @@
 #include "gtest/gtest.h"
 
+TEST(SW_Engine_ShimmerColours, pct_chance)
+{
+  ShimmerColours sc({Colour::COLOUR_BOLD_BLUE, Colour::COLOUR_BLUE, Colour::COLOUR_CYAN});
+  EXPECT_EQ(10, sc.get_pct_chance_shimmer());
+}
+
 TEST(SW_Engine_ShimmerColours, shimmer_colours)
 {
   // Not enough
