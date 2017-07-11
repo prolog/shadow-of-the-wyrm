@@ -7970,5 +7970,8 @@
     <ClCompile Include="engine\source\unit_tests\ShimmerColours_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ItemBreakageCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

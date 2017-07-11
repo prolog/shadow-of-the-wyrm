@@ -128,6 +128,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - Multiple types of items can be generated at once when digging (e.g.,
   a rock tile could yield an iron ingot and stones).
 
+- When digging, items now break less based on Dungeoneering skill.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.

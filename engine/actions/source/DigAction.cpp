@@ -198,7 +198,7 @@ void DigAction::handle_potential_item_breakage(CreaturePtr creature, ItemPtr ite
   {
     // Did the item break?
     ItemBreakageCalculator ibc;
-    if (RNG::percent_chance(ibc.calculate_pct_chance_digging_breakage(item)))
+    if (RNG::percent_chance(ibc.calculate_pct_chance_digging_breakage(creature, item)))
     {
       creature->get_equipment().remove_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 
