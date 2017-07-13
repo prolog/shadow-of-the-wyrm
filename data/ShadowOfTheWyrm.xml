@@ -26721,6 +26721,12 @@
 				<Colour>8</Colour>
 			</Text>
 		</FloatingTowerTile>
+		<VoidTile>
+			<Text>
+				<Symbol> </Symbol>
+				<Colour>0</Colour>
+			</Text>
+		</VoidTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">

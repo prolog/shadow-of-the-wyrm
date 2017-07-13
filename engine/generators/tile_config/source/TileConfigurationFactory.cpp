@@ -25,7 +25,7 @@ TileConfigurationFactory::TileConfigurationFactory()
 // types.
 void TileConfigurationFactory::initialize_tile_configuration_map()
 {
-  static_assert(TileType::TILE_TYPE_LAST == TileType(53), "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(54), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   ITileConfigurationPtr field_config = std::make_shared<FieldTileConfiguration>(); 
   tile_configurations[static_cast<int>(TileType::TILE_TYPE_FIELD)] = field_config;

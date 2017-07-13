@@ -1,6 +1,6 @@
 Me:
-- What affects pick axe breakage?  Should it be further reduced by
-  dungeoneering?  Mountain lore?
+- Need VoidGenerator.
+- Check unit tests after voidtile changes
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
 - Crystalline being for astral plane

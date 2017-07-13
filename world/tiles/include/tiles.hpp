@@ -66,7 +66,8 @@ enum struct TileType
   TILE_TYPE_SEABED    = 50,
   TILE_TYPE_AQUATIC_VEGETATION = 51,
   TILE_TYPE_FLOATING_TOWER = 52,
-  TILE_TYPE_LAST      = 53
+  TILE_TYPE_VOID      = 53,
+  TILE_TYPE_LAST      = 54
 };
 
 // Tile types for the Lua API
@@ -125,5 +126,6 @@ enum struct TileType
 #define CTILE_TYPE_SEABED 50
 #define CTILE_TYPE_AQUATIC_VEGETATION 51
 #define CTILE_TYPE_FLOATING_TOWER 52
-#define CTILE_TYPE_LAST 53
+#define CTILE_TYPE_VOID 53
+#define CTILE_TYPE_LAST 54
 

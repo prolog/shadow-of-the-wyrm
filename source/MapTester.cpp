@@ -47,6 +47,7 @@
 #include "SimpleTempleGenerator.hpp"
 #include "SnakingTempleGenerator.hpp"
 #include "SpiralDungeonGenerator.hpp"
+#include "VoidGenerator.hpp"
 #include "WorldGenerator.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLConfigurationReader.hpp"
@@ -71,6 +72,10 @@ void test_poisson();
 void misc();
 void test_calendar();
 void test_item_generation();
+
+// Other maps
+void test_other_maps();
+string generate_void();
 
 // Map testing stuff
 void test_bresenham_line();
@@ -178,106 +183,12 @@ string map_to_string(MapPtr map, bool use_html)
         }
         else
         {
-          DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, {Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED} /* ditto for colour overrides */, tile, tile);
+          ShimmerColours sc({Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED});
+          DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, {Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED} /* ditto for colour overrides */, sc, tile, tile);
           if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
           ostringstream ss;
           ss << dt.get_symbol();
           tile_ascii = html_encode(ss.str());
-          /*        switch(type)
-          {
-          case TileType::TILE_TYPE_DAIS:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#848484\">";
-          tile_ascii = ".";
-          break;
-          case TileType::TILE_TYPE_FIELD:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-          tile_ascii = ".";
-          break;
-          case TileType::TILE_TYPE_BUSH:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-          tile_ascii = "\"";
-          break;
-          case TileType::TILE_TYPE_WEEDS:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
-          tile_ascii = "\"";
-          break;
-          case TileType::TILE_TYPE_FOREST:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-          tile_ascii = "&";
-          break;
-          case TileType::TILE_TYPE_MOUNTAINS:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-          tile_ascii = "^";
-          break;
-          case TileType::TILE_TYPE_TREE:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-          tile_ascii = "T";
-          break;
-          case TileType::TILE_TYPE_CAIRN:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
-          tile_ascii = "*";
-          break;
-          case TileType::TILE_TYPE_SPRINGS:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FFFF\">";
-          tile_ascii = "v";
-          break;
-          case TileType::TILE_TYPE_RIVER:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
-          tile_ascii = "~";
-          break;
-          case TileType::TILE_TYPE_DUNGEON:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-          tile_ascii = ".";
-          break;
-          case TileType::TILE_TYPE_ROCK:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
-          tile_ascii = "#";
-          break;
-          case TileType::TILE_TYPE_SCRUB:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#CCFF00\">";
-          tile_ascii = ".";
-          break;
-          case TileType::TILE_TYPE_ROAD:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
-          tile_ascii = ".";
-          break;
-          case TileType::TILE_TYPE_MARSH:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"008000\">";
-          tile_ascii = "~";
-          break;
-          case TileType::TILE_TYPE_REEDS:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
-          tile_ascii = "|";
-          break;
-          case TileType::TILE_TYPE_SEA:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
-          tile_ascii = "~";
-          break;
-          case TileType::TILE_TYPE_GRAVE:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"C0C0C0\">";
-          tile_ascii = "+";
-          break;
-          case TileType::TILE_TYPE_UP_STAIRCASE:
-          if (use_html)
-          {
-          start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-          tile_ascii = "&lt;";
-
-          }
-          else tile_ascii = "<";
-          break;
-          case TileType::TILE_TYPE_DOWN_STAIRCASE:
-          if (use_html)
-          {
-          start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-          tile_ascii = "&gt;";
-          }
-          else tile_ascii = ">";
-          break;
-          default:
-          tile_ascii = "?";
-          break;
-          } */
         }
 
         map_s = map_s + start_tag + tile_ascii + end_tag;
@@ -796,6 +707,7 @@ void misc()
     cout << "1. Bresenham's Line" << endl;
     cout << "2. Calendar" << endl;
     cout << "3. Item Generation" << endl;
+    cout << "4. Other Map Types" << endl;
 
     cin >> choice;
     
@@ -808,8 +720,11 @@ void misc()
         test_calendar();
         break;
       case 3:
-      default:
         test_item_generation();
+        break;
+      case 4:
+      default:
+        test_other_maps();
         break;
     }
   }
@@ -991,6 +906,36 @@ void test_rng()
         break;
     }
   }
+}
+
+void test_other_maps()
+{
+  string map;
+  int option = 0;
+  while(option != -1)
+  {
+    cout << "Other Maps" << endl << endl;
+    cout << "0. Void" << endl;
+    cout << "-1. Quit" << endl << endl;
+    cin >> option;
+
+    switch(option)
+    {
+      case 0:
+      default:
+        map = generate_void();
+        output_map(map, "void_test.html");
+        break;
+    }
+  }
+}
+
+string generate_void()
+{
+  GeneratorPtr void_gen = std::make_shared<VoidGenerator>("");
+  MapPtr map = void_gen->generate();
+  cout << map_to_string(map, false);
+  return map_to_string(map);
 }
 
 void settlement_maps()
