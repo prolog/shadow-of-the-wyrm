@@ -4026,6 +4026,12 @@
     <ClInclude Include="engine\include\ShimmerColours.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\VoidTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\VoidGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -7972,6 +7978,15 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ItemBreakageCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\VoidTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\VoidTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\VoidGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

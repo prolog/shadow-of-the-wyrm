@@ -141,6 +141,7 @@
 			<xs:element name="SeabedTile" type="tns:Tile"/>
 			<xs:element name="AquaticVegetationTile" type="tns:Tile"/>
 			<xs:element name="FloatingTowerTile" type="tns:Tile"/>
+			<xs:element name="VoidTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -1186,7 +1187,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="52"/>
+		<xs:maxInclusive value="53"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="Rarity">

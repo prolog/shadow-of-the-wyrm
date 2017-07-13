@@ -51,6 +51,7 @@
 #include "TreeTile.hpp"
 #include "WeedsTile.hpp"
 #include "VillageTile.hpp"
+#include "VoidTile.hpp"
 #include "WellTile.hpp"
 #include "WheatTile.hpp"
 #include "WorshipSiteTile.hpp"
