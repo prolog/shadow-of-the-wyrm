@@ -20250,6 +20250,73 @@
 				<EffectBonus>50</EffectBonus>
 			</Damage>
 		</Creature>
+		<Creature id="crystalline_being">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>CRYSTALLINE_BEING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CRYSTALLINE_BEING_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CRYSTALLINE_BEING_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>C</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>1</Type>
+				<EffectBonus>40</EffectBonus>
+			</Damage>
+			<Soak>40</Soak>
+		</Creature>
+		<Creature id="seraph_highest_heavenly_order">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SERAPH_HIGHEST_HEAVENLY_ORDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SERAPH_HIGHEST_HEAVENLY_ORDER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SERAPH_HIGHEST_HEAVENLY_ORDER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SERAPH_HIGHEST_HEAVENLY_ORDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+				<EffectBonus>40</EffectBonus>
+			</Damage>
+			<Soak>25</Soak>
+		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
