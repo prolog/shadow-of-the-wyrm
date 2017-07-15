@@ -19941,7 +19941,7 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>52</TileType>
+					<TileType>53</TileType>
 				</AllowableTerrainTypes>
 				<!-- Deities are generated one by one, with the first placed
 				     by script, so set danger level to -1 to prevent them from
@@ -19977,7 +19977,7 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>52</TileType>
+					<TileType>53</TileType>
 				</AllowableTerrainTypes>
 				<!-- Deities are generated one by one, with the first placed
 				     by script, so set danger level to -1 to prevent them from
@@ -19995,6 +19995,258 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>7</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="the_lady">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>THE_LADY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_LADY_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_LADY_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_LADY_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>127</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="vedere">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>VEDERE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VEDERE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VEDERE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>VEDERE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>114</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="voros">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>VOROS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VOROS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VOROS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>VOROS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>113</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="the_trickster">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>THE_TRICKSTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_TRICKSTER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_TRICKSTER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_TRICKSTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>120</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="shiver">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SHIVER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SHIVER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SHIVER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SHIVER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>118</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="urgoth">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>URGOTH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>URGOTH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>URGOTH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>URGOTH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>125</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="sceadugenga">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SCEADUGENGA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SCEADUGENGA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SCEADUGENGA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SCEADUGENGA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>112</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>8</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
 		</Creature>
