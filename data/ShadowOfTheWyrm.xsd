@@ -1314,7 +1314,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="1"/>
-		<xs:maxExclusive value="99"/>
+		<xs:maxExclusive value="999"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="MaterialType">
