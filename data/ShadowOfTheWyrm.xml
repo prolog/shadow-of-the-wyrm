@@ -19926,6 +19926,78 @@
 				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
+		<Creature id="celeste">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>CELESTE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CELESTE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CELESTE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CELESTE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>123</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="aurelion">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>AURELION_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>AURELION_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>AURELION_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>AURELION_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>124</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
+		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

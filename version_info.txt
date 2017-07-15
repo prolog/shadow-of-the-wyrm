@@ -155,7 +155,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   comet jellyfish, The Namer, The Worldsinger, The Speaker, nether hydra,
   sea worm, mesosaur, ghost ray, megalodon, The Conjurer, The Armourer,
   red witch, solarian, lavos, ekakophia, myriadon, lamia, moloch, titanic
-  slime, copper bird, bird of paradise, alghari, The Smith.
+  slime, copper bird, bird of paradise, alghari, The Smith, Celeste,
+  Aurelion.
 
 - Bug fixes: 
 
