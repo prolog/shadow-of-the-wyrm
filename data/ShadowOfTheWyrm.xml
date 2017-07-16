@@ -20317,6 +20317,57 @@
 			</Damage>
 			<Soak>25</Soak>
 		</Creature>
+		<Creature id="gabar_clutching_first_holy_book">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>300000</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>absolution_spellbook</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+				<EffectBonus>40</EffectBonus>
+			</Damage>
+			<Soak>25</Soak>
+			<Spells>
+				<Spell>
+					<SpellID>d_12_absolution</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -26200,6 +26251,31 @@
 				</Property>
 			</Properties>
 		</Spell>
+		<Spell id="d_12_absolution">
+			<NameSID>ABSOLUTION_NAME_SID</NameSID>
+			<PlayerCastMessageSID>ABSOLUTION_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>ABSOLUTION_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3001</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>15</Colour>
+			<APCost>50</APCost>
+			<Speed>1</Speed>
+			<Range>6</Range>
+			<Shape>1</Shape>
+			<Radius>2</Radius>
+			<Damage>
+				<NumDice>500</NumDice>
+				<NumSides>1</NumSides>
+				<Type>7</Type>
+				<EffectBonus>100</EffectBonus>
+				<StatusAilments>
+					<Status>_mute</Status>
+					<Status>_slow</Status>
+					<Status>_stun</Status>
+				</StatusAilments>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
 		<Spell id="m_01_wraith_form">
 			<NameSID>WRAITH_FORM_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WRAITH_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -35116,6 +35192,24 @@
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>d_11_divine_form</SpellID>
 				<Difficulty>90</Difficulty>
+			</Spellbook>			
+			<Spellbook id="absolution_spellbook">
+				<DescriptionSID>ABSOLUTION_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_ABSOLUTION_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>ABSOLUTION_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_ABSOLUTION_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<SpellID>d_12_absolution</SpellID>
+				<Difficulty>100</Difficulty>
 			</Spellbook>			
 			<Spellbook id="wraith_form_spellbook">
 				<DescriptionSID>WRAITH_FORM_SPELLBOOK_SID</DescriptionSID>

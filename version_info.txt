@@ -139,7 +139,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - New spells/spellbooks: mapping (Cantrips), crumble (Cantrips), dig
   (Arcane), antimatter (Primordial), malediction (Mystic), divine form
   (Divine), holocaust (Arcane), inferno (Cantrips), shards (Cantrips),
-  meteor (Arcane).
+  meteor (Arcane), absolution (Divine).
 
 - New monster-only spells: wyrmfire (Arcane).
 
@@ -157,7 +157,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   red witch, solarian, lavos, ekakophia, myriadon, lamia, moloch, titanic
   slime, copper bird, bird of paradise, alghari, The Smith, Celeste,
   Aurelion, The Lady, Vedere, Voros, The Trickster, Shiver, Urgoth,
-  Sceadugenga, crystalline being, seraph of the highest heavenly order.
+  Sceadugenga, crystalline being, seraph of the highest heavenly order,
+  gabar of the book and the holy sword.
 
 - Bug fixes: 
 
