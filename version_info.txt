@@ -144,7 +144,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - New monster-only spells: wyrmfire (Arcane).
 
 - New items: scroll of mapping, scroll of monster summoning, wand of
-  digging, wand of inferno, moloch armour, scythe, lump of gold.
+  digging, wand of inferno, moloch armour, scythe, lump of gold, holy
+  mantle.
 
 - New artifacts: Ring of Aran Fee, naming stone, Telarian Mail, Telarian
   Shield, Telarian Helm, God-Blade.
@@ -158,7 +159,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   slime, copper bird, bird of paradise, alghari, The Smith, Celeste,
   Aurelion, The Lady, Vedere, Voros, The Trickster, Shiver, Urgoth,
   Sceadugenga, crystalline being, seraph of the highest heavenly order,
-  gabar of the book and the holy sword.
+  gabar of the book and the holy sword, knight exemplar.
 
 - Bug fixes: 
 
