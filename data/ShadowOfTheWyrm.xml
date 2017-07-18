@@ -20408,6 +20408,45 @@
 			</Damage>
 			<Soak>25</Soak>
 		</Creature>
+		<Creature id="paragon_twenty_virtues">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>PARAGON_TWENTY_VIRTUES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PARAGON_TWENTY_VIRTUES_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PARAGON_TWENTY_VIRTUES_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PARAGON_TWENTY_VIRTUES_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>P</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+				<EffectBonus>40</EffectBonus>
+				<StatusAilments>
+					<Status>_poison</Status>
+					<Status>_slow</Status>
+					<Status>_blind</Status>
+					<Status>_mute</Status>
+				</StatusAilments>
+			</Damage>
+		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
