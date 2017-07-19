@@ -1178,3 +1178,13 @@ across the wetlands, sounds that let them make %b
 their movements softly, skirt the sloughs, and try %b
 to pass unheard beneath the bleak and hoary sky.
 %p
+Their boots grew thick and damp.  While not a bog, %b
+the ground was wet and loose with last night's rain, %b
+puddles pooling within the dips, a slog %b
+through sphagnum, marsh grass - how else to explain %b
+their laggard's pace?  Their feet a blistered mess, %b
+the soles soaked through with blood and grime, they ate %b
+a cold meal in silence, the day's egress %b
+to dusk and embryonic night a slate %b
+of broken stars, their cut a seeping aspirate.
+%p
