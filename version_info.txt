@@ -160,7 +160,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   Aurelion, The Lady, Vedere, Voros, The Trickster, Shiver, Urgoth,
   Sceadugenga, crystalline being, seraph of the highest heavenly order,
   gabar of the book and the holy sword, knight exemplar, paragon of the
-  twenty virtues.
+  twenty virtues, trio of shining silver dragons, howling fury of first
+  love lost.
 
 - Bug fixes: 
 
