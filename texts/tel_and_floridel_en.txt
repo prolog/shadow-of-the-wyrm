@@ -882,7 +882,7 @@ of speargrass, oats and rye cut through with veins %b
 of wildflowers.  Here and there, a bumblebee, %b
 its lazy spiral.  Rustles underneath - %b
 a rabbit, keen to lose a trailing hawk. %b
-The grasses formed a halor or a wreath %b
+The grasses formed a halo or a wreath %b
 about those savages.  They did not talk. %b
 The coming murder sped them, silent as they stalked.
 %p
@@ -1187,4 +1187,14 @@ the soles soaked through with blood and grime, they ate %b
 a cold meal in silence, the day's egress %b
 to dusk and embryonic night a slate %b
 of broken stars, a seeping cut, an aspirate.
+%p
+The following morning, the company made their way %b
+around a set of staggered, brackish pools %b
+that buzzed with new mosquitoes and delayed %b
+their schedule.  The weather never cooled, %b
+remaining humid, moisture in the air %b
+becoming condensation on the skin, %b
+beads that reformed to rivulets, and where %b
+the flat of an axe-blade touched the back, the thin %b
+cotton became a butterfly or violin.
 %p
