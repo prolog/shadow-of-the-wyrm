@@ -161,7 +161,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   Sceadugenga, crystalline being, seraph of the highest heavenly order,
   gabar of the book and the holy sword, knight exemplar, paragon of the
   twenty virtues, trio of shining silver dragons, howling fury of first
-  love lost, luminous angel, saint who moves in perfect grace.
+  love lost, luminous angel, saint who moves in perfect grace, pulsating
+  mass of primordial ooze, cloud of murderous, flesh-eating scarabs,
+  thunderbird of the low steppes, hundred-headed hydra.
 
 - Bug fixes: 
 
