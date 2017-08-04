@@ -163,7 +163,9 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   twenty virtues, trio of shining silver dragons, howling fury of first
   love lost, luminous angel, saint who moves in perfect grace, pulsating
   mass of primordial ooze, cloud of murderous, flesh-eating scarabs,
-  thunderbird of the low steppes, hundred-headed hydra.
+  thunderbird of the low steppes, hundred-headed hydra, drakkhar carrying
+  a massive flaming sword, early dragon of the first age, eddic crone,
+  murder of a thousand crows, wraith of wan and dying light.
 
 - Bug fixes: 
 
