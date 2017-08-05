@@ -20905,6 +20905,39 @@
 				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
+		<Creature id="blood_angel_white_queen">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>BLOOD_ANGEL_WHITE_QUEEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BLOOD_ANGEL_WHITE_QUEEN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLOOD_ANGEL_WHITE_QUEEN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BLOOD_ANGEL_WHITE_QUEEN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+				<EffectBonus>40</EffectBonus>
+			</Damage>
+		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
