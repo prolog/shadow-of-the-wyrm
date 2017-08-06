@@ -1,14 +1,14 @@
 Me:
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
-- Voros - +2
-- The Trickster - wraith of wan and dying light, edda +2
-- Shiver - +3
 - Urgoth - +3
 - Sceadugenga, teeming mass of writhing tentacles, beast beyond the
   furthest star, apocalyptic hell that bears no name
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
 - Crystalline being for astral plane
+- Improve spellcasting AI so that spells are only considered when adjacent
+  if the expected damage is greater than the expected damage of a melee
+  attack.
 - Repel (cantrip)
 - Each floating tower level should have a "platform" generated outside
   somewhere, with great items and a nasty flying creature.  There should
@@ -22,13 +22,6 @@ Me:
 - Need to test the following after the spell refactoring:
   - reflective beam, cross, ball, target self, storm
   - Anything else?
-- Tower should be five levels (with an increment of 250'), plus the special
-  top level:
-  - 75: The Abyss
-  - 80: Subterra
-  - 85: Terra
-  - 90: Stratosphere
-  - 100: Cosmos
 - The Namer's script: what happens after (prayer not working etc)
 - Special spells for The Sorceror
 - Special witchling spell(s?) from the Conjurer, small number of castings. 
