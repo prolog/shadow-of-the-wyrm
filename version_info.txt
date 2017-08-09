@@ -166,7 +166,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   thunderbird of the low steppes, hundred-headed hydra, drakkhar carrying
   a massive flaming sword, early dragon of the first age, eddic crone,
   murder of a thousand crows, wraith of wan and dying light, blood angel
-  of the white queen, nether hound, ancient shade.
+  of the white queen, nether hound, ancient shade, black ogre, cyclonic
+  beast.
 
 - Bug fixes: 
 
