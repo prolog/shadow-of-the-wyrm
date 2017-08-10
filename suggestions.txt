@@ -1,6 +1,5 @@
 Me:
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
-- Urgoth - +1
 - Sceadugenga, teeming mass of writhing tentacles, beast beyond the
   furthest star, apocalyptic hell that bears no name
 - Test going through dungeons for danger level ok

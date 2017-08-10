@@ -1198,3 +1198,13 @@ beads that reformed to rivulets, and where %b
 the flat of an axe-blade touched the back, the thin %b
 cotton became a butterfly or violin.
 %p
+Appropriate, for now they broke away %b
+and came upon a field of wildflowers, tipped %b
+with monarchs, hairstreaks, skippers.  In the play %b
+of morning light, the insects hummed and sipped %b
+at nectar, quavered softly in the breeze %b
+that carried in from the east to pollenate %b
+anemophilious grasses that eased %b
+the earth from bog to solid ground, and traced %b
+a pattern that, above, would shift and tesselate.
+%p

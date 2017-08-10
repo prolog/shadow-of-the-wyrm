@@ -167,7 +167,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   a massive flaming sword, early dragon of the first age, eddic crone,
   murder of a thousand crows, wraith of wan and dying light, blood angel
   of the white queen, nether hound, ancient shade, black ogre, cyclonic
-  beast.
+  beast, dark rider of the coming horde.
 
 - Bug fixes: 
 
