@@ -1,7 +1,5 @@
 Me:
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
-- Sceadugenga, teeming mass of writhing tentacles, beast beyond the
-  furthest star, apocalyptic hell that bears no name
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
 - Crystalline being for astral plane
