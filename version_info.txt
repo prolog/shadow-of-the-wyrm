@@ -130,6 +130,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - When digging, items now break less based on Dungeoneering skill.
 
+- New material types: gases, and unknown.
+
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
