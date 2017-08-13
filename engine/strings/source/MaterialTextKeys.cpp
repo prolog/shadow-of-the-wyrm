@@ -29,12 +29,14 @@ void MaterialTextKeys::init_material_sids()
                    {MaterialType::MATERIAL_TYPE_ONYX, MATERIAL_ONYX},
                    {MaterialType::MATERIAL_TYPE_IVORY, MATERIAL_IVORY},
                    {MaterialType::MATERIAL_TYPE_BONE, MATERIAL_BONE},
-                   {MaterialType::MATERIAL_TYPE_GOLD, MATERIAL_GOLD}};
+                   {MaterialType::MATERIAL_TYPE_GOLD, MATERIAL_GOLD},
+                   {MaterialType::MATERIAL_TYPE_GASES, MATERIAL_GASES},
+                   {MaterialType::MATERIAL_TYPE_UNKNOWN, MATERIAL_UNKNOWN}};
 }
 
 const string MaterialTextKeys::get_material(const MaterialType mt)
 {
-  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(14), "Unexpected MATERIAL_TYPE_LAST!");
+  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(16), "Unexpected MATERIAL_TYPE_LAST!");
 
   if (material_sids.empty())
   {
@@ -67,3 +69,5 @@ const string MaterialTextKeys::MATERIAL_MARBLE       = "MATERIAL_MARBLE";
 const string MaterialTextKeys::MATERIAL_ONYX         = "MATERIAL_ONYX";
 const string MaterialTextKeys::MATERIAL_IVORY        = "MATERIAL_IVORY";
 const string MaterialTextKeys::MATERIAL_BONE         = "MATERIAL_BONE";
+const string MaterialTextKeys::MATERIAL_GASES        = "MATERIAL_GASES";
+const string MaterialTextKeys::MATERIAL_UNKNOWN      = "MATERIAL_UNKNOWN";

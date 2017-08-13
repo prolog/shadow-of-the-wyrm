@@ -1226,6 +1226,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\materials\include\Bone.hpp" />
     <ClInclude Include="world\materials\include\Cloth.hpp" />
     <ClInclude Include="world\materials\include\DragonScale.hpp" />
+    <ClInclude Include="world\materials\include\Gases.hpp" />
     <ClInclude Include="world\materials\include\Glass.hpp" />
     <ClInclude Include="world\materials\include\Gold.hpp" />
     <ClInclude Include="world\materials\include\Iron.hpp" />
@@ -1239,6 +1240,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\materials\include\Paper.hpp" />
     <ClInclude Include="world\materials\include\Steel.hpp" />
     <ClInclude Include="world\materials\include\Stone.hpp" />
+    <ClInclude Include="world\materials\include\UnknownMaterial.hpp" />
     <ClInclude Include="world\materials\include\Wood.hpp" />
     <ClInclude Include="world\religion\include\ChampionTypes.hpp" />
     <ClInclude Include="world\religion\include\CreatureActions.hpp" />
@@ -1256,6 +1258,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\seasons\include\Winter.hpp" />
     <ClInclude Include="world\tiles\features\include\Altar.hpp" />
     <ClInclude Include="world\tiles\features\include\Barrel.hpp" />
+    <ClInclude Include="world\tiles\features\include\BasicFeature.hpp" />
     <ClInclude Include="world\tiles\features\include\Bed.hpp" />
     <ClInclude Include="world\tiles\features\include\Bench.hpp" />
     <ClInclude Include="world\tiles\features\include\DecorativeStatues.hpp" />
@@ -3306,6 +3309,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\materials\source\Bone.cpp" />
     <ClCompile Include="world\materials\source\Cloth.cpp" />
     <ClCompile Include="world\materials\source\DragonScale.cpp" />
+    <ClCompile Include="world\materials\source\Gases.cpp" />
     <ClCompile Include="world\materials\source\Glass.cpp" />
     <ClCompile Include="world\materials\source\Gold.cpp" />
     <ClCompile Include="world\materials\source\Iron.cpp" />
@@ -3325,6 +3329,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\materials\source\UnknownMaterial.cpp" />
     <ClCompile Include="world\materials\source\Wood.cpp" />
     <ClCompile Include="world\religion\source\CreatureActions.cpp" />
     <ClCompile Include="world\religion\source\Deity.cpp" />
@@ -3916,6 +3921,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\source\WorldFactory.cpp" />
     <ClCompile Include="world\tiles\features\source\Altar.cpp" />
     <ClCompile Include="world\tiles\features\source\Barrel.cpp" />
+    <ClCompile Include="world\tiles\features\source\BasicFeature.cpp" />
     <ClCompile Include="world\tiles\features\source\Bed.cpp" />
     <ClCompile Include="world\tiles\features\source\Bench.cpp" />
     <ClCompile Include="world\tiles\features\source\DecorativeStatues.cpp" />
@@ -3962,6 +3968,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\BasicFeature_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Bed_test.cpp">
