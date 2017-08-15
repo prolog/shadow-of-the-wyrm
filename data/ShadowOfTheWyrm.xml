@@ -36719,6 +36719,13 @@
 			</Item>
 		</MiscItems>
 	</Items>
+	<Features>
+		<Feature id="dwarf_star">
+			<Symbol>*</Symbol>
+			<Colour>11</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
+		</Feature>
+	</Features>
 	<Calendar>
 		<Day>
 			<NameSID>ALARI_NAME_SID</NameSID>

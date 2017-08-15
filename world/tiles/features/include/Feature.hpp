@@ -104,3 +104,4 @@ class Feature : public ISerializable
 };
 
 using FeaturePtr = std::shared_ptr<Feature>;
+using FeatureMap = std::map<std::string, FeaturePtr>;

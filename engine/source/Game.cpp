@@ -16,6 +16,7 @@
 #include "DecisionStrategySelector.hpp"
 #include "DetectionSkillProcessor.hpp"
 #include "ExitGameAction.hpp"
+#include "FeatureFactory.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "FileConstants.hpp"
@@ -229,6 +230,16 @@ void Game::set_items(const ItemMap& game_items)
 const ItemMap& Game::get_items_ref() const
 {
   return items;
+}
+
+void Game::set_basic_features(const FeatureMap& game_features)
+{
+  features = game_features;
+}
+
+const FeatureMap& Game::get_basic_features_ref() const
+{
+  return features;
 }
 
 void Game::set_custom_maps(const vector<MapPtr>& custom_maps)
@@ -986,6 +997,23 @@ bool Game::serialize(ostream& stream) const
     }
   }
 
+  Serialize::write_size_t(stream, features.size());
+
+  for (const auto& feat_pair : features)
+  {
+    Serialize::write_string(stream, feat_pair.first);
+
+    if (feat_pair.second)
+    {
+      Serialize::write_class_id(stream, feat_pair.second->get_class_identifier());
+      feat_pair.second->serialize(stream);
+    }
+    else
+    {
+      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
+    }
+  }
+
   // Ignore tile_info map - this will be built up on startup.
 
   size_t num_worlds = worlds.size();
@@ -1140,6 +1168,29 @@ bool Game::deserialize(istream& stream)
         if (!item->deserialize(stream)) return false;
 
         items.insert(make_pair(item_id, item));
+      }
+    }
+  }
+
+  features.clear();
+  size_t num_basic_features = 0;
+  Serialize::read_size_t(stream, num_basic_features);
+
+  for (size_t i = 0; i < num_basic_features; i++)
+  {
+    string feature_id;
+    Serialize::read_string(stream, feature_id);
+    
+    ClassIdentifier c_id = ClassIdentifier::CLASS_ID_NULL;
+    Serialize::read_class_id(stream, c_id);
+
+    if (c_id != ClassIdentifier::CLASS_ID_NULL)
+    {
+      FeaturePtr feat = FeatureFactory::create_feature(c_id);
+
+      if (feat != nullptr)
+      {
+        features[feature_id] = feat;
       }
     }
   }
