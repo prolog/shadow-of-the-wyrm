@@ -1,6 +1,7 @@
 #include <boost/assert.hpp>
 #include "FeatureFactory.hpp"
 #include "Barrel.hpp"
+#include "BasicFeature.hpp"
 #include "Conversion.hpp"
 #include "DecorativeStatues.hpp"
 #include "GoodAltar.hpp"
@@ -105,6 +106,7 @@ void FeatureFactory::initialize_feature_map()
   FeaturePtr trap               = std::make_shared<Trap>();
   FeaturePtr bed                = std::make_shared<Bed>();
   FeaturePtr stone_marker       = std::make_shared<StoneMarker>();
+  FeaturePtr basic_feature      = std::make_shared<BasicFeature>();
 
   feature_map = FeatureSerializationMap{{ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
                                         {ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -131,6 +133,7 @@ void FeatureFactory::initialize_feature_map()
                                         {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, wheel_and_loom},
                                         {ClassIdentifier::CLASS_ID_TRAP, trap},
                                         {ClassIdentifier::CLASS_ID_BED, bed},
-                                        {ClassIdentifier::CLASS_ID_STONE_MARKER, stone_marker}};
+                                        {ClassIdentifier::CLASS_ID_STONE_MARKER, stone_marker},
+                                        {ClassIdentifier::CLASS_ID_BASIC_FEATURE, basic_feature}};
 }
 

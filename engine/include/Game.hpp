@@ -69,6 +69,9 @@ class Game : public ISerializable
     void set_items(const ItemMap& game_items);
     const ItemMap& get_items_ref() const;
 
+    void set_basic_features(const FeatureMap& game_features);
+    const FeatureMap& get_basic_features_ref() const;
+
     void set_custom_maps(const std::vector<MapPtr>& custom_maps);
     // No getter - once the maps are in the registry, there's no way to determine which are custom.
     // (Realistically, nor should there need to be.)
@@ -192,6 +195,7 @@ class Game : public ISerializable
     CreatureGenerationValuesMap creature_generation_values;
     GenerationValuesMap item_generation_values;
     ItemMap items;
+    FeatureMap features;
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
     std::vector<TrapPtr> trap_info;
     std::map<int, CalendarDay> calendar_days;

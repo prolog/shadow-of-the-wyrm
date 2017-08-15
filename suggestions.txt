@@ -1,4 +1,6 @@
 Me:
+- need to test save/load after adding a basic feature to a map
+- XML support for basic features, add to game, use in cosmos maps
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
@@ -194,6 +196,10 @@ Esran:
 - Once monsters are smarter, create spells that allow hitting monsters
   past walls.
 - Sewer/dungeons: when random, prompt for "descend to what depth (ft)?
+
+ais523:
+- Being able to read a savefile should be based on file permissions,
+  not a username check.  Keep username for highscore list.
 
 kain:
 - way to see resists on item without equipping
