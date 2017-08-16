@@ -36721,6 +36721,7 @@
 	</Items>
 	<Features>
 		<Feature id="dwarf_star">
+			<Material>14</Material>
 			<Symbol>*</Symbol>
 			<Colour>11</Colour>
 			<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
