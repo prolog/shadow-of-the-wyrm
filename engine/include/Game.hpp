@@ -195,7 +195,7 @@ class Game : public ISerializable
     CreatureGenerationValuesMap creature_generation_values;
     GenerationValuesMap item_generation_values;
     ItemMap items;
-    FeatureMap features;
+    FeatureMap basic_features;
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
     std::vector<TrapPtr> trap_info;
     std::map<int, CalendarDay> calendar_days;

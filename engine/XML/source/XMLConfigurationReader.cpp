@@ -63,6 +63,13 @@ pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
   return items;
 }
 
+FeatureMap XMLConfigurationReader::get_basic_features()
+{
+  XMLNode basic_features_node = XMLUtils::get_next_element_by_local_name(root, "Features");
+  FeatureMap bfm = bf_reader.get_basic_features(basic_features_node);
+  return bfm;
+}
+
 map<string, string> XMLConfigurationReader::get_scripts()
 {
   XMLNode scripts_node = XMLUtils::get_next_element_by_local_name(root, "Scripts");

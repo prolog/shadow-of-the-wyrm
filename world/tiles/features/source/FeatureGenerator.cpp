@@ -1,4 +1,5 @@
 #include "FeatureGenerator.hpp"
+#include "BasicFeature.hpp"
 #include "Bench.hpp"
 #include "Bed.hpp"
 #include "Door.hpp"
@@ -151,4 +152,11 @@ FeaturePtr FeatureGenerator::generate_stone_marker()
 {
   FeaturePtr stm = std::make_shared<StoneMarker>();
   return stm;
+}
+
+// Generate a basic feature
+FeaturePtr FeatureGenerator::generate_basic_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid)
+{
+  FeaturePtr feature = std::make_shared<BasicFeature>(mt, symbol, colour, desc_sid);
+  return feature;
 }

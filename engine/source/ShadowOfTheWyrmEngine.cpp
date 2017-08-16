@@ -164,6 +164,9 @@ void ShadowOfTheWyrmEngine::setup_game()
   game.set_items(items.first);
   game.set_item_generation_values(items.second);
 
+  FeatureMap basic_features = reader.get_basic_features();
+  game.set_basic_features(basic_features);
+
   // Randomize the items after reading them!  Otherwise, if any potions, etc.,
   // are generated e.g. during custom map initialization, they will always have
   // the same descriptions.

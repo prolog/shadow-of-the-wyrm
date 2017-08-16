@@ -234,12 +234,12 @@ const ItemMap& Game::get_items_ref() const
 
 void Game::set_basic_features(const FeatureMap& game_features)
 {
-  features = game_features;
+  basic_features = game_features;
 }
 
 const FeatureMap& Game::get_basic_features_ref() const
 {
-  return features;
+  return basic_features;
 }
 
 void Game::set_custom_maps(const vector<MapPtr>& custom_maps)
@@ -997,9 +997,9 @@ bool Game::serialize(ostream& stream) const
     }
   }
 
-  Serialize::write_size_t(stream, features.size());
+  Serialize::write_size_t(stream, basic_features.size());
 
-  for (const auto& feat_pair : features)
+  for (const auto& feat_pair : basic_features)
   {
     Serialize::write_string(stream, feat_pair.first);
 
@@ -1172,7 +1172,7 @@ bool Game::deserialize(istream& stream)
     }
   }
 
-  features.clear();
+  basic_features.clear();
   size_t num_basic_features = 0;
   Serialize::read_size_t(stream, num_basic_features);
 
@@ -1190,7 +1190,7 @@ bool Game::deserialize(istream& stream)
 
       if (feat != nullptr)
       {
-        features[feature_id] = feat;
+        basic_features[feature_id] = feat;
       }
     }
   }

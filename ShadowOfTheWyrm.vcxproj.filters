@@ -4041,6 +4041,9 @@
     <ClInclude Include="world\materials\include\Gases.hpp">
       <Filter>Header Files\world\materials\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLBasicFeatureReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8008,6 +8011,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\BasicFeature_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLBasicFeatureReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

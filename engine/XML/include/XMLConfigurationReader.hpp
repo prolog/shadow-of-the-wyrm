@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "XMLBasicFeatureReader.hpp"
 #include "XMLCalendarReader.hpp"
 #include "XMLClassesReader.hpp"
 #include "XMLCreaturesReader.hpp"
@@ -14,6 +15,7 @@
 #include "XMLScriptsReader.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
+#include "BasicFeature.hpp"
 
 // The XMLConfigurationReader provides methods for reading in data structures
 // based on XML configuration files of various sorts.  It is the responsibility
@@ -33,6 +35,7 @@ class XMLConfigurationReader
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures();
     SpellMap get_spells();
     std::pair<ItemMap, GenerationValuesMap> get_items();    
+    FeatureMap get_basic_features();
     std::map<std::string, std::string> get_scripts();
     std::vector<DisplayTile> get_tile_info();
     std::vector<TrapPtr> get_trap_info();
@@ -56,5 +59,6 @@ class XMLConfigurationReader
     XMLTilesReader tiles_reader;
     XMLTrapsReader traps_reader;
     XMLScriptsReader scripts_reader;
+    XMLBasicFeatureReader bf_reader;
 };
 

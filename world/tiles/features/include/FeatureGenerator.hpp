@@ -27,6 +27,7 @@ class FeatureGenerator
     static FeaturePtr generate_jeweler_workbench();
     static FeaturePtr generate_wheel_and_loom();
     static FeaturePtr generate_stone_marker();
+    static FeaturePtr generate_basic_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid);
 
   protected:
     FeatureGenerator();
