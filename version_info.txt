@@ -130,11 +130,12 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - When digging, items now break less based on Dungeoneering skill.
 
-- New material types: gases, and unknown.
-
 - More stanzas for "Tel and Floridel".
 
 - New poem fragment for the title screen.
+
+- New features: dwarf star, red giant star, supernova, black hole, pulsar,
+  cosmic dust.
 
 - New non-playable race: Elysian (builder).
 
@@ -172,6 +173,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
   beast, dark rider of the coming horde, teeming mass of writhing
   tentacles, beast beyond the furthest star, apocalyptic hell that bears
   no name.
+
+- New material types: gases, and unknown.
 
 - Bug fixes: 
 

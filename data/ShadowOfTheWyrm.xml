@@ -36720,11 +36720,41 @@
 		</MiscItems>
 	</Items>
 	<Features>
-		<Feature id="dwarf_star">
+		<Feature id="_dwarf_star">
 			<Material>14</Material>
-			<Symbol>*</Symbol>
+			<Symbol>o</Symbol>
 			<Colour>11</Colour>
 			<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
+		</Feature>
+		<Feature id="_red_giant">
+			<Material>14</Material>
+			<Symbol>O</Symbol>
+			<Colour>9</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_RED_GIANT</DescriptionSID>
+		</Feature>
+		<Feature id="_supernova">
+			<Material>14</Material>
+			<Symbol> </Symbol>
+			<Colour>80</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_SUPERNOVA</DescriptionSID>
+		</Feature>
+		<Feature id="_black_hole">
+			<Material>14</Material>
+			<Symbol>.</Symbol>
+			<Colour>8</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_BLACK_HOLE</DescriptionSID>
+		</Feature>
+		<Feature id="_pulsar">
+			<Material>14</Material>
+			<Symbol>*</Symbol>
+			<Colour>15</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_PULSAR</DescriptionSID>
+		</Feature>
+		<Feature id="_cosmic_dust">
+			<Material>12</Material>
+			<Symbol>.</Symbol>
+			<Colour>3</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_COSMIC_DUST</DescriptionSID>
 		</Feature>
 	</Features>
 	<Calendar>

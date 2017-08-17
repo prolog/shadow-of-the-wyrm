@@ -723,8 +723,9 @@ void misc()
         test_item_generation();
         break;
       case 4:
-      default:
         test_other_maps();
+        break;
+      default:
         break;
     }
   }
@@ -922,9 +923,10 @@ void test_other_maps()
     switch(option)
     {
       case 0:
-      default:
         map = generate_void();
         output_map(map, "void_test.html");
+        break;
+      default: 
         break;
     }
   }
