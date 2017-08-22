@@ -20,7 +20,14 @@ class VoidGenerator : public SOTW::Generator
     static const std::string FEATURE_ID_BLACK_HOLE;
     static const std::string FEATURE_ID_PULSAR;
 
-    static const int PCT_CHANCE_SPACE_DUST;
+    static const int PCT_CHANCE_COSMIC_DUST;
+    
+    // When there's cosmic dust, the rows and cols are multiplied together
+    // (to get the total number of tiles), and then divided by a divisor
+    // to determine how much dust is present.
+    static const int COSMIC_DUST_DIV_MIN;
+    static const int COSMIC_DUST_DIV_MAX;
+    
     static const int PCT_CHANCE_CELESTIAL_OBJECTS;
     static const int PCT_CHANCE_SPIRAL_ARM;
 };
