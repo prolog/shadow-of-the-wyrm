@@ -28041,7 +28041,7 @@
 		</FloatingTowerTile>
 		<VoidTile>
 			<Text>
-				<Symbol> </Symbol>
+				<Symbol>.</Symbol>
 				<Colour>0</Colour>
 			</Text>
 		</VoidTile>

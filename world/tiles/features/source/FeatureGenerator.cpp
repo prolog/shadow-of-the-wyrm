@@ -8,6 +8,7 @@
 #include "FirePillar.hpp"
 #include "Fountain.hpp"
 #include "Forge.hpp"
+#include "Game.hpp"
 #include "Gate.hpp"
 #include "GoodAltar.hpp"
 #include "JewelerWorkbench.hpp"
@@ -16,6 +17,8 @@
 #include "StoneMarker.hpp"
 #include "Tannery.hpp"
 #include "WheelAndLoom.hpp"
+
+using namespace std;
 
 FeatureGenerator::FeatureGenerator()
 {
@@ -154,7 +157,29 @@ FeaturePtr FeatureGenerator::generate_stone_marker()
   return stm;
 }
 
-// Generate a basic feature
+// Generate a basic feature by ID.
+// Will return null if the feature doesn't exist in the game's collection.
+FeaturePtr FeatureGenerator::generate_basic_feature(const string& basic_feature_id)
+{
+  FeaturePtr basic_feature;
+  Game& game = Game::instance();
+  const FeatureMap& fm = game.get_basic_features_ref();
+  const auto f_it = fm.find(basic_feature_id);
+
+  if (f_it != fm.end())
+  {
+    FeaturePtr bf = f_it->second;
+
+    if (bf != nullptr)
+    {
+      basic_feature = std::shared_ptr<Feature>(f_it->second->clone());
+    }
+  }
+
+  return basic_feature;
+}
+
+// Construct and generate a basic feature
 FeaturePtr FeatureGenerator::generate_basic_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid)
 {
   FeaturePtr feature = std::make_shared<BasicFeature>(mt, symbol, colour, desc_sid);
