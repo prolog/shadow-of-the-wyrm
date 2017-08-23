@@ -28041,7 +28041,7 @@
 		</FloatingTowerTile>
 		<VoidTile>
 			<Text>
-				<Symbol>.</Symbol>
+				<Symbol>?</Symbol>
 				<Colour>0</Colour>
 			</Text>
 		</VoidTile>
@@ -36726,7 +36726,13 @@
 			<Colour>11</Colour>
 			<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
 		</Feature>
-		<Feature id="_red_giant">
+		<Feature id="_spiral_arm">
+			<Material>14</Material>
+			<Symbol>;</Symbol>
+			<Colour>15</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_SPIRAL_ARM</DescriptionSID>
+		</Feature>
+		<Feature id="_red_giant_star">
 			<Material>14</Material>
 			<Symbol>O</Symbol>
 			<Colour>9</Colour>
@@ -36740,7 +36746,7 @@
 		</Feature>
 		<Feature id="_black_hole">
 			<Material>14</Material>
-			<Symbol>.</Symbol>
+			<Symbol>*</Symbol>
 			<Colour>8</Colour>
 			<DescriptionSID>FEATURE_DESCRIPTION_BLACK_HOLE</DescriptionSID>
 		</Feature>
