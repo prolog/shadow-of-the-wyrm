@@ -135,7 +135,7 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - New poem fragment for the title screen.
 
 - New features: dwarf star, red giant star, supernova, black hole, pulsar,
-  cosmic dust.
+  cosmic dust, spiral arm.
 
 - New non-playable race: Elysian (builder).
 
