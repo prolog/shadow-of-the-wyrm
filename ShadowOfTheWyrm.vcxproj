@@ -1053,6 +1053,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\XML\custom_maps\features\include\IXMLFeatureReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLAltarReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBarrelReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLBasicFeatureCMReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBedReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLDoorReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFirePillarReader.hpp" />
@@ -1793,6 +1794,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\time\source\WorldTimeObserver.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLBasicFeatureCMReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLBasicFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp" />
     <ClCompile Include="source\ColourUtils.cpp" />

@@ -1190,6 +1190,7 @@ bool Game::deserialize(istream& stream)
 
       if (feat != nullptr)
       {
+        feat->deserialize(stream);
         basic_features[feature_id] = feat;
       }
     }

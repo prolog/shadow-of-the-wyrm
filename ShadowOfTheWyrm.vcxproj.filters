@@ -4044,6 +4044,9 @@
     <ClInclude Include="engine\XML\include\XMLBasicFeatureReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLBasicFeatureCMReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8014,6 +8017,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLBasicFeatureReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLBasicFeatureCMReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
