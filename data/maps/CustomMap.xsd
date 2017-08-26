@@ -161,6 +161,21 @@
 			<xs:element name="MinDepth" type="xs:integer" minOccurs="0"/>
 			<xs:element name="MaxDepth" type="xs:integer" minOccurs="0"/>
 			<xs:element name="Increment" type="xs:integer" minOccurs="0"/>
+			<xs:element name="EventScripts" type="tns:MapEvents" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MapEvents">
+		<xs:annotation>
+			<xs:documentation>Defines per-map events that are run at appropriate times.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CreateScript" type="tns:ScriptDetails" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ScriptDetails">
+		<xs:sequence>
+			<xs:element name="Script" type="xs:string"/>
+			<xs:element name="Chance" type="xs:integer" minOccurs="0" default="100"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Features">
