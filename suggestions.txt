@@ -1,6 +1,8 @@
 Me:
--**** need to test save/load after adding a basic feature to a map
-- XML support for basic features, add to game, use in cosmos maps
+- Off edge of cosmos maps...
+- XML support for reading custom map exit event scripts
+- Application of exit events to the generated maps
+- Running map scripts at appropriate times
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
