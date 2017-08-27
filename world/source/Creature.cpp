@@ -1617,13 +1617,7 @@ bool Creature::serialize(ostream& stream) const
     }
   }
 
-  size_t es_size = event_scripts.size();
-  Serialize::write_size_t(stream, es_size);
-  for (const auto& es_pair : event_scripts)
-  {
-    Serialize::write_string(stream, es_pair.first);
-    es_pair.second.serialize(stream);
-  }
+  Serialize::write_event_scripts(stream, event_scripts);
 
   auto_move.serialize(stream);
 
@@ -1775,19 +1769,7 @@ bool Creature::deserialize(istream& stream)
     }
   }
 
-  size_t es_size = 0;
-  Serialize::read_size_t(stream, es_size);
-
-  for (size_t i = 0; i < es_size; i++)
-  {
-    string event_name;
-    ScriptDetails sd;
-
-    Serialize::read_string(stream, event_name);
-    sd.deserialize(stream);
-
-    event_scripts.insert(make_pair(event_name, sd));
-  }
+  Serialize::read_event_scripts(stream, event_scripts);
 
   auto_move.deserialize(stream);
 

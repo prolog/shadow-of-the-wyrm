@@ -87,6 +87,7 @@ bool Map::operator==(const Map& map) const
   result = result && (tile_transforms == map.tile_transforms);
   result = result && (preset_locations == map.preset_locations);
   result = result && (shops == map.shops);
+  result = result && (event_scripts == map.event_scripts);
 
   return result;
 }
@@ -623,6 +624,54 @@ map<string, Shop> Map::get_shops() const
   return shops;
 }
 
+void Map::clear_event_scripts()
+{
+  event_scripts.clear();
+}
+
+void Map::set_event_scripts(const EventScriptsMap& esm)
+{
+  event_scripts = esm;
+}
+
+EventScriptsMap Map::get_event_scripts() const
+{
+  return event_scripts;
+}
+
+void Map::add_event_script(const string& event_name, const ScriptDetails& sd)
+{
+  event_scripts[event_name] = sd;
+}
+
+bool Map::has_event_script(const string& event_name)
+{
+  bool has_event = false;
+
+  EventScriptsMap::iterator e_it = event_scripts.find(event_name);
+
+  if (e_it != event_scripts.end())
+  {
+    has_event = true;
+  }
+
+  return has_event;
+}
+
+ScriptDetails Map::get_event_script(const string& event_name) const
+{
+  ScriptDetails sd;
+
+  EventScriptsMap::const_iterator e_it = event_scripts.find(event_name);
+
+  if (e_it != event_scripts.end())
+  {
+    sd = e_it->second;
+  }
+
+  return sd;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
@@ -717,6 +766,8 @@ bool Map::serialize(ostream& stream) const
     Serialize::write_string(stream, shop_pair.first);
     shop_pair.second.serialize(stream);
   }
+
+  Serialize::write_event_scripts(stream, event_scripts);
 
   return true;
 }
@@ -873,6 +924,8 @@ bool Map::deserialize(istream& stream)
 
     shops[shop_id] = shop;
   }
+
+  Serialize::read_event_scripts(stream, event_scripts);
 
   return true;
 }

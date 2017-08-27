@@ -35,7 +35,6 @@
 class DecisionStrategy;
 
 using TargetMap = std::map<std::string, std::pair<std::string, Coordinate>>;
-using EventScriptsMap = std::map<std::string, ScriptDetails>;
 using CreatureStatusMap = std::map<std::string, Status>;
 
 class Creature : public ISerializable

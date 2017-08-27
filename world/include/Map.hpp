@@ -8,6 +8,7 @@
 #include "ISerializable.hpp"
 #include "MapExit.hpp"
 #include "MapTypes.hpp"
+#include "ScriptDetails.hpp"
 #include "Shop.hpp"
 #include "Tile.hpp"
 #include "TileTransform.hpp"
@@ -135,6 +136,13 @@ class Map : public ISerializable
     std::map<std::string, Shop>& get_shops_ref();
     std::map<std::string, Shop> get_shops() const;
     
+    void clear_event_scripts();
+    void set_event_scripts(const EventScriptsMap& esm);
+    EventScriptsMap get_event_scripts() const;
+    void add_event_script(const std::string& event_name, const ScriptDetails& sd);
+    bool has_event_script(const std::string& event_name);
+    ScriptDetails get_event_script(const std::string& event_name) const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -167,6 +175,7 @@ class Map : public ISerializable
     TileTransformContainer tile_transforms;
     std::vector<Coordinate> preset_locations; // used for generating creatures onto specific locations
     std::map<std::string, Shop> shops;
+    EventScriptsMap event_scripts;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
