@@ -4,6 +4,7 @@
 #include <set>
 #include <vector>
 #include "ClassIdentifiers.hpp"
+#include "ScriptDetails.hpp"
 #include "SerializationExceptions.hpp"
 
 class Serialize
@@ -54,6 +55,9 @@ class Serialize
 
     static void write_string_set(std::ostream& stream, const std::set<std::string>& val);
     static void read_string_set(std::istream& stream, std::set<std::string>& val);
+
+    static void write_event_scripts(std::ostream& stream, const EventScriptsMap& event_scripts);
+    static void read_event_scripts(std::istream& stream, EventScriptsMap& event_scripts);
 
     template<class T>
     static void write_enum(std::ostream& stream, T& enum_type)

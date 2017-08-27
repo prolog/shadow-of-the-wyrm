@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <string>
 #include "ISerializable.hpp"
 
@@ -27,3 +28,5 @@ class ScriptDetails : public ISerializable
 
     ClassIdentifier internal_class_identifier() const override;
 };
+
+using EventScriptsMap = std::map<std::string, ScriptDetails>;

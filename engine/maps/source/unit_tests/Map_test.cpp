@@ -120,6 +120,11 @@ TEST_F(SW_Engine_Map, saveload)
   vector<Coordinate> coords = {{0,1},{2,2},{3,3},{18,56}};
   map->set_preset_locations(coords);
 
+  ScriptDetails sd;
+  sd.set_chance(22);
+  sd.set_script("some/script.lua");
+  map->add_event_script("aaa", sd);
+
   MapPtr map2 = make_map();
 
   ostringstream ss;
