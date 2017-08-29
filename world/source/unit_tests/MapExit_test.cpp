@@ -8,8 +8,16 @@ TEST(SW_Engine_MapExit, properties)
 
   me.set_property("asdf", "123");
 
+  ScriptDetails sd;
+  sd.set_chance(44);
+  sd.set_script("test.lua");
+
+  me.add_event_script("aaa", sd);
+
   EXPECT_TRUE(me.has_property("asdf"));
   EXPECT_EQ("123", me.get_property("asdf"));
+  EXPECT_EQ("test.lua", me.get_event_script("aaa").get_script());
+  EXPECT_EQ(44, me.get_event_script("aaa").get_chance());
 }
 
 TEST(SW_Engine_MapExit, serialization_id)

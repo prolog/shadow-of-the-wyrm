@@ -21,5 +21,14 @@ class MapID
     MapID();
 };
 
+class MapEventScripts
+{
+  public:
+    static const std::string MAP_EVENT_SCRIPT_CREATE;
+
+  protected:
+    MapEventScripts();
+};
+
 using NamedMapLocations = std::map<std::string, Coordinate>;
 

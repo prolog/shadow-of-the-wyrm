@@ -1226,6 +1226,11 @@ EventScriptsMap Creature::get_event_scripts() const
   return event_scripts;
 }
 
+EventScriptsMap& Creature::get_event_scripts_ref()
+{
+  return event_scripts;
+}
+
 void Creature::add_event_script(const string& event_name, const ScriptDetails& sd)
 {
   event_scripts[event_name] = sd;
