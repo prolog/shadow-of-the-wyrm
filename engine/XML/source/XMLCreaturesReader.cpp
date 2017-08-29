@@ -7,7 +7,6 @@
 #include "DecisionStrategyProperties.hpp"
 #include "XMLCreaturesReader.hpp"
 #include "XMLModifierReader.hpp"
-#include "XMLScriptsReader.hpp"
 
 using namespace std;
 
@@ -187,7 +186,12 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
 
     // Event scripts
     XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(creature_node, "EventScripts");
-    parse_event_scripts(event_scripts_node, creature);
+    map<string, string> node_details = {{"DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH},
+                                         {"AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK},
+                                         {"ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT},
+                                         {"DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION},
+                                         {"DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP}};
+    parse_event_scripts(event_scripts_node, node_details, creature->get_event_scripts_ref());
   }
   
   creature_data.second = cgv;
@@ -303,28 +307,6 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
   }
   
   return cgv;
-}
-
-// Parse in the list of event scripts for the creature
-void XMLCreaturesReader::parse_event_scripts(const XMLNode& event_scripts_node, CreaturePtr creature)
-{
-  XMLScriptsReader xsr;
-
-  if (!event_scripts_node.is_null())
-  {
-    vector<pair<string, string>> node_details = { { "DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH }, 
-                                                  { "AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK },
-                                                  { "ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT },
-                                                  { "DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION },
-                                                  { "DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP } };
-
-    for (const auto& details : node_details)
-    {
-      XMLNode node = XMLUtils::get_next_element_by_local_name(event_scripts_node, details.first);
-      ScriptDetails sd = xsr.get_script_details(node);
-      creature->add_event_script(details.second, sd);
-    }
-  }
 }
 
 // Read in any spells the creature has

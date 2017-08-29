@@ -1,6 +1,7 @@
 #include <vector>
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
+#include "MapTypes.hpp"
 #include "TileProperties.hpp"
 #include "XMLMapCoordinateReader.hpp"
 #include "XMLMapExitReader.hpp"
@@ -29,6 +30,7 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
   {
     XMLNode coord_node = XMLUtils::get_next_element_by_local_name(exit_node, "Coord");
     string map_id = map->get_map_id();
+    EventScriptsMap scripts;
 
     XMLMapCoordinateReader coord_reader;
     Coordinate c = coord_reader.parse_fixed_coordinate(coord_node);
@@ -36,13 +38,15 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
     string exit_map = XMLUtils::get_child_node_value(exit_node, "MapID");
     
     MapExitPtr map_exit = MapExitPtr(new MapExit());
-
+    XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(exit_node, "EventScripts");
+    std::map<string, string> node_details = {{"CreateScript", MapEventScripts::MAP_EVENT_SCRIPT_CREATE}};
     parse_depth_details(exit_node, map_exit);
-
+    parse_event_scripts(event_scripts_node, node_details, scripts);
+    
     // Handle a set map exist (to another custom map)
     if (!exit_map.empty())
     {
-      MapExitUtils::add_exit_to_tile(map, c, dir, exit_map);
+      map_exit = MapExitUtils::add_exit_to_tile(map, c, dir, exit_map);
     }
     // Handle map exits using tile types/subtypes (terrain generation)
     else
@@ -54,6 +58,8 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
 
       MapExitUtils::add_exit_to_tile(map, c, dir, map_exit);
     }
+
+    map_exit->set_event_scripts(scripts);
   }
 }
 
