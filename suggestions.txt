@@ -1,5 +1,6 @@
 Me:
 - Off edge of cosmos maps...
+- Set an event script for a custom map, test.
 - XML support for reading custom map exit event scripts
 - Application of exit events to the generated maps
 - Running map scripts at appropriate times

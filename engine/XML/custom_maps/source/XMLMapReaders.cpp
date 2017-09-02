@@ -36,11 +36,12 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLNode features_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Features");
     XMLNode properties_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Properties");
     XMLNode shops_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Shops");
+    XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "EventScripts");
+    std::map<string, string> node_details = {{"CreateScript", MapEventScripts::MAP_EVENT_SCRIPT_CREATE}};
 
     string map_id = XMLUtils::get_attribute_value(custom_map_node, "id");
     MapType map_type = static_cast<MapType>(XMLUtils::get_child_node_int_value(custom_map_node, "MapType"));
     string name_sid = XMLUtils::get_child_node_value(custom_map_node, "NameSID");
-    string load_script = XMLUtils::get_child_node_value(custom_map_node, "LoadScript");
     
     Dimensions dim = parse_dimensions(dimensions_node);
     custom_map = MapPtr(new Map(dim));
@@ -85,6 +86,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
 
     parse_shops(shops_node, custom_map);
     parse_properties(properties_node, custom_map);
+    parse_event_scripts(event_scripts_node, node_details, custom_map->get_event_scripts_ref());
 
     // Custom maps currently don't allow creature updates.
     custom_map->set_allow_creature_updates(false);
@@ -100,11 +102,6 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     }
 
     custom_map->set_danger(danger_level);
-
-    if (!load_script.empty())
-    {
-      custom_map->set_property(MapProperties::MAP_PROPERTIES_LOAD_SCRIPT, load_script);
-    }
   }
 
   return custom_map;

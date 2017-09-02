@@ -657,18 +657,20 @@ void ShadowOfTheWyrmEngine::run_map_scripts()
     MapPtr map = mrm_pair.second;
     string load_script;
 
-    if (map != nullptr)
-    {
-      load_script = map->get_property(MapProperties::MAP_PROPERTIES_LOAD_SCRIPT);
-    }
+    EventScriptsMap esm = map->get_event_scripts();
+    auto esm_it = esm.find(MapEventScripts::MAP_EVENT_SCRIPT_CREATE);
 
-    // If the load script isn't empty, run it, passing in the map's ID.
-    if (!load_script.empty())
+    if (esm_it != esm.end())
     {
+      ScriptDetails sd = esm_it->second;
       ScriptEngine& se = Game::instance().get_script_engine_ref();
       MapScript ms;
 
-      ms.execute(se, load_script, map);
+      if (RNG::percent_chance(sd.get_chance()))
+      {
+        // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
+        ms.execute(se, sd.get_script(), map);
+      }
     }
   }
 }

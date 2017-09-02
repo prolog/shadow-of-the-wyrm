@@ -1,6 +1,10 @@
 <CustomMap id="telari_base" xmlns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:1.0.0 ./CustomMap.xsd">
 	<NameSID>MAP_NAME_TELARI_BASE</NameSID>
-	<LoadScript>areas/custom_maps/telari_base.lua</LoadScript>
+	<EventScripts>
+		<CreateScript>
+			<Script>areas/events/telari_base.lua</Script>
+		</CreateScript>
+	</EventScripts>
 	<Dimensions>
 		<Rows>20</Rows>
 		<Columns>80</Columns>
