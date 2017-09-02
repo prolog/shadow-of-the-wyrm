@@ -8,7 +8,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="NameSID" type="xs:string"/>
-				<xs:element name="LoadScript" type="xs:string" minOccurs="0"/>
+				<xs:element name="EventScripts" type="tns:MapEvents" minOccurs="0"/>
 				<xs:element ref="tns:Dimensions"/>
 				<xs:element name="LevelRange" type="tns:LevelRange"/>
 				<xs:element name="MapType" type="tns:MapType"/>
@@ -161,6 +161,9 @@
 			<xs:element name="MinDepth" type="xs:integer" minOccurs="0"/>
 			<xs:element name="MaxDepth" type="xs:integer" minOccurs="0"/>
 			<xs:element name="Increment" type="xs:integer" minOccurs="0"/>
+			<!-- Event scripts for map exits are intended for use with terrain
+			     maps, not custom maps.  Event scripts for custom maps are defined
+				 at the map level. -->
 			<xs:element name="EventScripts" type="tns:MapEvents" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>

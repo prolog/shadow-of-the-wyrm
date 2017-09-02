@@ -71,9 +71,6 @@ class MapProperties
     static const std::string MAP_PROPERTIES_MIN_DEPTH;
     static const std::string MAP_PROPERTIES_MAX_DEPTH;
 
-    // Some custom maps have a script that's run after the map is loaded.
-    static const std::string MAP_PROPERTIES_LOAD_SCRIPT;
-
     // Shimmer colours exist on certain maps.  They are a CSV of
     // numbers representing colours: "x,y,z"
     //

@@ -63,11 +63,11 @@
 				<Col>39</Col>
 			</Coord>
 			<Direction>10</Direction>
-			<TileType>53</TileType> <!--
-			<Depth>-75</Depth>
-			<MinDepth>-90</MinDepth>
-			<MaxDepth>-75</MaxDepth>
-			<Increment>5</Increment> -->
+			<TileType>53</TileType>
+			<Depth>-500000</Depth>
+			<MinDepth>-500000</MinDepth>
+			<MaxDepth>-500000</MaxDepth>
+			<Increment>500000</Increment>
 			<EventScripts>
 				<CreateScript>
 					<Script>areas/events/cosmos.lua</Script>
