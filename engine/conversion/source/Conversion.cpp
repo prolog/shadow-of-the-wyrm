@@ -674,7 +674,7 @@ MapTileTypes::~MapTileTypes()
 
 TileType MapTileTypes::map_type_to_default_tile_type(const MapType mt)
 {
-  static_assert(MapType::MAP_TYPE_LAST_INC == MapType(3), "Unrecognized MAP_TYPE_LAST_INC");
+  static_assert(MapType::MAP_TYPE_LAST_INC == MapType(4), "Unrecognized MAP_TYPE_LAST_INC");
   TileType tt = TileType::TILE_TYPE_UNDEFINED;
 
   switch (mt)
@@ -688,6 +688,9 @@ TileType MapTileTypes::map_type_to_default_tile_type(const MapType mt)
       break;
     case MapType::MAP_TYPE_UNDERWATER:
       tt = TileType::TILE_TYPE_SEA;
+      break;
+    case MapType::MAP_TYPE_COSMOS:
+      tt = TileType::TILE_TYPE_VOID;
     default:
       break;
   }
