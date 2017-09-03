@@ -122,11 +122,11 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
   IMessageManager& pl_man = MM::instance();
   MapExitPtr map_exit = map->get_map_exit();
 
-  if (!MapUtils::can_exit_map(map_exit))
+  if (!MapUtils::can_exit_map(map_exit) && map)
   {
     if (creature->get_is_player())
     { 
-      string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_WORLD_MAP);
+      string movement_message = MovementTextKeys::get_cannot_exit_map_message(map->get_map_type());
 
       pl_man.add_new_message(movement_message);
       pl_man.send();

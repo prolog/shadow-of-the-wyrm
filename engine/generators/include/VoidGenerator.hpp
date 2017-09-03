@@ -9,6 +9,8 @@ class VoidGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
+    virtual MapType get_map_type() const override;
+
     void add_cosmic_dust(MapPtr result_map);
     void add_celestial_objects(MapPtr result_map);
     void add_spiral_arm(MapPtr result_map);

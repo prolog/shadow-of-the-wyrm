@@ -43,6 +43,11 @@ MapPtr VoidGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
+MapType VoidGenerator::get_map_type() const
+{
+  return MapType::MAP_TYPE_COSMOS;
+}
+
 void VoidGenerator::add_cosmic_dust(MapPtr result_map)
 {
   if (result_map != nullptr)

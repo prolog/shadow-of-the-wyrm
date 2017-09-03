@@ -221,6 +221,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_VOID:
     {
       generator = std::make_shared<VoidGenerator>(map_exit_id);
+      break;
     }
 
     case TileType::TILE_TYPE_UNDEFINED:
