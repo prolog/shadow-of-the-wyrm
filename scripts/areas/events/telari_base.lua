@@ -1,4 +1,4 @@
-require('custom_map')
+require('map_events')
 
 local map_id = "telari_base"
 
@@ -31,7 +31,7 @@ function init_telari_base(map_id)
   end
 end
 
-custom_map.set_map_fn(map_id, init_telari_base)
+map_events.set_map_fn(map_id, init_telari_base)
 
 -- Generate random floating tower levels.
 map_set_tile_subtype(map_id, 12, 40, CTILE_TYPE_FLOATING_TOWER)

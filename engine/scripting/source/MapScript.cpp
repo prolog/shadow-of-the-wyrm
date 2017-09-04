@@ -11,7 +11,7 @@ extern "C"
 
 using namespace std;
 
-const string MapScript::MAP_MODULE_NAME = "custom_map";
+const string MapScript::MAP_MODULE_NAME = "map_events";
 const string MapScript::MAP_FUNCTION_NAME = "init_map";
 
 // Return true if the script executed successfully, false otherwise.
