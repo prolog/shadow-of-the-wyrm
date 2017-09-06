@@ -1,6 +1,4 @@
 Me:
-- Application of exit events to the generated maps
-- Running map scripts at appropriate times
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures

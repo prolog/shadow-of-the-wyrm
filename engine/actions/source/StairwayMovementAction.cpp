@@ -50,7 +50,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
       }
       else
       {
-        ascend_success = ma->generate_and_move_to_new_map(creature, current_map, current_tile, map_exit->get_terrain_type(), current_tile->get_tile_subtype(), map_exit->get_properties(), ExitMovementType::EXIT_MOVEMENT_ASCEND);
+        ascend_success = ma->generate_and_move_to_new_map(creature, current_map, map_exit, current_tile, map_exit->get_terrain_type(), current_tile->get_tile_subtype(), map_exit->get_properties(), ExitMovementType::EXIT_MOVEMENT_ASCEND);
       }
     }
     else
@@ -115,12 +115,12 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             else
             {
               movement_type = ExitMovementType::EXIT_MOVEMENT_ASCEND;
-              descend_success = ma->generate_and_move_to_new_map(creature, map, tile, map_exit->get_terrain_type(), tile->get_tile_subtype(), map_exit->get_properties(), movement_type);
+              descend_success = ma->generate_and_move_to_new_map(creature, map, map_exit, tile, map_exit->get_terrain_type(), tile->get_tile_subtype(), map_exit->get_properties(), movement_type);
             }
           }
           else
           {
-            descend_success = ma->generate_and_move_to_new_map(creature, map, tile, movement_type);
+            descend_success = ma->generate_and_move_to_new_map(creature, map, nullptr, tile, movement_type);
           }
         }
         // If it's null, check to see if we're on the world map.
@@ -130,7 +130,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             
           if (map_type == MapType::MAP_TYPE_WORLD)
           {
-            descend_success = ma->generate_and_move_to_new_map(creature, map, tile, ExitMovementType::EXIT_MOVEMENT_DESCEND);
+            descend_success = ma->generate_and_move_to_new_map(creature, map, nullptr, tile, ExitMovementType::EXIT_MOVEMENT_DESCEND);
           }
           else
           {
