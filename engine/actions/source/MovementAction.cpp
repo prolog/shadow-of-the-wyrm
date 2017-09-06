@@ -15,6 +15,7 @@
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
+#include "MapScript.hpp"
 #include "MapTypeQueryFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -453,13 +454,13 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
 
 // Generate and move to the new map using the tile type and subtype present
 // on the tile, rather than a source like the map exit.
-ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const ExitMovementType emt)
+ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const ExitMovementType emt)
 {
   ActionCostValue action_cost_value = 0;
 
   if (creature && tile && map)
   {
-    return generate_and_move_to_new_map(creature, map, tile, tile->get_tile_type(), tile->get_tile_subtype(), {}, emt);
+    return generate_and_move_to_new_map(creature, map, map_exit, tile, tile->get_tile_type(), tile->get_tile_subtype(), {}, emt);
   }
 
   return action_cost_value;
@@ -467,7 +468,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
 // General version that can handle tile type/subtype from any source - the tile
 // itself, a map exit, etc.
-ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt)
+ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -548,6 +549,34 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS, to_string(pct_chance_herbs));
       
       new_map = generator->generate_and_initialize(danger_level, depth);
+
+      // If a map exit's been provided, check to see if there's an event
+      // scripts map that needs to be set on the map after generation.
+      if (map_exit != nullptr)
+      {
+        EventScriptsMap me_esm = map_exit->get_event_scripts();
+
+        if (!me_esm.empty())
+        {
+          new_map->set_event_scripts(me_esm);
+        }
+      }
+
+      EventScriptsMap esm = new_map->get_event_scripts();
+      auto es_it = esm.find(MapEventScripts::MAP_EVENT_SCRIPT_CREATE);
+
+      if (es_it != esm.end())
+      {
+        ScriptDetails sd = es_it->second;
+        ScriptEngine& se = Game::instance().get_script_engine_ref();
+        MapScript ms;
+
+        if (RNG::percent_chance(sd.get_chance()))
+        {
+          // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
+          ms.execute(se, sd.get_script(), new_map);
+        }
+      }
 
       if (new_map->get_permanent())
       {

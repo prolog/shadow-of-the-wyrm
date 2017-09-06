@@ -24,7 +24,7 @@ bool MapScript::execute(ScriptEngine& se, const string& map_script, MapPtr map)
 
   bool result = true;
 
-  if (se.execute(map_script, {}))
+  if (se.execute(map_script, {{"map_id", map->get_map_id()}}))
   {
     string map_id;
 
