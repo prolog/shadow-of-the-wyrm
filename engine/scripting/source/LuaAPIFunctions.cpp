@@ -226,6 +226,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_explored", map_set_explored);
   lua_register(L, "map_get_name_sid", map_get_name_sid);
   lua_register(L, "map_get_dimensions", map_get_dimensions);
+  lua_register(L, "map_get_available_creature_coords", map_get_available_creature_coords);
   lua_register(L, "map_get_tile", map_get_tile);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
@@ -2780,6 +2781,55 @@ int map_get_dimensions(lua_State* ls)
   lua_pushinteger(ls, width);
 
   return 2;
+}
+
+int map_get_available_creature_coords(lua_State* ls)
+{
+  lua_newtable(ls);
+
+  if (lua_gettop(ls) == 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y1 = lua_tointeger(ls, 2);
+    int y2 = lua_tointeger(ls, 3);
+    int x1 = lua_tointeger(ls, 4);
+    int x2 = lua_tointeger(ls, 5);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      int cnt = 1;
+
+      for (int y = y1; y < y2; y++)
+      {
+        for (int x = x1; x < x2; x++)
+        {
+          TilePtr tile = map->at(y, x);
+
+          if (tile && MapUtils::is_tile_available_for_creature(nullptr, tile))
+          {
+            lua_newtable(ls);
+            lua_pushnumber(ls, y);
+            lua_rawseti(ls, -2, 1);
+            lua_pushnumber(ls, x);
+            lua_rawseti(ls, -2, 2);
+            lua_rawseti(ls, -2, cnt);
+
+            cnt++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_get_available_creature_coords");
+    lua_error(ls);
+  }
+
+  return 1;
 }
 
 int map_get_tile(lua_State* ls)
