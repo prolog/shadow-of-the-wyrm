@@ -805,7 +805,8 @@ void Game::set_current_map(MapPtr map)
     map_registry.remove_map(old_map_id); // Boom.
   }
   
-  // Make the new map the current
+  // Make the new map the current, and set it if it's not already in the
+  // registry.
   current_map_id = map->get_map_id();
   map_registry.set_map(current_map_id, map);
 

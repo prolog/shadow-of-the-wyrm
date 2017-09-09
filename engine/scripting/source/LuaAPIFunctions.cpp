@@ -176,6 +176,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "check_skill", check_skill);
   lua_register(L, "RNG_range", RNG_range);
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
+  lua_register(L, "RNG_dice", RNG_dice);
   lua_register(L, "add_spell_castings", add_spell_castings);
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "get_experience_value", get_experience_value);
@@ -1346,6 +1347,34 @@ int RNG_percent_chance(lua_State* ls)
   return 1;
 }
 
+int RNG_dice(lua_State* ls)
+{
+  int rng_val = 0;
+  int num_args = lua_gettop(ls);
+
+  if ((num_args >= 2) && (lua_isnumber(ls, 1)) && (lua_isnumber(ls, 2)))
+  {
+    int num_dice = lua_tointeger(ls, 1);
+    int dice_sides = lua_tointeger(ls, 2);
+    int modifier = 0;
+
+    if (num_args == 3 && lua_isnumber(ls, 3))
+    {
+      int modifier = lua_tointeger(ls, 3);
+    }
+
+    rng_val = RNG::dice(num_dice, dice_sides, modifier);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to RNG_dice");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, rng_val);
+  return 1;
+}
+
 // Add a given number of spell castings to the spell knowledge of a
 // particular creature.
 int add_spell_castings(lua_State* ls)
@@ -1429,10 +1458,22 @@ int get_experience_value(lua_State* ls)
 // Add a creature to the map at a particular (y, x) coordinate
 int add_creature_to_map(lua_State* ls)
 {
-  if ((lua_gettop(ls) == 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
+  int num_args = lua_gettop(ls);
+
+  if ((num_args >= 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
   {
     Game& game = Game::instance();
-    MapPtr map = game.get_current_map();
+    MapPtr map; 
+    
+    if (num_args == 4 && lua_isstring(ls, 4))
+    {
+      string map_id = lua_tostring(ls, 4);
+      map = game.get_map_registry_ref().get_map(map_id);
+    }
+    else
+    {
+      map = game.get_current_map();
+    }
 
     string creature_id = lua_tostring(ls, 1);
 

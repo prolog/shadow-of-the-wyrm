@@ -136,6 +136,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 
 - More stanzas for "Tel and Floridel".
 
+- New species of weeds.
+
 - New poem fragments for the title screen.
 
 - New features: dwarf star, red giant star, supernova, black hole, pulsar,
