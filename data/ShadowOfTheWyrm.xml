@@ -21100,7 +21100,7 @@
 				<DangerLevel>100</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>100</NumDice>
+ 					<NumDice>100</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>300000</Exp>
