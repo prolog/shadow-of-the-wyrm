@@ -11,14 +11,30 @@ local cosmos_map_id = args[MAP_ID]
 -- Sceadugenga is excluded from the initial spawn.  He is always the last 
 -- to generate.
 function init_cosmos(map_id)
-  local deity_details = {{"celeste", {"crystalline_being", "seraph_highest_heavenly_order", "gabar_clutching_first_holy_book"}},
-                         {"aurelion", {"knight_exemplar", "paragon_twenty_virtues", "trio_shining_silver_dragons"}},
-                         {"the_lady", {"howling_fury_first_love_lost", "luminous_angel", "saint_who_moves_in_perfect_grace"}},
-                         {"vedere", {"pulsating_mass_primordial_ooze", "cloud_murderous_flesh_eating_scarabs", "thunderbird_low_steppes"}},
-                         {"voros", {"hundred_headed_hydra", "drakkhar_carrying_massive_flaming_sword", "early_dragon_first_age"}},
-                         {"the_trickster", {"eddic_crone", "murder_thousand_crows", "wraith_wan_dying_light"}},
-                         {"shiver", {"blood_angel_white_queen", "nether_hound", "ancient_shade"}},
-                         {"urgoth", {"black_ogre", "cylonic_beast", "dark_rider_coming_horde"}}}
+  local deity_details = {{"celeste", {"crystalline_being", 
+                                      "seraph_highest_heavenly_order", 
+                                      "gabar_clutching_first_holy_book"}},
+                         {"aurelion", {"knight_exemplar", 
+                                       "paragon_twenty_virtues", 
+                                       "trio_shining_silver_dragons"}},
+                         {"the_lady", {"howling_fury_first_love_lost", 
+                                       "luminous_angel", 
+                                       "saint_who_moves_in_perfect_grace"}},
+                         {"vedere", {"pulsating_mass_primordial_ooze", 
+                                     "cloud_murderous_flesh_eating_scarabs", 
+                                     "thunderbird_low_steppes"}},
+                         {"voros", {"hundred_headed_hydra", 
+                                    "drakkhar_carrying_massive_flaming_sword", 
+                                    "early_dragon_first_age"}},
+                         {"the_trickster", {"eddic_crone", 
+                                            "murder_thousand_crows", 
+                                            "wraith_wan_dying_light"}},
+                         {"shiver", {"blood_angel_white_queen", 
+                                     "nether_hound", 
+                                     "ancient_shade"}},
+                         {"urgoth", {"black_ogre", 
+                                     "cylonic_beast", 
+                                     "dark_rider_coming_horde"}}}
 
   local deity_idx = RNG_range(1, table.getn(deity_details))
   local deity_and_followers = deity_details[deity_idx]
@@ -40,9 +56,9 @@ function init_cosmos(map_id)
   -- somewhere common.
   local r, c = map_get_dimensions(map_id)
   local subrow_start, subcol_start = r/4, c/2
-  local y1 = RNG_range(1, r-subrow_start-1)
+  local y1 = RNG_range(2, r-subrow_start-2)
   local y2 = y1 + subrow_start
-  local x1 = RNG_range(1, c-subcol_start-1)
+  local x1 = RNG_range(2, c-subcol_start-2)
   local x2 = x2 + subcol_start
 
   local avail_coords = map_get_available_creature_coords(map_id, y1, y2, x1, x2)
@@ -52,7 +68,7 @@ function init_cosmos(map_id)
     local rnd_idx = rnd_indices[i]
     local c = avail_coords[rnd_idx]
 
-    -- add_creature_to_map(...)
+    add_creature_to_map(c[1], c[2], cosmos_creatures[rnd_idx], map_id)
   end
 end
 

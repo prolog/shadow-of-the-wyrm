@@ -565,7 +565,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       EventScriptsMap esm = new_map->get_event_scripts();
       auto es_it = esm.find(MapEventScripts::MAP_EVENT_SCRIPT_CREATE);
 
-      if (es_it != esm.end())
+      if (new_map && es_it != esm.end())
       {
         ScriptDetails sd = es_it->second;
         ScriptEngine& se = Game::instance().get_script_engine_ref();
@@ -573,6 +573,10 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
         if (RNG::percent_chance(sd.get_chance()))
         {
+          // Ensure the map's in the registry, so that if the script needs to
+          // reference it, the map can be retrieved.
+          game.get_map_registry_ref().set_map(new_map->get_map_id(), new_map);
+
           // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
           ms.execute(se, sd.get_script(), new_map);
         }

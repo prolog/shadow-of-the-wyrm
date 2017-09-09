@@ -23,16 +23,15 @@ bool MapScript::execute(ScriptEngine& se, const string& map_script, MapPtr map)
   }
 
   bool result = true;
+  string map_id;
 
-  if (se.execute(map_script, {{"map_id", map->get_map_id()}}))
+  if (map != nullptr)
   {
-    string map_id;
+    map_id = map->get_map_id();
+  }
 
-    if (map != nullptr)
-    {
-      map_id = map->get_map_id();
-    }
-
+  if (se.execute(map_script, {{"map_id", map_id}}))
+  {
     // Set up the function call parameters.
     lua_State* L = se.get_current_state();
     lua_getglobal(L, MAP_MODULE_NAME.c_str());

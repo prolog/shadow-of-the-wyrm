@@ -44,5 +44,6 @@ void WeedsTileConfiguration::initialize_tree_species_details()
   tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED18, TileDescriptionKeys::FLORA_TILE_DESC_WEED18));
   tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED19, TileDescriptionKeys::FLORA_TILE_DESC_WEED19));
   tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED20, TileDescriptionKeys::FLORA_TILE_DESC_WEED20));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED21, TileDescriptionKeys::FLORA_TILE_DESC_WEED21));
 }
 
