@@ -2826,9 +2826,11 @@ int map_get_dimensions(lua_State* ls)
 
 int map_get_available_creature_coords(lua_State* ls)
 {
+  int num_args = lua_gettop(ls);
+
   lua_newtable(ls);
 
-  if (lua_gettop(ls) == 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
+  if (num_args == 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
   {
     string map_id = lua_tostring(ls, 1);
     int y1 = lua_tointeger(ls, 2);
