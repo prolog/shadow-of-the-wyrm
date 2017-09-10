@@ -1,4 +1,5 @@
 require('constants')
+require('fn')
 require('map_events')
 
 local cosmos_map_id = args[MAP_ID]
@@ -38,9 +39,9 @@ function init_cosmos(map_id)
 
   local deity_idx = RNG_range(1, table.getn(deity_details))
   local deity_and_followers = deity_details[deity_idx]
-  local cosmos_creatures = {deity_details[1]}
-  local followers = deity_details[2]
-  local generation_attempts = 500
+
+  local cosmos_creatures = {deity_and_followers[1]}
+  local followers = deity_and_followers[2]
 
   -- Add the deity, as well as 6d3 followers.
 
@@ -48,7 +49,8 @@ function init_cosmos(map_id)
   -- maps where an exit isn't involved, and use 1, n-1 for the rows and
   -- cols.
   for i = 1, RNG_dice(6, 3) do
-    table.insert(cosmos_creatures, followers[RNG_range(1, #followers)])
+    local rnd_idx = RNG_range(1, #followers)
+    table.insert(cosmos_creatures, followers[rnd_idx])
   end
 
   -- Get a submap of the cosmos to generate on.
@@ -59,16 +61,17 @@ function init_cosmos(map_id)
   local y1 = RNG_range(2, r-subrow_start-2)
   local y2 = y1 + subrow_start
   local x1 = RNG_range(2, c-subcol_start-2)
-  local x2 = x2 + subcol_start
+  local x2 = x1 + subcol_start
 
   local avail_coords = map_get_available_creature_coords(map_id, y1, y2, x1, x2)
-  local rnd_indices = shuffle(numeric_array(1, #cosmos_creatures))
+  local rnd_indices = fn.shuffle(fn.numeric_array(1, #cosmos_creatures))
 
   for i = 1, #rnd_indices do
     local rnd_idx = rnd_indices[i]
     local c = avail_coords[rnd_idx]
-
-    add_creature_to_map(c[1], c[2], cosmos_creatures[rnd_idx], map_id)
+    local creature_id = cosmos_creatures[i]
+    
+    add_creature_to_map(creature_id, c[1], c[2], map_id)
   end
 end
 
