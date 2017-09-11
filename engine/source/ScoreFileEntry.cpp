@@ -119,6 +119,9 @@ string ScoreFileEntry::str(const int score_number) const
     case CreatureWin::CREATURE_WIN_EVIL:
       ss << " " << StringTable::get(TextKeys::WINNER_EVIL) << "!";
       break;
+    case CreatureWin::CREATURE_WIN_GODSLAYER:
+      ss << " " << StringTable::get(TextKeys::WINNER_GODSLAYER) << "!";
+      break;
     case CreatureWin::CREATURE_WIN_NO_WIN:
     default:
       break;

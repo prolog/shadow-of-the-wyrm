@@ -127,6 +127,7 @@ const string TextKeys::LEVEL_ABRV        = "LEVEL_ABRV";
 const string TextKeys::EXPERIENCE        = "EXPERIENCE";
 const string TextKeys::WINNER            = "WINNER";
 const string TextKeys::WINNER_EVIL       = "WINNER_EVIL";
+const string TextKeys::WINNER_GODSLAYER  = "WINNER_GODSLAYER";
 
 const string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
 const string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";

@@ -223,6 +223,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_tile_property", map_set_tile_property);
   lua_register(L, "map_add_location", map_add_location);
   lua_register(L, "map_transform_tile", map_transform_tile);
+  lua_register(L, "map_remove_tile_exit", map_remove_tile_exit);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
   lua_register(L, "map_set_explored", map_set_explored);
   lua_register(L, "map_get_name_sid", map_get_name_sid);
@@ -2676,6 +2677,45 @@ int map_transform_tile(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to map_transform_tile");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, result);
+  return 1;
+}
+
+// Returns true if the exit was removed, false otherwise.
+int map_remove_tile_exit(lua_State* ls)
+{
+  int result = false;
+
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    Direction dir = static_cast<Direction>(lua_tointeger(ls, 4));
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(c);
+
+      if (tile != nullptr)
+      {
+        TileExitMap& tem = tile->get_tile_exit_map_ref();
+        size_t n_removed = tem.erase(dir);
+
+        if (n_removed > 0)
+        {
+          result = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_remove_tile_exit");
     lua_error(ls);
   }
 
