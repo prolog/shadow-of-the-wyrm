@@ -1,4 +1,6 @@
 Me:
+- No praying after godslayer ending.
+- Expose lua constants for winning types.  Test!
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures

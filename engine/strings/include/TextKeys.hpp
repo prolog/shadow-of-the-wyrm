@@ -123,6 +123,7 @@ class TextKeys
     static const std::string EXPERIENCE;
     static const std::string WINNER;
     static const std::string WINNER_EVIL;
+    static const std::string WINNER_GODSLAYER;
     
     static const std::string DAMAGE_MELEE;
     static const std::string DAMAGE_RANGED;

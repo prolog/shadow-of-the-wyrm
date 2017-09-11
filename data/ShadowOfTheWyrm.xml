@@ -19961,6 +19961,12 @@
 				<Type>7</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="aurelion">
 			<RaceID>_divine</RaceID>
@@ -19997,6 +20003,12 @@
 				<Type>7</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="the_lady">
 			<RaceID>_divine</RaceID>
@@ -20033,6 +20045,12 @@
 				<Type>7</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="vedere">
 			<RaceID>_divine</RaceID>
@@ -20069,6 +20087,12 @@
 				<Type>7</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="voros">
 			<RaceID>_divine</RaceID>
@@ -20105,6 +20129,12 @@
 				<Type>7</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="the_trickster">
 			<RaceID>_divine</RaceID>
@@ -20141,6 +20171,12 @@
 				<Type>7</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="shiver">
 			<RaceID>_divine</RaceID>
@@ -20177,6 +20213,12 @@
 				<Type>7</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="urgoth">
 			<RaceID>_divine</RaceID>
@@ -20213,6 +20255,12 @@
 				<Type>7</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="sceadugenga">
 			<RaceID>_divine</RaceID>
@@ -20249,6 +20297,12 @@
 				<Type>8</Type>
 				<EffectBonus>50</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity_sceadugenga.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="crystalline_being">
 			<RaceID>_divine</RaceID>
