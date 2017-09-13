@@ -1,5 +1,5 @@
 Me:
-- No praying after godslayer ending.
+- After deities gone: handle offering, altar manipulators, etc
 - Expose lua constants for winning types.  Test!
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
 - Test going through dungeons for danger level ok

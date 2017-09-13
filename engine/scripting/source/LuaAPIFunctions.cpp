@@ -243,6 +243,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "destroy_creature_equipment", destroy_creature_equipment);
   lua_register(L, "destroy_creature_inventory", destroy_creature_inventory);
   lua_register(L, "get_deity_summons", get_deity_summons);
+  lua_register(L, "clear_deities", clear_deities);
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
   lua_register(L, "creature_is_class", creature_is_class);
   lua_register(L, "get_item_count", get_item_count);
@@ -3308,6 +3309,27 @@ int get_deity_summons(lua_State* ls)
   }
 
   return num_return_vals;
+}
+
+// Return the number of deities removed.
+int clear_deities(lua_State* ls)
+{
+  int num_cleared = 0;
+
+  if (lua_gettop(ls) == 0)
+  {
+    DeityMap& deities = Game::instance().get_deities_ref();
+    num_cleared = deities.size();
+
+    deities.clear();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to clear_deities");
+    lua_error(ls);
+  }
+
+  return num_cleared;
 }
 
 int summon_monsters_around_creature(lua_State* ls)

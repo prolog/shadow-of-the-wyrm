@@ -1,4 +1,4 @@
-Shadow of the Wyrm v0.6.2 "de Visee"
+Shadow of the Wyrm v0.7.0 "de Visee"
 - Version declared March 1, 2017.
 
 - New effect type, mapping.  When blessed, the entire map's structure
@@ -133,6 +133,8 @@ Shadow of the Wyrm v0.6.2 "de Visee"
 - Exits on custom maps can now have an associated set of map events.
   These get applied after the map is created, and are applied at
   appropriate times.  For the moment, the only event is "on load".
+
+- Prayer has no effect when there are no more deities.
 
 - More stanzas for "Tel and Floridel".
 

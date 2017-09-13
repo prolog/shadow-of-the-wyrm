@@ -18,7 +18,7 @@ void DeityActionManager::notify_action(CreaturePtr creature, const string& actio
   {
     Game& game = Game::instance();
     Religion& religion = creature->get_religion_ref();
-    DeityMap deities = game.get_deities_ref();
+    DeityMap deities = game.get_deities_cref();
 
     vector<DeityPtr> deities_to_notify;
 

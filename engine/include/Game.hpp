@@ -46,7 +46,8 @@ class Game : public ISerializable
     MapRegistry& get_map_registry_ref();
 
     void set_deities(const DeityMap& game_deities);
-    const DeityMap& get_deities_ref() const;
+    DeityMap& get_deities_ref();
+    const DeityMap& get_deities_cref() const;
     
     void set_races(const RaceMap& game_races);
     const RaceMap& get_races_ref() const;
