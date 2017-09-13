@@ -616,7 +616,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
   Game& game = Game::instance();
   
   RaceMap races = game.get_races_ref();
-  DeityMap deities = game.get_deities_ref();
+  DeityMap deities = game.get_deities_cref();
     
   for (const Coordinate& c : village_coordinates)
   {

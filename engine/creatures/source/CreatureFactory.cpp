@@ -199,7 +199,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   Game& game = Game::instance();
 
-  DeityMap deities = game.get_deities_ref();
+  DeityMap deities = game.get_deities_cref();
   RaceMap races = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
 

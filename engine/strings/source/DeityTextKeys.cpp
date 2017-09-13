@@ -41,6 +41,7 @@ const string DeityTextKeys::PRAYER_PROTECTION       = "PRAYER_PROTECTION";
 const string DeityTextKeys::PRAYER_SMITE            = "PRAYER_SMITE";
 const string DeityTextKeys::PRAYER_UNCURSE          = "PRAYER_UNCURSE";
 const string DeityTextKeys::PRAYER_HALT_BREEDING    = "PRAYER_HALT_BREEDING";
+const string DeityTextKeys::PRAYER_NO_DEITIES       = "PRAYER_NO_DEITIES";
 const string DeityTextKeys::DEITY_CANNOT_PRAY       = "DEITY_CANNOT_PRAY";
 const string DeityTextKeys::DEITY_ACTION_DISPLEASED = "DEITY_ACTION_DISPLEASED"; 
 const string DeityTextKeys::DEITY_FALLEN_CHAMPION   = "DEITY_FALLEN_CHAMPION";

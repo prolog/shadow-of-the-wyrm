@@ -106,7 +106,7 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
     
     AlignmentRange range_after = a.get_alignment_range();
     Game& game = Game::instance();
-    const DeityMap& deities = game.get_deities_ref();
+    const DeityMap& deities = game.get_deities_cref();
 
     if (range_before != range_after)
     {
@@ -427,7 +427,7 @@ ClassPtr CreatureUtils::get_random_user_playable_class()
 DeityPtr CreatureUtils::get_random_deity_for_race(RacePtr race)
 {
   Game& game = Game::instance();
-  DeityMap deities = game.get_deities_ref();
+  DeityMap deities = game.get_deities_cref();
   vector<string> allowable_deity_ids;
   DeityPtr deity;
 

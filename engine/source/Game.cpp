@@ -157,7 +157,12 @@ void Game::set_deities(const DeityMap& game_deities)
   deities = game_deities;
 }
 
-const DeityMap& Game::get_deities_ref() const
+DeityMap& Game::get_deities_ref()
+{
+  return deities;
+}
+
+const DeityMap& Game::get_deities_cref() const
 {
   return deities;
 }

@@ -40,7 +40,7 @@ DeityPtr ReligionManager::get_deity(const string& deity_id) const
   Game& game = Game::instance();
   DeityPtr deity;
   
-  DeityMap deities = game.get_deities_ref();
+  DeityMap deities = game.get_deities_cref();
   deity            = deities[deity_id];
   
   return deity;
