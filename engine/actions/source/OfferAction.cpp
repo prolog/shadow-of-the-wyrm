@@ -38,17 +38,25 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
     MapPtr current_map = game.get_current_map();
     TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
     FeaturePtr feature = tile->get_feature();
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     if (String::to_bool(current_map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY)))
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       manager.add_new_message(StringTable::get(DeityTextKeys::DEITY_CANNOT_PRAY));
       manager.send();
     }
-    // On an altar - pick an item to sacrifice
+    // On an altar - pick an item to sacrifice as long as there are still gods.
     else if (tile && feature && feature->can_offer())
     {
-      acv = sacrifice_item(creature, tile, feature, am);
+      if (!game.get_deities_cref().empty())
+      {
+        acv = sacrifice_item(creature, tile, feature, am);
+      }
+      else
+      {
+        manager.add_new_message(StringTable::get(SacrificeTextKeys::SACRIFICE_NO_DEITIES));
+        manager.send();
+      }
     }
     else
     {
