@@ -134,7 +134,8 @@ Shadow of the Wyrm v0.7.0 "de Visee"
   These get applied after the map is created, and are applied at
   appropriate times.  For the moment, the only event is "on load".
 
-- Prayer has no effect when there are no more deities.
+- Prayer has no effect when there are no more deities.  Similarly,
+  interactions with altars (kicking and dropping items), pews, etc.
 
 - More stanzas for "Tel and Floridel".
 

@@ -8,8 +8,7 @@ NeutralAltarManipulator::NeutralAltarManipulator(FeaturePtr feature)
 {
 }
 
-void NeutralAltarManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+string NeutralAltarManipulator::get_creature_action_key() const
 {
-  Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_DESECRATE_NEUTRAL, false);
+  return CreatureActionKeys::ACTION_DESECRATE_NEUTRAL;
 }
-
