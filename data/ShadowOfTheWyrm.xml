@@ -36774,6 +36774,12 @@
 		</MiscItems>
 	</Items>
 	<Features>
+		<Feature id="_rift">
+			<Material>14</Material>
+			<Symbol>^</Symbol>
+			<Colour>9</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_RIFT</DescriptionSID>
+		</Feature>
 		<Feature id="_dwarf_star">
 			<Material>14</Material>
 			<Symbol>o</Symbol>

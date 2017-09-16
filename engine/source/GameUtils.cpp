@@ -49,7 +49,7 @@ void GameUtils::add_new_creature_to_map(Game& game, CreaturePtr new_creature, Ma
   if (new_creature != nullptr)
   {
     ostringstream ss;
-    ss << "Adding new creature " << new_creature->get_id() << " to map at " << coords.first << "," << coords.second;
+    ss << "Adding creature " << new_creature->get_id() << " (" << new_creature->get_original_id() << ") to map at " << coords.first << "," << coords.second;
     Log::instance().debug(ss.str());
 
     // Add the creature to the map.

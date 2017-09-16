@@ -291,15 +291,14 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
 {
   bool added_location = false;
 
-  ostringstream ss;
-
   if (creature != nullptr)
   {
     Log& log = Log::instance();
 
     if (log.debug_enabled())
     {
-      ss << "Adding creature with id " << creature->get_id() << " to " << c.first << "," << c.second;
+      ostringstream ss;
+      ss << "Adding creature " << new_creature->get_id() << " (" << new_creature->get_original_id() << ") to map at " << coords.first << "," << coords.second;
       log.debug(ss.str());
     }
   }

@@ -43,36 +43,41 @@ function init_cosmos(map_id)
   local cosmos_creatures = {deity_and_followers[1]}
   local followers = deity_and_followers[2]
 
-  -- Add the deity, as well as 6d3 followers.
+  -- Add the deity, as well as followers.  Each tile in the rift will
+  -- get a divine creature.
 
   -- Assume the player will be generated at 0,0 like on general terrain
   -- maps where an exit isn't involved, and use 1, n-1 for the rows and
   -- cols.
-  for i = 1, RNG_dice(6, 3) do
+  for i = 1, 8 do
     local rnd_idx = RNG_range(1, #followers)
     table.insert(cosmos_creatures, followers[rnd_idx])
   end
 
-  -- Get a submap of the cosmos to generate on.
-  -- This'll be needed in subsequent death scripts, so should be put
-  -- somewhere common.
+  -- Generate the rift and the exclusionary area around the center
+  -- of the map.
   local r, c = map_get_dimensions(map_id)
-  local subrow_start, subcol_start = r/4, c/2
-  local y1 = RNG_range(2, r-subrow_start-2)
-  local y2 = y1 + subrow_start
-  local x1 = RNG_range(2, c-subcol_start-2)
-  local x2 = x1 + subcol_start
+  local rift_y, rift_x = r / 2, c / 2
+  local cnt = 1
+  
+  cosmos_creatures = fn.shuffle(cosmos_creatures)
 
-  local avail_coords = map_get_available_creature_coords(map_id, y1, y2, x1, x2)
-  local rnd_indices = fn.shuffle(fn.numeric_array(1, #cosmos_creatures))
+  -- Generate creatures in the rift area
+  for ry = rift_y - 1, rift_y + 1 do
+    for rx = rift_x - 1, rift_x + 1 do
+      add_basic_feature_to_map("_rift", ry, rx, map_id)
 
-  for i = 1, #rnd_indices do
-    local rnd_idx = rnd_indices[i]
-    local c = avail_coords[rnd_idx]
-    local creature_id = cosmos_creatures[i]
-    
-    add_creature_to_map(creature_id, c[1], c[2], map_id)
+      -- Ensure that the player can't enter the rift.  Only the divine
+      -- may pass.
+      -- ...
+
+      add_creature_to_map(cosmos_creatures[cnt], ry, rx, map_id)
+      cnt = cnt + 1
+    end
   end
+
+  -- Generate lesser divine beings throughout the level.
+  -- ...
 end
 
 map_events.set_map_fn(cosmos_map_id, init_cosmos)
