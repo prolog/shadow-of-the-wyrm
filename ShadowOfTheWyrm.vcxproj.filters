@@ -805,6 +805,9 @@
     <Filter Include="Source Files\source\unit_tests">
       <UniqueIdentifier>{d413f3f0-f1c3-4c59-91a8-1c81c5405c30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\maps\tiles\features\source\unit_tests">
+      <UniqueIdentifier>{044021fa-3748-4224-aa53-cc038f29b52f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -8020,6 +8023,15 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBasicFeatureCMReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\unit_tests\EvilAltarManipulator_test.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\unit_tests\GoodAltarManipulator_test.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\unit_tests\NeutralAltarManipulator_test.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

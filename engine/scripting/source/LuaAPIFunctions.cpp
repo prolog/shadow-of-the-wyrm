@@ -11,6 +11,7 @@
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "FeatureFactory.hpp"
+#include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GeneratorUtils.hpp"
@@ -162,6 +163,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_object_to_map", add_object_to_map);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
+  lua_register(L, "add_basic_feature_to_map", add_basic_feature_to_map);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "remove_active_quest", remove_active_quest);
@@ -961,6 +963,45 @@ int add_key_to_player_tile(lua_State* ls)
   return 1;
 }
 
+int add_basic_feature_to_map(lua_State* ls)
+{
+  bool added = false;
+
+  if ((lua_gettop(ls) == 4) && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  {
+    Game& game = Game::instance();
+    string basic_feature_id = lua_tostring(ls, 1);
+    Coordinate c = make_pair(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    string map_id = lua_tostring(ls, 4);
+
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+    {
+      FeaturePtr feature = FeatureGenerator::generate_basic_feature(basic_feature_id);
+
+      if (feature != nullptr)
+      {
+        TilePtr bf_tile = map->at(c);
+
+        if (bf_tile != nullptr)
+        {
+          bf_tile->set_feature(feature);
+          added = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_basic_feature_to_map!");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added);
+  return 1;
+}
+
 // Add a feature (using the class ID) to the player's tile.
 int add_feature_to_player_tile(lua_State* ls)
 {
@@ -1483,7 +1524,7 @@ int add_creature_to_map(lua_State* ls)
     CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id);
     Coordinate coords(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
 
-    if (creature && MapUtils::are_coordinates_within_dimensions(coords, map->size()))
+    if (creature && map && MapUtils::are_coordinates_within_dimensions(coords, map->size()))
     {
       GameUtils::add_new_creature_to_map(game, creature, map, coords);
     }
