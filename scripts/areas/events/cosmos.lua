@@ -66,10 +66,10 @@ function init_cosmos(map_id)
   for ry = rift_y - 1, rift_y + 1 do
     for rx = rift_x - 1, rift_x + 1 do
       add_basic_feature_to_map("_rift", ry, rx, map_id)
-
+      
       -- Ensure that the player can't enter the rift.  Only the divine
       -- may pass.
-      -- ...
+      map_set_additional_property(map_id, ry, rx, "TILE_PROPERTY_ALLOWED_RACES", "_divine")
 
       add_creature_to_map(cosmos_creatures[cnt], ry, rx, map_id)
       cnt = cnt + 1

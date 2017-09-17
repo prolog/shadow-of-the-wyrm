@@ -1,5 +1,7 @@
 Me:
 - Prayer off in cosmos.
+- The game-code-wide conversion funtions like String, Integer, etc.,
+  should be moved out of the engine and to the top level include/source.
 - Add race restrictions option for tile.
 - Unit test for new altar manipulator action key functions
 - Why do I have both FeatureFactory and FeatureGenerator?  Merge.

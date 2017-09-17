@@ -1,4 +1,5 @@
 #include <sstream>
+#include "Conversion.hpp"
 #include "DigChancesFactory.hpp"
 #include "Inventory.hpp"
 #include "FeatureFactory.hpp"
@@ -552,7 +553,7 @@ void Tile::transform_from(std::shared_ptr<Tile> original_tile)
     }
 
     // Remove particular properties
-    vector<string> props_to_remove = {TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, TileProperties::TILE_PROPERTY_PLANTED};
+    vector<string> props_to_remove = { TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, TileProperties::TILE_PROPERTY_PLANTED };
 
     for (const auto& p : props_to_remove)
     {
@@ -585,6 +586,36 @@ DigChances& Tile::get_dig_chances_ref()
 {
   return dig_chances;
 }
+
+bool Tile::has_race_restrictions() const
+{
+  bool restr = false;
+
+  string races = get_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_RACES);
+  restr = (races.empty() == false);
+
+  return restr;
+}
+
+bool Tile::is_race_allowed(const std::string& race_id) const
+{
+  bool allowed = true;
+
+  string races = get_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_RACES);
+  if (!races.empty())
+  {
+    vector<string> race_ids = String::create_string_vector_from_csv_string(races);
+    auto r_it = std::find(race_ids.begin(), race_ids.end(), race_id);
+
+    if (r_it == race_ids.end())
+    {
+      allowed = false;
+    }
+  }
+
+  return allowed;
+}
+
 
 bool Tile::serialize(ostream& stream) const
 {

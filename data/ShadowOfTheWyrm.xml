@@ -31349,7 +31349,7 @@
 				<Difficulty>50</Difficulty>
 				<Speed>12</Speed>
 				<Damage>
-					<NumDice>10</NumDice>
+					<NumDice>5</NumDice>
 					<NumSides>100</NumSides>
 					<Modifier>100</Modifier>
 					<Type>0</Type>
