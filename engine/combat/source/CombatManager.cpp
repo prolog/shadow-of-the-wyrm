@@ -15,6 +15,7 @@
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "EffectTextKeys.hpp"
+#include "EngineConversion.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"

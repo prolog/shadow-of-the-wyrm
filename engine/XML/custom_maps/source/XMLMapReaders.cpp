@@ -1,6 +1,6 @@
 #include <sstream>
-#include "Conversion.hpp"
 #include "CreatureFactory.hpp"
+#include "EngineConversion.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "ItemManager.hpp"

@@ -4,6 +4,7 @@
 #include "CreatureCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"
+#include "EngineConversion.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ModifyStatisticsEffect.hpp"

@@ -543,7 +543,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\conversion\include\AttackDumper.hpp" />
     <ClInclude Include="engine\conversion\include\CharacterDumper.hpp" />
     <ClInclude Include="engine\conversion\include\ConductsDumper.hpp" />
-    <ClInclude Include="engine\conversion\include\Conversion.hpp" />
+    <ClInclude Include="engine\conversion\include\EngineConversion.hpp" />
     <ClInclude Include="engine\conversion\include\EquipmentDumper.hpp" />
     <ClInclude Include="engine\conversion\include\InventoryDumper.hpp" />
     <ClInclude Include="engine\conversion\include\ItemDumper.hpp" />
@@ -1115,6 +1115,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="include\ColourUtils.hpp" />
     <ClInclude Include="include\common.hpp" />
     <ClInclude Include="include\CompilationDetails.hpp" />
+    <ClInclude Include="include\Conversion.hpp" />
     <ClInclude Include="include\global_prototypes.hpp" />
     <ClInclude Include="include\ISerializable.hpp" />
     <ClInclude Include="include\UnhandledExceptions.hpp" />
@@ -1629,6 +1630,14 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     </ClCompile>
     <ClCompile Include="engine\conversion\source\ArtifactDumper.cpp" />
     <ClCompile Include="engine\conversion\source\AttackDumper.cpp" />
+    <ClCompile Include="engine\conversion\source\EngineConversion.cpp" />
+    <ClCompile Include="engine\conversion\source\unit_tests\EngineConversion_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\creatures\source\GroundSafetyCondition.cpp" />
     <ClCompile Include="engine\creatures\source\SatedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
@@ -2413,7 +2422,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     </ClCompile>
     <ClCompile Include="engine\conversion\source\CharacterDumper.cpp" />
     <ClCompile Include="engine\conversion\source\ConductsDumper.cpp" />
-    <ClCompile Include="engine\conversion\source\Conversion.cpp" />
     <ClCompile Include="engine\conversion\source\EquipmentDumper.cpp" />
     <ClCompile Include="engine\conversion\source\InventoryDumper.cpp" />
     <ClCompile Include="engine\conversion\source\ItemDumper.cpp" />
@@ -2424,13 +2432,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\conversion\source\SkillsDumper.cpp" />
     <ClCompile Include="engine\conversion\source\SpellsDumper.cpp" />
     <ClCompile Include="engine\conversion\source\StatsDumper.cpp" />
-    <ClCompile Include="engine\conversion\source\unit_tests\Conversion_test.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="engine\creatures\source\AirSafetyCondition.cpp" />
     <ClCompile Include="engine\creatures\source\BlindedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\BloodiedStatusEffect.cpp" />
@@ -3269,6 +3270,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\XML\source\XMLWandReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLWeaponsReaders.cpp" />
     <ClCompile Include="engine\XML\source\XMLWearableReader.cpp" />
+    <ClCompile Include="source\Conversion.cpp" />
     <ClCompile Include="source\global_functions.cpp" />
     <ClCompile Include="source\MapTester.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -3282,6 +3284,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     </ClCompile>
     <ClCompile Include="source\UnhandledExceptions.cpp" />
     <ClCompile Include="source\unit_tests\ColourUtils_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\unit_tests\Conversion_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
