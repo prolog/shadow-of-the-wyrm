@@ -17,7 +17,7 @@
 #include "DetectionSkillProcessor.hpp"
 #include "EngineConversion.hpp"
 #include "ExitGameAction.hpp"
-#include "FeatureFactory.hpp"
+#include "FeatureGenerator.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "FileConstants.hpp"
@@ -1193,7 +1193,7 @@ bool Game::deserialize(istream& stream)
 
     if (c_id != ClassIdentifier::CLASS_ID_NULL)
     {
-      FeaturePtr feat = FeatureFactory::create_feature(c_id);
+      FeaturePtr feat = FeatureGenerator::create_feature(c_id);
 
       if (feat != nullptr)
       {

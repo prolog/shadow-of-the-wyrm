@@ -2,7 +2,7 @@
 #include "Conversion.hpp"
 #include "DigChancesFactory.hpp"
 #include "Inventory.hpp"
-#include "FeatureFactory.hpp"
+#include "FeatureGenerator.hpp"
 #include "InventoryFactory.hpp"
 #include "Log.hpp"
 #include "MapFactory.hpp"
@@ -703,7 +703,7 @@ bool Tile::deserialize(istream& stream)
 
   if (feature_clid != ClassIdentifier::CLASS_ID_NULL)
   {
-    FeaturePtr feature = FeatureFactory::create_feature(feature_clid);
+    FeaturePtr feature = FeatureGenerator::create_feature(feature_clid);
     if (!feature) return false;
     if (!feature->deserialize(stream)) return false;
     set_feature(feature);

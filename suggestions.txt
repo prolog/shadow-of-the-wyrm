@@ -1,6 +1,5 @@
 Me:
 - Prayer off in cosmos.
-- Why do I have both FeatureFactory and FeatureGenerator?  Merge.
 - Expose lua constants for winning types.  Test!
 - There needs to be a non-two-handed option for Telari, so that players
   who've focused on dual wield aren't excluded.
