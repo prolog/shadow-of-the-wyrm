@@ -1,6 +1,5 @@
 #include "Creature.hpp"
 #include "Feature.hpp"
-#include "FeatureFactory.hpp"
 #include "MaterialFactory.hpp"
 #include "Serialize.hpp"
 
@@ -254,7 +253,7 @@ bool Feature::deserialize(istream& stream)
 
   if (lock_clid != ClassIdentifier::CLASS_ID_NULL)
   {
-    lock = FeatureFactory::create_lock();
+    lock = std::make_shared<Lock>();
     lock->deserialize(stream);
   }
 

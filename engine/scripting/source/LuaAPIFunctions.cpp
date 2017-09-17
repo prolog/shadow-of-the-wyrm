@@ -10,7 +10,6 @@
 #include "CreatureUtils.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
-#include "FeatureFactory.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -1015,7 +1014,7 @@ int add_feature_to_player_tile(lua_State* ls)
     if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
       ClassIdentifier class_id = static_cast<ClassIdentifier>(lua_tointeger(ls, 1));
-      FeaturePtr feature = FeatureFactory::create_feature(class_id);
+      FeaturePtr feature = FeatureGenerator::create_feature(class_id);
 
       if (feature != nullptr)
       {

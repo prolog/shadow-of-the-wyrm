@@ -1272,7 +1272,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="world\tiles\features\include\EntranceTypes.hpp" />
     <ClInclude Include="world\tiles\features\include\EvilAltar.hpp" />
     <ClInclude Include="world\tiles\features\include\Feature.hpp" />
-    <ClInclude Include="world\tiles\features\include\FeatureFactory.hpp" />
     <ClInclude Include="world\tiles\features\include\FeatureGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\FeatureProperties.hpp" />
     <ClInclude Include="world\tiles\features\include\FirePillar.hpp" />
@@ -3965,7 +3964,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="world\tiles\features\source\EntranceState.cpp" />
     <ClCompile Include="world\tiles\features\source\EvilAltar.cpp" />
     <ClCompile Include="world\tiles\features\source\Feature.cpp" />
-    <ClCompile Include="world\tiles\features\source\FeatureFactory.cpp" />
     <ClCompile Include="world\tiles\features\source\FeatureGenerator.cpp" />
     <ClCompile Include="world\tiles\features\source\FeatureProperties.cpp" />
     <ClCompile Include="world\tiles\features\source\FirePillar.cpp" />
