@@ -1,5 +1,5 @@
 #include "CreatureStatisticsMarkerChecker.hpp"
-#include "Conversion.hpp"
+#include "EngineConversion.hpp"
 #include "HungerCalculator.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"

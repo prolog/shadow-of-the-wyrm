@@ -1488,9 +1488,6 @@
     <ClInclude Include="engine\conversion\include\CharacterDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\conversion\include\Conversion.hpp">
-      <Filter>Header Files\engine\conversion\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\conversion\include\EquipmentDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
@@ -4050,6 +4047,12 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBasicFeatureCMReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\conversion\include\EngineConversion.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Conversion.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4706,9 +4709,6 @@
     <ClCompile Include="engine\conversion\source\CharacterDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\conversion\source\Conversion.cpp">
-      <Filter>Source Files\engine\conversion\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\conversion\source\EquipmentDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
@@ -4723,9 +4723,6 @@
     </ClCompile>
     <ClCompile Include="engine\conversion\source\StatsDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\conversion\source\unit_tests\Conversion_test.cpp">
-      <Filter>Source Files\engine\conversion\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionConstants.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
@@ -8032,6 +8029,18 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\unit_tests\NeutralAltarManipulator_test.cpp">
       <Filter>Source Files\engine\maps\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\EngineConversion.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Conversion.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\unit_tests\EngineConversion_test.cpp">
+      <Filter>Source Files\engine\conversion\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\unit_tests\Conversion_test.cpp">
+      <Filter>Source Files\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -15,6 +15,7 @@
 #include "CursesConstants.hpp"
 #include "DecisionStrategySelector.hpp"
 #include "DetectionSkillProcessor.hpp"
+#include "EngineConversion.hpp"
 #include "ExitGameAction.hpp"
 #include "FeatureFactory.hpp"
 #include "FieldOfViewStrategy.hpp"
