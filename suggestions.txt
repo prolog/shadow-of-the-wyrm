@@ -6,14 +6,10 @@ Me:
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
-- Crystalline being for astral plane
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
 - Repel (cantrip)
-- Each floating tower level should have a "platform" generated outside
-  somewhere, with great items and a nasty flying creature.  There should
-  be a ring of flying made available.
 - Test going to down to D2 and back in both a regular dungeon and the ID.
   Also, Gnordvar Mines.
 - Email Nathan before next release re: Mac build, and update website to
