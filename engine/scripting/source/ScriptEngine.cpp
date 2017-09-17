@@ -234,6 +234,10 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CSKILL_MAGIC_DIVINE);
   lua_exportConst(ls, CSKILL_MAGIC_MYSTIC);
   lua_exportConst(ls, CSKILL_MAGIC_PRIMORDIAL);
+
+  lua_exportConst(ls, CCREATURE_WIN_REGULAR);
+  lua_exportConst(ls, CCREATURE_WIN_EVIL);
+  lua_exportConst(ls, CCREATURE_WIN_GODSLAYER);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

@@ -19,7 +19,7 @@ local function generate_telari_staircase(creature_id, attacking_creature_id)
   local keep_adventuring = add_confirmation_message("WIN_KEEP_ADVENTURING")
   
   -- Set the win condition for the godslayer ending.
-  set_winner(PLAYER_ID, 3)
+  set_winner(PLAYER_ID, CCREATURE_WIN_GODSLAYER)
 
   if keep_adventuring == false then
     stop_playing_game(PLAYER_ID, true)
