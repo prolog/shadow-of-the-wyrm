@@ -233,6 +233,11 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         movement_acv = 0;
       }
     }
+    else if (creatures_new_tile->has_race_restrictions() && !creatures_new_tile->is_race_allowed(creature->get_race_id()))
+    {
+      manager.add_new_message(StringTable::get(MovementTextKeys::ACTION_MOVE_RACE_NOT_ALLOWED));
+      manager.send();
+    }
     else
     {
       CurrentCreatureAbilities cca;

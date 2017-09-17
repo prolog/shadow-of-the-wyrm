@@ -100,6 +100,30 @@ TEST(SW_World_Tiles_Tile, illuminated)
   EXPECT_TRUE(tile.get_illuminated());
 }
 
+TEST(SW_World_Tiles_Tile, has_race_restrictions)
+{
+  DungeonTile dt;
+
+  EXPECT_FALSE(dt.has_race_restrictions());
+
+  dt.set_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_RACES, "trash_panda");
+
+  EXPECT_TRUE(dt.has_race_restrictions());
+}
+
+TEST(SW_World_Tiles_Tile, is_race_allowed)
+{
+  DungeonTile dt;
+
+  EXPECT_TRUE(dt.is_race_allowed("some_race"));
+  EXPECT_TRUE(dt.is_race_allowed("some_other_race_since_there_are_no_restrictions_yet"));
+
+  dt.set_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_RACES, "trash_panda");
+
+  EXPECT_FALSE(dt.is_race_allowed("some_race"));
+  EXPECT_TRUE(dt.is_race_allowed("trash_panda"));
+}
+
 TEST(SW_World_Tiles_Tile, explored)
 {
   DungeonTile tile;

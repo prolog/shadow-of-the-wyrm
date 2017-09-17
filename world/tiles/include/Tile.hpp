@@ -157,6 +157,10 @@ class Tile : public ISerializable
     virtual DigChances get_dig_chances() const;
     virtual DigChances& get_dig_chances_ref();
 
+    // Some tiles are restricted to certain races.
+    virtual bool has_race_restrictions() const;
+    virtual bool is_race_allowed(const std::string& race_id) const;
+
     virtual Tile* clone() = 0;
 
   protected:
