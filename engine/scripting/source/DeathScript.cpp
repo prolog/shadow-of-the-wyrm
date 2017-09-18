@@ -15,7 +15,7 @@ const string DeathScript::DEATH_MODULE_NAME = "death";
 const string DeathScript::DEATH_FUNCTION_NAME = "die";
 
 // Return true if the script executed successfully, false otherwise.
-bool DeathScript::execute(ScriptEngine& se, const string& event_script, CreaturePtr dead_creature, CreaturePtr attacking_creature)
+bool DeathScript::execute(ScriptEngine& se, const string& event_script, CreaturePtr dead_creature, CreaturePtr attacking_creature, MapPtr map)
 {
   if (event_script.empty())
   {
@@ -29,6 +29,7 @@ bool DeathScript::execute(ScriptEngine& se, const string& event_script, Creature
     string dead_creature_id;
     string dead_creature_base_id;
     string attacking_creature_id;
+    string map_id;
 
     if (dead_creature != nullptr)
     {
@@ -41,6 +42,11 @@ bool DeathScript::execute(ScriptEngine& se, const string& event_script, Creature
       attacking_creature_id = attacking_creature->get_id();
     }
 
+    if (map != nullptr)
+    {
+      map_id = map->get_map_id();
+    }
+
     // Set up the function call parameters.
     lua_State* L = se.get_current_state();
     lua_getglobal(L, DEATH_MODULE_NAME.c_str());
@@ -48,9 +54,10 @@ bool DeathScript::execute(ScriptEngine& se, const string& event_script, Creature
     lua_pushstring(L, dead_creature_id.c_str());
     lua_pushstring(L, dead_creature_base_id.c_str());
     lua_pushstring(L, attacking_creature_id.c_str());
+    lua_pushstring(L, map_id.c_str());
 
     // Do the function call.  The "die" function returns nothing.
-    if (lua_pcall(L, 3, 0, 0) != 0)
+    if (lua_pcall(L, 4, 0, 0) != 0)
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "DeathScript::execute - error running Lua function `" + DEATH_FUNCTION_NAME + "': " + l_err;
