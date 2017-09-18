@@ -2,7 +2,7 @@ require('constants')
 require('death')
 
 -- Win the game!
-local function win(creature_id, attacking_creature_id)
+local function win(creature_id, attacking_creature_id, map_id)
   add_message_with_pause("WIN_MESSAGE", false)
   add_message_with_pause("WIN_MESSAGE2")
   add_message_with_pause("WIN_MESSAGE3")

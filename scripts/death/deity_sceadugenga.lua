@@ -1,7 +1,7 @@
 require('constants')
 require('death')
 
-local function generate_telari_staircase(creature_id, attacking_creature_id)
+local function generate_telari_staircase(creature_id, attacking_creature_id, map_id)
   -- All the deities are gone.  Clear them out so that if the player
   -- decides to keep playing, praying doesn't act strange.
   clear_deities()
