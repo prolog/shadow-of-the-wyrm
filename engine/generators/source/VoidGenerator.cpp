@@ -1,6 +1,7 @@
 #include "VoidGenerator.hpp"
 #include "BresenhamLine.hpp"
 #include "FeatureGenerator.hpp"
+#include "MapProperties.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -39,6 +40,10 @@ MapPtr VoidGenerator::generate(const Dimensions& dimensions)
   add_cosmic_dust(result_map);
   add_celestial_objects(result_map);
   add_spiral_arm(result_map);
+
+  // The cosmos is the domain of the divine - once creatures leave the
+  // physical world, their prayers are no longer heard.
+  result_map->set_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY, to_string(true));
 
   return result_map;
 }
