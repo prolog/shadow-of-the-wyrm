@@ -1,6 +1,4 @@
 Me:
-- Prayer off in cosmos.
-- Expose lua constants for winning types.  Test!
 - There needs to be a non-two-handed option for Telari, so that players
   who've focused on dual wield aren't excluded.
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator

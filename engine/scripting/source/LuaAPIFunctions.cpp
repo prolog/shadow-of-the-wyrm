@@ -309,6 +309,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_item_unpaid", is_item_unpaid);
   lua_register(L, "load_map", load_map);
   lua_register(L, "has_artifact_in_inventory", has_artifact_in_inventory);
+  lua_register(L, "tile_has_creature", tile_has_creature);
 }
 
 // Lua API helper functions
@@ -5495,6 +5496,51 @@ int has_artifact_in_inventory(lua_State* ls)
   }
 
   lua_pushboolean(ls, has_artifact);
+  return 1;
+}
+
+int tile_has_creature(lua_State* ls)
+{
+  bool has_creature = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    Game& game = Game::instance();
+
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+    string map_id;
+    MapPtr map;
+
+    if (num_args == 3 && lua_isstring(ls, 3))
+    {
+      map_id = lua_tostring(ls, 3);
+    }
+
+    if (map_id.empty())
+    {
+      map = game.get_current_map();
+    }
+    else
+    {
+      map = game.get_map_registry_ref().get_map(map_id);
+    }
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      has_creature = tile && tile->has_creature();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to tile_has_creature");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, has_creature);
   return 1;
 }
 

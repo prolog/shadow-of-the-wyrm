@@ -4,6 +4,26 @@ require('map_events')
 
 local cosmos_map_id = args[MAP_ID]
 
+-- Add random creatures to the map.  The random creatures are taken from
+-- the deities' anger summons in the game data.
+function add_divine_creatures(map_id, rows, cols, num_creatures)
+  local divine_creatures = {"archangel", "titan", "air_elemental",
+                            "skyborn", "fire_elemental", "planewalker",
+                            "voidling", "star_beast", "astral_horror"}
+  local y, x = 0, 0
+  local creature_id = divine_creatures[1]
+
+  for i = 1, num_creatures do
+    y = RNG_range(0, rows-1)
+    x = RNG_range(0, cols-1)
+    creature_id = divine_creatures[RNG_range(1, #divine_creatures)]
+
+    if tile_has_creature(y, x, map_id) == false then
+      add_creature_to_map(creature_id, y, x, map_id)
+    end
+  end
+end
+
 -- Initializing the cosmos is done by picking a deity, and spawning it
 -- along with a number of its followers.  These are given action speeds
 -- greater than the player's to ensure that the player always gets to act
@@ -76,8 +96,9 @@ function init_cosmos(map_id)
     end
   end
 
-  -- Generate lesser divine beings throughout the level.
-  -- ...
+  -- Generate lesser divine beings throughout the level.  The number of
+  -- creatures should be half the number of columns.
+  add_divine_creatures(map_id, r, c, c/2)
 end
 
 map_events.set_map_fn(cosmos_map_id, init_cosmos)

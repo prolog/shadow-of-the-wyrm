@@ -32,15 +32,27 @@ if string.len(given_gift) == 0 then
 
     set_creature_base_damage(PLAYER_ID, num_dice, num_sides, modifier)
   else
-    -- If the creature doesn't meet the unarmed combat requirements, then
-    -- grant the God-Blade.
-    add_message_with_pause("THE_SMITH_SPEECH_GODBLADE_SID")
-    add_message_with_pause("THE_SMITH_SPEECH_GODBLADE2_SID")
-    add_message_with_pause("THE_SMITH_SPEECH_GODBLADE3_SID")
-    add_message_with_pause("THE_SMITH_SPEECH_GODBLADE4_SID")
-    clear_and_add_message("THE_SMITH_SPEECH_GODBLADE5_SID")
+    -- If the creature has Dual Wield skill, there's a <skill>% chance of
+    -- being given the Shard of Starlight.
+    local dual_wield = get_skill_value(PLAYER_ID, CSKILL_GENERAL_DUAL_WIELD)
+    if RNG_percent_chance(dual_wield) then
+      add_message_with_pause("THE_SMITH_SPEECH_SHARD_SID")
+      add_message_with_pause("THE_SMITH_SPEECH_SHARD2_SID")
+      add_message_with_pause("THE_SMITH_SPEECH_SHARD3_SID")
+      clear_and_add_message("THE_SMITH_SPEECH_SHARD4_SID")
 
-    add_object_to_player_tile("godblade")
+      add_object_to_player_tile("shard_starlight")
+    else
+      -- If the creature doesn't meet the unarmed/dual wield requirements,
+      -- grant the God-Blade.
+      add_message_with_pause("THE_SMITH_SPEECH_GODBLADE_SID")
+      add_message_with_pause("THE_SMITH_SPEECH_GODBLADE2_SID")
+      add_message_with_pause("THE_SMITH_SPEECH_GODBLADE3_SID")
+      add_message_with_pause("THE_SMITH_SPEECH_GODBLADE4_SID")
+      clear_and_add_message("THE_SMITH_SPEECH_GODBLADE5_SID")
+
+      add_object_to_player_tile("godblade")
+    end
   end
 
   -- Set the gift property so that this'll be skipped next time.

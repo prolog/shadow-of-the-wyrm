@@ -31358,6 +31358,44 @@
 					</Slays>
 				</Damage>
 			</Weapon>
+			<Weapon id="shard_starlight">
+				<DescriptionSID>SHARD_OF_STARLIGHT_SID</DescriptionSID>
+				<UsageDescriptionSID>SHARD_OF_STARLIGHT_USAGE_SID</UsageDescriptionSID>
+				<Value>1400</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Pierce>0.10</Pierce>
+					<Pound>0.10</Pound>
+					<Heat>0.10</Heat>
+					<Cold>0.10</Cold>
+					<Acid>0.10</Acid>
+					<Poison>0.10</Poison>
+					<Holy>0.30</Holy>
+					<Shadow>0.30</Shadow>
+					<Arcane>0.10</Arcane>
+					<Lightning>0.10</Lightning>
+				</Resistances>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>35</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>10</NumDice>
+					<NumSides>20</NumSides>
+					<Modifier>50</Modifier>
+					<Type>1</Type>
+					<Slays>
+						<Slay>*</Slay>
+					</Slays>
+				</Damage>
+			</Weapon>
 			<Weapon id="beow">
 				<DescriptionSID>BEOW_SID</DescriptionSID>
 				<UsageDescriptionSID>BEOW_USAGE_SID</UsageDescriptionSID>
