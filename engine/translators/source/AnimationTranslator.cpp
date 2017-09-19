@@ -44,6 +44,12 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
       DisplayTile projectile = dt_c_pair.first;
       Coordinate c = dt_c_pair.second;
 
+      // Sanity check: ensure both maps are valid before trying to proceed.
+      if (current_map == nullptr || fov_map == nullptr)
+      {
+        break;
+      }
+
       TilePtr game_tile = current_map->at(c);
       TilePtr fov_tile = fov_map->at(c);
 
