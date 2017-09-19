@@ -1,5 +1,4 @@
 Me:
-- Load Isen Dun, gas cloud at 0,1, kill in 1 shot, crash (null fov map)
 - Plowing through the cosmos, speed somehow got to 0...
 - Smith should give an HP boost before entering cosmos.
 - Ensure other races can move through rift

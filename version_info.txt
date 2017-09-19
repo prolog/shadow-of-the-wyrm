@@ -229,6 +229,10 @@ Shadow of the Wyrm v0.7.0 "de Visee"
     multipliers in damage calculations, allowing characters with massive
     resistances to still take damage. (4chan /rlg)
 
+  - Fixed a crash when trying to create an animation when a creature was
+    killed without having an FOV map (immediately after spawn but before
+    its first action).
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 
