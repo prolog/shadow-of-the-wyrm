@@ -1,10 +1,10 @@
 Me:
-- Plowing through the cosmos, speed somehow got to 0...
+- Plowing through the cosmos, speed somehow got to 0...must fix before
+  next release!
 - Smith should give an HP boost before entering cosmos.
 - Ensure other races can move through rift
-- Messages when the rift "repops"
-- Flag/add_cr fn parameter to ensure all creatures generated hostile in
-  cosmos
+- Instead of making creatures "friendly", charisma should just make them
+  non-hostile (safe to attack).
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures

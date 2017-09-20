@@ -20,7 +20,7 @@ function add_divine_creatures(map_id, rows, cols, num_creatures)
     creature_id = divine_creatures[RNG_range(1, #divine_creatures)]
 
     if tile_has_creature(y, x, map_id) == false then
-      add_creature_to_map(creature_id, y, x, map_id)
+      add_creature_to_map(creature_id, y, x, map_id, true)
     end
   end
 end

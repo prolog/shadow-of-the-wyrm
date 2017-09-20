@@ -1508,7 +1508,7 @@ int add_creature_to_map(lua_State* ls)
     Game& game = Game::instance();
     MapPtr map; 
     
-    if (num_args == 4 && lua_isstring(ls, 4))
+    if (num_args >= 4 && lua_isstring(ls, 4))
     {
       string map_id = lua_tostring(ls, 4);
       map = game.get_map_registry_ref().get_map(map_id);
@@ -1518,15 +1518,29 @@ int add_creature_to_map(lua_State* ls)
       map = game.get_current_map();
     }
 
+    // Hostility override is optional, and generally only used in places where
+    // generated creatures must be hostile towards the player.
+    shared_ptr<bool> hostility_override;
+    if (num_args >= 5 && lua_isboolean(ls, 5))
+    {
+      hostility_override = std::make_shared<bool>(lua_toboolean(ls, 5) != 0);
+    }
+
     string creature_id = lua_tostring(ls, 1);
 
     CreatureFactory cf;
     CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id);
     Coordinate coords(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    HostilityManager hm;
 
     if (creature && map && MapUtils::are_coordinates_within_dimensions(coords, map->size()))
     {
       GameUtils::add_new_creature_to_map(game, creature, map, coords);
+
+      if (hostility_override != nullptr)
+      {
+        hm.set_hostility_to_player(creature, *hostility_override);
+      }
     }
   }
   else
