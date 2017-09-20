@@ -32,7 +32,7 @@ function generate_deity_and_followers_in_rift(map_id, rift_y, rift_x, deity_and_
   -- Generate creatures in the rift area
   for ry = rift_y - 1, rift_y + 1 do
     for rx = rift_x - 1, rift_x + 1 do
-      add_creature_to_map(cosmos_creatures[cnt], ry, rx, map_id)
+      add_creature_to_map(cosmos_creatures[cnt], ry, rx, map_id, true)
       cnt = cnt + 1
     end
   end
@@ -83,7 +83,9 @@ function populate_rift(map_id, rift_y, rift_x)
       -- If the deity hasn't been killed yet, generate it and its followers
       -- within the rift
       generate_deity_and_followers_in_rift(map_id, rift_y, rift_x, deity_and_followers)
-      generated = true      
+      generated = true
+      
+      add_message_with_pause("RIFT_REPOPULATE") 
       break
     end
   end
