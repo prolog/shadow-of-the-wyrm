@@ -1,4 +1,7 @@
 Me:
+- Explosive flag. (damages non-attacking creatures radius 1, extra fire
+  damage)
+- Make an explosive artifact weapon, make ammo able to be explosive.
 - Plowing through the cosmos, speed somehow got to 0...must fix before
   next release!
 - Smith should give an HP boost before entering cosmos.
@@ -26,14 +29,11 @@ Me:
 - Special witchling spell(s?) from the Conjurer, small number of castings. 
   If AP < spell AP, should set AP.
 - Ensure no-prayer flag is set for the Cloudspire.
-- Wands of digging, and place one in Kew's pile.
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Crafting room: wheel and loom, tannery.
 - Penalties from bloodied, exposed should also scale with level.
 - Generate loom, tanneries in random villages.
-- Consider making inscriptions part of all dungeon tiles, and then removing
-  the explicit calls to add them in DungeonGenerator.
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
@@ -41,7 +41,6 @@ Me:
 - Revisit how values are updated after enchantment.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
-- Third possible ending via ascending the Cloudspire.
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.
@@ -60,7 +59,6 @@ Me:
 - Freshwater turns to ice in winter.
 - Creatures should be smarter about the use of spells given that creatures
   will fight back and summon help.
-- Exploding arrows.
 - Wilderness ruins/lairs
 - Dungeon vaults
 - Arcane damage should destroy wands, rings, potions, scrolls, texts,
