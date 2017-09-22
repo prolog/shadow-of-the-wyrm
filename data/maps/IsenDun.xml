@@ -15,7 +15,7 @@
 	,,,,,#######,,,,,,,,#####,,,,,,,,#.......#,,,w,,,#...#,,*,,,,,,#...#......#..#,,
 	,,,*,#.....#,,,,,,T,#...#,,,,,,,,#.......#,,,,,,,##.##,,,,,,,,,##.##......#..#,,
 	,,,,,#.....#,,,,,,,,##.##,,,,,,,,#.......#,,,*,,,,,,,,,,,,,,,,,....#.........#,,
-	,,,,,#.....#,,,,,,,,,,,,,,,,,,,,,#.......#,,,,,,,,,,,,,,,,,,,,,#...#......#..#,,
+	,,,,,#.....#,,,,,,,,,,,,,,,,,,,,,#.......#,,,,,,,,,,,,,,,,,,,,,#...#......##.#,,
 	,,,,,###.###,,,,,,,,,,,T,,,,,,,,,####.####,,,,,,T,,,,,,,,,,,,,,#..........#..#,,
 	,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,###############,,
 	,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*,,,TTTTT,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*,
@@ -333,6 +333,27 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>pick_axe</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>healing_potion</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>76</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>unstoning_potion</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>76</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>buckler</ID>
 				<Coord>
 					<Row>2</Row>
@@ -393,13 +414,6 @@
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
-				<Row>6</Row>
-				<Col>75</Col>
-			</Coord>
-			<Bed/>
-		</FeaturePlacement>
-		<FeaturePlacement>
-			<Coord>
 				<Row>12</Row>
 				<Col>62</Col>
 			</Coord>
@@ -412,6 +426,19 @@
 			<Coord>
 				<Row>3</Row>
 				<Col>65</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>isen_dun_kew</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>5</Row>
+				<Col>76</Col>
 			</Coord>
 			<Door>
 				<Material>3</Material>
