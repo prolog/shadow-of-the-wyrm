@@ -1502,6 +1502,7 @@ int get_experience_value(lua_State* ls)
 int add_creature_to_map(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
+  string new_creature_id;
 
   if ((num_args >= 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
   {
@@ -1542,6 +1543,8 @@ int add_creature_to_map(lua_State* ls)
         hm.set_hostility_to_player(creature, *hostility_override);
       }
     }
+
+    new_creature_id = creature->get_id();
   }
   else
   {
@@ -1549,7 +1552,8 @@ int add_creature_to_map(lua_State* ls)
     lua_error(ls);
   }
 
-  return 0;
+  lua_pushstring(ls, new_creature_id.c_str());
+  return 1;
 }
 
 // Returns a boolean - true if a creature was removed, false otherwise.
@@ -4442,17 +4446,33 @@ int get_nearby_hostile_creatures(lua_State* ls)
 
 int set_creature_additional_property(lua_State* ls)
 {
-  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
   {
     string creature_id = lua_tostring(ls, 1);
     string prop_name = lua_tostring(ls, 2);
     string prop_value = lua_tostring(ls, 3);
-
-    CreaturePtr creature = get_creature(creature_id);
-
-    if (creature != nullptr)
+    Game& game = Game::instance();
+    MapPtr cur_map;
+    
+    if (num_args == 4 && lua_isstring(ls, 4))
     {
-      creature->set_additional_property(prop_name, prop_value);
+      cur_map = game.get_map_registry_ref().get_map(lua_tostring(ls, 4));
+    }
+    else
+    {
+      cur_map = game.get_current_map();
+    }
+
+    if (cur_map != nullptr)
+    {
+      CreaturePtr creature = cur_map->get_creature(creature_id);
+
+      if (creature != nullptr)
+      {
+        creature->set_additional_property(prop_name, prop_value);
+      }
     }
   }
   else
