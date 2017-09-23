@@ -5,7 +5,6 @@ Me:
 - Plowing through the cosmos, speed somehow got to 0...must fix before
   next release!
 - Smith should give an HP boost before entering cosmos.
-- Ensure other races can move through rift
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
 - Linux build warnings in StormShapeProcessor, MapCreatureGenerator
