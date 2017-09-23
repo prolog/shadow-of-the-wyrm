@@ -236,7 +236,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     }
     else if (creatures_new_tile->has_race_restrictions() && 
             !creatures_new_tile->is_race_allowed(creature->get_race_id()) && 
-            String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == true)
+            String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == false)
     {
       manager.add_new_message(StringTable::get(MovementTextKeys::ACTION_MOVE_RACE_NOT_ALLOWED));
       manager.send();
