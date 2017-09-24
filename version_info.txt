@@ -140,6 +140,11 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 - Prayer has no effect when there are no more deities.  Similarly,
   interactions with altars (kicking and dropping items), pews, etc.
 
+- The minimum ammunition breakage chance has been reduced from 2% to 1%.
+
+- Ammunition is now less likely to break if it has slays, or is blessed,
+  and is more likely to break if it's cursed.
+
 - More stanzas for "Tel and Floridel".
 
 - New species of weeds.
