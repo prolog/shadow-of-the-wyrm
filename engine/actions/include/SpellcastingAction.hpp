@@ -20,7 +20,7 @@ class SpellcastingAction : public IActionManager
     void add_invalid_spellcasting_location_message(CreaturePtr creature) const;
     void add_insufficient_power_message(CreaturePtr creature) const;
     void add_spell_bonus_increased_message(CreaturePtr creature) const;
-
+    void add_no_deities_message(CreaturePtr creature) const;
     void train_skills(CreaturePtr creature, const Spell& spell) const;
 
     std::pair<std::string, ActionCostValue> cast_spell_on_valid_map_type(CreaturePtr creature) const;
