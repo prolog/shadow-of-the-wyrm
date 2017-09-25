@@ -34662,21 +34662,6 @@
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
-			<Tool id="naming_stone">
-				<DescriptionSID>NAMING_STONE_SID</DescriptionSID>
-				<UsageDescriptionSID>NAMING_STONE_USAGE_SID</UsageDescriptionSID>
-				<Value>1000</Value>
-				<Weight>
-					<Pounds>5</Pounds>
-				</Weight>
-				<Artifact>1</Artifact>
-				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
-					<Colour>8</Colour>
-				</TextDetails>
-				<DangerLevel>-1</DangerLevel>
-			</Tool>
 			<Tool id="_fishing_rod">
 				<DescriptionSID>FISHING_ROD_SID</DescriptionSID>
 				<UsageDescriptionSID>FISHING_ROD_USAGE_SID</UsageDescriptionSID>
