@@ -13,7 +13,7 @@
 	SSbbbbabbbbbbbbbabbbbbbbabbbbbbbbbbbbbbbbbbbbbabSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 	SSSbbbbbbbabbbbbbbbbbabbbbbbbbbbbbabbbbbaabbbbbbbSSSSSSSbbbSSSSSSSSSSSSSSSbbSSSS
 	SSSSbbbbbbbbba######bbbbbbbbbbbbbbbbbbbbbbbbbabbbbSSSSSSSbbbbbbbSSSSSSSSSSbbbbSS
-	SSSSSSbbbbb####....####bbbbbabbbbbbabbbbbbbabbbbSSSSSSSSSSbbbbbbbSSSSSSSSSSbbbbS
+	SSSSSSbbbb#####....####bbbbbabbbbbbabbbbbbbabbbbSSSSSSSSSSbbbbbbbSSSSSSSSSSbbbbS
 	SSSSSSbb###...........####bbababbbbbbbbbababbbSSSSSSSSSSSSSSbbbbSSSSSSSSSSSSSbbS
 	SSSSSSbb#......DDDD......#bbbbbbbbabbababbbbSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 	SSSSSbbb#......D&lt;DD......#abbbaabbbbbbbbbbbSSSSSSSSSSSSSbbbSSSSSSSSSSSSSbbSSSSSS
@@ -108,17 +108,10 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>the_namer</ID>
-				<Coord>
-					<Row>5</Row>
-					<Col>24</Col>
-				</Coord>
-			</Placement>
-			<Placement>
 				<ID>the_worldsinger</ID>
 				<Coord>
-					<Row>5</Row>
-					<Col>9</Col>
+					<Row>3</Row>
+					<Col>16</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -129,7 +122,22 @@
 				</Coord>
 			</Placement>
 		</Creatures>
-		<Items/>
+		<Items>
+			<Placement>
+				<ID>catara</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>calluna</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>24</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits>
 		<Exit>
