@@ -171,9 +171,9 @@ Shadow of the Wyrm v0.7.0 "de Visee"
   digging, wand of inferno, moloch armour, scythe, lump of gold, holy
   mantle.
 
-- New artifacts: Ring of Aran Fee, naming stone, Telarian Mail, Telarian
-  Shield, Telarian Helm, God-Blade, Shard of Starlight, shining amulet
-  "Catara", radiant amulet "Calluna".
+- New artifacts: Ring of Aran Fee, Telarian Mail, Telarian Shield, 
+  Telarian Helm, God-Blade, Shard of Starlight, shining amulet "Catara", 
+  radiant amulet "Calluna".
 
 - New traps: monster trap.
 
