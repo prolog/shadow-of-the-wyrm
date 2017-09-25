@@ -1,4 +1,6 @@
 Me:
+- Removing a water-breathing item is always removing water breathing, even
+  if a second item grants the status.
 - Explosive flag. (damages non-attacking creatures radius 1, extra fire
   damage)
 - Make an explosive artifact weapon, make ammo able to be explosive.
@@ -23,7 +25,6 @@ Me:
 - Need to test the following after the spell refactoring:
   - reflective beam, cross, ball, target self, storm
   - Anything else?
-- The Namer's script: what happens after (prayer not working etc)
 - Special spells for The Sorceror
 - Special witchling spell(s?) from the Conjurer, small number of castings. 
   If AP < spell AP, should set AP.

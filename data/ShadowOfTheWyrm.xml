@@ -19256,7 +19256,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>150</NumSides>
 				<Type>3</Type>
-				<EffectBonus>10</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="solarian">
@@ -19289,7 +19288,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>2</Type>
-				<EffectBonus>10</EffectBonus>
 			</Damage>
 			<Speed>70</Speed>
 		</Creature>
@@ -19323,7 +19321,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>150</NumSides>
 				<Type>3</Type>
-				<EffectBonus>10</EffectBonus>
 			</Damage>
 			<Speed>35</Speed>
 		</Creature>
@@ -19361,7 +19358,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>150</NumSides>
 				<Type>3</Type>
-				<EffectBonus>30</EffectBonus>
 			</Damage>
 			<Soak>30</Soak>
 			<Spells>
@@ -19401,7 +19397,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>150</NumSides>
 				<Type>3</Type>
-				<EffectBonus>30</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="nether_hydra">
@@ -19434,7 +19429,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>160</NumSides>
 				<Type>4</Type>
-				<EffectBonus>20</EffectBonus>
 				<StatusAilments>
 					<Status>_poison</Status>
 					<Status>_slow</Status>
@@ -19473,7 +19467,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>160</NumSides>
 				<Type>5</Type>
-				<EffectBonus>20</EffectBonus>
 				<StatusAilments>
 					<Status>_para</Status>
 				</StatusAilments>
@@ -19510,7 +19503,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>160</NumSides>
 				<Type>1</Type>
-				<EffectBonus>20</EffectBonus>
 			</Damage>
 			<Soak>15</Soak>
 		</Creature>
@@ -19611,7 +19603,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>170</NumSides>
 				<Type>8</Type>
-				<EffectBonus>30</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="myriadon">
@@ -19644,7 +19635,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>170</NumSides>
 				<Type>1</Type>
-				<EffectBonus>30</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="lamia">
@@ -19677,7 +19667,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>170</NumSides>
 				<Type>9</Type>
-				<EffectBonus>30</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="moloch">
@@ -19719,7 +19708,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>300</NumSides>
 				<Type>2</Type>
-				<EffectBonus>30</EffectBonus>
 			</Damage>
 			<Soak>60</Soak>
 			<Speed>90</Speed>
@@ -19753,7 +19741,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>170</NumSides>
 				<Type>5</Type>
-				<EffectBonus>30</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="copper_bird">
@@ -19786,7 +19773,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>90</NumSides>
 				<Type>10</Type>
-				<EffectBonus>40</EffectBonus>
 				<StatusAilments>
 					<Status>_stun</Status>
 					<Status>_disf</Status>
@@ -19824,7 +19810,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>180</NumSides>
 				<Type>1</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Speed>35</Speed>
 		</Creature>
@@ -19858,7 +19843,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>180</NumSides>
 				<Type>4</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="noxious_plume">
@@ -19923,7 +19907,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>180</NumSides>
 				<Type>2</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="celeste">
@@ -19959,7 +19942,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>7</Type>
-				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<EventScripts>
 				<DeathScript>
@@ -20001,7 +19983,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>7</Type>
-				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<EventScripts>
 				<DeathScript>
@@ -20043,7 +20024,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>7</Type>
-				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<EventScripts>
 				<DeathScript>
@@ -20085,7 +20065,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>7</Type>
-				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<EventScripts>
 				<DeathScript>
@@ -20127,7 +20106,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>7</Type>
-				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<EventScripts>
 				<DeathScript>
@@ -20169,7 +20147,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>7</Type>
-				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<EventScripts>
 				<DeathScript>
@@ -20211,7 +20188,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>7</Type>
-				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<EventScripts>
 				<DeathScript>
@@ -20253,7 +20229,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>7</Type>
-				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<EventScripts>
 				<DeathScript>
@@ -20295,7 +20270,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>800</NumSides>
 				<Type>8</Type>
-				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<EventScripts>
 				<DeathScript>
@@ -20333,7 +20307,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>1</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Soak>40</Soak>
 		</Creature>
@@ -20367,7 +20340,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>7</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Soak>25</Soak>
 		</Creature>
@@ -20412,7 +20384,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>7</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Spells>
 				<Spell>
@@ -20458,7 +20429,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>7</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Soak>25</Soak>
 		</Creature>
@@ -20492,7 +20462,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>7</Type>
-				<EffectBonus>40</EffectBonus>
 				<StatusAilments>
 					<Status>_poison</Status>
 					<Status>_slow</Status>
@@ -20531,7 +20500,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>4</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="howling_fury_first_love_lost">
@@ -20564,7 +20532,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>0</Type>
-				<EffectBonus>40</EffectBonus>
 				<StatusAilments>
 					<Status>_stun</Status>
 					<Status>_mute</Status>
@@ -20601,7 +20568,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>7</Type>
-				<EffectBonus>40</EffectBonus>
 				<StatusAilments>
 					<Status>_blind</Status>
 					<Status>_mute</Status>
@@ -20638,7 +20604,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>7</Type>
-				<EffectBonus>40</EffectBonus>
 				<StatusAilments>
 					<Status>_stun</Status>
 					<Status>_mute</Status>
@@ -20675,7 +20640,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>6</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="cloud_murderous_flesh_eating_scarabs">
@@ -20708,7 +20672,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>100</NumSides>
 				<Type>1</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Speed>35</Speed>
 		</Creature>
@@ -20742,7 +20705,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>10</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="hundred_headed_hydra">
@@ -20775,7 +20737,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>6</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Soak>25</Soak>
 		</Creature>
@@ -20809,7 +20770,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>3</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="early_dragon_first_age">
@@ -20842,7 +20802,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>3</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Soak>35</Soak>
 		</Creature>
@@ -20876,7 +20835,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>9</Type>
-				<EffectBonus>40</EffectBonus>
 				<StatusAilments>
 					<Status>_poison</Status>
 					<Status>_mute</Status>
@@ -20923,7 +20881,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>1</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="wraith_wan_dying_light">
@@ -20956,7 +20913,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>4</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="blood_angel_white_queen">
@@ -20989,7 +20945,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>7</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="nether_hound">
@@ -21026,7 +20981,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>4</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Spells>
 				<Spell>
@@ -21065,7 +21019,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>8</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="black_ogre">
@@ -21098,7 +21051,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>2</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="cyclonic_beast">
@@ -21131,7 +21083,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>10</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 		</Creature>
 		<Creature id="dark_rider_coming_horde">
@@ -21164,7 +21115,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>7</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Soak>10</Soak>
 			<Speed>35</Speed>
@@ -21199,7 +21149,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>400</NumSides>
 				<Type>8</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Evade>-50</Evade>
 			<Speed>100</Speed>
@@ -21234,7 +21183,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>8</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Speed>35</Speed>
 		</Creature>
@@ -21268,7 +21216,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Type>9</Type>
-				<EffectBonus>40</EffectBonus>
 			</Damage>
 			<Soak>40</Soak>
 			<Speed>35</Speed>
@@ -26027,46 +25974,6 @@
 				<EffectBonus>60</EffectBonus>
 			</Damage>
 		</Creature>
-		<Creature id="the_namer">
-			<RaceID>_elysian</RaceID>
-			<BreatheType>1</BreatheType>
-			<ShortDescriptionSID>THE_NAMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>THE_NAMER_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>THE_NAMER_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>THE_NAMER_SPEECH_TEXT_SID</SpeechTextSID>
-			<DecisionStrategy>
-				<Strategy>mobile</Strategy>
-				<Sentinel>1</Sentinel>
-			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
-				<Colour>11</Colour>
-			</Text>
-			<CreatureGeneration>
-				<Max>1</Max>
-				<AllowableTerrainTypes/>
-				<Friendly>1</Friendly>
-				<DangerLevel>60</DangerLevel>
-				<Rarity>0</Rarity>
-				<HP>
-					<NumDice>60</NumDice>
-					<NumSides>6</NumSides>
-				</HP>
-				<Exp>200000</Exp>
-			</CreatureGeneration>
-			<Level>60</Level>
-			<Damage>
-				<NumDice>1</NumDice>
-				<NumSides>120</NumSides>
-				<Type>5</Type>
-				<EffectBonus>60</EffectBonus>
-			</Damage>
-			<EventScripts>
-				<ChatScript>
-					<Script>quests/the_namer.lua</Script>
-				</ChatScript>
-			</EventScripts>
-		</Creature>
 		<Creature id="the_worldsinger">
 			<RaceID>_elysian</RaceID>
 			<BreatheType>1</BreatheType>
@@ -28439,6 +28346,44 @@
 				</Resistances>
 				<Evade>4</Evade>
 				<Soak>2</Soak>
+			</Amulet>
+			<Amulet id="catara">
+				<DescriptionSID>CATARA_SID</DescriptionSID>
+				<UsageDescriptionSID>CATARA_SID</UsageDescriptionSID>
+				<Value>2260</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.15</Slash>
+					<Pierce>0.15</Pierce>
+					<Pound>0.15</Pound>
+				</Resistances>
+				<Soak>4</Soak>
+			</Amulet>
+			<Amulet id="calluna">
+				<DescriptionSID>CALLUNA_SID</DescriptionSID>
+				<UsageDescriptionSID>CALLUNA_SID</UsageDescriptionSID>
+				<Value>2260</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Cold>0.10</Cold>
+					<Arcane>0.20</Arcane>
+					<Lightning>0.20</Lightning>
+				</Resistances>
+				<Evade>15</Evade>
 			</Amulet>
 		</Amulets>
 		<Armours>

@@ -172,28 +172,28 @@ Shadow of the Wyrm v0.7.0 "de Visee"
   mantle.
 
 - New artifacts: Ring of Aran Fee, naming stone, Telarian Mail, Telarian
-  Shield, Telarian Helm, God-Blade, Shard of Starlight.
+  Shield, Telarian Helm, God-Blade, Shard of Starlight, shining amulet
+  "Catara", radiant amulet "Calluna".
 
 - New traps: monster trap.
 
 - New creatures: drowned shade, cockatrice, The Sorceror, The Sentry,
-  comet jellyfish, The Namer, The Worldsinger, The Speaker, nether hydra,
-  sea worm, mesosaur, ghost ray, megalodon, The Conjurer, The Armourer,
-  red witch, solarian, lavos, ekakophia, myriadon, lamia, moloch, titanic
-  slime, copper bird, bird of paradise, alghari, The Smith, Celeste,
-  Aurelion, The Lady, Vedere, Voros, The Trickster, Shiver, Urgoth,
-  Sceadugenga, crystalline being, seraph of the highest heavenly order,
-  gabar of the book and the holy sword, knight exemplar, paragon of the
-  twenty virtues, trio of shining silver dragons, howling fury of first
-  love lost, luminous angel, saint who moves in perfect grace, pulsating
-  mass of primordial ooze, cloud of murderous, flesh-eating scarabs,
-  thunderbird of the low steppes, hundred-headed hydra, drakkhar carrying
-  a massive flaming sword, early dragon of the first age, eddic crone,
-  murder of a thousand crows, wraith of wan and dying light, blood angel
-  of the white queen, nether hound, ancient shade, black ogre, cyclonic
-  beast, dark rider of the coming horde, teeming mass of writhing
-  tentacles, beast beyond the furthest star, apocalyptic hell that bears
-  no name.
+  comet jellyfish, The Worldsinger, The Speaker, nether hydra, sea worm, 
+  mesosaur, ghost ray, megalodon, The Conjurer, The Armourer, red witch, 
+  solarian, lavos, ekakophia, myriadon, lamia, moloch, titanic slime, 
+  copper bird, bird of paradise, alghari, The Smith, Celeste, Aurelion, 
+  The Lady, Vedere, Voros, The Trickster, Shiver, Urgoth, Sceadugenga, 
+  crystalline being, seraph of the highest heavenly order, gabar of the 
+  book and the holy sword, knight exemplar, paragon of the twenty virtues,
+  trio of shining silver dragons, howling fury of first love lost, 
+  luminous angel, saint who moves in perfect grace, pulsating mass of 
+  primordial ooze, cloud of murderous, flesh-eating scarabs, thunderbird 
+  of the low steppes, hundred-headed hydra, drakkhar carrying a massive 
+  flaming sword, early dragon of the first age, eddic crone, murder of a 
+  thousand crows, wraith of wan and dying light, blood angel of the white 
+  queen, nether hound, ancient shade, black ogre, cyclonic beast, dark 
+  rider of the coming horde, teeming mass of writhing tentacles, beast 
+  beyond the furthest star, apocalyptic hell that bears no name.
 
 - New material types: gases, and unknown.
 
