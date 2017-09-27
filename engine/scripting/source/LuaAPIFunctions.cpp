@@ -235,9 +235,11 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
   lua_register(L, "get_creature_current_hp", get_creature_current_hp);
+  lua_register(L, "set_creature_base_hp", set_creature_base_hp);
   lua_register(L, "get_creature_base_hp", get_creature_base_hp);
   lua_register(L, "set_creature_current_ap", set_creature_current_ap);
   lua_register(L, "get_creature_current_ap", get_creature_current_ap);
+  lua_register(L, "set_creature_base_ap", set_creature_base_ap);
   lua_register(L, "get_creature_base_ap", get_creature_base_ap);
   lua_register(L, "set_creature_name", set_creature_name);
   lua_register(L, "get_creature_name", get_creature_name);
@@ -3112,6 +3114,32 @@ int get_creature_current_hp(lua_State* ls)
   return 1;
 }
 
+int set_creature_base_hp(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int new_hp = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Statistic hp = creature->get_hit_points();
+      hp.set_base(new_hp);
+
+      creature->set_hit_points(hp);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_base_hp");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
 int get_creature_base_hp(lua_State* ls)
 {
   int base_hp = 0;
@@ -3184,6 +3212,32 @@ int get_creature_current_ap(lua_State* ls)
 
   lua_pushinteger(ls, current_ap);
   return 1;
+}
+
+int set_creature_base_ap(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int new_ap = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Statistic ap = creature->get_arcana_points();
+      ap.set_base(new_ap);
+
+      creature->set_arcana_points(ap);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_base_ap");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int get_creature_base_ap(lua_State* ls)
@@ -5476,6 +5530,12 @@ int load_map(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     string map_id = lua_tostring(ls, 2);
 
+    // First, clear any messages.
+    MM::instance().clear_if_necessary();
+
+    // Next, load the map.  Clearing the messages first ensures that any
+    // messages as a result of loading the map start at the beginning of
+    // the message buffer.
     Game& game = Game::instance();
     CreaturePtr creature = get_creature(creature_id);
     MapPtr old_map = game.get_current_map();
