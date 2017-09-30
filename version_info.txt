@@ -245,6 +245,10 @@ Shadow of the Wyrm v0.7.0 "de Visee"
     killed without having an FOV map (immediately after spawn but before
     its first action).
 
+  - In certain cases, the calculated speed for a creature could be 0 or
+    less, which can cause infinite turn loops when the creature is the
+    player.
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 
