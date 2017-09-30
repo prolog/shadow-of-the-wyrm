@@ -8,7 +8,9 @@ const float CreatureSpeedCalculator::OVERBURDENED_SPEED_MULTIPLIER = 3.0f;
 
 int CreatureSpeedCalculator::calculate(CreaturePtr creature) const
 {
-  int calc_speed = 0;
+  // Ensure that the calculated speed is always at least 1, to avoid infinite
+  // loop funtimes with the next-turn calculator.
+  int calc_speed = 1;
 
   if (creature != nullptr)
   {
@@ -19,6 +21,7 @@ int CreatureSpeedCalculator::calculate(CreaturePtr creature) const
     float multiplier = get_multiplier(creature);
 
     calc_speed = static_cast<int>(calc_speed * multiplier);
+    calc_speed = std::max(calc_speed, 1);
   }
 
   return calc_speed;
