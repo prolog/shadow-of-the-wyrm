@@ -588,20 +588,23 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
 
       for (const auto& ailment : ailments)
       {
-        ModifyStatisticsEffect mse;
-        Modifier m;
-
-        StatusEffectPtr status = StatusEffectFactory::create_status_effect(ailment, "");
-        creature->set_status(ailment, {ailment, true, 1 /* JCD FIXME? */, creature_id});
-        m.set_status(ailment, true);
-        mse.set_spell_id(ailment); // set for easy rollback
-        mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
-
-        if (status != nullptr)
+        if (!creature->has_status(ailment))
         {
-          IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-          manager.add_new_message(status->get_application_message(creature));
-          manager.send();
+          ModifyStatisticsEffect mse;
+          Modifier m;
+
+          StatusEffectPtr status = StatusEffectFactory::create_status_effect(ailment, "");
+          creature->set_status(ailment, { ailment, true, 1 /* JCD FIXME? */, creature_id });
+          m.set_status(ailment, true);
+          mse.set_spell_id(ailment); // set for easy rollback
+          mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+
+          if (status != nullptr)
+          {
+            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            manager.add_new_message(status->get_application_message(creature));
+            manager.send();
+          }
         }
       }
     }
@@ -624,9 +627,10 @@ void CreatureUtils::remove_status_ailments_from_wearable(WearablePtr wearable, C
 
       for (pair<string, Modifier>& mod_pair : mods)
       {
+        string status_id = mod_pair.first;
         if (mod_pair.second.get_permanent() == false)
         {
-          if (ailments.find(mod_pair.first) != ailments.end())
+          if (ailments.find(status_id) != ailments.end() && !has_status_ailment_from_wearable(creature, status_id))
           {
             CreatureUtils::process_creature_modifier(creature, mod_pair, StatusRemovalType::STATUS_REMOVAL_UNDO);
             mod_pair.second.set_delete(true);
@@ -696,6 +700,35 @@ void CreatureUtils::add_removal_message(CreaturePtr creature, const string& spel
       manager.send();
     }
   }
+}
+
+bool CreatureUtils::has_status_ailment_from_wearable(CreaturePtr creature, const string& status_id)
+{
+  bool has_ailment = false;
+
+  if (creature != nullptr)
+  {
+    Equipment& eq = creature->get_equipment();
+    EquipmentMap em = eq.get_equipment();
+
+    for (const auto eq_pair : em)
+    {
+      WearablePtr wearable = dynamic_pointer_cast<Wearable>(eq_pair.second);
+
+      if (wearable != nullptr)
+      {
+        set<string> ailments = wearable->get_status_ailments().get_ailments();
+
+        if (std::find(ailments.begin(), ailments.end(), status_id) != ailments.end())
+        {
+          has_ailment = true;
+          break;
+        }
+      }
+    }
+  }
+
+  return has_ailment;
 }
 
 #ifdef UNIT_TESTS
