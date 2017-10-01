@@ -173,7 +173,7 @@ void VoidGenerator::add_random_features(MapPtr result_map, const vector<string>&
     int rows = dim.get_y();
     int cols = dim.get_x();
 
-    TilesContainer& tiles = result_map->get_tiles();
+    TilesContainer tiles = result_map->get_tiles();
 
     for (int i = 0; i < num_features; i++)
     {

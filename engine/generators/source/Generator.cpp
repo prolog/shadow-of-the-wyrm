@@ -287,8 +287,6 @@ map<string, string> Generator::get_depth_properties() const
 
       try
       {
-        int numeric_part = std::stoi(numeric_part_s);
-
         // If we got here, we got a property starting with a number.
         // Remove the numeric part and then check the rest of the
         // property name to see if it's a depth property.
@@ -460,8 +458,8 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
 
 bool Generator::does_tile_lead_to_previous_map(const MapType map_type, const TileType tile_type)
 {
-  if (map_type == MapType::MAP_TYPE_UNDERWORLD && tile_type == TileType::TILE_TYPE_UP_STAIRCASE ||
-      map_type == MapType::MAP_TYPE_OVERWORLD && tile_type == TileType::TILE_TYPE_DOWN_STAIRCASE)
+  if ((map_type == MapType::MAP_TYPE_UNDERWORLD && tile_type == TileType::TILE_TYPE_UP_STAIRCASE) ||
+      (map_type == MapType::MAP_TYPE_OVERWORLD && tile_type == TileType::TILE_TYPE_DOWN_STAIRCASE))
   {
     return true;
   }
