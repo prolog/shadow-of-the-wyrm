@@ -1,6 +1,4 @@
 Me:
-- Removing a water-breathing item is always removing water breathing, even
-  if a second item grants the status.
 - Explosive flag. (damages non-attacking creatures radius 1, extra fire
   damage)
 - Make an explosive artifact weapon, make ammo able to be explosive.

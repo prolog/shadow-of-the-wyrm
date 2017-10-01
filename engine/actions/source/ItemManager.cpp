@@ -7,7 +7,6 @@
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
-#include "StatusEffectFactory.hpp"
 #include "Wearable.hpp"
 
 using namespace std;
