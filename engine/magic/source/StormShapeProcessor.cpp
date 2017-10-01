@@ -78,12 +78,8 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
   DisplayTile dt('*', static_cast<int>(spell.get_colour()));
 
   Game& game = Game::instance();
-  CurrentCreatureAbilities cca;
   ISeasonPtr season = game.get_current_world()->get_calendar().get_season();
-  Settings& settings = game.get_settings_ref();
   CreaturePtr player = game.get_current_player();
-  bool player_blind = !cca.can_see(player);
-  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(game.get_current_world()->get_calendar().get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD, settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
   vector<Colour> scv = String::create_colour_vector_from_csv_string(map->get_property(MapProperties::MAP_PROPERTIES_SHIMMER_COLOURS));
   ShimmerColours shimmer_colours(scv);
 
@@ -106,6 +102,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
       // Push back the selected coordinate (the eye of the mini-storm).
       result.second.push_back({ make_pair(dt, rand_coord) });
     }
+
     // If this is a radiant storm, calculate the balls created from the random
     // coordinate.  Ensure that the caster's coordinate is always excluded.
     //
@@ -149,10 +146,6 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
           result.second.push_back(ball_movement_frame);
         }
       }
-
-      // After the blast has dissipated, remove the epicenter.
-      //dt = MapTranslator::create_display_tile(player_blind, tod_overrides, shimmer_colours, tile, fov_tile);
-      //dt.set_season(season->get_season());
     }
   }
 

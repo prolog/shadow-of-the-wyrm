@@ -1405,7 +1405,7 @@ int RNG_dice(lua_State* ls)
 
     if (num_args == 3 && lua_isnumber(ls, 3))
     {
-      int modifier = lua_tointeger(ls, 3);
+      modifier = lua_tointeger(ls, 3);
     }
 
     rng_val = RNG::dice(num_dice, dice_sides, modifier);

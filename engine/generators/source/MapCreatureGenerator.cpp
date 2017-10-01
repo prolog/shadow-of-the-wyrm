@@ -63,9 +63,6 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   TileType map_terrain_type = map->get_terrain_type();
 
   Dimensions dim = map->size();
-  int rows = dim.get_y();
-  int cols = dim.get_x();
-
   CreatureGenerationManager cgm;
   
   Rarity rarity = CreationUtils::generate_rarity();
