@@ -16264,7 +16264,7 @@
 				<Exp>3</Exp>
 			</CreatureGeneration>
 			<Level>1</Level>
-			<Damage>
+			<Damage explosive="1">
 				<NumDice>1</NumDice>
 				<NumSides>4</NumSides>
 				<Type>1</Type>
@@ -30352,8 +30352,8 @@
 				<UsageDescriptionSID>FIRE_BOMB_USAGE_SID</UsageDescriptionSID>
 				<Value>8</Value>
 				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>11</Ounces>
+					<Pounds>1</Pounds>
+					<Ounces>5</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
@@ -30361,7 +30361,7 @@
 					<Symbol>*</Symbol>
 					<Colour>9</Colour>
 				</TextDetails>
-				<DangerLevel>14</DangerLevel>
+				<DangerLevel>10</DangerLevel>
 				<Properties>
 					<Property>
 						<Name>destruction_pct_chance</Name>
@@ -30372,7 +30372,7 @@
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>47</Difficulty>
 				<Speed>3</Speed>
-				<Damage>
+				<Damage explosive="1">
 					<NumDice>4</NumDice>
 					<NumSides>6</NumSides>
 					<Modifier>1</Modifier>
@@ -30671,7 +30671,6 @@
 					<Pounds>14</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
-				<AutoCurse>1</AutoCurse>
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
@@ -32784,6 +32783,39 @@
 					<Type>1</Type>
 				</Damage>
 			</Missile>
+			<Missile id="exploding_arrow">
+				<DescriptionSID>EXPLODING_ARROW_SID</DescriptionSID>
+				<UsageDescriptionSID>EXPLODING_ARROW_USAGE_SID</UsageDescriptionSID>
+				<Value>6</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>9</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>15</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
+				<Skill>1009</Skill>
+				<RangedSkill>2003</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
+				<Difficulty>43</Difficulty>
+				<Speed>3</Speed>
+				<Damage explosive="1">
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
 			<Missile id="avernal_arrow">
 				<DescriptionSID>AVERNAL_ARROW_SID</DescriptionSID>
 				<UsageDescriptionSID>AVERNAL_ARROW_USAGE_SID</UsageDescriptionSID>
@@ -32805,7 +32837,7 @@
 				<Difficulty>43</Difficulty>
 				<Speed>3</Speed>
 				<Damage piercing="true">
-					<NumDice>4</NumDice>
+					<NumDice>6</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>

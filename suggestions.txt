@@ -1,12 +1,9 @@
 Me:
-- Explosive flag. (damages non-attacking creatures radius 1, extra fire
-  damage)
-- Make an explosive artifact weapon, make ammo able to be explosive.
-- Add explosive damage to fire bombs.
+- Damage not combining amounts/flags properly. Test: ranged combat,
+  bow + explosive arrows.
 - Smith should give an HP boost before entering cosmos.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
-- Linux build warnings in StormShapeProcessor, MapCreatureGenerator
 - Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
