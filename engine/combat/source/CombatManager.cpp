@@ -574,6 +574,14 @@ void CombatManager::handle_ethereal_if_necessary(CreaturePtr attacking_creature,
   }
 }
 
+void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info)
+{
+  if (attacked_creature != nullptr)
+  {
+    // ...
+  }
+}
+
 void CombatManager::handle_split_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, RacePtr creature_race, MapPtr current_map)
 {
   if (attacked_creature && creature_race)
@@ -742,6 +750,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
     {
       handle_draining_if_necessary(attacking_creature, attacked_creature, hp_trans, damage_info);
       handle_ethereal_if_necessary(attacking_creature, attacked_creature, ap_trans, damage_info);
+      handle_explosive_if_necessary(attacking_creature, attacked_creature, damage_dealt, damage_info);
     }
 
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)

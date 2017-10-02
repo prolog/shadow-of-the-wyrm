@@ -73,6 +73,7 @@
 				<Artifact>battle_armour_aurelion</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>choros_greatsword</Artifact>
+				<Artifact>inferno</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>titan</Summon>
@@ -197,6 +198,7 @@
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>choros_greatsword</Artifact>
 				<Artifact>blood_and_glory</Artifact>
+				<Artifact>inferno</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>fire_elemental</Summon>
@@ -320,6 +322,7 @@
 				<Artifact>stone_club_urgol</Artifact>
 				<Artifact>akkar</Artifact>
 				<Artifact>vorpal_blade</Artifact>
+				<Artifact>inferno</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>fell_lord</Summon>
@@ -356,6 +359,7 @@
 				<Artifact>apocalypse</Artifact>
 				<Artifact>akkar</Artifact>
 				<Artifact>vorpal_blade</Artifact>
+				<Artifact>inferno</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>tentacled_horror</Summon>
@@ -30656,6 +30660,32 @@
 				<Damage>
 					<NumDice>3</NumDice>
 					<NumSides>12</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="inferno">
+				<DescriptionSID>INFERNO_SID</DescriptionSID>
+				<UsageDescriptionSID>INFERNO_USAGE_SID</UsageDescriptionSID>
+				<Value>1800</Value>
+				<Weight>
+					<Pounds>14</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<AutoCurse>1</AutoCurse>
+				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.20</Heat>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>6</Speed>
+				<Damage explosive="1">
+					<NumDice>6</NumDice>
+					<NumSides>10</NumSides>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>

@@ -2,6 +2,7 @@ Me:
 - Explosive flag. (damages non-attacking creatures radius 1, extra fire
   damage)
 - Make an explosive artifact weapon, make ammo able to be explosive.
+- Add explosive damage to fire bombs.
 - Smith should give an HP boost before entering cosmos.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
