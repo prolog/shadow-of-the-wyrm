@@ -570,6 +570,30 @@ CreatureDirectionMap MapUtils::get_adjacent_creatures(const MapPtr& map, const C
   return adjacent_creatures;
 }
 
+vector<CreaturePtr> MapUtils::get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature)
+{
+  vector<CreaturePtr> adj_creatures;
+
+  if (map && creature)
+  {
+    Coordinate creature_coord = map->get_location(creature->get_id());
+
+    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
+
+    for (const Coordinate& c : adjacent_coords)
+    {
+      Direction d = CoordUtils::get_direction(creature_coord, c);
+      TilePtr tile = map->at(c);
+
+      if (tile && tile->has_creature())
+      {
+        adj_creatures.push_back(tile->get_creature());
+      }
+    }
+  }
+
+  return adj_creatures;
+}
 bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
 {
   bool result = false;

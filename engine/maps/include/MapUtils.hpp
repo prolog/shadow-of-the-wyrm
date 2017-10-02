@@ -32,6 +32,7 @@ class MapUtils
     static TileDirectionMap get_tiles_with_features(MapPtr& map, CreaturePtr& creature);
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
     static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
+    static std::vector<CreaturePtr> get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature);
     static bool remove_creature(const MapPtr& map, const CreaturePtr& creature);
     static bool tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, const TileType tt);
 

@@ -478,8 +478,14 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
     // to match the creature's remaining HP
     string source_id = attacking_creature != nullptr ? attacking_creature->get_id() : "";
 
-    handle_vorpal_if_necessary(attacking_creature, attacked_creature, damage_info, damage_dealt);
+    handle_vorpal_if_necessary(attacking_creature, attacked_creature, damage_info, damage_dealt); 
     deal_damage(attacking_creature, attacked_creature, source_id, damage_dealt, damage_info);
+
+    if (!attacked_creature->is_dead())
+    {
+      // Deal any secondary damage as a result of weapon flags.
+      handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, damage_info, attack_type);
+    }
   }
   else
   {
@@ -574,11 +580,37 @@ void CombatManager::handle_ethereal_if_necessary(CreaturePtr attacking_creature,
   }
 }
 
-void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info)
+void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map, const int damage_dealt, const Damage& damage_info, const AttackType attack_type)
 {
-  if (attacked_creature != nullptr)
+  if (damage_info.get_explosive() && attacked_creature != nullptr)
   {
-    // ...
+    // Add a message about the explosion.
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
+    string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+
+    string explosion_msg = CombatTextKeys::get_explosive_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
+    manager.add_new_message(explosion_msg);
+    manager.send();
+
+    // Deal the additional damage to the attacked creature, as well as those
+    // around it that are not the attacker.  Explosive damage is half the
+    // original.
+    DamagePtr explosive_damage = std::make_shared<Damage>();
+    explosive_damage->set_num_dice(std::max(1, damage_dealt/2));
+    explosive_damage->set_dice_sides(1);
+    explosive_damage->set_damage_type(DamageType::DAMAGE_TYPE_HEAT);
+    
+    vector<CreaturePtr> aff_creatures = MapUtils::get_adjacent_creatures_unsorted(map, attacked_creature);
+    aff_creatures.insert(aff_creatures.begin(), attacked_creature);
+
+    for (CreaturePtr aff_creature : aff_creatures)
+    {
+      if (aff_creature && (!attacking_creature || (aff_creature->get_id() != attacking_creature->get_id())))
+      {
+        attack(attacking_creature, aff_creature, attack_type, AttackSequenceType::ATTACK_SEQUENCE_FOLLOW_THROUGH, true, explosive_damage);
+      }
+    }
   }
 }
 
@@ -750,7 +782,6 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
     {
       handle_draining_if_necessary(attacking_creature, attacked_creature, hp_trans, damage_info);
       handle_ethereal_if_necessary(attacking_creature, attacked_creature, ap_trans, damage_info);
-      handle_explosive_if_necessary(attacking_creature, attacked_creature, damage_dealt, damage_info);
     }
 
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
