@@ -8,17 +8,17 @@
 using namespace std;
 
 Damage::Damage()
-: Dice(0, 0, 0), chaotic(false), vorpal(false), draining(false), ethereal(false), piercing(false), incorporeal(false), scything(false), damage_type(DamageType::DAMAGE_TYPE_SLASH), effect_bonus(0)
+: Dice(0, 0, 0), chaotic(false), vorpal(false), draining(false), ethereal(false), piercing(false), incorporeal(false), scything(false), explosive(false), damage_type(DamageType::DAMAGE_TYPE_SLASH), effect_bonus(0)
 {
 }
 
-Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const vector<string>& rslays, const bool chaos, const bool vorp, const bool drain, const bool ether, const bool pierce, const bool incorp, const bool scy, const int eb, const StatusAilments& ailments)
-: Dice(dice, sides, mod), chaotic(chaos), vorpal(vorp), draining(drain), ethereal(ether), piercing(pierce), incorporeal(incorp), scything(scy), damage_type(dtype), slays_races(rslays), effect_bonus(eb), status_ailments(ailments)
+Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const vector<string>& rslays, const bool chaos, const bool vorp, const bool drain, const bool ether, const bool pierce, const bool incorp, const bool scy, const bool exp, const int eb, const StatusAilments& ailments)
+: Dice(dice, sides, mod), chaotic(chaos), vorpal(vorp), draining(drain), ethereal(ether), piercing(pierce), incorporeal(incorp), scything(scy), explosive(exp), damage_type(dtype), slays_races(rslays), effect_bonus(eb), status_ailments(ailments)
 {
 }
 
 Damage::Damage(const Damage& d)
-: Dice(d.num_dice, d.dice_sides, d.modifier), chaotic(d.chaotic), vorpal(d.vorpal), draining(d.draining), ethereal(d.ethereal),  piercing(d.piercing), incorporeal(d.incorporeal), scything(d.scything), damage_type(d.damage_type), slays_races(d.slays_races), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
+: Dice(d.num_dice, d.dice_sides, d.modifier), chaotic(d.chaotic), vorpal(d.vorpal), draining(d.draining), ethereal(d.ethereal),  piercing(d.piercing), incorporeal(d.incorporeal), scything(d.scything), explosive(d.explosive), damage_type(d.damage_type), slays_races(d.slays_races), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
 {
   DamagePtr addl_damage = d.get_additional_damage();
   
@@ -44,6 +44,7 @@ Damage& Damage::operator=(const Damage& d)
     piercing    = d.piercing;
     incorporeal = d.incorporeal;
     scything    = d.scything;
+    explosive   = d.explosive;
     effect_bonus= d.effect_bonus;
     status_ailments = d.status_ailments;
     
@@ -81,6 +82,7 @@ bool Damage::operator==(const Damage& d) const
     match = match && (piercing    == d.get_piercing()   );
     match = match && (incorporeal == d.get_incorporeal());
     match = match && (scything    == d.get_scything()   );
+    match = match && (explosive   == d.get_explosive()  );
     match = match && (effect_bonus == d.get_effect_bonus());
     
     DamagePtr d_add_damage = d.get_additional_damage();
@@ -162,7 +164,7 @@ void Damage::set_damage_flags(const map<DamageFlagType, bool>& dflags)
 
 void Damage::set_damage_flag(const DamageFlagType df, const bool value)
 {
-  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(6), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(7), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
 
   switch (df)
   {
@@ -186,6 +188,9 @@ void Damage::set_damage_flag(const DamageFlagType df, const bool value)
       break;
     case DamageFlagType::DAMAGE_FLAG_SCYTHING:
       scything = value;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_EXPLOSIVE:
+      explosive = value;
       break;
     default:
       break;
@@ -219,6 +224,9 @@ bool Damage::get_damage_flag(const DamageFlagType df) const
     case DamageFlagType::DAMAGE_FLAG_SCYTHING:
       flag = scything;
       break;
+    case DamageFlagType::DAMAGE_FLAG_EXPLOSIVE:
+      flag = explosive;
+      break;
     default:
       break;
   }
@@ -228,7 +236,7 @@ bool Damage::get_damage_flag(const DamageFlagType df) const
 
 vector<DamageFlagType> Damage::get_damage_flags_by_value(const bool value) const
 {
-  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(6), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(7), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
   vector<DamageFlagType> damage_flags;
 
   if (chaotic == value)
@@ -264,6 +272,11 @@ vector<DamageFlagType> Damage::get_damage_flags_by_value(const bool value) const
   if (scything == value)
   {
     damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_SCYTHING);
+  }
+
+  if (explosive == value)
+  {
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_EXPLOSIVE);
   }
 
   return damage_flags;
@@ -337,6 +350,16 @@ void Damage::set_scything(const bool new_scything)
 bool Damage::get_scything() const
 {
   return scything;
+}
+
+void Damage::set_explosive(const bool new_explosive)
+{
+  explosive = new_explosive;
+}
+
+bool Damage::get_explosive() const
+{
+  return explosive;
 }
 
 void Damage::set_effect_bonus(const int new_effect_bonus)
@@ -423,6 +446,7 @@ bool Damage::serialize(ostream& stream) const
   Serialize::write_bool(stream, piercing);
   Serialize::write_bool(stream, incorporeal);
   Serialize::write_bool(stream, scything);
+  Serialize::write_bool(stream, explosive);
   Serialize::write_int(stream, effect_bonus);
 
   status_ailments.serialize(stream);
@@ -452,6 +476,7 @@ bool Damage::deserialize(istream& stream)
   Serialize::read_bool(stream, piercing);
   Serialize::read_bool(stream, incorporeal);
   Serialize::read_bool(stream, scything);
+  Serialize::read_bool(stream, explosive);
   Serialize::read_int(stream, effect_bonus);
 
   status_ailments.deserialize(stream);

@@ -112,6 +112,13 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 - The artifact scythe "Whisperwind" now has the scything flag applied to
   its damage.
 
+- Also added a new "explosive" damage type.  Explosive damage deals an
+  extra third of the original damage to the attacked creature, and any
+  creatures around it that are not the attacker.
+
+- The artifact greatsword "Inferno" has the explosive flag, and is
+  available from Aurelion, Voros, Urgoth, and Sceadugenga.
+
 - Certain races (Elysian) can now take a flag to exclude them from the
   list of races generated for determining pugilist slays.
 
@@ -173,7 +180,7 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 
 - New artifacts: Ring of Aran Fee, Telarian Mail, Telarian Shield, 
   Telarian Helm, God-Blade, Shard of Starlight, shining amulet "Catara", 
-  radiant amulet "Calluna".
+  radiant amulet "Calluna", fiery greatsword "Inferno".
 
 - New traps: monster trap.
 

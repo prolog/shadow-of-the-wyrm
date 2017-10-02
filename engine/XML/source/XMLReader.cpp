@@ -69,6 +69,9 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
     bool scything = XMLUtils::get_attribute_bool_value(damage_node, "scything");
     damage.set_scything(scything);
 
+    bool explosive = XMLUtils::get_attribute_bool_value(damage_node, "explosive");
+    damage.set_explosive(explosive);
+
     int effect_bonus = XMLUtils::get_child_node_int_value(damage_node, "EffectBonus");
     damage.set_effect_bonus(effect_bonus);
 
