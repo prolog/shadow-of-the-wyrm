@@ -20,12 +20,6 @@ Damage::Damage(const uint dice, const uint sides, const int mod, const DamageTyp
 Damage::Damage(const Damage& d)
 : Dice(d.num_dice, d.dice_sides, d.modifier), chaotic(d.chaotic), vorpal(d.vorpal), draining(d.draining), ethereal(d.ethereal),  piercing(d.piercing), incorporeal(d.incorporeal), scything(d.scything), explosive(d.explosive), damage_type(d.damage_type), slays_races(d.slays_races), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
 {
-  DamagePtr addl_damage = d.get_additional_damage();
-  
-  if (addl_damage)
-  {
-    additional_damage = std::shared_ptr<Damage>(new Damage(*addl_damage));
-  }
 }
 
 Damage& Damage::operator=(const Damage& d)
@@ -46,14 +40,7 @@ Damage& Damage::operator=(const Damage& d)
     scything    = d.scything;
     explosive   = d.explosive;
     effect_bonus= d.effect_bonus;
-    status_ailments = d.status_ailments;
-    
-    DamagePtr addl_damage = d.get_additional_damage();
-    
-    if (addl_damage)
-    {
-      additional_damage = std::shared_ptr<Damage>(new Damage(*d.get_additional_damage()));
-    }
+    status_ailments = d.status_ailments;    
   }
   
   return *this;
@@ -84,15 +71,6 @@ bool Damage::operator==(const Damage& d) const
     match = match && (scything    == d.get_scything()   );
     match = match && (explosive   == d.get_explosive()  );
     match = match && (effect_bonus == d.get_effect_bonus());
-    
-    DamagePtr d_add_damage = d.get_additional_damage();
-    bool add_damage_matches = true;
-    
-    if (additional_damage && d_add_damage)
-    {
-      add_damage_matches = (*additional_damage == *d_add_damage);
-      match = match && add_damage_matches;
-    }
     
     return match;
   }
@@ -128,30 +106,7 @@ void Damage::set_slays_races(const vector<string>& new_slays_races)
 
 vector<string> Damage::get_slays_races() const
 {
-  vector<string> slays_combined = slays_races;
-
-  if (additional_damage != nullptr)
-  {
-    vector<string> addl_slays = additional_damage->get_slays_races();
-    slays_combined.insert(slays_combined.end(), addl_slays.begin(), addl_slays.end());
-  }
-
-  return slays_combined;
-}
-
-void Damage::set_additional_damage(DamagePtr new_additional_damage)
-{
-  additional_damage = new_additional_damage;
-}
-
-bool Damage::has_additional_damage() const
-{
-  return (additional_damage != nullptr);
-}
-
-DamagePtr Damage::get_additional_damage() const
-{
-  return additional_damage;
+  return slays_races;
 }
 
 void Damage::set_damage_flags(const map<DamageFlagType, bool>& dflags)
@@ -387,23 +342,6 @@ bool Damage::is_always_zero() const
   return (num_dice == 0) || (dice_sides == 0);
 }
 
-bool Damage::contains(const DamageType dt) const
-{
-  // First check the main damage type.
-  if (damage_type == dt) return true;
-
-  // If not, check any additional damage types.
-  auto add_dmg = additional_damage;
-
-  while (add_dmg != nullptr)
-  {
-    if (add_dmg->get_damage_type() == dt) return true;
-    else add_dmg = add_dmg->get_additional_damage();
-  }
-
-  return false;
-}
-
 string Damage::str() const
 {
   ostringstream ss;
@@ -427,11 +365,6 @@ string Damage::str() const
     ss << modifier_s << modifier_abs;
   }
   
-  if (additional_damage)
-  {
-    ss << "+" << additional_damage->str();
-  }
-
   return ss.str();
 }
 
@@ -452,16 +385,6 @@ bool Damage::serialize(ostream& stream) const
   status_ailments.serialize(stream);
   Serialize::write_string_vector(stream, slays_races);
 
-  if (additional_damage)
-  {
-    Serialize::write_class_id(stream, additional_damage->get_class_identifier());
-    additional_damage->serialize(stream);
-  }
-  else
-  {
-    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
-  }
-
   return true;
 }
 
@@ -481,15 +404,6 @@ bool Damage::deserialize(istream& stream)
 
   status_ailments.deserialize(stream);
   Serialize::read_string_vector(stream, slays_races);
-
-  ClassIdentifier ci = ClassIdentifier::CLASS_ID_NULL;
-  Serialize::read_class_id(stream, ci);
-
-  if (ci != ClassIdentifier::CLASS_ID_NULL)
-  {
-    additional_damage = std::make_shared<Damage>();
-    additional_damage->deserialize(stream);
-  }
 
   return true;
 }

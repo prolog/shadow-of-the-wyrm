@@ -117,7 +117,7 @@ void CorpseFactory::set_display_details(CreaturePtr dead_creature, ItemPtr corps
 
 void CorpseFactory::set_poisoned_if_necessary(CreaturePtr dead_creature, ItemPtr corpse)
 {
-  if (dead_creature->get_base_damage().contains(DamageType::DAMAGE_TYPE_POISON))
+  if (dead_creature->get_base_damage().get_damage_type() == DamageType::DAMAGE_TYPE_POISON)
   {
     ConsumablePtr c_corpse = dynamic_pointer_cast<Consumable>(corpse);
 

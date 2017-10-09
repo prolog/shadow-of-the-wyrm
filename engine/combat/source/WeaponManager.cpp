@@ -207,33 +207,46 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
   Equipment& equipment = creature->get_equipment();
   WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
   WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
+  int num_ranged_weapon_dice = 0;
+  vector<string> ranged_weapon_slays;
+  vector<DamageFlagType> ranged_weapon_dflags;
 
   if (ranged_weapon)
   {
     d = ranged_weapon->get_damage();
+
+    // Yes, the number of dice is always added, regardless of whether the
+    // dice faces match.
+    // Yes, I realize that if the damage dice for launchers doesn't match
+    // the ammo, this will be totally wrong.
+    // Yes, that's why the damage dice for launchers generally matches the 
+    // ammo.
+    num_ranged_weapon_dice = d.get_num_dice();
+    ranged_weapon_slays = d.get_slays_races();
+    ranged_weapon_dflags = d.get_damage_flags_by_value(true);
   }
 
   if (ammunition)
   {
-    Damage ammunition_damage = ammunition->get_damage();
-
-    if (!ranged_weapon)
-    {
-      d = ammunition_damage; 
-    }
-    else
-    {
-      // Set the additional damage based on the ammunition
-      DamagePtr additional_damage = std::make_shared<Damage>(ammunition_damage);
-      d.set_additional_damage(additional_damage);
-    }
+    d = ammunition->get_damage();
+    d.set_num_dice(d.get_num_dice() + num_ranged_weapon_dice);
   }
 
   if (ranged_weapon && String::to_bool(ranged_weapon->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED)))
   {
     d.set_damage_type(ranged_weapon->get_damage().get_damage_type());
   }
-  
+
+  if (!ranged_weapon_slays.empty())
+  {
+    // ...
+  }
+
+  if (!ranged_weapon_dflags.empty())
+  {
+    // ...
+  }
+
   return d;
 }
 

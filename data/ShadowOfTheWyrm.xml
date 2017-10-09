@@ -32489,7 +32489,7 @@
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>2</NumSides>
+					<NumSides>4</NumSides>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
@@ -32516,7 +32516,7 @@
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>2</NumSides>
+					<NumSides>4</NumSides>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
@@ -32606,7 +32606,7 @@
 				<Speed>5</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>6</NumSides>
+					<NumSides>8</NumSides>
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
@@ -32626,8 +32626,8 @@
 				<Difficulty>42</Difficulty>
 				<Speed>2</Speed>
 				<Damage>
-					<NumDice>6</NumDice>
-					<NumSides>6</NumSides>
+					<NumDice>5</NumDice>
+					<NumSides>8</NumSides>
 					<Type>1</Type>
 					<Slays>
 						<Slay>_humanoid</Slay>
@@ -32779,7 +32779,7 @@
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>2</NumSides>
+					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>
 			</Missile>
@@ -32870,7 +32870,7 @@
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>2</NumSides>
+					<NumSides>8</NumSides>
 					<Type>1</Type>
 				</Damage>
 			</Missile>
