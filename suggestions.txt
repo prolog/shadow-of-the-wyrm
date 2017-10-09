@@ -1,6 +1,10 @@
 Me:
 - Damage not combining amounts/flags properly. Test: ranged combat,
   bow + explosive arrows.
+- Rework num dice calculations in WeaponManager so that if the launcher
+  has fewer dice sides than the ammo, an average is added to the modifier
+  instead of adding to num_dice.
+- This should be moved into a calculator.
 - Smith should give an HP boost before entering cosmos.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).

@@ -260,6 +260,12 @@ Shadow of the Wyrm v0.7.0 "de Visee"
     less, which can cause infinite turn loops when the creature is the
     player.
 
+  - Internally, there was a system of "additional damage" where you could
+    hypothetically deal 1d6+1d6 damage.  This was really buggy and
+    basically never worked.  It was used in the context of ranged combat,
+    which has been updated to just add the number of dice from the
+    launcher to the dice from the ammo when calculating the damage.
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 
