@@ -551,7 +551,7 @@ within your court?  You fool.  Your actions reek %b
 of pride and ruin, your hubris shining bright %b
 as dragon-gold.  I swear my sword will seek %b
 an ending, both of you and all your knights: %b
-I'll have it said that Choro stood and made his fight."
+I'll have it said that Choros stood and made his fight."
 %p
 For as he spoke, the tell-tale sound of hooves - %b
 the king and riders heard the note, and came %b
@@ -1336,5 +1336,15 @@ his victim's throat.  One more!  But as it fell, %b
 another giant grabbed two fae, and spun %b
 as if to throw the hammer - with a yell, %b
 releasing both the men, who flew as one %b
-to maim four others: now the battle had begun.
+to crush four others: now the battle had begun.
+%p
+For with those six, a fog was shaken.  Now %b
+the fae showed wild abandon, quick and keen; %b
+and now the giants' savagery allowed %b
+a different kind of combat, one foreseen %b
+when Tel met Choros.  This was something else. %b
+A second storm, a squall, a bitter taste %b
+of things to come, its repercussions felt %b
+as surely as two fae were speared: a brace %b
+of peasants, kicking, pinned together at the waist.
 %p

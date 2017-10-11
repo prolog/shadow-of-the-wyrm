@@ -1,4 +1,5 @@
 Me:
+- Poem combat tally: 63 fae remaining, 20 giants.
 - Damage not combining amounts/flags properly. Test: ranged combat,
   bow + explosive arrows.
 - Rework num dice calculations in WeaponManager so that if the launcher
