@@ -29,6 +29,16 @@ bool Dice::operator==(const Dice& dice) const
   return result;
 }
 
+int Dice::min() const
+{
+  return num_dice + modifier;
+}
+
+int Dice::avg() const
+{
+  return ((min() + max()) / 2);
+}
+
 int Dice::max() const
 {
   return ((num_dice * dice_sides) + modifier);

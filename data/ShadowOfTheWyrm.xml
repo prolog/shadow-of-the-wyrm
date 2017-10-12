@@ -32539,7 +32539,7 @@
 				<RangedSkill>2007</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Speed>1</Speed>
-				<Damage>
+				<Damage piercing="1">
 					<NumDice>8</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
@@ -32625,7 +32625,7 @@
 				<RangedSkill>2004</RangedSkill>
 				<Difficulty>42</Difficulty>
 				<Speed>2</Speed>
-				<Damage>
+				<Damage vorpal="1">
 					<NumDice>5</NumDice>
 					<NumSides>8</NumSides>
 					<Type>1</Type>

@@ -160,6 +160,8 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 - Ammunition is now less likely to break if it has slays, or is blessed,
   and is more likely to break if it's cursed.
 
+- Shadow is now vorpal-flagged.  Pelter has piercing.
+
 - More stanzas for "Tel and Floridel".
 
 - New species of weeds.
