@@ -16,7 +16,7 @@ local function get_highest_magic_skill(magic_skills)
   local max_val = -1
 
   for k, v in pairs(magic_skills) do
-    if v > max_val then
+    if v >= max_val then
       highest_magic, max_val = k, v
     end
   end
@@ -33,9 +33,13 @@ end
 
 local function create_primordial_reward()
   add_spell_castings(PLAYER_ID, "p_09_antimatter", RNG_range(100, 150))
+  add_spell_castings(PLAYER_ID, "p_10_annihilation", RNG_range(3, 5))
     
   add_message_with_pause("THE_CONJURER_PRIMORDIAL_TEXT_SID")
-  clear_and_add_message("THE_CONJURER_PRIMORDIAL_TEXT2_SID")
+  add_message_with_pause("THE_CONJURER_PRIMORDIAL_TEXT2_SID")
+  add_message_with_pause("THE_CONJURER_PRIMORDIAL_TEXT3_SID")
+  add_message_with_pause("THE_CONJURER_PRIMORDIAL_TEXT4_SID")
+  clear_and_add_message("THE_CONJURER_PRIMORDIAL_TEXT5_SID")
 end
 
 local function create_spellbook_reward(spellbooks, highest_magic)
