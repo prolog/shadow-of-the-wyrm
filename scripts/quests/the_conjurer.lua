@@ -67,6 +67,14 @@ if gift_generated ~= "1" then
   local magic_skills = get_magic_skills(PLAYER_ID)
   table.sort(magic_skills)
 
+  -- Halve the value of Cantrips.  If it's very high and the other skills
+  -- are very low, it should still be considered for the Conjurer's reward.
+  -- But for example, if the player has maxed Cantrips and Primordial,
+  -- the player should always get the witchling reward.
+  if magic_skills[CSKILL_MAGIC_CANTRIPS] ~= nil then
+    magic_skills[CSKILL_MAGIC_CANTRIPS] = (magic_skills[C_SKILL_MAGIC_CANTRIPS] / 2)
+  end
+
   local highest_magic, max_val = get_highest_magic_skill(magic_skills)
 
   -- If the player has no magic skills, he or she gets a wand of inferno.
