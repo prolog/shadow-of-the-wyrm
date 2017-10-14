@@ -483,6 +483,8 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 
     if (!attacked_creature->is_dead())
     {
+      mark_health_for_damage_taken(attacking_creature, attacked_creature);
+
       // Deal any secondary damage as a result of weapon flags.
       handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, damage_info, attack_type);
     }
@@ -987,6 +989,20 @@ void CombatManager::mark_appropriately(CreaturePtr attacking_creature, const Att
     for (const SkillType& skill_type : skills_to_mark)
     {
       sm.mark_skill(attacking_creature, skill_type, attack_success);
+    }
+  }
+}
+
+// Seeking out dangerous creatures (those at your level or higher) and getting
+// hurt by them trains health.
+void CombatManager::mark_health_for_damage_taken(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+{
+  if (attacking_creature != nullptr && attacked_creature != nullptr)
+  {
+    if (attacking_creature->get_level().get_current() >= attacked_creature->get_level().get_current())
+    {
+      StatisticsMarker sm;
+      sm.mark_health(attacked_creature);
     }
   }
 }

@@ -1,6 +1,5 @@
 Me:
 - Poem combat tally: 63 fae remaining, 20 giants.
-- Smith should give an HP boost before entering cosmos.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
 - Test going through dungeons for danger level ok
@@ -13,8 +12,6 @@ Me:
   Also, Gnordvar Mines.
 - Email Nathan before next release re: Mac build, and update website to
   mention that the game is buildable in Mac OS.
-- Script to add back down staircase to Telari once the Nine have been
-  killed.
 - Need to test the following after the spell refactoring:
   - reflective beam, cross, ball, target self, storm
   - Anything else?
@@ -104,13 +101,7 @@ Me:
 - Cantrip to set glow flag on items
 - Food rotting for caught fish, other foods?
 
-Larzid:
-- Some sort of bank to ease the burden of carrying so much currency.
-
 Rob Ayres:
-- Auto-fish/eat when travelling over water and having a spear/fishing rod.
-- Mark health when taking damage from a creature of your danger level or
-  higher.
 - HP/AP not being affected by stats on stat gain or level.
 
 For v1:

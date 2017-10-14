@@ -162,6 +162,9 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 
 - Shadow is now vorpal-flagged.  Pelter has piercing.
 
+- Taking damage from creatures at your level or higher trains Health
+  (Rob Ayres).
+
 - More stanzas for "Tel and Floridel".
 
 - New species of weeds.
