@@ -243,6 +243,7 @@
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>elcrynn</Artifact>
 				<Artifact>blood_and_glory</Artifact>
+				<Artifact>longbow_of_pelageus</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>air_elemental</Summon>
@@ -323,6 +324,7 @@
 				<Artifact>akkar</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>inferno</Artifact>
+				<Artifact>longbow_of_pelageus</Artifact>
 			</Crowning>
 			<Summons>
 				<Summon>fell_lord</Summon>
@@ -32576,6 +32578,27 @@
 				<Speed>4</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="longbow_of_pelageus">
+				<DescriptionSID>LONGBOW_OF_PELAGEUS_SID</DescriptionSID>
+				<UsageDescriptionSID>LONGBOW_OF_PELAGEUS_USAGE_SID</UsageDescriptionSID>
+				<Value>2000</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>9</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2003</RangedSkill>
+				<Difficulty>42</Difficulty>
+				<Speed>1</Speed>
+				<Damage draining="1" ethereal="1">
+					<NumDice>6</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>

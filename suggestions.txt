@@ -1,6 +1,5 @@
 Me:
 - Move WeaponManager::get_ranged_weapon_damage into a calculator
-- Artifact bow.  Should have draining.
 - Poem combat tally: 63 fae remaining, 20 giants.
 - Damage not combining amounts/flags properly. Test: ranged combat,
   bow + explosive arrows.

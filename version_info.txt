@@ -186,7 +186,8 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 
 - New artifacts: Ring of Aran Fee, Telarian Mail, Telarian Shield, 
   Telarian Helm, God-Blade, Shard of Starlight, shining amulet "Catara", 
-  radiant amulet "Calluna", fiery greatsword "Inferno".
+  radiant amulet "Calluna", fiery greatsword "Inferno", longbow of the 
+  Dragonlord Pelageus.
 
 - New traps: monster trap.
 
