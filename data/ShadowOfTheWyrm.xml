@@ -27614,13 +27614,31 @@
 			<MagicCategory>3003</MagicCategory>
 			<MagicClassification>0</MagicClassification>
 			<Colour>4</Colour>
-			<APCost>150</APCost>
+			<APCost>75</APCost>
 			<Speed>1</Speed>
 			<Range>7</Range>
 			<Shape>1</Shape>
 			<Radius>3</Radius>
 			<Damage incorporeal="1">
-				<NumDice>2000</NumDice>
+				<NumDice>750</NumDice>
+				<NumSides>1</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="p_10_annihilation">
+			<NameSID>ANNIHILATION_NAME_SID</NameSID>
+			<PlayerCastMessageSID>ANNIHILATION_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>ANNIHILATION_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3003</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>4</Colour>
+			<APCost>150</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>10000</NumDice>
 				<NumSides>1</NumSides>
 				<Type>8</Type>
 			</Damage>

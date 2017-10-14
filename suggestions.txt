@@ -1,12 +1,5 @@
 Me:
-- Move WeaponManager::get_ranged_weapon_damage into a calculator
 - Poem combat tally: 63 fae remaining, 20 giants.
-- Damage not combining amounts/flags properly. Test: ranged combat,
-  bow + explosive arrows.
-- Rework num dice calculations in WeaponManager so that if the launcher
-  has fewer dice sides than the ammo, an average is added to the modifier
-  instead of adding to num_dice.
-- This should be moved into a calculator.
 - Smith should give an HP boost before entering cosmos.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
@@ -25,10 +18,6 @@ Me:
 - Need to test the following after the spell refactoring:
   - reflective beam, cross, ball, target self, storm
   - Anything else?
-- Special spells for The Sorceror
-- Special witchling spell(s?) from the Conjurer, small number of castings. 
-  If AP < spell AP, should set AP.
-- Ensure no-prayer flag is set for the Cloudspire.
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Crafting room: wheel and loom, tannery.
