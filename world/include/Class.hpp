@@ -37,6 +37,9 @@ class Class
     void set_resistances(const Resistances& resistances);
     Resistances get_resistances() const;
     
+    void set_crowning_gifts(const std::vector<std::string>& new_crowning_gifts);
+    std::vector<std::string> get_crowning_gifts() const;
+
     void set_piety_cost_multiplier(const float new_piety_cost);
     float get_piety_cost_multiplier() const;
     
@@ -99,7 +102,8 @@ class Class
 
     Resistances resistances;
     Skills skills;
-    
+    std::vector<std::string> crowning_gifts;
+
     float piety_cost_multiplier;
     int piety_regen_bonus;
 

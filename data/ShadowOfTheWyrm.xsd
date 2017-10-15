@@ -468,6 +468,7 @@
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element ref="tns:Titles"/>
+			<xs:element name="Crowning" type="tns:Crowning"/>			
 			<xs:element name="PietyCostMultiplier" type="tns:NonNegativeDecimal" minOccurs="0"/>
 			<xs:element name="PietyRegenBonus" type="xs:integer" minOccurs="0"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>

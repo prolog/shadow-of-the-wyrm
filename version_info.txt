@@ -272,6 +272,8 @@ Shadow of the Wyrm v0.7.0 "de Visee"
     which has been updated to just add the number of dice from the
     launcher to the dice from the ammo when calculating the damage.
 
+  - Helm of the Heavens wasn't flagged as an artifact.
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 

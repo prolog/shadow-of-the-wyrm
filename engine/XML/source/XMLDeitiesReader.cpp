@@ -114,17 +114,6 @@ void XMLDeitiesReader::parse_summons(const XMLNode& summons_node, DeityPtr deity
 // Read in the deity's crowning gifts
 void XMLDeitiesReader::parse_crowning_gifts(const XMLNode& crowning_node, DeityPtr deity)
 {
-  if (deity && !crowning_node.is_null())
-  {
-    vector<XMLNode> artifact_nodes = XMLUtils::get_elements_by_local_name(crowning_node, "Artifact");
-    vector<string> artifacts;
-
-    for (const XMLNode& artifact_node : artifact_nodes)
-    {
-      string artifact = XMLUtils::get_node_value(artifact_node);
-      artifacts.push_back(artifact);
-    }
-
-    deity->set_crowning_gifts(artifacts);
-  }
+  vector<string> crowning_gifts = get_crowning_gifts(crowning_node);
+  deity->set_crowning_gifts(crowning_gifts);
 }
