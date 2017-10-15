@@ -1,4 +1,6 @@
 Me:
+- Per-class crowning gifts.  Deities should have 75% chance to gift based
+  on class, 25% from general deity list.
 - Poem combat tally: 63 fae remaining, 20 giants.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).

@@ -21,6 +21,7 @@ class XMLReader
     void parse_initial_inventory(std::vector<InitialItem>& initial_inv, const XMLNode& initial_inventory_node);
 
     InitialItem get_initial_item(const XMLNode& initial_item_node);
+    std::vector<std::string> get_crowning_gifts(const XMLNode& crowning_node);
 
   protected:
     // Parse the schema's Quantity Amount/Random into a Dice object.

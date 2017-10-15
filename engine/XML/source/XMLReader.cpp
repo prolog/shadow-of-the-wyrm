@@ -319,3 +319,21 @@ void XMLReader::parse_event_scripts(const XMLNode& event_scripts_node, const map
   }
 }
 
+vector<string> XMLReader::get_crowning_gifts(const XMLNode& crowning_node)
+{
+  vector<string> artifacts;
+
+  if (!crowning_node.is_null())
+  {
+    vector<XMLNode> artifact_nodes = XMLUtils::get_elements_by_local_name(crowning_node, "Artifact");
+    vector<string> artifacts;
+
+    for (const XMLNode& artifact_node : artifact_nodes)
+    {
+      string artifact = XMLUtils::get_node_value(artifact_node);
+      artifacts.push_back(artifact);
+    }
+  }
+
+  return artifacts;
+}

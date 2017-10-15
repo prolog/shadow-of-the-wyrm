@@ -2253,6 +2253,9 @@
 					<SID>ADVENTURER_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact></Artifact>
+			</Crowning>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -2386,6 +2389,8 @@
 					<SID>APOTHECARY_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -2500,6 +2505,8 @@
 					<SID>ARCHER_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -2734,6 +2741,8 @@
 					<SID>ARTISAN_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -2835,6 +2844,8 @@
 					<SID>MERCHANT_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -2936,6 +2947,8 @@
 					<SID>MINSTREL_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3050,6 +3063,8 @@
 					<SID>NOBLE_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3164,6 +3179,8 @@
 					<SID>ORACLE_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3284,6 +3301,8 @@
 					<SID>PILGRIM_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<PietyCostMultiplier>0.75</PietyCostMultiplier>
 			<PietyRegenBonus>3</PietyRegenBonus>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
@@ -3393,6 +3412,8 @@
 					<SID>PUGILIST_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>0.97</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -3511,6 +3532,8 @@
 					<SID>ROVER_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3627,6 +3650,8 @@
 					<SID>SAGE_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3735,6 +3760,8 @@
 					<SID>SEAFARER_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -3846,6 +3873,8 @@
 					<SID>SHEPHERD_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<PietyCostMultiplier>0.40</PietyCostMultiplier>
 			<PietyRegenBonus>5</PietyRegenBonus>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
@@ -3953,6 +3982,8 @@
 					<SID>SMITH_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -4077,6 +4108,8 @@
 					<SID>THIEF_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>0.92</ExperienceMultiplier>
 			<DeityDislikeMultipliers>
 				<DeityDislikeMultiplier>
@@ -4206,6 +4239,8 @@
 					<SID>WARRIOR_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>0.95</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -4407,6 +4442,8 @@
 					<SID>WITCHLING_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<PietyCostMultiplier>1.25</PietyCostMultiplier>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -4513,6 +4550,8 @@
 					<SID>WIZARD_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+			</Crowning>
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -28646,6 +28685,7 @@
 					<Pounds>5</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
+				<Artifact>1</Artifact>
 				<Material>6</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -29855,7 +29895,7 @@
 				</Resistances>
 				<Evade>15</Evade>
 				<Soak>5</Soak>
-				<SpeedBonus>6</SpeedBonus>
+				<SpeedBonus>10</SpeedBonus>
 				<ToHit>10</ToHit>
 			</Armour>			
 		</Armours>
