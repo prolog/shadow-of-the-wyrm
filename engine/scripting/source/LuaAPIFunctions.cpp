@@ -191,6 +191,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
   lua_register(L, "get_creature_base_damage", get_creature_base_damage);
+  lua_register(L, "set_creature_piety", set_creature_piety);
+  lua_register(L, "get_creature_piety", get_creature_piety);
   lua_register(L, "set_creature_intrinsic_resist", set_creature_intrinsic_resist);
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
@@ -1848,6 +1850,99 @@ int get_creature_base_damage(lua_State* ls)
   lua_pushinteger(ls, modifier);
 
   return 3;
+}
+
+// Set the creature's piety towards a deity with the given ID.
+int set_creature_piety(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string deity_id;
+    string creature_id = lua_tostring(ls, 1);
+    int piety = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (num_args == 3 && lua_isstring(ls, 3))
+    {
+      deity_id = lua_tostring(ls, 3);
+    }
+    else
+    {
+      if (creature != nullptr)
+      {
+        deity_id = creature->get_religion().get_active_deity_id();
+      }
+    }
+
+    if (creature != nullptr)
+    {
+      DeityRelations& dr = creature->get_religion_ref().get_deity_relations_ref();
+      auto dr_it = dr.find(deity_id);
+
+      if (dr_it != dr.end())
+      {
+        DeityStatus& ds = dr_it->second;
+        ds.set_piety(piety);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_piety");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Get the creature's piety towards a deity with the given ID.
+int get_creature_piety(lua_State* ls)
+{
+  int piety = 0;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 1 && lua_isstring(ls, 1))
+  {
+    string deity_id;
+    string creature_id = lua_tostring(ls, 1);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (num_args == 2 && lua_isstring(ls, 2))
+    {
+      deity_id = lua_tostring(ls, 2);
+    }
+    else
+    {
+      if (creature != nullptr)
+      {
+        deity_id = creature->get_religion().get_active_deity_id();
+      }
+    }
+
+    if (creature != nullptr)
+    {
+      DeityRelations dr = creature->get_religion().get_deity_relations();
+      auto dr_it = dr.find(deity_id);
+
+      if (dr_it != dr.end())
+      {
+        DeityStatus ds = dr_it->second;
+        piety = ds.get_piety();
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_piety");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, piety);
+  return 1;
 }
 
 // Set a resistance on a creature.

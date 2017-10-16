@@ -238,6 +238,7 @@
 			<xs:element name="DeityInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="Dislikes" type="tns:TrackedDeityActions"/>
 			<xs:element name="Crowning" type="tns:Crowning"/>
+			<xs:element name="ClassCrowningChance" type="xs:integer"/>
 			<xs:element name="Summons" type="tns:Summons"/>
 			<xs:element name="WorshipSiteType" type="tns:WorshipSiteType"/>
 			<xs:element name="AngerScript" type="xs:string"/>

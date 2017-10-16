@@ -43,6 +43,9 @@ class Deity : public ISerializable
     void set_crowning_gifts(const std::vector<std::string>& new_crowning_gifts);
     std::vector<std::string> get_crowning_gifts() const;
 
+    void set_pct_chance_class_crowning(const int new_pct_chance);
+    int get_pct_chance_class_crowning() const;
+
     void set_summons(const std::vector<std::string>& new_summons);
     std::vector<std::string> get_summons() const;
 
@@ -70,6 +73,7 @@ class Deity : public ISerializable
     std::string death_message_sid;
     AlignmentRange alignment_range;
     std::vector<std::string> crowning_gifts;
+    int pct_chance_class_crowning;
     std::vector<std::string> summons;
     WorshipSiteType worship_site_type;
     std::string anger_script;

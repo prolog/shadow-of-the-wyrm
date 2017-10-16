@@ -165,6 +165,13 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 - Taking damage from creatures at your level or higher trains Health
   (Rob Ayres).
 
+- Classes now have a defined list of artifacts, independent of the deity.
+  Deities have a 75% chance of giving an item from the class' list, with
+  a 25% chance of selecting an item from the deity's own list.  This is
+  done to ensure that classes generally get "appropriate" artifacts
+  (ranged weapons for archers, etc), but with a chance of getting
+  something out of the ordinary.
+
 - More stanzas for "Tel and Floridel".
 
 - New species of weeds.
@@ -191,6 +198,8 @@ Shadow of the Wyrm v0.7.0 "de Visee"
   Telarian Helm, God-Blade, Shard of Starlight, shining amulet "Catara", 
   radiant amulet "Calluna", fiery greatsword "Inferno", longbow of the 
   Dragonlord Pelageus.
+
+- Removed artifacts: Knife of the Long Hunt.
 
 - New traps: monster trap.
 

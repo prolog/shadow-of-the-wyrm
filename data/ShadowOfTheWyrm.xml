@@ -33,6 +33,7 @@
 				<Artifact>akos_akari</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>archangel</Summon>
 				<Summon>angel</Summon>
@@ -75,6 +76,7 @@
 				<Artifact>choros_greatsword</Artifact>
 				<Artifact>inferno</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>titan</Summon>
 				<Summon>divine_avenger</Summon>
@@ -116,6 +118,7 @@
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>elcrynn</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>air_elemental</Summon>
 				<Summon>angel</Summon>
@@ -151,13 +154,13 @@
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
-				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>creators_might</Artifact>
 				<Artifact>sword_fairy_king</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>blood_and_glory</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>earth_elemental</Summon>
 				<Summon>air_elemental</Summon>
@@ -191,7 +194,6 @@
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
-				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>earthcleaver</Artifact>
 				<Artifact>asturias</Artifact>
@@ -200,6 +202,7 @@
 				<Artifact>blood_and_glory</Artifact>
 				<Artifact>inferno</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>fire_elemental</Summon>
 				<Summon>iron_horror</Summon>
@@ -234,7 +237,6 @@
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
-				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>shroud_fate</Artifact>
 				<Artifact>akos_akari</Artifact>
@@ -245,6 +247,7 @@
 				<Artifact>blood_and_glory</Artifact>
 				<Artifact>longbow_of_pelageus</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>air_elemental</Summon>
 				<Summon>planewalker</Summon>
@@ -287,6 +290,7 @@
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>elcrynn</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>water_elemental</Summon>
 				<Summon>voidling</Summon>
@@ -326,6 +330,7 @@
 				<Artifact>inferno</Artifact>
 				<Artifact>longbow_of_pelageus</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>fell_lord</Summon>
 				<Summon>star_beast</Summon>
@@ -363,6 +368,7 @@
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>inferno</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>tentacled_horror</Summon>
 				<Summon>astral_horror</Summon>
@@ -2254,7 +2260,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
-				<Artifact></Artifact>
+				<Artifact>akos_akari</Artifact>
+				<Artifact>alaric_mail_shirt</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>sunsword</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -2390,6 +2399,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>akkar</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>carpathos</Artifact>
+				<Artifact>heavens_blade</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -2506,6 +2519,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>longbow_of_pelageus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>shadow</Artifact>
+				<Artifact>akos_akari</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -2742,6 +2759,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>carpathos</Artifact>
+				<Artifact>creators_might</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>whisperwind</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -2845,6 +2866,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>carpathos</Artifact>
+				<Artifact>creators_might</Artifact>
+				<Artifact>skyslayer</Artifact>
+				<Artifact>whisperwind</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -2948,6 +2973,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>beastbinder</Artifact>
+				<Artifact>dragonsfist</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>heavens_blade</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -3064,6 +3093,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>crown_of_tyranny</Artifact>
+				<Artifact>sword_fairy_king</Artifact>
+				<Artifact>sunsword</Artifact>
+				<Artifact>heavens_blade</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -3180,6 +3213,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>carpathos</Artifact>
+				<Artifact>creators_might</Artifact>
+				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>helm_of_the_heavens</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -3302,6 +3339,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>elcrynn</Artifact>
+				<Artifact>helm_of_the_heavens</Artifact>
+				<Artifact>radiance</Artifact>
+				<Artifact>sunsword</Artifact>
 			</Crowning>
 			<PietyCostMultiplier>0.75</PietyCostMultiplier>
 			<PietyRegenBonus>3</PietyRegenBonus>
@@ -3413,6 +3454,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>akos_akari</Artifact>
+				<Artifact>asturias</Artifact>
+				<Artifact>carpathos</Artifact>
+				<Artifact>shroud_fate</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>0.97</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -3533,6 +3578,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>beastbinder</Artifact>
+				<Artifact>bugcrusher</Artifact>
+				<Artifact>dragonbane</Artifact>
+				<Artifact>dragon_leather_tius</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -3651,6 +3700,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>athame_winter</Artifact>
+				<Artifact>elcrynn</Artifact>
+				<Artifact>shroud_fate</Artifact>
+				<Artifact>staff_artificer</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -3761,6 +3814,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>alaric_mail_shirt</Artifact>
+				<Artifact>dragonbane</Artifact>
+				<Artifact>radiance</Artifact>
+				<Artifact>stonespear</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -3874,6 +3931,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>akos_akari</Artifact>
+				<Artifact>dragonsfist</Artifact>
+				<Artifact>heavens_blade</Artifact>
+				<Artifact>whisperwind</Artifact>
 			</Crowning>
 			<PietyCostMultiplier>0.40</PietyCostMultiplier>
 			<PietyRegenBonus>5</PietyRegenBonus>
@@ -3983,6 +4044,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>alaric_mail_shirt</Artifact>
+				<Artifact>delver</Artifact>
+				<Artifact>inferno</Artifact>
+				<Artifact>light_of_battle</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -4109,6 +4174,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>akkar</Artifact>
+				<Artifact>akos_akari</Artifact>
+				<Artifact>asturias</Artifact>
+				<Artifact>dragon_leather_tius</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>0.92</ExperienceMultiplier>
 			<DeityDislikeMultipliers>
@@ -4240,6 +4309,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>beow</Artifact>
+				<Artifact>earthcleaver</Artifact>
+				<Artifact>dragonbane</Artifact>
+				<Artifact>plate_mail_terror</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>0.95</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -4443,6 +4516,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>akkar</Artifact>
+				<Artifact>elcrynn</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>shroud_fate</Artifact>
 			</Crowning>
 			<PietyCostMultiplier>1.25</PietyCostMultiplier>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
@@ -4551,6 +4628,10 @@
 				</Title>
 			</Titles>
 			<Crowning>
+				<Artifact>athame_winter</Artifact>
+				<Artifact>elcrynn</Artifact>
+				<Artifact>staff_artificer</Artifact>
+				<Artifact>shroud_fate</Artifact>
 			</Crowning>
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -31060,34 +31141,6 @@
 					<NumSides>4</NumSides>
 					<Modifier>4</Modifier>
 					<Type>1</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="long_hunt_knife">
-				<DescriptionSID>LONG_HUNT_KNIFE_SID</DescriptionSID>
-				<UsageDescriptionSID>LONG_HUNT_KNIFE_USAGE_SID</UsageDescriptionSID>
-				<Value>1400</Value>
-				<Weight>
-					<Pounds>2</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Artifact>1</Artifact>
-				<Material>3</Material>
-				<DangerLevel>-1</DangerLevel>
-				<Resistances>
-					<Pierce>0.10</Pierce>
-				</Resistances>
-				<Skill>1004</Skill>
-				<RangedSkill>2005</RangedSkill>
-				<Difficulty>40</Difficulty>
-				<Speed>1</Speed>
-				<Damage>
-					<NumDice>3</NumDice>
-					<NumSides>4</NumSides>
-					<Modifier>12</Modifier>
-					<Type>1</Type>
-					<Slays>
-						<Slay>_animal</Slay>
-					</Slays>
 				</Damage>
 			</Weapon>
 			<Weapon id="kithslayer">
