@@ -4,7 +4,7 @@
 using namespace std;
 
 Deity::Deity()
-: alignment_range(AlignmentRange::ALIGNMENT_RANGE_NEUTRAL), worship_site_type(WorshipSiteType::WORSHIP_SITE_CATHEDRAL), user_playable(false)
+: alignment_range(AlignmentRange::ALIGNMENT_RANGE_NEUTRAL), pct_chance_class_crowning(0), worship_site_type(WorshipSiteType::WORSHIP_SITE_CATHEDRAL), user_playable(false)
 {
 }
 
@@ -20,6 +20,7 @@ bool Deity::operator==(const Deity& d) const
   result = result && death_message_sid == d.death_message_sid;
   result = result && alignment_range == d.alignment_range;
   result = result && crowning_gifts == d.crowning_gifts;
+  result = result && pct_chance_class_crowning == d.pct_chance_class_crowning;
   result = result && summons == d.summons;
   result = result && worship_site_type == d.worship_site_type;
   result = result && anger_script == d.anger_script;
@@ -130,6 +131,16 @@ vector<string> Deity::get_crowning_gifts() const
   return crowning_gifts;
 }
 
+void Deity::set_pct_chance_class_crowning(const int new_pct_chance_class_crowning)
+{
+  pct_chance_class_crowning = new_pct_chance_class_crowning;
+}
+
+int Deity::get_pct_chance_class_crowning() const
+{
+  return pct_chance_class_crowning;
+}
+
 void Deity::set_summons(const vector<string>& new_summons)
 {
   summons = new_summons;
@@ -192,6 +203,7 @@ bool Deity::serialize(ostream& stream) const
   Serialize::write_string(stream, death_message_sid);
   Serialize::write_enum(stream, alignment_range);
   Serialize::write_string_vector(stream, crowning_gifts);
+  Serialize::write_int(stream, pct_chance_class_crowning);
   Serialize::write_string_vector(stream, summons);
   Serialize::write_enum(stream, worship_site_type);
   Serialize::write_string(stream, anger_script);
@@ -214,6 +226,7 @@ bool Deity::deserialize(istream& stream)
   Serialize::read_string(stream, death_message_sid);
   Serialize::read_enum(stream, alignment_range);
   Serialize::read_string_vector(stream, crowning_gifts);
+  Serialize::read_int(stream, pct_chance_class_crowning);
   Serialize::read_string_vector(stream, summons);
   Serialize::read_enum(stream, worship_site_type);
   Serialize::read_string(stream, anger_script);

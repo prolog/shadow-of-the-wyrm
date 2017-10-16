@@ -64,6 +64,8 @@ int set_creature_base_damage(lua_State* ls);
 int get_creature_base_damage(lua_State* ls);
 int set_creature_intrinsic_resist(lua_State* ls);
 int set_creature_speed(lua_State* ls);
+int set_creature_piety(lua_State* ls);
+int get_creature_piety(lua_State* ls);
 int get_creature_speed(lua_State* ls);
 int get_creature_yx(lua_State* ls);
 int get_creature_id(lua_State* ls);

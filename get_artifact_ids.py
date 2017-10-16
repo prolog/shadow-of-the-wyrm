@@ -11,6 +11,7 @@ def get_artifacts_from_xml(xml_file):
                  ["Armours", "Armour"], 
                  ["Rings", "Ring"], 
                  ["Weapons", "Weapon"],
+                 ["RangedWeapons", "Weapon"],
                  ["Tools", "Tool"]]
 
   root = minidom.parse(xml_file)
