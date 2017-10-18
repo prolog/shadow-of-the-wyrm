@@ -238,6 +238,8 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCREATURE_WIN_REGULAR);
   lua_exportConst(ls, CCREATURE_WIN_EVIL);
   lua_exportConst(ls, CCREATURE_WIN_GODSLAYER);
+
+  lua_exportConst(ls, CCLASS_ID_FOUNTAIN)
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

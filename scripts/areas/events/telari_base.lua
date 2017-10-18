@@ -2,10 +2,23 @@ require('map_events')
 
 local map_id = "telari_base"
 
--- The base of the cloudspire is littered with very useful items to help
--- the player in the overwhelmingly unfair battle ahead.
-function init_telari_base(map_id)
-  local height, width = map_get_dimensions(map_id)
+function populate_fountains(map_id, height, width)
+  local centre_x = width / 2
+  local feature_id = CCLASS_ID_FOUNTAIN
+  
+  for y = 0, height-1, 2 do
+    for x = centre_x - 1, centre_x + 1, 2 do
+      local tile_details = map_get_tile(map_id, y, x)
+      local tile_type = tile_details["tile_type"]
+
+      if tile_details ~= nil and tile_type == CTILE_TYPE_DUNGEON then
+        add_feature_to_map(feature_id, y, x, map_id) 
+      end
+    end
+  end
+end
+
+function populate_consumables(map_id, height, width)
   local consumables = {"gain_attributes_potion", "restorative_potion", 
                        "amut_potion", "speed_potion", "ether_potion",
                        "healing_potion", "teleport_wand", 
@@ -14,7 +27,7 @@ function init_telari_base(map_id)
 
   for row = 0, height-1 do
     for col = 0, width-1 do
-      if (row + col) % 2 == 0 and RNG_percent_chance(10) then
+      if (row + col) % 3 == 0 and RNG_percent_chance(10) then
         local tile_details = map_get_tile(map_id, row, col)
         local tile_type = tile_details["tile_type"]
 
@@ -29,6 +42,15 @@ function init_telari_base(map_id)
       end
     end
   end
+end
+
+-- The base of the cloudspire is littered with very useful items to help
+-- the player in the overwhelmingly unfair battle ahead.
+function init_telari_base(map_id)
+  local height, width = map_get_dimensions(map_id)
+
+  populate_fountains(map_id, height, width)
+  populate_consumables(map_id, height, width)
 end
 
 map_events.set_map_fn(map_id, init_telari_base)
