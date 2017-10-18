@@ -130,6 +130,11 @@ TilePtr get_tile(const string& map_id, const Coordinate& c)
   MapRegistry& mr = game.get_map_registry_ref();
   MapPtr map = mr.get_map(map_id);
 
+  if (map_id.empty() && map == nullptr)
+  {
+    map = game.get_current_map();
+  }
+
   TilePtr tile;
 
   if (map)
@@ -163,6 +168,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
   lua_register(L, "add_basic_feature_to_map", add_basic_feature_to_map);
+  lua_register(L, "add_feature_to_map", add_feature_to_map);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "remove_active_quest", remove_active_quest);
@@ -1041,6 +1047,48 @@ int add_feature_to_player_tile(lua_State* ls)
   return 1;
 }
 
+int add_feature_to_map(lua_State* ls)
+{
+  bool feature_added = 0;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    Game& game = Game::instance();
+    MapPtr map;
+    string map_id;
+
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+
+    if (num_args == 4 && lua_isstring(ls, 4))
+    {
+      map_id = lua_tostring(ls, 4);
+    }
+
+    TilePtr tile = get_tile(map_id, make_pair(y, x));
+
+    ClassIdentifier class_id = static_cast<ClassIdentifier>(lua_tointeger(ls, 1));
+    FeaturePtr feature = FeatureGenerator::create_feature(class_id);
+
+    if (feature != nullptr)
+    {
+      if (tile != nullptr)
+      {
+        tile->set_feature(feature);
+        feature_added = true;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_feature_to_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, feature_added);
+  return 1;
+}
 // Mark a quest as completed.
 // Argument is the quest ID.
 int mark_quest_completed(lua_State* ls)

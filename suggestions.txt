@@ -1,4 +1,5 @@
 Me:
+- Keep prettifying telari_base and telari_top
 - Poem combat tally: 63 fae remaining, 20 giants.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).

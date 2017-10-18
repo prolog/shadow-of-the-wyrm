@@ -294,3 +294,7 @@ enum struct ClassIdentifier
   CLASS_ID_SHOPS_TIME_OBSERVER,
   CLASS_ID_STATUS
 };
+
+// Any class IDs needed for Lua scripts (e.g., feature class IDs) should go
+// here.
+#define CCLASS_ID_FOUNTAIN 115

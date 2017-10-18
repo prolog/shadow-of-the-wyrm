@@ -33,6 +33,7 @@ int add_object_to_player_tile(lua_State* ls);
 int add_object_to_map(lua_State* ls);
 int add_object_to_tile(lua_State* ls); // assumes current map
 int add_key_to_player_tile(lua_State* ls);
+int add_feature_to_map(lua_State* ls);
 int add_basic_feature_to_map(lua_State* ls);
 int add_feature_to_player_tile(lua_State* ls);
 int mark_quest_completed(lua_State* ls);
