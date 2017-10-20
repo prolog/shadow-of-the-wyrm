@@ -172,6 +172,9 @@ Shadow of the Wyrm v0.7.0 "de Visee"
   (ranged weapons for archers, etc), but with a chance of getting
   something out of the ordinary.
 
+- The Lua console is now available in release mode, if you want to cheat
+  your way to Great Success.
+
 - More stanzas for "Tel and Floridel".
 
 - New species of weeds.
