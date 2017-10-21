@@ -1,4 +1,6 @@
 Me:
+- When blind, "you see something" should be "you feel something".
+- Blind not going away?
 - Keep prettifying telari_base and telari_top
 - Poem combat tally: 63 fae remaining, 20 giants.
 - Instead of making creatures "friendly", charisma should just make them
