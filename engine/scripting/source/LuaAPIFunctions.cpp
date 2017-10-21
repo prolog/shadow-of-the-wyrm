@@ -1594,9 +1594,9 @@ int add_creature_to_map(lua_State* ls)
       {
         hm.set_hostility_to_player(creature, *hostility_override);
       }
-    }
 
-    new_creature_id = creature->get_id();
+      new_creature_id = creature->get_id();
+    }
   }
   else
   {

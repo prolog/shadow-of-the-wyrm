@@ -71,7 +71,7 @@ function populate_rift(map_id, rift_y, rift_x)
                                      "nether_hound", 
                                      "ancient_shade"}},
                          {"urgoth", {"black_ogre", 
-                                     "cylonic_beast", 
+                                     "cyclonic_beast", 
                                      "dark_rider_coming_horde"}}}
 
   deity_details = fn.shuffle(deity_details)
