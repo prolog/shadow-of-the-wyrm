@@ -48,6 +48,7 @@ class TextMessages
     static const std::string ITEM_PICK_UP_MESSAGE_MONSTER;
     static const std::string ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER;
     static const std::string ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER;
+    static const std::string ITEM_ON_GROUND_BLIND_DESCRIPTION_MESSAGE;
     static const std::string ITEM_ON_GROUND_DESCRIPTION_MESSAGE;
     static const std::string CURRENCY_MESSAGE_SINGLE;
     static const std::string CURRENCY_MESSAGE_MULTIPLE;

@@ -28,6 +28,7 @@ const string TextMessages::ITEM_PICK_UP_MESSAGE_PLAYER        = "ITEM_PICK_UP_ME
 const string TextMessages::ITEM_PICK_UP_MESSAGE_MONSTER       = "ITEM_PICK_UP_MESSAGE_MONSTER";
 const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER = "ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER";
 const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER = "ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER";
+const string TextMessages::ITEM_ON_GROUND_BLIND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_BLIND_DESCRIPTION_MESSAGE";
 const string TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_DESCRIPTION_MESSAGE";
 const string TextMessages::CURRENCY_MESSAGE_SINGLE            = "CURRENCY_MESSAGE_SINGLE";
 const string TextMessages::CURRENCY_MESSAGE_MULTIPLE          = "CURRENCY_MESSAGE_MULTIPLE";
@@ -350,8 +351,17 @@ string TextMessages::get_item_pick_up_and_merge_message(const bool player_blind,
 string TextMessages::get_item_on_ground_description_message(const bool blind, ItemPtr item)
 {
   ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
+  string item_message;
 
-  string item_message = StringTable::get(TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE);
+  if (blind)
+  {
+    item_message = StringTable::get(TextMessages::ITEM_ON_GROUND_BLIND_DESCRIPTION_MESSAGE);    
+  }
+  else
+  {
+    item_message = StringTable::get(TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE);
+  }
+
   boost::replace_first(item_message, "%s", id->describe_usage());
   return item_message;
 }
