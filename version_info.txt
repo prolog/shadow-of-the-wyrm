@@ -175,6 +175,9 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 - The Lua console is now available in release mode, if you want to cheat
   your way to Great Success.
 
+- When blind, you now "feel" something, rather than see it, when moving
+  on to a tile.
+
 - More stanzas for "Tel and Floridel".
 
 - New species of weeds.

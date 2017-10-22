@@ -1,5 +1,6 @@
 Me:
-- When blind, "you see something" should be "you feel something".
+- Rework paralysis so that it just bumps the creature's action by some 
+  amount (attacker's level * 50).  Paralysis far too dangerous right now.
 - Blind not going away?
 - Keep prettifying telari_base and telari_top
 - Poem combat tally: 63 fae remaining, 20 giants.
