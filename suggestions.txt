@@ -1,9 +1,7 @@
 Me:
-- Rework paralysis so that it just bumps the creature's action by some 
-  amount (attacker's level * 50).  Paralysis far too dangerous right now.
-- Blind not going away?
-- Keep prettifying telari_base and telari_top
-- Poem combat tally: 63 fae remaining, 20 giants.
+- Descending Siriath dungeon not working
+- Poem combat tally: 63 fae remaining, 20 giants.  Reduce total count:
+  3 dozen vs 1?
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
 - Test going through dungeons for danger level ok

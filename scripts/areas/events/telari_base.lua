@@ -3,17 +3,33 @@ require('map_events')
 local map_id = "telari_base"
 
 function populate_fountains(map_id, height, width)
+  local centre_y = height / 2
   local centre_x = width / 2
   local feature_id = CCLASS_ID_FOUNTAIN
   
   for y = 0, height-1, 2 do
     for x = centre_x - 1, centre_x + 1, 2 do
       local tile_details = map_get_tile(map_id, y, x)
-      local tile_type = tile_details["tile_type"]
 
-      if tile_details ~= nil and tile_type == CTILE_TYPE_DUNGEON then
-        add_feature_to_map(feature_id, y, x, map_id) 
+      if tile_details ~= nil then
+        local tile_type = tile_details["tile_type"]
+        
+        if tile_type == CTILE_TYPE_DUNGEON then
+          add_feature_to_map(feature_id, y, x, map_id) 
+        end
       end
+    end
+  end
+
+  for x = 0, width-1, 3 do
+    local tile_details = map_get_tile(map_id, centre_y, x)
+
+    if tile_details ~= nil then
+        local tile_type = tile_details["tile_type"]
+        
+        if tile_type == CTILE_TYPE_DUNGEON then
+          add_feature_to_map(feature_id, centre_y, x, map_id) 
+        end
     end
   end
 end
