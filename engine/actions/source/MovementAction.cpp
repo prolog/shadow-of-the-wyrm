@@ -555,7 +555,8 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       int pct_chance_herbs = fc.calculate_pct_chance_herbs(creature);
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES, to_string(pct_chance_foragables));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS, to_string(pct_chance_herbs));
-      
+      generator->set_additional_property(MapProperties::MAP_PROPERTIES_EXIT_MOVEMENT_TYPE, to_string(static_cast<int>(emt)));
+
       new_map = generator->generate_and_initialize(danger_level, depth);
 
       // If a map exit's been provided, check to see if there's an event

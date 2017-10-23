@@ -69,9 +69,7 @@ void FloatingTowerGenerator::place_staircases(MapPtr map, const pair<Coordinate,
 {
   if (map != nullptr)
   {
-    // JCD FIXME FIXME FIXME
-    string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
-    bool place_player_on_up_staircase = (depth_increment.empty());
+    bool place_player_on_up_staircase = (get_place_on_down_staircase(get_last_exit_movement_type()) == false);
     
     // To find the staircase locations, start at the centre of the tower.
     // Increment outward, step by step, until at least 2 possible tiles

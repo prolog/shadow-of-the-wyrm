@@ -87,6 +87,12 @@ class MapProperties
     // range.
     static const std::string MAP_PROPERTIES_GENERATION_COORDINATES;
 
+    // When the map was generated, did the creature that triggered the
+    // generation ascend or descend?  For certain maps (dungeons, 
+    // sewers, etc) this will trigger on which staircase the creature
+    // will be placed.
+    static const std::string MAP_PROPERTIES_EXIT_MOVEMENT_TYPE;
+
   protected:
     MapProperties();
     ~MapProperties();

@@ -626,8 +626,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   int y, x;
   
   Room first_staircase_room;
-  string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
-  bool place_player_on_down_staircase = (depth_increment.empty());
+  bool place_player_on_down_staircase = get_place_on_down_staircase(get_last_exit_movement_type());
 
   // Update the map's depth information.
   update_depth_details(map);

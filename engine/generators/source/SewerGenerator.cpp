@@ -106,8 +106,7 @@ void SewerGenerator::connect_section(MapPtr result_map, const pair<bool, vector<
 
 void SewerGenerator::place_staircases(MapPtr result_map)
 {
-  string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
-  bool place_player_on_down_staircase = (depth_increment.empty());
+  bool place_player_on_down_staircase = get_place_on_down_staircase(get_last_exit_movement_type());
 
   map<int, vector<pair<Coordinate, Coordinate>>> sections_copy = sections;
   pair<Coordinate, Coordinate> sec = retrieve_and_remove_random_section(sections_copy);
