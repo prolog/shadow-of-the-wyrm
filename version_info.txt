@@ -289,6 +289,11 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 
   - Helm of the Heavens wasn't flagged as an artifact.
 
+  - ActionCost wasn't being fully initialized, leading to odd behaviour
+    some of the time in release mode.
+
+  - Fixed a crash related to ammunition reduction.
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 
