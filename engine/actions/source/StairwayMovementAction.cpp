@@ -114,7 +114,6 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             }
             else
             {
-              movement_type = ExitMovementType::EXIT_MOVEMENT_ASCEND;
               descend_success = ma->generate_and_move_to_new_map(creature, map, map_exit, tile, map_exit->get_terrain_type(), tile->get_tile_subtype(), map_exit->get_properties(), movement_type);
             }
           }

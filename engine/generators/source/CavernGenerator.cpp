@@ -207,8 +207,7 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
 {
   TileGenerator tg;
   Dimensions dimensions = map->size();
-  string depth_incr = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
-  bool place_player_on_down_staircase = depth_incr.empty();
+  bool place_player_on_down_staircase = get_place_on_down_staircase(get_last_exit_movement_type());
   bool place_player_on_staircase = place_player_on_down_staircase;
 
   if (tile_type == TileType::TILE_TYPE_UP_STAIRCASE)

@@ -781,3 +781,41 @@ void Generator::update_depth_details(MapPtr map)
     map->size_ref().set_depth(depth);
   }
 }
+
+ExitMovementType Generator::get_last_exit_movement_type() const
+{
+  ExitMovementType emt = ExitMovementType::EXIT_MOVEMENT_UNDEFINED;
+  string emt_s = get_additional_property(MapProperties::MAP_PROPERTIES_EXIT_MOVEMENT_TYPE);
+
+  if (!emt_s.empty())
+  {
+    emt = static_cast<ExitMovementType>(String::to_int(emt_s));
+  }
+
+  return emt;
+}
+
+// If a last exit movement type is defined, use that to determine whether to
+// place on the down staircase or not.  If this is not defined, fall back on
+// the old behaviour of using the depth increment, which made sense six years
+// ago but now I have no idea why I did it that way. :(
+bool Generator::get_place_on_down_staircase(const ExitMovementType emt) const
+{
+  bool place_on_down = false;
+
+  if (emt == ExitMovementType::EXIT_MOVEMENT_ASCEND)
+  {
+    place_on_down = true;
+  }
+  else if (emt == ExitMovementType::EXIT_MOVEMENT_DESCEND)
+  {
+    place_on_down = false;
+  }
+  else if (emt == ExitMovementType::EXIT_MOVEMENT_UNDEFINED)
+  {
+    string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+    place_on_down = (depth_increment.empty());
+  }
+
+  return place_on_down;
+}

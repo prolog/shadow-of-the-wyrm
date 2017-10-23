@@ -19,6 +19,7 @@ enum struct MovementThroughTileType
 
 enum struct ExitMovementType
 {
-  EXIT_MOVEMENT_ASCEND,
-  EXIT_MOVEMENT_DESCEND
+  EXIT_MOVEMENT_UNDEFINED = -1,
+  EXIT_MOVEMENT_ASCEND = 0,
+  EXIT_MOVEMENT_DESCEND = 1
 };

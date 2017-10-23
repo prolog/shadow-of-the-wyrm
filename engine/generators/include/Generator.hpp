@@ -61,6 +61,9 @@ namespace SOTW
       // the set of creatures to generate.
       virtual std::vector<std::string> get_generator_filters() const;
 
+      virtual ExitMovementType get_last_exit_movement_type() const;
+      virtual bool get_place_on_down_staircase(const ExitMovementType emt) const;
+
       virtual MapType get_map_type() const;
 
   protected:
