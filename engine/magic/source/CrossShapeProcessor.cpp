@@ -9,9 +9,9 @@
 
 using namespace std;
 
-pair<vector<TilePtr>, Animation> CrossShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+pair<vector<pair<Coordinate, TilePtr>>, Animation> CrossShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
-  vector<TilePtr> affected_tiles;
+  vector<pair<Coordinate, TilePtr>> affected_coords_and_tiles;
   Animation animation;
 
   uint range = spell.get_range();
@@ -49,12 +49,12 @@ pair<vector<TilePtr>, Animation> CrossShapeProcessor::get_affected_tiles_and_ani
         // If the tile blocks the spell, stop trying to process whatever
         // direction we're currently working with.  This ensures that
         // spells won't be able to go through walls, etc.
-        if (tmc.does_tile_block_spell(tile))
+        if (tmc.does_tile_block_spell(tile, spell))
         {
           stop_vec.push_back(d);
         }
 
-        affected_tiles.push_back(tile);
+        affected_coords_and_tiles.push_back(make_pair(c, tile));
         cross_vec.push_back(c);
       }
     }
@@ -82,7 +82,7 @@ pair<vector<TilePtr>, Animation> CrossShapeProcessor::get_affected_tiles_and_ani
   // step, as that will give the desired "beam" shape.
   animation = at.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
 
-  pair<vector<TilePtr>, Animation> affected_tiles_and_animation(affected_tiles, animation);
-  return affected_tiles_and_animation;
+  pair<vector<pair<Coordinate, TilePtr>>, Animation> affected_coords_and_tiles_and_animation(affected_coords_and_tiles, animation);
+  return affected_coords_and_tiles_and_animation;
 }
 

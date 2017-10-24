@@ -4,6 +4,7 @@
 #include "CreatureSpeedCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "DisplayItemTypeFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "Inventory.hpp"
@@ -19,7 +20,7 @@
 using namespace std;
 
 // Try to pick up.
-ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * const am, const PickUpType pick_up)
+ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * const am, const PickUpType pick_up, const set<ItemType>& pickup_types)
 {  
   ActionCostValue action_cost_value = 0;
   Game& game = Game::instance();
@@ -28,20 +29,54 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * cons
   {
     MapPtr map = game.get_current_map();
     
-    if (map->get_map_type() == MapType::MAP_TYPE_WORLD)
+    if (map->get_map_type() == MapType::MAP_TYPE_WORLD && pick_up != PickUpType::PICK_UP_TYPES)
     {
       handle_world_map_pickup(creature);
     }
     else
     {
-      action_cost_value = handle_pickup(creature, map, am, pick_up);
+      action_cost_value = handle_pickup(creature, map, am, pick_up, pickup_types);
     }
   }
 
   return action_cost_value;
 }
 
-ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am, const PickUpType pick_up)
+ActionCostValue PickupAction::toggle_autopickup(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    DecisionStrategyPtr dec = creature->get_decision_strategy();
+
+    if (dec != nullptr)
+    {
+      dec->set_autopickup(!dec->get_autopickup());
+
+      bool ap_value = dec->get_autopickup();
+      set<ItemType> autopickup_types = dec->get_autopickup_types();
+      vector<string> item_type_names;
+
+      for (const ItemType it : autopickup_types)
+      {
+        DisplayItemTypePtr dit = DisplayItemTypeFactory::create(it);
+        
+        if (dit != nullptr)
+        {
+          item_type_names.push_back(dit->get_description());
+        }
+      }
+
+      // Add a message about autopickup being on or off.
+      IMessageManager& manager = MM::instance();
+      manager.add_new_message(ActionTextKeys::get_toggle_autopickup_message(ap_value, item_type_names));
+      manager.send();
+    }
+  }
+
+  return 0; // toggling autopickup is a free action
+}
+
+ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am, const PickUpType pick_up, const set<ItemType>& pickup_types)
 {
   ActionCostValue action_cost_value = 0;
   
@@ -54,7 +89,7 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
       IInventoryPtr inv = tile->get_items();
 
       // If there is no item, inform the user.
-      if (inv->empty())
+      if (inv->empty() && pick_up != PickUpType::PICK_UP_TYPES)
       {
         handle_empty_tile_pickup(creature);
       }
@@ -67,6 +102,10 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
         else if (pick_up == PickUpType::PICK_UP_ALL)
         {
           action_cost_value = handle_pickup_all(creature, map, am, tile);
+        }
+        else if (pick_up == PickUpType::PICK_UP_TYPES)
+        {
+          action_cost_value = handle_pickup_types(creature, map, am, tile, pickup_types);
         }
         else
         {
@@ -187,6 +226,44 @@ ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map
   }
 
   return action_cost_value;
+}
+
+ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile, const set<ItemType>& pickup_types)
+{
+  ActionCostValue acv = 0;
+  bool picked_up = false;
+
+  if (creature && map && tile)
+  {
+    IInventoryPtr inv = tile->get_items();
+    list<ItemPtr> items = inv->get_items_ref();
+
+    for (ItemPtr item : items)
+    {
+      if (item != nullptr && pickup_types.find(item->get_type()) != pickup_types.end())
+      {
+        // Candidate for autopickup.  Check to see if the creature can handle
+        // the weight and the total number of items.
+        pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, item);
+
+        if (!pickup_details.first)
+        {
+          handle_cannot_pickup(creature, pickup_details.second);
+        }
+        else
+        {
+          take_item_and_give_to_creature(item, inv, creature);
+        }
+      }
+    }
+
+      if (picked_up)
+    {
+      acv = get_action_cost_value(creature);
+    }
+  }
+
+  return acv;
 }
 
 void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature)

@@ -4,6 +4,8 @@
 #include "Display.hpp"
 #include "Settings.hpp"
 
+class Creature;
+
 enum struct EngineStateEnum
 {
   ENGINE_STATE_START_NEW_GAME = 0,
@@ -53,6 +55,7 @@ class ShadowOfTheWyrmEngine
     void setup_display(const Settings& settings);
     void setup_game();
     void setup_player_and_world();
+    void setup_autopickup_settings(std::shared_ptr<Creature> player);
 
     void initialize_game_option_map();
     void initialize_game_flow_map();
@@ -66,7 +69,9 @@ class ShadowOfTheWyrmEngine
     bool process_exit_game();
 
     bool is_new_game_allowed();
-    
+ 
+    void run_map_scripts();
+
     EngineStateManager state_manager;
     ControllerPtr controller;
     DisplayPtr display;

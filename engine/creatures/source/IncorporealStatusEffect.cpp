@@ -16,6 +16,11 @@ IncorporealStatusEffect::IncorporealStatusEffect()
   status_calc = std::make_shared<IncorporealCalculator>();
 }
 
+bool IncorporealStatusEffect::is_negative() const
+{
+  return false;
+}
+
 void IncorporealStatusEffect::after_undo(CreaturePtr creature) const
 {
   // First, check the parent class to make sure that floating down
@@ -40,7 +45,7 @@ void IncorporealStatusEffect::after_undo(CreaturePtr creature) const
       int torn_apart_damage = creature->get_hit_points().get_current() + 1;
       Damage torn_apart_default;
       torn_apart_default.set_modifier(torn_apart_damage);
-
+      
       cm.deal_damage(no_attacker, creature, source_id, torn_apart_damage, torn_apart_default, torn_apart_message_sid);
     }
   }

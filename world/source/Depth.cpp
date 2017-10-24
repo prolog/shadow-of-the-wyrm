@@ -9,12 +9,12 @@ using namespace std;
 int Depth::DEPTH_MULTIPLIER = -50;
 
 Depth::Depth()
-: current(0), maximum(0)
+: current(0), minimum(0), maximum(0), increment(1)
 {
 }
 
-Depth::Depth(const int cur, const int max)
-: current(cur), maximum(max)
+Depth::Depth(const int cur, const int min, const int max, const int incr)
+: current(cur), minimum(min), maximum(max), increment(incr)
 {
 }
 
@@ -23,7 +23,9 @@ bool Depth::operator==(const Depth& d) const
   bool result = true;
 
   result = result && (current == d.current);
+  result = result && (minimum == d.minimum);
   result = result && (maximum == d.maximum);
+  result = result && (increment == d.increment);
 
   return result;
 }
@@ -38,6 +40,16 @@ int Depth::get_current() const
   return current;
 }
 
+void Depth::set_minimum(const int new_minimum)
+{
+  minimum = new_minimum;
+}
+
+int Depth::get_minimum() const
+{
+  return minimum;
+}
+
 void Depth::set_maximum(const int new_maximum)
 {
   maximum = new_maximum;
@@ -48,14 +60,24 @@ int Depth::get_maximum() const
   return maximum;
 }
 
+void Depth::set_increment(const int new_increment)
+{
+  increment = new_increment;
+}
+
+int Depth::get_increment() const
+{
+  return increment;
+}
+
 // Return the "next" depth.
 Depth Depth::lower() const
 {
-  Depth d(current, maximum);
+  Depth d(current, minimum, maximum, increment);
 
   if (current < maximum)
   {
-    d.set_current(current + 1);
+    d.set_current(current + std::abs(increment));
   }
 
   return d;
@@ -64,11 +86,11 @@ Depth Depth::lower() const
 // Return the "previous" depth.
 Depth Depth::higher() const
 {
-  Depth d(current, maximum);
+  Depth d(current, minimum, maximum, increment);
 
-  if (current > maximum)
+  if (current > minimum)
   {
-    d.set_current(current - 1);
+    d.set_current(current - std::abs(increment));
   }
 
   return d;
@@ -92,7 +114,9 @@ string Depth::str() const
 bool Depth::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, current);
+  Serialize::write_int(stream, minimum);
   Serialize::write_int(stream, maximum);
+  Serialize::write_int(stream, increment);
   Serialize::write_int(stream, DEPTH_MULTIPLIER);
 
   return true;
@@ -101,7 +125,9 @@ bool Depth::serialize(ostream& stream) const
 bool Depth::deserialize(istream& stream)
 {
   Serialize::read_int(stream, current);
+  Serialize::read_int(stream, minimum);
   Serialize::read_int(stream, maximum);
+  Serialize::read_int(stream, increment);
   Serialize::read_int(stream, DEPTH_MULTIPLIER);
 
   return true;

@@ -5,7 +5,7 @@ different pieces of software to build it.
 
 Basic toolchain:
 
-- Visual Studio 2015 (e.g., the free Community Edition)
+- Visual Studio 2017 (e.g., the free Community Edition)
 - Lua 5.1 with the LUA_DEV environment variable set
 
 Source:
@@ -13,7 +13,7 @@ Source:
 
 The following dependencies are used (environment variable in parens):
 
-- Boost 1.60 (BOOST_DIR)
+- Boost 1.64 - at least beta2, for VS 2017 support (BOOST_DIR)
 - Google Test 1.7 (GTEST_DIR)
 - Xerces-C 3.1.1 (XERCES_DIR)
 - Zlib-1.2.8 (ZLIB_DIR)

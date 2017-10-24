@@ -5,8 +5,9 @@
 using namespace std;
 
 const int ItemBreakageCalculator::BASE_PCT_CHANCE_DIGGING_BREAKAGE = 50;
+const float ItemBreakageCalculator::MIN_SKILL_BREAKAGE_MULTIPLIER = 0.15f;
 
-int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(ItemPtr item)
+int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(CreaturePtr creature, ItemPtr item)
 {
   int result = BASE_PCT_CHANCE_DIGGING_BREAKAGE;
 
@@ -27,6 +28,9 @@ int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(ItemPtr item)
     result = override.second;
   }
 
+  double skill_break_mult = calculate_skill_breakage_multiplier(creature);
+  result = static_cast<int>(result * skill_break_mult);
+
   return result;
 }
 
@@ -45,3 +49,24 @@ pair<bool, int> ItemBreakageCalculator::get_override_pct_chance_breakage(ItemPtr
 
   return result;
 }
+
+float ItemBreakageCalculator::calculate_skill_breakage_multiplier(CreaturePtr creature)
+{
+  float skill_mult = 1.0f;
+
+  if (creature != nullptr)
+  {
+    // Subtract 0.01 for every point of Dungeoneering.
+    int dungeoneering_val = creature->get_skills().get_value(SkillType::SKILL_GENERAL_DUNGEONEERING);
+    skill_mult -= (0.01f * dungeoneering_val);
+
+    // The lowest possible skill multiplier is 0.15
+    skill_mult = std::max(skill_mult, MIN_SKILL_BREAKAGE_MULTIPLIER);
+  }
+
+  return skill_mult;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ItemBreakageCalculator_test.cpp"
+#endif

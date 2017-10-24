@@ -25,8 +25,13 @@ class MapProperties
     static const std::string MAP_PROPERTIES_GENERATOR_FILTERS;
 
     // Should level checks be ignored when generating creatures?  Some places
-    // are just dangerous.
+    // are just dangerous. (vaults, etc)
     static const std::string MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS;
+
+    // Is the creature danger level equal to the level's danger level?
+    // If this is set, and you're on danger level 40, only danger level 40
+    // creatures will be generated.
+    static const std::string MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED;
 
     // Is a particular race required when generating creatures?  If so,
     // which one?  A race matches if it matches the given race, or the
@@ -42,6 +47,9 @@ class MapProperties
 
     // Can we teleport?
     static const std::string MAP_PROPERTIES_CANNOT_TELEPORT;
+
+    // Are we in another plane of existence where the Nine hold no sway?
+    static const std::string MAP_PROPERTIES_CANNOT_PRAY;
 
     // What is the creature generation rate?
     static const std::string MAP_PROPERTIES_CREATURE_GENERATION_RATE;
@@ -59,20 +67,33 @@ class MapProperties
     // based on danger level and tile type?
     static const std::string MAP_PROPERTIES_CREATURE_IDS;
 
+    static const std::string MAP_PROPERTIES_DEPTH;
+    static const std::string MAP_PROPERTIES_MIN_DEPTH;
+    static const std::string MAP_PROPERTIES_MAX_DEPTH;
+
+    // Shimmer colours exist on certain maps.  They are a CSV of
+    // numbers representing colours: "x,y,z"
+    //
+    // x = the colour of tiles with non-zero movement multipliers
+    // y = the colour of tiles with zero movement multipliers
+    // z = a "shimmer" that has a chance to override x and y on any
+    //     given turn.
+    static const std::string MAP_PROPERTIES_SHIMMER_COLOURS;
+
+    // Generation coordinates are used when a particular map is "more
+    // restricted" (e.g., floating tower, which has lots of air tiles
+    // that shouldn't be used for generation) and we want to ensure
+    // that creatures and items are only generated within a certain
+    // range.
+    static const std::string MAP_PROPERTIES_GENERATION_COORDINATES;
+
+    // When the map was generated, did the creature that triggered the
+    // generation ascend or descend?  For certain maps (dungeons, 
+    // sewers, etc) this will trigger on which staircase the creature
+    // will be placed.
+    static const std::string MAP_PROPERTIES_EXIT_MOVEMENT_TYPE;
+
   protected:
     MapProperties();
     ~MapProperties();
 };
-
-// Underworld properties: depth-related, etc.
-class UnderworldProperties
-{
-  public:
-    static const std::string UNDERWORLD_STRUCTURE_DEPTH;
-    static const std::string UNDERWORLD_STRUCTURE_MAX_DEPTH;
-
-  protected:
-    UnderworldProperties();
-    ~UnderworldProperties();
-};
-

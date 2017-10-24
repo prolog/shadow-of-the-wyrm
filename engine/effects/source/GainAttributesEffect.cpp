@@ -65,13 +65,13 @@ bool GainAttributesEffect::gain_attributes(CreaturePtr creature, const vector<Ga
   return effect_identified;
 }
 
-bool GainAttributesEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am)
+bool GainAttributesEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   vector<GainAttributesEnum> to_gain = {GainAttributesEnum::GAIN_ATTRIBUTES_STRENGTH, GainAttributesEnum::GAIN_ATTRIBUTES_DEXTERITY, GainAttributesEnum::GAIN_ATTRIBUTES_AGILITY, GainAttributesEnum::GAIN_ATTRIBUTES_HEALTH, GainAttributesEnum::GAIN_ATTRIBUTES_INTELLIGENCE, GainAttributesEnum::GAIN_ATTRIBUTES_WILLPOWER, GainAttributesEnum::GAIN_ATTRIBUTES_CHARISMA};
   return gain_attributes(creature, to_gain);
 }
 
-bool GainAttributesEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
+bool GainAttributesEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   vector<GainAttributesEnum> to_gain = { GainAttributesEnum::GAIN_ATTRIBUTES_STRENGTH, GainAttributesEnum::GAIN_ATTRIBUTES_DEXTERITY, GainAttributesEnum::GAIN_ATTRIBUTES_AGILITY, GainAttributesEnum::GAIN_ATTRIBUTES_HEALTH, GainAttributesEnum::GAIN_ATTRIBUTES_INTELLIGENCE, GainAttributesEnum::GAIN_ATTRIBUTES_WILLPOWER, GainAttributesEnum::GAIN_ATTRIBUTES_CHARISMA };
 
@@ -86,7 +86,7 @@ bool GainAttributesEffect::effect_uncursed(CreaturePtr creature, ActionManager *
   return gain_attributes(creature, to_gain);
 }
 
-bool GainAttributesEffect::effect_cursed(CreaturePtr creature, ActionManager * const am)
+bool GainAttributesEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   vector<GainAttributesEnum> no_gain;
   return gain_attributes(creature, no_gain);

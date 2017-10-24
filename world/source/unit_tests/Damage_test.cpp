@@ -3,16 +3,18 @@
 TEST(SW_World_Damage, set_damage_flags)
 {
   StatusAilments sa;
-  Damage damage(1, 4, 1, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, false, 0, sa);
+  Damage damage(1, 4, 1, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, false, false, false, 0, sa);
 
-  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(5), "Unexpected DamageFlagType::DAMAGE_FLAG_LAST");
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(7), "Unexpected DamageFlagType::DAMAGE_FLAG_LAST");
 
   map<DamageFlagType, bool> dflags = {{DamageFlagType::DAMAGE_FLAG_CHAOTIC, false},
                                       {DamageFlagType::DAMAGE_FLAG_VORPAL, false},
                                       {DamageFlagType::DAMAGE_FLAG_DRAINING, false},
                                       {DamageFlagType::DAMAGE_FLAG_ETHEREAL, false},
                                       {DamageFlagType::DAMAGE_FLAG_PIERCING, false},
-                                      {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, false}};
+                                      {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, false},
+                                      {DamageFlagType::DAMAGE_FLAG_SCYTHING, false},
+                                      {DamageFlagType::DAMAGE_FLAG_EXPLOSIVE, false}};
   
   // Flags should all be false at this point.
 
@@ -26,7 +28,9 @@ TEST(SW_World_Damage, set_damage_flags)
             {DamageFlagType::DAMAGE_FLAG_DRAINING, true},
             {DamageFlagType::DAMAGE_FLAG_ETHEREAL, true},
             {DamageFlagType::DAMAGE_FLAG_PIERCING, true},
-            {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, true}};
+            {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, true},
+            {DamageFlagType::DAMAGE_FLAG_SCYTHING, true},
+            {DamageFlagType::DAMAGE_FLAG_EXPLOSIVE, true}};
 
   damage.set_damage_flags(dflags);
 
@@ -40,7 +44,9 @@ TEST(SW_World_Damage, set_damage_flags)
             {DamageFlagType::DAMAGE_FLAG_DRAINING, false},
             {DamageFlagType::DAMAGE_FLAG_ETHEREAL, true},
             {DamageFlagType::DAMAGE_FLAG_PIERCING, true},
-            {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, false}};
+            {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, false},
+            {DamageFlagType::DAMAGE_FLAG_SCYTHING, false},
+            {DamageFlagType::DAMAGE_FLAG_EXPLOSIVE, true}};
 
   damage.set_damage_flags(dflags);
 
@@ -53,51 +59,31 @@ TEST(SW_World_Damage, set_damage_flags)
 TEST(SW_World_Damage, get_damage_flags_by_type)
 {
   StatusAilments sa;
-  Damage damage(1, 4, 1, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, false, 0, sa);
+  Damage damage(1, 4, 1, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, false, false, false, 0, sa);
 
   EXPECT_TRUE(damage.get_damage_flags_by_value(true).empty());
-  EXPECT_TRUE(damage.get_damage_flags_by_value(false).size() == 6);
+  EXPECT_TRUE(damage.get_damage_flags_by_value(false).size() == 8);
 
   damage.set_vorpal(true);
   damage.set_incorporeal(true);
+  damage.set_scything(true);
+  damage.set_explosive(true);
 
   vector<DamageFlagType> dflags = damage.get_damage_flags_by_value(true);
 
   EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_VORPAL) != dflags.end());
   EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_INCORPOREAL) != dflags.end());
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_SCYTHING) != dflags.end());
   EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_DRAINING) == dflags.end());
-  EXPECT_TRUE(dflags.size() == 2);
+  EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_EXPLOSIVE) != dflags.end());
+  EXPECT_TRUE(dflags.size() == 4);
 
   damage.set_damage_flag(DamageFlagType::DAMAGE_FLAG_DRAINING, true);
 
   dflags = damage.get_damage_flags_by_value(true);
 
   EXPECT_TRUE(std::find(dflags.begin(), dflags.end(), DamageFlagType::DAMAGE_FLAG_DRAINING) != dflags.end());
-  EXPECT_TRUE(dflags.size() == 3);
-}
-
-TEST(SW_World_Damage, contains_dam_type)
-{
-  StatusAilments sa;
-  Damage damage(5, 6, 7, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, true, 0, sa);
-  
-  EXPECT_TRUE(damage.contains(DamageType::DAMAGE_TYPE_SHADOW));
-  EXPECT_FALSE(damage.contains(DamageType::DAMAGE_TYPE_HOLY));
-
-  std::shared_ptr<Damage> addl_damage1(new Damage(1, 2, 3, DamageType::DAMAGE_TYPE_PIERCE, {}, false, false, false, false, false, false, 0, sa));
-  std::shared_ptr<Damage> addl_damage2(new Damage(1, 2, 3, DamageType::DAMAGE_TYPE_HOLY, {}, false, false, false, false, false, false, 0, sa));
-  std::shared_ptr<Damage> addl_damage3(new Damage(1, 2, 3, DamageType::DAMAGE_TYPE_ACID, {}, false, false, false, false, false, false, 0, sa));
-
-  addl_damage1->set_additional_damage(addl_damage2);
-  addl_damage2->set_additional_damage(addl_damage3);
-  damage.set_additional_damage(addl_damage1);
-
-  EXPECT_TRUE(damage.contains(DamageType::DAMAGE_TYPE_SHADOW));
-  EXPECT_TRUE(damage.contains(DamageType::DAMAGE_TYPE_PIERCE));
-  EXPECT_TRUE(damage.contains(DamageType::DAMAGE_TYPE_HOLY));
-  EXPECT_TRUE(damage.contains(DamageType::DAMAGE_TYPE_ACID));
-
-  EXPECT_FALSE(damage.contains(DamageType::DAMAGE_TYPE_HEAT));
+  EXPECT_TRUE(dflags.size() == 5);
 }
 
 TEST(SW_World_Damage, serialization_id)
@@ -110,14 +96,15 @@ TEST(SW_World_Damage, serialization_id)
 TEST(SW_World_Damage, saveload)
 {
   StatusAilments sa;
-  Damage damage(5, 6, 7, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, true, 0, sa);
-  std::shared_ptr<Damage> addl_damage(new Damage(6, 7, 8, DamageType::DAMAGE_TYPE_PIERCE, {}, false, false, false, false, false, true, 0, sa));
-  damage.set_additional_damage(addl_damage);
+  Damage damage(5, 6, 7, DamageType::DAMAGE_TYPE_SHADOW, {}, false, false, false, false, false, true, false, false, 0, sa);
+  std::shared_ptr<Damage> addl_damage(new Damage(6, 7, 8, DamageType::DAMAGE_TYPE_PIERCE, {}, false, false, false, false, false, true, false, false, 0, sa));
   damage.set_chaotic(true);
   damage.set_effect_bonus(42);
   damage.set_piercing(true);
   damage.set_vorpal(true);
   damage.set_draining(true);
+  damage.set_scything(true);
+  damage.set_explosive(true);
 
   vector<string> slay_races;
   slay_races.push_back("elf");
@@ -140,6 +127,9 @@ TEST(SW_World_Damage, saveload)
   bool vorp_flag_ok = (damage2.get_vorpal());
   bool drain_flag_ok = (damage2.get_draining());
   bool incorp_flag_ok = damage2.get_incorporeal();
+  bool scything_flag_ok = damage2.get_scything();
+  bool explosive_flag_ok = damage2.get_explosive();
+
   bool slays_ok = find(slay_races.begin(), slay_races.end(), "elf") != slay_races.end();
 
   EXPECT_TRUE(damage_ok);
@@ -147,5 +137,7 @@ TEST(SW_World_Damage, saveload)
   EXPECT_TRUE(vorp_flag_ok);
   EXPECT_TRUE(drain_flag_ok);
   EXPECT_TRUE(incorp_flag_ok);
+  EXPECT_TRUE(scything_flag_ok);
+  EXPECT_TRUE(explosive_flag_ok);
   EXPECT_TRUE(slays_ok);
 }

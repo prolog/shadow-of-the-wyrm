@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 
+// Item types for the C++ code.
 enum struct ItemType
 {
   ITEM_TYPE_NULL = -1,
@@ -23,6 +24,14 @@ enum struct ItemType
   ITEM_TYPE_TOOL = 15,
   ITEM_TYPE_LAST = 16
 };
+
+// Item types for the Lua code.
+#define CITEM_TYPE_POTION 3
+#define CITEM_TYPE_WAND 6
+#define CITEM_TYPE_SCROLL 5
+#define CITEM_TYPE_SPELLBOOK 4
+#define CITEM_TYPE_RING 8
+#define CITEM_TYPE_AMULET 9
 
 enum struct ItemStatus
 {
@@ -50,6 +59,9 @@ class ItemIdKeys
     static const std::string ITEM_ID_ROCK;
     static const std::string ITEM_ID_STONE;
     static const std::string ITEM_ID_MAGICI_SHARD;
+    static const std::string ITEM_ID_LUMP_GOLD;
+    static const std::string ITEM_ID_IRON_INGOT;
+    static const std::string ITEM_ID_STEEL_INGOT;
     static const std::string ITEM_ID_KINGFLOWER;
     static const std::string ITEM_ID_FIDDLEHEAD_GREEN;
     static const std::string ITEM_ID_FERN;
@@ -74,7 +86,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_BERRIES;
     static const std::string ITEM_ID_KELP;
 
-    // Herbs
+    // Herbs and plants
     static const std::string ITEM_ID_WHITE_BASIL; // cures poison
     static const std::string ITEM_ID_STONEFLOWER; // cures petrification
     static const std::string ITEM_ID_VERBENA; // increases AP

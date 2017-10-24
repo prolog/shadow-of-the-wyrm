@@ -60,6 +60,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool user_playable = XMLUtils::get_child_node_bool_value(race_node, "UserPlayable");
     race->set_user_playable(user_playable);
 
+    bool slayable = XMLUtils::get_child_node_bool_value(race_node, "Slayable");
+    race->set_slayable(slayable);
+
     bool leaves_corpse = XMLUtils::get_child_node_bool_value(race_node, "LeavesCorpse");
     race->set_leaves_corpse(leaves_corpse);
 
@@ -119,6 +122,10 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool flying = XMLUtils::get_child_node_bool_value(race_node, "Flying", race->get_flying().get_base());
     BoolStatistic flying_stat(flying);
     race->set_flying(flying_stat);
+
+    bool water_breathing = XMLUtils::get_child_node_bool_value(race_node, "WaterBreathing", false);
+    BoolStatistic water_breathing_stat(water_breathing);
+    race->set_water_breathing(water_breathing_stat);
 
     parse_race_initial_modifiers(race, initial_modifiers_node);
     parse_initial_deity_ids(race, initial_deity_ids_node);

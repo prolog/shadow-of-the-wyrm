@@ -22,7 +22,7 @@ TileType EarthTile::get_decomposition_tile_type() const
 
 vector<pair<pair<int, int>, string>> EarthTile::get_decomposition_item_ids() const
 {
-  vector<pair<pair<int, int>, string>> result = {{{1,1}, ItemIdKeys::ITEM_ID_DIRT}};
+  vector<pair<pair<int, int>, string>> result = {{{1,5}, ItemIdKeys::ITEM_ID_DIRT}};
   return result;
 }
 

@@ -17,8 +17,7 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
   bool items_generated = false;
 
   Dimensions dim = map->size();
-  int rows = dim.get_y();
-  int cols = dim.get_x();
+  pair<Coordinate, Coordinate> g_coords = map->get_generation_coordinates();
 
   ItemGenerationManager igm;
 
@@ -71,8 +70,8 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
     {
       while (!placed_item)
       {
-        int item_row = RNG::range(0, rows - 1);
-        int item_col = RNG::range(0, cols - 1);
+        int item_row = RNG::range(g_coords.first.first, g_coords.second.first);
+        int item_col = RNG::range(g_coords.first.second, g_coords.second.second);
 
         // Check to see if the tile isn't blocking
         TilePtr tile = map->at(item_row, item_col);

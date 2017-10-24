@@ -1682,9 +1682,14 @@ void Skills::mark(const SkillType skill_name, const bool override_default)
 
   if (skill_to_mark)
   {
-    if (skill_to_mark->get_value() > 0 || skill_to_mark->can_train_from_unlearned() || override_default)
+    int value = skill_to_mark->get_value();
+
+    if (value > 0 || skill_to_mark->can_train_from_unlearned() || override_default)
     {
-      skill_to_mark->get_marks_ref().incr();
+      if (value < MAX_SKILL_VALUE)
+      {
+        skill_to_mark->get_marks_ref().incr();
+      }
     }
   }
 }
@@ -1714,7 +1719,10 @@ int Skills::get_value_incr_marks(const SkillType& skill_name)
 
     if (val > 0 || skill->can_train_from_unlearned())
     {
-      skill->get_marks_ref().incr();
+      if (val < MAX_SKILL_VALUE)
+      {
+        skill->get_marks_ref().incr();
+      }
     }
   }
 

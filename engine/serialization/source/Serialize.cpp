@@ -532,6 +532,34 @@ void Serialize::read_string_set(istream& stream, set<string>& val)
   }
 }
 
+void Serialize::write_event_scripts(ostream& stream, const EventScriptsMap& event_scripts)
+{
+  size_t es_size = event_scripts.size();
+  Serialize::write_size_t(stream, es_size);
+  for (const auto& es_pair : event_scripts)
+  {
+    Serialize::write_string(stream, es_pair.first);
+    es_pair.second.serialize(stream);
+  }
+}
+
+void Serialize::read_event_scripts(istream& stream, EventScriptsMap& event_scripts)
+{
+  size_t es_size = 0;
+  Serialize::read_size_t(stream, es_size);
+
+  for (size_t i = 0; i < es_size; i++)
+  {
+    string event_name;
+    ScriptDetails sd;
+
+    Serialize::read_string(stream, event_name);
+    sd.deserialize(stream);
+
+    event_scripts.insert(make_pair(event_name, sd));
+  }
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Serialize_test.cpp"
 #endif

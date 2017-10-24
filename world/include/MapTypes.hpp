@@ -8,6 +8,9 @@ enum struct MapType
   MAP_TYPE_WORLD = 0
 , MAP_TYPE_OVERWORLD = 1
 , MAP_TYPE_UNDERWORLD = 2
+, MAP_TYPE_UNDERWATER = 3
+, MAP_TYPE_COSMOS = 4
+, MAP_TYPE_LAST_INC = 4
 };
 
 class MapID
@@ -17,6 +20,15 @@ class MapID
 
   protected:
     MapID();
+};
+
+class MapEventScripts
+{
+  public:
+    static const std::string MAP_EVENT_SCRIPT_CREATE;
+
+  protected:
+    MapEventScripts();
 };
 
 using NamedMapLocations = std::map<std::string, Coordinate>;

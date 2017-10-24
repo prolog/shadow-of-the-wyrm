@@ -1,4 +1,6 @@
 #include "gtest/gtest.h"
+#include "FieldTile.hpp"
+#include "MapProperties.hpp"
 
 class SW_Engine_Map : public ::testing::Test
 {
@@ -118,6 +120,11 @@ TEST_F(SW_Engine_Map, saveload)
   vector<Coordinate> coords = {{0,1},{2,2},{3,3},{18,56}};
   map->set_preset_locations(coords);
 
+  ScriptDetails sd;
+  sd.set_chance(22);
+  sd.set_script("some/script.lua");
+  map->add_event_script("aaa", sd);
+
   MapPtr map2 = make_map();
 
   ostringstream ss;
@@ -129,4 +136,31 @@ TEST_F(SW_Engine_Map, saveload)
   EXPECT_TRUE(*map == *map2);
   EXPECT_EQ("bar", map2->get_property("foo"));
   EXPECT_EQ(coords, map2->get_preset_locations());
+}
+
+TEST_F(SW_Engine_Map, underwater_maps_submerge_tiles)
+{
+  TilePtr tile = std::make_shared<FieldTile>();
+  MapPtr map = make_map();
+  map->set_map_type(MapType::MAP_TYPE_UNDERWATER);
+
+  EXPECT_FALSE(tile->get_submerged());
+
+  map->insert({4,4}, tile);
+
+  EXPECT_TRUE(map->at({4,4})->get_submerged());
+}
+
+TEST_F(SW_Engine_Map, get_generation_coordinates)
+{
+  MapPtr map = make_map();
+  pair<Coordinate, Coordinate> expected = make_pair(make_pair(0,0), make_pair(19, 79));
+
+  EXPECT_EQ(expected, map->get_generation_coordinates());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_GENERATION_COORDINATES, "5,5,17,50");
+
+  expected = make_pair(make_pair(5,5), make_pair(17,50));
+
+  EXPECT_EQ(expected, map->get_generation_coordinates());
 }

@@ -6,6 +6,7 @@
 #include "XMLAltarReader.hpp"
 #include "XMLBedReader.hpp"
 #include "XMLBarrelReader.hpp"
+#include "XMLBasicFeatureCMReader.hpp"
 #include "XMLDoorReader.hpp"
 #include "XMLFirePillarReader.hpp"
 #include "XMLForgeReader.hpp"
@@ -89,6 +90,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "StoneMarker")).is_null())
     {
       feature_creator = std::make_shared<XMLStoneMarkerReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "BasicFeature")).is_null())
+    {
+      feature_creator = std::make_shared<XMLBasicFeatureCMReader>();
     }
 
     assert(feature_creator != nullptr);

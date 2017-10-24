@@ -30,6 +30,9 @@ class Race
     void set_user_playable(const bool playable);
     bool get_user_playable() const;
 
+    void set_slayable(const bool slayable);
+    bool get_slayable() const;
+
     void set_leaves_corpse(const bool new_leaves_corpse);
     bool get_leaves_corpse() const;
 
@@ -114,6 +117,9 @@ class Race
     void set_flying(const BoolStatistic& new_flying);
     BoolStatistic get_flying() const;
 
+    void set_water_breathing(const BoolStatistic& new_water_breathing);
+    BoolStatistic get_water_breathing() const;
+
     void set_experience_multiplier(const float new_experience_multiplier);
     float get_experience_multiplier() const;
 
@@ -144,6 +150,7 @@ class Race
     std::string race_id;
     std::string parent_race_id;
     bool user_playable;
+    bool slayable;
     bool leaves_corpse;
     bool corpse_poisoned;
     bool splits;
@@ -179,6 +186,11 @@ class Race
     BoolStatistic corporeal; // Most races are corporeal; spirits aren't.
     BoolStatistic undead; // Good and neutral gods don't think zombies are good eating
     BoolStatistic flying; // Birds can fly - the rest aren't so lucky.
+    
+    // Most races cannot breathe water.  The Elysians normally build air, but
+    // have a permanent enchantment on them that allows them to also breathe
+    // water.
+    BoolStatistic water_breathing;
     
     // Available deities on creation
     std::vector<std::string> initial_deity_ids;

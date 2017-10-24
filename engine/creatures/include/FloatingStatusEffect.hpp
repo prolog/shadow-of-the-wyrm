@@ -7,6 +7,9 @@
 // happens when the status wears off.
 class FloatingStatusEffect : public StatusEffect
 {
+  public:
+    virtual bool is_negative() const override;
+
   protected:
     virtual void after_undo(std::shared_ptr<Creature> creature) const override;
 };

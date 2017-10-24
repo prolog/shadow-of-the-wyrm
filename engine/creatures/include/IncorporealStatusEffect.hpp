@@ -6,6 +6,8 @@ class IncorporealStatusEffect : public FloatingStatusEffect
   public:
     IncorporealStatusEffect();
 
+    bool is_negative() const override;
+
   protected:
     virtual void after_undo(std::shared_ptr<Creature> creature) const override;
 

@@ -65,6 +65,7 @@ const string CommandKeys::VIEW_ITEMS     = "VIEW_ITEMS";
 const string CommandKeys::HELP           = "HELP";
 const string CommandKeys::BREED          = "BREED";
 const string CommandKeys::INSCRIBE       = "INSCRIBE";
+const string CommandKeys::TOGGLE_AUTOPICKUP = "AUTOPICKUP";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

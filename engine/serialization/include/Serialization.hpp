@@ -15,10 +15,10 @@ class Serialization
     static std::string generate_savefile_name(const std::string& user_name, const std::string& character_name);
     static bool does_savefile_exist_for_user_and_character(const std::string& user_name, const std::string& character_name);
 
-    static std::vector<std::pair<std::string, std::string>> get_save_file_names();
+    static std::vector<std::pair<std::string, std::string>> get_save_file_names(const bool single_user_mode);
 
   protected:
-    static std::pair<bool, std::string> get_save_file_availability_and_synopsis(const std::string& file);
+    static std::pair<bool, std::string> get_save_file_availability_and_synopsis(const std::string& file, const bool single_user_mode);
     static void write_savefile(std::ofstream& file_stream, std::ostringstream& gamedata_stream, const bool use_compression, const int compression_level);
     static void read_savefile(std::ifstream& stream);
     static void read_game_stream(std::istream& stream);

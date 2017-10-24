@@ -1,31 +1,52 @@
 require('constants')
 
--- Ead doesn't actually have a quest, but will give silverweed to the
--- player the first time they talk.
-local silverweed_prop = "ead_given_silverweed"
-local given_silverweed = get_creature_additional_property(PLAYER_ID, silverweed_prop)
+-- If the player has a source of water breathing, Ead will offer to send
+-- him or her elsewhere...
+if creature_has_status(PLAYER_ID, "_wb") then
+  add_message_with_pause("EAD_TELARI_TEXT1_SID")
+  add_message_with_pause("EAD_TELARI_TEXT2_SID")
+  add_message_with_pause("EAD_TELARI_TEXT3_SID")
+  add_message_with_pause("EAD_TELARI_TEXT4_SID")
+  add_message_with_pause("EAD_TELARI_TEXT5_SID")
+  add_message_with_pause("EAD_TELARI_TEXT6_SID")
+  add_message_with_pause("EAD_TELARI_TEXT7_SID")
+  add_message_with_pause("EAD_TELARI_TEXT8_SID")
 
-add_message_with_pause("EAD_SPEECH_TEXT1_SID")
-add_message_with_pause("EAD_SPEECH_TEXT2_SID")
-add_message_with_pause("EAD_SPEECH_TEXT3_SID")
-add_message_with_pause("EAD_SPEECH_TEXT4_SID")
-add_message_with_pause("EAD_SPEECH_TEXT5_SID")
-add_message_with_pause("EAD_SPEECH_TEXT6_SID")
-add_message_with_pause("EAD_SPEECH_TEXT7_SID")
-add_message_with_pause("EAD_SPEECH_TEXT8_SID")
-add_message_with_pause("EAD_SPEECH_TEXT9_SID")
-add_message_with_pause("EAD_SPEECH_TEXT10_SID")
+  clear_messages()
 
-if string.len(given_silverweed) == 0 then
-  -- Give the player some silverweed, and add some additional chat text.
-  add_object_to_player_tile("silverweed", 3)
-  set_creature_additional_property(PLAYER_ID, silverweed_prop, tostring(true))
-
-  add_message_with_pause("EAD_SPEECH_TEXT11_SID")
-  add_message_with_pause("EAD_SPEECH_TEXT12_SID")
-  add_message_with_pause("EAD_SPEECH_TEXT13_SID")
-  clear_and_add_message("EAD_SPEECH_TEXT14_SID")  
+  if add_confirmation_message("EAD_TELARI_TEXT9_SID") then
+    add_message_with_pause("EAD_TELARI_CONFIRM_SID")
+    load_map(PLAYER_ID, "telari")
+  else
+    clear_and_add_message("EAD_TELARI_DENY_SID")
+  end
 else
-  clear_and_add_message("EAD_SPEECH_TEXT11_SID")
+  -- Ead will give silverweed to the player the first time they talk.
+  local silverweed_prop = "ead_given_silverweed"
+  local given_silverweed = get_creature_additional_property(PLAYER_ID, silverweed_prop)
+
+  add_message_with_pause("EAD_SPEECH_TEXT1_SID")
+  add_message_with_pause("EAD_SPEECH_TEXT2_SID")
+  add_message_with_pause("EAD_SPEECH_TEXT3_SID")
+  add_message_with_pause("EAD_SPEECH_TEXT4_SID")
+  add_message_with_pause("EAD_SPEECH_TEXT5_SID")
+  add_message_with_pause("EAD_SPEECH_TEXT6_SID")
+  add_message_with_pause("EAD_SPEECH_TEXT7_SID")
+  add_message_with_pause("EAD_SPEECH_TEXT8_SID")
+  add_message_with_pause("EAD_SPEECH_TEXT9_SID")
+  add_message_with_pause("EAD_SPEECH_TEXT10_SID")
+
+  if string.len(given_silverweed) == 0 then
+    -- Give the player some silverweed, and add some additional chat text.
+    add_object_to_player_tile("silverweed", 3)
+    set_creature_additional_property(PLAYER_ID, silverweed_prop, tostring(true))
+
+    add_message_with_pause("EAD_SPEECH_TEXT11_SID")
+    add_message_with_pause("EAD_SPEECH_TEXT12_SID")
+    add_message_with_pause("EAD_SPEECH_TEXT13_SID")
+    clear_and_add_message("EAD_SPEECH_TEXT14_SID")  
+  else
+    clear_and_add_message("EAD_SPEECH_TEXT11_SID")
+  end
 end
 

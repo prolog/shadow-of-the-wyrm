@@ -1,6 +1,8 @@
 #include "TileUtils.hpp"
 #include "GraveTile.hpp"
 
+using namespace std;
+
 TileUtils::TileUtils()
 {
 }
@@ -36,6 +38,29 @@ void TileUtils::set_grave_feature(TilePtr tile, FeaturePtr grave_feature)
 
     tile->set_dig_chances(dc);
     tile->set_feature(grave_feature);
+  }
+}
+
+void TileUtils::copy_exit_properties_to_tile(TilePtr tile)
+{
+  if (tile != nullptr)
+  {
+    TileExitMap& exits = tile->get_tile_exit_map_ref();
+
+    for (const auto& t_pair : exits)
+    {
+      MapExitPtr exit = t_pair.second;
+
+      if (exit != nullptr)
+      {
+        map<string, string> properties = exit->get_properties();
+
+        for (const auto& p_pair : properties)
+        {
+          tile->set_additional_property(p_pair.first, p_pair.second);
+        }
+      }
+    }
   }
 }
 

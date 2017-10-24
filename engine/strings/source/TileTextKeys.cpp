@@ -12,6 +12,7 @@ TileTextKeys::~TileTextKeys()
 
 const string TileTextKeys::TILE_DESC_DUG            = "TILE_DESC_DUG";
 const string TileTextKeys::TILE_DESC_PLANTED        = "TILE_DESC_PLANTED";
+const string TileTextKeys::TILE_DESC_SUBMERGED      = "TILE_DESC_SUBMERGED";
 const string TileTextKeys::TILE_DESC_AIR            = "TILE_DESC_AIR";
 const string TileTextKeys::TILE_DESC_BARROW         = "TILE_DESC_BARROW";
 const string TileTextKeys::TILE_DESC_BEACH          = "TILE_DESC_BEACH";
@@ -63,6 +64,11 @@ const string TileTextKeys::TILE_DESC_EARTH          = "TILE_DESC_EARTH";
 const string TileTextKeys::TILE_DESC_SEWER_COMPLEX  = "TILE_DESC_SEWER_COMPLEX";
 const string TileTextKeys::TILE_DESC_SEWER          = "TILE_DESC_SEWER";
 const string TileTextKeys::TILE_DESC_SHRINE         = "TILE_DESC_SHRINE";
+const string TileTextKeys::TILE_DESC_SEABED         = "TILE_DESC_SEABED";
+const string TileTextKeys::TILE_DESC_KELP           = "TILE_DESC_KELP";
+const string TileTextKeys::TILE_DESC_AQUATIC_VEGETATION = "TILE_DESC_AQUATIC_VEGETATION";
+const string TileTextKeys::TILE_DESC_FLOATING_TOWER = "TILE_DESC_FLOATING_TOWER";
+const string TileTextKeys::TILE_DESC_VOID           = "TILE_DESC_VOID";
 
 const string TileTextKeys::TILE_EXTRA_DESCRIPTION_SKY_SHRINE    = "TILE_EXTRA_DESCRIPTION_SKY_SHRINE";
 const string TileTextKeys::TILE_EXTRA_DESCRIPTION_WORLD_SHRINE  = "TILE_EXTRA_DESCRIPTION_WORLD_SHRINE";

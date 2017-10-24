@@ -21,6 +21,8 @@ using namespace SOTW;
 
 const int Generator::FORAGABLE_MIN = 0;
 const int Generator::FORAGABLE_MAX = 8;
+const string Generator::RECURSIVE_PROPERTY_SUFFIX = "_RECURSIVE";
+const string Generator::DEPTH_PROPERTY_PREFIX = "_DEPTH_";
 
 Generator::Generator(const string& new_map_exit_id, const TileType new_map_terrain_type)
 : map_exit_id(new_map_exit_id), map_terrain_type(new_map_terrain_type), danger_level(0)
@@ -133,6 +135,11 @@ TileType Generator::get_terrain_type() const
   return map_terrain_type;
 }
 
+pair<bool, bool> Generator::override_depth_update_defaults() const
+{
+  return make_pair(false, false);
+}
+
 void Generator::fill(const MapPtr map, const TileType& tile_type)
 {
   TileGenerator tg;
@@ -238,6 +245,68 @@ string Generator::get_additional_property(const string& property_name) const
   return property_value;
 }
 
+map<string, string> Generator::get_recursive_properties() const
+{
+  map<string, string> rec_props;
+
+  for (const auto& p_pair : additional_properties)
+  {
+    string rec_prop = p_pair.first;
+
+    if (boost::algorithm::ends_with(rec_prop, RECURSIVE_PROPERTY_SUFFIX))
+    {
+      rec_prop.erase(rec_prop.find(RECURSIVE_PROPERTY_SUFFIX));
+
+      auto p_it = additional_properties.find(rec_prop);
+
+      // Include both the referant property, as well as the recursive
+      // property.
+      if (p_it != additional_properties.end())
+      {
+        rec_props[p_it->first] = p_it->second;
+        rec_props[p_pair.first] = p_pair.second;
+      }
+    }
+  }
+
+  return rec_props;
+}
+
+map<string, string> Generator::get_depth_properties() const
+{
+  map<string, string> depth_props;
+
+  for (const auto& prop_pair : additional_properties)
+  {
+    string p = prop_pair.first;
+    string::size_type p_loc = p.find("_");
+
+    if (p_loc != string::npos)
+    {
+      string numeric_part_s = p.substr(0, p_loc);
+
+      try
+      {
+        // If we got here, we got a property starting with a number.
+        // Remove the numeric part and then check the rest of the
+        // property name to see if it's a depth property.
+        p.erase(p.find(numeric_part_s), numeric_part_s.size());
+
+        if (boost::starts_with(p, DEPTH_PROPERTY_PREFIX))
+        {
+          depth_props[prop_pair.first] = prop_pair.second;
+        }
+      }
+      catch (...)
+      {
+        continue;
+      }
+    }
+  }
+
+  return depth_props;
+}
+
 bool Generator::has_additional_property(const string& property_name) const
 {
   return (additional_properties.find(property_name) != additional_properties.end());
@@ -281,12 +350,7 @@ bool Generator::place_down_staircase(MapPtr map, const int row, const int col,co
   
   TilePtr tile = map->at(row, col);
 
-  if (tile != nullptr)
-  {
-    tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
-    tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH));
-  }
-  else
+  if (tile == nullptr)
   {
     placed = false;
   }
@@ -323,17 +387,35 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
 
     Depth depth = map->size().depth();
 
+    // Set the depth and original map ID so that these can be copied to all the
+    // maps in a particular generation chain.
+    new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_MIN_DEPTH, get_additional_property(MapProperties::MAP_PROPERTIES_MIN_DEPTH));
+    new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH, get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH));
+    new_staircase_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
+
+    // Ensure that depth increment is copied map to map, as well.
+    string depth_incr = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+    if (!depth_incr.empty())
+    {
+      new_staircase_tile->set_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, depth_incr);
+    }
+
     // Handle exiting to a previous map in underworld maps like dungeons,
     // mines, crypts, etc.
-    if (get_map_type() == MapType::MAP_TYPE_UNDERWORLD && tile_type == TileType::TILE_TYPE_UP_STAIRCASE)
+    // 
+    // In these, an up staircase leads to the prev map.
+    //
+    // For things like floating towers, a down staircase leads to the previous.
+    //
+    if (does_tile_lead_to_previous_map(get_map_type(), tile_type))
     {
       // This may be empty, in which case, the custom map ID will be empty
       // and terrain will be checked instead, which is the desired behaviour.
       new_staircase_tile->set_custom_map_id(get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID));
-      new_staircase_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
+      // JCD FIXME: Make this the min depth.
       // If we're on level 1, set the custom map ID to be the original map ID.
-      if (depth.get_current() <= 1)
+      if (std::abs(depth.get_current()) <= 1)
       {
         string original_map_id = get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID);
         new_staircase_tile->set_custom_map_id(original_map_id);
@@ -342,8 +424,23 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     else
     {
       // Handle the case where we need to link the new staircase to custom levels.
-      set_custom_map_id_for_depth(new_staircase_tile, direction, depth, map->get_map_id());
+      set_custom_map_linkage_for_depth(new_staircase_tile, direction, depth, map->get_map_id());
       set_depth_custom_map_id_properties(new_staircase_tile);
+
+      // Copy over any recursive properties as long as we're not linking back
+      // to a previous map (only copy recursive properties forwards)
+      std::map<string, string> recursive_properties = get_recursive_properties();
+      for (const auto& r_pr_pair : recursive_properties)
+      {
+        new_staircase_tile->set_additional_property(r_pr_pair.first, r_pr_pair.second);
+      }
+
+      // Copy forward any depth-specific properties as well
+      std::map<string, string> depth_properties = get_depth_properties();
+      for (const auto& d_pr_pair : depth_properties)
+      {        
+        new_staircase_tile->set_additional_property(d_pr_pair.first, d_pr_pair.second);
+      }
     }
 
     add_tile_exit(map, std::make_pair(row, col), direction, link_to_map_exit_id);
@@ -356,6 +453,17 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     return true;
   }  
   
+  return false;
+}
+
+bool Generator::does_tile_lead_to_previous_map(const MapType map_type, const TileType tile_type)
+{
+  if ((map_type == MapType::MAP_TYPE_UNDERWORLD && tile_type == TileType::TILE_TYPE_UP_STAIRCASE) ||
+      (map_type == MapType::MAP_TYPE_OVERWORLD && tile_type == TileType::TILE_TYPE_DOWN_STAIRCASE))
+  {
+    return true;
+  }
+
   return false;
 }
 
@@ -407,8 +515,8 @@ void Generator::add_tile_exit(MapPtr map, const Coordinate& c, const Direction d
 }
 
 // Get the custom map ID for a particular depth, and set it as the custom map ID
-// for the given tile.
-void Generator::set_custom_map_id_for_depth(TilePtr new_tile, const Direction exit_direction, const Depth& depth, const string& linkback_map_id)
+// for the given tile if the key exists.
+void Generator::set_custom_map_linkage_for_depth(TilePtr new_tile, const Direction exit_direction, const Depth& depth, const string& linkback_map_id)
 {
   Depth new_depth = depth;
   TileType tile_type = new_tile->get_tile_type();
@@ -521,6 +629,13 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
 
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_lvl_checks_val);
 
+  // The depth properties will be copied to any stairs, allowing them to 
+  // propagate.  Any properties that are specific for this depth will be
+  // copied to the map.  We can safely call the function at this point
+  // because by now, the generator should be done and the depth should
+  // be known.
+  set_depth_properties_to_map(map);
+
   // Set any special feature messages that should be displayed the first time
   // the player enters a level.
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS, String::create_csv_from_string_vector(feature_entry_text_sids));
@@ -529,7 +644,31 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
 void Generator::set_property_to_generator_and_map(MapPtr map, const string& prop, const string& val)
 {
   additional_properties[prop] = val;
-  map->set_property(prop, val);
+
+  if (map != nullptr)
+  {
+    map->set_property(prop, val);
+  }
+}
+
+void Generator::set_depth_properties_to_map(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    std::map<string, string> depth_props = get_depth_properties();
+    string depth_prefix = std::to_string(map->size().depth().get_current()) + DEPTH_PROPERTY_PREFIX;
+
+    for (const auto& d_pair : depth_props)
+    {
+      string prop = d_pair.first;
+
+      if (boost::starts_with(prop, depth_prefix))
+      {
+        prop.erase(prop.find(depth_prefix), depth_prefix.size());
+        set_property_to_generator_and_map(map, prop, d_pair.second);
+      }
+    }
+  }
 }
 
 // Generate roots, berries, etc., on the map, based on the seasons and the
@@ -614,11 +753,69 @@ map<TileType, vector<string>> Generator::get_foragables_for_season(ISeasonPtr se
 
 void Generator::update_depth_details(MapPtr map)
 {
-  string max_depth_property = get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH);
+  string max_depth_property = get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH);
   if (!max_depth_property.empty())
   {
     Depth depth = map->size().depth();
+
     depth.set_maximum(String::to_int(max_depth_property));
+
+    string depth_property = get_additional_property(MapProperties::MAP_PROPERTIES_DEPTH);
+    if (!depth_property.empty())
+    {
+      depth.set_current(String::to_int(depth_property));
+    }
+
+    string min_depth_property = get_additional_property(MapProperties::MAP_PROPERTIES_MIN_DEPTH);
+    if (!min_depth_property.empty())
+    {
+      depth.set_minimum(String::to_int(min_depth_property));
+    }
+
+    string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+    if (!depth_increment.empty())
+    {
+      depth.set_increment(String::to_int(depth_increment));
+    }
+
     map->size_ref().set_depth(depth);
   }
+}
+
+ExitMovementType Generator::get_last_exit_movement_type() const
+{
+  ExitMovementType emt = ExitMovementType::EXIT_MOVEMENT_UNDEFINED;
+  string emt_s = get_additional_property(MapProperties::MAP_PROPERTIES_EXIT_MOVEMENT_TYPE);
+
+  if (!emt_s.empty())
+  {
+    emt = static_cast<ExitMovementType>(String::to_int(emt_s));
+  }
+
+  return emt;
+}
+
+// If a last exit movement type is defined, use that to determine whether to
+// place on the down staircase or not.  If this is not defined, fall back on
+// the old behaviour of using the depth increment, which made sense six years
+// ago but now I have no idea why I did it that way. :(
+bool Generator::get_place_on_down_staircase(const ExitMovementType emt) const
+{
+  bool place_on_down = false;
+
+  if (emt == ExitMovementType::EXIT_MOVEMENT_ASCEND)
+  {
+    place_on_down = true;
+  }
+  else if (emt == ExitMovementType::EXIT_MOVEMENT_DESCEND)
+  {
+    place_on_down = false;
+  }
+  else if (emt == ExitMovementType::EXIT_MOVEMENT_UNDEFINED)
+  {
+    string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+    place_on_down = (depth_increment.empty());
+  }
+
+  return place_on_down;
 }

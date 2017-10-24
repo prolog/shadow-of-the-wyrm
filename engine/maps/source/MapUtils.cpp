@@ -3,15 +3,21 @@
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureProperties.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
+#include "MessageManagerFactory.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
+#include "MovementTextKeys.hpp"
+#include "PickupAction.hpp"
 #include "RNG.hpp"
+#include "TextMessages.hpp"
+#include "TileDescriber.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
@@ -285,15 +291,14 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
 {
   bool added_location = false;
 
-  ostringstream ss;
-
   if (creature != nullptr)
   {
     Log& log = Log::instance();
 
     if (log.debug_enabled())
     {
-      ss << "Adding creature with id " << creature->get_id() << " to " << c.first << "," << c.second;
+      ostringstream ss;
+      ss << "Adding creature " << creature->get_id() << " (" << creature->get_original_id() << ") to map at " << c.first << "," << c.second;
       log.debug(ss.str());
     }
   }
@@ -309,7 +314,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
 
   // Did the creature belong to a previous tile?  Can we move it to the new tile?  If so, then
   // remove from the old tile, and add to the new.
-  if (creatures_new_tile && is_tile_available_for_creature(creature, creatures_new_tile))
+  if (creature && creatures_new_tile && is_tile_available_for_creature(creature, creatures_new_tile))
   {
     if (creatures_old_tile)
     {
@@ -323,6 +328,29 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     if (!creatures_old_tile)
     {
       map->add_creature(creature);
+    }
+
+    add_tile_related_messages(creature, creatures_new_tile);
+
+    // Pick up any applicable items on the tile.
+    DecisionStrategyPtr dec = creature->get_decision_strategy();
+
+    if (dec != nullptr)
+    {
+      bool autopickup = dec->get_autopickup();
+
+      if (autopickup)
+      {
+        set<ItemType> auto_items = dec->get_autopickup_types();
+
+        if (!auto_items.empty())
+        {
+          Game& game = Game::instance();
+          PickupAction pa;
+
+          pa.pick_up(creature, &game.get_action_manager_ref(), PickUpType::PICK_UP_TYPES, auto_items);
+        }
+      }
     }
   }
 
@@ -392,7 +420,7 @@ std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapP
   return result_map;
 }
 
-std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature)
+std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature, const int offset)
 {
   std::vector<TilePtr> result_map;
 
@@ -400,7 +428,7 @@ std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(const Map
   {
     Coordinate creature_coord = map->get_location(creature->get_id());
 
-    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
+    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second, offset);
 
     for (const Coordinate& c : adjacent_coords)
     {
@@ -542,6 +570,29 @@ CreatureDirectionMap MapUtils::get_adjacent_creatures(const MapPtr& map, const C
   return adjacent_creatures;
 }
 
+vector<CreaturePtr> MapUtils::get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature)
+{
+  vector<CreaturePtr> adj_creatures;
+
+  if (map && creature)
+  {
+    Coordinate creature_coord = map->get_location(creature->get_id());
+
+    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
+
+    for (const Coordinate& c : adjacent_coords)
+    {
+      TilePtr tile = map->at(c);
+
+      if (tile && tile->has_creature())
+      {
+        adj_creatures.push_back(tile->get_creature());
+      }
+    }
+  }
+
+  return adj_creatures;
+}
 bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
 {
   bool result = false;
@@ -773,6 +824,21 @@ vector<CreaturePtr> MapUtils::get_hostile_creatures(const string& creature_id, M
   }
 
   return hostile_creatures;
+}
+
+bool MapUtils::are_creatures_adjacent(MapPtr current_map, CreaturePtr c1, CreaturePtr c2)
+{
+  bool adjacent = false;
+
+  if (current_map && c1 && c2)
+  {
+    Coordinate c1_coord = current_map->get_location(c1->get_id());
+    Coordinate c2_coord = current_map->get_location(c2->get_id());
+
+    adjacent = CoordUtils::are_coordinates_adjacent(c1_coord, c2_coord);
+  }
+
+  return adjacent;
 }
 
 // Check to see if there are any creatures hostile to the given creature ID on the map
@@ -1072,6 +1138,125 @@ void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
       }
     }
   }
+}
+
+int MapUtils::calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovementType emt)
+{
+  int depth_incr = 1;
+
+  if (map != nullptr)
+  {
+    string m_depthincr_s = map->get_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+    
+    if (!m_depthincr_s.empty())
+    {
+      depth_incr = String::to_int(m_depthincr_s);
+    }
+  }
+
+  if (tile != nullptr)
+  {
+    string t_depthincr_s = tile->get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+
+    if (!t_depthincr_s.empty())
+    {
+      depth_incr = String::to_int(t_depthincr_s);
+    }
+  }
+
+  if ((emt == ExitMovementType::EXIT_MOVEMENT_ASCEND && depth_incr > 0) || 
+      (emt == ExitMovementType::EXIT_MOVEMENT_DESCEND && depth_incr < 0))
+  {
+    depth_incr *= -1;
+  }
+
+  return depth_incr;
+}
+
+// Add any messages after moving to a particular tile:
+// - Should a message be displayed about the tile automatically? (staircases, etc)
+//       If so, add it.
+// - Are there any items on the tile?
+//       If so, add the appropriate message.
+void MapUtils::add_tile_related_messages(CreaturePtr creature, TilePtr tile)
+{
+  bool tile_message_added = add_message_about_tile_if_necessary(creature, tile);
+  bool item_message_added = add_message_about_items_on_tile_if_necessary(creature, tile);
+
+  if (tile_message_added || item_message_added)
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    manager.send();
+  }
+}
+
+// Add a message about the tile if necessary.
+bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr tile)
+{
+  bool msg_added = false;
+
+  if (creature && tile && creature->get_is_player())
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
+    if (tile->display_description_on_arrival() || tile->has_extra_description())
+    {
+      TileDescriber td(tile);
+      manager.add_new_message(td.describe());
+      msg_added = true;
+    }
+    else if (tile->has_inscription())
+    {
+      manager.add_new_message(TextMessages::get_inscription_message(tile->get_inscription_sid()));
+      msg_added = true;
+    }
+  }
+
+  return msg_added;
+}
+
+// Add a message if the creature is the player, and if there are items on
+// the tile.
+bool MapUtils::add_message_about_items_on_tile_if_necessary(CreaturePtr creature, TilePtr tile)
+{
+  bool msg_added = false;
+
+  if (creature && creature->get_is_player())
+  {
+    IInventoryPtr tile_items = tile->get_items();
+
+    if (!tile_items->empty())
+    {
+      string item_message;
+
+      // One item
+      if (tile_items->size() == 1)
+      {
+        ItemPtr item_on_tile = tile_items->at(0);
+
+        if (item_on_tile)
+        {
+          CurrentCreatureAbilities cca;
+          item_message = TextMessages::get_item_on_ground_description_message(!cca.can_see(creature), item_on_tile);
+        }
+      }
+      // Multiple items
+      else
+      {
+        item_message = StringTable::get(MovementTextKeys::ITEMS_ON_TILE);
+      }
+
+      // Send the message
+      if (!item_message.empty())
+      {
+        IMessageManager& manager = MM::instance();
+        manager.add_new_message(item_message);
+        msg_added = true;
+      }
+    }
+  }
+
+  return msg_added;
 }
 
 #ifdef UNIT_TESTS

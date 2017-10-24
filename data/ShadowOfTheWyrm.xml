@@ -33,6 +33,7 @@
 				<Artifact>akos_akari</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>archangel</Summon>
 				<Summon>angel</Summon>
@@ -73,7 +74,9 @@
 				<Artifact>battle_armour_aurelion</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>choros_greatsword</Artifact>
+				<Artifact>inferno</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>titan</Summon>
 				<Summon>divine_avenger</Summon>
@@ -115,6 +118,7 @@
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>elcrynn</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>air_elemental</Summon>
 				<Summon>angel</Summon>
@@ -150,13 +154,13 @@
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
-				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>creators_might</Artifact>
 				<Artifact>sword_fairy_king</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>blood_and_glory</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>earth_elemental</Summon>
 				<Summon>air_elemental</Summon>
@@ -190,14 +194,15 @@
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
-				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>earthcleaver</Artifact>
 				<Artifact>asturias</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>choros_greatsword</Artifact>
 				<Artifact>blood_and_glory</Artifact>
+				<Artifact>inferno</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>fire_elemental</Summon>
 				<Summon>iron_horror</Summon>
@@ -232,7 +237,6 @@
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
-				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>shroud_fate</Artifact>
 				<Artifact>akos_akari</Artifact>
@@ -241,7 +245,9 @@
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>elcrynn</Artifact>
 				<Artifact>blood_and_glory</Artifact>
+				<Artifact>longbow_of_pelageus</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>air_elemental</Summon>
 				<Summon>planewalker</Summon>
@@ -284,6 +290,7 @@
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>elcrynn</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>water_elemental</Summon>
 				<Summon>voidling</Summon>
@@ -320,7 +327,10 @@
 				<Artifact>stone_club_urgol</Artifact>
 				<Artifact>akkar</Artifact>
 				<Artifact>vorpal_blade</Artifact>
+				<Artifact>inferno</Artifact>
+				<Artifact>longbow_of_pelageus</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>fell_lord</Summon>
 				<Summon>star_beast</Summon>
@@ -356,7 +366,9 @@
 				<Artifact>apocalypse</Artifact>
 				<Artifact>akkar</Artifact>
 				<Artifact>vorpal_blade</Artifact>
+				<Artifact>inferno</Artifact>
 			</Crowning>
+			<ClassCrowningChance>75</ClassCrowningChance>
 			<Summons>
 				<Summon>tentacled_horror</Summon>
 				<Summon>astral_horror</Summon>
@@ -369,6 +381,7 @@
 	<Races>
 		<Race id="_animal">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -434,6 +447,7 @@
 		</Race>		
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -505,6 +519,7 @@
 		</Race>		
 		<Race id="_construct">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -576,6 +591,7 @@
 		</Race>		
 		<Race id="_demon">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -641,6 +657,7 @@
 		</Race>		
 		<Race id="_divine">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -669,7 +686,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
-			<Flying>0</Flying>
+			<Flying>1</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -706,6 +723,7 @@
 		</Race>		
 		<Race id="_humanoid">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -777,8 +795,77 @@
 			<APRegenMultiplier>1.0</APRegenMultiplier>
 			<SkillPoints>10</SkillPoints>
 		</Race>
+		<Race id="_elysian">
+			<UserPlayable>0</UserPlayable>
+			<Slayable>0</Slayable>
+			<LeavesCorpse>1</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
+			<Splits>0</Splits>
+			<HasPockets>1</HasPockets>
+			<HasVoice>1</HasVoice>
+			<NameSID>ELYSIAN_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<Hungerless>1</Hungerless>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>1000000</Min>
+					<Max>1000000</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>16</Strength>
+				<Dexterity>19</Dexterity>
+				<Agility>22</Agility>
+				<Health>16</Health>
+				<Intelligence>24</Intelligence>
+				<Willpower>28</Willpower>
+				<Charisma>20</Charisma>
+				<Speed>45</Speed>
+			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
+			<WaterBreathing>1</WaterBreathing>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0.30</Heat>
+				<Cold>0.25</Cold>
+				<Acid>0.20</Acid>
+				<Poison>0.25</Poison>
+				<Holy>0.50</Holy>
+				<Shadow>0.50</Shadow>
+				<Arcane>0.60</Arcane>
+				<Lightning>0.30</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>2.5</ExperienceMultiplier>		
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.4</APRegenMultiplier>
+			<SkillPoints>12</SkillPoints>
+		</Race>
 		<Race id="_insect">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -844,6 +931,7 @@
 		</Race>		
 		<Race id="_jelly">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>1</Splits>
@@ -909,6 +997,7 @@
 		</Race>
 		<Race id="_monster">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -974,6 +1063,7 @@
 		</Race>		
 		<Race id="_plant">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1039,6 +1129,7 @@
 		</Race>		
 		<Race id="_undead">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1099,6 +1190,7 @@
 		</Race>
 		<Race id="_corporeal_undead" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1162,6 +1254,7 @@
 		</Race>
 		<Race id="_spirit" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1224,6 +1317,7 @@
 		</Race>
 		<Race id="_dragon">
 			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1289,6 +1383,7 @@
 		</Race>
 		<Race id="01_human" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1376,6 +1471,7 @@
 		</Race>
 		<Race id="02_woodelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1455,6 +1551,7 @@
 		</Race>
 		<Race id="03_mountainelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1535,6 +1632,7 @@
 		</Race>
 		<Race id="04_snakeling" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1612,6 +1710,7 @@
 		</Race>
 		<Race id="05_fae" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1691,6 +1790,7 @@
 		</Race>
 		<Race id="06_dwarf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1769,6 +1869,7 @@
 		</Race>
 		<Race id="07_goblin" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1848,6 +1949,7 @@
 		</Race>
 		<Race id="08_ogre" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1923,6 +2025,7 @@
 		</Race>
 		<Race id="09_giant" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -1999,6 +2102,7 @@
 		</Race>
 		<Race id="10_gnome" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Splits>0</Splits>
@@ -2155,6 +2259,12 @@
 					<SID>ADVENTURER_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>akos_akari</Artifact>
+				<Artifact>alaric_mail_shirt</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>sunsword</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -2288,6 +2398,12 @@
 					<SID>APOTHECARY_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>akkar</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>carpathos</Artifact>
+				<Artifact>heavens_blade</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -2402,6 +2518,12 @@
 					<SID>ARCHER_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>longbow_of_pelageus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>shadow</Artifact>
+				<Artifact>akos_akari</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -2636,6 +2758,12 @@
 					<SID>ARTISAN_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>carpathos</Artifact>
+				<Artifact>creators_might</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>whisperwind</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -2737,6 +2865,12 @@
 					<SID>MERCHANT_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>carpathos</Artifact>
+				<Artifact>creators_might</Artifact>
+				<Artifact>skyslayer</Artifact>
+				<Artifact>whisperwind</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -2838,6 +2972,12 @@
 					<SID>MINSTREL_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>beastbinder</Artifact>
+				<Artifact>dragonsfist</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>heavens_blade</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -2952,6 +3092,12 @@
 					<SID>NOBLE_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>crown_of_tyranny</Artifact>
+				<Artifact>sword_fairy_king</Artifact>
+				<Artifact>sunsword</Artifact>
+				<Artifact>heavens_blade</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3066,6 +3212,12 @@
 					<SID>ORACLE_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>carpathos</Artifact>
+				<Artifact>creators_might</Artifact>
+				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>helm_of_the_heavens</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3186,6 +3338,12 @@
 					<SID>PILGRIM_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>elcrynn</Artifact>
+				<Artifact>helm_of_the_heavens</Artifact>
+				<Artifact>radiance</Artifact>
+				<Artifact>sunsword</Artifact>
+			</Crowning>
 			<PietyCostMultiplier>0.75</PietyCostMultiplier>
 			<PietyRegenBonus>3</PietyRegenBonus>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
@@ -3295,6 +3453,12 @@
 					<SID>PUGILIST_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>akos_akari</Artifact>
+				<Artifact>asturias</Artifact>
+				<Artifact>carpathos</Artifact>
+				<Artifact>shroud_fate</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>0.97</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -3413,6 +3577,12 @@
 					<SID>ROVER_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>beastbinder</Artifact>
+				<Artifact>bugcrusher</Artifact>
+				<Artifact>dragonbane</Artifact>
+				<Artifact>dragon_leather_tius</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3529,6 +3699,12 @@
 					<SID>SAGE_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>athame_winter</Artifact>
+				<Artifact>elcrynn</Artifact>
+				<Artifact>shroud_fate</Artifact>
+				<Artifact>staff_artificer</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3637,6 +3813,12 @@
 					<SID>SEAFARER_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>alaric_mail_shirt</Artifact>
+				<Artifact>dragonbane</Artifact>
+				<Artifact>radiance</Artifact>
+				<Artifact>stonespear</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -3748,6 +3930,12 @@
 					<SID>SHEPHERD_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>akos_akari</Artifact>
+				<Artifact>dragonsfist</Artifact>
+				<Artifact>heavens_blade</Artifact>
+				<Artifact>whisperwind</Artifact>
+			</Crowning>
 			<PietyCostMultiplier>0.40</PietyCostMultiplier>
 			<PietyRegenBonus>5</PietyRegenBonus>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
@@ -3855,6 +4043,12 @@
 					<SID>SMITH_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>alaric_mail_shirt</Artifact>
+				<Artifact>delver</Artifact>
+				<Artifact>inferno</Artifact>
+				<Artifact>light_of_battle</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -3979,6 +4173,12 @@
 					<SID>THIEF_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>akkar</Artifact>
+				<Artifact>akos_akari</Artifact>
+				<Artifact>asturias</Artifact>
+				<Artifact>dragon_leather_tius</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>0.92</ExperienceMultiplier>
 			<DeityDislikeMultipliers>
 				<DeityDislikeMultiplier>
@@ -4108,6 +4308,12 @@
 					<SID>WARRIOR_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>beow</Artifact>
+				<Artifact>earthcleaver</Artifact>
+				<Artifact>dragonbane</Artifact>
+				<Artifact>plate_mail_terror</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>0.95</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
@@ -4309,6 +4515,12 @@
 					<SID>WITCHLING_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>akkar</Artifact>
+				<Artifact>elcrynn</Artifact>
+				<Artifact>falcons_eye</Artifact>
+				<Artifact>shroud_fate</Artifact>
+			</Crowning>
 			<PietyCostMultiplier>1.25</PietyCostMultiplier>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -4415,6 +4627,12 @@
 					<SID>WIZARD_L45_TITLE</SID>
 				</Title>
 			</Titles>
+			<Crowning>
+				<Artifact>athame_winter</Artifact>
+				<Artifact>elcrynn</Artifact>
+				<Artifact>staff_artificer</Artifact>
+				<Artifact>shroud_fate</Artifact>
+			</Crowning>
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -4821,6 +5039,10 @@
 				</Spell>
 				<Spell>
 					<SpellID>a_07_fireball</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>c_15_shards</SpellID>
 					<Castings>1</Castings>
 				</Spell>
 			</Spells>
@@ -7778,6 +8000,13 @@
 					<NumSides>6</NumSides>
 				</AP>
 				<Exp>850</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>aran_fee</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>19</Level>
 			<Damage>
@@ -7982,6 +8211,52 @@
 				<Type>1</Type>
 			</Damage>
 			<Speed>40</Speed>
+		</Creature>
+		<Creature id="drowned_shade">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>DROWNED_SHADE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DROWNED_SHADE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DROWNED_SHADE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DROWNED_SHADE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Breeds>1</Breeds>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>X</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>34</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>34</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9700</Exp>
+			</CreatureGeneration>
+			<Level>34</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>68</NumSides>
+				<Type>4</Type>
+				<EffectBonus>50</EffectBonus>
+			</Damage>
 		</Creature>
 		<Creature id="seeper">
 			<RaceID>_spirit</RaceID>
@@ -8613,6 +8888,52 @@
 				<NumSides>54</NumSides>
 				<Type>2</Type>
 			</Damage>
+		</Creature>
+		<Creature id="cockatrice">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>COCKATRICE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>COCKATRICE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>COCKATRICE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>COCKATRICE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>c</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>27</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>27</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2100</Exp>
+			</CreatureGeneration>
+			<Level>27</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>54</NumSides>
+				<Type>8</Type>
+				<EffectBonus>100</EffectBonus> <!-- You know the myths don't lie -->
+			</Damage>
+			<Speed>60</Speed>
 		</Creature>
 		<Creature id="stone_ooze">
 			<RaceID>_jelly</RaceID>
@@ -9886,6 +10207,10 @@
 					<NumDice>46</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>46</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>180000</Exp>
 			</CreatureGeneration>
 			<Level>46</Level>
@@ -9905,6 +10230,10 @@
 				</Spell>
 				<Spell>
 					<SpellID>a_13_maelstrom</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_19_meteor</SpellID>
 					<Castings>1</Castings>
 				</Spell>
 			</Spells>
@@ -16594,6 +16923,43 @@
 			</Damage>
 			<Speed>62</Speed>
 		</Creature>
+		<Creature id="comet_jellyfish">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>COMET_JELLYFISH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>COMET_JELLYFISH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>COMET_JELLYFISH_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>immobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>j</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<DangerLevel>50</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>50</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>50</Level>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>100</NumSides>
+				<Type>10</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<DecisionScript>
+					<Script>decision/comet_jellyfish.lua</Script>
+					<Chance>70</Chance>
+				</DecisionScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="lanternfish">
 			<RaceID>_animal</RaceID>
 			<BreatheType>1</BreatheType>
@@ -18986,6 +19352,2000 @@
 			<Evade>15</Evade>
 			<Soak>10</Soak>
 		</Creature>
+		<Creature id="red_witch">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>RED_WITCH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>RED_WITCH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>RED_WITCH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>RED_WITCH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>R</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>75</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>275000</Exp>
+			</CreatureGeneration>
+			<Level>75</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>150</NumSides>
+				<Type>3</Type>
+			</Damage>
+		</Creature>
+		<Creature id="solarian">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SOLARIAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SOLARIAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SOLARIAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SOLARIAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>118</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>75</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>275000</Exp>
+			</CreatureGeneration>
+			<Level>75</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Speed>70</Speed>
+		</Creature>
+		<Creature id="hellbeast">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>HELLBEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HELLBEAST_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HELLBEAST_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HELLBEAST_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>H</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>75</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>275000</Exp>
+			</CreatureGeneration>
+			<Level>75</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>150</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Speed>35</Speed>
+		</Creature>
+		<Creature id="infernal_wyrm">
+			<RaceID>_dragon</RaceID>
+			<ShortDescriptionSID>INFERNAL_WYRM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>INFERNAL_WYRM_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>INFERNAL_WYRM_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>INFERNAL_WYRM_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>W</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>75</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>275000</Exp>
+			</CreatureGeneration>
+			<Level>75</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>150</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Soak>30</Soak>
+			<Spells>
+				<Spell>
+					<SpellID>a_18_wyrmfire</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
+		<Creature id="lavos">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>LAVOS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LAVOS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LAVOS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LAVOS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>L</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>75</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>75</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>275000</Exp>
+			</CreatureGeneration>
+			<Level>75</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>150</NumSides>
+				<Type>3</Type>
+			</Damage>
+		</Creature>
+		<Creature id="nether_hydra">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>NETHER_HYDRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>NETHER_HYDRA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>NETHER_HYDRA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>NETHER_HYDRA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>N</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>80</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>80</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>280000</Exp>
+			</CreatureGeneration>
+			<Level>80</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>160</NumSides>
+				<Type>4</Type>
+				<StatusAilments>
+					<Status>_poison</Status>
+					<Status>_slow</Status>
+				</StatusAilments>
+			</Damage>
+			<Evade>15</Evade>
+			<Soak>20</Soak>
+		</Creature>
+		<Creature id="sea_worm">
+			<RaceID>_insect</RaceID>
+			<ShortDescriptionSID>SEA_WORM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SEA_WORM_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SEA_WORM_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SEA_WORM_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>i</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>80</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>80</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>280000</Exp>
+			</CreatureGeneration>
+			<Level>80</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>160</NumSides>
+				<Type>5</Type>
+				<StatusAilments>
+					<Status>_para</Status>
+				</StatusAilments>
+			</Damage>
+			<Speed>70</Speed>
+		</Creature>
+		<Creature id="mesosaur">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>MESOSAUR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MESOSAUR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MESOSAUR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MESOSAUR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>R</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>80</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>80</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>280000</Exp>
+			</CreatureGeneration>
+			<Level>80</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>160</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>15</Soak>
+		</Creature>
+		<Creature id="ghost_ray">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>GHOST_RAY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GHOST_RAY_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GHOST_RAY_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GHOST_RAY_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>r</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>80</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>80</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>280000</Exp>
+			</CreatureGeneration>
+			<Level>80</Level>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>80</NumSides>
+				<Type>10</Type>
+			</Damage>
+			<Speed>40</Speed>
+		</Creature>
+		<Creature id="megalodon">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>MEGALODON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MEGALODON_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MEGALODON_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MEGALODON_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>M</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>80</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>80</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>280000</Exp>
+			</CreatureGeneration>
+			<Level>80</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<Soak>15</Soak>
+			<Speed>70</Speed>
+		</Creature>
+		<Creature id="ekakophia">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>EKAKOPHIA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EKAKOPHIA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EKAKOPHIA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EKAKOPHIA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>K</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>170</NumSides>
+				<Type>8</Type>
+			</Damage>
+		</Creature>
+		<Creature id="myriadon">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>MYRIADON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MYRIADON_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MYRIADON_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MYRIADON_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>M</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>170</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="lamia">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>LAMIA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LAMIA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LAMIA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LAMIA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>L</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>170</NumSides>
+				<Type>9</Type>
+			</Damage>
+		</Creature>
+		<Creature id="moloch">
+			<RaceID>_demon</RaceID>
+			<ShortDescriptionSID>MOLOCH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MOLOCH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MOLOCH_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>M</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+				<InitialModifiers>
+					<StrengthModifier>80</StrengthModifier>
+				</InitialModifiers>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>moloch_armour</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>300</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Soak>60</Soak>
+			<Speed>90</Speed>
+		</Creature>
+		<Creature id="titanic_slime">
+			<RaceID>_jelly</RaceID>
+			<ShortDescriptionSID>TITANIC_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TITANIC_SLIME_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TITANIC_SLIME_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>J</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>85</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>85</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>285000</Exp>
+			</CreatureGeneration>
+			<Level>85</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>170</NumSides>
+				<Type>5</Type>
+			</Damage>
+		</Creature>
+		<Creature id="copper_bird">
+			<RaceID>_bird</RaceID>
+			<ShortDescriptionSID>COPPER_BIRD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>COPPER_BIRD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>COPPER_BIRD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>COPPER_BIRD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>x</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>90</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>90</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>290000</Exp>
+			</CreatureGeneration>
+			<Level>90</Level>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>90</NumSides>
+				<Type>10</Type>
+				<StatusAilments>
+					<Status>_stun</Status>
+					<Status>_disf</Status>
+				</StatusAilments>
+			</Damage>
+			<Speed>20</Speed>
+		</Creature>
+		<Creature id="bird_of_paradise">
+			<RaceID>_bird</RaceID>
+			<ShortDescriptionSID>BIRD_OF_PARADISE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BIRD_OF_PARADISE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BIRD_OF_PARADISE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BIRD_OF_PARADISE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>x</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>90</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>90</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>290000</Exp>
+			</CreatureGeneration>
+			<Level>90</Level>
+			<Damage chaotic="1">
+				<NumDice>1</NumDice>
+				<NumSides>180</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Speed>35</Speed>
+		</Creature>
+		<Creature id="alghari">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>ALGHARI_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ALGHARI_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ALGHARI_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ALGHARI_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>90</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>90</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>290000</Exp>
+			</CreatureGeneration>
+			<Level>90</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>180</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
+		<Creature id="noxious_plume">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>NOXIOUS_PLUME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>NOXIOUS_PLUME_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>NOXIOUS_PLUME_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>90</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>90</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>290000</Exp>
+			</CreatureGeneration>
+			<Level>90</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>180</NumSides>
+				<Type>6</Type>
+				<EffectBonus>40</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="demigod">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>DEMIGOD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DEMIGOD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DEMIGOD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DEMIGOD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>D</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>52</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>90</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>90</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>290000</Exp>
+			</CreatureGeneration>
+			<Level>90</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>180</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="celeste">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>CELESTE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CELESTE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CELESTE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CELESTE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>123</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="aurelion">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>AURELION_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>AURELION_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>AURELION_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>AURELION_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>124</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="the_lady">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>THE_LADY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_LADY_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_LADY_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_LADY_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>127</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="vedere">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>VEDERE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VEDERE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VEDERE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>VEDERE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>114</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="voros">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>VOROS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VOROS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VOROS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>VOROS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>113</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="the_trickster">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>THE_TRICKSTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_TRICKSTER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_TRICKSTER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_TRICKSTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>120</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="shiver">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SHIVER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SHIVER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SHIVER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SHIVER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>118</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="urgoth">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>URGOTH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>URGOTH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>URGOTH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>URGOTH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>125</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="sceadugenga">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SCEADUGENGA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SCEADUGENGA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SCEADUGENGA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SCEADUGENGA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>112</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<!-- Deities are generated one by one, with the first placed
+				     by script, so set danger level to -1 to prevent them from
+					 being added. -->
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>400</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>600000</Exp>
+			</CreatureGeneration>
+			<Level>400</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>800</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<EventScripts>
+				<DeathScript>
+					<Script>death/deity_sceadugenga.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="crystalline_being">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>CRYSTALLINE_BEING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CRYSTALLINE_BEING_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CRYSTALLINE_BEING_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>C</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>40</Soak>
+		</Creature>
+		<Creature id="seraph_highest_heavenly_order">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SERAPH_HIGHEST_HEAVENLY_ORDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SERAPH_HIGHEST_HEAVENLY_ORDER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SERAPH_HIGHEST_HEAVENLY_ORDER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SERAPH_HIGHEST_HEAVENLY_ORDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Soak>25</Soak>
+		</Creature>
+		<Creature id="gabar_clutching_first_holy_book">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>300000</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>absolution_spellbook</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>d_12_absolution</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
+		<Creature id="knight_exemplar">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>KNIGHT_EXEMPLAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>KNIGHT_EXEMPLAR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>KNIGHT_EXEMPLAR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>KNIGHT_EXEMPLAR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>K</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>holy_mantle</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Soak>25</Soak>
+		</Creature>
+		<Creature id="paragon_twenty_virtues">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>PARAGON_TWENTY_VIRTUES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PARAGON_TWENTY_VIRTUES_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PARAGON_TWENTY_VIRTUES_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PARAGON_TWENTY_VIRTUES_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>P</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+				<StatusAilments>
+					<Status>_poison</Status>
+					<Status>_slow</Status>
+					<Status>_blind</Status>
+					<Status>_mute</Status>
+				</StatusAilments>
+			</Damage>
+		</Creature>
+		<Creature id="trio_shining_silver_dragons">
+			<RaceID>_dragon</RaceID>
+			<ShortDescriptionSID>TRIO_SHINING_SILVER_DRAGONS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TRIO_SHINING_SILVER_DRAGONS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TRIO_SHINING_SILVER_DRAGONS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TRIO_SHINING_SILVER_DRAGONS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>D</Symbol>
+				<Colour>79</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
+		<Creature id="howling_fury_first_love_lost">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>HOWLING_FURY_FIRST_LOVE_LOST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HOWLING_FURY_FIRST_LOVE_LOST_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HOWLING_FURY_FIRST_LOVE_LOST_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HOWLING_FURY_FIRST_LOVE_LOST_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>F</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>0</Type>
+				<StatusAilments>
+					<Status>_stun</Status>
+					<Status>_mute</Status>
+				</StatusAilments>
+			</Damage>
+		</Creature>
+		<Creature id="luminous_angel">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>LUMINOUS_ANGEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LUMINOUS_ANGEL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LUMINOUS_ANGEL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LUMINOUS_ANGEL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>124</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+				<StatusAilments>
+					<Status>_blind</Status>
+					<Status>_mute</Status>
+				</StatusAilments>
+			</Damage>
+		</Creature>
+		<Creature id="saint_who_moves_in_perfect_grace">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>S</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+				<StatusAilments>
+					<Status>_stun</Status>
+					<Status>_mute</Status>
+				</StatusAilments>
+			</Damage>
+		</Creature>
+		<Creature id="pulsating_mass_primordial_ooze">
+			<RaceID>_jelly</RaceID>
+			<ShortDescriptionSID>PULSATING_MASS_PRIMORDIAL_OOZE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PULSATING_MASS_PRIMORDIAL_OOZE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PULSATING_MASS_PRIMORDIAL_OOZE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PULSATING_MASS_PRIMORDIAL_OOZE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>J</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>6</Type>
+			</Damage>
+		</Creature>
+		<Creature id="cloud_murderous_flesh_eating_scarabs">
+			<RaceID>_insect</RaceID>
+			<ShortDescriptionSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>i</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>100</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Speed>35</Speed>
+		</Creature>
+		<Creature id="thunderbird_low_steppes">
+			<RaceID>_bird</RaceID>
+			<ShortDescriptionSID>THUNDERBIRD_LOW_STEPPES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THUNDERBIRD_LOW_STEPPES_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THUNDERBIRD_LOW_STEPPES_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THUNDERBIRD_LOW_STEPPES_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>B</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>10</Type>
+			</Damage>
+		</Creature>
+		<Creature id="hundred_headed_hydra">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>HUNDRED_HEADED_HYDRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HUNDRED_HEADED_HYDRA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HUNDRED_HEADED_HYDRA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HUNDRED_HEADED_HYDRA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>H</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>6</Type>
+			</Damage>
+			<Soak>25</Soak>
+		</Creature>
+		<Creature id="drakkhar_carrying_massive_flaming_sword">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>D</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>3</Type>
+			</Damage>
+		</Creature>
+		<Creature id="early_dragon_first_age">
+			<RaceID>_dragon</RaceID>
+			<ShortDescriptionSID>EARLY_DRAGON_FIRST_AGE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EARLY_DRAGON_FIRST_AGE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EARLY_DRAGON_FIRST_AGE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EARLY_DRAGON_FIRST_AGE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>D</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage chaotic="1">
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Soak>35</Soak>
+		</Creature>
+		<Creature id="eddic_crone">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>EDDIC_CRONE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EDDIC_CRONE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EDDIC_CRONE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EDDIC_CRONE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>9</Type>
+				<StatusAilments>
+					<Status>_poison</Status>
+					<Status>_mute</Status>
+					<Status>_para</Status>
+					<Status>_slow</Status>
+					<Status>_stone</Status>
+					<Status>_blood</Status>
+					<Status>_stun</Status>
+					<Status>_expose</Status>
+					<Status>_disf</Status>
+					<Status>_spellb</Status>
+					<Status>_blind</Status>
+				</StatusAilments>
+			</Damage>
+			<Speed>80</Speed>
+		</Creature>
+		<Creature id="murder_thousand_crows">
+			<RaceID>_bird</RaceID>
+			<ShortDescriptionSID>MURDER_THOUSAND_CROWS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MURDER_THOUSAND_CROWS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MURDER_THOUSAND_CROWS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MURDER_THOUSAND_CROWS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>B</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="wraith_wan_dying_light">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>WRAITH_WAN_DYING_LIGHT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WRAITH_WAN_DYING_LIGHT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WRAITH_WAN_DYING_LIGHT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WRAITH_WAN_DYING_LIGHT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>W</Symbol>
+				<Colour>79</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
+		<Creature id="blood_angel_white_queen">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>BLOOD_ANGEL_WHITE_QUEEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BLOOD_ANGEL_WHITE_QUEEN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLOOD_ANGEL_WHITE_QUEEN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BLOOD_ANGEL_WHITE_QUEEN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+			</Damage>
+		</Creature>
+		<Creature id="nether_hound">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>NETHER_HOUND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>NETHER_HOUND_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>NETHER_HOUND_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>NETHER_HOUND_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>h</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>4</Type>
+			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>a_09_frost_bolt</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
+		<Creature id="ancient_shade">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>ANCIENT_SHADE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ANCIENT_SHADE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ANCIENT_SHADE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ANCIENT_SHADE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>X</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>8</Type>
+			</Damage>
+		</Creature>
+		<Creature id="black_ogre">
+			<RaceID>_humanoid</RaceID>
+			<ShortDescriptionSID>BLACK_OGRE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BLACK_OGRE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLACK_OGRE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BLACK_OGRE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>O</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="cyclonic_beast">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>CYCLONIC_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CYCLONIC_BEAST_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CYCLONIC_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CYCLONIC_BEAST_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>C</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>10</Type>
+			</Damage>
+		</Creature>
+		<Creature id="dark_rider_coming_horde">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>DARK_RIDER_COMING_HORDE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DARK_RIDER_COMING_HORDE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DARK_RIDER_COMING_HORDE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DARK_RIDER_COMING_HORDE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>R</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+ 					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Soak>10</Soak>
+			<Speed>35</Speed>
+		</Creature>
+		<Creature id="teeming_mass_writhing_tentacles">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>TEEMING_MASS_WRITHING_TENTACLES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TEEMING_MASS_WRITHING_TENTACLES_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TEEMING_MASS_WRITHING_TENTACLES_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TEEMING_MASS_WRITHING_TENTACLES_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>X</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>400</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<Evade>-50</Evade>
+			<Speed>100</Speed>
+		</Creature>
+		<Creature id="beast_beyond_furthest_star">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>BEAST_BEYOND_FURTHEST_STAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BEAST_BEYOND_FURTHEST_STAR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BEAST_BEYOND_FURTHEST_STAR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BEAST_BEYOND_FURTHEST_STAR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>B</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<Speed>35</Speed>
+		</Creature>
+		<Creature id="apocalyptic_hell_bears_no_name">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>APOCALYPTIC_HELL_BEARS_NO_NAME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>APOCALYPTIC_HELL_BEARS_NO_NAME_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>APOCALYPTIC_HELL_BEARS_NO_NAME_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>APOCALYPTIC_HELL_BEARS_NO_NAME_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>H</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>53</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>100</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>300000</Exp>
+			</CreatureGeneration>
+			<Level>100</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Soak>40</Soak>
+			<Speed>35</Speed>
+		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -20078,7 +22438,6 @@
 				<Colour>95</Colour>
 			</Text>
 			<CreatureGeneration>
-				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<!-- Well, it starts off friendly... -->
 				<Friendly>1</Friendly>
@@ -23667,6 +26026,275 @@
 				<Type>5</Type>
 			</Damage>
 		</Creature>
+		<Creature id="the_sorceror">
+			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>THE_SORCEROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_SORCEROR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_SORCEROR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_SORCEROR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_sorceror.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="the_sentry">
+			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>THE_SENTRY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_SENTRY_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_SENTRY_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_SENTRY_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>10</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+		</Creature>
+		<Creature id="the_worldsinger">
+			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>THE_WORLDSINGER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_WORLDSINGER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_WORLDSINGER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_WORLDSINGER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>6</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_worldsinger.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="the_speaker">
+			<RaceID>_elysian</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>THE_SPEAKER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_SPEAKER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_SPEAKER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_SPEAKER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>4</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_speaker.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="the_conjurer">
+			<RaceID>_elysian</RaceID>
+			<ShortDescriptionSID>THE_CONJURER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_CONJURER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_CONJURER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_CONJURER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>9</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_conjurer.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="the_armourer">
+			<RaceID>_elysian</RaceID>
+			<ShortDescriptionSID>THE_ARMOURER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_ARMOURER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_ARMOURER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THE_ARMOURER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>2</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_armourer.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="the_smith">
+			<RaceID>_elysian</RaceID>
+			<ShortDescriptionSID>THE_SMITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_SMITH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_SMITH_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>60</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>60</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>60</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>120</NumSides>
+				<Type>0</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_smith.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">
@@ -23876,6 +26504,70 @@
 				<NumDice>4</NumDice>
 				<NumSides>5</NumSides>
 				<Type>9</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="c_12_mapping">
+			<NameSID>MAPPING_NAME_SID</NameSID>
+			<PlayerCastMessageSID>MAPPING_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>MAPPING_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>24</Effect>
+		</Spell>		
+		<Spell id="c_13_crumble">
+			<NameSID>CRUMBLE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>CRUMBLE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>CRUMBLE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Effect>26</Effect>
+		</Spell>		
+		<Spell id="c_14_inferno">
+			<NameSID>INFERNO_NAME_SID</NameSID>
+			<PlayerCastMessageSID>INFERNO_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>INFERNO_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>1</Colour>
+			<APCost>100</APCost>
+			<Speed>1</Speed>
+			<Range>6</Range>
+			<Shape>1</Shape>
+			<Radius>3</Radius>
+			<Damage>
+				<NumDice>6</NumDice>
+				<NumSides>250</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="c_15_shards">
+			<NameSID>SHARDS_NAME_SID</NameSID>
+			<PlayerCastMessageSID>SHARDS_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>SHARDS_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>35</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>6</Shape>
+			<Radius>1</Radius>
+			<Damage>
+				<NumDice>4</NumDice>
+				<NumSides>20</NumSides>
+				<Type>2</Type>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
@@ -24160,6 +26852,86 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="a_16_dig">
+			<NameSID>DIG_NAME_SID</NameSID>
+			<PlayerCastMessageSID>DIG_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>DIG_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>7</Colour>
+			<APCost>6</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>1</Shape>
+			<Effect>26</Effect>
+		</Spell>
+		<Spell id="a_17_holocaust">
+			<NameSID>HOLOCAUST_NAME_SID</NameSID>
+			<PlayerCastMessageSID>HOLOCAUST_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>HOLOCAUST_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>1</Colour>
+			<APCost>200</APCost>
+			<Speed>1</Speed>
+			<Range>5</Range>
+			<Shape>4</Shape>
+			<Damage incorporeal="1">
+				<NumDice>2500</NumDice>
+				<NumSides>1</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="a_18_wyrmfire"> <!-- no spellbook -->
+			<NameSID>WYRMFIRE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>WYRMFIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>WYRMFIRE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>1</Colour>
+			<APCost>50</APCost>
+			<Speed>1</Speed>
+			<Range>6</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>8</NumDice>
+				<NumSides>20</NumSides>
+				<Type>3</Type>
+				<EffectBonus>15</EffectBonus>
+				<StatusAilments>
+					<Status>_mute</Status>
+					<Status>_slow</Status>
+				</StatusAilments>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="a_19_meteor">
+			<NameSID>METEOR_NAME_SID</NameSID>
+			<PlayerCastMessageSID>METEOR_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>METEOR_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>9</Colour>
+			<APCost>70</APCost>
+			<Speed>1</Speed>
+			<Range>5</Range>
+			<Shape>6</Shape>
+			<Radius>1</Radius>
+			<Damage>
+				<NumDice>20</NumDice>
+				<NumSides>20</NumSides>
+				<Type>3</Type>
+				<EffectBonus>15</EffectBonus>
+				<StatusAilments>
+					<Status>_blood</Status>
+					<Status>_stun</Status>
+					<Status>_expose</Status>
+					<Status>_blind</Status>
+				</StatusAilments>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -24355,6 +27127,90 @@
 				<NumSides>8</NumSides>
 				<Modifier>5</Modifier>
 				<Type>7</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
+		<Spell id="d_11_divine_form">
+			<NameSID>DIVINE_FORM_NAME_SID</NameSID>
+			<PlayerCastMessageSID>DIVINE_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>DIVINE_FORM_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3001</MagicCategory>
+			<MagicClassification>2</MagicClassification>
+			<Colour>15</Colour>
+			<APCost>200</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>18</Effect>
+			<Properties>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_SLASH</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_PIERCE</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_POUND</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_HEAT</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_COLD</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_ACID</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_POISON</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_HOLY</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_SHADOW</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_ARCANE</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_LIGHTNING</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
+		</Spell>
+		<Spell id="d_12_absolution">
+			<NameSID>ABSOLUTION_NAME_SID</NameSID>
+			<PlayerCastMessageSID>ABSOLUTION_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>ABSOLUTION_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3001</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>15</Colour>
+			<APCost>50</APCost>
+			<Speed>1</Speed>
+			<Range>6</Range>
+			<Shape>1</Shape>
+			<Radius>2</Radius>
+			<Damage>
+				<NumDice>500</NumDice>
+				<NumSides>1</NumSides>
+				<Type>7</Type>
+				<EffectBonus>100</EffectBonus>
+				<StatusAilments>
+					<Status>_mute</Status>
+					<Status>_slow</Status>
+					<Status>_stun</Status>
+				</StatusAilments>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>		
@@ -24680,6 +27536,38 @@
 			<Shape>0</Shape>
 			<Effect>23</Effect>
 		</Spell>
+		<Spell id="m_16_malediction">
+			<NameSID>MALEDICTION_NAME_SID</NameSID>
+			<PlayerCastMessageSID>MALEDICTION_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>MALEDICTION_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>2</Colour>
+			<APCost>125</APCost>
+			<Speed>1</Speed>
+			<Range>5</Range>
+			<Shape>4</Shape>
+			<Damage incorporeal="1">
+				<NumDice>200</NumDice>
+				<NumSides>1</NumSides>
+				<Type>6</Type>
+				<EffectBonus>200</EffectBonus>
+				<StatusAilments>
+					<Status>_poison</Status>
+					<Status>_mute</Status>
+					<Status>_para</Status>
+					<Status>_slow</Status>
+					<Status>_stone</Status>
+					<Status>_blood</Status>
+					<Status>_stun</Status>
+					<Status>_expose</Status>
+					<Status>_disf</Status>
+					<Status>_spellb</Status>
+					<Status>_blind</Status>
+				</StatusAilments>
+			</Damage>
+			<Effect>23</Effect>
+		</Spell>
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -24835,6 +27723,43 @@
 				<NumDice>12</NumDice>
 				<NumSides>10</NumSides>
 				<Modifier>30</Modifier>
+				<Type>8</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="p_09_antimatter">
+			<NameSID>ANTIMATTER_NAME_SID</NameSID>
+			<PlayerCastMessageSID>ANTIMATTER_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>ANTIMATTER_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3003</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>4</Colour>
+			<APCost>75</APCost>
+			<Speed>1</Speed>
+			<Range>7</Range>
+			<Shape>1</Shape>
+			<Radius>3</Radius>
+			<Damage incorporeal="1">
+				<NumDice>750</NumDice>
+				<NumSides>1</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="p_10_annihilation">
+			<NameSID>ANNIHILATION_NAME_SID</NameSID>
+			<PlayerCastMessageSID>ANNIHILATION_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>ANNIHILATION_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3003</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>4</Colour>
+			<APCost>150</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>10000</NumDice>
+				<NumSides>1</NumSides>
 				<Type>8</Type>
 			</Damage>
 			<Effect>0</Effect>
@@ -25201,6 +28126,30 @@
 				<Colour>5</Colour>
 			</Text>
 		</ShrineTile>
+		<SeabedTile>
+			<Text>
+				<Symbol>.</Symbol>
+				<Colour>4</Colour>
+			</Text>
+		</SeabedTile>
+		<AquaticVegetationTile>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>2</Colour>
+			</Text>
+		</AquaticVegetationTile>
+		<FloatingTowerTile>
+			<Text>
+				<Symbol>|</Symbol>
+				<Colour>8</Colour>
+			</Text>
+		</FloatingTowerTile>
+		<VoidTile>
+			<Text>
+				<Symbol>?</Symbol>
+				<Colour>0</Colour>
+			</Text>
+		</VoidTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">
@@ -25345,6 +28294,20 @@
 				</StatusAilments>
 			</Damage>
 			<Uses>5</Uses>
+		</Trap>
+		<Trap id="monster_trap">
+			<DescriptionSID>TRAP_MONSTER_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_MONSTER_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>#</TriggerSymbol>
+			<PlayerDamageMessageSID>TRAP_MONSTER_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>14</Colour>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Effect>25</Effect>
+			<Uses>3</Uses>
 		</Trap>
 	</Traps>
 	<Items>
@@ -25527,6 +28490,44 @@
 				</Resistances>
 				<Evade>4</Evade>
 				<Soak>2</Soak>
+			</Amulet>
+			<Amulet id="catara">
+				<DescriptionSID>CATARA_SID</DescriptionSID>
+				<UsageDescriptionSID>CATARA_SID</UsageDescriptionSID>
+				<Value>2260</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.15</Slash>
+					<Pierce>0.15</Pierce>
+					<Pound>0.15</Pound>
+				</Resistances>
+				<Soak>4</Soak>
+			</Amulet>
+			<Amulet id="calluna">
+				<DescriptionSID>CALLUNA_SID</DescriptionSID>
+				<UsageDescriptionSID>CALLUNA_SID</UsageDescriptionSID>
+				<Value>2260</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Cold>0.10</Cold>
+					<Arcane>0.20</Arcane>
+					<Lightning>0.20</Lightning>
+				</Resistances>
+				<Evade>15</Evade>
 			</Amulet>
 		</Amulets>
 		<Armours>
@@ -25765,6 +28766,7 @@
 					<Pounds>5</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
+				<Artifact>1</Artifact>
 				<Material>6</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -25774,6 +28776,24 @@
 				</Resistances>
 				<Evade>5</Evade>
 				<Soak>8</Soak>
+			</Armour>
+			<Armour id="telarian_helm">
+				<DescriptionSID>TELARIAN_HELM_SID</DescriptionSID>
+				<UsageDescriptionSID>TELARIAN_HELM_USAGE_SID</UsageDescriptionSID>
+				<Value>5000</Value>
+				<Weight>
+					<Pounds>5</Pounds>
+				</Weight>
+				<WornLocation>0</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>6</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.25</Holy>
+					<Shadow>0.75</Shadow>
+				</Resistances>
+				<Evade>20</Evade>
+				<Soak>20</Soak>
 			</Armour>
 			<Armour id="chain_scraps">
 				<DescriptionSID>CHAIN_SCRAPS_SID</DescriptionSID>
@@ -25929,6 +28949,24 @@
 				<Evade>9</Evade>
 				<Soak>10</Soak>
 			</Armour>
+			<Armour id="telarian_mail">
+				<DescriptionSID>TELARIAN_MAIL_SID</DescriptionSID>
+				<UsageDescriptionSID>TELARIAN_MAIL_USAGE_SID</UsageDescriptionSID>
+				<Value>10000</Value>
+				<Weight>
+					<Pounds>10</Pounds>
+				</Weight>
+				<WornLocation>6</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.50</Holy>
+					<Shadow>0.50</Shadow>
+				</Resistances>
+				<Evade>40</Evade>
+				<Soak>20</Soak>
+			</Armour>
 			<Armour id="shell_armour">
 				<DescriptionSID>SHELL_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>SHELL_ARMOUR_USAGE_SID</UsageDescriptionSID>
@@ -26053,6 +29091,29 @@
 				</Properties>
 				<Evade>-30</Evade>
 				<Soak>30</Soak>
+			</Armour>
+			<Armour id="moloch_armour">
+				<DescriptionSID>MOLOCH_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>MOLOCH_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>300</Pounds>
+				</Weight>
+				<WornLocation>6</WornLocation>
+				<Material>7</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.30</Heat>
+					<Shadow>0.30</Shadow>
+				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>-40</Evade>
+				<Soak>100</Soak>
 			</Armour>
 			<Armour id="tarasque_armour">
 				<DescriptionSID>TARASQUE_ARMOUR_SID</DescriptionSID>
@@ -26445,6 +29506,24 @@
 				<Evade>20</Evade>
 				<Soak>5</Soak>
 			</Armour>
+			<Armour id="telarian_shield">
+				<DescriptionSID>TELARIAN_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>TELARIAN_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>5000</Value>
+				<Weight>
+					<Pounds>4</Pounds>
+				</Weight>
+				<WornLocation>5</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.75</Holy>
+					<Shadow>0.25</Shadow>
+				</Resistances>
+				<Evade>30</Evade>
+				<Soak>30</Soak>
+			</Armour>
 			<Armour id="wyrm_ward">
 				<DescriptionSID>WYRM_WARD_SID</DescriptionSID>
 				<UsageDescriptionSID>WYRM_WARD_USAGE_SID</UsageDescriptionSID>
@@ -26630,6 +29709,22 @@
 					<Cold>0.20</Cold>
 				</Resistances>
 				<Evade>7</Evade>
+				<Soak>5</Soak>
+			</Armour>
+			<Armour id="holy_mantle">
+				<DescriptionSID>HOLY_MANTLE_SID</DescriptionSID>
+				<UsageDescriptionSID>HOLY_MANTLE_USAGE_SID</UsageDescriptionSID>
+				<Value>466</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>7</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.25</Holy>
+				</Resistances>
+				<Evade>10</Evade>
 				<Soak>5</Soak>
 			</Armour>
 			<Armour id="gildis_cloak">
@@ -26881,7 +29976,7 @@
 				</Resistances>
 				<Evade>15</Evade>
 				<Soak>5</Soak>
-				<SpeedBonus>6</SpeedBonus>
+				<SpeedBonus>10</SpeedBonus>
 				<ToHit>10</ToHit>
 			</Armour>			
 		</Armours>
@@ -26942,6 +30037,27 @@
 					<Pierce>0.20</Pierce>
 				</Resistances>
 				<SpeedBonus>10</SpeedBonus>
+			</Ring>
+			<Ring id="aran_fee">
+				<DescriptionSID>ARAN_FEE_SID</DescriptionSID>
+				<UsageDescriptionSID>ARAN_FEE_USAGE_SID</UsageDescriptionSID>
+				<Value>2260</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>2</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Cold>0.20</Cold>
+				</Resistances>
+				<Evade>8</Evade>
+				<Soak>1</Soak>
+				<StatusAilments>
+					<Status>_wb</Status>
+				</StatusAilments>
 			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
@@ -27377,8 +30493,8 @@
 				<UsageDescriptionSID>FIRE_BOMB_USAGE_SID</UsageDescriptionSID>
 				<Value>8</Value>
 				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>11</Ounces>
+					<Pounds>1</Pounds>
+					<Ounces>5</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
@@ -27386,7 +30502,7 @@
 					<Symbol>*</Symbol>
 					<Colour>9</Colour>
 				</TextDetails>
-				<DangerLevel>14</DangerLevel>
+				<DangerLevel>10</DangerLevel>
 				<Properties>
 					<Property>
 						<Name>destruction_pct_chance</Name>
@@ -27397,7 +30513,7 @@
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>47</Difficulty>
 				<Speed>3</Speed>
-				<Damage>
+				<Damage explosive="1">
 					<NumDice>4</NumDice>
 					<NumSides>6</NumSides>
 					<Modifier>1</Modifier>
@@ -27685,6 +30801,31 @@
 				<Damage>
 					<NumDice>3</NumDice>
 					<NumSides>12</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="inferno">
+				<DescriptionSID>INFERNO_SID</DescriptionSID>
+				<UsageDescriptionSID>INFERNO_USAGE_SID</UsageDescriptionSID>
+				<Value>1800</Value>
+				<Weight>
+					<Pounds>14</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.20</Heat>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>6</Speed>
+				<Damage explosive="1">
+					<NumDice>6</NumDice>
+					<NumSides>10</NumSides>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
@@ -28002,34 +31143,6 @@
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
-			<Weapon id="long_hunt_knife">
-				<DescriptionSID>LONG_HUNT_KNIFE_SID</DescriptionSID>
-				<UsageDescriptionSID>LONG_HUNT_KNIFE_USAGE_SID</UsageDescriptionSID>
-				<Value>1400</Value>
-				<Weight>
-					<Pounds>2</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Artifact>1</Artifact>
-				<Material>3</Material>
-				<DangerLevel>-1</DangerLevel>
-				<Resistances>
-					<Pierce>0.10</Pierce>
-				</Resistances>
-				<Skill>1004</Skill>
-				<RangedSkill>2005</RangedSkill>
-				<Difficulty>40</Difficulty>
-				<Speed>1</Speed>
-				<Damage>
-					<NumDice>3</NumDice>
-					<NumSides>4</NumSides>
-					<Modifier>12</Modifier>
-					<Type>1</Type>
-					<Slays>
-						<Slay>_animal</Slay>
-					</Slays>
-				</Damage>
-			</Weapon>
 			<Weapon id="kithslayer">
 				<DescriptionSID>KITHSLAYER_SID</DescriptionSID>
 				<UsageDescriptionSID>KITHSLAYER_USAGE_SID</UsageDescriptionSID>
@@ -28217,7 +31330,7 @@
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>48</Difficulty>
 				<Speed>10</Speed>
-				<Damage>
+				<Damage scything="1">
 					<NumDice>8</NumDice>
 					<NumSides>12</NumSides>
 					<Type>0</Type>
@@ -28288,6 +31401,83 @@
 					<NumSides>12</NumSides>
 					<Modifier>30</Modifier>
 					<Type>0</Type>
+					<Slays>
+						<Slay>*</Slay>
+					</Slays>
+				</Damage>
+			</Weapon>
+			<Weapon id="godblade">
+				<DescriptionSID>GODBLADE_SID</DescriptionSID>
+				<UsageDescriptionSID>GODBLADE_USAGE_SID</UsageDescriptionSID>
+				<Value>50000</Value>
+				<Weight>
+					<Pounds>50</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.30</Slash>
+					<Pierce>0.30</Pierce>
+					<Pound>0.30</Pound>
+					<Heat>0.30</Heat>
+					<Cold>0.30</Cold>
+					<Acid>0.30</Acid>
+					<Poison>0.30</Poison>
+					<Holy>0.30</Holy>
+					<Shadow>0.30</Shadow>
+					<Arcane>0.30</Arcane>
+					<Lightning>0.30</Lightning>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>50</Difficulty>
+				<Speed>12</Speed>
+				<Damage>
+					<NumDice>5</NumDice>
+					<NumSides>100</NumSides>
+					<Modifier>100</Modifier>
+					<Type>0</Type>
+					<Slays>
+						<Slay>_divine</Slay>
+					</Slays>
+				</Damage>
+			</Weapon>
+			<Weapon id="shard_starlight">
+				<DescriptionSID>SHARD_OF_STARLIGHT_SID</DescriptionSID>
+				<UsageDescriptionSID>SHARD_OF_STARLIGHT_USAGE_SID</UsageDescriptionSID>
+				<Value>1400</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Pierce>0.10</Pierce>
+					<Pound>0.10</Pound>
+					<Heat>0.10</Heat>
+					<Cold>0.10</Cold>
+					<Acid>0.10</Acid>
+					<Poison>0.10</Poison>
+					<Holy>0.30</Holy>
+					<Shadow>0.30</Shadow>
+					<Arcane>0.10</Arcane>
+					<Lightning>0.10</Lightning>
+				</Resistances>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>35</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>10</NumDice>
+					<NumSides>20</NumSides>
+					<Modifier>50</Modifier>
+					<Type>1</Type>
 					<Slays>
 						<Slay>*</Slay>
 					</Slays>
@@ -29056,6 +32246,33 @@
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="scythe">
+				<DescriptionSID>SCYTHE_SID</DescriptionSID>
+				<UsageDescriptionSID>SCYTHE_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>10</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>12</Speed>
+				<Damage scything="1">
+					<NumDice>1</NumDice>
+					<NumSides>12</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="club">
 				<DescriptionSID>CLUB_SID</DescriptionSID>
 				<UsageDescriptionSID>CLUB_USAGE_SID</UsageDescriptionSID>
@@ -29385,7 +32602,7 @@
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>2</NumSides>
+					<NumSides>4</NumSides>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
@@ -29412,7 +32629,7 @@
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>2</NumSides>
+					<NumSides>4</NumSides>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
@@ -29435,7 +32652,7 @@
 				<RangedSkill>2007</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Speed>1</Speed>
-				<Damage>
+				<Damage piercing="1">
 					<NumDice>8</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
@@ -29476,6 +32693,27 @@
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="longbow_of_pelageus">
+				<DescriptionSID>LONGBOW_OF_PELAGEUS_SID</DescriptionSID>
+				<UsageDescriptionSID>LONGBOW_OF_PELAGEUS_USAGE_SID</UsageDescriptionSID>
+				<Value>2000</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>9</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2003</RangedSkill>
+				<Difficulty>42</Difficulty>
+				<Speed>1</Speed>
+				<Damage draining="1" ethereal="1">
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="crossbow">
 				<DescriptionSID>CROSSBOW_SID</DescriptionSID>
 				<UsageDescriptionSID>CROSSBOW_USAGE_SID</UsageDescriptionSID>
@@ -29502,7 +32740,7 @@
 				<Speed>5</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>6</NumSides>
+					<NumSides>8</NumSides>
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
@@ -29521,9 +32759,9 @@
 				<RangedSkill>2004</RangedSkill>
 				<Difficulty>42</Difficulty>
 				<Speed>2</Speed>
-				<Damage>
-					<NumDice>6</NumDice>
-					<NumSides>6</NumSides>
+				<Damage vorpal="1">
+					<NumDice>5</NumDice>
+					<NumSides>8</NumSides>
 					<Type>1</Type>
 					<Slays>
 						<Slay>_humanoid</Slay>
@@ -29675,7 +32913,40 @@
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>2</NumSides>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
+			<Missile id="exploding_arrow">
+				<DescriptionSID>EXPLODING_ARROW_SID</DescriptionSID>
+				<UsageDescriptionSID>EXPLODING_ARROW_USAGE_SID</UsageDescriptionSID>
+				<Value>6</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>9</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>15</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
+				<Skill>1009</Skill>
+				<RangedSkill>2003</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
+				<Difficulty>43</Difficulty>
+				<Speed>3</Speed>
+				<Damage explosive="1">
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
 					<Type>1</Type>
 				</Damage>
 			</Missile>
@@ -29700,7 +32971,7 @@
 				<Difficulty>43</Difficulty>
 				<Speed>3</Speed>
 				<Damage piercing="true">
-					<NumDice>4</NumDice>
+					<NumDice>6</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>
@@ -29733,7 +33004,7 @@
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>2</NumSides>
+					<NumSides>8</NumSides>
 					<Type>1</Type>
 				</Damage>
 			</Missile>
@@ -31123,8 +34394,7 @@
 					<Symbol>!</Symbol>
 					<Colour>1</Colour>
 				</TextDetails>
-				<DangerLevel>10</DangerLevel>
-				<Rarity>1</Rarity>
+				<DangerLevel>15</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>17</Effect>
 			</Potion>			
@@ -31246,6 +34516,23 @@
 				<DangerLevel>1</DangerLevel>
 				<Effect>2</Effect>				
 			</Scroll>
+			<Scroll id="mapping_scroll">
+				<DescriptionSID>MAPPING_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_MAPPING_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>MAPPING_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_MAPPING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>50</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Effect>24</Effect>				
+			</Scroll>
 			<Scroll id="recharging_scroll">
 				<DescriptionSID>RECHARGING_SCROLL_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_RECHARGING_SCROLL_SID</UnidentifiedDescriptionSID>
@@ -31347,6 +34634,23 @@
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
 				<Effect>22</Effect>
+			</Scroll>
+			<Scroll id="summon_monsters_scroll">
+				<DescriptionSID>SUMMON_MONSTERS_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SUMMON_MONSTERS_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SUMMON_MONSTERS_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SUMMON_MONSTERS_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>15</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Effect>25</Effect>
 			</Scroll>
 		</Scrolls>
 		<Currencies>
@@ -31948,6 +35252,51 @@
 				<Range>4</Range>
 				<Colour>7</Colour>
 			</Wand>
+			<Wand id="digging_wand">
+				<DescriptionSID>DIGGING_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DIGGING_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DIGGING_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DIGGING_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>133</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Effect>26</Effect>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
+				<Colour>7</Colour>
+			</Wand>
+			<Wand id="inferno_wand">
+				<DescriptionSID>INFERNO_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_INFERNO_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>INFERNO_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_INFERNO_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>250</NumSides>
+					<Type>3</Type>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>6</Range>
+				<Radius>2</Radius>
+				<Colour>1</Colour>
+			</Wand>
 		</Wands>
 		<Spellbooks>
 			<Spellbook id="isen_dun_chronicle">
@@ -32317,6 +35666,42 @@
 				<SpellID>c_10_cleansing</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
+			<Spellbook id="mapping_spellbook">
+				<DescriptionSID>MAPPING_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_MAPPING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>MAPPING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_MAPPING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<SpellID>c_12_mapping</SpellID>
+				<Difficulty>30</Difficulty>
+			</Spellbook>
+			<Spellbook id="crumble_spellbook">
+				<DescriptionSID>CRUMBLE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CRUMBLE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>CRUMBLE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_CRUMBLE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>22</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<SpellID>c_13_crumble</SpellID>
+				<Difficulty>25</Difficulty>
+			</Spellbook>
 			<Spellbook id="blast_spellbook">
 				<DescriptionSID>BLAST_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_BLAST_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -32334,6 +35719,42 @@
 				<DangerLevel>4</DangerLevel>
 				<SpellID>c_11_blast</SpellID>
 				<Difficulty>36</Difficulty>
+			</Spellbook>
+			<Spellbook id="inferno_spellbook">
+				<DescriptionSID>INFERNO_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_INFERNO_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>INFERNO_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_INFERNO_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<SpellID>c_14_inferno</SpellID>
+				<Difficulty>60</Difficulty>
+			</Spellbook>
+			<Spellbook id="shards_spellbook">
+				<DescriptionSID>SHARDS_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SHARDS_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SHARDS_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SHARDS_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>25</DangerLevel>
+				<SpellID>c_15_shards</SpellID>
+				<Difficulty>50</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
@@ -32605,6 +36026,60 @@
 				<SpellID>a_15_vorpal_bolt</SpellID>
 				<Difficulty>110</Difficulty>
 			</Spellbook>
+			<Spellbook id="dig_spellbook">
+				<DescriptionSID>DIG_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DIG_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DIG_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DIG_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>200</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>3</DangerLevel>
+				<SpellID>a_16_dig</SpellID>
+				<Difficulty>70</Difficulty>
+			</Spellbook>
+			<Spellbook id="holocaust_spellbook">
+				<DescriptionSID>HOLOCAUST_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_HOLOCAUST_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>HOLOCAUST_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_HOLOCAUST_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<SpellID>a_17_holocaust</SpellID>
+				<Difficulty>100</Difficulty>
+			</Spellbook>
+			<Spellbook id="meteor_spellbook">
+				<DescriptionSID>METEOR_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_METEOR_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>METEOR_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_METEOR_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1444</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<SpellID>a_19_meteor</SpellID>
+				<Difficulty>155</Difficulty>
+			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HEALING_WORD_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -32785,6 +36260,42 @@
 				<SpellID>d_10_radiant_beam</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>			
+			<Spellbook id="divine_form_spellbook">
+				<DescriptionSID>DIVINE_FORM_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DIVINE_FORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DIVINE_FORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DIVINE_FORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<SpellID>d_11_divine_form</SpellID>
+				<Difficulty>90</Difficulty>
+			</Spellbook>			
+			<Spellbook id="absolution_spellbook">
+				<DescriptionSID>ABSOLUTION_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_ABSOLUTION_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>ABSOLUTION_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_ABSOLUTION_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<SpellID>d_12_absolution</SpellID>
+				<Difficulty>100</Difficulty>
+			</Spellbook>			
 			<Spellbook id="wraith_form_spellbook">
 				<DescriptionSID>WRAITH_FORM_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WRAITH_FORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -32962,7 +36473,6 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
 				<SpellID>m_10_aim</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>
@@ -33055,6 +36565,24 @@
 				<DangerLevel>4</DangerLevel>
 				<SpellID>m_15_bless</SpellID>
 				<Difficulty>75</Difficulty>
+			</Spellbook>
+			<Spellbook id="malediction_spellbook">
+				<DescriptionSID>MALEDICTION_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_MALEDICTION_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>MALEDICTION_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_MALEDICTION_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<SpellID>m_16_malediction</SpellID>
+				<Difficulty>95</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
@@ -33228,12 +36756,13 @@
 			<Item id="_lump_gold">
 				<DescriptionSID>LUMP_GOLD_SID</DescriptionSID>
 				<UsageDescriptionSID>LUMP_GOLD_USAGE_SID</UsageDescriptionSID>
-				<Value>250</Value>
+				<Value>44</Value>
 				<Weight>
-					<Pounds>1</Pounds>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
 				</Weight>
 				<Material>13</Material>
-				<DangerLevel>-1</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Properties>
 					<Property>
 						<Name>jewel_con_mat_type</Name>
@@ -33408,6 +36937,56 @@
 			</Item>
 		</MiscItems>
 	</Items>
+	<Features>
+		<Feature id="_rift">
+			<Material>14</Material>
+			<Symbol>^</Symbol>
+			<Colour>9</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_RIFT</DescriptionSID>
+		</Feature>
+		<Feature id="_dwarf_star">
+			<Material>14</Material>
+			<Symbol>o</Symbol>
+			<Colour>11</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
+		</Feature>
+		<Feature id="_spiral_arm">
+			<Material>14</Material>
+			<Symbol>;</Symbol>
+			<Colour>15</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_SPIRAL_ARM</DescriptionSID>
+		</Feature>
+		<Feature id="_red_giant_star">
+			<Material>14</Material>
+			<Symbol>O</Symbol>
+			<Colour>9</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_RED_GIANT</DescriptionSID>
+		</Feature>
+		<Feature id="_supernova">
+			<Material>14</Material>
+			<Symbol> </Symbol>
+			<Colour>80</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_SUPERNOVA</DescriptionSID>
+		</Feature>
+		<Feature id="_black_hole">
+			<Material>14</Material>
+			<Symbol>*</Symbol>
+			<Colour>8</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_BLACK_HOLE</DescriptionSID>
+		</Feature>
+		<Feature id="_pulsar">
+			<Material>14</Material>
+			<Symbol>*</Symbol>
+			<Colour>15</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_PULSAR</DescriptionSID>
+		</Feature>
+		<Feature id="_cosmic_dust">
+			<Material>12</Material>
+			<Symbol>.</Symbol>
+			<Colour>3</Colour>
+			<DescriptionSID>FEATURE_DESCRIPTION_COSMIC_DUST</DescriptionSID>
+		</Feature>
+	</Features>
 	<Calendar>
 		<Day>
 			<NameSID>ALARI_NAME_SID</NameSID>

@@ -6,6 +6,7 @@ class TileTextKeys
   public:
     static const std::string TILE_DESC_DUG;
     static const std::string TILE_DESC_PLANTED;
+    static const std::string TILE_DESC_SUBMERGED;
     static const std::string TILE_DESC_AIR;
     static const std::string TILE_DESC_BARROW;
     static const std::string TILE_DESC_BEACH;
@@ -57,6 +58,11 @@ class TileTextKeys
     static const std::string TILE_DESC_SEWER_COMPLEX;
     static const std::string TILE_DESC_SEWER;
     static const std::string TILE_DESC_SHRINE;
+    static const std::string TILE_DESC_SEABED;
+    static const std::string TILE_DESC_KELP;
+    static const std::string TILE_DESC_AQUATIC_VEGETATION;
+    static const std::string TILE_DESC_FLOATING_TOWER;
+    static const std::string TILE_DESC_VOID;
 
     static const std::string TILE_EXTRA_DESCRIPTION_SKY_SHRINE;
     static const std::string TILE_EXTRA_DESCRIPTION_WORLD_SHRINE;

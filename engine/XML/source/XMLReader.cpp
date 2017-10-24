@@ -1,5 +1,6 @@
 #include "XMLReader.hpp"
 #include "CombatConstants.hpp"
+#include "XMLScriptsReader.hpp"
 
 using namespace std;
 
@@ -64,6 +65,12 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
 
     bool incorporeal = XMLUtils::get_attribute_bool_value(damage_node, "incorporeal");
     damage.set_incorporeal(incorporeal);
+
+    bool scything = XMLUtils::get_attribute_bool_value(damage_node, "scything");
+    damage.set_scything(scything);
+
+    bool explosive = XMLUtils::get_attribute_bool_value(damage_node, "explosive");
+    damage.set_explosive(explosive);
 
     int effect_bonus = XMLUtils::get_child_node_int_value(damage_node, "EffectBonus");
     damage.set_effect_bonus(effect_bonus);
@@ -292,3 +299,40 @@ map<string, pair<string, Dice>> XMLReader::get_racial_item_ids(const XMLNode& in
   return racial_ids;
 }
 
+// Parse in the list of event scripts, based on the mapping provided
+void XMLReader::parse_event_scripts(const XMLNode& event_scripts_node, const map<string, string>& node_mappings, EventScriptsMap& scripts)
+{
+  XMLScriptsReader xsr;
+
+  if (!event_scripts_node.is_null())
+  {
+    for (const auto& details : node_mappings)
+    {
+      XMLNode node = XMLUtils::get_next_element_by_local_name(event_scripts_node, details.first);
+
+      if (!node.is_null())
+      {
+        ScriptDetails sd = xsr.get_script_details(node);
+        scripts[details.second] = sd;
+      }
+    }
+  }
+}
+
+vector<string> XMLReader::get_crowning_gifts(const XMLNode& crowning_node)
+{
+  vector<string> artifacts;
+
+  if (!crowning_node.is_null())
+  {
+    vector<XMLNode> artifact_nodes = XMLUtils::get_elements_by_local_name(crowning_node, "Artifact");
+
+    for (const XMLNode& artifact_node : artifact_nodes)
+    {
+      string artifact = XMLUtils::get_node_value(artifact_node);
+      artifacts.push_back(artifact);
+    }
+  }
+
+  return artifacts;
+}

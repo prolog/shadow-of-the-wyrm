@@ -351,6 +351,13 @@ class InscribeCommand : public Command
     ~InscribeCommand();
 };
 
+class ToggleAutopickupCommand : public Command
+{
+  public:
+    ToggleAutopickupCommand(int key);
+    ~ToggleAutopickupCommand();
+};
+
 // NPC-only commands:
 
 class BreedCommand : public Command

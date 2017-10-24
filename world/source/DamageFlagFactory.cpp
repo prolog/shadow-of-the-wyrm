@@ -7,7 +7,9 @@ DamageFlagFactory::DamageFlagFactory()
                     {DamageFlagType::DAMAGE_FLAG_DRAINING, TextKeys::DAMAGE_DRAINING},
                     {DamageFlagType::DAMAGE_FLAG_ETHEREAL, TextKeys::DAMAGE_ETHEREAL},
                     {DamageFlagType::DAMAGE_FLAG_PIERCING, TextKeys::DAMAGE_PIERCING},
-                    {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, TextKeys::DAMAGE_INCORPOREAL}})
+                    {DamageFlagType::DAMAGE_FLAG_INCORPOREAL, TextKeys::DAMAGE_INCORPOREAL},
+                    {DamageFlagType::DAMAGE_FLAG_SCYTHING, TextKeys::DAMAGE_SCYTHING},
+                    {DamageFlagType::DAMAGE_FLAG_EXPLOSIVE, TextKeys::DAMAGE_EXPLOSIVE}})
 {
 }
 

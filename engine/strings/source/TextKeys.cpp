@@ -29,6 +29,8 @@ const string TextKeys::YOURSELF = "YOURSELF";
 const string TextKeys::HIMSELF = "HIMSELF";
 const string TextKeys::HERSELF = "HERSELF";
 const string TextKeys::ITSELF = "ITSELF";
+const string TextKeys::BOOL_TRUE = "BOOL_TRUE";
+const string TextKeys::BOOL_FALSE = "BOOL_FALSE";
 const string TextKeys::TOTAL = "TOTAL";
 const string TextKeys::MAXIMUM_LEVEL_DIFFERENCE = "MAXIMUM_LEVEL_DIFFERENCE";
 const string TextKeys::TURNS = "TURNS";
@@ -122,8 +124,10 @@ const string TextKeys::ALIGNMENT_NEUTRAL_ABRV = "ALIGNMENT_NEUTRAL_ABRV";
 
 const string TextKeys::LEVEL             = "LEVEL";
 const string TextKeys::LEVEL_ABRV        = "LEVEL_ABRV";
+const string TextKeys::EXPERIENCE        = "EXPERIENCE";
 const string TextKeys::WINNER            = "WINNER";
 const string TextKeys::WINNER_EVIL       = "WINNER_EVIL";
+const string TextKeys::WINNER_GODSLAYER  = "WINNER_GODSLAYER";
 
 const string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
 const string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
@@ -133,6 +137,8 @@ const string TextKeys::DAMAGE_VORPAL     = "DAMAGE_VORPAL";
 const string TextKeys::DAMAGE_DRAINING   = "DAMAGE_DRAINING";
 const string TextKeys::DAMAGE_ETHEREAL   = "DAMAGE_ETHEREAL";
 const string TextKeys::DAMAGE_INCORPOREAL = "DAMAGE_INCORPOREAL";
+const string TextKeys::DAMAGE_SCYTHING   = "DAMAGE_SCYTHING";
+const string TextKeys::DAMAGE_EXPLOSIVE  = "DAMAGE_EXPLOSIVE";
 const string TextKeys::DAMAGE_SLAYS      = "DAMAGE_SLAYS";
 
 const string TextKeys::ATTACK_DETAILS    = "ATTACK_DETAILS";

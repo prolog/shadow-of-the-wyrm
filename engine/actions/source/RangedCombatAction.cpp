@@ -318,7 +318,7 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
     Equipment& eq = creature->get_equipment();
     ItemPtr ammunition = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
     
-    if (ammunition->get_quantity() > 1)
+    if (ammunition && ammunition->get_quantity() > 1)
     {
       // Reduce the quantity by 1.
       ammunition->set_quantity(ammunition->get_quantity() - 1);

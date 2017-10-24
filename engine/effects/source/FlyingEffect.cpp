@@ -19,12 +19,12 @@ Effect* FlyingEffect::clone()
   return new FlyingEffect(*this);
 }
 
-bool FlyingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
+bool FlyingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
-  return effect_uncursed(creature, am);
+  return effect_uncursed(creature, am, affected_coordinate, affected_tile);
 }
 
-bool FlyingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
+bool FlyingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   StatusEffectPtr fly = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_FLYING, source_id);
   fly->apply_change(creature, creature->get_level().get_current());
@@ -32,8 +32,8 @@ bool FlyingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const a
   return true;
 }
 
-bool FlyingEffect::effect_cursed(CreaturePtr creature, ActionManager * am)
+bool FlyingEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
-  return effect_uncursed(creature, am);
+  return effect_uncursed(creature, am, affected_coordinate, affected_tile);
 }
 

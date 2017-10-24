@@ -14,11 +14,12 @@ using namespace std;
 // accordingly.
 void DeityActionManager::notify_action(CreaturePtr creature, const string& action_key, bool active_deity_only)
 {
-  if (creature)
+  Game& game = Game::instance();
+
+  if (creature && !game.get_deities_cref().empty())
   {
-    Game& game = Game::instance();
     Religion& religion = creature->get_religion_ref();
-    DeityMap deities = game.get_deities_ref();
+    DeityMap deities = game.get_deities_cref();
 
     vector<DeityPtr> deities_to_notify;
 

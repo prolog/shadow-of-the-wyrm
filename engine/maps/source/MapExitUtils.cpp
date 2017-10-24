@@ -11,17 +11,20 @@ MapExitUtils::~MapExitUtils()
 }
 
 // Add an exit to the map itself
-void MapExitUtils::add_exit_to_map(MapPtr map, const string& map_exit_id)
+MapExitPtr MapExitUtils::add_exit_to_map(MapPtr map, const string& map_exit_id)
 {
   MapExitPtr map_exit = make_shared<MapExit>();
   map_exit->set_map_id(map_exit_id);
   map->set_map_exit(map_exit);
+
+  return map_exit;
 }
 
 // Attach a tile-type map exit to a tile, in a particular direction.
-void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, const TileType tile_type)
+MapExitPtr MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, const TileType tile_type)
 {
   TilePtr tile = map->at(c);
+  MapExitPtr exit;
 
   if (tile)
   {
@@ -32,13 +35,35 @@ void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direc
     
     add_map_tile_exit(map->get_tile_exits_ref(), direction, c);
     tile_exit_map[direction] = map_exit;
+    exit = map_exit;
   }
+
+  return exit;
+}
+
+MapExitPtr MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, MapExitPtr map_exit)
+{
+  TilePtr tile = map->at(c);
+  MapExitPtr exit;
+
+  if (tile)
+  {
+    TileExitMap& tile_exit_map = tile->get_tile_exit_map_ref();
+
+    add_map_tile_exit(map->get_tile_exits_ref(), direction, c);
+    tile_exit_map[direction] = map_exit;
+
+    exit = map_exit;
+  }
+
+  return exit;
 }
 
 // Attach a map exit to a tile, in a particular direction.
-void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, const string& map_exit_id)
+MapExitPtr MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, const string& map_exit_id)
 {
   TilePtr tile = map->at(c);
+  MapExitPtr exit;
 
   if (tile)
   {
@@ -49,7 +74,10 @@ void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direc
     
     add_map_tile_exit(map->get_tile_exits_ref(), direction, c);
     tile_exit_map[direction] = map_exit;    
+    exit = map_exit;
   }
+
+  return exit;
 }
 
 void MapExitUtils::add_map_tile_exit(std::map<Direction, vector<Coordinate>>& map_tile_exits, const Direction d, const Coordinate& c)

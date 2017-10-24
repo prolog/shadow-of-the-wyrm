@@ -8,6 +8,7 @@ class SpellcastingTextKeys
     static const std::string SPELLCASTING_UNAVAILABLE_ON_WORLD_MAP;
     static const std::string SPELLCASTING_SCREEN_PROMPT;
     static const std::string SPELLCASTING_INSUFFICIENT_POWER;
+    static const std::string SPELLCASTING_DIVINE_MAGIC_NO_DEITIES;
     static const std::string SPELLCASTING_BONUS_INCREASED;
     static const std::string SPELLCASTING_NO_MAGIC_SKILL;
     static const std::string SPELLCASTING_SPELL_NOT_LEARNED;

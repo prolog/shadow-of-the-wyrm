@@ -14,6 +14,10 @@ class TileUtils
     // function does that.
     static void set_grave_feature(TilePtr tile, FeaturePtr grave_feature);
 
+    // Copy map exit properties to the tile - typically used before
+    // a generator is created off the tile.
+    static void copy_exit_properties_to_tile(TilePtr tile);
+
   protected:
     TileUtils();
     ~TileUtils();

@@ -17,9 +17,9 @@ class TeleportEffect : public Effect
   protected:
     virtual bool teleport(std::shared_ptr<Creature> creature);
 
-    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
-    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
+    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
 
     // Teleport anywhere on the map
     virtual bool teleport(std::shared_ptr<Creature> creature, std::shared_ptr<Map> current_map, TilePtr old_tile);

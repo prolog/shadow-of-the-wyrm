@@ -55,6 +55,9 @@ class TileProperties
     // If this is a water tile, is it freshwater?  Saltwater?
     static const std::string TILE_PROPERTY_WATER_TYPE;
 
+    // Are only certain races allowed on this tile?
+    static const std::string TILE_PROPERTY_ALLOWED_RACES;
+
     // Generates the map key that identifies the custom map ID for
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);

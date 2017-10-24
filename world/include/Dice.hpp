@@ -11,6 +11,8 @@ class Dice : public ISerializable
     virtual ~Dice();
     virtual bool operator==(const Dice& dice) const;
 
+    int min() const;
+    int avg() const;
     int max() const;
     
     void set_num_dice(const uint new_num_dice);

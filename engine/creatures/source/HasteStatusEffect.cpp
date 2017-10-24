@@ -14,6 +14,11 @@ HasteStatusEffect::HasteStatusEffect()
   status_calc = std::make_shared<HasteCalculator>();
 }
 
+bool HasteStatusEffect::is_negative() const
+{
+  return false;
+}
+
 bool HasteStatusEffect::after_apply(CreaturePtr creature) const
 {
   bool effect_applied = true;

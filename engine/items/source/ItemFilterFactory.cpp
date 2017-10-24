@@ -1,3 +1,4 @@
+#include "ArtifactItemFilter.hpp"
 #include "DisplayItemTypeFactory.hpp"
 #include "EdibleItemFilter.hpp"
 #include "HandsRequiredItemFilter.hpp"
@@ -24,6 +25,9 @@ list<IItemFilterPtr> ItemFilterFactory::create_script_filter(const int script_co
   {
     case CITEM_FILTER_UNIDENTIFIED:
       filter = std::make_shared<UnidentifiedItemFilter>();
+      break;
+    case CITEM_FILTER_ARTIFACT:
+      filter = std::make_shared<ArtifactItemFilter>();
       break;
     default:
       filter = std::make_shared<NullFilter>();

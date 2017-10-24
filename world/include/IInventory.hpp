@@ -22,6 +22,10 @@ class IInventory : public ISerializable
   public:
     virtual bool operator==(const IInventory& inv) const = 0;
 
+    // Mark that the inventory needs to be restacked.
+    virtual void mark_for_restack() = 0;
+    virtual bool get_marked_for_restack() const = 0;
+
     virtual bool add_front(ItemPtr new_item) = 0;
     virtual bool add(ItemPtr new_item) = 0;
 
@@ -57,6 +61,7 @@ class IInventory : public ISerializable
     virtual uint count_items() const = 0;
     virtual uint count_currency() const = 0;
 
+    virtual void set_items(const std::list<ItemPtr>& items) = 0;
     virtual std::list<ItemPtr>& get_items_ref() = 0;
     virtual const std::list<ItemPtr>& get_items_cref() const = 0;
 

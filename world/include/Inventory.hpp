@@ -5,8 +5,13 @@
 class Inventory : public IInventory
 {
   public:
+    Inventory();
+  
     bool operator==(const IInventory& inv) const override;
     
+    void mark_for_restack() override;
+    bool get_marked_for_restack() const override;
+
     bool add_front(ItemPtr new_item) override;
     bool add(ItemPtr new_item) override;    
     void merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) override;
@@ -35,6 +40,7 @@ class Inventory : public IInventory
     uint count_items() const override;
     uint count_currency() const override;
 
+    void set_items(const std::list<ItemPtr>& items) override;
     std::list<ItemPtr>& get_items_ref() override;
     const std::list<ItemPtr>& get_items_cref() const override;
 
@@ -43,6 +49,7 @@ class Inventory : public IInventory
     
   protected:
     std::list<ItemPtr> items;
+    bool restack;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

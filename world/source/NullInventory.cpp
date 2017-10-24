@@ -14,6 +14,15 @@ bool NullInventory::operator==(const IInventory& inv) const
   return result;
 }
 
+void NullInventory::mark_for_restack()
+{
+}
+
+bool NullInventory::get_marked_for_restack() const
+{
+  return false;
+}
+
 bool NullInventory::add_front(ItemPtr item)
 {
   return false;
@@ -103,13 +112,15 @@ uint NullInventory::size() const
   return 0;
 }
 
-// JCD FIXME LATER
+void NullInventory::set_items(const list<ItemPtr>& items)
+{
+}
+
 list<ItemPtr>& NullInventory::get_items_ref()
 {
   return items;
 }
 
-// JCD FIXME LATER
 const list<ItemPtr>& NullInventory::get_items_cref() const
 {
   return items;

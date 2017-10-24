@@ -9,7 +9,7 @@ TEST(SW_Engine_Calculators_CreatureSpeedCalculator, calculate_creature_speed_bas
 
   CreatureSpeedCalculator csc;
 
-  EXPECT_EQ(0, csc.calculate(nullptr));
+  EXPECT_EQ(1, csc.calculate(nullptr));
 
   EXPECT_EQ(47, csc.calculate(c));
 }

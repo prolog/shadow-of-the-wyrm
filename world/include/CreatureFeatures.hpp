@@ -5,8 +5,13 @@ enum struct CreatureWin
 {
   CREATURE_WIN_NO_WIN = 0,
   CREATURE_WIN_REGULAR = 1,
-  CREATURE_WIN_EVIL = 2
+  CREATURE_WIN_EVIL = 2,
+  CREATURE_WIN_GODSLAYER = 3,
 };
+
+#define CCREATURE_WIN_REGULAR 1
+#define CCREATURE_WIN_EVIL 2
+#define CCREATURE_WIN_GODSLAYER 3
 
 enum struct CreatureSize
 {

@@ -8,24 +8,18 @@
 using namespace std;
 
 Damage::Damage()
-: Dice(0, 0, 0), chaotic(false), vorpal(false), draining(false), ethereal(false), piercing(false), incorporeal(false), damage_type(DamageType::DAMAGE_TYPE_SLASH), effect_bonus(0)
+: Dice(0, 0, 0), chaotic(false), vorpal(false), draining(false), ethereal(false), piercing(false), incorporeal(false), scything(false), explosive(false), damage_type(DamageType::DAMAGE_TYPE_SLASH), effect_bonus(0)
 {
 }
 
-Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const vector<string>& rslays, const bool chaos, const bool vorp, const bool drain, const bool ether, const bool pierce, const bool incorp, const int eb, const StatusAilments& ailments)
-: Dice(dice, sides, mod), chaotic(chaos), vorpal(vorp), draining(drain), ethereal(ether), piercing(pierce), incorporeal(incorp), damage_type(dtype), slays_races(rslays), effect_bonus(eb), status_ailments(ailments)
+Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const vector<string>& rslays, const bool chaos, const bool vorp, const bool drain, const bool ether, const bool pierce, const bool incorp, const bool scy, const bool exp, const int eb, const StatusAilments& ailments)
+: Dice(dice, sides, mod), chaotic(chaos), vorpal(vorp), draining(drain), ethereal(ether), piercing(pierce), incorporeal(incorp), scything(scy), explosive(exp), damage_type(dtype), slays_races(rslays), effect_bonus(eb), status_ailments(ailments)
 {
 }
 
 Damage::Damage(const Damage& d)
-: Dice(d.num_dice, d.dice_sides, d.modifier), chaotic(d.chaotic), vorpal(d.vorpal), draining(d.draining), ethereal(d.ethereal),  piercing(d.piercing), incorporeal(d.incorporeal), damage_type(d.damage_type), slays_races(d.slays_races), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
+: Dice(d.num_dice, d.dice_sides, d.modifier), chaotic(d.chaotic), vorpal(d.vorpal), draining(d.draining), ethereal(d.ethereal),  piercing(d.piercing), incorporeal(d.incorporeal), scything(d.scything), explosive(d.explosive), damage_type(d.damage_type), slays_races(d.slays_races), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
 {
-  DamagePtr addl_damage = d.get_additional_damage();
-  
-  if (addl_damage)
-  {
-    additional_damage = std::shared_ptr<Damage>(new Damage(*addl_damage));
-  }
 }
 
 Damage& Damage::operator=(const Damage& d)
@@ -43,15 +37,10 @@ Damage& Damage::operator=(const Damage& d)
     ethereal    = d.ethereal;
     piercing    = d.piercing;
     incorporeal = d.incorporeal;
+    scything    = d.scything;
+    explosive   = d.explosive;
     effect_bonus= d.effect_bonus;
-    status_ailments = d.status_ailments;
-    
-    DamagePtr addl_damage = d.get_additional_damage();
-    
-    if (addl_damage)
-    {
-      additional_damage = std::shared_ptr<Damage>(new Damage(*d.get_additional_damage()));
-    }
+    status_ailments = d.status_ailments;    
   }
   
   return *this;
@@ -79,16 +68,9 @@ bool Damage::operator==(const Damage& d) const
     match = match && (ethereal    == d.get_ethereal()   );
     match = match && (piercing    == d.get_piercing()   );
     match = match && (incorporeal == d.get_incorporeal());
+    match = match && (scything    == d.get_scything()   );
+    match = match && (explosive   == d.get_explosive()  );
     match = match && (effect_bonus == d.get_effect_bonus());
-    
-    DamagePtr d_add_damage = d.get_additional_damage();
-    bool add_damage_matches = true;
-    
-    if (additional_damage && d_add_damage)
-    {
-      add_damage_matches = (*additional_damage == *d_add_damage);
-      match = match && add_damage_matches;
-    }
     
     return match;
   }
@@ -124,30 +106,7 @@ void Damage::set_slays_races(const vector<string>& new_slays_races)
 
 vector<string> Damage::get_slays_races() const
 {
-  vector<string> slays_combined = slays_races;
-
-  if (additional_damage != nullptr)
-  {
-    vector<string> addl_slays = additional_damage->get_slays_races();
-    slays_combined.insert(slays_combined.end(), addl_slays.begin(), addl_slays.end());
-  }
-
-  return slays_combined;
-}
-
-void Damage::set_additional_damage(DamagePtr new_additional_damage)
-{
-  additional_damage = new_additional_damage;
-}
-
-bool Damage::has_additional_damage() const
-{
-  return (additional_damage != nullptr);
-}
-
-DamagePtr Damage::get_additional_damage() const
-{
-  return additional_damage;
+  return slays_races;
 }
 
 void Damage::set_damage_flags(const map<DamageFlagType, bool>& dflags)
@@ -160,7 +119,7 @@ void Damage::set_damage_flags(const map<DamageFlagType, bool>& dflags)
 
 void Damage::set_damage_flag(const DamageFlagType df, const bool value)
 {
-  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(7), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
 
   switch (df)
   {
@@ -181,6 +140,12 @@ void Damage::set_damage_flag(const DamageFlagType df, const bool value)
       break;
     case DamageFlagType::DAMAGE_FLAG_INCORPOREAL:
       incorporeal = value;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_SCYTHING:
+      scything = value;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_EXPLOSIVE:
+      explosive = value;
       break;
     default:
       break;
@@ -211,6 +176,12 @@ bool Damage::get_damage_flag(const DamageFlagType df) const
     case DamageFlagType::DAMAGE_FLAG_INCORPOREAL:
       flag = incorporeal;
       break;
+    case DamageFlagType::DAMAGE_FLAG_SCYTHING:
+      flag = scything;
+      break;
+    case DamageFlagType::DAMAGE_FLAG_EXPLOSIVE:
+      flag = explosive;
+      break;
     default:
       break;
   }
@@ -220,7 +191,7 @@ bool Damage::get_damage_flag(const DamageFlagType df) const
 
 vector<DamageFlagType> Damage::get_damage_flags_by_value(const bool value) const
 {
-  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(5), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
+  static_assert(DamageFlagType::DAMAGE_FLAG_LAST == DamageFlagType(7), "Unexpected DamageFlag::DAMAGE_FLAG_LAST");
   vector<DamageFlagType> damage_flags;
 
   if (chaotic == value)
@@ -251,6 +222,16 @@ vector<DamageFlagType> Damage::get_damage_flags_by_value(const bool value) const
   if (incorporeal == value)
   {
     damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_INCORPOREAL);
+  }
+
+  if (scything == value)
+  {
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_SCYTHING);
+  }
+
+  if (explosive == value)
+  {
+    damage_flags.push_back(DamageFlagType::DAMAGE_FLAG_EXPLOSIVE);
   }
 
   return damage_flags;
@@ -316,6 +297,26 @@ bool Damage::get_incorporeal() const
   return incorporeal;
 }
 
+void Damage::set_scything(const bool new_scything)
+{
+  scything = new_scything;
+}
+
+bool Damage::get_scything() const
+{
+  return scything;
+}
+
+void Damage::set_explosive(const bool new_explosive)
+{
+  explosive = new_explosive;
+}
+
+bool Damage::get_explosive() const
+{
+  return explosive;
+}
+
 void Damage::set_effect_bonus(const int new_effect_bonus)
 {
   effect_bonus = new_effect_bonus;
@@ -341,23 +342,6 @@ bool Damage::is_always_zero() const
   return (num_dice == 0) || (dice_sides == 0);
 }
 
-bool Damage::contains(const DamageType dt) const
-{
-  // First check the main damage type.
-  if (damage_type == dt) return true;
-
-  // If not, check any additional damage types.
-  auto add_dmg = additional_damage;
-
-  while (add_dmg != nullptr)
-  {
-    if (add_dmg->get_damage_type() == dt) return true;
-    else add_dmg = add_dmg->get_additional_damage();
-  }
-
-  return false;
-}
-
 string Damage::str() const
 {
   ostringstream ss;
@@ -381,11 +365,6 @@ string Damage::str() const
     ss << modifier_s << modifier_abs;
   }
   
-  if (additional_damage)
-  {
-    ss << "+" << additional_damage->str();
-  }
-
   return ss.str();
 }
 
@@ -399,20 +378,12 @@ bool Damage::serialize(ostream& stream) const
   Serialize::write_bool(stream, ethereal);
   Serialize::write_bool(stream, piercing);
   Serialize::write_bool(stream, incorporeal);
+  Serialize::write_bool(stream, scything);
+  Serialize::write_bool(stream, explosive);
   Serialize::write_int(stream, effect_bonus);
 
   status_ailments.serialize(stream);
   Serialize::write_string_vector(stream, slays_races);
-
-  if (additional_damage)
-  {
-    Serialize::write_class_id(stream, additional_damage->get_class_identifier());
-    additional_damage->serialize(stream);
-  }
-  else
-  {
-    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
-  }
 
   return true;
 }
@@ -427,19 +398,12 @@ bool Damage::deserialize(istream& stream)
   Serialize::read_bool(stream, ethereal);
   Serialize::read_bool(stream, piercing);
   Serialize::read_bool(stream, incorporeal);
+  Serialize::read_bool(stream, scything);
+  Serialize::read_bool(stream, explosive);
   Serialize::read_int(stream, effect_bonus);
 
   status_ailments.deserialize(stream);
   Serialize::read_string_vector(stream, slays_races);
-
-  ClassIdentifier ci = ClassIdentifier::CLASS_ID_NULL;
-  Serialize::read_class_id(stream, ci);
-
-  if (ci != ClassIdentifier::CLASS_ID_NULL)
-  {
-    additional_damage = std::make_shared<Damage>();
-    additional_damage->deserialize(stream);
-  }
 
   return true;
 }

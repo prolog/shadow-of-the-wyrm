@@ -1,10 +1,12 @@
 #pragma once
-#include "FloatingStatusEffect.hpp"
+#include "StatusEffect.hpp"
 
 class SatedStatusEffect : public StatusEffect
 {
   public:
     SatedStatusEffect();
+
+    virtual bool is_negative() const override;
 
   protected:
     virtual std::string get_player_application_message() const override;

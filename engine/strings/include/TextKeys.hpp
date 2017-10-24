@@ -25,6 +25,8 @@ class TextKeys
     static const std::string HIMSELF;
     static const std::string HERSELF;
     static const std::string ITSELF;
+    static const std::string BOOL_TRUE;
+    static const std::string BOOL_FALSE;
     static const std::string MORTUARY;
     static const std::string STATUSES;
     static const std::string TOTAL;
@@ -118,8 +120,10 @@ class TextKeys
 
     static const std::string LEVEL;
     static const std::string LEVEL_ABRV;
+    static const std::string EXPERIENCE;
     static const std::string WINNER;
     static const std::string WINNER_EVIL;
+    static const std::string WINNER_GODSLAYER;
     
     static const std::string DAMAGE_MELEE;
     static const std::string DAMAGE_RANGED;
@@ -128,7 +132,9 @@ class TextKeys
     static const std::string DAMAGE_DRAINING;
     static const std::string DAMAGE_ETHEREAL;
     static const std::string DAMAGE_VORPAL;
+    static const std::string DAMAGE_EXPLOSIVE;
     static const std::string DAMAGE_INCORPOREAL;
+    static const std::string DAMAGE_SCYTHING;
     static const std::string DAMAGE_SLAYS;
 
     static const std::string ATTACK_DETAILS;

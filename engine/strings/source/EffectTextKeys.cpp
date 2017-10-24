@@ -28,6 +28,11 @@ string EffectTextKeys::get_teleport_effect_message(const string& monster_desc_si
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_TELEPORT_PLAYER, EFFECT_TELEPORT_MONSTER);
 }
 
+string EffectTextKeys::get_digging_effect_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_DIGGING_PLAYER, EFFECT_DIGGING_MONSTER);
+}
+
 string EffectTextKeys::get_general_effect_message(const string& monster_desc_sid, const bool is_player, const string& player_msg_sid, const string& monster_msg_sid)
 {
   string message = StringTable::get(player_msg_sid);
@@ -151,7 +156,12 @@ const string EffectTextKeys::EFFECT_ETHER_PLAYER = "EFFECT_ETHER_PLAYER";
 const string EffectTextKeys::EFFECT_ETHER_MONSTER = "EFFECT_ETHER_MONSTER";
 const string EffectTextKeys::EFFECT_TELEPORT_PLAYER = "EFFECT_TELEPORT_PLAYER";
 const string EffectTextKeys::EFFECT_TELEPORT_CANNOT_TELEPORT = "EFFECT_TELEPORT_CANNOT_TELEPORT";
+const string EffectTextKeys::EFFECT_DIGGING_PLAYER = "EFFECT_DIGGING_PLAYER";
+const string EffectTextKeys::EFFECT_DIGGING_MONSTER = "EFFECT_DIGGING_MONSTER";
 const string EffectTextKeys::EFFECT_CLEANSING = "EFFECT_CLEANSING";
+const string EffectTextKeys::EFFECT_MAPPING = "EFFECT_MAPPING";
+const string EffectTextKeys::EFFECT_MAPPING_FORGET = "EFFECT_MAPPING_FORGET";
+const string EffectTextKeys::EFFECT_SUMMON_MONSTERS = "EFFECT_SUMMON_MONSTERS";
 
 const string EffectTextKeys::EFFECT_TELEPORT_MONSTER = "EFFECT_TELEPORT_MONSTER";
 const string EffectTextKeys::EFFECT_RECHARGING_PLAYER_NO_WANDS = "EFFECT_RECHARGING_PLAYER_NO_WANDS";

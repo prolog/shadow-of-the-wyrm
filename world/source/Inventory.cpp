@@ -4,6 +4,11 @@
 
 using namespace std;
 
+Inventory::Inventory()
+: restack(false)
+{
+}
+
 bool Inventory::operator==(const IInventory& inv) const
 {
   bool result = true;
@@ -30,9 +35,24 @@ bool Inventory::operator==(const IInventory& inv) const
       lista_it++;
       listb_it++;
     }
+
+    // Intentionally not including "restack".
+    // Two inventories are equal if they have the same items/etc.
+    // That one is flagged for restacking and one isn't shouldn't play into
+    // equality.
   }
 
   return result;
+}
+
+void Inventory::mark_for_restack()
+{
+  restack = true;
+}
+
+bool Inventory::get_marked_for_restack() const
+{
+  return restack;
 }
 
 // Add an item to the front of the inventory.  "add" is usually
@@ -323,6 +343,11 @@ uint Inventory::size() const
   return items.size();
 }
 
+void Inventory::set_items(const list<ItemPtr>& new_items)
+{
+  items = new_items;
+}
+
 // Get the actual Items
 list<ItemPtr>& Inventory::get_items_ref()
 {
@@ -412,6 +437,8 @@ bool Inventory::serialize(ostream& stream) const
     }
   }
 
+  Serialize::write_bool(stream, restack);
+
   return true;
 }
 
@@ -437,6 +464,8 @@ bool Inventory::deserialize(istream& stream)
       items.push_back(item);
     }
   }
+
+  Serialize::read_bool(stream, restack);
 
   return true;
 }

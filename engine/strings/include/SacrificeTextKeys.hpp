@@ -6,9 +6,11 @@
 class SacrificeTextKeys
 {
   public:
+    static const std::string SACRIFICE_NO_DEITIES;
     static const std::string SACRIFICE_NO_ALTAR;
     static const std::string SACRIFICE_NO_ITEMS;
     static const std::string SACRIFICE_NO_ITEM_SELECTED;
+    static const std::string SACRIFICE_PIETY_NO_DEITIES;
 
     static std::string get_sacrifice_message(const AlignmentRange alignment, ItemPtr item, const bool creature_blind);
     static std::string get_piety_message(const int piety);

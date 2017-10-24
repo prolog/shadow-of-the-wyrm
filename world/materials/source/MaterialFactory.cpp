@@ -2,6 +2,7 @@
 #include "Bone.hpp"
 #include "Cloth.hpp"
 #include "DragonScale.hpp"
+#include "Gases.hpp"
 #include "Glass.hpp"
 #include "Gold.hpp"
 #include "Iron.hpp"
@@ -12,6 +13,7 @@
 #include "Paper.hpp"
 #include "Steel.hpp"
 #include "Stone.hpp"
+#include "UnknownMaterial.hpp"
 #include "Wood.hpp"
 
 using namespace std;
@@ -26,7 +28,7 @@ MaterialFactory::~MaterialFactory()
 
 MaterialPtr MaterialFactory::create_material(const MaterialType type)
 {
-  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(14), "Unexpected MATERIAL_TYPE_LAST");
+  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(16), "Unexpected MATERIAL_TYPE_LAST");
 
   MaterialPtr material;
 
@@ -74,8 +76,12 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
     case MaterialType::MATERIAL_TYPE_GOLD:
       material = std::make_shared<Gold>();
       break;
+    case MaterialType::MATERIAL_TYPE_GASES:
+      material = std::make_shared<Gases>();
+      break;
+    case MaterialType::MATERIAL_TYPE_UNKNOWN:
     default:
-      material = std::make_shared<Wood>();
+      material = std::make_shared<UnknownMaterial>();
       break;
   }
 

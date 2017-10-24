@@ -35,6 +35,7 @@ class ActionTextKeys
     static std::string get_cry_out_message(const std::string& attacked_desc);
     static std::string get_bowyer_message(const std::string& item_usage_desc_sid);
     static std::string get_fletchery_message(const std::string& item_usage_desc_sid);
+    static std::string get_toggle_autopickup_message(const bool autopickup_value, const std::vector<std::string>& item_type_names);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -226,4 +227,5 @@ class ActionTextKeys
     static const std::string ACTION_CRY_OUT;
     static const std::string ACTION_BOWYER_CREATE;
     static const std::string ACTION_FLETCHERY_CREATE;
+    static const std::string ACTION_TOGGLE_AUTOPICKUP;
 };

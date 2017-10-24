@@ -93,14 +93,14 @@ void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<I
       {
         set_item_identified(creature, item, item->get_base_id(), true);
       }
-    }    
+    }
   }
 }
 
 // Identify a particular type of item.
 void ItemIdentifier::set_possessions_identified_by_type(CreaturePtr creature, const ItemType item_type)
 {
-  if (item_type != ItemType::ITEM_TYPE_NULL)
+  if (item_type != ItemType::ITEM_TYPE_NULL && creature != nullptr)
   {
     list<IItemFilterPtr> item_filter = ItemFilterFactory::create_item_type_filter(item_type);
     set_possessions_identified(creature, &item_filter);
@@ -132,11 +132,18 @@ void ItemIdentifier::set_item_identified(CreaturePtr identifying_creature, ItemP
     // Fully identify this particular item.
     item->set_item_identified(true);
     item->set_status_identified(true);
+    item->set_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED, Bool::to_string(true));
 
-    if (identifying_creature != nullptr && original_prev_identified == false)
+    if (identifying_creature != nullptr)
     {
-      StatisticsMarker sm;
-      sm.mark_intelligence(identifying_creature);
+      // Ensure the creature's inventory is rejigged based on the new info.
+      identifying_creature->get_inventory()->mark_for_restack();
+
+      if (original_prev_identified == false)
+      {
+        StatisticsMarker sm;
+        sm.mark_intelligence(identifying_creature);
+      }
     }
   }
 }

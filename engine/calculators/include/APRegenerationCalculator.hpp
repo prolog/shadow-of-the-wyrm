@@ -10,6 +10,7 @@ class APRegenerationCalculator
 
   protected:
     float get_ap_tick_willpower_multiplier(CreaturePtr creature);
+    float get_ap_tick_magic_multiplier(CreaturePtr creature);
 
     static const uint BASE_MINUTES_PER_AP_TICK;
     static const uint MIN_MINUTES_PER_AP_TICK;

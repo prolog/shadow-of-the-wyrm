@@ -25,7 +25,7 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
     // Tile confirmation only happens if the creature can see.  Otherwise,
     // the creature has no idea that the place they're moving into is dangerous.
     if ((new_tile->get_dangerous(creature) && !is_incorporeal && !is_flying) ||
-      (feature_dangerous))
+      (feature_dangerous && !is_flying))
     {
       confirmation_details.first = true;
       string confirmation_sid = new_tile->get_danger_confirmation_sid();
@@ -64,7 +64,7 @@ pair<bool, string> TileMovementConfirmation::check_for_jumping_into_water(Creatu
   {
     IInventoryPtr inv = creature->get_inventory();
 
-    if (!(creature->get_breathes() == BreatheType::BREATHE_TYPE_WATER) && !is_incorporeal && !is_flying && !inv->has_item_type(ItemType::ITEM_TYPE_BOAT))
+    if (!(creature->can_breathe(BreatheType::BREATHE_TYPE_WATER)) && !is_incorporeal && !is_flying && !inv->has_item_type(ItemType::ITEM_TYPE_BOAT))
     {
       details.first  = true;
       details.second = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);

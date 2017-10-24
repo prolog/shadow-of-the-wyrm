@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Creature.hpp"
+#include "CreatureStatusTypes.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 #include "Deity.hpp"
@@ -46,17 +47,18 @@ class CreatureUtils
     static bool has_spell_for_situation_type(CreaturePtr creature, const SpellSituationType sst);
 
     // Mark modifiers older than a certain time, or by spell/status.
-    static void mark_modifiers_for_deletion(CreaturePtr creature, const double seconds, const double min_expiry = 0.0);
-    static void mark_modifiers_for_deletion(CreaturePtr creature, const std::string& identifier);
+    static void mark_modifiers_for_deletion(CreaturePtr creature, const double seconds, const double min_expiry = 0.0, const StatusRemovalType sr = StatusRemovalType::STATUS_REMOVAL_FINALIZE);
+    static void mark_modifiers_for_deletion(CreaturePtr creature, const std::string& identifier, const StatusRemovalType sr);
 
     // Remove any marked modifiers
     static void remove_modifiers(CreaturePtr creature);
-    static void process_creature_modifiers(CreaturePtr creature, std::vector<std::pair<std::string, Modifier>>& modifiers);
-    static void process_creature_modifier(CreaturePtr creature, std::pair<std::string, Modifier>& modifier);
+    static void process_creature_modifiers(CreaturePtr creature, std::vector<std::pair<std::string, Modifier>>& modifiers, const StatusRemovalType sr);
+    static void process_creature_modifier(CreaturePtr creature, std::pair<std::string, Modifier>& modifier, const StatusRemovalType sr);
 
     // Apply/remove status ailments from the wearable to the creature
     static void apply_status_ailments(WearablePtr wearable, CreaturePtr creature);
     static void remove_status_ailments_from_wearable(WearablePtr wearable, CreaturePtr creature);
+    static bool has_status_ailment_from_wearable(CreaturePtr creature, const std::string& status_id);
 
   protected:
     CreatureUtils();

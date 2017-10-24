@@ -43,17 +43,17 @@ Effect* TeleportEffect::clone()
   return new TeleportEffect(*this);
 }
 
-bool TeleportEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
+bool TeleportEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return teleport(creature);
 }
 
-bool TeleportEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
+bool TeleportEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return teleport(creature);
 }
 
-bool TeleportEffect::effect_cursed(CreaturePtr creature, ActionManager * am)
+bool TeleportEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return teleport(creature);
 }

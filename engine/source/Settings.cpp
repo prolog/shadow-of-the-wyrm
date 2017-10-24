@@ -1,3 +1,4 @@
+#include <boost/algorithm/string/predicate.hpp>
 #include <boost/property_tree/ini_parser.hpp>
 #include <boost/filesystem.hpp>
 #include "Conversion.hpp"

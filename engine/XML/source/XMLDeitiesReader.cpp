@@ -51,6 +51,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     AlignmentRange alignment = static_cast<AlignmentRange>(XMLUtils::get_child_node_int_value(deity_node, "Alignment"));
     XMLNode dislikes_node = XMLUtils::get_next_element_by_local_name(deity_node, "Dislikes");
     XMLNode crowning_node = XMLUtils::get_next_element_by_local_name(deity_node, "Crowning");
+    int class_crowning_chance = XMLUtils::get_child_node_int_value(deity_node, "ClassCrowningChance");
     XMLNode summons_node  = XMLUtils::get_next_element_by_local_name(deity_node, "Summons");
     WorshipSiteType worship_site_type = static_cast<WorshipSiteType>(XMLUtils::get_child_node_int_value(deity_node, "WorshipSiteType"));
     string anger_script = XMLUtils::get_child_node_value(deity_node, "AngerScript");
@@ -69,6 +70,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     deity->set_alignment_range(alignment);
     parse_dislikes(dislikes_node, deity);
     parse_crowning_gifts(crowning_node, deity);
+    deity->set_pct_chance_class_crowning(class_crowning_chance);
     parse_summons(summons_node, deity);
     deity->set_worship_site_type(worship_site_type);
     deity->set_anger_script(anger_script);
@@ -114,17 +116,6 @@ void XMLDeitiesReader::parse_summons(const XMLNode& summons_node, DeityPtr deity
 // Read in the deity's crowning gifts
 void XMLDeitiesReader::parse_crowning_gifts(const XMLNode& crowning_node, DeityPtr deity)
 {
-  if (deity && !crowning_node.is_null())
-  {
-    vector<XMLNode> artifact_nodes = XMLUtils::get_elements_by_local_name(crowning_node, "Artifact");
-    vector<string> artifacts;
-
-    for (const XMLNode& artifact_node : artifact_nodes)
-    {
-      string artifact = XMLUtils::get_node_value(artifact_node);
-      artifacts.push_back(artifact);
-    }
-
-    deity->set_crowning_gifts(artifacts);
-  }
+  vector<string> crowning_gifts = get_crowning_gifts(crowning_node);
+  deity->set_crowning_gifts(crowning_gifts);
 }

@@ -7,7 +7,6 @@
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
-#include "StatusEffectFactory.hpp"
 #include "Wearable.hpp"
 
 using namespace std;
@@ -113,11 +112,11 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
     // item, based on the current max.
     Game& game = Game::instance();
     GenerationValuesMap& igv_map = game.get_item_generation_values_ref();
-    GenerationValuesMap::iterator i_it = igv_map.find(item_id);
+    GenerationValuesMap::iterator gv_it = igv_map.find(item_id);
 
-    if (i_it != igv_map.end())
+    if (gv_it != igv_map.end())
     {
-      GenerationValues& igv = i_it->second;
+      GenerationValues& igv = gv_it->second;
       if (!igv.is_maximum_reached())
       {
         igv.incr_current();

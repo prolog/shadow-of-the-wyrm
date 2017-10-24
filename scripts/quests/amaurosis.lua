@@ -10,7 +10,7 @@ if player_has_item("hearts_needle") then
   add_message_with_pause("EVIL_WIN_MESSAGE5")
   clear_and_add_message("EVIL_WIN_MESSAGE6")
 
-  set_winner(PLAYER_ID, 2) -- evil win
+  set_winner(PLAYER_ID, CCREATURE_WIN_EVIL)
 
   -- Always stop playing after an evil win (since the world has been
   -- destroyed)

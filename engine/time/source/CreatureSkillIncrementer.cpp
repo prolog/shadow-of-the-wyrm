@@ -59,16 +59,19 @@ bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, S
   {
     if ((skill_value == 0 && (skill->can_train_from_unlearned())) || (skill_value > 0))
     {
-      skill_value = skill->get_value();
-
-      // Update the value, which also updates the threshold.
-      skill->set_value(skill_value + 1);
-
-      if (creature->get_is_player())
+      if (skill_value < Skills::MAX_SKILL_VALUE)
       {
-        string skill_increase_message = StringTable::get(skill->get_skill_increment_message_sid());
-        manager.add_new_message(skill_increase_message);
-        trained_skill = true;
+        skill_value = skill->get_value();
+
+        // Update the value, which also updates the threshold.
+        skill->set_value(skill_value + 1);
+
+        if (creature->get_is_player())
+        {
+          string skill_increase_message = StringTable::get(skill->get_skill_increment_message_sid());
+          manager.add_new_message(skill_increase_message);
+          trained_skill = true;
+        }
       }
 
       skill_threshold = skill->get_threshold();

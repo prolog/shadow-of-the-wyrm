@@ -218,6 +218,25 @@ TEST(SW_World_Creature, count_items)
   EXPECT_EQ(7, c.count_items());
 }
 
+TEST(SW_World_Creature, breathes_types)
+{
+  Creature water_creature;
+  water_creature.set_breathes(BreatheType::BREATHE_TYPE_WATER);
+
+  EXPECT_TRUE(water_creature.can_breathe(BreatheType::BREATHE_TYPE_WATER));
+
+  Creature land_creature;
+  land_creature.set_breathes(BreatheType::BREATHE_TYPE_AIR);
+
+  EXPECT_TRUE(land_creature.can_breathe(BreatheType::BREATHE_TYPE_AIR));
+  EXPECT_FALSE(land_creature.can_breathe(BreatheType::BREATHE_TYPE_WATER));
+
+  Status wb_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, true, 1, "");
+  land_creature.set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, wb_status);
+
+  EXPECT_TRUE(land_creature.can_breathe(BreatheType::BREATHE_TYPE_WATER));
+}
+
 TEST(SW_World_Creature, status_details)
 {
   Creature c;
@@ -239,4 +258,36 @@ TEST(SW_World_Creature, status_details)
   EXPECT_EQ(poi, csm.find("poison")->second);
   EXPECT_EQ(haste, csm.find("haste")->second);
   EXPECT_EQ(depression, csm.find("depression")->second);
+}
+
+TEST(SW_World_Creature, is_dead)
+{
+  Creature c;
+
+  Statistic hp(20);
+  hp.set_current(-5);
+
+  c.set_hit_points(hp);
+
+  EXPECT_TRUE(c.is_dead());
+
+  hp.set_current(-1);
+  c.set_hit_points(hp);
+
+  EXPECT_TRUE(c.is_dead());
+
+  hp.set_current(0);
+  c.set_hit_points(hp);
+
+  EXPECT_TRUE(c.is_dead());
+
+  hp.set_current(1);
+  c.set_hit_points(hp);
+
+  EXPECT_FALSE(c.is_dead());
+
+  hp.set_current(36);
+  c.set_hit_points(hp);
+
+  EXPECT_FALSE(c.is_dead());
 }

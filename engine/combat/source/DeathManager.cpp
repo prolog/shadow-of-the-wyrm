@@ -30,7 +30,7 @@ void DeathManager::run_death_event(CreaturePtr attacked_creature, CreaturePtr at
   {
     ScriptEngine& se = Game::instance().get_script_engine_ref();
     DeathScript ds;
-    ds.execute(se, event_script_name, attacked_creature, attacking_creature);
+    ds.execute(se, event_script_name, attacked_creature, attacking_creature, map);
   }
 }
 

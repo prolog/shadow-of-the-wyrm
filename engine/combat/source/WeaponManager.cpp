@@ -207,33 +207,53 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
   Equipment& equipment = creature->get_equipment();
   WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
   WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
+  int num_ranged_weapon_dice = 0;
+  vector<string> total_slays;
+  vector<DamageFlagType> ranged_weapon_dflags;
 
   if (ranged_weapon)
   {
     d = ranged_weapon->get_damage();
+
+    // Yes, the number of dice is always added, regardless of whether the
+    // dice faces match.
+    // Yes, I realize that if the damage dice for launchers doesn't match
+    // the ammo, this will be totally wrong.
+    // Yes, that's why the damage dice for launchers generally matches the 
+    // ammo.
+    num_ranged_weapon_dice = d.get_num_dice();
+    total_slays = d.get_slays_races();
+    ranged_weapon_dflags = d.get_damage_flags_by_value(true);
   }
 
   if (ammunition)
   {
-    Damage ammunition_damage = ammunition->get_damage();
+    Damage weapon_dmg = d;
+    d = ammunition->get_damage();
+    d.set_modifier(d.get_modifier() + weapon_dmg.avg());
 
-    if (!ranged_weapon)
-    {
-      d = ammunition_damage; 
-    }
-    else
-    {
-      // Set the additional damage based on the ammunition
-      DamagePtr additional_damage = std::make_shared<Damage>(ammunition_damage);
-      d.set_additional_damage(additional_damage);
-    }
+    vector<string> amm_slays = d.get_slays_races();
+    total_slays.insert(total_slays.end(), amm_slays.begin(), amm_slays.end());
   }
 
   if (ranged_weapon && String::to_bool(ranged_weapon->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED)))
   {
     d.set_damage_type(ranged_weapon->get_damage().get_damage_type());
   }
-  
+
+  if (!total_slays.empty())
+  {
+    d.set_slays_races(total_slays);
+  }
+
+  if (!ranged_weapon_dflags.empty())
+  {
+    for (const auto& dft : ranged_weapon_dflags)
+    {
+      d.set_damage_flag(dft, true);
+    }
+  }
+
   return d;
 }
 

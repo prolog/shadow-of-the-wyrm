@@ -14,7 +14,7 @@ using namespace std;
 //
 // Cone-shaped spells have the restriction that they only accept a 
 // cardinal direction.
-pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+pair<vector<pair<Coordinate, TilePtr>>, Animation> ConeShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
   int frontier_size = 0;
   uint spell_range = spell.get_range();
@@ -29,7 +29,8 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
 
   MovementPath movement_path;
   TileMagicChecker tmc;
-  vector<TilePtr> affected_tiles;
+
+  vector<pair<Coordinate, TilePtr>> affected_coords_and_tiles;
 
   Coordinate centre_coord = CoordUtils::get_new_coordinate(prev_coord, d);
 
@@ -43,10 +44,10 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
         Coordinate c(centre_coord.first, col);
         TilePtr tile = map->at(c);
 
-        if (tile && !tmc.does_tile_block_spell(tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(c, previous_frame))
+        if (tile && !tmc.does_tile_block_spell(tile, spell) && is_coordinate_adjacent_to_coordinate_in_previous_frame(c, previous_frame))
         {
           current_frame.push_back(c);
-          affected_tiles.push_back(tile);
+          affected_coords_and_tiles.push_back(make_pair(c, tile));
         }
       }
     }
@@ -58,10 +59,10 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
         Coordinate c(row, centre_coord.second);
         TilePtr tile = map->at(c);
 
-        if (tile && !tmc.does_tile_block_spell(tile) && is_coordinate_adjacent_to_coordinate_in_previous_frame(c, previous_frame))
+        if (tile && !tmc.does_tile_block_spell(tile, spell) && is_coordinate_adjacent_to_coordinate_in_previous_frame(c, previous_frame))
         {
           current_frame.push_back(c);
-          affected_tiles.push_back(tile);
+          affected_coords_and_tiles.push_back(make_pair(c, tile));
         }
       }
     }
@@ -71,7 +72,7 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
       current_frame.push_back(centre_coord);
 
       TilePtr tile = map->at(centre_coord);
-      affected_tiles.push_back(tile);
+      affected_coords_and_tiles.push_back(make_pair(centre_coord, tile));
     }
 
     // Update the frames required for the animation.
@@ -95,6 +96,6 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
 
   // Create the animation.
   CreaturePtr caster = map->at(caster_coord)->get_creature();
-  return create_affected_tiles_and_animation(caster, map, affected_tiles, movement_path);
+  return create_affected_tiles_and_animation(caster, map, affected_coords_and_tiles, movement_path);
 }
 

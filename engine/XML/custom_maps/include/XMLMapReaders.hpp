@@ -3,9 +3,10 @@
 #include <vector>
 #include "Map.hpp"
 #include "XMLDataStructures.hpp"
+#include "XMLReader.hpp"
 
 // Reads an individual map from the given <CustomMap> element.
-class XMLMapReader
+class XMLMapReader : public XMLReader
 {
   public:
     MapPtr get_custom_map(const XMLNode& custom_map_node);

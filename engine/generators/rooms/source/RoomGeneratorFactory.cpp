@@ -1,14 +1,17 @@
 #include "RoomGeneratorFactory.hpp"
 #include "BasicRoomGenerator.hpp"
+#include "CaveInRoomGenerator.hpp"
+#include "DankRoomGenerator.hpp"
 #include "NullRoomGenerator.hpp"
 #include "RNG.hpp"
+#include "WetRoomGenerator.hpp"
 #include "XRoomGenerator.hpp"
 
 using namespace std;
 
 IRoomGeneratorPtr RoomGeneratorFactory::create_room_generator(const RoomType room_type)
 {
-  static_assert(RoomType::ROOM_TYPE_LAST == RoomType(2), "Unexpected value for ROOM_TYPE_LAST");
+  static_assert(RoomType::ROOM_TYPE_LAST == RoomType(5), "Unexpected value for ROOM_TYPE_LAST");
 
   IRoomGeneratorPtr room_gen;
 
@@ -19,6 +22,15 @@ IRoomGeneratorPtr RoomGeneratorFactory::create_room_generator(const RoomType roo
       break;
     case RoomType::ROOM_TYPE_X:
       room_gen = std::make_shared<XRoomGenerator>();
+      break;
+    case RoomType::ROOM_TYPE_WET:
+      room_gen = std::make_shared<WetRoomGenerator>();
+      break;
+    case RoomType::ROOM_TYPE_DANK:
+      room_gen = std::make_shared<DankRoomGenerator>();
+      break;
+    case RoomType::ROOM_TYPE_CAVE_IN:
+      room_gen = std::make_shared<CaveInRoomGenerator>();
       break;
     default:
       room_gen = std::make_shared<NullRoomGenerator>();
