@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.7.0 "de Visee"
-- Version declared March 1, 2017.  Version finalized October 24, 2017.
+- Version declared March 1, 2017.  Version finalized October 23, 2017.
 
 - New effect type, mapping.  When blessed, the entire map's structure
   is revealed.  When uncursed or cursed, tiles will be learned/forgotten
