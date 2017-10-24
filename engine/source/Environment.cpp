@@ -7,7 +7,11 @@ using namespace std;
 #ifdef _WIN32
 #include <windows.h>
 #include <Lmcons.h>
-#elif defined(__unix__)
+#elif defined(__unix__) || defined(__unix) || (defined(__APPLE__) && defined(__MACH__))
+#ifndef __unix__  // Probably MacOS
+#define __unix__          // This define is used later
+#define LOGIN_NAME_MAX 30 // MacOS doesn't define this
+#endif
 #include <limits.h>
 #include <pwd.h>
 #include <sys/types.h>

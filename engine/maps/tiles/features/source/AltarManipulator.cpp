@@ -2,6 +2,7 @@
 #include "Altar.hpp"
 #include "AltarManipulator.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
+#include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 
 using namespace std;
@@ -27,7 +28,7 @@ bool AltarManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr
 {
   bool item_altered = false;
 
-  if (dropping_creature != nullptr && item != nullptr)
+  if (dropping_creature != nullptr && item != nullptr && !Game::instance().get_deities_cref().empty())
   {
     AltarPtr altar = dynamic_pointer_cast<Altar>(feature);
 
@@ -50,3 +51,9 @@ bool AltarManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr
 
   return item_altered;
 }
+
+void AltarManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+{
+  Game::instance().get_deity_action_manager_ref().notify_action(creature, get_creature_action_key(), false);
+}
+

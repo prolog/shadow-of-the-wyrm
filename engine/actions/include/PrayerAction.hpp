@@ -14,6 +14,6 @@ class PrayerAction : public IActionManager
     friend class ActionManager;
     PrayerAction();
     
-    void say_prayer(CreaturePtr creature);
+    bool say_prayer(CreaturePtr creature);
     void finish_prayer(CreaturePtr creature, const DeityDecisionImplications& implications);
 };

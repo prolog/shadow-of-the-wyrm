@@ -53,6 +53,8 @@ string CompilationDetails::get_platform() const
   oss << "Win32";
   #elif defined(__linux__)
   oss << "Linux";
+  #elif (defined(__APPLE__) && defined(__MACH__))
+  oss << "MacOS";  
   #else
   // This needs to be filled in when porting to Linux/FreeBSD/MacOS/etc.
   static_assert(false, "Platform not recognized");

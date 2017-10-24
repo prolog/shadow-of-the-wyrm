@@ -14,6 +14,14 @@ TEST(SW_World_Tiles_AirTile, tile_super_type)
   EXPECT_EQ(TileSuperType::TILE_SUPER_TYPE_AIR, air_tile.get_tile_super_type());
 }
 
+TEST(SW_World_Tiles_AirTile, tile_super_type_submerged)
+{
+  AirTile air_tile;
+  air_tile.set_submerged(true);
+
+  EXPECT_EQ(TileSuperType::TILE_SUPER_TYPE_WATER, air_tile.get_tile_super_type());
+}
+
 TEST(SW_World_Tiles_AirTile, serialization_id)
 {
   AirTile air_tile;

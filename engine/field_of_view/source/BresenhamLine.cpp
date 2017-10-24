@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <cmath>
+#include <cstdlib>
 #include "BresenhamLine.hpp"
 
 using std::swap;
@@ -8,7 +8,7 @@ using std::vector;
 vector<Coordinate> BresenhamLine::get_points_in_line(int y1, int x1, int y2, int x2)
 {
   vector<Coordinate> coords;
-  bool steep = abs(y2 - y1) > abs(x2 - x1);
+  bool steep = std::abs(y2 - y1) > std::abs(x2 - x1);
 
   if (steep)
   {
@@ -25,8 +25,8 @@ vector<Coordinate> BresenhamLine::get_points_in_line(int y1, int x1, int y2, int
     reverse_final_coords = true;
   }
 
-  int d_x = abs(x2 - x1);
-  int d_y = abs(y2 - y1);
+  int d_x = std::abs(x2 - x1);
+  int d_y = std::abs(y2 - y1);
 
   int err = d_x / 2;
 

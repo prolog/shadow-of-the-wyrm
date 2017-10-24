@@ -1,6 +1,28 @@
 #include "gtest/gtest.h"
 
-TEST(SW_World_Dice, max_dice_rolls)
+TEST(SW_World_Dice, min)
+{
+  Dice dice1(1,2,0);
+
+  EXPECT_EQ(1, dice1.min());
+
+  dice1.set_modifier(3);
+
+  EXPECT_EQ(4, dice1.min());
+}
+
+TEST(SW_World_Dice, avg)
+{
+  Dice dice1(6,6,0);
+
+  EXPECT_EQ(21, dice1.avg());
+
+  dice1.set_modifier(12);
+
+  EXPECT_EQ(33, dice1.avg());
+}
+
+TEST(SW_World_Dice, max)
 {
   Dice dice1(3, 4, 0);
 

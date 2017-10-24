@@ -9,7 +9,7 @@ bool GroundSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
 
   if (creature)
   {
-    if (creature->get_breathes() == BreatheType::BREATHE_TYPE_AIR)
+    if (creature->can_breathe(BreatheType::BREATHE_TYPE_AIR))
     {
       safe = true;
     }

@@ -7,7 +7,7 @@
 using namespace std;
 
 Trap::Trap() 
-: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol('?'), colour(Colour::COLOUR_WHITE)
+: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol('?'), colour(Colour::COLOUR_WHITE), effect(EffectType::EFFECT_TYPE_NULL)
 {
 }
 
@@ -23,6 +23,7 @@ bool Trap::operator==(const Trap& trap) const
   result = result && (colour == trap.colour);
   result = result && (item_id == trap.item_id);
   result = result && (damage == trap.damage);
+  result = result && (effect == trap.effect);
 
   return result;
 }
@@ -80,6 +81,12 @@ bool Trap::get_is_dangerous() const
 
 bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
+  // If the creature is flying, the trap won't be triggered on movement.
+  if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+  {
+    return false;
+  }
+
   bool apply_trap = true;
 
   // A successful detection check is required to not trigger a trap.
@@ -199,6 +206,16 @@ Damage Trap::get_damage() const
   return damage;
 }
 
+void Trap::set_effect(const EffectType new_effect)
+{
+  effect = new_effect;
+}
+
+EffectType Trap::get_effect() const
+{
+  return effect;
+}
+
 string Trap::get_description_sid() const
 {
   if (description_sid.empty())
@@ -224,6 +241,7 @@ bool Trap::serialize(std::ostream& stream) const
   Serialize::write_enum(stream, colour);
   Serialize::write_string(stream, item_id);
   damage.serialize(stream);
+  Serialize::write_enum(stream, effect);
 
   return result;
 }
@@ -241,6 +259,7 @@ bool Trap::deserialize(istream& stream)
   Serialize::read_enum(stream, colour);
   Serialize::read_string(stream, item_id);
   damage.deserialize(stream);
+  Serialize::read_enum(stream, effect);
 
   return result;
 }

@@ -1,3 +1,4 @@
+#include "AquaticVegetationTileConfiguration.hpp"
 #include "CairnTileConfiguration.hpp"
 #include "EvergreenTreeTileConfiguration.hpp"
 #include "FieldTileConfiguration.hpp"
@@ -24,7 +25,7 @@ TileConfigurationFactory::TileConfigurationFactory()
 // types.
 void TileConfigurationFactory::initialize_tile_configuration_map()
 {
-  static_assert(TileType::TILE_TYPE_LAST == TileType(50), "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(54), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   ITileConfigurationPtr field_config = std::make_shared<FieldTileConfiguration>(); 
   tile_configurations[static_cast<int>(TileType::TILE_TYPE_FIELD)] = field_config;
@@ -46,6 +47,9 @@ void TileConfigurationFactory::initialize_tile_configuration_map()
 
   ITileConfigurationPtr fruit_tree_config = std::make_shared<FruitTreeTileConfiguration>();
   tile_configurations[static_cast<int>(TileType::TILE_TYPE_FRUIT_TREE)] = fruit_tree_config;
+
+  ITileConfigurationPtr av_tile_config = std::make_shared<AquaticVegetationTileConfiguration>();
+  tile_configurations[static_cast<int>(TileType::TILE_TYPE_AQUATIC_VEGETATION)] = av_tile_config;
 
   // Now that the configurations have been created, loop over them
   // and initialize them.

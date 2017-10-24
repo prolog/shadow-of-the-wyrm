@@ -5,6 +5,7 @@
 #include "Conversion.hpp"
 #include "Map.hpp"
 #include "MapFactory.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "NullInventory.hpp"
 #include "Serialize.hpp"
@@ -86,6 +87,7 @@ bool Map::operator==(const Map& map) const
   result = result && (tile_transforms == map.tile_transforms);
   result = result && (preset_locations == map.preset_locations);
   result = result && (shops == map.shops);
+  result = result && (event_scripts == map.event_scripts);
 
   return result;
 }
@@ -238,6 +240,19 @@ void Map::remove_creature(const string& creature_id)
 void Map::set_tiles(const TilesContainer& new_tiles)
 {
   tiles = new_tiles;
+
+  if (map_type == MapType::MAP_TYPE_UNDERWATER)
+  {
+    for (auto& tile_pair : tiles)
+    {
+      TilePtr tile = tile_pair.second;
+
+      if (tile != nullptr)
+      {
+        tile->set_submerged(true);
+      }
+    }
+  }
 }
 
 bool Map::insert(int row, int col, TilePtr tile)
@@ -259,7 +274,12 @@ bool Map::insert(int row, int col, TilePtr tile)
     IInventoryPtr null_inv = std::make_shared<NullInventory>();
     tile->set_items(null_inv);
   }
-
+  // If this is an underwater map, turn on the submerged flag.
+  else if (map_type == MapType::MAP_TYPE_UNDERWATER)
+  {
+    tile->set_submerged(true);
+  }
+  
   tiles[key] = tile;
   return true;
 }
@@ -269,12 +289,12 @@ bool Map::insert(const Coordinate& c, TilePtr tile)
   return insert(c.first, c.second, tile);
 }
 
-TilePtr Map::at(int row, int col)
+TilePtr Map::at(int row, int col) const
 {
   string key = MapUtils::convert_coordinate_to_map_key(row, col);
   TilePtr tile;
 
-  TilesContainer::iterator t_it = tiles.find(key);
+  TilesContainer::const_iterator t_it = tiles.find(key);
   
   if (t_it != tiles.end())
   {
@@ -284,7 +304,7 @@ TilePtr Map::at(int row, int col)
   return tile;
 }
 
-TilePtr Map::at(const Coordinate& c)
+TilePtr Map::at(const Coordinate& c) const
 {
   return at(c.first, c.second);
 }
@@ -381,6 +401,16 @@ Coordinate Map::get_location(const string& location) const
   }
 
   return c;
+}
+
+pair<Coordinate, TilePtr> Map::get_location_and_tile(const std::string& creature_id) const
+{
+  pair<Coordinate, TilePtr> result_pair({0,0}, nullptr);
+
+  result_pair.first = get_location(creature_id);
+  result_pair.second = at(result_pair.first);
+
+  return result_pair;
 }
 
 map<string, Coordinate> Map::get_locations() const
@@ -506,6 +536,12 @@ void Map::set_properties(const map<string, string>& new_properties)
   properties = new_properties;
 }
 
+bool Map::has_property(const string& prop) const
+{
+  auto p_it = properties.find(prop);
+  return p_it != properties.end();
+}
+
 string Map::get_property(const string& prop) const
 {
   string val;
@@ -554,6 +590,25 @@ vector<Coordinate>& Map::get_preset_locations_ref()
   return preset_locations;
 }
 
+pair<Coordinate, Coordinate> Map::get_generation_coordinates() const
+{
+  Dimensions d = size();
+  pair<Coordinate, Coordinate> g_coords = std::make_pair(make_pair(0,0), make_pair(d.get_y()-1, d.get_x()-1));
+  string range = get_property(MapProperties::MAP_PROPERTIES_GENERATION_COORDINATES);
+
+  if (!range.empty())
+  {
+    vector<int> coord_v = String::create_int_vector_from_csv_string(range);
+
+    if (coord_v.size() == 4)
+    {
+      g_coords = {{coord_v[0], coord_v[1]}, {coord_v[2], coord_v[3]}};
+    }
+  }
+
+  return g_coords;
+}
+
 void Map::set_shops(const map<string, Shop>& new_shops)
 {
   shops = new_shops;
@@ -567,6 +622,59 @@ map<string, Shop>& Map::get_shops_ref()
 map<string, Shop> Map::get_shops() const
 {
   return shops;
+}
+
+void Map::clear_event_scripts()
+{
+  event_scripts.clear();
+}
+
+void Map::set_event_scripts(const EventScriptsMap& esm)
+{
+  event_scripts = esm;
+}
+
+EventScriptsMap Map::get_event_scripts() const
+{
+  return event_scripts;
+}
+
+EventScriptsMap& Map::get_event_scripts_ref()
+{
+  return event_scripts;
+}
+
+void Map::add_event_script(const string& event_name, const ScriptDetails& sd)
+{
+  event_scripts[event_name] = sd;
+}
+
+bool Map::has_event_script(const string& event_name)
+{
+  bool has_event = false;
+
+  EventScriptsMap::iterator e_it = event_scripts.find(event_name);
+
+  if (e_it != event_scripts.end())
+  {
+    has_event = true;
+  }
+
+  return has_event;
+}
+
+ScriptDetails Map::get_event_script(const string& event_name) const
+{
+  ScriptDetails sd;
+
+  EventScriptsMap::const_iterator e_it = event_scripts.find(event_name);
+
+  if (e_it != event_scripts.end())
+  {
+    sd = e_it->second;
+  }
+
+  return sd;
 }
 
 bool Map::serialize(ostream& stream) const
@@ -663,6 +771,8 @@ bool Map::serialize(ostream& stream) const
     Serialize::write_string(stream, shop_pair.first);
     shop_pair.second.serialize(stream);
   }
+
+  Serialize::write_event_scripts(stream, event_scripts);
 
   return true;
 }
@@ -819,6 +929,8 @@ bool Map::deserialize(istream& stream)
 
     shops[shop_id] = shop;
   }
+
+  Serialize::read_event_scripts(stream, event_scripts);
 
   return true;
 }

@@ -6,6 +6,8 @@ class TimewalkStatusEffect : public StatusEffect
   public:
     TimewalkStatusEffect();
 
+    virtual bool is_negative() const override;
+
   protected:
     virtual std::string get_player_application_message() const override;
     virtual std::string get_player_undo_message() const override;

@@ -100,6 +100,25 @@ string CombatTextKeys::get_vorpal_message(const bool attacker_is_player, const b
   return vorpal_msg;
 }
 
+string CombatTextKeys::get_explosive_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target)
+{
+  pair<string, string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, target);
+  string app_attack = attacker_and_target.first;
+  string app_target = attacker_and_target.second;
+
+  string explosive_msg = StringTable::get(CombatTextKeys::COMBAT_EXPLOSIVE_MESSAGE_NP);
+
+  if (attacked_is_player)
+  {
+    explosive_msg = StringTable::get(CombatTextKeys::COMBAT_EXPLOSIVE_MESSAGE);
+  }
+
+  boost::replace_first(explosive_msg, "%s", app_target);
+  explosive_msg[0] = toupper(explosive_msg[0]);
+
+  return explosive_msg;
+}
+
 string CombatTextKeys::get_drain_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target)
 {
   pair<string, string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, target);
@@ -155,6 +174,36 @@ string CombatTextKeys::get_incorporeal_attack_message(const bool attacker_is_pla
   incorp_msg[0] = toupper(incorp_msg[0]);
 
   return incorp_msg;
+}
+
+string CombatTextKeys::get_counter_message(const bool is_player, const string& desc)
+{
+  string counter_message = StringTable::get(COMBAT_COUNTER_MESSAGE);
+  auto counter = get_appropriate_attacker_and_target(is_player, is_player, desc, desc);
+
+  if (!is_player)
+  {
+    counter_message = StringTable::get(COMBAT_COUNTER_MESSAGE_NP);
+    boost::replace_first(counter_message, "%s", counter.first);
+  }
+
+  counter_message[0] = toupper(counter_message[0]);
+  return counter_message;
+}
+
+string CombatTextKeys::get_scything_message(const bool is_player, const string& attacker)
+{
+  string scything_message = StringTable::get(COMBAT_SCYTHING_MESSAGE);
+  auto scything = get_appropriate_attacker_and_target(is_player, is_player, attacker, attacker);
+
+  if (!is_player)
+  {
+    scything_message = StringTable::get(COMBAT_SCYTHING_MESSAGE_NP);
+    boost::replace_first(scything_message, "%s", scything.first);
+  }
+
+  scything_message[0] = toupper(scything_message[0]);
+  return scything_message;
 }
 
 string CombatTextKeys::get_miss_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& miss_target)
@@ -437,12 +486,18 @@ const string CombatTextKeys::COMBAT_PIERCE_MESSAGE         = "COMBAT_PIERCE_MESS
 const string CombatTextKeys::COMBAT_PIERCE_MESSAGE_NP      = "COMBAT_PIERCE_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_VORPAL_MESSAGE         = "COMBAT_VORPAL_MESSAGE";
 const string CombatTextKeys::COMBAT_VORPAL_MESSAGE_NP      = "COMBAT_VORPAL_MESSAGE_NP";
+const string CombatTextKeys::COMBAT_EXPLOSIVE_MESSAGE      = "COMBAT_EXPLOSIVE_MESSAGE";
+const string CombatTextKeys::COMBAT_EXPLOSIVE_MESSAGE_NP   = "COMBAT_EXPLOSIVE_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_DRAIN_MESSAGE          = "COMBAT_DRAIN_MESSAGE";
 const string CombatTextKeys::COMBAT_DRAIN_MESSAGE_NP       = "COMBAT_DRAIN_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_ETHEREAL_MESSAGE       = "COMBAT_ETHEREAL_MESSAGE";
 const string CombatTextKeys::COMBAT_ETHEREAL_MESSAGE_NP    = "COMBAT_ETHEREAL_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_INCORPOREAL_MESSAGE    = "COMBAT_INCORPOREAL_MESSAGE";
 const string CombatTextKeys::COMBAT_INCORPOREAL_MESSAGE_NP = "COMBAT_INCORPOREAL_MESSAGE_NP";
+const string CombatTextKeys::COMBAT_COUNTER_MESSAGE        = "COMBAT_COUNTER_MESSAGE";
+const string CombatTextKeys::COMBAT_COUNTER_MESSAGE_NP     = "COMBAT_COUNTER_MESSAGE_NP";
+const string CombatTextKeys::COMBAT_SCYTHING_MESSAGE       = "COMBAT_SCYTHING_MESSAGE";
+const string CombatTextKeys::COMBAT_SCYTHING_MESSAGE_NP    = "COMBAT_SCYTHING_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAGE";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE_NP        = "COMBAT_MISS_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_CRITICAL_HIT_MESSAGE   = "COMBAT_CRITICAL_HIT_MESSAGE";

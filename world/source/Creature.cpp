@@ -49,7 +49,7 @@ Creature::Creature()
   willpower.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
   charisma.set_max(CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE);
 
-  Damage dam(1, 2, 0, DamageType::DAMAGE_TYPE_POUND, {}, false, false, false, false, false, false, 0, {});
+  Damage dam(1, 2, 0, DamageType::DAMAGE_TYPE_POUND, {}, false, false, false, false, false, false, false, false, 0, {});
   set_base_damage(dam);
 
   intrinsic_resistances.set_all_resistances_to(0);
@@ -396,9 +396,31 @@ void Creature::set_breathes(const BreatheType new_breathes)
   breathes = new_breathes;
 }
 
-BreatheType Creature::get_breathes() const
+BreatheType Creature::get_base_breathes() const
 {
   return breathes;
+}
+
+vector<BreatheType> Creature::get_breathes() const
+{
+  vector<BreatheType> btypes = {breathes};
+
+  if (breathes != BreatheType::BREATHE_TYPE_WATER && has_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING))
+  {
+    btypes.push_back(BreatheType::BREATHE_TYPE_WATER);
+  }
+  
+  return btypes;
+}
+
+bool Creature::can_breathe(const BreatheType btype) const
+{
+  if (btype == breathes || (btype == BreatheType::BREATHE_TYPE_WATER && has_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING)))
+  {
+    return true;
+  }
+
+  return false;
 }
 
 void Creature::set_blood(const Blood& new_blood)
@@ -843,6 +865,24 @@ void Creature::set_items_paid()
   }
 }
 
+// After a creature identifies items, or blesses something, or whatever, the
+// inventory needs to be restacked so that items form the appropriate groups.
+void Creature::restack_items()
+{
+  IInventoryPtr new_items = std::make_shared<Inventory>();
+  list<ItemPtr> raw_items = inventory->get_items_ref();
+
+  for (ItemPtr i : raw_items)
+  {
+    if (i != nullptr)
+    {
+      new_items->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+    }
+  }
+
+  inventory = new_items;
+}
+
 void Creature::set_hit_points(const Statistic& new_hit_points)
 {
   hit_points = new_hit_points;
@@ -878,6 +918,11 @@ bool Creature::is_hp_full() const
 bool Creature::is_ap_full() const
 {
   return (arcana_points.get_base() <= arcana_points.get_current());
+}
+
+bool Creature::is_dead() const
+{
+  return (hit_points.get_current() <= 0);
 }
 
 void Creature::set_arcana_points(const Statistic& new_arcana_points)
@@ -1181,6 +1226,11 @@ EventScriptsMap Creature::get_event_scripts() const
   return event_scripts;
 }
 
+EventScriptsMap& Creature::get_event_scripts_ref()
+{
+  return event_scripts;
+}
+
 void Creature::add_event_script(const string& event_name, const ScriptDetails& sd)
 {
   event_scripts[event_name] = sd;
@@ -1394,7 +1444,7 @@ void Creature::assert_size() const
     #endif
   #else // gcc toolchain
   // Works for gcc in release
-  static_assert(sizeof(*this) == 2120, "Unexpected sizeof Creature.");
+  static_assert(sizeof(*this) == 2120 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
   #endif
 }
 
@@ -1572,13 +1622,7 @@ bool Creature::serialize(ostream& stream) const
     }
   }
 
-  size_t es_size = event_scripts.size();
-  Serialize::write_size_t(stream, es_size);
-  for (const auto& es_pair : event_scripts)
-  {
-    Serialize::write_string(stream, es_pair.first);
-    es_pair.second.serialize(stream);
-  }
+  Serialize::write_event_scripts(stream, event_scripts);
 
   auto_move.serialize(stream);
 
@@ -1730,19 +1774,7 @@ bool Creature::deserialize(istream& stream)
     }
   }
 
-  size_t es_size = 0;
-  Serialize::read_size_t(stream, es_size);
-
-  for (size_t i = 0; i < es_size; i++)
-  {
-    string event_name;
-    ScriptDetails sd;
-
-    Serialize::read_string(stream, event_name);
-    sd.deserialize(stream);
-
-    event_scripts.insert(make_pair(event_name, sd));
-  }
+  Serialize::read_event_scripts(stream, event_scripts);
 
   auto_move.deserialize(stream);
 

@@ -8,8 +8,12 @@ GoodAltarManipulator::GoodAltarManipulator(FeaturePtr feature)
 {
 }
 
-void GoodAltarManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+string GoodAltarManipulator::get_creature_action_key() const
 {
-  Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_DESECRATE_GOOD, false);
+  return CreatureActionKeys::ACTION_DESECRATE_GOOD;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/GoodAltarManipulator_test.cpp"
+#endif
 

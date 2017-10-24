@@ -260,6 +260,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.inscribe(creature);
       }
+      else if (command_name == CommandKeys::TOGGLE_AUTOPICKUP)
+      {
+        ac = game.actions.autopickup(creature);
+      }
       else if (command_name == CommandKeys::BREED)
       {
         ac = game.actions.breed(creature);

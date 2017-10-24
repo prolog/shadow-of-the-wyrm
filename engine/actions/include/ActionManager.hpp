@@ -131,6 +131,9 @@ class ActionManager : public ISerializable
     // Inscribe something on the current tile.
     ActionCost inscribe(CreaturePtr creature);
 
+    // Toggle autopickup on or off.
+    ActionCost autopickup(CreaturePtr creature);
+
     // Breed by spawning into an adjacent tile
     ActionCost breed(CreaturePtr creature);
 

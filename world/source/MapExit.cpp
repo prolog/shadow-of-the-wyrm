@@ -18,6 +18,8 @@ bool MapExit::operator==(const MapExit& me) const
 
   result = result && (map_id == me.map_id);
   result = result && (terrain_type == me.terrain_type);
+  result = result && (properties == me.properties);
+  result = result && (event_scripts == me.event_scripts);
 
   return result;
 }
@@ -52,10 +54,94 @@ bool MapExit::is_using_terrain_type() const
   return (!is_using_map_id() && terrain_type != TileType::TILE_TYPE_UNDEFINED);
 }
 
+void MapExit::set_property(const string& prop, const string& val)
+{
+  properties[prop] = val;
+}
+
+string MapExit::get_property(const string& prop) const
+{
+  string val;
+
+  auto p_it = properties.find(prop);
+  if (p_it != properties.end())
+  {
+    val = p_it->second;
+  }
+
+  return val;
+}
+
+bool MapExit::has_property(const string& prop) const
+{
+  auto p_it = properties.find(prop);
+  return (p_it != properties.end());
+}
+
+map<string, string> MapExit::get_properties() const
+{
+  return properties;
+}
+
+void MapExit::clear_event_scripts()
+{
+  event_scripts.clear();
+}
+
+void MapExit::set_event_scripts(const EventScriptsMap& esm)
+{
+  event_scripts = esm;
+}
+
+EventScriptsMap MapExit::get_event_scripts() const
+{
+  return event_scripts;
+}
+
+EventScriptsMap& MapExit::get_event_scripts_ref()
+{
+  return event_scripts;
+}
+
+void MapExit::add_event_script(const string& event_name, const ScriptDetails& sd)
+{
+  event_scripts[event_name] = sd;
+}
+
+bool MapExit::has_event_script(const string& event_name)
+{
+  bool has_event = false;
+
+  EventScriptsMap::iterator e_it = event_scripts.find(event_name);
+
+  if (e_it != event_scripts.end())
+  {
+    has_event = true;
+  }
+
+  return has_event;
+}
+
+ScriptDetails MapExit::get_event_script(const string& event_name) const
+{
+  ScriptDetails sd;
+
+  EventScriptsMap::const_iterator e_it = event_scripts.find(event_name);
+
+  if (e_it != event_scripts.end())
+  {
+    sd = e_it->second;
+  }
+
+  return sd;
+}
+
 bool MapExit::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, map_id);
   Serialize::write_enum(stream, terrain_type);
+  Serialize::write_string_map(stream, properties);
+  Serialize::write_event_scripts(stream, event_scripts);
 
   return true;
 }
@@ -64,6 +150,8 @@ bool MapExit::deserialize(istream& stream)
 {
   Serialize::read_string(stream, map_id);
   Serialize::read_enum(stream, terrain_type);
+  Serialize::read_string_map(stream, properties);
+  Serialize::read_event_scripts(stream, event_scripts);
 
   return true;
 }

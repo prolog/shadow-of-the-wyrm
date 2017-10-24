@@ -7,6 +7,7 @@ using namespace std;
 // Set the bare defaults for each race.
 Race::Race()
 : user_playable(false)
+, slayable(false)
 , leaves_corpse(true)
 , corpse_poisoned(false)
 , splits(false)
@@ -75,6 +76,16 @@ void Race::set_user_playable(const bool playable)
 bool Race::get_user_playable() const
 {
   return user_playable;
+}
+
+void Race::set_slayable(const bool new_slayable)
+{
+  slayable = new_slayable;
+}
+
+bool Race::get_slayable() const
+{
+  return slayable;
 }
 
 void Race::set_leaves_corpse(const bool new_leaves_corpse)
@@ -362,6 +373,16 @@ void Race::set_flying(const BoolStatistic& new_flying)
 BoolStatistic Race::get_flying() const
 {
   return flying;
+}
+
+void Race::set_water_breathing(const BoolStatistic& new_water_breathing)
+{
+  water_breathing = new_water_breathing;
+}
+
+BoolStatistic Race::get_water_breathing() const
+{
+  return water_breathing;
 }
 
 void Race::set_experience_multiplier(const float new_experience_multiplier)

@@ -1,9 +1,10 @@
 #pragma once
 #include "Deity.hpp"
+#include "XMLReader.hpp"
 
 class XMLNode;
 
-class XMLDeitiesReader
+class XMLDeitiesReader : public XMLReader
 {
   public:
     DeityMap get_deities(const XMLNode& xml_configuration_deities_node);

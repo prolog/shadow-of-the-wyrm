@@ -14,6 +14,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_ALLOWS_RANDOM_DROPS;
     static const std::string CREATURE_PROPERTIES_STOLEN_FROM;
     static const std::string CREATURE_PROPERTIES_WINNER;
+    static const std::string CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS;
 
   protected:
     CreatureProperties();

@@ -9,6 +9,11 @@ SatedStatusEffect::SatedStatusEffect()
 {
 }
 
+bool SatedStatusEffect::is_negative() const
+{
+  return false;
+}
+
 string SatedStatusEffect::get_player_application_message() const
 {
   string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SATED);

@@ -1,6 +1,6 @@
 #include "Commands.hpp"
 #include "CommandKeys.hpp"
-#include "Conversion.hpp"
+#include "EngineConversion.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
@@ -508,6 +508,16 @@ InscribeCommand::InscribeCommand(int key)
 }
 
 InscribeCommand::~InscribeCommand()
+{
+}
+
+// Turn autopickup on or off.
+ToggleAutopickupCommand::ToggleAutopickupCommand(int key)
+: Command(CommandKeys::TOGGLE_AUTOPICKUP, key)
+{
+}
+
+ToggleAutopickupCommand::~ToggleAutopickupCommand()
 {
 }
 

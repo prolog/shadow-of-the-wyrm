@@ -16,6 +16,8 @@
 #include "ItemIdentifier.hpp"
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"
+#include "MapProperties.hpp"
+#include "MapScript.hpp"
 #include "MessageManagerFactory.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
@@ -162,6 +164,9 @@ void ShadowOfTheWyrmEngine::setup_game()
   game.set_items(items.first);
   game.set_item_generation_values(items.second);
 
+  FeatureMap basic_features = reader.get_basic_features();
+  game.set_basic_features(basic_features);
+
   // Randomize the items after reading them!  Otherwise, if any potions, etc.,
   // are generated e.g. during custom map initialization, they will always have
   // the same descriptions.
@@ -200,6 +205,9 @@ void ShadowOfTheWyrmEngine::setup_game()
   // This switches files/namespaces - so should be last.
   vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
   game.set_custom_maps(custom_maps);
+
+  // Run any scripts associated with the custom maps.
+  run_map_scripts();
 
   // Set up the message manager also.
   IMessageManager& manager = MM::instance();
@@ -277,7 +285,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   Game& game = Game::instance();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
     
-  DeityMap deities = game.get_deities_ref();
+  DeityMap deities = game.get_deities_cref();
   RaceMap  races   = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
   
@@ -444,7 +452,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 
   RaceMap  races = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
-  DeityMap deities = game.get_deities_ref();
+  DeityMap deities = game.get_deities_cref();
 
   RacePtr selected_race = races.at(ccd.get_race_id());
   ClassPtr selected_class = classes.at(ccd.get_class_id());
@@ -492,6 +500,8 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   CreatureFactory cf;
   CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), ccd.get_race_id(), ccd.get_class_id(), name, ccd.get_sex(), ccd.get_deity_id());
   player->set_is_player(true, controller);
+
+  setup_autopickup_settings(player);
 
   // Identify the player's equipment and inventory.  If any equipment is
   // cursed, make it uncursed.
@@ -549,6 +559,8 @@ bool ShadowOfTheWyrmEngine::process_load_game()
     }
   }
 
+  // JCD TODO: Add support for additional reloadable settings here.
+  // E.g., autopickup
   Settings kb_settings(true);
   map<string, string> keybinding_settings = kb_settings.get_keybindings();
 
@@ -574,6 +586,8 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
   Settings& settings = game.get_settings_ref();
   string max_chars = settings.get_setting(Setting::MAX_CHARACTERS_PER_USER);
   bool username_is_character_name = String::to_bool(settings.get_setting(Setting::USERNAME_IS_CHARACTER_NAME));
+  bool single_user_mode = settings.get_setting_as_bool(Setting::SINGLE_USER_MODE);
+
   int num_allowed = -1;
 
   if (!max_chars.empty())
@@ -590,7 +604,7 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
   {
     // Get a list of savefiles for the user, and then see if the limit's been
     // reached, adding an alert if it has.
-    vector<pair<string, string>> savefile_details = Serialization::get_save_file_names();
+    vector<pair<string, string>> savefile_details = Serialization::get_save_file_names(single_user_mode);
     size_t num_savefiles = savefile_details.size();
 
     if (num_savefiles >= static_cast<size_t>(num_allowed) || (num_savefiles > 0 && username_is_character_name))
@@ -601,4 +615,62 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
   }
 
   return allowed;
+}
+
+void ShadowOfTheWyrmEngine::setup_autopickup_settings(CreaturePtr player)
+{
+  if (player != nullptr)
+  {
+    Game& game = Game::instance();
+    Settings& settings = game.get_settings_ref();
+    bool autopickup = settings.get_setting_as_bool(Setting::AUTOPICKUP);
+    vector<string> auto_types_s = String::create_string_vector_from_csv_string(settings.get_setting(Setting::AUTOPICKUP_TYPES));
+    set<ItemType> itypes;
+
+    for (const auto& it_s : auto_types_s)
+    {
+      if (!it_s.empty())
+      {
+        ItemType it = static_cast<ItemType>(String::to_int(it_s));
+        itypes.insert(it);
+      }
+    }
+
+    DecisionStrategyPtr dec = player->get_decision_strategy();
+    if (dec != nullptr)
+    {
+      dec->set_autopickup(autopickup);
+      dec->set_autopickup_types(itypes);
+    }
+  }
+}
+
+void ShadowOfTheWyrmEngine::run_map_scripts()
+{
+  Game& game = Game::instance();
+
+  // After the custom maps have been set into the registry, we need to run
+  // any custom load scripts on the maps.
+  MapRegistryMap& mrm = game.get_map_registry_ref().get_maps_ref();
+  for (const auto& mrm_pair : mrm)
+  {
+    MapPtr map = mrm_pair.second;
+    string load_script;
+
+    EventScriptsMap esm = map->get_event_scripts();
+    auto esm_it = esm.find(MapEventScripts::MAP_EVENT_SCRIPT_CREATE);
+
+    if (esm_it != esm.end())
+    {
+      ScriptDetails sd = esm_it->second;
+      ScriptEngine& se = Game::instance().get_script_engine_ref();
+      MapScript ms;
+
+      if (RNG::percent_chance(sd.get_chance()))
+      {
+        // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
+        ms.execute(se, sd.get_script(), map);
+      }
+    }
+  }
 }

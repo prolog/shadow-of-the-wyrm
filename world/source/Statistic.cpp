@@ -31,15 +31,15 @@ bool Statistic::operator==(const Statistic& stat) const
   return result;
 }
 
-void Statistic::set_base_current(int new_base_and_current)
+void Statistic::set_base_current(int new_base_and_current, const SetStatisticFailure ssf)
 {
-  set_base(new_base_and_current);
-  set_current(new_base_and_current);
+  set_base(new_base_and_current, ssf);
+  set_current(new_base_and_current, ssf);
 }
 
 // Get and set the base value of the statistic.  The base value can't
 // go below 0, though the current can.
-void Statistic::set_base(int new_base)
+void Statistic::set_base(int new_base, const SetStatisticFailure ssf)
 {
   if (max == -1 || new_base <= max)
   {
@@ -47,6 +47,10 @@ void Statistic::set_base(int new_base)
     {
       base = new_base;
     }
+  }
+  else if (new_base > max && ssf == SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST)
+  {
+    base = max;
   }
 }
 
@@ -56,11 +60,15 @@ int Statistic::get_base() const
 }
 
 // Get and set the current value of the statistic.
-void Statistic::set_current(int new_current)
+void Statistic::set_current(int new_current, const SetStatisticFailure ssf)
 {
   if (max == -1 || new_current <= max)
   {
     current = new_current;
+  }
+  else if (new_current > max && ssf == SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST)
+  {
+    current = max;
   }
 }
 

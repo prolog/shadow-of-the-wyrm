@@ -3,13 +3,16 @@
 #include "ActionTextKeys.hpp"
 #include "AlignmentCalculator.hpp"
 #include "ClassManager.hpp"
+#include "Conversion.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
+#include "DeityTextKeys.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemPietyCalculator.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ReligionManager.hpp"
@@ -35,11 +38,25 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
     MapPtr current_map = game.get_current_map();
     TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
     FeaturePtr feature = tile->get_feature();
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-    // On an altar - pick an item to sacrifice
-    if (tile && feature && feature->can_offer())
+    if (String::to_bool(current_map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY)))
     {
-      acv = sacrifice_item(creature, tile, feature, am);
+      manager.add_new_message(StringTable::get(DeityTextKeys::DEITY_CANNOT_PRAY));
+      manager.send();
+    }
+    // On an altar - pick an item to sacrifice as long as there are still gods.
+    else if (tile && feature && feature->can_offer())
+    {
+      if (!game.get_deities_cref().empty())
+      {
+        acv = sacrifice_item(creature, tile, feature, am);
+      }
+      else
+      {
+        manager.add_new_message(StringTable::get(SacrificeTextKeys::SACRIFICE_NO_DEITIES));
+        manager.send();
+      }
     }
     else
     {

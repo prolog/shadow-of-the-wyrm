@@ -8,6 +8,7 @@
 #include "ISerializable.hpp"
 #include "MapExit.hpp"
 #include "MapTypes.hpp"
+#include "ScriptDetails.hpp"
 #include "Shop.hpp"
 #include "Tile.hpp"
 #include "TileTransform.hpp"
@@ -53,8 +54,8 @@ class Map : public ISerializable
 		bool insert(int row, int col, std::shared_ptr<Tile> tile);
     bool insert(const Coordinate& c, std::shared_ptr<Tile> tile);
 
-		std::shared_ptr<Tile> at(int row, int col);
-		std::shared_ptr<Tile> at(const Coordinate& c);
+		std::shared_ptr<Tile> at(int row, int col) const;
+		std::shared_ptr<Tile> at(const Coordinate& c) const;
 
     void set_name_sid(const std::string& new_name_sid);
     std::string get_name_sid() const;
@@ -83,6 +84,7 @@ class Map : public ISerializable
     void remove_location(const std::string& location);
     bool has_location(const std::string& location);
     Coordinate get_location(const std::string& location) const;
+    std::pair<Coordinate, std::shared_ptr<Tile>> get_location_and_tile(const std::string& location) const;
     std::map<std::string, Coordinate> get_locations() const;
     std::shared_ptr<Tile> get_tile_at_location(const std::string& location);
     
@@ -112,6 +114,7 @@ class Map : public ISerializable
     void set_property(const std::string& prop, const std::string& value);
     bool remove_property(const std::string& prop);
     void set_properties(const std::map<std::string, std::string>& new_properties);
+    bool has_property(const std::string& prop) const;
     std::string get_property(const std::string& prop) const;
     std::map<std::string, std::string> get_properties() const;
 
@@ -123,10 +126,24 @@ class Map : public ISerializable
     std::vector<Coordinate> get_preset_locations() const;
     std::vector<Coordinate>& get_preset_locations_ref();
 
+    // Returns the range over which creatures and items
+    // can be generated.  Usually ranges from (0,0) to
+    // (row-1,col-1) but this may change depending on the
+    // value set by the generator, as an additional property.
+    std::pair<Coordinate, Coordinate> get_generation_coordinates() const;
+
     void set_shops(const std::map<std::string, Shop>& new_shops);
     std::map<std::string, Shop>& get_shops_ref();
     std::map<std::string, Shop> get_shops() const;
     
+    void clear_event_scripts();
+    void set_event_scripts(const EventScriptsMap& esm);
+    EventScriptsMap get_event_scripts() const;
+    EventScriptsMap& get_event_scripts_ref();
+    void add_event_script(const std::string& event_name, const ScriptDetails& sd);
+    bool has_event_script(const std::string& event_name);
+    ScriptDetails get_event_script(const std::string& event_name) const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -159,6 +176,7 @@ class Map : public ISerializable
     TileTransformContainer tile_transforms;
     std::vector<Coordinate> preset_locations; // used for generating creatures onto specific locations
     std::map<std::string, Shop> shops;
+    EventScriptsMap event_scripts;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

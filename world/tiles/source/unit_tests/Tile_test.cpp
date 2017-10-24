@@ -1,5 +1,8 @@
+#include "Amulet.hpp"
 #include "DungeonTile.hpp"
 #include "gtest/gtest.h"
+#include "RockTile.hpp"
+#include "RockyEarthTile.hpp"
 #include "TileGenerator.hpp"
 
 TEST(SW_World_Tiles_Tile, correct_inventory_type)
@@ -12,9 +15,13 @@ TEST(SW_World_Tiles_Tile, correct_inventory_type)
                                                              {TileSuperType::TILE_SUPER_TYPE_UNDEFINED, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
 
   // But, there are exceptions.  Items fall down wells, for example.
+  // And things normally "drop through" water except when we're at the
+  // bottom of an ocean, or in a patch of aquatic vegetation.
   std::map<TileType, ClassIdentifier> tt_exceptions({{TileType::TILE_TYPE_WELL, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
                                                      {TileType::TILE_TYPE_ROCK, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
-                                                     {TileType::TILE_TYPE_EARTH, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
+                                                     {TileType::TILE_TYPE_EARTH, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
+                                                     {TileType::TILE_TYPE_SEABED, ClassIdentifier::CLASS_ID_INVENTORY},
+                                                     {TileType::TILE_TYPE_AQUATIC_VEGETATION, ClassIdentifier::CLASS_ID_INVENTORY}});
   TileGenerator tg;
 
   for (int i = static_cast<int>(TileType::TILE_TYPE_FIRST); i < static_cast<int>(TileType::TILE_TYPE_LAST); i++)
@@ -38,6 +45,21 @@ TEST(SW_World_Tiles_Tile, correct_inventory_type)
 
     EXPECT_EQ(expected_value, tile->get_items()->get_class_identifier());
   }
+}
+
+// Ensure that when a tile is transformed from a tile with a null inventory,
+// that the null inventory is not carried over from the old tile.
+TEST(SW_World_Tiles_Tile, transform_from_solid_rock_inventory)
+{
+  TilePtr rock_tile = std::make_shared<RockTile>();
+  TilePtr earth_tile = std::make_shared<RockyEarthTile>();
+
+  earth_tile->transform_from(rock_tile);
+  
+  ItemPtr amulet = std::make_shared<Amulet>();
+  earth_tile->get_items()->add_front(amulet);
+
+  EXPECT_EQ(1, earth_tile->get_items()->count_items());
 }
 
 TEST(SW_World_Tiles_Tile, extra_desc_sids)
@@ -76,6 +98,30 @@ TEST(SW_World_Tiles_Tile, illuminated)
   tile.set_illuminated(true);
 
   EXPECT_TRUE(tile.get_illuminated());
+}
+
+TEST(SW_World_Tiles_Tile, has_race_restrictions)
+{
+  DungeonTile dt;
+
+  EXPECT_FALSE(dt.has_race_restrictions());
+
+  dt.set_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_RACES, "trash_panda");
+
+  EXPECT_TRUE(dt.has_race_restrictions());
+}
+
+TEST(SW_World_Tiles_Tile, is_race_allowed)
+{
+  DungeonTile dt;
+
+  EXPECT_TRUE(dt.is_race_allowed("some_race"));
+  EXPECT_TRUE(dt.is_race_allowed("some_other_race_since_there_are_no_restrictions_yet"));
+
+  dt.set_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_RACES, "trash_panda");
+
+  EXPECT_FALSE(dt.is_race_allowed("some_race"));
+  EXPECT_TRUE(dt.is_race_allowed("trash_panda"));
 }
 
 TEST(SW_World_Tiles_Tile, explored)

@@ -34,18 +34,15 @@ class MovementAction : public IActionManager
     // move on to the map.
     ActionCostValue handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map);
     // Generate a new map, and move to it - staircases, etc.
-    ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const int depth_increment = 0);
-    ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const int depth_increment = 0);
+    ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const ExitMovementType emt = ExitMovementType::EXIT_MOVEMENT_DESCEND);
+    ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt = ExitMovementType::EXIT_MOVEMENT_DESCEND);
     void add_initial_map_messages(CreaturePtr creature, MapPtr map, const TileType tile_type);
 
     // Handle attempting to move on to a tile where there is a creature present.
     ActionCostValue handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map, const Coordinate& new_coords, const Direction d);
     MovementThroughTileType get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature, TilePtr creatures_new_tile);
 
-    void add_tile_related_messages(const CreaturePtr& creature, TilePtr tile);
     void add_cannot_escape_message(const CreaturePtr& creature);
-    bool add_message_about_tile_if_necessary(const CreaturePtr& creature, TilePtr tile);
-    bool add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, TilePtr tile);
     void move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map);
     void handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit);
     bool confirm_move_to_tile_if_necessary(CreaturePtr creature, TilePtr creatures_old_tile, TilePtr creatures_new_tile);

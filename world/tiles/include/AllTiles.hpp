@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AirTile.hpp"
+#include "AquaticVegetationTile.hpp"
 #include "BarracksTile.hpp"
 #include "BarrowTile.hpp"
 #include "BeachTile.hpp"
@@ -24,6 +25,7 @@
 #include "KeepTile.hpp"
 #include "LibraryTile.hpp"
 #include "HillsTile.hpp"
+#include "FloatingTowerTile.hpp"
 #include "MarshTile.hpp"
 #include "MineTile.hpp"
 #include "MountainsTile.hpp"
@@ -34,6 +36,7 @@
 #include "RockTile.hpp"
 #include "ScrubTile.hpp"
 #include "SeaTile.hpp"
+#include "SeabedTile.hpp"
 #include "SewerComplexTile.hpp"
 #include "SewerTile.hpp"
 #include "ShoalsTile.hpp"
@@ -48,6 +51,7 @@
 #include "TreeTile.hpp"
 #include "WeedsTile.hpp"
 #include "VillageTile.hpp"
+#include "VoidTile.hpp"
 #include "WellTile.hpp"
 #include "WheatTile.hpp"
 #include "WorshipSiteTile.hpp"

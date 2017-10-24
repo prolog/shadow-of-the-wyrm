@@ -44,3 +44,23 @@ vector<string> LuaUtils::get_string_array_from_table(lua_State* ls, int lua_inde
 
   return str_array;
 }
+
+void LuaUtils::set_field(lua_State* ls, const char* name, const bool val)
+{
+  if (ls != nullptr)
+  {
+    lua_pushstring(ls, name);
+    lua_pushboolean(ls, val);
+    lua_settable(ls, -3);
+  }
+}
+
+void LuaUtils::set_field(lua_State* ls, const char* name, const int val)
+{
+  if (ls != nullptr)
+  {
+    lua_pushstring(ls, name);
+    lua_pushinteger(ls, val);
+    lua_settable(ls, -3);
+  }
+}

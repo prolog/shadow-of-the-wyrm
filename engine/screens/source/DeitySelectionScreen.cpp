@@ -24,7 +24,7 @@ void DeitySelectionScreen::initialize()
   if (race)
   {
     Game& game_instance = Game::instance();
-    DeityMap deities = game_instance.get_deities_ref();
+    DeityMap deities = game_instance.get_deities_cref();
     vector<string> deity_ids = race->get_initial_deity_ids();
     ostringstream synop;
 

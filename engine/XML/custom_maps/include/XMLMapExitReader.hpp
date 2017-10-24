@@ -1,12 +1,16 @@
 #pragma once
 #include "Map.hpp"
 #include "XMLDataStructures.hpp"
+#include "XMLReader.hpp"
 
 // A class for reading in map exits on custom maps.
-class XMLMapExitReader
+class XMLMapExitReader : public XMLReader
 {
   public:
     void parse_exits(const XMLNode& exits_node, MapPtr map);
-    void parse_exit(const XMLNode& exit_node, MapPtr map);    
+    void parse_exit(const XMLNode& exit_node, MapPtr map);
+
+  protected:
+    void parse_depth_details(const XMLNode& exit_node, MapExitPtr map_exit);
 };
 

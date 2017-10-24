@@ -35,7 +35,6 @@
 class DecisionStrategy;
 
 using TargetMap = std::map<std::string, std::pair<std::string, Coordinate>>;
-using EventScriptsMap = std::map<std::string, ScriptDetails>;
 using CreatureStatusMap = std::map<std::string, Status>;
 
 class Creature : public ISerializable
@@ -95,7 +94,12 @@ class Creature : public ISerializable
     Handedness get_off_handedness() const;
     
     void set_breathes(const BreatheType new_breathes);
-    BreatheType get_breathes() const;
+    BreatheType get_base_breathes() const;
+
+    // Get everything that the creature can currently breathe - include water 
+    // if the creature has the water breathing status.
+    std::vector<BreatheType> get_breathes() const; 
+    bool can_breathe(const BreatheType btype) const;
 
     void set_blood(const Blood& new_blood);
     Blood get_blood() const;
@@ -183,6 +187,7 @@ class Creature : public ISerializable
     uint count_items() const;
     uint get_unpaid_amount() const;
     void set_items_paid();
+    void restack_items();
     
     // Set/get point-based statistics
 
@@ -193,6 +198,7 @@ class Creature : public ISerializable
     Statistic& get_hit_points_ref();
     bool is_hp_full() const;
     bool is_ap_full() const;
+    bool is_dead() const;
 
     void set_arcana_points(const Statistic& new_arcana_points);
     int increment_arcana_points(int amount);
@@ -281,6 +287,7 @@ class Creature : public ISerializable
     void clear_event_scripts();
     void set_event_scripts(const EventScriptsMap& esm);
     EventScriptsMap get_event_scripts() const;
+    EventScriptsMap& get_event_scripts_ref();
     void add_event_script(const std::string& event_name, const ScriptDetails& sd);
     bool has_event_script(const std::string& event_name);
     ScriptDetails get_event_script(const std::string& event_name) const;

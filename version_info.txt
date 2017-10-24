@@ -1,3 +1,301 @@
+Shadow of the Wyrm v0.7.0 "de Visee"
+- Version declared March 1, 2017.  Version finalized October 23, 2017.
+
+- New effect type, mapping.  When blessed, the entire map's structure
+  is revealed.  When uncursed or cursed, tiles will be learned/forgotten
+  at random.
+
+- Fairy spirits will now also remove any negative status or spell
+  effects that are in force.
+
+- New dungeon room types.
+  
+  - Wet: a proportion of its tiles are water and reeds.
+
+  - Dank: as wet, but bushes, weeds, and rocky earth.
+
+  - Cave In: part of the inner portion of the room is collapsed rock.
+
+- The identify and bless effects now re-group inventory items after
+  invocation, to avoid ending up with stacks of the same item that have 
+  been picked up and identified or blessed at different times (kain).
+
+- Added a "single_user_mode" to bypass username verification of savefiles.
+  This is off by default.  If you want to use other people's savefiles
+  (passing games around, etc) turn the setting on.  The username who last
+  saved the savefile is always maintained, so you can later turn it back
+  on if needed.
+
+- The Magic skill now has an impact on how quickly a creature regenerates
+  AP.
+
+- New effect type, water breathing.  This allows boatless travel over
+  water within submerged tiles.  As long as a creature has this status
+  it cannot drown.
+
+- New map type, underwater.  These have submerged tiles in which you'll
+  need to have water breathing or will die very quickly.  In normal water
+  (non-submerged), survival is based on your swimming skill.  In
+  submerged tiles, it's based on your Health.
+
+- Traps can now have effects.  The new monster trap has a new effect
+  type, monster summoning, which summons a nunber of nearby monsters,
+  whose danger level is between the current danger level and 5 greater.
+  This effect is also present on a scroll, which makes read ID-ing
+  potentially more dangerous.
+
+- The mad elf, Whitebard, now drops the Ring of Aran Fee.  This is
+  a special artifact that permits water breathing, which in turn allows
+  the player to talk to the little boy, Ead, in the Barrows, who with
+  his strange, magical powers will send the player to Telari, the
+  Cloudspire.  These details are hinted at by Cadlind and by Kew.
+
+- Added the ability for races to have the Water Breathing status, similar
+  to what already exists for flying and incorporeal.  Set this for
+  Elysians.
+
+- Logs now generate tidily in a "logs" subdirectory instead of cluttering
+  the main directory. (kain)
+
+- Carrying now gets trained when you walk around carrying a heavy load
+  (kain).
+
+- A few items in particular (spellbook of Aim, gain attributes potion)
+  have had their rarity set to Common, which will actually make them less
+  likely to generate, now, as there are many common items in their class.
+
+- Items can now be picked up automatically by item type (kain).
+
+- Experience points are now included in character dumps (kain).
+
+- Casting spells now has a chance to train both the Magic skill, as well 
+  as the individual magic category (kain).
+
+- Traps no longer trigger when a flying creature moves into a trapped
+  tile, and the confirmation message is suppressed.
+
+- New effect type, digging, which bores through rock and solid earth.
+  Added a wand of digging to the items in Kew's house in Isen Dun.
+
+- Kew also has some more stuff squirreled away - he now also has a pick
+  axe, a healing potion, and an unstoning potion.
+
+- Custom maps can now define a load script, which allows for running a
+  Lua script after the map has been created.
+
+- Divine creatures now have the ability to fly.
+
+- Disfiguration totals are now based on the danger level of the attack,
+  with statistics being reduced more heavily based on the severity of the
+  acid.
+
+- Storm-shape spells can now be given a radius.  When less than 1, the
+  storm acts as before, applying the damage to random points around the
+  caster.  When >= 2, the storm becomes a radiant storm.  Fewer points
+  are selected, but these become the starting point for balls with a 
+  radius specified by the spell.
+
+- Added Shards to spectral wizards, and Meteor to high wizards.
+
+- Counter-strikes are now possible.  The possibility is based on having a
+  minimum amount of Combat skill, and then the chance is based on a
+  combination of Combat and Dexterity.  Any attack (melee, ranged, spell,
+  kicking, etc) can draw a counter strike so long as the creatures are 
+  adjacent.  Counter-strikes are free actions and do not affect the
+  counter-striking creature's action timers.
+
+- Added a new damage type, "scything".  When an attack is scything, it
+  has a chance to apply to creatures immediately adjacent to the one that
+  was originally attacked.  This chance is based on the creature's skill
+  in the type of the scything weapon (scythes are typically spears).
+
+- The artifact scythe "Whisperwind" now has the scything flag applied to
+  its damage.
+
+- Also added a new "explosive" damage type.  Explosive damage deals an
+  extra third of the original damage to the attacked creature, and any
+  creatures around it that are not the attacker.
+
+- The artifact greatsword "Inferno" has the explosive flag, and is
+  available from Aurelion, Voros, Urgoth, and Sceadugenga.
+
+- Fire bombs are now flagged as explosive.  Exploding arrows have been
+  added, and have the flag as well.  They start appearing later than
+  fire bombs, deal slightly more damage, and weigh less.
+
+- Certain races (Elysian) can now take a flag to exclude them from the
+  list of races generated for determining pugilist slays.
+
+- General depth-specific properties are now automatically propagated
+  through dungeons, towers, etc.
+
+- Added support for "shimmering colours" which allow for tiles to change 
+  colour from turn to turn.  Applied this to the Cloudspire.
+
+- Mining rocks can now yield iron ingots, steel ingots, and lumps of gold,
+  in addition to the usual chances for magici shards, rocks, and stones.
+
+- The algorithm for determining item probabilities when digging has been
+  simplified.  The chance specified in the tile is now the only value
+  used to determine if an item is generated when digging.
+
+- Multiple types of items can be generated at once when digging (e.g.,
+  a rock tile could yield an iron ingot and stones).
+
+- When digging, items now break less based on Dungeoneering skill.
+
+- Exits on custom maps can now have an associated set of map events.
+  These get applied after the map is created, and are applied at
+  appropriate times.  For the moment, the only event is "on load".
+
+- Prayer has no effect when there are no more deities.  Similarly,
+  interactions with altars (kicking and dropping items), pews, etc.
+
+- Casting divine magic from memory is not possible after slaying the Nine,
+  although magics previously set into wands, potions, etc., remain
+  active.
+
+- The minimum ammunition breakage chance has been reduced from 2% to 1%.
+
+- Ammunition is now less likely to break if it has slays, or is blessed,
+  and is more likely to break if it's cursed.
+
+- Shadow is now vorpal-flagged.  Pelter has piercing.
+
+- Taking damage from creatures at your level or higher trains Health
+  (Rob Ayres).
+
+- Classes now have a defined list of artifacts, independent of the deity.
+  Deities have a 75% chance of giving an item from the class' list, with
+  a 25% chance of selecting an item from the deity's own list.  This is
+  done to ensure that classes generally get "appropriate" artifacts
+  (ranged weapons for archers, etc), but with a chance of getting
+  something out of the ordinary.
+
+- The Lua console is now available in release mode, if you want to cheat
+  your way to Great Success.
+
+- When blind, you now "feel" something, rather than see it, when moving
+  on to a tile.
+
+- Made a few changes to allow Mac builds.  See README.build.macos.
+ 
+- More stanzas for "Tel and Floridel".
+
+- New species of weeds.
+
+- New poem fragments for the title screen.
+
+- New features: dwarf star, red giant star, supernova, black hole, pulsar,
+  cosmic dust, spiral arm.
+
+- New non-playable race: Elysian (builder).
+
+- New spells/spellbooks: mapping (Cantrips), crumble (Cantrips), dig
+  (Arcane), antimatter (Primordial), malediction (Mystic), divine form
+  (Divine), holocaust (Arcane), inferno (Cantrips), shards (Cantrips),
+  meteor (Arcane), absolution (Divine), annihilation (Primordial).
+
+- New monster-only spells: wyrmfire (Arcane).
+
+- New items: scroll of mapping, scroll of monster summoning, wand of
+  digging, wand of inferno, moloch armour, scythe, lump of gold, holy
+  mantle, exploding arrow.
+
+- New artifacts: Ring of Aran Fee, Telarian Mail, Telarian Shield, 
+  Telarian Helm, God-Blade, Shard of Starlight, shining amulet "Catara", 
+  radiant amulet "Calluna", fiery greatsword "Inferno", longbow of the 
+  Dragonlord Pelageus.
+
+- Removed artifacts: Knife of the Long Hunt.
+
+- New traps: monster trap.
+
+- New creatures: drowned shade, cockatrice, The Sorceror, The Sentry,
+  comet jellyfish, The Worldsinger, The Speaker, nether hydra, sea worm, 
+  mesosaur, ghost ray, megalodon, The Conjurer, The Armourer, red witch, 
+  solarian, lavos, ekakophia, myriadon, lamia, moloch, titanic slime, 
+  copper bird, bird of paradise, alghari, The Smith, Celeste, Aurelion, 
+  The Lady, Vedere, Voros, The Trickster, Shiver, Urgoth, Sceadugenga, 
+  crystalline being, seraph of the highest heavenly order, gabar of the 
+  book and the holy sword, knight exemplar, paragon of the twenty virtues,
+  trio of shining silver dragons, howling fury of first love lost, 
+  luminous angel, saint who moves in perfect grace, pulsating mass of 
+  primordial ooze, cloud of murderous, flesh-eating scarabs, thunderbird 
+  of the low steppes, hundred-headed hydra, drakkhar carrying a massive 
+  flaming sword, early dragon of the first age, eddic crone, murder of a 
+  thousand crows, wraith of wan and dying light, blood angel of the white 
+  queen, nether hound, ancient shade, black ogre, cyclonic beast, dark 
+  rider of the coming horde, teeming mass of writhing tentacles, beast 
+  beyond the furthest star, apocalyptic hell that bears no name.
+
+- New material types: gases, and unknown.
+
+- Bug fixes: 
+
+  - The water in Stonewall and Wintersea Keep was marked as river, and
+    not sea.
+
+  - When the "prompt_for_character_dump_on_exit" setting was set to
+    false, savefiles were not being deleted.
+
+  - Skill training messages were still being triggered when skills were
+    at the maximum value (kain).
+
+  - Hrimgar's quest to slay Amaurosis could not be completed if you chose
+    not to end your game (kain).
+
+  - Identified items now add the "lore checked" flag as well, so that
+    stacking doesn't break when trying to add to an item the creature had
+    originally (kain).
+
+  - Moving on to a new tile was inconsistent as to whether a message was
+    displayed about items.  Standardized this code so that it should be
+    called for all the various types of movement (kain).
+
+  - Inventories in dug tiles were maintaining the inventory type of the
+    previous tile, meaning that items could be dropped and lost on open
+    ground.
+
+  - Creatures could be generated in mid-air, causing them to immediately
+    plummet to their death.
+  
+  - If the player was killed and then damaged again, it would trigger
+    multiple DYWYPI-type messages.
+
+  - Incorporeal weapons were not being described properly with the "W"
+    command.
+    
+  - Lumps of gold (which are the raw material for the Jewelry skill)
+    were defined, but weren't set to a valid danger level, and so never
+    appeared in-game.  These should show up, now.  Sorry, anon. (4chan
+    /rlg)
+
+  - Damage resistances less than 0 (e.g., -0.35) were not acting as zero
+    multipliers in damage calculations, allowing characters with massive
+    resistances to still take damage. (4chan /rlg)
+
+  - Fixed a crash when trying to create an animation when a creature was
+    killed without having an FOV map (immediately after spawn but before
+    its first action).
+
+  - In certain cases, the calculated speed for a creature could be 0 or
+    less, which can cause infinite turn loops when the creature is the
+    player.
+
+  - Internally, there was a system of "additional damage" where you could
+    hypothetically deal 1d6+1d6 damage.  This was really buggy and
+    basically never worked.  It was used in the context of ranged combat,
+    which has been updated to just add the number of dice from the
+    launcher to the dice from the ammo when calculating the damage.
+
+  - Helm of the Heavens wasn't flagged as an artifact.
+
+  - ActionCost wasn't being fully initialized, leading to odd behaviour
+    some of the time in release mode.
+
+  - Fixed a crash related to ammunition reduction.
+
 Shadow of the Wyrm v0.6.1 "Riquier"
 - Version declared February 3, 2017.  Version finalized March 1, 2017.
 

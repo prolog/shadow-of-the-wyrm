@@ -1,7 +1,8 @@
 #include <sstream>
+#include "Conversion.hpp"
 #include "DigChancesFactory.hpp"
 #include "Inventory.hpp"
-#include "FeatureFactory.hpp"
+#include "FeatureGenerator.hpp"
 #include "InventoryFactory.hpp"
 #include "Log.hpp"
 #include "MapFactory.hpp"
@@ -53,6 +54,7 @@ bool Tile::operator==(const Tile& tile) const
   result = result && (illuminated == tile.illuminated);
   result = result && (explored == tile.explored);
   result = result && (viewed == tile.viewed);
+  result = result && (submerged == tile.submerged);
   result = result && (tile_type == tile.tile_type);
   result = result && (tile_subtype == tile.tile_subtype);
   result = result && (hardness == tile.hardness);
@@ -241,9 +243,10 @@ void Tile::set_default_properties()
   illuminated = true;
   explored    = false;
   viewed      = false;
+  submerged   = false;
 }
 
-void Tile::set_illuminated(bool new_illuminated)
+void Tile::set_illuminated(const bool new_illuminated)
 {
   illuminated = new_illuminated;
 }
@@ -327,7 +330,7 @@ int Tile::get_movement_multiplier() const
   return 1;
 }
 
-void Tile::set_explored(bool new_explored)
+void Tile::set_explored(const bool new_explored)
 {
   explored = new_explored;
 }
@@ -337,7 +340,7 @@ bool Tile::get_explored() const
   return explored;
 }
 
-void Tile::set_viewed(bool new_viewed)
+void Tile::set_viewed(const bool new_viewed)
 {
   viewed = new_viewed;
 }
@@ -345,6 +348,16 @@ void Tile::set_viewed(bool new_viewed)
 bool Tile::get_viewed() const
 {
   return viewed;
+}
+
+void Tile::set_submerged(const bool new_submerged)
+{
+  submerged = new_submerged;
+}
+
+bool Tile::get_submerged() const
+{
+  return submerged;
 }
 
 bool Tile::has_feature() const
@@ -429,8 +442,20 @@ TileType Tile::get_tile_type() const
   return tile_type;
 }
 
-// All tiles are assumed to be ground tiles, unless the derived class declares otherwise.
 TileSuperType Tile::get_tile_super_type() const
+{
+  if (submerged)
+  {
+    return TileSuperType::TILE_SUPER_TYPE_WATER;
+  }
+  else
+  {
+    return get_tile_base_super_type();
+  }
+}
+
+// All tiles are assumed to be ground tiles, unless the derived class declares otherwise.
+TileSuperType Tile::get_tile_base_super_type() const
 {
   return TileSuperType::TILE_SUPER_TYPE_GROUND;
 }
@@ -510,9 +535,17 @@ void Tile::transform_from(std::shared_ptr<Tile> original_tile)
   {
     // Keep the properties.
     // Copy everything else.
+    // Copy over the inventory using the raw items.
     map<string, string> props = additional_properties;
-    
+    IInventoryPtr new_inv = items;
+
     *this = *original_tile;
+
+    // Ensure the inventory is of the right type, so that dug tiles have real
+    // inventories instead of null ones.
+    list<ItemPtr> raw_items = original_tile->get_items()->get_items_ref();
+    items = new_inv;
+    items->set_items(raw_items);
 
     for (const auto& p_pair : props)
     {
@@ -520,7 +553,7 @@ void Tile::transform_from(std::shared_ptr<Tile> original_tile)
     }
 
     // Remove particular properties
-    vector<string> props_to_remove = {TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, TileProperties::TILE_PROPERTY_PLANTED};
+    vector<string> props_to_remove = { TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, TileProperties::TILE_PROPERTY_PLANTED };
 
     for (const auto& p : props_to_remove)
     {
@@ -554,11 +587,42 @@ DigChances& Tile::get_dig_chances_ref()
   return dig_chances;
 }
 
+bool Tile::has_race_restrictions() const
+{
+  bool restr = false;
+
+  string races = get_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_RACES);
+  restr = (races.empty() == false);
+
+  return restr;
+}
+
+bool Tile::is_race_allowed(const std::string& race_id) const
+{
+  bool allowed = true;
+
+  string races = get_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_RACES);
+  if (!races.empty())
+  {
+    vector<string> race_ids = String::create_string_vector_from_csv_string(races);
+    auto r_it = std::find(race_ids.begin(), race_ids.end(), race_id);
+
+    if (r_it == race_ids.end())
+    {
+      allowed = false;
+    }
+  }
+
+  return allowed;
+}
+
+
 bool Tile::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, illuminated);
   Serialize::write_bool(stream, explored);
   Serialize::write_bool(stream, viewed);
+  Serialize::write_bool(stream, submerged);
   Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, tile_subtype);
   Serialize::write_int(stream, hardness);
@@ -618,6 +682,7 @@ bool Tile::deserialize(istream& stream)
   Serialize::read_bool(stream, illuminated);
   Serialize::read_bool(stream, explored);
   Serialize::read_bool(stream, viewed);
+  Serialize::read_bool(stream, submerged);
   Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, tile_subtype);
   Serialize::read_int(stream, hardness);
@@ -638,7 +703,7 @@ bool Tile::deserialize(istream& stream)
 
   if (feature_clid != ClassIdentifier::CLASS_ID_NULL)
   {
-    FeaturePtr feature = FeatureFactory::create_feature(feature_clid);
+    FeaturePtr feature = FeatureGenerator::create_feature(feature_clid);
     if (!feature) return false;
     if (!feature->deserialize(stream)) return false;
     set_feature(feature);

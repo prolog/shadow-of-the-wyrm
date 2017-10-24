@@ -55,8 +55,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // One of the last Occitan troubadours
-  return "\"Riquier\"";
+  // French lutenist and composer of the baroque era
+  return "\"de Visee\"";
 }
 
 string Metadata::get_game_version_synopsis() const

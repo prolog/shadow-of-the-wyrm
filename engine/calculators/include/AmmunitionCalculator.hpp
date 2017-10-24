@@ -11,10 +11,15 @@ class AmmunitionCalculator
     std::pair<int, int> calculate_stack_size(ItemPtr ammunition);
     
   protected:
+    int get_item_status_survival_modifier(ItemPtr ammunition);
+    int get_slays_survival_modifier(ItemPtr ammunition);
+
     static const int BASE_PCT_CHANCE_BREAKAGE;
     static const int BASE_PCT_CHANCE_SURVIVAL;
     static const int ARCHERY_SKILL_SURVIVAL_DIVISOR;
     static const int ITEM_WEIGHT_SURVIVAL_DIVISOR;
+    static const int HAS_SLAYS_SURVIVAL_MODIFIER;
 
     static const std::map<Weight, std::pair<int, int>> AMMUNITION_STACK_RANGES;
+    static const std::map<ItemStatus, int> STATUS_SURVIVAL_MODIFIERS;
 };

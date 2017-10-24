@@ -162,7 +162,7 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
     creature->set_short_description_sid(creature_instance.get_short_description_sid());
     creature->set_description_sid(creature_instance.get_description_sid());
     creature->set_speech_text_sid(creature_instance.get_speech_text_sid());
-    creature->set_breathes(creature_instance.get_breathes());
+    creature->set_breathes(creature_instance.get_base_breathes());
     creature->set_decision_strategy(template_decision_strategy);
     creature->set_level(creature_instance.get_level());
     creature->set_base_damage(creature_instance.get_base_damage());
@@ -199,7 +199,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   Game& game = Game::instance();
 
-  DeityMap deities = game.get_deities_ref();
+  DeityMap deities = game.get_deities_cref();
   RaceMap races = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
 
@@ -234,6 +234,14 @@ CreaturePtr CreatureFactory::create_by_race_and_class
       Modifier m;
       creaturep->set_status(StatusIdentifiers::STATUS_ID_FLYING, {StatusIdentifiers::STATUS_ID_FLYING, true, 1, ""});
       m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
+      mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+    }
+
+    if (race->get_water_breathing().get_base() == true)
+    {
+      Modifier m;
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, {StatusIdentifiers::STATUS_ID_WATER_BREATHING, true, 1, ""});
+      m.set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, true);
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
 
@@ -368,6 +376,7 @@ void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race,
 }
 
 // Primary stats can be modified for creatures not created via race/class
+// If the modifier would take us over the maximum, take the max.
 void CreatureFactory::set_initial_statistics_modifiers(CreaturePtr creature, const CreatureGenerationValues& cgv)
 {
   if (creature != nullptr)
@@ -375,25 +384,25 @@ void CreatureFactory::set_initial_statistics_modifiers(CreaturePtr creature, con
     Modifier stat_mod = cgv.get_modifier();
 
     Statistic& strength = creature->get_strength_ref();
-    strength.set_base_current(strength.get_base() + stat_mod.get_strength_modifier());
+    strength.set_base_current(strength.get_base() + stat_mod.get_strength_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& dexterity = creature->get_dexterity_ref();
-    dexterity.set_base_current(dexterity.get_base() + stat_mod.get_dexterity_modifier());
+    dexterity.set_base_current(dexterity.get_base() + stat_mod.get_dexterity_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& agility = creature->get_agility_ref();
-    agility.set_base_current(agility.get_base() + stat_mod.get_agility_modifier());
+    agility.set_base_current(agility.get_base() + stat_mod.get_agility_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& health = creature->get_health_ref();
-    health.set_base_current(health.get_base() + stat_mod.get_health_modifier());
+    health.set_base_current(health.get_base() + stat_mod.get_health_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& intelligence = creature->get_intelligence_ref();
-    intelligence.set_base_current(intelligence.get_base() + stat_mod.get_intelligence_modifier());
+    intelligence.set_base_current(intelligence.get_base() + stat_mod.get_intelligence_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& willpower = creature->get_willpower_ref();
-    willpower.set_base_current(willpower.get_base() + stat_mod.get_willpower_modifier());
+    willpower.set_base_current(willpower.get_base() + stat_mod.get_willpower_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
 
     Statistic& charisma = creature->get_charisma_ref();
-    charisma.set_base_current(charisma.get_base() + stat_mod.get_charisma_modifier());
+    charisma.set_base_current(charisma.get_base() + stat_mod.get_charisma_modifier(), SetStatisticFailure::SET_STATISTIC_FAILURE_TAKE_HIGHEST);
   }
 }
 

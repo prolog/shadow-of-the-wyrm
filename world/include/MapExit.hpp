@@ -1,8 +1,10 @@
 #pragma once
+#include <map>
 #include <memory>
 #include <string>
 #include "ISerializable.hpp"
 #include "tiles.hpp"
+#include "ScriptDetails.hpp"
 
 class MapExit : public ISerializable
 {
@@ -20,12 +22,27 @@ class MapExit : public ISerializable
     bool is_using_map_id() const;
     bool is_using_terrain_type() const;
 
+    void set_property(const std::string& prop, const std::string& val);
+    std::string get_property(const std::string& prop) const;
+    bool has_property(const std::string& prop) const;
+    std::map<std::string, std::string> get_properties() const;
+
+    void clear_event_scripts();
+    void set_event_scripts(const EventScriptsMap& esm);
+    EventScriptsMap get_event_scripts() const;
+    EventScriptsMap& get_event_scripts_ref();
+    void add_event_script(const std::string& event_name, const ScriptDetails& sd);
+    bool has_event_script(const std::string& event_name);
+    ScriptDetails get_event_script(const std::string& event_name) const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
   protected:
     std::string map_id;
     TileType terrain_type;
+    std::map<std::string, std::string> properties;
+    EventScriptsMap event_scripts;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

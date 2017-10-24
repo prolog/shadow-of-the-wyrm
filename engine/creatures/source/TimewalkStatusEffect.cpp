@@ -14,6 +14,11 @@ TimewalkStatusEffect::TimewalkStatusEffect()
   status_calc = std::make_shared<TimewalkCalculator>();
 }
 
+bool TimewalkStatusEffect::is_negative() const
+{
+  return false;
+}
+
 string TimewalkStatusEffect::get_player_application_message() const
 {
   string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_TIMEWALK);

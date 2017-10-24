@@ -16,10 +16,14 @@ class CombatManager
     CombatManager();
     bool operator==(const CombatManager& cm) const;
     
+    // Convenient function
     ActionCostValue attack(CreaturePtr creature, const Direction d);
+
+    // The "real" attack function
     ActionCostValue attack(CreaturePtr attacking_creature, 
                            CreaturePtr attacked_creature, 
                            const AttackType = AttackType::ATTACK_TYPE_MELEE_PRIMARY, 
+                           const AttackSequenceType = AttackSequenceType::ATTACK_SEQUENCE_INITIAL,
                            const bool mark_skills = true, 
                            DamagePtr damage = DamagePtr());
 
@@ -34,6 +38,7 @@ class CombatManager
     void handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt);
     void handle_draining_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info);
     void handle_ethereal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const Damage& damage_info);
+    void handle_explosive_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr current_map, const int damage_dealt, const Damage& damage_info, const AttackType attack_type);
 
     // Can the creature split when hit?
     void handle_split_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, RacePtr creature_race, MapPtr current_map);
@@ -44,7 +49,7 @@ class CombatManager
     // Functions to handle the attacking mechanics and add messages as necessary.
     //
     // These are generally not called directly, other than via the Lua API.
-    bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type);
+    bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type, const AttackSequenceType ast);
     bool miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     bool close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
         
@@ -62,9 +67,14 @@ class CombatManager
 
     bool destroy_weapon_if_necessary(CreaturePtr creature, const AttackType attack_type);
 
+    bool counter_strike_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackSequenceType ast);
+    void add_counter_strike_message(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
+    bool handle_scything_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const AttackSequenceType ast, const Damage& damage_info);
+
     bool does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type);
     
     void mark_appropriately(CreaturePtr attacking_creature, const AttackType attack_type, Statistic& marked_statistic, const bool attack_success);
+    void mark_health_for_damage_taken(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     bool knock_back_creature_if_necessary(const AttackType attack_type, CreaturePtr attacking_creature, CreaturePtr attacked_creature, Game& game, MapPtr current_map);
     
     // Update the mortuary on the game and on the attacking creature.

@@ -19,8 +19,12 @@ class StatusEffect
     void set_source_id(const std::string& new_source_id);
     std::string get_source_id() const;
 
+    virtual bool is_negative() const;
+
     // Method to check whether the status should be applied.
     bool should_apply_change(std::shared_ptr<Creature> creature, const int effect_bonus = 0) const;
+
+    virtual std::string get_application_message(std::shared_ptr<Creature> creature) const;
 
     // Methods to handle creating, updating, removing, etc., the status change.
     // Each of these simply calls the before, do, and after methods - these three
@@ -35,7 +39,7 @@ class StatusEffect
   protected:
     // Returns a modifier with any statistic changes, etc, that should be
     // applied as a part of this status effect.
-    virtual Modifier get_base_modifier(std::shared_ptr<Creature> creature) const;
+    virtual Modifier get_base_modifier(std::shared_ptr<Creature> creature, const int danger_level) const;
 
     // These functions are boolean to indicate whether or not the status was
     // actually applied.  The status will be applied in almost all cases, but
@@ -45,7 +49,6 @@ class StatusEffect
     virtual bool apply(std::shared_ptr<Creature> creature, const int danger_level) const;
     virtual bool after_apply(std::shared_ptr<Creature> creature) const;
     
-    virtual std::string get_application_message(std::shared_ptr<Creature> creature) const;
     virtual std::string get_player_application_message() const;
     virtual std::string get_npc_application_message(std::shared_ptr<Creature> creature) const;
 

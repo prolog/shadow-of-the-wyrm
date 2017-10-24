@@ -17,7 +17,6 @@
 
 using namespace std;
 
-const int DigAction::DIG_PERCENT_CHANCE_ITEM = 8;
 const int DigAction::DIG_PERCENT_CHANCE_MARK_STATISTIC = 15;
 
 DigAction::DigAction()
@@ -70,29 +69,43 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr 
 }
 
 // Dig through an adjacent tile.
-ActionCostValue DigAction::dig_through(CreaturePtr creature, ItemPtr dig_item, MapPtr map, TilePtr adjacent_tile, const Direction d) const
+ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_item, MapPtr map, TilePtr adjacent_tile, const Coordinate& dig_coord, const bool add_messages) const
 {
   ActionCostValue acv =  0;
 
-  if (creature != nullptr && map != nullptr && adjacent_tile != nullptr)
+  if (map != nullptr && adjacent_tile != nullptr)
   {
-    bool added_msg = add_cannot_dig_message_if_necessary(creature, map);
-    if (added_msg) return acv;
+    CreaturePtr creature = map->get_creature(creature_id);
+
+    if (add_messages)
+    {
+      bool added_msg = add_cannot_dig_message_if_necessary(creature, map);
+      if (added_msg) return acv;
+    }
 
     // If we're digging in a shop, that is not appreciated, not at all.
-    Coordinate dig_coord = CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), d);
     MapUtils::anger_shopkeeper_if_necessary(dig_coord, map, creature);
 
     // Do the actual decomposition, then re-add the tile, check for dig item
     // breakage, and add an appropriate message.
     TilePtr new_tile = dig_tile(adjacent_tile);
-    add_new_tile_to_dig_location(new_tile, map, creature->get_id(), d);
-    add_successful_dig_message(creature);
+    map->insert(dig_coord, new_tile);
+
+    if (add_messages)
+    {
+      add_successful_dig_message(creature);
+    }
+
     handle_potential_item_breakage(creature, dig_item);
 
     // Digging through a tile is strenuous, and always trains Strength.
-    StatisticsMarker sm;
-    sm.mark_strength(creature);
+    // Assuming, of course, the character is using an item and this isn't part
+    // of a spell.
+    if (dig_item != nullptr)
+    {
+      StatisticsMarker sm;
+      sm.mark_strength(creature);
+    }
 
     acv = get_action_cost_value(creature);
   }
@@ -124,48 +137,37 @@ bool DigAction::add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr
 TilePtr DigAction::dig_tile(TilePtr adjacent_tile) const
 {
   TileGenerator tg;
-  TilePtr new_tile = tg.generate(adjacent_tile->get_decomposition_tile_type());
 
-  // Copy over features and items.
-  new_tile->transform_from(adjacent_tile);
+  TileType decomp_tile_type = adjacent_tile->get_decomposition_tile_type();
 
-  // Potentially add some items created by breaking up the original tile.
-  ItemManager im;
-  string decomp_item_id = get_decomposition_item_id(adjacent_tile->get_decomposition_item_ids());
-
-  if (!decomp_item_id.empty())
+  if (decomp_tile_type != TileType::TILE_TYPE_UNDEFINED)
   {
-    im.create_item_with_probability(DIG_PERCENT_CHANCE_ITEM, 100, new_tile->get_items(), decomp_item_id, static_cast<uint>(RNG::range(1, 6)));
-  }
+    TilePtr new_tile = tg.generate(decomp_tile_type);
 
-  return new_tile;
-}
+    // Copy over features and items.
+    new_tile->transform_from(adjacent_tile);
 
-string DigAction::get_decomposition_item_id(const vector<pair<pair<int, int>, string>>& decomp_ids) const
-{
-  string decomp_item_id;
+    // Potentially add some items created by breaking up the original tile.
+    ItemManager im;
+    vector<pair<pair<int, int>, string>> decomp_details = adjacent_tile->get_decomposition_item_ids();
 
-  for (const auto& d_pair : decomp_ids)
-  {
-    pair<int, int> x_in_y = d_pair.first;
-
-    if (RNG::x_in_y_chance(x_in_y))
+    // For each item that can potentially be generated, check to see if it's
+    // created.
+    for (const auto& item_pair : decomp_details)
     {
-      decomp_item_id = d_pair.second;
-      break;
+      if (RNG::x_in_y_chance(item_pair.first.first, item_pair.first.second))
+      {
+        ItemPtr item = ItemManager::create_item(item_pair.second, static_cast<uint>(RNG::range(1, 6)));
+        new_tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      }
     }
+
+    return new_tile;
   }
-
-  return decomp_item_id;
-}
-
-void DigAction::add_new_tile_to_dig_location(TilePtr new_tile, MapPtr map, const std::string& creature_id, const Direction d) const
-{
-  // Get the necessary details for re-adding
-  Coordinate cr_loc = map->get_location(creature_id);
-  Coordinate new_cr_loc = CoordUtils::get_new_coordinate(cr_loc, d);
-
-  map->insert(new_cr_loc.first, new_cr_loc.second, new_tile);
+  else
+  {
+    return adjacent_tile;
+  }
 }
 
 void DigAction::add_successful_dig_message(CreaturePtr creature) const
@@ -196,7 +198,7 @@ void DigAction::handle_potential_item_breakage(CreaturePtr creature, ItemPtr ite
   {
     // Did the item break?
     ItemBreakageCalculator ibc;
-    if (RNG::percent_chance(ibc.calculate_pct_chance_digging_breakage(item)))
+    if (RNG::percent_chance(ibc.calculate_pct_chance_digging_breakage(creature, item)))
     {
       creature->get_equipment().remove_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 

@@ -282,7 +282,7 @@ void WorldGenerator::set_tile_depth_options(TilePtr tile, TileDepthOptions& tdo,
     }
 
     // Set the max depth on the tile.
-    tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, to_string(max_depth));
+    tile->set_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH, to_string(max_depth));
   }
 }
 
@@ -616,7 +616,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
   Game& game = Game::instance();
   
   RaceMap races = game.get_races_ref();
-  DeityMap deities = game.get_deities_ref();
+  DeityMap deities = game.get_deities_cref();
     
   for (const Coordinate& c : village_coordinates)
   {

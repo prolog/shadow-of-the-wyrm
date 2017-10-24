@@ -4,6 +4,7 @@
 #include "CreatureCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"
+#include "EngineConversion.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ModifyStatisticsEffect.hpp"
@@ -106,7 +107,7 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
     
     AlignmentRange range_after = a.get_alignment_range();
     Game& game = Game::instance();
-    const DeityMap& deities = game.get_deities_ref();
+    const DeityMap& deities = game.get_deities_cref();
 
     if (range_before != range_after)
     {
@@ -427,7 +428,7 @@ ClassPtr CreatureUtils::get_random_user_playable_class()
 DeityPtr CreatureUtils::get_random_deity_for_race(RacePtr race)
 {
   Game& game = Game::instance();
-  DeityMap deities = game.get_deities_ref();
+  DeityMap deities = game.get_deities_cref();
   vector<string> allowable_deity_ids;
   DeityPtr deity;
 
@@ -477,7 +478,8 @@ bool CreatureUtils::has_spell_for_situation_type(CreaturePtr creature, const Spe
   return has_spells;
 }
 
-void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const string& identifier)
+// Mark all modifiers for a particular identifier for deletion.
+void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const string& identifier, const StatusRemovalType sr)
 {
   if (creature != nullptr && !identifier.empty())
   {
@@ -491,14 +493,15 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const stri
       {
         if (mod.first == identifier)
         {
-          process_creature_modifier(creature, mod);
+          process_creature_modifier(creature, mod, sr);
         }
       }
     }
   }
 }
 
-void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const double current_seconds, const double min_expiry)
+// Finalize all the modifiers after a certain min expiry
+void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const double current_seconds, const double min_expiry, const StatusRemovalType sr)
 {
   if (creature != nullptr)
   {
@@ -511,7 +514,7 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const doub
 
       if ((modifier_expiry >= min_expiry) && (modifier_expiry <= current_seconds))
       {
-        process_creature_modifiers(creature, m_it->second);
+        process_creature_modifiers(creature, m_it->second, sr);
       }
       else
       {
@@ -527,17 +530,19 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const doub
 
 // Process the current set of modifiers for the given second.
 // Mark them as deleted, as well as any modifiers they're linked to.
-void CreatureUtils::process_creature_modifiers(CreaturePtr creature, vector<pair<string, Modifier>>& modifiers)
+void CreatureUtils::process_creature_modifiers(CreaturePtr creature, vector<pair<string, Modifier>>& modifiers, const StatusRemovalType sr)
 {
   for (auto& mod_pair : modifiers)
   {
-    process_creature_modifier(creature, mod_pair);
+    process_creature_modifier(creature, mod_pair, sr);
   }
 }
 
-void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string, Modifier>& mod_pair)
+void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string, Modifier>& mod_pair, const StatusRemovalType sr)
 {
-  if (mod_pair.second.get_permanent() == true)
+  // Don't process/remove permanent modifiers, and also don't attempt to
+  // double-process a modifier already marked for deletion.
+  if (mod_pair.second.get_permanent() == true || mod_pair.second.get_delete())
   {
     return;
   }
@@ -558,7 +563,15 @@ void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string,
     {
       Status st = creature->get_status(status_id);
       StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status_id, st.get_source_id());
-      status_p->finalize_change(creature);
+
+      if (sr == StatusRemovalType::STATUS_REMOVAL_FINALIZE)
+      {
+        status_p->finalize_change(creature);
+      }
+      else
+      {
+        status_p->undo_change(creature);
+      }
     }
   }
 }
@@ -575,13 +588,24 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
 
       for (const auto& ailment : ailments)
       {
-        ModifyStatisticsEffect mse;
-        Modifier m;
+        if (!creature->has_status(ailment))
+        {
+          ModifyStatisticsEffect mse;
+          Modifier m;
 
-        creature->set_status(ailment, {ailment, true, 1 /* JCD FIXME? */, creature_id});
-        m.set_status(ailment, true);
-        mse.set_spell_id(StatusIdentifiers::STATUS_ID_SATED); // set for easy rollback
-        mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+          StatusEffectPtr status = StatusEffectFactory::create_status_effect(ailment, "");
+          creature->set_status(ailment, { ailment, true, 1 /* JCD FIXME? */, creature_id });
+          m.set_status(ailment, true);
+          mse.set_spell_id(ailment); // set for easy rollback
+          mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+
+          if (status != nullptr)
+          {
+            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            manager.add_new_message(status->get_application_message(creature));
+            manager.send();
+          }
+        }
       }
     }
   }
@@ -603,11 +627,12 @@ void CreatureUtils::remove_status_ailments_from_wearable(WearablePtr wearable, C
 
       for (pair<string, Modifier>& mod_pair : mods)
       {
+        string status_id = mod_pair.first;
         if (mod_pair.second.get_permanent() == false)
         {
-          if (ailments.find(mod_pair.first) != ailments.end())
+          if (ailments.find(status_id) != ailments.end() && !has_status_ailment_from_wearable(creature, status_id))
           {
-            CreatureUtils::process_creature_modifier(creature, mod_pair);
+            CreatureUtils::process_creature_modifier(creature, mod_pair, StatusRemovalType::STATUS_REMOVAL_UNDO);
             mod_pair.second.set_delete(true);
           }
         }
@@ -675,6 +700,35 @@ void CreatureUtils::add_removal_message(CreaturePtr creature, const string& spel
       manager.send();
     }
   }
+}
+
+bool CreatureUtils::has_status_ailment_from_wearable(CreaturePtr creature, const string& status_id)
+{
+  bool has_ailment = false;
+
+  if (creature != nullptr)
+  {
+    Equipment& eq = creature->get_equipment();
+    EquipmentMap em = eq.get_equipment();
+
+    for (const auto eq_pair : em)
+    {
+      WearablePtr wearable = dynamic_pointer_cast<Wearable>(eq_pair.second);
+
+      if (wearable != nullptr)
+      {
+        set<string> ailments = wearable->get_status_ailments().get_ailments();
+
+        if (std::find(ailments.begin(), ailments.end(), status_id) != ailments.end())
+        {
+          has_ailment = true;
+          break;
+        }
+      }
+    }
+  }
+
+  return has_ailment;
 }
 
 #ifdef UNIT_TESTS

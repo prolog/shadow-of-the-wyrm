@@ -15,7 +15,9 @@
 #include "CursesConstants.hpp"
 #include "DecisionStrategySelector.hpp"
 #include "DetectionSkillProcessor.hpp"
+#include "EngineConversion.hpp"
 #include "ExitGameAction.hpp"
+#include "FeatureGenerator.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "FileConstants.hpp"
@@ -156,7 +158,12 @@ void Game::set_deities(const DeityMap& game_deities)
   deities = game_deities;
 }
 
-const DeityMap& Game::get_deities_ref() const
+DeityMap& Game::get_deities_ref()
+{
+  return deities;
+}
+
+const DeityMap& Game::get_deities_cref() const
 {
   return deities;
 }
@@ -229,6 +236,16 @@ void Game::set_items(const ItemMap& game_items)
 const ItemMap& Game::get_items_ref() const
 {
   return items;
+}
+
+void Game::set_basic_features(const FeatureMap& game_features)
+{
+  basic_features = game_features;
+}
+
+const FeatureMap& Game::get_basic_features_ref() const
+{
+  return basic_features;
 }
 
 void Game::set_custom_maps(const vector<MapPtr>& custom_maps)
@@ -748,17 +765,17 @@ void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions, cons
 
       ExitGameAction ega;
       ega.create_dump_if_necessary(manager, &actions, creature);
-
-      if (delete_savefile)
-      {
-        string current_savefile = game.get_current_loaded_savefile();
-
-        if (!current_savefile.empty())
-        {
-          Serialization::delete_savefile(current_savefile);
-        }
-      }
     }
+
+    if (delete_savefile)
+    {
+      string current_savefile = game.get_current_loaded_savefile();
+
+      if (!current_savefile.empty())
+      {
+        Serialization::delete_savefile(current_savefile);
+      }
+    }    
   }
 }
 
@@ -794,7 +811,8 @@ void Game::set_current_map(MapPtr map)
     map_registry.remove_map(old_map_id); // Boom.
   }
   
-  // Make the new map the current
+  // Make the new map the current, and set it if it's not already in the
+  // registry.
   current_map_id = map->get_map_id();
   map_registry.set_map(current_map_id, map);
 
@@ -986,6 +1004,23 @@ bool Game::serialize(ostream& stream) const
     }
   }
 
+  Serialize::write_size_t(stream, basic_features.size());
+
+  for (const auto& feat_pair : basic_features)
+  {
+    Serialize::write_string(stream, feat_pair.first);
+
+    if (feat_pair.second)
+    {
+      Serialize::write_class_id(stream, feat_pair.second->get_class_identifier());
+      feat_pair.second->serialize(stream);
+    }
+    else
+    {
+      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
+    }
+  }
+
   // Ignore tile_info map - this will be built up on startup.
 
   size_t num_worlds = worlds.size();
@@ -1140,6 +1175,30 @@ bool Game::deserialize(istream& stream)
         if (!item->deserialize(stream)) return false;
 
         items.insert(make_pair(item_id, item));
+      }
+    }
+  }
+
+  basic_features.clear();
+  size_t num_basic_features = 0;
+  Serialize::read_size_t(stream, num_basic_features);
+
+  for (size_t i = 0; i < num_basic_features; i++)
+  {
+    string feature_id;
+    Serialize::read_string(stream, feature_id);
+    
+    ClassIdentifier c_id = ClassIdentifier::CLASS_ID_NULL;
+    Serialize::read_class_id(stream, c_id);
+
+    if (c_id != ClassIdentifier::CLASS_ID_NULL)
+    {
+      FeaturePtr feat = FeatureGenerator::create_feature(c_id);
+
+      if (feat != nullptr)
+      {
+        feat->deserialize(stream);
+        basic_features[feature_id] = feat;
       }
     }
   }

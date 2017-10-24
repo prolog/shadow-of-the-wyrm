@@ -93,8 +93,68 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CITEM_TYPE_RING);
   lua_exportConst(ls, CITEM_TYPE_AMULET);
 
+  lua_exportConst(ls, CTILE_TYPE_UNDEFINED);
+  lua_exportConst(ls, CTILE_TYPE_FIRST);
+  lua_exportConst(ls, CTILE_TYPE_FIELD);
+  lua_exportConst(ls, CTILE_TYPE_SCRUB);
+  lua_exportConst(ls, CTILE_TYPE_WHEAT);
+  lua_exportConst(ls, CTILE_TYPE_CAIRN);
+  lua_exportConst(ls, CTILE_TYPE_TREE);
+  lua_exportConst(ls, CTILE_TYPE_DESERT);
+  lua_exportConst(ls, CTILE_TYPE_ROAD);
+  lua_exportConst(ls, CTILE_TYPE_RIVER);
+  lua_exportConst(ls, CTILE_TYPE_SEA);
+  lua_exportConst(ls, CTILE_TYPE_SHOALS);
+  lua_exportConst(ls, CTILE_TYPE_DUNGEON);
+  lua_exportConst(ls, CTILE_TYPE_ROCK);
+  lua_exportConst(ls, CTILE_TYPE_GRAVE);
+  lua_exportConst(ls, CTILE_TYPE_MARSH);
+  lua_exportConst(ls, CTILE_TYPE_REEDS);
+  lua_exportConst(ls, CTILE_TYPE_HILLS);
+  lua_exportConst(ls, CTILE_TYPE_MOUNTAINS);
+  lua_exportConst(ls, CTILE_TYPE_BEACH);
+  lua_exportConst(ls, CTILE_TYPE_BUSH);
+  lua_exportConst(ls, CTILE_TYPE_WEEDS);
+  lua_exportConst(ls, CTILE_TYPE_SPRINGS);
+  lua_exportConst(ls, CTILE_TYPE_FOREST);
+  lua_exportConst(ls, CTILE_TYPE_UP_STAIRCASE);
+  lua_exportConst(ls, CTILE_TYPE_DOWN_STAIRCASE);
+  lua_exportConst(ls, CTILE_TYPE_CAVERN);
+  lua_exportConst(ls, CTILE_TYPE_VILLAGE);
+  lua_exportConst(ls, CTILE_TYPE_DUNGEON_COMPLEX);
+  lua_exportConst(ls, CTILE_TYPE_BARRACKS);
+  lua_exportConst(ls, CTILE_TYPE_CASTLE);
+  lua_exportConst(ls, CTILE_TYPE_KEEP);
+  lua_exportConst(ls, CTILE_TYPE_GRAVEYARD);
+  lua_exportConst(ls, CTILE_TYPE_CHURCH);
+  lua_exportConst(ls, CTILE_TYPE_LIBRARY);
+  lua_exportConst(ls, CTILE_TYPE_SITE_OF_DEATH);
+  lua_exportConst(ls, CTILE_TYPE_TEMPLE);
+  lua_exportConst(ls, CTILE_TYPE_DAIS);
+  lua_exportConst(ls, CTILE_TYPE_PIER);
+  lua_exportConst(ls, CTILE_TYPE_BARROW);
+  lua_exportConst(ls, CTILE_TYPE_WILD_ORCHARD);
+  lua_exportConst(ls, CTILE_TYPE_FRUIT_TREE);
+  lua_exportConst(ls, CTILE_TYPE_EVERGREEN_TREE);
+  lua_exportConst(ls, CTILE_TYPE_ROCKY_EARTH);
+  lua_exportConst(ls, CTILE_TYPE_MINE);
+  lua_exportConst(ls, CTILE_TYPE_WELL);
+  lua_exportConst(ls, CTILE_TYPE_CRYPT);
+  lua_exportConst(ls, CTILE_TYPE_AIR);
+  lua_exportConst(ls, CTILE_TYPE_EARTH);
+  lua_exportConst(ls, CTILE_TYPE_SEWER_COMPLEX);
+  lua_exportConst(ls, CTILE_TYPE_SEWER);
+  lua_exportConst(ls, CTILE_TYPE_SHRINE);
+  lua_exportConst(ls, CTILE_TYPE_SEABED);
+  lua_exportConst(ls, CTILE_TYPE_AQUATIC_VEGETATION);
+  lua_exportConst(ls, CTILE_TYPE_FLOATING_TOWER);
+  lua_exportConst(ls, CTILE_TYPE_VOID);
+
+  static_assert(TileType::TILE_TYPE_LAST == TileType(54), "Unrecognized TILE_TYPE_LAST");
+
   lua_exportConst(ls, CITEM_FILTER_NONE);
   lua_exportConst(ls, CITEM_FILTER_UNIDENTIFIED);
+  lua_exportConst(ls, CITEM_FILTER_ARTIFACT);
 
   lua_exportConst(ls, CSKILL_GENERAL_ARCHERY);
   lua_exportConst(ls, CSKILL_GENERAL_AWARENESS);
@@ -174,6 +234,12 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CSKILL_MAGIC_DIVINE);
   lua_exportConst(ls, CSKILL_MAGIC_MYSTIC);
   lua_exportConst(ls, CSKILL_MAGIC_PRIMORDIAL);
+
+  lua_exportConst(ls, CCREATURE_WIN_REGULAR);
+  lua_exportConst(ls, CCREATURE_WIN_EVIL);
+  lua_exportConst(ls, CCREATURE_WIN_GODSLAYER);
+
+  lua_exportConst(ls, CCLASS_ID_FOUNTAIN)
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

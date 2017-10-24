@@ -2,6 +2,7 @@
 #include "AttackScript.hpp"
 #include "ClassManager.hpp"
 #include "CombatConstants.hpp"
+#include "CombatCounterCalculator.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
@@ -14,6 +15,7 @@
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "EffectTextKeys.hpp"
+#include "EngineConversion.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -28,6 +30,7 @@
 #include "PhaseOfMoonCalculator.hpp"
 #include "PointsTransfer.hpp"
 #include "RaceManager.hpp"
+#include "ScythingCalculator.hpp"
 #include "Setting.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
@@ -110,7 +113,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 // The generated to-hit value is 100 (ignore Soak, 2x max damage, any resistance is min 100%)
 // The generated to-hit value is >= 96 (ignore Soak, max damage, any resistance is min 100%)
 // The generated to-hit value is >= the target number (regular damage)
-ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const bool mark_skills, DamagePtr predefined_damage)
+ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const AttackSequenceType ast, const bool mark_skills, DamagePtr predefined_damage)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -122,7 +125,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 
   // Once an attack is made, the creature becomes hostile, and if it was
   // previously not hostile
-  if (attacking_creature && attacked_creature)
+  if (attacking_creature && attacked_creature && !attacked_creature->is_dead())
   {
     handle_hostility_implications(attacking_creature, attacked_creature);
   }
@@ -133,7 +136,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     attacked_creature->get_automatic_movement_ref().set_engaged(false);
   }
 
-  if (th_calculator && ctn_calculator)
+  if (th_calculator && ctn_calculator && attacked_creature && !attacked_creature->is_dead())
   {
     Game& game = Game::instance();
     PhaseOfMoonCalculator pomc;
@@ -167,7 +170,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     // Hit
     else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
     {
-      hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type);
+      hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type, ast);
       mark_for_weapon_and_combat_skills_and_stat = true;
       destroy_weapon_if_necessary(attacking_creature, attack_type);
     }
@@ -181,12 +184,17 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     {
       miss(attacking_creature, attacked_creature);
     }    
+
+    counter_strike_if_necessary(attacking_creature, attacked_creature, ast);
   }
 
   // If the attack was a PvM type attack, mark the weapon/spell-category and 
   // combat/magic skills of the attacking creature, and add the attacking 
   // creature as a threat to the attacked creature.
-  if (attacking_creature)
+  //
+  // Don't improve stats if the attacking creature is dead (as a result of a
+  // counter-strike, etc).
+  if (attacking_creature && !attacking_creature->is_dead())
   {
     if (mark_skills)
     {
@@ -280,7 +288,130 @@ bool CombatManager::destroy_weapon_if_necessary(CreaturePtr attacking_creature, 
   return destroyed_weapon;
 }
 
-bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)
+bool CombatManager::counter_strike_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackSequenceType ast)
+{
+  bool attack_countered = false;
+  MapPtr current_map = Game::instance().get_current_map();
+
+  if (current_map && 
+      attacking_creature && 
+      attacked_creature && 
+      attacking_creature->get_id() != attacked_creature->get_id() &&
+      ast == AttackSequenceType::ATTACK_SEQUENCE_INITIAL &&
+      MapUtils::are_creatures_adjacent(current_map, attacking_creature, attacked_creature))
+  {
+    CombatCounterCalculator ccc;
+
+    if (RNG::percent_chance(ccc.calc_pct_chance_counter_strike(attacked_creature)))
+    {
+      add_counter_strike_message(attacking_creature, attacked_creature);
+
+      // Mark Combat and Dex from the successful counter.
+      StatisticsMarker sm;
+      attacked_creature->get_skills().mark(SkillType::SKILL_GENERAL_COMBAT);
+      sm.mark_dexterity(attacked_creature);
+
+      // Deal the damage, flipping the attack sequence (the counter cannot be
+      // countered).
+      attack(attacked_creature, attacking_creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY, AttackSequenceType::ATTACK_SEQUENCE_COUNTER);
+      attack_countered = true;
+    }
+  }
+
+  return attack_countered;
+}
+
+void CombatManager::add_counter_strike_message(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+{
+  if (attacking_creature && attacked_creature)
+  {
+    CreatureDescriber cd(attacking_creature, attacked_creature);
+    string desc = cd.describe();
+    string counter_message = CombatTextKeys::get_counter_message(attacked_creature->get_is_player(), desc);
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, (attacking_creature->get_is_player() || attacked_creature->get_is_player()));
+
+    manager.add_new_message(counter_message);
+    manager.send();
+  }
+}
+
+bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const AttackSequenceType ast, const Damage& damage_info)
+{
+  bool scythed = false;
+  set<string> visited_creature_ids;
+  MapPtr current_map = Game::instance().get_current_map();
+
+  if (current_map && 
+      attacking_creature && 
+      attacked_creature && 
+      ast == AttackSequenceType::ATTACK_SEQUENCE_INITIAL &&
+      damage_info.get_scything())
+  {
+    Coordinate attack_creature_coord = current_map->get_location(attacking_creature->get_id());
+    Coordinate attacked_creature_coord = current_map->get_location(attacked_creature->get_id());
+    int radius = CoordUtils::chebyshev_distance(attack_creature_coord, attacked_creature_coord);
+
+    // Get the rotation direction based on the attacking creature's handedness.
+    RotationDirection rd = HandednessEnum::to_rotation_direction(attacking_creature->get_handedness());
+
+    // Generate the scything coordinates in a square (since SotW uses square
+    // LOS) around the attacking creature, based on the distance between the
+    // attacker and the current target.
+    vector<Coordinate> scythe_coords = CoordUtils::get_square_coordinates(attack_creature_coord.first, attack_creature_coord.second, radius, rd);
+
+    // Rotate the elements, using the attacked creature's coordinate as the
+    // pivot.  Remove the attacked creature's coordinates from the scything
+    // list so that it's not attacked twice.
+    std::rotate(scythe_coords.begin(), std::find(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord), scythe_coords.end());
+    scythe_coords.erase(std::remove(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord));
+    
+    bool message_shown = false;
+    ScythingCalculator sc;
+    WeaponManager wm;
+    SkillType scything_skill = wm.get_appropriate_trained_skill(wm.get_weapon(attacking_creature, attack_type), attack_type);
+    int total_attacks = 1;
+
+    // Attack any hostile creatures in the scything sequence.
+    for (const Coordinate& c : scythe_coords)
+    {
+      TilePtr tile = current_map->at(c);
+
+      if (tile != nullptr)
+      {
+        CreaturePtr creature = tile->get_creature();
+
+        int pct_chance_continue = sc.calc_pct_chance_scything_continues(attacking_creature, scything_skill, total_attacks);
+
+        if (!RNG::percent_chance(pct_chance_continue))
+        {
+          break;
+        }
+
+        if (creature != nullptr && creature->get_decision_strategy()->get_threats_ref().has_threat(attacking_creature->get_id()).first)
+        {
+          // Show a "You/monster follow through!" message, but only once.
+          if (message_shown == false)
+          {
+            IMessageManager& manager = MM::instance(MessageTransmit::SELF, attacking_creature, attacking_creature->get_is_player());
+            manager.add_new_message(CombatTextKeys::get_scything_message(attacking_creature->get_is_player(), attacking_creature->get_description_sid()));
+            manager.send();
+
+            message_shown = true;
+          }
+
+          // Mark that the attack is a follow through to avoid the joy of
+          // infinite recursion.
+          attack(attacking_creature, creature, attack_type, AttackSequenceType::ATTACK_SEQUENCE_FOLLOW_THROUGH);
+          total_attacks++;
+        }
+      }
+    }
+  }
+
+  return scythed;
+}
+
+bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type, const AttackSequenceType ast)
 {
   WeaponManager wm;
   Game& game = Game::instance();
@@ -347,8 +478,16 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
     // to match the creature's remaining HP
     string source_id = attacking_creature != nullptr ? attacking_creature->get_id() : "";
 
-    handle_vorpal_if_necessary(attacking_creature, attacked_creature, damage_info, damage_dealt);
+    handle_vorpal_if_necessary(attacking_creature, attacked_creature, damage_info, damage_dealt); 
     deal_damage(attacking_creature, attacked_creature, source_id, damage_dealt, damage_info);
+
+    if (!attacked_creature->is_dead())
+    {
+      mark_health_for_damage_taken(attacking_creature, attacked_creature);
+
+      // Deal any secondary damage as a result of weapon flags.
+      handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, damage_info, attack_type);
+    }
   }
   else
   {
@@ -361,6 +500,9 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 
   // If there are any scripts associated with the attack, run them.
   run_attack_script_if_necessary(attacking_creature, attacked_creature);
+
+  // If the attack is scything, continue the attack on nearby creatures.
+  handle_scything_if_necessary(attacking_creature, attacked_creature, attack_type, ast, damage_info);
 
   return true;
 }
@@ -437,6 +579,40 @@ void CombatManager::handle_ethereal_if_necessary(CreaturePtr attacking_creature,
     }
 
     manager.send();
+  }
+}
+
+void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map, const int damage_dealt, const Damage& damage_info, const AttackType attack_type)
+{
+  if (damage_info.get_explosive() && attacked_creature != nullptr)
+  {
+    // Add a message about the explosion.
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
+    string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+
+    string explosion_msg = CombatTextKeys::get_explosive_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
+    manager.add_new_message(explosion_msg);
+    manager.send();
+
+    // Deal the additional damage to the attacked creature, as well as those
+    // around it that are not the attacker.  Explosive damage is half the
+    // original.
+    DamagePtr explosive_damage = std::make_shared<Damage>();
+    explosive_damage->set_num_dice(std::max(1, damage_dealt/2));
+    explosive_damage->set_dice_sides(1);
+    explosive_damage->set_damage_type(DamageType::DAMAGE_TYPE_HEAT);
+    
+    vector<CreaturePtr> aff_creatures = MapUtils::get_adjacent_creatures_unsorted(map, attacked_creature);
+    aff_creatures.insert(aff_creatures.begin(), attacked_creature);
+
+    for (CreaturePtr aff_creature : aff_creatures)
+    {
+      if (aff_creature && (!attacking_creature || (aff_creature->get_id() != attacking_creature->get_id())))
+      {
+        attack(attacking_creature, aff_creature, attack_type, AttackSequenceType::ATTACK_SEQUENCE_FOLLOW_THROUGH, true, explosive_damage);
+      }
+    }
   }
 }
 
@@ -813,6 +989,20 @@ void CombatManager::mark_appropriately(CreaturePtr attacking_creature, const Att
     for (const SkillType& skill_type : skills_to_mark)
     {
       sm.mark_skill(attacking_creature, skill_type, attack_success);
+    }
+  }
+}
+
+// Seeking out dangerous creatures (those at your level or higher) and getting
+// hurt by them trains health.
+void CombatManager::mark_health_for_damage_taken(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+{
+  if (attacking_creature != nullptr && attacked_creature != nullptr)
+  {
+    if (attacking_creature->get_level().get_current() >= attacked_creature->get_level().get_current())
+    {
+      StatisticsMarker sm;
+      sm.mark_health(attacked_creature);
     }
   }
 }

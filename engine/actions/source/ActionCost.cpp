@@ -5,12 +5,12 @@
 using namespace std;
 
 ActionCost::ActionCost()
-: cost(0)
+: cost(0), turn_advanced(true)
 {
 }
 
 ActionCost::ActionCost(const ActionCostValue new_cost)
-: cost(new_cost)
+: cost(new_cost), turn_advanced(true)
 {
 }
 

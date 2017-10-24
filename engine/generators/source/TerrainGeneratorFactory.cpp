@@ -5,6 +5,7 @@
 #include "DesertGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
+#include "FloatingTowerGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "Game.hpp"
 #include "GraveyardGeneratorFactory.hpp"
@@ -22,6 +23,7 @@
 #include "SewerGenerator.hpp"
 #include "ShrineGeneratorFactory.hpp"
 #include "TerrainGeneratorFactory.hpp"
+#include "VoidGenerator.hpp"
 #include "WildOrchardGenerator.hpp"
 #include "WorshipSiteGenerator.hpp"
 #include "WorshipSiteTile.hpp"
@@ -44,7 +46,7 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
 GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
 {
-  static_assert(TileType::TILE_TYPE_LAST == TileType(50), "Unexpected TileType::TILE_TYPE_LAST");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(54), "Unexpected TileType::TILE_TYPE_LAST");
   GeneratorPtr generator;
   
   switch(terrain_type)
@@ -211,6 +213,17 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       generator = std::make_shared<SewerGenerator>(map_exit_id);
       break;
     }
+    case TileType::TILE_TYPE_FLOATING_TOWER:
+    { 
+      generator = std::make_shared<FloatingTowerGenerator>(map_exit_id);
+      break;
+    }
+    case TileType::TILE_TYPE_VOID:
+    {
+      generator = std::make_shared<VoidGenerator>(map_exit_id);
+      break;
+    }
+
     case TileType::TILE_TYPE_UNDEFINED:
     case TileType::TILE_TYPE_WHEAT:
     case TileType::TILE_TYPE_CAIRN:
@@ -236,6 +249,8 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_AIR:
     case TileType::TILE_TYPE_EARTH:
     case TileType::TILE_TYPE_SEWER:
+    case TileType::TILE_TYPE_SEABED:
+    case TileType::TILE_TYPE_AQUATIC_VEGETATION:
     default:
       // Right now, everything generates a field.  Change this once testing is complete.
       generator = std::make_shared<FieldGenerator>(map_exit_id);

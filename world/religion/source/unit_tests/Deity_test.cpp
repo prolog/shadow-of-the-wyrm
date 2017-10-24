@@ -23,7 +23,7 @@ TEST(SW_World_Religion_Deity, saveload)
   crowning_gifts.push_back("big_club");
 
   d.set_crowning_gifts(crowning_gifts);
-
+  d.set_pct_chance_class_crowning(53);
   d.set_dislike("cats", true);
   
   Modifier initial(1,2,3,4,5,6,7);

@@ -9,7 +9,7 @@ using namespace boost::filesystem;
 int LogFiles::remove_old(const int days_old)
 {
   int removed = 0;
-  string p = ".";
+  string p = "logs";
   path local_dir(p);
   directory_iterator end_it;
 

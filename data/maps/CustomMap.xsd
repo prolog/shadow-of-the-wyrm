@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:sl="urn:shadow_of_the_wyrm:1.0.0" targetNamespace="urn:shadow_of_the_wyrm:maps:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:sw="urn:shadow_of_the_wyrm:1.0.0" targetNamespace="urn:shadow_of_the_wyrm:maps:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
 	<xs:import namespace="urn:shadow_of_the_wyrm:1.0.0" schemaLocation="../ShadowOfTheWyrm.xsd"/>
 	<xs:element name="CustomMap">
 		<xs:annotation>
@@ -8,6 +8,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="NameSID" type="xs:string"/>
+				<xs:element name="EventScripts" type="tns:MapEvents" minOccurs="0"/>
 				<xs:element ref="tns:Dimensions"/>
 				<xs:element name="LevelRange" type="tns:LevelRange"/>
 				<xs:element name="MapType" type="tns:MapType"/>
@@ -153,9 +154,31 @@
 			<xs:choice>
 				<xs:element name="MapID" type="xs:string"/>
 				<xs:sequence>
-					<xs:element name="TileType" type="sl:TileType"/>
+					<xs:element name="TileType" type="sw:TileType"/>
 				</xs:sequence>
 			</xs:choice>
+			<xs:element name="Depth" type="xs:integer" minOccurs="0"/>
+			<xs:element name="MinDepth" type="xs:integer" minOccurs="0"/>
+			<xs:element name="MaxDepth" type="xs:integer" minOccurs="0"/>
+			<xs:element name="Increment" type="xs:integer" minOccurs="0"/>
+			<!-- Event scripts for map exits are intended for use with terrain
+			     maps, not custom maps.  Event scripts for custom maps are defined
+				 at the map level. -->
+			<xs:element name="EventScripts" type="tns:MapEvents" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MapEvents">
+		<xs:annotation>
+			<xs:documentation>Defines per-map events that are run at appropriate times.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CreateScript" type="tns:ScriptDetails" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ScriptDetails">
+		<xs:sequence>
+			<xs:element name="Script" type="xs:string"/>
+			<xs:element name="Chance" type="xs:integer" minOccurs="0" default="100"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Features">
@@ -186,6 +209,7 @@
 				<xs:element name="WheelAndLoom" type="tns:WheelAndLoom"/>
 				<xs:element name="Bed" type="tns:Feature"/>
 				<xs:element name="StoneMarker" type="tns:Feature"/>
+				<xs:element name="BasicFeature" type="tns:Feature"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
@@ -194,8 +218,11 @@
 			<xs:documentation>Defines a Feature - not all fields on the cpp class can be integrated via XML currently.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Material" type="sl:MaterialType" minOccurs="0"/>
+			<xs:element name="Material" type="sw:MaterialType" minOccurs="0"/>
+			<xs:element name="DescriptionSID" type="xs:string" minOccurs="0"/>
+			<xs:element name="Symbol" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
+		<xs:attribute name="id" type="sw:Identifier" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="Altar">
 		<xs:annotation>
@@ -365,12 +392,14 @@
 			0 = World (do not use)
 			1 = Overworld (forests, fields, villages, etc)
 			2 = Underworld (caverns, dungeons, etc)
+			3 = Underwater/Submerged
 			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:int">
 			<xs:enumeration value="0"/>
 			<xs:enumeration value="1"/>
 			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Direction">

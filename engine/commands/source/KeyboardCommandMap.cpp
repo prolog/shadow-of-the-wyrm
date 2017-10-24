@@ -127,7 +127,8 @@ vector<string> KeyboardCommandMap::get_remappable_commands() const
   CommandKeys::EVOKE, CommandKeys::LATEST_MESSAGES, CommandKeys::KICK,
   CommandKeys::OFFER, CommandKeys::SKIN, CommandKeys::PIETY,
   CommandKeys::EXPERIENCE, CommandKeys::REST, CommandKeys::VIEW_ITEMS,
-  CommandKeys::CHAR_DETAILS, CommandKeys::HELP, CommandKeys::INSCRIBE};
+  CommandKeys::CHAR_DETAILS, CommandKeys::HELP, CommandKeys::INSCRIBE,
+  CommandKeys::TOGGLE_AUTOPICKUP};
 }
 
 void KeyboardCommandMap::parse_keybindings(const Settings& settings, const vector<string>& remappable_commands)
@@ -176,12 +177,7 @@ void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
   parse_keybindings(settings, remappable_commands);
 
   // Non-remappable commands
-  //
-  // JCD FIXME: When adding Unix support, update this to include whatever
-  // debug flag is needed.
-  #ifdef _DEBUG
   command_mapping.insert(make_pair(std::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
-  #endif
   command_mapping.insert(make_pair(std::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_AND_SIDS));
 }
 

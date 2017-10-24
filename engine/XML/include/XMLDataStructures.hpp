@@ -78,6 +78,7 @@ class XMLUtils
     static int          get_node_int_value(const XMLNode& node, const int default_value = 0);
     static float        get_node_float_value(const XMLNode& node, const float default_value = 0.0);
     static bool         get_node_bool_value(const XMLNode& node, const bool default_value = false);
+    static std::vector<XMLNode> get_child_nodes(const XMLNode& parent_node);
     static std::string  get_child_node_value(const XMLNode& parent_node, const std::string& child_node_name);
     static int          get_child_node_int_value(const XMLNode& parent_node, const std::string& child_node_name, const int default_value = 0);
     static float        get_child_node_float_value(const XMLNode& parent_node, const std::string& child_node_name, const float default_value = 0.0);

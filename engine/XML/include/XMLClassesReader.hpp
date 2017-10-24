@@ -17,4 +17,5 @@ class XMLClassesReader : public XMLReader
     void parse_class_skills(ClassPtr current_class, const XMLNode& skills_node);
     void parse_class_titles(ClassPtr current_class, const XMLNode& titles_node); 
     void parse_class_deity_dislike_multipliers(ClassPtr current_class, const XMLNode& deity_dislike_multipliers_node);
+    void parse_crowning_gifts(ClassPtr current_class, const XMLNode& crowning_node);
 };

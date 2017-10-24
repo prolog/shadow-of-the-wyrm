@@ -802,6 +802,12 @@
     <Filter Include="Source Files\engine\generators\settlements\source\unit_tests">
       <UniqueIdentifier>{4acb38fe-43e5-4765-ba0d-517d34e5a5ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\source\unit_tests">
+      <UniqueIdentifier>{d413f3f0-f1c3-4c59-91a8-1c81c5405c30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\maps\tiles\features\source\unit_tests">
+      <UniqueIdentifier>{044021fa-3748-4224-aa53-cc038f29b52f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -1482,9 +1488,6 @@
     <ClInclude Include="engine\conversion\include\CharacterDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\conversion\include\Conversion.hpp">
-      <Filter>Header Files\engine\conversion\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\conversion\include\EquipmentDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
@@ -2064,9 +2067,6 @@
     <ClInclude Include="world\tiles\include\TileFactory.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\FeatureFactory.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\ResistanceFactory.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -2107,12 +2107,6 @@
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\WorldMapDangerLevelCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\calculators\include\OverworldMapDangerLevelCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\calculators\include\UnderworldMapDangerLevelCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="world\tiles\include\TileProperties.hpp">
@@ -3960,6 +3954,102 @@
     <ClInclude Include="world\include\Status.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\MappingEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureStatusTypes.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\WetRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\DankRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\CaveInRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\WaterBreathingStatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\SummonMonstersEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\AquaticVegetationTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\SeabedTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\KelpTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\AquaticVegetationTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\ArtifactItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\FloatingTowerTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\FloatingTowerGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureSkillMarkerChecker.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\DiggingEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\scripting\include\MapScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ColourUtils.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\CombatCounterCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ScythingCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\DepthBasedDangerLevelCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\BaseDangerLevelCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\ShimmerColours.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\VoidTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\VoidGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\BasicFeature.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\UnknownMaterial.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Gases.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLBasicFeatureReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLBasicFeatureCMReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\EngineConversion.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Conversion.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4616,9 +4706,6 @@
     <ClCompile Include="engine\conversion\source\CharacterDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\conversion\source\Conversion.cpp">
-      <Filter>Source Files\engine\conversion\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\conversion\source\EquipmentDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
@@ -4633,9 +4720,6 @@
     </ClCompile>
     <ClCompile Include="engine\conversion\source\StatsDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\conversion\source\unit_tests\Conversion_test.cpp">
-      <Filter>Source Files\engine\conversion\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionConstants.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
@@ -5273,9 +5357,6 @@
     <ClCompile Include="world\tiles\features\source\Lock.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\FeatureFactory.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\ResistanceFactory.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
@@ -5515,18 +5596,6 @@
     </ClCompile>
     <ClCompile Include="engine\commands\inventory\source\unit_tests\InventoryKeyboardCommandMap_test.cpp">
       <Filter>Source Files\engine\commands\inventory\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\OverworldMapDangerLevelCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\UnderworldMapDangerLevelCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\OverworldMapDangerLevelCalculator_test.cpp">
-      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\UnderworldMapDangerLevelCalculator_test.cpp">
-      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\WorldMapDangerLevelCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
@@ -7403,9 +7472,6 @@
     <ClCompile Include="source\UnhandledExceptions.cpp">
       <Filter>Source Files\source</Filter>
     </ClCompile>
-    <ClCompile Include="source\SaveConverter.cpp">
-      <Filter>Source Files\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\actions\source\RangedCombatUtils.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
@@ -7825,6 +7891,150 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Status_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\MappingEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\WetRoomGenerator.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\DankRoomGenerator.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\CaveInRoomGenerator.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\WaterBreathingStatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\SummonMonstersEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\AquaticVegetationTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\SeabedTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\AquaticVegetationTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SeabedTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\AquaticVegetationTileConfiguration.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ArtifactItemFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\FloatingTowerTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\FloatingTowerTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\FloatingTowerGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureSkillMarkerChecker.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\DiggingEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\unit_tests\TileMagicChecker_test.cpp">
+      <Filter>Source Files\engine\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\MapScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ColourUtils.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\unit_tests\ColourUtils_test.cpp">
+      <Filter>Source Files\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CombatCounterCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\CombatCounterCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ScythingCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ScythingCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DepthBasedDangerLevelCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\BaseDangerLevelCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\BaseDangerLevelCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\DepthBasedDangerLevelCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\ShimmerColours.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\ShimmerColours_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ItemBreakageCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\VoidTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\VoidTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\VoidGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\BasicFeature.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\UnknownMaterial.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Gases.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\BasicFeature_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLBasicFeatureReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLBasicFeatureCMReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\unit_tests\EvilAltarManipulator_test.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\unit_tests\GoodAltarManipulator_test.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\unit_tests\NeutralAltarManipulator_test.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\EngineConversion.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Conversion.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\unit_tests\EngineConversion_test.cpp">
+      <Filter>Source Files\engine\conversion\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\unit_tests\Conversion_test.cpp">
+      <Filter>Source Files\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -12,10 +12,11 @@
 #include "SlownessStatusEffect.hpp"
 #include "SpellboundStatusEffect.hpp"
 #include "StatusEffectFactory.hpp"
+#include "StatusTypes.hpp"
 #include "StoneStatusEffect.hpp"
 #include "StunnedStatusEffect.hpp"
 #include "TimewalkStatusEffect.hpp"
-#include "StatusTypes.hpp"
+#include "WaterBreathingStatusEffect.hpp"
 
 using namespace std;
 
@@ -138,6 +139,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_SATED)
   {
     status_effect = std::make_shared<SatedStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_WATER_BREATHING)
+  {
+    status_effect = std::make_shared<WaterBreathingStatusEffect>();
   }
   else
   {

@@ -2,6 +2,7 @@
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DangerLevelCalculatorFactory.hpp"
 #include "DecisionStrategyProperties.hpp"
@@ -9,11 +10,13 @@
 #include "FeatureAction.hpp"
 #include "ForagablesCalculator.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
+#include "MapScript.hpp"
 #include "MapTypeQueryFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -30,6 +33,7 @@
 #include "TextMessages.hpp"
 #include "TileDescriber.hpp"
 #include "TileMovementConfirmation.hpp"
+#include "TileUtils.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -120,11 +124,11 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
   IMessageManager& pl_man = MM::instance();
   MapExitPtr map_exit = map->get_map_exit();
 
-  if (!MapUtils::can_exit_map(map_exit))
+  if (!MapUtils::can_exit_map(map_exit) && map)
   {
     if (creature->get_is_player())
     { 
-      string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_WORLD_MAP);
+      string movement_message = MovementTextKeys::get_cannot_exit_map_message(map->get_map_type());
 
       pl_man.add_new_message(movement_message);
       pl_man.send();
@@ -211,7 +215,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
           if (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness())
           {
             DigAction da;
-            movement_acv = da.dig_through(creature, wielded, map, creatures_new_tile, d);
+            movement_acv = da.dig_through(creature->get_id(), wielded, map, creatures_new_tile, new_coords, true);
           }
           else
           {
@@ -230,6 +234,13 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         movement_acv = 0;
       }
     }
+    else if (creatures_new_tile->has_race_restrictions() && 
+            !creatures_new_tile->is_race_allowed(creature->get_race_id()) && 
+            String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == false)
+    {
+      manager.add_new_message(StringTable::get(MovementTextKeys::ACTION_MOVE_RACE_NOT_ALLOWED));
+      manager.send();
+    }
     else
     {
       CurrentCreatureAbilities cca;
@@ -244,9 +255,6 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
           // Update the map info
           MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
-          TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
-        
-          add_tile_related_messages(creature, new_tile);
           movement_acv = get_action_cost_value(creature);
         }
 
@@ -454,13 +462,13 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
 
 // Generate and move to the new map using the tile type and subtype present
 // on the tile, rather than a source like the map exit.
-ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const int depth_increment)
+ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const ExitMovementType emt)
 {
   ActionCostValue action_cost_value = 0;
 
   if (creature && tile && map)
   {
-    return generate_and_move_to_new_map(creature, map, tile, tile->get_tile_type(), tile->get_tile_subtype(), depth_increment);
+    return generate_and_move_to_new_map(creature, map, map_exit, tile, tile->get_tile_type(), tile->get_tile_subtype(), {}, emt);
   }
 
   return action_cost_value;
@@ -468,7 +476,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
 // General version that can handle tile type/subtype from any source - the tile
 // itself, a map exit, etc.
-ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const int depth_increment)
+ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -478,6 +486,12 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
   {
     tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID, map->get_map_id());
   }
+
+  // The exits may have properties - these are typically set on custom maps
+  // for things like dungeon depth increments, etc.  The properties should 
+  // be copied over to the tile prior to the creation of the generator, so 
+  // they can be properly re-applied to the map, potentially.
+  TileUtils::copy_exit_properties_to_tile(tile);
 
   GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
 
@@ -501,7 +515,8 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     else
     {
       // Otherwise, if there's no custom map ID, generate the map:
-      IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type());
+      pair<bool, bool> override_depth = generator->override_depth_update_defaults();
+      IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type(), override_depth.second, emt);
       uint danger_level = calc->calculate(map);
 
       Dimensions dim = map->size();
@@ -510,11 +525,13 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
       // Check to see if the depth should be updated.  For things like fields
       // and forests, it shouldn't, but for dungeons/caverns/etc., it should.
-      if (mtq && mtq->should_update_depth())
+      if (mtq && (mtq->should_update_depth() || (override_depth.first && override_depth.second)))
       {
         // If the tile has a set depth associated with it, then use that.
         // Otherwise, use the specified depth increment.
-        string initial_depth = tile->get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH);
+        string initial_depth = tile->get_additional_property(MapProperties::MAP_PROPERTIES_DEPTH);
+        int depth_increment = MapUtils::calculate_depth_delta(map, tile, emt);
+
         if (!initial_depth.empty())
         {
           int tile_initial_depth = String::to_int(initial_depth);
@@ -525,7 +542,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
           depth.set_current(depth.get_current() + depth_increment);
         }
 
-        if (depth_increment > 0) 
+        if (depth_increment != 0) 
         {
           generator->set_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, std::to_string(depth_increment));
         }
@@ -538,8 +555,41 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       int pct_chance_herbs = fc.calculate_pct_chance_herbs(creature);
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES, to_string(pct_chance_foragables));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS, to_string(pct_chance_herbs));
-      
+      generator->set_additional_property(MapProperties::MAP_PROPERTIES_EXIT_MOVEMENT_TYPE, to_string(static_cast<int>(emt)));
+
       new_map = generator->generate_and_initialize(danger_level, depth);
+
+      // If a map exit's been provided, check to see if there's an event
+      // scripts map that needs to be set on the map after generation.
+      if (map_exit != nullptr)
+      {
+        EventScriptsMap me_esm = map_exit->get_event_scripts();
+
+        if (!me_esm.empty())
+        {
+          new_map->set_event_scripts(me_esm);
+        }
+      }
+
+      EventScriptsMap esm = new_map->get_event_scripts();
+      auto es_it = esm.find(MapEventScripts::MAP_EVENT_SCRIPT_CREATE);
+
+      if (new_map && es_it != esm.end())
+      {
+        ScriptDetails sd = es_it->second;
+        ScriptEngine& se = Game::instance().get_script_engine_ref();
+        MapScript ms;
+
+        if (RNG::percent_chance(sd.get_chance()))
+        {
+          // Ensure the map's in the registry, so that if the script needs to
+          // reference it, the map can be retrieved.
+          game.get_map_registry_ref().set_map(new_map->get_map_id(), new_map);
+
+          // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
+          ms.execute(se, sd.get_script(), new_map);
+        }
+      }
 
       if (new_map->get_permanent())
       {
@@ -561,8 +611,10 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       }
     }
                 
-    // - Set the map's MapExitPtr to point to the previous map.
-    //   But only if it's an overworld map.
+    // Set the map's MapExitPtr to point to the previous map.  But only if 
+    // it's an overworld map.  Underworld maps (dungeons, sewers, etc)
+    // will have stairway exits.  Underwater maps (Telari and others)
+    // TBD.
     if (new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
     {
       MapExitUtils::add_exit_to_map(new_map, map->get_map_id());
@@ -578,14 +630,11 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     // to a brand-new map, as tile properties will be automatically 
     // handled during map generation, and will be removed after creating
     // items and creatures.
+    add_initial_map_messages(creature, new_map, tile_type);
     handle_properties_and_move_to_new_map(tile, map, new_map);
-                
-    add_initial_map_messages(creature, new_map, tile_type);                
-    add_tile_related_messages(creature, MapUtils::get_tile_for_creature(new_map, creature));
-
     action_cost_value = get_action_cost_value(creature);
   }
-
+ 
   return action_cost_value;
 }
 
@@ -674,21 +723,7 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
 
 void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
 {
-  Game& game = Game::instance();
-  
-  if (new_map)
-  {
-    // Remove the creature from its present tile, and from the temporary
-    // vector of creatures as well.
-    CreaturePtr current_creature = current_tile->get_creature();
-    MapUtils::remove_creature(old_map, current_creature);
-
-    MapUtils::place_creature_on_previous_location(new_map, current_creature, current_creature->get_id());
-
-    // Set the new map to be loaded in the next iteration of the game loop.
-    game.set_current_map(new_map);
-    game.reload_map();    
-  }
+  GameUtils::move_to_new_map(current_tile, old_map, new_map);
 }
 
 void MovementAction::handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit)
@@ -769,96 +804,6 @@ ActionCostValue MovementAction::descend(CreaturePtr creature)
   }
 
   return movement_acv;
-}
-
-// Add any messages after moving to a particular tile:
-// - Should a message be displayed about the tile automatically? (staircases, etc)
-//       If so, add it.
-// - Are there any items on the tile?
-//       If so, add the appropriate message.
-void MovementAction::add_tile_related_messages(const CreaturePtr& creature, TilePtr tile)
-{
-  bool tile_message_added = add_message_about_tile_if_necessary(creature, tile);
-  bool item_message_added = add_message_about_items_on_tile_if_necessary(creature, tile);
-
-  if (tile_message_added || item_message_added)
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-    manager.send();
-  }
-}
-
-// Add a message about the tile if necessary.
-bool MovementAction::add_message_about_tile_if_necessary(const CreaturePtr& creature, TilePtr tile)
-{
-  bool msg_added = false;
-
-  if (creature && tile && creature->get_is_player())
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-
-    if (tile->display_description_on_arrival() || tile->has_extra_description())
-    {
-      TileDescriber td(tile);
-      manager.add_new_message(td.describe());
-      msg_added = true;
-    }
-    else if (tile->has_inscription())
-    {
-      manager.add_new_message(TextMessages::get_inscription_message(tile->get_inscription_sid()));
-      msg_added = true;
-    }
-  }
-
-  return msg_added;
-}
-
-// Add a message if the creature is the player, and if there are items on
-// the tile.
-bool MovementAction::add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, TilePtr tile)
-{
-  bool msg_added = false;
-
-  // Ensure that a message about the item is only added when the creature
-  // is not blind.
-  CurrentCreatureAbilities cca;
-
-  if (creature && creature->get_is_player() && cca.can_see(creature, false))
-  {
-    IInventoryPtr tile_items = tile->get_items();
-    
-    if (!tile_items->empty())
-    {
-      string item_message;
-      
-      // One item
-      if (tile_items->size() == 1)
-      {
-        ItemPtr item_on_tile = tile_items->at(0);
-        
-        if (item_on_tile)
-        {
-          CurrentCreatureAbilities cca;
-          item_message = TextMessages::get_item_on_ground_description_message(!cca.can_see(creature), item_on_tile);
-        }
-      }
-      // Multiple items
-      else
-      {
-        item_message = StringTable::get(MovementTextKeys::ITEMS_ON_TILE);
-      }
-      
-      // Send the message
-      if (!item_message.empty())
-      {
-        IMessageManager& manager = MM::instance();
-        manager.add_new_message(item_message);
-        msg_added = true;
-      }
-    }
-  }
-
-  return msg_added;
 }
 
 void MovementAction::add_cannot_escape_message(const CreaturePtr& creature)

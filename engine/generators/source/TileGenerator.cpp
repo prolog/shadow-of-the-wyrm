@@ -1,10 +1,12 @@
+#include "AllTiles.hpp"
 #include "Game.hpp"
+#include "InscriptionTextKeys.hpp"
+#include "ItemManager.hpp"
 #include "Log.hpp"
+#include "RNG.hpp"
 #include "TileConfigurationFactory.hpp"
 #include "TileGenerator.hpp"
-#include "ItemManager.hpp"
 #include "tiles.hpp"
-#include "AllTiles.hpp"
 
 using namespace std;
 
@@ -31,7 +33,7 @@ bool TileGenerator::get_generate_items() const
 TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type, const map<string, string>& properties)
 {
   // To make it easier to remember what needs to be updated:
-  static_assert(TileType::TILE_TYPE_LAST == TileType(50), "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(54), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   TilePtr result_tile;
 
@@ -71,8 +73,16 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       result_tile = std::make_shared<ShoalsTile>();
       break;
     case TileType::TILE_TYPE_DUNGEON:
+    {
       result_tile = std::make_shared<DungeonTile>();
+
+      if (result_tile != nullptr && RNG::x_in_y_chance(1, 400))
+      {
+        result_tile->set_inscription_sid(InscriptionTextKeys::get_random_inscription_sid());
+      }
+
       break;
+    }
     case TileType::TILE_TYPE_ROCK:
       result_tile = std::make_shared<RockTile>();
       break;
@@ -189,6 +199,18 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       break;
     case TileType::TILE_TYPE_SHRINE:
       result_tile = std::make_shared<ShrineTile>();
+      break;
+    case TileType::TILE_TYPE_SEABED:
+      result_tile = std::make_shared<SeabedTile>();
+      break;
+    case TileType::TILE_TYPE_AQUATIC_VEGETATION:
+      result_tile = std::make_shared<AquaticVegetationTile>();
+      break;
+    case TileType::TILE_TYPE_FLOATING_TOWER:
+      result_tile = std::make_shared<FloatingTowerTile>();
+      break;
+    case TileType::TILE_TYPE_VOID:
+      result_tile = std::make_shared<VoidTile>();
       break;
     default:
       break;

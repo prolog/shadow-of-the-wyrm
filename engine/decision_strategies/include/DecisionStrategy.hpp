@@ -1,8 +1,10 @@
 #pragma once
 #include <memory>
+#include <set>
 #include "Command.hpp"
 #include "CommandFactory.hpp"
 #include "ISerializable.hpp"
+#include "ItemTypes.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "Map.hpp"
 #include "ThreatRatings.hpp"
@@ -19,6 +21,12 @@ class DecisionStrategy : public ISerializable
     virtual ~DecisionStrategy() {};
     virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, std::shared_ptr<Map> view_map = nullptr /* optional - only used when getting a decision on the main map, and only for non-player characters. */, int* key_p = 0) = 0;
     virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p = 0) = 0;
+
+    virtual void set_autopickup(const bool new_autopickup);
+    virtual bool get_autopickup() const;
+
+    virtual void set_autopickup_types(const std::set<ItemType>& new_autopickup_types);
+    virtual std::set<ItemType> get_autopickup_types() const;
 
     virtual uint get_count(const uint max_count) = 0; // For turns to wait, pick up, drop, etc.
     virtual bool get_confirmation(const bool confirmation_default_value = false) = 0;
@@ -56,6 +64,8 @@ class DecisionStrategy : public ISerializable
     ThreatRatings threat_ratings;
     ControllerPtr controller;
     std::map<std::string, std::string> properties;
+    bool autopickup;
+    std::set<ItemType> autopickup_types;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

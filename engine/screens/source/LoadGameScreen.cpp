@@ -1,9 +1,11 @@
 #include <vector>
 #include "Conversion.hpp"
+#include "Game.hpp"
 #include "LoadGameScreen.hpp"
 #include "OptionsComponent.hpp"
 #include "PromptTextKeys.hpp"
 #include "Serialization.hpp"
+#include "Setting.hpp"
 #include "StringTable.hpp"
 #include "TextComponent.hpp"
 #include "TextKeys.hpp"
@@ -26,7 +28,8 @@ void LoadGameScreen::initialize()
 
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
-  vector<pair<string, string>> filenames = Serialization::get_save_file_names();
+  bool single_user_mode = Game::instance().get_settings_ref().get_setting_as_bool(Setting::SINGLE_USER_MODE);
+  vector<pair<string, string>> filenames = Serialization::get_save_file_names(single_user_mode);
 
   int current_id = 0;
   for (vector<pair<string,string>>::iterator f_it = filenames.begin(); (f_it != filenames.end() && current_id < 25); f_it++)

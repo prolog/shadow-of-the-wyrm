@@ -76,6 +76,9 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     parse_class_skills(current_class, skills_node);
     parse_class_titles(current_class, titles_node);
     
+    XMLNode crowning_node = XMLUtils::get_next_element_by_local_name(class_node, "Crowning");
+    parse_crowning_gifts(current_class, crowning_node);
+
     float piety_cost_multiplier = XMLUtils::get_child_node_float_value(class_node, "PietyCostMultiplier", current_class->get_piety_cost_multiplier());
     current_class->set_piety_cost_multiplier(piety_cost_multiplier);
 
@@ -191,3 +194,8 @@ void XMLClassesReader::parse_class_deity_dislike_multipliers(ClassPtr current_cl
   }
 }
 
+void XMLClassesReader::parse_crowning_gifts(ClassPtr current_class, const XMLNode& crowning_node)
+{
+  vector<string> crowning_gifts = get_crowning_gifts(crowning_node);
+  current_class->set_crowning_gifts(crowning_gifts);
+}

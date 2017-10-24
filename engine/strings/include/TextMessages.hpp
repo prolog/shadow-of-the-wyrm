@@ -34,6 +34,7 @@ class TextMessages
     static std::string get_engraving_message(const std::string& engraving_sid);
     static std::string get_inscription_message(const std::string& inscription_sid);
     static std::string get_replacement_message(const std::string& message, const std::string& replace);
+    static std::string get_bool_sid(const bool val);
 
   protected:
     TextMessages();
@@ -47,6 +48,7 @@ class TextMessages
     static const std::string ITEM_PICK_UP_MESSAGE_MONSTER;
     static const std::string ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER;
     static const std::string ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER;
+    static const std::string ITEM_ON_GROUND_BLIND_DESCRIPTION_MESSAGE;
     static const std::string ITEM_ON_GROUND_DESCRIPTION_MESSAGE;
     static const std::string CURRENCY_MESSAGE_SINGLE;
     static const std::string CURRENCY_MESSAGE_MULTIPLE;

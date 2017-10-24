@@ -2,6 +2,7 @@
 
 enum struct AttackType
 {
+  ATTACK_TYPE_UNDEFINED = -1,
   ATTACK_TYPE_MELEE_PRIMARY = 0,
   ATTACK_TYPE_MELEE_SECONDARY = 1,
   ATTACK_TYPE_RANGED = 2,
@@ -9,4 +10,11 @@ enum struct AttackType
   // Used for attacks like kicking, etc., which are always unarmed and make 
   // no use of anything in the inventory or equipment.
   ATTACK_TYPE_MELEE_TERTIARY_UNARMED = 4 
+};
+
+enum struct AttackSequenceType
+{
+  ATTACK_SEQUENCE_INITIAL = 0,
+  ATTACK_SEQUENCE_COUNTER = 1,
+  ATTACK_SEQUENCE_FOLLOW_THROUGH = 2
 };

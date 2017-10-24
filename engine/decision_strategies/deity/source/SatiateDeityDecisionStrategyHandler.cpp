@@ -1,6 +1,6 @@
-#include "Conversion.hpp"
 #include "DeityDecisionConstants.hpp"
 #include "DeityTextKeys.hpp"
+#include "EngineConversion.hpp"
 #include "SatiateDeityDecisionStrategyHandler.hpp"
 
 using std::string;

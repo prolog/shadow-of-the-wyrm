@@ -8,8 +8,12 @@ EvilAltarManipulator::EvilAltarManipulator(FeaturePtr feature)
 {
 }
 
-void EvilAltarManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+string EvilAltarManipulator::get_creature_action_key() const
 {
-  Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_DESECRATE_EVIL, false);
+  return CreatureActionKeys::ACTION_DESECRATE_EVIL;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/EvilAltarManipulator_test.cpp"
+#endif
 

@@ -20,6 +20,8 @@ class SpellcastingAction : public IActionManager
     void add_invalid_spellcasting_location_message(CreaturePtr creature) const;
     void add_insufficient_power_message(CreaturePtr creature) const;
     void add_spell_bonus_increased_message(CreaturePtr creature) const;
+    void add_no_deities_message(CreaturePtr creature) const;
+    void train_skills(CreaturePtr creature, const Spell& spell) const;
 
     std::pair<std::string, ActionCostValue> cast_spell_on_valid_map_type(CreaturePtr creature) const;
     std::pair<bool, std::pair<std::string, ActionCostValue>> process_spellcasting_selection(CreaturePtr creature) const;
@@ -38,4 +40,7 @@ class SpellcastingAction : public IActionManager
 
     // Update the spell's bonus information.
     void update_spell_bonus(CreaturePtr caster, const Spell& spell) const;
+
+    static const int PCT_CHANCE_MARK_MAGIC;
+    static const int PCT_CHANCE_MARK_CATEGORY;
 };

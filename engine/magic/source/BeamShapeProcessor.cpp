@@ -37,7 +37,7 @@ void BeamShapeProcessor::initialize_cardinal_reflection_map()
                                                            {Direction::DIRECTION_SOUTH, Direction::DIRECTION_NORTH}};
 }
 
-pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+pair<vector<pair<Coordinate, TilePtr>>, Animation> BeamShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
   Animation animation;
 
@@ -46,21 +46,21 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   vector<Coordinate> beam_coords = CoordUtils::get_beam_coordinates(current_coord, d, radius);
 
   // Element 0, 1, ... in each of these vectors is for a particular beam.
-  vector<vector<TilePtr>> per_beam_affected_tiles;
+  vector<vector<pair<Coordinate, TilePtr>>> per_beam_affected_coords_and_tiles;
   vector<MovementPath> per_beam_movement_paths;
 
   for (const Coordinate& beam_start_coord : beam_coords)
   {
     auto beam_pair = create_beam(map, spell, beam_start_coord, caster_coord, d);
 
-    per_beam_affected_tiles.push_back(beam_pair.first);
+    per_beam_affected_coords_and_tiles.push_back(beam_pair.first);
     per_beam_movement_paths.push_back(beam_pair.second);
   }
 
   size_t largest_at = 0;
   size_t largest_mp = 0;
 
-  for (const auto& at : per_beam_affected_tiles)
+  for (const auto& at : per_beam_affected_coords_and_tiles)
   {
     size_t cur_size = at.size();
 
@@ -83,7 +83,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   // Now that the largest number of affected tiles/movement path has been
   // determined, loop through the collections.  For 0 to the largest_size-1,
   // create a combined list of affected tiles and movement paths.
-  auto multi_beam_pair = create_multi_beam(per_beam_affected_tiles, per_beam_movement_paths, largest_at, largest_mp);
+  auto multi_beam_pair = create_multi_beam(per_beam_affected_coords_and_tiles, per_beam_movement_paths, largest_at, largest_mp);
 
   // JCD TODO: For each coord in coords, create the beam, then combine them to
   // make a reasonable animation...
@@ -100,10 +100,10 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   return create_affected_tiles_and_animation(caster, map, multi_beam_pair.first, multi_beam_pair.second);
 }
 
-pair<vector<TilePtr>, MovementPath> BeamShapeProcessor::create_beam(MapPtr map, const Spell& spell, const Coordinate& coord, const Coordinate& caster_coord, const Direction d)
+pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BeamShapeProcessor::create_beam(MapPtr map, const Spell& spell, const Coordinate& coord, const Coordinate& caster_coord, const Direction d)
 {
-  pair<vector<TilePtr>, MovementPath> results;
-  vector<TilePtr> affected_tiles;
+  pair<vector<pair<Coordinate, TilePtr>>, MovementPath> results;
+  vector<pair<Coordinate, TilePtr>> affected_coords_and_tiles;
   MovementPath movement_path;
   TileMagicChecker tmc;
   BeamSpellTranslator bst;
@@ -129,13 +129,13 @@ pair<vector<TilePtr>, MovementPath> BeamShapeProcessor::create_beam(MapPtr map, 
     }
 
     // Check to see if the tile blocks the spell.
-    if (tmc.does_tile_block_spell(tile))
+    if (tmc.does_tile_block_spell(tile, spell))
     {
       if (should_beam_reflect())
       {
         // The beam is reflective. Update the direction based on the the
         // incoming direction and map characteristics.
-        current_direction = get_new_beam_direction_after_impact(current_direction, c, map);
+        current_direction = get_new_beam_direction_after_impact(current_direction, c, map, spell);
 
         // Ensure that each reflection also takes one off the range (again,
         // to prevent looping indefinitely).
@@ -164,23 +164,23 @@ pair<vector<TilePtr>, MovementPath> BeamShapeProcessor::create_beam(MapPtr map, 
     // Update the current coordinate in the beam, and add the tile to the
     // list of affected tiles.
     current_coord = c;
-    affected_tiles.push_back(tile);
+    affected_coords_and_tiles.push_back(make_pair(current_coord, tile));
     vector<Coordinate> beam_vec;
     beam_vec.push_back(current_coord);
     movement_path.push_back({make_pair(dt, current_coord)});
     count++; // Didn't bounce - update the spell range counter.
   }
 
-  results.first = affected_tiles;
+  results.first = affected_coords_and_tiles;
   results.second = movement_path;
 
   return results;
 }
 
-pair<vector<TilePtr>, MovementPath> BeamShapeProcessor::create_multi_beam(const vector<vector<TilePtr>>& per_beam_affected_tiles, const vector<MovementPath>& per_beam_movement_paths, const size_t largest_at, const size_t largest_mp)
+pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BeamShapeProcessor::create_multi_beam(const vector<vector<pair<Coordinate, TilePtr>>>& per_beam_affected_coords_and_tiles, const vector<MovementPath>& per_beam_movement_paths, const size_t largest_at, const size_t largest_mp)
 {
-  pair<vector<TilePtr>, MovementPath> result;
-  vector<TilePtr> final_at;
+  pair<vector<pair<Coordinate, TilePtr>>, MovementPath> result;
+  vector<pair<Coordinate, TilePtr>> final_act;
   MovementPath final_mp;
 
   // Create the combined vector of affected tiles.
@@ -188,13 +188,13 @@ pair<vector<TilePtr>, MovementPath> BeamShapeProcessor::create_multi_beam(const 
   // is okay.
   for (size_t i = 0; i < largest_at; i++)
   {
-    for (const auto& v_at : per_beam_affected_tiles)
+    for (const auto& v_act : per_beam_affected_coords_and_tiles)
     {
       // Not all beams might be the same size due to obstacles, etc., so
       // add a safety check.
-      if (i < v_at.size())
+      if (i < v_act.size())
       {
-        final_at.push_back(v_at[i]);
+        final_act.push_back(v_act[i]);
       }
     }
   }
@@ -221,12 +221,11 @@ pair<vector<TilePtr>, MovementPath> BeamShapeProcessor::create_multi_beam(const 
     final_mp.push_back(frame_mp);
   }
 
-  result.first = final_at;
+  result.first = final_act;
   result.second = final_mp;
 
   return result;
 }
-
 
 // By default, beams do not reflect - only instances of ReflectiveBeam should.
 bool BeamShapeProcessor::should_beam_reflect() const
@@ -235,7 +234,7 @@ bool BeamShapeProcessor::should_beam_reflect() const
 }
 
 // Get the new beam direction after an impact.
-Direction BeamShapeProcessor::get_new_beam_direction_after_impact(const Direction old_direction, const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_new_beam_direction_after_impact(const Direction old_direction, const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   if (DirectionUtils::is_cardinal(old_direction))
   {
@@ -246,26 +245,26 @@ Direction BeamShapeProcessor::get_new_beam_direction_after_impact(const Directio
   // (NW, SE, etc).  Figure out the correct reflection direction.
   if (old_direction == Direction::DIRECTION_NORTH_EAST)
   {
-    return get_ne_reflection(current_coord, map);
+    return get_ne_reflection(current_coord, map, spell);
   }
   else if (old_direction == Direction::DIRECTION_NORTH_WEST)
   {
-    return get_nw_reflection(current_coord, map);
+    return get_nw_reflection(current_coord, map, spell);
   }
   else if (old_direction == Direction::DIRECTION_SOUTH_EAST)
   {
-    return get_se_reflection(current_coord, map);
+    return get_se_reflection(current_coord, map, spell);
   }
   else if (old_direction == Direction::DIRECTION_SOUTH_WEST)
   {
-    return get_sw_reflection(current_coord, map);
+    return get_sw_reflection(current_coord, map, spell);
   }
 
   // Should never actually get to this, based on the above logic:
   return old_direction;
 }
 
-Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
 
@@ -281,7 +280,7 @@ Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord,
     // Are we firing at a northern wall?  Reflect south-east.
     TilePtr north_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_WEST));
 
-    if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile))
+    if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_SOUTH_EAST;
     }
@@ -294,7 +293,7 @@ Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord,
   return reflection;
 }
 
-Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
 
@@ -310,7 +309,7 @@ Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord,
     // Are we firing at a northern wall?  Reflect south-west.
     TilePtr north_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_EAST));
 
-    if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile))
+    if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_SOUTH_WEST;
     }
@@ -323,7 +322,7 @@ Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord,
   return reflection;
 }
 
-Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
   
@@ -339,7 +338,7 @@ Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord,
     // Are we firing at a southern wall?  Reflect north-east.
     TilePtr south_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_WEST));
 
-    if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile))
+    if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_NORTH_EAST;
     }
@@ -352,7 +351,7 @@ Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord,
   return reflection;
 }
 
-Direction BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord, MapPtr map)
+Direction BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
 
@@ -368,7 +367,7 @@ Direction BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord,
     // Are we firing at a southern wall?  Reflect north-east.
     TilePtr south_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_EAST));
 
-    if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile))
+    if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_NORTH_WEST;
     }

@@ -99,6 +99,16 @@ Skills Class::get_skills() const
   return skills;
 }
 
+void Class::set_crowning_gifts(const vector<string>& new_crowning_gifts)
+{
+  crowning_gifts = new_crowning_gifts;
+}
+
+vector<string> Class::get_crowning_gifts() const
+{
+  return crowning_gifts;
+}
+
 void Class::set_piety_cost_multiplier(const float new_piety_cost_multiplier)
 {
   piety_cost_multiplier = new_piety_cost_multiplier;

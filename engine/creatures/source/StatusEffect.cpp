@@ -27,6 +27,12 @@ StatusEffect::~StatusEffect()
 {
 }
 
+// Most status effects are negative.
+bool StatusEffect::is_negative() const
+{
+  return true;
+}
+
 void StatusEffect::set_source_id(const string& new_source_id)
 {
   source_id = new_source_id;
@@ -87,7 +93,7 @@ bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
     int duration = status_calc->calculate_duration_in_minutes(creature);
     double eff_dur_sec = current_seconds_since_game_start + (duration * 60);
 
-    Modifier modifier = get_base_modifier(creature);
+    Modifier modifier = get_base_modifier(creature, danger_level);
     modifier.set_status(status_identifier, true, danger_level);
 
     ModifyStatisticsEffect mse;
@@ -220,7 +226,7 @@ void StatusEffect::undo(CreaturePtr creature) const
   if (creature)
   {
     creature->remove_status(get_status_identifier());
-    CreatureUtils::mark_modifiers_for_deletion(creature, get_status_identifier());
+    CreatureUtils::mark_modifiers_for_deletion(creature, get_status_identifier(), StatusRemovalType::STATUS_REMOVAL_UNDO);
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
 
@@ -287,7 +293,7 @@ void StatusEffect::tick(CreaturePtr creature, const int danger_level) const
 {
 }
 
-Modifier StatusEffect::get_base_modifier(CreaturePtr creature) const
+Modifier StatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
 {
   Modifier m;
   return m;

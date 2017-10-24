@@ -14,6 +14,11 @@ FlyingStatusEffect::FlyingStatusEffect()
   status_calc = std::make_shared<FlyingCalculator>();
 }
 
+bool FlyingStatusEffect::is_negative() const
+{
+  return false;
+}
+
 string FlyingStatusEffect::get_player_application_message() const
 {
   string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_FLYING);

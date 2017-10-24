@@ -1,4 +1,5 @@
 #include "DeityTextKeys.hpp"
+#include "ClassManager.hpp"
 #include "CrowningDeityDecisionStrategyHandler.hpp"
 #include "ItemManager.hpp"
 #include "ReligionConstants.hpp"
@@ -83,9 +84,9 @@ void CrowningDeityDecisionStrategyHandler::add_crowning_gift(CreaturePtr creatur
   ItemPtr crowning_gift;
   bool added_gift = false;
 
-  if (deity && tile)
+  if (deity != nullptr && tile != nullptr && creature != nullptr)
   {
-    vector<string> gifts = deity->get_crowning_gifts();
+    vector<string> gifts = select_crowning_gifts(creature, deity);
     shuffle(gifts.begin(), gifts.end(), RNG::get_engine());
 
     for (const string& gift : gifts)
@@ -125,3 +126,27 @@ string CrowningDeityDecisionStrategyHandler::get_message_sid() const
   return message_sid;
 }
 
+vector<string> CrowningDeityDecisionStrategyHandler::select_crowning_gifts(CreaturePtr creature, DeityPtr deity)
+{
+  vector<string> gifts;
+
+  if (creature != nullptr && deity != nullptr)
+  {
+    if (RNG::percent_chance(deity->get_pct_chance_class_crowning()))
+    {
+      ClassManager cm;
+      ClassPtr cur_class = cm.get_class(creature->get_class_id());
+
+      if (cur_class != nullptr)
+      {
+        gifts = cur_class->get_crowning_gifts();
+      }
+    }
+    else
+    {
+      gifts = deity->get_crowning_gifts();
+    }
+  }
+
+  return gifts;
+}

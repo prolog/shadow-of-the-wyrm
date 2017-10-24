@@ -1,8 +1,13 @@
 #include "DisfiguredCalculator.hpp"
 #include "Random.hpp"
 
+using namespace std;
+
 const int DisfiguredCalculator::BASE_DISFIGURED_DURATION_MEAN = 20;
 const int DisfiguredCalculator::BASE_DISFIGURED_PCT_CHANCE = 15;
+const int DisfiguredCalculator::BASE_REDUCTION_PCT_MIN = 20;
+const int DisfiguredCalculator::BASE_REDUCTION_PCT_MAX = 40;
+const int DisfiguredCalculator::REDUCTION_PCT_MAX = 90;
 
 // For every 7 points of health, the percent chance of being disfigured
 // (reduced stats) decreases by 1.
@@ -31,6 +36,19 @@ int DisfiguredCalculator::calculate_duration_in_minutes(CreaturePtr creature) co
   int duration = p.next();
 
   return duration;
+}
+
+pair<int, int> DisfiguredCalculator::calculate_reduction_pcts(const int danger_level) const
+{
+  pair<int, int> reduction_pcts(BASE_REDUCTION_PCT_MIN, BASE_REDUCTION_PCT_MAX);
+
+  if (danger_level > 0)
+  {
+    int dlvl = std::min<int>(danger_level, CreatureConstants::MAX_CREATURE_LEVEL);
+    reduction_pcts = { std::min<int>(BASE_REDUCTION_PCT_MIN + (dlvl / 2), REDUCTION_PCT_MAX), std::min<int>(BASE_REDUCTION_PCT_MAX + danger_level, REDUCTION_PCT_MAX) };
+  }
+
+  return reduction_pcts;
 }
 
 #ifdef UNIT_TESTS

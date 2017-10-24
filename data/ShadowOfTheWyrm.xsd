@@ -13,6 +13,7 @@
 			<xs:element ref="tns:Tiles"/>
 			<xs:element ref="tns:Traps"/>
 			<xs:element ref="tns:Items"/>
+			<xs:element ref="tns:Features"/>
 			<xs:element ref="tns:Calendar"/>
 			<xs:element ref="tns:Scripts"/>
 		</xs:sequence>
@@ -138,6 +139,10 @@
 			<xs:element name="SewerComplexTile" type="tns:Tile"/>
 			<xs:element name="SewerTile" type="tns:Tile"/>
 			<xs:element name="ShrineTile" type="tns:Tile"/>
+			<xs:element name="SeabedTile" type="tns:Tile"/>
+			<xs:element name="AquaticVegetationTile" type="tns:Tile"/>
+			<xs:element name="FloatingTowerTile" type="tns:Tile"/>
+			<xs:element name="VoidTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -175,6 +180,30 @@
 	<!-- Books -->
 	<!-- Rings -->
 </xs:element>
+<xs:element name="Features">
+	<xs:annotation>
+		<xs:documentation>Basic features (have descriptions but cannot be manipulated).</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:Feature" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Feature">
+	<xs:annotation>
+		<xs:documentation>A basic feature, consisting of a symbol, colour, and description SID.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Material" type="tns:MaterialType"/>
+			<xs:element name="Symbol" type="xs:string"/>
+			<xs:element name="Colour" type="tns:ColourType"/>
+			<xs:element name="DescriptionSID" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="tns:Identifier" use="required"/>
+	</xs:complexType>
+</xs:element>
 <xs:element name="Calendar">
 	<xs:annotation>
 		<xs:documentation>All notable in-game days.  The player gets a notification when the day arrives.</xs:documentation>
@@ -209,6 +238,7 @@
 			<xs:element name="DeityInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="Dislikes" type="tns:TrackedDeityActions"/>
 			<xs:element name="Crowning" type="tns:Crowning"/>
+			<xs:element name="ClassCrowningChance" type="xs:integer"/>
 			<xs:element name="Summons" type="tns:Summons"/>
 			<xs:element name="WorshipSiteType" type="tns:WorshipSiteType"/>
 			<xs:element name="AngerScript" type="xs:string"/>
@@ -221,6 +251,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="Slayable" type="xs:boolean"/>
 			<xs:element name="LeavesCorpse" type="xs:boolean"/>
 			<xs:element name="CorpsePoisoned" type="xs:boolean"/>
 			<xs:element name="Splits" type="xs:boolean"/>
@@ -246,6 +277,7 @@
 			<xs:element name="Corporeal" type="xs:boolean"/>
 			<xs:element name="Undead" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="Flying" type="xs:boolean"/>
+			<xs:element name="WaterBreathing" type="xs:boolean" minOccurs="0"/>
 			<xs:element ref="tns:RaceInitialDeities"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
@@ -437,6 +469,7 @@
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element ref="tns:Titles"/>
+			<xs:element name="Crowning" type="tns:Crowning"/>			
 			<xs:element name="PietyCostMultiplier" type="tns:NonNegativeDecimal" minOccurs="0"/>
 			<xs:element name="PietyRegenBonus" type="xs:integer" minOccurs="0"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
@@ -791,6 +824,7 @@
 		<!-- Item is an item id, and used if the trap has a chance of generating an item (e.g, an arrow, a rock) when triggered. -->
 		<xs:element name="Item" type="tns:Identifier" minOccurs="0"/>
 		<xs:element name="Damage" type="tns:Damage"/>
+		<xs:element name="Effect" type="tns:EffectType" minOccurs="0"/>
 		<xs:element name="Uses" type="xs:integer"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>
@@ -878,6 +912,8 @@
 			<xs:attribute name="vorpal" type="xs:boolean" use="optional" default="0"/>
 			<xs:attribute name="draining" type="xs:boolean" use="optional" default="0"/>
 			<xs:attribute name="ethereal" type="xs:boolean" use="optional" default="0"/>
+			<xs:attribute name="scything" type="xs:boolean" use="optional" default="0"/>
+			<xs:attribute name="explosive" type="xs:boolean" use="optional" default="0"/>
 		</xs:extension>
 	</xs:complexContent>
 </xs:complexType>
@@ -1179,7 +1215,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="49"/>
+		<xs:maxInclusive value="53"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="Rarity">
@@ -1306,7 +1342,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="1"/>
-		<xs:maxExclusive value="99"/>
+		<xs:maxExclusive value="999"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="MaterialType">
@@ -1328,11 +1364,13 @@
 			11 = Ivory
 			12 = Bone
 			13 = Gold
+			14 = Gases
+			15 = Unknown
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="13"/>
+		<xs:maxInclusive value="15"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="ColourType">
@@ -1532,11 +1570,14 @@
 				Uncursing = 21
 				Detect Traps = 22
 				Bless = 23
+				Mapping = 24
+				Summon Monsters = 25
+				Digging = 26
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="23"/>
+		<xs:maxInclusive value="26"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">
@@ -1682,6 +1723,7 @@
 		<xs:enumeration value="_incorp"/>
 		<xs:enumeration value="_flying"/>
 		<xs:enumeration value="_sat"/>
+		<xs:enumeration value="_wb"/>
 	</xs:restriction>
 </xs:simpleType>
 <!-- See CreatureFeatures.hpp -->

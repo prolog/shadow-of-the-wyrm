@@ -10,7 +10,7 @@
 #include "CreatureUtils.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
-#include "FeatureFactory.hpp"
+#include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GeneratorUtils.hpp"
@@ -130,6 +130,11 @@ TilePtr get_tile(const string& map_id, const Coordinate& c)
   MapRegistry& mr = game.get_map_registry_ref();
   MapPtr map = mr.get_map(map_id);
 
+  if (map_id.empty() && map == nullptr)
+  {
+    map = game.get_current_map();
+  }
+
   TilePtr tile;
 
   if (map)
@@ -144,6 +149,7 @@ TilePtr get_tile(const string& map_id, const Coordinate& c)
 void ScriptEngine::register_api_functions()
 {
   lua_register(L, "add_message_with_pause", add_message_with_pause);
+  lua_register(L, "clear_messages", clear_messages);
   lua_register(L, "clear_and_add_message", clear_and_add_message);
   lua_register(L, "add_message", add_message);
   lua_register(L, "add_fov_message", add_fov_message);
@@ -158,8 +164,11 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
   lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
+  lua_register(L, "add_object_to_map", add_object_to_map);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
+  lua_register(L, "add_basic_feature_to_map", add_basic_feature_to_map);
+  lua_register(L, "add_feature_to_map", add_feature_to_map);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "remove_active_quest", remove_active_quest);
@@ -170,9 +179,11 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_item_generated", get_num_item_generated);
   lua_register(L, "set_skill_value", set_skill_value);
   lua_register(L, "get_skill_value", get_skill_value);
+  lua_register(L, "get_magic_skills", get_magic_skills);
   lua_register(L, "check_skill", check_skill);
   lua_register(L, "RNG_range", RNG_range);
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
+  lua_register(L, "RNG_dice", RNG_dice);
   lua_register(L, "add_spell_castings", add_spell_castings);
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "get_experience_value", get_experience_value);
@@ -180,9 +191,15 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "remove_creature_from_map", remove_creature_from_map);
   lua_register(L, "add_status_to_creature", add_status_to_creature);
   lua_register(L, "add_status_to_creature_at", add_status_to_creature_at);
+  lua_register(L, "remove_negative_statuses_from_creature", remove_negative_statuses_from_creature);
   lua_register(L, "get_creature_statuses", get_creature_statuses);
+  lua_register(L, "creature_has_status", creature_has_status);
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
+  lua_register(L, "get_creature_base_damage", get_creature_base_damage);
+  lua_register(L, "set_creature_piety", set_creature_piety);
+  lua_register(L, "get_creature_piety", get_creature_piety);
+  lua_register(L, "set_creature_intrinsic_resist", set_creature_intrinsic_resist);
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
   lua_register(L, "get_creature_yx", get_creature_yx);
@@ -190,6 +207,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_current_map_id", get_current_map_id);
   lua_register(L, "gain_level", gain_level);
   lua_register(L, "goto_level", goto_level);
+  lua_register(L, "get_creature_level", get_creature_level);
   lua_register(L, "is_player", is_player);
   lua_register(L, "incr_str", incr_str);
   lua_register(L, "incr_dex", incr_dex);
@@ -211,24 +229,32 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_edesc", map_set_edesc);
   lua_register(L, "map_set_additional_property", map_set_additional_property);
   lua_register(L, "map_set_tile_subtype", map_set_tile_subtype);
+  lua_register(L, "map_set_tile_property", map_set_tile_property);
   lua_register(L, "map_add_location", map_add_location);
   lua_register(L, "map_transform_tile", map_transform_tile);
+  lua_register(L, "map_remove_tile_exit", map_remove_tile_exit);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
   lua_register(L, "map_set_explored", map_set_explored);
   lua_register(L, "map_get_name_sid", map_get_name_sid);
+  lua_register(L, "map_get_dimensions", map_get_dimensions);
+  lua_register(L, "map_get_available_creature_coords", map_get_available_creature_coords);
+  lua_register(L, "map_get_tile", map_get_tile);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
   lua_register(L, "get_creature_current_hp", get_creature_current_hp);
+  lua_register(L, "set_creature_base_hp", set_creature_base_hp);
   lua_register(L, "get_creature_base_hp", get_creature_base_hp);
   lua_register(L, "set_creature_current_ap", set_creature_current_ap);
   lua_register(L, "get_creature_current_ap", get_creature_current_ap);
+  lua_register(L, "set_creature_base_ap", set_creature_base_ap);
   lua_register(L, "get_creature_base_ap", get_creature_base_ap);
   lua_register(L, "set_creature_name", set_creature_name);
   lua_register(L, "get_creature_name", get_creature_name);
   lua_register(L, "destroy_creature_equipment", destroy_creature_equipment);
   lua_register(L, "destroy_creature_inventory", destroy_creature_inventory);
   lua_register(L, "get_deity_summons", get_deity_summons);
+  lua_register(L, "clear_deities", clear_deities);
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
   lua_register(L, "creature_is_class", creature_is_class);
   lua_register(L, "get_item_count", get_item_count);
@@ -270,6 +296,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_race_ids", get_race_ids);
   lua_register(L, "get_unarmed_slays", get_unarmed_slays);
   lua_register(L, "add_unarmed_slay", add_unarmed_slay);
+  lua_register(L, "get_class_id", get_class_id);
   lua_register(L, "get_race_name", get_race_name);
   lua_register(L, "set_inscription", set_inscription);
   lua_register(L, "get_map_dimensions", get_map_dimensions);
@@ -290,6 +317,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_item_unpaid", set_item_unpaid);
   lua_register(L, "is_in_shop", is_in_shop);
   lua_register(L, "is_item_unpaid", is_item_unpaid);
+  lua_register(L, "load_map", load_map);
+  lua_register(L, "has_artifact_in_inventory", has_artifact_in_inventory);
+  lua_register(L, "tile_has_creature", tile_has_creature);
 }
 
 // Lua API helper functions
@@ -379,6 +409,21 @@ int add_message_with_pause(lua_State* ls)
   return 0;
 }
 
+int clear_messages(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    IMessageManager& manager = MM::instance();
+    manager.clear_if_necessary();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to clear_messages");
+    lua_error(ls);
+  }
+
+  return 0;
+}
 // Clear the message manager and add a new message.
 // Arguments expected: 1-2.
 // Argument types: 
@@ -796,6 +841,54 @@ int add_object_to_player_tile(lua_State* ls)
 // Add an object to a particular tile.
 //
 // Argument 1: object base id
+//          2: map id
+//          3: row
+//          4: col
+//          5: quantity (optional, 1 assumed)
+//
+// Return value: true if added, false otherwise.
+int add_object_to_map(lua_State* ls)
+{
+  bool result = false;
+  int num_args = lua_gettop(ls);
+
+  if (lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && (num_args == 4 || (num_args == 5 && lua_isnumber(ls, 5))))
+  {
+    string base_item_id = lua_tostring(ls, 1);
+    string map_id = lua_tostring(ls, 2);
+    int row = lua_tointeger(ls, 3);
+    int col = lua_tointeger(ls, 4);
+
+    uint quantity = 1;
+
+    // Set the quantity if it was specified.    
+    if (num_args == 5)
+    {
+      quantity = static_cast<uint>(lua_tointeger(ls, 5));
+    }
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+    {
+      TilePtr tile = map->at(row, col);
+      result = ItemManager::create_item_with_probability(100, 100, tile->get_items(), base_item_id, quantity);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_object_to_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, result);
+  return 1;
+}
+
+// Add an object to a particular tile.
+//
+// Argument 1: object base id
 //          2: row
 //          3: col
 //          4: quantity (optional, 1 assumed)
@@ -880,6 +973,45 @@ int add_key_to_player_tile(lua_State* ls)
   return 1;
 }
 
+int add_basic_feature_to_map(lua_State* ls)
+{
+  bool added = false;
+
+  if ((lua_gettop(ls) == 4) && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  {
+    Game& game = Game::instance();
+    string basic_feature_id = lua_tostring(ls, 1);
+    Coordinate c = make_pair(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    string map_id = lua_tostring(ls, 4);
+
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+    {
+      FeaturePtr feature = FeatureGenerator::generate_basic_feature(basic_feature_id);
+
+      if (feature != nullptr)
+      {
+        TilePtr bf_tile = map->at(c);
+
+        if (bf_tile != nullptr)
+        {
+          bf_tile->set_feature(feature);
+          added = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_basic_feature_to_map!");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added);
+  return 1;
+}
+
 // Add a feature (using the class ID) to the player's tile.
 int add_feature_to_player_tile(lua_State* ls)
 {
@@ -893,7 +1025,7 @@ int add_feature_to_player_tile(lua_State* ls)
     if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
       ClassIdentifier class_id = static_cast<ClassIdentifier>(lua_tointeger(ls, 1));
-      FeaturePtr feature = FeatureFactory::create_feature(class_id);
+      FeaturePtr feature = FeatureGenerator::create_feature(class_id);
 
       if (feature != nullptr)
       {
@@ -915,6 +1047,48 @@ int add_feature_to_player_tile(lua_State* ls)
   return 1;
 }
 
+int add_feature_to_map(lua_State* ls)
+{
+  bool feature_added = 0;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    Game& game = Game::instance();
+    MapPtr map;
+    string map_id;
+
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+
+    if (num_args == 4 && lua_isstring(ls, 4))
+    {
+      map_id = lua_tostring(ls, 4);
+    }
+
+    TilePtr tile = get_tile(map_id, make_pair(y, x));
+
+    ClassIdentifier class_id = static_cast<ClassIdentifier>(lua_tointeger(ls, 1));
+    FeaturePtr feature = FeatureGenerator::create_feature(class_id);
+
+    if (feature != nullptr)
+    {
+      if (tile != nullptr)
+      {
+        tile->set_feature(feature);
+        feature_added = true;
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_feature_to_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, feature_added);
+  return 1;
+}
 // Mark a quest as completed.
 // Argument is the quest ID.
 int mark_quest_completed(lua_State* ls)
@@ -1153,6 +1327,47 @@ int get_skill_value(lua_State* ls)
   return 1;
 }
 
+int get_magic_skills(lua_State* ls)
+{
+  map<SkillType, int> magic_skills = {{SkillType::SKILL_MAGIC_ARCANE, 0},
+                                      {SkillType::SKILL_MAGIC_CANTRIPS, 0},
+                                      {SkillType::SKILL_MAGIC_DIVINE, 0},
+                                      {SkillType::SKILL_MAGIC_MYSTIC, 0},
+                                      {SkillType::SKILL_MAGIC_PRIMORDIAL, 0}};
+
+  vector<SkillType> magic_keys = {SkillType::SKILL_MAGIC_ARCANE, SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_DIVINE, SkillType::SKILL_MAGIC_MYSTIC, SkillType::SKILL_MAGIC_PRIMORDIAL};
+
+  if ((lua_gettop(ls) == 1) && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      for (const auto& magic_key : magic_keys)
+      {
+        magic_skills[magic_key] = creature->get_skills().get_value(magic_key);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_magic_skills");
+    lua_error(ls);
+  }
+
+  // Create a table with keys for each magic skill
+  lua_createtable(ls, 0, magic_keys.size());
+
+  for (const auto& msk_pair : magic_skills)
+  {
+    string table_key = to_string(static_cast<int>(msk_pair.first));
+    LuaUtils::set_field(ls, table_key.c_str(), msk_pair.second);
+  }
+
+  return 1;
+}
+
 // Check a particular skill for a particular creature.
 // - First argument is the creature ID
 // - Second argument is the SkillType value
@@ -1224,6 +1439,34 @@ int RNG_percent_chance(lua_State* ls)
   }
 
   lua_pushboolean(ls, rng_val);
+  return 1;
+}
+
+int RNG_dice(lua_State* ls)
+{
+  int rng_val = 0;
+  int num_args = lua_gettop(ls);
+
+  if ((num_args >= 2) && (lua_isnumber(ls, 1)) && (lua_isnumber(ls, 2)))
+  {
+    int num_dice = lua_tointeger(ls, 1);
+    int dice_sides = lua_tointeger(ls, 2);
+    int modifier = 0;
+
+    if (num_args == 3 && lua_isnumber(ls, 3))
+    {
+      modifier = lua_tointeger(ls, 3);
+    }
+
+    rng_val = RNG::dice(num_dice, dice_sides, modifier);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to RNG_dice");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, rng_val);
   return 1;
 }
 
@@ -1310,20 +1553,49 @@ int get_experience_value(lua_State* ls)
 // Add a creature to the map at a particular (y, x) coordinate
 int add_creature_to_map(lua_State* ls)
 {
-  if ((lua_gettop(ls) == 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
+  int num_args = lua_gettop(ls);
+  string new_creature_id;
+
+  if ((num_args >= 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
   {
     Game& game = Game::instance();
-    MapPtr map = game.get_current_map();
+    MapPtr map; 
+    
+    if (num_args >= 4 && lua_isstring(ls, 4))
+    {
+      string map_id = lua_tostring(ls, 4);
+      map = game.get_map_registry_ref().get_map(map_id);
+    }
+    else
+    {
+      map = game.get_current_map();
+    }
+
+    // Hostility override is optional, and generally only used in places where
+    // generated creatures must be hostile towards the player.
+    shared_ptr<bool> hostility_override;
+    if (num_args >= 5 && lua_isboolean(ls, 5))
+    {
+      hostility_override = std::make_shared<bool>(lua_toboolean(ls, 5) != 0);
+    }
 
     string creature_id = lua_tostring(ls, 1);
 
     CreatureFactory cf;
     CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id);
     Coordinate coords(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    HostilityManager hm;
 
-    if (creature && MapUtils::are_coordinates_within_dimensions(coords, map->size()))
+    if (creature && map && MapUtils::are_coordinates_within_dimensions(coords, map->size()))
     {
       GameUtils::add_new_creature_to_map(game, creature, map, coords);
+
+      if (hostility_override != nullptr)
+      {
+        hm.set_hostility_to_player(creature, *hostility_override);
+      }
+
+      new_creature_id = creature->get_id();
     }
   }
   else
@@ -1332,7 +1604,8 @@ int add_creature_to_map(lua_State* ls)
     lua_error(ls);
   }
 
-  return 0;
+  lua_pushstring(ls, new_creature_id.c_str());
+  return 1;
 }
 
 // Returns a boolean - true if a creature was removed, false otherwise.
@@ -1455,6 +1728,42 @@ int add_status_to_creature_at(lua_State* ls)
   return 1;
 }
 
+int remove_negative_statuses_from_creature(lua_State* ls)
+{
+  int stat_count = 0;
+
+  if ((lua_gettop(ls) == 1) && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      CreatureStatusMap csm = creature->get_statuses();
+
+      for (const auto& csm_pair : csm)
+      {
+        string status_id = csm_pair.first;
+        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+
+        if (se && se->is_negative())
+        {
+          CreatureUtils::mark_modifiers_for_deletion(creature, status_id, StatusRemovalType::STATUS_REMOVAL_UNDO);
+        }
+      }
+
+      CreatureUtils::remove_modifiers(creature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to remove_negative_statuses_from_creature");
+    lua_error(ls);
+  }
+
+  return stat_count;
+}
+
 // Get all the status IDs currently in force for the given creature.
 int get_creature_statuses(lua_State* ls)
 {
@@ -1494,15 +1803,43 @@ int get_creature_statuses(lua_State* ls)
   return static_cast<int>(statuses.size());
 }
 
+// Does the creature have a particular status in force?
+int creature_has_status(lua_State* ls)
+{
+  bool has_status = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string status_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      has_status = creature->has_status(status_id);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to creature_has_status");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, has_status);
+  return 1;
+}
+
 // Set a creature's base (bare-handed) damage.
 int set_creature_base_damage(lua_State* ls)
 {
-  if ((lua_gettop(ls) == 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
+  int num_args = lua_gettop(ls);
+
+  if ((num_args >= 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
   {
     string creature_id = lua_tostring(ls, 1);
     int num_dice = lua_tointeger(ls, 2);
     int num_sides = lua_tointeger(ls, 3);
-
     CreaturePtr creature = get_creature(creature_id);
 
     if (creature != nullptr)
@@ -1511,12 +1848,170 @@ int set_creature_base_damage(lua_State* ls)
       damage.set_num_dice(num_dice);
       damage.set_dice_sides(num_sides);
 
+      if (num_args == 4 && lua_isnumber(ls, 4))
+      {
+        int modifier = lua_tointeger(ls, 4);
+        damage.set_modifier(modifier);
+      }
+
       creature->set_base_damage(damage);
     }
   }
   else
   {
     lua_pushstring(ls, "Incorrect arguments to set_creature_base_damage");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Get a creature's base damage
+int get_creature_base_damage(lua_State* ls)
+{
+  int num_dice = 0;
+  int num_sides = 0;
+  int modifier = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Damage damage = creature->get_base_damage();
+
+      num_dice = damage.get_num_dice();
+      num_sides = damage.get_dice_sides();
+      modifier = damage.get_modifier();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_base_damage");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, num_dice);
+  lua_pushinteger(ls, num_sides);
+  lua_pushinteger(ls, modifier);
+
+  return 3;
+}
+
+// Set the creature's piety towards a deity with the given ID.
+int set_creature_piety(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string deity_id;
+    string creature_id = lua_tostring(ls, 1);
+    int piety = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (num_args == 3 && lua_isstring(ls, 3))
+    {
+      deity_id = lua_tostring(ls, 3);
+    }
+    else
+    {
+      if (creature != nullptr)
+      {
+        deity_id = creature->get_religion().get_active_deity_id();
+      }
+    }
+
+    if (creature != nullptr)
+    {
+      DeityRelations& dr = creature->get_religion_ref().get_deity_relations_ref();
+      auto dr_it = dr.find(deity_id);
+
+      if (dr_it != dr.end())
+      {
+        DeityStatus& ds = dr_it->second;
+        ds.set_piety(piety);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_piety");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Get the creature's piety towards a deity with the given ID.
+int get_creature_piety(lua_State* ls)
+{
+  int piety = 0;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 1 && lua_isstring(ls, 1))
+  {
+    string deity_id;
+    string creature_id = lua_tostring(ls, 1);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (num_args == 2 && lua_isstring(ls, 2))
+    {
+      deity_id = lua_tostring(ls, 2);
+    }
+    else
+    {
+      if (creature != nullptr)
+      {
+        deity_id = creature->get_religion().get_active_deity_id();
+      }
+    }
+
+    if (creature != nullptr)
+    {
+      DeityRelations dr = creature->get_religion().get_deity_relations();
+      auto dr_it = dr.find(deity_id);
+
+      if (dr_it != dr.end())
+      {
+        DeityStatus ds = dr_it->second;
+        piety = ds.get_piety();
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_piety");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, piety);
+  return 1;
+}
+
+// Set a resistance on a creature.
+int set_creature_intrinsic_resist(lua_State* ls)
+{
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    DamageType dt = static_cast<DamageType>(lua_tointeger(ls, 2));
+    double resist_val = lua_tonumber(ls, 3);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_intrinsic_resistances_ref().set_resistance_value(dt, resist_val);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_intrinsic_resist");
     lua_error(ls);
   }
 
@@ -1739,6 +2234,30 @@ int goto_level(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_creature_level(lua_State* ls)
+{
+  int level = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature)
+    {
+      level = creature->get_level().get_current();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_level");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, level);
+  return 1;
 }
 
 int is_player(lua_State* ls)
@@ -2267,6 +2786,35 @@ int map_set_tile_subtype(lua_State* ls)
   return 0;
 }
 
+int map_set_tile_property(lua_State* ls)
+{
+  bool added_property = false;
+
+  if (lua_gettop(ls) == 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4) && lua_isstring(ls, 5))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    string p_name = lua_tostring(ls, 4);
+    string p_val = lua_tostring(ls, 5);
+
+    TilePtr tile = get_tile(map_id, c);
+
+    if (tile)
+    {
+      tile->set_additional_property(p_name, p_val);
+      added_property = true;
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_set_tile_property");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, added_property);
+  return 1;
+}
+
 // Add a location to the given map
 int map_add_location(lua_State* ls)
 {
@@ -2334,6 +2882,45 @@ int map_transform_tile(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to map_transform_tile");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, result);
+  return 1;
+}
+
+// Returns true if the exit was removed, false otherwise.
+int map_remove_tile_exit(lua_State* ls)
+{
+  int result = false;
+
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    Direction dir = static_cast<Direction>(lua_tointeger(ls, 4));
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(c);
+
+      if (tile != nullptr)
+      {
+        TileExitMap& tem = tile->get_tile_exit_map_ref();
+        size_t n_removed = tem.erase(dir);
+
+        if (n_removed > 0)
+        {
+          result = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_remove_tile_exit");
     lua_error(ls);
   }
 
@@ -2451,6 +3038,125 @@ int map_get_name_sid(lua_State* ls)
   return 1;
 }
 
+int map_get_dimensions(lua_State* ls)
+{
+  int height = -1;
+  int width = -1;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string map_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+    
+    if (map != nullptr)
+    {
+      Dimensions dim = map->size();
+      height = dim.get_y();
+      width = dim.get_x();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_get_dimensions");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, height);
+  lua_pushinteger(ls, width);
+
+  return 2;
+}
+
+int map_get_available_creature_coords(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  lua_newtable(ls);
+
+  if (num_args == 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y1 = lua_tointeger(ls, 2);
+    int y2 = lua_tointeger(ls, 3);
+    int x1 = lua_tointeger(ls, 4);
+    int x2 = lua_tointeger(ls, 5);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      int cnt = 1;
+
+      for (int y = y1; y < y2; y++)
+      {
+        for (int x = x1; x < x2; x++)
+        {
+          TilePtr tile = map->at(y, x);
+
+          if (tile && MapUtils::is_tile_available_for_creature(nullptr, tile))
+          {
+            lua_newtable(ls);
+            lua_pushnumber(ls, y);
+            lua_rawseti(ls, -2, 1);
+            lua_pushnumber(ls, x);
+            lua_rawseti(ls, -2, 2);
+            lua_rawseti(ls, -2, cnt);
+
+            cnt++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_get_available_creature_coords");
+    lua_error(ls);
+  }
+
+  return 1;
+}
+
+int map_get_tile(lua_State* ls)
+{
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    // Create a table with 0 array elements and 1 keyed elements.
+    lua_createtable(ls, 0, 1);
+
+    string map_id = lua_tostring(ls, 1);
+    int row = lua_tointeger(ls, 2);
+    int col = lua_tointeger(ls, 3);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(row, col);
+
+      // As additional fields are needed in future, add them to the table.
+      // Remember to update the last argument to lua_createtable, above.
+      if (tile != nullptr)
+      {
+        LuaUtils::set_field(ls, "tile_type", static_cast<int>(tile->get_tile_type()));
+      }
+    }
+
+    return 1;
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_get_tile");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
 // log some text in the given log level.
 // returns true if it was logged, false otherwise
 // (log is not in that level, etc)
@@ -2551,6 +3257,32 @@ int get_creature_current_hp(lua_State* ls)
   return 1;
 }
 
+int set_creature_base_hp(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int new_hp = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Statistic hp = creature->get_hit_points();
+      hp.set_base(new_hp);
+
+      creature->set_hit_points(hp);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_base_hp");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
 int get_creature_base_hp(lua_State* ls)
 {
   int base_hp = 0;
@@ -2623,6 +3355,32 @@ int get_creature_current_ap(lua_State* ls)
 
   lua_pushinteger(ls, current_ap);
   return 1;
+}
+
+int set_creature_base_ap(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int new_ap = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Statistic ap = creature->get_arcana_points();
+      ap.set_base(new_ap);
+
+      creature->set_arcana_points(ap);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_base_ap");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int get_creature_base_ap(lua_State* ls)
@@ -2807,6 +3565,27 @@ int get_deity_summons(lua_State* ls)
   }
 
   return num_return_vals;
+}
+
+// Return the number of deities removed.
+int clear_deities(lua_State* ls)
+{
+  int num_cleared = 0;
+
+  if (lua_gettop(ls) == 0)
+  {
+    DeityMap& deities = Game::instance().get_deities_ref();
+    num_cleared = deities.size();
+
+    deities.clear();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to clear_deities");
+    lua_error(ls);
+  }
+
+  return num_cleared;
 }
 
 int summon_monsters_around_creature(lua_State* ls)
@@ -3128,27 +3907,33 @@ int teleport(lua_State* ls)
   if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
   {
     Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
     ActionManager& am = game.get_action_manager_ref();
 
     string creature_id = lua_tostring(ls, 1);
-    CreaturePtr creature = get_creature(creature_id);
 
-    if (creature != nullptr)
+    if (current_map != nullptr)
     {
-      // This version of the function should generally only be used for debug
-      // testing.
-      if (lua_gettop(ls) == 3 && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
-      {
-        int y = lua_tointeger(ls, 2);
-        int x = lua_tointeger(ls, 3);
+      pair<Coordinate, TilePtr> creature_loc = current_map->get_location_and_tile(creature_id);
+      CreaturePtr creature = get_creature(creature_id);
 
-        MapPtr map = game.get_current_map();
-        MapUtils::add_or_update_location(map, creature, make_pair(y, x), MapUtils::get_tile_for_creature(map, creature));
-      }
-      else
+      if (creature != nullptr)
       {
-        EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT, {}, {}, "", "");
-        teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED);
+        // This version of the function should generally only be used for debug
+        // testing.
+        if (lua_gettop(ls) == 3 && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+        {
+          int y = lua_tointeger(ls, 2);
+          int x = lua_tointeger(ls, 3);
+
+          MapPtr map = game.get_current_map();
+          MapUtils::add_or_update_location(map, creature, make_pair(y, x), MapUtils::get_tile_for_creature(map, creature));
+        }
+        else
+        {
+          EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT, {}, {}, "", "");
+          teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED, creature_loc.first, creature_loc.second);
+        }
       }
     }
   }
@@ -3858,17 +4643,33 @@ int get_nearby_hostile_creatures(lua_State* ls)
 
 int set_creature_additional_property(lua_State* ls)
 {
-  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
   {
     string creature_id = lua_tostring(ls, 1);
     string prop_name = lua_tostring(ls, 2);
     string prop_value = lua_tostring(ls, 3);
-
-    CreaturePtr creature = get_creature(creature_id);
-
-    if (creature != nullptr)
+    Game& game = Game::instance();
+    MapPtr cur_map;
+    
+    if (num_args == 4 && lua_isstring(ls, 4))
     {
-      creature->set_additional_property(prop_name, prop_value);
+      cur_map = game.get_map_registry_ref().get_map(lua_tostring(ls, 4));
+    }
+    else
+    {
+      cur_map = game.get_current_map();
+    }
+
+    if (cur_map != nullptr)
+    {
+      CreaturePtr creature = cur_map->get_creature(creature_id);
+
+      if (creature != nullptr)
+      {
+        creature->set_additional_property(prop_name, prop_value);
+      }
     }
   }
   else
@@ -4005,14 +4806,21 @@ int redraw(lua_State* ls)
 int get_race_ids(lua_State* ls)
 {
   int race_cnt = 0;
+  int n_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) <= 1)
+  if (n_args <= 2)
   {
     bool include_user_playable = false;
+    bool include_non_slayable = false;
 
-    if (lua_gettop(ls) == 1 && lua_isboolean(ls, 1))
+    if (n_args >= 1 && lua_isboolean(ls, 1))
     {
-      include_user_playable = (lua_toboolean(ls, 2) != 0);
+      include_user_playable = (lua_toboolean(ls, 1) != 0);
+    }
+
+    if (n_args >= 2 && lua_isboolean(ls, 2))
+    {
+      include_non_slayable = (lua_toboolean(ls, 2) != 0);
     }
 
     Game& game = Game::instance();
@@ -4022,7 +4830,10 @@ int get_race_ids(lua_State* ls)
     {
       RacePtr race = race_pair.second;
 
-      if (race != nullptr && !race_pair.first.empty() && (include_user_playable || !race->get_user_playable()))
+      if (race != nullptr && 
+          !race_pair.first.empty() && 
+          (include_user_playable || !race->get_user_playable()) &&
+          (include_non_slayable || race->get_slayable()))
       {
         lua_pushstring(ls, race_pair.first.c_str());
         race_cnt++;
@@ -4097,6 +4908,30 @@ int add_unarmed_slay(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_class_id(lua_State* ls)
+{
+  string class_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      class_id = creature->get_class_id();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_class_id");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, class_id.c_str());
+  return 1;
 }
 
 int get_race_name(lua_State* ls)
@@ -4310,7 +5145,7 @@ int ranged_attack(lua_State* ls)
     damage->set_piercing(piercing);
 
     CombatManager cm;
-    cm.attack(attacking_creature, attacked_creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY, false, damage);
+    cm.attack(attacking_creature, attacked_creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY, AttackSequenceType::ATTACK_SEQUENCE_INITIAL, false, damage);
   }
   else
   {
@@ -4826,6 +5661,123 @@ int is_item_unpaid(lua_State* ls)
   }
 
   lua_pushboolean(ls, is_unpaid);
+  return 1;
+}
+
+int load_map(lua_State* ls)
+{
+  bool loaded_map = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string map_id = lua_tostring(ls, 2);
+
+    // First, clear any messages.
+    MM::instance().clear_if_necessary();
+
+    // Next, load the map.  Clearing the messages first ensures that any
+    // messages as a result of loading the map start at the beginning of
+    // the message buffer.
+    Game& game = Game::instance();
+    CreaturePtr creature = get_creature(creature_id);
+    MapPtr old_map = game.get_current_map();
+    MapPtr new_map = game.get_map_registry_ref().get_map(map_id);
+    TilePtr creature_tile = MapUtils::get_tile_for_creature(old_map, creature);
+    GameUtils::move_to_new_map(creature_tile, old_map, new_map);
+
+    loaded_map = true;
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to load_map");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, loaded_map);
+  return 1;
+}
+
+int has_artifact_in_inventory(lua_State* ls)
+{
+  bool has_artifact = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      IInventoryPtr inv = creature->get_inventory();
+      
+      if (inv != nullptr)
+      {
+        const list<ItemPtr> items = inv->get_items_cref();
+
+        for (ItemPtr i : items)
+        {
+          if (i && i->get_artifact())
+          {
+            has_artifact = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to has_artifact_in_inventory");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, has_artifact);
+  return 1;
+}
+
+int tile_has_creature(lua_State* ls)
+{
+  bool has_creature = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    Game& game = Game::instance();
+
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+    string map_id;
+    MapPtr map;
+
+    if (num_args == 3 && lua_isstring(ls, 3))
+    {
+      map_id = lua_tostring(ls, 3);
+    }
+
+    if (map_id.empty())
+    {
+      map = game.get_current_map();
+    }
+    else
+    {
+      map = game.get_map_registry_ref().get_map(map_id);
+    }
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      has_creature = tile && tile->has_creature();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to tile_has_creature");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, has_creature);
   return 1;
 }
 

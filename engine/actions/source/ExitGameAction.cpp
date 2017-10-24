@@ -25,6 +25,22 @@ ActionCostValue ExitGameAction::save(CreaturePtr creature) const
   Game& game = Game::instance();
   game.set_check_scores(false);
 
+  // We might be playing in single user mode.  If we are, and if
+  // we're using another user's savefile, we need to delete
+  // it before saving.  Otherwise, there will be two savefiles:
+  //
+  // - The original, whose filename is hashed from the first user's username
+  // - A new one, whose filename is hashed from the current user's username
+  //
+  // If we're playing in regular multi-user mode, this will just
+  // delete the savefile, and then re-create it.
+  string current_savefile = game.get_current_loaded_savefile();
+
+  if (!current_savefile.empty())
+  {
+    Serialization::delete_savefile(current_savefile);
+  }
+
   Serialization::save(creature);
   quit(creature, false);
 
@@ -45,11 +61,15 @@ void ExitGameAction::create_dump_if_necessary(IMessageManager& manager, ActionMa
 
   if (create_dump && creature != nullptr)
   {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    pair<Coordinate, TilePtr> creature_loc = current_map->get_location_and_tile(creature->get_id());
+
     EffectPtr identify = EffectFactory::create_effect(EffectType::EFFECT_TYPE_IDENTIFY, {}, {}, "", creature->get_id());
 
     if (identify != nullptr)
     {
-      identify->effect(creature, am, ItemStatus::ITEM_STATUS_BLESSED, false);
+      identify->effect(creature, am, ItemStatus::ITEM_STATUS_BLESSED, creature_loc.first, creature_loc.second, false);
     }
 
     CharacterAction ca;

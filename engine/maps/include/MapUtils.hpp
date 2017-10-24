@@ -24,7 +24,7 @@ class MapUtils
     static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
     static uint get_num_following_creatures(const MapPtr& map);
     static TileDirectionMap get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
-    static std::vector<TilePtr> get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature);
+    static std::vector<TilePtr> get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature, const int offset = 1);
     static bool adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_match);
     static uint get_num_adjacent_movement_directions(const MapPtr& map, const CreaturePtr& creature);
     static TilePtr get_adjacent_tile(const MapPtr& map, const CreaturePtr& creature, const Direction d, const int offset = 1);
@@ -32,6 +32,7 @@ class MapUtils
     static TileDirectionMap get_tiles_with_features(MapPtr& map, CreaturePtr& creature);
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
     static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
+    static std::vector<CreaturePtr> get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature);
     static bool remove_creature(const MapPtr& map, const CreaturePtr& creature);
     static bool tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, const TileType tt);
 
@@ -63,6 +64,7 @@ class MapUtils
     
     static bool hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
     static std::vector<CreaturePtr> get_hostile_creatures(const std::string& creature_id_for_threat_check, MapPtr map);
+    static bool are_creatures_adjacent(MapPtr map, CreaturePtr c1, CreaturePtr c2);
     static bool adjacent_creature_exists(CreaturePtr creature, MapPtr map);
     static bool adjacent_creature_exists(const int row, const int col, MapPtr map);
     static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
@@ -83,7 +85,13 @@ class MapUtils
 
     static void calculate_fov_maps_for_all_creatures(MapPtr map);
 
+    static int calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovementType emt);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);
+
+    static void add_tile_related_messages(CreaturePtr creature, TilePtr tile);
+    static bool add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr tile);
+    static bool add_message_about_items_on_tile_if_necessary(CreaturePtr creature, TilePtr tile);
 };

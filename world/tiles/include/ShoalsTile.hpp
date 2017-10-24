@@ -7,7 +7,7 @@ class ShoalsTile : public WorldMapTile
     ShoalsTile();
 
     TileType get_tile_type() const override;
-    TileSuperType get_tile_super_type() const;
+    TileSuperType get_tile_base_super_type() const override;
     WaterType get_water_type() const override;
     
     std::string get_tile_description_sid() const override;

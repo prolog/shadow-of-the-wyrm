@@ -70,7 +70,7 @@ class Tile : public ISerializable
     // will be shown on each move.
     virtual bool display_description_on_arrival() const;
 
-    virtual void set_illuminated(bool new_illuminated);
+    virtual void set_illuminated(const bool new_illuminated);
     virtual bool get_illuminated() const;
     
     virtual bool get_is_staircase() const;
@@ -81,11 +81,14 @@ class Tile : public ISerializable
 
     // This is player-centric.  Probably OK for now, but may need to be
     // revisited later.
-    virtual void set_explored(bool new_explored);
+    virtual void set_explored(const bool new_explored);
     virtual bool get_explored() const;
     
-    virtual void set_viewed(bool new_viewed);
+    virtual void set_viewed(const bool new_viewed);
     virtual bool get_viewed() const;
+
+    virtual void set_submerged(const bool new_submerged);
+    virtual bool get_submerged() const;
 
     // Features include doors, windows, thrones, fireplaces...
     virtual bool has_feature() const;
@@ -106,7 +109,13 @@ class Tile : public ISerializable
     virtual IInventoryPtr get_items();
 
     virtual TileType get_tile_type() const;
+    
+    // Get the overall super type, considering whether or not the tile
+    // is submerged.
     virtual TileSuperType get_tile_super_type() const;
+
+    // Gets the type before checking to see if the tile is submerged.
+    virtual TileSuperType get_tile_base_super_type() const; 
     virtual TileType get_decomposition_tile_type() const; // When digging, what does the tile break down into?
 
     // The returned vector is a list of potential items:
@@ -148,6 +157,10 @@ class Tile : public ISerializable
     virtual DigChances get_dig_chances() const;
     virtual DigChances& get_dig_chances_ref();
 
+    // Some tiles are restricted to certain races.
+    virtual bool has_race_restrictions() const;
+    virtual bool is_race_allowed(const std::string& race_id) const;
+
     virtual Tile* clone() = 0;
 
   protected:
@@ -162,6 +175,7 @@ class Tile : public ISerializable
     bool illuminated;
     bool explored;
     bool viewed;
+    bool submerged;
 
     std::map<std::string, std::string> additional_properties;
 

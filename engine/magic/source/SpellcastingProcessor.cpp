@@ -9,14 +9,14 @@ bool SpellcastingProcessor::process(SpellShapeProcessorPtr spell_processor, Crea
 {
   Game& game = Game::instance();
 
-  // Get the affected tiles and the animation.
-  pair<vector<TilePtr>, Animation> affected_tiles_and_animation = spell_processor->get_affected_tiles_and_animation_for_spell(current_map, caster_coord, spell_direction, spell);
-  vector<TilePtr> affected_tiles = affected_tiles_and_animation.first;
+  // Get the affected coords/tiles and the animation.
+  pair<vector<pair<Coordinate, TilePtr>>, Animation> affected_tiles_and_animation = spell_processor->get_affected_tiles_and_animation_for_spell(current_map, caster_coord, spell_direction, spell);
+  vector<pair<Coordinate, TilePtr>> affected_coord_tiles = affected_tiles_and_animation.first;
   Animation spell_animation = affected_tiles_and_animation.second;
           
   // Draw the animation.
   game.get_display()->draw_animation(spell_animation);
 
   // Apply the damage, effects, etc, to the affected tiles.
-  return spell_processor->process_damage_and_effect(caster, affected_tiles, spell, effect_status, &game.get_action_manager_ref());
+  return spell_processor->process_damage_and_effect(caster, affected_coord_tiles, spell, effect_status, &game.get_action_manager_ref());
 }
