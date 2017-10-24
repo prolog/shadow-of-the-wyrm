@@ -1,3 +1,6 @@
+Shadow of the Wyrm v0.7.1 "Neusiedler"
+- Version declared October 23, 2017.
+
 Shadow of the Wyrm v0.7.0 "de Visee"
 - Version declared March 1, 2017.  Version finalized October 23, 2017.
 
