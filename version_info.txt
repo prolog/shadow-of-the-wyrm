@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.7.0 "de Visee"
-- Version declared March 1, 2017.
+- Version declared March 1, 2017.  Version finalized October 24, 2017.
 
 - New effect type, mapping.  When blessed, the entire map's structure
   is revealed.  When uncursed or cursed, tiles will be learned/forgotten
@@ -178,6 +178,8 @@ Shadow of the Wyrm v0.7.0 "de Visee"
 - When blind, you now "feel" something, rather than see it, when moving
   on to a tile.
 
+- Made a few changes to allow Mac builds.  See README.build.macos.
+ 
 - More stanzas for "Tel and Floridel".
 
 - New species of weeds.

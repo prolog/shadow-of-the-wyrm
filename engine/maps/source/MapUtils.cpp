@@ -582,7 +582,6 @@ vector<CreaturePtr> MapUtils::get_adjacent_creatures_unsorted(const MapPtr& map,
 
     for (const Coordinate& c : adjacent_coords)
     {
-      Direction d = CoordUtils::get_direction(creature_coord, c);
       TilePtr tile = map->at(c);
 
       if (tile && tile->has_creature())
