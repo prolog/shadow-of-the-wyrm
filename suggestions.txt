@@ -1,6 +1,5 @@
 Me:
-- Poem combat tally: 63 fae remaining, 20 giants.  Reduce total count:
-  3 dozen vs 1?
+- Poem combat tally: 25 fae remaining, 7 giants.
 - Automove: stop on staircase
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).

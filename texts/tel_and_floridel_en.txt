@@ -1130,7 +1130,7 @@ their body's breathing slow and gasping; hoarsening -
 %p
 But now, just slips of darkness from the mound. %b
 Wraith-like, silent; against the morning light, %b
-six dozen men, but not the faintest sound %b
+three dozen men, but not the faintest sound %b
 from either speech or movement.  Barrow wights. %b
 The grim and set expressions of the dead, %b
 for each of them had bled out with the girls, %b
@@ -1357,4 +1357,14 @@ and flapping.  Leaning over, doubled up in pain, %b
 he left his neck exposed, the wound profuse %b
 as sword met skin and spine.  The body waned, %b
 collapsing as a carcass on the open plain.
+%p
+Reduced from twelve to seven, hateful stares %b
+as each pulled back to form a ring again. %b
+Hemmed in by fate, beset by outstretched spears, %b
+the seconds stretched to breaking; so, condemned %b
+to certain loss, the war-chief gave a shout %b
+and grabbed the nearest shaft.  He flicked it back, %b
+launching the spearman before putting out %b
+another's eye and brain.  A squish and crack - %b
+the mind becoming loose, the body going slack.
 %p
