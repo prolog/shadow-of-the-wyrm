@@ -3,6 +3,10 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
 
 - Automove now stops on staircases.
 
+- Explosive damage now has an animation.  It also no longer deals
+  additional damage to the targetted creature (just the adjacent ones),
+  but will now be triggered on any amount of damage, not just non-lethal.
+
 - More stanzas for "Tel and Floridel"
 
 Shadow of the Wyrm v0.7.0 "de Visee"
