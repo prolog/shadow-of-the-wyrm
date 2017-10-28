@@ -1,7 +1,8 @@
 Me:
+- Save/load and fire bombs not working?  IDs not lining up?
+- Update explosion message
 - Poem combat tally: 25 fae remaining, 7 giants.
 - Explosion animation.
-- Automove: stop on staircase
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
 - Test going through dungeons for danger level ok
