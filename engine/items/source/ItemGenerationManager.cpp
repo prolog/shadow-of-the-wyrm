@@ -23,14 +23,14 @@ ItemGenerationManager::ItemGenerationManager()
 //
 // Plant: 0%
 // Staff: 0%
+// Boat: 1%
 // Currency: 2%
-// Boat: 2%
 // Amulet: 2%
 // Misc: 2%
 // Tool: 3%
 // Spellbook: 5%
 // Ring: 5%
-// Wand: 5%
+// Wand: 6%
 // Ammunition: 8%
 // Weapon: 10%
 // Armour: 10%
@@ -47,31 +47,31 @@ ItemType ItemGenerationManager::generate_item_type_by_val(const int val) const
 {
   ItemType itype = ItemType::ITEM_TYPE_NULL;
 
-  if (val <= 2)
-  {
-    itype = ItemType::ITEM_TYPE_CURRENCY;
-  }
-  else if (val <= 4)
+  if (val <= 1)
   {
     itype = ItemType::ITEM_TYPE_BOAT;
   }
-  else if (val <= 6)
+  else if (val <= 3)
+  {
+    itype = ItemType::ITEM_TYPE_CURRENCY;
+  }
+  else if (val <= 5)
   {
     itype = ItemType::ITEM_TYPE_AMULET;
   }
-  else if (val <= 8)
+  else if (val <= 7)
   {
     itype = ItemType::ITEM_TYPE_MISC;
   }
-  else if (val <= 11)
+  else if (val <= 10)
   {
     itype = ItemType::ITEM_TYPE_TOOL;
   }
-  else if (val <= 16)
+  else if (val <= 15)
   {
     itype = ItemType::ITEM_TYPE_SPELLBOOK;
   }
-  else if (val <= 21)
+  else if (val <= 20)
   {
     itype = ItemType::ITEM_TYPE_RING;
   }

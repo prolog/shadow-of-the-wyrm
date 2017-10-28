@@ -7,7 +7,10 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   additional damage to the targetted creature (just the adjacent ones),
   but will now be triggered on any amount of damage, not just non-lethal.
 
-- More stanzas for "Tel and Floridel"
+- Boats are now less common in the item generation algorithm, wands
+  slightly more common.
+
+- More stanzas for "Tel and Floridel".
 
 Shadow of the Wyrm v0.7.0 "de Visee"
 - Version declared March 1, 2017.  Version finalized October 23, 2017.
