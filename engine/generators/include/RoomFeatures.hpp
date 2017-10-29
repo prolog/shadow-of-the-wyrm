@@ -14,6 +14,7 @@ class RoomFeatures
     static const std::string ROOM_FEATURE_NODE;
     static const std::string ROOM_FEATURE_GRAVE;
     static const std::string ROOM_FEATURE_SPRING;
+    static const std::string ROOM_FEATURE_CRAFT_ROOM;
 
   protected:
     RoomFeatures();

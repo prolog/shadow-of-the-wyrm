@@ -39,6 +39,7 @@ class DungeonGenerator : public SOTW::Generator
     virtual bool    generate_node(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual bool    generate_grave(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual bool    generate_spring(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
+    virtual bool    generate_craft_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
 
     virtual std::pair<bool, TilePtr> centre_feature(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, FeaturePtr feature);
 
