@@ -13,14 +13,14 @@ class SW_Engine_Items_ItemGenerationManager : public ::testing::Test
 
 TEST_F(SW_Engine_Items_ItemGenerationManager, loot_distribution)
 {
-  std::map<ItemType, int> expected = {{ItemType::ITEM_TYPE_CURRENCY, 2},
-                                      {ItemType::ITEM_TYPE_BOAT, 2},
+  std::map<ItemType, int> expected = {{ItemType::ITEM_TYPE_BOAT,1},
+                                      {ItemType::ITEM_TYPE_CURRENCY, 2},
                                       {ItemType::ITEM_TYPE_AMULET, 2},
                                       {ItemType::ITEM_TYPE_MISC, 2},
                                       {ItemType::ITEM_TYPE_TOOL, 3},
                                       {ItemType::ITEM_TYPE_SPELLBOOK, 5},
                                       {ItemType::ITEM_TYPE_RING, 5},
-                                      {ItemType::ITEM_TYPE_WAND, 5},
+                                      {ItemType::ITEM_TYPE_WAND, 6},
                                       {ItemType::ITEM_TYPE_AMMUNITION, 8},
                                       {ItemType::ITEM_TYPE_WEAPON, 10},
                                       {ItemType::ITEM_TYPE_ARMOUR, 10},

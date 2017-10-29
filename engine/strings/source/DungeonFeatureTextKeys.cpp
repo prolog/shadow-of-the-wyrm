@@ -18,5 +18,6 @@ const string DungeonFeatureTextKeys::DUNGEON_FEATURE_NODE = "DUNGEON_FEATURE_NOD
 const string DungeonFeatureTextKeys::DUNGEON_FEATURE_GRAVE = "DUNGEON_FEATURE_GRAVE";
 const string DungeonFeatureTextKeys::DUNGEON_FEATURE_TRAP_ROOM = "DUNGEON_FEATURE_TRAP_ROOM";
 const string DungeonFeatureTextKeys::DUNGEON_FEATURE_SPRING = "DUNGEON_FEATURE_SPRING";
+const string DungeonFeatureTextKeys::DUNGEON_FEATURE_CRAFT_ROOM = "DUNGEON_FEATURE_CRAFT_ROOM";
 
 

@@ -1,18 +1,12 @@
 Me:
-- Save/load and fire bombs not working?  IDs not lining up?
-- Update explosion message
 - Poem combat tally: 25 fae remaining, 7 giants.
-- Explosion animation.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
-- Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
 - Repel (cantrip)
-- Test going to down to D2 and back in both a regular dungeon and the ID.
-  Also, Gnordvar Mines.
 - Email Nathan before next release re: Mac build, and update website to
   mention that the game is buildable in Mac OS.
 - Need to test the following after the spell refactoring:
@@ -20,7 +14,6 @@ Me:
   - Anything else?
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
-- Crafting room: wheel and loom, tannery.
 - Penalties from bloodied, exposed should also scale with level.
 - Generate loom, tanneries in random villages.
 - Add shops to dungeons.
