@@ -7,10 +7,12 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   additional damage to the targetted creature (just the adjacent ones),
   but will now be triggered on any amount of damage, not just non-lethal.
 
-- Dungeons can now have crafting rooms - these contain a tannery, and a
-  wheel and loom.  The symbol for these used to be '^', but this made
-  the features look like traps, so the symbol for both of these has been
-  changed to ';'.
+- Dungeons can now have crafting rooms - these contain a tannery, a forge,
+  a jeweler's workbench, and a wheel and loom.  
+  
+- The symbol for tanneries and wheels and looms used to be '^', but this 
+  made the features look like traps.  With the placement of these features
+  in dungeons, the symbol for both of these has been changed to ';'.
 
 - Boats are now less common in the item generation algorithm, wands
   slightly more common.
