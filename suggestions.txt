@@ -1,5 +1,4 @@
 Me:
-- Add forge, jeweler's workbench to craft room
 - Poem combat tally: 25 fae remaining, 6 giants.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
