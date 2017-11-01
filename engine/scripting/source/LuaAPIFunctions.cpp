@@ -1054,7 +1054,6 @@ int add_feature_to_map(lua_State* ls)
 
   if (num_args >= 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
   {
-    Game& game = Game::instance();
     MapPtr map;
     string map_id;
 
