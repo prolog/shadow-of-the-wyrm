@@ -184,3 +184,10 @@ kain:
 - Holy presence but no altars?
 - Shops not generating fully stocked.
 
+kraphead
+- Crashes in sewer, SE dungeon
+- black 'x'
+- Status effects in the void are permanent
+- Nothing in the rift when deity killed else bad times
+- Cascade of aggro on stun, etc
+
