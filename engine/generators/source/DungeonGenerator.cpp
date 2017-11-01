@@ -575,9 +575,9 @@ bool DungeonGenerator::generate_craft_room(MapPtr map, const int start_row, cons
   // of the room.  Shuffle them so that all the craft rooms don't look the
   // same.
   vector<Coordinate> placement_coords = {{start_row, start_col},
-                                         {start_row, end_col - y_offset},
+                                         {start_row, end_col - x_offset},
                                          {end_row - y_offset, start_col},
-                                         {end_row - y_offset, end_col - y_offset}};
+                                         {end_row - y_offset, end_col - x_offset}};
 
   vector<ClassIdentifier> feature_ids = {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, 
                                          ClassIdentifier::CLASS_ID_TANNERY, 

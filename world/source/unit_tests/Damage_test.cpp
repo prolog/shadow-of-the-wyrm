@@ -130,7 +130,8 @@ TEST(SW_World_Damage, saveload)
   bool scything_flag_ok = damage2.get_scything();
   bool explosive_flag_ok = damage2.get_explosive();
 
-  bool slays_ok = find(slay_races.begin(), slay_races.end(), "elf") != slay_races.end();
+  auto r_it = find(slay_races.begin(), slay_races.end(), "elf");
+  bool slays_ok = r_it != slay_races.end();
 
   EXPECT_TRUE(damage_ok);
   EXPECT_TRUE(chaotic_flag_ok);
