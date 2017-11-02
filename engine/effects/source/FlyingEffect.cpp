@@ -26,6 +26,11 @@ bool FlyingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am
 
 bool FlyingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
+  if (creature == nullptr)
+  {
+    return false;
+  }
+
   StatusEffectPtr fly = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_FLYING, source_id);
   fly->apply_change(creature, creature->get_level().get_current());
 

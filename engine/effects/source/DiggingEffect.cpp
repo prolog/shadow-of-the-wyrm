@@ -54,6 +54,11 @@ bool DiggingEffect::dig(CreaturePtr creature, const Coordinate& affected_coord)
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
 
+  if (map == nullptr)
+  {
+    return false;
+  }
+
   // Get the creature's current tile and whether or not the map prevents digging
   TilePtr cur_tile = map->at(affected_coord);  
   string map_cannot_dig = map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG);

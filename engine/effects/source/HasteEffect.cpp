@@ -24,12 +24,12 @@ Effect* HasteEffect::clone()
 // or else the game becomes ludicrously easy!
 bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
-  if (creature->has_status(StatusIdentifiers::STATUS_ID_HASTE))
+  if (creature == nullptr || creature->has_status(StatusIdentifiers::STATUS_ID_HASTE))
   {
     return false;
   }
 
-  if (creature->has_status(StatusIdentifiers::STATUS_ID_SLOWNESS))
+  if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_SLOWNESS))
   {
     StatusEffectPtr slowness = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_SLOWNESS, source_id);
     slowness->undo_change(creature);
@@ -45,7 +45,7 @@ bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const am,
 // the haste status effect.
 bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
-  if (creature->has_status(StatusIdentifiers::STATUS_ID_HASTE))
+  if (creature == nullptr || creature->has_status(StatusIdentifiers::STATUS_ID_HASTE))
   {
     return false;
   }

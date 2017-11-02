@@ -21,6 +21,11 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
 
 - Bug fixes:
 
+  - The teleport effect would cause a crash when used on a tile where a
+    creature was not present (kraphead).
+
+  - Fixed up some other instances of effects not safely checking pointers.
+
   - Various typos in bestiary descriptions (kraphead).
 
 Shadow of the Wyrm v0.7.0 "de Visee"
