@@ -60,36 +60,39 @@ bool TeleportEffect::effect_cursed(CreaturePtr creature, ActionManager * am, con
 
 bool TeleportEffect::teleport(CreaturePtr creature)
 {
-  Game& game = Game::instance();
-  MapPtr map = game.get_current_map();
-
-  // The creature's original tile.
-  TilePtr old_tile = map->at(map->get_location(creature->get_id()));
-  
   bool teleported = false;
 
-  string map_cannot_teleport = map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_TELEPORT);
-
-  if (map_cannot_teleport.empty() || (String::to_bool(map_cannot_teleport) == false))
+  if (creature != nullptr)
   {
-    if (blink_effect)
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    // The creature's original tile.
+    TilePtr old_tile = map->at(map->get_location(creature->get_id()));
+
+    string map_cannot_teleport = map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_TELEPORT);
+
+    if (map_cannot_teleport.empty() || (String::to_bool(map_cannot_teleport) == false))
     {
-      // Blink just teleports in the field of view.
-      teleported = blink(creature, map, old_tile);
+      if (blink_effect)
+      {
+        // Blink just teleports in the field of view.
+        teleported = blink(creature, map, old_tile);
+      }
+      else
+      {
+        // Proper teleporting can go anywhere on the map.
+        teleported = teleport(creature, map, old_tile);
+      }
     }
     else
     {
-      // Proper teleporting can go anywhere on the map.
-      teleported = teleport(creature, map, old_tile);
-    }
-  }
-  else
-  {
-    if (creature->get_is_player())
-    {
-      IMessageManager& manager = MM::instance();
-      manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_TELEPORT_CANNOT_TELEPORT));
-      manager.send();
+      if (creature->get_is_player())
+      {
+        IMessageManager& manager = MM::instance();
+        manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_TELEPORT_CANNOT_TELEPORT));
+        manager.send();
+      }
     }
   }
 

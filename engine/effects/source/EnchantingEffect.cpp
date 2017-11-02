@@ -49,6 +49,11 @@ bool EnchantingEffect::effect_cursed(CreaturePtr creature, ActionManager * const
 // Select an item to enchant.
 bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, const ItemStatus item_status)
 {
+  if (creature == nullptr || am == nullptr)
+  {
+    return false;
+  }
+
   bool is_player = creature->get_is_player();
 
   if (is_player && !creature->has_items())

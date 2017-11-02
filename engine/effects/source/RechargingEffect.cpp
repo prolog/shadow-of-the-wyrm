@@ -68,6 +68,11 @@ bool RechargingEffect::effect_cursed(CreaturePtr creature, ActionManager * const
 
 bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, const ItemStatus item_status)
 {
+  if (am == nullptr || creature == nullptr)
+  {
+    return false;
+  }
+
   bool recharg_exists = has_rechargables(creature);
   bool effect_identified = false;
 
