@@ -1,4 +1,10 @@
 Me:
+- kraphead: the deities thing is because their danger level is -1.  Set
+  DL to the proper value and then remove cosmos from the allowable terrain
+  types.
+- Charisma: rework so that "attacks but draws back".  1/2 charisma + 1/2 
+  Intimidation, max 75%.  Update Guidebook, remove dagger for 
+  unimplemented, etc.
 - Poem combat tally: 25 fae remaining, 6 giants.
 - Instead of making creatures "friendly", charisma should just make them
   non-hostile (safe to attack).
@@ -190,4 +196,9 @@ kraphead
 - Status effects in the void are permanent
 - Nothing in the rift when deity killed else bad times
 - Cascade of aggro on stun, etc
-
+- What's training charisma so high?
+- Cap training of certain stats (@25?)
+- Pug damage way too high
+- Can dual wield fists/2h weapon
+- Elysians should acknowledge victory?
+- Archers - endgame content
