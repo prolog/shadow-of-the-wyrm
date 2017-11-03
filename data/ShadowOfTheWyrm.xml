@@ -20057,13 +20057,8 @@
 				<Colour>123</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>53</TileType>
-				</AllowableTerrainTypes>
-				<!-- Deities are generated one by one, with the first placed
-				     by script, so set danger level to -1 to prevent them from
-					 being added. -->
-				<DangerLevel>-1</DangerLevel>
+				<AllowableTerrainTypes/>
+				<DangerLevel>200</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>400</NumDice>
@@ -20098,13 +20093,8 @@
 				<Colour>124</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>53</TileType>
-				</AllowableTerrainTypes>
-				<!-- Deities are generated one by one, with the first placed
-				     by script, so set danger level to -1 to prevent them from
-					 being added. -->
-				<DangerLevel>-1</DangerLevel>
+				<AllowableTerrainTypes/>
+				<DangerLevel>200</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>400</NumDice>
@@ -20139,13 +20129,8 @@
 				<Colour>127</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>53</TileType>
-				</AllowableTerrainTypes>
-				<!-- Deities are generated one by one, with the first placed
-				     by script, so set danger level to -1 to prevent them from
-					 being added. -->
-				<DangerLevel>-1</DangerLevel>
+				<AllowableTerrainTypes/>
+				<DangerLevel>200</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>400</NumDice>
@@ -20180,13 +20165,8 @@
 				<Colour>114</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>53</TileType>
-				</AllowableTerrainTypes>
-				<!-- Deities are generated one by one, with the first placed
-				     by script, so set danger level to -1 to prevent them from
-					 being added. -->
-				<DangerLevel>-1</DangerLevel>
+				<AllowableTerrainTypes/>
+				<DangerLevel>200</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>400</NumDice>
@@ -20221,13 +20201,8 @@
 				<Colour>113</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>53</TileType>
-				</AllowableTerrainTypes>
-				<!-- Deities are generated one by one, with the first placed
-				     by script, so set danger level to -1 to prevent them from
-					 being added. -->
-				<DangerLevel>-1</DangerLevel>
+				<AllowableTerrainTypes/>
+				<DangerLevel>200</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>400</NumDice>
@@ -20262,13 +20237,8 @@
 				<Colour>120</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>53</TileType>
-				</AllowableTerrainTypes>
-				<!-- Deities are generated one by one, with the first placed
-				     by script, so set danger level to -1 to prevent them from
-					 being added. -->
-				<DangerLevel>-1</DangerLevel>
+				<AllowableTerrainTypes/>
+				<DangerLevel>200</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>400</NumDice>
@@ -20303,13 +20273,8 @@
 				<Colour>118</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>53</TileType>
-				</AllowableTerrainTypes>
-				<!-- Deities are generated one by one, with the first placed
-				     by script, so set danger level to -1 to prevent them from
-					 being added. -->
-				<DangerLevel>-1</DangerLevel>
+				<AllowableTerrainTypes/>
+				<DangerLevel>200</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>400</NumDice>
@@ -20344,13 +20309,8 @@
 				<Colour>125</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>53</TileType>
-				</AllowableTerrainTypes>
-				<!-- Deities are generated one by one, with the first placed
-				     by script, so set danger level to -1 to prevent them from
-					 being added. -->
-				<DangerLevel>-1</DangerLevel>
+				<AllowableTerrainTypes/>
+				<DangerLevel>200</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>400</NumDice>
@@ -20385,13 +20345,8 @@
 				<Colour>112</Colour>
 			</Text>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>53</TileType>
-				</AllowableTerrainTypes>
-				<!-- Deities are generated one by one, with the first placed
-				     by script, so set danger level to -1 to prevent them from
-					 being added. -->
-				<DangerLevel>-1</DangerLevel>
+				<AllowableTerrainTypes/>
+				<DangerLevel>200</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>400</NumDice>
