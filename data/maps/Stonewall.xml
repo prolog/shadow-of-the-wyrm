@@ -33,7 +33,7 @@
 	</Tiles>
 	<PlayerStart>
 		<Row>0</Row>
-		<Col>45</Col>
+		<Col>35</Col>
 	</PlayerStart>
 	<InitialPlacements>
 		<Creatures>
@@ -154,6 +154,55 @@
 				<Coord>
 					<Row>13</Row>
 					<Col>62</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_alchemist</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>39</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_pelter</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_pelter</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>41</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_pelter</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>42</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_pelter</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>43</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_pelter</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>44</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_alchemist</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>45</Col>
 				</Coord>
 			</Placement>
 			<Placement>
