@@ -195,7 +195,7 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
       // for this.  Don't check for other slots (rings, head, etc).
       if (worn_location == EquipmentWornLocation::EQUIPMENT_WORN_WIELDED || worn_location == EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND)
       {
-        list<IItemFilterPtr> hands_filter = ItemFilterFactory::create_hands_required_filter(creature->get_hands_available());
+        list<IItemFilterPtr> hands_filter = ItemFilterFactory::create_hands_required_filter(worn_location, creature->get_hands_available());
         total_filter.insert(total_filter.end(), hands_filter.begin(), hands_filter.end());
       }
 

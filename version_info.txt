@@ -42,6 +42,8 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
 
   - Fixed up some other instances of effects not safely checking pointers.
 
+  - Two-handed weapons can no longer be wielded off-handed (kraphead).
+
   - Various typos in bestiary descriptions (kraphead).
 
 Shadow of the Wyrm v0.7.0 "de Visee"
