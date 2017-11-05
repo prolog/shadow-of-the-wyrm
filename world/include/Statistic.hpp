@@ -24,6 +24,9 @@ class Statistic : public ISerializable
     void set_current(int new_current, const SetStatisticFailure ssf = SetStatisticFailure::SET_STATISTIC_FAILURE_IGNORE);
     int  get_current() const;
 
+    void set_original(const int new_original);
+    int get_original() const;
+
     void set_max(const int new_max);
     int get_max() const;
 
@@ -42,6 +45,7 @@ class Statistic : public ISerializable
 	protected:
 		int base;
 		int current;
+    int original;
     int max;
     Marks marks;
 

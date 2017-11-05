@@ -7,6 +7,8 @@
 
 using namespace std;
 
+const int CreatureStatisticsMarkerChecker::PASSIVE_STATISTIC_THRESHOLD = 15;
+
 CreatureStatisticsMarkerChecker::CreatureStatisticsMarkerChecker()
 {
 }
@@ -47,9 +49,12 @@ void CreatureStatisticsMarkerChecker::check_strength_conditions(CreaturePtr crea
 
   StatisticsMarker sm;
 
-  for (int i = 0; i < num_marks; i++)
+  if (can_increase_passive_statistic(creature->get_strength()))
   {
-    sm.mark_strength(creature);
+    for (int i = 0; i < num_marks; i++)
+    {
+      sm.mark_strength(creature);
+    }
   }
 }
 
@@ -57,7 +62,7 @@ void CreatureStatisticsMarkerChecker::check_strength_conditions(CreaturePtr crea
 // nor hungry, this will increase their overall health.
 void CreatureStatisticsMarkerChecker::check_health_conditions(CreaturePtr creature)
 {
-  if (creature != nullptr)
+  if (creature != nullptr && can_increase_passive_statistic(creature->get_health()))
   {
     HungerLevel hl = HungerLevelConverter::to_hunger_level(creature->get_hunger_clock().get_hunger());
     RaceManager rm;
@@ -82,13 +87,15 @@ void CreatureStatisticsMarkerChecker::check_health_conditions(CreaturePtr creatu
 void CreatureStatisticsMarkerChecker::check_charisma_conditions(CreaturePtr creature)
 {
   Equipment& eq = creature->get_equipment();
+  Statistic cha = creature->get_charisma();
+
   ItemPtr lf = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER);
   ItemPtr rf = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER);
   ItemPtr neck = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_NECK);
 
   vector<ItemPtr> items = {lf, rf, neck};
   vector<ItemType> jewelry_types = {ItemType::ITEM_TYPE_AMULET, ItemType::ITEM_TYPE_RING};
-  int num_marks = 0;
+  bool adorned = false;
 
   for (ItemPtr item : items)
   {
@@ -98,15 +105,29 @@ void CreatureStatisticsMarkerChecker::check_charisma_conditions(CreaturePtr crea
 
       if (std::find(jewelry_types.begin(), jewelry_types.end(), itype) != jewelry_types.end())
       {
-        num_marks++;
+        adorned = true;
+        break;
       }
     }
   }
 
   StatisticsMarker sm;
 
-  for (int i = 0; i < num_marks; i++)
+  if (can_increase_passive_statistic(cha) && adorned)
   {
     sm.mark_charisma(creature);
   }
+}
+
+bool CreatureStatisticsMarkerChecker::can_increase_passive_statistic(const Statistic& stat)
+{
+  bool can_increase = false;
+  int modifier = (stat.get_base() - stat.get_original());
+
+  if (modifier < PASSIVE_STATISTIC_THRESHOLD)
+  {
+    can_increase = true;
+  }
+
+  return can_increase;
 }

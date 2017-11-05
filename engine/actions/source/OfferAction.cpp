@@ -112,10 +112,6 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
           CurrentCreatureAbilities cca;
           string message = SacrificeTextKeys::get_sacrifice_message(feature->get_alignment_range(), item_to_sac, !cca.can_see(creature));
 
-          // Having one's deity accept a proffered sacrifice marks charisma.
-          StatisticsMarker sm;
-          sm.mark_charisma(creature);
-
           manager.add_new_message(message);
           manager.send();
         }

@@ -1,7 +1,4 @@
 Me:
-- kraphead: the deities thing is because their danger level is -1.  Set
-  DL to the proper value and then remove cosmos from the allowable terrain
-  types.
 - Charisma: rework so that "attacks but draws back".  1/2 charisma + 1/2 
   Intimidation, max 75%.  Update Guidebook, remove dagger for 
   unimplemented, etc.
@@ -13,11 +10,7 @@ Me:
   if the expected damage is greater than the expected damage of a melee
   attack.
 - Repel (cantrip)
-- Email Nathan before next release re: Mac build, and update website to
-  mention that the game is buildable in Mac OS.
-- Need to test the following after the spell refactoring:
-  - reflective beam, cross, ball, target self, storm
-  - Anything else?
+- Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Penalties from bloodied, exposed should also scale with level.
@@ -196,8 +189,6 @@ kraphead
 - Status effects in the void are permanent
 - Nothing in the rift when deity killed else bad times
 - Cascade of aggro on stun, etc
-- What's training charisma so high?
-- Cap training of certain stats (@25?)
 - Pug damage way too high
 - Can dual wield fists/2h weapon
 - Elysians should acknowledge victory?

@@ -25,6 +25,12 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   has some ogre hurlers.  This makes it harder to grab a pile of rocks 
   and tackle these areas unopposed at level 1 (kraphead).
 
+- Offering on an altar no longer trains charisma (kraphead).
+
+- Passive, timer-based ways of training stats (carrying heavy items, 
+  wearing jewelry, etc) no longer can train the stat to 99.  The new
+  maximum is 20 more than the stat's starting value (kraphead).
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: goblin alchemist.
