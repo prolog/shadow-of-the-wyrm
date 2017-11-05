@@ -4,12 +4,12 @@
 using namespace std;
 
 Statistic::Statistic()
-: base(1), current(1), max(-1), marks(0)
+: base(1), current(1), original(1), max(-1), marks(0)
 {
 }
 
 Statistic::Statistic(const int new_base_and_current)
-: base(new_base_and_current), current(new_base_and_current), max(-1), marks(0)
+: base(new_base_and_current), current(new_base_and_current), original(new_base_and_current), max(-1), marks(0)
 {
 }
 
@@ -25,6 +25,7 @@ bool Statistic::operator==(const Statistic& stat) const
 
   result = result && (base == stat.base);
   result = result && (current == stat.current);
+  result = result && (original == stat.original);
   result = result && (max == stat.max);
   result = result && (marks == stat.marks);
 
@@ -75,6 +76,16 @@ void Statistic::set_current(int new_current, const SetStatisticFailure ssf)
 int Statistic::get_current() const
 {
 	return current;
+}
+
+void Statistic::set_original(const int new_original)
+{
+  original = new_original;
+}
+
+int Statistic::get_original() const
+{
+  return original;
 }
 
 void Statistic::set_max(const int new_max)
@@ -129,6 +140,7 @@ bool Statistic::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, base);
   Serialize::write_int(stream, current);
+  Serialize::write_int(stream, original);
   Serialize::write_int(stream, max);
   marks.serialize(stream);
 
@@ -139,6 +151,7 @@ bool Statistic::deserialize(istream& stream)
 {
   Serialize::read_int(stream, base);
   Serialize::read_int(stream, current);
+  Serialize::read_int(stream, original);
   Serialize::read_int(stream, max);
   marks.deserialize(stream);
 
