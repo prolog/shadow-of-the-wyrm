@@ -1,4 +1,5 @@
 Me:
+- Continue adding 0-deity text for all the Elysians
 - Charisma: rework so that "attacks but draws back".  1/2 charisma + 1/2 
   Intimidation, max 75%.  Update Guidebook, remove dagger for 
   unimplemented, etc.
