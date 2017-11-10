@@ -26117,6 +26117,11 @@
 				<Type>10</Type>
 				<EffectBonus>60</EffectBonus>
 			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/the_sentry.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="the_worldsinger">
 			<RaceID>_elysian</RaceID>
