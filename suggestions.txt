@@ -1,11 +1,11 @@
 Me:
 - Continue adding 0-deity text for all the Elysians
+- Link to Telari should be severed after
+- Seconds should be fine.  Why are effect not working? signed/un?
+- Make sure multiple victories show up properly in dumps
 - Charisma: rework so that "attacks but draws back".  1/2 charisma + 1/2 
   Intimidation, max 75%.  Update Guidebook, remove dagger for 
   unimplemented, etc.
-- Poem combat tally: 25 fae remaining, 6 giants.
-- Instead of making creatures "friendly", charisma should just make them
-  non-hostile (safe to attack).
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
