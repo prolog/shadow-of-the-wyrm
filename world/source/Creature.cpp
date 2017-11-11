@@ -1,4 +1,5 @@
 #include <limits>
+#include "Conversion.hpp"
 #include "Creature.hpp"
 #include "CreatureProperties.hpp"
 #include "DecisionStrategyFactory.hpp"
@@ -1292,6 +1293,27 @@ void Creature::set_automatic_movement(const AutomaticMovement& new_auto_move)
 AutomaticMovement& Creature::get_automatic_movement_ref()
 {
   return auto_move;
+}
+
+vector<CreatureWin> Creature::get_satisfied_win_conditions() const
+{
+  vector<CreatureWin> wins;
+
+  static_assert(CreatureWin::CREATURE_WIN_LAST == CreatureWin(3), "Unexpected CreatureWin::CREATURE_WIN_LAST!");
+  vector<CreatureWin> win_conditions = {CreatureWin::CREATURE_WIN_REGULAR, CreatureWin::CREATURE_WIN_EVIL, CreatureWin::CREATURE_WIN_GODSLAYER};
+
+  for (const CreatureWin win : win_conditions)
+  {
+    string p_key = CreatureProperties::CREATURE_PROPERTIES_WINNER + "_" + to_string(static_cast<int>(win));
+    string p_val = get_additional_property(p_key);
+
+    if (!p_val.empty() && String::to_bool(p_val))
+    {
+      wins.push_back(win);
+    }
+  }
+
+  return wins;
 }
 
 bool Creature::has_additional_property(const string& property_name) const

@@ -4494,16 +4494,20 @@ int set_winner(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureWin win_type = CreatureWin::CREATURE_WIN_REGULAR;
+    int win_type = 0;
 
     if (num_args == 2 && lua_isnumber(ls, 2))
     {
-      win_type = static_cast<CreatureWin>(lua_tointeger(ls, 2));
+      win_type = lua_tointeger(ls, 2);
     }
 
     if (creature != nullptr)
     {
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(static_cast<int>(win_type)));
+      // Because there are multiple win conditions, and the player has the
+      // option to continue playing after most of them, set a flag that says
+      // whether a particular win condition is satisfied.
+      string win_property = CreatureProperties::CREATURE_PROPERTIES_WINNER + "_" + to_string(win_type);
+      creature->set_additional_property(win_property, to_string(true));
     }
   }
   else

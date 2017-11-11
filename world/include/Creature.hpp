@@ -306,6 +306,9 @@ class Creature : public ISerializable
     std::map<double, std::vector<std::pair<std::string, Modifier>>>& get_modifiers_ref(); // get all modifiers, including those marked for deletion
     bool is_affected_by_modifier_spell(const std::string& spell_id) const;
 
+    // Which win conditions have been satisfied?
+    std::vector<CreatureWin> get_satisfied_win_conditions() const;
+
     // Additional traits not all creatures will have, so a bit of space is saved
     // by using a map.
     bool has_additional_property(const std::string& property_name) const;

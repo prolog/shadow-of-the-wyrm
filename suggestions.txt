@@ -1,6 +1,6 @@
 Me:
-- Continue adding 0-deity text for all the Elysians
-- Link to Telari should be severed after
+- Dumps showing wins?
+- Disallow evil win after Godslayer.
 - Seconds should be fine.  Why are effect not working? signed/un?
 - Make sure multiple victories show up properly in dumps
 - Charisma: rework so that "attacks but draws back".  1/2 charisma + 1/2 
