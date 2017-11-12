@@ -4050,6 +4050,9 @@
     <ClInclude Include="include\Conversion.hpp">
       <Filter>Header Files\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\IntimidationCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8035,6 +8038,12 @@
     </ClCompile>
     <ClCompile Include="source\unit_tests\Conversion_test.cpp">
       <Filter>Source Files\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\IntimidationCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\IntimidationCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
