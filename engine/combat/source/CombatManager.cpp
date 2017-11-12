@@ -22,6 +22,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "IntimidationCalculator.hpp"
 #include "IHitTypeFactory.hpp"
 #include "ItemProperties.hpp"
 #include "KillScript.hpp"
@@ -168,6 +169,10 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     if (is_automatic_miss(d100_roll))
     {
       miss(attacking_creature, attacked_creature);
+    }
+    else if (is_intimidate(attacking_creature, attacked_creature, attack_type))
+    {
+      intimidate(attacking_creature, attacked_creature);
     }
     // Hit
     else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
@@ -877,6 +882,22 @@ bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attac
   return true;
 }
 
+bool CombatManager::intimidate(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+{
+  StatisticsMarker sm;
+
+  if (RNG::percent_chance(50))
+  {
+    sm.mark_charisma(attacked_creature);
+  }
+
+  string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+  string intim_message = CombatTextKeys::get_intimidate_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
+  add_combat_message(attacking_creature, attacked_creature, intim_message);
+
+  return true;
+}
+
 // Add messages if the damage dealt is 0 (unharmed), or negative
 // (heals), or piercing, etc.
 // 
@@ -942,6 +963,37 @@ bool CombatManager::is_hit(const int total_roll, const int target_number_value)
 bool CombatManager::is_miss(const int total_roll, const int target_number_value)
 {
   return (total_roll <= target_number_value);
+}
+
+bool CombatManager::is_intimidate(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type)
+{
+  bool intim = false;
+
+  if (attacking_creature != nullptr && attacked_creature != nullptr)
+  {
+    IntimidationCalculator ic;
+
+    if (RNG::percent_chance(ic.calculate_pct_chance_intimidated(attacking_creature, attacked_creature)))
+    {
+      // Only melee attacks are subject to intimidation.
+      switch (attack_type)
+      {
+        case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
+        case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
+        case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
+        {
+          intim = true;
+          break;
+        }
+        case AttackType::ATTACK_TYPE_MAGICAL:
+        case AttackType::ATTACK_TYPE_RANGED:
+        case AttackType::ATTACK_TYPE_UNDEFINED:
+          break;
+      }
+    }
+  }
+
+  return intim;
 }
 
 bool CombatManager::is_close_miss(const int total_roll, const int target_number_value)

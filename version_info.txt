@@ -34,6 +34,10 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
 - Multiple satisfied win conditions (e.g., slaying Amaurosis and doing the
   Godslayer ending) are now tracked properly in the high score file.
 
+- High Charisma no longer generates creatures as friendly.  Instead,
+  a combination of Intimidation and Charisma can cause an attacking
+  creature to draw back, thereby wasting their turn.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: goblin alchemist.

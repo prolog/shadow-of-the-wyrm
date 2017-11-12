@@ -16,6 +16,7 @@ class CombatTextKeys
     static std::string get_explosive_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& target);
     static std::string get_close_miss_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& missed_target);
     static std::string get_miss_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& missed_target);
+    static std::string get_intimidate_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& attacked);
     static std::string get_critical_hit_message();
     static std::string get_mighty_blow_message();
     static std::string get_hit_message(const bool attacker_is_player, const bool attacked_is_player, const DamageType damage_type, const std::string& attacker, const std::string& hit_target, const bool use_multiple_damage_type_msgs);
@@ -54,6 +55,8 @@ class CombatTextKeys
     static const std::string COMBAT_CLOSE_MISS_MESSAGE_NP;
     static const std::string COMBAT_MISS_MESSAGE;
     static const std::string COMBAT_MISS_MESSAGE_NP;
+    static const std::string COMBAT_INTIMIDATE_MESSAGE;
+    static const std::string COMBAT_INTIMIDATE_MESSAGE_NP;
     static const std::string COMBAT_PIERCE_MESSAGE;
     static const std::string COMBAT_PIERCE_MESSAGE_NP;
     static const std::string COMBAT_VORPAL_MESSAGE;
