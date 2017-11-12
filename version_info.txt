@@ -31,6 +31,9 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   wearing jewelry, etc) no longer can train the stat to 99.  The new
   maximum is 20 more than the stat's starting value (kraphead).
 
+- Multiple satisfied win conditions (e.g., slaying Amaurosis and doing the
+  Godslayer ending) are now tracked properly in the high score file.
+
 - More stanzas for "Tel and Floridel".
 
 - New creatures: goblin alchemist.
@@ -45,6 +48,9 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   - Two-handed weapons can no longer be wielded off-handed (kraphead).
 
   - Various typos in bestiary descriptions (kraphead).
+
+  - The release-Sceadugenga ending can't be triggered if Sceadugenga has
+    already been killed.
 
 Shadow of the Wyrm v0.7.0 "de Visee"
 - Version declared March 1, 2017.  Version finalized October 23, 2017.
