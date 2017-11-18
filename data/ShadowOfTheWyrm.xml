@@ -30511,6 +30511,27 @@
 					<Type>6</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="tooth_ancient_sea_creature">
+				<DescriptionSID>TOOTH_ANCIENT_SEA_CREATURE_SID</DescriptionSID>
+				<UsageDescriptionSID>TOOTH_ANCIENT_SEA_CREATURE_USAGE_SID</UsageDescriptionSID>
+				<Value>150</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>12</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>41</Difficulty>
+				<Speed>1</Speed>
+				<Damage piercing="1">
+					<NumDice>120</NumDice>
+					<NumSides>6</NumSides>
+					<Type>6</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="fire_bomb">
 				<DescriptionSID>FIRE_BOMB_SID</DescriptionSID>
 				<UsageDescriptionSID>FIRE_BOMB_USAGE_SID</UsageDescriptionSID>
@@ -32999,6 +33020,32 @@
 					<Type>1</Type>
 				</Damage>
 			</Missile>
+			<Missile id="arrow_ancient_magics">
+				<DescriptionSID>ARROW_ANCIENT_MAGICS_SID</DescriptionSID>
+				<UsageDescriptionSID>ARROW_ANCIENT_MAGICS_USAGE_SID</UsageDescriptionSID>
+				<Value>120</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>9</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>10</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2003</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
+				<Difficulty>43</Difficulty>
+				<Speed>3</Speed>
+				<Damage piercing="true" explosive="true">
+					<NumDice>100</NumDice>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
 			<Missile id="bolt">
 				<DescriptionSID>BOLT_SID</DescriptionSID>
 				<UsageDescriptionSID>BOLT_USAGE_SID</UsageDescriptionSID>
@@ -33027,6 +33074,32 @@
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
+					<NumSides>8</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
+			<Missile id="bolt_ancient_magics">
+				<DescriptionSID>BOLT_ANCIENT_MAGICS_SID</DescriptionSID>
+				<UsageDescriptionSID>BOLT_ANCIENT_MAGICS_USAGE_SID</UsageDescriptionSID>
+				<Value>85</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2004</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
+				<Difficulty>41</Difficulty>
+				<Speed>1</Speed>
+				<Damage piercing="1" draining="1">
+					<NumDice>100</NumDice>
 					<NumSides>8</NumSides>
 					<Type>1</Type>
 				</Damage>
@@ -33113,6 +33186,26 @@
 					<Type>1</Type>
 				</Damage>
 			</Missile>
+			<Missile id="spine_ancient_horror">
+				<DescriptionSID>SPINE_ANCIENT_HORROR_SID</DescriptionSID>
+				<UsageDescriptionSID>SPINE_ANCIENT_HORROR_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>12</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage piercing="1" chaotic="1">
+					<NumDice>150</NumDice>
+					<NumSides>3</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
 			<Missile id="throwing_club">
 				<DescriptionSID>THROWING_CLUB_SID</DescriptionSID>
 				<UsageDescriptionSID>THROWING_CLUB_USAGE_SID</UsageDescriptionSID>
@@ -33165,6 +33258,30 @@
 				<Speed>8</Speed>
 				<Damage>
 					<NumDice>16</NumDice>
+					<NumSides>2</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Missile>
+			<Missile id="massive_ferric_meteorite">
+				<DescriptionSID>MASSIVE_FERRIC_METEORITE_SID</DescriptionSID>
+				<UsageDescriptionSID>MASSIVE_FERRIC_METEORITE_USAGE_SID</UsageDescriptionSID>
+				<Value>300</Value>
+				<Weight>
+					<Pounds>300</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>52</Difficulty>
+				<Speed>20</Speed>
+				<Damage>
+					<NumDice>1000</NumDice>
 					<NumSides>2</NumSides>
 					<Type>2</Type>
 				</Damage>

@@ -1,4 +1,6 @@
 Me:
+- Thrown blades, exotics, whatever else
+- Code for the Smith to give out the archer gifts.
 - Celeste smites himself
 - Test going to the cosmos, killing a deity.  Then doing the same, but
   after saving/loading.
@@ -187,7 +189,6 @@ kraphead
 - Crashes in sewer, SE dungeon
 - black 'x'
 - Status effects in the void are permanent
-- Nothing in the rift when deity killed else bad times
 - Cascade of aggro on stun, etc
 - Pug damage way too high
 - Archers - endgame content
