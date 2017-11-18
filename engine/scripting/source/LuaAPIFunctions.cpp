@@ -454,7 +454,7 @@ int clear_and_add_message(lua_State* ls)
 // Add a new message.
 // Arguments expected: 1-2.
 // Argument types: string (resource SID, required), table of strings (opt.)
-// Assumption: table of strings is an array.
+// Assumption: table of strings is an array.a
 int add_message(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
