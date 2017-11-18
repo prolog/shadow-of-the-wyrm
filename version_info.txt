@@ -53,6 +53,9 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
 
   - Various typos in bestiary descriptions (kraphead).
 
+  - A script bug was causing deities in the cosmos not to spawn the next
+    in the sequence in certain cases. (kraphead)
+
   - The release-Sceadugenga ending can't be triggered if Sceadugenga has
     already been killed.
 

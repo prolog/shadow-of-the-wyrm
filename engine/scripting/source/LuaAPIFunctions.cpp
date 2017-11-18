@@ -1612,26 +1612,45 @@ int add_creature_to_map(lua_State* ls)
 int remove_creature_from_map(lua_State* ls)
 {
   bool creature_removed = false;
+  int num_args = lua_gettop(ls);
 
-  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, 1)))
+  if ((num_args >= 1) && (lua_isstring(ls, 1)))
   {
     Game& game = Game::instance();
-    MapPtr map = game.get_current_map();
+    string map_id;
+    MapPtr map;
+
+    if (num_args == 2 && lua_isstring(ls, 2))
+    {
+      map_id = lua_tostring(ls, 2);
+    }
+
+    if (map_id.empty())
+    {
+      map = game.get_current_map();
+    }
+    else
+    {
+      map = game.get_map_registry_ref().get_map(map_id);
+    }
 
     string creature_id_or_base = lua_tostring(ls, 1);
     const CreatureMap& creatures = map->get_creatures();
 
-    for (const auto creature_pair : creatures)
+    if (!creature_id_or_base.empty())
     {
-      CreaturePtr creature = creature_pair.second;
-
-      if (creature != nullptr &&
-        (creature->get_id() == creature_id_or_base || creature->get_original_id() == creature_id_or_base))
+      for (const auto creature_pair : creatures)
       {
-        MapUtils::remove_creature(map, creature);
+        CreaturePtr creature = creature_pair.second;
 
-        creature_removed = true;
-        break;
+        if (creature != nullptr &&
+          (creature->get_id() == creature_id_or_base || creature->get_original_id() == creature_id_or_base))
+        {
+          MapUtils::remove_creature(map, creature);
+
+          creature_removed = true;
+          break;
+        }
       }
     }
   }
