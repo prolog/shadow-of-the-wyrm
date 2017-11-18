@@ -94,7 +94,7 @@ function populate_rift(map_id, rift_y, rift_x)
       generate_deity_and_followers_in_rift(map_id, rift_y, rift_x, deity_and_followers)
       generated = true
       
-      add_message_with_pause("RIFT_REPOPULATE") 
+      add_message_with_pause("RIFT_REPOPULATE", false) 
       break
     end
   end

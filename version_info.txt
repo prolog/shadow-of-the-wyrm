@@ -59,6 +59,9 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   - The release-Sceadugenga ending can't be triggered if Sceadugenga has
     already been killed.
 
+  - The repop message in the cosmos was clearing the message buffer,
+    removing messages about hitting/killing the current deity.
+
 Shadow of the Wyrm v0.7.0 "de Visee"
 - Version declared March 1, 2017.  Version finalized October 23, 2017.
 

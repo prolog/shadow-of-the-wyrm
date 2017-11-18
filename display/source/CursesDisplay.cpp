@@ -452,7 +452,10 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
   
   disable_colour(static_cast<int>(colour), screen);
   
-  //refresh();
+  // This is commented out because every so often I wonder why and it's always
+  // because if I include it, the cursor jumps to the message buffer and back,
+  // which is ugly.
+  // wrefresh(screen);
 }
 
 string CursesDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool reset_prompt)

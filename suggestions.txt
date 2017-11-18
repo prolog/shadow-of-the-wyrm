@@ -1,7 +1,5 @@
 Me:
 - Celeste smites himself
-- "You feel a pulsing energy" after killing a deity, but the death message
-  isn't shown before...
 - Test going to the cosmos, killing a deity.  Then doing the same, but
   after saving/loading.
 - Dumps showing wins?
