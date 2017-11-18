@@ -1,4 +1,5 @@
 module("cosmos_common", package.seeall)
+require('fn')
 
 -- Calculate the centre of a rift, which is always the centre of the
 -- map's coordinates.
@@ -29,9 +30,15 @@ function generate_deity_and_followers_in_rift(map_id, rift_y, rift_x, deity_and_
   -- in the rift.  
   cosmos_creatures = fn.shuffle(cosmos_creatures)
 
-  -- Generate creatures in the rift area
+  -- Generate creatures in the rift area.
+  -- Only one deity can be active at a time.  Once a deity is killed,
+  -- its followers are removed, and the next deity and its followers are
+  -- generated.
   for ry = rift_y - 1, rift_y + 1 do
     for rx = rift_x - 1, rift_x + 1 do
+      local orig_cr_id = get_creature_id(ry, rx, map_id)
+      remove_creature_from_map(orig_cr_id, map_id)
+
       local cr_id = add_creature_to_map(cosmos_creatures[cnt], ry, rx, map_id, true)
       set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS", "1")
 
