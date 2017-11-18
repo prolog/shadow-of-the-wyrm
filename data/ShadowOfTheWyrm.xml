@@ -30490,113 +30490,6 @@
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
-			<Weapon id="poison_dart">
-				<DescriptionSID>POISON_DART_SID</DescriptionSID>
-				<UsageDescriptionSID>POISON_DART_USAGE_SID</UsageDescriptionSID>
-				<Value>8</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>6</Ounces>
-				</Weight>
-				<WornLocation>10</WornLocation>
-				<Material>3</Material>
-				<DangerLevel>5</DangerLevel>
-				<Skill>1004</Skill>
-				<RangedSkill>2005</RangedSkill>
-				<Difficulty>43</Difficulty>
-				<Speed>1</Speed>
-				<Damage>
-					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Type>6</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="tooth_ancient_sea_creature">
-				<DescriptionSID>TOOTH_ANCIENT_SEA_CREATURE_SID</DescriptionSID>
-				<UsageDescriptionSID>TOOTH_ANCIENT_SEA_CREATURE_USAGE_SID</UsageDescriptionSID>
-				<Value>150</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>6</Ounces>
-				</Weight>
-				<WornLocation>10</WornLocation>
-				<Material>12</Material>
-				<DangerLevel>-1</DangerLevel>
-				<Skill>1004</Skill>
-				<RangedSkill>2005</RangedSkill>
-				<Difficulty>41</Difficulty>
-				<Speed>1</Speed>
-				<Damage piercing="1">
-					<NumDice>120</NumDice>
-					<NumSides>6</NumSides>
-					<Type>6</Type>
-				</Damage>
-			</Weapon>
-			<Weapon id="fire_bomb">
-				<DescriptionSID>FIRE_BOMB_SID</DescriptionSID>
-				<UsageDescriptionSID>FIRE_BOMB_USAGE_SID</UsageDescriptionSID>
-				<Value>8</Value>
-				<Weight>
-					<Pounds>1</Pounds>
-					<Ounces>5</Ounces>
-				</Weight>
-				<WornLocation>10</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
-					<Colour>9</Colour>
-				</TextDetails>
-				<DangerLevel>10</DangerLevel>
-				<Properties>
-					<Property>
-						<Name>destruction_pct_chance</Name>
-						<Value>100</Value>
-					</Property>
-				</Properties>
-				<Skill>1009</Skill>
-				<RangedSkill>2009</RangedSkill>
-				<Difficulty>47</Difficulty>
-				<Speed>3</Speed>
-				<Damage explosive="1">
-					<NumDice>4</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>1</Modifier>
-					<Type>3</Type>
-					<EffectBonus>50</EffectBonus>
-				</Damage>
-			</Weapon>
-			<Weapon id="shadow_bomb">
-				<DescriptionSID>SHADOW_BOMB_SID</DescriptionSID>
-				<UsageDescriptionSID>SHADOW_BOMB_USAGE_SID</UsageDescriptionSID>
-				<Value>8</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>8</Ounces>
-				</Weight>
-				<WornLocation>10</WornLocation>
-				<Material>3</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
-					<Colour>4</Colour>
-				</TextDetails>
-				<DangerLevel>14</DangerLevel>
-				<Properties>
-					<Property>
-						<Name>destruction_pct_chance</Name>
-						<Value>100</Value>
-					</Property>
-				</Properties>
-				<Skill>1009</Skill>
-				<RangedSkill>2009</RangedSkill>
-				<Difficulty>47</Difficulty>
-				<Speed>3</Speed>
-				<Damage piercing="1">
-					<NumDice>3</NumDice>
-					<NumSides>6</NumSides>
-					<Type>8</Type>
-					<EffectBonus>30</EffectBonus>
-				</Damage>
-			</Weapon>
 			<Weapon id="athame">
 				<DescriptionSID>ATHAME_SID</DescriptionSID>
 				<UsageDescriptionSID>ATHAME_USAGE_SID</UsageDescriptionSID>
@@ -32814,6 +32707,158 @@
 			</Weapon>
 		</RangedWeapons>
 		<Ammunition>
+			<Missile id="poison_dart">
+				<DescriptionSID>POISON_DART_SID</DescriptionSID>
+				<UsageDescriptionSID>POISON_DART_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>43</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Type>6</Type>
+				</Damage>
+			</Missile>
+			<Missile id="tooth_ancient_sea_creature">
+				<DescriptionSID>TOOTH_ANCIENT_SEA_CREATURE_SID</DescriptionSID>
+				<UsageDescriptionSID>TOOTH_ANCIENT_SEA_CREATURE_USAGE_SID</UsageDescriptionSID>
+				<Value>150</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>12</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>41</Difficulty>
+				<Speed>1</Speed>
+				<Damage piercing="1">
+					<NumDice>120</NumDice>
+					<NumSides>6</NumSides>
+					<Type>6</Type>
+				</Damage>
+			</Missile>
+			<Missile id="fire_bomb">
+				<DescriptionSID>FIRE_BOMB_SID</DescriptionSID>
+				<UsageDescriptionSID>FIRE_BOMB_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+					<Ounces>5</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>
+				<DangerLevel>10</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>3</Speed>
+				<Damage explosive="1">
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>1</Modifier>
+					<Type>3</Type>
+					<EffectBonus>50</EffectBonus>
+				</Damage>
+			</Missile>
+			<Missile id="shadow_bomb">
+				<DescriptionSID>SHADOW_BOMB_SID</DescriptionSID>
+				<UsageDescriptionSID>SHADOW_BOMB_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>4</Colour>
+				</TextDetails>
+				<DangerLevel>14</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>3</Speed>
+				<Damage piercing="1">
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+					<Type>8</Type>
+					<EffectBonus>30</EffectBonus>
+				</Damage>
+			</Missile>
+			<Missile id="chaos_bomb">
+				<DescriptionSID>CHAOS_BOMB_SID</DescriptionSID>
+				<UsageDescriptionSID>CHAOS_BOMB_USAGE_SID</UsageDescriptionSID>
+				<Value>200</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>4</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>3</Speed>
+				<Damage chaotic="1" explosive="1">
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+					<Type>8</Type>
+					<EffectBonus>50</EffectBonus>
+					<StatusAilments>
+						<Status>_poison</Status>
+						<Status>_mute</Status>
+						<Status>_para</Status>
+						<Status>_slow</Status>
+						<Status>_stone</Status>
+						<Status>_blood</Status>
+						<Status>_stun</Status>
+						<Status>_expose</Status>
+						<Status>_disf</Status>
+						<Status>_spellb</Status>
+						<Status>_blind</Status>
+					</StatusAilments>
+				</Damage>
+			</Missile>
 			<Missile id="_stone">
 				<DescriptionSID>STONE_SID</DescriptionSID>
 				<UsageDescriptionSID>STONE_USAGE_SID</UsageDescriptionSID>
@@ -32887,7 +32932,7 @@
 				<Difficulty>52</Difficulty>
 				<Speed>10</Speed>
 				<Damage>
-					<NumDice>2</NumDice>
+					<NumDice>8</NumDice>
 					<NumSides>6</NumSides>
 					<Type>2</Type>
 				</Damage>
@@ -33041,7 +33086,7 @@
 				<Difficulty>43</Difficulty>
 				<Speed>3</Speed>
 				<Damage piercing="true" explosive="true">
-					<NumDice>100</NumDice>
+					<NumDice>35</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>
@@ -33099,7 +33144,7 @@
 				<Difficulty>41</Difficulty>
 				<Speed>1</Speed>
 				<Damage piercing="1" draining="1">
-					<NumDice>100</NumDice>
+					<NumDice>35</NumDice>
 					<NumSides>8</NumSides>
 					<Type>1</Type>
 				</Damage>
@@ -33201,7 +33246,7 @@
 				<Difficulty>40</Difficulty>
 				<Speed>1</Speed>
 				<Damage piercing="1" chaotic="1">
-					<NumDice>150</NumDice>
+					<NumDice>75</NumDice>
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
@@ -33262,6 +33307,26 @@
 					<Type>2</Type>
 				</Damage>
 			</Missile>
+			<Missile id="titanic_heavenly_pillar">
+				<DescriptionSID>TITANIC_HEAVENLY_PILLAR_SID</DescriptionSID>
+				<UsageDescriptionSID>TITANIC_HEAVENLY_PILLAR_USAGE_SID</UsageDescriptionSID>
+				<Value>366</Value>
+				<Weight>
+					<Pounds>400</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>7</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>52</Difficulty>
+				<Speed>30</Speed>
+				<Damage>
+					<NumDice>200</NumDice>
+					<NumSides>2</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Missile>
 			<Missile id="massive_ferric_meteorite">
 				<DescriptionSID>MASSIVE_FERRIC_METEORITE_SID</DescriptionSID>
 				<UsageDescriptionSID>MASSIVE_FERRIC_METEORITE_USAGE_SID</UsageDescriptionSID>
@@ -33276,14 +33341,114 @@
 					<Colour>7</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Skill>1003</Skill>
-				<RangedSkill>2002</RangedSkill>
+				<Skill>1009</Skill>
+				<RangedSkill>2006</RangedSkill>
 				<Difficulty>52</Difficulty>
-				<Speed>20</Speed>
+				<Speed>25</Speed>
 				<Damage>
-					<NumDice>1000</NumDice>
+					<NumDice>350</NumDice>
 					<NumSides>2</NumSides>
 					<Type>2</Type>
+				</Damage>
+			</Missile>
+			<Missile id="throwing_axe">
+				<DescriptionSID>THROWING_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>THROWING_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Missile>
+			<Missile id="elysian_throwing_axe">
+				<DescriptionSID>ELYSIAN_THROWING_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>ELYSIAN_THROWING_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>450</Value>
+				<Weight>
+					<Pounds>5</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>42</Difficulty>
+				<Speed>2</Speed>
+				<Damage piercing="1">
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+					<Type>0</Type>
+					<Slays>
+						<Slay>_divine</Slay>
+					</Slays>
+				</Damage>
+			</Missile>
+			<Missile id="throwing_sword">
+				<DescriptionSID>THROWING_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>THROWING_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>12</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>2</Modifier>
+					<Type>0</Type>
+				</Damage>
+			</Missile>
+			<Missile id="elysian_throwing_sword">
+				<DescriptionSID>ELYSIAN_THROWING_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>ELYSIAN_THROWING_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>420</Value>
+				<Weight>
+					<Pounds>4</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>5</Speed>
+				<Damage piercing="1">
+					<NumDice>40</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>40</Modifier>
+					<Type>0</Type>
+					<Slays>
+						<Slay>_divine</Slay>
+					</Slays>
 				</Damage>
 			</Missile>
 		</Ammunition>
