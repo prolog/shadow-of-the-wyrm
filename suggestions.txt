@@ -1,6 +1,5 @@
 Me:
-- Thrown blades, exotics, whatever else
-- Code for the Smith to give out the archer gifts.
+- Huge rocks in fields
 - Celeste smites himself
 - Test going to the cosmos, killing a deity.  Then doing the same, but
   after saving/loading.
@@ -191,4 +190,3 @@ kraphead
 - Status effects in the void are permanent
 - Cascade of aggro on stun, etc
 - Pug damage way too high
-- Archers - endgame content

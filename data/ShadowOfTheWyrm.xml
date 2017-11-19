@@ -32937,6 +32937,33 @@
 					<Type>2</Type>
 				</Damage>
 			</Missile>
+			<Missile id="antimatter_shot">
+				<DescriptionSID>ANTIMATTER_SHOT_SID</DescriptionSID>
+				<UsageDescriptionSID>ANTIMATTER_SHOT_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>12</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2006</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>200</NumDice>
+					<NumSides>1</NumSides>
+					<Type>8</Type>
+					<EffectBonus>30</EffectBonus>
+				</Damage>
+			</Missile>
 			<Missile id="clay_pot">
 				<DescriptionSID>CLAY_POT_SID</DescriptionSID>
 				<UsageDescriptionSID>CLAY_POT_USAGE_SID</UsageDescriptionSID>
