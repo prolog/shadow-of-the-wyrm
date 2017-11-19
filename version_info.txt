@@ -38,6 +38,10 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   a combination of Intimidation and Charisma can cause an attacking
   creature to draw back, thereby wasting their turn.
 
+- If the player is an archer, or has otherwise focused on ranged weapon 
+  skills over melee, The Smith will now give out a gift based on the 
+  highest-trained skill.
+
 - More stanzas for "Tel and Floridel".
 
 - Huge rocks are significantly more powerful.
@@ -49,7 +53,7 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
 - New items: arrow of ancient magics, bolt of ancient magics, tooth of an
   ancient sea-creature, spine of an ancient horror, massive ferric
   meteorite, Elysian throwing-axe, Elysian throwing-blade, throwing axe,
-  throwing blade, titanic heavenly pillar, chaos bomb.
+  throwing blade, titanic heavenly pillar, chaos bomb, antimatter shot.
 
 - Bug fixes:
 
