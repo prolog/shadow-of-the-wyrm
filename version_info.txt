@@ -42,6 +42,9 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   skills over melee, The Smith will now give out a gift based on the 
   highest-trained skill.
 
+- Fields and cairns now have a chance to generate huge rocks, in addition
+  to rocks and stones.
+
 - More stanzas for "Tel and Floridel".
 
 - Huge rocks are significantly more powerful.

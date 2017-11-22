@@ -22,6 +22,11 @@ void FieldTileConfiguration::configure(TilePtr tile, const Season season) const
 
   if (!created_rock)
   {
+    created_rock = ItemManager::create_item_with_probability(1, 1500, tile_items, ItemIdKeys::ITEM_ID_HUGE_ROCK);
+  }
+
+  if (!created_rock)
+  {
     auto fl_it = flora_map.find(season);
 
     if (fl_it != flora_map.end())
