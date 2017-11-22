@@ -1400,3 +1400,13 @@ like fruit like little ghosts I heard they hung alone for hours oh do it Tel -
 %p
 "Stop!"
 %p
+She'd followed close behind, the little finch %b
+transformed - now Floridel, all pitch and fire, %b
+stared down the group.  She knew a life would hinge %b
+on this.  The knife-point quavered.  In the air, %b
+unspoken disbelief that such a girl %b
+would dare to interfere, to even bring %b
+voice to that thought.  Perhaps they thought they heard %b
+her wrong.  For who would be so bold to think %b
+a shepherdess would ever try to cow a king?
+%p
