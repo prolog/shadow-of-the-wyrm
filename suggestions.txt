@@ -1,5 +1,4 @@
 Me:
-- Celeste smites himself
 - Test going to the cosmos, killing a deity.  Then doing the same, but
   after saving/loading.
 - Dumps showing wins?
