@@ -5196,6 +5196,7 @@
 			<DescriptionSID>MELURA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MELURA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MELURA_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -6224,6 +6225,7 @@
 			<DescriptionSID>SHALE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHALE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHALE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -6500,6 +6502,7 @@
 			<DescriptionSID>GILIRIEN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GILIRIEN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GILIRIEN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -6748,6 +6751,7 @@
 			<DescriptionSID>LAYAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LAYAL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>LAYAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -6797,6 +6801,7 @@
 			<DescriptionSID>BAGRA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BAGRA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BAGRA_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -7121,6 +7126,7 @@
 			<DescriptionSID>CRONE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CRONE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CRONE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -7375,6 +7381,7 @@
 			<DescriptionSID>NAGA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NAGA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>NAGA_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -8988,6 +8995,7 @@
 			<DescriptionSID>FOX_MAIDEN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FOX_MAIDEN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FOX_MAIDEN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9299,6 +9307,7 @@
 			<DescriptionSID>RED_LADY_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RED_LADY_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>RED_LADY_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9624,6 +9633,7 @@
 			<DescriptionSID>GORGON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GORGON_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GORGON_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -11022,6 +11032,7 @@
 			<DescriptionSID>FAIRY_SPIRIT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FAIRY_SPIRIT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FAIRY_SPIRIT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -11964,6 +11975,7 @@
 			<DescriptionSID>CAHRI_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CAHRI_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CAHRI_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13101,6 +13113,7 @@
 			<DescriptionSID>SYLPH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SYLPH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SYLPH_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13191,6 +13204,7 @@
 			<DescriptionSID>NAIAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NAIAD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>NAIAD_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13235,6 +13249,7 @@
 			<DescriptionSID>DRYAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRYAD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DRYAD_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13280,6 +13295,7 @@
 			<DescriptionSID>HARPY_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HARPY_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HARPY_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13368,6 +13384,7 @@
 			<DescriptionSID>OREAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>OREAD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>OREAD_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13762,6 +13779,7 @@
 			<DescriptionSID>MARVELLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MARVELLE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MARVELLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -14149,6 +14167,7 @@
 			<DescriptionSID>CALLARA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CALLARA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CALLARA_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -15855,6 +15874,7 @@
 			<DescriptionSID>DWARVEN_MOTHER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DWARVEN_MOTHER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DWARVEN_MOTHER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16139,6 +16159,7 @@
 			<DescriptionSID>SHRINE_HAG_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHRINE_HAG_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHRINE_HAG_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16755,6 +16776,7 @@
 			<DescriptionSID>MERMAID_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MERMAID_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MERMAID_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17001,6 +17023,7 @@
 			<DescriptionSID>SIREN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SIREN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SIREN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18520,6 +18543,7 @@
 			<DescriptionSID>AKKARA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AKKARA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>AKKARA_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -18591,6 +18615,7 @@
 			<DescriptionSID>THESILEA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THESILEA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THESILEA_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -18921,6 +18946,7 @@
 			<DescriptionSID>QUEEN_BEE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>QUEEN_BEE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>QUEEN_BEE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -19366,6 +19392,7 @@
 			<DescriptionSID>RED_WITCH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RED_WITCH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>RED_WITCH_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -20049,6 +20076,7 @@
 			<DescriptionSID>CELESTE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CELESTE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CELESTE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -20121,6 +20149,7 @@
 			<DescriptionSID>THE_LADY_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THE_LADY_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THE_LADY_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -20265,6 +20294,7 @@
 			<DescriptionSID>SHIVER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHIVER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHIVER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -20597,6 +20627,7 @@
 			<DescriptionSID>HOWLING_FURY_FIRST_LOVE_LOST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HOWLING_FURY_FIRST_LOVE_LOST_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HOWLING_FURY_FIRST_LOVE_LOST_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -20900,6 +20931,7 @@
 			<DescriptionSID>EDDIC_CRONE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>EDDIC_CRONE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>EDDIC_CRONE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -21010,6 +21042,7 @@
 			<DescriptionSID>BLOOD_ANGEL_WHITE_QUEEN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLOOD_ANGEL_WHITE_QUEEN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BLOOD_ANGEL_WHITE_QUEEN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -22532,6 +22565,7 @@
 			<DescriptionSID>SEAWIFE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SEAWIFE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SEAWIFE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -22566,6 +22600,7 @@
 			<DescriptionSID>WORRIED_MOTHER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WORRIED_MOTHER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>WORRIED_MOTHER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -22789,6 +22824,7 @@
 			<DescriptionSID>CYNWISE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CYNWISE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CYNWISE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -22868,6 +22904,7 @@
 			<DescriptionSID>CADLIND_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CADLIND_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CADLIND_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -23174,6 +23211,7 @@
 			<DescriptionSID>HARLOT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HARLOT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HARLOT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -23258,6 +23296,7 @@
 			<ShortDescriptionSID>MAISY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>MAISY_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MAISY_TEXT_DETAILS_SID</TextDetailsSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -23929,6 +23968,7 @@
 			<DescriptionSID>HILD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HILD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HILD_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -26090,6 +26130,7 @@
 			<DescriptionSID>THE_SENTRY_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THE_SENTRY_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THE_SENTRY_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -26170,6 +26211,7 @@
 			<DescriptionSID>THE_SPEAKER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THE_SPEAKER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THE_SPEAKER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>

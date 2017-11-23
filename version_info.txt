@@ -78,6 +78,10 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   - The repop message in the cosmos was clearing the message buffer,
     removing messages about hitting/killing the current deity.
 
+  - Creatures were described as male or female in the bestiary but didn't
+    have the sex explicitly set (but defaulted to male), allowing a 
+    stunned female creature to potentially "hit himself".
+
 Shadow of the Wyrm v0.7.0 "de Visee"
 - Version declared March 1, 2017.  Version finalized October 23, 2017.
 
