@@ -26,6 +26,7 @@
 #include "StatsDumper.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
+#include "VictoryDumper.hpp"
 
 using namespace std;
 using namespace boost::algorithm;
@@ -56,6 +57,16 @@ string CharacterDumper::str() const
 
   ResistancesDumper res_dumper(creature, num_cols);
   ss << res_dumper.str() << endl << endl;
+
+  VictoryDumper victory_dumper(creature, num_cols);
+  string victory = victory_dumper.str();
+
+  // Most characters won't be winners - don't add extra newlines to those 
+  // that aren't.
+  if (!victory.empty())
+  {
+    ss << victory << endl << endl;
+  }
 
   ConductsDumper conducts_dumper(creature, num_cols);
   ss << conducts_dumper.str() << endl << endl;
