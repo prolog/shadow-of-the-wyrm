@@ -45,6 +45,8 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
 - Fields and cairns now have a chance to generate huge rocks, in addition
   to rocks and stones.
 
+- Victories are now recorded in character dumps.
+
 - More stanzas for "Tel and Floridel".
 
 - Huge rocks are significantly more powerful.
