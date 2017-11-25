@@ -516,10 +516,14 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const doub
       {
         process_creature_modifiers(creature, m_it->second, sr);
       }
-      else
+      
+      if (modifier_expiry > current_seconds)
       {
         // Since std::map is ordered by key, once we've hit modifiers that
         // are past the present moment in time, we can stop iterating.
+        //
+        // Check the modifier vs current seconds explicitly to avoid falling
+        // into here when modifier_expiry < min_expiry.
         break;
       }
 

@@ -58,7 +58,16 @@ void DecisionStrategy::set_fov_map(std::shared_ptr<Map> new_fov_map)
 
 std::shared_ptr<Map> DecisionStrategy::get_fov_map()
 {
-  return current_fov_map;
+  MapPtr fov = current_fov_map;
+
+  // Generally shouldn't happen, but, you know...
+  if (fov == nullptr)
+  {
+    Dimensions dim;
+    fov = std::make_shared<Map>(dim);
+  }
+
+  return fov;
 }
 
 ControllerPtr DecisionStrategy::get_controller()

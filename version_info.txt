@@ -53,6 +53,9 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
 
 - Poison darts and the various bombs are now shown as ammunition.
 
+- Changed the tile for void to ' ' (space) from '?' so that the screen
+  wasn't overwhelmingly ugly when playing in mono mode.
+
 - New creatures: goblin alchemist.
 
 - New items: arrow of ancient magics, bolt of ancient magics, tooth of an
@@ -83,6 +86,12 @@ Shadow of the Wyrm v0.7.1 "Neusiedler"
   - Creatures were described as male or female in the bestiary but didn't
     have the sex explicitly set (but defaulted to male), allowing a 
     stunned female creature to potentially "hit himself".
+
+  - Certain conditions could cause creatures' statuses to become
+    permanent.
+
+  - NPCs' FOV maps could sometimes be accessed before they were supposed
+    to be, resulting in null maps and unsafe pointer checks.
 
 Shadow of the Wyrm v0.7.0 "de Visee"
 - Version declared March 1, 2017.  Version finalized October 23, 2017.
