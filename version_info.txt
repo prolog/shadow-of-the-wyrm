@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.7.1 "Neusiedler"
-- Version declared October 23, 2017.
+- Version declared October 23, 2017.  Version finalized November 25, 2017.
 
 - Automove now stops on staircases.
 

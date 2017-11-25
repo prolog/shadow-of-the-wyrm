@@ -1,6 +1,4 @@
 Me:
-- Test going to the cosmos, killing a deity.  Then doing the same, but
-  after saving/loading.
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
