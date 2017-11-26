@@ -55,8 +55,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // Early 16th century German lutenist, from what is now Bratislava, Slovakia.
-  return "\"Neusiedler\"";
+  // 20th century Japanese composer
+  return "\"Takemitsu\"";
 }
 
 string Metadata::get_game_version_synopsis() const
