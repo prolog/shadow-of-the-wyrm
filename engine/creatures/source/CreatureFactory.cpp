@@ -121,7 +121,6 @@ CreaturePtr CreatureFactory::create_by_creature_id
     // that hostility isn't set.
     if (!cgv.get_friendly() && ((override_hostility_setting && create_hostile) || (!override_hostility_setting)))
     {
-      // Set the creature hostile to the player, if the player fails a charisma check.
       set_hostility_to_player(creature);
     }
 
@@ -483,7 +482,7 @@ void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
   {
     CreaturePtr player = map->get_creature(CreatureID::CREATURE_ID_PLAYER);
     
-    if (player && (RNG::percent_chance(100 - player->get_charisma().get_current())))
+    if (player != nullptr)
     {
       hostility_manager.set_hostility_to_player(npc);
     }

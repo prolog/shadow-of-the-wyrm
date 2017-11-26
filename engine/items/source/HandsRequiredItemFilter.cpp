@@ -1,8 +1,8 @@
 #include "HandsRequiredItemFilter.hpp"
 #include "Weapon.hpp"
 
-HandsRequiredItemFilter::HandsRequiredItemFilter(const int hands_avail)
-: hands_available(hands_avail)
+HandsRequiredItemFilter::HandsRequiredItemFilter(const EquipmentWornLocation ewl, const int hands_avail)
+: hands_available(hands_avail), slot_location(ewl)
 {
 }
 
@@ -14,7 +14,11 @@ bool HandsRequiredItemFilter::passes_filter(ItemPtr item) const
   // Can't equip anything if your hands are full!
   if (item && (hands_available > 0))
   {
-    passes = (item->get_hands_required() <= hands_available);
+    int hands_required = item->get_hands_required();
+    passes = ((hands_required == 1) || (hands_required <= hands_available));
+
+    // Two-handed weapons can't be wielded in the off-hand.
+    passes = passes && ((hands_required == 1) || (slot_location == EquipmentWornLocation::EQUIPMENT_WORN_WIELDED));
   }
 
   return passes;

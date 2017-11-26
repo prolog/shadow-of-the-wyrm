@@ -254,6 +254,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "destroy_creature_equipment", destroy_creature_equipment);
   lua_register(L, "destroy_creature_inventory", destroy_creature_inventory);
   lua_register(L, "get_deity_summons", get_deity_summons);
+  lua_register(L, "get_num_deities", get_num_deities);
   lua_register(L, "clear_deities", clear_deities);
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
   lua_register(L, "creature_is_class", creature_is_class);
@@ -453,7 +454,7 @@ int clear_and_add_message(lua_State* ls)
 // Add a new message.
 // Arguments expected: 1-2.
 // Argument types: string (resource SID, required), table of strings (opt.)
-// Assumption: table of strings is an array.
+// Assumption: table of strings is an array.a
 int add_message(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
@@ -1054,7 +1055,6 @@ int add_feature_to_map(lua_State* ls)
 
   if (num_args >= 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
   {
-    Game& game = Game::instance();
     MapPtr map;
     string map_id;
 
@@ -1612,26 +1612,45 @@ int add_creature_to_map(lua_State* ls)
 int remove_creature_from_map(lua_State* ls)
 {
   bool creature_removed = false;
+  int num_args = lua_gettop(ls);
 
-  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, 1)))
+  if ((num_args >= 1) && (lua_isstring(ls, 1)))
   {
     Game& game = Game::instance();
-    MapPtr map = game.get_current_map();
+    string map_id;
+    MapPtr map;
+
+    if (num_args == 2 && lua_isstring(ls, 2))
+    {
+      map_id = lua_tostring(ls, 2);
+    }
+
+    if (map_id.empty())
+    {
+      map = game.get_current_map();
+    }
+    else
+    {
+      map = game.get_map_registry_ref().get_map(map_id);
+    }
 
     string creature_id_or_base = lua_tostring(ls, 1);
     const CreatureMap& creatures = map->get_creatures();
 
-    for (const auto creature_pair : creatures)
+    if (!creature_id_or_base.empty())
     {
-      CreaturePtr creature = creature_pair.second;
-
-      if (creature != nullptr &&
-        (creature->get_id() == creature_id_or_base || creature->get_original_id() == creature_id_or_base))
+      for (const auto creature_pair : creatures)
       {
-        MapUtils::remove_creature(map, creature);
+        CreaturePtr creature = creature_pair.second;
 
-        creature_removed = true;
-        break;
+        if (creature != nullptr &&
+          (creature->get_id() == creature_id_or_base || creature->get_original_id() == creature_id_or_base))
+        {
+          MapUtils::remove_creature(map, creature);
+
+          creature_removed = true;
+          break;
+        }
       }
     }
   }
@@ -3567,6 +3586,25 @@ int get_deity_summons(lua_State* ls)
   return num_return_vals;
 }
 
+int get_num_deities(lua_State* ls)
+{
+  int num_deities = 0;
+
+  if (lua_gettop(ls) == 0)
+  {
+    Game& game = Game::instance();
+    num_deities = static_cast<int>(game.get_deities_cref().size());
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_num_deities");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, num_deities);
+  return 1;
+}
+
 // Return the number of deities removed.
 int clear_deities(lua_State* ls)
 {
@@ -4475,16 +4513,20 @@ int set_winner(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureWin win_type = CreatureWin::CREATURE_WIN_REGULAR;
+    int win_type = 0;
 
     if (num_args == 2 && lua_isnumber(ls, 2))
     {
-      win_type = static_cast<CreatureWin>(lua_tointeger(ls, 2));
+      win_type = lua_tointeger(ls, 2);
     }
 
     if (creature != nullptr)
     {
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER, to_string(static_cast<int>(win_type)));
+      // Because there are multiple win conditions, and the player has the
+      // option to continue playing after most of them, set a flag that says
+      // whether a particular win condition is satisfied.
+      string win_property = CreatureProperties::CREATURE_PROPERTIES_WINNER + "_" + to_string(win_type);
+      creature->set_additional_property(win_property, to_string(true));
     }
   }
   else

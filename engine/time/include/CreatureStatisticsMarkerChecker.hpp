@@ -18,6 +18,9 @@ class CreatureStatisticsMarkerChecker : public ICreatureRegeneration
     void check_strength_conditions(CreaturePtr creature);
     void check_health_conditions(CreaturePtr creature);
     void check_charisma_conditions(CreaturePtr creature);
+    bool can_increase_passive_statistic(const Statistic& stat);
 
     uint minutes_interval;
+
+    static const int PASSIVE_STATISTIC_THRESHOLD;
 };

@@ -17,7 +17,7 @@ Feature* WheelAndLoom::clone()
 
 uchar WheelAndLoom::get_symbol() const
 {
-  return '^';
+  return ';';
 }
 
 string WheelAndLoom::get_description_sid() const

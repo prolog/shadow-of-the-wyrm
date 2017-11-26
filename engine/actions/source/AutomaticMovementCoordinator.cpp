@@ -11,6 +11,11 @@
 
 using namespace std;
 
+AutomaticMovementCoordinator::AutomaticMovementCoordinator()
+: stop_auto_move_tile_types({ TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_DOWN_STAIRCASE })
+{
+}
+
 // Attempt to move automatically.
 //
 // To move automatically, the creature must be allowed to move automatically
@@ -33,6 +38,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
 
   ActionCostValue auto_move_cost = 0;
   bool auto_movement_engaged = false;
+  TilePtr creature_tile = MapUtils::get_tile_for_creature(map, creature);
   TilePtr direction_tile = map->at(CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), cur_dir));
 
   // Keyboard interrupts stop auto move.
@@ -44,7 +50,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   bool creature_move = creature_results.first;
   copy(creature_results.second.begin(), creature_results.second.end(), back_inserter(message_sids));
 
-  pair<bool, vector<string>> creature_position_results = creature_position_allows_auto_move(creature, map, amf);
+  pair<bool, vector<string>> creature_position_results = creature_position_allows_auto_move(creature, creature_tile, map, amf);
   bool creature_pos_move = creature_position_results.first;
   copy(creature_position_results.second.begin(), creature_position_results.second.end(), back_inserter(message_sids));
 
@@ -211,11 +217,19 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::controller_allows_auto_
 }
 // Does the creature's position (current tile, and the surrounding ones) allow
 // auto movement?
-pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allows_auto_move(CreaturePtr creature, MapPtr map, const AutomaticMovementFlags& amf)
+pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allows_auto_move(CreaturePtr creature, TilePtr tile, MapPtr map, const AutomaticMovementFlags& amf)
 {
   pair<bool, vector<string>> move_details = {false, {}};
 
   TilePtr current_tile = MapUtils::get_tile_for_creature(map, creature);
+
+  bool tile_allows_move = false;
+
+  if (amf.get_ignore_tile() || tile_type_allows_auto_move(tile))
+  {
+    tile_allows_move = true;
+  }
+
   bool items_allow_move = false;
 
   // Stop auto-movement when moving to a tile that has items.
@@ -232,7 +246,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
     feature_allows_move = true;
   }
 
-  move_details.first = (items_allow_move && feature_allows_move);
+  move_details.first = (tile_allows_move && items_allow_move && feature_allows_move);
   return move_details;
 }
 
@@ -299,6 +313,20 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(C
   return tile_details;
 }
 
+bool AutomaticMovementCoordinator::tile_type_allows_auto_move(TilePtr tile)
+{
+  bool tt_auto_move = false;
+
+  if (tile != nullptr)
+  {
+    if (std::find(stop_auto_move_tile_types.begin(), stop_auto_move_tile_types.end(), tile->get_tile_type()) == stop_auto_move_tile_types.end())
+    {
+      tt_auto_move = true;
+    }
+  }
+
+  return tt_auto_move;
+}
 // Check to see if the creature has already visited the new coordinate.
 pair<bool, vector<string>> AutomaticMovementCoordinator::prev_visited_coords_allow_auto_move(CreaturePtr creature, const Coordinate& new_coord, const AutomaticMovementFlags& amf)
 {

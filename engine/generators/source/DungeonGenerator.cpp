@@ -427,7 +427,8 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
                                                     {RoomFeatures::ROOM_FEATURE_REST_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_REST_ROOM},
                                                     {RoomFeatures::ROOM_FEATURE_NODE, DungeonFeatureTextKeys::DUNGEON_FEATURE_NODE},
                                                     {RoomFeatures::ROOM_FEATURE_GRAVE, DungeonFeatureTextKeys::DUNGEON_FEATURE_GRAVE},
-                                                    {RoomFeatures::ROOM_FEATURE_SPRING, DungeonFeatureTextKeys::DUNGEON_FEATURE_SPRING}};
+                                                    {RoomFeatures::ROOM_FEATURE_SPRING, DungeonFeatureTextKeys::DUNGEON_FEATURE_SPRING},
+                                                    {RoomFeatures::ROOM_FEATURE_CRAFT_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_CRAFT_ROOM}};
 
     shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
@@ -471,6 +472,12 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
         else if (feature == RoomFeatures::ROOM_FEATURE_SPRING)
         {
           placed_feature = generate_spring(map, start_row, end_row, start_col, end_col);
+        }
+        else if (feature == RoomFeatures::ROOM_FEATURE_CRAFT_ROOM)
+        {
+          // JCD FIXME: Later, refactor this so that it's in a common place and
+          // can be called during village generation.
+          placed_feature = generate_craft_room(map, start_row, end_row, start_col, end_col);
         }
 
         if (placed_feature)
@@ -557,6 +564,54 @@ bool DungeonGenerator::generate_spring(MapPtr map, const int start_row, const in
   }
   
   return false;
+}
+
+bool DungeonGenerator::generate_craft_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  int y_offset = 1;
+  int x_offset = 1;
+
+  // Using the generated offsets, get the coordinates offset from each corner
+  // of the room.  Shuffle them so that all the craft rooms don't look the
+  // same.
+  vector<Coordinate> placement_coords = {{start_row, start_col},
+                                         {start_row, end_col - x_offset},
+                                         {end_row - y_offset, start_col},
+                                         {end_row - y_offset, end_col - x_offset}};
+
+  vector<ClassIdentifier> feature_ids = {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, 
+                                         ClassIdentifier::CLASS_ID_TANNERY, 
+                                         ClassIdentifier::CLASS_ID_FORGE, 
+                                         ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH};
+
+  std::shuffle(placement_coords.begin(), placement_coords.end(), RNG::get_engine());
+  std::shuffle(feature_ids.begin(), feature_ids.end(), RNG::get_engine());
+
+  bool generated = false;
+
+  while (!feature_ids.empty() && !placement_coords.empty())
+  {
+    Coordinate c = placement_coords.back();
+    ClassIdentifier fi = feature_ids.back();
+
+    placement_coords.pop_back();
+    feature_ids.pop_back();
+
+    TilePtr tile = map->at(c);
+
+    if (tile && !tile->has_feature())
+    {
+      FeaturePtr feature = FeatureGenerator::create_feature(fi);
+
+      if (feature)
+      {
+        tile->set_feature(feature);
+        generated = true;
+      }
+    }
+  }
+
+  return generated;
 }
 
 bool DungeonGenerator::generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)

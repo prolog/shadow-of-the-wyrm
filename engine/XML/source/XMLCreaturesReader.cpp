@@ -94,6 +94,10 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     string speech_text_sid = XMLUtils::get_child_node_value(creature_node, "SpeechTextSID");
     creature->set_speech_text_sid(speech_text_sid);
     
+    // What sex is the creature?  If unspecified, default to male.
+    CreatureSex sex = static_cast<CreatureSex>(XMLUtils::get_child_node_int_value(creature_node, "Sex"));
+    creature->set_sex(sex);
+
     // A decision strategy for the creature, which provides a set of actions (move, attack, and so on)
     // as appropriate.  ImmobileDecisionStrategy, for example, disallows movement, and is used for
     // immobile creatures (such as slimes, etc.)

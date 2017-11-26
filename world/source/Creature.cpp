@@ -1,4 +1,5 @@
 #include <limits>
+#include "Conversion.hpp"
 #include "Creature.hpp"
 #include "CreatureProperties.hpp"
 #include "DecisionStrategyFactory.hpp"
@@ -1294,6 +1295,27 @@ AutomaticMovement& Creature::get_automatic_movement_ref()
   return auto_move;
 }
 
+vector<CreatureWin> Creature::get_satisfied_win_conditions() const
+{
+  vector<CreatureWin> wins;
+
+  static_assert(CreatureWin::CREATURE_WIN_LAST == CreatureWin(3), "Unexpected CreatureWin::CREATURE_WIN_LAST!");
+  vector<CreatureWin> win_conditions = {CreatureWin::CREATURE_WIN_REGULAR, CreatureWin::CREATURE_WIN_EVIL, CreatureWin::CREATURE_WIN_GODSLAYER};
+
+  for (const CreatureWin win : win_conditions)
+  {
+    string p_key = CreatureProperties::CREATURE_PROPERTIES_WINNER + "_" + to_string(static_cast<int>(win));
+    string p_val = get_additional_property(p_key);
+
+    if (!p_val.empty() && String::to_bool(p_val))
+    {
+      wins.push_back(win);
+    }
+  }
+
+  return wins;
+}
+
 bool Creature::has_additional_property(const string& property_name) const
 {
   bool has_property = false;
@@ -1427,8 +1449,8 @@ bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
 
 // Set, get, and query additional (string) properties
 // Uncomment the code below to find out the size of Creature. :)
-// template<int s> struct creature_size;
-// creature_size<sizeof(Creature)> creature_size;
+//template<int s> struct creature_size;
+//creature_size<sizeof(Creature)> creature_size;
 
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
@@ -1437,10 +1459,10 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 1184, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1264, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 1080, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1160, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
   // Works for gcc in release

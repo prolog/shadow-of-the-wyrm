@@ -143,6 +143,11 @@ bool ScoreFile::write(CreaturePtr creature)
 {
   bool result = false;
 
+  // Ensure that if extra win conditions are added in future, that the
+  // scorefile code is not forgotten.
+  vector<CreatureWin> win_conditions = {CreatureWin::CREATURE_WIN_REGULAR, CreatureWin::CREATURE_WIN_EVIL, CreatureWin::CREATURE_WIN_GODSLAYER};
+  static_assert(CreatureWin::CREATURE_WIN_LAST == CreatureWin(3), "Unexpected CreatureWin::CREATURE_WIN_LAST!");
+
   if (creature != nullptr)
   {
     ScoreCalculator sc;
@@ -166,7 +171,7 @@ bool ScoreFile::write(CreaturePtr creature)
                          creature->get_sex(), 
                          creature->get_is_player(), 
                          creature->get_level().get_current(), 
-                         static_cast<CreatureWin>(String::to_int(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER))), 
+                         creature->get_satisfied_win_conditions(), 
                          CreatureUtils::get_race_class_synopsis(creature));
 
       entries.push_back(sfe);

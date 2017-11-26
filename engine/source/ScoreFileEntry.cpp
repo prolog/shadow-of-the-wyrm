@@ -10,13 +10,13 @@ using namespace std;
 
 // Default constructor
 ScoreFileEntry::ScoreFileEntry()
-: score(0), sex(CreatureSex::CREATURE_SEX_MALE), is_current_char(false), level(0), winner(CreatureWin::CREATURE_WIN_NO_WIN)
+: score(0), sex(CreatureSex::CREATURE_SEX_MALE), is_current_char(false), level(0)
 {
 }
 
 // Construct a score file entry with all required values.
-ScoreFileEntry::ScoreFileEntry(const long long new_score, const string& new_name, const string& new_username, const CreatureSex new_sex, const bool new_is_current_char, const int new_level, const CreatureWin new_winner, const string& new_race_class_abrv)
-: score(new_score), name(new_name), username(new_username), sex(new_sex), is_current_char(new_is_current_char), level(new_level), winner(new_winner), race_class_abrv(new_race_class_abrv)
+ScoreFileEntry::ScoreFileEntry(const long long new_score, const string& new_name, const string& new_username, const CreatureSex new_sex, const bool new_is_current_char, const int new_level, const vector<CreatureWin> new_wins, const string& new_race_class_abrv)
+: score(new_score), name(new_name), username(new_username), sex(new_sex), is_current_char(new_is_current_char), level(new_level), all_wins(new_wins), race_class_abrv(new_race_class_abrv)
 {
 }
 
@@ -38,7 +38,13 @@ bool ScoreFileEntry::serialize(ostream& stream) const
   Serialize::write_bool(stream, false);
   
   Serialize::write_int(stream, level);
-  Serialize::write_enum(stream, winner);
+  
+  Serialize::write_size_t(stream, all_wins.size());
+  for (const auto& win : all_wins)
+  {
+    Serialize::write_enum(stream, win);
+  }
+
   Serialize::write_string(stream, race_class_abrv);
 
   return true;
@@ -52,7 +58,18 @@ bool ScoreFileEntry::deserialize(istream& stream)
   Serialize::read_enum(stream, sex);
   Serialize::read_bool(stream, is_current_char);
   Serialize::read_int(stream, level);
-  Serialize::read_enum(stream, winner);
+
+  size_t wins_size = 0;
+  Serialize::read_size_t(stream, wins_size);
+
+  for (size_t i = 0; i < wins_size; i++)
+  {
+    CreatureWin cw = CreatureWin::CREATURE_WIN_NO_WIN;
+    Serialize::read_enum(stream, cw);
+
+    all_wins.push_back(cw);
+  }
+
   Serialize::read_string(stream, race_class_abrv);
 
   return true;
@@ -93,9 +110,9 @@ int ScoreFileEntry::get_level() const
   return level;
 }
 
-CreatureWin ScoreFileEntry::get_winner() const
+vector<CreatureWin> ScoreFileEntry::get_wins() const
 {
-  return winner;
+  return all_wins;
 }
 
 string ScoreFileEntry::get_race_class_abrv() const
@@ -111,20 +128,23 @@ string ScoreFileEntry::str(const int score_number) const
 
   ss << score_number << ". " << get_score() << ". " << get_name() << " (" << get_username() << ") - " << StringTable::get(TextKeys::LEVEL_ABRV) << get_level() << " " << rc_abrv << " (" << TextMessages::get_sex_abrv(get_sex()) << ").";
 
-  switch (winner)
+  for (const CreatureWin winner : all_wins)
   {
-    case CreatureWin::CREATURE_WIN_REGULAR:
-      ss << " " << StringTable::get(TextKeys::WINNER) << "!";
-      break;
-    case CreatureWin::CREATURE_WIN_EVIL:
-      ss << " " << StringTable::get(TextKeys::WINNER_EVIL) << "!";
-      break;
-    case CreatureWin::CREATURE_WIN_GODSLAYER:
-      ss << " " << StringTable::get(TextKeys::WINNER_GODSLAYER) << "!";
-      break;
-    case CreatureWin::CREATURE_WIN_NO_WIN:
-    default:
-      break;
+    switch (winner)
+    {
+      case CreatureWin::CREATURE_WIN_REGULAR:
+        ss << " " << StringTable::get(TextKeys::WINNER) << "!";
+        break;
+      case CreatureWin::CREATURE_WIN_EVIL:
+        ss << " " << StringTable::get(TextKeys::WINNER_EVIL) << "!";
+        break;
+      case CreatureWin::CREATURE_WIN_GODSLAYER:
+        ss << " " << StringTable::get(TextKeys::WINNER_GODSLAYER) << "!";
+        break;
+      case CreatureWin::CREATURE_WIN_NO_WIN:
+      default:
+        break;
+    }
   }
 
   return ss.str();

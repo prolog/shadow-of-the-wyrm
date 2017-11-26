@@ -8,6 +8,17 @@ TEST(SW_World_Statistic, InitialValueIs1)
   EXPECT_EQ(1, stat.get_current());
 }
 
+TEST(SW_World_Statistic, OriginalValue)
+{
+  Statistic stat(17);
+
+  stat.set_base_current(22);
+
+  EXPECT_EQ(22, stat.get_base());
+  EXPECT_EQ(22, stat.get_current());
+  EXPECT_EQ(17, stat.get_original());
+}
+
 TEST(SW_World_Statistic, Maximum)
 {
   Statistic stat;
@@ -151,6 +162,7 @@ TEST(SW_World_Statistic, saveload)
   Statistic stat2;
   Marks m(32);
   stat.set_marks(m);
+  stat.set_base_current(55);
 
   ostringstream ss;
 
@@ -162,4 +174,6 @@ TEST(SW_World_Statistic, saveload)
 
   EXPECT_TRUE(stat == stat2);
   EXPECT_EQ(32, stat2.get_marks().get_value());
+  EXPECT_EQ(45, stat2.get_original());
+  EXPECT_EQ(55, stat2.get_current());
 }

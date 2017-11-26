@@ -10,6 +10,20 @@ TEST(SW_World_Creature, name)
   EXPECT_EQ(creature_name, c.get_name());
 }
 
+TEST(SW_World_Creature, win_conditions)
+{
+  Creature c;
+  vector<CreatureWin> empty_wins;
+  vector<CreatureWin> wins = {CreatureWin::CREATURE_WIN_REGULAR, CreatureWin::CREATURE_WIN_GODSLAYER};
+  
+  EXPECT_EQ(empty_wins, c.get_satisfied_win_conditions());
+
+  c.set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER + "_1", to_string(true));
+  c.set_additional_property(CreatureProperties::CREATURE_PROPERTIES_WINNER + "_3", to_string(true));
+
+  EXPECT_EQ(wins, c.get_satisfied_win_conditions());
+}
+
 TEST(SW_World_Creature, get_statistics)
 {
   Statistic str(11);

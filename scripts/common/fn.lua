@@ -11,6 +11,18 @@ function contains(array, value)
   return false
 end
 
+-- Get the size of an associative table.
+-- This function is called atable_size to discourage calling it for
+-- arrays, where the Lua built-ins should suffice.
+function atable_size(atable)
+  local cnt = 0
+  for k,v in pairs(atable) do
+    cnt = cnt + 1
+  end
+
+  return cnt
+end
+
 -- Create an array of numbers, starting at i, to n, inclusive.
 --
 -- Example usage: numeric_array(1, 3) -> {1,2,3}

@@ -1,5 +1,7 @@
 #include "ActionTextKeys.hpp"
+#include "AnimationTranslator.hpp"
 #include "AttackScript.hpp"
+#include "BallShapeProcessor.hpp"
 #include "ClassManager.hpp"
 #include "CombatConstants.hpp"
 #include "CombatCounterCalculator.hpp"
@@ -20,6 +22,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "IntimidationCalculator.hpp"
 #include "IHitTypeFactory.hpp"
 #include "ItemProperties.hpp"
 #include "KillScript.hpp"
@@ -166,6 +169,10 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     if (is_automatic_miss(d100_roll))
     {
       miss(attacking_creature, attacked_creature);
+    }
+    else if (is_intimidate(attacking_creature, attacked_creature, attack_type))
+    {
+      intimidate(attacking_creature, attacked_creature);
     }
     // Hit
     else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
@@ -479,14 +486,12 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
     string source_id = attacking_creature != nullptr ? attacking_creature->get_id() : "";
 
     handle_vorpal_if_necessary(attacking_creature, attacked_creature, damage_info, damage_dealt); 
+    handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, damage_info, attack_type);
     deal_damage(attacking_creature, attacked_creature, source_id, damage_dealt, damage_info);
 
     if (!attacked_creature->is_dead())
     {
       mark_health_for_damage_taken(attacking_creature, attacked_creature);
-
-      // Deal any secondary damage as a result of weapon flags.
-      handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, damage_info, attack_type);
     }
   }
   else
@@ -584,7 +589,7 @@ void CombatManager::handle_ethereal_if_necessary(CreaturePtr attacking_creature,
 
 void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map, const int damage_dealt, const Damage& damage_info, const AttackType attack_type)
 {
-  if (damage_info.get_explosive() && attacked_creature != nullptr)
+  if (damage_info.get_explosive() && attacked_creature != nullptr && map)
   {
     // Add a message about the explosion.
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
@@ -603,14 +608,31 @@ void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature
     explosive_damage->set_dice_sides(1);
     explosive_damage->set_damage_type(DamageType::DAMAGE_TYPE_HEAT);
     
-    vector<CreaturePtr> aff_creatures = MapUtils::get_adjacent_creatures_unsorted(map, attacked_creature);
-    aff_creatures.insert(aff_creatures.begin(), attacked_creature);
+    BallShapeProcessor bsp;
+    Spell expl;
+    expl.set_colour(Colour::COLOUR_RED);
+    expl.set_range(1);
 
-    for (CreaturePtr aff_creature : aff_creatures)
+    auto t_anim = bsp.get_affected_tiles_and_animation_for_spell(map, map->get_location(attacked_creature->get_id()), Direction::DIRECTION_NULL, expl);
+    auto expl_tiles = t_anim.first;
+
+    // Show the explosion animation
+    Game& game = Game::instance();
+    game.get_display()->draw_animation(t_anim.second);
+
+    vector<CreaturePtr> aff_creatures = MapUtils::get_adjacent_creatures_unsorted(map, attacked_creature);
+
+    for (auto expl_tile_ct : expl_tiles)
     {
-      if (aff_creature && (!attacking_creature || (aff_creature->get_id() != attacking_creature->get_id())))
+      TilePtr expl_tile = expl_tile_ct.second;
+
+      if (expl_tile && expl_tile->has_creature())
       {
-        attack(attacking_creature, aff_creature, attack_type, AttackSequenceType::ATTACK_SEQUENCE_FOLLOW_THROUGH, true, explosive_damage);
+        CreaturePtr aff_creature = expl_tile->get_creature();
+        if (aff_creature && (!attacking_creature || (aff_creature->get_id() != attacking_creature->get_id())))
+        {
+          attack(attacking_creature, aff_creature, attack_type, AttackSequenceType::ATTACK_SEQUENCE_FOLLOW_THROUGH, true, explosive_damage);
+        }
       }
     }
   }
@@ -860,6 +882,22 @@ bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attac
   return true;
 }
 
+bool CombatManager::intimidate(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
+{
+  StatisticsMarker sm;
+
+  if (RNG::percent_chance(50))
+  {
+    sm.mark_charisma(attacked_creature);
+  }
+
+  string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+  string intim_message = CombatTextKeys::get_intimidate_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
+  add_combat_message(attacking_creature, attacked_creature, intim_message);
+
+  return true;
+}
+
 // Add messages if the damage dealt is 0 (unharmed), or negative
 // (heals), or piercing, etc.
 // 
@@ -925,6 +963,37 @@ bool CombatManager::is_hit(const int total_roll, const int target_number_value)
 bool CombatManager::is_miss(const int total_roll, const int target_number_value)
 {
   return (total_roll <= target_number_value);
+}
+
+bool CombatManager::is_intimidate(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type)
+{
+  bool intim = false;
+
+  if (attacking_creature != nullptr && attacked_creature != nullptr)
+  {
+    IntimidationCalculator ic;
+
+    if (RNG::percent_chance(ic.calculate_pct_chance_intimidated(attacking_creature, attacked_creature)))
+    {
+      // Only melee attacks are subject to intimidation.
+      switch (attack_type)
+      {
+        case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
+        case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
+        case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
+        {
+          intim = true;
+          break;
+        }
+        case AttackType::ATTACK_TYPE_MAGICAL:
+        case AttackType::ATTACK_TYPE_RANGED:
+        case AttackType::ATTACK_TYPE_UNDEFINED:
+          break;
+      }
+    }
+  }
+
+  return intim;
 }
 
 bool CombatManager::is_close_miss(const int total_roll, const int target_number_value)
