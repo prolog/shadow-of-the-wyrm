@@ -1,25 +1,12 @@
 Me:
-- Poem combat tally: 63 fae remaining, 20 giants.  Reduce total count:
-  3 dozen vs 1?
-- Automove: stop on staircase
-- Instead of making creatures "friendly", charisma should just make them
-  non-hostile (safe to attack).
-- Test going through dungeons for danger level ok
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
 - Repel (cantrip)
-- Test going to down to D2 and back in both a regular dungeon and the ID.
-  Also, Gnordvar Mines.
-- Email Nathan before next release re: Mac build, and update website to
-  mention that the game is buildable in Mac OS.
-- Need to test the following after the spell refactoring:
-  - reflective beam, cross, ball, target self, storm
-  - Anything else?
+- Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
-- Crafting room: wheel and loom, tannery.
 - Penalties from bloodied, exposed should also scale with level.
 - Generate loom, tanneries in random villages.
 - Add shops to dungeons.
@@ -135,9 +122,6 @@ AgingMinotaur:
 - The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
 - Stop walking on feature/branching corridor.
 
-Kraphead:
-- auto-displace when bumping friendly creatures
-
 roguecastergames:
 - sea monsters
 - pirates
@@ -154,10 +138,6 @@ Not bugs, but probably not working as intended:
 - Spellcasting enemies, specifically the ones that have large AoE ball 
   spells, have a tendency to cast their spells around corners, hitting you 
   up to three times without ever seeing you.
-- Thoughts on Eakauri: when your comments call it a super boss, you were 
-  not joking. I'm currently trying to kill the thing, but I'm pretty sure 
-  that Fae are actually incapable of it (picture related), which is- 
-  lore-friendly, I suppose.
 - Make it obvious somewhere how much certain spells do, and what mechanical
   effect increasing spell levels has.
 - Add an autosave function that triggers every time you descend or ascend. 
@@ -190,3 +170,8 @@ kain:
 - Holy presence but no altars?
 - Shops not generating fully stocked.
 
+kraphead
+- Crashes in sewer, SE dungeon
+- black 'x'
+- Cascade of aggro on stun, etc
+- auto-displace when bumping friendly creatures

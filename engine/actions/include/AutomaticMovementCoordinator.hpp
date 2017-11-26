@@ -10,6 +10,8 @@
 class AutomaticMovementCoordinator
 {
   public:
+    AutomaticMovementCoordinator();
+
     ActionCostValue auto_move(CreaturePtr creature, MapPtr map, const Direction d, const AutomaticMovementFlags& amf);
 
   protected:
@@ -21,7 +23,7 @@ class AutomaticMovementCoordinator
     // to display if the creature is the player.
     std::pair<bool, std::vector<std::string>> controller_allows_auto_move(CreaturePtr creature);
     std::pair<bool, std::vector<std::string>> creature_can_auto_move(CreaturePtr creature);
-    std::pair<bool, std::vector<std::string>> creature_position_allows_auto_move(CreaturePtr creature, MapPtr map, const AutomaticMovementFlags& amf);
+    std::pair<bool, std::vector<std::string>> creature_position_allows_auto_move(CreaturePtr creature, TilePtr tile, MapPtr map, const AutomaticMovementFlags& amf);
     std::pair<bool, std::vector<std::string>> hunger_allows_auto_move(CreaturePtr creature);
 
     // Check to see if the map allows auto-movement - adjacent tile must be
@@ -29,6 +31,7 @@ class AutomaticMovementCoordinator
     // map that disallows movement (hostile creatures).
     std::pair<bool, std::vector<std::string>> fov_allows_auto_move(CreaturePtr creature, MapPtr map);
     std::pair<bool, std::vector<std::string>> tile_allows_auto_move(CreaturePtr creature, TilePtr tile, const AutomaticMovementFlags& amf);
+    bool tile_type_allows_auto_move(TilePtr tile);
 
     // Can the creature move to the current tile, based on the ones visited
     // already?  Visiting the same tile twice during auto-run is enforced
@@ -44,5 +47,7 @@ class AutomaticMovementCoordinator
     void update_turns_if_necessary(CreaturePtr creature);
 
     std::pair<bool, Direction> get_new_direction_if_bend_in_corridor(CreaturePtr creature, MapPtr map, const Direction cur_dir);
+
+    std::set<TileType> stop_auto_move_tile_types;
 };
 

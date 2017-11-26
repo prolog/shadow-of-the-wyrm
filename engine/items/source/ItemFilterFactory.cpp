@@ -144,11 +144,11 @@ list<IItemFilterPtr> ItemFilterFactory::create_edible_filter()
   return it_filter;
 }
 
-list<IItemFilterPtr> ItemFilterFactory::create_hands_required_filter(const int hands_available)
+list<IItemFilterPtr> ItemFilterFactory::create_hands_required_filter(const EquipmentWornLocation ewl, const int hands_available)
 {
   list<IItemFilterPtr> it_filter;
 
-  IItemFilterPtr hands_req_filter = std::make_shared<HandsRequiredItemFilter>(hands_available);
+  IItemFilterPtr hands_req_filter = std::make_shared<HandsRequiredItemFilter>(ewl, hands_available);
   it_filter.push_back(hands_req_filter);
 
   return it_filter;

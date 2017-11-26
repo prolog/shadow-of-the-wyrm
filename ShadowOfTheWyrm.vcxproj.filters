@@ -4050,6 +4050,15 @@
     <ClInclude Include="include\Conversion.hpp">
       <Filter>Header Files\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\IntimidationCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\VictoryDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\VictoryTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8035,6 +8044,18 @@
     </ClCompile>
     <ClCompile Include="source\unit_tests\Conversion_test.cpp">
       <Filter>Source Files\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\IntimidationCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\IntimidationCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\VictoryDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\VictoryTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -120,6 +120,7 @@ int get_creature_name(lua_State* ls);
 int destroy_creature_equipment(lua_State* ls);
 int destroy_creature_inventory(lua_State* ls);
 int get_deity_summons(lua_State* ls);
+int get_num_deities(lua_State* ls);
 int clear_deities(lua_State* ls);
 int summon_monsters_around_creature(lua_State* ls);
 int creature_is_class(lua_State* ls);

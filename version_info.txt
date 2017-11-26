@@ -1,3 +1,98 @@
+Shadow of the Wyrm v0.7.1 "Neusiedler"
+- Version declared October 23, 2017.  Version finalized November 25, 2017.
+
+- Automove now stops on staircases.
+
+- Explosive damage now has an animation.  It also no longer deals
+  additional damage to the targetted creature (just the adjacent ones),
+  but will now be triggered on any amount of damage, not just non-lethal.
+
+- Dungeons can now have crafting rooms - these contain a tannery, a forge,
+  a jeweler's workbench, and a wheel and loom.  
+  
+- The symbol for tanneries and wheels and looms used to be '^', but this 
+  made the features look like traps.  With the placement of these features
+  in dungeons, the symbol for both of these has been changed to ';'.
+
+- Boats are now less common in the item generation algorithm, wands
+  slightly more common.
+
+- Akojo in Stonewall now loads with a coracle, and moves a bit quicker,
+  so he can chase you.
+
+- Stonewall and the Far Shore now have a few more missile-based creatures.
+  Stonewall has a few goblin pelters and alchemists, and the Far Shore 
+  has some ogre hurlers.  This makes it harder to grab a pile of rocks 
+  and tackle these areas unopposed at level 1 (kraphead).
+
+- Offering on an altar no longer trains charisma (kraphead).
+
+- Passive, timer-based ways of training stats (carrying heavy items, 
+  wearing jewelry, etc) no longer can train the stat to 99.  The new
+  maximum is 20 more than the stat's starting value (kraphead).
+
+- Multiple satisfied win conditions (e.g., slaying Amaurosis and doing the
+  Godslayer ending) are now tracked properly in the high score file.
+
+- High Charisma no longer generates creatures as friendly.  Instead,
+  a combination of Intimidation and Charisma can cause an attacking
+  creature to draw back, thereby wasting their turn.
+
+- If the player is an archer, or has otherwise focused on ranged weapon 
+  skills over melee, The Smith will now give out a gift based on the 
+  highest-trained skill.
+
+- Fields and cairns now have a chance to generate huge rocks, in addition
+  to rocks and stones.
+
+- Victories are now recorded in character dumps.
+
+- More stanzas for "Tel and Floridel".
+
+- Huge rocks are significantly more powerful.
+
+- Poison darts and the various bombs are now shown as ammunition.
+
+- Changed the tile for void to ' ' (space) from '?' so that the screen
+  wasn't overwhelmingly ugly when playing in mono mode.
+
+- New creatures: goblin alchemist.
+
+- New items: arrow of ancient magics, bolt of ancient magics, tooth of an
+  ancient sea-creature, spine of an ancient horror, massive ferric
+  meteorite, Elysian throwing-axe, Elysian throwing-blade, throwing axe,
+  throwing blade, titanic heavenly pillar, chaos bomb, antimatter shot.
+
+- Bug fixes:
+
+  - The teleport effect would cause a crash when used on a tile where a
+    creature was not present (kraphead).
+
+  - Fixed up some other instances of effects not safely checking pointers.
+
+  - Two-handed weapons can no longer be wielded off-handed (kraphead).
+
+  - Various typos in bestiary descriptions (kraphead).
+
+  - A script bug was causing deities in the cosmos not to spawn the next
+    in the sequence in certain cases. (kraphead)
+
+  - The release-Sceadugenga ending can't be triggered if Sceadugenga has
+    already been killed.
+
+  - The repop message in the cosmos was clearing the message buffer,
+    removing messages about hitting/killing the current deity.
+
+  - Creatures were described as male or female in the bestiary but didn't
+    have the sex explicitly set (but defaulted to male), allowing a 
+    stunned female creature to potentially "hit himself".
+
+  - Certain conditions could cause creatures' statuses to become
+    permanent.
+
+  - NPCs' FOV maps could sometimes be accessed before they were supposed
+    to be, resulting in null maps and unsafe pointer checks.
+
 Shadow of the Wyrm v0.7.0 "de Visee"
 - Version declared March 1, 2017.  Version finalized October 23, 2017.
 

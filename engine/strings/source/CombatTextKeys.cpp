@@ -230,6 +230,30 @@ string CombatTextKeys::get_miss_message(const bool attacker_is_player, const boo
   return miss_msg;
 }
 
+string CombatTextKeys::get_intimidate_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& attacked)
+{
+  pair<string, string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, attacked);
+  string attack = attacker_and_target.first;
+  string target = attacker_and_target.second;
+
+  string intim_msg;
+
+  if (attacker_is_player)
+  {
+    intim_msg = StringTable::get(CombatTextKeys::COMBAT_INTIMIDATE_MESSAGE);
+    boost::replace_first(intim_msg, "%s", target);
+  }
+  else
+  {
+    intim_msg = StringTable::get(CombatTextKeys::COMBAT_INTIMIDATE_MESSAGE_NP);
+    boost::replace_first(intim_msg, "%s", attack);
+    boost::replace_first(intim_msg, "%s", target);
+    intim_msg[0] = toupper(intim_msg[0]);
+  }
+
+  return intim_msg;
+}
+
 string CombatTextKeys::get_critical_hit_message()
 {
   string critical_hit_msg = StringTable::get(CombatTextKeys::COMBAT_CRITICAL_HIT_MESSAGE);
@@ -500,6 +524,8 @@ const string CombatTextKeys::COMBAT_SCYTHING_MESSAGE       = "COMBAT_SCYTHING_ME
 const string CombatTextKeys::COMBAT_SCYTHING_MESSAGE_NP    = "COMBAT_SCYTHING_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAGE";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE_NP        = "COMBAT_MISS_MESSAGE_NP";
+const string CombatTextKeys::COMBAT_INTIMIDATE_MESSAGE     = "COMBAT_INTIMIDATE_MESSAGE";
+const string CombatTextKeys::COMBAT_INTIMIDATE_MESSAGE_NP  = "COMBAT_INTIMIDATE_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_CRITICAL_HIT_MESSAGE   = "COMBAT_CRITICAL_HIT_MESSAGE";
 const string CombatTextKeys::COMBAT_MIGHTY_BLOW_MESSAGE    = "COMBAT_MIGHTY_BLOW_MESSAGE";
 const string CombatTextKeys::COMBAT_SPLIT_MESSAGE          = "COMBAT_SPLIT_MESSAGE";

@@ -17,7 +17,7 @@ Feature* Tannery::clone()
 
 uchar Tannery::get_symbol() const
 {
-  return '^';
+  return ';';
 }
 
 string Tannery::get_description_sid() const

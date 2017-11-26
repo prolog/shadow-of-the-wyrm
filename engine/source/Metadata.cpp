@@ -55,8 +55,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // French lutenist and composer of the baroque era
-  return "\"de Visee\"";
+  // Early 16th century German lutenist, from what is now Bratislava, Slovakia.
+  return "\"Neusiedler\"";
 }
 
 string Metadata::get_game_version_synopsis() const

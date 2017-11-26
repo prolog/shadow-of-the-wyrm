@@ -52,6 +52,7 @@ class CombatManager
     bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type, const AttackSequenceType ast);
     bool miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     bool close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
+    bool intimidate(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
         
     bool run_attack_script_if_necessary(CreaturePtr creature, CreaturePtr attacked_creature);
     void add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing, const bool incorporeal);
@@ -61,6 +62,7 @@ class CombatManager
     // Functions to determine whether a particular attack hits, misses, etc.
     bool is_hit(const int total_roll, const int target_number_value);
     bool is_miss(const int total_roll, const int target_number_value);
+    bool is_intimidate(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type);
     bool is_close_miss(const int total_roll, const int target_number_value);
     bool is_automatic_miss(const int d100_roll);
     bool is_automatic_hit(const int d100_roll);

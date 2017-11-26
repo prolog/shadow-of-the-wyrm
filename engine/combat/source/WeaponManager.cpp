@@ -207,7 +207,6 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
   Equipment& equipment = creature->get_equipment();
   WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
   WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
-  int num_ranged_weapon_dice = 0;
   vector<string> total_slays;
   vector<DamageFlagType> ranged_weapon_dflags;
 
@@ -221,7 +220,6 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
     // the ammo, this will be totally wrong.
     // Yes, that's why the damage dice for launchers generally matches the 
     // ammo.
-    num_ranged_weapon_dice = d.get_num_dice();
     total_slays = d.get_slays_races();
     ranged_weapon_dflags = d.get_damage_flags_by_value(true);
   }

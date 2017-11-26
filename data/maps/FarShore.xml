@@ -76,6 +76,34 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>ogre_hurler</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>30</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ogre_hurler</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>31</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ogre_hurler</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>30</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ogre_hurler</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>31</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>ogre_savage</ID>
 				<Coord>
 					<Row>9</Row>
