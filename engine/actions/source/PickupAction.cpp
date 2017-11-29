@@ -15,6 +15,7 @@
 #include "MessageManagerFactory.hpp"
 #include "PickupAction.hpp"
 #include "RNG.hpp"
+#include "Setting.hpp"
 #include "TextMessages.hpp"
 
 using namespace std;
@@ -169,7 +170,8 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
       }
       else
       {
-        take_item_and_give_to_creature(pick_up_item, inv, creature);
+        bool prompt_for_stacks = Game::instance().get_settings_ref().get_setting_as_bool(Setting::PROMPT_ON_STACK_PICKUP);
+        take_item_and_give_to_creature(pick_up_item, inv, creature, prompt_for_stacks);
 
         // Advance the turn
         action_cost_value = get_action_cost_value(creature);
@@ -203,7 +205,7 @@ ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map
       else
       {
         picked_up = true;
-        take_item_and_give_to_creature(item, inv, creature);
+        take_item_and_give_to_creature(item, inv, creature, false);
 
         addl_stacks_taken++;
       }
@@ -252,7 +254,7 @@ ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr m
         }
         else
         {
-          take_item_and_give_to_creature(item, inv, creature);
+          take_item_and_give_to_creature(item, inv, creature, false);
         }
       }
     }
@@ -266,19 +268,43 @@ ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr m
   return acv;
 }
 
-void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature)
+void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount)
 {
   if (pick_up_item != nullptr && inv != nullptr && creature != nullptr)
   {
-    // Remove the item from the ground.
-    inv->remove(pick_up_item->get_id());
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
 
-    // Check the creature's Lore skill to see if its status is identified.
-    potentially_identify_status(creature, pick_up_item);
+    uint quantity = pick_up_item->get_quantity();
+    uint amount_to_take = quantity;
 
-    if (!merge_into_equipment(creature, pick_up_item))
+    if (quantity > 1 && prompt_for_amount)
     {
-      merge_or_add_into_inventory(creature, pick_up_item);
+      if (creature->get_is_player())
+      {
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_PICK_UP_STACK_SIZE));
+        manager.send();
+      }
+
+      amount_to_take = creature->get_decision_strategy()->get_count(quantity);
+    }
+
+    if (!pick_up_item->is_valid_quantity(amount_to_take))
+    {
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_PICK_UP_INVALID_QUANTITY));
+      manager.send();
+    }
+    else
+    {
+      // Rework the stack sizes based on the amount selected.
+      pick_up_item = recalculate_stack_sizes(inv, pick_up_item, quantity, amount_to_take);
+
+      // Check the creature's Lore skill to see if its status is identified.
+      potentially_identify_status(creature, pick_up_item);
+
+      if (!merge_into_equipment(creature, pick_up_item))
+      {
+        merge_or_add_into_inventory(creature, pick_up_item);
+      }
     }
   }
 }
@@ -425,6 +451,35 @@ void PickupAction::potentially_identify_status(CreaturePtr creature, ItemPtr ite
       }
     }
   }
+}
+
+ItemPtr PickupAction::recalculate_stack_sizes(IInventoryPtr inv, ItemPtr pick_up_item, const uint quantity, const uint amount_to_take)
+{
+  ItemPtr item_to_take = pick_up_item;
+
+  if (pick_up_item != nullptr)
+  {
+    if (amount_to_take > 0 && amount_to_take < quantity)
+    {
+      // Reduce the quantity on the ground appropriately.
+      ItemPtr new_item = ItemPtr(pick_up_item->clone());
+
+      if (new_item != nullptr)
+      {
+        new_item->set_quantity(amount_to_take);
+        item_to_take = new_item;
+      }
+
+      pick_up_item->set_quantity(quantity - amount_to_take);
+    }
+    else if (amount_to_take == quantity)
+    {
+      // Remove the item from the ground.
+      inv->remove(pick_up_item->get_id());
+    }
+  }
+
+  return item_to_take;
 }
 
 // Base action cost value is 1.

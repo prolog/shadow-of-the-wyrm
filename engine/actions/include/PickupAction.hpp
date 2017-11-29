@@ -33,5 +33,8 @@ class PickupAction : public IActionManager
     ActionCostValue handle_pickup_all(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile);
     ActionCostValue handle_pickup_types(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile, const std::set<ItemType>& pickup_types);
 
-    void take_item_and_give_to_creature(ItemPtr item, IInventoryPtr inv, CreaturePtr creature);
+    void take_item_and_give_to_creature(ItemPtr item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount);
+    
+    // Returns the item to pick up
+    ItemPtr recalculate_stack_sizes(IInventoryPtr inv, ItemPtr item, const uint quantity, const uint amount_to_take);
 };

@@ -38,3 +38,4 @@ const string Setting::REMOVE_LOGS_DAYS_OLD = "remove_logs_days_old";
 const string Setting::SINGLE_USER_MODE = "single_user_mode";
 const string Setting::AUTOPICKUP = "autopickup";
 const string Setting::AUTOPICKUP_TYPES = "autopickup_types";
+const string Setting::PROMPT_ON_STACK_PICKUP = "prompt_on_stack_pickup";
