@@ -466,6 +466,20 @@ WaterType Tile::get_water_type() const
   return WaterType::WATER_TYPE_UNDEFINED;
 }
 
+bool Tile::get_is_frozen(const Season season) const
+{
+  if (season == Season::SEASON_WINTER 
+   && get_water_type() == WaterType::WATER_TYPE_FRESH 
+   && !submerged)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
 void Tile::set_tile_subtype(const TileType new_tile_subtype)
 {
   tile_subtype = new_tile_subtype;

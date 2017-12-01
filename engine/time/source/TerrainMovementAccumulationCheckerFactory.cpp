@@ -20,8 +20,9 @@ ITerrainMovementAccumulationCheckerPtr TerrainMovementAccumulationCheckerFactory
   TileSuperType super_type = accumulation.get_tile_super_type();
   TileType tile_type = accumulation.get_tile_type();
   MovementType movement = accumulation.get_movement_type();
+  bool frozen = accumulation.get_tile_frozen();
   
-  if (super_type == TileSuperType::TILE_SUPER_TYPE_WATER)
+  if (super_type == TileSuperType::TILE_SUPER_TYPE_WATER && !frozen)
   {
     if (movement == MovementType::MOVEMENT_TYPE_WALKING)
     {

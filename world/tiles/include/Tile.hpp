@@ -4,6 +4,7 @@
 #include "Feature.hpp"
 #include "tiles.hpp"
 #include "IInventory.hpp"
+#include "CalendarTypes.hpp"
 #include "Creature.hpp"
 #include "DigChances.hpp"
 #include "Directions.hpp"
@@ -128,6 +129,9 @@ class Tile : public ISerializable
 
     // If the tile contains some type of water, what type?
     virtual WaterType get_water_type() const;
+
+    // Is the water frozen in the current season?
+    virtual bool get_is_frozen(const Season season) const;
 
     // Used for digging, to see if the wielded item has enough strength
     // to penetrate the tile.

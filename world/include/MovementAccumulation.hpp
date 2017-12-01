@@ -32,6 +32,9 @@ class MovementAccumulation : public ISerializable
     void set_tile_type(const TileType tile_type);
     TileType get_tile_type() const;
 
+    void set_tile_frozen(const bool frozen);
+    bool get_tile_frozen() const;
+
     void set_movement_type(const MovementType new_method);
     MovementType get_movement_type() const;
 
@@ -45,6 +48,7 @@ class MovementAccumulation : public ISerializable
     TileSuperType tile_super_type;
     ulonglong minutes_on_tile_type_given_movement;
     TileType tile_type;
+    bool frozen;
     MovementType movement_type;
 
   private:
