@@ -1,5 +1,6 @@
 #include "TileDescriber.hpp"
 #include "Conversion.hpp"
+#include "Game.hpp"
 #include "StringTable.hpp"
 #include "TextMessages.hpp"
 #include "TileTextKeys.hpp"
@@ -53,6 +54,14 @@ string TileDescriber::describe() const
     if (tile->get_submerged())
     {
       description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_SUBMERGED);
+    }
+
+    Game& game = Game::instance();
+    Season season = game.get_current_world()->get_calendar().get_season()->get_season();
+
+    if (tile->get_is_frozen(season))
+    {
+      description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_FROZEN);
     }
   }
 

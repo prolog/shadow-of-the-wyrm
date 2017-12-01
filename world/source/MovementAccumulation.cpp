@@ -28,6 +28,7 @@ void MovementAccumulation::reset()
   minutes_on_tile_type_given_movement = 0;
   tile_type = TileType::TILE_TYPE_UNDEFINED;
   tile_super_type = TileSuperType::TILE_SUPER_TYPE_UNDEFINED;
+  frozen = false;
   movement_type = MovementType::MOVEMENT_TYPE_WALKING;
 }
 
@@ -71,6 +72,16 @@ TileType MovementAccumulation::get_tile_type() const
   return tile_type;
 }
 
+void MovementAccumulation::set_tile_frozen(const bool new_frozen)
+{
+  frozen = new_frozen;
+}
+
+bool MovementAccumulation::get_tile_frozen() const
+{
+  return frozen;
+}
+
 void MovementAccumulation::set_movement_type(const MovementType new_type)
 {
   movement_type = new_type;
@@ -87,6 +98,7 @@ bool MovementAccumulation::serialize(ostream& stream) const
   Serialize::write_enum(stream, tile_super_type);
   Serialize::write_ulonglong(stream, minutes_on_tile_type_given_movement);
   Serialize::write_enum(stream, tile_type);
+  Serialize::write_bool(stream, frozen);
   Serialize::write_enum(stream, movement_type);
 
   return true;
@@ -98,6 +110,7 @@ bool MovementAccumulation::deserialize(istream& stream)
   Serialize::read_enum(stream, tile_super_type);
   Serialize::read_ulonglong(stream, minutes_on_tile_type_given_movement);
   Serialize::read_enum(stream, tile_type);
+  Serialize::read_bool(stream, frozen);
   Serialize::read_enum(stream, movement_type);
 
   return true;

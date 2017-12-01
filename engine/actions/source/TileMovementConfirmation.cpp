@@ -1,4 +1,5 @@
 #include "CurrentCreatureAbilities.hpp"
+#include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MovementTextKeys.hpp"
 #include "TextKeys.hpp"
@@ -53,9 +54,13 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
 
 pair<bool, string> TileMovementConfirmation::check_for_jumping_into_water(CreaturePtr creature, TilePtr old_tile, TilePtr new_tile)
 {
+  Game& game = Game::instance();
+  Season season = game.get_current_world()->get_calendar().get_season()->get_season();
+
   pair<bool, string> details;
   details.first = false;
   bool is_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
+  bool is_frozen = new_tile->get_is_frozen(season);
   bool is_flying = creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
   
   // If there get to be enough of these, break these out into a map or a class or something.
@@ -64,7 +69,11 @@ pair<bool, string> TileMovementConfirmation::check_for_jumping_into_water(Creatu
   {
     IInventoryPtr inv = creature->get_inventory();
 
-    if (!(creature->can_breathe(BreatheType::BREATHE_TYPE_WATER)) && !is_incorporeal && !is_flying && !inv->has_item_type(ItemType::ITEM_TYPE_BOAT))
+    if (!(creature->can_breathe(BreatheType::BREATHE_TYPE_WATER)) 
+     && !is_incorporeal 
+     && !is_frozen
+     && !is_flying 
+     && !inv->has_item_type(ItemType::ITEM_TYPE_BOAT))
     {
       details.first  = true;
       details.second = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);

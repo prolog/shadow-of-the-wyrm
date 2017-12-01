@@ -1,9 +1,18 @@
 #include "MovementAccumulationUpdater.hpp"
+#include "Game.hpp"
 
 void MovementAccumulationUpdater::update(CreaturePtr creature, TilePtr new_tile)
 {
   if (creature && new_tile)
   {
+    WorldPtr world = Game::instance().get_current_world();
+    Season season = Season::SEASON_SPRING;
+
+    if (world != nullptr)
+    {
+      season = world->get_calendar().get_season()->get_season();
+    }
+
     MovementAccumulation& movement_accumulation = creature->get_movement_accumulation_ref();
 
     TileSuperType old_super_type = movement_accumulation.get_tile_super_type();
@@ -34,6 +43,8 @@ void MovementAccumulationUpdater::update(CreaturePtr creature, TilePtr new_tile)
       movement_accumulation.set_tile_type(new_tile_type);
       movement_accumulation.set_minutes_on_tile_type_given_movement(0);
     }
+
+    movement_accumulation.set_tile_frozen(new_tile->get_is_frozen(season));
   }
 }
 
@@ -43,6 +54,15 @@ void MovementAccumulationUpdater::update(CreaturePtr creature, TilePtr new_tile)
 // as a method of transportation.)
 MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature, TilePtr tile)
 {
+  Game& game = Game::instance();
+  WorldPtr world = game.get_current_world();
+  Season season = Season::SEASON_SPRING;
+
+  if (world != nullptr)
+  {
+    season = world->get_calendar().get_season()->get_season();
+  }
+
   // Can always walk or fly.
   //
   // Boating is only allowed on water.
@@ -65,7 +85,9 @@ MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature
         break;
       case TileSuperType::TILE_SUPER_TYPE_WATER:
       default:
-        if (!tile->get_submerged() && creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT))
+        if (!tile->get_submerged() 
+         &&  creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT)
+         && !tile->get_is_frozen(season))
         {
           movement = MovementType::MOVEMENT_TYPE_BOAT;
         }

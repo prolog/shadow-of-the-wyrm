@@ -1,6 +1,4 @@
 Me:
-- Need to test stack prompt pickup, no stack prompt pickup, partial/full
-  stacks, etc.
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
@@ -33,7 +31,6 @@ Me:
 - Descent into the underworld.
 - Allow shopkeepers to sell for different prices dependending on their
   race, and the buying creature's.
-- Freshwater turns to ice in winter.
 - Creatures should be smarter about the use of spells given that creatures
   will fight back and summon help.
 - Wilderness ruins/lairs
@@ -73,7 +70,6 @@ Me:
 - Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
   should give you a great chance, beaches very small, etc.
-- Telari, the Drowned Shrine
 - Update MapTester config for generation runs of creatures
 - Define all monsters as good/neutral/evil
 - Monsters should have a chance of being generated friendly when same
