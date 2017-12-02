@@ -6,6 +6,8 @@ Shadow of the Wyrm v0.7.2 "Takemitsu"
 
 - In winter, fresh water becomes frozen and becomes safe for movement.
 
+- More stanzas for "Tel and Floridel".
+
 Shadow of the Wyrm v0.7.1 "Neusiedler"
 - Version declared October 23, 2017.  Version finalized November 25, 2017.
 
