@@ -47,3 +47,20 @@ void HostilityManager::set_hostility_to_player(CreaturePtr creature, const bool 
   }
 }
 
+void HostilityManager::remove_hostility_to_creature(CreaturePtr creature, const string& hostile_to_creature_id)
+{
+  if (creature != nullptr)
+  {
+    DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+    ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
+
+    if (creature->get_id() != hostile_to_creature_id)
+    {
+      pair<bool, int> threat_exists = threat_ratings.has_threat(hostile_to_creature_id);
+      if (threat_exists.first)
+      {
+        threat_ratings.remove_threat(hostile_to_creature_id, threat_exists.second);
+      }
+    }
+  }
+}

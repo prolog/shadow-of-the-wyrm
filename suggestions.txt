@@ -1,4 +1,11 @@
 Me:
+- Messages for the various musical outcomes
+- If pacification makes friendly rather than non-attacking, change the
+  code to set the threat level to some low value (-1?) that doesn't count
+  as friendly - update the AI code to not consider -1 enough of a threat
+  to actually consider attacking.
+- Allow music to not only pacify but enchant
+- Differentiate the musical instruments
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
@@ -53,7 +60,6 @@ Me:
 - Cancellation effect type
 - Special rooms: beer hall, magical workshop, armory.
 - More shops in set locations.
-- Initial Music skill implementation.
 - You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
 - Scent maps/track by scent.

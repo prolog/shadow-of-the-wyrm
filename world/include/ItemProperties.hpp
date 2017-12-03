@@ -16,6 +16,8 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_BRAND;
     static const std::string ITEM_PROPERTIES_LORE_CHECKED;
     static const std::string ITEM_PROPERTIES_CREATION_SKILL;
+    static const std::string ITEM_PROPERTIES_MUSIC_PERFORMANCE;
+    static const std::string ITEM_PROPERTIES_MUSIC_PERFORMANCE_FAILED;
 
   protected:
     ItemProperties();

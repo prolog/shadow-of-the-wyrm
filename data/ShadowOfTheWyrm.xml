@@ -35253,6 +35253,16 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>4</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>music_performance</Name>
+						<Value>MUSIC_PERFORMANCE_LUTE_SID</Value>
+					</Property>
+					<Property>
+						<Name>music_performance_failed</Name>
+						<Value>MUSIC_PERFORMANCE_LUTE_FAILED_SID</Value>
+					</Property>
+				</Properties>
 			</Tool>
 			<Tool id="fife">
 				<DescriptionSID>FIFE_SID</DescriptionSID>
@@ -35264,6 +35274,16 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>3</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>music_performance</Name>
+						<Value>MUSIC_PERFORMANCE_FIFE_SID</Value>
+					</Property>
+					<Property>
+						<Name>music_performance_failed</Name>
+						<Value>MUSIC_PERFORMANCE_FIFE_FAILED_SID</Value>
+					</Property>
+				</Properties>
 			</Tool>
 			<Tool id="dulcimer">
 				<DescriptionSID>DULCIMER_SID</DescriptionSID>
@@ -35275,6 +35295,16 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>4</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>music_performance</Name>
+						<Value>MUSIC_PERFORMANCE_DULCIMER_SID</Value>
+					</Property>
+					<Property>
+						<Name>music_performance_failed</Name>
+						<Value>MUSIC_PERFORMANCE_DULCIMER_FAILED_SID</Value>
+					</Property>
+				</Properties>
 			</Tool>
 			<Tool id="sackbut">
 				<DescriptionSID>SACKBUT_SID</DescriptionSID>
@@ -35286,6 +35316,16 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>music_performance</Name>
+						<Value>MUSIC_PERFORMANCE_SACKBUT_SID</Value>
+					</Property>
+					<Property>
+						<Name>music_performance_failed</Name>
+						<Value>MUSIC_PERFORMANCE_SACKBUT_FAILED_SID</Value>
+					</Property>
+				</Properties>
 			</Tool>
 			<Tool id="fiddle">
 				<DescriptionSID>FIDDLE_SID</DescriptionSID>
@@ -35297,6 +35337,16 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>music_performance</Name>
+						<Value>MUSIC_PERFORMANCE_FIDDLE_SID</Value>
+					</Property>
+					<Property>
+						<Name>music_performance_failed</Name>
+						<Value>MUSIC_PERFORMANCE_FIDDLE_FAILED_SID</Value>
+					</Property>
+				</Properties>
 			</Tool>
 			<Tool id="horn">
 				<DescriptionSID>HORN_SID</DescriptionSID>
@@ -35308,6 +35358,16 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>music_performance</Name>
+						<Value>MUSIC_PERFORMANCE_HORN_SID</Value>
+					</Property>
+					<Property>
+						<Name>music_performance_failed</Name>
+						<Value>MUSIC_PERFORMANCE_HORN_FAILED_SID</Value>
+					</Property>
+				</Properties>
 			</Tool>
 		</Tools>
 		<Wands>
