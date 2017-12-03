@@ -420,6 +420,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MineCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\PacificationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhaseOfMoonCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ReadCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
@@ -955,6 +956,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\skills\include\FishingTypes.hpp" />
     <ClInclude Include="engine\skills\include\FletcherySkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp" />
+    <ClInclude Include="engine\skills\include\MusicSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\ScribingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\SkillManager.hpp" />
     <ClInclude Include="engine\skills\include\SkillProcessor.hpp" />
@@ -984,6 +986,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\strings\include\ItemTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ItemTypeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\MusicTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SacrificeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ScreenTitleTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MovementTextKeys.hpp" />
@@ -1397,6 +1400,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\ItemDropRateCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MineCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\PacificationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ReadCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ScribingCalculator.cpp" />
@@ -1506,6 +1510,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\MineCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\PacificationCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -1771,6 +1782,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\skills\source\FishingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\FletcherySkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp" />
+    <ClCompile Include="engine\skills\source\MusicSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\ScribingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessorFactory.cpp" />
@@ -1799,6 +1811,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\VictoryTextKeys.cpp" />
     <ClCompile Include="engine\time\source\AgeTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\CreatureSkillMarkerChecker.cpp" />
