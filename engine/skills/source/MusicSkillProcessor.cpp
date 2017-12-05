@@ -1,8 +1,10 @@
 #include "MusicSkillProcessor.hpp"
+#include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "HostilityManager.hpp"
 #include "ItemProperties.hpp"
 #include "MessageManagerFactory.hpp"
@@ -179,6 +181,12 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature)
     hm.remove_hostility_to_creature(fov_creature, creature->get_id());
 
     // Add a message about the pacification.
+    bool creature_is_player = creature->get_is_player();
+    bool fov_is_player = fov_creature->get_is_player();
+
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
+    manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, creature->get_description_sid(), fov_creature->get_description_sid()));
+    manager.send();
   }
 }
 
@@ -187,11 +195,7 @@ void MusicSkillProcessor::enrage(CreaturePtr creature, CreaturePtr fov_creature)
 {
   if (creature != nullptr && fov_creature != nullptr)
   {
-    Damage damage = fov_creature->get_base_damage();
-    damage.set_modifier(damage.get_modifier() + std::max<int>(1, fov_creature->get_level().get_current() / 2));
-
-    fov_creature->set_base_damage(damage);
-
-    // Add an appropriate message.
+    // Set the status on the FOV creatures.
+    //...
   }
 }
