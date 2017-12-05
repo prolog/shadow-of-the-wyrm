@@ -4,6 +4,7 @@ Me:
   code to set the threat level to some low value (-1?) that doesn't count
   as friendly - update the AI code to not consider -1 enough of a threat
   to actually consider attacking.
+- Enraged should be an actual status
 - Allow music to not only pacify but enchant
 - Differentiate the musical instruments
 - Add Shards, Meteor to a couple more creatures
