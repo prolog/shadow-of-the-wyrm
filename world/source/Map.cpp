@@ -54,7 +54,6 @@ bool Map::operator==(const Map& map) const
     // keys.
     TilesContainer tiles_cont = map.tiles;
     TilesContainer::const_iterator t_it = tiles.begin();
-    TilesContainer::const_iterator t_it2 = tiles_cont.begin();
 
     while (t_it != tiles.end())
     {
