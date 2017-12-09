@@ -1,4 +1,5 @@
 #include "Serialize.hpp"
+#include "CombatConstants.hpp"
 #include "ThreatRatings.hpp"
 
 using namespace std;
@@ -103,13 +104,16 @@ ThreatMap ThreatRatings::get_all_threats() const
 
 // Get a set of creature IDs that represent the current threats.  The actual
 // threat levels are ignored in this case.
-set<string> ThreatRatings::get_all_threats_without_level() const
+set<string> ThreatRatings::get_true_threats_without_level() const
 {
   set<string> threats;
 
   for (const auto& c_it : threat_ratings)
   {
-    threats.insert(c_it.second.begin(), c_it.second.end());
+    if (c_it.first > CombatConstants::DISLIKE_THREAT_RATING)
+    {
+      threats.insert(c_it.second.begin(), c_it.second.end());
+    }
   }
 
   return threats;

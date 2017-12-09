@@ -114,11 +114,13 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
     }
     else
     {
-      PacificationCalculator pc;
       CreatureMap fov_creatures = creature->get_decision_strategy()->get_fov_map()->get_creatures();
       int num_hostile = 0;
       int num_pacified = 0;
       string perf_sid = perf_sids.first; // Start off with the success SID.
+
+      // Begin the performance.
+      add_start_performance_message(creature);
 
       // For each hostile creature, try to tame it.
       for (auto cr_pair : fov_creatures)
@@ -127,25 +129,7 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
 
         if (fov_creature->hostile_to(creature->get_id()))
         {
-          num_hostile++;
-          int pct_chance_pacify = pc.calculate_pct_chance_pacify_music(creature, fov_creature);
-          bool pacified = String::to_bool(fov_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED));
-
-          if (!pacified)
-          {
-            fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED, to_string(true));
-            if (RNG::percent_chance(pct_chance_pacify))
-            {
-              pacify(creature, fov_creature);
-              num_pacified++;
-            }
-            else
-            {
-              // Creatures that can see through attempts to musically pacify
-              // tend to be unimpressed.
-              enrage(creature, fov_creature);
-            }
-          }
+          attempt_pacification(creature, fov_creature, num_hostile, num_pacified);
         }
       }
 
@@ -157,12 +141,47 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
       }
 
       add_performance_details_message(creature, perf_sid);
-
-      // Add messages about which creatures were pacified.
     }
   }
 }
 
+void MusicSkillProcessor::attempt_pacification(CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified)
+{
+  if (creature != nullptr && fov_creature != nullptr)
+  {
+    num_hostile++;
+
+    PacificationCalculator pc;
+    int pct_chance_pacify = pc.calculate_pct_chance_pacify_music(creature, fov_creature);
+    bool pacified = String::to_bool(fov_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED));
+
+    if (!pacified)
+    {
+      fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED, to_string(true));
+      if (RNG::percent_chance(pct_chance_pacify))
+      {
+        pacify(creature, fov_creature);
+        num_pacified++;
+      }
+      else
+      {
+        // Creatures that can see through attempts to musically pacify
+        // tend to be unimpressed.
+        enrage(creature, fov_creature);
+      }
+    }
+  }
+}
+
+void MusicSkillProcessor::add_start_performance_message(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(MusicTextKeys::MUSIC_PERFORMANCE_BEGIN));
+    manager.send();
+  }
+}
 void MusicSkillProcessor::add_performance_details_message(CreaturePtr creature, const string& perf_sid)
 {
   if (creature != nullptr)
@@ -177,15 +196,18 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature)
 {
   if (creature != nullptr && fov_creature != nullptr)
   {
+    string creature_id = creature->get_id();
+
     HostilityManager hm;
-    hm.remove_hostility_to_creature(fov_creature, creature->get_id());
+    hm.remove_hostility_to_creature(fov_creature, creature_id);
+    hm.set_hostility_to_creature(fov_creature, creature_id, CombatConstants::DISLIKE_THREAT_RATING);
 
     // Add a message about the pacification.
     bool creature_is_player = creature->get_is_player();
     bool fov_is_player = fov_creature->get_is_player();
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
-    manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, creature->get_description_sid(), fov_creature->get_description_sid()));
+    manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid())));
     manager.send();
   }
 }
@@ -195,7 +217,15 @@ void MusicSkillProcessor::enrage(CreaturePtr creature, CreaturePtr fov_creature)
 {
   if (creature != nullptr && fov_creature != nullptr)
   {
-    // Set the status on the FOV creatures.
-    //...
+    // Set the enraged status.
+    // ...
+
+    //
+    bool creature_is_player = creature->get_is_player();
+    bool fov_is_player = fov_creature->get_is_player();
+
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
+    manager.add_new_message(CombatTextKeys::get_enraged_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid())));
+    manager.send();
   }
 }

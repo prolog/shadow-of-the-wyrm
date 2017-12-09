@@ -7,7 +7,15 @@ Shadow of the Wyrm v0.7.2 "Takemitsu"
 - In winter, fresh water becomes frozen and becomes safe for movement.
 
 - Minstrel is now a viable class: the Music skill has a basic 
-  inmplementation.
+  implementation.  Creatures can be pacified - this will cause them to
+  stop attacking the player.  They don't become friendly, though.  Their
+  hostility is just reduced below a certain hostility threshold.
+
+- Defined a new hostility threshold, "dislike".  Values below this
+  threshold that exist within a threat map are not considered for
+  attacking, spellcasting, and movement decisions.  This allows NPCs to
+  stop attacking while not being considered actively friendly towards the
+  player.
 
 - More stanzas for "Tel and Floridel".
 
