@@ -1,5 +1,7 @@
 #include "PacificationCalculator.hpp"
 
+const int PacificationCalculator::MAX_PCT_CHANCE_PACIFY_MUSIC = 95;
+
 // The chance to pacify musically is:
 //
 // The musician's music score
@@ -26,7 +28,7 @@ int PacificationCalculator::calculate_pct_chance_pacify_music(CreaturePtr music_
                       - opp_will;
   }
 
-  return pct_chance_pacify;
+  return std::min<int>(pct_chance_pacify, MAX_PCT_CHANCE_PACIFY_MUSIC);
 }
 
 #ifdef UNIT_TESTS

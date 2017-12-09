@@ -19,5 +19,9 @@ TEST(SW_Engine_Calculators_PacificationCalculator, calculate_pct_chance_pacify_m
   fov_creature->set_willpower(10);
 
   EXPECT_EQ(39, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature));
+
+  music_creature->set_level(200);
+
+  EXPECT_EQ(95, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature));
 }
 

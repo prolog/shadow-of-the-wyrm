@@ -172,7 +172,7 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
     CurrentCreatureAbilities cca;
     Game& game = Game::instance();
     const SpellMap& spell_map = game.get_spells_ref();
-    const set<string> creature_threats = threat_ratings.get_all_threats_without_level();
+    const set<string> creature_threats = threat_ratings.get_true_threats_without_level();
     std::vector<std::pair<std::string, Direction>> potential_spells;
     MagicalAbilityChecker mac;
 
@@ -254,7 +254,9 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
     {
       CreaturePtr this_cr = this_tile->get_creature();
 
-      while (t_it != threat_map.rend())
+      // Ensure that we only attack legitimate threats.
+      // Creatures may dislike other creatures, but that won't cause them to attack.
+      while (t_it != threat_map.rend() && t_it->first > CombatConstants::DISLIKE_THREAT_RATING)
       {
         set<string> creature_ids = t_it->second;
 
@@ -313,7 +315,7 @@ CommandPtr NPCDecisionStrategy::get_breed_decision(const string& this_creature_i
   {
     // Only breed if there's at least one threatening creature in the
     // creature's view map.
-    set<string> all_threats = threat_ratings.get_all_threats_without_level();
+    set<string> all_threats = threat_ratings.get_true_threats_without_level();
     bool threat_nearby = false;
 
     for (const string& threat_id : all_threats)
@@ -367,7 +369,7 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
       RangedCombatApplicabilityChecker rcac;
       if (rcac.can_creature_do_ranged_combat(this_cr).first && RNG::percent_chance(PERCENT_CHANCE_CONSIDER_RANGED_COMBAT))
       {
-        while (t_it != threat_map.rend())
+        while (t_it != threat_map.rend() && t_it->first > CombatConstants::DISLIKE_THREAT_RATING)
         {
           set<string> creature_ids = t_it->second;
 

@@ -5,7 +5,7 @@
 using namespace std;
 
 // Set the creature hostile to another creature with the given creature_id.
-void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const string& hostile_to_creature_id)
+void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const string& hostile_to_creature_id, const int hostility_level)
 {
   if (creature != nullptr)
   {
@@ -24,18 +24,18 @@ void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const str
       }
       else
       {
-        threat_ratings.add_threat(hostile_to_creature_id, CombatConstants::INITIAL_THREAT_RATING);
+        threat_ratings.add_threat(hostile_to_creature_id, hostility_level);
       }
     }
   }
 }
 
 // Set the creature hostile to the player.
-void HostilityManager::set_hostility_to_player(CreaturePtr creature, const bool hostile)
+void HostilityManager::set_hostility_to_player(CreaturePtr creature, const bool hostile, const int hostility_level)
 {
   if (hostile)
   {
-    set_hostility_to_creature(creature, CreatureID::CREATURE_ID_PLAYER);
+    set_hostility_to_creature(creature, CreatureID::CREATURE_ID_PLAYER, hostility_level);
   }
   else
   {
