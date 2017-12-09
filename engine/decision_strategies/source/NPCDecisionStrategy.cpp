@@ -1,4 +1,3 @@
-#include "CombatConstants.hpp"
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
@@ -17,6 +16,7 @@
 #include "RangedCombatUtils.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
+#include "ThreatConstants.hpp"
 
 using namespace std;
 
@@ -66,7 +66,7 @@ void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr current_fov_map)
         // perimeter, become hostile.
         if (!MapUtils::is_in_shop_or_adjacent(current_map, creature_coord).first)
         {
-          threat_ratings.add_threat(creature->get_id(), CombatConstants::INITIAL_THREAT_RATING);
+          threat_ratings.add_threat(creature->get_id(), ThreatConstants::INITIAL_THREAT_RATING);
         }
       }
     }
@@ -256,7 +256,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
 
       // Ensure that we only attack legitimate threats.
       // Creatures may dislike other creatures, but that won't cause them to attack.
-      while (t_it != threat_map.rend() && t_it->first > CombatConstants::DISLIKE_THREAT_RATING)
+      while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
       {
         set<string> creature_ids = t_it->second;
 
@@ -369,7 +369,7 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
       RangedCombatApplicabilityChecker rcac;
       if (rcac.can_creature_do_ranged_combat(this_cr).first && RNG::percent_chance(PERCENT_CHANCE_CONSIDER_RANGED_COMBAT))
       {
-        while (t_it != threat_map.rend() && t_it->first > CombatConstants::DISLIKE_THREAT_RATING)
+        while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
         {
           set<string> creature_ids = t_it->second;
 
