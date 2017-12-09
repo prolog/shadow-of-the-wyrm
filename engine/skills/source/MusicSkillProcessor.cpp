@@ -200,7 +200,7 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature)
 
     HostilityManager hm;
     hm.remove_hostility_to_creature(fov_creature, creature_id);
-    hm.set_hostility_to_creature(fov_creature, creature_id, CombatConstants::DISLIKE_THREAT_RATING);
+    hm.set_hostility_to_creature(fov_creature, creature_id, ThreatConstants::DISLIKE_THREAT_RATING);
 
     // Add a message about the pacification.
     bool creature_is_player = creature->get_is_player();

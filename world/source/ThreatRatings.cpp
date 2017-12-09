@@ -1,5 +1,5 @@
 #include "Serialize.hpp"
-#include "CombatConstants.hpp"
+#include "ThreatConstants.hpp"
 #include "ThreatRatings.hpp"
 
 using namespace std;
@@ -110,7 +110,7 @@ set<string> ThreatRatings::get_true_threats_without_level() const
 
   for (const auto& c_it : threat_ratings)
   {
-    if (c_it.first > CombatConstants::DISLIKE_THREAT_RATING)
+    if (c_it.first > ThreatConstants::DISLIKE_THREAT_RATING)
     {
       threats.insert(c_it.second.begin(), c_it.second.end());
     }
