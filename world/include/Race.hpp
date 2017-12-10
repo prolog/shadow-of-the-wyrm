@@ -39,6 +39,9 @@ class Race
     void set_corpse_poisoned(const bool new_corpse_poisoned);
     bool get_corpse_poisoned() const;
 
+    void set_pacifiable(const bool new_pacifiable);
+    bool get_pacifiable() const;
+
     void set_splits(const bool new_splits);
     bool get_splits() const;
 
@@ -153,6 +156,7 @@ class Race
     bool slayable;
     bool leaves_corpse;
     bool corpse_poisoned;
+    bool pacifiable;
     bool splits;
     bool has_pockets;
     bool has_voice;

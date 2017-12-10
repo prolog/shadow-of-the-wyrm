@@ -206,14 +206,14 @@ string CombatTextKeys::get_scything_message(const bool is_player, const string& 
   return scything_message;
 }
 
-string CombatTextKeys::get_pacification_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target)
+string CombatTextKeys::get_pacification_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target, const bool pacifiable)
 {
-  string pacification_message = StringTable::get(COMBAT_PACIFICATION_MESSAGE);
+  string pacification_message = pacifiable ? StringTable::get(COMBAT_PACIFICATION_MESSAGE) : StringTable::get(COMBAT_NOT_PACIFIABLE_MESSAGE);
   auto details = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, target);
 
   if (!attacked_is_player)
   {
-    pacification_message = StringTable::get(COMBAT_PACIFICATION_MESSAGE_NP);
+    pacification_message = pacifiable ? StringTable::get(COMBAT_PACIFICATION_MESSAGE_NP) : StringTable::get(COMBAT_NOT_PACIFIABLE_MESSAGE_NP);
     boost::replace_first(pacification_message, "%s", details.second);
   }
 
@@ -553,7 +553,9 @@ const string CombatTextKeys::COMBAT_COUNTER_MESSAGE_NP     = "COMBAT_COUNTER_MES
 const string CombatTextKeys::COMBAT_SCYTHING_MESSAGE       = "COMBAT_SCYTHING_MESSAGE";
 const string CombatTextKeys::COMBAT_SCYTHING_MESSAGE_NP    = "COMBAT_SCYTHING_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_PACIFICATION_MESSAGE   = "COMBAT_PACIFICATION_MESSAGE";
-const string CombatTextKeys::COMBAT_PACIFICATION_MESSAGE_NP= "COMBAT_PACIFICATION_MESSAGE_NP";
+const string CombatTextKeys::COMBAT_PACIFICATION_MESSAGE_NP = "COMBAT_PACIFICATION_MESSAGE_NP";
+const string CombatTextKeys::COMBAT_NOT_PACIFIABLE_MESSAGE = "COMBAT_NOT_PACIFIABLE_MESSAGE";
+const string CombatTextKeys::COMBAT_NOT_PACIFIABLE_MESSAGE_NP = "COMBAT_NOT_PACIFIABLE_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_ENRAGED_MESSAGE        = "COMBAT_ENRAGED_MESSAGE";
 const string CombatTextKeys::COMBAT_ENRAGED_MESSAGE_NP     = "COMBAT_ENRAGED_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAGE";

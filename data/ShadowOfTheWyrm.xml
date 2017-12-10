@@ -384,6 +384,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
@@ -450,6 +451,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
@@ -522,6 +524,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
@@ -594,6 +597,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -660,6 +664,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -726,6 +731,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -800,6 +806,7 @@
 			<Slayable>0</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -868,6 +875,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
@@ -934,6 +942,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>1</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
@@ -1000,6 +1009,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1066,6 +1076,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
@@ -1132,6 +1143,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
+			<Pacifiable>0</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1193,6 +1205,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
+			<Pacifiable>0</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1257,6 +1270,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>0</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1320,6 +1334,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1386,6 +1401,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1474,6 +1490,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1554,6 +1571,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1635,6 +1653,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1713,6 +1732,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1793,6 +1813,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1872,6 +1893,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -1952,6 +1974,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -2028,6 +2051,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
@@ -2105,6 +2129,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>1</Pacifiable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>

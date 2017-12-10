@@ -10,6 +10,7 @@ Race::Race()
 , slayable(false)
 , leaves_corpse(true)
 , corpse_poisoned(false)
+, pacifiable(true)
 , splits(false)
 , has_pockets(false)
 , has_voice(false)
@@ -106,6 +107,16 @@ void Race::set_corpse_poisoned(const bool new_corpse_poisoned)
 bool Race::get_corpse_poisoned() const
 {
   return corpse_poisoned;
+}
+
+void Race::set_pacifiable(const bool new_pacifiable)
+{
+  pacifiable = new_pacifiable;
+}
+
+bool Race::get_pacifiable() const
+{
+  return pacifiable;
 }
 
 void Race::set_splits(const bool new_splits)

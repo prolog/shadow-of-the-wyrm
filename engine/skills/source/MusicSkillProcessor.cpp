@@ -10,6 +10,7 @@
 #include "MessageManagerFactory.hpp"
 #include "MusicTextKeys.hpp"
 #include "PacificationCalculator.hpp"
+#include "RaceManager.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -158,16 +159,30 @@ void MusicSkillProcessor::attempt_pacification(CreaturePtr creature, CreaturePtr
     if (!pacified)
     {
       fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED, to_string(true));
-      if (RNG::percent_chance(pct_chance_pacify))
+
+      RaceManager rm;
+      RacePtr race = rm.get_race(fov_creature->get_race_id());
+
+      if (race != nullptr)
       {
-        pacify(creature, fov_creature);
-        num_pacified++;
-      }
-      else
-      {
-        // Creatures that can see through attempts to musically pacify
-        // tend to be unimpressed.
-        enrage(creature, fov_creature);
+        if (race->get_pacifiable())
+        {
+          if (RNG::percent_chance(pct_chance_pacify))
+          {
+            pacify(creature, fov_creature);
+            num_pacified++;
+          }
+          else
+          {
+            // Creatures that can see through attempts to musically pacify
+            // tend to be unimpressed.
+            enrage(creature, fov_creature);
+          }
+        }
+        else
+        {
+          add_not_pacifiable_message(creature, fov_creature);
+        }
       }
     }
   }
@@ -207,7 +222,7 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature)
     bool fov_is_player = fov_creature->get_is_player();
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
-    manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid())));
+    manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid()), true /* pacifiable */));
     manager.send();
   }
 }
@@ -226,6 +241,19 @@ void MusicSkillProcessor::enrage(CreaturePtr creature, CreaturePtr fov_creature)
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
     manager.add_new_message(CombatTextKeys::get_enraged_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid())));
+    manager.send();
+  }
+}
+
+void MusicSkillProcessor::add_not_pacifiable_message(CreaturePtr creature, CreaturePtr fov_creature)
+{
+  if (creature != nullptr && fov_creature != nullptr)
+  {
+    bool creature_is_player = creature->get_is_player();
+    bool fov_is_player = fov_creature->get_is_player();
+
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
+    manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid()), false /* not pacifiable */));
     manager.send();
   }
 }
