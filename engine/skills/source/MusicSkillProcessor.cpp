@@ -130,7 +130,7 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
 
         if (fov_creature->hostile_to(creature->get_id()))
         {
-          attempt_pacification(creature, fov_creature, num_hostile, num_pacified);
+          attempt_pacification(instr, creature, fov_creature, num_hostile, num_pacified);
         }
       }
 
@@ -146,14 +146,17 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
   }
 }
 
-void MusicSkillProcessor::attempt_pacification(CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified)
+void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified)
 {
   if (creature != nullptr && fov_creature != nullptr)
   {
     num_hostile++;
 
+    // Certain races are more susceptible to certain instruments.
+    bool charms_creature = get_charms_creature(instr, fov_creature);
+
     PacificationCalculator pc;
-    int pct_chance_pacify = pc.calculate_pct_chance_pacify_music(creature, fov_creature);
+    int pct_chance_pacify = pc.calculate_pct_chance_pacify_music(creature, fov_creature, charms_creature);
     bool pacified = String::to_bool(fov_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED));
 
     if (!pacified)
@@ -256,4 +259,21 @@ void MusicSkillProcessor::add_not_pacifiable_message(CreaturePtr creature, Creat
     manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid()), false /* not pacifiable */));
     manager.send();
   }
+}
+
+bool MusicSkillProcessor::get_charms_creature(ItemPtr item, CreaturePtr fov_creature)
+{
+  bool charms = false;
+
+  if (item != nullptr && fov_creature != nullptr)
+  {
+    RaceManager rm;
+    string race_id = fov_creature->get_race_id();
+    string charm_races_csv = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_MUSIC_CHARM_RACES);
+    vector<string> charm_races = String::create_string_vector_from_csv_string(charm_races_csv);
+
+    charms = std::find(charm_races.begin(), charm_races.end(), race_id) != charm_races.end();
+  }
+  
+  return charms;
 }

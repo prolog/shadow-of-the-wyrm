@@ -11,6 +11,10 @@ Shadow of the Wyrm v0.7.2 "Takemitsu"
   stop attacking the player.  They don't become friendly, though.  Their
   hostility is just reduced below a certain hostility threshold.
 
+- Certain instruments are more effective for pacifying certain races.
+  Vocal performances don't have bonuses for any races, but have the
+  advantage of not requiring an instrument.
+
 - Defined a new hostility threshold, "dislike".  Values below this
   threshold that exist within a threat map are not considered for
   attacking, spellcasting, and movement decisions.  This allows NPCs to
