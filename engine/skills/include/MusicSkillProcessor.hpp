@@ -17,9 +17,10 @@ class MusicSkillProcessor : public SkillProcessor
     void add_not_pacifiable_message(CreaturePtr creature, CreaturePtr fov_creature);
 
     void pacify(CreaturePtr creature, CreaturePtr fov_creature);
+    bool get_charms_creature(ItemPtr item, CreaturePtr fov_creature);
 
     // Attempt pacification, updating the hostile/pacified counts as required
-    void attempt_pacification(CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified);
+    void attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified);
 
     void enrage(CreaturePtr creature, CreaturePtr fov_creature);
 };

@@ -35287,6 +35287,10 @@
 						<Name>music_performance_failed</Name>
 						<Value>MUSIC_PERFORMANCE_LUTE_FAILED_SID</Value>
 					</Property>
+					<Property>
+						<Name>music_charm_races</Name>
+						<Value>_divine</Value>
+					</Property>
 				</Properties>
 			</Tool>
 			<Tool id="fife">
@@ -35307,6 +35311,10 @@
 					<Property>
 						<Name>music_performance_failed</Name>
 						<Value>MUSIC_PERFORMANCE_FIFE_FAILED_SID</Value>
+					</Property>
+					<Property>
+						<Name>music_charm_races</Name>
+						<Value>_animal</Value>
 					</Property>
 				</Properties>
 			</Tool>
@@ -35329,6 +35337,10 @@
 						<Name>music_performance_failed</Name>
 						<Value>MUSIC_PERFORMANCE_DULCIMER_FAILED_SID</Value>
 					</Property>
+					<Property>
+						<Name>music_charm_races</Name>
+						<Value>_insect,_jelly</Value>
+					</Property>
 				</Properties>
 			</Tool>
 			<Tool id="sackbut">
@@ -35349,6 +35361,10 @@
 					<Property>
 						<Name>music_performance_failed</Name>
 						<Value>MUSIC_PERFORMANCE_SACKBUT_FAILED_SID</Value>
+					</Property>
+					<Property>
+						<Name>music_charm_races</Name>
+						<Value>_humanoid,_construct</Value>
 					</Property>
 				</Properties>
 			</Tool>
@@ -35371,6 +35387,10 @@
 						<Name>music_performance_failed</Name>
 						<Value>MUSIC_PERFORMANCE_FIDDLE_FAILED_SID</Value>
 					</Property>
+					<Property>
+						<Name>music_charm_races</Name>
+						<Value>_demon,_plant</Value>
+					</Property>
 				</Properties>
 			</Tool>
 			<Tool id="horn">
@@ -35391,6 +35411,10 @@
 					<Property>
 						<Name>music_performance_failed</Name>
 						<Value>MUSIC_PERFORMANCE_HORN_FAILED_SID</Value>
+					</Property>
+					<Property>
+						<Name>music_charm_races</Name>
+						<Value>_monster,_dragon</Value>
 					</Property>
 				</Properties>
 			</Tool>

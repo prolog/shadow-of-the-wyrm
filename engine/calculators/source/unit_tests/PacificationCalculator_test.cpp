@@ -6,7 +6,8 @@ TEST(SW_Engine_Calculators_PacificationCalculator, calculate_pct_chance_pacify_m
   CreaturePtr fov_creature;
   PacificationCalculator pc;
 
-  EXPECT_EQ(0, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature));
+  EXPECT_EQ(0, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, false));
+  EXPECT_EQ(0, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, true));
 
   music_creature = std::make_shared<Creature>();
   fov_creature = std::make_shared<Creature>();
@@ -18,10 +19,12 @@ TEST(SW_Engine_Calculators_PacificationCalculator, calculate_pct_chance_pacify_m
   music_creature->set_charisma(22);
   fov_creature->set_willpower(10);
 
-  EXPECT_EQ(39, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature));
+  EXPECT_EQ(39, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, false));
+  EXPECT_EQ(64, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, true));
 
   music_creature->set_level(200);
 
-  EXPECT_EQ(95, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature));
+  EXPECT_EQ(95, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, false));
+  EXPECT_EQ(95, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, true));
 }
 
