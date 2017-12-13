@@ -172,7 +172,7 @@ void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creatu
         {
           if (RNG::percent_chance(pct_chance_pacify))
           {
-            pacify(creature, fov_creature);
+            pacify(creature, fov_creature, charms_creature);
             num_pacified++;
           }
           else
@@ -210,7 +210,7 @@ void MusicSkillProcessor::add_performance_details_message(CreaturePtr creature, 
   }
 }
 
-void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature)
+void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature, const bool charms_creature)
 {
   if (creature != nullptr && fov_creature != nullptr)
   {
@@ -225,7 +225,16 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature)
     bool fov_is_player = fov_creature->get_is_player();
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
-    manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid()), true /* pacifiable */));
+
+    if (charms_creature)
+    {
+      manager.add_new_message(CombatTextKeys::get_charmed_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid())));
+    }
+    else
+    {
+      manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid()), true /* pacifiable */));
+    }
+    
     manager.send();
   }
 }
