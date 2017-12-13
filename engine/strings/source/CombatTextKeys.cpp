@@ -206,6 +206,21 @@ string CombatTextKeys::get_scything_message(const bool is_player, const string& 
   return scything_message;
 }
 
+string CombatTextKeys::get_charmed_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target)
+{
+  string charmed_message = StringTable::get(COMBAT_CHARMED_MESSAGE);
+  auto details = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, target);
+
+  if (!attacked_is_player)
+  {
+    charmed_message = StringTable::get(COMBAT_CHARMED_MESSAGE_NP);
+    boost::replace_first(charmed_message, "%s", details.second);
+  }
+
+  charmed_message[0] = toupper(charmed_message[0]);
+  return charmed_message;
+}
+
 string CombatTextKeys::get_pacification_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target, const bool pacifiable)
 {
   string pacification_message = pacifiable ? StringTable::get(COMBAT_PACIFICATION_MESSAGE) : StringTable::get(COMBAT_NOT_PACIFIABLE_MESSAGE);
@@ -552,6 +567,8 @@ const string CombatTextKeys::COMBAT_COUNTER_MESSAGE        = "COMBAT_COUNTER_MES
 const string CombatTextKeys::COMBAT_COUNTER_MESSAGE_NP     = "COMBAT_COUNTER_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_SCYTHING_MESSAGE       = "COMBAT_SCYTHING_MESSAGE";
 const string CombatTextKeys::COMBAT_SCYTHING_MESSAGE_NP    = "COMBAT_SCYTHING_MESSAGE_NP";
+const string CombatTextKeys::COMBAT_CHARMED_MESSAGE        = "COMBAT_CHARMED_MESSAGE";
+const string CombatTextKeys::COMBAT_CHARMED_MESSAGE_NP     = "COMBAT_CHARMED_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_PACIFICATION_MESSAGE   = "COMBAT_PACIFICATION_MESSAGE";
 const string CombatTextKeys::COMBAT_PACIFICATION_MESSAGE_NP = "COMBAT_PACIFICATION_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_NOT_PACIFIABLE_MESSAGE = "COMBAT_NOT_PACIFIABLE_MESSAGE";

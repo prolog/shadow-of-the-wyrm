@@ -27,6 +27,7 @@ class CombatTextKeys
     static std::string get_split_message(const std::string& split_creature);
     static std::string get_counter_message(const bool is_player, const std::string& target);
     static std::string get_scything_message(const bool is_player, const std::string& attacker);
+    static std::string get_charmed_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& target);
     static std::string get_pacification_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& target, bool target_is_pacifiable);
     static std::string get_enraged_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& target);
 
@@ -79,6 +80,8 @@ class CombatTextKeys
     static const std::string COMBAT_COUNTER_MESSAGE_NP;
     static const std::string COMBAT_SCYTHING_MESSAGE;
     static const std::string COMBAT_SCYTHING_MESSAGE_NP;
+    static const std::string COMBAT_CHARMED_MESSAGE;
+    static const std::string COMBAT_CHARMED_MESSAGE_NP;
     static const std::string COMBAT_PACIFICATION_MESSAGE;
     static const std::string COMBAT_PACIFICATION_MESSAGE_NP;
     static const std::string COMBAT_NOT_PACIFIABLE_MESSAGE;
