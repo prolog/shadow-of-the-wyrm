@@ -9,7 +9,9 @@ Shadow of the Wyrm v0.7.2 "Takemitsu"
 - Minstrel is now a viable class: the Music skill has a basic 
   implementation.  Creatures can be pacified - this will cause them to
   stop attacking the player.  They don't become friendly, though.  Their
-  hostility is just reduced below a certain hostility threshold.
+  hostility is just reduced below a certain hostility threshold.  The
+  item status of the instrument can help or hinder the performance -
+  vocal performances aren't affected by this.
 
 - Certain instruments are more effective for pacifying certain races.
   Vocal performances don't have bonuses for any races, but have the
