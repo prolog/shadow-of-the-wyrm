@@ -1426,8 +1426,18 @@ unerringly, the knife unseen - she chose %b
 to offer up her life, if just to shut %b
 the deathblow of a child she'd never met. %b
 Forgiveness speaks in many tongues.  It's said %b
-that grace belongs to divine alone, and yet %b
+that grace is the divine's domain, and yet %b
 the smallest act can change the world.  Instead %b
 of murder dressed in finery, the young queen bled.
+%p
+She dropped down on all fours, began to choke %b
+and sputter.  Now her linen robes were flecked %b
+with spit and splatter; now a fading hope %b
+as stunned men watched her kick and bleed out, necked %b
+from ear to ear.  But only Tel rushed in - %b
+the others, paralyzed, stood back in shock %b
+or opportunity.  Some had a grin %b
+betray their need to see the unling stopped, %b
+a seething rage behind the falseness of their gawks.
 %p
 

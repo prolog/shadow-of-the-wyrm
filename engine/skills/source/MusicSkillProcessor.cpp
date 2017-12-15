@@ -152,11 +152,18 @@ void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creatu
   {
     num_hostile++;
 
+    ItemStatus item_status = ItemStatus::ITEM_STATUS_UNCURSED;
+
+    if (instr != nullptr)
+    {
+      item_status = instr->get_status();
+    }
+
     // Certain races are more susceptible to certain instruments.
     bool charms_creature = get_charms_creature(instr, fov_creature);
 
     PacificationCalculator pc;
-    int pct_chance_pacify = pc.calculate_pct_chance_pacify_music(creature, fov_creature, charms_creature);
+    int pct_chance_pacify = pc.calculate_pct_chance_pacify_music(creature, fov_creature, charms_creature, item_status);
     bool pacified = String::to_bool(fov_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED));
 
     if (!pacified)

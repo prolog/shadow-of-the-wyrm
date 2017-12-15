@@ -1,10 +1,7 @@
 Me:
-- Bonuses/penalties to music based on item status.
 - Witchthorns still firing after pacification.
-- Message when pacifying with the charms bonus.
 - Enraged should be an actual status
 - Allow music to not only pacify but enchant (allow for ordering)
-- Differentiate the musical instruments
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
