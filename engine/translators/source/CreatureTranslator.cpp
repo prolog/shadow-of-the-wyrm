@@ -229,8 +229,9 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   IStatusAilmentTranslatorPtr flying_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_FLYING, StatusAilmentTextKeys::STATUS_FLYING, Colour::COLOUR_WHITE);
   IStatusAilmentTranslatorPtr timewalk_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_TIMEWALK, StatusAilmentTextKeys::STATUS_TIMEWALK, Colour::COLOUR_WHITE);
   IStatusAilmentTranslatorPtr sated_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SATED, StatusAilmentTextKeys::STATUS_SATED, Colour::COLOUR_BOLD_YELLOW);
-  IStatusAilmentTranslatorPtr wb_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_WATER_BREATHING, StatusAilmentTextKeys::STATUS_WATER_BREATHING, Colour::COLOUR_BOLD_CYAN);
-
+  IStatusAilmentTranslatorPtr wb_checker    = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_WATER_BREATHING, StatusAilmentTextKeys::STATUS_WATER_BREATHING, Colour::COLOUR_BOLD_CYAN);
+  IStatusAilmentTranslatorPtr rage_checker  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_RAGE, StatusAilmentTextKeys::STATUS_RAGE, Colour::COLOUR_BOLD_RED);
+  
   status_ailment_checkers.push_back(hunger_checker);
   status_ailment_checkers.push_back(weight_checker);
   status_ailment_checkers.push_back(poison_checker);
@@ -251,4 +252,5 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   status_ailment_checkers.push_back(timewalk_chekr);
   status_ailment_checkers.push_back(sated_checker );
   status_ailment_checkers.push_back(wb_checker    );
+  status_ailment_checkers.push_back(rage_checker  );
 }

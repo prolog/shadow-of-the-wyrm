@@ -1,4 +1,8 @@
 Me:
+- Rage unit tests.
+- Rage should prevent spellcasting.
+- Rage should apply to both armed/unarmed melee.
+- Ensure that Rage properly applies the spell bonus from the oracle.
 - Witchthorns still firing after pacification.
 - Enraged should be an actual status
 - Allow music to not only pacify but enchant (allow for ordering)

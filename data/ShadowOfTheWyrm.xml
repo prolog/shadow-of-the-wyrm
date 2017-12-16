@@ -3268,6 +3268,7 @@
 						<Random>
 							<ID>poison_spellbook</ID>
 							<ID>blind_spellbook</ID>
+							<ID>rage_spellbook</ID>
 						</Random>
 					</InitialItem>
 					<InitialItem>
@@ -27658,6 +27659,19 @@
 			</Damage>
 			<Effect>23</Effect>
 		</Spell>
+		<Spell id="m_17_rage">
+			<NameSID>RAGE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>RAGE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>RAGE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>2</Colour>
+			<APCost>5</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>27</Effect>
+		</Spell>
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -34860,6 +34874,25 @@
 				<Nutrition>300</Nutrition>
 				<Effect>4</Effect>
 			</Potion>
+			<Potion id="rage_potion">
+				<DescriptionSID>RAGE_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RAGE_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RAGE_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RAGE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>90</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>6</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>400</Nutrition>
+				<Effect>27</Effect>
+			</Potion>
 		</Potions>
 		<Scrolls>
 			<Scroll id="_template_scroll">
@@ -37066,6 +37099,24 @@
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>m_16_malediction</SpellID>
 				<Difficulty>95</Difficulty>
+			</Spellbook>
+			<Spellbook id="rage_spellbook">
+				<DescriptionSID>RAGE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RAGE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RAGE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RAGE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>150</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<SpellID>m_17_rage</SpellID>
+				<Difficulty>60</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>

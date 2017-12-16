@@ -1575,11 +1575,12 @@
 				Mapping = 24
 				Summon Monsters = 25
 				Digging = 26
+				Rage = 27
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="26"/>
+		<xs:maxInclusive value="27"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

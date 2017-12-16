@@ -15,6 +15,7 @@
 #include "MappingEffect.hpp"
 #include "ModifyStatisticsEffect.hpp"
 #include "NullEffect.hpp"
+#include "RageEffect.hpp"
 #include "FruitJuiceEffect.hpp"
 #include "RechargingEffect.hpp"
 #include "StatusTypes.hpp"
@@ -35,7 +36,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modifier& m, const map<string, string>& properties, const string& spell_id, const string& source_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(27), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(28), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -124,6 +125,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modif
       break;
     case EffectType::EFFECT_TYPE_DIGGING:
       effect = std::make_shared<DiggingEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_RAGE:
+      effect = std::make_shared<RageEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:
