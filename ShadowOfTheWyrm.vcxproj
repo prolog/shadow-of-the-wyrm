@@ -422,6 +422,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PacificationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhaseOfMoonCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\RageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ReadCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreConstants.hpp" />
@@ -581,6 +582,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\creatures\include\MutenessStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\ParalysisStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\PoisonStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\RageStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\SatedStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\SlownessStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\SpellboundStatusEffect.hpp" />
@@ -664,6 +666,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\effects\include\IncorporealEffect.hpp" />
     <ClInclude Include="engine\effects\include\MappingEffect.hpp" />
     <ClInclude Include="engine\effects\include\ModifyStatisticsEffect.hpp" />
+    <ClInclude Include="engine\effects\include\RageEffect.hpp" />
     <ClInclude Include="engine\effects\include\RechargingEffect.hpp" />
     <ClInclude Include="engine\effects\include\RemoveStatusEffect.hpp" />
     <ClInclude Include="engine\effects\include\Effect.hpp" />
@@ -1403,6 +1406,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\MineCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PacificationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\RageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ReadCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ScribingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ScythingCalculator.cpp" />
@@ -1662,6 +1666,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     </ClCompile>
     <ClCompile Include="engine\conversion\source\VictoryDumper.cpp" />
     <ClCompile Include="engine\creatures\source\GroundSafetyCondition.cpp" />
+    <ClCompile Include="engine\creatures\source\RageStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\SatedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
@@ -1680,6 +1685,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\DetectTrapsEffect.cpp" />
     <ClCompile Include="engine\effects\source\DiggingEffect.cpp" />
     <ClCompile Include="engine\effects\source\MappingEffect.cpp" />
+    <ClCompile Include="engine\effects\source\RageEffect.cpp" />
     <ClCompile Include="engine\effects\source\SummonMonstersEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />

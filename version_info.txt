@@ -23,7 +23,17 @@ Shadow of the Wyrm v0.7.2 "Takemitsu"
   stop attacking while not being considered actively friendly towards the
   player.
 
+- Created a new effect type, Rage.  This provides a melee bonus of 2 
+  damage per level of the caster at the time of casting.  While enraged, 
+  the caster cannot cast any spells.
+
+- Oracles now have a chance to start out with a spellbook of Rage.
+
 - More stanzas for "Tel and Floridel".
+
+- New items: potion of rage.
+
+- New spells/spellbooks: rage (Mystic).
 
 Shadow of the Wyrm v0.7.1 "Neusiedler"
 - Version declared October 23, 2017.  Version finalized November 25, 2017.

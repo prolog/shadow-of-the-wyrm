@@ -8,6 +8,7 @@
 #include "MutenessStatusEffect.hpp"
 #include "ParalysisStatusEffect.hpp"
 #include "PoisonStatusEffect.hpp"
+#include "RageStatusEffect.hpp"
 #include "SatedStatusEffect.hpp"
 #include "SlownessStatusEffect.hpp"
 #include "SpellboundStatusEffect.hpp"
@@ -143,6 +144,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_WATER_BREATHING)
   {
     status_effect = std::make_shared<WaterBreathingStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_RAGE)
+  {
+    status_effect = std::make_shared<RageStatusEffect>();
   }
   else
   {

@@ -30,3 +30,4 @@ const string StatusIdentifiers::STATUS_ID_FLYING = "_flying";
 const string StatusIdentifiers::STATUS_ID_TIMEWALK = "_timew";
 const string StatusIdentifiers::STATUS_ID_SATED = "_sat";
 const string StatusIdentifiers::STATUS_ID_WATER_BREATHING = "_wb";
+const string StatusIdentifiers::STATUS_ID_RAGE = "_rage";

@@ -86,6 +86,10 @@ const string StatusAilmentTextKeys::STATUS_WATER_BREATHING = "STATUS_WATER_BREAT
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_WATER_BREATHING = "STATUS_MESSAGE_PLAYER_WATER_BREATHING";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_WATER_BREATHING_CURED = "STATUS_MESSAGE_PLAYER_WATER_BREATHING_CURED";
 
+const string StatusAilmentTextKeys::STATUS_RAGE = "STATUS_RAGE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_RAGE = "STATUS_MESSAGE_PLAYER_RAGE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_RAGE_CURED = "STATUS_MESSAGE_PLAYER_RAGE_CURED";
+
 const string StatusAilmentTextKeys::STATUS_DRUNK = "STATUS_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DRUNK = "STATUS_MESSAGE_PLAYER_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SOBER = "STATUS_MESSAGE_PLAYER_SOBER";
@@ -249,6 +253,16 @@ const string StatusAilmentTextKeys::get_npc_undo_water_breathing_message(Creatur
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_WATER_BREATHING);
 }
 
+const string StatusAilmentTextKeys::get_npc_rage_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_RAGE);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_rage_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_RAGE);
+}
+
 const string StatusAilmentTextKeys::get_npc_drunk_message(CreaturePtr creature)
 {
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DRUNK);
@@ -336,6 +350,9 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SATED = "STATUS_MESS
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_WATER_BREATHING = "STATUS_MESSAGE_NPC_WATER_BREATHING";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_WATER_BREATHING = "STATUS_MESSAGE_NPC_UNDO_WATER_BREATHING";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_RAGE = "STATUS_MESSAGE_NPC_RAGE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_RAGE = "STATUS_MESSAGE_NPC_UNDO_RAGE";
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DRUNK = "STATUS_MESSAGE_NPC_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SOBER = "STATUS_MESSAGE_NPC_SOBER";
