@@ -29,6 +29,11 @@ TEST(SW_Engine_Calculators_PacificationCalculator, calculate_pct_chance_pacify_m
   EXPECT_EQ(59, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, false, ItemStatus::ITEM_STATUS_BLESSED));
   EXPECT_EQ(84, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, true, ItemStatus::ITEM_STATUS_BLESSED));
 
+  fov_creature->get_skills().set_value(SkillType::SKILL_GENERAL_MUSIC, 10);
+
+  EXPECT_EQ(29, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, false, ItemStatus::ITEM_STATUS_UNCURSED));
+  EXPECT_EQ(54, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, true, ItemStatus::ITEM_STATUS_UNCURSED));
+
   music_creature->set_level(200);
 
   EXPECT_EQ(90, pc.calculate_pct_chance_pacify_music(music_creature, fov_creature, false, status));
