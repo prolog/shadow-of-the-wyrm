@@ -19,6 +19,20 @@ bool CurrentCreatureAbilities::can_speak(CreaturePtr creature, const bool add_me
   return creature_can_speak;
 }
 
+// Check to see if the creature can focus (is not enraged).
+// Creatures without focus can't cast spells, read, or use evocables.
+bool CurrentCreatureAbilities::can_focus(CreaturePtr creature, const bool add_message_if_player_and_cannot_focus) const
+{
+  bool creature_can_focus = creature && can_act(creature) && (creature->has_status(StatusIdentifiers::STATUS_ID_RAGE) == false);
+
+  if (add_message_if_player_and_cannot_focus && !creature_can_focus && creature && creature->get_is_player())
+  {
+    add_ability_message_for_sid(creature, StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_RAGE);
+  }
+
+  return creature_can_focus;
+}
+
 // Check to see if the creature can see (has not been blinded).
 bool CurrentCreatureAbilities::can_see(CreaturePtr creature, const bool add_message_if_player_and_cannot_see) const
 {

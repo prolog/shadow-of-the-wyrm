@@ -35,7 +35,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
   // if so, the spell will be cast at the end of the process.
   string spell_id;
 
-  if (cca.can_speak(creature, true))
+  if (cca.can_speak(creature, true) && cca.can_focus(creature, true))
   {
     MagicalAbilityChecker mac;
 

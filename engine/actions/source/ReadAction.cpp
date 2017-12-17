@@ -23,7 +23,8 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
   CurrentCreatureAbilities cca;
 
   if (!cca.can_see(creature, true) ||
-      !cca.can_read(creature, true))
+      !cca.can_read(creature, true) ||
+      !cca.can_focus(creature, true))
   {
     return action_cost_value;
   }

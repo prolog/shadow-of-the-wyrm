@@ -1,5 +1,7 @@
 #include "RageEffect.hpp"
+#include "ActionTextKeys.hpp"
 #include "EffectTextKeys.hpp"
+#include "MessageManagerFactory.hpp"
 #include "StatusEffectFactory.hpp"
 
 using namespace std;
@@ -38,17 +40,21 @@ bool RageEffect::rage(CreaturePtr creature)
 
 bool RageEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
-  return rage(creature); // JCD FIXME
+  return rage(creature);
 }
 
 bool RageEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
-  return rage(creature); // JCD FIXME
+  return rage(creature);
 }
 
+// When cursed, the rage effect doesn't take hold properly - add a message
+// about being angry, but that's it.
 bool RageEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
-  return rage(creature); // JCD FIXME
-}
+  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ANGRY));
+  manager.send();
 
-// JCD FIXME unit tests
+  return true;
+}
