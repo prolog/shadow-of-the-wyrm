@@ -181,6 +181,7 @@ class ActionTextKeys
     static const std::string ACTION_BOWYER_INSUFFICIENT_COMPONENTS;
     static const std::string ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS;
     static const std::string ACTION_REPOP_SHOP;
+    static const std::string ACTION_ANGRY;
 
   protected:
     ActionTextKeys();

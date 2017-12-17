@@ -578,7 +578,8 @@ const string ActionTextKeys::ACTION_SCRIBING_NO_SPELLS         = "ACTION_SCRIBIN
 const string ActionTextKeys::ACTION_SCRIBING_SCROLL_CREATED    = "ACTION_SCRIBING_SCROLL_CREATED";
 const string ActionTextKeys::ACTION_BOWYER_INSUFFICIENT_COMPONENTS = "ACTION_BOWYER_INSUFFICIENT_COMPONENTS";
 const string ActionTextKeys::ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS = "ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS";
-const string ActionTextKeys::ACTION_REPOP_SHOP = "ACTION_REPOP_SHOP";
+const string ActionTextKeys::ACTION_REPOP_SHOP                 = "ACTION_REPOP_SHOP";
+const string ActionTextKeys::ACTION_ANGRY                      = "ACTION_ANGRY";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
