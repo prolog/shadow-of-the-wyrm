@@ -20,18 +20,11 @@ int SoakCalculator::calculate_soak(const CreaturePtr& c)
   if (c)
   {
     soak = c->get_base_soak().get_current();
-    
-    int health = c->get_health().get_current();
-    int health_bonus = 0;
-
-    if (health > 10)
-    {
-      health_bonus = (health - 10) / 4;
-    }
 
     soak += get_equipment_bonus(c);
     soak += get_modifier_bonus(c);
-    soak += health_bonus;
+    soak += get_health_bonus(c);
+    soak += get_rage_bonus(c);
   }
 
   return soak;
@@ -40,14 +33,14 @@ int SoakCalculator::calculate_soak(const CreaturePtr& c)
 int SoakCalculator::get_equipment_bonus(const CreaturePtr& c)
 {
   int equipment_soak_bonus = 0;
-  
+
   Equipment& eq = c->get_equipment();
   EquipmentMap equipment = eq.get_equipment();
-  
-  for(const EquipmentMap::value_type& item : equipment)
+
+  for (const EquipmentMap::value_type& item : equipment)
   {
     WearablePtr equipped = dynamic_pointer_cast<Wearable>(item.second);
-    
+
     if (equipped)
     {
       // The player can equip a lot of things in the ammunition slot.
@@ -66,7 +59,7 @@ int SoakCalculator::get_equipment_bonus(const CreaturePtr& c)
       }
     }
   }
-  
+
   return equipment_soak_bonus;
 }
 
@@ -88,6 +81,38 @@ int SoakCalculator::get_modifier_bonus(const CreaturePtr& c)
   }
 
   return mod_bonus;
+}
+
+int SoakCalculator::get_health_bonus(const CreaturePtr& c)
+{
+  int health_bonus = 0;
+
+  if (c != nullptr)
+  {
+    int health = c->get_health().get_current();
+
+    if (health > 10)
+    {
+      health_bonus = (health - 10) / 4;
+    }
+  }
+
+  return health_bonus;
+}
+
+int SoakCalculator::get_rage_bonus(const CreaturePtr& c)
+{
+  int rage_bonus = 0;
+
+  if (c != nullptr)
+  {
+    if (c->has_status(StatusIdentifiers::STATUS_ID_RAGE))
+    {
+      rage_bonus = c->get_level().get_current();
+    }
+  }
+
+  return rage_bonus;
 }
 
 

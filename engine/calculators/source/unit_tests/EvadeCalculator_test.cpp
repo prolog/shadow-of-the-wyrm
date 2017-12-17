@@ -20,4 +20,16 @@ TEST(SW_Engine_Calculators_EvadeCalculator, calculate_evade_bonus)
   // Agility < 10
   cp->set_agility(5);
   EXPECT_EQ(-2, EvadeCalculator::calculate_evade(cp));
+
+  cp->set_level(5);
+
+  EXPECT_EQ(-2, EvadeCalculator::calculate_evade(cp));
+
+  Status s;
+  s.set_danger_level(5);
+  s.set_value(true);
+
+  cp->set_status(StatusIdentifiers::STATUS_ID_RAGE, s);
+
+  EXPECT_EQ(-7, EvadeCalculator::calculate_evade(cp));
 }

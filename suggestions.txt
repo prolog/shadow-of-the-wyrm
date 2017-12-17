@@ -1,10 +1,6 @@
 Me:
-- Rage unit tests.
-- Rage should prevent spellcasting.
-- Rage should apply to both armed/unarmed melee.
-- Ensure that Rage properly applies the spell bonus from the oracle.
+- When drunk, each additional drink should have a chance to enrage
 - Witchthorns still firing after pacification.
-- Enraged should be an actual status
 - Allow music to not only pacify but enchant (allow for ordering)
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
