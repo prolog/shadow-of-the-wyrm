@@ -1,6 +1,4 @@
 Me:
-- When drunk, each additional drink should have a chance to enrage
-- Witchthorns still firing after pacification.
 - Allow music to not only pacify but enchant (allow for ordering)
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent

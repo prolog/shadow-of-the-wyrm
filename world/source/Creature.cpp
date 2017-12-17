@@ -6,6 +6,7 @@
 #include "InventoryFactory.hpp"
 #include "PlayerDecisionStrategy.hpp"
 #include "Serialize.hpp"
+#include "ThreatConstants.hpp"
 
 using namespace std;
 
@@ -1056,8 +1057,12 @@ DecisionStrategyPtr Creature::get_decision_strategy() const
 bool Creature::hostile_to(const string& creature_id)
 {
   DecisionStrategyPtr strategy = get_decision_strategy();
-  
-  if (strategy && strategy->get_threats().has_threat(creature_id).first)
+  pair<bool, int> threat_details = strategy->get_threats().has_threat(creature_id);
+
+  // Ensure that we only return creatures that are beyond the "dislike"
+  // threhold - these are the creatures that the current creature is
+  // truly hostile towards.
+  if (strategy && threat_details.first && threat_details.second > ThreatConstants::DISLIKE_THREAT_RATING)
   {
     return true;
   }
