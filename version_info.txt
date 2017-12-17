@@ -23,9 +23,9 @@ Shadow of the Wyrm v0.7.2 "Takemitsu"
   stop attacking while not being considered actively friendly towards the
   player.
 
-- Created a new effect type, Rage.  This provides a melee bonus of 2 
-  damage per level of the caster at the time of casting.  While enraged, 
-  the caster cannot cast any spells.
+- Created a new effect type, Rage.  This provides a melee bonus of +2 
+  damage (melee), -1 evade, and +1 soak per level.  It also 
+  prevents spellcasting, reading, and evocation.
 
 - Oracles now have a chance to start out with a spellbook of Rage.
 

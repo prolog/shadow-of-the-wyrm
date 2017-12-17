@@ -16,6 +16,7 @@ EvadeCalculator::~EvadeCalculator()
 // Evade = equipment bonuses/penalties
 //       + 1 point for every two points of Agility over 10
 //       - 1 point for every two points of Agility under 10
+//       - 1 point per level if enraged
 //       + any bonuses or penalties from modifiers
 int EvadeCalculator::calculate_evade(const CreaturePtr& c)
 {
@@ -31,6 +32,7 @@ int EvadeCalculator::calculate_evade(const CreaturePtr& c)
     evade += get_equipment_bonus(c);
     evade += get_modifier_bonus(c);
     evade += get_skill_bonus(c);
+    evade -= get_rage_penalty(c);
     evade += agility_bonus;
   }
   
@@ -109,6 +111,21 @@ int EvadeCalculator::get_skill_bonus(const CreaturePtr& c)
   }
 
   return sk_bonus;
+}
+
+int EvadeCalculator::get_rage_penalty(const CreaturePtr& c)
+{
+  int penalty = 0;
+
+  if (c != nullptr)
+  {
+    if (c->has_status(StatusIdentifiers::STATUS_ID_RAGE))
+    {
+      penalty = c->get_level().get_current();
+    }
+  }
+
+  return penalty;
 }
 
 #ifdef UNIT_TESTS

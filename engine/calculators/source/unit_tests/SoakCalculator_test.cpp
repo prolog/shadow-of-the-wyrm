@@ -22,4 +22,16 @@ TEST(SW_Engine_Calculators_SoakCalculator, calculate_soak)
   cp->set_health(30);
 
   EXPECT_EQ(5, SoakCalculator::calculate_soak(cp));
+
+  cp->set_level(12);
+
+  EXPECT_EQ(5, SoakCalculator::calculate_soak(cp));
+
+  Status s;
+  s.set_danger_level(10);
+  s.set_value(true);
+
+  cp->set_status(StatusIdentifiers::STATUS_ID_RAGE, s);
+
+  EXPECT_EQ(17, SoakCalculator::calculate_soak(cp));
 }

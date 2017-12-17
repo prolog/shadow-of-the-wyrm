@@ -83,7 +83,8 @@ Damage PhysicalDamageCalculator::calculate_base_damage_object(CreaturePtr attack
 }
 
 // Physical damage gets +1 for every 5 points of Strength over 10, plus
-// the creature's base additional damage.
+// the creature's base additional damage.  If the attacking creature is
+// enraged, there's a further bonus of +1/level.
 Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature)
 {
   Damage base_damage = calculate_base_damage_object(attacking_creature);
@@ -92,10 +93,17 @@ Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties
   {
     int current_modifier = base_damage.get_modifier() + attacking_creature->get_addl_damage().get_current();
     int bac_modifier = static_cast<int>(attacking_creature->get_blood().get_blood_alcohol_content() * 100) / 2;
+    int rage_modifier = 0;
+    
+    if (attacking_creature->has_status(StatusIdentifiers::STATUS_ID_RAGE))
+    {
+      rage_modifier = attacking_creature->get_level().get_current() * 2;
+    } 
 
     current_modifier += get_statistic_based_damage_modifier(attacking_creature);
     current_modifier += get_skill_based_damage_modifier(attacking_creature);
     current_modifier += bac_modifier;
+    current_modifier += rage_modifier;
     
     base_damage.set_modifier(current_modifier);
   }

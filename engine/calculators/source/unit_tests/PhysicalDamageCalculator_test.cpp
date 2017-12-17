@@ -49,6 +49,14 @@ TEST(SW_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_b
   exp_base_damage.set_modifier(exp_base_damage.get_modifier() + bonus);
 
   EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+
+  Status s;
+  s.set_value(true);
+  creature->set_status(StatusIdentifiers::STATUS_ID_RAGE, s);
+
+  exp_base_damage.set_modifier(exp_base_damage.get_modifier() + (creature->get_level().get_current() * 2));
+
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
 }
 
 // For every 5 points of Str > 10, +1 dam.
