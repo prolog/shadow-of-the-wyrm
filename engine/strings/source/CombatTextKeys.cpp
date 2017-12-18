@@ -236,21 +236,6 @@ string CombatTextKeys::get_pacification_message(const bool attacker_is_player, c
   return pacification_message;
 }
 
-string CombatTextKeys::get_enraged_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target)
-{
-  string enraged_message = StringTable::get(COMBAT_ENRAGED_MESSAGE);
-  auto details = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, target);
-
-  if (!attacked_is_player)
-  {
-    enraged_message = StringTable::get(COMBAT_ENRAGED_MESSAGE_NP);
-    boost::replace_first(enraged_message, "%s", details.second);
-  }
-
-  enraged_message[0] = toupper(enraged_message[0]);
-  return enraged_message;
-}
-
 string CombatTextKeys::get_miss_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& miss_target)
 {
   pair<string,string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, miss_target);
@@ -573,8 +558,6 @@ const string CombatTextKeys::COMBAT_PACIFICATION_MESSAGE   = "COMBAT_PACIFICATIO
 const string CombatTextKeys::COMBAT_PACIFICATION_MESSAGE_NP = "COMBAT_PACIFICATION_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_NOT_PACIFIABLE_MESSAGE = "COMBAT_NOT_PACIFIABLE_MESSAGE";
 const string CombatTextKeys::COMBAT_NOT_PACIFIABLE_MESSAGE_NP = "COMBAT_NOT_PACIFIABLE_MESSAGE_NP";
-const string CombatTextKeys::COMBAT_ENRAGED_MESSAGE        = "COMBAT_ENRAGED_MESSAGE";
-const string CombatTextKeys::COMBAT_ENRAGED_MESSAGE_NP     = "COMBAT_ENRAGED_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAGE";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE_NP        = "COMBAT_MISS_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_INTIMIDATE_MESSAGE     = "COMBAT_INTIMIDATE_MESSAGE";

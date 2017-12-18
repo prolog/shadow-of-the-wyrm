@@ -29,7 +29,6 @@ class CombatTextKeys
     static std::string get_scything_message(const bool is_player, const std::string& attacker);
     static std::string get_charmed_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& target);
     static std::string get_pacification_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& target, bool target_is_pacifiable);
-    static std::string get_enraged_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& target);
 
     static const std::string COMBAT_TARGET_TOO_FAR_AWAY;
     static const std::string COMBAT_CRITICAL_HIT_MESSAGE; // Common to both - no substitutions
@@ -86,8 +85,6 @@ class CombatTextKeys
     static const std::string COMBAT_PACIFICATION_MESSAGE_NP;
     static const std::string COMBAT_NOT_PACIFIABLE_MESSAGE;
     static const std::string COMBAT_NOT_PACIFIABLE_MESSAGE_NP;
-    static const std::string COMBAT_ENRAGED_MESSAGE;
-    static const std::string COMBAT_ENRAGED_MESSAGE_NP;
 
     static void populate_combat_messages();
     static std::string create_key(const bool is_player, const DamageType damage_type);
