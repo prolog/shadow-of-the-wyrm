@@ -12,6 +12,7 @@
 #include "PacificationCalculator.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
+#include "StatusEffectFactory.hpp"
 
 using namespace std;
 
@@ -246,21 +247,20 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature,
   }
 }
 
-// Enraged creatures get a bonus to their base damage.
+// Enraged creatures have the status set appropriately, causing them to
+// deal more damage, soak more, and evade less.
 void MusicSkillProcessor::enrage(CreaturePtr creature, CreaturePtr fov_creature)
 {
   if (creature != nullptr && fov_creature != nullptr)
   {
-    // Set the enraged status.
-    // ...
+    // Set the enraged status.  No need to add a separate message - that'll
+    // get done in the status application.
+    StatusEffectPtr rage = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_RAGE, creature->get_id());
 
-    //
-    bool creature_is_player = creature->get_is_player();
-    bool fov_is_player = fov_creature->get_is_player();
-
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
-    manager.add_new_message(CombatTextKeys::get_enraged_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid())));
-    manager.send();
+    if (rage != nullptr && fov_creature != nullptr)
+    {
+      rage->apply_change(fov_creature, fov_creature->get_level().get_current());
+    }
   }
 }
 
