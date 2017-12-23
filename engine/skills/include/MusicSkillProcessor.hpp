@@ -22,6 +22,7 @@ class MusicSkillProcessor : public SkillProcessor
     // Attempt pacification, updating the hostile/pacified counts as required
     void attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified);
 
+    void add_unimpressed_message(CreaturePtr creature, CreaturePtr fov_creature);
     void enrage(CreaturePtr creature, CreaturePtr fov_creature);
 };
 
