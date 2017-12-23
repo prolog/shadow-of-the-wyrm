@@ -1,4 +1,5 @@
 #include "MusicSkillProcessor.hpp"
+#include "ActionTextKeys.hpp"
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
@@ -185,9 +186,16 @@ void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creatu
           }
           else
           {
-            // Creatures that can see through attempts to musically pacify
-            // tend to be unimpressed.
-            enrage(creature, fov_creature);
+            if (RNG::percent_chance(75))
+            {
+              add_unimpressed_message(creature, fov_creature);
+            }
+            else
+            {
+              // Creatures that can see through attempts to musically pacify
+              // are often unimpressed.
+              enrage(creature, fov_creature);
+            }
           }
         }
         else
@@ -247,6 +255,20 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature,
   }
 }
 
+void MusicSkillProcessor::add_unimpressed_message(CreaturePtr creature, CreaturePtr fov_creature)
+{
+  if (creature != nullptr && fov_creature != nullptr)
+  {
+    CurrentCreatureAbilities cca;
+
+    if (cca.can_see(creature))
+    {
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature && creature->get_is_player());
+      manager.add_new_message(ActionTextKeys::get_unimpressed_message(fov_creature->get_description_sid(), fov_creature->get_is_player()));
+      manager.send();
+    }
+  }
+}
 // Enraged creatures have the status set appropriately, causing them to
 // deal more damage, soak more, and evade less.
 void MusicSkillProcessor::enrage(CreaturePtr creature, CreaturePtr fov_creature)

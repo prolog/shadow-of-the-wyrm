@@ -438,6 +438,11 @@ string ActionTextKeys::get_toggle_autopickup_message(const bool autopickup_value
   return msg;
 }
 
+string ActionTextKeys::get_unimpressed_message(const string& creature_desc, const bool is_player)
+{
+  return get_general_message(creature_desc, ACTION_UNIMPRESSED_PLAYER, ACTION_UNIMPRESSED_MONSTER, is_player);
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -626,3 +631,6 @@ const string ActionTextKeys::ACTION_CRY_OUT                       = "ACTION_CRY_
 const string ActionTextKeys::ACTION_BOWYER_CREATE                 = "ACTION_BOWYER_CREATE";
 const string ActionTextKeys::ACTION_FLETCHERY_CREATE              = "ACTION_FLETCHERY_CREATE";
 const string ActionTextKeys::ACTION_TOGGLE_AUTOPICKUP             = "ACTION_TOGGLE_AUTOPICKUP";
+const string ActionTextKeys::ACTION_UNIMPRESSED_PLAYER            = "ACTION_UNIMPRESSED_PLAYER";
+const string ActionTextKeys::ACTION_UNIMPRESSED_MONSTER           = "ACTION_UNIMPRESSED_MONSTER";
+
