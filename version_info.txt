@@ -1,3 +1,6 @@
+Shadow of the Wyrnm v0.7.3 "de Murcia"
+- Version declared December 23, 2017.
+
 Shadow of the Wyrm v0.7.2 "Takemitsu"
 - Version declared November 26, 2017. Version finalized December 23, 2017.
 
