@@ -55,8 +55,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // 20th century Japanese composer
-  return "\"Takemitsu\"";
+  // Spanish composer of the 18th century
+  return "\"de Murcia\"";
 }
 
 string Metadata::get_game_version_synopsis() const
