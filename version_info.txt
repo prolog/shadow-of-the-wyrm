@@ -1,5 +1,5 @@
 Shadow of the Wyrm v0.7.2 "Takemitsu"
-- Version declared November 26, 2017.
+- Version declared November 26, 2017. Version finalized December 23, 2017.
 
 - There is now a configurable option to always receive a prompt when
   picking up stacks (Legend).
