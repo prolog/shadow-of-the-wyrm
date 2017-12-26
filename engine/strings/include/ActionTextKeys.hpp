@@ -37,6 +37,8 @@ class ActionTextKeys
     static std::string get_fletchery_message(const std::string& item_usage_desc_sid);
     static std::string get_toggle_autopickup_message(const bool autopickup_value, const std::vector<std::string>& item_type_names);
     static std::string get_unimpressed_message(const std::string& creature_desc_sid, const bool is_player);
+    static std::string get_hide_message(const std::string& creature_desc_sid, const bool is_player);
+    static std::string get_reveal_message(const std::string& creature_desc_sid, const bool is_player);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -183,6 +185,7 @@ class ActionTextKeys
     static const std::string ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS;
     static const std::string ACTION_REPOP_SHOP;
     static const std::string ACTION_ANGRY;
+    static const std::string ACTION_ALREADY_HIDDEN;
 
   protected:
     ActionTextKeys();
@@ -234,4 +237,8 @@ class ActionTextKeys
     static const std::string ACTION_TOGGLE_AUTOPICKUP;
     static const std::string ACTION_UNIMPRESSED_PLAYER;
     static const std::string ACTION_UNIMPRESSED_MONSTER;
+    static const std::string ACTION_HIDE_PLAYER;
+    static const std::string ACTION_HIDE_MONSTER;
+    static const std::string ACTION_REVEAL_PLAYER;
+    static const std::string ACTION_REVEAL_MONSTER;
 };

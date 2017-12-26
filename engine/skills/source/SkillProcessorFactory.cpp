@@ -2,6 +2,7 @@
 #include "DisarmTrapsSkillProcessor.hpp"
 #include "FishingSkillProcessor.hpp"
 #include "FletcherySkillProcessor.hpp"
+#include "HidingSkillProcessor.hpp"
 #include "MusicSkillProcessor.hpp"
 #include "ScribingSkillProcessor.hpp"
 #include "SkillProcessorFactory.hpp"
@@ -39,6 +40,7 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_FLETCHERY, make_shared<FletcherySkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_FORAGING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_FORAGING)),
                make_pair(SkillType::SKILL_GENERAL_HERBALISM, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HERBALISM)),
+               make_pair(SkillType::SKILL_GENERAL_HIDING, make_shared<HidingSkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_HUNTING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HUNTING)),
                make_pair(SkillType::SKILL_GENERAL_JEWELER, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_JEWELER)),
                make_pair(SkillType::SKILL_GENERAL_MAGIC, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC)),
@@ -49,6 +51,7 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_SCRIBING, make_shared<ScribingSkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_SKINNING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SKINNING)),
                make_pair(SkillType::SKILL_GENERAL_SMITHING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SMITHING)),
+               make_pair(SkillType::SKILL_GENERAL_STEALTH,  make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_STEALTH)),
                make_pair(SkillType::SKILL_GENERAL_SWIMMING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SWIMMING)),
                make_pair(SkillType::SKILL_GENERAL_TANNING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_TANNING)),
                make_pair(SkillType::SKILL_GENERAL_THIEVERY, make_shared<ThieverySkillProcessor>()),

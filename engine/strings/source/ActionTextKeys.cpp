@@ -443,6 +443,16 @@ string ActionTextKeys::get_unimpressed_message(const string& creature_desc, cons
   return get_general_message(creature_desc, ACTION_UNIMPRESSED_PLAYER, ACTION_UNIMPRESSED_MONSTER, is_player);
 }
 
+string ActionTextKeys::get_hide_message(const string& creature_desc_sid, const bool is_player)
+{
+  return get_general_message(creature_desc_sid, ACTION_HIDE_PLAYER, ACTION_HIDE_MONSTER, is_player);
+}
+
+string ActionTextKeys::get_reveal_message(const string& creature_desc_sid, const bool is_player)
+{
+  return get_general_message(creature_desc_sid, ACTION_REVEAL_PLAYER, ACTION_REVEAL_MONSTER, is_player);
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -585,6 +595,7 @@ const string ActionTextKeys::ACTION_BOWYER_INSUFFICIENT_COMPONENTS = "ACTION_BOW
 const string ActionTextKeys::ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS = "ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS";
 const string ActionTextKeys::ACTION_REPOP_SHOP                 = "ACTION_REPOP_SHOP";
 const string ActionTextKeys::ACTION_ANGRY                      = "ACTION_ANGRY";
+const string ActionTextKeys::ACTION_ALREADY_HIDDEN             = "ACTION_ALREADY_HIDDEN";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
@@ -633,4 +644,8 @@ const string ActionTextKeys::ACTION_FLETCHERY_CREATE              = "ACTION_FLET
 const string ActionTextKeys::ACTION_TOGGLE_AUTOPICKUP             = "ACTION_TOGGLE_AUTOPICKUP";
 const string ActionTextKeys::ACTION_UNIMPRESSED_PLAYER            = "ACTION_UNIMPRESSED_PLAYER";
 const string ActionTextKeys::ACTION_UNIMPRESSED_MONSTER           = "ACTION_UNIMPRESSED_MONSTER";
+const string ActionTextKeys::ACTION_HIDE_PLAYER                   = "ACTION_HIDE_PLAYER";
+const string ActionTextKeys::ACTION_HIDE_MONSTER                  = "ACTION_HIDE_MONSTER";
+const string ActionTextKeys::ACTION_REVEAL_PLAYER                 = "ACTION_REVEAL_PLAYER";
+const string ActionTextKeys::ACTION_REVEAL_MONSTER                = "ACTION_REVEAL_MONSTER";
 

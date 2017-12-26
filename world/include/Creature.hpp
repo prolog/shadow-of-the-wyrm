@@ -326,6 +326,13 @@ class Creature : public ISerializable
     SpellKnowledge& get_spell_knowledge_ref();
     SpellKnowledge get_spell_knowledge() const;
 
+    void set_hidden(const bool new_hidden);
+    bool get_hidden() const;
+    void set_free_hidden_actions(const int new_actions);
+    int get_free_hidden_actions() const;
+    int increment_free_hidden_actions();
+    int decrement_free_hidden_actions();
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

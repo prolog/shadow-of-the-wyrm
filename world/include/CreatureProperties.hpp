@@ -17,6 +17,15 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_WINNER;
     static const std::string CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS;
 
+    // FREE_HIDDEN_ACTIONS is a counter.  When set (defaults to 1), then
+    // the next action will reveal the player.  Certain actions (e.g.
+    // successful stealth) will increment this counter.  It is decremented
+    // at the end of each turn when performing an action that has an
+    // action cost.  This system allows sneaking to be modelled, while
+    // remaining general enough to "free stealth actions" are possible
+    // later on.
+    static const std::string CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS;
+
   protected:
     CreatureProperties();
     ~CreatureProperties();

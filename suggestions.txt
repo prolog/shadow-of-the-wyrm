@@ -1,4 +1,11 @@
 Me:
+- Hiding should have a chance to make the creature invisible to other
+  creatures - not present in their view maps.  This should be a calc based
+  on location, time of day, proximity to other creatures, etc.  Should
+  always have a 1% chance of success.
+- Hiding should be expensive - ~100 action points.
+- Stealth should have a chance to allow movement without blowing cover.
+- When hidden, attacks (all) should get a damage multiplier.
 - Allow music to not only pacify but enchant (allow for ordering)
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
