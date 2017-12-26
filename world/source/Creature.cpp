@@ -1392,6 +1392,86 @@ SpellKnowledge Creature::get_spell_knowledge() const
   return spell_knowledge;
 }
 
+void Creature::set_hidden(const bool new_hidden)
+{
+  if (new_hidden)
+  {
+    // Set to 2 so that, when the value gets decremented after the turn, the
+    // creature isn't automatically revealed.
+    set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS, to_string(2));
+  }
+  else
+  {
+    remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS);
+  }
+}
+
+void Creature::set_free_hidden_actions(const int new_actions)
+{
+  if (new_actions > 0)
+  {
+    set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS, to_string(new_actions));
+  }
+}
+
+bool Creature::get_hidden() const
+{
+  bool hidden = false;
+  int hidden_cnt = get_free_hidden_actions();
+
+  if (hidden_cnt > 0)
+  {
+    hidden = true;
+  }
+
+  return hidden;
+}
+
+// Increment the number of free hidden actions, returning the value.
+int Creature::increment_free_hidden_actions()
+{
+  int val = 0;
+
+  val = get_free_hidden_actions() + 1;
+  set_free_hidden_actions(val);
+
+  return val;
+}
+
+// Decrement the number of free hidden actions, returning the value.
+int Creature::decrement_free_hidden_actions()
+{
+  int val = 0;
+
+  val = get_free_hidden_actions() - 1;
+
+  if (val > 0)
+  {
+    set_free_hidden_actions(val);
+  }
+  else
+  {
+    val = 0;
+    remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS);
+  }
+
+  return val;
+}
+
+int Creature::get_free_hidden_actions() const
+{
+  int hidden_cnt = 0;
+
+  string hidden_s = get_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS);
+  if (!hidden_s.empty())
+  {
+    hidden_cnt = String::to_int(hidden_s);
+  }
+
+  return hidden_cnt;
+}
+
+
 void Creature::set_modifiers(const map<double, vector<pair<string, Modifier>>>& new_modifiers)
 {
   modifiers = new_modifiers;

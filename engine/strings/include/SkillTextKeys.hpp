@@ -201,6 +201,7 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_RELIGION;
     static const std::string SKILL_USAGE_SKINNING;
     static const std::string SKILL_USAGE_SMITHING;
+    static const std::string SKILL_USAGE_STEALTH;
     static const std::string SKILL_USAGE_SWIMMING;
     static const std::string SKILL_USAGE_TANNING;
     static const std::string SKILL_USAGE_WEAVING;

@@ -958,6 +958,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\skills\include\FishingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\FishingTypes.hpp" />
     <ClInclude Include="engine\skills\include\FletcherySkillProcessor.hpp" />
+    <ClInclude Include="engine\skills\include\HidingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\MusicSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\ScribingSkillProcessor.hpp" />
@@ -965,6 +966,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\skills\include\SkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\SkillProcessorFactory.hpp" />
     <ClInclude Include="engine\skills\include\SkillProcessors.hpp" />
+    <ClInclude Include="engine\skills\include\StealthSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\SwimmingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\ThieverySkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\WandcraftSkillProcessor.hpp" />
@@ -1788,12 +1790,14 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\skills\source\DisarmTrapsSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\FishingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\FletcherySkillProcessor.cpp" />
+    <ClCompile Include="engine\skills\source\HidingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\MusicSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\ScribingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessorFactory.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessors.cpp" />
+    <ClCompile Include="engine\skills\source\StealthSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SwimmingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\ThieverySkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\WandcraftSkillProcessor.cpp" />

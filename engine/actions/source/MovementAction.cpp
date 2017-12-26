@@ -274,6 +274,11 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       }
     }
 
+    // If the movement cost an action, check to see if the creature should be
+    // made visible.
+    // JCD FIXME
+    // ...
+
     // After moving, there is a chance to get a free search of the surrounding
     // tiles.
     //

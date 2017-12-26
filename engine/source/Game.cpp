@@ -39,6 +39,7 @@
 #include "Serialization.hpp"
 #include "Setting.hpp"
 #include "StatusActionProcessor.hpp"
+#include "StealthSkillProcessor.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "ViewMapTranslator.hpp"
@@ -732,6 +733,17 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         {
           action_cost.set_cost(std::max(current_creature->get_speed().get_current() + 1, 1));
           advance = true;
+        }
+
+        if (advance)
+        {
+          // Call the stealth skill processor's ::process function.  This will
+          // reduce the number of free hidden actions, and if the count went
+          // from 1 to 0, add an appropriate message.
+          //
+          // If the creature was not hidden, this function does nothing.
+          StealthSkillProcessor ssp;
+          ssp.process(current_creature, current_map);
         }
       }
       
