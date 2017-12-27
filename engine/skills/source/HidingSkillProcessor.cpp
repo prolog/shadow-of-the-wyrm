@@ -1,6 +1,8 @@
 #include "HidingSkillProcessor.hpp"
+#include "HidingCalculator.hpp"
 #include "ActionTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 
 using std::string;
 
@@ -16,12 +18,22 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
     }
     else
     {
-      // JCD FIXME calculations
-      creature->set_hidden(true);
-
+      HidingCalculator hc;
+      string message;
       bool is_player = creature->get_is_player();
+
+      if (RNG::percent_chance(hc.calculate_pct_chance_hide(creature, map)))
+      {
+        message = ActionTextKeys::get_hide_message(creature->get_description_sid(), is_player);
+        creature->set_hidden(true);
+      }
+      else
+      {
+        message = ActionTextKeys::get_hide_failure_message(creature->get_description_sid(), is_player);
+      }
+
       IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, is_player);
-      manager.add_new_message(ActionTextKeys::get_hide_message(creature->get_description_sid(), is_player));
+      manager.add_new_message(message);
       manager.send();
 
       acv = get_default_skill_action_cost_value(creature);

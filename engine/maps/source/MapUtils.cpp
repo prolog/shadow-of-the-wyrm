@@ -365,6 +365,36 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   return added_location;
 }
 
+vector<string> MapUtils::get_creatures_with_creature_in_view(const MapPtr& map, const string& creature_id)
+{
+  CreatureMap creatures = map->get_creatures();
+  vector<string> viewing_creatures;
+
+  for (const auto& cr_pair : creatures)
+  {
+    if (cr_pair.first != creature_id)
+    {
+      CreaturePtr viewing_creature = cr_pair.second;
+
+      if (viewing_creature != nullptr)
+      {
+        MapPtr fov_map = viewing_creature->get_decision_strategy()->get_fov_map();
+
+        if (fov_map != nullptr)
+        {
+          CreatureMap fov_creatures = fov_map->get_creatures();
+          if (fov_creatures.find(creature_id) != fov_creatures.end())
+          {
+            viewing_creatures.push_back(viewing_creature->get_id());
+          }
+        }
+      }
+    }
+  }
+
+  return viewing_creatures;
+}
+
 Coordinate MapUtils::get_coordinate_for_creature(const MapPtr& map, const CreaturePtr& creature)
 {
   string creature_id = creature->get_id();

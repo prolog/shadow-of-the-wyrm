@@ -403,6 +403,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\ForestCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HasteCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\HidingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HitPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HPRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HungerCalculator.hpp" />
@@ -1400,6 +1401,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FishingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ForagablesCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\HidingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HungerCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\IntimidationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
@@ -1475,6 +1477,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ForagablesCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\HidingCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
