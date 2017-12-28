@@ -1,6 +1,12 @@
 Shadow of the Wyrnm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.
 
+- Implemented the Hiding skill.  This skill requires selection via the
+  Skills menu.  Once selected, a Hiding check is made.  If the player is
+  not viewed by any creatures, hiding is automatic.  Otherwise, it is a
+  function of the type of map (hard to hide in the cosmos, easier
+  underground) and time of day, when above ground.
+
 Shadow of the Wyrm v0.7.2 "Takemitsu"
 - Version declared November 26, 2017. Version finalized December 23, 2017.
 

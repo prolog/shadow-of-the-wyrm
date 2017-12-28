@@ -129,6 +129,10 @@ class StatusAilmentTextKeys
     static const std::string get_npc_rage_message(std::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_rage_message(std::shared_ptr<Creature> creature);
 
+    // Hide is handled somewhat differently - it's handled on a turn by turn
+    // basis, rather than a timer, and is invoked by using a skill.
+    static const std::string STATUS_HIDE;
+
     static const std::string STATUS_DRUNK;
     static const std::string STATUS_MESSAGE_PLAYER_DRUNK;
     static const std::string STATUS_MESSAGE_PLAYER_SOBER;

@@ -1394,15 +1394,20 @@ SpellKnowledge Creature::get_spell_knowledge() const
 
 void Creature::set_hidden(const bool new_hidden)
 {
+  string status_id = StatusIdentifiers::STATUS_ID_HIDE;
+
   if (new_hidden)
   {
     // Set to 2 so that, when the value gets decremented after the turn, the
     // creature isn't automatically revealed.
     set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS, to_string(2));
+    Status st(id, true, 1, id);
+    set_status(status_id, st);
   }
   else
   {
     remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS);
+    remove_status(status_id);
   }
 }
 
@@ -1453,6 +1458,7 @@ int Creature::decrement_free_hidden_actions()
   {
     val = 0;
     remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS);
+    remove_status(StatusIdentifiers::STATUS_ID_HIDE);
   }
 
   return val;
