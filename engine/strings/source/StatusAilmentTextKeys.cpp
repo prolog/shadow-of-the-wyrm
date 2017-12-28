@@ -90,6 +90,8 @@ const string StatusAilmentTextKeys::STATUS_RAGE = "STATUS_RAGE";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_RAGE = "STATUS_MESSAGE_PLAYER_RAGE";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_RAGE_CURED = "STATUS_MESSAGE_PLAYER_RAGE_CURED";
 
+const string StatusAilmentTextKeys::STATUS_HIDE = "STATUS_HIDE";
+
 const string StatusAilmentTextKeys::STATUS_DRUNK = "STATUS_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DRUNK = "STATUS_MESSAGE_PLAYER_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SOBER = "STATUS_MESSAGE_PLAYER_SOBER";

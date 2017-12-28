@@ -1,6 +1,8 @@
 #include "HidingSkillProcessor.hpp"
 #include "HidingCalculator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 
@@ -21,8 +23,15 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
       HidingCalculator hc;
       string message;
       bool is_player = creature->get_is_player();
+      TimeOfDayType tod = TimeOfDayType::TIME_OF_DAY_UNDEFINED; 
+      WorldPtr world = Game::instance().get_current_world();
 
-      if (RNG::percent_chance(hc.calculate_pct_chance_hide(creature, map)))
+      if (world != nullptr)
+      {
+        tod = world->get_calendar().get_date().get_time_of_day();
+      }
+
+      if (RNG::percent_chance(hc.calculate_pct_chance_hide(creature, map, tod)))
       {
         message = ActionTextKeys::get_hide_message(creature->get_description_sid(), is_player);
         creature->set_hidden(true);

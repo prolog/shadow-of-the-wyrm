@@ -231,7 +231,8 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   IStatusAilmentTranslatorPtr sated_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SATED, StatusAilmentTextKeys::STATUS_SATED, Colour::COLOUR_BOLD_YELLOW);
   IStatusAilmentTranslatorPtr wb_checker    = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_WATER_BREATHING, StatusAilmentTextKeys::STATUS_WATER_BREATHING, Colour::COLOUR_BOLD_CYAN);
   IStatusAilmentTranslatorPtr rage_checker  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_RAGE, StatusAilmentTextKeys::STATUS_RAGE, Colour::COLOUR_BOLD_RED);
-  
+  IStatusAilmentTranslatorPtr hide_checker  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HIDE, StatusAilmentTextKeys::STATUS_HIDE, Colour::COLOUR_WHITE);
+
   status_ailment_checkers.push_back(hunger_checker);
   status_ailment_checkers.push_back(weight_checker);
   status_ailment_checkers.push_back(poison_checker);
@@ -253,4 +254,5 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   status_ailment_checkers.push_back(sated_checker );
   status_ailment_checkers.push_back(wb_checker    );
   status_ailment_checkers.push_back(rage_checker  );
+  status_ailment_checkers.push_back(hide_checker  );
 }

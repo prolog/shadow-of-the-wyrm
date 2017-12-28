@@ -8,7 +8,7 @@ TEST(SW_Engine_Calculators_HidingCalculator, calculate_pct_chance_hide)
   CreaturePtr viewing_creature;
   MapPtr map;
 
-  EXPECT_EQ(0, hc.calculate_pct_chance_hide(creature, map));
+  EXPECT_EQ(0, hc.calculate_pct_chance_hide(creature, map, TimeOfDayType::TIME_OF_DAY_UNDEFINED));
 
   Dimensions dim;
   map = std::make_shared<Map>(dim);
@@ -16,7 +16,7 @@ TEST(SW_Engine_Calculators_HidingCalculator, calculate_pct_chance_hide)
   creature = std::make_shared<Creature>();
   creature->set_id("cr1");
 
-  EXPECT_EQ(100, hc.calculate_pct_chance_hide(creature, map));
+  EXPECT_EQ(100, hc.calculate_pct_chance_hide(creature, map, TimeOfDayType::TIME_OF_DAY_UNDEFINED));
 
   viewing_creature = std::make_shared<Creature>();
   DecisionStrategyPtr dec = std::make_shared<MobileDecisionStrategy>(nullptr);
@@ -28,6 +28,6 @@ TEST(SW_Engine_Calculators_HidingCalculator, calculate_pct_chance_hide)
 
   map->add_creature(viewing_creature);
 
-  EXPECT_EQ(1, hc.calculate_pct_chance_hide(creature, map));
+  EXPECT_EQ(1, hc.calculate_pct_chance_hide(creature, map, TimeOfDayType::TIME_OF_DAY_UNDEFINED));
 }
 
