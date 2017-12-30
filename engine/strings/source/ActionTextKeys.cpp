@@ -443,19 +443,9 @@ string ActionTextKeys::get_unimpressed_message(const string& creature_desc, cons
   return get_general_message(creature_desc, ACTION_UNIMPRESSED_PLAYER, ACTION_UNIMPRESSED_MONSTER, is_player);
 }
 
-string ActionTextKeys::get_hide_message(const string& creature_desc_sid, const bool is_player)
-{
-  return get_general_message(creature_desc_sid, ACTION_HIDE_PLAYER, ACTION_HIDE_MONSTER, is_player);
-}
-
 string ActionTextKeys::get_hide_failure_message(const string& creature_desc_sid, const bool is_player)
 {
   return get_general_message(creature_desc_sid, ACTION_HIDE_FAILURE_PLAYER, ACTION_HIDE_FAILURE_MONSTER, is_player);
-}
-
-string ActionTextKeys::get_reveal_message(const string& creature_desc_sid, const bool is_player)
-{
-  return get_general_message(creature_desc_sid, ACTION_REVEAL_PLAYER, ACTION_REVEAL_MONSTER, is_player);
 }
 
 // Public
@@ -649,10 +639,6 @@ const string ActionTextKeys::ACTION_FLETCHERY_CREATE              = "ACTION_FLET
 const string ActionTextKeys::ACTION_TOGGLE_AUTOPICKUP             = "ACTION_TOGGLE_AUTOPICKUP";
 const string ActionTextKeys::ACTION_UNIMPRESSED_PLAYER            = "ACTION_UNIMPRESSED_PLAYER";
 const string ActionTextKeys::ACTION_UNIMPRESSED_MONSTER           = "ACTION_UNIMPRESSED_MONSTER";
-const string ActionTextKeys::ACTION_HIDE_PLAYER                   = "ACTION_HIDE_PLAYER";
-const string ActionTextKeys::ACTION_HIDE_MONSTER                  = "ACTION_HIDE_MONSTER";
 const string ActionTextKeys::ACTION_HIDE_FAILURE_PLAYER           = "ACTION_HIDE_FAILURE_PLAYER";
 const string ActionTextKeys::ACTION_HIDE_FAILURE_MONSTER          = "ACTION_HIDE_FAILURE_MONSTER";
-const string ActionTextKeys::ACTION_REVEAL_PLAYER                 = "ACTION_REVEAL_PLAYER";
-const string ActionTextKeys::ACTION_REVEAL_MONSTER                = "ACTION_REVEAL_MONSTER";
 

@@ -5,6 +5,7 @@
 #include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "StatusEffectFactory.hpp"
 
 using std::string;
 
@@ -14,14 +15,13 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
   if (creature != nullptr)
   {
-    if (creature->get_hidden())
+    if (creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
     {
       add_already_hidden_message(creature);
     }
     else
     {
       HidingCalculator hc;
-      string message;
       bool is_player = creature->get_is_player();
       TimeOfDayType tod = TimeOfDayType::TIME_OF_DAY_UNDEFINED; 
       WorldPtr world = Game::instance().get_current_world();
@@ -33,17 +33,21 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
       if (RNG::percent_chance(hc.calculate_pct_chance_hide(creature, map, tod)))
       {
-        message = ActionTextKeys::get_hide_message(creature->get_description_sid(), is_player);
-        creature->set_hidden(true);
+        StatusEffectPtr hide = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
+
+        if (hide != nullptr)
+        {
+          hide->apply_change(creature, creature->get_level().get_current());
+        }
       }
       else
       {
-        message = ActionTextKeys::get_hide_failure_message(creature->get_description_sid(), is_player);
-      }
+        string message = ActionTextKeys::get_hide_failure_message(creature->get_description_sid(), is_player);
 
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, is_player);
-      manager.add_new_message(message);
-      manager.send();
+        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, is_player);
+        manager.add_new_message(message);
+        manager.send();
+      }
 
       acv = get_default_skill_action_cost_value(creature);
     }
