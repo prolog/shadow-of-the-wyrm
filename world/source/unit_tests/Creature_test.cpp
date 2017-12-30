@@ -306,23 +306,10 @@ TEST(SW_World_Creature, is_dead)
   EXPECT_FALSE(c.is_dead());
 }
 
-TEST(SW_World_Creature, hidden)
-{
-  CreaturePtr c = std::make_shared<Creature>();
-
-  EXPECT_FALSE(c->get_hidden());
-
-  c->set_hidden(true);
-
-  EXPECT_TRUE(c->get_hidden());
-
-  EXPECT_EQ(2, c->get_free_hidden_actions());
-}
-
 TEST(SW_World_Creature, increment_free_hidden_actions)
 {
   CreaturePtr c = std::make_shared<Creature>();
-  c->set_hidden(true);
+  c->set_free_hidden_actions(2);
 
   for (int i = 0; i < 5; i++)
   {
@@ -336,8 +323,6 @@ TEST(SW_World_Creature, decrement_free_hidden_actions)
 {
   CreaturePtr c = std::make_shared<Creature>();
   c->set_free_hidden_actions(17);
-
-  EXPECT_TRUE(c->get_hidden());
 
   for (int i = 0; i < 9; i++)
   {

@@ -1392,44 +1392,12 @@ SpellKnowledge Creature::get_spell_knowledge() const
   return spell_knowledge;
 }
 
-void Creature::set_hidden(const bool new_hidden)
-{
-  string status_id = StatusIdentifiers::STATUS_ID_HIDE;
-
-  if (new_hidden)
-  {
-    // Set to 2 so that, when the value gets decremented after the turn, the
-    // creature isn't automatically revealed.
-    set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS, to_string(2));
-    Status st(id, true, 1, id);
-    set_status(status_id, st);
-  }
-  else
-  {
-    remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS);
-    remove_status(status_id);
-  }
-}
-
 void Creature::set_free_hidden_actions(const int new_actions)
 {
   if (new_actions > 0)
   {
     set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS, to_string(new_actions));
   }
-}
-
-bool Creature::get_hidden() const
-{
-  bool hidden = false;
-  int hidden_cnt = get_free_hidden_actions();
-
-  if (hidden_cnt > 0)
-  {
-    hidden = true;
-  }
-
-  return hidden;
 }
 
 // Increment the number of free hidden actions, returning the value.
@@ -1458,7 +1426,6 @@ int Creature::decrement_free_hidden_actions()
   {
     val = 0;
     remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS);
-    remove_status(StatusIdentifiers::STATUS_ID_HIDE);
   }
 
   return val;
@@ -1524,7 +1491,9 @@ bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
     return false;
   }
 
-  for (const auto& pair : modifiers)
+  auto active_modifiers = get_active_modifiers();
+
+  for (const auto& pair : active_modifiers)
   {
     for (const auto& spells : pair.second)
     {

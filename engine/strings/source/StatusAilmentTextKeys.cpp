@@ -91,6 +91,8 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_RAGE = "STATUS_MESSAGE
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_RAGE_CURED = "STATUS_MESSAGE_PLAYER_RAGE_CURED";
 
 const string StatusAilmentTextKeys::STATUS_HIDE = "STATUS_HIDE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_HIDE = "STATUS_MESSAGE_PLAYER_HIDE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_HIDE_REVEAL = "STATUS_MESSAGE_PLAYER_HIDE_REVEAL";
 
 const string StatusAilmentTextKeys::STATUS_DRUNK = "STATUS_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DRUNK = "STATUS_MESSAGE_PLAYER_DRUNK";
@@ -265,6 +267,17 @@ const string StatusAilmentTextKeys::get_npc_undo_rage_message(CreaturePtr creatu
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_RAGE);
 }
 
+const string StatusAilmentTextKeys::get_npc_hide_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_HIDE);
+}
+
+const string StatusAilmentTextKeys::get_npc_hide_reveal_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_HIDE_REVEAL);
+}
+
+
 const string StatusAilmentTextKeys::get_npc_drunk_message(CreaturePtr creature)
 {
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DRUNK);
@@ -355,6 +368,9 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_WATER_BREATHING = "S
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_RAGE = "STATUS_MESSAGE_NPC_RAGE";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_RAGE = "STATUS_MESSAGE_NPC_UNDO_RAGE";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_HIDE = "STATUS_MESSAGE_NPC_HIDE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_HIDE_REVEAL = "STATUS_MESSAGE_NPC_HIDE_REVEAL";
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DRUNK = "STATUS_MESSAGE_NPC_DRUNK";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SOBER = "STATUS_MESSAGE_NPC_SOBER";

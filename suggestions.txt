@@ -1,5 +1,4 @@
 Me:
-- Make hiding a proper status via the factory
 - Hiding should have a chance to make the creature invisible to other
   creatures - not present in their view maps.  This should be a calc based
   on location, time of day, proximity to other creatures, etc.  Should

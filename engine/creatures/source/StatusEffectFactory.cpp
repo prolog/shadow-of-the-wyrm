@@ -3,6 +3,7 @@
 #include "DisfiguredStatusEffect.hpp"
 #include "ExposedStatusEffect.hpp"
 #include "HasteStatusEffect.hpp"
+#include "HideStatusEffect.hpp"
 #include "FlyingStatusEffect.hpp"
 #include "IncorporealStatusEffect.hpp"
 #include "MutenessStatusEffect.hpp"
@@ -148,6 +149,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_RAGE)
   {
     status_effect = std::make_shared<RageStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_HIDE)
+  {
+    status_effect = std::make_shared<HideStatusEffect>();
   }
   else
   {

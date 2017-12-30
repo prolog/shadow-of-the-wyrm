@@ -91,7 +91,19 @@ bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
 
     double current_seconds_since_game_start = GameUtils::get_seconds(game);
     int duration = status_calc->calculate_duration_in_minutes(creature);
-    double eff_dur_sec = current_seconds_since_game_start + (duration * 60);
+    double eff_dur_sec = 0;
+
+    // Some status calculators (hiding, etc) will return max int.  This
+    // indicates that the effect should be turn-based, or indefinite,
+    // and will be cancelled by some other mechanism.
+    if (duration < std::numeric_limits<int>::max())
+    {
+      eff_dur_sec = current_seconds_since_game_start + (duration * 60);
+    }
+    else
+    {
+      eff_dur_sec = std::numeric_limits<double>::max();
+    }
 
     Modifier modifier = get_base_modifier(creature, danger_level);
     modifier.set_status(status_identifier, true, danger_level);
