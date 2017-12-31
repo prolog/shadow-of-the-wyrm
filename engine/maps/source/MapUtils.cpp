@@ -623,7 +623,7 @@ vector<CreaturePtr> MapUtils::get_adjacent_creatures_unsorted(const MapPtr& map,
 
   return adj_creatures;
 }
-bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
+bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature, const bool force_player_removal)
 {
   bool result = false;
 
@@ -638,7 +638,7 @@ bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
       // from the tile.  If the player's dead, this doesn't much matter, and if
       // the player's just leaving the map, this allows the map to "remember"
       // the player's previous location for returning.
-      if (!creature->get_is_player())
+      if (!creature->get_is_player() || force_player_removal)
       {
         map->remove_creature(creature->get_id());
       }
