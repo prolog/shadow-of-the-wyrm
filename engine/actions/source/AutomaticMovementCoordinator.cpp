@@ -36,6 +36,15 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   // Set the direction so it can be properly considered for creature_position_allows_auto_move
   am.set_direction(cur_dir);
 
+  if (cur_dir == Direction::DIRECTION_NULL)
+  {
+    // Resting while hidden is a safe way to restore HP and AP.
+    if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
+    {
+      creature->increment_free_hidden_actions();
+    }
+  }
+
   ActionCostValue auto_move_cost = 0;
   bool auto_movement_engaged = false;
   TilePtr creature_tile = MapUtils::get_tile_for_creature(map, creature);

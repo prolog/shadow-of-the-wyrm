@@ -176,6 +176,13 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
   if (creature && creatures_new_tile)
   {
+    // If the creature is hidden, and the movement is to stay in place, ensure
+    // that hiding remains active after the end of the turn.
+    if (d == Direction::DIRECTION_NULL && creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
+    {
+      creature->increment_free_hidden_actions();
+    }
+
     if (MapUtils::is_creature_present(creatures_new_tile))
     {
       movement_acv = handle_movement_into_occupied_tile(creature, creatures_new_tile, map, new_coords, d);

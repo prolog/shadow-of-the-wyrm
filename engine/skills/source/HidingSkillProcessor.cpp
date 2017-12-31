@@ -5,6 +5,7 @@
 #include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "SkillManager.hpp"
 #include "StatusEffectFactory.hpp"
 
 using std::string;
@@ -25,13 +26,14 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
       bool is_player = creature->get_is_player();
       TimeOfDayType tod = TimeOfDayType::TIME_OF_DAY_UNDEFINED; 
       WorldPtr world = Game::instance().get_current_world();
+      int hide_chance = hc.calculate_pct_chance_hide(creature, map, tod);
 
       if (world != nullptr)
       {
         tod = world->get_calendar().get_date().get_time_of_day();
       }
 
-      if (RNG::percent_chance(hc.calculate_pct_chance_hide(creature, map, tod)))
+      if (RNG::percent_chance(hide_chance))
       {
         StatusEffectPtr hide = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
 
@@ -47,6 +49,12 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
         IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, is_player);
         manager.add_new_message(message);
         manager.send();
+      }
+
+      if (hide_chance < 100)
+      {
+        SkillManager sm;
+        sm.mark_skill_with_probability(25, creature, SkillType::SKILL_GENERAL_HIDING, true);
       }
 
       acv = get_default_skill_action_cost_value(creature);

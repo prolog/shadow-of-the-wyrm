@@ -24,6 +24,11 @@ ActionCostValue SearchAction::search(CreaturePtr creature, const bool actively_s
     string search_message;
     int found_hidden_cnt = 0;
 
+    if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
+    {
+      creature->increment_free_hidden_actions();
+    }
+
     if (cca.can_see(creature))
     {
       search_message = StringTable::get(ActionTextKeys::ACTION_SEARCH);

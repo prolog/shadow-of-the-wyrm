@@ -34,7 +34,12 @@ class MapUtils
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
     static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
     static std::vector<CreaturePtr> get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature);
-    static bool remove_creature(const MapPtr& map, const CreaturePtr& creature);
+
+    // When removing a creature, we generally want to leave the player's
+    // location intact, for returning later.  However, in certain cases,
+    // we want to remove the player fully, e.g., when hiding and removing
+    // the player from a calculated FOV map.
+    static bool remove_creature(const MapPtr& map, const CreaturePtr& creature, const bool force_player_removal = false);
     static bool tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, const TileType tt);
 
     static bool place_creature_randomly(MapPtr map, const std::string& creature_id);

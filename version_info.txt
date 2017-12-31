@@ -7,6 +7,19 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   function of the type of map (hard to hide in the cosmos, easier
   underground) and time of day, when above ground.
 
+- Hiding works by removing the hidden creature from field of view maps
+  constructed off the real maps.  Given that the game AI works off FOV
+  maps to determine what action to take, this effectively renders hidden
+  characters invisible to every creature around them.
+
+- Most actions that have an in-game effect (e.g., picking up or dropping
+  items, but not checking the game version or reading help files) will
+  break hiding.  Searching or staying in place ('5' movement) never
+  breaks hiding.
+
+- Hiding is trained when you attempt to hide in a non-guaranteed
+  situation (ie, there are one or more creatures around).
+
 - Bug fixes:
 
   - Creature::is_affected_by_modifier_spell could return true when a
