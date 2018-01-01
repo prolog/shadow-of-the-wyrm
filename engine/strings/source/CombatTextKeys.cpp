@@ -565,5 +565,5 @@ const string CombatTextKeys::COMBAT_INTIMIDATE_MESSAGE_NP  = "COMBAT_INTIMIDATE_
 const string CombatTextKeys::COMBAT_CRITICAL_HIT_MESSAGE   = "COMBAT_CRITICAL_HIT_MESSAGE";
 const string CombatTextKeys::COMBAT_MIGHTY_BLOW_MESSAGE    = "COMBAT_MIGHTY_BLOW_MESSAGE";
 const string CombatTextKeys::COMBAT_SPLIT_MESSAGE          = "COMBAT_SPLIT_MESSAGE";
-
+const string CombatTextKeys::COMBAT_SNEAK_ATTACK           = "COMBAT_SNEAK_ATTACK";
 map<string, vector<string>> CombatTextKeys::combat_damage_hit_messages;

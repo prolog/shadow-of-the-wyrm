@@ -27,9 +27,10 @@ PhysicalDamageCalculator::PhysicalDamageCalculator(const AttackType new_attack_t
 
 // Physical Damage =
 // (Rolled damage * Resistance to that damage type)
+// * 2, if sneak attack
 // * 2, if the weapon slays the creature's race.
 // - Soak
-int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bool slays_creatures_race, const Damage& physical_damage, const int base_damage, const float soak_multiplier)
+int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bool attacker_hidden, const bool slays_creatures_race, const Damage& physical_damage, const int base_damage, const float soak_multiplier)
 {
   int damage = 0;
   float soak_mult = soak_multiplier;
@@ -40,7 +41,9 @@ int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bo
     
     double resistance_multiplier = defending_creature->get_resistances().get_resistance_value(damage_type);
     double pom_multiplier = get_phase_of_moon_multiplier(damage_type, pom_type);
-    double resisted_damage = base_damage * std::max(resistance_multiplier, 0.0) * pom_multiplier;
+    double sneak_multiplier = get_sneak_attack_multiplier(attacker_hidden);
+
+    double resisted_damage = base_damage * std::max(resistance_multiplier, 0.0) * pom_multiplier * sneak_multiplier;
     
     if (resisted_damage > 0)
     {

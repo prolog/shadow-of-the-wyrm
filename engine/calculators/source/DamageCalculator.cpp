@@ -9,6 +9,18 @@ DamageCalculator::~DamageCalculator()
 {
 }
 
+double DamageCalculator::get_sneak_attack_multiplier(const bool attacker_hidden) const
+{
+  double mult = 1.0;
+
+  if (attacker_hidden)
+  {
+    mult = 2.0;
+  }
+
+  return mult;
+}
+
 double DamageCalculator::get_phase_of_moon_multiplier(const DamageType dt, const PhaseOfMoonType pom) const
 {
   double mult = 1.0;
