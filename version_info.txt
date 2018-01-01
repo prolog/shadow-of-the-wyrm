@@ -20,6 +20,19 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
 - Hiding is trained when you attempt to hide in a non-guaranteed
   situation (ie, there are one or more creatures around).
 
+- Other hiding advantages/disadvantages:
+
+  - It prevents the hidden creature from intimidating and performing
+    counter-strikes.
+
+  - When hiding, an extra 2x modifier is applied to any damage dealt.
+    This applies to both physical damage and magical damage from spells 
+    and wands.  Attacking doesn't automatically reveal the creature - that
+    happens at the end of the turn - so any additional damage (e.g.,
+    damage from an offhand weapon) is also considered a sneak attack
+    that turn.  The sneak attack multiplier is applied on top of the 
+    usual ones for slays and phase of the moon.
+
 - Bug fixes:
 
   - Creature::is_affected_by_modifier_spell could return true when a

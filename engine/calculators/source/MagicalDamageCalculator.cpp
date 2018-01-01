@@ -8,12 +8,13 @@ MagicalDamageCalculator::MagicalDamageCalculator(const PhaseOfMoonType new_pom)
 
 // Magical damage =
 // Rolled damage * Resistance to that damage * any phase of moon multiplier
-// * 1 (magical damage doesn't slay a particular race)
+// * any sneak multiplier * 1 (magical damage doesn't slay a particular 
+// race)
 //
 // (Soak is not considered for magical damage - resistances become far more powerful.
 //  In essence, all magical attacks are piercing, and we don't need to
 //  consider whether an attack is incorporeal.)
-int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const bool slays_creatures_race, const Damage& magical_damage, const int base_damage, const float soak_multiplier)
+int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const bool attacker_hidden, const bool slays_creatures_race, const Damage& magical_damage, const int base_damage, const float soak_multiplier)
 {
   int damage = base_damage;
 
@@ -22,8 +23,9 @@ int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const boo
     DamageType damage_type = magical_damage.get_damage_type();
     double resistance_multiplier = defending_creature->get_resistances().get_resistance_value(damage_type);
     double pom_multiplier = get_phase_of_moon_multiplier(damage_type, pom_type);
+    double sneak_multiplier = get_sneak_attack_multiplier(attacker_hidden);
     
-    damage = static_cast<int>(base_damage * std::max(resistance_multiplier, 0.0) * pom_multiplier);
+    damage = static_cast<int>(base_damage * std::max(resistance_multiplier, 0.0) * pom_multiplier * sneak_multiplier);
   }
   
   return damage;

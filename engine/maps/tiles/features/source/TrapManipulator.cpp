@@ -130,7 +130,10 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
 
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
-  int damage_dealt = damage_calc->calculate(creature, slays_race, damage, dmg_roll, soak_mult);
+
+  // Technically, traps are hidden, but I don't want to apply the 2x damage
+  // multiplier.
+  int damage_dealt = damage_calc->calculate(creature, false, slays_race, damage, dmg_roll, soak_mult);
   Damage damage_default;
   damage_default.set_modifier(damage_dealt);
   string source_id; // sprung traps don't give exp when they kill creatures.
