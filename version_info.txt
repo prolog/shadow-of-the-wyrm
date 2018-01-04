@@ -25,19 +25,21 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   - It prevents the hidden creature from intimidating and performing
     counter-strikes.
 
-  - When hiding, an extra 2x modifier is applied to any damage dealt.
-    This applies to both physical damage and magical damage from spells 
-    and wands.  Attacking doesn't automatically reveal the creature - that
-    happens at the end of the turn - so any additional damage (e.g.,
-    damage from an offhand weapon) is also considered a sneak attack
-    that turn.  The sneak attack multiplier is applied on top of the 
-    usual ones for slays and phase of the moon.
+  - When hiding, an extra 2x modifier is applied to any damage dealt
+    when attacking a creature that has not been backstabbed before.
+    This then sets the "backstabbed" flag on that creature, and subsequent
+    backstabs are not possible, even if the attacking creature becomes
+    hidden once again.  The 2x modifier applies both to physical damage 
+    and magical damage from spells and wands.  The sneak attack multiplier
+    is applied on top of the usual ones for slays and phase of the moon.
 
 - Stealth has also been implemented.  When moving while hidden, the
   successful use of the skill allows movement without breaking the status.
   The skill is also useful when not hidden: it provides a passive, small
-  (~Skill/10)% chance of performing a sneak attack.  As when hidden, this
-  should cover all forms of attacking: melee, ranged, magic.
+  (~Skill/10)% chance of performing a sneak attack, assuming the attacked
+  creature has not already been victim of a sneak attack before.  As when 
+  the attacker is hidden, this covers all forms of attacking: melee, 
+  ranged, and magic.
 
 - Bug fixes:
 

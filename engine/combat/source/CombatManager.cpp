@@ -12,6 +12,7 @@
 #include "CreatureFactory.hpp"
 #include "CreatureSplitCalculator.hpp"
 #include "CreatureDescriber.hpp"
+#include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageText.hpp"
 #include "DeathManagerFactory.hpp"
@@ -433,7 +434,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   }
 
   StealthCalculator sc;
-  bool sneak_attack = RNG::percent_chance(sc.calculate_pct_chance_sneak_attack(attacking_creature));
+  bool sneak_attack = RNG::percent_chance(sc.calculate_pct_chance_sneak_attack(attacking_creature, attacked_creature));
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   DamageType damage_type = damage_info.get_damage_type();
   int effect_bonus = damage_info.get_effect_bonus();
@@ -444,6 +445,11 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   if (sneak_attack)
   {
     combat_message << StringTable::get(CombatTextKeys::COMBAT_SNEAK_ATTACK) << " ";
+    
+    if (attacked_creature)
+    {
+      attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_BACKSTABBED, to_string(true));
+    }
   }
 
   combat_message << CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc, use_mult_dam_type_msgs);
