@@ -1,6 +1,8 @@
 Me:
-- Moving on the world map should reveal.
-- When hidden, attacks (all) should get a damage multiplier.
+- Check sneak damage with/without hidin to ensure it works.
+- Review the various races/classes.  Thieves should always get Stealth and
+  Hiding.  Other races and classes should get one or the other, but not
+  both.
 - Allow music to not only pacify but enchant (allow for ordering)
 - Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent

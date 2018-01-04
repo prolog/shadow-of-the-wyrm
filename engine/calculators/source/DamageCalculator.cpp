@@ -9,11 +9,11 @@ DamageCalculator::~DamageCalculator()
 {
 }
 
-double DamageCalculator::get_sneak_attack_multiplier(const bool attacker_hidden) const
+double DamageCalculator::get_sneak_attack_multiplier(const bool sneak_attack) const
 {
   double mult = 1.0;
 
-  if (attacker_hidden)
+  if (sneak_attack)
   {
     mult = 2.0;
   }

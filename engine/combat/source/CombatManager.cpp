@@ -38,6 +38,7 @@
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
+#include "StealthCalculator.hpp"
 #include "SpeedCalculatorFactory.hpp"
 #include "StatisticsMarker.hpp"
 #include "TertiaryUnarmedCalculator.hpp"
@@ -431,7 +432,8 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
     attacking_creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_WEAPONLESS);
   }
 
-  bool attacker_hidden = attacking_creature && attacking_creature->has_status(StatusIdentifiers::STATUS_ID_HIDE);
+  StealthCalculator sc;
+  bool sneak_attack = RNG::percent_chance(sc.calculate_pct_chance_sneak_attack(attacking_creature));
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   DamageType damage_type = damage_info.get_damage_type();
   int effect_bonus = damage_info.get_effect_bonus();
@@ -439,7 +441,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   
   bool use_mult_dam_type_msgs = String::to_bool(game.get_settings_ref().get_setting(Setting::MULTIPLE_DAMAGE_TYPE_MESSAGES));
 
-  if (attacker_hidden)
+  if (sneak_attack)
   {
     combat_message << StringTable::get(CombatTextKeys::COMBAT_SNEAK_ATTACK) << " ";
   }
@@ -472,7 +474,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   bool slays_race = does_attack_slay_creature_race(attacking_creature, attacked_creature, attack_type);
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
   float soak_multiplier = hit_calculator->get_soak_multiplier();
-  int damage_dealt = damage_calc->calculate(attacked_creature, attacker_hidden, slays_race, damage_info, base_damage, soak_multiplier);
+  int damage_dealt = damage_calc->calculate(attacked_creature, sneak_attack, slays_race, damage_info, base_damage, soak_multiplier);
 
   // Add the text so far.
   add_combat_message(attacking_creature, attacked_creature, combat_message.str());

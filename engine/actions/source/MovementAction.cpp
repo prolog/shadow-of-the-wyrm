@@ -178,9 +178,13 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
   {
     // If the creature is hidden, and the movement is to stay in place, ensure
     // that hiding remains active after the end of the turn.
-    if (d == Direction::DIRECTION_NULL && creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
+    if (map && map->get_map_type() == MapType::MAP_TYPE_WORLD)
     {
-      creature->increment_free_hidden_actions();
+      creature->set_free_hidden_actions(0);
+    }
+    else
+    {
+      check_movement_stealth(creature, d);
     }
 
     if (MapUtils::is_creature_present(creatures_new_tile))
@@ -858,6 +862,24 @@ ActionCostValue MovementAction::get_action_cost_value(CreaturePtr creature) cons
   return acv;
 }
 
+void MovementAction::check_movement_stealth(CreaturePtr creature, const Direction d)
+{
+  if (creature != nullptr)
+  {
+    // Hidden creatures null-moving are always safe.  Movement in other
+    // directions requires a successful stealth check.
+    if (creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
+    {
+      SkillManager sm;
+      bool stealth_successful = sm.check_skill(creature, SkillType::SKILL_GENERAL_STEALTH);
+
+      if (d == Direction::DIRECTION_NULL || (stealth_successful && RNG::percent_chance(90)))
+      {
+        creature->increment_free_hidden_actions();
+      }
+    }
+  }
+}
 // If the creature is drunk, it may stumble, causing it to move slower 
 // than normal.
 ActionCostValue MovementAction::get_stumble_action_cost_value() const
