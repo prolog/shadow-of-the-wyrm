@@ -44,6 +44,8 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   - Creature::is_affected_by_modifier_spell could return true when a
     particular modifier was marked for deletion.
 
+- Stanzas for "Tel and Floridel".
+
 Shadow of the Wyrm v0.7.2 "Takemitsu"
 - Version declared November 26, 2017. Version finalized December 23, 2017.
 
