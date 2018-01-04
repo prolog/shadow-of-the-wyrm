@@ -1,4 +1,5 @@
 Me:
+- Next stanza: how she started to experiment with illusion.
 - Hide status should add a large amount of evade (+50?).
 - Check sneak damage with/without hidin to ensure it works.
 - Review the various races/classes.  Thieves should always get Stealth and
