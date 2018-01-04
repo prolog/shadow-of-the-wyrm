@@ -9,7 +9,7 @@ class DamageCalculator
     DamageCalculator(const AttackType new_attack_type, const PhaseOfMoonType pom);
     virtual ~DamageCalculator();
   
-    virtual int calculate(CreaturePtr defending_creature, const bool attacker_hidden, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier) = 0;
+    virtual int calculate(CreaturePtr defending_creature, const bool sneak_attack, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier) = 0;
     virtual Damage calculate_base_damage_object(CreaturePtr attacking_creature) = 0;
     virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature) = 0;
     

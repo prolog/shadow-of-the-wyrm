@@ -464,6 +464,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\SpeedCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\SpellbookCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SpellboundCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\StealthCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\StoneCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\StunnedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
@@ -1419,6 +1420,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\SeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SmithingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\StatisticsMarker.cpp" />
+    <ClCompile Include="engine\calculators\source\StealthCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TertiaryUnarmedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ThieveryCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
@@ -1570,6 +1572,13 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\StatisticsMarker_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\StealthCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

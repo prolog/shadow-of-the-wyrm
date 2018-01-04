@@ -46,6 +46,7 @@ class MovementAction : public IActionManager
     void move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map);
     void handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit);
     bool confirm_move_to_tile_if_necessary(CreaturePtr creature, TilePtr creatures_old_tile, TilePtr creatures_new_tile);
+    void check_movement_stealth(CreaturePtr creature, Direction d);
 
     static const int BASE_ASCEND_DESCEND_CHANCE;
 };

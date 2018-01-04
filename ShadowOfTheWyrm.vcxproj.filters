@@ -4095,6 +4095,9 @@
     <ClInclude Include="engine\calculators\include\UntimedStatusCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\StealthCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8134,6 +8137,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\UntimedStatusCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\StealthCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\StealthCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

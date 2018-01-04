@@ -33,6 +33,12 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
     that turn.  The sneak attack multiplier is applied on top of the 
     usual ones for slays and phase of the moon.
 
+- Stealth has also been implemented.  When moving while hidden, the
+  successful use of the skill allows movement without breaking the status.
+  The skill is also useful when not hidden: it provides a passive, small
+  (~Skill/10)% chance of performing a sneak attack.  As when hidden, this
+  should cover all forms of attacking: melee, ranged, magic.
+
 - Bug fixes:
 
   - Creature::is_affected_by_modifier_spell could return true when a
