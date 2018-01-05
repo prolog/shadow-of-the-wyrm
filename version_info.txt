@@ -25,6 +25,12 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   - It prevents the hidden creature from intimidating and performing
     counter-strikes.
 
+  - The hidden creature, being hidden, gets a large evade bonus to
+    incoming attacks.  Though most creatures will not be able to attack
+    hidden creatures, if a missile were being fired through the tile, or
+    an area effect spell casted, it would still be possible to be
+    attacked.
+
   - When hiding, an extra 2x modifier is applied to any damage dealt
     when attacking a creature that has not been backstabbed before.
     This then sets the "backstabbed" flag on that creature, and subsequent
