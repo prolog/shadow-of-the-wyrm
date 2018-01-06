@@ -47,6 +47,14 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   the attacker is hidden, this covers all forms of attacking: melee, 
   ranged, and magic.
 
+- The NPC magic AI is a little smarter.  Previously, it was just checking
+  to see if a threat existed in a certain direction.  Now, it considers
+  the level of all creatures in a particular direction, and will only
+  cast in that direction if the sum of the level of any threats is
+  greater than the sum of the non-threats.
+
+- The mean amount of time for paralysis is now 3 minutes, rather than 5.
+
 - Bug fixes:
 
   - Creature::is_affected_by_modifier_spell could return true when a

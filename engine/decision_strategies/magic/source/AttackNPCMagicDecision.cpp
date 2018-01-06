@@ -6,6 +6,10 @@ using namespace std;
 
 pair<bool, Direction> AttackNPCMagicDecision::decide(CreaturePtr caster, MapPtr view_map, const Spell& spell, const set<string>& creature_threats) const
 {
+  pair<bool, Direction> decision_details(false, Direction::DIRECTION_NULL);
+  int threat_level_count = 0;
+  int nonthreat_level_count = 0;
+
   if (caster != nullptr && view_map != nullptr)
   {
     SpellShape ss = spell.get_shape();
@@ -21,6 +25,9 @@ pair<bool, Direction> AttackNPCMagicDecision::decide(CreaturePtr caster, MapPtr 
 
       for (const auto& dir : possible_directions)
       {
+        threat_level_count = 0;
+        nonthreat_level_count = 0;
+
         // JCD FIXME: this is basically being used out of convenience.  There's
         // no need to also compute the animation.  So if this turns out to be
         // too expensive, refactor the code so that the animation is also not
@@ -31,14 +38,36 @@ pair<bool, Direction> AttackNPCMagicDecision::decide(CreaturePtr caster, MapPtr 
         {
           TilePtr tile = t_pair.second;
 
-          if (tile && tile->has_creature() && (creature_threats.find(tile->get_creature()->get_id()) != creature_threats.end()))
+          if (tile && tile->has_creature())
           {
-            return make_pair(true, dir);
+            CreaturePtr creature = tile->get_creature();
+            string creature_id = creature->get_id();
+            string caster_id = caster->get_id();
+
+            if (creature_id != caster_id)
+            {
+              if (creature_threats.find(creature_id) != creature_threats.end())
+              {
+                threat_level_count += creature->get_level().get_current();
+              }
+              else
+              {
+                nonthreat_level_count += creature->get_level().get_current();
+              }
+            }
           }
+        }
+
+        if (threat_level_count > nonthreat_level_count)
+        {
+          decision_details.first = true;
+          decision_details.second = dir;
+
+          break;
         }
       }
     }
   }
 
-  return make_pair(false, Direction::DIRECTION_NULL);
+  return decision_details;
 }
