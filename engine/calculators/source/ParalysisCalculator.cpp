@@ -1,7 +1,7 @@
 #include "ParalysisCalculator.hpp"
 #include "Random.hpp"
 
-const int ParalysisCalculator::BASE_PARALYSIS_DURATION_MEAN = 5;
+const int ParalysisCalculator::BASE_PARALYSIS_DURATION_MEAN = 3;
 const int ParalysisCalculator::BASE_PARALYSIS_PCT_CHANCE = 15;
 
 // For every 7 points of health, the percent chance of being paralyzed
