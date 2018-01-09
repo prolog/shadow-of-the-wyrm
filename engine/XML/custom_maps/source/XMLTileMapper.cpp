@@ -42,6 +42,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TileType::TILE_TYPE_FRUIT_TREE);
   }
+  else if (xml_tile == 'M')
+  {
+    tile = tg.generate(TileType::TILE_TYPE_MAGICAL_TREE);
+  }
   else if (xml_tile == ',')
   {
     tile = tg.generate(TileType::TILE_TYPE_FIELD);

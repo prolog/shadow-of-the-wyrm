@@ -143,6 +143,7 @@
 			<xs:element name="AquaticVegetationTile" type="tns:Tile"/>
 			<xs:element name="FloatingTowerTile" type="tns:Tile"/>
 			<xs:element name="VoidTile" type="tns:Tile"/>
+			<xs:element name="MagicalTreeTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -1576,11 +1577,13 @@
 				Summon Monsters = 25
 				Digging = 26
 				Rage = 27
+				Increase Max HP = 28
+				Increase Max AP = 29
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="27"/>
+		<xs:maxInclusive value="29"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">
