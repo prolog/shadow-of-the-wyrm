@@ -31,6 +31,10 @@ class TileDescriptionKeys
     static const std::string FLORA_TILE_DESC_PEAR;
     static const std::string FLORA_TILE_DESC_OLIVE;
 
+    // Used by TileType::TILE_TYPE_MAGICAL_TREE
+    static const std::string FLORA_TILE_DESC_GOLDEN_APPLE;
+    static const std::string FLORA_TILE_DESC_SILVER_APPLE;
+
     // Used by TileType::TILE_TYPE_WEED:
     static const std::string FLORA_TILE_DESC_WEED1;
     static const std::string FLORA_TILE_DESC_WEED2;

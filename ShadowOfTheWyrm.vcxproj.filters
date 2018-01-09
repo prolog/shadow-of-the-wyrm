@@ -4098,6 +4098,12 @@
     <ClInclude Include="engine\calculators\include\StealthCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\MagicalTreeTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\MagicalTreeTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8143,6 +8149,15 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\StealthCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\MagicalTreeTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\MagicalTreeTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\MagicalTreeTileConfiguration.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

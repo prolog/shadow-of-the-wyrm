@@ -292,9 +292,13 @@ enum struct ClassIdentifier
   CLASS_ID_MARKS,
   CLASS_ID_SHOP,
   CLASS_ID_SHOPS_TIME_OBSERVER,
-  CLASS_ID_STATUS
+  CLASS_ID_STATUS,
+  CLASS_ID_MAGICAL_TREE_TILE
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go
 // here.
+//
+// If you're adding tile IDs anywhere other than the end of the list, this
+// value needs to be recalculated!
 #define CCLASS_ID_FOUNTAIN 115

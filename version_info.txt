@@ -55,6 +55,16 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
 
 - The mean amount of time for paralysis is now 3 minutes, rather than 5.
 
+- There are two new effect types, that increase maximum HP and AP.  These
+  have been attached to golden and silver apples, respectively.  These
+  items have seeds, like regular fruit, and the seeds can be used to
+  plant trees, as usual.  The "increase max HP/MP effects", when used
+  successfully, add to a counter on the creature.  The creature can only
+  use the HP effect as many times as its base Health allows; likewise
+  with Willpower for the AP effect.
+
+- New items: golden apple, silver apple.
+
 - Bug fixes:
 
   - Creature::is_affected_by_modifier_spell could return true when a

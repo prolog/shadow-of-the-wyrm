@@ -28254,6 +28254,12 @@
 				<Colour>0</Colour>
 			</Text>
 		</VoidTile>
+		<MagicalTreeTile>
+			<Text>
+				<Symbol>T</Symbol>
+				<Colour>14</Colour>
+			</Text>
+		</MagicalTreeTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">
@@ -33903,6 +33909,58 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_golden_apple">
+				<DescriptionSID>GOLDEN_APPLE_SID</DescriptionSID>
+				<UsageDescriptionSID>GOLDEN_APPLE_USAGE_SID</UsageDescriptionSID>
+				<Value>220</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>25</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_golden_apple_seed</Value>
+					</Property>
+				</Properties>
+				<Nutrition>600</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>28</Effect>
+			</Food>
+			<Food id="_silver_apple">
+				<DescriptionSID>SILVER_APPLE_SID</DescriptionSID>
+				<UsageDescriptionSID>SILVER_APPLE_USAGE_SID</UsageDescriptionSID>
+				<Value>220</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>25</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>seed_item_id</Name>
+						<Value>_silver_apple_seed</Value>
+					</Property>
+				</Properties>
+				<Nutrition>600</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>29</Effect>
+			</Food>
 			<Food id="_vegetable_1">
 				<DescriptionSID>VEGETABLE1_SID</DescriptionSID>
 				<UsageDescriptionSID>VEGETABLE1_USAGE_SID</UsageDescriptionSID>
@@ -37451,6 +37509,48 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>13</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_golden_apple_seed">
+				<DescriptionSID>GOLDEN_APPLE_SEED_SID</DescriptionSID>
+				<UsageDescriptionSID>GOLDEN_APPLE_SEED_USAGE_SID</UsageDescriptionSID>
+				<Value>22</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>40</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_silver_apple_seed">
+				<DescriptionSID>SILVER_APPLE_SEED_SID</DescriptionSID>
+				<UsageDescriptionSID>SILVER_APPLE_SEED_USAGE_SID</UsageDescriptionSID>
+				<Value>22</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>.</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>tree_species_id</Name>
+						<Value>41</Value>
 					</Property>
 				</Properties>
 			</Item>
