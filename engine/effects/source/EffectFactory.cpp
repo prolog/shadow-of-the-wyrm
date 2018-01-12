@@ -12,6 +12,7 @@
 #include "HealingEffect.hpp"
 #include "IdentifyEffect.hpp"
 #include "IncorporealEffect.hpp"
+#include "IncreaseMaxHPAPEffect.hpp"
 #include "MappingEffect.hpp"
 #include "ModifyStatisticsEffect.hpp"
 #include "NullEffect.hpp"
@@ -36,7 +37,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modifier& m, const map<string, string>& properties, const string& spell_id, const string& source_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(28), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(30), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -128,6 +129,12 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modif
       break;
     case EffectType::EFFECT_TYPE_RAGE:
       effect = std::make_shared<RageEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_INCREASE_MAX_HP:
+      effect = std::make_shared<IncreaseMaxHPEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_INCREASE_MAX_AP:
+      effect = std::make_shared<IncreaseMaxAPEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:

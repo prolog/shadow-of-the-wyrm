@@ -61,7 +61,12 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   plant trees, as usual.  The "increase max HP/MP effects", when used
   successfully, add to a counter on the creature.  The creature can only
   use the HP effect as many times as its base Health allows; likewise
-  with Willpower for the AP effect.
+  with Willpower for the AP effect.  If the creature increases his or her
+  Health/Willpower later, the maximum for the counter is increased as
+  well.
+
+- Golden and silver apples can be found as regular items, but they also
+  grow on magical trees.
 
 - New items: golden apple, silver apple.
 
