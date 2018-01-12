@@ -350,7 +350,7 @@ as all the feasting laid about tonight. %b
 A consort unaccepted - if I should %b
 falter, or if I quaver from their slights, %b
 then give me strength to shine against the coming night. 
-%P 
+%p 
 II
 %p
 So by and by, the young girl passed the days %b
@@ -1479,4 +1479,14 @@ She felt her soul return.  An awful gasp %b
 as those that ringed around her came to see %b
 the dead take air, and realized at last %b
 the depth of the deception that had come to pass.
+%p
+Not only did she breathe, the boy was gone, %b
+remade by Floridel into a fox, %b
+grey-faced and terrified, running back.  But if they saw %b
+him missing, no one spoke, transfixed with shock %b
+at how she now appeared.  Two flaps of skin %b
+that loosely caught the wind, a pallid price %b
+she'd wear forever.  The smiling queen.  And when %b
+she saw the court again, it would suffice %b
+to show what she'd become by how she'd greet them twice.
 %p

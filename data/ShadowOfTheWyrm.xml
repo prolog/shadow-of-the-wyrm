@@ -33948,7 +33948,7 @@
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>%</Symbol>
-					<Colour>11</Colour>
+					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>25</DangerLevel>
 				<Properties>
@@ -37544,7 +37544,7 @@
 				<Material>4</Material>
 				<TextDetails>
 					<Symbol>.</Symbol>
-					<Colour>11</Colour>
+					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>

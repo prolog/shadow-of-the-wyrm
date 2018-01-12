@@ -13,6 +13,11 @@ FruitTreeTileConfiguration::FruitTreeTileConfiguration()
   }
 }
 
+FruitTreeTileConfiguration::FruitTreeTileConfiguration(const FruitProductionMap& fpm)
+: fruit_ids(fpm)
+{
+}
+
 void FruitTreeTileConfiguration::initialize_fruit_ids()
 {
   // Tasty fruit is only available in the summer months!

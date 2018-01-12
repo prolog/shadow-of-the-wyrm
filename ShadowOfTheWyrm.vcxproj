@@ -668,6 +668,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\effects\include\GainAttributesTypes.hpp" />
     <ClInclude Include="engine\effects\include\HasteEffect.hpp" />
     <ClInclude Include="engine\effects\include\IncorporealEffect.hpp" />
+    <ClInclude Include="engine\effects\include\IncreaseMaxHPAPEffect.hpp" />
     <ClInclude Include="engine\effects\include\MappingEffect.hpp" />
     <ClInclude Include="engine\effects\include\ModifyStatisticsEffect.hpp" />
     <ClInclude Include="engine\effects\include\RageEffect.hpp" />
@@ -1710,6 +1711,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\effects\source\CleansingEffect.cpp" />
     <ClCompile Include="engine\effects\source\DetectTrapsEffect.cpp" />
     <ClCompile Include="engine\effects\source\DiggingEffect.cpp" />
+    <ClCompile Include="engine\effects\source\IncreaseMaxHPAPEffect.cpp" />
     <ClCompile Include="engine\effects\source\MappingEffect.cpp" />
     <ClCompile Include="engine\effects\source\RageEffect.cpp" />
     <ClCompile Include="engine\effects\source\SummonMonstersEffect.cpp" />

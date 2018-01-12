@@ -143,6 +143,15 @@ string EffectTextKeys::get_bless_effect_message(const string& monster_desc_sid, 
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_BLESS_PLAYER, EFFECT_BLESS_MONSTER_OR_ITEM);
 }
 
+string EffectTextKeys::get_increase_max_hp_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_INCREASE_MAX_HP_PLAYER, EFFECT_INCREASE_MAX_HP_MONSTER);
+}
+
+string EffectTextKeys::get_increase_max_ap_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_INCREASE_MAX_AP_PLAYER, EFFECT_INCREASE_MAX_AP_MONSTER);
+}
 
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
 const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
@@ -184,3 +193,7 @@ const string EffectTextKeys::EFFECT_DETECT_TRAPS_PLAYER = "EFFECT_DETECT_TRAPS_P
 const string EffectTextKeys::EFFECT_DETECT_TRAPS_MONSTER = "EFFECT_DETECT_TRAPS_MONSTER";
 const string EffectTextKeys::EFFECT_BLESS_PLAYER = "EFFECT_BLESS_PLAYER";
 const string EffectTextKeys::EFFECT_BLESS_MONSTER_OR_ITEM = "EFFECT_BLESS_MONSTER_OR_ITEM";
+const string EffectTextKeys::EFFECT_INCREASE_MAX_HP_PLAYER = "EFFECT_INCREASE_MAX_HP_PLAYER";
+const string EffectTextKeys::EFFECT_INCREASE_MAX_HP_MONSTER = "EFFECT_INCREASE_MAX_HP_MONSTER";
+const string EffectTextKeys::EFFECT_INCREASE_MAX_AP_PLAYER = "EFFECT_INCREASE_MAX_AP_PLAYER";
+const string EffectTextKeys::EFFECT_INCREASE_MAX_AP_MONSTER = "EFFECT_INCREASE_MAX_AP_MONSTER";

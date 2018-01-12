@@ -6,11 +6,9 @@
 using namespace std;
 
 MagicalTreeTileConfiguration::MagicalTreeTileConfiguration()
+: FruitTreeTileConfiguration({})
 {
-  if (fruit_ids.empty())
-  {
-    initialize_fruit_ids();
-  }
+  initialize_fruit_ids();
 }
 
 void MagicalTreeTileConfiguration::initialize_fruit_ids()
