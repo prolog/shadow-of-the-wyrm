@@ -55,8 +55,18 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       result_tile = std::make_shared<CairnTile>();
       break;
     case TileType::TILE_TYPE_TREE:
-      result_tile = std::make_shared<TreeTile>();
-      break;      
+    {
+      if (RNG::x_in_y_chance(1, 100000))
+      {
+        result_tile = std::make_shared<MagicalTreeTile>();
+      }
+      else
+      {
+        result_tile = std::make_shared<TreeTile>();
+      }
+
+      break;
+    }
     case TileType::TILE_TYPE_DESERT:
       result_tile = std::make_shared<DesertTile>();
       break;

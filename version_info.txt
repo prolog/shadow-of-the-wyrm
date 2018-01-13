@@ -68,6 +68,10 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
 - Golden and silver apples can be found as regular items, but they also
   grow on magical trees.
 
+- When a "regular" tree is generated, it has a 1 in 100000 chance of being
+  a magical tree, which will grow golden or silver apples.  These trees
+  can appear anywhere a regular tree would be generated.
+
 - New items: golden apple, silver apple.
 
 - Bug fixes:
