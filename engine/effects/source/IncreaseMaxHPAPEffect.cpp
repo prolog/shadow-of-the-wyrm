@@ -32,22 +32,45 @@ bool IncreaseMaxHPAPEffect::increase(CreaturePtr creature, int incr_amount)
     string check_prop_name = get_check_property();
     Statistic& check_stat = get_check_statistic(creature);
     Statistic& inc_stat = get_increase_statistic(creature);
-    string num_increments_s = creature->get_additional_property(check_prop_name);
 
-    int num_increments = num_increments_s.empty() ? 0 : String::to_int(num_increments_s);
-
-    if (num_increments < check_stat.get_base())
+    if (can_increase(creature, check_stat))
     {
-      inc_stat.set_base(inc_stat.get_base() + incr_amount);
-      inc_stat.set_current(inc_stat.get_current() + incr_amount);
-      ++num_increments;
-
-      creature->set_additional_property(check_prop_name, to_string(num_increments));
+      increase_stat(creature, inc_stat, incr_amount);
       eff_ident = true;
     }
   }
 
   return eff_ident;
+}
+
+bool IncreaseMaxHPAPEffect::can_increase(CreaturePtr creature, const Statistic& stat) const
+{
+  if (creature != nullptr)
+  {
+    string check_prop_name = get_check_property();
+    string num_increments_s = creature->get_additional_property(check_prop_name);
+    int num_increments = num_increments_s.empty() ? 0 : String::to_int(num_increments_s);
+
+    return (num_increments < stat.get_base());
+  }
+
+  return false;
+}
+
+void IncreaseMaxHPAPEffect::increase_stat(CreaturePtr creature, Statistic& inc_stat, const int incr_amount)
+{
+  if (creature != nullptr)
+  {
+    string check_prop_name = get_check_property();
+    string num_increments_s = creature->get_additional_property(check_prop_name);
+    int num_increments = num_increments_s.empty() ? 0 : String::to_int(num_increments_s);
+
+    inc_stat.set_base(inc_stat.get_base() + incr_amount);
+    inc_stat.set_current(inc_stat.get_current() + incr_amount);
+    ++num_increments;
+
+    creature->set_additional_property(check_prop_name, to_string(num_increments));
+  }
 }
 
 // HP

@@ -10574,7 +10574,7 @@
 			<Speed>60</Speed>
 		</Creature>
 		<Creature id="avernal_bat">
-			<RaceID>_bird</RaceID> <!-- eh, close enough -->
+			<RaceID>_animal</RaceID> <!-- eh, close enough -->
 			<ShortDescriptionSID>AVERNAL_BAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AVERNAL_BAT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AVERNAL_BAT_TEXT_DETAILS_SID</TextDetailsSID>
