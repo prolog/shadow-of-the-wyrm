@@ -4,7 +4,7 @@ The first release, as Savage Lands, was on August 31, 2015.  A re-release the ne
 %p
 The following people have made bug reports, or had suggestions implemented - thank you!
 %p
-AgingMinotaur, barrabus, Faladrit, pat--, Aleksanderus, Jeremy Long, Sean McKeague, akeley, Kyzrati, Zirael, kraphead, Mateusz Lagowski, Lagi, Dave Keen, Darcy Faires, Anonymous, Legend, Avagart, Antonio Sabachini, kemcop, Alzrius, Larzid, Cheap Miami Records, mibert, The_Great_Goblin, Dallas Herrin, VedVid, Esran, Rob Ayres, kain.
+AgingMinotaur, barrabus, Faladrit, pat--, Aleksanderus, Jeremy Long, Sean McKeague, akeley, Kyzrati, Zirael, kraphead, Mateusz Lagowski, Lagi, Dave Keen, Darcy Faires, Anonymous, Legend, Avagart, Antonio Sabachini, kemcop, Alzrius, Larzid, Cheap Miami Records, mibert, The_Great_Goblin, Dallas Herrin, VedVid, Esran, Rob Ayres, kain, ssteam.
 %p
 Changes to allow building on Mac OS courtesy of alphabetr.
 %p

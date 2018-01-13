@@ -1199,6 +1199,11 @@ bool Creature::has_status() const
   return !statuses.empty();
 }
 
+void Creature::set_statuses(const CreatureStatusMap& new_statuses)
+{
+  statuses = new_statuses;
+}
+
 CreatureStatusMap Creature::get_statuses() const
 {
   return statuses;
@@ -1475,6 +1480,11 @@ map<double, vector<pair<string, Modifier>>> Creature::get_active_modifiers() con
   }
 
   return active_modifiers;
+}
+
+map<double, vector<pair<string, Modifier>>> Creature::get_modifiers() const
+{
+  return modifiers;
 }
 
 map<double, vector<pair<string, Modifier>>>& Creature::get_modifiers_ref()

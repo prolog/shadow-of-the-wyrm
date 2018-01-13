@@ -259,7 +259,7 @@ ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr m
       }
     }
 
-      if (picked_up)
+    if (picked_up)
     {
       acv = get_action_cost_value(creature);
     }

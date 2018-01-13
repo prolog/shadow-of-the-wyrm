@@ -24,6 +24,8 @@ class IncreaseMaxHPAPEffect : public Effect
     virtual bool increase(std::shared_ptr<Creature> creature, const int incr_amount);
 
     virtual std::string get_check_property() const = 0;
+    bool can_increase(CreaturePtr creature, const Statistic& check_stat) const;
+    void increase_stat(CreaturePtr creature, Statistic& incr_stat, const int incr_amount);
 
     static const int INCR_AMOUNT_BLESSED;
     static const int INCR_AMOUNT_UNCURSED;

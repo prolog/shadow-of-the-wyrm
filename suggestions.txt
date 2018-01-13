@@ -1,4 +1,5 @@
 Me:
+- Dungeons and caverns should have a chance to grow magic trees.
 - Magical orchard (should be 2-3 over the world)
 - Allow music to not only pacify but enchant (allow for ordering)
 - Add Shards, Meteor to a couple more creatures
@@ -31,7 +32,7 @@ Me:
 - Allow shopkeepers to be any of the selectable races.
 - Towers/tower generators.
 - Descent into the underworld.
-- Allow shopkeepers to sell for different prices dependending on their
+- Allow shopkeepers to sell for different prices depending on their
   race, and the buying creature's.
 - Wilderness ruins/lairs
 - Dungeon vaults
@@ -87,9 +88,6 @@ Me:
 - Cantrip to set glow flag on items
 - Food rotting for caught fish, other foods?
 
-Rob Ayres:
-- HP/AP not being affected by stats on stat gain or level.
-
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
   ever, generated.
@@ -125,10 +123,6 @@ Dallas Herrin:
 
 Not bugs, but probably not working as intended:
 
-- Spellcasting enemies have a tendency to hit all their friends with 
-  spells and get smashed even without your intervention. If their friends 
-  are also spellcasters, this can lead to a hilarious chain reaction that 
-  while funny, is probably not intended to happen.
 - Spellcasting enemies, specifically the ones that have large AoE ball 
   spells, have a tendency to cast their spells around corners, hitting you 
   up to three times without ever seeing you.
@@ -169,3 +163,12 @@ kraphead
 - black 'x'
 - Cascade of aggro on stun, etc
 - auto-displace when bumping friendly creatures
+
+ssteam
+- w->, w-< to autowalk to stairs
+- Descend via '>' while in air.
+- More secrets!
+- Whiteflower quest takes too long.
+- Shopkeepers should be more obvious about exits being bad with unpaid.
+- Paying off shopkeepers not working.
+

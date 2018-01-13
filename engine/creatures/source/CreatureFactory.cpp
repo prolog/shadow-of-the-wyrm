@@ -171,6 +171,8 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
     creature->set_additional_properties_map(creature_instance.get_additional_properties_map());
     creature->set_spell_knowledge(creature_instance.get_spell_knowledge());
     creature->set_event_scripts(creature_instance.get_event_scripts());
+    creature->set_modifiers(creature_instance.get_modifiers());
+    creature->set_statuses(creature_instance.get_statuses());
 }
 
 CreaturePtr CreatureFactory::create_by_race_and_class

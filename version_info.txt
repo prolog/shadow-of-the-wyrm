@@ -72,12 +72,21 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   a magical tree, which will grow golden or silver apples.  These trees
   can appear anywhere a regular tree would be generated.
 
+- The look command has been rebound as 'x' (e'x'amine).
+
 - New items: golden apple, silver apple.
 
 - Bug fixes:
 
   - Creature::is_affected_by_modifier_spell could return true when a
     particular modifier was marked for deletion.
+
+  - Avernal bats were defined as birds and were dropping quills.  Added
+    support for creature-level overrides of flying, and defined avernal
+    bats as flying animals (ssteam).
+
+  - One of the doors in the tower level of Wintersea Keep was incorrectly
+    placed (ssteam).
 
 - Stanzas for "Tel and Floridel".
 
