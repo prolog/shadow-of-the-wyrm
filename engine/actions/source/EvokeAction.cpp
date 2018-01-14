@@ -8,6 +8,7 @@
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "SkillManager.hpp"
@@ -42,7 +43,8 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         // Redraw the screen, since we will have moved from the evoke screen
         // back to the main map.
         Game& game = Game::instance();
-        game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+        MapPtr map = game.get_current_map();
+        game.update_display(creature, map, creature->get_decision_strategy()->get_fov_map(), false);
         game.get_display()->redraw();
 
         WandPtr new_wand;
@@ -62,6 +64,13 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
 
         // Try to evoke the item
         action_cost_value = evoke_wand(creature, am, new_wand);
+
+        // If we're in a shop, anger the shopkeeper.
+        // Using charges is theft!
+        if (wand->get_unpaid())
+        {
+          MapUtils::anger_shopkeeper_if_necessary(map->get_location(creature->get_id()), map, creature);
+        }
 
         // Remove the item before re-adding it: used when there is only
         // a single wand.
