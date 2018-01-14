@@ -171,4 +171,4 @@ ssteam
 - Whiteflower quest takes too long.
 - Shopkeepers should be more obvious about exits being bad with unpaid.
 - Paying off shopkeepers not working.
-
+- Balance artifacts - mostly blades

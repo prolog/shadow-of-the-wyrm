@@ -9,9 +9,9 @@ local function hild_weaving_start_fn()
   clear_and_add_message("HILD_WEAVING_QUEST_START3_SID")
 end
 
--- 20 whiteflowers are required
+-- 10 whiteflowers are required
 local function hild_weaving_completion_condition_fn()
-  return (get_item_count(PLAYER_ID, "_whiteflower") >= 20)
+  return (get_item_count(PLAYER_ID, "_whiteflower") >= 10)
 end
 
 -- Hild will teach weaving, if the player does not know it.
@@ -36,7 +36,7 @@ local function hild_weaving_completion_fn()
     clear_and_add_message("HILD_WEAVING_QUEST_COMPLETE_SPECIAL3_SID") 
   end
 
-  remove_object_from_player("_whiteflower", 20)
+  remove_object_from_player("_whiteflower", 10)
 
   return true
 end
