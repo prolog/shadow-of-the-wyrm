@@ -72,7 +72,9 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   a magical tree, which will grow golden or silver apples.  These trees
   can appear anywhere a regular tree would be generated.
 
-- The look command has been rebound as 'x' (e'x'amine).
+- The look command has been rebound as 'x' (e'x'amine) (ssteam).
+
+- Hild now requires only 10 whiteflowers (ssteam).
 
 - New items: golden apple, silver apple.
 
