@@ -90,6 +90,8 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   - One of the doors in the tower level of Wintersea Keep was incorrectly
     placed (ssteam).
 
+  - Using unpaid wands in shops wasn't angering the shopkeeper.
+
 - Stanzas for "Tel and Floridel".
 
 Shadow of the Wyrm v0.7.2 "Takemitsu"
