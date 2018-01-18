@@ -76,6 +76,13 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
 
 - Hild now requires only 10 whiteflowers (ssteam).
 
+- Moving outside a shop while carrying unpaid goods now requires
+  confirmation.
+
+- Amulets have been reworked so that their unidentified description
+  doesn't refer to colour.  They have had colour overrides removed, so
+  non-artifacts should almost always appear as a bold yellow '#' (ssteam).
+
 - New items: golden apple, silver apple.
 
 - Bug fixes:

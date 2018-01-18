@@ -45,7 +45,7 @@ class MovementAction : public IActionManager
     void add_cannot_escape_message(const CreaturePtr& creature);
     void move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map);
     void handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit);
-    bool confirm_move_to_tile_if_necessary(CreaturePtr creature, TilePtr creatures_old_tile, TilePtr creatures_new_tile);
+    bool confirm_move_to_tile_if_necessary(CreaturePtr creature, MapPtr current_map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& creatures_new_tile_coords);
     void check_movement_stealth(CreaturePtr creature, Direction d);
 
     static const int BASE_ASCEND_DESCEND_CHANCE;
