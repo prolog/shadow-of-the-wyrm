@@ -591,6 +591,7 @@ const string ActionTextKeys::ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS = "ACTION_
 const string ActionTextKeys::ACTION_REPOP_SHOP                 = "ACTION_REPOP_SHOP";
 const string ActionTextKeys::ACTION_ANGRY                      = "ACTION_ANGRY";
 const string ActionTextKeys::ACTION_ALREADY_HIDDEN             = "ACTION_ALREADY_HIDDEN";
+const string ActionTextKeys::ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM = "ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

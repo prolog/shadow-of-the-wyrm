@@ -1,4 +1,5 @@
 #include "CurrentCreatureAbilities.hpp"
+#include "ActionTextKeys.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MovementTextKeys.hpp"
@@ -10,10 +11,9 @@ using namespace std;
 
 // Check to see if movement needs to be confirmed.  First check to see if the tile is dangerous,
 // and then check any additional special cases, such as swimming, etc.
-pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePtr creature, TilePtr old_tile, TilePtr new_tile)
+pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePtr creature, MapPtr map, TilePtr old_tile, const Coordinate& old_tile_coords, TilePtr new_tile, const Coordinate& new_tile_coords)
 {
-  pair<bool, string> confirmation_details;
-  confirmation_details.first = false;
+  pair<bool, string> confirmation_details = {false, ""};
 
   CurrentCreatureAbilities cca;
   bool is_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
@@ -21,7 +21,7 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
   FeaturePtr new_tile_feature = new_tile->get_feature();
   bool feature_dangerous = new_tile_feature && new_tile_feature->get_is_dangerous();
 
-  if (cca.can_see(creature))
+  if (creature != nullptr && new_tile != nullptr && cca.can_see(creature))
   {
     // Tile confirmation only happens if the creature can see.  Otherwise,
     // the creature has no idea that the place they're moving into is dangerous.
@@ -36,7 +36,16 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
         confirmation_sid = MovementTextKeys::ACTION_MOVE_DANGEROUS_FEATURE;
       }
 
-      confirmation_details.second = TextMessages::get_confirmation_message(confirmation_sid);
+      if (!confirmation_sid.empty())
+      {
+        confirmation_details.second = confirmation_sid;
+      }
+    }
+    else if (MapUtils::is_in_shop_or_adjacent(map, old_tile_coords).first &&
+            !MapUtils::is_in_shop_or_adjacent(map, new_tile_coords).first &&
+             creature->has_unpaid_items())
+    {
+      confirmation_details = {true, ActionTextKeys::ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM};
     }
     else
     {
@@ -46,6 +55,11 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
       {
         confirmation_details = swimming;
       }
+    }
+
+    if (confirmation_details.first && !confirmation_details.second.empty())
+    {
+      confirmation_details.second = TextMessages::get_confirmation_message(confirmation_details.second);
     }
   }
 

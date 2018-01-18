@@ -258,7 +258,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
       if (cca.can_move(creature, true))
       {
-        if (confirm_move_to_tile_if_necessary(creature, creatures_old_tile, creatures_new_tile))
+        if (confirm_move_to_tile_if_necessary(creature, map, creatures_old_tile, creatures_new_tile, new_coords))
         {
           ostringstream ss;
           ss << "Moving within map: ID " << creature->get_id() << " to " << new_coords.first << "," << new_coords.second;
@@ -347,7 +347,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
           Coordinate potential_squeeze_coords = CoordUtils::get_new_coordinate(new_coords, d, 1);
           TilePtr potential_squeeze_tile = map->at(potential_squeeze_coords);
           bool confirm = (MapUtils::can_squeeze_by(map, creature, new_coords, d) 
-                      && confirm_move_to_tile_if_necessary(creature, current_tile, potential_squeeze_tile));
+                      && confirm_move_to_tile_if_necessary(creature, map, current_tile, potential_squeeze_tile, potential_squeeze_coords));
 
           if (confirm)
           {
@@ -681,10 +681,17 @@ void MovementAction::add_initial_map_messages(CreaturePtr creature, MapPtr map, 
 }
 
 // Confirm if moving to a potentially dangerous tile.
-bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, TilePtr creatures_old_tile, TilePtr creatures_new_tile)
+bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, MapPtr current_map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& creatures_new_tile_coords)
 {
   TileMovementConfirmation tmc;
-  pair<bool, string> details = tmc.get_confirmation_details(creature, creatures_old_tile, creatures_new_tile);
+  Coordinate old_tile_coords = {0, 0};
+  
+  if (creature != nullptr && current_map != nullptr)
+  {
+    old_tile_coords = current_map->get_location(creature->get_id());
+  }
+
+  pair<bool, string> details = tmc.get_confirmation_details(creature, current_map, creatures_old_tile, old_tile_coords, creatures_new_tile, creatures_new_tile_coords);
   bool needs_confirmation = details.first;
 
   if (needs_confirmation)
