@@ -1,3 +1,4 @@
+#include "ActionTextKeys.hpp"
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
@@ -7,9 +8,11 @@
 #include "DecisionScript.hpp"
 #include "DecisionStrategyProperties.hpp"
 #include "Game.hpp"
+#include "IMessageManager.hpp"
 #include "Log.hpp"
 #include "MagicalAbilityChecker.hpp"
 #include "MapUtils.hpp"
+#include "MessageManagerFactory.hpp"
 #include "NPCDecisionStrategy.hpp"
 #include "NPCMagicDecisionFactory.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
@@ -67,6 +70,10 @@ void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr current_fov_map)
         if (!MapUtils::is_in_shop_or_adjacent(current_map, creature_coord).first)
         {
           threat_ratings.add_threat(creature->get_id(), ThreatConstants::INITIAL_THREAT_RATING);
+
+          IMessageManager& manager = MM::instance();
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER));
+          manager.send();
         }
       }
     }

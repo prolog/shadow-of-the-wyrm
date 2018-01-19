@@ -1500,3 +1500,13 @@ the king could not ignore.  As things had been, %b
 they'd never be again.  He'd change their lot, %b
 and hammer down the consequence of what they'd wrought.
 %p
+A moment's pause, then, "Spearmen!  Each of you %b
+can see the faces of my courtly host, %b
+know which of them is false, and what to do." %b
+A flurry as the layfolk ringed and closed %b
+around the guilty nobles, shafts out, tips %b
+sloped down towards the unmailed legs.  The few %b
+who'd smirked at Floridel had neither quip %b
+nor qualm.  She'd never be their be their queen.  They knew %b
+that death was but a moment.  Then, the follow-through.
+%p

@@ -186,6 +186,7 @@ class ActionTextKeys
     static const std::string ACTION_ANGRY;
     static const std::string ACTION_ALREADY_HIDDEN;
     static const std::string ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM;
+    static const std::string ACTION_ENRAGED_SHOPKEEPER;
 
   protected:
     ActionTextKeys();

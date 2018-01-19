@@ -592,6 +592,7 @@ const string ActionTextKeys::ACTION_REPOP_SHOP                 = "ACTION_REPOP_S
 const string ActionTextKeys::ACTION_ANGRY                      = "ACTION_ANGRY";
 const string ActionTextKeys::ACTION_ALREADY_HIDDEN             = "ACTION_ALREADY_HIDDEN";
 const string ActionTextKeys::ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM = "ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM";
+const string ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER         = "ACTION_ENRAGED_SHOPKEEPER";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

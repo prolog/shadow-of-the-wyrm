@@ -1,4 +1,5 @@
 #include <boost/tokenizer.hpp>
+#include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
@@ -1140,6 +1141,10 @@ void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current
         // The shopkeeper is justifiably pissed!
         HostilityManager hm;
         hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id());
+
+        IMessageManager& manager = MM::instance(MessageTransmit::MAP, anger_creature, true);
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER));
+        manager.send();
       }
     }
   }
