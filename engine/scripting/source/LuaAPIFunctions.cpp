@@ -321,6 +321,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "load_map", load_map);
   lua_register(L, "has_artifact_in_inventory", has_artifact_in_inventory);
   lua_register(L, "tile_has_creature", tile_has_creature);
+  lua_register(L, "get_creature_original_id", get_creature_original_id);
+  lua_register(L, "remove_threat_from_all", remove_threat_from_all);
 }
 
 // Lua API helper functions
@@ -3913,7 +3915,6 @@ int select_item(lua_State* ls)
 // Set a creature hostile towards another.
 // Argument 1: Creature to set the hostility on.
 // Argument 2: Creature to be hostile towards.
-// Argument 3 (opt): hostility level.
 int set_hostility(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
@@ -5820,6 +5821,77 @@ int tile_has_creature(lua_State* ls)
   }
 
   lua_pushboolean(ls, has_creature);
+  return 1;
+}
+
+int get_creature_original_id(lua_State* ls)
+{
+  string creature_original_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    Game& game = Game::instance();
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature_original_id = creature->get_original_id();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_original_id");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, creature_original_id.c_str());
+  return 1;
+}
+
+int remove_threat_from_all(lua_State* ls)
+{
+  int num_affected = 0;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_original_id = lua_tostring(ls, 1);
+    string threat_id = lua_tostring(ls, 2);
+
+    // Go through all the creatures in the game.  Any whose original ID
+    // matches the provided original ID will remove the given threat ID.
+    Game& game = Game::instance();
+    HostilityManager hm;
+    MapRegistryMap& maps = game.get_map_registry_ref().get_maps_ref();
+
+    for (auto& map_pair : maps)
+    {
+      MapPtr map = map_pair.second;
+
+      if (map != nullptr)
+      {
+        CreatureMap creatures = map->get_creatures();
+
+        for (auto& creature_pair : creatures)
+        {
+          CreaturePtr creature = creature_pair.second;
+
+          if (creature != nullptr && creature->get_original_id() == creature_original_id)
+          {
+            hm.remove_hostility_to_creature(creature, threat_id);
+            num_affected++;            
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to remove_threat_from_all");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, num_affected);
   return 1;
 }
 

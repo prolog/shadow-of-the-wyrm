@@ -14,6 +14,11 @@ local function complete_purchase(purchase_amount, unpaid_amount, shopkeeper_id)
   set_items_paid(PLAYER_ID)
   add_message("SHOPKEEPER_THANKS_SID")
 
+  -- Paying for unpaid items mollifies angry shopkeepers throughout
+  -- the game.
+  local shopk_orig = get_creature_original_id(shopkeeper_id)
+  remove_threat_from_all(shopk_orig, PLAYER_ID)
+
   transfer_item(shopkeeper_id, PLAYER_ID, CURRENCY_ID, purchase_amount)
 end
 

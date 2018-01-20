@@ -1,6 +1,4 @@
 Me:
-- Fix up shopkeeper paying off unpaid stuff before next version, credit 
-  ssteam.
 - Issue with viewing tiles on which sentinel NPCs sit.
 - Dungeons and caverns should have a chance to grow magic trees.
 - Magical orchard (should be 2-3 over the world)
