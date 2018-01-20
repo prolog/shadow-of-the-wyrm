@@ -6,7 +6,7 @@
 using namespace std;
 
 MagicalTreeTileConfiguration::MagicalTreeTileConfiguration()
-: FruitTreeTileConfiguration({})
+: FruitTreeTileConfiguration(FruitProductionMap())
 {
   initialize_fruit_ids();
 }
