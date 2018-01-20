@@ -1,5 +1,5 @@
 Shadow of the Wyrnm v0.7.3 "de Murcia"
-- Version declared December 23, 2017.
+- Version declared December 23, 2017.  Version finalized January 20, 2018.
 
 - Implemented the Hiding skill.  This skill requires selection via the
   Skills menu.  Once selected, a Hiding check is made.  If the player is
@@ -72,7 +72,8 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
   a magical tree, which will grow golden or silver apples.  These trees
   can appear anywhere a regular tree would be generated.
 
-- The look command has been rebound as 'x' (e'x'amine) (ssteam).
+- The look command has been rebound as 'x' (e'x'amine) instead of 'L' 
+  because the shift key is a pain (ssteam).
 
 - Hild now requires only 10 whiteflowers (ssteam).
 
@@ -85,6 +86,8 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
 - Amulets have been reworked so that their unidentified description
   doesn't refer to colour.  They have had colour overrides removed, so
   non-artifacts should almost always appear as a bold yellow '#' (ssteam).
+
+- Stanzas for "Tel and Floridel".
 
 - New items: golden apple, silver apple.
 
@@ -102,7 +105,8 @@ Shadow of the Wyrnm v0.7.3 "de Murcia"
 
   - Using unpaid wands in shops wasn't angering the shopkeeper.
 
-- Stanzas for "Tel and Floridel".
+  - Paying shopkeepers for unpaid goods wasn't globally removing 
+    shopkeeper aggression (ssteam).
 
 Shadow of the Wyrm v0.7.2 "Takemitsu"
 - Version declared November 26, 2017. Version finalized December 23, 2017.
