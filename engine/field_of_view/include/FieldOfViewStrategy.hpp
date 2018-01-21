@@ -11,6 +11,7 @@ class FieldOfViewStrategy
     
   protected:
     void add_point_to_map(CreaturePtr fov_creature, const Coordinate& c, MapPtr view_map, MapPtr fov_map);
+    void set_tile_viewed(const Coordinate& c);
     
     // The "view" flag is the flag that causes the tile to be displayed when
     // redrawing the screen.  This should only be set for the player, or else
