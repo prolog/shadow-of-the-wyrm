@@ -1,5 +1,7 @@
 #include "CurrentCreatureAbilities.hpp"
+#include "CreatureFeatures.hpp"
 #include "FieldOfViewStrategy.hpp"
+#include "Game.hpp"
 
 FieldOfViewStrategy::FieldOfViewStrategy(const bool set_fov_flag)
 : set_fov_tile_view_flag(set_fov_flag)
@@ -17,7 +19,13 @@ void FieldOfViewStrategy::add_point_to_map(CreaturePtr fov_creature, const Coord
   {
     if (set_fov_tile_view_flag && !creature_blinded)
     {
-      tile->set_viewed(true);      
+      // Only set a tile viewed when doing the player's FOV calculations.
+      if (fov_creature != nullptr &&
+          fov_creature->get_id() == CreatureID::CREATURE_ID_PLAYER &&
+          tile->get_viewed() == false)
+      {
+        set_tile_viewed(c);
+      }
     }
 
     if (!creature_blinded || 
@@ -32,3 +40,21 @@ void FieldOfViewStrategy::add_point_to_map(CreaturePtr fov_creature, const Coord
   }
 }
 
+// View maps work with copies of tiles so that non-destructive changes can be
+// made when creatures are hidden, etc.  Because these are copies of the
+// "real" tiles, we need to grab to real tile off the current map to 
+// authoritatively set the viewed flag.
+void FieldOfViewStrategy::set_tile_viewed(const Coordinate& c)
+{
+  MapPtr master_map = Game::instance().get_current_map();
+
+  if (master_map != nullptr)
+  {
+    TilePtr master_tile = master_map->at(c);
+
+    if (master_tile != nullptr)
+    {
+      master_tile->set_viewed(true);
+    }
+  }
+}

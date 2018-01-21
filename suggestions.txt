@@ -1,5 +1,4 @@
 Me:
-- Issue with viewing tiles on which sentinel NPCs sit.
 - Dungeons and caverns should have a chance to grow magic trees.
 - Magical orchard (should be 2-3 over the world)
 - Allow music to not only pacify but enchant (allow for ordering)
@@ -171,6 +170,4 @@ ssteam
 - w->, w-< to autowalk to stairs
 - Descend via '>' while in air.
 - More secrets!
-- Shopkeepers should be more obvious about exits being bad with unpaid.
-- Paying off shopkeepers not working.
 - Balance artifacts - mostly blades

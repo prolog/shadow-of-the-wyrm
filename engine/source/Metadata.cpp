@@ -55,8 +55,10 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // Spanish composer of the 18th century
-  return "\"de Murcia\"";
+  // Referred to as "Milanese", nothing is known of his life.  His music
+  // survives in "Intabolatura de lauto libro quarto", an influential
+  // early publication of Renaissance lute music (Venice, 1508).
+  return "\"Dalza\"";
 }
 
 string Metadata::get_game_version_synopsis() const
