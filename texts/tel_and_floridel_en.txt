@@ -1520,5 +1520,14 @@ a single boy, but also for her gleeful %b
 would-be killers.  Her love was not a ploy, %b
 but given freely even if she'd be destroyed.
 %p
-
+Tel nodded.  "Drop your swords!"  Each man obliged. %b
+The nobles dropped their weapons on the ground, %b
+and felt a sudden emptiness.  Deprived %b
+of land and title, banished by the crown, %b
+each man stood stunned.  Unarmed, they left the ring %b
+of spears for deeper forests, every day %b
+uncertain.  So perhaps, then, it would bring %b
+some comfort that the king would find the grace %b
+to spare their families from the same unhappy fate.
+%p
 
