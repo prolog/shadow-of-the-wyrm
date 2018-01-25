@@ -37644,6 +37644,13 @@
 			<CalendarDay>328</CalendarDay>
 		</Day>
 	</Calendar>
+	<StartingLocations>
+		<StartingLocation>
+			<Row>96</Row>
+			<Col>96</Col>
+			<DescriptionSID>STARTING_LOCATION_ISEN_DUN</DescriptionSID>
+		</StartingLocation>
+	</StartingLocations>
 	<Scripts>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
