@@ -98,6 +98,7 @@ enum struct ClassIdentifier
   CLASS_ID_AQUATIC_VEGETATION_TILE,
   CLASS_ID_FLOATING_TOWER_TILE,
   CLASS_ID_VOID_TILE,
+  CLASS_ID_MAGICAL_TREE_TILE,
   CLASS_ID_FEATURE,
   CLASS_ID_ALTAR,
   CLASS_ID_ENTRANCE,
@@ -293,7 +294,7 @@ enum struct ClassIdentifier
   CLASS_ID_SHOP,
   CLASS_ID_SHOPS_TIME_OBSERVER,
   CLASS_ID_STATUS,
-  CLASS_ID_MAGICAL_TREE_TILE
+  CLASS_ID_STARTING_LOCATION
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go
