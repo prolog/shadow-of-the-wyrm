@@ -10,6 +10,7 @@
 #include "XMLItemsReaders.hpp"
 #include "XMLRacesReader.hpp"
 #include "XMLSpellsReader.hpp"
+#include "XMLStartingLocationsReader.hpp"
 #include "XMLTilesReader.hpp"
 #include "XMLTrapsReader.hpp"
 #include "XMLScriptsReader.hpp"
@@ -29,6 +30,7 @@ class XMLConfigurationReader
     void set_new_file(const std::string& xml_filename);
 
     std::map<int, CalendarDay> get_calendar_days();
+    std::vector<StartingLocation> get_starting_locations();
     DeityMap get_deities();
     RaceMap get_races();
     ClassMap get_classes();
@@ -50,6 +52,7 @@ class XMLConfigurationReader
 
     // Member variables for reading the various XML nodes and setting the data into world objects.
     XMLCalendarReader calendar_reader;
+    XMLStartingLocationsReader sl_reader;
     XMLClassesReader classes_reader;
     XMLDeitiesReader deities_reader;
     XMLCreaturesReader creatures_reader;

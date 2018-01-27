@@ -19,6 +19,7 @@
 #include "ScriptEngine.hpp"
 #include "Settings.hpp"
 #include "Spell.hpp"
+#include "StartingLocation.hpp"
 #include "Trap.hpp"
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
@@ -87,6 +88,9 @@ class Game : public ISerializable
 
     void set_calendar_days(const std::map<int, CalendarDay>& new_calendar_days);
     std::map<int, CalendarDay>& get_calendar_days_ref();
+
+    void set_starting_locations(const std::vector<StartingLocation>& new_starting_locations);
+    std::vector<StartingLocation> get_starting_locations() const;
 
     CreaturePtr get_current_player() const;
 
@@ -200,6 +204,7 @@ class Game : public ISerializable
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
     std::vector<TrapPtr> trap_info;
     std::map<int, CalendarDay> calendar_days;
+    std::vector<StartingLocation> starting_locations;
 
     // The current list of game worlds.  For a long, long time, this should always be size=1.
     std::vector<WorldPtr> worlds;

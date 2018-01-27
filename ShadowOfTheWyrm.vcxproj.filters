@@ -1941,9 +1941,6 @@
     <ClInclude Include="engine\XML\include\XMLSkillsReaders.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\XML\include\XMLStaffReader.hpp">
-      <Filter>Header Files\engine\XML\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\include\XMLTilesReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
@@ -4110,6 +4107,9 @@
     <ClInclude Include="world\include\StartingLocation.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLStartingLocationsReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5280,9 +5280,6 @@
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLSkillsReaders.cpp">
-      <Filter>Source Files\engine\XML\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\XML\source\XMLStaffReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLTilesReader.cpp">
@@ -8173,6 +8170,9 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\StartingLocation_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

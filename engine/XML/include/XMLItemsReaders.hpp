@@ -17,7 +17,6 @@
 #include "XMLRingReader.hpp"
 #include "XMLScrollReader.hpp"
 #include "XMLSpellbookReader.hpp"
-#include "XMLStaffReader.hpp"
 #include "XMLToolReader.hpp"
 #include "XMLWandReader.hpp"
 #include "XMLWeaponsReaders.hpp"
@@ -60,7 +59,6 @@ class XMLItemsReader
     XMLRingReader ring_reader;
     XMLScrollReader scroll_reader;
     XMLSpellbookReader spellbook_reader;
-    XMLStaffReader staff_reader;
     XMLToolReader tool_reader;
     XMLWandReader wand_reader;
 };

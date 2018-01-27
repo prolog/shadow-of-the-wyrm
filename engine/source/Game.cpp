@@ -288,6 +288,15 @@ map<int, CalendarDay>& Game::get_calendar_days_ref()
   return calendar_days;
 }
 
+void Game::set_starting_locations(const vector<StartingLocation>& new_starting_locations)
+{
+  starting_locations = new_starting_locations;
+}
+
+vector<StartingLocation> Game::get_starting_locations() const
+{
+  return starting_locations;
+}
 
 CreaturePtr Game::get_current_player() const
 {
@@ -1078,6 +1087,13 @@ bool Game::serialize(ostream& stream) const
     cd_pair.second.serialize(stream);
   }
 
+  Serialize::write_size_t(stream, starting_locations.size());
+
+  for (const auto& sl : starting_locations)
+  {
+    sl.serialize(stream);
+  }
+
   Log::instance().trace("Game::serialize - end");
 
   return true;
@@ -1267,6 +1283,18 @@ bool Game::deserialize(istream& stream)
     day_info.deserialize(stream);
 
     calendar_days[day_of_year] = day_info;
+  }
+
+  size_t sl_sz = 0;
+  Serialize::read_size_t(stream, sl_sz);
+  starting_locations.clear();
+
+  for (size_t i = 0; i < sl_sz; i++)
+  {
+    StartingLocation sl;
+    sl.deserialize(stream);
+
+    starting_locations.push_back(sl);
   }
 
   Log::instance().trace("Game::deserialize - end");
