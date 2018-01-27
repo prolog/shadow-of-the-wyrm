@@ -202,6 +202,9 @@ void ShadowOfTheWyrmEngine::setup_game()
   map<int, CalendarDay> calendar_days = reader.get_calendar_days();
   game.set_calendar_days(calendar_days);
 
+  vector<StartingLocation> starting_locations = reader.get_starting_locations();
+  game.set_starting_locations(starting_locations);
+
   // This switches files/namespaces - so should be last.
   vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
   game.set_custom_maps(custom_maps);

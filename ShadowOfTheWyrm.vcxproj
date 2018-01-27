@@ -1119,7 +1119,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\XML\include\XMLScrollReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLSkillsReaders.hpp" />
     <ClInclude Include="engine\XML\include\XMLSpellsReader.hpp" />
-    <ClInclude Include="engine\XML\include\XMLStaffReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLStartingLocationsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLTilesReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLToolReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLTrapsReader.hpp" />
@@ -1891,6 +1891,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBasicFeatureCMReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLBasicFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp" />
     <ClCompile Include="source\ColourUtils.cpp" />
     <ClCompile Include="source\CompilationDetails.cpp" />
     <ClCompile Include="controller\source\Controller.cpp" />
@@ -3327,7 +3328,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\XML\source\XMLScrollReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSkillsReaders.cpp" />
     <ClCompile Include="engine\XML\source\XMLSpellsReader.cpp" />
-    <ClCompile Include="engine\XML\source\XMLStaffReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLTilesReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLToolReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLTrapsReader.cpp" />

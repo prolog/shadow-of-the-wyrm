@@ -1,4 +1,5 @@
 Me:
+- Remove XMLStaffReader
 - Code to read in the starting locations.  When 1, set the starting loc.
   When > 1, create screen.
 - Need to remove a line from little_island.lua.  Generate Carcassia,

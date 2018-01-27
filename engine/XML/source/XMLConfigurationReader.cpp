@@ -42,6 +42,12 @@ map<int, CalendarDay> XMLConfigurationReader::get_calendar_days()
   return calendar_reader.get_calendar_days(calendar_node);
 }
 
+vector<StartingLocation> XMLConfigurationReader::get_starting_locations()
+{
+  XMLNode starting_locations_node = XMLUtils::get_next_element_by_local_name(root, "StartingLocations");
+  return sl_reader.get_starting_locations(starting_locations_node);
+}
+
 pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creatures()
 {
   XMLNode creatures_node = XMLUtils::get_next_element_by_local_name(root, "Creatures");
