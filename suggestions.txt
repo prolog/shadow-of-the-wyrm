@@ -1,9 +1,6 @@
 Me:
+- Script for Glich
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
-- "Jump into the water? [y/n]  [y/n]"
-- Update central_lands.lua to add Carcassia details - shouldn't be a
-  village.
-- Invisible character outside the walls of Carcassia - "Glich".
 - The potential starting locations should, once selected by the new game
   screen, add the starting location using the existing key.
 - Dungeons and caverns should have a chance to grow magic trees.
