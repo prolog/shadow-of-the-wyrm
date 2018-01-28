@@ -8,8 +8,8 @@
 
 using namespace std;
 
-StartingLocationSelectionScreen::StartingLocationSelectionScreen(DisplayPtr new_display, const StartingLocationMap& new_sm)
-: Screen(new_display), sm(new_sm)
+StartingLocationSelectionScreen::StartingLocationSelectionScreen(DisplayPtr new_display, const string& creature_synop, const StartingLocationMap& new_sm)
+: Screen(new_display), creature_synopsis(creature_synop), sm(new_sm)
 {
   initialize();
 }
@@ -19,6 +19,9 @@ StartingLocationSelectionScreen::StartingLocationSelectionScreen(DisplayPtr new_
 // the game begins.
 void StartingLocationSelectionScreen::initialize()
 {
+  ostringstream synop;
+  synop << "[" << creature_synopsis << "]";
+
   TextComponentPtr sl_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_STARTING_LOCATION));
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
@@ -49,6 +52,7 @@ void StartingLocationSelectionScreen::initialize()
   options->add_option_description("");
 
   vector<ScreenComponentPtr> cur_page;
+  cur_page.push_back(make_shared<TextComponent>(synop.str()));
   cur_page.push_back(sl_selection_text);
   cur_page.push_back(options);
 
