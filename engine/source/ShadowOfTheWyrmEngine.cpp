@@ -11,6 +11,7 @@
 #include "DisplayTile.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "HighScoreScreen.hpp"
 #include "ItemDescriptionRandomizer.hpp"
 #include "ItemIdentifier.hpp"
@@ -29,6 +30,7 @@
 #include "Settings.hpp"
 #include "Setting.hpp"
 #include "SexSelectionScreen.hpp"
+#include "StartingLocationSelectionScreen.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "WelcomeScreen.hpp"
@@ -202,7 +204,7 @@ void ShadowOfTheWyrmEngine::setup_game()
   map<int, CalendarDay> calendar_days = reader.get_calendar_days();
   game.set_calendar_days(calendar_days);
 
-  vector<StartingLocation> starting_locations = reader.get_starting_locations();
+  StartingLocationMap starting_locations = reader.get_starting_locations();
   game.set_starting_locations(starting_locations);
 
   // This switches files/namespaces - so should be last.
@@ -264,12 +266,17 @@ bool ShadowOfTheWyrmEngine::process_new_game_random()
   // Random allowable deity
   DeityPtr deity = CreatureUtils::get_random_deity_for_race(race);
 
+  // Random starting location
+  StartingLocationMap sm = Game::instance().get_starting_locations();
+  StartingLocation sl = GameUtils::get_random_starting_location(sm);
+
   if (race && cur_class && deity)
   {
     ccd.set_sex(sex);
     ccd.set_race_id(race->get_race_id());
     ccd.set_class_id(cur_class->get_class_id());
     ccd.set_deity_id(deity->get_id());
+    ccd.set_starting_location(sl);
   }
 
   // Get name, and start.
@@ -445,7 +452,35 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  CharacterCreationDetails ccd(sex, selected_race_id, selected_class_id, selected_deity_id);
+  string default_starting_location_id = game.get_settings_ref().get_setting(Setting::DEFAULT_STARTING_LOCATION_ID);
+  StartingLocationMap sm = game.get_starting_locations();
+  StartingLocation sl;
+  bool prompt_user_for_sl_selection = true;
+  auto sm_it = sm.find(default_starting_location_id);
+
+  if (sm_it != sm.end())
+  {
+    sl = sm_it->second;
+    prompt_user_for_sl_selection = false;
+  }
+  else
+  {
+    StartingLocationSelectionScreen sl_selection(display, sm);
+    string sl_sidx = sl_selection.display();
+
+    if (opt.is_random_option(sl_sidx.at(0)))
+    {
+      sl = GameUtils::get_random_starting_location(sm);
+    }
+    else
+    {
+      int sl_idx = Char::keyboard_selection_char_to_int(sl_sidx.at(0));
+      string selected_starting_location_id = Integer::to_string_key_at_given_position_in_map(sm, sl_idx);
+      sl = sm.find(selected_starting_location_id)->second;
+    }
+  }
+
+  CharacterCreationDetails ccd(sex, selected_race_id, selected_class_id, selected_deity_id, sl);
   return process_name_and_start(ccd);
 }
 
@@ -518,7 +553,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
     if (item && item->get_status() == ItemStatus::ITEM_STATUS_CURSED) item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
   }
 
-  game.create_new_world(player);
+  game.create_new_world(player, ccd.get_starting_location());
 
   // Run the "special day" script.
   game.get_script_engine_ref().execute(game.get_script(ScriptConstants::SPECIAL_DAY_SCRIPT), {});

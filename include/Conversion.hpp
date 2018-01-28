@@ -106,9 +106,37 @@ public:
     return key;
   }
 
-protected:
-  Integer();
-  ~Integer();
+  template <class T> inline static std::string to_string_key_at_given_position_in_map(const std::map<std::string, T>& map, const int pos)
+  {
+    int cur = -1;
+    std::string key;
+
+    if (!map.empty())
+    {
+      typename std::map<std::string, T>::const_iterator map_it = map.begin();
+
+      while (map_it != map.end() && cur <= pos)
+      {
+        auto second_val = map_it->second;
+        cur++;
+
+        if (cur == pos)
+        {
+          key = map_it->first;
+          break;
+        }
+
+        map_it++;
+      }
+
+    }
+
+    return key;
+  }
+
+  protected:
+    Integer();
+    ~Integer();
 };
 
 class Uuid

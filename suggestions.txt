@@ -1,9 +1,9 @@
 Me:
-- Remove XMLStaffReader
-- Code to read in the starting locations.  When 1, set the starting loc.
-  When > 1, create screen.
-- Need to remove a line from little_island.lua.  Generate Carcassia,
-  ensure it looks right, remove central_lands.lua.
+- refactor the huge function in ShadowOfTheWyrmEngine.cpp
+- Synopsis on starting location selection screen
+- "Jump into the water? [y/n]  [y/n]"
+- Update central_lands.lua to add Carcassia details - shouldn't be a
+  village.
 - The potential starting locations should, once selected by the new game
   screen, add the starting location using the existing key.
 - Dungeons and caverns should have a chance to grow magic trees.

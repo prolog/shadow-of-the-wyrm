@@ -3,6 +3,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -137,4 +138,25 @@ bool GameUtils::is_player_among_creatures(CreaturePtr creature1, CreaturePtr cre
 double GameUtils::get_seconds(Game& game)
 {
   return game.get_current_world()->get_calendar().get_seconds();
+}
+
+StartingLocation GameUtils::get_random_starting_location(const StartingLocationMap& sm)
+{
+  StartingLocation sl;
+
+  int rnd_idx = RNG::range(0, sm.size() - 1);
+  int cnt = 0;
+
+  for (auto sm_it = sm.begin(); sm_it != sm.end(); sm_it++)
+  {
+    if (cnt == rnd_idx)
+    {
+      sl = sm_it->second;
+      break;
+    }
+
+    cnt++;
+  }
+
+  return sl;
 }

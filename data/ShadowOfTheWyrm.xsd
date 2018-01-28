@@ -830,6 +830,7 @@
 		<xs:element name="Col" type="xs:integer"/>
 		<xs:element name="DescriptionSID" type="xs:string"/>
 	</xs:sequence>
+	<xs:attribute name="id" type="tns:Identifier"/>
 </xs:complexType>
 <xs:complexType name="GeneratorFilters">
 	<xs:sequence>

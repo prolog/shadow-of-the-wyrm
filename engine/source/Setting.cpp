@@ -30,6 +30,7 @@ const string Setting::DEFAULT_SEX = "default_sex";
 const string Setting::DEFAULT_RACE_ID = "default_race_id";
 const string Setting::DEFAULT_CLASS_ID = "default_class_id";
 const string Setting::DEFAULT_DEITY_ID = "default_deity_id";
+const string Setting::DEFAULT_STARTING_LOCATION_ID = "default_starting_location_id";
 const string Setting::DEFAULT_NAME = "default_name";
 const string Setting::USERNAME_IS_CHARACTER_NAME = "username_is_character_name";
 const string Setting::MAX_CHARACTERS_PER_USER = "max_characters_per_user";

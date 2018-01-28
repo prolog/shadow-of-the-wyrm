@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <string>
 #include "common.hpp"
 #include "ISerializable.hpp"
@@ -7,8 +8,11 @@ class StartingLocation : public ISerializable
 {
   public:
     StartingLocation();
-    StartingLocation(const Coordinate& sloc, const std::string& desc_sid);
+    StartingLocation(const std::string& ident, const Coordinate& sloc, const std::string& desc_sid);
     bool operator==(const StartingLocation sl2) const;
+
+    void set_id(const std::string& new_id);
+    std::string get_id() const;
 
     void set_location(const Coordinate& new_location);
     Coordinate get_location() const;
@@ -20,6 +24,7 @@ class StartingLocation : public ISerializable
     bool deserialize(std::istream& stream) override;
 
   protected:
+    std::string id;
     Coordinate location;
     std::string description_sid;
 
@@ -27,3 +32,4 @@ class StartingLocation : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 };
 
+using StartingLocationMap = std::map<std::string, StartingLocation>;

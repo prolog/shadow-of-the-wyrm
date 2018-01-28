@@ -935,6 +935,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\screens\include\SexSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\SkillsScreen.hpp" />
     <ClInclude Include="engine\screens\include\SpellSelectionScreen.hpp" />
+    <ClInclude Include="engine\screens\include\StartingLocationSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\TextComponent.hpp" />
     <ClInclude Include="engine\screens\include\TextDisplayFormatter.hpp" />
     <ClInclude Include="engine\screens\include\TextDisplayScreen.hpp" />
@@ -1809,6 +1810,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\screens\source\CreateItemScreen.cpp" />
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
+    <ClCompile Include="engine\screens\source\StartingLocationSelectionScreen.cpp" />
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
     <ClCompile Include="engine\scripting\source\DropScript.cpp" />
     <ClCompile Include="engine\scripting\source\KillScript.cpp" />

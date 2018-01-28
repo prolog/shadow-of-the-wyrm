@@ -41,9 +41,6 @@ for k,v in pairs(little_island) do
   v:insert()
 end
 
--- The game starts out on Little Island, at Isen Dun.
-map_add_location("world_map", "STARTING_LOCATION", 96, 96)
-
 -- Shop details for Isen Dun
 local shop_id = "edmund_shop"
 local shopkeeper_id = get_creature_id(15, 28, isen_dun_id)

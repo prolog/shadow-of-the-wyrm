@@ -30,7 +30,7 @@ class XMLConfigurationReader
     void set_new_file(const std::string& xml_filename);
 
     std::map<int, CalendarDay> get_calendar_days();
-    std::vector<StartingLocation> get_starting_locations();
+    StartingLocationMap get_starting_locations();
     DeityMap get_deities();
     RaceMap get_races();
     ClassMap get_classes();

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "CreatureFeatures.hpp"
+#include "StartingLocation.hpp"
 
 // Encapsulates the sex, race, class, and deity selected at the
 // new game screen.  These can be user-selected (as when the user selects
@@ -10,7 +11,7 @@ class CharacterCreationDetails
 {
   public:
     CharacterCreationDetails();
-    CharacterCreationDetails(const CreatureSex cs, const std::string& r_id, const std::string& c_id, const std::string& d_id);
+    CharacterCreationDetails(const CreatureSex cs, const std::string& r_id, const std::string& c_id, const std::string& d_id, const StartingLocation& sl);
 
     void set_sex(const CreatureSex new_sex);
     CreatureSex get_sex() const;
@@ -24,10 +25,14 @@ class CharacterCreationDetails
     void set_deity_id(const std::string& new_deity_id);
     std::string get_deity_id() const;
 
+    void set_starting_location(const StartingLocation& new_starting_location);
+    StartingLocation get_starting_location() const;
+
   protected:
     CreatureSex sex;
     std::string race_id;
     std::string class_id;
     std::string deity_id;
+    StartingLocation starting_location;
 };
 
