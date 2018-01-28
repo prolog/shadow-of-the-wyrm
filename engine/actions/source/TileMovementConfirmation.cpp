@@ -38,14 +38,14 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
 
       if (!confirmation_sid.empty())
       {
-        confirmation_details.second = confirmation_sid;
+        confirmation_details.second = TextMessages::get_confirmation_message(confirmation_sid);
       }
     }
     else if (MapUtils::is_in_shop_or_adjacent(map, old_tile_coords).first &&
             !MapUtils::is_in_shop_or_adjacent(map, new_tile_coords).first &&
              creature->has_unpaid_items())
     {
-      confirmation_details = {true, ActionTextKeys::ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM};
+      confirmation_details = {true, TextMessages::get_confirmation_message(ActionTextKeys::ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM)};
     }
     else
     {
@@ -55,11 +55,6 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
       {
         confirmation_details = swimming;
       }
-    }
-
-    if (confirmation_details.first && !confirmation_details.second.empty())
-    {
-      confirmation_details.second = TextMessages::get_confirmation_message(confirmation_details.second);
     }
   }
 

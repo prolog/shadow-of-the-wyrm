@@ -1,12 +1,18 @@
 Shadow of the Wyrm v0.7.4 "Dalza"
 - Version declared January 20, 2018.
 
+- There are now two starting locations: on Little Island, as before; and
+  on the Isle of Carcassia.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
 
   - The code to make copies of tiles for view maps was causing sentinel
     creatures' tiles to be marked as unviewed.
+
+  - When confirming whether to move to a dangerous tile, an extra "[y/n]"
+    could be added.
 
 Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.
