@@ -2,9 +2,9 @@
 
 using namespace std;
 
-vector<StartingLocation> XMLStartingLocationsReader::get_starting_locations(const XMLNode& starting_locations_node)
+StartingLocationMap XMLStartingLocationsReader::get_starting_locations(const XMLNode& starting_locations_node)
 {
-  vector<StartingLocation> starting_locations;
+  StartingLocationMap starting_locations;
 
   if (!starting_locations_node.is_null())
   {
@@ -16,7 +16,7 @@ vector<StartingLocation> XMLStartingLocationsReader::get_starting_locations(cons
       StartingLocation sl;
       parse_starting_location(sl, sl_node);
 
-      starting_locations.push_back(sl);
+      starting_locations.insert(make_pair(sl.get_id(), sl));
     }
   }
 
@@ -27,6 +27,9 @@ void XMLStartingLocationsReader::parse_starting_location(StartingLocation& sl, c
 {
   if (!starting_location_node.is_null())
   {
+    string sl_id = XMLUtils::get_attribute_value(starting_location_node, "id");
+    sl.set_id(sl_id);
+
     int row = XMLUtils::get_child_node_int_value(starting_location_node, "Row");
     int col = XMLUtils::get_child_node_int_value(starting_location_node, "Col");
 

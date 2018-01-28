@@ -288,12 +288,12 @@ map<int, CalendarDay>& Game::get_calendar_days_ref()
   return calendar_days;
 }
 
-void Game::set_starting_locations(const vector<StartingLocation>& new_starting_locations)
+void Game::set_starting_locations(const StartingLocationMap& new_starting_locations)
 {
   starting_locations = new_starting_locations;
 }
 
-vector<StartingLocation> Game::get_starting_locations() const
+StartingLocationMap Game::get_starting_locations() const
 {
   return starting_locations;
 }
@@ -306,7 +306,7 @@ CreaturePtr Game::get_current_player() const
 
 // Create the new world, and set the player at the special "player's starting location" point.
 // Then, read in the XML areas, and overlay that on top.
-void Game::create_new_world(CreaturePtr creature)
+void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
 {
   WorldGenerator world_generator;
   MapPtr current_world = world_generator.generate();
@@ -322,6 +322,12 @@ void Game::create_new_world(CreaturePtr creature)
 
   CustomAreaGenerator cag(FileConstants::WORLD_MAP_AREAS_FILE);
   cag.overlay_custom_areas(current_world);
+
+  MapPtr world_map = get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
+  if (world_map != nullptr)
+  {
+    world_map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, sl.get_location());
+  }
 
   TilePtr tile = current_world->get_tile_at_location(WorldMapLocationTextKeys::STARTING_LOCATION);
 
@@ -1089,9 +1095,10 @@ bool Game::serialize(ostream& stream) const
 
   Serialize::write_size_t(stream, starting_locations.size());
 
-  for (const auto& sl : starting_locations)
+  for (const auto& sl_pair : starting_locations)
   {
-    sl.serialize(stream);
+    Serialize::write_string(stream, sl_pair.first);
+    sl_pair.second.serialize(stream);
   }
 
   Log::instance().trace("Game::serialize - end");
@@ -1292,9 +1299,12 @@ bool Game::deserialize(istream& stream)
   for (size_t i = 0; i < sl_sz; i++)
   {
     StartingLocation sl;
+    string sl_id;
+
+    Serialize::read_string(stream, sl_id);
     sl.deserialize(stream);
 
-    starting_locations.push_back(sl);
+    starting_locations.insert(make_pair(sl_id, sl));
   }
 
   Log::instance().trace("Game::deserialize - end");

@@ -7,8 +7,8 @@ CharacterCreationDetails::CharacterCreationDetails()
 {
 }
 
-CharacterCreationDetails::CharacterCreationDetails(const CreatureSex cs, const string& r_id, const string& c_id, const string& d_id)
-: sex(cs), race_id(r_id), class_id(c_id), deity_id(d_id)
+CharacterCreationDetails::CharacterCreationDetails(const CreatureSex cs, const string& r_id, const string& c_id, const string& d_id, const StartingLocation& sl)
+: sex(cs), race_id(r_id), class_id(c_id), deity_id(d_id), starting_location(sl)
 {
 }
 
@@ -50,6 +50,16 @@ void CharacterCreationDetails::set_deity_id(const string& new_deity_id)
 string CharacterCreationDetails::get_deity_id() const
 {
   return deity_id;
+}
+
+void CharacterCreationDetails::set_starting_location(const StartingLocation& new_starting_location)
+{
+  starting_location = new_starting_location;
+}
+
+StartingLocation CharacterCreationDetails::get_starting_location() const
+{
+  return starting_location;
 }
 
 #ifdef UNIT_TESTS

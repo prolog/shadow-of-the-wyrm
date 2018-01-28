@@ -47,6 +47,7 @@ class TextKeys
     static const std::string SELECT_RACE;
     static const std::string SELECT_CLASS;
     static const std::string SELECT_DEITY;
+    static const std::string SELECT_STARTING_LOCATION;
     static const std::string SELECT_SAVED_GAME;
     static const std::string DEITY;
     static const std::string RACE_1_NAME;

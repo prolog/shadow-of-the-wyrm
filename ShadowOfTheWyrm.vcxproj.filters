@@ -4110,6 +4110,9 @@
     <ClInclude Include="engine\XML\include\XMLStartingLocationsReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\screens\include\StartingLocationSelectionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8173,6 +8176,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\StartingLocationSelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

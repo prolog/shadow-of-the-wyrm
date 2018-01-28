@@ -8,8 +8,8 @@ StartingLocation::StartingLocation()
 {
 }
 
-StartingLocation::StartingLocation(const Coordinate& sloc, const string& desc_sid)
-: location(sloc), description_sid(desc_sid)
+StartingLocation::StartingLocation(const string& ident, const Coordinate& sloc, const string& desc_sid)
+: id(ident), location(sloc), description_sid(desc_sid)
 {
 }
 
@@ -17,10 +17,21 @@ bool StartingLocation::operator==(const StartingLocation sl2) const
 {
   bool result = true;
 
+  result = result && (id == sl2.id);
   result = result && (location == sl2.location);
   result = result && (description_sid == sl2.description_sid);
 
   return result;
+}
+
+void StartingLocation::set_id(const string& new_id)
+{
+  id = new_id;
+}
+
+string StartingLocation::get_id() const
+{
+  return id;
 }
 
 void StartingLocation::set_location(const Coordinate& new_location)
@@ -45,6 +56,7 @@ string StartingLocation::get_description_sid() const
 
 bool StartingLocation::serialize(ostream& stream) const
 {
+  Serialize::write_string(stream, id);
   Serialize::write_int(stream, location.first);
   Serialize::write_int(stream, location.second);
   Serialize::write_string(stream, description_sid);
@@ -54,6 +66,7 @@ bool StartingLocation::serialize(ostream& stream) const
 
 bool StartingLocation::deserialize(istream& stream)
 {
+  Serialize::read_string(stream, id);
   Serialize::read_int(stream, location.first);
   Serialize::read_int(stream, location.second);
   Serialize::read_string(stream, description_sid);

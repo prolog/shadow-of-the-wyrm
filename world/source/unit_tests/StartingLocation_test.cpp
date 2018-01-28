@@ -9,7 +9,7 @@ TEST(SW_World_StartingLocation, serialization_id)
 
 TEST(SW_World_StartingLocation, saveload)
 {
-  StartingLocation sl(make_pair(3, 4), "cdefg");
+  StartingLocation sl("city", make_pair(3, 4), "cdefg");
   StartingLocation sl2;
   
   ostringstream oss;

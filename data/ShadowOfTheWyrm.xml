@@ -37645,10 +37645,15 @@
 		</Day>
 	</Calendar>
 	<StartingLocations>
-		<StartingLocation>
+		<StartingLocation id="01_isen_dun">
 			<Row>96</Row>
 			<Col>96</Col>
 			<DescriptionSID>STARTING_LOCATION_ISEN_DUN</DescriptionSID>
+		</StartingLocation>
+		<StartingLocation id="02_carcassia">
+			<Row>45</Row>
+			<Col>50</Col>
+			<DescriptionSID>STARTING_LOCATION_CARCASSIA</DescriptionSID>
 		</StartingLocation>
 	</StartingLocations>
 	<Scripts>
