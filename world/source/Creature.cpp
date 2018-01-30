@@ -1744,6 +1744,12 @@ bool Creature::serialize(ostream& stream) const
 bool Creature::deserialize(istream& stream)
 {
   Serialize::read_string(stream, id);
+
+  if (id == "player")
+  {
+    int x = 1;
+  }
+
   Serialize::read_string(stream, original_id);
   Serialize::read_bool(stream, is_player);
 

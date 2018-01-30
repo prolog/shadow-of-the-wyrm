@@ -26417,12 +26417,12 @@
 				<NumDice>1</NumDice>
 				<NumSides>30</NumSides>
 				<Type>10</Type>
-			</Damage> <!--
+			</Damage>
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/glich.lua</Script>
 				</ChatScript>
-			</EventScripts> -->
+			</EventScripts>
 		</Creature>
 	</Creatures>
 	<Spells>
