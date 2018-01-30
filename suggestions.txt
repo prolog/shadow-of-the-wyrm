@@ -1,6 +1,7 @@
 Me:
-- Script for Glich
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
+- Undiggable location in town accessible only by teleporting from a certain
+  square, or from a hidden staircase in a "lower map" beneath the city.
 - The potential starting locations should, once selected by the new game
   screen, add the starting location using the existing key.
 - Dungeons and caverns should have a chance to grow magic trees.
@@ -175,3 +176,6 @@ ssteam
 - Descend via '>' while in air.
 - More secrets!
 - Balance artifacts - mostly blades
+
+aotdev
+- Status/stats lines wrap weirdly with larger terminal sizes
