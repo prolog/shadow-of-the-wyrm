@@ -7,6 +7,9 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - On the south-eastern tip of the Isle of Carcassia is the great city of
   Carcassia.
 
+- The "no dig" flag can now be set at the tile level, allowing a general
+  map that is diggable, but sections that are not.
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich.

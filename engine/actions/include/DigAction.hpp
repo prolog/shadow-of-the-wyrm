@@ -20,7 +20,7 @@ class DigAction : public IActionManager
 
     DigAction();
 
-    bool add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr map) const;
+    bool add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr map, TilePtr tile) const;
     void add_cannot_dig_on_tile_super_type_message(CreaturePtr creature) const;
     TilePtr dig_tile(TilePtr adjacent_tile) const;
     bool tile_super_type_supports_digging(const TileSuperType tst) const;
