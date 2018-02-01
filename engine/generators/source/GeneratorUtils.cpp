@@ -196,6 +196,11 @@ int GeneratorUtils::generate_traps(const MapPtr map, const int num_traps)
 // Generate a trap with a given ID and place it at the given coordinates.
 void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int col, const vector<TrapPtr>& traps, const string& trap_id, const bool trap_triggered)
 {
+  if (map == nullptr)
+  {
+    Log::instance().error("Cannot generate traps on a null map.");
+  }
+
   if (!traps.empty())
   {
     TrapPtr selected_trap;
