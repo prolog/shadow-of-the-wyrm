@@ -849,6 +849,7 @@
 		<xs:element name="Damage" type="tns:Damage"/>
 		<xs:element name="Effect" type="tns:EffectType" minOccurs="0"/>
 		<xs:element name="Uses" type="xs:integer"/>
+		<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>
 </xs:complexType>

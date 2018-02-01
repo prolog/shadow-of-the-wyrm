@@ -28457,6 +28457,19 @@
 			<Effect>25</Effect>
 			<Uses>3</Uses>
 		</Trap>
+		<Trap id="teleport_trap">
+			<DescriptionSID>TRAP_TELEPORT_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_TELEPORT_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>*</TriggerSymbol>
+			<PlayerDamageMessageSID>TRAP_TELEPORT_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>1</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Effect>5</Effect>
+			<Uses>5</Uses>
+		</Trap>
 	</Traps>
 	<Items>
 		<Amulets>
