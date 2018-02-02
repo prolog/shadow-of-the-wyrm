@@ -142,7 +142,7 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   if (effect != EffectType::EFFECT_TYPE_NULL)
   {
     Modifier m;
-    EffectPtr effectp = EffectFactory::create_effect(effect, m, {}, "", creature_id);
+    EffectPtr effectp = EffectFactory::create_effect(effect, m, trap->get_additional_properties(), "", creature_id);
 
     if (creature != nullptr)
     {

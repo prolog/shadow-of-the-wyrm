@@ -83,11 +83,6 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(CreaturePtr
         add_point_to_map(fov_creature, c, view_map, fov_map);
       }
 
-      if (tile && tile->has_creature() && tile->get_creature()->get_original_id() == "the_blacksmith")
-      {
-        int x = 1;
-      }
-
       if (tile->get_is_blocking())
       {
         return;

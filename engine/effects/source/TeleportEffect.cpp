@@ -4,6 +4,7 @@
 #include "Conversion.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "FeatureProperties.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
@@ -17,7 +18,7 @@ using namespace std;
 const string TeleportEffect::TELEPORT_BLINK = "TELEPORT_BLINK";
 
 TeleportEffect::TeleportEffect()
-: blink_effect(false)
+: blink_effect(false), teleport_location({false, {-1,-1}})
 {
 }
 
@@ -101,17 +102,30 @@ bool TeleportEffect::teleport(CreaturePtr creature)
 
 void TeleportEffect::read_properties(const map<string, string>& properties)
 {
-  auto p_it_blink = properties.find(TELEPORT_BLINK);
+  auto p_it = properties.find(TELEPORT_BLINK);
 
-  if (p_it_blink != properties.end())
+  if (p_it != properties.end())
   {
     try
     {
-      blink_effect = String::to_bool(p_it_blink->second);
+      blink_effect = String::to_bool(p_it->second);
     }
     catch (...)
     {
       Log::instance().error("Could not convert blink effect value!");
+    }
+  }
+
+  p_it = properties.find(FeatureProperties::FEATURE_PROPERTIES_TELEPORT_LOCATION);
+
+  if (p_it != properties.end())
+  {
+    vector<string> coords = String::create_string_vector_from_csv_string(p_it->second);
+
+    if (coords.size() == 2)
+    {
+      teleport_location.first = true;
+      teleport_location.second = {String::to_int(coords.at(0)), String::to_int(coords.at(1))};
     }
   }
 }
@@ -122,16 +136,14 @@ bool TeleportEffect::blink(CreaturePtr creature, MapPtr current_map, TilePtr old
 
   if (creature && current_map && old_tile)
   {
-    vector<string> keys;
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-    TilesContainer tiles = fov_map->get_tiles();
-
-    for (const auto& pair : tiles)
+    vector<string> keys = get_appropriate_keys(fov_map, teleport_location);
+    TilesContainer tiles;
+    
+    if (fov_map != nullptr)
     {
-      keys.push_back(pair.first);
+      tiles = current_map->get_tiles();
     }
-
-    shuffle(keys.begin(), keys.end(), RNG::get_engine());
 
     while (!keys.empty() && !teleported)
     {
@@ -169,6 +181,12 @@ bool TeleportEffect::teleport(CreaturePtr creature, MapPtr map, TilePtr old_tile
       int col = RNG::range(0, cols);
 
       Coordinate c(row, col);
+
+      if (teleport_location.first == true)
+      {
+        c = teleport_location.second;
+      }
+
       TilePtr tile = map->at(c);
 
       if (tile && !tile->get_creature() && !tile->get_is_blocking(creature))
@@ -182,4 +200,27 @@ bool TeleportEffect::teleport(CreaturePtr creature, MapPtr map, TilePtr old_tile
   }
 
   return teleported;
+}
+
+vector<string> TeleportEffect::get_appropriate_keys(MapPtr map, const pair<bool, Coordinate>& teleport_loc)
+{
+  vector<string> keys;
+
+  if (teleport_loc.first == true)
+  {
+    keys.push_back(MapUtils::convert_coordinate_to_map_key(teleport_loc.second));
+  }
+  else
+  {
+    TilesContainer tiles = map->get_tiles();
+
+    for (const auto& pair : tiles)
+    {
+      keys.push_back(pair.first);
+    }
+
+    shuffle(keys.begin(), keys.end(), RNG::get_engine());
+  }
+
+  return keys;
 }

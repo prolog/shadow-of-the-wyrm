@@ -1,5 +1,6 @@
 #pragma once
 #include "Effect.hpp"
+#include "Map.hpp"
 
 class TeleportEffect : public Effect
 {
@@ -26,8 +27,13 @@ class TeleportEffect : public Effect
 
     // Teleport within the creature's view map
     virtual bool blink(std::shared_ptr<Creature> creature, std::shared_ptr<Map> current_map, TilePtr old_tile);
-
+    
+    // Get the appropriate keys based on whether a preset teleport location is
+    // required.
+    std::vector<std::string> get_appropriate_keys(MapPtr map, const std::pair<bool, Coordinate>& teleport_loc);
+    
     bool blink_effect;
+    std::pair<bool, Coordinate> teleport_location;
     static const std::string TELEPORT_BLINK;
 };
 

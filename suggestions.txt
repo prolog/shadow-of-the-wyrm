@@ -1,5 +1,8 @@
 Me:
-- Update teleportation to consider the teleport location property.
+- Change teleport location property from FeatureProperties to something
+  else
+- Ensure traps in Carcassia aren't placed in front of gate
+- Teleporter in sealed room is in landing spot for other one
 - Automove should cease after teleportation.
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
 - Undiggable location in town accessible only by teleporting from a certain
