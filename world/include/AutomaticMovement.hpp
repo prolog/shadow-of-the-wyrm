@@ -12,6 +12,8 @@ class AutomaticMovement : public ISerializable
 
     bool operator==(const AutomaticMovement& auto_m) const;
 
+    void reset();
+
     void set_direction(const Direction new_direction);
     Direction get_direction() const;
 

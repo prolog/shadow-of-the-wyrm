@@ -3,8 +3,9 @@
 #include "AdditionalEffectMessages.hpp"
 #include "Conversion.hpp"
 #include "Creature.hpp"
+#include "CreatureProperties.hpp"
+#include "EffectProperties.hpp"
 #include "EffectTextKeys.hpp"
-#include "FeatureProperties.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
@@ -97,6 +98,12 @@ bool TeleportEffect::teleport(CreaturePtr creature)
     }
   }
 
+  if (teleported && creature != nullptr)
+  {
+    creature->get_automatic_movement_ref().reset();
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_TELEPORTED, std::to_string(true));
+  }
+
   return teleported;
 }
 
@@ -116,7 +123,7 @@ void TeleportEffect::read_properties(const map<string, string>& properties)
     }
   }
 
-  p_it = properties.find(FeatureProperties::FEATURE_PROPERTIES_TELEPORT_LOCATION);
+  p_it = properties.find(EffectProperties::EFFECT_PROPERTIES_TELEPORT_LOCATION);
 
   if (p_it != properties.end())
   {

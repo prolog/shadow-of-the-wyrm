@@ -87,7 +87,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   pair<bool, vector<string>> visit_results = prev_visited_coords_allow_auto_move(creature, new_coord, amf);
   bool visit_move = visit_results.first;
 
-  if (controller_move && creature_move && creature_pos_move && tile_move && map_move && visit_move)
+  if (creature && controller_move && creature_move && creature_pos_move && tile_move && map_move && visit_move)
   {
     add_coordinate_to_automove_visited(creature, new_coord, amf);
     update_turns_if_necessary(creature);
@@ -104,7 +104,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
     // If the creature was able to move, engage automovement,
     // and track the number of available directions for the
     // next turn.
-    if (auto_move_cost > 0)
+    if (auto_move_cost > 0 && String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_TELEPORTED)) == false)
     {
       auto_movement_engaged = true;
     }
@@ -419,8 +419,13 @@ pair<bool, Direction> AutomaticMovementCoordinator::get_new_direction_if_bend_in
 
     if (non_block_count == 2)
     {
-      non_block_coords.erase(std::find(non_block_coords.begin(), non_block_coords.end(), CoordUtils::get_new_coordinate(cur_pos, DirectionUtils::get_opposite_direction(cur_dir))));
-      flip_dir = true;
+      auto b_it = std::find(non_block_coords.begin(), non_block_coords.end(), CoordUtils::get_new_coordinate(cur_pos, DirectionUtils::get_opposite_direction(cur_dir)));
+  
+      if (b_it != non_block_coords.end())
+      {
+        non_block_coords.erase(b_it);
+        flip_dir = true;
+      }
     }
   }
 

@@ -8,6 +8,7 @@
 #include "CreatureDescriber.hpp"
 #include "CreatureCoordinateCalculator.hpp"
 #include "CreatureFeatures.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "CursesProperties.hpp"
@@ -502,9 +503,14 @@ void Game::go()
           ActionCost action_cost = process_action_for_creature(current_creature, current_map, reloaded_game);
           sap.process_action(current_creature, creature_statuses_before, action_cost);
 
+          // Remove any single turn flags, if present.
+          if (current_creature != nullptr)
+          {
+            current_creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_TELEPORTED);
+          }
+          
           // Remove the creature's current action.  This is done after the "keep_playing"
           // check so that saving, etc., does not advance the turn.
-
           if (keep_playing)
           {
             ac.update_actions();
