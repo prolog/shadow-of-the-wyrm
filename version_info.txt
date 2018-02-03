@@ -24,6 +24,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   - When confirming whether to move to a dangerous tile, an extra "[y/n]"
     could be added.
 
+  - Teleporting/blinking wasn't disabling automatic movement afterward.
+
 Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.
 

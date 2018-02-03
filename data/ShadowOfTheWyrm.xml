@@ -28462,6 +28462,7 @@
 			<TriggerMessageSID>TRAP_TELEPORT_TRIGGER_SID</TriggerMessageSID>
 			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_TELEPORT_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>10</Colour>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
 				<NumSides>1</NumSides>
