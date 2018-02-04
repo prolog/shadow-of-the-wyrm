@@ -67,7 +67,22 @@
 				</Coord>
 			</Placement>
 		</Creatures>
-		<Items/>
+		<Items>
+			<Placement>
+				<ID>_golden_apple</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>6</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>_silver_apple</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>6</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits/>
 	<Features/>

@@ -1,6 +1,5 @@
 Me:
 - Ensure traps in Carcassia aren't placed in front of gate
-- Populate the hidden room in Carcassia.
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
 - Undiggable location in town accessible only by teleporting from a certain
   square, or from a hidden staircase in a "lower map" beneath the city.
