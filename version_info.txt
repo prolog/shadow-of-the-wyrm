@@ -10,6 +10,9 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - The "no dig" flag can now be set at the tile level, allowing a general
   map that is diggable, but sections that are not.
 
+- Summoning is now less dangerous: it's the average of the map's danger
+  level and the triggering creature's current level.
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich.

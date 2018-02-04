@@ -37703,8 +37703,8 @@
 			<DescriptionSID>STARTING_LOCATION_ISEN_DUN</DescriptionSID>
 		</StartingLocation>
 		<StartingLocation id="02_carcassia">
-			<Row>45</Row>
-			<Col>50</Col>
+			<Row>46</Row>
+			<Col>53</Col>
 			<DescriptionSID>STARTING_LOCATION_CARCASSIA</DescriptionSID>
 		</StartingLocation>
 	</StartingLocations>

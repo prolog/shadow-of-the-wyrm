@@ -16,9 +16,9 @@ function setup_nodig_treasure_room_and_traps(map_id)
   local teleport_trap_id = "teleport_trap"
   local teleport_loc_prop = "EFFECT_PROPERTIES_TELEPORT_LOCATION"
 
-  local traps = {{teleport_trap_id, teleport_loc_prop, "4,7"}}--,
---                 {"blackwater_trap"}, 
-  --               {"monster_trap"}}
+  local traps = {{teleport_trap_id, teleport_loc_prop, "4,7"},
+                 {"blackwater_trap"}, 
+                 {"monster_trap"}}
 
   for i = 1, #traps do
     local row, col = 2, RNG_range(3, 78)
