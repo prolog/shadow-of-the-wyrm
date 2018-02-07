@@ -24393,6 +24393,46 @@
 			</Damage>
 			<Soak>7</Soak>
 		</Creature>
+		<Creature id="urchin">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>URCHIN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>URCHIN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>URCHIN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>URCHIN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>y</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<EventScripts>
+				<AttackScript>
+					<Script>attacks/steal.lua</Script>
+					<Chance>25</Chance>
+				</AttackScript>
+				<DecisionScript>
+					<Script>decision/thief.lua</Script>
+					<Chance>80</Chance>
+				</DecisionScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="thief">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THIEF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
