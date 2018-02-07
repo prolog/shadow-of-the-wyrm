@@ -1,10 +1,10 @@
 Me:
-- Ensure traps in Carcassia aren't placed in front of gate
+- Load a creature into 4,7.  Try teleporting into there.  In this case,
+  teleport should fail.
+- Sections of Carcassia should be open to random generation, with some
+  parts of each map being set.
+- Guild of Thieves
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
-- Undiggable location in town accessible only by teleporting from a certain
-  square, or from a hidden staircase in a "lower map" beneath the city.
-- The potential starting locations should, once selected by the new game
-  screen, add the starting location using the existing key.
 - Dungeons and caverns should have a chance to grow magic trees.
 - Magical orchard (should be 2-3 over the world)
 - Allow music to not only pacify but enchant (allow for ordering)

@@ -1,3 +1,4 @@
+require('fn')
 require('map_events')
 
 local map_id = "carcassia_a1"
@@ -16,24 +17,26 @@ function setup_nodig_treasure_room_and_traps(map_id)
   local teleport_trap_id = "teleport_trap"
   local teleport_loc_prop = "EFFECT_PROPERTIES_TELEPORT_LOCATION"
 
-  local traps = {{teleport_trap_id, teleport_loc_prop, "4,7"},
-                 {"blackwater_trap"}, 
-                 {"monster_trap"}}
+  local coords = fn.make_coordinates(2,2,3,78)
+  local c_idx = RNG_range(1, #coords)
+  local trap_coords = coords[c_idx]
+  local row, col = trap_coords[1], trap_coords[2]
 
-  for i = 1, #traps do
-    local row, col = 2, RNG_range(3, 78)
+  set_trap(row, col, false, "teleport_trap", map_id)
+  set_feature_additional_property(map_id, row, col, teleport_loc_prop, "4,7")
+  table.remove(coords, c_idx)
+
+  -- Add some thieves and urchins along the north wall.
+  for i = 1, RNG_range(3,5) do
+    local c_idx = RNG_range(1, #coords)
+    local cr_coord = coords[c_idx]
+    local cr_id = "thief"
 
     if RNG_percent_chance(50) then
-      row, col = RNG_range(2, 18), 3
+      cr_id = "urchin"
     end
 
-    local trap = traps[i]
-    set_trap(row, col, false, trap[1], map_id)
-
-    -- If there are any properties for the trap, then set them.
-    if table.getn(trap) == 3 then
-      set_feature_additional_property(map_id, row, col, trap[2], trap[3])
-    end
+    add_creature_to_map(cr_id, cr_coord[1], cr_coord[2], map_id)
   end
 
   -- Set the teleporter from the closed room to just outside the gate.

@@ -59,6 +59,9 @@
 			<xs:documentation>Initial, set placements of creatures and items.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<!-- Creatures are typically set here, but more complicated maps
+			     might also dynamically load creatures based on logic in associated 
+				 Lua scripts. -->
 			<xs:element name="Creatures" type="tns:IdentifiedPlacementList" minOccurs="0"/>
 			<xs:element name="Items" type="tns:IdentifiedPlacementList" minOccurs="0"/>
 		</xs:sequence>

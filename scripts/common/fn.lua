@@ -1,5 +1,16 @@
 module(..., package.seeall)
 
+function make_coordinates(r1, r2, c1, c2)
+  local coords = {}
+  for y = r1, r2 do
+    for x = c1, c2 do
+      table.insert(coords, {y, x})
+    end
+  end
+
+  return coords
+end
+
 -- Check an array to see if it contains a particular value
 function contains(array, value)
   for k,v in pairs(array) do
