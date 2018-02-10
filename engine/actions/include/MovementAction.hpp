@@ -27,7 +27,7 @@ class MovementAction : public IActionManager
     ~MovementAction();
     
     // Move off the edge of a map - fields, forests, etc.
-    ActionCostValue move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);
+    ActionCostValue move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile, const Direction direction);
     // A standard move within a map.
     ActionCostValue move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d);
     // With an existing map, handle the properties on the tile, and then

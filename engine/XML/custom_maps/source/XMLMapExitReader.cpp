@@ -1,4 +1,6 @@
 #include <vector>
+#include "CoordUtils.hpp"
+#include "DirectionUtils.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
 #include "MapTypes.hpp"
@@ -31,9 +33,14 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
     XMLNode coord_node = XMLUtils::get_next_element_by_local_name(exit_node, "Coord");
     string map_id = map->get_map_id();
     EventScriptsMap scripts;
+    Coordinate c = {-1, -1};
 
-    XMLMapCoordinateReader coord_reader;
-    Coordinate c = coord_reader.parse_fixed_coordinate(coord_node);
+    if (!coord_node.is_null())
+    {
+      XMLMapCoordinateReader coord_reader;
+      c = coord_reader.parse_fixed_coordinate(coord_node);
+    }
+
     Direction dir = static_cast<Direction>(XMLUtils::get_child_node_int_value(exit_node, "Direction"));
     string exit_map = XMLUtils::get_child_node_value(exit_node, "MapID");
     
@@ -43,8 +50,15 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
     parse_depth_details(exit_node, map_exit);
     parse_event_scripts(event_scripts_node, node_details, scripts);
     
-    // Handle a set map exist (to another custom map)
-    if (!exit_map.empty())
+    // If the coordinate is the end coord, this is a map-based exit, used for
+    // multi-maps like Carcassia.
+    if (CoordUtils::is_end(c))
+    {
+      map_exit->set_map_id(exit_map);
+      map->set_map_exit(DirectionUtils::to_cardinal_direction(dir), map_exit);
+    }
+    // Handle a set map exit (to another custom map)
+    else if (!exit_map.empty())
     {
       map_exit = MapExitUtils::add_exit_to_tile(map, c, dir, exit_map);
     }

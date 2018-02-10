@@ -88,13 +88,19 @@ class Map : public ISerializable
     std::map<std::string, Coordinate> get_locations() const;
     std::shared_ptr<Tile> get_tile_at_location(const std::string& location);
     
+    // "Edge" map directions.  Cardinal directions only for now.
+    void set_default_map_exit(MapExitPtr new_map_exit);
     void set_map_exit(MapExitPtr new_map_exit);
+    void set_map_exit(const CardinalDirection cd, MapExitPtr new_map_exit);
     MapExitPtr get_map_exit() const;
+    MapExitPtr get_map_exit(const CardinalDirection cd) const;
     
     void set_map_id(const std::string& new_map_id);
     std::string get_map_id() const;
     
+    bool get_is_multi_map() const;
     std::string get_map_exit_id() const;
+    std::string get_map_exit_id(const CardinalDirection cd) const;
     
     void set_permanent(const bool permenance);
     bool get_permanent() const;
@@ -167,7 +173,7 @@ class Map : public ISerializable
     NamedMapLocations locations;
     TileType terrain_type; // field, forest, village, etc.
     MapType map_type;
-    MapExitPtr map_exit;
+    std::map<CardinalDirection, MapExitPtr> map_exits;
     std::string map_id;
     bool permanent;
     int danger;

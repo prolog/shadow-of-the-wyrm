@@ -1,4 +1,17 @@
 Me:
+- Need to ensure all the Carcassia maps can exit to the overworld.
+- When moving to a non-null-directional map:
+  - Ensure the movement is possible, based on the calculated position
+  - Move to the calculated position
+- After finishing map ID and exit changes, need to test:
+  - Entering to a set map from a tile
+  - Siriath's lair
+  - Entering/exiting random map from world
+  - " for custom map
+  - " for underworld map
+  - " for dungeons/sewers
+  - " for floating towers
+  - " for shrines
 - Load a creature into 4,7.  Try teleporting into there.  In this case,
   teleport should fail.
 - Sections of Carcassia should be open to random generation, with some
@@ -73,7 +86,8 @@ Me:
 - Multi-map areas (the central city!)
 - Different types of branches (species) should have different wand
   properties.
-- General performance improvements.
+- General performance improvements.  Use profiler - check out LOS code,
+  pathfinding, etc.
 - Potion components of some sort?  Weeds should be "pickable"?
 - Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
