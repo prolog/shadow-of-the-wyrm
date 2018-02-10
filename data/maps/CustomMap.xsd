@@ -152,7 +152,9 @@
 			<xs:documentation>Contains details about a particular exit on a tile.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Coord" type="tns:Coord"/>
+			<!-- If the Coord element is null for an exit, the exit will be
+			     applied at the map level. -->
+			<xs:element name="Coord" type="tns:Coord" minOccurs="0"/>
 			<xs:element name="Direction" type="tns:Direction"/>
 			<xs:choice>
 				<xs:element name="MapID" type="xs:string"/>

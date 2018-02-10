@@ -7,6 +7,7 @@
 #include "DangerLevelCalculatorFactory.hpp"
 #include "DecisionStrategyProperties.hpp"
 #include "DigAction.hpp"
+#include "DirectionUtils.hpp"
 #include "FeatureAction.hpp"
 #include "ForagablesCalculator.hpp"
 #include "Game.hpp"
@@ -85,7 +86,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
         // - there is at least one hostile adjacent creature, and a successful Escape check is made.
         if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) || sm.check_skill(creature, SkillType::SKILL_GENERAL_ESCAPE))
         {
-          movement_acv = move_off_map(creature, map, creatures_old_tile);
+          movement_acv = move_off_map(creature, map, creatures_old_tile, direction);
         }
         else
         {
@@ -115,14 +116,21 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
   return movement_acv;
 }
 
-ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile)
+ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, const Direction direction)
 {
   ActionCostValue movement_acv = 0;
 
   Game& game = Game::instance();
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());  
   IMessageManager& pl_man = MM::instance();
-  MapExitPtr map_exit = map->get_map_exit();
+
+  CardinalDirection exit_direction = DirectionUtils::to_cardinal_direction(direction);
+  MapExitPtr map_exit = map->get_map_exit(exit_direction);
+
+  if (map_exit == nullptr)
+  {
+    map_exit = map->get_map_exit();
+  }
 
   if (!MapUtils::can_exit_map(map_exit) && map)
   {

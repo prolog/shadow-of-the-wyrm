@@ -71,11 +71,13 @@ bool Map::operator==(const Map& map) const
   result = result && (locations == map.locations);
   result = result && (terrain_type == map.terrain_type);
   result = result && (map_type == map.map_type);
-  result = result && ((map_exit && map.map_exit) || (!map_exit && !map.map_exit));
+  result = result && (map_exits.size() == map.map_exits.size());
 
-  if (result && map_exit)
+  for (auto& m_it : map_exits)
   {
-    result = result && (*map_exit == *map.map_exit);
+    auto m_it2 = map.map_exits.find(m_it.first);
+
+    result = result && (m_it2 != map.map_exits.end() && m_it.second && m_it2->second && (*m_it.second == *m_it2->second));
   }
 
   result = result && (map_id == map.map_id);
@@ -447,12 +449,30 @@ TilePtr Map::get_tile_at_location(const string& location)
 // boundary tiles.
 void Map::set_map_exit(MapExitPtr new_map_exit)
 {
-  map_exit = new_map_exit;
+  map_exits[CardinalDirection::CARDINAL_DIRECTION_NULL] = new_map_exit;
+}
+
+void Map::set_map_exit(const CardinalDirection cd, MapExitPtr new_map_exit)
+{
+  map_exits[cd] = new_map_exit;
+}
+
+MapExitPtr Map::get_map_exit(const CardinalDirection cd) const
+{
+  MapExitPtr map_exit;
+  auto m_it = map_exits.find(cd);
+
+  if (m_it != map_exits.end())
+  {
+    map_exit = m_it->second;
+  }
+
+  return map_exit;
 }
 
 MapExitPtr Map::get_map_exit() const
 {
-  return map_exit;
+  return get_map_exit(CardinalDirection::CARDINAL_DIRECTION_NULL);
 }
 
 // Set/get the map's identifier, which is also used as its key in the map registry
@@ -466,13 +486,36 @@ string Map::get_map_id() const
   return map_id;
 }
 
+// A map with one exit (e.g., back to the overworld) is not a multi-map.
+// A multi-map has exits to map IDs in more than one direction - ie, not
+// just back to the overworld.
+bool Map::get_is_multi_map() const
+{
+  return (map_exits.size() > 1);
+}
+
 string Map::get_map_exit_id() const
+{
+  return get_map_exit_id(CardinalDirection::CARDINAL_DIRECTION_NULL);
+}
+
+string Map::get_map_exit_id(const CardinalDirection cd) const
 {
   string map_exit_id;
   
-  if (map_exit)
+  if (!map_exits.empty())
   {
-    map_exit_id = map_exit->get_map_id();
+    auto m_it = map_exits.find(cd);
+
+    if (m_it != map_exits.end())
+    {
+      MapExitPtr map_exit = m_it->second;
+
+      if (map_exit != nullptr)
+      {
+        map_exit_id = map_exit->get_map_id();
+      }
+    }
   }
   
   return map_exit_id;
@@ -727,14 +770,21 @@ bool Map::serialize(ostream& stream) const
 
   // Map exit can be null (for overworld, maybe dungeon maps, etc.),
   // so guard against this case in both serialization and deserialization.
-  if (map_exit)
+  Serialize::write_size_t(stream, map_exits.size());
+  for (auto m_it : map_exits)
   {
-    Serialize::write_class_id(stream, map_exit->get_class_identifier());
-    map_exit->serialize(stream);
-  }
-  else
-  {
-    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
+    Serialize::write_enum(stream, m_it.first);
+    MapExitPtr map_exit = m_it.second;
+
+    if (map_exit)
+    {
+      Serialize::write_class_id(stream, map_exit->get_class_identifier());
+      map_exit->serialize(stream);
+    }
+    else
+    {
+      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
+    }
   }
 
   Serialize::write_string(stream, map_id);
@@ -855,15 +905,26 @@ bool Map::deserialize(istream& stream)
   Serialize::read_enum(stream, map_type);
 
   // Consume and ignore class ID for now.  Then create the map exit, and deserialize.
-  ClassIdentifier map_exit_clid;
-  Serialize::read_class_id(stream, map_exit_clid);
+  size_t num_exits = 0;
+  Serialize::read_size_t(stream, num_exits);
 
-  // If the map exit wasn't null originally (e.g., map exit on overworld map),
-  // then read the details.
-  if (map_exit_clid != ClassIdentifier::CLASS_ID_NULL)
+  for (size_t i = 0; i < num_exits; i++)
   {
-    map_exit = MapFactory::create_map_exit();
-    map_exit->deserialize(stream);
+    CardinalDirection d = CardinalDirection::CARDINAL_DIRECTION_NULL;
+    Serialize::read_enum(stream, d);
+
+    // Read and ignore the class ID
+    ClassIdentifier map_exit_clid;
+    Serialize::read_class_id(stream, map_exit_clid);
+
+    // If the map exit wasn't null originally (e.g., map exit on overworld map),
+    // then read the details.
+    if (map_exit_clid != ClassIdentifier::CLASS_ID_NULL)
+    {
+      MapExitPtr map_exit = MapFactory::create_map_exit();
+      map_exit->deserialize(stream);
+      map_exits[d] = map_exit;
+    }
   }
 
   Serialize::read_string(stream, map_id);
