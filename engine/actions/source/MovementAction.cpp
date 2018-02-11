@@ -132,7 +132,11 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
     map_exit = map->get_map_exit();
   }
 
-  if (!MapUtils::can_exit_map(map_exit) && map)
+  Coordinate current_coord = map->get_location(creature->get_id());
+  Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, exit_direction, map_exit);
+  MapUtils::set_up_transitive_exits_as_necessary(map, map_exit);
+
+  if (!MapUtils::can_exit_map(creature, map_exit, proposed_new_coord) && map)
   {
     if (creature->get_is_player())
     { 
@@ -151,7 +155,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
       
       if (creature->get_decision_strategy()->get_confirmation())
       {
-        handle_properties_and_move_to_new_map(creatures_old_tile, map, map_exit);
+        handle_properties_and_move_to_new_map(creature, creatures_old_tile, map, map_exit, proposed_new_coord);
         movement_acv = get_action_cost_value(creature);
       }
       
@@ -757,7 +761,7 @@ void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPt
   GameUtils::move_to_new_map(current_tile, old_map, new_map);
 }
 
-void MovementAction::handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit)
+void MovementAction::handle_properties_and_move_to_new_map(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
 {
   Game& game = Game::instance();
   
@@ -767,6 +771,11 @@ void MovementAction::handle_properties_and_move_to_new_map(TilePtr old_tile, Map
     {
       string new_map_id = map_exit->get_map_id();
       MapPtr new_map = game.map_registry.get_map(new_map_id);
+
+      if (creature != nullptr && !CoordUtils::is_end(proposed_new_coord))
+      {
+        new_map->add_or_update_location(creature->get_id(), proposed_new_coord);
+      }
       
       handle_properties_and_move_to_new_map(old_tile, old_map, new_map);
     }

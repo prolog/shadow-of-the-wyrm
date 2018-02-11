@@ -624,6 +624,80 @@ vector<CreaturePtr> MapUtils::get_adjacent_creatures_unsorted(const MapPtr& map,
 
   return adj_creatures;
 }
+
+void MapUtils::set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr map_exit)
+{
+  if (old_map != nullptr && old_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && map_exit != nullptr)
+  {
+    string exit_map_id = map_exit->get_map_id();
+    MapExitPtr default_exit_old_map = old_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_NULL);
+
+    if (default_exit_old_map != nullptr && !exit_map_id.empty())
+    {
+      MapPtr new_map = Game::instance().get_map_registry_ref().get_map(exit_map_id);
+
+      if (new_map != nullptr)
+      {
+        MapExitPtr default_exit_new_map = new_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_NULL);
+
+        if (default_exit_new_map == nullptr)
+        {
+          new_map->set_map_exit(default_exit_old_map);
+        }
+      }
+    }
+  }
+}
+
+Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, const CardinalDirection exit_direction, MapExitPtr map_exit)
+{
+  Coordinate c = CoordUtils::end();
+
+  if (map_exit != nullptr && map_exit->is_using_map_id())
+  {
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
+
+    if (map != nullptr && map->get_is_multi_map())
+    {
+      MapExitPtr default_exit = map->get_map_exit();
+
+      // Only calculate the new coords for multi-map if we're exiting
+      // and not to the default exit (typically the overworld).
+      if (default_exit && map_exit && !(*default_exit == *map_exit))
+      {
+        Dimensions dim = map->size();
+        c = current_coord;
+
+        switch (exit_direction)
+        {
+          // Arriving from the south
+          case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+            c.first = dim.get_y() - 1;
+            break;
+            // Arriving from the north
+          case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+            c.first = 0;
+            break;
+            // Arriving from the west
+          case CardinalDirection::CARDINAL_DIRECTION_EAST:
+            c.second = 0;
+            break;
+            // Arriving from the east
+          case CardinalDirection::CARDINAL_DIRECTION_WEST:
+            c.second = dim.get_x() - 1;
+            break;
+          case CardinalDirection::CARDINAL_DIRECTION_NULL:
+          default:
+            c = CoordUtils::end();
+            break;
+        }
+      }
+    }
+  }
+
+  return c;
+}
+
 bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature, const bool force_player_removal)
 {
   bool result = false;
@@ -695,13 +769,30 @@ bool MapUtils::tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, cons
   return match;
 }
 
-bool MapUtils::can_exit_map(MapExitPtr map_exit)
+bool MapUtils::can_exit_map(CreaturePtr creature, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
 {
   bool can_exit = false;
   
+  // First check: is the map_exit non-null and contain the information
+  // necessary for the exit?
   if (map_exit && (map_exit->is_using_map_id() || map_exit->is_using_terrain_type()))
   {
     can_exit = true;
+  }
+
+  // Second check: if this is for a set map, is the new tile available/open?
+  if (map_exit && map_exit->is_using_map_id() && !CoordUtils::is_end(proposed_new_coord))
+  {
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(proposed_new_coord);
+      if (!is_tile_available_for_creature(creature, tile))
+      {
+        can_exit = false;
+      }
+    }
   }
   
   return can_exit;

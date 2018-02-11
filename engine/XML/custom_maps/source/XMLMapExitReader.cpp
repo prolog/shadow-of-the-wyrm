@@ -54,6 +54,8 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
     // multi-maps like Carcassia.
     if (CoordUtils::is_end(c))
     {
+      // JCD FIXME Improve this if I ever need to do "terrain generated off
+      // the edge of a custom map".
       map_exit->set_map_id(exit_map);
       map->set_map_exit(DirectionUtils::to_cardinal_direction(dir), map_exit);
     }
