@@ -34,6 +34,8 @@ class MapUtils
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
     static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
     static std::vector<CreaturePtr> get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature);
+    static void set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr map_exit);
+    static Coordinate calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, const CardinalDirection exit_direction, MapExitPtr map_exit);
 
     // When removing a creature, we generally want to leave the player's
     // location intact, for returning later.  However, in certain cases,
@@ -44,7 +46,7 @@ class MapUtils
 
     static bool place_creature_randomly(MapPtr map, const std::string& creature_id);
     
-    static bool can_exit_map(MapExitPtr map_exit);
+    static bool can_exit_map(CreaturePtr creature, MapExitPtr map_exit, const Coordinate& proposed_new_coord);
     
     static bool is_blocking_feature_present(TilePtr tile);
     static bool is_creature_present(TilePtr tile);
