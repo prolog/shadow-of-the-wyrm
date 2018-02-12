@@ -134,7 +134,6 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
 
   Coordinate current_coord = map->get_location(creature->get_id());
   Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, exit_direction, map_exit);
-  MapUtils::set_up_transitive_exits_as_necessary(map, map_exit);
 
   if (!MapUtils::can_exit_map(creature, map_exit, proposed_new_coord) && map)
   {
@@ -155,6 +154,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
       
       if (creature->get_decision_strategy()->get_confirmation())
       {
+        MapUtils::set_up_transitive_exits_as_necessary(map, map_exit);
         handle_properties_and_move_to_new_map(creature, creatures_old_tile, map, map_exit, proposed_new_coord);
         movement_acv = get_action_cost_value(creature);
       }

@@ -663,7 +663,8 @@ Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate&
 
       // Only calculate the new coords for multi-map if we're exiting
       // and not to the default exit (typically the overworld).
-      if (default_exit && map_exit && !(*default_exit == *map_exit))
+      if ((map_exit  && !default_exit) ||
+          (default_exit && map_exit && !(*default_exit == *map_exit)))
       {
         Dimensions dim = map->size();
         c = current_coord;

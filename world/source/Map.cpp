@@ -491,7 +491,22 @@ string Map::get_map_id() const
 // just back to the overworld.
 bool Map::get_is_multi_map() const
 {
-  return (map_exits.size() > 1);
+  bool mm = false;
+  size_t m_size = map_exits.size();
+  auto m_it = map_exits.find(CardinalDirection::CARDINAL_DIRECTION_NULL);
+
+  if (m_size > 1)
+  {
+    // More directional exits than just the default?  Multi-map.
+    mm = true;
+  }
+  else if (m_size == 1)
+  {
+    // There is an exit, and it's not just the default.
+    mm = (m_it == map_exits.end());
+  }
+
+  return mm;
 }
 
 string Map::get_map_exit_id() const
