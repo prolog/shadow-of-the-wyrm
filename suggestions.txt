@@ -1,10 +1,4 @@
 Me:
-- Need to ensure all the Carcassia maps can exit to the overworld.
-- First time leaving part of a multi-map showing up in the default
-  loc, not calculated.
-- When moving to a non-null-directional map:
-  - Ensure the movement is possible, based on the calculated position
-  - Move to the calculated position
 - After finishing map ID and exit changes, need to test:
   - Entering to a set map from a tile
   - Siriath's lair
