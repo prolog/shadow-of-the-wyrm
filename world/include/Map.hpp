@@ -92,6 +92,7 @@ class Map : public ISerializable
     void set_default_map_exit(MapExitPtr new_map_exit);
     void set_map_exit(MapExitPtr new_map_exit);
     void set_map_exit(const CardinalDirection cd, MapExitPtr new_map_exit);
+    std::map<CardinalDirection, MapExitPtr> get_map_exits() const;
     MapExitPtr get_map_exit() const;
     MapExitPtr get_map_exit(const CardinalDirection cd) const;
     

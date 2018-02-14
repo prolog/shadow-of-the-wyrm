@@ -18,7 +18,6 @@
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
-#include "MapScript.hpp"
 #include "MessageManagerFactory.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
@@ -208,11 +207,10 @@ void ShadowOfTheWyrmEngine::setup_game()
   game.set_starting_locations(starting_locations);
 
   // This switches files/namespaces - so should be last.
+  // As part of setting the custom maps, the game may run any associated
+  // scripts.
   vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
   game.set_custom_maps(custom_maps);
-
-  // Run any scripts associated with the custom maps.
-  run_map_scripts();
 
   // Set up the message manager also.
   IMessageManager& manager = MM::instance();
@@ -684,36 +682,6 @@ void ShadowOfTheWyrmEngine::setup_autopickup_settings(CreaturePtr player)
     {
       dec->set_autopickup(autopickup);
       dec->set_autopickup_types(itypes);
-    }
-  }
-}
-
-void ShadowOfTheWyrmEngine::run_map_scripts()
-{
-  Game& game = Game::instance();
-
-  // After the custom maps have been set into the registry, we need to run
-  // any custom load scripts on the maps.
-  MapRegistryMap& mrm = game.get_map_registry_ref().get_maps_ref();
-  for (const auto& mrm_pair : mrm)
-  {
-    MapPtr map = mrm_pair.second;
-    string load_script;
-
-    EventScriptsMap esm = map->get_event_scripts();
-    auto esm_it = esm.find(MapEventScripts::MAP_EVENT_SCRIPT_CREATE);
-
-    if (esm_it != esm.end())
-    {
-      ScriptDetails sd = esm_it->second;
-      ScriptEngine& se = Game::instance().get_script_engine_ref();
-      MapScript ms;
-
-      if (RNG::percent_chance(sd.get_chance()))
-      {
-        // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
-        ms.execute(se, sd.get_script(), map);
-      }
     }
   }
 }

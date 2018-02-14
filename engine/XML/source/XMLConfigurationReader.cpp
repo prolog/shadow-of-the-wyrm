@@ -14,7 +14,13 @@ XMLConfigurationReader::XMLConfigurationReader(const std::string& xml_filename)
 : filename(xml_filename)
 {
   XML::initialize();
-  initialize_parser(xml_filename);
+
+  // Generally, this will always be provided, but to prevent unnecessary loading
+  // in MapTester, it may also be empty.
+  if (!xml_filename.empty())
+  {
+    initialize_parser(xml_filename);
+  }
 }
 
 XMLConfigurationReader::~XMLConfigurationReader()

@@ -29,11 +29,13 @@
 #include "ItemSerializationFactory.hpp"
 #include "Log.hpp"
 #include "MapCursor.hpp"
+#include "MapScript.hpp"
 #include "MapUtils.hpp"
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "ScoreFile.hpp"
 #include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
@@ -252,11 +254,15 @@ const FeatureMap& Game::get_basic_features_ref() const
 
 void Game::set_custom_maps(const vector<MapPtr>& custom_maps)
 {
+  map_registry.clear_maps();
+
   for (MapPtr custom_map : custom_maps)
   {
     string id = custom_map->get_map_id();
     map_registry.set_map(id, custom_map);
   }
+
+  run_map_scripts();
 }
 
 void Game::set_tile_display_info(const vector<DisplayTile>& game_tiles)
@@ -1110,6 +1116,35 @@ bool Game::serialize(ostream& stream) const
   Log::instance().trace("Game::serialize - end");
 
   return true;
+}
+
+void Game::run_map_scripts()
+{
+  // After the custom maps have been set into the registry, we need to run
+  // any custom load scripts on the maps.
+  MapRegistryMap& mrm = map_registry.get_maps_ref();
+
+  for (const auto& mrm_pair : mrm)
+  {
+    MapPtr map = mrm_pair.second;
+    string load_script;
+
+    EventScriptsMap esm = map->get_event_scripts();
+    auto esm_it = esm.find(MapEventScripts::MAP_EVENT_SCRIPT_CREATE);
+
+    if (esm_it != esm.end())
+    {
+      ScriptDetails sd = esm_it->second;
+      ScriptEngine& se = Game::instance().get_script_engine_ref();
+      MapScript ms;
+
+      if (RNG::percent_chance(sd.get_chance()))
+      {
+        // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
+        ms.execute(se, sd.get_script(), map);
+      }
+    }
+  }
 }
 
 bool Game::deserialize(istream& stream)
