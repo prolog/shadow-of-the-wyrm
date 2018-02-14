@@ -18,6 +18,7 @@
 #include "CryptGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
+#include "FileConstants.hpp"
 #include "FloatingTowerGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "FortifiedChurchGenerator.hpp"
@@ -60,6 +61,7 @@ using namespace std;
 
 string map_to_string(MapPtr map, bool html=true);
 string map_to_html_string(MapPtr map);
+void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool use_html, string& start_tag, string& end_tag);
 void output_map(string map, string filename);
 
 // Random number generation function prototypes
@@ -76,6 +78,10 @@ void test_item_generation();
 // Other maps
 void test_other_maps();
 string generate_void();
+
+// Custom maps
+void load_custom_maps();
+MapPtr load_custom_map(const string& fname_pattern, const string& map_id);
 
 // Map testing stuff
 void test_bresenham_line();
@@ -153,45 +159,47 @@ string map_to_string(MapPtr map, bool use_html)
 
   if (use_html)
   {
-    map_s = map_s + "<html><head><title>SL Map</title></head><body bgcolor=\"#000000\">";
+    map_s = map_s + "<html><head><title>Shadow of the Wyrm Map</title></head><body bgcolor=\"#000000\">";
     end_tag = "</font>";
   }
 
-  for (int row = 0; row < rows; row++)
+  Dimensions dim = map->size();
+  int row_end = dim.get_y() - 1;
+  int col_end = dim.get_x() - 1;
+
+  MapPtr row_reset_map = map;
+  MapPtr cur_map = map;
+  int cur_map_y = 0;
+  int cur_map_x = 0;
+
+  for (int y = 0; y <= row_end; y++)
   {
-    for (int col = 0; col < cols; col++)
+    for (int x = 0; x <= col_end; x++)
     {
-      TilePtr tile = map->at(row, col);
-      
+      TilePtr tile = cur_map->at(cur_map_y, cur_map_x);
+
       if (tile != nullptr)
       {
-        IInventoryPtr items = tile->get_items();
-        if (items->size() > 0)
+        tile_to_string(tile, tile_ascii, map_s, use_html, start_tag, end_tag);
+      }
+
+      if (x == col_end)
+      {
+        // Is there a map to the east?
+        MapExitPtr exit = cur_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_EAST);
+
+        if (exit && exit->is_using_map_id())
         {
-          ItemPtr item = items->at(0);
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(item->get_colour()) + "\">";
-          ostringstream ss;
-          ss << item->get_symbol();
-          tile_ascii = html_encode(ss.str());
-        }
-        else if (tile->has_feature())
-        {
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(tile->get_feature()->get_colour()) + "\">";
-          ostringstream ss;
-          ss << tile->get_feature()->get_symbol();
-          tile_ascii = html_encode(ss.str());
-        }
-        else
-        {
-          ShimmerColours sc({Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED});
-          DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, {Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED} /* ditto for colour overrides */, sc, tile, tile);
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
-          ostringstream ss;
-          ss << dt.get_symbol();
-          tile_ascii = html_encode(ss.str());
+          cur_map = Game::instance().get_map_registry_ref().get_map(exit->get_map_id());
+          Dimensions dim = cur_map->size();
+          col_end += dim.get_x() - 1;
         }
 
-        map_s = map_s + start_tag + tile_ascii + end_tag;
+        cur_map_x = 0;
+      }
+      else
+      {
+        cur_map_x++;
       }
     }
 
@@ -199,6 +207,28 @@ string map_to_string(MapPtr map, bool use_html)
     {
       map_s = map_s + "<br>";
     }
+
+    if (y == row_end)
+    {
+      // Is there a map to the south?
+      MapExitPtr exit = row_reset_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_SOUTH);
+
+      if (exit && exit->is_using_map_id())
+      {
+        row_reset_map = Game::instance().get_map_registry_ref().get_map(exit->get_map_id());
+        Dimensions dim = cur_map->size();
+        row_end += dim.get_y() - 1;
+        cur_map_y = 0;
+        cur_map_x = 0;
+      }
+    }
+    else
+    {
+      cur_map_y++;
+    }
+
+    cur_map = row_reset_map;
+    col_end = cur_map->size().get_x() - 1;
   }
 
   if (use_html)
@@ -207,6 +237,37 @@ string map_to_string(MapPtr map, bool use_html)
   }
 
   return map_s;
+}
+
+void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool use_html, string& start_tag, string& end_tag)
+{
+  IInventoryPtr items = tile->get_items();
+  if (items->size() > 0)
+  {
+    ItemPtr item = items->at(0);
+    if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(item->get_colour()) + "\">";
+    ostringstream ss;
+    ss << item->get_symbol();
+    tile_ascii = html_encode(ss.str());
+  }
+  else if (tile->has_feature())
+  {
+    if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(tile->get_feature()->get_colour()) + "\">";
+    ostringstream ss;
+    ss << tile->get_feature()->get_symbol();
+    tile_ascii = html_encode(ss.str());
+  }
+  else
+  {
+    ShimmerColours sc({ Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED });
+    DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, { Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED } /* ditto for colour overrides */, sc, tile, tile);
+    if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
+    ostringstream ss;
+    ss << dt.get_symbol();
+    tile_ascii = html_encode(ss.str());
+  }
+
+  map_s = map_s + start_tag + tile_ascii + end_tag;
 }
 
 string generate_cavern()
@@ -708,6 +769,7 @@ void misc()
     cout << "2. Calendar" << endl;
     cout << "3. Item Generation" << endl;
     cout << "4. Other Map Types" << endl;
+    cout << "5. Load Custom Map" << endl;
 
     cin >> choice;
     
@@ -725,6 +787,8 @@ void misc()
       case 4:
         test_other_maps();
         break;
+      case 5:
+        load_custom_maps();
       default:
         break;
     }
@@ -930,6 +994,56 @@ void test_other_maps()
         break;
     }
   }
+}
+
+void load_custom_maps()
+{
+  string map;
+  int selection = 0;
+  std::map<int, std::pair<std::string, std::string>> selection_mappings = {{1, {"(Carcassia.*\\.xml)", "carcassia_a1"}}};
+
+  while (selection != -1)
+  {
+    string fname_pattern;
+
+    cout << "Load Custom Map" << endl << endl;
+    cout << "1. Carcassia" << endl;
+    cin >> selection;
+
+    if (selection != -1)
+    {
+      auto s_it = selection_mappings.find(selection);
+
+      if (s_it != selection_mappings.end())
+      {
+        pair<string, string> filter_mid = s_it->second;
+        MapPtr map = load_custom_map(filter_mid.first, filter_mid.second);
+
+        if (map != nullptr)
+        {
+          output_map(map_to_string(map), "custom_map.html");
+        }
+      }
+    }
+  }
+}
+
+MapPtr load_custom_map(const string& fname_pattern, const string& custom_map_id)
+{
+  MapPtr custom_map;
+
+  if (!fname_pattern.empty() && !custom_map_id.empty())
+  {
+    XMLConfigurationReader cr("");
+    Game& game = Game::instance();
+
+    vector<MapPtr> maps = cr.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, fname_pattern);
+    game.set_custom_maps(maps);
+
+    custom_map = game.get_map_registry_ref().get_map(custom_map_id);
+  }
+
+  return custom_map;
 }
 
 string generate_void()

@@ -135,6 +135,8 @@ class Game : public ISerializable
     void set_current_loaded_savefile(const std::string& current_loaded_savefile);
     std::string get_current_loaded_savefile() const;
 
+    virtual void run_map_scripts();
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 

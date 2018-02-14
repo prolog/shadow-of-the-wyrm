@@ -457,6 +457,11 @@ void Map::set_map_exit(const CardinalDirection cd, MapExitPtr new_map_exit)
   map_exits[cd] = new_map_exit;
 }
 
+map<CardinalDirection, MapExitPtr> Map::get_map_exits() const
+{
+  return map_exits;
+}
+
 MapExitPtr Map::get_map_exit(const CardinalDirection cd) const
 {
   MapExitPtr map_exit;
