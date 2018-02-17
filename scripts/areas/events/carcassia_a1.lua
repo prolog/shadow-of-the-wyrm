@@ -5,7 +5,7 @@ local map_id = "carcassia_a1"
 
 -- JCD FIXME: Consider making this a generic Lua API function in the
 -- engine.
-function setup_parklands_around_treasure_room(map_id)
+local function setup_parklands_around_treasure_room(map_id)
   if RNG_percent_chance(50) then
     map_fill_random(map_id, 2, 3, 9, 11, CTILE_TYPE_FIELD, CTILE_TYPE_TREE, 50)
   else
@@ -13,7 +13,7 @@ function setup_parklands_around_treasure_room(map_id)
   end
 end
 
-function setup_nodig_treasure_room_and_traps(map_id)
+local function setup_nodig_treasure_room_and_traps(map_id)
   -- Ensure the teleport room is no-dig, while keeping the rest of
   -- the map diggable.
   for row = 3,5 do
@@ -54,9 +54,14 @@ function setup_nodig_treasure_room_and_traps(map_id)
   set_feature_additional_property(map_id, 4, 8, teleport_loc_prop, "10,1")
 end
 
-function init_carcassia_a1(map_id)
+local function setup_dynamic_content(map_id)
+  generate_city_feature(map_id, 3, 15, 8, 30, CCITY_SECTOR_PUBLIC_AREA)
+end
+
+local function init_carcassia_a1(map_id)
   setup_parklands_around_treasure_room(map_id)
   setup_nodig_treasure_room_and_traps(map_id)
+  setup_dynamic_content(map_id)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_a1)

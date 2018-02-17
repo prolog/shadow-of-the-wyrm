@@ -1,4 +1,5 @@
 #include "Conversion.hpp"
+#include "CitySectorTypes.hpp"
 #include "GameEnvTextKeys.hpp"
 #include "Log.hpp"
 #include "LuaAPIFunctions.hpp"
@@ -240,7 +241,12 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCREATURE_WIN_EVIL);
   lua_exportConst(ls, CCREATURE_WIN_GODSLAYER);
 
-  lua_exportConst(ls, CCLASS_ID_FOUNTAIN)
+  lua_exportConst(ls, CCLASS_ID_FOUNTAIN);
+
+  lua_exportConst(ls, CCITY_SECTOR_PUBLIC_AREA);
+  lua_exportConst(ls, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL);
+  lua_exportConst(ls, CCITY_SECTOR_RESIDENTIAL);
+  lua_exportConst(ls, CCITY_SECTOR_RELIGIOUS_COMMERCIAL);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

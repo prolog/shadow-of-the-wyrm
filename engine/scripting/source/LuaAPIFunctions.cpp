@@ -1,5 +1,6 @@
 #include "LuaAPIFunctions.hpp"
 #include "BuySellCalculator.hpp"
+#include "CitySectorGenerator.hpp"
 #include "ClassManager.hpp"
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
@@ -326,6 +327,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "tile_has_creature", tile_has_creature);
   lua_register(L, "get_creature_original_id", get_creature_original_id);
   lua_register(L, "remove_threat_from_all", remove_threat_from_all);
+  lua_register(L, "generate_city_feature", generate_city_feature);
 }
 
 // Lua API helper functions
@@ -1010,7 +1012,7 @@ int add_basic_feature_to_map(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_basic_feature_to_map!");
+    lua_pushstring(ls, "Incorrect arguments to add_basic_feature_to_map");
     lua_error(ls);
   }
 
@@ -1045,7 +1047,7 @@ int add_feature_to_player_tile(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_feature_to_player_tile!");
+    lua_pushstring(ls, "Incorrect arguments to add_feature_to_player_tile");
     lua_error(ls);
   }
   
@@ -6074,4 +6076,41 @@ bool set_all_eq_to(CreaturePtr creature, const ItemStatus status)
   }
 
   return eq_set;
+}
+
+int generate_city_feature(lua_State* ls)
+{
+  bool feature_generated = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args = 6 && lua_isstring(ls, 1) 
+                   && lua_isnumber(ls, 2)
+                   && lua_isnumber(ls, 3)
+                   && lua_isnumber(ls, 4)
+                   && lua_isnumber(ls, 5)
+                   && lua_isnumber(ls, 6))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int row_start = lua_tointeger(ls, 2);
+    int col_start = lua_tointeger(ls, 3);
+    int row_end = lua_tointeger(ls, 4);
+    int col_end = lua_tointeger(ls, 5);
+    CitySectorType sector_type = static_cast<CitySectorType>(lua_tointeger(ls, 6));
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      CitySectorGenerator csg;
+      csg.generate_feature(map, make_pair(row_start, col_start), make_pair(row_end, col_end), sector_type);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to generate_city_feature");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, feature_generated);
+  return 1;
 }
