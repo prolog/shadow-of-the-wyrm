@@ -192,6 +192,7 @@ int has_artifact_in_inventory(lua_State* ls);
 int tile_has_creature(lua_State* ls);
 int get_creature_original_id(lua_State* ls);
 int remove_threat_from_all(lua_State* ls);
+int generate_city_feature(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

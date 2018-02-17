@@ -4116,6 +4116,21 @@
     <ClInclude Include="world\magic\include\EffectProperties.hpp">
       <Filter>Header Files\world\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\CitySectorGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\CitySectorTypes.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SectorFeatureGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\DefaultSectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8185,6 +8200,15 @@
     </ClCompile>
     <ClCompile Include="world\magic\source\EffectProperties.cpp">
       <Filter>Source Files\world\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\CitySectorGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\DefaultSectorFeatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\SectorFeatureGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
