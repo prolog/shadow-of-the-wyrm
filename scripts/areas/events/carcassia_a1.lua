@@ -6,22 +6,10 @@ local map_id = "carcassia_a1"
 -- JCD FIXME: Consider making this a generic Lua API function in the
 -- engine.
 function setup_parklands_around_treasure_room(map_id)
-  local start_y, start_x = 2,3
-  local end_y, end_x = 9,11
-  local mnum = RNG_range(2, 3) -- Modulo used to determine spacing
-
-  for y = start_y, end_y do
-    for x = start_x, end_x do
-      local tile_details = map_get_tile(map_id, y, x)
-
-      if tile_details ~= nil then
-        local ttype = tile_details["tile_type"]
-
-        if ttype == CTILE_TYPE_FIELD and ((y + x) % mnum == 0) then
-          map_transform_tile(map_id, y, x, CTILE_TYPE_TREE)
-        end
-      end
-    end
+  if RNG_percent_chance(50) then
+    map_fill_random(map_id, 2, 3, 9, 11, CTILE_TYPE_FIELD, CTILE_TYPE_TREE, 50)
+  else
+    map_fill_staggered(map_id, 2, 3, 9, 11, CTILE_TYPE_FIELD, CTILE_TYPE_TREE, RNG_range(2, 3))
   end
 end
 

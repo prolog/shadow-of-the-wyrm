@@ -232,6 +232,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_tile_subtype", map_set_tile_subtype);
   lua_register(L, "map_set_tile_property", map_set_tile_property);
   lua_register(L, "map_add_location", map_add_location);
+  lua_register(L, "map_fill_random", map_fill_random);
+  lua_register(L, "map_fill_staggered", map_fill_staggered);
   lua_register(L, "map_transform_tile", map_transform_tile);
   lua_register(L, "map_remove_tile_exit", map_remove_tile_exit);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
@@ -2893,6 +2895,96 @@ int map_add_location(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to map_add_location");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int map_fill_random(lua_State* ls)
+{
+  if (lua_gettop(ls) == 8 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6) && lua_isnumber(ls, 7) && lua_isnumber(ls, 8))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int start_row = lua_tointeger(ls, 2);
+    int start_col = lua_tointeger(ls, 3);
+    int end_row = lua_tointeger(ls, 4);
+    int end_col = lua_tointeger(ls, 5);
+    TileType orig_tt = static_cast<TileType>(lua_tointeger(ls, 6));
+    TileType new_tt = static_cast<TileType>(lua_tointeger(ls, 7));
+    int pct_chance = lua_tointeger(ls, 8);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      for (int row = start_row; row <= end_row; row++)
+      {
+        for (int col = start_col; col <= end_col; col++)
+        {
+          TilePtr tile = map->at(row, col);
+
+          if (tile && tile->get_tile_type() == orig_tt && RNG::percent_chance(pct_chance))
+          {
+            TileGenerator tg;
+            TilePtr new_tile = tg.generate(new_tt);
+
+            // Copy over the common details
+            new_tile->transform_from(tile);
+            map->insert(row, col, new_tile);
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_fill_random");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int map_fill_staggered(lua_State* ls)
+{
+  if (lua_gettop(ls) == 8 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6) && lua_isnumber(ls, 7) && lua_isnumber(ls, 8))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int start_row = lua_tointeger(ls, 2);
+    int start_col = lua_tointeger(ls, 3);
+    int end_row = lua_tointeger(ls, 4);
+    int end_col = lua_tointeger(ls, 5);
+    TileType orig_tt = static_cast<TileType>(lua_tointeger(ls, 6));
+    TileType new_tt = static_cast<TileType>(lua_tointeger(ls, 7));
+    int modulo = lua_tointeger(ls, 8);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      for (int row = start_row; row <= end_row; row++)
+      {
+        for (int col = start_col; col <= end_col; col++)
+        {
+          TilePtr tile = map->at(row, col);
+
+          if (tile && tile->get_tile_type() == orig_tt && ((row + col) % modulo == 0))
+          {
+            TileGenerator tg;
+            TilePtr new_tile = tg.generate(new_tt);
+
+            // Copy over the common details
+            new_tile->transform_from(tile);
+            map->insert(row, col, new_tile);
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_fill_staggered");
     lua_error(ls);
   }
 
