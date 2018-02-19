@@ -15,7 +15,10 @@ class CoordUtils
     static Coordinate end();
     static bool is_end(const Coordinate& c);
     static bool are_coordinates_adjacent(const Coordinate& c1, const Coordinate& c2);
-    static int chebyshev_distance(Coordinate c1, Coordinate c2);
+    static int chebyshev_distance(const Coordinate& c1, const Coordinate& c2);
+
+    static int get_width(const Coordinate& c1, const Coordinate& c2);
+    static int get_height(const Coordinate& c1, const Coordinate& c2);
 
     // Check to see if the direction is a valid move.
     static bool is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d);
@@ -28,6 +31,7 @@ class CoordUtils
 
     // Get the perimeter coordinates of a given rectangle.
     static std::vector<Coordinate> get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
+    static bool is_in_perimeter(const Coordinate& cur_loc, const Coordinate& c1, const Coordinate& c2);
 
     // Get coordinates used for a beam.
     // A radius 1 beam: *******

@@ -55,7 +55,7 @@ local function setup_nodig_treasure_room_and_traps(map_id)
 end
 
 local function setup_dynamic_content(map_id)
-  generate_city_feature(map_id, 3, 15, 8, 30, CCITY_SECTOR_PUBLIC_AREA)
+  generate_city_feature(map_id, 3, 15, 9, 30, CCITY_SECTOR_PUBLIC_AREA)
 end
 
 local function init_carcassia_a1(map_id)

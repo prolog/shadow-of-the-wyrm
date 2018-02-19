@@ -59,9 +59,19 @@ bool CoordUtils::are_coordinates_adjacent(const Coordinate& c1, const Coordinate
 }
 
 // Get the distance between two coordinates using Chebyshev distance
-int CoordUtils::chebyshev_distance(Coordinate c1, Coordinate c2)
+int CoordUtils::chebyshev_distance(const Coordinate& c1, const Coordinate& c2)
 {
   return std::max(abs(c1.second - c2.second), abs(c1.first - c2.first));
+}
+
+int CoordUtils::get_height(const Coordinate& c1, const Coordinate& c2)
+{
+  return std::abs(c2.first - c1.first);
+}
+
+int CoordUtils::get_width(const Coordinate& c1, const Coordinate& c2)
+{
+  return std::abs(c2.second - c1.second);
 }
 
 // Check to see if movement in a given direction is valid.
@@ -260,6 +270,12 @@ vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_l
   }
 
   return perimeter_coordinates;
+}
+
+bool CoordUtils::is_in_perimeter(const Coordinate& cur_loc, const Coordinate& c1, const Coordinate& c2)
+{
+  bool in_perimeter = ((cur_loc.first == c1.first) || (cur_loc.first == c2.first) || (cur_loc.second == c1.second) || (cur_loc.second == c2.second));
+  return in_perimeter;
 }
 
 vector<Coordinate> CoordUtils::get_beam_coordinates(const Coordinate& centre_coord, const Direction d, const uint radius)
