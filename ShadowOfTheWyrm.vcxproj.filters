@@ -4131,6 +4131,9 @@
     <ClInclude Include="engine\generators\settlements\include\DefaultSectorFeatureGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\PublicAreaSectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8208,6 +8211,12 @@
       <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\SectorFeatureGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\SectorFeatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\PublicAreaSectorFeatureGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
   </ItemGroup>

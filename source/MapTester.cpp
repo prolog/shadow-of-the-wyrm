@@ -61,7 +61,7 @@ using namespace std;
 
 string map_to_string(MapPtr map, bool html=true);
 string map_to_html_string(MapPtr map);
-void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool use_html, string& start_tag, string& end_tag);
+void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool use_html, string& start_tag, string& end_tag, const int row, const int col, const bool show_coords);
 void output_map(string map, string filename);
 
 // Random number generation function prototypes
@@ -180,7 +180,7 @@ string map_to_string(MapPtr map, bool use_html)
 
       if (tile != nullptr)
       {
-        tile_to_string(tile, tile_ascii, map_s, use_html, start_tag, end_tag);
+        tile_to_string(tile, tile_ascii, map_s, use_html, start_tag, end_tag, y, x, false);
       }
 
       if (x == col_end)
@@ -205,7 +205,7 @@ string map_to_string(MapPtr map, bool use_html)
 
     if (use_html)
     {
-      map_s = map_s + "<br>";
+      map_s = map_s + "<br/>";
     }
 
     if (y == row_end)
@@ -239,7 +239,7 @@ string map_to_string(MapPtr map, bool use_html)
   return map_s;
 }
 
-void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool use_html, string& start_tag, string& end_tag)
+void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool use_html, string& start_tag, string& end_tag, const int row, const int col, const bool show_coords)
 {
   IInventoryPtr items = tile->get_items();
   if (items->size() > 0)
@@ -263,7 +263,13 @@ void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool 
     DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, { Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED } /* ditto for colour overrides */, sc, tile, tile);
     if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
     ostringstream ss;
+
+    if (show_coords)
+    {
+      ss << "(" << row << "," << col << ")";
+    }
     ss << dt.get_symbol();
+
     tile_ascii = html_encode(ss.str());
   }
 
@@ -1008,6 +1014,8 @@ void load_custom_maps()
 
     cout << "Load Custom Map" << endl << endl;
     cout << "1. Carcassia" << endl;
+    cout << "-1. Quit" << endl;
+
     cin >> selection;
 
     if (selection != -1)
