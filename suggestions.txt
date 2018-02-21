@@ -1,4 +1,5 @@
 Me:
+- Fix pillar spacing
 - After finishing map ID and exit changes, need to test:
   - Entering to a set map from a tile
   - Siriath's lair
