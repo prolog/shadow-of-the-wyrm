@@ -6,6 +6,11 @@
 
 using namespace std;
 
+PublicAreaSectorFeatureGenerator::PublicAreaSectorFeatureGenerator()
+: features({{{1,1}, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK}})
+{
+}
+
 bool PublicAreaSectorFeatureGenerator::create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx)
 {
   bool created = false;
@@ -106,12 +111,15 @@ bool PublicAreaSectorFeatureGenerator::generate_park(MapPtr map, const Coordinat
   return generated;
 }
 
-int PublicAreaSectorFeatureGenerator::get_min_feature_idx() const
+PublicSectorFeatureType PublicAreaSectorFeatureGenerator::get_random_feature() const
 {
-  return static_cast<int>(PublicSectorFeatureType::PUBLIC_SECTOR_FIRST);
-}
+  for (const auto f_pair : features)
+  {
+    if (RNG::x_in_y_chance(f_pair.first.first, f_pair.first.second))
+    {
+      return f_pair.second;
+    }
+  }
 
-int PublicAreaSectorFeatureGenerator::get_max_feature_idx() const
-{
-  return static_cast<int>(PublicSectorFeatureType::PUBLIC_SECTOR_LAST);
+  return PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK;
 }
