@@ -1,6 +1,7 @@
 #include "CoordUtils.hpp"
 #include "ScatteredSettlementGenerator.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
@@ -76,11 +77,11 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
   int num_attempts  = 100;
   
   int attempts  = 0;
-  int buildings = 0;
+  int nbuildings = 0;
   int row, col, height, width;
   CardinalDirection door_direction;
   
-  while ((buildings < num_buildings) && (attempts < num_attempts))
+  while ((nbuildings < num_buildings) && (attempts < num_attempts))
   {
     // JCD FIXME: DEFINE THESE CONSTANTS IN BASESETTLEMENTGENERATOR AND BE DONE WITH IT!
     height = RNG::range(4, 6);
@@ -92,12 +93,12 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
     if (can_building_be_placed(row, col, height, width))
     {
       BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false);
-      generate_building_if_possible(map, bgp);
+      SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
       
       Room room(no_features, attempts, col, col+width, row, row+width);
       current_buildings.push_back(room);
       
-      buildings++;
+      nbuildings++;
     }
     
     attempts++;

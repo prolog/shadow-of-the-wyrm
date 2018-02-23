@@ -782,6 +782,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\settlements\include\SectorFeatureGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SettlementGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SettlementGeneratorFactory.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\SettlementGeneratorUtils.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SettlementRuinsGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SettlementTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp" />
@@ -1738,6 +1739,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\generators\settlements\source\PublicAreaSectorFeatureGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\SectorFeatureGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\SectorFeatureGeneratorFactory.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\SettlementGeneratorUtils.cpp" />
     <ClCompile Include="engine\generators\settlements\source\ShopGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\unit_tests\Building_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

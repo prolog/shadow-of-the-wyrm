@@ -1,6 +1,7 @@
 #include "WalledSettlementGenerator.hpp"
 #include "FeatureGenerator.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
 
 WalledSettlementGenerator::WalledSettlementGenerator(MapPtr new_base_map)
@@ -150,11 +151,11 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
     width  = RNG::range(std::min(5, gap_width), std::min(9, gap_width));
     dir = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
     
-    if (!does_building_overlap(map, row, row+height+1, col, col+width+1, offset_extra))
+    if (!SettlementGeneratorUtils::does_building_overlap(map, row, row+height+1, col, col+width+1, offset_extra))
     {
       BuildingGenerationParameters bgp(row, row + height, col, col + width, dir, false);
 
-      generate_building_if_possible(map, bgp);
+      SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
       cur_buildings_generated++;
     }
 

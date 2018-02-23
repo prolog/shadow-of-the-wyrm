@@ -1,9 +1,7 @@
 #include <utility>
 #include "BaseSettlementGenerator.hpp"
-#include "FeatureGenerator.hpp"
-#include "GardenGenerator.hpp"
-#include "GardenGeneratorFactory.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
 #include "ShopGenerator.hpp"
 #include "TileGenerator.hpp"
 
@@ -46,182 +44,6 @@ bool BaseSettlementGenerator::get_ignore_creature_generation_level_checks() cons
 }
 
 
-// Routines to check to see whether a proposed building overlaps an existing generated building
-// or road.
-bool BaseSettlementGenerator::does_building_overlap(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, const int offset_extra)
-{
-  bool building_will_overlap = false;
-
-  for (int cur_row = start_row - offset_extra; cur_row <= end_row + offset_extra; cur_row++)
-  {
-    for (int cur_col = start_col - offset_extra; cur_col <= end_col + offset_extra; cur_col++)
-    {
-      if (does_tile_overlap(map, cur_row, cur_col))
-      {
-        building_will_overlap = true;
-        break;
-      }
-    }
-  }
-
-  return building_will_overlap;
-}
-
-bool BaseSettlementGenerator::does_tile_overlap(MapPtr map, const int row, const int col)
-{
-  bool tile_overlaps = false;
-
-  Dimensions d = map->size();
-  int max_rows = d.get_y();
-  int max_cols = d.get_x();
-
-  if (row < max_rows && col < max_cols)
-  {
-    TilePtr tile  = map->at(row, col);
-    TileType type = tile->get_tile_type();
-
-    if (type == TileType::TILE_TYPE_ROAD || type == TileType::TILE_TYPE_ROCK || type == TileType::TILE_TYPE_DUNGEON)
-    {
-      tile_overlaps = true;
-    }
-
-    return tile_overlaps;
-  }
-
-  return true; // Don't lay a tile over a non-existant space!
-}
-
-// Building generation routines
-pair<int, int> BaseSettlementGenerator::get_door_location(const int start_row, const int end_row, const int start_col, const int end_col, const CardinalDirection door_direction)
-{
-  pair<int, int> result = make_pair(start_row, end_col); // This default should never be used.
-
-  switch(door_direction)
-  {
-    case CardinalDirection::CARDINAL_DIRECTION_NORTH:
-      result = make_pair(start_row, (start_col + end_col) / 2);
-      break;
-    case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
-      result = make_pair(end_row, (start_col + end_col) / 2);
-      break;
-    case CardinalDirection::CARDINAL_DIRECTION_EAST:
-      result = make_pair((start_row + end_row) / 2, end_col);
-      break;
-    case CardinalDirection::CARDINAL_DIRECTION_WEST:
-      result = make_pair((start_row + end_row) / 2, start_col);
-    default:
-      break;
-  }
-
-  return result;
-}
-
-// Check to see if the given range of coordinates fall within the map's dimensions.
-bool BaseSettlementGenerator::is_rows_and_cols_in_range(const Dimensions& dim, const int start_row, const int end_row, const int start_col, const int end_col)
-{
-  if (start_row < 0 || end_row >= dim.get_y() || start_col < 0 || end_col >= dim.get_x())
-  {
-    return false;
-  }
-  
-  return true;
-}
-
-// Generate a particular type of garden if possible, returning true if the garden
-// could be generated, and false otherwise.
-bool BaseSettlementGenerator::generate_garden_if_possible(MapPtr map, const GardenType garden_type, const int start_row, const int end_row, const int start_col, const int end_col)
-{
-  bool generated = false;
-  
-  if (!is_rows_and_cols_in_range(map->size(), start_row, end_row, start_col, end_col))
-  {
-    return generated;
-  }
-  else
-  {
-    if (does_building_overlap(map, start_row, end_row, start_col, end_col))
-    {
-      return generated;
-    }
-    else
-    {
-      GardenGeneratorPtr garden_gen = GardenGeneratorFactory::create_garden_generator(garden_type, map, start_row, start_col, (end_row - start_row), (end_col - start_col));
-      garden_gen->generate();
-      generated = true;
-    }
-  }
-  
-  return generated;
-}
-
-// Generate a building if possible, returning true if a building could be generated,
-// and false otherwise.
-bool BaseSettlementGenerator::generate_building_if_possible(MapPtr map, const BuildingGenerationParameters& bgp)
-{
-  bool generated = false;
-  TileGenerator tg;
-
-  int start_row = bgp.get_start_row();
-  int end_row = bgp.get_end_row();
-  int start_col = bgp.get_start_col();
-  int end_col = bgp.get_end_col();
-  CardinalDirection door_direction = bgp.get_door_direction();
-
-  if (!is_rows_and_cols_in_range(map->size(), start_row, end_row, start_col, end_col))
-  {
-    return generated;
-  }
-
-  if (does_building_overlap(map, start_row, end_row, start_col, end_col))
-  {
-    return generated;
-  }
-  else
-  {
-    // Draw building
-    int rand;
-    TilePtr current_tile;
-    for (int cur_row = start_row; cur_row <= end_row; cur_row++)
-    {
-      for (int cur_col = start_col; cur_col <= end_col; cur_col++)
-      {
-        rand = RNG::range(1, 100);
-
-        if (rand <= growth_rate)
-        {
-          if (cur_row == start_row || cur_row == end_row || cur_col == start_col || cur_col == end_col)
-          {
-            current_tile = tg.generate(TileType::TILE_TYPE_ROCK);
-          }
-          else
-          {
-            current_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
-          }
-
-          map->insert(cur_row, cur_col, current_tile);
-        }
-      }
-    }
-
-    // Create door
-    pair<int, int> door_location = get_door_location(start_row, end_row, start_col, end_col, door_direction);
-    TilePtr door_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
-
-    FeaturePtr door = FeatureGenerator::generate_door();
-    door_tile->set_feature(door);
-
-    // Track the building for later use - once all the buildings are generated
-    // in a settlement, some might be used for shops or other purposes.
-    buildings.push_back({{start_row, start_col}, {end_row, end_col}, door_location});
-
-    map->insert(door_location.first, door_location.second, door_tile);
-
-    generated = true;
-  }
-  
-  return generated;
-}
-
 void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_modifier, bool recurse)
 {
   int rand = RNG::range(1, 100);
@@ -252,7 +74,7 @@ void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_ro
             if (building_size >= MIN_BLOCK_SIZE)
             {
               BuildingGenerationParameters bgp(current_row, current_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST, false);
-              generate_building_if_possible(map, bgp);
+              SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
           else
@@ -272,7 +94,7 @@ void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_ro
             if (building_size >= MIN_BLOCK_SIZE)
             {
               BuildingGenerationParameters bgp(current_row, current_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST, false);
-              generate_building_if_possible(map, bgp);
+              SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
           else
@@ -287,7 +109,7 @@ void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_ro
 
       if (rand <= growth_rate)
       {
-        if (!does_tile_overlap(map, current_row, start_col) || (probability == 100))
+        if (!SettlementGeneratorUtils::does_tile_overlap(map, current_row, start_col) || (probability == 100))
         {
           TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(current_row, start_col, road_tile);
@@ -339,7 +161,7 @@ void BaseSettlementGenerator::generate_road_south(MapPtr map, const int start_ro
             if (building_size >= block_modifier)
             {
               BuildingGenerationParameters bgp(start_row, start_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST, false);
-              generate_building_if_possible(map, bgp);
+              SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
           else
@@ -359,7 +181,7 @@ void BaseSettlementGenerator::generate_road_south(MapPtr map, const int start_ro
             if (building_size >= MIN_BLOCK_SIZE)
             {
               BuildingGenerationParameters bgp(start_row, start_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST, false);
-              generate_building_if_possible(map, bgp);
+              SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
           else
@@ -372,7 +194,7 @@ void BaseSettlementGenerator::generate_road_south(MapPtr map, const int start_ro
 
       if (rand <= growth_rate)
       {
-        if (!does_tile_overlap(map, current_row, start_col) || (probability == 100))
+        if (!SettlementGeneratorUtils::does_tile_overlap(map, current_row, start_col) || (probability == 100))
         {
           TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(current_row, start_col, road_tile);
@@ -428,7 +250,7 @@ void BaseSettlementGenerator::generate_road_east(MapPtr map, const int start_row
             if (building_size >= MIN_BLOCK_SIZE)
             {
               BuildingGenerationParameters bgp(start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false);
-              generate_building_if_possible(map, bgp);
+              SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
           else
@@ -448,7 +270,7 @@ void BaseSettlementGenerator::generate_road_east(MapPtr map, const int start_row
             if (building_size >= MIN_BLOCK_SIZE)
             {
               BuildingGenerationParameters bgp(start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH, false);
-              generate_building_if_possible(map, bgp);
+              SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
           else
@@ -463,7 +285,7 @@ void BaseSettlementGenerator::generate_road_east(MapPtr map, const int start_row
 
       if (rand <= growth_rate)
       {
-        if (!does_tile_overlap(map, start_row, current_col) || (probability == 100))
+        if (!SettlementGeneratorUtils::does_tile_overlap(map, start_row, current_col) || (probability == 100))
         {
           TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(start_row, current_col, road_tile);
@@ -517,7 +339,7 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
             if (building_size >= MIN_BLOCK_SIZE)
             {
               BuildingGenerationParameters bgp(start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false);
-              generate_building_if_possible(map, bgp);
+              SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
           else
@@ -537,7 +359,7 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
             if (building_size >= MIN_BLOCK_SIZE)
             {
               BuildingGenerationParameters bgp(start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH, false);
-              generate_building_if_possible(map, bgp);
+              SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
           else
@@ -552,7 +374,7 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
 
       if (rand <= growth_rate)
       {
-        if (!does_tile_overlap(map, start_row, current_col) || (probability == 100))
+        if (!SettlementGeneratorUtils::does_tile_overlap(map, start_row, current_col) || (probability == 100))
         {
           TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(start_row, current_col, road_tile);
