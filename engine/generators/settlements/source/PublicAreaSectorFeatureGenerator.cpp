@@ -1,23 +1,29 @@
 #include "PublicAreaSectorFeatureGenerator.hpp"
 #include "CoordUtils.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
+#include "ShopGenerator.hpp"
 #include "StatueGenerator.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
 
 PublicAreaSectorFeatureGenerator::PublicAreaSectorFeatureGenerator()
-: features({{{1,1}, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK}})
+: features({{100, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP},
+            {101, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK}})
 {
 }
 
 bool PublicAreaSectorFeatureGenerator::create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx)
 {
   bool created = false;
-  PublicSectorFeatureType feat = static_cast<PublicSectorFeatureType>(feat_idx);
+  PublicSectorFeatureType feat = get_random_feature(feat_idx);
 
   switch (feat)
   {
+    case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP:
+      created = generate_shop(map, start_coord, end_coord);
+      break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK:
     default:
       created = generate_park(map, start_coord, end_coord);
@@ -111,11 +117,32 @@ bool PublicAreaSectorFeatureGenerator::generate_park(MapPtr map, const Coordinat
   return generated;
 }
 
-PublicSectorFeatureType PublicAreaSectorFeatureGenerator::get_random_feature() const
+bool PublicAreaSectorFeatureGenerator::generate_shop(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+{
+  bool generated = false;
+
+  if (map != nullptr)
+  {
+    BuildingGenerationParameters bgp(start_coord.first, end_coord.first, start_coord.second, end_coord.second, CardinalDirection::CARDINAL_DIRECTION_NORTH, false);
+    ShopGenerator sg;
+
+    vector<Building> buildings;
+    bool b_gen = SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100);
+
+    if (b_gen)
+    {
+      generated = sg.generate_shop(map, buildings.at(0));
+    }
+  }
+
+  return generated;
+}
+
+PublicSectorFeatureType PublicAreaSectorFeatureGenerator::get_random_feature(const int feat_idx) const
 {
   for (const auto f_pair : features)
   {
-    if (RNG::x_in_y_chance(f_pair.first.first, f_pair.first.second))
+    if (feat_idx < f_pair.first)
     {
       return f_pair.second;
     }
