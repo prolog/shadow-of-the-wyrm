@@ -123,7 +123,8 @@ bool PublicAreaSectorFeatureGenerator::generate_shop(MapPtr map, const Coordinat
 
   if (map != nullptr)
   {
-    BuildingGenerationParameters bgp(start_coord.first, end_coord.first, start_coord.second, end_coord.second, CardinalDirection::CARDINAL_DIRECTION_NORTH, false);
+    CardinalDirection door_dir = static_cast<CardinalDirection>(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST));
+    BuildingGenerationParameters bgp(start_coord.first, end_coord.first, start_coord.second, end_coord.second, door_dir, false);
     ShopGenerator sg;
 
     vector<Building> buildings;
