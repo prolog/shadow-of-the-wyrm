@@ -42,6 +42,9 @@ class GeneratorUtils
     // is not empty.
     static void generate_bazaar_if_necessary(const MapPtr map, const std::string& bazaar_property);
 
+    // Fill a subset of the map with a certain tile type.
+    static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
+
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
     static bool are_tiles_ok_for_bazaar(MapPtr map, const int y_start, const int x_start, const int height, const int width);
