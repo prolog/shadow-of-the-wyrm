@@ -242,7 +242,9 @@ string map_to_string(MapPtr map, bool use_html)
 void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool use_html, string& start_tag, string& end_tag, const int row, const int col, const bool show_coords)
 {
   IInventoryPtr items = tile->get_items();
-  if (items->size() > 0)
+  bool has_creature = tile->has_creature();
+
+  if (items->size() > 0 && !has_creature)
   {
     ItemPtr item = items->at(0);
     if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(item->get_colour()) + "\">";
@@ -250,7 +252,7 @@ void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool 
     ss << item->get_symbol();
     tile_ascii = html_encode(ss.str());
   }
-  else if (tile->has_feature())
+  else if (tile->has_feature() && !has_creature)
   {
     if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(tile->get_feature()->get_colour()) + "\">";
     ostringstream ss;
