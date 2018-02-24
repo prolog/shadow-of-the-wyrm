@@ -1,5 +1,10 @@
 Me:
-- Fix pillar spacing
+- Should be able to generate gardens, vegetable gardens in public areas
+- More park variety (benches)
+- Public tomb
+- Graveyard
+- Plaza (floor, with dais/emperor statues)
+- Parks should have traders, who sell food for an ivory.
 - After finishing map ID and exit changes, need to test:
   - Entering to a set map from a tile
   - Siriath's lair

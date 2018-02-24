@@ -319,3 +319,20 @@ bool GeneratorUtils::are_tiles_ok_for_bazaar(MapPtr map, const int y_start, cons
 
   return bzr_ok;
 }
+
+void GeneratorUtils::fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type)
+{
+  TileGenerator tg;
+
+  if (map != nullptr)
+  {
+    for (int row = start_coord.first; row < end_coord.first; row++)
+    {
+      for (int col = start_coord.second; col < end_coord.second; col++)
+      {
+        TilePtr tile = tg.generate(tile_type);
+        map->insert(row, col, tile);
+      }
+    }
+  }
+}
