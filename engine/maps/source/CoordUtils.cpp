@@ -241,6 +241,35 @@ vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& di
   return adjacent_coordinates;
 }
 
+vector<Coordinate> CoordUtils::get_border_coordinates(const Coordinate& top_left, const Coordinate& bottom_right, const int length)
+{
+  Coordinate top_right = {top_left.first, bottom_right.second};
+  Coordinate bottom_left = {bottom_right.first, top_left.second};
+
+  vector<pair<Coordinate, vector<Direction>>> dirs = {{top_left, {Direction::DIRECTION_EAST, Direction::DIRECTION_SOUTH}}, 
+                                                      {top_right, {Direction::DIRECTION_WEST, Direction::DIRECTION_SOUTH}},
+                                                      {bottom_left, {Direction::DIRECTION_NORTH, Direction::DIRECTION_EAST}},
+                                                      {bottom_right, {Direction::DIRECTION_NORTH, Direction::DIRECTION_WEST}}};
+
+  vector<Coordinate> border_coords;
+
+  for (auto d_pair : dirs)
+  {
+    border_coords.push_back(d_pair.first);
+
+    for (auto d : d_pair.second)
+    {
+      for (int i = 0; i < length; i++)
+      {
+        Coordinate c = get_new_coordinate(d_pair.first, d, i+1);
+        border_coords.push_back(c);
+      }
+    }
+  }
+
+  return border_coords;
+}
+
 vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
 {
   vector<Coordinate> perimeter_coordinates(get_perimeter_length(top_left, bottom_right));

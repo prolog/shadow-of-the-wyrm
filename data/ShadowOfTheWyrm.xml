@@ -11091,6 +11091,49 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="_vendor">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>VENDOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VENDOR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VENDOR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>VENDOR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>v</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>10</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>5</Evade>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/vendor.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Properties>
+				<Property>
+					<Name>VENDOR_FOOD</Name>
+					<Value>salted_nuts,skewer_mystery_meat</Value>
+				</Property>
+			</Properties>
+		</Creature>
 		<Creature id="pelageus">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>PELAGEUS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -34375,6 +34418,44 @@
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1700</Nutrition>	
+				<FoodType>2</FoodType>
+			</Food>
+			<Food id="salted_nuts">
+				<DescriptionSID>SALTED_NUTS_SID</DescriptionSID>
+				<UsageDescriptionSID>SALTED_NUTS_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>500</Nutrition>	
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="skewer_mystery_meat">
+				<DescriptionSID>SKEWER_MYSTERY_MEAT_SID</DescriptionSID>
+				<UsageDescriptionSID>SKEWER_MYSTERY_MEAT_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>600</Nutrition>	
 				<FoodType>2</FoodType>
 			</Food>
 		</Foodstuffs>

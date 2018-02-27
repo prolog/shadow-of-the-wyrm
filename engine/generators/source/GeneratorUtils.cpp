@@ -326,9 +326,9 @@ void GeneratorUtils::fill(MapPtr map, const Coordinate& start_coord, const Coord
 
   if (map != nullptr)
   {
-    for (int row = start_coord.first; row < end_coord.first; row++)
+    for (int row = start_coord.first; row <= end_coord.first; row++)
     {
-      for (int col = start_coord.second; col < end_coord.second; col++)
+      for (int col = start_coord.second; col <= end_coord.second; col++)
       {
         TilePtr tile = tg.generate(tile_type);
         map->insert(row, col, tile);

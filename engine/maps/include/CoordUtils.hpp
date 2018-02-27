@@ -64,6 +64,17 @@ class CoordUtils
     // Get all the adjacent coordinates for the current row and column, given the map's dimensions.
     static std::vector<Coordinate> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col, const int steps = 1);
 
+    // Get the corner coordinates and the "partial wall", plus any bordering
+    // wall coordinates based on the length.  With length 0, this is just the
+    // corner coordinates.  Larger length values give partial walls.  E.g.:
+    //
+    // **  **
+    // *    *
+    //      
+    // *    *
+    // **  **
+    static std::vector<Coordinate> get_border_coordinates(const Coordinate& top_left, const Coordinate& bottom_right, const int length = 0);
+
     // Are the two line segments "joinable"?  Two segments are joinable iff
     // there is a coordinate adjacent to both.
     static std::pair<bool, std::vector<Coordinate>> are_segments_joinable(const std::pair<Coordinate, Coordinate>& s1, const std::pair<Coordinate, Coordinate>& s2, const int incr);

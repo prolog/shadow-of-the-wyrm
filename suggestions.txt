@@ -4,7 +4,6 @@ Me:
 - Public tomb
 - Graveyard
 - Plaza (floor, with dais/emperor statues)
-- Parks should have traders, who sell food for an ivory.
 - After finishing map ID and exit changes, need to test:
   - Entering to a set map from a tile
   - Siriath's lair

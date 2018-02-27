@@ -1,9 +1,13 @@
 #include "PublicAreaSectorFeatureGenerator.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureFactory.hpp"
 #include "FeatureGenerator.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
 #include "GeneratorUtils.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "ShopGenerator.hpp"
@@ -16,9 +20,9 @@ const int PublicAreaSectorFeatureGenerator::MIN_PLAZA_FOUNTAIN_HEIGHT = 5;
 const int PublicAreaSectorFeatureGenerator::MIN_PLAZA_FOUNTAIN_WIDTH = 5;
 
 PublicAreaSectorFeatureGenerator::PublicAreaSectorFeatureGenerator()
-: features({{100, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PLAZA},
+: features({{102, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PLAZA},
             {101, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP},
-            {102, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK}})
+            {100, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK}})
 {
 }
 
@@ -54,6 +58,7 @@ bool PublicAreaSectorFeatureGenerator::generate_park(MapPtr map, const Coordinat
 
   bool generate_benches = RNG::percent_chance(50);
   bool generate_statue_perimeter = RNG::percent_chance(75);
+  bool generate_trader = RNG::percent_chance(100);
   bool generate_pond = !generate_statue_perimeter || RNG::percent_chance(75);
 
   if (map != nullptr)
@@ -156,6 +161,20 @@ bool PublicAreaSectorFeatureGenerator::generate_park(MapPtr map, const Coordinat
         }
       }
     }
+
+    if (generate_trader)
+    {
+      CreatureFactory cf;
+      CreaturePtr vendor = cf.create_by_creature_id(Game::instance().get_action_manager_ref(), CreatureID::CREATURE_ID_VENDOR);
+
+      Coordinate vendor_coord = {start_coord.first + 1, start_coord.second + 1};
+      TilePtr tile = map->at(vendor_coord);
+
+      if (tile && vendor && MapUtils::is_tile_available_for_creature(vendor, tile))
+      {
+        GameUtils::add_new_creature_to_map(Game::instance(), vendor, map, vendor_coord);
+      }
+    }
   }
 
   return generated;
@@ -194,6 +213,20 @@ bool PublicAreaSectorFeatureGenerator::generate_plaza(MapPtr map, const Coordina
     if (CoordUtils::get_height(start_coord, end_coord) >= MIN_PLAZA_FOUNTAIN_HEIGHT && 
         CoordUtils::get_width(start_coord, end_coord) >= MIN_PLAZA_FOUNTAIN_WIDTH)
     {
+      TileGenerator tg;
+
+      // Wall border
+      Coordinate wall_start_coord = {start_coord.first+1, start_coord.second+1};
+      Coordinate wall_end_coord = {end_coord.first-1, end_coord.second-1};
+      vector<Coordinate> wall_coords = CoordUtils::get_border_coordinates(wall_start_coord, wall_end_coord, 1);
+
+      for (const Coordinate& c : wall_coords)
+      {
+        TilePtr wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
+        map->insert(c, wall_tile);
+      }
+
+      // Centre fountains
       int mid_row = (start_coord.first + end_coord.first) / 2;
       int mid_col = (start_coord.second + end_coord.second) / 2;
 

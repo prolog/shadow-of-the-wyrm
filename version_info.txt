@@ -5,7 +5,12 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   on the Isle of Carcassia.
 
 - On the south-eastern tip of the Isle of Carcassia is the great city of
-  Carcassia.
+  Carcassia.  Carcassia is home to a great fortress, and four city
+  sectors:
+
+  - The public sector contains a sealed room with no obvious way in, the 
+    tower of high sorcery, as well as a number of potential public areas 
+    such as plazas, parks, and shops.
 
 - The "no dig" flag can now be set at the tile level, allowing a general
   map that is diggable, but sections that are not.
@@ -15,7 +20,9 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
 - Stanzas for "Tel and Floridel".
 
-- New creatures: Glich, Carcassian guard, urchin.
+- New creatures: Glich, Carcassian guard, urchin, vendor.
+
+- New items: salted nuts, skewer of mystery meat.
 
 - New traps: teleport.
 
