@@ -94,6 +94,18 @@ bool CoordUtils::is_valid_move(const Dimensions& dim, const Coordinate& c, const
   return valid_move;
 }
 
+bool CoordUtils::is_in_range(const Dimensions& dim, const Coordinate& start_coord, const Coordinate& end_coord)
+{
+  bool valid_move = true;
+
+  if (start_coord.first < 0 || end_coord.first >= dim.get_y() || start_coord.second < 0 || end_coord.second >= dim.get_x())
+  {
+    valid_move = false;
+  }
+
+  return valid_move;
+}
+
 // Generate the next coordinate in a given direction.  Does not do correctness checking!
 Coordinate CoordUtils::get_new_coordinate(const Coordinate& c, const Direction d, const int offset)
 {

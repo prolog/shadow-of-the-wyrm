@@ -22,7 +22,8 @@ class CoordUtils
 
     // Check to see if the direction is a valid move.
     static bool is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d);
-    
+    static bool is_in_range(const Dimensions& dim, const Coordinate& start_coord, const Coordinate& end_coord);
+
     // Get new coordinates.  "is_valid_move" should always be called first!
     static Coordinate get_new_coordinate(const Coordinate& c, const Direction d, const int offset = 1);
     static BoundingBox get_new_bounding_box(const BoundingBox& bb, const Direction d);
