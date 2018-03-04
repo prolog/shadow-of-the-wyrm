@@ -776,8 +776,11 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\settlements\include\CitySectorTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\include\DefaultSectorFeatureGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\ParkSectorFeature.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\PlazaSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\include\PublicAreaSectorFeatureGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\ScatteredSettlementGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\SectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SectorFeatureGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SectorFeatureGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SettlementGenerator.hpp" />
@@ -786,6 +789,8 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\generators\settlements\include\SettlementRuinsGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SettlementTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\ShopSectorFeature.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\TombSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\include\WalledSettlementGenerator.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\AquaticVegetationTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\CairnTileConfiguration.hpp" />
@@ -1736,11 +1741,16 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\CitySectorGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\DefaultSectorFeatureGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\ParkSectorFeature.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\PlazaSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\source\PublicAreaSectorFeatureGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\SectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\source\SectorFeatureGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\SectorFeatureGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\settlements\source\SettlementGeneratorUtils.cpp" />
     <ClCompile Include="engine\generators\settlements\source\ShopGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\ShopSectorFeature.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\TombSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\source\unit_tests\Building_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

@@ -614,3 +614,17 @@ TEST(SW_Engine_Maps_CoordUtils, is_in_perimeter)
     EXPECT_FALSE(CoordUtils::is_in_perimeter(c, c1, c2));
   }
 }
+
+TEST(SW_Engine_Maps_CoordUtils, is_in_range)
+{
+  Dimensions dim(20, 20);
+
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(0,0), make_pair(19, 19)));
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(0, 0), make_pair(10, 7)));
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(0, 0), make_pair(0, 0)));
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(3, 3), make_pair(19, 19)));
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(5, 12), make_pair(17, 17)));
+
+  EXPECT_FALSE(CoordUtils::is_in_range(dim, make_pair(-1, 0), make_pair(19, 19)));
+  EXPECT_FALSE(CoordUtils::is_in_range(dim, make_pair(0, 0), make_pair(20, 20)));
+}
