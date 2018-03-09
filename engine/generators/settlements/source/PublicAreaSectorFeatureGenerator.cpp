@@ -10,8 +10,8 @@ using namespace std;
 PublicAreaSectorFeatureGenerator::PublicAreaSectorFeatureGenerator()
 : features({{103, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PLAZA},
             {102, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP},
-            {100, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK},
-            {103, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_TOMB}})
+            {101, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK},
+            {100, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_TOMB}})
 {
 }
 
