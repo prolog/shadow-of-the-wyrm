@@ -92,6 +92,10 @@ class MapProperties
     // sewers, etc) this will trigger on which staircase the creature
     // will be placed.
     static const std::string MAP_PROPERTIES_EXIT_MOVEMENT_TYPE;
+    
+    // Used when dynamically populating tombs.  Different cultures
+    // can have different creatures.
+    static const std::string MAP_PROPERTIES_TOMB_GUARDIANS;
 
   protected:
     MapProperties();

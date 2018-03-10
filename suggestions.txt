@@ -52,6 +52,7 @@ Me:
   are 2.
 - Allow shopkeepers to be any of the selectable races.
 - Towers/tower generators.
+- Reuse some of the sector feature generators in dungeons - tomb, etc.
 - Descent into the underworld.
 - Allow shopkeepers to sell for different prices depending on their
   race, and the buying creature's.

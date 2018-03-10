@@ -165,11 +165,12 @@ FeaturePtr FeatureGenerator::generate_bed()
 }
 
 // Generate a door based on the parameters provided.
-DoorPtr FeatureGenerator::generate_door()
+DoorPtr FeatureGenerator::generate_door(const EntranceStateType est)
 {
   LockPtr lock_info;
   EntranceState door_state;
   DoorPtr door = std::make_shared<Door>(lock_info, door_state);
+  door->get_state_ref().set_state(est);
   return door;
 }
 
