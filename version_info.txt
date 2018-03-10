@@ -18,6 +18,11 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - Summoning is now less dangerous: it's the average of the map's danger
   level and the triggering creature's current level.
 
+- The Lua API functions map_set_additional_property and 
+  map_set_tile_property did exactly the same thing.  Made the former
+  set map-level properties, with the former handling setting tile
+  properties, and renamed the former to "map_set_property".
+  
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich, Carcassian guard, urchin, vendor.

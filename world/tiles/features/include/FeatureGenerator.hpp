@@ -20,7 +20,7 @@ class FeatureGenerator
     static TrapPtr create_trap();
     static FeaturePtr generate_altar(const std::string& deity_id, const AlignmentRange range);
     static FeaturePtr generate_bed();
-    static DoorPtr generate_door();
+    static DoorPtr generate_door(const EntranceStateType et = EntranceStateType::ENTRANCE_TYPE_OPEN);
     static FeaturePtr generate_gate();
     static FeaturePtr generate_fire_pillar();
     static FeaturePtr generate_forge();

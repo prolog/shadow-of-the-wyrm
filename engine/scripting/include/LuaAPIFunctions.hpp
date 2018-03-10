@@ -94,7 +94,7 @@ int get_creature_level(lua_State* ls);
 int is_player(lua_State* ls);
 int map_set_custom_map_id(lua_State* ls);
 int map_set_edesc(lua_State* ls);
-int map_set_additional_property(lua_State* ls);
+int map_set_property(lua_State* ls);
 int map_set_tile_subtype(lua_State* ls);
 int map_set_tile_property(lua_State* ls);
 int map_add_location(lua_State* ls);

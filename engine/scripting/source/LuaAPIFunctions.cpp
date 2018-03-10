@@ -229,7 +229,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_stat_max_marked", is_stat_max_marked);
   lua_register(L, "map_set_custom_map_id", map_set_custom_map_id);
   lua_register(L, "map_set_edesc", map_set_edesc);
-  lua_register(L, "map_set_additional_property", map_set_additional_property);
+  lua_register(L, "map_set_property", map_set_property);
   lua_register(L, "map_set_tile_subtype", map_set_tile_subtype);
   lua_register(L, "map_set_tile_property", map_set_tile_property);
   lua_register(L, "map_add_location", map_add_location);
@@ -2799,26 +2799,25 @@ int map_set_edesc(lua_State* ls)
   return 0;
 }
 
-// Set an additional property (k,v pair) into the given map id at the given
-// row and column.
-int map_set_additional_property(lua_State* ls)
+// Set a property (k,v pair) on the given map.
+int map_set_property(lua_State* ls)
 {
-  if (lua_gettop(ls) == 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4) && lua_isstring(ls, 5))
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
   {
     string map_id = lua_tostring(ls, 1);
-    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
-    string k = lua_tostring(ls, 4);
-    string v = lua_tostring(ls, 5);
-    TilePtr tile = get_tile(map_id, c);
+    string k = lua_tostring(ls, 2);
+    string v = lua_tostring(ls, 3);
 
-    if (tile)
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
     {
-      tile->set_additional_property(k, v);
+      map->set_property(k, v);
     }
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_set_additional_property");
+    lua_pushstring(ls, "Incorrect arguments to map_set_property");
     lua_error(ls);
   }
 

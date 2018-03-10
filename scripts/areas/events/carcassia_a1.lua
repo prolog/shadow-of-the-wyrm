@@ -3,6 +3,10 @@ require('map_events')
 
 local map_id = "carcassia_a1"
 
+local function setup_tomb_guardians(map_id)
+  map_set_property(map_id, "MAP_PROPERTIES_TOMB_GUARDIANS", "skeletal_warrior,mummy")
+end
+
 -- JCD FIXME: Consider making this a generic Lua API function in the
 -- engine.
 local function setup_parklands_around_treasure_room(map_id)
@@ -60,6 +64,7 @@ local function setup_dynamic_content(map_id)
 end
 
 local function init_carcassia_a1(map_id)
+  setup_tomb_guardians(map_id)
   setup_parklands_around_treasure_room(map_id)
   setup_nodig_treasure_room_and_traps(map_id)
   setup_dynamic_content(map_id)
