@@ -410,8 +410,7 @@ int add_message_with_pause(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_message_with_pause");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_message_with_pause");
   }
 
   return 0;
@@ -426,8 +425,7 @@ int clear_messages(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to clear_messages");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to clear_messages");
   }
 
   return 0;
@@ -451,8 +449,7 @@ int clear_and_add_message(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to clear_and_add_message");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to clear_and_add_message");
   }
 
   return 0;
@@ -475,8 +472,7 @@ int add_message(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_message");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_message");
   }
 
   return 0;
@@ -498,8 +494,7 @@ int add_message_direct(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_message_direct");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_message_direct");
   }
 
   return 0;
@@ -539,8 +534,7 @@ int add_debug_message(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_debug_message");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_debug_message");
   }
 
   return 0;
@@ -567,8 +561,7 @@ int add_confirmation_message(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_confirmation_message");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_confirmation_message");
   }
 
   lua_pushboolean(ls, confirm);
@@ -596,8 +589,7 @@ int add_prompt_message(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_prompt_message");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_prompt_message");
   }
 
   lua_pushstring(ls, prompt_val.c_str());
@@ -626,8 +618,7 @@ int add_char_message(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_char_message");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_char_message");
   }
 
   lua_pushstring(ls, key_val.c_str());
@@ -651,8 +642,7 @@ int add_fov_message(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_fov_message");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_fov_message");
   }
 
   return 0;
@@ -678,8 +668,7 @@ int add_message_for_creature(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_message_for_creature");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_message_for_creature");
   }
 
   return 0;
@@ -718,8 +707,7 @@ int add_new_quest(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_new_quest");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_new_quest");
   }
 
   // Return nothing.
@@ -743,8 +731,7 @@ int is_on_quest(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to is_on_quest");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_on_quest");
   }
 
   lua_pushboolean(ls, quest_in_progress);
@@ -769,8 +756,7 @@ int get_num_creature_killed_global(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_num_creature_killed_global");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_num_creature_killed_global");
   }
 
   lua_pushinteger(ls, num_killed);
@@ -793,8 +779,7 @@ int get_num_uniques_killed_global(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_num_uniques_killed_global");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_num_uniques_killed_global");
   }
 
   lua_pushinteger(ls, num_killed);
@@ -838,8 +823,7 @@ int add_object_to_player_tile(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_object_to_player_tile");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_object_to_player_tile");
   }
 
   lua_pushboolean(ls, added);
@@ -886,8 +870,7 @@ int add_object_to_map(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_object_to_map");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_object_to_map");
   }
 
   lua_pushboolean(ls, result);
@@ -932,8 +915,7 @@ int add_object_to_tile(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_object_to_tile");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_object_to_tile");
   }
 
   lua_pushboolean(ls, result);
@@ -973,8 +955,7 @@ int add_key_to_player_tile(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_key_to_player_tile");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_key_to_player_tile");
   }
 
   lua_pushboolean(ls, added);
@@ -1012,8 +993,7 @@ int add_basic_feature_to_map(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_basic_feature_to_map");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_basic_feature_to_map");
   }
 
   lua_pushboolean(ls, added);
@@ -1047,8 +1027,7 @@ int add_feature_to_player_tile(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_feature_to_player_tile");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_feature_to_player_tile");
   }
   
   lua_pushboolean(ls, added);
@@ -1084,8 +1063,7 @@ int set_feature_additional_property(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_feature_additional_property");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_feature_additional_property");
   }
 
   lua_pushboolean(ls, prop_added);
@@ -1126,8 +1104,7 @@ int add_feature_to_map(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_feature_to_map");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_feature_to_map");
   }
 
   lua_pushboolean(ls, feature_added);
@@ -1147,8 +1124,7 @@ int mark_quest_completed(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to mark_quest_completed");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to mark_quest_completed");
   }
 
   return 0;
@@ -1171,8 +1147,7 @@ int remove_active_quest(lua_State* ls)
 
   if (!args_ok)
   {
-    lua_pushstring(ls, "Incorrect arguments to remove_active_quest");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to remove_active_quest");
   }
 
   return 0;
@@ -1194,8 +1169,7 @@ int is_quest_completed(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to is_quest_completed");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_quest_completed");
   }
 
   lua_pushboolean(ls, quest_completed);
@@ -1218,8 +1192,7 @@ int player_has_item(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to player_has_item");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to player_has_item");
   }
 
   lua_pushboolean(ls, has_item);
@@ -1250,8 +1223,7 @@ int remove_object_from_player(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to remove_object_from_player");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to remove_object_from_player");
   }
 
   return 0;
@@ -1295,8 +1267,7 @@ int get_num_item_generated(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_num_item_generated");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_num_item_generated");
   }
 
   lua_pushnumber(ls, num_gen);
@@ -1326,8 +1297,7 @@ int set_skill_value(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_skill_value");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_skill_value");
   }
 
 
@@ -1363,8 +1333,7 @@ int get_skill_value(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_skill_value");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_skill_value");
   }
 
   lua_pushnumber(ls, skill_value);
@@ -1396,8 +1365,7 @@ int get_magic_skills(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_magic_skills");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_magic_skills");
   }
 
   // Create a table with keys for each magic skill
@@ -1437,8 +1405,7 @@ int check_skill(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to check_skill");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to check_skill");
   }
 
   lua_pushboolean(ls, check_value);
@@ -1458,8 +1425,7 @@ int RNG_range(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to RNG_range");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to RNG_range");
   }
 
   lua_pushnumber(ls, rng_val);
@@ -1478,8 +1444,7 @@ int RNG_percent_chance(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to RNG_range");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to RNG_range");
   }
 
   lua_pushboolean(ls, rng_val);
@@ -1506,8 +1471,7 @@ int RNG_dice(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to RNG_dice");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to RNG_dice");
   }
 
   lua_pushinteger(ls, rng_val);
@@ -1538,8 +1502,7 @@ int add_spell_castings(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_spell_castings");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_spell_castings");
   }
 
   return 0;
@@ -1562,8 +1525,7 @@ int gain_experience(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to gain_experience");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to gain_experience");
   }
 
   return 0;
@@ -1586,8 +1548,7 @@ int get_experience_value(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_experience_value");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_experience_value");
   }
 
   lua_pushinteger(ls, xp_val);
@@ -1644,8 +1605,7 @@ int add_creature_to_map(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_creature_to_map");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_creature_to_map");
   }
 
   lua_pushstring(ls, new_creature_id.c_str());
@@ -1700,8 +1660,7 @@ int remove_creature_from_map(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to remove_creature_from_map");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to remove_creature_from_map");
   }
 
   lua_pushboolean(ls, creature_removed);
@@ -1738,8 +1697,7 @@ int add_status_to_creature(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_status_to_creature");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_status_to_creature");
   }
 
   lua_pushboolean(ls, false);
@@ -1783,8 +1741,7 @@ int add_status_to_creature_at(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_status_to_creature_at");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_status_to_creature_at");
   }
 
   lua_pushboolean(ls, added_status);
@@ -1820,8 +1777,7 @@ int remove_negative_statuses_from_creature(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to remove_negative_statuses_from_creature");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to remove_negative_statuses_from_creature");
   }
 
   return stat_count;
@@ -1854,8 +1810,7 @@ int get_creature_statuses(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_statuses");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_statuses");
   }
 
   for (const string& status : statuses)
@@ -1885,8 +1840,7 @@ int creature_has_status(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to creature_has_status");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to creature_has_status");
   }
 
   lua_pushboolean(ls, has_status);
@@ -1922,8 +1876,7 @@ int set_creature_base_damage(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_base_damage");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_base_damage");
   }
 
   return 0;
@@ -1952,8 +1905,7 @@ int get_creature_base_damage(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_base_damage");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_base_damage");
   }
 
   lua_pushinteger(ls, num_dice);
@@ -2002,8 +1954,7 @@ int set_creature_piety(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_piety");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_piety");
   }
 
   return 0;
@@ -2048,8 +1999,7 @@ int get_creature_piety(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_piety");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_piety");
   }
 
   lua_pushnumber(ls, piety);
@@ -2074,8 +2024,7 @@ int set_creature_intrinsic_resist(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_intrinsic_resist");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_intrinsic_resist");
   }
 
   return 0;
@@ -2104,8 +2053,7 @@ int set_creature_speed(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_speed");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_speed");
   }
 
   return 0;
@@ -2128,8 +2076,7 @@ int get_creature_speed(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_speed");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_speed");
   }
 
   lua_pushnumber(ls, speed);
@@ -2174,8 +2121,7 @@ int get_creature_yx(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_yx");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_yx");
   }
 
   lua_pushnumber(ls, y);
@@ -2222,8 +2168,7 @@ int get_creature_id(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_id");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_id");
   }
 
   lua_pushstring(ls, creature_id.c_str());
@@ -2241,8 +2186,7 @@ int get_current_map_id(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_current_map_id");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_current_map_id");
   }
 
   lua_pushstring(ls, map_id.c_str());
@@ -2264,8 +2208,7 @@ int gain_level(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to gain_level");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to gain_level");
   }
 
   return 0;
@@ -2292,8 +2235,7 @@ int goto_level(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to goto_level");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to goto_level");
   }
 
   return 0;
@@ -2315,8 +2257,7 @@ int get_creature_level(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_level");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_level");
   }
 
   lua_pushinteger(ls, level);
@@ -2334,8 +2275,7 @@ int is_player(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments supplied to is_player");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments supplied to is_player");
   }
 
   lua_pushboolean(ls, is_creature_player);
@@ -2358,8 +2298,7 @@ int incr_str(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to incr_str");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_str");
   }
 
   return 0;
@@ -2381,8 +2320,7 @@ int incr_dex(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to incr_dex");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_dex");
   }
 
   return 0;
@@ -2404,8 +2342,7 @@ int incr_agi(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to incr_agi");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_agi");
   }
 
   return 0;
@@ -2415,20 +2352,19 @@ int incr_hea(lua_State* ls)
 {
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
   {
-string creature_id = lua_tostring(ls, 1);
-bool add_msg = lua_toboolean(ls, 2) != 0;
+    string creature_id = lua_tostring(ls, 1);
+    bool add_msg = lua_toboolean(ls, 2) != 0;
 
-CreaturePtr creature = get_creature(creature_id);
+    CreaturePtr creature = get_creature(creature_id);
 
-if (creature != nullptr)
-{
-  CreatureUtils::incr_hea(creature, add_msg);
-}
+    if (creature != nullptr)
+    {
+      CreatureUtils::incr_hea(creature, add_msg);
+    }
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to incr_hea");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_hea");
   }
 
   return 0;
@@ -2450,8 +2386,7 @@ int incr_int(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to incr_int");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_int");
   }
 
   return 0;
@@ -2473,8 +2408,7 @@ int incr_wil(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to incr_wil");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_wil");
   }
 
   return 0;
@@ -2496,8 +2430,7 @@ int incr_cha(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to incr_cha");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_cha");
   }
 
   return 0;
@@ -2542,8 +2475,7 @@ int mark_stat(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to mark_stat");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to mark_stat");
   }
 
   lua_pushboolean(ls, marked_stat);
@@ -2567,8 +2499,7 @@ int mark_str(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to mark_str");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to mark_str");
   }
 
   lua_pushboolean(ls, marked_str);
@@ -2592,8 +2523,7 @@ int mark_dex(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to mark_dex");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to mark_dex");
   }
 
   lua_pushboolean(ls, marked_dex);
@@ -2617,8 +2547,7 @@ int mark_agi(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to mark_agi");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to mark_agi");
   }
 
   lua_pushboolean(ls, marked_agi);
@@ -2642,8 +2571,7 @@ int mark_hea(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to mark_hea");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to mark_hea");
   }
 
   lua_pushboolean(ls, marked_hea);
@@ -2667,8 +2595,7 @@ int mark_int(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to mark_int");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to mark_int");
   }
 
   lua_pushboolean(ls, marked_int);
@@ -2692,8 +2619,7 @@ int mark_wil(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to mark_wil");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to mark_wil");
   }
 
   lua_pushboolean(ls, marked_wil);
@@ -2717,8 +2643,7 @@ int mark_cha(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to mark_cha");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to mark_cha");
   }
 
   lua_pushboolean(ls, marked_cha);
@@ -2743,8 +2668,7 @@ int is_stat_max_marked(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to is_stat_max_marked");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_stat_max_marked");
   }
 
   lua_pushboolean(ls, max_marked);
@@ -2768,8 +2692,7 @@ int map_set_custom_map_id(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_set_custom_map_id");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_set_custom_map_id");
   }
 
   return 0;
@@ -2792,8 +2715,7 @@ int map_set_edesc(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_set_edesc");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_set_edesc");
   }
 
   return 0;
@@ -2817,8 +2739,7 @@ int map_set_property(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_set_property");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_set_property");
   }
 
   return 0;
@@ -2841,8 +2762,7 @@ int map_set_tile_subtype(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_set_tile_subtype");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_set_tile_subtype");
   }
 
   return 0;
@@ -2869,8 +2789,7 @@ int map_set_tile_property(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_set_tile_property");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_set_tile_property");
   }
 
   lua_pushboolean(ls, added_property);
@@ -2895,8 +2814,7 @@ int map_add_location(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_add_location");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_add_location");
   }
 
   return 0;
@@ -2940,8 +2858,7 @@ int map_fill_random(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_fill_random");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_fill_random");
   }
 
   return 0;
@@ -2985,8 +2902,7 @@ int map_fill_staggered(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_fill_staggered");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_fill_staggered");
   }
 
   return 0;
@@ -3033,8 +2949,7 @@ int map_transform_tile(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_transform_tile");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_transform_tile");
   }
 
   lua_pushboolean(ls, result);
@@ -3072,8 +2987,7 @@ int map_remove_tile_exit(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_remove_tile_exit");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_remove_tile_exit");
   }
 
   lua_pushboolean(ls, result);
@@ -3109,8 +3023,7 @@ int map_add_tile_exit(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_transform_tile");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_transform_tile");
   }
 
   lua_pushboolean(ls, result);
@@ -3142,8 +3055,7 @@ int map_set_explored(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_set_explored");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_set_explored");
   }
 
   return 0;
@@ -3182,8 +3094,7 @@ int map_get_name_sid(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_get_name_sid");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_get_name_sid");
   }
 
   lua_pushstring(ls, map_name_sid.c_str());
@@ -3211,8 +3122,7 @@ int map_get_dimensions(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_get_dimensions");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_get_dimensions");
   }
 
   lua_pushinteger(ls, height);
@@ -3265,8 +3175,7 @@ int map_get_available_creature_coords(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_get_available_creature_coords");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_get_available_creature_coords");
   }
 
   return 1;
@@ -3302,8 +3211,7 @@ int map_get_tile(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_get_tile");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_get_tile");
   }
 
   return 0;
@@ -3331,8 +3239,7 @@ int log(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to log");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to log");
   }
 
   lua_pushboolean(ls, logged);
@@ -3378,8 +3285,7 @@ int set_creature_current_hp(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_current_hp");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_current_hp");
   }
 
   return 0;
@@ -3401,8 +3307,7 @@ int get_creature_current_hp(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_current_hp");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_current_hp");
   }
 
   lua_pushinteger(ls, current_hp);
@@ -3428,8 +3333,7 @@ int set_creature_base_hp(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_base_hp");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_base_hp");
   }
 
   return 0;
@@ -3451,8 +3355,7 @@ int get_creature_base_hp(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_base_hp");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_base_hp");
   }
 
   lua_pushinteger(ls, base_hp);
@@ -3478,8 +3381,7 @@ int set_creature_current_ap(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_current_ap");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_current_ap");
   }
 
   return 0;
@@ -3501,8 +3403,7 @@ int get_creature_current_ap(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_current_ap");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_current_ap");
   }
 
   lua_pushinteger(ls, current_ap);
@@ -3528,8 +3429,7 @@ int set_creature_base_ap(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_base_ap");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_base_ap");
   }
 
   return 0;
@@ -3551,8 +3451,7 @@ int get_creature_base_ap(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_base_ap");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_base_ap");
   }
 
   lua_pushinteger(ls, base_ap);
@@ -3599,8 +3498,7 @@ int set_creature_name(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_name");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_name");
   }
 
   lua_pushboolean(ls, changed_name);
@@ -3646,8 +3544,7 @@ int destroy_creature_equipment(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to destroy_creature_equipment");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to destroy_creature_equipment");
   }
   
   return 0;
@@ -3673,8 +3570,7 @@ int destroy_creature_inventory(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to destroy_creature_inventory");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to destroy_creature_inventory");
   }
 
   return 0;
@@ -3712,8 +3608,7 @@ int get_deity_summons(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_deity_summons");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_deity_summons");
   }
 
   return num_return_vals;
@@ -3730,8 +3625,7 @@ int get_num_deities(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_num_deities");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_num_deities");
   }
 
   lua_pushnumber(ls, num_deities);
@@ -3752,8 +3646,7 @@ int clear_deities(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to clear_deities");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to clear_deities");
   }
 
   return num_cleared;
@@ -3809,8 +3702,7 @@ int summon_monsters_around_creature(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to summon_monsters_around_creature");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to summon_monsters_around_creature");
   }
 
   return 0;
@@ -3833,8 +3725,7 @@ int creature_is_class(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to creature_is_class");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to creature_is_class");
   }
 
   lua_pushboolean(ls, creature_is_class);
@@ -3865,8 +3756,7 @@ int get_item_count(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_item_count");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_item_count");
   }
 
   lua_pushinteger(ls, count);
@@ -3889,8 +3779,7 @@ int count_currency(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to count_currency");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to count_currency");
   }
 
   lua_pushinteger(ls, count);
@@ -3925,8 +3814,7 @@ int get_unidentified_item_count(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_unidentified_item_count");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_unidentified_item_count");
   }
 
   lua_pushinteger(ls, static_cast<signed int>(unid_count));
@@ -3947,8 +3835,7 @@ int is_item_identified(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to is_item_identified");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_item_identified");
   }
 
   lua_pushboolean(ls, is_identified);
@@ -3977,8 +3864,7 @@ int get_item_value(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_item_value");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_item_value");
   }
 
   lua_pushinteger(ls, value);
@@ -4032,8 +3918,7 @@ int select_item(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to select_item");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to select_item");
   }
 
   lua_pushboolean(ls, selected_item);
@@ -4065,8 +3950,7 @@ int set_hostility(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_hostility");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_hostility");
   }
 
   return 0;
@@ -4109,8 +3993,7 @@ int teleport(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to teleport");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to teleport");
   }
 
   return 0;
@@ -4135,8 +4018,7 @@ int get_creature_description(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_description");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_description");
   }
 
   lua_pushstring(ls, creature_desc.c_str());
@@ -4194,8 +4076,7 @@ int transfer_item(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to transfer_item");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to transfer_item");
   }
 
   lua_pushboolean(ls, item_transferred);
@@ -4224,8 +4105,7 @@ int creature_tile_has_item(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to creature_tile_has_item");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to creature_tile_has_item");
   }
 
   lua_pushboolean(ls, static_cast<int>(has_item));
@@ -4271,8 +4151,7 @@ int pick_up_item(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to pick_up_item");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to pick_up_item");
   }
 
   lua_pushinteger(ls, action_cost);
@@ -4301,8 +4180,7 @@ int identify_item(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to identify_item");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to identify_item");
   }
 
   lua_pushboolean(ls, identified_item);
@@ -4336,8 +4214,7 @@ int identify_item_type(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to identify_item_type");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to identify_item_type");
   }
 
   lua_pushinteger(ls, num_identified);
@@ -4356,8 +4233,7 @@ int calendar_add_seconds(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to calendar_add_seconds");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to calendar_add_seconds");
   }
 
   lua_pushboolean(ls, added_time);
@@ -4377,8 +4253,7 @@ int calendar_add_minutes(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to calendar_add_minutes");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to calendar_add_minutes");
   }
 
   lua_pushboolean(ls, added_time);
@@ -4398,8 +4273,7 @@ int calendar_add_hours(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to calendar_add_hours");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to calendar_add_hours");
   }
 
   lua_pushboolean(ls, added_time);
@@ -4419,8 +4293,7 @@ int calendar_add_days(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to calendar_add_days");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to calendar_add_days");
   }
 
   lua_pushboolean(ls, added_time);
@@ -4440,8 +4313,7 @@ int calendar_add_years(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to calendar_add_years");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to calendar_add_years");
   }
 
   lua_pushboolean(ls, added_time);
@@ -4486,8 +4358,7 @@ int add_kill_to_creature_mortuary(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_kill_to_creature_mortuary");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_kill_to_creature_mortuary");
   }
 
   return 0;
@@ -4517,8 +4388,7 @@ int report_coords(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to report_coords");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to report_coords");
   }
 
   return 0;
@@ -4548,8 +4418,7 @@ int cast_spell(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to cast_spell");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to cast_spell");
   }
     
   lua_pushboolean(ls, spell_cast);
@@ -4569,8 +4438,7 @@ int bless_equipment(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to bless_equipment");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to bless_equipment");
   }
 
   lua_pushboolean(ls, blessed_eq);
@@ -4590,8 +4458,7 @@ int curse_equipment(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to curse_equipment");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to curse_equipment");
   }
 
   lua_pushboolean(ls, cursed_eq);
@@ -4628,8 +4495,7 @@ int curse_inventory(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to curse_inventory");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to curse_inventory");
   }
 
   lua_pushboolean(ls, cursed_inv);
@@ -4663,8 +4529,7 @@ int set_winner(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_winner");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_winner");
   }
 
   return 0;
@@ -4686,8 +4551,7 @@ int get_creature_colour(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_colour");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_colour");
   }
 
   lua_pushinteger(ls, colour);
@@ -4709,8 +4573,7 @@ int set_creature_colour(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_colour");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_colour");
   }
 
   return 0;
@@ -4732,8 +4595,7 @@ int set_creature_evade(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_evade");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_evade");
   }
 
   return 0;
@@ -4777,8 +4639,7 @@ int set_trap(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_trap");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_trap");
   }
 
   return 0;
@@ -4814,8 +4675,7 @@ int get_nearby_hostile_creatures(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_nearby_hostile_creatures");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_nearby_hostile_creatures");
   }
 
   return num_hostiles;
@@ -4854,8 +4714,7 @@ int set_creature_additional_property(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_creature_additional_property");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_additional_property");
   }
 
   return 0;
@@ -4880,8 +4739,7 @@ int get_creature_additional_property(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_additional_property");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_additional_property");
   }
 
   lua_pushstring(ls, creature_prop.c_str());
@@ -4915,8 +4773,7 @@ int get_creature_additional_property_csv(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_additional_property_csv");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_additional_property_csv");
   }
 
   return num_strs;
@@ -4949,8 +4806,7 @@ int is_creature_in_view_map(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to is_creature_in_view_map");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_creature_in_view_map");
   }
 
   lua_pushboolean(ls, creature_in_map);
@@ -4976,8 +4832,7 @@ int redraw(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to redraw");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to redraw");
   }
 
   return 0;
@@ -5022,8 +4877,7 @@ int get_race_ids(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_race_ids");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_race_ids");
   }
 
   return race_cnt;
@@ -5051,8 +4905,7 @@ int get_unarmed_slays(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_unarmed_slays");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_unarmed_slays");
   }
 
   return slay_cnt;
@@ -5083,8 +4936,7 @@ int add_unarmed_slay(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to add_unarmed_slay");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_unarmed_slay");
   }
 
   return 0;
@@ -5106,8 +4958,7 @@ int get_class_id(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_class_id");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_class_id");
   }
 
   lua_pushstring(ls, class_id.c_str());
@@ -5131,8 +4982,7 @@ int get_race_name(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_race_name");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_race_name");
   }
 
   lua_pushstring(ls, race_name.c_str());
@@ -5162,8 +5012,7 @@ int set_inscription(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_inscription");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_inscription");
   }
 
   return 0;
@@ -5191,8 +5040,7 @@ int get_map_dimensions(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_map_dimensions");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_map_dimensions");
   }
 
   lua_pushnumber(ls, rows);
@@ -5254,8 +5102,7 @@ int get_coords_with_tile_type_in_range(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_coords_with_tile_type_in_range");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_coords_with_tile_type_in_range");
   }
 
   return 1;
@@ -5280,8 +5127,7 @@ int get_custom_map_id(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_custom_map_id");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_custom_map_id");
   }
 
   lua_pushstring(ls, custom_map_id.c_str());
@@ -5329,8 +5175,7 @@ int ranged_attack(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to ranged_attack");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to ranged_attack");
   }
 
   return 0;
@@ -5365,8 +5210,7 @@ int get_spellbooks(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_spellbooks");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_spellbooks");
   }
 
   size_t sp_size = spellbook_ids.size();
@@ -5424,8 +5268,7 @@ int set_shop_shopkeeper_id(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_shop_shopkeeper_id");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_shop_shopkeeper_id");
   }
 
   return 0;
@@ -5462,8 +5305,7 @@ int repop_shop(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to repop_shop");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to repop_shop");
   }
 
   lua_pushboolean(ls, repopped);
@@ -5486,8 +5328,7 @@ int get_unpaid_amount(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_unpaid_amount");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_unpaid_amount");
   }
 
   lua_pushinteger(ls, amount);
@@ -5508,8 +5349,7 @@ int set_items_paid(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_items_paid");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_items_paid");
   }
 
   return 0;
@@ -5541,8 +5381,7 @@ int bargain_discount(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to bargain_discount");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to bargain_discount");
   }
 
   lua_pushboolean(ls, got_discount);
@@ -5577,8 +5416,7 @@ int bargain_premium(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to bargain_premium");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to bargain_premium");
   }
 
   lua_pushboolean(ls, got_prem);
@@ -5611,8 +5449,7 @@ int get_item_type(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_item_type");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_item_type");
   }
 
   lua_pushinteger(ls, static_cast<int>(item_type));
@@ -5649,8 +5486,7 @@ int get_shop_id(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_shop_id");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_shop_id");
   }
 
   lua_pushstring(ls, shop_id.c_str());
@@ -5686,8 +5522,7 @@ int get_stocked_item_types(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_stocked_item_types");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_stocked_item_types");
   }
 
   size_t itypes_size = stocked_item_types.size();
@@ -5733,8 +5568,7 @@ int get_sale_price(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_sale_price");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_sale_price");
   }
 
   lua_pushinteger(ls, sale_price);
@@ -5768,8 +5602,7 @@ int set_item_unpaid(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to set_item_unpaid");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_item_unpaid");
   }
 
   return 0;
@@ -5799,8 +5632,7 @@ int is_in_shop(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to is_in_shop");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_in_shop");
   }
 
   lua_pushboolean(ls, in_shop);
@@ -5836,8 +5668,7 @@ int is_item_unpaid(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to is_item_unpaid");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_item_unpaid");
   }
 
   lua_pushboolean(ls, is_unpaid);
@@ -5870,8 +5701,7 @@ int load_map(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to load_map");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to load_map");
   }
 
   lua_pushboolean(ls, loaded_map);
@@ -5908,8 +5738,7 @@ int has_artifact_in_inventory(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to has_artifact_in_inventory");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to has_artifact_in_inventory");
   }
 
   lua_pushboolean(ls, has_artifact);
@@ -5953,8 +5782,7 @@ int tile_has_creature(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to tile_has_creature");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to tile_has_creature");
   }
 
   lua_pushboolean(ls, has_creature);
@@ -5977,8 +5805,7 @@ int get_creature_original_id(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to get_creature_original_id");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_original_id");
   }
 
   lua_pushstring(ls, creature_original_id.c_str());
@@ -6023,8 +5850,7 @@ int remove_threat_from_all(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to remove_threat_from_all");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to remove_threat_from_all");
   }
 
   lua_pushinteger(ls, num_affected);
@@ -6047,8 +5873,7 @@ int stop_playing_game(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to stop_playing_game");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to stop_playing_game");
   }
 
   return 0;
@@ -6106,8 +5931,7 @@ int generate_city_feature(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to generate_city_feature");
-    lua_error(ls);
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to generate_city_feature");
   }
 
   lua_pushboolean(ls, feature_generated);

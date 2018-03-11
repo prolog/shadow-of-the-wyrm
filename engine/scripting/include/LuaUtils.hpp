@@ -20,6 +20,8 @@ class LuaUtils
     static void set_field(lua_State* ls, const char* field_name, const bool val);
     static void set_field(lua_State* ls, const char* field_name, const int val);
 
+    static void log_and_raise(lua_State* ls, const std::string& error_message);
+
   protected:
     LuaUtils();
     ~LuaUtils();

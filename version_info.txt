@@ -22,6 +22,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   map_set_tile_property did exactly the same thing.  Made the former
   set map-level properties, with the former handling setting tile
   properties, and renamed the former to "map_set_property".
+
+- Script errors are now properly logged to disk as well as the UI.
   
 - Stanzas for "Tel and Floridel".
 
