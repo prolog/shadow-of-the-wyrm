@@ -8,10 +8,11 @@ using namespace std;
 
 
 PublicAreaSectorFeatureGenerator::PublicAreaSectorFeatureGenerator()
-: features({{103, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PLAZA},
-            {102, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP},
-            {101, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK},
-            {100, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_TOMB}})
+: features({{104, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PLAZA},
+            {103, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP},
+            {102, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK},
+            {101, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_TOMB},
+            {100, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_GARDEN}})
 {
 }
 
@@ -31,6 +32,9 @@ bool PublicAreaSectorFeatureGenerator::create_feature(MapPtr map, const Coordina
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_TOMB:
       feature = make_shared<TombSectorFeature>();
+      break;
+    case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_GARDEN:
+      // ...
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK:
     default:
