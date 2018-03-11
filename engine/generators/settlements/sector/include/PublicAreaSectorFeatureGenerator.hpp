@@ -8,7 +8,8 @@ enum struct PublicSectorFeatureType
   PUBLIC_SECTOR_FEATURE_PLAZA = 1,
   PUBLIC_SECTOR_FEATURE_PARK = 2,
   PUBLIC_SECTOR_FEATURE_TOMB = 3,
-  PUBLIC_SECTOR_LAST = 3
+  PUBLIC_SECTOR_FEATURE_GARDEN = 4,
+  PUBLIC_SECTOR_LAST = 4
 };
 
 class PublicAreaSectorFeatureGenerator : public SectorFeatureGenerator
