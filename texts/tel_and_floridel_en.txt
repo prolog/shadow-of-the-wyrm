@@ -1622,3 +1622,13 @@ a skillful spearmen, soon he'd show the fae %b
 a bitter lesson, for their ruse had stoked %b
 an anger in the man that threatened to explode.
 %p
+"Arkadios!" he raged, "You godless cur! %b
+Our men are killed, my baby brother sent %b
+to scurry back, to show that we deserved %b
+this retribution.  Oh, this punishment %b
+was like for like!  I'll give them this, at least: %b
+they didn't hang our brothers from a tree! %b
+O wise man!  O philosopher!  You greased %b
+that holy ground with blood so that there'd be %b
+cessation of hostilities?  A lasting peace?"
+%p
