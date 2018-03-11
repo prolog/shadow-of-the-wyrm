@@ -1,7 +1,7 @@
 Me:
+- Ensure script API errors are logged
 - Should be able to generate gardens, vegetable gardens in public areas
 - Pub
-- Public tomb
 - Graveyard
 - After finishing map ID and exit changes, need to test:
   - Entering to a set map from a tile

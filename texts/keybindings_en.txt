@@ -6,7 +6,7 @@
 w - Automatic Movement        > - Descend, Dig        < - Ascend %b
 5 - Rest                      , - Pick up             ; - Pick up all %b
 d - Drop                      i - View equip/items    I - View items %b
-_ - Pray                      L - Look at tiles       f - Fire a missile %b
+_ - Pray                      x - Examine tiles       f - Fire a missile %b
 D - Drink                     r - Read scroll/book    $ - Count currency %b
 e - Eat                       C - Chat                a - Apply feature %b
 N - Inscribe                  q - Quests              z - Cast spell %b
