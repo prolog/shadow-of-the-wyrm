@@ -64,3 +64,10 @@ void LuaUtils::set_field(lua_State* ls, const char* name, const int val)
     lua_settable(ls, -3);
   }
 }
+
+void LuaUtils::log_and_raise(lua_State* ls, const string& error_message)
+{
+  Log::instance().error(error_message);
+  lua_pushstring(ls, error_message.c_str());
+  lua_error(ls);
+}
