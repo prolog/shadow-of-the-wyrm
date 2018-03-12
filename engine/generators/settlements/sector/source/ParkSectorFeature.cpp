@@ -15,7 +15,6 @@ bool ParkSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coo
 {
   bool generated = false;
 
-  Coordinate park_end_coord = end_coord;
   int height = CoordUtils::get_height(start_coord, end_coord);
   int width = CoordUtils::get_width(start_coord, end_coord);
 
@@ -149,6 +148,6 @@ bool ParkSectorFeature::should_generate_perimeter_statue(const int row, const in
 
   return (CoordUtils::is_in_perimeter(make_pair(row, col), start_coord, end_coord) &&
          (cur_loc != start_coord && cur_loc != make_pair(start_coord.first, end_coord.second) && cur_loc != make_pair(end_coord.first, start_coord.second) && cur_loc != end_coord) &&
-         ((row == start_coord.first || row == end_coord.first) && (col_cnt % 2 == 0)) || ((col == start_coord.second || col == end_coord.second) && (row_cnt % 2 == 0)));
+         (((row == start_coord.first || row == end_coord.first) && (col_cnt % 2 == 0)) || ((col == start_coord.second || col == end_coord.second) && (row_cnt % 2 == 0))));
 }
 

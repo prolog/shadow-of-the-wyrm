@@ -101,11 +101,14 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
 
     bool flying = XMLUtils::get_child_node_bool_value(creature_node, "Flying");
 
-    Modifier m;
-    ModifyStatisticsEffect mse;
-    creature->set_status(StatusIdentifiers::STATUS_ID_FLYING, { StatusIdentifiers::STATUS_ID_FLYING, true, 1, "" });
-    m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
-    mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+    if (flying)
+    {    
+      Modifier m;
+      ModifyStatisticsEffect mse;
+      creature->set_status(StatusIdentifiers::STATUS_ID_FLYING, { StatusIdentifiers::STATUS_ID_FLYING, true, 1, "" });
+      m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
+      mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+    }
 
     // A decision strategy for the creature, which provides a set of actions (move, attack, and so on)
     // as appropriate.  ImmobileDecisionStrategy, for example, disallows movement, and is used for
