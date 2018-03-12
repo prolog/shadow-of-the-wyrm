@@ -5907,12 +5907,12 @@ int generate_city_feature(lua_State* ls)
   bool feature_generated = false;
   int num_args = lua_gettop(ls);
 
-  if (num_args = 6 && lua_isstring(ls, 1) 
-                   && lua_isnumber(ls, 2)
-                   && lua_isnumber(ls, 3)
-                   && lua_isnumber(ls, 4)
-                   && lua_isnumber(ls, 5)
-                   && lua_isnumber(ls, 6))
+  if (num_args == 6 && lua_isstring(ls, 1) 
+                    && lua_isnumber(ls, 2)
+                    && lua_isnumber(ls, 3)
+                    && lua_isnumber(ls, 4)
+                    && lua_isnumber(ls, 5)
+                    && lua_isnumber(ls, 6))
   {
     string map_id = lua_tostring(ls, 1);
     int row_start = lua_tointeger(ls, 2);
