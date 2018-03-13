@@ -5,9 +5,8 @@
 
 using namespace std;
 
-VegetableGardenGenerator::VegetableGardenGenerator(MapPtr base_map, const int map_window_start_row, const int map_window_start_col, const int map_window_height, const int map_window_width)
-: GardenGenerator(base_map, map_window_start_row, map_window_start_col, map_window_height, map_window_width),
-vegetable_min(1), vegetable_max(1)
+VegetableGardenGenerator::VegetableGardenGenerator()
+: vegetable_min(1), vegetable_max(1)
 {
   populate_vegetable_map();
 }
@@ -26,27 +25,21 @@ void VegetableGardenGenerator::populate_vegetable_map()
   vegetable_max = 6;
 }
 
-void VegetableGardenGenerator::generate()
-{
-  plant_vegetables();
-}
-
-void VegetableGardenGenerator::plant_vegetables()
+bool VegetableGardenGenerator::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   TileGenerator tg;
 
-  for (int col = window_start_col; col <= window_start_col + window_width; col++)
+  for (int col = start_coord.second; col <= end_coord.second; col++)
   {
     int vegetable_idx = RNG::range(vegetable_min, vegetable_max);
 
     string vegetable_id = vegetable_map[vegetable_idx];
 
     // Spaces needed between vegetables to ensure that things grow.
-    for (int row = window_start_row; row <= window_start_row + window_height; row++)
+    for (int row = start_coord.first; row <= end_coord.first; row++)
     {
       TilePtr field_tile = tg.generate(TileType::TILE_TYPE_FIELD);
       
-      // Every other column should be empty.
       if ((col % 3 == 0) && (row % 2 == 0))
       {
         // Generate a column of a particular vegetable.
@@ -62,5 +55,7 @@ void VegetableGardenGenerator::plant_vegetables()
       map->insert(row, col, field_tile);      
     }
   }
+
+  return true;
 }
 
