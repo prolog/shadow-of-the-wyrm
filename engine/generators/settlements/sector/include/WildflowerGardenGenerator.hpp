@@ -1,18 +1,18 @@
 #pragma once
-#include "GardenGenerator.hpp"
+#include "SectorFeature.hpp"
 
-class WildflowerGardenGenerator : public GardenGenerator
+class WildflowerGardenGenerator : public SectorFeature
 {
   public:
-    WildflowerGardenGenerator(MapPtr new_base_map, const int map_window_start_row, const int map_window_start_col, const int map_window_height, const int map_window_width);
+    WildflowerGardenGenerator();
 
-    virtual void generate() override;
-    
   protected:
+    virtual bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
+
     void initialize_generator();
     void populate_wildflower_ids();
     
-    void seed_flowers();
+    void seed_flowers(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
     
     std::map<int, std::string> wildflower_item_ids;
     int wildflower_rand_min;

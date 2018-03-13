@@ -1,15 +1,14 @@
 #pragma once
-#include "GardenGenerator.hpp"
+#include "SectorFeature.hpp"
 
 // Generates a shade garden: surrounded by trees, with shady plants
 // and a bench in the centre.
-class ShadeGardenGenerator : public GardenGenerator
+class ShadeGardenGenerator : public SectorFeature
 {
-  public:
-    ShadeGardenGenerator(MapPtr map, const int map_window_start_row, const int map_window_start_col, const int map_window_height, const int map_window_width);
+  protected:
+    virtual bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
 
-    void generate() override;
-    void generate_tree_cover();
-    void generate_plants();
-    void generate_features();    
+    void generate_tree_cover(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
+    void generate_plants(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
+    void generate_features(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
 };

@@ -105,8 +105,8 @@ bool SettlementGeneratorUtils::generate_garden_if_possible(MapPtr map, const Gar
     }
     else
     {
-      GardenGeneratorPtr garden_gen = GardenGeneratorFactory::create_garden_generator(garden_type, map, start_row, start_col, (end_row - start_row), (end_col - start_col));
-      garden_gen->generate();
+      SectorFeaturePtr garden_gen = GardenGeneratorFactory::create_garden_generator(garden_type);
+      garden_gen->generate(map, make_pair(start_row, start_col), make_pair(end_row, end_col));
       generated = true;
     }
   }

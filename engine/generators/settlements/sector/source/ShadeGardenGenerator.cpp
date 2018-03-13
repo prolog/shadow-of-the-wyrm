@@ -4,55 +4,52 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
-ShadeGardenGenerator::ShadeGardenGenerator(MapPtr base_map, const int map_window_start_row, const int map_window_start_col, const int map_window_height, const int map_window_width)
-: GardenGenerator(base_map, map_window_start_row, map_window_start_col, map_window_height, map_window_width)
-{
-}
-
 // Generate the shade garden
-void ShadeGardenGenerator::generate()
+bool ShadeGardenGenerator::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
-  generate_tree_cover();
-  generate_plants();
-  generate_features();
+  generate_tree_cover(map, start_coord, end_coord);
+  generate_plants(map, start_coord, end_coord);
+  generate_features(map, start_coord, end_coord);
+
+  return true;
 }
 
 // Generate the trees surrounding the garden
-void ShadeGardenGenerator::generate_tree_cover()
+void ShadeGardenGenerator::generate_tree_cover(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   TileGenerator tg;
   TilePtr tree_tile;
 
-  for (int row = window_start_row; row <= window_end_row_inc; row++)
+  for (int row = start_coord.first; row <= end_coord.first; row++)
   {
     tree_tile = tg.generate(TileType::TILE_TYPE_TREE);
-    map->insert(row, window_start_col, tree_tile);
+    map->insert(row, start_coord.second, tree_tile); 
 
     tree_tile = tg.generate(TileType::TILE_TYPE_TREE);
-    map->insert(row, window_end_col_inc, tree_tile);
+    map->insert(row, end_coord.second, tree_tile);
   }
 
-  for (int col = window_start_col; col <= window_end_col_inc; col++)
+  for (int col = start_coord.second; col <= end_coord.second; col++)
   {
     tree_tile = tg.generate(TileType::TILE_TYPE_TREE);
-    map->insert(window_start_row, col, tree_tile);
+    map->insert(start_coord.first, col, tree_tile);
 
     tree_tile = tg.generate(TileType::TILE_TYPE_TREE);
-    map->insert(window_end_row_inc, col, tree_tile);
+    map->insert(end_coord.first, col, tree_tile);
   }
 }
 
 // Generate the plants within the garden
-void ShadeGardenGenerator::generate_plants()
+void ShadeGardenGenerator::generate_plants(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   TilePtr garden_tile;
   TileGenerator tg;
 
   int rand;    
   // Turn the underlying tiles into grass.
-  for (int row = window_start_row+1; row < window_end_row_inc; row++)
+  for (int row = start_coord.first+1; row < end_coord.first; row++)
   {
-    for (int col = window_start_col+1; col < window_end_col_inc; col++)
+    for (int col = start_coord.second+1; col < end_coord.second; col++)
     {
       garden_tile = tg.generate(TileType::TILE_TYPE_FIELD);
       map->insert(row, col, garden_tile);
@@ -83,10 +80,10 @@ void ShadeGardenGenerator::generate_plants()
 }
 
 // Generate the bench in the centre of the garden
-void ShadeGardenGenerator::generate_features()
+void ShadeGardenGenerator::generate_features(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
-  int centre_row = (window_start_row + window_end_row_inc) / 2;
-  int centre_col = (window_start_col + window_end_col_inc) / 2;
+  int centre_row = (start_coord.first + end_coord.first) / 2;
+  int centre_col = (start_coord.second + end_coord.second) / 2;
 
   FeaturePtr bench   = FeatureGenerator::generate_bench();
   TilePtr bench_tile = map->at(centre_row, centre_col);

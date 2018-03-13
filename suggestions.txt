@@ -1,4 +1,5 @@
 Me:
+- Need to test flying/not-flying read from XML.
 - Refactor the garden generators so that they're sector generators.
 - Should be able to generate gardens, vegetable gardens in public areas
 - Pub
