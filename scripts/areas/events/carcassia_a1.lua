@@ -61,6 +61,8 @@ end
 local function setup_dynamic_content(map_id)
   generate_city_feature(map_id, 3, 15, 8, 30, CCITY_SECTOR_PUBLIC_AREA)
   generate_city_feature(map_id, 12, 15, 18, 30, CCITY_SECTOR_PUBLIC_AREA)
+  generate_city_feature(map_id, 3, 58, 8, 67, CCITY_SECTOR_PUBLIC_AREA)
+  generate_city_feature(map_id, 3, 70, 10, 78, CCITY_SECTOR_PUBLIC_AREA)
 end
 
 local function init_carcassia_a1(map_id)
