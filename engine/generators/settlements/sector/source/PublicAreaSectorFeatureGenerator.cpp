@@ -1,4 +1,5 @@
 #include "PublicAreaSectorFeatureGenerator.hpp"
+#include "GardenGeneratorFactory.hpp"
 #include "ParkSectorFeature.hpp"
 #include "PlazaSectorFeature.hpp"
 #include "ShopSectorFeature.hpp"
@@ -8,11 +9,11 @@ using namespace std;
 
 
 PublicAreaSectorFeatureGenerator::PublicAreaSectorFeatureGenerator()
-: features({{104, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PLAZA},
-            {103, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP},
-            {102, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK},
-            {101, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_TOMB},
-            {100, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_GARDEN}})
+: features({{20, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PLAZA},
+            {35, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP},
+            {55, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK},
+            {75, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_TOMB},
+            {90, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_GARDEN}})
 {
 }
 
@@ -34,7 +35,7 @@ bool PublicAreaSectorFeatureGenerator::create_feature(MapPtr map, const Coordina
       feature = make_shared<TombSectorFeature>();
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_GARDEN:
-      // ...
+      feature = GardenGeneratorFactory::create_uniform_random_garden_generator();
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK:
     default:
