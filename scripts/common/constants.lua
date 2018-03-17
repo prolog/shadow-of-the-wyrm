@@ -1,5 +1,6 @@
 SPEAKING_CREATURE_ID = "speaking_creature_id"
 MAP_ID = "map_id"
+TEMPLATE_KEY_ID = "_template_key"
 CURRENCY_ID = "_currency"
 MAGICI_SHARD_ID = "_magici_shard"
 PLAYER_ID = "player"

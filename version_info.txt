@@ -24,6 +24,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   properties, and renamed the former to "map_set_property".
 
 - Script errors are now properly logged to disk as well as the UI.
+
+- Gnomish barkeepers are now just called bartenders.
   
 - Stanzas for "Tel and Floridel".
 
