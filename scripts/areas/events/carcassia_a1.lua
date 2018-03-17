@@ -1,3 +1,4 @@
+require('constants')
 require('fn')
 require('map_events')
 
@@ -39,6 +40,7 @@ local function setup_nodig_treasure_room_and_traps(map_id)
   set_trap(row, col, false, "teleport_trap", map_id)
   set_feature_additional_property(map_id, row, col, teleport_loc_prop, "4,7")
   table.remove(coords, c_idx)
+  local gen_guild_key = false
 
   -- Add some thieves and urchins along the north wall.
   for i = 1, RNG_range(3,5) do
@@ -50,7 +52,13 @@ local function setup_nodig_treasure_room_and_traps(map_id)
       cr_id = "urchin"
     end
 
-    add_creature_to_map(cr_id, cr_coord[1], cr_coord[2], map_id)
+    local cr_uid = add_creature_to_map(cr_id, cr_coord[1], cr_coord[2], map_id)
+
+    -- One of the local no-goodniks will have a key to the door in the
+    -- abandoned part of the guild of thieves.
+    if gen_guild_key == false then
+      gen_guild_key = add_object_to_creature(map_id, cr_uid, TEMPLATE_KEY_ID, "lock_id=guild_of_thieves")
+    end
   end
 
   -- Set the teleporter from the closed room to just outside the gate.

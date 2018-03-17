@@ -125,3 +125,23 @@ TEST(SW_Engine_ConversionRoutines, vector_to_csv)
   EXPECT_EQ("foo,bar,baz,quux", String::create_csv_from_string_vector(foo));
 }
 
+TEST(SW_Engine_ConversionRoutines, create_properties_from_string)
+{
+  map<string, string> props;
+
+  props = String::create_properties_from_string("a=b,c=d");
+
+  auto p_it = props.find("a");
+
+  EXPECT_TRUE(p_it != props.end());
+  EXPECT_EQ("b", p_it->second);
+
+  p_it = props.find("c");
+
+  EXPECT_TRUE(p_it != props.end());
+  EXPECT_EQ("d", p_it->second);
+
+  p_it = props.find("fdsa");
+
+  EXPECT_FALSE(p_it != props.end());
+}

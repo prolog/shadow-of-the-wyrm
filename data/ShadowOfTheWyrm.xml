@@ -21996,12 +21996,12 @@
 				<Type>0</Type>
 			</Damage>
 		</Creature>
-		<Creature id="gnomish_barkeeper">
+		<Creature id="bartender">
 			<RaceID>10_gnome</RaceID>
-			<ShortDescriptionSID>GNOMISH_BARKEEPER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>GNOMISH_BARKEEPER_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>GNOMISH_BARKEEPER_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>GNOMISH_BARKEEPER_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>BARTENDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BARTENDER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BARTENDER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BARTENDER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -22031,16 +22031,16 @@
 			<Soak>1</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/barkeeper.lua</Script>
+					<Script>quests/bartender.lua</Script>
 				</ChatScript>
 			</EventScripts>
 			<Properties>
 				<Property>
-					<Name>BARKEEPER_DRINK</Name>
+					<Name>BARTENDER_DRINK</Name>
 					<Value>gnomish_stout,dram_whisky</Value>
 				</Property>
 				<Property>
-					<Name>BARKEEPER_FOOD</Name>
+					<Name>BARTENDER_FOOD</Name>
 					<Value>bowl_stewed_meat</Value>
 				</Property>
 			</Properties>
@@ -35427,6 +35427,19 @@
 				<DangerLevel>-1</DangerLevel>
 				<LockID/>
 				<!-- Lock ID is set dynamically by the CryptGenerator -->
+			</Tool>
+			<Tool id="_template_key">
+				<DescriptionSID>TEMPLATE_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>TEMPLATE_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>5</Ounces>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID/>
+				<!-- Lock ID is set dynamically in script, etc -->
 			</Tool>
 			<Tool id="rune_stone">
 				<DescriptionSID>RUNE_STONE_SID</DescriptionSID>

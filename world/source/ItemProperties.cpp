@@ -25,3 +25,4 @@ const string ItemProperties::ITEM_PROPERTIES_CREATION_SKILL = "creation_skill";
 const string ItemProperties::ITEM_PROPERTIES_MUSIC_PERFORMANCE = "music_performance";
 const string ItemProperties::ITEM_PROPERTIES_MUSIC_PERFORMANCE_FAILED = "music_performance_failed";
 const string ItemProperties::ITEM_PROPERTIES_MUSIC_CHARM_RACES = "music_charm_races";
+const string ItemProperties::ITEM_PROPERTIES_LOCK_ID = "lock_id";

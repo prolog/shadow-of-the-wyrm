@@ -14,15 +14,13 @@ bool KeyManager::has_key(CreaturePtr creature, LockPtr lock)
 
     if (!lock_id.empty())
     {
-      list<ItemPtr> tools = ItemManager::get_items_by_type(creature, ItemType::ITEM_TYPE_TOOL);
+      const list<ItemPtr> tools = creature->get_inventory()->get_items_cref();
 
       for(ItemPtr item : tools)
       {
         if (item)
         {
-          ToolPtr tool = std::dynamic_pointer_cast<Tool>(item);
-
-          if (tool && (tool->get_lock_id() == lock_id))
+          if (item && (item->get_lock_id() == lock_id))
           {
             return true;
           }

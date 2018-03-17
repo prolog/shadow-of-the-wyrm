@@ -33,6 +33,7 @@ class String
 public:
   static std::string clean(const std::string& str);
   static std::vector<std::string> create_string_vector_from_csv_string(const std::string& csv_str);
+  static std::map<std::string,std::string> create_properties_from_string(const std::string& properties_str);
   static std::vector<Colour> create_colour_vector_from_csv_string(const std::string& csv_str);
   static std::vector<int> create_int_vector_from_csv_string(const std::string& csv_str);
   static std::string create_csv_from_string_vector(const std::vector<std::string>& str_vec);

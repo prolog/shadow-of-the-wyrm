@@ -166,6 +166,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
   lua_register(L, "add_object_to_map", add_object_to_map);
+  lua_register(L, "add_object_to_creature", add_object_to_creature);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
   lua_register(L, "add_basic_feature_to_map", add_basic_feature_to_map);
@@ -874,6 +875,57 @@ int add_object_to_map(lua_State* ls)
   }
 
   lua_pushboolean(ls, result);
+  return 1;
+}
+
+int add_object_to_creature(lua_State* ls)
+{
+  bool obj_added = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
+  {
+    string map_id = lua_tostring(ls, 1);
+    string creature_id = lua_tostring(ls, 2);
+    string object_id = lua_tostring(ls, 3);
+    string prop;
+    
+    if (num_args >= 4 && lua_isstring(ls, 4))
+    {
+      prop = lua_tostring(ls, 4);
+    }
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      CreaturePtr creature = map->get_creature(creature_id);
+
+      if (creature != nullptr)
+      {
+        ItemPtr item = ItemManager::create_item(object_id);
+
+        if (item != nullptr)
+        {
+          std::map<string, string> properties = String::create_properties_from_string(prop);
+
+          for (const auto& p_pair : properties)
+          {
+            item->set_additional_property(p_pair.first, p_pair.second);
+          }
+
+          creature->get_inventory()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          obj_added = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_object_to_creature");
+  }
+
+  lua_pushboolean(ls, obj_added);
   return 1;
 }
 
