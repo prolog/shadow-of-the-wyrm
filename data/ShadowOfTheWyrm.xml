@@ -10579,6 +10579,7 @@
 			<DescriptionSID>AVERNAL_BAT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AVERNAL_BAT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>AVERNAL_BAT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>

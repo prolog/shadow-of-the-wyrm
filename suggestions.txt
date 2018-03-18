@@ -1,7 +1,4 @@
 Me:
-- When chatting with bartender after calling add_creature_to_map, items
-  aren't being loaded properly (no SC ID?)
-- Need to test flying/not-flying read from XML.
 - Quests out of the pub in Carcassia
 - Graveyard
 - After finishing map ID and exit changes, need to test:
