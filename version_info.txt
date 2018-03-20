@@ -9,8 +9,13 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   sectors:
 
   - The public sector contains a sealed room with no obvious way in, the 
-    tower of high sorcery, as well as a number of potential public areas 
-    such as plazas, parks, and shops.
+    tower of high sorcery, the guild of thieves, as well as a number of 
+    potential public areas such as plazas, parks, and shops.  The public
+    sector is also, it's said, built above the ruins of a much older
+    settlement, one which has long since sunk deep into the earth.
+
+  - The guild of thieves is said to be difficult to enter, difficult to
+    leave.
 
 - The "no dig" flag can now be set at the tile level, allowing a general
   map that is diggable, but sections that are not.

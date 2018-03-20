@@ -100,6 +100,14 @@
 			<Direction>6</Direction>
 			<MapID>carcassia_a2</MapID>
 		</Exit>
+		<Exit>
+			<Coord>
+				<Row>16</Row>
+				<Col>5</Col>
+			</Coord>
+			<Direction>11</Direction>
+			<MapID>carcassia_guild_of_thieves</MapID>
+		</Exit>
 	</Exits>
 	<Features>
 		<FeaturePlacement>
