@@ -578,7 +578,7 @@ void Game::exit_on_exception(CreaturePtr player)
 
 void Game::panic_save(CreaturePtr player)
 {
-  actions.save(player);
+  actions.save(player, true);
 }
 
 void Game::set_check_scores(const bool new_check_scores)

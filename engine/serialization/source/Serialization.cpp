@@ -23,8 +23,9 @@ using namespace boost::algorithm;
 using namespace boost::filesystem;
 
 // Save the entire game state to disk
-void Serialization::save(CreaturePtr creature)
+string Serialization::save(CreaturePtr creature)
 {
+  string fname;
   Game& game = Game::instance();
 
   try
@@ -44,6 +45,7 @@ void Serialization::save(CreaturePtr creature)
     // Get the user's name
     string user_name = meta.get_user_name();
     string filename = generate_savefile_name(user_name, name);
+    fname = filename;
 
     // Name the file and do the appropriate setup
     std::ofstream stream(filename, ios::binary | ios::out);
@@ -80,6 +82,8 @@ void Serialization::save(CreaturePtr creature)
   {
     // JCD FIXME: Custom exception here
   }
+
+  return fname;
 }
 
 void Serialization::write_savefile(std::ofstream& file_stream, ostringstream& game_stream, const bool use_compression, const int compression_level)
