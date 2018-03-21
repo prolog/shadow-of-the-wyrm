@@ -633,10 +633,10 @@ ActionCost ActionManager::breed(CreaturePtr creature)
   return get_action_cost(creature, ba.breed(creature, map));
 }
 
-ActionCost ActionManager::save(CreaturePtr creature)
+ActionCost ActionManager::save(CreaturePtr creature, const bool quit_after_save)
 {
   ExitGameAction ega;
-  return get_action_cost(creature, ega.save(creature));
+  return get_action_cost(creature, ega.save(creature, quit_after_save));
 }
 
 ActionCost ActionManager::quit(CreaturePtr creature)

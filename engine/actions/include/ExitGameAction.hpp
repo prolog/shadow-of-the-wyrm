@@ -7,7 +7,7 @@ class ActionManager;
 class ExitGameAction : public IActionManager
 {
   public:
-    ActionCostValue save(CreaturePtr creature) const;
+    ActionCostValue save(CreaturePtr creature, const bool quit_after_save) const;
     ActionCostValue quit(CreaturePtr creature, const bool show_quit_actions) const;
     void create_dump_if_necessary(IMessageManager& manager, ActionManager * const am, CreaturePtr creature) const;
 

@@ -149,10 +149,6 @@ Not bugs, but probably not working as intended:
   up to three times without ever seeing you.
 - Make it obvious somewhere how much certain spells do, and what mechanical
   effect increasing spell levels has.
-- Add an autosave function that triggers every time you descend or ascend. 
-  The game occasionally crashes (unrepeatablely, unfortunately), which is 
-  more than a little frustrating when you just descended 300' in the 
-  infinite dungeon without saving.
 - Add the ability to make macros and/or adjust the letters that spells map 
   to. The useful buff spells that one might use regularly are currently 
   being distributed at random throughout the many non-buff spells that one 

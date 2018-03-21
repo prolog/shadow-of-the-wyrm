@@ -759,6 +759,14 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
 void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
 {
   GameUtils::move_to_new_map(current_tile, old_map, new_map);
+
+  bool checkpoint_save = String::to_bool(Game::instance().get_settings_ref().get_setting(Setting::CHECKPOINT_SAVE));
+
+  if (checkpoint_save)
+  {
+    Game& game = Game::instance();
+    game.get_action_manager_ref().save(game.get_current_player(), false);
+  }
 }
 
 void MovementAction::handle_properties_and_move_to_new_map(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
