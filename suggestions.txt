@@ -1,4 +1,5 @@
 Me:
+- Message when doing checkpoint saves to indicate why the delay happens.
 - Quests out of the pub in Carcassia
 - Graveyard
 - After finishing map ID and exit changes, need to test:

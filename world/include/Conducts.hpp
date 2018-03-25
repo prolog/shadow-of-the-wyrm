@@ -15,6 +15,8 @@ class Conducts : public ISerializable
     std::array<bool, static_cast<size_t>(ConductType::CONDUCT_SIZE)> get_conducts() const;
     void break_conduct(const ConductType conduct);
 
+    int get_num_broken_conducts() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
