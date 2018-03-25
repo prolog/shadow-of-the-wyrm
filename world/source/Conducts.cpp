@@ -28,6 +28,21 @@ void Conducts::break_conduct(const ConductType ct)
   cond[static_cast<int>(ct)] = false;
 }
 
+int Conducts::get_num_broken_conducts() const
+{
+  int broken = 0;
+
+  for (size_t i = 0; i < static_cast<int>(ConductType::CONDUCT_SIZE); i++)
+  {
+    if (cond[i] == false)
+    {
+      broken++;
+    }
+  }
+
+  return broken;
+}
+
 bool Conducts::serialize(ostream& stream) const
 {
   static_assert(ConductType::CONDUCT_SIZE == ConductType(9), "Unexpected number of conducts");

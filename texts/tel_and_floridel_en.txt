@@ -1630,7 +1630,7 @@ was like for like!  I'll give them this, at least: %b
 they didn't hang our brothers from a tree! %b
 O wise man!  O philosopher!  You greased %b
 that holy ground with blood so that there'd be %b
-cessation of hostilities?  A lasting peace?"
+cessation of hostilities?  A lasting peace?!"
 %p
 The crowd fell silent, conversation stilled %b
 as when a farmer tilling up a field %b
@@ -1652,3 +1652,14 @@ that death was in the open, but they might %b
 find victory in confusion.  Splitting up, %b
 they circled round and hoped that he might miss their bluff.
 %p
+Arkadios the clear-eyed saw the ruse %b
+for what it was, and brought the axe head down %b
+within the throng, a warning shot he used %b
+to fling and scatter, pry apart the crowd %b
+and leave the brothers standing still, unarmed, %b
+a deadly disadvantage.  As he kept %b
+amused by jukes and feints, he watched them squirm; %b
+then seeking out an end, he raised and swept %b
+diagonally and found the ground with full effect.
+%p
+

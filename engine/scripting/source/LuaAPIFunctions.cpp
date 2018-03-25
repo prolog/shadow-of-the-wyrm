@@ -207,6 +207,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_speed", get_creature_speed);
   lua_register(L, "get_creature_yx", get_creature_yx);
   lua_register(L, "get_creature_id", get_creature_id);
+  lua_register(L, "get_creature_num_broken_conducts", get_creature_num_broken_conducts);
   lua_register(L, "get_current_map_id", get_current_map_id);
   lua_register(L, "gain_level", gain_level);
   lua_register(L, "goto_level", goto_level);
@@ -329,6 +330,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_original_id", get_creature_original_id);
   lua_register(L, "remove_threat_from_all", remove_threat_from_all);
   lua_register(L, "generate_city_feature", generate_city_feature);
+  lua_register(L, "get_num_conducts", get_num_conducts);
 }
 
 // Lua API helper functions
@@ -2224,6 +2226,29 @@ int get_creature_id(lua_State* ls)
   }
 
   lua_pushstring(ls, creature_id.c_str());
+  return 1;
+}
+
+int get_creature_num_broken_conducts(lua_State* ls)
+{
+  int num_broken = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      num_broken = creature->get_conducts_ref().get_num_broken_conducts();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_num_broken_conducts");
+  }
+
+  lua_pushinteger(ls, num_broken);
   return 1;
 }
 
@@ -5987,5 +6012,22 @@ int generate_city_feature(lua_State* ls)
   }
 
   lua_pushboolean(ls, feature_generated);
+  return 1;
+}
+
+int get_num_conducts(lua_State* ls)
+{
+  int num_conducts = 0;
+
+  if (lua_gettop(ls) == 0)
+  {
+    num_conducts = static_cast<int>(ConductType::CONDUCT_SIZE);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_num_conducts");
+  }
+
+  lua_pushinteger(ls, num_conducts);
   return 1;
 }
