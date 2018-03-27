@@ -130,6 +130,7 @@ Creature::Creature(const Creature& cr)
   conducts = cr.conducts;
   spell_knowledge = cr.spell_knowledge;
   modifiers = cr.modifiers;
+  memberships = cr.memberships;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -214,6 +215,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (conducts == cr.conducts);
   result = result && (spell_knowledge == cr.spell_knowledge);
   result = result && (modifiers == cr.modifiers);
+  result = result && (memberships == cr.memberships);
 
   return result;
 }
@@ -1517,6 +1519,21 @@ bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
   return false;
 }
 
+void Creature::set_memberships(const Memberships& new_memberships)
+{
+  memberships = new_memberships;
+}
+
+Memberships Creature::get_memberships() const
+{
+  return memberships;
+}
+
+Memberships& Creature::get_memberships_ref()
+{
+  return memberships;
+}
+
 // Set, get, and query additional (string) properties
 // Uncomment the code below to find out the size of Creature. :)
 // template<int s> struct creature_size;
@@ -1529,10 +1546,10 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 1272, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1288, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 1168, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1184, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
   // Works for gcc in release
@@ -1604,6 +1621,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->conducts, cr.conducts);
   std::swap(this->spell_knowledge, cr.spell_knowledge);
   std::swap(this->modifiers, cr.modifiers);
+  std::swap(this->memberships, cr.memberships);
 }
 
 bool Creature::serialize(ostream& stream) const
@@ -1737,6 +1755,8 @@ bool Creature::serialize(ostream& stream) const
       m_element.second.serialize(stream);
     }
   }
+
+  memberships.serialize(stream);
 
   return true;
 }
@@ -1901,6 +1921,8 @@ bool Creature::deserialize(istream& stream)
 
     modifiers.insert(make_pair(elapsed, m_vec));
   }
+
+  memberships.deserialize(stream);
 
   return true;
 }
