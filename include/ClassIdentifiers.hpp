@@ -294,7 +294,9 @@ enum struct ClassIdentifier
   CLASS_ID_SHOP,
   CLASS_ID_SHOPS_TIME_OBSERVER,
   CLASS_ID_STATUS,
-  CLASS_ID_STARTING_LOCATION
+  CLASS_ID_STARTING_LOCATION,
+  CLASS_ID_MEMBERSHIPS,
+  CLASS_ID_MEMBERSHIP
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go

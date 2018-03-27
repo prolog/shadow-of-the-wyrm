@@ -19,6 +19,7 @@
 #include "Race.hpp"
 #include "Class.hpp"
 #include "ISerializable.hpp"
+#include "Memberships.hpp"
 #include "Mortuary.hpp"
 #include "MovementAccumulation.hpp"
 #include "Religion.hpp"
@@ -308,6 +309,10 @@ class Creature : public ISerializable
     std::map<double, std::vector<std::pair<std::string, Modifier>>>& get_modifiers_ref(); // get all modifiers, including those marked for deletion
     bool is_affected_by_modifier_spell(const std::string& spell_id) const;
 
+    void set_memberships(const Memberships& new_memberships);
+    Memberships get_memberships() const;
+    Memberships& get_memberships_ref();
+
     // Which win conditions have been satisfied?
     std::vector<CreatureWin> get_satisfied_win_conditions() const;
 
@@ -483,6 +488,9 @@ class Creature : public ISerializable
 
     // The list of statistics modifiers currently in place (e.g., as a result of spells)
     std::map<double, std::vector<std::pair<std::string, Modifier>>> modifiers;
+
+    // Any guilds, trade organizations, etc., that the creature belongs to.
+    Memberships memberships;
 };
 
 using CreaturePtr = std::shared_ptr<Creature>;
