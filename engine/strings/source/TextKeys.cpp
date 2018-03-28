@@ -175,3 +175,4 @@ const string TextKeys::LATEST_MESSAGES = "LATEST_MESSAGES";
 const string TextKeys::FRIENDLY = "FRIENDLY";
 const string TextKeys::DUMPING_CHARACTER_FAILED = "DUMPING_CHARACTER_FAILED";
 const string TextKeys::NO_NEW_CHARACTERS = "NO_NEW_CHARACTERS";
+const string TextKeys::MEMBERSHIPS = "MEMBERSHIPS";

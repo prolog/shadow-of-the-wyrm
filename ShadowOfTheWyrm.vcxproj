@@ -553,6 +553,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\conversion\include\EquipmentDumper.hpp" />
     <ClInclude Include="engine\conversion\include\InventoryDumper.hpp" />
     <ClInclude Include="engine\conversion\include\ItemDumper.hpp" />
+    <ClInclude Include="engine\conversion\include\MembershipsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\MessageBufferDumper.hpp" />
     <ClInclude Include="engine\conversion\include\MortuaryDumper.hpp" />
     <ClInclude Include="engine\conversion\include\QuestDumper.hpp" />
@@ -1698,6 +1699,7 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\conversion\source\ArtifactDumper.cpp" />
     <ClCompile Include="engine\conversion\source\AttackDumper.cpp" />
     <ClCompile Include="engine\conversion\source\EngineConversion.cpp" />
+    <ClCompile Include="engine\conversion\source\MembershipsDumper.cpp" />
     <ClCompile Include="engine\conversion\source\unit_tests\EngineConversion_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

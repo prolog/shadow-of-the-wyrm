@@ -42,6 +42,7 @@ class Memberships : public ISerializable
     bool add_membership(const std::string& membership_id, const Membership& m);
     bool remove_membership(const std::string& membership_id);
     bool has_membership(const std::string& membership_id);
+    std::map<std::string, Membership> get_memberships() const;
     std::set<std::string> get_excluded_memberships() const;
 
     bool serialize(std::ostream& stream) const override;

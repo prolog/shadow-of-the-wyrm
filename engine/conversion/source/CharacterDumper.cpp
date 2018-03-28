@@ -13,6 +13,7 @@
 #include "EquipmentDumper.hpp"
 #include "Game.hpp"
 #include "InventoryDumper.hpp"
+#include "MembershipsDumper.hpp"
 #include "Metadata.hpp"
 #include "MessageBufferDumper.hpp"
 #include "MessageManagerFactory.hpp"
@@ -70,6 +71,9 @@ string CharacterDumper::str() const
 
   ConductsDumper conducts_dumper(creature, num_cols);
   ss << conducts_dumper.str() << endl << endl;
+
+  MembershipsDumper memberships_dumper(creature, num_cols);
+  ss << memberships_dumper.str() << endl << endl;
     
   SkillsDumper skills_dumper(creature, num_cols);
   ss << skills_dumper.str() << endl << endl;

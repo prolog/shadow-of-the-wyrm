@@ -46,6 +46,11 @@ bool Memberships::has_membership(const string& id)
   return (m_it != memberships.end());
 }
 
+map<string, Membership> Memberships::get_memberships() const
+{
+  return memberships;
+}
+
 set<string> Memberships::get_excluded_memberships() const
 {
   set<string> excl;

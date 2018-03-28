@@ -171,6 +171,7 @@ class TextKeys
     static const std::string FRIENDLY;
     static const std::string DUMPING_CHARACTER_FAILED;
     static const std::string NO_NEW_CHARACTERS;
+    static const std::string MEMBERSHIPS;
 
   protected:
     TextKeys();
