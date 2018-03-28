@@ -36,7 +36,11 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   whenever a map is loaded.  This ensures that in the event of a crash,
   there is still a reasonably-recent savefile available (Dallas Herrin,
   Alan Charlesworth).
-   
+
+- Guilds/associations are now possible, and will slowly be added to the
+  game.  Memberships can be seen in the character display/dump, and
+  membership in some organizations will exclude membership in others.
+     
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich, Carcassian guard, urchin, vendor.
