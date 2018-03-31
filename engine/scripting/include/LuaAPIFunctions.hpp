@@ -196,6 +196,10 @@ int get_creature_original_id(lua_State* ls);
 int remove_threat_from_all(lua_State* ls);
 int generate_city_feature(lua_State* ls);
 int get_num_conducts(lua_State* ls);
+int break_conduct(lua_State* ls);
+int add_membership(lua_State* ls);
+int has_membership(lua_State* ls);
+int is_membership_excluded(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

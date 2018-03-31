@@ -41,7 +41,15 @@
 		<Col>3</Col>
 	</PlayerStart>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<ID>guildmaster_caro</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>29</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 	</InitialPlacements>
 	<Exits>
 		<Exit>
