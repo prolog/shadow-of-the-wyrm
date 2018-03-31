@@ -331,6 +331,10 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "remove_threat_from_all", remove_threat_from_all);
   lua_register(L, "generate_city_feature", generate_city_feature);
   lua_register(L, "get_num_conducts", get_num_conducts);
+  lua_register(L, "break_conduct", break_conduct);
+  lua_register(L, "add_membership", add_membership);
+  lua_register(L, "has_membership", has_membership);
+  lua_register(L, "is_membership_excluded", is_membership_excluded);
 }
 
 // Lua API helper functions
@@ -6029,5 +6033,115 @@ int get_num_conducts(lua_State* ls)
   }
 
   lua_pushinteger(ls, num_conducts);
+  return 1;
+}
+
+int break_conduct(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    ConductType ct = static_cast<ConductType>(lua_tointeger(ls, 2));
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_conducts_ref().break_conduct(ct);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to break_conduct");
+  }
+
+  return 0;
+}
+
+int add_membership(lua_State* ls)
+{
+  bool mem_added = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string membership_id = lua_tostring(ls, 2);
+    string desc_sid = lua_tostring(ls, 3);
+    set<string> excluded_memberships;
+
+    if (num_args == 4 && lua_isstring(ls, 4))
+    {
+      vector<string> excl_v = String::create_string_vector_from_csv_string(lua_tostring(ls, 4));
+      excluded_memberships.insert(excl_v.begin(), excl_v.end());
+    }
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Membership mem(membership_id, desc_sid, excluded_memberships);
+      mem_added = creature->get_memberships_ref().add_membership(membership_id, mem);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_membership");
+  }
+
+  lua_pushboolean(ls, mem_added);
+  return 1;
+}
+
+int has_membership(lua_State* ls)
+{
+  int mem = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string membership_id = lua_tostring(ls, 2);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      mem = creature->get_memberships_ref().has_membership(membership_id);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to has_membership");
+  }
+
+  lua_pushboolean(ls, mem);
+  return 1;
+}
+int is_membership_excluded(lua_State* ls)
+{
+  bool excl = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string membership_id = lua_tostring(ls, 2);
+    
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      set<string> excluded_memberships = creature->get_memberships_ref().get_excluded_memberships();
+      auto e_it = excluded_memberships.find(membership_id);
+
+      if (e_it != excluded_memberships.end())
+      {
+        excl = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_membership_excluded");
+  }
+
+  lua_pushboolean(ls, excl);
   return 1;
 }

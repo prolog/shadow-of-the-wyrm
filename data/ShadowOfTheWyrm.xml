@@ -26508,6 +26508,44 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="guildmaster_caro">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>GUILDMASTER_CARO_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GUILDMASTER_CARO_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GUILDMASTER_CARO_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>T</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>25</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2000</Exp>
+			</CreatureGeneration>
+			<Level>25</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>50</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Speed>35</Speed>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/guildmaster_caro.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="carcassian_guard">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>CARCASSIAN_GUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
