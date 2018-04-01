@@ -3222,8 +3222,8 @@ int map_get_available_creature_coords(lua_State* ls)
   {
     string map_id = lua_tostring(ls, 1);
     int y1 = lua_tointeger(ls, 2);
-    int y2 = lua_tointeger(ls, 3);
-    int x1 = lua_tointeger(ls, 4);
+    int x1 = lua_tointeger(ls, 3);
+    int y2 = lua_tointeger(ls, 4);
     int x2 = lua_tointeger(ls, 5);
 
     Game& game = Game::instance();
