@@ -53,18 +53,26 @@ function Quest:new(quest_id, quest_title_sid, questmaster_name_sid, quest_descri
 
   if (quest_precond_fn ~= nil) then
     obj.quest_precond_fn = quest_precond_fn
+  else
+    log(CLOG_ERROR, "nil precondition fn for quest ID " .. quest_id)
   end
 
   if (quest_start_fn ~= nil) then
     obj.quest_start_fn = quest_start_fn
+  else
+    log(CLOG_ERROR, "nil start fn for quest ID " .. quest_id)
   end
 
   if (quest_completion_condition_fn ~= nil) then
     obj.quest_completion_condition_fn = quest_completion_condition_fn
+  else
+    log(CLOG_ERROR, "nil completion condition fn for quest ID " .. quest_id)
   end
 
   if (quest_completion_fn ~= nil) then
     obj.quest_completion_fn = quest_completion_fn
+  else
+    log(CLOG_ERROR, "nil conpletion fn for quest ID " .. quest_id)
   end
 
   return obj

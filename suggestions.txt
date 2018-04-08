@@ -191,3 +191,6 @@ ssteam
 
 aotdev
 - Status/stats lines wrap weirdly with larger terminal sizes
+
+Alan Charlesworth
+- Throwing axes not stacking again?

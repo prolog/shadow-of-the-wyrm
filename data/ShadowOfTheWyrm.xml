@@ -35382,6 +35382,19 @@
 			</Currency>
 		</Currencies>
 		<Tools>
+			<Tool id="skeleton_key">
+				<DescriptionSID>SKELETON_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>SKELETON_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>*</LockID>
+			</Tool>
 			<Tool id="kew_key">
 				<DescriptionSID>KEW_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>KEW_KEY_USAGE_SID</UsageDescriptionSID>
