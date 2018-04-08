@@ -327,6 +327,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "load_map", load_map);
   lua_register(L, "has_artifact_in_inventory", has_artifact_in_inventory);
   lua_register(L, "tile_has_creature", tile_has_creature);
+  lua_register(L, "tile_has_feature", tile_has_feature);
+  lua_register(L, "tile_remove_feature", tile_remove_feature);
+  lua_register(L, "tile_is_feature_hidden", tile_is_feature_hidden);
   lua_register(L, "get_creature_original_id", get_creature_original_id);
   lua_register(L, "remove_threat_from_all", remove_threat_from_all);
   lua_register(L, "generate_city_feature", generate_city_feature);
@@ -5867,6 +5870,124 @@ int tile_has_creature(lua_State* ls)
   }
 
   lua_pushboolean(ls, has_creature);
+  return 1;
+}
+
+int tile_has_feature(lua_State* ls)
+{
+  bool has_feature = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+    string map_id;
+
+    int row = lua_tointeger(ls, 1);
+    int col = lua_tointeger(ls, 2);
+
+    if (num_args >= 3 && lua_isstring(ls, 3))
+    {
+      map_id = lua_tostring(ls, 3);
+      map = Game::instance().get_map_registry_ref().get_map(map_id);
+    }
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(row, col);
+
+      if (tile != nullptr && tile->has_feature())
+      {
+        has_feature = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to tile_has_feature");
+  }
+
+  lua_pushboolean(ls, has_feature);
+  return 1;
+}
+
+int tile_remove_feature(lua_State* ls)
+{
+  bool removed = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+    string map_id;
+
+    int row = lua_tointeger(ls, 1);
+    int col = lua_tointeger(ls, 2);
+
+    if (num_args >= 3 && lua_isstring(ls, 3))
+    {
+      map_id = lua_tostring(ls, 3);
+      map = Game::instance().get_map_registry_ref().get_map(map_id);
+    }
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(row, col);
+
+      if (tile != nullptr && tile->has_feature())
+      {
+        tile->remove_feature();
+        removed = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to tile_remove_feature");
+  }
+
+  lua_pushboolean(ls, removed);
+  return 1;
+}
+
+int tile_is_feature_hidden(lua_State* ls)
+{
+  bool hidden = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+    string map_id;
+
+    int row = lua_tointeger(ls, 1);
+    int col = lua_tointeger(ls, 2);
+
+    if (num_args >= 3 && lua_isstring(ls, 3))
+    {
+      map_id = lua_tostring(ls, 3);
+      map = Game::instance().get_map_registry_ref().get_map(map_id);
+    }
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(row, col);
+
+      if (tile != nullptr && tile->has_feature())
+      {
+        hidden = tile->get_feature()->get_is_hidden();
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to tile_is_feature_hidden");
+  }
+
+  lua_pushboolean(ls, hidden);
   return 1;
 }
 
