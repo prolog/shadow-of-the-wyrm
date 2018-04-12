@@ -1,6 +1,7 @@
 Me:
-- Message when doing checkpoint saves to indicate why the delay happens.
 - Quests out of the pub in Carcassia
+- In equipment, axes not matching due to worn loc: wielded vs ammu
+- Trap at the vault should be monsters
 - Graveyard
 - After finishing map ID and exit changes, need to test:
   - Entering to a set map from a tile
@@ -110,6 +111,7 @@ Me:
 - Armour flags
 - Cantrip to set glow flag on items
 - Food rotting for caught fish, other foods?
+- Message when doing checkpoint saves to indicate why the delay happens.
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
@@ -192,5 +194,10 @@ ssteam
 aotdev
 - Status/stats lines wrap weirdly with larger terminal sizes
 
-Alan Charlesworth
-- Throwing axes not stacking again?
+Karagy
+- In shop, hero can't pay for items with cost 0.
+- Automove mode is not breaked by drowning.
+- For Thiev with Stealth near 50 - it seems that the Stealth check w/o enemies in site is noticeably harder than with enemies in site. At least in forest.
+- For Thiev with Stealth 100 - is impossible to unhide. This is completely block the items selling in shops.
+- Monsters attracts to left-upper adjusting cell near hero, not for hero cell.
+- Please, dim unimplemented skills by an dark color (in skills menu).
