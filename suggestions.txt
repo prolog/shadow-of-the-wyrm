@@ -1,6 +1,5 @@
 Me:
 - Quests out of the pub in Carcassia
-- In equipment, axes not matching due to worn loc: wielded vs ammu
 - Trap at the vault should be monsters
 - Graveyard
 - After finishing map ID and exit changes, need to test:
@@ -196,7 +195,6 @@ aotdev
 
 Karagy
 - In shop, hero can't pay for items with cost 0.
-- Automove mode is not breaked by drowning.
 - For Thiev with Stealth near 50 - it seems that the Stealth check w/o enemies in site is noticeably harder than with enemies in site. At least in forest.
 - For Thiev with Stealth 100 - is impossible to unhide. This is completely block the items selling in shops.
 - Monsters attracts to left-upper adjusting cell near hero, not for hero cell.

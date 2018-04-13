@@ -1692,3 +1692,13 @@ crashed into him, then into the ground, but when %b
 Arkadios fell down, the dagger jammed. %b
 He gasped, and clutched the handle with uncertain hands.
 %p
+Inside the hall, his breath became the air: %b
+suddenly, their very champion was dead. %b
+As Weyg got up, he felt a common stare %b
+from all around him, those who'd fought and bled %b
+by Arkadios, or for him - so instead %b
+of casting off their yoke, he'd made a vacuum, %b
+a means for base and lesser men to wedge %b
+apart his folk again.  And so too he knew %b
+this moment pivoted on what he chose to do.
+%p
