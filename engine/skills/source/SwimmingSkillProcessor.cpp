@@ -26,6 +26,8 @@ ActionCostValue SwimmingSkillProcessor::process(CreaturePtr creature, MapPtr map
     Damage swimming_default;
     swimming_default.set_modifier(swimming_damage);
 
+    // Stop automovement on drowning.
+    creature->get_automatic_movement_ref().set_engaged(false);
     cm.deal_damage(no_attacker, creature, "", swimming_damage, swimming_default, drowning_message_sid);    
   }
 
