@@ -16,9 +16,15 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
   if (creature != nullptr)
   {
+    // Using hiding when hidden reveals the creature.
     if (creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
     {
-      add_already_hidden_message(creature);
+      StatusEffectPtr hide = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
+
+      if (hide != nullptr)
+      {
+        hide->undo_change(creature);
+      }
     }
     else
     {
@@ -64,12 +70,3 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
   return acv;
 }
 
-void HidingSkillProcessor::add_already_hidden_message(CreaturePtr creature)
-{
-  if (creature != nullptr)
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ALREADY_HIDDEN));
-    manager.send();
-  }
-}
