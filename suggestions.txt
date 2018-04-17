@@ -194,8 +194,6 @@ aotdev
 - Status/stats lines wrap weirdly with larger terminal sizes
 
 Karagy
-- In shop, hero can't pay for items with cost 0.
 - For Thiev with Stealth near 50 - it seems that the Stealth check w/o enemies in site is noticeably harder than with enemies in site. At least in forest.
-- For Thiev with Stealth 100 - is impossible to unhide. This is completely block the items selling in shops.
 - Monsters attracts to left-upper adjusting cell near hero, not for hero cell.
 - Please, dim unimplemented skills by an dark color (in skills menu).
