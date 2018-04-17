@@ -313,6 +313,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_spellbooks", get_spellbooks);
   lua_register(L, "set_shop_shopkeeper_id", set_shop_shopkeeper_id);
   lua_register(L, "repop_shop", repop_shop);
+  lua_register(L, "get_num_unpaid_items", get_num_unpaid_items);
   lua_register(L, "get_unpaid_amount", get_unpaid_amount);
   lua_register(L, "set_items_paid", set_items_paid);
   lua_register(L, "bargain_discount", bargain_discount);
@@ -5396,6 +5397,52 @@ int repop_shop(lua_State* ls)
   return 1;
 }
 
+int get_num_unpaid_items(lua_State* ls)
+{
+  int num_unpaid = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      EquipmentMap eqm = creature->get_equipment().get_equipment();
+      IInventoryPtr inv = creature->get_inventory();
+
+      for (auto eqm_pair : eqm)
+      {
+        ItemPtr item = eqm_pair.second;
+
+        if (item != nullptr && item->get_unpaid())
+        {
+          num_unpaid++;
+        }
+      }
+
+      if (inv != nullptr)
+      {
+        list<ItemPtr> raw_items = inv->get_items_cref();
+        for (ItemPtr item : raw_items)
+        {
+          if (item && item->get_unpaid())
+          {
+            num_unpaid++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_num_unpaid_items");
+  }
+
+  lua_pushinteger(ls, num_unpaid);
+  return 1;
+}
+
 int get_unpaid_amount(lua_State* ls)
 {
   int amount = 0;
@@ -5661,11 +5708,17 @@ int get_sale_price(lua_State* ls)
 
 int set_item_unpaid(lua_State* ls)
 {
-  if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  int num_args = lua_gettop(ls);
+  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
   {
     int drop_y = lua_tointeger(ls, 1);
     int drop_x = lua_tointeger(ls, 2);
-    string item_id = lua_tostring(ls, 3);
+    string item_id;
+
+    if (num_args >= 3 && lua_isstring(ls, 3))
+    {
+      item_id = lua_tostring(ls, 3);
+    }
 
     MapPtr map = Game::instance().get_current_map();
 
@@ -5675,11 +5728,26 @@ int set_item_unpaid(lua_State* ls)
 
       if (tile != nullptr)
       {
-        ItemPtr item = tile->get_items()->get_from_id(item_id);
-
-        if (item != nullptr)
+        if (!item_id.empty())
         {
-          item->set_unpaid(true);
+          ItemPtr item = tile->get_items()->get_from_id(item_id);
+
+          if (item != nullptr)
+          {
+            item->set_unpaid(true);
+          }
+        }
+        else
+        {
+          list<ItemPtr>& raw_items = tile->get_items()->get_items_ref();
+
+          for (ItemPtr item : raw_items)
+          {
+            if (item != nullptr)
+            {
+              item->set_unpaid(true);
+            }
+          }
         }
       }
     }
