@@ -196,4 +196,3 @@ aotdev
 Karagy
 - For Thiev with Stealth near 50 - it seems that the Stealth check w/o enemies in site is noticeably harder than with enemies in site. At least in forest.
 - Monsters attracts to left-upper adjusting cell near hero, not for hero cell.
-- Please, dim unimplemented skills by an dark color (in skills menu).
