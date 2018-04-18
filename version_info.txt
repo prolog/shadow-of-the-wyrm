@@ -35,6 +35,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - Unpaid items in the shop can now be "paid for" - no money changes hands,
   and the shopkeeper sees the items as yours (Karagy).
 
+- Unimplemented general skills are now noted (Karagy).
+
 - Gnomish barkeepers are now just called bartenders.
 
 - There is now an option (that default to on) to do checkpoint saves
