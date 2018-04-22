@@ -60,6 +60,48 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>tela</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>59</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>drunk</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>64</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>drunk</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>59</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>drunk</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>71</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gnomish_sailor</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>69</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gnomish_sailor</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>66</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
 					<Row>8</Row>
