@@ -193,6 +193,3 @@ ssteam
 aotdev
 - Status/stats lines wrap weirdly with larger terminal sizes
 
-Karagy
-- For Thiev with Stealth near 50 - it seems that the Stealth check w/o enemies in site is noticeably harder than with enemies in site. At least in forest.
-- Monsters attracts to left-upper adjusting cell near hero, not for hero cell.
