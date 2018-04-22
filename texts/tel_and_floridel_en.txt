@@ -1712,3 +1712,13 @@ beneath their narcissistic banner.  Still, %b
 he'd won the fight, and right to lead them all. %b
 And so he spoke, and cut the silence like a caul.
 %p
+"I see a group that sees themselves as sly %b
+and cunning, expert raiders of the plains, %b
+harassers of the unlings.  I see wives %b
+and women who I know can do the same, %b
+who guard our hall from raiders of our own. %b
+But look around.  Remember who is lost, %b
+whose sons and brothers hold the mid-day sun %b
+enthralled, who come apart in heat, the cost %b
+for virgin girls that bled, who deaths we could have stopped."
+%p
