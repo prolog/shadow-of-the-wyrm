@@ -338,6 +338,8 @@ class Creature : public ISerializable
     int increment_free_hidden_actions();
     int decrement_free_hidden_actions();
 
+    bool has_creature_in_view(const std::string& creature_id) const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

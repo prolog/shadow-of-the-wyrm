@@ -19,8 +19,6 @@
 #include "EngineConversion.hpp"
 #include "ExitGameAction.hpp"
 #include "FeatureGenerator.hpp"
-#include "FieldOfViewStrategy.hpp"
-#include "FieldOfViewStrategyFactory.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
 #include "HighScoreScreen.hpp"
@@ -667,8 +665,6 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
       {
         // Comment/un-comment this as necessary to figure out if creatures are taking too long to process turns.
         //boost::timer::auto_cpu_timer timer;
-        MapPtr view_map;
-        MapPtr fov_map;
 
         // Skip the creature's action if it is not the player, and does not have LOS of the player.
         // This is necessary for speedup purposes when there are lots of creatures on the map.
@@ -701,17 +697,10 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
             }
           }
         }
-
-        Coordinate creature_coords = current_map->get_location(current_creature->get_id());
-        view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
         
-        FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
-        fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
-
-        if (strategy)
-        {
-          strategy->set_fov_map(fov_map);
-        }
+        Coordinate creature_coords = current_map->get_location(current_creature->get_id());
+        MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+        MapPtr fov_map = CreatureUtils::update_fov_map(current_map, view_map, current_creature);
         
         if (current_creature->get_is_player())
         {

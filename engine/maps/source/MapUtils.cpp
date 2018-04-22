@@ -4,6 +4,7 @@
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
@@ -377,17 +378,16 @@ vector<string> MapUtils::get_creatures_with_creature_in_view(const MapPtr& map, 
     {
       CreaturePtr viewing_creature = cr_pair.second;
 
-      if (viewing_creature != nullptr)
+      // If the viewing creature has the creature in view, update the fov map
+      // and check again.  FOV maps are typically only updated at the start
+      // of each turn, and so can become stale.
+      if (viewing_creature != nullptr && viewing_creature->has_creature_in_view(creature_id))
       {
-        MapPtr fov_map = viewing_creature->get_decision_strategy()->get_fov_map();
+        CreatureUtils::update_fov_map(map, nullptr, viewing_creature);
 
-        if (fov_map != nullptr)
+        if (viewing_creature->has_creature_in_view(creature_id))
         {
-          CreatureMap fov_creatures = fov_map->get_creatures();
-          if (fov_creatures.find(creature_id) != fov_creatures.end())
-          {
-            viewing_creatures.push_back(viewing_creature->get_id());
-          }
+          viewing_creatures.push_back(viewing_creature->get_id());
         }
       }
     }

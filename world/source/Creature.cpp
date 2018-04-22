@@ -1557,6 +1557,24 @@ void Creature::assert_size() const
   #endif
 }
 
+// Convenience function that calls the functions on the decision strategy.
+bool Creature::has_creature_in_view(const string& creature_id) const
+{
+  bool has_cr = false;
+
+  if (decision_strategy != nullptr)
+  {
+    MapPtr fov_map = decision_strategy->get_fov_map();
+
+    if (fov_map != nullptr)
+    {
+      has_cr = fov_map->has_creature(creature_id);
+    }
+  }
+
+  return has_cr;
+}
+
 // Swap values, no throw
 void Creature::swap(Creature &cr) throw ()
 {
