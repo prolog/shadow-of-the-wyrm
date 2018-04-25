@@ -49,7 +49,10 @@ class CombatManager
     // Functions to handle the attacking mechanics and add messages as necessary.
     //
     // These are generally not called directly, other than via the Lua API.
-    bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type, const AttackSequenceType ast);
+
+    // ::hit returns the actual damage dealt, which is needed in some cases
+    // (for example, to determine whether skills should be improved).
+    int hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type, const AttackSequenceType ast);
     bool miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     bool close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     bool intimidate(CreaturePtr attacking_creature, CreaturePtr attacked_creature);

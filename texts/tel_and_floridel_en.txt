@@ -1722,3 +1722,13 @@ whose sons and brothers hold the mid-day sun %b
 enthralled, who come apart in heat, the cost %b
 for virgin girls that bled, who deaths we could have stopped."
 %p
+"It's becoming clear that size is not enough. %b
+The fae are no mere unlings, little things %b
+to bend beneath our will.  Their cunning's rough %b
+and bloody.  Now they've got a warrior-king %b
+who would be bold as us, who uses glamour %b
+as if a second skin.  We must adapt %b
+or die.  Brute force alone will only hamstring %b
+our people, bleed us out.  We're so adept %b
+at cruelty, we've failed to see we've overstepped."
+%p
