@@ -1,4 +1,5 @@
 #include "ColourTextKeys.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
@@ -34,6 +35,9 @@ string ColourTextKeys::get_colour_sid_from_hair_colour(const HairColour hair_col
       break;
     case HairColour::HAIR_COLOUR_WHITE:
       colour_sid = ColourTextKeys::COLOUR_WHITE;
+      break;
+    case HairColour::HAIR_NA:
+      colour_sid = TextKeys::NOT_APPLICABLE_ABRV;
       break;
     default:
       break;
