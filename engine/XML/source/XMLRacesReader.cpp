@@ -81,6 +81,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool has_voice = XMLUtils::get_child_node_bool_value(race_node, "HasVoice");
     race->set_has_voice(has_voice);
 
+    bool has_hair = XMLUtils::get_child_node_bool_value(race_node, "HasHair");
+    race->set_has_hair(has_hair);
+
     XMLNode drops_node = XMLUtils::get_next_element_by_local_name(race_node, "Drops");
     parse_race_drops(race, drops_node);
 

@@ -51,7 +51,11 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - Ranged combat is now disallowed when overburdened (Troubler).
 
 - Huge rocks are much heavier.
- 
+
+- The various races are now specified as having hair (or not), so races
+  like human, divine, demons all have hair.  Snakelings, constructs,
+  insects, etc., do not (Troubler).
+   
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster

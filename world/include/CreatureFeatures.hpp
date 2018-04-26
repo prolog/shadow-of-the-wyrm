@@ -34,6 +34,7 @@ enum struct CreatureSex
 
 enum struct HairColour
 {
+  HAIR_NA = -1,
   HAIR_COLOUR_BLACK = 0,
   HAIR_COLOUR_BROWN = 1,
   HAIR_COLOUR_BLONDE = 2,

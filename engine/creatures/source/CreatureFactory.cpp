@@ -356,7 +356,14 @@ void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race,
   creature->set_size(race->get_size());
   creature->get_hunger_clock_ref().set_requires_food(race->get_hungerless() == false);
   
-  creature->set_hair_colour(get_random_hair_colour());
+  HairColour hair_colour = HairColour::HAIR_NA;
+
+  if (race->get_has_hair())
+  {
+    hair_colour = get_random_hair_colour();
+  }
+
+  creature->set_hair_colour(hair_colour);
   creature->set_eye_colour(get_random_eye_colour());
   
   AgeInfo age_info = race->get_age_info();
