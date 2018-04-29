@@ -847,6 +847,12 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
 
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
 
+      // Record the first kill if necessary.
+      if (attacking_creature && !attacking_creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_FIRST_KILL_ID))
+      {
+        attacking_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FIRST_KILL_ID, attacked_creature->get_original_id());
+      }
+
       // Kill the creature, and run the death event function, if necessary.
       update_mortuaries(attacking_creature, attacked_creature->get_original_id());
       death_manager->die();
