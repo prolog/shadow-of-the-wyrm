@@ -164,6 +164,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_on_quest", is_on_quest);
   lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
   lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
+  lua_register(L, "is_unique", is_unique);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
   lua_register(L, "add_object_to_map", add_object_to_map);
   lua_register(L, "add_object_to_creature", add_object_to_creature);
@@ -794,6 +795,33 @@ int get_num_uniques_killed_global(lua_State* ls)
   }
 
   lua_pushinteger(ls, num_killed);
+  return 1;
+}
+
+// Checks to see if a given creature base ID is a unique.
+int is_unique(lua_State* ls)
+{
+  bool unique = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string cr_base_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    CreatureGenerationValuesMap& cgv = game.get_creature_generation_values_ref();
+    auto cr_it = cgv.find(cr_base_id);
+
+    if (cr_it != cgv.end())
+    {
+      unique = cr_it->second.is_unique();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_unique");
+  }
+
+  lua_pushboolean(ls, unique);
   return 1;
 }
 

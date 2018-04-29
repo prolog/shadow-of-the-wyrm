@@ -27,6 +27,7 @@ class CreatureProperties
     // remaining general enough to "free stealth actions" are possible
     // later on.
     static const std::string CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS;
+    static const std::string CREATURE_PROPERTIES_FIRST_KILL_ID;
 
   protected:
     CreatureProperties();
