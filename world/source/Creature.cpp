@@ -14,7 +14,7 @@ using namespace std;
 // Why did I write this in C++?
 Creature::Creature()
 : is_player(false)
-, sex(CreatureSex::CREATURE_SEX_MALE)
+, sex(CreatureSex::CREATURE_SEX_NOT_SPECIFIED)
 , size(CreatureSize::CREATURE_SIZE_MEDIUM)
 , eye_colour(EyeColour::EYE_COLOUR_BROWN)
 , hair_colour(HairColour::HAIR_COLOUR_BLACK)

@@ -148,11 +148,12 @@ string CharacterDumper::get_vital_statistics() const
   
   // First line
   string age  = StringTable::get(TextKeys::AGE) + ": " + std::to_string(creature->get_age().get_current());
-  string sex  = StringTable::get(TextKeys::SEX) + ": " + TextMessages::get_sex(creature->get_sex());
+  Alignment a;
+  string alignment = StringTable::get(TextKeys::ALIGNMENT) + ": " + StringTable::get(a.get_alignment_sid(creature->get_alignment().get_alignment_range()));
   string size = StringTable::get(SizeTextKeys::SIZE) + ": " + StringTable::get(SizeTextKeys::get_size_sid_from_creature_size(creature->get_size()));
   
   vl.at(0).replace(0, age.size(), age);
-  vl.at(0).replace(30, sex.size(), sex);
+  vl.at(0).replace(30, alignment.size(), alignment);
   vl.at(0).replace(60, size.size(), size);
 
   // Second line
@@ -167,10 +168,13 @@ string CharacterDumper::get_vital_statistics() const
   vl.at(1).replace(60, eye_colour.size(), eye_colour);
 
   // Third Line
-  Alignment a;
-  string alignment = StringTable::get(TextKeys::ALIGNMENT) + ": " + StringTable::get(a.get_alignment_sid(creature->get_alignment().get_alignment_range()));
+  CreatureSex cs = creature->get_sex();
 
-  vl.at(2).replace(0, alignment.size(), alignment);
+  if (cs != CreatureSex::CREATURE_SEX_NOT_SPECIFIED)
+  {
+    string sex = StringTable::get(TextKeys::SEX) + ": " + TextMessages::get_sex(cs);
+    vl.at(2).replace(0, sex.size(), sex);
+  }
 
   for (string& s : vl)
   {

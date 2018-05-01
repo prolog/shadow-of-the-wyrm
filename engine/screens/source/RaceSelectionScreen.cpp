@@ -26,7 +26,10 @@ void RaceSelectionScreen::initialize()
 
   vector<ScreenComponentPtr> race_screen;
 
-  synop << "[" << creature_synopsis << "]";
+  if (!creature_synopsis.empty())
+  {
+    synop << "[" << creature_synopsis << "]";
+  }
 
   race_screen.push_back(make_shared<TextComponent>(synop.str()));
 

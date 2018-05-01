@@ -29,7 +29,8 @@ enum struct CreatureSex
 {
   CREATURE_SEX_MALE = 0,
   CREATURE_SEX_FEMALE = 1,
-  CREATURE_SEX_LAST = 2
+  CREATURE_SEX_NOT_SPECIFIED = 2,
+  CREATURE_SEX_LAST = 3
 };
 
 enum struct HairColour

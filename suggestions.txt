@@ -1,11 +1,10 @@
 Me:
-- Need to test Tela's first quest with a unique
 - Quests out of the pub in Carcassia
-- "Other" gender option with "they" pronoun
 - Completing all of Tela's quests should grant membership in the
   Carcassian Adventurering Partnership
 - Trap at the vault should be monsters
 - Graveyard
+- Around the thieves guild should be a hidden, diggable area.
 - After finishing map ID and exit changes, need to test:
   - Entering to a set map from a tile
   - Siriath's lair
@@ -19,7 +18,6 @@ Me:
   teleport should fail.
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
-- Guild of Thieves
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
 - Dungeons and caverns should have a chance to grow magic trees.
 - More guilds/things with memberships

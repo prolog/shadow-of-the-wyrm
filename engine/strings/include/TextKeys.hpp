@@ -39,6 +39,8 @@ class TextKeys
     static const std::string SEX_MALE_ABRV;
     static const std::string SEX_FEMALE;
     static const std::string SEX_FEMALE_ABRV;
+    static const std::string SEX_NOT_SPECIFIED;
+    static const std::string SEX_NOT_SPECIFIED_ABRV;
     static const std::string SELECT_EQUIPMENT_WORN_LOCATION;
     static const std::string AGE;
     static const std::string HAIR_COLOUR;

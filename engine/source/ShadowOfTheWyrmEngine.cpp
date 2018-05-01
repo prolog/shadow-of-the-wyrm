@@ -345,7 +345,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_race_selection)
   {
-    creature_synopsis = TextMessages::get_sex(sex);
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, nullptr, nullptr, nullptr);
 
     RaceSelectionScreen race_selection(display, creature_synopsis);
     string race_index = race_selection.display();
@@ -386,8 +386,8 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   {
     RaceManager rm;
     RacePtr sel_race = rm.get_race(selected_race_id);
-    creature_synopsis = TextMessages::get_sex(sex) + " " + StringTable::get(sel_race ? sel_race->get_race_name_sid() : "");
-
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, nullptr);
+    
     ClassSelectionScreen class_selection(display, creature_synopsis);
     string class_index = class_selection.display();
 
@@ -423,7 +423,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_deity_selection)
   {
-    creature_synopsis = TextMessages::get_sex(sex) + " " + StringTable::get(selected_race->get_race_name_sid()) + " " + StringTable::get(selected_class->get_class_name_sid());
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, nullptr);
 
     DeitySelectionScreen deity_selection(display, selected_race, creature_synopsis);
     string deity_index = deity_selection.display();
@@ -467,7 +467,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   else
   {
     string deity_sid = selected_deity->get_name_sid();    
-    creature_synopsis = TextMessages::get_sex(sex) + " " + StringTable::get(selected_race->get_race_name_sid()) + " " + StringTable::get(selected_class->get_class_name_sid()) + ", " + StringTable::get(deity_sid);
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, selected_deity);
     StartingLocationSelectionScreen sl_selection(display, creature_synopsis, sm);
     string sl_sidx = sl_selection.display();
 
@@ -501,7 +501,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   string name;
 
   bool user_and_character_exist = true;
-  string creature_synopsis = TextMessages::get_sex(ccd.get_sex()) + " " + StringTable::get(selected_race->get_race_name_sid()) + " " + StringTable::get(selected_class->get_class_name_sid()) + ", " + StringTable::get(deity->get_name_sid());
+  string creature_synopsis = TextMessages::get_character_creation_synopsis(ccd.get_sex(), selected_race, selected_class, deity);
   string warning_message;
 
   while (user_and_character_exist)
