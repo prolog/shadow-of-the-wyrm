@@ -55,6 +55,14 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - The various races are now specified as having hair (or not), so races
   like human, divine, demons all have hair.  Snakelings, constructs,
   insects, etc., do not (Troubler).
+
+- Sex selection is now skipped, with the player's sex officially tracked
+  as "not specified".  Sex has never had any real impact on the game for 
+  the player, who is always "you".  There is a setting in swyrm.ini 
+  controls pre-selecting your sex.  This can be unset to bring back the 
+  sex selection screen.  Characters created through the "Random character"
+  option at the main menu will continue to get their sex specified and
+  selected randomly.
    
 - Stanzas for "Tel and Floridel".
 

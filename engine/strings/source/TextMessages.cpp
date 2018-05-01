@@ -1,4 +1,5 @@
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/algorithm/string/trim.hpp>
 #include "ActionTextKeys.hpp"
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
@@ -109,6 +110,9 @@ string TextMessages::get_sex(const CreatureSex sex)
       break;
     case CreatureSex::CREATURE_SEX_FEMALE:
       creature_sex = StringTable::get(TextKeys::SEX_FEMALE);
+      break;
+    case CreatureSex::CREATURE_SEX_NOT_SPECIFIED:
+      creature_sex = StringTable::get(TextKeys::SEX_NOT_SPECIFIED);
       break;
     default:
       creature_sex = "?";
@@ -398,13 +402,19 @@ string TextMessages::get_reflexive_pronoun(CreaturePtr creature)
     }
     else
     {
-      if (creature->get_sex() == CreatureSex::CREATURE_SEX_MALE)
+      CreatureSex cs = creature->get_sex();
+
+      if (cs == CreatureSex::CREATURE_SEX_MALE)
       {
         reflexive_pronoun = StringTable::get(TextKeys::HIMSELF);
       }
-      else
+      else if (cs == CreatureSex::CREATURE_SEX_FEMALE)
       {
         reflexive_pronoun = StringTable::get(TextKeys::HERSELF);
+      }
+      else
+      {
+        reflexive_pronoun = StringTable::get(TextKeys::ITSELF);
       }
     }
   }
@@ -502,4 +512,42 @@ string TextMessages::get_bool_sid(const bool val)
   {
     return TextKeys::BOOL_FALSE;
   }
+}
+
+string TextMessages::get_character_creation_synopsis(const CreatureSex cs, RacePtr race, ClassPtr cur_class, DeityPtr cur_deity)
+{
+  vector<string> details;
+
+  if (cs != CreatureSex::CREATURE_SEX_NOT_SPECIFIED)
+  {
+    details.push_back(TextMessages::get_sex(cs));
+  }
+
+  if (race != nullptr)
+  {
+    details.push_back(StringTable::get(race->get_race_name_sid()));
+  }
+
+  if (cur_class != nullptr)
+  {
+    details.push_back(StringTable::get(cur_class->get_class_name_sid()));
+  }
+
+  // Deity should always be separated from what comes before.
+  if (cur_deity != nullptr)
+  {
+    details.push_back("(" + StringTable::get(cur_deity->get_name_sid()) + ")");
+  }
+
+  ostringstream ss;
+
+  for (const string& d : details)
+  {
+    ss << d << " ";
+  }
+
+  string synopsis = ss.str();
+  boost::trim(synopsis);
+
+  return synopsis;
 }

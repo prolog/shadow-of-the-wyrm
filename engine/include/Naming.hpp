@@ -18,6 +18,10 @@ class Naming
   protected:
     Naming();
 
+    // Names are defined for Male and Female.  If sex isn't specified, pick one
+    // of the sexes at random and use that for generating a random name.
+    static SyllableMap::const_iterator find_in_syllables(const CreatureSex cs);
+
     static std::string create_name(const int num_syllables, const std::map<int, std::map<int, std::vector<std::string>>>& syl_map_entry);
     static uint MAXIMUM_NAME_SIZE;
     static const int MIN_NAME_SYL;

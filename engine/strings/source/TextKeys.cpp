@@ -53,6 +53,8 @@ const string TextKeys::SEX_MALE = "SEX_MALE";
 const string TextKeys::SEX_MALE_ABRV = "SEX_MALE_ABRV";
 const string TextKeys::SEX_FEMALE = "SEX_FEMALE";
 const string TextKeys::SEX_FEMALE_ABRV = "SEX_FEMALE_ABRV";
+const string TextKeys::SEX_NOT_SPECIFIED = "SEX_NOT_SPECIFIED";
+const string TextKeys::SEX_NOT_SPECIFIED_ABRV = "SEX_NOT_SPECIFIED_ABRV";
 const string TextKeys::SELECT_EQUIPMENT_WORN_LOCATION = "SELECT_EQUIPMENT_WORN_LOCATION";
 
 const string TextKeys::RACE_1_NAME = "RACE_1_NAME";

@@ -2,6 +2,7 @@
 #include <string>
 #include "Creature.hpp"
 #include "CreatureFeatures.hpp"
+#include "Deity.hpp"
 #include "EquipmentTypes.hpp"
 #include "Item.hpp"
 #include "tiles.hpp"
@@ -35,6 +36,7 @@ class TextMessages
     static std::string get_inscription_message(const std::string& inscription_sid);
     static std::string get_replacement_message(const std::string& message, const std::string& replace);
     static std::string get_bool_sid(const bool val);
+    static std::string get_character_creation_synopsis(const CreatureSex cs, RacePtr race, ClassPtr cur_class, DeityPtr cur_deity);
 
   protected:
     TextMessages();

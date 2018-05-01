@@ -27,11 +27,30 @@ Naming::Naming()
 {
 }
 
+SyllableMap::const_iterator Naming::find_in_syllables(const CreatureSex cs)
+{
+  CreatureSex sex = cs;
+
+  if (cs == CreatureSex::CREATURE_SEX_NOT_SPECIFIED)
+  {
+    if (RNG::percent_chance(50))
+    {
+      sex = CreatureSex::CREATURE_SEX_MALE;
+    }
+    else
+    {
+      sex = CreatureSex::CREATURE_SEX_FEMALE;
+    }
+  }
+
+  return syllables.find(sex);
+}
+
 string Naming::generate_name(const CreatureSex sex)
 {
   string name = "Spud";
 
-  auto s_it = syllables.find(sex);
+  auto s_it = find_in_syllables(sex);
 
   if (s_it != syllables.end())
   {

@@ -28,7 +28,10 @@ void DeitySelectionScreen::initialize()
     vector<string> deity_ids = race->get_initial_deity_ids();
     ostringstream synop;
 
-    synop << "[" << creature_synopsis << "]";
+    if (!creature_synopsis.empty())
+    {
+      synop << "[" << creature_synopsis << "]";
+    }
 
     TextComponentPtr synopsis_text = std::make_shared<TextComponent>(synop.str());
     TextComponentPtr deity_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_DEITY));

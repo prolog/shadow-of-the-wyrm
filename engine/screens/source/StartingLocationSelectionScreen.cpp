@@ -20,7 +20,11 @@ StartingLocationSelectionScreen::StartingLocationSelectionScreen(DisplayPtr new_
 void StartingLocationSelectionScreen::initialize()
 {
   ostringstream synop;
-  synop << "[" << creature_synopsis << "]";
+
+  if (!creature_synopsis.empty())
+  {
+    synop << "[" << creature_synopsis << "]";
+  }
 
   TextComponentPtr sl_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_STARTING_LOCATION));
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();

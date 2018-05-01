@@ -5,7 +5,7 @@ TEST(SW_Engine_CharacterCreationDetails, default_constructor)
   CharacterCreationDetails ccd;
   StartingLocation sl;
 
-  EXPECT_EQ(CreatureSex::CREATURE_SEX_MALE, ccd.get_sex());
+  EXPECT_EQ(CreatureSex::CREATURE_SEX_NOT_SPECIFIED, ccd.get_sex());
   EXPECT_EQ("", ccd.get_race_id());
   EXPECT_EQ("", ccd.get_class_id());
   EXPECT_EQ("", ccd.get_deity_id());

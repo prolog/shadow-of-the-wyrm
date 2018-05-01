@@ -3,7 +3,7 @@
 using namespace std;
 
 CharacterCreationDetails::CharacterCreationDetails()
-: sex(CreatureSex::CREATURE_SEX_MALE)
+: sex(CreatureSex::CREATURE_SEX_NOT_SPECIFIED)
 {
 }
 
