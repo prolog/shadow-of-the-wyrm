@@ -2,7 +2,6 @@ Me:
 - Quests out of the pub in Carcassia
 - Completing all of Tela's quests should grant membership in the
   Carcassian Adventurering Partnership
-- Trap at the vault should be monsters
 - Graveyard
 - Around the thieves guild should be a hidden, diggable area.
 - After finishing map ID and exit changes, need to test:
