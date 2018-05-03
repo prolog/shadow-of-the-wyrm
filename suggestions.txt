@@ -1,4 +1,5 @@
 Me:
+- Build the last dungeon level NE of Carcassia, and link it to Tela.
 - Quests out of the pub in Carcassia
 - Completing all of Tela's quests should grant membership in the
   Carcassian Adventurering Partnership
@@ -13,8 +14,6 @@ Me:
   - " for dungeons/sewers
   - " for floating towers
   - " for shrines
-- Load a creature into 4,7.  Try teleporting into there.  In this case,
-  teleport should fail.
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
