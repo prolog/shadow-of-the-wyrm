@@ -135,7 +135,7 @@
 		</Area>
 		<Area id="central_lands">
 			<Row y="42" x="45">~~~~~~~~~~</Row>
-			<Row y="43" x="45">~m~~~FFf~~</Row>
+			<Row y="43" x="45">~m~~~FFd~~</Row>
 			<Row y="44" x="45">~f~Off~~~~</Row>
 			<Row y="45" x="45">~fffffff~~</Row>
 			<Row y="46" x="45">~~ffff~fr~</Row>
