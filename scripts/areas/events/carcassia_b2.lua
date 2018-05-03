@@ -5,7 +5,11 @@ require('map_events')
 local map_id = "carcassia_b2"
 
 local function setup_vault(map_id)
-  set_trap(10, 55, false, monster_trap, map_id)
+  local trap_squares = {{10,55},{11,54},{11,55},{11,56},{12,55}}
+
+  for i, val in ipairs(trap_squares) do
+    set_trap(val[1], val[2], false, "monster_trap", map_id)
+  end
 
   for row = 6,10 do
     for col = 52,58 do
