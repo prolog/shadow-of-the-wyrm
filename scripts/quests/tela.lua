@@ -1,6 +1,8 @@
 require('constants')
 require('quest')
 
+-- Tela's first quest is to kill a score of the first kill.
+
 -- Look up the first kill.
 --
 -- If this functionality is ever needed elsewhere, move this to fn.lua
@@ -9,11 +11,9 @@ local function get_first_kill(cr_id)
   return get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_FIRST_KILL_ID")
 end
 
--- Tela's first quest is to kill a score of the first creature the player 
--- killed.
---
--- If the first creature killed is a unique, obviously a score doesn't work.  
--- Tela will consider the quest done at that point.
+-- Check to see if the player has killed a score of the first kill.
+-- If this is a unique, that won't work, and so Tela will consider the 
+-- quest done at that point.
 local function tela_creatures_start_fn()
   local first_kill = get_first_kill(PLAYER_ID)
   set_creature_additional_property(PLAYER_ID, "first_kill_initial_count_tela", tostring(get_num_creature_killed_global(first_kill)))
@@ -76,6 +76,46 @@ local tela_creatures_quest = Quest:new("tela_creatures",
                                        tela_creatures_completion_condition_fn,
                                        tela_creatures_completion_fn)
 
+-- Quest to slay Serat, who has been murdering adventurers in the
+-- north-east dungeon.
+local function tela_serat_prereq_fn()
+  return is_quest_completed("tela_creatures")
+end
+
+local function tela_serat_start_fn()
+  add_message_with_pause("TELA_SERAT_QUEST_START_SID")
+  add_message_with_pause("TELA_SERAT_QUEST_START2_SID")
+  clear_and_add_message("TELA_SERAT_QUEST_START3_SID")  
+end
+
+local function tela_serat_completion_condition_fn()
+  return (get_num_creature_killed_global("serat") > 0)
+end
+
+local function tela_serat_completion_fn()
+  add_message_with_pause("TELA_SERAT_QUEST_COMPLETE_SID")
+  clear_and_add_message("TELA_SERAT_QUEST_COMPLETE2_SID")
+  local cur_amnt = RNG_range(700, 1000)
+
+  add_object_to_player_tile("coracle")
+  add_object_to_player_tile(CURRENCY_ID, cur_amnt)
+
+  return true
+end
+
+local tela_serat_quest = Quest:new("tela_serat",
+                                   "TELA_SERAT_QUEST_TITLE_SID",
+                                   "TELA_SHORT_DESCRIPTION_SID",
+                                   "TELA_SERAT_QUEST_DESCRIPTION_SID",
+                                   "TELA_SERAT_QUEST_COMPLETE_SID",
+                                   "TELA_SerAT_QUEST_REMINDER_SID",
+                                   tela_serat_prereq_fn,
+                                   tela_serat_start_fn,
+                                   tela_serat_completion_condition_fn,
+                                   tela_serat_completion_fn)
+
 if tela_creatures_quest:execute() == false then
-  clear_and_add_message("TELA_SPEECH_TEXT_SID")
+  if tela_serat_quest:execute() == false then    
+    clear_and_add_message("TELA_SPEECH_TEXT_SID")
+  end
 end
