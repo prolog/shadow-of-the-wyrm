@@ -17,6 +17,10 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   - The guild of thieves is said to be difficult to enter, difficult to
     leave.
 
+- The Isle of Carcassia was inhabited long before the Carcassian Empire
+  took hold, and it has a number of other features, including a dungeon
+  on the north-east penninsula.
+
 - The "no dig" flag can now be set at the tile level, allowing a general
   map that is diggable, but sections that are not.
 
@@ -67,7 +71,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster
-  Caro, Tela, drunk.
+  Caro, Tela, drunk, Serat.
 
 - New items: salted nuts, skewer of mystery meat.
 

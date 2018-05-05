@@ -1,10 +1,12 @@
 require('constants')
 require('areas')
 
--- Details for Kazmar's dungeon.
+-- Details for Serat's dungeon.
 local dungeon = Area:new(43,52)
+local serat_level = RNG_range(6,10)
 dungeon:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_CARCASSIA_DUNGEON")
-dungeon:set_additional_property("MAP_PROPERTIES_MAX_DEPTH", 10)
+dungeon:set_additional_property(serat_level .. "_CUSTOM_MAP_ID", "serat_lair")
+dungeon:set_additional_property("MAP_PROPERTIES_MAX_DEPTH", tostring(serat_level))
 
 -- Set up the seat of the empire.
 local carcassia = Area:new(47, 53)

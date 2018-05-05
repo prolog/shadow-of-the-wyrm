@@ -1740,5 +1740,15 @@ And if we disappear, they'll say we lacked %b
 a way to see the world for what it is, %b
 to slough off glamour's snake-skin, peel it back %b
 revealing just the truth, its rattled hiss, %b
-that curls and coils before it finally comes to rest.
+that curls and coils before it finally comes to rest."
+%p
+"I know a silver lake, whose waters roil %b
+on windless nights; whose shorelines lack for birds %b
+though bats tap out with wretched wings the toil %b
+and tale the dying try to give their words: %b
+sermons beneath the frozen midnight sun. %b
+The Caldera! Place of murky depths, of shade, %b
+that mouth into the underworld, where fumbling %b
+against the wisps of shadow, souls find days %b
+stretch out into infinity and drop away."
 %p
