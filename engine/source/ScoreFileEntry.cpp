@@ -126,7 +126,15 @@ string ScoreFileEntry::str(const int score_number) const
   string rc_abrv = get_race_class_abrv();
   boost::algorithm::trim(rc_abrv);
 
-  ss << score_number << ". " << get_score() << ". " << get_name() << " (" << get_username() << ") - " << StringTable::get(TextKeys::LEVEL_ABRV) << get_level() << " " << rc_abrv << " (" << TextMessages::get_sex_abrv(get_sex()) << ").";
+  CreatureSex sex = get_sex();
+  ss << score_number << ". " << get_score() << ". " << get_name() << " (" << get_username() << ") - " << StringTable::get(TextKeys::LEVEL_ABRV) << get_level() << " " << rc_abrv;
+
+  if (sex != CreatureSex::CREATURE_SEX_NOT_SPECIFIED)
+  {
+    ss << " (" << TextMessages::get_sex_abrv(sex) << ")";
+  }
+
+  ss << ".";
 
   for (const CreatureWin winner : all_wins)
   {
