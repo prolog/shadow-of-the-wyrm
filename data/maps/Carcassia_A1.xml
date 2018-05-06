@@ -67,6 +67,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>old_tomer</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>drunk</ID>
 				<Coord>
 					<Row>15</Row>

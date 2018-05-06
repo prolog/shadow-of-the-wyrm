@@ -1,6 +1,5 @@
 Me:
 - Golgoa
-- Old Tomas
 - Signs, sign for pub in Carcassia
 - Quests out of the pub in Carcassia
 - Completing all of Tela's quests should grant membership in the
