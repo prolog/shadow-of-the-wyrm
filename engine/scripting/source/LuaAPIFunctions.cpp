@@ -6288,8 +6288,13 @@ int add_membership(lua_State* ls)
 
     if (num_args == 4 && lua_isstring(ls, 4))
     {
-      vector<string> excl_v = String::create_string_vector_from_csv_string(lua_tostring(ls, 4));
-      excluded_memberships.insert(excl_v.begin(), excl_v.end());
+      string excl = lua_tostring(ls, 4);
+
+      if (!excl.empty())
+      {
+        vector<string> excl_v = String::create_string_vector_from_csv_string(excl);
+        excluded_memberships.insert(excl_v.begin(), excl_v.end());
+      }
     }
 
     CreaturePtr creature = get_creature(creature_id);
