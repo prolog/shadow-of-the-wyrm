@@ -26620,7 +26620,7 @@
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
-				<DangerLevel>16</DangerLevel>
+				<DangerLevel>12</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>16</NumDice>
@@ -26628,7 +26628,7 @@
 				</HP>
 				<Exp>98</Exp>
 			</CreatureGeneration>
-			<Level>16</Level>
+			<Level>12</Level>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>32</NumSides>
@@ -37709,7 +37709,7 @@
 				<UsageDescriptionSID>STEEL_INGOT_USAGE_SID</UsageDescriptionSID>
 				<Value>25</Value>
 				<Weight>
-					<Pounds>5</Pounds>
+					<Pounds>10</Pounds>
 				</Weight>
 				<Material>6</Material>
 				<DangerLevel>8</DangerLevel>
