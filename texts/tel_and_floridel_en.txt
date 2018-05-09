@@ -1752,3 +1752,13 @@ that mouth into the underworld, where fumbling %b
 against the wisps of shadow, souls find days %b
 stretch out into infinity and drop away."
 %p
+"Within the shadow lands, the spirits wait %b
+to hear the issued judgements.  Clarions %b
+ring out for lives well-lived, and send them straight %b
+to flowery fields, to laugh and carry on %b
+in endless hours beneath the shaded oaks, %b
+to drink and sleep by those they loved the best %b
+while other spirits wander, holding hope %b
+within their hands: who hears the trumpets next %b
+can drift away in peace, and finally come to rest."
+%p
