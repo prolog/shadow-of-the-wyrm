@@ -71,6 +71,10 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   option at the main menu will continue to get their sex specified and
   selected randomly.
 
+- Digging now considers properties of the tile when considering whether
+  or not the digging item is broken.  Items now only break when digging
+  through solid rock.
+
 - Iron and steel ingots now weigh the same.
    
 - Stanzas for "Tel and Floridel".
@@ -110,6 +114,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   - Combat skill checks were succeeding even when 0 damage was dealt
     (Troubler).
 
+  - Digging within the current tile wasn't checking for breakage.
+  
 Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.
 

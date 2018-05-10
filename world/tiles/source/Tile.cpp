@@ -495,6 +495,11 @@ TileType Tile::get_decomposition_tile_type() const
   return tile_type;
 }
 
+float Tile::get_breakage_multiplier() const
+{
+  return 0.0f;
+}
+
 vector<pair<pair<int, int>, string>> Tile::get_decomposition_item_ids() const
 {
   vector<pair<pair<int, int>, string>> no_items;

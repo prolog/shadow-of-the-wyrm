@@ -24,7 +24,7 @@ DigAction::DigAction()
 }
 
 // Dig on a particular tile.
-ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr tile) const
+ActionCostValue DigAction::dig_within(CreaturePtr creature, ItemPtr dig_item, MapPtr map, TilePtr tile) const
 {
   ActionCostValue acv = 0;
 
@@ -44,6 +44,8 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr 
       {
         if (tm->dig(creature, map, tile))
         {
+          handle_potential_item_breakage(creature, tile, dig_item);
+
           tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, Bool::to_string(true));
           acv = get_action_cost_value(creature);
 
@@ -99,7 +101,7 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
       add_successful_dig_message(creature);
     }
 
-    handle_potential_item_breakage(creature, dig_item);
+    handle_potential_item_breakage(creature, adjacent_tile, dig_item);
 
     // Digging through a tile is strenuous, and always trains Strength.
     // Assuming, of course, the character is using an item and this isn't part
@@ -211,13 +213,13 @@ void DigAction::add_cannot_dig_on_tile_super_type_message(CreaturePtr creature) 
   }
 }
 
-void DigAction::handle_potential_item_breakage(CreaturePtr creature, ItemPtr item) const
+void DigAction::handle_potential_item_breakage(CreaturePtr creature, TilePtr adjacent_tile, ItemPtr item) const
 {
   if (creature != nullptr && item != nullptr)
   {
     // Did the item break?
     ItemBreakageCalculator ibc;
-    if (RNG::percent_chance(ibc.calculate_pct_chance_digging_breakage(creature, item)))
+    if (RNG::percent_chance(ibc.calculate_pct_chance_digging_breakage(creature, adjacent_tile, item)))
     {
       creature->get_equipment().remove_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 

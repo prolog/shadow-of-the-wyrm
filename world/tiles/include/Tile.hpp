@@ -118,6 +118,7 @@ class Tile : public ISerializable
     // Gets the type before checking to see if the tile is submerged.
     virtual TileSuperType get_tile_base_super_type() const; 
     virtual TileType get_decomposition_tile_type() const; // When digging, what does the tile break down into?
+    virtual float get_breakage_multiplier() const; // The softer the tile, the lower the multiplier - affects item breakage when digging.
 
     // The returned vector is a list of potential items:
     // - The first element of the pair is an x-in-y chance the item is generated

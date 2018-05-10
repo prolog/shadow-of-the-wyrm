@@ -20,6 +20,11 @@ TileType RockTile::get_decomposition_tile_type() const
   return TileType::TILE_TYPE_ROCKY_EARTH;
 }
 
+float RockTile::get_breakage_multiplier() const
+{
+  return 1.0f;
+}
+
 vector<pair<pair<int, int>, string>> RockTile::get_decomposition_item_ids() const
 {
   vector<pair<pair<int, int>, string>> result = {{{1,100}, ItemIdKeys::ITEM_ID_MAGICI_SHARD},
