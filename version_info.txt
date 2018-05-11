@@ -80,7 +80,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster
-  Caro, Tela, drunk, Serat, Old Tomer.
+  Caro, Tela, drunk, Serat, Old Tomer, Ffleur.
 
 - New items: salted nuts, skewer of mystery meat.
 

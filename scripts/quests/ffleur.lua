@@ -1,0 +1,10 @@
+add_message_with_pause("FFLEUR_SPEECH_TEXT_SID")
+add_message_with_pause("FFLEUR_SPEECH_TEXT2_SID")
+add_message_with_pause("FFLEUR_SPEECH_TEXT3_SID")
+add_message_with_pause("FFLEUR_SPEECH_TEXT4_SID")
+add_message_with_pause("FFLEUR_SPEECH_TEXT5_SID")
+add_message_with_pause("FFLEUR_SPEECH_TEXT6_SID")
+add_message_with_pause("FFLEUR_SPEECH_TEXT7_SID")
+add_message_with_pause("FFLEUR_SPEECH_TEXT8_SID")
+clear_and_add_message("FFLEUR_SPEECH_TEXT9_SID")
+
