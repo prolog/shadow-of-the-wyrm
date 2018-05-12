@@ -1759,6 +1759,17 @@ to flowery fields, to laugh and carry on %b
 in endless hours beneath the shaded oaks, %b
 to drink and sleep by those they loved the best %b
 while other spirits wander, holding hope %b
-within their hands: who hears the trumpets next %b
+against their chest: who hears the trumpets next %b
 can drift away in peace, and finally come to rest."
 %p
+"The wretched grope and wander in the dark. %b
+They babble, stutter, speak in tongues: it's said %b
+they offer little secrets, lit like sparks %b
+within the murky caverns, where the dead %b
+reach up from pools whose surfaces show deaths %b
+over and over, tales from another age. %b
+But if shades will speak, then let us take a breath. %b
+Step back, and let the mummers have their day. %b
+I'll tell you how we'll win the war we've come to wage."
+%p
+
