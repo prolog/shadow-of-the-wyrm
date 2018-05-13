@@ -12,6 +12,9 @@ class GeneratorUtils
     // Generates a building: walls are TileType::TILE_TYPE_ROCK, floor is TileType::TILE_TYPE_DUNGEON.
     static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width);
     
+    // Generate a series of overlapping squares on a map to simulate a dug passage.
+    static std::vector<std::pair<Coordinate, Coordinate>> generate_rectangles(const MapPtr map, const int start_row, const int start_col, const int end_row, const int end_col, const int num_rectangles, const TileType rect_fill_type);
+
     // Generates a TileType::TILE_TYPE_DUNGEON tile at the given coordinates, and places a Door feature on top of it.
     static void generate_door(const MapPtr map, const int row, const int col);
     

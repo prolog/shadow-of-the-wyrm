@@ -1764,7 +1764,7 @@ can drift away in peace, and finally come to rest."
 %p
 "The wretched grope and wander in the dark. %b
 They babble, stutter, speak in tongues: it's said %b
-they offer little secrets, lit like sparks %b
+they offer up their secrets, lit like sparks %b
 within the murky caverns, where the dead %b
 reach up from pools whose surfaces show deaths %b
 over and over, tales from another age. %b

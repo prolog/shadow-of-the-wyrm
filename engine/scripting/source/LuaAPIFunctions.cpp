@@ -340,6 +340,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_membership", add_membership);
   lua_register(L, "has_membership", has_membership);
   lua_register(L, "is_membership_excluded", is_membership_excluded);
+  lua_register(L, "dig_rectangles", dig_rectangles);
 }
 
 // Lua API helper functions
@@ -6337,6 +6338,7 @@ int has_membership(lua_State* ls)
   lua_pushboolean(ls, mem);
   return 1;
 }
+
 int is_membership_excluded(lua_State* ls)
 {
   bool excl = false;
@@ -6365,5 +6367,51 @@ int is_membership_excluded(lua_State* ls)
   }
 
   lua_pushboolean(ls, excl);
+  return 1;
+}
+
+int dig_rectangles(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+  lua_newtable(ls);
+
+  if (num_args == 6 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int sy = lua_tointeger(ls, 2);
+    int sx = lua_tointeger(ls, 3);
+    int ey = lua_tointeger(ls, 4);
+    int ex = lua_tointeger(ls, 5);
+    int num_rect = lua_tointeger(ls, 6);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      vector<pair<Coordinate, Coordinate>> rectangles = GeneratorUtils::generate_rectangles(map, sy, sx, ey, ex, num_rect, TileType::TILE_TYPE_DUNGEON);
+      int cnt = 1;
+
+      for (const auto& rect : rectangles)
+      {
+        lua_newtable(ls);
+        lua_pushnumber(ls, rect.first.first);
+        lua_rawseti(ls, -2, 1);
+        lua_pushnumber(ls, rect.first.second);
+        lua_rawseti(ls, -2, 2);
+        lua_pushnumber(ls, rect.second.first);
+        lua_rawseti(ls, -2, 3);
+        lua_pushnumber(ls, rect.second.second);
+        lua_rawseti(ls, -2, 4);
+        lua_rawseti(ls, -2, cnt);
+
+        cnt++;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to dig_rectangles");
+  }
+
   return 1;
 }
