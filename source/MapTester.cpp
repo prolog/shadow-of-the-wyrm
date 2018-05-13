@@ -1008,7 +1008,8 @@ void load_custom_maps()
 {
   string map;
   int selection = 0;
-  std::map<int, std::pair<std::string, std::string>> selection_mappings = {{1, {"(Carcassia.*\\.xml)", "carcassia_a1"}}};
+  std::map<int, std::pair<std::string, std::string>> selection_mappings = {{1, {"(Carcassia.*\\.xml)", "carcassia_a1"}},
+                                                                           {2, {"(Carcassia_GuildOfThieves\\.xml)", "carcassia_guild_of_thieves"}}};
 
   while (selection != -1)
   {
@@ -1016,6 +1017,7 @@ void load_custom_maps()
 
     cout << "Load Custom Map" << endl << endl;
     cout << "1. Carcassia" << endl;
+    cout << "2. Carcassia Guild of Thieves" << endl;
     cout << "-1. Quit" << endl;
 
     cin >> selection;

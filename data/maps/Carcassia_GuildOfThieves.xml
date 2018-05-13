@@ -50,6 +50,15 @@
 				</Coord>
 			</Placement>
 		</Creatures>
+		<Items>
+			<Placement>
+				<ID>mapping_scroll</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>31</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits>
 		<Exit>
