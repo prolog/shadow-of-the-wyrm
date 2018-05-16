@@ -1772,4 +1772,13 @@ But if shades will speak, then let us take a breath. %b
 Step back, and let the mummers have their day. %b
 I'll tell you how we'll win the war we've come to wage."
 %p
-
+"I'll take my brothers down into that lake. %b
+With Rhone, we'll find the others, Carne and Phole, %b
+who yesterday went north.  I hope they'll take %b
+the long way around the old woods, where the cold %b
+weather erupts between the massive trees. %b
+The forests of the ancient world divide %b
+the present from the past, for those they seize %b
+will wander till they wither, and then lie %b
+between the bones of those who slumber deep inside."
+%p
