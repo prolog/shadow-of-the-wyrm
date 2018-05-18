@@ -19,6 +19,7 @@ long long ScoreCalculator::calculate_score(CreaturePtr creature)
     update_score_spells(creature, score);
     update_score_conducts(creature, score);
     update_score_quests_complete(creature, score);
+    update_score_memberships(creature, score);
   }
 
   return score;
@@ -209,6 +210,14 @@ void ScoreCalculator::update_score_quests_complete(CreaturePtr creature, long lo
     int level = creature->get_level().get_current();
 
     score += (completed_quests.size() * 100 * level);
+  }
+}
+
+void ScoreCalculator::update_score_memberships(CreaturePtr creature, long long& score)
+{
+  if (creature != nullptr)
+  {
+    score += (creature->get_memberships().get_memberships().size() * 250 * creature->get_level().get_current());
   }
 }
 

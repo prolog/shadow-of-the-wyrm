@@ -1,6 +1,5 @@
 Me:
 - Traps in the tombs.
-- Memberships: points.
 - Golgoa
 - Signs, sign for pub in Carcassia
 - Quests out of the pub in Carcassia
