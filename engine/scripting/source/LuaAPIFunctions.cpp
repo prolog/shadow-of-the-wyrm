@@ -264,6 +264,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_deities", get_num_deities);
   lua_register(L, "clear_deities", clear_deities);
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
+  lua_register(L, "summon_items_around_creature", summon_items_around_creature);
   lua_register(L, "creature_is_class", creature_is_class);
   lua_register(L, "get_item_count", get_item_count);
   lua_register(L, "count_currency", count_currency);
@@ -3820,6 +3821,50 @@ int summon_monsters_around_creature(lua_State* ls)
   }
 
   return 0;
+}
+
+int summon_items_around_creature(lua_State* ls)
+{
+  int num_items = 0;
+
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    vector<string> item_ids = String::create_string_vector_from_csv_string(lua_tostring(ls, 2));
+    int pct_chance_gen_item = lua_tointeger(ls, 3);
+
+    MapPtr current_map = Game::instance().get_current_map();
+    Coordinate creature_coord = current_map->get_location(creature_id);
+    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(current_map->size(), creature_coord.first, creature_coord.second);
+
+    shuffle(adjacent_coords.begin(), adjacent_coords.end(), RNG::get_engine());
+
+    if (!item_ids.empty())
+    {
+      for (const Coordinate& c : adjacent_coords)
+      {
+        if (RNG::percent_chance(pct_chance_gen_item))
+        {
+          string item_id = item_ids.at(RNG::range(0, item_ids.size()-1));
+          ItemPtr item = ItemManager::create_item(item_id);
+          TilePtr tile = current_map->at(c);
+
+          if (tile != nullptr && item != nullptr)
+          {
+            tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            num_items++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to summon_items_around_creature");
+  }
+
+  lua_pushinteger(ls, num_items);
+  return 1;
 }
 
 // Check to see whether the given creature on the current map is a specified

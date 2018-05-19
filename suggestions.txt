@@ -1,5 +1,7 @@
 Me:
+- Quests in the tower
 - Traps in the tombs.
+- Be able to join the school of wizardry.
 - Golgoa
 - Signs, sign for pub in Carcassia
 - Quests out of the pub in Carcassia
@@ -25,6 +27,7 @@ Me:
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
+- Summonings
 - Repel (cantrip)
 - Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so

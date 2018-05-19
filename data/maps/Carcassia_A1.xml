@@ -123,10 +123,45 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>carcassian_guard</ID>
+				<ID>gardening_spellstudent</ID>
 				<Coord>
-					<Row>12</Row>
-					<Col>1</Col>
+					<Row>4</Row>
+					<Col>39</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gardening_spellstudent</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>49</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>summonings_student</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>36</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>runic_student</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>50</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>enchantments_student</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>36</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>evocations_student</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>50</Col>
 				</Coord>
 			</Placement>
 		</Creatures>

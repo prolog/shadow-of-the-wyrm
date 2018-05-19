@@ -129,6 +129,7 @@ int get_deity_summons(lua_State* ls);
 int get_num_deities(lua_State* ls);
 int clear_deities(lua_State* ls);
 int summon_monsters_around_creature(lua_State* ls);
+int summon_items_around_creature(lua_State* ls);
 int creature_is_class(lua_State* ls);
 int get_item_count(lua_State* ls);
 int count_currency(lua_State* ls);

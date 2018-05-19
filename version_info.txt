@@ -22,6 +22,10 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   - The Floundering Catfish is a source of rumour and gossip, as well as
     a few quests.
 
+  - In the centre of the sector is the great Tower of High Sorcery, where
+    those with magical aptitude from across the world come to study the
+    arcane school of wizardry.
+
 - The Isle of Carcassia was inhabited long before the Carcassian Empire
   took hold, and it has a number of other features, including a dungeon
   on the north-east penninsula.
@@ -82,7 +86,9 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster
-  Caro, Tela, drunk, Serat, Old Tomer, Ffleur.
+  Caro, Tela, drunk, Serat, Old Tomer, Ffleur, gardening spellstudent,
+  evocations student, summonings student, enchantments student, runic
+  student.
 
 - New items: salted nuts, skewer of mystery meat.
 
