@@ -8,6 +8,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   Carcassia.  Carcassia is home to a great fortress, and four city
   sectors:
 
+  1. The public sector.
+
   - The public sector contains a sealed room with no obvious way in, the 
     tower of high sorcery, the guild of thieves, as well as a number of 
     potential public areas such as plazas, parks, and shops.  The public
@@ -25,6 +27,10 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   - In the centre of the sector is the great Tower of High Sorcery, where
     those with magical aptitude from across the world come to study the
     arcane school of wizardry.
+
+  - The tower extends high into the air.  It's said that a number of great
+    creatures make their roost platforms anchored in the air by old
+    magics.
 
 - The Isle of Carcassia was inhabited long before the Carcassian Empire
   took hold, and it has a number of other features, including a dungeon
@@ -88,7 +94,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster
   Caro, Tela, drunk, Serat, Old Tomer, Ffleur, gardening spellstudent,
   evocations student, summonings student, enchantments student, runic
-  student.
+  student, Golgoa, Lorelei, Okhoa, Scheldt.
 
 - New items: salted nuts, skewer of mystery meat.
 
