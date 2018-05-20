@@ -5,7 +5,7 @@ require('quest')
 local function join_guild_if_possible(pclass, guild_id)
   local can_join = false
   local desc_sid = "CARCASSIA_GUILD_THIEVES_MEMBERSHIP_SID"
-  local excluded_guilds = "tower_of_wizardry"
+  local excluded_guilds = "high_tower"
 
   if pclass == CLASS_ID_THIEF then
     add_message_with_pause("GUILDMASTER_CARO_THIEF_SID")

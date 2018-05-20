@@ -78,7 +78,36 @@
 			<MapID>carcassia_a1</MapID>
 		</Exit>
 	</Exits>
-	<Features/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>12</Row>
+				<Col>35</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>13</Row>
+				<Col>36</Col>
+			</Coord>
+			<WheelAndLoom/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
+				<Col>35</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
+				<Col>51</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+	</Features>
 	<Properties>
 		<Property>
 			<Name>MAP_PROPERTIES_CANNOT_DIG</Name>

@@ -38,13 +38,17 @@ string SpellsDumper::get_spells() const
 
     if (sk.get_spell_knowledge(spell_id).get_castings() > 0)
     {
-      Spell spell = spells.find(spell_id)->second;
-      IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
-      string spell_desc = describer->describe();
+      auto s_it = spells.find(spell_id);
 
-      ss << spell_desc << endl;
+      if (s_it != spells.end())
+      {
+        Spell spell = spells.find(spell_id)->second;
+        IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
+        string spell_desc = describer->describe();
 
-      spell_count++;
+        ss << spell_desc << endl;
+        spell_count++;
+      }
     }
   }
 

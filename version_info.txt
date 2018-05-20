@@ -30,7 +30,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
   - The tower extends high into the air.  It's said that a number of great
     creatures make their roost platforms anchored in the air by old
-    magics.
+    magics.  The students study at the base of the tower, while the 
+    masters make their homes above.
 
 - The Isle of Carcassia was inhabited long before the Carcassian Empire
   took hold, and it has a number of other features, including a dungeon
@@ -96,7 +97,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   evocations student, summonings student, enchantments student, runic
   student, Golgoa, Lorelei, Okhoa, Scheldt.
 
-- New items: salted nuts, skewer of mystery meat.
+- New items: salted nuts, skewer of mystery meat, wizard staff.
 
 - New artifacts: skeleton key.
 
@@ -129,6 +130,9 @@ Shadow of the Wyrm v0.7.4 "Dalza"
     (Troubler).
 
   - Digging within the current tile wasn't checking for breakage.
+
+  - The spell listing code would crash when given a spell ID that didn't
+    have a corresponding entry in the game configuration.
   
 Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.

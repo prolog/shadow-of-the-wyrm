@@ -33269,6 +33269,36 @@
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="wizard_staff">
+				<DescriptionSID>WIZARD_STAFF_SID</DescriptionSID>
+				<UsageDescriptionSID>WIZARD_STAFF_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Arcane>0.20</Arcane>
+				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>9</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="_branch">
 				<DescriptionSID>BRANCH_SID</DescriptionSID>
 				<UsageDescriptionSID>BRANCH_USAGE_SID</UsageDescriptionSID>
