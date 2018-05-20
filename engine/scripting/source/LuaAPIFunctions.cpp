@@ -189,6 +189,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
   lua_register(L, "RNG_dice", RNG_dice);
   lua_register(L, "add_spell_castings", add_spell_castings);
+  lua_register(L, "count_spells_known", count_spells_known);
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "get_experience_value", get_experience_value);
   lua_register(L, "add_creature_to_map", add_creature_to_map);
@@ -1598,6 +1599,28 @@ int add_spell_castings(lua_State* ls)
   }
 
   return 0;
+}
+
+int count_spells_known(lua_State* ls)
+{
+  int spells_known = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      spells_known = creature->get_spell_knowledge().count_spells_known();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to count_spells_known");
+  }
+
+  lua_pushinteger(ls, spells_known);
+  return 1;
 }
 
 // Add a certain number of experience points to a particular creature.

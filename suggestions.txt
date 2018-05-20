@@ -1,6 +1,7 @@
 Me:
 - More inhabitants in the base of the tower
 - Be able to join the tower
+- Witch in old town
 - Quests in the tower (accessible only to guild members)
 - Platforms at the peak
 - Traps in the tombs.
