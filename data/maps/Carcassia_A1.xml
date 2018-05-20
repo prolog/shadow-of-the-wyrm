@@ -26,7 +26,7 @@
 	,,#,,,,,,,,,r,,,,,,,,,,,,,,,,,,,r,#.##...........##.#,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,#,,,,,,,,,r,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,r,,,,,,,,,r,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
-	,,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr...................rrrrrrrrrrrrrrrr,,,,,,,,,,,
+	,,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr.........&lt;.........rrrrrrrrrrrrrrrr,,,,,,,,,,,
 	,,r,,,,,r,,,,,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,r,,,,,,,,,,,
 	,,#,,,,,r,,,,,,,,,,,,,,,,,,,,,,,r,#.................#,r,,##########,rrrrrrrrrrrr
 	,,#,####.####,,,,,,,,,,,,,,,,,,,r,#.##...........##.#,r,,#........#,,,,,,,,,,,,,
@@ -199,6 +199,14 @@
 			<Direction>11</Direction>
 			<MapID>carcassia_guild_of_thieves</MapID>
 		</Exit>
+		<Exit>
+			<Coord>
+				<Row>10</Row>
+				<Col>43</Col>
+			</Coord>
+			<Direction>10</Direction>
+			<MapID>carcassia_tower_top</MapID>
+		</Exit>
 	</Exits>
 	<Features>
 		<FeaturePlacement>
@@ -233,6 +241,34 @@
 					<EntranceState>2</EntranceState>
 				</Entrance>
 			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>8</Row>
+				<Col>40</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>8</Row>
+				<Col>46</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>12</Row>
+				<Col>40</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>12</Row>
+				<Col>46</Col>
+			</Coord>
+			<Fountain/>
 		</FeaturePlacement>
 	</Features>
 </CustomMap>

@@ -1,8 +1,11 @@
 Me:
-- Quests in the tower
+- More inhabitants in the base of the tower
+- Be able to join the tower
+- Quests in the tower (accessible only to guild members)
+- Platforms at the peak
 - Traps in the tombs.
 - Be able to join the school of wizardry.
-- Golgoa
+- Lorelei, Okhoa, Golgoa, Sheldt
 - Signs, sign for pub in Carcassia
 - Quests out of the pub in Carcassia
 - Graveyard
