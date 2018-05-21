@@ -12369,6 +12369,7 @@
 			<DescriptionSID>GRIFFIN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GRIFFIN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GRIFFIN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -24750,6 +24751,62 @@
 			<Evade>3</Evade>
 			<Soak>2</Soak>
 		</Creature>
+		<Creature id="shimmering_cloud">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>SHIMMERING_CLOUD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SHIMMERING_CLOUD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SHIMMERING_CLOUD_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>5</NumDice>
+				<NumSides>6</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Evade>10</Evade>
+			<Spells>
+				<Spell>
+					<SpellID>a_01_wreath_of_fire</SpellID>
+					<Castings>3</Castings>
+					<Bonus>3</Bonus>
+				</Spell>
+			</Spells>
+		</Creature>
 		<Creature id="gas_cloud">
 			<RaceID>_spirit</RaceID>
 			<ShortDescriptionSID>GAS_CLOUD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -36039,6 +36096,17 @@
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>eka_door</LockID>
+			</Tool>
+			<Tool id="okhoa_key">
+				<DescriptionSID>OKHOA_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>OKHOA_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>tower_library</LockID>
 			</Tool>
 			<Tool id="_crypt_key">
 				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>

@@ -5,7 +5,7 @@ require('quest')
 local function join_guild_if_possible(pclass, guild_id)
   local can_join = false
   local desc_sid = "CARCASSIA_GUILD_THIEVES_MEMBERSHIP_SID"
-  local excluded_guilds = "high_tower"
+  local excluded_guilds = HIGH_TOWER_GUILD_ID
 
   if pclass == CLASS_ID_THIEF then
     add_message_with_pause("GUILDMASTER_CARO_THIEF_SID")
@@ -122,9 +122,7 @@ disarm_traps_quest = Quest:new("disarm_traps_quest",
                                disarm_traps_completion_condition_fn,
                                disarm_traps_completion_fn)
 
--- JCD TODO: Checks once the creature has actually joined the guild
--- (for quests, etc).
-local guild_id = "carassia_guild_thieves"
+local guild_id = THIEVES_GUILD_ID
 local player_class = get_class_id(PLAYER_ID)
 
 if has_membership(PLAYER_ID, guild_id) then
