@@ -1,7 +1,7 @@
 require('constants')
 
-local guild_id = "high_tower"
-local excluded = "carcassia_guild_thieves"
+local guild_id = HIGH_TOWER_GUILD_ID
+local excluded = THIEVES_GUILD_ID
 local desc_sid = "CARCASSIA_HIGH_TOWER_MEMBERSHIP_SID"
 local thieves_member = has_membership(PLAYER_ID, excluded)
 
@@ -9,7 +9,7 @@ if thieves_member == true then
   clear_and_add_message("SCHELDT_THIEVES_SPEECH_TEXT_SID")
 else
   if count_spells_known(PLAYER_ID) > 0 then
-    if has_membership(PLAYER_ID, "high_tower") == true then
+    if has_membership(PLAYER_ID, guild_id) == true then
       clear_and_add_message("SCHELDT_SPEECH_TEXT_SID")
     else
       if add_confirmation_message("SCHELDT_JOIN_PROMPT_SID") then

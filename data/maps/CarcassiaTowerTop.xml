@@ -1,5 +1,10 @@
 <CustomMap id="carcassia_tower_top" xmlns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:1.0.0 ./CustomMap.xsd">
 	<NameSID>MAP_NAME_CARCASSIA_TOWER_TOP</NameSID>
+	<EventScripts>
+		<CreateScript>
+			<Script>areas/events/carcassia_tower_top.lua</Script>
+		</CreateScript>
+	</EventScripts>
 	<Dimensions>
 		<Rows>20</Rows>
 		<Columns>80</Columns>
@@ -13,22 +18,22 @@
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####..#######..####AAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAA###AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAA#..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAA#..AAA####..#######..####AAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####..#######..####AAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAA#..AAAAAAA..AAAAAAA####..#######..####AAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAA#..AAAAAAA..AAAAAAA#.................#AAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAA###AAAAAAAAAAAAAAAA#........&gt;........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#.................#AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........&gt;........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#.................#AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####..#############AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAA####..########..###AAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAA#........#........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#...#..#.#AAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####..########.####AAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAA#....AAAAAAAAAAAAA....#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAA#####AAAAAAAAAAAAA#####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	</Tiles>
 	<PlayerStart>
@@ -54,8 +59,8 @@
 			<Placement>
 				<ID>okhoa</ID>
 				<Coord>
-					<Row>15</Row>
-					<Col>48</Col>
+					<Row>14</Row>
+					<Col>49</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -66,7 +71,43 @@
 				</Coord>
 			</Placement>
 		</Creatures>
-		<Items/>
+		<Items>
+			<Placement>
+				<ID>flying_potion</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>39</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>flying_potion</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>29</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>flying_potion</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>17</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>flying_potion</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>30</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>flying_potion</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>45</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits>
 		<Exit>
@@ -106,6 +147,58 @@
 				<Col>51</Col>
 			</Coord>
 			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>12</Row>
+				<Col>48</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>tower_library</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>12</Row>
+				<Col>49</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>tower_library</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>13</Row>
+				<Col>47</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>tower_library</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>13</Row>
+				<Col>50</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>tower_library</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
 		</FeaturePlacement>
 	</Features>
 	<Properties>
