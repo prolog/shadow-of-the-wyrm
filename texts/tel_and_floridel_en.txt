@@ -1782,3 +1782,13 @@ the present from the past, for those they seize %b
 will wander till they wither, and then lie %b
 between the bones of those who slumber deep inside."
 %p
+"The four of us will swim below the black %b
+waters, that pressure on our lungs not air %b
+but fingers of the dead.  If we come back %b
+from dust and shadow, each one of us will carry %b
+a little wisdom from the underworld. %b
+Until then, make no conflict.  Have the raids %b
+return.  Let's have a brittle peace observed. %b
+We'll let the fair folk think they've won, or spayed %b
+our aspirations - soon the tricksters will be played."
+%p
