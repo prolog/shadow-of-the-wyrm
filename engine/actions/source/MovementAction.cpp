@@ -279,19 +279,19 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
           // Update the map info
           MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
           movement_acv = get_action_cost_value(creature);
-        }
 
-        if (creatures_new_tile->has_feature())
-        {
-          FeaturePtr feature = creatures_new_tile->get_feature();
-
-          // Some features, such as traps, are applied when moving into a tile.
-          if (feature->apply_on_movement(creature))
+          if (creatures_new_tile->has_feature())
           {
-            // Apply the feature, now that the creature has moved into
-            // the tile.
-            FeatureAction fa;
-            fa.handle(creatures_new_tile, feature, creature, true);
+            FeaturePtr feature = creatures_new_tile->get_feature();
+
+            // Some features, such as traps, are applied when moving into a tile.
+            if (feature->apply_on_movement(creature))
+            {
+              // Apply the feature, now that the creature has moved into
+              // the tile.
+              FeatureAction fa;
+              fa.handle(creatures_new_tile, feature, creature, true);
+            }
           }
         }
       }
