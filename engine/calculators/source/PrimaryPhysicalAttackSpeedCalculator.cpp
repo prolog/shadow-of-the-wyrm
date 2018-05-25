@@ -1,4 +1,4 @@
-#include "NullSpeedCalculator.hpp"
+#include "NullAttackSpeedCalculator.hpp"
 #include "PrimaryPhysicalAttackSpeedCalculator.hpp"
 #include "Weapon.hpp"
 
@@ -6,7 +6,7 @@ using std::dynamic_pointer_cast;
 
 ActionCostValue PrimaryPhysicalAttackSpeedCalculator::calculate_weapon_speed(CreaturePtr creature)
 {
-  NullSpeedCalculator nsc;
+  NullAttackSpeedCalculator nsc;
   ActionCostValue speed = nsc.calculate(creature);
   
   if (creature)
@@ -15,7 +15,7 @@ ActionCostValue PrimaryPhysicalAttackSpeedCalculator::calculate_weapon_speed(Cre
 
     if (weapon)
     {
-      speed = weapon->get_speed();
+      speed = calculate_speed_for_weapon(creature, weapon);
     }
   }
 
@@ -34,3 +34,6 @@ bool PrimaryPhysicalAttackSpeedCalculator::has_weapon_equipped(CreaturePtr creat
   return false;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/PrimaryPhysicalAttackSpeedCalculator_test.cpp"
+#endif

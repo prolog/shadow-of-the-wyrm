@@ -1314,12 +1314,6 @@
     <ClInclude Include="engine\calculators\include\HPRegenerationCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
@@ -1339,9 +1333,6 @@
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\MountainClimbingCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\calculators\include\NullSpeedCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\PhysicalDamageCalculator.hpp">
@@ -1366,9 +1357,6 @@
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\SoakCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\calculators\include\SpeedCalculatorFactory.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp">
@@ -4155,6 +4143,18 @@
     <ClInclude Include="engine\conversion\include\MembershipsDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\PhysicalAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\AttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\AttackSpeedCalculatorFactory.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\NullAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4613,9 +4613,6 @@
     <ClCompile Include="engine\calculators\source\HPRegenerationCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\IPhysicalAttackSpeedCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
@@ -4635,9 +4632,6 @@
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\MountainClimbingCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\NullSpeedCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\PhysicalDamageCalculator.cpp">
@@ -4662,9 +4656,6 @@
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\SoakCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\SpeedCalculatorFactory.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp">
@@ -8263,6 +8254,24 @@
     </ClCompile>
     <ClCompile Include="engine\conversion\source\MembershipsDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\PhysicalAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\PrimaryPhysicalAttackSpeedCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\AttackSpeedCalculatorFactory.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\NullAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\AttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\RangedAttackSpeedCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,23 +1,23 @@
+#include "AttackSpeedCalculatorFactory.hpp"
 #include "MagicalAttackSpeedCalculator.hpp"
-#include "NullSpeedCalculator.hpp"
+#include "NullAttackSpeedCalculator.hpp"
 #include "PrimaryPhysicalAttackSpeedCalculator.hpp"
 #include "RangedAttackSpeedCalculator.hpp"
 #include "SecondaryPhysicalAttackSpeedCalculator.hpp"
-#include "SpeedCalculatorFactory.hpp"
 #include "TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp"
 
-SpeedCalculatorFactory::SpeedCalculatorFactory()
+AttackSpeedCalculatorFactory::AttackSpeedCalculatorFactory()
 {
 }
 
-SpeedCalculatorFactory::~SpeedCalculatorFactory()
+AttackSpeedCalculatorFactory::~AttackSpeedCalculatorFactory()
 {
 }
 
 // Create a speed calculator based on the attack type
-ISpeedCalculatorPtr SpeedCalculatorFactory::create_speed_calculator(const AttackType attack_type)
+AttackSpeedCalculatorPtr AttackSpeedCalculatorFactory::create_speed_calculator(const AttackType attack_type)
 {
-  ISpeedCalculatorPtr speed_calculator;
+  AttackSpeedCalculatorPtr speed_calculator;
 
   switch(attack_type)
   {
@@ -34,8 +34,10 @@ ISpeedCalculatorPtr SpeedCalculatorFactory::create_speed_calculator(const Attack
       speed_calculator = std::make_shared<RangedAttackSpeedCalculator>();
       break;
     case AttackType::ATTACK_TYPE_MAGICAL:
-    default:
       speed_calculator = std::make_shared<MagicalAttackSpeedCalculator>();
+      break;
+    default:
+      speed_calculator = std::make_shared<NullAttackSpeedCalculator>();
       break;
   }
 

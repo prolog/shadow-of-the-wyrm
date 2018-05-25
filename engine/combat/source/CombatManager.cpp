@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "AnimationTranslator.hpp"
 #include "AttackScript.hpp"
+#include "AttackSpeedCalculatorFactory.hpp"
 #include "BallShapeProcessor.hpp"
 #include "ClassManager.hpp"
 #include "CombatConstants.hpp"
@@ -40,7 +41,6 @@
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StealthCalculator.hpp"
-#include "SpeedCalculatorFactory.hpp"
 #include "StatisticsMarker.hpp"
 #include "TertiaryUnarmedCalculator.hpp"
 #include "TextKeys.hpp"
@@ -127,7 +127,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(attacking_creature, attack_type);
   CombatTargetNumberCalculatorPtr ctn_calculator = CombatTargetNumberCalculatorFactory::create_target_number_calculator(attack_type);
-  ISpeedCalculatorPtr speed_calculator = SpeedCalculatorFactory::create_speed_calculator(attack_type);
+  AttackSpeedCalculatorPtr speed_calculator = AttackSpeedCalculatorFactory::create_speed_calculator(attack_type);
 
   // Once an attack is made, the creature becomes hostile, and if it was
   // previously not hostile

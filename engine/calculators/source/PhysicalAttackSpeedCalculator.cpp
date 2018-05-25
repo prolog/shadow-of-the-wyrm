@@ -1,9 +1,9 @@
-#include "IPhysicalAttackSpeedCalculator.hpp"
-#include "NullSpeedCalculator.hpp"
+#include "PhysicalAttackSpeedCalculator.hpp"
+#include "NullAttackSpeedCalculator.hpp"
 
-ActionCostValue IPhysicalAttackSpeedCalculator::calculate(CreaturePtr creature)
+ActionCostValue PhysicalAttackSpeedCalculator::calculate(CreaturePtr creature)
 {
-  NullSpeedCalculator nsc;
+  NullAttackSpeedCalculator nsc;
   ActionCostValue action_cost_value = nsc.calculate(creature);
 
   if (creature)
@@ -21,9 +21,9 @@ ActionCostValue IPhysicalAttackSpeedCalculator::calculate(CreaturePtr creature)
   return action_cost_value;
 }
 
-ActionCostValue IPhysicalAttackSpeedCalculator::calculate_unarmed_attack_speed(CreaturePtr creature)
+ActionCostValue PhysicalAttackSpeedCalculator::calculate_unarmed_attack_speed(CreaturePtr creature)
 {
-  NullSpeedCalculator nsc;
+  NullAttackSpeedCalculator nsc;
   return nsc.calculate(creature);
 }
 

@@ -369,6 +369,8 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\AmmunitionCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\APRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\AttackSpeedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\AttackSpeedCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\BaseDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BlindedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BloodiedCalculator.hpp" />
@@ -412,17 +414,17 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\IHitTypeFactory.hpp" />
     <ClInclude Include="engine\calculators\include\IncorporealCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IntimidationCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ISkillMarker.hpp" />
-    <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemBreakageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemDropRateCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemEnchantmentCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MineCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\NullAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PacificationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhaseOfMoonCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\PhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\RageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ReadCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
@@ -446,7 +448,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\MightyHitTypeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MountainClimbingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MutenessCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\NullSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ParalysisCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhysicalDamageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PoisonCalculator.hpp" />
@@ -461,7 +462,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClInclude Include="engine\calculators\include\SkillsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SlownessCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SoakCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\SpeedCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\SpellbookCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SpellboundCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\StealthCalculator.hpp" />
@@ -1411,6 +1411,8 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\AmmunitionCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\AttackSpeedCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\AttackSpeedCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\BaseDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\BuySellCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CalcUtils.cpp" />
@@ -1430,8 +1432,10 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\ItemDropRateCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MineCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\NullAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PacificationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\PhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\RageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ReadCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ScribingCalculator.cpp" />
@@ -1568,6 +1572,20 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\PrimaryPhysicalAttackSpeedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\RangedAttackSpeedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ScribingCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -2081,7 +2099,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\HPRegenerationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\IHitTypeFactory.cpp" />
     <ClCompile Include="engine\calculators\source\IncorporealCalculator.cpp" />
-    <ClCompile Include="engine\calculators\source\IPhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemPietyCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MagicalAttackSpeedCalculator.cpp" />
@@ -2095,7 +2112,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\ModifyStatisticsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MountainClimbingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MutenessCalculator.cpp" />
-    <ClCompile Include="engine\calculators\source\NullSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ParalysisCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhysicalDamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PoisonCalculator.cpp" />
@@ -2113,7 +2129,6 @@ xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
     <ClCompile Include="engine\calculators\source\CorpseCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SlownessCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SoakCalculator.cpp" />
-    <ClCompile Include="engine\calculators\source\SpeedCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\SpellbookCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SpellboundCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\StatisticsCalculators.cpp" />

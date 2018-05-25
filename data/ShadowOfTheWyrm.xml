@@ -33820,6 +33820,7 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
+				<HandsRequired>2</HandsRequired>
 				<Material>7</Material>
 				<TextDetails>
 					<Symbol>*</Symbol>
@@ -33830,7 +33831,7 @@
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
 				<Difficulty>52</Difficulty>
-				<Speed>10</Speed>
+				<Speed>15</Speed>
 				<Damage>
 					<NumDice>8</NumDice>
 					<NumSides>6</NumSides>

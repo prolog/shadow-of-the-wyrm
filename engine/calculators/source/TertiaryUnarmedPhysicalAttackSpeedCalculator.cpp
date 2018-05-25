@@ -1,9 +1,9 @@
-#include "NullSpeedCalculator.hpp"
+#include "NullAttackSpeedCalculator.hpp"
 #include "TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp"
 
 ActionCostValue TertiaryUnarmedPhysicalAttackSpeedCalculator::calculate_weapon_speed(CreaturePtr creature)
 {
-  NullSpeedCalculator nsc;
+  NullAttackSpeedCalculator nsc;
 
   return nsc.calculate(creature);
 }

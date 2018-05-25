@@ -1,7 +1,7 @@
 #pragma once
-#include "IPhysicalAttackSpeedCalculator.hpp"
+#include "PhysicalAttackSpeedCalculator.hpp"
 
-class PrimaryPhysicalAttackSpeedCalculator : public IPhysicalAttackSpeedCalculator
+class PrimaryPhysicalAttackSpeedCalculator : public PhysicalAttackSpeedCalculator
 {
   public:
     ActionCostValue calculate_weapon_speed(CreaturePtr creature) override;

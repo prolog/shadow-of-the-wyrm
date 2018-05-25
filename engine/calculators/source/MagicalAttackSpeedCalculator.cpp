@@ -1,6 +1,5 @@
 #include "Game.hpp"
 #include "MagicalAttackSpeedCalculator.hpp"
-#include "NullSpeedCalculator.hpp"
 
 using namespace std;
 
