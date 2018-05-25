@@ -1,4 +1,4 @@
-#include "NullSpeedCalculator.hpp"
+#include "NullAttackSpeedCalculator.hpp"
 #include "RangedAttackSpeedCalculator.hpp"
 #include "Weapon.hpp"
 
@@ -6,7 +6,7 @@ using std::dynamic_pointer_cast;
 
 ActionCostValue RangedAttackSpeedCalculator::calculate(CreaturePtr creature)
 {
-  NullSpeedCalculator nsc;
+  NullAttackSpeedCalculator nsc;
   ActionCostValue action_cost_value = nsc.calculate(creature);
 
   if (creature)
@@ -20,7 +20,7 @@ ActionCostValue RangedAttackSpeedCalculator::calculate(CreaturePtr creature)
     // null speed calculator's value is used.
     if (weapon)
     {
-      action_cost_value = weapon->get_speed();
+      action_cost_value = calculate_speed_for_weapon(creature, weapon, true);
     }
     else
     {
@@ -28,7 +28,7 @@ ActionCostValue RangedAttackSpeedCalculator::calculate(CreaturePtr creature)
 
       if (ammunition)
       {
-        action_cost_value = ammunition->get_speed();
+        action_cost_value = calculate_speed_for_weapon(creature, ammunition, true);
       }
     }
   }
@@ -36,3 +36,6 @@ ActionCostValue RangedAttackSpeedCalculator::calculate(CreaturePtr creature)
   return action_cost_value;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/RangedAttackSpeedCalculator_test.cpp"
+#endif

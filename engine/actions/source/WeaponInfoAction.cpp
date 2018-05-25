@@ -1,3 +1,4 @@
+#include "AttackSpeedCalculatorFactory.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "EquipmentTextKeys.hpp"
@@ -147,7 +148,8 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, WeaponPtr w
 
       if (weapon)
       {
-        speed = weapon->get_speed();
+        AttackSpeedCalculatorPtr sc = AttackSpeedCalculatorFactory::create_speed_calculator(attack_type);
+        speed = sc->calculate(creature);
       }
 
       melee_info = EquipmentTextKeys::get_melee_weapon_synopsis(attack_type, weapon, base_difficulty, total_difficulty, speed, weapon_damage);

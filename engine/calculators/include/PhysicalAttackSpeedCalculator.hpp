@@ -1,11 +1,11 @@
 #pragma once
-#include "ISpeedCalculator.hpp"
+#include "AttackSpeedCalculator.hpp"
 
 // This is an abstract class.  It is the parent class for the speed
 // calculators for primary and secondary melee attacks, and simply
 // defines a common function that can be used to get the attack speed
 // for unarmed combat.
-class IPhysicalAttackSpeedCalculator : public ISpeedCalculator
+class PhysicalAttackSpeedCalculator : public AttackSpeedCalculator
 {
   public:
     ActionCostValue calculate(CreaturePtr creature) override;

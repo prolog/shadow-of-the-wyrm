@@ -1,7 +1,7 @@
 #pragma once
-#include "ISpeedCalculator.hpp"
+#include "AttackSpeedCalculator.hpp"
 
-class MagicalAttackSpeedCalculator : public ISpeedCalculator
+class MagicalAttackSpeedCalculator : public AttackSpeedCalculator
 {
   public:
     ActionCostValue calculate(CreaturePtr creature) override;

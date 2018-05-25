@@ -1,4 +1,5 @@
 Me:
+- Exotic speed penalty on ranged
 - More inhabitants in the base of the tower
 - Be able to join the tower
 - Witch in old town
@@ -200,5 +201,3 @@ ssteam
 aotdev
 - Status/stats lines wrap weirdly with larger terminal sizes
 
-Troubler
-- Issue with wielding missile weapons as melee: huge rock, arrow, etc
