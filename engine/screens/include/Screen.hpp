@@ -48,6 +48,8 @@ class Screen
     bool add_component(std::vector<ScreenComponentPtr>& current_menu, ScreenComponentPtr component, int& cnt);
     bool add_component(std::vector<ScreenComponentPtr>& current_menu, ScreenComponentPtr component, int& cnt, int& current_option_id);
 
+    bool can_add_component(int component_count) const;
+
     // Add the current page to the list of pages for this screen.
     void add_page(const std::vector<ScreenComponentPtr>& new_page);
 

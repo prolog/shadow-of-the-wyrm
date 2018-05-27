@@ -180,6 +180,11 @@ bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenCom
   return result;
 }
 
+bool Screen::can_add_component(const int cnt) const
+{
+  return (cnt < lines_displayable_area);
+}
+
 void Screen::add_page(const vector<ScreenComponentPtr>& new_page)
 {
   components.push_back(new_page);
