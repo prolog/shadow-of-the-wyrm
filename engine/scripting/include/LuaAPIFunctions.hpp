@@ -54,6 +54,7 @@ int RNG_range(lua_State* ls);
 int RNG_percent_chance(lua_State* ls);
 int RNG_dice(lua_State* ls);
 int add_spell_castings(lua_State* ls);
+int add_all_spells_castings(lua_State* ls);
 int count_spells_known(lua_State* ls);
 int gain_experience(lua_State* ls);
 int get_experience_value(lua_State* ls);

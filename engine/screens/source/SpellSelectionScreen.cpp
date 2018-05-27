@@ -25,8 +25,6 @@ bool SituationTypeSpellScreenDisplayStrategy::display_spell(const Spell& spell) 
   return (sst == spell.get_shape().get_spell_situation());
 }
 
-const int SpellSelectionScreen::SPELLS_PER_PAGE = 15;
-
 SpellSelectionScreen::SpellSelectionScreen(DisplayPtr new_display, CreaturePtr player /* should only be shown for player! */, SpellScreenDisplayStrategyPtr ssds)
 : Screen(new_display), creature(player), strategy(ssds)
 {
@@ -114,11 +112,13 @@ void SpellSelectionScreen::initialize()
         add_component(spell_screen, options, i);
         options = std::make_shared<OptionsComponent>();
 
-        // If adding the component caused us to reset the page, be sure
+        // If adding the component caused us to reset the page, or we're
+        // at the maximum number of spells per page, be sure
         // to add the screen selection, clear the selection map, and recreate
         // the options component.
         if (i == 0)
         {
+          i = 0;
           screen_selection_to_spell_id_map.push_back(selection_map);
           selection_map.clear();
         }

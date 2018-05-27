@@ -213,6 +213,13 @@
 		<FeaturePlacement>
 			<Coord>
 				<Row>12</Row>
+				<Col>16</Col>
+			</Coord>
+			<Forge/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>12</Row>
 				<Col>9</Col>
 			</Coord>
 			<Bed/>
