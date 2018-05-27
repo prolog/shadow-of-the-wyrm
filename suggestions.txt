@@ -209,12 +209,15 @@ Troubler
   goes back to page 1 and pressing 'v' again casts the wrong spell. Other 
   implications too.
 
-- Check out how timewalk works around stairs. I remember going up some stairs 
-  to escape a lich, and the graphics and input got a bit odd for a while. I 
-  thought that I would be glitched to death, but it looks like it goes back 
-  to normal after some struggling. Might have been an unrelated coincidence 
-  though.
+- Check out how timewalk works around stairs. I remember going up some 
+  stairs to escape a lich, and the graphics and input got a bit odd for a
+  while. I thought that I would be glitched to death, but it looks like it
+  goes back to normal after some struggling. Might have been an unrelated 
+  coincidence though.
 
-- Every morning, when in a dungeon, monsters respawn after your stats/skills 
-  are recalculated. This often means you get surrounded out of nowhere.
+- Every morning, when in a dungeon, monsters respawn after your 
+  stats/skills are recalculated. This often means you get surrounded out 
+  of nowhere.
 
+- Multiple pages of items, eventually hits blank page that when hitting ,
+  or . gives the right page.

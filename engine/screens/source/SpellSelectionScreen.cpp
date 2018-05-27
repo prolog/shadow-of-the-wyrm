@@ -94,6 +94,19 @@ void SpellSelectionScreen::initialize()
           continue;
         }
 
+        int line_number = i+1;
+
+        if (can_add_component(line_number) == false)
+        {
+          i = 0;
+          line_number = 1;
+          screen_selection_to_spell_id_map.push_back(selection_map);
+          selection_map.clear();
+
+          add_page(spell_screen);
+          spell_screen.clear();
+        }
+
         // Only add the spell to the display if it passes the castings/
         // filters/etc tests.
         selection_map.insert(make_pair('a' + i, spell_id));
@@ -107,21 +120,10 @@ void SpellSelectionScreen::initialize()
           
         options->add_option(current_option);
 
-        i++;
-
-        add_component(spell_screen, options, i);
+        add_component(spell_screen, options, line_number);
         options = std::make_shared<OptionsComponent>();
 
-        // If adding the component caused us to reset the page, or we're
-        // at the maximum number of spells per page, be sure
-        // to add the screen selection, clear the selection map, and recreate
-        // the options component.
-        if (i == 0)
-        {
-          i = 0;
-          screen_selection_to_spell_id_map.push_back(selection_map);
-          selection_map.clear();
-        }
+        i++;
       }
     }
 
