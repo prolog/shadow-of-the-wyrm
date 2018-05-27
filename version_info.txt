@@ -93,6 +93,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - To model their general inappropriateness as weapons, exotic weapons
   now have a speed multiplier that is modified by skill in melee/ranged
   exotics (Troubler).
+
+- Thengil in Stoneheim now appropriately has a forge (Troubler).
    
 - Stanzas for "Tel and Floridel".
 
@@ -140,7 +142,11 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
   - Traps were being improperly checked and having usages decremented
     when the player declined to move into a new tile (Troubler).
-  
+ 
+  - Great axes weren't marked as two-handed (Troubler).
+
+  - Various bestiary typos (Troubler).
+   
 Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.
 

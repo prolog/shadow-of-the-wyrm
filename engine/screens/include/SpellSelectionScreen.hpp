@@ -42,7 +42,6 @@ class SpellSelectionScreen : public Screen
   protected:
     void initialize() override;
 
-    static const int SPELLS_PER_PAGE;
     std::vector<std::map<char, std::string>> screen_selection_to_spell_id_map;
     CreaturePtr creature;
     SpellScreenDisplayStrategyPtr strategy;

@@ -189,6 +189,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
   lua_register(L, "RNG_dice", RNG_dice);
   lua_register(L, "add_spell_castings", add_spell_castings);
+  lua_register(L, "add_all_spells_castings", add_all_spells_castings);
   lua_register(L, "count_spells_known", count_spells_known);
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "get_experience_value", get_experience_value);
@@ -1596,6 +1597,42 @@ int add_spell_castings(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Incorrect arguments to add_spell_castings");
+  }
+
+  return 0;
+}
+
+// This function is really only intended for debugging purposes,
+// not for mad skills.
+int add_all_spells_castings(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int addl_castings = lua_tointeger(ls, 2);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Game& game = Game::instance();
+      const SpellMap& spells = game.get_spells_ref();
+
+      SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+
+      for (auto& sp_pair : spells)
+      {
+        string spell_id = sp_pair.first;
+
+        IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
+        uint new_castings = isk.get_castings() + addl_castings;
+        isk.set_castings(new_castings);
+        sk.set_spell_knowledge(spell_id, isk);
+      }
+    }
+ }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_all_spells_castings");
   }
 
   return 0;
