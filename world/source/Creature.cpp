@@ -1211,6 +1211,11 @@ CreatureStatusMap Creature::get_statuses() const
   return statuses;
 }
 
+CreatureStatusMap& Creature::get_statuses_ref()
+{
+  return statuses;
+}
+
 Status Creature::get_status(const string& status_id) const
 {
   Status st;

@@ -26660,12 +26660,12 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
-		<Creature id="old_tomer">
+		<Creature id="old_hargin">
 			<RaceID>03_mountainelf</RaceID>
-			<ShortDescriptionSID>OLD_TOMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>OLD_TOMER_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>OLD_TOMER_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>OLD_TOMER_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>OLD_HARGIN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>OLD_HARGIN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>OLD_HARGIN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>OLD_HARGIN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -26693,7 +26693,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/old_tomer.lua</Script>
+					<Script>quests/old_hargin.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
