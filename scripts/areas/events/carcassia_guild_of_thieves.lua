@@ -4,7 +4,7 @@ local function init_guild(map_id)
   local mem_ids = {"urchin", "thief", "blackguard"}
   local num_creatures = RNG_range(10, 18)
 
-  generate.add_creatures(map_id, {12, 2}, {17, 31}, mem_ids, num_creatures)
+  generate.add_creatures(map_id, {12, 2}, {17, 31}, mem_ids, num_creatures, false)
 end
 
 local function init_creatures(map_id, placements, creature_ids)

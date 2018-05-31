@@ -285,6 +285,7 @@ class Creature : public ISerializable
     Status get_status(const std::string& status_id) const;
     void set_statuses(const CreatureStatusMap& new_statuses);
     CreatureStatusMap get_statuses() const;
+    CreatureStatusMap& get_statuses_ref();
 
     void clear_event_scripts();
     void set_event_scripts(const EventScriptsMap& esm);

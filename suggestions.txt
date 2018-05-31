@@ -1,8 +1,7 @@
 Me:
-- Exotic speed penalty on ranged
+- Retest that the thieves guild is friendly
 - More inhabitants in the base of the tower
-- Be able to join the tower
-- Witch in old town
+- Hedge witch Vashti in old town
 - Quests in the tower (accessible only to guild members)
 - Platforms at the peak
 - Traps in the tombs.
