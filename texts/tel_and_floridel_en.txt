@@ -1792,3 +1792,13 @@ return.  Let's have a brittle peace observed. %b
 We'll let the fair folk think they've won, or spayed %b
 our aspirations - soon the tricksters will be played."
 %p
+The mood became dissent, as though a wave %b
+of realized attention shook the throng %b
+of giants: murmurs first, then shouts, as Weyg %b
+faced down the opposition, stood head-on, %b
+and held an open hand to turn the hurled %b
+invective.  Unconcerned by those angry stares, %b
+he held until the din had dulled, then heard %b
+a sudden sound from close behind, the blare %b
+of eighth notes from a hunting horn that cut the air.
+%p
