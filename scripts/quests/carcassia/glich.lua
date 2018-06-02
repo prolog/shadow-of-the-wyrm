@@ -5,10 +5,10 @@ local gift_generated = get_creature_additional_property(PLAYER_ID, glich_gift_ke
 
 
 if string.len(gift_generated) == 0 then
-  local glich_gifts = {{"_golden_apple", 1},
-                       {"_silver_apple", 1},
-                       {"silverweed", 3},
-                       {"_whiteflower", 10}}
+  local glich_gifts = {{GOLDEN_APPLE_ID, 1},
+                       {SILVER_APPLE_ID, 1},
+                       {SILVERWEED_ID, 3},
+                       {WHITEFLOWER_ID, 10}}
 
   local glich_gift = glich_gifts[RNG_range(0, table.getn(glich_gifts)-1)]
 

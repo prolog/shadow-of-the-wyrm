@@ -52,6 +52,13 @@
 					<Col>78</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>lish</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>76</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>
