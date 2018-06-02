@@ -1,9 +1,9 @@
 Me:
+- Quest for Liss
+- Hints about Liss
 - Retest that the thieves guild is friendly
 - More inhabitants in the base of the tower
-- Hedge witch Vashti in old town
 - Quests in the tower (accessible only to guild members)
-- Platforms at the peak
 - Traps in the tombs.
 - Be able to join the school of wizardry.
 - Lorelei, Okhoa, Golgoa, Sheldt
@@ -11,19 +11,12 @@ Me:
 - Quests out of the pub in Carcassia
 - Graveyard
 - Around the thieves guild should be a hidden, diggable area.
-- After finishing map ID and exit changes, need to test:
-  - Entering to a set map from a tile
-  - Siriath's lair
-  - Entering/exiting random map from world
-  - " for custom map
-  - " for underworld map
-  - " for dungeons/sewers
-  - " for floating towers
-  - " for shrines
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
 - Dungeons and caverns should have a chance to grow magic trees.
+- Tidy up scripts/quests into subdirectories, like carcassia, and test.
+  Need to remember to update env.lua!
 - More guilds/things with memberships
 - Magical orchard (should be 2-3 over the world)
 - Allow music to not only pacify but enchant (allow for ordering)

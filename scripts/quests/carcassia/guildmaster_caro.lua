@@ -107,7 +107,7 @@ end
 
 local function disarm_traps_completion_fn()
   add_message("GUILDMASTER_CARO_DISARM_TRAPS_QUEST_COMPLETE_SID")
-  add_object_to_player_tile("_golden_apple", RNG_range(5, 10))
+  add_object_to_player_tile(GOLDEN_APPLE_ID, RNG_range(5, 10))
   return true
 end
 

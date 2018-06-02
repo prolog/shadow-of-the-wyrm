@@ -1,1 +1,0 @@
-clear_and_add_message("SUMMONINGS_STUDENT_SPEECH_TEXT_SID")
