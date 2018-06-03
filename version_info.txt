@@ -146,6 +146,9 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   - Great axes weren't marked as two-handed (Troubler).
 
   - Various bestiary typos (Troubler).
+
+  - The bestiary entry for Drakheen mentions a breath attack, but this
+    wasn't defined in the configuration (Troubler).
    
 Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.
