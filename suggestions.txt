@@ -1,7 +1,5 @@
 Me:
-- Quest for Liss
-- Hints about Liss
-- Retest that the thieves guild is friendly
+- Okhoa quest
 - More inhabitants in the base of the tower
 - Quests in the tower (accessible only to guild members)
 - Traps in the tombs.
@@ -10,6 +8,8 @@ Me:
 - Signs, sign for pub in Carcassia
 - Quests out of the pub in Carcassia
 - Graveyard
+- No teleport spell!
+- Automove doesn't work properly after teleporting.
 - Around the thieves guild should be a hidden, diggable area.
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.

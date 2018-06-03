@@ -22,8 +22,6 @@ function add_creatures(map_id, start_coord, end_coord, creature_ids, num_creatur
     
     if tile_type ~= nil and tile_type ~= CTILE_TYPE_UP_STAIRCASE and tile_type ~= CTILE_TYPE_DOWN_STAIRCASE then
       add_creature_to_map(cr_id, y, x, map_id, hostility_val)
-    
-      log(CLOG_ERROR, "Adding creature to map " .. map_id .. ": " .. cr_id .. " at " .. tostring(y) .. "," .. tostring(x)) 
     end
   end
 end
