@@ -1,4 +1,6 @@
 Me:
+- Lua dlls - static link, and test this by deleting the dlls from the
+  main dir. zlib too.  Add only if necessary.
 - Okhoa quest
 - More inhabitants in the base of the tower
 - Quests in the tower (accessible only to guild members)
