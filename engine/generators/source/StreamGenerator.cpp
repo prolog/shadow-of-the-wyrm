@@ -1,5 +1,5 @@
 #include <iostream>
-#include <boost/math/common_factor.hpp>
+#include <boost/integer/common_factor.hpp>
 #include "TileGenerator.hpp"
 #include "StreamGenerator.hpp"
 #include "Dimensions.hpp"
