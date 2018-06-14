@@ -1,6 +1,8 @@
 Me:
-- Lua dlls - static link, and test this by deleting the dlls from the
-  main dir. zlib too.  Add only if necessary.
+- test release build (ensure all DLLs present)
+- floating tower down staircase ok, but up staircase from sewer in car. A2
+  not working.  permanent flag correctly set, but linkage not happening
+  in sewer generator?
 - Okhoa quest
 - More inhabitants in the base of the tower
 - Quests in the tower (accessible only to guild members)
