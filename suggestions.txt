@@ -1,8 +1,6 @@
 Me:
 - test release build (ensure all DLLs present)
-- floating tower down staircase ok, but up staircase from sewer in car. A2
-  not working.  permanent flag correctly set, but linkage not happening
-  in sewer generator?
+- Sewer in town is regenerating each time
 - Okhoa quest
 - More inhabitants in the base of the tower
 - Quests in the tower (accessible only to guild members)
