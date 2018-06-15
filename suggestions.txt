@@ -1,6 +1,6 @@
 Me:
 - test release build (ensure all DLLs present)
-- Sewer in town is regenerating each time
+- Confirm infinite sewer still okay
 - Okhoa quest
 - More inhabitants in the base of the tower
 - Quests in the tower (accessible only to guild members)
