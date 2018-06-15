@@ -418,7 +418,15 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
       if (std::abs(depth.get_current()) <= 1)
       {
         string original_map_id = get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID);
-        new_staircase_tile->set_custom_map_id(original_map_id);
+
+        // Most of the time this will be set - e.g., via descending from the
+        // wilderness.  But maps can also be set within towns, and in that
+        // case the original map ID is not set into the generator, and we 
+        // need to take care to use the town/etc's map ID instead.
+        if (!original_map_id.empty())
+        {
+          new_staircase_tile->set_custom_map_id(original_map_id);
+        }
       }
     }
     else
