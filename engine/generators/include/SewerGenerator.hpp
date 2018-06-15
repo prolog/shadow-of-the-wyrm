@@ -13,6 +13,7 @@ class SewerGenerator : public SOTW::Generator
 
   protected:
     virtual MapType get_map_type() const override;
+    virtual bool get_permanence_default() const override;
 
     void generate_sewer_sections(MapPtr result_map, const int y_incr);
     void place_staircases(MapPtr result_map);
