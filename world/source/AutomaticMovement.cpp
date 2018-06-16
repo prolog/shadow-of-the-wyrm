@@ -27,8 +27,8 @@ bool AutomaticMovement::operator==(const AutomaticMovement& auto_m) const
 void AutomaticMovement::reset()
 {
   direction = Direction::DIRECTION_NULL;
+  turns = -1;
   engaged = false;
-  turns = 0;
 }
 
 void AutomaticMovement::set_direction(const Direction new_direction)

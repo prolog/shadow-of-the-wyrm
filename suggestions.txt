@@ -7,7 +7,6 @@ Me:
 - Quests out of the pub in Carcassia
 - Graveyard in old town
 - No teleport spell!
-- Automove doesn't work properly after teleporting.
 - Around the thieves guild should be a hidden, diggable area.
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
