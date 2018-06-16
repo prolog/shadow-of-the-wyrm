@@ -1,15 +1,11 @@
 Me:
-- test release build (ensure all DLLs present)
-- Confirm infinite sewer still okay
 - Okhoa quest
 - More inhabitants in the base of the tower
 - Quests in the tower (accessible only to guild members)
 - Traps in the tombs.
-- Be able to join the school of wizardry.
-- Lorelei, Okhoa, Golgoa, Sheldt
 - Signs, sign for pub in Carcassia
 - Quests out of the pub in Carcassia
-- Graveyard
+- Graveyard in old town
 - No teleport spell!
 - Automove doesn't work properly after teleporting.
 - Around the thieves guild should be a hidden, diggable area.

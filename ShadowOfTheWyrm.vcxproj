@@ -211,8 +211,8 @@ xcopy /y /d $(ProjectDir)xerces-c_3_2.dll $(OutDir)
 xcopy /y /d $(ProjectDir)zlib.dll $(OutDir)
 xcopy /y /d $(ProjectDir)README.md $(OutDir)
 xcopy /y /d $(ProjectDir)LICENSE $(OutDir)
-mkdir $(Outdir) licenses
-xcopy /y /d $(ProjectDir)licenses $(OutDir) licenses
+mkdir $(Outdir)licenses
+xcopy /y /d $(ProjectDir)licenses $(OutDir)licenses
 mkdir $(OutDir)docs
 xcopy /y /d $(ProjectDir)docs\*.pdf $(OutDir)docs
 xcopy /y /d $(ProjectDir)*.ini $(OutDir)
@@ -223,8 +223,6 @@ xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
 mkdir $(OutDir)texts
 xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts
 mkdir $(OutDir)logs
-xcopy "$(ZLIB_DIR)\zlib-1.2.11\*.dll" $(OutDir)
-xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
 </Command>
     </PostBuildEvent>
     <PostBuildEvent>
@@ -259,8 +257,8 @@ xcopy /y /d $(ProjectDir)xerces-c_3_2.dll $(OutDir)
 xcopy /y /d $(ProjectDir)zlib.dll $(OutDir)
 xcopy /y /d $(ProjectDir)README.md $(OutDir)
 xcopy /y /d $(ProjectDir)LICENSE $(OutDir)
-mkdir $(Outdir) licenses
-xcopy /y /d $(ProjectDir)licenses $(OutDir) licenses
+mkdir $(Outdir)licenses
+xcopy /y /d $(ProjectDir)licenses $(OutDir)licenses
 mkdir $(OutDir)docs
 xcopy /y /d $(ProjectDir)docs\*.pdf $(OutDir)docs
 xcopy /y /d $(ProjectDir)*.ini $(OutDir)
@@ -271,8 +269,6 @@ xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
 mkdir $(OutDir)texts
 xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts
 mkdir $(OutDir)logs
-xcopy "$(ZLIB_DIR)\zlib-1.2.11\*.dll" $(OutDir)
-xcopy "$(LUA_DEV)\lib\*.dll" $(OutDir)
 </Command>
     </PostBuildEvent>
     <PostBuildEvent>
