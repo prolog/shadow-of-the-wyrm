@@ -210,6 +210,7 @@ int add_membership(lua_State* ls);
 int has_membership(lua_State* ls);
 int is_membership_excluded(lua_State* ls);
 int dig_rectangles(lua_State* ls);
+int get_object_ids_by_type(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);
