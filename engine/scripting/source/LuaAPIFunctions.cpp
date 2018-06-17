@@ -14,6 +14,7 @@
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "GenerationProperties.hpp"
 #include "GeneratorUtils.hpp"
 #include "HostilityManager.hpp"
 #include "ItemFilterFactory.hpp"
@@ -344,6 +345,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "has_membership", has_membership);
   lua_register(L, "is_membership_excluded", is_membership_excluded);
   lua_register(L, "dig_rectangles", dig_rectangles);
+  lua_register(L, "get_object_ids_by_type", get_object_ids_by_type);
 }
 
 // Lua API helper functions
@@ -6518,5 +6520,42 @@ int dig_rectangles(lua_State* ls)
     LuaUtils::log_and_raise(ls, "Incorrect arguments to dig_rectangles");
   }
 
+  return 1;
+}
+
+int get_object_ids_by_type(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+  vector<string> object_ids;
+
+  if (num_args == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    ItemType itype = static_cast<ItemType>(lua_tointeger(ls, 1));
+    int min_danger = lua_tointeger(ls, 2);
+    int max_danger = lua_tointeger(ls, 3);
+
+    GenerationValuesMap& gvm = Game::instance().get_item_generation_values_ref();
+
+    for (auto& gvm_pair : gvm)
+    {
+      int danger_level = gvm_pair.second.get_danger_level();
+
+      if (danger_level >= min_danger && danger_level <= max_danger)
+      {
+        ItemType item_itype_prop = static_cast<ItemType>(String::to_int(gvm_pair.second.get_property(GenerationProperties::GENERATION_PROPERTIES_ITEM_TYPE)));
+
+        if (item_itype_prop == itype)
+        {
+          object_ids.push_back(gvm_pair.first);
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_object_ids_by_type");
+  }
+
+  LuaUtils::create_return_table_from_string_vector(ls, object_ids);
   return 1;
 }

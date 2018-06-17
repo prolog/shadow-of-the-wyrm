@@ -1,5 +1,5 @@
 Me:
-- Okhoa quest
+- More birds around the tower top
 - More inhabitants in the base of the tower
 - Quests in the tower (accessible only to guild members)
 - Traps in the tombs.
