@@ -913,6 +913,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\NeutralAltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\PewManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\SarcophagusManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\TanneryManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\TrapManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\WheelAndLoomManipulator.hpp" />
@@ -1093,6 +1094,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLPewReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSarcophagusReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLStoneMarkerReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLTableReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLTanneryReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLWheelAndLoomReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapCoordinateReader.hpp" />
@@ -1319,6 +1321,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\tiles\features\include\StatueGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueTypes.hpp" />
     <ClInclude Include="world\tiles\features\include\StoneMarker.hpp" />
+    <ClInclude Include="world\tiles\features\include\Table.hpp" />
     <ClInclude Include="world\tiles\features\include\Trap.hpp" />
     <ClInclude Include="world\tiles\features\include\WheelAndLoom.hpp" />
     <ClInclude Include="world\tiles\include\AirTile.hpp" />
@@ -1833,6 +1836,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />
+    <ClCompile Include="engine\maps\tiles\features\source\TableManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\unit_tests\EvilAltarManipulator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1945,6 +1949,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\time\source\WorldTimeObserver.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBasicFeatureCMReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLTableReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLBasicFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp" />
@@ -4102,6 +4107,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\tiles\features\source\Sarcophagus.cpp" />
     <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp" />
     <ClCompile Include="world\tiles\features\source\StoneMarker.cpp" />
+    <ClCompile Include="world\tiles\features\source\Table.cpp" />
     <ClCompile Include="world\tiles\features\source\Tannery.cpp" />
     <ClCompile Include="world\tiles\features\source\Trap.cpp" />
     <ClCompile Include="world\tiles\features\source\unit_tests\AllAltars_test.cpp">
@@ -4229,6 +4235,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Table_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Tannery_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

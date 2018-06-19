@@ -214,6 +214,7 @@
 				<xs:element name="WheelAndLoom" type="tns:WheelAndLoom"/>
 				<xs:element name="Bed" type="tns:Feature"/>
 				<xs:element name="StoneMarker" type="tns:Feature"/>
+				<xs:element name="Table" type="tns:Feature"/>
 				<xs:element name="BasicFeature" type="tns:Feature"/>
 			</xs:choice>
 		</xs:sequence>

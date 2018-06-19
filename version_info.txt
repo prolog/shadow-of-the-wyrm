@@ -95,7 +95,10 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   exotics (Troubler).
 
 - Thengil in Stoneheim now appropriately has a forge (Troubler).
-   
+
+- New feature type, table, mostly for flavour in the casino (and a pun
+  when you kick them, of course).
+     
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster
