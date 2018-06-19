@@ -1,4 +1,7 @@
 Me:
+- Make tables smashable
+- In casino: blackjack, die (1d6), 2 others.
+- Carcassian tables made of stone
 - More birds around the tower top
 - More inhabitants in the base of the tower
 - Quests in the tower (accessible only to guild members)
