@@ -1,0 +1,1 @@
+clear_and_add_message("BLACKJACK_DEALER_SPEECH_TEXT_SID")
