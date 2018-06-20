@@ -104,7 +104,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster
   Caro, Tela, drunk, Serat, Old Tomer, Ffleur, gardening spellstudent,
   evocations student, summonings student, enchantments student, runic
-  student, Golgoa, Lorelei, Okhoa, Scheldt, shimmering cloud, Lish.
+  student, Golgoa, Lorelei, Okhoa, Scheldt, shimmering cloud, Lish,
+  gambler, pov dealer, blackjack dealer.
 
 - New items: salted nuts, skewer of mystery meat, wizard staff.
 

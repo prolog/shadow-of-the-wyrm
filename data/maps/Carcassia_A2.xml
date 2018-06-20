@@ -39,6 +39,34 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>pov_dealer</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>blackjack_dealer</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>11</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gambler</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gambler</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>11</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
 					<Row>8</Row>
