@@ -1,1 +1,6 @@
-clear_and_add_message("BLACKJACK_DEALER_SPEECH_TEXT_SID")
+require('dealer')
+
+if dealer.buy_in("BLACKJACK_DEALER_SPEECH_TEXT_SID", "BLACKJACK_DEALER_NSF_MESSAGE_SID", "BLACKJACK_DEALER_DECLINE_MESSAGE_SID", 50) then
+  -- ...
+end
+
