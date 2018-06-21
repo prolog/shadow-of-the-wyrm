@@ -1818,7 +1818,7 @@ Those skirmishes!  The fairy folk are strong %b
 enough, and bold tacticians.  They've amassed %b
 an understanding of how we fight, the way %b
 we settle things with violence.  Let me lead %b
-the brothers 'round the forest, lest they stray %b
+the brothers round the forest, lest they stray %b
 within the shifting boundaries.  Misread %b
 those paths but once and none will ever hear your pleas."
 %p
@@ -1832,4 +1832,14 @@ remaining time, gripped tightly till he'd been %b
 caught open-handed, left to drift, unmoored - %b
 Old Armin who had passed away just days before.
 %p
-A simulacrum?  Magic?
+A simulacrum?  Magic?  Something wavered %b
+in front of them, as if a kind of web %b
+spread out in three dimensions to enslave %b
+their thoughts, a soporific that instead %b
+of inducing sleep just lulled their disbelief, %b
+each one of them forgetting how the fire %b
+consumed his body, or how the numbing grief %b
+had held them as they mouthed their silent prayers. %b
+As real as flesh, the thing that watched them, standing there.
+%p
+
