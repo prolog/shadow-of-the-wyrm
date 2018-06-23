@@ -8416,6 +8416,7 @@
 				<NumSides>48</NumSides>
 				<Type>2</Type>
 			</Damage>
+			<Soak>10</Soak>
 		</Creature>
 		<Creature id="pirrha">
 			<RaceID>01_human</RaceID>
@@ -36276,6 +36277,17 @@
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>tower_library</LockID>
+			</Tool>
+			<Tool id="casino_key">
+				<DescriptionSID>CASINO_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CASINO_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carcassia_casino</LockID>
 			</Tool>
 			<Tool id="_crypt_key">
 				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>
