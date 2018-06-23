@@ -49,6 +49,7 @@
 #include "SnakingTempleGenerator.hpp"
 #include "SpiralDungeonGenerator.hpp"
 #include "VoidGenerator.hpp"
+#include "WellGenerator.hpp"
 #include "WorldGenerator.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLConfigurationReader.hpp"
@@ -122,6 +123,7 @@ string generate_sewer();
 string generate_rectangular_shrine();
 string generate_cross_shrine();
 string generate_floating_tower();
+string generate_well();
 
 void   settlement_maps();
 void   city_maps();
@@ -600,6 +602,14 @@ string generate_floating_tower()
   MapPtr ft_map = ft_gen->generate();
   cout << map_to_string(ft_map, false);
   return map_to_string(ft_map);
+}
+
+string generate_well()
+{
+  GeneratorPtr well_gen = std::make_shared<WellGenerator>("");
+  MapPtr well_map = well_gen->generate();
+  cout << map_to_string(well_map, false);
+  return map_to_string(well_map);
 }
 
 string generate_world()
@@ -1124,6 +1134,7 @@ void city_maps()
     cout << "9. Rectangular Shrine" << endl;
     cout << "10. Cross Shrine" << endl;
     cout << "11. Floating Tower" << endl;
+    cout << "12. Well" << endl;
 
     cin >> city_adjacent_map;
     
@@ -1154,23 +1165,28 @@ void city_maps()
         break;
       case 7:
         map = generate_castle();
-        output_map(map, "castle.html");
+        output_map(map, "castle_test.html");
         break;
       case 8:
         map = generate_sewer();
-        output_map(map, "sewer.html");
+        output_map(map, "sewer_test.html");
         break;
       case 9:
         map = generate_rectangular_shrine();
-        output_map(map, "rect_shrine.html");
+        output_map(map, "rect_shrine_test.html");
         break;
       case 10:
         map = generate_cross_shrine();
-        output_map(map, "cross_shrine.html");
+        output_map(map, "cross_shrine_test.html");
         break;
       case 11:
         map = generate_floating_tower();
-        output_map(map, "floating_tower.html");
+        output_map(map, "floating_tower_test.html");
+        break;
+      case 12:
+        map = generate_well();
+        output_map(map, "well_test.html");
+        break;
       default:
         break;
     }

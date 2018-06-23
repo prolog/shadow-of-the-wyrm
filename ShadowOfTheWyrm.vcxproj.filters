@@ -4164,6 +4164,9 @@
     <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp">
       <Filter>Header Files\engine\maps\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\WellGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8293,6 +8296,9 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\TableManipulator.cpp">
       <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\WellGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
