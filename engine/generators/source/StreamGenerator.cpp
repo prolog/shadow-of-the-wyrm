@@ -7,9 +7,6 @@
 
 using namespace std;
 
-//const int StreamGenerator::MIN_STREAM_WIDTH;
-//const int StreamGenerator::MAX_STREAM_WIDTH;
-
 void StreamGenerator::generate(MapPtr map)
 {
   Dimensions dimensions = map->size();
