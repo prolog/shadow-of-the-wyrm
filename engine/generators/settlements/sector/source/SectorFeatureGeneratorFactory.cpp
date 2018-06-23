@@ -1,5 +1,6 @@
 #include "SectorFeatureGeneratorFactory.hpp"
 #include "DefaultSectorFeatureGenerator.hpp"
+#include "LowIncomeResidentialSectorFeatureGenerator.hpp"
 #include "PublicAreaSectorFeatureGenerator.hpp"
 
 SectorFeatureGeneratorPtr SectorFeatureGeneratorFactory::create(const CitySectorType sector_type)
@@ -12,6 +13,8 @@ SectorFeatureGeneratorPtr SectorFeatureGeneratorFactory::create(const CitySector
       sfg = std::make_shared<PublicAreaSectorFeatureGenerator>();
       break;
     case CitySectorType::CITY_SECTOR_LOW_INCOME_RESIDENTIAL:
+      sfg = std::make_shared<LowIncomeResidentialSectorFeatureGenerator>();
+      break;
     case CitySectorType::CITY_SECTOR_RESIDENTIAL:
     case CitySectorType::CITY_SECTOR_RELIGIOUS_COMMERCIAL:
     case CitySectorType::CITY_SECTOR_NULL:

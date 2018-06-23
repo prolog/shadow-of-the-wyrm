@@ -9,6 +9,7 @@ class GraveyardGenerator : public SOTW::Generator
     GraveyardGenerator(const std::string& new_map_exit_id);
     
     virtual MapPtr generate(const Dimensions& dim) override;
+    virtual void generate(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
 
     // This is the function that determines whether a graveyard is ordered or scattered, and
     // must be implemented by each subclass.

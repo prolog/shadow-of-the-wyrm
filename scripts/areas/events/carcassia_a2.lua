@@ -20,8 +20,13 @@ local function setup_casino(map_id)
   add_object_to_creature(map_id, creature_id, "casino_key")
 end
 
+local function setup_dynamic_content(map_id)
+  generate_city_feature(map_id, 11, 4, 18, 18, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL)
+end
+
 function init_carcassia_a2(map_id)
   setup_casino(map_id)
+  setup_dynamic_content(map_id)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_a2)
