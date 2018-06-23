@@ -3,7 +3,7 @@
 
 using namespace std;
 
-bool CitySectorGenerator::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const CitySectorType sector_type)
+bool CitySectorGenerator::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const CitySectorType sector_type, const int sector_feature_type)
 {
   bool feature_generated = false;
 
@@ -13,7 +13,7 @@ bool CitySectorGenerator::generate_feature(MapPtr map, const Coordinate& start_c
 
     if (sfg != nullptr)
     {
-      feature_generated = sfg->generate_feature(map, start_coord, end_coord);
+      feature_generated = sfg->generate_feature(map, start_coord, end_coord, sector_feature_type);
     }
   }
 

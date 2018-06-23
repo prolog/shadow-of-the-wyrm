@@ -21,7 +21,8 @@ local function setup_casino(map_id)
 end
 
 local function setup_dynamic_content(map_id)
-  generate_city_feature(map_id, 11, 4, 18, 18, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL)
+  -- South of the casino is always a graveyard
+  generate_city_feature(map_id, 11, 4, 18, 18, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL, 1)
 end
 
 function init_carcassia_a2(map_id)

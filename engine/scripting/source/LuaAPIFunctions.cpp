@@ -6313,7 +6313,7 @@ int generate_city_feature(lua_State* ls)
   bool feature_generated = false;
   int num_args = lua_gettop(ls);
 
-  if (num_args == 6 && lua_isstring(ls, 1) 
+  if (num_args >= 6 && lua_isstring(ls, 1) 
                     && lua_isnumber(ls, 2)
                     && lua_isnumber(ls, 3)
                     && lua_isnumber(ls, 4)
@@ -6327,12 +6327,19 @@ int generate_city_feature(lua_State* ls)
     int col_end = lua_tointeger(ls, 5);
     CitySectorType sector_type = static_cast<CitySectorType>(lua_tointeger(ls, 6));
 
+    int sector_feature_type = -1;
+
+    if (num_args >= 7 && lua_isnumber(ls, 7))
+    {
+      sector_feature_type = lua_tointeger(ls, 7);
+    }
+
     MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
 
     if (map != nullptr)
     {
       CitySectorGenerator csg;
-      csg.generate_feature(map, make_pair(row_start, col_start), make_pair(row_end, col_end), sector_type);
+      csg.generate_feature(map, make_pair(row_start, col_start), make_pair(row_end, col_end), sector_type, sector_feature_type);
     }
   }
   else

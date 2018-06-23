@@ -18,7 +18,7 @@ class PublicAreaSectorFeatureGenerator : public SectorFeatureGenerator
     PublicAreaSectorFeatureGenerator();
 
   protected:
-    bool create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx);
+    bool create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx, const int f_type);
     bool generate_plaza(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
     bool generate_shop(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
     bool generate_tomb(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
