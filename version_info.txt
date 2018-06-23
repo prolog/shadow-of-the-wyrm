@@ -36,7 +36,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   2. Old Town
 
   - The oldest part of Carcassia.  The nobility left this area years ago,
-    and it's grown a bit ramshackle and untended.  
+    and it's grown a bit ramshackle and untended.  There are few roads. 
     
     - The old gambling house still stands, recently renovated.  Its
       winnings are locked away in a vault, and closely guarded.

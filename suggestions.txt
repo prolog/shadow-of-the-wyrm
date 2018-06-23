@@ -1,15 +1,16 @@
 Me:
+- Graveyard below casino should always be generated (no houses, etc)
+- Buildings generated in towns should automatically get inhabitants
+  somehow.
 - Shelby, Myrtle, the Green Ambler
-- Casino vault
-- In casino: blackjack, pov (1d6), 2 others.
-- Carcassian tables made of stone
+- Implement blackjack, slot machines.
+- Houses, ruined houses, inhabitants
 - More birds around the tower top
 - More inhabitants in the base of the tower
 - Quests in the tower (accessible only to guild members)
 - Traps in the tombs.
 - Signs, sign for pub in Carcassia
 - Quests out of the pub in Carcassia
-- Graveyard in old town
 - No teleport spell!
 - Around the thieves guild should be a hidden, diggable area.
 - Sections of Carcassia should be open to random generation, with some
