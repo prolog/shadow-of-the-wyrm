@@ -4,6 +4,6 @@
 class DefaultSectorFeatureGenerator : public SectorFeatureGenerator
 {
   protected:
-    bool create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx) override;
+    bool create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx, const int f_type) override;
 };
 

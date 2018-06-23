@@ -17,10 +17,16 @@ PublicAreaSectorFeatureGenerator::PublicAreaSectorFeatureGenerator()
 {
 }
 
-bool PublicAreaSectorFeatureGenerator::create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx)
+bool PublicAreaSectorFeatureGenerator::create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx, const int f_type)
 {
   bool created = false;
-  PublicSectorFeatureType feat = get_random_feature(feat_idx);
+  PublicSectorFeatureType feat = static_cast<PublicSectorFeatureType>(f_type);
+  
+  if (f_type == -1)
+  {
+    feat = get_random_feature(feat_idx);
+  }
+
   SectorFeaturePtr feature;
 
   switch (feat)

@@ -13,10 +13,16 @@ LowIncomeResidentialSectorFeatureGenerator::LowIncomeResidentialSectorFeatureGen
 {
 }
 
-bool LowIncomeResidentialSectorFeatureGenerator::create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx)
+bool LowIncomeResidentialSectorFeatureGenerator::create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx, const int f_type)
 {
   bool created = false;
-  LowIncomeResidentialSectorFeatureType feat = get_random_feature(feat_idx);
+  LowIncomeResidentialSectorFeatureType feat = static_cast<LowIncomeResidentialSectorFeatureType>(f_type);
+  
+  if (f_type == -1)
+  {
+    feat = get_random_feature(feat_idx);
+  }
+
   SectorFeaturePtr feature;
 
   switch (feat)

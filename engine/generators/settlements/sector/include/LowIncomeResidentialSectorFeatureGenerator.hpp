@@ -15,7 +15,7 @@ class LowIncomeResidentialSectorFeatureGenerator : public SectorFeatureGenerator
     LowIncomeResidentialSectorFeatureGenerator();
 
   protected:
-    bool create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx);
+    bool create_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_idx, const int f_type);
     bool generate_house(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
     
     LowIncomeResidentialSectorFeatureType get_random_feature(const int feat_idx) const;
