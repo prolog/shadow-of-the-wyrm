@@ -20,6 +20,26 @@ local function setup_casino(map_id)
   add_object_to_creature(map_id, creature_id, "casino_key")
 end
 
+local function setup_turtle_track(map_id)
+  -- Keep the player off the track
+  for row = 4,6 do
+    for col = 25,31 do
+      map_set_tile_property(map_id, row, col, "TILE_PROPERTY_ALLOWED_RACES", "_animal")
+    end
+  end
+
+  -- Make the turtles less bitey
+  for row = 4,6 do
+    local cr_id = get_creature_id(row, 25, map_id)
+    set_hostility(cr_id, PLAYER_ID, map_id, false)
+  end
+
+  -- Give them names
+  set_creature_name(get_creature_id(4, 25, map_id), "Big Boy", map_id)
+  set_creature_name(get_creature_id(5, 25, map_id), "Shelby", map_id)
+  set_creature_name(get_creature_id(6, 25, map_id), "The Green Ambler", map_id)
+end
+
 local function setup_dynamic_content(map_id)
   -- South of the casino is always a graveyard
   generate_city_feature(map_id, 11, 4, 18, 18, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL, 1)
@@ -27,6 +47,7 @@ end
 
 function init_carcassia_a2(map_id)
   setup_casino(map_id)
+  setup_turtle_track(map_id)
   setup_dynamic_content(map_id)
 end
 
