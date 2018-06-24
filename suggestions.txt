@@ -1,8 +1,7 @@
 Me:
-- Graveyard below casino should always be generated (no houses, etc)
+- Get turtle races implemented
 - Buildings generated in towns should automatically get inhabitants
   somehow.
-- Shelby, Myrtle, the Green Ambler
 - Implement blackjack, slot machines.
 - Houses, ruined houses, inhabitants
 - More birds around the tower top

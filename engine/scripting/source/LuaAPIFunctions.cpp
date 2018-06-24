@@ -83,25 +83,30 @@ CreaturePtr get_creature(const string& creature_id)
   }
   else
   {
-    CreatureMap& cmap = Game::instance().get_current_map()->get_creatures_ref();
-    CreatureMap::iterator c_it = cmap.find(creature_id);
+    MapPtr current_map = Game::instance().get_current_map();
 
-    if (c_it != cmap.end())
+    if (current_map != nullptr)
     {
-      CreaturePtr creature = c_it->second;
-      return creature;
-    }
-    else
-    {
-      // Couldn't find by creature ID.
-      // Try by original creature ID.
-      for (const auto& c_pair : cmap)
+      CreatureMap& cmap = current_map->get_creatures_ref();
+      CreatureMap::iterator c_it = cmap.find(creature_id);
+
+      if (c_it != cmap.end())
       {
-        CreaturePtr cr_original = c_pair.second;
-
-        if (cr_original != nullptr && cr_original->get_original_id() == creature_id)
+        CreaturePtr creature = c_it->second;
+        return creature;
+      }
+      else
+      {
+        // Couldn't find by creature ID.
+        // Try by original creature ID.
+        for (const auto& c_pair : cmap)
         {
-          return cr_original;
+          CreaturePtr cr_original = c_pair.second;
+
+          if (cr_original != nullptr && cr_original->get_original_id() == creature_id)
+          {
+            return cr_original;
+          }
         }
       }
     }
@@ -4156,17 +4161,41 @@ int set_hostility(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
 
-  if (num_args == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
   {
     string hostile_creature_id = lua_tostring(ls, 1);
     string hostile_towards_id = lua_tostring(ls, 2);
-
     CreaturePtr creature = get_creature(hostile_creature_id);
+    bool hostile = true;
+
+    if (num_args >= 3 && lua_isstring(ls, 3))
+    {
+      string map_id = lua_tostring(ls, 3);
+      MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+      if (map != nullptr)
+      {
+        creature = map->get_creature(hostile_creature_id);
+      }
+    }
+
+    if (num_args >= 4 && lua_isboolean(ls, 4))
+    {
+      hostile = lua_toboolean(ls, 4);
+    }
     
     if (creature != nullptr)
     {
       HostilityManager hm;
-      hm.set_hostility_to_creature(creature, hostile_towards_id);
+
+      if (hostile)
+      {
+        hm.set_hostility_to_creature(creature, hostile_towards_id);
+      }
+      else
+      {
+        hm.remove_hostility_to_creature(creature, hostile_towards_id);
+      }
     }
   }
   else
