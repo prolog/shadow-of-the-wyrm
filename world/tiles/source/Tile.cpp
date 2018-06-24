@@ -1,5 +1,6 @@
 #include <sstream>
 #include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "DigChancesFactory.hpp"
 #include "Inventory.hpp"
 #include "FeatureGenerator.hpp"
@@ -260,6 +261,22 @@ bool Tile::get_is_staircase() const
 {
   TileType val = get_tile_type();
   return (val == TileType::TILE_TYPE_UP_STAIRCASE || val == TileType::TILE_TYPE_DOWN_STAIRCASE);
+}
+
+bool Tile::get_is_available_for_creature(CreaturePtr creature) const
+{
+  bool avail = !get_is_blocking_ignore_present_creature(creature);
+  
+  // Does the tile have race restrictions?  If so, does the creature meet them?
+  if (avail && 
+      has_race_restrictions() && 
+      !is_race_allowed(creature->get_race_id()) &&
+      String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == false)
+  {
+    avail = false;
+  }
+  
+  return avail;
 }
 
 // The conditions are broken up for easier debugging.

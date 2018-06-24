@@ -257,9 +257,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         movement_acv = 0;
       }
     }
-    else if (creatures_new_tile->has_race_restrictions() && 
-            !creatures_new_tile->is_race_allowed(creature->get_race_id()) && 
-            String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == false)
+    else if (!creatures_new_tile->get_is_available_for_creature(creature))
     {
       manager.add_new_message(StringTable::get(MovementTextKeys::ACTION_MOVE_RACE_NOT_ALLOWED));
       manager.send();
@@ -424,7 +422,7 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
   
   if (creatures_new_tile)
   {
-    creature_can_enter_adjacent_tile = !creatures_new_tile->get_is_blocking_ignore_present_creature(creature);
+    creature_can_enter_adjacent_tile = creatures_new_tile->get_is_available_for_creature(creature);
   }
 
   // Maybe the creature just wants to switch?
