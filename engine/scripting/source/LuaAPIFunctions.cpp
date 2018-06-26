@@ -28,6 +28,7 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "Naming.hpp"
+#include "OptionScreen.hpp"
 #include "PickupAction.hpp"
 #include "RaceManager.hpp"
 #include "Quests.hpp"
@@ -216,6 +217,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_speed", get_creature_speed);
   lua_register(L, "get_creature_yx", get_creature_yx);
   lua_register(L, "get_creature_id", get_creature_id);
+  lua_register(L, "get_creature_base_id", get_creature_base_id);
   lua_register(L, "get_creature_num_broken_conducts", get_creature_num_broken_conducts);
   lua_register(L, "get_current_map_id", get_current_map_id);
   lua_register(L, "gain_level", gain_level);
@@ -351,6 +353,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_membership_excluded", is_membership_excluded);
   lua_register(L, "dig_rectangles", dig_rectangles);
   lua_register(L, "get_object_ids_by_type", get_object_ids_by_type);
+  lua_register(L, "create_menu", create_menu);
 }
 
 // Lua API helper functions
@@ -2331,6 +2334,51 @@ int get_creature_id(lua_State* ls)
   }
 
   lua_pushstring(ls, creature_id.c_str());
+  return 1;
+}
+
+int get_creature_base_id(lua_State* ls)
+{
+  string creature_base_id;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    int cy = lua_tointeger(ls, 1);
+    int cx = lua_tointeger(ls, 2);
+    string map_id;
+
+    if (num_args == 3 && lua_isstring(ls, 3))
+    {
+      map_id = lua_tostring(ls, 3);
+    }
+
+    Game& game = Game::instance();
+    MapPtr map;
+
+    if (map_id.empty())
+    {
+      map = game.get_current_map();
+    }
+    else
+    {
+      map = game.get_map_registry_ref().get_map(map_id);
+    }
+
+    TilePtr tile = map->at(cy, cx);
+
+    if (tile != nullptr && tile->has_creature())
+    {
+      CreaturePtr creature = tile->get_creature();
+      creature_base_id = creature->get_original_id();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_base_id");
+  }
+
+  lua_pushstring(ls, creature_base_id.c_str());
   return 1;
 }
 
@@ -6593,5 +6641,32 @@ int get_object_ids_by_type(lua_State* ls)
   }
 
   LuaUtils::create_return_table_from_string_vector(ls, object_ids);
+  return 1;
+}
+
+int create_menu(lua_State* ls)
+{
+  string selected_id;
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 2 && lua_isstring(ls, 1) && lua_istable(ls, 2))
+  {
+    string title_sid = lua_tostring(ls, 1);
+    vector<string> table_options = LuaUtils::get_string_array_from_table(ls, 2);
+    map<string, string> ids_and_options = String::create_properties_from_string_vector(table_options);
+
+    // JCD FIXME: Display menu, get option, return option.
+    OptionScreen os(Game::instance().get_display(), title_sid, ids_and_options);
+    string display_s = os.display();
+    int input = display_s.at(0);
+    char screen_selection = display_s.at(0);
+    string turtle_id = os.get_option(screen_selection);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to create_menu");
+  }
+
+  lua_pushstring(ls, selected_id.c_str());
   return 1;
 }

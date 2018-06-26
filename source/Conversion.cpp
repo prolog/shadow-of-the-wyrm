@@ -68,9 +68,14 @@ vector<string> String::create_string_vector_from_csv_string(const string& csv_st
 
 map<string, string> String::create_properties_from_string(const string& properties_str)
 {
-  map<string, string> properties;
   vector<string> properties_v;
   properties_v = create_string_vector_from_csv_string(properties_str);
+  return create_properties_from_string_vector(properties_v);
+}
+
+map<string, string> String::create_properties_from_string_vector(const vector<string>& properties_v)
+{
+  map<string, string> properties;
 
   for (const string& prop_str : properties_v)
   {

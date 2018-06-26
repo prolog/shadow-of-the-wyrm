@@ -37,7 +37,7 @@ local function setup_turtle_track(map_id)
   -- Give them names
   set_creature_name(get_creature_id(4, 25, map_id), "Big Boy", map_id)
   set_creature_name(get_creature_id(5, 25, map_id), "Shelby", map_id)
-  set_creature_name(get_creature_id(6, 25, map_id), "The Green Ambler", map_id)
+  set_creature_name(get_creature_id(6, 25, map_id), "Green Ambler", map_id)
 end
 
 local function setup_dynamic_content(map_id)

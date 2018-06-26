@@ -52,7 +52,6 @@ void LoadGameScreen::initialize()
     current_id++;
   }
 
-  Option exit_option;
   Option current_option;
   current_option.set_id(25);
   current_option.set_description(StringTable::get(TextKeys::EXIT));
