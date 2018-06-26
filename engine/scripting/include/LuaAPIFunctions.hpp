@@ -75,6 +75,7 @@ int get_creature_piety(lua_State* ls);
 int get_creature_speed(lua_State* ls);
 int get_creature_yx(lua_State* ls);
 int get_creature_id(lua_State* ls);
+int get_creature_base_id(lua_State* ls);
 int get_creature_num_broken_conducts(lua_State* ls);
 int get_current_map_id(lua_State* ls);
 int incr_str(lua_State* ls);
@@ -211,6 +212,7 @@ int has_membership(lua_State* ls);
 int is_membership_excluded(lua_State* ls);
 int dig_rectangles(lua_State* ls);
 int get_object_ids_by_type(lua_State* ls);
+int create_menu(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

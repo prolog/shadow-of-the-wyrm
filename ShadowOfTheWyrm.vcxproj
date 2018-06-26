@@ -941,6 +941,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\screens\include\HighScoreScreen.hpp" />
     <ClInclude Include="engine\screens\include\InventoryScreen.hpp" />
     <ClInclude Include="engine\screens\include\LoadGameScreen.hpp" />
+    <ClInclude Include="engine\screens\include\OptionScreen.hpp" />
     <ClInclude Include="engine\screens\include\Screen.hpp" />
     <ClInclude Include="engine\screens\include\ScreenComponent.hpp" />
     <ClInclude Include="engine\screens\include\NamingScreen.hpp" />
@@ -1875,6 +1876,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessorFactory.cpp" />
     <ClCompile Include="engine\screens\source\CreateItemScreen.cpp" />
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
+    <ClCompile Include="engine\screens\source\OptionScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
     <ClCompile Include="engine\screens\source\StartingLocationSelectionScreen.cpp" />
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
