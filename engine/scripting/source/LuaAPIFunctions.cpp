@@ -9,6 +9,7 @@
 #include "CreatureFactory.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "FeatureGenerator.hpp"
@@ -354,6 +355,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "dig_rectangles", dig_rectangles);
   lua_register(L, "get_object_ids_by_type", get_object_ids_by_type);
   lua_register(L, "create_menu", create_menu);
+  lua_register(L, "set_sentinel", set_sentinel);
 }
 
 // Lua API helper functions
@@ -6668,5 +6670,44 @@ int create_menu(lua_State* ls)
   }
 
   lua_pushstring(ls, selected_id.c_str());
+  return 1;
+}
+
+int set_sentinel(lua_State* ls)
+{
+  bool set_sent_val = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isboolean(ls, 3))
+  {
+    int row = lua_tointeger(ls, 1);
+    int col = lua_tointeger(ls, 2);
+    bool val = lua_toboolean(ls, 3);
+
+    MapPtr map = Game::instance().get_current_map();
+
+    if (num_args >= 4 && lua_isstring(ls, 4))
+    {
+      map = Game::instance().get_map_registry_ref().get_map(lua_tostring(ls, 3));
+    }
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(row, col);
+
+      if (tile != nullptr && tile->has_creature())
+      {
+        CreaturePtr creature = tile->get_creature();
+        creature->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, Bool::to_string(val));
+        set_sent_val = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_sentinel");
+  }
+
+  lua_pushboolean(ls, set_sent_val);
   return 1;
 }
