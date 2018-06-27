@@ -27047,7 +27047,8 @@
 				<NumSides>6</NumSides>
 				<Type>1</Type>
 			</Damage>
-			<Soak>4</Soak>
+			<Soak>6</Soak>
+			<Speed>85</Speed>
 		</Creature>
 		<Creature id="gardening_spellstudent">
 			<RaceID>02_woodelf</RaceID>
