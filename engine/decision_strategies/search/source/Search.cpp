@@ -34,7 +34,11 @@ Coordinate Search::search(MapPtr view_map, const Coordinate& start, const Coordi
     if (goal_test(node, end))
     {
       vector<Coordinate>& ancestors = node.get_ancestors_ref();
-      return ancestors[0];
+
+      if (!ancestors.empty())
+      {
+        return ancestors[0];
+      }
     }
     
     nodes = queueing_fn(nodes, make_search_nodes(view_map, visited, end, node));

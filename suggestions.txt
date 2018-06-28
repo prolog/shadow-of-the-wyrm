@@ -1,4 +1,7 @@
 Me:
+- Turtle names messed up
+- Bias direct routes/cardinal directions for pathfinding
+- Crash when reaching end of automove route (no ancestors - Search.cpp)
 - "You feel uneasy" in Carcassia a2
 - Get turtle races implemented
 - Unit tests for Tile::get_is_available_for_creature

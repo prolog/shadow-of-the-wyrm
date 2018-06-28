@@ -214,6 +214,8 @@ int dig_rectangles(lua_State* ls);
 int get_object_ids_by_type(lua_State* ls);
 int create_menu(lua_State* ls);
 int set_sentinel(lua_State* ls);
+int get_sid(lua_State* ls);
+int set_automove_coords(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

@@ -1,5 +1,9 @@
+#include <boost/algorithm/string.hpp>
 #include "ControllerFactory.hpp"
+#include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "DecisionStrategy.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -80,6 +84,13 @@ void DecisionStrategy::set_property(const string& prop, const string& value)
   properties[prop] = value;
 }
 
+bool DecisionStrategy::has_property(const string& prop) const
+{
+  auto p_it = properties.find(prop);
+
+  return (p_it != properties.end());
+}
+
 bool DecisionStrategy::remove_property(const string& prop)
 {
   bool removed = false;
@@ -140,6 +151,39 @@ void DecisionStrategy::set_autopickup_types(const set<ItemType>& new_autopickup_
 set<ItemType> DecisionStrategy::get_autopickup_types() const
 {
   return autopickup_types;
+}
+
+void DecisionStrategy::set_automove_coords(const Coordinate& c)
+{
+  ostringstream ss;
+  ss << c.first << "," << c.second;
+
+  set_property(DecisionStrategyProperties::DECISION_STRATEGY_AUTOMOVE_COORDINATES, ss.str());
+}
+
+void DecisionStrategy::clear_autmove_coords()
+{
+  remove_property(DecisionStrategyProperties::DECISION_STRATEGY_AUTOMOVE_COORDINATES);
+}
+
+Coordinate DecisionStrategy::get_automove_coords() const
+{
+  Coordinate c = CoordUtils::end();
+
+  if (has_property(DecisionStrategyProperties::DECISION_STRATEGY_AUTOMOVE_COORDINATES))
+  {
+    string auto_move = get_property(DecisionStrategyProperties::DECISION_STRATEGY_AUTOMOVE_COORDINATES);
+
+    vector<string> strs;
+    boost::split(strs, auto_move, boost::is_any_of(","));
+
+    if (strs.size() == 2)
+    {
+      c = make_pair(String::to_int(strs.at(0)), String::to_int(strs.at(1)));
+    }
+  }
+
+  return c;
 }
 
 bool DecisionStrategy::can_move() const

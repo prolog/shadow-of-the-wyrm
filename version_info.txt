@@ -176,6 +176,9 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
   - You can no longer swap places into a race-restricted tile if you
     don't meet the requirements.
+
+  - Fixed a pathfinding crash bug when trying to pathfind to the same
+    tile.
        
 Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.
