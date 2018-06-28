@@ -356,6 +356,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_object_ids_by_type", get_object_ids_by_type);
   lua_register(L, "create_menu", create_menu);
   lua_register(L, "set_sentinel", set_sentinel);
+  lua_register(L, "get_sid", get_sid);
+  lua_register(L, "set_automove_coords", set_automove_coords);
 }
 
 // Lua API helper functions
@@ -6662,7 +6664,7 @@ int create_menu(lua_State* ls)
     string display_s = os.display();
     int input = display_s.at(0);
     char screen_selection = display_s.at(0);
-    string turtle_id = os.get_option(screen_selection);
+    selected_id = os.get_option(screen_selection);
   }
   else
   {
@@ -6710,4 +6712,56 @@ int set_sentinel(lua_State* ls)
 
   lua_pushboolean(ls, set_sent_val);
   return 1;
+}
+
+int get_sid(lua_State* ls)
+{
+  string str;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string sid = lua_tostring(ls, 1);
+    str = StringTable::get(str);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_sid");
+  }
+
+  lua_pushstring(ls, str.c_str());
+  return 1;
+}
+
+int set_automove_coords(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string map_id = lua_tostring(ls, 2);
+    int am_y = lua_tointeger(ls, 3);
+    int am_x = lua_tointeger(ls, 4);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      CreaturePtr creature = map->get_creature(creature_id);
+
+      if (creature != nullptr)
+      {
+        DecisionStrategyPtr dec = creature->get_decision_strategy();
+
+        if (dec != nullptr)
+        {
+          dec->set_automove_coords(make_pair(am_y, am_x));
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_automove_coords");
+  }
+
+  return 0;
 }

@@ -34,10 +34,17 @@ local function setup_turtle_track(map_id)
     set_hostility(cr_id, PLAYER_ID, map_id, false)
   end
 
-  -- Give them names
-  set_creature_name(get_creature_id(4, 25, map_id), "Big Boy", map_id)
-  set_creature_name(get_creature_id(5, 25, map_id), "Shelby", map_id)
-  set_creature_name(get_creature_id(6, 25, map_id), "Green Ambler", map_id)
+  local turtle_details = {{4, 25, "TURTLE_NAME1_SID"}, 
+                          {5, 25, "TURTLE_NAME2_SID"}, 
+                          {6, 25, "TURTLE_NAME3_SID"}}
+
+  -- Name the turtles and set their automove coordinates.
+  for k,v in ipairs(turtle_details) do
+    local cr_id = get_creature_id(v[1], v[2], map_id)
+
+    set_creature_name(cr_id, v[3], map_id)
+    set_automove_coords(cr_id, map_id, v[1], 31)
+  end
 end
 
 local function setup_dynamic_content(map_id)
