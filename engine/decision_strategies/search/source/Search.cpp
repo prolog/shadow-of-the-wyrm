@@ -39,6 +39,10 @@ Coordinate Search::search(MapPtr view_map, const Coordinate& start, const Coordi
       {
         return ancestors[0];
       }
+      else
+      {
+        return end;
+      }
     }
     
     nodes = queueing_fn(nodes, make_search_nodes(view_map, visited, end, node));
