@@ -42,7 +42,7 @@ local function setup_turtle_track(map_id)
   for k,v in ipairs(turtle_details) do
     local cr_id = get_creature_id(v[1], v[2], map_id)
 
-    set_creature_name(cr_id, v[3], map_id)
+    set_creature_name(cr_id, get_sid(v[3]), map_id)
     set_automove_coords(cr_id, map_id, v[1], 31)
   end
 end

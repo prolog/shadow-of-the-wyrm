@@ -477,7 +477,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
       {
         CreaturePtr this_cr = this_tile->get_creature();
 
-        SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SearchType::SEARCH_TYPE_UNIFORM_COST, this_cr);
+        SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SearchType::SEARCH_TYPE_ASTAR, this_cr);
         Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, am_c));
 
         if (direction != Direction::DIRECTION_NULL)

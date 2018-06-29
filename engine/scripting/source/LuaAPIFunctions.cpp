@@ -6721,7 +6721,7 @@ int get_sid(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
     string sid = lua_tostring(ls, 1);
-    str = StringTable::get(str);
+    str = StringTable::get(sid);
   }
   else
   {
