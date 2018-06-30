@@ -111,6 +111,11 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   when you kick them, of course).
   
 - You can now descend into wells.
+
+- Pathfinding has been updated to favour cardinal directions when
+  constructing paths.  This prevents some "weird paths" that enemies will
+  take to you, that are actually equally optimal, given that diagonal
+  moves cost the same as cardinal (Karagy).
    
 - Stanzas for "Tel and Floridel".
 
