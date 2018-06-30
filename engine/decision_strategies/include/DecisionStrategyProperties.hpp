@@ -10,6 +10,7 @@ class DecisionStrategyProperties
     static const std::string DECISION_STRATEGY_SHOPKEEPER;
     static const std::string DECISION_STRATEGY_RESIST_SWITCH;
     static const std::string DECISION_STRATEGY_AUTOMOVE_COORDINATES;
+    static const std::string DECISION_STRATEGY_SEARCH_PCT;
 
   protected:
     DecisionStrategyProperties();

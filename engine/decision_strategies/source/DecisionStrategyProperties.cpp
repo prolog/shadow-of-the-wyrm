@@ -16,6 +16,7 @@ const string DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL = "sentinel"
 const string DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER = "shopkeeper";
 const string DecisionStrategyProperties::DECISION_STRATEGY_RESIST_SWITCH = "resist_switch";
 const string DecisionStrategyProperties::DECISION_STRATEGY_AUTOMOVE_COORDINATES = "automove_coords";
+const string DecisionStrategyProperties::DECISION_STRATEGY_SEARCH_PCT = "search_pct";
 
 
 

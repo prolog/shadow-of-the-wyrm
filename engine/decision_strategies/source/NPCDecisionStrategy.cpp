@@ -465,6 +465,17 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
       return movement_command;
     }
 
+    string search_pct = get_property(DecisionStrategyProperties::DECISION_STRATEGY_SEARCH_PCT);
+
+    if (!search_pct.empty())
+    {
+      if (RNG::percent_chance(String::to_int(search_pct)))
+      {
+        movement_command = std::make_shared<SearchCommand>(-1);
+        return movement_command;
+      }
+    }
+
     // If the creature has automove coordinates, favour those.
     Coordinate am_c = get_automove_coords();
 

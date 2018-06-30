@@ -358,6 +358,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_sentinel", set_sentinel);
   lua_register(L, "get_sid", get_sid);
   lua_register(L, "set_automove_coords", set_automove_coords);
+  lua_register(L, "set_decision_strategy_property", set_decision_strategy_property);
 }
 
 // Lua API helper functions
@@ -6761,6 +6762,36 @@ int set_automove_coords(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Incorrect arguments to set_automove_coords");
+  }
+
+  return 0;
+}
+
+int set_decision_strategy_property(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3) && lua_isstring(ls, 4))
+  {
+    int row = lua_tointeger(ls, 1);
+    int col = lua_tointeger(ls, 2);
+    string prop = lua_tostring(ls, 3);
+    string val = lua_tostring(ls, 4);
+
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(row, col);
+
+      if (tile && tile->has_creature())
+      {
+        CreaturePtr creature = tile->get_creature();
+        creature->get_decision_strategy()->set_property(prop, val);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_decision_strategy_property");
   }
 
   return 0;

@@ -1,3 +1,10 @@
+-- All the turtles rest at least a little.  Some might be really lazy...
+local function set_turtle_laziness(coords)
+  local pct_chance_search = RNG_range(30, 70)
+
+  set_decision_strategy_property(coords[1], coords[2], "search_pct", tostring(pct_chance_search))
+end
+
 -- Get the turtles ready to race by flipping their sentinel flags off.
 local function ready_turtles(coords)
   for k,v in ipairs(coords) do
@@ -18,6 +25,8 @@ local function run_race()
 
     table.insert(names, id .. "=" .. name)
     turtles = turtles and base_id == "snapping_turtle"
+    
+    set_turtle_laziness(v)
   end
 
   if turtles == true then
