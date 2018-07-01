@@ -102,4 +102,5 @@ class MapUtils
     static void add_tile_related_messages(CreaturePtr creature, TilePtr tile);
     static bool add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr tile);
     static bool add_message_about_items_on_tile_if_necessary(CreaturePtr creature, TilePtr tile);
+    static void run_movement_scripts(CreaturePtr creature, const std::string& map_id, const Coordinate& c);
 };

@@ -85,6 +85,7 @@ class CreatureEventScripts
     static const std::string CREATURE_EVENT_SCRIPT_CHAT;
     static const std::string CREATURE_EVENT_SCRIPT_DECISION;
     static const std::string CREATURE_EVENT_SCRIPT_DROP;
+    static const std::string CREATURE_EVENT_SCRIPT_ENTER_TILE;
 
   protected:
     CreatureEventScripts();

@@ -1,4 +1,5 @@
 Me:
+- Ensure turtle names line up with turtles on track
 - Get turtle races implemented
 - Buildings generated in towns should automatically get inhabitants
   somehow.
@@ -19,8 +20,6 @@ Me:
 - Tidy up scripts/quests into subdirectories, like carcassia, and test.
   Need to remember to update env.lua!
 - More guilds/things with memberships
-- OptionScreen is basically a cleaned up SpellSelectionScreen - refactor
-  the latter to use the former.
 - Magical orchard (should be 2-3 over the world)
 - Allow music to not only pacify but enchant (allow for ordering)
 - Add Shards, Meteor to a couple more creatures

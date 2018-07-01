@@ -1,3 +1,19 @@
+require('constants')
+
+local race_running_property = "race_running"
+
+-- Check to see if the racemaster has already started a race.
+local function race_running()
+  local racem_id = args[SPEAKING_CREATURE_ID]
+  local race_running = get_creature_additional_property(racem_id, race_running_property)
+
+  if race_running == "true" then
+    return true
+  else
+    return false
+  end
+end
+
 -- All the turtles rest at least a little.  Some might be really lazy...
 local function set_turtle_laziness(coords)
   local pct_chance_search = RNG_range(30, 70)
@@ -36,8 +52,26 @@ local function run_race()
       -- Pick a turtle!
       local turtle_id = create_menu("CARCASSIA_TURTLE_RACES", names)
 
-      -- Ready the turtles!
-      ready_turtles(coords)
+      if string.len(turtle_id) > 0 then
+        local bet_amount = tonumber(add_prompt_message("RACEMASTER_BET_SID"))
+        local player_curr = count_currency(PLAYER_ID)
+
+        if bet_amount ~= nil and bet_amount > 0 and bet_amount <= player_curr then
+          local bet_details = turtle_id .. "," .. tostring(bet_amount)
+          set_creature_additional_property(PLAYER_ID, "turtle_race_bet", bet_details)
+
+          -- Set a flag on the racemaster so that you can't bet until the
+          -- race is done.
+          local racem_id = args[SPEAKING_CREATURE_ID]
+          set_creature_additional_property(racem_id, race_running_property, tostring(true))
+          remove_object_from_player(CURRENCY_ID, bet_amount)
+
+          -- Ready the turtles!
+          ready_turtles(coords)
+        else
+          clear_and_add_message("RACEMASTER_NONSENSE_SID")
+        end
+      end
     else
       clear_and_add_message("RACEMASTER_DECLINE_SID")
     end
@@ -46,5 +80,10 @@ local function run_race()
   end
 end
 
-run_race()
+if race_running() then
+  clear_and_add_message("RACEMASTER_RACE_RUNNING_SID")
+else
+  run_race()
+end
+
 

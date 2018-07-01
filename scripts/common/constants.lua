@@ -1,4 +1,5 @@
 SPEAKING_CREATURE_ID = "speaking_creature_id"
+MOVING_CREATURE_ID = "moving_creature_id"
 MAP_ID = "map_id"
 TEMPLATE_KEY_ID = "_template_key"
 CURRENCY_ID = "_currency"

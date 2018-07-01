@@ -34,16 +34,18 @@ local function setup_turtle_track(map_id)
     set_hostility(cr_id, PLAYER_ID, map_id, false)
   end
 
-  local turtle_details = {{4, 25, "TURTLE_NAME1_SID"}, 
-                          {5, 25, "TURTLE_NAME2_SID"}, 
-                          {6, 25, "TURTLE_NAME3_SID"}}
+  local turtle_details = {{4, 25, "TURTLE_NAME1_SID", 1}, 
+                          {5, 25, "TURTLE_NAME2_SID", 3}, 
+                          {6, 25, "TURTLE_NAME3_SID", 10}}
 
   -- Name the turtles and set their automove coordinates.
   for k,v in ipairs(turtle_details) do
     local cr_id = get_creature_id(v[1], v[2], map_id)
 
     set_creature_name(cr_id, get_sid(v[3]), map_id)
+    set_creature_colour(cr_id, v[4], map_id)
     set_automove_coords(cr_id, map_id, v[1], 31)
+    set_event_script(cr_id, map_id, "move/carcassia_turtles.lua", "CREATURE_EVENT_SCRIPT_ENTER_TILE", 100)
   end
 end
 
