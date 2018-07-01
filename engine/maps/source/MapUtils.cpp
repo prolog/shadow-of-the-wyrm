@@ -363,6 +363,9 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
 
   ICreatureRegenerationPtr move_checker = std::make_shared<MovementAccumulationChecker>();
   move_checker->tick(creature, creatures_new_tile, 0, 0);
+
+  // Run any movement scripts associated with the creature.
+  run_movement_scripts(creature, map->get_map_id(), c);
   
   return added_location;
 }
@@ -1384,6 +1387,31 @@ bool MapUtils::add_message_about_items_on_tile_if_necessary(CreaturePtr creature
   }
 
   return msg_added;
+}
+
+void MapUtils::run_movement_scripts(CreaturePtr creature, const string& map_id, const Coordinate& c)
+{
+  if (creature != nullptr)
+  {
+    EventScriptsMap& events = creature->get_event_scripts_ref();
+    auto e_it = events.find(CreatureEventScripts::CREATURE_EVENT_SCRIPT_ENTER_TILE);
+
+    if (e_it != events.end())
+    {
+      ScriptDetails sd = e_it->second;
+
+      if (RNG::percent_chance(sd.get_chance()))
+      {
+        // Run the initial script to set up any functions.
+        map<string, string> args = {{"moving_creature_id", creature->get_id()}};
+        ScriptEngine& se = Game::instance().get_script_engine_ref();
+        se.execute(sd.get_script(), args);
+
+        // Run the move script.
+        // ...
+      }
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

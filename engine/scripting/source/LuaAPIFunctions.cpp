@@ -359,6 +359,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_sid", get_sid);
   lua_register(L, "set_automove_coords", set_automove_coords);
   lua_register(L, "set_decision_strategy_property", set_decision_strategy_property);
+  lua_register(L, "set_event_script", set_event_script);
 }
 
 // Lua API helper functions
@@ -4863,15 +4864,28 @@ int get_creature_colour(lua_State* ls)
 
 int set_creature_colour(lua_State* ls)
 {
-  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  if (lua_gettop(ls) >= 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
   {
     string creature_id = lua_tostring(ls, 1);
-    CreaturePtr creature = get_creature(creature_id);
     Colour new_colour = static_cast<Colour>(lua_tointeger(ls, 2));
 
-    if (creature != nullptr)
+    MapPtr map = Game::instance().get_current_map();
+
+    if (lua_gettop(ls) >= 3 && lua_isstring(ls, 3))
     {
-      creature->set_colour(new_colour);
+      map = Game::instance().get_map_registry_ref().get_map(lua_tostring(ls, 3));
+    }
+
+    CreaturePtr creature;
+    
+    if (map != nullptr)
+    {
+      creature = map->get_creature(creature_id);
+
+      if (creature != nullptr)
+      {
+        creature->set_colour(new_colour);
+      }
     }
   }
   else
@@ -5120,18 +5134,8 @@ int redraw(lua_State* ls)
 {
   if (lua_gettop(ls) == 0)
   {
-    string creature_id = CreatureID::CREATURE_ID_PLAYER;
     Game& game = Game::instance();
-    MapPtr cur_map = game.get_current_map();
-    CreaturePtr creature = get_creature(creature_id);
-
-    if (creature != nullptr && cur_map != nullptr)
-    {
-      MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-
-      // Force a hard redraw.
-      game.update_display(creature, cur_map, fov_map, true);
-    }
+    game.update_display();
   }
   else
   {
@@ -6660,12 +6664,17 @@ int create_menu(lua_State* ls)
     vector<string> table_options = LuaUtils::get_string_array_from_table(ls, 2);
     map<string, string> ids_and_options = String::create_properties_from_string_vector(table_options);
 
-    // JCD FIXME: Display menu, get option, return option.
-    OptionScreen os(Game::instance().get_display(), title_sid, ids_and_options);
-    string display_s = os.display();
-    int input = display_s.at(0);
-    char screen_selection = display_s.at(0);
-    selected_id = os.get_option(screen_selection);
+    {
+      OptionScreen os(Game::instance().get_display(), title_sid, ids_and_options);
+      string display_s = os.display();
+      int input = display_s.at(0);
+      char screen_selection = display_s.at(0);
+      selected_id = os.get_option(screen_selection);
+    }
+
+    // Redraw after the option screen has been removed from
+    // the internal stack.
+    Game::instance().update_display();
   }
   else
   {
@@ -6792,6 +6801,40 @@ int set_decision_strategy_property(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Incorrect arguments to set_decision_strategy_property");
+  }
+
+  return 0;
+}
+
+int set_event_script(lua_State* ls)
+{
+  if (lua_gettop(ls) == 5 && 
+      lua_isstring(ls, 1) && 
+      lua_isstring(ls, 2) && 
+      lua_isstring(ls, 3) && 
+      lua_isstring(ls, 4) && 
+      lua_isnumber(ls, 5))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string map_id = lua_tostring(ls, 2);
+    string script = lua_tostring(ls, 3);
+    string event_id = lua_tostring(ls, 4);
+    int pct_chance = lua_tointeger(ls, 5);
+
+    CreaturePtr creature = get_creature_from_map(creature_id, map_id);
+
+    if (creature != nullptr)
+    {
+      ScriptDetails sd;
+      sd.set_chance(pct_chance);
+      sd.set_script(script);
+
+      creature->get_event_scripts_ref().insert(make_pair(event_id, sd));
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_event_script");
   }
 
   return 0;

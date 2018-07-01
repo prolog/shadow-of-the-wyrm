@@ -353,6 +353,30 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   }
 }
 
+// Update the display, but making some assumptions.
+void Game::update_display()
+{
+  MapPtr cur_map = get_current_map();
+
+  if (cur_map != nullptr)
+  {
+    CreaturePtr creature = cur_map->get_creature(CreatureID::CREATURE_ID_PLAYER);
+
+    if (creature != nullptr)
+    {
+      MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+
+      // Force a hard redraw.
+      update_display(creature, cur_map, fov_map, false);
+
+      if (display)
+      {
+        display->redraw();
+      }
+    }
+  }
+}
+
 // Update the display: the statistics area, and the current map.
 void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr fov_map, const bool reloaded_game)
 {

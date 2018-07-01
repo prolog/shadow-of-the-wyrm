@@ -102,6 +102,7 @@ class Game : public ISerializable
     bool should_check_scores() const;
 
     // Update the physical display
+    void update_display();
     void update_display(CreaturePtr creature, MapPtr map, MapPtr fov_sub_map, const bool reloaded_game);
 
     // Additional operations will eventually be needed to do many
