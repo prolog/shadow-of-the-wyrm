@@ -308,6 +308,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_evade", set_creature_evade);
   lua_register(L, "set_trap", set_trap);
   lua_register(L, "get_nearby_hostile_creatures", get_nearby_hostile_creatures);
+  lua_register(L, "remove_creature_additional_property", remove_creature_additional_property);
   lua_register(L, "set_creature_additional_property", set_creature_additional_property);
   lua_register(L, "get_creature_additional_property", get_creature_additional_property);
   lua_register(L, "get_creature_additional_property_csv", get_creature_additional_property_csv);
@@ -4996,6 +4997,30 @@ int get_nearby_hostile_creatures(lua_State* ls)
   }
 
   return num_hostiles;
+}
+
+int remove_creature_additional_property(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string property = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature)
+    {
+      creature->remove_additional_property(property);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to remove_creature_additional_property");
+  }
+
+  return 0;
 }
 
 int set_creature_additional_property(lua_State* ls)
