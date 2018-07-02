@@ -4179,6 +4179,9 @@
     <ClInclude Include="engine\screens\include\OptionScreen.hpp">
       <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripting\include\MoveScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8323,6 +8326,9 @@
     </ClCompile>
     <ClCompile Include="engine\screens\source\OptionScreen.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\MoveScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -969,6 +969,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\scripting\include\LuaAPIFunctions.hpp" />
     <ClInclude Include="engine\scripting\include\LuaUtils.hpp" />
     <ClInclude Include="engine\scripting\include\MapScript.hpp" />
+    <ClInclude Include="engine\scripting\include\MoveScript.hpp" />
     <ClInclude Include="engine\scripting\include\ScriptConstants.hpp" />
     <ClInclude Include="engine\scripting\include\ScriptEngine.hpp" />
     <ClInclude Include="engine\serialization\include\Serialization.hpp" />
@@ -1883,6 +1884,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\scripting\source\DropScript.cpp" />
     <ClCompile Include="engine\scripting\source\KillScript.cpp" />
     <ClCompile Include="engine\scripting\source\MapScript.cpp" />
+    <ClCompile Include="engine\scripting\source\MoveScript.cpp" />
     <ClCompile Include="engine\skills\source\BowyerSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\DetectionSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\DisarmTrapsSkillProcessor.cpp" />
