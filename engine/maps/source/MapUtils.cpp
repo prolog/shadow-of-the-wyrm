@@ -15,6 +15,7 @@
 #include "MessageManagerFactory.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
+#include "MoveScript.hpp"
 #include "MovementTextKeys.hpp"
 #include "PickupAction.hpp"
 #include "RNG.hpp"
@@ -1402,13 +1403,10 @@ void MapUtils::run_movement_scripts(CreaturePtr creature, const string& map_id, 
 
       if (RNG::percent_chance(sd.get_chance()))
       {
-        // Run the initial script to set up any functions.
-        map<string, string> args = {{"moving_creature_id", creature->get_id()}};
         ScriptEngine& se = Game::instance().get_script_engine_ref();
-        se.execute(sd.get_script(), args);
+        MoveScript ms;
 
-        // Run the move script.
-        // ...
+        ms.execute(se, sd.get_script(), creature, map_id, c);
       }
     }
   }
