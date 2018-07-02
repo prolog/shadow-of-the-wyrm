@@ -61,3 +61,16 @@ function shuffle(t)
   return t
 end
 
+function array_to_csv(t)
+  local csv = ""
+  for i = 1, #t do
+    csv = csv .. t[i]
+
+    if i < #t then
+      csv = csv .. ","
+    end
+  end
+
+  return csv
+end
+

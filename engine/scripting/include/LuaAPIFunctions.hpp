@@ -166,6 +166,7 @@ int set_creature_evade(lua_State* ls);
 int set_trap(lua_State* ls);
 int has_trap(lua_State* ls);
 int get_nearby_hostile_creatures(lua_State* ls);
+int remove_creature_additional_property(lua_State* ls);
 int set_creature_additional_property(lua_State* ls);
 int get_creature_additional_property(lua_State* ls);
 int get_creature_additional_property_csv(lua_State* ls);
