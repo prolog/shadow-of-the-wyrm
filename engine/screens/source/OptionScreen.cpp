@@ -11,7 +11,9 @@
 using namespace std;
 using namespace boost::algorithm;
 
-OptionScreen::OptionScreen(DisplayPtr new_display, const string& new_title_sid, const map<string, string>& new_options) : Screen(new_display), title_sid(new_title_sid), options(new_options)
+// Set up the option screen.
+// The option map is keyed by description to ensure
+OptionScreen::OptionScreen(DisplayPtr new_display, const string& new_title_sid, const vector<string>& new_options) : Screen(new_display), title_sid(new_title_sid), options(new_options)
 {
   initialize();
 }
@@ -27,35 +29,41 @@ void OptionScreen::initialize()
 
   for (const auto& option : options)
   {
-    scr_options->set_show_option_descriptions(false);
-    int line_number = i + 1;
+    vector<string> props;
+    boost::split(props, option, boost::is_any_of("="));
 
-    if (can_add_component(line_number) == false)
+    if (props.size() == 2)
     {
-      i = 0;
-      line_number = 1;
-      screen_selection_to_id_map.push_back(selection_map);
-      selection_map.clear();
+      scr_options->set_show_option_descriptions(false);
+      int line_number = i + 1;
 
-      add_page(opt_screen);
-      opt_screen.clear();
+      if (can_add_component(line_number) == false)
+      {
+        i = 0;
+        line_number = 1;
+        screen_selection_to_id_map.push_back(selection_map);
+        selection_map.clear();
+
+        add_page(opt_screen);
+        opt_screen.clear();
+      }
+
+      selection_map.insert(make_pair('a' + i, props.at(0)));
+
+      Option current_option;
+      current_option.set_id(i);
+
+      // Assumption is that the value in the map is always translated
+      // (or dynamic, or whatever) and therefore no need to look it up
+      // in the StringTable.
+      current_option.set_description(props.at(1));
+
+      scr_options->add_option(current_option);
+      add_component(opt_screen, scr_options, line_number);
+
+      scr_options = std::make_shared<OptionsComponent>();
+      i++;
     }
-
-    selection_map.insert(make_pair('a' + i, option.first));
-
-    Option current_option;
-    current_option.set_id(i);
-
-    // Assumption is that the value in the map is always translated
-    // (or dynamic, or whatever) and therefore no need to look it up
-    // in the StringTable.
-    current_option.set_description(option.second);
-
-    scr_options->add_option(current_option);
-    add_component(opt_screen, scr_options, line_number);
-    
-    scr_options = std::make_shared<OptionsComponent>();
-    i++;
   }
 
   // Make sure that, at the very end, there is always the opportunity to
