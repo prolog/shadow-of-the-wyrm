@@ -1,6 +1,6 @@
 Me:
 - Tidy up turtle races code
-- Ensure turtle names line up with turtles on track
+- Thief behind walls picks up ivory, is displayed to player.
 - Buildings generated in towns should automatically get inhabitants
   somehow.
 - Implement blackjack, slot machines.

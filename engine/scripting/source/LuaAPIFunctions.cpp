@@ -6687,10 +6687,9 @@ int create_menu(lua_State* ls)
   {
     string title_sid = lua_tostring(ls, 1);
     vector<string> table_options = LuaUtils::get_string_array_from_table(ls, 2);
-    map<string, string> ids_and_options = String::create_properties_from_string_vector(table_options);
 
     {
-      OptionScreen os(Game::instance().get_display(), title_sid, ids_and_options);
+      OptionScreen os(Game::instance().get_display(), title_sid, table_options);
       string display_s = os.display();
       int input = display_s.at(0);
       char screen_selection = display_s.at(0);
