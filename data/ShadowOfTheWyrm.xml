@@ -4445,7 +4445,7 @@
 					<Races>
 						<Race>
 							<RaceID>02_woodelf</RaceID>
-							<ID>leather_armour</ID>
+							<ID>linothorax</ID>
 						</Race>
 						<Race>
 							<RaceID>04_snakeling</RaceID>
@@ -4453,7 +4453,7 @@
 						</Race>
 						<Race>
 							<RaceID>05_fae</RaceID>
-							<ID>leather_armour</ID>
+							<ID>linothorax</ID>
 						</Race>
 						<Race>
 							<RaceID>07_goblin</RaceID>
@@ -30514,6 +30514,25 @@
 				<Evade>1</Evade>
 				<Soak>1</Soak>
 			</Armour>
+			<Armour id="linothorax">
+				<DescriptionSID>LINOTHORAX_SID</DescriptionSID>
+				<UsageDescriptionSID>LINOTHORAX_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>4</Evade>
+				<Soak>2</Soak>
+			</Armour>
 			<Armour id="leather_armour">
 				<DescriptionSID>LEATHER_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_ARMOUR_USAGE_SID</UsageDescriptionSID>
@@ -30531,7 +30550,7 @@
 					</Property>
 				</Properties>
 				<Evade>0</Evade>
-				<Soak>2</Soak>
+				<Soak>3</Soak>
 			</Armour>
 			<Armour id="_hide_armour">
 				<DescriptionSID>HIDE_ARMOUR_SID</DescriptionSID>
