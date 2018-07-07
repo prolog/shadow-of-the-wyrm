@@ -48,9 +48,9 @@ local function race_running()
 
   if race_running == "true" then
     return true
-  else
-    return false
   end
+
+  return false
 end
 
 -- All the turtles rest at least a little.  Some might be really lazy...
@@ -67,8 +67,7 @@ local function ready_turtles(coords)
   end
 end
 
-local function run_race()
-  local coords = {{4,25},{5,25},{6,25}}
+local function initialize_turtles_and_racemaster(coords, racem_id)
   local names = {}
   local turtle_ids = {}
   local turtles = true
@@ -86,8 +85,7 @@ local function run_race()
     set_turtle_laziness(v)
   end
 
-  local turtle_ids_csv = fn.array_to_csv(turtle_ids)
-  local racem_id = args[SPEAKING_CREATURE_ID]
+  local turtle_ids_csv = fn.array_to_csv(turtle_ids, racem_id)
 
   -- Each turtle needs to know all the other turtle ids so that when
   -- one wins, the race can be nicely reset.
@@ -95,6 +93,14 @@ local function run_race()
     set_creature_additional_property(v, turtle_ids_prop, turtle_ids_csv)
     set_creature_additional_property(v, racemaster_id_prop, racem_id)
   end
+
+  return names, turtle_ids, turtles
+end
+
+local function run_race()
+  local coords = {{4,25},{5,25},{6,25}}
+  local racem_id = args[SPEAKING_CREATURE_ID]
+  local names, turtle_ids, turtles = initialize_turtles_and_racemaster(coords, racem_id)
 
   if turtles == true then
     local do_race = add_confirmation_message("RACEMASTER_SPEECH_TEXT_SID")
