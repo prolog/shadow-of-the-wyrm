@@ -105,6 +105,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_DOOR_BUCKLED;
     static const std::string ACTION_KICK_DOOR_UNMOVED;
     static const std::string ACTION_KICK_TABLE;
+    static const std::string ACTION_KICK_SLOT_MACHINE;
     static const std::string ACTION_KICK_SPRAIN_LEG;
     static const std::string ACTION_APPLY_TRAP_TOO_FAR;
     static const std::string ACTION_FORGE_NO_SUITABLE_HAMMER;
@@ -187,6 +188,10 @@ class ActionTextKeys
     static const std::string ACTION_ANGRY;
     static const std::string ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM;
     static const std::string ACTION_ENRAGED_SHOPKEEPER;
+    static const std::string ACTION_SLOT_MACHINE_USE;
+    static const std::string ACTION_SLOT_MACHINE_NSF;
+    static const std::string ACTION_DEALER_WIN_SID;
+    static const std::string ACTION_DEALER_LOSE_SID;
 
   protected:
     ActionTextKeys();

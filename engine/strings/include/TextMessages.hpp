@@ -37,6 +37,8 @@ class TextMessages
     static std::string get_replacement_message(const std::string& message, const std::string& replace);
     static std::string get_bool_sid(const bool val);
     static std::string get_character_creation_synopsis(const CreatureSex cs, RacePtr race, ClassPtr cur_class, DeityPtr cur_deity);
+    static std::string get_slot_machine_message(const int cost, const int pct_chance_win, const int payout_amount);
+    static std::string get_slot_machine_outcome_message(const std::string& first_sid, const std::string& second_sid, const std::string& third_sid);
 
   protected:
     TextMessages();
@@ -61,4 +63,6 @@ class TextMessages
     static const std::string SPECIAL_DAY_MESSAGE;
     static const std::string ENGRAVING_MESSAGE;
     static const std::string INSCRIPTION_MESSAGE;
+    static const std::string SLOT_MACHINE_MESSAGE;
+    static const std::string SLOT_MACHINE_OUTCOME_MESSAGE;
 };

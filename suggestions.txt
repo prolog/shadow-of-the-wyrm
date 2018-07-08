@@ -1,7 +1,7 @@
 Me:
 - Buildings generated in towns should automatically get inhabitants
   somehow.
-- Implement blackjack, slot machines.
+- Implement blackjack.
 - Houses, ruined houses, inhabitants
 - More birds around the tower top
 - More inhabitants in the base of the tower

@@ -9,6 +9,7 @@
 #include "BarrelManipulator.hpp"
 #include "JewelerWorkbenchManipulator.hpp"
 #include "SarcophagusManipulator.hpp"
+#include "SlotMachineManipulator.hpp"
 #include "TableManipulator.hpp"
 #include "TanneryManipulator.hpp"
 #include "TrapManipulator.hpp"
@@ -73,6 +74,10 @@ IFeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(FeaturePtr
     else if (class_id == ClassIdentifier::CLASS_ID_TABLE)
     {
       manipulator = std::make_shared<TableManipulator>(feature);
+    }
+    else if (class_id == ClassIdentifier::CLASS_ID_SLOT_MACHINE)
+    {
+      manipulator = std::make_shared<SlotMachineManipulator>(feature);
     }
     // All other features
     else
