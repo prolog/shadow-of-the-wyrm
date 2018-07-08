@@ -14,6 +14,7 @@
 #include "XMLJewelerWorkbenchReader.hpp"
 #include "XMLPewReader.hpp"
 #include "XMLSarcophagusReader.hpp"
+#include "XMLSlotMachineReader.hpp"
 #include "XMLStoneMarkerReader.hpp"
 #include "XMLTableReader.hpp"
 #include "XMLTanneryReader.hpp"
@@ -95,6 +96,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Table")).is_null())
     {
       feature_creator = std::make_shared<XMLTableReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "SlotMachine")).is_null())
+    {
+      feature_creator = std::make_shared<XMLSlotMachineReader>();
     }
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "BasicFeature")).is_null())
     {

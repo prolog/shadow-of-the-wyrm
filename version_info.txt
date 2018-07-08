@@ -39,7 +39,9 @@ Shadow of the Wyrm v0.7.4 "Dalza"
     and it's grown a bit ramshackle and untended.  There are few roads. 
     
     - The old gambling house still stands, recently renovated.  Its
-      winnings are locked away in a vault, and closely guarded.
+      winnings are locked away in a vault, and closely guarded.  There
+      are tables for dice and card games, as well as a number of slot
+      machines.
       
   - Besides some old houses and a graveyard, there is an ancient sewer
     from an earlier empire by the east gate.
@@ -107,9 +109,6 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
 - Thengil in Stoneheim now appropriately has a forge (Troubler).
 
-- New feature type, table, mostly for flavour in the casino (and a pun
-  when you kick them, of course).
-  
 - You can now descend into wells.
 
 - Pathfinding has been updated to favour cardinal directions when
@@ -127,6 +126,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
 - New items: salted nuts, skewer of mystery meat, wizard staff, 
   linothorax.
+
+- New features: table, slot machine.
 
 - New artifacts: skeleton key.
 

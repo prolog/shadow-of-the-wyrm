@@ -3,7 +3,9 @@
 #include "Door.hpp"
 #include "Feature.hpp"
 #include "Sarcophagus.hpp"
+#include "SlotMachine.hpp"
 #include "Trap.hpp"
+
 enum struct PewDirection
 {
   PEW_DIRECTION_NORTH_SOUTH = 0,
@@ -28,6 +30,7 @@ class FeatureGenerator
     static FeaturePtr generate_pew(const PewDirection pew_direction = PewDirection::PEW_DIRECTION_NORTH_SOUTH);
     static FeaturePtr generate_bench();
     static SarcophagusPtr generate_sarcophagus(const MaterialType material_type = MaterialType::MATERIAL_TYPE_STONE);
+    static SlotMachinePtr generate_slot_machine(const MaterialType material_type, const int cost, const int pct_chance_win, const float payout_multiplier);
     static FeaturePtr generate_tannery();
     static FeaturePtr generate_jeweler_workbench();
     static FeaturePtr generate_wheel_and_loom();

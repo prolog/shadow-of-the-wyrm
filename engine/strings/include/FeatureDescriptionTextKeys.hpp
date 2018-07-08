@@ -32,7 +32,7 @@ class FeatureDescriptionTextKeys
     static const std::string FEATURE_DESCRIPTION_BED;
     static const std::string FEATURE_DESCRIPTION_STONE_MARKER;
     static const std::string FEATURE_DESCRIPTION_TABLE;
-
+    static const std::string FEATURE_DESCRIPTION_SLOT_MACHINE;
   protected:
     FeatureDescriptionTextKeys();
 };
