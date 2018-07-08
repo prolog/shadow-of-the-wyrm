@@ -917,6 +917,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\NeutralAltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\PewManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\SarcophagusManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\features\include\SlotMachineManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\TanneryManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\TrapManipulator.hpp" />
@@ -1848,6 +1849,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />
+    <ClCompile Include="engine\maps\tiles\features\source\SlotMachineManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\TableManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\unit_tests\EvilAltarManipulator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

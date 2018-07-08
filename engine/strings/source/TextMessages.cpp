@@ -40,6 +40,8 @@ const string TextMessages::EXPERIENCE_SYNOPSIS_MAX_MESSAGE    = "EXPERIENCE_SYNO
 const string TextMessages::SPECIAL_DAY_MESSAGE                = "SPECIAL_DAY_MESSAGE";
 const string TextMessages::ENGRAVING_MESSAGE                  = "ENGRAVING_MESSAGE";
 const string TextMessages::INSCRIPTION_MESSAGE                = "INSCRIPTION_MESSAGE";
+const string TextMessages::SLOT_MACHINE_MESSAGE               = "SLOT_MACHINE_MESSAGE";
+const string TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE       = "SLOT_MACHINE_OUTCOME_MESSAGE";
 
 string TextMessages::get_player_description(const string& player_name)
 {
@@ -550,4 +552,26 @@ string TextMessages::get_character_creation_synopsis(const CreatureSex cs, RaceP
   boost::trim(synopsis);
 
   return synopsis;
+}
+
+string TextMessages::get_slot_machine_message(const int cost, const int pct_chance_win, const int payout_amount)
+{
+  string msg = StringTable::get(TextMessages::SLOT_MACHINE_MESSAGE);
+
+  boost::replace_first(msg, "%s", to_string(cost));
+  boost::replace_first(msg, "%s", to_string(pct_chance_win));
+  boost::replace_first(msg, "%s", to_string(payout_amount));
+
+  return msg;
+}
+
+string TextMessages::get_slot_machine_outcome_message(const string& first_sid, const string& second_sid, const string& third_sid)
+{
+  string msg = StringTable::get(TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE);
+
+  boost::replace_first(msg, "%s", StringTable::get(first_sid));
+  boost::replace_first(msg, "%s", StringTable::get(second_sid));
+  boost::replace_first(msg, "%s", StringTable::get(third_sid));
+
+  return msg;
 }

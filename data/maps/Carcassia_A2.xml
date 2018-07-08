@@ -191,7 +191,7 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
-				<Row>4</Row>
+				<Row>8</Row>
 				<Col>5</Col>
 			</Coord>
 			<SlotMachine>
@@ -202,19 +202,8 @@
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
-				<Row>5</Row>
-				<Col>5</Col>
-			</Coord>
-			<SlotMachine>
-				<Cost>5</Cost>
-				<PctChanceWin>30</PctChanceWin>
-				<PayoutMultiplier>2</PayoutMultiplier>
-			</SlotMachine>
-		</FeaturePlacement>
-		<FeaturePlacement>
-			<Coord>
-				<Row>7</Row>
-				<Col>5</Col>
+				<Row>8</Row>
+				<Col>7</Col>
 			</Coord>
 			<SlotMachine>
 				<Cost>10</Cost>
@@ -225,40 +214,18 @@
 		<FeaturePlacement>
 			<Coord>
 				<Row>8</Row>
-				<Col>5</Col>
+				<Col>9</Col>
 			</Coord>
 			<SlotMachine>
-				<Cost>20</Cost>
-				<PctChanceWin>30</PctChanceWin>
-				<PayoutMultiplier>2</PayoutMultiplier>
-			</SlotMachine>
-		</FeaturePlacement>
-		<FeaturePlacement>
-			<Coord>
-				<Row>4</Row>
-				<Col>13</Col>
-			</Coord>
-			<SlotMachine>
-				<Cost>25</Cost>
+				<Cost>50</Cost>
 				<PctChanceWin>25</PctChanceWin>
 				<PayoutMultiplier>3</PayoutMultiplier>
 			</SlotMachine>
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
-				<Row>5</Row>
-				<Col>13</Col>
-			</Coord>
-			<SlotMachine>
-				<Cost>50</Cost>
-				<PctChanceWin>20</PctChanceWin>
-				<PayoutMultiplier>4</PayoutMultiplier>
-			</SlotMachine>
-		</FeaturePlacement>
-		<FeaturePlacement>
-			<Coord>
-				<Row>7</Row>
-				<Col>13</Col>
+				<Row>8</Row>
+				<Col>11</Col>
 			</Coord>
 			<SlotMachine>
 				<Cost>100</Cost>

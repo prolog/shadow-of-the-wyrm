@@ -515,6 +515,7 @@ const string ActionTextKeys::ACTION_KICK_DOOR_DESTROYED        = "ACTION_KICK_DO
 const string ActionTextKeys::ACTION_KICK_DOOR_BUCKLED          = "ACTION_KICK_DOOR_BUCKLED";
 const string ActionTextKeys::ACTION_KICK_DOOR_UNMOVED          = "ACTION_KICK_DOOR_UNMOVED";
 const string ActionTextKeys::ACTION_KICK_TABLE                 = "ACTION_KICK_TABLE";
+const string ActionTextKeys::ACTION_KICK_SLOT_MACHINE          = "ACTION_KICK_SLOT_MACHINE";
 const string ActionTextKeys::ACTION_KICK_SPRAIN_LEG            = "ACTION_KICK_SPRAIN_LEG";
 const string ActionTextKeys::ACTION_APPLY_TRAP_TOO_FAR         = "ACTION_APPLY_TRAP_TOO_FAR";
 const string ActionTextKeys::ACTION_FORGE_NO_SUITABLE_HAMMER   = "ACTION_FORGE_NO_SUITABLE_HAMMER";
@@ -593,6 +594,10 @@ const string ActionTextKeys::ACTION_REPOP_SHOP                 = "ACTION_REPOP_S
 const string ActionTextKeys::ACTION_ANGRY                      = "ACTION_ANGRY";
 const string ActionTextKeys::ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM = "ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM";
 const string ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER         = "ACTION_ENRAGED_SHOPKEEPER";
+const string ActionTextKeys::ACTION_SLOT_MACHINE_USE           = "ACTION_SLOT_MACHINE_USE";
+const string ActionTextKeys::ACTION_SLOT_MACHINE_NSF           = "ACTION_SLOT_MACHINE_NSF";
+const string ActionTextKeys::ACTION_DEALER_WIN_SID             = "DEALER_WIN_SID"; // Match the values from the Lua scripts.
+const string ActionTextKeys::ACTION_DEALER_LOSE_SID            = "DEALER_LOSE_SID"; // Match the values from the Lua scripts.
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
