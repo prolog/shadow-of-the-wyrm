@@ -18,6 +18,7 @@
 #include "NeutralAltar.hpp"
 #include "Pew.hpp"
 #include "RegularStatues.hpp"
+#include "SlotMachine.hpp"
 #include "StoneMarker.hpp"
 #include "Table.hpp"
 #include "Tannery.hpp"
@@ -107,6 +108,7 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr stone_marker       = std::make_shared<StoneMarker>();
   FeaturePtr table              = std::make_shared<Table>();
   FeaturePtr basic_feature      = std::make_shared<BasicFeature>();
+  FeaturePtr slot_machine       = std::make_shared<SlotMachine>();
 
   feature_map = FeatureSerializationMap{{ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
                                         {ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -135,7 +137,8 @@ void FeatureGenerator::initialize_feature_map()
                                         {ClassIdentifier::CLASS_ID_BED, bed},
                                         {ClassIdentifier::CLASS_ID_STONE_MARKER, stone_marker},
                                         {ClassIdentifier::CLASS_ID_TABLE, table},
-                                        {ClassIdentifier::CLASS_ID_BASIC_FEATURE, basic_feature}};
+                                        {ClassIdentifier::CLASS_ID_BASIC_FEATURE, basic_feature},
+                                        {ClassIdentifier::CLASS_ID_SLOT_MACHINE, slot_machine}};
 }
 
 
@@ -230,8 +233,14 @@ FeaturePtr FeatureGenerator::generate_bench()
 SarcophagusPtr FeatureGenerator::generate_sarcophagus(const MaterialType material_type)
 {
   SarcophagusPtr sarcophagus = std::make_shared<Sarcophagus>(material_type);
-
   return sarcophagus;
+}
+
+// Generate a slot machine
+SlotMachinePtr FeatureGenerator::generate_slot_machine(const MaterialType material_type, const int cost, const int pct_chance_win, const float payout_multiplier)
+{
+  SlotMachinePtr slot_machine = std::make_shared<SlotMachine>(material_type, cost, pct_chance_win, payout_multiplier);
+  return slot_machine;
 }
 
 // Generate a forge

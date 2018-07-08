@@ -216,6 +216,7 @@
 				<xs:element name="StoneMarker" type="tns:Feature"/>
 				<xs:element name="Table" type="tns:Feature"/>
 				<xs:element name="BasicFeature" type="tns:Feature"/>
+				<xs:element name="SlotMachine" type="tns:SlotMachine"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
@@ -346,6 +347,16 @@
 			<xs:extension base="tns:Feature">
 			</xs:extension>
 		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SlotMachine">
+		<xs:annotation>
+			<xs:documentation>A slot machine in a casino.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Cost" type="xs:int"/>
+			<xs:element name="PctChanceWin" type="xs:int"/>
+			<xs:element name="PayoutMultiplier" type="xs:float"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Entrance">
 		<xs:annotation>

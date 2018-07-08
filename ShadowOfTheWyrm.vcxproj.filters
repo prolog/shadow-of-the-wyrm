@@ -4182,6 +4182,12 @@
     <ClInclude Include="engine\scripting\include\MoveScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\features\include\SlotMachine.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLSlotMachineReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8329,6 +8335,15 @@
     </ClCompile>
     <ClCompile Include="engine\scripting\source\MoveScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\SlotMachine.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\SlotMachine_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLSlotMachineReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
