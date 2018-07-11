@@ -88,7 +88,7 @@ bool SlotMachineManipulator::handle(TilePtr tile, CreaturePtr creature)
 
             if (creature_tile != nullptr)
             {
-              creature_tile->get_items()->merge_or_add(winnings, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              creature_tile->get_items()->merge_or_add(winnings, InventoryAdditionType::INVENTORY_ADDITION_BACK); 
             }
 
             sf1 = sf2 = sf3 = sf.at(RNG::range(0, sf.size()-1));
