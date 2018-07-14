@@ -13,19 +13,19 @@ pair<int, int> SettlementGeneratorUtils::get_door_location(const int start_row, 
 
   switch (door_direction)
   {
-  case CardinalDirection::CARDINAL_DIRECTION_NORTH:
-    result = make_pair(start_row, (start_col + end_col) / 2);
-    break;
-  case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
-    result = make_pair(end_row, (start_col + end_col) / 2);
-    break;
-  case CardinalDirection::CARDINAL_DIRECTION_EAST:
-    result = make_pair((start_row + end_row) / 2, end_col);
-    break;
-  case CardinalDirection::CARDINAL_DIRECTION_WEST:
-    result = make_pair((start_row + end_row) / 2, start_col);
-  default:
-    break;
+    case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+      result = make_pair(start_row, (start_col + end_col) / 2);
+      break;
+    case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+      result = make_pair(end_row, (start_col + end_col) / 2);
+      break;
+    case CardinalDirection::CARDINAL_DIRECTION_EAST:
+      result = make_pair((start_row + end_row) / 2, end_col);
+      break;
+    case CardinalDirection::CARDINAL_DIRECTION_WEST:
+      result = make_pair((start_row + end_row) / 2, start_col);
+    default:
+      break;
   }
 
   return result;
