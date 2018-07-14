@@ -10,6 +10,7 @@ HouseSectorFeature::HouseSectorFeature()
 }
 
 HouseSectorFeature::HouseSectorFeature(const bool ruined)
+: growth_rate(100)
 {
   if (ruined)
   {

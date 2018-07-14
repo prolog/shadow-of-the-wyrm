@@ -114,6 +114,7 @@ int map_get_name_sid(lua_State* ls);
 int map_get_dimensions(lua_State* ls);
 int map_get_available_creature_coords(lua_State* ls);
 int map_get_tile(lua_State* ls);
+int map_do_tiles_in_range_match_type(lua_State* ls);
 int log(lua_State* ls);
 int get_player_title(lua_State* ls);
 int set_creature_current_hp(lua_State* ls);

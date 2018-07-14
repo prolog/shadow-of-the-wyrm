@@ -257,6 +257,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_get_dimensions", map_get_dimensions);
   lua_register(L, "map_get_available_creature_coords", map_get_available_creature_coords);
   lua_register(L, "map_get_tile", map_get_tile);
+  lua_register(L, "map_do_tiles_in_range_match_type", map_do_tiles_in_range_match_type);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
@@ -3452,6 +3453,50 @@ int map_get_tile(lua_State* ls)
   }
 
   return 0;
+}
+
+int map_do_tiles_in_range_match_type(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 6 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y1 = lua_tointeger(ls, 2);
+    int x1 = lua_tointeger(ls, 3);
+    int y2 = lua_tointeger(ls, 4);
+    int x2 = lua_tointeger(ls, 5);
+    TileType tt = static_cast<TileType>(lua_tointeger(ls, 6));
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      for (int y = y1; y <= y2; y++)
+      {
+        for (int x = x1; x <= x2; x++)
+        {
+          TilePtr tile = map->at(y,x);
+
+          if (tile != nullptr)
+          {
+            if (tile->get_tile_type() != tt)
+            {
+              lua_pushboolean(ls, false);
+              return 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_do_tiles_in_range_match_type");
+  }
+
+  lua_pushboolean(ls, true);
+  return 1;
 }
 
 // log some text in the given log level.

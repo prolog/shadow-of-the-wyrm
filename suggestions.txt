@@ -1,6 +1,6 @@
 Me:
 - Buildings generated in towns should automatically get inhabitants
-  somehow.
+  and features somehow.
 - Implement blackjack.
 - Houses, ruined houses, inhabitants
 - More birds around the tower top

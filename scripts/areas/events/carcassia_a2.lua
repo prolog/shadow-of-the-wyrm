@@ -50,8 +50,28 @@ local function setup_turtle_track(map_id)
 end
 
 local function setup_dynamic_content(map_id)
+  log(CLOG_ERROR, "Got here")
   -- South of the casino is always a graveyard
   generate_city_feature(map_id, 11, 4, 18, 18, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL, 1)
+
+  -- For the rest of the city features, generate random coordinates, and
+  -- try to place the feature, checking first to make sure the area's
+  -- clear.  Because there will be a lot of places where things can't be
+  -- generated, run the algorithm a number of times to try to luck out.
+  for i=1,80 do
+    local y = RNG_range(3,10)
+    local y2 = y + RNG_range(5,8)
+
+    local x = RNG_range(20,70)
+    local x2 = x + RNG_range(6, 10)
+
+    -- Ensure that each feature has a "border" of passable tiles around
+    -- it so that the map remains connected.
+    if map_do_tiles_in_range_match_type(map_id, y, x, y2, x2, CTILE_TYPE_FIELD) then
+      generate_city_feature(map_id, y+1, x+1, y2-1, x2-1, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL)
+    end
+  end
+
 end
 
 function init_carcassia_a2(map_id)
