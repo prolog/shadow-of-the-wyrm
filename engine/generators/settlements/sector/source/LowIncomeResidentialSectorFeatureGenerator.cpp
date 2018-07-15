@@ -1,15 +1,19 @@
 #include "LowIncomeResidentialSectorFeatureGenerator.hpp"
+#include "GardenGeneratorFactory.hpp"
 #include "GraveyardGeneratorFactory.hpp"
 #include "HouseSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SectorFeature.hpp"
+#include "ShopSectorFeature.hpp"
 
 using namespace std;
 
-
 LowIncomeResidentialSectorFeatureGenerator::LowIncomeResidentialSectorFeatureGenerator()
-: features({{80, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_HOUSE},
-            {100, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_GRAVES}})
+: features({{55, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_HOUSE},
+            {65, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_GRAVES},
+            {80, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_VEGETABLE_GARDEN},
+            {90, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP},
+            {100, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP}})
 {
 }
 
@@ -40,9 +44,24 @@ bool LowIncomeResidentialSectorFeatureGenerator::create_feature(MapPtr map, cons
       break;
     }
     case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_GRAVES:
-    default:
     {
       feature = GraveyardGeneratorFactory::create_graveyard_sector_generator();
+      break;
+    }
+    case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_VEGETABLE_GARDEN:
+    {
+      feature = GardenGeneratorFactory::create_garden_generator(GardenType::GARDEN_TYPE_VEGETABLE);
+      break;
+    }
+    case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_ROCK_GARDEN:
+    {
+      feature = GardenGeneratorFactory::create_garden_generator(GardenType::GARDEN_TYPE_ROCK);
+      break;
+    }
+    case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP:
+    default:
+    {
+      feature = make_shared<ShopSectorFeature>();
       break;
     }
   }

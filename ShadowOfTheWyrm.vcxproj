@@ -763,6 +763,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\rooms\include\XRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BaseSettlementGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\Building.hpp" />
+    <ClInclude Include="engine\generators\settlements\include\BuildingConfigFactory.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp" />
     <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp" />
@@ -1786,6 +1787,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\settlements\sector\source\WildflowerGardenGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BaseSettlementGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\Building.cpp" />
+    <ClCompile Include="engine\generators\settlements\source\BuildingConfigFactory.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp" />
     <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\HamletGenerator.cpp" />

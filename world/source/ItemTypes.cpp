@@ -11,6 +11,7 @@ ItemIdKeys::~ItemIdKeys()
 {
 }
 
+const string ItemIdKeys::ITEM_ID_CLAY_POT         = "_clay_pot";
 const string ItemIdKeys::ITEM_ID_CURRENCY         = "_currency";
 const string ItemIdKeys::ITEM_ID_BRANCH           = "_branch";
 const string ItemIdKeys::ITEM_ID_BOUGH            = "_bough";

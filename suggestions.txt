@@ -1,14 +1,10 @@
 Me:
-- Buildings generated in towns should automatically get inhabitants
-  and features somehow.
+- Buildings generated in towns should automatically get inhabitants.
 - Implement blackjack.
-- Houses, ruined houses, inhabitants
 - More birds around the tower top
 - More inhabitants in the base of the tower
-- Quests in the tower (accessible only to guild members)
-- Traps in the tombs.
 - Signs, sign for pub in Carcassia
-- Quests out of the pub in Carcassia
+- Quests out of Old Town
 - No teleport spell!
 - Around the thieves guild should be a hidden, diggable area.
 - Sections of Carcassia should be open to random generation, with some

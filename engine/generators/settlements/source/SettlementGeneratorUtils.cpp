@@ -1,6 +1,7 @@
 #include "SettlementGeneratorUtils.hpp"
 #include "FeatureGenerator.hpp"
 #include "GardenGeneratorFactory.hpp"
+#include "ItemManager.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
@@ -163,6 +164,12 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
       }
     }
 
+    if (growth_rate == 100)
+    {
+      generate_building_features(map, bgp);
+      generate_building_objects(map, bgp);
+    }
+
     // Create door
     pair<int, int> door_location = SettlementGeneratorUtils::get_door_location(start_row, end_row, start_col, end_col, door_direction);
     TilePtr door_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
@@ -182,3 +189,64 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
   return generated;
 }
 
+
+void SettlementGeneratorUtils::generate_building_features(MapPtr map, const BuildingGenerationParameters& bgp)
+{
+  if (map != nullptr)
+  {
+    int start_row = bgp.get_start_row();
+    int end_row = bgp.get_end_row();
+    int start_col = bgp.get_start_col();
+    int end_col = bgp.get_end_col();
+
+    vector<ClassIdentifier> features = bgp.get_features();
+    for (ClassIdentifier ci : features)
+    {
+      int rnd_y = RNG::range(start_row + 1, end_row - 1);
+      int rnd_x = RNG::range(start_col + 1, end_col - 1);
+
+      TilePtr tile = map->at(rnd_y, rnd_x);
+
+      if (tile != nullptr)
+      {
+        FeaturePtr feature = FeatureGenerator::create_feature(ci);
+
+        if (feature != nullptr && !tile->has_feature())
+        {
+          tile->set_feature(feature);
+        }
+      }
+    }
+  }
+}
+
+void SettlementGeneratorUtils::generate_building_objects(MapPtr map, const BuildingGenerationParameters& bgp)
+{
+  if (map != nullptr)
+  {
+    int start_row = bgp.get_start_row();
+    int end_row = bgp.get_end_row();
+    int start_col = bgp.get_start_col();
+    int end_col = bgp.get_end_col();
+
+    vector<string> item_ids = bgp.get_item_ids();
+
+    for (const string& item_id : item_ids)
+    {
+      int rnd_y = RNG::range(start_row + 1, end_row - 1);
+      int rnd_x = RNG::range(start_col + 1, end_col - 1);
+
+      TilePtr tile = map->at(rnd_y, rnd_x);
+
+      if (tile != nullptr)
+      {
+        ItemPtr item = ItemManager::create_item(item_id);
+
+        if (item != nullptr)
+        {
+          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        }
+      }
+    }
+  }
+}

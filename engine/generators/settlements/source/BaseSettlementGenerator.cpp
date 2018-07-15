@@ -1,5 +1,6 @@
 #include <utility>
 #include "BaseSettlementGenerator.hpp"
+#include "BuildingConfigFactory.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "ShopGenerator.hpp"
@@ -51,6 +52,7 @@ void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_ro
   int current_length = 1;
   int current_row = start_row;
   TileGenerator tg;
+  BuildingConfigFactory bcf;
 
   if (rand <= probability)
   {
@@ -73,7 +75,7 @@ void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_ro
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              BuildingGenerationParameters bgp(current_row, current_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST, false);
+              BuildingGenerationParameters bgp(current_row, current_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST, false, bcf.create_house_features(), bcf.create_house_item_ids());
               SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
@@ -93,7 +95,7 @@ void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_ro
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              BuildingGenerationParameters bgp(current_row, current_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST, false);
+              BuildingGenerationParameters bgp(current_row, current_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST, false, bcf.create_house_features(), bcf.create_house_item_ids());
               SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
@@ -138,6 +140,7 @@ void BaseSettlementGenerator::generate_road_south(MapPtr map, const int start_ro
   int counter = BLOCK_SIZE;
   int current_length = 1;
   int current_row = start_row;
+  BuildingConfigFactory bcf;
 
   if (rand <= probability)
   {
@@ -160,7 +163,7 @@ void BaseSettlementGenerator::generate_road_south(MapPtr map, const int start_ro
 
             if (building_size >= block_modifier)
             {
-              BuildingGenerationParameters bgp(start_row, start_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST, false);
+              BuildingGenerationParameters bgp(start_row, start_row + building_size, start_col - building_size - 2, start_col - 2, CardinalDirection::CARDINAL_DIRECTION_EAST, false, bcf.create_house_features(), bcf.create_house_item_ids());
               SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
@@ -180,7 +183,7 @@ void BaseSettlementGenerator::generate_road_south(MapPtr map, const int start_ro
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              BuildingGenerationParameters bgp(start_row, start_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST, false);
+              BuildingGenerationParameters bgp(start_row, start_row + building_size, start_col + 2, start_col + building_size + 2, CardinalDirection::CARDINAL_DIRECTION_WEST, false, bcf.create_house_features(), bcf.create_house_item_ids());
               SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
@@ -226,6 +229,7 @@ void BaseSettlementGenerator::generate_road_east(MapPtr map, const int start_row
   int counter = 1;
   int current_col = start_col;
   int current_length = 1;
+  BuildingConfigFactory bcf;
 
   if (rand <= probability)
   {
@@ -249,7 +253,7 @@ void BaseSettlementGenerator::generate_road_east(MapPtr map, const int start_row
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              BuildingGenerationParameters bgp(start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false);
+              BuildingGenerationParameters bgp(start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false, bcf.create_house_features(), bcf.create_house_item_ids());
               SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
@@ -269,7 +273,7 @@ void BaseSettlementGenerator::generate_road_east(MapPtr map, const int start_row
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              BuildingGenerationParameters bgp(start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH, false);
+              BuildingGenerationParameters bgp(start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH, false, bcf.create_house_features(), bcf.create_house_item_ids());
               SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
@@ -315,6 +319,7 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
   int counter = 1;
   int current_col = start_col;
   int current_length = 1;
+  BuildingConfigFactory bcf;
 
   if (rand <= probability)
   {
@@ -338,7 +343,7 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              BuildingGenerationParameters bgp(start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false);
+              BuildingGenerationParameters bgp(start_row - building_size - 1, start_row - 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false, bcf.create_house_features(), bcf.create_house_item_ids());
               SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }
@@ -358,7 +363,7 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
 
             if (building_size >= MIN_BLOCK_SIZE)
             {
-              BuildingGenerationParameters bgp(start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH, false);
+              BuildingGenerationParameters bgp(start_row + 1, start_row + building_size + 1, current_col, current_col + building_size, CardinalDirection::CARDINAL_DIRECTION_NORTH, false, bcf.create_house_features(), bcf.create_house_item_ids());
               SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
             }
           }

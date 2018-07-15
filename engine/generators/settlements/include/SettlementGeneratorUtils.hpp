@@ -18,4 +18,7 @@ class SettlementGeneratorUtils
   protected:
     SettlementGeneratorUtils();
     ~SettlementGeneratorUtils();
+
+    static void generate_building_features(MapPtr map, const BuildingGenerationParameters& bgp);
+    static void generate_building_objects(MapPtr map, const BuildingGenerationParameters& bgp);
 };
