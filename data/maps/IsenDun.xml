@@ -185,28 +185,28 @@
 		</Creatures>
 		<Items>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>2</Row>
 					<Col>34</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>2</Row>
 					<Col>40</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>5</Row>
 					<Col>34</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>5</Row>
 					<Col>40</Col>

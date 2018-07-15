@@ -34139,7 +34139,7 @@
 					<EffectBonus>30</EffectBonus>
 				</Damage>
 			</Missile>
-			<Missile id="clay_pot">
+			<Missile id="_clay_pot">
 				<DescriptionSID>CLAY_POT_SID</DescriptionSID>
 				<UsageDescriptionSID>CLAY_POT_USAGE_SID</UsageDescriptionSID>
 				<Value>1</Value>

@@ -4191,6 +4191,9 @@
     <ClInclude Include="engine\maps\tiles\features\include\SlotMachineManipulator.hpp">
       <Filter>Header Files\engine\maps\tiles\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\BuildingConfigFactory.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8350,6 +8353,9 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\SlotMachineManipulator.cpp">
       <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\BuildingConfigFactory.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

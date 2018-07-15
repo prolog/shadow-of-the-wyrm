@@ -24,5 +24,5 @@ end
 
 -- Set up the clay pot functions.
 local pot_fn = pot_smash
-items.set_item_fn("clay_pot", "ITEM_EVENT_AMMO_DESTRUCT", pot_fn)
+items.set_item_fn("_clay_pot", "ITEM_EVENT_AMMO_DESTRUCT", pot_fn)
 

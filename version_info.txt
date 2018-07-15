@@ -115,6 +115,10 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   constructing paths.  This prevents some "weird paths" that enemies will
   take to you, that are actually equally optimal, given that diagonal
   moves cost the same as cardinal (Karagy).
+
+- Randomly generated buildings now look like people actually live in them
+  and have features such as beds and tables.  They also have the chance
+  to have items, such as food, clay pots, inkpots, magici shards...
    
 - Stanzas for "Tel and Floridel".
 

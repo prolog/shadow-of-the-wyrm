@@ -1,3 +1,4 @@
+#include "BuildingConfigFactory.hpp"
 #include "CoordUtils.hpp"
 #include "ScatteredSettlementGenerator.hpp"
 #include "RNG.hpp"
@@ -69,6 +70,7 @@ bool ScatteredSettlementGenerator::can_building_be_placed(const int row, const i
 // buildings with all the other buildings generated so far.
 void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
 {
+  BuildingConfigFactory bcf;
   vector<string> no_features;
   Dimensions dim    = map->size();
   int rows          = dim.get_y();
@@ -92,7 +94,7 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
     
     if (can_building_be_placed(row, col, height, width))
     {
-      BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false);
+      BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false, bcf.create_house_features(), bcf.create_house_item_ids());
       SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
       
       Room room(no_features, attempts, col, col+width, row, row+width);

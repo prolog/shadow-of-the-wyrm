@@ -1,3 +1,4 @@
+#include "BuildingConfigFactory.hpp"
 #include "WalledSettlementGenerator.hpp"
 #include "FeatureGenerator.hpp"
 #include "RNG.hpp"
@@ -142,6 +143,7 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
   int height, width;
   CardinalDirection dir;
   int offset_extra = 1;
+  BuildingConfigFactory bcf;
   
   while ((cur_buildings_generated < num_buildings) && (cur_attempts < num_attempts))
   {
@@ -153,7 +155,7 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
     
     if (!SettlementGeneratorUtils::does_building_overlap(map, row, row+height+1, col, col+width+1, offset_extra))
     {
-      BuildingGenerationParameters bgp(row, row + height, col, col + width, dir, false);
+      BuildingGenerationParameters bgp(row, row + height, col, col + width, dir, false, bcf.create_house_features(), bcf.create_house_item_ids());
 
       SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
       cur_buildings_generated++;
