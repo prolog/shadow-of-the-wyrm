@@ -1862,3 +1862,14 @@ They ate their evening meal, and in the din %b
 that carried over cups of watered wine, %b
 the brothers sensed that something had been redefined.
 %p
+If supper was uneasy, so was sleep. %b
+The brothers huddled underneath their skins %b
+and blankets, watching as the night sky crept %b
+above them, shaking out a tangled skein %b
+of stars, each constellation bright and cold. %b
+That night, the insects stopped, the nightjars stilled %b
+to silence.  As the early hours unrolled %b
+to morning, Weyg and Rhone could feel a chill %b
+beyond the weather.  Something queer began to build.
+%p
+
