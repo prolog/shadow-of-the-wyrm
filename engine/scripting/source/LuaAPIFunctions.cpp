@@ -42,6 +42,7 @@
 #include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
+#include "TextDisplayFormatter.hpp"
 #include "TextMessages.hpp"
 #include "TileGenerator.hpp"
 #include "Tool.hpp"
@@ -6728,13 +6729,27 @@ int create_menu(lua_State* ls)
   string selected_id;
   int num_args = lua_gettop(ls);
 
-  if (num_args == 2 && lua_isstring(ls, 1) && lua_istable(ls, 2))
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_istable(ls, 2))
   {
     string title_sid = lua_tostring(ls, 1);
     vector<string> table_options = LuaUtils::get_string_array_from_table(ls, 2);
+    TextDisplayFormatter tdf;
+    vector<TextDisplayPair> tdp;
+    Game& game = Game::instance();
+
+    if (num_args >= 3 && lua_isstring(ls, 3))
+    {
+      string text = StringTable::get(lua_tostring(ls, 3));
+      vector<string> intro_formatted = tdf.format_text(text, Screen::get_lines_displayable_area(game.get_display()));
+
+      for (auto& intro_s : intro_formatted)
+      {
+        tdp.push_back(make_pair(Colour::COLOUR_WHITE, intro_s));
+      }
+    }
 
     {
-      OptionScreen os(Game::instance().get_display(), title_sid, table_options);
+      OptionScreen os(Game::instance().get_display(), title_sid, tdp, table_options);
       string display_s = os.display();
       int input = display_s.at(0);
       char screen_selection = display_s.at(0);
