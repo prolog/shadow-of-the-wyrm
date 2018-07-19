@@ -13,7 +13,7 @@ using namespace boost::algorithm;
 
 // Set up the option screen.
 // The option map is keyed by description to ensure
-OptionScreen::OptionScreen(DisplayPtr new_display, const string& new_title_sid, const vector<string>& new_options) : Screen(new_display), title_sid(new_title_sid), options(new_options)
+OptionScreen::OptionScreen(DisplayPtr new_display, const string& new_title_sid, const vector<TextDisplayPair>& intro_text, const vector<string>& new_options) : Screen(new_display), title_sid(new_title_sid), options(new_options)
 {
   initialize();
 }
@@ -23,9 +23,11 @@ void OptionScreen::initialize()
   title_text_sid = title_sid;
   int i = 0;
 
+  vector<ScreenComponentPtr> opt_screen;
+  add_text(opt_screen, intro_text, false, i);
+
   std::map<char, std::string> selection_map;
   OptionsComponentPtr scr_options = std::make_shared<OptionsComponent>();
-  vector<ScreenComponentPtr> opt_screen;
 
   for (const auto& option : options)
   {

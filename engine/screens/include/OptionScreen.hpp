@@ -8,7 +8,7 @@
 class OptionScreen : public Screen
 {
   public:
-    OptionScreen(DisplayPtr display, const std::string& new_title_sid, const std::vector<std::string>& new_options);
+    OptionScreen(DisplayPtr display, const std::string& new_title_sid, const std::vector<TextDisplayPair>& new_intro_text, const std::vector<std::string>& new_options);
     std::string get_option(const char selection);
 
   protected:
@@ -16,6 +16,7 @@ class OptionScreen : public Screen
 
     std::string title_sid;
 
+    std::vector<TextDisplayPair> intro_text;
     // Use a vector of properties (<"a=b", "c=d", etc>) to ensure ordering of
     // the options is preserved.
     std::vector<std::string> options;
