@@ -12,7 +12,7 @@ function buy_in(buy_in_msg, nsf_msg, decline_msg, amount)
       clear_and_add_message(decline_msg)
     end
   else
-    clear_and_add_message(nsf_message)
+    clear_and_add_message(nsf_msg)
   end
 
   return false
