@@ -6739,7 +6739,10 @@ int create_menu(lua_State* ls)
 
     if (num_args >= 3 && lua_isstring(ls, 3))
     {
-      string text = StringTable::get(lua_tostring(ls, 3));
+      // We may be getting a SID here, but it might be pre-formatted text
+      // as well.
+      string text_sid = lua_tostring(ls, 3);
+      string text = StringTable::get_default(text_sid, text_sid);
       vector<string> intro_formatted = tdf.format_text(text, Screen::get_lines_displayable_area(game.get_display()));
 
       for (auto& intro_s : intro_formatted)
