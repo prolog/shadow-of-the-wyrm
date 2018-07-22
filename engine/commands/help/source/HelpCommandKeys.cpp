@@ -15,3 +15,4 @@ const string HelpCommandKeys::EXIT_HELP = "EXIT_HELP";
 const string HelpCommandKeys::INTRODUCTION_ROGUELIKES = "INTRODUCTION_ROGUELIKES";
 const string HelpCommandKeys::SOTW_HISTORY = "SOTW_HISTORY";
 const string HelpCommandKeys::STRATEGY_BASICS = "STRATEGY_BASICS";
+const string HelpCommandKeys::CASINO_GAMES = "CASINO_GAMES";

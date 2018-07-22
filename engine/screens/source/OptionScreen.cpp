@@ -30,6 +30,8 @@ void OptionScreen::initialize()
   std::map<char, std::string> selection_map;
   OptionsComponentPtr scr_options = std::make_shared<OptionsComponent>();
 
+  int opt_idx = 0;
+
   for (const auto& option : options)
   {
     vector<string> props;
@@ -51,10 +53,10 @@ void OptionScreen::initialize()
         opt_screen.clear();
       }
 
-      selection_map.insert(make_pair('a' + i, props.at(0)));
+      selection_map.insert(make_pair('a' + opt_idx, props.at(0)));
 
       Option current_option;
-      current_option.set_id(i);
+      current_option.set_id(opt_idx);
 
       // Assumption is that the value in the map is always translated
       // (or dynamic, or whatever) and therefore no need to look it up
@@ -65,7 +67,9 @@ void OptionScreen::initialize()
       add_component(opt_screen, scr_options, line_number);
 
       scr_options = std::make_shared<OptionsComponent>();
+
       i++;
+      opt_idx++;
     }
   }
 

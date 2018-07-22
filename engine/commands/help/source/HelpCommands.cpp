@@ -24,6 +24,11 @@ SOTWHistoryCommand::SOTWHistoryCommand(const int key)
 }
 
 StrategyBasicsCommand::StrategyBasicsCommand(const int key)
-  : Command(HelpCommandKeys::STRATEGY_BASICS, key)
+: Command(HelpCommandKeys::STRATEGY_BASICS, key)
+{
+}
+
+CasinoGamesCommand::CasinoGamesCommand(const int key)
+: Command(HelpCommandKeys::CASINO_GAMES, key)
 {
 }

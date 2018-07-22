@@ -1,5 +1,4 @@
 Me:
-- Get create_menu working for blackjack
 - Buildings generated in towns should automatically get inhabitants.
 - Implement blackjack.
 - More birds around the tower top
