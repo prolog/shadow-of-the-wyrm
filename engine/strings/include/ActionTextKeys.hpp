@@ -144,6 +144,7 @@ class ActionTextKeys
     static const std::string ACTION_INTRODUCTION_ROGUELIKES;
     static const std::string ACTION_SOTW_HISTORY;
     static const std::string ACTION_STRATEGY_BASICS;
+    static const std::string ACTION_CASINO_GAMES;
     static const std::string ACTION_FISHING_NO_WATER;
     static const std::string ACTION_FISHING_SPEARFISHING_WATER;
     static const std::string ACTION_FISHING_NO_EQUIPMENT;

@@ -9,6 +9,7 @@ class HelpAction : public IActionManager
     ActionCostValue introduction_roguelikes() const;
     ActionCostValue game_history() const;
     ActionCostValue strategy_basics() const;
+    ActionCostValue casino_games() const;
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
