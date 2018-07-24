@@ -2,6 +2,7 @@ require('dealer')
 
 local hit_id = "hit"
 local stay_id = "stay"
+local buy_in = 50
 
 -- Return a string representation of the card
 local function get_card_value(card)
@@ -100,26 +101,108 @@ local function calculate_score(orig_hand)
   return score
 end
 
-if dealer.buy_in("BLACKJACK_DEALER_SPEECH_TEXT_SID", "BLACKJACK_DEALER_NSF_MESSAGE_SID", "BLACKJACK_DEALER_DECLINE_MESSAGE_SID", 50) then
+local function is_bust(score)
+  if score > 21 then
+    return true
+  else
+    return false
+  end
+end
+
+-- Return a bust message if either the player or dealer has busted.
+-- If neither has busted, return an empty string.
+local function get_bust_msg(p_bust, d_bust)
+  local bust_msg = ""
+
+  if p_bust then
+    bust_msg = get_sid("BLACKJACK_PLAYER_BUST_SID")
+  else
+    if d_bust then
+      bust_msg = get_sid("BLACKJACK_DEALER_BUST_SID")
+    end
+  end
+
+  return bust_msg
+end
+
+local function get_win_msg(p_win, d_win)
+  msg = ""
+
+  if p_win then
+    msg = get_sid("BLACKJACK_PLAYER_WIN_SID")
+  elseif d_win then
+    msg = get_sid("BLACKJACK_DEALER_WIN_SID")
+  end
+
+  return msg
+end
+
+local function is_win(p_score, d_score)
+  if is_bust(d_score) and not is_bust(p_score) then
+    return true
+  else
+    if p_score <= 21 and (d_score >= 17 and d_score < p_score) then
+      return true
+    end
+  end
+
+  return false
+end
+
+if dealer.buy_in("BLACKJACK_DEALER_SPEECH_TEXT_SID", "BLACKJACK_DEALER_NSF_MESSAGE_SID", "BLACKJACK_DEALER_DECLINE_MESSAGE_SID", buy_in) then
   local cards = create_deck()
   local d_hand = {}
   local p_hand = {}
+  local game_over = false
+  local option = ""
 
   for i = 1,2 do
     draw_card(cards, p_hand)
     draw_card(cards, d_hand)
   end
 
-  local p_score = calculate_score(p_hand)
-  local d_score = calculate_score(d_hand)
+  while game_over == false do
+    local p_score = calculate_score(p_hand)
+    local d_score = calculate_score(d_hand)
+    local p_win = is_win(p_score, d_score)
+    local d_win = is_win(d_score, p_score)
+    local p_bust = is_bust(p_score)
+    local d_bust = is_bust(d_score)
 
-  local hand = get_hand_msg("BLACKJACK_PLAYER_HAND_SID", p_hand, p_score)
-  hand = hand .. get_hand_msg("BLACKJACK_DEALER_HAND_SID", d_hand, d_score)
+    local options = {hit_id  .. "=" .. get_sid("BLACKJACK_HIT_SID"),
+                     stay_id .. "=" .. get_sid("BLACKJACK_STAY_SID")}
 
-  local options = {hit_id .. "=" .. get_sid("BLACKJACK_HIT_SID"),
-                   stay_id .. "=" .. get_sid("BLACKJACK_STAY_SID")}
-  local option = create_menu("CARCASSIA_BLACKJACK", options, hand)
+    if p_win then
+      add_object_to_player_tile(CURRENCY_ID, buy_in * 2)
+    end
 
-  -- ...
+    if option == stay_id then
+      table.remove(options, 1)
+    end
+
+    if p_win or p_bust then
+      options = {}
+    end
+
+    local bust_msg = get_bust_msg(p_bust, d_bust)
+    local win_msg = get_win_msg(p_win, d_win)
+
+    local hand = get_hand_msg("BLACKJACK_PLAYER_HAND_SID", p_hand, p_score)
+    hand = hand .. get_hand_msg("BLACKJACK_DEALER_HAND_SID", d_hand, d_score) .. get_bust_msg(p_bust, d_bust)
+
+    option = create_menu("CARCASSIA_BLACKJACK", options, hand)
+
+    if option == hit_id then
+      draw_card(cards, p_hand)
+    end
+
+    if d_score < 17 then
+      draw_card(cards, d_hand)
+    end
+
+    if (option ~= hit_id and option ~= stay_id) then
+      game_over = true
+    end
+  end
 end
 
