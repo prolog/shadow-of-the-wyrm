@@ -1,6 +1,5 @@
 Me:
 - Buildings generated in towns should automatically get inhabitants.
-- Implement blackjack.
 - More birds around the tower top
 - More inhabitants in the base of the tower
 - Signs, sign for pub in Carcassia
