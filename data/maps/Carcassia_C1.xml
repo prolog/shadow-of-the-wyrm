@@ -37,8 +37,59 @@
 	,,##############################################################################
 	</Tiles>
 	<InitialPlacements>
-		<Creatures/>
-		<Items/>
+		<Creatures>
+			<Placement>
+				<ID>snakeling_thug</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>0</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>snakeling_thug</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>1</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>snakeling_thug</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>0</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>snakeling_thug</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>1</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>snakeling_thug</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>0</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>snakeling_thug</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>1</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
+		<Items>
+			<Placement>
+				<ID>calara_cloak</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>1</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits>
 		<Exit>
