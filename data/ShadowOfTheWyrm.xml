@@ -30805,6 +30805,25 @@
 				<Evade>2</Evade>
 				<Soak>1</Soak>
 			</Armour>
+			<Armour id="calara_cloak">
+				<DescriptionSID>CALARA_CLOAK_SID</DescriptionSID>
+				<UsageDescriptionSID>CALARA_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>7</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>3</Evade>
+				<Soak>1</Soak>
+			</Armour>
 			<Armour id="_hide_cloak">
 				<DescriptionSID>HIDE_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_CLOAK_USAGE_SID</UsageDescriptionSID>
@@ -33546,6 +33565,30 @@
 					<NumDice>2</NumDice>
 					<NumSides>4</NumSides>
 					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="calara_whip">
+				<DescriptionSID>CALARA_WHIP_SID</DescriptionSID>
+				<UsageDescriptionSID>CALARA_WHIP_USAGE_SID</UsageDescriptionSID>
+				<Value>60</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>4</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.30</Heat>
+				</Resistances>
+				<Skill>1008</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>42</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>8</NumDice>
+					<NumSides>4</NumSides>
+					<Type>3</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="shepherd_crook">

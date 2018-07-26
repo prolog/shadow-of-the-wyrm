@@ -129,7 +129,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   gambler, pov dealer, blackjack dealer, racemaster, snapping turtle.
 
 - New items: salted nuts, skewer of mystery meat, wizard staff, 
-  linothorax.
+  linothorax, Calara's cloak, Calara's flaming whip.
 
 - New features: table, slot machine.
 
