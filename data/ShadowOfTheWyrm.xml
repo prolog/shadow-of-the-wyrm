@@ -27433,6 +27433,43 @@
 				</Spell>
 			</Spells>
 		</Creature>
+		<Creature id="asher">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>ASHER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ASHER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ASHER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ASHER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>p</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/asher.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">

@@ -1,4 +1,5 @@
 Me:
+- Asher's island
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
 - More inhabitants in the base of the tower
