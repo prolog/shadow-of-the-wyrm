@@ -53,6 +53,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>asher</ID>
+				<Coord>
+					<Row>19</Row>
+					<Col>15</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>snapping_turtle</ID>
 				<Coord>
 					<Row>4</Row>
