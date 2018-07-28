@@ -1,6 +1,11 @@
 require('constants')
 require('areas')
 
+-- Detail's for Asher's islet
+local asher_islet = Area:new(40,48)
+asher_islet:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ASHER_ISLET")
+asher_islet:set_custom_map_id("asher_islet")
+
 -- Details for Serat's dungeon.
 local dungeon = Area:new(43,52)
 local serat_level = RNG_range(6,10)
@@ -18,6 +23,7 @@ carcassia:insert()
 
 local carcassia_island = {}
 
+table.insert(carcassia_island, asher_islet)
 table.insert(carcassia_island, dungeon)
 table.insert(carcassia_island, carcassia)
 
