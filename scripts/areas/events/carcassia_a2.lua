@@ -50,7 +50,6 @@ local function setup_turtle_track(map_id)
 end
 
 local function setup_dynamic_content(map_id)
-  log(CLOG_ERROR, "Got here")
   -- South of the casino is always a graveyard
   generate_city_feature(map_id, 11, 4, 18, 18, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL, 1)
 
