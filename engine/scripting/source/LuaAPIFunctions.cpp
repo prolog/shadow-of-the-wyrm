@@ -214,11 +214,13 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_base_damage", get_creature_base_damage);
   lua_register(L, "set_creature_piety", set_creature_piety);
   lua_register(L, "get_creature_piety", get_creature_piety);
+  lua_register(L, "add_piety", add_piety);
   lua_register(L, "set_creature_intrinsic_resist", set_creature_intrinsic_resist);
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
   lua_register(L, "get_creature_yx", get_creature_yx);
   lua_register(L, "get_creature_id", get_creature_id);
+  lua_register(L, "get_creature_ids", get_creature_ids);
   lua_register(L, "get_creature_base_id", get_creature_base_id);
   lua_register(L, "get_creature_num_broken_conducts", get_creature_num_broken_conducts);
   lua_register(L, "get_current_map_id", get_current_map_id);
@@ -259,6 +261,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_get_available_creature_coords", map_get_available_creature_coords);
   lua_register(L, "map_get_tile", map_get_tile);
   lua_register(L, "map_do_tiles_in_range_match_type", map_do_tiles_in_range_match_type);
+  lua_register(L, "map_creature_ids_have_substring", map_creature_ids_have_substring);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
@@ -2177,6 +2180,43 @@ int get_creature_piety(lua_State* ls)
   return 1;
 }
 
+// Increment the creature's piety towards their current deity.
+int add_piety(lua_State* ls)
+{
+  int new_piety = -1;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int piety_increment = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      string deity_id = creature->get_religion_ref().get_active_deity_id();
+
+      DeityRelations& dr = creature->get_religion_ref().get_deity_relations_ref();
+      auto dr_it = dr.find(deity_id);
+
+      if (dr_it != dr.end())
+      {
+        DeityStatus& ds = dr_it->second;
+        new_piety = ds.get_piety() + piety_increment;
+
+        ds.set_piety(new_piety);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_piety");
+  }
+
+  lua_pushinteger(ls, new_piety);
+  return 1;
+}
+
 // Set a resistance on a creature.
 int set_creature_intrinsic_resist(lua_State* ls)
 {
@@ -2343,6 +2383,55 @@ int get_creature_id(lua_State* ls)
   }
 
   lua_pushstring(ls, creature_id.c_str());
+  return 1;
+}
+
+int get_creature_ids(lua_State* ls)
+{
+  string ids_str;
+  int num_args = lua_gettop(ls);
+  if (num_args >= 1 && lua_isstring(ls, 1))
+  {
+    string map_id = lua_tostring(ls, 1);
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+    bool include_original_id_details = false;
+
+    if (num_args >= 2 && lua_isboolean(ls, 2))
+    {
+      include_original_id_details = lua_toboolean(ls, 2);
+    }
+
+    if (map != nullptr)
+    {
+      vector<string> creature_ids;
+      CreatureMap creatures = map->get_creatures();
+
+      for (auto& c_pair : creatures)
+      {
+        CreaturePtr creature = c_pair.second;
+
+        if (creature != nullptr)
+        {
+          string id_details = creature->get_id();
+          
+          if (include_original_id_details)
+          {
+            id_details = id_details + ":" + creature->get_original_id();
+          }
+
+          creature_ids.push_back(id_details);
+        }
+      }
+
+      ids_str = String::create_csv_from_string_vector(creature_ids);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_ids");
+  }
+
+  lua_pushstring(ls, ids_str.c_str());
   return 1;
 }
 
@@ -3497,6 +3586,47 @@ int map_do_tiles_in_range_match_type(lua_State* ls)
   }
 
   lua_pushboolean(ls, true);
+  return 1;
+}
+
+int map_creature_ids_have_substring(lua_State* ls)
+{
+  bool has_substring = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string map_id = lua_tostring(ls, 1);
+    string creature_id_substr = lua_tostring(ls, 2);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      CreatureMap creatures = map->get_creatures();
+
+      for (const auto& cr_pair : creatures)
+      {
+        CreaturePtr map_creature = cr_pair.second;
+
+        if (map_creature != nullptr)
+        {
+          string creature_id = map_creature->get_original_id();
+
+          if (creature_id.find(creature_id_substr) != string::npos)
+          {
+            has_substring = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_creature_ids_have_substring");
+  }
+
+  lua_pushboolean(ls, has_substring);
   return 1;
 }
 

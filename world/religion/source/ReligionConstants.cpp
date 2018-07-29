@@ -10,7 +10,6 @@ const int ReligionConstants::PIETY_TIER_1 = 0;
 const int ReligionConstants::PIETY_TIER_2 = 2000;
 const int ReligionConstants::PIETY_TIER_3 = 5000;
 const int ReligionConstants::PIETY_TIER_4 = 10000;
-const int ReligionConstants::PIETY_CROWNING = 17000;
 
 ReligionConstants::ReligionConstants()
 {
