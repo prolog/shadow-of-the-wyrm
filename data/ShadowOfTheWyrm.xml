@@ -26650,7 +26650,7 @@
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
-				<DangerLevel>-1</DangerLevel>
+				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>14</NumDice>
@@ -27470,7 +27470,7 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
-		<Creature id="akhra">
+		<Creature id="akhra_goblin">
 			<RaceID>07_goblin</RaceID>
 			<ShortDescriptionSID>AKHRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AKHRA_DESCRIPTION_SID</DescriptionSID>
@@ -27486,7 +27486,7 @@
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
-				<DangerLevel>-1</DangerLevel>
+				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>14</NumDice>
@@ -27498,7 +27498,7 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>28</NumSides>
-				<Type>0</Type>
+				<Type>2</Type>
 			</Damage>
 			<Evade>10</Evade>
 			<Soak>5</Soak>

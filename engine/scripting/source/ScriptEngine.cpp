@@ -5,6 +5,7 @@
 #include "LuaAPIFunctions.hpp"
 #include "LuaItemFilter.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ReligionConstants.hpp"
 #include "ScriptEngine.hpp"
 #include "Serialize.hpp"
 
@@ -74,6 +75,8 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CLOG_DEBUG);
   lua_exportConst(ls, CLOG_INFO);
   lua_exportConst(ls, CLOG_ERROR);
+
+  lua_exportConst(ls, CPIETY_CROWNING);
 
   lua_exportConst(ls, CDIRECTION_SOUTH_WEST);
   lua_exportConst(ls, CDIRECTION_SOUTH);

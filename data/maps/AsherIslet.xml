@@ -40,17 +40,9 @@
 		<Row>8</Row>
 		<Col>0</Col>
 	</PlayerStart>
-	<InitialPlacements>
-		<Placement>
-			<ID>akhra</ID>
-			<Coord>
-				<Row>9</Row>
-				<Col>66</Col>
-			</Coord>
-		</Placement>
-		<!-- The rest of the goblin raiders are placed in script to scatter them randomly
-		     across the islet. -->
-	</InitialPlacements>
+	<!-- All the goblin raiders are placed in script to scatter them randomly
+		 across the islet. -->
+	<InitialPlacements/>
 	<Features>
 		<FeaturePlacement>
 			<Coord>
