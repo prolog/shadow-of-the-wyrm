@@ -1880,5 +1880,15 @@ to be concerning, what-had-been replaced %b
 with what-might-be.  They walked in their own way, %b
 Weyg with a purpose, Rhone without constraint, %b
 meandering, and as he broke away %b
-the morning found the fox-child young and unafraid.
+the hours found the fox-child young and unafraid.
+%p
+And so the green glass morning shimmered, passed %b
+to afternoon so quickly that the clouds %b
+were pulled apart above them.  Now at last %b
+a little sun, some warmth.  But though they vowed %b
+to press ahead, they stopped to take it in: %b
+the startled flutter of the grouse; the way %b
+cordgrass and bluestem caught the wind; and when %b
+the heat and birdsong held, there was a sway %b
+that held the brothers captive in its interplay.
 %p
