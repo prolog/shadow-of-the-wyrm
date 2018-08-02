@@ -197,6 +197,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
  
   - Pickup code was broadcasting further than it should - you could get
     notifications for NPCs picking up items behind walls.
+
+  - Maps weren't being loaded properly when timewalking (Troubler).
           
 Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.

@@ -661,10 +661,11 @@ void Game::process_elapsed_time(const int seconds)
 }
 
 // Get and process the action for the current creature
-ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPtr current_map, const bool reloaded_game)
+ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPtr c_map, const bool reloaded_game)
 {
   ActionCost action_cost;
   Log& log = Log::instance();
+  MapPtr current_map = c_map;
 
   if (current_creature)
   {
@@ -689,6 +690,16 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
       {
         // Comment/un-comment this as necessary to figure out if creatures are taking too long to process turns.
         //boost::timer::auto_cpu_timer timer;
+
+        // Refresh the map.  Even if the turn doesn't advance, the map might
+        // need reloading - e.g., moving off a map/descending a staircase
+        // while timewalking.
+        MapPtr g_curr_map = Game::instance().get_current_map();
+
+        if (current_map && g_curr_map && g_curr_map->get_map_id() != current_map->get_map_id())
+        {
+          current_map = g_curr_map;
+        }
 
         // Skip the creature's action if it is not the player, and does not have LOS of the player.
         // This is necessary for speedup purposes when there are lots of creatures on the map.
