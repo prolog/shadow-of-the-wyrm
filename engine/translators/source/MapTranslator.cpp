@@ -46,10 +46,17 @@ DisplayMap MapTranslator::create_display_map(const bool player_blinded, const Ma
   uint stop_y, stop_x;
   Dimensions map_dim = map->size();
 
+  string map_id;
+
+  if (map != nullptr)
+  {
+    map_id = map->get_map_id();
+  }
+
   // Ensure that we're not trying to walk over the maximum size of our map.
   int display_height = std::min<int>(map_dim.get_y(), display_area.get_height());
   int display_width = std::min<int>(map_dim.get_x(), display_area.get_width());
-  DisplayMap display_map(display_area.get_height(), display_area.get_width());
+  DisplayMap display_map(map_id, display_area.get_height(), display_area.get_width());
 
   // Set the loop's start/stop points based on whether a full redraw is
   // required.  It may have been required as part of the display coordinate

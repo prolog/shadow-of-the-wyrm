@@ -11,10 +11,12 @@ using DisplayMapType = std::unordered_map<std::string, DisplayTile>;
 
 // A DisplayMap is the only map the Display cares about.  It contains
 // DisplayTile info, which in turn contains boiled-down Tile information.
+// It also contains limited debug information, such as the current map
+// ID.
 class DisplayMap
 {
   public:
-    DisplayMap(const int rows, const int cols);
+    DisplayMap(const std::string& map_id, const int rows, const int cols);
     DisplayMap();
 
     // The coordinate on which to place the cursor when done - typically
@@ -27,8 +29,10 @@ class DisplayMap
     Dimensions size() const;
 
     DisplayMapType get_tiles() const;
+    std::string get_map_id() const;
 
   protected:
+    std::string map_id;
     int rows, cols;
     DisplayMapType display_map;
     Coordinate cursor_coordinate;

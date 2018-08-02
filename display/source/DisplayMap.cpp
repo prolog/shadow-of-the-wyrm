@@ -1,10 +1,11 @@
 #include <sstream>
 #include "DisplayMap.hpp"
 #include "MapUtils.hpp"
+
 using namespace std;
 
-DisplayMap::DisplayMap(const int r, const int c)
-: rows(r), cols(c)
+DisplayMap::DisplayMap(const string& new_map_id, const int r, const int c)
+: map_id(new_map_id), rows(r), cols(c)
 {
   // Because display maps' sizes are known in advance,
   // reserve the amount for a speed boost.
@@ -61,4 +62,9 @@ Dimensions DisplayMap::size() const
 DisplayMapType DisplayMap::get_tiles() const
 {
   return display_map;
+}
+
+string DisplayMap::get_map_id() const
+{
+  return map_id;
 }
