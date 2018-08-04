@@ -1,4 +1,7 @@
 Me:
+- Continue working on the temple district
+- Tucked-away well in the temple district that leads to a special map.
+- Fellowship of the Nine.
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
 - More inhabitants in the base of the tower
