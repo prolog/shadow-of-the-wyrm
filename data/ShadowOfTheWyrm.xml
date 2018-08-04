@@ -27503,6 +27503,44 @@
 			<Evade>10</Evade>
 			<Soak>5</Soak>
 		</Creature>
+		<Creature id="axander">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>AXANDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>AXANDER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>AXANDER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>AXANDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/axander.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">
