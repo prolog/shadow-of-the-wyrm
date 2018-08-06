@@ -59,3 +59,10 @@ TEST(SW_World_NullInventory, mark_is_useless)
 
   EXPECT_FALSE(ni.get_marked_for_restack());
 }
+
+TEST(SW_World_NullInventory, get_allows_items)
+{
+  NullInventory ni;
+
+  EXPECT_FALSE(ni.get_allows_items());
+}

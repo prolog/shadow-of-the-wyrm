@@ -70,9 +70,10 @@ bool MapUtils::is_tile_available_for_creature(CreaturePtr creature, TilePtr tile
 // Check to see if a tile is available for an item by checking:
 // - if a blocking feature is present
 // - if the tile type permits movement
+// - if the inventory type isn't null
 bool MapUtils::is_tile_available_for_item(TilePtr tile)
 {
-  return (!tile->get_is_blocking());
+  return (!tile->get_is_blocking() && tile->get_items()->get_allows_items());
 }
 
 // Swap two creatures on their tiles.
@@ -1221,6 +1222,30 @@ map<TileType, vector<TilePtr>> MapUtils::partition_tiles(MapPtr current_map)
   }
 
   return part_tiles;
+}
+
+vector<TilePtr> MapUtils::get_tiles_supporting_items(MapPtr map)
+{
+  vector<TilePtr> tiles;
+
+  if (map != nullptr)
+  {
+    // Be optimistic about how many tiles might be returned.
+    tiles.reserve(map->size().get_y() * map->size().get_x());
+
+    TilesContainer tc = map->get_tiles();
+    for (auto& tc_pair : tc)
+    {
+      TilePtr tile = tc_pair.second;
+
+      if (tile != nullptr && MapUtils::is_tile_available_for_item(tile))
+      {
+        tiles.push_back(tile);
+      }
+    }
+  }
+
+  return tiles;
 }
 
 void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current_map, CreaturePtr anger_creature)
