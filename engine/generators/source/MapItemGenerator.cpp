@@ -1,8 +1,10 @@
 #include "MapItemGenerator.hpp"
+#include "Conversion.hpp"
 #include "CreationUtils.hpp"
 #include "Game.hpp"
 #include "ItemEnchantmentCalculator.hpp"
 #include "ItemGenerationManager.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
 
@@ -93,6 +95,41 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
     else
     {
       unsuccessful_attempts++;
+    }
+  }
+
+  return items_generated;
+}
+
+bool MapItemGenerator::generate_initial_set_items(MapPtr map, const std::map<string, string>& properties)
+{
+  bool items_generated = false;
+
+  // First, check to see if there are any set items specified.
+  auto ii_it = properties.find(MapProperties::MAP_PROPERTIES_INITIAL_ITEMS);
+  if (ii_it != properties.end())
+  {
+    string initial_items_csv = ii_it->second;
+    vector<string> ii_v = String::create_string_vector_from_csv_string(initial_items_csv);
+    vector<TilePtr> item_tiles = MapUtils::get_tiles_supporting_items(map);
+
+    if (!item_tiles.empty())
+    {
+      for (const auto& i_id : ii_v)
+      {
+        TilePtr tile = item_tiles.at(RNG::range(0, item_tiles.size() - 1));
+
+        if (tile != nullptr)
+        {
+          ItemPtr item = ItemManager::create_item(i_id);
+          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+          if (!items_generated)
+          {
+            items_generated = true;
+          }
+        }
+      }
     }
   }
 

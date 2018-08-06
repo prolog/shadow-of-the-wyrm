@@ -4,6 +4,10 @@ require('map_events')
 
 local map_id = "carcassia_b2"
 
+local function setup_properties(map_id)
+  map_set_tile_property(map_id, 18, 76, "MAP_PROPERTIES_INITIAL_ITEMS", "smite_spellbook")
+end
+
 local function setup_vault(map_id)
   local trap_squares = {{10,55},{11,54},{11,55},{11,56},{12,55}}
 
@@ -29,6 +33,7 @@ local function setup_vault(map_id)
 end
 
 local function init_carcassia_b2(map_id)
+  setup_properties(map_id)
   setup_vault(map_id)
 end
 

@@ -88,6 +88,7 @@ class MapUtils
     static std::multimap<int, std::pair<std::string, Coordinate>> create_distance_map(CreaturePtr creature, MapPtr map, bool hostile_only);
 
     static std::map<TileType, std::vector<TilePtr>> partition_tiles(MapPtr map);
+    static std::vector<TilePtr> get_tiles_supporting_items(MapPtr map);
 
     static void anger_shopkeeper_if_necessary(const Coordinate& current_coords, MapPtr current_map, CreaturePtr anger_creature);
 

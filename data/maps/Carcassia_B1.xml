@@ -37,7 +37,15 @@
 	,,####..............................#####################...####################
 	</Tiles>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<ID>wart</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>4</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 		<Items/>
 	</InitialPlacements>
 	<Exits>

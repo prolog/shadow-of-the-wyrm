@@ -16,6 +16,7 @@
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
+#include "MapItemGenerator.hpp"
 #include "MapProperties.hpp"
 #include "MapScript.hpp"
 #include "MapTypeQueryFactory.hpp"
@@ -734,7 +735,7 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
 {
   ActionCostValue acv = 0;
 
-  if (new_map)
+  if (new_map && current_tile)
   {
     // The map may have a set of creatures defined (e.g., a custom map with a
     // list of creatures set programmatically by a script).  Generate these,
@@ -745,6 +746,12 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
       mcg.generate_initial_set_creatures(new_map, current_tile->get_additional_properties());
 
       current_tile->remove_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
+    }
+
+    if (current_tile->has_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_ITEMS))
+    {
+      MapItemGenerator mig;
+      mig.generate_initial_set_items(new_map, current_tile->get_additional_properties());
     }
 
     move_to_new_map(current_tile, old_map, new_map);
