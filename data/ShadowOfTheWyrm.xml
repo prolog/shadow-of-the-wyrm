@@ -7824,6 +7824,53 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="presence">
+			<RaceID>_demon</RaceID>
+			<ShortDescriptionSID>PRESENCE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PRESENCE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PRESENCE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PRESENCE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>P</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>4000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>7</Type>
+				<StatusAilments>
+					<Status>_spellb</Status>
+				</StatusAilments>
+			</Damage>
+		</Creature>
 		<Creature id="tangleweed">
 			<RaceID>_plant</RaceID>
 			<ShortDescriptionSID>TANGLEWEED_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
