@@ -4194,6 +4194,9 @@
     <ClInclude Include="engine\generators\settlements\include\BuildingConfigFactory.hpp">
       <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\ReligiousCommercialSectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8356,6 +8359,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\BuildingConfigFactory.cpp">
       <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\ReligiousCommercialSectorFeatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
