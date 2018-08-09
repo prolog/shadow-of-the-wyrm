@@ -1,6 +1,5 @@
 Me:
-- Move initial item generation code to MovementAction::handle_properties_
-  and_move_to_new_map.
+- Gardens by the palace entrance should be wildflower.
 - Continue working on the temple district
 - Tucked-away well in the temple district that leads to a special map.
 - Spellbook not loading

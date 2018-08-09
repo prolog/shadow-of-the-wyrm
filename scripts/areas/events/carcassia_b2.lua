@@ -32,9 +32,15 @@ local function setup_vault(map_id)
   end
 end
 
+local function setup_dynamic_content(map_id)
+  generate_city_feature(map_id, 13, 22, 18, 39, CCITY_SECTOR_RELIGIOUS_COMMERCIAL)
+  generate_city_feature(map_id, 13, 0, 18, 18, CCITY_SECTOR_RELIGIOUS_COMMERCIAL)
+end
+
 local function init_carcassia_b2(map_id)
   setup_properties(map_id)
   setup_vault(map_id)
+  setup_dynamic_content(map_id)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_b2)
