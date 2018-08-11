@@ -22,6 +22,11 @@ bool ResidentialSectorFeatureGenerator::create_feature(MapPtr map, const Coordin
 
   switch (feat)
   {
+    case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_ROCK_GARDEN:
+    {
+      feature = GardenGeneratorFactory::create_garden_generator(GardenType::GARDEN_TYPE_ROCK);
+      break;
+    }
     case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_FLOWER_GARDEN:
     {
       feature = GardenGeneratorFactory::create_garden_generator(GardenType::GARDEN_TYPE_WILDFLOWER);

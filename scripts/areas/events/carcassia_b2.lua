@@ -33,8 +33,17 @@ local function setup_vault(map_id)
 end
 
 local function setup_dynamic_content(map_id)
-  generate_city_feature(map_id, 13, 22, 18, 39, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, 1)
-  generate_city_feature(map_id, 13, 0, 18, 18, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, 1)
+  if carcassia_garden_type == nil then
+    carcassia_garden_type = RNG_range(0, 1)
+  end
+
+  -- Wildflowers or rocks in front of the palace.
+  local gt = carcassia_garden_type
+  generate_city_feature(map_id, 13, 22, 18, 39, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, gt)
+  generate_city_feature(map_id, 13, 0, 18, 18, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, gt)
+
+  -- Always rocks alongside the palace.
+  generate_city_feature(map_id, 13, 75, 17, 76, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, 0)
 end
 
 local function init_carcassia_b2(map_id)

@@ -4,9 +4,10 @@
 enum struct ReligiousCommercialSectorFeatureType
 {
   RC_SECTOR_FIRST = 0,
-  RC_SECTOR_FEATURE_GARDEN = 0,
-  RC_SECTOR_FLOWER_GARDEN = 1,
-  RC_SECTOR_LAST = 2
+  RC_SECTOR_FEATURE_ROCK_GARDEN = 0,
+  RC_SECTOR_FEATURE_FLOWER_GARDEN = 1,
+  RC_SECTOR_FEATURE_GARDEN = 2,
+  RC_SECTOR_LAST = 3
 };
 
 class ReligiousCommercialSectorFeatureGenerator : public SectorFeatureGenerator
