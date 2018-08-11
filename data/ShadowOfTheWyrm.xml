@@ -27620,6 +27620,44 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
+		<Creature id="blind_oracle">
+			<RaceID>05_fae</RaceID>
+			<ShortDescriptionSID>BLIND_ORACLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BLIND_ORACLE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLIND_ORACLE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BLIND_ORACLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>O</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>10</NumSides>
+				<Type>10</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/blind_oracle.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">

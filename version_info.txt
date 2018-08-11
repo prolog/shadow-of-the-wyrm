@@ -46,6 +46,21 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   - Besides some old houses and a graveyard, there is an ancient sewer
     from an earlier empire by the east gate.
 
+  3. New Town
+
+  4. Temple District
+
+  - Home to an interfaith temple, the Fellowship of the Nine.  Considered
+    by some to be an unwelcome front for the leadership of the Empire, it
+    is ostensibly an organization dedicated to the promotion of religion
+    in everyday life.
+
+  - In a small hut lives an old woman considered to be the holiest person
+    in the world: the blind oracle.  Part of an unending line of oracles
+    chosen by the Nine to be their direct speaker on earth, she can both
+    speak with and as them, her voice shifting from her own creaky tones
+    to the sweet music of The Lady, or Urgoth's horrifying roar.
+
 - The Isle of Carcassia was inhabited long before the Carcassian Empire
   took hold, and it has a number of other features, including a dungeon
   on the north-east penninsula.
@@ -130,7 +145,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   evocations student, summonings student, enchantments student, runic
   student, Golgoa, Lorelei, Okhoa, Scheldt, shimmering cloud, Lish,
   gambler, pov dealer, blackjack dealer, racemaster, snapping turtle,
-  Asher, Akhra, Axander, Wart, presence.
+  Asher, Akhra, Axander, Wart, presence, the blind oracle.
 
 - New items: salted nuts, skewer of mystery meat, wizard staff, 
   linothorax, Calara's cloak, Calara's flaming whip.
