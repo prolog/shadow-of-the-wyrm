@@ -4,7 +4,7 @@
 using namespace std;
 
 ReligiousCommercialSectorFeatureGenerator::ReligiousCommercialSectorFeatureGenerator()
-: features({{100, ReligiousCommercialSectorFeatureType::LIR_SECTOR_FEATURE_GARDEN}})
+: features({{100, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_GARDEN}})
 {
 }
 
@@ -22,7 +22,12 @@ bool ReligiousCommercialSectorFeatureGenerator::create_feature(MapPtr map, const
 
   switch (feat)
   {
-    case ReligiousCommercialSectorFeatureType::LIR_SECTOR_FEATURE_GARDEN:
+    case ReligiousCommercialSectorFeatureType::RC_SECTOR_FLOWER_GARDEN:
+    {
+      feature = GardenGeneratorFactory::create_garden_generator(GardenType::GARDEN_TYPE_WILDFLOWER);
+      break;
+    }
+    case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_GARDEN:
     default:
     {
       feature = GardenGeneratorFactory::create_uniform_random_garden_generator();
@@ -48,6 +53,6 @@ ReligiousCommercialSectorFeatureType ReligiousCommercialSectorFeatureGenerator::
     }
   }
 
-  return ReligiousCommercialSectorFeatureType::LIR_SECTOR_FEATURE_GARDEN;
+  return ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_GARDEN;
 }
 

@@ -3,6 +3,7 @@
 #include "LowIncomeResidentialSectorFeatureGenerator.hpp"
 #include "PublicAreaSectorFeatureGenerator.hpp"
 #include "ReligiousCommercialSectorFeatureGenerator.hpp"
+#include "ResidentialSectorFeatureGenerator.hpp"
 
 SectorFeatureGeneratorPtr SectorFeatureGeneratorFactory::create(const CitySectorType sector_type)
 {
@@ -21,6 +22,8 @@ SectorFeatureGeneratorPtr SectorFeatureGeneratorFactory::create(const CitySector
       break;
     // JCD FIXME: Move above rel/comm once populated
     case CitySectorType::CITY_SECTOR_RESIDENTIAL:
+      sfg = std::make_shared<ResidentialSectorFeatureGenerator>();
+      break;
     case CitySectorType::CITY_SECTOR_NULL:
     default:
       sfg = std::make_shared<DefaultSectorFeatureGenerator>();
