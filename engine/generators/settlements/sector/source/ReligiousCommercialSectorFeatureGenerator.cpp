@@ -22,7 +22,12 @@ bool ReligiousCommercialSectorFeatureGenerator::create_feature(MapPtr map, const
 
   switch (feat)
   {
-    case ReligiousCommercialSectorFeatureType::RC_SECTOR_FLOWER_GARDEN:
+    case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_ROCK_GARDEN:
+    {
+      feature = GardenGeneratorFactory::create_garden_generator(GardenType::GARDEN_TYPE_ROCK);
+      break;
+    }
+    case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_FLOWER_GARDEN:
     {
       feature = GardenGeneratorFactory::create_garden_generator(GardenType::GARDEN_TYPE_WILDFLOWER);
       break;
