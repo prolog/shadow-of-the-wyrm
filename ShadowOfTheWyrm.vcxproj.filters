@@ -4200,6 +4200,12 @@
     <ClInclude Include="engine\generators\settlements\sector\include\ResidentialSectorFeatureGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\GardenSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\DeityUtils.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8368,6 +8374,12 @@
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\sector\source\ResidentialSectorFeatureGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\GardenSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\DeityUtils.cpp">
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

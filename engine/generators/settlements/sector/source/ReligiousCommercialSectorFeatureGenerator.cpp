@@ -1,10 +1,14 @@
 #include "ReligiousCommercialSectorFeatureGenerator.hpp"
+#include "DeityUtils.hpp"
 #include "GardenGeneratorFactory.hpp"
+#include "ShopSectorFeature.hpp"
 
 using namespace std;
 
 ReligiousCommercialSectorFeatureGenerator::ReligiousCommercialSectorFeatureGenerator()
-: features({{100, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_GARDEN}})
+: features({{20, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_SHOP},
+            {40, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE},
+            {100, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_GARDEN}})
 {
 }
 
@@ -30,6 +34,29 @@ bool ReligiousCommercialSectorFeatureGenerator::create_feature(MapPtr map, const
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_FLOWER_GARDEN:
     {
       feature = GardenGeneratorFactory::create_garden_generator(GardenType::GARDEN_TYPE_WILDFLOWER);
+      break;
+    }
+    case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_SHOP:
+    {
+      feature = std::make_shared<ShopSectorFeature>();
+      break;
+    }
+    case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE:
+    {
+      Game& game = Game::instance();
+      DeityPtr deity = DeityUtils::get_random_deity(game);
+
+      string deity_id;
+      AlignmentRange align = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;
+
+      if (deity != nullptr)
+      {
+        deity_id = deity->get_id();
+        align = deity->get_alignment_range();
+      }
+
+      SectorFeaturePtr garden = GardenGeneratorFactory::create_uniform_random_garden_generator(deity_id, align);
+      feature = garden;
       break;
     }
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_GARDEN:

@@ -3,10 +3,10 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
-using std::string;
+using namespace std;
 
-WildflowerGardenGenerator::WildflowerGardenGenerator()
-: wildflower_rand_min(1), wildflower_rand_max(6)
+WildflowerGardenGenerator::WildflowerGardenGenerator(const string& new_deity_id, const AlignmentRange new_ar)
+: GardenSectorFeature(new_deity_id, new_ar), wildflower_rand_min(1), wildflower_rand_max(6)
 {
   initialize_generator();
 }
@@ -27,7 +27,7 @@ void WildflowerGardenGenerator::populate_wildflower_ids()
                                                    {6, ItemIdKeys::ITEM_ID_WILDFLOWER_6}};
 }
 
-bool WildflowerGardenGenerator::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+bool WildflowerGardenGenerator::generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   TilePtr flower_tile;
   TileGenerator tg;

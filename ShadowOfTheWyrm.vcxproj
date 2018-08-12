@@ -779,6 +779,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\sector\include\CitySectorTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\DefaultSectorFeatureGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\GardenGeneratorFactory.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\GardenSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\GardenTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\GraveyardSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\HouseSectorFeature.hpp" />
@@ -825,6 +826,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\include\CharacterCreationDetails.hpp" />
     <ClInclude Include="engine\include\ClassManager.hpp" />
     <ClInclude Include="engine\include\CreationUtils.hpp" />
+    <ClInclude Include="engine\include\DeityUtils.hpp" />
     <ClInclude Include="engine\include\Environment.hpp" />
     <ClInclude Include="engine\include\FileWriter.hpp" />
     <ClInclude Include="engine\include\Game.hpp" />
@@ -1772,6 +1774,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\settlements\sector\source\CitySectorGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\DefaultSectorFeatureGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\GardenGeneratorFactory.cpp" />
+    <ClCompile Include="engine\generators\settlements\sector\source\GardenSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\GraveyardSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\HouseSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\LowIncomeResidentialSectorFeatureGenerator.cpp" />
@@ -1913,6 +1916,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\skills\source\WandcraftSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\WandCreationParameters.cpp" />
     <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />
+    <ClCompile Include="engine\source\DeityUtils.cpp" />
     <ClCompile Include="engine\source\LogFiles.cpp" />
     <ClCompile Include="engine\source\Setting.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />

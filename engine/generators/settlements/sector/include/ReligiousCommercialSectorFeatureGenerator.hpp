@@ -7,7 +7,9 @@ enum struct ReligiousCommercialSectorFeatureType
   RC_SECTOR_FEATURE_ROCK_GARDEN = 0,
   RC_SECTOR_FEATURE_FLOWER_GARDEN = 1,
   RC_SECTOR_FEATURE_GARDEN = 2,
-  RC_SECTOR_LAST = 3
+  RC_SECTOR_FEATURE_SHOP = 3,
+  RC_SECTOR_FEATURE_OUTDOOR_SHRINE = 4,
+  RC_SECTOR_LAST = 5
 };
 
 class ReligiousCommercialSectorFeatureGenerator : public SectorFeatureGenerator

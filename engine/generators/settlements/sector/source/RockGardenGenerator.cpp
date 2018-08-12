@@ -2,7 +2,14 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
-bool RockGardenGenerator::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+using namespace std;
+
+RockGardenGenerator::RockGardenGenerator(const string& new_deity_id, const AlignmentRange new_ar)
+: GardenSectorFeature(new_deity_id, new_ar)
+{
+}
+
+bool RockGardenGenerator::generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   TileGenerator tg;
 

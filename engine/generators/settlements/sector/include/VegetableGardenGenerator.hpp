@@ -1,14 +1,14 @@
 #pragma once
-#include "SectorFeature.hpp"
+#include "GardenSectorFeature.hpp"
 
-class VegetableGardenGenerator : public SectorFeature
+class VegetableGardenGenerator : public GardenSectorFeature
 {
   public:
-    VegetableGardenGenerator();
+    VegetableGardenGenerator(const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
 
   protected:
     void populate_vegetable_map();
-    virtual bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
+    virtual bool generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
 
     std::map<int, std::string> vegetable_map;
     int vegetable_min;
