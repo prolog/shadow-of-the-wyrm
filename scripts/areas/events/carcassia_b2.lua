@@ -37,6 +37,12 @@ local function setup_dynamic_content(map_id)
     carcassia_garden_type = RNG_range(0, 1)
   end
 
+  -- Always a shop across from the Fellowship
+  generate_city_feature(map_id, 1, 3, 5, 16, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, 3)
+
+  -- A shrine below the shop.
+  generate_city_feature(map_id, 7, 3, 11, 16, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, 4)
+
   -- Wildflowers or rocks in front of the palace.
   local gt = carcassia_garden_type
   generate_city_feature(map_id, 13, 22, 18, 39, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, gt)

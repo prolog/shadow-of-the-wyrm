@@ -1,13 +1,13 @@
 #pragma once
-#include "SectorFeature.hpp"
+#include "GardenSectorFeature.hpp"
 
-class WildflowerGardenGenerator : public SectorFeature
+class WildflowerGardenGenerator : public GardenSectorFeature
 {
   public:
-    WildflowerGardenGenerator();
+    WildflowerGardenGenerator(const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
 
   protected:
-    virtual bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
+    virtual bool generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
 
     void initialize_generator();
     void populate_wildflower_ids();

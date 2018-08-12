@@ -4,8 +4,15 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
+using namespace std;
+
+ShadeGardenGenerator::ShadeGardenGenerator(const string& new_deity_id, const AlignmentRange new_ar)
+: GardenSectorFeature(new_deity_id, new_ar)
+{
+}
+
 // Generate the shade garden
-bool ShadeGardenGenerator::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+bool ShadeGardenGenerator::generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   generate_tree_cover(map, start_coord, end_coord);
   generate_plants(map, start_coord, end_coord);

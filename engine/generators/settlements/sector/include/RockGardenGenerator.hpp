@@ -1,8 +1,10 @@
 #pragma once
-#include "SectorFeature.hpp"
+#include "GardenSectorFeature.hpp"
 
-class RockGardenGenerator : public SectorFeature
+class RockGardenGenerator : public GardenSectorFeature
 {
   public:
-    virtual bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
+    RockGardenGenerator(const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
+
+    virtual bool generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
 };

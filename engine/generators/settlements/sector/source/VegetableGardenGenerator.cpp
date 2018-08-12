@@ -5,8 +5,8 @@
 
 using namespace std;
 
-VegetableGardenGenerator::VegetableGardenGenerator()
-: vegetable_min(1), vegetable_max(1)
+VegetableGardenGenerator::VegetableGardenGenerator(const string& new_deity_id, const AlignmentRange new_ar)
+: GardenSectorFeature(new_deity_id, new_ar), vegetable_min(1), vegetable_max(1)
 {
   populate_vegetable_map();
 }
@@ -25,7 +25,7 @@ void VegetableGardenGenerator::populate_vegetable_map()
   vegetable_max = 6;
 }
 
-bool VegetableGardenGenerator::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+bool VegetableGardenGenerator::generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   TileGenerator tg;
 
