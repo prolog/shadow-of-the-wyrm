@@ -1902,3 +1902,16 @@ apart the helpless, deaf to all appeals, %b
 could taste the sweet west wind, and standing there, %b
 appreciate the warmth that now had filled the air.
 %p
+And afternoon must pass.  As evening came, %b
+they ate fresh bread.  They'd packed enough to last %b
+a few more days at most, until the plains %b
+gave way to wagon tracks.  The unlings passed %b
+here frequently - their little shanty-towns %b
+were portable.  They'd mount their huts on carts %b
+and move until they found some better ground, %b
+some undepleted soil.  It was an art: %b
+they'd farm a season, maybe two, and then depart.
+%p
+
+
+ 
