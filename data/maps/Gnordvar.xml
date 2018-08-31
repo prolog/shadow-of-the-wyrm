@@ -186,6 +186,15 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>8</Row>
+				<Col>13</Col>
+			</Coord>
+			<Sign>
+				<TextSID>MINERS_REST_SID</TextSID>
+			</Sign>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>4</Row>
 				<Col>59</Col>
 			</Coord>

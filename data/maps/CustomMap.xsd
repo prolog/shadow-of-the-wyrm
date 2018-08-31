@@ -217,6 +217,7 @@
 				<xs:element name="Table" type="tns:Feature"/>
 				<xs:element name="BasicFeature" type="tns:Feature"/>
 				<xs:element name="SlotMachine" type="tns:SlotMachine"/>
+				<xs:element name="Sign" type="tns:Sign"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
@@ -356,6 +357,14 @@
 			<xs:element name="Cost" type="xs:int"/>
 			<xs:element name="PctChanceWin" type="xs:int"/>
 			<xs:element name="PayoutMultiplier" type="xs:float"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Sign">
+		<xs:annotation>
+			<xs:documentation>A sign with text defined by a resource string.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TextSID" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Entrance">

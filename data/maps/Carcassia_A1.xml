@@ -211,6 +211,15 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>13</Row>
+				<Col>56</Col>
+			</Coord>
+			<Sign>
+				<TextSID>FLOUNDERING_CATFISH_SID</TextSID>
+			</Sign>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>15</Row>
 				<Col>76</Col>
 			</Coord>

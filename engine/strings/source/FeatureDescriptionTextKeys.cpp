@@ -35,3 +35,4 @@ const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BED                
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_STONE_MARKER       = "FEATURE_DESCRIPTION_STONE_MARKER";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_TABLE              = "FEATURE_DESCRIPTION_TABLE";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SLOT_MACHINE       = "FEATURE_DESCRIPTION_SLOT_MACHINE";
+const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SIGN               = "FEATURE_DESCRIPTION_SIGN";
