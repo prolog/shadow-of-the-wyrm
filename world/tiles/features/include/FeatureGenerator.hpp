@@ -38,6 +38,7 @@ class FeatureGenerator
     static FeaturePtr generate_table();
     static FeaturePtr generate_basic_feature(const std::string& basic_feature_id);
     static FeaturePtr generate_basic_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid);
+    static FeaturePtr generate_sign(const std::string& text_sid);
 
   protected:
     FeatureGenerator();

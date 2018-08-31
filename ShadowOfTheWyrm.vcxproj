@@ -1105,6 +1105,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLPewReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSarcophagusReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLSignReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSlotMachineReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLStoneMarkerReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLTableReader.hpp" />
@@ -1331,6 +1332,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\tiles\features\include\Pew.hpp" />
     <ClInclude Include="world\tiles\features\include\RegularStatues.hpp" />
     <ClInclude Include="world\tiles\features\include\Sarcophagus.hpp" />
+    <ClInclude Include="world\tiles\features\include\Sign.hpp" />
     <ClInclude Include="world\tiles\features\include\SlotMachine.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueTypes.hpp" />
@@ -1975,6 +1977,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\time\source\WorldTimeObserver.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBasicFeatureCMReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLSignReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSlotMachineReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLTableReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLBasicFeatureReader.cpp" />
@@ -4132,6 +4135,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\tiles\features\source\Pew.cpp" />
     <ClCompile Include="world\tiles\features\source\RegularStatues.cpp" />
     <ClCompile Include="world\tiles\features\source\Sarcophagus.cpp" />
+    <ClCompile Include="world\tiles\features\source\Sign.cpp" />
     <ClCompile Include="world\tiles\features\source\SlotMachine.cpp" />
     <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp" />
     <ClCompile Include="world\tiles\features\source\StoneMarker.cpp" />
@@ -4256,6 +4260,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Sign_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\SlotMachine_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

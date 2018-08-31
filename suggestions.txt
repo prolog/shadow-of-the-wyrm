@@ -1,9 +1,9 @@
 Me:
+- Check the Gnordvar sign
 - Finish Fellowship of the Nine.
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
 - More inhabitants in the base of the tower
-- Signs, sign for pub in Carcassia
 - Quests out of Old Town
 - No teleport spell!
 - Sections of Carcassia should be open to random generation, with some
