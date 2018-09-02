@@ -1,6 +1,9 @@
 Me:
-- Check the Gnordvar sign
-- Finish Fellowship of the Nine.
+- When leaving Carcassia from not A1, exit position is not preserved when
+  re-entering.
+- Finish Fellowship of the Nine: quest to Sithrin to slay the two NPCs in
+  Sithrin, who killed an emissary of the Fellowship.  Grants membership in
+  the Fellowship.
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
 - More inhabitants in the base of the tower

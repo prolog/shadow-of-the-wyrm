@@ -38674,6 +38674,20 @@
 					</Property>
 				</Properties>
 			</Item>			
+			<Item id="talmai_body">
+				<DescriptionSID>TALMAI_BODY_SID</DescriptionSID>
+				<UsageDescriptionSID>TALMAI_BODY_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>120</Pounds>
+				</Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="mummified_corpse">
 				<DescriptionSID>MUMMIFIED_CORPSE_SID</DescriptionSID>
 				<UsageDescriptionSID>MUMMIFIED_CORPSE_USAGE_SID</UsageDescriptionSID>
