@@ -14,6 +14,9 @@ class DeityStatus : public ISerializable
     void increment_piety(const int inc_amount);
     void decrement_piety(const int dec_amount);
 
+    void set_piety_regen_bonus(const int new_piety_regen_bonus);
+    int get_piety_regen_bonus() const;
+
     void set_champion_type(const ChampionType new_champion_type);
     ChampionType get_champion_type() const;
 
@@ -21,7 +24,8 @@ class DeityStatus : public ISerializable
     bool deserialize(std::istream& stream) override;
     
   protected:
-    int piety;
+    int piety; // Base relations with the deity
+    int piety_regen_bonus; // Per-tick bonus for regenerating piety - higher is better
     ChampionType champion_type;
 
   private:

@@ -215,6 +215,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_piety", set_creature_piety);
   lua_register(L, "get_creature_piety", get_creature_piety);
   lua_register(L, "add_piety", add_piety);
+  lua_register(L, "set_creature_piety_regen_bonus", set_creature_piety_regen_bonus);
+  lua_register(L, "get_creature_piety_regen_bonus", get_creature_piety_regen_bonus);
   lua_register(L, "set_creature_intrinsic_resist", set_creature_intrinsic_resist);
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
@@ -2214,6 +2216,68 @@ int add_piety(lua_State* ls)
   }
 
   lua_pushinteger(ls, new_piety);
+  return 1;
+}
+
+// Set the creature's deity status portion of the piety regen bonus
+int set_creature_piety_regen_bonus(lua_State* ls)
+{
+  bool set_val = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+    int bonus = lua_tointeger(ls, 2);
+
+    if (creature != nullptr)
+    {
+      Religion& r = creature->get_religion_ref();
+      DeityRelations& dr = r.get_deity_relations_ref();
+      auto dr_it = dr.find(r.get_active_deity_id());
+
+      if (dr_it != dr.end())
+      {
+        DeityStatus& ds = dr_it->second;
+        ds.set_piety_regen_bonus(bonus);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_piety_regen_bonus");
+  }
+
+  lua_pushboolean(ls, set_val);
+  return 1;
+}
+
+int get_creature_piety_regen_bonus(lua_State* ls)
+{
+  int regen_bonus = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      Religion& r = creature->get_religion_ref();
+      DeityRelations& dr = r.get_deity_relations_ref();
+      auto dr_it = dr.find(r.get_active_deity_id());
+
+      if (dr_it != dr.end())
+      {
+        DeityStatus& ds = dr_it->second;
+        regen_bonus = ds.get_piety_regen_bonus();
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_piety_regen_bonus");
+  }
+
+  lua_pushnumber(ls, regen_bonus);
   return 1;
 }
 

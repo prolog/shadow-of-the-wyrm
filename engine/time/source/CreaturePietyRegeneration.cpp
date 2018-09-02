@@ -1,4 +1,5 @@
 #include "ClassManager.hpp"
+#include "CreaturePietyCalculator.hpp"
 #include "CreaturePietyRegeneration.hpp"
 #include "ReligionConstants.hpp"
 #include "Serialize.hpp"
@@ -12,23 +13,16 @@ void CreaturePietyRegeneration::tick(CreaturePtr creature, TilePtr tile, const u
   if (creature)
   {
     ClassManager cm;
+    CreaturePietyCalculator cpc;
     
     Religion& religion = creature->get_religion_ref();
     string deity_id = religion.get_active_deity_id();
     DeityStatus deity_status = religion.get_deity_status(deity_id);
     int piety = deity_status.get_piety();
     int new_piety = piety;
-    bool crowned = (deity_status.get_champion_type() == ChampionType::CHAMPION_TYPE_CROWNED);
+    bool crowned = (deity_status.get_champion_type() == ChampionType::CHAMPION_TYPE_CROWNED);    
+    int piety_regen_bonus = cpc.calculate_piety_regen_bonus(creature);
     
-    ClassPtr cur_class = cm.get_class(creature->get_class_id());
-    
-    int piety_regen_bonus = 0;
-    
-    if (cur_class)
-    {
-      piety_regen_bonus = cur_class->get_piety_regen_bonus();
-    }
-
     if (piety < 0)
     {
       new_piety = regenerate_piety(piety, piety_regen_bonus, total_minutes_elapsed, crowned);

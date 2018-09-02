@@ -53,7 +53,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   - Home to an interfaith temple, the Fellowship of the Nine.  Considered
     by some to be an unwelcome front for the leadership of the Empire, it
     is ostensibly an organization dedicated to the promotion of religion
-    in everyday life.
+    in everyday life.  Membership in the Fellowship causes one's piety
+    to increase faster and decrease less quickly.
 
   - In a small hut lives an old woman considered to be the holiest person
     in the world: the blind oracle.  Part of an unending line of oracles
@@ -137,7 +138,12 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - Randomly generated buildings now look like people actually live in them
   and have features such as beds and tables.  They also have the chance
   to have items, such as food, clay pots, inkpots, magici shards...
-   
+
+- New feature, signs.
+
+- Piety regeneration bonuses now have a per-creature component, rather
+  than being based entirely on the creature's class.
+     
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster

@@ -159,8 +159,57 @@
 					<Col>65</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>redback_spider</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>great_serpent</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>73</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>redback_spider</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>great_serpent</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>73</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>great_serpent</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>74</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>redback_spider</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
+			<Placement>
+				<ID>talmai_body</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>73</Col>
+				</Coord>
+			</Placement>
 			<Placement>
 				<ID>rune_stone</ID>
 				<Coord>

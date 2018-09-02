@@ -73,6 +73,8 @@ int set_creature_speed(lua_State* ls);
 int set_creature_piety(lua_State* ls);
 int get_creature_piety(lua_State* ls);
 int add_piety(lua_State* ls);
+int set_creature_piety_regen_bonus(lua_State* ls);
+int get_creature_piety_regen_bonus(lua_State* ls);
 int get_creature_speed(lua_State* ls);
 int get_creature_yx(lua_State* ls);
 int get_creature_id(lua_State* ls);
