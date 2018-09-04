@@ -1,4 +1,6 @@
 #include "gtest/gtest.h"
+#include "GeneratorUtils.hpp"
+#include "TileGenerator.hpp"
 
 TEST(SW_Engine_Maps_MapUtils, get_dimensions)
 {
@@ -125,4 +127,50 @@ TEST(SW_Engine_Maps_MapUtils, calculate_depth_delta_tile)
 
   EXPECT_EQ(5, MapUtils::calculate_depth_delta(nullptr, tile, ExitMovementType::EXIT_MOVEMENT_DESCEND));
   EXPECT_EQ(-5, MapUtils::calculate_depth_delta(nullptr, tile, ExitMovementType::EXIT_MOVEMENT_ASCEND));
+}
+
+TEST(SW_Engine_Maps_MapUtils, does_area_around_tile_contain_staircase)
+{
+  Dimensions dim;
+  MapPtr map = std::make_shared<Map>(dim);
+  TileGenerator tg;
+
+  GeneratorUtils::fill(map, make_pair(0,0), make_pair(dim.get_y()-1, dim.get_x()-1), TileType::TILE_TYPE_DUNGEON);
+
+  // Put an up staircase at 4,4 and a down staircase at 15,15
+  TilePtr up_staircase = tg.generate_staircase(StaircaseType::STAIRCASE_UP);
+  TilePtr down_staircase = tg.generate_staircase(StaircaseType::STAIRCASE_DOWN);
+
+  map->insert(make_pair(4,4), up_staircase);
+
+  EXPECT_TRUE(MapUtils::does_area_around_tile_contain_staircase(map, make_pair(4,5)));
+  EXPECT_TRUE(MapUtils::does_area_around_tile_contain_staircase(map, make_pair(5,4)));
+  EXPECT_FALSE(MapUtils::does_area_around_tile_contain_staircase(map, make_pair(7,7)));
+
+  map->insert(make_pair(15,15), down_staircase);
+
+  EXPECT_TRUE(MapUtils::does_area_around_tile_contain_staircase(map, make_pair(15,16)));
+  EXPECT_TRUE(MapUtils::does_area_around_tile_contain_staircase(map, make_pair(14,15)));
+  EXPECT_FALSE(MapUtils::does_area_around_tile_contain_staircase(map, make_pair(10,10)));
+}
+
+TEST(SW_Engine_Maps_MapUtils, is_coordinate_within_player_restricted_zone)
+{
+  Dimensions dim;
+  MapPtr map = std::make_shared<Map>(dim);
+
+  GeneratorUtils::fill(map, make_pair(0,0), make_pair(dim.get_y()-1, dim.get_x()-1), TileType::TILE_TYPE_DUNGEON);
+
+  map->add_or_update_location(CreatureID::CREATURE_ID_PLAYER, make_pair(0,0));
+  Coordinate c = make_pair(7,7);
+
+  EXPECT_TRUE(MapUtils::is_coordinate_within_player_restricted_zone(map, c));
+
+  c = make_pair(8,8);
+
+  EXPECT_TRUE(MapUtils::is_coordinate_within_player_restricted_zone(map, c));
+
+  c = make_pair(9,9);
+
+  EXPECT_FALSE(MapUtils::is_coordinate_within_player_restricted_zone(map, c));
 }

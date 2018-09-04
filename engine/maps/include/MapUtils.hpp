@@ -56,6 +56,8 @@ class MapUtils
     static bool does_area_around_tile_allow_creature_generation(MapPtr map, const Coordinate& c);
     static bool is_tile_available_for_creature(CreaturePtr creature, TilePtr tile);
     static bool is_tile_available_for_item(TilePtr tile);
+    static bool does_area_around_tile_contain_staircase(MapPtr map, const Coordinate& c);
+    static bool is_coordinate_within_player_restricted_zone(MapPtr map, const Coordinate& c);
 
     static void swap_places(MapPtr map, CreaturePtr c1, CreaturePtr c2);
 
@@ -104,4 +106,6 @@ class MapUtils
     static bool add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr tile);
     static bool add_message_about_items_on_tile_if_necessary(CreaturePtr creature, TilePtr tile);
     static void run_movement_scripts(CreaturePtr creature, const std::string& map_id, const Coordinate& c);
+
+    static const int PLAYER_RESTRICTED_ZONE_RADIUS;
 };

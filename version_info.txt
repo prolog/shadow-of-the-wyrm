@@ -143,7 +143,10 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
 - Piety regeneration bonuses now have a per-creature component, rather
   than being based entirely on the creature's class.
-     
+
+- When dungeons are repopulated, there is now a check to ensure that
+  creatures are not generated close to the player (Troubler).
+       
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster
