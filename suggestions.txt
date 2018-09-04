@@ -1,9 +1,7 @@
 Me:
+- Unit tests for new MapUtils functions.
 - When leaving Carcassia from not A1, exit position is not preserved when
   re-entering.
-- Finish Fellowship of the Nine: quest to Sithrin to slay the two NPCs in
-  Sithrin, who killed an emissary of the Fellowship.  Grants membership in
-  the Fellowship.
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
 - More inhabitants in the base of the tower
@@ -18,7 +16,6 @@ Me:
 - More guilds/things with memberships
 - Magical orchard (should be 2-3 over the world)
 - Allow music to not only pacify but enchant (allow for ordering)
-- Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
@@ -191,10 +188,5 @@ aotdev
 - Status/stats lines wrap weirdly with larger terminal sizes
 
 Troubler
-
-- Every morning, when in a dungeon, monsters respawn after your 
-  stats/skills are recalculated. This often means you get surrounded out 
-  of nowhere.
-
 - Multiple pages of items, eventually hits blank page that when hitting ,
   or . gives the right page.

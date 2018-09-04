@@ -27,12 +27,30 @@
 using namespace std;
 using namespace boost;
 
+const int MapUtils::PLAYER_RESTRICTED_ZONE_RADIUS = 8;
+
 // Does the area around a tile allow creature generation?
 // Creatures can't be generated within a couple of steps of a stairway.
+// They also shouldn't be generated close to the player.
 bool MapUtils::does_area_around_tile_allow_creature_generation(MapPtr map, const Coordinate& c)
 {
   bool gen_ok = true;
 
+  if (map != nullptr)
+  {
+    gen_ok = (MapUtils::does_area_around_tile_contain_staircase(map, c) == false);
+    
+    if (gen_ok)
+    {
+      gen_ok = (MapUtils::is_coordinate_within_player_restricted_zone(map, c) == false);
+    }
+  }
+
+  return gen_ok;
+}
+
+bool MapUtils::does_area_around_tile_contain_staircase(MapPtr map, const Coordinate& c)
+{
   if (map != nullptr)
   {
     vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second, 2);
@@ -47,14 +65,35 @@ bool MapUtils::does_area_around_tile_allow_creature_generation(MapPtr map, const
 
         if (tt == TileType::TILE_TYPE_UP_STAIRCASE || tt == TileType::TILE_TYPE_DOWN_STAIRCASE)
         {
-          gen_ok = false;
-          break;
+          return true;
         }
+      }
+    }
+
+    return false;
+  }
+
+  return false;
+}
+
+bool MapUtils::is_coordinate_within_player_restricted_zone(MapPtr map, const Coordinate& c)
+{
+  if (map != nullptr)
+  {
+    Coordinate player_coord = map->get_location(CreatureID::CREATURE_ID_PLAYER);
+
+    if (!CoordUtils::is_end(player_coord))
+    {
+      int distance = CoordUtils::chebyshev_distance(player_coord, c);
+
+      if (distance <= PLAYER_RESTRICTED_ZONE_RADIUS)
+      {
+        return true;
       }
     }
   }
 
-  return gen_ok;
+  return false;
 }
 
 // Check to see if a tile is available for a creature by checking:

@@ -3,7 +3,7 @@
 
 // The maximum number of times the creature generation algorithm can fail to place creatures before the
 // algorithm is terminated.
-const uint CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS = 120;
+const uint CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS = 180;
 const uint CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS = 120;
 
 CreationUtils::CreationUtils()
