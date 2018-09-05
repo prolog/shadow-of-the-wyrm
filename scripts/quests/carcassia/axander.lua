@@ -31,7 +31,41 @@ local spellbook_quest = Quest:new("axander_spellbook",
                                   axander_spellbook_completion_condition_fn,
                                   axander_spellbook_completion_fn)
 
--- Axander's second quest is to avenge the death of an emissary brought
+-- Axander's second quest is to kill an assassin and agent of Sceadugenga.
+local function axander_vorogil_start_fn()
+  add_message_with_pause("AXANDER_VOROGIL_QUEST_START_SID")
+  add_message_with_pause("AXANDER_VOROGIL_QUEST_START2_SID")
+  clear_and_add_message("AXANDER_VOROGIL_QUEST_START3_SID")
+
+  add_creature_to_map("vorogil", 7, 74)
+end
+
+local function axander_vorogil_completion_condition_fn()
+  return (get_num_creature_killed_global("vorogil") > 0)
+end
+
+local function axander_vorogil_completion_fn()
+  add_message_with_pause("AXANDER_VOROGIL_QUEST_COMPLETE_SID")
+  clear_and_add_message("AXANDER_VOROGIL_QUEST_COMPLETE2_SID")
+
+  add_object_to_player_tile(CURRENCY_ID, 500)
+  add_object_to_player_tile("enchanting_scroll", 3)
+
+  return true
+end
+
+local vorogil_quest = Quest:new("axander_vorogil",
+                                "AXANDER_VOROGIL_QUEST_TITLE_SID",
+                                "AXANDER_SHORT_DESCRIPTION_SID",
+                                "AXANDER_VOROGIL_QUEST_DESCRIPTION_SID",
+                                "AXANDER_VOROGIL_QUEST_COMPLETE_SID",
+                                "AXANDER_VOROGIL_QUEST_REMINDER_SID",
+                                truefn,
+                                axander_vorogil_start_fn,
+                                axander_vorogil_completion_condition_fn,
+                                axander_vorogil_completion_fn)
+
+-- Axander's third quest is to avenge the death of an emissary brought
 -- to bring religion to the Snakelings.
 local function axander_sithrin_start_fn()
   add_message_with_pause("AXANDER_SITHRIN_QUEST_START_SID")
@@ -79,8 +113,10 @@ local sithrin_quest = Quest:new("axander_sithrin",
                                 axander_sithrin_completion_fn)
 
 if spellbook_quest:execute() == false then
-  if sithrin_quest:execute() == false then
-    clear_and_add_message("AXANDER_SPEECH_TEXT_SID")
+  if vorogil_quest:execute() == false then
+    if sithrin_quest:execute() == false then
+      clear_and_add_message("AXANDER_SPEECH_TEXT_SID")
+    end
   end
 end
 
