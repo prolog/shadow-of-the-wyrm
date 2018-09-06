@@ -1,5 +1,4 @@
 Me:
-- Test Vorogil quest.
 - When leaving Carcassia from not A1, exit position is not preserved when
   re-entering.
 - Buildings generated in towns should automatically get inhabitants.
