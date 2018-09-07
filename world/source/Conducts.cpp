@@ -45,7 +45,7 @@ int Conducts::get_num_broken_conducts() const
 
 bool Conducts::serialize(ostream& stream) const
 {
-  static_assert(ConductType::CONDUCT_SIZE == ConductType(9), "Unexpected number of conducts");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(10), "Unexpected number of conducts");
 
   for (const bool conduct : cond)
   {
