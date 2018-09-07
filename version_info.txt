@@ -141,6 +141,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
 - New feature, signs.
 
+- New conduct, artifactless.
+
 - Piety regeneration bonuses now have a per-creature component, rather
   than being based entirely on the creature's class.
 
