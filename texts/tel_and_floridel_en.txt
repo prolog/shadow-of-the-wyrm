@@ -1968,7 +1968,17 @@ With morning, though, a fog set out to part %b
 the scrublands - rolling south-east, thick and full, %b
 so that when they tried to find the tracks, they failed %b
 and stumbled, lost, across the rocky plain. %b
-They passed strange features.  Trees, perhaps?  They felt %b
+They passed tall features.  Many trees?  They felt %b
 a chill around their necks, its texture strange, %b
 their path constricting round them like a set of chains.
+%p
+And as they stumbled deeper, voices creeped %b
+inside their ears, to whisper in old tongues %b
+from days gone by.  The hazy trees would seep %b
+away, then focus, sharpening as a sprung %b
+trap before falling back to dull the mind again, %b
+the fog alive, a thing itself, its arrival %b
+as queer as quick, then gone, its heft sustained %b
+by magic.  Now they knew they'd fight for survival - %b
+these towering trees the judge and jurors in their trial.
 %p
