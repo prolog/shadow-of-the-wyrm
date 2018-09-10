@@ -5,7 +5,7 @@
 class DeityUtils
 {
   public:
-    static DeityPtr get_random_deity(const Game& game);
+    static std::pair<DeityPtr, AlignmentRange> get_random_deity_with_align(const Game& game);
 
   protected:
     DeityUtils();

@@ -4212,6 +4212,9 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSignReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\ShrineSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8395,6 +8398,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSignReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\ShrineSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
