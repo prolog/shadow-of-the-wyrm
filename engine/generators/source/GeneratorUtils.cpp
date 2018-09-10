@@ -63,6 +63,8 @@ bool GeneratorUtils::position_in_range(const int min, const int max, const int a
 }
 
 // I was using this sort of thing a lot, so I'm moving it here...
+// Generates a building without any additional feature - useful for generating
+// an empty building when you don't want house features like beds, pots, etc
 void GeneratorUtils::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width)
 {
   TileGenerator tg;

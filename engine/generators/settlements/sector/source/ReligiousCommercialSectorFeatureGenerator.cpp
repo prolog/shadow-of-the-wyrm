@@ -44,19 +44,18 @@ bool ReligiousCommercialSectorFeatureGenerator::create_feature(MapPtr map, const
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE:
     {
       Game& game = Game::instance();
-      DeityPtr deity = DeityUtils::get_random_deity(game);
-
+      pair<DeityPtr, AlignmentRange> deity_details = DeityUtils::get_random_deity_with_align(game);
+      DeityPtr deity = deity_details.first;
       string deity_id;
-      AlignmentRange align = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;
 
       if (deity != nullptr)
       {
         deity_id = deity->get_id();
-        align = deity->get_alignment_range();
       }
 
-      SectorFeaturePtr garden = GardenGeneratorFactory::create_uniform_random_garden_generator(deity_id, align);
+      SectorFeaturePtr garden = GardenGeneratorFactory::create_uniform_random_garden_generator(deity_id, deity_details.second);
       feature = garden;
+
       break;
     }
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_GARDEN:

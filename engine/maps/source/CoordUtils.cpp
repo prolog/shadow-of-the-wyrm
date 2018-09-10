@@ -282,6 +282,15 @@ vector<Coordinate> CoordUtils::get_border_coordinates(const Coordinate& top_left
   return border_coords;
 }
 
+vector<Coordinate> CoordUtils::get_corner_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
+{
+  Coordinate top_right = {top_left.first, bottom_right.second};
+  Coordinate bottom_left = {bottom_right.first, top_left.second};
+  vector<Coordinate> corners = {top_left, top_right, bottom_left, bottom_right};
+
+  return corners;
+}
+
 vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
 {
   vector<Coordinate> perimeter_coordinates(get_perimeter_length(top_left, bottom_right));

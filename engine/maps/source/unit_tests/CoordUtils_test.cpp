@@ -628,3 +628,31 @@ TEST(SW_Engine_Maps_CoordUtils, is_in_range)
   EXPECT_FALSE(CoordUtils::is_in_range(dim, make_pair(-1, 0), make_pair(19, 19)));
   EXPECT_FALSE(CoordUtils::is_in_range(dim, make_pair(0, 0), make_pair(20, 20)));
 }
+
+TEST(SW_Engine_Maps_CoordUtils, get_corner_coordinates)
+{
+  Coordinate top_left({0,0});
+  Coordinate bottom_right({3,3});
+
+  vector<Coordinate> corners = CoordUtils::get_corner_coordinates(top_left, bottom_right);
+  vector<Coordinate>::iterator c_it = std::find(corners.begin(), corners.end(), make_pair(0,0));
+  
+  EXPECT_TRUE(c_it != corners.end());
+
+  c_it = std::find(corners.begin(), corners.end(), make_pair(3, 0));
+  
+  EXPECT_TRUE(c_it != corners.end());
+
+  c_it = std::find(corners.begin(), corners.end(), make_pair(0, 3));
+
+  EXPECT_TRUE(c_it != corners.end());
+
+  c_it = std::find(corners.begin(), corners.end(), make_pair(3, 3));
+
+  EXPECT_TRUE(c_it != corners.end());
+
+  c_it = std::find(corners.begin(), corners.end(), make_pair(2, 2));
+
+  EXPECT_FALSE(c_it != corners.end());
+}
+
