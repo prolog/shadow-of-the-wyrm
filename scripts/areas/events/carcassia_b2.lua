@@ -34,6 +34,7 @@ end
 
 local function setup_dynamic_content(map_id)
   if carcassia_garden_type == nil then
+    -- See ReligiousCommercialSectorGenerator.hpp
     carcassia_garden_type = RNG_range(0, 1)
   end
 

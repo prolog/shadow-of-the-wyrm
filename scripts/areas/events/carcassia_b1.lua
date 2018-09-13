@@ -3,9 +3,23 @@ require('map_events')
 
 local map_id = "carcassia_b1"
 
+local function setup_keep_rooms(m_id)
+  local coords = {{14,10}, {14,31}}
+  local feature_class_ids = {CCLASS_ID_FORGE, CCLASS_ID_TANNERY, CCLASS_ID_JEWELER_WORKBENCH, CCLASS_ID_WHEEL_AND_LOOM}
+
+  for i,coord in ipairs(coords) do
+    local cl_id = feature_class_ids[RNG_range(1, #feature_class_ids)]
+
+    add_feature_to_map(cl_id, coord[1], coord[2], map_id)
+  end
+end
+
 local function setup_dynamic_content(m_id)
+  setup_keep_rooms(m_id)
+
   if carcassia_garden_type == nil then
-    carcassia_garden_type = RNG_range(0, 1)
+    -- See ResidentialSectorFeatureGenerator.hpp
+    carcassia_garden_type = RNG_range(1, 2)
   end
 
   local gt = carcassia_garden_type
