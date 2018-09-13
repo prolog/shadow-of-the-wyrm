@@ -1,4 +1,7 @@
 Me:
+- Ensure that the flower and rock garden enums for residential/commercial
+  district match so that the correct garden type can be generated across
+  the fortress.
 - When leaving Carcassia from not A1, exit position is not preserved when
   re-entering.
 - Buildings generated in towns should automatically get inhabitants.
