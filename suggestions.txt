@@ -1,4 +1,7 @@
 Me:
+- Test each feature type in B2! Tombs don't work?  Some things just give
+  floor?
+- Electric eels should have a ranged electric attack (test).
 - Ensure that the flower and rock garden enums for residential/commercial
   district match so that the correct garden type can be generated across
   the fortress.
