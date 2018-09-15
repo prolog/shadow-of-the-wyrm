@@ -1101,7 +1101,7 @@ bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPt
   return false;
 }
 
-void MapUtils::place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const string& player_loc)
+Coordinate MapUtils::place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const string& player_loc)
 {
   Coordinate coords(0,0);
 
@@ -1133,6 +1133,24 @@ void MapUtils::place_creature_on_previous_location(MapPtr map, CreaturePtr creat
     }
 
     MapUtils::add_or_update_location(map, creature, coords);
+  }
+
+  return coords;
+}
+
+void MapUtils::set_multi_map_entry_details(MapPtr new_map, MapPtr old_map, const Coordinate& new_map_prev_loc)
+{
+  if (new_map != nullptr && old_map != nullptr)
+  {
+    if (new_map->get_map_type() == MapType::MAP_TYPE_WORLD && old_map->get_is_multi_map())
+    {
+      TilePtr tile = new_map->at(new_map_prev_loc);
+
+      if (tile != nullptr)
+      {
+        tile->set_custom_map_id(old_map->get_map_id());
+      }
+    }
   }
 }
 
