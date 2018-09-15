@@ -77,7 +77,8 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
     CreaturePtr current_creature = current_tile->get_creature();
     MapUtils::remove_creature(old_map, current_creature);
 
-    MapUtils::place_creature_on_previous_location(new_map, current_creature, current_creature->get_id());
+    Coordinate new_map_prev_loc = MapUtils::place_creature_on_previous_location(new_map, current_creature, current_creature->get_id());
+    MapUtils::set_multi_map_entry_details(new_map, old_map, new_map_prev_loc);
 
     // Set the new map to be loaded in the next iteration of the game loop.
     Game& game = Game::instance();
