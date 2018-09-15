@@ -1,5 +1,4 @@
 Me:
-- Crash in C1 when moving south outside the walls
 - Test each feature type in B2! Tombs don't work?  Some things just give
   floor?
 - Electric eels should have a ranged electric attack (test).
@@ -11,6 +10,7 @@ Me:
 - More inhabitants in the base of the tower
 - Quests out of Old Town
 - No teleport spell!
+- Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
