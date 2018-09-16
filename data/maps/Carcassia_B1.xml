@@ -17,15 +17,15 @@
 	<Tiles>
 	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
-	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
-	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
-	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
+	,,#,,,,############################,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+	,,#,,,,....#......................#,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+	,,#,,,,#.........#................#,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+	,,#,,,,#######################.####,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+	,,#,,,,#.........#................#,,,,,,,,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+	,,#,,,,#.........#................#,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
+	,,#,,,,#.........#................#,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
+	,,#,,,,#..........................#,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
+	,,#,,,,####################.#######,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
 	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
 	,,#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
 	,,#,,################################,,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,,,
@@ -38,6 +38,13 @@
 	</Tiles>
 	<InitialPlacements>
 		<Creatures>
+			<Placement>
+				<ID>praetor_footman</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>6</Col>
+				</Coord>
+			</Placement>
 			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
@@ -76,5 +83,84 @@
 			<MapID>carcassia_a1</MapID>
 		</Exit>
 	</Exits>
-	<Features/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>7</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carc_b1_footman</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>11</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carc_b1_coalman</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>17</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carc_b1_scullerymaid</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>5</Row>
+				<Col>30</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carc_b1_cook</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>9</Row>
+				<Col>17</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carc_b1_praetor</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>10</Row>
+				<Col>27</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carc_b1_praetor</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>

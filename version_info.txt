@@ -48,6 +48,10 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
   3. New Town
 
+  - The New Town is home to the second-in-command of the Carcassian
+    Empire, the praetor Magnifico, uncle of the Emperor.  He maintains
+    a palatial residence in the western part of the sector.
+
   4. Temple District
 
   - Home to an interfaith temple, the Fellowship of the Nine.  Considered
@@ -158,7 +162,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   evocations student, summonings student, enchantments student, runic
   student, Golgoa, Lorelei, Okhoa, Scheldt, shimmering cloud, Lish,
   gambler, pov dealer, blackjack dealer, racemaster, snapping turtle,
-  Asher, Akhra, Axander, Wart, presence, the blind oracle.
+  Asher, Akhra, Axander, Wart, presence, the blind oracle, praetor's
+  footman.
 
 - New items: salted nuts, skewer of mystery meat, wizard staff, 
   linothorax, Calara's cloak, Calara's flaming whip.
