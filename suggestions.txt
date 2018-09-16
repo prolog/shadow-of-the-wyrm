@@ -1,10 +1,12 @@
 Me:
+- Praetor's house in Carcassia.
+  - First quest: footman.
+  - Second quest: coalman.
+  - Third quest: scullerymaid.
+  - Fourth quest: personal secretary.
+  - Fifth quest: praetor.
 - Test each feature type in B2! Tombs don't work?  Some things just give
   floor?
-- Electric eels should have a ranged electric attack (test).
-- Ensure that the flower and rock garden enums for residential/commercial
-  district match so that the correct garden type can be generated across
-  the fortress.
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
 - More inhabitants in the base of the tower
