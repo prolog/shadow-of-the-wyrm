@@ -27718,6 +27718,7 @@
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
 				<DangerLevel>18</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
@@ -27735,6 +27736,42 @@
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/carcassia/praetor_footman.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="coalman">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>COALMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>COALMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>COALMAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>COALMAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/coalman.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>

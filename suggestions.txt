@@ -1,4 +1,5 @@
 Me:
+- Can dig in praetor's house?
 - Praetor's house in Carcassia.
   - First quest: footman.
   - Second quest: coalman.
