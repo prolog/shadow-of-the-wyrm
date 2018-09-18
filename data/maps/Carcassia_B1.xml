@@ -46,6 +46,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>coalman</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
 					<Row>18</Row>
