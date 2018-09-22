@@ -53,6 +53,34 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>praetor_scullerymaid</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>14</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>praetor_cook</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>30</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>praetor_secretary</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>praetor_dantus</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>12</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
 					<Row>18</Row>
