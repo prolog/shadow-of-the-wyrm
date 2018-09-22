@@ -76,6 +76,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 - The "no dig" flag can now be set at the tile level, allowing a general
   map that is diggable, but sections that are not.
 
+- There is now a chance to find coal when digging through rock.
+
 - Summoning is now less dangerous: it's the average of the map's danger
   level and the triggering creature's current level.
 
@@ -99,6 +101,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   whenever a map is loaded.  This ensures that in the event of a crash,
   there is still a reasonably-recent savefile available (Dallas Herrin,
   Alan Charlesworth).
+
+- New poem fragment for the title screen (Pope's "The Rape of the Lock").
 
 - Guilds/associations are now possible, and will slowly be added to the
   game.  Memberships can be seen in the character display/dump, and
@@ -167,7 +171,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   secretary, Praetor Dantus.
 
 - New items: salted nuts, skewer of mystery meat, wizard staff, 
-  linothorax, Calara's cloak, Calara's flaming whip.
+  linothorax, Calara's cloak, Calara's flaming whip, piece of coal.
 
 - New spells: electric arc (Cantrips).
 

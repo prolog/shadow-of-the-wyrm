@@ -102,7 +102,15 @@
 				</Coord>
 			</Placement>
 		</Creatures>
-		<Items/>
+		<Items>
+			<Placement>
+				<ID>pick_axe</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits>
 		<Exit>

@@ -7,7 +7,8 @@ Me:
   - Fourth quest: personal secretary.
   - Fifth quest: praetor.
 - Test each feature type in B2! Tombs don't work?  Some things just give
-  floor?
+  floor? (Reduce the generation set to gardens, houses, shops)
+- Random questor in New Town
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
 - More inhabitants in the base of the tower

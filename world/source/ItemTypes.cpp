@@ -20,6 +20,7 @@ const string ItemIdKeys::ITEM_ID_ROCK             = "_rock";
 const string ItemIdKeys::ITEM_ID_STONE            = "_stone";
 const string ItemIdKeys::ITEM_ID_HUGE_ROCK        = "_huge_rock";
 const string ItemIdKeys::ITEM_ID_MAGICI_SHARD     = "_magici_shard";
+const string ItemIdKeys::ITEM_ID_COAL             = "_coal";
 const string ItemIdKeys::ITEM_ID_LUMP_GOLD        = "_lump_gold";
 const string ItemIdKeys::ITEM_ID_IRON_INGOT       = "_iron_ingot";
 const string ItemIdKeys::ITEM_ID_STEEL_INGOT      = "_steel_ingot";

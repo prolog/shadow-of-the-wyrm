@@ -39191,6 +39191,20 @@
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="_coal">
+				<DescriptionSID>COAL_SID</DescriptionSID>
+				<UsageDescriptionSID>COAL_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_skin">
 				<DescriptionSID>SKIN_SID</DescriptionSID>
 				<UsageDescriptionSID>SKIN_USAGE_SID</UsageDescriptionSID>
