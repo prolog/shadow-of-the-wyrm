@@ -41,8 +41,8 @@ end
 local function setup_praetor_house(map_id)
   -- Need to do the quests in order to see the praetor - no cheating by
   -- digging!
-  for row = 2,7 do
-    for col = 10,34 do
+  for row = 2,10 do
+    for col = 7,34 do
       map_set_tile_property(map_id, row, col, "TILE_PROPERTY_CANNOT_DIG", "1")
     end
   end
