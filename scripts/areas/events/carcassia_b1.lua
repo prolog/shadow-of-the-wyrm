@@ -46,6 +46,22 @@ local function setup_praetor_house(map_id)
       map_set_tile_property(map_id, row, col, "TILE_PROPERTY_CANNOT_DIG", "1")
     end
   end
+
+  -- Statues line the north and south walls of the main room.
+  local rows = {6,9}
+  local s_type = {CCLASS_ID_KING_DECORATIVE_STATUE,
+                  CCLASS_ID_QUEEN_DECORATIVE_STATUE,
+                  CCLASS_ID_WARLORD_DECORATIVE_STATUE,
+                  CCLASS_ID_KNIGHT_DECORATIVE_STATUE,
+                  CCLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE,
+                  CCLASS_ID_SORCEROR_DECORATIVE_STATUE}
+  local s_val = s_type[RNG_range(1, #s_type)]
+
+  for i, row in ipairs(rows) do
+    for col = 18, 33, 2 do
+      add_feature_to_map(s_val, row, col, map_id)
+    end
+  end
 end
  
 function init_carcassia_b1(map_id)
