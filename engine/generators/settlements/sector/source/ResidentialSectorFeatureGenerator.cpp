@@ -2,22 +2,18 @@
 #include "GardenGeneratorFactory.hpp"
 #include "GraveyardGeneratorFactory.hpp"
 #include "HouseSectorFeature.hpp"
-#include "PlazaSectorFeature.hpp"
 #include "ShopSectorFeature.hpp"
 #include "ShrineSectorFeature.hpp"
-#include "TombSectorFeature.hpp"
 
 using namespace std;
 
 ResidentialSectorFeatureGenerator::ResidentialSectorFeatureGenerator()
-: features({{5, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_GRAVES},
-            {10, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_FLOWER_GARDEN},
-            {13, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_ROCK_GARDEN},
-            {20, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_SHOP},
-            {25, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_SHRINE},
-            {28, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_TOMB},
-            {32, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_PLAZA},
-            {35, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_GARDEN},
+: features({{10, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_GRAVES},
+            {15, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_FLOWER_GARDEN},
+            {20, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_ROCK_GARDEN},
+            {23, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_GARDEN},
+            {35, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_SHOP},
+            {45, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_SHRINE},
             {100, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_HOUSE}})
 {
 }
@@ -66,20 +62,10 @@ bool ResidentialSectorFeatureGenerator::create_feature(MapPtr map, const Coordin
       feature = make_shared<ShrineSectorFeature>();
       break;
     }
-    case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_PLAZA:
-    {
-      feature = make_shared<PlazaSectorFeature>();
-      break;
-    }
     case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_HOUSE:
-    {
-      feature = make_shared<HouseSectorFeature>(false);
-      break;
-    }
-    case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_TOMB:
     default:
     {
-      feature = make_shared<TombSectorFeature>();
+      feature = make_shared<HouseSectorFeature>(false);
       break;
     }
   }

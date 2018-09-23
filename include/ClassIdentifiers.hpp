@@ -307,6 +307,12 @@ enum struct ClassIdentifier
 //
 // If you're adding tile IDs anywhere other than the end of the list, this
 // value needs to be recalculated!
+#define CCLASS_ID_KING_DECORATIVE_STATUE 102
+#define CCLASS_ID_QUEEN_DECORATIVE_STATUE 103
+#define CCLASS_ID_WARLORD_DECORATIVE_STATUE 104
+#define CCLASS_ID_KNIGHT_DECORATIVE_STATUE 105
+#define CCLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE 106
+#define CCLASS_ID_SORCEROR_DECORATIVE_STATUE 107
 #define CCLASS_ID_FOUNTAIN 116
 #define CCLASS_ID_FORGE 279
 #define CCLASS_ID_TANNERY 280
