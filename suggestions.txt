@@ -1,13 +1,6 @@
 Me:
-- Can dig in praetor's house?
 - Praetor's house in Carcassia.
-  - First quest: footman.
-  - Second quest: coalman.
-  - Third quest: scullerymaid.
-  - Fourth quest: personal secretary.
   - Fifth quest: praetor.
-- Test each feature type in B2! Tombs don't work?  Some things just give
-  floor? (Reduce the generation set to gardens, houses, shops)
 - Random questor in New Town
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
