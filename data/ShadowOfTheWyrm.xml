@@ -29994,6 +29994,31 @@
 	</Traps>
 	<Items>
 		<Amulets>
+			<Amulet id="amulet_carcassian_emperor">
+				<DescriptionSID>AMULET_CARCASSIAN_EMPEROR_SID</DescriptionSID>
+				<UsageDescriptionSID>AMULET_CARCASSIAN_EMPEROR_USAGE_SID</UsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<TextDetails>
+					<Symbol>#</Symbol>
+					<Colour>4</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Pierce>0.10</Pierce>
+					<Pound>0.10</Pound>
+					<Arcane>0.10</Arcane>
+				</Resistances>
+				<Evade>12</Evade>
+				<Soak>3</Soak>
+			</Amulet>
 			<Amulet id="two_moon_amulet">
 				<DescriptionSID>TWO_MOON_AMULET_SID</DescriptionSID>
 				<UsageDescriptionSID>TWO_MOON_AMULET_USAGE_SID</UsageDescriptionSID>
