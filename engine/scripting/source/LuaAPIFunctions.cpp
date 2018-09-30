@@ -344,6 +344,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_stocked_item_types", get_stocked_item_types);
   lua_register(L, "get_sale_price", get_sale_price);
   lua_register(L, "set_item_unpaid", set_item_unpaid);
+  lua_register(L, "set_item_num_generated", set_item_num_generated);
   lua_register(L, "is_in_shop", is_in_shop);
   lua_register(L, "is_item_unpaid", is_item_unpaid);
   lua_register(L, "load_map", load_map);
@@ -6242,6 +6243,30 @@ int set_item_unpaid(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Incorrect arguments to set_item_unpaid");
+  }
+
+  return 0;
+}
+
+// Intended to be used for debugging work only.
+int set_item_num_generated(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    GenerationValuesMap& gvm = Game::instance().get_item_generation_values_ref();
+    string item_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    auto gvm_it = gvm.find(item_id);
+
+    if (gvm_it != gvm.end())
+    {
+      gvm_it->second.set_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_item_num_generated");
   }
 
   return 0;

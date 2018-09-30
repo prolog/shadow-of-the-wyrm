@@ -201,6 +201,7 @@ int get_shop_id(lua_State* ls);
 int get_stocked_item_types(lua_State* ls);
 int get_sale_price(lua_State* ls);
 int set_item_unpaid(lua_State* ls);
+int set_item_num_generated(lua_State* ls);
 int is_in_shop(lua_State* ls);
 int is_item_unpaid(lua_State* ls);
 int load_map(lua_State* ls);

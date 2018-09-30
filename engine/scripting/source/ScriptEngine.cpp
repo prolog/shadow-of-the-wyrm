@@ -250,6 +250,7 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCLASS_ID_KNIGHT_DECORATIVE_STATUE);
   lua_exportConst(ls, CCLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE);
   lua_exportConst(ls, CCLASS_ID_SORCEROR_DECORATIVE_STATUE);
+  lua_exportConst(ls, CCLASS_ID_FIRE_PILLAR);
   lua_exportConst(ls, CCLASS_ID_FOUNTAIN);
   lua_exportConst(ls, CCLASS_ID_FORGE);
   lua_exportConst(ls, CCLASS_ID_TANNERY);

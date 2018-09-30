@@ -66,6 +66,9 @@ Shadow of the Wyrm v0.7.4 "Dalza"
     speak with and as them, her voice shifting from her own creaky tones
     to the sweet music of The Lady, or Urgoth's horrifying roar.
 
+  The fortress of Carcassia is the home of the Emperor Titus.  Surrounded
+  by his Emperor's Guard, he rules from within his pillared court.
+
 - The Isle of Carcassia was inhabited long before the Carcassian Empire
   took hold, and it has a number of other features, including a dungeon
   on the north-east penninsula.
@@ -168,7 +171,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   gambler, pov dealer, blackjack dealer, racemaster, snapping turtle,
   Asher, Akhra, Axander, Wart, presence, the blind oracle, Praetor's
   footman, coalman, Praetor's scullerymaid, Praetor's cook, Praetor's
-  secretary, Praetor Dantus.
+  secretary, Praetor Dantus, Emperor Titus, the Emperor's guard.
 
 - New items: salted nuts, skewer of mystery meat, wizard staff, 
   linothorax, Calara's cloak, Calara's flaming whip, piece of coal.
