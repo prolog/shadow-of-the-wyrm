@@ -39,6 +39,41 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>emperor_titus</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>14</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>emperors_guard</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>emperors_guard</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>10</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>emperors_guard</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>emperors_guard</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>10</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>snakeling_thug</ID>
 				<Coord>
 					<Row>16</Row>
