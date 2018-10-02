@@ -1,8 +1,5 @@
 Me:
-- Praetor's house in Carcassia.
-  - Fifth quest: praetor.  Should give quest to get Ironsword, give to
-    Emperor, who then gives the amulet.  Emperor's part is done, just
-    need to do the Praetor's part.
+- Praetor's house in Carcassia.  Make it prettier.
 - Random questor in New Town
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
