@@ -115,6 +115,13 @@
 					<Col>1</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>questare</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>70</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>

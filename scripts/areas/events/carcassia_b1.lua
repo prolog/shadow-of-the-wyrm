@@ -24,9 +24,6 @@ local function setup_dynamic_content(m_id)
 
   local gt = carcassia_garden_type
 
-  -- Always rocks alongside the palace.
-  generate_city_feature(m_id, 13, 3, 18, 4, CCITY_SECTOR_RESIDENTIAL, 0)
-
   -- Either rocks or wildflowers in front of the palace.
   generate_city_feature(m_id, 13, 37, 18, 56, CCITY_SECTOR_RESIDENTIAL, gt)
   generate_city_feature(m_id, 13, 60, 18, 79, CCITY_SECTOR_RESIDENTIAL, gt)
