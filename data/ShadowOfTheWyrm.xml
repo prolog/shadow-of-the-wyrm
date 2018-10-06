@@ -27998,6 +27998,43 @@
 			</Damage>
 			<Soak>15</Soak>
 		</Creature>
+		<Creature id="questare">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>QUESTARE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>QUESTARE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>QUESTARE_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>20</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>220</Exp>
+			</CreatureGeneration>
+			<Level>20</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/questare.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">
