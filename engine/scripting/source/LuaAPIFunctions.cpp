@@ -7,6 +7,7 @@
 #include "CoordUtils.hpp"
 #include "CreatureDescriber.hpp"
 #include "CreatureFactory.hpp"
+#include "CreatureGenerationManager.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "DecisionStrategyProperties.hpp"
@@ -369,6 +370,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_automove_coords", set_automove_coords);
   lua_register(L, "set_decision_strategy_property", set_decision_strategy_property);
   lua_register(L, "set_event_script", set_event_script);
+  lua_register(L, "get_random_hostile_creature_id", get_random_hostile_creature_id);
 }
 
 // Lua API helper functions
@@ -4550,17 +4552,35 @@ int teleport(lua_State* ls)
 int get_creature_description(lua_State* ls)
 {
   string creature_desc;
+  int num_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
   {
     string viewing_creature_id = lua_tostring(ls, 1);
     string creature_id = lua_tostring(ls, 2);
+    bool ignore_checks = false;
 
-    CreaturePtr viewing_creature = get_creature(viewing_creature_id);
+    if (num_args >= 3 && lua_isboolean(ls, 3))
+    {
+      ignore_checks = lua_toboolean(ls, 3);
+    }
+
     CreaturePtr creature = get_creature(creature_id);
 
-    CreatureDescriber cd(viewing_creature, creature);
-    creature_desc = cd.describe();
+    // Ignoring checks is used when information about a general creature is
+    // needed (eg, for quests), rather than a specific creature (looking
+    // at a particular goblin in a dungeon).
+    if (ignore_checks && creature)
+    {
+      creature_desc = creature->get_description_sid();
+    }
+    else
+    {
+      CreaturePtr viewing_creature = get_creature(viewing_creature_id);
+
+      CreatureDescriber cd(viewing_creature, creature);
+      creature_desc = cd.describe();
+    }
   }
   else
   {
@@ -7033,11 +7053,17 @@ int set_sentinel(lua_State* ls)
 int get_sid(lua_State* ls)
 {
   string str;
+  int num_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  if (num_args >= 1 && lua_isstring(ls, 1))
   {
     string sid = lua_tostring(ls, 1);
     str = StringTable::get(sid);
+
+    if (num_args >= 2 && lua_istable(ls, 2))
+    {
+      str = read_sid_and_replace_values(ls);
+    }
   }
   else
   {
@@ -7144,4 +7170,45 @@ int set_event_script(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_random_hostile_creature_id(lua_State* ls)
+{
+  string creature_id;
+
+  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    int min_level = lua_tointeger(ls, 1);
+    int max_level = lua_tointeger(ls, 2);
+
+    Game& game = Game::instance();
+    CreatureGenerationValuesMap& cgv = game.get_creature_generation_values_ref();
+    vector<string> possible_ids;
+
+    for (auto cgv_pair : cgv)
+    {
+      CreatureGenerationManager cgm;
+      CreatureGenerationMap cgmap = cgm.generate_creature_generation_map(TileType::TILE_TYPE_DUNGEON, true, min_level, max_level, Rarity::RARITY_COMMON, {});
+
+      for (auto cgmap_pair : cgmap)
+      {
+        if (cgmap_pair.second.second.get_friendly() == false)
+        {
+          possible_ids.push_back(cgmap_pair.first);
+        }
+      }
+    }
+
+    if (possible_ids.size() > 0)
+    {
+      creature_id = possible_ids.at(RNG::range(0, possible_ids.size()-1));
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_random_hostile_creature_id");
+  }
+
+  lua_pushstring(ls, creature_id.c_str());
+  return 1;
 }

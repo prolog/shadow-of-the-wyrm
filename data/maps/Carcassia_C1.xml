@@ -118,8 +118,8 @@
 			<Placement>
 				<ID>questare</ID>
 				<Coord>
-					<Row>18</Row>
-					<Col>70</Col>
+					<Row>10</Row>
+					<Col>68</Col>
 				</Coord>
 			</Placement>
 		</Creatures>
@@ -143,5 +143,41 @@
 			<MapID>carcassia_c2</MapID>
 		</Exit>
 	</Exits>
-	<Features/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>9</Row>
+				<Col>68</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>7</Row>
+				<Col>66</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>7</Row>
+				<Col>70</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>11</Row>
+				<Col>66</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>11</Row>
+				<Col>70</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>

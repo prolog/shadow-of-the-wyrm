@@ -8,7 +8,7 @@ local function init_throne_room()
   local start_col = 6
 
   for i,row in ipairs(rows) do
-    for col = start_col, 78, 5 do
+    for col = start_col, 54, 5 do
       add_feature_to_map(CCLASS_ID_FIRE_PILLAR, row, col, map_id)
     end
   end
