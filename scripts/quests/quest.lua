@@ -25,7 +25,7 @@ function Quest:quest_completion_fn()
 end
 
 -- Create a new quest
-function Quest:new(quest_id, quest_title_sid, questmaster_name_sid, quest_description_sid, quest_completion_text_sid, quest_reminder_text_sid, quest_precond_fn, quest_start_fn, quest_completion_condition_fn, quest_completion_fn)
+function Quest:new(quest_id, quest_title_sid_or_table, questmaster_name_sid, quest_description_sid_or_table, quest_completion_text_sid, quest_reminder_text_sid_or_table, quest_precond_fn, quest_start_fn, quest_completion_condition_fn, quest_completion_fn)
   local obj = {}
 
   -- Look up the current map name instead of forcing every quest to
@@ -39,12 +39,47 @@ function Quest:new(quest_id, quest_title_sid, questmaster_name_sid, quest_descri
   setmetatable(obj, self)
 
   obj.quest_id = quest_id
-  obj.quest_title_sid = quest_title_sid
+
+  if type(quest_title_sid_or_table) == "table" then
+    local t_size = #quest_title_sid_or_table
+
+    if t_size == 2 then
+      obj.quest_title_sid = quest_title_sid_or_table[1]
+      obj.quest_title_parameter_sids = quest_title_sid_or_table[2]
+    end
+  else
+    obj.quest_title_sid = quest_title_sid_or_table
+    obj.quest_title_parameter_sids = ""
+  end
+
   obj.questmaster_name_sid = questmaster_name_sid
   obj.map_name_sid = map_name_sid
-  obj.quest_description_sid = quest_description_sid
+
+  if type(quest_description_sid_or_table) == "table" then
+    local t_size = #quest_description_sid_or_table
+
+    if t_size == 2 then
+      obj.quest_description_sid = quest_description_sid_or_table[1]
+      obj.quest_description_parameter_sids = quest_description_sid_or_table[2]
+    end
+  else
+    obj.quest_description_sid = quest_description_sid_or_table
+    obj.quest_description_parameter_sids = ""
+  end
+
   obj.quest_completion_text_sid = quest_completion_text_sid
-  obj.quest_reminder_text_sid = quest_reminder_text_sid
+
+  if type(quest_reminder_text_sid_or_table) == "table" then
+    local t_size = #quest_reminder_text_sid_or_table
+
+    if t_size == 2 then
+      obj.quest_reminder_text_sid = quest_reminder_text_sid_or_table[1]
+      obj.quest_reminder_text_parameter_sids = quest_reminder_text_sid_or_table[2]
+    end
+  else
+    obj.quest_reminder_text_sid = quest_reminder_text_sid
+    obj.quest_reminder_text_parameter_sids = ""
+  end
 
   obj.quest_precond_fn = truefn
   obj.quest_start_fn = emptyfn
@@ -72,7 +107,7 @@ function Quest:new(quest_id, quest_title_sid, questmaster_name_sid, quest_descri
   if (quest_completion_fn ~= nil) then
     obj.quest_completion_fn = quest_completion_fn
   else
-    log(CLOG_ERROR, "nil conpletion fn for quest ID " .. quest_id)
+    log(CLOG_ERROR, "nil completion fn for quest ID " .. quest_id)
   end
 
   return obj
@@ -111,7 +146,16 @@ function Quest:execute()
 
   -- Quest is in progress, condition is not met.
   elseif is_on_quest(self.quest_id) then
-    add_message(self.quest_reminder_text_sid)
+    if quest_reminder_text_parameter_sids ~= "" then
+      local params = {}
+      for p in string.gmatch(self.quest_reminder_text_parameter_sids, "([^,]+)") do
+        table.insert(params, get_sid(p))
+      end
+
+      add_message(self.quest_reminder_text_sid, params)
+    else
+      add_message(self.quest_reminder_text_sid)
+    end
 
   -- Quest is not in progress, condition is not met.
   else

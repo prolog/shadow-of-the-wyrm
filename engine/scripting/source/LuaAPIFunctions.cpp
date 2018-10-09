@@ -187,6 +187,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "remove_active_quest", remove_active_quest);
   lua_register(L, "is_quest_completed", is_quest_completed);
+  lua_register(L, "get_quest_details", get_quest_details);
   lua_register(L, "player_has_item", player_has_item);
   lua_register(L, "remove_object_from_player", remove_object_from_player);
   lua_register(L, "is_item_generated", is_item_generated);
@@ -294,6 +295,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_hostility", set_hostility);
   lua_register(L, "teleport", teleport);
   lua_register(L, "get_creature_description", get_creature_description);
+  lua_register(L, "get_creature_description_sids", get_creature_description_sids);
   lua_register(L, "transfer_item", transfer_item);
   lua_register(L, "creature_tile_has_item", creature_tile_has_item);
   lua_register(L, "pick_up_item", pick_up_item);
@@ -729,11 +731,20 @@ int add_new_quest(lua_State* ls)
 
     string quest_id = lua_tostring(ls, 1);
     string quest_title_sid = se.get_table_str(ls, "quest_title_sid");
+    vector<string> quest_title_parameter_sids = String::create_string_vector_from_csv_string(se.get_table_str(ls, "quest_title_parameter_sids"));
     string questmaster_name_sid = se.get_table_str(ls, "questmaster_name_sid");
     string map_name_sid = se.get_table_str(ls, "map_name_sid");
     string quest_description_sid = se.get_table_str(ls, "quest_description_sid");
+    string quest_description_param_csv = se.get_table_str(ls, "quest_description_parameter_sids");
+    vector<string> quest_description_parameter_sids = String::create_string_vector_from_csv_string(quest_description_param_csv);
 
-    Quest new_quest(quest_id, quest_title_sid, questmaster_name_sid, map_name_sid, quest_description_sid);
+    Quest new_quest(quest_id, 
+                    quest_title_sid, 
+                    quest_title_parameter_sids, 
+                    questmaster_name_sid, 
+                    map_name_sid, 
+                    quest_description_sid, 
+                    quest_description_parameter_sids);
 
     game.get_quests_ref().add_new_quest(quest_id, new_quest);
 
@@ -1295,6 +1306,46 @@ int is_quest_completed(lua_State* ls)
 
   lua_pushboolean(ls, quest_completed);
   return 1;
+}
+
+int get_quest_details(lua_State* ls)
+{
+  string quest_title_sid;
+  string questmaster_name_sid;
+  string map_name_sid;
+  string quest_description_sid;
+  string quest_description_parameter_sids;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string quest_id = lua_tostring(ls, 1);
+
+    QuestMap& inp_quests = Game::instance().get_quests_ref().get_in_progress_quests();
+    auto inp_it = inp_quests.find(quest_id);
+
+    if (inp_it != inp_quests.end())
+    {
+      Quest q = inp_it->second;
+        
+      quest_title_sid = q.get_quest_title_sid();
+      questmaster_name_sid = q.get_questmaster_name_sid();
+      map_name_sid = q.get_map_name_sid();
+      quest_description_sid = q.get_quest_description_sid();
+      quest_description_parameter_sids = String::create_csv_from_string_vector(q.get_quest_description_parameter_sids());
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_quest_details");
+  }
+
+  lua_pushstring(ls, quest_title_sid.c_str());
+  lua_pushstring(ls, questmaster_name_sid.c_str());
+  lua_pushstring(ls, map_name_sid.c_str());
+  lua_pushstring(ls, quest_description_sid.c_str());
+  lua_pushstring(ls, quest_description_parameter_sids.c_str());
+
+  return 5;
 }
 
 // Check to see if the player has an item.
@@ -4565,22 +4616,26 @@ int get_creature_description(lua_State* ls)
       ignore_checks = lua_toboolean(ls, 3);
     }
 
+    CreaturePtr viewing_creature = get_creature(viewing_creature_id);
     CreaturePtr creature = get_creature(creature_id);
 
     // Ignoring checks is used when information about a general creature is
     // needed (eg, for quests), rather than a specific creature (looking
     // at a particular goblin in a dungeon).
-    if (ignore_checks && creature)
+    if (ignore_checks)
     {
-      creature_desc = creature->get_description_sid();
-    }
-    else
-    {
-      CreaturePtr viewing_creature = get_creature(viewing_creature_id);
+      const CreatureMap& c_map = Game::instance().get_creatures_ref();
+      auto c_it = c_map.find(creature_id);
 
-      CreatureDescriber cd(viewing_creature, creature);
-      creature_desc = cd.describe();
+      if (c_it != c_map.end())
+      {
+        viewing_creature = c_it->second;
+        creature = c_it->second;
+      }
     }
+
+    CreatureDescriber cd(viewing_creature, creature);
+    creature_desc = cd.describe();
   }
   else
   {
@@ -4591,6 +4646,38 @@ int get_creature_description(lua_State* ls)
   return 1;
 }
 
+// Returns, as a pair, description and short description
+int get_creature_description_sids(lua_State* ls)
+{
+  string desc_sid;
+  string short_desc_sid;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    const CreatureMap& c_map = Game::instance().get_creatures_ref();
+    auto c_it = c_map.find(lua_tostring(ls, 1));
+
+    if (c_it != c_map.end())
+    {
+      CreaturePtr creature = c_it->second;
+
+      if (creature != nullptr)
+      {
+        desc_sid = creature->get_description_sid();
+        short_desc_sid = creature->get_short_description_sid();
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_description_sids");
+  }
+
+  lua_pushstring(ls, desc_sid.c_str());
+  lua_pushstring(ls, short_desc_sid.c_str());
+
+  return 2;
+}
 
 // Argument 1: creature ID (creature that has the item)
 // Argument 2: creature ID (creature to which to transfer the item)
@@ -7176,26 +7263,23 @@ int get_random_hostile_creature_id(lua_State* ls)
 {
   string creature_id;
 
-  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
   {
     int min_level = lua_tointeger(ls, 1);
     int max_level = lua_tointeger(ls, 2);
+    TileType tile_type = static_cast<TileType>(lua_tointeger(ls, 3));
 
     Game& game = Game::instance();
-    CreatureGenerationValuesMap& cgv = game.get_creature_generation_values_ref();
+
+    CreatureGenerationManager cgm;
+    CreatureGenerationMap cgmap = cgm.generate_creature_generation_map(tile_type, true, min_level, max_level, Rarity::RARITY_COMMON, {});
     vector<string> possible_ids;
 
-    for (auto cgv_pair : cgv)
+    for (auto cgmap_pair : cgmap)
     {
-      CreatureGenerationManager cgm;
-      CreatureGenerationMap cgmap = cgm.generate_creature_generation_map(TileType::TILE_TYPE_DUNGEON, true, min_level, max_level, Rarity::RARITY_COMMON, {});
-
-      for (auto cgmap_pair : cgmap)
+      if (cgmap_pair.second.second.get_friendly() == false)
       {
-        if (cgmap_pair.second.second.get_friendly() == false)
-        {
-          possible_ids.push_back(cgmap_pair.first);
-        }
+        possible_ids.push_back(cgmap_pair.first);
       }
     }
 
