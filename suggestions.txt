@@ -1,4 +1,7 @@
 Me:
+- Check regular quests and Questare's quests.
+- Death from old age gives huge amount of points.
+- Need to check Questare quests, regular quests.
 - Praetor's house in Carcassia.  Make it prettier.
 - Random questor in New Town
 - Buildings generated in towns should automatically get inhabitants.
