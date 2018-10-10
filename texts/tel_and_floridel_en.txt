@@ -2052,4 +2052,14 @@ was an opening, it hid; they couldn't see %b
 a way they'd leave these woods, their lives unspared, %b
 a spear to mark the place their bones would lie interred.
 %p
+A rustle from the right.  The creature turned, %b
+then staggered underneath a blue-black fire %b
+that caught it well off-guard.  It didn't burn, %b
+but paused to understand from where the weird %b
+had come.  Beside them, one on either side, %b
+another pair of giants now emerged, %b
+the two they'd come to find, who stepped in stride %b
+toward the thing with fire and steel, a surge %b
+around the banya as the five of them converged.
+%p
 
