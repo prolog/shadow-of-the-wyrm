@@ -36,8 +36,29 @@ local function questare_quest_completion_fn()
   remove_creature_additional_property(PLAYER_ID, q_kill_count_before)
   remove_creature_additional_property(PLAYER_ID, q_creature_base_id)
 
-  -- ...
-  add_message_direct("HONK HONK")
+  local y,x = get_creature_yx(PLAYER_ID)
+  local min_danger = 1
+  local level = get_creature_level(PLAYER_ID)
+  local max_danger = level
+  local extra_enchants = (level / 8) + RNG_range(1, 3)
+  local num_items = RNG_range(1,2)
+  local item_gen = false
+
+  for i = 1, num_items do
+    local gen, id = generate_item(y, x, min_danger, max_danger, extra_enchants)
+
+    if gen then
+      item_gen = true
+    end
+  end
+
+  -- If for some reason an item couldn't be generated, then give the
+  -- player some ivory.
+  if item_gen == false then
+    add_object_to_player_tile(CURRENCY_ID, level * 20)
+  end
+  
+  clear_and_add_message("QUESTARE_QUEST_COMPLETE_SID")
 
   return true
 end

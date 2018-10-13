@@ -19,7 +19,9 @@
 #include "GenerationProperties.hpp"
 #include "GeneratorUtils.hpp"
 #include "HostilityManager.hpp"
+#include "ItemEnchantmentCalculator.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemGenerationManager.hpp"
 #include "ItemIdentifier.hpp"
 #include "Log.hpp"
 #include "LuaItemFilter.hpp"
@@ -373,6 +375,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_decision_strategy_property", set_decision_strategy_property);
   lua_register(L, "set_event_script", set_event_script);
   lua_register(L, "get_random_hostile_creature_id", get_random_hostile_creature_id);
+  lua_register(L, "generate_item", generate_item);
 }
 
 // Lua API helper functions
@@ -7295,4 +7298,60 @@ int get_random_hostile_creature_id(lua_State* ls)
 
   lua_pushstring(ls, creature_id.c_str());
   return 1;
+}
+
+int generate_item(lua_State* ls)
+{
+  bool generated = false;
+  string item_id;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+    int min_danger = lua_tointeger(ls, 3);
+    int max_danger = lua_tointeger(ls, 4);
+    int num_enchants = 0;
+    Rarity rarity = Rarity::RARITY_COMMON;
+    vector<ItemType> item_type_restr;
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    if (num_args >= 5 && lua_isnumber(ls, 5))
+    {
+      num_enchants = lua_tointeger(ls, 5);
+    }
+
+    ItemEnchantmentCalculator iec;
+    ItemGenerationManager igm;
+    ItemGenerationMap generation_map = igm.generate_item_generation_map({min_danger, max_danger, rarity, item_type_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE });
+    ItemPtr item = igm.generate_item(game.get_action_manager_ref(), generation_map, rarity, item_type_restr, iec.calculate_enchantments(max_danger));
+    int pct_chance_brand = iec.calculate_pct_chance_brand(1.0, item);
+
+    // Any free extra enchants.
+    item->enchant(pct_chance_brand, num_enchants);
+
+    if (map != nullptr && item != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr)
+      {
+        tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        
+        generated = true;
+        item_id = item->get_id();
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls,  "Invalid arguments to generate_item");
+  }
+
+  lua_pushboolean(ls, generated);
+  lua_pushstring(ls, item_id.c_str());
+
+  return 2;
 }
