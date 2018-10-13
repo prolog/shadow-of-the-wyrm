@@ -103,6 +103,7 @@ local function init_quest(quest, quest_id, plvl, creature_base_id)
     set_creature_additional_property(PLAYER_ID, q_creature_base_id, creature_base_id)
     set_creature_additional_property(PLAYER_ID, q_cur_quest, "1")
     set_creature_additional_property(PLAYER_ID, q_qid, quest_id)
+    set_creature_additional_property(PLAYER_ID, q_last_level, tostring(plvl))
 
     quest:execute()
   end
@@ -131,10 +132,10 @@ if has_questare_quest() then
   get_cached_questare_quest(questare_quest_id):execute()
 else
   -- Can the player do a quest at the current level?
-  local q_last_qid = get_creature_additional_property(PLAYER_ID, q_last_level)
+  local q_last_level = get_creature_additional_property(PLAYER_ID, q_last_level)
   local creature_level = get_creature_level(PLAYER_ID)
 
-  if q_last_qid ~= tostring(creature_level) then
+  if q_last_level ~= tostring(creature_level) then
     local quest_id = "questare_quest_" ..tostring(creature_level)
     local creature_base_id = get_random_hostile_creature_id(creature_level, creature_level, CTILE_TYPE_DUNGEON_COMPLEX)
     q = get_quest(quest_id, creature_level, creature_base_id)
