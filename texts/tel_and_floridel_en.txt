@@ -2062,4 +2062,25 @@ the two they'd come to find, who stepped in stride %b
 toward the thing with fire and steel, a surge %b
 around the banya as the five of them converged.
 %p
+With Weyg and Rhone came Carne and Phole.  If Weyg %b
+was known for bravery, the middle child %b
+would pale before the oldest, Carne, and break %b
+beneath his cold and dead-eyed stare.  The wild %b
+magics that Phole had always found so easy %b
+were useless in close spaces.  Brothers sought %b
+an opening, and there beneath the trees %b
+it was Carne who had first blood.  The brother brought %b
+his massive hammer down upon the banya's spot.
+%p
+He missed.  The creature was no slouch.  It caught %b
+the motion of the hammer, and then leapt %b
+by Carne, and as it reached, the creature got %b
+its claws across his back, then stopped, and swept %b
+upward.  He roared in pain, and now the ground %b
+drank deeply.  As the forest shuddered, Rhone %b
+crept up behind the creature, and now found %b
+an opening.  His knife caught flesh and bone - %b
+but the thrust had drawn him in, and left him deeply prone.
+%p
+
 
