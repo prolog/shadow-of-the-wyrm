@@ -7329,19 +7329,22 @@ int generate_item(lua_State* ls)
     ItemPtr item = igm.generate_item(game.get_action_manager_ref(), generation_map, rarity, item_type_restr, iec.calculate_enchantments(max_danger));
     int pct_chance_brand = iec.calculate_pct_chance_brand(1.0, item);
 
-    // Any free extra enchants.
-    item->enchant(pct_chance_brand, num_enchants);
-
-    if (map != nullptr && item != nullptr)
+    if (item != nullptr)
     {
-      TilePtr tile = map->at(y, x);
+      // Any free extra enchants.
+      item->enchant(pct_chance_brand, num_enchants);
 
-      if (tile != nullptr)
+      if (map != nullptr && item != nullptr)
       {
-        tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
-        
-        generated = true;
-        item_id = item->get_id();
+        TilePtr tile = map->at(y, x);
+
+        if (tile != nullptr)
+        {
+          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+          generated = true;
+          item_id = item->get_id();
+        }
       }
     }
   }
