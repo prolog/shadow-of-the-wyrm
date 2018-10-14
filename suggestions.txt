@@ -1,4 +1,5 @@
 Me:
+- Make fire pillars shimmer
 - Exclude certain item types from questor's rewards
 - Check regular quests and Questare's quests.
 - Death from old age gives huge amount of points.
