@@ -1,4 +1,5 @@
 Me:
+- Need to test MapTester after WellGenerator bug fix
 - Make fire pillars shimmer
 - Exclude certain item types from questor's rewards
 - Check regular quests and Questare's quests.

@@ -1323,7 +1323,7 @@ int get_quest_details(lua_State* ls)
   {
     string quest_id = lua_tostring(ls, 1);
 
-    QuestMap& inp_quests = Game::instance().get_quests_ref().get_in_progress_quests();
+    QuestMap inp_quests = Game::instance().get_quests_ref().get_in_progress_quests();
     auto inp_it = inp_quests.find(quest_id);
 
     if (inp_it != inp_quests.end())
@@ -7083,7 +7083,6 @@ int create_menu(lua_State* ls)
     {
       OptionScreen os(Game::instance().get_display(), title_sid, tdp, table_options);
       string display_s = os.display();
-      int input = display_s.at(0);
       char screen_selection = display_s.at(0);
       selected_id = os.get_option(screen_selection);
     }
@@ -7271,8 +7270,6 @@ int get_random_hostile_creature_id(lua_State* ls)
     int min_level = lua_tointeger(ls, 1);
     int max_level = lua_tointeger(ls, 2);
     TileType tile_type = static_cast<TileType>(lua_tointeger(ls, 3));
-
-    Game& game = Game::instance();
 
     CreatureGenerationManager cgm;
     CreatureGenerationMap cgmap = cgm.generate_creature_generation_map(tile_type, true, min_level, max_level, Rarity::RARITY_COMMON, {});

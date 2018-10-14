@@ -111,8 +111,6 @@ vector<pair<Coordinate, Coordinate>> GeneratorUtils::generate_rectangles(const M
       int rect_height = RNG::range(3, 6);
       int rect_width = RNG::range(3, 16);
 
-      int rect_sy = RNG::range(start_row, end_row - rect_height);
-
       // Guard against the squares being larger than the generatable area.
       if (((end_row - rect_height) < start_row) || ((end_col - rect_width) < start_col))
       {

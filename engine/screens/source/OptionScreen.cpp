@@ -14,7 +14,7 @@ using namespace boost::algorithm;
 // Set up the option screen.
 // The option map is keyed by description to ensure
 OptionScreen::OptionScreen(DisplayPtr new_display, const string& new_title_sid, const vector<TextDisplayPair>& new_intro_text, const vector<string>& new_options) 
-: Screen(new_display), title_sid(new_title_sid), options(new_options), intro_text(new_intro_text)
+: Screen(new_display), title_sid(new_title_sid), intro_text(new_intro_text), options(new_options)
 {
   initialize();
 }

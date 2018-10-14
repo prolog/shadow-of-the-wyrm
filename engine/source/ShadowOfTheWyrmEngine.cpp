@@ -456,13 +456,11 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   string default_starting_location_id = game.get_settings_ref().get_setting(Setting::DEFAULT_STARTING_LOCATION_ID);
   StartingLocationMap sm = game.get_starting_locations();
   StartingLocation sl;
-  bool prompt_user_for_sl_selection = true;
   auto sm_it = sm.find(default_starting_location_id);
 
   if (sm_it != sm.end())
   {
     sl = sm_it->second;
-    prompt_user_for_sl_selection = false;
   }
   else
   {

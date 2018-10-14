@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <vector>
 #include "ClassIdentifiers.hpp"
 #include "Directions.hpp"

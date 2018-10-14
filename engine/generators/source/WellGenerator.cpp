@@ -77,7 +77,6 @@ void WellGenerator::create_open_section(MapPtr result_map, const Coordinate& up_
 void WellGenerator::create_stream(MapPtr result_map, const Coordinate& open_start, const Coordinate& open_end)
 {
   Dimensions dim = result_map->size();
-  int rows = dim.get_y();
 
   int start_x = 0;
   int end_x = dim.get_x() - 1;
@@ -93,8 +92,8 @@ void WellGenerator::create_stream(MapPtr result_map, const Coordinate& open_star
     end_y = dim.get_y() - 1;
     int x_offset = RNG::range(0, open_start.second);
     int x_centre = (open_start.second + open_end.second) / 2;
-    int start_x = x_centre - x_offset;
-    int end_x = x_centre + x_offset;
+    start_x = x_centre - x_offset;
+    end_x = x_centre + x_offset;
   }
 
   BresenhamLine bl;
