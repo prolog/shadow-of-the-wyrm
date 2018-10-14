@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include <algorithm> // needed for g++ to find the right declarations
 
 TEST(SW_World_Damage, set_damage_flags)
 {
