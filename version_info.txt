@@ -66,8 +66,18 @@ Shadow of the Wyrm v0.7.4 "Dalza"
     speak with and as them, her voice shifting from her own creaky tones
     to the sweet music of The Lady, or Urgoth's horrifying roar.
 
-  The fortress of Carcassia is the home of the Emperor Titus.  Surrounded
-  by his Emperor's Guard, he rules from within his pillared court.
+  The fortress of Carcassia is the home of the Emperor Titus.  
+  
+  - Surrounded by his Emperor's Guard, he rules from within his pillared 
+  court.  It stands on the remains of the old Carcassian senate, long 
+  since neutered by the absolute rule of the emperors.
+
+  - Beside it is his altar to Celeste, the favoured deity of the 
+  Carcassian people. 
+
+  - Further into the palace, there are a few small, official shops; and
+  a fountain where the nobleman Questare hands out quests to aspiring
+  adventurers.
 
 - The Isle of Carcassia was inhabited long before the Carcassian Empire
   took hold, and it has a number of other features, including a dungeon
@@ -174,7 +184,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   Asher, Akhra, Axander, Wart, presence, the blind oracle, Praetor's
   footman, coalman, Praetor's scullerymaid, Praetor's cook, Praetor's
   secretary, Praetor Dantus, Emperor Titus, the Emperor's guard,
-  Questare.
+  Questare, senator.
 
 - New items: salted nuts, skewer of mystery meat, wizard staff, 
   linothorax, Calara's cloak, Calara's flaming whip, piece of coal.
