@@ -1,9 +1,8 @@
 Me:
-- Need to test MapTester after WellGenerator bug fix
-- Make fire pillars shimmer
+- Lycaon
+- Need something in the opening to the fortress in C1.
 - Exclude certain item types from questor's rewards
 - Check regular quests and Questare's quests.
-- Death from old age gives huge amount of points.
 - Need to check Questare quests, regular quests.
 - Praetor's house in Carcassia.  Make it prettier.
 - Random questor in New Town
