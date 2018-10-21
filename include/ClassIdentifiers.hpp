@@ -299,7 +299,8 @@ enum struct ClassIdentifier
   CLASS_ID_STATUS = 294,
   CLASS_ID_STARTING_LOCATION = 295,
   CLASS_ID_MEMBERSHIPS = 296,
-  CLASS_ID_MEMBERSHIP = 297
+  CLASS_ID_MEMBERSHIP = 297,
+  CLASS_ID_SHIMMER_COLOURS = 298
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go

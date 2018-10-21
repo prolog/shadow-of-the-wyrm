@@ -532,6 +532,30 @@ void Serialize::read_string_set(istream& stream, set<string>& val)
   }
 }
 
+void Serialize::write_colour_vector(ostream& stream, const vector<Colour>& val)
+{
+  Serialize::write_size_t(stream, val.size());
+
+  for (const Colour c : val)
+  {
+    Serialize::write_enum(stream, c);
+  }
+}
+
+void Serialize::read_colour_vector(istream& stream, vector<Colour>& val)
+{
+  size_t num_colours = 0;
+  Serialize::read_size_t(stream, num_colours);
+
+  for (size_t i = 0; i < num_colours; i++)
+  {
+    Colour c = Colour::COLOUR_BLACK;
+    Serialize::read_enum(stream, c);
+
+    val.push_back(c);
+  }
+}
+
 void Serialize::write_event_scripts(ostream& stream, const EventScriptsMap& event_scripts)
 {
   size_t es_size = event_scripts.size();
