@@ -1,5 +1,5 @@
 Me:
-- Lycaon
+- Positioning of magici merchant
 - Need something in the opening to the fortress in C1.
 - Exclude certain item types from questor's rewards
 - Check regular quests and Questare's quests.

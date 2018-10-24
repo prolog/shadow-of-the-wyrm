@@ -2092,3 +2092,13 @@ with Carne's whole back a gaping wound, the brunt %b
 of the damage was theirs.  A sudden, deadly hush %b
 as the trees made up their mind.  They'd surely seen enough.
 %p
+But if they'd seen enough, they hadn't seen %b
+the way that Phole had summoned down the wind, %b
+a rope of air that tumbled as it streamed %b
+from in behind him, seemingly to bend %b
+around each tree.  It caught an open flame %b
+he summoned with a cantrip.  Corded fire %b
+now ripped into the banya, then away %b
+to light the trees themselves, an unstacked pyre %b
+that spread now with the wind, the tendrils licking higher.
+%p
