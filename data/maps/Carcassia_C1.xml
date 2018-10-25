@@ -216,6 +216,60 @@
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
+				<Row>2</Row>
+				<Col>55</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>0</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>2</Row>
+				<Col>61</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>1</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>55</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>2</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>61</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>3</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
+				<Col>55</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>4</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
+				<Col>61</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>5</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>7</Row>
 				<Col>69</Col>
 			</Coord>

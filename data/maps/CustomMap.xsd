@@ -218,6 +218,7 @@
 				<xs:element name="BasicFeature" type="tns:Feature"/>
 				<xs:element name="SlotMachine" type="tns:SlotMachine"/>
 				<xs:element name="Sign" type="tns:Sign"/>
+				<xs:element name="DecorativeStatue" type="tns:DecorativeStatue"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
@@ -367,6 +368,14 @@
 			<xs:element name="TextSID" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="DecorativeStatue">
+		<xs:annotation>
+			<xs:documentation>A particular type of decorative statue.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Type" type="tns:DecorativeStatueType"/>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="Entrance">
 		<xs:annotation>
 			<xs:documentation>
@@ -479,6 +488,23 @@
 		<xs:restriction base="xs:int">
 			<xs:minInclusive value="0"/>
 			<xs:maxInclusive value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DecorativeStatueType">
+		<xs:annotation>
+			<xs:documentation>
+			The type of decorative statue.  See world/tiles/features/include/StatueTypes.hpp
+			0 = King
+			1 = Queen
+			2 = Warlord
+			3 = Knight
+			4 = High Priest
+			5 = Sorceror
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="5"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
