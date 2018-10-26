@@ -7303,21 +7303,37 @@ int generate_item(lua_State* ls)
   string item_id;
   int num_args = lua_gettop(ls);
 
-  if (num_args >= 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  if (num_args >= 5 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
   {
     int y = lua_tointeger(ls, 1);
     int x = lua_tointeger(ls, 2);
-    int min_danger = lua_tointeger(ls, 3);
-    int max_danger = lua_tointeger(ls, 4);
+    string itypes = lua_tostring(ls, 3);
+    int min_danger = lua_tointeger(ls, 4);
+    int max_danger = lua_tointeger(ls, 5);
     int num_enchants = 0;
+
     Rarity rarity = Rarity::RARITY_COMMON;
     vector<ItemType> item_type_restr;
+
+    // JCD FIXME: If this ever gets needed elsewhere in the Lua code, maybe
+    // refactor into a common conversion function.
+    if (!itypes.empty())
+    {
+      vector<string> itypes_vs = String::create_string_vector_from_csv_string(itypes);
+      
+      for (const string& itype_s : itypes_vs)
+      {
+        ItemType itype = static_cast<ItemType>(String::to_int(itype_s));
+        item_type_restr.push_back(itype);
+      }
+    }
+
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
 
-    if (num_args >= 5 && lua_isnumber(ls, 5))
+    if (num_args >= 6 && lua_isnumber(ls, 6))
     {
-      num_enchants = lua_tointeger(ls, 5);
+      num_enchants = lua_tointeger(ls, 6);
     }
 
     ItemEnchantmentCalculator iec;

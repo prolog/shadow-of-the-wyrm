@@ -1,4 +1,5 @@
 require('constants')
+require('fn')
 require('quest')
 
 local q_qid = "questare_quest_id"
@@ -43,9 +44,10 @@ local function questare_quest_completion_fn()
   local extra_enchants = (level / 8) + RNG_range(1, 3)
   local num_items = RNG_range(1,2)
   local item_gen = false
+  local allowed_types = fn.array_to_csv(fn.stringify_array({CITEM_TYPE_WEAPON, CITEM_TYPE_ARMOUR, CITEM_TYPE_POTION, CITEM_TYPE_WAND, CITEM_TYPE_SPELLBOOK}))
 
   for i = 1, num_items do
-    local gen, id = generate_item(y, x, min_danger, max_danger, extra_enchants)
+    local gen, id = generate_item(y, x, allowed_types, min_danger, max_danger, extra_enchants)
 
     if gen then
       item_gen = true

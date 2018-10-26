@@ -61,6 +61,16 @@ function shuffle(t)
   return t
 end
 
+function stringify_array(t)
+  local s_a = {}
+
+  for i = 1, #t do
+    table.insert(s_a, tostring(t[i]))
+  end
+
+  return s_a
+end
+
 function array_to_csv(t)
   local csv = ""
   for i = 1, #t do

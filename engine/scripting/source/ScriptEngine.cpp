@@ -90,12 +90,22 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CDIRECTION_UP);
   lua_exportConst(ls, CDIRECTION_DOWN);
 
+  lua_exportConst(ls, CITEM_TYPE_MISC);
+  lua_exportConst(ls, CITEM_TYPE_WEAPON);
+  lua_exportConst(ls, CITEM_TYPE_ARMOUR);
   lua_exportConst(ls, CITEM_TYPE_POTION);
-  lua_exportConst(ls, CITEM_TYPE_WAND);
-  lua_exportConst(ls, CITEM_TYPE_SCROLL);
   lua_exportConst(ls, CITEM_TYPE_SPELLBOOK);
+  lua_exportConst(ls, CITEM_TYPE_SCROLL);
+  lua_exportConst(ls, CITEM_TYPE_WAND);
+  lua_exportConst(ls, CITEM_TYPE_STAFF);
   lua_exportConst(ls, CITEM_TYPE_RING);
   lua_exportConst(ls, CITEM_TYPE_AMULET);
+  lua_exportConst(ls, CITEM_TYPE_FOOD);
+  lua_exportConst(ls, CITEM_TYPE_AMMUNITION);
+  lua_exportConst(ls, CITEM_TYPE_PLANT);
+  lua_exportConst(ls, CITEM_TYPE_BOAT);
+  lua_exportConst(ls, CITEM_TYPE_CURRENCY);
+  lua_exportConst(ls, CITEM_TYPE_TOOL);
 
   lua_exportConst(ls, CTILE_TYPE_UNDEFINED);
   lua_exportConst(ls, CTILE_TYPE_FIRST);

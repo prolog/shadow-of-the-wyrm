@@ -1,4 +1,6 @@
 Me:
+- Value restrictions for Questare's quests.
+- Uniques showing up in Questare's quests.
 - Exclude certain item types from questor's rewards
 - Check regular quests and Questare's quests.
 - Fill out armory in Carcassia, quest for key.
