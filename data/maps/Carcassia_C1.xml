@@ -185,6 +185,13 @@
 					<Col>67</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>herbalist</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>
@@ -211,6 +218,62 @@
 			<Coord>
 				<Row>9</Row>
 				<Col>71</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>1</Row>
+				<Col>54</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>1</Row>
+				<Col>62</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>54</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>62</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>5</Row>
+				<Col>54</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>5</Row>
+				<Col>62</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>7</Row>
+				<Col>54</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>7</Row>
+				<Col>62</Col>
 			</Coord>
 			<Fountain/>
 		</FeaturePlacement>
