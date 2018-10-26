@@ -28153,6 +28153,43 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="herbalist">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>HERBALIST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HERBALIST_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HERBALIST_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HERBALIST_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/herbalist.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">

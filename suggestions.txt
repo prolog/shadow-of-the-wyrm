@@ -1,9 +1,7 @@
 Me:
-- Positioning of magici merchant
-- Need something in the opening to the fortress in C1.
 - Exclude certain item types from questor's rewards
 - Check regular quests and Questare's quests.
-- Need to check Questare quests, regular quests.
+- Fill out armory in Carcassia, quest for key.
 - Praetor's house in Carcassia.  Make it prettier.
 - Random questor in New Town
 - Buildings generated in towns should automatically get inhabitants.
