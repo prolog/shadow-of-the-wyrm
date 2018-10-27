@@ -36594,7 +36594,7 @@
 			<Potion id="elven_brandy">
 				<DescriptionSID>ELVEN_BRANDY_SID</DescriptionSID>
 				<UsageDescriptionSID>ELVEN_BRANDY_USAGE_SID</UsageDescriptionSID>
-				<Value>12</Value>
+				<Value>8</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
