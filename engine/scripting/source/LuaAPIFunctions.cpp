@@ -7328,12 +7328,18 @@ int generate_item(lua_State* ls)
       }
     }
 
-    Game& game = Game::instance();
-    MapPtr map = game.get_current_map();
-
     if (num_args >= 6 && lua_isnumber(ls, 6))
     {
       num_enchants = lua_tointeger(ls, 6);
+    }
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    if (num_args >= 7 && lua_isstring(ls, 7))
+    {
+      string map_id = lua_tostring(ls, 7);
+      map = game.get_map_registry_ref().get_map(map_id);
     }
 
     ItemEnchantmentCalculator iec;
