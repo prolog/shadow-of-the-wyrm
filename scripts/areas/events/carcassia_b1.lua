@@ -61,9 +61,21 @@ local function setup_praetor_house(map_id)
   end
 end
  
+-- Setup the armory with some useful early-game weapons and armour
+local function setup_armory(map_id)
+  local types = fn.array_to_csv(fn.stringify_array({CITEM_TYPE_WEAPON, CITEM_TYPE_ARMOUR}))
+
+  for row = 14, 16 do
+    for col = 16, 25 do
+      generate_item(row, col, types, 1, 12, RNG_range(1,5), map_id)
+    end
+  end
+end
+
 function init_carcassia_b1(map_id)
   setup_dynamic_content(map_id)
   setup_praetor_house(map_id)
+  setup_armory(map_id)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_b1)

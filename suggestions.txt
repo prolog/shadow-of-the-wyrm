@@ -3,7 +3,7 @@ Me:
 - Uniques showing up in Questare's quests.
 - Exclude certain item types from questor's rewards
 - Check regular quests and Questare's quests.
-- Fill out armory in Carcassia, quest for key.
+- Quest for key to armory in Carcassia.
 - Praetor's house in Carcassia.  Make it prettier.
 - Random questor in New Town
 - Buildings generated in towns should automatically get inhabitants.
