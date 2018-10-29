@@ -7303,13 +7303,14 @@ int generate_item(lua_State* ls)
   string item_id;
   int num_args = lua_gettop(ls);
 
-  if (num_args >= 5 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
+  if (num_args >= 6 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
   {
     int y = lua_tointeger(ls, 1);
     int x = lua_tointeger(ls, 2);
     string itypes = lua_tostring(ls, 3);
     int min_danger = lua_tointeger(ls, 4);
     int max_danger = lua_tointeger(ls, 5);
+    int min_value = lua_tointeger(ls, 6);
     int num_enchants = 0;
 
     Rarity rarity = Rarity::RARITY_COMMON;
@@ -7328,23 +7329,23 @@ int generate_item(lua_State* ls)
       }
     }
 
-    if (num_args >= 6 && lua_isnumber(ls, 6))
+    if (num_args >= 7 && lua_isnumber(ls, 7))
     {
-      num_enchants = lua_tointeger(ls, 6);
+      num_enchants = lua_tointeger(ls, 7);
     }
 
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
 
-    if (num_args >= 7 && lua_isstring(ls, 7))
+    if (num_args >= 8 && lua_isstring(ls, 8))
     {
-      string map_id = lua_tostring(ls, 7);
+      string map_id = lua_tostring(ls, 8);
       map = game.get_map_registry_ref().get_map(map_id);
     }
 
     ItemEnchantmentCalculator iec;
     ItemGenerationManager igm;
-    ItemGenerationMap generation_map = igm.generate_item_generation_map({min_danger, max_danger, rarity, item_type_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE });
+    ItemGenerationMap generation_map = igm.generate_item_generation_map({min_danger, max_danger, rarity, item_type_restr, min_value});
     ItemPtr item = igm.generate_item(game.get_action_manager_ref(), generation_map, rarity, item_type_restr, iec.calculate_enchantments(max_danger));
     int pct_chance_brand = iec.calculate_pct_chance_brand(1.0, item);
 

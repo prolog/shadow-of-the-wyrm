@@ -28,3 +28,4 @@ CLASS_ID_NOBLE = "noble"
 CLASS_ID_THIEF = "thief"
 HIGH_TOWER_GUILD_ID = "high_tower"
 THIEVES_GUILD_ID = "carcassia_guild_thieves"
+MIN_GEN_VALUE = 10

@@ -36844,7 +36844,7 @@
 				<UnidentifiedDescriptionSID>UNID_FIRE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FIRE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FIRE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>10</Value>
+				<Value>9</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -36888,7 +36888,7 @@
 				<UnidentifiedDescriptionSID>UNID_FRUIT_JUICE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FRUIT_JUICE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FRUIT_JUICE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>30</Value>
+				<Value>3</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -37292,6 +37292,17 @@
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carcassia_casino</LockID>
+			</Tool>
+			<Tool id="carcassia_armory_key">
+				<DescriptionSID>CARCASSIA_ARMORY_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CARCASSIA_ARMORY_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carc_b1_armory</LockID>
 			</Tool>
 			<Tool id="_crypt_key">
 				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>
