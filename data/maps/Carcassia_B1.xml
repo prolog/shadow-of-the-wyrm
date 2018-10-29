@@ -246,5 +246,31 @@
 				</Entrance>
 			</Door>
 		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>20</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carc_b1_armory</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>21</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carc_b1_armory</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
 	</Features>
 </CustomMap>

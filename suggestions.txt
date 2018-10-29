@@ -1,9 +1,7 @@
 Me:
-- Value restrictions for Questare's quests.
-- Uniques showing up in Questare's quests.
-- Exclude certain item types from questor's rewards
-- Check regular quests and Questare's quests.
 - Quest for key to armory in Carcassia.
+- Value restrictions for Questare's quests.
+- Check regular quests and Questare's quests.
 - Praetor's house in Carcassia.  Make it prettier.
 - Random questor in New Town
 - Buildings generated in towns should automatically get inhabitants.
