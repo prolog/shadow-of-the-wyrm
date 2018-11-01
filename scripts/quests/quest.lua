@@ -77,7 +77,7 @@ function Quest:new(quest_id, quest_title_sid_or_table, questmaster_name_sid, que
       obj.quest_reminder_text_parameter_sids = quest_reminder_text_sid_or_table[2]
     end
   else
-    obj.quest_reminder_text_sid = quest_reminder_text_sid
+    obj.quest_reminder_text_sid = quest_reminder_text_sid_or_table
     obj.quest_reminder_text_parameter_sids = ""
   end
 
