@@ -179,6 +179,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>scamander</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>66</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>magici_merchant</ID>
 				<Coord>
 					<Row>18</Row>

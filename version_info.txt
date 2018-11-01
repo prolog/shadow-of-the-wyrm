@@ -187,7 +187,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   Asher, Akhra, Axander, Wart, presence, the blind oracle, Praetor's
   footman, coalman, Praetor's scullerymaid, Praetor's cook, Praetor's
   secretary, Praetor Dantus, Emperor Titus, the Emperor's guard,
-  Questare, senator, Lycaon.
+  Questare, senator, Lycaon, magici merchant, herbalist, Scamander.
 
 - New items: salted nuts, skewer of mystery meat, wizard staff, 
   linothorax, Calara's cloak, Calara's flaming whip, piece of coal.
