@@ -2112,3 +2112,13 @@ where woods were truly wild.  For in the gasp %b
 and crackle of those trees, they felt the sway %b
 of an ancient magic wavering, then pass away.
 %p
+Though first, there was the issue of the beast %b
+that burned inside and out, a killing thing %b
+that leapt at Weyg.  It knocked him off his feet %b
+and would have mauled his face had he not clung %b
+to the remnants of his old spear's shattered shaft %b
+and thrust one end into the banya's eye. %b
+He grunted, pressed with both his hands, and passed %b
+the shard into its brain.  It shook and writhed, %b
+whimpering like a pup until it finally died.
+%p
