@@ -1,6 +1,6 @@
 Me:
-- Quest for key to armory in Carcassia.
-- Value restrictions for Questare's quests.
+- Carcassian recruiter in C1 - quests to show off the world, 1st Q reward
+  being membership in the Carcassian Irregulars
 - Check regular quests and Questare's quests.
 - Praetor's house in Carcassia.  Make it prettier.
 - Random questor in New Town
