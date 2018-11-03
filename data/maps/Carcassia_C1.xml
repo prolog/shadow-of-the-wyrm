@@ -186,6 +186,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>carcassian_recruiter</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>77</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>magici_merchant</ID>
 				<Coord>
 					<Row>18</Row>
