@@ -2122,3 +2122,13 @@ He grunted, pressed with both his hands, and passed %b
 the shard into its brain.  It shook and writhed, %b
 whimpering like a pup until it finally died.
 %p
+He rolled the corpse up off him.  To his side, %b
+the smell of roasting flesh and fur was sweet %b
+and strangely indescribable.  He tried %b
+to place it.  Almost floral?  But replete %b
+with sage, and herbs he couldn't call to mind. %b
+How strange that in this carnage it could be %b
+distracting, drift him back towards a kind %b
+of peace before his brothers came to see %b
+him safely up and help him through the burning trees.
+%p 
