@@ -28270,6 +28270,43 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="pitmistress_ghara">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>PITMISTRESS_GHARA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PITMISTRESS_GHARA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PITMISTRESS_GHARA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PITMISTRESS_GHARA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>40</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>90000</Exp>
+			</CreatureGeneration>
+			<Level>40</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>80</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/taryn.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">
