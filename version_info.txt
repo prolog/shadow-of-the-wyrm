@@ -188,7 +188,7 @@ Shadow of the Wyrm v0.7.4 "Dalza"
   footman, coalman, Praetor's scullerymaid, Praetor's cook, Praetor's
   secretary, Praetor Dantus, Emperor Titus, the Emperor's guard,
   Questare, senator, Lycaon, magici merchant, herbalist, Scamander,
-  Carcassian recruiter.
+  Carcassian recruiter, Pitmistress Ghara.
 
 - New items: salted nuts, skewer of mystery meat, wizard staff, 
   linothorax, Calara's cloak, Calara's flaming whip, piece of coal.

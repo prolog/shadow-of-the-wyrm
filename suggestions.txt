@@ -1,7 +1,5 @@
 Me:
-- Carcassian recruiter in C1 - quests to show off the world, 1st Q reward
-  being membership in the Carcassian Irregulars
-- Check regular quests and Questare's quests.
+- Membership in a guild once x number of kills in arena
 - Praetor's house in Carcassia.  Make it prettier.
 - Random questor in New Town
 - Buildings generated in towns should automatically get inhabitants.
