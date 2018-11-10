@@ -39,7 +39,7 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
-				<ID>pitmaster_ghara</ID>
+				<ID>pitmistress_ghara</ID>
 				<Coord>
 					<Row>9</Row>
 					<Col>46</Col>
@@ -111,14 +111,14 @@
 			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
-					<Row>6</Row>
+					<Row>7</Row>
 					<Col>26</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
-					<Row>10</Row>
+					<Row>11</Row>
 					<Col>26</Col>
 				</Coord>
 			</Placement>
@@ -205,7 +205,82 @@
 			<MapID>carcassia_c1</MapID>
 		</Exit>
 	</Exits>
-	<Features/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>2</Row>
+				<Col>36</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>5</Row>
+				<Col>36</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>8</Row>
+				<Col>36</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>0</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>11</Row>
+				<Col>36</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>1</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>14</Row>
+				<Col>36</Col>
+			</Coord>
+			<Fountain/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>36</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>7</Row>
+				<Col>3</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>7</Row>
+				<Col>11</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>11</Row>
+				<Col>3</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>11</Row>
+				<Col>11</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+	</Features>
 	<Properties>
 		<Property>
 			<Name>MAP_PROPERTIES_CANNOT_DIG</Name>
