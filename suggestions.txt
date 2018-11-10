@@ -20,6 +20,8 @@ Me:
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
+- The guarded, empty areas in Carcassia C2 should lead to some kind of
+  dungeon/special area.
 - Summonings
 - Repel (cantrip)
 - Email Nathan before next release re: Mac build check

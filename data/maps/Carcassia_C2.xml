@@ -192,6 +192,27 @@
 					<Col>58</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>acolyte</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>acolyte</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>22</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>devotee</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>21</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>
@@ -279,6 +300,16 @@
 				<Col>11</Col>
 			</Coord>
 			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>20</Col>
+			</Coord>
+			<Altar>
+				<DeityID>04_vedere</DeityID>
+				<Alignment>1</Alignment>
+			</Altar>
 		</FeaturePlacement>
 	</Features>
 	<Properties>
