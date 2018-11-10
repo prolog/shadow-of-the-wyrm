@@ -28278,6 +28278,7 @@
 			<SpeechTextSID>PITMISTRESS_GHARA_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Text>
 				<Symbol>@</Symbol>
