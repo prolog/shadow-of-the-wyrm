@@ -172,6 +172,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>acolyte</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>58</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>questare</ID>
 				<Coord>
 					<Row>10</Row>

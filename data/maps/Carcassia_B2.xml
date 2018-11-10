@@ -39,6 +39,34 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>41</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>52</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>58</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>73</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>axander</ID>
 				<Coord>
 					<Row>6</Row>
