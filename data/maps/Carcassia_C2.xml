@@ -193,14 +193,14 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>acolyte</ID>
+				<ID>layperson</ID>
 				<Coord>
 					<Row>13</Row>
 					<Col>19</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>acolyte</ID>
+				<ID>layperson</ID>
 				<Coord>
 					<Row>16</Row>
 					<Col>22</Col>

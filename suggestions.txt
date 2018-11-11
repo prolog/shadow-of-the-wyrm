@@ -1,7 +1,7 @@
 Me:
 - Membership in a guild once x number of kills in arena
 - Praetor's house in Carcassia.  Make it prettier.
-- Random questor in New Town
+- Test random and non-random quests before release.
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
 - More inhabitants in the base of the tower
