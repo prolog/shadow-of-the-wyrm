@@ -2132,3 +2132,13 @@ distracting, drift him back towards a kind %b
 of peace before his brothers came to see %b
 him safely up and help him through the burning trees.
 %p 
+What colours!  Something in those trees was wrong %b
+or queer, as flames lit up the sky in greens %b
+and blues, a kind of proof this place belonged %b
+to someplace else.  The four of them had seen %b
+the fog roll in and bring them here, a mind %b
+apart; and if they hadn't fled, but stayed %b
+to watch the forest burn, they'd have heard a sound %b
+diminuendo and then slowly fade, %b
+as magic is the bow through which the world is played.
+%p

@@ -28304,7 +28304,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/carcassia/taryn.lua</Script>
+					<Script>quests/carcassia/pitmistress_ghara.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
