@@ -230,6 +230,7 @@ int set_decision_strategy_property(lua_State* ls);
 int set_event_script(lua_State* ls);
 int get_random_hostile_creature_id(lua_State* ls);
 int generate_item(lua_State* ls);
+int set_creature_id(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

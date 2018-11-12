@@ -2142,3 +2142,13 @@ to watch the forest burn, they'd have heard a sound %b
 diminuendo and then slowly fade, %b
 as magic is the bow through which the world is played.
 %p
+The mist had all but dissipated now, %b
+and lifted, so that when the four came out %b
+they saw the plain was empty, as if ploughed %b
+and planted with wild grasses which had sprouted %b
+where once the trees had been.  What sorcery %b
+was this?  No stumps, no ash, not any trace %b
+of the woods-that-were - was this a forgery, %b
+a trap laid out to lure them?  Would there wait %b
+a banya or another creature from that place?
+%p

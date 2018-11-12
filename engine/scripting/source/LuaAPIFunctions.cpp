@@ -376,6 +376,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_event_script", set_event_script);
   lua_register(L, "get_random_hostile_creature_id", get_random_hostile_creature_id);
   lua_register(L, "generate_item", generate_item);
+  lua_register(L, "set_creature_id", set_creature_id);
 }
 
 // Lua API helper functions
@@ -7377,4 +7378,39 @@ int generate_item(lua_State* ls)
   lua_pushstring(ls, item_id.c_str());
 
   return 2;
+}
+
+int set_creature_id(lua_State* ls)
+{
+  bool id_set = false;
+
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+    string new_creature_id = lua_tostring(ls, 4);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr && tile->has_creature())
+      {
+        CreaturePtr creature = tile->get_creature();
+        creature->set_id(new_creature_id);
+
+        id_set = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_creature_id");
+  }
+
+  lua_pushboolean(ls, id_set);
+  return 1;
 }
