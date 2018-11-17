@@ -1,4 +1,5 @@
 Me:
+- Need to test creature generation thoroughly.
 - Membership in a guild once x number of kills in arena
 - Praetor's house in Carcassia.  Make it prettier.
 - Test random and non-random quests before release.
