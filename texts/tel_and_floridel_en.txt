@@ -2152,3 +2152,23 @@ of the woods-that-were - was this a forgery, %b
 a trap laid out to lure them?  Would there wait %b
 a banya or another creature from that place?
 %p
+An answer came.  A tiny meadowlark %b
+sang out, its song a mercy, for in those woods %b
+they hadn't heard a bird, the silence stark %b
+and visceral.  They stopped, and if they could %b
+have spared more time, they may have cared to sit %b
+among the grasses, let the hours come, and say %b
+this day had been enough - perhaps admit %b
+that previously they would have stalked and preyed %b
+on unlings as the banya had with them today.
+%p
+But despite the afternoon, they'd have no rest. %b
+They closed their wounds with switchgrass, tied them tight, %b
+then planted a stick to made a studied guess %b
+where north was, based on shadows.  They were right. %b
+As days went by, they heard a kind of drone %b
+grow louder as the wildlife seemed to melt %b
+away.  And on the sixth day, they were shown %b
+the lake that beckons black-and-blue, and felt %b
+the voices surge towards them like an endless swell.
+%p
