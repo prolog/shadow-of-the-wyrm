@@ -84,44 +84,52 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
   return generation_map;
 }
 
-CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationMap& generation_map)
+string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationMap& generation_map)
 {
-  CreaturePtr generated_creature;
-  
+  string creature_id;
+
   // Iterate through the generation map, and attempt to generate a creature with probability P,
   // where P = (danger level / danger_level + num_creatures_in_map)
   int p_denominator = 0;
-    
+
   // Get the denominator for the probabilistic generation by summing the danger level over all creatures
   // in the map.
-  for(CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
+  for (CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
   {
     CreatureGenerationValues cgv = c_it->second.second;
     p_denominator += cgv.get_danger_level();
   }
-    
+
   float p_denominator_f = static_cast<float>(p_denominator);
 
   // Determine the creature to generate
-  for(CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
+  for (CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
   {
     CreatureGenerationValues cgv = c_it->second.second;
 
     int p_numerator = cgv.get_danger_level();
     int P = static_cast<int>((static_cast<float>(p_numerator) / p_denominator_f) * 100);
-      
+
     // Generate the creature if we hit the percentage, or if we're on the last item in the map
     // and a creature has not yet been generated.
-    if (!cgv.is_maximum_reached() && (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1) && !generated_creature)))
+    if (!cgv.is_maximum_reached() && (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1))))
     {
-      string creature_id = c_it->first;
-      CreatureFactory cf;
-      generated_creature = cf.create_by_creature_id(am, creature_id);
-
+      creature_id = c_it->first;
       break;
     }
   }
-   
+
+  return creature_id;
+}
+
+CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationMap& generation_map)
+{
+  CreaturePtr generated_creature;
+  CreatureFactory cf;
+
+  string creature_id = select_creature_id_for_generation(am, generation_map);
+  generated_creature = cf.create_by_creature_id(am, creature_id);
+
   if (generated_creature)
   {
     CreatureCalculator::update_calculated_values(generated_creature);

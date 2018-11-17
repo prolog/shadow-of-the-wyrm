@@ -376,6 +376,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_event_script", set_event_script);
   lua_register(L, "get_random_hostile_creature_id", get_random_hostile_creature_id);
   lua_register(L, "generate_item", generate_item);
+  lua_register(L, "generate_creature", generate_creature);
   lua_register(L, "set_creature_id", set_creature_id);
 }
 
@@ -7380,6 +7381,49 @@ int generate_item(lua_State* ls)
   return 2;
 }
 
+int generate_creature(lua_State* ls)
+{
+  bool creature_generated = false;
+
+  if (lua_gettop(ls) == 6 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6))
+  {
+    Game& game = Game::instance();
+    string map_id = lua_tostring(ls, 1);
+    TileType map_terrain_type = static_cast<TileType>(lua_tointeger(ls, 2));
+    int y = lua_tointeger(ls, 3);
+    int x = lua_tointeger(ls, 4);
+    int min_danger = lua_tointeger(ls, 5);
+    int max_danger = lua_tointeger(ls, 6);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr && !tile->has_creature())
+      {
+        CreatureGenerationManager cgm;
+        CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger, max_danger, Rarity::RARITY_COMMON /* hardcode for now */, {});
+        CreaturePtr creature = cgm.generate_creature(game.get_action_manager_ref(), generation_map);
+
+        if (creature != nullptr)
+        {
+          creature_generated = true;
+          GameUtils::add_new_creature_to_map(game, creature, map, {y, x});
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to generate_creature");
+  }
+
+  lua_pushboolean(ls, creature_generated);
+  return 1;
+}
+
 int set_creature_id(lua_State* ls)
 {
   bool id_set = false;
@@ -7414,3 +7458,5 @@ int set_creature_id(lua_State* ls)
   lua_pushboolean(ls, id_set);
   return 1;
 }
+
+

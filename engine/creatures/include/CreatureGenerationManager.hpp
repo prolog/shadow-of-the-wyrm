@@ -13,6 +13,7 @@ class CreatureGenerationManager
     CreatureGenerationManager();
     
     CreatureGenerationMap generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const std::map<std::string, std::string>& additional_properties);
+    std::string select_creature_id_for_generation(ActionManager& am, CreatureGenerationMap& creature_generation_map);
     std::shared_ptr<Creature> generate_creature(ActionManager& am, CreatureGenerationMap& creature_generation_map);
     
   protected:

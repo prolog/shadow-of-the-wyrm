@@ -159,8 +159,14 @@ function Quest:execute()
 
   -- Quest is not in progress, condition is not met.
   else
-    add_new_quest(self.quest_id, self)
-    self.quest_start_fn()
+    local quest_started = self.quest_start_fn()
+
+    -- Some quests may bail out in the start function by returning
+    -- false.  In this case, we want to make sure we don't add the
+    -- quest to the player's list.
+    if quest_started ~= false then
+      add_new_quest(self.quest_id, self)
+    end
     
     -- Starting a quest gets the player a few marks in Charisma.
     for i = 1, RNG_range(2,4) do
