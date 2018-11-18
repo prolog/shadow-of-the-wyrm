@@ -14,6 +14,16 @@ function die(creature_id, creature_base_id, attacking_creature_id, map_id)
   if death_fn ~= nil then
     death_fn(creature_id, attacking_creature_id, map_id)
   else
-    log(CLOG_ERROR, "Could not call death function for creature_id " .. creature_id)
+    death_fn = death_fns[creature_id]
+
+    if death_fn ~= nil then
+      death_fn(creature_id, attacking_creature_id, map_id)
+
+      -- The creature is now dead; we no longer need its instance function
+      -- in the death_fns.
+      table.remove(death_fns, creature_id)
+    else
+      log(CLOG_ERROR, "Could not call death function for creature_id " .. creature_id)
+    end
   end
 end

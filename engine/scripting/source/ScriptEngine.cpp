@@ -12,6 +12,7 @@
 using namespace std;
 
 #define lua_exportConst(ls, name) { lua_pushnumber(ls, name); lua_setglobal(ls, #name); }
+#define lua_exportConstStr(ls, name) { lua_pushstring(ls, name); lua_setglobal(ls, #name); }
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -271,6 +272,13 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL);
   lua_exportConst(ls, CCITY_SECTOR_RESIDENTIAL);
   lua_exportConst(ls, CCITY_SECTOR_RELIGIOUS_COMMERCIAL);
+
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_DEATH);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_ATTACK);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_CHAT);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_DECISION);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_DROP);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_ENTER_TILE);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

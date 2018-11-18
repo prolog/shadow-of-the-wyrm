@@ -45,7 +45,7 @@ local function setup_turtle_track(map_id)
     set_creature_name(cr_id, get_sid(v[3]), map_id)
     set_creature_colour(cr_id, v[4], map_id)
     set_automove_coords(cr_id, map_id, v[1], 31)
-    set_event_script(cr_id, map_id, "move/carcassia_turtles.lua", "CREATURE_EVENT_SCRIPT_ENTER_TILE", 100)
+    set_event_script(cr_id, map_id, "move/carcassia_turtles.lua", CCREATURE_EVENT_SCRIPT_ENTER_TILE, 100)
   end
 end
 

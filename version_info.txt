@@ -197,7 +197,8 @@ Shadow of the Wyrm v0.7.4 "Dalza"
 
 - New features: table, slot machine.
 
-- New artifacts: skeleton key, Amulet of the Carcassian Emperor.
+- New artifacts: skeleton key, Amulet of the Carcassian Emperor, famed
+  fighting rod "Qaali".
 
 - New traps: teleport.
 
@@ -259,7 +260,10 @@ Shadow of the Wyrm v0.7.4 "Dalza"
     notifications for NPCs picking up items behind walls.
 
   - Maps weren't being loaded properly when timewalking (Troubler).
-          
+  
+  - When items were being generated, they could be null, and this wasn't
+    checked properly.
+
 Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.
 

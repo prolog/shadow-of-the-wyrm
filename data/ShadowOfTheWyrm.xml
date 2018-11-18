@@ -34451,6 +34451,30 @@
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="qaali">
+				<DescriptionSID>QAALI_SID</DescriptionSID>
+				<UsageDescriptionSID>QAALI_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pound>0.20</Pound>
+				</Resistances>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="creators_might">
 				<DescriptionSID>CREATORS_MIGHT_SID</DescriptionSID>
 				<UsageDescriptionSID>CREATORS_MIGHT_USAGE_SID</UsageDescriptionSID>
