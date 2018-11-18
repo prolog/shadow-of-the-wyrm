@@ -3,6 +3,20 @@ require('map_events')
 
 local map_id = "carcassia_c2"
 
+local function setup_arena_litter(map_id)
+  local litter_ids = {"dagger", "mace", "broad_sword", "spear", "cap", "buckler", "sling"}
+
+  for row = 6,12 do
+    for col = 54,62 do
+      if RNG_percent_chance(10) then
+        add_object_to_map(INTACT_SKELETON_ID, map_id, row, col)
+      elseif RNG_percent_chance(10) then
+        add_object_to_map(litter_ids[RNG_range(1, #litter_ids)], map_id, row, col)
+      end
+    end
+  end
+end
+
 local function setup_entrance_features(map_id)
   local class_id = CCLASS_ID_FOUNTAIN
   
@@ -31,6 +45,7 @@ end
 
 function init_carcassia_c2(map_id)
   setup_entrance_features(map_id)
+  setup_arena_litter(map_id)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_c2)

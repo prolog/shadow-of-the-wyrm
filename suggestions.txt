@@ -1,4 +1,9 @@
 Me:
+- Another stanza before "The four of them.."
+- Quest title not showing up for Ghara.
+- Test turtle races after refactoring constant
+- Export all the creature event script entries to the Lua scripts.
+- Use in pitmistress_ghara and turtle races
 - Need to test creature generation thoroughly.
 - Membership in a guild once x number of kills in arena
 - Praetor's house in Carcassia.  Make it prettier.
