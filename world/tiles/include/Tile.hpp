@@ -167,6 +167,9 @@ class Tile : public ISerializable
     virtual bool has_race_restrictions() const;
     virtual bool is_race_allowed(const std::string& race_id) const;
 
+    virtual bool has_creature_id_restrictions() const;
+    virtual bool is_creature_id_allowed(const std::string& creature_id) const;
+
     virtual Tile* clone() = 0;
 
   protected:

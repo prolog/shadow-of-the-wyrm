@@ -1,6 +1,8 @@
 Me:
-- Another stanza before "The four of them.."
-- Quest title not showing up for Ghara.
+- After killing fighting pits opponent, show death msg.
+- Add some random suitable creatures to each of Old Town, New Town,
+  Temple District - this can be refactored to something more suitable/
+  procedural later on.
 - Test turtle races after refactoring constant
 - Export all the creature event script entries to the Lua scripts.
 - Use in pitmistress_ghara and turtle races

@@ -58,6 +58,9 @@ class TileProperties
     // Are only certain races allowed on this tile?
     static const std::string TILE_PROPERTY_ALLOWED_RACES;
 
+    // Are only certain very specific creatures allowed on this tile?
+    static const std::string TILE_PROPERTY_ALLOWED_CREATURE_IDS;
+
     // Can this tile be dug?
     static const std::string TILE_PROPERTY_CANNOT_DIG;
 
