@@ -7,7 +7,20 @@ local pg_quest_id = "pitmistress_ghara_quest_id"
 local pg_quest_count = "pitmistress_ghara_quest_count"
 local pg_banned = "pitmistress_ghara_banned"
 local pg_gift_generated = "pitmistress_ghara_gift_generated"
+local pg_cur_q_complete = "pitmistress_ghara_current_quest_complete"
+local pg_on_quest = "pitmistress_ghara_on_quest"
 local max_ghara_quests = 10
+
+local function get_ghara_quest_count()
+  local g_quest_count = 1
+
+  local g_count_s = get_creature_additional_property(PLAYER_ID, pg_quest_count)
+  if g_count_s ~= "" then
+    g_quest_count = tonumber(g_count_s) + 1
+  end
+
+  return g_quest_count
+end
 
 local function ghara_quest_start_fn()
   local map_id = get_current_map_id()
@@ -20,9 +33,10 @@ local function ghara_quest_start_fn()
   local generated = generate_creature(map_id, CTILE_TYPE_DUNGEON_COMPLEX, y, x, dl_min, dl_max)
 
   if generated == true then
-    -- Set the event script on the arena opponent.
-   local cr_id = get_creature_id(y, x, map_id)
+    -- Set the event script on the fighting pits opponent.
+    local cr_id = get_creature_id(y, x, map_id)
     set_event_script(cr_id, map_id, "death/fighting_pits.lua", CCREATURE_EVENT_SCRIPT_DEATH, 100)
+    set_creature_additional_property(PLAYER_ID, pg_on_quest, "1")
 
     local cr_id = get_creature_id(y, x)
     teleport(PLAYER_ID, pl_y, pl_x)
@@ -32,24 +46,32 @@ local function ghara_quest_start_fn()
 end
 
 local function ghara_quest_completion_condition_fn()
-  return false
+  return get_creature_additional_property(PLAYER_ID, pg_cur_q_complete) == "1"
 end
 
 local function ghara_quest_completion_fn()
-  -- ...
+  remove_creature_additional_property(PLAYER_ID, pg_cur_q_complete)
+  remove_creature_additional_property(PLAYER_ID, pg_on_quest)
+  
+  local new_quest_count = get_ghara_quest_count() + 1
+  set_creature_additional_property(PLAYER_ID, pg_quest_count, tostring(new_quest_count))
 
-  return true
-end
+  if new_quest_count > max_ghara_quests then
+    add_message_with_pause("PITMISTRESS_GHARA_DONE_SID")
+    clear_and_add_message("PITMISTRESS_GHARA_BOW_SID")
 
-local function get_ghara_quest_count()
-  local g_quest_count = 1
+    add_object_to_player_tile("qaali")
+  else
+    local item_ids = {SILVERWEED_ID, GAIN_ATTRIBUTES_POTION_ID, GOLDEN_APPLE_ID, SILVER_APPLE_ID}
 
-  local g_count_s = get_creature_additional_property(PLAYER_ID, pg_quest_count)
-  if g_count_s ~= "" then
-    g_quest_count = tonumber(g_count_s) + 1
+    clear_and_add_message("PITMISTRESS_GHARA_QUEST_COMPLETE_SID")
+
+    add_object_to_player_tile(item_ids[RNG_range(1, #item_ids)], RNG_range(1,2))
+    add_object_to_player_tile(CURRENCY_ID, RNG_range(20, 50))
   end
 
-  return g_quest_count
+
+  return true
 end
 
 local function get_quest_details()
@@ -88,10 +110,6 @@ local function get_ghara_quest()
   return q
 end
 
-local function violated_ghara_quest_rules()
-  return (get_creature_additional_property(PLAYER_ID, pg_banned) == "1" or get_creature_additional_property(PLAYER_ID, pg_quest_id) ~= "")
-end
-
 local function done_ghara_quests()
   return is_quest_completed(pg_base_quest_id .. tostring(max_ghara_quests))
 end
@@ -101,33 +119,22 @@ local function ban_player()
   set_creature_additional_property(PLAYER_ID, pg_banned, "1")
 end
 
-local function handle_completion_gifts()
-  if get_creature_additional_property(PLAYER_ID, pg_gift_generated) ~= "1" then
-    local apple_id = GOLDEN_APPLE_ID
+local quest = get_ghara_quest()
 
-    if RNG_percent_chance(30) then
-      apple_id = SILVER_APPLE_ID
-    end
-
-    add_object_to_player_tile("qaali")
-    add_object_to_player_tile(apple_id, RNG_range(2, 4))
-    set_creature_additional_property(PLAYER_ID, pg_gift_generated, "1")
-  else
-    clear_and_add_message("PITMISTRESS_GHARA_BOW_SID")
-  end
-end
-
-if violated_ghara_quest_rules() then
-  ban_player()
-elseif done_ghara_quests() then
-  handle_completion_gifts()
+if done_ghara_quests() then
+  clear_and_add_message("PITMISTRESS_GHARA_BOW_SID")
 else
-  if add_confirmation_message("PITMISTRESS_GHARA_FIGHT_QUERY_SID") then
-   clear_and_add_message("PITMISTRESS_GHARA_FIGHT_ACCEPT_SID")
-
-    local quest = get_ghara_quest()
-    quest:execute()
-  else
-    clear_and_add_message("PITMISTRESS_GHARA_FIGHT_DECLINE_SID")
+  -- If the player's already on a Ghara quest, see if they're done.
+  if get_creature_additional_property(PLAYER_ID, pg_on_quest) == "1" then
+    quest:execute()    
+  else  
+    -- Not currently on a Ghara quest.  Confirm before teleporting into
+    -- the fighting pits.
+    if add_confirmation_message("PITMISTRESS_GHARA_FIGHT_QUERY_SID") then
+      clear_and_add_message("PITMISTRESS_GHARA_FIGHT_ACCEPT_SID")
+      quest:execute()
+    else
+      clear_and_add_message("PITMISTRESS_GHARA_FIGHT_DECLINE_SID")
+    end
   end
 end

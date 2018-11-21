@@ -1,7 +1,12 @@
+require('constants')
 require('fn')
 require('map_events')
 
 local map_id = "carcassia_c2"
+
+local function setup_special_features(map_id)
+  map_set_tile_property(map_id, 9, 47, "TILE_PROPERTY_ALLOWED_CREATURE_IDS", PLAYER_ID)
+end
 
 local function setup_arena_litter(map_id)
   local litter_ids = {"dagger", "mace", "broad_sword", "spear", "cap", "buckler", "sling"}
@@ -44,6 +49,7 @@ local function setup_entrance_features(map_id)
 end
 
 function init_carcassia_c2(map_id)
+  setup_special_features(map_id)
   setup_entrance_features(map_id)
   setup_arena_litter(map_id)
 end
