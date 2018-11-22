@@ -12,6 +12,10 @@ start, ensure you have your distribution's developer packages for:
 - ncurses or equivalent
 - Lua 5.1
 
+The premake4 build script works for Fedora.  Other distros may require 
+updates to either the premake script or the generated makefiles to get 
+things working.
+
 You will also need to know where your libraries are installed, and update
 the location in "copy_libs.lua" appropriately.  The values in that file are
 valid for 64-bit Fedora 24 (/usr/lib64).
