@@ -111,7 +111,7 @@ project "ShadowOfTheWyrm"
                 _OPTIONS["lua_include"]
                 }
   excludes { "**_test.cpp" }
-  links { "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", _OPTIONS["boost_thread"], "boost_regex", _OPTIONS["lua_link"], "xerces-c", "tinfo", "ncurses" }
+  links { "pthread", "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", _OPTIONS["boost_thread"], "boost_regex", _OPTIONS["lua_link"], "xerces-c", "tinfo", "ncurses" }
   flags { "ExtraWarnings" }
 
   -- Ignore SaveConverter, MapTester configs.

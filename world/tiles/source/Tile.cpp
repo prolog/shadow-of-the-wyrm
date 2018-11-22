@@ -270,10 +270,10 @@ bool Tile::get_is_available_for_creature(CreaturePtr creature) const
   // Does the tile have race restrictions?  If so, does the creature meet them?
   // Similarly for any creature ID restrictions?
   if (avail && 
-      ((has_race_restrictions() && 
+      (((has_race_restrictions() && 
        !is_race_allowed(creature->get_race_id()) && 
         String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == false))
-    || (has_creature_id_restrictions() && !is_creature_id_allowed(creature->get_id())))
+    || (has_creature_id_restrictions() && !is_creature_id_allowed(creature->get_id()))))
   {
     avail = false;
   }
