@@ -1,8 +1,10 @@
+require('carcassia_common')
 require('constants')
 require('fn')
 require('map_events')
 
 local map_id = "carcassia_c2"
+local population = {"urchin", "commoner", "drunk", "farmer", "noble"}
 
 local function setup_special_features(map_id)
   map_set_tile_property(map_id, 9, 47, "TILE_PROPERTY_ALLOWED_CREATURE_IDS", PLAYER_ID)
@@ -52,6 +54,7 @@ function init_carcassia_c2(map_id)
   setup_special_features(map_id)
   setup_entrance_features(map_id)
   setup_arena_litter(map_id)
+  carcassia_common.setup_population(map_id, {4,28}, {16,43}, population)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_c2)
