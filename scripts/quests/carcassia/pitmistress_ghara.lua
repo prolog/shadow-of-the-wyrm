@@ -16,7 +16,7 @@ local function get_ghara_quest_count()
 
   local g_count_s = get_creature_additional_property(PLAYER_ID, pg_quest_count)
   if g_count_s ~= "" then
-    g_quest_count = tonumber(g_count_s) + 1
+    g_quest_count = tonumber(g_count_s)
   end
 
   return g_quest_count
@@ -24,11 +24,11 @@ end
 
 local function ghara_quest_start_fn()
   local map_id = get_current_map_id()
-  local y,x = 3,59
-  local pl_y, pl_x = 8,63
+  local y,x = RNG_range(3,5), RNG_range(55,62)
+  local pl_y, pl_x = RNG_range(8,11), RNG_range(55,62)
   local player_level = get_creature_level(PLAYER_ID)
   local dl_min = math.min(player_level+2, 50)
-  local dl_max = math.min(player_level+7, 50)
+  local dl_max = math.min(player_level+8, 50)
 
   local generated = generate_creature(map_id, CTILE_TYPE_DUNGEON_COMPLEX, y, x, dl_min, dl_max)
 

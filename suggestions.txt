@@ -1,16 +1,7 @@
 Me:
-- Numbering bug with Ghara's quests and the number needed to finish.
-- After killing fighting pits opponent, show death msg.
-- Arena 10x should give membership in Order Ex Gladiatores"
-- Add some random suitable creatures to each of Old Town, New Town,
-  Temple District - this can be refactored to something more suitable/
-  procedural later on.
 - Test turtle races after refactoring constant
-- Export all the creature event script entries to the Lua scripts.
 - Use in pitmistress_ghara and turtle races
 - Need to test creature generation thoroughly.
-- Membership in a guild once x number of kills in arena
-- Praetor's house in Carcassia.  Make it prettier.
 - Test random and non-random quests before release.
 - Buildings generated in towns should automatically get inhabitants.
 - More birds around the tower top
@@ -45,6 +36,7 @@ Me:
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Revisit smithing.
+- Do something with the Order Ex Gladiatores
 - Revisit how values are updated after enchantment.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
