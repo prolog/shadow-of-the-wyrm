@@ -15,6 +15,7 @@ class MovementTextKeys
     static const std::string ACTION_MOVE_OFF_UNDERWORLD_MAP;
     static const std::string ACTION_MOVE_OFF_UNDERWATER_MAP;
     static const std::string ACTION_MOVE_OFF_COSMOS_MAP;
+    static const std::string ACTION_MOVE_OFF_BLOCKED;
     static const std::string ACTION_MOVE_DANGEROUS_FEATURE;
     static const std::string ACTION_MOVE_RACE_NOT_ALLOWED;
     static const std::string ITEMS_ON_TILE;
