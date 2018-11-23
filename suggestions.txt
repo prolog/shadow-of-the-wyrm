@@ -1,12 +1,4 @@
 Me:
-- Test turtle races after refactoring constant
-- Use in pitmistress_ghara and turtle races
-- Need to test creature generation thoroughly.
-- Test random and non-random quests before release.
-- Buildings generated in towns should automatically get inhabitants.
-- More birds around the tower top
-- More inhabitants in the base of the tower
-- Quests out of Old Town
 - No teleport spell!
 - Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
@@ -35,6 +27,7 @@ Me:
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
+- Buildings generated in towns should automatically get inhabitants.
 - Revisit smithing.
 - Do something with the Order Ex Gladiatores
 - Revisit how values are updated after enchantment.
@@ -97,8 +90,6 @@ Me:
 - Monsters should have a chance of being generated friendly when same
   alignment.
 - Sacrifices should generate more piety when non-aligned.
-- Guilds and membership, mutual exclusivity, etc.
-- In-game gambling: arena fights, games of chance, etc.
 - LOS reduction at night-time, can be negated by skill in Blindfighting.
 - Invisibility status, spell, potion
 - See Invis status, spell, scroll
@@ -107,6 +98,7 @@ Me:
 - Weather, weather patterns, effects
 - Recall spell that takes you back to the overworld.
 - Armour flags
+- More guilds
 - Cantrip to set glow flag on items
 - Food rotting for caught fish, other foods?
 - Message when doing checkpoint saves to indicate why the delay happens.

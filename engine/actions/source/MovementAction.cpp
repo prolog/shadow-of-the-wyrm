@@ -136,7 +136,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
   Coordinate current_coord = map->get_location(creature->get_id());
   Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, exit_direction, map_exit);
 
-  if (!MapUtils::can_exit_map(creature, map_exit, proposed_new_coord) && map)
+  if (!MapUtils::can_exit_map(map, creature, map_exit, proposed_new_coord))
   {
     if (creature->get_is_player())
     { 

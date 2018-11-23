@@ -2,7 +2,7 @@ The casino, located in the city of Carcassia, has a number of ways you can lose 
 %p
 The casino offers games both in and outside the building.  Within the building, there is pov, a dice game; blackjack, a card game; and slot machines.  And outside, there is a turtle track, where you can participate in the bizarre Carcassian custom of betting on snapping turtle races.
 %p
-Pov (short for "poverty", it's said) is a simple game: the player bets on the outcome of a six-sided die roll.  If the roll comes up, the player wins triple the bet.  The odds aren't great, but pov doesn't have a set bet, allowing the player to bet as much or as little as they like.
+Pov (short for "poverty", it's said) is a simple game: the player bets on the outcome of a six-sided die roll.  If the roll comes up, the player wins triple the bet.  The odds aren't great, but pov doesn't have a set bet, allowing the player to bet as much or as little as they'd like.
 %p
 Blackjack is a card game in which the object is to get as close to 21 as possible without going over. The casino in Carcassia uses a single deck.  Numerical cards are worth their face value, face cards are worth 10, and an ace can count as either 10 or 1, depending on which is more advantageous.  In the Carcassian casino, the dealer must draw to 17 and stand on 17 or higher.  The payout if you win is double.
 %p

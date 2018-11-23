@@ -2,7 +2,7 @@ Roguelike games are a genre of computer games that are spiritually descended fro
 %p
 What made Rogue so interesting was that, unlike other games of its era, the levels weren't set - instead, they were randomly generated.  And unlike other games, which gave you multiple attempts to complete the game (usually via a "lives" mechanism), with Rogue, you had a single attempt.  You could save the game and come back to it, but once you died, you had to start again.
 %p
-From the ideas of turn-based gameplay, procedural content generation, and perma-death, the roguelike was born.  There have been many fantasy-based games (nethack, Moria, ADOM, Dungeon Crawl Stone Soup), but also sci-fi (DoomRL, Cogmind), post-apocalyptic (Alphaman, Cataclysm: Dark Days Ahead), even Lovecraftian (Infra Arcana).
+From the ideas of turn-based gameplay, procedural content generation, and perma-death, the roguelike was born.  There have been many fantasy-based games (nethack, Moria, ADOM, Dungeon Crawl Stone Soup), but also sci-fi (DoomRL, Cogmind), post-apocalyptic (Alphaman, Caves of Qud, Cataclysm: Dark Days Ahead), even Lovecraftian (Infra Arcana).
 %p
 With a loosening of some of the elements of the genre, a new side-genre emerged.  Usually based on procedural content generation and permadeath, with real-time gameplay, games such as Spelunky, Binding of Isaac, Faster Than Light, and others have proved very popular with players outside the niche who enjoy roguelikes.
 %p

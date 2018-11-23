@@ -814,10 +814,15 @@ bool MapUtils::tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, cons
   return match;
 }
 
-bool MapUtils::can_exit_map(CreaturePtr creature, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
+bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
 {
+  if (!map || map->get_map_type() == MapType::MAP_TYPE_WORLD)
+  {
+    return false;
+  }
+ 
   bool can_exit = false;
-  
+
   // First check: is the map_exit non-null and contain the information
   // necessary for the exit?
   if (map_exit && (map_exit->is_using_map_id() || map_exit->is_using_terrain_type()))
@@ -839,7 +844,7 @@ bool MapUtils::can_exit_map(CreaturePtr creature, MapExitPtr map_exit, const Coo
       }
     }
   }
-  
+
   return can_exit;
 }
 
