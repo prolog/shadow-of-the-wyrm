@@ -60,6 +60,7 @@ local function ghara_quest_completion_fn()
     add_message_with_pause("PITMISTRESS_GHARA_DONE_SID")
     clear_and_add_message("PITMISTRESS_GHARA_BOW_SID")
 
+    add_membership(PLAYER_ID, "order_ex_gladiatores", "ORDER_EX_GLADIATORES_SID")
     add_object_to_player_tile("qaali")
   else
     local item_ids = {SILVERWEED_ID, GAIN_ATTRIBUTES_POTION_ID, GOLDEN_APPLE_ID, SILVER_APPLE_ID}

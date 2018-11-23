@@ -1,4 +1,5 @@
 Me:
+- Numbering bug with Ghara's quests and the number needed to finish.
 - After killing fighting pits opponent, show death msg.
 - Arena 10x should give membership in Order Ex Gladiatores"
 - Add some random suitable creatures to each of Old Town, New Town,
