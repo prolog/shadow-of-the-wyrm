@@ -55,9 +55,6 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // Referred to as "Milanese", nothing is known of his life.  His music
-  // survives in "Intabolatura de lauto libro quarto", an influential
-  // early publication of Renaissance lute music (Venice, 1508).
   return "\"Dalza\"";
 }
 
