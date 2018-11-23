@@ -1,8 +1,10 @@
 require('constants')
 require('fn')
 require('map_events')
+require('carcassia_common')
 
 local map_id = "carcassia_a2"
+local population = {"farmer", "small_child", "seawife", "commoner", "thief", "urchin", "blackguard", "rat", "gnomish_sailor", "fisherman", "carcassian_guard", "layperson", "tradesman", "merchant", "_vendor", "traveller", "drunk"}
 
 local function setup_casino(map_id)
   -- Ivory in the vault
@@ -77,6 +79,7 @@ function init_carcassia_a2(map_id)
   setup_casino(map_id)
   setup_turtle_track(map_id)
   setup_dynamic_content(map_id)
+  carcassia_common.setup_population(map_id, {8,20}, {18,75}, population)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_a2)

@@ -1828,14 +1828,19 @@ int add_creature_to_map(lua_State* ls)
 
     if (creature && map && MapUtils::are_coordinates_within_dimensions(coords, map->size()))
     {
-      GameUtils::add_new_creature_to_map(game, creature, map, coords);
+      TilePtr tile = map->at(coords);
 
-      if (hostility_override != nullptr)
+      if (tile != nullptr && tile->get_is_available_for_creature(creature))
       {
-        hm.set_hostility_to_player(creature, *hostility_override);
-      }
+        GameUtils::add_new_creature_to_map(game, creature, map, coords);
 
-      new_creature_id = creature->get_id();
+        if (hostility_override != nullptr)
+        {
+          hm.set_hostility_to_player(creature, *hostility_override);
+        }
+
+        new_creature_id = creature->get_id();
+      }
     }
   }
   else

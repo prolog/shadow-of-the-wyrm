@@ -1,7 +1,9 @@
+require('carcassia_common')
 require('fn')
 require('map_events')
 
 local map_id = "carcassia_c1"
+local population = {"noble", "carcassian_guard"}
 
 local function init_altar_annex()
   for row = 11,18,2 do
@@ -28,6 +30,7 @@ end
 function init_carcassia_c1(map_id)
   init_throne_room(map_id)
   init_altar_annex(map_id)
+  carcassia_common.setup_population(map_id, {6,25}, {12,47}, population)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_c1)

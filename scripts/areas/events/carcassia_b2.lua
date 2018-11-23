@@ -1,8 +1,10 @@
+require('carcassia_common')
 require('constants')
 require('fn')
 require('map_events')
 
 local map_id = "carcassia_b2"
+local population = {"layperson", "devotee", "cleric", "follower", "apostle", "pilgrim", "carcassian_guard", "noble", "commoner", "thief", "urchin", "tradesman", "merchant", "traveller", "drunk"}
 
 local function setup_properties(map_id)
   map_set_tile_property(map_id, 18, 76, "MAP_PROPERTIES_INITIAL_ITEMS", "smite_spellbook")
@@ -57,6 +59,7 @@ local function init_carcassia_b2(map_id)
   setup_properties(map_id)
   setup_vault(map_id)
   setup_dynamic_content(map_id)
+  carcassia_common.setup_population(map_id, {0,1}, {18, 37}, population)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_b2)

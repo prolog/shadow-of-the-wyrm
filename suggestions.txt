@@ -1,5 +1,6 @@
 Me:
 - After killing fighting pits opponent, show death msg.
+- Arena 10x should give membership in Order Ex Gladiatores"
 - Add some random suitable creatures to each of Old Town, New Town,
   Temple District - this can be refactored to something more suitable/
   procedural later on.

@@ -84,3 +84,7 @@ function array_to_csv(t)
   return csv
 end
 
+function area(c1, c2)
+  return ((c2[1] - c1[1]) * (c2[2] - c1[2]))
+end
+

@@ -1,8 +1,10 @@
+require('carcassia_common')
 require('constants')
 require('fn')
 require('map_events')
 
 local map_id = "carcassia_b1"
+local population = {"noble", "carcassian_guard", "commoner", "_vendor", "cleric", "small_child", "harlot", "layperson", "devotee", "merchant", "traveller"}
 
 local function setup_keep_rooms(m_id)
   local coords = {{14,10}, {14,31}}
@@ -77,6 +79,7 @@ function init_carcassia_b1(map_id)
   setup_dynamic_content(map_id)
   setup_praetor_house(map_id)
   setup_armory(map_id)
+  carcassia_common.setup_population(map_id, {0,38}, {18,75}, population)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_b1)
