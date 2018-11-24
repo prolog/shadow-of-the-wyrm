@@ -1,7 +1,5 @@
 Me:
-- LOS reduction at dawn/dusk/night, can be negated by skill in 
-  Night Sight.
-- + unit tests!
+- How will Night Sight train?  Maybe at each TOD transition?
 - No teleport spell!
 - Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
