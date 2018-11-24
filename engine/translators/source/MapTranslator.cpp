@@ -4,6 +4,8 @@
 #include "CreatureCoordinateCalculator.hpp"
 #include "Display.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
+#include "LineOfSightCalculator.hpp"
 #include "MapDisplayArea.hpp"
 #include "MapProperties.hpp"
 #include "MapTranslator.hpp"
@@ -20,10 +22,12 @@ MapTranslator::~MapTranslator()
 {
 }
 
-DisplayMap MapTranslator::create_display_map(const bool player_blinded, const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords, const bool full_redraw_required)
+DisplayMap MapTranslator::create_display_map(CreaturePtr creature, const bool player_blinded, const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords, const bool full_redraw_required)
 {
   Coordinate display_coords = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, map, reference_coords);
-  
+  LineOfSightCalculator losc;
+  TimeOfDayType tod = GameUtils::get_date(Game::instance()).get_time_of_day();
+  int los_len = losc.calculate_los_length(creature, tod);
   int actual_row, actual_col;
 
   // Get the current season and set it into the copy.
@@ -71,10 +75,10 @@ DisplayMap MapTranslator::create_display_map(const bool player_blinded, const Ma
   }
   else
   {
-    start_y = std::max<int>(0, display_coords.first - CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH - 1);
-    stop_y = std::min<int>(display_height, display_coords.first + CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 2);
-    start_x = std::max<int>(0, display_coords.second - CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH - 1);
-    stop_x = std::min<int>(display_width, display_coords.second + CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 2);
+    start_y = std::max<int>(0, display_coords.first - los_len - 1);
+    stop_y = std::min<int>(display_height, display_coords.first + los_len + 2);
+    start_x = std::max<int>(0, display_coords.second - los_len - 1);
+    stop_x = std::min<int>(display_width, display_coords.second + los_len + 2);
   }
 
   for (uint d_row = start_y; d_row < stop_y; d_row++)

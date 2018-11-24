@@ -1,4 +1,7 @@
 Me:
+- LOS reduction at dawn/dusk/night, can be negated by skill in 
+  Night Sight.
+- + unit tests!
 - No teleport spell!
 - Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
@@ -76,7 +79,6 @@ Me:
 - Code should handle being started from outside the game's directory.
 - Additional phase-of-moon effects.
 - Remove need for zlib and xerces by making everything statically linked.
-- Multi-map areas (the central city!)
 - Different types of branches (species) should have different wand
   properties.
 - General performance improvements.  Use profiler - check out LOS code,
@@ -90,7 +92,6 @@ Me:
 - Monsters should have a chance of being generated friendly when same
   alignment.
 - Sacrifices should generate more piety when non-aligned.
-- LOS reduction at night-time, can be negated by skill in Blindfighting.
 - Invisibility status, spell, potion
 - See Invis status, spell, scroll
 - More poem fragments for start.
