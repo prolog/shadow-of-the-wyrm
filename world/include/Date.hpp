@@ -44,6 +44,7 @@ class Date
 {
   public:
     Date(const uint sec, const uint min, const uint hrs, const uint day_week, const uint day_month, const uint day_year, const uint month, const uint year);
+    static Date null();
 
     uint get_seconds() const;
     uint get_minutes() const;

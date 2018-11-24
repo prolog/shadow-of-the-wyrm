@@ -69,7 +69,6 @@ enum struct BreatheType
 class CreatureConstants
 {
   public:
-    static const int DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH;
     static const unsigned int MAX_CREATURE_LEVEL;
     static const int MAX_CREATURE_PRIMARY_STATISTIC_VALUE; // str, dex, etc, but not speed, hp, etc.
   protected:

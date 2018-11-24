@@ -1,6 +1,12 @@
 Shadow of the Wyrm v1.0.1 "Besard"
 - Version declared November 23, 2018.
 
+- Dawn and dusk now remove 1 from LOS, and night removes 3.  The effects
+  of this can be reduced or eliminated based on the Night Sight skill.
+  Given that most creatures won't have this skill, a high value in Night 
+  Sight can allow you to see and attack a creature at range while it 
+  cannot see you itself.
+
 Shadow of the Wyrm v1.0.0 "Dalza"
 - Version declared January 20, 2018. Version finalized November 23, 2018.
 
