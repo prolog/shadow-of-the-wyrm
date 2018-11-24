@@ -1,4 +1,7 @@
-Shadow of the Wyrm v0.7.4 "Dalza"
+Shadow of the Wyrm v1.0.1 "Besard"
+- Version declared November 23, 2018.
+
+Shadow of the Wyrm v1.0.0 "Dalza"
 - Version declared January 20, 2018. Version finalized November 23, 2018.
 
 - There are now two starting locations: on Little Island, as before; and
