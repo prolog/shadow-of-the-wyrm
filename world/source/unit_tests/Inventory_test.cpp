@@ -124,3 +124,10 @@ TEST(SW_World_Inventory, items_are_persisted)
   EXPECT_TRUE(item != nullptr);
   EXPECT_TRUE(item2 != nullptr);
 }
+
+TEST(SW_World_Inventory, allows_items)
+{
+  Inventory i;
+
+  EXPECT_TRUE(i.get_allows_items());
+}

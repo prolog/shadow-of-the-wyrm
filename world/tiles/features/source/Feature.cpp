@@ -23,6 +23,8 @@ Feature& Feature::operator=(const Feature& feature)
 {
   if (this != &feature)
   {
+    shimmer_colours = feature.shimmer_colours;
+
     if (feature.lock)
     {
       lock = std::make_shared<Lock>(*feature.lock);
@@ -43,6 +45,7 @@ bool Feature::operator==(const Feature& feature) const
   result = result && (internal_class_identifier() == feature.internal_class_identifier());
 
   result = result && (material == feature.material);
+  result = result && (shimmer_colours == feature.shimmer_colours);
   result = result && ((!lock && !(feature.lock)) || (lock && feature.lock && (*lock == *(feature.lock))));
   result = result && (alignment_range == feature.alignment_range);
   result = result && (uses == feature.uses);
@@ -157,6 +160,21 @@ Colour Feature::get_colour() const
   return colour;
 }
 
+void Feature::set_shimmer_colours(const ShimmerColours& new_shimmer)
+{
+  shimmer_colours = new_shimmer;
+}
+
+ShimmerColours Feature::get_shimmer_colours() const
+{
+  return shimmer_colours;
+}
+
+bool Feature::has_shimmer_colours() const
+{
+  return (shimmer_colours.get_pct_chance_shimmer() > 0);
+}
+
 // Most features don't impact piety at all.  Some (like Pews) will.
 float Feature::get_piety_loss_multiplier() const
 {
@@ -228,6 +246,8 @@ map<string, string> Feature::get_additional_properties() const
 
 bool Feature::serialize(ostream& stream) const
 {
+  shimmer_colours.serialize(stream);
+
   if (lock)
   {
     Serialize::write_class_id(stream, lock->get_class_identifier());
@@ -248,6 +268,8 @@ bool Feature::serialize(ostream& stream) const
 
 bool Feature::deserialize(istream& stream)
 {
+  shimmer_colours.deserialize(stream);
+
   ClassIdentifier lock_clid;
   Serialize::read_class_id(stream, lock_clid);
 

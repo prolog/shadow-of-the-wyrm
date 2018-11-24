@@ -30,6 +30,8 @@ class Search
     // Variations on this give different search types (BFS, DFS, etc).
     virtual std::list<SearchNode> queueing_fn(const std::list<SearchNode>& explored_search_nodes, const std::list<SearchNode>& new_search_nodes) = 0;
 
+    std::vector<Coordinate> get_adjacent_search_coordinates(const Dimensions& dim, const int row, const int col);
+
     CreaturePtr perspective_creature;
 };
 

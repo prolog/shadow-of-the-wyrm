@@ -26,6 +26,11 @@ MapPtr GraveyardGenerator::generate(const Dimensions& dim)
   return map;
 }
 
+void GraveyardGenerator::generate(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+{
+  add_graves(map, start_coord.first, end_coord.first, start_coord.second, end_coord.second);
+}
+
 TilePtr GraveyardGenerator::generate_tile(MapPtr current_map, const int row, const int col)
 {
   TilePtr grave_tile = tg.generate(TileType::TILE_TYPE_GRAVE);

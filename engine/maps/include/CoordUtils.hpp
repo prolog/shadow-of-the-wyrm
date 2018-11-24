@@ -15,11 +15,15 @@ class CoordUtils
     static Coordinate end();
     static bool is_end(const Coordinate& c);
     static bool are_coordinates_adjacent(const Coordinate& c1, const Coordinate& c2);
-    static int chebyshev_distance(Coordinate c1, Coordinate c2);
+    static int chebyshev_distance(const Coordinate& c1, const Coordinate& c2);
+
+    static int get_width(const Coordinate& c1, const Coordinate& c2);
+    static int get_height(const Coordinate& c1, const Coordinate& c2);
 
     // Check to see if the direction is a valid move.
     static bool is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d);
-    
+    static bool is_in_range(const Dimensions& dim, const Coordinate& start_coord, const Coordinate& end_coord);
+
     // Get new coordinates.  "is_valid_move" should always be called first!
     static Coordinate get_new_coordinate(const Coordinate& c, const Direction d, const int offset = 1);
     static BoundingBox get_new_bounding_box(const BoundingBox& bb, const Direction d);
@@ -28,6 +32,7 @@ class CoordUtils
 
     // Get the perimeter coordinates of a given rectangle.
     static std::vector<Coordinate> get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
+    static bool is_in_perimeter(const Coordinate& cur_loc, const Coordinate& c1, const Coordinate& c2);
 
     // Get coordinates used for a beam.
     // A radius 1 beam: *******
@@ -59,6 +64,18 @@ class CoordUtils
 
     // Get all the adjacent coordinates for the current row and column, given the map's dimensions.
     static std::vector<Coordinate> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col, const int steps = 1);
+
+    // Get the corner coordinates and the "partial wall", plus any bordering
+    // wall coordinates based on the length.  With length 0, this is just the
+    // corner coordinates.  Larger length values give partial walls.  E.g.:
+    //
+    // **  **
+    // *    *
+    //      
+    // *    *
+    // **  **
+    static std::vector<Coordinate> get_border_coordinates(const Coordinate& top_left, const Coordinate& bottom_right, const int length = 0);
+    static std::vector<Coordinate> get_corner_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
 
     // Are the two line segments "joinable"?  Two segments are joinable iff
     // there is a coordinate adjacent to both.

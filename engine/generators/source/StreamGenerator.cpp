@@ -1,14 +1,11 @@
 #include <iostream>
-#include <boost/math/common_factor.hpp>
+#include <boost/integer/common_factor.hpp>
 #include "TileGenerator.hpp"
 #include "StreamGenerator.hpp"
 #include "Dimensions.hpp"
 #include "RNG.hpp"
 
 using namespace std;
-
-//const int StreamGenerator::MIN_STREAM_WIDTH;
-//const int StreamGenerator::MAX_STREAM_WIDTH;
 
 void StreamGenerator::generate(MapPtr map)
 {

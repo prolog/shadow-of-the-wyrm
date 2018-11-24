@@ -1,3 +1,4 @@
+#include "EngineConversion.hpp"
 #include "Game.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatTextKeys.hpp"
@@ -40,6 +41,10 @@ pair<bool, string> RangedCombatApplicabilityChecker::can_creature_do_ranged_comb
     else if (!does_ranged_weapon_match_ammunition(creature))
     {
       ranged_combat_info.second = get_weapon_and_ammunition_mismatch_message();
+    }
+    else if (BurdenLevelConverter::to_burden_level(creature) == BurdenLevel::BURDEN_LEVEL_OVERBURDENED)
+    {
+      ranged_combat_info.second = get_overburdened_message();
     }
     else
     {
@@ -141,6 +146,12 @@ string RangedCombatApplicabilityChecker::get_ammunition_not_equipped_message() c
 {
   string ammo_message = StringTable::get(RangedCombatTextKeys::RANGED_COMBAT_AMMUNITION_NOT_EQUIPPED);
   return ammo_message;
+}
+
+string RangedCombatApplicabilityChecker::get_overburdened_message() const
+{
+  string overburdened_message = StringTable::get(RangedCombatTextKeys::RANGED_COMBAT_OVERBURDENED);
+  return overburdened_message;
 }
 
 // The ammunition equipped needs to match the ranged weapon.  For example,

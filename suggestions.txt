@@ -1,12 +1,21 @@
 Me:
-- Issue with viewing tiles on which sentinel NPCs sit.
+- No teleport spell!
+- Sort spells by AP cost
+- Sections of Carcassia should be open to random generation, with some
+  parts of each map being set.
+- refactor the huge function in ShadowOfTheWyrmEngine.cpp
 - Dungeons and caverns should have a chance to grow magic trees.
+- Tidy up scripts/quests into subdirectories, like carcassia, and test.
+  Need to remember to update env.lua!
+- More guilds/things with memberships
 - Magical orchard (should be 2-3 over the world)
 - Allow music to not only pacify but enchant (allow for ordering)
-- Add Shards, Meteor to a couple more creatures
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
+- The guarded, empty areas in Carcassia C2 should lead to some kind of
+  dungeon/special area.
+- Summonings
 - Repel (cantrip)
 - Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
@@ -18,7 +27,9 @@ Me:
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
+- Buildings generated in towns should automatically get inhabitants.
 - Revisit smithing.
+- Do something with the Order Ex Gladiatores
 - Revisit how values are updated after enchantment.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
@@ -34,6 +45,7 @@ Me:
   are 2.
 - Allow shopkeepers to be any of the selectable races.
 - Towers/tower generators.
+- Reuse some of the sector feature generators in dungeons - tomb, etc.
 - Descent into the underworld.
 - Allow shopkeepers to sell for different prices depending on their
   race, and the buying creature's.
@@ -57,7 +69,6 @@ Me:
 - Cancellation effect type
 - Special rooms: beer hall, magical workshop, armory.
 - More shops in set locations.
-- You should be able to ride the bucket down to the bottom of wells.
 - Keep marking general skills as applicable when using them.
 - Scent maps/track by scent.
 - Bones files
@@ -68,7 +79,8 @@ Me:
 - Multi-map areas (the central city!)
 - Different types of branches (species) should have different wand
   properties.
-- General performance improvements.
+- General performance improvements.  Use profiler - check out LOS code,
+  pathfinding, etc.
 - Potion components of some sort?  Weeds should be "pickable"?
 - Cauldrons, then potion-brewing, based on the brewing ability.
 - Per-tile fertility ratings for planting trees and other plants.  Fields
@@ -78,8 +90,6 @@ Me:
 - Monsters should have a chance of being generated friendly when same
   alignment.
 - Sacrifices should generate more piety when non-aligned.
-- Guilds and membership, mutual exclusivity, etc.
-- In-game gambling: arena fights, games of chance, etc.
 - LOS reduction at night-time, can be negated by skill in Blindfighting.
 - Invisibility status, spell, potion
 - See Invis status, spell, scroll
@@ -88,8 +98,10 @@ Me:
 - Weather, weather patterns, effects
 - Recall spell that takes you back to the overworld.
 - Armour flags
+- More guilds
 - Cantrip to set glow flag on items
 - Food rotting for caught fish, other foods?
+- Message when doing checkpoint saves to indicate why the delay happens.
 
 For v1:
 - Item generation needs a serious overhaul!  Many items are rarely, if 
@@ -131,10 +143,6 @@ Not bugs, but probably not working as intended:
   up to three times without ever seeing you.
 - Make it obvious somewhere how much certain spells do, and what mechanical
   effect increasing spell levels has.
-- Add an autosave function that triggers every time you descend or ascend. 
-  The game occasionally crashes (unrepeatablely, unfortunately), which is 
-  more than a little frustrating when you just descended 300' in the 
-  infinite dungeon without saving.
 - Add the ability to make macros and/or adjust the letters that spells map 
   to. The useful buff spells that one might use regularly are currently 
   being distributed at random throughout the many non-buff spells that one 
@@ -171,6 +179,11 @@ ssteam
 - w->, w-< to autowalk to stairs
 - Descend via '>' while in air.
 - More secrets!
-- Shopkeepers should be more obvious about exits being bad with unpaid.
-- Paying off shopkeepers not working.
 - Balance artifacts - mostly blades
+
+aotdev
+- Status/stats lines wrap weirdly with larger terminal sizes
+
+Troubler
+- Multiple pages of items, eventually hits blank page that when hitting ,
+  or . gives the right page.

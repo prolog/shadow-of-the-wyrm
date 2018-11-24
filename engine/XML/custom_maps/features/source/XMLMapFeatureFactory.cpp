@@ -7,6 +7,7 @@
 #include "XMLBedReader.hpp"
 #include "XMLBarrelReader.hpp"
 #include "XMLBasicFeatureCMReader.hpp"
+#include "XMLDecorativeStatueReader.hpp"
 #include "XMLDoorReader.hpp"
 #include "XMLFirePillarReader.hpp"
 #include "XMLForgeReader.hpp"
@@ -14,7 +15,10 @@
 #include "XMLJewelerWorkbenchReader.hpp"
 #include "XMLPewReader.hpp"
 #include "XMLSarcophagusReader.hpp"
+#include "XMLSignReader.hpp"
+#include "XMLSlotMachineReader.hpp"
 #include "XMLStoneMarkerReader.hpp"
+#include "XMLTableReader.hpp"
 #include "XMLTanneryReader.hpp"
 #include "XMLMapFeatureFactory.hpp"
 #include "XMLWheelAndLoomReader.hpp"
@@ -91,9 +95,25 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     {
       feature_creator = std::make_shared<XMLStoneMarkerReader>();
     }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Table")).is_null())
+    {
+      feature_creator = std::make_shared<XMLTableReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "SlotMachine")).is_null())
+    {
+      feature_creator = std::make_shared<XMLSlotMachineReader>();
+    }
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "BasicFeature")).is_null())
     {
       feature_creator = std::make_shared<XMLBasicFeatureCMReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Sign")).is_null())
+    {
+      feature_creator = std::make_shared<XMLSignReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "DecorativeStatue")).is_null())
+    {
+      feature_creator = std::make_shared<XMLDecorativeStatueReader>();
     }
 
     assert(feature_creator != nullptr);

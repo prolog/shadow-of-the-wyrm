@@ -393,6 +393,11 @@ void ItemManager::handle_item_identification_and_statuses(CreaturePtr creature, 
 {
   if (item != nullptr)
   {
+    if (item->get_artifact())
+    {
+      creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_ARTIFACTLESS);
+    }
+
     WearablePtr wearable = std::dynamic_pointer_cast<Wearable>(item);
 
     // If wearable, identify it.

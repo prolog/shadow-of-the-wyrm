@@ -55,8 +55,7 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  // Spanish composer of the 18th century
-  return "\"de Murcia\"";
+  return "\"Dalza\"";
 }
 
 string Metadata::get_game_version_synopsis() const

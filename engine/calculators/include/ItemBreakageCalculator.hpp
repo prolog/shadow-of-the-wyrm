@@ -6,8 +6,9 @@
 class ItemBreakageCalculator
 {
   public:
-    int calculate_pct_chance_digging_breakage(CreaturePtr creature, ItemPtr item);
+    int calculate_pct_chance_digging_breakage(CreaturePtr creature, TilePtr tile, ItemPtr item);
     float calculate_skill_breakage_multiplier(CreaturePtr creature);
+    float calculate_tile_breakage_multiplier(TilePtr tile);
 
   protected:
     std::pair<bool, int> get_override_pct_chance_breakage(ItemPtr item);

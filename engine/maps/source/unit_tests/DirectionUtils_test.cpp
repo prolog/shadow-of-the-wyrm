@@ -1,4 +1,5 @@
 #include <utility>
+#include <map>
 #include <vector>
 #include "gtest/gtest.h"
 
@@ -90,4 +91,21 @@ TEST(SW_Engine_Maps_DirectionUtils, get_perpendicular_directions)
   dirs = {CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST};
   EXPECT_EQ(dirs, DirectionUtils::get_perpendicular_directions(CardinalDirection::CARDINAL_DIRECTION_NORTH));
   EXPECT_EQ(dirs, DirectionUtils::get_perpendicular_directions(CardinalDirection::CARDINAL_DIRECTION_SOUTH));
+}
+
+TEST(SW_Engine_Maps_DirectionUtils, to_cardinal_direction)
+{
+  map<vector<Direction>, CardinalDirection> mapping = {{{Direction::DIRECTION_NORTH, Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_NORTH_WEST}, CardinalDirection::CARDINAL_DIRECTION_NORTH},
+                                                       {{Direction::DIRECTION_WEST}, CardinalDirection::CARDINAL_DIRECTION_WEST},
+                                                       {{Direction::DIRECTION_EAST}, CardinalDirection::CARDINAL_DIRECTION_EAST},
+                                                       {{Direction::DIRECTION_SOUTH, Direction::DIRECTION_SOUTH_EAST, Direction::DIRECTION_SOUTH_WEST}, CardinalDirection::CARDINAL_DIRECTION_SOUTH}};
+  for (auto m_it : mapping)
+  {
+    vector<Direction> vd = m_it.first;
+
+    for (auto d : vd)
+    {
+      EXPECT_EQ(m_it.second, DirectionUtils::to_cardinal_direction(d));
+    }
+  }
 }

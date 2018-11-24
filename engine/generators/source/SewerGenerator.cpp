@@ -265,3 +265,8 @@ void SewerGenerator::connect_unconnected_sections(MapPtr result_map, const map<p
     }
   }
 }
+
+bool SewerGenerator::get_permanence_default() const
+{
+  return true;
+}

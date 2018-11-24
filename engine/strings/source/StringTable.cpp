@@ -72,6 +72,21 @@ string StringTable::get(const string& key)
   return result;
 }
 
+// Same as the get function, but if the return value would be an empty string,
+// return the default value instead.
+string StringTable::get_default(const string& key, const string& default_val)
+{
+  string result = get(key);
+
+  if (result.empty())
+  {
+    result = default_val;
+  }
+
+  return result;
+}
+
+
 // Check to see if the result is a file, which it will be if its first
 // two characters are '[' and last two are ']' (after trimming).
 // This differentiates a file reference from an in-game prompt.

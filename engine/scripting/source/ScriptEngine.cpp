@@ -1,15 +1,18 @@
 #include "Conversion.hpp"
+#include "CitySectorTypes.hpp"
 #include "GameEnvTextKeys.hpp"
 #include "Log.hpp"
 #include "LuaAPIFunctions.hpp"
 #include "LuaItemFilter.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ReligionConstants.hpp"
 #include "ScriptEngine.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
 
 #define lua_exportConst(ls, name) { lua_pushnumber(ls, name); lua_setglobal(ls, #name); }
+#define lua_exportConstStr(ls, name) { lua_pushstring(ls, name); lua_setglobal(ls, #name); }
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -74,6 +77,8 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CLOG_INFO);
   lua_exportConst(ls, CLOG_ERROR);
 
+  lua_exportConst(ls, CPIETY_CROWNING);
+
   lua_exportConst(ls, CDIRECTION_SOUTH_WEST);
   lua_exportConst(ls, CDIRECTION_SOUTH);
   lua_exportConst(ls, CDIRECTION_SOUTH_EAST);
@@ -86,12 +91,22 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CDIRECTION_UP);
   lua_exportConst(ls, CDIRECTION_DOWN);
 
+  lua_exportConst(ls, CITEM_TYPE_MISC);
+  lua_exportConst(ls, CITEM_TYPE_WEAPON);
+  lua_exportConst(ls, CITEM_TYPE_ARMOUR);
   lua_exportConst(ls, CITEM_TYPE_POTION);
-  lua_exportConst(ls, CITEM_TYPE_WAND);
-  lua_exportConst(ls, CITEM_TYPE_SCROLL);
   lua_exportConst(ls, CITEM_TYPE_SPELLBOOK);
+  lua_exportConst(ls, CITEM_TYPE_SCROLL);
+  lua_exportConst(ls, CITEM_TYPE_WAND);
+  lua_exportConst(ls, CITEM_TYPE_STAFF);
   lua_exportConst(ls, CITEM_TYPE_RING);
   lua_exportConst(ls, CITEM_TYPE_AMULET);
+  lua_exportConst(ls, CITEM_TYPE_FOOD);
+  lua_exportConst(ls, CITEM_TYPE_AMMUNITION);
+  lua_exportConst(ls, CITEM_TYPE_PLANT);
+  lua_exportConst(ls, CITEM_TYPE_BOAT);
+  lua_exportConst(ls, CITEM_TYPE_CURRENCY);
+  lua_exportConst(ls, CITEM_TYPE_TOOL);
 
   lua_exportConst(ls, CTILE_TYPE_UNDEFINED);
   lua_exportConst(ls, CTILE_TYPE_FIRST);
@@ -240,7 +255,30 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCREATURE_WIN_EVIL);
   lua_exportConst(ls, CCREATURE_WIN_GODSLAYER);
 
-  lua_exportConst(ls, CCLASS_ID_FOUNTAIN)
+  lua_exportConst(ls, CCLASS_ID_KING_DECORATIVE_STATUE);
+  lua_exportConst(ls, CCLASS_ID_QUEEN_DECORATIVE_STATUE);
+  lua_exportConst(ls, CCLASS_ID_WARLORD_DECORATIVE_STATUE);
+  lua_exportConst(ls, CCLASS_ID_KNIGHT_DECORATIVE_STATUE);
+  lua_exportConst(ls, CCLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE);
+  lua_exportConst(ls, CCLASS_ID_SORCEROR_DECORATIVE_STATUE);
+  lua_exportConst(ls, CCLASS_ID_FIRE_PILLAR);
+  lua_exportConst(ls, CCLASS_ID_FOUNTAIN);
+  lua_exportConst(ls, CCLASS_ID_FORGE);
+  lua_exportConst(ls, CCLASS_ID_TANNERY);
+  lua_exportConst(ls, CCLASS_ID_JEWELER_WORKBENCH);
+  lua_exportConst(ls, CCLASS_ID_WHEEL_AND_LOOM);
+
+  lua_exportConst(ls, CCITY_SECTOR_PUBLIC_AREA);
+  lua_exportConst(ls, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL);
+  lua_exportConst(ls, CCITY_SECTOR_RESIDENTIAL);
+  lua_exportConst(ls, CCITY_SECTOR_RELIGIOUS_COMMERCIAL);
+
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_DEATH);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_ATTACK);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_CHAT);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_DECISION);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_DROP);
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_ENTER_TILE);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

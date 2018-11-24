@@ -10,6 +10,7 @@ class RangedCombatTextKeys
     static const std::string RANGED_COMBAT_WEAPON_AMMUNITION_MISMATCH;
     static const std::string RANGED_COMBAT_AMMUNITION_REQUIRES_RANGED_WEAPON;
     static const std::string RANGED_COMBAT_AMMUNITION_CURSED;
+    static const std::string RANGED_COMBAT_OVERBURDENED;
     
   protected:
     RangedCombatTextKeys();

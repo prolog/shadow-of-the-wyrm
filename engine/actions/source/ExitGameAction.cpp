@@ -20,7 +20,7 @@ ActionCostValue ExitGameAction::quit(CreaturePtr creature, const bool show_quit_
   return get_action_cost_value(creature);
 }
 
-ActionCostValue ExitGameAction::save(CreaturePtr creature) const
+ActionCostValue ExitGameAction::save(CreaturePtr creature, const bool quit_after_save) const
 {
   Game& game = Game::instance();
   game.set_check_scores(false);
@@ -41,8 +41,17 @@ ActionCostValue ExitGameAction::save(CreaturePtr creature) const
     Serialization::delete_savefile(current_savefile);
   }
 
-  Serialization::save(creature);
-  quit(creature, false);
+  current_savefile = Serialization::save(creature);
+  
+  if (!current_savefile.empty())
+  {
+    game.set_current_loaded_savefile(current_savefile);
+  }
+
+  if (quit_after_save)
+  {
+    quit(creature, false);
+  }
 
   return get_action_cost_value(creature);
 }

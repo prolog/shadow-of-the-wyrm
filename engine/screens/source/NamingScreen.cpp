@@ -23,7 +23,10 @@ void NamingScreen::initialize()
     optional_message = warning_message;
   }
 
-  synop << "[" << creature_synopsis << "]";
+  if (!creature_synopsis.empty())
+  {
+    synop << "[" << creature_synopsis << "]";
+  }
 
   TextComponentPtr blank_space = std::make_shared<TextComponent>(empty_str);
 

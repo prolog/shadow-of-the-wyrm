@@ -14,7 +14,7 @@ using namespace std;
 // Why did I write this in C++?
 Creature::Creature()
 : is_player(false)
-, sex(CreatureSex::CREATURE_SEX_MALE)
+, sex(CreatureSex::CREATURE_SEX_NOT_SPECIFIED)
 , size(CreatureSize::CREATURE_SIZE_MEDIUM)
 , eye_colour(EyeColour::EYE_COLOUR_BROWN)
 , hair_colour(HairColour::HAIR_COLOUR_BLACK)
@@ -130,6 +130,7 @@ Creature::Creature(const Creature& cr)
   conducts = cr.conducts;
   spell_knowledge = cr.spell_knowledge;
   modifiers = cr.modifiers;
+  memberships = cr.memberships;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -214,6 +215,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (conducts == cr.conducts);
   result = result && (spell_knowledge == cr.spell_knowledge);
   result = result && (modifiers == cr.modifiers);
+  result = result && (memberships == cr.memberships);
 
   return result;
 }
@@ -1209,6 +1211,11 @@ CreatureStatusMap Creature::get_statuses() const
   return statuses;
 }
 
+CreatureStatusMap& Creature::get_statuses_ref()
+{
+  return statuses;
+}
+
 Status Creature::get_status(const string& status_id) const
 {
   Status st;
@@ -1517,6 +1524,21 @@ bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
   return false;
 }
 
+void Creature::set_memberships(const Memberships& new_memberships)
+{
+  memberships = new_memberships;
+}
+
+Memberships Creature::get_memberships() const
+{
+  return memberships;
+}
+
+Memberships& Creature::get_memberships_ref()
+{
+  return memberships;
+}
+
 // Set, get, and query additional (string) properties
 // Uncomment the code below to find out the size of Creature. :)
 // template<int s> struct creature_size;
@@ -1529,15 +1551,33 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 1272, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1288, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 1168, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1184, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
   // Works for gcc in release
-  static_assert(sizeof(*this) == 2128 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
+  static_assert(sizeof(*this) == 2184 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
   #endif
+}
+
+// Convenience function that calls the functions on the decision strategy.
+bool Creature::has_creature_in_view(const string& creature_id) const
+{
+  bool has_cr = false;
+
+  if (decision_strategy != nullptr)
+  {
+    MapPtr fov_map = decision_strategy->get_fov_map();
+
+    if (fov_map != nullptr)
+    {
+      has_cr = fov_map->has_creature(creature_id);
+    }
+  }
+
+  return has_cr;
 }
 
 // Swap values, no throw
@@ -1604,6 +1644,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->conducts, cr.conducts);
   std::swap(this->spell_knowledge, cr.spell_knowledge);
   std::swap(this->modifiers, cr.modifiers);
+  std::swap(this->memberships, cr.memberships);
 }
 
 bool Creature::serialize(ostream& stream) const
@@ -1738,12 +1779,15 @@ bool Creature::serialize(ostream& stream) const
     }
   }
 
+  memberships.serialize(stream);
+
   return true;
 }
 
 bool Creature::deserialize(istream& stream)
 {
   Serialize::read_string(stream, id);
+
   Serialize::read_string(stream, original_id);
   Serialize::read_bool(stream, is_player);
 
@@ -1900,6 +1944,8 @@ bool Creature::deserialize(istream& stream)
 
     modifiers.insert(make_pair(elapsed, m_vec));
   }
+
+  memberships.deserialize(stream);
 
   return true;
 }

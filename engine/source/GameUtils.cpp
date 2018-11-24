@@ -3,6 +3,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -76,7 +77,8 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
     CreaturePtr current_creature = current_tile->get_creature();
     MapUtils::remove_creature(old_map, current_creature);
 
-    MapUtils::place_creature_on_previous_location(new_map, current_creature, current_creature->get_id());
+    Coordinate new_map_prev_loc = MapUtils::place_creature_on_previous_location(new_map, current_creature, current_creature->get_id());
+    MapUtils::set_multi_map_entry_details(new_map, old_map, new_map_prev_loc);
 
     // Set the new map to be loaded in the next iteration of the game loop.
     Game& game = Game::instance();
@@ -137,4 +139,25 @@ bool GameUtils::is_player_among_creatures(CreaturePtr creature1, CreaturePtr cre
 double GameUtils::get_seconds(Game& game)
 {
   return game.get_current_world()->get_calendar().get_seconds();
+}
+
+StartingLocation GameUtils::get_random_starting_location(const StartingLocationMap& sm)
+{
+  StartingLocation sl;
+
+  int rnd_idx = RNG::range(0, sm.size() - 1);
+  int cnt = 0;
+
+  for (auto sm_it = sm.begin(); sm_it != sm.end(); sm_it++)
+  {
+    if (cnt == rnd_idx)
+    {
+      sl = sm_it->second;
+      break;
+    }
+
+    cnt++;
+  }
+
+  return sl;
 }

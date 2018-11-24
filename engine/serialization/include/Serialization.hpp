@@ -8,7 +8,7 @@
 class Serialization
 {
   public:
-    static void save(CreaturePtr creature);
+    static std::string save(CreaturePtr creature);
     static SerializationReturnCode load(const std::string& filename);
     static bool delete_savefile(const std::string& filename);
 

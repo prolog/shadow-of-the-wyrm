@@ -24,6 +24,7 @@
 #include "ShrineGeneratorFactory.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "VoidGenerator.hpp"
+#include "WellGenerator.hpp"
 #include "WildOrchardGenerator.hpp"
 #include "WorshipSiteGenerator.hpp"
 #include "WorshipSiteTile.hpp"
@@ -221,6 +222,11 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_VOID:
     {
       generator = std::make_shared<VoidGenerator>(map_exit_id);
+      break;
+    }
+    case TileType::TILE_TYPE_WELL:
+    {
+      generator = std::make_shared<WellGenerator>(map_exit_id);
       break;
     }
 

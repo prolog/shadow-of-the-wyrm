@@ -23,11 +23,6 @@ bool Ammunition::operator==(const Ammunition& ammo) const
   return result;
 }
 
-EquipmentWornLocation Ammunition::get_worn_location() const
-{
-  return EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION;
-}
-
 Item* Ammunition::clone()
 {
   return new Ammunition(*this);

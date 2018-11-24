@@ -26,5 +26,7 @@ class RangedCombatApplicabilityChecker
     
     bool is_ranged_weapon_required_and_equipped(CreaturePtr creature);
     std::string get_ammunition_requires_ranged_weapon_message() const;
+
+    std::string get_overburdened_message() const;
 };
 

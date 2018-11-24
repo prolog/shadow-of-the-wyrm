@@ -23,6 +23,7 @@ class Setting
     static const std::string DEFAULT_RACE_ID;
     static const std::string DEFAULT_CLASS_ID;
     static const std::string DEFAULT_DEITY_ID;
+    static const std::string DEFAULT_STARTING_LOCATION_ID;
     static const std::string DEFAULT_NAME;
     static const std::string USERNAME_IS_CHARACTER_NAME;
     static const std::string MAX_CHARACTERS_PER_USER;
@@ -32,6 +33,7 @@ class Setting
     static const std::string AUTOPICKUP;
     static const std::string AUTOPICKUP_TYPES;
     static const std::string PROMPT_ON_STACK_PICKUP;
+    static const std::string CHECKPOINT_SAVE;
 
   protected:
     Setting();

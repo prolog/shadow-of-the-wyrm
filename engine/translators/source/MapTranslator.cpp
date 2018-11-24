@@ -46,10 +46,17 @@ DisplayMap MapTranslator::create_display_map(const bool player_blinded, const Ma
   uint stop_y, stop_x;
   Dimensions map_dim = map->size();
 
+  string map_id;
+
+  if (map != nullptr)
+  {
+    map_id = map->get_map_id();
+  }
+
   // Ensure that we're not trying to walk over the maximum size of our map.
   int display_height = std::min<int>(map_dim.get_y(), display_area.get_height());
   int display_width = std::min<int>(map_dim.get_x(), display_area.get_width());
-  DisplayMap display_map(display_area.get_height(), display_area.get_width());
+  DisplayMap display_map(map_id, display_area.get_height(), display_area.get_width());
 
   // Set the loop's start/stop points based on whether a full redraw is
   // required.  It may have been required as part of the display coordinate
@@ -202,10 +209,17 @@ DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& 
 }
 
 // Create a display tile from a given tile feature
-DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& feature, const Colour override_colour, const ShimmerColours& shimmer_colours)
+DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& feature, const Colour override_colour, const ShimmerColours& map_shimmer_colours)
 {
   uchar symbol = '?';
   Colour colour = Colour::COLOUR_UNDEFINED;
+  ShimmerColours shimmer_colours = map_shimmer_colours;
+
+  if (feature->has_shimmer_colours())
+  {
+    shimmer_colours = feature->get_shimmer_colours();
+  }
+
   Colour shimmer_colour = RNG::percent_chance(shimmer_colours.get_pct_chance_shimmer()) ? shimmer_colours.get_shimmer_colour() : shimmer_colours.get_feature_colour();
 
   if (feature != nullptr)

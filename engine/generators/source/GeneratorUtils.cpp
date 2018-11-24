@@ -59,10 +59,12 @@ void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int
 
 bool GeneratorUtils::position_in_range(const int min, const int max, const int actual)
 {
-  return (actual >= min) && (actual <= max);  
+  return (actual >= min) && (actual <= max);
 }
 
 // I was using this sort of thing a lot, so I'm moving it here...
+// Generates a building without any additional feature - useful for generating
+// an empty building when you don't want house features like beds, pots, etc
 void GeneratorUtils::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width)
 {
   TileGenerator tg;
@@ -78,7 +80,7 @@ void GeneratorUtils::generate_building(const MapPtr map, const int start_row, co
     {
       // Generate a wall at the borders, floor otherwise.
       if ((row == start_row) || (row == (end_row - 1))
-        ||(col == start_col) || (col == (end_col - 1)))
+        || (col == start_col) || (col == (end_col - 1)))
       {
         current_tile = tg.generate(TileType::TILE_TYPE_ROCK);
       }
@@ -89,14 +91,55 @@ void GeneratorUtils::generate_building(const MapPtr map, const int start_row, co
 
       map->insert(row, col, current_tile);
     }
-  }  
+  }
+}
+
+vector<pair<Coordinate, Coordinate>> GeneratorUtils::generate_rectangles(const MapPtr map, const int start_row, const int start_col, const int end_row, const int end_col, const int num_rectangles, const TileType rect_fill_type)
+{
+  vector<pair<Coordinate, Coordinate>> rectangles;
+
+  if (map != nullptr)
+  {
+    int rect_gen = 0;
+    int attempts = 0;
+    int max_attempts = num_rectangles * 10;
+
+    while (rect_gen < num_rectangles && attempts < max_attempts)
+    {
+      attempts++;
+
+      int rect_height = RNG::range(3, 6);
+      int rect_width = RNG::range(3, 16);
+
+      // Guard against the squares being larger than the generatable area.
+      if (((end_row - rect_height) < start_row) || ((end_col - rect_width) < start_col))
+      {
+        continue;
+      }
+      else
+      {
+        Coordinate rect_tl = make_pair(0,0);
+        Coordinate rect_br = make_pair(0,0);
+
+        rect_tl = make_pair(RNG::range(start_row, end_row - rect_height - 1), RNG::range(start_col, end_col - rect_width - 1));
+        rect_br = {rect_tl.first + rect_height, rect_tl.second + rect_width};
+
+        fill(map, rect_tl, rect_br, rect_fill_type);
+        rectangles.push_back(make_pair(rect_tl, rect_br));
+
+        rect_gen++;
+      }
+    }
+  }
+
+  return rectangles;
 }
 
 void GeneratorUtils::generate_door(const MapPtr map, const int row, const int col)
 {
   TileGenerator tg;
 
-  TilePtr floor   = tg.generate(TileType::TILE_TYPE_DUNGEON);
+  TilePtr floor = tg.generate(TileType::TILE_TYPE_DUNGEON);
   FeaturePtr door = FeatureGenerator::generate_door();
 
   if (floor && map)
@@ -121,7 +164,7 @@ void GeneratorUtils::generate_fire_pillar(const MapPtr map, const int row, const
 {
   FeaturePtr fire_pillar = FeatureGenerator::generate_fire_pillar();
   TilePtr tile = map->at(row, col);
-  
+
   if (tile)
   {
     tile->set_feature(fire_pillar);
@@ -149,7 +192,7 @@ void GeneratorUtils::generate_fountain(const MapPtr map, const int row, const in
 {
   FeaturePtr fountain = FeatureGenerator::generate_fountain();
   TilePtr tile = map->at(row, col);
-  
+
   if (tile)
   {
     tile->set_feature(fountain);
@@ -196,6 +239,11 @@ int GeneratorUtils::generate_traps(const MapPtr map, const int num_traps)
 // Generate a trap with a given ID and place it at the given coordinates.
 void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int col, const vector<TrapPtr>& traps, const string& trap_id, const bool trap_triggered)
 {
+  if (map == nullptr)
+  {
+    Log::instance().error("Cannot generate traps on a null map.");
+  }
+
   if (!traps.empty())
   {
     TrapPtr selected_trap;
@@ -237,7 +285,7 @@ void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int co
   {
     size_t trap_size = traps.size();
 
-    uint idx = RNG::range(0, trap_size-1);
+    uint idx = RNG::range(0, trap_size - 1);
     TrapPtr trap = traps.at(idx);
 
     if (trap != nullptr)
@@ -279,7 +327,7 @@ void GeneratorUtils::generate_bazaar_if_necessary(const MapPtr map, const string
 
       if (are_tiles_ok_for_bazaar(map, y_start, x_start, height, width))
       {
-        Building bazaar({y_start, x_start}, {y_start+height, x_start+width}, {y_start, x_start});
+        Building bazaar({ y_start, x_start }, { y_start + height, x_start + width }, { y_start, x_start });
         ShopGenerator sg;
 
         sg.generate_shop(map, bazaar);
@@ -313,4 +361,21 @@ bool GeneratorUtils::are_tiles_ok_for_bazaar(MapPtr map, const int y_start, cons
   }
 
   return bzr_ok;
+}
+
+void GeneratorUtils::fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type)
+{
+  TileGenerator tg;
+
+  if (map != nullptr)
+  {
+    for (int row = start_coord.first; row <= end_coord.first; row++)
+    {
+      for (int col = start_coord.second; col <= end_coord.second; col++)
+      {
+        TilePtr tile = tg.generate(tile_type);
+        map->insert(row, col, tile);
+      }
+    }
+  }
 }

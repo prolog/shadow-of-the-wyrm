@@ -1,0 +1,13 @@
+The casino, located in the city of Carcassia, has a number of ways you can lose your hard-earned fortune.  This is, after all, the expected outcome: if the house were expected to lose, it would have folded long ago.
+%p
+The casino offers games both in and outside the building.  Within the building, there is pov, a dice game; blackjack, a card game; and slot machines.  And outside, there is a turtle track, where you can participate in the bizarre Carcassian custom of betting on snapping turtle races.
+%p
+Pov (short for "poverty", it's said) is a simple game: the player bets on the outcome of a six-sided die roll.  If the roll comes up, the player wins triple the bet.  The odds aren't great, but pov doesn't have a set bet, allowing the player to bet as much or as little as they'd like.
+%p
+Blackjack is a card game in which the object is to get as close to 21 as possible without going over. The casino in Carcassia uses a single deck.  Numerical cards are worth their face value, face cards are worth 10, and an ace can count as either 10 or 1, depending on which is more advantageous.  In the Carcassian casino, the dealer must draw to 17 and stand on 17 or higher.  The payout if you win is double.
+%p
+The slot machines are fixed-bet, and have their payouts and probabilities listed on the machine.
+%p
+Outside the casino, the turtle tracks are located in an area ringed by trees.  The punters make their bets, and then three turtles are let loose on the track.  Some time later, one of them will presumably amble over the finish line.  Those who bet on the winner get double their bet.  The turtles are fairly slow, and have an agonizing tendency to stop periodically, but each of them has an equal chance to win each time, and so there is nothing to pick between other than their name and colour.
+%p
+Savvy adventurers have figured out that, if the house is expected to win, they are expected to lose.  "It's better to gamble with your life than your money," the saying goes, as far more people have made their fortunes plundering the nearby dungeons and islands than have by gambling in the casino.  Still, there are others who have tried a different tactic: robbing the casino itself.  A large vault contains an untold number of ivory pieces.  But strange sounds have been heard within, and it's said that the casino employs guards that require neither food nor drink nor sleep...

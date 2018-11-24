@@ -44,8 +44,13 @@ class DecisionStrategy : public ISerializable
 
     virtual bool can_move() const;
 
+    void set_automove_coords(const Coordinate& c);
+    void clear_autmove_coords();
+    Coordinate get_automove_coords() const;
+
     void set_property(const std::string& prop, const std::string& val);
     std::string get_property(const std::string& prop) const;
+    bool has_property(const std::string& prop) const;
     bool remove_property(const std::string& prop);
 
     void set_properties(const std::map<std::string, std::string>& new_props);

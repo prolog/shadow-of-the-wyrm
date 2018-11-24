@@ -55,6 +55,11 @@ bool MapRegistry::remove_map(const string& map_id)
   return map_removed;
 }
 
+void MapRegistry::clear_maps()
+{
+  map_registry.clear();
+}
+
 MapRegistryMap& MapRegistry::get_maps_ref()
 {
   return map_registry;

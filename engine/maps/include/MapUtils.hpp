@@ -34,6 +34,8 @@ class MapUtils
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
     static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
     static std::vector<CreaturePtr> get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature);
+    static void set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr map_exit);
+    static Coordinate calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, const CardinalDirection exit_direction, MapExitPtr map_exit);
 
     // When removing a creature, we generally want to leave the player's
     // location intact, for returning later.  However, in certain cases,
@@ -44,7 +46,7 @@ class MapUtils
 
     static bool place_creature_randomly(MapPtr map, const std::string& creature_id);
     
-    static bool can_exit_map(MapExitPtr map_exit);
+    static bool can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Coordinate& proposed_new_coord);
     
     static bool is_blocking_feature_present(TilePtr tile);
     static bool is_creature_present(TilePtr tile);
@@ -54,6 +56,8 @@ class MapUtils
     static bool does_area_around_tile_allow_creature_generation(MapPtr map, const Coordinate& c);
     static bool is_tile_available_for_creature(CreaturePtr creature, TilePtr tile);
     static bool is_tile_available_for_item(TilePtr tile);
+    static bool does_area_around_tile_contain_staircase(MapPtr map, const Coordinate& c);
+    static bool is_coordinate_within_player_restricted_zone(MapPtr map, const Coordinate& c);
 
     static void swap_places(MapPtr map, CreaturePtr c1, CreaturePtr c2);
 
@@ -75,8 +79,9 @@ class MapUtils
     static bool adjacent_creature_exists(const int row, const int col, MapPtr map);
     static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
 
-    static void place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const std::string& player_loc);
-    
+    static Coordinate place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const std::string& player_loc);
+    static void set_multi_map_entry_details(MapPtr new_map, MapPtr old_map, const Coordinate& new_map_prev_loc);
+
     // Check to see if the given tile is a "corner tile", given a corner direction.
     static bool is_corner(const Coordinate& c, const Direction d, MapPtr map);
 
@@ -86,6 +91,7 @@ class MapUtils
     static std::multimap<int, std::pair<std::string, Coordinate>> create_distance_map(CreaturePtr creature, MapPtr map, bool hostile_only);
 
     static std::map<TileType, std::vector<TilePtr>> partition_tiles(MapPtr map);
+    static std::vector<TilePtr> get_tiles_supporting_items(MapPtr map);
 
     static void anger_shopkeeper_if_necessary(const Coordinate& current_coords, MapPtr current_map, CreaturePtr anger_creature);
 
@@ -100,4 +106,7 @@ class MapUtils
     static void add_tile_related_messages(CreaturePtr creature, TilePtr tile);
     static bool add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr tile);
     static bool add_message_about_items_on_tile_if_necessary(CreaturePtr creature, TilePtr tile);
+    static void run_movement_scripts(CreaturePtr creature, const std::string& map_id, const Coordinate& c);
+
+    static const int PLAYER_RESTRICTED_ZONE_RADIUS;
 };

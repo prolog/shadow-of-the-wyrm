@@ -14,7 +14,7 @@ const int GraveInscriptionGenerator::MAX_AGE = 100;
 string GraveInscriptionGenerator::generate_inscription(const int current_year, const int min_death_year)
 {
   ostringstream ss;
-  CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
+  CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_NOT_SPECIFIED)));
 
   ss << boost::to_upper_copy<std::string>(Naming::generate_name(sex));
 

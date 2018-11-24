@@ -2,8 +2,6 @@
 #include "Screen.hpp"
 #include "Colours.hpp"
 
-using TextDisplayPair = std::pair<Colour, std::string>;
-
 // A generic screen that can be used to display text (help files, etc).
 class TextDisplayScreen : public Screen
 {

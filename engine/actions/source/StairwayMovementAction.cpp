@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "DigAction.hpp"
 #include "ItemProperties.hpp"
 #include "Log.hpp"
@@ -138,7 +139,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             if (wielded != nullptr && wielded->has_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS))
             {
               DigAction da;
-              descend_success = da.dig_within(creature, map, tile);
+              descend_success = da.dig_within(creature, wielded, map, tile);
             }
             else
             {
@@ -168,7 +169,11 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 
 void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature, Game& game, MovementAction* const ma)
 {
-  ma->handle_properties_and_move_to_new_map(current_tile, current_map, map_exit);
+  // JCD FIXME: For now, stairway movement isn't part of multi-map movement
+  // (assume everything's on the same rough z-level), so pass in a null
+  // coordinate to allow the game to use either the pre-set location,
+  // or the pre-existing one.
+  ma->handle_properties_and_move_to_new_map(creature, current_tile, current_map, map_exit, CoordUtils::end());
 }
 
 ActionCostValue StairwayMovementAction::get_action_cost_value(CreaturePtr creature) const

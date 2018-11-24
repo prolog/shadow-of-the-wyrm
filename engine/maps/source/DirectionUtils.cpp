@@ -83,6 +83,37 @@ Direction DirectionUtils::to_direction(const CardinalDirection cd)
   return d;
 }
 
+CardinalDirection DirectionUtils::to_cardinal_direction(const Direction d)
+{
+  CardinalDirection cd = CardinalDirection::CARDINAL_DIRECTION_NULL;
+
+  switch (d)
+  {
+    case Direction::DIRECTION_NORTH_EAST:
+    case Direction::DIRECTION_NORTH_WEST:
+    case Direction::DIRECTION_NORTH:
+      cd = CardinalDirection::CARDINAL_DIRECTION_NORTH;
+      break;
+    case Direction::DIRECTION_WEST:
+      cd = CardinalDirection::CARDINAL_DIRECTION_WEST;
+      break;
+    case Direction::DIRECTION_EAST:
+      cd = CardinalDirection::CARDINAL_DIRECTION_EAST;
+      break;
+    case Direction::DIRECTION_SOUTH_EAST:
+    case Direction::DIRECTION_SOUTH_WEST:
+    case Direction::DIRECTION_SOUTH:
+      cd = CardinalDirection::CARDINAL_DIRECTION_SOUTH;
+      break;
+    case Direction::DIRECTION_UP:
+    case Direction::DIRECTION_DOWN:
+    default:
+      break;
+  }
+
+  return cd;
+}
+
 CardinalDirection DirectionUtils::get_opposite_direction(const CardinalDirection d)
 {
   CardinalDirection o = d;

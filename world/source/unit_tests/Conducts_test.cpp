@@ -27,6 +27,18 @@ TEST(SW_World_Conducts, remaining_conducts)
   EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_SILENT)] == true);
 }
 
+TEST(SW_World_Conducts, get_num_broken_conducts)
+{
+  Conducts c;
+
+  EXPECT_EQ(0, c.get_num_broken_conducts());
+
+  c.break_conduct(ConductType::CONDUCT_TYPE_AGNOSTIC);
+  c.break_conduct(ConductType::CONDUCT_TYPE_QUESTLESS);
+
+  EXPECT_EQ(2, c.get_num_broken_conducts());
+}
+
 TEST(SW_World_Conducts, serialization_id)
 {
   Conducts c;

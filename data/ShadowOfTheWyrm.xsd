@@ -15,6 +15,7 @@
 			<xs:element ref="tns:Items"/>
 			<xs:element ref="tns:Features"/>
 			<xs:element ref="tns:Calendar"/>
+			<xs:element ref="tns:StartingLocations"/>
 			<xs:element ref="tns:Scripts"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -215,6 +216,16 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="StartingLocations">
+	<xs:annotation>
+		<xs:documentation>Possible starting locations, which for the moment are specified as world-gen would need to happen for potential dynamic locations.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="StartingLocation" type="tns:StartingLocationType" minOccurs="1" maxOccurs="12"/> <!-- Seems like enough. -->
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="Scripts">
 	<xs:annotation><xs:documentation>Scripts used by the Shadow of the Wyrm engine.</xs:documentation></xs:annotation>
 	<xs:complexType>
@@ -261,6 +272,7 @@
 			<xs:element name="HasPockets" type="xs:boolean"/> 
 			<!-- When it's attacked, does it yell and draw other friendly creatures into the fight? -->
 			<xs:element name="HasVoice" type="xs:boolean"/> 
+			<xs:element name="HasHair" type="xs:boolean"/>
 			<xs:element name="Drops" type="tns:DropsType" minOccurs="0"/>
 			<xs:element name="HasRandomVillages" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="SettlementType" type="tns:SettlementType" minOccurs="0"/>
@@ -813,6 +825,14 @@
 		<xs:element name="CalendarDay" type="xs:integer"/>
 	</xs:sequence>
 </xs:complexType>
+<xs:complexType name="StartingLocationType">
+	<xs:sequence>
+		<xs:element name="Row" type="xs:integer"/>
+		<xs:element name="Col" type="xs:integer"/>
+		<xs:element name="DescriptionSID" type="xs:string"/>
+	</xs:sequence>
+	<xs:attribute name="id" type="tns:Identifier"/>
+</xs:complexType>
 <xs:complexType name="GeneratorFilters">
 	<xs:sequence>
 		<xs:element name="Filter" minOccurs="0" maxOccurs="unbounded"/>
@@ -830,6 +850,7 @@
 		<xs:element name="Damage" type="tns:Damage"/>
 		<xs:element name="Effect" type="tns:EffectType" minOccurs="0"/>
 		<xs:element name="Uses" type="xs:integer"/>
+		<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>
 </xs:complexType>
@@ -1710,7 +1731,7 @@
   </xs:simpleType>
 <xs:simpleType name="Identifier">
 	<xs:restriction base="xs:string">
-		<xs:pattern value="[a-zA-Z0-9_]*"/>
+		<xs:pattern value="[\*a-zA-Z0-9_]*"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="StatusAilmentType">
@@ -1754,4 +1775,4 @@
 		<xs:maxInclusive value="4"/>
 	</xs:restriction>
 </xs:simpleType>
-</xs:schema>
+</xs:schema>

@@ -1,0 +1,32 @@
+require('constants')
+
+local currency_amount = get_item_count(PLAYER_ID, CURRENCY_ID)
+
+if (currency_amount > 3) then
+  local sc_id = args[SPEAKING_CREATURE_ID]
+  local foods = {get_creature_additional_property_csv(sc_id, "BARTENDER_FOOD")}
+  local drinks = {get_creature_additional_property_csv(sc_id, "BARTENDER_DRINK")}
+  
+  local food_size = table.getn(foods)
+  local drinks_size = table.getn(drinks)
+      
+  if food_size > 0 and drinks_size > 0 then
+    if add_confirmation_message("BARTENDER_ACTION_OFFER_MEAL") then
+      -- Pick food and drink.
+      local food_id = foods[RNG_range(1, food_size)]  
+      local drink_id = drinks[RNG_range(1, drinks_size)]
+    
+      -- Provide it to the player and take his or her money.
+      clear_and_add_message("BARTENDER_ACTION_PROVIDE_MEAL")
+      add_object_to_player_tile(food_id)
+      add_object_to_player_tile(drink_id)
+
+      remove_object_from_player(CURRENCY_ID, 3)
+    else
+      clear_and_add_message("BARTENDER_ACTION_SAY_GOODBYE")
+    end
+  end
+else
+  clear_and_add_message("BARTENDER_UNFRIENDLY")
+end
+

@@ -15,6 +15,7 @@ class ScreenTitleTextKeys
     static const std::string SCREEN_TITLE_INTRODUCTION_ROGUELIKES;
     static const std::string SCREEN_TITLE_SOTW_HISTORY;
     static const std::string SCREEN_TITLE_STRATEGY_BASICS;
+    static const std::string SCREEN_TITLE_CASINO_GAMES;
     static const std::string SCREEN_TITLE_CREATE_ITEM;
 
   protected:

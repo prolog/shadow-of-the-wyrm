@@ -4,6 +4,11 @@
 WellTile::WellTile()
 {
   items = std::make_shared<NullInventory>();
+
+  // All wells lead down to a simple underground level.
+  MapExitPtr me = std::make_shared<MapExit>();
+  me->set_terrain_type(TileType::TILE_TYPE_WELL);
+  map_exits[Direction::DIRECTION_DOWN] = me;
 }
 
 TileType WellTile::get_tile_type() const

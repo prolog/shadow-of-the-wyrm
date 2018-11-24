@@ -26,7 +26,10 @@ void ClassSelectionScreen::initialize()
   ClassMap classes = game_instance.get_classes_ref();
   ostringstream synop;
 
-  synop << "[" << creature_synopsis << "]";
+  if (!creature_synopsis.empty())
+  {
+    synop << "[" << creature_synopsis << "]";
+  }
 
   TextComponentPtr class_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_CLASS));
 

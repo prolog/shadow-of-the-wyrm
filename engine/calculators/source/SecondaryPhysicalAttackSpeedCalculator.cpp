@@ -15,7 +15,7 @@ ActionCostValue SecondaryPhysicalAttackSpeedCalculator::calculate_weapon_speed(C
 
     if (weapon)
     {
-      speed += weapon->get_speed();
+      speed += calculate_speed_for_weapon(creature, weapon);
     }
   }
 

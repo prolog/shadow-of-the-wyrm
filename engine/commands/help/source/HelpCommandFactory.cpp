@@ -34,6 +34,10 @@ CommandPtr HelpCommandFactory::create(const int key, const std::string& command_
   {
     command = std::make_shared<StrategyBasicsCommand>(key);
   }
+  else if (command_name == HelpCommandKeys::CASINO_GAMES)
+  {
+    command = std::make_shared<CasinoGamesCommand>(key);
+  }
 
   return command;
 }

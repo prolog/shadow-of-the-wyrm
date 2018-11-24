@@ -7,6 +7,7 @@
 #include "DangerLevelCalculatorFactory.hpp"
 #include "DecisionStrategyProperties.hpp"
 #include "DigAction.hpp"
+#include "DirectionUtils.hpp"
 #include "FeatureAction.hpp"
 #include "ForagablesCalculator.hpp"
 #include "Game.hpp"
@@ -15,6 +16,7 @@
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
+#include "MapItemGenerator.hpp"
 #include "MapProperties.hpp"
 #include "MapScript.hpp"
 #include "MapTypeQueryFactory.hpp"
@@ -85,7 +87,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
         // - there is at least one hostile adjacent creature, and a successful Escape check is made.
         if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) || sm.check_skill(creature, SkillType::SKILL_GENERAL_ESCAPE))
         {
-          movement_acv = move_off_map(creature, map, creatures_old_tile);
+          movement_acv = move_off_map(creature, map, creatures_old_tile, direction);
         }
         else
         {
@@ -115,16 +117,26 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
   return movement_acv;
 }
 
-ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile)
+ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, const Direction direction)
 {
   ActionCostValue movement_acv = 0;
 
   Game& game = Game::instance();
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());  
   IMessageManager& pl_man = MM::instance();
-  MapExitPtr map_exit = map->get_map_exit();
 
-  if (!MapUtils::can_exit_map(map_exit) && map)
+  CardinalDirection exit_direction = DirectionUtils::to_cardinal_direction(direction);
+  MapExitPtr map_exit = map->get_map_exit(exit_direction);
+
+  if (map_exit == nullptr)
+  {
+    map_exit = map->get_map_exit();
+  }
+
+  Coordinate current_coord = map->get_location(creature->get_id());
+  Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, exit_direction, map_exit);
+
+  if (!MapUtils::can_exit_map(map, creature, map_exit, proposed_new_coord))
   {
     if (creature->get_is_player())
     { 
@@ -143,7 +155,8 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
       
       if (creature->get_decision_strategy()->get_confirmation())
       {
-        handle_properties_and_move_to_new_map(creatures_old_tile, map, map_exit);
+        MapUtils::set_up_transitive_exits_as_necessary(map, map_exit);
+        handle_properties_and_move_to_new_map(creature, creatures_old_tile, map, map_exit, proposed_new_coord);
         movement_acv = get_action_cost_value(creature);
       }
       
@@ -245,9 +258,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         movement_acv = 0;
       }
     }
-    else if (creatures_new_tile->has_race_restrictions() && 
-            !creatures_new_tile->is_race_allowed(creature->get_race_id()) && 
-            String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == false)
+    else if (!creatures_new_tile->get_is_available_for_creature(creature))
     {
       manager.add_new_message(StringTable::get(MovementTextKeys::ACTION_MOVE_RACE_NOT_ALLOWED));
       manager.send();
@@ -267,19 +278,19 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
           // Update the map info
           MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
           movement_acv = get_action_cost_value(creature);
-        }
 
-        if (creatures_new_tile->has_feature())
-        {
-          FeaturePtr feature = creatures_new_tile->get_feature();
-
-          // Some features, such as traps, are applied when moving into a tile.
-          if (feature->apply_on_movement(creature))
+          if (creatures_new_tile->has_feature())
           {
-            // Apply the feature, now that the creature has moved into
-            // the tile.
-            FeatureAction fa;
-            fa.handle(creatures_new_tile, feature, creature, true);
+            FeaturePtr feature = creatures_new_tile->get_feature();
+
+            // Some features, such as traps, are applied when moving into a tile.
+            if (feature->apply_on_movement(creature))
+            {
+              // Apply the feature, now that the creature has moved into
+              // the tile.
+              FeatureAction fa;
+              fa.handle(creatures_new_tile, feature, creature, true);
+            }
           }
         }
       }
@@ -412,7 +423,7 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
   
   if (creatures_new_tile)
   {
-    creature_can_enter_adjacent_tile = !creatures_new_tile->get_is_blocking_ignore_present_creature(creature);
+    creature_can_enter_adjacent_tile = creatures_new_tile->get_is_available_for_creature(creature);
   }
 
   // Maybe the creature just wants to switch?
@@ -724,7 +735,7 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
 {
   ActionCostValue acv = 0;
 
-  if (new_map)
+  if (new_map && current_tile)
   {
     // The map may have a set of creatures defined (e.g., a custom map with a
     // list of creatures set programmatically by a script).  Generate these,
@@ -737,6 +748,12 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
       current_tile->remove_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
     }
 
+    if (current_tile->has_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_ITEMS))
+    {
+      MapItemGenerator mig;
+      mig.generate_initial_set_items(new_map, current_tile->get_additional_properties());
+    }
+
     move_to_new_map(current_tile, old_map, new_map);
     acv = get_action_cost_value(nullptr);
   }
@@ -747,9 +764,17 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
 void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
 {
   GameUtils::move_to_new_map(current_tile, old_map, new_map);
+
+  bool checkpoint_save = String::to_bool(Game::instance().get_settings_ref().get_setting(Setting::CHECKPOINT_SAVE));
+
+  if (checkpoint_save)
+  {
+    Game& game = Game::instance();
+    game.get_action_manager_ref().save(game.get_current_player(), false);
+  }
 }
 
-void MovementAction::handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit)
+void MovementAction::handle_properties_and_move_to_new_map(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
 {
   Game& game = Game::instance();
   
@@ -759,6 +784,11 @@ void MovementAction::handle_properties_and_move_to_new_map(TilePtr old_tile, Map
     {
       string new_map_id = map_exit->get_map_id();
       MapPtr new_map = game.map_registry.get_map(new_map_id);
+
+      if (creature != nullptr && !CoordUtils::is_end(proposed_new_coord))
+      {
+        new_map->add_or_update_location(creature->get_id(), proposed_new_coord);
+      }
       
       handle_properties_and_move_to_new_map(old_tile, old_map, new_map);
     }

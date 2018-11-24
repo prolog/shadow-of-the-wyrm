@@ -24,7 +24,7 @@ DigAction::DigAction()
 }
 
 // Dig on a particular tile.
-ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr tile) const
+ActionCostValue DigAction::dig_within(CreaturePtr creature, ItemPtr dig_item, MapPtr map, TilePtr tile) const
 {
   ActionCostValue acv = 0;
 
@@ -37,10 +37,15 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, MapPtr map, TilePtr 
     {
       TileSuperType tst = tile->get_tile_super_type();
 
+      bool added_msg = add_cannot_dig_message_if_necessary(creature, map, tile);
+      if (added_msg) return acv;
+
       if (tile_super_type_supports_digging(tst))
       {
         if (tm->dig(creature, map, tile))
         {
+          handle_potential_item_breakage(creature, tile, dig_item);
+
           tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, Bool::to_string(true));
           acv = get_action_cost_value(creature);
 
@@ -79,11 +84,11 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
 
     if (add_messages)
     {
-      bool added_msg = add_cannot_dig_message_if_necessary(creature, map);
+      bool added_msg = add_cannot_dig_message_if_necessary(creature, map, adjacent_tile);
       if (added_msg) return acv;
     }
 
-    // If we're digging in a shop, that is not appreciated, not at all.
+    // If we're digging into a shop, that is not appreciated, not at all.
     MapUtils::anger_shopkeeper_if_necessary(dig_coord, map, creature);
 
     // Do the actual decomposition, then re-add the tile, check for dig item
@@ -96,7 +101,7 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
       add_successful_dig_message(creature);
     }
 
-    handle_potential_item_breakage(creature, dig_item);
+    handle_potential_item_breakage(creature, adjacent_tile, dig_item);
 
     // Digging through a tile is strenuous, and always trains Strength.
     // Assuming, of course, the character is using an item and this isn't part
@@ -113,19 +118,35 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
   return acv;
 }
 
-bool DigAction::add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr map) const
+bool DigAction::add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr map, TilePtr tile) const
 {
   bool added_msg = false;
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  string map_flag;
+  string tile_flag;
 
-  // Is there something preventing digging on this map?
-  string no_dig = map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG);
-  if (!no_dig.empty() && (String::to_bool(no_dig) == true))
+  if (map != nullptr)
   {
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CANNOT_DIG));
-    manager.send();
+    map_flag = map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG);
+  }
 
-    added_msg = true;
+  if (tile != nullptr)
+  {
+    tile_flag = tile->get_additional_property(TileProperties::TILE_PROPERTY_CANNOT_DIG);
+  }
+
+  vector<string> dig_flags = {map_flag, tile_flag};
+
+  for (const string& dig_flag : dig_flags)
+  {
+    if (!dig_flag.empty() && (String::to_bool(dig_flag) == true))
+    {
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CANNOT_DIG));
+      manager.send();
+
+      added_msg = true;
+      break;
+    }
   }
 
   return added_msg;
@@ -192,13 +213,13 @@ void DigAction::add_cannot_dig_on_tile_super_type_message(CreaturePtr creature) 
   }
 }
 
-void DigAction::handle_potential_item_breakage(CreaturePtr creature, ItemPtr item) const
+void DigAction::handle_potential_item_breakage(CreaturePtr creature, TilePtr adjacent_tile, ItemPtr item) const
 {
   if (creature != nullptr && item != nullptr)
   {
     // Did the item break?
     ItemBreakageCalculator ibc;
-    if (RNG::percent_chance(ibc.calculate_pct_chance_digging_breakage(creature, item)))
+    if (RNG::percent_chance(ibc.calculate_pct_chance_digging_breakage(creature, adjacent_tile, item)))
     {
       creature->get_equipment().remove_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 

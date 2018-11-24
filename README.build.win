@@ -13,14 +13,14 @@ Source:
 
 The following dependencies are used (environment variable in parens):
 
-- Boost 1.64 - at least beta2, for VS 2017 support (BOOST_DIR)
-- Google Test 1.7 (GTEST_DIR)
-- Xerces-C 3.1.1 (XERCES_DIR)
-- Zlib-1.2.8 (ZLIB_DIR)
+- Boost 1.67 (BOOST_DIR)
+- Google Test 1.8 (GTEST_DIR)
+- Xerces-C 3.2.1 (XERCES_DIR)
+- Zlib-1.2.11 (ZLIB_DIR)
 - pdcurses (CURSES_DIR)
 
 Download each of the dependencies, build, and then set the environment
-variables appropraitely.
+variables appropriately.
 
 Open the Shadow of the Wyrm solution, select the configuration (e.g., 
 Release), and select "Rebuild All".

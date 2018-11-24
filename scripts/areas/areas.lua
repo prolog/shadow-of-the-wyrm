@@ -43,7 +43,7 @@ end
 
 -- Set a particular property on the tile.
 function Area:set_additional_property(property, value)
-  map_set_additional_property(self.map_id, self.row, self.col, property, value)
+  map_set_tile_property(self.map_id, self.row, self.col, property, value)
 end
 
 -- Set the additional properties.
@@ -65,7 +65,7 @@ function Area:insert()
 
   -- If we need to override the permanence, do so.
   if (self.permanence ~= nil) then
-    map_set_additional_property(self.map_id, self.row, self.col, "MAP_PROPERTIES_PERMANENCE", tostring(self.permanence))
+    map_set_tile_property(self.map_id, self.row, self.col, "MAP_PROPERTIES_PERMANENCE", tostring(self.permanence))
   end
 
   -- Next, check to see if an extra description SID has been provided.
@@ -81,7 +81,7 @@ function Area:insert()
 
   -- Finally, add any additional properties.
   for k,v in pairs(self.additional_properties) do
-    map_set_additional_property(self.map_id, self.row, self.col, k, v)
+    map_set_tile_property(self.map_id, self.row, self.col, k, v)
   end
 end
 

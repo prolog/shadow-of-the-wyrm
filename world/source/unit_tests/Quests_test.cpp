@@ -1,15 +1,31 @@
 #include "gtest/gtest.h"
 
+Quest get_test_quest();
+Quest get_test_quest()
+{
+  Quest q("a", "b", {}, "c", "map", "d", {});
+  return q;
+}
+
+TEST(SW_World_Quest, desc_params)
+{
+  vector<string> params = {"a", "b", "C"};
+  Quest q = get_test_quest();
+  q.set_quest_description_parameter_sids(params);
+
+  EXPECT_EQ(params, q.get_quest_description_parameter_sids());
+}
+
 TEST(SW_World_Quest, serialization_id)
 {
-  Quest q;
+  Quest q = get_test_quest();
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_QUEST, q.get_class_identifier());
 }
 
 TEST(SW_World_Quest, saveload)
 {
-  Quest q("a", "b", "c", "map", "d");
+  Quest q = get_test_quest();
   Quest q2;
 
   ostringstream ss;
@@ -26,7 +42,7 @@ TEST(SW_World_Quest, saveload)
 TEST(SW_World_Quests, add_quest)
 {
   Quests q;
-  Quest q1("a", "b", "c", "map", "d");
+  Quest q1 = get_test_quest();
 
   q.add_new_quest("q", q1);
 
@@ -37,7 +53,7 @@ TEST(SW_World_Quests, add_quest)
 TEST(SW_World_Quests, move_quest_to_completed_status)
 {
   Quests q;
-  Quest q1("a", "b", "c", "map", "d");
+  Quest q1 = get_test_quest();
 
   EXPECT_FALSE(q.is_quest_in_progress("q1"));
   q.add_new_quest("q1", q1);
@@ -60,9 +76,9 @@ TEST(SW_World_Quests, saveload)
   Quests q;
   Quests q_deser;
 
-  Quest q1("a", "b", "c", "map", "d");
-  Quest q2("e", "f", "g", "map2", "h");
-  Quest q3("i", "j", "k", "map3", "l");
+  Quest q1("a", "b", {}, "c", "map", "d", {});
+  Quest q2("e", "f", {}, "g", "map2", "h", {});
+  Quest q3("i", "j", {}, "k", "map3", "l", {});
 
   q.add_new_quest("q1", q1);
   q.add_new_quest("q2", q2);

@@ -1,5 +1,9 @@
 #pragma once
 
+// This is set up as a define so that it can be easily exported to the Lua
+// scripts.
+#define CPIETY_CROWNING 17000
+
 class ReligionConstants
 {
   public:
@@ -16,7 +20,7 @@ class ReligionConstants
     static const int PIETY_TIER_2;
     static const int PIETY_TIER_3;
     static const int PIETY_TIER_4;
-    static const int PIETY_CROWNING;
+    static const int PIETY_CROWNING = CPIETY_CROWNING;
 
   protected:
     ReligionConstants();

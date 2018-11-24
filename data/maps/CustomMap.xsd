@@ -59,6 +59,9 @@
 			<xs:documentation>Initial, set placements of creatures and items.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<!-- Creatures are typically set here, but more complicated maps
+			     might also dynamically load creatures based on logic in associated 
+				 Lua scripts. -->
 			<xs:element name="Creatures" type="tns:IdentifiedPlacementList" minOccurs="0"/>
 			<xs:element name="Items" type="tns:IdentifiedPlacementList" minOccurs="0"/>
 		</xs:sequence>
@@ -149,7 +152,9 @@
 			<xs:documentation>Contains details about a particular exit on a tile.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Coord" type="tns:Coord"/>
+			<!-- If the Coord element is null for an exit, the exit will be
+			     applied at the map level. -->
+			<xs:element name="Coord" type="tns:Coord" minOccurs="0"/>
 			<xs:element name="Direction" type="tns:Direction"/>
 			<xs:choice>
 				<xs:element name="MapID" type="xs:string"/>
@@ -209,7 +214,11 @@
 				<xs:element name="WheelAndLoom" type="tns:WheelAndLoom"/>
 				<xs:element name="Bed" type="tns:Feature"/>
 				<xs:element name="StoneMarker" type="tns:Feature"/>
+				<xs:element name="Table" type="tns:Feature"/>
 				<xs:element name="BasicFeature" type="tns:Feature"/>
+				<xs:element name="SlotMachine" type="tns:SlotMachine"/>
+				<xs:element name="Sign" type="tns:Sign"/>
+				<xs:element name="DecorativeStatue" type="tns:DecorativeStatue"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
@@ -341,6 +350,32 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="SlotMachine">
+		<xs:annotation>
+			<xs:documentation>A slot machine in a casino.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Cost" type="xs:int"/>
+			<xs:element name="PctChanceWin" type="xs:int"/>
+			<xs:element name="PayoutMultiplier" type="xs:float"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Sign">
+		<xs:annotation>
+			<xs:documentation>A sign with text defined by a resource string.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TextSID" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DecorativeStatue">
+		<xs:annotation>
+			<xs:documentation>A particular type of decorative statue.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Type" type="tns:DecorativeStatueType"/>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="Entrance">
 		<xs:annotation>
 			<xs:documentation>
@@ -453,6 +488,23 @@
 		<xs:restriction base="xs:int">
 			<xs:minInclusive value="0"/>
 			<xs:maxInclusive value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DecorativeStatueType">
+		<xs:annotation>
+			<xs:documentation>
+			The type of decorative statue.  See world/tiles/features/include/StatueTypes.hpp
+			0 = King
+			1 = Queen
+			2 = Warlord
+			3 = Knight
+			4 = High Priest
+			5 = Sorceror
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="5"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

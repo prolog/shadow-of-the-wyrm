@@ -66,6 +66,31 @@ vector<string> String::create_string_vector_from_csv_string(const string& csv_st
   return str_vec;
 }
 
+map<string, string> String::create_properties_from_string(const string& properties_str)
+{
+  vector<string> properties_v;
+  properties_v = create_string_vector_from_csv_string(properties_str);
+  return create_properties_from_string_vector(properties_v);
+}
+
+map<string, string> String::create_properties_from_string_vector(const vector<string>& properties_v)
+{
+  map<string, string> properties;
+
+  for (const string& prop_str : properties_v)
+  {
+    vector<string> p;
+    boost::split(p, prop_str, boost::is_any_of("="));
+
+    if (p.size() == 2)
+    {
+      properties[p[0]] = p[1];
+    }
+  }
+
+  return properties;
+}
+
 vector<int> String::create_int_vector_from_csv_string(const string& csv_str)
 {
   vector<string> str_vec;

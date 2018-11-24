@@ -1,5 +1,16 @@
 module(..., package.seeall)
 
+function make_coordinates(r1, r2, c1, c2)
+  local coords = {}
+  for y = r1, r2 do
+    for x = c1, c2 do
+      table.insert(coords, {y, x})
+    end
+  end
+
+  return coords
+end
+
 -- Check an array to see if it contains a particular value
 function contains(array, value)
   for k,v in pairs(array) do
@@ -49,3 +60,31 @@ function shuffle(t)
 
   return t
 end
+
+function stringify_array(t)
+  local s_a = {}
+
+  for i = 1, #t do
+    table.insert(s_a, tostring(t[i]))
+  end
+
+  return s_a
+end
+
+function array_to_csv(t)
+  local csv = ""
+  for i = 1, #t do
+    csv = csv .. t[i]
+
+    if i < #t then
+      csv = csv .. ","
+    end
+  end
+
+  return csv
+end
+
+function area(c1, c2)
+  return ((c2[1] - c1[1]) * (c2[2] - c1[2]))
+end
+

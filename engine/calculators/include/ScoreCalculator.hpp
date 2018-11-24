@@ -18,5 +18,6 @@ class ScoreCalculator
     void update_score_spells(CreaturePtr creature, long long& score);
     void update_score_conducts(CreaturePtr creature, long long& score);
     void update_score_quests_complete(CreaturePtr creature, long long& score);
+    void update_score_memberships(CreaturePtr creature, long long& score);
 };
 

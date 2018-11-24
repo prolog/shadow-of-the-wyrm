@@ -5,7 +5,7 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
-using std::string;
+using namespace std;
 
 GrandTempleGenerator::GrandTempleGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_TEMPLE),
@@ -67,24 +67,24 @@ void GrandTempleGenerator::generate_temple_gardens(MapPtr map)
   // Top left
   int start_row = temple_start_row + 1;
   int start_col = temple_start_col + 1;
-  GardenGeneratorPtr generator = GardenGeneratorFactory::create_uniform_random_garden_generator(map, start_row, start_col, garden_height, garden_width);
-  generator->generate();
+  SectorFeaturePtr generator = GardenGeneratorFactory::create_uniform_random_garden_generator();
+  generator->generate(map, make_pair(start_row, start_col), make_pair(start_row + garden_height, start_col + garden_width));
   
   // Top right
   start_col = temple_start_col + temple_width - garden_width - 2;
-  generator = GardenGeneratorFactory::create_uniform_random_garden_generator(map, start_row, start_col, garden_height, garden_width);
-  generator->generate();
-  
+  generator = GardenGeneratorFactory::create_uniform_random_garden_generator();
+  generator->generate(map, make_pair(start_row, start_col), make_pair(start_row + garden_height, start_col + garden_width));
+
   // Bottom left
   start_row = temple_start_row + temple_height - garden_height - 2;
   start_col = temple_start_col + 1;
-  generator = GardenGeneratorFactory::create_uniform_random_garden_generator(map, start_row, start_col, garden_height, garden_width);
-  generator->generate();
-  
+  generator = GardenGeneratorFactory::create_uniform_random_garden_generator();
+  generator->generate(map, make_pair(start_row, start_col), make_pair(start_row + garden_height, start_col + garden_width));
+
   // Bottom right
   start_col = temple_start_col + temple_width - garden_width - 2;
-  generator = GardenGeneratorFactory::create_uniform_random_garden_generator(map, start_row, start_col, garden_height, garden_width);
-  generator->generate();
+  generator = GardenGeneratorFactory::create_uniform_random_garden_generator();
+  generator->generate(map, make_pair(start_row, start_col), make_pair(start_row + garden_height, start_col + garden_width));
 }
 
 // Generate the temple's features

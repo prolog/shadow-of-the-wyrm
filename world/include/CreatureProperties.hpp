@@ -17,6 +17,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_WINNER;
     static const std::string CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS;
     static const std::string CREATURE_PROPERTIES_BACKSTABBED;
+    static const std::string CREATURE_PROPERTIES_TELEPORTED;
 
     // FREE_HIDDEN_ACTIONS is a counter.  When set (defaults to 1), then
     // the next action will reveal the player.  Certain actions (e.g.
@@ -26,6 +27,7 @@ class CreatureProperties
     // remaining general enough to "free stealth actions" are possible
     // later on.
     static const std::string CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS;
+    static const std::string CREATURE_PROPERTIES_FIRST_KILL_ID;
 
   protected:
     CreatureProperties();

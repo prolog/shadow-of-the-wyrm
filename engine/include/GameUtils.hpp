@@ -1,6 +1,7 @@
 #pragma once
 #include "Creature.hpp"
 #include "Map.hpp"
+#include "StartingLocation.hpp"
 
 class Game;
 
@@ -20,6 +21,7 @@ class GameUtils
     static double get_seconds(Game& game);
 
     static bool is_player_among_creatures(CreaturePtr creature1, CreaturePtr creature2);
+    static StartingLocation get_random_starting_location(const StartingLocationMap& sm);
 
   protected:
     GameUtils();

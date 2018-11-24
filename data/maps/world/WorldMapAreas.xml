@@ -134,6 +134,17 @@
 			<Script>areas/eka.lua</Script>
 		</Area>
 		<Area id="central_lands">
+			<Row y="39" x="45">~~~~~~~~~~</Row>
+			<Row y="40" x="45">~~~r~~~~~~</Row>
+			<Row y="41" x="45">~~~~~~~~~~</Row>
+			<Row y="42" x="45">~~~~~~~~~~</Row>
+			<Row y="43" x="45">~m~~~FFd~~</Row>
+			<Row y="44" x="45">~f~Off~~~~</Row>
+			<Row y="45" x="45">~fffffff~~</Row>
+			<Row y="46" x="45">~~ffff~fr~</Row>
+			<Row y="47" x="45">~mmFff~~K~</Row>
+			<Row y="48" x="45">~~mFFFF~~~</Row>
+			<Row y="49" x="45">~~~~~~~~~~</Row>
 			<Script>areas/central_lands.lua</Script>
 		</Area>
 	</Areas>

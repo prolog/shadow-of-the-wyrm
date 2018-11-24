@@ -11,13 +11,13 @@
 #include "DisplayTile.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "HighScoreScreen.hpp"
 #include "ItemDescriptionRandomizer.hpp"
 #include "ItemIdentifier.hpp"
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
-#include "MapScript.hpp"
 #include "MessageManagerFactory.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
@@ -29,6 +29,7 @@
 #include "Settings.hpp"
 #include "Setting.hpp"
 #include "SexSelectionScreen.hpp"
+#include "StartingLocationSelectionScreen.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "WelcomeScreen.hpp"
@@ -202,12 +203,14 @@ void ShadowOfTheWyrmEngine::setup_game()
   map<int, CalendarDay> calendar_days = reader.get_calendar_days();
   game.set_calendar_days(calendar_days);
 
+  StartingLocationMap starting_locations = reader.get_starting_locations();
+  game.set_starting_locations(starting_locations);
+
   // This switches files/namespaces - so should be last.
+  // As part of setting the custom maps, the game may run any associated
+  // scripts.
   vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
   game.set_custom_maps(custom_maps);
-
-  // Run any scripts associated with the custom maps.
-  run_map_scripts();
 
   // Set up the message manager also.
   IMessageManager& manager = MM::instance();
@@ -261,12 +264,17 @@ bool ShadowOfTheWyrmEngine::process_new_game_random()
   // Random allowable deity
   DeityPtr deity = CreatureUtils::get_random_deity_for_race(race);
 
+  // Random starting location
+  StartingLocationMap sm = Game::instance().get_starting_locations();
+  StartingLocation sl = GameUtils::get_random_starting_location(sm);
+
   if (race && cur_class && deity)
   {
     ccd.set_sex(sex);
     ccd.set_race_id(race->get_race_id());
     ccd.set_class_id(cur_class->get_class_id());
     ccd.set_deity_id(deity->get_id());
+    ccd.set_starting_location(sl);
   }
 
   // Get name, and start.
@@ -333,9 +341,11 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
+  string creature_synopsis;
+
   if (prompt_user_for_race_selection)
   {
-    string creature_synopsis = TextMessages::get_sex(sex);
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, nullptr, nullptr, nullptr);
 
     RaceSelectionScreen race_selection(display, creature_synopsis);
     string race_index = race_selection.display();
@@ -376,8 +386,8 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   {
     RaceManager rm;
     RacePtr sel_race = rm.get_race(selected_race_id);
-    string creature_synopsis = TextMessages::get_sex(sex) + " " + StringTable::get(sel_race ? sel_race->get_race_name_sid() : "");
-
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, nullptr);
+    
     ClassSelectionScreen class_selection(display, creature_synopsis);
     string class_index = class_selection.display();
 
@@ -413,7 +423,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_deity_selection)
   {
-    string creature_synopsis = TextMessages::get_sex(sex) + " " + StringTable::get(selected_race->get_race_name_sid()) + " " + StringTable::get(selected_class->get_class_name_sid());
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, nullptr);
 
     DeitySelectionScreen deity_selection(display, selected_race, creature_synopsis);
     string deity_index = deity_selection.display();
@@ -442,7 +452,36 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  CharacterCreationDetails ccd(sex, selected_race_id, selected_class_id, selected_deity_id);
+  DeityPtr selected_deity = deities[selected_deity_id];
+  string default_starting_location_id = game.get_settings_ref().get_setting(Setting::DEFAULT_STARTING_LOCATION_ID);
+  StartingLocationMap sm = game.get_starting_locations();
+  StartingLocation sl;
+  auto sm_it = sm.find(default_starting_location_id);
+
+  if (sm_it != sm.end())
+  {
+    sl = sm_it->second;
+  }
+  else
+  {
+    string deity_sid = selected_deity->get_name_sid();    
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, selected_deity);
+    StartingLocationSelectionScreen sl_selection(display, creature_synopsis, sm);
+    string sl_sidx = sl_selection.display();
+
+    if (opt.is_random_option(sl_sidx.at(0)))
+    {
+      sl = GameUtils::get_random_starting_location(sm);
+    }
+    else
+    {
+      int sl_idx = Char::keyboard_selection_char_to_int(sl_sidx.at(0));
+      string selected_starting_location_id = Integer::to_string_key_at_given_position_in_map(sm, sl_idx);
+      sl = sm.find(selected_starting_location_id)->second;
+    }
+  }
+
+  CharacterCreationDetails ccd(sex, selected_race_id, selected_class_id, selected_deity_id, sl);
   return process_name_and_start(ccd);
 }
 
@@ -460,7 +499,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   string name;
 
   bool user_and_character_exist = true;
-  string creature_synopsis = TextMessages::get_sex(ccd.get_sex()) + " " + StringTable::get(selected_race->get_race_name_sid()) + " " + StringTable::get(selected_class->get_class_name_sid()) + ", " + StringTable::get(deity->get_name_sid());
+  string creature_synopsis = TextMessages::get_character_creation_synopsis(ccd.get_sex(), selected_race, selected_class, deity);
   string warning_message;
 
   while (user_and_character_exist)
@@ -515,7 +554,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
     if (item && item->get_status() == ItemStatus::ITEM_STATUS_CURSED) item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
   }
 
-  game.create_new_world(player);
+  game.create_new_world(player, ccd.get_starting_location());
 
   // Run the "special day" script.
   game.get_script_engine_ref().execute(game.get_script(ScriptConstants::SPECIAL_DAY_SCRIPT), {});
@@ -641,36 +680,6 @@ void ShadowOfTheWyrmEngine::setup_autopickup_settings(CreaturePtr player)
     {
       dec->set_autopickup(autopickup);
       dec->set_autopickup_types(itypes);
-    }
-  }
-}
-
-void ShadowOfTheWyrmEngine::run_map_scripts()
-{
-  Game& game = Game::instance();
-
-  // After the custom maps have been set into the registry, we need to run
-  // any custom load scripts on the maps.
-  MapRegistryMap& mrm = game.get_map_registry_ref().get_maps_ref();
-  for (const auto& mrm_pair : mrm)
-  {
-    MapPtr map = mrm_pair.second;
-    string load_script;
-
-    EventScriptsMap esm = map->get_event_scripts();
-    auto esm_it = esm.find(MapEventScripts::MAP_EVENT_SCRIPT_CREATE);
-
-    if (esm_it != esm.end())
-    {
-      ScriptDetails sd = esm_it->second;
-      ScriptEngine& se = Game::instance().get_script_engine_ref();
-      MapScript ms;
-
-      if (RNG::percent_chance(sd.get_chance()))
-      {
-        // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
-        ms.execute(se, sd.get_script(), map);
-      }
     }
   }
 }

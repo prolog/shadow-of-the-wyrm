@@ -6,6 +6,7 @@ using std::string;
 FirePillar::FirePillar()
 : Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
 {
+  shimmer_colours = ShimmerColours({Colour::COLOUR_RED, Colour::COLOUR_BOLD_RED, Colour::COLOUR_BOLD_YELLOW}, 75);
 }
 
 Feature* FirePillar::clone()

@@ -39,7 +39,7 @@ local function prefers_ranged_combat(cr_id, class_id)
   local m_sz = fn.atable_size(mskills)
   local r_sz = fn.atable_size(rskills)
 
-  if (r_sz > m_sz) or class_id == "archer" then
+  if (r_sz > m_sz) or class_id == CLASS_ID_ARCHER then
     return true
   else
     return false

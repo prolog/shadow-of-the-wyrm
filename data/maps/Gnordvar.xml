@@ -130,7 +130,7 @@
 				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
-				<ID>gnomish_barkeeper</ID>
+				<ID>bartender</ID>
 				<Coord>
 					<Row>6</Row>
 					<Col>11</Col>
@@ -160,21 +160,21 @@
 		</Creatures>
 		<Items>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>13</Row>
 					<Col>69</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>15</Row>
 					<Col>69</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>5</Row>
 					<Col>18</Col>
@@ -184,6 +184,15 @@
 	</InitialPlacements>
 	<Exits/>
 	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>8</Row>
+				<Col>13</Col>
+			</Coord>
+			<Sign>
+				<TextSID>MINERS_REST_SID</TextSID>
+			</Sign>
+		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
 				<Row>4</Row>
