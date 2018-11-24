@@ -5,6 +5,8 @@
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"
 #include "EngineConversion.hpp"
+#include "FieldOfViewStrategy.hpp"
+#include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ModifyStatisticsEffect.hpp"
@@ -14,6 +16,7 @@
 #include "StatisticTextKeys.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
+#include "ViewMapTranslator.hpp"
 
 using namespace std;
 
@@ -733,6 +736,33 @@ bool CreatureUtils::has_status_ailment_from_wearable(CreaturePtr creature, const
   }
 
   return has_ailment;
+}
+
+MapPtr CreatureUtils::update_fov_map(MapPtr current_map, MapPtr v_map, CreaturePtr current_creature)
+{
+  MapPtr fov_map;
+
+  if (current_map != nullptr && current_creature != nullptr)
+  {
+    Coordinate creature_coords = current_map->get_location(current_creature->get_id());
+    MapPtr view_map = v_map;
+
+    if (view_map == nullptr)
+    {
+      view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+    }
+
+    FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
+    fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+    DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+
+    if (strategy)
+    {
+      strategy->set_fov_map(fov_map);
+    }
+  }
+
+  return fov_map;
 }
 
 #ifdef UNIT_TESTS

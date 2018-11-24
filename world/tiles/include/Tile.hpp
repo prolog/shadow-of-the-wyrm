@@ -75,6 +75,7 @@ class Tile : public ISerializable
     virtual bool get_illuminated() const;
     
     virtual bool get_is_staircase() const;
+    virtual bool get_is_available_for_creature(std::shared_ptr<Creature> creature) const;
     virtual bool get_is_blocking(std::shared_ptr<Creature> perspective_creature = nullptr) const;
     virtual bool get_is_blocking_ignore_present_creature(std::shared_ptr<Creature> perspective_creature) const;
     virtual bool get_is_blocking_for_item(std::shared_ptr<Item> item = nullptr) const;
@@ -118,6 +119,7 @@ class Tile : public ISerializable
     // Gets the type before checking to see if the tile is submerged.
     virtual TileSuperType get_tile_base_super_type() const; 
     virtual TileType get_decomposition_tile_type() const; // When digging, what does the tile break down into?
+    virtual float get_breakage_multiplier() const; // The softer the tile, the lower the multiplier - affects item breakage when digging.
 
     // The returned vector is a list of potential items:
     // - The first element of the pair is an x-in-y chance the item is generated
@@ -164,6 +166,9 @@ class Tile : public ISerializable
     // Some tiles are restricted to certain races.
     virtual bool has_race_restrictions() const;
     virtual bool is_race_allowed(const std::string& race_id) const;
+
+    virtual bool has_creature_id_restrictions() const;
+    virtual bool is_creature_id_allowed(const std::string& creature_id) const;
 
     virtual Tile* clone() = 0;
 

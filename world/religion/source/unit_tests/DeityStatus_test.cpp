@@ -22,6 +22,18 @@ TEST(SW_World_Religion_DeityStatus, decrement_piety)
 
   EXPECT_EQ(25000, ds.get_piety());
 }
+
+TEST(SW_World_Religion_DeityStatus, piety_bonus)
+{
+  DeityStatus ds;
+
+  EXPECT_EQ(0, ds.get_piety_regen_bonus());
+
+  ds.set_piety_regen_bonus(7);
+
+  EXPECT_EQ(7, ds.get_piety_regen_bonus());
+}
+
 TEST(SW_World_Religion_DeityStatus, serialization_id)
 {
   DeityStatus ds;
@@ -34,6 +46,7 @@ TEST(SW_World_Religion_DeityStatus, saveload)
   DeityStatus ds1, ds2;
 
   ds1.set_piety(1234);
+  ds1.set_piety_regen_bonus(2);
   ds1.set_champion_type(ChampionType::CHAMPION_TYPE_FALLEN);
 
   ostringstream ss;

@@ -1,5 +1,6 @@
 #include <sstream>
 #include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "DigChancesFactory.hpp"
 #include "Inventory.hpp"
 #include "FeatureGenerator.hpp"
@@ -262,6 +263,24 @@ bool Tile::get_is_staircase() const
   return (val == TileType::TILE_TYPE_UP_STAIRCASE || val == TileType::TILE_TYPE_DOWN_STAIRCASE);
 }
 
+bool Tile::get_is_available_for_creature(CreaturePtr creature) const
+{
+  bool avail = !get_is_blocking_ignore_present_creature(creature);
+  
+  // Does the tile have race restrictions?  If so, does the creature meet them?
+  // Similarly for any creature ID restrictions?
+  if (avail && 
+      (((has_race_restrictions() && 
+       !is_race_allowed(creature->get_race_id()) && 
+        String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == false))
+    || (has_creature_id_restrictions() && !is_creature_id_allowed(creature->get_id()))))
+  {
+    avail = false;
+  }
+  
+  return avail;
+}
+
 // The conditions are broken up for easier debugging.
 //
 // A tile should only be blocking from the perspective of a particular
@@ -495,6 +514,11 @@ TileType Tile::get_decomposition_tile_type() const
   return tile_type;
 }
 
+float Tile::get_breakage_multiplier() const
+{
+  return 0.0f;
+}
+
 vector<pair<pair<int, int>, string>> Tile::get_decomposition_item_ids() const
 {
   vector<pair<pair<int, int>, string>> no_items;
@@ -622,6 +646,36 @@ bool Tile::is_race_allowed(const std::string& race_id) const
     auto r_it = std::find(race_ids.begin(), race_ids.end(), race_id);
 
     if (r_it == race_ids.end())
+    {
+      allowed = false;
+    }
+  }
+
+  return allowed;
+}
+
+bool Tile::has_creature_id_restrictions() const
+{
+  bool restr = false;
+
+  string cr_ids = get_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_CREATURE_IDS);
+  restr = (cr_ids.empty() == false);
+
+  return restr;
+}
+
+bool Tile::is_creature_id_allowed(const std::string& creature_id) const
+{
+  bool allowed = true;
+
+  string creature_ids = get_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_CREATURE_IDS);
+
+  if (!creature_ids.empty())
+  {
+    vector<string> cr_ids = String::create_string_vector_from_csv_string(creature_ids);
+    auto cr_it = std::find(cr_ids.begin(), cr_ids.end(), creature_id);
+
+    if (cr_it == cr_ids.end())
     {
       allowed = false;
     }

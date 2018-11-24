@@ -7,6 +7,7 @@
 #include "Lock.hpp"
 #include "Material.hpp"
 #include "ISerializable.hpp"
+#include "ShimmerColours.hpp"
 
 class Tile;
 class Creature;
@@ -46,6 +47,10 @@ class Feature : public ISerializable
     // Display information.
     virtual uchar get_symbol()  const = 0;
     virtual Colour get_colour() const; // by default, use the material's colour.
+
+    virtual void set_shimmer_colours(const ShimmerColours& new_shimmer_colours);
+    virtual ShimmerColours get_shimmer_colours() const;
+    virtual bool has_shimmer_colours() const;
     
     virtual void set_lock(LockPtr new_lock);
     virtual LockPtr get_lock();
@@ -93,6 +98,7 @@ class Feature : public ISerializable
   protected:
     virtual std::string get_description_sid() const = 0;
 
+    ShimmerColours shimmer_colours;
     LockPtr lock;
     MaterialType material;
     AlignmentRange alignment_range;

@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <vector>
 #include "ISerializable.hpp"
 
 // An individual quest, stored within the Quests object on the Game.
@@ -7,7 +8,7 @@ class Quest : public ISerializable
 {
   public:
     Quest();
-    Quest(const std::string& new_quest_id, const std::string& new_quest_title_sid, const std::string& new_questmaster_name_sid, const std::string& new_map_name_sid, const std::string& new_quest_description_sid);
+    Quest(const std::string& new_quest_id, const std::string& new_quest_title_sid, const std::vector<std::string>& new_qt_param_sids, const std::string& new_questmaster_name_sid, const std::string& new_map_name_sid, const std::string& new_quest_description_sid, const std::vector<std::string>& new_desc_param_sids);
     bool operator==(const Quest& q) const;
 
     void set_quest_id(const std::string& new_quest_id);
@@ -15,6 +16,9 @@ class Quest : public ISerializable
 
     void set_quest_title_sid(const std::string& new_quest_id);
     std::string get_quest_title_sid() const;
+
+    void set_quest_title_parameter_sids(const std::vector<std::string>& new_qt_param_sids);
+    std::vector<std::string> get_quest_title_parameter_sids() const;
 
     void set_questmaster_name_sid(const std::string& new_quest_id);
     std::string get_questmaster_name_sid() const;
@@ -25,15 +29,20 @@ class Quest : public ISerializable
     void set_quest_description_sid(const std::string& new_quest_id);
     std::string get_quest_description_sid() const;
 
+    void set_quest_description_parameter_sids(const std::vector<std::string>& new_params);
+    std::vector<std::string> get_quest_description_parameter_sids() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
   protected:
     std::string quest_id;
     std::string quest_title_sid;
+    std::vector<std::string> quest_title_parameter_sids;
     std::string questmaster_name_sid;
     std::string map_name_sid;
     std::string quest_description_sid;
+    std::vector<std::string> quest_description_parameter_sids;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

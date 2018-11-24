@@ -161,9 +161,6 @@
     <Filter Include="Header Files\engine\field_of_view\include">
       <UniqueIdentifier>{2646e2bb-0963-421e-bb25-737b0bfdb47d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\generators\gardens">
-      <UniqueIdentifier>{f68523fe-8a94-4291-b09b-41a53cf26a69}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\engine\generators\include">
       <UniqueIdentifier>{4e2165b8-2cbd-4b20-ac15-3f9c9979782a}</UniqueIdentifier>
     </Filter>
@@ -172,9 +169,6 @@
     </Filter>
     <Filter Include="Header Files\engine\generators\worship_sites">
       <UniqueIdentifier>{592b909b-3ec2-48a0-9651-d520c5088b6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\engine\generators\gardens\include">
-      <UniqueIdentifier>{4ed997b1-ac27-4cfb-91c2-6b85ad1a3dde}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\engine\generators\worship_sites\include">
       <UniqueIdentifier>{a329a2dc-632d-48b6-907f-9c028f77b47a}</UniqueIdentifier>
@@ -458,12 +452,6 @@
     </Filter>
     <Filter Include="Source Files\engine\generators">
       <UniqueIdentifier>{326e846e-f592-483a-93d7-f70a641a7228}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\generators\gardens">
-      <UniqueIdentifier>{750c67aa-6dab-4ccf-afe5-3252dc73b34a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\generators\gardens\source">
-      <UniqueIdentifier>{03931893-485a-4a79-a1da-d293bf0b7901}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\engine\generators\settlements">
       <UniqueIdentifier>{5b55171e-0eb3-461f-a968-54360a4ec83f}</UniqueIdentifier>
@@ -807,6 +795,18 @@
     </Filter>
     <Filter Include="Source Files\engine\maps\tiles\features\source\unit_tests">
       <UniqueIdentifier>{044021fa-3748-4224-aa53-cc038f29b52f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\settlements\sector">
+      <UniqueIdentifier>{e542d7df-b006-4f8a-9666-95544838fd0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\settlements\sector\include">
+      <UniqueIdentifier>{3c5776c6-8ed5-4885-95bc-47f3e8da52c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\settlements\sector">
+      <UniqueIdentifier>{d99cfd4c-08bc-440d-9712-a05c0f26925b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\settlements\sector\source">
+      <UniqueIdentifier>{898a1954-d58a-46f4-95bf-115b7397cf51}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1314,12 +1314,6 @@
     <ClInclude Include="engine\calculators\include\HPRegenerationCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
@@ -1339,9 +1333,6 @@
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\MountainClimbingCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\calculators\include\NullSpeedCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\PhysicalDamageCalculator.hpp">
@@ -1366,9 +1357,6 @@
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\SoakCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\calculators\include\SpeedCalculatorFactory.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp">
@@ -1638,27 +1626,6 @@
     <ClInclude Include="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp">
       <Filter>Header Files\engine\field_of_view\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\generators\gardens\include\GardenGenerator.hpp">
-      <Filter>Header Files\engine\generators\gardens\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\gardens\include\GardenGeneratorFactory.hpp">
-      <Filter>Header Files\engine\generators\gardens\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\gardens\include\GardenTypes.hpp">
-      <Filter>Header Files\engine\generators\gardens\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\gardens\include\RockGardenGenerator.hpp">
-      <Filter>Header Files\engine\generators\gardens\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\gardens\include\ShadeGardenGenerator.hpp">
-      <Filter>Header Files\engine\generators\gardens\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\gardens\include\VegetableGardenGenerator.hpp">
-      <Filter>Header Files\engine\generators\gardens\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\gardens\include\WildflowerGardenGenerator.hpp">
-      <Filter>Header Files\engine\generators\gardens\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\include\CavernGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
@@ -1775,30 +1742,6 @@
     </ClInclude>
     <ClInclude Include="engine\generators\worship_sites\include\WorshipSiteGenerator.hpp">
       <Filter>Header Files\engine\generators\worship_sites\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\BaseSettlementGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\ScatteredSettlementGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\SettlementGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\SettlementGeneratorFactory.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\SettlementRuinsGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\SettlementTypes.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\WalledSettlementGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\include\ClassManager.hpp">
       <Filter>Header Files\engine\include</Filter>
@@ -1939,9 +1882,6 @@
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLSkillsReaders.hpp">
-      <Filter>Header Files\engine\XML\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\XML\include\XMLStaffReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLTilesReader.hpp">
@@ -3843,12 +3783,6 @@
     <ClInclude Include="engine\magic\include\SpellTransfer.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\include\LogFiles.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
@@ -3941,12 +3875,6 @@
     </ClInclude>
     <ClInclude Include="engine\time\include\ShopsTimeObserver.hpp">
       <Filter>Header Files\engine\time\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\Building.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\decision_strategies\deity\include\HaltBreedingDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\include</Filter>
@@ -4106,6 +4034,189 @@
     </ClInclude>
     <ClInclude Include="engine\effects\include\IncreaseMaxHPAPEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\StartingLocation.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLStartingLocationsReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\StartingLocationSelectionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\magic\include\EffectProperties.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\BaseSettlementGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\Building.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\ScatteredSettlementGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SettlementGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SettlementGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SettlementGeneratorUtils.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SettlementRuinsGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SettlementTypes.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\WalledSettlementGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\CitySectorGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\CitySectorTypes.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\DefaultSectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\ParkSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\PlazaSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\PublicAreaSectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\SectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\SectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\SectorFeatureGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\ShopSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\TombSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\GardenGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\GardenTypes.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\RockGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\ShadeGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\VegetableGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\WildflowerGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Memberships.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\MembershipsDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\PhysicalAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\AttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\AttackSpeedCalculatorFactory.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\NullAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Table.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLTableReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\WellGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\LowIncomeResidentialSectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\GraveyardSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\HouseSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\OptionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\scripting\include\MoveScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\SlotMachine.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLSlotMachineReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\SlotMachineManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\BuildingConfigFactory.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\ReligiousCommercialSectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\ResidentialSectorFeatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\GardenSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\DeityUtils.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Sign.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLSignReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\ShrineSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLDecorativeStatueReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4565,9 +4676,6 @@
     <ClCompile Include="engine\calculators\source\HPRegenerationCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\IPhysicalAttackSpeedCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
@@ -4587,9 +4695,6 @@
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\MountainClimbingCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\NullSpeedCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\PhysicalDamageCalculator.cpp">
@@ -4614,9 +4719,6 @@
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\SoakCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\SpeedCalculatorFactory.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp">
@@ -4901,24 +5003,6 @@
     <ClCompile Include="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp">
       <Filter>Source Files\engine\field_of_view\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\generators\gardens\source\GardenGenerator.cpp">
-      <Filter>Source Files\engine\generators\gardens\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\gardens\source\GardenGeneratorFactory.cpp">
-      <Filter>Source Files\engine\generators\gardens\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\gardens\source\RockGardenGenerator.cpp">
-      <Filter>Source Files\engine\generators\gardens\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\gardens\source\ShadeGardenGenerator.cpp">
-      <Filter>Source Files\engine\generators\gardens\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\gardens\source\VegetableGardenGenerator.cpp">
-      <Filter>Source Files\engine\generators\gardens\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\gardens\source\WildflowerGardenGenerator.cpp">
-      <Filter>Source Files\engine\generators\gardens\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\generators\worship_sites\source\CathedralGenerator.cpp">
       <Filter>Source Files\engine\generators\worship_sites\source</Filter>
     </ClCompile>
@@ -5032,27 +5116,6 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\WorldGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\HamletGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\BaseSettlementGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\ScatteredSettlementGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\SettlementGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\SettlementGeneratorFactory.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\SettlementRuinsGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\WalledSettlementGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\items\source\InitialItemEquipper.cpp">
       <Filter>Source Files\engine\items\source</Filter>
@@ -5277,9 +5340,6 @@
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLSkillsReaders.cpp">
-      <Filter>Source Files\engine\XML\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\XML\source\XMLStaffReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLTilesReader.cpp">
@@ -7787,12 +7847,6 @@
     <ClCompile Include="world\source\unit_tests\Date_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\source\LogFiles.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
@@ -7928,14 +7982,8 @@
     <ClCompile Include="engine\time\source\unit_tests\ShopsTimeObserver_test.cpp">
       <Filter>Source Files\engine\time\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\Building.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\unit_tests\Building_test.cpp">
       <Filter>Source Files\engine\generators\settlements\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\ShopGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\items\source\unit_tests\ItemGenerationManager_test.cpp">
       <Filter>Source Files\engine\items\source\unit_tests</Filter>
@@ -8164,6 +8212,201 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\IncreaseMaxHPAPEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\StartingLocation.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\StartingLocation_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\StartingLocationSelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\EffectProperties.cpp">
+      <Filter>Source Files\world\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\BaseSettlementGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\Building.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\HamletGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\ScatteredSettlementGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\SettlementGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\SettlementGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\SettlementGeneratorUtils.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\SettlementRuinsGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\ShopGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\WalledSettlementGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\CitySectorGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\DefaultSectorFeatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\ParkSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\PlazaSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\PublicAreaSectorFeatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\SectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\SectorFeatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\SectorFeatureGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\ShopSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\TombSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\GardenGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\RockGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\ShadeGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\VegetableGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\WildflowerGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Memberships.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Memberships_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\MembershipsDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\PhysicalAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\PrimaryPhysicalAttackSpeedCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\AttackSpeedCalculatorFactory.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\NullAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\AttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\RangedAttackSpeedCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Table.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Table_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLTableReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\TableManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\WellGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\LowIncomeResidentialSectorFeatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\GraveyardSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\HouseSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\OptionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\MoveScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\SlotMachine.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\SlotMachine_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLSlotMachineReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\SlotMachineManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\BuildingConfigFactory.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\ReligiousCommercialSectorFeatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\ResidentialSectorFeatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\GardenSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\DeityUtils.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Sign.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Sign_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLSignReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\ShrineSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLDecorativeStatueReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -15,6 +15,7 @@ class MapRegistry : public ISerializable
     bool set_map(const std::string& map_id, const MapPtr& map);
     MapPtr get_map(const std::string& map_id) const;
     bool remove_map(const std::string& map_id);
+    void clear_maps();
 
     MapRegistryMap& get_maps_ref();
 

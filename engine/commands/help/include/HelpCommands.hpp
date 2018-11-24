@@ -30,3 +30,9 @@ class StrategyBasicsCommand : public Command
   public:
     StrategyBasicsCommand(int key);
 };
+
+class CasinoGamesCommand : public Command
+{
+  public:
+    CasinoGamesCommand(int key);
+};

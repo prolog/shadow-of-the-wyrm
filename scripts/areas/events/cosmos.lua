@@ -31,7 +31,7 @@ function create_rift(map_id, rift_y, rift_x)
   for ry = rift_y - 1, rift_y + 1 do
     for rx = rift_x - 1, rift_x + 1 do
       add_basic_feature_to_map("_rift", ry, rx, map_id)
-      map_set_additional_property(map_id, ry, rx, "TILE_PROPERTY_ALLOWED_RACES", "_divine")
+      map_set_tile_property(map_id, ry, rx, "TILE_PROPERTY_ALLOWED_RACES", "_divine")
     end
   end
 end

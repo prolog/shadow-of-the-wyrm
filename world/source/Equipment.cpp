@@ -34,7 +34,8 @@ bool Equipment::operator==(const Equipment& e) const
   return result;
 }
 
-// Set an item, but only if it's not null.  There are no checks done here to// see if the slot is correct - that's a higher-level check.
+// Set an item, but only if it's not null.  There are no checks done here to
+// see if the slot is correct - that's a higher-level check.
 bool Equipment::set_item(ItemPtr item, const EquipmentWornLocation worn_location)
 {
   bool item_set = false;

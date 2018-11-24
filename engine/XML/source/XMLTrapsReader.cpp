@@ -40,6 +40,11 @@ void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(trap_node, "Damage");
     parse_damage(dam, damage_node);
 
+    XMLNode properties_node = XMLUtils::get_next_element_by_local_name(trap_node, "Properties");
+    map<string, string> prop_map;
+    parse_properties(prop_map, properties_node);
+    trap->set_additional_properties(prop_map);
+
     int uses = XMLUtils::get_child_node_int_value(trap_node, "Uses", 1);
 
     trap->set_id(trap_id);

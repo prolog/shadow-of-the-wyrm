@@ -14,6 +14,11 @@ bool NullInventory::operator==(const IInventory& inv) const
   return result;
 }
 
+bool NullInventory::get_allows_items() const
+{
+  return false;
+}
+
 void NullInventory::mark_for_restack()
 {
 }

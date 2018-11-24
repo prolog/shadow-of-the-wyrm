@@ -51,6 +51,9 @@ class Race
     void set_has_voice(const bool new_has_voice);
     bool get_has_voice() const;
 
+    void set_has_hair(const bool new_has_hair);
+    bool get_has_hair() const;
+
     void set_drops(const std::map<std::string, DropParameters>& new_drops);
     std::map<std::string, DropParameters> get_drops() const;
 
@@ -160,6 +163,7 @@ class Race
     bool splits;
     bool has_pockets;
     bool has_voice;
+    bool has_hair;
     std::map<std::string, DropParameters> drops;
     bool has_random_villages;
     SettlementType settlement_type;

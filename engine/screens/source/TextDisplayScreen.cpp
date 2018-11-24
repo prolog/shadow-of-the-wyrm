@@ -1,4 +1,3 @@
-#include <boost/algorithm/string.hpp>
 #include "global_prototypes.hpp"
 #include "PromptTextKeys.hpp"
 #include "StringTable.hpp"
@@ -26,25 +25,10 @@ void TextDisplayScreen::initialize(const string& title_sid, const bool preserve_
   vector<ScreenComponentPtr> text_screen;
   int cnt = 0;
 
-  // Set the text components.
-  for (const TextDisplayPair& line_pair : text)
+  if (add_text(text_screen, text, preserve_formatting, cnt))
   {
-    Colour colour = line_pair.first;
-    string text = line_pair.second;
-
-    if (preserve_formatting == false)
-    {
-      trim_left(text);
-      trim_right(text);
-    }
-
-    TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour);
-    add_component(text_screen, current_line, cnt);
-
-    cnt++;
+    add_page(text_screen);
   }
-
-  add_page(text_screen);
 
   // Set the prompt
   PromptPtr any_key_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);

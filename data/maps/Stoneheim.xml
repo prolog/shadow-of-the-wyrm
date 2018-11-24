@@ -156,42 +156,42 @@
 		</Creatures>
 		<Items>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>5</Row>
 					<Col>6</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>5</Row>
 					<Col>16</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>4</Row>
 					<Col>19</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>12</Row>
 					<Col>5</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>12</Row>
 					<Col>14</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>clay_pot</ID>
+				<ID>_clay_pot</ID>
 				<Coord>
 					<Row>4</Row>
 					<Col>56</Col>
@@ -210,6 +210,13 @@
 		</Exit>
 	</Exits>
 	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>12</Row>
+				<Col>16</Col>
+			</Coord>
+			<Forge/>
+		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
 				<Row>12</Row>

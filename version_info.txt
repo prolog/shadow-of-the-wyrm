@@ -1,4 +1,277 @@
-Shadow of the Wyrnm v0.7.3 "de Murcia"
+Shadow of the Wyrm v0.7.4 "Dalza"
+- Version declared January 20, 2018. Version finalized November 23, 2018.
+
+- There are now two starting locations: on Little Island, as before; and
+  on the Isle of Carcassia.
+
+- On the south-eastern tip of the Isle of Carcassia is the great city of
+  Carcassia.  Carcassia is home to a great fortress, and four city
+  sectors:
+
+  1. The public sector.
+
+  - The public sector contains a sealed room with no obvious way in, the 
+    tower of high sorcery, the guild of thieves, as well as a number of 
+    potential public areas such as plazas, parks, and shops.  The public
+    sector is also, it's said, built above the ruins of a much older
+    settlement, one which has long since sunk deep into the earth.
+
+  - The guild of thieves is said to be difficult to enter, difficult to
+    leave.  It's also said that the ground there is cursed, and that at
+    night, those that dwell there hear strange scratches sounds past the
+    basement walls.
+
+  - The Floundering Catfish is a source of rumour and gossip, as well as
+    a few quests.
+
+  - In the centre of the sector is the great Tower of High Sorcery, where
+    those with magical aptitude from across the world come to study the
+    arcane school of wizardry.
+
+  - The tower extends high into the air.  It's said that a number of great
+    creatures make their roost platforms anchored in the air by old
+    magics.  The students study at the base of the tower, while the 
+    masters make their homes above.
+
+  2. Old Town
+
+  - The oldest part of Carcassia.  The nobility left this area years ago,
+    and it's grown a bit ramshackle and untended.  There are few roads. 
+    
+    - The old gambling house still stands, recently renovated.  Its
+      winnings are locked away in a vault, and closely guarded.  There
+      are tables for dice and card games, as well as a number of slot
+      machines, with varying payouts and probabilities.
+      
+  - Besides some old houses and a graveyard, there is an ancient sewer
+    from an earlier empire by the east gate.
+
+  3. New Town
+
+  - The New Town is home to the second-in-command of the Carcassian
+    Empire, the praetor Dantus, uncle of the Emperor.  He maintains
+    a palatial residence in the western part of the sector.
+
+  4. Temple District
+
+  - Home to an interfaith temple, the Fellowship of the Nine.  Considered
+    by some to be an unwelcome front for the leadership of the Empire, it
+    is ostensibly an organization dedicated to the promotion of religion
+    in everyday life.  Membership in the Fellowship causes one's piety
+    to increase faster and decrease less quickly.
+
+  - In a small hut lives an old woman considered to be the holiest person
+    in the world: the blind oracle.  Part of an unending line of oracles
+    chosen by the Nine to be their direct speaker on earth, she can both
+    speak with and as them, her voice shifting from her own creaky tones
+    to the sweet music of The Lady, or Urgoth's horrifying roar.
+
+  The fortress of Carcassia is the home of the Emperor Titus.  
+  
+  - Surrounded by his Emperor's Guard, he rules from within his pillared 
+  court.  It stands on the remains of the old Carcassian senate, long 
+  since neutered by the absolute rule of the emperors.
+
+  - Beside it is his altar to Celeste, the favoured deity of the 
+  Carcassian people. 
+
+  - Further into the palace, there are a few small, official shops; and
+  a fountain where the nobleman Questare hands out quests to aspiring
+  adventurers.
+
+  - The eastern sector contains the fighting pits and a vault protected
+  by a moat full of electric eels.  Leading up from the fortress, the
+  vaults are protected by strange, lifeless creatures loyal to the
+  empire.
+
+- The Isle of Carcassia was inhabited long before the Carcassian Empire
+  took hold, and it has a number of other features, including a dungeon
+  on the north-east penninsula.
+
+- Off the northern coast of the Isle is a small, rocky islet, known to
+  have been the home of an ascetic for a number of years.
+
+- The "no dig" flag can now be set at the tile level, allowing a general
+  map that is diggable, but sections that are not.
+
+- There is now a chance to find coal when digging through rock.
+
+- Summoning is now less dangerous: it's the average of the map's danger
+  level and the triggering creature's current level.
+
+- The Lua API functions map_set_additional_property and 
+  map_set_tile_property did exactly the same thing.  Made the former
+  set map-level properties, with the former handling setting tile
+  properties, and renamed the former to "map_set_property".
+
+- Script errors are now properly logged to disk as well as the UI.
+
+- Hiding can now be cancelled by using Hiding again while hidden (Karagy).
+
+- Unpaid items in the shop can now be "paid for" - no money changes hands,
+  and the shopkeeper sees the items as yours (Karagy).
+
+- Unimplemented general skills are now noted (Karagy).
+
+- Gnomish barkeepers are now just called bartenders.
+
+- There is now an option (that default to on) to do checkpoint saves
+  whenever a map is loaded.  This ensures that in the event of a crash,
+  there is still a reasonably-recent savefile available (Dallas Herrin,
+  Alan Charlesworth).
+
+- New poem fragment for the title screen (Pope's "The Rape of the Lock").
+
+- Fire pillars now "shimmer", hooking into the shimmer colour code that
+  was added for Telari.
+
+- Guilds/associations are now possible, and will slowly be added to the
+  game.  Memberships can be seen in the character display/dump, and
+  membership in some organizations will exclude membership in others.
+
+- Ranged combat is now disallowed when overburdened (Troubler).
+
+- Huge rocks are much heavier.
+
+- The various races are now specified as having hair (or not), so races
+  like human, divine, demons all have hair.  Snakelings, constructs,
+  insects, etc., do not (Troubler).
+
+- Sex selection is now skipped, with the player's sex officially tracked
+  as "not specified".  Sex has never had any real impact on the game for 
+  the player, who is always "you".  There is a setting in swyrm.ini 
+  controls pre-selecting your sex.  This can be unset to bring back the 
+  sex selection screen.  Characters created through the "Random character"
+  option at the main menu will continue to get their sex specified and
+  selected randomly.
+
+- Digging now considers properties of the tile when considering whether
+  or not the digging item is broken.  Items now only break when digging
+  through solid rock.
+
+- Iron and steel ingots now weigh the same.
+
+- To model their general inappropriateness as weapons, exotic weapons
+  now have a speed multiplier that is modified by skill in melee/ranged
+  exotics (Troubler).
+
+- Thengil in Stoneheim now appropriately has a forge (Troubler).
+
+- You can now descend into wells.
+
+- Pathfinding has been updated to favour cardinal directions when
+  constructing paths.  This prevents some "weird paths" that enemies will
+  take to you, that are actually equally optimal, given that diagonal
+  moves cost the same as cardinal (Karagy).
+
+- Randomly generated buildings now look like people actually live in them
+  and have features such as beds and tables.  They also have the chance
+  to have items, such as food, clay pots, inkpots, magici shards...
+
+- New feature, signs.
+
+- New conduct, artifactless.
+
+- Piety regeneration bonuses now have a per-creature component, rather
+  than being based entirely on the creature's class.
+
+- When dungeons are repopulated, there is now a check to ensure that
+  creatures are not generated close to the player (Troubler).
+
+- Sages can now also start with a spellbook of Electric Arc.
+
+- More possibilities for randomly generated names.
+
+- Stanzas for "Tel and Floridel".
+
+- New creatures: Glich, Carcassian guard, urchin, vendor, Guildmaster
+  Caro, Tela, drunk, Serat, Old Tomer, Ffleur, gardening spellstudent,
+  evocations student, summonings student, enchantments student, runic
+  student, Golgoa, Lorelei, Okhoa, Scheldt, shimmering cloud, Lish,
+  gambler, pov dealer, blackjack dealer, racemaster, snapping turtle,
+  Asher, Akhra, Axander, Wart, presence, the blind oracle, Praetor's
+  footman, coalman, Praetor's scullerymaid, Praetor's cook, Praetor's
+  secretary, Praetor Dantus, Emperor Titus, the Emperor's guard,
+  Questare, senator, Lycaon, magici merchant, herbalist, Scamander,
+  Carcassian recruiter, Pitmistress Ghara, commoner, noble.
+
+- New items: salted nuts, skewer of mystery meat, wizard staff, 
+  linothorax, Calara's cloak, Calara's flaming whip, piece of coal.
+
+- New spells: electric arc (Cantrips).
+
+- New features: table, slot machine.
+
+- New artifacts: skeleton key, Amulet of the Carcassian Emperor, famed
+  fighting rod "Qaali".
+
+- New traps: teleport.
+
+- Bug fixes:
+
+  - The code to make copies of tiles for view maps was causing sentinel
+    creatures' tiles to be marked as unviewed.
+
+  - When confirming whether to move to a dangerous tile, an extra "[y/n]"
+    could be added.
+
+  - Teleporting/blinking wasn't disabling automatic movement afterward.
+
+  - In-game keybindings was still referencing "Look" instead of "Examine".
+
+  - All NPCs were erroneously defined as flying.
+
+  - Thrown items weren't stacking properly due to a bug in how the item's
+    worn location was processed (Alan Charlesworth).
+
+  - Automovement wasn't being stopped by drowning (Karagy).
+
+  - When checking other creatures' FOV maps for hiding checks, stale
+    maps were causing the game to consider the hiding creature in view,
+    even if it had moved out of range the turn before (Karagy).
+
+  - Combat skill checks were succeeding even when 0 damage was dealt
+    (Troubler).
+
+  - Digging within the current tile wasn't checking for breakage.
+
+  - The spell listing code would crash when given a spell ID that didn't
+    have a corresponding entry in the game configuration.
+
+  - Traps were being improperly checked and having usages decremented
+    when the player declined to move into a new tile (Troubler).
+ 
+  - Great axes weren't marked as two-handed (Troubler).
+
+  - Various bestiary typos (Troubler).
+
+  - The bestiary entry for Drakheen mentions a breath attack, but this
+    wasn't defined in the configuration (Troubler).
+  
+  - Automove wasn't working correctly on the first attempt after
+    teleporting.
+  
+  - The Lua API function get_creature wasn't checking the current map
+    pointer before using it, which could cause a crash when certain other
+    functions were invoked before the game had fully started.
+
+  - You can no longer swap places into a race-restricted tile if you
+    don't meet the requirements.
+
+  - Fixed a pathfinding crash bug when trying to pathfind to the same
+    tile.
+ 
+  - Pickup code was broadcasting further than it should - you could get
+    notifications for NPCs picking up items behind walls.
+
+  - Maps weren't being loaded properly when timewalking (Troubler).
+  
+  - When items were being generated, they could be null, and this wasn't
+    checked properly.
+
+  - Fixed a pthread linker issue for the Arch builds (Larzid).
+
+Shadow of the Wyrm v0.7.3 "de Murcia"
 - Version declared December 23, 2017.  Version finalized January 20, 2018.
 
 - Implemented the Hiding skill.  This skill requires selection via the

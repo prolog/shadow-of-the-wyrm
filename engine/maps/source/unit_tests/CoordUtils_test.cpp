@@ -559,3 +559,100 @@ TEST(SW_Engine_Maps_CoordUtils, get_square_coordinates_ordering)
   EXPECT_EQ(expect, CoordUtils::get_square_coordinates(centre.first, centre.second, 1, RotationDirection::ROTATION_DIRECTION_CLOCKWISE));
   EXPECT_EQ(expect_cc, CoordUtils::get_square_coordinates(centre.first, centre.second, 1, RotationDirection::ROTATION_DIRECTION_COUNTERCLOCKWISE));
 }
+
+TEST(SW_Engine_Maps_CoordUtils, get_height)
+{
+  Coordinate c1(0,0);
+  Coordinate c2(3,3);
+
+  EXPECT_EQ(3, CoordUtils::get_height(c1, c2));
+
+  c1 = {3,3};
+  c2 = {0,0};
+
+  EXPECT_EQ(3, CoordUtils::get_height(c1, c2));
+
+  c1 = {1,4};
+  c2 = {17,5};
+
+  EXPECT_EQ(16, CoordUtils::get_height(c1, c2));
+}
+
+TEST(SW_Engine_Maps_CoordUtils, get_width)
+{
+  Coordinate c1 = {0,0};
+  Coordinate c2 = {5,5};
+
+  EXPECT_EQ(5, CoordUtils::get_width(c1, c2));
+
+  c1  = {5,5};
+  c2 = {0,0};
+
+  EXPECT_EQ(5, CoordUtils::get_width(c1, c2));
+
+  c1 = {4,1};
+  c2 = {5,17};
+
+  EXPECT_EQ(16, CoordUtils::get_width(c1, c2));
+}
+
+TEST(SW_Engine_Maps_CoordUtils, is_in_perimeter)
+{
+  Coordinate c1(1, 1);
+  Coordinate c2(3, 3);
+
+  vector<Coordinate> exp_in = {{1,1},{1,2},{1,3},{2,1},{2,3},{3,1},{3,2},{3,3}};
+  vector<Coordinate> exp_not_in = {{2,2}};
+
+  for (const Coordinate& c : exp_in)
+  {
+    EXPECT_TRUE(CoordUtils::is_in_perimeter(c, c1, c2));
+  }
+
+  for (const Coordinate& c : exp_not_in)
+  {
+    EXPECT_FALSE(CoordUtils::is_in_perimeter(c, c1, c2));
+  }
+}
+
+TEST(SW_Engine_Maps_CoordUtils, is_in_range)
+{
+  Dimensions dim(20, 20);
+
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(0,0), make_pair(19, 19)));
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(0, 0), make_pair(10, 7)));
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(0, 0), make_pair(0, 0)));
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(3, 3), make_pair(19, 19)));
+  EXPECT_TRUE(CoordUtils::is_in_range(dim, make_pair(5, 12), make_pair(17, 17)));
+
+  EXPECT_FALSE(CoordUtils::is_in_range(dim, make_pair(-1, 0), make_pair(19, 19)));
+  EXPECT_FALSE(CoordUtils::is_in_range(dim, make_pair(0, 0), make_pair(20, 20)));
+}
+
+TEST(SW_Engine_Maps_CoordUtils, get_corner_coordinates)
+{
+  Coordinate top_left({0,0});
+  Coordinate bottom_right({3,3});
+
+  vector<Coordinate> corners = CoordUtils::get_corner_coordinates(top_left, bottom_right);
+  vector<Coordinate>::iterator c_it = std::find(corners.begin(), corners.end(), make_pair(0,0));
+  
+  EXPECT_TRUE(c_it != corners.end());
+
+  c_it = std::find(corners.begin(), corners.end(), make_pair(3, 0));
+  
+  EXPECT_TRUE(c_it != corners.end());
+
+  c_it = std::find(corners.begin(), corners.end(), make_pair(0, 3));
+
+  EXPECT_TRUE(c_it != corners.end());
+
+  c_it = std::find(corners.begin(), corners.end(), make_pair(3, 3));
+
+  EXPECT_TRUE(c_it != corners.end());
+
+  c_it = std::find(corners.begin(), corners.end(), make_pair(2, 2));
+
+  EXPECT_FALSE(c_it != corners.end());
+}
+

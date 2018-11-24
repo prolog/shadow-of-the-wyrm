@@ -152,7 +152,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::SAVE_GAME)
       {
-        ac = game.actions.save(creature);
+        ac = game.actions.save(creature, true);
       }
       else if (command_name == CommandKeys::EAT)
       {

@@ -19,6 +19,7 @@
 #include "ScriptEngine.hpp"
 #include "Settings.hpp"
 #include "Spell.hpp"
+#include "StartingLocation.hpp"
 #include "Trap.hpp"
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
@@ -88,9 +89,12 @@ class Game : public ISerializable
     void set_calendar_days(const std::map<int, CalendarDay>& new_calendar_days);
     std::map<int, CalendarDay>& get_calendar_days_ref();
 
+    void set_starting_locations(const StartingLocationMap& new_starting_locations);
+    StartingLocationMap get_starting_locations() const;
+
     CreaturePtr get_current_player() const;
 
-    void create_new_world(CreaturePtr creature);
+    void create_new_world(CreaturePtr creature, const StartingLocation& sl);
     void go(); // main game loop
     void stop_playing(CreaturePtr creature, const bool show_quit_actions, const bool delete_savefile); // end the game
     bool should_keep_playing() const; // Check to see if the "game over" flag's been set.
@@ -98,6 +102,7 @@ class Game : public ISerializable
     bool should_check_scores() const;
 
     // Update the physical display
+    void update_display();
     void update_display(CreaturePtr creature, MapPtr map, MapPtr fov_sub_map, const bool reloaded_game);
 
     // Additional operations will eventually be needed to do many
@@ -130,6 +135,8 @@ class Game : public ISerializable
 
     void set_current_loaded_savefile(const std::string& current_loaded_savefile);
     std::string get_current_loaded_savefile() const;
+
+    virtual void run_map_scripts();
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
@@ -200,6 +207,7 @@ class Game : public ISerializable
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
     std::vector<TrapPtr> trap_info;
     std::map<int, CalendarDay> calendar_days;
+    StartingLocationMap starting_locations;
 
     // The current list of game worlds.  For a long, long time, this should always be size=1.
     std::vector<WorldPtr> worlds;

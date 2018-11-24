@@ -220,36 +220,39 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationMa
 
     generated_item = ItemManager::create_item(item_id);
 
-    // Generate stacks appropriately.
-    ItemType type = generated_item->get_type();
-
-    if (type == ItemType::ITEM_TYPE_CURRENCY)
+    if (generated_item != nullptr)
     {
-      generated_item->set_quantity(RNG::range(3, 20));
-    }
-    else if (type == ItemType::ITEM_TYPE_AMMUNITION)
-    {
-      pair<int, int> stack_size = ac.calculate_stack_size(generated_item);
-      generated_item->set_quantity(RNG::range(stack_size.first, stack_size.second));
-    }
+      // Generate stacks appropriately.
+      ItemType type = generated_item->get_type();
 
-    if (enchant_points > 0)
-    {
-      bool enchant_all_at_once = RNG::percent_chance(50);
-      ItemEnchantmentCalculator iec;
-      int pct_chance_brand = 0;
-
-      if (enchant_all_at_once)
+      if (type == ItemType::ITEM_TYPE_CURRENCY)
       {
-        pct_chance_brand = iec.calculate_pct_chance_brand(1.0, generated_item);
-        generated_item->enchant(pct_chance_brand, enchant_points);
+        generated_item->set_quantity(RNG::range(3, 20));
       }
-      else
+      else if (type == ItemType::ITEM_TYPE_AMMUNITION)
       {
-        for (int i = 0; i < enchant_points; i++)
+        pair<int, int> stack_size = ac.calculate_stack_size(generated_item);
+        generated_item->set_quantity(RNG::range(stack_size.first, stack_size.second));
+      }
+
+      if (enchant_points > 0)
+      {
+        bool enchant_all_at_once = RNG::percent_chance(50);
+        ItemEnchantmentCalculator iec;
+        int pct_chance_brand = 0;
+
+        if (enchant_all_at_once)
         {
           pct_chance_brand = iec.calculate_pct_chance_brand(1.0, generated_item);
-          generated_item->enchant(pct_chance_brand, 1);
+          generated_item->enchant(pct_chance_brand, enchant_points);
+        }
+        else
+        {
+          for (int i = 0; i < enchant_points; i++)
+          {
+            pct_chance_brand = iec.calculate_pct_chance_brand(1.0, generated_item);
+            generated_item->enchant(pct_chance_brand, 1);
+          }
         }
       }
     }

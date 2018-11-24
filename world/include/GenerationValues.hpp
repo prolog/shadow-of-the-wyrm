@@ -23,6 +23,8 @@ class GenerationValues : public ISerializable
     int get_maximum() const;
     bool is_maximum_reached() const;
 
+    bool is_unique() const;
+
     void set_danger_level(const int new_danger_level);
     int get_danger_level() const;
     

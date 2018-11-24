@@ -12,6 +12,9 @@ class GeneratorUtils
     // Generates a building: walls are TileType::TILE_TYPE_ROCK, floor is TileType::TILE_TYPE_DUNGEON.
     static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width);
     
+    // Generate a series of overlapping squares on a map to simulate a dug passage.
+    static std::vector<std::pair<Coordinate, Coordinate>> generate_rectangles(const MapPtr map, const int start_row, const int start_col, const int end_row, const int end_col, const int num_rectangles, const TileType rect_fill_type);
+
     // Generates a TileType::TILE_TYPE_DUNGEON tile at the given coordinates, and places a Door feature on top of it.
     static void generate_door(const MapPtr map, const int row, const int col);
     
@@ -41,6 +44,9 @@ class GeneratorUtils
     // Generates a bazaar somewhere on the map assuming the bazaar property
     // is not empty.
     static void generate_bazaar_if_necessary(const MapPtr map, const std::string& bazaar_property);
+
+    // Fill a subset of the map with a certain tile type.
+    static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
 
   protected:
     static bool position_in_range(const int min, const int max, const int actual);

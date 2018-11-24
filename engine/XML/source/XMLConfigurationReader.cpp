@@ -14,7 +14,13 @@ XMLConfigurationReader::XMLConfigurationReader(const std::string& xml_filename)
 : filename(xml_filename)
 {
   XML::initialize();
-  initialize_parser(xml_filename);
+
+  // Generally, this will always be provided, but to prevent unnecessary loading
+  // in MapTester, it may also be empty.
+  if (!xml_filename.empty())
+  {
+    initialize_parser(xml_filename);
+  }
 }
 
 XMLConfigurationReader::~XMLConfigurationReader()
@@ -40,6 +46,12 @@ map<int, CalendarDay> XMLConfigurationReader::get_calendar_days()
 {
   XMLNode calendar_node = XMLUtils::get_next_element_by_local_name(root, "Calendar");
   return calendar_reader.get_calendar_days(calendar_node);
+}
+
+StartingLocationMap XMLConfigurationReader::get_starting_locations()
+{
+  XMLNode starting_locations_node = XMLUtils::get_next_element_by_local_name(root, "StartingLocations");
+  return sl_reader.get_starting_locations(starting_locations_node);
 }
 
 pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creatures()

@@ -10,12 +10,12 @@ CreaturePtr create_conductless_creature();
 // the various score components.
 CreaturePtr create_conductless_creature() 
 {
-  static_assert(ConductType::CONDUCT_SIZE == ConductType(9), "Unexpected CONDUCT_SIZE");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(10), "Unexpected CONDUCT_SIZE");
 
   CreaturePtr cp = std::make_shared<Creature>();
   Conducts& cond = cp->get_conducts_ref();
 
-  vector<ConductType> conducts = { ConductType::CONDUCT_TYPE_FOODLESS, ConductType::CONDUCT_TYPE_VEGETARIAN, ConductType::CONDUCT_TYPE_CORPSELESS, ConductType::CONDUCT_TYPE_AGNOSTIC, ConductType::CONDUCT_TYPE_ILLITERATE, ConductType::CONDUCT_TYPE_WEAPONLESS, ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING, ConductType::CONDUCT_TYPE_QUESTLESS, ConductType::CONDUCT_TYPE_SILENT };
+  vector<ConductType> conducts = { ConductType::CONDUCT_TYPE_FOODLESS, ConductType::CONDUCT_TYPE_VEGETARIAN, ConductType::CONDUCT_TYPE_CORPSELESS, ConductType::CONDUCT_TYPE_AGNOSTIC, ConductType::CONDUCT_TYPE_ILLITERATE, ConductType::CONDUCT_TYPE_WEAPONLESS, ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING, ConductType::CONDUCT_TYPE_QUESTLESS, ConductType::CONDUCT_TYPE_SILENT, ConductType::CONDUCT_TYPE_ARTIFACTLESS };
   for (const ConductType c : conducts)
   {
     cond.break_conduct(c);
@@ -177,13 +177,43 @@ TEST(SW_Engine_Calculators_ScoreCalculator, total_score)
   inv->add(w1);
   cp->get_equipment().set_item(w2, EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 
+  Membership mem;
+
+  cp->get_memberships_ref().add_membership("1", mem);
+  cp->get_memberships_ref().add_membership("2", mem);
+
   // end boss
   Mortuary& m = cp->get_mortuary_ref();
   m.add_creature_kill("end_boss");
 
   ScoreCalculator sc;
 
-  int expected_score = (static_cast<int>(ConductType::CONDUCT_SIZE) * 10 * 100) + ScoreConstants::END_BOSS_BONUS + 58000 + 12345 + 1000 + 1000;
+  int expected_score = (static_cast<int>(ConductType::CONDUCT_SIZE) * 10 * 100) 
+                     + ScoreConstants::END_BOSS_BONUS 
+                     + 58000 
+                     + 12345 
+                     + 1000 
+                     + 1000
+                     + 5000;
 
   EXPECT_EQ(expected_score, sc.calculate_score(cp));
 }
+
+TEST(SW_Engine_Calculators_ScoreCalculator, memberships)
+{
+  CreaturePtr cp = make_shared<Creature>();
+  Statistic level(16);
+  cp->set_level(level);
+  Membership m;
+
+  cp->get_memberships_ref().add_membership("1", m);
+  cp->get_memberships_ref().add_membership("2", m);
+  cp->get_memberships_ref().add_membership("3", m);
+  cp->get_memberships_ref().add_membership("4", m);
+
+  ScoreCalculator sc;
+
+  EXPECT_EQ(17600 /* level, conducts */ + (16 * 250 * 4)
+          , sc.calculate_score(cp));
+}
+

@@ -465,6 +465,40 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
       return movement_command;
     }
 
+    string search_pct = get_property(DecisionStrategyProperties::DECISION_STRATEGY_SEARCH_PCT);
+
+    if (!search_pct.empty())
+    {
+      if (RNG::percent_chance(String::to_int(search_pct)))
+      {
+        movement_command = std::make_shared<SearchCommand>(-1);
+        return movement_command;
+      }
+    }
+
+    // If the creature has automove coordinates, favour those.
+    Coordinate am_c = get_automove_coords();
+
+    if (am_c != CoordUtils::end())
+    {
+      Coordinate c_this = view_map->get_location(this_creature_id);
+      TilePtr this_tile = view_map->at(c_this);
+
+      if (this_tile != nullptr)
+      {
+        CreaturePtr this_cr = this_tile->get_creature();
+
+        SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SearchType::SEARCH_TYPE_ASTAR, this_cr);
+        Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, am_c));
+
+        if (direction != Direction::DIRECTION_NULL)
+        {
+          CommandPtr command = std::make_shared<MovementCommand>(direction, -1);
+          return command;
+        }
+      }
+    }
+
     Dimensions current_dimensions = current_map->size();
 
     int this_row = this_creature_coords.first;

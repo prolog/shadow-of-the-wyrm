@@ -1,3 +1,4 @@
+#include <boost/algorithm/string.hpp>
 #include "Conversion.hpp"
 #include "Screen.hpp"
 #include "ScreenCommandFactory.hpp"
@@ -5,6 +6,7 @@
 #include "ScreenKeyboardCommandMap.hpp"
 
 using namespace std;
+using namespace boost::algorithm;
 
 // Any base initialization for the Screen
 Screen::Screen(DisplayPtr new_display)
@@ -178,6 +180,34 @@ bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenCom
 
   current_screen.push_back(component);
   return result;
+}
+
+bool Screen::add_text(vector<ScreenComponentPtr>& text_screen, const vector<TextDisplayPair>& text, const bool preserve_formatting, int& cnt)
+{
+  // Set the text components.
+  for (const TextDisplayPair& line_pair : text)
+  {
+    Colour colour = line_pair.first;
+    string text = line_pair.second;
+
+    if (preserve_formatting == false)
+    {
+      trim_left(text);
+      trim_right(text);
+    }
+
+    TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour);
+    add_component(text_screen, current_line, cnt);
+
+    cnt++;
+  }
+
+  return true;
+}
+
+bool Screen::can_add_component(const int cnt) const
+{
+  return (cnt < lines_displayable_area);
 }
 
 void Screen::add_page(const vector<ScreenComponentPtr>& new_page)

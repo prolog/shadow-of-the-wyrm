@@ -141,7 +141,7 @@ class ActionManager : public ISerializable
     ActionCost experience(CreaturePtr creature);
 
     // Saves the game.
-    ActionCost save(CreaturePtr creature);
+    ActionCost save(CreaturePtr creature, const bool quit_after_save);
 
     SkillsAction& get_skills_action_ref();
 

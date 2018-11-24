@@ -8,6 +8,7 @@
 #include "CreatureDescriber.hpp"
 #include "CreatureCoordinateCalculator.hpp"
 #include "CreatureFeatures.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "CursesProperties.hpp"
@@ -18,8 +19,6 @@
 #include "EngineConversion.hpp"
 #include "ExitGameAction.hpp"
 #include "FeatureGenerator.hpp"
-#include "FieldOfViewStrategy.hpp"
-#include "FieldOfViewStrategyFactory.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
 #include "HighScoreScreen.hpp"
@@ -28,11 +27,13 @@
 #include "ItemSerializationFactory.hpp"
 #include "Log.hpp"
 #include "MapCursor.hpp"
+#include "MapScript.hpp"
 #include "MapUtils.hpp"
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "ScoreFile.hpp"
 #include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
@@ -251,11 +252,15 @@ const FeatureMap& Game::get_basic_features_ref() const
 
 void Game::set_custom_maps(const vector<MapPtr>& custom_maps)
 {
+  map_registry.clear_maps();
+
   for (MapPtr custom_map : custom_maps)
   {
     string id = custom_map->get_map_id();
     map_registry.set_map(id, custom_map);
   }
+
+  run_map_scripts();
 }
 
 void Game::set_tile_display_info(const vector<DisplayTile>& game_tiles)
@@ -288,6 +293,15 @@ map<int, CalendarDay>& Game::get_calendar_days_ref()
   return calendar_days;
 }
 
+void Game::set_starting_locations(const StartingLocationMap& new_starting_locations)
+{
+  starting_locations = new_starting_locations;
+}
+
+StartingLocationMap Game::get_starting_locations() const
+{
+  return starting_locations;
+}
 
 CreaturePtr Game::get_current_player() const
 {
@@ -297,7 +311,7 @@ CreaturePtr Game::get_current_player() const
 
 // Create the new world, and set the player at the special "player's starting location" point.
 // Then, read in the XML areas, and overlay that on top.
-void Game::create_new_world(CreaturePtr creature)
+void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
 {
   WorldGenerator world_generator;
   MapPtr current_world = world_generator.generate();
@@ -313,6 +327,12 @@ void Game::create_new_world(CreaturePtr creature)
 
   CustomAreaGenerator cag(FileConstants::WORLD_MAP_AREAS_FILE);
   cag.overlay_custom_areas(current_world);
+
+  MapPtr world_map = get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
+  if (world_map != nullptr)
+  {
+    world_map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, sl.get_location());
+  }
 
   TilePtr tile = current_world->get_tile_at_location(WorldMapLocationTextKeys::STARTING_LOCATION);
 
@@ -330,6 +350,30 @@ void Game::create_new_world(CreaturePtr creature)
   else
   {
     Log::instance().log("Game::create_new_world - Couldn't get player's initial starting location!");
+  }
+}
+
+// Update the display, but making some assumptions.
+void Game::update_display()
+{
+  MapPtr cur_map = get_current_map();
+
+  if (cur_map != nullptr)
+  {
+    CreaturePtr creature = cur_map->get_creature(CreatureID::CREATURE_ID_PLAYER);
+
+    if (creature != nullptr)
+    {
+      MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+
+      // Force a hard redraw.
+      update_display(creature, cur_map, fov_map, false);
+
+      if (display)
+      {
+        display->redraw();
+      }
+    }
   }
 }
 
@@ -487,9 +531,14 @@ void Game::go()
           ActionCost action_cost = process_action_for_creature(current_creature, current_map, reloaded_game);
           sap.process_action(current_creature, creature_statuses_before, action_cost);
 
+          // Remove any single turn flags, if present.
+          if (current_creature != nullptr)
+          {
+            current_creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_TELEPORTED);
+          }
+          
           // Remove the creature's current action.  This is done after the "keep_playing"
           // check so that saving, etc., does not advance the turn.
-
           if (keep_playing)
           {
             ac.update_actions();
@@ -551,7 +600,7 @@ void Game::exit_on_exception(CreaturePtr player)
 
 void Game::panic_save(CreaturePtr player)
 {
-  actions.save(player);
+  actions.save(player, true);
 }
 
 void Game::set_check_scores(const bool new_check_scores)
@@ -612,10 +661,11 @@ void Game::process_elapsed_time(const int seconds)
 }
 
 // Get and process the action for the current creature
-ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPtr current_map, const bool reloaded_game)
+ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPtr c_map, const bool reloaded_game)
 {
   ActionCost action_cost;
   Log& log = Log::instance();
+  MapPtr current_map = c_map;
 
   if (current_creature)
   {
@@ -640,8 +690,16 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
       {
         // Comment/un-comment this as necessary to figure out if creatures are taking too long to process turns.
         //boost::timer::auto_cpu_timer timer;
-        MapPtr view_map;
-        MapPtr fov_map;
+
+        // Refresh the map.  Even if the turn doesn't advance, the map might
+        // need reloading - e.g., moving off a map/descending a staircase
+        // while timewalking.
+        MapPtr g_curr_map = Game::instance().get_current_map();
+
+        if (current_map && g_curr_map && g_curr_map->get_map_id() != current_map->get_map_id())
+        {
+          current_map = g_curr_map;
+        }
 
         // Skip the creature's action if it is not the player, and does not have LOS of the player.
         // This is necessary for speedup purposes when there are lots of creatures on the map.
@@ -674,17 +732,10 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
             }
           }
         }
-
-        Coordinate creature_coords = current_map->get_location(current_creature->get_id());
-        view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
         
-        FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
-        fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
-
-        if (strategy)
-        {
-          strategy->set_fov_map(fov_map);
-        }
+        Coordinate creature_coords = current_map->get_location(current_creature->get_id());
+        MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+        MapPtr fov_map = CreatureUtils::update_fov_map(current_map, view_map, current_creature);
         
         if (current_creature->get_is_player())
         {
@@ -1078,9 +1129,46 @@ bool Game::serialize(ostream& stream) const
     cd_pair.second.serialize(stream);
   }
 
+  Serialize::write_size_t(stream, starting_locations.size());
+
+  for (const auto& sl_pair : starting_locations)
+  {
+    Serialize::write_string(stream, sl_pair.first);
+    sl_pair.second.serialize(stream);
+  }
+
   Log::instance().trace("Game::serialize - end");
 
   return true;
+}
+
+void Game::run_map_scripts()
+{
+  // After the custom maps have been set into the registry, we need to run
+  // any custom load scripts on the maps.
+  MapRegistryMap& mrm = map_registry.get_maps_ref();
+
+  for (const auto& mrm_pair : mrm)
+  {
+    MapPtr map = mrm_pair.second;
+    string load_script;
+
+    EventScriptsMap esm = map->get_event_scripts();
+    auto esm_it = esm.find(MapEventScripts::MAP_EVENT_SCRIPT_CREATE);
+
+    if (esm_it != esm.end())
+    {
+      ScriptDetails sd = esm_it->second;
+      ScriptEngine& se = Game::instance().get_script_engine_ref();
+      MapScript ms;
+
+      if (RNG::percent_chance(sd.get_chance()))
+      {
+        // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
+        ms.execute(se, sd.get_script(), map);
+      }
+    }
+  }
 }
 
 bool Game::deserialize(istream& stream)
@@ -1267,6 +1355,21 @@ bool Game::deserialize(istream& stream)
     day_info.deserialize(stream);
 
     calendar_days[day_of_year] = day_info;
+  }
+
+  size_t sl_sz = 0;
+  Serialize::read_size_t(stream, sl_sz);
+  starting_locations.clear();
+
+  for (size_t i = 0; i < sl_sz; i++)
+  {
+    StartingLocation sl;
+    string sl_id;
+
+    Serialize::read_string(stream, sl_id);
+    sl.deserialize(stream);
+
+    starting_locations.insert(make_pair(sl_id, sl));
   }
 
   Log::instance().trace("Game::deserialize - end");

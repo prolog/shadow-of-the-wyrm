@@ -59,9 +59,19 @@ bool CoordUtils::are_coordinates_adjacent(const Coordinate& c1, const Coordinate
 }
 
 // Get the distance between two coordinates using Chebyshev distance
-int CoordUtils::chebyshev_distance(Coordinate c1, Coordinate c2)
+int CoordUtils::chebyshev_distance(const Coordinate& c1, const Coordinate& c2)
 {
   return std::max(abs(c1.second - c2.second), abs(c1.first - c2.first));
+}
+
+int CoordUtils::get_height(const Coordinate& c1, const Coordinate& c2)
+{
+  return std::abs(c2.first - c1.first);
+}
+
+int CoordUtils::get_width(const Coordinate& c1, const Coordinate& c2)
+{
+  return std::abs(c2.second - c1.second);
 }
 
 // Check to see if movement in a given direction is valid.
@@ -77,6 +87,18 @@ bool CoordUtils::is_valid_move(const Dimensions& dim, const Coordinate& c, const
   int new_col = new_coord.second;
 
   if (new_row < 0 || new_row >= max_row || new_col < 0 || new_col >= max_col)
+  {
+    valid_move = false;
+  }
+
+  return valid_move;
+}
+
+bool CoordUtils::is_in_range(const Dimensions& dim, const Coordinate& start_coord, const Coordinate& end_coord)
+{
+  bool valid_move = true;
+
+  if (start_coord.first < 0 || end_coord.first >= dim.get_y() || start_coord.second < 0 || end_coord.second >= dim.get_x())
   {
     valid_move = false;
   }
@@ -231,6 +253,44 @@ vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& di
   return adjacent_coordinates;
 }
 
+vector<Coordinate> CoordUtils::get_border_coordinates(const Coordinate& top_left, const Coordinate& bottom_right, const int length)
+{
+  Coordinate top_right = {top_left.first, bottom_right.second};
+  Coordinate bottom_left = {bottom_right.first, top_left.second};
+
+  vector<pair<Coordinate, vector<Direction>>> dirs = {{top_left, {Direction::DIRECTION_EAST, Direction::DIRECTION_SOUTH}}, 
+                                                      {top_right, {Direction::DIRECTION_WEST, Direction::DIRECTION_SOUTH}},
+                                                      {bottom_left, {Direction::DIRECTION_NORTH, Direction::DIRECTION_EAST}},
+                                                      {bottom_right, {Direction::DIRECTION_NORTH, Direction::DIRECTION_WEST}}};
+
+  vector<Coordinate> border_coords;
+
+  for (auto d_pair : dirs)
+  {
+    border_coords.push_back(d_pair.first);
+
+    for (auto d : d_pair.second)
+    {
+      for (int i = 0; i < length; i++)
+      {
+        Coordinate c = get_new_coordinate(d_pair.first, d, i+1);
+        border_coords.push_back(c);
+      }
+    }
+  }
+
+  return border_coords;
+}
+
+vector<Coordinate> CoordUtils::get_corner_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
+{
+  Coordinate top_right = {top_left.first, bottom_right.second};
+  Coordinate bottom_left = {bottom_right.first, top_left.second};
+  vector<Coordinate> corners = {top_left, top_right, bottom_left, bottom_right};
+
+  return corners;
+}
+
 vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
 {
   vector<Coordinate> perimeter_coordinates(get_perimeter_length(top_left, bottom_right));
@@ -260,6 +320,12 @@ vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_l
   }
 
   return perimeter_coordinates;
+}
+
+bool CoordUtils::is_in_perimeter(const Coordinate& cur_loc, const Coordinate& c1, const Coordinate& c2)
+{
+  bool in_perimeter = ((cur_loc.first == c1.first) || (cur_loc.first == c2.first) || (cur_loc.second == c1.second) || (cur_loc.second == c2.second));
+  return in_perimeter;
 }
 
 vector<Coordinate> CoordUtils::get_beam_coordinates(const Coordinate& centre_coord, const Direction d, const uint radius)

@@ -59,6 +59,11 @@ bool GenerationValues::is_maximum_reached() const
   return (current == maximum);
 }
 
+bool GenerationValues::is_unique() const
+{
+  return (maximum == 1);
+}
+
 void GenerationValues::set_danger_level(const int new_danger_level)
 {
   danger_level = new_danger_level;

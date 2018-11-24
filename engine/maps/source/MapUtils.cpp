@@ -4,6 +4,7 @@
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
@@ -14,6 +15,7 @@
 #include "MessageManagerFactory.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
+#include "MoveScript.hpp"
 #include "MovementTextKeys.hpp"
 #include "PickupAction.hpp"
 #include "RNG.hpp"
@@ -25,12 +27,30 @@
 using namespace std;
 using namespace boost;
 
+const int MapUtils::PLAYER_RESTRICTED_ZONE_RADIUS = 8;
+
 // Does the area around a tile allow creature generation?
 // Creatures can't be generated within a couple of steps of a stairway.
+// They also shouldn't be generated close to the player.
 bool MapUtils::does_area_around_tile_allow_creature_generation(MapPtr map, const Coordinate& c)
 {
   bool gen_ok = true;
 
+  if (map != nullptr)
+  {
+    gen_ok = (MapUtils::does_area_around_tile_contain_staircase(map, c) == false);
+    
+    if (gen_ok)
+    {
+      gen_ok = (MapUtils::is_coordinate_within_player_restricted_zone(map, c) == false);
+    }
+  }
+
+  return gen_ok;
+}
+
+bool MapUtils::does_area_around_tile_contain_staircase(MapPtr map, const Coordinate& c)
+{
   if (map != nullptr)
   {
     vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second, 2);
@@ -45,14 +65,35 @@ bool MapUtils::does_area_around_tile_allow_creature_generation(MapPtr map, const
 
         if (tt == TileType::TILE_TYPE_UP_STAIRCASE || tt == TileType::TILE_TYPE_DOWN_STAIRCASE)
         {
-          gen_ok = false;
-          break;
+          return true;
         }
+      }
+    }
+
+    return false;
+  }
+
+  return false;
+}
+
+bool MapUtils::is_coordinate_within_player_restricted_zone(MapPtr map, const Coordinate& c)
+{
+  if (map != nullptr)
+  {
+    Coordinate player_coord = map->get_location(CreatureID::CREATURE_ID_PLAYER);
+
+    if (!CoordUtils::is_end(player_coord))
+    {
+      int distance = CoordUtils::chebyshev_distance(player_coord, c);
+
+      if (distance <= PLAYER_RESTRICTED_ZONE_RADIUS)
+      {
+        return true;
       }
     }
   }
 
-  return gen_ok;
+  return false;
 }
 
 // Check to see if a tile is available for a creature by checking:
@@ -68,9 +109,10 @@ bool MapUtils::is_tile_available_for_creature(CreaturePtr creature, TilePtr tile
 // Check to see if a tile is available for an item by checking:
 // - if a blocking feature is present
 // - if the tile type permits movement
+// - if the inventory type isn't null
 bool MapUtils::is_tile_available_for_item(TilePtr tile)
 {
-  return (!tile->get_is_blocking());
+  return (!tile->get_is_blocking() && tile->get_items()->get_allows_items());
 }
 
 // Swap two creatures on their tiles.
@@ -362,6 +404,9 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
 
   ICreatureRegenerationPtr move_checker = std::make_shared<MovementAccumulationChecker>();
   move_checker->tick(creature, creatures_new_tile, 0, 0);
+
+  // Run any movement scripts associated with the creature.
+  run_movement_scripts(creature, map->get_map_id(), c);
   
   return added_location;
 }
@@ -377,17 +422,16 @@ vector<string> MapUtils::get_creatures_with_creature_in_view(const MapPtr& map, 
     {
       CreaturePtr viewing_creature = cr_pair.second;
 
-      if (viewing_creature != nullptr)
+      // If the viewing creature has the creature in view, update the fov map
+      // and check again.  FOV maps are typically only updated at the start
+      // of each turn, and so can become stale.
+      if (viewing_creature != nullptr && viewing_creature->has_creature_in_view(creature_id))
       {
-        MapPtr fov_map = viewing_creature->get_decision_strategy()->get_fov_map();
+        CreatureUtils::update_fov_map(map, nullptr, viewing_creature);
 
-        if (fov_map != nullptr)
+        if (viewing_creature->has_creature_in_view(creature_id))
         {
-          CreatureMap fov_creatures = fov_map->get_creatures();
-          if (fov_creatures.find(creature_id) != fov_creatures.end())
-          {
-            viewing_creatures.push_back(viewing_creature->get_id());
-          }
+          viewing_creatures.push_back(viewing_creature->get_id());
         }
       }
     }
@@ -624,6 +668,81 @@ vector<CreaturePtr> MapUtils::get_adjacent_creatures_unsorted(const MapPtr& map,
 
   return adj_creatures;
 }
+
+void MapUtils::set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr map_exit)
+{
+  if (old_map != nullptr && old_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && map_exit != nullptr)
+  {
+    string exit_map_id = map_exit->get_map_id();
+    MapExitPtr default_exit_old_map = old_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_NULL);
+
+    if (default_exit_old_map != nullptr && !exit_map_id.empty())
+    {
+      MapPtr new_map = Game::instance().get_map_registry_ref().get_map(exit_map_id);
+
+      if (new_map != nullptr)
+      {
+        MapExitPtr default_exit_new_map = new_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_NULL);
+
+        if (default_exit_new_map == nullptr)
+        {
+          new_map->set_map_exit(default_exit_old_map);
+        }
+      }
+    }
+  }
+}
+
+Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, const CardinalDirection exit_direction, MapExitPtr map_exit)
+{
+  Coordinate c = CoordUtils::end();
+
+  if (map_exit != nullptr && map_exit->is_using_map_id())
+  {
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
+
+    if (map != nullptr && map->get_is_multi_map())
+    {
+      MapExitPtr default_exit = map->get_map_exit();
+
+      // Only calculate the new coords for multi-map if we're exiting
+      // and not to the default exit (typically the overworld).
+      if ((map_exit  && !default_exit) ||
+          (default_exit && map_exit && !(*default_exit == *map_exit)))
+      {
+        Dimensions dim = map->size();
+        c = current_coord;
+
+        switch (exit_direction)
+        {
+          // Arriving from the south
+          case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+            c.first = dim.get_y() - 1;
+            break;
+            // Arriving from the north
+          case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+            c.first = 0;
+            break;
+            // Arriving from the west
+          case CardinalDirection::CARDINAL_DIRECTION_EAST:
+            c.second = 0;
+            break;
+            // Arriving from the east
+          case CardinalDirection::CARDINAL_DIRECTION_WEST:
+            c.second = dim.get_x() - 1;
+            break;
+          case CardinalDirection::CARDINAL_DIRECTION_NULL:
+          default:
+            c = CoordUtils::end();
+            break;
+        }
+      }
+    }
+  }
+
+  return c;
+}
+
 bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature, const bool force_player_removal)
 {
   bool result = false;
@@ -695,15 +814,37 @@ bool MapUtils::tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, cons
   return match;
 }
 
-bool MapUtils::can_exit_map(MapExitPtr map_exit)
+bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
 {
+  if (!map || map->get_map_type() == MapType::MAP_TYPE_WORLD)
+  {
+    return false;
+  }
+ 
   bool can_exit = false;
-  
+
+  // First check: is the map_exit non-null and contain the information
+  // necessary for the exit?
   if (map_exit && (map_exit->is_using_map_id() || map_exit->is_using_terrain_type()))
   {
     can_exit = true;
   }
-  
+
+  // Second check: if this is for a set map, is the new tile available/open?
+  if (map_exit && map_exit->is_using_map_id() && !CoordUtils::is_end(proposed_new_coord))
+  {
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(proposed_new_coord);
+      if (!is_tile_available_for_creature(creature, tile))
+      {
+        can_exit = false;
+      }
+    }
+  }
+
   return can_exit;
 }
 
@@ -965,7 +1106,7 @@ bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPt
   return false;
 }
 
-void MapUtils::place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const string& player_loc)
+Coordinate MapUtils::place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const string& player_loc)
 {
   Coordinate coords(0,0);
 
@@ -997,6 +1138,24 @@ void MapUtils::place_creature_on_previous_location(MapPtr map, CreaturePtr creat
     }
 
     MapUtils::add_or_update_location(map, creature, coords);
+  }
+
+  return coords;
+}
+
+void MapUtils::set_multi_map_entry_details(MapPtr new_map, MapPtr old_map, const Coordinate& new_map_prev_loc)
+{
+  if (new_map != nullptr && old_map != nullptr)
+  {
+    if (new_map->get_map_type() == MapType::MAP_TYPE_WORLD && old_map->get_is_multi_map())
+    {
+      TilePtr tile = new_map->at(new_map_prev_loc);
+
+      if (tile != nullptr)
+      {
+        tile->set_custom_map_id(old_map->get_map_id());
+      }
+    }
   }
 }
 
@@ -1125,6 +1284,30 @@ map<TileType, vector<TilePtr>> MapUtils::partition_tiles(MapPtr current_map)
   }
 
   return part_tiles;
+}
+
+vector<TilePtr> MapUtils::get_tiles_supporting_items(MapPtr map)
+{
+  vector<TilePtr> tiles;
+
+  if (map != nullptr)
+  {
+    // Be optimistic about how many tiles might be returned.
+    tiles.reserve(map->size().get_y() * map->size().get_x());
+
+    TilesContainer tc = map->get_tiles();
+    for (auto& tc_pair : tc)
+    {
+      TilePtr tile = tc_pair.second;
+
+      if (tile != nullptr && MapUtils::is_tile_available_for_item(tile))
+      {
+        tiles.push_back(tile);
+      }
+    }
+  }
+
+  return tiles;
 }
 
 void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current_map, CreaturePtr anger_creature)
@@ -1292,6 +1475,28 @@ bool MapUtils::add_message_about_items_on_tile_if_necessary(CreaturePtr creature
   }
 
   return msg_added;
+}
+
+void MapUtils::run_movement_scripts(CreaturePtr creature, const string& map_id, const Coordinate& c)
+{
+  if (creature != nullptr)
+  {
+    EventScriptsMap& events = creature->get_event_scripts_ref();
+    auto e_it = events.find(CreatureEventScripts::CREATURE_EVENT_SCRIPT_ENTER_TILE);
+
+    if (e_it != events.end())
+    {
+      ScriptDetails sd = e_it->second;
+
+      if (RNG::percent_chance(sd.get_chance()))
+      {
+        ScriptEngine& se = Game::instance().get_script_engine_ref();
+        MoveScript ms;
+
+        ms.execute(se, sd.get_script(), creature, map_id, c);
+      }
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

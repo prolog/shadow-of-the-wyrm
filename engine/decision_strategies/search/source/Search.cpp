@@ -21,23 +21,34 @@ Coordinate Search::search(MapPtr view_map, const Coordinate& start, const Coordi
   set<Coordinate> visited;
   list<SearchNode> nodes = make_search_nodes(view_map, visited, start, end);
 
-  while(true)
+  if (start != end)
   {
-    if (nodes.empty())
+    while (true)
     {
-      break;
-    }
-    
-    SearchNode node = remove_front(nodes);
-    visited.insert(node.get_location());
+      if (nodes.empty())
+      {
+        break;
+      }
 
-    if (goal_test(node, end))
-    {
-      vector<Coordinate>& ancestors = node.get_ancestors_ref();
-      return ancestors[0];
+      SearchNode node = remove_front(nodes);
+      visited.insert(node.get_location());
+
+      if (goal_test(node, end))
+      {
+        vector<Coordinate>& ancestors = node.get_ancestors_ref();
+
+        if (!ancestors.empty())
+        {
+          return ancestors[0];
+        }
+        else
+        {
+          return end;
+        }
+      }
+
+      nodes = queueing_fn(nodes, make_search_nodes(view_map, visited, end, node));
     }
-    
-    nodes = queueing_fn(nodes, make_search_nodes(view_map, visited, end, node));
   }
   
   return stay_put;
@@ -73,7 +84,7 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
   list<SearchNode> search_nodes;
 
   Dimensions orig_map_dimensions = view_map->original_size();
-  vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(orig_map_dimensions, c.first, c.second);
+  vector<Coordinate> coords = get_adjacent_search_coordinates(orig_map_dimensions, c.first, c.second);
   
   for (const Coordinate& coord : coords)
   {
@@ -153,4 +164,66 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
 {
   Coordinate c = sn.get_location();
   return make_search_nodes(view_map, visited, c, goal_coordinate, &sn);
+}
+
+vector<Coordinate> Search::get_adjacent_search_coordinates(const Dimensions& dim, const int row, const int col)
+{
+  vector<Coordinate> coords;
+
+  int rows = dim.get_y();
+  int cols = dim.get_x();
+
+  // N
+  if (row > 0)
+  {
+    coords.push_back({row-1, col});
+  }
+
+  // W
+  if (col > 0)
+  {
+    coords.push_back({row, col-1});
+  }
+
+  // E
+  if (col < cols - 1)
+  {
+    coords.push_back({row, col+1});
+  }
+
+  // S
+  if (row < rows - 1)
+  {
+    coords.push_back({row+1, col});
+  }
+
+  // NW, NE
+  if (row > 0)
+  {
+    if (col > 0)
+    {
+      coords.push_back({row-1, col-1});
+    }
+
+    if (col < cols - 1)
+    {
+      coords.push_back({row-1, col+1});
+    }
+  }
+
+  // SW, SE
+  if (row < rows - 1)
+  {
+    if (col > 0)
+    {
+      coords.push_back({row+1, col-1});
+    }
+
+    if (col < cols - 1)
+    {
+      coords.push_back({row+1, col+1});
+    }
+  }
+
+  return coords;
 }

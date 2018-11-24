@@ -39,6 +39,8 @@ class TextKeys
     static const std::string SEX_MALE_ABRV;
     static const std::string SEX_FEMALE;
     static const std::string SEX_FEMALE_ABRV;
+    static const std::string SEX_NOT_SPECIFIED;
+    static const std::string SEX_NOT_SPECIFIED_ABRV;
     static const std::string SELECT_EQUIPMENT_WORN_LOCATION;
     static const std::string AGE;
     static const std::string HAIR_COLOUR;
@@ -47,6 +49,7 @@ class TextKeys
     static const std::string SELECT_RACE;
     static const std::string SELECT_CLASS;
     static const std::string SELECT_DEITY;
+    static const std::string SELECT_STARTING_LOCATION;
     static const std::string SELECT_SAVED_GAME;
     static const std::string DEITY;
     static const std::string RACE_1_NAME;
@@ -170,6 +173,8 @@ class TextKeys
     static const std::string FRIENDLY;
     static const std::string DUMPING_CHARACTER_FAILED;
     static const std::string NO_NEW_CHARACTERS;
+    static const std::string MEMBERSHIPS;
+    static const std::string NOT_APPLICABLE_ABRV;
 
   protected:
     TextKeys();

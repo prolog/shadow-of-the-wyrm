@@ -124,6 +124,30 @@ TEST(SW_World_Tiles_Tile, is_race_allowed)
   EXPECT_TRUE(dt.is_race_allowed("trash_panda"));
 }
 
+TEST(SW_World_Tiles_Tile, has_creature_id_restrictions)
+{
+  DungeonTile dt;
+
+  EXPECT_FALSE(dt.has_creature_id_restrictions());
+
+  dt.set_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_CREATURE_IDS, "abc123,def456");
+
+  EXPECT_TRUE(dt.has_creature_id_restrictions());
+}
+
+TEST(SW_World_Tiles_Tile, is_creature_id_allowed)
+{
+  DungeonTile dt;
+
+  EXPECT_TRUE(dt.is_creature_id_allowed("some_cr_id"));
+  EXPECT_TRUE(dt.is_creature_id_allowed("some_other_creature_since_there_are_no_restrictions_yet"));
+
+  dt.set_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_CREATURE_IDS, "abc,def");
+
+  EXPECT_FALSE(dt.is_creature_id_allowed("ghi"));
+  EXPECT_TRUE(dt.is_creature_id_allowed("def"));
+}
+
 TEST(SW_World_Tiles_Tile, explored)
 {
   DungeonTile tile;

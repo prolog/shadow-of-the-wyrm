@@ -34,10 +34,11 @@ local function get_purchase_amount(unpaid_amount)
 end
 
 -- Is there an amount owing?
+local num_unpaid_items = get_num_unpaid_items(PLAYER_ID)
 local unpaid_amount = get_unpaid_amount(PLAYER_ID)
 local shopkeep_id = args[SPEAKING_CREATURE_ID]
 
-if unpaid_amount > 0 then
+if num_unpaid_items > 0 then
   -- Does the player have enough ivory to cover it?
   local currency_amount = count_currency(PLAYER_ID)
 

@@ -26,6 +26,7 @@ class IInventory : public ISerializable
     virtual void mark_for_restack() = 0;
     virtual bool get_marked_for_restack() const = 0;
 
+    virtual bool get_allows_items() const = 0;
     virtual bool add_front(ItemPtr new_item) = 0;
     virtual bool add(ItemPtr new_item) = 0;
 

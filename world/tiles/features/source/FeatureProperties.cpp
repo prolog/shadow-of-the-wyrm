@@ -12,3 +12,4 @@ FeatureProperties::~FeatureProperties()
 
 const string FeatureProperties::FEATURE_PROPERTIES_OPEN = "FEATURE_PROPERTIES_OPEN";
 
+

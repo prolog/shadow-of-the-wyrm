@@ -1,4 +1,5 @@
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/algorithm/string/trim.hpp>
 #include "ActionTextKeys.hpp"
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
@@ -39,6 +40,8 @@ const string TextMessages::EXPERIENCE_SYNOPSIS_MAX_MESSAGE    = "EXPERIENCE_SYNO
 const string TextMessages::SPECIAL_DAY_MESSAGE                = "SPECIAL_DAY_MESSAGE";
 const string TextMessages::ENGRAVING_MESSAGE                  = "ENGRAVING_MESSAGE";
 const string TextMessages::INSCRIPTION_MESSAGE                = "INSCRIPTION_MESSAGE";
+const string TextMessages::SLOT_MACHINE_MESSAGE               = "SLOT_MACHINE_MESSAGE";
+const string TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE       = "SLOT_MACHINE_OUTCOME_MESSAGE";
 
 string TextMessages::get_player_description(const string& player_name)
 {
@@ -109,6 +112,9 @@ string TextMessages::get_sex(const CreatureSex sex)
       break;
     case CreatureSex::CREATURE_SEX_FEMALE:
       creature_sex = StringTable::get(TextKeys::SEX_FEMALE);
+      break;
+    case CreatureSex::CREATURE_SEX_NOT_SPECIFIED:
+      creature_sex = StringTable::get(TextKeys::SEX_NOT_SPECIFIED);
       break;
     default:
       creature_sex = "?";
@@ -398,13 +404,19 @@ string TextMessages::get_reflexive_pronoun(CreaturePtr creature)
     }
     else
     {
-      if (creature->get_sex() == CreatureSex::CREATURE_SEX_MALE)
+      CreatureSex cs = creature->get_sex();
+
+      if (cs == CreatureSex::CREATURE_SEX_MALE)
       {
         reflexive_pronoun = StringTable::get(TextKeys::HIMSELF);
       }
-      else
+      else if (cs == CreatureSex::CREATURE_SEX_FEMALE)
       {
         reflexive_pronoun = StringTable::get(TextKeys::HERSELF);
+      }
+      else
+      {
+        reflexive_pronoun = StringTable::get(TextKeys::ITSELF);
       }
     }
   }
@@ -502,4 +514,64 @@ string TextMessages::get_bool_sid(const bool val)
   {
     return TextKeys::BOOL_FALSE;
   }
+}
+
+string TextMessages::get_character_creation_synopsis(const CreatureSex cs, RacePtr race, ClassPtr cur_class, DeityPtr cur_deity)
+{
+  vector<string> details;
+
+  if (cs != CreatureSex::CREATURE_SEX_NOT_SPECIFIED)
+  {
+    details.push_back(TextMessages::get_sex(cs));
+  }
+
+  if (race != nullptr)
+  {
+    details.push_back(StringTable::get(race->get_race_name_sid()));
+  }
+
+  if (cur_class != nullptr)
+  {
+    details.push_back(StringTable::get(cur_class->get_class_name_sid()));
+  }
+
+  // Deity should always be separated from what comes before.
+  if (cur_deity != nullptr)
+  {
+    details.push_back("(" + StringTable::get(cur_deity->get_name_sid()) + ")");
+  }
+
+  ostringstream ss;
+
+  for (const string& d : details)
+  {
+    ss << d << " ";
+  }
+
+  string synopsis = ss.str();
+  boost::trim(synopsis);
+
+  return synopsis;
+}
+
+string TextMessages::get_slot_machine_message(const int cost, const int pct_chance_win, const int payout_amount)
+{
+  string msg = StringTable::get(TextMessages::SLOT_MACHINE_MESSAGE);
+
+  boost::replace_first(msg, "%s", to_string(cost));
+  boost::replace_first(msg, "%s", to_string(pct_chance_win));
+  boost::replace_first(msg, "%s", to_string(payout_amount));
+
+  return msg;
+}
+
+string TextMessages::get_slot_machine_outcome_message(const string& first_sid, const string& second_sid, const string& third_sid)
+{
+  string msg = StringTable::get(TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE);
+
+  boost::replace_first(msg, "%s", StringTable::get(first_sid));
+  boost::replace_first(msg, "%s", StringTable::get(second_sid));
+  boost::replace_first(msg, "%s", StringTable::get(third_sid));
+
+  return msg;
 }

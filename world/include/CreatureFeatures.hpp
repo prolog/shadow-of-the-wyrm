@@ -29,11 +29,13 @@ enum struct CreatureSex
 {
   CREATURE_SEX_MALE = 0,
   CREATURE_SEX_FEMALE = 1,
-  CREATURE_SEX_LAST = 2
+  CREATURE_SEX_NOT_SPECIFIED = 2,
+  CREATURE_SEX_LAST = 3
 };
 
 enum struct HairColour
 {
+  HAIR_NA = -1,
   HAIR_COLOUR_BLACK = 0,
   HAIR_COLOUR_BROWN = 1,
   HAIR_COLOUR_BLONDE = 2,
@@ -83,17 +85,26 @@ class CreatureEventScripts
     static const std::string CREATURE_EVENT_SCRIPT_CHAT;
     static const std::string CREATURE_EVENT_SCRIPT_DECISION;
     static const std::string CREATURE_EVENT_SCRIPT_DROP;
+    static const std::string CREATURE_EVENT_SCRIPT_ENTER_TILE;
 
   protected:
     CreatureEventScripts();
     ~CreatureEventScripts();
 };
 
+#define CCREATURE_EVENT_SCRIPT_DEATH "CREATURE_EVENT_SCRIPT_DEATH"
+#define CCREATURE_EVENT_SCRIPT_ATTACK "CREATURE_EVENT_SCRIPT_ATTACK"
+#define CCREATURE_EVENT_SCRIPT_CHAT "CREATURE_EVENT_SCRIPT_CHAT"
+#define CCREATURE_EVENT_SCRIPT_DECISION "CREATURE_EVENT_SCRIPT_DECISION"
+#define CCREATURE_EVENT_SCRIPT_DROP "CREATURE_EVENT_SCRIPT_DROP"
+#define CCREATURE_EVENT_SCRIPT_ENTER_TILE "CREATURE_EVENT_SCRIPT_ENTER_TILE"
+
 class CreatureID
 {
   public:
     static const std::string CREATURE_ID_SHOPKEEPER;
     static const std::string CREATURE_ID_FAIRY_SPIRIT;
+    static const std::string CREATURE_ID_VENDOR;
     static const std::string CREATURE_ID_PLAYER;
 
   protected:

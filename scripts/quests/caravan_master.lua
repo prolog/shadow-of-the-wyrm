@@ -28,7 +28,7 @@ local function caravan_master_cithriel_start_fn()
                      {"chaos_beast", 6, 8}}
 
   local creatures_csv = creature.to_csv(creatures)
-  map_set_additional_property(cur_map_id, pl_y, pl_x, "MAP_PROPERTIES_INITIAL_CREATURES", creatures_csv)
+  map_set_tile_property(cur_map_id, pl_y, pl_x, "MAP_PROPERTIES_INITIAL_CREATURES", creatures_csv)
 end
 
 local function caravan_master_cithriel_completion_condition_fn()

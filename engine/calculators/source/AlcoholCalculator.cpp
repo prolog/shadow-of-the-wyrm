@@ -22,9 +22,9 @@ void AlcoholCalculator::initialize_sex_based_maps()
 {
   absorption_by_sex.clear();
 
-  absorption_by_sex = map<CreatureSex, float>{{CreatureSex::CREATURE_SEX_MALE, 1.0f}, {CreatureSex::CREATURE_SEX_FEMALE, 1.5f}};
+  absorption_by_sex = map<CreatureSex, float>{{CreatureSex::CREATURE_SEX_MALE, 1.0f}, {CreatureSex::CREATURE_SEX_FEMALE, 1.5f}, {CreatureSex::CREATURE_SEX_NOT_SPECIFIED, 1.0f}};
 
-  static_assert(CreatureSex::CREATURE_SEX_LAST == CreatureSex(2), "Creature sex has been updated - alcohol absorption and metabolism rate maps must be updated as well.");
+  static_assert(CreatureSex::CREATURE_SEX_LAST == CreatureSex(3), "Creature sex has been updated - alcohol absorption and metabolism rate maps must be updated as well.");
 }
 
 // Number of minutes required to pass before some alcohol is absorbed

@@ -10,6 +10,7 @@ class StringTable
   public:
     static void load(const std::string& filename);
     static std::string get(const std::string& key);
+    static std::string get_default(const std::string& key, const std::string& default_val);
 
   protected:
     friend class SW_Engine_StringConstants;

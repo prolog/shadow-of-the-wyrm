@@ -26,12 +26,22 @@ enum struct ItemType
 };
 
 // Item types for the Lua code.
+#define CITEM_TYPE_MISC 0
+#define CITEM_TYPE_WEAPON 1
+#define CITEM_TYPE_ARMOUR 2
 #define CITEM_TYPE_POTION 3
-#define CITEM_TYPE_WAND 6
-#define CITEM_TYPE_SCROLL 5
 #define CITEM_TYPE_SPELLBOOK 4
+#define CITEM_TYPE_SCROLL 5
+#define CITEM_TYPE_WAND 6
+#define CITEM_TYPE_STAFF 7
 #define CITEM_TYPE_RING 8
 #define CITEM_TYPE_AMULET 9
+#define CITEM_TYPE_FOOD 10
+#define CITEM_TYPE_AMMUNITION 11
+#define CITEM_TYPE_PLANT 12
+#define CITEM_TYPE_BOAT 13
+#define CITEM_TYPE_CURRENCY 14
+#define CITEM_TYPE_TOOL 15
 
 enum struct ItemStatus
 {
@@ -52,6 +62,7 @@ enum struct ItemIdentificationType
 class ItemIdKeys
 {
   public:
+    static const std::string ITEM_ID_CLAY_POT;
     static const std::string ITEM_ID_CURRENCY;
     static const std::string ITEM_ID_BRANCH;
     static const std::string ITEM_ID_BOUGH;
@@ -60,6 +71,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_STONE;
     static const std::string ITEM_ID_HUGE_ROCK;
     static const std::string ITEM_ID_MAGICI_SHARD;
+    static const std::string ITEM_ID_COAL;
     static const std::string ITEM_ID_LUMP_GOLD;
     static const std::string ITEM_ID_IRON_INGOT;
     static const std::string ITEM_ID_STEEL_INGOT;

@@ -4,6 +4,8 @@
 
 using namespace std;
 
+const string KeyManager::SKELETON_KEY_ID = "*";
+
 // Check a creature's equipment and inventory to see if it has a tool that has a lock_id
 // equal to the lock's, assuming the lock's value is non-empty.
 bool KeyManager::has_key(CreaturePtr creature, LockPtr lock)
@@ -14,15 +16,14 @@ bool KeyManager::has_key(CreaturePtr creature, LockPtr lock)
 
     if (!lock_id.empty())
     {
-      list<ItemPtr> tools = ItemManager::get_items_by_type(creature, ItemType::ITEM_TYPE_TOOL);
+      const list<ItemPtr> tools = creature->get_inventory()->get_items_cref();
 
       for(ItemPtr item : tools)
       {
         if (item)
         {
-          ToolPtr tool = std::dynamic_pointer_cast<Tool>(item);
-
-          if (tool && (tool->get_lock_id() == lock_id))
+          string item_lock_id = item->get_lock_id();
+          if (item && ((item_lock_id == lock_id) || (item_lock_id == SKELETON_KEY_ID)))
           {
             return true;
           }

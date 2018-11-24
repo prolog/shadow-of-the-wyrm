@@ -332,6 +332,17 @@ ItemIdentificationType Item::get_identification_type() const
   return identification_type;
 }
 
+void Item::set_lock_id(const string& new_lock_id)
+{
+  set_additional_property(ItemProperties::ITEM_PROPERTIES_LOCK_ID, new_lock_id);
+}
+
+string Item::get_lock_id() const
+{
+  return get_additional_property(ItemProperties::ITEM_PROPERTIES_LOCK_ID);
+}
+
+
 bool Item::matches(std::shared_ptr<Item> i) const
 {
   bool match = (i != nullptr);

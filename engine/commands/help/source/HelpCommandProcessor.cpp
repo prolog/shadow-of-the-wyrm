@@ -42,6 +42,10 @@ ActionCostValue HelpCommandProcessor::process(CreaturePtr creature, CommandPtr c
     {
       return ha.strategy_basics();
     }
+    else if (command_name == HelpCommandKeys::CASINO_GAMES)
+    {
+      return ha.casino_games();
+    }
   }
 
   return process_result;

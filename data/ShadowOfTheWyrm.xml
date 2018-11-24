@@ -388,6 +388,7 @@
 			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
+			<HasHair>0</HasHair>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -455,6 +456,7 @@
 			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
+			<HasHair>0</HasHair>
 			<Drops>
 				<Drop>
 					<ID>_quill</ID>
@@ -528,6 +530,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
+			<HasHair>0</HasHair>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -601,6 +604,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<NameSID>DEMON_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -668,6 +672,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -735,6 +740,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<Drops>
 				<Drop>
 					<ID>_currency</ID>
@@ -810,6 +816,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<NameSID>ELYSIAN_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<Hungerless>1</Hungerless>
@@ -879,6 +886,7 @@
 			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
+			<HasHair>0</HasHair>
 			<NameSID>INSECT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -946,6 +954,7 @@
 			<Splits>1</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
+			<HasHair>0</HasHair>
 			<NameSID>JELLY_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1013,6 +1022,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>0</HasHair>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1080,6 +1090,7 @@
 			<Splits>0</Splits>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
+			<HasHair>0</HasHair>
 			<NameSID>PLANT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1147,6 +1158,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1209,6 +1221,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1274,6 +1287,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1338,6 +1352,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>0</HasHair>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -1405,6 +1420,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
@@ -1494,6 +1510,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
@@ -1575,6 +1592,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
@@ -1657,6 +1675,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>0</HasHair>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
@@ -1736,6 +1755,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<HasRandomVillages>0</HasRandomVillages>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -1817,6 +1837,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
@@ -1897,6 +1918,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
@@ -1978,6 +2000,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
@@ -2055,6 +2078,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
@@ -2133,6 +2157,7 @@
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
+			<HasHair>1</HasHair>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>
@@ -3747,8 +3772,9 @@
 						<Random>
 							<ID>wreath_of_fire_spellbook</ID>
 							<ID>blind_spellbook</ID>
-							<ID>flame_dart_spellbook</ID>
 							<ID>healing_word_spellbook</ID>
+							<ID>flame_dart_spellbook</ID>
+							<ID>electric_arc_spellbook</ID>
 						</Random>
 					</InitialItem>
 					<InitialItem>
@@ -4420,7 +4446,7 @@
 					<Races>
 						<Race>
 							<RaceID>02_woodelf</RaceID>
-							<ID>leather_armour</ID>
+							<ID>linothorax</ID>
 						</Race>
 						<Race>
 							<RaceID>04_snakeling</RaceID>
@@ -4428,7 +4454,7 @@
 						</Race>
 						<Race>
 							<RaceID>05_fae</RaceID>
-							<ID>leather_armour</ID>
+							<ID>linothorax</ID>
 						</Race>
 						<Race>
 							<RaceID>07_goblin</RaceID>
@@ -7799,6 +7825,53 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="presence">
+			<RaceID>_demon</RaceID>
+			<ShortDescriptionSID>PRESENCE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PRESENCE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PRESENCE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PRESENCE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>P</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>4000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>7</Type>
+				<StatusAilments>
+					<Status>_spellb</Status>
+				</StatusAilments>
+			</Damage>
+		</Creature>
 		<Creature id="tangleweed">
 			<RaceID>_plant</RaceID>
 			<ShortDescriptionSID>TANGLEWEED_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -7877,6 +7950,10 @@
 					<NumDice>20</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>220</Exp>
 			</CreatureGeneration>
 			<Level>20</Level>
@@ -7885,6 +7962,12 @@
 				<NumSides>40</NumSides>
 				<Type>3</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>a_02_dragon_breath</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="wraith">
 			<RaceID>_spirit</RaceID>
@@ -8381,6 +8464,7 @@
 				<NumSides>48</NumSides>
 				<Type>2</Type>
 			</Damage>
+			<Soak>10</Soak>
 		</Creature>
 		<Creature id="pirrha">
 			<RaceID>01_human</RaceID>
@@ -9146,6 +9230,56 @@
 				<NumSides>62</NumSides>
 				<Type>0</Type>
 			</Damage>
+		</Creature>
+		<Creature id="lycaon">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>LYCAON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LYCAON_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LYCAON_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LYCAON_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>31</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>20000</Exp>
+			</CreatureGeneration>
+			<Level>35</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>70</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<Speed>30</Speed>
 		</Creature>
 		<Creature id="chaos_beast">
 			<RaceID>_monster</RaceID>
@@ -10579,6 +10713,7 @@
 			<DescriptionSID>AVERNAL_BAT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AVERNAL_BAT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>AVERNAL_BAT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -11090,6 +11225,49 @@
 					<Script>quests/fairy_spirit.lua</Script>
 				</ChatScript>
 			</EventScripts>
+		</Creature>
+		<Creature id="_vendor">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>VENDOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VENDOR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VENDOR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>VENDOR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>v</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>10</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>5</Evade>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/vendor.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Properties>
+				<Property>
+					<Name>VENDOR_FOOD</Name>
+					<Value>salted_nuts,skewer_mystery_meat</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="pelageus">
 			<RaceID>01_human</RaceID>
@@ -12300,6 +12478,7 @@
 			<DescriptionSID>GRIFFIN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GRIFFIN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GRIFFIN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16749,6 +16928,10 @@
 					<NumDice>9</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>9</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>10</Exp>
 			</CreatureGeneration>
 			<Level>9</Level>
@@ -16757,6 +16940,12 @@
 				<NumSides>18</NumSides>
 				<Type>10</Type>
 			</Damage>
+			<Spells>
+				<Spell>
+					<SpellID>c_16_electric_arc</SpellID>
+					<Castings>12</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="squid">
 			<RaceID>_animal</RaceID>
@@ -21953,12 +22142,12 @@
 				<Type>0</Type>
 			</Damage>
 		</Creature>
-		<Creature id="gnomish_barkeeper">
+		<Creature id="bartender">
 			<RaceID>10_gnome</RaceID>
-			<ShortDescriptionSID>GNOMISH_BARKEEPER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>GNOMISH_BARKEEPER_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>GNOMISH_BARKEEPER_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>GNOMISH_BARKEEPER_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>BARTENDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BARTENDER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BARTENDER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BARTENDER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -21988,16 +22177,16 @@
 			<Soak>1</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/barkeeper.lua</Script>
+					<Script>quests/bartender.lua</Script>
 				</ChatScript>
 			</EventScripts>
 			<Properties>
 				<Property>
-					<Name>BARKEEPER_DRINK</Name>
+					<Name>BARTENDER_DRINK</Name>
 					<Value>gnomish_stout,dram_whisky</Value>
 				</Property>
 				<Property>
-					<Name>BARKEEPER_FOOD</Name>
+					<Name>BARTENDER_FOOD</Name>
 					<Value>bowl_stewed_meat</Value>
 				</Property>
 			</Properties>
@@ -24393,6 +24582,77 @@
 			</Damage>
 			<Soak>7</Soak>
 		</Creature>
+		<Creature id="drunk">
+			<RaceID>06_dwarf</RaceID>
+			<ShortDescriptionSID>DRUNK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DRUNK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DRUNK_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DRUNK_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>d</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="urchin">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>URCHIN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>URCHIN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>URCHIN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>URCHIN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>y</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<EventScripts>
+				<AttackScript>
+					<Script>attacks/steal.lua</Script>
+					<Chance>25</Chance>
+				</AttackScript>
+				<DecisionScript>
+					<Script>decision/thief.lua</Script>
+					<Chance>80</Chance>
+				</DecisionScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="thief">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THIEF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -24609,6 +24869,62 @@
 			</Damage>
 			<Evade>3</Evade>
 			<Soak>2</Soak>
+		</Creature>
+		<Creature id="shimmering_cloud">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>SHIMMERING_CLOUD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SHIMMERING_CLOUD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SHIMMERING_CLOUD_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>5</NumDice>
+				<NumSides>6</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Evade>10</Evade>
+			<Spells>
+				<Spell>
+					<SpellID>a_01_wreath_of_fire</SpellID>
+					<Castings>3</Castings>
+					<Bonus>3</Bonus>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="gas_cloud">
 			<RaceID>_spirit</RaceID>
@@ -26386,6 +26702,1692 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="glich">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>GLICH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GLICH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GLICH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GLICH_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>,</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>11</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>15</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>60</Exp>
+			</CreatureGeneration>
+			<Level>11</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>30</NumSides>
+				<Type>10</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/glich.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="tela">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>TELA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TELA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TELA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TELA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>14</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>14</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>43</Exp>
+			</CreatureGeneration>
+			<Level>14</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>28</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<Soak>4</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/tela.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="old_hargin">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>OLD_HARGIN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>OLD_HARGIN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>OLD_HARGIN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>OLD_HARGIN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/old_hargin.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="ffleur">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>FFLEUR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FFLEUR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FFLEUR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>FFLEUR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>16</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>110</Exp>
+			</CreatureGeneration>
+			<Level>16</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>32</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Soak>8</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/ffleur.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="serat">
+			<RaceID>04_snakeling</RaceID>
+			<ShortDescriptionSID>SERAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SERAT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SERAT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SERAT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<DangerLevel>12</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>98</Exp>
+			</CreatureGeneration>
+			<Level>12</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>32</NumSides>
+				<Type>6</Type>
+			</Damage>
+			<Speed>40</Speed>
+		</Creature>
+		<Creature id="guildmaster_caro">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>GUILDMASTER_CARO_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GUILDMASTER_CARO_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GUILDMASTER_CARO_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>T</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>25</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2000</Exp>
+			</CreatureGeneration>
+			<Level>25</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>50</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Speed>35</Speed>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/guildmaster_caro.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="carcassian_guard">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>CARCASSIAN_GUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CARCASSIAN_GUARD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CARCASSIAN_GUARD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CARCASSIAN_GUARD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>10</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>10</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>70</Exp>
+			</CreatureGeneration>
+			<Level>10</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>20</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>5</Soak>
+		</Creature>
+		<Creature id="gambler">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>GAMBLER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GAMBLER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GAMBLER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GAMBLER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>h</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>70</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/gambler.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="pov_dealer">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>POV_DEALER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>POV_DEALER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>POV_DEALER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>POV_DEALER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/pov_dealer.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="blackjack_dealer">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>BLACKJACK_DEALER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BLACKJACK_DEALER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLACKJACK_DEALER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BLACKJACK_DEALER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/blackjack_dealer.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="racemaster">
+			<RaceID>10_gnome</RaceID>
+			<ShortDescriptionSID>RACEMASTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>RACEMASTER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>RACEMASTER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>RACEMASTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/racemaster.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="snapping_turtle">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>SNAPPING_TURTLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SNAPPING_TURTLE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SNAPPING_TURTLE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SNAPPING_TURTLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>12</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>37</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>44</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>3</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>6</Soak>
+			<Speed>85</Speed>
+		</Creature>
+		<Creature id="gardening_spellstudent">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>GARDENING_SPELLSTUDENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GARDENING_SPELLSTUDENT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GARDENING_SPELLSTUDENT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GARDENING_SPELLSTUDENT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>15</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>15</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>60</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>30</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/gardening_spellstudent.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="summonings_student">
+			<RaceID>08_ogre</RaceID>
+			<ShortDescriptionSID>SUMMONINGS_STUDENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SUMMONINGS_STUDENT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SUMMONINGS_STUDENT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SUMMONINGS_STUDENT_TRADE_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>O</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/summonings_student.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="enchantments_student">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>ENCHANTMENTS_STUDENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ENCHANTMENTS_STUDENT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ENCHANTMENTS_STUDENT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ENCHANTMENTS_STUDENT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/enchantments_student.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="evocations_student">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>EVOCATIONS_STUDENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EVOCATIONS_STUDENT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EVOCATIONS_STUDENT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EVOCATIONS_STUDENT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>h</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/evocations_student.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="runic_student">
+			<RaceID>10_gnome</RaceID>
+			<ShortDescriptionSID>RUNIC_STUDENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>RUNIC_STUDENT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>RUNIC_STUDENT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>RUNIC_STUDENT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/runic_student.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="golgoa">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>GOLGOA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GOLGOA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GOLGOA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GOLGOA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>40</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>90000</Exp>
+			</CreatureGeneration>
+			<Level>40</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>80</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/golgoa.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="lorelei">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>LORELEI_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LORELEI_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LORELEI_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LORELEI_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>40</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>90000</Exp>
+			</CreatureGeneration>
+			<Level>40</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>80</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/lorelei.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="okhoa">
+			<RaceID>08_ogre</RaceID>
+			<ShortDescriptionSID>OKHOA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>OKHOA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>OKHOA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>OKHOA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>40</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>90000</Exp>
+			</CreatureGeneration>
+			<Level>40</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>80</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/okhoa.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="scheldt">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SCHELDT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SCHELDT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SCHELDT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SCHELDT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>40</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>90000</Exp>
+			</CreatureGeneration>
+			<Level>40</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>80</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/scheldt.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="lish">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>LISH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LISH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LISH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LISH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>3</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/lish.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>c_02_flame_dart</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
+		<Creature id="asher">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>ASHER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ASHER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ASHER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ASHER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>p</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/asher.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="akhra_goblin">
+			<RaceID>07_goblin</RaceID>
+			<ShortDescriptionSID>AKHRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>AKHRA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>AKHRA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>AKHRA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<DangerLevel>14</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>14</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>43</Exp>
+			</CreatureGeneration>
+			<Level>14</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>28</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>10</Evade>
+			<Soak>5</Soak>
+		</Creature>
+		<Creature id="axander">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>AXANDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>AXANDER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>AXANDER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>AXANDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/axander.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="vorogil">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>VOROGIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VOROGIL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VOROGIL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>VOROGIL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<DangerLevel>13</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>65</Exp>
+			</CreatureGeneration>
+			<Level>13</Level>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>26</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Speed>40</Speed>
+		</Creature>
+		<Creature id="wart">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>WART_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WART_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WART_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WART_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>2</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="blind_oracle">
+			<RaceID>05_fae</RaceID>
+			<ShortDescriptionSID>BLIND_ORACLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BLIND_ORACLE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLIND_ORACLE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BLIND_ORACLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>O</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>10</NumSides>
+				<Type>10</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/blind_oracle.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="praetor_footman">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>PRAETOR_FOOTMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PRAETOR_FOOTMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PRAETOR_FOOTMAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PRAETOR_FOOTMAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>18</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>22</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>500</Exp>
+			</CreatureGeneration>
+			<Level>18</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/praetor_footman.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="coalman">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>COALMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>COALMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>COALMAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>COALMAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/coalman.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="praetor_scullerymaid">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>PRAETOR_SCULLERYMAID_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PRAETOR_SCULLERYMAID_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PRAETOR_SCULLERYMAID_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PRAETOR_SCULLERYMAID_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>3</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/praetor_scullerymaid.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="praetor_cook">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>PRAETOR_COOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PRAETOR_COOK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PRAETOR_COOK_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PRAETOR_COOK_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>10</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/praetor_cook.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="praetor_secretary">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>PRAETOR_SECRETARY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PRAETOR_SECRETARY_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PRAETOR_SECRETARY_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PRAETOR_SECRETARY_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>20</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>220</Exp>
+			</CreatureGeneration>
+			<Level>20</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/praetor_secretary.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="praetor_dantus">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>PRAETOR_DANTUS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PRAETOR_DANTUS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PRAETOR_DANTUS_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>25</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2000</Exp>
+			</CreatureGeneration>
+			<Level>25</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>50</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Speed>35</Speed>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/praetor_dantus.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="emperor_titus">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>EMPEROR_TITUS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EMPEROR_TITUS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EMPEROR_TITUS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EMPEROR_TITUS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>50</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>50</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>50</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>100</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<Evade>30</Evade>
+			<Speed>40</Speed>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/emperor_titus.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="emperors_guard">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>EMPERORS_GUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EMPERORS_GUARD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EMPERORS_GUARD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EMPERORS_GUARD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Soak>15</Soak>
+		</Creature>
+		<Creature id="questare">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>QUESTARE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>QUESTARE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>QUESTARE_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>20</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>220</Exp>
+			</CreatureGeneration>
+			<Level>20</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/questare.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="senator">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SENATOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SENATOR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SENATOR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SENATOR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>s</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>8</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+			</CreatureGeneration>
+			<Level>8</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>16</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="magici_merchant">
+			<RaceID>10_gnome</RaceID>
+			<ShortDescriptionSID>MAGICI_MERCHANT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MAGICI_MERCHANT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MAGICI_MERCHANT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MAGICI_MERCHANT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/magici_merchant.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="herbalist">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>HERBALIST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HERBALIST_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HERBALIST_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HERBALIST_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/herbalist.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="scamander">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SCAMANDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SCAMANDER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SCAMANDER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SCAMANDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>20</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>220</Exp>
+			</CreatureGeneration>
+			<Level>20</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<Soak>15</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/scamander.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="carcassian_recruiter">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>CARCASSIAN_RECRUITER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CARCASSIAN_RECRUITER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CARCASSIAN_RECRUITER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CARCASSIAN_RECRUITER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>7</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>7</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>8</Exp>
+			</CreatureGeneration>
+			<Level>7</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>14</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/carcassian_recruiter.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="pitmistress_ghara">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>PITMISTRESS_GHARA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PITMISTRESS_GHARA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PITMISTRESS_GHARA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PITMISTRESS_GHARA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>40</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>90000</Exp>
+			</CreatureGeneration>
+			<Level>40</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>80</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/pitmistress_ghara.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="commoner">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>COMMONER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>COMMONER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>COMMONER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>COMMONER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>club</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>2</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="noble">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>NOBLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>NOBLE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>NOBLE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>NOBLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>n</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>rapier</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>0</Type>
+			</Damage>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="c_01_minor_healing">
@@ -26659,6 +28661,25 @@
 				<NumDice>4</NumDice>
 				<NumSides>20</NumSides>
 				<Type>2</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="c_16_electric_arc">
+			<NameSID>ELECTRIC_ARC_NAME_SID</NameSID>
+			<PlayerCastMessageSID>ELECTRIC_ARC_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>ELECTRIC_ARC_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>11</Colour>
+			<APCost>2</APCost>
+			<Speed>1</Speed>
+			<Range>3</Range>
+			<Shape>1</Shape>
+			<Radius>1</Radius>
+			<Damage>
+				<NumDice>3</NumDice>
+				<NumSides>3</NumSides>
+				<Type>10</Type>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
@@ -28419,9 +30440,48 @@
 			<Effect>25</Effect>
 			<Uses>3</Uses>
 		</Trap>
+		<Trap id="teleport_trap">
+			<DescriptionSID>TRAP_TELEPORT_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_TELEPORT_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>*</TriggerSymbol>
+			<PlayerDamageMessageSID>TRAP_TELEPORT_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>10</Colour>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>1</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Effect>5</Effect>
+			<Uses>5</Uses>
+		</Trap>
 	</Traps>
 	<Items>
 		<Amulets>
+			<Amulet id="amulet_carcassian_emperor">
+				<DescriptionSID>AMULET_CARCASSIAN_EMPEROR_SID</DescriptionSID>
+				<UsageDescriptionSID>AMULET_CARCASSIAN_EMPEROR_USAGE_SID</UsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>13</Material>
+				<TextDetails>
+					<Symbol>#</Symbol>
+					<Colour>4</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Pierce>0.10</Pierce>
+					<Pound>0.10</Pound>
+					<Arcane>0.10</Arcane>
+				</Resistances>
+				<Evade>12</Evade>
+				<Soak>3</Soak>
+			</Amulet>
 			<Amulet id="two_moon_amulet">
 				<DescriptionSID>TWO_MOON_AMULET_SID</DescriptionSID>
 				<UsageDescriptionSID>TWO_MOON_AMULET_USAGE_SID</UsageDescriptionSID>
@@ -29453,6 +31513,25 @@
 				<Evade>1</Evade>
 				<Soak>1</Soak>
 			</Armour>
+			<Armour id="linothorax">
+				<DescriptionSID>LINOTHORAX_SID</DescriptionSID>
+				<UsageDescriptionSID>LINOTHORAX_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>4</Evade>
+				<Soak>2</Soak>
+			</Armour>
 			<Armour id="leather_armour">
 				<DescriptionSID>LEATHER_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_ARMOUR_USAGE_SID</UsageDescriptionSID>
@@ -29470,7 +31549,7 @@
 					</Property>
 				</Properties>
 				<Evade>0</Evade>
-				<Soak>2</Soak>
+				<Soak>3</Soak>
 			</Armour>
 			<Armour id="_hide_armour">
 				<DescriptionSID>HIDE_ARMOUR_SID</DescriptionSID>
@@ -29723,6 +31802,25 @@
 					</Property>
 				</Properties>
 				<Evade>2</Evade>
+				<Soak>1</Soak>
+			</Armour>
+			<Armour id="calara_cloak">
+				<DescriptionSID>CALARA_CLOAK_SID</DescriptionSID>
+				<UsageDescriptionSID>CALARA_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>7</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>3</Evade>
 				<Soak>1</Soak>
 			</Armour>
 			<Armour id="_hide_cloak">
@@ -32087,6 +34185,7 @@
 					<Pounds>20</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
+				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
@@ -32352,6 +34451,30 @@
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="qaali">
+				<DescriptionSID>QAALI_SID</DescriptionSID>
+				<UsageDescriptionSID>QAALI_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pound>0.20</Pound>
+				</Resistances>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="creators_might">
 				<DescriptionSID>CREATORS_MIGHT_SID</DescriptionSID>
 				<UsageDescriptionSID>CREATORS_MIGHT_USAGE_SID</UsageDescriptionSID>
@@ -32467,6 +34590,30 @@
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="calara_whip">
+				<DescriptionSID>CALARA_WHIP_SID</DescriptionSID>
+				<UsageDescriptionSID>CALARA_WHIP_USAGE_SID</UsageDescriptionSID>
+				<Value>60</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>4</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.30</Heat>
+				</Resistances>
+				<Skill>1008</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>42</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>8</NumDice>
+					<NumSides>4</NumSides>
+					<Type>3</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="shepherd_crook">
 				<DescriptionSID>SHEPHERD_CROOK_SID</DescriptionSID>
 				<UsageDescriptionSID>SHEPHERD_CROOK_USAGE_SID</UsageDescriptionSID>
@@ -32517,6 +34664,36 @@
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="wizard_staff">
+				<DescriptionSID>WIZARD_STAFF_SID</DescriptionSID>
+				<UsageDescriptionSID>WIZARD_STAFF_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Arcane>0.20</Arcane>
+				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>9</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="_branch">
@@ -32979,10 +35156,11 @@
 				<UsageDescriptionSID>HUGE_ROCK_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight>
-					<Pounds>30</Pounds>
+					<Pounds>80</Pounds>
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
+				<HandsRequired>2</HandsRequired>
 				<Material>7</Material>
 				<TextDetails>
 					<Symbol>*</Symbol>
@@ -32993,7 +35171,7 @@
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
 				<Difficulty>52</Difficulty>
-				<Speed>10</Speed>
+				<Speed>15</Speed>
 				<Damage>
 					<NumDice>8</NumDice>
 					<NumSides>6</NumSides>
@@ -33027,7 +35205,7 @@
 					<EffectBonus>30</EffectBonus>
 				</Damage>
 			</Missile>
-			<Missile id="clay_pot">
+			<Missile id="_clay_pot">
 				<DescriptionSID>CLAY_POT_SID</DescriptionSID>
 				<UsageDescriptionSID>CLAY_POT_USAGE_SID</UsageDescriptionSID>
 				<Value>1</Value>
@@ -34252,6 +36430,44 @@
 				<Nutrition>1700</Nutrition>	
 				<FoodType>2</FoodType>
 			</Food>
+			<Food id="salted_nuts">
+				<DescriptionSID>SALTED_NUTS_SID</DescriptionSID>
+				<UsageDescriptionSID>SALTED_NUTS_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>500</Nutrition>	
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="skewer_mystery_meat">
+				<DescriptionSID>SKEWER_MYSTERY_MEAT_SID</DescriptionSID>
+				<UsageDescriptionSID>SKEWER_MYSTERY_MEAT_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>				
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>600</Nutrition>	
+				<FoodType>2</FoodType>
+			</Food>
 		</Foodstuffs>
 		<Plants>
 			<Plant id="_kingflower">
@@ -34600,7 +36816,7 @@
 			<Potion id="elven_brandy">
 				<DescriptionSID>ELVEN_BRANDY_SID</DescriptionSID>
 				<UsageDescriptionSID>ELVEN_BRANDY_USAGE_SID</UsageDescriptionSID>
-				<Value>12</Value>
+				<Value>8</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -34850,7 +37066,7 @@
 				<UnidentifiedDescriptionSID>UNID_FIRE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FIRE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FIRE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>10</Value>
+				<Value>9</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -34894,7 +37110,7 @@
 				<UnidentifiedDescriptionSID>UNID_FRUIT_JUICE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FRUIT_JUICE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FRUIT_JUICE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>30</Value>
+				<Value>3</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -35137,6 +37353,19 @@
 			</Currency>
 		</Currencies>
 		<Tools>
+			<Tool id="skeleton_key">
+				<DescriptionSID>SKELETON_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>SKELETON_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>*</LockID>
+			</Tool>
 			<Tool id="kew_key">
 				<DescriptionSID>KEW_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>KEW_KEY_USAGE_SID</UsageDescriptionSID>
@@ -35209,6 +37438,94 @@
 				<DangerLevel>-1</DangerLevel>
 				<LockID>eka_door</LockID>
 			</Tool>
+			<Tool id="okhoa_key">
+				<DescriptionSID>OKHOA_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>OKHOA_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>tower_library</LockID>
+			</Tool>
+			<Tool id="carcassia_footman_key">
+				<DescriptionSID>CARCASSIA_FOOTMAN_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CARCASSIA_FOOTMAN_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carc_b1_footman</LockID>
+			</Tool>
+			<Tool id="carcassia_coalman_key">
+				<DescriptionSID>CARCASSIA_COALMAN_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CARCASSIA_COALMAN_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carc_b1_coalman</LockID>
+			</Tool>
+			<Tool id="carcassia_scullerymaid_key">
+				<DescriptionSID>CARCASSIA_SCULLERYMAID_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CARCASSIA_SCULLERYMAID_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carc_b1_scullerymaid</LockID>
+			</Tool>
+			<Tool id="carcassia_cook_key">
+				<DescriptionSID>CARCASSIA_COOK_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CARCASSIA_COOK_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carc_b1_cook</LockID>
+			</Tool>
+			<Tool id="carcassia_praetor_key">
+				<DescriptionSID>CARCASSIA_PRAETOR_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CARCASSIA_PRAETOR_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carc_b1_praetor</LockID>
+			</Tool>
+			<Tool id="casino_key">
+				<DescriptionSID>CASINO_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CASINO_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carcassia_casino</LockID>
+			</Tool>
+			<Tool id="carcassia_armory_key">
+				<DescriptionSID>CARCASSIA_ARMORY_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CARCASSIA_ARMORY_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carc_b1_armory</LockID>
+			</Tool>
 			<Tool id="_crypt_key">
 				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CRYPT_KEY_USAGE_SID</UsageDescriptionSID>
@@ -35221,6 +37538,19 @@
 				<DangerLevel>-1</DangerLevel>
 				<LockID/>
 				<!-- Lock ID is set dynamically by the CryptGenerator -->
+			</Tool>
+			<Tool id="_template_key">
+				<DescriptionSID>TEMPLATE_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>TEMPLATE_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>5</Ounces>
+				</Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID/>
+				<!-- Lock ID is set dynamically in script, etc -->
 			</Tool>
 			<Tool id="rune_stone">
 				<DescriptionSID>RUNE_STONE_SID</DescriptionSID>
@@ -36306,6 +38636,24 @@
 				<SpellID>c_15_shards</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
+			<Spellbook id="electric_arc_spellbook">
+				<DescriptionSID>ELECTRIC_ARC_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_ELECTRIC_ARC_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>ELECTRIC_ARC_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_ELECTRIC_ARC_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<SpellID>c_16_electric_arc</SpellID>
+				<Difficulty>30</Difficulty>
+			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -37208,6 +39556,20 @@
 					</Property>
 				</Properties>
 			</Item>			
+			<Item id="talmai_body">
+				<DescriptionSID>TALMAI_BODY_SID</DescriptionSID>
+				<UsageDescriptionSID>TALMAI_BODY_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>120</Pounds>
+				</Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="mummified_corpse">
 				<DescriptionSID>MUMMIFIED_CORPSE_SID</DescriptionSID>
 				<UsageDescriptionSID>MUMMIFIED_CORPSE_USAGE_SID</UsageDescriptionSID>
@@ -37310,7 +39672,7 @@
 				<UsageDescriptionSID>STEEL_INGOT_USAGE_SID</UsageDescriptionSID>
 				<Value>25</Value>
 				<Weight>
-					<Pounds>5</Pounds>
+					<Pounds>10</Pounds>
 				</Weight>
 				<Material>6</Material>
 				<DangerLevel>8</DangerLevel>
@@ -37349,6 +39711,20 @@
 				<TextDetails>
 					<Symbol>*</Symbol>
 					<Colour>9</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_coal">
+				<DescriptionSID>COAL_SID</DescriptionSID>
+				<UsageDescriptionSID>COAL_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
@@ -37644,6 +40020,18 @@
 			<CalendarDay>328</CalendarDay>
 		</Day>
 	</Calendar>
+	<StartingLocations>
+		<StartingLocation id="01_isen_dun">
+			<Row>96</Row>
+			<Col>96</Col>
+			<DescriptionSID>STARTING_LOCATION_ISEN_DUN</DescriptionSID>
+		</StartingLocation>
+		<StartingLocation id="02_carcassia">
+			<Row>46</Row>
+			<Col>53</Col>
+			<DescriptionSID>STARTING_LOCATION_CARCASSIA</DescriptionSID>
+		</StartingLocation>
+	</StartingLocations>
 	<Scripts>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>

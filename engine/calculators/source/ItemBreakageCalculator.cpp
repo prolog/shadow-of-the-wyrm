@@ -7,7 +7,7 @@ using namespace std;
 const int ItemBreakageCalculator::BASE_PCT_CHANCE_DIGGING_BREAKAGE = 50;
 const float ItemBreakageCalculator::MIN_SKILL_BREAKAGE_MULTIPLIER = 0.15f;
 
-int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(CreaturePtr creature, ItemPtr item)
+int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(CreaturePtr creature, TilePtr tile, ItemPtr item)
 {
   int result = BASE_PCT_CHANCE_DIGGING_BREAKAGE;
 
@@ -28,8 +28,10 @@ int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(CreaturePtr cr
     result = override.second;
   }
 
-  double skill_break_mult = calculate_skill_breakage_multiplier(creature);
-  result = static_cast<int>(result * skill_break_mult);
+  float skill_break_mult = calculate_skill_breakage_multiplier(creature);
+  float tile_break_mult  = calculate_tile_breakage_multiplier(tile);
+
+  result = static_cast<int>(result * skill_break_mult * tile_break_mult);
 
   return result;
 }
@@ -65,6 +67,18 @@ float ItemBreakageCalculator::calculate_skill_breakage_multiplier(CreaturePtr cr
   }
 
   return skill_mult;
+}
+
+float ItemBreakageCalculator::calculate_tile_breakage_multiplier(TilePtr tile)
+{
+  float tile_mult = 1.0f;
+
+  if (tile != nullptr)
+  {
+    tile_mult = tile->get_breakage_multiplier();
+  }
+
+  return tile_mult;
 }
 
 #ifdef UNIT_TESTS

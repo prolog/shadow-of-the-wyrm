@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "AnimationTranslator.hpp"
 #include "AttackScript.hpp"
+#include "AttackSpeedCalculatorFactory.hpp"
 #include "BallShapeProcessor.hpp"
 #include "ClassManager.hpp"
 #include "CombatConstants.hpp"
@@ -40,7 +41,6 @@
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StealthCalculator.hpp"
-#include "SpeedCalculatorFactory.hpp"
 #include "StatisticsMarker.hpp"
 #include "TertiaryUnarmedCalculator.hpp"
 #include "TextKeys.hpp"
@@ -123,10 +123,11 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
   ActionCostValue action_cost_value = 0;
 
   bool mark_for_weapon_and_combat_skills_and_stat = false;
- 
+  int damage_dealt = 0;
+
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(attacking_creature, attack_type);
   CombatTargetNumberCalculatorPtr ctn_calculator = CombatTargetNumberCalculatorFactory::create_target_number_calculator(attack_type);
-  ISpeedCalculatorPtr speed_calculator = SpeedCalculatorFactory::create_speed_calculator(attack_type);
+  AttackSpeedCalculatorPtr speed_calculator = AttackSpeedCalculatorFactory::create_speed_calculator(attack_type);
 
   // Once an attack is made, the creature becomes hostile, and if it was
   // previously not hostile
@@ -179,8 +180,8 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     // Hit
     else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
     {
-      hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type, ast);
-      mark_for_weapon_and_combat_skills_and_stat = true;
+      damage_dealt = hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type, ast);
+      mark_for_weapon_and_combat_skills_and_stat = (damage_dealt > 0);
       destroy_weapon_if_necessary(attacking_creature, attack_type);
     }
     // Close miss (flavour text only.)
@@ -197,9 +198,9 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     counter_strike_if_necessary(attacking_creature, attacked_creature, ast);
   }
 
-  // If the attack was a PvM type attack, mark the weapon/spell-category and 
-  // combat/magic skills of the attacking creature, and add the attacking 
-  // creature as a threat to the attacked creature.
+  // If the attack was a successful PvM type attack (damage was dealt), 
+  // mark the weapon/spell-category and combat/magic skills of the 
+  // attacking creature, and add the attacking creature as a threat to the attacked creature.
   //
   // Don't improve stats if the attacking creature is dead (as a result of a
   // counter-strike, etc).
@@ -421,7 +422,7 @@ bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature,
   return scythed;
 }
 
-bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type, const AttackSequenceType ast)
+int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type, const AttackSequenceType ast)
 {
   WeaponManager wm;
   Game& game = Game::instance();
@@ -526,7 +527,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   // If the attack is scything, continue the attack on nearby creatures.
   handle_scything_if_necessary(attacking_creature, attacked_creature, attack_type, ast, damage_info);
 
-  return true;
+  return damage_dealt;
 }
 
 void CombatManager::handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt)
@@ -845,6 +846,12 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
       }
 
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
+
+      // Record the first kill if necessary.
+      if (attacking_creature && !attacking_creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_FIRST_KILL_ID))
+      {
+        attacking_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FIRST_KILL_ID, attacked_creature->get_original_id());
+      }
 
       // Kill the creature, and run the death event function, if necessary.
       update_mortuaries(attacking_creature, attacked_creature->get_original_id());

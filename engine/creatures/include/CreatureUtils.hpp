@@ -60,6 +60,8 @@ class CreatureUtils
     static void remove_status_ailments_from_wearable(WearablePtr wearable, CreaturePtr creature);
     static bool has_status_ailment_from_wearable(CreaturePtr creature, const std::string& status_id);
 
+    static MapPtr update_fov_map(MapPtr current_map, MapPtr view_map, CreaturePtr creature);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

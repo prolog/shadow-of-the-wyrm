@@ -18,7 +18,10 @@
 #include "NeutralAltar.hpp"
 #include "Pew.hpp"
 #include "RegularStatues.hpp"
+#include "Sign.hpp"
+#include "SlotMachine.hpp"
 #include "StoneMarker.hpp"
+#include "Table.hpp"
 #include "Tannery.hpp"
 #include "WheelAndLoom.hpp"
 
@@ -104,7 +107,10 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr trap               = std::make_shared<Trap>();
   FeaturePtr bed                = std::make_shared<Bed>();
   FeaturePtr stone_marker       = std::make_shared<StoneMarker>();
+  FeaturePtr table              = std::make_shared<Table>();
   FeaturePtr basic_feature      = std::make_shared<BasicFeature>();
+  FeaturePtr slot_machine       = std::make_shared<SlotMachine>();
+  FeaturePtr sign               = std::make_shared<Sign>("fake_sid");
 
   feature_map = FeatureSerializationMap{{ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
                                         {ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -132,7 +138,10 @@ void FeatureGenerator::initialize_feature_map()
                                         {ClassIdentifier::CLASS_ID_TRAP, trap},
                                         {ClassIdentifier::CLASS_ID_BED, bed},
                                         {ClassIdentifier::CLASS_ID_STONE_MARKER, stone_marker},
-                                        {ClassIdentifier::CLASS_ID_BASIC_FEATURE, basic_feature}};
+                                        {ClassIdentifier::CLASS_ID_TABLE, table},
+                                        {ClassIdentifier::CLASS_ID_BASIC_FEATURE, basic_feature},
+                                        {ClassIdentifier::CLASS_ID_SLOT_MACHINE, slot_machine},
+                                        {ClassIdentifier::CLASS_ID_SIGN, sign}};
 }
 
 
@@ -165,11 +174,12 @@ FeaturePtr FeatureGenerator::generate_bed()
 }
 
 // Generate a door based on the parameters provided.
-DoorPtr FeatureGenerator::generate_door()
+DoorPtr FeatureGenerator::generate_door(const EntranceStateType est)
 {
   LockPtr lock_info;
   EntranceState door_state;
   DoorPtr door = std::make_shared<Door>(lock_info, door_state);
+  door->get_state_ref().set_state(est);
   return door;
 }
 
@@ -226,8 +236,14 @@ FeaturePtr FeatureGenerator::generate_bench()
 SarcophagusPtr FeatureGenerator::generate_sarcophagus(const MaterialType material_type)
 {
   SarcophagusPtr sarcophagus = std::make_shared<Sarcophagus>(material_type);
-
   return sarcophagus;
+}
+
+// Generate a slot machine
+SlotMachinePtr FeatureGenerator::generate_slot_machine(const MaterialType material_type, const int cost, const int pct_chance_win, const float payout_multiplier)
+{
+  SlotMachinePtr slot_machine = std::make_shared<SlotMachine>(material_type, cost, pct_chance_win, payout_multiplier);
+  return slot_machine;
 }
 
 // Generate a forge
@@ -265,6 +281,12 @@ FeaturePtr FeatureGenerator::generate_stone_marker()
   return stm;
 }
 
+FeaturePtr FeatureGenerator::generate_table()
+{
+  FeaturePtr table = std::make_shared<Table>();
+  return table;
+}
+
 // Generate a basic feature by ID.
 // Will return null if the feature doesn't exist in the game's collection.
 FeaturePtr FeatureGenerator::generate_basic_feature(const string& basic_feature_id)
@@ -292,4 +314,10 @@ FeaturePtr FeatureGenerator::generate_basic_feature(const MaterialType mt, const
 {
   FeaturePtr feature = std::make_shared<BasicFeature>(mt, symbol, colour, desc_sid);
   return feature;
+}
+
+FeaturePtr FeatureGenerator::generate_sign(const string& text_sid)
+{
+  FeaturePtr sign = std::make_shared<Sign>(text_sid);
+  return sign;
 }

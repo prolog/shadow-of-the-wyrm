@@ -45,6 +45,22 @@ vector<string> LuaUtils::get_string_array_from_table(lua_State* ls, int lua_inde
   return str_array;
 }
 
+void LuaUtils::create_return_table_from_string_vector(lua_State* ls, const vector<string>& str_vec)
+{
+  lua_newtable(ls);
+  size_t str_vec_size = str_vec.size();
+
+  lua_createtable(ls, static_cast<int>(str_vec_size), 0);
+
+  for (unsigned int i = 0; i < str_vec_size; i++)
+  {
+    string cur_item = str_vec.at(i);
+
+    lua_pushstring(ls, cur_item.c_str());
+    lua_rawseti(ls, -2, i + 1);
+  }
+}
+
 void LuaUtils::set_field(lua_State* ls, const char* name, const bool val)
 {
   if (ls != nullptr)
@@ -63,4 +79,11 @@ void LuaUtils::set_field(lua_State* ls, const char* name, const int val)
     lua_pushinteger(ls, val);
     lua_settable(ls, -3);
   }
+}
+
+void LuaUtils::log_and_raise(lua_State* ls, const string& error_message)
+{
+  Log::instance().error(error_message);
+  lua_pushstring(ls, error_message.c_str());
+  lua_error(ls);
 }

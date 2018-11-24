@@ -25,6 +25,7 @@ end
 local steal_fn = steal
 
 -- Set up thievery for any creatures that require it.
+attack.set_attack_fn("urchin", steal_fn)
 attack.set_attack_fn("thief", steal_fn)
 attack.set_attack_fn("snakeling_thief", steal_fn)
 

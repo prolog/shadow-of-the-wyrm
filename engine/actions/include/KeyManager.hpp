@@ -9,5 +9,8 @@ class KeyManager : public IActionManager
     bool has_key(CreaturePtr creature, LockPtr lock);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+
+  protected:
+    static const std::string SKELETON_KEY_ID;
 };
 
