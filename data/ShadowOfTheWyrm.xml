@@ -2833,6 +2833,9 @@
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
+						<ID>_mold_and_deckle</ID>
+					</InitialItem>
+					<InitialItem>
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>
@@ -37665,6 +37668,17 @@
 				<Material>8</Material>
 				<DangerLevel>2</DangerLevel>
 			</Tool>
+			<Tool id="_mold_and_deckle">
+				<DescriptionSID>MOLD_AND_DECKLE_SID</DescriptionSID>
+				<UsageDescriptionSID>MOLD_AND_DECKLE_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>1</DangerLevel>
+			</Tool>
 			<Tool id="lute">
 				<DescriptionSID>LUTE_SID</DescriptionSID>
 				<UsageDescriptionSID>LUTE_USAGE_SID</UsageDescriptionSID>
@@ -39502,6 +39516,16 @@
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
+			<Item id="_paper_pulp">
+				<DescriptionSID>PAPER_PULP_SID</DescriptionSID>
+				<UsageDescriptionSID>PAPER_PULP_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_quill">
 				<DescriptionSID>QUILL_SID</DescriptionSID>
 				<UsageDescriptionSID>QUILL_USAGE_SID</UsageDescriptionSID>

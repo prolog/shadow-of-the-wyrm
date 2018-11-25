@@ -1,5 +1,5 @@
 Me:
-- How will Night Sight train?  Maybe at each TOD transition?
+- Paper making: Pulper.
 - No teleport spell!
 - Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
@@ -29,6 +29,7 @@ Me:
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Buildings generated in towns should automatically get inhabitants.
+- Explore the cities Carcassia is built on top of.
 - Revisit smithing.
 - Do something with the Order Ex Gladiatores
 - Revisit how values are updated after enchantment.

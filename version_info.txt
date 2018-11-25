@@ -7,6 +7,12 @@ Shadow of the Wyrm v1.0.1 "Besard"
   Sight can allow you to see and attack a creature at range while it 
   cannot see you itself.
 
+- Artisans start with a mold and deckle in their inventory.
+
+- New items: mold and deckle, paper pulp.
+
+- Stanzas for "Tel and Floridel".
+
 Shadow of the Wyrm v1.0.0 "Dalza"
 - Version declared January 20, 2018. Version finalized November 23, 2018.
 
