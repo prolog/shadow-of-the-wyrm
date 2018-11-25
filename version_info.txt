@@ -9,6 +9,8 @@ Shadow of the Wyrm v1.0.1 "Besard"
 
 - Artisans start with a mold and deckle in their inventory.
 
+- More name combinations.
+
 - New items: mold and deckle, paper pulp.
 
 - Stanzas for "Tel and Floridel".

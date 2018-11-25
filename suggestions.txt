@@ -4,6 +4,7 @@ Me:
 - Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
+- "The Vertical City"
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
 - Dungeons and caverns should have a chance to grow magic trees.
 - Tidy up scripts/quests into subdirectories, like carcassia, and test.
