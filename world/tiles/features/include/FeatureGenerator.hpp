@@ -32,6 +32,7 @@ class FeatureGenerator
     static SarcophagusPtr generate_sarcophagus(const MaterialType material_type = MaterialType::MATERIAL_TYPE_STONE);
     static SlotMachinePtr generate_slot_machine(const MaterialType material_type, const int cost, const int pct_chance_win, const float payout_multiplier);
     static FeaturePtr generate_tannery();
+    static FeaturePtr generate_pulper();
     static FeaturePtr generate_jeweler_workbench();
     static FeaturePtr generate_wheel_and_loom();
     static FeaturePtr generate_stone_marker();

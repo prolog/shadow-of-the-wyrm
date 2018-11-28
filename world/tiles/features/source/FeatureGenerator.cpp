@@ -17,6 +17,7 @@
 #include "Log.hpp"
 #include "NeutralAltar.hpp"
 #include "Pew.hpp"
+#include "Pulper.hpp"
 #include "RegularStatues.hpp"
 #include "Sign.hpp"
 #include "SlotMachine.hpp"
@@ -102,6 +103,7 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr barrel             = std::make_shared<Barrel>();
   FeaturePtr forge              = std::make_shared<Forge>();
   FeaturePtr tannery            = std::make_shared<Tannery>();
+  FeaturePtr pulper             = std::make_shared<Pulper>();
   FeaturePtr jeweler_workbench  = std::make_shared<JewelerWorkbench>();
   FeaturePtr wheel_and_loom     = std::make_shared<WheelAndLoom>();
   FeaturePtr trap               = std::make_shared<Trap>();
@@ -141,7 +143,8 @@ void FeatureGenerator::initialize_feature_map()
                                         {ClassIdentifier::CLASS_ID_TABLE, table},
                                         {ClassIdentifier::CLASS_ID_BASIC_FEATURE, basic_feature},
                                         {ClassIdentifier::CLASS_ID_SLOT_MACHINE, slot_machine},
-                                        {ClassIdentifier::CLASS_ID_SIGN, sign}};
+                                        {ClassIdentifier::CLASS_ID_SIGN, sign},
+                                        {ClassIdentifier::CLASS_ID_PULPER, pulper}};
 }
 
 
@@ -258,6 +261,13 @@ FeaturePtr FeatureGenerator::generate_tannery()
 {
   FeaturePtr tannery = std::make_shared<Tannery>();
   return tannery;
+}
+
+// Generate a pulper
+FeaturePtr FeatureGenerator::generate_pulper()
+{
+  FeaturePtr pulper = std::make_shared<Pulper>();
+  return pulper;
 }
 
 // Generate a jeweler's workbench

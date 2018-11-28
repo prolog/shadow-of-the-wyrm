@@ -581,6 +581,7 @@ bool DungeonGenerator::generate_craft_room(MapPtr map, const int start_row, cons
 
   vector<ClassIdentifier> feature_ids = {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, 
                                          ClassIdentifier::CLASS_ID_TANNERY, 
+                                         ClassIdentifier::CLASS_ID_PULPER,
                                          ClassIdentifier::CLASS_ID_FORGE, 
                                          ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH};
 
