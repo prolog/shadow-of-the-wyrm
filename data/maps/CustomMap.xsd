@@ -210,6 +210,7 @@
 				<xs:element name="Pew" type="tns:Pew"/>
 				<xs:element name="Sarcophagus" type="tns:Sarcophagus"/>
 				<xs:element name="Tannery" type="tns:Tannery"/>
+				<xs:element name="Pulper" type="tns:Pulper"/>
 				<xs:element name="JewelerWorkbench" type="tns:JewelerWorkbench"/>
 				<xs:element name="WheelAndLoom" type="tns:WheelAndLoom"/>
 				<xs:element name="Bed" type="tns:Feature"/>
@@ -326,6 +327,15 @@
 	<xs:complexType name="Tannery">
 		<xs:annotation>
 			<xs:documentation>Defines a Tannery feature.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:Feature">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Pulper">
+		<xs:annotation>
+			<xs:documentation>Defines a Pulper feature.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tns:Feature">

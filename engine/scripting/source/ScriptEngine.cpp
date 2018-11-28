@@ -267,6 +267,7 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCLASS_ID_TANNERY);
   lua_exportConst(ls, CCLASS_ID_JEWELER_WORKBENCH);
   lua_exportConst(ls, CCLASS_ID_WHEEL_AND_LOOM);
+  lua_exportConst(ls, CCLASS_ID_PULPER);
 
   lua_exportConst(ls, CCITY_SECTOR_PUBLIC_AREA);
   lua_exportConst(ls, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL);
