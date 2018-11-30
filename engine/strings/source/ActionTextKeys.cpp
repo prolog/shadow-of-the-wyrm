@@ -605,6 +605,7 @@ const string ActionTextKeys::ACTION_PAPERCRAFT_NO_EQUIPMENT    = "ACTION_PAPERCR
 const string ActionTextKeys::ACTION_PAPERCRAFT_NO_PULP         = "ACTION_PAPERCRAFT_NO_PULP";
 const string ActionTextKeys::ACTION_PAPERCRAFT_SUCCESS         = "ACTION_PAPERCRAFT_SUCCESS";
 const string ActionTextKeys::ACTION_PAPERCRAFT_FAILURE         = "ACTION_PAPERCRAFT_FAILURE";
+const string ActionTextKeys::ACTION_PAPERCRAFT_PULP_TOO_LIGHT  = "ACTION_PAPERCRAFT_PULP_TOO_LIGHT";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

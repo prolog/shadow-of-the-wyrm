@@ -13,7 +13,9 @@ class Weight : public ISerializable
 
     bool operator==(const Weight& weight) const;
     bool operator>(const Weight& weight) const;
+    bool operator>=(const Weight& weight) const;
     bool operator<(const Weight& weight) const;
+    bool operator<=(const Weight& weight) const;
 
     void set_weight(const uint ounces);
     void set_weight(const uint pounds, const uint ounces);

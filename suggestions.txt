@@ -1,5 +1,6 @@
 Me:
 - Paper making: Pulper.
+- Improve papercraft on use
 - Blackwater traps should pulp some subset of paper items on ground
 - No teleport spell!
 - Sort spells by AP cost

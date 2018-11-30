@@ -2,6 +2,7 @@
 #include "DisplayItemTypeFactory.hpp"
 #include "EdibleItemFilter.hpp"
 #include "HandsRequiredItemFilter.hpp"
+#include "ItemBaseIdFilter.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemMaterialFilter.hpp"
 #include "ItemPropertyFilter.hpp"
@@ -163,4 +164,13 @@ list<IItemFilterPtr> ItemFilterFactory::create_material_type_filter(const Materi
   material_filters.push_back(material_filter);
 
   return material_filters;
+}
+
+list<IItemFilterPtr> ItemFilterFactory::create_item_base_id_filter(const string& item_base_id)
+{
+  list<IItemFilterPtr> base_id_filters;
+  IItemFilterPtr base_id_filter = std::make_shared<ItemBaseIdFilter>(item_base_id);
+  base_id_filters.push_back(base_id_filter);
+
+  return base_id_filters;
 }
