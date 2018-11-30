@@ -127,6 +127,10 @@ class ItemIdKeys
     static const std::string ITEM_ID_BLANK_SCROLL;
     static const std::string ITEM_ID_TEMPLATE_SCROLL;
 
+    // Papercraft
+    static const std::string ITEM_ID_PAPER_PULP;
+    static const std::string ITEM_ID_MOLD_AND_DECKLE;
+
   protected:
     ItemIdKeys();
     ~ItemIdKeys();

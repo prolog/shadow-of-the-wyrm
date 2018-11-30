@@ -62,6 +62,8 @@ const string ItemIdKeys::ITEM_ID_QUILL            = "_quill";
 const string ItemIdKeys::ITEM_ID_INKPOT           = "_inkpot";
 const string ItemIdKeys::ITEM_ID_BLANK_SCROLL     = "_blank_scroll";
 const string ItemIdKeys::ITEM_ID_TEMPLATE_SCROLL  = "_template_scroll";
+const string ItemIdKeys::ITEM_ID_PAPER_PULP       = "_paper_pulp";
+const string ItemIdKeys::ITEM_ID_MOLD_AND_DECKLE  = "_mold_and_deckle";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()

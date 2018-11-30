@@ -4230,6 +4230,9 @@
     <ClInclude Include="world\tiles\features\include\Pulper.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\skills\include\PapercraftSkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8437,6 +8440,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Pulper_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\PapercraftSkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
