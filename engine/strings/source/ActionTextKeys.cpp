@@ -599,6 +599,12 @@ const string ActionTextKeys::ACTION_SLOT_MACHINE_USE           = "ACTION_SLOT_MA
 const string ActionTextKeys::ACTION_SLOT_MACHINE_NSF           = "ACTION_SLOT_MACHINE_NSF";
 const string ActionTextKeys::ACTION_DEALER_WIN_SID             = "DEALER_WIN_SID"; // Match the values from the Lua scripts.
 const string ActionTextKeys::ACTION_DEALER_LOSE_SID            = "DEALER_LOSE_SID"; // Match the values from the Lua scripts.
+const string ActionTextKeys::ACTION_PULP_ARTIFACT_SELECTED     = "ACTION_PULP_ARTIFACT_SELECTED";
+const string ActionTextKeys::ACTION_PULP_CREATED               = "ACTION_PULP_CREATED";
+const string ActionTextKeys::ACTION_PAPERCRAFT_NO_EQUIPMENT    = "ACTION_PAPERCRAFT_NO_EQUIPMENT";
+const string ActionTextKeys::ACTION_PAPERCRAFT_NO_PULP         = "ACTION_PAPERCRAFT_NO_PULP";
+const string ActionTextKeys::ACTION_PAPERCRAFT_SUCCESS         = "ACTION_PAPERCRAFT_SUCCESS";
+const string ActionTextKeys::ACTION_PAPERCRAFT_FAILURE         = "ACTION_PAPERCRAFT_FAILURE";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

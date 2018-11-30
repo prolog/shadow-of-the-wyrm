@@ -194,6 +194,12 @@ class ActionTextKeys
     static const std::string ACTION_SLOT_MACHINE_NSF;
     static const std::string ACTION_DEALER_WIN_SID;
     static const std::string ACTION_DEALER_LOSE_SID;
+    static const std::string ACTION_PULP_ARTIFACT_SELECTED;
+    static const std::string ACTION_PULP_CREATED;
+    static const std::string ACTION_PAPERCRAFT_NO_EQUIPMENT;
+    static const std::string ACTION_PAPERCRAFT_NO_PULP;
+    static const std::string ACTION_PAPERCRAFT_SUCCESS;
+    static const std::string ACTION_PAPERCRAFT_FAILURE;
 
   protected:
     ActionTextKeys();
