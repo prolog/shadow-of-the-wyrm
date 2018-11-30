@@ -2224,3 +2224,13 @@ as Floridel found sleep, the new-crowned king %b
 found rest elusive, thinking of each sword %b
 he'd cast before the court in a diminished chord.
 %p
+The candle burned down to a stub, then out, %b
+and in that closed off room, between the dark %b
+and dawn, he entertained the fears and doubts %b
+that ate him like a cancer.  In his heart, %b
+he knew he should have killed them.  Floridel %b
+was not a warrior-queen.  Her heart was good %b
+but soft, the kind of spirit meant to dwell %b
+within green pastures, or beneath, in books %b
+she'd found a way to harness like a shepherd's crook.
+%p
