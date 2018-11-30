@@ -34,9 +34,19 @@ bool Weight::operator>(const Weight& weight) const
   return (ounces > weight.ounces);
 }
 
+bool Weight::operator>=(const Weight& weight) const
+{
+  return (ounces >= weight.ounces);
+}
+
 bool Weight::operator<(const Weight& weight) const
 {
   return (ounces < weight.ounces);
+}
+
+bool Weight::operator<=(const Weight& weight) const
+{
+  return (ounces <= weight.ounces);
 }
 
 void Weight::set_weight(const uint new_pounds, const uint new_ounces)

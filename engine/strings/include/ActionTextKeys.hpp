@@ -200,6 +200,7 @@ class ActionTextKeys
     static const std::string ACTION_PAPERCRAFT_NO_PULP;
     static const std::string ACTION_PAPERCRAFT_SUCCESS;
     static const std::string ACTION_PAPERCRAFT_FAILURE;
+    static const std::string ACTION_PAPERCRAFT_PULP_TOO_LIGHT;
 
   protected:
     ActionTextKeys();

@@ -422,6 +422,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\NullAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PacificationCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\PapercraftCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhaseOfMoonCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\RageCalculator.hpp" />
@@ -866,6 +867,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\items\include\IItemFilter.hpp" />
     <ClInclude Include="engine\items\include\InitialItemEquipper.hpp" />
     <ClInclude Include="engine\items\include\InitialItemSelector.hpp" />
+    <ClInclude Include="engine\items\include\ItemBaseIdFilter.hpp" />
     <ClInclude Include="engine\items\include\ItemDescriptionRandomizer.hpp" />
     <ClInclude Include="engine\items\include\ItemFactory.hpp" />
     <ClInclude Include="engine\items\include\ItemFilterFactory.hpp" />
@@ -1459,6 +1461,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\MineCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\NullAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PacificationCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\PapercraftCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\RageCalculator.cpp" />
@@ -1592,6 +1595,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\PacificationCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\PapercraftCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -1851,6 +1861,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\tile_config\source\MagicalTreeTileConfiguration.cpp" />
     <ClCompile Include="engine\items\source\ArtifactItemFilter.cpp" />
     <ClCompile Include="engine\items\source\HandsRequiredItemFilter.cpp" />
+    <ClCompile Include="engine\items\source\ItemBaseIdFilter.cpp" />
     <ClCompile Include="engine\items\source\ItemGenerationConstraints.cpp" />
     <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp" />
     <ClCompile Include="engine\items\source\unit_tests\HandsRequiredItemFilter_test.cpp">
@@ -1859,6 +1870,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\unit_tests\ItemBaseIdFilter_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\items\source\unit_tests\ItemGenerationManager_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

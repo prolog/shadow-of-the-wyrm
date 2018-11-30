@@ -8,7 +8,7 @@ local population = {"noble", "carcassian_guard", "commoner", "_vendor", "cleric"
 
 local function setup_keep_rooms(m_id)
   local coords = {{14,10}, {14,31}}
-  local feature_class_ids = {CCLASS_ID_FORGE, CCLASS_ID_TANNERY, CCLASS_ID_JEWELER_WORKBENCH, CCLASS_ID_WHEEL_AND_LOOM}
+  local feature_class_ids = {CCLASS_ID_FORGE, CCLASS_ID_PULPER, CCLASS_ID_TANNERY, CCLASS_ID_JEWELER_WORKBENCH, CCLASS_ID_WHEEL_AND_LOOM}
 
   for i,coord in ipairs(coords) do
     local cl_id = feature_class_ids[RNG_range(1, #feature_class_ids)]

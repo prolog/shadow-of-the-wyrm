@@ -9,7 +9,15 @@ Shadow of the Wyrm v1.0.1 "Besard"
 
 - Artisans start with a mold and deckle in their inventory.
 
+- Created paper pulpers.  These appear in a few set locations, as well
+  as being able to be selected randomly for distribution in dungeons
+  and elsewhere.  Pulpers allow you to turn scrolls and spellbooks into
+  paper pulp, and having skill in Papercraft allows you to use a mold
+  and deckle to turn raw paper pulp into blank scrolls.
+
 - More name combinations.
+
+- New features: pulper.
 
 - New items: mold and deckle, paper pulp.
 
