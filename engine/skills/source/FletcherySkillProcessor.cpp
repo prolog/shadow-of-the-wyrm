@@ -76,8 +76,10 @@ void FletcherySkillProcessor::create_projectiles(const string& item_base_id, Cre
   ItemPtr item = ItemManager::create_item(item_base_id);
   TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
 
-  if (item != nullptr && tile != nullptr)
+  if (creature != nullptr && item != nullptr && tile != nullptr)
   {
+    creature->get_skills().mark(SkillType::SKILL_GENERAL_FLETCHERY);
+
     // Item's created.  Improve it appropriately.  Smith it
     // based on the improvement points;
     CreateItemCalculator cic;

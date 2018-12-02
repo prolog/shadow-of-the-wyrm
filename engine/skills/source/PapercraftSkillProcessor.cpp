@@ -6,6 +6,7 @@
 #include "MessageManagerFactory.hpp"
 #include "PapercraftCalculator.hpp"
 #include "RNG.hpp"
+#include "SkillManager.hpp"
 
 using namespace std;
 
@@ -36,16 +37,23 @@ ActionCostValue PapercraftSkillProcessor::process(CreaturePtr creature, MapPtr m
       {
         PapercraftCalculator pc;
         string outcome_message = ActionTextKeys::ACTION_PAPERCRAFT_FAILURE;
+        bool created_scroll = false;
 
         if (RNG::percent_chance(pc.calculate_pct_chance_success(creature)))
         {
+          created_scroll = true;
+
           outcome_message = ActionTextKeys::ACTION_PAPERCRAFT_SUCCESS;
           Weight bs_w = blank_scroll->get_weight();
 
           add_blank_scrolls_to_creature_tile(creature, map, bs_w, pulp->get_weight());
         }
 
+        SkillManager sm;
+        sm.mark_skill(creature, SkillType::SKILL_GENERAL_PAPERCRAFT, created_scroll);
+
         creature->get_inventory()->remove(pulp->get_id());
+        
 
         manager.add_new_message(StringTable::get(outcome_message));
         manager.send();

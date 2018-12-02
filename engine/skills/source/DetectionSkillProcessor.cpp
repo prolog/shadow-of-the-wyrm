@@ -34,6 +34,8 @@ ActionCostValue DetectionSkillProcessor::process(CreaturePtr creature, MapPtr ma
 
       if (sm.check_skill(creature, SkillType::SKILL_GENERAL_DETECTION))
       {
+        creature->get_skills().mark(SkillType::SKILL_GENERAL_DETECTION);
+
         IMessageManager& manager = MM::instance(MessageTransmit::MAP, creature, creature && creature->get_is_player());
 
         string detected_creatures = StringTable::get(ActionTextKeys::ACTION_DETECTED_OUT_OF_DEPTH_CREATURES);

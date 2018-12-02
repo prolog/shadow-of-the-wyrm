@@ -142,6 +142,10 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
       {
         perf_sid = perf_sids.second;
       }
+      else if (num_pacified > 0)
+      {
+        creature->get_skills().mark(SkillType::SKILL_GENERAL_MUSIC);
+      }
 
       add_performance_details_message(creature, perf_sid);
     }
