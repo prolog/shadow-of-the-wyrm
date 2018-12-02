@@ -693,7 +693,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   // Generate a down staircase if:
   // - The max_depth property is defined
   // - Our current depth is less than the max depth
-  if (depth.get_current() < depth.get_maximum())
+  if (depth.has_more_levels(Direction::DIRECTION_DOWN))
   {
     while (!location_found)
     {

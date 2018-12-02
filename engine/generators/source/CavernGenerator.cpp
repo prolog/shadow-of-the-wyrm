@@ -196,7 +196,7 @@ void CavernGenerator::generate_staircases(MapPtr map)
   // Down staircase
   Depth depth = map->size().depth();
 
-  if (depth.get_current() < depth.get_maximum())
+  if (depth.has_more_levels(Direction::DIRECTION_DOWN))
   {
     generate_staircase(map, TileType::TILE_TYPE_DOWN_STAIRCASE, Direction::DIRECTION_DOWN);
   }

@@ -129,7 +129,7 @@ void SewerGenerator::place_staircases(MapPtr result_map)
   update_depth_details(result_map);
   Depth depth = result_map->size().depth();
 
-  if (depth.get_current() < depth.get_maximum() && !sec_coords.empty())
+  if (depth.has_more_levels(Direction::DIRECTION_DOWN) && !sec_coords.empty())
   {
     Coordinate down_c = sec_coords.at(RNG::range(0, sec_coords.size() - 1));
     place_down_staircase(result_map, down_c.first, down_c.second, TileType::TILE_TYPE_SEWER_COMPLEX, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase);

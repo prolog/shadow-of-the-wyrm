@@ -1,7 +1,9 @@
 Me:
-- Paper making: Pulper.
-- Improve papercraft on use
-- Blackwater traps should pulp some subset of paper items on ground
+- Rework the infinite dungeon max depths so the "inf" or something similar
+  triggers has_maximum = false
+- The "descend to" functionality
+- When no creatures are available for the danger level, create one
+  via procgen...
 - No teleport spell!
 - Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
