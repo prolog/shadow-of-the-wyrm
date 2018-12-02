@@ -5,8 +5,8 @@
 // that sort of thing.
 TEST(SW_Engine_Calculators_DepthBasedDangerLevelCalculator, calculate_danger_level_underworld)
 {
-  Depth depth(10, 0, 20, 1);
-  Depth depth2(13, 5, 30, 1);
+  Depth depth(10, 0, 20, 1, true);
+  Depth depth2(13, 5, 30, 1, true);
   Dimensions dim;
 
   dim.set_depth(depth);
@@ -39,7 +39,7 @@ TEST(SW_Engine_Calculators_DepthBasedDangerLevelCalculator, calculate_danger_lev
   // - Base current depth should be the minimum of the new depth
   // - Delta should therefore be 13 - 5 = 8
   // - New danger should be current danger (4) + delta (8) = 12
-  Depth depth_base(0,0,0,1);
+  Depth depth_base(0,0,0,1,true);
   dim.set_depth(depth_base);
 
   map = std::make_shared<Map>(dim);
@@ -52,8 +52,8 @@ TEST(SW_Engine_Calculators_DepthBasedDangerLevelCalculator, calculate_danger_lev
 // This case covers the endgame floating tower
 TEST(SW_Engine_Calculators_DepthBasedDangerLevelCalculator, calculate_danger_level_overworld)
 {
-  Depth depth(-10, -20, 0, 7);
-  Depth depth2(-17, -20, 0, 7);
+  Depth depth(-10, -20, 0, 7, true);
+  Depth depth2(-17, -20, 0, 7, true);
 
   Dimensions dim;
   dim.set_depth(depth);

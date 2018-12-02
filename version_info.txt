@@ -18,6 +18,10 @@ Shadow of the Wyrm v1.0.1 "Besard"
 - Updated a number of the skills to get marks towards improvement when
   used.
 
+- Reworked the depth code so that infinite dungeons/sewers/etc are
+  actually infinite.  You can still hit a maximum depth (integer max),
+  but you'll still be able to descend and get another level.
+
 - More name combinations.
 
 - New features: pulper.

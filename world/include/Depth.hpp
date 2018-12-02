@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "common.hpp"
+#include "Directions.hpp"
 #include "ISerializable.hpp"
 
 // Depth is used to represent the character's general location in the
@@ -9,7 +10,7 @@ class Depth : public ISerializable
 {
   public:
     Depth();
-    Depth(const int cur, const int min, const int max, const int increment);
+    Depth(const int cur, const int min, const int max, const int increment, const bool has_max);
     bool operator==(const Depth& d) const;
 
     void set_current(const int new_current);
@@ -24,6 +25,11 @@ class Depth : public ISerializable
     void set_increment(const int new_increment);
     int get_increment() const;
 
+    void set_has_maximum(const bool new_has_max);
+    bool has_maximum() const;
+
+    bool has_more_levels(const Direction d) const;
+
     std::string str() const;
 
     Depth lower() const;
@@ -36,6 +42,7 @@ class Depth : public ISerializable
     // Negative depths: dungeons, caverns, etc.
     // Positive depths: towers, castles, etc.
     int current, minimum, maximum, increment;
+    bool has_max;
     static int DEPTH_MULTIPLIER;
 
   private:

@@ -9,12 +9,12 @@ using namespace std;
 int Depth::DEPTH_MULTIPLIER = -50;
 
 Depth::Depth()
-: current(0), minimum(0), maximum(0), increment(1)
+: current(0), minimum(0), maximum(0), increment(1), has_max(true)
 {
 }
 
-Depth::Depth(const int cur, const int min, const int max, const int incr)
-: current(cur), minimum(min), maximum(max), increment(incr)
+Depth::Depth(const int cur, const int min, const int max, const int incr, const bool has_maxi)
+: current(cur), minimum(min), maximum(max), increment(incr), has_max(has_maxi)
 {
 }
 
@@ -26,6 +26,7 @@ bool Depth::operator==(const Depth& d) const
   result = result && (minimum == d.minimum);
   result = result && (maximum == d.maximum);
   result = result && (increment == d.increment);
+  result = result && (has_max == d.has_max);
 
   return result;
 }
@@ -60,6 +61,16 @@ int Depth::get_maximum() const
   return maximum;
 }
 
+void Depth::set_has_maximum(const bool new_has_maximum)
+{
+  has_max = new_has_maximum;
+}
+
+bool Depth::has_maximum() const
+{
+  return has_max;
+}
+
 void Depth::set_increment(const int new_increment)
 {
   increment = new_increment;
@@ -73,11 +84,14 @@ int Depth::get_increment() const
 // Return the "next" depth.
 Depth Depth::lower() const
 {
-  Depth d(current, minimum, maximum, increment);
+  Depth d(current, minimum, maximum, increment, has_max);
 
-  if (current < maximum)
+  if (has_maximum() == false || (current < maximum))
   {
-    d.set_current(current + std::abs(increment));
+    if (current < numeric_limits<int>::max())
+    {
+      d.set_current(current + std::abs(increment));
+    }
   }
 
   return d;
@@ -86,14 +100,40 @@ Depth Depth::lower() const
 // Return the "previous" depth.
 Depth Depth::higher() const
 {
-  Depth d(current, minimum, maximum, increment);
+  Depth d(current, minimum, maximum, increment, has_max);
 
-  if (current > minimum)
+  if (has_maximum() == false || (current > minimum))
   {
-    d.set_current(current - std::abs(increment));
+    if (current > numeric_limits<int>::min())
+    {
+      d.set_current(current - std::abs(increment));
+    }
   }
 
   return d;
+}
+
+bool Depth::has_more_levels(const Direction d) const
+{
+  bool more_levels = false;
+
+  if (!has_max)
+  {
+    more_levels = true;
+  }
+  else
+  {
+    if (d == Direction::DIRECTION_DOWN)
+    {
+      more_levels = ((current + std::abs(increment)) <= maximum);
+    }
+    else if (d == Direction::DIRECTION_UP)
+    {
+      more_levels = ((current - std::abs(increment)) >= minimum);
+    }
+  }
+
+  return more_levels;
 }
 
 // Return the depth as a string (for the UI, etc): e.g., "[-50']", "" (if on overworld, or otherwise at 0')
@@ -117,6 +157,7 @@ bool Depth::serialize(ostream& stream) const
   Serialize::write_int(stream, minimum);
   Serialize::write_int(stream, maximum);
   Serialize::write_int(stream, increment);
+  Serialize::write_bool(stream, has_max);
   Serialize::write_int(stream, DEPTH_MULTIPLIER);
 
   return true;
@@ -128,6 +169,7 @@ bool Depth::deserialize(istream& stream)
   Serialize::read_int(stream, minimum);
   Serialize::read_int(stream, maximum);
   Serialize::read_int(stream, increment);
+  Serialize::read_bool(stream, has_max);
   Serialize::read_int(stream, DEPTH_MULTIPLIER);
 
   return true;
