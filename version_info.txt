@@ -15,6 +15,9 @@ Shadow of the Wyrm v1.0.1 "Besard"
   paper pulp, and having skill in Papercraft allows you to use a mold
   and deckle to turn raw paper pulp into blank scrolls.
 
+- Updated a number of the skills to get marks towards improvement when
+  used.
+
 - More name combinations.
 
 - New features: pulper.
