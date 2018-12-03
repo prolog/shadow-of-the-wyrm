@@ -762,11 +762,19 @@ map<TileType, vector<string>> Generator::get_foragables_for_season(ISeasonPtr se
 void Generator::update_depth_details(MapPtr map)
 {
   string max_depth_property = get_additional_property(MapProperties::MAP_PROPERTIES_MAX_DEPTH);
+
   if (!max_depth_property.empty())
   {
     Depth depth = map->size().depth();
 
-    depth.set_maximum(String::to_int(max_depth_property));
+    if (max_depth_property == Depth::DEPTH_INFINITE)
+    {
+      depth.set_has_maximum(false);
+    }
+    else
+    {
+      depth.set_maximum(String::to_int(max_depth_property));
+    }
 
     string depth_property = get_additional_property(MapProperties::MAP_PROPERTIES_DEPTH);
     if (!depth_property.empty())

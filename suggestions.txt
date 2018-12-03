@@ -192,3 +192,8 @@ aotdev
 Troubler
 - Multiple pages of items, eventually hits blank page that when hitting ,
   or . gives the right page.
+
+happylisk:
+- Prompt for movement when starving
+- buff shrine guardians (doable at 25)
+- more diverse artifact effects (HP/AP regen, stat bonuses, etc)
