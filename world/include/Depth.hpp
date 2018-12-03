@@ -38,6 +38,8 @@ class Depth : public ISerializable
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
+    static const std::string DEPTH_INFINITE;
+
   protected:
     // Negative depths: dungeons, caverns, etc.
     // Positive depths: towers, castles, etc.

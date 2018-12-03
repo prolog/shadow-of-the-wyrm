@@ -1,5 +1,12 @@
 #include "gtest/gtest.h"
 
+// This needs a unit test because Lua scripts will depend on this value
+// not changing.
+TEST(SW_World_Depth, depth_inf_constant)
+{
+  EXPECT_TRUE(Depth::DEPTH_INFINITE == "inf");
+}
+
 TEST(SW_World_Depth, lower)
 {
   Depth d(5, 0, 20, 1, true);

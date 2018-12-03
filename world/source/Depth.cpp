@@ -7,6 +7,7 @@ using namespace std;
 // Depth 1 is -50 feet (under ground, positive depth).
 // Depth -1 is 50 feet (above ground, negative depth).
 int Depth::DEPTH_MULTIPLIER = -50;
+const string Depth::DEPTH_INFINITE = "inf";
 
 Depth::Depth()
 : current(0), minimum(0), maximum(0), increment(1), has_max(true)
