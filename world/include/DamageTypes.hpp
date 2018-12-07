@@ -1,4 +1,7 @@
 #pragma once
+
+// If updating this, remember to also update the ancient beasts resource
+// strings to define an appropriate creature.
 enum struct DamageType
 {
   DAMAGE_TYPE_NULL = -1,
@@ -19,6 +22,7 @@ enum struct DamageType
 
 enum struct DamageFlagType
 {
+  DAMAGE_FLAG_FIRST = 0,
   DAMAGE_FLAG_CHAOTIC = 0,
   DAMAGE_FLAG_VORPAL = 1,
   DAMAGE_FLAG_DRAINING = 2,

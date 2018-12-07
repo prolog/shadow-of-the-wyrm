@@ -331,3 +331,9 @@ TEST(SW_World_Creature, decrement_free_hidden_actions)
 
   EXPECT_EQ(8, c->get_free_hidden_actions());
 }
+
+TEST(SW_World_Creature, ancient_beast)
+{
+  EXPECT_TRUE(Creature::is_ancient_beast(CreatureID::CREATURE_ID_PREFIX_ANCIENT_BEAST + "something"));
+  EXPECT_FALSE(Creature::is_ancient_beast("a small kitty in a wizard hat"));
+}

@@ -40,4 +40,4 @@ const string CreatureID::CREATURE_ID_SHOPKEEPER = "_shopkeeper";
 const string CreatureID::CREATURE_ID_FAIRY_SPIRIT = "_fairy_spirit";
 const string CreatureID::CREATURE_ID_VENDOR = "_vendor";
 const string CreatureID::CREATURE_ID_PLAYER = "player";
-
+const string CreatureID::CREATURE_ID_PREFIX_ANCIENT_BEAST = "_ancient_beast_";

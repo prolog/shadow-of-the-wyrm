@@ -4228,13 +4228,16 @@ int summon_monsters_around_creature(lua_State* ls)
           CreatureFactory cf;
           CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), summon_id);
 
-          if (override_hostility)
+          if (creature != nullptr)
           {
-            HostilityManager hm;
-            hm.set_hostility_to_player(creature);
-          }
+            if (override_hostility)
+            {
+              HostilityManager hm;
+              hm.set_hostility_to_player(creature);
+            }
 
-          GameUtils::add_new_creature_to_map(game, creature, current_map, c);
+            GameUtils::add_new_creature_to_map(game, creature, current_map, c);
+          }
 
           cnt++;
         }

@@ -100,6 +100,12 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   }
 
   CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
+
+  if (generation_map.empty())
+  {
+    generation_map = cgm.generate_ancient_beasts(max_danger_level, map_terrain_type);
+  }
+
   IMessageManager& manager = MM::instance();
   CreatureFactory cf;
   CreatureGenerationValuesMap& cgvm = game.get_creature_generation_values_ref();
@@ -142,7 +148,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
           for (const Coordinate& adj : coords)
           {
             TilePtr tile = map->at(adj);
-            CreaturePtr pack_creature = cf.create_by_creature_id(am, creature_id);
+            CreaturePtr pack_creature = cf.create_by_creature_id(am, creature_id, generated_creature);
 
             if (pack_creature != nullptr && MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
             {

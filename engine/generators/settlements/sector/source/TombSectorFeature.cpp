@@ -189,7 +189,11 @@ void TombSectorFeature::generate_bones_and_treasure(MapPtr map, const Coordinate
       {
         string guardian_id = tomb_guardians.at(RNG::range(0, tomb_guardians.size()-1));
         CreaturePtr guardian = cf.create_by_creature_id(game.get_action_manager_ref(), guardian_id);
-        GameUtils::add_new_creature_to_map(game, guardian, map, c);
+
+        if (guardian != nullptr)
+        {
+          GameUtils::add_new_creature_to_map(game, guardian, map, c);
+        }
       }
     }
   }

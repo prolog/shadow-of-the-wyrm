@@ -132,8 +132,11 @@ void SpringsGenerator::add_fairy_spirit_if_necessary(MapPtr result_map, const in
     CreatureFactory cf;
 
     CreaturePtr spirit = cf.create_by_creature_id(game.get_action_manager_ref(), CreatureID::CREATURE_ID_FAIRY_SPIRIT);
-    GameUtils::add_new_creature_to_map(game, spirit, result_map, {row, col});
 
-    result_map->set_permanent(true);
+    if (spirit != nullptr)
+    {
+      GameUtils::add_new_creature_to_map(game, spirit, result_map, { row, col });
+      result_map->set_permanent(true);
+    }
   }
 }

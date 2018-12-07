@@ -22,6 +22,11 @@ Shadow of the Wyrm v1.0.1 "Besard"
   actually infinite.  You can still hit a maximum depth (integer max),
   but you'll still be able to descend and get another level.
 
+- Beyond the usual maximum depths, there are creatures more dangerous
+  than those found throughout the world.  These ancient beasts are strange
+  holdovers from the early universe, scale in difficulty twice as fast as 
+  regular creatures, and have no real maximum to their power.
+
 - More name combinations.
 
 - New features: pulper.

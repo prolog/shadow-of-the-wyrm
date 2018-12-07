@@ -5,6 +5,9 @@
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreatureFactory.hpp"
+#include "DecisionStrategyFactory.hpp"
+#include "DecisionStrategyTypes.hpp"
+#include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "MapProperties.hpp"
 #include "RaceManager.hpp"
@@ -84,6 +87,81 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
   return generation_map;
 }
 
+CreatureGenerationMap CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const TileType map_terrain_type)
+{
+  CreatureGenerationMap cgm;
+
+  for (int i = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); i < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); i++)
+  {
+    string creature_id_prefix = CreatureID::CREATURE_ID_PREFIX_ANCIENT_BEAST;
+    string creature_id = creature_id_prefix + std::to_string(i);
+    CreatureGenerationValues cgv;
+
+    Dice hp_dice(danger_level * 2, 6, danger_level);
+    Dice ap_dice(danger_level * 2, 6, danger_level);
+
+    Damage dam;
+    dam.set_num_dice(danger_level * 2);
+    dam.set_dice_sides(6);
+    dam.set_damage_type(static_cast<DamageType>(i));
+    
+    for (int df = static_cast<int>(DamageFlagType::DAMAGE_FLAG_FIRST); df < static_cast<int>(DamageFlagType::DAMAGE_FLAG_LAST); df++)
+    {
+      // Look, ancient beasts are in no way fair.
+      if (RNG::percent_chance(50))
+      {
+        dam.set_damage_flag(static_cast<DamageFlagType>(df), true);
+      }
+    }
+
+    CreaturePtr ancient_beast;
+    CreatureFactory cf;
+    ancient_beast = cf.create_by_race_and_class(Game::instance().get_action_manager_ref(), RaceID::RACE_ID_UNKNOWN, "", "", CreatureSex::CREATURE_SEX_NOT_SPECIFIED);
+    ancient_beast->set_base_damage(dam);
+    ancient_beast->set_evade(danger_level);
+    ancient_beast->set_soak(danger_level);
+    ancient_beast->set_arcana_points(Statistic(RNG::dice(ap_dice)));
+    ancient_beast->set_hit_points(Statistic(RNG::dice(hp_dice)));
+    ancient_beast->set_colour(static_cast<Colour>(i+1));
+    ancient_beast->set_original_id(creature_id);
+
+    DecisionStrategyPtr ds = DecisionStrategyFactory::create_decision_strategy(DecisionStrategyID::DECISION_STRATEGY_MOBILE);
+    ancient_beast->set_decision_strategy(ds);
+
+    string desc_sid = "ANCIENT_BEAST" + std::to_string(i) + "_DESCRIPTION_SID";
+    string short_desc_sid = "ANCIENT_BEAST" + std::to_string(i) + "_SHORT_DESCRIPTION_SID"; // JCD FIXME REFACTOR
+    string text_details_sid = "ANCIENT_BEAST_TEXT_DETAILS_SID";
+    ancient_beast->set_description_sid(desc_sid);
+    ancient_beast->set_short_description_sid(short_desc_sid);
+    ancient_beast->set_text_details_sid(text_details_sid);
+    ancient_beast->set_level(danger_level);
+    ancient_beast->set_symbol('X');
+
+    ExperienceManager em;
+    int dl = std::max(1, danger_level);
+    int xp_val = em.get_total_experience_needed_for_level(nullptr, std::min(dl, 50));
+    cgv.set_base_experience_value(xp_val);
+    ancient_beast->set_experience_value(xp_val);
+
+    cgv.set_maximum(-1);
+    cgv.set_current(0);
+    cgv.add_allowable_terrain_type(map_terrain_type);
+    
+
+    cgv.set_danger_level(danger_level);
+    cgv.set_friendly(0);
+    cgv.set_id(creature_id);
+    cgv.set_initial_arcana_points(ap_dice);
+    cgv.set_initial_hit_points(hp_dice);
+    cgv.set_race_id(RaceID::RACE_ID_UNKNOWN);
+    cgv.set_rarity(Rarity::RARITY_COMMON);
+
+    cgm[creature_id] = make_pair(ancient_beast, cgv);
+  }
+
+  return cgm;
+}
+
 string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationMap& generation_map)
 {
   string creature_id;
@@ -128,7 +206,20 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
   CreatureFactory cf;
 
   string creature_id = select_creature_id_for_generation(am, generation_map);
-  generated_creature = cf.create_by_creature_id(am, creature_id);
+
+  if (Creature::is_ancient_beast(creature_id))
+  {
+    auto c_it = generation_map.find(creature_id);
+
+    if (c_it != generation_map.end())
+    {
+      generated_creature = cf.create_by_creature_id(am, creature_id, c_it->second.first);
+    }
+  }
+  else
+  {
+    generated_creature = cf.create_by_creature_id(am, creature_id);
+  }
 
   if (generated_creature)
   {
