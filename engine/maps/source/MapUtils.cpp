@@ -235,7 +235,7 @@ bool MapUtils::place_creature_randomly(MapPtr map, const string& creature_id)
   // Generate the creature
   CreaturePtr creature = cf.create_by_creature_id(am, creature_id);
 
-  if (creature)
+  if (creature != nullptr)
   {
     // Place the creature
     for (int attempts = 0; attempts < 200; attempts++)

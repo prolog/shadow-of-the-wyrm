@@ -379,6 +379,74 @@
 		</Deity>
 	</Deities>
 	<Races>
+		<Race id="_unknown">
+			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
+			<LeavesCorpse>0</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>0</Pacifiable>
+			<Splits>0</Splits>
+			<HasPockets>0</HasPockets>
+			<HasVoice>0</HasVoice>
+			<HasHair>0</HasHair>
+			<NameSID>UNKNOWN_RACE_NAME</NameSID>
+			<Size>4</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>100</Min>
+					<Max>10000</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>1000000</Min>
+					<Max>10000000</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>40</Strength>
+				<Dexterity>40</Dexterity>
+				<Agility>40</Agility>
+				<Health>40</Health>
+				<Intelligence>40</Intelligence>
+				<Willpower>40</Willpower>
+				<Charisma>40</Charisma>
+				<Speed>40</Speed>
+			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
+		</Race>		
 		<Race id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<Slayable>1</Slayable>
@@ -6209,7 +6277,6 @@
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
-				<!-- base: 8 -->
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>8</NumDice>
@@ -9051,7 +9118,7 @@
 				<NumDice>1</NumDice>
 				<NumSides>54</NumSides>
 				<Type>8</Type>
-				<EffectBonus>100</EffectBonus> <!-- You know the myths don't lie -->
+				<EffectBonus>100</EffectBonus> 
 			</Damage>
 			<Speed>60</Speed>
 		</Creature>
@@ -15247,7 +15314,6 @@
 				<Friendly>1</Friendly>
 				<DangerLevel>26</DangerLevel>
 				<Rarity>0</Rarity>
-				<!-- Cornel is at the verge of death. -->
 				<HP>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
@@ -21738,7 +21804,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>16</NumSides>
 				<Type>2</Type>
-				<!-- Headbutt with goaty horns! -->
 			</Damage>
 			<Evade>8</Evade>
 		</Creature>
@@ -21831,7 +21896,6 @@
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
-				<!-- Fix this later -->
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
@@ -21873,8 +21937,6 @@
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
-					<!-- Only setting them to the dark three's sites
-					     for now because acolytes are hostile by default. -->
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
@@ -22708,7 +22770,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
-				<!-- Well, it starts off friendly... -->
 				<Friendly>1</Friendly>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -22846,7 +22907,6 @@
 			<Evade>3</Evade>
 			<Soak>0</Soak>
 		</Creature>
-		<!-- Ead is just a kid, but spectacularly powerful, damage-wise. -->
 		<Creature id="ead">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>EAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

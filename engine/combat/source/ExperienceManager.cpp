@@ -161,6 +161,10 @@ uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr crea
       
     exp_needed = static_cast<int>(base_exp_needed * race_multiplier * class_multiplier);      
   }
+  else
+  {
+    exp_needed = base_experience_table[level_idx];
+  }
   
   return exp_needed;
 }

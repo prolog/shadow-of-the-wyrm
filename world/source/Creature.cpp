@@ -1580,6 +1580,13 @@ bool Creature::has_creature_in_view(const string& creature_id) const
   return has_cr;
 }
 
+// Is the creature a procedurally-generated ancient beast?
+bool Creature::is_ancient_beast(const string& id)
+{
+  string prefix = CreatureID::CREATURE_ID_PREFIX_ANCIENT_BEAST;
+  return (id.compare(0, prefix.size(), prefix) == 0);
+}
+
 // Swap values, no throw
 void Creature::swap(Creature &cr) throw ()
 {

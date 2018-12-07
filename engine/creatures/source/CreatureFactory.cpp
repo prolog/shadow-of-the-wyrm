@@ -37,9 +37,25 @@ CreaturePtr CreatureFactory::create_by_creature_id
 (
   ActionManager& action_manager
 , const string& creature_id_and_options
+, CreaturePtr procgen_creature_template
 )
 {
   CreaturePtr creature;
+
+  // Ancient beast generation. These are based on pre-created CreautrePtrs
+  // passed in, and shouldn't do anything beyond creating a copy of the
+  // template and setting a new ID.
+  if (procgen_creature_template && Creature::is_ancient_beast(procgen_creature_template->get_original_id()))
+  {
+    creature = make_shared<Creature>(*procgen_creature_template);
+    initialize(creature);
+
+    // Ancient beasts always hate the player.
+    set_hostility_to_player(creature);
+
+    return creature;
+  }
+
   CreatureGenerationOptions cgo;
   cgo.parse(creature_id_and_options);
 

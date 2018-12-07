@@ -341,6 +341,8 @@ class Creature : public ISerializable
 
     bool has_creature_in_view(const std::string& creature_id) const;
 
+    static bool is_ancient_beast(const std::string& id);
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

@@ -1,4 +1,6 @@
 Me:
+- Track maximum depth in the creature dump.
+- Test ancient beasts deep in the ID.
 - Rework the infinite dungeon max depths so the "inf" or something similar
   triggers has_maximum = false
 - The "descend to" functionality

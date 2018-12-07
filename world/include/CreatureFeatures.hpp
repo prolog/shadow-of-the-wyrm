@@ -105,6 +105,7 @@ class CreatureID
     static const std::string CREATURE_ID_FAIRY_SPIRIT;
     static const std::string CREATURE_ID_VENDOR;
     static const std::string CREATURE_ID_PLAYER;
+    static const std::string CREATURE_ID_PREFIX_ANCIENT_BEAST;
 
   protected:
     CreatureID();
