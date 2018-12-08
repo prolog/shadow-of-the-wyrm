@@ -4821,7 +4821,7 @@
 				<NumSides>1</NumSides>
 				<Type>1</Type>
 			</Damage>
-		</Creature>
+		</Creature> 
 		<Creature id="rat">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -9257,7 +9257,7 @@
 				<NumSides>60</NumSides>
 				<Type>3</Type>
 			</Damage>
-		</Creature>
+		</Creature>  
 		<Creature id="dire_wolf">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>DIRE_WOLF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -9300,7 +9300,7 @@
 				<NumSides>62</NumSides>
 				<Type>0</Type>
 			</Damage>
-		</Creature>
+		</Creature> 
 		<Creature id="lycaon">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>LYCAON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

@@ -1,5 +1,6 @@
 Me:
 - Track maximum depth in the creature dump.
+- Do ancient beasts show up in the mortuary?
 - Test ancient beasts deep in the ID.
 - Rework the infinite dungeon max depths so the "inf" or something similar
   triggers has_maximum = false

@@ -11,6 +11,7 @@ struct MortuaryEntry
 {
   bool operator==(const MortuaryEntry& me) const;
 
+  std::string short_desc_sid;
   int max = 0;
   int count = 0;
 };
@@ -26,8 +27,9 @@ class Mortuary : public ISerializable
 
     bool operator==(const Mortuary& m) const;
 
-    void add_creature_kill(const std::string& creature_id, const bool is_unique = false);
-    
+    void add_creature_kill(const std::string& creature_id, const std::string& creature_short_desc_sid, const bool is_unique = false);
+    MortuaryEntry get_entry(const std::string& creature_id) const;
+  
     MortuaryCountMap get_creatures_killed() const;
 
     int get_num_creature_killed(const std::string& creature_id) const;
