@@ -80,7 +80,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 {
   ActionCostValue descend_success = 0;
    
-  if (creature->get_is_player())
+  if (creature && creature->get_is_player())
   {
     // If we're on the world map, we can always descend.
     Game& game = Game::instance();
@@ -156,6 +156,20 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             }
           }
         }  
+      }
+    }
+
+    // Once we've descended, see if the new depth's current value is greater
+    // than what the creature currently has.  If so, track it.
+    MapPtr new_map = game.get_current_map();
+
+    if (new_map != nullptr)
+    {
+      Depth d = new_map->size().depth();
+
+      if (d.get_current() > creature->get_max_depth_reached().get_current())
+      {
+        creature->set_max_depth_reached(d);
       }
     }
   }

@@ -5,11 +5,11 @@ void add_creatures_to_mortuary(Mortuary& m);
 
 void add_creatures_to_mortuary(Mortuary& m)
 {
-  m.add_creature_kill("metal_slime");
-  m.add_creature_kill("metal_slime");
-  m.add_creature_kill("urok", true);
+  m.add_creature_kill("metal_slime", "METAL_SLIME_SID");
+  m.add_creature_kill("metal_slime", "METAL_SLIME_SID");
+  m.add_creature_kill("urok", "METAL_SLIME_SID", true);
 
-  m.add_creature_kill("dragon_cat_of_doom");
+  m.add_creature_kill("dragon_cat_of_doom", "DRAGON_CAT_DOOM_SID");
 }
 
 TEST(SW_World_Mortuary, death_toll)
@@ -74,5 +74,24 @@ TEST(SW_World_Mortuary, saveload)
   EXPECT_TRUE(m == m2);
 
   EXPECT_EQ(1, m2.get_num_uniques_killed());
+
+  MortuaryEntry me = m2.get_entry("metal_slime");
+
+  EXPECT_EQ("METAL_SLIME_SID", me.short_desc_sid);
+  EXPECT_EQ(2, me.count);
 }
 
+TEST(SW_World_Mortuary, entry_retrieval)
+{
+  Mortuary m;
+
+  MortuaryEntry me;
+  me.count = 2;
+  me.max = -1;
+  me.short_desc_sid = "TEST";
+
+  m.add_creature_kill("some_id", "TEST");
+  m.add_creature_kill("some_id", "TEST");
+
+  EXPECT_EQ(me, m.get_entry("some_id"));
+}

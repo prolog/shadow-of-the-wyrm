@@ -29,7 +29,7 @@ TEST(SW_Engine_Calculators_ScoreCalculator, end_boss_component)
   CreaturePtr cp = create_conductless_creature();
 
   Mortuary& m = cp->get_mortuary_ref();
-  m.add_creature_kill("end_boss");
+  m.add_creature_kill("end_boss", "BOSS_SID");
 
   ScoreCalculator sc;
 
@@ -184,7 +184,7 @@ TEST(SW_Engine_Calculators_ScoreCalculator, total_score)
 
   // end boss
   Mortuary& m = cp->get_mortuary_ref();
-  m.add_creature_kill("end_boss");
+  m.add_creature_kill("end_boss", "BOSS_SID");
 
   ScoreCalculator sc;
 

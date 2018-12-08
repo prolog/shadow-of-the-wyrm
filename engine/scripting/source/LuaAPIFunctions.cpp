@@ -5006,11 +5006,20 @@ int add_kill_to_creature_mortuary(lua_State* ls)
 
     if (creature != nullptr)
     {
+      string creature_short_desc_sid;
+      const CreatureMap& creatures = Game::instance().get_creatures_ref();
+      const auto c_it = creatures.find(killed_id);
+
+      if (c_it != creatures.end() && c_it->second != nullptr)
+      {
+        creature_short_desc_sid = c_it->second->get_short_description_sid();
+      }
+
       Mortuary& mort = creature->get_mortuary_ref();
 
       for (int i = 0; i < quantity; i++)
       {
-        mort.add_creature_kill(killed_id);
+        mort.add_creature_kill(killed_id, creature_short_desc_sid);
       }
 
       Game& game = game.instance();
@@ -5018,7 +5027,7 @@ int add_kill_to_creature_mortuary(lua_State* ls)
 
       for (int i = 0; i < quantity; i++)
       {
-        global_mort.add_creature_kill(killed_id);
+        global_mort.add_creature_kill(killed_id, creature_short_desc_sid);
       }
     }
   }
