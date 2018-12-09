@@ -30,7 +30,7 @@ class Depth : public ISerializable
 
     bool has_more_levels(const Direction d) const;
 
-    std::string str() const;
+    std::string str(const bool show_all_values = false) const;
 
     Depth lower() const;
     Depth higher() const;

@@ -137,12 +137,20 @@ bool Depth::has_more_levels(const Direction d) const
   return more_levels;
 }
 
-// Return the depth as a string (for the UI, etc): e.g., "[-50']", "" (if on overworld, or otherwise at 0')
-string Depth::str() const
+// Return the depth as a string (for the UI, etc).
+//
+// For most cases in game (showing on a map's status line), suppress any
+// 0-depth values such as the overworld, forests, etc.
+// e.g., "[-50']", "" (if on overworld, or otherwise at 0')
+//
+// For cases such as showing the maximum depth reached in the character dump,
+// the show_all_depths parameter allows the depth to be shown even when it's
+// currently 0.
+string Depth::str(bool show_all_depths) const
 {
   string depth_s; // Default, if on plains, forest, etc.
 
-  if (current != 0)
+  if (current != 0 || show_all_depths)
   {
     int depth_in_feet = current * DEPTH_MULTIPLIER;
     depth_s = std::to_string(depth_in_feet);
