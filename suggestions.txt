@@ -1,12 +1,6 @@
 Me:
-- Track maximum depth in the creature dump.
-- Do ancient beasts show up in the mortuary?
-- Test ancient beasts deep in the ID.
-- Rework the infinite dungeon max depths so the "inf" or something similar
-  triggers has_maximum = false
+- Saving... message
 - The "descend to" functionality
-- When no creatures are available for the danger level, create one
-  via procgen...
 - No teleport spell!
 - Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some

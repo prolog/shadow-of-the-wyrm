@@ -162,3 +162,19 @@ TEST(SW_World_Depth, has_more_levels_asc)
 
   EXPECT_FALSE(depth.has_more_levels(Direction::DIRECTION_UP));
 }
+
+TEST(SW_World_Depth, to_str)
+{
+  Depth depth(0, -5, 5, 1, true);
+
+  EXPECT_EQ("[0']", depth.str(true));
+  EXPECT_EQ("", depth.str());
+  EXPECT_EQ("", depth.str(false));
+
+  depth.set_current(3);
+  string exp_val = "[-150']";
+
+  EXPECT_EQ(exp_val, depth.str(true));
+  EXPECT_EQ(exp_val, depth.str(false));
+  EXPECT_EQ(exp_val, depth.str());
+}

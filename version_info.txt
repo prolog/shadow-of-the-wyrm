@@ -27,6 +27,9 @@ Shadow of the Wyrm v1.0.1 "Besard"
   holdovers from the early universe, scale in difficulty twice as fast as 
   regular creatures, and have no real maximum to their power.
 
+- The maximum depth you've reached is now tracked in the character 
+  display/dump.
+
 - More name combinations.
 
 - New features: pulper.
