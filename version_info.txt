@@ -34,7 +34,8 @@ Shadow of the Wyrm v1.0.1 "Besard"
 
 - New features: pulper.
 
-- New items: mold and deckle, paper pulp, scroll of repelling.
+- New items: mold and deckle, paper pulp, scroll of repelling, wand of
+  draining.
 
 - New spells: repel (Cantrips).
 

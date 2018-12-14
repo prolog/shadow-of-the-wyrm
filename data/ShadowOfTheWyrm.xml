@@ -38282,6 +38282,31 @@
 				<Radius>2</Radius>
 				<Colour>1</Colour>
 			</Wand>
+			<Wand id="draining_wand">
+				<DescriptionSID>DRAINING_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DRAINING_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DRAINING_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DRAINING_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>55</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Damage draining="1">
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+					<Type>9</Type>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>5</Range>
+				<Colour>6</Colour>
+			</Wand>
 		</Wands>
 		<Spellbooks>
 			<Spellbook id="isen_dun_chronicle">
