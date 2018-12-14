@@ -22,6 +22,7 @@ class EffectTextKeys
     static std::string get_digging_effect_message(const std::string& monster_desc_sid, const bool is_player);
     static std::string get_increase_max_hp_message(const std::string& monster_desc_sid, const bool is_player);
     static std::string get_increase_max_ap_message(const std::string& monster_desc_sid, const bool is_player);
+    static std::string get_repel_message(const std::string& monster_desc_sid, const bool is_player);
 
     static const std::string EFFECT_NULL;
     static const std::string EFFECT_SWEET_TASTE;
@@ -73,5 +74,7 @@ class EffectTextKeys
     static const std::string EFFECT_INCREASE_MAX_HP_MONSTER;
     static const std::string EFFECT_INCREASE_MAX_AP_PLAYER;
     static const std::string EFFECT_INCREASE_MAX_AP_MONSTER;
+    static const std::string EFFECT_REPEL_PLAYER;
+    static const std::string EFFECT_REPEL_MONSTER;
 };
 

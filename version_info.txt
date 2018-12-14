@@ -34,9 +34,18 @@ Shadow of the Wyrm v1.0.1 "Besard"
 
 - New features: pulper.
 
-- New items: mold and deckle, paper pulp.
+- New items: mold and deckle, paper pulp, scroll of repelling.
+
+- New spells: repel (Cantrips).
 
 - Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Electric Arc spellbooks were worth far too much money.
+
+  - There was a bug in Glich's script (ironically? appopriately?) that
+    prevented the player from getting an apple.
 
 Shadow of the Wyrm v1.0.0 "Dalza"
 - Version declared January 20, 2018. Version finalized November 23, 2018.

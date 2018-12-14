@@ -1,5 +1,5 @@
 Me:
-- Saving... message
+- Each version: make sure to update itch.io page!
 - The "descend to" functionality
 - No teleport spell!
 - Sort spells by AP cost
@@ -19,7 +19,6 @@ Me:
 - The guarded, empty areas in Carcassia C2 should lead to some kind of
   dungeon/special area.
 - Summonings
-- Repel (cantrip)
 - Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
@@ -191,6 +190,5 @@ Troubler
   or . gives the right page.
 
 happylisk:
-- Prompt for movement when starving
 - buff shrine guardians (doable at 25)
 - more diverse artifact effects (HP/AP regen, stat bonuses, etc)

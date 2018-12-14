@@ -1601,11 +1601,12 @@
 				Rage = 27
 				Increase Max HP = 28
 				Increase Max AP = 29
+				Repel = 30
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="29"/>
+		<xs:maxInclusive value="30"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">
