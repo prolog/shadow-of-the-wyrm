@@ -10,7 +10,7 @@ if string.len(gift_generated) == 0 then
                        {SILVERWEED_ID, 3},
                        {WHITEFLOWER_ID, 10}}
 
-  local glich_gift = glich_gifts[RNG_range(0, table.getn(glich_gifts)-1)]
+  local glich_gift = glich_gifts[RNG_range(1, #glich_gifts)]
 
   add_message_with_pause("GLICH_GIFT_SPEECH_TEXT_SID")
   clear_and_add_message("GLICH_GIFT_SPEECH_TEXT2_SID")

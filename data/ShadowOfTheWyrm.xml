@@ -28746,6 +28746,20 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="c_17_repel">
+			<NameSID>REPEL_NAME_SID</NameSID>
+			<PlayerCastMessageSID>REPEL_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>REPEL_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>11</Colour>
+			<APCost>2</APCost>
+			<Speed>1</Speed>
+			<Range>3</Range>
+			<Shape>0</Shape>
+			<Radius>1</Radius>
+			<Effect>30</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -37397,6 +37411,23 @@
 				<DangerLevel>2</DangerLevel>
 				<Effect>25</Effect>
 			</Scroll>
+			<Scroll id="repel_scroll">
+				<DescriptionSID>REPEL_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_REPEL_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>REPEL_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_REPEL_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Effect>30</Effect>
+			</Scroll>
 		</Scrolls>
 		<Currencies>
 			<Currency id="_currency">
@@ -38715,7 +38746,7 @@
 				<UnidentifiedDescriptionSID>UNID_ELECTRIC_ARC_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ELECTRIC_ARC_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ELECTRIC_ARC_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>1000</Value>
+				<Value>24</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -38727,6 +38758,24 @@
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_16_electric_arc</SpellID>
 				<Difficulty>30</Difficulty>
+			</Spellbook>
+			<Spellbook id="repel_spellbook">
+				<DescriptionSID>REPEL_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_REPEL_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>REPEL_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_REPEL_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>28</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<SpellID>c_17_repel</SpellID>
+				<Difficulty>32</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
