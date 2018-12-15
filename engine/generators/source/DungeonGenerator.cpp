@@ -112,7 +112,7 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
         connect_rooms(map, new_room, next_room);
         connected_rooms.push_back(new_room);
 
-        if (RNG::percent_chance(20))
+        if (RNG::percent_chance(15))
         {
           place_traps(map, new_room);
         }
@@ -752,7 +752,7 @@ bool DungeonGenerator::place_traps(MapPtr map, const Room& room)
 
   int num_traps = 1;
 
-  if (RNG::percent_chance(10))
+  if (RNG::percent_chance(5))
   {
     fill_room_with_traps(map, room, traps);
   }

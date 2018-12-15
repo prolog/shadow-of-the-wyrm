@@ -32,12 +32,17 @@ Shadow of the Wyrm v1.0.1 "Besard"
 
 - More name combinations.
 
+- Toned down Forger a bit.
+
+- Reduced the probabilities of rooms having more than one trap, and
+  being fully trapped.
+
 - New features: pulper.
 
 - New items: mold and deckle, paper pulp, scroll of repelling, wand of
-  draining.
+  osmosis.
 
-- New spells: repel (Cantrips).
+- New spells: repel (Cantrips), teleport (Arcane).
 
 - Stanzas for "Tel and Floridel".
 

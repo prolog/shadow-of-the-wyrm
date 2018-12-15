@@ -1,8 +1,6 @@
 Me:
 - Each version: make sure to update itch.io page!
-- Ethereal wand
 - The "descend to" functionality
-- No teleport spell!
 - Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.

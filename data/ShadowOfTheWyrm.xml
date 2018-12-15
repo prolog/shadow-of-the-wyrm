@@ -28753,11 +28753,10 @@
 			<MagicCategory>3004</MagicCategory>
 			<MagicClassification>0</MagicClassification>
 			<Colour>11</Colour>
-			<APCost>2</APCost>
+			<APCost>4</APCost>
 			<Speed>1</Speed>
-			<Range>3</Range>
+			<Range>1</Range>
 			<Shape>0</Shape>
-			<Radius>1</Radius>
 			<Effect>30</Effect>
 		</Spell>
 		<Spell id="a_01_wreath_of_fire">
@@ -29120,6 +29119,19 @@
 				</StatusAilments>
 			</Damage>
 			<Effect>0</Effect>
+		</Spell>
+		<Spell id="a_20_teleport">
+			<NameSID>TELEPORT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>TELEPORT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>TELEPORT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>11</Colour>
+			<APCost>15</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>0</Shape>
+			<Effect>5</Effect>
 		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
@@ -32924,8 +32936,7 @@
 				<Speed>4</Speed>
 				<Damage>
 					<NumDice>2</NumDice>
-					<NumSides>10</NumSides>
-					<Modifier>8</Modifier>
+					<NumSides>12</NumSides>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
@@ -38282,11 +38293,11 @@
 				<Radius>2</Radius>
 				<Colour>1</Colour>
 			</Wand>
-			<Wand id="draining_wand">
-				<DescriptionSID>DRAINING_WAND_SID</DescriptionSID>
-				<UnidentifiedDescriptionSID>UNID_DRAINING_WAND_SID</UnidentifiedDescriptionSID>
-				<UsageDescriptionSID>DRAINING_WAND_USAGE_SID</UsageDescriptionSID>
-				<UnidentifiedUsageDescriptionSID>UNID_DRAINING_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+			<Wand id="osmosis_wand">
+				<DescriptionSID>OSMOSIS_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_OSMOSIS_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>OSMOSIS_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_OSMOSIS_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>55</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38297,7 +38308,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Damage draining="1">
+				<Damage draining="1" ethereal="1">
 					<NumDice>6</NumDice>
 					<NumSides>6</NumSides>
 					<Modifier>6</Modifier>
@@ -38802,7 +38813,7 @@
 				<SpellID>c_17_repel</SpellID>
 				<Difficulty>32</Difficulty>
 			</Spellbook>
-			<Spellbook id="wreath_of_fire_spellbook">
+=			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>WREATH_OF_FIRE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
@@ -39125,6 +39136,24 @@
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>a_19_meteor</SpellID>
 				<Difficulty>155</Difficulty>
+			</Spellbook>
+			<Spellbook id="teleport_spellbook">
+				<DescriptionSID>TELEPORT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_TELEPORT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>TELEPORT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_TELEPORT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>700</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<SpellID>a_20_teleport</SpellID>
+				<Difficulty>130</Difficulty>
 			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
