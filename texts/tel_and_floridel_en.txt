@@ -2254,3 +2254,13 @@ applied will hold past death: "the Peacemaker", %b
 her ask of him, and how he had concurred. %b
 He held the sword, and in the end, he'd chosen her.
 %p
+Tel's smile was full of sadness.  "I'm not sure. %b
+Those nobles who we exiled now will walk %b
+the upper lands as peddlars.  Who will hear %b
+their anger as they travel through and hawk %b 
+cheap glamour and illusion?  Enemies %b
+in unlings and in giants - convince them %b
+to swallow up the past, and enmity %b
+on both sides can be weaponized to become %b
+a way in which the precious balance can be swung."
+%p
