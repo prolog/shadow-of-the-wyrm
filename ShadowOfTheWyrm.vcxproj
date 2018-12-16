@@ -802,6 +802,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\sector\include\TombSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\VegetableGardenGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\WildflowerGardenGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\WorkshopSectorFeature.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\AquaticVegetationTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\CairnTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\DefaultTileConfiguration.hpp" />
@@ -1822,6 +1823,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\settlements\sector\source\TombSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\VegetableGardenGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\WildflowerGardenGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\sector\source\WorkshopSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BaseSettlementGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\Building.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BuildingConfigFactory.cpp" />

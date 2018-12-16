@@ -9,7 +9,8 @@ enum struct LowIncomeResidentialSectorFeatureType
   LIR_SECTOR_FEATURE_VEGETABLE_GARDEN = 2,
   LIR_SECTOR_FEATURE_ROCK_GARDEN = 3,
   LIR_SECTOR_FEATURE_SHOP = 4,
-  LIR_SECTOR_LAST = 5
+  LIR_SECTOR_FEATURE_WORKSHOP = 5,
+  LIR_SECTOR_LAST = 6
 };
 
 class LowIncomeResidentialSectorFeatureGenerator : public SectorFeatureGenerator

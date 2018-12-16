@@ -30,6 +30,13 @@ Shadow of the Wyrm v1.0.1 "Besard"
 - The maximum depth you've reached is now tracked in the character 
   display/dump.
 
+- Random villages now have a general proportion of their buildings marked 
+  as workshops.  These are buildings that can contain forges, jeweler
+  workbenches, wheels and looms, etc.
+
+- Old Town and New Town in Carcassia now allow the generation of 
+  workshops.
+
 - More name combinations.
 
 - Toned down Forger a bit.

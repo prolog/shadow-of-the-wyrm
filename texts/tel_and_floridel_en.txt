@@ -2264,3 +2264,13 @@ to swallow up the past, and enmity %b
 on both sides can be weaponized to become %b
 a way in which the precious balance can be swung."
 %p
+A knock now interrupted them.  A page %b
+stood quietly, and as Tel nodded, spoke %b
+his message.  "King, your comitatus waits %b
+inside the planning room.  They would provoke %b
+a battle on the heels of your success - %b
+they'd like to have your blessing."  The boy was still %b
+and ashen as he saw the queen.  Her neck %b
+was open; though she smiled, there was a chill, %b
+as if a spirit tapping at the windowsill.
+%p
