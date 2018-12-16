@@ -5,6 +5,30 @@
 
 using namespace std;
 
+map<ClassIdentifier, vector<pair<string, int>>> BuildingConfigFactory::feature_items;
+
+BuildingConfigFactory::BuildingConfigFactory()
+{
+  if (feature_items.empty())
+  {
+    initialize_feature_items();
+  }
+}
+
+void BuildingConfigFactory::initialize_feature_items()
+{
+  feature_items = {{ClassIdentifier::CLASS_ID_BED,            {{ItemIdKeys::ITEM_ID_CLAY_POT, 80},
+                                                               {ItemIdKeys::ITEM_ID_QUILL, 10},
+                                                               {ItemIdKeys::ITEM_ID_INKPOT, 10},
+                                                               {ItemIdKeys::ITEM_ID_BLANK_SCROLL, 5}}},
+                   {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, {{ItemIdKeys::ITEM_ID_WHITEFLOWER, 100}}},
+                   {ClassIdentifier::CLASS_ID_FORGE,          {{ItemIdKeys::ITEM_ID_STEEL_INGOT, 20},
+                                                               {ItemIdKeys::ITEM_ID_IRON_INGOT, 80}}},
+                   {ClassIdentifier::CLASS_ID_PULPER,         {{ItemIdKeys::ITEM_ID_BLANK_SCROLL, 100},
+                                                               {ItemIdKeys::ITEM_ID_QUILL, 80},
+                                                               {ItemIdKeys::ITEM_ID_INKPOT, 80}}}};
+}
+
 // Shops have no features in them, they're just empty space filled with items.
 vector<ClassIdentifier> BuildingConfigFactory::create_shop_features() const
 {
@@ -16,6 +40,38 @@ vector<ClassIdentifier> BuildingConfigFactory::create_shop_features() const
 vector<string> BuildingConfigFactory::create_shop_item_ids() const
 {
   vector<string> item_ids;
+  return item_ids;
+}
+
+vector<ClassIdentifier> BuildingConfigFactory::create_house_or_workshop_features(const int pct_chance_ws) const
+{
+  if (RNG::percent_chance(pct_chance_ws))
+  {
+    return create_workshop_features();
+  }
+  else
+  {
+    return create_house_features();
+  }
+}
+
+vector<string> BuildingConfigFactory::create_item_ids(const vector<ClassIdentifier>& features) const
+{
+  vector<string> item_ids;
+
+  for (const auto& ci : features)
+  {
+    vector<pair<string, int>> item_and_p;
+
+    for (const auto& ip_pair : item_and_p)
+    {
+      if (RNG::percent_chance(ip_pair.second))
+      {
+        item_ids.push_back(ip_pair.first);
+      }
+    }
+  }
+
   return item_ids;
 }
 
@@ -38,20 +94,27 @@ vector<ClassIdentifier> BuildingConfigFactory::create_house_features() const
   return features;
 }
 
-vector<string> BuildingConfigFactory::create_house_item_ids() const
+vector<ClassIdentifier> BuildingConfigFactory::create_workshop_features() const
 {
-  map<string, int> i_probs = {{ItemIdKeys::ITEM_ID_CLAY_POT, 80}, 
-                              {ItemIdKeys::ITEM_ID_INKPOT, 10},
-                              {ItemIdKeys::ITEM_ID_MAGICI_SHARD, 5}};
-  vector<string> item_ids;
+  map<ClassIdentifier, int> f_probs = {{ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, 20}, 
+                                       {ClassIdentifier::CLASS_ID_TANNERY, 20},
+                                       {ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH, 20},
+                                       {ClassIdentifier::CLASS_ID_FORGE, 20},
+                                       {ClassIdentifier::CLASS_ID_PULPER, 20}};
+  vector<ClassIdentifier> features;
 
-  for (auto i_pair : i_probs)
+  for (auto f_pair : f_probs)
   {
-    if (RNG::percent_chance(i_pair.second))
+    if (RNG::percent_chance(f_pair.second))
     {
-      item_ids.push_back(i_pair.first);
+      features.push_back(f_pair.first);
     }
   }
 
-  return item_ids;  
+  if (features.empty())
+  {
+    features.push_back(ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM);
+  }
+
+  return features;
 }

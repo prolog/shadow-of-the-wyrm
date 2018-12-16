@@ -5,6 +5,8 @@
 #include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
 
+using namespace std;
+
 HamletGenerator::HamletGenerator(MapPtr new_base_map)
 : BaseSettlementGenerator(new_base_map)
 {
@@ -111,7 +113,8 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   int end_col   = circle_col + (width / 2);
 
   BuildingConfigFactory bcf;
-  BuildingGenerationParameters bgpn(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false, bcf.create_house_features(), bcf.create_house_item_ids());
+  vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
+  BuildingGenerationParameters bgpn(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false, cl_ids, bcf.create_item_ids(cl_ids));
 
   if (SettlementGeneratorUtils::generate_building_if_possible(map, bgpn, buildings, growth_rate))
   {
@@ -125,7 +128,8 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   end_row   = circle_row + hamlet_size + 1 + height;
   // start_col, end_col the same for North and South
   
-  BuildingGenerationParameters bgps(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_NORTH, false, bcf.create_house_features(), bcf.create_house_item_ids());
+  cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
+  BuildingGenerationParameters bgps(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_NORTH, false, cl_ids, bcf.create_item_ids(cl_ids));
 
   if (SettlementGeneratorUtils::generate_building_if_possible(map, bgps, buildings, growth_rate))
   {
@@ -140,7 +144,8 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   start_col = circle_col + hamlet_size + 1;
   end_col   = circle_col + hamlet_size + width + 1;
   
-  BuildingGenerationParameters bgpe(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_WEST, false, bcf.create_house_features(), bcf.create_house_item_ids());
+  cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
+  BuildingGenerationParameters bgpe(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_WEST, false, cl_ids, bcf.create_item_ids(cl_ids));
 
   if (SettlementGeneratorUtils::generate_building_if_possible(map, bgpe, buildings, growth_rate))
   {
@@ -154,7 +159,8 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   start_col = circle_col - hamlet_size - width - 1;
   end_col   = circle_col - hamlet_size - 1;
   
-  BuildingGenerationParameters bgpw(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_EAST, false, bcf.create_house_features(), bcf.create_house_item_ids());
+  cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
+  BuildingGenerationParameters bgpw(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_EAST, false, cl_ids, bcf.create_item_ids(cl_ids));
 
   if (SettlementGeneratorUtils::generate_building_if_possible(map, bgpw, buildings, growth_rate))
   {

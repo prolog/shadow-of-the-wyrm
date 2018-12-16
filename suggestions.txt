@@ -1,5 +1,10 @@
 Me:
 - Each version: make sure to update itch.io page!
+- Hook the workshop generation code into the Carcassia generators
+- The workshop generation should also generate the appropriate creature
+  for a feature.
+- Allow races to be regexps
+- Ensure the bestiary race uses the generated creature's race ID.
 - The "descend to" functionality
 - Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some

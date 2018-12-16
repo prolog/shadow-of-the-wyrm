@@ -5,6 +5,8 @@
 #include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
 
+using namespace std;
+
 WalledSettlementGenerator::WalledSettlementGenerator(MapPtr new_base_map)
 : BaseSettlementGenerator(new_base_map)
 {
@@ -155,7 +157,8 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
     
     if (!SettlementGeneratorUtils::does_building_overlap(map, row, row+height+1, col, col+width+1, offset_extra))
     {
-      BuildingGenerationParameters bgp(row, row + height, col, col + width, dir, false, bcf.create_house_features(), bcf.create_house_item_ids());
+      vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
+      BuildingGenerationParameters bgp(row, row + height, col, col + width, dir, false, cl_ids, bcf.create_item_ids(cl_ids));
 
       SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
       cur_buildings_generated++;

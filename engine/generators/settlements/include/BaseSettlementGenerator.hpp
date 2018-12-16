@@ -31,6 +31,7 @@ class BaseSettlementGenerator : public SOTW::Generator
     int growth_rate;
 
     const int PROBABILITY_DECREMENT;
+    const int WORKSHOP_PROBABILITY;
     const int BUILDING_PROBABILITY;
     const int MIN_BLOCK_SIZE;
     const int BLOCK_SIZE;
