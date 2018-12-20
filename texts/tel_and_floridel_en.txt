@@ -2274,3 +2274,13 @@ and ashen as he saw the queen.  Her neck %b
 was open; though she smiled, there was a chill, %b
 as if a spirit tapping at the windowsill.
 %p
+A second passed.  The page-boy caught his stare %b
+and set it down respectfully, his fear %b
+palpable - but Floridel was kind, and spared %b
+the page.  She quickly tied a scarf to steer %b
+attention from her neck, and spoke.  "My king %b
+and I have yet to eat.  Please tell the lords %b
+the king will eat with them, and if they'd bring %b
+me something small, my hunger would be cured - %b
+whatever bits of bread or meat they can afford."
+%p

@@ -1,6 +1,5 @@
 Me:
 - Each version: make sure to update itch.io page!
-- Hook the workshop generation code into the Carcassia generators
 - The workshop generation should also generate the appropriate creature
   for a feature.
 - Allow races to be regexps
