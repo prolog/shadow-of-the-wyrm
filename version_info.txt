@@ -44,6 +44,8 @@ Shadow of the Wyrm v1.0.1 "Besard"
 - Reduced the probabilities of rooms having more than one trap, and
   being fully trapped.
 
+- Magic trees now have a chance to grow in dungeons.
+
 - New features: pulper.
 
 - New items: mold and deckle, paper pulp, scroll of repelling, wand of

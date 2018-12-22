@@ -428,7 +428,8 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
                                                     {RoomFeatures::ROOM_FEATURE_NODE, DungeonFeatureTextKeys::DUNGEON_FEATURE_NODE},
                                                     {RoomFeatures::ROOM_FEATURE_GRAVE, DungeonFeatureTextKeys::DUNGEON_FEATURE_GRAVE},
                                                     {RoomFeatures::ROOM_FEATURE_SPRING, DungeonFeatureTextKeys::DUNGEON_FEATURE_SPRING},
-                                                    {RoomFeatures::ROOM_FEATURE_CRAFT_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_CRAFT_ROOM}};
+                                                    {RoomFeatures::ROOM_FEATURE_CRAFT_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_CRAFT_ROOM},
+                                                    {RoomFeatures::ROOM_FEATURE_MAGIC_TREE, DungeonFeatureTextKeys::DUNGEON_FEATURE_MAGIC_TREE}};
 
     shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
@@ -478,6 +479,10 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
           // JCD FIXME: Later, refactor this so that it's in a common place and
           // can be called during village generation.
           placed_feature = generate_craft_room(map, start_row, end_row, start_col, end_col);
+        }
+        else if (feature == RoomFeatures::ROOM_FEATURE_MAGIC_TREE)
+        {
+          placed_feature = generate_magic_tree(map, start_row, end_row, start_col, end_col);
         }
 
         if (placed_feature)
@@ -608,6 +613,42 @@ bool DungeonGenerator::generate_craft_room(MapPtr map, const int start_row, cons
       {
         tile->set_feature(feature);
         generated = true;
+      }
+    }
+  }
+
+  return generated;
+}
+
+bool DungeonGenerator::generate_magic_tree(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  bool generated = false;
+
+  if (map != nullptr)
+  {
+    int num_trees = RNG::range(2, 4);
+    int num_generated = 0;
+
+    for (int i = 0; i < 10; i++)
+    {
+      int y = RNG::range(start_row, end_row);
+      int x = RNG::range(start_col, end_col);
+
+      TilePtr tile = map->at(y, x);
+
+      if (tile && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
+      {
+        // Transform the tile into a magic tree
+        TilePtr magic_tree = tg.generate(TileType::TILE_TYPE_MAGICAL_TREE);
+        map->insert({y,x}, magic_tree);
+
+        num_generated++;
+        generated = true;
+      }
+
+      if (num_generated == num_trees)
+      {
+        break;
       }
     }
   }

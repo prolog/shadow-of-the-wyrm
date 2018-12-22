@@ -10,7 +10,6 @@ Me:
   parts of each map being set.
 - "The Vertical City"
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
-- Dungeons and caverns should have a chance to grow magic trees.
 - Tidy up scripts/quests into subdirectories, like carcassia, and test.
   Need to remember to update env.lua!
 - More guilds/things with memberships
