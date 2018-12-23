@@ -4,6 +4,7 @@
 #include "HouseSectorFeature.hpp"
 #include "ShopSectorFeature.hpp"
 #include "ShrineSectorFeature.hpp"
+#include "WorkshopSectorFeature.hpp"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ ResidentialSectorFeatureGenerator::ResidentialSectorFeatureGenerator()
             {23, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_GARDEN},
             {35, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_SHOP},
             {45, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_SHRINE},
+            {50, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_WORKSHOP},
             {100, ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_HOUSE}})
 {
 }
@@ -60,6 +62,11 @@ bool ResidentialSectorFeatureGenerator::create_feature(MapPtr map, const Coordin
     case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_SHRINE:
     {
       feature = make_shared<ShrineSectorFeature>();
+      break;
+    }
+    case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_WORKSHOP:
+    {
+      feature = make_shared<WorkshopSectorFeature>();
       break;
     }
     case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_HOUSE:

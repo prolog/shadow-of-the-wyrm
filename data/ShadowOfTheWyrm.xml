@@ -379,6 +379,74 @@
 		</Deity>
 	</Deities>
 	<Races>
+		<Race id="_unknown">
+			<UserPlayable>0</UserPlayable>
+			<Slayable>1</Slayable>
+			<LeavesCorpse>0</LeavesCorpse>
+			<CorpsePoisoned>0</CorpsePoisoned>
+			<Pacifiable>0</Pacifiable>
+			<Splits>0</Splits>
+			<HasPockets>0</HasPockets>
+			<HasVoice>0</HasVoice>
+			<HasHair>0</HasHair>
+			<NameSID>UNKNOWN_RACE_NAME</NameSID>
+			<Size>4</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>100</Min>
+					<Max>10000</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>1000000</Min>
+					<Max>10000000</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>40</Strength>
+				<Dexterity>40</Dexterity>
+				<Agility>40</Agility>
+				<Health>40</Health>
+				<Intelligence>40</Intelligence>
+				<Willpower>40</Willpower>
+				<Charisma>40</Charisma>
+				<Speed>40</Speed>
+			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>
+			<HPRegenMultiplier>1.0</HPRegenMultiplier>
+			<APRegenMultiplier>1.0</APRegenMultiplier>
+			<SkillPoints>5</SkillPoints>
+		</Race>		
 		<Race id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<Slayable>1</Slayable>
@@ -2833,6 +2901,9 @@
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
+						<ID>_mold_and_deckle</ID>
+					</InitialItem>
+					<InitialItem>
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>
@@ -4750,7 +4821,7 @@
 				<NumSides>1</NumSides>
 				<Type>1</Type>
 			</Damage>
-		</Creature>
+		</Creature> 
 		<Creature id="rat">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -6206,7 +6277,6 @@
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>5</DangerLevel>
-				<!-- base: 8 -->
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>8</NumDice>
@@ -9048,7 +9118,7 @@
 				<NumDice>1</NumDice>
 				<NumSides>54</NumSides>
 				<Type>8</Type>
-				<EffectBonus>100</EffectBonus> <!-- You know the myths don't lie -->
+				<EffectBonus>100</EffectBonus> 
 			</Damage>
 			<Speed>60</Speed>
 		</Creature>
@@ -9187,7 +9257,7 @@
 				<NumSides>60</NumSides>
 				<Type>3</Type>
 			</Damage>
-		</Creature>
+		</Creature>  
 		<Creature id="dire_wolf">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>DIRE_WOLF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -9230,7 +9300,7 @@
 				<NumSides>62</NumSides>
 				<Type>0</Type>
 			</Damage>
-		</Creature>
+		</Creature> 
 		<Creature id="lycaon">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>LYCAON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -15244,7 +15314,6 @@
 				<Friendly>1</Friendly>
 				<DangerLevel>26</DangerLevel>
 				<Rarity>0</Rarity>
-				<!-- Cornel is at the verge of death. -->
 				<HP>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
@@ -21735,7 +21804,6 @@
 				<NumDice>1</NumDice>
 				<NumSides>16</NumSides>
 				<Type>2</Type>
-				<!-- Headbutt with goaty horns! -->
 			</Damage>
 			<Evade>8</Evade>
 		</Creature>
@@ -21828,7 +21896,6 @@
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
-				<!-- Fix this later -->
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
@@ -21870,8 +21937,6 @@
 					<TileType>26</TileType>
 					<TileType>28</TileType>
 					<TileType>31</TileType>
-					<!-- Only setting them to the dark three's sites
-					     for now because acolytes are hostile by default. -->
 					<TileType>33</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
@@ -22705,7 +22770,6 @@
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
-				<!-- Well, it starts off friendly... -->
 				<Friendly>1</Friendly>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -22843,7 +22907,6 @@
 			<Evade>3</Evade>
 			<Soak>0</Soak>
 		</Creature>
-		<!-- Ead is just a kid, but spectacularly powerful, damage-wise. -->
 		<Creature id="ead">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>EAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -28683,6 +28746,19 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="c_17_repel">
+			<NameSID>REPEL_NAME_SID</NameSID>
+			<PlayerCastMessageSID>REPEL_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>REPEL_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>11</Colour>
+			<APCost>4</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>0</Shape>
+			<Effect>30</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -29043,6 +29119,19 @@
 				</StatusAilments>
 			</Damage>
 			<Effect>0</Effect>
+		</Spell>
+		<Spell id="a_20_teleport">
+			<NameSID>TELEPORT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>TELEPORT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>TELEPORT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>11</Colour>
+			<APCost>15</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>0</Shape>
+			<Effect>5</Effect>
 		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
@@ -32847,8 +32936,7 @@
 				<Speed>4</Speed>
 				<Damage>
 					<NumDice>2</NumDice>
-					<NumSides>10</NumSides>
-					<Modifier>8</Modifier>
+					<NumSides>12</NumSides>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
@@ -37334,6 +37422,23 @@
 				<DangerLevel>2</DangerLevel>
 				<Effect>25</Effect>
 			</Scroll>
+			<Scroll id="repel_scroll">
+				<DescriptionSID>REPEL_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_REPEL_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>REPEL_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_REPEL_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Effect>30</Effect>
+			</Scroll>
 		</Scrolls>
 		<Currencies>
 			<Currency id="_currency">
@@ -37664,6 +37769,17 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<DangerLevel>2</DangerLevel>
+			</Tool>
+			<Tool id="_mold_and_deckle">
+				<DescriptionSID>MOLD_AND_DECKLE_SID</DescriptionSID>
+				<UsageDescriptionSID>MOLD_AND_DECKLE_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>1</DangerLevel>
 			</Tool>
 			<Tool id="lute">
 				<DescriptionSID>LUTE_SID</DescriptionSID>
@@ -38177,6 +38293,31 @@
 				<Radius>2</Radius>
 				<Colour>1</Colour>
 			</Wand>
+			<Wand id="osmosis_wand">
+				<DescriptionSID>OSMOSIS_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_OSMOSIS_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>OSMOSIS_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_OSMOSIS_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>55</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Damage draining="1" ethereal="1">
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+					<Type>9</Type>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>5</Range>
+				<Colour>6</Colour>
+			</Wand>
 		</Wands>
 		<Spellbooks>
 			<Spellbook id="isen_dun_chronicle">
@@ -38641,7 +38782,7 @@
 				<UnidentifiedDescriptionSID>UNID_ELECTRIC_ARC_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ELECTRIC_ARC_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ELECTRIC_ARC_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>1000</Value>
+				<Value>24</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -38654,7 +38795,25 @@
 				<SpellID>c_16_electric_arc</SpellID>
 				<Difficulty>30</Difficulty>
 			</Spellbook>
-			<Spellbook id="wreath_of_fire_spellbook">
+			<Spellbook id="repel_spellbook">
+				<DescriptionSID>REPEL_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_REPEL_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>REPEL_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_REPEL_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>28</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<SpellID>c_17_repel</SpellID>
+				<Difficulty>32</Difficulty>
+			</Spellbook>
+=			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>WREATH_OF_FIRE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
@@ -38977,6 +39136,24 @@
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>a_19_meteor</SpellID>
 				<Difficulty>155</Difficulty>
+			</Spellbook>
+			<Spellbook id="teleport_spellbook">
+				<DescriptionSID>TELEPORT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_TELEPORT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>TELEPORT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_TELEPORT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>700</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<SpellID>a_20_teleport</SpellID>
+				<Difficulty>130</Difficulty>
 			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
@@ -39502,6 +39679,16 @@
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
+			<Item id="_paper_pulp">
+				<DescriptionSID>PAPER_PULP_SID</DescriptionSID>
+				<UsageDescriptionSID>PAPER_PULP_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_quill">
 				<DescriptionSID>QUILL_SID</DescriptionSID>
 				<UsageDescriptionSID>QUILL_USAGE_SID</UsageDescriptionSID>

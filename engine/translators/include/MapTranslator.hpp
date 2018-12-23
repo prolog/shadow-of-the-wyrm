@@ -14,7 +14,7 @@ class MapTranslator
 {
   public:
     // Create a full display map (used when doing a full redraw)
-    static DisplayMap create_display_map(const bool player_blinded, const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords, const bool full_redraw_required);
+    static DisplayMap create_display_map(CreaturePtr creature, const bool player_blinded, const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords, const bool full_redraw_required);
 
     static DisplayTile create_display_tile(const bool player_blinded, const std::pair<Colour, Colour>& tod_overrides, const ShimmerColours& shimmer_colours, const TilePtr& engine_tile, const TilePtr& fov_tile);
     static DisplayTile create_display_tile_from_creature(const CreaturePtr& creature, const Colour override_colour);

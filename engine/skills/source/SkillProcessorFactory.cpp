@@ -4,6 +4,7 @@
 #include "FletcherySkillProcessor.hpp"
 #include "HidingSkillProcessor.hpp"
 #include "MusicSkillProcessor.hpp"
+#include "PapercraftSkillProcessor.hpp"
 #include "ScribingSkillProcessor.hpp"
 #include "SkillProcessorFactory.hpp"
 #include "SkillProcessors.hpp"
@@ -47,6 +48,8 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_MEDICINE, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MEDICINE)),
                make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MOUNTAINEERING)),
                make_pair(SkillType::SKILL_GENERAL_MUSIC, make_shared<MusicSkillProcessor>()),
+               make_pair(SkillType::SKILL_GENERAL_NIGHT_SIGHT, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_NIGHT_SIGHT)),
+               make_pair(SkillType::SKILL_GENERAL_PAPERCRAFT, make_shared<PapercraftSkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_RELIGION, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_RELIGION)),
                make_pair(SkillType::SKILL_GENERAL_SCRIBING, make_shared<ScribingSkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_SKINNING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_SKINNING)),

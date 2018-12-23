@@ -12,7 +12,7 @@ class CreatureFactory
 
     void set_hostility_for_creatures(const bool override_host, const bool host);
 
-    CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id);
+    CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id, CreaturePtr procgen_creature = nullptr);
     CreaturePtr create_by_race_and_class(ActionManager& am, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const std::string& deity_id = "");
 
   protected:

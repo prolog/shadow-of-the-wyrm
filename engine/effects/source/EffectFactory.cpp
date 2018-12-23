@@ -17,6 +17,7 @@
 #include "ModifyStatisticsEffect.hpp"
 #include "NullEffect.hpp"
 #include "RageEffect.hpp"
+#include "RepelEffect.hpp"
 #include "FruitJuiceEffect.hpp"
 #include "RechargingEffect.hpp"
 #include "StatusTypes.hpp"
@@ -37,7 +38,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modifier& m, const map<string, string>& properties, const string& spell_id, const string& source_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(30), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(31), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -135,6 +136,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modif
       break;
     case EffectType::EFFECT_TYPE_INCREASE_MAX_AP:
       effect = std::make_shared<IncreaseMaxAPEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_REPEL:
+      effect = std::make_shared<RepelEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:

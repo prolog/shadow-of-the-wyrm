@@ -34,6 +34,7 @@ ActionCostValue BowyerSkillProcessor::process(CreaturePtr creature, MapPtr map)
         {
           string item_base_id = option->get_external_id();
           create_bowyer_item(item_base_id, creature, map);
+          creature->get_skills().mark(SkillType::SKILL_GENERAL_BOWYER);
 
           acv = get_default_skill_action_cost_value(creature);
         }

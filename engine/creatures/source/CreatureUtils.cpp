@@ -8,6 +8,8 @@
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
+#include "LineOfSightCalculator.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ModifyStatisticsEffect.hpp"
 #include "ReligionManager.hpp"
@@ -746,14 +748,19 @@ MapPtr CreatureUtils::update_fov_map(MapPtr current_map, MapPtr v_map, CreatureP
   {
     Coordinate creature_coords = current_map->get_location(current_creature->get_id());
     MapPtr view_map = v_map;
+    LineOfSightCalculator losc;
+    Game& game = Game::instance();
+    Date date = GameUtils::get_date(game);
+
+    int los_len = losc.calculate_los_length(current_creature, date.get_time_of_day());
 
     if (view_map == nullptr)
     {
-      view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+      view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, los_len);
     }
 
     FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
-    fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+    fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, los_len);
     DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
 
     if (strategy)

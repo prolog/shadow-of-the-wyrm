@@ -14,6 +14,17 @@
 #include "Modifier.hpp"
 #include "tiles.hpp"
 
+// Race IDs referenced directly in the engine.
+class RaceID
+{
+  public:
+    static const std::string RACE_ID_UNKNOWN;
+
+  protected:
+    RaceID();
+    ~RaceID();
+};
+
 class Race
 {
   public:

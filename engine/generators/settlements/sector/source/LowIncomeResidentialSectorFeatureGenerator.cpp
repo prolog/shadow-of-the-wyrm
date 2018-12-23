@@ -5,11 +5,13 @@
 #include "RNG.hpp"
 #include "SectorFeature.hpp"
 #include "ShopSectorFeature.hpp"
+#include "WorkshopSectorFeature.hpp"
 
 using namespace std;
 
 LowIncomeResidentialSectorFeatureGenerator::LowIncomeResidentialSectorFeatureGenerator()
-: features({{55, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_HOUSE},
+: features({{45, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_HOUSE},
+            {55, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_WORKSHOP},
             {65, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_GRAVES},
             {80, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_VEGETABLE_GARDEN},
             {90, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP},
@@ -41,6 +43,11 @@ bool LowIncomeResidentialSectorFeatureGenerator::create_feature(MapPtr map, cons
       }
 
       feature = make_shared<HouseSectorFeature>(ruined);
+      break;
+    }
+    case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_WORKSHOP:
+    {
+      feature = make_shared<WorkshopSectorFeature>();
       break;
     }
     case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_GRAVES:

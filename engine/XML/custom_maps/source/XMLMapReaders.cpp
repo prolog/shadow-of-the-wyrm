@@ -226,12 +226,12 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
       // Place the specified creature on the map.
       Game& game = Game::instance();
 
-      CreatureFactory cfactory;
-      cfactory.set_hostility_for_creatures(override_host, hostility);
-      CreaturePtr creature = cfactory.create_by_creature_id(game.get_action_manager_ref(), id);
+      CreatureFactory cf;
+      cf.set_hostility_for_creatures(override_host, hostility);
+      CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), id);
       
       // Set any additional properties
-      if (creature)
+      if (creature != nullptr)
       {
         if (!name.empty())
         {

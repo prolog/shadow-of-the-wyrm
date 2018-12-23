@@ -1,3 +1,4 @@
+#include <limits>
 #include "Conversion.hpp"
 #include "Depth.hpp"
 #include "Serialize.hpp"
@@ -7,14 +8,15 @@ using namespace std;
 // Depth 1 is -50 feet (under ground, positive depth).
 // Depth -1 is 50 feet (above ground, negative depth).
 int Depth::DEPTH_MULTIPLIER = -50;
+const string Depth::DEPTH_INFINITE = "inf";
 
 Depth::Depth()
-: current(0), minimum(0), maximum(0), increment(1)
+: current(0), minimum(0), maximum(0), increment(1), has_max(true)
 {
 }
 
-Depth::Depth(const int cur, const int min, const int max, const int incr)
-: current(cur), minimum(min), maximum(max), increment(incr)
+Depth::Depth(const int cur, const int min, const int max, const int incr, const bool has_maxi)
+: current(cur), minimum(min), maximum(max), increment(incr), has_max(has_maxi)
 {
 }
 
@@ -26,6 +28,7 @@ bool Depth::operator==(const Depth& d) const
   result = result && (minimum == d.minimum);
   result = result && (maximum == d.maximum);
   result = result && (increment == d.increment);
+  result = result && (has_max == d.has_max);
 
   return result;
 }
@@ -60,6 +63,16 @@ int Depth::get_maximum() const
   return maximum;
 }
 
+void Depth::set_has_maximum(const bool new_has_maximum)
+{
+  has_max = new_has_maximum;
+}
+
+bool Depth::has_maximum() const
+{
+  return has_max;
+}
+
 void Depth::set_increment(const int new_increment)
 {
   increment = new_increment;
@@ -73,11 +86,14 @@ int Depth::get_increment() const
 // Return the "next" depth.
 Depth Depth::lower() const
 {
-  Depth d(current, minimum, maximum, increment);
+  Depth d(current, minimum, maximum, increment, has_max);
 
-  if (current < maximum)
+  if (has_maximum() == false || (current < maximum))
   {
-    d.set_current(current + std::abs(increment));
+    if (current < numeric_limits<int>::max())
+    {
+      d.set_current(current + std::abs(increment));
+    }
   }
 
   return d;
@@ -86,22 +102,56 @@ Depth Depth::lower() const
 // Return the "previous" depth.
 Depth Depth::higher() const
 {
-  Depth d(current, minimum, maximum, increment);
+  Depth d(current, minimum, maximum, increment, has_max);
 
-  if (current > minimum)
+  if (has_maximum() == false || (current > minimum))
   {
-    d.set_current(current - std::abs(increment));
+    if (current > numeric_limits<int>::min())
+    {
+      d.set_current(current - std::abs(increment));
+    }
   }
 
   return d;
 }
 
-// Return the depth as a string (for the UI, etc): e.g., "[-50']", "" (if on overworld, or otherwise at 0')
-string Depth::str() const
+bool Depth::has_more_levels(const Direction d) const
+{
+  bool more_levels = false;
+
+  if (!has_max)
+  {
+    more_levels = true;
+  }
+  else
+  {
+    if (d == Direction::DIRECTION_DOWN)
+    {
+      more_levels = ((current + std::abs(increment)) <= maximum);
+    }
+    else if (d == Direction::DIRECTION_UP)
+    {
+      more_levels = ((current - std::abs(increment)) >= minimum);
+    }
+  }
+
+  return more_levels;
+}
+
+// Return the depth as a string (for the UI, etc).
+//
+// For most cases in game (showing on a map's status line), suppress any
+// 0-depth values such as the overworld, forests, etc.
+// e.g., "[-50']", "" (if on overworld, or otherwise at 0')
+//
+// For cases such as showing the maximum depth reached in the character dump,
+// the show_all_depths parameter allows the depth to be shown even when it's
+// currently 0.
+string Depth::str(bool show_all_depths) const
 {
   string depth_s; // Default, if on plains, forest, etc.
 
-  if (current != 0)
+  if (current != 0 || show_all_depths)
   {
     int depth_in_feet = current * DEPTH_MULTIPLIER;
     depth_s = std::to_string(depth_in_feet);
@@ -117,6 +167,7 @@ bool Depth::serialize(ostream& stream) const
   Serialize::write_int(stream, minimum);
   Serialize::write_int(stream, maximum);
   Serialize::write_int(stream, increment);
+  Serialize::write_bool(stream, has_max);
   Serialize::write_int(stream, DEPTH_MULTIPLIER);
 
   return true;
@@ -128,6 +179,7 @@ bool Depth::deserialize(istream& stream)
   Serialize::read_int(stream, minimum);
   Serialize::read_int(stream, maximum);
   Serialize::read_int(stream, increment);
+  Serialize::read_bool(stream, has_max);
   Serialize::read_int(stream, DEPTH_MULTIPLIER);
 
   return true;

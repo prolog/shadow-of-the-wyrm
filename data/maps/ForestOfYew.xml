@@ -159,6 +159,13 @@
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
+				<Row>12</Row>
+				<Col>23</Col>
+			</Coord>
+			<Pulper/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>7</Row>
 				<Col>42</Col>
 			</Coord>

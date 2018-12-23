@@ -1,5 +1,8 @@
 #include "CreatureSkillMarkerChecker.hpp"
 #include "EngineConversion.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -19,24 +22,45 @@ void CreatureSkillMarkerChecker::tick(CreaturePtr creature, TilePtr tile, const 
   {
     if (total_minutes_elapsed % minutes_interval == 0)
     {
-      // JCD FIXME Refactor this if we need to do multiple skills
-      // in future.
-      BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
-      int num_marks = 0;
+      check_carrying_burden(creature);
+      check_night_sight(creature);
+    }
+  }
+}
 
-      if (bl == BurdenLevel::BURDEN_LEVEL_BURDENED)
-      {
-        num_marks+=2;
-      }
-      else if (bl == BurdenLevel::BURDEN_LEVEL_STRAINED)
-      {
-        num_marks += 3;
-      }
+void CreatureSkillMarkerChecker::check_carrying_burden(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
+    int num_marks = 0;
 
-      for (int i = 0; i < num_marks; i++)
-      {
-        creature->get_skills().mark(SkillType::SKILL_GENERAL_CARRYING);
-      }
+    if (bl == BurdenLevel::BURDEN_LEVEL_BURDENED)
+    {
+      num_marks += 2;
+    }
+    else if (bl == BurdenLevel::BURDEN_LEVEL_STRAINED)
+    {
+      num_marks += 3;
+    }
+
+    for (int i = 0; i < num_marks; i++)
+    {
+      creature->get_skills().mark(SkillType::SKILL_GENERAL_CARRYING);
+    }
+  }
+}
+
+void CreatureSkillMarkerChecker::check_night_sight(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    TimeOfDayType tod = GameUtils::get_date(Game::instance()).get_time_of_day();
+
+    // If the time of day is anything other than daytime, train night sight.
+    if (tod != TimeOfDayType::TIME_OF_DAY_DAY)
+    {
+      creature->get_skills().mark(SkillType::SKILL_GENERAL_NIGHT_SIGHT);
     }
   }
 }

@@ -96,6 +96,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_FORGE;
     static const std::string ACTION_KICK_JEWELER_WORKBENCH;
     static const std::string ACTION_KICK_TANNERY;
+    static const std::string ACTION_KICK_PULPER;
     static const std::string ACTION_KICK_WHEEL_AND_LOOM;
     static const std::string ACTION_KICK_BARREL;
     static const std::string ACTION_KICK_SARCOPHAGUS;
@@ -193,6 +194,13 @@ class ActionTextKeys
     static const std::string ACTION_SLOT_MACHINE_NSF;
     static const std::string ACTION_DEALER_WIN_SID;
     static const std::string ACTION_DEALER_LOSE_SID;
+    static const std::string ACTION_PULP_ARTIFACT_SELECTED;
+    static const std::string ACTION_PULP_CREATED;
+    static const std::string ACTION_PAPERCRAFT_NO_EQUIPMENT;
+    static const std::string ACTION_PAPERCRAFT_NO_PULP;
+    static const std::string ACTION_PAPERCRAFT_SUCCESS;
+    static const std::string ACTION_PAPERCRAFT_FAILURE;
+    static const std::string ACTION_PAPERCRAFT_PULP_TOO_LIGHT;
 
   protected:
     ActionTextKeys();
