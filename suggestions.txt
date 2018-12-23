@@ -1,5 +1,6 @@
 Me:
 - Each version: make sure to update itch.io page!
+- Test village feature items in MapTester.
 - Rework creature generation to be faster and not to bias towards the
   creatures at the front of the list.
 - The workshop generation should also generate the appropriate creature
