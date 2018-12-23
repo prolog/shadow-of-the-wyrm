@@ -139,7 +139,7 @@ void MineGenerator::place_staircases(MapPtr map)
   if (map != nullptr)
   {
     // Place down staircase.
-    if (depth.get_current() < depth.get_maximum())
+    if (depth.has_more_levels(Direction::DIRECTION_DOWN))
     {
       while (!found)
       {

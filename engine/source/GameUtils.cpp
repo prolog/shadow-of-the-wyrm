@@ -138,7 +138,29 @@ bool GameUtils::is_player_among_creatures(CreaturePtr creature1, CreaturePtr cre
 // How many seconds since the game started?
 double GameUtils::get_seconds(Game& game)
 {
-  return game.get_current_world()->get_calendar().get_seconds();
+  double sec = 0.0;
+  WorldPtr world = game.get_current_world();
+
+  if (world != nullptr)
+  {
+    sec = world->get_calendar().get_seconds();
+  }
+
+  return sec;
+}
+
+Date GameUtils::get_date(Game& game)
+{
+  Date d = Date::null();
+
+  WorldPtr world = game.get_current_world();
+
+  if (world != nullptr)
+  {
+    d = world->get_calendar().get_date();
+  }
+
+  return d;
 }
 
 StartingLocation GameUtils::get_random_starting_location(const StartingLocationMap& sm)

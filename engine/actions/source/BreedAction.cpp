@@ -42,7 +42,11 @@ ActionCostValue BreedAction::breed(CreaturePtr creature, MapPtr map) const
             CreatureFactory cf;
 
             CreaturePtr spawn = cf.create_by_creature_id(game.get_action_manager_ref(), original_id);
-            GameUtils::add_new_creature_to_map(game, spawn, map, c);
+
+            if (spawn != nullptr)
+            {
+              GameUtils::add_new_creature_to_map(game, spawn, map, c);
+            }
 
             // Breeding is silent - the player gets no notification, so the message
             // manager is not needed.

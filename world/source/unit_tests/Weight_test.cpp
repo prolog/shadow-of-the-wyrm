@@ -30,6 +30,18 @@ TEST(SW_World_Weight, operator_gthan)
   EXPECT_TRUE(w3 > w1);
 }
 
+TEST(SW_World_Weight, operator_geq)
+{
+  Weight w1(10);
+  Weight w2(10);
+  Weight w3(8);
+
+  EXPECT_TRUE(w1 >= w2);
+  EXPECT_TRUE(w2 >= w1);
+  EXPECT_TRUE(w1 >= w3);
+  EXPECT_FALSE(w3 >= w1);
+}
+
 TEST(SW_World_Weight, operator_lthan)
 {
   Weight w1(10);
@@ -39,6 +51,18 @@ TEST(SW_World_Weight, operator_lthan)
   EXPECT_FALSE(w1 < w2);
   EXPECT_TRUE(w1 < w3);
   EXPECT_FALSE(w3 < w1);
+}
+
+TEST(SW_World_Weight, operator_leq)
+{
+  Weight w1(10);
+  Weight w2(10);
+  Weight w3(8);
+
+  EXPECT_TRUE(w1 <= w2);
+  EXPECT_TRUE(w2 <= w1);
+  EXPECT_TRUE(w3 <= w1);
+  EXPECT_FALSE(w1 <= w3);
 }
 
 TEST(SW_World_Weight, serialization_id)

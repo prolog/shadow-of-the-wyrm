@@ -10,7 +10,6 @@ CreatureConstants::~CreatureConstants()
 {
 }
 
-const int CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH = 6;
 const unsigned int CreatureConstants::MAX_CREATURE_LEVEL = 50;
 const int CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE = 99;
 
@@ -41,4 +40,4 @@ const string CreatureID::CREATURE_ID_SHOPKEEPER = "_shopkeeper";
 const string CreatureID::CREATURE_ID_FAIRY_SPIRIT = "_fairy_spirit";
 const string CreatureID::CREATURE_ID_VENDOR = "_vendor";
 const string CreatureID::CREATURE_ID_PLAYER = "player";
-
+const string CreatureID::CREATURE_ID_PREFIX_ANCIENT_BEAST = "_ancient_beast_";

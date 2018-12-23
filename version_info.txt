@@ -1,4 +1,73 @@
-Shadow of the Wyrm v0.7.4 "Dalza"
+Shadow of the Wyrm v1.0.1 "Besard"
+- Version declared November 23, 2018. Version finalized December 23, 2018.
+
+- Dawn and dusk now remove 1 from LOS, and night removes 3.  The effects
+  of this can be reduced or eliminated based on the Night Sight skill.
+  Given that most creatures won't have this skill, a high value in Night 
+  Sight can allow you to see and attack a creature at range while it 
+  cannot see you itself.
+
+- Artisans start with a mold and deckle in their inventory.
+
+- Created paper pulpers.  These appear in a few set locations, as well
+  as being able to be selected randomly for distribution in dungeons
+  and elsewhere.  Pulpers allow you to turn scrolls and spellbooks into
+  paper pulp, and having skill in Papercraft allows you to use a mold
+  and deckle to turn raw paper pulp into blank scrolls.
+
+- Updated a number of the skills to get marks towards improvement when
+  used.
+
+- Reworked the depth code so that infinite dungeons/sewers/etc are
+  actually infinite.  You can still hit a maximum depth (integer max),
+  but you'll still be able to descend and get another level.
+
+- Beyond the usual maximum depths, there are creatures more dangerous
+  than those found throughout the world.  These ancient beasts are strange
+  holdovers from the early universe, scale in difficulty twice as fast as 
+  regular creatures, and have no real maximum to their power.
+
+- The maximum depth you've reached is now tracked in the character 
+  display/dump.
+
+- Random villages now have a general proportion of their buildings marked 
+  as workshops.  These are buildings that can contain forges, jeweler
+  workbenches, wheels and looms, etc.
+
+- Old Town and New Town in Carcassia now allow the generation of 
+  workshops.
+
+- More name combinations.
+
+- Toned down Forger a bit.
+
+- Reduced the probabilities of rooms having more than one trap, and
+  being fully trapped.
+
+- Magic trees now have a chance to grow in dungeons.
+
+- New features: pulper.
+
+- New items: mold and deckle, paper pulp, scroll of repelling, wand of
+  osmosis.
+
+- New spells: repel (Cantrips), teleport (Arcane).
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Electric Arc spellbooks were worth far too much money.
+
+  - There was a bug in Glich's script (ironically? appopriately?) that
+    prevented the player from getting an apple.
+
+  - When there were a large number of potential creatures that could be
+    generated, the generation code was overwhelmed with the probabilities
+    and the probability for each was 0 instead of something arbitrarily
+    low, like 1%.
+
+Shadow of the Wyrm v1.0.0 "Dalza"
 - Version declared January 20, 2018. Version finalized November 23, 2018.
 
 - There are now two starting locations: on Little Island, as before; and

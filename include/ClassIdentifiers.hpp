@@ -300,7 +300,8 @@ enum struct ClassIdentifier
   CLASS_ID_STARTING_LOCATION = 295,
   CLASS_ID_MEMBERSHIPS = 296,
   CLASS_ID_MEMBERSHIP = 297,
-  CLASS_ID_SHIMMER_COLOURS = 298
+  CLASS_ID_SHIMMER_COLOURS = 298,
+  CLASS_ID_PULPER = 299
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go
@@ -320,3 +321,4 @@ enum struct ClassIdentifier
 #define CCLASS_ID_TANNERY 280
 #define CCLASS_ID_JEWELER_WORKBENCH 281
 #define CCLASS_ID_WHEEL_AND_LOOM 282
+#define CCLASS_ID_PULPER 299

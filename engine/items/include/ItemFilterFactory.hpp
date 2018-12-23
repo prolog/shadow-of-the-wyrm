@@ -20,6 +20,7 @@ class ItemFilterFactory
     static std::list<IItemFilterPtr> create_readable_filter();
     static std::list<IItemFilterPtr> create_edible_filter();
     static std::list<IItemFilterPtr> create_hands_required_filter(const EquipmentWornLocation ewl, const int hands_available);
+    static std::list<IItemFilterPtr> create_item_base_id_filter(const std::string& item_base_id);
     
     static IItemFilterPtr create_equipment_worn_location_filter(const EquipmentWornLocation& ewl);
 

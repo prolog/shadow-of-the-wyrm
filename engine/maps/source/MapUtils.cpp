@@ -10,6 +10,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "LineOfSightCalculator.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -234,7 +235,7 @@ bool MapUtils::place_creature_randomly(MapPtr map, const string& creature_id)
   // Generate the creature
   CreaturePtr creature = cf.create_by_creature_id(am, creature_id);
 
-  if (creature)
+  if (creature != nullptr)
   {
     // Place the creature
     for (int attempts = 0; attempts < 200; attempts++)
@@ -1336,6 +1337,8 @@ void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current
 void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
 {
   std::map<string, CreaturePtr> map_creatures = current_map->get_creatures();
+  LineOfSightCalculator losc;
+  TimeOfDayType tod = GameUtils::get_date(Game::instance()).get_time_of_day();
 
   for (const auto& cr_pair : map_creatures)
   {
@@ -1343,11 +1346,12 @@ void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
 
     if (current_creature)
     {
+      int los_len = losc.calculate_los_length(current_creature, tod);
       Coordinate creature_coords = current_map->get_location(current_creature->get_id());
-      MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+      MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, los_len);
 
       FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
-      MapPtr fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+      MapPtr fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, los_len);
       DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
 
       if (strategy)

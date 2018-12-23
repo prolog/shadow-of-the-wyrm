@@ -854,7 +854,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
       }
 
       // Kill the creature, and run the death event function, if necessary.
-      update_mortuaries(attacking_creature, attacked_creature->get_original_id());
+      update_mortuaries(attacking_creature, attacked_creature);
       death_manager->die();
 
       // Sometimes there will be no attacking creature, eg., when drowning, falling off mountains, etc.
@@ -1101,28 +1101,48 @@ void CombatManager::mark_health_for_damage_taken(CreaturePtr attacking_creature,
 }
 
 // Update the Game's and the attacking creature's mortuary with the kill.
-void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const string& killed_creature_id)
+void CombatManager::update_mortuaries(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
   // Get whether the creature is a unique or not.
   Game& game = Game::instance();
-  CreatureGenerationValues cgv = game.get_creature_generation_values_ref()[killed_creature_id];
-  bool is_unique = (cgv.get_maximum() == 1);
-  
-  // Update the game's and creature's mortuary with the kill info.
-  Mortuary& game_mortuary = Game::instance().get_mortuary_ref();
-  game_mortuary.add_creature_kill(killed_creature_id, is_unique);
 
-  if (attacking_creature)
+  if (attacked_creature)
   {
-    Mortuary& creature_mortuary = attacking_creature->get_mortuary_ref();
-    creature_mortuary.add_creature_kill(killed_creature_id, is_unique);
+    string killed_creature_id = attacked_creature->get_original_id();
+    bool is_unique = false;
 
-    int level_diff = cgv.get_danger_level() - attacking_creature->get_level().get_current();
-    pair<int, string> max_diff = creature_mortuary.get_max_level_difference();
+    // Some procedurally generated creatures, like ancient beasts, won't
+    // exist in the main game map.  In this case, assume they are not
+    // unique.
+    CreatureGenerationValuesMap& cgvm = game.get_creature_generation_values_ref();
+    auto c_it = cgvm.find(killed_creature_id);
+    int attacked_lvl = attacked_creature->get_level().get_current();
 
-    if (level_diff > max_diff.first)
+    if (c_it != cgvm.end())
     {
-      creature_mortuary.set_max_level_difference(make_pair(level_diff, killed_creature_id));
+      CreatureGenerationValues cgv = game.get_creature_generation_values_ref()[killed_creature_id];
+      is_unique = (cgv.get_maximum() == 1);
+      attacked_lvl = cgv.get_danger_level();
+    }
+
+    string short_desc_sid = attacked_creature->get_short_description_sid();
+
+    // Update the game's and creature's mortuary with the kill info.
+    Mortuary& game_mortuary = Game::instance().get_mortuary_ref();
+    game_mortuary.add_creature_kill(killed_creature_id, short_desc_sid, is_unique);
+
+    if (attacking_creature)
+    {
+      Mortuary& creature_mortuary = attacking_creature->get_mortuary_ref();
+      creature_mortuary.add_creature_kill(killed_creature_id, short_desc_sid, is_unique);
+
+      int level_diff = attacked_lvl - attacking_creature->get_level().get_current();
+      pair<int, string> max_diff = creature_mortuary.get_max_level_difference();
+
+      if (level_diff > max_diff.first)
+      {
+        creature_mortuary.set_max_level_difference(make_pair(level_diff, killed_creature_id));
+      }
     }
   }
 }

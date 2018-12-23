@@ -341,6 +341,11 @@ class Creature : public ISerializable
 
     bool has_creature_in_view(const std::string& creature_id) const;
 
+    static bool is_ancient_beast(const std::string& id);
+
+    void set_max_depth_reached(const Depth& new_depth);
+    Depth get_max_depth_reached() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -494,6 +499,10 @@ class Creature : public ISerializable
 
     // Any guilds, trade organizations, etc., that the creature belongs to.
     Memberships memberships;
+
+    // Maximum depth reached - tracked in the character dump for those who want
+    // to dive through the infinite dungeon/sewer.
+    Depth max_depth_reached;
 };
 
 using CreaturePtr = std::shared_ptr<Creature>;

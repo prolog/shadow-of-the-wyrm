@@ -2,8 +2,10 @@
 #include <ctime>
 #include <boost/timer/timer.hpp>
 #include "global_prototypes.hpp"
+#include "CommandProcessor.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureTranslator.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureDescriber.hpp"
 #include "CreatureCoordinateCalculator.hpp"
@@ -16,22 +18,21 @@
 #include "CursesConstants.hpp"
 #include "DecisionStrategySelector.hpp"
 #include "DetectionSkillProcessor.hpp"
+#include "DisplayStatistics.hpp"
 #include "EngineConversion.hpp"
 #include "ExitGameAction.hpp"
 #include "FeatureGenerator.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "HighScoreScreen.hpp"
-#include "CommandProcessor.hpp"
-#include "CreatureTranslator.hpp"
 #include "ItemSerializationFactory.hpp"
+#include "LineOfSightCalculator.hpp"
 #include "Log.hpp"
 #include "MapCursor.hpp"
 #include "MapScript.hpp"
 #include "MapUtils.hpp"
-#include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
-#include "DisplayStatistics.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "ScoreFile.hpp"
@@ -44,8 +45,9 @@
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "ViewMapTranslator.hpp"
-#include "WorldTimeKeeperCoordinator.hpp"
+#include "WorldGenerator.hpp"
 #include "WorldMapLocationTextKeys.hpp"
+#include "WorldTimeKeeperCoordinator.hpp"
 
 // Used by serialization code:
 #include "CommandFactoryFactory.hpp"
@@ -400,7 +402,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     CurrentCreatureAbilities cca;
     CreaturePtr player = game.get_current_player();
 
-    DisplayMap display_map = MapTranslator::create_display_map(!cca.can_see(player), current_map, fov_map, display_area, reference_coords.first, redraw_needed);
+    DisplayMap display_map = MapTranslator::create_display_map(player, !cca.can_see(player), current_map, fov_map, display_area, reference_coords.first, redraw_needed);
     
     CursorSettings cs = CursorSettings::CURSOR_SETTINGS_USE_DEFAULT;
 
@@ -723,8 +725,8 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
             int distance = CoordUtils::chebyshev_distance(current_map->get_location(player->get_id()), current_map->get_location(current_creature->get_id()));
 
             // For now, burn a creature's action (do nothing!) if the creature falls outside
-            // of the player's LOS.
-            if (distance > CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH)
+            // of the player's default LOS.
+            if (distance > LineOfSightCalculator::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH)
             {
               action_cost.set_cost(current_creature->get_speed().get_current());
               advance = true;
@@ -732,9 +734,12 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
             }
           }
         }
-        
+ 
+        LineOfSightCalculator losc;
+        TimeOfDayType tod = GameUtils::get_date(Game::instance()).get_time_of_day();
+        int los_len = losc.calculate_los_length(current_creature, tod);
         Coordinate creature_coords = current_map->get_location(current_creature->get_id());
-        MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+        MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, los_len);
         MapPtr fov_map = CreatureUtils::update_fov_map(current_map, view_map, current_creature);
         
         if (current_creature->get_is_player())

@@ -34,12 +34,8 @@ string MortuaryDumper::get_mortuary() const
   {
     string creature_id = mcm_vt.first;    
     int count = mcm_vt.second.count;
-
-    auto cr_it = cmap.find(creature_id);
-    if (cr_it != cmap.end())
-    {
-      ss << StringTable::get(cr_it->second->get_short_description_sid()) << ": " << count << endl;
-    }
+    string short_desc_sid = mcm_vt.second.short_desc_sid;
+    ss << StringTable::get(short_desc_sid) << ": " << count << endl;
   }
 
   ss << endl << StringTable::get(TextKeys::TOTAL) << ": " << mortuary.get_num_creatures_killed() << endl;

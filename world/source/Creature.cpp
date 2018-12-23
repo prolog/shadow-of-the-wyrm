@@ -131,6 +131,7 @@ Creature::Creature(const Creature& cr)
   spell_knowledge = cr.spell_knowledge;
   modifiers = cr.modifiers;
   memberships = cr.memberships;
+  max_depth_reached = cr.max_depth_reached;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -216,6 +217,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (spell_knowledge == cr.spell_knowledge);
   result = result && (modifiers == cr.modifiers);
   result = result && (memberships == cr.memberships);
+  result = result && (max_depth_reached == cr.max_depth_reached);
 
   return result;
 }
@@ -1541,8 +1543,8 @@ Memberships& Creature::get_memberships_ref()
 
 // Set, get, and query additional (string) properties
 // Uncomment the code below to find out the size of Creature. :)
-// template<int s> struct creature_size;
-// creature_size<sizeof(Creature)> creature_size;
+//template<int s> struct creature_size;
+//creature_size<sizeof(Creature)> creature_size;
 
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
@@ -1551,14 +1553,14 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 1288, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1312, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 1184, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1208, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
   // Works for gcc in release
-  static_assert(sizeof(*this) == 2184 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
+  static_assert(sizeof(*this) == 2216 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
   #endif
 }
 
@@ -1578,6 +1580,23 @@ bool Creature::has_creature_in_view(const string& creature_id) const
   }
 
   return has_cr;
+}
+
+// Is the creature a procedurally-generated ancient beast?
+bool Creature::is_ancient_beast(const string& id)
+{
+  string prefix = CreatureID::CREATURE_ID_PREFIX_ANCIENT_BEAST;
+  return (id.compare(0, prefix.size(), prefix) == 0);
+}
+
+void Creature::set_max_depth_reached(const Depth& new_depth)
+{
+  max_depth_reached = new_depth;
+}
+
+Depth Creature::get_max_depth_reached() const
+{
+  return max_depth_reached;
 }
 
 // Swap values, no throw
@@ -1645,6 +1664,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->spell_knowledge, cr.spell_knowledge);
   std::swap(this->modifiers, cr.modifiers);
   std::swap(this->memberships, cr.memberships);
+  std::swap(this->max_depth_reached, cr.max_depth_reached);
 }
 
 bool Creature::serialize(ostream& stream) const
@@ -1780,6 +1800,7 @@ bool Creature::serialize(ostream& stream) const
   }
 
   memberships.serialize(stream);
+  max_depth_reached.serialize(stream);
 
   return true;
 }
@@ -1946,6 +1967,7 @@ bool Creature::deserialize(istream& stream)
   }
 
   memberships.deserialize(stream);
+  max_depth_reached.deserialize(stream);
 
   return true;
 }

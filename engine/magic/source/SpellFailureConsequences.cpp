@@ -90,22 +90,25 @@ bool SpellFailureConsequences::summon_creatures(CreaturePtr caster)
       CreatureFactory cf;
       CreaturePtr summoned_creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id);
 
-      // Place the creature on the tile
-      pair<string, TilePtr> fov_tile = free_tiles.at(tile_idx);
-      Coordinate coords = MapUtils::convert_map_key_to_coordinate(fov_tile.first);
-      TilePtr tile = fov_tile.second;
-
-      // Add the newly-summoned creature to the map, adding it as well to the
-      // action coordinator if necessary.
-      GameUtils::add_new_creature_to_map(game, summoned_creature, current_map, coords);
-      
-      // Remove the tile from the list of free tiles, and increment the number
-      // of summoned creatures.
-      free_tiles.erase(free_tiles.begin()+tile_idx);
-      cur_creatures_placed++;
-      if (creatures_summoned == false)
+      if (summoned_creature != nullptr)
       {
-        creatures_summoned = true;
+        // Place the creature on the tile
+        pair<string, TilePtr> fov_tile = free_tiles.at(tile_idx);
+        Coordinate coords = MapUtils::convert_map_key_to_coordinate(fov_tile.first);
+        TilePtr tile = fov_tile.second;
+
+        // Add the newly-summoned creature to the map, adding it as well to the
+        // action coordinator if necessary.
+        GameUtils::add_new_creature_to_map(game, summoned_creature, current_map, coords);
+
+        // Remove the tile from the list of free tiles, and increment the number
+        // of summoned creatures.
+        free_tiles.erase(free_tiles.begin() + tile_idx);
+        cur_creatures_placed++;
+        if (creatures_summoned == false)
+        {
+          creatures_summoned = true;
+        }
       }
     }
 

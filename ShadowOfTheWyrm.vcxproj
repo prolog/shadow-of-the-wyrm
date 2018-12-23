@@ -417,10 +417,12 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\ItemDropRateCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemEnchantmentCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\LineOfSightCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MineCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\NullAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PacificationCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\PapercraftCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhaseOfMoonCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\RageCalculator.hpp" />
@@ -680,6 +682,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\effects\include\HealingEffect.hpp" />
     <ClInclude Include="engine\effects\include\IdentifyEffect.hpp" />
     <ClInclude Include="engine\effects\include\NullEffect.hpp" />
+    <ClInclude Include="engine\effects\include\RepelEffect.hpp" />
     <ClInclude Include="engine\effects\include\SummonMonstersEffect.hpp" />
     <ClInclude Include="engine\effects\include\TeleportEffect.hpp" />
     <ClInclude Include="engine\effects\include\TimewalkEffect.hpp" />
@@ -799,6 +802,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\sector\include\TombSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\VegetableGardenGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\WildflowerGardenGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\WorkshopSectorFeature.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\AquaticVegetationTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\CairnTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\DefaultTileConfiguration.hpp" />
@@ -865,6 +869,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\items\include\IItemFilter.hpp" />
     <ClInclude Include="engine\items\include\InitialItemEquipper.hpp" />
     <ClInclude Include="engine\items\include\InitialItemSelector.hpp" />
+    <ClInclude Include="engine\items\include\ItemBaseIdFilter.hpp" />
     <ClInclude Include="engine\items\include\ItemDescriptionRandomizer.hpp" />
     <ClInclude Include="engine\items\include\ItemFactory.hpp" />
     <ClInclude Include="engine\items\include\ItemFilterFactory.hpp" />
@@ -922,6 +927,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\JewelerWorkbenchManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\NeutralAltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\PewManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\features\include\PulperManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\SarcophagusManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\SlotMachineManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp" />
@@ -992,6 +998,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\skills\include\HidingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\MusicSkillProcessor.hpp" />
+    <ClInclude Include="engine\skills\include\PapercraftSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\ScribingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\SkillManager.hpp" />
     <ClInclude Include="engine\skills\include\SkillProcessor.hpp" />
@@ -1106,6 +1113,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureFactory.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLPewReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLPulperReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSarcophagusReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSignReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSlotMachineReader.hpp" />
@@ -1332,6 +1340,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\tiles\features\include\Lock.hpp" />
     <ClInclude Include="world\tiles\features\include\NeutralAltar.hpp" />
     <ClInclude Include="world\tiles\features\include\Pew.hpp" />
+    <ClInclude Include="world\tiles\features\include\Pulper.hpp" />
     <ClInclude Include="world\tiles\features\include\RegularStatues.hpp" />
     <ClInclude Include="world\tiles\features\include\Sarcophagus.hpp" />
     <ClInclude Include="world\tiles\features\include\Sign.hpp" />
@@ -1450,9 +1459,11 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemDropRateCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\LineOfSightCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MineCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\NullAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PacificationCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\PapercraftCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\RageCalculator.cpp" />
@@ -1571,6 +1582,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\LineOfSightCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\MineCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1579,6 +1597,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\PacificationCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\PapercraftCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -1768,6 +1793,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\effects\source\IncreaseMaxHPAPEffect.cpp" />
     <ClCompile Include="engine\effects\source\MappingEffect.cpp" />
     <ClCompile Include="engine\effects\source\RageEffect.cpp" />
+    <ClCompile Include="engine\effects\source\RepelEffect.cpp" />
     <ClCompile Include="engine\effects\source\SummonMonstersEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
@@ -1797,6 +1823,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\settlements\sector\source\TombSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\VegetableGardenGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\WildflowerGardenGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\sector\source\WorkshopSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BaseSettlementGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\Building.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BuildingConfigFactory.cpp" />
@@ -1838,6 +1865,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\tile_config\source\MagicalTreeTileConfiguration.cpp" />
     <ClCompile Include="engine\items\source\ArtifactItemFilter.cpp" />
     <ClCompile Include="engine\items\source\HandsRequiredItemFilter.cpp" />
+    <ClCompile Include="engine\items\source\ItemBaseIdFilter.cpp" />
     <ClCompile Include="engine\items\source\ItemGenerationConstraints.cpp" />
     <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp" />
     <ClCompile Include="engine\items\source\unit_tests\HandsRequiredItemFilter_test.cpp">
@@ -1846,6 +1874,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\unit_tests\ItemBaseIdFilter_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\items\source\unit_tests\ItemGenerationManager_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1862,6 +1897,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\PulperManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SlotMachineManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\TableManipulator.cpp" />
@@ -1911,6 +1947,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\skills\source\HidingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\MusicSkillProcessor.cpp" />
+    <ClCompile Include="engine\skills\source\PapercraftSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\ScribingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\SkillProcessorFactory.cpp" />
@@ -1981,6 +2018,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\time\source\WorldTimeObserver.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBasicFeatureCMReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLDecorativeStatueReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLPulperReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSignReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSlotMachineReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLTableReader.cpp" />
@@ -4137,6 +4175,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\tiles\features\source\Lock.cpp" />
     <ClCompile Include="world\tiles\features\source\NeutralAltar.cpp" />
     <ClCompile Include="world\tiles\features\source\Pew.cpp" />
+    <ClCompile Include="world\tiles\features\source\Pulper.cpp" />
     <ClCompile Include="world\tiles\features\source\RegularStatues.cpp" />
     <ClCompile Include="world\tiles\features\source\Sarcophagus.cpp" />
     <ClCompile Include="world\tiles\features\source\Sign.cpp" />
@@ -4250,6 +4289,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Pulper_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\RegularStatues_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

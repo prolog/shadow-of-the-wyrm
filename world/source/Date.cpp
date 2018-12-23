@@ -76,6 +76,12 @@ Date::Date(const uint sec, const uint min, const uint hrs, const uint day_week, 
 {
 }
 
+Date Date::null()
+{
+  Date null_d(0, 0, 0, 0, 0, 0, 0, 0);
+  return null_d;
+}
+
 uint Date::get_seconds() const
 {
   return seconds;

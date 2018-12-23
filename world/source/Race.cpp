@@ -4,6 +4,16 @@
 
 using namespace std;
 
+RaceID::RaceID()
+{
+}
+
+RaceID::~RaceID()
+{
+}
+
+const string RaceID::RACE_ID_UNKNOWN = "_unknown";
+
 // Set the bare defaults for each race.
 Race::Race()
 : user_playable(false)

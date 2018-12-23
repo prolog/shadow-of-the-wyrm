@@ -14,6 +14,7 @@
 #include "XMLFountainReader.hpp"
 #include "XMLJewelerWorkbenchReader.hpp"
 #include "XMLPewReader.hpp"
+#include "XMLPulperReader.hpp"
 #include "XMLSarcophagusReader.hpp"
 #include "XMLSignReader.hpp"
 #include "XMLSlotMachineReader.hpp"
@@ -114,6 +115,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "DecorativeStatue")).is_null())
     {
       feature_creator = std::make_shared<XMLDecorativeStatueReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Pulper")).is_null())
+    {
+      feature_creator = std::make_shared<XMLPulperReader>();
     }
 
     assert(feature_creator != nullptr);
