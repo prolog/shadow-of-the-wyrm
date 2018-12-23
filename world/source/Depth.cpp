@@ -1,3 +1,4 @@
+#include <limits>
 #include "Conversion.hpp"
 #include "Depth.hpp"
 #include "Serialize.hpp"

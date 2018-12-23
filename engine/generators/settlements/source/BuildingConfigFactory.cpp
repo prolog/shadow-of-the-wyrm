@@ -61,13 +61,18 @@ vector<string> BuildingConfigFactory::create_item_ids(const vector<ClassIdentifi
 
   for (const auto& ci : features)
   {
-    vector<pair<string, int>> item_and_p;
+    auto item_i = feature_items.find(ci);
 
-    for (const auto& ip_pair : item_and_p)
+    if (item_i != feature_items.end())
     {
-      if (RNG::percent_chance(ip_pair.second))
+      vector<pair<string, int>> item_and_p = item_i->second;
+
+      for (const auto& ip_pair : item_and_p)
       {
-        item_ids.push_back(ip_pair.first);
+        if (RNG::percent_chance(ip_pair.second))
+        {
+          item_ids.push_back(ip_pair.first);
+        }
       }
     }
   }
