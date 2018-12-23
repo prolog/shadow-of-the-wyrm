@@ -183,7 +183,12 @@ string CreatureGenerationManager::select_creature_id_for_generation(ActionManage
     CreatureGenerationValues cgv = c_it->second.second;
 
     int p_numerator = cgv.get_danger_level();
-    int P = static_cast<int>((static_cast<float>(p_numerator) / p_denominator_f) * 100);
+    int P = 0;
+
+    if (p_numerator > 0)
+    {
+      P = max(1, static_cast<int>((static_cast<float>(p_numerator) / p_denominator_f) * 100));
+    }
 
     // Generate the creature if we hit the percentage, or if we're on the last item in the map
     // and a creature has not yet been generated.

@@ -15,6 +15,7 @@
 #include "CastleGenerator.hpp"
 #include "CathedralGenerator.hpp"
 #include "CavernGenerator.hpp"
+#include "CreatureGenerationManager.hpp"
 #include "CryptGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
@@ -75,6 +76,7 @@ void test_poisson();
 void misc();
 void test_calendar();
 void test_item_generation();
+void test_creature_generation();
 
 // Other maps
 void test_other_maps();
@@ -788,6 +790,7 @@ void misc()
     cout << "3. Item Generation" << endl;
     cout << "4. Other Map Types" << endl;
     cout << "5. Load Custom Map" << endl;
+    cout << "6. Creature Generation" << endl;
 
     cin >> choice;
     
@@ -807,6 +810,9 @@ void misc()
         break;
       case 5:
         load_custom_maps();
+        break;
+      case 6:
+        test_creature_generation();
       default:
         break;
     }
@@ -919,6 +925,75 @@ void test_item_generation()
 
       outfile.close();
       cout << "Wrote to " << filename << endl << endl;
+    }
+  }
+}
+
+void test_creature_generation()
+{
+  int min_level = 1;
+  int max_level = 1;
+  int tile_type = -1;
+  int num_creatures = 1;
+  string filename;
+
+  Game& game = Game::instance();
+  CreatureGenerationManager cgm;
+  ActionManager am = game.get_action_manager_ref();
+
+  while (min_level > 0)
+  {
+    cout << "Creature Generation" << endl << endl;
+    cout << "Min Level: ";
+    cin >> min_level;
+
+    cout << "Max Level: ";
+    cin >> max_level;
+
+    cout << "Tile Type: ";
+    cin >> tile_type;
+
+    cout << "Number of creatures: ";
+    cin >> num_creatures;
+
+    cout << "Filename: ";
+    cin >> filename;
+
+    CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(static_cast<TileType>(tile_type), false, min_level, max_level, Rarity::RARITY_COMMON, {});
+    map<string, int> creature_count;
+
+    if (num_creatures > 0)
+    {
+      for (int i = 0; i < num_creatures; i++)
+      {
+        CreaturePtr creature = cgm.generate_creature(am, generation_map);
+
+        if (creature != nullptr)
+        {
+          string creature_id = creature->get_original_id();
+
+          if (creature_count.find(creature_id) == creature_count.end())
+          {
+            creature_count[creature_id] = 1;
+          }
+          else
+          {
+            creature_count[creature_id]++;
+          }
+        }
+      }
+    }
+
+    if (!creature_count.empty())
+    {
+      ofstream outfile(filename);
+
+      for (const auto& cr_pair : creature_count)
+      {
+        outfile << cr_pair.first << ": " << cr_pair.second << endl;
+      }
+
+      outfile.close();
     }
   }
 }

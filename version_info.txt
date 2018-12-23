@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.0.1 "Besard"
-- Version declared November 23, 2018.
+- Version declared November 23, 2018. Version finalized December 23, 2018.
 
 - Dawn and dusk now remove 1 from LOS, and night removes 3.  The effects
   of this can be reduced or eliminated based on the Night Sight skill.
@@ -61,6 +61,11 @@ Shadow of the Wyrm v1.0.1 "Besard"
 
   - There was a bug in Glich's script (ironically? appopriately?) that
     prevented the player from getting an apple.
+
+  - When there were a large number of potential creatures that could be
+    generated, the generation code was overwhelmed with the probabilities
+    and the probability for each was 0 instead of something arbitrarily
+    low, like 1%.
 
 Shadow of the Wyrm v1.0.0 "Dalza"
 - Version declared January 20, 2018. Version finalized November 23, 2018.

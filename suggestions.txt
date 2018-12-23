@@ -1,5 +1,7 @@
 Me:
 - Each version: make sure to update itch.io page!
+- Rework creature generation to be faster and not to bias towards the
+  creatures at the front of the list.
 - The workshop generation should also generate the appropriate creature
   for a feature.
 - Allow races to be regexps
