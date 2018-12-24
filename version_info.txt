@@ -1,6 +1,8 @@
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.
 
+- New creatures: Calabus.
+
 Shadow of the Wyrm v1.0.1 "Besard"
 - Version declared November 23, 2018. Version finalized December 23, 2018.
 

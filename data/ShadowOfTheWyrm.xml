@@ -26921,6 +26921,49 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="calabus">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>CALABUS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CALABUS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CALABUS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CALABUS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>16</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>110</Exp>
+			</CreatureGeneration>
+			<Level>16</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>32</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<Soak>8</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/calabus.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="serat">
 			<RaceID>04_snakeling</RaceID>
 			<ShortDescriptionSID>SERAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -38813,7 +38856,7 @@
 				<SpellID>c_17_repel</SpellID>
 				<Difficulty>32</Difficulty>
 			</Spellbook>
-=			<Spellbook id="wreath_of_fire_spellbook">
+			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>WREATH_OF_FIRE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
