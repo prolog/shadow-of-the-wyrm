@@ -410,6 +410,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
 // Figure out what the creature wants to do in terms of getting through the occupied tile.
 MovementThroughTileType MovementAction::get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature, TilePtr creatures_new_tile)
 {
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   MovementThroughTileType mtt = MovementThroughTileType::MOVEMENT_ATTACK;
 
   // When prompting for switching, we need to consider that immobile creatures don't want
@@ -426,9 +427,6 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
     creature_can_enter_adjacent_tile = creatures_new_tile->get_is_available_for_creature(creature);
   }
 
-  // Maybe the creature just wants to switch?
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-
   // Don't switch if the creature will resist.
   string res_sw = adjacent_creature->get_decision_strategy()->get_property(DecisionStrategyProperties::DECISION_STRATEGY_RESIST_SWITCH);
   if (!res_sw.empty() && (String::to_bool(res_sw) == true))
@@ -444,25 +442,13 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
   {
     if (adjacent_creature_can_move && creature_can_enter_adjacent_tile)
     {
-      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SWITCH_FRIENDLY_CREATURE));
-      bool switch_places = creature->get_decision_strategy()->get_confirmation(true);
-
-      if (switch_places)
-      {
-        mtt = MovementThroughTileType::MOVEMENT_SWITCH;
-      }
+      mtt = get_friendly_movement_past_type(creature, TextKeys::DECISION_SWITCH_FRIENDLY_CREATURE, MovementThroughTileType::MOVEMENT_SWITCH, mtt);
     }
     else
     {
       if (creature_can_enter_adjacent_tile)
       {
-        manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SQUEEZE_FRIENDLY_CREATURE));
-        bool squeeze_past = creature->get_decision_strategy()->get_confirmation(true);
-
-        if (squeeze_past)
-        {
-          mtt = MovementThroughTileType::MOVEMENT_SQUEEZE;
-        }
+        mtt = get_friendly_movement_past_type(creature, TextKeys::DECISION_SQUEEZE_FRIENDLY_CREATURE, MovementThroughTileType::MOVEMENT_SQUEEZE, mtt);
       }
     }
   }
@@ -481,6 +467,34 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
     {
       // Not all deities approve of attacking friendlies...
       Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+    }
+  }
+
+  return mtt;
+}
+
+// "Friendly movement" should default to selecting yes from the confirmation.
+MovementThroughTileType MovementAction::get_friendly_movement_past_type(CreaturePtr creature, const string& prompt_sid, const MovementThroughTileType selected_type, const MovementThroughTileType fallback_type)
+{
+  MovementThroughTileType mtt = fallback_type;
+
+  if (creature != nullptr)
+  {
+    if (creature->get_automatic_movement_ref().get_engaged())
+    {
+      mtt = selected_type;
+    }
+    else
+    {
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(prompt_sid));
+
+      bool switch_places = creature->get_decision_strategy()->get_confirmation(true);
+
+      if (switch_places)
+      {
+        mtt = selected_type;
+      }
     }
   }
 
@@ -891,7 +905,7 @@ ActionCostValue MovementAction::get_action_cost_value(CreaturePtr creature) cons
         IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
         manager.add_new_message(ActionTextKeys::get_stumble_message(creature->get_description_sid(), creature->get_is_player()));
         manager.send();
-        return 15;
+        return 15; // JCD FIXME
       }
     }
   }
