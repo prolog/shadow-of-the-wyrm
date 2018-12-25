@@ -41,6 +41,7 @@ class MovementAction : public IActionManager
     // Handle attempting to move on to a tile where there is a creature present.
     ActionCostValue handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map, const Coordinate& new_coords, const Direction d);
     MovementThroughTileType get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature, TilePtr creatures_new_tile);
+    MovementThroughTileType get_friendly_movement_past_type(CreaturePtr creature, const std::string& prompt_sid, const MovementThroughTileType selected_movement_type, const MovementThroughTileType fallback_type);
 
     void add_cannot_escape_message(const CreaturePtr& creature);
     void move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map);
