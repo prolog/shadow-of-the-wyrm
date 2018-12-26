@@ -12,7 +12,7 @@ using namespace std;
 
 ActionCostValue FletcherySkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
-  ActionCostValue acv = -1;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION_MENU;
 
   if (creature != nullptr && map != nullptr)
   {

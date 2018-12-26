@@ -213,5 +213,5 @@ void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const Fishing
 // Fishing takes a very long time.
 ActionCostValue FishingSkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
 {
-  return 100;
+  return ActionCostConstants::FISHING;
 }

@@ -5,7 +5,7 @@ using namespace std;
 
 ActionCostValue MagicalAttackSpeedCalculator::calculate(CreaturePtr creature)
 {
-  ActionCostValue action_cost_value = 1;
+  ActionCostValue action_cost_value = ActionCostConstants::DEFAULT;
 
   if (creature)
   {

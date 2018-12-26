@@ -16,7 +16,6 @@ class MovementAction : public IActionManager
     ActionCostValue descend(CreaturePtr creature);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
-    ActionCostValue get_stumble_action_cost_value() const;
 
   protected:
     friend class ActionManager;

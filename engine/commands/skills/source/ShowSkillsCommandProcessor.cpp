@@ -16,7 +16,7 @@ bool ShowSkillsCommandProcessor::can_process(CreaturePtr creature)
 
 ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, CommandPtr command, MapPtr map, const SkillType st)
 {
-  ActionCostValue process_result = 0;
+  ActionCostValue process_result = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();
   SkillsAction& sa = game.get_action_manager_ref().get_skills_action_ref();
 

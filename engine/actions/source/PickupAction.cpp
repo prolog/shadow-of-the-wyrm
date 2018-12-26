@@ -23,7 +23,7 @@ using namespace std;
 // Try to pick up.
 ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * const am, const PickUpType pick_up, const set<ItemType>& pickup_types)
 {  
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();
   
   if (creature)
@@ -79,7 +79,7 @@ ActionCostValue PickupAction::toggle_autopickup(CreaturePtr creature)
 
 ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am, const PickUpType pick_up, const set<ItemType>& pickup_types)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature)
   {
@@ -121,7 +121,7 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
 
 ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   if (creature != nullptr && map != nullptr && tile != nullptr)
   {
@@ -184,7 +184,7 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
 
 ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   if (creature != nullptr && tile != nullptr && map != nullptr)
   {
@@ -232,7 +232,7 @@ ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map
 
 ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile, const set<ItemType>& pickup_types)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
   bool picked_up = false;
 
   if (creature && map && tile)

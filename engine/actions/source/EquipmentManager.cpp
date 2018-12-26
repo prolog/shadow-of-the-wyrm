@@ -19,8 +19,8 @@ EquipmentManager::~EquipmentManager()
 // Do the actual equipment management, interfacing with the UI as needed.
 ActionCostValue EquipmentManager::manage_equipment()
 {
-  ActionCostValue total_action_cost = 0;
-  ActionCostValue action_cost = 0; // Looking at eq has no cost - adding or removing items will update this.
+  ActionCostValue total_action_cost = ActionCostConstants::NO_ACTION;
+  ActionCostValue action_cost = ActionCostConstants::NO_ACTION; // Looking at eq has no cost - adding or removing items will update this.
   ulonglong screens_created = 0;
   
   bool manage_eq = true; // For looping

@@ -15,7 +15,7 @@ using namespace std;
 // of pulp being used).
 ActionCostValue PapercraftSkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
-  ActionCostValue acv = -1;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION_MENU;
 
   if (creature && map)
   {

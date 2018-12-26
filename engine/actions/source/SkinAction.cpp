@@ -21,7 +21,7 @@ SkinAction::SkinAction()
 // can be worked at a tannery to create leather armour.
 ActionCostValue SkinAction::skin(CreaturePtr creature, ActionManager * const am)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature)
   {
@@ -85,7 +85,7 @@ ActionCostValue SkinAction::skin(CreaturePtr creature, ActionManager * const am)
 
 ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, TilePtr tile)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature && item && tile)
   {

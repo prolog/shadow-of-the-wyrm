@@ -4,7 +4,11 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 - Automatic movement will now switch or squeeze past friendly creatures
   without prompting.
 
+- Cleaned up a large number of magic numbers used for action costs.
+
 - More name combinations.
+
+- Stanzas for "Tel and Floridel".
 
 - New creatures: Calabus.
 

@@ -17,7 +17,7 @@ TileSelectionCommandProcessor::~TileSelectionCommandProcessor()
 pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr creature, CommandPtr command, TileSelectionAction* const tsa)
 {
   pair<bool, ActionCostValue> result(false, 0);  
-  ActionCostValue action_cost = 1;
+  ActionCostValue action_cost = ActionCostConstants::DEFAULT;
 
   if (creature && command)
   {
@@ -72,7 +72,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_direct
 {
   pair<bool, ActionCostValue> result(false, 0);
   
-  ActionCostValue action_cost = 0;
+  ActionCostValue action_cost = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();
 
   if (creature && cursor_command)
@@ -129,7 +129,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
 {
   pair<bool, ActionCostValue> result(false, 0);
 
-  ActionCostValue action_cost = 0;
+  ActionCostValue action_cost = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();
 
   if (creature)

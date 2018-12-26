@@ -19,7 +19,7 @@ using std::dynamic_pointer_cast;
 // spell (the ADOM/nethack model, rather than Angband's/DCSS's).
 ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   CurrentCreatureAbilities cca;
 
   if (!cca.can_see(creature, true) ||

@@ -57,7 +57,7 @@ bool MovementAction::operator==(const MovementAction& mm) const
 
 ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direction)
 {
-  ActionCostValue movement_acv = 0;
+  ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();
 
   if (creature)
@@ -92,7 +92,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
         else
         {
           add_cannot_escape_message(creature);
-          movement_acv = 1;
+          movement_acv = ActionCostConstants::DEFAULT;
         }
       }
     }
@@ -119,7 +119,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
 
 ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, const Direction direction)
 {
-  ActionCostValue movement_acv = 0;
+  ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
 
   Game& game = Game::instance();
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());  
@@ -183,7 +183,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
 
 ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d)
 {
-  ActionCostValue movement_acv = 0;
+  ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
   bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
@@ -223,7 +223,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       
       // Regardless of whether the handling did anything, it still costs
       // an action.
-      movement_acv = 1;
+      movement_acv = ActionCostConstants::DEFAULT;
     }
     else if (creatures_new_tile->get_is_blocking(creature) && !creature_incorporeal)
     {
@@ -255,7 +255,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         // most likely, it's impassable terrain - stone, etc.
         //
         // Do nothing.  Don't advance the turn.
-        movement_acv = 0;
+        movement_acv = ActionCostConstants::NO_ACTION;
       }
     }
     else if (!creatures_new_tile->get_is_available_for_creature(creature))
@@ -321,7 +321,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 // creature will attack the occupying creature.  If so, attack the creature.
 ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map, const Coordinate& new_coords, const Direction d)
 {
-  ActionCostValue movement_acv = 0;
+  ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
 
   // Do the necessary checks here to determine whether to attack...
   CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
@@ -383,7 +383,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
         {
           MapUtils::swap_places(map, creature, adjacent_creature);
 
-          movement_acv = 1;
+          movement_acv = ActionCostConstants::DEFAULT;
           return movement_acv;
         }
         default:
@@ -505,7 +505,7 @@ MovementThroughTileType MovementAction::get_friendly_movement_past_type(Creature
 // on the tile, rather than a source like the map exit.
 ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const ExitMovementType emt)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   if (creature && tile && map)
   {
@@ -519,7 +519,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 // itself, a map exit, etc.
 ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   // If permanent, set the previous map ID, so that if there are staircases, etc., the
   // link to the current map can be maintained.
@@ -747,7 +747,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
 
 ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (new_map && current_tile)
   {
@@ -818,7 +818,7 @@ void MovementAction::handle_properties_and_move_to_new_map(CreaturePtr creature,
 ActionCostValue MovementAction::ascend(CreaturePtr creature)
 {
   CurrentCreatureAbilities cca;
-  ActionCostValue movement_acv = 0;
+  ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
 
   if (cca.can_move(creature, true))
   {
@@ -836,7 +836,7 @@ ActionCostValue MovementAction::ascend(CreaturePtr creature)
     else
     {
       add_cannot_escape_message(creature);
-      movement_acv = 1;
+      movement_acv = ActionCostConstants::DEFAULT;
     }
   }
 
@@ -848,7 +848,7 @@ ActionCostValue MovementAction::ascend(CreaturePtr creature)
 ActionCostValue MovementAction::descend(CreaturePtr creature)
 {
   CurrentCreatureAbilities cca;
-  ActionCostValue movement_acv = 0;
+  ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
 
   if (cca.can_move(creature, true))
   {
@@ -866,7 +866,7 @@ ActionCostValue MovementAction::descend(CreaturePtr creature)
     else
     {
       add_cannot_escape_message(creature);
-      movement_acv = 1;
+      movement_acv = ActionCostConstants::DEFAULT;
     }
   }
 
@@ -886,14 +886,14 @@ void MovementAction::add_cannot_escape_message(const CreaturePtr& creature)
 
 ActionCostValue MovementAction::get_action_cost_value(CreaturePtr creature) const
 {
-  ActionCostValue acv = 1;
+  ActionCostValue acv = ActionCostConstants::DEFAULT;
 
   if (creature != nullptr)
   {
     // When timewalking, movement is free.
     if (creature->has_status(StatusIdentifiers::STATUS_ID_TIMEWALK))
     {
-      acv = 0;
+      acv = ActionCostConstants::NO_ACTION;
     }
     else
     {
@@ -905,7 +905,8 @@ ActionCostValue MovementAction::get_action_cost_value(CreaturePtr creature) cons
         IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
         manager.add_new_message(ActionTextKeys::get_stumble_message(creature->get_description_sid(), creature->get_is_player()));
         manager.send();
-        return 15; // JCD FIXME
+        
+        return ActionCostConstants::STUMBLE;
       }
     }
   }
@@ -931,9 +932,4 @@ void MovementAction::check_movement_stealth(CreaturePtr creature, const Directio
     }
   }
 }
-// If the creature is drunk, it may stumble, causing it to move slower 
-// than normal.
-ActionCostValue MovementAction::get_stumble_action_cost_value() const
-{
-  return 15;
-}
+

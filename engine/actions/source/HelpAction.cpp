@@ -18,7 +18,7 @@ HelpAction::HelpAction()
 ActionCostValue HelpAction::help(CreaturePtr creature) const
 {
   CreaturePtr nullc;
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory = std::make_shared<HelpCommandFactory>();

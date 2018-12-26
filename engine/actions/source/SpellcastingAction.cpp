@@ -28,7 +28,7 @@ const int SpellcastingAction::PCT_CHANCE_MARK_CATEGORY = 80;
 
 ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   CurrentCreatureAbilities cca;
 
   // used to determine whether a spell was selected in the spellcasting screen.
@@ -107,7 +107,7 @@ pair<string, ActionCostValue> SpellcastingAction::cast_spell_on_valid_map_type(C
 // Cast a particular spell by a particular creature.
 ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const string& spell_id, const Direction preselected_direction) const
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   CurrentCreatureAbilities cca;
 
@@ -416,7 +416,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
 // Spell screen).
 pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasting_selection(CreaturePtr creature) const
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   bool cast_spells = true;
 
   Game& game = Game::instance();
