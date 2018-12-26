@@ -63,7 +63,7 @@ bool CombatManager::operator==(const CombatManager& cm) const
 
 ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   Game& game = Game::instance();
 
@@ -105,7 +105,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
     // Couldn't get the tile.  This could be because the creature is
     // stunned and picked a direction without a tile (e.g., north at
     // row 0)
-    action_cost_value = 1;
+    action_cost_value = ActionCostConstants::DEFAULT;
   }
   
   return action_cost_value;
@@ -120,7 +120,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 // The generated to-hit value is >= the target number (regular damage)
 ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const AttackSequenceType ast, const bool mark_skills, DamagePtr predefined_damage)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   bool mark_for_weapon_and_combat_skills_and_stat = false;
   int damage_dealt = 0;

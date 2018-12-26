@@ -18,7 +18,7 @@ EquipmentCommandProcessor::~EquipmentCommandProcessor()
 
 ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, CommandPtr command)
 {
-  ActionCostValue process_result = 1;
+  ActionCostValue process_result = ActionCostConstants::DEFAULT;
   Game& game = Game::instance();
   
   if (creature && command)

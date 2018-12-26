@@ -15,7 +15,7 @@ using namespace std;
 
 ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * const am, ReadablePtr readable)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature && readable)
   {

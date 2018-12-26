@@ -21,7 +21,7 @@ bool SkillsAction::operator==(const SkillsAction& ssa) const
 
 ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSelectionType sst)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   int cur_page = 1;
 
   DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();

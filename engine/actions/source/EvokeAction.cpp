@@ -26,7 +26,7 @@ using std::dynamic_pointer_cast;
 // Select a wand to evoke
 ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const am)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   CurrentCreatureAbilities cca;
 
   if (cca.can_speak(creature, true) && cca.can_focus(creature, true))
@@ -93,7 +93,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
 // A wand was selected.  Evoke it: apply any damage, and then do the magical effect.
 ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * const am, WandPtr wand)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   if (creature && wand)
   {

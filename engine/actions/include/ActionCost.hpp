@@ -5,6 +5,21 @@
 
 using ActionCostValue = int;
 
+class ActionCostConstants
+{
+  public:
+    static const int FISHING;
+    static const int INSCRIBE;
+    static const int STUMBLE;
+    static const int DEFAULT;
+    static const int NO_ACTION_MENU;
+    static const int NO_ACTION;
+
+  protected:
+    ActionCostConstants();
+    ~ActionCostConstants();
+};
+
 class ActionCost : public ISerializable
 {
   public:

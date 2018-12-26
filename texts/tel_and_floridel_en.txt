@@ -2284,3 +2284,13 @@ the king will eat with them, and if they'd bring %b
 me something small, my hunger would be cured - %b
 whatever bits of bread or meat they can afford."
 %p
+The tension gone, the king left with the boy, %b
+and Floridel sat down to read.  She'd found %b
+some texts deep down in Calasim employed %b
+a curious form of kennings; that they wound %b
+elusive truths in metaphors that snaked %b
+in hyphenated lines across the page. %b
+Her word-well running dry, she couldn't shake %b
+the sense that there were meanings to be made, %b
+encodings from some long-forgotten royal age.
+%p

@@ -22,7 +22,7 @@ using namespace std;
 // Drop the item on to the square, if possible.
 ActionCostValue DropAction::drop(CreaturePtr dropping_creature, ActionManager * const am)
 {  
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   Game& game = Game::instance();
   
@@ -131,7 +131,7 @@ void DropAction::handle_seed_planted_message(CreaturePtr creature, ItemPtr seed)
 // Do the actual dropping of items.
 ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item_to_drop)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   TilePtr creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
 
   // Redraw the main screen so that any interaction via scripts looks good.

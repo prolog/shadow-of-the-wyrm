@@ -29,7 +29,7 @@ ThieverySkillProcessor::ThieverySkillProcessor()
 
 ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
-  ActionCostValue acv = -1;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION_MENU;
 
   if (creature && map)
   {
@@ -139,7 +139,7 @@ CreaturePtr ThieverySkillProcessor::get_steal_creature(const TileDirectionMap& t
 // if the thievery was successful.
 ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creature, CreaturePtr steal_creature, MapPtr map)
 {
-  ActionCostValue acv = -1;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION_MENU;
 
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, steal_creature, steal_creature && steal_creature->get_is_player());
   CreatureDescriber cd(stealing_creature, steal_creature, true);

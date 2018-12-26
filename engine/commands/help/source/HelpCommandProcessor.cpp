@@ -15,7 +15,7 @@ HelpCommandProcessor::~HelpCommandProcessor()
 
 ActionCostValue HelpCommandProcessor::process(CreaturePtr creature, CommandPtr command)
 {
-  ActionCostValue process_result = 1;
+  ActionCostValue process_result = ActionCostConstants::DEFAULT;
   HelpAction ha;
 
   if (creature && command)

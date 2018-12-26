@@ -39,7 +39,7 @@ bool RangedCombatAction::operator==(const RangedCombatAction& rca) const
 
 ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature, const bool skip_targetting)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   if (creature)
   {
@@ -56,7 +56,7 @@ ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature, const boo
       else
       {
         // Need a default for fire_weapon_at_tile
-        action_cost_value = 1;
+        action_cost_value = ActionCostConstants::DEFAULT;
       }
       
       // If the action advances a turn, we've selected a tile:

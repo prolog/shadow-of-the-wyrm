@@ -48,7 +48,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
     }
   }
 
-  ActionCostValue auto_move_cost = 0;
+  ActionCostValue auto_move_cost = ActionCostConstants::NO_ACTION;
   bool auto_movement_engaged = false;
   TilePtr creature_tile = MapUtils::get_tile_for_creature(map, creature);
   TilePtr direction_tile = map->at(CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), cur_dir));
@@ -96,7 +96,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
     // movement (particularly for switching/squeezing/etc).
     add_coordinate_to_automove_visited(creature, new_coord, amf);
     update_turns_if_necessary(creature);
-    auto_move_cost = 1;
+    auto_move_cost = ActionCostConstants::DEFAULT;
      
     // Don't move when resting, or else the creature will attempt to
     // attack itself!

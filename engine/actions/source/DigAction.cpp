@@ -26,7 +26,7 @@ DigAction::DigAction()
 // Dig on a particular tile.
 ActionCostValue DigAction::dig_within(CreaturePtr creature, ItemPtr dig_item, MapPtr map, TilePtr tile) const
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature != nullptr && tile != nullptr)
   {
@@ -76,7 +76,7 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, ItemPtr dig_item, Ma
 // Dig through an adjacent tile.
 ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_item, MapPtr map, TilePtr adjacent_tile, const Coordinate& dig_coord, const bool add_messages) const
 {
-  ActionCostValue acv =  0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (map != nullptr && adjacent_tile != nullptr)
   {

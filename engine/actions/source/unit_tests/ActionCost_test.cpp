@@ -1,5 +1,12 @@
 #include "gtest/gtest.h"
 
+TEST(SW_Engine_Actions_ActionCostConstants, defaults)
+{
+  EXPECT_EQ(1, ActionCostConstants::DEFAULT);
+  EXPECT_EQ(0, ActionCostConstants::NO_ACTION);
+  EXPECT_EQ(-1, ActionCostConstants::NO_ACTION_MENU);
+}
+
 TEST(SW_Engine_Actions_ActionCost, serialization_id)
 {
   ActionCost ac;
