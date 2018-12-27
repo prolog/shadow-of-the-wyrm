@@ -1,4 +1,5 @@
 require('quest')
+require('constants')
 
 -- Sun Gem quest details
 local function sun_gem_start_fn()
@@ -15,13 +16,13 @@ local function plough_sun_gem_precond_fn()
 end
 
 local function sun_gem_completion_condition_fn()
-  return player_has_item("sun_gem") == true
+  return player_has_item(SUN_GEM_ID) == true
 end
 
 local function sun_gem_completion_fn()
   add_message("PLOUGHMAN_SUNGEM_QUEST_COMPLETE_SID")
   add_object_to_player_tile("silverweed", 15)
-  remove_object_from_player("sun_gem")
+  remove_object_from_player(SUN_GEM_ID)
   remove_active_quest("blacksmith_sungem")
   remove_active_quest("cynwise_sungem")
   return true
