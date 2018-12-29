@@ -6,6 +6,10 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 
 - Cleaned up a large number of magic numbers used for action costs.
 
+- Spells previously sorted by an internal ID, which usually (but not
+  always) gave reasonable behaviour.  Now spells sort first by category,
+  second by name.
+
 - More name combinations.
 
 - Added hints to a couple of NPCs in Carcassia to help out illiterate

@@ -41,6 +41,8 @@ class SpellSelectionScreen : public Screen
 
   protected:
     void initialize() override;
+    std::vector<Spell> get_spells_in_display_order(const SpellMap& spells);
+    static bool sort_spells_for_display(const Spell& s1, const Spell& s2);
 
     std::vector<std::map<char, std::string>> screen_selection_to_spell_id_map;
     CreaturePtr creature;

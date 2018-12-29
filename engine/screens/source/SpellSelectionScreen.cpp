@@ -53,6 +53,7 @@ void SpellSelectionScreen::initialize()
   title_text_sid = ScreenTitleTextKeys::SCREEN_TITLE_MAGIC_SPELLS;
 
   vector<ScreenComponentPtr> spell_screen;
+  Game& game = Game::instance();
 
   // Go through the player's spells, and add them as options.
   int i = 0;
@@ -62,69 +63,44 @@ void SpellSelectionScreen::initialize()
 
     // Only show the value created by the SpellDescriber.
     options->set_show_option_descriptions(false);
-
-    Game& game = Game::instance();
-    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-    SpellKnowledgeMap known_spells = sk.get_known_spells();
     const SpellMap& spells = game.get_spells_ref();
+    vector<Spell> display_spells = get_spells_in_display_order(spells);
     std::map<char, std::string> selection_map;
 
-    for (const SpellKnowledgeMap::value_type& spell_pair : known_spells)
+    for (const auto& spell : display_spells)
     {
-      string spell_id = spell_pair.first;
+      string spell_id = spell.get_spell_id();
 
-      if (sk.get_spell_knowledge(spell_id).get_castings() > 0)
+      int line_number = i + 1;
+
+      if (can_add_component(line_number) == false)
       {
-        // Using the spell ID and a SpellDescriber, create text for the 
-        // option shown in the UI.
-        auto spell_it = spells.find(spell_id);
+        i = 0;
+        line_number = 1;
+        screen_selection_to_spell_id_map.push_back(selection_map);
+        selection_map.clear();
 
-        if (spell_it == spells.end())
-        {
-          // Ignore a known spell if it doensn't exist, for whatever reason -
-          // maybe it was incorrectly set by a script, doesn't exist anymore,
-          // etc.
-          continue;
-        }
-
-        Spell spell = spells.find(spell_id)->second;
-
-        if (strategy == nullptr || (strategy && !strategy->display_spell(spell)))
-        {
-          continue;
-        }
-
-        int line_number = i+1;
-
-        if (can_add_component(line_number) == false)
-        {
-          i = 0;
-          line_number = 1;
-          screen_selection_to_spell_id_map.push_back(selection_map);
-          selection_map.clear();
-
-          add_page(spell_screen);
-          spell_screen.clear();
-        }
-
-        // Only add the spell to the display if it passes the castings/
-        // filters/etc tests.
-        selection_map.insert(make_pair('a' + i, spell_id));
-
-        IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
-        string spell_desc = describer->describe();
-
-        Option current_option;
-        current_option.set_id(i);
-        current_option.set_description(spell_desc);
-          
-        options->add_option(current_option);
-
-        add_component(spell_screen, options, line_number);
-        options = std::make_shared<OptionsComponent>();
-
-        i++;
+        add_page(spell_screen);
+        spell_screen.clear();
       }
+
+      // Only add the spell to the display if it passes the castings/
+      // filters/etc tests.
+      selection_map.insert(make_pair('a' + i, spell_id));
+
+      IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
+      string spell_desc = describer->describe();
+
+      Option current_option;
+      current_option.set_id(i);
+      current_option.set_description(spell_desc);
+
+      options->add_option(current_option);
+
+      add_component(spell_screen, options, line_number);
+      options = std::make_shared<OptionsComponent>();
+
+      i++;
     }
 
     screen_selection_to_spell_id_map.push_back(selection_map);
@@ -138,4 +114,64 @@ void SpellSelectionScreen::initialize()
   spellcasting_prompt->set_text_sid(SpellcastingTextKeys::SPELLCASTING_SCREEN_PROMPT);
   spellcasting_prompt->set_accept_any_input(true);
   user_prompt = spellcasting_prompt;
+}
+
+vector<Spell> SpellSelectionScreen::get_spells_in_display_order(const SpellMap& spells)
+{
+  vector<Spell> vsp;
+  Game& game = Game::instance();
+
+  SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+  SpellKnowledgeMap known_spells = sk.get_known_spells();
+
+  for (const SpellKnowledgeMap::value_type& spell_pair : known_spells)
+  {
+    string spell_id = spell_pair.first;
+
+    if (sk.get_spell_knowledge(spell_id).get_castings() > 0)
+    {
+      auto spell_it = spells.find(spell_id);
+
+      if (spell_it == spells.end())
+      {
+        // Ignore a known spell if it doensn't exist, for whatever reason -
+        // maybe it was incorrectly set by a script, doesn't exist anymore,
+        // etc.
+        continue;
+      }
+
+      Spell spell = spells.find(spell_id)->second;
+
+      if (strategy == nullptr || (strategy && !strategy->display_spell(spell)))
+      {
+        continue;
+      }
+
+      vsp.push_back(spell);
+    }
+  }
+
+  std::sort(vsp.begin(), vsp.end(), sort_spells_for_display);
+
+  return vsp;
+}
+
+bool SpellSelectionScreen::sort_spells_for_display(const Spell& s1, const Spell& s2)
+{
+  // First tiebreaker is by category.
+  SkillType s1_cat = s1.get_magic_category();
+  SkillType s2_cat = s2.get_magic_category();
+
+  if (s1_cat != s2_cat)
+  {
+    return s1_cat < s2_cat;
+  }
+  else
+  {
+    // When AP cost and category are equal, the second tiebreaker is name.
+    string s1_name = StringTable::get(s1.get_spell_name_sid());
+    string s2_name = StringTable::get(s2.get_spell_name_sid());
+
+    return s1_name < s2_name;
+  }
 }
