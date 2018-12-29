@@ -1,13 +1,14 @@
 Me:
+- Sort spells by AP cost
 - Each version: make sure to update itch.io page!
 - Rework creature generation to be faster and not to bias towards the
-  creatures at the front of the list.
+  creatures at the front of the list.  This could be as simple as
+  shuffling the order.
 - The workshop generation should also generate the appropriate creature
   for a feature.
 - Allow races to be regexps
 - Ensure the bestiary race uses the generated creature's race ID.
 - The "descend to" functionality
-- Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
 - "The Vertical City"
