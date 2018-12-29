@@ -1,5 +1,4 @@
 Me:
-- Sort spells by AP cost
 - Each version: make sure to update itch.io page!
 - Rework creature generation to be faster and not to bias towards the
   creatures at the front of the list.  This could be as simple as
