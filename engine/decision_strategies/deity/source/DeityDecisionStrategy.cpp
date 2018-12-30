@@ -34,10 +34,10 @@ void DeityDecisionStrategy::initialize_decisions()
   cur_decision = std::make_shared<CrowningDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
-  cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>(deity_id);
+  cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
-  cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>(deity_id);
+  cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
   cur_decision = std::make_shared<HaltBreedingDeityDecisionStrategyHandler>(deity_id);

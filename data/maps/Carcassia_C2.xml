@@ -39,6 +39,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>corbett</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>78</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>pitmistress_ghara</ID>
 				<Coord>
 					<Row>9</Row>
