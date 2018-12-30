@@ -1,5 +1,6 @@
 Me:
 - Each version: make sure to update itch.io page!
+- Move up status healing in the deity decisions.
 - Rework creature generation to be faster and not to bias towards the
   creatures at the front of the list.  This could be as simple as
   shuffling the order.
@@ -126,6 +127,14 @@ Kyzrati:
 - Over time, generation of new random uniques, etc.
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
+- Explain what spell synopsis stuff means (manual)
+- Ditto for armour (evade/soak)
+- Group like items together (scrolls, etc) even if not exactly the same
+- Separate stacks of ivory?
+- Item paging issue confirmed: when large number of items, a blank page
+  can be generated.
+- See carrying capacity/how close.
+- Wants item-iary.
 
 Avagart:
 - Eventually, have automovement stop only on new items.

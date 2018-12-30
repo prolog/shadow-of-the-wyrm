@@ -15,9 +15,17 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 - Added hints to a couple of NPCs in Carcassia to help out illiterate
   PCs.
 
+- Poison now does about half the damage it did before (Kyzrati).
+
+- Deities now consider removing negative statuses like poison and
+  stoning before considering whether to fully heal (Kyzrati).
+
+- Added a new NPC, Corbett, at the very edge of town, who will teach you
+  Hunting for a price.
+
 - Stanzas for "Tel and Floridel".
 
-- New creatures: Calabus.
+- New creatures: Calabus, Corbett.
 
 Shadow of the Wyrm v1.0.1 "Besard"
 - Version declared November 23, 2018. Version finalized December 23, 2018.
