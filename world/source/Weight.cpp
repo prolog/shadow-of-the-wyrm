@@ -70,9 +70,14 @@ double Weight::get_weight_in_lbs() const
   return weight_in_lbs;
 }
 
-uint Weight::get_weight_in_oz_given_lbs(const uint pounds)
+uint Weight::get_oz(const uint pounds)
 {
   return pounds * 16;
+}
+
+uint Weight::get_lbs(const uint ounces)
+{
+  return ounces / 16;
 }
 
 std::string Weight::str() const

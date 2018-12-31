@@ -20,6 +20,7 @@ class TextMessages
     static std::string get_sex(const CreatureSex sex);
     static std::string get_sex_abrv(const CreatureSex sex);
     static std::string get_name_and_title(CreaturePtr creature);
+    static std::string get_carrying_capacity_message(CreaturePtr creature);
     static std::string get_equipment_location(const EquipmentWornLocation location);
     static std::string get_confirmation_message(const std::string& query_or_sid);
     static std::string get_area_entrance_message_given_terrain_type(const TileType type);
@@ -65,4 +66,5 @@ class TextMessages
     static const std::string INSCRIPTION_MESSAGE;
     static const std::string SLOT_MACHINE_MESSAGE;
     static const std::string SLOT_MACHINE_OUTCOME_MESSAGE;
+    static const std::string CARRYING_CAPACITY_MESSAGE;
 };
