@@ -22,8 +22,9 @@ class Weight : public ISerializable
     uint get_weight() const;
     double get_weight_in_lbs() const;
     
-    static uint get_weight_in_oz_given_lbs(const uint pounds);
-    
+    static uint get_oz(const uint pounds);
+    static uint get_lbs(const uint ounces);
+
     std::string str() const;
 
     virtual bool serialize(std::ostream& stream) const override;

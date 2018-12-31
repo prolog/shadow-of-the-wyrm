@@ -23,6 +23,8 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 - Added a new NPC, Corbett, at the very edge of town, who will teach you
   Hunting for a price.
 
+- The character synopsis now displays carrying-related limits (Kyzrati).
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Calabus, Corbett.

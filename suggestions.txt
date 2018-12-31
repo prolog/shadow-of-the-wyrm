@@ -1,4 +1,5 @@
 Me:
+- Statuses: - when empty
 - Each version: make sure to update itch.io page!
 - Move up status healing in the deity decisions.
 - Rework creature generation to be faster and not to bias towards the

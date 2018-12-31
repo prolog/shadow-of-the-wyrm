@@ -65,6 +65,23 @@ TEST(SW_World_Weight, operator_leq)
   EXPECT_FALSE(w1 <= w3);
 }
 
+TEST(SW_World_Weight, get_lbs)
+{
+  EXPECT_EQ(0, Weight::get_lbs(0));
+  EXPECT_EQ(0, Weight::get_lbs(12));
+  EXPECT_EQ(1, Weight::get_lbs(16));
+  EXPECT_EQ(2, Weight::get_lbs(40));
+  EXPECT_EQ(100, Weight::get_lbs(1600));
+}
+
+TEST(SW_World_Weight, get_oz)
+{
+  EXPECT_EQ(0, Weight::get_oz(0));
+  EXPECT_EQ(16, Weight::get_oz(1));
+  EXPECT_EQ(32, Weight::get_oz(2));
+  EXPECT_EQ(1600, Weight::get_oz(100));
+}
+
 TEST(SW_World_Weight, serialization_id)
 {
   Weight weight;

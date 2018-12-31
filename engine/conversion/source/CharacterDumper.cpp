@@ -90,6 +90,8 @@ string CharacterDumper::str() const
   InventoryDumper inventory_dumper(creature, num_cols);
   ss << inventory_dumper.str() << endl << endl;
 
+  ss << get_carrying_capacity() << endl << endl;
+
   ArtifactDumper artifact_dumper(game.get_items_ref(), game.get_item_generation_values_ref(), num_cols);
   ss << artifact_dumper.str() << endl << endl;
 
@@ -134,8 +136,7 @@ string CharacterDumper::get_synopsis() const
   return ss.str();
 }
 
-// Get the creature's vital statistics: age, sex, size, hair, eyes,
-// and things like str, dex, evade, etc.
+// Get the creature's vital statistics: age, sex, size, hair, eyes.
 string CharacterDumper::get_vital_statistics() const
 {
   ostringstream ss;
@@ -191,3 +192,14 @@ string CharacterDumper::get_vital_statistics() const
   return ss.str();
 }
 
+string CharacterDumper::get_carrying_capacity() const
+{
+  ostringstream ss;
+
+  if (creature != nullptr)
+  {
+    ss << StringTable::get(TextKeys::CARRYING_CAPACITY) << ": " << TextMessages::get_carrying_capacity_message(creature);
+  }
+
+  return ss.str();
+}
