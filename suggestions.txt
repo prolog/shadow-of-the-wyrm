@@ -1,7 +1,6 @@
 Me:
-- Statuses: - when empty
 - Each version: make sure to update itch.io page!
-- Move up status healing in the deity decisions.
+- When do antidotes appear in item generation?
 - Rework creature generation to be faster and not to bias towards the
   creatures at the front of the list.  This could be as simple as
   shuffling the order.
@@ -135,7 +134,8 @@ Kyzrati:
 - Item paging issue confirmed: when large number of items, a blank page
   can be generated.
 - See carrying capacity/how close.
-- Wants item-iary.
+- Wants item-iary.  Separate screen + in inventory view.  Update lower
+  message to be [A...] Info or [A...] Select based on context.
 
 Avagart:
 - Eventually, have automovement stop only on new items.

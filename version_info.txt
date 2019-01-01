@@ -25,6 +25,14 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 
 - The character synopsis now displays carrying-related limits (Kyzrati).
 
+- Effects that remove statuses like poison or stoning now always identify
+  the item (Kyzrati).
+
+- Tweaked the character synopsis when you're not affected by status
+  ailments.
+
+- Minor updates to the Guidebook.
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Calabus, Corbett.
