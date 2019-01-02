@@ -2314,4 +2314,23 @@ Awake as not-asleep?  She couldn't learn %b
 the linking point, this term a clever sleight %b
 connected to the last when held up to the light.
 %p
-
+As Floridel sat deep in thought, the king %b
+met with his waiting lords, who'd spread a map %b
+along a serving table.  Pouring drinks %b
+for every man, Tel spoke.  "Last night I had %b
+a wretched sleep.  Like you, I'm wondering %b
+how this plays out.  Two dozen men are gone %b
+forever to the uplands.  Treason brings %b
+a tray of bitter fruit; it also spawns %b
+an opportunity as now we must move on."
+%p
+"I'll not have retribution against those %b
+exiles' kinfolk - they'll keep their names and rights. %b
+I want to laud the common men who chose %b
+to tell their families that they'd reunite %b
+within the world beyond, who took up spears %b
+despite the odds. I'll name six men as lords, %b
+the rest receiving rings. So pick your peers, %b
+and have the smiths take bullion from our hoard: %b
+I say that bravery should not be its own reward."
+%p

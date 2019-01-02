@@ -1,5 +1,6 @@
 <CustomMap id="carcassia_tower_top" xmlns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:1.0.0 ./CustomMap.xsd">
 	<NameSID>MAP_NAME_CARCASSIA_TOWER_TOP</NameSID>
+	<DefaultRaceID>01_human</DefaultRaceID>
 	<EventScripts>
 		<CreateScript>
 			<Script>areas/events/carcassia_tower_top.lua</Script>
