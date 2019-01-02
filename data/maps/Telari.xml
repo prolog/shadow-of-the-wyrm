@@ -1,5 +1,6 @@
 <CustomMap id="telari" xmlns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:1.0.0 ./CustomMap.xsd">
 	<NameSID>MAP_NAME_TELARI</NameSID>
+	<DefaultRaceID>_elysian</DefaultRaceID>
 	<Dimensions>
 		<Rows>20</Rows>
 		<Columns>80</Columns>
