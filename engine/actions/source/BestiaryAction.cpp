@@ -9,7 +9,6 @@
 #include "RaceManager.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
-#include "TextDisplayFormatter.hpp"
 #include "TextDisplayScreen.hpp"
 
 using namespace std;
@@ -124,8 +123,6 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     string bestiary_title_sid = ScreenTitleTextKeys::SCREEN_TITLE_BESTIARY;
     vector<pair<Colour, string>> bestiary_text;
 
-    string separator;
-
     // Display the symbol
     bestiary_text.push_back(make_pair(creature->get_colour(), Char::to_string(creature->get_symbol())));
 
@@ -133,16 +130,9 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(creature->get_short_description_sid())));
 
-    // Display race details
-    string race_id = creature->get_race_id();
-    if (!race_id.empty())
-    {
-      RaceManager rm;
-      RacePtr race = rm.get_race(race_id);
-
-      bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
-      bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(TextKeys::RACE) + ": " + StringTable::get(race->get_race_name_sid())));
-    }
+    // Display all the possible races (when searching) or the specific race
+    // (when looking at a particular creature).
+    display_race_information(bestiary_text, tdf, creature);
 
     // Display the creature's details.
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
@@ -155,5 +145,60 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
 
     TextDisplayScreen tds(game.get_display(), bestiary_title_sid, bestiary_text);
     tds.display();
+  }
+}
+
+void BestiaryAction::display_race_information(vector<pair<Colour, string>>& bestiary_text, const TextDisplayFormatter& tdf, CreaturePtr creature) const
+{
+  if (creature != nullptr)
+  {
+    // Display race details. If the race id is comma-separated, we're working
+    // with a range of possible race IDs (for creatures that can be more than
+    // one race).
+    string race_id = creature->get_race_id();
+    if (!race_id.empty())
+    {
+      RaceManager rm;
+      vector<string> race_ids = String::create_string_vector_from_csv_string(race_id);
+
+      if (!race_ids.empty())
+      {
+        bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+
+        string race_info_sid = TextKeys::RACE;
+        size_t race_id_sz = race_ids.size();
+
+        if (race_id_sz > 1)
+        {
+          race_info_sid = TextKeys::RACES;
+        }
+
+        ostringstream ss;
+        ss << StringTable::get(race_info_sid) << ": ";
+
+        for (size_t i = 0; i < race_id_sz; i++)
+        {
+          string cur_race_id = race_ids.at(i);
+          RacePtr race = rm.get_race(cur_race_id);
+
+          if (race != nullptr)
+          {
+            ss << StringTable::get(race->get_race_name_sid());
+          }
+
+          if (i < race_id_sz - 1)
+          {
+            ss << ", ";
+          }
+        }
+
+        vector<string> race_details = tdf.format_text(ss.str());
+
+        for (const string& race_line : race_details)
+        {
+          bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, race_line));
+        }
+      }
+    }
   }
 }
