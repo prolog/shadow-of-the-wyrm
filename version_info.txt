@@ -31,11 +31,22 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 - Tweaked the character synopsis when you're not affected by status
   ailments.
 
+- Creatures can now be specified to have a number of potential races, 
+  rather than always using a set race ID.
+
+  - The bestiary screen now displays all the possible races when
+    selecting a creature via search ('B') rather than direct selection.
+
 - Minor updates to the Guidebook.
 
 - Stanzas for "Tel and Floridel".
 
 - New creatures: Calabus, Corbett.
+
+- Bug fixes:
+
+  - The bestiary would crash when trying to load a creature with an
+    unspecified race ID.
 
 Shadow of the Wyrm v1.0.1 "Besard"
 - Version declared November 23, 2018. Version finalized December 23, 2018.
