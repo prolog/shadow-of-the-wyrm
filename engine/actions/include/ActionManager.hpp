@@ -97,7 +97,7 @@ class ActionManager : public ISerializable
     ActionCost cast_spell(CreaturePtr creature, const std::string& spell_id, const Direction d);
 
     ActionCost bestiary(CreaturePtr creature);
-    ActionCost bestiary(CreaturePtr creature, const std::string& creature_search_text);
+    ActionCost bestiary(CreaturePtr creature, const std::string& creature_search_text, CreaturePtr tile_creature = nullptr);
 
     // Evoke/zap a wand.
     ActionCost evoke(CreaturePtr creature);

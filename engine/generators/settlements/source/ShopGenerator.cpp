@@ -24,7 +24,7 @@ bool ShopGenerator::generate_shop(MapPtr map, const Building& building)
     string shopkeeper_name = Naming::generate_name(static_cast<CreatureSex>(RNG::range(0, 1)));
 
     CreatureFactory cf;
-    CreaturePtr shopkeeper = cf.create_by_creature_id(game.get_action_manager_ref(), CreatureID::CREATURE_ID_SHOPKEEPER);
+    CreaturePtr shopkeeper = cf.create_by_creature_id(game.get_action_manager_ref(), CreatureID::CREATURE_ID_SHOPKEEPER, map);
     
     if (shopkeeper != nullptr)
     {

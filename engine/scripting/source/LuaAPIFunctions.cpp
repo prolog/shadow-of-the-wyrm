@@ -1822,7 +1822,7 @@ int add_creature_to_map(lua_State* ls)
     string creature_id = lua_tostring(ls, 1);
 
     CreatureFactory cf;
-    CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id);
+    CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id, map);
     Coordinate coords(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
     HostilityManager hm;
 
@@ -4226,7 +4226,7 @@ int summon_monsters_around_creature(lua_State* ls)
           string summon_id = monsters.at(RNG::range(0, monsters.size() - 1));
 
           CreatureFactory cf;
-          CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), summon_id);
+          CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), summon_id, current_map);
 
           if (creature != nullptr)
           {
@@ -7422,7 +7422,7 @@ int generate_creature(lua_State* ls)
       {
         CreatureGenerationManager cgm;
         CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger, max_danger, Rarity::RARITY_COMMON /* hardcode for now */, {});
-        CreaturePtr creature = cgm.generate_creature(game.get_action_manager_ref(), generation_map);
+        CreaturePtr creature = cgm.generate_creature(game.get_action_manager_ref(), generation_map, map);
 
         if (creature != nullptr)
         {

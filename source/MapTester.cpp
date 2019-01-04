@@ -966,7 +966,7 @@ void test_creature_generation()
     {
       for (int i = 0; i < num_creatures; i++)
       {
-        CreaturePtr creature = cgm.generate_creature(am, generation_map);
+        CreaturePtr creature = cgm.generate_creature(am, generation_map, nullptr);
 
         if (creature != nullptr)
         {

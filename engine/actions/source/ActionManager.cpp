@@ -365,14 +365,14 @@ ActionCost ActionManager::cast_spell(CreaturePtr creature, const string& spell_i
 ActionCost ActionManager::bestiary(CreaturePtr creature)
 {
   string no_search_text;
-  return bestiary(creature, no_search_text);
+  return bestiary(creature, no_search_text, nullptr);
 }
 
-ActionCost ActionManager::bestiary(CreaturePtr creature, const string& creature_search_text)
+ActionCost ActionManager::bestiary(CreaturePtr creature, const string& creature_search_text, CreaturePtr tile_creature)
 {
   BestiaryAction bestiary;
 
-  return get_action_cost(creature, bestiary.display_creature_information(creature, creature_search_text));
+  return get_action_cost(creature, bestiary.display_creature_information(creature, creature_search_text, tile_creature));
 }
 
 ActionCost ActionManager::evoke(CreaturePtr creature)

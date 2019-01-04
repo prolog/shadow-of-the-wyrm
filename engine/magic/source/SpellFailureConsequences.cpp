@@ -88,7 +88,7 @@ bool SpellFailureConsequences::summon_creatures(CreaturePtr caster)
 
       // Create a creature to place.
       CreatureFactory cf;
-      CreaturePtr summoned_creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id);
+      CreaturePtr summoned_creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id, current_map);
 
       if (summoned_creature != nullptr)
       {

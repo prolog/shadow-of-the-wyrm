@@ -22803,7 +22803,7 @@
 			</EventScripts>
 		</Creature>
 		<Creature id="fisherman">
-			<RaceID>01_human</RaceID>
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
 			<ShortDescriptionSID>FISHERMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FISHERMAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FISHERMAN_TEXT_DETAILS_SID</TextDetailsSID>

@@ -1,13 +1,6 @@
 Me:
 - Default race ID:
-  - Set on map
-  - Allow creatures to be comma-separated races
-  - When generating a creature, check the map to see if there is a default
-    race ID.  If so, generate using that ID.  Otherwise, select one at
-    random.
-  - Bestiary needs to be updated: via 'B' it should show all races.  When
-    selecting a creature individually, it should show that particular
-    instance's race.
+  - Set default race ID for random villages
   - Generate a number of creatures that can have multiple races
   - Work these into the feature/village generation
 - Each version: make sure to update itch.io page!

@@ -230,7 +230,7 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
 
       CreatureFactory cf;
       cf.set_hostility_for_creatures(override_host, hostility);
-      CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), id);
+      CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), id, map);
       
       // Set any additional properties
       if (creature != nullptr)

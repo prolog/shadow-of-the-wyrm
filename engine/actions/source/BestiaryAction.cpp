@@ -17,7 +17,7 @@ BestiaryAction::BestiaryAction()
 {
 }
 
-ActionCostValue BestiaryAction::display_creature_information(CreaturePtr creature, const string& creature_search_text) const
+ActionCostValue BestiaryAction::display_creature_information(CreaturePtr creature, const string& creature_search_text, CreaturePtr bestiary_creature_instance) const
 {
   string search_text = creature_search_text;
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
@@ -46,7 +46,12 @@ ActionCostValue BestiaryAction::display_creature_information(CreaturePtr creatur
     creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LAST_BESTIARY_SEARCH, search_text);
   }
 
-  CreaturePtr beast = get_bestiary_creature(search_text);
+  CreaturePtr beast = bestiary_creature_instance;
+  
+  if (beast == nullptr)
+  {
+    beast = get_bestiary_creature(search_text);
+  }
 
   if (beast)
   {

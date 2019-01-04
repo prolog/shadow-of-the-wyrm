@@ -667,7 +667,7 @@ void CombatManager::handle_split_if_necessary(CreaturePtr attacking_creature, Cr
       // Create the new creature, and adjust HP/AP.
       Game& game = Game::instance();
       CreatureFactory cf;
-      CreaturePtr split_creature = cf.create_by_creature_id(game.get_action_manager_ref(), attacked_creature->get_original_id());
+      CreaturePtr split_creature = cf.create_by_creature_id(game.get_action_manager_ref(), attacked_creature->get_original_id(), current_map);
 
       if (split_creature != nullptr)
       {
