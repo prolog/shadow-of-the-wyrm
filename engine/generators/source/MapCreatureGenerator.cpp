@@ -114,7 +114,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
   while (!maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
-    CreaturePtr generated_creature = cgm.generate_creature(am, generation_map);
+    CreaturePtr generated_creature = cgm.generate_creature(am, generation_map, map);
 
     if (generated_creature)
     {
@@ -148,7 +148,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
           for (const Coordinate& adj : coords)
           {
             TilePtr tile = map->at(adj);
-            CreaturePtr pack_creature = cf.create_by_creature_id(am, creature_id, generated_creature);
+            CreaturePtr pack_creature = cf.create_by_creature_id(am, creature_id, map, generated_creature);
 
             if (pack_creature != nullptr && MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
             {

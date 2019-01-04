@@ -188,7 +188,7 @@ void TombSectorFeature::generate_bones_and_treasure(MapPtr map, const Coordinate
       if (!tomb_guardians.empty() && RNG::percent_chance(15))
       {
         string guardian_id = tomb_guardians.at(RNG::range(0, tomb_guardians.size()-1));
-        CreaturePtr guardian = cf.create_by_creature_id(game.get_action_manager_ref(), guardian_id);
+        CreaturePtr guardian = cf.create_by_creature_id(game.get_action_manager_ref(), guardian_id, map);
 
         if (guardian != nullptr)
         {

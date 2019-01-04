@@ -41,7 +41,7 @@ void VaultPopulator::populate_vault_creatures(MapPtr map, const TileType tile_ty
     for (const Coordinate& c : coords)
     {
       TilePtr tile = map->at(c.first, c.second);
-      CreaturePtr creature = cgm.generate_creature(am, generation_map);
+      CreaturePtr creature = cgm.generate_creature(am, generation_map, map);
       GameUtils::add_new_creature_to_map(game, creature, map, c);
     }
   }

@@ -34,6 +34,10 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 - Creatures can now be specified to have a number of potential races, 
   rather than always using a set race ID.
 
+  - Maps can also have default race IDs, and when the map default race
+    ID is in the creature's list, it is always used; otherwise, a random
+    value from the creature's list is selected.
+
   - The bestiary screen now displays all the possible races when
     selecting a creature via search ('B') rather than direct selection.
 

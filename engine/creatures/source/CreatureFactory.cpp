@@ -37,6 +37,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
 (
   ActionManager& action_manager
 , const string& creature_id_and_options
+, MapPtr current_map
 , CreaturePtr procgen_creature_template
 )
 {
@@ -90,9 +91,19 @@ CreaturePtr CreatureFactory::create_by_creature_id
     Creature creature_instance = *creature_template;
     creature = std::make_shared<Creature>(creature_instance);
     DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy();
+    
+    string default_race_id;
+
+    if (current_map != nullptr)
+    {
+      default_race_id = current_map->get_default_race_id();
+    }
+
+    vector<string> race_ids = String::create_string_vector_from_csv_string(creature->get_race_id());
+    string race_id = select_race_id(race_ids, default_race_id);
 
     creature = create_by_race_and_class(action_manager,
-                                        creature->get_race_id(),
+                                        race_id,
                                         creature->get_class_id(),
                                         creature->get_name(),
                                         creature->get_sex(),
@@ -176,6 +187,7 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
     creature->set_symbol(creature_instance.get_symbol());
     creature->set_short_description_sid(creature_instance.get_short_description_sid());
     creature->set_description_sid(creature_instance.get_description_sid());
+    creature->set_text_details_sid(creature_instance.get_text_details_sid());
     creature->set_speech_text_sid(creature_instance.get_speech_text_sid());
     creature->set_breathes(creature_instance.get_base_breathes());
     creature->set_decision_strategy(template_decision_strategy);
@@ -531,6 +543,30 @@ void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
   {
     hostility_manager.set_hostility_to_player(npc);
   }
+}
+
+string CreatureFactory::select_race_id(const vector<string>& race_ids, const string& default_race_id)
+{
+  string race_id;
+
+  // Check to see if we should use the default race id.  It's used when
+  // it can be found in the set of race IDs.
+  if (!default_race_id.empty() && find(race_ids.begin(), race_ids.end(), default_race_id) != race_ids.end())
+  {
+    race_id = default_race_id;
+  }
+
+  // If we're not using the default race IDs, select one of the race IDs at
+  // random.
+  if (race_id.empty())
+  {
+    if (!race_ids.empty())
+    {
+      race_id = race_ids[RNG::range(0, race_ids.size()-1)];
+    }
+  }
+
+  return race_id;
 }
 
 #ifdef UNIT_TESTS

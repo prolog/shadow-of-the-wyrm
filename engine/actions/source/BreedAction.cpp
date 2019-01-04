@@ -41,7 +41,7 @@ ActionCostValue BreedAction::breed(CreaturePtr creature, MapPtr map) const
             string original_id = creature->get_original_id();
             CreatureFactory cf;
 
-            CreaturePtr spawn = cf.create_by_creature_id(game.get_action_manager_ref(), original_id);
+            CreaturePtr spawn = cf.create_by_creature_id(game.get_action_manager_ref(), original_id, map);
 
             if (spawn != nullptr)
             {
