@@ -120,12 +120,15 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       if (village_tile)
       {
         RaceManager rm;
-        RacePtr race = rm.get_race(village_tile->get_village_race_id());
+        string race_id = village_tile->get_village_race_id();
+        RacePtr race = rm.get_race(race_id);
         
         if (race)
         {
           settlement_type = race->get_settlement_type();          
         }
+
+        base_map->set_default_race_id(race_id);
       }
 
       generator = SettlementGeneratorFactory::create_settlement_generator(settlement_type, base_map);

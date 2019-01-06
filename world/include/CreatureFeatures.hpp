@@ -107,6 +107,18 @@ class CreatureID
     static const std::string CREATURE_ID_PLAYER;
     static const std::string CREATURE_ID_PREFIX_ANCIENT_BEAST;
 
+    // Village feature creatures
+    static const std::string CREATURE_ID_SMITH;
+    static const std::string CREATURE_ID_JEWELER;
+    static const std::string CREATURE_ID_WEAVER;
+    static const std::string CREATURE_ID_TANNER;
+    static const std::string CREATURE_ID_SCRIBE;
+    static const std::string CREATURE_ID_COMMONER;
+    static const std::string CREATURE_ID_NOBLE;
+    static const std::string CREATURE_ID_FISHERMAN;
+    static const std::string CREATURE_ID_FARMER;
+    static const std::string CREATURE_ID_SMALL_CHILD;
+
   protected:
     CreatureID();
     ~CreatureID();

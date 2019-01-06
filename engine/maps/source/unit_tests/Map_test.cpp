@@ -151,6 +151,16 @@ TEST_F(SW_Engine_Map, underwater_maps_submerge_tiles)
   EXPECT_TRUE(map->at({4,4})->get_submerged());
 }
 
+TEST_F(SW_Engine_Map, default_race_id_copied_correctly)
+{
+  MapPtr map = make_map();
+  map->set_default_race_id("test");
+
+  MapPtr map2 = std::make_shared<Map>(*map);
+
+  EXPECT_EQ("test", map2->get_default_race_id());
+}
+
 TEST_F(SW_Engine_Map, get_generation_coordinates)
 {
   MapPtr map = make_map();

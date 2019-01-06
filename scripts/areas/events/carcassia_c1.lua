@@ -3,7 +3,7 @@ require('fn')
 require('map_events')
 
 local map_id = "carcassia_c1"
-local population = {"noble", "carcassian_guard"}
+local population = {"_noble", "carcassian_guard"}
 
 local function init_altar_annex()
   for row = 11,18,2 do
