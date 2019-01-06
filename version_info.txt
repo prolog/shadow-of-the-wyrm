@@ -28,6 +28,9 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 - Effects that remove statuses like poison or stoning now always identify
   the item (Kyzrati).
 
+- Turned off checkpoint_save in swyrm.ini - users were reporting that
+  the delay was too much.
+
 - Tweaked the character synopsis when you're not affected by status
   ailments.
 
@@ -41,11 +44,15 @@ Shadow of the Wyrm v1.0.2 "de Falla"
   - The bestiary screen now displays all the possible races when
     selecting a creature via search ('B') rather than direct selection.
 
+- Created a number of new creatures that can appear in random villages
+  next to the appropriate feature: smith (forge), weaver (wheel and loom),
+  jeweler (jeweler workbench).
+
 - Minor updates to the Guidebook.
 
 - Stanzas for "Tel and Floridel".
 
-- New creatures: Calabus, Corbett.
+- New creatures: Calabus, Corbett, smith, weaver, jeweler.
 
 - Bug fixes:
 

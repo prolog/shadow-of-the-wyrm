@@ -2334,3 +2334,13 @@ the rest receiving rings. So pick your peers, %b
 and have the smiths take bullion from our hoard: %b
 I say that bravery should not be its own reward."
 %p
+"For all the rest of you, I'll order torques %b
+of braided gold, to signify both rank %b
+and courage.  Let there be esprit de corps! %b
+We caught the giants, split their rear and flank, %b
+and then, despite our differences in size, %b
+we devastated them.  So I assume %b
+you called me here to plan, to authorize %b
+an action.  I agree - let's carve out room %b
+for peace by any means.  Let's hit them hard and soon."
+%p

@@ -1,8 +1,12 @@
 Me:
 - Default race ID:
-  - Set default race ID for random villages
   - Generate a number of creatures that can have multiple races
   - Work these into the feature/village generation
+- Weaver, scribe, tanner, jeweler should offer to improve an item for a
+  fee when adjacent to a feature of the appropriate type.
+- text details for player not being copied over to player instance
+- Random villages should include the race in the description prior to
+  generation.
 - Each version: make sure to update itch.io page!
 - When do antidotes appear in item generation?
 - Rework creature generation to be faster and not to bias towards the

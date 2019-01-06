@@ -14,11 +14,18 @@
 using namespace std;
 using namespace boost;
 
+// JCD FIXME: Right now, this copies a pretty minimal subset of stuff.
+// This will likely need to be updated to include new fields at some
+// point.
 Map::Map(const Map& new_map)
 : terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(new_map.permanent), danger(0), allow_creature_updates(true)
 {
   if (this != &new_map)
   {
+    name_sid = new_map.name_sid;
+    default_race_id = new_map.default_race_id;
+    map_id = new_map.map_id;
+
     Dimensions new_dimensions = new_map.size();
     TilesContainer new_tiles = new_map.get_tiles();
 

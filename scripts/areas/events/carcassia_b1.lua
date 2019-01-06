@@ -4,7 +4,7 @@ require('fn')
 require('map_events')
 
 local map_id = "carcassia_b1"
-local population = {"noble", "carcassian_guard", "commoner", "_vendor", "cleric", "small_child", "harlot", "layperson", "devotee", "merchant", "traveller"}
+local population = {"_noble", "carcassian_guard", "_commoner", "_vendor", "cleric", "_small_child", "harlot", "layperson", "devotee", "merchant", "traveller"}
 
 local function setup_keep_rooms(m_id)
   local coords = {{14,10}, {14,31}}
