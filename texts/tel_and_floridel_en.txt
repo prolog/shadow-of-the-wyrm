@@ -2344,3 +2344,23 @@ you called me here to plan, to authorize %b
 an action.  I agree - let's carve out room %b
 for peace by any means.  Let's hit them hard and soon."
 %p
+Pinned down with long, thin knives, the leather map %b
+laid out geography.  Tel knew it well - %b
+his father'd had it made.  When laid out flat %b
+it showed the upper lands.  That skin could tell %b
+the story of how the former king made peace, %b
+encircling so many giant-kin %b
+his actions seemed incredulous.  He released %b
+the giants with the promise they'd attend %b
+to peace with fairy-kind, a truce his son would end.
+%p
+He thought about that deer, and as he stood, %b
+his courtiers laid out counters in neat stacks, %b
+with gold for fairy folk, the giants wood, %b
+and unlings marked with stone.  As Tel unpacked %b
+both numbers and positions, he thought back %b
+to how his shot had sailed the windless day, %b
+improbably, until the head and haft %b
+embedded inside Choros; Tel could say %b
+he heard it when his father's life work slipped away.
+%p
