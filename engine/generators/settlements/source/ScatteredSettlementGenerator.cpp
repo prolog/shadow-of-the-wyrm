@@ -95,7 +95,7 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
     if (can_building_be_placed(row, col, height, width))
     {
       vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
-      BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false, cl_ids, bcf.create_item_ids(cl_ids));
+      BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
       SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
       
       Room room(no_features, attempts, col, col+width, row, row+width);

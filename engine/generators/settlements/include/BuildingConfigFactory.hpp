@@ -10,6 +10,7 @@ class BuildingConfigFactory
     BuildingConfigFactory();
 
     std::vector<ClassIdentifier> create_shop_features() const;
+    std::vector<std::string> create_shop_creature_ids() const;
     std::vector<std::string> create_shop_item_ids() const;
 
     // Returns a random subset of the possible house features.
