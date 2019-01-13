@@ -1,6 +1,7 @@
 #include <cmath>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include "ArcanaPointsCalculator.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
@@ -9,16 +10,16 @@
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
+#include "HitPointsCalculator.hpp"
 #include "InitialItemEquipper.hpp"
 #include "Log.hpp"
-#include "ResistancesCalculator.hpp"
-#include "SkillsCalculator.hpp"
-#include "HitPointsCalculator.hpp"
-#include "ArcanaPointsCalculator.hpp"
-#include "ReligionFactory.hpp"
-#include "RNG.hpp"
-#include "NullKeyboardController.hpp"
 #include "ModifyStatisticsEffect.hpp"
+#include "NullKeyboardController.hpp"
+#include "PlayerTextKeys.hpp"
+#include "ReligionFactory.hpp"
+#include "ResistancesCalculator.hpp"
+#include "RNG.hpp"
+#include "SkillsCalculator.hpp"
 
 using namespace std;
 
@@ -323,6 +324,18 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   }
 
   return creaturep;
+}
+
+void CreatureFactory::setup_player(CreaturePtr player, ControllerPtr controller)
+{
+  if (player != nullptr)
+  {
+    player->set_is_player(true, controller);
+    player->set_description_sid(PlayerTextKeys::PLAYER_DESCRIPTION_SID);
+    player->set_short_description_sid(PlayerTextKeys::PLAYER_SHORT_DESCRIPTION_SID);
+    player->set_text_details_sid(PlayerTextKeys::PLAYER_TEXT_DETAILS_SID);
+    player->set_speech_text_sid(PlayerTextKeys::PLAYER_SPEECH_TEXT_SID);
+  }
 }
 
 void CreatureFactory::create_initial_equipment_and_inventory(CreaturePtr creaturep, ActionManager& action_manager)

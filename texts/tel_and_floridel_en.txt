@@ -2364,3 +2364,13 @@ improbably, until the head and haft %b
 embedded inside Choros; Tel could say %b
 he heard it when his father's life work slipped away.
 %p
+Appropriately, the stack at Farstead loomed %b
+as Cithriel's was heaped just half as high, %b
+the estimates uncertain, but the room %b
+was confident enough; they wouldn't try %b
+a frontal thrust, not if they were alone. %b
+Some scattered smaller stacks: there were some fae %b
+who left so long ago it wasn't known %b
+just how they saw themselves, or if they'd strayed %b
+so far that now they fell outside the kingdom's sway.
+%p

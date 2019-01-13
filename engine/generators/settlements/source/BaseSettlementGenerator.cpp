@@ -18,6 +18,8 @@ base_map(new_base_map), growth_rate(100)
 , BLOCK_SIZE(6)
 , NS_DIVISOR(2)
 , EW_DIVISOR(3)
+, WELLS_MIN(0)
+, WELLS_MAX(3)
 {
 }
 
@@ -31,6 +33,8 @@ base_map(new_base_map), growth_rate(new_growth_rate)
 , BLOCK_SIZE(6)
 , NS_DIVISOR(2)
 , EW_DIVISOR(3)
+, WELLS_MIN(0)
+, WELLS_MAX(3)
 {
 }
 
@@ -420,5 +424,36 @@ void BaseSettlementGenerator::generate_shop_if_necessary(MapPtr map)
     ShopGenerator sg;
 
     sg.generate_shop(map, shop_bldg);
+  }
+}
+
+void BaseSettlementGenerator::generate_wells(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    TileGenerator tg;
+    Dimensions dim = map->size();
+    int rows = dim.get_y();
+    int cols = dim.get_x();
+
+    for (int i = 0; i < WELLS_MAX; i++)
+    {
+      for (int j = 0; j < 5; j++)
+      {
+        int y = RNG::range(0, rows-1);
+        int x = RNG::range(0, cols-1);
+
+        TilePtr tile = map->at(y, x);
+
+        // "dig" a well by creating a well and replacing the existing tile.
+        if (tile != nullptr && tile->get_tile_type() == TileType::TILE_TYPE_FIELD)
+        {
+          tile = tg.generate(TileType::TILE_TYPE_WELL);
+          map->insert(y, x, tile);
+
+          break;
+        }
+      }
+    }
   }
 }

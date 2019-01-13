@@ -36,6 +36,7 @@ MapPtr ScatteredSettlementGenerator::generate()
   current_buildings.clear();
   
   generate_scattered_settlement(map);
+  generate_wells(map);
   generate_shop_if_necessary(map);
 
   return map;

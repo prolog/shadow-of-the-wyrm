@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "ActionManager.hpp"
+#include "Controller.hpp"
 #include "Creature.hpp"
 #include "Deity.hpp"
 #include "CreatureGenerationValues.hpp"
@@ -15,6 +16,8 @@ class CreatureFactory
 
     CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id, MapPtr current_map, CreaturePtr procgen_creature = nullptr);
     CreaturePtr create_by_race_and_class(ActionManager& am, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const std::string& deity_id = "");
+
+    void setup_player(CreaturePtr player, ControllerPtr controller);
 
   protected:
     void revert_to_original_configuration_values(CreaturePtr newly_created_creature, const Creature& configuration_instance, DecisionStrategyPtr template_decision_strategy);

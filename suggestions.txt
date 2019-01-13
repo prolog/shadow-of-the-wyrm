@@ -1,8 +1,4 @@
 Me:
-- Wells in random settlements.
-- Weaver, scribe, tanner, jeweler should offer to improve an item for a
-  fee when adjacent to a feature of the appropriate type.
-- text details for player not being copied over to player instance
 - Random villages should include the race in the description prior to
   generation.
 - Each version: make sure to update itch.io page!
@@ -10,10 +6,6 @@ Me:
 - Rework creature generation to be faster and not to bias towards the
   creatures at the front of the list.  This could be as simple as
   shuffling the order.
-- The workshop generation should also generate the appropriate creature
-  for a feature.
-- Allow races to be regexps
-- Ensure the bestiary race uses the generated creature's race ID.
 - The "descend to" functionality
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
@@ -36,7 +28,6 @@ Me:
 - Penalties from bloodied, exposed should also scale with level.
 - When items are destroyed in shops, their value should be be added to the
   unpaid bill.
-- Generate loom, tanneries in random villages.
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc

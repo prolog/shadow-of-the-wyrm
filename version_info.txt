@@ -34,6 +34,8 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 - Tweaked the character synopsis when you're not affected by status
   ailments.
 
+- Random villages now contain wells.
+
 - Creatures can now be specified to have a number of potential races, 
   rather than always using a set race ID.
 
