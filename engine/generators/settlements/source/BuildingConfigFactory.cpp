@@ -52,6 +52,13 @@ vector<ClassIdentifier> BuildingConfigFactory::create_shop_features() const
   return features;
 }
 
+// Shops have nothing in them other than the shopkeeper, which is generated separately.
+vector<string> BuildingConfigFactory::create_shop_creature_ids() const
+{
+  vector<string> creatures;
+  return creatures;
+}
+
 // Shops have nothing in them that aren't for sale.
 vector<string> BuildingConfigFactory::create_shop_item_ids() const
 {
@@ -95,6 +102,32 @@ vector<string> BuildingConfigFactory::create_item_ids(const vector<ClassIdentifi
 
   return item_ids;
 }
+
+vector<string> BuildingConfigFactory::create_creature_ids(const vector<ClassIdentifier>& features) const
+{
+  vector<string> creature_ids;
+
+  for (const auto& ci : features)
+  {
+    auto creature_it = feature_creatures.find(ci);
+
+    if (creature_it != feature_creatures.end())
+    {
+      vector<pair<string, int>> creature_and_p = creature_it->second;
+
+      for (const auto& cp_pair : creature_and_p)
+      {
+        if (RNG::percent_chance(cp_pair.second))
+        {
+          creature_ids.push_back(cp_pair.first);
+        }
+      }
+    }
+  }
+
+  return creature_ids;
+}
+
 
 vector<ClassIdentifier> BuildingConfigFactory::create_house_features() const
 {

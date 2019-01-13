@@ -46,7 +46,8 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 
 - Created a number of new creatures that can appear in random villages
   next to the appropriate feature: smith (forge), weaver (wheel and loom),
-  jeweler (jeweler workbench).
+  jeweler (jeweler workbench).  Houses can also have inhabitants now
+  as well, and villages should generally feel more "full".
 
 - Minor updates to the Guidebook.
 

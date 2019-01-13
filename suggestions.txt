@@ -1,7 +1,5 @@
 Me:
-- Default race ID:
-  - Generate a number of creatures that can have multiple races
-  - Work these into the feature/village generation
+- Wells in random settlements.
 - Weaver, scribe, tanner, jeweler should offer to improve an item for a
   fee when adjacent to a feature of the appropriate type.
 - text details for player not being copied over to player instance

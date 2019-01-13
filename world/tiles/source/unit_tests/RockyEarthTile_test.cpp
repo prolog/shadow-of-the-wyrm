@@ -1,5 +1,11 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Tiles_RockyEarthTile, non_blocking_with_null_creature)
+{
+  RockyEarthTile rocky_tile;
+  EXPECT_FALSE(rocky_tile.get_is_blocking(nullptr));
+}
+
 TEST(SW_World_Tiles_RockyEarthTile, type_is_TILE_TYPE_ROCKY_EARTH)
 {
   RockyEarthTile rocky_tile;
