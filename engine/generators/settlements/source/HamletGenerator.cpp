@@ -43,7 +43,8 @@ MapPtr HamletGenerator::generate()
   MapPtr map = std::make_shared<Map>(*base_map);
 
   generate_circular_hamlet(map);
-  
+  generate_wells(map);
+
   return map;
 }
 

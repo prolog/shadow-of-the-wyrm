@@ -4245,6 +4245,9 @@
     <ClInclude Include="engine\generators\settlements\sector\include\WorkshopSectorFeature.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8473,6 +8476,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\sector\source\WorkshopSectorFeature.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
