@@ -672,7 +672,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     // handled during map generation, and will be removed after creating
     // items and creatures.
     add_initial_map_messages(creature, new_map, tile_type);
-    handle_properties_and_move_to_new_map(tile, map, new_map);
+    handle_properties_and_move_to_new_map(tile, map, new_map, map_exit);
     action_cost_value = get_action_cost_value(creature);
   }
  
@@ -745,7 +745,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
   return true;  
 }
 
-ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
+ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -768,16 +768,16 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
       mig.generate_initial_set_items(new_map, current_tile->get_additional_properties());
     }
 
-    move_to_new_map(current_tile, old_map, new_map);
+    move_to_new_map(current_tile, old_map, new_map, map_exit);
     acv = get_action_cost_value(nullptr);
   }
 
   return acv;
 }
 
-void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
+void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit)
 {
-  GameUtils::move_to_new_map(current_tile, old_map, new_map);
+  GameUtils::move_to_new_map(current_tile, old_map, new_map, map_exit);
 
   bool checkpoint_save = String::to_bool(Game::instance().get_settings_ref().get_setting(Setting::CHECKPOINT_SAVE));
 
@@ -804,7 +804,7 @@ void MovementAction::handle_properties_and_move_to_new_map(CreaturePtr creature,
         new_map->add_or_update_location(creature->get_id(), proposed_new_coord);
       }
       
-      handle_properties_and_move_to_new_map(old_tile, old_map, new_map);
+      handle_properties_and_move_to_new_map(old_tile, old_map, new_map, map_exit);
     }
     else
     {

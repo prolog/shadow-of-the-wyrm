@@ -145,3 +145,33 @@ TEST(SW_Engine_ConversionRoutines, create_properties_from_string)
 
   EXPECT_FALSE(p_it != props.end());
 }
+
+TEST(SW_Engine_ConversionRoutines, coord_to_string)
+{
+  Coordinate c(3,4);
+
+  EXPECT_EQ("3,4", String::create_string_from_coordinate(c));
+
+  c = {-12, 6};
+
+  EXPECT_EQ("-12,6", String::create_string_from_coordinate(c));
+}
+
+TEST(SW_Engine_ConversionRoutines, string_to_coord)
+{
+  string coord_s = "3,4";
+
+  Coordinate c(3,4);
+
+  EXPECT_EQ(c, String::create_coordinate_from_string(coord_s));
+
+  coord_s = "3 , 4";
+
+  EXPECT_EQ(c, String::create_coordinate_from_string(coord_s));
+
+  EXPECT_TRUE(CoordUtils::is_end(String::create_coordinate_from_string("")));
+  EXPECT_TRUE(CoordUtils::is_end(String::create_coordinate_from_string("3")));
+  EXPECT_TRUE(CoordUtils::is_end(String::create_coordinate_from_string("4,")));
+
+  EXPECT_FALSE(CoordUtils::is_end(String::create_coordinate_from_string("4,5")));
+}
