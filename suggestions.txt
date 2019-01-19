@@ -1,4 +1,10 @@
 Me:
+- Thoroughly test map links!
+  - Regular dungeons
+  - Regular maps from the world map
+  - Fixed maps in the middle of dungeons
+  - Telari
+  - etc
 - Random villages should include the race in the description prior to
   generation.
 - Each version: make sure to update itch.io page!

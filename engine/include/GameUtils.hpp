@@ -16,7 +16,7 @@ class GameUtils
     // etc).
     static void make_map_permanent(Game& game, CreaturePtr creature, MapPtr current_map);
     static void add_new_creature_to_map(Game& game, CreaturePtr new_creature, MapPtr map, const Coordinate& coords);
-    static void move_to_new_map(TilePtr tile, MapPtr old_map, MapPtr new_map);
+    static void move_to_new_map(TilePtr tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit = nullptr);
     static bool is_creature_in_player_view_map(Game& game, const std::string& creature_id);
     static bool is_creature_adjacent(Game& game, CreaturePtr creature1, CreaturePtr creature2);
     static double get_seconds(Game& game);

@@ -1,5 +1,19 @@
 #include "gtest/gtest.h"
 
+TEST(SW_Engine_MapExit, coord)
+{
+  Coordinate c = {1,1};
+
+  MapExit me;
+
+  EXPECT_FALSE(me.has_coordinate());
+
+  me.set_coordinate(c);
+
+  EXPECT_TRUE(me.has_coordinate());
+  EXPECT_EQ(c, me.get_coordinate());
+}
+
 TEST(SW_Engine_MapExit, properties)
 {
   MapExit me;
@@ -34,6 +48,7 @@ TEST(SW_Engine_MapExit, saveload)
   me.set_property("asdf", "fdsa");
   me.set_property("1", "2");
   me.set_map_id("aaa");
+  me.set_coordinate({3,4});
 
   ostringstream ss;
   me.serialize(ss);

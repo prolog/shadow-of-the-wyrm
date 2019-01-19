@@ -1,4 +1,5 @@
 #include "CoordUtils.hpp"
+#include "Conversion.hpp"
 #include "GameUtils.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
@@ -68,7 +69,7 @@ void GameUtils::add_new_creature_to_map(Game& game, CreaturePtr new_creature, Ma
   }
 }
 
-void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
+void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit)
 {
   if (current_tile != nullptr && old_map != nullptr && new_map != nullptr)
   {
@@ -77,8 +78,30 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
     CreaturePtr current_creature = current_tile->get_creature();
     MapUtils::remove_creature(old_map, current_creature);
 
-    Coordinate new_map_prev_loc = MapUtils::place_creature_on_previous_location(new_map, current_creature, current_creature->get_id());
+    Coordinate c = CoordUtils::end();
+
+    if (map_exit && map_exit->has_coordinate() && new_map->get_permanent())
+    {
+      c = map_exit->get_coordinate();
+    }
+    else if (map_exit == nullptr && new_map->get_permanent() && current_tile->has_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD))
+    {
+      c = String::create_coordinate_from_string(current_tile->get_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD));
+    }
+
+    Coordinate new_map_prev_loc = MapUtils::place_creature(new_map, current_creature, current_creature->get_id(), c);
     MapUtils::set_multi_map_entry_details(new_map, old_map, new_map_prev_loc);
+
+    // If there's an exit, link it to the creature's location on the new map
+    // so it can be easily found later.
+    if (map_exit != nullptr && new_map->get_permanent())
+    {
+      map_exit->set_coordinate(new_map_prev_loc);
+    }
+    else if (map_exit == nullptr && new_map->get_permanent())
+    {
+      current_tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, String::create_string_from_coordinate(new_map_prev_loc));
+    }
 
     // Set the new map to be loaded in the next iteration of the game loop.
     Game& game = Game::instance();
