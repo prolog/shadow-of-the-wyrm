@@ -4248,6 +4248,9 @@
     <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\WarpEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8479,6 +8482,9 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\WarpEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

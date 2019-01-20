@@ -7,6 +7,7 @@
 #include "EtherEffect.hpp"
 #include "EnchantingEffect.hpp"
 #include "FlyingEffect.hpp"
+#include "FruitJuiceEffect.hpp"
 #include "GainAttributesEffect.hpp"
 #include "HasteEffect.hpp"
 #include "HealingEffect.hpp"
@@ -18,13 +19,13 @@
 #include "NullEffect.hpp"
 #include "RageEffect.hpp"
 #include "RepelEffect.hpp"
-#include "FruitJuiceEffect.hpp"
 #include "RechargingEffect.hpp"
 #include "StatusTypes.hpp"
 #include "SummonMonstersEffect.hpp"
 #include "TeleportEffect.hpp"
 #include "TimewalkEffect.hpp"
 #include "UncursingEffect.hpp"
+#include "WarpEffect.hpp"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modifier& m, const map<string, string>& properties, const string& spell_id, const string& source_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(31), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(32), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -139,6 +140,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modif
       break;
     case EffectType::EFFECT_TYPE_REPEL:
       effect = std::make_shared<RepelEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_WARP:
+      effect = std::make_shared<WarpEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:

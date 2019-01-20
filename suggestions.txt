@@ -1,10 +1,13 @@
 Me:
+- Warping effect, spell (Arcane), spellbook. Be sure to consider world
+  map.
 - Thoroughly test map links!
   - Regular dungeons
   - Regular maps from the world map
   - Fixed maps in the middle of dungeons
   - Telari
   - etc
+  - test each with regular movement and warping
 - Random villages should include the race in the description prior to
   generation.
 - Each version: make sure to update itch.io page!
@@ -112,11 +115,6 @@ Me:
 - Food rotting for caught fish, other foods?
 - Message when doing checkpoint saves to indicate why the delay happens.
 
-For v1:
-- Item generation needs a serious overhaul!  Many items are rarely, if 
-  ever, generated.
-- Revisit creature generation algorithm.
-
 Sean McKeague:
 - Ability to pick up partial stacks.
 
@@ -136,7 +134,6 @@ Kyzrati:
 - Separate stacks of ivory?
 - Item paging issue confirmed: when large number of items, a blank page
   can be generated.
-- See carrying capacity/how close.
 - Wants item-iary.  Separate screen + in inventory view.  Update lower
   message to be [A...] Info or [A...] Select based on context.
 
@@ -191,7 +188,6 @@ kraphead
 - Crashes in sewer, SE dungeon
 - black 'x'
 - Cascade of aggro on stun, etc
-- auto-displace when bumping friendly creatures
 
 ssteam
 - w->, w-< to autowalk to stairs

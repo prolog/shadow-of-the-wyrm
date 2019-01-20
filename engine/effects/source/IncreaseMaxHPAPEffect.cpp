@@ -85,7 +85,7 @@ string IncreaseMaxHPEffect::get_effect_identification_message(CreaturePtr creatu
     is_player = creature->get_is_player();
   }
 
-  return EffectTextKeys::get_increase_max_hp_message(creature_desc_sid, is_player);
+  return EffectTextKeys::get_increase_max_hp_effect_message(creature_desc_sid, is_player);
 }
 
 Effect* IncreaseMaxHPEffect::clone()
@@ -120,7 +120,7 @@ string IncreaseMaxAPEffect::get_effect_identification_message(CreaturePtr creatu
     is_player = creature->get_is_player();
   }
 
-  return EffectTextKeys::get_increase_max_ap_message(creature_desc_sid, is_player);
+  return EffectTextKeys::get_increase_max_ap_effect_message(creature_desc_sid, is_player);
 }
 
 Effect* IncreaseMaxAPEffect::clone()
