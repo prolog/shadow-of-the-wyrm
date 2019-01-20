@@ -1602,11 +1602,12 @@
 				Increase Max HP = 28
 				Increase Max AP = 29
 				Repel = 30
+				Warp = 31
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="30"/>
+		<xs:maxInclusive value="31"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

@@ -19,7 +19,7 @@ string RepelEffect::get_effect_identification_message(CreaturePtr creature) cons
   
   if (creature != nullptr)
   {
-    message = EffectTextKeys::get_repel_message(creature->get_description_sid(), creature->get_is_player());
+    message = EffectTextKeys::get_repel_effect_message(creature->get_description_sid(), creature->get_is_player());
   }
 
   return message;
