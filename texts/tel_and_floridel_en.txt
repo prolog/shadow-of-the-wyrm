@@ -2374,3 +2374,13 @@ who left so long ago it wasn't known %b
 just how they saw themselves, or if they'd strayed %b
 so far that now they fell outside the kingdom's sway.
 %p
+The former king's advisor, Alcius, %b
+could see the royal eye was flickering %b
+from pile to pile, attempting now to suss %b
+their odds from oak and elm; and lingering %b
+on tiny florins, camps of fairy folk %b
+that might be gone, or halls.  There was a gap %b
+within that sparse encoding.  Tel now broke %b
+the silence, met their gazes, and then rapped %b
+a single piece of silver by their golden stack.
+%p
