@@ -1402,6 +1402,16 @@ int MapUtils::calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovement
   return depth_incr;
 }
 
+bool MapUtils::should_link_entry_point(MapType map_type)
+{
+  if (map_type == MapType::MAP_TYPE_OVERWORLD)
+  {
+    return false;
+  }
+
+  return true;
+}
+
 // Add any messages after moving to a particular tile:
 // - Should a message be displayed about the tile automatically? (staircases, etc)
 //       If so, add it.

@@ -1,17 +1,8 @@
 Me:
-- Warping effect, spell (Arcane), spellbook. Be sure to consider world
-  map.
-- Thoroughly test map links!
-  - Regular dungeons
-  - Regular maps from the world map
-  - Fixed maps in the middle of dungeons
-  - Telari
-  - etc
-  - test each with regular movement and warping
+- For v1.0.3 - start the item codex
 - Random villages should include the race in the description prior to
   generation.
 - Each version: make sure to update itch.io page!
-- When do antidotes appear in item generation?
 - Rework creature generation to be faster and not to bias towards the
   creatures at the front of the list.  This could be as simple as
   shuffling the order.
@@ -128,8 +119,6 @@ Kyzrati:
 - Over time, generation of new random uniques, etc.
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
-- Explain what spell synopsis stuff means (manual)
-- Ditto for armour (evade/soak)
 - Group like items together (scrolls, etc) even if not exactly the same
 - Separate stacks of ivory?
 - Item paging issue confirmed: when large number of items, a blank page

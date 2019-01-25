@@ -661,11 +661,6 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       MapExitUtils::add_exit_to_map(new_map, map->get_map_id());
     }
                 
-    // If the map has a last known player location (e.g., up staircase),
-    // use that.  Otherwise, start at the first open location.
-    string player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
-    Coordinate starting_coords;
-    
     // If we're moving on to an existing map, handle any tile properties
     // that may be present.  Don't worry about this when we're moving
     // to a brand-new map, as tile properties will be automatically 

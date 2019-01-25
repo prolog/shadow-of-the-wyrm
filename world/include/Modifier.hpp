@@ -41,6 +41,9 @@ class Modifier : public ISerializable
     void set_soak_modifier(const int new_soak_modifier);
     int get_soak_modifier() const;
 
+    void set_speed_modifier(const int new_speed_modifier);
+    int get_speed_modifier() const;
+
     void set_to_hit_modifier(const int new_to_hit_modifier);
     int get_to_hit_modifier() const;
 
@@ -82,6 +85,7 @@ class Modifier : public ISerializable
 
     int evade_modifier;
     int soak_modifier;
+    int speed_modifier;
 
     int to_hit_modifier;
 

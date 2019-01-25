@@ -55,7 +55,8 @@ Shadow of the Wyrm v1.0.2 "de Falla"
   Warping takes you back to your last position on the world map, and is
   a convenient way of getting out of deep dungeons and sewers.
 
-- Minor updates to the Guidebook.
+- Minor updates to the Guidebook, as well as an expanded magic section
+  to describe the spell selection screen (Kyzrati).
 
 - Stanzas for "Tel and Floridel".
 
@@ -69,6 +70,10 @@ Shadow of the Wyrm v1.0.2 "de Falla"
 
   - The bestiary would crash when trying to load a creature with an
     unspecified race ID.
+
+  - Speed potions weren't working correctly - they were being overwritten
+    immediately by a calculated value based on equipment and the base
+    speed value.
 
 Shadow of the Wyrm v1.0.1 "Besard"
 - Version declared November 23, 2018. Version finalized December 23, 2018.

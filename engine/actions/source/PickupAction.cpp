@@ -1,7 +1,6 @@
 #include <list>
 #include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
-#include "CreatureSpeedCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DisplayItemTypeFactory.hpp"
@@ -16,6 +15,7 @@
 #include "PickupAction.hpp"
 #include "RNG.hpp"
 #include "Setting.hpp"
+#include "StatisticsCalculators.hpp"
 #include "TextMessages.hpp"
 
 using namespace std;
@@ -221,8 +221,8 @@ ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map
       // additional stacks times the creature's speed, plus one.  When this
       // value is returned, it will be added to the creature's speed to
       // make the final total, as usual.
-      CreatureSpeedCalculator csc;
-      int creature_speed = csc.calculate(creature);
+      SpeedCalculator sc;
+      int creature_speed = sc.calculate_current(creature);
       action_cost_value = (addl_stacks_taken * creature_speed) + get_action_cost_value(creature);
     }
   }

@@ -191,6 +191,9 @@ Modifier ModifyStatisticsEffect::adjust_negative_modifiers(CreaturePtr creature,
     int cha = creature->get_charisma().get_lowest();
     int cha_mod = new_m.get_charisma_modifier();
 
+    int spd = creature->get_speed().get_lowest();
+    int spd_mod = new_m.get_speed_modifier();
+
     // Evade, soak can be < 0.  But get the values so that new modifiers
     // can be constructed using the vector constructor.
     int evade_mod = new_m.get_evade_modifier();
@@ -204,8 +207,12 @@ Modifier ModifyStatisticsEffect::adjust_negative_modifiers(CreaturePtr creature,
       trans_mods.push_back(get_primary_statistic_modifier(pair.first, pair.second));
     }
 
+    int to_hit_mod = 0;
+
     trans_mods.push_back(evade_mod);
     trans_mods.push_back(soak_mod);
+    trans_mods.push_back(to_hit_mod);
+    trans_mods.push_back(spd_mod);
 
     Modifier transformed(trans_mods);
     new_m = transformed;

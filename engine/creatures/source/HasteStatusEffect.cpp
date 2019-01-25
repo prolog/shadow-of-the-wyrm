@@ -25,10 +25,8 @@ bool HasteStatusEffect::after_apply(CreaturePtr creature) const
 
   if (creature)
   {
-    // Apply has set the "Haste" flag.  after_apply does two things:
-    // - checks to see if there is slowness
-    //   (if so, undoes the haste flag, and undoes the slowness)
-    // - if no slowness, adds the haste bonus.
+    // Apply has set the "Haste" flag.  after_apply checks to see if there
+    // is slowness, and if so, removes it.
     if (creature->has_status(StatusIdentifiers::STATUS_ID_SLOWNESS))
     {
       // Undo haste flag.
@@ -40,41 +38,22 @@ bool HasteStatusEffect::after_apply(CreaturePtr creature) const
 
       effect_applied = false;
     }
-    else
-    {
-      // Figure out the haste bonus, and add it to the creature's
-      // additional properties so it can be correctly unapplied later.
-      //
-      // Slowness halves action speed.
-      Statistic creature_speed = creature->get_speed();
-      int cur_speed = creature_speed.get_current();
-      int haste_modifier = cur_speed / 2;
-    
-      creature_speed.set_current(cur_speed - haste_modifier);
-      creature->set_speed(creature_speed);
-
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HASTE_MODIFIER, std::to_string(haste_modifier));
-    }
   }
 
   return effect_applied;
 }
 
-void HasteStatusEffect::after_undo(CreaturePtr creature) const
+Modifier HasteStatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
 {
-  if (creature)
-  {
-    string haste_property = CreatureProperties::CREATURE_PROPERTIES_HASTE_MODIFIER;
-    int haste_modifier = String::to_int(creature->get_additional_property(haste_property));
-    Statistic creature_speed = creature->get_speed();
-    int cur_speed = creature_speed.get_current();
-    
-    creature_speed.set_current(cur_speed + haste_modifier);
-    creature->set_speed(creature_speed);
+  Modifier m;
 
-    // Remove the slowness modifier so it can be added next time.
-    creature->remove_additional_property(haste_property);
+  if (creature != nullptr)
+  {
+    int speed_bonus = creature->get_speed().get_base() / 2;
+    m.set_speed_modifier(speed_bonus);
   }
+
+  return m;
 }
 
 string HasteStatusEffect::get_player_application_message() const
@@ -109,3 +88,7 @@ string HasteStatusEffect::get_status_identifier() const
 {
   return StatusIdentifiers::STATUS_ID_HASTE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/HasteStatusEffect_test.cpp"
+#endif

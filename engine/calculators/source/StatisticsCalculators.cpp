@@ -1,6 +1,12 @@
 #include "StatisticsCalculators.hpp"
+#include "CarryingCapacityCalculator.hpp"
+#include "Wearable.hpp"
 
 using namespace std;
+
+const float SpeedCalculator::BURDENED_SPEED_MULTIPLIER = 1.5f;
+const float SpeedCalculator::STRAINED_SPEED_MULTIPLIER = 2.0f;
+const float SpeedCalculator::OVERBURDENED_SPEED_MULTIPLIER = 3.0f;
 
 // Calculate the current value of a statistic.
 //
@@ -13,13 +19,39 @@ int StatisticsCalculator::calculate_current(CreaturePtr creature) const
   if (creature != nullptr)
   {
     current = get_base_statistic_value(creature);
+    int value_multiplier = get_value_multiplier();
 
+    int equipment_val = get_equipment_value(creature);
     int modifier_val = get_modifier_value(creature);
+    float burden_multiplier = get_burden_multiplier(creature);
+    current += (equipment_val * value_multiplier);
+    current += (modifier_val * value_multiplier);
+    current = static_cast<int>(current * burden_multiplier);
 
-    current += modifier_val;
+    current = std::max(current, 1);
   }
 
   return current;
+}
+
+// JCD FIXME Eventually I'll want to implement equipment with stats
+// bonuses.  When that happens, implement this.
+int StatisticsCalculator::get_equipment_value(CreaturePtr creature) const
+{
+  return 0;
+}
+
+float StatisticsCalculator::get_burden_multiplier(CreaturePtr creature) const
+{
+  return 1.0f;
+}
+
+// Most statistics want positive values, and should have a value multiplier
+// of 1.  Speed's a special case, lower being better, and this should have
+// a value multiplier of -1.
+int StatisticsCalculator::get_value_multiplier() const
+{
+  return 1;
 }
 
 int StatisticsCalculator::get_modifier_value(CreaturePtr creature) const
@@ -168,6 +200,76 @@ int CharismaCalculator::get_modifier_statistic_value(const Modifier& m) const
 {
   return m.get_charisma_modifier();
 }
+
+int SpeedCalculator::get_base_statistic_value(CreaturePtr creature) const
+{
+  int base_val = 0;
+
+  if (creature != nullptr)
+  {
+    base_val = creature->get_speed().get_base();
+  }
+
+  return base_val;
+}
+
+int SpeedCalculator::get_modifier_statistic_value(const Modifier& m) const
+{
+  return m.get_speed_modifier();
+}
+
+int SpeedCalculator::get_value_multiplier() const
+{
+  return -1;
+}
+
+int SpeedCalculator::get_equipment_value(CreaturePtr creature) const
+{
+  Equipment& eq = creature->get_equipment();
+  int eq_speed_bonus = 0;
+
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    ItemPtr item = eq.get_item(static_cast<EquipmentWornLocation>(e));
+    WearablePtr item_w = std::dynamic_pointer_cast<Wearable>(item);
+
+    if (item_w != nullptr)
+    {
+      eq_speed_bonus += item_w->get_speed_bonus();
+    }
+  }
+
+  return eq_speed_bonus;
+}
+
+float SpeedCalculator::get_burden_multiplier(CreaturePtr creature) const
+{
+  float mult = 1.0f;
+
+  if (creature != nullptr)
+  {
+    Weight total_weight = creature->get_weight_carried();
+    uint weight_in_oz = total_weight.get_weight();
+
+    CarryingCapacityCalculator ccc;
+
+    if (weight_in_oz >= ccc.calculate_overburdened_weight(creature))
+    {
+      mult = OVERBURDENED_SPEED_MULTIPLIER;
+    }
+    else if (weight_in_oz >= ccc.calculate_strained_weight(creature))
+    {
+      mult = STRAINED_SPEED_MULTIPLIER;
+    }
+    else if (weight_in_oz >= ccc.calculate_burdened_weight(creature))
+    {
+      mult = BURDENED_SPEED_MULTIPLIER;
+    }
+  }
+
+  return mult;
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/StatisticsCalculators_test.cpp"

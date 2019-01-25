@@ -52,29 +52,36 @@ string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalph
   char c;
   int y, x;
         
-  for (c = wgetch(window); (c != '\n') && (c != '\r'); c = wgetch(window))
+  try
   {
-    getyx(window, y, x);
-    
-    if (c == NC_BACKSPACE_KEY || c == NC_ALTERNATIVE_BACKSPACE_KEY)
+    for (c = wgetch(window); (c != '\n') && (c != '\r'); c = wgetch(window))
     {
-      if (prompt_text.length())
+      getyx(window, y, x);
+
+      if (c == NC_BACKSPACE_KEY || c == NC_ALTERNATIVE_BACKSPACE_KEY)
       {
-        prompt_text.erase(prompt_text.end()-1);
-        mvwaddch(window, y, x-1, ' ');
-        wmove(window, y, x-1);
-        wrefresh(window);
+        if (prompt_text.length())
+        {
+          prompt_text.erase(prompt_text.end() - 1);
+          mvwaddch(window, y, x - 1, ' ');
+          wmove(window, y, x - 1);
+          wrefresh(window);
+        }
+      }
+      else
+      {
+        if ((isalpha(c) || isdigit(c) || (c == ' ')) || allow_nonalphanumeric)
+        {
+          prompt_text.push_back(c);
+          mvwaddch(window, y, x++, c);
+          wrefresh(window);
+        }
       }
     }
-    else
-    {
-      if ((isalpha(c) || isdigit(c) || (c == ' ')) || allow_nonalphanumeric)
-      {
-        prompt_text.push_back(c);
-        mvwaddch(window, y, x++, c);
-        wrefresh(window); 
-      }
-    }
+  }
+  catch (...)
+  {
+    // Do nothing, and use an empty string for the prompt text.
   }
   
   string result = String::clean(prompt_text);  

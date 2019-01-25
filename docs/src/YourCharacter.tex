@@ -500,7 +500,7 @@ higher this score, the more spells the creature can cast before exhaustion.
 \item {\bf Foraging}: Find more food in the wilderness.
 \item {\bf Forest Lore}$\dagger$: Knowledge of the woods and forests. 
 \item {\bf Herbalism}: Forage for useful herbs. 
-\item {\bf Hiding}$\dagger$: Remain unseen from hostile foes.
+\item {\bf Hiding}: Remain unseen from hostile foes.
 \item {\bf Hunting}: Effectively hunt animals large and small. 
 \item {\bf Intimidation}: Make your foes tremble and quiver. 
 \item {\bf Jeweler}: Create and improve rings and amulets. 
@@ -578,6 +578,53 @@ expensive to cast.
 Primordial magic is deeply innate.  Those that learn its workings do so
 automatically as they gain in power.  The remaining magics are
 traditionally learned through the careful study of ancient spellbooks.
+
+When casting magic, you select a spell from a screen that summarizes
+the spells your character knows.  This screen contains:
+
+\begin{itemize}
+\item The name and sphere of the spell
+\item The number of castings available before the spell is forgotten
+\item Range, shape, and radius details
+\item The cost in Arcana Points
+\item The spell's effectiveness rating
+\end{itemize}
+
+A sample screen might look like:
+
+\begin{verbatim}
+[a] Cross of Flame (Arcane) [#:20, R:3Cr, AP:10, +0]
+[b] Dragon Breath (Arcane) [#:10, R:3C, AP:7, +0]
+[c] Lightning Bolt (Arcane) [#:15, R:4RB, AP:6, +0]
+[d] Wreath of Fire (Arcane) [#:22, R:2Ba, AP:5, +0]
+[e] Absolution (Divine) [#:40, R:6B2, AP:50, +0]
+[f] Blink (Cantrips) [#:30, R:0TS, AP:3, +0]
+[g] Spirit Bolt (Cantrips) [#:44, R:4RB, AP:30, +2]
+\end{verbatim}
+
+The range, shape, and radius is encoded in a value like ``R:3Cr''.  This
+means that the spell has a range of 3 and is cross-shaped.  A value of
+``R:6B2'' means that the spell has range 6, beam-shaped, with radius 2
+(indicating a wider beam).  The following table summarizes the spell
+shapes.
+
+\begin{table}[h]
+\begin{tabular}{lll}
+{\bf Abbreviation} & {\bf Shape} & {\bf Description} \\
+B & Beam & Single-directional, non-reflective beam \\
+Ba & Ball & Outward-spreading ball \\
+C & Cone & Cone \\
+Cr & Cross & Beams in the cardinal directions \\
+RB & Reflective Beam & Single-directional, reflective beam \\
+St & Storm & Random tiles around the caster \\
+TS & Target Self & Targets the caster \\
+\end{tabular}
+\end{table}
+
+Radius only affects beam-shaped spells.  A radius of 1 is a typical
+beam spell that travels along in a line.  Each increment to the radius
+adds a tile above and below that, so that radius 2 creates a beam along
+3 lines, radius 3 a beam along 5 lines, and so on.
 
 \subsection{Resistances}
 
