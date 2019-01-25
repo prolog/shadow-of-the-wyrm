@@ -383,7 +383,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\CreatureCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureCoordinateCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreaturePietyCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\CreatureSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureSplitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CriticalHitTypeCalculator.hpp" />
@@ -1778,6 +1777,20 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\creatures\source\SatedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\unit_tests\HasteStatusEffect_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\SlownessStatusEffect_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\creatures\source\WaterBreathingStatusEffect.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\AltarDropDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\HaltBreedingDeityDecisionStrategyHandler.cpp" />
@@ -2160,7 +2173,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\CreatureAdditionalDamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureCoordinateCalculator.cpp" />
-    <ClCompile Include="engine\calculators\source\CreatureSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CriticalHitTypeCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DamageCalculator.cpp" />
@@ -2269,13 +2281,6 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\CreatureAdditionalDamageCalculator_test.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\CreatureSpeedCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>

@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "Amulet.hpp"
 #include "ModifyStatisticsEffect.hpp"
 
 CreaturePtr create_test_creature();
@@ -86,4 +87,47 @@ TEST(SW_Engine_Calculators_StatisticsCalculators_Charisma, calculate_current)
   EXPECT_EQ(20, cc.calculate_current(creature));
 }
 
+TEST(SW_Engine_Calculators_StatisticsCalculators_Speed, calculate_creature_speed_base)
+{
+  Statistic speed(47);
+  CreaturePtr c = std::make_shared<Creature>();
+  c->set_speed(speed);
+
+  SpeedCalculator sc;
+
+  EXPECT_EQ(0, sc.calculate_current(nullptr));
+
+  EXPECT_EQ(47, sc.calculate_current(c));
+}
+
+TEST(SW_Engine_Calculators_StatisticsCalculators_Speed, calculate_burdened_and_strained)
+{
+  Statistic speed(50);
+  Statistic str(10);
+  CreaturePtr c = std::make_shared<Creature>();
+  c->set_speed(speed);
+  c->set_strength(str);
+
+  // Add some items to increase weight.
+  ItemPtr amulet = std::make_shared<Amulet>();
+  Weight weight(16);
+  amulet->set_quantity(110);
+  amulet->set_weight(weight);
+
+  c->get_inventory()->add_front(amulet);
+
+  SpeedCalculator sc;
+  int exp_speed = static_cast<int>(50 * 1.5);
+  EXPECT_EQ(exp_speed, sc.calculate_current(c));
+
+  amulet->set_quantity(150);
+
+  exp_speed = static_cast<int>(50 * 2.0);
+  EXPECT_EQ(exp_speed, sc.calculate_current(c));
+
+  amulet->set_quantity(2000);
+
+  exp_speed = static_cast<int>(50 * 3.0);
+  EXPECT_EQ(exp_speed, sc.calculate_current(c));
+}
 

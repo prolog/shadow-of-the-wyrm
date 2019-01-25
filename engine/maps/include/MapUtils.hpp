@@ -99,6 +99,8 @@ class MapUtils
 
     static int calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovementType emt);
 
+    static bool should_link_entry_point(const MapType map_type);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

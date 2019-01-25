@@ -2384,3 +2384,24 @@ within that sparse encoding.  Tel now broke %b
 the silence, met their gazes, and then rapped %b
 a single piece of silver by their golden stack.
 %p
+"The wildcard in all this," he said, "is them: %b
+the exiles scattered to the upper lands, %b
+a scant two dozen, though our luck depends %b
+in no small part on how they see our plans. %b
+If you would call me here so eagerly, %b
+I'm sure that they'll anticipate as much %b
+and act accordingly.  If we can see %b
+the possibilities, then we can judge %b
+the outcome that's most probable, and plan for such."
+%p
+At this, the floor was passed to Alcius, %b
+most senior of the royal retinue. %b
+His voice was just a whisper, like the rustle %b
+of wind through long grass, but the room well knew %b
+what wars he'd wintered - past and present kings %b
+had turned to him for guidance, and they'd found %b
+a startling steadiness, one colouring %b
+so many key decisions that around %b
+the court, they spoke of how he helped to steer the crown.
+%p
+
