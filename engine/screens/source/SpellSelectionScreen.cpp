@@ -119,7 +119,6 @@ void SpellSelectionScreen::initialize()
 vector<Spell> SpellSelectionScreen::get_spells_in_display_order(const SpellMap& spells)
 {
   vector<Spell> vsp;
-  Game& game = Game::instance();
 
   SpellKnowledge& sk = creature->get_spell_knowledge_ref();
   SpellKnowledgeMap known_spells = sk.get_known_spells();

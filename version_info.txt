@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.0.2 "de Falla"
-- Version declared December 23, 2018.
+- Version declared December 23, 2018.  Version finalized January 26, 2019.
 
 - Automatic movement will now switch or squeeze past friendly creatures
   without prompting (kraphead).
