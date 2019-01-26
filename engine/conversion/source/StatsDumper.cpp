@@ -33,11 +33,15 @@ string StatsDumper::get_stats() const
   string willpower     = StringTable::get(TextKeys::WILLPOWER)     + ": " + std::to_string(creature->get_willpower().get_current());
   string charisma      = StringTable::get(TextKeys::CHARISMA)      + ": " + std::to_string(creature->get_charisma().get_current());
 
-  string statuses = StringTable::get(TextKeys::STATUSES) + ": ";
   auto dsa = CreatureTranslator::get_display_status_ailments(creature);
-  for (auto dsa_pair : dsa)
+  string statuses = StringTable::get(TextKeys::STATUSES) + ": ";
+
+  if (!dsa.empty())
   {
-    statuses = statuses + dsa_pair.first + " ";
+    for (auto dsa_pair : dsa)
+    {
+      statuses = statuses + dsa_pair.first + " ";
+    }
   }
 
   // Second column
@@ -86,9 +90,12 @@ string StatsDumper::get_stats() const
   ss << current_line << endl << endl;
   String::reset_and_pad(current_line, num_cols);
 
-  current_line = statuses;
-  ss << current_line << endl;
-  String::reset_and_pad(current_line, num_cols);
+  if (!dsa.empty())
+  {
+    current_line = statuses;
+    ss << current_line << endl;
+    String::reset_and_pad(current_line, num_cols);
+  }
 
   return ss.str();
 }

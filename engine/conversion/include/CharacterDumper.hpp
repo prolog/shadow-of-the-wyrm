@@ -14,8 +14,7 @@ class CharacterDumper : public StringConverter
     // Functions to get smaller parts of the character's details, as strings.
     std::string get_synopsis() const;
     std::string get_vital_statistics() const;
-    // Inventory
-    // Items
+    std::string get_carrying_capacity() const;
       
     CreaturePtr creature;
     uint num_cols;

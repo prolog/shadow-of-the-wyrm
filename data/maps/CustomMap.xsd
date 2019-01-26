@@ -8,6 +8,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="NameSID" type="xs:string"/>
+				<xs:element name="DefaultRaceID" type="sw:Identifier"/>
 				<xs:element name="EventScripts" type="tns:MapEvents" minOccurs="0"/>
 				<xs:element ref="tns:Dimensions"/>
 				<xs:element name="LevelRange" type="tns:LevelRange"/>

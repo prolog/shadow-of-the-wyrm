@@ -32,7 +32,7 @@ FoodAction::FoodAction()
 // be 0; otherwise, it should count as a spent action.
 ActionCostValue FoodAction::eat(CreaturePtr creature, ActionManager * const am)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   if (creature)
   {
@@ -65,7 +65,7 @@ ActionCostValue FoodAction::eat(CreaturePtr creature, ActionManager * const am)
 
 ActionCostValue FoodAction::eat_food_off_ground(CreaturePtr creature, const list<IItemFilterPtr>& display_list)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   MapPtr current_map = Game::instance().get_current_map();
   TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
 

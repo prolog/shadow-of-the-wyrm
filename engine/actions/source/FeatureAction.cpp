@@ -27,7 +27,7 @@ FeatureAction::~FeatureAction()
 //   prompt.
 ActionCostValue FeatureAction::apply(CreaturePtr creature)
 {
-  ActionCostValue apply_cost = 0;
+  ActionCostValue apply_cost = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();
 
   if (creature)

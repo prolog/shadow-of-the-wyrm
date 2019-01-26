@@ -23,7 +23,7 @@ DisarmTrapsSkillProcessor::DisarmTrapsSkillProcessor()
 
 ActionCostValue DisarmTrapsSkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
-  ActionCostValue acv = -1;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION_MENU;
 
   if (creature && map)
   {

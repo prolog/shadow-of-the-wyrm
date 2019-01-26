@@ -31,44 +31,24 @@ bool SlownessStatusEffect::after_apply(CreaturePtr creature) const
 
       effect_applied = false;
     }
-    else
-    {
-      // Otherwise:
-      //
-      // Figure out the haste penalty, and add it to the creature's
-      // additional properties so it can be correctly unapplied later.
-      //
-      // Slowness halves action speed.
-      Statistic creature_speed = creature->get_speed();
-      int cur_speed = creature_speed.get_current();
-      int slowness_modifier = cur_speed;
-    
-      creature_speed.set_current(cur_speed + slowness_modifier);
-      creature->set_speed(creature_speed);
-
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HASTE_MODIFIER, std::to_string(slowness_modifier));
-    }
   }
 
   return effect_applied;
 }
 
-void SlownessStatusEffect::after_undo(CreaturePtr creature) const
+Modifier SlownessStatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
 {
-  if (creature)
-  {
-    string slow_property = CreatureProperties::CREATURE_PROPERTIES_HASTE_MODIFIER;
-    int slowness_modifier = String::to_int(creature->get_additional_property(slow_property));
-    Statistic creature_speed = creature->get_speed();
-    int cur_speed = creature_speed.get_current();
-    
-    creature_speed.set_current(cur_speed - slowness_modifier);
-    creature->set_speed(creature_speed);
+  Modifier m;
 
-    // Remove the slowness modifier so it can be added next time.
-    creature->remove_additional_property(slow_property);
+  if (creature != nullptr)
+  {
+    int speed_penalty = (creature->get_speed().get_base() / 2 * -1);
+    m.set_speed_modifier(speed_penalty);
   }
+
+  return m;
 }
+
 
 string SlownessStatusEffect::get_player_application_message() const
 {
@@ -100,3 +80,7 @@ string SlownessStatusEffect::get_status_identifier() const
 {
   return StatusIdentifiers::STATUS_ID_SLOWNESS;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/SlownessStatusEffect_test.cpp"
+#endif

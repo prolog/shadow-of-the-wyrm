@@ -47,6 +47,7 @@ class TextKeys
     static const std::string HAIR_COLOUR;
     static const std::string EYE_COLOUR;
     static const std::string RACE;
+    static const std::string RACES;
     static const std::string SELECT_RACE;
     static const std::string SELECT_CLASS;
     static const std::string SELECT_DEITY;
@@ -176,6 +177,7 @@ class TextKeys
     static const std::string NO_NEW_CHARACTERS;
     static const std::string MEMBERSHIPS;
     static const std::string NOT_APPLICABLE_ABRV;
+    static const std::string CARRYING_CAPACITY;
 
   protected:
     TextKeys();

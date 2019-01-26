@@ -11,7 +11,7 @@ DefaultSkillProcessor::DefaultSkillProcessor(const string& new_message_sid)
 
 ActionCostValue DefaultSkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
-  ActionCostValue acv = -1;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION_MENU;
 
   if (creature && creature->get_is_player() && map && !message_sid.empty())
   {

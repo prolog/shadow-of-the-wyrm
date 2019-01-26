@@ -36,6 +36,9 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   // Set the direction so it can be properly considered for creature_position_allows_auto_move
   am.set_direction(cur_dir);
 
+  // Ensure that automovement is engaged initially - it can be reset later.
+  am.set_engaged(true);
+
   if (cur_dir == Direction::DIRECTION_NULL)
   {
     // Resting while hidden is a safe way to restore HP and AP.
@@ -45,7 +48,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
     }
   }
 
-  ActionCostValue auto_move_cost = 0;
+  ActionCostValue auto_move_cost = ActionCostConstants::NO_ACTION;
   bool auto_movement_engaged = false;
   TilePtr creature_tile = MapUtils::get_tile_for_creature(map, creature);
   TilePtr direction_tile = map->at(CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), cur_dir));
@@ -89,9 +92,11 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
 
   if (creature && controller_move && creature_move && creature_pos_move && tile_move && map_move && visit_move)
   {
+    // Set this initially in case this is checked for in the actual
+    // movement (particularly for switching/squeezing/etc).
     add_coordinate_to_automove_visited(creature, new_coord, amf);
     update_turns_if_necessary(creature);
-    auto_move_cost = 1;
+    auto_move_cost = ActionCostConstants::DEFAULT;
      
     // Don't move when resting, or else the creature will attempt to
     // attack itself!
@@ -104,10 +109,7 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
     // If the creature was able to move, engage automovement,
     // and track the number of available directions for the
     // next turn.
-    if (auto_move_cost > 0 && String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_TELEPORTED)) == false)
-    {
-      auto_movement_engaged = true;
-    }
+    auto_movement_engaged = (auto_move_cost > 0 && String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_TELEPORTED)) == false);
 
     // Only redraw when the creature actually moves - otherwise, the next turn
     // after disengaging will clear out any messages received at the end of
@@ -312,12 +314,14 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::fov_allows_auto_move(Cr
 }
 
 // Check to see if the tile allows automatic movement into it by checking to 
-// see if the tile is available (not empty, no blocking features, etc).
+// see if the tile is available (no blocking features).  If there is a
+// creature, it should be taken care of by the hostility checks elsewhere;
+// friendly creatures will switch position automatically.
 pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(CreaturePtr creature, TilePtr tile, const AutomaticMovementFlags& amf)
 {
   pair<bool, vector<string>> tile_details;
 
-  tile_details.first = amf.get_ignore_tile() || (MapUtils::is_tile_available_for_creature(creature, tile));
+  tile_details.first = amf.get_ignore_tile() || (tile && !tile->has_blocking_feature());
 
   return tile_details;
 }

@@ -33,8 +33,6 @@ class ModifyStatisticsEffect : public Effect
     virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
     virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
 
-    virtual Modifier adjust_negative_modifiers(std::shared_ptr<Creature> creature, const Modifier& m) const;
-
     virtual int get_primary_statistic_modifier(int stat_score, int stat_modifier) const;
 
     Modifier m;

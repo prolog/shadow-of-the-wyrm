@@ -1,6 +1,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/trim.hpp>
 #include "ActionTextKeys.hpp"
+#include "CarryingCapacityCalculator.hpp"
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureDescriber.hpp"
@@ -42,6 +43,7 @@ const string TextMessages::ENGRAVING_MESSAGE                  = "ENGRAVING_MESSA
 const string TextMessages::INSCRIPTION_MESSAGE                = "INSCRIPTION_MESSAGE";
 const string TextMessages::SLOT_MACHINE_MESSAGE               = "SLOT_MACHINE_MESSAGE";
 const string TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE       = "SLOT_MACHINE_OUTCOME_MESSAGE";
+const string TextMessages::CARRYING_CAPACITY_MESSAGE          = "CARRYING_CAPACITY_MESSAGE";
 
 string TextMessages::get_player_description(const string& player_name)
 {
@@ -438,6 +440,28 @@ string TextMessages::get_name_and_title(CreaturePtr creature)
   }
 
   return nt;
+}
+
+string TextMessages::get_carrying_capacity_message(CreaturePtr creature)
+{
+  string msg = StringTable::get(CARRYING_CAPACITY_MESSAGE);
+  CarryingCapacityCalculator ccc;
+
+  uint current_items = creature->count_items();
+  uint total_items = ccc.calculate_carrying_capacity_total_items(creature);
+  uint total_weight = Weight::get_lbs(creature->get_weight_carried());
+  uint burdened = Weight::get_lbs(ccc.calculate_burdened_weight(creature));
+  uint strained = Weight::get_lbs(ccc.calculate_strained_weight(creature));
+  uint overburdened = Weight::get_lbs(ccc.calculate_overburdened_weight(creature));
+
+  boost::replace_first(msg, "%s", to_string(current_items));
+  boost::replace_first(msg, "%s", to_string(total_items));
+  boost::replace_first(msg, "%s", to_string(total_weight));
+  boost::replace_first(msg, "%s", to_string(burdened));
+  boost::replace_first(msg, "%s", to_string(strained));
+  boost::replace_first(msg, "%s", to_string(overburdened));
+
+  return msg;
 }
 
 string TextMessages::get_experience_synopsis(const int level, const int exp, const int exp_required, const int next_level, const std::string& race_name, const float r_mult, const std::string class_name, const float c_mult)

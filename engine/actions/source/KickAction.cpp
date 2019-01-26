@@ -21,7 +21,7 @@ KickAction::KickAction()
 
 ActionCostValue KickAction::kick(CreaturePtr creature)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature)
   {
@@ -105,7 +105,7 @@ ActionCostValue KickAction::kick_on_regular_map(CreaturePtr creature, MapPtr cur
 // Kick in a particular direction on a regular map.
 ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr current_map, const Direction direction)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature && current_map)
   {

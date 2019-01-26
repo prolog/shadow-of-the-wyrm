@@ -24,7 +24,7 @@ bool QuaffAction::operator==(const QuaffAction& qm) const
 // Select a potion to quaff
 ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const am)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature)
   {

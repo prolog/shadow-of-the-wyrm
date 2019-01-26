@@ -19,7 +19,7 @@ WeaponInfoAction::WeaponInfoAction()
 // Get the weapon info for the given creature and given weapon style
 ActionCostValue WeaponInfoAction::weapon_info(CreaturePtr creature, const WeaponStyle ws) const
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature)
   {

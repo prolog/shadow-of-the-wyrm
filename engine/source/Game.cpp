@@ -307,7 +307,14 @@ StartingLocationMap Game::get_starting_locations() const
 
 CreaturePtr Game::get_current_player() const
 {
-  CreaturePtr current_player = get_current_map()->get_creature(CreatureID::CREATURE_ID_PLAYER);
+  MapPtr current_map = get_current_map();
+  CreaturePtr current_player;
+
+  if (current_map != nullptr)
+  {
+    current_player = current_map->get_creature(CreatureID::CREATURE_ID_PLAYER);
+  }
+
   return current_player;
 }
 

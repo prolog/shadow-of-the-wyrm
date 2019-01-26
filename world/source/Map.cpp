@@ -14,11 +14,18 @@
 using namespace std;
 using namespace boost;
 
+// JCD FIXME: Right now, this copies a pretty minimal subset of stuff.
+// This will likely need to be updated to include new fields at some
+// point.
 Map::Map(const Map& new_map)
 : terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(new_map.permanent), danger(0), allow_creature_updates(true)
 {
   if (this != &new_map)
   {
+    name_sid = new_map.name_sid;
+    default_race_id = new_map.default_race_id;
+    map_id = new_map.map_id;
+
     Dimensions new_dimensions = new_map.size();
     TilesContainer new_tiles = new_map.get_tiles();
 
@@ -66,6 +73,7 @@ bool Map::operator==(const Map& map) const
   }
 
   result = result && (name_sid == map.name_sid);
+  result = result && (default_race_id == map.default_race_id);
   result = result && (dimensions == map.dimensions);
   result = result && (original_dimensions == map.original_dimensions);
   result = result && (locations == map.locations);
@@ -318,6 +326,16 @@ void Map::set_name_sid(const string& new_name_sid)
 string Map::get_name_sid() const
 {
   return name_sid;
+}
+
+void Map::set_default_race_id(const string& new_race_id)
+{
+  default_race_id = new_race_id;
+}
+
+string Map::get_default_race_id() const
+{
+  return default_race_id;
 }
 
 void Map::set_size(const Dimensions& new_dimensions)
@@ -773,6 +791,8 @@ bool Map::serialize(ostream& stream) const
   }
 
   Serialize::write_string(stream, name_sid);
+  Serialize::write_string(stream, default_race_id);
+
   dimensions.serialize(stream);
   original_dimensions.serialize(stream);
 
@@ -901,6 +921,8 @@ bool Map::deserialize(istream& stream)
   create_creatures();
 
   Serialize::read_string(stream, name_sid);
+  Serialize::read_string(stream, default_race_id);
+
   dimensions.deserialize(stream);
   original_dimensions.deserialize(stream);
 

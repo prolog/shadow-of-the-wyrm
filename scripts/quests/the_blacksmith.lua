@@ -21,11 +21,11 @@ end
 -- The blacksmith really, really hates the ploughman.  See the Colloquy on the
 -- occupations.
 local function sun_gem_completion_condition_fn()
-  return ((player_has_item("sun_gem") == true) or (get_num_creature_killed_global("the_ploughman") > 0))
+  return ((player_has_item(SUN_GEM_ID) == true) or (get_num_creature_killed_global("the_ploughman") > 0))
 end
 
 local function sun_gem_completion_fn()
-  if (player_has_item("sun_gem")) then
+  if (player_has_item(SUN_GEM_ID)) then
     -- Player did the quest
     add_message("BLACKSMITH_SUNGEM_QUEST_COMPLETE_SID")
   else
@@ -35,7 +35,7 @@ local function sun_gem_completion_fn()
   end
 
   add_object_to_player_tile("forger")
-  remove_object_from_player("sun_gem")
+  remove_object_from_player(SUN_GEM_ID)
   remove_active_quest("ploughman_sungem")
   remove_active_quest("cynwise_sungem")
 

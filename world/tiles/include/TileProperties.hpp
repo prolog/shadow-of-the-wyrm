@@ -10,6 +10,10 @@ class TileProperties
     // already exists in the map registry.
     static const std::string TILE_PROPERTY_CUSTOM_MAP_ID;
 
+    // The location on the next map that this tile links to.  Used
+    // to maintain map links despite things like warping, etc.
+    static const std::string TILE_PROPERTY_LINKED_COORD;
+
     // The previous map's map ID - used for linking to previous, permanent
     // maps.
     static const std::string TILE_PROPERTY_PREVIOUS_MAP_ID;

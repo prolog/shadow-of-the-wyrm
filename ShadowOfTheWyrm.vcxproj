@@ -383,7 +383,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\CreatureCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureCoordinateCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreaturePietyCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\CreatureSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureSplitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CriticalHitTypeCalculator.hpp" />
@@ -687,6 +686,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\effects\include\TeleportEffect.hpp" />
     <ClInclude Include="engine\effects\include\TimewalkEffect.hpp" />
     <ClInclude Include="engine\effects\include\UncursingEffect.hpp" />
+    <ClInclude Include="engine\effects\include\WarpEffect.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" />
@@ -1030,6 +1030,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\ItemTypeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MusicTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SacrificeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ScreenTitleTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MovementTextKeys.hpp" />
@@ -1776,6 +1777,20 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\creatures\source\SatedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\unit_tests\HasteStatusEffect_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\SlownessStatusEffect_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\creatures\source\WaterBreathingStatusEffect.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\AltarDropDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\HaltBreedingDeityDecisionStrategyHandler.cpp" />
@@ -1797,6 +1812,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\effects\source\SummonMonstersEffect.cpp" />
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
+    <ClCompile Include="engine\effects\source\WarpEffect.cpp" />
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\CaveInRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\DankRoomGenerator.cpp" />
@@ -1979,6 +1995,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\VictoryTextKeys.cpp" />
     <ClCompile Include="engine\time\source\AgeTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\CreatureSkillMarkerChecker.cpp" />
@@ -2156,7 +2173,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\CreatureAdditionalDamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureCoordinateCalculator.cpp" />
-    <ClCompile Include="engine\calculators\source\CreatureSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CriticalHitTypeCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DamageCalculator.cpp" />
@@ -2265,13 +2281,6 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\CreatureAdditionalDamageCalculator_test.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\CreatureSpeedCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>

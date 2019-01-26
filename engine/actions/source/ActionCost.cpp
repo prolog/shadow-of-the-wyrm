@@ -4,6 +4,23 @@
 
 using namespace std;
 
+// Constants for particular actions (to avoid magic numbers in the action code)
+const int ActionCostConstants::FISHING = 100;
+const int ActionCostConstants::INSCRIBE = 100;
+const int ActionCostConstants::STUMBLE = 15;
+const int ActionCostConstants::DEFAULT = 1;
+const int ActionCostConstants::NO_ACTION = 0;
+const int ActionCostConstants::NO_ACTION_MENU = -1;
+
+ActionCostConstants::ActionCostConstants()
+{
+}
+
+ActionCostConstants::~ActionCostConstants()
+{
+}
+
+// Action Cost class
 ActionCost::ActionCost()
 : cost(0), turn_advanced(true)
 {

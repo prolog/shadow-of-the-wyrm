@@ -21,7 +21,7 @@ StairwayMovementAction::~StairwayMovementAction()
 
 ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAction * const ma)
 {
-  ActionCostValue ascend_success = 0;
+  ActionCostValue ascend_success = ActionCostConstants::NO_ACTION;
   
   if (creature->get_is_player())
   {
@@ -78,7 +78,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
 
 ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAction * const ma)
 {
-  ActionCostValue descend_success = 0;
+  ActionCostValue descend_success = ActionCostConstants::NO_ACTION;
    
   if (creature && creature->get_is_player())
   {
@@ -192,7 +192,7 @@ void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr cur
 
 ActionCostValue StairwayMovementAction::get_action_cost_value(CreaturePtr creature) const
 {
-  ActionCostValue acv = 1;
+  ActionCostValue acv = ActionCostConstants::DEFAULT;
 
   if (creature != nullptr)
   {

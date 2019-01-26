@@ -39,6 +39,7 @@ MapPtr WalledSettlementGenerator::generate()
   MapPtr map = std::make_shared<Map>(*base_map);
 
   generate_walled_settlement(map);
+  generate_wells(map);
   generate_shop_if_necessary(map);
 
   return map;
@@ -158,7 +159,7 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
     if (!SettlementGeneratorUtils::does_building_overlap(map, row, row+height+1, col, col+width+1, offset_extra))
     {
       vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
-      BuildingGenerationParameters bgp(row, row + height, col, col + width, dir, false, cl_ids, bcf.create_item_ids(cl_ids));
+      BuildingGenerationParameters bgp(row, row + height, col, col + width, dir, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
 
       SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
       cur_buildings_generated++;

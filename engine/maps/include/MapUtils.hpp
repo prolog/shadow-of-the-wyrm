@@ -79,7 +79,7 @@ class MapUtils
     static bool adjacent_creature_exists(const int row, const int col, MapPtr map);
     static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
 
-    static Coordinate place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const std::string& player_loc);
+    static Coordinate place_creature(MapPtr map, CreaturePtr creature, const std::string& player_loc, const Coordinate& linked_location);
     static void set_multi_map_entry_details(MapPtr new_map, MapPtr old_map, const Coordinate& new_map_prev_loc);
 
     // Check to see if the given tile is a "corner tile", given a corner direction.
@@ -98,6 +98,8 @@ class MapUtils
     static void calculate_fov_maps_for_all_creatures(MapPtr map);
 
     static int calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovementType emt);
+
+    static bool should_link_entry_point(const MapType map_type);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

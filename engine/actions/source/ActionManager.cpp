@@ -172,7 +172,7 @@ ActionCostValue ActionManager::remove_item(CreaturePtr creature, const Equipment
 // Wear or remove a particular item from the worn equipment by adding/removing the item from a slot.
 ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location)
 {
-  ActionCostValue action_cost = 0;
+  ActionCostValue action_cost = ActionCostConstants::NO_ACTION;
   
   if (creature)
   {
@@ -210,7 +210,7 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
         // inventory.
         if (item_equipped)
         {
-          action_cost = 1;
+          action_cost = ActionCostConstants::DEFAULT;
         }
       }
     }
@@ -228,7 +228,7 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
 // special terrain types, etc.
 ActionCostValue ActionManager::handle_item(CreaturePtr creature, const ItemAction item_action, ItemPtr item, const EquipmentWornLocation loc)
 {
-  ActionCostValue action_cost_value = 1;
+  ActionCostValue action_cost_value = ActionCostConstants::DEFAULT;
   
   switch(item_action)
   {
@@ -365,14 +365,14 @@ ActionCost ActionManager::cast_spell(CreaturePtr creature, const string& spell_i
 ActionCost ActionManager::bestiary(CreaturePtr creature)
 {
   string no_search_text;
-  return bestiary(creature, no_search_text);
+  return bestiary(creature, no_search_text, nullptr);
 }
 
-ActionCost ActionManager::bestiary(CreaturePtr creature, const string& creature_search_text)
+ActionCost ActionManager::bestiary(CreaturePtr creature, const string& creature_search_text, CreaturePtr tile_creature)
 {
   BestiaryAction bestiary;
 
-  return get_action_cost(creature, bestiary.display_creature_information(creature, creature_search_text));
+  return get_action_cost(creature, bestiary.display_creature_information(creature, creature_search_text, tile_creature));
 }
 
 ActionCost ActionManager::evoke(CreaturePtr creature)
@@ -480,7 +480,7 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const 
 // Wear/unwear equipment
 ActionCost ActionManager::equipment(CreaturePtr creature)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   Game& game = Game::instance();
   
@@ -497,7 +497,7 @@ ActionCost ActionManager::equipment(CreaturePtr creature)
 
 ActionCost ActionManager::pray(CreaturePtr creature)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature)
   {
@@ -516,7 +516,7 @@ ActionCost ActionManager::weapon_info(CreaturePtr creature, const WeaponStyle we
 
 ActionCost ActionManager::select_tile(CreaturePtr creature)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   CurrentCreatureAbilities cca;
 
   if (creature && cca.can_see(creature, true))
@@ -529,7 +529,7 @@ ActionCost ActionManager::select_tile(CreaturePtr creature)
 
 ActionCostValue ActionManager::select_tile(CreaturePtr creature, const SelectCreatureType sct, TileSelectionAction* const tsa)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   if (creature)
   {
@@ -546,7 +546,7 @@ ActionCostValue ActionManager::select_tile(CreaturePtr creature, const SelectCre
 
 ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction d, TileSelectionAction* const tsa)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature)
   {
@@ -563,7 +563,7 @@ ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction
 
 ActionCost ActionManager::fire_missile(CreaturePtr creature, const bool skip_targetting)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   CurrentCreatureAbilities cca;
   
   if (creature && cca.can_see(creature))
@@ -648,7 +648,7 @@ ActionCost ActionManager::quit(CreaturePtr creature)
 // Create an ActionCost based on the ActionCostValue already generated
 ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value)
 {
-  ActionCostValue total_action_cost_value = 0;
+  ActionCostValue total_action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature && (action_cost_value > 0))
   {

@@ -250,7 +250,7 @@ bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal
 
 ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
 {
-  ActionCostValue picked_up_item = 0;
+  ActionCostValue picked_up_item = ActionCostConstants::NO_ACTION;
   
   if (creature && item)
   {
@@ -265,7 +265,7 @@ ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
 
 ActionCostValue ItemManager::drop(CreaturePtr dropping_creature, ItemPtr item)
 {
-  ActionCostValue dropped_item = 0;
+  ActionCostValue dropped_item = ActionCostConstants::NO_ACTION;
   
   if (dropping_creature && item)
   {
@@ -286,7 +286,7 @@ ActionCostValue ItemManager::drop(CreaturePtr dropping_creature, ItemPtr item)
 // e.g., left hand instead of right hand.
 ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature && item)
   {
@@ -328,7 +328,7 @@ ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item, const Equ
 // identify the item, if the item is a wearable.
 ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature)
   {
@@ -352,7 +352,7 @@ ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creatur
 // Equip the item.  If successful, reduce the amount in the inventory by the quantity of the item.
 ActionCostValue ItemManager::equip_and_reduce_inventory_quantity(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot, const uint quantity)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature)
   {
@@ -370,7 +370,7 @@ ActionCostValue ItemManager::equip_and_reduce_inventory_quantity(CreaturePtr cre
       
       handle_item_identification_and_statuses(creature, new_item);
 
-      action_cost_value = 1;
+      action_cost_value = ActionCostConstants::DEFAULT;
     }
   }
   
@@ -379,7 +379,7 @@ ActionCostValue ItemManager::equip_and_reduce_inventory_quantity(CreaturePtr cre
 
 ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item)
 {
-  ActionCostValue equipped_item = 0;
+  ActionCostValue equipped_item = ActionCostConstants::NO_ACTION;
   
   if (creature && item)
   {
