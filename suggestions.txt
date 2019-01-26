@@ -1,4 +1,5 @@
 Me:
+- Dead code: adjust_negative_modifiers
 - For v1.0.3 - start the item codex
 - Random villages should include the race in the description prior to
   generation.
