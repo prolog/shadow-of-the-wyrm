@@ -29,7 +29,7 @@ OfferAction::OfferAction()
 // Sacrifice an item to one's deity.
 ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const am)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature)
   {
@@ -70,7 +70,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
 // Prompt the creature to select an item for sacrifice.
 ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, FeaturePtr feature, ActionManager * const am)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature)
   {

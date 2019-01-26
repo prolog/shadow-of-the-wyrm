@@ -40,14 +40,11 @@ bool RemoveStatusEffect::effect_cursed(CreaturePtr creature, ActionManager * am,
 
 bool RemoveStatusEffect::remove_status(CreaturePtr creature)
 {
-  bool removed_status = false;
-
   if (creature && creature->has_status(status_id))
   {
     StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id, source_id);
     status_effect->undo_change(creature);
-    removed_status = true;
   }
 
-  return removed_status;
+  return true; // auto identify
 }

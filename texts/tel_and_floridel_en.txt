@@ -2284,3 +2284,124 @@ the king will eat with them, and if they'd bring %b
 me something small, my hunger would be cured - %b
 whatever bits of bread or meat they can afford."
 %p
+The tension gone, the king left with the boy, %b
+and Floridel sat down to read.  She'd found %b
+some texts deep down in Calasim employed %b
+a curious form of kennings; that they wound %b
+elusive truths in metaphors that snaked %b
+in hyphenated lines across the page. %b
+Her word-well running dry, she couldn't shake %b
+the sense that there were meanings to be made, %b
+encodings from some long-forgotten royal age.
+%p
+A servant came and laid out bread and cheese, %b
+some spiced and watered wine.  Then Floridel %b
+continued with the work.  She tried to tease %b
+out the underlying referant, repel %b
+the layers of abstraction, light the word %b
+that no one wrote.  Two hours passed.  As she slaked %b
+her thirst with wine, the girl felt something lure %b
+her focus to a kenning: "mouth-swell"; lake; %b
+Caldera, place of souls.  Now she was wide awake.
+%p
+Another kenning: revenant-awake. %b
+The call to ghostly things a feint, a ruse, %b
+designed to call up spirits that would shake %b
+her thoughts, distractions conjured so she'd lose %b
+essential details.  Revenant: return. %b
+Return, not as the dead, but with new sight? %b
+Awake as not-asleep?  She couldn't learn %b
+the linking point, this term a clever sleight %b
+connected to the last when held up to the light.
+%p
+As Floridel sat deep in thought, the king %b
+met with his waiting lords, who'd spread a map %b
+along a serving table.  Pouring drinks %b
+for every man, Tel spoke.  "Last night I had %b
+a wretched sleep.  Like you, I'm wondering %b
+how this plays out.  Two dozen men are gone %b
+forever to the uplands.  Treason brings %b
+a tray of bitter fruit; it also spawns %b
+an opportunity as now we must move on."
+%p
+"I'll not have retribution against those %b
+exiles' kinfolk - they'll keep their names and rights. %b
+I want to laud the common men who chose %b
+to tell their families that they'd reunite %b
+within the world beyond, who took up spears %b
+despite the odds. I'll name six men as lords, %b
+the rest receiving rings. So pick your peers, %b
+and have the smiths take bullion from our hoard: %b
+I say that bravery should not be its own reward."
+%p
+"For all the rest of you, I'll order torques %b
+of braided gold, to signify both rank %b
+and courage.  Let there be esprit de corps! %b
+We caught the giants, split their rear and flank, %b
+and then, despite our differences in size, %b
+we devastated them.  So I assume %b
+you called me here to plan, to authorize %b
+an action.  I agree - let's carve out room %b
+for peace by any means.  Let's hit them hard and soon."
+%p
+Pinned down with long, thin knives, the leather map %b
+laid out geography.  Tel knew it well - %b
+his father'd had it made.  When laid out flat %b
+it showed the upper lands.  That skin could tell %b
+the story of how the former king made peace, %b
+encircling so many giant-kin %b
+his actions seemed incredulous.  He released %b
+the giants with the promise they'd attend %b
+to peace with fairy-kind, a truce his son would end.
+%p
+He thought about that deer, and as he stood, %b
+his courtiers laid out counters in neat stacks, %b
+with gold for fairy folk, the giants wood, %b
+and unlings marked with stone.  As Tel unpacked %b
+both numbers and positions, he thought back %b
+to how his shot had sailed the windless day, %b
+improbably, until the head and haft %b
+embedded inside Choros; Tel could say %b
+he heard it when his father's life work slipped away.
+%p
+Appropriately, the stack at Farstead loomed %b
+as Cithriel's was heaped just half as high, %b
+the estimates uncertain, but the room %b
+was confident enough; they wouldn't try %b
+a frontal thrust, not if they were alone. %b
+Some scattered smaller stacks: there were some fae %b
+who left so long ago it wasn't known %b
+just how they saw themselves, or if they'd strayed %b
+so far that now they fell outside the kingdom's sway.
+%p
+The former king's advisor, Alcius, %b
+could see the royal eye was flickering %b
+from pile to pile, attempting now to suss %b
+their odds from oak and elm; and lingering %b
+on tiny florins, camps of fairy folk %b
+that might be gone, or halls.  There was a gap %b
+within that sparse encoding.  Tel now broke %b
+the silence, met their gazes, and then rapped %b
+a single piece of silver by their golden stack.
+%p
+"The wildcard in all this," he said, "is them: %b
+the exiles scattered to the upper lands, %b
+a scant two dozen, though our luck depends %b
+in no small part on how they see our plans. %b
+If you would call me here so eagerly, %b
+I'm sure that they'll anticipate as much %b
+and act accordingly.  If we can see %b
+the possibilities, then we can judge %b
+the outcome that's most probable, and plan for such."
+%p
+At this, the floor was passed to Alcius, %b
+most senior of the royal retinue. %b
+His voice was just a whisper, like the rustle %b
+of wind through long grass, but the room well knew %b
+what wars he'd wintered - past and present kings %b
+had turned to him for guidance, and they'd found %b
+a startling steadiness, one colouring %b
+so many key decisions that around %b
+the court, they spoke of how he helped to steer the crown.
+%p
+

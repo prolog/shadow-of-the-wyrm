@@ -17,7 +17,7 @@ TileSelectionCommandProcessor::~TileSelectionCommandProcessor()
 pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr creature, CommandPtr command, TileSelectionAction* const tsa)
 {
   pair<bool, ActionCostValue> result(false, 0);  
-  ActionCostValue action_cost = 1;
+  ActionCostValue action_cost = ActionCostConstants::DEFAULT;
 
   if (creature && command)
   {
@@ -72,7 +72,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_direct
 {
   pair<bool, ActionCostValue> result(false, 0);
   
-  ActionCostValue action_cost = 0;
+  ActionCostValue action_cost = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();
 
   if (creature && cursor_command)
@@ -93,10 +93,11 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
   string search_text;
   TilePtr tile = tsa->get_cursor_tile();
   bool ok_to_consult_bestiary = false;
+  CreaturePtr tile_creature;
 
   if (tile)
   {
-    CreaturePtr tile_creature = tile->get_creature();
+    tile_creature = tile->get_creature();
           
     if (tile_creature)
     {
@@ -118,7 +119,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
   if (ok_to_consult_bestiary)
   {
     Game& game = Game::instance();
-    game.get_action_manager_ref().bestiary(creature, search_text);
+    game.get_action_manager_ref().bestiary(creature, search_text, tile_creature);
   }
 
   return result;
@@ -129,7 +130,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
 {
   pair<bool, ActionCostValue> result(false, 0);
 
-  ActionCostValue action_cost = 0;
+  ActionCostValue action_cost = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();
 
   if (creature)

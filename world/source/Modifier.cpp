@@ -14,6 +14,7 @@ willpower_modifier(0),
 charisma_modifier(0),
 evade_modifier(0),
 soak_modifier(0),
+speed_modifier(0),
 to_hit_modifier(0),
 mark_delete(false),
 permanent(false)
@@ -41,6 +42,7 @@ willpower_modifier(new_willpower_modifier),
 charisma_modifier(new_charisma_modifier),
 evade_modifier(0),
 soak_modifier(0),
+speed_modifier(0),
 to_hit_modifier(0),
 mark_delete(false),
 permanent(false)
@@ -59,6 +61,7 @@ willpower_modifier(0),
 charisma_modifier(0),
 evade_modifier(0),
 soak_modifier(0),
+speed_modifier(0),
 to_hit_modifier(0),
 mark_delete(false),
 permanent(false)
@@ -71,6 +74,8 @@ permanent(false)
   {
     // Resistances can't be set this way.  Must be set using set_resistances()
     default:
+    case 11:
+      speed_modifier = args.at(10);
     case 10:
       to_hit_modifier = args.at(9);
     case 9:
@@ -109,6 +114,7 @@ bool Modifier::operator==(const Modifier& m) const
   result = result && charisma_modifier == m.charisma_modifier;
   result = result && evade_modifier == m.evade_modifier;
   result = result && soak_modifier == m.soak_modifier;
+  result = result && speed_modifier == m.speed_modifier;
   result = result && to_hit_modifier == m.to_hit_modifier;
   result = result && statuses == m.statuses;
   result = result && mark_delete == m.mark_delete;
@@ -208,6 +214,16 @@ int Modifier::get_soak_modifier() const
   return soak_modifier;
 }
 
+void Modifier::set_speed_modifier(const int new_speed_modifier)
+{
+  speed_modifier = new_speed_modifier;
+}
+
+int Modifier::get_speed_modifier() const
+{
+  return speed_modifier;
+}
+
 void Modifier::set_to_hit_modifier(const int new_to_hit_modifier)
 {
   to_hit_modifier = new_to_hit_modifier;
@@ -248,6 +264,7 @@ bool Modifier::is_statistics_part_negative() const
     + charisma_modifier
     + evade_modifier
     + soak_modifier
+    + speed_modifier
     + to_hit_modifier;
 
   return (sum < 0);
@@ -318,7 +335,8 @@ vector<int> Modifier::get_raw_values() const
           charisma_modifier, 
           evade_modifier, 
           soak_modifier,
-          to_hit_modifier};
+          to_hit_modifier,
+          speed_modifier};
 }
 
 // Should the modifier be marked for later deletion?
@@ -354,6 +372,7 @@ bool Modifier::serialize(ostream& stream) const
   Serialize::write_int(stream, charisma_modifier);
   Serialize::write_int(stream, evade_modifier);
   Serialize::write_int(stream, soak_modifier);
+  Serialize::write_int(stream, speed_modifier);
   Serialize::write_int(stream, to_hit_modifier);
 
   size_t statuses_size = statuses.size();
@@ -383,6 +402,7 @@ bool Modifier::deserialize(istream& stream)
   Serialize::read_int(stream, charisma_modifier);
   Serialize::read_int(stream, evade_modifier);
   Serialize::read_int(stream, soak_modifier);
+  Serialize::read_int(stream, speed_modifier);
   Serialize::read_int(stream, to_hit_modifier);
 
   size_t statuses_size = 0;

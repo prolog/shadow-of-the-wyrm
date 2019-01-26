@@ -129,6 +129,15 @@ TEST(SW_Engine_Maps_MapUtils, calculate_depth_delta_tile)
   EXPECT_EQ(-5, MapUtils::calculate_depth_delta(nullptr, tile, ExitMovementType::EXIT_MOVEMENT_ASCEND));
 }
 
+TEST(SW_Engine_Maps_MapUtils, should_link_entry_point)
+{
+  EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_OVERWORLD));
+  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_WORLD));
+  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWORLD));
+  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWATER));
+  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_COSMOS));
+}
+
 TEST(SW_Engine_Maps_MapUtils, does_area_around_tile_contain_staircase)
 {
   Dimensions dim;

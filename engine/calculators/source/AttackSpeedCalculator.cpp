@@ -2,7 +2,7 @@
 
 ActionCostValue AttackSpeedCalculator::calculate_speed_for_weapon(CreaturePtr creature, WeaponPtr weapon, const bool ranged)
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature != nullptr && weapon != nullptr)
   {
@@ -21,7 +21,7 @@ ActionCostValue AttackSpeedCalculator::calculate_speed_for_weapon(CreaturePtr cr
   }
   else
   {
-    acv = 1;
+    acv = ActionCostConstants::DEFAULT;
   }
 
   return acv;

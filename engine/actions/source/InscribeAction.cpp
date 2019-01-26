@@ -105,11 +105,11 @@ void InscribeAction::add_inscription_super_type_message(const TileSuperType tst)
 
 ActionCostValue InscribeAction::get_action_cost_value(CreaturePtr creature) const
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
   if (creature != nullptr)
   {
-    acv = 100;
+    acv = ActionCostConstants::INSCRIBE;
   }
 
   return acv;

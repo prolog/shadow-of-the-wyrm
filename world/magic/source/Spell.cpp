@@ -4,7 +4,7 @@ using namespace std;
 
 Spell::Spell()
 : magic_category(SkillType::SKILL_MAGIC_ARCANE), 
-colour(Colour::COLOUR_WHITE),
+  colour(Colour::COLOUR_WHITE),
   ap_cost(0), 
   speed(1), 
   range(0), 

@@ -143,19 +143,24 @@ string EffectTextKeys::get_bless_effect_message(const string& monster_desc_sid, 
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_BLESS_PLAYER, EFFECT_BLESS_MONSTER_OR_ITEM);
 }
 
-string EffectTextKeys::get_increase_max_hp_message(const string& monster_desc_sid, const bool is_player)
+string EffectTextKeys::get_increase_max_hp_effect_message(const string& monster_desc_sid, const bool is_player)
 {
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_INCREASE_MAX_HP_PLAYER, EFFECT_INCREASE_MAX_HP_MONSTER);
 }
 
-string EffectTextKeys::get_increase_max_ap_message(const string& monster_desc_sid, const bool is_player)
+string EffectTextKeys::get_increase_max_ap_effect_message(const string& monster_desc_sid, const bool is_player)
 {
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_INCREASE_MAX_AP_PLAYER, EFFECT_INCREASE_MAX_AP_MONSTER);
 }
 
-string EffectTextKeys::get_repel_message(const string& monster_desc_sid, const bool is_player)
+string EffectTextKeys::get_repel_effect_message(const string& monster_desc_sid, const bool is_player)
 {
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_REPEL_PLAYER, EFFECT_REPEL_MONSTER);
+}
+
+string EffectTextKeys::get_warp_effect_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_WARP_PLAYER, EFFECT_WARP_MONSTER);
 }
 
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
@@ -204,3 +209,5 @@ const string EffectTextKeys::EFFECT_INCREASE_MAX_AP_PLAYER = "EFFECT_INCREASE_MA
 const string EffectTextKeys::EFFECT_INCREASE_MAX_AP_MONSTER = "EFFECT_INCREASE_MAX_AP_MONSTER";
 const string EffectTextKeys::EFFECT_REPEL_PLAYER = "EFFECT_REPEL_PLAYER";
 const string EffectTextKeys::EFFECT_REPEL_MONSTER = "EFFECT_REPEL_MONSTER";
+const string EffectTextKeys::EFFECT_WARP_PLAYER = "EFFECT_WARP_PLAYER";
+const string EffectTextKeys::EFFECT_WARP_MONSTER = "EFFECT_WARP_MONSTER";

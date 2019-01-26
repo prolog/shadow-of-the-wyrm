@@ -1,17 +1,20 @@
 #include <map>
 #include "BuildingConfigFactory.hpp"
+#include "CreatureFeatures.hpp"
 #include "ItemTypes.hpp"
 #include "RNG.hpp"
 
 using namespace std;
 
 map<ClassIdentifier, vector<pair<string, int>>> BuildingConfigFactory::feature_items;
+map<ClassIdentifier, vector<pair<string, int>>> BuildingConfigFactory::feature_creatures;
 
 BuildingConfigFactory::BuildingConfigFactory()
 {
   if (feature_items.empty())
   {
     initialize_feature_items();
+    initialize_feature_creatures();
   }
 }
 
@@ -29,11 +32,31 @@ void BuildingConfigFactory::initialize_feature_items()
                                                                {ItemIdKeys::ITEM_ID_INKPOT, 80}}}};
 }
 
+void BuildingConfigFactory::initialize_feature_creatures()
+{
+  feature_creatures = {{ClassIdentifier::CLASS_ID_BED,            {{CreatureID::CREATURE_ID_COMMONER, 80},
+                                                                   {CreatureID::CREATURE_ID_FARMER, 20},
+                                                                   {CreatureID::CREATURE_ID_FISHERMAN, 20},
+                                                                   {CreatureID::CREATURE_ID_NOBLE, 10},
+                                                                   {CreatureID::CREATURE_ID_SMALL_CHILD, 50}}},
+                       {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM,  {{CreatureID::CREATURE_ID_WEAVER, 90}}},
+                       {ClassIdentifier::CLASS_ID_FORGE,           {{CreatureID::CREATURE_ID_SMITH, 90}}},
+                       {ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH, {{CreatureID::CREATURE_ID_JEWELER, 90}}},
+                       {ClassIdentifier::CLASS_ID_PULPER,          {{CreatureID::CREATURE_ID_SCRIBE, 90}}}};
+}
+
 // Shops have no features in them, they're just empty space filled with items.
 vector<ClassIdentifier> BuildingConfigFactory::create_shop_features() const
 {
   vector<ClassIdentifier> features;
   return features;
+}
+
+// Shops have nothing in them other than the shopkeeper, which is generated separately.
+vector<string> BuildingConfigFactory::create_shop_creature_ids() const
+{
+  vector<string> creatures;
+  return creatures;
 }
 
 // Shops have nothing in them that aren't for sale.
@@ -79,6 +102,32 @@ vector<string> BuildingConfigFactory::create_item_ids(const vector<ClassIdentifi
 
   return item_ids;
 }
+
+vector<string> BuildingConfigFactory::create_creature_ids(const vector<ClassIdentifier>& features) const
+{
+  vector<string> creature_ids;
+
+  for (const auto& ci : features)
+  {
+    auto creature_it = feature_creatures.find(ci);
+
+    if (creature_it != feature_creatures.end())
+    {
+      vector<pair<string, int>> creature_and_p = creature_it->second;
+
+      for (const auto& cp_pair : creature_and_p)
+      {
+        if (RNG::percent_chance(cp_pair.second))
+        {
+          creature_ids.push_back(cp_pair.first);
+        }
+      }
+    }
+  }
+
+  return creature_ids;
+}
+
 
 vector<ClassIdentifier> BuildingConfigFactory::create_house_features() const
 {

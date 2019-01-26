@@ -1,7 +1,12 @@
+#include "CoordUtils.hpp"
+#include "CreatureFactory.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "FeatureGenerator.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
 #include "GardenGeneratorFactory.hpp"
 #include "ItemManager.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
@@ -167,6 +172,7 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
     if (growth_rate == 100)
     {
       generate_building_features(map, bgp);
+      generate_building_creatures(map, bgp);
       generate_building_objects(map, bgp);
     }
 
@@ -214,6 +220,52 @@ void SettlementGeneratorUtils::generate_building_features(MapPtr map, const Buil
         if (feature != nullptr && !tile->has_feature())
         {
           tile->set_feature(feature);
+        }
+      }
+    }
+  }
+}
+
+void SettlementGeneratorUtils::generate_building_creatures(MapPtr map, const BuildingGenerationParameters& bgp)
+{
+  if (map != nullptr)
+  {
+    Game& game = Game::instance();
+    ActionManager& am = game.get_action_manager_ref();
+
+    int start_row = bgp.get_start_row();
+    int end_row = bgp.get_end_row();
+    int start_col = bgp.get_start_col();
+    int end_col = bgp.get_end_col();
+
+    vector<string> creature_ids = bgp.get_creature_ids();
+
+    if (!creature_ids.empty())
+    {
+      vector<Coordinate> coords = CoordUtils::get_coordinates_in_range({start_row+1, start_col+1}, {end_row-1, end_col-1});
+
+      if (!coords.empty())
+      {
+        std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
+
+        while (!coords.empty() && !creature_ids.empty())
+        {
+          Coordinate c = coords.at(coords.size() - 1);
+
+          // Is this tile available for the creature?  If so, generate the
+          // creature and pop the creature ID.  Otherwise, pop the coordinate
+          // and consider the next one.
+          if (MapUtils::is_tile_available_for_creature(nullptr, map->at(c)))
+          {
+            string creature_id = creature_ids.at(creature_ids.size() - 1);
+            CreatureFactory cf;
+            CreaturePtr creature = cf.create_by_creature_id(am, creature_id, map);
+            GameUtils::add_new_creature_to_map(game, creature, map, c);
+
+            creature_ids.pop_back();
+          }
+
+          coords.pop_back();
         }
       }
     }

@@ -202,7 +202,7 @@ string CreatureGenerationManager::select_creature_id_for_generation(ActionManage
   return creature_id;
 }
 
-CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationMap& generation_map)
+CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationMap& generation_map, MapPtr current_map)
 {
   CreaturePtr generated_creature;
   CreatureFactory cf;
@@ -215,12 +215,12 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
 
     if (c_it != generation_map.end())
     {
-      generated_creature = cf.create_by_creature_id(am, creature_id, c_it->second.first);
+      generated_creature = cf.create_by_creature_id(am, creature_id, current_map, c_it->second.first);
     }
   }
   else
   {
-    generated_creature = cf.create_by_creature_id(am, creature_id);
+    generated_creature = cf.create_by_creature_id(am, creature_id, current_map);
   }
 
   if (generated_creature)

@@ -60,8 +60,8 @@ int PoisonCalculator::calculate_damage_per_tick(CreaturePtr creature, const int 
   {
     // Poison scales with the danger level, so a level 1 baby snake does
     // 1 damage/min, while a level 50 great slime of doom or something
-    // does 11 damage/min.
-    base_damage *= std::max<int>(1, 1 + (danger_level / 5));
+    // does 6 damage/min.
+    base_damage *= std::max<int>(1, 1 + (danger_level / 10));
 
     int cur_health = creature->get_health().get_current();
 

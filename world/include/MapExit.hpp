@@ -2,6 +2,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include "common.hpp"
 #include "ISerializable.hpp"
 #include "tiles.hpp"
 #include "ScriptDetails.hpp"
@@ -22,6 +23,10 @@ class MapExit : public ISerializable
     bool is_using_map_id() const;
     bool is_using_terrain_type() const;
 
+    void set_coordinate(const Coordinate& c);
+    Coordinate get_coordinate() const;
+    bool has_coordinate() const;
+
     void set_property(const std::string& prop, const std::string& val);
     std::string get_property(const std::string& prop) const;
     bool has_property(const std::string& prop) const;
@@ -41,6 +46,7 @@ class MapExit : public ISerializable
   protected:
     std::string map_id;
     TileType terrain_type;
+    Coordinate coord;
     std::map<std::string, std::string> properties;
     EventScriptsMap event_scripts;
 

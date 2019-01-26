@@ -233,7 +233,7 @@ bool MapUtils::place_creature_randomly(MapPtr map, const string& creature_id)
   CreatureFactory cf;
 
   // Generate the creature
-  CreaturePtr creature = cf.create_by_creature_id(am, creature_id);
+  CreaturePtr creature = cf.create_by_creature_id(am, creature_id, map);
 
   if (creature != nullptr)
   {
@@ -1107,23 +1107,30 @@ bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPt
   return false;
 }
 
-Coordinate MapUtils::place_creature_on_previous_location(MapPtr map, CreaturePtr creature, const string& player_loc)
+Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const string& player_loc, const Coordinate& linked_location)
 {
   Coordinate coords(0,0);
 
-  // First, check the generic "player location" coordinates.
-  if (creature->get_is_player())
+  if (CoordUtils::is_end(linked_location))
   {
-    string current_player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
-    if (map->has_location(current_player_loc))
+    // First, check the generic "player location" coordinates.
+    if (creature->get_is_player())
     {
-      coords = map->get_location(current_player_loc);
+      string current_player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
+      if (map->has_location(current_player_loc))
+      {
+        coords = map->get_location(current_player_loc);
+      }
+    }
+
+    if (map->has_location(player_loc))
+    {
+      coords = map->get_location(player_loc);
     }
   }
-
-  if (map->has_location(player_loc))
+  else
   {
-    coords = map->get_location(player_loc);
+    coords = linked_location;
   }
   
   TilePtr placement_tile = map->at(coords);
@@ -1393,6 +1400,16 @@ int MapUtils::calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovement
   }
 
   return depth_incr;
+}
+
+bool MapUtils::should_link_entry_point(MapType map_type)
+{
+  if (map_type == MapType::MAP_TYPE_OVERWORLD)
+  {
+    return false;
+  }
+
+  return true;
 }
 
 // Add any messages after moving to a particular tile:

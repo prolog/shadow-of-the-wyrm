@@ -3336,9 +3336,6 @@
     <ClInclude Include="engine\calculators\include\CarryingCapacityCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\CreatureSpeedCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\tiles\features\include\StoneMarker.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
@@ -4244,6 +4241,12 @@
     </ClInclude>
     <ClInclude Include="engine\generators\settlements\sector\include\WorkshopSectorFeature.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\WarpEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7331,12 +7334,6 @@
     <ClCompile Include="world\source\unit_tests\Item_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\CreatureSpeedCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\CreatureSpeedCalculator_test.cpp">
-      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="world\tiles\features\source\StoneMarker.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
@@ -8473,6 +8470,18 @@
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\sector\source\WorkshopSectorFeature.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\WarpEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\HasteStatusEffect_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\SlownessStatusEffect_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

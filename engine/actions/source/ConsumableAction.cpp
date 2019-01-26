@@ -19,7 +19,7 @@ using namespace std;
 // if it's poisoned - if it is, potentially poison the creature.
 ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr consumable, const bool process_effect)
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   if (creature && consumable)
   {

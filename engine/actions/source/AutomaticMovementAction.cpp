@@ -17,7 +17,7 @@ AutomaticMovementAction::AutomaticMovementAction()
 
 ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature) const
 {
-  ActionCostValue action_cost_value = 0;
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   IMessageManager& manager = MM::instance();
 
   // Make the creature select a direction.
@@ -97,7 +97,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
 ActionCostValue AutomaticMovementAction::rest(CreaturePtr creature) const
 {
-  ActionCostValue acv = 0;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
   MapPtr map = Game::instance().get_current_map();
   IMessageManager& manager = MM::instance();
 

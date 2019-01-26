@@ -6,6 +6,7 @@
 #include <boost/tokenizer.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "Log.hpp"
 #include "TextFormatSpecifiers.hpp"
 
@@ -151,6 +152,29 @@ string String::create_csv_from_string_vector(const vector<string>& str_vec)
   }
 
   return ss.str();
+}
+
+string String::create_string_from_coordinate(const Coordinate& c)
+{
+  ostringstream ss;
+
+  ss << c.first << "," << c.second;
+
+  return ss.str();
+}
+
+Coordinate String::create_coordinate_from_string(const std::string& coord_s)
+{
+  Coordinate c = CoordUtils::end();
+  vector<string> parts = tokenize(coord_s, ", ", false);
+
+  if (parts.size() >= 2)
+  {
+    c.first = String::to_int(parts[0]);
+    c.second = String::to_int(parts[1]);
+  }
+
+  return c;
 }
 
 bool String::to_bool(const string& convert)

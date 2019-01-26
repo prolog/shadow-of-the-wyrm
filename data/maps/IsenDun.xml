@@ -1,5 +1,6 @@
 <CustomMap id="isen_dun" xmlns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:1.0.0 ./CustomMap.xsd">
 	<NameSID>MAP_NAME_ISENDUN</NameSID>
+	<DefaultRaceID>01_human</DefaultRaceID>
 	<Dimensions>
 		<Rows>20</Rows>
 		<Columns>80</Columns>
@@ -55,21 +56,21 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>fisherman</ID>
+				<ID>_fisherman</ID>
 				<Coord>
 					<Row>17</Row>
 					<Col>4</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>fisherman</ID>
+				<ID>_fisherman</ID>
 				<Coord>
 					<Row>18</Row>
 					<Col>36</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>fisherman</ID>
+				<ID>_fisherman</ID>
 				<Coord>
 					<Row>18</Row>
 					<Col>66</Col>
@@ -97,14 +98,14 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>farmer</ID>
+				<ID>_farmer</ID>
 				<Coord>
 					<Row>4</Row>
 					<Col>15</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>farmer</ID>
+				<ID>_farmer</ID>
 				<Coord>
 					<Row>12</Row>
 					<Col>54</Col>
@@ -125,14 +126,14 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>small_child</ID>
+				<ID>_small_child</ID>
 				<Coord>
 					<Row>1</Row>
 					<Col>45</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>small_child</ID>
+				<ID>_small_child</ID>
 				<Coord>
 					<Row>10</Row>
 					<Col>23</Col>
@@ -176,7 +177,7 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>tanner</ID>
+				<ID>_tanner</ID>
 				<Coord>
 					<Row>14</Row>
 					<Col>20</Col>

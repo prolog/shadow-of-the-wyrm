@@ -1,3 +1,80 @@
+Shadow of the Wyrm v1.0.2 "de Falla"
+- Version declared December 23, 2018.  Version finalized January 26, 2019.
+
+- Automatic movement will now switch or squeeze past friendly creatures
+  without prompting (kraphead).
+
+- Cleaned up a large number of magic numbers used for action costs.
+
+- Spells previously sorted by an internal ID, which usually (but not
+  always) gave reasonable behaviour.  Now spells sort first by category,
+  second by name.
+
+- More name combinations.
+
+- Added hints to a couple of NPCs in Carcassia to help out illiterate
+  PCs.
+
+- Poison now does about half the damage it did before (Kyzrati).
+
+- Deities now consider removing negative statuses like poison and
+  stoning before considering whether to fully heal (Kyzrati).
+
+- Added a new NPC, Corbett, at the very edge of town, who will teach you
+  Hunting for a price.
+
+- The character synopsis now displays carrying-related limits (Kyzrati).
+
+- Effects that remove statuses like poison or stoning now always identify
+  the item (Kyzrati).
+
+- Turned off checkpoint_save in swyrm.ini - users were reporting that
+  the delay was too much.
+
+- Tweaked the character synopsis when you're not affected by status
+  ailments.
+
+- Random villages now contain wells.
+
+- Creatures can now be specified to have a number of potential races, 
+  rather than always using a set race ID.
+
+  - Maps can also have default race IDs, and when the map default race
+    ID is in the creature's list, it is always used; otherwise, a random
+    value from the creature's list is selected.
+
+  - The bestiary screen now displays all the possible races when
+    selecting a creature via search ('B') rather than direct selection.
+
+- Created a number of new creatures that can appear in random villages
+  next to the appropriate feature: smith (forge), weaver (wheel and loom),
+  jeweler (jeweler workbench).  Houses can also have inhabitants now
+  as well, and villages should generally feel more "full".
+
+- New effect type (warping), with an associated spell (Arcane) and scroll.
+  Warping takes you back to your last position on the world map, and is
+  a convenient way of getting out of deep dungeons and sewers.
+
+- Minor updates to the Guidebook, as well as an expanded magic section
+  to describe the spell selection screen (Kyzrati).
+
+- Stanzas for "Tel and Floridel".
+
+- New creatures: Calabus, Corbett, smith, weaver, jeweler.
+
+- New items: scroll of warping.
+
+- New spells: warp (Arcane).
+
+- Bug fixes:
+
+  - The bestiary would crash when trying to load a creature with an
+    unspecified race ID.
+
+  - Speed potions weren't working correctly - they were being overwritten
+    immediately by a calculated value based on equipment and the base
+    speed value.
+
 Shadow of the Wyrm v1.0.1 "Besard"
 - Version declared November 23, 2018. Version finalized December 23, 2018.
 

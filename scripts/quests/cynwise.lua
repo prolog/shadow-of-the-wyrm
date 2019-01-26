@@ -16,7 +16,7 @@ local function cynwise_sun_gem_start_fn()
 end
 
 local function cynwise_sun_gem_completion_condition_fn()
-  return (player_has_item("sun_gem") == true)
+  return (player_has_item(SUN_GEM_ID) == true)
 end
 
 local function cynwise_sun_gem_completion_fn()
@@ -34,7 +34,7 @@ local function cynwise_sun_gem_completion_fn()
     clear_and_add_message("CYNWISE_SUNGEM_QUEST_COMPLETE_LITERACY_SID")
   end
 
-  remove_object_from_player("sun_gem")
+  remove_object_from_player(SUN_GEM_ID)
   remove_active_quest("blacksmith_sungem")
   remove_active_quest("ploughman_sungem")
 

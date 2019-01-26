@@ -26,6 +26,7 @@ MapPtr SettlementGenerator::generate()
 
   result_map = generate_roads_and_buildings(result_map);
   result_map = populate_settlement(result_map);
+  generate_wells(result_map);
   generate_shop_if_necessary(result_map);
 
   return result_map;

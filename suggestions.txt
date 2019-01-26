@@ -1,13 +1,13 @@
 Me:
+- Dead code: adjust_negative_modifiers
+- For v1.0.3 - start the item codex
+- Random villages should include the race in the description prior to
+  generation.
 - Each version: make sure to update itch.io page!
 - Rework creature generation to be faster and not to bias towards the
-  creatures at the front of the list.
-- The workshop generation should also generate the appropriate creature
-  for a feature.
-- Allow races to be regexps
-- Ensure the bestiary race uses the generated creature's race ID.
+  creatures at the front of the list.  This could be as simple as
+  shuffling the order.
 - The "descend to" functionality
-- Sort spells by AP cost
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
 - "The Vertical City"
@@ -29,7 +29,6 @@ Me:
 - Penalties from bloodied, exposed should also scale with level.
 - When items are destroyed in shops, their value should be be added to the
   unpaid bill.
-- Generate loom, tanneries in random villages.
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
@@ -108,11 +107,6 @@ Me:
 - Food rotting for caught fish, other foods?
 - Message when doing checkpoint saves to indicate why the delay happens.
 
-For v1:
-- Item generation needs a serious overhaul!  Many items are rarely, if 
-  ever, generated.
-- Revisit creature generation algorithm.
-
 Sean McKeague:
 - Ability to pick up partial stacks.
 
@@ -126,6 +120,12 @@ Kyzrati:
 - Over time, generation of new random uniques, etc.
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
+- Group like items together (scrolls, etc) even if not exactly the same
+- Separate stacks of ivory?
+- Item paging issue confirmed: when large number of items, a blank page
+  can be generated.
+- Wants item-iary.  Separate screen + in inventory view.  Update lower
+  message to be [A...] Info or [A...] Select based on context.
 
 Avagart:
 - Eventually, have automovement stop only on new items.
@@ -178,7 +178,6 @@ kraphead
 - Crashes in sewer, SE dungeon
 - black 'x'
 - Cascade of aggro on stun, etc
-- auto-displace when bumping friendly creatures
 
 ssteam
 - w->, w-< to autowalk to stairs

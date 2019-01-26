@@ -1,10 +1,12 @@
 #include "MapExit.hpp"
+#include "CoordUtils.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
 
 MapExit::MapExit()
 : terrain_type(TileType::TILE_TYPE_UNDEFINED)
+, coord(-1, -1)
 {
 }
 
@@ -18,6 +20,7 @@ bool MapExit::operator==(const MapExit& me) const
 
   result = result && (map_id == me.map_id);
   result = result && (terrain_type == me.terrain_type);
+  result = result && (coord == me.coord);
   result = result && (properties == me.properties);
   result = result && (event_scripts == me.event_scripts);
 
@@ -42,6 +45,21 @@ void MapExit::set_terrain_type(const TileType new_terrain_type)
 TileType MapExit::get_terrain_type() const
 {
   return terrain_type;
+}
+
+void MapExit::set_coordinate(const Coordinate& c)
+{
+  coord = c;
+}
+
+Coordinate MapExit::get_coordinate() const
+{
+  return coord;
+}
+
+bool MapExit::has_coordinate() const
+{
+  return (CoordUtils::is_end(coord) == false);
 }
 
 bool MapExit::is_using_map_id() const
@@ -140,6 +158,8 @@ bool MapExit::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, map_id);
   Serialize::write_enum(stream, terrain_type);
+  Serialize::write_int(stream, coord.first);
+  Serialize::write_int(stream, coord.second);
   Serialize::write_string_map(stream, properties);
   Serialize::write_event_scripts(stream, event_scripts);
 
@@ -150,6 +170,8 @@ bool MapExit::deserialize(istream& stream)
 {
   Serialize::read_string(stream, map_id);
   Serialize::read_enum(stream, terrain_type);
+  Serialize::read_int(stream, coord.first);
+  Serialize::read_int(stream, coord.second);
   Serialize::read_string_map(stream, properties);
   Serialize::read_event_scripts(stream, event_scripts);
 
