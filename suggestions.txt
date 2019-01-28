@@ -1,6 +1,7 @@
 Me:
-- Dead code: adjust_negative_modifiers
-- For v1.0.3 - start the item codex
+- For v1.0.3 - start the item codex ('c')!
+- Make sure glow respected
+- Write script to check for any items without CodexDescriptionSID
 - Random villages should include the race in the description prior to
   generation.
 - Each version: make sure to update itch.io page!

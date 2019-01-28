@@ -234,6 +234,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<BreedCommand>(key);
   }
+  else if (command_name == CommandKeys::ITEM_CODEX)
+  {
+    command = std::make_shared<ItemCodexCommand>(key);
+  }
 
   return command;
 }

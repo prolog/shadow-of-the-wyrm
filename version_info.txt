@@ -1,6 +1,9 @@
 Shadow of the Wyrm v1.0.3 "Robert Dowland"
 - Version declared January 26, 2019.
 
+- Added a new "item codex" command ('c'), that displays an item synopsis
+  and description for a particular item.
+
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.
 

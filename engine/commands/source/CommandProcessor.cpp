@@ -268,6 +268,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.breed(creature);
       }
+      else if (command_name == CommandKeys::ITEM_CODEX)
+      {
+        ac = game.actions.item_codex(creature);
+      }
     }
   }
   

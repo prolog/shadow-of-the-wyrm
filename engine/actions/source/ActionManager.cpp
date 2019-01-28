@@ -18,6 +18,7 @@
 #include "FeatureAction.hpp"
 #include "FileWriter.hpp"
 #include "FoodAction.hpp"
+#include "ItemCodexAction.hpp"
 #include "Game.hpp"
 #include "GameEnvTextKeys.hpp"
 #include "HelpAction.hpp"
@@ -373,6 +374,13 @@ ActionCost ActionManager::bestiary(CreaturePtr creature, const string& creature_
   BestiaryAction bestiary;
 
   return get_action_cost(creature, bestiary.display_creature_information(creature, creature_search_text, tile_creature));
+}
+
+ActionCost ActionManager::item_codex(CreaturePtr creature)
+{
+  ItemCodexAction ica;
+
+  return get_action_cost(creature, ica.item_details(creature));
 }
 
 ActionCost ActionManager::evoke(CreaturePtr creature)
