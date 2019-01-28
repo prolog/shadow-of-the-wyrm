@@ -122,6 +122,19 @@ string ActionTextKeys::get_bestiary_search_message(const string& previous_search
   return search_msg;
 }
 
+string ActionTextKeys::get_item_codex_search_message(const string& previous_search_text)
+{
+  string search_msg = StringTable::get(ActionTextKeys::ACTION_ITEM_CODEX_WHICH_ITEM);
+
+  if (!previous_search_text.empty())
+  {
+    search_msg = StringTable::get(ActionTextKeys::ACTION_ITEM_CODEX_PREVIOUS_SEARCH_MESSAGE);
+    boost::replace_first(search_msg, "%s", previous_search_text);
+  }
+
+  return search_msg;
+}
+
 string ActionTextKeys::get_pour_message(const string& creature_desc_sid, const string& item_desc_sid, const bool is_player)
 {
   string pour_msg;
@@ -493,6 +506,8 @@ const string ActionTextKeys::ACTION_HANDLE_LOCK                = "ACTION_HANDLE_
 const string ActionTextKeys::ACTION_HANDLE_LOCK_NO_KEY         = "ACTION_HANDLE_LOCK_NO_KEY";
 const string ActionTextKeys::ACTION_BESTIARY_WHICH_CREATURE    = "ACTION_BESTIARY_WHICH_CREATURE";
 const string ActionTextKeys::ACTION_BESTIARY_NO_SUCH_CREATURE_EXISTS = "ACTION_BESTIARY_NO_SUCH_CREATURE_EXISTS";
+const string ActionTextKeys::ACTION_ITEM_CODEX_WHICH_ITEM      = "ACTION_ITEM_CODEX_WHICH_ITEM";
+const string ActionTextKeys::ACTION_ITEM_CODEX_NO_SUCH_ITEM_EXISTS = "ACTION_ITEM_CODEX_NO_SUCH_ITEM_EXISTS";
 const string ActionTextKeys::ACTION_POTION_EXPLODES            = "ACTION_POTION_EXPLODES";
 const string ActionTextKeys::ACTION_AUTOMOVE_WORLD_MAP         = "ACTION_AUTOMOVE_WORLD_MAP";
 const string ActionTextKeys::ACTION_AUTOMOVE_INTERRUPT         = "ACTION_AUTOMOVE_INTERRUPT";
@@ -621,6 +636,7 @@ const string ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_PLAYER = "ACTION_SPEL
 const string ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_MONSTER = "ACTION_SPELLCASTING_CANCELLED_MONSTER";
 const string ActionTextKeys::ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE = "ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE";
 const string ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION = "ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION";
+const string ActionTextKeys::ACTION_ITEM_CODEX_PREVIOUS_SEARCH_MESSAGE = "ACTION_ITEM_CODEX_PREVIOUS_SEARCH_MESSAGE";
 const string ActionTextKeys::ACTION_POUR_PLAYER                   = "ACTION_POUR_PLAYER";
 const string ActionTextKeys::ACTION_POUR_MONSTER                  = "ACTION_POUR_MONSTER";
 const string ActionTextKeys::ACTION_STUMBLE_PLAYER                = "ACTION_STUMBLE_PLAYER";

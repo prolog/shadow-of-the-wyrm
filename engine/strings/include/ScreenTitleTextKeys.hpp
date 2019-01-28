@@ -8,6 +8,7 @@ class ScreenTitleTextKeys
     static const std::string SCREEN_TITLE_COMPLETED_QUEST_LIST;
     static const std::string SCREEN_TITLE_MAGIC_SPELLS;
     static const std::string SCREEN_TITLE_BESTIARY;
+    static const std::string SCREEN_TITLE_ITEM_CODEX;
     static const std::string SCREEN_TITLE_RESISTANCES;
     static const std::string SCREEN_TITLE_CHARACTER_DETAILS;
     static const std::string SCREEN_TITLE_HELP;

@@ -128,7 +128,7 @@ vector<string> KeyboardCommandMap::get_remappable_commands() const
   CommandKeys::OFFER, CommandKeys::SKIN, CommandKeys::PIETY,
   CommandKeys::EXPERIENCE, CommandKeys::REST, CommandKeys::VIEW_ITEMS,
   CommandKeys::CHAR_DETAILS, CommandKeys::HELP, CommandKeys::INSCRIBE,
-  CommandKeys::TOGGLE_AUTOPICKUP};
+  CommandKeys::TOGGLE_AUTOPICKUP, CommandKeys::ITEM_CODEX};
 }
 
 void KeyboardCommandMap::parse_keybindings(const Settings& settings, const vector<string>& remappable_commands)

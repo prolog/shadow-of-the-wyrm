@@ -16,6 +16,7 @@ class ActionTextKeys
     static std::string get_spellcasting_message(const Spell& spell, const std::string& creature_desc_s, const bool is_player);
     static std::string get_spellcasting_cancelled_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_bestiary_search_message(const std::string& prev_search_text);
+    static std::string get_item_codex_search_message(const std::string& prev_search_text);
     static std::string get_pour_message(const std::string& desc_sid, const std::string& item_desc_sid, const bool is_player);
     static std::string get_stumble_message(const std::string& desc_sid, const bool is_player);
     static std::string get_alcohol_poisoning_death_message(const std::string& desc_sid, const bool is_player);
@@ -83,6 +84,7 @@ class ActionTextKeys
     static const std::string ACTION_HANDLE_LOCK_NO_KEY;
     static const std::string ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION;
     static const std::string ACTION_BESTIARY_NO_SUCH_CREATURE_EXISTS;
+    static const std::string ACTION_ITEM_CODEX_NO_SUCH_ITEM_EXISTS;
     static const std::string ACTION_POTION_EXPLODES;
     static const std::string ACTION_AUTOMOVE_WORLD_MAP;
     static const std::string ACTION_AUTOMOVE_INTERRUPT;
@@ -222,6 +224,8 @@ class ActionTextKeys
     static const std::string ACTION_SPELLCASTING_CANCELLED_MONSTER;
     static const std::string ACTION_BESTIARY_WHICH_CREATURE;
     static const std::string ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE;
+    static const std::string ACTION_ITEM_CODEX_WHICH_ITEM;
+    static const std::string ACTION_ITEM_CODEX_PREVIOUS_SEARCH_MESSAGE;
     static const std::string ACTION_POUR_PLAYER;
     static const std::string ACTION_POUR_MONSTER;
     static const std::string ACTION_STUMBLE_PLAYER;

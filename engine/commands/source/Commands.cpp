@@ -521,6 +521,16 @@ ToggleAutopickupCommand::~ToggleAutopickupCommand()
 {
 }
 
+// Item codex
+ItemCodexCommand::ItemCodexCommand(int key)
+: Command(CommandKeys::ITEM_CODEX, key)
+{
+}
+
+ItemCodexCommand::~ItemCodexCommand()
+{
+}
+
 // NPC-only commands
 
 // Breed (create a new creature of the same ID on an adjacent tile)

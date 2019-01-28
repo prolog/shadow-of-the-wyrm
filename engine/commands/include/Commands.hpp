@@ -358,6 +358,13 @@ class ToggleAutopickupCommand : public Command
     ~ToggleAutopickupCommand();
 };
 
+class ItemCodexCommand : public Command
+{
+  public:
+    ItemCodexCommand(int key);
+    ~ItemCodexCommand();
+};
+
 // NPC-only commands:
 
 class BreedCommand : public Command
