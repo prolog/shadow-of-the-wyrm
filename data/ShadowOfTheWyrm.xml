@@ -30804,6 +30804,7 @@
 			<Amulet id="amulet_carcassian_emperor">
 				<DescriptionSID>AMULET_CARCASSIAN_EMPEROR_SID</DescriptionSID>
 				<UsageDescriptionSID>AMULET_CARCASSIAN_EMPEROR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>AMULET_CARCASSIAN_EMPEROR_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>0</Pounds>

@@ -56,6 +56,7 @@ bool Item::operator==(const Item& i) const
   result = result && (unidentified_usage_description_sid == i.unidentified_usage_description_sid);
   result = result && (description_sid == i.description_sid);
   result = result && (unidentified_description_sid == i.unidentified_description_sid);
+  result = result && (codex_description_sid == i.codex_description_sid);
   result = result && (value == i.value);
   result = result && (weight == i.weight);
   result = result && (readable == i.readable);
@@ -149,7 +150,7 @@ string Item::get_unidentified_usage_description_sid() const
   return unidentified_usage_description_sid;
 }
 
-void Item::set_unidentified_description_sid(const std::string& new_unident_description_sid)
+void Item::set_unidentified_description_sid(const string& new_unident_description_sid)
 {
   unidentified_description_sid = new_unident_description_sid;
 }
@@ -157,6 +158,16 @@ void Item::set_unidentified_description_sid(const std::string& new_unident_descr
 string Item::get_unidentified_description_sid() const
 {
   return unidentified_description_sid;
+}
+
+void Item::set_codex_description_sid(const string& new_codex_description_sid)
+{
+  codex_description_sid = new_codex_description_sid;
+}
+
+string Item::get_codex_description_sid() const
+{
+  return codex_description_sid;
 }
 
 string Item::get_synopsis() const
@@ -839,6 +850,7 @@ bool Item::serialize(ostream& stream) const
   Serialize::write_string(stream, description_sid);
   Serialize::write_string(stream, unidentified_usage_description_sid);
   Serialize::write_string(stream, unidentified_description_sid);
+  Serialize::write_string(stream, codex_description_sid);
   Serialize::write_uint(stream, value);
 
   weight.serialize(stream);
@@ -887,6 +899,7 @@ bool Item::deserialize(istream& stream)
   Serialize::read_string(stream, description_sid);
   Serialize::read_string(stream, unidentified_usage_description_sid);
   Serialize::read_string(stream, unidentified_description_sid);
+  Serialize::read_string(stream, codex_description_sid);
   Serialize::read_uint(stream, value);
 
   weight.deserialize(stream);

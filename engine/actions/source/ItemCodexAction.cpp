@@ -85,7 +85,13 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
 
     // Item codex description
-    // ...
+    TextDisplayFormatter tdf;
+    vector<string> codex = tdf.format_text(StringTable::get(item->get_codex_description_sid()));
+
+    for (const string& line_of_text : codex)
+    {
+      codex_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
+    }
 
     TextDisplayScreen tds(game.get_display(), codex_title_sid, codex_text);
     tds.display();

@@ -51,6 +51,9 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     }
     item->set_unidentified_usage_description_sid(unidentified_usage_description_sid);
 
+    string codex_description_sid = XMLUtils::get_child_node_value(item_node, "CodexDescriptionSID");
+    item->set_codex_description_sid(codex_description_sid);
+
     XMLNode value_node = XMLUtils::get_next_element_by_local_name(item_node, "Value");
     if (!value_node.is_null())
     {

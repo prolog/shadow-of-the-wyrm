@@ -973,6 +973,7 @@
 		<xs:element name="UnidentifiedDescriptionSID" type="xs:string" minOccurs="0"/>
 		<xs:element name="UsageDescriptionSID" type="xs:string"/>
 		<xs:element name="UnidentifiedUsageDescriptionSID" type="xs:string" minOccurs="0"/>
+		<xs:element name="CodexDescriptionSID" type="xs:string"/>
 		<xs:element name="Value" type="tns:NonNegativeInt"/>
 		<xs:element name="Weight" type="tns:Weight"/>
 		<xs:element name="WornLocation" type="tns:WornLocation" minOccurs="0"/>
