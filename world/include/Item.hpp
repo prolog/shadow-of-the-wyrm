@@ -54,6 +54,9 @@ class Item : public ISerializable
     virtual void set_unidentified_description_sid(const std::string& new_unident_description_sid);
     virtual std::string get_unidentified_description_sid() const;
 
+    virtual void set_codex_description_sid(const std::string& new_codex_description_sid);
+    virtual std::string get_codex_description_sid() const;
+
     // The synopsis is displayed after the item's description in the inventory
     // and equipment screens, if the item is identified.  It is expected that
     // certain types of items may override this function: wands will display
@@ -216,6 +219,8 @@ class Item : public ISerializable
     std::string description_sid; // the short description is displayed on the inventory and equipment screens.
     std::string unidentified_usage_description_sid; // the usage description seen when unidentified
     std::string unidentified_description_sid; // the description seen when the item is unidentified
+    std::string codex_description_sid; // the description displayed in the codex
+
     uint value;
     Weight weight;
     bool readable;

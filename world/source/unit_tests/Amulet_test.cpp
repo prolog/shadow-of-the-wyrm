@@ -14,6 +14,7 @@ TEST(SW_World_Amulet, saveload)
   ostringstream ss;
 
   am.set_soak(13);
+  am.set_codex_description_sid("test!");
 
   am.serialize(ss);
 
@@ -22,4 +23,5 @@ TEST(SW_World_Amulet, saveload)
   am2.deserialize(iss);
 
   EXPECT_TRUE(am == am2);
+  EXPECT_EQ("test!", am2.get_codex_description_sid());
 }
