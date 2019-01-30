@@ -30830,6 +30830,7 @@
 			<Amulet id="two_moon_amulet">
 				<DescriptionSID>TWO_MOON_AMULET_SID</DescriptionSID>
 				<UsageDescriptionSID>TWO_MOON_AMULET_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TWO_MOON_AMULET_CODEX_SID</CodexDescriptionSID>
 				<Value>940</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -30852,6 +30853,7 @@
 			<Amulet id="eunoia">
 				<DescriptionSID>EUNOIA_SID</DescriptionSID>
 				<UsageDescriptionSID>EUNOIA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>EUNOIA_CODEX_SID</CodexDescriptionSID>
 				<Value>1666</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -30879,6 +30881,7 @@
 				<UnidentifiedDescriptionSID>UNID_SATIATIVE_AMULET_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SATIATIVE_AMULET_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SATIATIVE_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SATIATIVE_AMULET_CODEX_SID</CodexDescriptionSID>
 				<Value>177</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -30898,6 +30901,7 @@
 				<UnidentifiedDescriptionSID>UNID_PROTECTIVE_AMULET_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>PROTECTIVE_AMULET_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_PROTECTIVE_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>PROTECTIVE_AMULET_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>0</Pounds>
