@@ -30918,6 +30918,7 @@
 				<UnidentifiedDescriptionSID>UNID_EVASIVE_AMULET_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>EVASIVE_AMULET_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_EVASIVE_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>EVASIVE_AMULET_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -30934,6 +30935,7 @@
 				<UnidentifiedDescriptionSID>UNID_HOLY_AMULET_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HOLY_AMULET_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_HOLY_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>HOLY_AMULET_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -30953,6 +30955,7 @@
 				<UnidentifiedDescriptionSID>UNID_SHADOW_AMULET_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SHADOW_AMULET_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SHADOW_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SHADOW_AMULET_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -30972,6 +30975,7 @@
 				<UnidentifiedDescriptionSID>UNID_LIGHTNING_AMULET_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>LIGHTNING_AMULET_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_LIGHTNING_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>LIGHTNING_AMULET_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -30988,11 +30992,11 @@
 			</Amulet>
 			<Amulet id="catara">
 				<DescriptionSID>CATARA_SID</DescriptionSID>
-				<UsageDescriptionSID>CATARA_SID</UsageDescriptionSID>
+				<UsageDescriptionSID>CATARA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CATARA_CODEX_SID</CodexDescriptionSID>
 				<Value>2260</Value>
 				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>2</Ounces>
+					<Pounds>2</Pounds>
 				</Weight>
 				<WornLocation>1</WornLocation>
 				<Artifact>1</Artifact>
@@ -31007,7 +31011,8 @@
 			</Amulet>
 			<Amulet id="calluna">
 				<DescriptionSID>CALLUNA_SID</DescriptionSID>
-				<UsageDescriptionSID>CALLUNA_SID</UsageDescriptionSID>
+				<UsageDescriptionSID>CALLUNA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CALLUNA_CODEX_SID</CodexDescriptionSID>
 				<Value>2260</Value>
 				<Weight>
 					<Pounds>0</Pounds>
