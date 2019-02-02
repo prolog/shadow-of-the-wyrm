@@ -6,6 +6,11 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 
 - Stanzas for "Tel and Floridel".
 
+- Bug fixes:
+
+  - Specifying a creature in the game XML with an invalid 
+    equipment/inventory item would cause a crash on startup.
+
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.
 

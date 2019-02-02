@@ -3,6 +3,7 @@
 #include "InitialItemEquipper.hpp"
 #include "InitialItemSelector.hpp"
 #include "ItemManager.hpp"
+#include "Log.hpp"
 
 using namespace std;
 
@@ -47,16 +48,24 @@ void InitialItemEquipper::process_initial_equipment(CreaturePtr creature, const 
       if (!item_id.empty())
       {
         ItemPtr item = ItemManager::create_item(item_id, item_quantity);
-        item->set_quantity(item_quantity);
 
-        Equipment& eq = creature->get_equipment();
-        if (item->get_quantity() > 1 && !eq.can_equip_multiple_items(ii_i.first))
+        if (item != nullptr)
         {
-          // Sanity check: only allow multiple items for slots that allow this.
-          item->set_quantity(1);
-        }
+          item->set_quantity(item_quantity);
 
-        am.handle_item(creature, ItemAction::ITEM_ACTION_EQUIP, item, ii_i.first);
+          Equipment& eq = creature->get_equipment();
+          if (item->get_quantity() > 1 && !eq.can_equip_multiple_items(ii_i.first))
+          {
+            // Sanity check: only allow multiple items for slots that allow this.
+            item->set_quantity(1);
+          }
+
+          am.handle_item(creature, ItemAction::ITEM_ACTION_EQUIP, item, ii_i.first);
+        }
+        else
+        {
+          Log::instance().error("Could not instantiate item with id " + item_id);
+        }
       }
     }
   }

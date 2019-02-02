@@ -31152,9 +31152,10 @@
 			<Armour id="iron_helm">
 				<DescriptionSID>IRON_HELM_SID</DescriptionSID>
 				<UsageDescriptionSID>IRON_HELM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>IRON_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
-					<Pounds>5</Pounds>
+					<Pounds>6</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
@@ -31171,9 +31172,10 @@
 			<Armour id="steel_helm">
 				<DescriptionSID>STEEL_HELM_SID</DescriptionSID>
 				<UsageDescriptionSID>STEEL_HELM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STEEL_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>80</Value>
 				<Weight>
-					<Pounds>5</Pounds>
+					<Pounds>4</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
@@ -31190,9 +31192,10 @@
 			<Armour id="knights_helm">
 				<DescriptionSID>KNIGHTS_HELM_SID</DescriptionSID>
 				<UsageDescriptionSID>KNIGHTS_HELM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>KNIGHTS_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>140</Value>
 				<Weight>
-					<Pounds>5</Pounds>
+					<Pounds>7</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
@@ -31209,6 +31212,7 @@
 			<Armour id="dragon_helm">
 				<DescriptionSID>DRAGON_HELM_SID</DescriptionSID>
 				<UsageDescriptionSID>DRAGON_HELM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DRAGON_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>180</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -31231,6 +31235,7 @@
 			<Armour id="scrimshaw_hairpin">
 				<DescriptionSID>SCRIMSHAW_HAIRPIN_SID</DescriptionSID>
 				<UsageDescriptionSID>SCRIMSHAW_HAIRPIN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SCRIMSHAW_HAIRPIN_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -31248,6 +31253,7 @@
 			<Armour id="crown_of_tyranny">
 				<DescriptionSID>CROWN_OF_TYRANNY_SID</DescriptionSID>
 				<UsageDescriptionSID>CROWN_OF_TYRANNY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CROWN_OF_TYRANNY_CODEX_SID</CodexDescriptionSID>
 				<Value>1580</Value>
 				<Weight>
 					<Pounds>8</Pounds>
@@ -31259,7 +31265,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
-					<Holy>0.15</Holy>
+					<Pound>0.15</Pound>
 				</Resistances>
 				<Evade>0</Evade>
 				<Soak>11</Soak>
@@ -31267,6 +31273,7 @@
 			<Armour id="helm_of_the_heavens">
 				<DescriptionSID>HELM_OF_THE_HEAVENS_SID</DescriptionSID>
 				<UsageDescriptionSID>HELM_OF_THE_HEAVENS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HELM_OF_THE_HEAVENS_CODEX_SID</CodexDescriptionSID>
 				<Value>1400</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -31276,8 +31283,8 @@
 				<Material>6</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
-					<Acid>0.15</Acid>
 					<Poison>0.15</Poison>
+					<Holy>0.15</Holy>
 					<Shadow>0.15</Shadow>
 				</Resistances>
 				<Evade>5</Evade>
@@ -31286,6 +31293,7 @@
 			<Armour id="telarian_helm">
 				<DescriptionSID>TELARIAN_HELM_SID</DescriptionSID>
 				<UsageDescriptionSID>TELARIAN_HELM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TELARIAN_ARMOURS_CODEX_SID</CodexDescriptionSID>
 				<Value>5000</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -31458,6 +31466,7 @@
 			<Armour id="telarian_mail">
 				<DescriptionSID>TELARIAN_MAIL_SID</DescriptionSID>
 				<UsageDescriptionSID>TELARIAN_MAIL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TELARIAN_ARMOURS_CODEX_SID</CodexDescriptionSID>
 				<Value>10000</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -32035,6 +32044,7 @@
 			<Armour id="telarian_shield">
 				<DescriptionSID>TELARIAN_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>TELARIAN_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TELARIAN_ARMOURS_CODEX_SID</CodexDescriptionSID>
 				<Value>5000</Value>
 				<Weight>
 					<Pounds>4</Pounds>

@@ -597,11 +597,11 @@ When lauding dying kings, the minstrels say, %b
 "His end was gentle, glorious his reign." %b
 They never speak of violence, of the way %b
 he bled to death, or how his guts and brains %b
-were splayed across the earth.  When Choros caught %b
+were spread across the earth.  When Choros caught %b
 the king, he brought a branch across his face %b
 with so much strength, it seemed as if it ought %b
 to pry his head apart.  An ugly fate, %b
-a sick and bloody end for such a man of grace.
+a sudden, bloody end for such a man of grace.
 %p
 The king went tumbling hard, and hit the ground. %b
 His face a fleshy pulp, he gurgled out %b
@@ -2414,3 +2414,12 @@ to Farstead or to fairy halls, they'll enjoy %b
 a chance to own the narrative, and sow %b
 deceits whose seeds will root and reach the lands below."
 %p
+Now Alcius had turned to look at Tel. %b
+"I do not question mercy.  Let us give %b
+our seven fastest riders time to tell %b
+the truth, and give them half a chance to bridge %b
+the distance to the nearest camp.  Our fate %b
+is not entirely what the exiles say, %b
+or if, but all the variables we create. %b
+Reduce potential outcomes, and display %b
+a mastery of all that would be in your way."
