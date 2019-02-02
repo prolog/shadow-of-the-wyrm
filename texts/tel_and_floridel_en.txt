@@ -2404,4 +2404,13 @@ a startling steadiness, one colouring %b
 so many key decisions that around %b
 the court, they spoke of how he helped to steer the crown.
 %p
-
+"Advantage is a quick and slender thing. %b
+We stand here thinking fortune's shown its hand, %b
+but what we all knew yesterday begins %b
+to fall apart at sunrise.  Knowledge hangs %b
+its hat on stasis: as the giant boy %b
+escaped the knife-blade, as the exiles go %b
+to Farstead or to fairy halls, they'll enjoy %b
+a chance to own the narrative, and sow %b
+deceits whose seeds will root and reach the lands below."
+%p

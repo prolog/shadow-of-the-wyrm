@@ -31034,6 +31034,7 @@
 			<Armour id="cap">
 				<DescriptionSID>CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>CAP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CAP_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -31054,6 +31055,7 @@
 			<Armour id="_hide_cap">
 				<DescriptionSID>HIDE_CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_CAP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -31068,6 +31070,7 @@
 			<Armour id="thiefs_cap">
 				<DescriptionSID>THIEFS_CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>THIEFS_CAP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>THIEFS_CAP_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -31088,6 +31091,7 @@
 			<Armour id="guildmasters_cap">
 				<DescriptionSID>GUILDMASTERS_CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>GUILDMASTERS_CAP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GUILDMASTERS_CAP_CODEX_SID</CodexDescriptionSID>
 				<Value>130</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -31108,6 +31112,7 @@
 			<Armour id="leather_helm">
 				<DescriptionSID>LEATHER_HELM_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_HELM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LEATHER_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -31127,6 +31132,7 @@
 			<Armour id="metal_cap">
 				<DescriptionSID>METAL_CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>METAL_CAP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>METAL_CAP_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -31908,6 +31914,7 @@
 			<Armour id="_hide_armour">
 				<DescriptionSID>HIDE_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -32180,6 +32187,7 @@
 			<Armour id="_hide_cloak">
 				<DescriptionSID>HIDE_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>2</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -32351,6 +32359,7 @@
 			<Armour id="_hide_boots">
 				<DescriptionSID>HIDE_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>50</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -35118,6 +35127,7 @@
 			<Weapon id="_hide_sling">
 				<DescriptionSID>HIDE_SLING_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_SLING_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>0</Pounds>
