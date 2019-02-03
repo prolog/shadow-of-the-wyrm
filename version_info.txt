@@ -2,7 +2,7 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 - Version declared January 26, 2019.
 
 - Added a new "item codex" command ('c'), that displays an item synopsis
-  and description for a particular item.
+  and description for a particular item (barrabus).
 
 - Stanzas for "Tel and Floridel".
 
@@ -10,6 +10,8 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 
   - Specifying a creature in the game XML with an invalid 
     equipment/inventory item would cause a crash on startup.
+
+  - Silari was not listed as an artifact.
 
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.

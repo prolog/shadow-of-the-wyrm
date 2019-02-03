@@ -2423,3 +2423,14 @@ is not entirely what the exiles say, %b
 or if, but all the variables we create. %b
 Reduce potential outcomes, and display %b
 a mastery of all that would be in your way."
+%p
+Tel stroked his chin.  "You're right.  The exiles form %b
+a threat both as a group and when apart - %b
+we ride them down, they'll scatter and reform %b
+as if a flock of blackbirds.  Let them hurt %b
+for space and opportunity.  I'll send %b
+the riders that you ask, and I'll send more %b
+to ride them down directly.  Let them fend %b
+us off with empty arms, and answer for %b
+their treacheries or vanish; no one waits this war.
+%p

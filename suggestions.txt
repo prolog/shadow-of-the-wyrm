@@ -116,9 +116,6 @@ Sean McKeague:
 redfeek:
 - Add wide char support to more easily support UTF-8/Russian translation.
 
-barrabus: 
-- Extra descs for items.
-
 Kyzrati:
 - Over time, generation of new random uniques, etc.
 - Different in-game event when inhabitants of certain places have aged,
