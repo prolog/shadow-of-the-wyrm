@@ -31312,6 +31312,7 @@
 			<Armour id="chain_scraps">
 				<DescriptionSID>CHAIN_SCRAPS_SID</DescriptionSID>
 				<UsageDescriptionSID>CHAIN_SCRAPS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CHAIN_SCRAPS_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
 					<Pounds>30</Pounds>
@@ -31331,6 +31332,7 @@
 			<Armour id="chain_mail">
 				<DescriptionSID>CHAIN_MAIL_SID</DescriptionSID>
 				<UsageDescriptionSID>CHAIN_MAIL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CHAIN_MAIL_CODEX_SID</CodexDescriptionSID>
 				<Value>250</Value>
 				<Weight>
 					<Pounds>40</Pounds>
@@ -31350,13 +31352,14 @@
 			<Armour id="elven_chain">
 				<DescriptionSID>ELVEN_CHAIN_SID</DescriptionSID>
 				<UsageDescriptionSID>ELVEN_CHAIN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ELVEN_CHAIN_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>4</Pounds>
 				</Weight>
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>7</DangerLevel>
+				<DangerLevel>4</DangerLevel>
 				<Properties>
 					<Property>
 						<Name>brandable</Name>
@@ -31369,6 +31372,7 @@
 			<Armour id="alaric_mail_shirt">
 				<DescriptionSID>ALARIC_MAIL_SHIRT_SID</DescriptionSID>
 				<UsageDescriptionSID>ALARIC_MAIL_SHIRT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ALARIC_MAIL_SHIRT_CODEX_SID</CodexDescriptionSID>
 				<Value>1750</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -31380,7 +31384,7 @@
 				<Resistances>
 					<Slash>0.20</Slash>
 					<Pierce>0.20</Pierce>
-					<Shadow>0.15</Shadow>
+					<Holy>0.15</Holy>
 				</Resistances>
 				<Evade>17</Evade>
 				<Soak>9</Soak>
@@ -31388,6 +31392,7 @@
 			<Armour id="plate_mail_terror">
 				<DescriptionSID>PLATE_MAIL_TERROR_SID</DescriptionSID>
 				<UsageDescriptionSID>PLATE_MAIL_TERROR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PLATE_MAIL_TERROR_CODEX_SID</CodexDescriptionSID>
 				<Value>2250</Value>
 				<Weight>
 					<Pounds>12</Pounds>
@@ -31400,7 +31405,7 @@
 				<Resistances>
 					<Pound>0.20</Pound>
 					<Heat>0.20</Heat>
-					<Holy>0.15</Holy>
+					<Shadow>0.15</Shadow>
 				</Resistances>
 				<Evade>-6</Evade>
 				<Soak>23</Soak>
@@ -31408,6 +31413,7 @@
 			<Armour id="battle_armour_aurelion">
 				<DescriptionSID>BATTLE_ARMOUR_AURELION_SID</DescriptionSID>
 				<UsageDescriptionSID>BATTLE_ARMOUR_AURELION_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BATTLE_ARMOUR_AURELION_CODEX_SID</CodexDescriptionSID>
 				<Value>2700</Value>
 				<Weight>
 					<Pounds>30</Pounds>
@@ -31420,7 +31426,7 @@
 					<Slash>0.20</Slash>
 					<Pierce>0.20</Pierce>
 					<Pound>0.20</Pound>
-					<Arcane>0.10</Arcane>
+					<Holy>0.10</Holy>
 				</Resistances>
 				<Evade>-10</Evade>
 				<Soak>27</Soak>
@@ -31428,6 +31434,7 @@
 			<Armour id="dragon_leather_tius">
 				<DescriptionSID>DRAGON_LEATHER_TIUS_SID</DescriptionSID>
 				<UsageDescriptionSID>DRAGON_LEATHER_TIUS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DRAGON_LEATHER_TIUS_CODEX_SID</CodexDescriptionSID>
 				<Value>1925</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -31448,12 +31455,14 @@
 			<Armour id="silari">
 				<DescriptionSID>SILARI_SID</DescriptionSID>
 				<UsageDescriptionSID>SILARI_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SILARI_CODEX_SID</CodexDescriptionSID>
 				<Value>2100</Value>
 				<Weight>
 					<Pounds>2</Pounds>
 				</Weight>
 				<WornLocation>6</WornLocation>
 				<Material>6</Material>
+				<Artifact>1</Artifact>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
