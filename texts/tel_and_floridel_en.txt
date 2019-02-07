@@ -2432,5 +2432,15 @@ for space and opportunity.  I'll send %b
 the riders that you ask, and I'll send more %b
 to ride them down directly.  Let them fend %b
 us off with empty arms, and answer for %b
-their treacheries or vanish; no one waits this war.
+their treacheries, or vanish from this growing war."
+%p
+He took a drink of wine.  "And as they ride, %b
+we'll send a group to skirmish.  Mobile too, %b
+for though the giants run with massive strides, %b
+they can't outrun a courser.  Let them view %b
+each evening with suspicion; let them find %b
+the darkness full of spears, and feel the wind %b
+where it is not.  We'll come at them behind %b
+a screen of glamour, slough our second skins, %b
+and strike before the circumstances settle in."
 %p
