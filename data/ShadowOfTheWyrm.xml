@@ -31494,6 +31494,7 @@
 			<Armour id="shell_armour">
 				<DescriptionSID>SHELL_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>SHELL_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHELL_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>180</Value>
 				<Weight>
 					<Pounds>45</Pounds>
@@ -31513,7 +31514,8 @@
 			<Armour id="plate_armour">
 				<DescriptionSID>PLATE_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>PLATE_ARMOUR_USAGE_SID</UsageDescriptionSID>
-				<Value>200</Value>
+				<CodexDescriptionSID>PLATE_ARMOURE_CODEX_SID</CodexDescriptionSID>
+				<Value>300</Value>
 				<Weight>
 					<Pounds>70</Pounds>
 				</Weight>
@@ -31532,6 +31534,7 @@
 			<Armour id="steel_plate_armour">
 				<DescriptionSID>STEEL_PLATE_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>STEEL_PLATE_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STEEL_PLATE_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>400</Value>
 				<Weight>
 					<Pounds>85</Pounds>
