@@ -31554,9 +31554,10 @@
 			<Armour id="dragonscale_armour">
 				<DescriptionSID>DRAGONSCALE_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>DRAGONSCALE_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DRAGONSCALE_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>500</Value>
 				<Weight>
-					<Pounds>30</Pounds>
+					<Pounds>10</Pounds>
 				</Weight>
 				<WornLocation>6</WornLocation>
 				<Material>1</Material>
@@ -31576,6 +31577,7 @@
 			<Armour id="leviathan_armour">
 				<DescriptionSID>LEVIATHAN_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>LEVIATHAN_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LEVIATHAN_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>50</Pounds>
@@ -31598,6 +31600,7 @@
 			<Armour id="colossus_armour">
 				<DescriptionSID>COLOSSUS_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>COLOSSUS_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>COLOSSUS_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>120</Pounds>
@@ -31622,6 +31625,7 @@
 			<Armour id="moloch_armour">
 				<DescriptionSID>MOLOCH_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>MOLOCH_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MOLOCH_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
 					<Pounds>300</Pounds>
