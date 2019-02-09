@@ -31716,6 +31716,7 @@
 			<Armour id="wizard_robes">
 				<DescriptionSID>WIZARD_ROBES_SID</DescriptionSID>
 				<UsageDescriptionSID>WIZARD_ROBES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WIZARD_ROBES_CODEX_SID</CodexDescriptionSID>
 				<Value>120</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -31740,6 +31741,7 @@
 			<Armour id="magic_armour">
 				<DescriptionSID>MAGIC_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>MAGIC_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MAGIC_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -31763,6 +31765,7 @@
 			<Armour id="ethereal_armour">
 				<DescriptionSID>ETHEREAL_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>ETHEREAL_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ETHEREAL_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>250</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -31786,6 +31789,7 @@
 			<Armour id="spirit_mail">
 				<DescriptionSID>SPIRIT_MAIL_SID</DescriptionSID>
 				<UsageDescriptionSID>SPIRIT_MAIL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SPIRIT_MAIL_CODEX_SID</CodexDescriptionSID>
 				<Value>300</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -31809,6 +31813,7 @@
 			<Armour id="chimera_hide">
 				<DescriptionSID>CHIMERA_HIDE_SID</DescriptionSID>
 				<UsageDescriptionSID>CHIMERA_HIDE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CHIMERA_HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>400</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -31828,6 +31833,7 @@
 			<Armour id="abyssal_hide">
 				<DescriptionSID>ABYSSAL_HIDE_SID</DescriptionSID>
 				<UsageDescriptionSID>ABYSSAL_HIDE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ABYSSAL_HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>450</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -31847,6 +31853,7 @@
 			<Armour id="behemoth_hide">
 				<DescriptionSID>BEHEMOTH_HIDE_SID</DescriptionSID>
 				<UsageDescriptionSID>BEHEMOTH_HIDE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BEHEMOTH_HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>500</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -31866,6 +31873,7 @@
 			<Armour id="clothes">
 				<DescriptionSID>CLOTHES_SID</DescriptionSID>
 				<UsageDescriptionSID>CLOTHES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CLOTHES_CODEX_SID</CodexDescriptionSID>
 				<Value>3</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -31885,6 +31893,7 @@
 			<Armour id="wayfarer_clothes">
 				<DescriptionSID>WAYFARER_CLOTHES_SID</DescriptionSID>
 				<UsageDescriptionSID>WAYFARER_CLOTHES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WAYFARER_CLOTHES_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>1</Pounds>
