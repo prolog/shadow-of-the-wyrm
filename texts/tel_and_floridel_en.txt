@@ -2444,3 +2444,13 @@ where it is not.  We'll come at them behind %b
 a screen of glamour, slough our second skins, %b
 and strike before the circumstances settle in."
 %p
+"I want to keep them harried, have them bleed %b
+away their forces, feel each moment pass %b
+and feel the days grow longer.  Let us seize %b
+initiative and hit them hard en masse, %b
+each able-bodied man, each distant hall %b
+contributing together as a sword %b
+against the monsters.  Savagery must fall, %b
+and payment will be made for what they've stirred. %b
+I swear to you we fae shall have the final word."
+%p
