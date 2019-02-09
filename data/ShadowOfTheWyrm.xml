@@ -31649,6 +31649,7 @@
 			<Armour id="tarasque_armour">
 				<DescriptionSID>TARASQUE_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>TARASQUE_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TARASQUE_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>80</Pounds>
@@ -31672,6 +31673,7 @@
 			<Armour id="_robes">
 				<DescriptionSID>ROBES_SID</DescriptionSID>
 				<UsageDescriptionSID>ROBES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ROBES_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -31691,6 +31693,7 @@
 			<Armour id="elven_robes">
 				<DescriptionSID>ELVEN_ROBES_SID</DescriptionSID>
 				<UsageDescriptionSID>ELVEN_ROBES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ELVEN_ROBES_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -31715,7 +31718,7 @@
 				<UsageDescriptionSID>WIZARD_ROBES_USAGE_SID</UsageDescriptionSID>
 				<Value>120</Value>
 				<Weight>
-					<Pounds>1</Pounds>
+					<Pounds>2</Pounds>
 				</Weight>
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
