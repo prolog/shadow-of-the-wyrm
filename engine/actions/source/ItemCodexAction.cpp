@@ -7,6 +7,7 @@
 #include "ScreenTitleTextKeys.hpp"
 #include "TextDisplayFormatter.hpp"
 #include "TextDisplayScreen.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
@@ -79,7 +80,15 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
 
     ostringstream desc;
-    desc << StringTable::get(item->get_description_sid()) << " (" << item_type << ")";
+    desc << StringTable::get(item->get_description_sid()) << " (" << item_type;
+    
+    bool is_artifact = item->get_artifact();
+    if (is_artifact)
+    {
+      desc << " - " << StringTable::get(TextKeys::ARTIFACT);
+    }
+
+    desc << ")";
 
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, desc.str()));
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));

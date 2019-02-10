@@ -178,6 +178,7 @@ class TextKeys
     static const std::string MEMBERSHIPS;
     static const std::string NOT_APPLICABLE_ABRV;
     static const std::string CARRYING_CAPACITY;
+    static const std::string ARTIFACT;
 
   protected:
     TextKeys();

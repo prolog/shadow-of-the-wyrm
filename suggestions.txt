@@ -2,7 +2,7 @@ Me:
 - For v1.0.3 - start the item codex ('c')!
 - Artifact flag codex
 - Make sure glow respected
-- Warping should not work in Telari or the cosmos
+- Shield punch!
 - Write script to check for any items without CodexDescriptionSID
 - Random villages should include the race in the description prior to
   generation.
