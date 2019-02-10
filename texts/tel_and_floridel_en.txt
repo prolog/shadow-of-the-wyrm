@@ -2454,3 +2454,23 @@ against the monsters.  Savagery must fall, %b
 and payment will be made for what they've stirred. %b
 I swear to you we fae shall have the final word."
 %p
+Agreement in the room, and Alcius %b
+received a nod from Tel expressing thanks. %b
+The plan was sound.  The time had come to stress %b
+their fastest horses.  Food was brought, and drinks %b
+refilled.  They then decided Tel would lead %b
+the force against the giants, Alcius %b
+against the exiles.  Then they'd surely see %b
+how well they'd learned from yesterday, and cast %b
+the dice to see if what they thought had come to pass.
+%p
+His cup now emptied, Tel went to his room %b
+to meet with Floridel.  Her focus set %b
+upon her books, she didn't hear him come %b
+and stand behind her as she tried to assess %b
+the meaning in that kenning.  Revenant - %b
+awake - she felt his presence, turned to see %b
+his grim-set face.  He wanted her consent. %b
+She moved in close to hold him, then to plea %b
+for all the things a soldier cannot guarantee.
+%p

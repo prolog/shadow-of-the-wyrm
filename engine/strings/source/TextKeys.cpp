@@ -182,3 +182,5 @@ const string TextKeys::NO_NEW_CHARACTERS = "NO_NEW_CHARACTERS";
 const string TextKeys::MEMBERSHIPS = "MEMBERSHIPS";
 const string TextKeys::NOT_APPLICABLE_ABRV = "NOT_APPLICABLE_ABRV";
 const string TextKeys::CARRYING_CAPACITY = "CARRYING_CAPACITY";
+const string TextKeys::ARTIFACT = "ARTIFACT";
+

@@ -31789,7 +31789,7 @@
 			<Armour id="spirit_mail">
 				<DescriptionSID>SPIRIT_MAIL_SID</DescriptionSID>
 				<UsageDescriptionSID>SPIRIT_MAIL_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>SPIRIT_MAIL_CODEX_SID</CodexDescriptionSID>
+				<CodexDescriptionSID>SPIRIT_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>300</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -31913,6 +31913,7 @@
 			<Armour id="linothorax">
 				<DescriptionSID>LINOTHORAX_SID</DescriptionSID>
 				<UsageDescriptionSID>LINOTHORAX_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LINOTHORAX_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -31932,6 +31933,7 @@
 			<Armour id="leather_armour">
 				<DescriptionSID>LEATHER_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LEATHER_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>75</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -31965,6 +31967,7 @@
 			<Armour id="buckler">
 				<DescriptionSID>BUCKLER_SID</DescriptionSID>
 				<UsageDescriptionSID>BUCKLER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BUCKLER_CODEX_SID</CodexDescriptionSID>
 				<Value>50</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -31984,6 +31987,7 @@
 			<Armour id="magic_shield">
 				<DescriptionSID>MAGIC_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>MAGIC_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MAGIC_SHIELD_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -32006,6 +32010,7 @@
 			<Armour id="spirit_shield">
 				<DescriptionSID>SPIRIT_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>SPIRIT_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SPIRIT_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>350</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -32029,6 +32034,7 @@
 			<Armour id="elemental_shield">
 				<DescriptionSID>ELEMENTAL_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>ELEMENTAL_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ELEMENTAL_SHIELD_CODEX_SID</CodexDescriptionSID>
 				<Value>500</Value>
 				<Weight>
 					<Pounds>4</Pounds>
