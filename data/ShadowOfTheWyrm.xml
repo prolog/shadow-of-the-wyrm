@@ -32059,6 +32059,7 @@
 			<Armour id="faerie_shield">
 				<DescriptionSID>FAERIE_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>FAERIE_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FAERIE_SHIELD_CODEX_SID</CodexDescriptionSID>
 				<Value>1250</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -32097,9 +32098,10 @@
 			<Armour id="wyrm_ward">
 				<DescriptionSID>WYRM_WARD_SID</DescriptionSID>
 				<UsageDescriptionSID>WYRM_WARD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WYRM_WARD_CODEX_SID</CodexDescriptionSID>
 				<Value>1250</Value>
 				<Weight>
-					<Pounds>2</Pounds>
+					<Pounds>12</Pounds>
 				</Weight>
 				<WornLocation>5</WornLocation>
 				<Artifact>1</Artifact>
