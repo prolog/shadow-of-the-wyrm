@@ -32116,6 +32116,7 @@
 			<Armour id="iron_shield">
 				<DescriptionSID>IRON_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>IRON_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>IRON_SHIELD_CODEX_SID</CodexDescriptionSID>
 				<Value>75</Value>
 				<Weight>
 					<Pounds>7</Pounds>
@@ -32135,6 +32136,7 @@
 			<Armour id="kite_shield">
 				<DescriptionSID>KITE_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>KITE_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>KITE_SHIELD_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
 					<Pounds>8</Pounds>

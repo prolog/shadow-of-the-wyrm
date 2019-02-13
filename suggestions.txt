@@ -1,6 +1,5 @@
 Me:
 - For v1.0.3 - start the item codex ('c')!
-- Artifact flag codex
 - Make sure glow respected
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID

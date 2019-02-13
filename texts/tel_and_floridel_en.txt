@@ -2474,3 +2474,13 @@ his grim-set face.  He wanted her consent. %b
 She moved in close to hold him, then to plea %b
 for all the things a soldier cannot guarantee.
 %p
+"I know that I will always be the girl %b
+who met you in the uplands.  Queen or not, %b
+I'd follow you forever, 'til the world %b
+fell out from under us.  And now I'm caught %b
+like every soldier's wife.  We die and die %b
+again as word arrives: the days are thieves %b
+who pluck the obols deftly from our eyes. %b
+The dead are blessed - they never have to see %b
+that grief is an uncountable infinity."
+%p
