@@ -32156,6 +32156,7 @@
 			<Armour id="dragon_shield">
 				<DescriptionSID>DRAGON_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>DRAGON_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DRAGON_SHIELD_CODEX_SID</CodexDescriptionSID>
 				<Value>180</Value>
 				<Weight>
 					<Pounds>8</Pounds>
@@ -32178,6 +32179,7 @@
 			<Armour id="tower_shield">
 				<DescriptionSID>TOWER_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>TOWER_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TOWER_SHIELD_CODEX_SID</CodexDescriptionSID>
 				<Value>135</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -32197,6 +32199,7 @@
 			<Armour id="_cloak">
 				<DescriptionSID>CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>CLOAK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CLOAK_CODEX_SID</CodexDescriptionSID>
 				<Value>2</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -32216,6 +32219,7 @@
 			<Armour id="calara_cloak">
 				<DescriptionSID>CALARA_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>CALARA_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CALARA_CLOAK_CODEX_SID</CodexDescriptionSID>
 				<Value>2</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -32249,6 +32253,7 @@
 			<Armour id="hunters_cloak">
 				<DescriptionSID>HUNTERS_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>HUNTERS_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HUNTERS_CLOAK_CODEX_SID</CodexDescriptionSID>
 				<Value>6</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -32268,6 +32273,7 @@
 			<Armour id="heavy_cloak">
 				<DescriptionSID>HEAVY_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>HEAVY_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HEAVY_CLOAK_CODEX_SID</CodexDescriptionSID>
 				<Value>12</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -32287,6 +32293,7 @@
 			<Armour id="wintersea_mantle">
 				<DescriptionSID>WINTERSEA_MANTLE_SID</DescriptionSID>
 				<UsageDescriptionSID>WINTERSEA_MANTLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WINTERSEA_MANTLE_CODEX_SID</CodexDescriptionSID>
 				<Value>1260</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -32308,6 +32315,7 @@
 			<Armour id="holy_mantle">
 				<DescriptionSID>HOLY_MANTLE_SID</DescriptionSID>
 				<UsageDescriptionSID>HOLY_MANTLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HOLY_MANTLE_CODEX_SID</CodexDescriptionSID>
 				<Value>466</Value>
 				<Weight>
 					<Pounds>2</Pounds>
