@@ -32332,6 +32332,7 @@
 			<Armour id="gildis_cloak">
 				<DescriptionSID>GILDIS_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>GILDIS_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GILDIS_CLOAK_CODEX_SID</CodexDescriptionSID>
 				<Value>416</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -32355,6 +32356,7 @@
 			<Armour id="cynehild_shroud">
 				<DescriptionSID>CYNEHILD_SHROUD_SID</DescriptionSID>
 				<UsageDescriptionSID>CYNEHILD_SHROUD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CYNEHILD_SHROUD_CODEX_SID</CodexDescriptionSID>
 				<Value>320</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -32373,6 +32375,7 @@
 			<Armour id="shroud_fate">
 				<DescriptionSID>SHROUD_FATE_SID</DescriptionSID>
 				<UsageDescriptionSID>SHROUD_FATE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHROUD_FATE_CODEX_SID</CodexDescriptionSID>
 				<Value>1820</Value>
 				<Weight>
 					<Pounds>1</Pounds>
