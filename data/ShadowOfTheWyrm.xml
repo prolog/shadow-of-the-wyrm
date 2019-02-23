@@ -32473,9 +32473,10 @@
 			<Armour id="iron_boots">
 				<DescriptionSID>IRON_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>IRON_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>IRON_BOOTS_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
-					<Pounds>6</Pounds>
+					<Pounds>10</Pounds>
 				</Weight>
 				<WornLocation>8</WornLocation>
 				<Material>3</Material>
@@ -32487,14 +32488,15 @@
 					</Property>
 				</Properties>
 				<Evade>0</Evade>
-				<Soak>2</Soak>
+				<Soak>3</Soak>
 			</Armour>
 			<Armour id="steel_boots">
 				<DescriptionSID>STEEL_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>STEEL_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STEEL_BOOTS_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
-					<Pounds>8</Pounds>
+					<Pounds>6</Pounds>
 				</Weight>
 				<WornLocation>8</WornLocation>
 				<Material>6</Material>
@@ -32511,6 +32513,7 @@
 			<Armour id="dragon_boots">
 				<DescriptionSID>DRAGON_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>DRAGON_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DRAGON_BOOTS_CODEX_SID</CodexDescriptionSID>
 				<Value>250</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -32533,6 +32536,7 @@
 			<Armour id="knights_boots">
 				<DescriptionSID>KNIGHTS_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>KNIGHTS_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>KNIGHTS_BOOTS_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>8</Pounds>
@@ -32552,6 +32556,7 @@
 			<Armour id="shoes">
 				<DescriptionSID>SHOES_SID</DescriptionSID>
 				<UsageDescriptionSID>SHOES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHOES_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -32571,6 +32576,7 @@
 			<Armour id="akos_akari">
 				<DescriptionSID>AKOS_AKARI_SID</DescriptionSID>
 				<UsageDescriptionSID>AKOS_AKARI_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>AKOS_AKARI_CODEX_SID</CodexDescriptionSID>
 				<Value>1960</Value>
 				<Weight>
 					<Pounds>8</Pounds>
@@ -32593,6 +32599,7 @@
 			<Ring id="falcons_eye">
 				<DescriptionSID>FALCONS_EYE_SID</DescriptionSID>
 				<UsageDescriptionSID>FALCONS_EYE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FALCONS_EYE_CODEX_SID</CodexDescriptionSID>
 				<Value>1550</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32613,6 +32620,7 @@
 			<Ring id="carpathos">
 				<DescriptionSID>CARPATHOS_SID</DescriptionSID>
 				<UsageDescriptionSID>CARPATHOS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARPATHOS_CODEX_SID</CodexDescriptionSID>
 				<Value>1550</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32633,6 +32641,7 @@
 			<Ring id="asturias">
 				<DescriptionSID>ASTURIAS_SID</DescriptionSID>
 				<UsageDescriptionSID>ASTURIAS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ASTURIAS_CODEX_SID</CodexDescriptionSID>
 				<Value>1950</Value>
 				<Weight>
 					<Pounds>0</Pounds>
