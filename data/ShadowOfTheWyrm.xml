@@ -32399,6 +32399,7 @@
 			<Armour id="leather_boots">
 				<DescriptionSID>LEATHER_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LEATHER_BOOTS_CODEX_SID</CodexDescriptionSID>
 				<Value>50</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -32432,6 +32433,7 @@
 			<Armour id="thiefs_boots">
 				<DescriptionSID>THIEFS_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>THIEFS_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>THIEFS_BOOTS_CODEX_SID</CodexDescriptionSID>
 				<Value>80</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -32451,6 +32453,7 @@
 			<Armour id="magic_boots">
 				<DescriptionSID>MAGIC_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>MAGIC_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MAGIC_BOOTS_CODEX_SID</CodexDescriptionSID>
 				<Value>160</Value>
 				<Weight>
 					<Pounds>2</Pounds>
