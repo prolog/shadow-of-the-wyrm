@@ -31,6 +31,7 @@ Me:
 - Penalties from bloodied, exposed should also scale with level.
 - When items are destroyed in shops, their value should be be added to the
   unpaid bill.
+- The Ybari/Asturias?
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
