@@ -32659,6 +32659,7 @@
 			<Ring id="aran_fee">
 				<DescriptionSID>ARAN_FEE_SID</DescriptionSID>
 				<UsageDescriptionSID>ARAN_FEE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ARAN_FEE_CODEX_SID</CodexDescriptionSID>
 				<Value>2260</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32682,6 +32683,7 @@
 				<UnidentifiedDescriptionSID>UNID_FENCERS_RING_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FENCERS_RING_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FENCERS_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FENCERS_RING_CODEX_SID</CodexDescriptionSID>
 				<Value>105</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32699,6 +32701,7 @@
 				<UnidentifiedDescriptionSID>UNID_WITHERING_RING_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>WITHERING_RING_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_WITHERING_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>WITHERING_RING_CODEX_SID</CodexDescriptionSID>
 				<Value>105</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32715,6 +32718,7 @@
 				<UnidentifiedDescriptionSID>UNID_STUMBLING_RING_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>STUMBLING_RING_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_STUMBLING_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>STUMBLING_RING_CODEX_SID</CodexDescriptionSID>
 				<Value>105</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32733,6 +32737,7 @@
 				<UnidentifiedDescriptionSID>UNID_BARBARIANS_RING_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>BARBARIANS_RING_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_BARBARIANS_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>BARBARIANS_RING_CODEX_SID</CodexDescriptionSID>
 				<Value>205</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32750,6 +32755,7 @@
 				<UnidentifiedDescriptionSID>UNID_GUILDMASTERS_RING_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>GUILDMASTERS_RING_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_GUILDMASTERS_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>GUILDMASTERS_RING_CODEX_SID</CodexDescriptionSID>
 				<Value>225</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32766,6 +32772,7 @@
 				<UnidentifiedDescriptionSID>UNID_KNIGHTS_RING_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>KNIGHTS_RING_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_KNIGHTS_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>KNIGHTS_RING_CODEX_SID</CodexDescriptionSID>
 				<Value>225</Value>
 				<Weight>
 					<Pounds>0</Pounds>
