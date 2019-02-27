@@ -32789,6 +32789,7 @@
 				<UnidentifiedDescriptionSID>UNID_RING_IRON_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RING_IRON_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RING_IRON_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RING_IRON_CODEX_SID</CodexDescriptionSID>
 				<Value>325</Value>
 				<Weight>
 					<Pounds>0</Pounds>
