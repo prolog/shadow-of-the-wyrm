@@ -2514,3 +2514,13 @@ the ancient shelves.  A clutch of books would fill %b
 a year for many scribes; their sum amassed %b
 a monument that hinted at a distant past.
 %p
+For twenty minutes, Floridel went down %b
+a maze of corridors beneath the hall. %b
+The passages grew small, the air around %b
+her thinner, and the chill of it recalled %b
+the nights she'd spent out on the moors, her flock %b
+a ring around her.  Suddenly, the door. %b
+She felt its driftwood planks within the rock. %b
+Each time she came, it shifted, speaking for %b
+the magics of the faceless folk who came before.
+%p
