@@ -2504,13 +2504,13 @@ her mind-hoard as the hours dwindled on, %b
 as absence formed an answer, and she'd snuffed %b
 the riddle casting shadows out beyond the dusk.
 %p
-She lit a covered lantern, then she left %b
+She found her warmest cloak, and then she left %b
 to find some peace within the undertow %b
 of Calasim, the sunless sea.  Content %b
 to let the winding stacks take her below %b
 the fairy hall, to something older still, %b
 she lost herself in language as she passed %b
-the ancient shelves.  A clutch of books would fill %b
+the ancient shelves.  Each clutch of books would fill %b
 a year for many scribes; their sum amassed %b
 a monument that hinted at a distant past.
 %p
@@ -2523,4 +2523,14 @@ a ring around her.  Suddenly, the door. %b
 She felt its driftwood planks within the rock. %b
 Each time she came, it shifted, speaking for %b
 the magics of the faceless folk who came before.
+%p
+The door knew her intention, swinging out %b
+to bare a suffocating gloom.  With fire %b
+forbidden, visitors were forced to light %b
+their way by different means.  So standing by %b
+that murky darkness, Floridel now spoke %b
+a single word, and were-light fluttered up %b
+to land in hanging braziers, where it broke %b
+the blackness, dim as distant star-light plucked %b
+from northern skies, and lit her way from high above.
 %p
