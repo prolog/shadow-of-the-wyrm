@@ -32811,6 +32811,7 @@
 				<UnidentifiedDescriptionSID>UNID_RING_FLAME_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RING_FLAME_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RING_FLAME_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RING_FLAME_CODEX_SID</CodexDescriptionSID>
 				<Value>325</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32830,6 +32831,7 @@
 				<UnidentifiedDescriptionSID>UNID_RING_ICE_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RING_ICE_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RING_ICE_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RING_ICE_CODEX_SID</CodexDescriptionSID>
 				<Value>325</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32849,6 +32851,7 @@
 				<UnidentifiedDescriptionSID>UNID_RING_ACID_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RING_ACID_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RING_ACID_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RING_ACID_CODEX_SID</CodexDescriptionSID>
 				<Value>325</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32868,6 +32871,7 @@
 				<UnidentifiedDescriptionSID>UNID_RING_POISON_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RING_POISON_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RING_POISON_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RING_POISON_CODEX_SID</CodexDescriptionSID>
 				<Value>325</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32887,6 +32891,7 @@
 				<UnidentifiedDescriptionSID>UNID_RING_HOLINESS_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RING_HOLINESS_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RING_HOLINESS_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RING_HOLINESS_CODEX_SID</CodexDescriptionSID>
 				<Value>325</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32906,6 +32911,7 @@
 				<UnidentifiedDescriptionSID>UNID_RING_SHADOWS_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RING_SHADOWS_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RING_SHADOWS_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RING_SHADOWS_CODEX_SID</CodexDescriptionSID>
 				<Value>325</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32925,6 +32931,7 @@
 				<UnidentifiedDescriptionSID>UNID_RING_SORCERY_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RING_SORCERY_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RING_SORCERY_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RING_SORCERY_CODEX_SID</CodexDescriptionSID>
 				<Value>325</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32944,6 +32951,7 @@
 				<UnidentifiedDescriptionSID>UNID_RING_LIGHTNING_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RING_LIGHTNING_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RING_LIGHTNING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RING_LIGHTNING_CODEX_SID</CodexDescriptionSID>
 				<Value>325</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -32983,7 +32991,7 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
-					<Modifier>1</Modifier>
+					<Modifier>2</Modifier>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
