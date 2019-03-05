@@ -32971,6 +32971,7 @@
 			<Weapon id="brass_knuckles">
 				<DescriptionSID>BRASS_KNUCKLES_SID</DescriptionSID>
 				<UsageDescriptionSID>BRASS_KNUCKLES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BRASS_KNUCKLES_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -32998,6 +32999,7 @@
 			<Weapon id="spiked_glove">
 				<DescriptionSID>SPIKED_GLOVE_SID</DescriptionSID>
 				<UsageDescriptionSID>SPIKED_GLOVE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SPIKED_GLOVE_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -33018,13 +33020,14 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
-					<Modifier>2</Modifier>
+					<Modifier>3</Modifier>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="iron_claw">
 				<DescriptionSID>IRON_CLAW_SID</DescriptionSID>
 				<UsageDescriptionSID>IRON_CLAW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>IRON_CLAW_CODEX_SID</CodexDescriptionSID>
 				<Value>80</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -33045,7 +33048,7 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>8</NumSides>
-					<Modifier>4</Modifier>
+					<Modifier>5</Modifier>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
