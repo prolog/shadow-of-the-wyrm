@@ -33344,6 +33344,7 @@
 			<Weapon id="ironsword">
 				<DescriptionSID>IRONSWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>IRONSWORD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>IRONSWORD_CODEX_SID</CodexDescriptionSID>
 				<Value>1250</Value>
 				<Weight>
 					<Pounds>12</Pounds>
@@ -33365,9 +33366,41 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="choros_greatsword">
+				<DescriptionSID>CHOROS_GREATSWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>CHOROS_GREATSWORD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CHOROS_GREATSWORD_CODEX_SID</CodexDescriptionSID>
+				<Value>2600</Value>
+				<Weight>
+					<Pounds>70</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<HandsRequired>2</HandsRequired>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.30</Slash>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>50</Difficulty>
+				<Speed>12</Speed>
+				<Damage>
+					<NumDice>8</NumDice>
+					<NumSides>10</NumSides>
+					<Type>0</Type>
+					<Slays>
+						<Slay>05_fae</Slay>
+						<Slay>02_woodelf</Slay>
+						<Slay>03_mountainelf</Slay>
+					</Slays>
+				</Damage>
+			</Weapon>
 			<Weapon id="inferno">
 				<DescriptionSID>INFERNO_SID</DescriptionSID>
 				<UsageDescriptionSID>INFERNO_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>INFERNO_CODEX_SID</CodexDescriptionSID>
 				<Value>1800</Value>
 				<Weight>
 					<Pounds>14</Pounds>
@@ -33418,36 +33451,6 @@
 						<Slay>_humanoid</Slay>
 						<Slay>_animal</Slay>
 						<Slay>_divine</Slay>
-					</Slays>
-				</Damage>
-			</Weapon>
-			<Weapon id="choros_greatsword">
-				<DescriptionSID>CHOROS_GREATSWORD_SID</DescriptionSID>
-				<UsageDescriptionSID>CHOROS_GREATSWORD_USAGE_SID</UsageDescriptionSID>
-				<Value>2600</Value>
-				<Weight>
-					<Pounds>70</Pounds>
-				</Weight>
-				<WornLocation>4</WornLocation>
-				<Artifact>1</Artifact>
-				<HandsRequired>2</HandsRequired>
-				<Material>3</Material>
-				<DangerLevel>-1</DangerLevel>
-				<Resistances>
-					<Slash>0.30</Slash>
-				</Resistances>
-				<Skill>1002</Skill>
-				<RangedSkill>2001</RangedSkill>
-				<Difficulty>50</Difficulty>
-				<Speed>12</Speed>
-				<Damage>
-					<NumDice>8</NumDice>
-					<NumSides>10</NumSides>
-					<Type>0</Type>
-					<Slays>
-						<Slay>05_fae</Slay>
-						<Slay>02_woodelf</Slay>
-						<Slay>03_mountainelf</Slay>
 					</Slays>
 				</Damage>
 			</Weapon>
