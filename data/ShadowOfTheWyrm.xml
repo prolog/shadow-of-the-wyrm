@@ -33055,6 +33055,7 @@
 			<Weapon id="iron_hammer">
 				<DescriptionSID>IRON_HAMMER_SID</DescriptionSID>
 				<UsageDescriptionSID>IRON_HAMMER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>IRON_HAMMER_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
 					<Pounds>12</Pounds>
@@ -33081,6 +33082,7 @@
 			<Weapon id="dagger">
 				<DescriptionSID>DAGGER_SID</DescriptionSID>
 				<UsageDescriptionSID>DAGGER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DAGGER_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -33107,6 +33109,7 @@
 			<Weapon id="athame">
 				<DescriptionSID>ATHAME_SID</DescriptionSID>
 				<UsageDescriptionSID>ATHAME_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ATHAME_CODEX_SID</CodexDescriptionSID>
 				<Value>90</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -33137,11 +33140,13 @@
 			<Weapon id="athame_winter">
 				<DescriptionSID>ATHAME_WINTER_SID</DescriptionSID>
 				<UsageDescriptionSID>ATHAME_WINTER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ATHAME_WINTER_CODEX_SID</CodexDescriptionSID>
 				<Value>2400</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
+				<AutoCurse>1</AutoCurse>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
@@ -33169,6 +33174,7 @@
 			<Weapon id="fatebender">
 				<DescriptionSID>FATEBENDER_SID</DescriptionSID>
 				<UsageDescriptionSID>FATEBENDER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FATEBENDER_CODEX_SID</CodexDescriptionSID>
 				<Value>2400</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -33199,6 +33205,7 @@
 			<Weapon id="akkar">
 				<DescriptionSID>AKKAR_SID</DescriptionSID>
 				<UsageDescriptionSID>AKKAR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>AKKAR_CODEX_SID</CodexDescriptionSID>
 				<Value>2700</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -33216,7 +33223,7 @@
 				<RangedSkill>2005</RangedSkill>
 				<Difficulty>40</Difficulty>
 				<Speed>1</Speed>
-				<Damage>
+				<Damage incorporeal="1">
 					<NumDice>15</NumDice>
 					<NumSides>2</NumSides>
 					<Modifier>10</Modifier>
@@ -33230,6 +33237,7 @@
 			<Weapon id="short_sword">
 				<DescriptionSID>SHORT_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>SHORT_SWORD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHORT_SWORD_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -33256,6 +33264,7 @@
 			<Weapon id="lora">
 				<DescriptionSID>LORA_SID</DescriptionSID>
 				<UsageDescriptionSID>LORA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LORA_CODEX_SID</CodexDescriptionSID>
 				<Value>2000</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -33283,6 +33292,7 @@
 			<Weapon id="forger">
 				<DescriptionSID>FORGER_SID</DescriptionSID>
 				<UsageDescriptionSID>FORGER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FORGER_CODEX_SID</CodexDescriptionSID>
 				<Value>500</Value>
 				<Weight>
 					<Pounds>12</Pounds>
@@ -33307,6 +33317,7 @@
 			<Weapon id="brightblade">
 				<DescriptionSID>BRIGHTBLADE_SID</DescriptionSID>
 				<UsageDescriptionSID>BRIGHTBLADE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BRIGHTBLADE_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>9</Pounds>
