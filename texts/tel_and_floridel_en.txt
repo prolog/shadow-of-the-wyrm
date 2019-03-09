@@ -2534,3 +2534,13 @@ to land in hanging braziers, where it broke %b
 the blackness, dim as distant star-light plucked %b
 from northern skies, and lit her way from high above.
 %p
+She entered in, the creaking door behind %b
+her swinging shut, and as the menfolk made %b
+their way to war again, she used the time %b
+to find a lonely carrel.  On her way %b
+she plucked out books whose covers moved and swayed %b
+with scenes instead of title-text.  Some flew %b
+above her gracefully, while others played %b
+like fox-kits - tumbling, raucous - and she knew %b
+their truths would be elusive once attended to.
+%p
