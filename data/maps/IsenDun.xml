@@ -35,6 +35,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>sweet_old_dog</ID>
+				<Coord>
+					<Row>0</Row>
+					<Col>29</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>_shopkeeper</ID>
 				<Coord>
 					<Row>15</Row>

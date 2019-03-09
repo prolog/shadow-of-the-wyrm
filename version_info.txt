@@ -6,6 +6,8 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 
 - Stanzas for "Tel and Floridel".
 
+- New creatures: sweet old dog.
+
 - Bug fixes:
 
   - Specifying a creature in the game XML with an invalid 
