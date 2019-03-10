@@ -40162,6 +40162,7 @@
 			<Item id="_dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>
 				<UsageDescriptionSID>DIRT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DIRT_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40173,6 +40174,7 @@
 			<Item id="shovel">
 				<DescriptionSID>SHOVEL_SID</DescriptionSID>
 				<UsageDescriptionSID>SHOVEL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHOVEL_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -40194,6 +40196,7 @@
 			<Item id="talmai_body">
 				<DescriptionSID>TALMAI_BODY_SID</DescriptionSID>
 				<UsageDescriptionSID>TALMAI_BODY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TALMAI_BODY_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>120</Pounds>
@@ -40208,6 +40211,7 @@
 			<Item id="mummified_corpse">
 				<DescriptionSID>MUMMIFIED_CORPSE_SID</DescriptionSID>
 				<UsageDescriptionSID>MUMMIFIED_CORPSE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUMMIFIED_CORPSE_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>150</Pounds>
@@ -40222,6 +40226,7 @@
 			<Item id="mum_corpse_amaur_1">
 				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_1_SID</DescriptionSID>
 				<UsageDescriptionSID>MUMMIFIED_CORPSE_AMAUR_1_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUMMIFIED_CORPSE_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>150</Pounds>
@@ -40236,6 +40241,7 @@
 			<Item id="mum_corpse_amaur_2">
 				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_2_SID</DescriptionSID>
 				<UsageDescriptionSID>MUMMIFIED_CORPSE_AMAUR_2_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUMMIFIED_CORPSE_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>150</Pounds>
@@ -40250,6 +40256,7 @@
 			<Item id="mum_corpse_amaur_3">
 				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_3_SID</DescriptionSID>
 				<UsageDescriptionSID>MUMMIFIED_CORPSE_AMAUR_3_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUMMIFIED_CORPSE_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>150</Pounds>
@@ -40264,6 +40271,7 @@
 			<Item id="_pile_of_bones">
 				<DescriptionSID>PILE_OF_BONES_SID</DescriptionSID>
 				<UsageDescriptionSID>PILE_OF_BONES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PILE_OF_BONES_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>20</Pounds>
