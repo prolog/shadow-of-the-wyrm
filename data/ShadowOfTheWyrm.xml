@@ -40286,6 +40286,7 @@
 			<Item id="handful_gleaming_wyrm_scales">
 				<DescriptionSID>HANDFUL_GLEAMING_WYRM_SCALES_SID</DescriptionSID>
 				<UsageDescriptionSID>HANDFUL_GLEAMING_WYRM_SCALES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HANDFUL_GLEAMING_WYRM_SCALES_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -40297,6 +40298,7 @@
 			<Item id="_iron_ingot">
 				<DescriptionSID>IRON_INGOT_SID</DescriptionSID>
 				<UsageDescriptionSID>IRON_INGOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>IRON_INGOT_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -40313,6 +40315,7 @@
 			<Item id="_steel_ingot">
 				<DescriptionSID>STEEL_INGOT_SID</DescriptionSID>
 				<UsageDescriptionSID>STEEL_INGOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STEEL_INGOT_CODEX_SID</CodexDescriptionSID>
 				<Value>25</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -40329,6 +40332,7 @@
 			<Item id="_lump_gold">
 				<DescriptionSID>LUMP_GOLD_SID</DescriptionSID>
 				<UsageDescriptionSID>LUMP_GOLD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LUMP_GOLD_CODEX_SID</CodexDescriptionSID>
 				<Value>44</Value>
 				<Weight>
 					<Pounds>0</Pounds>

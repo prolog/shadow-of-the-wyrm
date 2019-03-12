@@ -25,6 +25,7 @@ Me:
 - The guarded, empty areas in Carcassia C2 should lead to some kind of
   dungeon/special area.
 - Summonings
+- Clump of bog iron for swamps
 - Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
@@ -42,6 +43,7 @@ Me:
 - Revisit how values are updated after enchantment.
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
+- The vaults of the old dwarven-kings
 - Creatures should have a chance to follow up/down stairs with special
   case for returning to overworld.  Chance should be based on hostility
   and an Escape roll.  Update Guidebook.
