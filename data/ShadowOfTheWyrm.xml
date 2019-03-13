@@ -36261,6 +36261,7 @@
 			<Food id="_apple">
 				<DescriptionSID>APPLE_SID</DescriptionSID>
 				<UsageDescriptionSID>APPLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>APPLE_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36442,6 +36443,7 @@
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>CHERRIES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CHERRIES_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36467,6 +36469,7 @@
 			<Food id="_peach">
 				<DescriptionSID>PEACH_SID</DescriptionSID>
 				<UsageDescriptionSID>PEACH_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PEACH_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36492,6 +36495,7 @@
 			<Food id="_olive">
 				<DescriptionSID>OLIVE_SID</DescriptionSID>
 				<UsageDescriptionSID>OLIVE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>OLIVE_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40350,6 +40354,7 @@
 			<Item id="_magici_shard">
 				<DescriptionSID>MAGICI_SHARD_SID</DescriptionSID>
 				<UsageDescriptionSID>MAGICI_SHARD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MAGICI_SHARD_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -40364,6 +40369,7 @@
 			<Item id="_coal">
 				<DescriptionSID>COAL_SID</DescriptionSID>
 				<UsageDescriptionSID>COAL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>COAL_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -40388,6 +40394,7 @@
 			<Item id="_apple_seed">
 				<DescriptionSID>APPLE_SEED_SID</DescriptionSID>
 				<UsageDescriptionSID>APPLE_SEED_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>APPLE_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40409,6 +40416,7 @@
 			<Item id="_cherry_pit">
 				<DescriptionSID>CHERRY_PIT_SID</DescriptionSID>
 				<UsageDescriptionSID>CHERRY_PIT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CHERRIES_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40430,6 +40438,7 @@
 			<Item id="_peach_pit">
 				<DescriptionSID>PEACH_PIT_SID</DescriptionSID>
 				<UsageDescriptionSID>PEACH_PIT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PEACH_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40451,6 +40460,7 @@
 			<Item id="_olive_pit">
 				<DescriptionSID>OLIVE_PIT_SID</DescriptionSID>
 				<UsageDescriptionSID>OLIVE_PIT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>OLIVE_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
