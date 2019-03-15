@@ -36521,6 +36521,7 @@
 			<Food id="_plum">
 				<DescriptionSID>PLUM_SID</DescriptionSID>
 				<UsageDescriptionSID>PLUM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PLUM_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40482,6 +40483,7 @@
 			<Item id="_plum_pit">
 				<DescriptionSID>PLUM_PIT_SID</DescriptionSID>
 				<UsageDescriptionSID>PLUM_PIT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PLUM_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
