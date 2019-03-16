@@ -36547,6 +36547,7 @@
 			<Food id="_pear">
 				<DescriptionSID>PEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>PEAR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PEAR_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40505,6 +40506,7 @@
 			<Item id="_pear_seed">
 				<DescriptionSID>PEAR_SEED_SID</DescriptionSID>
 				<UsageDescriptionSID>PEAR_SEED_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PEAR_SEED_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
