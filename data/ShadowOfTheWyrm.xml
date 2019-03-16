@@ -36573,6 +36573,7 @@
 			<Food id="_golden_apple">
 				<DescriptionSID>GOLDEN_APPLE_SID</DescriptionSID>
 				<UsageDescriptionSID>GOLDEN_APPLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GOLDEN_APPLE_CODEX_SID</CodexDescriptionSID>
 				<Value>220</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36599,6 +36600,7 @@
 			<Food id="_silver_apple">
 				<DescriptionSID>SILVER_APPLE_SID</DescriptionSID>
 				<UsageDescriptionSID>SILVER_APPLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SILVER_APPLE_CODEX_SID</CodexDescriptionSID>
 				<Value>220</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36625,6 +36627,7 @@
 			<Food id="_vegetable_1">
 				<DescriptionSID>VEGETABLE1_SID</DescriptionSID>
 				<UsageDescriptionSID>VEGETABLE1_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VEGETABLE1_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36644,6 +36647,7 @@
 			<Food id="_vegetable_2">
 				<DescriptionSID>VEGETABLE2_SID</DescriptionSID>
 				<UsageDescriptionSID>VEGETABLE2_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VEGETABLE2_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40528,6 +40532,7 @@
 			<Item id="_golden_apple_seed">
 				<DescriptionSID>GOLDEN_APPLE_SEED_SID</DescriptionSID>
 				<UsageDescriptionSID>GOLDEN_APPLE_SEED_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GOLDEN_APPLE_CODEX_SID</CodexDescriptionSID>
 				<Value>22</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40549,6 +40554,7 @@
 			<Item id="_silver_apple_seed">
 				<DescriptionSID>SILVER_APPLE_SEED_SID</DescriptionSID>
 				<UsageDescriptionSID>SILVER_APPLE_SEED_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SILVER_APPLE_CODEX_SID</CodexDescriptionSID>
 				<Value>22</Value>
 				<Weight>
 					<Pounds>0</Pounds>
