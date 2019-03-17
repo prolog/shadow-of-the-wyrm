@@ -36667,6 +36667,7 @@
 			<Food id="_vegetable_3">
 				<DescriptionSID>VEGETABLE3_SID</DescriptionSID>
 				<UsageDescriptionSID>VEGETABLE3_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VEGETABLE3_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36686,6 +36687,7 @@
 			<Food id="_vegetable_4">
 				<DescriptionSID>VEGETABLE4_SID</DescriptionSID>
 				<UsageDescriptionSID>VEGETABLE4_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VEGETABLE4_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36705,6 +36707,7 @@
 			<Food id="_vegetable_5">
 				<DescriptionSID>VEGETABLE5_SID</DescriptionSID>
 				<UsageDescriptionSID>VEGETABLE5_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VEGETABLE5_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36724,6 +36727,7 @@
 			<Food id="_vegetable_6">
 				<DescriptionSID>VEGETABLE6_SID</DescriptionSID>
 				<UsageDescriptionSID>VEGETABLE6_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VEGETABLE6_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36743,6 +36747,7 @@
 			<Food id="food_ration">
 				<DescriptionSID>FOOD_RATION_SID</DescriptionSID>
 				<UsageDescriptionSID>FOOD_RATION_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FOOD_RATION_CODEX_SID</CodexDescriptionSID>
 				<Value>12</Value>
 				<Weight>
 					<Pounds>1</Pounds>
