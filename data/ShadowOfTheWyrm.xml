@@ -36766,6 +36766,7 @@
 			<Food id="lunch">
 				<DescriptionSID>LUNCH_SID</DescriptionSID>
 				<UsageDescriptionSID>LUNCH_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LUNCH_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -36784,6 +36785,7 @@
 			<Food id="_trout">
 				<DescriptionSID>TROUT_SID</DescriptionSID>
 				<UsageDescriptionSID>TROUT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TROUT_CODEX_SID</CodexDescriptionSID>
 				<Value>2</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -36802,6 +36804,7 @@
 			<Food id="_carp">
 				<DescriptionSID>CARP_SID</DescriptionSID>
 				<UsageDescriptionSID>CARP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARP_CODEX_SID</CodexDescriptionSID>
 				<Value>3</Value>
 				<Weight>
 					<Pounds>8</Pounds>
@@ -36820,6 +36823,7 @@
 			<Food id="_pike">
 				<DescriptionSID>PIKE_SID</DescriptionSID>
 				<UsageDescriptionSID>PIKE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PIKE_CODEX_SID</CodexDescriptionSID>
 				<Value>2</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -36838,6 +36842,7 @@
 			<Food id="_salmon">
 				<DescriptionSID>SALMON_SID</DescriptionSID>
 				<UsageDescriptionSID>SALMON_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SALMON_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>6</Pounds>
