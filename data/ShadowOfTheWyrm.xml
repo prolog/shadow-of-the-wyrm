@@ -36861,6 +36861,7 @@
 			<Food id="_tuna">
 				<DescriptionSID>TUNA_SID</DescriptionSID>
 				<UsageDescriptionSID>TUNA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TUNA_CODEX_SID</CodexDescriptionSID>
 				<Value>4</Value>
 				<Weight>
 					<Pounds>12</Pounds>
@@ -36879,6 +36880,7 @@
 			<Food id="_cod">
 				<DescriptionSID>COD_SID</DescriptionSID>
 				<UsageDescriptionSID>COD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>COD_CODEX_SID</CodexDescriptionSID>
 				<Value>2</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -36897,6 +36899,7 @@
 			<Food id="trail_ration">
 				<DescriptionSID>TRAIL_RATION_SID</DescriptionSID>
 				<UsageDescriptionSID>TRAIL_RATION_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TRAIL_RATION_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -36916,6 +36919,7 @@
 			<Food id="salted_fish">
 				<DescriptionSID>SALTED_FISH_SID</DescriptionSID>
 				<UsageDescriptionSID>SALTED_FISH_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SALTED_FISH_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36936,6 +36940,7 @@
 			<Food id="bowl_stewed_meat">
 				<DescriptionSID>BOWL_STEWED_MEAT_SID</DescriptionSID>
 				<UsageDescriptionSID>BOWL_STEWED_MEAT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOWL_STEWED_MEAT_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -36954,6 +36959,7 @@
 			<Food id="salted_nuts">
 				<DescriptionSID>SALTED_NUTS_SID</DescriptionSID>
 				<UsageDescriptionSID>SALTED_NUTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SALTED_NUTS_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36973,6 +36979,7 @@
 			<Food id="skewer_mystery_meat">
 				<DescriptionSID>SKEWER_MYSTERY_MEAT_SID</DescriptionSID>
 				<UsageDescriptionSID>SKEWER_MYSTERY_MEAT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SKEWER_MYSTERY_MEAT_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36991,27 +36998,6 @@
 			</Food>
 		</Foodstuffs>
 		<Plants>
-			<Plant id="_kingflower">
-				<DescriptionSID>KINGFLOWER_SID</DescriptionSID>
-				<UnidentifiedDescriptionSID>UNID_KINGFLOWER_SID</UnidentifiedDescriptionSID>
-				<UsageDescriptionSID>KINGFLOWER_USAGE_SID</UsageDescriptionSID>
-				<UnidentifiedUsageDescriptionSID>UNID_KINGLOWER_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>0</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>1</Ounces>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
-					<Colour>11</Colour>
-				</TextDetails>				
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>1</Nutrition>
-				<FoodType>0</FoodType>
-			</Plant>
 			<Plant id="_wildflower_1">
 				<DescriptionSID>WILDFLOWER1_SID</DescriptionSID>
 				<UsageDescriptionSID>WILDFLOWER1_USAGE_SID</UsageDescriptionSID>
