@@ -24,7 +24,6 @@ const string ItemIdKeys::ITEM_ID_COAL             = "_coal";
 const string ItemIdKeys::ITEM_ID_LUMP_GOLD        = "_lump_gold";
 const string ItemIdKeys::ITEM_ID_IRON_INGOT       = "_iron_ingot";
 const string ItemIdKeys::ITEM_ID_STEEL_INGOT      = "_steel_ingot";
-const string ItemIdKeys::ITEM_ID_KINGFLOWER       = "_kingflower";
 const string ItemIdKeys::ITEM_ID_FIDDLEHEAD_GREEN = "_fiddlehead_green";
 const string ItemIdKeys::ITEM_ID_FERN             = "_fern";
 const string ItemIdKeys::ITEM_ID_PILE_OF_BONES    = "_pile_of_bones";
