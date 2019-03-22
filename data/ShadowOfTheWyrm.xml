@@ -37001,6 +37001,7 @@
 			<Plant id="_wildflower_1">
 				<DescriptionSID>WILDFLOWER1_SID</DescriptionSID>
 				<UsageDescriptionSID>WILDFLOWER1_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WILDFLOWER1_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37020,6 +37021,7 @@
 			<Plant id="_wildflower_2">
 				<DescriptionSID>WILDFLOWER2_SID</DescriptionSID>
 				<UsageDescriptionSID>WILDFLOWER2_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WILDFLOWER2_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37039,6 +37041,7 @@
 			<Plant id="_wildflower_3">
 				<DescriptionSID>WILDFLOWER3_SID</DescriptionSID>
 				<UsageDescriptionSID>WILDFLOWER3_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WILDFLOWER3_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37058,6 +37061,7 @@
 			<Plant id="_wildflower_4">
 				<DescriptionSID>WILDFLOWER4_SID</DescriptionSID>
 				<UsageDescriptionSID>WILDFLOWER4_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WILDFLOWER4_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37077,6 +37081,7 @@
 			<Plant id="_wildflower_5">
 				<DescriptionSID>WILDFLOWER5_SID</DescriptionSID>
 				<UsageDescriptionSID>WILDFLOWER5_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WILDFLOWER5_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37096,6 +37101,7 @@
 			<Plant id="_wildflower_6">
 				<DescriptionSID>WILDFLOWER6_SID</DescriptionSID>
 				<UsageDescriptionSID>WILDFLOWER6_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WILDFLOWER6_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37115,6 +37121,7 @@
 			<Plant id="_fiddlehead_green">
 				<DescriptionSID>FIDDLEHEAD_GREEN_SID</DescriptionSID>
 				<UsageDescriptionSID>FIDDLEHEAD_GREEN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FIDDLEHEAD_GREEN_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37134,6 +37141,7 @@
 			<Plant id="_fern">
 				<DescriptionSID>FERN_SID</DescriptionSID>
 				<UsageDescriptionSID>FERN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FERN_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
