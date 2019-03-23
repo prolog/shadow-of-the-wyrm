@@ -37161,6 +37161,7 @@
 			<Plant id="_whiteflower">
 				<DescriptionSID>WHITEFLOWER_SID</DescriptionSID>
 				<UsageDescriptionSID>WHITEFLOWER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WHITEFLOWER_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37187,7 +37188,8 @@
 				<UnidentifiedDescriptionSID>UNID_SILVERWEED_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SILVERWEED_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SILVERWEED_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>0</Value>
+				<CodexDescriptionSID>SILVERWEED_CODEX_SID</CodexDescriptionSID>
+				<Value>10</Value>
 				<Weight>
 					<Pounds>0</Pounds>
 					<Ounces>1</Ounces>
@@ -37208,6 +37210,7 @@
 			<Boat id="coracle">
 				<DescriptionSID>CORACLE_SID</DescriptionSID>
 				<UsageDescriptionSID>CORACLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CORACLE_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>30</Pounds>
@@ -37218,6 +37221,7 @@
 			<Boat id="raft">
 				<DescriptionSID>RAFT_SID</DescriptionSID>
 				<UsageDescriptionSID>RAFT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>RAFT_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>30</Pounds>
@@ -37228,6 +37232,7 @@
 			<Boat id="rowboat">
 				<DescriptionSID>ROWBOAT_SID</DescriptionSID>
 				<UsageDescriptionSID>ROWBOAT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ROWBOAT_CODEX_SID</CodexDescriptionSID>
 				<Value>50</Value>
 				<Weight>
 					<Pounds>50</Pounds>
@@ -37888,6 +37893,7 @@
 			<Currency id="_currency">
 				<DescriptionSID>CURRENCY_SID</DescriptionSID>
 				<UsageDescriptionSID>CURRENCY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CURRENCY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>0</Pounds>
