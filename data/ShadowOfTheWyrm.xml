@@ -37246,6 +37246,7 @@
 			<Potion id="dram_gin">
 				<DescriptionSID>GIN_SID</DescriptionSID>
 				<UsageDescriptionSID>GIN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GIN_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37264,6 +37265,7 @@
 			<Potion id="dram_mead">
 				<DescriptionSID>MEAD_SID</DescriptionSID>
 				<UsageDescriptionSID>MEAD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MEAD_CODEX_SID</CodexDescriptionSID>
 				<Value>6</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37282,6 +37284,7 @@
 			<Potion id="dram_whisky">
 				<DescriptionSID>WHISKY_SID</DescriptionSID>
 				<UsageDescriptionSID>WHISKY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WHISKY_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37355,6 +37358,7 @@
 			<Potion id="goblin_moonshine">
 				<DescriptionSID>GOBLIN_MOONSHINE_SID</DescriptionSID>
 				<UsageDescriptionSID>GOBLIN_MOONSHINE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GOBLIN_MOONSHINE_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37368,7 +37372,7 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Nutrition>400</Nutrition>
-				<StandardDrinks>2</StandardDrinks>
+				<StandardDrinks>4</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
 			<Potion id="healing_potion">
