@@ -37303,6 +37303,7 @@
 			<Potion id="gnomish_stout">
 				<DescriptionSID>GNOMISH_STOUT_SID</DescriptionSID>
 				<UsageDescriptionSID>GNOMISH_STOUT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GNOMISH_STOUT_CODEX_SID</CodexDescriptionSID>
 				<Value>2</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37321,6 +37322,7 @@
 			<Potion id="fortified_dwarven_wine">
 				<DescriptionSID>FORTIFIED_DWARVEN_WINE_SID</DescriptionSID>
 				<UsageDescriptionSID>FORTIFIED_DWARVEN_WINE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FORTIFIED_DWARVEN_WINE_CODEX_SID</CodexDescriptionSID>
 				<Value>3</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37339,6 +37341,7 @@
 			<Potion id="elven_brandy">
 				<DescriptionSID>ELVEN_BRANDY_SID</DescriptionSID>
 				<UsageDescriptionSID>ELVEN_BRANDY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ELVEN_BRANDY_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37380,6 +37383,7 @@
 				<UnidentifiedDescriptionSID>UNID_HEALING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HEALING_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_HEALING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>HEALING_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37399,6 +37403,7 @@
 				<UnidentifiedDescriptionSID>UNID_ANTIDOTE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ANTIDOTE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ANTIDOTE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ANTIDOTE_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>80</Value>
 				<Weight>
 					<Pounds>1</Pounds>
