@@ -2619,3 +2619,13 @@ these currents brought arrivals, quick as bream, %b
 unblinking, open-mouthed, that swam ahead %b
 and formed a narrow network of the newly dead.
 %p
+"We must not touch the water," murmured Phole. %b
+"To do so is to mark ourselves as here, %b
+belonging to this world, and to withhold %b
+the barest chance of leaving.  If you fear %b
+this place, do not.  The lakebed's mud and silt %b
+still cling to us, and while they do, we're safe, %b
+untouchable as yet."  The brothers felt %b
+their fear give way, as if a sudden weight %b
+were lifted as they stood there in that darkened place.
+%p

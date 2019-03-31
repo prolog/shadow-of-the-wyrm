@@ -37423,6 +37423,7 @@
 				<UnidentifiedDescriptionSID>UNID_AMUT_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>AMUT_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_AMUT_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>AMUT_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>50</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37442,6 +37443,7 @@
 				<UnidentifiedDescriptionSID>UNID_SPEED_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SPEED_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SPEED_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SPEED_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>125</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37461,6 +37463,7 @@
 				<UnidentifiedDescriptionSID>UNID_UNSTONING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>UNSTONING_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_UNSTONING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>UNSTONING_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37480,6 +37483,7 @@
 				<UnidentifiedDescriptionSID>UNID_UNBINDING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>UNBINDING_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_UNBINDING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>UNBINDING_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>110</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37499,6 +37503,7 @@
 				<UnidentifiedDescriptionSID>UNID_SUSTENANCE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SUSTENANCE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SUSTENANCE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SUSTENANCE_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>66</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37518,6 +37523,7 @@
 				<UnidentifiedDescriptionSID>UNID_RESTORATIVE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RESTORATIVE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RESTORATIVE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RESTORATIVE_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>80</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37537,6 +37543,7 @@
 				<UnidentifiedDescriptionSID>UNID_UNBLINDING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>UNBLINDING_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_UNBLINDING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>UNBLINDING_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>80</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37557,6 +37564,7 @@
 				<UnidentifiedDescriptionSID>UNID_FLYING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FLYING_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FLYING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FLYING_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>90</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37576,6 +37584,7 @@
 				<UnidentifiedDescriptionSID>UNID_GAIN_ATTRIBUTES_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>GAIN_ATTRIBUTES_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_GAIN_ATTRIBUTES_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>GAIN_ATTRIBUTES_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>240</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37595,6 +37604,7 @@
 				<UnidentifiedDescriptionSID>UNID_FIRE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FIRE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FIRE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FIRE_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>9</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37620,6 +37630,7 @@
 				<UnidentifiedDescriptionSID>UNID_ETHER_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ETHER_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ETHER_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ETHER_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>500</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37639,6 +37650,7 @@
 				<UnidentifiedDescriptionSID>UNID_FRUIT_JUICE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FRUIT_JUICE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FRUIT_JUICE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FRUIT_JUICE_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>3</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37658,6 +37670,7 @@
 				<UnidentifiedDescriptionSID>UNID_RAGE_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RAGE_POTION_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RAGE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RAGE_POTION_CODEX_SID</CodexDescriptionSID>
 				<Value>90</Value>
 				<Weight>
 					<Pounds>1</Pounds>
