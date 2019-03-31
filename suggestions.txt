@@ -1,6 +1,8 @@
 Me:
 - For v1.0.3 - start the item codex ('c')!
 - Make sure glow respected
+- For unidentified items, if the base item is not identified, it should
+  give "Appearance not yet known" or something similar
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
 - Random villages should include the race in the description prior to
