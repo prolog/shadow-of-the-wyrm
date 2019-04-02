@@ -1,7 +1,9 @@
 #include "ItemCodexAction.hpp"
+#include "ItemIdentifier.hpp"
 #include "ActionTextKeys.hpp"
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
+#include "ItemTextKeys.hpp"
 #include "ItemTypeTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ScreenTitleTextKeys.hpp"
@@ -70,13 +72,20 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     vector<pair<Colour, string>> codex_text;
     string codex_title_sid = ScreenTitleTextKeys::SCREEN_TITLE_ITEM_CODEX;
   
-    uchar symbol = item->get_symbol();
     string item_type = ItemTypeTextKeys::get_item_type_description_singular(item->get_type());
+    Colour item_colour = Colour::COLOUR_WHITE;
 
-    string item_symbol(1, symbol);
-    Colour item_colour = item->get_colour();
+    string symbol_details = StringTable::get(ItemTextKeys::ITEM_CODEX_NOT_IDENTIFIED);
+    ItemIdentifier iid;
+    bool identified = iid.get_item_identified(item->get_base_id());
 
-    codex_text.push_back(make_pair(item_colour, item_symbol));
+    if (identified)
+    {
+      symbol_details = item->get_symbol();
+      item_colour = item->get_colour();
+    }
+
+    codex_text.push_back(make_pair(item_colour, symbol_details));
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
 
     ostringstream desc;
