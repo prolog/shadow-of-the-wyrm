@@ -37705,6 +37705,7 @@
 			<Scroll id="_blank_scroll">
 				<DescriptionSID>BLANK_SCROLL_SID</DescriptionSID>
 				<UsageDescriptionSID>BLANK_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BLANK_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37728,6 +37729,7 @@
 				<UnidentifiedDescriptionSID>UNID_IDENTIFY_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>IDENTIFY_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_IDENTIFY_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>IDENTIFY_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>133</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37745,6 +37747,7 @@
 				<UnidentifiedDescriptionSID>UNID_MAPPING_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>MAPPING_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_MAPPING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>MAPPING_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>50</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37762,6 +37765,7 @@
 				<UnidentifiedDescriptionSID>UNID_RECHARGING_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RECHARGING_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RECHARGING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RECHARGING_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37779,6 +37783,7 @@
 				<UnidentifiedDescriptionSID>UNID_ENCHANTING_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ENCHANTING_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ENCHANTING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ENCHANTING_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>360</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37796,6 +37801,7 @@
 				<UnidentifiedDescriptionSID>UNID_CLEANSING_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>CLEANSING_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_CLEANSING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>CLEANSING_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>360</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37813,6 +37819,7 @@
 				<UnidentifiedDescriptionSID>UNID_UNCURSING_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>UNCURSING_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_UNCURSING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>UNCURSING_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>75</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37830,6 +37837,7 @@
 				<UnidentifiedDescriptionSID>UNID_BLESS_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>BLESS_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_BLESS_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>BLESS_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>95</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37847,6 +37855,7 @@
 				<UnidentifiedDescriptionSID>UNID_DETECT_TRAPS_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>DETECT_TRAPS_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_DETECT_TRAPS_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>DETECT_TRAPS_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>75</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37864,6 +37873,7 @@
 				<UnidentifiedDescriptionSID>UNID_SUMMON_MONSTERS_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SUMMON_MONSTERS_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SUMMON_MONSTERS_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SUMMON_MONSTERS_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>15</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37881,6 +37891,7 @@
 				<UnidentifiedDescriptionSID>UNID_REPEL_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>REPEL_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_REPEL_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>REPEL_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37898,6 +37909,7 @@
 				<UnidentifiedDescriptionSID>UNID_WARPING_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>WARPING_SCROLL_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_WARPING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>WARPING_SCROLL_CODEX_SID</CodexDescriptionSID>
 				<Value>44</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -37933,6 +37945,7 @@
 			<Tool id="skeleton_key">
 				<DescriptionSID>SKELETON_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>SKELETON_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SKELETON_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37946,6 +37959,7 @@
 			<Tool id="kew_key">
 				<DescriptionSID>KEW_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>KEW_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>KEW_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37958,6 +37972,7 @@
 			<Tool id="boathouse_key">
 				<DescriptionSID>BOATHOUSE_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>BOATHOUSE_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOATHOUSE_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37970,6 +37985,7 @@
 			<Tool id="wintersea_keep_tombs_key">
 				<DescriptionSID>WINTERSEA_TOMBS_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>WINTERSEA_TOMBS_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WINTERSEA_TOMBS_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37982,6 +37998,7 @@
 			<Tool id="wintersea_keep_tower_key">
 				<DescriptionSID>WINTERSEA_TOWER_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>WINTERSEA_TOWER_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WINTERSEA_TOWER_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -37994,6 +38011,7 @@
 			<Tool id="wyrmeswraec_gate_key">
 				<DescriptionSID>WYRMESWRAEC_GATE_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>WYRMESWRAEC_GATE_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WYRMESWRAEC_GATE_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -38006,6 +38024,7 @@
 			<Tool id="eka_key">
 				<DescriptionSID>EKA_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>EKA_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>EKA_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>90</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -38018,6 +38037,7 @@
 			<Tool id="okhoa_key">
 				<DescriptionSID>OKHOA_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>OKHOA_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>OKHOA_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -38029,6 +38049,7 @@
 			<Tool id="carcassia_footman_key">
 				<DescriptionSID>CARCASSIA_FOOTMAN_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CARCASSIA_FOOTMAN_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARCASSIA_FOOTMAN_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38040,6 +38061,7 @@
 			<Tool id="carcassia_coalman_key">
 				<DescriptionSID>CARCASSIA_COALMAN_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CARCASSIA_COALMAN_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARCASSIA_COALMAN_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38051,6 +38073,7 @@
 			<Tool id="carcassia_scullerymaid_key">
 				<DescriptionSID>CARCASSIA_SCULLERYMAID_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CARCASSIA_SCULLERYMAID_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARCASSIA_SCULLERYMAID_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38062,6 +38085,7 @@
 			<Tool id="carcassia_cook_key">
 				<DescriptionSID>CARCASSIA_COOK_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CARCASSIA_COOK_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARCASSIA_COOK_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38073,6 +38097,7 @@
 			<Tool id="carcassia_praetor_key">
 				<DescriptionSID>CARCASSIA_PRAETOR_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CARCASSIA_PRAETOR_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARCASSIA_PRAETOR_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38084,6 +38109,7 @@
 			<Tool id="casino_key">
 				<DescriptionSID>CASINO_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CASINO_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CASINO_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -38095,6 +38121,7 @@
 			<Tool id="carcassia_armory_key">
 				<DescriptionSID>CARCASSIA_ARMORY_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CARCASSIA_ARMORY_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARCASSIA_ARMORY_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38106,6 +38133,7 @@
 			<Tool id="_crypt_key">
 				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CRYPT_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CRYPT_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -38119,6 +38147,7 @@
 			<Tool id="_template_key">
 				<DescriptionSID>TEMPLATE_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>TEMPLATE_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TEMPLATE_KEY_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>0</Pounds>
