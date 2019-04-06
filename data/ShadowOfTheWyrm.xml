@@ -38161,6 +38161,7 @@
 			<Tool id="rune_stone">
 				<DescriptionSID>RUNE_STONE_SID</DescriptionSID>
 				<UsageDescriptionSID>RUNE_STONE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>RUNE_STONE_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -38173,6 +38174,7 @@
 			<Tool id="sun_gem">
 				<DescriptionSID>SUN_GEM_SID</DescriptionSID>
 				<UsageDescriptionSID>SUN_GEM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SUN_GEM_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38188,6 +38190,7 @@
 			<Tool id="heart_heaven">
 				<DescriptionSID>HEART_HEAVEN_SID</DescriptionSID>
 				<UsageDescriptionSID>HEART_HEAVEN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HEART_HEAVEN_CODEX_SID</CodexDescriptionSID>
 				<Value>5000</Value>
 				<Weight>
 					<Pounds>20</Pounds>
@@ -38203,6 +38206,7 @@
 			<Tool id="heart_world">
 				<DescriptionSID>HEART_WORLD_SID</DescriptionSID>
 				<UsageDescriptionSID>HEART_WORLD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HEART_WORLD_CODEX_SID</CodexDescriptionSID>
 				<Value>5000</Value>
 				<Weight>
 					<Pounds>15</Pounds>
@@ -38218,6 +38222,7 @@
 			<Tool id="heart_world_beyond">
 				<DescriptionSID>HEART_WORLD_BEYOND_SID</DescriptionSID>
 				<UsageDescriptionSID>HEART_WORLD_BEYOND_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HEART_WORLD_BEYOND_CODEX_SID</CodexDescriptionSID>
 				<Value>5000</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -38233,9 +38238,10 @@
 			<Tool id="cosmos_stone">
 				<DescriptionSID>COSMOS_STONE_SID</DescriptionSID>
 				<UsageDescriptionSID>COSMOS_STONE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>COSMOS_STONE_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
-					<Pounds>10</Pounds>
+					<Pounds>40</Pounds>
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
@@ -38248,6 +38254,7 @@
 			<Tool id="black_orb">
 				<DescriptionSID>BLACK_ORB_SID</DescriptionSID>
 				<UsageDescriptionSID>BLACK_ORB_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BLACK_ORB_CODEX_SID</CodexDescriptionSID>
 				<Value>500</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -38263,6 +38270,7 @@
 			<Tool id="_fishing_rod">
 				<DescriptionSID>FISHING_ROD_SID</DescriptionSID>
 				<UsageDescriptionSID>FISHING_ROD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FISHING_ROD_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -38274,6 +38282,7 @@
 			<Tool id="_mold_and_deckle">
 				<DescriptionSID>MOLD_AND_DECKLE_SID</DescriptionSID>
 				<UsageDescriptionSID>MOLD_AND_DECKLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MOLD_AND_DECKLE_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -38285,6 +38294,7 @@
 			<Tool id="lute">
 				<DescriptionSID>LUTE_SID</DescriptionSID>
 				<UsageDescriptionSID>LUTE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LUTE_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -38310,6 +38320,7 @@
 			<Tool id="fife">
 				<DescriptionSID>FIFE_SID</DescriptionSID>
 				<UsageDescriptionSID>FIFE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FIFE_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38335,6 +38346,7 @@
 			<Tool id="dulcimer">
 				<DescriptionSID>DULCIMER_SID</DescriptionSID>
 				<UsageDescriptionSID>DULCIMER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DULCIMER_CODEX_SID</CodexDescriptionSID>
 				<Value>140</Value>
 				<Weight>
 					<Pounds>6</Pounds>
@@ -38360,6 +38372,7 @@
 			<Tool id="sackbut">
 				<DescriptionSID>SACKBUT_SID</DescriptionSID>
 				<UsageDescriptionSID>SACKBUT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SACKBUT_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
 					<Pounds>6</Pounds>
@@ -38385,6 +38398,7 @@
 			<Tool id="fiddle">
 				<DescriptionSID>FIDDLE_SID</DescriptionSID>
 				<UsageDescriptionSID>FIDDLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FIDDLE_CODEX_SID</CodexDescriptionSID>
 				<Value>35</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -38410,6 +38424,7 @@
 			<Tool id="horn">
 				<DescriptionSID>HORN_SID</DescriptionSID>
 				<UsageDescriptionSID>HORN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HORN_CODEX_SID</CodexDescriptionSID>
 				<Value>55</Value>
 				<Weight>
 					<Pounds>7</Pounds>
@@ -38459,6 +38474,7 @@
 				<UnidentifiedDescriptionSID>UNID_TELEPORT_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>TELEPORT_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_TELEPORT_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>TELEPORT_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>400</Value>
 				<Weight>
 					<Pounds>1</Pounds>
