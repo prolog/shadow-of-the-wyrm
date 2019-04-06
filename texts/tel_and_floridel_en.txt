@@ -2629,3 +2629,13 @@ untouchable as yet."  The brothers felt %b
 their fear give way, as if a sudden weight %b
 were lifted as they stood there in that darkened place.
 %p
+So Phole stepped forward.  Underneath his feet %b
+the ground shimmered with tempered light, the way %b
+unclear and illuminated.  As they waited, %b
+the light dimmed; as they walked, it slowly played %b
+in patterns, planar figures in the dark %b
+whose boundaries met rivers, lit the dead %b
+beneath the water, helping to impart %b
+the barest glint of structure, and to send %b
+them through the shadow-lands whose name is never said.
+%p
