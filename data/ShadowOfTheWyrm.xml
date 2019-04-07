@@ -38495,6 +38495,7 @@
 				<UnidentifiedDescriptionSID>UNID_FROST_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FROST_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FROST_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FROST_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>250</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38519,6 +38520,7 @@
 				<UnidentifiedDescriptionSID>UNID_ACID_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ACID_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ACID_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ACID_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>180</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38545,6 +38547,7 @@
 				<UnidentifiedDescriptionSID>UNID_FLAME_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FLAME_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FLAME_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FLAME_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>350</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38569,6 +38572,7 @@
 				<UnidentifiedDescriptionSID>UNID_POISON_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>POISON_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_POISON_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>POISON_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>222</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38595,6 +38599,7 @@
 				<UnidentifiedDescriptionSID>UNID_SHADOW_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SHADOW_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SHADOW_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SHADOW_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>234</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38621,6 +38626,7 @@
 				<UnidentifiedDescriptionSID>UNID_HOLY_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HOLY_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_HOLY_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>HOLY_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>234</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38647,6 +38653,7 @@
 				<UnidentifiedDescriptionSID>UNID_ARCANE_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ARCANE_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ARCANE_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ARCANE_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38673,6 +38680,7 @@
 				<UnidentifiedDescriptionSID>UNID_DRAGON_BREATH_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>DRAGON_BREATH_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_DRAGON_BREATH_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>DRAGON_BREATH_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>650</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38698,6 +38706,7 @@
 				<UnidentifiedDescriptionSID>UNID_LIGHTNING_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>LIGHTNING_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_LIGHTNING_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>LIGHTNING_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>350</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38722,6 +38731,7 @@
 				<UnidentifiedDescriptionSID>UNID_FIREBALL_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FIREBALL_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FIREBALL_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FIREBALL_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>500</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38746,6 +38756,7 @@
 				<UnidentifiedDescriptionSID>UNID_VORPAL_BOLT_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>VORPAL_BOLT_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_VORPAL_BOLT_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>VORPAL_BOLT_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>700</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38770,6 +38781,7 @@
 				<UnidentifiedDescriptionSID>UNID_DIGGING_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>DIGGING_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_DIGGING_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>DIGGING_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>133</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38790,6 +38802,7 @@
 				<UnidentifiedDescriptionSID>UNID_INFERNO_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>INFERNO_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_INFERNO_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>INFERNO_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38815,6 +38828,7 @@
 				<UnidentifiedDescriptionSID>UNID_OSMOSIS_WAND_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>OSMOSIS_WAND_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_OSMOSIS_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>OSMOSIS_WAND_CODEX_SID</CodexDescriptionSID>
 				<Value>55</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38840,6 +38854,7 @@
 			<Spellbook id="isen_dun_chronicle">
 				<DescriptionSID>ISEN_DUN_CHRONICLE_SID</DescriptionSID>
 				<UsageDescriptionSID>ISEN_DUN_CHRONICLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ISEN_DUN_CHRONICLE_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -38925,6 +38940,7 @@
 			<Spellbook id="tel_and_floridel">
 				<DescriptionSID>TEL_AND_FLORIDEL_SID</DescriptionSID>
 				<UsageDescriptionSID>TEL_AND_FLORIDEL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TEL_AND_FLORIDEL_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
 					<Pounds>3</Pounds>
