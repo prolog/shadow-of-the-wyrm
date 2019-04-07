@@ -2636,6 +2636,16 @@ the light dimmed; as they walked, it slowly played %b
 in patterns, planar figures in the dark %b
 whose boundaries met rivers, lit the dead %b
 beneath the water, helping to impart %b
-the barest glint of structure, and to send %b
+the barest glint of order, and to send %b
 them through the shadow-lands whose name is never said.
+%p
+They walked around the rivers, as they found %b
+each terminus fell somewhere down below, %b
+beneath the earth, like waterfalls, those mouths %b
+agape and vanishing.  They'd never know %b
+just where the pale and watchful corpse-fish went, %b
+the basins of that place beyond all ken. %b
+The ground-light followed them, and as they spent %b
+their hours in silence, let them comprehend %b
+the structure of the nexus between life and end.
 %p
