@@ -38872,6 +38872,7 @@
 			<Spellbook id="book_of_days">
 				<DescriptionSID>BOOK_OF_DAYS_SID</DescriptionSID>
 				<UsageDescriptionSID>BOOK_OF_DAYS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOOK_OF_DAYS_CODEX_SID</CodexDescriptionSID>
 				<Value>15</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -38889,6 +38890,7 @@
 			<Spellbook id="the_nine">
 				<DescriptionSID>THE_NINE_SID</DescriptionSID>
 				<UsageDescriptionSID>THE_NINE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>THE_NINE_CODEX_SID</CodexDescriptionSID>
 				<Value>25</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -38906,6 +38908,7 @@
 			<Spellbook id="on_eternalism">
 				<DescriptionSID>ON_ETERNALISM_SID</DescriptionSID>
 				<UsageDescriptionSID>ON_ETERNALISM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ON_ETERNALISM_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -38923,6 +38926,7 @@
 			<Spellbook id="on_faerie_fragments">
 				<DescriptionSID>ON_FAERIE_FRAGMENTS_SID</DescriptionSID>
 				<UsageDescriptionSID>ON_FAERIE_FRAGMENTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ON_FAERIE_FRAGMENTS_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -38958,6 +38962,7 @@
 			<Spellbook id="stoneheim_history">
 				<DescriptionSID>STONEHEIM_HISTORY_SID</DescriptionSID>
 				<UsageDescriptionSID>STONEHEIM_HISTORY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STONEHEIM_HISTORY_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>3</Pounds>
