@@ -39225,6 +39225,7 @@
 				<UnidentifiedDescriptionSID>UNID_CLEANSING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>CLEANSING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_CLEANSING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>CLEANSING_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39243,6 +39244,7 @@
 				<UnidentifiedDescriptionSID>UNID_MAPPING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>MAPPING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_MAPPING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>MAPPING_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39261,6 +39263,7 @@
 				<UnidentifiedDescriptionSID>UNID_CRUMBLE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>CRUMBLE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_CRUMBLE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>CRUMBLE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>22</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39279,6 +39282,7 @@
 				<UnidentifiedDescriptionSID>UNID_BLAST_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>BLAST_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_BLAST_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>BLAST_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>22</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39297,6 +39301,7 @@
 				<UnidentifiedDescriptionSID>UNID_INFERNO_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>INFERNO_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_INFERNO_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>INFERNO_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39315,6 +39320,7 @@
 				<UnidentifiedDescriptionSID>UNID_SHARDS_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SHARDS_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SHARDS_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SHARDS_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39333,6 +39339,7 @@
 				<UnidentifiedDescriptionSID>UNID_ELECTRIC_ARC_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ELECTRIC_ARC_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ELECTRIC_ARC_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ELECTRIC_ARC_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>24</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39351,6 +39358,7 @@
 				<UnidentifiedDescriptionSID>UNID_REPEL_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>REPEL_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_REPEL_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>REPEL_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>28</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39369,6 +39377,7 @@
 				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>WREATH_OF_FIRE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>WREATH_OF_FIRE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>800</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39387,6 +39396,7 @@
 				<UnidentifiedDescriptionSID>UNID_LIGHTNING_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>LIGHTNING_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_LIGHTNING_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>LIGHTNING_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>450</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39405,6 +39415,7 @@
 				<UnidentifiedDescriptionSID>UNID_DRAGON_BREATH_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>DRAGON_BREATH_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_DRAGON_BREATH_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>DRAGON_BREATH_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>750</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39423,6 +39434,7 @@
 				<UnidentifiedDescriptionSID>UNID_SHOCKWAVE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SHOCKWAVE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SHOCKWAVE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SHOCKWAVE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39441,6 +39453,7 @@
 				<UnidentifiedDescriptionSID>UNID_FLIGHT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FLIGHT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FLIGHT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FLIGHT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>800</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39459,6 +39472,7 @@
 				<UnidentifiedDescriptionSID>UNID_CROSS_OF_FLAME_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>CROSS_OF_FLAME_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_CROSS_OF_FLAME_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>CROSS_OF_FLAME_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39477,6 +39491,7 @@
 				<UnidentifiedDescriptionSID>UNID_FIREBALL_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FIREBALL_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FIREBALL_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FIREBALL_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39495,6 +39510,7 @@
 				<UnidentifiedDescriptionSID>UNID_ELEMENTAL_MASTERY_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ELEMENTAL_MASTERY_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ELEMENTAL_MASTERY_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ELEMENTAL_MASTERY_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39513,6 +39529,7 @@
 				<UnidentifiedDescriptionSID>UNID_FROST_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FROST_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FROST_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FROST_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>220</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39531,6 +39548,7 @@
 				<UnidentifiedDescriptionSID>UNID_FIRE_STORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>FIRE_STORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_FIRE_STORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FIRE_STORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1100</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39549,6 +39567,7 @@
 				<UnidentifiedDescriptionSID>UNID_ICE_STORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ICE_STORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ICE_STORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ICE_STORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1100</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39567,6 +39586,7 @@
 				<UnidentifiedDescriptionSID>UNID_LIGHTNING_STORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>LIGHTNING_STORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_LIGHTNING_STORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>LIGHTNING_STORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1100</Value>
 				<Weight>
 					<Pounds>3</Pounds>
