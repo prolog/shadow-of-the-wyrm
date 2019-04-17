@@ -39605,6 +39605,7 @@
 				<UnidentifiedDescriptionSID>UNID_MAELSTROM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>MAELSTROM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_MAELSTROM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>MAELSTROM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1163</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39623,6 +39624,7 @@
 				<UnidentifiedDescriptionSID>UNID_ABSOLUTE_ZERO_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ABSOLUTE_ZERO_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ABSOLUTE_ZERO_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ABSOLUTE_ZERO_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1214</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39641,6 +39643,7 @@
 				<UnidentifiedDescriptionSID>UNID_VORPAL_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>VORPAL_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_VORPAL_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>VORPAL_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>600</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39659,6 +39662,7 @@
 				<UnidentifiedDescriptionSID>UNID_DIG_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>DIG_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_DIG_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>DIG_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39677,6 +39681,7 @@
 				<UnidentifiedDescriptionSID>UNID_HOLOCAUST_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HOLOCAUST_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_HOLOCAUST_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>HOLOCAUST_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39695,6 +39700,7 @@
 				<UnidentifiedDescriptionSID>UNID_METEOR_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>METEOR_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_METEOR_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>METEOR_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1444</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39713,6 +39719,7 @@
 				<UnidentifiedDescriptionSID>UNID_TELEPORT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>TELEPORT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_TELEPORT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>TELEPORT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>250</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39731,6 +39738,7 @@
 				<UnidentifiedDescriptionSID>UNID_WARP_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>WARP_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_WARP_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>WARP_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>300</Value>
 				<Weight>
 					<Pounds>3</Pounds>
