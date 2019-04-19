@@ -43,6 +43,7 @@ void SkillProcessorFactory::populate_skill_map()
                make_pair(SkillType::SKILL_GENERAL_HERBALISM, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HERBALISM)),
                make_pair(SkillType::SKILL_GENERAL_HIDING, make_shared<HidingSkillProcessor>()),
                make_pair(SkillType::SKILL_GENERAL_HUNTING, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HUNTING)),
+               make_pair(SkillType::SKILL_GENERAL_INTIMIDATION, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_INTIMIDATION)),
                make_pair(SkillType::SKILL_GENERAL_JEWELER, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_JEWELER)),
                make_pair(SkillType::SKILL_GENERAL_LITERACY, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_LITERACY)),
                make_pair(SkillType::SKILL_GENERAL_MAGIC, make_shared<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC)),
