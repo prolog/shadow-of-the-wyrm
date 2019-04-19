@@ -21,7 +21,8 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
   - Silari was not listed as an artifact.
 
   - The Literacy skill was incorrectly being shown as unimplemented when
-    selecting it from the Skill screen (Combat Eric).
+    selecting it from the Skill screen (Combat Eric).  This was also
+    true for Intimidation (Blue).
 
   - When finally petrified, the death message wasn't being displayed
     properly, making it seem like a death out of nowhere (Blue).
