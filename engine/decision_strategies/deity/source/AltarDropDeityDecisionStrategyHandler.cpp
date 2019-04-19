@@ -1,4 +1,5 @@
 #include "AltarDropDeityDecisionStrategyHandler.hpp"
+#include "DeityTextKeys.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "EffectTextKeys.hpp"
 #include "ItemIdentifier.hpp"
@@ -54,19 +55,20 @@ bool AltarDropDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
   string decision_msg;
+  AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
+  AlignmentRange altar_range = altar->get_alignment_range();
+  bool cross_aligned = (creature_range != altar_range);
 
   // Bless/curse the item as necessary
   if (drop_item)
   {
-    AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
-    AlignmentRange altar_range = altar->get_alignment_range();
     ItemStatus status = ItemStatus::ITEM_STATUS_BLESSED;
     ItemIdentifier iid;
     string item_desc = iid.get_appropriate_usage_description(drop_item);
 
     decision_msg = EffectTextKeys::get_bless_effect_message(item_desc, false);
 
-    if (creature_range != altar_range)
+    if (cross_aligned)
     {
       status = ItemStatus::ITEM_STATUS_CURSED;
       decision_msg = EffectTextKeys::get_cursed_enchant_message(item_desc);
@@ -80,6 +82,13 @@ DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision
   if (!decision_msg.empty())
   {
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+
+    // Are we at the wrong altar?
+    if (cross_aligned)
+    {
+      manager.add_new_message(StringTable::get(DeityTextKeys::ALTAR_SENSE_CROSSALIGNED));
+    }
+
     manager.add_new_message(decision_msg);
     manager.send();
   }

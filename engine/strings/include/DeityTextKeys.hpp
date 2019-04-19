@@ -7,6 +7,7 @@ class DeityTextKeys
     static std::string get_prayer_message(const std::string& deity_sid);
     static std::string get_deity_change_message(const std::string& deity_sid);
     
+    static const std::string ALTAR_SENSE_CROSSALIGNED;
     static const std::string PRAYER_INITIAL_MESSAGE;
     static const std::string PRAYER_DO_NOTHING;
     static const std::string PRAYER_FULL_HP;

@@ -29,20 +29,21 @@ string DeityTextKeys::get_deity_change_message(const string& deity_sid)
   return change_message;
 }
 
-const string DeityTextKeys::PRAYER_INITIAL_MESSAGE  = "PRAYER_INITIAL_MESSAGE";
-const string DeityTextKeys::PRAYER_DO_NOTHING       = "PRAYER_DO_NOTHING";
-const string DeityTextKeys::PRAYER_FULL_HP          = "PRAYER_FULL_HP";
-const string DeityTextKeys::PRAYER_FULL_AP          = "PRAYER_FULL_AP";
-const string DeityTextKeys::PRAYER_SATIATE          = "PRAYER_SATIATE";
-const string DeityTextKeys::PRAYER_RESTORE_STATUS   = "PRAYER_RESTORE_STATUS";
-const string DeityTextKeys::PRAYER_CROWNING         = "PRAYER_CROWNING";
-const string DeityTextKeys::PRAYER_WORLD_MAP        = "PRAYER_WORLD_MAP";
-const string DeityTextKeys::PRAYER_PROTECTION       = "PRAYER_PROTECTION";
-const string DeityTextKeys::PRAYER_SMITE            = "PRAYER_SMITE";
-const string DeityTextKeys::PRAYER_UNCURSE          = "PRAYER_UNCURSE";
-const string DeityTextKeys::PRAYER_HALT_BREEDING    = "PRAYER_HALT_BREEDING";
-const string DeityTextKeys::PRAYER_NO_DEITIES       = "PRAYER_NO_DEITIES";
-const string DeityTextKeys::DEITY_CANNOT_PRAY       = "DEITY_CANNOT_PRAY";
-const string DeityTextKeys::DEITY_ACTION_DISPLEASED = "DEITY_ACTION_DISPLEASED"; 
-const string DeityTextKeys::DEITY_FALLEN_CHAMPION   = "DEITY_FALLEN_CHAMPION";
-const string DeityTextKeys::DEITY_CHANGE_MESSAGE    = "DEITY_CHANGE_MESSAGE";
+const string DeityTextKeys::ALTAR_SENSE_CROSSALIGNED = "ALTAR_SENSE_CROSSALIGNED";
+const string DeityTextKeys::PRAYER_INITIAL_MESSAGE   = "PRAYER_INITIAL_MESSAGE";
+const string DeityTextKeys::PRAYER_DO_NOTHING        = "PRAYER_DO_NOTHING";
+const string DeityTextKeys::PRAYER_FULL_HP           = "PRAYER_FULL_HP";
+const string DeityTextKeys::PRAYER_FULL_AP           = "PRAYER_FULL_AP";
+const string DeityTextKeys::PRAYER_SATIATE           = "PRAYER_SATIATE";
+const string DeityTextKeys::PRAYER_RESTORE_STATUS    = "PRAYER_RESTORE_STATUS";
+const string DeityTextKeys::PRAYER_CROWNING          = "PRAYER_CROWNING";
+const string DeityTextKeys::PRAYER_WORLD_MAP         = "PRAYER_WORLD_MAP";
+const string DeityTextKeys::PRAYER_PROTECTION        = "PRAYER_PROTECTION";
+const string DeityTextKeys::PRAYER_SMITE             = "PRAYER_SMITE";
+const string DeityTextKeys::PRAYER_UNCURSE           = "PRAYER_UNCURSE";
+const string DeityTextKeys::PRAYER_HALT_BREEDING     = "PRAYER_HALT_BREEDING";
+const string DeityTextKeys::PRAYER_NO_DEITIES        = "PRAYER_NO_DEITIES";
+const string DeityTextKeys::DEITY_CANNOT_PRAY        = "DEITY_CANNOT_PRAY";
+const string DeityTextKeys::DEITY_ACTION_DISPLEASED  = "DEITY_ACTION_DISPLEASED"; 
+const string DeityTextKeys::DEITY_FALLEN_CHAMPION    = "DEITY_FALLEN_CHAMPION";
+const string DeityTextKeys::DEITY_CHANGE_MESSAGE     = "DEITY_CHANGE_MESSAGE";

@@ -41,9 +41,6 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
     creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_EQUIPMENT, Bool::to_string(false));
     creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_ALLOWS_RANDOM_DROPS, Bool::to_string(false));
 
-    Damage stone_default;
-    cm.deal_damage(no_creature, creature, source_id, creature->get_hit_points().get_base(), stone_default);
-
     // Ensure that the tile doesn't already have a feature.
     if (creature_tile && !creature_tile->has_feature())
     {
@@ -65,6 +62,9 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
 
     manager.add_new_message(StringTable::get(message_sid));
     manager.send();
+
+    Damage stone_default;
+    cm.deal_damage(no_creature, creature, source_id, creature->get_hit_points().get_base(), stone_default);
   }
 }
 
