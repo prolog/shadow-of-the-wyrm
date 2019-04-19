@@ -11,6 +11,7 @@ class Currency : public Item
     void set_status_identified(const bool new_status) override;
 
     bool additional_item_attributes_match(ItemPtr item) const override;
+    bool get_type_always_stacks() const override;
         
     Item* clone() override;
 

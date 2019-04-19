@@ -125,7 +125,6 @@ Kyzrati:
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
 - Group like items together (scrolls, etc) even if not exactly the same
-- Separate stacks of ivory?
 - Item paging issue confirmed: when large number of items, a blank page
   can be generated.
 - Wants item-iary.  Separate screen + in inventory view.  Update lower

@@ -7,6 +7,8 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 - Dropping items on a cross-aligned altar now generates a messages to hint
   at why the items are now cursed (introsp3ctive).
 
+- Put some additional code in to force ivory to always stack (Kyzrati).
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: sweet old dog.
@@ -23,6 +25,10 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 
   - When finally petrified, the death message wasn't being displayed
     properly, making it seem like a death out of nowhere (Blue).
+
+  - Currency now always stacks regardless of any underlying flags on the
+    items, so while these flags will be lost, currency now neatly stacks,
+    always (Kyzrati).
 
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.

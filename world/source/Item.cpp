@@ -283,6 +283,11 @@ ItemType Item::get_type() const
   return type;
 }
 
+bool Item::get_type_always_stacks() const
+{
+  return false;
+}
+
 void Item::set_material_type(const MaterialType new_material)
 {
   material = new_material;
@@ -360,6 +365,13 @@ bool Item::matches(std::shared_ptr<Item> i) const
 
   if (match)
   {
+    // Ensure that ivory/currency always stacks with other ivory, regardless
+    // of what ever flags/etc get accidentally added.
+    if (get_type_always_stacks() && i->get_type_always_stacks() && (type == i->get_type()))
+    {
+      return true;
+    }
+
     match = match && (usage_description_sid == i->get_usage_description_sid());
     match = match && (description_sid       == i->get_description_sid()      );
     match = match && (status_identified     == i->get_status_identified()    );
