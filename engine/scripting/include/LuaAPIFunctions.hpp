@@ -232,6 +232,7 @@ int get_random_hostile_creature_id(lua_State* ls);
 int generate_item(lua_State* ls);
 int generate_creature(lua_State* ls);
 int set_creature_id(lua_State* ls);
+int add_all_items_to_player_tile(lua_State* ls); // Debug only! :)
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

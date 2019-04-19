@@ -378,6 +378,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_item", generate_item);
   lua_register(L, "generate_creature", generate_creature);
   lua_register(L, "set_creature_id", set_creature_id);
+  lua_register(L, "add_all_items_to_player_tile", add_all_items_to_player_tile);
 }
 
 // Lua API helper functions
@@ -7476,4 +7477,39 @@ int set_creature_id(lua_State* ls)
   return 1;
 }
 
+int add_all_items_to_player_tile(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
 
+    if (map != nullptr)
+    {
+      CreaturePtr player = game.get_current_player();
+      TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+      IInventoryPtr inv = player_tile->get_items();
+      const ItemMap& items = game.get_items_ref();
+
+      if (inv != nullptr)
+      {
+        for (auto item_pair : items)
+        {
+          string item_id = item_pair.first;
+          ItemPtr item = ItemManager::create_item(item_id);
+
+          if (item != nullptr)
+          {
+            inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to add_all_items_to_player_tile");
+  }
+
+  return 0;
+}
