@@ -1,5 +1,7 @@
 Me:
 - For v1.0.3 - start the item codex ('c')!
+- For v1.0.3 - force morgue prompt (Combat Eric)
+- For v1.0.3 - rebind '*' (vedvid)
 - Make sure glow respected
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
@@ -128,6 +130,7 @@ Kyzrati:
   can be generated.
 - Wants item-iary.  Separate screen + in inventory view.  Update lower
   message to be [A...] Info or [A...] Select based on context.
+- Autopickup for food should ignore corpses.
 
 Avagart:
 - Eventually, have automovement stop only on new items.
@@ -197,3 +200,6 @@ Troubler
 happylisk:
 - buff shrine guardians (doable at 25)
 - more diverse artifact effects (HP/AP regen, stat bonuses, etc)
+
+naughtusername: 
+- Skill descriptions on shift+letter or something
