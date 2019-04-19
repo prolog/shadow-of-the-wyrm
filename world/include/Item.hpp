@@ -98,6 +98,7 @@ class Item : public ISerializable
 
     virtual void set_type(const ItemType type);
     virtual ItemType get_type() const;
+    virtual bool get_type_always_stacks() const;
     
     virtual void set_material_type(const MaterialType new_material);
     virtual MaterialType get_material_type() const;

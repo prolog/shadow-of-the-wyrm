@@ -29,6 +29,11 @@ bool Currency::additional_item_attributes_match(ItemPtr item) const
   return true;
 }
 
+bool Currency::get_type_always_stacks() const
+{
+  return true;
+}
+
 Item* Currency::clone()
 {
   return new Currency(*this);
