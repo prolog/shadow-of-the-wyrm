@@ -27,6 +27,7 @@ local function cynwise_sun_gem_completion_fn()
   if (literacy_value > 0) then
     clear_and_add_message("CYNWISE_SUNGEM_QUEST_COMPLETE2_SID")
     add_object_to_player_tile("identify_scroll", 4)
+    add_object_to_player_tile("enchanting_scroll", 2)
   else
     add_object_to_player_tile("identify_scroll", 2)
     literacy_value = RNG_range(3, 15)

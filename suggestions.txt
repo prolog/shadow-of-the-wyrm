@@ -3,6 +3,7 @@ Me:
 - For v1.0.3 - force morgue prompt (Combat Eric)
 - For v1.0.3 - rebind '*' (vedvid)
 - For v1.0.3 - primordial not being considered for witchling/sage spells
+- For v1.0.3 - allow cursed weapons to be thrown/shot
 - Make sure glow respected
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID

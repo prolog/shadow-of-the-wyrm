@@ -9,6 +9,8 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 
 - Put some additional code in to force ivory to always stack (Kyzrati).
 
+- Cynwise's first quest now gives some enchanting scrolls, too.
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: sweet old dog.
