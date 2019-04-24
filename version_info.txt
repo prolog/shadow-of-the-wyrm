@@ -11,6 +11,9 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 
 - Cynwise's first quest now gives some enchanting scrolls, too.
 
+- When you've got the petrification effect, you're now periodically
+  reminded of it. (Blue)
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: sweet old dog.

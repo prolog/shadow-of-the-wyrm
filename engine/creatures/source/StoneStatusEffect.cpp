@@ -17,6 +17,28 @@ StoneStatusEffect::StoneStatusEffect()
   status_calc = std::make_shared<StoneCalculator>();
 }
 
+// Stoning is nasty and an eventual insta-death, so give warnings every tick.
+void StoneStatusEffect::tick(CreaturePtr creature, const int danger_level) const
+{
+  if (creature != nullptr)
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    string message;
+
+    if (creature->get_is_player())
+    {
+      message = get_player_application_message();
+    }
+    else
+    {
+      message = get_npc_application_message(creature);
+    }
+
+    manager.add_new_message(message);
+    manager.send();
+  }
+}
+
 void StoneStatusEffect::finalize(CreaturePtr creature) const
 {
   if (creature != nullptr)
