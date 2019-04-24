@@ -6,6 +6,8 @@ class StoneStatusEffect : public StatusEffect
   public:
     StoneStatusEffect();
   
+    virtual void tick(std::shared_ptr<Creature> creature, const int danger_level) const override;
+
   protected:
     // When Stone status runs its course, the creature dies and becomes
     // a statue.

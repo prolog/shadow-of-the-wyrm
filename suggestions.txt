@@ -4,6 +4,8 @@ Me:
 - For v1.0.3 - rebind '*' (vedvid)
 - For v1.0.3 - primordial not being considered for witchling/sage spells
 - For v1.0.3 - allow cursed weapons to be thrown/shot
+- For v1.0.3 - moving back up through infinite dungeon isn't reducing
+  danger level appropriately. (Blue)
 - Make sure glow respected
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
@@ -132,6 +134,7 @@ Kyzrati:
 - Wants item-iary.  Separate screen + in inventory view.  Update lower
   message to be [A...] Info or [A...] Select based on context.
 - Autopickup for food should ignore corpses.
+- Can dig into armory in Carcassia
 
 Avagart:
 - Eventually, have automovement stop only on new items.
@@ -204,3 +207,4 @@ happylisk:
 
 naughtusername: 
 - Skill descriptions on shift+letter or something
+- automove can end with digging and then stop
