@@ -242,7 +242,7 @@ ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr m
 
     for (ItemPtr item : items)
     {
-      if (item != nullptr && pickup_types.find(item->get_type()) != pickup_types.end())
+      if (item != nullptr && pickup_types.find(item->get_type()) != pickup_types.end() && autopickup_passes_exclusions(item))
       {
         // Candidate for autopickup.  Check to see if the creature can handle
         // the weight and the total number of items.
@@ -266,6 +266,23 @@ ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr m
   }
 
   return acv;
+}
+
+bool PickupAction::autopickup_passes_exclusions(ItemPtr item)
+{
+  bool item_ok = true;
+
+  if (item != nullptr)
+  {
+    bool ignore_corpses = Game::instance().get_settings_ref().get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_CORPSES);
+
+    if (item->has_additional_property(ConsumableConstants::CORPSE_RACE_ID) && ignore_corpses)
+    {
+      item_ok = false;
+    }
+  }
+ 
+  return item_ok;
 }
 
 void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount)

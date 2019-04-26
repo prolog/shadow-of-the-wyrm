@@ -14,6 +14,9 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 - When you've got the petrification effect, you're now periodically
   reminded of it. (Blue)
 
+- Corpses now are not picked up by default with autopickup.  This is
+  controlled by an .ini setting. (Kyzrati)
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: sweet old dog.
