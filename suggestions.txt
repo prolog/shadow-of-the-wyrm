@@ -133,7 +133,6 @@ Kyzrati:
   can be generated.
 - Wants item-iary.  Separate screen + in inventory view.  Update lower
   message to be [A...] Info or [A...] Select based on context.
-- Autopickup for food should ignore corpses.
 - Can dig into armory in Carcassia
 
 Avagart:
@@ -208,3 +207,5 @@ happylisk:
 naughtusername: 
 - Skill descriptions on shift+letter or something
 - automove can end with digging and then stop
+- fishing up items
+- weapon types in codex
