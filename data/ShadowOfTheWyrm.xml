@@ -29487,7 +29487,7 @@
 			<Properties>
 				<Property>
 					<Name>STATISTIC_MODIFIER_EVADE</Name>
-					<Value>22</Value>
+					<Value>25</Value>
 				</Property>
 				<Property>
 					<Name>SPELL_WEAR_OFF_SID</Name>
@@ -29510,7 +29510,7 @@
 			<Properties>
 				<Property>
 					<Name>STATISTIC_MODIFIER_SOAK</Name>
-					<Value>7</Value>
+					<Value>10</Value>
 				</Property>
 				<Property>
 					<Name>SPELL_WEAR_OFF_SID</Name>
@@ -39757,6 +39757,7 @@
 				<UnidentifiedDescriptionSID>UNID_HEALING_WORD_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HEALING_WORD_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_HEALING_WORD_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>HEALING_WORD_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>375</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39775,6 +39776,7 @@
 				<UnidentifiedDescriptionSID>UNID_SMITE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SMITE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SMITE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SMITE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>275</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39793,6 +39795,7 @@
 				<UnidentifiedDescriptionSID>UNID_HOLY_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HOLY_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_HOLY_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>HOLY_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1075</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39811,6 +39814,7 @@
 				<UnidentifiedDescriptionSID>UNID_DIVINE_WIND_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>DIVINE_WIND_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_DIVINE_WIND_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>DIVINE_WIND_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>405</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39829,6 +39833,7 @@
 				<UnidentifiedDescriptionSID>UNID_DIVINE_SHIELD_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>DIVINE_SHIELD_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_DIVINE_SHIELD_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>DIVINE_SHIELD_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>405</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39847,6 +39852,7 @@
 				<UnidentifiedDescriptionSID>UNID_CURE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>CURE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_CURE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>CURE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>50</Value>
 				<Weight>
 					<Pounds>3</Pounds>
