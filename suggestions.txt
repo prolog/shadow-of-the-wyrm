@@ -3,7 +3,6 @@ Me:
 - For v1.0.3 - force morgue prompt (Combat Eric)
 - For v1.0.3 - rebind '*' (vedvid)
 - For v1.0.3 - primordial not being considered for witchling/sage spells
-- For v1.0.3 - allow cursed weapons to be thrown/shot
 - For v1.0.3 - moving back up through infinite dungeon isn't reducing
   danger level appropriately. (Blue)
 - Make sure glow respected
@@ -134,6 +133,7 @@ Kyzrati:
 - Wants item-iary.  Separate screen + in inventory view.  Update lower
   message to be [A...] Info or [A...] Select based on context.
 - Can dig into armory in Carcassia
+- Lit FOV
 
 Avagart:
 - Eventually, have automovement stop only on new items.

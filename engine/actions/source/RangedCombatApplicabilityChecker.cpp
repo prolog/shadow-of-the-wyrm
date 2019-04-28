@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatTextKeys.hpp"
+#include "Setting.hpp"
 #include "StringTable.hpp"
 #include "WeaponManager.hpp"
 
@@ -15,14 +16,15 @@ pair<bool, string> RangedCombatApplicabilityChecker::can_creature_do_ranged_comb
 {
   pair<bool, string> ranged_combat_info;
   ranged_combat_info.first = false;
-  
+  bool allow_cursed_ammunition_use = Game::instance().get_settings_ref().get_setting_as_bool(Setting::ALLOW_CURSED_AMMUNITION_USE);
+
   if (creature != nullptr)
   {
     if (!is_current_map_type_not_world())
     {
       ranged_combat_info.second = get_ranged_combat_on_world_map_not_allowed_message();
     }
-    else if (is_ammunition_cursed(creature))
+    else if (is_ammunition_cursed(creature) && !allow_cursed_ammunition_use)
     {
       ranged_combat_info.second = get_ammunition_cursed_message();
     }

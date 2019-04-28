@@ -35,6 +35,7 @@ class Setting
     static const std::string AUTOPICKUP_IGNORE_CORPSES;
     static const std::string PROMPT_ON_STACK_PICKUP;
     static const std::string CHECKPOINT_SAVE;
+    static const std::string ALLOW_CURSED_AMMUNITION_USE;
 
   protected:
     Setting();
