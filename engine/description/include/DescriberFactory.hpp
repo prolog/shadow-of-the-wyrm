@@ -7,7 +7,7 @@
 class DescriberFactory
 {
   public:
-    static IDescriberPtr create_describer(TilePtr tile);
+    static IDescriberPtr create_describer(CreaturePtr viewing_creature, TilePtr tile);
     static IDescriberPtr create_describer(CreaturePtr viewing_creature, CreaturePtr creature);
     static IDescriberPtr create_describer(FeaturePtr feature);
     static IDescriberPtr create_describer(const bool blind, const IInventoryPtr inv);

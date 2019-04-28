@@ -5,10 +5,11 @@
 class TileDescriber : public IDescriber
 {
   public:
-    TileDescriber(TilePtr new_tile);
+    TileDescriber(CreaturePtr viewing_creature, TilePtr new_tile);
 
     std::string describe() const override;
 
   protected:
+    CreaturePtr viewing_creature;
     TilePtr tile;
 };

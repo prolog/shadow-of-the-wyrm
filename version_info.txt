@@ -48,6 +48,8 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
     items, so while these flags will be lost, currency now neatly stacks,
     always (Kyzrati).
 
+  - Inscriptions could be read when illiterate (Timo).
+
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.
 

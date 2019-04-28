@@ -81,3 +81,5 @@ const string TileTextKeys::TILE_DAMAGE_HEAT = "TILE_DAMAGE_HEAT";
 const string TileTextKeys::TILE_DAMAGE_COLD = "TILE_DAMAGE_COLD";
 const string TileTextKeys::TILE_DAMAGE_ACID = "TILE_DAMAGE_ACID";
 const string TileTextKeys::TILE_DAMAGE_POISON = "TILE_DAMAGE_POISON";
+
+const string TileTextKeys::TILE_INSCRIPTION_ILLITERATE = "TILE_INSCRIPTION_ILLITERATE";
