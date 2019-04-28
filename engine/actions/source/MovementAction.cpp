@@ -33,7 +33,6 @@
 #include "TerrainGeneratorFactory.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
-#include "TileDescriber.hpp"
 #include "TileMovementConfirmation.hpp"
 #include "TileUtils.hpp"
 #include "WorldMapLocationTextKeys.hpp"

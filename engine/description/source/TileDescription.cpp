@@ -35,7 +35,7 @@ string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, boo
       
       if (show_tile)
       {
-        describer = DescriberFactory::create_describer(tile);
+        describer = DescriberFactory::create_describer(viewing_creature, tile);
         tile_info_strings.push_back(describer->describe());
       }
 

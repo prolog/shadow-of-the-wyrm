@@ -1440,13 +1440,23 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
 
     if (tile->display_description_on_arrival() || tile->has_extra_description())
     {
-      TileDescriber td(tile);
+      TileDescriber td(creature, tile);
       manager.add_new_message(td.describe());
       msg_added = true;
     }
     else if (tile->has_inscription())
     {
-      manager.add_new_message(TextMessages::get_inscription_message(tile->get_inscription_sid()));
+      CurrentCreatureAbilities cca;
+
+      if (cca.can_read(creature))
+      {
+        manager.add_new_message(TextMessages::get_inscription_message(tile->get_inscription_sid()));
+      }
+      else
+      {
+        manager.add_new_message(StringTable::get(TileTextKeys::TILE_INSCRIPTION_ILLITERATE));
+      }
+
       msg_added = true;
     }
   }

@@ -1,5 +1,6 @@
 #include "TileDescriber.hpp"
 #include "Conversion.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "StringTable.hpp"
 #include "TextMessages.hpp"
@@ -7,8 +8,8 @@
 
 using namespace std;
 
-TileDescriber::TileDescriber(TilePtr new_tile)
-: tile(new_tile)
+TileDescriber::TileDescriber(CreaturePtr new_creature, TilePtr new_tile)
+: viewing_creature(new_creature), tile(new_tile)
 {
 }
 
@@ -16,7 +17,7 @@ string TileDescriber::describe() const
 {
   string description;
 
-  if (tile)
+  if (viewing_creature != nullptr && tile != nullptr)
   {
     description = StringTable::get(tile->get_tile_description_sid());
 
@@ -48,7 +49,17 @@ string TileDescriber::describe() const
 
     if (tile->has_inscription())
     {
-      description = description + " " + TextMessages::get_inscription_message(tile->get_inscription_sid());
+      CurrentCreatureAbilities cca;
+      bool can_read = cca.can_read(viewing_creature);
+
+      if (can_read)
+      {
+        description = description + " " + TextMessages::get_inscription_message(tile->get_inscription_sid());
+      }
+      else
+      {
+        description = description + " " + StringTable::get(TileTextKeys::TILE_INSCRIPTION_ILLITERATE);
+      }
     }
 
     if (tile->get_submerged())

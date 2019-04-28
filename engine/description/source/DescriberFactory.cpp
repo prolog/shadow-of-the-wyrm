@@ -13,9 +13,9 @@ DescriberFactory::~DescriberFactory()
 {
 }
 
-IDescriberPtr DescriberFactory::create_describer(TilePtr tile)
+IDescriberPtr DescriberFactory::create_describer(CreaturePtr viewing_creature, TilePtr tile)
 {
-  IDescriberPtr describer = std::make_shared<TileDescriber>(tile);
+  IDescriberPtr describer = std::make_shared<TileDescriber>(viewing_creature, tile);
   return describer;
 }
 

@@ -3,8 +3,8 @@ Me:
 - For v1.0.3 - rebind '*' (vedvid)
 - For v1.0.3 - moving back up through infinite dungeon isn't reducing
   danger level appropriately. (Blue)
-- For v1.0.3 - can read inscriptions when illiterate (Timo - add to
-  gamehist too)
+- For v1.0.3 - literacy quest in Carcassia, remove references in Lorelei
+  (Blue)
 - For v1.0.3 - Kyzrati's inventory paging bug
 - Make sure glow respected
 - Shield punch!
