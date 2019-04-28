@@ -15,7 +15,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual void set_fov_map(MapPtr map) override;
 
     virtual uint get_count(const uint max_count) override;
-    virtual bool get_confirmation(const bool confirmation_default_value = false) override;
+    virtual bool get_confirmation(const bool confirmation_default_value = false, const bool require_proper_selection = false) override;
     
   protected:
     // Functions that are called based on the factory type

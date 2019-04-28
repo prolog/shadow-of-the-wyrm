@@ -20,6 +20,9 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 - Cursed ammunition can now be thrown/shot as if it were uncursed.  This
   is configurable by an .ini setting.
 
+- The morgue prompt now requires the user to make a Y/N selection - it 
+  won't default to N as before. (Combat Eric)
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: sweet old dog.

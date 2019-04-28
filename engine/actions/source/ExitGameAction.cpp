@@ -66,7 +66,10 @@ ActionCostValue ExitGameAction::get_action_cost_value(CreaturePtr creature) cons
 void ExitGameAction::create_dump_if_necessary(IMessageManager& manager, ActionManager * const am, CreaturePtr creature) const
 {
   manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_CREATE_IDENTIFIED_DUMP));
-  bool create_dump = creature && creature->get_decision_strategy()->get_confirmation();
+  bool default_selection_value = true;
+  bool require_proper_selection = true;
+
+  bool create_dump = creature && creature->get_decision_strategy()->get_confirmation(default_selection_value, require_proper_selection);
 
   if (create_dump && creature != nullptr)
   {

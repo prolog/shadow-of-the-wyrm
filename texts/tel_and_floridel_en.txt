@@ -2669,7 +2669,7 @@ so that they understood they'd finally left %b
 the rivers of the dead, whose silent rush %b
 of cold, clear water culled the spirits from above.
 %p
-Beyond all else, the quiet was what ate %b
+Above all else, the quiet was what ate %b
 the four of them.  The absence of a thing %b
 is powerful, and just as sound creates %b
 impressions in the ear, so silence sings %b
@@ -2678,4 +2678,14 @@ the gaps.  They heard their mother, passed last year. %b
 The banya, growling past the dark.  And when %b
 they reached where each was coming from, or near, %b
 they found themselves alone, the voices disappeared.
+%p
+Beneath their feet, the light was radiant, %b
+though strange, directional; it didn't light %b
+the way they'd came, but made a gradient %b
+toward a place that fell outside their sight %b
+and senses, somewhere distant, but which they %b
+approached so gradually they didn't think %b
+they'd ever reach it, something that would stay %b
+beyond their grasp, mercurial and quick, %b
+until the scent of flowers hit them, sweet and thick.
 %p
