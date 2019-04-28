@@ -3496,6 +3496,12 @@
 						</Random>
 					</InitialItem>
 					<InitialItem>
+						<Random>
+							<ID>cure_spellbook</ID>
+							<ID>soften_spellbook</ID>
+						</Random>
+					</InitialItem>
+					<InitialItem>
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>
@@ -3843,9 +3849,14 @@
 						<Random>
 							<ID>wreath_of_fire_spellbook</ID>
 							<ID>blind_spellbook</ID>
-							<ID>healing_word_spellbook</ID>
-							<ID>flame_dart_spellbook</ID>
 							<ID>electric_arc_spellbook</ID>
+							<ID>healing_word_spellbook</ID>
+						</Random>
+					</InitialItem>
+					<InitialItem>
+						<Random>
+							<ID>minor_healing_spellbook</ID>
+							<ID>flame_dart_spellbook</ID>
 						</Random>
 					</InitialItem>
 					<InitialItem>
@@ -4770,6 +4781,12 @@
 				<InitialInventory>
 					<InitialItem>
 						<ID>wreath_of_fire_spellbook</ID>
+					</InitialItem>
+					<InitialItem>
+						<Random>
+							<ID>minor_healing_spellbook</ID>
+							<ID>flame_dart_spellbook</ID>
+						</Random>
 					</InitialItem>
 					<InitialItem>
 						<ID>food_ration</ID>
@@ -29538,7 +29555,7 @@
 			<MagicCategory>3001</MagicCategory>
 			<MagicClassification>1</MagicClassification>
 			<Colour>15</Colour>
-			<APCost>10</APCost>
+			<APCost>7</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
 			<Shape>0</Shape>
@@ -39871,6 +39888,7 @@
 				<UnidentifiedDescriptionSID>UNID_SOFTEN_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SOFTEN_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SOFTEN_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SOFTEN_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>90</Value>
 				<Weight>
 					<Pounds>3</Pounds>
