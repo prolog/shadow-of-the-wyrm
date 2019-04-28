@@ -39907,6 +39907,7 @@
 				<UnidentifiedDescriptionSID>UNID_BENEDICTION_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>BENEDICTION_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_BENEDICTION_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>BENEDICTION_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39925,6 +39926,7 @@
 				<UnidentifiedDescriptionSID>UNID_HEAVENLY_HAND_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HEAVENLY_HAND_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_HEAVENLY_HAND_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>HEAVENLY_HAND_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>140</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39943,6 +39945,7 @@
 				<UnidentifiedDescriptionSID>UNID_RADIANT_BEAM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>RADIANT_BEAM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_RADIANT_BEAM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>RADIANT_BEAM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>180</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39961,6 +39964,7 @@
 				<UnidentifiedDescriptionSID>UNID_DIVINE_FORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>DIVINE_FORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_DIVINE_FORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>DIVINE_FORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -39979,6 +39983,7 @@
 				<UnidentifiedDescriptionSID>UNID_ABSOLUTION_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ABSOLUTION_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_ABSOLUTION_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>ABSOLUTION_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
