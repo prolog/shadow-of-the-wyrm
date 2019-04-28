@@ -39,7 +39,7 @@ uint NPCDecisionStrategy::get_count(const uint max_count)
   return max_count;
 }
 
-bool NPCDecisionStrategy::get_confirmation(const bool confirmation_default_value)
+bool NPCDecisionStrategy::get_confirmation(const bool confirmation_default_value, const bool require_proper_selection)
 {
   return true;
 }

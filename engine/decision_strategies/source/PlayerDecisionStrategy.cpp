@@ -110,7 +110,7 @@ uint PlayerDecisionStrategy::get_count(const uint max_count)
 // The confirmation_default_value parameter determines what the default
 // should be.  Convention is that the default can be true in cases where
 // it makes sense and the action is not dangerous, like switching places.
-bool PlayerDecisionStrategy::get_confirmation(const bool confirmation_default_value)
+bool PlayerDecisionStrategy::get_confirmation(const bool confirmation_default_value, const bool require_proper_selection)
 {
   bool confirm = confirmation_default_value;
 
@@ -122,20 +122,32 @@ bool PlayerDecisionStrategy::get_confirmation(const bool confirmation_default_va
 
   map<string, bool> key_map = {{confirm_str, true}, {deny_str, false}};
   
-  ostringstream ss;
-  ss << (char) controller->get_char_as_int(); // needs to be interpreted as a char!
-  string user_input = ss.str();
-  boost::to_lower(user_input);
-  
-  if (user_input.size() > 0)
-  {
-    auto k_it = key_map.find(user_input);
+  bool keep_checking = true;
 
-    if (k_it != key_map.end())
+  while (keep_checking)
+  {
+    ostringstream ss;
+    ss << (char)controller->get_char_as_int(); // needs to be interpreted as a char!
+    string user_input = ss.str();
+    boost::to_lower(user_input);
+
+    if (user_input.size())
     {
-      confirm = k_it->second;
+      bool found_entry = false;
+      auto k_it = key_map.find(user_input);
+
+      if (k_it != key_map.end())
+      {
+        confirm = k_it->second;
+        found_entry = true;
+      }
+
+      if (found_entry || !require_proper_selection)
+      {
+        keep_checking = false;
+      }
     }
-  }
+  } 
 
   return confirm;
 }

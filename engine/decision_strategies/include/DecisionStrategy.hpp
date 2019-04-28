@@ -29,7 +29,7 @@ class DecisionStrategy : public ISerializable
     virtual std::set<ItemType> get_autopickup_types() const;
 
     virtual uint get_count(const uint max_count) = 0; // For turns to wait, pick up, drop, etc.
-    virtual bool get_confirmation(const bool confirmation_default_value = false) = 0;
+    virtual bool get_confirmation(const bool confirmation_default_value = false, const bool require_proper_selection = false) = 0;
 
     ThreatRatings& get_threats_ref();
     ThreatRatings  get_threats() const;
