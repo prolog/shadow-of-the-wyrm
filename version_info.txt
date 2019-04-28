@@ -26,6 +26,9 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 - The Primordial skill now gives bonus castings to sages and witchlings
   when they gain levels.
 
+- All the major book casters (wizards, pilgrims, mystics, sages) are
+  guaranteed to start with two books.
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: sweet old dog.
