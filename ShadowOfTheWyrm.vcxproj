@@ -425,6 +425,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\PapercraftCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhaseOfMoonCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhysicalAttackSpeedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\PrimordialCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\RageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ReadCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
@@ -1469,6 +1470,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\PapercraftCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhaseOfMoonCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhysicalAttackSpeedCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\PrimordialCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\RageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ReadCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ScribingCalculator.cpp" />
@@ -1621,6 +1623,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\PrimaryPhysicalAttackSpeedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\PrimordialCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

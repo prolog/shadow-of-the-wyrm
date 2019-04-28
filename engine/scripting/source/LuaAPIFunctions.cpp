@@ -34,6 +34,7 @@
 #include "Naming.hpp"
 #include "OptionScreen.hpp"
 #include "PickupAction.hpp"
+#include "PrimordialCalculator.hpp"
 #include "RaceManager.hpp"
 #include "Quests.hpp"
 #include "ReligionManager.hpp"
@@ -379,6 +380,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_creature", generate_creature);
   lua_register(L, "set_creature_id", set_creature_id);
   lua_register(L, "add_all_items_to_player_tile", add_all_items_to_player_tile);
+  lua_register(L, "get_primordial_castings", get_primordial_castings);
 }
 
 // Lua API helper functions
@@ -7512,4 +7514,30 @@ int add_all_items_to_player_tile(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_primordial_castings(lua_State* ls)
+{
+  int castings = 0;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    PrimordialCalculator pc;
+    string creature_id = lua_tostring(ls, 1);
+    int base_castings = lua_tointeger(ls, 2);
+    
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      castings = base_castings + RNG::range(0, pc.get_max_skill_castings(creature));
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_primordial castings");
+  }
+
+  lua_pushnumber(ls, castings);
+  return 1;
 }

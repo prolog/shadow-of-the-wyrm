@@ -23,6 +23,9 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 - The morgue prompt now requires the user to make a Y/N selection - it 
   won't default to N as before. (Combat Eric)
 
+- The Primordial skill now gives bonus castings to sages and witchlings
+  when they gain levels.
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: sweet old dog.
