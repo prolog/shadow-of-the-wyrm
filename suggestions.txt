@@ -210,3 +210,7 @@ naughtusername:
 - automove can end with digging and then stop
 - fishing up items
 - weapon types in codex
+
+Mirza Ghalib:
+- Wide displays are causing text in e.g. the Isen Dun Chronicle to
+  mess up (see the section about Gnordvar). 88x25
