@@ -55,6 +55,8 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 
   - Okhoa's key should only be generated once, but there was a bug in the
     check (Timo).
+
+  - The fortress in Carcassia B1 was diggable (Kyzrati).
    
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.

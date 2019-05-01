@@ -66,6 +66,14 @@ end
  
 -- Setup the armory with some useful early-game weapons and armour
 local function setup_armory(map_id)
+  -- Prevent people from digging up the fortress and taking loot
+  --  immediately at the beginning.
+  for row = 13,17 do
+    for col = 15,26 do
+      map_set_tile_property(map_id, row, col, "TILE_PROPERTY_CANNOT_DIG", "1")
+    end
+  end
+
   local types = fn.array_to_csv(fn.stringify_array({CITEM_TYPE_WEAPON, CITEM_TYPE_ARMOUR}))
 
   for row = 14, 16 do
