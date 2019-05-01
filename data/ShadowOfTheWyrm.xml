@@ -40002,6 +40002,7 @@
 				<UnidentifiedDescriptionSID>UNID_WRAITH_FORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>WRAITH_FORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_WRAITH_FORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>WRAITH_FORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -40020,6 +40021,7 @@
 				<UnidentifiedDescriptionSID>UNID_POISON_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>POISON_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_POISON_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>POISON_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>300</Value>
 				<Weight>
 					<Pounds>3</Pounds>
