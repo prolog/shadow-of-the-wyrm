@@ -133,7 +133,6 @@ Kyzrati:
   can be generated.
 - Wants item-iary.  Separate screen + in inventory view.  Update lower
   message to be [A...] Info or [A...] Select based on context.
-- Can dig into armory in Carcassia
 - Lit FOV
 
 Avagart:
@@ -210,6 +209,9 @@ naughtusername:
 - automove can end with digging and then stop
 - fishing up items
 - weapon types in codex
+
+Timo:
+- Can kill off guards one by one, emperor doesn't care.
 
 Mirza Ghalib:
 - Wide displays are causing text in e.g. the Isen Dun Chronicle to
