@@ -40097,6 +40097,7 @@
 				<UnidentifiedDescriptionSID>UNID_HASTE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HASTE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_HASTE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>HASTE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>350</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -40115,6 +40116,7 @@
 				<UnidentifiedDescriptionSID>UNID_SLOW_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>SLOW_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_SLOW_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SLOW_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>350</Value>
 				<Weight>
 					<Pounds>3</Pounds>
