@@ -2687,5 +2687,17 @@ and senses, somewhere distant, but which they %b
 approached so gradually they didn't think %b
 they'd ever reach it, something that would stay %b
 beyond their grasp, mercurial and quick, %b
-until the scent of flowers hit them, sweet and thick.
+until the smell of flowers hit them, sweet and thick.
 %p
+The scent was keenly felt, for though they knew %b
+something had changed, they felt a pressure shift, %b
+as if their nerves had come apart and grew %b
+into a field of wildflowers, set adrift %b
+to greet them at a halfway point.  The land %b
+was changing quickly.  As the brothers bent %b
+their path to meet the light, they felt their hands %b
+brush grass and goldenrod, whose stalks and stems %b
+announced that their descent had finally met its end.
+%p
+
+

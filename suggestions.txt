@@ -5,7 +5,7 @@ Me:
   danger level appropriately. (Blue)
 - For v1.0.3 - literacy quest in Carcassia, remove references in Lorelei
   (Blue)
-- For v1.0.3 - Kyzrati's inventory paging bug
+- For v1.0.3 - check that massive lists of spells page ok
 - Make sure glow respected
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
@@ -129,8 +129,6 @@ Kyzrati:
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
 - Group like items together (scrolls, etc) even if not exactly the same
-- Item paging issue confirmed: when large number of items, a blank page
-  can be generated.
 - Wants item-iary.  Separate screen + in inventory view.  Update lower
   message to be [A...] Info or [A...] Select based on context.
 - Lit FOV
@@ -195,10 +193,6 @@ ssteam
 
 aotdev
 - Status/stats lines wrap weirdly with larger terminal sizes
-
-Troubler
-- Multiple pages of items, eventually hits blank page that when hitting ,
-  or . gives the right page.
 
 happylisk:
 - buff shrine guardians (doable at 25)
