@@ -57,7 +57,11 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
     check (Timo).
 
   - The fortress in Carcassia B1 was diggable (Kyzrati).
-   
+
+  - On the inventory screen, the paging functionality could lead to
+    things being added past the current page, leading to weird paging
+    issues (Troubler, Kyzrati).
+       
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.
 

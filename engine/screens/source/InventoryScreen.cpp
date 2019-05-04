@@ -42,9 +42,9 @@ void InventoryScreen::initialize()
     TextComponentPtr text = std::make_shared<TextComponent>(category_desc);
     text->add_text(" - ", Colour::COLOUR_WHITE);
     text->add_text(category_symbol, category_colour);
+    cnt++;
 
     add_component(inv_screen, text, cnt, current_id);
-    cnt++;
 
     if (!display_items.empty())
     {
@@ -85,8 +85,11 @@ void InventoryScreen::initialize()
         current_id++;
       }
 
+      // Always add a blank line after listing all the items for a particular
+      // category.
       TextComponentPtr empty = std::make_shared<TextComponent>("");
       cnt++;
+
       add_component(inv_screen, empty, cnt, current_id);
     }
   }
