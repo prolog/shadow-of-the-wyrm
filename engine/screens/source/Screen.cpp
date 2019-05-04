@@ -170,7 +170,9 @@ bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenCom
   // screen, and reset the line count and the option ID.
   if (cnt >= lines_displayable_area)
   {
-    cnt = 0;
+    // Reset this to 1 so that when the component is pushed on to the new
+    // screen, the counter will be reflective of what's actually there.
+    cnt = 1;
     current_option_id = 0;
 
     add_page(current_screen);

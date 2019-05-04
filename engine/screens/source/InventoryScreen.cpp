@@ -79,7 +79,6 @@ void InventoryScreen::initialize()
         options->add_option_description("");
 
         cnt++;
-
         add_options_component(inv_screen, options, cnt, current_id);
 
         current_id++;
