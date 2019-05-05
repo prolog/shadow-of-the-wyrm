@@ -199,9 +199,9 @@ bool Screen::add_text(vector<ScreenComponentPtr>& text_screen, const vector<Text
     }
 
     TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour);
-    add_component(text_screen, current_line, cnt);
-
     cnt++;
+
+    add_component(text_screen, current_line, cnt);
   }
 
   return true;

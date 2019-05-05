@@ -29,6 +29,13 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 - All the major book casters (wizards, pilgrims, mystics, sages) are
   guaranteed to start with two books.
 
+- Uncurse and Bless, both mystic spells, have very similar effects.
+  Uncurse has been toned down to be cheaper and easier to cast, and show
+  up earlier.  Bless is still better in terms of its overall effect, but
+  it costs 10x the AP to cast (30 instead of 3).
+
+- Stormstaff now deals lightning damage.
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: sweet old dog.
