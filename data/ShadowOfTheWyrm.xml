@@ -33651,6 +33651,7 @@
 			<Weapon id="bugcrusher">
 				<DescriptionSID>BUGCRUSHER_SID</DescriptionSID>
 				<UsageDescriptionSID>BUGCRUSHER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BUGCRUSHER_CODEX_SID</CodexDescriptionSID>
 				<Value>1500</Value>
 				<Weight>
 					<Pounds>8</Pounds>
@@ -33680,6 +33681,7 @@
 			<Weapon id="jellysmasher">
 				<DescriptionSID>JELLYSMASHER_SID</DescriptionSID>
 				<UsageDescriptionSID>JELLYSMASHER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>JELLYSMASHER_CODEX_SID</CodexDescriptionSID>
 				<Value>1500</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -33709,6 +33711,7 @@
 			<Weapon id="goblincrusher">
 				<DescriptionSID>GOBLINCRUSHER_SID</DescriptionSID>
 				<UsageDescriptionSID>GOBLINCRUSHER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GOBLINCRUSHER_CODEX_SID</CodexDescriptionSID>
 				<Value>1600</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -33739,6 +33742,7 @@
 			<Weapon id="amagari">
 				<DescriptionSID>AMAGARI_SID</DescriptionSID>
 				<UsageDescriptionSID>AMAGARI_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>AMAGARI_CODEX_SID</CodexDescriptionSID>
 				<Value>1260</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -33765,6 +33769,7 @@
 			<Weapon id="kithslayer">
 				<DescriptionSID>KITHSLAYER_SID</DescriptionSID>
 				<UsageDescriptionSID>KITHSLAYER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>KITHSLAYER_CODEX_SID</CodexDescriptionSID>
 				<Value>1600</Value>
 				<Weight>
 					<Pounds>7</Pounds>
@@ -36074,6 +36079,7 @@
 			<Missile id="caber">
 				<DescriptionSID>CABER_SID</DescriptionSID>
 				<UsageDescriptionSID>CABER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CABER_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>50</Pounds>
@@ -36100,6 +36106,7 @@
 			<Missile id="titanic_heavenly_pillar">
 				<DescriptionSID>TITANIC_HEAVENLY_PILLAR_SID</DescriptionSID>
 				<UsageDescriptionSID>TITANIC_HEAVENLY_PILLAR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TITANIC_HEAVENLY_PILLAR_CODEX_SID</CodexDescriptionSID>
 				<Value>366</Value>
 				<Weight>
 					<Pounds>400</Pounds>
@@ -36120,6 +36127,7 @@
 			<Missile id="massive_ferric_meteorite">
 				<DescriptionSID>MASSIVE_FERRIC_METEORITE_SID</DescriptionSID>
 				<UsageDescriptionSID>MASSIVE_FERRIC_METEORITE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MASSIVE_FERRIC_METEORITE_CODEX_SID</CodexDescriptionSID>
 				<Value>300</Value>
 				<Weight>
 					<Pounds>300</Pounds>
