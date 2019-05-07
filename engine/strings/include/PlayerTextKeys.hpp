@@ -4,8 +4,6 @@
 class PlayerTextKeys
 {
   public:
-    static const std::string PLAYER_DESCRIPTION_SID;
-    static const std::string PLAYER_SHORT_DESCRIPTION_SID;
     static const std::string PLAYER_TEXT_DETAILS_SID;
     static const std::string PLAYER_SPEECH_TEXT_SID;
 

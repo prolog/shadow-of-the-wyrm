@@ -5,7 +5,8 @@ Me:
   danger level appropriately. (Blue)
 - For v1.0.3 - literacy quest in Carcassia, remove references in Lorelei
   (Blue)
-- For v1.0.3 - check that massive lists of spells page ok
+- For v1.0.3 - filtering doesn't use the ground's list when working on
+  the tile's inv (NoCreativeNames).
 - Make sure glow respected
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
