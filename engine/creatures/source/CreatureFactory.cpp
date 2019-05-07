@@ -20,6 +20,7 @@
 #include "ResistancesCalculator.hpp"
 #include "RNG.hpp"
 #include "SkillsCalculator.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
@@ -331,8 +332,8 @@ void CreatureFactory::setup_player(CreaturePtr player, ControllerPtr controller)
   if (player != nullptr)
   {
     player->set_is_player(true, controller);
-    player->set_description_sid(PlayerTextKeys::PLAYER_DESCRIPTION_SID);
-    player->set_short_description_sid(PlayerTextKeys::PLAYER_SHORT_DESCRIPTION_SID);
+    player->set_description_sid(TextKeys::YOU);
+    player->set_short_description_sid(TextKeys::YOU);
     player->set_text_details_sid(PlayerTextKeys::PLAYER_TEXT_DETAILS_SID);
     player->set_speech_text_sid(PlayerTextKeys::PLAYER_SPEECH_TEXT_SID);
   }

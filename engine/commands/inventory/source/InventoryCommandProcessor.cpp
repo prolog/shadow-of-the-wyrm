@@ -36,7 +36,7 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     {
       list<IItemFilterPtr> empty_filter = {};
 
-      ItemPtr item = game.actions.inventory(creature, creature->get_inventory(), base_item_filter_list, empty_filter, inventory_is_read_only);
+      ItemPtr item = game.actions.inventory(creature, inv, base_item_filter_list, empty_filter, inventory_is_read_only);
 
       if (item != nullptr)
       {
@@ -49,7 +49,7 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     {
       list<IItemFilterPtr> display_filter = ItemFilterFactory::create_item_type_filter(command->get_key());
 
-      ItemPtr item = game.actions.inventory(creature, creature->get_inventory(), base_item_filter_list, display_filter, inventory_is_read_only);
+      ItemPtr item = game.actions.inventory(creature, inv, base_item_filter_list, display_filter, inventory_is_read_only);
 
       if (item != nullptr)
       {

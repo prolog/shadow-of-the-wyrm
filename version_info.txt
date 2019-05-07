@@ -68,7 +68,15 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
   - On the inventory screen, the paging functionality could lead to
     things being added past the current page, leading to weird paging
     issues (Troubler, Kyzrati).
-       
+
+  - The player was being referred to as "the player" in various targetting
+    messages (NoCreativeNames).
+
+  - Inventories filtered on the ground were filtering based on the
+    player's inventory, not what's on the ground.  This allowed the
+    player to duplicate any item as many times as they wanted
+    (NoCreativeNames).
+
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.
 
