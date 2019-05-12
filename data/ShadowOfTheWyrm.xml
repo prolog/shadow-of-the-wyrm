@@ -33917,6 +33917,7 @@
 			<Weapon id="vorpal_blade">
 				<DescriptionSID>VORPAL_BLADE_SID</DescriptionSID>
 				<UsageDescriptionSID>VORPAL_BLADE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VORPAL_BLADE_CODEX_SID</CodexDescriptionSID>
 				<Value>2100</Value>
 				<Weight>
 					<Pounds>7</Pounds>
@@ -33941,6 +33942,7 @@
 			<Weapon id="whisperwind">
 				<DescriptionSID>WHISPERWIND_SID</DescriptionSID>
 				<UsageDescriptionSID>WHISPERWIND_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WHISPERWIND_CODEX_SID</CodexDescriptionSID>
 				<Value>1676</Value>
 				<Weight>
 					<Pounds>15</Pounds>
@@ -33973,6 +33975,7 @@
 			<Weapon id="bloodsinger">
 				<DescriptionSID>BLOODSINGER_SID</DescriptionSID>
 				<UsageDescriptionSID>BLOODSINGER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BLOODSINGER_CODEX_SID</CodexDescriptionSID>
 				<Value>1450</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -33998,6 +34001,7 @@
 			<Weapon id="worldsword">
 				<DescriptionSID>WORLDSWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>WORLDSWORD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WORLDSWORD_CODEX_SID</CodexDescriptionSID>
 				<Value>10000</Value>
 				<Weight>
 					<Pounds>40</Pounds>
@@ -34037,6 +34041,7 @@
 			<Weapon id="godblade">
 				<DescriptionSID>GODBLADE_SID</DescriptionSID>
 				<UsageDescriptionSID>GODBLADE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GODBLADE_CODEX_SID</CodexDescriptionSID>
 				<Value>50000</Value>
 				<Weight>
 					<Pounds>50</Pounds>
@@ -34076,6 +34081,7 @@
 			<Weapon id="shard_starlight">
 				<DescriptionSID>SHARD_OF_STARLIGHT_SID</DescriptionSID>
 				<UsageDescriptionSID>SHARD_OF_STARLIGHT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHARD_OF_STARLIGHT_CODEX_SID</CodexDescriptionSID>
 				<Value>1400</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -34109,6 +34115,10 @@
 					<Slays>
 						<Slay>*</Slay>
 					</Slays>
+					<EffectBonus>40</EffectBonus>
+					<StatusAilments>
+						<Status>_blind</Status>
+					</StatusAilments>
 				</Damage>
 			</Weapon>
 			<Weapon id="beow">
@@ -34428,6 +34438,7 @@
 			<Weapon id="great_sword">
 				<DescriptionSID>GREAT_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>GREAT_SWORD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GREAT_SWORD_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
 					<Pounds>20</Pounds>
@@ -35481,6 +35492,7 @@
 			<Missile id="poison_dart">
 				<DescriptionSID>POISON_DART_SID</DescriptionSID>
 				<UsageDescriptionSID>POISON_DART_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>POISON_DART_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35502,6 +35514,7 @@
 			<Missile id="tooth_ancient_sea_creature">
 				<DescriptionSID>TOOTH_ANCIENT_SEA_CREATURE_SID</DescriptionSID>
 				<UsageDescriptionSID>TOOTH_ANCIENT_SEA_CREATURE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>TOOTH_ANCIENT_SEA_CREATURE_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35523,6 +35536,7 @@
 			<Missile id="fire_bomb">
 				<DescriptionSID>FIRE_BOMB_SID</DescriptionSID>
 				<UsageDescriptionSID>FIRE_BOMB_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FIRE_BOMB_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -35556,6 +35570,7 @@
 			<Missile id="shadow_bomb">
 				<DescriptionSID>SHADOW_BOMB_SID</DescriptionSID>
 				<UsageDescriptionSID>SHADOW_BOMB_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHADOW_BOMB_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35588,6 +35603,7 @@
 			<Missile id="chaos_bomb">
 				<DescriptionSID>CHAOS_BOMB_SID</DescriptionSID>
 				<UsageDescriptionSID>CHAOS_BOMB_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CHAOS_BOMB_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35614,7 +35630,7 @@
 					<NumDice>20</NumDice>
 					<NumSides>6</NumSides>
 					<Type>8</Type>
-					<EffectBonus>50</EffectBonus>
+					<EffectBonus>100</EffectBonus>
 					<StatusAilments>
 						<Status>_poison</Status>
 						<Status>_mute</Status>
@@ -35633,10 +35649,11 @@
 			<Missile id="_stone">
 				<DescriptionSID>STONE_SID</DescriptionSID>
 				<UsageDescriptionSID>STONE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STONE_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
-					<Ounces>3</Ounces>
+					<Ounces>2</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
@@ -35659,6 +35676,7 @@
 			<Missile id="_rock">
 				<DescriptionSID>ROCK_SID</DescriptionSID>
 				<UsageDescriptionSID>ROCK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ROCK_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35685,6 +35703,7 @@
 			<Missile id="huge_rock">
 				<DescriptionSID>HUGE_ROCK_SID</DescriptionSID>
 				<UsageDescriptionSID>HUGE_ROCK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HUGE_ROCK_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>80</Pounds>
@@ -35701,7 +35720,7 @@
 				<Rarity>1</Rarity>
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
-				<Difficulty>52</Difficulty>
+				<Difficulty>56</Difficulty>
 				<Speed>15</Speed>
 				<Damage>
 					<NumDice>8</NumDice>
@@ -35712,6 +35731,7 @@
 			<Missile id="antimatter_shot">
 				<DescriptionSID>ANTIMATTER_SHOT_SID</DescriptionSID>
 				<UsageDescriptionSID>ANTIMATTER_SHOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ANTIMATTER_SHOT_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35739,6 +35759,7 @@
 			<Missile id="_clay_pot">
 				<DescriptionSID>CLAY_POT_SID</DescriptionSID>
 				<UsageDescriptionSID>CLAY_POT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CLAY_POT_CODEX_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -35776,6 +35797,7 @@
 			<Missile id="arrow">
 				<DescriptionSID>ARROW_SID</DescriptionSID>
 				<UsageDescriptionSID>ARROW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ARROW_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35808,6 +35830,7 @@
 			<Missile id="exploding_arrow">
 				<DescriptionSID>EXPLODING_ARROW_SID</DescriptionSID>
 				<UsageDescriptionSID>EXPLODING_ARROW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>EXPLODING_ARROW_CODEX_SID</CodexDescriptionSID>
 				<Value>6</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35841,6 +35864,7 @@
 			<Missile id="avernal_arrow">
 				<DescriptionSID>AVERNAL_ARROW_SID</DescriptionSID>
 				<UsageDescriptionSID>AVERNAL_ARROW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>AVERNAL_ARROW_CODEX_SID</CodexDescriptionSID>
 				<Value>15</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35867,6 +35891,7 @@
 			<Missile id="arrow_ancient_magics">
 				<DescriptionSID>ARROW_ANCIENT_MAGICS_SID</DescriptionSID>
 				<UsageDescriptionSID>ARROW_ANCIENT_MAGICS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ARROW_ANCIENT_MAGICS_CODEX_SID</CodexDescriptionSID>
 				<Value>120</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35888,11 +35913,16 @@
 					<NumDice>35</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
+					<EffectBonus>50</EffectBonus>
+					<StatusAilments>
+						<Status>_spellb</Status>
+					</StatusAilments>
 				</Damage>
 			</Missile>
 			<Missile id="bolt">
 				<DescriptionSID>BOLT_SID</DescriptionSID>
 				<UsageDescriptionSID>BOLT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOLT_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35925,6 +35955,7 @@
 			<Missile id="bolt_ancient_magics">
 				<DescriptionSID>BOLT_ANCIENT_MAGICS_SID</DescriptionSID>
 				<UsageDescriptionSID>BOLT_ANCIENT_MAGICS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOLT_ANCIENT_MAGICS_CODEX_SID</CodexDescriptionSID>
 				<Value>85</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35946,11 +35977,16 @@
 					<NumDice>35</NumDice>
 					<NumSides>8</NumSides>
 					<Type>1</Type>
+					<EffectBonus>50</EffectBonus>
+					<StatusAilments>
+						<Status>_spellb</Status>
+					</StatusAilments>
 				</Damage>
 			</Missile>
 			<Missile id="javelin">
 				<DescriptionSID>JAVELIN_SID</DescriptionSID>
 				<UsageDescriptionSID>JAVELIN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>JAVELIN_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -35981,6 +36017,7 @@
 			<Missile id="barbed_spear">
 				<DescriptionSID>BARBED_SPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>BARBED_SPEAR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BARBED_SPEAR_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -36007,6 +36044,7 @@
 			<Missile id="winged_javelin">
 				<DescriptionSID>WINGED_JAVELIN_SID</DescriptionSID>
 				<UsageDescriptionSID>WINGED_JAVELIN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WINGED_JAVELIN_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -36033,6 +36071,7 @@
 			<Missile id="spine_ancient_horror">
 				<DescriptionSID>SPINE_ANCIENT_HORROR_SID</DescriptionSID>
 				<UsageDescriptionSID>SPINE_ANCIENT_HORROR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SPINE_ANCIENT_HORROR_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -36053,7 +36092,8 @@
 			<Missile id="throwing_club">
 				<DescriptionSID>THROWING_CLUB_SID</DescriptionSID>
 				<UsageDescriptionSID>THROWING_CLUB_USAGE_SID</UsageDescriptionSID>
-				<Value>8</Value>
+				<CodexDescriptionSID>THROWING_CLUB_CODEX_SID</CodexDescriptionSID>
+				<Value>2</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -36156,6 +36196,7 @@
 			<Missile id="throwing_axe">
 				<DescriptionSID>THROWING_AXE_SID</DescriptionSID>
 				<UsageDescriptionSID>THROWING_AXE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>THROWING_AXE_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -36182,6 +36223,7 @@
 			<Missile id="elysian_throwing_axe">
 				<DescriptionSID>ELYSIAN_THROWING_AXE_SID</DescriptionSID>
 				<UsageDescriptionSID>ELYSIAN_THROWING_AXE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ELYSIAN_THROWING_AXE_CODEX_SID</CodexDescriptionSID>
 				<Value>450</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -36205,6 +36247,7 @@
 			<Missile id="throwing_sword">
 				<DescriptionSID>THROWING_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>THROWING_SWORD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>THROWING_SWORD_CODEX_SID</CodexDescriptionSID>
 				<Value>12</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -36232,6 +36275,7 @@
 			<Missile id="elysian_throwing_sword">
 				<DescriptionSID>ELYSIAN_THROWING_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>ELYSIAN_THROWING_SWORD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ELYSIAN_THROWING_SWORD_CODEX_SID</CodexDescriptionSID>
 				<Value>420</Value>
 				<Weight>
 					<Pounds>4</Pounds>
