@@ -34124,6 +34124,7 @@
 			<Weapon id="beow">
 				<DescriptionSID>BEOW_SID</DescriptionSID>
 				<UsageDescriptionSID>BEOW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BEOW_CODEX_SID</CodexDescriptionSID>
 				<Value>1900</Value>
 				<Weight>
 					<Pounds>22</Pounds>
@@ -34153,6 +34154,7 @@
 			<Weapon id="hearts_fury">
 				<DescriptionSID>HEARTS_FURY_SID</DescriptionSID>
 				<UsageDescriptionSID>HEARTS_FURY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HEARTS_FURY_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
 					<Pounds>14</Pounds>
