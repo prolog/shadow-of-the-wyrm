@@ -1,5 +1,8 @@
 Me:
 - For v1.0.3 - start the item codex ('c')!
+  - Include item stats
+  - Type
+  - Autocursing?
 - For v1.0.3 - rebind '*' (vedvid)
 - For v1.0.3 - moving back up through infinite dungeon isn't reducing
   danger level appropriately. (Blue)
