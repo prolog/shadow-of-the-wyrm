@@ -34340,6 +34340,7 @@
 			<Weapon id="dragonsfist">
 				<DescriptionSID>DRAGONSFIST_SID</DescriptionSID>
 				<UsageDescriptionSID>DRAGONSFIST_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DRAGONSFIST_CODEX_SID</CodexDescriptionSID>
 				<Value>2200</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -34367,6 +34368,7 @@
 			<Weapon id="elven_short_sword">
 				<DescriptionSID>ELVEN_SHORT_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>ELVEN_SHORT_SWORD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ELVEN_SHORT_SWORD_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -34394,6 +34396,7 @@
 			<Weapon id="rapier">
 				<DescriptionSID>RAPIER_SID</DescriptionSID>
 				<UsageDescriptionSID>RAPIER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>RAPIER_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -36310,6 +36313,7 @@
 			<Food id="_corpse">
 				<DescriptionSID>CORPSE_SID</DescriptionSID>
 				<UsageDescriptionSID>CORPSE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CORPSE_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>100</Pounds>
@@ -36328,6 +36332,7 @@
 			<Food id="_intact_skeleton">
 				<DescriptionSID>INTACT_SKELETON_SID</DescriptionSID>
 				<UsageDescriptionSID>INTACT_SKELETON_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>INTACT_SKELETON_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -36372,6 +36377,7 @@
 			<Food id="_root">
 				<DescriptionSID>ROOT_SID</DescriptionSID>
 				<UsageDescriptionSID>ROOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ROOT_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36391,6 +36397,7 @@
 			<Food id="_berries">
 				<DescriptionSID>BERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>BERRIES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BERRIES_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36410,6 +36417,7 @@
 			<Food id="_kelp">
 				<DescriptionSID>KELP_SID</DescriptionSID>
 				<UsageDescriptionSID>KELP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>KELP_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>1</Pounds>
