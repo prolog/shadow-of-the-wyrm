@@ -34423,6 +34423,7 @@
 			<Weapon id="broad_sword">
 				<DescriptionSID>BROAD_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>BROAD_SWORD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BROAD_SWORD_CODEX_SID</CodexDescriptionSID>
 				<Value>65</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -34477,6 +34478,7 @@
 			<Weapon id="mace">
 				<DescriptionSID>MACE_SID</DescriptionSID>
 				<UsageDescriptionSID>MACE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MACE_CODEX_SID</CodexDescriptionSID>
 				<Value>55</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -34815,6 +34817,7 @@
 			<Weapon id="delver">
 				<DescriptionSID>DELVER_SID</DescriptionSID>
 				<UsageDescriptionSID>DELVER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DELVER_CODEX_SID</CodexDescriptionSID>
 				<Value>1825</Value>
 				<Weight>
 					<Pounds>8</Pounds>
@@ -34847,6 +34850,7 @@
 			<Weapon id="spear">
 				<DescriptionSID>SPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>SPEAR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SPEAR_CODEX_SID</CodexDescriptionSID>
 				<Value>50</Value>
 				<Weight>
 					<Pounds>7</Pounds>
@@ -34873,6 +34877,7 @@
 			<Weapon id="long_spear">
 				<DescriptionSID>LONG_SPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>LONG_SPEAR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LONG_SPEAR_CODEX_SID</CodexDescriptionSID>
 				<Value>75</Value>
 				<Weight>
 					<Pounds>12</Pounds>
@@ -34900,6 +34905,7 @@
 			<Weapon id="scythe">
 				<DescriptionSID>SCYTHE_SID</DescriptionSID>
 				<UsageDescriptionSID>SCYTHE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SCYTHE_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -34927,6 +34933,7 @@
 			<Weapon id="club">
 				<DescriptionSID>CLUB_SID</DescriptionSID>
 				<UsageDescriptionSID>CLUB_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CLUB_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -34953,6 +34960,7 @@
 			<Weapon id="lituus">
 				<DescriptionSID>LITUUS_SID</DescriptionSID>
 				<UsageDescriptionSID>LITUUS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LITUUS_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -34980,6 +34988,7 @@
 			<Weapon id="cypress_rod">
 				<DescriptionSID>CYPRESS_ROD_SID</DescriptionSID>
 				<UsageDescriptionSID>CYPRESS_ROD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CYPRESS_ROD_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
 					<Pounds>6</Pounds>
@@ -35006,7 +35015,7 @@
 			<Weapon id="qaali">
 				<DescriptionSID>QAALI_SID</DescriptionSID>
 				<UsageDescriptionSID>QAALI_USAGE_SID</UsageDescriptionSID>
-				<Value>30</Value>
+				<Value>366</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -35093,6 +35102,7 @@
 			<Weapon id="leather_whip">
 				<DescriptionSID>LEATHER_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_WHIP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LEATHER_WHIP_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -35119,6 +35129,7 @@
 			<Weapon id="thorn_whip">
 				<DescriptionSID>THORN_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>THORN_WHIP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>THORN_WHIP_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -35145,6 +35156,7 @@
 			<Weapon id="calara_whip">
 				<DescriptionSID>CALARA_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>CALARA_WHIP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CALARA_WHIP_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -35169,6 +35181,7 @@
 			<Weapon id="shepherd_crook">
 				<DescriptionSID>SHEPHERD_CROOK_SID</DescriptionSID>
 				<UsageDescriptionSID>SHEPHERD_CROOK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHEPHERD_CROOK_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
 					<Pounds>4</Pounds>
@@ -35195,6 +35208,7 @@
 			<Weapon id="yew_staff">
 				<DescriptionSID>YEW_STAFF_SID</DescriptionSID>
 				<UsageDescriptionSID>YEW_STAFF_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>YEW_STAFF_CODEX_SID</CodexDescriptionSID>
 				<Value>4</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -35221,7 +35235,8 @@
 			<Weapon id="wizard_staff">
 				<DescriptionSID>WIZARD_STAFF_SID</DescriptionSID>
 				<UsageDescriptionSID>WIZARD_STAFF_USAGE_SID</UsageDescriptionSID>
-				<Value>20</Value>
+				<CodexDescriptionSID>WIZARD_STAFF_CODEX_SID</CodexDescriptionSID>
+				<Value>220</Value>
 				<Weight>
 					<Pounds>3</Pounds>
 				</Weight>
@@ -35251,6 +35266,7 @@
 			<Weapon id="_branch">
 				<DescriptionSID>BRANCH_SID</DescriptionSID>
 				<UsageDescriptionSID>BRANCH_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOUGH_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>6</Pounds>
@@ -35271,6 +35287,7 @@
 			<Weapon id="_bough">
 				<DescriptionSID>BOUGH_SID</DescriptionSID>
 				<UsageDescriptionSID>BOUGH_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOUGH_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -35291,6 +35308,7 @@
 			<Weapon id="silver_branch">
 				<DescriptionSID>SILVER_BRANCH_SID</DescriptionSID>
 				<UsageDescriptionSID>SILVER_BRANCH_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SILVER_BRANCH_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -35339,6 +35357,7 @@
 			<Weapon id="sling">
 				<DescriptionSID>SLING_SID</DescriptionSID>
 				<UsageDescriptionSID>SLING_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SLING_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35366,6 +35385,7 @@
 			<Weapon id="pelter">
 				<DescriptionSID>PELTER_SID</DescriptionSID>
 				<UsageDescriptionSID>PELTER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PELTER_CODEX_SID</CodexDescriptionSID>
 				<Value>1600</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -35396,6 +35416,7 @@
 			<Weapon id="bow">
 				<DescriptionSID>BOW_SID</DescriptionSID>
 				<UsageDescriptionSID>BOW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOW_CODEX_SID</CodexDescriptionSID>
 				<Value>65</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -35426,6 +35447,7 @@
 			<Weapon id="longbow_of_pelageus">
 				<DescriptionSID>LONGBOW_OF_PELAGEUS_SID</DescriptionSID>
 				<UsageDescriptionSID>LONGBOW_OF_PELAGEUS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LONGBOW_OF_PELAGEUS_CODEX_SID</CodexDescriptionSID>
 				<Value>2000</Value>
 				<Weight>
 					<Pounds>2</Pounds>
@@ -35447,6 +35469,7 @@
 			<Weapon id="crossbow">
 				<DescriptionSID>CROSSBOW_SID</DescriptionSID>
 				<UsageDescriptionSID>CROSSBOW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CROSSBOW_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -35477,6 +35500,7 @@
 			<Weapon id="shadow">
 				<DescriptionSID>SHADOW_SID</DescriptionSID>
 				<UsageDescriptionSID>SHADOW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHADOW_CODEX_SID</CodexDescriptionSID>
 				<Value>2200</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -36436,6 +36460,7 @@
 			<Food id="_blackroot">
 				<DescriptionSID>BLACKROOT_SID</DescriptionSID>
 				<UsageDescriptionSID>BLACKROOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BLACKROOT_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36456,6 +36481,7 @@
 			<Food id="_verbena">
 				<DescriptionSID>VERBENA_SID</DescriptionSID>
 				<UsageDescriptionSID>VERBENA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VERBENA_CODEX_SID</CodexDescriptionSID>
 				<Value>15</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36465,7 +36491,7 @@
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
-					<Symbol>%</Symbol>
+					<Symbol>w</Symbol>
 					<Colour>5</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
@@ -36476,6 +36502,7 @@
 			<Food id="_white_basil">
 				<DescriptionSID>WHITE_BASIL_SID</DescriptionSID>
 				<UsageDescriptionSID>WHITE_BASIL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WHITE_BASIL_CODEX_SID</CodexDescriptionSID>
 				<Value>17</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36485,7 +36512,7 @@
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
-					<Symbol>%</Symbol>
+					<Symbol>w</Symbol>
 					<Colour>15</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
@@ -36496,6 +36523,7 @@
 			<Food id="_stoneflower">
 				<DescriptionSID>STONEFLOWER_SID</DescriptionSID>
 				<UsageDescriptionSID>STONEFLOWER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STONEFLOWER_CODEX_SID</CodexDescriptionSID>
 				<Value>19</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36505,7 +36533,7 @@
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
-					<Symbol>%</Symbol>
+					<Symbol>w</Symbol>
 					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
@@ -36516,6 +36544,7 @@
 			<Food id="_voxflower">
 				<DescriptionSID>VOXFLOWER_SID</DescriptionSID>
 				<UsageDescriptionSID>VOXFLOWER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VOXFLOWER_CODEX_SID</CodexDescriptionSID>
 				<Value>4</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -36525,7 +36554,7 @@
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
-					<Symbol>%</Symbol>
+					<Symbol>w</Symbol>
 					<Colour>12</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
