@@ -34188,6 +34188,7 @@
 			<Weapon id="hearts_needle">
 				<DescriptionSID>HEARTS_NEEDLE_SID</DescriptionSID>
 				<UsageDescriptionSID>HEARTS_NEEDLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HEARTS_NEEDLE_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -34204,7 +34205,7 @@
 				<RangedSkill>2005</RangedSkill>
 				<Difficulty>40</Difficulty>
 				<Speed>1</Speed>
-				<Damage>
+				<Damage piercing="1">
 					<NumDice>5</NumDice>
 					<NumSides>4</NumSides>
 					<Type>1</Type>
@@ -34216,6 +34217,7 @@
 			<Weapon id="heavens_blade">
 				<DescriptionSID>HEAVENS_BLADE_SID</DescriptionSID>
 				<UsageDescriptionSID>HEAVENS_BLADE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HEAVENS_BLADE_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
 					<Pounds>9</Pounds>
@@ -34248,6 +34250,7 @@
 			<Weapon id="dragonbane">
 				<DescriptionSID>DRAGONBANE_SID</DescriptionSID>
 				<UsageDescriptionSID>DRAGONBANE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DRAGONBANE_CODEX_SID</CodexDescriptionSID>
 				<Value>1800</Value>
 				<Weight>
 					<Pounds>15</Pounds>
@@ -34279,6 +34282,7 @@
 			<Weapon id="stonespear">
 				<DescriptionSID>STONESPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>STONESPEAR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STONESPEAR_CODEX_SID</CodexDescriptionSID>
 				<Value>1500</Value>
 				<Weight>
 					<Pounds>15</Pounds>
@@ -34288,6 +34292,7 @@
 				<Material>7</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
+					<Pierce>0.20</Pierce>
 					<Poison>0.20</Poison>
 				</Resistances>
 				<Skill>1006</Skill>
@@ -34304,6 +34309,7 @@
 			<Weapon id="radiance">
 				<DescriptionSID>RADIANCE_SID</DescriptionSID>
 				<UsageDescriptionSID>RADIANCE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>RADIANCE_CODEX_SID</CodexDescriptionSID>
 				<Value>2300</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -34340,7 +34346,7 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
-				<Material>3</Material>
+				<Material>15</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Heat>0.10</Heat>
