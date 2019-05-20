@@ -39,6 +39,8 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 - Verbena, white basil, stoneflower, and voxflower have had their symbols
   changed to 'w' (flower).
 
+- Pick axes now break half as often.
+
 - Stanzas for "Tel and Floridel".
 
 - New creatures: sweet old dog.
