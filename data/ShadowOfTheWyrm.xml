@@ -31510,8 +31510,8 @@
 					<Pounds>2</Pounds>
 				</Weight>
 				<WornLocation>6</WornLocation>
-				<Material>6</Material>
 				<Artifact>1</Artifact>
+				<Material>6</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
@@ -34505,6 +34505,7 @@
 			<Weapon id="great_mace_torasin">
 				<DescriptionSID>GREAT_MACE_TORASIN_SID</DescriptionSID>
 				<UsageDescriptionSID>GREAT_MACE_TORASIN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GREAT_MACE_TORASIN_CODEX_SID</CodexDescriptionSID>
 				<Value>1265</Value>
 				<Weight>
 					<Pounds>25</Pounds>
@@ -34528,6 +34529,7 @@
 			<Weapon id="stone_club_urgol">
 				<DescriptionSID>STONE_CLUB_URGOL_SID</DescriptionSID>
 				<UsageDescriptionSID>STONE_CLUB_URGOL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STONE_CLUB_URGOL_CODEX_SID</CodexDescriptionSID>
 				<Value>2800</Value>
 				<Weight>
 					<Pounds>32</Pounds>
@@ -34560,6 +34562,7 @@
 			<Weapon id="stone_hammer">
 				<DescriptionSID>STONE_HAMMER_SID</DescriptionSID>
 				<UsageDescriptionSID>STONE_HAMMER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STONE_HAMMER_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
 					<Pounds>6</Pounds>
@@ -34579,13 +34582,14 @@
 				<Speed>5</Speed>
 				<Damage>
 					<NumDice>2</NumDice>
-					<NumSides>3</NumSides>
+					<NumSides>4</NumSides>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="pick_axe">
 				<DescriptionSID>PICK_AXE_SID</DescriptionSID>
 				<UsageDescriptionSID>PICK_AXE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PICK_AXE_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>8</Pounds>
@@ -34604,7 +34608,7 @@
 					</Property>
 					<Property>
 						<Name>dig_breakage_pct_chance</Name>
-						<Value>8</Value>
+						<Value>4</Value>
 					</Property>
 				</Properties>
 				<Skill>1000</Skill>
@@ -34620,6 +34624,7 @@
 			<Weapon id="dwarven_mattock">
 				<DescriptionSID>DWARVEN_MATTOCK_SID</DescriptionSID>
 				<UsageDescriptionSID>DWARVEN_MATTOCK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DWARVEN_MATTOCK_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>5</Pounds>
@@ -34655,6 +34660,7 @@
 			<Weapon id="woodsman_axe">
 				<DescriptionSID>WOODSMAN_AXE_SID</DescriptionSID>
 				<UsageDescriptionSID>WOODSMAN_AXE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WOODSMAN_AXE_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
 					<Pounds>6</Pounds>
@@ -34681,6 +34687,7 @@
 			<Weapon id="briar_axe">
 				<DescriptionSID>BRIAR_AXE_SID</DescriptionSID>
 				<UsageDescriptionSID>BRIAR_AXE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BRIAR_AXE_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -34708,6 +34715,7 @@
 			<Weapon id="battle_axe">
 				<DescriptionSID>BATTLE_AXE_SID</DescriptionSID>
 				<UsageDescriptionSID>BATTLE_AXE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BATTLE_AXE_CODEX_SID</CodexDescriptionSID>
 				<Value>80</Value>
 				<Weight>
 					<Pounds>10</Pounds>
@@ -34734,6 +34742,7 @@
 			<Weapon id="great_axe">
 				<DescriptionSID>GREAT_AXE_SID</DescriptionSID>
 				<UsageDescriptionSID>GREAT_AXE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GREAT_AXE_CODEX_SID</CodexDescriptionSID>
 				<Value>110</Value>
 				<Weight>
 					<Pounds>20</Pounds>
@@ -34761,6 +34770,7 @@
 			<Weapon id="earthcleaver">
 				<DescriptionSID>EARTHCLEAVER_SID</DescriptionSID>
 				<UsageDescriptionSID>EARTHCLEAVER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>EARTHCLEAVER_CODEX_SID</CodexDescriptionSID>
 				<Value>2250</Value>
 				<Weight>
 					<Pounds>20</Pounds>
@@ -34787,6 +34797,7 @@
 			<Weapon id="blood_and_glory">
 				<DescriptionSID>BLOOD_AND_GLORY_SID</DescriptionSID>
 				<UsageDescriptionSID>BLOOD_AND_GLORY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BLOOD_AND_GLORY_CODEX_SID</CodexDescriptionSID>
 				<Value>2424</Value>
 				<Weight>
 					<Pounds>25</Pounds>
@@ -35015,6 +35026,7 @@
 			<Weapon id="qaali">
 				<DescriptionSID>QAALI_SID</DescriptionSID>
 				<UsageDescriptionSID>QAALI_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>QAALI_CODEX_SID</CodexDescriptionSID>
 				<Value>366</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -35034,11 +35046,13 @@
 					<NumDice>6</NumDice>
 					<NumSides>6</NumSides>
 					<Type>2</Type>
+					<EffectBonus>20</EffectBonus>
 				</Damage>
 			</Weapon>
 			<Weapon id="creators_might">
 				<DescriptionSID>CREATORS_MIGHT_SID</DescriptionSID>
 				<UsageDescriptionSID>CREATORS_MIGHT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CREATORS_MIGHT_CODEX_SID</CodexDescriptionSID>
 				<Value>2150</Value>
 				<Weight>
 					<Pounds>6</Pounds>
@@ -35070,6 +35084,7 @@
 			<Weapon id="light_of_battle">
 				<DescriptionSID>LIGHT_OF_BATTLE_SID</DescriptionSID>
 				<UsageDescriptionSID>LIGHT_OF_BATTLE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LIGHT_OF_BATTLE_CODEX_SID</CodexDescriptionSID>
 				<Value>2150</Value>
 				<Weight>
 					<Pounds>6</Pounds>
@@ -35091,7 +35106,6 @@
 					<Type>2</Type>
 					<Slays>
 						<Slay>_undead</Slay>
-						<Slay>_demon</Slay>
 						<Slay>_monster</Slay>
 						<Slay>_dragon</Slay>
 						<Slay>_jelly</Slay>
@@ -37812,6 +37826,7 @@
 			<Scroll id="_template_scroll">
 				<DescriptionSID>TEMPLATE_SCROLL_SID</DescriptionSID>
 				<UsageDescriptionSID>TEMPLATE_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CODEX_UNDEFINED_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -38576,6 +38591,7 @@
 			<Wand id="_template_wand">
 				<DescriptionSID>TEMPLATE_WAND_SID</DescriptionSID>
 				<UsageDescriptionSID>TEMPLATE_WAND_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CODEX_UNDEFINED_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -40430,6 +40446,7 @@
 			<Item id="_paper_pulp">
 				<DescriptionSID>PAPER_PULP_SID</DescriptionSID>
 				<UsageDescriptionSID>PAPER_PULP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PAPER_PULP_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>1</Pounds>
@@ -40440,6 +40457,7 @@
 			<Item id="_quill">
 				<DescriptionSID>QUILL_SID</DescriptionSID>
 				<UsageDescriptionSID>QUILL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>QUILL_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40451,6 +40469,7 @@
 			<Item id="_inkpot">
 				<DescriptionSID>INKPOT_SID</DescriptionSID>
 				<UsageDescriptionSID>INKPOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>INKPOT_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -40680,6 +40699,7 @@
 			<Item id="_skin">
 				<DescriptionSID>SKIN_SID</DescriptionSID>
 				<UsageDescriptionSID>SKIN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CODEX_UNDEFINED_SID</CodexDescriptionSID>
 				<Value>1</Value>
 				<Weight>
 					<Pounds>3</Pounds>
@@ -40866,6 +40886,7 @@
 			<Item id="wave_locket">
 				<DescriptionSID>WAVE_LOCKET_SID</DescriptionSID>
 				<UsageDescriptionSID>WAVE_LOCKET_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WAVE_LOCKED_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
