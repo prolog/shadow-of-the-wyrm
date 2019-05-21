@@ -148,6 +148,7 @@ class TextKeys
     static const std::string INVENTORY;
     static const std::string INVENTORY_FILTERED;
     static const std::string INVENTORY_PROMPT;
+	static const std::string INVENTORY_PROMPT_NO_SELECTION;
     static const std::string GENERATED_ARTIFACTS;
     static const std::string SKIN_PROMPT;
     static const std::string WEAVE_PROMPT;
