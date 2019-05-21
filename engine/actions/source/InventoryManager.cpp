@@ -45,7 +45,7 @@ ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFi
 
           display_inventory = InventoryTranslator::create_display_inventory(creature, inv, all_filters);
           bool user_filters = !additional_display_filter_list.empty();
-          InventoryScreen is(display, creature, display_inventory, user_filters);
+          InventoryScreen is(display, creature, display_inventory, user_filters, inventory_is_read_only);
           string inv_selection = is.display();
 
           string external_id;

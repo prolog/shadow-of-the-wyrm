@@ -7,8 +7,8 @@
 
 using namespace std;
 
-InventoryScreen::InventoryScreen(DisplayPtr new_display, CreaturePtr new_creature, const DisplayInventoryMap& new_dim, const bool user_filters)
-: Screen(new_display), creature(new_creature), dim(new_dim), filters(user_filters)
+InventoryScreen::InventoryScreen(DisplayPtr new_display, CreaturePtr new_creature, const DisplayInventoryMap& new_dim, const bool user_filters, const bool inventory_read_only)
+: Screen(new_display), creature(new_creature), dim(new_dim), filters(user_filters), read_only(inventory_read_only)
 {
   initialize();
 }
@@ -102,7 +102,14 @@ void InventoryScreen::initialize()
   // Accept any input to the inventory manager will take care of sorting out
   // what's a valid command and what is not.
   inv_prompt->set_accept_any_input(true);
-  inv_prompt->set_text_sid(TextKeys::INVENTORY_PROMPT);
+  string prompt_text_sid = TextKeys::INVENTORY_PROMPT;
+  
+  if (read_only)
+  {
+	  prompt_text_sid = TextKeys::INVENTORY_PROMPT_NO_SELECTION;
+  }
+
+  inv_prompt->set_text_sid(prompt_text_sid);
   user_prompt = inv_prompt;
   line_increment = 1;
 }
