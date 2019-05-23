@@ -15,6 +15,8 @@ class EquipmentCommandKeys
     static const std::string WEAR_OR_REMOVE_FEET;
     static const std::string WEAR_OR_REMOVE_RANGED;
     static const std::string WEAR_OR_REMOVE_AMMUNITION;
+
+    static const std::string CODEX;
     static const std::string YOUR_ITEMS;
     static const std::string EXIT_EQUIPMENT;
 

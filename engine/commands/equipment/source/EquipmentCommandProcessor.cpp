@@ -54,6 +54,17 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
           }          
         }
       }
+      else if (command_name == EquipmentCommandKeys::CODEX)
+      {
+        // JCD TODO
+        shared_ptr<EquipmentSlotCommand> esc = std::dynamic_pointer_cast<EquipmentSlotCommand>(command);
+
+        if (esc != nullptr)
+        {
+          EquipmentWornLocation ewl = esc->get_equipment_worn_location();
+          int x = 1;
+        }
+      }
       else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
       {
         list<IItemFilterPtr> display_filter = ItemFilterFactory::create_empty_filter();

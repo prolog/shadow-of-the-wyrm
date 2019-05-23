@@ -16,9 +16,67 @@ bool EquipmentCommand::is_wear_or_remove_command() const
   return false;
 }
 
+EquipmentSlotCommand::EquipmentSlotCommand(const std::string& equipment_command_name, const int key)
+: EquipmentCommand(equipment_command_name, key)
+{
+}
+
+// Codex command
+EquipmentCodexCommand::EquipmentCodexCommand(const int key)
+: EquipmentSlotCommand(EquipmentCommandKeys::CODEX, key)
+{
+}
+
+EquipmentWornLocation EquipmentCodexCommand::get_equipment_worn_location() const
+{
+  int key = get_key();
+  EquipmentWornLocation ewl = EquipmentWornLocation::EQUIPMENT_WORN_NONE;
+
+  switch (key)
+  {
+    case 'A':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_HEAD;
+      break;
+    case 'B':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_NECK;
+      break;
+    case 'C':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER;
+      break;
+    case 'D':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER;
+      break;
+    case 'E':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_WIELDED;
+      break;
+    case 'F':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND;
+      break;
+    case 'G':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_BODY;
+      break;
+    case 'H':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY;
+      break;
+    case 'I':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_FEET;
+      break;
+    case 'J':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON;
+      break;
+    case 'K':
+      ewl = EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION;
+      break;
+    default:
+      break;
+  }
+
+  return ewl;
+}
+
 // Wear/remove item
 WearOrRemoveCommand::WearOrRemoveCommand(const std::string& wear_command_name, const int key)
-: EquipmentCommand(wear_command_name, key)
+: EquipmentSlotCommand(wear_command_name, key)
 {  
 }
 
