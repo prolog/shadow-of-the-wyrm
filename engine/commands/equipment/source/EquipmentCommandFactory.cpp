@@ -58,6 +58,10 @@ CommandPtr EquipmentCommandFactory::create(const int key, const std::string& com
   {
     command = std::make_shared<WearOrRemoveAmmunitionCommand>(key);
   }
+  else if (command_name == EquipmentCommandKeys::CODEX)
+  {
+    command = std::make_shared<EquipmentCodexCommand>(key);
+  }
   else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
   {
     command = std::make_shared<YourItemsCommand>(key);

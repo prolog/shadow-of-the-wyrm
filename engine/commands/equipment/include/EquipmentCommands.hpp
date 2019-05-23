@@ -15,12 +15,28 @@ class EquipmentCommand : public Command
 using EquipmentCommandPtr = std::shared_ptr<EquipmentCommand>;
 
 // Abstract intermediary class inherited by the various wear/remove class commands
-class WearOrRemoveCommand : public EquipmentCommand
+class EquipmentSlotCommand : public EquipmentCommand
+{
+  public:
+    EquipmentSlotCommand(const std::string& command_name, int key);
+
+    virtual EquipmentWornLocation get_equipment_worn_location() const = 0;
+};
+
+class EquipmentCodexCommand : public EquipmentSlotCommand
+{
+  public:
+    EquipmentCodexCommand(int key);
+
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
+};
+
+// Wear/remove commands
+class WearOrRemoveCommand : public EquipmentSlotCommand
 {
   public:
     WearOrRemoveCommand(const std::string& command_name, int key);
     
-    virtual EquipmentWornLocation get_equipment_worn_location() const = 0;
     virtual bool is_wear_or_remove_command() const override;
 };
 
