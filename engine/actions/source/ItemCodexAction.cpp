@@ -63,6 +63,21 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature) const
   return acv;
 }
 
+ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, const EquipmentWornLocation ewl)
+{
+  if (creature != nullptr)
+  {
+    ItemPtr item = creature->get_equipment().get_item(ewl);
+
+    if (item != nullptr)
+    {
+      display_codex_item(item);
+    }
+  }
+
+  return ActionCostConstants::NO_ACTION;
+}
+
 void ItemCodexAction::display_codex_item(ItemPtr item) const
 {
   if (item != nullptr)
