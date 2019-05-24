@@ -100,6 +100,7 @@ class ActionManager : public ISerializable
     ActionCost bestiary(CreaturePtr creature, const std::string& creature_search_text, CreaturePtr tile_creature = nullptr);
 
     ActionCost item_codex(CreaturePtr creature);
+    ActionCost item_codex(CreaturePtr creature, const EquipmentWornLocation ewl);
 
     // Evoke/zap a wand.
     ActionCost evoke(CreaturePtr creature);

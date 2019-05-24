@@ -6,6 +6,7 @@ class ItemCodexAction : public IActionManager
 {
   public:
     ActionCostValue item_details(CreaturePtr creature) const;
+    ActionCostValue item_details(CreaturePtr creature, const EquipmentWornLocation ewl);
     
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 

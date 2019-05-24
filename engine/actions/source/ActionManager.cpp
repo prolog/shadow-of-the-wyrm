@@ -383,6 +383,13 @@ ActionCost ActionManager::item_codex(CreaturePtr creature)
   return get_action_cost(creature, ica.item_details(creature));
 }
 
+ActionCost ActionManager::item_codex(CreaturePtr creature, const EquipmentWornLocation ewl)
+{
+  ItemCodexAction ica;
+
+  return get_action_cost(creature, ica.item_details(creature, ewl));
+}
+
 ActionCost ActionManager::evoke(CreaturePtr creature)
 {
   EvokeAction ea;
