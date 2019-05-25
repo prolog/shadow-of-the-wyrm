@@ -24,6 +24,7 @@ string ItemTextKeys::get_value(const uint value)
 const string ItemTextKeys::ITEM_GLOW = "ITEM_GLOW";
 const string ItemTextKeys::ITEM_MULTIPLE = "ITEM_MULTIPLE";
 const string ItemTextKeys::ITEM_CODEX_NOT_IDENTIFIED = "ITEM_CODEX_NOT_IDENTIFIED";
+const string ItemTextKeys::ITEM_CODEX_NO_INFORMATION_FOUND = "ITEM_CODEX_NO_INFORMATION_FOUND";
 
 // Protected
 const string ItemTextKeys::ITEM_VALUE = "ITEM_VALUE";

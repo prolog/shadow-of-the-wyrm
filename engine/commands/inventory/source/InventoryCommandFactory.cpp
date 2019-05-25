@@ -26,13 +26,13 @@ CommandPtr InventoryCommandFactory::create(const int key, const std::string& com
   {
     inventory_command = std::make_shared<InventoryFilterViewCommand>(key);
   }
-  else
+  else if (command_name == InventoryCommandKeys::SELECT_ITEM)
   {
-    // If the key is in the [a-y][A-Y] range, create a selection command
-    if ((key >= 'a' && key <= 'z') || (key >= 'A' && key <= 'Z'))
-    {
-      inventory_command = std::make_shared<ItemSelectionCommand>(key);      
-    }
+    inventory_command = std::make_shared<ItemSelectionCommand>(key);      
+  }
+  else if (command_name == InventoryCommandKeys::CODEX)
+  {
+    inventory_command = std::make_shared<CodexInventoryCommand>(key);
   }
   
   return inventory_command;

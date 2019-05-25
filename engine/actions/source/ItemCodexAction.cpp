@@ -3,6 +3,7 @@
 #include "ActionTextKeys.hpp"
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
+#include "ItemIdentifier.hpp"
 #include "ItemTextKeys.hpp"
 #include "ItemTypeTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
@@ -72,6 +73,28 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, const Equipm
     if (item != nullptr)
     {
       display_codex_item(item);
+    }
+  }
+
+  return ActionCostConstants::NO_ACTION;
+}
+
+ActionCostValue ItemCodexAction::item_details(ItemPtr item)
+{
+  if (item != nullptr)
+  {
+    ItemIdentifier iid;
+
+    if (iid.get_item_identified(item->get_base_id()))
+    {
+      display_codex_item(item);
+    }
+    else
+    {
+      // Assumption is that it's only ever the player calling this.
+      // This is overlaid over the inventory screen, so use an alert.
+      IMessageManager& manager = MM::instance();
+      manager.alert(StringTable::get(ItemTextKeys::ITEM_CODEX_NO_INFORMATION_FOUND));
     }
   }
 

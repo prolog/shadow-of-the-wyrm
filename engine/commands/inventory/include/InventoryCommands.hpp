@@ -5,7 +5,7 @@
 class ItemSelectionCommand : public Command
 {
   public:
-    ItemSelectionCommand(int key);
+    ItemSelectionCommand(const int key);
 };
 
 // Class used to indicate, "clear any existing filters; show all the
@@ -13,7 +13,7 @@ class ItemSelectionCommand : public Command
 class InventoryClearFilterCommand : public Command
 {
   public:
-    InventoryClearFilterCommand(int key);
+    InventoryClearFilterCommand(const int key);
 };
 
 // Class used to indicate, "within the current context (show all items,
@@ -28,5 +28,13 @@ class InventoryFilterViewCommand : public Command
 class ExitInventoryCommand : public Command
 {
   public:
-    ExitInventoryCommand(int key);
+    ExitInventoryCommand(const int key);
+};
+
+// Class used for displaying an item's details over top of the inventory
+// screen.
+class CodexInventoryCommand : public Command
+{
+  public:
+    CodexInventoryCommand(const int key);
 };
