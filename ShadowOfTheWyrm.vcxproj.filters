@@ -808,6 +808,18 @@
     <Filter Include="Source Files\engine\generators\settlements\sector\source">
       <UniqueIdentifier>{898a1954-d58a-46f4-95bf-115b7397cf51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\description\codex">
+      <UniqueIdentifier>{c0f56c8b-ea10-44cc-8fef-0662cb9c05bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\description\codex\include">
+      <UniqueIdentifier>{69d45774-3a30-477c-8bd4-5b4895cd5ea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\description\codex">
+      <UniqueIdentifier>{e04c45b8-cee0-4ad4-8f56-d61ee152ae60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\description\codex\source">
+      <UniqueIdentifier>{4396f385-7a81-49ac-9393-161fce0fb25a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -4253,6 +4265,21 @@
     </ClInclude>
     <ClInclude Include="engine\calculators\include\PrimordialCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\codex\include\CodexDescriber.hpp">
+      <Filter>Header Files\engine\description\codex\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\codex\include\CodexDescriberFactory.hpp">
+      <Filter>Header Files\engine\description\codex\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\codex\include\FoodCodexDescriber.hpp">
+      <Filter>Header Files\engine\description\codex\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\codex\include\SpellbookCodexDescriber.hpp">
+      <Filter>Header Files\engine\description\codex\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\codex\include\WeaponCodexDescriber.hpp">
+      <Filter>Header Files\engine\description\codex\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8497,6 +8524,21 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\PrimordialCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\codex\source\CodexDescriber.cpp">
+      <Filter>Source Files\engine\description\codex\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\codex\source\CodexDescriberFactory.cpp">
+      <Filter>Source Files\engine\description\codex\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\codex\source\FoodCodexDescriber.cpp">
+      <Filter>Source Files\engine\description\codex\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\codex\source\SpellbookCodexDescriber.cpp">
+      <Filter>Source Files\engine\description\codex\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\codex\source\WeaponCodexDescriber.cpp">
+      <Filter>Source Files\engine\description\codex\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

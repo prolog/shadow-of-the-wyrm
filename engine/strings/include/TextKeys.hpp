@@ -180,6 +180,7 @@ class TextKeys
     static const std::string NOT_APPLICABLE_ABRV;
     static const std::string CARRYING_CAPACITY;
     static const std::string ARTIFACT;
+    static const std::string AUTOCURSING;
 
   protected:
     TextKeys();

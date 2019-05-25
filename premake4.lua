@@ -75,6 +75,7 @@ project "ShadowOfTheWyrm"
                 "engine/decision_strategies/magic/include",
                 "engine/decision_strategies/search/include",
                 "engine/description/include",
+                "engine/description/codex/include",
                 "engine/effects/include",
                 "engine/field_of_view/include",
                 "engine/generators/include",

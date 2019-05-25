@@ -184,4 +184,6 @@ const string TextKeys::MEMBERSHIPS = "MEMBERSHIPS";
 const string TextKeys::NOT_APPLICABLE_ABRV = "NOT_APPLICABLE_ABRV";
 const string TextKeys::CARRYING_CAPACITY = "CARRYING_CAPACITY";
 const string TextKeys::ARTIFACT = "ARTIFACT";
+const string TextKeys::AUTOCURSING = "AUTOCURSING";
+
 

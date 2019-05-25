@@ -77,6 +77,32 @@ string ItemTypeTextKeys::get_item_type_description_singular(const ItemType itype
   return StringTable::get(desc_sid);
 }
 
+string ItemTypeTextKeys::get_food_type(const FoodType ft)
+{
+  string desc_sid;
+
+  switch (ft)
+  {
+    case FoodType::FOOD_TYPE_VEGETABLE:
+      desc_sid = ItemTypeTextKeys::FOOD_TYPE_VEGETABLE;
+      break;
+    case FoodType::FOOD_TYPE_MEAT:
+      desc_sid = ItemTypeTextKeys::FOOD_TYPE_MEAT;
+      break;
+    case FoodType::FOOD_TYPE_CARBS:
+      desc_sid = ItemTypeTextKeys::FOOD_TYPE_CARBS;
+      break;
+    case FoodType::FOOD_TYPE_DAIRY:
+      desc_sid = ItemTypeTextKeys::FOOD_TYPE_DAIRY;
+      break;
+    case FoodType::FOOD_TYPE_OTHER:
+      desc_sid = ItemTypeTextKeys::FOOD_TYPE_OTHER;
+      break;
+  }
+
+  return StringTable::get(desc_sid);
+}
+
 // public
 const string ItemTypeTextKeys::ITEM_TYPE_MISC       = "ITEM_TYPE_MISC";
 const string ItemTypeTextKeys::ITEM_TYPE_WEAPONS    = "ITEM_TYPE_WEAPONS";
@@ -94,6 +120,12 @@ const string ItemTypeTextKeys::ITEM_TYPE_PLANTS     = "ITEM_TYPE_PLANTS";
 const string ItemTypeTextKeys::ITEM_TYPE_BOATS      = "ITEM_TYPE_BOATS";
 const string ItemTypeTextKeys::ITEM_TYPE_CURRENCY   = "ITEM_TYPE_CURRENCY";
 const string ItemTypeTextKeys::ITEM_TYPE_TOOLS      = "ITEM_TYPE_TOOLS";
+
+const string ItemTypeTextKeys::FOOD_TYPE_VEGETABLE  = "FOOD_TYPE_VEGETABLE";
+const string ItemTypeTextKeys::FOOD_TYPE_MEAT       = "FOOD_TYPE_MEAT";
+const string ItemTypeTextKeys::FOOD_TYPE_CARBS      = "FOOD_TYPE_CARBS";
+const string ItemTypeTextKeys::FOOD_TYPE_DAIRY      = "FOOD_TYPE_DAIRY";
+const string ItemTypeTextKeys::FOOD_TYPE_OTHER      = "FOOD_TYPE_OTHER";
 
 // protected
 const string ItemTypeTextKeys::ITEM_TYPE_MISC_SINGULAR = "ITEM_TYPE_MISC_SINGULAR";

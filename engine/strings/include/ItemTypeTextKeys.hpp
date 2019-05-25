@@ -6,6 +6,7 @@ class ItemTypeTextKeys
 {
   public:
     static std::string get_item_type_description_singular(const ItemType item_type);
+    static std::string get_food_type(const FoodType food_type);
 
     static const std::string ITEM_TYPE_MISC;
     static const std::string ITEM_TYPE_WEAPONS;
@@ -23,6 +24,12 @@ class ItemTypeTextKeys
     static const std::string ITEM_TYPE_BOATS;
     static const std::string ITEM_TYPE_CURRENCY;
     static const std::string ITEM_TYPE_TOOLS;
+
+    static const std::string FOOD_TYPE_VEGETABLE;
+    static const std::string FOOD_TYPE_MEAT;
+    static const std::string FOOD_TYPE_CARBS;
+    static const std::string FOOD_TYPE_DAIRY;
+    static const std::string FOOD_TYPE_OTHER;
 
   protected:
     ItemTypeTextKeys();

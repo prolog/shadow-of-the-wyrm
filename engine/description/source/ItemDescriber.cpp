@@ -65,7 +65,8 @@ string ItemDescriber::describe_resists_and_flags() const
       Resistances res = item->get_resistances();
 
       ResistancesTranslator rt;
-      string rt_desc = rt.create_description(res);
+      ResistancesDisplayOptions rdo(true, true);
+      string rt_desc = rt.create_description(res, rdo);
 
       vector<string> flag_sids = item->get_flag_sids();
 
