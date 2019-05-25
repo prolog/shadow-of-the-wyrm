@@ -7,6 +7,7 @@ class ResistanceTextKeys
   public:
     static std::string get_resistance_for_damage_type(const DamageType dt);
 
+    static const std::string RESISTANCE_RESISTANCES;
     static const std::string RESISTANCE_SLASH;
     static const std::string RESISTANCE_ABRV_SLASH;
     static const std::string RESISTANCE_GAIN_SLASH;

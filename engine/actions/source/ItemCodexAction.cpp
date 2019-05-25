@@ -1,6 +1,7 @@
 #include "ItemCodexAction.hpp"
 #include "ItemIdentifier.hpp"
 #include "ActionTextKeys.hpp"
+#include "CodexDescriberFactory.hpp"
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
@@ -106,11 +107,17 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
   if (item != nullptr)
   {
     Game& game = Game::instance();
+    CodexDescriberFactory cdf;
+
+    CodexDescriberPtr codex_desc = cdf.create_codex_describer(item);
+
     string separator;
     vector<pair<Colour, string>> codex_text;
     string codex_title_sid = ScreenTitleTextKeys::SCREEN_TITLE_ITEM_CODEX;
   
-    string item_type = ItemTypeTextKeys::get_item_type_description_singular(item->get_type());
+    ItemType itype = item->get_type();
+    string item_type = ItemTypeTextKeys::get_item_type_description_singular(itype);
+
     Colour item_colour = Colour::COLOUR_WHITE;
 
     string symbol_details = StringTable::get(ItemTextKeys::ITEM_CODEX_NOT_IDENTIFIED);
@@ -126,22 +133,54 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     codex_text.push_back(make_pair(item_colour, symbol_details));
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
 
-    ostringstream desc;
-    desc << StringTable::get(item->get_description_sid()) << " (" << item_type;
+    string item_desc = StringTable::get(item->get_description_sid());
+
+    codex_text.push_back(make_pair(Colour::COLOUR_WHITE, item_desc));
+    codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+
+    ostringstream synopsis_line;
+    synopsis_line << item_type;
     
     bool is_artifact = item->get_artifact();
     if (is_artifact)
     {
-      desc << " - " << StringTable::get(TextKeys::ARTIFACT);
+      synopsis_line << " - " << StringTable::get(TextKeys::ARTIFACT);
     }
 
-    desc << ")";
+    if (item->get_auto_curse())
+    {
+      synopsis_line << " - " << StringTable::get(TextKeys::AUTOCURSING);
+    }
 
-    codex_text.push_back(make_pair(Colour::COLOUR_WHITE, desc.str()));
+    string desc_synopsis_line = codex_desc->describe_for_synopsis_line();
+    if (!desc_synopsis_line.empty())
+    {
+      synopsis_line << " - " << desc_synopsis_line;
+    }
+
+    TextDisplayFormatter tdf;
+  
+    vector<string> synopsis_lines = tdf.format_text(synopsis_line.str());
+    for (const string& s_line : synopsis_lines)
+    {
+      codex_text.push_back(make_pair(Colour::COLOUR_WHITE, s_line));
+    }
+
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
 
+    vector<string> resistances = tdf.format_text(codex_desc->describe_resistances());
+
+    if (!resistances.empty())
+    {
+      for (const string& line_of_text : resistances)
+      {
+        codex_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
+      }
+
+      codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+    }
+
     // Item codex description
-    TextDisplayFormatter tdf;
     vector<string> codex = tdf.format_text(StringTable::get(item->get_codex_description_sid()));
 
     for (const string& line_of_text : codex)
