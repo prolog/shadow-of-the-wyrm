@@ -101,6 +101,7 @@ class ActionManager : public ISerializable
 
     ActionCost item_codex(CreaturePtr creature);
     ActionCost item_codex(CreaturePtr creature, const EquipmentWornLocation ewl);
+    ActionCost item_codex(CreaturePtr creature, ItemPtr item);
 
     // Evoke/zap a wand.
     ActionCost evoke(CreaturePtr creature);

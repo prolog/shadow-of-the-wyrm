@@ -77,6 +77,11 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
         }        
       }
     }
+    else if (command_name == InventoryCommandKeys::CODEX)
+    {
+      selected_item = inv->get_from_id(item_id);
+      Game::instance().get_action_manager_ref().item_codex(creature, selected_item);
+    }
   }
 
   return process_result;

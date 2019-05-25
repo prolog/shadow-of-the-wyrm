@@ -1,7 +1,7 @@
 #include "InventoryCommands.hpp"
 #include "InventoryCommandKeys.hpp"
 
-ItemSelectionCommand::ItemSelectionCommand(int key)
+ItemSelectionCommand::ItemSelectionCommand(const int key)
 : Command(InventoryCommandKeys::SELECT_ITEM, key)
 {
 }
@@ -11,7 +11,7 @@ InventoryClearFilterCommand::InventoryClearFilterCommand(const int key)
 {
 }
 
-InventoryFilterViewCommand::InventoryFilterViewCommand(int key)
+InventoryFilterViewCommand::InventoryFilterViewCommand(const int key)
 : Command(InventoryCommandKeys::FILTER_VIEW, key)
 {
 }
@@ -21,4 +21,7 @@ ExitInventoryCommand::ExitInventoryCommand(const int key)
 {
 }
 
-
+CodexInventoryCommand::CodexInventoryCommand(const int key)
+: Command(InventoryCommandKeys::CODEX, key)
+{
+}

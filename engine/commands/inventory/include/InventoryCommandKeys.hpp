@@ -8,6 +8,7 @@ class InventoryCommandKeys
     static const std::string CLEAR_FILTER;
     static const std::string FILTER_VIEW;
     static const std::string SELECT_ITEM;
+    static const std::string CODEX;
     
   protected:
     InventoryCommandKeys();

@@ -52,12 +52,12 @@ void InventoryKeyboardCommandMap::initialize_command_mapping(const Settings& set
                                               {"(", InventoryCommandKeys::FILTER_VIEW},
                                               };
 
-  // Selection commands.
+  // Selection and codex commands.
   // 'z'/'Z' is reserved for exit.
   for (char i = 'a'; i <= 'y'; i++)
   {
     command_mapping.insert(make_pair(Char::to_string(i), InventoryCommandKeys::SELECT_ITEM));
-    command_mapping.insert(make_pair(Char::to_string(toupper(i)), InventoryCommandKeys::SELECT_ITEM));
+    command_mapping.insert(make_pair(Char::to_string(toupper(i)), InventoryCommandKeys::CODEX));
   }
 }
 
