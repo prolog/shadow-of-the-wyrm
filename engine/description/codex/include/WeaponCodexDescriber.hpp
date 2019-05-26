@@ -6,5 +6,6 @@ class WeaponCodexDescriber : public CodexDescriber
     WeaponCodexDescriber(ItemPtr item);
 
     std::string describe_for_synopsis_line() const override;
+    std::string describe_details() const;
 };
 

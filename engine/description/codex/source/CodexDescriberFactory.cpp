@@ -1,6 +1,6 @@
 #include "CodexDescriberFactory.hpp"
 #include "CodexDescriber.hpp"
-#include "FoodCodexDescriber.hpp"
+#include "ConsumableCodexDescriber.hpp"
 #include "SpellbookCodexDescriber.hpp"
 #include "WeaponCodexDescriber.hpp"
 
@@ -23,18 +23,19 @@ CodexDescriberPtr CodexDescriberFactory::create_codex_describer(const ItemPtr it
         break;
       case ItemType::ITEM_TYPE_FOOD:
       case ItemType::ITEM_TYPE_PLANT:
-        desc = std::make_shared<FoodCodexDescriber>(item);
+      case ItemType::ITEM_TYPE_POTION:
+        desc = std::make_shared<ConsumableCodexDescriber>(item);
         break;
       case ItemType::ITEM_TYPE_AMULET:
       case ItemType::ITEM_TYPE_ARMOUR:
       case ItemType::ITEM_TYPE_BOAT:
       case ItemType::ITEM_TYPE_CURRENCY:
       case ItemType::ITEM_TYPE_MISC:
-      case ItemType::ITEM_TYPE_POTION:
       case ItemType::ITEM_TYPE_RING:
       case ItemType::ITEM_TYPE_STAFF:
       case ItemType::ITEM_TYPE_TOOL:
       case ItemType::ITEM_TYPE_WAND:
+      default:
         desc = std::make_shared<CodexDescriber>(item);
     }
 

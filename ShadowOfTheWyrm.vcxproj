@@ -646,7 +646,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\decision_strategies\search\include\UniformCostSearchStrategy.hpp" />
     <ClInclude Include="engine\description\codex\include\CodexDescriber.hpp" />
     <ClInclude Include="engine\description\codex\include\CodexDescriberFactory.hpp" />
-    <ClInclude Include="engine\description\codex\include\FoodCodexDescriber.hpp" />
+    <ClInclude Include="engine\description\codex\include\ConsumableCodexDescriber.hpp" />
     <ClInclude Include="engine\description\codex\include\SpellbookCodexDescriber.hpp" />
     <ClInclude Include="engine\description\codex\include\WeaponCodexDescriber.hpp" />
     <ClInclude Include="engine\description\include\BlindFeatureDescriber.hpp" />
@@ -1819,7 +1819,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\decision_strategies\source\DecisionStrategyProperties.cpp" />
     <ClCompile Include="engine\description\codex\source\CodexDescriber.cpp" />
     <ClCompile Include="engine\description\codex\source\CodexDescriberFactory.cpp" />
-    <ClCompile Include="engine\description\codex\source\FoodCodexDescriber.cpp" />
+    <ClCompile Include="engine\description\codex\source\ConsumableCodexDescriber.cpp" />
     <ClCompile Include="engine\description\codex\source\SpellbookCodexDescriber.cpp" />
     <ClCompile Include="engine\description\codex\source\WeaponCodexDescriber.cpp" />
     <ClCompile Include="engine\effects\source\BlessEffect.cpp" />
