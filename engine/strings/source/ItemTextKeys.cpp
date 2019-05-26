@@ -1,3 +1,5 @@
+#include <sstream>
+#include <iomanip>
 #include <boost/algorithm/string/replace.hpp>
 #include "ItemTextKeys.hpp"
 #include "StringTable.hpp"
@@ -20,6 +22,36 @@ string ItemTextKeys::get_value(const uint value)
   return msg;
 }
 
+string ItemTextKeys::get_nutrition_message(ConsumablePtr consumable)
+{
+  string msg = StringTable::get(NUTRITION_MESSAGE);
+  int turns = 0;
+
+  if (consumable != nullptr)
+  {
+    turns = consumable->get_nutrition();
+  }
+
+  boost::replace_first(msg, "%s", to_string(turns));
+  return msg;
+}
+
+string ItemTextKeys::get_standard_drinks_message(ConsumablePtr consumable)
+{
+  string msg = StringTable::get(STANDARD_DRINKS_MESSAGE);
+  string drink_cnt = "0";
+
+  if (consumable != nullptr)
+  {
+    ostringstream ss;
+    ss << std::setprecision(1) << consumable->get_standard_drinks();
+    drink_cnt = ss.str();
+  }
+
+  boost::replace_first(msg, "%s", drink_cnt);
+  return msg;
+}
+
 // Public
 const string ItemTextKeys::ITEM_GLOW = "ITEM_GLOW";
 const string ItemTextKeys::ITEM_MULTIPLE = "ITEM_MULTIPLE";
@@ -28,5 +60,6 @@ const string ItemTextKeys::ITEM_CODEX_NO_INFORMATION_FOUND = "ITEM_CODEX_NO_INFO
 
 // Protected
 const string ItemTextKeys::ITEM_VALUE = "ITEM_VALUE";
-
+const string ItemTextKeys::NUTRITION_MESSAGE = "NUTRITION_MESSAGE";
+const string ItemTextKeys::STANDARD_DRINKS_MESSAGE = "STANDARD_DRINKS_MESSAGE";
 

@@ -110,20 +110,32 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     CodexDescriberFactory cdf;
 
     CodexDescriberPtr codex_desc = cdf.create_codex_describer(item);
-
     string separator;
     vector<pair<Colour, string>> codex_text;
+
+    add_symbol_and_description_to_codex(item, codex_desc, separator, codex_text);
+    add_synopsis_to_codex(item, codex_desc, separator, codex_text);
+    add_resistances_to_codex(item, codex_desc, separator, codex_text);
+    add_item_details_to_codex(item, codex_desc, separator, codex_text);
+    add_description_to_codex(item, codex_desc, separator, codex_text);
+
     string codex_title_sid = ScreenTitleTextKeys::SCREEN_TITLE_ITEM_CODEX;
-  
-    ItemType itype = item->get_type();
-    string item_type = ItemTypeTextKeys::get_item_type_description_singular(itype);
+    TextDisplayScreen tds(game.get_display(), codex_title_sid, codex_text);
+    tds.display();
+  }
+}
 
-    Colour item_colour = Colour::COLOUR_WHITE;
-
+void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+{
+  if (item != nullptr && codex_desc != nullptr)
+  {
     string symbol_details = StringTable::get(ItemTextKeys::ITEM_CODEX_NOT_IDENTIFIED);
     ItemIdentifier iid;
     bool identified = iid.get_item_identified(item->get_base_id());
+    Colour item_colour = Colour::COLOUR_WHITE; 
 
+    // If the item hasn't been identified yet, note that in white.  Otherwise,
+    // use the actual symbol and colour.
     if (identified)
     {
       symbol_details = item->get_symbol();
@@ -137,10 +149,17 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
 
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, item_desc));
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+  }
+}
 
+void ItemCodexAction::add_synopsis_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+{
+  if (item != nullptr && codex_desc != nullptr)
+  {
     ostringstream synopsis_line;
-    synopsis_line << item_type;
-    
+    ItemType itype = item->get_type();
+    synopsis_line << ItemTypeTextKeys::get_item_type_description_singular(itype);
+
     bool is_artifact = item->get_artifact();
     if (is_artifact)
     {
@@ -159,7 +178,7 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     }
 
     TextDisplayFormatter tdf;
-  
+
     vector<string> synopsis_lines = tdf.format_text(synopsis_line.str());
     for (const string& s_line : synopsis_lines)
     {
@@ -167,7 +186,14 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     }
 
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+  }
+}
 
+void ItemCodexAction::add_resistances_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+{
+  if (item != nullptr && codex_desc != nullptr)
+  {
+    TextDisplayFormatter tdf;
     vector<string> resistances = tdf.format_text(codex_desc->describe_resistances());
 
     if (!resistances.empty())
@@ -179,17 +205,42 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
 
       codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
     }
+  }
+}
 
+void ItemCodexAction::add_item_details_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+{
+  if (item != nullptr && codex_desc != nullptr)
+  {
+    string details = codex_desc->describe_details();
+
+    if (!details.empty())
+    {
+      TextDisplayFormatter tdf;
+      vector<string> details_text = tdf.format_text(details);
+
+      for (const string& detail_line : details_text)
+      {
+        codex_text.push_back(make_pair(Colour::COLOUR_WHITE, detail_line));
+      }
+
+      codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+    }
+  }
+}
+
+void ItemCodexAction::add_description_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+{
+  if (item != nullptr)
+  {
     // Item codex description
+    TextDisplayFormatter tdf;
     vector<string> codex = tdf.format_text(StringTable::get(item->get_codex_description_sid()));
 
     for (const string& line_of_text : codex)
     {
       codex_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
     }
-
-    TextDisplayScreen tds(game.get_display(), codex_title_sid, codex_text);
-    tds.display();
   }
 }
 

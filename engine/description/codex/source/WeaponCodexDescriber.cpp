@@ -31,3 +31,14 @@ string WeaponCodexDescriber::describe_for_synopsis_line() const
   return ss.str();
 }
 
+string WeaponCodexDescriber::describe_details() const
+{
+  string details;
+  WeaponPtr weap = dynamic_pointer_cast<Weapon>(item);
+
+  if (weap != nullptr)
+  {
+    // ...
+  }
+  return details;
+}
