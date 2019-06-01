@@ -3,7 +3,9 @@
 #include "EquipmentTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "TextKeys.hpp"
+#include "PrimaryPhysicalAttackSpeedCalculator.hpp"
 #include "StringTable.hpp"
+#include "WeaponDifficultyCalculator.hpp"
 
 using namespace std;
 
@@ -108,7 +110,12 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
   string synopsis = StringTable::get(EQUIPMENT_WEAPON_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS);
 
   boost::replace_first(synopsis, "%s", std::to_string(base_difficulty));
-  boost::replace_first(synopsis, "%s", std::to_string(total_difficulty));
+
+  if (total_difficulty > -1)
+  {
+    boost::replace_first(synopsis, "%s", std::to_string(total_difficulty));
+  }
+
   boost::replace_first(synopsis, "%s", std::to_string(speed));
   boost::replace_first(synopsis, "%s", damage.str());
 
@@ -241,6 +248,29 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type
 
   string dmg_synopsis = get_weapon_difficulty_speed_and_damage_synopsis(base_difficulty, total_difficulty, speed, damage);
   boost::replace_first(synopsis, "%s", dmg_synopsis);
+
+  return synopsis;
+}
+
+// Used for the codex.  
+string EquipmentTextKeys::get_melee_weapon_synopsis(WeaponPtr weapon)
+{
+  string synopsis;
+
+  if (weapon != nullptr)
+  {
+    WeaponDifficultyCalculator wdc;
+    PrimaryPhysicalAttackSpeedCalculator ppasc;
+
+    int total_speed = weapon->get_speed() - weapon->get_speed_bonus();
+    Damage& damage = weapon->get_damage();
+    int damage_bonus = weapon->get_addl_damage();
+    damage.set_modifier(damage.get_modifier() + damage_bonus);
+
+    synopsis = StringTable::get(TextKeys::GENERIC_MESSAGE);
+    string dmg_synopsis = get_weapon_difficulty_speed_and_damage_synopsis(weapon->get_difficulty(), wdc.get_item_total_difficulty_for_weapon(weapon), weapon->get_speed(), weapon->get_damage());
+    boost::replace_first(synopsis, "%s", dmg_synopsis);
+  }
 
   return synopsis;
 }

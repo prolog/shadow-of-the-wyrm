@@ -1,5 +1,5 @@
 #include <sstream>
-#include "FoodCodexDescriber.hpp"
+#include "ConsumableCodexDescriber.hpp"
 #include "Consumable.hpp"
 #include "ItemTextKeys.hpp"
 #include "ItemTypeTextKeys.hpp"

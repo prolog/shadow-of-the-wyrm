@@ -181,6 +181,7 @@ class TextKeys
     static const std::string CARRYING_CAPACITY;
     static const std::string ARTIFACT;
     static const std::string AUTOCURSING;
+    static const std::string GENERIC_MESSAGE;
 
   protected:
     TextKeys();

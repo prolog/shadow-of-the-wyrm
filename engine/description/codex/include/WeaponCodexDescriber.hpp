@@ -1,6 +1,7 @@
-#include "CodexDescriber.hpp"
+#pragma once
+#include "WearableCodexDescriber.hpp"
 
-class WeaponCodexDescriber : public CodexDescriber
+class WeaponCodexDescriber : public WearableCodexDescriber
 {
   public: 
     WeaponCodexDescriber(ItemPtr item);

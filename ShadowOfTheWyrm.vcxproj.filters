@@ -4281,6 +4281,9 @@
     <ClInclude Include="engine\description\codex\include\ConsumableCodexDescriber.hpp">
       <Filter>Header Files\engine\description\codex\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\description\codex\include\WearableCodexDescriber.hpp">
+      <Filter>Header Files\engine\description\codex\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8538,6 +8541,9 @@
       <Filter>Source Files\engine\description\codex\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\description\codex\source\ConsumableCodexDescriber.cpp">
+      <Filter>Source Files\engine\description\codex\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\codex\source\WearableCodexDescriber.cpp">
       <Filter>Source Files\engine\description\codex\source</Filter>
     </ClCompile>
   </ItemGroup>

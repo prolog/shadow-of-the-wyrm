@@ -1,4 +1,5 @@
 Me:
+- Need to add evade and soak for wearables
 - For v1.0.3 - start the item codex ('c')!
   - Include item stats
   - Type

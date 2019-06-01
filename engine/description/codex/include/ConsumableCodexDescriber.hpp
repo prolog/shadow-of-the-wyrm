@@ -1,3 +1,4 @@
+#pragma once
 #include "CodexDescriber.hpp"
 
 class ConsumableCodexDescriber : public CodexDescriber
