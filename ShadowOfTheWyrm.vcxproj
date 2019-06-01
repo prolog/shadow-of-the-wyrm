@@ -649,6 +649,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\description\codex\include\ConsumableCodexDescriber.hpp" />
     <ClInclude Include="engine\description\codex\include\SpellbookCodexDescriber.hpp" />
     <ClInclude Include="engine\description\codex\include\WeaponCodexDescriber.hpp" />
+    <ClInclude Include="engine\description\codex\include\WearableCodexDescriber.hpp" />
     <ClInclude Include="engine\description\include\BlindFeatureDescriber.hpp" />
     <ClInclude Include="engine\description\include\BlindItemDescriber.hpp" />
     <ClInclude Include="engine\description\include\CreatureDescriber.hpp" />
@@ -1822,6 +1823,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\description\codex\source\ConsumableCodexDescriber.cpp" />
     <ClCompile Include="engine\description\codex\source\SpellbookCodexDescriber.cpp" />
     <ClCompile Include="engine\description\codex\source\WeaponCodexDescriber.cpp" />
+    <ClCompile Include="engine\description\codex\source\WearableCodexDescriber.cpp" />
     <ClCompile Include="engine\effects\source\BlessEffect.cpp" />
     <ClCompile Include="engine\effects\source\CleansingEffect.cpp" />
     <ClCompile Include="engine\effects\source\DetectTrapsEffect.cpp" />

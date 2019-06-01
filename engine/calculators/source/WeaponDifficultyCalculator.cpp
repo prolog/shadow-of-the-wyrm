@@ -42,9 +42,9 @@ int WeaponDifficultyCalculator::calculate_base_difficulty(CreaturePtr creature, 
 
 int WeaponDifficultyCalculator::get_difficulty_for_weapon(WeaponPtr weapon)
 {
-  int difficulty;
+  int difficulty = 0;
 
-  if (weapon)
+  if (weapon != nullptr)
   {
     difficulty = weapon->get_difficulty();
   }
@@ -53,6 +53,22 @@ int WeaponDifficultyCalculator::get_difficulty_for_weapon(WeaponPtr weapon)
     difficulty = CombatConstants::BASE_WEAPON_DIFFICULTY;
   }
   
+  return difficulty;
+}
+
+int WeaponDifficultyCalculator::get_item_total_difficulty_for_weapon(WeaponPtr weapon)
+{
+  int difficulty = 0;
+
+  if (weapon != nullptr)
+  {
+    difficulty = weapon->get_difficulty() - weapon->get_to_hit();
+  }
+  else
+  {
+    difficulty = CombatConstants::BASE_WEAPON_DIFFICULTY;
+  }
+
   return difficulty;
 }
 

@@ -116,6 +116,7 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     add_symbol_and_description_to_codex(item, codex_desc, separator, codex_text);
     add_synopsis_to_codex(item, codex_desc, separator, codex_text);
     add_resistances_to_codex(item, codex_desc, separator, codex_text);
+    add_speed_details_to_codex(item, codex_desc, separator, codex_text);
     add_item_details_to_codex(item, codex_desc, separator, codex_text);
     add_description_to_codex(item, codex_desc, separator, codex_text);
 
@@ -203,6 +204,20 @@ void ItemCodexAction::add_resistances_to_codex(ItemPtr item, CodexDescriberPtr c
         codex_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
       }
 
+      codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+    }
+  }
+}
+
+void ItemCodexAction::add_speed_details_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+{
+  if (item != nullptr && codex_desc != nullptr)
+  {
+    string speed_bonus = codex_desc->describe_speed_bonus();
+
+    if (!speed_bonus.empty())
+    {
+      codex_text.push_back(make_pair(Colour::COLOUR_WHITE, speed_bonus));
       codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
     }
   }

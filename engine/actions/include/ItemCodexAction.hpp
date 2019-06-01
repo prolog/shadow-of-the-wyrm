@@ -29,6 +29,7 @@ protected:
     void add_symbol_and_description_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
     void add_synopsis_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
     void add_resistances_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
+    void add_speed_details_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
     void add_item_details_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
     void add_description_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
 

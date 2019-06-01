@@ -38,6 +38,12 @@ string CodexDescriber::describe_resistances() const
   return ss.str();
 }
 
+string CodexDescriber::describe_speed_bonus() const
+{
+  string no_bonus;
+  return no_bonus;
+}
+
 string CodexDescriber::describe_details() const
 {
   string no_details;

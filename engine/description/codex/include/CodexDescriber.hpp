@@ -10,6 +10,7 @@ class CodexDescriber
 
     virtual std::string describe_for_synopsis_line() const;
     virtual std::string describe_resistances() const;
+    virtual std::string describe_speed_bonus() const;
     virtual std::string describe_details() const;
 
   protected:

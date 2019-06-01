@@ -1,13 +1,15 @@
 #include <sstream>
 #include "WeaponCodexDescriber.hpp"
+#include "EquipmentTextKeys.hpp"
 #include "SkillTextKeys.hpp"
 #include "StringTable.hpp"
 #include "Weapon.hpp"
 #include "Creature.hpp"
+
 using namespace std;
 
 WeaponCodexDescriber::WeaponCodexDescriber(ItemPtr item)
-: CodexDescriber(item)
+: WearableCodexDescriber(item)
 {
 }
 
@@ -38,7 +40,8 @@ string WeaponCodexDescriber::describe_details() const
 
   if (weap != nullptr)
   {
-    // ...
+    details = EquipmentTextKeys::get_melee_weapon_synopsis(weap);
   }
+
   return details;
 }
