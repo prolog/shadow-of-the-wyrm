@@ -44,8 +44,7 @@ const string TextMessages::INSCRIPTION_MESSAGE                = "INSCRIPTION_MES
 const string TextMessages::SLOT_MACHINE_MESSAGE               = "SLOT_MACHINE_MESSAGE";
 const string TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE       = "SLOT_MACHINE_OUTCOME_MESSAGE";
 const string TextMessages::CARRYING_CAPACITY_MESSAGE          = "CARRYING_CAPACITY_MESSAGE";
-const string TextMessages::SPEED_BONUS_MESSAGE                = "SPEED_BONUS_MESSAGE";
-const string TextMessages::SPEED_PENALTY_MESSAGE              = "SPEED_PENALTY_MESSAGE";
+const string TextMessages::DAMAGE_MESSAGE                     = "DAMAGE_MESSAGE";
 
 string TextMessages::get_player_description(const string& player_name)
 {
@@ -602,20 +601,11 @@ string TextMessages::get_slot_machine_outcome_message(const string& first_sid, c
   return msg;
 }
 
-string TextMessages::get_speed_modifier_message(const int modifier)
+string TextMessages::get_damage_message(const Damage& damage)
 {
-  string msg;
+  string msg = StringTable::get(TextMessages::DAMAGE_MESSAGE);
 
-  if (modifier >= 0)
-  {
-    msg = StringTable::get(SPEED_BONUS_MESSAGE);
-  }
-  else
-  {
-    msg = StringTable::get(SPEED_PENALTY_MESSAGE);
-  }
+  boost::replace_first(msg, "%s", damage.str());
 
-  boost::replace_first(msg, "%s", to_string(std::abs(modifier)));
-  
   return msg;
 }

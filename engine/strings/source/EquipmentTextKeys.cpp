@@ -268,7 +268,7 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(WeaponPtr weapon)
     damage.set_modifier(damage.get_modifier() + damage_bonus);
 
     synopsis = StringTable::get(TextKeys::GENERIC_MESSAGE);
-    string dmg_synopsis = get_weapon_difficulty_speed_and_damage_synopsis(weapon->get_difficulty(), wdc.get_item_total_difficulty_for_weapon(weapon), weapon->get_speed(), weapon->get_damage());
+    string dmg_synopsis = get_weapon_difficulty_speed_and_damage_synopsis(weapon->get_difficulty(), wdc.get_item_total_difficulty_for_weapon(weapon), weapon->get_speed(), damage);
     boost::replace_first(synopsis, "%s", dmg_synopsis);
   }
 

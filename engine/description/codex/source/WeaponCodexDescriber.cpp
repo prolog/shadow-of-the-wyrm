@@ -35,13 +35,20 @@ string WeaponCodexDescriber::describe_for_synopsis_line() const
 
 string WeaponCodexDescriber::describe_details() const
 {
-  string details;
+  ostringstream ss;
   WeaponPtr weap = dynamic_pointer_cast<Weapon>(item);
 
   if (weap != nullptr)
   {
-    details = EquipmentTextKeys::get_melee_weapon_synopsis(weap);
+    string wear_details = WearableCodexDescriber::describe_details();
+
+    if (!wear_details.empty())
+    {
+      ss << wear_details << " ";
+    }
+
+    ss << EquipmentTextKeys::get_melee_weapon_synopsis(weap); 
   }
 
-  return details;
+  return ss.str();
 }

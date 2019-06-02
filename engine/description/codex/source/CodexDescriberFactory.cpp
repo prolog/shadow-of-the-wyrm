@@ -1,7 +1,9 @@
+#include "ArmourCodexDescriber.hpp"
 #include "CodexDescriberFactory.hpp"
 #include "CodexDescriber.hpp"
 #include "ConsumableCodexDescriber.hpp"
 #include "SpellbookCodexDescriber.hpp"
+#include "WandCodexDescriber.hpp"
 #include "WeaponCodexDescriber.hpp"
 #include "WearableCodexDescriber.hpp"
 
@@ -29,15 +31,19 @@ CodexDescriberPtr CodexDescriberFactory::create_codex_describer(const ItemPtr it
         break;
       case ItemType::ITEM_TYPE_RING:
       case ItemType::ITEM_TYPE_AMULET:
-      case ItemType::ITEM_TYPE_ARMOUR:
         desc = std::make_shared<WearableCodexDescriber>(item);
+        break;
+      case ItemType::ITEM_TYPE_ARMOUR:
+        desc = std::make_shared<ArmourCodexDescriber>(item);
+        break;
+      case ItemType::ITEM_TYPE_WAND:
+        desc = std::make_shared<WandCodexDescriber>(item);
         break;
       case ItemType::ITEM_TYPE_BOAT:
       case ItemType::ITEM_TYPE_CURRENCY:
       case ItemType::ITEM_TYPE_MISC:
       case ItemType::ITEM_TYPE_STAFF:
       case ItemType::ITEM_TYPE_TOOL:
-      case ItemType::ITEM_TYPE_WAND:
       default:
         desc = std::make_shared<CodexDescriber>(item);
     }
