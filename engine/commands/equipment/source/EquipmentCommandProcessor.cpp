@@ -56,7 +56,6 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
       }
       else if (command_name == EquipmentCommandKeys::CODEX)
       {
-        // JCD TODO
         shared_ptr<EquipmentSlotCommand> esc = std::dynamic_pointer_cast<EquipmentSlotCommand>(command);
 
         if (esc != nullptr)

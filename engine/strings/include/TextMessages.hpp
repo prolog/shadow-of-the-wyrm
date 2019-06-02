@@ -40,7 +40,7 @@ class TextMessages
     static std::string get_character_creation_synopsis(const CreatureSex cs, RacePtr race, ClassPtr cur_class, DeityPtr cur_deity);
     static std::string get_slot_machine_message(const int cost, const int pct_chance_win, const int payout_amount);
     static std::string get_slot_machine_outcome_message(const std::string& first_sid, const std::string& second_sid, const std::string& third_sid);
-    static std::string get_speed_modifier_message(const int bonus);
+    static std::string get_damage_message(const Damage& damage);
 
   protected:
     TextMessages();
@@ -68,6 +68,5 @@ class TextMessages
     static const std::string SLOT_MACHINE_MESSAGE;
     static const std::string SLOT_MACHINE_OUTCOME_MESSAGE;
     static const std::string CARRYING_CAPACITY_MESSAGE;
-    static const std::string SPEED_BONUS_MESSAGE;
-    static const std::string SPEED_PENALTY_MESSAGE;
+    static const std::string DAMAGE_MESSAGE;
 };

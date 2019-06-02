@@ -1,5 +1,6 @@
 Me:
-- Need to add evade and soak for wearables
+- Add an item of the appropriate type for each codex describer, cast to it
+  in the constructor, stop doing dynamic casts everywhere else
 - For v1.0.3 - start the item codex ('c')!
   - Include item stats
   - Type
@@ -8,7 +9,8 @@ Me:
 - For v1.0.3 - moving back up through infinite dungeon isn't reducing
   danger level appropriately. (Blue)
 - For v1.0.3 - literacy quest in Carcassia, remove references in Lorelei
-  (Blue)
+  (Blue). Make this cost a set amount of money, some kind of tutor in
+  the high tower?  Reading services?
 - Make sure glow respected
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
