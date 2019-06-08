@@ -27733,6 +27733,82 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="temple_tutor">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>TEMPLE_TUTOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TEMPLE_TUTOR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TEMPLE_TUTOR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TEMPLE_TUTOR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/temple_tutor.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="hedge_wizard">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>HEDGE_WIZARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HEDGE_WIZARD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HEDGE_WIZARD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HEDGE_WIZARD_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>0</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>10</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/hedge_wizard.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="akhra_goblin">
 			<RaceID>07_goblin</RaceID>
 			<ShortDescriptionSID>AKHRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

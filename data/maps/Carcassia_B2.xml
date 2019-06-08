@@ -40,6 +40,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>temple_tutor</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>31</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
 					<Row>18</Row>
