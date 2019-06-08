@@ -1,7 +1,4 @@
 Me:
-- For v1.0.3 - literacy quest in Carcassia, remove references in Lorelei
-  (Blue). Make this cost a set amount of money, some kind of tutor in
-  the high tower?  Reading services?
 - Make sure glow respected
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID

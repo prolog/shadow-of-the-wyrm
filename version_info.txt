@@ -36,6 +36,9 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 
 - Stormstaff now deals lightning damage.
 
+- Added creatures to Carcassia to teach literacy (temple tutor) and 
+  cantrips (hedge wizard) (Blue, others).
+
 - Verbena, white basil, stoneflower, and voxflower have had their symbols
   changed to 'w' (flower).
 
@@ -43,7 +46,7 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
 
 - Stanzas for "Tel and Floridel".
 
-- New creatures: sweet old dog.
+- New creatures: sweet old dog, temple tutor, hedge wizard.
 
 - Bug fixes:
 
