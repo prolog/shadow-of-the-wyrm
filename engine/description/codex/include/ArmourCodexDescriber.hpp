@@ -1,9 +1,10 @@
 #pragma once
 #include "WearableCodexDescriber.hpp"
+#include "Wearable.hpp"
 
 class ArmourCodexDescriber : public WearableCodexDescriber
 {
   public:
-    ArmourCodexDescriber(ItemPtr item);
+    ArmourCodexDescriber(WearablePtr wearable);
 };
 

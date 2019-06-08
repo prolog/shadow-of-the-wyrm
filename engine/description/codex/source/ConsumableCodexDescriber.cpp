@@ -6,14 +6,13 @@
 
 using namespace std;
 
-ConsumableCodexDescriber::ConsumableCodexDescriber(ItemPtr item)
-: CodexDescriber(item)
+ConsumableCodexDescriber::ConsumableCodexDescriber(ConsumablePtr new_consumable)
+: CodexDescriber(new_consumable), consumable(new_consumable)
 {
 }
 
 string ConsumableCodexDescriber::describe_for_synopsis_line() const
 {
-  ConsumablePtr consumable = dynamic_pointer_cast<Consumable>(item);
   string desc;
 
   if (consumable != nullptr)
@@ -27,7 +26,6 @@ string ConsumableCodexDescriber::describe_for_synopsis_line() const
 string ConsumableCodexDescriber::describe_details() const
 {
   ostringstream details;
-  ConsumablePtr consumable = dynamic_pointer_cast<Consumable>(item);
 
   if (consumable != nullptr)
   {

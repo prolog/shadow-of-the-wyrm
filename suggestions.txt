@@ -1,13 +1,4 @@
 Me:
-- Add an item of the appropriate type for each codex describer, cast to it
-  in the constructor, stop doing dynamic casts everywhere else
-- For v1.0.3 - start the item codex ('c')!
-  - Include item stats
-  - Type
-  - Autocursing?
-- For v1.0.3 - rebind '*' (vedvid)
-- For v1.0.3 - moving back up through infinite dungeon isn't reducing
-  danger level appropriately. (Blue)
 - For v1.0.3 - literacy quest in Carcassia, remove references in Lorelei
   (Blue). Make this cost a set amount of money, some kind of tutor in
   the high tower?  Reading services?
@@ -219,3 +210,7 @@ Mirza Ghalib:
 NoCreativeNames:
 - Nobles start with scribing, but can't really use it because they don't
   have Cantrips.  Add a quest at some point to be able to learn Cantrips.
+
+vedvid:
+- rebind '*' (vedvid)
+

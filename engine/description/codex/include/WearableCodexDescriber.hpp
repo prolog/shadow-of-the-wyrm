@@ -1,11 +1,12 @@
 #pragma once
 #include "CodexDescriber.hpp"
+#include "Wearable.hpp"
 
 class WearableCodexDescriber : public CodexDescriber
 {
   public:
-    WearableCodexDescriber(ItemPtr item);
-    WearableCodexDescriber(ItemPtr item, const bool desc_protect);
+    WearableCodexDescriber(WearablePtr wearable);
+    WearableCodexDescriber(WearablePtr wearable, const bool desc_protect);
 
     std::string describe_speed_bonus() const override;
     std::string describe_details() const override;
@@ -15,5 +16,6 @@ class WearableCodexDescriber : public CodexDescriber
 
   protected:
     bool always_describe_protect;
+    WearablePtr wearable;
 };
 

@@ -73,13 +73,16 @@ int DepthBasedDangerLevelCalculator::calculate_delta(const Depth& map_depth, con
   // The new map depth is considered authoritative in terms of min/max depths,
   // so use that to default the current depth appropriately if it's outside
   // the min or max.
-  if (cur > new_map_depth.get_maximum())
+  if (new_map_depth.has_maximum())
   {
-    cur = new_map_depth.get_maximum();
-  }
-  else if (cur < new_map_depth.get_minimum())
-  {
-    cur = new_map_depth.get_minimum();
+    if (cur > new_map_depth.get_maximum())
+    {
+      cur = new_map_depth.get_maximum();
+    }
+    else if (cur < new_map_depth.get_minimum())
+    {
+      cur = new_map_depth.get_minimum();
+    }
   }
 
   delta = new_map_depth.get_current() - cur;

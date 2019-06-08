@@ -6,6 +6,9 @@
 #include "WandCodexDescriber.hpp"
 #include "WeaponCodexDescriber.hpp"
 #include "WearableCodexDescriber.hpp"
+#include "Armour.hpp"
+
+using namespace std;
 
 CodexDescriberPtr CodexDescriberFactory::create_codex_describer(const ItemPtr item)
 {
@@ -19,26 +22,44 @@ CodexDescriberPtr CodexDescriberFactory::create_codex_describer(const ItemPtr it
     {
       case ItemType::ITEM_TYPE_AMMUNITION:
       case ItemType::ITEM_TYPE_WEAPON:
-        desc = std::make_shared<WeaponCodexDescriber>(item);
+      {
+        WeaponPtr weapon = dynamic_pointer_cast<Weapon>(item);
+        desc = std::make_shared<WeaponCodexDescriber>(weapon);
         break;
+      }
       case ItemType::ITEM_TYPE_SPELLBOOK:
-        desc = std::make_shared<SpellbookCodexDescriber>(item);
+      {
+        SpellbookPtr spellbook = dynamic_pointer_cast<Spellbook>(item);
+        desc = std::make_shared<SpellbookCodexDescriber>(spellbook);
         break;
+      }
       case ItemType::ITEM_TYPE_FOOD:
       case ItemType::ITEM_TYPE_PLANT:
       case ItemType::ITEM_TYPE_POTION:
-        desc = std::make_shared<ConsumableCodexDescriber>(item);
+      {
+        ConsumablePtr consumable = dynamic_pointer_cast<Consumable>(item);
+        desc = std::make_shared<ConsumableCodexDescriber>(consumable);
         break;
+      }
       case ItemType::ITEM_TYPE_RING:
       case ItemType::ITEM_TYPE_AMULET:
-        desc = std::make_shared<WearableCodexDescriber>(item);
+      {
+        WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
+        desc = std::make_shared<WearableCodexDescriber>(wearable);
         break;
+      }
       case ItemType::ITEM_TYPE_ARMOUR:
-        desc = std::make_shared<ArmourCodexDescriber>(item);
+      {
+        ArmourPtr armour = dynamic_pointer_cast<Armour>(item);
+        desc = std::make_shared<ArmourCodexDescriber>(armour);
         break;
+      }
       case ItemType::ITEM_TYPE_WAND:
-        desc = std::make_shared<WandCodexDescriber>(item);
+      {
+        WandPtr wand = dynamic_pointer_cast<Wand>(item);
+        desc = std::make_shared<WandCodexDescriber>(wand);
         break;
+      }
       case ItemType::ITEM_TYPE_BOAT:
       case ItemType::ITEM_TYPE_CURRENCY:
       case ItemType::ITEM_TYPE_MISC:

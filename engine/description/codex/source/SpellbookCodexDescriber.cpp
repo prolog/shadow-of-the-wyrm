@@ -4,14 +4,13 @@
 
 using namespace std;
 
-SpellbookCodexDescriber::SpellbookCodexDescriber(ItemPtr item)
-: CodexDescriber(item)
+SpellbookCodexDescriber::SpellbookCodexDescriber(SpellbookPtr new_spellbook)
+: CodexDescriber(new_spellbook), spellbook(new_spellbook)
 {
 }
 
 string SpellbookCodexDescriber::describe_for_synopsis_line() const
 {
-  SpellbookPtr spellbook = dynamic_pointer_cast<Spellbook>(item);
   string desc;
 
   if (spellbook != nullptr)

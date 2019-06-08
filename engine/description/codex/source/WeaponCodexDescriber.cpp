@@ -8,21 +8,20 @@
 
 using namespace std;
 
-WeaponCodexDescriber::WeaponCodexDescriber(ItemPtr item)
-: WearableCodexDescriber(item)
+WeaponCodexDescriber::WeaponCodexDescriber(WeaponPtr new_weapon)
+: WearableCodexDescriber(new_weapon), weapon(new_weapon)
 {
 }
 
 string WeaponCodexDescriber::describe_for_synopsis_line() const
 {
-  WeaponPtr weap = dynamic_pointer_cast<Weapon>(item);
   ostringstream ss;
 
-  if (weap != nullptr)
+  if (weapon != nullptr)
   {
     Skills skills;
-    SkillPtr m_sk = skills.get_skill(weap->get_trained_skill());
-    SkillPtr r_sk = skills.get_skill(weap->get_trained_ranged_skill());
+    SkillPtr m_sk = skills.get_skill(weapon->get_trained_skill());
+    SkillPtr r_sk = skills.get_skill(weapon->get_trained_ranged_skill());
     
     if (m_sk != nullptr && r_sk != nullptr)
     {
@@ -36,9 +35,8 @@ string WeaponCodexDescriber::describe_for_synopsis_line() const
 string WeaponCodexDescriber::describe_details() const
 {
   ostringstream ss;
-  WeaponPtr weap = dynamic_pointer_cast<Weapon>(item);
 
-  if (weap != nullptr)
+  if (weapon != nullptr)
   {
     string wear_details = WearableCodexDescriber::describe_details();
 
@@ -47,7 +45,7 @@ string WeaponCodexDescriber::describe_details() const
       ss << wear_details << " ";
     }
 
-    ss << EquipmentTextKeys::get_melee_weapon_synopsis(weap); 
+    ss << EquipmentTextKeys::get_melee_weapon_synopsis(weapon); 
   }
 
   return ss.str();
