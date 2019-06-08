@@ -5,8 +5,11 @@
 class SpellbookCodexDescriber : public CodexDescriber
 {
   public: 
-    SpellbookCodexDescriber(ItemPtr item);
+    SpellbookCodexDescriber(SpellbookPtr spellbook);
 
     std::string describe_for_synopsis_line() const override;
+
+  protected:
+    SpellbookPtr spellbook;
 };
 

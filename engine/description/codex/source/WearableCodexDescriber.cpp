@@ -4,19 +4,18 @@
 
 using namespace std;
 
-WearableCodexDescriber::WearableCodexDescriber(ItemPtr item)
-: CodexDescriber(item), always_describe_protect(false)
+WearableCodexDescriber::WearableCodexDescriber(WearablePtr new_wearable)
+: CodexDescriber(new_wearable), always_describe_protect(false), wearable(new_wearable)
 {
 }
 
-WearableCodexDescriber::WearableCodexDescriber(ItemPtr item, const bool new_always_describe_protect)
-: CodexDescriber(item), always_describe_protect(new_always_describe_protect)
+WearableCodexDescriber::WearableCodexDescriber(WearablePtr new_wearable, const bool new_always_describe_protect)
+: CodexDescriber(new_wearable), always_describe_protect(new_always_describe_protect), wearable(new_wearable)
 {
 }
 
 string WearableCodexDescriber::describe_speed_bonus() const
 {
-  WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
   string bonus;
 
   if (wearable != nullptr)
@@ -35,7 +34,6 @@ string WearableCodexDescriber::describe_speed_bonus() const
 string WearableCodexDescriber::describe_details() const
 {
   string details;
-  WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
 
   if (wearable != nullptr)
   {

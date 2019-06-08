@@ -82,6 +82,10 @@ Shadow of the Wyrm v1.0.3 "Robert Dowland"
     player to duplicate any item as many times as they wanted
     (NoCreativeNames).
 
+  - The danger level in the infinite dungeon and sewer wasn't being
+    handled properly, causing ascent not to reduce the new danger
+    rating (Blue).
+
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.
 

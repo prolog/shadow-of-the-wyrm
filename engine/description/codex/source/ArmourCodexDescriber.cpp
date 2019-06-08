@@ -1,7 +1,7 @@
 #include "ArmourCodexDescriber.hpp"
 
-ArmourCodexDescriber::ArmourCodexDescriber(ItemPtr item)
-: WearableCodexDescriber(item, true)
+ArmourCodexDescriber::ArmourCodexDescriber(WearablePtr wearable)
+: WearableCodexDescriber(wearable, true)
 {
 }
 
