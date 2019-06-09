@@ -394,7 +394,7 @@ ActionCost ActionManager::item_codex(CreaturePtr creature, ItemPtr item)
 {
   ItemCodexAction ica;
 
-  return get_action_cost(creature, ica.item_details(item));
+  return get_action_cost(creature, ica.item_details(creature, item, false));
 }
 
 ActionCost ActionManager::evoke(CreaturePtr creature)

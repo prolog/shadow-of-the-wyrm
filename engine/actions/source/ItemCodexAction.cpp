@@ -3,6 +3,7 @@
 #include "ActionTextKeys.hpp"
 #include "CodexDescriberFactory.hpp"
 #include "CreatureProperties.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemTextKeys.hpp"
@@ -52,7 +53,7 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature) const
 
       if (item != nullptr)
       {
-        display_codex_item(item);
+        acv = item_details(creature, item, false);
       }
       else
       {
@@ -65,7 +66,7 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature) const
   return acv;
 }
 
-ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, const EquipmentWornLocation ewl)
+ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, const EquipmentWornLocation ewl) const
 {
   if (creature != nullptr)
   {
@@ -73,22 +74,27 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, const Equipm
 
     if (item != nullptr)
     {
-      display_codex_item(item);
+      item_details(creature, item, false);
     }
   }
 
   return ActionCostConstants::NO_ACTION;
 }
 
-ActionCostValue ItemCodexAction::item_details(ItemPtr item)
+ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, ItemPtr item, const bool skip_blindness_checks) const
 {
-  if (item != nullptr)
+  if (creature != nullptr && item != nullptr)
   {
     ItemIdentifier iid;
 
     if (iid.get_item_identified(item->get_base_id()))
     {
-      display_codex_item(item);
+      CurrentCreatureAbilities cca;
+
+      if (cca.can_see(creature) || skip_blindness_checks || item->get_glowing())
+      {
+        display_codex_item(item);
+      }
     }
     else
     {
