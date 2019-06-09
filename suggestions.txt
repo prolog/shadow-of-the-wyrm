@@ -1,4 +1,5 @@
 Me:
+- Make sure docs are up to date
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
 - Random villages should include the race in the description prior to
