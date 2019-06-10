@@ -262,8 +262,7 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(WeaponPtr weapon)
     WeaponDifficultyCalculator wdc;
     PrimaryPhysicalAttackSpeedCalculator ppasc;
 
-    int total_speed = weapon->get_speed() - weapon->get_speed_bonus();
-    Damage& damage = weapon->get_damage();
+    Damage damage = weapon->get_damage();
     int damage_bonus = weapon->get_addl_damage();
     damage.set_modifier(damage.get_modifier() + damage_bonus);
 
