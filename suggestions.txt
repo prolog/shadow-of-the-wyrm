@@ -211,3 +211,19 @@ NoCreativeNames:
 vedvid:
 - rebind '*' (vedvid)
 
+hapro:
+- Numpad enter key does not always work same as real enter key
+- Drop multiple items at once
+- Colour to message log
+- Walking on an object/feature should put the exmaine message in the log
+- If try to sell item but price refused, stay in inventory?
+- Option to "pause" after certain triggers. When paused the game would
+  ignore all inputs until space pressed. Example triggers: dropping below
+  15% health, taking more than 50% in single attack, beginning to starve,
+  etc.
+- Auto-pickup ammo fired by player
+- Separating corpses and food into separate autopickup groups - want to
+  auto pickup food, but not corpses
+- Auto pickup triggers when leaving a map on a tile you're leaving from.
+  e.g. Drop an item on edge of town, leave town, item picked up.
+
