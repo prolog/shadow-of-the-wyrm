@@ -1,5 +1,5 @@
-Shadow of the Wyrm v1.0.3 "Robert Dowland"
-- Version declared January 26, 2019.
+Shadow of the Wyrm v1.1.0 "Robert Dowland"
+- Version declared January 26, 2019.  Version finalized June 9, 2019.
 
 - Added a new "item codex" command ('c'), that displays an item synopsis
   and description for a particular item (barrabus).
