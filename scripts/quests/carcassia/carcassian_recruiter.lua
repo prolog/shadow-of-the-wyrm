@@ -53,6 +53,8 @@ local function carcassian_recruiter_camp_completion_fn()
   add_object_to_player_tile(GOLDEN_APPLE_ID, RNG_range(2,4))
   add_object_to_player_tile("dragon_helm")
   add_object_to_player_tile(CURRENCY_ID, RNG_range(30, 50))
+
+  return true
 end
 
 camp_quest = Quest:new("recruiter_ogre_camp",
