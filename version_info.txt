@@ -1,3 +1,6 @@
+Shadow of the Wyrm v1.1.0 "Campion"
+- Version declared June 12, 2019.
+ 
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 
