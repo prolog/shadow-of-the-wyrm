@@ -237,7 +237,7 @@ bool Serialization::does_savefile_exist_for_user_and_character(const string& use
 // JCD FIXME SPLIT THESE INTO THEIR OWN CLASS.
 
 // Get a list of savefile names for the current user.
-vector<pair<string, string>> Serialization::get_save_file_names(const bool single_user_mode)
+vector<pair<string, string>> Serialization::get_save_file_names(const bool single_user_mode, const bool skip_metadata_verification)
 {
   vector<pair<string,string>> save_files;
   string user_name = Environment::get_user_name();
@@ -254,7 +254,7 @@ vector<pair<string, string>> Serialization::get_save_file_names(const bool singl
 
       if (boost::regex_search(filename,e))
       {
-        pair<bool, string> save_file_availability = get_save_file_availability_and_synopsis(d_it->path().string(), single_user_mode);
+        pair<bool, string> save_file_availability = get_save_file_availability_and_synopsis(d_it->path().string(), single_user_mode, skip_metadata_verification);
 
         if (save_file_availability.first == true)
         {
@@ -274,7 +274,7 @@ vector<pair<string, string>> Serialization::get_save_file_names(const bool singl
 //   match exactly.
 // - Checking the compiler info stored in the file.  This must
 //   exactly match.
-pair<bool, string> Serialization::get_save_file_availability_and_synopsis(const string& filename, const bool single_user_mode)
+pair<bool, string> Serialization::get_save_file_availability_and_synopsis(const string& filename, const bool single_user_mode, const bool skip_metadata_verification)
 {
   pair<bool, string> save_file_availability(false, "");
 
@@ -312,8 +312,11 @@ pair<bool, string> Serialization::get_save_file_availability_and_synopsis(const 
         save_file_available = ((user_name_from_file == current_user) || user_name_from_file.empty());
       }
 
-      save_file_available = save_file_available && (version_from_file == current_version);
-      save_file_available = save_file_available && (compilation_details_from_file == current_compilation_details);
+      if (!skip_metadata_verification)
+      {
+        save_file_available = save_file_available && (version_from_file == current_version);
+        save_file_available = save_file_available && (compilation_details_from_file == current_compilation_details);
+      }
 
       save_file_availability.first = save_file_available;
 

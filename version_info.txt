@@ -1,15 +1,5 @@
-Shadow of the Wyrm v.1.1.1 "Campion"
-- Version declared June 9, 2019.
-
-- Stanzas for "Tel and Floridel".
-
-- Bug fixes:
-
-  - The Carcassian recruiter's ogre quest wasn't clearing properly on
-    completion (Grond).
-
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
-- Version declared January 26, 2019.  Version finalized June 9, 2019.
+- Version declared January 26, 2019.  Version finalized June 12, 2019.
 
 - Added a new "item codex" command ('c'), that displays an item synopsis
   and description for a particular item (barrabus).
@@ -53,6 +43,9 @@ Shadow of the Wyrm v1.1.0 "Robert Dowland"
   changed to 'w' (flower).
 
 - Pick axes now break half as often.
+
+- Added a setting to ignore version differences with savefiles to help 
+  debug crashes.
 
 - Stanzas for "Tel and Floridel".
 
@@ -98,6 +91,13 @@ Shadow of the Wyrm v1.1.0 "Robert Dowland"
   - The danger level in the infinite dungeon and sewer wasn't being
     handled properly, causing ascent not to reduce the new danger
     rating (Blue).
+
+  - The Carcassian recruiter's ogre quest wasn't clearing properly on
+    completion (Grond).
+
+  - There was a crash bug that could be triggered by storm-type spells
+    being cast, and generating no potential coordinates due to all the
+    selected coordinates being outside the caster's FOV (Grond).
 
 Shadow of the Wyrm v1.0.2 "de Falla"
 - Version declared December 23, 2018.  Version finalized January 26, 2019.

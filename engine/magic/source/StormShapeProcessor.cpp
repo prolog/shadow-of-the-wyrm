@@ -73,6 +73,7 @@ vector<Coordinate> StormShapeProcessor::generate_potential_coords(MapPtr map, co
 pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_storm_tiles_and_movement(MapPtr map, const Spell& spell, const Coordinate& caster_coord, const vector<Coordinate>& coords, const uint num_tiles_affected)
 {
   pair<vector<pair<Coordinate, TilePtr>>, MovementPath> result;
+
   size_t coords_size = coords.size();
   uint spell_radius = spell.get_shape().get_radius();
   DisplayTile dt('*', static_cast<int>(spell.get_colour()));
@@ -87,63 +88,66 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
   mini_burst.set_range(spell_radius);
   Colour burst_colour = mini_burst.get_colour();
 
-  for (uint i = 0; i < num_tiles_affected; i++)
+  if (coords_size > 0)
   {
-    stringstream ss;
-    Coordinate rand_coord = coords.at(RNG::range(0, coords_size-1));
-
-    TilePtr tile = map->at(rand_coord);
-    TilePtr fov_tile = player ? player->get_decision_strategy()->get_fov_map()->at(rand_coord) : nullptr;
-
-    result.first.push_back(make_pair(rand_coord, tile));
-
-    if (spell_radius == 0)
+    for (uint i = 0; i < num_tiles_affected; i++)
     {
-      // Push back the selected coordinate (the eye of the mini-storm).
-      result.second.push_back({ make_pair(dt, rand_coord) });
-    }
+      stringstream ss;
+      Coordinate rand_coord = coords.at(RNG::range(0, coords_size - 1));
 
-    // If this is a radiant storm, calculate the balls created from the random
-    // coordinate.  Ensure that the caster's coordinate is always excluded.
-    //
-    // We calculate two balls: one with the alternate hue, one with the regular
-    // one, and then add them both to the movement path.  This allows the path
-    // of any subsequent, overlapping balls to be easily seen.
-    else if (spell_radius > 0)
-    {
-      BallShapeProcessor bsp(true);
+      TilePtr tile = map->at(rand_coord);
+      TilePtr fov_tile = player ? player->get_decision_strategy()->get_fov_map()->at(rand_coord) : nullptr;
 
-      // Colour and whether to use the actual tile details in the ball,
-      // rather than the spell symbols.
-       vector<pair<Colour, bool>> colours = {{burst_colour, false}, 
-                                            {ColourUtils::get_alternate_hue(burst_colour), false}, 
-                                            {Colour::COLOUR_UNDEFINED, true}};
-      bool add_tile_details = true;
-      
-      for (const auto& colour : colours)
+      result.first.push_back(make_pair(rand_coord, tile));
+
+      if (spell_radius == 0)
       {
-        mini_burst.set_colour(colour.first);
-        auto ball_pair = bsp.get_affected_coords_and_tiles(map, mini_burst, rand_coord, colour.second);
+        // Push back the selected coordinate (the eye of the mini-storm).
+        result.second.push_back({ make_pair(dt, rand_coord) });
+      }
 
-        remove_caster_details_from_ball(ball_pair, caster_coord);
+      // If this is a radiant storm, calculate the balls created from the random
+      // coordinate.  Ensure that the caster's coordinate is always excluded.
+      //
+      // We calculate two balls: one with the alternate hue, one with the regular
+      // one, and then add them both to the movement path.  This allows the path
+      // of any subsequent, overlapping balls to be easily seen.
+      else if (spell_radius > 0)
+      {
+        BallShapeProcessor bsp(true);
 
-        // First time through the ball, add the affected coordinates and tiles.
-        if (add_tile_details)
+        // Colour and whether to use the actual tile details in the ball,
+        // rather than the spell symbols.
+        vector<pair<Colour, bool>> colours = { {burst_colour, false},
+                                             {ColourUtils::get_alternate_hue(burst_colour), false},
+                                             {Colour::COLOUR_UNDEFINED, true} };
+        bool add_tile_details = true;
+
+        for (const auto& colour : colours)
         {
-          vector<pair<Coordinate, TilePtr>> affected = ball_pair.first;
+          mini_burst.set_colour(colour.first);
+          auto ball_pair = bsp.get_affected_coords_and_tiles(map, mini_burst, rand_coord, colour.second);
 
-          for (const auto& aff : affected)
+          remove_caster_details_from_ball(ball_pair, caster_coord);
+
+          // First time through the ball, add the affected coordinates and tiles.
+          if (add_tile_details)
           {
-            result.first.push_back(aff);
+            vector<pair<Coordinate, TilePtr>> affected = ball_pair.first;
+
+            for (const auto& aff : affected)
+            {
+              result.first.push_back(aff);
+            }
+
+            add_tile_details = false;
           }
 
-          add_tile_details = false;
-        }
-
-        // Push back the additional elements of the ball to the movement details.
-        for (const auto& ball_movement_frame : ball_pair.second)
-        {
-          result.second.push_back(ball_movement_frame);
+          // Push back the additional elements of the ball to the movement details.
+          for (const auto& ball_movement_frame : ball_pair.second)
+          {
+            result.second.push_back(ball_movement_frame);
+          }
         }
       }
     }
