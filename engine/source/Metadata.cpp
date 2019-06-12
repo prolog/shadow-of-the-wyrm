@@ -55,7 +55,7 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  return "\"Robert Dowland\"";
+  return "\"Campion\"";
 }
 
 string Metadata::get_game_version_synopsis() const
