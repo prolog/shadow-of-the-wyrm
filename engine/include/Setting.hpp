@@ -30,6 +30,7 @@ class Setting
     static const std::string DISPLAY;
     static const std::string REMOVE_LOGS_DAYS_OLD;
     static const std::string SINGLE_USER_MODE;
+    static const std::string SKIP_SAVEFILE_METADATA_VERIFICATION;
     static const std::string AUTOPICKUP;
     static const std::string AUTOPICKUP_TYPES;
     static const std::string AUTOPICKUP_IGNORE_CORPSES;

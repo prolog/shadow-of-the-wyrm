@@ -28,8 +28,11 @@ void LoadGameScreen::initialize()
 
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
-  bool single_user_mode = Game::instance().get_settings_ref().get_setting_as_bool(Setting::SINGLE_USER_MODE);
-  vector<pair<string, string>> filenames = Serialization::get_save_file_names(single_user_mode);
+  Settings& settings = Game::instance().get_settings_ref();
+  bool single_user_mode = settings.get_setting_as_bool(Setting::SINGLE_USER_MODE);
+  bool skip_metadata_verification = settings.get_setting_as_bool(Setting::SKIP_SAVEFILE_METADATA_VERIFICATION);
+
+  vector<pair<string, string>> filenames = Serialization::get_save_file_names(single_user_mode, skip_metadata_verification);
 
   int current_id = 0;
   for (vector<pair<string,string>>::iterator f_it = filenames.begin(); (f_it != filenames.end() && current_id < 25); f_it++)

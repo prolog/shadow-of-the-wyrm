@@ -37,6 +37,7 @@ const string Setting::MAX_CHARACTERS_PER_USER = "max_characters_per_user";
 const string Setting::DISPLAY = "max_characters_per_user";
 const string Setting::REMOVE_LOGS_DAYS_OLD = "remove_logs_days_old";
 const string Setting::SINGLE_USER_MODE = "single_user_mode";
+const string Setting::SKIP_SAVEFILE_METADATA_VERIFICATION = "skip_savefile_metadata_verification";
 const string Setting::AUTOPICKUP = "autopickup";
 const string Setting::AUTOPICKUP_TYPES = "autopickup_types";
 const string Setting::AUTOPICKUP_IGNORE_CORPSES = "autopickup_ignore_corpses";
