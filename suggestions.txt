@@ -230,3 +230,5 @@ hapro:
 
 Rob Ayres
 - Aging attacks and potions of youth
+- Issues with carrying.  It's just Str * 10 after levelling, regardless
+  of the Carrying score.

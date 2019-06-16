@@ -2759,7 +2759,16 @@ a dying parent's breathing snag and pull %b
 an hour apart, and show the ugly cost %b
 of how the unsaid blossoms into all we've got.
 %p
-
+But as they walked, a flock of blackbirds found %b
+an open patch of field, and landed there %b
+to watch the brothers closely.  They gathered around %b
+a single, smaller bird; they stopped and stared %b
+at the brothers, leaping up to flap and writhe %b
+as one until they formed a shifting blur %b
+of black around a gleaming, golden eye, %b
+the figure taking shape, its body birds %b
+and air, a shade they hadn't seen in many years.
+%p
 
 
 

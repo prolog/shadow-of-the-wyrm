@@ -51,7 +51,7 @@ uint CarryingCapacityCalculator::calculate_burdened_weight(CreaturePtr creature)
   {
     Statistic str = creature->get_strength();
     burdened_weight = 10 * str.get_current();
-    burdened_weight *= static_cast<uint>(calculate_weight_skill_multiplier(creature));
+    burdened_weight = static_cast<uint>(burdened_weight * calculate_weight_skill_multiplier(creature));
     burdened_weight *= 16; // convert from lbs to oz
   }
 
@@ -69,7 +69,7 @@ uint CarryingCapacityCalculator::calculate_strained_weight(CreaturePtr creature)
   {
     Statistic str = creature->get_strength();
     strained_weight = 15 * str.get_current();
-    strained_weight *= static_cast<uint>(calculate_weight_skill_multiplier(creature));
+    strained_weight = static_cast<uint>(strained_weight * calculate_weight_skill_multiplier(creature));
     strained_weight *= 16; // convert from lbs to oz
   }
 
@@ -87,7 +87,7 @@ uint CarryingCapacityCalculator::calculate_overburdened_weight(CreaturePtr creat
   {
     Statistic str = creature->get_strength();
     overburdened_weight = 20 * str.get_current();
-    overburdened_weight *= static_cast<uint>(calculate_weight_skill_multiplier(creature));
+    overburdened_weight = static_cast<uint>(overburdened_weight * calculate_weight_skill_multiplier(creature));
     overburdened_weight *= 16; // convert from lbs to oz
   }
 
