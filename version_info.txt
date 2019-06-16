@@ -3,6 +3,8 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
 - Moved Catara further up Telari.
 
+- Stanzas for "Tel and Floridel".
+
 - New items: amulet of the sea.
 
 - Bug fixes: 
