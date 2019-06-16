@@ -78,7 +78,7 @@ local function setup_armory(map_id)
 
   for row = 14, 16 do
     for col = 16, 25 do
-      generate_item(row, col, types, 1, 12, MIN_GEN_VALUE, RNG_range(1,5), map_id)
+      generate_item(row, col, types, 1, 8, MIN_GEN_VALUE, RNG_range(1,2), map_id)
     end
   end
 end

@@ -31154,6 +31154,26 @@
 				</Resistances>
 				<Evade>15</Evade>
 			</Amulet>
+			<Amulet id="amulet_of_the_sea">
+				<DescriptionSID>AMULET_OF_THE_SEA_SID</DescriptionSID>
+				<UsageDescriptionSID>AMULET_OF_THE_SEA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>AMULET_OF_THE_SEA_CODEX_SID</CodexDescriptionSID>
+				<Value>120</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>6</DangerLevel>
+				<Resistances>
+					<Cold>0.05</Cold>
+				</Resistances>
+				<Evade>5</Evade>
+				<StatusAilments>
+					<Status>_wb</Status>
+				</StatusAilments>
+			</Amulet>
 		</Amulets>
 		<Armours>
 			<Armour id="cap">

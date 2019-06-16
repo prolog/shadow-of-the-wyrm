@@ -1,5 +1,6 @@
 Me:
-- Make sure docs are up to date
+- Add water breathing to codex
+- Erandu/description issues
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
 - Random villages should include the race in the description prior to
@@ -227,3 +228,5 @@ hapro:
 - Auto pickup triggers when leaving a map on a tile you're leaving from.
   e.g. Drop an item on edge of town, leave town, item picked up.
 
+Rob Ayres
+- Aging attacks and potions of youth
