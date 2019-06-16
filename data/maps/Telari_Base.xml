@@ -58,6 +58,15 @@
 				</Coord>
 			</Placement>
 		</Creatures>
+		<Items>
+			<Placement>
+				<ID>catara</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>32</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits>
 		<Exit>

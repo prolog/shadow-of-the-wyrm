@@ -125,13 +125,6 @@
 		</Creatures>
 		<Items>
 			<Placement>
-				<ID>catara</ID>
-				<Coord>
-					<Row>6</Row>
-					<Col>9</Col>
-				</Coord>
-			</Placement>
-			<Placement>
 				<ID>calluna</ID>
 				<Coord>
 					<Row>6</Row>
