@@ -1,4 +1,5 @@
 Me:
+- Should drop out of hiding more often when attacking
 - Add water breathing to codex
 - Erandu/description issues
 - Shield punch!

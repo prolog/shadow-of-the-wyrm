@@ -11,6 +11,9 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
   - Some dead code was causing string substitution issues in the weapon
     synopsis message (Blue).
+
+  - There were issues with the carrying capacity calculations (Rob 
+    Ayres).
  
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
