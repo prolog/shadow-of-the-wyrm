@@ -14,6 +14,11 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
   - There were issues with the carrying capacity calculations (Rob 
     Ayres).
+
+  - It was possible to bypass all the available options at character
+    creation via the windows key, allowing for a raceless, classless,
+    skill-less, godless, water-breathing, flying glitch character
+    (Grond).
  
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
