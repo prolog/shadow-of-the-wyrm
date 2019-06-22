@@ -1,4 +1,7 @@
 Me:
+- Grond: windows key during character creation
+- Medicine: chance to avoid statuses in combat (+ update manual)
+- Wands should recharge far less
 - Should drop out of hiding more often when attacking
 - Add water breathing to codex
 - Erandu/description issues

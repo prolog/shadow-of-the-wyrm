@@ -8,16 +8,17 @@ using namespace std;
 MenuWrapper::MenuWrapper()
 {
   ScreenKeyboardCommandMap skcm;
+  auto internal_map = skcm.get_internal_map();
 
   // Automatically include the paging keyboard commands in the set -
   // these should be recognizable for all menus.
-  for (auto& map_pair : skcm.get_internal_map())
+  for (auto& map_pair : internal_map)
   {
     string cmd = map_pair.first;
 
     if (!cmd.empty())
     {
-      options.insert(String::to_int(cmd));
+      options.insert(cmd.at(0));
     }
   }
 }
