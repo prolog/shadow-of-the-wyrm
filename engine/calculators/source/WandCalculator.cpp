@@ -6,6 +6,7 @@ const int WandCalculator::FREE_CHARGE_SKILL_DIVISOR = 10;
 const int WandCalculator::DEFAULT_SPELL_CASTINGS_PER_CHARGE = 10;
 const int WandCalculator::MIN_SPELL_CASTINGS_PER_CHARGE = 2;
 const int WandCalculator::NUM_CHARGE_DIVISOR = 15;
+const int WandCalculator::WANDCRAFT_RECHARGE_DIVISOR = 33;
 
 // The evoker of a wand gets a damage bonus influenced largely by Wandcraft,
 // but also to a lesser extent by Willpower.
@@ -69,6 +70,31 @@ int WandCalculator::calc_num_charges(CreaturePtr creature)
 
     num_charges += (int_val / NUM_CHARGE_DIVISOR);
     num_charges += (wandcraft_val / NUM_CHARGE_DIVISOR);
+  }
+
+  return num_charges;
+}
+
+int WandCalculator::calc_max_recharge_charges(CreaturePtr creature, ItemStatus item_status)
+{
+  int num_charges = 0;
+
+  if (creature != nullptr)
+  {
+    switch (item_status)
+    {
+      case ItemStatus::ITEM_STATUS_BLESSED:
+        num_charges = 2;
+        break;
+      case ItemStatus::ITEM_STATUS_CURSED:
+      case ItemStatus::ITEM_STATUS_UNCURSED:
+      default:
+        num_charges = 1;
+        break;
+    }
+
+    int wandcraft_bonus = creature->get_skills().get_value(SkillType::SKILL_GENERAL_WANDCRAFT) / WANDCRAFT_RECHARGE_DIVISOR;
+    num_charges += wandcraft_bonus;
   }
 
   return num_charges;

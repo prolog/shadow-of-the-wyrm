@@ -1,10 +1,9 @@
 Me:
-- Grond: windows key during character creation
+- Creatures self-killing e.g. via stunning in Carcassia are not triggering
+  their death script.
 - Medicine: chance to avoid statuses in combat (+ update manual)
-- Wands should recharge far less
 - Should drop out of hiding more often when attacking
 - Add water breathing to codex
-- Erandu/description issues
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
 - Random villages should include the race in the description prior to

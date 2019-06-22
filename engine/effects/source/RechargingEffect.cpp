@@ -6,6 +6,7 @@
 #include "MessageManagerFactory.hpp"
 #include "RechargingEffect.hpp"
 #include "RNG.hpp"
+#include "WandCalculator.hpp"
 
 using namespace std;
 
@@ -90,8 +91,8 @@ bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, 
 
     if (wand)
     {
-      pair<int, int> charge_range = get_charges_range(item_status);
-      int additional_charges = RNG::range(charge_range.first, charge_range.second);
+      WandCalculator wc;
+      int additional_charges = RNG::range(1, wc.calc_max_recharge_charges(creature, item_status));
       Statistic num_charges = wand->get_charges();
 
       if (num_charges.get_current() == num_charges.get_base())
@@ -109,6 +110,9 @@ bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, 
         wand->set_charges(num_charges);
 
         add_recharge_message(creature, wand);
+
+        // Recharging wands trains wandcraft
+        creature->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_WANDCRAFT);
       }
 
       effect_identified = true;
@@ -143,30 +147,4 @@ void RechargingEffect::add_recharge_message(CreaturePtr creature, WandPtr wand)
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.add_new_message(EffectTextKeys::get_wand_recharge_message(wand_desc));
   manager.send();
-}
-
-// Get the (min,max) range for the random number of charges, based on the
-// item status.
-pair<int, int> RechargingEffect::get_charges_range(const ItemStatus item_status)
-{
-  pair<int, int> charge_range;
-
-  switch(item_status)
-  {
-    case ItemStatus::ITEM_STATUS_CURSED:
-      charge_range.first = 1;
-      charge_range.second = 2;
-      break;
-    case ItemStatus::ITEM_STATUS_UNCURSED:
-      charge_range.first = 1;
-      charge_range.second = 4;
-      break;
-    case ItemStatus::ITEM_STATUS_BLESSED:
-      charge_range.first = 2;
-      charge_range.second = 5;
-    default:
-      break;
-  }
-
-  return charge_range;
 }
