@@ -74,5 +74,23 @@ TEST(SW_Engine_Calculators_WandCalculator, num_charges)
   creature->get_skills().set_value(SkillType::SKILL_GENERAL_WANDCRAFT, 100);
 
   EXPECT_EQ(10, wc.calc_num_charges(creature));
+}
 
+TEST(SW_Engine_Calculators_WandCalculator, calc_max_recharge_charges)
+{
+  WandCalculator wc;
+  CreaturePtr creature = std::make_shared<Creature>();
+  std::vector<std::pair<ItemStatus, int>> status_base_charges = { {ItemStatus::ITEM_STATUS_CURSED, 1}, {ItemStatus::ITEM_STATUS_UNCURSED, 1}, {ItemStatus::ITEM_STATUS_BLESSED, 2} };
+
+  for (const auto& sbase : status_base_charges)
+  {
+    for (int i = 1; i <= 3; i++)
+    {
+      int wandcraft_val = i * 33;
+      creature->get_skills().set_value(SkillType::SKILL_GENERAL_WANDCRAFT, wandcraft_val);
+      int exp_val = sbase.second + i;
+
+      EXPECT_EQ(exp_val, wc.calc_max_recharge_charges(creature, sbase.first));
+    }
+  }
 }

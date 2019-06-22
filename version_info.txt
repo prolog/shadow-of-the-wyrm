@@ -1,6 +1,9 @@
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.
 
+- Recharging a wand now gives a very small number of charges, with extra
+  charges possible from high Wandcraft skill.
+
 - Moved Catara further up Telari.
 
 - Stanzas for "Tel and Floridel".

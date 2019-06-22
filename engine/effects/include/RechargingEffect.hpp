@@ -19,8 +19,6 @@ class RechargingEffect : public Effect
     virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
     virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
 
-    virtual std::pair<int, int> get_charges_range(const ItemStatus item_status);
-
     void add_player_no_wands_message();
     void add_recharge_message(std::shared_ptr<Creature> creature, WandPtr wand);
     void add_recharge_already_full_message(std::shared_ptr<Creature> creature, WandPtr wand);

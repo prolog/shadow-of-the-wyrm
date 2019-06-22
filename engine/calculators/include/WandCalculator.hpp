@@ -9,6 +9,8 @@ class WandCalculator
     int calc_spell_castings_per_charge(CreaturePtr creature);
     int calc_num_charges(CreaturePtr creature);
 
+    int calc_max_recharge_charges(CreaturePtr creature, const ItemStatus recharge_status);
+
   protected:
     static const int DAMAGE_BONUS_STAT_DIVISOR;
     static const int DAMAGE_BONUS_SKILL_DIVISOR;
@@ -16,5 +18,6 @@ class WandCalculator
     static const int DEFAULT_SPELL_CASTINGS_PER_CHARGE;
     static const int MIN_SPELL_CASTINGS_PER_CHARGE;
     static const int NUM_CHARGE_DIVISOR;
+    static const int WANDCRAFT_RECHARGE_DIVISOR;
 };
 
