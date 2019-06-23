@@ -27,7 +27,9 @@ Shadow of the Wyrm v1.1.1 "Campion"
     creation via the windows key, allowing for a raceless, classless,
     skill-less, godless, water-breathing, flying glitch character
     (Grond).
- 
+
+  - A number of items weren't properly classified as plants/herbs. 
+
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 
