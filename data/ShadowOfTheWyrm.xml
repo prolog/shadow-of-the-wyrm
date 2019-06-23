@@ -36508,26 +36508,6 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
-			<Food id="_root">
-				<DescriptionSID>ROOT_SID</DescriptionSID>
-				<UsageDescriptionSID>ROOT_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>ROOT_CODEX_SID</CodexDescriptionSID>
-				<Value>0</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>4</Ounces>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
-					<Colour>3</Colour>
-				</TextDetails>
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>200</Nutrition>
-				<FoodType>0</FoodType>
-			</Food>
 			<Food id="_berries">
 				<DescriptionSID>BERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>BERRIES_USAGE_SID</UsageDescriptionSID>
@@ -36547,130 +36527,6 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>110</Nutrition>
 				<FoodType>0</FoodType>
-			</Food>
-			<Food id="_kelp">
-				<DescriptionSID>KELP_SID</DescriptionSID>
-				<UsageDescriptionSID>KELP_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>KELP_CODEX_SID</CodexDescriptionSID>
-				<Value>0</Value>
-				<Weight>
-					<Pounds>1</Pounds>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
-					<Colour>2</Colour>
-				</TextDetails>
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>205</Nutrition>
-				<FoodType>0</FoodType>
-			</Food>
-			<Food id="_blackroot">
-				<DescriptionSID>BLACKROOT_SID</DescriptionSID>
-				<UsageDescriptionSID>BLACKROOT_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>BLACKROOT_CODEX_SID</CodexDescriptionSID>
-				<Value>10</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>6</Ounces>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
-					<Colour>7</Colour>
-				</TextDetails>
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>200</Nutrition>
-				<FoodType>0</FoodType>
-				<Effect>1</Effect>
-			</Food>
-			<Food id="_verbena">
-				<DescriptionSID>VERBENA_SID</DescriptionSID>
-				<UsageDescriptionSID>VERBENA_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>VERBENA_CODEX_SID</CodexDescriptionSID>
-				<Value>15</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>1</Ounces>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
-					<Colour>5</Colour>
-				</TextDetails>
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>30</Nutrition>
-				<FoodType>0</FoodType>
-				<Effect>3</Effect>
-			</Food>
-			<Food id="_white_basil">
-				<DescriptionSID>WHITE_BASIL_SID</DescriptionSID>
-				<UsageDescriptionSID>WHITE_BASIL_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>WHITE_BASIL_CODEX_SID</CodexDescriptionSID>
-				<Value>17</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>1</Ounces>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
-					<Colour>15</Colour>
-				</TextDetails>
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>60</Nutrition>
-				<FoodType>0</FoodType>
-				<Effect>6</Effect>
-			</Food>
-			<Food id="_stoneflower">
-				<DescriptionSID>STONEFLOWER_SID</DescriptionSID>
-				<UsageDescriptionSID>STONEFLOWER_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>STONEFLOWER_CODEX_SID</CodexDescriptionSID>
-				<Value>19</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>1</Ounces>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
-					<Colour>8</Colour>
-				</TextDetails>
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>40</Nutrition>
-				<FoodType>0</FoodType>
-				<Effect>9</Effect>
-			</Food>
-			<Food id="_voxflower">
-				<DescriptionSID>VOXFLOWER_SID</DescriptionSID>
-				<UsageDescriptionSID>VOXFLOWER_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>VOXFLOWER_CODEX_SID</CodexDescriptionSID>
-				<Value>4</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>1</Ounces>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
-					<Colour>12</Colour>
-				</TextDetails>
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>40</Nutrition>
-				<FoodType>0</FoodType>
-				<Effect>7</Effect>
 			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>
@@ -37230,6 +37086,150 @@
 			</Food>
 		</Foodstuffs>
 		<Plants>
+			<Plant id="_root">
+				<DescriptionSID>ROOT_SID</DescriptionSID>
+				<UsageDescriptionSID>ROOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ROOT_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>200</Nutrition>
+				<FoodType>0</FoodType>
+			</Plant>
+			<Plant id="_kelp">
+				<DescriptionSID>KELP_SID</DescriptionSID>
+				<UsageDescriptionSID>KELP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>KELP_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>2</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>205</Nutrition>
+				<FoodType>0</FoodType>
+			</Plant>
+			<Plant id="_blackroot">
+				<DescriptionSID>BLACKROOT_SID</DescriptionSID>
+				<UsageDescriptionSID>BLACKROOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BLACKROOT_CODEX_SID</CodexDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>6</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>200</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>1</Effect>
+			</Plant>
+			<Plant id="_verbena">
+				<DescriptionSID>VERBENA_SID</DescriptionSID>
+				<UsageDescriptionSID>VERBENA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VERBENA_CODEX_SID</CodexDescriptionSID>
+				<Value>15</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>5</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>30</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>3</Effect>
+			</Plant>
+			<Plant id="_white_basil">
+				<DescriptionSID>WHITE_BASIL_SID</DescriptionSID>
+				<UsageDescriptionSID>WHITE_BASIL_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WHITE_BASIL_CODEX_SID</CodexDescriptionSID>
+				<Value>17</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>60</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>6</Effect>
+			</Plant>
+			<Plant id="_stoneflower">
+				<DescriptionSID>STONEFLOWER_SID</DescriptionSID>
+				<UsageDescriptionSID>STONEFLOWER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STONEFLOWER_CODEX_SID</CodexDescriptionSID>
+				<Value>19</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>40</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>9</Effect>
+			</Plant>
+			<Plant id="_voxflower">
+				<DescriptionSID>VOXFLOWER_SID</DescriptionSID>
+				<UsageDescriptionSID>VOXFLOWER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>VOXFLOWER_CODEX_SID</CodexDescriptionSID>
+				<Value>4</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>12</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>40</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>7</Effect>
+			</Plant>
 			<Plant id="_wildflower_1">
 				<DescriptionSID>WILDFLOWER1_SID</DescriptionSID>
 				<UsageDescriptionSID>WILDFLOWER1_USAGE_SID</UsageDescriptionSID>
