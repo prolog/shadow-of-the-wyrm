@@ -98,11 +98,14 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const int displa
   list<IItemFilterPtr> it_filter;
   list<ItemType> it_list;
 
-  DisplayItemTypePtr dit = DisplayItemTypeFactory::create(display_symbol);
+  vector<DisplayItemTypePtr> dit_v = DisplayItemTypeFactory::create(display_symbol);
 
-  if (dit != nullptr)
+  for (DisplayItemTypePtr dit : dit_v)
   {
-    it_list.push_back(dit->get_item_type());
+    if (dit != nullptr)
+    {
+      it_list.push_back(dit->get_item_type());
+    }
   }
 
   it_filter = create_item_type_filter(it_list);
