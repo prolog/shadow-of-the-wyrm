@@ -154,6 +154,7 @@ double ActionCostConverter::to_seconds_on_submap(const ActionCostValue action_co
 }
 
 // Convert raw hunger values to general levels
+const int HungerLevelConverter::INT_HUNGER_LEVEL_COMPLETELY_FULL = 16000;
 const int HungerLevelConverter::INT_HUNGER_LEVEL_STUFFED = 10000;
 const int HungerLevelConverter::INT_HUNGER_LEVEL_FULL = 7500;
 const int HungerLevelConverter::INT_HUNGER_LEVEL_NORMAL = 4000;

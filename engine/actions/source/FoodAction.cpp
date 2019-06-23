@@ -124,8 +124,9 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
 
     // Is the character full?  If not, eat the food.
     HungerClock& hunger = creature->get_hunger_clock_ref();
+    int nutrition = item_as_consumable->get_nutrition();
 
-    if (!hunger.is_stuffed())
+    if (hunger.can_eat(nutrition))
     {
       // First add the message about eating the food, because eating can in
       // turn generate other messages (if the food is poisoned, or the creature

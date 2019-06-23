@@ -1,4 +1,7 @@
 Me:
+- Go through all the herbs, ensure they're generating as herbs and not
+  comestibles.
+- Ancient beasts generating in wells!
 - Creatures self-killing e.g. via stunning in Carcassia are not triggering
   their death script.
 - Medicine: chance to avoid statuses in combat (+ update manual)
