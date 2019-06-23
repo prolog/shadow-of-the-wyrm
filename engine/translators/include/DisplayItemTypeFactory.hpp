@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <vector>
 #include "DisplayItemType.hpp"
 #include "ItemTypes.hpp"
 
@@ -110,7 +111,7 @@ class DisplayItemTypeFactory
 {
   public:
     static DisplayItemTypePtr create(const ItemType item_type);
-    static DisplayItemTypePtr create(const int item_symbol);
+    static std::vector<DisplayItemTypePtr> create(const int item_symbol);
 
   protected:
     DisplayItemTypeFactory();

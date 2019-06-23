@@ -155,23 +155,28 @@ void DisplayItemTypeFactory::initialize_map()
   display_map.insert(make_pair(ItemType::ITEM_TYPE_TOOL, di));
 }
 
-DisplayItemTypePtr DisplayItemTypeFactory::create(const int item_symbol)
+vector<DisplayItemTypePtr> DisplayItemTypeFactory::create(const int item_symbol)
 {
-  DisplayItemTypePtr display_item_type = std::make_shared<DefaultDisplayItemType>();
+  vector<DisplayItemTypePtr> dit_v;
 
   if (display_map.empty())
   {
     initialize_map();
   }
 
-  auto iter = find_if(display_map.begin(), display_map.end(), [item_symbol] (pair<ItemType, DisplayItemTypePtr> iter) {return iter.second->get_symbol().at(0) == item_symbol;});
-  
-  if (iter != display_map.end())
+  for (auto d_it : display_map)
   {
-    display_item_type = iter->second;
+    DisplayItemTypePtr dit = d_it.second;
+
+    if (dit != nullptr && dit->get_symbol().at(0) == item_symbol)
+    {
+      dit_v.push_back(dit);
+    }
   }
 
-  return display_item_type;
+  auto iter = find_if(display_map.begin(), display_map.end(), [item_symbol] (pair<ItemType, DisplayItemTypePtr> iter) {return iter.second->get_symbol().at(0) == item_symbol;});
+
+  return dit_v;
 }
 
 DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
