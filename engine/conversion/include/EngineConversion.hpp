@@ -48,6 +48,7 @@ class HungerLevelConverter
   public:
     static HungerLevel to_hunger_level(const int raw_hunger_value);
 
+    static const int INT_HUNGER_LEVEL_COMPLETELY_FULL;
     static const int INT_HUNGER_LEVEL_STUFFED;
     static const int INT_HUNGER_LEVEL_FULL;
     static const int INT_HUNGER_LEVEL_NORMAL;

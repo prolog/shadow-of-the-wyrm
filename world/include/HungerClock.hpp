@@ -15,6 +15,7 @@ class HungerClock : public ISerializable
     // or "Starving!"
     // std::string get_hunger_level_description() const;
 
+    bool can_eat(const int nutr) const;
     bool is_stuffed() const;
     bool is_full() const;
     bool is_normal() const;

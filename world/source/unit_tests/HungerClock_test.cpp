@@ -80,6 +80,27 @@ TEST(SW_World_HungerClock, hunger_levels)
   EXPECT_TRUE(hc.is_normal_or_worse());
 }
 
+TEST(SW_World_HungerClock, can_eat)
+{
+  // When stuffed, can only eat an amount that'll be under the huner clock.
+  HungerClock hc;
+  hc.set_hunger(16000);
+  EXPECT_FALSE(hc.can_eat(0));
+  EXPECT_FALSE(hc.can_eat(500));
+
+  hc.set_hunger(15400);
+  EXPECT_TRUE(hc.can_eat(0));
+  EXPECT_TRUE(hc.can_eat(500));
+  EXPECT_FALSE(hc.can_eat(700));
+
+  // When not stuffed, can always eat.
+  hc.set_hunger(HungerLevelConverter::INT_HUNGER_LEVEL_NORMAL);
+  EXPECT_TRUE(hc.can_eat(0));
+  EXPECT_TRUE(hc.can_eat(750));
+  EXPECT_TRUE(hc.can_eat(10000));
+
+}
+
 TEST(SW_World_HungerClock, serialization_id)
 {
   HungerClock hc;

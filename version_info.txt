@@ -4,6 +4,11 @@ Shadow of the Wyrm v1.1.1 "Campion"
 - Recharging a wand now gives a very small number of charges, with extra
   charges possible from high Wandcraft skill.
 
+- When checking to see whether the player can eat something, the check
+  is now vs. the internal numerical hunger level, and not the more
+  general hungry/stuffed/etc.  This will allow you to eat food while
+  stuffed as long as it doesn't take you over the maximum satiation.
+
 - Moved Catara further up Telari.
 
 - Stanzas for "Tel and Floridel".
