@@ -34,6 +34,9 @@ Shadow of the Wyrm v1.1.1 "Campion"
     ('#') because the code was only returning the first matching item 
     type.
 
+  - When pit opponents killed themselves (e.g. via stunning), the
+    player wasn't being teleported out of the arena (Grond).
+
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 
