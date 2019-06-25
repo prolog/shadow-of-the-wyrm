@@ -1,7 +1,7 @@
 Me:
+- Investigate MapCreatureGenerator:84  Is "if max > min" what I want?
 - Ancient beasts generating in wells!
-- Creatures self-killing e.g. via stunning in Carcassia are not triggering
-  their death script.
+- Ancient beasts not generating deep in ID
 - Medicine: chance to avoid statuses in combat (+ update manual)
 - Should drop out of hiding more often when attacking
 - Add water breathing to codex
