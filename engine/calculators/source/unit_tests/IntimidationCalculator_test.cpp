@@ -25,4 +25,18 @@ TEST(SW_Engine_Calculators_IntimidationCalculator, calculate_pct_chance_intimida
 
   // Ensure the basic opposed calculation works.
   EXPECT_EQ(25, ic.calculate_pct_chance_intimidated(attacking_creature, attacked_creature));
+
+  // Ensure the level part works.
+  Statistic attacking_level(20);
+  Statistic attacked_level(40);
+
+  attacking_creature->set_level(attacking_level);
+  attacked_creature->set_level(attacked_level);
+
+  EXPECT_EQ(35, ic.calculate_pct_chance_intimidated(attacking_creature, attacked_creature));
+
+  attacking_creature->set_level(attacked_level);
+  attacked_creature->set_level(attacking_level);
+
+  EXPECT_EQ(15, ic.calculate_pct_chance_intimidated(attacking_creature, attacked_creature));
 }

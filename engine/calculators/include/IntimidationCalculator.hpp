@@ -10,4 +10,5 @@ class IntimidationCalculator
     static const int MAX_PCT_CHANCE_INTIMIDATION;
     static const int INTIMIDATION_DIVISOR;
     static const int CHARISMA_DIVISOR;
+    static const int LEVEL_DIVISOR;
 };
