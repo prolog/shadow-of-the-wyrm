@@ -1,5 +1,6 @@
 Me:
 - Investigate MapCreatureGenerator:84  Is "if max > min" what I want?
+- Be able to pet hounds/nether hounds/hellhounds
 - Ancient beasts generating in wells!
 - Ancient beasts not generating deep in ID
 - Medicine: chance to avoid statuses in combat (+ update manual)

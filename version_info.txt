@@ -11,6 +11,11 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
 - Moved Catara further up Telari.
 
+- Intimidation now also considers opposed creature levels in its
+  calculation (Nules).
+
+- The chance to automatically score a hit has increased to 5% (was 2%).
+
 - Stanzas for "Tel and Floridel".
 
 - New items: amulet of the sea.
