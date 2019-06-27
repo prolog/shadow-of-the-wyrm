@@ -5,6 +5,7 @@
 using namespace std;
 
 const int HidingCalculator::MAX_DISTANCE_FOR_PENALTY = 10;
+const int HidingCalculator::MAX_PCT_CHANCE_HIDE_CREATURES_PRESENT = 80;
 
 int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map, const TimeOfDayType tod) const
 {
@@ -30,6 +31,8 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
       pct_chance_hide += creature->get_skills().get_value(SkillType::SKILL_GENERAL_HIDING);
       pct_chance_hide += tod_modifier;
       pct_chance_hide += get_viewing_creatures_modifier(creature, map, creature_ids);
+
+      pct_chance_hide = std::min<int>(pct_chance_hide, MAX_PCT_CHANCE_HIDE_CREATURES_PRESENT);
     }
 
     // Ensure the value is between 1 and 100.
@@ -110,7 +113,7 @@ int HidingCalculator::get_viewing_creatures_modifier(CreaturePtr creature, MapPt
 // several creatures close by.
 int HidingCalculator::get_distance_modifier(const int dist) const
 {
-  int d_mod = 60 - (6 * dist);
+  int d_mod = 60 - (5 * dist);
   return d_mod;
 }
 

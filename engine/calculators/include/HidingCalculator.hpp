@@ -14,5 +14,6 @@ class HidingCalculator
     int get_distance_modifier(const int dist) const;
 
     static const int MAX_DISTANCE_FOR_PENALTY;
+    static const int MAX_PCT_CHANCE_HIDE_CREATURES_PRESENT;
 };
 

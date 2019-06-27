@@ -16,6 +16,8 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
 - The chance to automatically score a hit has increased to 5% (was 2%).
 
+- Reduced the maximum chance to hide when there are creatures nearby.
+
 - Stanzas for "Tel and Floridel".
 
 - New items: amulet of the sea.
