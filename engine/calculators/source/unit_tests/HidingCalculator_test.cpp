@@ -5,7 +5,6 @@ TEST(SW_Engine_Calculators_HidingCalculator, calculate_pct_chance_hide)
 {
   HidingCalculator hc;
   CreaturePtr creature;
-  CreaturePtr viewing_creature;
   MapPtr map;
 
   EXPECT_EQ(0, hc.calculate_pct_chance_hide(creature, map, TimeOfDayType::TIME_OF_DAY_UNDEFINED));

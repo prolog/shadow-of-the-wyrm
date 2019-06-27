@@ -1,4 +1,7 @@
 Me:
+- MovementAction::check_movement_stealth - not dropping out of stealth?
+- Should drop out of stealth when attacking
+- Stealth check should have a diff max when creatures present
 - Investigate MapCreatureGenerator:84  Is "if max > min" what I want?
 - Be able to pet hounds/nether hounds/hellhounds
 - Ancient beasts generating in wells!
@@ -235,5 +238,13 @@ hapro:
 
 Rob Ayres
 - Aging attacks and potions of youth
-- Issues with carrying.  It's just Str * 10 after levelling, regardless
-  of the Carrying score.
+
+Grond:
+- drop out of hiding infrequently when monsters in LOS
+- it also seems like you drop out of hiding less after you have been 
+  hiding for a while if I hide and then immediately exit to the wilderness 
+  map, I drop out of hiding every time if I wander around for a while 
+  first, I can keep the status on the wilderness map and then just staying 
+  on one map, it seems like it either lasts for 1-5 turns, or forever
+  this is with 100 Stealth btw
+
