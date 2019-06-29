@@ -248,3 +248,11 @@ Grond:
   on one map, it seems like it either lasts for 1-5 turns, or forever
   this is with 100 Stealth btw
 
+Yan Zhang:
+- Dungeon symbol should generate that thing on the last level
+- Do something interesting with flowers!
+- Climb up Telari: more NPCs, disallow backing out?
+- Sun Gem: ploughman should teach herbalism
+- Bless should cost more AP, allow selection from eq
+- Door in the south of the air of the keep
+- Health approximation
