@@ -52,7 +52,11 @@ void WorldTimeObserver::redraw_and_update_time_of_day(const TimeOfDayType tod)
     {
       // Force a display update.
       CreaturePtr player = game.get_current_player();
-      game.update_display(player, game.get_current_map(), player->get_decision_strategy()->get_fov_map(), true);
+
+      if (player != nullptr)
+      {
+        game.update_display(player, game.get_current_map(), player->get_decision_strategy()->get_fov_map(), true);
+      }
 
       // Show a message about the time change.
       string time_sid = t_it->second;

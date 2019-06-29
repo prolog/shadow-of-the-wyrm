@@ -44,6 +44,11 @@ Shadow of the Wyrm v1.1.1 "Campion"
   - When pit opponents killed themselves (e.g. via stunning), the
     player wasn't being teleported out of the arena (Grond).
 
+  - There were some inconsistencies in quest descriptions (Yan Zhang).
+
+  - Removed a door in the middle of the air in the tower at Wintersea
+    (Yan Zhang).
+
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 
