@@ -20,4 +20,6 @@ class CreatureGenerationManager
     
   protected:
     bool does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const std::string& required_race, const std::vector<std::string>& generator_filters, const std::vector<std::string>& preset_creature_ids);
+
+    static const int ANCIENT_BEASTS_MIN_DANGER_LEVEL;
 };

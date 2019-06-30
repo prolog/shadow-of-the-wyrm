@@ -2799,3 +2799,13 @@ his lake-wet braids.  And as they each relaxed, %b
 as each was touched by him, the brothers knew %b
 he'd tell them one last time just what they'd have to do.
 %p
+Their father turned to Phole, who in his cloak %b
+stained grey-black by the lake looked half a shade %b
+himself.  The spirit's voice was steel.  "Evoke %b
+your magics for me.  Show me how you made %b
+the fire you summoned when you were a child." %b
+So Phole relaxed.  He spoke the words, and named %b
+those childhood magics.  Nothing came.  He tried %b
+again, but it was as if his mind went lame, %b
+preventing him from conjuring a simple flame.
+%p

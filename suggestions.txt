@@ -4,8 +4,7 @@ Me:
 - Stealth check should have a diff max when creatures present
 - Investigate MapCreatureGenerator:84  Is "if max > min" what I want?
 - Be able to pet hounds/nether hounds/hellhounds
-- Ancient beasts generating in wells!
-- Ancient beasts not generating deep in ID
+- Ancient beasts not generating deep in ID? (Grond)
 - Medicine: chance to avoid statuses in combat (+ update manual)
 - Should drop out of hiding more often when attacking
 - Add water breathing to codex
