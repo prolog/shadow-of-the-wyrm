@@ -49,6 +49,9 @@ Shadow of the Wyrm v1.1.1 "Campion"
   - Removed a door in the middle of the air in the tower at Wintersea
     (Yan Zhang).
 
+  - Ancient beasts' generation wasn't considering depth, so they were
+    being found far too early, in places such as wells in towns.
+
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 
