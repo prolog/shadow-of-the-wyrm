@@ -1,6 +1,7 @@
 #include "CombatConstants.hpp"
 #include "ToHitCalculatorFactory.hpp"
 #include "WeaponDifficultyCalculator.hpp"
+#include "WeaponManager.hpp"
 
 using std::dynamic_pointer_cast;
 
@@ -16,12 +17,17 @@ int WeaponDifficultyCalculator::calculate_base_difficulty(CreaturePtr creature, 
 
   if (creature)
   {
+    WeaponManager wm;
     primary_weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED));
     secondary_weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
 
     switch(attack_type)
     {
       case AttackType::ATTACK_TYPE_RANGED:
+      {
+        difficulty = get_difficulty_for_weapon(wm.get_weapon(creature, attack_type));
+        break;
+      }
       case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
         difficulty = get_difficulty_for_weapon(primary_weapon);
         break;

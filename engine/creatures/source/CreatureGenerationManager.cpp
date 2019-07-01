@@ -89,11 +89,13 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
   return generation_map;
 }
 
-CreatureGenerationMap CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const TileType map_terrain_type)
+CreatureGenerationMap CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const MapType map_type, const TileType map_terrain_type)
 {
   CreatureGenerationMap cgm;
 
-  if (danger_level >= ANCIENT_BEASTS_MIN_DANGER_LEVEL)
+  // Ancient beasts only ever appear underground, in dungeons, sewers, caverns,
+  // etc.
+  if (map_type == MapType::MAP_TYPE_UNDERWORLD && danger_level >= ANCIENT_BEASTS_MIN_DANGER_LEVEL)
   {
     for (int i = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); i < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); i++)
     {

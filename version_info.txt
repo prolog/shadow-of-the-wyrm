@@ -50,7 +50,12 @@ Shadow of the Wyrm v1.1.1 "Campion"
     (Yan Zhang).
 
   - Ancient beasts' generation wasn't considering depth, so they were
-    being found far too early, in places such as wells in towns.
+    being found far too early, in places such as wells in towns.  They
+    were also being generated in places other than underworld maps,
+    which was not intended (Grond).
+
+  - Ranged weapon attack difficulty calculations were incorrectly
+    using the values from a creature's melee weapons.
 
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.

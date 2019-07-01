@@ -103,7 +103,8 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
   if (generation_map.empty())
   {
-    generation_map = cgm.generate_ancient_beasts(max_danger_level, map_terrain_type);
+    MapType map_type = map->get_map_type();
+    generation_map = cgm.generate_ancient_beasts(max_danger_level, map_type, map_terrain_type);
   }
 
   IMessageManager& manager = MM::instance();
