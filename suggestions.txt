@@ -1,4 +1,5 @@
 Me:
+- Difficulty for ranged attack is coming off melee weapons
 - MovementAction::check_movement_stealth - not dropping out of stealth?
 - Should drop out of stealth when attacking
 - Stealth check should have a diff max when creatures present
