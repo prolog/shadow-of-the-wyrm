@@ -8558,5 +8558,8 @@
     <ClCompile Include="engine\description\codex\source\WandCodexDescriber.cpp">
       <Filter>Source Files\engine\description\codex\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WeaponDifficultyCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
