@@ -145,3 +145,7 @@ Weight WeaponDifficultyCalculator::get_max_unpenalized_weapon_weight(CreaturePtr
 
   return max_weight;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/WeaponDifficultyCalculator_test.cpp"
+#endif

@@ -1,5 +1,11 @@
 Me:
-- Difficulty for ranged attack is coming off melee weapons
+- Grond: whisperwind/taro wraith?
+- Grond: Snakeling Warrior starts with long spear/buckler (spear is 2h)
+- Grond: check boundaries of Isen Dun shop, the 4 squares to the right
+  of the shop appear to be in its boundaries.
+- Grond: lower part of Car A1, far east, exit NE, exits city
+- Grond: bowyer should be better, esp at higher levels
+- More unit tests for WeaponDifficultyCalculator
 - MovementAction::check_movement_stealth - not dropping out of stealth?
 - Should drop out of stealth when attacking
 - Stealth check should have a diff max when creatures present
