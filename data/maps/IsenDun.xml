@@ -542,7 +542,7 @@
 			</StartCoord>
 			<EndCoord>
 				<Row>15</Row>
-				<Col>31</Col>
+				<Col>30</Col>
 			</EndCoord>
 			<StockedItemTypes>
 				<ItemType>1</ItemType>

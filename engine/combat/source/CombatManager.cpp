@@ -373,8 +373,16 @@ bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature,
     // Rotate the elements, using the attacked creature's coordinate as the
     // pivot.  Remove the attacked creature's coordinates from the scything
     // list so that it's not attacked twice.
-    std::rotate(scythe_coords.begin(), std::find(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord), scythe_coords.end());
-    scythe_coords.erase(std::remove(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord));
+    if (!scythe_coords.empty())
+    {
+      std::rotate(scythe_coords.begin(), std::find(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord), scythe_coords.end());
+      auto sc_it = std::find(scythe_coords.begin(), scythe_coords.end(), attacked_creature_coord);
+
+      if (sc_it != scythe_coords.end())
+      {
+        scythe_coords.erase(sc_it);
+      }
+    }
     
     bool message_shown = false;
     ScythingCalculator sc;
