@@ -57,6 +57,17 @@ Shadow of the Wyrm v1.1.1 "Campion"
   - Ranged weapon attack difficulty calculations were incorrectly
     using the values from a creature's melee weapons.
 
+  - Snakeling warriors started with both a long spear and a buckler,
+    despite long spears being 2H.  Snakeling warriors now start with a
+    spear (Grond).
+
+  - The definition of the shop in Isen Dun was too wide, triggering the
+    message about leaving with unpaid merchandise in unexpected places
+    (Grond).
+
+  - Scything was buggy and could lead to crashes in certain situations
+    (Grond).
+
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 
