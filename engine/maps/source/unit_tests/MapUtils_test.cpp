@@ -183,3 +183,47 @@ TEST(SW_Engine_Maps_MapUtils, is_coordinate_within_player_restricted_zone)
 
   EXPECT_FALSE(MapUtils::is_coordinate_within_player_restricted_zone(map, c));
 }
+
+TEST(SW_Engine_Maps_MapUtils, get_map_exit_direction)
+{
+  Dimensions dim;
+
+  // NW corner
+  Coordinate c = { 0,0 };
+  EXPECT_EQ(Direction::DIRECTION_NORTH_WEST, MapUtils::get_exit_direction(Direction::DIRECTION_NORTH_WEST, dim, c));
+
+  // NE corner
+  c = { 0, 79 };
+  EXPECT_EQ(Direction::DIRECTION_NORTH_EAST, MapUtils::get_exit_direction(Direction::DIRECTION_NORTH_EAST, dim, c));
+
+  // SW corner
+  c = { 19,0 };
+  EXPECT_EQ(Direction::DIRECTION_SOUTH_WEST, MapUtils::get_exit_direction(Direction::DIRECTION_SOUTH_WEST, dim, c));
+
+  // SE corner
+  c = { 19,79 };
+  EXPECT_EQ(Direction::DIRECTION_SOUTH_EAST, MapUtils::get_exit_direction(Direction::DIRECTION_SOUTH_EAST, dim, c));
+
+  // Other cases
+  c = { 0,5 };
+  EXPECT_EQ(Direction::DIRECTION_NORTH, MapUtils::get_exit_direction(Direction::DIRECTION_NORTH, dim, c));
+  EXPECT_EQ(Direction::DIRECTION_NORTH, MapUtils::get_exit_direction(Direction::DIRECTION_NORTH_WEST, dim, c));
+  EXPECT_EQ(Direction::DIRECTION_NORTH, MapUtils::get_exit_direction(Direction::DIRECTION_NORTH_EAST, dim, c));
+  
+  c = { 5, 0 };
+  EXPECT_EQ(Direction::DIRECTION_WEST, MapUtils::get_exit_direction(Direction::DIRECTION_WEST, dim, c));
+  EXPECT_EQ(Direction::DIRECTION_WEST, MapUtils::get_exit_direction(Direction::DIRECTION_NORTH_WEST, dim, c));
+  EXPECT_EQ(Direction::DIRECTION_WEST, MapUtils::get_exit_direction(Direction::DIRECTION_SOUTH_WEST, dim, c));
+
+  c = { 5, 79 };
+
+  EXPECT_EQ(Direction::DIRECTION_EAST, MapUtils::get_exit_direction(Direction::DIRECTION_EAST, dim, c));
+  EXPECT_EQ(Direction::DIRECTION_EAST, MapUtils::get_exit_direction(Direction::DIRECTION_NORTH_EAST, dim, c));
+  EXPECT_EQ(Direction::DIRECTION_EAST, MapUtils::get_exit_direction(Direction::DIRECTION_SOUTH_EAST, dim, c));
+  
+  c = { 19, 5 };
+
+  EXPECT_EQ(Direction::DIRECTION_SOUTH, MapUtils::get_exit_direction(Direction::DIRECTION_SOUTH, dim, c));
+  EXPECT_EQ(Direction::DIRECTION_SOUTH, MapUtils::get_exit_direction(Direction::DIRECTION_SOUTH_WEST, dim, c));
+  EXPECT_EQ(Direction::DIRECTION_SOUTH, MapUtils::get_exit_direction(Direction::DIRECTION_SOUTH_EAST, dim, c));
+}

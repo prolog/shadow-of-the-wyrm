@@ -31,6 +31,9 @@ class CombatManager
     void handle_damage_effects(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level);
 
   protected:
+    // Is the creature still hidden after applying damage?
+    void handle_attacker_hidden_after_damage(CreaturePtr creature);
+
     // Apply a particular status effect.
     void apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus, const int danger_level);
 

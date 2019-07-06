@@ -467,23 +467,23 @@ TilePtr Map::get_tile_at_location(const string& location)
 // boundary tiles.
 void Map::set_map_exit(MapExitPtr new_map_exit)
 {
-  map_exits[CardinalDirection::CARDINAL_DIRECTION_NULL] = new_map_exit;
+  map_exits[Direction::DIRECTION_NULL] = new_map_exit;
 }
 
-void Map::set_map_exit(const CardinalDirection cd, MapExitPtr new_map_exit)
+void Map::set_map_exit(const Direction d, MapExitPtr new_map_exit)
 {
-  map_exits[cd] = new_map_exit;
+  map_exits[d] = new_map_exit;
 }
 
-map<CardinalDirection, MapExitPtr> Map::get_map_exits() const
+map<Direction, MapExitPtr> Map::get_map_exits() const
 {
   return map_exits;
 }
 
-MapExitPtr Map::get_map_exit(const CardinalDirection cd) const
+MapExitPtr Map::get_map_exit(const Direction d) const
 {
   MapExitPtr map_exit;
-  auto m_it = map_exits.find(cd);
+  auto m_it = map_exits.find(d);
 
   if (m_it != map_exits.end())
   {
@@ -495,7 +495,7 @@ MapExitPtr Map::get_map_exit(const CardinalDirection cd) const
 
 MapExitPtr Map::get_map_exit() const
 {
-  return get_map_exit(CardinalDirection::CARDINAL_DIRECTION_NULL);
+  return get_map_exit(Direction::DIRECTION_NULL);
 }
 
 // Set/get the map's identifier, which is also used as its key in the map registry
@@ -516,7 +516,7 @@ bool Map::get_is_multi_map() const
 {
   bool mm = false;
   size_t m_size = map_exits.size();
-  auto m_it = map_exits.find(CardinalDirection::CARDINAL_DIRECTION_NULL);
+  auto m_it = map_exits.find(Direction::DIRECTION_NULL);
 
   if (m_size > 1)
   {
@@ -534,16 +534,16 @@ bool Map::get_is_multi_map() const
 
 string Map::get_map_exit_id() const
 {
-  return get_map_exit_id(CardinalDirection::CARDINAL_DIRECTION_NULL);
+  return get_map_exit_id(Direction::DIRECTION_NULL);
 }
 
-string Map::get_map_exit_id(const CardinalDirection cd) const
+string Map::get_map_exit_id(const Direction d) const
 {
   string map_exit_id;
   
   if (!map_exits.empty())
   {
-    auto m_it = map_exits.find(cd);
+    auto m_it = map_exits.find(d);
 
     if (m_it != map_exits.end())
     {
@@ -952,7 +952,7 @@ bool Map::deserialize(istream& stream)
 
   for (size_t i = 0; i < num_exits; i++)
   {
-    CardinalDirection d = CardinalDirection::CARDINAL_DIRECTION_NULL;
+    Direction d = Direction::DIRECTION_NULL;
     Serialize::read_enum(stream, d);
 
     // Read and ignore the class ID

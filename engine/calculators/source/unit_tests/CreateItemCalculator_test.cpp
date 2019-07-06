@@ -22,12 +22,12 @@ TEST(SW_Engine_Calculators_CreateItemCalculator, calc_potential_improvement_poin
   skills.set_value(SkillType::SKILL_GENERAL_CRAFTING, 60);
   skills.set_value(SkillType::SKILL_GENERAL_BOWYER, 50);
 
-  EXPECT_EQ(11, cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_BOWYER));
+  EXPECT_EQ(12, cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_BOWYER));
 
   skills.set_value(SkillType::SKILL_GENERAL_CRAFTING, 100);
   skills.set_value(SkillType::SKILL_GENERAL_BOWYER, 100);
 
-  EXPECT_EQ(20, cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_BOWYER));
+  EXPECT_EQ(22, cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_BOWYER));
 }
 
 TEST(SW_World_Calculators_CreateItemCalculator, calc_quantity)
