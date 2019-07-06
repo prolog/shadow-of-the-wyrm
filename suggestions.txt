@@ -1,13 +1,9 @@
 Me:
-- Looks like there's an issue with not coming out of hiding even with 0
-  free actions... 
-- After fixing the above, re-test the attack/come-out-of-hiding code.
+- Grond: attacking turtles crash
+- Ancient beasts below D50!
 - Medicine: chance to avoid statuses in combat (+ update manual)
-- MovementAction::check_movement_stealth - not dropping out of stealth?
-- Stealth check should have a diff max when creatures present
 - Investigate MapCreatureGenerator:84  Is "if max > min" what I want?
 - Ancient beasts not generating deep in ID? (Grond)
-- Should drop out of hiding more often when attacking
 - Add water breathing to codex
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID

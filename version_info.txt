@@ -77,6 +77,9 @@ Shadow of the Wyrm v1.1.1 "Campion"
   - Scything was buggy and could lead to crashes in certain situations
     (Grond).
 
+  - There were some general bugs around hiding that meant that the longer
+    you were hidden, the more likely you were to stay hidden permanently,
+    until you went on to the world map (Grond).
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 
