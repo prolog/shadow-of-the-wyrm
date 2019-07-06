@@ -4,6 +4,7 @@
 
 using namespace std;
 
+const int HidingCalculator::HIDING_DIVISOR_AFTER_ATTACKING = 2;
 const int HidingCalculator::MAX_DISTANCE_FOR_PENALTY = 10;
 const int HidingCalculator::MAX_PCT_CHANCE_HIDE_CREATURES_PRESENT = 80;
 
@@ -38,6 +39,18 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
     // Ensure the value is between 1 and 100.
     pct_chance_hide = std::min<int>(pct_chance_hide, 100);
     pct_chance_hide = std::max<int>(pct_chance_hide, 1);
+  }
+
+  return pct_chance_hide;
+}
+
+int HidingCalculator::calculate_pct_chance_hidden_after_attacking(CreaturePtr creature)
+{
+  int pct_chance_hide = 0;
+
+  if (creature != nullptr)
+  {
+    pct_chance_hide = creature->get_skills().get_value(SkillType::SKILL_GENERAL_HIDING) / HIDING_DIVISOR_AFTER_ATTACKING;
   }
 
   return pct_chance_hide;

@@ -23,6 +23,7 @@
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "HidingCalculator.hpp"
 #include "HostilityManager.hpp"
 #include "IntimidationCalculator.hpp"
 #include "IHitTypeFactory.hpp"
@@ -503,6 +504,9 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   {
     // Apply any effects (e.g., poison) that occur as the result of the damage)
     handle_damage_effects(attacking_creature, attacked_creature, damage_dealt, damage_type, effect_bonus, damage_info.get_status_ailments(), danger_level);
+
+    // If the creature is hidden, see if they remain hidden
+    handle_attacker_hidden_after_damage(attacking_creature);
   }
 
   if (damage_dealt > 0)
@@ -786,6 +790,18 @@ void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, Creatu
   }
 }
 
+void CombatManager::handle_attacker_hidden_after_damage(CreaturePtr attacking_creature)
+{
+  if (attacking_creature != nullptr)
+  {
+    HidingCalculator hc;
+    
+    if (!RNG::percent_chance(hc.calculate_pct_chance_hidden_after_attacking(attacking_creature)))
+    {
+      attacking_creature->set_free_hidden_actions(0);
+    }
+  }
+}
 void CombatManager::apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus, const int danger_level)
 {
   if (status_effect && status_effect->should_apply_change(creature, effect_bonus))

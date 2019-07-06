@@ -57,7 +57,7 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
       // JCD FIXME Improve this if I ever need to do "terrain generated off
       // the edge of a custom map".
       map_exit->set_map_id(exit_map);
-      map->set_map_exit(DirectionUtils::to_cardinal_direction(dir), map_exit);
+      map->set_map_exit(dir, map_exit);
     }
     // Handle a set map exit (to another custom map)
     else if (!exit_map.empty())

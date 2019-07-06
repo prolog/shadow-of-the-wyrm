@@ -18,6 +18,15 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
 - Reduced the maximum chance to hide when there are creatures nearby.
 
+- Multi-map areas like Carcassia can now have NW/NE/SW/SE exits,
+  accessible at the edges by using the respective direction.
+
+- Bows made by Bowyer are a little bit better (Grond), and items can
+  now be smithed/crafting-improved, on average, as much as they can
+  also be enchanted.
+
+- Dealing damage now has a chance to reveal you, if hidden (Grond).
+
 - Stanzas for "Tel and Floridel".
 
 - New items: amulet of the sea.

@@ -1,6 +1,6 @@
 #include "CreateItemCalculator.hpp"
 
-const int CreateItemCalculator::PRIMARY_SKILL_DIVISOR = 7;
+const int CreateItemCalculator::PRIMARY_SKILL_DIVISOR = 6;
 const int CreateItemCalculator::CRAFTING_SKILL_DIVISOR = 15;
 
 int CreateItemCalculator::calc_potential_improvement_points(CreaturePtr creature, const SkillType create_skill)

@@ -675,7 +675,7 @@ void MapUtils::set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr m
   if (old_map != nullptr && old_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && map_exit != nullptr)
   {
     string exit_map_id = map_exit->get_map_id();
-    MapExitPtr default_exit_old_map = old_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_NULL);
+    MapExitPtr default_exit_old_map = old_map->get_map_exit(Direction::DIRECTION_NULL);
 
     if (default_exit_old_map != nullptr && !exit_map_id.empty())
     {
@@ -683,7 +683,7 @@ void MapUtils::set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr m
 
       if (new_map != nullptr)
       {
-        MapExitPtr default_exit_new_map = new_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_NULL);
+        MapExitPtr default_exit_new_map = new_map->get_map_exit(Direction::DIRECTION_NULL);
 
         if (default_exit_new_map == nullptr)
         {
@@ -694,7 +694,7 @@ void MapUtils::set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr m
   }
 }
 
-Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, const CardinalDirection exit_direction, MapExitPtr map_exit)
+Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, const Direction exit_direction, MapExitPtr map_exit)
 {
   Coordinate c = CoordUtils::end();
 
@@ -713,26 +713,107 @@ Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate&
       {
         Dimensions dim = map->size();
         c = current_coord;
-
+        
         switch (exit_direction)
         {
           // Arriving from the south
-          case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+          case Direction::DIRECTION_NORTH_WEST:
+            // Arriving from north
+            if (c.first == 0)
+            {
+              c.first = dim.get_y() - 1;
+            }
+            else
+            {
+              c.first = c.first - 1;
+            }
+
+            if (c.second == 0)
+            {
+              c.second = dim.get_x() - 1;
+            }
+            else
+            {
+              c.second = c.second - 1;
+            }
+
+            break;
+          case Direction::DIRECTION_NORTH:
             c.first = dim.get_y() - 1;
             break;
             // Arriving from the north
-          case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+          case Direction::DIRECTION_NORTH_EAST:
+            // Arriving from north
+            if (c.first == 0)
+            {
+              c.first = dim.get_y() - 1;
+            }
+            else
+            {
+              c.first = c.first - 1;
+            }
+
+            if (c.second == dim.get_x() - 1)
+            {
+              c.second = 0;
+            }
+            else
+            {
+              c.second = c.second + 1;
+            }
+            break;
+          case Direction::DIRECTION_SOUTH_WEST:
+            if (c.first == dim.get_y() - 1)
+            {
+              c.first = 0;
+            }
+            else
+            {
+              c.first = c.first + 1;
+            }
+
+            if (c.second == 0)
+            {
+              c.second = dim.get_x() - 1;
+            }
+            else
+            {
+              c.second = c.second - 1;
+            }
+            break;
+          case Direction::DIRECTION_SOUTH:
             c.first = 0;
             break;
+          case Direction::DIRECTION_SOUTH_EAST:
+            if (c.first == dim.get_y() - 1)
+            {
+              c.first = 0;
+            }
+            else
+            {
+              c.first = c.first + 1;
+            }
+
+            if (c.second == dim.get_x() - 1)
+            {
+              c.second = 0;
+            }
+            else
+            {
+              c.second = c.second + 1;
+            }
+            break;
             // Arriving from the west
-          case CardinalDirection::CARDINAL_DIRECTION_EAST:
+          case Direction::DIRECTION_EAST:
             c.second = 0;
             break;
             // Arriving from the east
-          case CardinalDirection::CARDINAL_DIRECTION_WEST:
+          case Direction::DIRECTION_WEST:
             c.second = dim.get_x() - 1;
             break;
-          case CardinalDirection::CARDINAL_DIRECTION_NULL:
+          case Direction::DIRECTION_NULL:
+          case Direction::DIRECTION_UP:
+          case Direction::DIRECTION_DOWN:
           default:
             c = CoordUtils::end();
             break;
@@ -743,6 +824,115 @@ Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate&
 
   return c;
 }
+
+// Generate the "correct" cardinal direction based on where we are on the
+// map.  As an example, consider if we're on a multi-map like Carcassia, 
+// standing at the far-eastern corner
+//   ....
+//   ...@
+//   ....
+//
+// In this case, east, north-east, and south-east should all move you
+// east.  If we're at the bottom of the map:
+//
+//
+// ....
+// .@..
+// 
+// South-west, south, and south-east should move you south.  And so on.
+Direction MapUtils::get_exit_direction(const Direction d, const Dimensions& dim, const Coordinate& c)
+{
+  Direction dir = d;
+  int rows = dim.get_y();
+  int cols = dim.get_x();
+
+  switch (d)
+  {
+    case Direction::DIRECTION_UP:
+    case Direction::DIRECTION_DOWN:
+    case Direction::DIRECTION_NULL:
+    case Direction::DIRECTION_NORTH:
+    case Direction::DIRECTION_SOUTH:
+    case Direction::DIRECTION_EAST:
+    case Direction::DIRECTION_WEST:
+      return d;
+    case Direction::DIRECTION_NORTH_EAST:
+      // Row 0, N
+      if (c.first == 0 && c.second < cols - 1)
+      {
+        dir = Direction::DIRECTION_NORTH;
+      }
+      // last col, E
+      else if (c.first > 0 && c.second == cols - 1)
+      {
+        dir = Direction::DIRECTION_EAST;
+      }
+      // else, NE
+      else
+      {
+        dir = Direction::DIRECTION_NORTH_EAST;
+      }
+
+      break;
+    case Direction::DIRECTION_NORTH_WEST:
+      // Row 0, N
+      if (c.first == 0 && c.second > 0)
+      {
+        dir = Direction::DIRECTION_NORTH;
+      }
+      // Col 0, W
+      else if (c.first > 0 && c.second == 0)
+      {
+        dir = Direction::DIRECTION_WEST;
+      }
+      // else, NW
+      else
+      {
+        dir = Direction::DIRECTION_NORTH_WEST;
+      }
+
+      break;
+    case Direction::DIRECTION_SOUTH_EAST:
+      // last row, S
+      if (c.first == rows - 1 && c.second < cols - 1)
+      {
+        dir = Direction::DIRECTION_SOUTH;
+      }
+      // last col, E
+      else if (c.first < rows - 1 && c.second == cols - 1)
+      {
+        dir = Direction::DIRECTION_EAST;
+      }
+      // else SE
+      else
+      {
+        dir = Direction::DIRECTION_SOUTH_EAST;
+      }
+
+      break;
+    case Direction::DIRECTION_SOUTH_WEST:
+      // last row, S
+      if (c.first == rows - 1 && c.second > 0)
+      {
+        dir = Direction::DIRECTION_SOUTH;
+      }
+      // first col, W
+      else if (c.first < rows - 1 && c.second == 0)
+      {
+        dir = Direction::DIRECTION_WEST;
+      }
+      // else, SW
+      else
+      {
+        dir = Direction::DIRECTION_SOUTH_WEST;
+      }
+
+      break;
+  }
+
+  return dir;
+}
+
 
 bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature, const bool force_player_removal)
 {

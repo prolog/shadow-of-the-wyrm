@@ -109,3 +109,4 @@ TEST(SW_Engine_Maps_DirectionUtils, to_cardinal_direction)
     }
   }
 }
+

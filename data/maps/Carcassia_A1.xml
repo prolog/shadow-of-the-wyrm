@@ -207,6 +207,10 @@
 			<MapID>carcassia_b1</MapID>
 		</Exit>
 		<Exit>
+			<Direction>3</Direction>
+			<MapID>carcassia_b2</MapID>
+		</Exit>
+		<Exit>
 			<Direction>6</Direction>
 			<MapID>carcassia_a2</MapID>
 		</Exit>

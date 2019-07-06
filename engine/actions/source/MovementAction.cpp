@@ -120,61 +120,67 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
 {
   ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
 
-  Game& game = Game::instance();
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());  
-  IMessageManager& pl_man = MM::instance();
-
-  CardinalDirection exit_direction = DirectionUtils::to_cardinal_direction(direction);
-  MapExitPtr map_exit = map->get_map_exit(exit_direction);
-
-  if (map_exit == nullptr)
+  if (creature != nullptr && map != nullptr)
   {
-    map_exit = map->get_map_exit();
-  }
+    Game& game = Game::instance();
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& pl_man = MM::instance();
 
-  Coordinate current_coord = map->get_location(creature->get_id());
-  Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, exit_direction, map_exit);
+    Coordinate c = map->get_location(creature->get_id());
+    Dimensions dim = map->size();
 
-  if (!MapUtils::can_exit_map(map, creature, map_exit, proposed_new_coord))
-  {
-    if (creature->get_is_player())
-    { 
-      string movement_message = MovementTextKeys::get_cannot_exit_map_message(map->get_map_type());
+    Direction exit_direction = MapUtils::get_exit_direction(direction, dim, c);
+    MapExitPtr map_exit = map->get_map_exit(exit_direction);
 
-      pl_man.add_new_message(movement_message);
-      pl_man.send();
-    }
-  }
-  else
-  {
-    if (creature->get_is_player())
+    if (map_exit == nullptr)
     {
-      string leave_area = TextMessages::get_confirmation_message(TextKeys::DECISION_LEAVE_AREA);
-      game.display->confirm(leave_area);
-      
-      if (creature->get_decision_strategy()->get_confirmation())
-      {
-        MapUtils::set_up_transitive_exits_as_necessary(map, map_exit);
-        handle_properties_and_move_to_new_map(creature, creatures_old_tile, map, map_exit, proposed_new_coord);
-        movement_acv = get_action_cost_value(creature);
-      }
-      
-      // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
-      game.display->clear_messages();
+      map_exit = map->get_map_exit();
     }
-    // It's an NPC leaving the map - display the exit message.
+
+    Coordinate current_coord = map->get_location(creature->get_id());
+    Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, direction, map_exit);
+
+    if (!MapUtils::can_exit_map(map, creature, map_exit, proposed_new_coord))
+    {
+      if (creature->get_is_player())
+      {
+        string movement_message = MovementTextKeys::get_cannot_exit_map_message(map->get_map_type());
+
+        pl_man.add_new_message(movement_message);
+        pl_man.send();
+      }
+    }
     else
     {
-      // Remove from tile and from map's creatures.
-      creatures_old_tile->remove_creature();
-      map->remove_creature(creature->get_id());
-        
-      string npc_exit_message = TextMessages::get_npc_escapes_message(StringTable::get(creature->get_description_sid()));
-      manager.add_new_message(npc_exit_message);
-      manager.send();
-        
-      movement_acv = get_action_cost_value(creature);
-    } 
+      if (creature->get_is_player())
+      {
+        string leave_area = TextMessages::get_confirmation_message(TextKeys::DECISION_LEAVE_AREA);
+        game.display->confirm(leave_area);
+
+        if (creature->get_decision_strategy()->get_confirmation())
+        {
+          MapUtils::set_up_transitive_exits_as_necessary(map, map_exit);
+          handle_properties_and_move_to_new_map(creature, creatures_old_tile, map, map_exit, proposed_new_coord);
+          movement_acv = get_action_cost_value(creature);
+        }
+
+        // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
+        game.display->clear_messages();
+      }
+      // It's an NPC leaving the map - display the exit message.
+      else
+      {
+        // Remove from tile and from map's creatures.
+        creatures_old_tile->remove_creature();
+        map->remove_creature(creature->get_id());
+
+        string npc_exit_message = TextMessages::get_npc_escapes_message(StringTable::get(creature->get_description_sid()));
+        manager.add_new_message(npc_exit_message);
+        manager.send();
+
+        movement_acv = get_action_cost_value(creature);
+      }
+    }
   }
   
   return movement_acv;

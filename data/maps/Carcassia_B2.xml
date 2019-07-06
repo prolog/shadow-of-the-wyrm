@@ -184,12 +184,20 @@
 	</InitialPlacements>
 	<Exits>
 		<Exit>
+			<Direction>1</Direction>
+			<MapID>carcassia_c1</MapID>
+		</Exit>
+		<Exit>
 			<Direction>2</Direction>
 			<MapID>carcassia_c2</MapID>
 		</Exit>
 		<Exit>
 			<Direction>4</Direction>
 			<MapID>carcassia_b1</MapID>
+		</Exit>
+		<Exit>
+			<Direction>7</Direction>
+			<MapID>carcassia_a1</MapID>
 		</Exit>
 		<Exit>
 			<Direction>8</Direction>

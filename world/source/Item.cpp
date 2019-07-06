@@ -22,8 +22,8 @@ namespace ItemEnchantingSmithing
   const int MIN_ENCHANTS = 6;
   const int MAX_ENCHANTS = 9;
 
-  const int MIN_SMITHING = 2;
-  const int MAX_SMITHING = 5;
+  const int MIN_SMITHING = 6;
+  const int MAX_SMITHING = 9;
 
   // Minimum/maximum number of points per enchant/smithing.
   const int MIN_POINTS = 3;

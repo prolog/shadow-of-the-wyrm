@@ -86,10 +86,11 @@ void BowyerSkillProcessor::create_bowyer_item(const string& item_base_id, Creatu
     CreateItemCalculator cic;
     int potential_points = cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_BOWYER);
     int improvement_points = 0;
+    Statistic remaining_smithings = item->get_remaining_smithings();
 
     if (potential_points > 0)
     {
-      improvement_points = RNG::range(1, potential_points);
+      improvement_points = RNG::range(std::max<int>(1, potential_points/2), potential_points);
       item->set_remaining_smithings(improvement_points);
     }
     
@@ -97,6 +98,9 @@ void BowyerSkillProcessor::create_bowyer_item(const string& item_base_id, Creatu
     {
       item->smith(1);
     }
+
+    // Reset the number of smithings
+    item->set_remaining_smithings(remaining_smithings);
 
     tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
   }
