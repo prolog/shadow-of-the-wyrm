@@ -1408,7 +1408,7 @@ SpellKnowledge Creature::get_spell_knowledge() const
 
 void Creature::set_free_hidden_actions(const int new_actions)
 {
-  if (new_actions > 0)
+  if (new_actions >= 0)
   {
     set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FREE_HIDDEN_ACTIONS, to_string(new_actions));
   }
