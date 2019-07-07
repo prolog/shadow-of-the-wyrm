@@ -1,5 +1,7 @@
 Me:
-- Grond: attacking turtles crash
+- Attacking turtles: incorrect argument to...
+- Grond: attacking turtles causes some kind of ToD crash after teleporting
+  and maybe other stuff?
 - Ancient beasts below D50!
 - Medicine: chance to avoid statuses in combat (+ update manual)
 - Investigate MapCreatureGenerator:84  Is "if max > min" what I want?
@@ -7,6 +9,7 @@ Me:
 - Add water breathing to codex
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
+- Can fix the turtle races by attacking two of the turtles
 - Random villages should include the race in the description prior to
   generation.
 - Each version: make sure to update itch.io page!

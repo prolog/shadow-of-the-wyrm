@@ -110,8 +110,9 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
       bool evoke_successful = true;
       pair<bool, Direction> evoke_result = { true, Direction::DIRECTION_NULL };
       SpellShapeType shape_type = wand->get_spell_shape_type();
+      SpellShape ss = SpellShapeFactory::create_spell_shape(shape_type, wand->get_range());
 
-      if (shape_type != SpellShapeType::SPELL_SHAPE_BALL)
+      if (ss.get_direction_category() != DirectionCategory::DIRECTION_CATEGORY_NONE)
       {
         evoke_result = get_evocation_direction(creature, shape_type);
         evoke_successful = evoke_result.first;
@@ -249,8 +250,10 @@ Spell EvokeAction::create_wand_spell(CreaturePtr creature, WandPtr wand, const D
   int damage_bonus = wc.calc_damage_bonus(creature);
   dmg.set_modifier(dmg.get_modifier() + damage_bonus);
   wand_spell.set_damage(wand->get_damage());
+  SpellShapeType ss = wand->get_spell_shape_type();
 
-  if (dir == Direction::DIRECTION_NULL)
+  if (dir == Direction::DIRECTION_NULL && 
+     ((ss != SpellShapeType::SPELL_SHAPE_BALL && ss != SpellShapeType::SPELL_SHAPE_STORM && ss != SpellShapeType::SPELL_SHAPE_CROSS)))
   {
     wand_spell.set_range(1);
   }

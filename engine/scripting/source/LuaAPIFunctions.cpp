@@ -4573,6 +4573,8 @@ int set_hostility(lua_State* ls)
 
 int teleport(lua_State* ls)
 {
+  bool teleported = false;
+
   if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
   {
     Game& game = Game::instance();
@@ -4596,12 +4598,22 @@ int teleport(lua_State* ls)
           int x = lua_tointeger(ls, 3);
 
           MapPtr map = game.get_current_map();
-          MapUtils::add_or_update_location(map, creature, make_pair(y, x), MapUtils::get_tile_for_creature(map, creature));
+          
+          if (map != nullptr)
+          {
+            TilePtr tile = map->at(y, x);
+
+            if (tile != nullptr && !tile->has_creature())
+            {
+              MapUtils::add_or_update_location(map, creature, make_pair(y, x), MapUtils::get_tile_for_creature(map, creature));
+              teleported = true;
+            }
+          }
         }
         else
         {
           EffectPtr teleport_effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_TELEPORT, {}, {}, "", "");
-          teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED, creature_loc.first, creature_loc.second);
+          teleported = teleport_effect->effect(creature, &am, ItemStatus::ITEM_STATUS_BLESSED, creature_loc.first, creature_loc.second);
         }
       }
     }
@@ -4611,7 +4623,8 @@ int teleport(lua_State* ls)
     LuaUtils::log_and_raise(ls, "Incorrect arguments to teleport");
   }
 
-  return 0;
+  lua_pushboolean(ls, teleported);
+  return 1;
 }
 
 // Get the appropriate creature description, based on whether the viewing

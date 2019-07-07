@@ -2809,3 +2809,14 @@ those childhood magics.  Nothing came.  He tried %b
 again, but it was as if his mind went lame, %b
 preventing him from conjuring a simple flame.
 %p
+"These fields admit no magic, only truth," %b
+their father said.  "Your fires will not start. %b
+The Nine are deaf.  They had their choice, and took %b
+the living world, that place of earth and stars %b
+that twinkles like a bauble.  Here the wind %b
+obeys the physical, the hidden rules %b
+that fix the sun at noon, and not the whim %b
+of wizards.  Touch your hair.  The flowers, too. %b
+And understand the way you'll play the fae for fools."
+%p
+

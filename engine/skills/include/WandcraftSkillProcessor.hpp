@@ -12,6 +12,7 @@ class WandcraftSkillProcessor : public SkillProcessor
     bool check_for_spells(CreaturePtr creature);
 
     ItemPtr create_wand(CreaturePtr creature, const WandCreationParameters& wcp);
+    void remove_wand_components(CreaturePtr creature);
 
     ActionCostValue get_default_skill_action_cost_value(CreaturePtr creature) const override;
 };
