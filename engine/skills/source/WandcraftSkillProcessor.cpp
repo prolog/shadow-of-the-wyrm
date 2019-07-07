@@ -89,7 +89,7 @@ bool WandcraftSkillProcessor::check_for_components(CreaturePtr creature)
     IInventoryPtr inv = creature->get_inventory();
 
     if (inv &&
-        ItemManager::has_item(creature, ItemIdKeys::ITEM_ID_BRANCH) &&
+       (ItemManager::has_item(creature, ItemIdKeys::ITEM_ID_BRANCH) || ItemManager::has_item(creature, ItemIdKeys::ITEM_ID_BOUGH)) &&
         ItemManager::has_item(creature, ItemIdKeys::ITEM_ID_MAGICI_SHARD))
     {
       has_comp = true;
@@ -142,12 +142,10 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
       int cpc = wcp.get_castings_per_charge();
       int casting_cost = num_charges * cpc;
 
-      // Remove a branch and magici shard.
-      // Create a template wand, and populate it properly.
-      ItemManager im;
-      im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BRANCH);
-      im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_MAGICI_SHARD);
+      // Remove a branch/bough and magici shard.
+      remove_wand_components(creature);
 
+      // Create a template wand, and populate it properly.
       ItemPtr iwand = ItemManager::create_item(ItemIdKeys::ITEM_ID_TEMPLATE_WAND);
       WandPtr wand = dynamic_pointer_cast<Wand>(iwand);
       Spell spell = s_it->second;
@@ -178,6 +176,24 @@ ItemPtr WandcraftSkillProcessor::create_wand(CreaturePtr creature, const WandCre
   }
 
   return created_wand;
+}
+
+void WandcraftSkillProcessor::remove_wand_components(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    ItemManager im;
+
+    auto removal_details = im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BRANCH);
+    
+    // The creature might be doing wandcraft with a bough instead.
+    if (removal_details.first == false)
+    {
+      im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BOUGH);
+    }
+
+    im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_MAGICI_SHARD);
+  }
 }
 
 ActionCostValue WandcraftSkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const

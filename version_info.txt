@@ -27,6 +27,9 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
 - Dealing damage now has a chance to reveal you, if hidden (Grond).
 
+- Boughs can now be used to make a wand, if you don't havea a branch
+  available.
+
 - Stanzas for "Tel and Floridel".
 
 - New items: amulet of the sea.
@@ -80,6 +83,14 @@ Shadow of the Wyrm v1.1.1 "Campion"
   - There were some general bugs around hiding that meant that the longer
     you were hidden, the more likely you were to stay hidden permanently,
     until you went on to the world map (Grond).
+
+  - Wands with spells that didn't require targetting were always taking
+    a range of 1, and were not reflecting the range of the underlying 
+    spell (Grond).
+
+  - The Lua API function for teleporting to a specific location could
+    cause crashes if there was already a creature present there (Grond).
+
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 
