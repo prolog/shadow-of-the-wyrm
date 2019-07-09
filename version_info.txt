@@ -91,6 +91,11 @@ Shadow of the Wyrm v1.1.1 "Campion"
   - The Lua API function for teleporting to a specific location could
     cause crashes if there was already a creature present there (Grond).
 
+  - You can no longer switch places with creatures when it would put them
+    on a dangerous tile (open air, etc) (Grond).
+
+  - Malediction was causing the game to freeze (Grond).
+
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 

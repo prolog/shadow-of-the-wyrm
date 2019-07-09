@@ -130,12 +130,22 @@ void MapUtils::swap_places(MapPtr map, CreaturePtr creature, CreaturePtr adjacen
     Coordinate adj_loc = map->get_location(adjacent_creature->get_id());
     TilePtr creatures_current_tile = map->at(cr_loc);
 
-    // Remove the creatures, then add them in the new location.
-    MapUtils::remove_creature(map, creature);
-    MapUtils::remove_creature(map, adjacent_creature);
+    if (creatures_current_tile && !creatures_current_tile->get_dangerous(adjacent_creature))
+    {
+      // Remove the creatures, then add them in the new location.
+      MapUtils::remove_creature(map, creature);
+      MapUtils::remove_creature(map, adjacent_creature);
 
-    MapUtils::add_or_update_location(map, creature, adj_loc);
-    MapUtils::add_or_update_location(map, adjacent_creature, cr_loc);
+      MapUtils::add_or_update_location(map, creature, adj_loc);
+      MapUtils::add_or_update_location(map, adjacent_creature, cr_loc);
+    }
+    else
+    {
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SWITCH_REFUSED));
+
+      manager.send();
+    }
   }
 }
 
