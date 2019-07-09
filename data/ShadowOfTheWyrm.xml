@@ -30147,7 +30147,7 @@
 					<Status>_blind</Status>
 				</StatusAilments>
 			</Damage>
-			<Effect>23</Effect>
+			<Effect>0</Effect>
 		</Spell>
 		<Spell id="m_17_rage">
 			<NameSID>RAGE_NAME_SID</NameSID>

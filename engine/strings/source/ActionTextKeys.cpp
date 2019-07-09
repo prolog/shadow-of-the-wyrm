@@ -478,6 +478,7 @@ const string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP
 const string ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS          = "ACTION_PICK_UP_MAX_ITEMS";
 const string ActionTextKeys::ACTION_PICK_UP_MAX_WEIGHT         = "ACTION_PICK_UP_MAX_WEIGHT";
 const string ActionTextKeys::ACTION_MOVEMENT_BLOCKED           = "ACTION_MOVEMENT_BLOCKED";
+const string ActionTextKeys::ACTION_SWITCH_REFUSED             = "ACTION_SWITCH_REFUSED";
 const string ActionTextKeys::ACTION_PLAYER_DROWNING            = "ACTION_PLAYER_DROWNING";
 const string ActionTextKeys::ACTION_PLAYER_FALLING             = "ACTION_PLAYER_FALLING";
 const string ActionTextKeys::ACTION_PLAYER_OBLITERATED         = "ACTION_PLAYER_OBLITERATED";

@@ -56,6 +56,7 @@ class ActionTextKeys
     static const std::string ACTION_PICK_UP_MAX_ITEMS;
     static const std::string ACTION_PICK_UP_MAX_WEIGHT;
     static const std::string ACTION_MOVEMENT_BLOCKED;
+    static const std::string ACTION_SWITCH_REFUSED;
     static const std::string ACTION_PLAYER_DROWNING;
     static const std::string ACTION_PLAYER_FALLING;
     static const std::string ACTION_PLAYER_OBLITERATED;
