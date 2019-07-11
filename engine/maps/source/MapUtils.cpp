@@ -1345,6 +1345,13 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
       MapUtils::remove_creature(map, existing_creature);
     }
 
+    // If there's a blocking feature (which would prevent hte creature being
+    // here), remove it, too.
+    if (placement_tile->has_feature() && placement_tile->get_feature()->get_is_blocking())
+    {
+      placement_tile->remove_feature();
+    }
+
     MapUtils::add_or_update_location(map, creature, coords);
   }
 
