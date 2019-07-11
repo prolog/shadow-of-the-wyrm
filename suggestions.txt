@@ -239,13 +239,7 @@ Rob Ayres
 - Aging attacks and potions of youth
 
 Grond:
-- drop out of hiding infrequently when monsters in LOS
-- it also seems like you drop out of hiding less after you have been 
-  hiding for a while if I hide and then immediately exit to the wilderness 
-  map, I drop out of hiding every time if I wander around for a while 
-  first, I can keep the status on the wilderness map and then just staying 
-  on one map, it seems like it either lasts for 1-5 turns, or forever
-  this is with 100 Stealth btw
+- Can train up fae health by waiting forever
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level

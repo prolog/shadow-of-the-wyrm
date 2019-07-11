@@ -96,6 +96,9 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
   - Malediction was causing the game to freeze (Grond).
 
+  - Fixed a freeze when moving on to a map where the target tile was
+    covered by a blocking feature such as a statue (Grond).
+
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
 
