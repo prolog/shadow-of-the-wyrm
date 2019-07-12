@@ -2819,4 +2819,13 @@ that fix the sun at noon, and not the whim %b
 of wizards.  Touch your hair.  The flowers, too. %b
 And understand the way you'll play the fae for fools."
 %p
-
+"With primrose in your hair, a part of you %b
+will dwell beyond the rivers where the dead %b
+are ferried to these fields.  You'll see the truth %b
+behind deceit, the false fall back; instead %b
+of actors, each of you will watch the stage, %b
+the scripted scenes, the changes.  Let the real %b
+triumph, so that with your victory, a page %b
+turns.  A peace by other means, your victory sealed %b
+through open slaughter as the fae are made to kneel."
+%p
