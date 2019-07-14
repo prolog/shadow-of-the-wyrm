@@ -81,7 +81,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   int min_danger_level = get_min_danger_level(map, base_danger_level);
   int max_danger_level = get_danger_level(map, base_danger_level);
 
-  if (max_danger_level > min_danger_level)
+  if (min_danger_level > max_danger_level)
   {
     min_danger_level = max_danger_level;
   }
@@ -266,7 +266,7 @@ int MapCreatureGenerator::get_num_creatures(MapPtr map, const int max_creatures)
 // generation.
 int MapCreatureGenerator::get_min_danger_level(MapPtr map, const int base_danger_level)
 {
-  int min_danger_level = RNG::range(1, std::max<int>(1, (base_danger_level / 2)));
+  int min_danger_level = RNG::range(base_danger_level / 2, base_danger_level);
   
   if (map != nullptr)
   {

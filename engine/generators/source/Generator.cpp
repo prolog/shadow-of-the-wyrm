@@ -458,6 +458,15 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
       map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
     }
 
+    if (tile_type == TileType::TILE_TYPE_UP_STAIRCASE && !map->has_location(MapProperties::MAP_PROPERTIES_DEFAULT_UP_STAIRCASE))
+    {
+      map->add_or_update_location(MapProperties::MAP_PROPERTIES_DEFAULT_UP_STAIRCASE, {row, col});
+    }
+    else if (tile_type == TileType::TILE_TYPE_DOWN_STAIRCASE && !map->has_location(MapProperties::MAP_PROPERTIES_DEFAULT_DOWN_STAIRCASE))
+    {
+      map->add_or_update_location(MapProperties::MAP_PROPERTIES_DEFAULT_DOWN_STAIRCASE, {row, col});
+    }
+
     return true;
   }  
   

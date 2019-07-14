@@ -29,6 +29,7 @@
 #include "ItemManager.hpp"
 #include "MapExitUtils.hpp"
 #include "MapItemGenerator.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "Naming.hpp"
@@ -362,6 +363,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_original_id", get_creature_original_id);
   lua_register(L, "remove_threat_from_all", remove_threat_from_all);
   lua_register(L, "generate_city_feature", generate_city_feature);
+  lua_register(L, "get_staircase_coords", get_staircase_coords);
   lua_register(L, "get_num_conducts", get_num_conducts);
   lua_register(L, "break_conduct", break_conduct);
   lua_register(L, "add_membership", add_membership);
@@ -6870,6 +6872,43 @@ int generate_city_feature(lua_State* ls)
 
   lua_pushboolean(ls, feature_generated);
   return 1;
+}
+
+// Debug function for making dungeon dives quicker.
+int get_staircase_coords(lua_State* ls)
+{
+  int y = 0;
+  int x = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    TileType tile_type = static_cast<TileType>(lua_tointeger(ls, 1));
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      string loc_name = MapProperties::MAP_PROPERTIES_DEFAULT_DOWN_STAIRCASE;
+
+      if (tile_type == TileType::TILE_TYPE_UP_STAIRCASE)
+      {
+        loc_name = MapProperties::MAP_PROPERTIES_DEFAULT_UP_STAIRCASE;
+      }
+
+      Coordinate c = map->get_location(loc_name);
+
+      y = c.first;
+      x = c.second;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_staircase_coords");
+  }
+
+  lua_pushinteger(ls, y);
+  lua_pushinteger(ls, x);
+
+  return 2;
 }
 
 int get_num_conducts(lua_State* ls)

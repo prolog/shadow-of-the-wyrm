@@ -2,7 +2,6 @@ Me:
 - Attacking turtles: incorrect argument to...
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
-- Ancient beasts below D50!
 - Medicine: chance to avoid statuses in combat (+ update manual)
 - Investigate MapCreatureGenerator:84  Is "if max > min" what I want?
 - Ancient beasts not generating deep in ID? (Grond)
@@ -240,6 +239,7 @@ Rob Ayres
 
 Grond:
 - Can train up fae health by waiting forever
+- Torment-type spell (1/2 HP)
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level

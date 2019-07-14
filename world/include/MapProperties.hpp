@@ -101,6 +101,11 @@ class MapProperties
     // can have different creatures.
     static const std::string MAP_PROPERTIES_TOMB_GUARDIANS;
 
+    // Default up/down staircase locations. Mostly used for debugging & quick
+    // travel.
+    static const std::string MAP_PROPERTIES_DEFAULT_UP_STAIRCASE;
+    static const std::string MAP_PROPERTIES_DEFAULT_DOWN_STAIRCASE;
+
   protected:
     MapProperties();
     ~MapProperties();
