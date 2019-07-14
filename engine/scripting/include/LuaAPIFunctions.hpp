@@ -215,6 +215,7 @@ int tile_is_feature_hidden(lua_State* ls);
 int get_creature_original_id(lua_State* ls);
 int remove_threat_from_all(lua_State* ls);
 int generate_city_feature(lua_State* ls);
+int get_staircase_coords(lua_State* ls);
 int get_num_conducts(lua_State* ls);
 int break_conduct(lua_State* ls);
 int add_membership(lua_State* ls);

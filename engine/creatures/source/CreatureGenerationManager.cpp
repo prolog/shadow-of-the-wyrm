@@ -67,23 +67,18 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
     std::sort(generator_filters.begin(), generator_filters.end());
   }
     
-  while (generation_map.empty() && (min_danger > 0))
+  // Build the map of creatures available for generation given the danger level and rarity
+  for (CreatureMap::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
   {
-    // Build the map of creatures available for generation given the danger level and rarity
-    for (CreatureMap::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+    string creature_id = c_it->first;
+
+    CreaturePtr creature = c_it->second;
+    CreatureGenerationValues cgvals = cgv_map[creature_id];
+
+    if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
     {
-      string creature_id = c_it->first;
-
-      CreaturePtr creature = c_it->second;
-      CreatureGenerationValues cgvals = cgv_map[creature_id];
-
-      if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
-      {
-        generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
-      }
+      generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
     }
-
-    min_danger /= 2;
   }
   
   return generation_map;

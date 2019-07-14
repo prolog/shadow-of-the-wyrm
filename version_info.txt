@@ -27,6 +27,10 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
 - Dealing damage now has a chance to reveal you, if hidden (Grond).
 
+- Tweaked the minimum danger level calculation - this used to vary
+  wildly, and the minimum is now closer to the maximum, meaning you
+  should get creatures closer to your level.
+
 - Boughs can now be used to make a wand, if you don't havea a branch
   available.
 
@@ -98,6 +102,10 @@ Shadow of the Wyrm v1.1.1 "Campion"
 
   - Fixed a freeze when moving on to a map where the target tile was
     covered by a blocking feature such as a statue (Grond).
+
+  - Ancient beasts weren't appearing properly in some types of areas due
+    to some old code that kept incrementing the danger level down until
+    creatures were found (Grond).
 
 Shadow of the Wyrm v1.1.0 "Robert Dowland"
 - Version declared January 26, 2019.  Version finalized June 12, 2019.
