@@ -44,6 +44,7 @@ bool MoveScript::execute(ScriptEngine& se, const string& event_script, CreatureP
       string l_err = lua_tostring(L, -1);
       string error_msg = "MoveScript::execute - error running Lua function `" + MOVE_FUNCTION_NAME + "': " + l_err;
       Log::instance().error(error_msg);
+      lua_pop(L, 1);
       result = false;
     }
   }

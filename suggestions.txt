@@ -1,5 +1,4 @@
 Me:
-- Attacking turtles: incorrect argument to...
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
 - Medicine: chance to avoid statuses in combat (+ update manual)

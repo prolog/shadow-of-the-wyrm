@@ -67,6 +67,7 @@ bool DropScript::execute(ScriptEngine& se, const string& drop_script, const stri
       string l_err = lua_tostring(L, -1);
       string error_msg = "DropScript::execute - error running Lua function `" + DROP_FUNCTION_NAME + "': " + l_err;
       Log::instance().error(error_msg);
+      lua_pop(L, 1);
       result = false;
     }
   }

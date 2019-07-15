@@ -51,6 +51,7 @@ int DecisionScript::execute(ScriptEngine& se, const string& decision_script, Cre
     string l_err = lua_tostring(L, -1);
     string error_msg = "DecisionScript::execute - could not run Lua function `" + DECIDE_FUNCTION_NAME + "': " + l_err;
     Log::instance().error(error_msg);
+    lua_pop(L, 1);
   }
   else
   {
@@ -63,6 +64,8 @@ int DecisionScript::execute(ScriptEngine& se, const string& decision_script, Cre
     {
       acv = (lua_tointeger(L, -1) != 0);
     }
+
+    lua_pop(L, 1);
   }
 
   return acv;
