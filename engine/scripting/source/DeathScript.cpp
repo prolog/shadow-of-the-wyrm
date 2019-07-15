@@ -63,6 +63,7 @@ bool DeathScript::execute(ScriptEngine& se, const string& event_script, Creature
       string l_err = lua_tostring(L, -1);
       string error_msg = "DeathScript::execute - error running Lua function `" + DEATH_FUNCTION_NAME + "': " + l_err;
       Log::instance().error(error_msg);
+      lua_pop(L, 1);
       result = false;
     }
   }

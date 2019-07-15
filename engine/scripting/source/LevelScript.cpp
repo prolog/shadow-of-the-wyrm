@@ -53,6 +53,7 @@ void LevelScript::execute(ScriptEngine& se, const vector<string>& setup_scripts,
         string l_err = lua_tostring(L, -1);
         string error_msg = "LevelScript::execute - error running Lua function `" + LEVEL_FUNCTION_NAME + "': " + l_err;
         Log::instance().error(error_msg);
+        lua_pop(L, 1);
       }
     }
     else

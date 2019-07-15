@@ -1,3 +1,4 @@
+#include "Game.hpp"
 #include "Log.hpp"
 #include "LuaUtils.hpp"
 
@@ -84,6 +85,40 @@ void LuaUtils::set_field(lua_State* ls, const char* name, const int val)
 void LuaUtils::log_and_raise(lua_State* ls, const string& error_message)
 {
   Log::instance().error(error_message);
+  
+  string traceback = get_traceback(ls);
+  Log::instance().error("Traceback: " + traceback);
+
+  // Push the error
   lua_pushstring(ls, error_message.c_str());
   lua_error(ls);
+}
+
+// Get the result of calling Lua's debug.traceback() - useful for debugging
+// purposes.
+string LuaUtils::get_traceback(lua_State* ls)
+{
+  string debug_module = "debug";
+  string traceback_fn = "traceback";
+  string traceback;
+
+  // pcall
+  lua_State* L = Game::instance().get_script_engine_ref().get_current_state();
+  lua_getglobal(L, debug_module.c_str());
+  lua_getfield(L, -1, traceback_fn.c_str());
+
+  if (lua_pcall(L, 0, 1, 0) != 0)
+  {
+    string l_err = lua_tostring(L, -1);
+    string error_msg = "LuaUtils::log_and_raise - error running Lua function debug.traceback(): " + l_err;
+    Log::instance().error(error_msg);
+  }
+  else
+  {
+    traceback = lua_tostring(ls, -1);
+    Log::instance().error("Traceback: " + traceback);
+  }
+
+  lua_pop(ls, 1);
+  return traceback;
 }

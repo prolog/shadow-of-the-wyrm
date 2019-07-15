@@ -50,6 +50,7 @@ bool AttackScript::execute(ScriptEngine& se, const string& attack_script, Creatu
       string l_err = lua_tostring(L, -1);
       string error_msg = "AttackScript::execute - error running Lua function `" + ATTACK_FUNCTION_NAME + "': " + l_err;
       Log::instance().error(error_msg);
+      lua_pop(L, 1);
       result = false;
     }
   }

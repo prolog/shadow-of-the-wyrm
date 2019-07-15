@@ -43,11 +43,16 @@ end
 
 -- Check to see if the racemaster has already started a race.
 local function race_running()
-  local racem_id = args[SPEAKING_CREATURE_ID]
-  local race_running = get_creature_additional_property(racem_id, race_running_prop)
+  if SPEAKING_CREATURE_ID ~= nil then
+    local racem_id = args[SPEAKING_CREATURE_ID]
 
-  if race_running == "true" then
-    return true
+    if racem_id ~= nil then
+      local race_running = get_creature_additional_property(racem_id, race_running_prop)
+
+      if race_running == "true" then
+        return true
+      end
+    end
   end
 
   return false
@@ -136,10 +141,14 @@ local function run_race()
   end
 end
 
-if race_running() then
-  clear_and_add_message("RACEMASTER_RACE_RUNNING_SID")
-else
-  run_race()
+-- This file can be run as part of a require from the turtles.  If
+-- that's the case, there's no speaking creature ID...
+if args[SPEAKING_CREATURE_ID] ~= nil then
+  if race_running() then
+    clear_and_add_message("RACEMASTER_RACE_RUNNING_SID")
+  else
+    run_race()
+  end
 end
 
 
