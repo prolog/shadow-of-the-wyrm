@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.1.1 "Campion"
-- Version declared June 12, 2019.
+- Version declared June 12, 2019.  Version finalized July 16, 2019.
 
 - Recharging a wand now gives a very small number of charges, with extra
   charges possible from high Wandcraft skill.

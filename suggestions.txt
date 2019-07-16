@@ -1,9 +1,8 @@
 Me:
+- Cantrip to set glow flag on items
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
 - Medicine: chance to avoid statuses in combat (+ update manual)
-- Investigate MapCreatureGenerator:84  Is "if max > min" what I want?
-- Ancient beasts not generating deep in ID? (Grond)
 - Add water breathing to codex
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
@@ -113,7 +112,6 @@ Me:
 - Recall spell that takes you back to the overworld.
 - Armour flags
 - More guilds
-- Cantrip to set glow flag on items
 - Food rotting for caught fish, other foods?
 - Message when doing checkpoint saves to indicate why the delay happens.
 
