@@ -1,4 +1,5 @@
 #include "CombatCounterCalculator.hpp"
+#include "CurrentCreatureAbilities.hpp"
 
 const int CombatCounterCalculator::COMBAT_SKILL_DIVISOR = 10;
 const int CombatCounterCalculator::DEXTERITY_DIVISOR = 5;
@@ -6,8 +7,9 @@ const int CombatCounterCalculator::DEXTERITY_DIVISOR = 5;
 int CombatCounterCalculator::calc_pct_chance_counter_strike(CreaturePtr creature) const
 {
   int pct_counter = 0;
+  CurrentCreatureAbilities cca;
 
-  if (creature != nullptr && !creature->is_dead())
+  if (creature != nullptr && !creature->is_dead() && cca.can_act(creature))
   {
     int combat_val = creature->get_skills().get_value(SkillType::SKILL_GENERAL_COMBAT) / COMBAT_SKILL_DIVISOR;
     pct_counter += combat_val;

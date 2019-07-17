@@ -1,4 +1,5 @@
 #include "IntimidationCalculator.hpp"
+#include "CurrentCreatureAbilities.hpp"
 
 const int IntimidationCalculator::MAX_PCT_CHANCE_INTIMIDATION = 85;
 const int IntimidationCalculator::INTIMIDATION_DIVISOR = 3;
@@ -8,8 +9,9 @@ const int IntimidationCalculator::LEVEL_DIVISOR = 2;
 int IntimidationCalculator::calculate_pct_chance_intimidated(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
   int pct_chance = 0;
+  CurrentCreatureAbilities cca;
 
-  if (attacking_creature != nullptr && attacked_creature != nullptr)
+  if (attacking_creature != nullptr && attacked_creature != nullptr && cca.can_act(attacked_creature))
   {
     int attack_intim = attacking_creature->get_skills().get_value(SkillType::SKILL_GENERAL_INTIMIDATION);
     int attack_cha = attacking_creature->get_charisma().get_current();

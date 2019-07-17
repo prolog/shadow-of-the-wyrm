@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "ParalysisStatusEffect.hpp"
 
 TEST(SW_Engine_Calculators_IntimidationCalculator, calculate_pct_chance_intimidated)
 {
@@ -25,6 +26,14 @@ TEST(SW_Engine_Calculators_IntimidationCalculator, calculate_pct_chance_intimida
 
   // Ensure the basic opposed calculation works.
   EXPECT_EQ(25, ic.calculate_pct_chance_intimidated(attacking_creature, attacked_creature));
+
+  // Ensure that paralyzed creatures can't intimidate.
+  ParalysisStatusEffect pse;
+  pse.apply_change(attacked_creature, 50);
+
+  EXPECT_EQ(0, ic.calculate_pct_chance_intimidated(attacking_creature, attacked_creature));
+
+  pse.undo_change(attacked_creature);
 
   // Ensure the level part works.
   Statistic attacking_level(20);
