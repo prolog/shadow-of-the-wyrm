@@ -1,3 +1,15 @@
+Shadow of the Wyrm v1.1.2 "Tarrega"
+- Version declared July 16, 2019.
+
+- Bug fixes:
+
+  - The minimum danger level was being properly constrained in Telari,
+    but the maximum was not, causing inappropriate creatures to be
+    generated for the current floor (Grond).
+
+  - Counter-strikes and intimidation could fire even when a creature
+    was paralyzed.
+
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
 

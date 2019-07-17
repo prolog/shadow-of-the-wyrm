@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "ParalysisStatusEffect.hpp"
 
 TEST(SW_Engine_Calculators_CombatCounterCalculator, pct_chance_counter_strike)
 {
@@ -21,6 +22,14 @@ TEST(SW_Engine_Calculators_CombatCounterCalculator, pct_chance_counter_strike)
   creature->get_dexterity_ref().set_base_current(32);
 
   EXPECT_EQ(12, ccc.calc_pct_chance_counter_strike(creature));
+
+  // Ensure that paralyzed creatures can't counter.
+  ParalysisStatusEffect pse;
+  pse.apply_change(creature, 50);
+
+  EXPECT_EQ(0, ccc.calc_pct_chance_counter_strike(creature));
+
+  pse.undo_change(creature);
 
   hp.set_current(-2);
   creature->set_hit_points(hp);

@@ -77,7 +77,13 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   uint current_creatures_placed = 0;
   uint unsuccessful_attempts = 0;
 
-  // Generate the list of possible creatures for this map.
+  bool fixed_danger_level = false;
+  auto fd_it = additional_properties.find(MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED);
+  if (fd_it != additional_properties.end())
+  {
+    map->set_property(fd_it->first, fd_it->second);
+  }
+
   int min_danger_level = get_min_danger_level(map, base_danger_level);
   int max_danger_level = get_danger_level(map, base_danger_level);
 
@@ -86,6 +92,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
     min_danger_level = max_danger_level;
   }
 
+  // Generate the list of possible creatures for this map.
   while (RNG::percent_chance(get_pct_chance_out_of_depth_creatures(map)))
   {
     max_danger_level++;
@@ -289,15 +296,24 @@ int MapCreatureGenerator::get_danger_level(MapPtr map, const int base_danger_lev
 
   if (map != nullptr)
   {
-    float multiplier = 1.0f;
-    string mult_s = map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE);
+    string fixed_cr_dlvl = map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED);
 
-    if (!mult_s.empty())
+    if (!fixed_cr_dlvl.empty() && String::to_bool(fixed_cr_dlvl))
     {
-      multiplier = String::to_float(mult_s);
+      danger_level = base_danger_level;
     }
+    else
+    {
+      float multiplier = 1.0f;
+      string mult_s = map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE);
 
-    danger_level = static_cast<int>(base_danger_level * multiplier);
+      if (!mult_s.empty())
+      {
+        multiplier = String::to_float(mult_s);
+      }
+
+      danger_level = static_cast<int>(base_danger_level * multiplier);
+    }
   }
 
   return danger_level;
