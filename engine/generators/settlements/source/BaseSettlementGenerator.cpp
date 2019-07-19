@@ -411,22 +411,6 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
   }
 }
 
-int BaseSettlementGenerator::get_pct_chance_shop() const
-{
-  return 40;
-}
-
-void BaseSettlementGenerator::generate_shop_if_necessary(MapPtr map)
-{
-  if (!buildings.empty() && map != nullptr && RNG::percent_chance(get_pct_chance_shop()))
-  {
-    Building shop_bldg = buildings.at(RNG::range(0, buildings.size()-1));
-    ShopGenerator sg;
-
-    sg.generate_shop(map, shop_bldg);
-  }
-}
-
 void BaseSettlementGenerator::generate_wells(MapPtr map)
 {
   if (map != nullptr)

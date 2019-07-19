@@ -32,8 +32,3 @@ MapPtr CityGenerator::generate()
   Dimensions base_dim = base_map->size();
   return generate(base_dim);
 }
-
-int CityGenerator::get_pct_chance_shop() const
-{
-  return 100;
-}

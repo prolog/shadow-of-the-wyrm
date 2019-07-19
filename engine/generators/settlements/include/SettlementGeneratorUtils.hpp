@@ -22,4 +22,6 @@ class SettlementGeneratorUtils
     static void generate_building_features(MapPtr map, const BuildingGenerationParameters& bgp);
     static void generate_building_creatures(MapPtr map, const BuildingGenerationParameters& bgp);
     static void generate_building_objects(MapPtr map, const BuildingGenerationParameters& bgp);
+
+    static const int PCT_CHANCE_BUILDING_SHOP;
 };

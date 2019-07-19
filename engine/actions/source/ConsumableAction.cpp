@@ -128,7 +128,7 @@ void ConsumableAction::gain_resistances_from_consumable(CreaturePtr creature, Co
       // Only consider consumable values that are resistances.
       if (consum_val > 0 && delta > 0)
       {
-        cr_intr.set_resistance_value(dt, cr_val + delta);
+        cr_intr.set_resistance_value(dt, cr_intr.get_resistance_value(dt) + delta);
         bool added_new_msg = add_consumable_message_if_necessary(creature, res, delta);
 
         if (added_new_msg && !added_msg)

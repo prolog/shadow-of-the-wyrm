@@ -37,7 +37,6 @@ MapPtr ScatteredSettlementGenerator::generate()
   
   generate_scattered_settlement(map);
   generate_wells(map);
-  generate_shop_if_necessary(map);
 
   return map;
 }

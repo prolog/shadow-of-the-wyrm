@@ -8,9 +8,12 @@
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
+#include "ShopGenerator.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
+
+const int SettlementGeneratorUtils::PCT_CHANCE_BUILDING_SHOP = 5;
 
 // Building generation routines
 pair<int, int> SettlementGeneratorUtils::get_door_location(const int start_row, const int end_row, const int start_col, const int end_col, const CardinalDirection door_direction)
@@ -126,12 +129,13 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
 {
   bool generated = false;
   TileGenerator tg;
-
+  
   int start_row = bgp.get_start_row();
   int end_row = bgp.get_end_row();
   int start_col = bgp.get_start_col();
   int end_col = bgp.get_end_col();
   CardinalDirection door_direction = bgp.get_door_direction();
+  bool shop = false;
 
   if (!is_rows_and_cols_in_range(map->size(), start_row, end_row, start_col, end_col))
   {
@@ -171,9 +175,17 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
 
     if (growth_rate == 100)
     {
-      generate_building_features(map, bgp);
-      generate_building_creatures(map, bgp);
-      generate_building_objects(map, bgp);
+      if (RNG::percent_chance(PCT_CHANCE_BUILDING_SHOP))
+      {
+        // Set a flag to generate a shop after the building is otherwise done.
+        shop = true;
+      }
+      else
+      {
+        generate_building_features(map, bgp);
+        generate_building_creatures(map, bgp);
+        generate_building_objects(map, bgp);
+      }
     }
 
     // Create door
@@ -185,7 +197,14 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
 
     // Track the building for later use - once all the buildings are generated
     // in a settlement, some might be used for shops or other purposes.
-    buildings.push_back({ { start_row, start_col },{ end_row, end_col }, door_location });
+    Building building({ { start_row, start_col },{ end_row, end_col }, door_location });
+    buildings.push_back(building);
+
+    if (shop)
+    {
+      ShopGenerator sg;
+      sg.generate_shop(map, building);
+    }
 
     map->insert(door_location.first, door_location.second, door_tile);
 

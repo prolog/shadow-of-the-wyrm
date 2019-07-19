@@ -11,8 +11,6 @@ class WalledSettlementGenerator : public BaseSettlementGenerator
     virtual MapPtr generate() override;
 
   protected:
-    virtual int get_pct_chance_shop() const override;
-
     virtual void initialize();
     
     virtual void generate_walled_settlement(MapPtr map);
