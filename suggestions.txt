@@ -1,3 +1,9 @@
+Grond's v112 bugs:
+- Water breathing seems to be treated like a negative status in that 5
+  will wait multiple turns while you have it
+- Immune to cold, still taking damage from ancient beasts
+- Switching with townsfolk (in churches?) leads to weird behaviour
+
 Me:
 - Cantrip to set glow flag on items
 - Grond: attacking turtles causes some kind of ToD crash after teleporting

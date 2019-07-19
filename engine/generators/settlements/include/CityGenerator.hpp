@@ -12,6 +12,5 @@ class CityGenerator : public BaseSettlementGenerator
     MapPtr generate() override;
 
   protected:
-    virtual int get_pct_chance_shop() const override;
     void initialize();
 };

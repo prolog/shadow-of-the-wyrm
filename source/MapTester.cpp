@@ -190,7 +190,7 @@ string map_to_string(MapPtr map, bool use_html)
       if (x == col_end)
       {
         // Is there a map to the east?
-        MapExitPtr exit = cur_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_EAST);
+        MapExitPtr exit = cur_map->get_map_exit(Direction::DIRECTION_EAST);
 
         if (exit && exit->is_using_map_id())
         {
@@ -215,7 +215,7 @@ string map_to_string(MapPtr map, bool use_html)
     if (y == row_end)
     {
       // Is there a map to the south?
-      MapExitPtr exit = row_reset_map->get_map_exit(CardinalDirection::CARDINAL_DIRECTION_SOUTH);
+      MapExitPtr exit = row_reset_map->get_map_exit(Direction::DIRECTION_SOUTH);
 
       if (exit && exit->is_using_map_id())
       {

@@ -10,6 +10,12 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
   - Counter-strikes and intimidation could fire even when a creature
     was paralyzed.
 
+  - Shops were generating over top of existing buildings in towns, leading
+    to strange layouts (Grond).
+
+  - Resistances from consumables weren't being properly carried over to
+    a creature's individual resistances (Grond).
+
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
 

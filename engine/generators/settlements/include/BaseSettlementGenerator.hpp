@@ -16,9 +16,6 @@ class BaseSettlementGenerator : public SOTW::Generator
 
   protected:
     virtual bool get_permanence_default() const override;
-    virtual int get_pct_chance_shop() const;
-
-    virtual void generate_shop_if_necessary(MapPtr map);
 
     void generate_road_north(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_size_modifier = 0, bool recurse = true);
     void generate_road_south(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_size_modifier = 0, bool recurse = true);
