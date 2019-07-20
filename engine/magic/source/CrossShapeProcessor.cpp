@@ -53,9 +53,11 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> CrossShapeProcessor::get_affe
         {
           stop_vec.push_back(d);
         }
-
-        affected_coords_and_tiles.push_back(make_pair(c, tile));
-        cross_vec.push_back(c);
+        else
+        {
+          affected_coords_and_tiles.push_back(make_pair(c, tile));
+          cross_vec.push_back(c);
+        }
       }
     }
 

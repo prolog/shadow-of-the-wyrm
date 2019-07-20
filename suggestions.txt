@@ -243,6 +243,10 @@ Rob Ayres
 Grond:
 - Can train up fae health by waiting forever
 - Torment-type spell (1/2 HP)
+- you see flickering even in areas where LOS is blocked by a wall
+- also when you move the cursor around with look, stuff flickers in LOS 
+  range around the cursor
+- cross spells affects rock tiles around you, shouldn't
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
@@ -252,3 +256,4 @@ Yan Zhang:
 - Bless should cost more AP, allow selection from eq
 - Door in the south of the air of the keep
 - Health approximation
+
