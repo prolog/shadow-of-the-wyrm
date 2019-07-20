@@ -35865,8 +35865,8 @@
 				<Rarity>1</Rarity>
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
-				<Difficulty>56</Difficulty>
-				<Speed>15</Speed>
+				<Difficulty>70</Difficulty>
+				<Speed>20</Speed>
 				<Damage>
 					<NumDice>8</NumDice>
 					<NumSides>6</NumSides>
@@ -36274,6 +36274,7 @@
 					<Pounds>50</Pounds>
 				</Weight>
 				<WornLocation>10</WornLocation>
+				<HandsRequired>2</HandsRequired>
 				<Material>8</Material>
 				<DangerLevel>5</DangerLevel>
 				<Properties>
@@ -36284,8 +36285,8 @@
 				</Properties>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
-				<Difficulty>52</Difficulty>
-				<Speed>8</Speed>
+				<Difficulty>85</Difficulty>
+				<Speed>25</Speed>
 				<Damage>
 					<NumDice>16</NumDice>
 					<NumSides>2</NumSides>

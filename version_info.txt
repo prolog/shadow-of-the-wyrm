@@ -1,6 +1,8 @@
 Shadow of the Wyrm v1.1.2 "Tarrega"
 - Version declared July 16, 2019.
 
+- Cabers and huge rocks are now harder to hit with, and slower.
+
 - Bug fixes:
 
   - The minimum danger level was being properly constrained in Telari,
@@ -15,6 +17,11 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 
   - Resistances from consumables weren't being properly carried over to
     a creature's individual resistances (Grond).
+
+  - Cabers were listed as one-handed weapons.
+
+  - Cross spells weren't terminating properly immediately when hitting a
+    blocking tile (Grond).
 
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
