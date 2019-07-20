@@ -23,6 +23,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
   - Cross spells weren't terminating properly immediately when hitting a
     blocking tile (Grond).
 
+  - Wands of digging weren't properly considering the tile's no-dig
+    property, after the first tile in the beam (Klapaucius).
+
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
 
