@@ -772,6 +772,30 @@ MapPtr CreatureUtils::update_fov_map(MapPtr current_map, MapPtr v_map, CreatureP
   return fov_map;
 }
 
+bool CreatureUtils::has_negative_status(CreaturePtr creature)
+{
+  bool has_neg = false;
+
+  if (creature != nullptr)
+  {
+    CreatureStatusMap csm = creature->get_statuses();
+
+    for (const auto& csm_pair : csm)
+    {
+      string status_id = csm_pair.first;
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+
+      if (se && se->is_negative())
+      {
+        has_neg = true;
+        break;
+      }
+    }
+  }
+
+  return has_neg;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureUtils_test.cpp"
 #endif

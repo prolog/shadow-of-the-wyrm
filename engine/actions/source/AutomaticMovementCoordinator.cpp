@@ -3,6 +3,7 @@
 #include "CoordUtils.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureUtils.hpp"
 #include "DirectionUtils.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
@@ -182,8 +183,9 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(
     manager.send();
   }
 
-  // Stop automovement if resting and HP and AP are full.
-  bool rest_ok = (creature->get_automatic_movement_ref().get_direction() != Direction::DIRECTION_NULL || (creature->get_hit_points().get_full() == false || creature->get_arcana_points().get_full() == false || creature->has_status()));
+  // Stop automovement if resting and HP and AP are full, and if there are no
+  // negative statuses.
+  bool rest_ok = (creature->get_automatic_movement_ref().get_direction() != Direction::DIRECTION_NULL || creature->get_hit_points().get_full() == false || creature->get_arcana_points().get_full() == false || CreatureUtils::has_negative_status(creature));
 
   // Turns Remaining is used by timed actions, such as resting, that specify
   // that a movement (for turns, null movement) should be done for a certain

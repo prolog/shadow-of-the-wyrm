@@ -26,6 +26,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
   - Wands of digging weren't properly considering the tile's no-dig
     property, after the first tile in the beam (Klapaucius).
 
+  - Resting was treating all statuses as requiring rest, rather than
+    only considering only negative statuses (Grond).
+
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
 
