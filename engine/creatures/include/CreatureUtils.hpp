@@ -62,6 +62,8 @@ class CreatureUtils
 
     static MapPtr update_fov_map(MapPtr current_map, MapPtr view_map, CreaturePtr creature);
 
+    static bool has_negative_status(CreaturePtr creature);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

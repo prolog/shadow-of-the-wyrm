@@ -28,3 +28,19 @@ TEST(SW_Engine_Creatures_CreatureUtils, can_pick_up)
   EXPECT_FALSE(CreatureUtils::can_pick_up(c, amulet3).first);
 }
 
+TEST(SW_Engine_CreatureUtils, has_negative_status)
+{
+  CreaturePtr creature = std::make_shared<Creature>();
+
+  EXPECT_FALSE(CreatureUtils::has_negative_status(nullptr));
+  EXPECT_FALSE(CreatureUtils::has_negative_status(creature));
+
+  Status s;
+  creature->set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, s);
+
+  EXPECT_FALSE(CreatureUtils::has_negative_status(creature));
+
+  creature->set_status(StatusIdentifiers::STATUS_ID_STONE, s);
+
+  EXPECT_TRUE(CreatureUtils::has_negative_status(creature));
+}
