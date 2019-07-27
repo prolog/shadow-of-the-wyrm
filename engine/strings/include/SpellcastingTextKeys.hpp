@@ -19,6 +19,7 @@ class SpellcastingTextKeys
     static const std::string SPELLCASTING_READ_SCROLL_MONSTER;
     static const std::string SPELLCASTING_READ_SPELLBOOK_PLAYER;
     static const std::string SPELLCASTING_READ_SPELLBOOK_MONSTER;
+    static const std::string SPELLCASTING_READ_WORLD_MAP;
     
     // Range abbreviation SIDs
     static const std::string SPELLCASTING_TARGET_SELF_ABRV;

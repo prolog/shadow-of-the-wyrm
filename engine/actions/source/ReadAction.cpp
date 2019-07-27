@@ -5,7 +5,9 @@
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "ItemFilterFactory.hpp"
+#include "MessageManagerFactory.hpp"
 #include "ReadStrategyFactory.hpp"
+#include "SpellcastingTextKeys.hpp"
 #include "ItemIdentifier.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
@@ -24,7 +26,8 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
 
   if (!cca.can_see(creature, true) ||
       !cca.can_read(creature, true) ||
-      !cca.can_focus(creature, true))
+      !cca.can_focus(creature, true) ||
+      check_on_world_map(creature))
   {
     return action_cost_value;
   }
@@ -68,6 +71,23 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
   }
 
   return action_cost_value;
+}
+
+bool ReadAction::check_on_world_map(CreaturePtr creature)
+{
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (creature && map && map->get_map_type() == MapType::MAP_TYPE_WORLD)
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_READ_WORLD_MAP));
+    manager.send();
+
+    return true;
+  }
+
+  return false;
 }
 
 ActionCostValue ReadAction::get_action_cost_value(CreaturePtr creature) const

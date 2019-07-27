@@ -567,6 +567,7 @@ const string ActionTextKeys::ACTION_HANDLE_DEFAULT             = "ACTION_HANDLE_
 const string ActionTextKeys::ACTION_HANDLE_ALTAR               = "ACTION_HANDLE_ALTAR";
 const string ActionTextKeys::ACTION_HANDLE_PEW                 = "ACTION_HANDLE_PEW";
 const string ActionTextKeys::ACTION_EVOKE_FAILED               = "ACTION_EVOKE_FAILED";
+const string ActionTextKeys::ACTION_EVOKE_WORLD_MAP            = "ACTION_EVOKE_WORLD_MAP";
 const string ActionTextKeys::ACTION_FISHING_NO_WATER           = "ACTION_FISHING_NO_WATER";
 const string ActionTextKeys::ACTION_FISHING_SPEARFISHING_WATER = "ACTION_FISHING_SPEARFISHING_WATER";
 const string ActionTextKeys::ACTION_FISHING_NO_EQUIPMENT       = "ACTION_FISHING_NO_EQUIPMENT";

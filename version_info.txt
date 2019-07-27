@@ -29,6 +29,17 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
   - Resting was treating all statuses as requiring rest, rather than
     only considering only negative statuses (Grond).
 
+  - The chaotic flag was a little too chaotic - it would change the
+    damage type, display the combat message, but when calculating the 
+    actual damage dealt, it could cause the damage type to flip again
+    (Grond).
+
+  - Various bestiary/codex typo fixes (Twelve and others).
+
+  - Reading was available on the world map, which if you failed
+    spectacularly could lead to summonings around you (Grond).  Wands
+    could also be evoked on the world map, which was not intended.
+
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
 
