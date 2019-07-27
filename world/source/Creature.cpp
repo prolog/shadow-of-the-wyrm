@@ -1256,6 +1256,16 @@ void Creature::add_event_script(const string& event_name, const ScriptDetails& s
   event_scripts[event_name] = sd;
 }
 
+void Creature::remove_event_script(const string& event_name)
+{
+  auto e_it = event_scripts.find(event_name);
+
+  if (e_it != event_scripts.end())
+  {
+    event_scripts.erase(e_it);
+  }
+}
+
 bool Creature::has_event_script(const string& event_name)
 {
   bool has_event = false;

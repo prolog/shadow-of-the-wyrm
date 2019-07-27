@@ -22,7 +22,8 @@ DeathManager::~DeathManager()
 // Run the death event.
 void DeathManager::run_death_event(CreaturePtr attacked_creature, CreaturePtr attacking_creature, MapPtr map) const
 {
-  ScriptDetails sd = attacked_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH);
+  string death_script_id = CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH;
+  ScriptDetails sd = attacked_creature->get_event_script(death_script_id);
   string event_script_name = sd.get_script();
   int chance = sd.get_chance();
 
@@ -31,6 +32,9 @@ void DeathManager::run_death_event(CreaturePtr attacked_creature, CreaturePtr at
     ScriptEngine& se = Game::instance().get_script_engine_ref();
     DeathScript ds;
     ds.execute(se, event_script_name, attacked_creature, attacking_creature, map);
+
+    // Ensure each creature's death script is only run once.
+    attacked_creature->remove_event_script(death_script_id);
   }
 }
 
