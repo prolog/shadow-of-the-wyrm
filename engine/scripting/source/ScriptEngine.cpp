@@ -403,6 +403,10 @@ void ScriptEngine::process_function_arguments(const vector<string>& param_types,
     {
       lua_pushinteger(L, String::to_int(param_value));
     }
+    else if (param_type == "boolean")
+    {
+      lua_pushboolean(L, String::to_bool(param_value));
+    }
     else
     {
       Log& log = Log::instance();

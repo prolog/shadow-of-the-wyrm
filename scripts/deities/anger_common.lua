@@ -38,9 +38,14 @@ end
 
 -- Handle deity anger, generally as a result of praying when the
 -- deity dislikes you.
-function deity_anger_default(creature_id, deity_id)
+function deity_anger_default(creature_id, deity_id, is_world_map)
   -- Equal chance of blue-bolting, equipment destruction, or nasties.
-  local deity_actions = {deity_anger_blast, deity_anger_curse, deity_anger_destroy_items, deity_anger_summon_creatures}
+  local deity_actions = {deity_anger_blast, deity_anger_curse, deity_anger_destroy_items}
+
+  if (is_world_map == false) then
+    table.insert(deity_actions, deity_anger_summon_creatures)
+  end
+
   local val = RNG_range(1, table.getn(deity_actions))
   
   local action_fn = deity_actions[val]
@@ -50,7 +55,7 @@ end
 -- Attempts to look up the anger function, given the deity ID, and then
 -- call it.  If there was no anger function found for the given deity ID,
 -- then try the default.
-function anger(creature_id, deity_id)
+function anger(creature_id, deity_id, is_world_map)
   local deity_fn = deity_anger_fns[deity_id]
 
   if deity_fn == nil then
@@ -58,6 +63,6 @@ function anger(creature_id, deity_id)
   end
 
   -- Call the anger function.
-  deity_fn(creature_id, deity_id)
+  deity_fn(creature_id, deity_id, is_world_map)
 end
 
