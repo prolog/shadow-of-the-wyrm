@@ -40,6 +40,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
     spectacularly could lead to summonings around you (Grond).  Wands
     could also be evoked on the world map, which was not intended.
 
+  - Angering your deity while on the world map no longer has the
+    possibility of summoning creatures (Klapaucius).
+
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
 

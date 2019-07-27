@@ -45,14 +45,16 @@ DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(C
   if (deity)
   {
     int piety = rm.get_piety_for_active_deity(creature);
+    MapPtr map = Game::instance().get_current_map();
 
-    if (piety < DISLIKE_DECISION_ANGER_THRESHOLD)
+    if (piety < DISLIKE_DECISION_ANGER_THRESHOLD && map != nullptr)
     {
       ScriptEngine& se = Game::instance().get_script_engine_ref();
       string anger_script = deity->get_anger_script();
+      bool is_world_map = map->get_map_type() == MapType::MAP_TYPE_WORLD;
 
       se.execute(anger_script, {});
-      se.call_function("anger", { "string", "string" }, { creature->get_id(), deity->get_id() }, 0);
+      se.call_function("anger", { "string", "string", "boolean" }, { creature->get_id(), deity->get_id(), std::to_string(is_world_map) }, 0);
     }
   }
 
