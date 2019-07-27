@@ -31,6 +31,14 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
 
   if (cca.can_speak(creature, true) && cca.can_focus(creature, true))
   {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    if (check_on_world_map(creature))
+    {
+      return action_cost_value;
+    }
+
     list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_WAND);
     ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
     
@@ -42,8 +50,6 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
       {
         // Redraw the screen, since we will have moved from the evoke screen
         // back to the main map.
-        Game& game = Game::instance();
-        MapPtr map = game.get_current_map();
         game.update_display(creature, map, creature->get_decision_strategy()->get_fov_map(), false);
         game.get_display()->redraw();
 
@@ -329,4 +335,21 @@ void EvokeAction::name_wand_if_identified(CreaturePtr creature, WandPtr wand, co
       item_id.set_item_identified(creature, wand, wand->get_base_id(), true);
     }
   }
+}
+
+bool EvokeAction::check_on_world_map(CreaturePtr creature)
+{
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (creature && map && map->get_map_type() == MapType::MAP_TYPE_WORLD)
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_EVOKE_WORLD_MAP));
+    manager.send();
+
+    return true;
+  }
+
+  return false;
 }

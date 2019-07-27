@@ -13,6 +13,7 @@ class ReadAction : public IActionManager
 
   protected:
     void read_item(CreaturePtr creature, ActionManager * const am, ReadablePtr readable);
-    void add_read_message(CreaturePtr creature, ReadablePtr readable, const ItemIdentifier& item_id);    
+    void add_read_message(CreaturePtr creature, ReadablePtr readable, const ItemIdentifier& item_id);
+    bool check_on_world_map(CreaturePtr creature);
 };
 

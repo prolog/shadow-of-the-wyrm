@@ -449,6 +449,14 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   DamageType damage_type = damage_info.get_damage_type();
   int effect_bonus = damage_info.get_effect_bonus();
   int base_damage = 0;
+
+  Damage combat_damage_fixed = damage_info;
+
+  if (combat_damage_fixed.get_chaotic())
+  {
+    combat_damage_fixed.set_chaotic(false);
+    combat_damage_fixed.set_damage_type(damage_type);
+  }
   
   bool use_mult_dam_type_msgs = String::to_bool(game.get_settings_ref().get_setting(Setting::MULTIPLE_DAMAGE_TYPE_MESSAGES));
 
@@ -468,10 +476,10 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   IHitTypeCalculatorPtr hit_calculator = IHitTypeFactory::create_hit_type(hit_type_enum);
   string hit_specific_msg = hit_calculator->get_combat_message();
   
-  bool piercing = damage_info.get_piercing();
-  bool incorporeal = damage_info.get_incorporeal();
+  bool piercing = combat_damage_fixed.get_piercing();
+  bool incorporeal = combat_damage_fixed.get_incorporeal();
 
-  base_damage = hit_calculator->get_base_damage(damage_info);
+  base_damage = hit_calculator->get_base_damage(combat_damage_fixed);
 
   if (!hit_specific_msg.empty())
   {
@@ -490,7 +498,7 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   bool slays_race = does_attack_slay_creature_race(attacking_creature, attacked_creature, attack_type);
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
   float soak_multiplier = hit_calculator->get_soak_multiplier();
-  int damage_dealt = damage_calc->calculate(attacked_creature, sneak_attack, slays_race, damage_info, base_damage, soak_multiplier);
+  int damage_dealt = damage_calc->calculate(attacked_creature, sneak_attack, slays_race, combat_damage_fixed, base_damage, soak_multiplier);
 
   // Add the text so far.
   add_combat_message(attacking_creature, attacked_creature, combat_message.str());
@@ -503,7 +511,7 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   if (damage_dealt > 0 || effect_bonus > 0)
   {
     // Apply any effects (e.g., poison) that occur as the result of the damage)
-    handle_damage_effects(attacking_creature, attacked_creature, damage_dealt, damage_type, effect_bonus, damage_info.get_status_ailments(), danger_level);
+    handle_damage_effects(attacking_creature, attacked_creature, damage_dealt, damage_type, effect_bonus, combat_damage_fixed.get_status_ailments(), danger_level);
 
     // If the creature is hidden, see if they remain hidden
     handle_attacker_hidden_after_damage(attacking_creature);
@@ -515,9 +523,9 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
     // to match the creature's remaining HP
     string source_id = attacking_creature != nullptr ? attacking_creature->get_id() : "";
 
-    handle_vorpal_if_necessary(attacking_creature, attacked_creature, damage_info, damage_dealt); 
-    handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, damage_info, attack_type);
-    deal_damage(attacking_creature, attacked_creature, source_id, damage_dealt, damage_info);
+    handle_vorpal_if_necessary(attacking_creature, attacked_creature, combat_damage_fixed, damage_dealt); 
+    handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, combat_damage_fixed, attack_type);
+    deal_damage(attacking_creature, attacked_creature, source_id, damage_dealt, combat_damage_fixed);
 
     if (!attacked_creature->is_dead())
     {
@@ -526,7 +534,7 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   }
   else
   {
-    if (!damage_info.is_always_zero())
+    if (!combat_damage_fixed.is_always_zero())
     {
       string no_damage_message = CombatTextKeys::get_no_damage_message(attacked_creature->get_is_player(), StringTable::get(attacked_creature->get_description_sid()));
       add_combat_message(attacking_creature, attacked_creature, no_damage_message);
@@ -537,7 +545,7 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   run_attack_script_if_necessary(attacking_creature, attacked_creature);
 
   // If the attack is scything, continue the attack on nearby creatures.
-  handle_scything_if_necessary(attacking_creature, attacked_creature, attack_type, ast, damage_info);
+  handle_scything_if_necessary(attacking_creature, attacked_creature, attack_type, ast, combat_damage_fixed);
 
   return damage_dealt;
 }

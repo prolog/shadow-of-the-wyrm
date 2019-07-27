@@ -1,8 +1,15 @@
 Grond's v112 bugs:
-- Immune to cold, still taking damage from ancient beasts
 - Switching with townsfolk (in churches?) leads to weird behaviour
+- Continue prompt for godslayer should default to yes
+- Killing sceadugenga with petrification leads to the ending messages
+  twice
+- Adjacent creatures attack on load
+- Timewalking in the tower is weird display-wise
+- Golden apple trees don't seem to produce any fruit
+- Grond broke experience
 
 Me:
+- Turn off the savefile flags before the next release
 - Cantrip to set glow flag on items
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
@@ -133,6 +140,8 @@ Kyzrati:
 - Wants item-iary.  Separate screen + in inventory view.  Update lower
   message to be [A...] Info or [A...] Select based on context.
 - Lit FOV
+- Do something around accidentally spamming keys and training unwanted
+  skills.
 
 Avagart:
 - Eventually, have automovement stop only on new items.
@@ -255,3 +264,10 @@ Yan Zhang:
 - Door in the south of the air of the keep
 - Health approximation
 
+Twelve:
+- Option to make skill selection capitalization only
+
+Klapaucius: 
+- Deity anger shouldn't summon on world map (potentially others)
+- Going into an item screen (e.g., for eating), codexing an item, and
+  then cancelling actually selects that item.
