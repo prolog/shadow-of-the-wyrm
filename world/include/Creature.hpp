@@ -292,6 +292,7 @@ class Creature : public ISerializable
     EventScriptsMap get_event_scripts() const;
     EventScriptsMap& get_event_scripts_ref();
     void add_event_script(const std::string& event_name, const ScriptDetails& sd);
+    void remove_event_script(const std::string& event_name);
     bool has_event_script(const std::string& event_name);
     ScriptDetails get_event_script(const std::string& event_name) const;
 
