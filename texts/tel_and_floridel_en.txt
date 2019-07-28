@@ -2841,3 +2841,13 @@ on waking as they found their father gone again.
 %p
 VIII
 %p
+In Cithriel, the preparations started %b
+to take shape: the horses groomed and fed, %b
+provisions packed, the swords and spears sharpened. %b
+The riders who would find the outposts spread %b
+apart - and quickly.  Travelling light, they left %b
+before the King and Alcius met up %b
+with their chosen groups, ran down the plans, addressed %b
+concerns, and formed the spearhead of a thrust %b
+into the giants' chest, where they'd collapse the lungs.
+%p
