@@ -3,6 +3,8 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 
 - Cabers and huge rocks are now harder to hit with, and slower.
 
+- Stanzas for "Tel and Floridel".
+
 - Bug fixes:
 
   - The minimum danger level was being properly constrained in Telari,
@@ -45,6 +47,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 
   - Death scripts could fire multiple times if multiple statuses would
     cause death (Grond).
+
+  - An exception was being thrown when trying to select a skill from
+    a subsequent page (Grond).
 
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.

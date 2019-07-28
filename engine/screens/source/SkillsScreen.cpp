@@ -77,22 +77,29 @@ void SkillsScreen::initialize()
         ss << skill_desc << " (" << skill->get_value() << ")";
 
         option_text_component->add_text(ss.str());
-
-        current_option.set_id(current_id);
-        current_option.set_external_id(to_string(i));
-
-        options->add_option(current_option);
         options->add_option_description("");
 
         cnt++;
 
-        add_options_component(sk_screen, options, cnt, current_id);
-
-        if (cnt == 0)
+        if (can_add_component(cnt) == false)
         {
+          current_id = 0;
+          cnt = 1;
           screen_selection_to_skill_map.push_back(selection_map);
           selection_map.clear();
+
+          add_page(sk_screen);
+          sk_screen.clear();
         }
+
+        // Set the ID after we've done a check on whether or not we can
+        // add the component so that if a new page was added, and the
+        // current id updated, we aren't setting the old value.
+        current_option.set_id(current_id);
+        current_option.set_external_id(to_string(i));
+        options->add_option(current_option);
+
+        add_options_component(sk_screen, options, cnt, current_id);
 
         // Add to the selection map after the option component has been added
         // so that if we've started a new page, the skill is added to the
