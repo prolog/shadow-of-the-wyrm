@@ -4,6 +4,7 @@
 using namespace std;
 
 // Status ailment text keys:
+const string StatusAilmentTextKeys::STATUS_COUNTERACTED            = "STATUS_COUNTERACTED";
 const string StatusAilmentTextKeys::STATUS_HUNGER_STUFFED          = "STATUS_HUNGER_STUFFED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STUFFED  = "STATUS_MESSAGE_HUNGER_STUFFED";
 const string StatusAilmentTextKeys::STATUS_HUNGER_FULL             = "STATUS_HUNGER_FULL";

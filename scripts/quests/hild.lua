@@ -28,7 +28,7 @@ local function hild_weaving_completion_fn()
     clear_and_add_message("HILD_WEAVING_QUEST_COMPLETE_SID")
   else
     -- Set the skill to the maximum value, and then grant the mantle.
-    set_skill_value(PLAYER_ID, weaving, 100)
+    set_skill_value(PLAYER_ID, CSKILL_GENERAL_WEAVING, 100)
     add_object_to_player_tile("wintersea_mantle")
     
     add_message_with_pause("HILD_WEAVING_QUEST_COMPLETE_SPECIAL_SID")

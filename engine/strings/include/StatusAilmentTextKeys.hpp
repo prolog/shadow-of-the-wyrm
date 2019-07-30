@@ -8,6 +8,7 @@ class StatusAilmentTextKeys
 {
   public:
     // Hunger Keys:
+    static const std::string STATUS_COUNTERACTED;
     static const std::string STATUS_HUNGER_STUFFED;
     static const std::string STATUS_MESSAGE_HUNGER_STUFFED;
     static const std::string STATUS_HUNGER_FULL;

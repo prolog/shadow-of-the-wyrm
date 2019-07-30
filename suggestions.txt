@@ -8,11 +8,12 @@ Grond's v112 bugs:
 
 Me:
 - Turn off the savefile flags before the next release
+- Train health when statuses are finalized
 - Cantrip to set glow flag on items
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
-- Medicine: chance to avoid statuses in combat (+ update manual)
 - Add water breathing to codex
+- Look at race balance: stats, speed, skill points, etc
 - Shield punch!
 - Write script to check for any items without CodexDescriptionSID
 - Can fix the turtle races by attacking two of the turtles
@@ -252,6 +253,8 @@ Grond:
 - also when you move the cursor around with look, stuff flickers in LOS 
   range around the cursor
 - cross spells affects rock tiles around you, shouldn't
+- how is skinning stacks of corpses handled?  seems to be one skin on
+  success or zero on failure, regardless of stack size
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
