@@ -2087,10 +2087,10 @@
 				</MaximumAge>
 			</AgeInfo>
 			<RaceInitialStatistics>
-				<Strength>18</Strength>
+				<Strength>19</Strength>
 				<Dexterity>9</Dexterity>
 				<Agility>8</Agility>
-				<Health>16</Health>
+				<Health>18</Health>
 				<Intelligence>7</Intelligence>
 				<Willpower>12</Willpower>
 				<Charisma>6</Charisma>
@@ -2165,7 +2165,7 @@
 				</MaximumAge>
 			</AgeInfo>
 			<RaceInitialStatistics>
-				<Strength>17</Strength>
+				<Strength>25</Strength>
 				<Dexterity>10</Dexterity>
 				<Agility>10</Agility>
 				<Health>13</Health>
@@ -2281,6 +2281,7 @@
 					<DisarmTraps>15</DisarmTraps>
 					<Dungeoneering>15</Dungeoneering>
 					<Literacy>5</Literacy>
+					<Medicine>5</Medicine>
 					<MountainLore>15</MountainLore>
 					<Spelunking>20</Spelunking>
 					<Wandcraft>5</Wandcraft>
@@ -3430,6 +3431,7 @@
 					<Literacy>25</Literacy>
 					<Lore>20</Lore>
 					<Magic>15</Magic>
+					<Medicine>5</Medicine>
 					<Religion>25</Religion>
 					<Scribing>15</Scribing>
 					<Swimming>15</Swimming>
@@ -3789,12 +3791,12 @@
 			</Resistances>
 			<Skills>
 				<GeneralSkills>
-					<Brewing>15</Brewing>
 					<Detection>15</Detection>
 					<Herbalism>20</Herbalism>
 					<Literacy>15</Literacy>
 					<Lore>20</Lore>
 					<Magic>25</Magic>
+					<Medicine>20</Medicine>
 					<Papercraft>15</Papercraft>
 					<Religion>20</Religion>
 					<Scribing>20</Scribing>

@@ -3,6 +3,13 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 
 - Cabers and huge rocks are now harder to hit with, and slower.
 
+- The Medicine skill can now help automatically avoid negative statuses.
+
+- Giants start with more initial Strength.
+
+- Sages no longer get Brewing, but get Medicine.  Pilgrims and Gnomes
+  also now start with Medicine.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -50,6 +57,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 
   - An exception was being thrown when trying to select a skill from
     a subsequent page (Grond).
+
+  - When you had Weaving > 80 and were in a position to complete Hild's
+    quest, a Lua error prevented completion (Grond).
 
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.

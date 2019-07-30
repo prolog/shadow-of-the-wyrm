@@ -8,6 +8,8 @@
 #include "ModifyStatisticsEffect.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
+#include "SkillManager.hpp"
+#include "StatusAilmentTextKeys.hpp"
 #include "StatisticsMarker.hpp"
 #include "StatusEffect.hpp"
 
@@ -48,9 +50,27 @@ bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bo
   bool status_should_apply = false;
 
   if (creature && !creature->has_status(get_status_identifier()) 
-   && RNG::percent_chance(status_calc->chance_of_effect(creature, effect_bonus)))
+   && RNG::percent_chance(status_calc->pct_chance_effect(creature, effect_bonus)))
   {
     status_should_apply = true;
+
+    // The creature may immediately counteract the effect via Medicine.
+    if (is_negative())
+    {
+      if (RNG::percent_chance(status_calc->pct_chance_counteract_negative(creature)))
+      {
+        // We used Medicine successfully, so mark it.
+        SkillManager sm;
+        sm.mark_skill(creature, SkillType::SKILL_GENERAL_MEDICINE, true);
+
+        // Add a message about counteracting the effect.
+        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        manager.add_new_message(StringTable::get(StatusAilmentTextKeys::STATUS_COUNTERACTED));
+        manager.send();
+
+        status_should_apply = false;
+      }
+    }
   }
 
   return status_should_apply;

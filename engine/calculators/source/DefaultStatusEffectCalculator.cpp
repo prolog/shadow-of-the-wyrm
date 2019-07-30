@@ -10,3 +10,6 @@ int DefaultStatusEffectCalculator::calculate_duration_in_minutes(CreaturePtr cre
   return 0;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/DefaultStatusEffectCalculator_test.cpp"
+#endif
