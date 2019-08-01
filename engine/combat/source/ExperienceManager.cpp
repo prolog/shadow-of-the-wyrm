@@ -44,7 +44,11 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
 
   if (creature)
   {
-    creature->set_experience_points(creature->get_experience_points() + experience_value);
+    if (creature->get_level().get_current() < static_cast<int>(CreatureConstants::MAX_CREATURE_LEVEL))
+    {
+      creature->set_experience_points(creature->get_experience_points() + experience_value);
+      experience_gained = true;
+    }
     
     // If the creature has killed something particularly dangerous, the creature might have
     // received sufficient experience to gain more than one level.
@@ -52,9 +56,7 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
     {
       level_up(creature);
       levels_gained++;
-    }
-    
-    experience_gained = true;
+    }    
   }
 
   // If we've gained at least one level, display the skill advancement screen.

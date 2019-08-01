@@ -10,6 +10,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 - Sages no longer get Brewing, but get Medicine.  Pilgrims and Gnomes
   also now start with Medicine.
 
+- Beefed up The Smith's rewards for thrown bludgeons/rocks considerably -
+  they now do double the damage, and have a considerable effect bonus.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -60,6 +63,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 
   - When you had Weaving > 80 and were in a position to complete Hild's
     quest, a Lua error prevented completion (Grond).
+
+  - Capped the amount of experience that could apply to the high score
+    value.
 
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
