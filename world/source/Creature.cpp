@@ -1108,7 +1108,11 @@ uint Creature::get_experience_value() const
 
 void Creature::set_experience_points(const uint new_experience_points)
 {
-  experience_points = new_experience_points;
+  // Only set experience if we've not yet hit the max level.
+  if (level.get_current() < static_cast<int>(CreatureConstants::MAX_CREATURE_LEVEL))
+  {
+    experience_points = new_experience_points;
+  }
 }
 
 uint Creature::get_experience_points() const

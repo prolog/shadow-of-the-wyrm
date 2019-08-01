@@ -36311,9 +36311,10 @@
 				<Difficulty>52</Difficulty>
 				<Speed>30</Speed>
 				<Damage>
-					<NumDice>200</NumDice>
+					<NumDice>400</NumDice>
 					<NumSides>2</NumSides>
 					<Type>2</Type>
+					<EffectBonus>50</EffectBonus>
 				</Damage>
 			</Missile>
 			<Missile id="massive_ferric_meteorite">
@@ -36336,9 +36337,10 @@
 				<Difficulty>52</Difficulty>
 				<Speed>25</Speed>
 				<Damage>
-					<NumDice>350</NumDice>
+					<NumDice>500</NumDice>
 					<NumSides>2</NumSides>
 					<Type>2</Type>
+					<EffectBonus>50</EffectBonus>
 				</Damage>
 			</Missile>
 			<Missile id="throwing_axe">
