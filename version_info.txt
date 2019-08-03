@@ -16,6 +16,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 - The prompts to continue adventuring after the regular and godslayer
   endings now default to "yes" (Grond).
 
+- When trying to move down without an exit/shovel, the message now hints
+  at the use of a shovel.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

@@ -56,16 +56,11 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     }
     else
     {
-      // This is so that it's easy to find/replace this later, once I add message managers
-      // per-creature
-      if (creature->get_is_player())
-      {
-        // Let the player know there is no exit.
-        string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT);
+      // Let the player know there is no exit.
+      string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT);
           
-        manager.add_new_message(no_exit);
-        manager.send();                
-      }
+      manager.add_new_message(no_exit);
+      manager.send();                
     }
   }
   else
@@ -143,16 +138,11 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             }
             else
             {
-              // This is so that it's easy to find/replace this later, once I add message managers
-              // per-creature
-              if (creature->get_is_player())
-              {
-                // Let the player know there is no exit.
-                string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT);
-                IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-                manager.add_new_message(no_exit);
-                manager.send();
-              }
+              IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+              string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN);
+              manager.add_new_message(no_exit);
+
+              manager.send();
             }
           }
         }  

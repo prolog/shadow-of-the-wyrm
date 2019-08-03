@@ -8,6 +8,7 @@ class MovementTextKeys
     static std::string get_cannot_exit_map_message(const MapType mt);
 
     static const std::string ACTION_MOVE_NO_EXIT;
+    static const std::string ACTION_MOVE_NO_EXIT_DOWN;
     static const std::string ACTION_MOVE_ADJACENT_HOSTILE_CREATURE;
     static const std::string ACTION_MOVE_OFF_WORLD_MAP;
     static const std::string ACTION_NO_WAY_UP_WORLD_MAP;

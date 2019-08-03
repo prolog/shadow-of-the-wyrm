@@ -66,3 +66,11 @@ TEST(SW_World_NullInventory, get_allows_items)
 
   EXPECT_FALSE(ni.get_allows_items());
 }
+
+TEST(SW_World_NullInventory, add_items)
+{
+  NullInventory ni;
+  ItemPtr item = std::make_shared<Spellbook>();
+  ni.add_items({ item });
+  EXPECT_EQ(0, ni.count_items());
+}

@@ -131,3 +131,24 @@ TEST(SW_World_Inventory, allows_items)
 
   EXPECT_TRUE(i.get_allows_items());
 }
+
+TEST(SW_World_Inventory, add_items)
+{
+  Inventory i;
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  book->set_id("book");
+
+  list<ItemPtr> items = {book};
+  i.set_items(items);
+
+  EXPECT_EQ(1, i.count_items());
+
+  ToolPtr tool = std::make_shared<Tool>();
+  tool->set_id("tool");
+
+  items = {tool};
+  i.add_items(items);
+
+  EXPECT_EQ(2, i.count_items());
+}

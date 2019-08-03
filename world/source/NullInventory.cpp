@@ -121,6 +121,10 @@ void NullInventory::set_items(const list<ItemPtr>& items)
 {
 }
 
+void NullInventory::add_items(const list<ItemPtr>& items)
+{
+}
+
 list<ItemPtr>& NullInventory::get_items_ref()
 {
   return items;

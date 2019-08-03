@@ -2,7 +2,6 @@ Grond's v112 bugs:
 - Switching with townsfolk (in churches?) leads to weird behaviour
 - Adjacent creatures attack on load
 - Timewalking in the tower is weird display-wise
-- Golden apple trees don't seem to produce any fruit
 - Smithing a stack of items improves all items in that stack
 
 Me:
@@ -13,6 +12,7 @@ Me:
 - Add water breathing to codex
 - Look at race balance: stats, speed, skill points, etc
 - Shield punch!
+- Fruit trees should generate fruit annually.
 - Write script to check for any items without CodexDescriptionSID
 - Can fix the turtle races by attacking two of the turtles
 - Random villages should include the race in the description prior to
