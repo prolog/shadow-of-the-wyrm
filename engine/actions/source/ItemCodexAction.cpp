@@ -279,6 +279,7 @@ ItemPtr ItemCodexAction::get_codex_item(const string& search_text) const
   string item_sdesc;
   ItemMap item_map = game.get_items_ref();
   vector<ItemPtr> partial_matches;
+  ItemIdentifier iid;
 
   for (const ItemMap::value_type& item_pair : item_map)
   {
@@ -306,7 +307,10 @@ ItemPtr ItemCodexAction::get_codex_item(const string& search_text) const
       else if (boost::ifind_first(StringRange(item_sdesc.begin(), item_sdesc.end()),
         StringRange(search_text.begin(), search_text.end())))
       {
-        partial_matches.push_back(item_pair.second);
+        if (iid.get_item_identified(item, true))
+        {
+          partial_matches.push_back(item_pair.second);
+        }
       }
     }
   }

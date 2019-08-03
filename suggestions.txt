@@ -5,8 +5,6 @@ Grond's v112 bugs:
 - Timewalking in the tower is weird display-wise
 - Golden apple trees don't seem to produce any fruit
 - Smithing a stack of items improves all items in that stack
-- black hand crossbow works to look up shadow, but "shadow" doesn't.
-- caber from smith sucks compared to throwing world-sword
 
 Me:
 - Turn off the savefile flags before the next release
