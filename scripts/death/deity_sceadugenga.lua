@@ -16,7 +16,7 @@ local function generate_telari_staircase(creature_id, attacking_creature_id, map
 
   -- Sceadugenga is dead: the Nine have been destroyed.  Give the player
   -- the option to continue playing, or to exit.
-  local keep_adventuring = add_confirmation_message("WIN_KEEP_ADVENTURING")
+  local keep_adventuring = add_confirmation_message("WIN_KEEP_ADVENTURING", true)
   
   -- Set the win condition for the godslayer ending.
   set_winner(PLAYER_ID, CCREATURE_WIN_GODSLAYER)

@@ -13,6 +13,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 - Beefed up The Smith's rewards for thrown bludgeons/rocks considerably -
   they now do double the damage, and have a considerable effect bonus.
 
+- The prompts to continue adventuring after the regular and godslayer
+  endings now default to "yes" (Grond).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
