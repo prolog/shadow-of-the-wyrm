@@ -36309,7 +36309,7 @@
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>52</Difficulty>
-				<Speed>30</Speed>
+				<Speed>40</Speed>
 				<Damage>
 					<NumDice>400</NumDice>
 					<NumSides>2</NumSides>
@@ -36335,7 +36335,7 @@
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
 				<Difficulty>52</Difficulty>
-				<Speed>25</Speed>
+				<Speed>50</Speed>
 				<Damage>
 					<NumDice>500</NumDice>
 					<NumSides>2</NumSides>

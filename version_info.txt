@@ -67,6 +67,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
   - Capped the amount of experience that could apply to the high score
     value.
 
+  - The inexact search for the codex wasn't properly considering whether
+    the partial matches were identified items (Grond).
+
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
 
