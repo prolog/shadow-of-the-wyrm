@@ -1,6 +1,5 @@
 Grond's v112 bugs:
 - Switching with townsfolk (in churches?) leads to weird behaviour
-- Continue prompt for godslayer should default to yes
 - Adjacent creatures attack on load
 - Timewalking in the tower is weird display-wise
 - Golden apple trees don't seem to produce any fruit

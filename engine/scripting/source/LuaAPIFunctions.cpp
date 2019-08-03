@@ -601,16 +601,24 @@ int add_debug_message(lua_State* ls)
 int add_confirmation_message(lua_State* ls)
 {
   bool confirm = false;
+  int num_args = lua_gettop(ls);
 
-  if ((lua_gettop(ls) > 0) && (lua_isstring(ls, 1)))
+  if ((num_args > 0) && (lua_isstring(ls, 1)))
   {
+    bool default_value = false;
+
+    if (num_args > 1 && lua_isboolean(ls, 2))
+    {
+      default_value = lua_toboolean(ls, 2);
+    }
+
     Game& game = Game::instance();
     CreaturePtr player = game.get_current_player();
     string message = read_sid_and_replace_values(ls);
 
     IMessageManager& manager = MM::instance();
     manager.add_new_confirmation_message(TextMessages::get_confirmation_message(message));
-    confirm = player->get_decision_strategy()->get_confirmation();
+    confirm = player->get_decision_strategy()->get_confirmation(default_value);
 
     manager.send();
   }
