@@ -353,6 +353,11 @@ void Inventory::set_items(const list<ItemPtr>& new_items)
   items = new_items;
 }
 
+void Inventory::add_items(const list<ItemPtr>& new_items)
+{
+  std::copy(new_items.begin(), new_items.end(), std::back_inserter(items));
+}
+
 // Get the actual Items
 list<ItemPtr>& Inventory::get_items_ref()
 {

@@ -583,7 +583,7 @@ void Tile::transform_from(std::shared_ptr<Tile> original_tile)
     // inventories instead of null ones.
     list<ItemPtr> raw_items = original_tile->get_items()->get_items_ref();
     items = new_inv;
-    items->set_items(raw_items);
+    items->add_items(raw_items);
 
     for (const auto& p_pair : props)
     {

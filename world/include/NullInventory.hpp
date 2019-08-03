@@ -40,6 +40,7 @@ class NullInventory : public IInventory
     uint count_currency() const override;
 
     void set_items(const std::list<ItemPtr>& items) override;
+    void add_items(const std::list<ItemPtr>& items) override;
     std::list<ItemPtr>& get_items_ref() override;
     const std::list<ItemPtr>& get_items_cref() const override;
 

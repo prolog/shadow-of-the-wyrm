@@ -47,7 +47,7 @@ void FruitTreeTileConfiguration::configure_additional_features(TilePtr tile, con
 
   if (f_it != fruit_ids.end() && tile != nullptr)
   {
-    if (RNG::percent_chance(60))
+    if (RNG::percent_chance(get_pct_chance_fruit()))
     {
       pair<int, int> fruit_range = get_fruit_range();
       int num_pieces = RNG::range(fruit_range.first, fruit_range.second);
@@ -66,4 +66,9 @@ void FruitTreeTileConfiguration::configure_additional_features(TilePtr tile, con
 std::pair<int, int> FruitTreeTileConfiguration::get_fruit_range() const
 {
   return make_pair(1, 6);
+}
+
+int FruitTreeTileConfiguration::get_pct_chance_fruit() const
+{
+  return 60;
 }

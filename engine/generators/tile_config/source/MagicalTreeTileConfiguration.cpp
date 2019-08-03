@@ -13,7 +13,7 @@ MagicalTreeTileConfiguration::MagicalTreeTileConfiguration()
 
 void MagicalTreeTileConfiguration::initialize_fruit_ids()
 {
-  // Magical fruit appears year-round.
+  // Magical fruit appears year-round
   fruit_ids.insert(make_pair(make_pair(TreeSpeciesID::TREE_SPECIES_GOLDEN_APPLE, Season::SEASON_WINTER), "_golden_apple"));
   fruit_ids.insert(make_pair(make_pair(TreeSpeciesID::TREE_SPECIES_GOLDEN_APPLE, Season::SEASON_SPRING), "_golden_apple"));
   fruit_ids.insert(make_pair(make_pair(TreeSpeciesID::TREE_SPECIES_GOLDEN_APPLE, Season::SEASON_SUMMER), "_golden_apple"));
@@ -36,4 +36,9 @@ void MagicalTreeTileConfiguration::initialize_tree_species_details()
 pair<int, int> MagicalTreeTileConfiguration::get_fruit_range() const
 {
   return make_pair(1, 1);
+}
+
+int MagicalTreeTileConfiguration::get_pct_chance_fruit() const
+{
+  return 100;
 }
