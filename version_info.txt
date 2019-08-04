@@ -19,6 +19,8 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 - When trying to move down without an exit/shovel, the message now hints
   at the use of a shovel.
 
+- Smiths start off with 3 iron ingots instead of 1.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -75,6 +77,8 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 
   - The inexact search for the codex wasn't properly considering whether
     the partial matches were identified items (Grond).
+
+  - Smithing now works on a single item instead of a stack (Grond).
 
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.

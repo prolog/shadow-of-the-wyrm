@@ -199,6 +199,11 @@ ItemPtr ForgeManipulator::get_selected_item(CreaturePtr creature, ItemPtr select
 // Improve an item: add new resistances, damage/evade/soak, etc.
 void ForgeManipulator::improve_item(CreaturePtr creature, ItemPtr selected_item, ItemPtr selected_ingot)
 {
+  if (selected_item == nullptr)
+  {
+    return;
+  }
+
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   // Use up an ingot.
@@ -210,6 +215,23 @@ void ForgeManipulator::improve_item(CreaturePtr creature, ItemPtr selected_item,
   else
   {
     creature->get_inventory()->remove(selected_ingot->get_id());
+  }
+
+  // If there is more than one item, reduce the original by one,
+  // create a new item, improve that, and add it to the creature's
+  // inventory.
+  uint quantity = selected_item->get_quantity();
+  if (selected_item && quantity > 1)
+  {
+    ItemPtr item_to_improve = ItemPtr(selected_item->create_with_new_id());
+    item_to_improve->set_quantity(1);
+    selected_item->set_quantity(quantity - 1);
+
+    // We explicitly want to add it, and not merge it.  It needs to be not
+    // merged back into the existing stack.
+    creature->get_inventory()->add(item_to_improve);
+
+    selected_item = item_to_improve;
   }
 
   // Improve the item.

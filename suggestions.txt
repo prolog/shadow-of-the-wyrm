@@ -2,7 +2,6 @@ Grond's v112 bugs:
 - Switching with townsfolk (in churches?) leads to weird behaviour
 - Adjacent creatures attack on load
 - Timewalking in the tower is weird display-wise
-- Smithing a stack of items improves all items in that stack
 
 Me:
 - Turn off the savefile flags before the next release

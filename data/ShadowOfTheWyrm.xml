@@ -4209,6 +4209,9 @@
 					</InitialItem>
 					<InitialItem>
 						<ID>_iron_ingot</ID>
+						<Quantity>
+							<Amount>3</Amount>
+						</Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>_currency</ID>
