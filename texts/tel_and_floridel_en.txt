@@ -2851,3 +2851,13 @@ with their chosen groups, ran down the plans, addressed %b
 concerns, and formed the spearhead of a thrust %b
 into the giants' chest, where they'd collapse the lungs.
 %p
+Green-cloaked, bay-horsed, the scouts were built for stealth: %b
+they planned to take the broken woodland routes, %b
+eschewing open roads.  The fae knew well %b
+that giants, owing to their size, would use %b
+the least constraining option.  So they sent %b
+their scouts on other ways, through stands of elm %b
+and ash, on rocky ground that never lent %b
+a hint of hoofprints.  Soon their scouts would tell %b
+their war-plans to the fae outside the citadel.
+%p
