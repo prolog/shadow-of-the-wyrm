@@ -81,6 +81,10 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     {
       selected_item = inv->get_from_id(item_id);
       Game::instance().get_action_manager_ref().item_codex(creature, selected_item);
+      
+      // Reset the selected item so that, next time around, if the player 
+      // exits the screen that item isn't selected.
+      selected_item = nullptr;
     }
   }
 
