@@ -5,6 +5,8 @@
 #include "FishingSkillProcessor.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "ItemEnchantmentCalculator.hpp"
+#include "ItemGenerationManager.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
 #include "MapUtils.hpp"
@@ -13,6 +15,8 @@
 #include "Weapon.hpp"
 
 using namespace std;
+
+const int FishingSkillProcessor::CATCH_PCT_CHANCE_FISH = 95;
 
 FishingSkillProcessor::FishingSkillProcessor()
 : fish_types{{WaterType::WATER_TYPE_FRESH, {ItemIdKeys::ITEM_ID_TROUT, ItemIdKeys::ITEM_ID_CARP, ItemIdKeys::ITEM_ID_PIKE}}, 
@@ -129,7 +133,6 @@ pair<bool, WaterType> FishingSkillProcessor::check_for_adjacent_water_tile(Creat
 void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const FishingType fishing, const WaterType water)
 {
   FishingCalculator fc;
-  Game& game = Game::instance();
   vector<pair<FishingOutcomeType, int>> outcomes = fc.calculate_fishing_outcomes(creature);
   
   for (const auto& outcome_pair : outcomes)
@@ -150,62 +153,107 @@ void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const Fishing
       // If the creature caught something, add it to the tile
       if (fot == FishingOutcomeType::FISHING_OUTCOME_CATCH)
       {
-        TilePtr creature_tile = map->at(map->get_location(creature->get_id()));
-
-        if (creature_tile != nullptr)
+        if (RNG::percent_chance(CATCH_PCT_CHANCE_FISH))
         {
-          auto f_it = fish_types.find(water);
-
-          if (f_it != fish_types.end())
-          {
-            vector<string> fishies = f_it->second;
-            
-            if (!fishies.empty())
-            {
-              string fish_type = fishies.at(RNG::range(0, fishies.size()-1));
-              ItemPtr fish = ItemManager::create_item(fish_type);
-              ConsumablePtr food = dynamic_pointer_cast<Consumable>(fish);
-
-              // There's some variation in size between every fish.
-              if (food != nullptr)
-              {
-                float size_variation = RNG::range_f(0.5, 1.5);
-                Weight new_weight = food->get_weight();
-                new_weight.set_weight(static_cast<uint>(new_weight.get_weight() * size_variation));
-
-                food->set_nutrition(static_cast<int>(food->get_nutrition() * size_variation));
-                food->set_weight(new_weight);
-              }
-
-              // A fish has been caught - the map should now become permanent.
-              GameUtils::make_map_permanent(game, creature, map);
-
-              // Add the fish to the inventory, if possible.
-              if (CreatureUtils::can_pick_up(creature, fish).first)
-              {
-                IInventoryPtr inv = creature->get_inventory();
-                if (!inv->merge(fish))
-                {
-                  // Add to the end of the inventory
-                  inv->add(fish);
-                }
-              }
-              else
-              {
-                if (creature && creature->get_is_player())
-                {
-                  IMessageManager& manager = MM::instance();
-                  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_THROW_BACK));
-                  manager.send();
-                }
-              }
-            }
-          }
+          catch_fish(creature, map, water);
+        }
+        else
+        {
+          catch_item(creature, map);
         }
       }
 
       // Don't try any other fishing outcomes.
       break;
+    }
+  }
+}
+
+void FishingSkillProcessor::catch_fish(CreaturePtr creature, MapPtr map, const WaterType water)
+{
+  if (creature != nullptr && map != nullptr)
+  {
+    Game& game = Game::instance();
+    TilePtr creature_tile = map->at(map->get_location(creature->get_id()));
+
+    if (creature_tile != nullptr)
+    {
+      auto f_it = fish_types.find(water);
+
+      if (f_it != fish_types.end())
+      {
+        vector<string> fishies = f_it->second;
+
+        if (!fishies.empty())
+        {
+          string fish_type = fishies.at(RNG::range(0, fishies.size() - 1));
+          ItemPtr fish = ItemManager::create_item(fish_type);
+          ConsumablePtr food = dynamic_pointer_cast<Consumable>(fish);
+
+          // There's some variation in size between every fish.
+          if (food != nullptr)
+          {
+            float size_variation = RNG::range_f(0.5, 1.5);
+            Weight new_weight = food->get_weight();
+            new_weight.set_weight(static_cast<uint>(new_weight.get_weight() * size_variation));
+
+            food->set_nutrition(static_cast<int>(food->get_nutrition() * size_variation));
+            food->set_weight(new_weight);
+          }
+
+          // A fish has been caught - the map should now become permanent.
+          GameUtils::make_map_permanent(game, creature, map);
+
+          // Add the fish to the inventory, if possible.
+          if (CreatureUtils::can_pick_up(creature, fish).first)
+          {
+            IInventoryPtr inv = creature->get_inventory();
+            if (!inv->merge(fish))
+            {
+              // Add to the end of the inventory
+              inv->add(fish);
+            }
+          }
+          else
+          {
+            if (creature && creature->get_is_player())
+            {
+              IMessageManager& manager = MM::instance();
+              manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_THROW_BACK));
+              manager.send();
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+void FishingSkillProcessor::catch_item(CreaturePtr creature, MapPtr map)
+{
+  if (creature != nullptr && map != nullptr)
+  {
+    Game& game = Game::instance();
+    ItemGenerationManager igm;
+    Rarity rarity = Rarity::RARITY_COMMON;
+    ItemEnchantmentCalculator iec;
+    int danger_level = map->get_danger();
+
+    int enchant_points = iec.calculate_enchantments(danger_level);
+    ItemGenerationMap generation_map = igm.generate_item_generation_map({ 1, creature->get_level().get_current(), Rarity::RARITY_COMMON, {}, ItemValues::DEFAULT_MIN_GENERATION_VALUE });
+    ItemPtr generated_item = igm.generate_item(game.get_action_manager_ref(), generation_map, rarity, {}, enchant_points);
+
+    TilePtr creature_tile = MapUtils::get_tile_for_creature(map, creature);
+
+    if (creature_tile != nullptr && generated_item != nullptr)
+    {
+      // Can only pull in one item at a time while fishing.
+      generated_item->set_quantity(1);
+      creature_tile->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_CATCH_ITEM));
+      manager.send();
     }
   }
 }

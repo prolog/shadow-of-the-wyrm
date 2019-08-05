@@ -20,7 +20,19 @@ local function sun_gem_completion_condition_fn()
 end
 
 local function sun_gem_completion_fn()
-  add_message("PLOUGHMAN_SUNGEM_QUEST_COMPLETE_SID")
+  add_message_with_pause("PLOUGHMAN_SUNGEM_QUEST_COMPLETE_SID")
+  local herb_value = get_skill_value(PLAYER_ID, CSKILL_GENERAL_HERBALISM)
+
+  if herb_value <= 80 then
+    herb_value = herb_value + RNG_range(1, 20)
+    clear_and_add_message("PLOUGHMAN_SUNGEM_QUEST_COMPLETE2_SID")
+    set_skill_value(PLAYER_ID, CSKILL_GENERAL_HERBALISM, herb_value)
+  else
+    clear_and_add_message("PLOUGHMAN_SUNGEM_QUEST_COMPLETE_MAGICI_SID")
+    add_object_to_player_tile(MAGICI_SHARD_ID, 6)
+  end
+
+
   add_object_to_player_tile("silverweed", 15)
   remove_object_from_player(SUN_GEM_ID)
   remove_active_quest("blacksmith_sungem")
