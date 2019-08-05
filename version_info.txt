@@ -21,6 +21,13 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 
 - Smiths start off with 3 iron ingots instead of 1.
 
+- The ploughman's quest now provides additional rewards in the form of
+  Herbalism and possibly magici shards (Yan Zhang).
+
+- There is now a small chance to find an item while fishing.  How good
+  it is depends on the danger of the area in which you're fishing
+  (Naughtyusername).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

@@ -186,11 +186,6 @@ kain:
 - Holy presence but no altars?
 - Shops not generating fully stocked.
 
-kraphead
-- Crashes in sewer, SE dungeon
-- black 'x'
-- Cascade of aggro on stun, etc
-
 ssteam
 - w->, w-< to autowalk to stairs
 - Descend via '>' while in air.
@@ -207,7 +202,6 @@ happylisk:
 naughtusername: 
 - Skill descriptions on shift+letter or something
 - automove can end with digging and then stop
-- fishing up items
 - weapon types in codex
 
 Timo:
@@ -257,9 +251,7 @@ Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
 - Do something interesting with flowers!
 - Climb up Telari: more NPCs, disallow backing out?
-- Sun Gem: ploughman should teach herbalism
 - Bless should cost more AP, allow selection from eq
-- Door in the south of the air of the keep
 - Health approximation
 
 Twelve:
