@@ -2861,3 +2861,14 @@ and ash, on rocky ground that never lent %b
 a hint of hoofprints.  Soon their scouts would tell %b
 their war-plans to the fae outside the citadel.
 %p
+So as they left, the other parties formed %b
+down in the armory.  Tel would have the pick %b
+of weapons for his war-band as they'd storm %b
+the giants first, his group to ride out quick %b
+and strong.  They armoured up.  Grabbed bows, the plan %b
+to cut through uplands, where their maps and charts %b
+were clear, till their formation made a lance, %b
+a long-leafed spear.  Each man would play his part %b
+to end the war before it had a chance to start.
+%p
+
