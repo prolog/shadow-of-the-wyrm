@@ -1991,6 +1991,13 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\screens\source\OptionScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
     <ClCompile Include="engine\screens\source\StartingLocationSelectionScreen.cpp" />
+    <ClCompile Include="engine\screens\source\unit_tests\OptionsComponent_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
     <ClCompile Include="engine\scripting\source\DropScript.cpp" />
     <ClCompile Include="engine\scripting\source\KillScript.cpp" />

@@ -44,3 +44,5 @@ const string Setting::AUTOPICKUP_IGNORE_CORPSES = "autopickup_ignore_corpses";
 const string Setting::PROMPT_ON_STACK_PICKUP = "prompt_on_stack_pickup";
 const string Setting::CHECKPOINT_SAVE = "checkpoint_save";
 const string Setting::ALLOW_CURSED_AMMUNITION_USE = "allow_cursed_ammunition_use";
+const string Setting::SKILL_SELECTION_REQUIRE_CAPITALIZATION = "skill_selection_require_capitalization";
+

@@ -1,7 +1,9 @@
 #include "Conversion.hpp"
+#include "Game.hpp"
 #include "SkillsScreen.hpp"
 #include "OptionsComponent.hpp"
 #include "Prompt.hpp"
+#include "Setting.hpp"
 #include "TextComponent.hpp"
 #include "PromptTextKeys.hpp"
 #include "SkillTextKeys.hpp"
@@ -46,7 +48,8 @@ void SkillsScreen::initialize()
   SkillType min = SkillType::SKILL_GENERAL_ARCHERY;
   SkillType max = SkillType::SKILL_GENERAL_WEAVING;
   std::map<char, SkillType> selection_map;
-
+  bool selection_require_uppercase = Game::instance().get_settings_ref().get_setting_as_bool(Setting::SKILL_SELECTION_REQUIRE_CAPITALIZATION);
+  
   if (sty_it != skills_for_category.end())
   {
     pair<SkillType, SkillType> min_max = sty_it->second;
@@ -97,6 +100,7 @@ void SkillsScreen::initialize()
         // current id updated, we aren't setting the old value.
         current_option.set_id(current_id);
         current_option.set_external_id(to_string(i));
+        current_option.set_uppercase(selection_require_uppercase);
         options->add_option(current_option);
 
         add_options_component(sk_screen, options, cnt, current_id);
@@ -104,7 +108,16 @@ void SkillsScreen::initialize()
         // Add to the selection map after the option component has been added
         // so that if we've started a new page, the skill is added to the
         // correct place.
-        selection_map['a' + current_id] = st;
+        //
+        // Do both uppercase and lowercase.
+        if (selection_require_uppercase)
+        {
+          selection_map['A' + current_id] = st;
+        }
+        else
+        {
+          selection_map['a' + current_id] = st;
+        }
 
         current_id++;
       }

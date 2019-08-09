@@ -37,6 +37,7 @@ class Setting
     static const std::string PROMPT_ON_STACK_PICKUP;
     static const std::string CHECKPOINT_SAVE;
     static const std::string ALLOW_CURSED_AMMUNITION_USE;
+    static const std::string SKILL_SELECTION_REQUIRE_CAPITALIZATION;
 
   protected:
     Setting();

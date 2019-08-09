@@ -8564,5 +8564,8 @@
     <ClCompile Include="engine\calculators\source\unit_tests\DefaultStatusEffectCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\screens\source\unit_tests\OptionsComponent_test.cpp">
+      <Filter>Source Files\engine\screens\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
