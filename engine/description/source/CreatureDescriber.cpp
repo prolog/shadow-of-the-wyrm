@@ -81,7 +81,9 @@ string CreatureDescriber::describe_for_tile_selection() const
     CreatureDifficulty cd;
 
     string difficulty = cd.get_difficulty_text_sid(viewing_creature, creature);
-    ss << creature_description << " (" << StringTable::get(difficulty) << "; " << StringTable::get(ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION) << ")";
+    string hp_ind = cd.get_health_indicator_sid(creature);
+
+    ss << creature_description << " (" << StringTable::get(difficulty) << "; " << StringTable::get(hp_ind) << "; " << StringTable::get(ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION) << ")";
   }
 
   return ss.str();

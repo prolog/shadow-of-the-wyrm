@@ -31,6 +31,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 - There is now an option in swyrm.ini to require capitalization for
   skill selection, for those using vi keys for movement (Twelve).
 
+- Along with difficulty, you can now get a general sense of how wounded
+  a creature is when you examine it (Yan Zhang).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
