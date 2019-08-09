@@ -4,12 +4,7 @@ Grond's v112 bugs:
 - Timewalking in the tower is weird display-wise
 
 Me:
-- Unit tests for Option::uppercase and get_id
-- Test with on
-  - A, B, C displayed, selected
-- Test with off
-  - a, b, c displayed, selected
-- Turn off the savefile flags before the next release
+- Unit tests for new CreatureDifficulty functionality
 - Cantrip to set glow flag on items
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
@@ -255,10 +250,10 @@ Grond:
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
 - Do something interesting with flowers!
-- Climb up Telari: more NPCs, disallow backing out?
-- Bless should cost more AP, allow selection from eq
-- Health approximation
+- Climb up Telari: more NPCs
 
 Twelve:
 - Option to make skill selection capitalization only
 
+Grond:
+- Timewalking in the tower is weird, display-wise
