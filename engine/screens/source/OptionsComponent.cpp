@@ -4,13 +4,13 @@ using namespace std;
 
 // Option - an individual menu option
 Option::Option()
-: id(-1), external_id(""), colour(Colour::COLOUR_WHITE)
+: id(-1), external_id(""), colour(Colour::COLOUR_WHITE), uppercase(false)
 {
   description = std::make_shared<TextComponent>(string(""));
 }
 
 Option::Option(const int new_id, const string& new_external_id, const string& new_description)
-: id(new_id), external_id(new_external_id), colour(Colour::COLOUR_WHITE)
+: id(new_id), external_id(new_external_id), colour(Colour::COLOUR_WHITE), uppercase(false)
 {
   description = std::make_shared<TextComponent>(string(""));
 }
@@ -37,7 +37,14 @@ bool Option::is_random_option(const int opt) const
 
 char Option::get_id_char() const
 {
-  return (id + 'a');
+  char id_char = id + 'a';
+
+  if (uppercase)
+  {
+    id_char = toupper(id_char);
+  }
+
+  return id_char;
 }
 
 void Option::set_external_id(const string& new_external_id)
@@ -68,6 +75,16 @@ void Option::set_colour(const Colour new_colour)
 Colour Option::get_colour() const
 {
   return colour;
+}
+
+void Option::set_uppercase(const bool new_uppercase)
+{
+  uppercase = new_uppercase;
+}
+
+bool Option::get_uppercase() const
+{
+  return uppercase;
 }
 
 // Options - a container for Option menu objects.
@@ -122,3 +139,7 @@ bool OptionsComponent::get_show_option_descriptions() const
 {
   return show_option_descriptions;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/OptionsComponent_test.cpp"
+#endif

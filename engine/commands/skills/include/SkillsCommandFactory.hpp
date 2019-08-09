@@ -1,6 +1,12 @@
 #pragma once
 #include "CommandFactory.hpp"
 
+enum class SkillSelectionType
+{
+  SKILL_SELECTION_TYPE_USE_SKILL = 0,
+  SKILL_SELECTION_TYPE_IMPROVE_SKILL = 1
+};
+
 class SkillsCommandFactory : public CommandFactory
 {
   public:

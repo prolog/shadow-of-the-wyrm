@@ -4,6 +4,11 @@ Grond's v112 bugs:
 - Timewalking in the tower is weird display-wise
 
 Me:
+- Unit tests for Option::uppercase and get_id
+- Test with on
+  - A, B, C displayed, selected
+- Test with off
+  - a, b, c displayed, selected
 - Turn off the savefile flags before the next release
 - Cantrip to set glow flag on items
 - Grond: attacking turtles causes some kind of ToD crash after teleporting

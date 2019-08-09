@@ -6,9 +6,6 @@
 #include "MessageManagerFactory.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
-#include "SkillsCommandFactory.hpp"
-#include "SkillsKeyboardCommandMap.hpp"
-#include "SkillsScreen.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;

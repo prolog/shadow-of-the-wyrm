@@ -28,6 +28,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
   it is depends on the danger of the area in which you're fishing
   (Naughtyusername).
 
+- There is now an option in swyrm.ini to require capitalization for
+  skill selection, for those using vi keys for movement (Twelve).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

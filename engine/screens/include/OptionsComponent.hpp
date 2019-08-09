@@ -32,6 +32,9 @@ class Option
     void set_description(const std::string& new_description);
     TextComponentPtr get_description() const;
 
+    void set_uppercase(const bool new_uppercase);
+    bool get_uppercase() const;
+
   protected:
     // May have to map this to another ID in another class.  But for the actual Option object, a
     // numerical value should be OK...
@@ -39,6 +42,7 @@ class Option
     std::string external_id;
     TextComponentPtr description;
     Colour colour;
+    bool uppercase;
 };
 
 class OptionsComponent : public ScreenComponent
