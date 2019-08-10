@@ -1,6 +1,4 @@
 Me:
-- Clump of bog iron for swamps
-- Unit tests for new CreatureDifficulty functionality
 - Cantrip to set glow flag on items
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?

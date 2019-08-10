@@ -47,3 +47,34 @@ TEST(SW_Engine_Creatures_CreatureDifficulty, difficulty_text_sids)
   EXPECT_EQ(DifficultyTextKeys::DIFFICULTY_DEADLY, cd.get_difficulty_text_sid(c1, c2));
 }
 
+TEST(SW_Engine_Creatures_CreatureDifficulty, hp_indicator_sids)
+{
+  CreaturePtr creature = std::make_shared<Creature>();
+  Statistic hp(50);
+  creature->set_hit_points(hp);
+
+  CreatureDifficulty cd;
+
+  EXPECT_EQ("", cd.get_health_indicator_sid(nullptr));
+  EXPECT_EQ(DifficultyTextKeys::HP_INDICATOR_UNHARMED, cd.get_health_indicator_sid(creature));
+  
+  hp.set_current(45);
+  creature->set_hit_points(hp);
+
+  EXPECT_EQ(DifficultyTextKeys::HP_INDICATOR_SCRATCHES, cd.get_health_indicator_sid(creature));
+
+  hp.set_current(28);
+  creature->set_hit_points(hp);
+
+  EXPECT_EQ(DifficultyTextKeys::HP_INDICATOR_WOUNDED, cd.get_health_indicator_sid(creature));
+
+  hp.set_current(17);
+  creature->set_hit_points(hp);
+
+  EXPECT_EQ(DifficultyTextKeys::HP_INDICATOR_BADLY_WOUNDED, cd.get_health_indicator_sid(creature));
+
+  hp.set_current(3);
+  creature->set_hit_points(hp);
+
+  EXPECT_EQ(DifficultyTextKeys::HP_INDICATOR_VERGE_OF_DEATH, cd.get_health_indicator_sid(creature));
+}
