@@ -1,14 +1,9 @@
-Grond's v112 bugs:
-- Switching with townsfolk (in churches?) leads to weird behaviour
-- Adjacent creatures attack on load
-- Timewalking in the tower is weird display-wise
-
 Me:
+- Clump of bog iron for swamps
 - Unit tests for new CreatureDifficulty functionality
 - Cantrip to set glow flag on items
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
-- Add water breathing to codex
 - Look at race balance: stats, speed, skill points, etc
 - Shield punch!
 - Fruit trees should generate fruit annually.
@@ -36,7 +31,6 @@ Me:
 - The guarded, empty areas in Carcassia C2 should lead to some kind of
   dungeon/special area.
 - Summonings
-- Clump of bog iron for swamps
 - Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
@@ -256,4 +250,5 @@ Twelve:
 - Option to make skill selection capitalization only
 
 Grond:
-- Timewalking in the tower is weird, display-wise
+- Switching with townsfolk (in churches?) leads to weird behaviour
+- Adjacent creatures attack on load

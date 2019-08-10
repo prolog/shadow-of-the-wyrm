@@ -73,6 +73,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_MAGICI_SHARD;
     static const std::string ITEM_ID_COAL;
     static const std::string ITEM_ID_LUMP_GOLD;
+    static const std::string ITEM_ID_BOG_IRON;
     static const std::string ITEM_ID_IRON_INGOT;
     static const std::string ITEM_ID_STEEL_INGOT;
     static const std::string ITEM_ID_FIDDLEHEAD_GREEN;

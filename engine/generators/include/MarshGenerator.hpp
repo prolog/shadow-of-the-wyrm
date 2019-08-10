@@ -11,7 +11,8 @@ class MarshGenerator : public SOTW::Generator
 
   protected:
     virtual TilePtr generate_tile(MapPtr current_map, const int row, const int col);
-    virtual MapPtr  add_random_trees_bushes_weeds_and_reeds(MapPtr current_map);
-
+    virtual void    add_random_trees_bushes_weeds_and_reeds(MapPtr current_map);
+    virtual void    add_bog_iron(MapPtr current_map);
     TileGenerator tg;
+    static const int PCT_CHANCE_BOG_IRON;
 };
