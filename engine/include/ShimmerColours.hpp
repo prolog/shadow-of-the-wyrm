@@ -21,6 +21,8 @@ class ShimmerColours : public ISerializable
     bool serialize(std::ostream& stream) const;
     bool deserialize(std::istream& stream);
 
+    static const int BASE_PCT_CHANCE_SHIMMER;
+
   protected:
     std::vector<Colour> colours;
     int pct_chance_shimmer;
@@ -28,7 +30,6 @@ class ShimmerColours : public ISerializable
     bool is_valid() const;
     Colour get_colour_or_undefined(const size_t idx) const;
 
-    static const int BASE_PCT_CHANCE_SHIMMER;
     static const size_t PASSABLE_IDX;
     static const size_t IMPASSABLE_IDX;
     static const size_t FEATURE_IDX;

@@ -34,6 +34,9 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
 - Along with difficulty, you can now get a general sense of how wounded
   a creature is when you examine it (Yan Zhang).
 
+- Swamps have a chance to generate bog iron, which can be used like
+  regular iron ingots, but are heavier and less valuable.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -96,6 +99,8 @@ Shadow of the Wyrm v1.1.2 "Tarrega"
   - Selecting an item in the codex and then exiting the screen was
     unintentionally selecting that item for any screen that had support
     for using the codex (eat, evoke, etc) (Klapaucius).
+
+  - Colours no long shimmer when timewalking (Grond).
 
 Shadow of the Wyrm v1.1.1 "Campion"
 - Version declared June 12, 2019.  Version finalized July 16, 2019.
