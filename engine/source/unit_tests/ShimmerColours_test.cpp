@@ -2,8 +2,11 @@
 
 TEST(SW_Engine_ShimmerColours, pct_chance)
 {
-  ShimmerColours sc({Colour::COLOUR_BOLD_BLUE, Colour::COLOUR_BLUE, Colour::COLOUR_CYAN}, 70);
-  EXPECT_EQ(70, sc.get_pct_chance_shimmer());
+  ShimmerColours sc({Colour::COLOUR_BOLD_BLUE, Colour::COLOUR_BLUE, Colour::COLOUR_CYAN});
+  EXPECT_EQ(ShimmerColours::BASE_PCT_CHANCE_SHIMMER, sc.get_pct_chance_shimmer());
+
+  ShimmerColours sc2({Colour::COLOUR_BOLD_BLUE, Colour::COLOUR_BLUE, Colour::COLOUR_CYAN}, 70);
+  EXPECT_EQ(70, sc2.get_pct_chance_shimmer());
 }
 
 TEST(SW_Engine_ShimmerColours, shimmer_colours)
