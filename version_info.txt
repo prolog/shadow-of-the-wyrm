@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.1.2 "Tarrega"
-- Version declared July 16, 2019.
+- Version declared July 16, 2019. Version finalized August 11, 2019.
 
 - Cabers and huge rocks are now harder to hit with, and slower.
 
