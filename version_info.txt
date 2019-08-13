@@ -1,6 +1,11 @@
 Shadow of the Wyrm v1.1.3 "Losy"
 - Version declared August 11, 2019.
 
+- Vigarion, the undersea guardian, now generates with an amulet of the
+  sea (Grond).
+
+- You can no longer inscribe when you are illiterate (TauReaver).
+
 Shadow of the Wyrm v1.1.2 "Tarrega"
 - Version declared July 16, 2019. Version finalized August 11, 2019.
 

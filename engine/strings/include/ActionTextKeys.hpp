@@ -180,6 +180,7 @@ class ActionTextKeys
     static const std::string ACTION_INSCRIBE_AIR;
     static const std::string ACTION_INSCRIBE_GROUND;
     static const std::string ACTION_INSCRIBE_QUERY;
+    static const std::string ACTION_INSCRIBE_ILLITERATE;
     static const std::string ACTION_POUR_EMPTY;
     static const std::string ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS;
     static const std::string ACTION_WANDCRAFT_INSUFFICIENT_CASTINGS;
