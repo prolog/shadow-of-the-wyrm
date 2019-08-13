@@ -7019,6 +7019,13 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>180000</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>amulet_of_the_sea</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>46</Level>
 			<Damage>

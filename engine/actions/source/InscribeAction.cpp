@@ -1,5 +1,6 @@
 #include "InscribeAction.hpp"
 #include "ActionTextKeys.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "TileProperties.hpp"
@@ -31,17 +32,28 @@ ActionCostValue InscribeAction::inscribe(CreaturePtr creature) const
 
         if (creature_tile != nullptr)
         {
-          tst = creature_tile->get_tile_super_type();
+          CurrentCreatureAbilities cca;
 
-          // Can only inscribe messages on ground - not on water, in the air, etc.
-          if (tst == TileSuperType::TILE_SUPER_TYPE_GROUND)
+          if (!cca.can_read(creature))
           {
-            create_inscription(creature, creature_tile);
+            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_INSCRIBE_ILLITERATE));
+            manager.send();
           }
+          else
+          {
+            tst = creature_tile->get_tile_super_type();
 
-          add_inscription_super_type_message(tst);
+            // Can only inscribe messages on ground - not on water, in the air, etc.
+            if (tst == TileSuperType::TILE_SUPER_TYPE_GROUND)
+            {
+              create_inscription(creature, creature_tile);
+            }
 
-          return get_action_cost_value(creature);
+            add_inscription_super_type_message(tst);
+
+            return get_action_cost_value(creature);
+          }
         }
       }
       else
