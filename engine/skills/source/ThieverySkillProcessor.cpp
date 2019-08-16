@@ -257,7 +257,8 @@ bool ThieverySkillProcessor::confirm_steal(CreaturePtr stealing_creature, Creatu
     if (steal)
     {
       // Attacking and stealing are considered one and the same by the Nine.
-      Game::instance().get_deity_action_manager_ref().notify_action(stealing_creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+      MapPtr map = Game::instance().get_current_map();
+      Game::instance().get_deity_action_manager_ref().notify_action(stealing_creature, map, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
     }
   }
 

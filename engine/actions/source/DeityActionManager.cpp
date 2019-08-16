@@ -1,9 +1,11 @@
 #include "global_prototypes.hpp"
 #include "ClassManager.hpp"
+#include "Conversion.hpp"
 #include "DeityActionManager.hpp"
 #include "DeityDecisionImplications.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "Game.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 
@@ -12,12 +14,21 @@ using namespace std;
 // Check to see if the deity likes or dislikes (or simply doesn't care)
 // about the action just performed, and update the creature's piety
 // accordingly.
-void DeityActionManager::notify_action(CreaturePtr creature, const string& action_key, bool active_deity_only)
+void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const string& action_key, bool active_deity_only)
 {
   Game& game = Game::instance();
 
-  if (creature && !game.get_deities_cref().empty())
+  if (creature != nullptr && map != nullptr && !game.get_deities_cref().empty())
   {
+    bool cannot_pray = String::to_bool(map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY));
+   
+    // If we're on a map outside the Nine's dominion, don't notify them of
+    // the potential transgression.
+    if (cannot_pray)
+    {
+      return;
+    }
+
     Religion& religion = creature->get_religion_ref();
     DeityMap deities = game.get_deities_cref();
 
