@@ -54,7 +54,7 @@ bool SarcophagusManipulator::handle(TilePtr tile, CreaturePtr creature)
 
         // Break the graverobbing conduct.
         creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING);
-        game.get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_GRAVEROBBING);
+        game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_GRAVEROBBING);
 
         // Add undead/items.
         dtm.add_undead_if_necessary(creature, current_map, tile);

@@ -471,7 +471,8 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
     else
     {
       // Not all deities approve of attacking friendlies...
-      Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+      MapPtr map = Game::instance().get_current_map();
+      Game::instance().get_deity_action_manager_ref().notify_action(creature, map, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
     }
   }
 

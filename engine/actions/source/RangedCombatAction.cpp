@@ -192,7 +192,7 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
           // obstacle or another creature - it's the intention that counts.
           if (firing_details.second)
           {
-            game.get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+            game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
           }
         }
       }      

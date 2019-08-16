@@ -146,7 +146,8 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
       string corpse_race_id = food->get_additional_property(ConsumableConstants::CORPSE_RACE_ID);
       if (!corpse_race_id.empty() && (corpse_race_id == creature->get_race_id()))
       {
-        Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_CANNIBALISM);
+        MapPtr current_map = Game::instance().get_current_map();
+        Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_CANNIBALISM);
       }
 
       // Likewise, eating undead is decidedly not kosher for many.
@@ -160,9 +161,10 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
           if (corpse_race->get_undead().get_current())
           {
             DeityActionManager& dam = Game::instance().get_deity_action_manager_ref();
-            
-            dam.notify_action(creature, CreatureActionKeys::ACTION_DESECRATE_GOOD);
-            dam.notify_action(creature, CreatureActionKeys::ACTION_DESECRATE_NEUTRAL);
+            MapPtr map = Game::instance().get_current_map();
+
+            dam.notify_action(creature, map, CreatureActionKeys::ACTION_DESECRATE_GOOD);
+            dam.notify_action(creature, map, CreatureActionKeys::ACTION_DESECRATE_NEUTRAL);
           }
         }
       }

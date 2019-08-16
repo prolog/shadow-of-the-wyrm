@@ -17,7 +17,7 @@ bool GraveTileManipulator::dig(CreaturePtr creature, MapPtr map, TilePtr tile)
 
     // Graverobbing is an action many of the Nine do not approve of...
     creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING);
-    Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_GRAVEROBBING);
+    Game::instance().get_deity_action_manager_ref().notify_action(creature, map, CreatureActionKeys::ACTION_GRAVEROBBING);
 
     // Add a message about disturbing the dead.
     if (creature->get_is_player())

@@ -14,7 +14,7 @@ PewManipulator::PewManipulator(FeaturePtr feature)
 // desecration of pews.
 void PewManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
 {
-  Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_DESECRATE_GOOD, false);
+  Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_DESECRATE_GOOD, false);
 }
 
 bool PewManipulator::handle(TilePtr tile, CreaturePtr creature)
