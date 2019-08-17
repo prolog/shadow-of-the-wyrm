@@ -1,4 +1,5 @@
 Me:
+- Linux builds for SDL. Premake, scripts, etc
 - Revert the settings around version and metadata before release
 - Cantrip to set glow flag on items
 - Grond: attacking turtles causes some kind of ToD crash after teleporting

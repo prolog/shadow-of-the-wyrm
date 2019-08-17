@@ -8,6 +8,8 @@
 #include "common.hpp"
 #include "global_prototypes.hpp"
 
+#include "SDL.h"
+
 #include "CursesKeyboardController.hpp"
 
 #include "Conversion.hpp"
@@ -95,7 +97,10 @@ int main(int argc, char* argv[])
 #endif
 {
   register_unhandled_exception_handler();
-
+  if (SDL_Init(SDL_INIT_VIDEO) < 0)
+  {
+    // ...
+  }
   Log& log = Log::instance();
 
   try
