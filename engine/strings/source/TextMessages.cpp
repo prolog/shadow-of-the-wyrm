@@ -6,9 +6,11 @@
 #include "Conversion.hpp"
 #include "CreatureDescriber.hpp"
 #include "EquipmentTextKeys.hpp"
+#include "Game.hpp"
 #include "ItemDescriberFactory.hpp"
 #include "TextMessages.hpp"
 #include "EntranceTextKeys.hpp"
+#include "Setting.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 
@@ -205,10 +207,19 @@ string TextMessages::get_confirmation_message(const string& query_or_sid)
     query = query_or_sid;
   }
 
+  string confirm_key = StringTable::get(TextKeys::DECISION_CONFIRM_KEY);
+  string deny_key = StringTable::get(TextKeys::DECISION_DENY_KEY);
+
+  if (Game::instance().get_settings_ref().get_setting_as_bool(Setting::CONFIRMATION_REQUIRE_CAPITALIZATION))
+  {
+    confirm_key = boost::to_upper_copy(confirm_key);
+    deny_key = boost::to_upper_copy(deny_key);
+  }
+
   ss << query;
   ss << " [";
-  ss << StringTable::get(TextKeys::DECISION_CONFIRM_KEY);
-  ss << "/" << StringTable::get(TextKeys::DECISION_DENY_KEY);
+  ss << confirm_key;
+  ss << "/" << deny_key;
   ss << "] ";
   
   return ss.str();
