@@ -5,8 +5,10 @@
 #include "Command.hpp"
 #include "CommandFactory.hpp"
 #include "Conversion.hpp"
+#include "Game.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "Map.hpp"
+#include "Setting.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
@@ -115,10 +117,19 @@ bool PlayerDecisionStrategy::get_confirmation(const bool confirmation_default_va
   bool confirm = confirmation_default_value;
 
   string confirm_str = StringTable::get(TextKeys::DECISION_CONFIRM_KEY);
-  boost::to_lower(confirm_str);
-
   string deny_str = StringTable::get(TextKeys::DECISION_DENY_KEY);
-  boost::to_lower(deny_str);
+  bool require_uppercase = Game::instance().get_settings_ref().get_setting_as_bool(Setting::CONFIRMATION_REQUIRE_CAPITALIZATION);
+
+  if (require_uppercase)
+  {
+    boost::to_upper(confirm_str);
+    boost::to_upper(deny_str);
+  }
+  else
+  {
+    boost::to_lower(confirm_str);
+    boost::to_lower(deny_str);
+  }
 
   map<string, bool> key_map = {{confirm_str, true}, {deny_str, false}};
   
@@ -129,7 +140,13 @@ bool PlayerDecisionStrategy::get_confirmation(const bool confirmation_default_va
     ostringstream ss;
     ss << (char)controller->get_char_as_int(); // needs to be interpreted as a char!
     string user_input = ss.str();
-    boost::to_lower(user_input);
+
+    // If we require uppercase, don't cast the user's input to lowercase.
+    // Instead, keep it as-is, and compare it to the confirm/deny keys.
+    if (!require_uppercase)
+    {
+      boost::to_lower(user_input);
+    }
 
     if (user_input.size())
     {
