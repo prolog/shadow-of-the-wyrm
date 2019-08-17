@@ -13,6 +13,10 @@ Shadow of the Wyrm v1.1.3 "Losy"
 - On maps where you cannot pray (e.g. Telari), you can now violate divine
   laws with impunity (Grond).
 
+- Spell damage is now also affected by the Magic skill, the school
+  associated with the spell, and the average of intelligence and
+  willpower.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

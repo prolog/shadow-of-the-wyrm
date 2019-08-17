@@ -1,6 +1,9 @@
 #include "Game.hpp"
 #include "MagicalDamageCalculator.hpp"
 
+const int MagicalDamageCalculator::MAGICAL_DAMAGE_SKILL_DIVISOR = 10;
+const int MagicalDamageCalculator::MAGICAL_DAMAGE_STAT_DIVISOR = 5;
+
 MagicalDamageCalculator::MagicalDamageCalculator(const PhaseOfMoonType new_pom)
 : DamageCalculator(AttackType::ATTACK_TYPE_MAGICAL, new_pom)
 {
@@ -56,8 +59,46 @@ Damage MagicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(
 
   if (spell.get_allows_bonus())
   {
-    base_and_bonus.set_modifier(isk.get_bonus().get_base());
+    if (creature != nullptr)
+    {
+      int modifier = isk.get_bonus().get_base();
+
+      modifier += get_skill_modifier(creature, spell.get_magic_category());
+      modifier += get_stat_modifier(creature);
+
+      base_and_bonus.set_modifier(modifier);
+    }
   }
 
   return base_and_bonus;
 }
+
+int MagicalDamageCalculator::get_skill_modifier(CreaturePtr creature, const SkillType magic_category)
+{
+  int skill_mod = 0;
+
+  if (creature != nullptr)
+  {
+    skill_mod += (creature->get_skills().get_value(SkillType::SKILL_GENERAL_MAGIC) / MAGICAL_DAMAGE_SKILL_DIVISOR);
+    skill_mod += (creature->get_skills().get_value(magic_category) / MAGICAL_DAMAGE_SKILL_DIVISOR);
+  }
+
+  return skill_mod;
+}
+
+int MagicalDamageCalculator::get_stat_modifier(CreaturePtr creature)
+{
+  int stat_mod = 0;
+
+  if (creature != nullptr)
+  {
+    int int_will = (creature->get_intelligence().get_current() + creature->get_willpower().get_current()) / 2;
+    stat_mod = (int_will / MAGICAL_DAMAGE_STAT_DIVISOR);
+  }
+
+  return stat_mod;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MagicalDamageCalculator_test.cpp"
+#endif
