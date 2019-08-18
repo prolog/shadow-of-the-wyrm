@@ -2,6 +2,8 @@
 #include "CursesKeyboardController.hpp"
 #include "DisplayConstants.hpp"
 #include "DisplayFactory.hpp"
+#include "SDLDisplay.hpp"
+#include "SDLKeyboardController.hpp"
 
 using namespace std;
 
@@ -44,10 +46,11 @@ void DisplayFactory::initialize_display_map()
 
   DisplayPtr curses_display = std::make_shared<CursesDisplay>();
   ControllerPtr curses_keyboard_controller = std::make_shared<CursesKeyboardController>();
+  DisplayPtr sdl_display = std::make_shared<SDLDisplay>();
+  ControllerPtr sdl_keyboard_controller = std::make_shared<SDLKeyboardController>();
 
-  display_map = DisplaySerializationMap{{ClassIdentifier::CLASS_ID_CURSES_DISPLAY, { curses_display, curses_keyboard_controller}},
-                                        {ClassIdentifier::CLASS_ID_SDL_TEXT_DISPLAY, { curses_display, curses_keyboard_controller}},
-                                        {ClassIdentifier::CLASS_ID_SDL_TILES_DISPLAY, { curses_display, curses_keyboard_controller}}};
+  display_map = DisplaySerializationMap{{ClassIdentifier::CLASS_ID_CURSES_DISPLAY, {curses_display, curses_keyboard_controller}},
+                                        {ClassIdentifier::CLASS_ID_SDL_DISPLAY, {sdl_display, sdl_keyboard_controller}}};
 }
 
 void DisplayFactory::initialize_display_identifier_map()
@@ -55,8 +58,7 @@ void DisplayFactory::initialize_display_identifier_map()
   display_identifier_map.clear();
 
   display_identifier_map.insert(make_pair(DisplayIdentifier::DISPLAY_IDENTIFIER_CURSES, ClassIdentifier::CLASS_ID_CURSES_DISPLAY));
-  display_identifier_map.insert(make_pair(DisplayIdentifier::DISPLAY_IDENTIFIER_SDL_TEXT, ClassIdentifier::CLASS_ID_SDL_TEXT_DISPLAY));
-  display_identifier_map.insert(make_pair(DisplayIdentifier::DISPLAY_IDENTIFIER_SDL_TILES, ClassIdentifier::CLASS_ID_SDL_TILES_DISPLAY));
+  display_identifier_map.insert(make_pair(DisplayIdentifier::DISPLAY_IDENTIFIER_SDL, ClassIdentifier::CLASS_ID_SDL_DISPLAY));
 }
 
 ClassIdentifier DisplayFactory::get_class_id_for_identifier(const string& display_identifier)
