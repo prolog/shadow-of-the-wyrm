@@ -24,7 +24,8 @@ Shadow of the Wyrm v1.1.3 "Losy"
 
 - Bug fixes:
 
-  - Various typos in the codex and guidebook (Grond, others).
+  - Various typos in the codex and guidebook, as well as formatting in
+    the in-game texts (Grond, Twelve).
 
 Shadow of the Wyrm v1.1.2 "Tarrega"
 - Version declared July 16, 2019. Version finalized August 11, 2019.

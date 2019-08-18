@@ -2901,4 +2901,14 @@ was elevated afterwards - they helped %b
 their queen, and now their cup was filled.  They drank, %b
 and took the exiles' former swords with Tel's own thanks.
 %p
+As they oiled the blades, some runners came with scraps %b
+of heavy paper, rolled up, and placed in tubes %b
+to foil the weather - these were simple maps %b
+showing geography but also had included %b
+beside each hamlet, a mark, and on the back, %b
+a list of names by each, the families they %b
+remembered in each town.  They all had racked %b
+their brains for any trace of those who made %b
+the choice to strike out on their own and fall away.
+%p
 

@@ -1195,7 +1195,10 @@ bool Game::deserialize(istream& stream)
 
   ClassIdentifier display_ci;
   Serialize::read_class_id(stream, display_ci);
-  display = DisplayFactory::create_display_details(display_ci).first;
+
+  DisplayFactory di;
+  di.create_display_details(display_ci).first;
+
   if (!display) return false;
   if (!display->deserialize(stream)) return false;
 
