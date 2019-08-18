@@ -5,8 +5,7 @@ class DisplayIdentifier
 {
   public:
     static const std::string DISPLAY_IDENTIFIER_CURSES;
-    static const std::string DISPLAY_IDENTIFIER_SDL_TEXT;
-    static const std::string DISPLAY_IDENTIFIER_SDL_TILES;
+    static const std::string DISPLAY_IDENTIFIER_SDL;
 
   protected:
     DisplayIdentifier();

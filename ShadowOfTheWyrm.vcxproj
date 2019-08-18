@@ -282,6 +282,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="controller\include\ControllerFactory.hpp" />
     <ClInclude Include="controller\include\CursesKeyboardController.hpp" />
     <ClInclude Include="controller\include\NullKeyboardController.hpp" />
+    <ClInclude Include="controller\include\SDLKeyboardController.hpp" />
     <ClInclude Include="display\animation\include\Animation.hpp" />
     <ClInclude Include="display\animation\include\AnimationFactory.hpp" />
     <ClInclude Include="display\animation\include\AnimationInstruction.hpp" />
@@ -305,6 +306,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\include\CursesPromptProcessor.hpp" />
     <ClInclude Include="display\include\CursesUtils.hpp" />
     <ClInclude Include="display\include\MapDisplayArea.hpp" />
+    <ClInclude Include="display\include\SDLDisplay.hpp" />
     <ClInclude Include="engine\actions\include\ActionCoordinator.hpp" />
     <ClInclude Include="engine\actions\include\ActionCost.hpp" />
     <ClInclude Include="engine\actions\include\ActionManager.hpp" />
@@ -1436,7 +1438,16 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\tiles\include\WorshipSiteTypes.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="controller\source\SDLKeyboardController.cpp" />
     <ClCompile Include="display\source\CursesProperties.cpp" />
+    <ClCompile Include="display\source\SDLDisplay.cpp" />
+    <ClCompile Include="display\source\unit_tests\SDLDisplay_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\actions\source\AutomaticMovementFlags.cpp" />
     <ClCompile Include="engine\actions\source\BreedAction.cpp" />
     <ClCompile Include="engine\actions\source\ExitGameAction.cpp" />

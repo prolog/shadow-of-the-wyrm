@@ -4290,6 +4290,12 @@
     <ClInclude Include="engine\description\codex\include\WandCodexDescriber.hpp">
       <Filter>Header Files\engine\description\codex\include</Filter>
     </ClInclude>
+    <ClInclude Include="controller\include\SDLKeyboardController.hpp">
+      <Filter>Header Files\controller\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDLDisplay.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8569,6 +8575,15 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\MagicalDamageCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\source\SDLKeyboardController.cpp">
+      <Filter>Source Files\controller\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLDisplay.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDLDisplay_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
