@@ -8,8 +8,6 @@
 #include "common.hpp"
 #include "global_prototypes.hpp"
 
-#include "SDL.h"
-
 #include "CursesKeyboardController.hpp"
 
 #include "Conversion.hpp"
@@ -97,10 +95,6 @@ int main(int argc, char* argv[])
 #endif
 {
   register_unhandled_exception_handler();
-  if (SDL_Init(SDL_INIT_VIDEO) < 0)
-  {
-    // ...
-  }
   Log& log = Log::instance();
 
   try
@@ -120,12 +114,11 @@ int main(int argc, char* argv[])
 
       remove_old_logfiles(settings);
 
-      // Set the default display and controller.  This is hard-coded, but c
-      // JCD FIXME: Refactor.  This id should eventually be in a .rc
-      // type file, so that each individual person can set their own
-      // settings...
+      // Set the default display and controller.
+      DisplayFactory di;
       string display_id = settings.get_setting(Setting::DISPLAY);
-      pair<DisplayPtr, ControllerPtr> display_details = DisplayFactory::create_display_details(display_id);
+      pair<DisplayPtr, ControllerPtr> display_details = di.create_display_details(display_id);
+
       DisplayPtr display = display_details.first;
       ControllerPtr controller = display_details.second;
 

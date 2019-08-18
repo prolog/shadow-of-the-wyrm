@@ -7,6 +7,8 @@ using namespace std;
 
 DisplayFactory::DisplayFactory()
 {
+  initialize_display_map();
+  initialize_display_identifier_map();
 }
 
 DisplayFactory::~DisplayFactory()
@@ -24,18 +26,6 @@ pair<DisplayPtr, ControllerPtr> DisplayFactory::create_display_details(const str
 pair<DisplayPtr, ControllerPtr> DisplayFactory::create_display_details(const ClassIdentifier ci)
 {
   pair<DisplayPtr, ControllerPtr> display_details;
-
-  // Initialize the map the first time this function is called.
-  if (display_map.empty())
-  {
-    initialize_display_map();
-  }
-
-  if (display_identifier_map.empty())
-  {
-    initialize_display_identifier_map();
-  }
-
   DisplaySerializationMap::iterator d_it = display_map.find(ci);
 
   // Make a new copy from the prototype.
@@ -55,7 +45,9 @@ void DisplayFactory::initialize_display_map()
   DisplayPtr curses_display = std::make_shared<CursesDisplay>();
   ControllerPtr curses_keyboard_controller = std::make_shared<CursesKeyboardController>();
 
-  display_map = DisplaySerializationMap{ { ClassIdentifier::CLASS_ID_CURSES_DISPLAY, { curses_display, curses_keyboard_controller } } };
+  display_map = DisplaySerializationMap{{ClassIdentifier::CLASS_ID_CURSES_DISPLAY, { curses_display, curses_keyboard_controller}},
+                                        {ClassIdentifier::CLASS_ID_SDL_TEXT_DISPLAY, { curses_display, curses_keyboard_controller}},
+                                        {ClassIdentifier::CLASS_ID_SDL_TILES_DISPLAY, { curses_display, curses_keyboard_controller}}};
 }
 
 void DisplayFactory::initialize_display_identifier_map()
@@ -63,6 +55,8 @@ void DisplayFactory::initialize_display_identifier_map()
   display_identifier_map.clear();
 
   display_identifier_map.insert(make_pair(DisplayIdentifier::DISPLAY_IDENTIFIER_CURSES, ClassIdentifier::CLASS_ID_CURSES_DISPLAY));
+  display_identifier_map.insert(make_pair(DisplayIdentifier::DISPLAY_IDENTIFIER_SDL_TEXT, ClassIdentifier::CLASS_ID_SDL_TEXT_DISPLAY));
+  display_identifier_map.insert(make_pair(DisplayIdentifier::DISPLAY_IDENTIFIER_SDL_TILES, ClassIdentifier::CLASS_ID_SDL_TILES_DISPLAY));
 }
 
 ClassIdentifier DisplayFactory::get_class_id_for_identifier(const string& display_identifier)
