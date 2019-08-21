@@ -20,6 +20,9 @@ Shadow of the Wyrm v1.1.3 "Losy"
 - New option (confirmation_require_capitalization) to force capitalized
   confirmation, for vi key players (Twelve).
 
+- Migrated from hg to git and moved the project's repository from
+  Bitbucket to GitHub.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
