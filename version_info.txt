@@ -23,6 +23,8 @@ Shadow of the Wyrm v1.1.3 "Losy"
 - Migrated from hg to git and moved the project's repository from
   Bitbucket to GitHub.
 
+- Miscellaneous post-migration and gcc strictness fixes.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
