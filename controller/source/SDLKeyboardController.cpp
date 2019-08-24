@@ -12,7 +12,7 @@ string SDLKeyboardController::get_line()
   return line;
 }
 
-int SDLKeyboardController::get_char_as_int()
+int SDLKeyboardController::read_char_as_int()
 {
 /*  Game& game = Game::instance();
   DisplayPtr display = game.get_display();
@@ -36,7 +36,7 @@ int SDLKeyboardController::get_char_as_int()
   return 0;
 }
 
-pair<bool, int> SDLKeyboardController::get_char_as_int_nb()
+pair<bool, int> SDLKeyboardController::read_char_as_int_nb()
 {
   pair<bool, int> character = make_pair(false, -1);
 
@@ -64,6 +64,12 @@ pair<bool, int> SDLKeyboardController::get_char_as_int_nb()
   }
   */
   return character;
+}
+
+int SDLKeyboardController::translate_kb_input(const int input)
+{
+  // TODO: Translate the SDL key values to a common format.
+  return input;
 }
 
 Controller* SDLKeyboardController::clone()

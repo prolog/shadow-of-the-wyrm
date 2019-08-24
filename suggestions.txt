@@ -1,4 +1,6 @@
 Me:
+- Refactor the keyboard command maps so that the curses-specific stuff
+  is hidden, and I can easily add SDL stuff later.
 - Linux builds for SDL. Premake, scripts, etc
 - Revert the settings around version and metadata before release
 - Cantrip to set glow flag on items
