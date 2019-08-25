@@ -2849,7 +2849,7 @@ apart - and quickly.  Travelling light, they left %b
 before the King and Alcius met up %b
 with their chosen groups, ran down the plans, addressed %b
 concerns, and formed the spearhead of a thrust %b
-into the giants' chest, where they'd collapse the lungs.
+into the giants' bodies, and collapse the lungs.
 %p
 Green-cloaked, bay-horsed, the scouts were built for stealth: %b
 they planned to take the broken woodland routes, %b
@@ -2919,5 +2919,15 @@ but every one of you has got a page %b
 that's partially done, and ink to write the rest. %b
 We'll form a spear and usher in an age %b
 of peace through overwhelming force, and dressed %b
-in shining mail, we'll drive that pilum through their chest.
+in shining mail, we'll drive that pilum through their chest."
+%p
+At this, the captains led their soldiers out %b
+to the staging hall, to double-check their packs %b
+and food before they exited the mounds %b
+that met the open air and brought them back %b
+to the world above.  Each man was given wine %b
+and water, packs of cheese and heavy bread, %b
+and rum to steady them, for down the lines %b
+of petty soldiers one could feel the dread %b
+that some amount of them would feed the earth instead.
 %p
