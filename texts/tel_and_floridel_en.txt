@@ -2911,4 +2911,13 @@ remembered in each town.  They all had racked %b
 their brains for any trace of those who made %b
 the choice to strike out on their own and fall away.
 %p
-
+Amidst the preparations, Tel now spoke: %b
+"I've asked so much of you.  I'll ask again, %b
+and offer up my gratitude.  Please know %b
+that history's got its holes.  It lets through names, %b
+but every one of you has got a page %b
+that's partially done, and ink to write the rest. %b
+We'll form a spear and usher in an age %b
+of peace through overwhelming force, and dressed %b
+in shining mail, we'll drive that pilum through their chest.
+%p
