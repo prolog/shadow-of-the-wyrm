@@ -13,6 +13,7 @@ class NullKeyboardController : public Controller
   protected:
     int read_char_as_int() override;
     std::pair<bool, int> read_char_as_int_nb() override;
+
     int translate_kb_input(const int input) override;
 
   private:

@@ -7,6 +7,7 @@
 class Controller : public ISerializable
 {
   public:
+    virtual ~Controller();
     virtual bool operator==(const Controller& controller) const;
 
     virtual std::string get_line() = 0;

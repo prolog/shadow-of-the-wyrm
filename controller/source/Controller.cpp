@@ -2,6 +2,10 @@
 
 using namespace std;
 
+Controller::~Controller()
+{
+}
+
 // Just check the class identifier.
 bool Controller::operator==(const Controller& c) const
 {

@@ -4,6 +4,9 @@
 class SDLKeyboardController : public Controller
 {
   public:
+    SDLKeyboardController();
+    virtual ~SDLKeyboardController();
+
     std::string get_line() override;
 
     virtual Controller* clone() override;
@@ -13,6 +16,8 @@ class SDLKeyboardController : public Controller
     virtual std::pair<bool, int> read_char_as_int_nb() override;
 
     int translate_kb_input(const int input) override;
+
+    static bool SDL_initialized;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
