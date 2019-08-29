@@ -2931,3 +2931,13 @@ and rum to steady them, for down the lines %b
 of petty soldiers one could feel the dread %b
 that some amount of them would feed the earth instead.
 %p
+The king conferred with Alcius up front, %b
+double-checking the movements and the routes, %b
+till the councillor paused.  "Forgive me if I'm blunt - %b
+this plan is bold, its goals so absolute %b
+you've gathered nearly every man and youth %b
+who can hold a trembling spear.  We're better served %b
+by keeping back a company or two, %b
+good soldiers and good leaders, to conserve %b
+our forces should our fortunes take a sudden turn."
+%p
