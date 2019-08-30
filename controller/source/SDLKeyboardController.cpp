@@ -79,6 +79,7 @@ int SDLKeyboardController::read_char_as_int()
   bool done = false;
 
   SDL_Event event;
+  SDL_StartTextInput();
 
   while (!done)
   {
@@ -98,6 +99,7 @@ int SDLKeyboardController::read_char_as_int()
     }
   }
 
+  SDL_StopTextInput();
   return return_val;
 }
 

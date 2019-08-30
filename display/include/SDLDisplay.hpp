@@ -2,6 +2,7 @@
 // can be specified (curses-based, graphical tiles, etc).
 #pragma once
 #include "Display.hpp"
+#include "SDLPromptProcessor.hpp"
 
 #ifdef _MSC_VER
 #include "SDL.h"
@@ -87,6 +88,8 @@ class SDLDisplay : public Display
     int tile_height;
     int screen_width;
     int screen_height;
+
+    SDLPromptProcessor prompt_processor;
     
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;

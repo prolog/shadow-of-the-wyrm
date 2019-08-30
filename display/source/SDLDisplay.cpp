@@ -1,5 +1,6 @@
 #include <boost/algorithm/string.hpp>
 #include "Conversion.hpp"
+#include "SDLKeyboardController.hpp"
 #include "SDLDisplay.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
@@ -179,6 +180,11 @@ MapDisplayArea SDLDisplay::get_map_display_area()
 string SDLDisplay::display_screen(const Screen& current_screen)
 {
   string val;
+
+  // TODO: Actually do stuff with the Screen components.
+  // Call the menu wrapper to ensure the returned value is within the range.
+  val = prompt_processor.get_prompt(window);
+
   return val;
 }
 
