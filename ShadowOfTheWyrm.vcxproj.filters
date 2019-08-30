@@ -4302,6 +4302,9 @@
     <ClInclude Include="display\include\SDLPromptProcessor.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
+    <ClInclude Include="display\include\SDLTexture.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8595,6 +8598,9 @@
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
     <ClCompile Include="display\source\SDLPromptProcessor.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLTexture.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -27,6 +27,16 @@ string SDLPromptProcessor::get_prompt(SDL_Window* window, const MenuWrapper& men
     {
       SDLKeyboardController kc;
       prompt_entry = kc.get_char_as_int();
+
+      // Reprompt for new input if the input must be in the menu's option range,
+      // and if the given input does not meet that criterion.
+      while (!prompt->get_accept_any_input()
+        && menu_wrapper.has_options()
+        // Is the option itself there?
+        && !menu_wrapper.is_option_in_set(prompt_entry.at(0)))
+      {
+        prompt_entry = kc.get_char_as_int();
+      }
     }
   }
 
