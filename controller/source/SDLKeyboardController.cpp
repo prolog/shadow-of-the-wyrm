@@ -1,3 +1,4 @@
+// Needed for KEY_F(n) constants
 #ifdef _MSC_VER
 #include <curses.h>
 #else
@@ -12,29 +13,38 @@
 
 using namespace std;
 
-bool SDLKeyboardController::SDL_initialized = false;
+unordered_map<int, int> SDLKeyboardController::keymap;
 
 SDLKeyboardController::SDLKeyboardController()
 {
-  if (!SDL_initialized)
+  if (keymap.empty())
   {
-    // Temporary code, will be moved elsewhere once the display is working.
-    if (SDL_Init(SDL_INIT_VIDEO) != 0)
-    {
-      ostringstream ss;
-      ss << "Unable to initialize SDL: " << SDL_GetError();
-      Log::instance().error(ss.str());
-
-      SDL_initialized = true;
-    }
+    init_keymap();
   }
 }
 
-SDLKeyboardController::~SDLKeyboardController()
+void SDLKeyboardController::init_keymap()
 {
-  SDL_Quit();
+  keymap = { {SDLK_F1, KEY_F(1)},
+             {SDLK_F2, KEY_F(2)},
+             {SDLK_F3, KEY_F(3)},
+             {SDLK_F4, KEY_F(4)},
+             {SDLK_F5, KEY_F(5)},
+             {SDLK_F6, KEY_F(6)},
+             {SDLK_F7, KEY_F(7)},
+             {SDLK_F8, KEY_F(8)},
+             {SDLK_F9, KEY_F(9)},
+             {SDLK_F10, KEY_F(10)},
+             {SDLK_F11, KEY_F(11)},
+             {SDLK_F12, KEY_F(12)},
+             {SDLK_UP, KEY_UP},
+             {SDLK_DOWN, KEY_DOWN},
+             {SDLK_LEFT, KEY_LEFT},
+             {SDLK_RIGHT, KEY_RIGHT},
+             {SDLK_ESCAPE, 27},
+             {SDLK_LALT, 27}
+  };
 }
-
 string SDLKeyboardController::get_line()
 {
 /* CursesPromptProcessor ncpp;
@@ -46,7 +56,6 @@ string SDLKeyboardController::get_line()
   SDL_Event event;
   std::ostringstream ss;
   SDL_StartTextInput();
-
   SDL_PollEvent(&event);
 
   while (event.key.keysym.sym != SDLK_RETURN)
@@ -60,6 +69,7 @@ string SDLKeyboardController::get_line()
     }
   }
 
+  SDL_StopTextInput();
   return ss.str();
 }
 
@@ -74,22 +84,17 @@ int SDLKeyboardController::read_char_as_int()
   {
     SDL_PollEvent(&event);
 
-    if (event.type == SDL_KEYDOWN)
+    if (event.type == SDL_TEXTINPUT)
     {
-      SDL_Keycode key = event.key.keysym.sym;
-
-      // SotW allows letters, numbers, function keys, ESC.
-      //
-      // The list of mappings in KeyboardCommandMap should be considered
-      // authoritative.
-      if ((key >= SDLK_F1 && event.key.keysym.sym <= SDLK_F12) ||
-          (key >= SDLK_a && key <= SDLK_z) ||
-          (key >= SDLK_0 && key <= SDLK_9) ||
-          (key == SDLK_ESCAPE))
-      {
-        done = true;
-        return_val = event.key.keysym.sym;
-      }
+      // JCD FIXME I16n later? This is single-byte, won't work nicely with
+      // e.g. Chinese characters.
+      return_val = event.text.text[0];
+      done = true;
+    }
+    else if (event.type == SDL_KEYDOWN)
+    {
+      return_val = event.key.keysym.sym;
+      done = true;
     }
   }
 
@@ -130,28 +135,10 @@ pair<bool, int> SDLKeyboardController::read_char_as_int_nb()
 // considered the underlying values in SotW.
 int SDLKeyboardController::translate_kb_input(const int input)
 {
-  int return_val = input;
-  map<int, int> map_vals = { {SDLK_F1, KEY_F(1)},
-                            {SDLK_F2, KEY_F(2)},
-                            {SDLK_F3, KEY_F(3)},
-                            {SDLK_F4, KEY_F(4)},
-                            {SDLK_F5, KEY_F(5)},
-                            {SDLK_F6, KEY_F(6)},
-                            {SDLK_F7, KEY_F(7)},
-                            {SDLK_F8, KEY_F(8)},
-                            {SDLK_F9, KEY_F(9)},
-                            {SDLK_F10, KEY_F(10)},
-                            {SDLK_F11, KEY_F(11)},
-                            {SDLK_F12, KEY_F(12)},
-                            {SDLK_UP, KEY_UP},
-                            {SDLK_DOWN, KEY_DOWN},
-                            {SDLK_LEFT, KEY_LEFT},
-                            {SDLK_RIGHT, KEY_RIGHT},
-                            {SDLK_LALT, 27 /* curses left alt */}};
-  
-  auto k_it = map_vals.find(input);
+  int return_val = input;  
+  auto k_it = keymap.find(input);
 
-  if (k_it != map_vals.end())
+  if (k_it != keymap.end())
   {
     return_val = k_it->second;
   }

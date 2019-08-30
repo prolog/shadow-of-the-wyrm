@@ -306,6 +306,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\include\CursesPromptProcessor.hpp" />
     <ClInclude Include="display\include\CursesUtils.hpp" />
     <ClInclude Include="display\include\MapDisplayArea.hpp" />
+    <ClInclude Include="display\include\SDL.hpp" />
     <ClInclude Include="display\include\SDLDisplay.hpp" />
     <ClInclude Include="engine\actions\include\ActionCoordinator.hpp" />
     <ClInclude Include="engine\actions\include\ActionCost.hpp" />
@@ -1440,6 +1441,7 @@ mkdir $(OutDir)logs
   <ItemGroup>
     <ClCompile Include="controller\source\SDLKeyboardController.cpp" />
     <ClCompile Include="display\source\CursesProperties.cpp" />
+    <ClCompile Include="display\source\SDL.cpp" />
     <ClCompile Include="display\source\SDLDisplay.cpp" />
     <ClCompile Include="display\source\unit_tests\SDLDisplay_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

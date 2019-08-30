@@ -28,6 +28,8 @@ class Setting
     static const std::string USERNAME_IS_CHARACTER_NAME;
     static const std::string MAX_CHARACTERS_PER_USER;
     static const std::string DISPLAY;
+    static const std::string DISPLAY_FONT;
+    static const std::string DISPLAY_TILE_SIZE;
     static const std::string REMOVE_LOGS_DAYS_OLD;
     static const std::string SINGLE_USER_MODE;
     static const std::string SKIP_SAVEFILE_METADATA_VERIFICATION;

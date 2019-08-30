@@ -18,6 +18,7 @@
 #include "Log.hpp"
 #include "LogFiles.hpp"
 #include "Metadata.hpp"
+#include "SDL.hpp"
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "Settings.hpp"
 #include "Setting.hpp"
@@ -43,6 +44,7 @@ void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings);
 void remove_old_logfiles(const Settings& settings);
 bool check_write_permissions();
 int parse_command_line_arguments(int argc, char* argv[]);
+void set_display_settings(DisplayPtr display, const Settings& settings);
 
 #ifdef UNIT_TESTS
 int run_unit_tests();
@@ -111,12 +113,18 @@ int main(int argc, char* argv[])
     else
     {
       Settings settings(true);
+      string display_id = settings.get_setting(Setting::DISPLAY);
+      SDL sdl;
+
+      if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
+      {
+        sdl.set_up();
+      }
 
       remove_old_logfiles(settings);
 
       // Set the default display and controller.
       DisplayFactory di;
-      string display_id = settings.get_setting(Setting::DISPLAY);
       pair<DisplayPtr, ControllerPtr> display_details = di.create_display_details(display_id);
 
       DisplayPtr display = display_details.first;
@@ -130,9 +138,14 @@ int main(int argc, char* argv[])
         throw "error";
       }
 
-      if (display && display->create())
+      if (display)
       {
-        run_game(display, controller, settings);
+        set_display_settings(display, settings);
+
+        if (display->create())
+        {
+          run_game(display, controller, settings);
+        }
       }
       else
       {
@@ -157,6 +170,11 @@ int main(int argc, char* argv[])
           cerr << "\nCould not create display.";
           throw "error";
         }
+      }
+
+      if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
+      {
+        sdl.tear_down();
       }
     }
   }
@@ -212,5 +230,16 @@ void remove_old_logfiles(const Settings& settings)
   {
     LogFiles lf;
     lf.remove_old(days_old);
+  }
+}
+
+void set_display_settings(DisplayPtr display, const Settings& settings)
+{
+  if (display != nullptr)
+  {
+    string display_font = settings.get_setting(Setting::DISPLAY_FONT);
+    string display_tile_size = settings.get_setting(Setting::DISPLAY_TILE_SIZE);
+    display->set_property(Setting::DISPLAY_FONT, display_font);
+    display->set_property(Setting::DISPLAY_TILE_SIZE, display_tile_size);
   }
 }

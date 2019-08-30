@@ -77,9 +77,19 @@ class SDLDisplay : public Display
     virtual Display* clone() override;
 
   protected:
-    SDL_Window* window;
-    SDL_Surface* surface;
+    void read_dimensions_from_settings();
+    void read_font_into_texture();
+    bool create_window_and_renderer();
 
+    SDL_Window* window = NULL;
+    SDL_Renderer* renderer = NULL;
+    int tile_width;
+    int tile_height;
+    int screen_width;
+    int screen_height;
+    
+    static const int SCREEN_ROWS;
+    static const int SCREEN_COLS;
   private:
     virtual ClassIdentifier internal_class_identifier() const override ;
 };

@@ -4296,6 +4296,9 @@
     <ClInclude Include="display\include\SDLDisplay.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
+    <ClInclude Include="display\include\SDL.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8584,6 +8587,9 @@
     </ClCompile>
     <ClCompile Include="display\source\unit_tests\SDLDisplay_test.cpp">
       <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDL.cpp">
+      <Filter>Source Files\display\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
