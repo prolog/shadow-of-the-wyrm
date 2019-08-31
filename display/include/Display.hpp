@@ -8,6 +8,7 @@
 #include "DisplayMap.hpp"
 #include "DisplayStatistics.hpp"
 #include "ISerializable.hpp"
+#include "MenuWrapper.hpp"
 #include "Prompt.hpp"
 
 class Screen;
@@ -70,12 +71,21 @@ class Display : public ISerializable
     virtual MapDisplayArea get_map_display_area() = 0;
 
 	  // Return result is the response to whatever prompt is displayed
-	  virtual std::string display_screen(const Screen& current_screen) = 0;
+	  virtual std::string display_screen(const Screen& current_screen);
 	  
 	  // Show confirmation text on the display.
 	  virtual void confirm(const std::string& confirmation_message) = 0;
 
 	  virtual void clear_screen() = 0;
+    virtual void refresh_and_clear_window() = 0;
+    virtual std::string get_prompt_value(const Screen& screen, const MenuWrapper& wrapper, const int row, const int col) = 0;
+    virtual void display_header(const std::string& header_str, const int row) = 0;
+    virtual void setup_new_screen() = 0;
+    virtual void refresh_current_window() = 0;
+    virtual void display_text_component(int* row, int* col, TextComponentPtr text, const uint line_incr) = 0;
+    virtual void display_options_component(int* row, int* col, OptionsComponentPtr oc) = 0;
+    virtual int get_max_rows() const = 0;
+    virtual int get_max_cols() const = 0;
 
     // Property methods.
     virtual void set_properties(const std::map<std::string, std::string>& new_properties);

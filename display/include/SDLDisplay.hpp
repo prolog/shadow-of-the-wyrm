@@ -1,14 +1,16 @@
 // General definition of an abstract Display so that multiple displays
 // can be specified (curses-based, graphical tiles, etc).
 #pragma once
-#include "Display.hpp"
-#include "SDLPromptProcessor.hpp"
 
 #ifdef _MSC_VER
 #include "SDL.h"
 #else
 #include "SDL2/SDL.h"
 #endif
+
+#include "Display.hpp"
+#include "SDLPromptProcessor.hpp"
+#include "SDLTexture.hpp"
 
 
 class SDLDisplay : public Display
@@ -67,20 +69,34 @@ class SDLDisplay : public Display
     // Used by the engine to query the display size, so the DisplayMap can be created accordingly.
     virtual MapDisplayArea get_map_display_area() override;
 
-	  // Return result is the response to whatever prompt is displayed
-	  virtual std::string display_screen(const Screen& current_screen) override;
-	  
 	  // Show confirmation text on the display.
 	  virtual void confirm(const std::string& confirmation_message) override;
 
 	  virtual void clear_screen() override;
+    virtual void refresh_and_clear_window() override;
+    virtual std::string get_prompt_value(const Screen& screen, const MenuWrapper& wrapper, const int row, const int col) override;
+    virtual void display_header(const std::string& header_str, const int row) override;
+    virtual void setup_new_screen() override;
+    virtual void refresh_current_window() override;
+    virtual void display_text_component(int* row, int* col, TextComponentPtr text, const uint line_incr) override;
+    virtual void display_options_component(int* row, int* col, OptionsComponentPtr oc) override;
+    virtual int get_max_rows() const override;
+    virtual int get_max_cols() const override;
 
     virtual Display* clone() override;
 
   protected:
+    // Functions to help set up the SDL display
     void read_dimensions_from_settings();
     void read_font_into_texture();
     bool create_window_and_renderer();
+
+    // Game-related functions
+    void display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
+    void display_text(SDL_Window* window, int row, int col, const char c);
+
+    void display_options_component(SDL_Window* window, int* row, int* col, OptionsComponentPtr options_component);
+    std::pair<int, int> get_glyph_location_from_spritesheet(const char c);
 
     SDL_Window* window = NULL;
     SDL_Renderer* renderer = NULL;
@@ -90,9 +106,12 @@ class SDLDisplay : public Display
     int screen_height;
 
     SDLPromptProcessor prompt_processor;
-    
+    SDLTexture font_spritesheet;
+
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;
+    static const int GLYPHS_PER_LINE;
+
   private:
     virtual ClassIdentifier internal_class_identifier() const override ;
 };

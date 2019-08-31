@@ -603,124 +603,72 @@ MapDisplayArea CursesDisplay::get_map_display_area()
   MapDisplayArea map_display_area;
 
   map_display_area.set_width(TERMINAL_MAX_COLS);
-  map_display_area.set_height(TERMINAL_MAX_ROWS - 5); // JCD FIXME: Remove magic num later
+  map_display_area.set_height(TERMINAL_MAX_ROWS - DisplayConstants::ROWS_FOR_MESSAGE_BUFFER_AND_SYNOPSIS);
 
   return map_display_area;
 }
 
-// Draw the specified screen, full-screen.
-string CursesDisplay::display_screen(const Screen& current_screen)
+void CursesDisplay::refresh_and_clear_window()
 {
-  string result;
-  refresh_terminal_size();
+  WINDOW* win = get_current_screen();
+  wrefresh(win);
 
-  MenuWrapper wrapper;
-  WINDOW* screen_window = create_screen(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
+  // We've shown the prompt, the user has intervened, and so
+  // now we need to clear the window, reset the current row
+  // back to 0 and keep displaying stuff from the screen.
+  wclear(win);
+}
 
-  screens.push_back(screen_window);
-
-  int current_row = 0;
-  int current_col = 0;
-
-  // Display the header if the text is defined.  Some screens (like the quest list,
-  // etc) will have this defined, while others (such as the new character-type
-  // screens) will not.
-  string title_text_sid = current_screen.get_title_text_sid();
-  string header_text = StringTable::get(title_text_sid);
-
-  // The title might not be an actual resource string, but instead an already-
-  // formatted message.  Use that if the lookup is empty but the sid is not.
-  if (!title_text_sid.empty() && header_text.empty())
-  {
-    header_text = title_text_sid;
-  }
-
-  uint num_pages = current_screen.get_num_pages();
-
-  if (num_pages > 1)
-  {
-    ostringstream ss;
-
-    ss << header_text << " (" << current_screen.get_current_page_number() << "/" << num_pages << ")";
-    header_text = ss.str();
-  }
-
-  if (!header_text.empty())
-  {
-    display_header(header_text, screen_window, current_row);
-
-    // Always allow for some space between the title and the components of the
-    // screen, regardless of what the screen has set for line spacing.
-    current_row += 2;
-  }
-
-  vector<ScreenComponentPtr> components = current_screen.get_current_page();
-  uint line_incr = current_screen.get_line_increment();
-
-  uint csize = components.size();
-  for(uint i = 0; i < csize; i++)
-  {
-    ScreenComponentPtr component = components.at(i);
-    ComponentAlignment ca = component->get_spacing_after();
-
-    // Check to see if we should override the screen's line increment value.
-    if (ca.get_override_default())
-    {
-      line_incr = ca.get_value();
-    }
-
-    if (component)
-    {
-      TextComponentPtr tc = dynamic_pointer_cast<TextComponent>(component);
-
-      if (tc != nullptr)
-      {
-        display_text_component(screen_window, &current_row, &current_col, tc, line_incr);
-      }
-      else
-      {
-        OptionsComponentPtr oc = dynamic_pointer_cast<OptionsComponent>(component);
-
-        if (oc != nullptr)
-        {
-          // Process the options...
-          display_options_component(screen_window, &current_row, &current_col, oc);
-
-          // Add them so that the prompt processor knows about the options in this set.
-          wrapper.add_options(oc);
-        }
-      }
-
-      // After each line, check to see if we need to throw up a prompt because
-      // of hitting the end of the screen, but only if there's still stuff to
-      // display.
-      if (current_row == (static_cast<int>(TERMINAL_MAX_ROWS) - 1) && (i != csize-1))
-      {
-        PromptPtr prompt = current_screen.get_prompt();
-        prompt_processor.show_prompt(screen_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
-
-        result = prompt_processor.get_prompt(screen_window, wrapper, prompt);
-
-        wrefresh(screen_window);
-
-        // We've shown the prompt, the user has intervened, and so
-        // now we need to clear the window, reset the current row
-        // back to 0 and keep displaying stuff from the screen.
-        wclear(screen_window);
-        current_row = 0;
-      }
-    }
-  }
-
-  // Done!  Add an appropriate prompt.
+string CursesDisplay::get_prompt_value(const Screen& current_screen, const MenuWrapper& wrapper, const int current_row, const int current_col)
+{
+  WINDOW* screen_window = get_current_screen();
   PromptPtr prompt = current_screen.get_prompt();
   prompt_processor.show_prompt(screen_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
-  result = prompt_processor.get_prompt(screen_window, wrapper, prompt);
-
-  wrefresh(screen_window);
-
+  string result = prompt_processor.get_prompt(screen_window, wrapper, prompt);
   return result;
+}
+
+void CursesDisplay::display_header(const string& header_text, const int current_row)
+{
+  WINDOW* screen_window = get_current_screen();
+  display_header(header_text, screen_window, current_row);
+}
+
+void CursesDisplay::setup_new_screen()
+{
+  refresh_terminal_size();
+  WINDOW* screen_window = create_screen(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
+
+  screens.push_back(screen_window);
+}
+
+void CursesDisplay::refresh_current_window()
+{
+  WINDOW* current_screen = get_current_screen();
+  wrefresh(current_screen);
+}
+
+void CursesDisplay::display_text_component(int* row, int* col, TextComponentPtr text, const uint line_incr)
+{
+  WINDOW* screen_window = get_current_screen();
+  display_text_component(screen_window, row, col, text, line_incr);
+}
+
+void CursesDisplay::display_options_component(int* row, int* col, OptionsComponentPtr options)
+{
+  WINDOW* screen_window = get_current_screen();
+  display_options_component(screen_window, row, col, options);
+}
+
+int CursesDisplay::get_max_rows() const
+{
+  return TERMINAL_MAX_ROWS;
+}
+
+int CursesDisplay::get_max_cols() const
+{
+  return TERMINAL_MAX_COLS;
 }
 
 // Show confirmation text - use the message buffer.
@@ -803,9 +751,7 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
 
       TextComponentPtr text = current_option.get_description();
 
-      // JCD FIXME make 1 a constant later -
-      // there should always be a single line break between options.
-      display_text_component(window, row, &ocol, text, 1);
+      display_text_component(window, row, &ocol, text, DisplayConstants::OPTION_SPACING);
       disable_colour(static_cast<int>(option_colour), window);
 
       options_added++;

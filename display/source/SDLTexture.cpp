@@ -1,4 +1,6 @@
 #include <iostream>
+#include <sstream>
+#include "Log.hpp"
 #include "SDL_image.h"
 #include "SDLTexture.hpp"
 
@@ -20,6 +22,7 @@ SDLTexture::~SDLTexture()
 bool SDLTexture::load_from_file(const string& path, SDL_Renderer* renderer)
 {
   free();
+  ostringstream ss;
 
   if (renderer == nullptr)
   {
@@ -32,7 +35,8 @@ bool SDLTexture::load_from_file(const string& path, SDL_Renderer* renderer)
   SDL_Surface* surface = IMG_Load(path.c_str());
   if (surface == NULL)
   {
-    cout << "Unable to load SDL surface " << path << " - error: " << IMG_GetError();
+    ss << "Unable to load SDL surface " << path << " - error: " << IMG_GetError();
+    Log::instance().error(ss.str());
   }
   else
   {
@@ -44,7 +48,8 @@ bool SDLTexture::load_from_file(const string& path, SDL_Renderer* renderer)
 
     if (new_texture == NULL)
     {
-      cout << "Unable to create texture from " << path << " - error: " << SDL_GetError();
+      ss << "Unable to create texture from " << path << " - error: " << SDL_GetError();
+      Log::instance().error(ss.str());
     }
     else
     {
@@ -75,7 +80,6 @@ void SDLTexture::free()
 
 void SDLTexture::set_color(Uint8 r, Uint8 g, Uint8 b)
 {
-  //Modulate texture rgb
   SDL_SetTextureColorMod(texture, r, g, b);
 }
 

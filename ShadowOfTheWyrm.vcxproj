@@ -208,11 +208,14 @@ xcopy /y /d $(ProjectDir)sotw_procdump.bat $(OutDir)
 xcopy /y /d $(ProjectDir)howdoi.txt $(OutDir)
 xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
 xcopy /y /d $(ProjectDir)xerces-c_3_2.dll $(OutDir)
+xcopy /y /d $(ProjectDir)SDL2.dll $(OutDir)
+xcopy /y /d $(ProjectDir)SDL2_image.dll $(OutDir)
 xcopy /y /d $(ProjectDir)zlib.dll $(OutDir)
 xcopy /y /d $(ProjectDir)README.md $(OutDir)
 xcopy /y /d $(ProjectDir)LICENSE $(OutDir)
 mkdir $(Outdir)licenses
 xcopy /y /d $(ProjectDir)licenses $(OutDir)licenses
+xcopy /y /d $(Projectdir)README-SDL.txt $(OutDir)
 mkdir $(OutDir)docs
 xcopy /y /d $(ProjectDir)docs\*.pdf $(OutDir)docs
 xcopy /y /d $(ProjectDir)*.ini $(OutDir)
@@ -255,6 +258,7 @@ xcopy /y /d $(ProjectDir)howdoi.txt $(OutDir)
 xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
 xcopy /y /d $(ProjectDir)xerces-c_3_2.dll $(OutDir)
 xcopy /y /d $(ProjectDir)SDL2.dll $(OutDir)
+xcopy /y /d $(ProjectDir)SDL2_image.dll $(OutDir)
 xcopy /y /d $(ProjectDir)zlib.dll $(OutDir)
 xcopy /y /d $(ProjectDir)README.md $(OutDir)
 xcopy /y /d $(ProjectDir)LICENSE $(OutDir)

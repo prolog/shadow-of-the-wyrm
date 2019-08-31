@@ -55,7 +55,6 @@ class CursesDisplay : public Display
 	  
     MapDisplayArea get_map_display_area() override;
 
-	  std::string display_screen(const Screen& current_screen) override;
     void display_header(const std::string& header_text, WINDOW* cur_window, const int display_line = 0);
 
 	  void confirm(const std::string& confirmation_message) override;
@@ -100,6 +99,16 @@ class CursesDisplay : public Display
     int clear_message_buffer();
 
     void refresh_terminal_size();
+    void refresh_and_clear_window() override;
+    virtual std::string get_prompt_value(const Screen& screen, const MenuWrapper& wrapper, const int row, const int col) override;
+    virtual void display_header(const std::string& header, const int row) override;
+    virtual void setup_new_screen() override;
+    virtual void refresh_current_window() override;
+    virtual void display_text_component(int* row, int* col, TextComponentPtr text, const uint line_incr) override;
+    virtual void display_options_component(int* row, int* col, OptionsComponentPtr oc) override;
+    virtual int get_max_rows() const override;
+    virtual int get_max_cols() const override;
+
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
     void display_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
     std::string display_prompt(WINDOW* screen_window, PromptPtr prompt, int row = 0, int col = 0);
