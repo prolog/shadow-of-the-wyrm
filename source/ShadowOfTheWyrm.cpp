@@ -239,7 +239,10 @@ void set_display_settings(DisplayPtr display, const Settings& settings)
   {
     string display_font = settings.get_setting(Setting::DISPLAY_FONT);
     string display_tile_size = settings.get_setting(Setting::DISPLAY_TILE_SIZE);
+    string display_tile_glyphs_per_line = settings.get_setting(Setting::DISPLAY_TILE_GLYPHS_PER_LINE);
+
     display->set_property(Setting::DISPLAY_FONT, display_font);
     display->set_property(Setting::DISPLAY_TILE_SIZE, display_tile_size);
+    display->set_property(Setting::DISPLAY_TILE_GLYPHS_PER_LINE, display_tile_glyphs_per_line);
   }
 }

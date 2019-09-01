@@ -14,7 +14,6 @@ using namespace std;
 
 const int SDLDisplay::SCREEN_ROWS = 25;
 const int SDLDisplay::SCREEN_COLS = 80;
-const int SDLDisplay::GLYPHS_PER_LINE = 16;
 
 SDLDisplay::SDLDisplay()
 {
@@ -67,6 +66,9 @@ void SDLDisplay::read_dimensions_from_settings()
     screen_width = SCREEN_COLS * tile_width;
     screen_height = SCREEN_ROWS * tile_height;
   }
+
+  string tile_glyphs_per_line = get_property(Setting::DISPLAY_TILE_GLYPHS_PER_LINE);
+  glyphs_per_line = String::to_int(tile_glyphs_per_line);
 }
 
 void SDLDisplay::read_font_into_texture()
@@ -220,10 +222,12 @@ int SDLDisplay::get_max_cols() const
 
 void SDLDisplay::display_text_component(int* row, int* col, TextComponentPtr text, const uint line_incr)
 {
+  display_text_component(window, row, col, text, line_incr);
 }
 
 void SDLDisplay::display_options_component(int* row, int* col, OptionsComponentPtr oc)
 {
+  display_options_component(window, row, col, oc);
 }
 
 string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& menu_wrapper, const int row, const int col)
@@ -283,7 +287,7 @@ void SDLDisplay::display_text(SDL_Window* window, int row, int col, const char c
 
 std::pair<int, int> SDLDisplay::get_glyph_location_from_spritesheet(char x)
 {
-  return {x / GLYPHS_PER_LINE, x % GLYPHS_PER_LINE};
+  return {x / glyphs_per_line, x % glyphs_per_line};
 }
 
 

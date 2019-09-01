@@ -104,13 +104,13 @@ class SDLDisplay : public Display
     int tile_height;
     int screen_width;
     int screen_height;
+    int glyphs_per_line;
 
     SDLPromptProcessor prompt_processor;
     SDLTexture font_spritesheet;
 
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;
-    static const int GLYPHS_PER_LINE;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override ;
