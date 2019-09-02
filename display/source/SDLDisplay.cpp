@@ -5,6 +5,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapDisplayArea.hpp"
+#include "Screen.hpp"
 #include "Setting.hpp"
 #include "TextKeys.hpp"
 
@@ -232,8 +233,11 @@ void SDLDisplay::display_options_component(int* row, int* col, OptionsComponentP
 
 string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& menu_wrapper, const int row, const int col)
 {
-  string val;
-  return val;
+  PromptPtr prompt = screen.get_prompt();
+  prompt_processor.show_prompt(window, prompt, row, col, get_max_rows(), get_max_cols());
+
+  string result = prompt_processor.get_prompt(window, menu_wrapper, prompt);
+  return result;
 }
 
 void SDLDisplay::display_header(const string& header_text, const int row)

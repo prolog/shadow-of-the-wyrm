@@ -99,6 +99,8 @@ string Display::display_screen(const Screen& current_screen)
     }
   }
 
+  refresh_current_window();
+
   // Done!  Add an appropriate prompt.
   result = get_prompt_value(current_screen, wrapper, current_row, current_col);
   refresh_current_window();
