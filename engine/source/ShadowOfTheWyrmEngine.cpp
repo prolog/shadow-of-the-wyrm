@@ -113,7 +113,11 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
   if (state_manager.start_new_game())
   {
     setup_display(settings);
+
+    // Read in all the game data (there's a lot of it!), and then show the
+    // display
     setup_game();
+    game.get_display()->show();
   }
 
   setup_player_and_world();

@@ -34,13 +34,9 @@ bool SDLDisplay::create()
 {
   bool init = true;
 
-  read_dimensions_from_settings();
-  init = create_window_and_renderer();
-
-  if (init)
-  {
-    read_font_into_texture();
-  }
+  init = read_dimensions_from_settings();
+  init = init && create_window_and_renderer();
+  init = init && read_font_into_texture();
 
   return init;
 }
@@ -51,8 +47,10 @@ void SDLDisplay::tear_down()
   SDL_DestroyWindow(window);
 }
 
-void SDLDisplay::read_dimensions_from_settings()
+bool SDLDisplay::read_dimensions_from_settings()
 {
+  bool dim_val = false;
+
   string tile_size = get_property(Setting::DISPLAY_TILE_SIZE);
   vector<string> tile_spl;
 
@@ -70,17 +68,24 @@ void SDLDisplay::read_dimensions_from_settings()
 
   string tile_glyphs_per_line = get_property(Setting::DISPLAY_TILE_GLYPHS_PER_LINE);
   glyphs_per_line = String::to_int(tile_glyphs_per_line);
+
+  dim_val = (tile_spl.size() >= 2 && !tile_glyphs_per_line.empty() && glyphs_per_line > 0);
+  return dim_val;
 }
 
-void SDLDisplay::read_font_into_texture()
+bool SDLDisplay::read_font_into_texture()
 {
+  bool font_result = true;
   string font_path = get_property(Setting::DISPLAY_FONT);
   if (!font_spritesheet.load_from_file(font_path, renderer))
   {
     ostringstream ss;
     ss << "Could not read font from path: " << font_path;
     Log::instance().error(ss.str());
+    font_result = false;
   }
+
+  return font_result;
 }
 
 bool SDLDisplay::create_window_and_renderer()
@@ -194,6 +199,16 @@ void SDLDisplay::confirm(const string& confirmation_message)
 {
 }
 
+void SDLDisplay::show()
+{
+  SDL_ShowWindow(window);
+}
+
+void SDLDisplay::hide()
+{
+  SDL_HideWindow(window);
+}
+
 void SDLDisplay::clear_screen()
 {
 }
@@ -242,12 +257,11 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
 
 void SDLDisplay::display_header(const string& header_text, const int row)
 {
+  // JCD FIXME
 }
 
 void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr tc, const uint line_incr)
 {
-  int cur_col = *col;
-
   if (tc != nullptr && row != nullptr && col != nullptr)
   {
     vector<pair<string, Colour>> current_text = tc->get_text();
@@ -262,11 +276,20 @@ void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, 
       for (const char c : cur_text)
       {
         display_text(window, *row, *col, c);
-        cur_col += 1;
+        *col += 1;
       }
-    }
 
-    *row += line_incr;
+      *col = 0;
+      *row += line_incr;
+    }
+  }
+}
+
+void SDLDisplay::display_text(SDL_Window* window, int row, int col, const string& s)
+{
+  for (size_t i = 0; i < s.size(); i++)
+  {
+    display_text(window, row, col+i, s[i]);
   }
 }
 
@@ -331,20 +354,14 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
 
       ostringstream display_option;
       display_option << "  [" << current_option.get_id_char() << "] ";
-
-      int ocol = *col;
-
       string display_option_s = display_option.str();
-//      boost::replace_all(display_option_s, "%", "%%");
+      display_text(window, *row, *col, display_option_s);
 
-//      mvwprintw(window, *row, ocol, display_option_s.c_str());
-
-//      getyx(window, *row, ocol);
+      int ocol = *col + display_option_s.size();
 
       TextComponentPtr text = current_option.get_description();
 
       display_text_component(window, row, &ocol, text, DisplayConstants::OPTION_SPACING);
-//      disable_colour(static_cast<int>(option_colour), window);
 
       options_added++;
       temp_row++;

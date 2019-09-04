@@ -72,6 +72,8 @@ class SDLDisplay : public Display
 	  // Show confirmation text on the display.
 	  virtual void confirm(const std::string& confirmation_message) override;
 
+    virtual void show() override;
+    virtual void hide() override;
 	  virtual void clear_screen() override;
     virtual void refresh_and_clear_window() override;
     virtual std::string get_prompt_value(const Screen& screen, const MenuWrapper& wrapper, const int row, const int col) override;
@@ -87,12 +89,16 @@ class SDLDisplay : public Display
 
   protected:
     // Functions to help set up the SDL display
-    void read_dimensions_from_settings();
-    void read_font_into_texture();
+    bool read_dimensions_from_settings();
+    bool read_font_into_texture();
     bool create_window_and_renderer();
 
     // Game-related functions
     void display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
+
+    // These functions are "dumb" and don't reset the row/col at all.  This
+    // allows for finer control.
+    void display_text(SDL_Window* window, int row, int col, const std::string& s);
     void display_text(SDL_Window* window, int row, int col, const char c);
 
     void display_options_component(SDL_Window* window, int* row, int* col, OptionsComponentPtr options_component);

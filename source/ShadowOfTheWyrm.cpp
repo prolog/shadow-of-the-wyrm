@@ -144,7 +144,14 @@ int main(int argc, char* argv[])
 
         if (display->create())
         {
+          // Hide the window when loading.
+          display->hide();
+
           run_game(display, controller, settings);
+        }
+        else
+        {
+          cout << "Could not create display - see log files for additional details." << endl;
         }
       }
       else

@@ -763,6 +763,15 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
   // It will have been taken care of when displaying the TextComponent.
 }
 
+// show()/hide() do nothing currently.  The curses display is always visible.
+void CursesDisplay::show()
+{
+}
+
+void CursesDisplay::hide()
+{
+}
+
 void CursesDisplay::clear_screen()
 {
   if (!screens.empty())
