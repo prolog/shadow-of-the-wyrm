@@ -76,6 +76,7 @@ class Display : public ISerializable
 	  // Show confirmation text on the display.
 	  virtual void confirm(const std::string& confirmation_message) = 0;
 
+    virtual void set_title(const std::string& title) = 0;
     virtual void show() = 0;
     virtual void hide() = 0;
 	  virtual void clear_screen() = 0;

@@ -72,6 +72,7 @@ class SDLDisplay : public Display
 	  // Show confirmation text on the display.
 	  virtual void confirm(const std::string& confirmation_message) override;
 
+    virtual void set_title(const std::string& title) override;
     virtual void show() override;
     virtual void hide() override;
 	  virtual void clear_screen() override;

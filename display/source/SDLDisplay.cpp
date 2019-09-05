@@ -77,6 +77,7 @@ bool SDLDisplay::read_font_into_texture()
 {
   bool font_result = true;
   string font_path = get_property(Setting::DISPLAY_FONT);
+
   if (!font_spritesheet.load_from_file(font_path, renderer))
   {
     ostringstream ss;
@@ -134,6 +135,8 @@ void SDLDisplay::clear_messages()
 
 void SDLDisplay::clear_display()
 {
+  SDL_RenderClear(renderer);
+  SDL_RenderPresent(renderer);
 }
 
 void SDLDisplay::add_alert(const string& message, const bool prompt_for_input)
@@ -199,6 +202,11 @@ void SDLDisplay::confirm(const string& confirmation_message)
 {
 }
 
+void SDLDisplay::set_title(const string& title)
+{
+  SDL_SetWindowTitle(window, title.c_str());
+}
+
 void SDLDisplay::show()
 {
   SDL_ShowWindow(window);
@@ -211,6 +219,7 @@ void SDLDisplay::hide()
 
 void SDLDisplay::clear_screen()
 {
+  SDL_RenderClear(renderer);
 }
 
 void SDLDisplay::refresh_and_clear_window()
@@ -219,6 +228,7 @@ void SDLDisplay::refresh_and_clear_window()
 
 void SDLDisplay::setup_new_screen()
 {
+  SDL_RenderClear(renderer);
 }
 
 void SDLDisplay::refresh_current_window()
@@ -278,10 +288,10 @@ void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, 
         display_text(window, *row, *col, c);
         *col += 1;
       }
-
-      *col = 0;
-      *row += line_incr;
     }
+
+    *col = 0;
+    *row += line_incr;
   }
 }
 

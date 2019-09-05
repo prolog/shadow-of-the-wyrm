@@ -117,7 +117,14 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
     // Read in all the game data (there's a lot of it!), and then show the
     // display
     setup_game();
-    game.get_display()->show();
+
+    DisplayPtr display = game.get_display();
+
+    if (display)
+    {
+      display->set_title(StringTable::get(TextKeys::SW_TITLE));
+      display->show();
+    }
   }
 
   setup_player_and_world();

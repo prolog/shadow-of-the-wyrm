@@ -763,6 +763,11 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
   // It will have been taken care of when displaying the TextComponent.
 }
 
+// set_title() does nothing. curses can't set the terminal title.
+void CursesDisplay::set_title(const string& title)
+{
+}
+
 // show()/hide() do nothing currently.  The curses display is always visible.
 void CursesDisplay::show()
 {

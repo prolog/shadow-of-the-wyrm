@@ -59,6 +59,7 @@ class CursesDisplay : public Display
 
 	  void confirm(const std::string& confirmation_message) override;
 
+    void set_title(const std::string& title) override;
     void show() override;
     void hide() override;
 	  void clear_screen() override;
