@@ -43,6 +43,11 @@ bool SDLDisplay::create()
 
 void SDLDisplay::tear_down()
 {
+  for (SDL_Texture* t : screens)
+  {
+    SDL_DestroyTexture(t);
+  }
+
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
 }
@@ -106,7 +111,7 @@ bool SDLDisplay::create_window_and_renderer()
   else
   {
     //Create vsynced renderer for window
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
     if (renderer == NULL)
     {
       ss << "Renderer could not be created! SDL Error: %s\n" << SDL_GetError();
@@ -219,21 +224,50 @@ void SDLDisplay::hide()
 
 void SDLDisplay::clear_screen()
 {
-  SDL_RenderClear(renderer);
+  if (!screens.empty())
+  {
+    SDL_Texture* current_screen = screens.back();
+    screens.pop_back();
+
+    SDL_DestroyTexture(current_screen);
+  }
 }
 
 void SDLDisplay::refresh_and_clear_window()
 {
+  if (!screens.empty())
+  {
+    SDL_SetRenderTarget(renderer, NULL);
+    SDL_RenderClear(renderer);
+    SDL_SetRenderTarget(renderer, screens.back());
+  }
 }
 
 void SDLDisplay::setup_new_screen()
 {
   SDL_RenderClear(renderer);
+
+  SDL_Texture* screen = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, screen_width, screen_height);
+  screens.push_back(screen);
+
+  SDL_SetRenderTarget(renderer, screen);
 }
 
+// To render the screen, detach the renderer from the current texture and 
+// use the renderer to display it.  Then, reattach to the current screen
+// (texture).
 void SDLDisplay::refresh_current_window()
 {
-  SDL_RenderPresent(renderer);
+  if (!screens.empty())
+  {
+    SDL_Texture* cur_screen = screens.back();
+
+    SDL_SetRenderTarget(renderer, NULL);
+    SDL_RenderCopyEx(renderer, cur_screen, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
+    SDL_RenderPresent(renderer);
+
+    SDL_SetRenderTarget(renderer, cur_screen);
+  }
 }
 
 int SDLDisplay::get_max_rows() const

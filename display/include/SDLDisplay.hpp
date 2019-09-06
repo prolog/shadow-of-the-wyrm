@@ -8,6 +8,7 @@
 #include "SDL2/SDL.h"
 #endif
 
+#include <deque>
 #include "Display.hpp"
 #include "SDLPromptProcessor.hpp"
 #include "SDLTexture.hpp"
@@ -106,7 +107,9 @@ class SDLDisplay : public Display
     std::pair<int, int> get_glyph_location_from_spritesheet(const char c);
 
     SDL_Window* window = NULL;
+    std::deque<SDL_Texture*> screens;
     SDL_Renderer* renderer = NULL;
+
     int tile_width;
     int tile_height;
     int screen_width;
