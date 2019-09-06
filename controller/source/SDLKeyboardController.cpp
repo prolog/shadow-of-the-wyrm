@@ -84,6 +84,7 @@ int SDLKeyboardController::read_char_as_int()
   while (!done)
   {
     SDL_PollEvent(&event);
+    int key = event.key.keysym.sym;
 
     if (event.type == SDL_TEXTINPUT)
     {
@@ -92,7 +93,8 @@ int SDLKeyboardController::read_char_as_int()
       return_val = event.text.text[0];
       done = true;
     }
-    else if (event.type == SDL_KEYDOWN)
+    // JCD FIXME: Re-examine this later.  It'll probably breaka lot of stuff.
+    else if (event.type == SDL_KEYDOWN && (key >= SDLK_F1 && key <= SDLK_F12))
     {
       return_val = event.key.keysym.sym;
       done = true;
