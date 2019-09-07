@@ -83,20 +83,21 @@ void SDLTexture::set_color(Uint8 r, Uint8 g, Uint8 b)
   SDL_SetTextureColorMod(texture, r, g, b);
 }
 
-void SDLTexture::render(int y, int x, SDL_Renderer* renderer, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
+void SDLTexture::render(int y, int x, SDL_Renderer* renderer, SDL_Texture* target_texture, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
 {
   //Set rendering space and render to screen
-  SDL_Rect render_rect = { x, y, texture_width, texture_height };
+  SDL_Rect dst_rect = { x, y, 0, 0 };
 
   //Set clip rendering dimensions
-  if (clip != NULL)
+  if (clip != nullptr)
   {
-    render_rect.w = clip->w;
-    render_rect.h = clip->h;
+    dst_rect.w = clip->w; 
+    dst_rect.h = clip->h;
   }
 
-  //Render to screen
-  SDL_RenderCopyEx(renderer, texture, clip, &render_rect, angle, center, flip);
+  //Render to the target texture, then detach.
+  SDL_SetRenderTarget(renderer, target_texture);
+  SDL_RenderCopy(renderer, texture, clip, &dst_rect);
 }
 
 int SDLTexture::get_width() const

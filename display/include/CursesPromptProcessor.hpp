@@ -4,12 +4,13 @@
 #else
 #include <ncurses.h>
 #endif
-#include "Prompt.hpp"
 #include "MenuWrapper.hpp"
+#include "Prompt.hpp"
+#include "PromptProcessor.hpp"
 
 // Handles the output of the prompt text and the reading of the prompt from the keyboard based on the type of
 // prompt provided.
-class CursesPromptProcessor
+class CursesPromptProcessor : public PromptProcessor
 {
   public:
     bool operator==(const CursesPromptProcessor& cpp) const;

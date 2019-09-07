@@ -4305,6 +4305,15 @@
     <ClInclude Include="display\include\SDLTexture.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
+    <ClInclude Include="display\include\PromptProcessor.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDLTextRenderer.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDLDisplayParameters.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8602,6 +8611,18 @@
     </ClCompile>
     <ClCompile Include="display\source\SDLTexture.cpp">
       <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\PromptProcessor.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLTextRenderer.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLDisplayParameters.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDLDisplayParameters_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

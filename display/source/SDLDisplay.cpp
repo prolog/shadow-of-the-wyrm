@@ -20,10 +20,9 @@ SDLDisplay::SDLDisplay()
 {
   window = NULL;
   renderer = NULL;
-  tile_width = 0;
-  tile_height = 0;
-  screen_width = 0;
-  screen_height = 0;
+
+  sdld.set_screen_rows(SCREEN_ROWS);
+  sdld.set_screen_cols(SCREEN_COLS);
 }
 
 SDLDisplay::~SDLDisplay()
@@ -64,15 +63,19 @@ bool SDLDisplay::read_dimensions_from_settings()
 
   if (tile_spl.size() >= 2)
   {
-    tile_width = String::to_int(tile_spl[0]);
-    tile_height = String::to_int(tile_spl[1]);
+    int glyph_width = String::to_int(tile_spl[0]);
+    int glyph_height = String::to_int(tile_spl[1]);
 
-    screen_width = SCREEN_COLS * tile_width;
-    screen_height = SCREEN_ROWS * tile_height;
+    sdld.set_glyph_width(glyph_width);
+    sdld.set_glyph_height(glyph_height);
+
+    sdld.set_screen_width(sdld.get_screen_cols() * glyph_width);
+    sdld.set_screen_height(sdld.get_screen_rows() * glyph_height);
   }
 
   string tile_glyphs_per_line = get_property(Setting::DISPLAY_TILE_GLYPHS_PER_LINE);
-  glyphs_per_line = String::to_int(tile_glyphs_per_line);
+  int glyphs_per_line = String::to_int(tile_glyphs_per_line);
+  sdld.set_glyphs_per_line(glyphs_per_line);
 
   dim_val = (tile_spl.size() >= 2 && !tile_glyphs_per_line.empty() && glyphs_per_line > 0);
   return dim_val;
@@ -100,7 +103,7 @@ bool SDLDisplay::create_window_and_renderer()
   ostringstream ss;
 
   string window_title = StringTable::get(TextKeys::SW_TITLE);
-  window = SDL_CreateWindow(window_title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN);
+  window = SDL_CreateWindow(window_title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, sdld.get_screen_width(), sdld.get_screen_height(), SDL_WINDOW_SHOWN);
   if (window == NULL)
   {
     ss << "Window could not be created! SDL Error: " << SDL_GetError();
@@ -247,7 +250,7 @@ void SDLDisplay::setup_new_screen()
 {
   SDL_RenderClear(renderer);
 
-  SDL_Texture* screen = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, screen_width, screen_height);
+  SDL_Texture* screen = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, sdld.get_screen_width(), sdld.get_screen_height());
   screens.push_back(screen);
 
   SDL_SetRenderTarget(renderer, screen);
@@ -263,7 +266,8 @@ void SDLDisplay::refresh_current_window()
     SDL_Texture* cur_screen = screens.back();
 
     SDL_SetRenderTarget(renderer, NULL);
-    SDL_RenderCopyEx(renderer, cur_screen, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, cur_screen, NULL, NULL);
     SDL_RenderPresent(renderer);
 
     SDL_SetRenderTarget(renderer, cur_screen);
@@ -292,11 +296,19 @@ void SDLDisplay::display_options_component(int* row, int* col, OptionsComponentP
 
 string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& menu_wrapper, const int row, const int col)
 {
-  PromptPtr prompt = screen.get_prompt();
-  prompt_processor.show_prompt(window, prompt, row, col, get_max_rows(), get_max_cols());
+  string prompt_val;
 
-  string result = prompt_processor.get_prompt(window, menu_wrapper, prompt);
-  return result;
+  if (!screens.empty())
+  {
+    SDL_Texture* current_screen = screens.back();
+    SDLTextRendererPtr text_renderer = std::make_shared<SDLTextRenderer>(sdld, renderer, font_spritesheet, current_screen);
+    PromptPtr prompt = screen.get_prompt();
+    prompt_processor.show_prompt(text_renderer, prompt, row, col, get_max_rows(), get_max_cols());
+
+    string result = prompt_processor.get_prompt(window, menu_wrapper, prompt);
+  }
+
+  return prompt_val;
 }
 
 void SDLDisplay::display_header(const string& header_text, const int row)
@@ -306,61 +318,42 @@ void SDLDisplay::display_header(const string& header_text, const int row)
 
 void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr tc, const uint line_incr)
 {
-  if (tc != nullptr && row != nullptr && col != nullptr)
+  if (!screens.empty())
   {
-    vector<pair<string, Colour>> current_text = tc->get_text();
+    SDLTextRenderer text_renderer(sdld, renderer, font_spritesheet, screens.back());
 
-    for (auto& text_line : current_text)
+    if (tc != nullptr && row != nullptr && col != nullptr)
     {
-      string cur_text = text_line.first;
-      Colour colour = text_line.second;
+      vector<pair<string, Colour>> current_text = tc->get_text();
 
-      // Loop through the given string.  For each character, render it,
-      // and increment the column.
-      for (const char c : cur_text)
+      for (auto& text_line : current_text)
       {
-        display_text(window, *row, *col, c);
-        *col += 1;
+        string cur_text = text_line.first;
+        Colour colour = text_line.second;
+        
+        // Loop through the given string.  For each character, render it,
+        // and increment the column.
+        for (const char c : cur_text)
+        {
+          text_renderer.render_text(*row, *col, c);
+          *col += 1;
+        }
       }
+
+      *col = 0;
+      *row += line_incr;
     }
-
-    *col = 0;
-    *row += line_incr;
   }
 }
 
-void SDLDisplay::display_text(SDL_Window* window, int row, int col, const string& s)
+void SDLDisplay::display_text(const int row, const int col, const string& s)
 {
-  for (size_t i = 0; i < s.size(); i++)
+  if (!screens.empty())
   {
-    display_text(window, row, col+i, s[i]);
+    SDLTextRenderer text_renderer(sdld, renderer, font_spritesheet, screens.back());
+    text_renderer.render_text(row, col, s);
   }
 }
-
-void SDLDisplay::display_text(SDL_Window* window, int row, int col, const char c)
-{
-  SDL_Rect font_clip;
-
-  // Look up the letter
-  std::pair<int, int> ss_coords = get_glyph_location_from_spritesheet(c);
-
-  // Set the proper coords
-  font_clip.y = ss_coords.first * tile_height;
-  font_clip.x = ss_coords.second * tile_width;
-  font_clip.w = tile_width;
-  font_clip.h = tile_height;
-
-  int render_x = col * tile_width;
-  int render_y = row * tile_height;
-
-  font_spritesheet.render(render_y, render_x, renderer, &font_clip);
-}
-
-std::pair<int, int> SDLDisplay::get_glyph_location_from_spritesheet(char x)
-{
-  return {x / glyphs_per_line, x % glyphs_per_line};
-}
-
 
 void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* col, OptionsComponentPtr oc)
 {
@@ -399,7 +392,7 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
       ostringstream display_option;
       display_option << "  [" << current_option.get_id_char() << "] ";
       string display_option_s = display_option.str();
-      display_text(window, *row, *col, display_option_s);
+      display_text(*row, *col, display_option_s);
 
       int ocol = *col + display_option_s.size();
 
@@ -414,6 +407,32 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
 
   // No need to update *row
   // It will have been taken care of when displaying the TextComponent.
+}
+
+bool SDLDisplay::serialize(std::ostream& stream) const
+{
+  Display::serialize(stream);
+
+  // Window, raw screen textures, the font spritesheet, and renderer will 
+  // all be set up outside of this function. They're not serialized.  
+  // Ignore them.
+
+  sdld.serialize(stream);
+
+  return true;
+}
+
+bool SDLDisplay::deserialize(std::istream& stream)
+{
+  Display::deserialize(stream);
+
+  // Window, raw screen textures, the font spritesheet, and renderer will 
+  // all be set up outside of this function. They're not serialized.  
+  // Ignore them.
+
+  sdld.deserialize(stream);
+
+  return true;
 }
 
 Display* SDLDisplay::clone()

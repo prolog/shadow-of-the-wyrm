@@ -10,6 +10,7 @@
 
 #include <deque>
 #include "Display.hpp"
+#include "SDLDisplayParameters.hpp"
 #include "SDLPromptProcessor.hpp"
 #include "SDLTexture.hpp"
 
@@ -87,6 +88,14 @@ class SDLDisplay : public Display
     virtual int get_max_rows() const override;
     virtual int get_max_cols() const override;
 
+    // These functions are "dumb" and don't reset the row/col at all.  This
+    // allows for finer control.
+    void display_text(int row, int col, const std::string& s);
+    void display_text(int row, int col, const char c);
+
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
+
     virtual Display* clone() override;
 
   protected:
@@ -98,11 +107,6 @@ class SDLDisplay : public Display
     // Game-related functions
     void display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
 
-    // These functions are "dumb" and don't reset the row/col at all.  This
-    // allows for finer control.
-    void display_text(SDL_Window* window, int row, int col, const std::string& s);
-    void display_text(SDL_Window* window, int row, int col, const char c);
-
     void display_options_component(SDL_Window* window, int* row, int* col, OptionsComponentPtr options_component);
     std::pair<int, int> get_glyph_location_from_spritesheet(const char c);
 
@@ -110,12 +114,7 @@ class SDLDisplay : public Display
     std::deque<SDL_Texture*> screens;
     SDL_Renderer* renderer = NULL;
 
-    int tile_width;
-    int tile_height;
-    int screen_width;
-    int screen_height;
-    int glyphs_per_line;
-
+    SDLDisplayParameters sdld;
     SDLPromptProcessor prompt_processor;
     SDLTexture font_spritesheet;
 
@@ -123,5 +122,8 @@ class SDLDisplay : public Display
     static const int SCREEN_COLS;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const override ;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
+
+
+using SDLDisplayPtr = std::shared_ptr<SDLDisplay>;
