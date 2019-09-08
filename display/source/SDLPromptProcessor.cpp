@@ -66,7 +66,7 @@ int SDLPromptProcessor::get_prompt(SDL_Window* window)
   return prompt_val;
 }
 
-void SDLPromptProcessor::show_prompt(SDLTextRendererPtr renderer, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
+void SDLPromptProcessor::show_prompt(SDLRenderPtr renderer, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
   if (renderer != nullptr && prompt != nullptr)
   {

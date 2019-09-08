@@ -4302,16 +4302,13 @@
     <ClInclude Include="display\include\SDLPromptProcessor.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
-    <ClInclude Include="display\include\SDLTexture.hpp">
-      <Filter>Header Files\display\include</Filter>
-    </ClInclude>
     <ClInclude Include="display\include\PromptProcessor.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
-    <ClInclude Include="display\include\SDLTextRenderer.hpp">
+    <ClInclude Include="display\include\SDLDisplayParameters.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
-    <ClInclude Include="display\include\SDLDisplayParameters.hpp">
+    <ClInclude Include="display\include\SDLRender.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -8609,13 +8606,7 @@
     <ClCompile Include="display\source\SDLPromptProcessor.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
-    <ClCompile Include="display\source\SDLTexture.cpp">
-      <Filter>Source Files\display\source</Filter>
-    </ClCompile>
     <ClCompile Include="display\source\PromptProcessor.cpp">
-      <Filter>Source Files\display\source</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\SDLTextRenderer.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
     <ClCompile Include="display\source\SDLDisplayParameters.cpp">
@@ -8623,6 +8614,9 @@
     </ClCompile>
     <ClCompile Include="display\source\unit_tests\SDLDisplayParameters_test.cpp">
       <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLRender.cpp">
+      <Filter>Source Files\display\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

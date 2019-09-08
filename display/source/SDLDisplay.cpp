@@ -1,7 +1,9 @@
 #include <boost/algorithm/string.hpp>
+#include "SDL_image.h"
 #include "Conversion.hpp"
 #include "SDLKeyboardController.hpp"
 #include "SDLDisplay.hpp"
+#include "SDLRender.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapDisplayArea.hpp"
@@ -18,8 +20,9 @@ const int SDLDisplay::SCREEN_COLS = 80;
 
 SDLDisplay::SDLDisplay()
 {
-  window = NULL;
-  renderer = NULL;
+  window = nullptr;
+  renderer = nullptr;
+  font_spritesheet = nullptr;
 
   sdld.set_screen_rows(SCREEN_ROWS);
   sdld.set_screen_cols(SCREEN_COLS);
@@ -42,6 +45,8 @@ bool SDLDisplay::create()
 
 void SDLDisplay::tear_down()
 {
+  free_font_spritesheet();
+
   for (SDL_Texture* t : screens)
   {
     SDL_DestroyTexture(t);
@@ -86,7 +91,7 @@ bool SDLDisplay::read_font_into_texture()
   bool font_result = true;
   string font_path = get_property(Setting::DISPLAY_FONT);
 
-  if (!font_spritesheet.load_from_file(font_path, renderer))
+  if (!load_spritesheet_from_file(font_path, renderer))
   {
     ostringstream ss;
     ss << "Could not read font from path: " << font_path;
@@ -301,7 +306,7 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
   if (!screens.empty())
   {
     SDL_Texture* current_screen = screens.back();
-    SDLTextRendererPtr text_renderer = std::make_shared<SDLTextRenderer>(sdld);
+    SDLRenderPtr text_renderer = std::make_shared<SDLRender>(sdld);
     PromptPtr prompt = screen.get_prompt();
     prompt_processor.show_prompt(text_renderer, prompt, row, col, get_max_rows(), get_max_cols());
 
@@ -320,7 +325,7 @@ void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, 
 {
   if (!screens.empty())
   {
-    SDLTextRenderer text_renderer(sdld);
+    SDLRender text_renderer(sdld);
     SDL_Texture* texture = screens.back();
 
     if (tc != nullptr && row != nullptr && col != nullptr)
@@ -351,7 +356,7 @@ void SDLDisplay::display_text(const int row, const int col, const string& s)
 {
   if (!screens.empty())
   {
-    SDLTextRenderer text_renderer(sdld);
+    SDLRender text_renderer(sdld);
     text_renderer.render_text(renderer, font_spritesheet, screens.back(), row, col, s);
   }
 }
@@ -439,6 +444,56 @@ bool SDLDisplay::deserialize(std::istream& stream)
 Display* SDLDisplay::clone()
 {
   return new SDLDisplay(*this);
+}
+
+bool SDLDisplay::load_spritesheet_from_file(const string& path, SDL_Renderer* renderer)
+{
+  free_font_spritesheet();
+  ostringstream ss;
+
+  if (renderer == nullptr)
+  {
+    return false;
+  }
+
+  SDL_Texture* new_texture = NULL;
+
+  // Load image from path
+  SDL_Surface* surface = IMG_Load(path.c_str());
+  if (surface == NULL)
+  {
+    ss << "Unable to load SDL surface " << path << " - error: " << IMG_GetError();
+    Log::instance().error(ss.str());
+  }
+  else
+  {
+    //Color key image
+    SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, 0, 0xFF, 0xFF));
+
+    //Create texture from surface pixels
+    new_texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    if (new_texture == NULL)
+    {
+      ss << "Unable to create texture from " << path << " - error: " << SDL_GetError();
+      Log::instance().error(ss.str());
+    }
+
+    // Free up the old surface, which we no longer need.
+    SDL_FreeSurface(surface);
+  }
+
+  font_spritesheet = new_texture;
+  return font_spritesheet != nullptr;
+}
+
+void SDLDisplay::free_font_spritesheet()
+{
+  if (font_spritesheet != nullptr)
+  {
+    SDL_DestroyTexture(font_spritesheet);
+    font_spritesheet = nullptr;
+  }
 }
 
 ClassIdentifier SDLDisplay::internal_class_identifier() const

@@ -12,8 +12,6 @@
 #include "Display.hpp"
 #include "SDLDisplayParameters.hpp"
 #include "SDLPromptProcessor.hpp"
-#include "SDLTexture.hpp"
-
 
 class SDLDisplay : public Display
 {
@@ -109,6 +107,9 @@ class SDLDisplay : public Display
 
     void display_options_component(SDL_Window* window, int* row, int* col, OptionsComponentPtr options_component);
     std::pair<int, int> get_glyph_location_from_spritesheet(const char c);
+    
+    bool load_spritesheet_from_file(const std::string& path, SDL_Renderer* renderer);
+    void free_font_spritesheet();
 
     SDL_Window* window = NULL;
     std::deque<SDL_Texture*> screens;
@@ -116,7 +117,7 @@ class SDLDisplay : public Display
 
     SDLDisplayParameters sdld;
     SDLPromptProcessor prompt_processor;
-    SDLTexture font_spritesheet;
+    SDL_Texture* font_spritesheet;
 
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;
