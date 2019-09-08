@@ -15,7 +15,6 @@
 class SDLRender
 {
   public:
-    SDLRender();
     SDLRender(const SDLDisplayParameters& new_params);
 
     void set_display_parameters(const SDLDisplayParameters& new_display_params);

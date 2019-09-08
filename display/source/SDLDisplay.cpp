@@ -10,6 +10,7 @@
 #include "Screen.hpp"
 #include "Setting.hpp"
 #include "TextKeys.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -319,7 +320,13 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
 
 void SDLDisplay::display_header(const string& header_text, const int row)
 {
-  // JCD FIXME
+  if (!screens.empty())
+  {
+    SDLRender render(sdld);
+
+    string full_header = TextMessages::get_full_header_text(header_text, sdld.get_screen_cols());
+    render.render_text(renderer, font_spritesheet, screens.back(), row, 0, full_header);
+  }
 }
 
 void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr tc, const uint line_incr)

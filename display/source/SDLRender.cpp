@@ -2,10 +2,6 @@
 
 using namespace std;
 
-SDLRender::SDLRender()
-{
-}
-
 SDLRender::SDLRender(const SDLDisplayParameters& new_display_params)
 : display_params(new_display_params)
 {

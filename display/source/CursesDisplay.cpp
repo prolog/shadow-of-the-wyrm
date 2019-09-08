@@ -22,6 +22,7 @@
 #include "Setting.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -936,23 +937,9 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
 
   string header = header_text;
   boost::replace_all(header, "%", "%%");
+  string full_header = TextMessages::get_full_header_text(header, TERMINAL_MAX_COLS);
 
-  size_t header_text_size = header.size();
-
-  unsigned int header_start = (TERMINAL_MAX_COLS/2) - (header_text_size/2);
-  unsigned int header_end = (TERMINAL_MAX_COLS/2) - (header_text_size/2) + header_text_size;
-
-  for (unsigned int i = 0; i < header_start-1; i++)
-  {
-    mvwprintw(window, display_line, i, "-");
-  }
-  
-  mvwprintw(window, display_line, header_start, header.c_str());
-  
-  for (unsigned int i = header_end+1; i < TERMINAL_MAX_COLS; i++)
-  {
-    mvwprintw(window, display_line, i, "-");
-  }
+  mvwprintw(window, display_line, 0, full_header.c_str());
 
   disable_colour(white, window);
 }

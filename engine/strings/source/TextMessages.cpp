@@ -48,6 +48,29 @@ const string TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE       = "SLOT_MACHINE_OU
 const string TextMessages::CARRYING_CAPACITY_MESSAGE          = "CARRYING_CAPACITY_MESSAGE";
 const string TextMessages::DAMAGE_MESSAGE                     = "DAMAGE_MESSAGE";
 
+string TextMessages::get_full_header_text(const string& header, const uint num_cols)
+{
+  ostringstream ss;
+
+  size_t header_text_size = header.size();
+  unsigned int header_start = (num_cols / 2) - (header_text_size / 2);
+  unsigned int header_end = (num_cols / 2) - (header_text_size / 2) + header_text_size;
+
+  for (unsigned int i = 0; i < header_start - 1; i++)
+  {
+    ss << "-";
+  }
+
+  ss << " " << header << " ";
+
+  for (unsigned int i = header_end + 1; i < num_cols; i++)
+  {
+    ss << "-";
+  }
+
+  return ss.str();
+}
+
 string TextMessages::get_player_description(const string& player_name)
 {
   string player_desc;
