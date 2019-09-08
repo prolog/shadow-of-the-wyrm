@@ -17,30 +17,18 @@ class SDLTextRenderer
 {
   public:
     SDLTextRenderer();
-    SDLTextRenderer(const SDLDisplayParameters& new_params, SDL_Renderer* new_renderer, const SDLTexture& text_spritesheet, SDL_Texture* new_texture);
+    SDLTextRenderer(const SDLDisplayParameters& new_params);
 
     void set_display_parameters(const SDLDisplayParameters& new_display_params);
     SDLDisplayParameters get_display_parameters() const;
 
-    void set_renderer(SDL_Renderer* new_renderer);
-    SDL_Renderer* get_renderer();
-
-    void set_text_spritesheet(const SDLTexture& new_text_spritesheet);
-    SDLTexture get_text_spritesheet() const;
-
-    void set_texture(SDL_Texture* new_texture);
-    SDL_Texture* get_texture();
-
-    void render_text(const int row, const int col, const std::string& text);
-    void render_text(const int row, const int col, const char c);
+    void render_text(SDL_Renderer* renderer, SDLTexture& spritesheet, SDL_Texture* texture, const int row, const int col, const std::string& text);
+    void render_text(SDL_Renderer* renderer, SDLTexture& spritesheet, SDL_Texture* texture, const int row, const int col, const char c);
 
   protected:
     std::pair<int, int> get_glyph_location_from_spritesheet(const char x);
 
     SDLDisplayParameters display_params;
-    SDL_Renderer* renderer;
-    SDLTexture text_spritesheet;
-    SDL_Texture* texture;
 };
 
 using SDLTextRendererPtr = std::shared_ptr<SDLTextRenderer>;

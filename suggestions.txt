@@ -1,4 +1,5 @@
 Me:
+- Need to figure out why keyboard isn't always working right away...
 - Save/load display?
 - Refactor the keyboard command maps so that the curses-specific stuff
   is hidden, and I can easily add SDL stuff later.

@@ -3,12 +3,11 @@
 using namespace std;
 
 SDLTextRenderer::SDLTextRenderer()
-: renderer(nullptr)
 {
 }
 
-SDLTextRenderer::SDLTextRenderer(const SDLDisplayParameters& new_display_params, SDL_Renderer* new_renderer, const SDLTexture& new_text_spritesheet, SDL_Texture* new_texture)
-: display_params(new_display_params), renderer(new_renderer), text_spritesheet(new_text_spritesheet), texture(new_texture)
+SDLTextRenderer::SDLTextRenderer(const SDLDisplayParameters& new_display_params)
+: display_params(new_display_params)
 {
 }
 
@@ -22,54 +21,27 @@ SDLDisplayParameters SDLTextRenderer::get_display_parameters() const
   return display_params;
 }
 
-void SDLTextRenderer::set_renderer(SDL_Renderer* new_renderer)
-{
-  renderer = new_renderer;
-}
-
-SDL_Renderer* SDLTextRenderer::get_renderer()
-{
-  return renderer;
-}
-
-void SDLTextRenderer::set_text_spritesheet(const SDLTexture& new_text_spritesheet)
-{
-  text_spritesheet = new_text_spritesheet;
-}
-
-SDLTexture SDLTextRenderer::get_text_spritesheet() const
-{
-  return text_spritesheet;
-}
-
-void SDLTextRenderer::set_texture(SDL_Texture* new_texture)
-{
-  texture = new_texture;
-}
-
-SDL_Texture* SDLTextRenderer::get_texture()
-{
-  return texture;
-}
-
 pair<int, int> SDLTextRenderer::get_glyph_location_from_spritesheet(char x)
 {
   int glyphs_per_line = display_params.get_glyphs_per_line();
   return { x / glyphs_per_line, x % glyphs_per_line };
 }
 
-void SDLTextRenderer::render_text(const int row, const int col, const string& text)
+void SDLTextRenderer::render_text(SDL_Renderer* renderer, SDLTexture& text_spritesheet, SDL_Texture* texture, const int row, const int col, const string& text)
 {
+  int rcol = col;
+
   if (renderer != nullptr)
   {
     for (size_t i = 0; i < text.size(); i++)
     {
-      render_text(row, col, text[i]);
+      render_text(renderer, text_spritesheet, texture, row, rcol, text[i]);
+      rcol++;
     }
   }
 }
 
-void SDLTextRenderer::render_text(const int row, const int col, const char c)
+void SDLTextRenderer::render_text(SDL_Renderer* renderer, SDLTexture& text_spritesheet, SDL_Texture* texture, const int row, const int col, const char c)
 {
   SDL_Rect font_clip;
   int glyph_height = display_params.get_glyph_height();

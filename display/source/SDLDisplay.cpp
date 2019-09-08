@@ -301,11 +301,11 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
   if (!screens.empty())
   {
     SDL_Texture* current_screen = screens.back();
-    SDLTextRendererPtr text_renderer = std::make_shared<SDLTextRenderer>(sdld, renderer, font_spritesheet, current_screen);
+    SDLTextRendererPtr text_renderer = std::make_shared<SDLTextRenderer>(sdld);
     PromptPtr prompt = screen.get_prompt();
     prompt_processor.show_prompt(text_renderer, prompt, row, col, get_max_rows(), get_max_cols());
 
-    string result = prompt_processor.get_prompt(window, menu_wrapper, prompt);
+    prompt_val = prompt_processor.get_prompt(window, menu_wrapper, prompt);
   }
 
   return prompt_val;
@@ -320,7 +320,8 @@ void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, 
 {
   if (!screens.empty())
   {
-    SDLTextRenderer text_renderer(sdld, renderer, font_spritesheet, screens.back());
+    SDLTextRenderer text_renderer(sdld);
+    SDL_Texture* texture = screens.back();
 
     if (tc != nullptr && row != nullptr && col != nullptr)
     {
@@ -335,7 +336,7 @@ void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, 
         // and increment the column.
         for (const char c : cur_text)
         {
-          text_renderer.render_text(*row, *col, c);
+          text_renderer.render_text(renderer, font_spritesheet, texture, *row, *col, c);
           *col += 1;
         }
       }
@@ -350,8 +351,8 @@ void SDLDisplay::display_text(const int row, const int col, const string& s)
 {
   if (!screens.empty())
   {
-    SDLTextRenderer text_renderer(sdld, renderer, font_spritesheet, screens.back());
-    text_renderer.render_text(row, col, s);
+    SDLTextRenderer text_renderer(sdld);
+    text_renderer.render_text(renderer, font_spritesheet, screens.back(), row, col, s);
   }
 }
 

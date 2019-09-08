@@ -73,6 +73,6 @@ void SDLPromptProcessor::show_prompt(SDLTextRendererPtr renderer, PromptPtr prom
     string prompt_text = prompt->get_text();
 
     Coordinate c = get_prompt_coords(prompt->get_location(), prompt_text, row, col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
-    renderer->render_text(c.first, c.second, prompt_text);
+    // JCD FIXME renderer->render_text(c.first, c.second, prompt_text);
   }
 }
