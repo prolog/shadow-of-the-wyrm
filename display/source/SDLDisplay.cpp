@@ -308,7 +308,8 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
     SDL_Texture* current_screen = screens.back();
     SDLRenderPtr text_renderer = std::make_shared<SDLRender>(sdld);
     PromptPtr prompt = screen.get_prompt();
-    prompt_processor.show_prompt(text_renderer, prompt, row, col, get_max_rows(), get_max_cols());
+    prompt_processor.show_prompt(text_renderer, renderer, font_spritesheet, current_screen, prompt, row, col, get_max_rows(), get_max_cols());
+    refresh_current_window();
 
     prompt_val = prompt_processor.get_prompt(window, menu_wrapper, prompt);
   }

@@ -66,13 +66,13 @@ int SDLPromptProcessor::get_prompt(SDL_Window* window)
   return prompt_val;
 }
 
-void SDLPromptProcessor::show_prompt(SDLRenderPtr renderer, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
+void SDLPromptProcessor::show_prompt(SDLRenderPtr render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
-  if (renderer != nullptr && prompt != nullptr)
+  if (render != nullptr && sdl_renderer != nullptr && spritesheet != nullptr && screen != nullptr && prompt != nullptr)
   {
     string prompt_text = prompt->get_text();
 
     Coordinate c = get_prompt_coords(prompt->get_location(), prompt_text, row, col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
-    // JCD FIXME renderer->render_text(c.first, c.second, prompt_text);
+    render->render_text(sdl_renderer, spritesheet, screen, c.first, c.second, prompt_text);
   }
 }

@@ -27,22 +27,10 @@ pair<int, int> SDLRender::get_glyph_location_from_spritesheet(char x)
   return { x / glyphs_per_line, x % glyphs_per_line };
 }
 
-void SDLRender::render_spritesheet(int y, int x, SDL_Renderer* renderer, SDL_Texture* spritesheet_texture, SDL_Texture* target_texture, SDL_Rect* clip)
+void SDLRender::render_spritesheet(int y, int x, SDL_Renderer* renderer, SDL_Texture* spritesheet_texture, SDL_Texture* target_texture, SDL_Rect* clip, SDL_Rect* dst_rect)
 {
-  //Set rendering space and render to screen
-  SDL_Rect dst_rect = { 0, 0, 0, 0 };
-
-  //Set clip rendering dimensions
-  if (clip != nullptr)
-  {
-    dst_rect.x = x;
-    dst_rect.y = y;
-    dst_rect.w = clip->w;
-    dst_rect.h = clip->h;
-  }
-
   SDL_SetRenderTarget(renderer, target_texture);
-  SDL_RenderCopy(renderer, spritesheet_texture, clip, &dst_rect);
+  SDL_RenderCopy(renderer, spritesheet_texture, clip, dst_rect);
 }
 
 void SDLRender::render_text(SDL_Renderer* renderer, SDL_Texture* text_spritesheet, SDL_Texture* texture, const int row, const int col, const string& text)
@@ -77,5 +65,22 @@ void SDLRender::render_text(SDL_Renderer* renderer, SDL_Texture* text_spriteshee
   int render_x = col * glyph_width;
   int render_y = row * glyph_height;
 
-  render_spritesheet(render_y, render_x, renderer, text_spritesheet, texture, &font_clip);
+  SDL_Rect dst_rect = {0, 0, 0, 0};
+
+  dst_rect.y = row * glyph_height;
+  dst_rect.x = col * glyph_width;
+  dst_rect.h = font_clip.h;
+  dst_rect.w = font_clip.w;
+
+  // Clear out what was in the text's area before
+  fill_area(renderer, texture, &dst_rect);
+
+  // Render the text.
+  render_spritesheet(render_y, render_x, renderer, text_spritesheet, texture, &font_clip, &dst_rect);
+}
+
+void SDLRender::fill_area(SDL_Renderer* renderer, SDL_Texture* target_texture, SDL_Rect* dst_rect)
+{
+  SDL_SetRenderTarget(renderer, target_texture);
+  SDL_RenderFillRect(renderer, dst_rect);
 }
