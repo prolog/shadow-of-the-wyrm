@@ -133,14 +133,16 @@ bool SDLDisplay::create_window_and_renderer()
   return wr_created;
 }
 
+// width is in rows
 unsigned int SDLDisplay::get_width() const
 {
-  return 0;
+  return sdld.get_screen_cols();
 }
 
+// height is in rows
 unsigned int SDLDisplay::get_height() const
 {
-  return 0;
+  return sdld.get_screen_rows();
 }
 
 void SDLDisplay::clear_messages()
@@ -224,6 +226,7 @@ void SDLDisplay::set_title(const string& title)
 void SDLDisplay::show()
 {
   SDL_ShowWindow(window);
+  SDL_RaiseWindow(window);
 }
 
 void SDLDisplay::hide()
