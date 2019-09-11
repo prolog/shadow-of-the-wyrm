@@ -23,13 +23,15 @@ pair<int, int> SDLRender::get_glyph_location_from_spritesheet(char x)
   return { x / glyphs_per_line, x % glyphs_per_line };
 }
 
-void SDLRender::render_spritesheet(int y, int x, SDL_Renderer* renderer, SDL_Texture* spritesheet_texture, SDL_Texture* target_texture, SDL_Rect* clip, SDL_Rect* dst_rect)
+void SDLRender::render_spritesheet(int y, int x, SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* spritesheet_texture, SDL_Texture* target_texture, SDL_Rect* clip, SDL_Rect* dst_rect)
 {
   SDL_SetRenderTarget(renderer, target_texture);
   SDL_RenderCopy(renderer, spritesheet_texture, clip, dst_rect);
+  
+  cursor_location.incr();
 }
 
-void SDLRender::render_text(SDL_Renderer* renderer, SDL_Texture* text_spritesheet, SDL_Texture* texture, const int row, const int col, const string& text)
+void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* text_spritesheet, SDL_Texture* texture, const int row, const int col, const string& text)
 {
   int rcol = col;
 
@@ -37,13 +39,13 @@ void SDLRender::render_text(SDL_Renderer* renderer, SDL_Texture* text_spriteshee
   {
     for (size_t i = 0; i < text.size(); i++)
     {
-      render_text(renderer, text_spritesheet, texture, row, rcol, text[i]);
+      render_text(cursor_location, renderer, text_spritesheet, texture, row, rcol, text[i]);
       rcol++;
     }
   }
 }
 
-void SDLRender::render_text(SDL_Renderer* renderer, SDL_Texture* text_spritesheet, SDL_Texture* texture, const int row, const int col, const char c)
+void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* text_spritesheet, SDL_Texture* texture, const int row, const int col, const char c)
 {
   SDL_Rect font_clip;
   int glyph_height = display_params.get_glyph_height();
@@ -72,7 +74,7 @@ void SDLRender::render_text(SDL_Renderer* renderer, SDL_Texture* text_spriteshee
   fill_area(renderer, texture, &dst_rect);
 
   // Render the text.
-  render_spritesheet(render_y, render_x, renderer, text_spritesheet, texture, &font_clip, &dst_rect);
+  render_spritesheet(render_y, render_x, cursor_location, renderer, text_spritesheet, texture, &font_clip, &dst_rect);
 }
 
 void SDLRender::fill_area(SDL_Renderer* renderer, SDL_Texture* target_texture, SDL_Rect* dst_rect)

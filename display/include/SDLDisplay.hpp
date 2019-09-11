@@ -10,6 +10,7 @@
 
 #include <deque>
 #include "Display.hpp"
+#include "SDLCursorLocation.hpp"
 #include "SDLDisplayParameters.hpp"
 #include "SDLPromptProcessor.hpp"
 
@@ -112,7 +113,13 @@ class SDLDisplay : public Display
     void free_font_spritesheet();
 
     SDL_Window* window = NULL;
+    
+    // The screens and cursors have a 1:1 relationship.  The screen cursor
+    // at index i in its deque corresponds to the screen at index i in
+    // the screens deque.
     std::deque<SDL_Texture*> screens;
+    std::deque<SDLCursorLocation> screen_cursors;
+
     SDL_Renderer* renderer = NULL;
 
     SDLDisplayParameters sdld;

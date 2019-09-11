@@ -1,5 +1,5 @@
 Me:
-- High score screen when empty?
+- Why doesn't input work right away?
 - The naming screen isn't showing the header at the top in either curses or sdl
 - Need to figure out why keyboard isn't always working right away...
 - Save/load display?

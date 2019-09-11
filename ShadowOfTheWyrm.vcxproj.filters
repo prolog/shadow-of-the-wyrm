@@ -4311,6 +4311,9 @@
     <ClInclude Include="display\include\SDLRender.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
+    <ClInclude Include="display\include\SDLCursorLocation.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8617,6 +8620,12 @@
     </ClCompile>
     <ClCompile Include="display\source\SDLRender.cpp">
       <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLCursorLocation.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDLCursorLocation_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
