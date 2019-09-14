@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include "Conversion.hpp"
+#include "CursesConstants.hpp"
 #include "Log.hpp"
 #include "SDLKeyboardController.hpp"
 #include "SDLPromptProcessor.hpp"
@@ -11,7 +12,7 @@ bool SDLPromptProcessor::operator==(const SDLPromptProcessor& cpp) const
   return true;
 }
 
-string SDLPromptProcessor::get_prompt(SDL_Window* window, const MenuWrapper& menu_wrapper, PromptPtr prompt)
+string SDLPromptProcessor::get_prompt(SDLCursorLocation& cursor_location, SDLRenderPtr render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, const MenuWrapper& menu_wrapper, PromptPtr prompt)
 {
   string prompt_entry;
 
@@ -21,7 +22,7 @@ string SDLPromptProcessor::get_prompt(SDL_Window* window, const MenuWrapper& men
 
     if (pt == PromptType::PROMPT_TYPE_TEXT)
     {
-      prompt_entry = get_user_string(window);
+      prompt_entry = get_user_string(cursor_location, render, sdl_renderer, spritesheet, screen);
     }
     else
     {
@@ -44,15 +45,61 @@ string SDLPromptProcessor::get_prompt(SDL_Window* window, const MenuWrapper& men
 }
 
 // Get a prompt from the user
-string SDLPromptProcessor::get_user_string(SDL_Window* window, bool allow_nonalphanumeric)
+string SDLPromptProcessor::get_user_string(SDLCursorLocation& cursor_location, SDLRenderPtr render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, bool allow_nonalphanumeric)
 {
-  string user_string;
-
-  // JCD FIXME
+  string prompt_text;
   SDLKeyboardController kc;
-  user_string = kc.get_line();
 
-  return user_string;
+  try
+  {
+    bool update = false;
+
+    for (char c = kc.get_char_as_int(); (c != '\n') && (c != '\r'); c = kc.get_char_as_int())
+    {
+      update = false;
+      Coordinate yx = cursor_location.get_yx();
+
+      if (c == NC_BACKSPACE_KEY || c == NC_ALTERNATIVE_BACKSPACE_KEY)
+      {
+        if (prompt_text.length())
+        {
+          cursor_location.decr();
+          yx = cursor_location.get_yx();
+          prompt_text.erase(prompt_text.end() - 1);
+          render->render_text(cursor_location, sdl_renderer, spritesheet, screen, yx.first, yx.second, ' ');
+          cursor_location.decr();
+
+          update = true;
+        }
+      }
+      else
+      {
+        if ((isalpha(c) || isdigit(c) || (c == ' ')) || allow_nonalphanumeric)
+        {
+          prompt_text.push_back(c);
+          render->render_text(cursor_location, sdl_renderer, spritesheet, screen, yx.first, yx.second, c);
+          update = true;
+        }
+      }
+
+      if (update)
+      {
+        SDL_SetRenderTarget(sdl_renderer, NULL);
+        SDL_RenderCopy(sdl_renderer, screen, NULL, NULL);
+        SDL_RenderPresent(sdl_renderer);
+        SDL_SetRenderTarget(sdl_renderer, screen);
+
+        update = false;
+      }
+    }
+  }
+  catch (...)
+  {
+    // Do nothing, and use an empty string for the prompt text.
+  }
+
+  string result = String::clean(prompt_text);
+  return result;
 }
 
 // Gets the item index of the selected menu item.

@@ -7,6 +7,7 @@ class SDLCursorLocation
     SDLCursorLocation(const int max_y, const int max_x);
 
     bool incr();
+    bool decr();
     void reset();
 
     void set_y(const int new_y);

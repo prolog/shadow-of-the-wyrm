@@ -316,12 +316,14 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDL_Texture* current_screen = screens.back();
+    SDLCursorLocation& cursor_loc = screen_cursors.back();
+
     SDLRenderPtr text_renderer = std::make_shared<SDLRender>(sdld);
     PromptPtr prompt = screen.get_prompt();
-    prompt_processor.show_prompt(screen_cursors.back(), text_renderer, renderer, font_spritesheet, current_screen, prompt, row, col, get_max_rows(), get_max_cols());
+    prompt_processor.show_prompt(cursor_loc, text_renderer, renderer, font_spritesheet, current_screen, prompt, row, col, get_max_rows(), get_max_cols());
     refresh_current_window();
 
-    prompt_val = prompt_processor.get_prompt(window, menu_wrapper, prompt);
+    prompt_val = prompt_processor.get_prompt(cursor_loc, text_renderer, renderer, font_spritesheet, current_screen, menu_wrapper, prompt);
   }
 
   return prompt_val;

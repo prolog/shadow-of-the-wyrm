@@ -26,9 +26,7 @@ pair<int, int> SDLRender::get_glyph_location_from_spritesheet(char x)
 void SDLRender::render_spritesheet(int y, int x, SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* spritesheet_texture, SDL_Texture* target_texture, SDL_Rect* clip, SDL_Rect* dst_rect)
 {
   SDL_SetRenderTarget(renderer, target_texture);
-  SDL_RenderCopy(renderer, spritesheet_texture, clip, dst_rect);
-  
-  cursor_location.incr();
+  SDL_RenderCopy(renderer, spritesheet_texture, clip, dst_rect);  
 }
 
 void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* text_spritesheet, SDL_Texture* texture, const int row, const int col, const string& text)
@@ -72,6 +70,10 @@ void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* re
 
   // Clear out what was in the text's area before
   fill_area(renderer, texture, &dst_rect);
+
+  cursor_location.set_y(row);
+  cursor_location.set_x(col);
+  cursor_location.incr();
 
   // Render the text.
   render_spritesheet(render_y, render_x, cursor_location, renderer, text_spritesheet, texture, &font_clip, &dst_rect);

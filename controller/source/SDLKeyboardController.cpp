@@ -7,6 +7,7 @@
 
 #include <map>
 #include <sstream>
+#include "CursesConstants.hpp"
 #include "Log.hpp"
 #include "SDLKeyboardController.hpp"
 #include "SDL.h"
@@ -42,7 +43,9 @@ void SDLKeyboardController::init_keymap()
              {SDLK_LEFT, KEY_LEFT},
              {SDLK_RIGHT, KEY_RIGHT},
              {SDLK_ESCAPE, 27},
-             {SDLK_LALT, 27}
+             {SDLK_LALT, 27},
+             {SDLK_BACKSPACE, NC_BACKSPACE_KEY},
+             {SDLK_RETURN, '\r'}
   };
 }
 string SDLKeyboardController::get_line()
@@ -93,11 +96,14 @@ int SDLKeyboardController::read_char_as_int()
       return_val = event.text.text[0];
       done = true;
     }
-    // JCD FIXME: Re-examine this later.  It'll probably breaka lot of stuff.
-    else if (event.type == SDL_KEYDOWN && (key >= SDLK_F1 && key <= SDLK_F12))
+    // If we got a keydown event, check the keymap to see if it's allowed.
+    else if (event.type == SDL_KEYDOWN)
     {
-      return_val = event.key.keysym.sym;
-      done = true;
+      if (keymap.find(key) != keymap.end())
+      {
+        return_val = event.key.keysym.sym;
+        done = true;
+      }
     }
   }
 

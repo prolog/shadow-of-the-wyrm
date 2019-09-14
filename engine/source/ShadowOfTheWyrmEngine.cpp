@@ -357,9 +357,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   if (prompt_user_for_race_selection)
   {
     creature_synopsis = TextMessages::get_character_creation_synopsis(sex, nullptr, nullptr, nullptr);
-
-    // JCD FIXME: First failure is on race_selection.display(). 
-    // Implement screen display first!
     RaceSelectionScreen race_selection(display, creature_synopsis);
     string race_index = race_selection.display();
 

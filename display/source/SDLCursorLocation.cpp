@@ -9,7 +9,8 @@ SDLCursorLocation::SDLCursorLocation(const int m_y, const int m_x)
 
 bool SDLCursorLocation::incr()
 {
-  if (y == max_y && x == max_x)
+  if ((y == max_y || x == max_x) ||
+      (y < 0 || x < 0))
   {
     return false;
   }
@@ -23,6 +24,29 @@ bool SDLCursorLocation::incr()
     else
     {
       x++;
+    }
+
+    return true;
+  }
+}
+
+bool SDLCursorLocation::decr()
+{
+  if ((y > max_y || x > max_x) ||
+      (y == 0 || x == 0))
+  {
+    return false;
+  }
+  else
+  {
+    if (x == 0)
+    {
+      x = max_x;
+      y--;
+    }
+    else
+    {
+      x--;
     }
 
     return true;
