@@ -20,7 +20,6 @@ void SW_Display_CursesDisplayFixture::SetUp()
 {
   curses_display.TERMINAL_MAX_ROWS = RNG::range(0, 25);
   curses_display.TERMINAL_MAX_COLS = RNG::range(0, 80);
-  curses_display.FIELD_SPACE = RNG::range(0, 2);
 
   // I should probably mock up WINDOW*, but I don't really care to right now...
 

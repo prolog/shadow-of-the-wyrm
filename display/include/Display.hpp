@@ -87,8 +87,22 @@ class Display : public ISerializable
     virtual void refresh_current_window() = 0;
     virtual void display_text_component(int* row, int* col, TextComponentPtr text, const uint line_incr) = 0;
     virtual void display_options_component(int* row, int* col, OptionsComponentPtr oc) = 0;
+    
     virtual int get_max_rows() const = 0;
     virtual int get_max_cols() const = 0;
+    virtual int get_field_space() const;
+
+    // Print the current display statistic at the specified row/column, unless we're in a different row than the initial one, and therefore
+    // should line up the column with the next-available, previously-used column from the previous row.
+    bool display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const std::string& stat, const std::string& next_stat, Colour print_colour = Colour::COLOUR_WHITE);
+
+    // Update the row/column position for the synopsis details.  Return false if we can't do any more updates (have run off the screen).
+    // Though, ideally that will never happen.
+    bool update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* column, const std::string& previous_printed_field, const std::string& next_field);
+
+    virtual void display_text(int row, int col, const std::string& s) = 0;
+    virtual void enable_colour(const Colour colour) = 0;
+    virtual void disable_colour(const Colour colour) = 0;
 
     // Property methods.
     virtual void set_properties(const std::map<std::string, std::string>& new_properties);

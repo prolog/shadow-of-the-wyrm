@@ -26,6 +26,9 @@
 
 using namespace std;
 
+uint CursesDisplay::TERMINAL_MAX_ROWS = 25;
+uint CursesDisplay::TERMINAL_MAX_COLS = 80;
+
 const int CURSES_NUM_BASE_COLOURS = 8;
 const int CURSES_NUM_TOTAL_COLOURS = 16;
 
@@ -36,10 +39,7 @@ Display* CursesDisplay::clone()
 }
 
 CursesDisplay::CursesDisplay()
-: TERMINAL_MAX_ROWS(0), 
-TERMINAL_MAX_COLS(0), 
-FIELD_SPACE(2), 
-MSG_BUFFER_LAST_Y(0), 
+: MSG_BUFFER_LAST_Y(0), 
 MSG_BUFFER_LAST_X(0), 
 message_buffer_screen(nullptr),
 can_use_colour(false),
@@ -52,9 +52,6 @@ bool CursesDisplay::operator==(const CursesDisplay& cd) const
 {
   bool result = true;
 
-  result = result && (TERMINAL_MAX_ROWS == cd.TERMINAL_MAX_ROWS);
-  result = result && (TERMINAL_MAX_COLS == cd.TERMINAL_MAX_COLS);
-  result = result && (FIELD_SPACE == cd.FIELD_SPACE);
   result = result && (MSG_BUFFER_LAST_Y == cd.MSG_BUFFER_LAST_Y);
   result = result && (MSG_BUFFER_LAST_X == cd.MSG_BUFFER_LAST_X);
   result = result && (screens.size() == cd.screens.size());
@@ -163,6 +160,16 @@ void CursesDisplay::initialize_colours()
 
     pair_counter += CURSES_NUM_BASE_COLOURS;
   }
+}
+
+void CursesDisplay::enable_colour(const Colour colour)
+{
+  enable_colour(static_cast<int>(colour), stdscr);
+}
+
+void CursesDisplay::disable_colour(const Colour colour)
+{
+  disable_colour(static_cast<int>(colour), stdscr);
 }
 
 // Turn on colour using attron.
@@ -825,36 +832,38 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
 
   vector<pair<string, Colour>> status_ailments = player_stats.get_status_ailments();
 
-  unsigned int PLAYER_SYNOPSIS_START_ROW = TERMINAL_MAX_ROWS - 3;
+  uint max_rows = static_cast<uint>(get_max_rows());
+  unsigned int PLAYER_SYNOPSIS_START_ROW = max_rows - 3;
   unsigned int current_row = PLAYER_SYNOPSIS_START_ROW;
   unsigned int initial_row = current_row;
   unsigned int current_col = 0;
   bool can_print = true;
   
   // First, clear the synopsis.
+  // JCD FIXME move this to some sort of impl-specific function
   move(PLAYER_SYNOPSIS_START_ROW, 0);
   clrtobot();
   
   // Next, set the synopsis values
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, name, synopsis);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, synopsis, strength.first);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, strength.first, dexterity.first, strength.second);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, dexterity.first, agility.first, dexterity.second);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, agility.first, health.first, agility.second);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, health.first, intelligence.first, health.second);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, intelligence.first, willpower.first, intelligence.second);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, willpower.first, charisma.first, willpower.second);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, charisma.first, level, charisma.second);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, level, defence);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, alignment.first);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, alignment.first, speed, alignment.second);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points, hit_points_colour);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, arc_points, map_depth, arc_points_colour);
-  mvprintw(current_row, current_col, map_depth.c_str());
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, name, synopsis);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, synopsis, strength.first);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, strength.first, dexterity.first, strength.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, dexterity.first, agility.first, dexterity.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, agility.first, health.first, agility.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, health.first, intelligence.first, health.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, intelligence.first, willpower.first, intelligence.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, willpower.first, charisma.first, willpower.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, charisma.first, level, charisma.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, level, defence);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, alignment.first);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, alignment.first, speed, alignment.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points, hit_points_colour);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, arc_points, map_depth, arc_points_colour);
+  display_text(current_row, current_col, map_depth);
 
   // Last row: status ailments
-  current_row = TERMINAL_MAX_ROWS-1;
+  current_row = max_rows - 1;
   current_col = 0;
 
   for (uint x = 0; x < status_ailments.size(); x++)
@@ -870,7 +879,7 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
       {
         Colour colour = status_ailment.second;
 
-        print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, status_ailment.first, next_ailment.first, colour); 
+        display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, status_ailment.first, next_ailment.first, colour); 
       }
     }
     else
@@ -878,56 +887,20 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
       if (can_print)
       {
         Colour colour = status_ailment.second;
-
+        enable_colour(colour);
         string sail = status_ailment.first;
-        boost::replace_all(sail, "%", "%%");
-
-        enable_colour(static_cast<int>(colour), stdscr);
-        mvprintw(current_row, current_col, sail.c_str());
-        disable_colour(static_cast<int>(colour), stdscr);
+        display_text(current_row, current_col, sail);
+        disable_colour(colour);
       }
     }
   }
 }
 
-bool CursesDisplay::print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat, Colour print_colour)
+void CursesDisplay::display_text(const int row, const int col, const string& text)
 {
-  bool can_print = true;
-  string stat = current_stat;
-  boost::replace_all(stat, "%", "%%");
-
-  enable_colour(static_cast<int>(print_colour), stdscr);
-  mvprintw(*current_row, *current_col, stat.c_str());
-  can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat);
-  disable_colour(static_cast<int>(print_colour), stdscr);
-
-  return can_print;
-}
-
-// Update the row/col for the player synopsis.  Return false if we've run out of space
-// and can't print anything else.
-bool CursesDisplay::update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* col, const string& previous_field, const string& next_field)
-{
-  bool can_update = true;
-  unsigned int next_column_end = *col + previous_field.size() + FIELD_SPACE + next_field.size();
-
-  *col = *col + previous_field.size() + FIELD_SPACE;
-
-  if (next_column_end > TERMINAL_MAX_COLS - 1)
-  {
-    // We've gone over max cols.  Fine - but can we increment to the next row in the display?
-    if (*row < TERMINAL_MAX_ROWS-2)
-    {
-      *col = 0;
-      *row = *row + 1;
-    }
-    else
-    {
-      can_update = false;
-    }
-  }
-
-  return can_update;
+  string txt = text;
+  boost::replace_all(txt, "%", "%%");
+  mvprintw(row, col, txt.c_str());
 }
 
 void CursesDisplay::display_header(const string& header_text, WINDOW* window, const int display_line)
@@ -937,7 +910,7 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
 
   string header = header_text;
   boost::replace_all(header, "%", "%%");
-  string full_header = TextMessages::get_full_header_text(header, TERMINAL_MAX_COLS);
+  string full_header = TextMessages::get_full_header_text(header, get_max_cols());
 
   mvwprintw(window, display_line, 0, full_header.c_str());
 
@@ -960,9 +933,6 @@ bool CursesDisplay::serialize(ostream& stream) const
 {
   Display::serialize(stream);
 
-  Serialize::write_uint(stream, TERMINAL_MAX_ROWS);
-  Serialize::write_uint(stream, TERMINAL_MAX_COLS);
-  Serialize::write_uint(stream, FIELD_SPACE);
   Serialize::write_uint(stream, MSG_BUFFER_LAST_Y);
   Serialize::write_uint(stream, MSG_BUFFER_LAST_X);
   
@@ -982,9 +952,6 @@ bool CursesDisplay::deserialize(istream& stream)
 {
   Display::deserialize(stream);
 
-  Serialize::read_uint(stream, TERMINAL_MAX_ROWS);
-  Serialize::read_uint(stream, TERMINAL_MAX_COLS);
-  Serialize::read_uint(stream, FIELD_SPACE);
   Serialize::read_uint(stream, MSG_BUFFER_LAST_Y);
   Serialize::read_uint(stream, MSG_BUFFER_LAST_X);
 

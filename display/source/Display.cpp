@@ -108,6 +108,51 @@ string Display::display_screen(const Screen& current_screen)
   return result;
 }
 
+bool Display::display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat, Colour print_colour)
+{
+  bool can_print = true;
+  string stat = current_stat;
+  enable_colour(print_colour);
+  display_text(*current_row, *current_col, current_stat);
+  can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat);
+  disable_colour(print_colour);
+  return can_print;
+}
+
+// Update the row/col for the player synopsis.  Return false if we've run out of space
+// and can't print anything else.
+bool Display::update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* col, const string& previous_field, const string& next_field)
+{
+  bool can_update = true;
+  int field_space = static_cast<uint>(get_field_space());
+  unsigned int next_column_end = *col + previous_field.size() + field_space + next_field.size();
+  uint max_cols = get_max_cols();
+  uint max_rows = get_max_rows();
+
+  *col = *col + previous_field.size() + field_space;
+
+  if (next_column_end > max_cols - 1)
+  {
+    // We've gone over max cols.  Fine - but can we increment to the next row in the display?
+    if (*row < max_rows - 2)
+    {
+      *col = 0;
+      *row = *row + 1;
+    }
+    else
+    {
+      can_update = false;
+    }
+  }
+
+  return can_update;
+}
+
+int Display::get_field_space() const
+{
+  return 2;
+}
+
 bool Display::serialize(ostream& stream) const
 {
   Serialize::write_string_map(stream, display_properties);

@@ -87,10 +87,10 @@ class SDLDisplay : public Display
     virtual int get_max_rows() const override;
     virtual int get_max_cols() const override;
 
-    // These functions are "dumb" and don't reset the row/col at all.  This
-    // allows for finer control.
-    void display_text(int row, int col, const std::string& s);
-    void display_text(int row, int col, const char c);
+    void display_text(int row, int col, const std::string& s) override;
+
+    void enable_colour(const Colour colour) override;
+    void disable_colour(const Colour colour) override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

@@ -77,6 +77,9 @@ class CursesDisplay : public Display
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
+    static uint TERMINAL_MAX_ROWS;
+    static uint TERMINAL_MAX_COLS;
+
   private:
     ClassIdentifier internal_class_identifier() const override;
 
@@ -89,8 +92,13 @@ class CursesDisplay : public Display
     // Setup colours the way ncurses requires.
     void initialize_colours();
 
-    // These two methods are used to turn on/off colours for use
+    // These are used to turn on/off colours for use
     // with mvprintw, etc.
+    //
+    // Without a WINDOW* argument, stdscr is used.
+    virtual void enable_colour(const Colour colour) override;
+    virtual void disable_colour(const Colour colour) override;
+
     void enable_colour(const int colour, WINDOW* window);
     void disable_colour(const int colour, WINDOW* window);
 
@@ -114,19 +122,9 @@ class CursesDisplay : public Display
 
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
     void display_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
-    std::string display_prompt(WINDOW* screen_window, PromptPtr prompt, int row = 0, int col = 0);
 
-    // Print the current display statistic at the specified row/column, unless we're in a different row than the initial one, and therefore
-    // should line up the column with the next-available, previously-used column from the previous row.
-    bool print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const std::string& stat, const std::string& next_stat, Colour print_colour = Colour::COLOUR_WHITE);
-
-    // Update the row/column position for the synopsis details.  Return false if we can't do any more updates (have run off the screen).
-    // Though, ideally that will never happen.
-    bool update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* column, const std::string& previous_printed_field, const std::string& next_field);
-
-    uint TERMINAL_MAX_ROWS;
-    uint TERMINAL_MAX_COLS;
-    uint FIELD_SPACE;
+    // Display text safely on stdscr - does % replacement
+    void display_text(int row, int col, const std::string& s) override;
 
     uint MSG_BUFFER_LAST_Y;
     uint MSG_BUFFER_LAST_X;

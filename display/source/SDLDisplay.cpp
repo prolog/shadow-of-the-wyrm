@@ -439,6 +439,14 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
   // It will have been taken care of when displaying the TextComponent.
 }
 
+void SDLDisplay::enable_colour(const Colour colour)
+{
+}
+
+void SDLDisplay::disable_colour(const Colour colour)
+{
+}
+
 bool SDLDisplay::serialize(std::ostream& stream) const
 {
   Display::serialize(stream);
