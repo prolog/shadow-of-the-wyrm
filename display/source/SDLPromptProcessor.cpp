@@ -53,6 +53,7 @@ string SDLPromptProcessor::get_user_string(SDLCursorLocation& cursor_location, S
   try
   {
     bool update = false;
+    Coordinate original_yx = cursor_location.get_yx();
 
     for (char c = kc.get_char_as_int(); (c != '\n') && (c != '\r'); c = kc.get_char_as_int())
     {
@@ -61,7 +62,7 @@ string SDLPromptProcessor::get_user_string(SDLCursorLocation& cursor_location, S
 
       if (c == NC_BACKSPACE_KEY || c == NC_ALTERNATIVE_BACKSPACE_KEY)
       {
-        if (prompt_text.length())
+        if (prompt_text.length() && (yx.first >= original_yx.first && yx.second >= original_yx.second))
         {
           cursor_location.decr();
           yx = cursor_location.get_yx();

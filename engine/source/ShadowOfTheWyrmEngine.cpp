@@ -528,7 +528,6 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
       name = naming.display();
     }
 
-
     if (name.empty())
     {
       name = default_name;

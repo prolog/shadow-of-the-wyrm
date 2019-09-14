@@ -1,7 +1,6 @@
 Me:
 - Why doesn't input work right away?
-- The naming screen isn't showing the header at the top in either curses or sdl
-- Need to figure out why keyboard isn't always working right away...
+- make sure monochrome works
 - Save/load display?
 - Refactor the keyboard command maps so that the curses-specific stuff
   is hidden, and I can easily add SDL stuff later.

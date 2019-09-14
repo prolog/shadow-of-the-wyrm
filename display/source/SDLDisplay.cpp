@@ -205,13 +205,18 @@ void SDLDisplay::draw_animation(const Animation& animation)
 
 void SDLDisplay::display(const DisplayStatistics& player_stats)
 {
+  // JCD FIXME
+  int x = 1;
 }
 
 MapDisplayArea SDLDisplay::get_map_display_area()
 {
-  MapDisplayArea mda;
+  MapDisplayArea map_display_area;
 
-  return mda;
+  map_display_area.set_width(sdld.get_screen_cols());
+  map_display_area.set_height(sdld.get_screen_rows() - DisplayConstants::ROWS_FOR_MESSAGE_BUFFER_AND_SYNOPSIS);
+
+  return map_display_area;
 }
 
 void SDLDisplay::confirm(const string& confirmation_message)
