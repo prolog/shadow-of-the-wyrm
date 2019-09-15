@@ -34,6 +34,9 @@ class Display : public ISerializable
     // Clears the message buffer, map, and info display.
     virtual void clear_display() = 0;
 
+    // Clears from a given row to the bottom of the screen.
+    virtual void clear_to_bottom(const int row) = 0;
+
     // Adds a message in the current window, clearing any existing messages and
     // requiring user input.
     virtual void add_alert(const std::string& message, const bool prompt_for_input) = 0;
@@ -65,14 +68,14 @@ class Display : public ISerializable
     virtual void draw_animation(const Animation& animation) = 0;
 	  
 	  // Displays the player info
-	  virtual void display(const DisplayStatistics& player_stats) = 0;
+	  virtual void display(const DisplayStatistics& player_stats);
 
     // Used by the engine to query the display size, so the DisplayMap can be created accordingly.
     virtual MapDisplayArea get_map_display_area() = 0;
 
 	  // Return result is the response to whatever prompt is displayed
 	  virtual std::string display_screen(const Screen& current_screen);
-	  
+
 	  // Show confirmation text on the display.
 	  virtual void confirm(const std::string& confirmation_message) = 0;
 

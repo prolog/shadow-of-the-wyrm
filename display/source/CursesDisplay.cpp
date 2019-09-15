@@ -342,6 +342,12 @@ void CursesDisplay::clear_display()
   clear();
 }
 
+void CursesDisplay::clear_to_bottom(const int row)
+{
+  move(row, 0);
+  clrtobot();
+}
+
 void CursesDisplay::add_alert(const string& message, const bool require_input)
 {
   message_buffer_screen = get_current_screen();
@@ -795,104 +801,6 @@ void CursesDisplay::clear_screen()
     destroy_screen(current_screen_window);
 
     screens.pop_back();
-  }
-}
-
-// Display the player data
-void CursesDisplay::display(const DisplayStatistics& player_stats)
-{
-  Game& game = Game::instance();
-  Settings& settings = game.get_settings_ref();
-
-  string name         = player_stats.get_name();
-  string synopsis     = player_stats.get_synopsis();
-
-  pair<string, Colour> strength     = player_stats.get_strength();
-  pair<string, Colour> dexterity    = player_stats.get_dexterity();
-  pair<string, Colour> agility      = player_stats.get_agility();
-  pair<string, Colour> health       = player_stats.get_health();
-  pair<string, Colour> intelligence = player_stats.get_intelligence();
-  pair<string, Colour> willpower    = player_stats.get_willpower();
-  pair<string, Colour> charisma     = player_stats.get_charisma();
-
-  string speed        = player_stats.get_speed();
-
-  string level        = player_stats.get_level();
-  string defence      = player_stats.get_defence();
-
-  pair<string, Colour> alignment = player_stats.get_alignment();
-
-  string hit_points   = player_stats.get_hit_points();
-  Colour hit_points_colour = String::to_colour(settings.get_setting(Setting::DEFAULT_HP_COLOUR), Colour::COLOUR_WHITE);
-
-  string arc_points   = player_stats.get_arcana_points();
-  Colour arc_points_colour = String::to_colour(settings.get_setting(Setting::DEFAULT_AP_COLOUR), Colour::COLOUR_WHITE);
-
-  string map_depth    = player_stats.get_map_depth();
-
-  vector<pair<string, Colour>> status_ailments = player_stats.get_status_ailments();
-
-  uint max_rows = static_cast<uint>(get_max_rows());
-  unsigned int PLAYER_SYNOPSIS_START_ROW = max_rows - 3;
-  unsigned int current_row = PLAYER_SYNOPSIS_START_ROW;
-  unsigned int initial_row = current_row;
-  unsigned int current_col = 0;
-  bool can_print = true;
-  
-  // First, clear the synopsis.
-  // JCD FIXME move this to some sort of impl-specific function
-  move(PLAYER_SYNOPSIS_START_ROW, 0);
-  clrtobot();
-  
-  // Next, set the synopsis values
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, name, synopsis);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, synopsis, strength.first);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, strength.first, dexterity.first, strength.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, dexterity.first, agility.first, dexterity.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, agility.first, health.first, agility.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, health.first, intelligence.first, health.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, intelligence.first, willpower.first, intelligence.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, willpower.first, charisma.first, willpower.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, charisma.first, level, charisma.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, level, defence);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, alignment.first);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, alignment.first, speed, alignment.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points, hit_points_colour);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, arc_points, map_depth, arc_points_colour);
-  display_text(current_row, current_col, map_depth);
-
-  // Last row: status ailments
-  current_row = max_rows - 1;
-  current_col = 0;
-
-  for (uint x = 0; x < status_ailments.size(); x++)
-  {
-    pair<string, Colour> status_ailment = status_ailments.at(x);
-    bool has_more = (x != (status_ailments.size() - 1));
-
-    if (has_more)
-    {
-      pair<string, Colour> next_ailment = status_ailments.at(x+1);
-
-      if (can_print)
-      {
-        Colour colour = status_ailment.second;
-
-        display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, status_ailment.first, next_ailment.first, colour); 
-      }
-    }
-    else
-    {
-      if (can_print)
-      {
-        Colour colour = status_ailment.second;
-        enable_colour(colour);
-        string sail = status_ailment.first;
-        display_text(current_row, current_col, sail);
-        disable_colour(colour);
-      }
-    }
   }
 }
 

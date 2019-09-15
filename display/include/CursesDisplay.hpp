@@ -27,6 +27,7 @@ class CursesDisplay : public Display
 
     void clear_messages() override;
     void clear_display() override;
+    void clear_to_bottom(const int row) override;
 
     // Adds a message in the current window, clearing any existing messages and
     // requiring user input.
@@ -50,9 +51,6 @@ class CursesDisplay : public Display
     virtual void draw_animation(const Animation& animation) override;
 
     virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col);
-
-	  void display(const DisplayStatistics& player_stats) override;
-	  
     MapDisplayArea get_map_display_area() override;
 
     void display_header(const std::string& header_text, WINDOW* cur_window, const int display_line = 0);

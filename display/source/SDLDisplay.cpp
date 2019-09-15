@@ -40,6 +40,12 @@ bool SDLDisplay::create()
   init = read_dimensions_from_settings();
   init = init && create_window_and_renderer();
   init = init && read_font_into_texture();
+  
+  if (init)
+  {
+    // Set up the main screen, analagous to stdscr in curses.
+    setup_new_screen();
+  }
 
   return init;
 }
@@ -155,6 +161,26 @@ void SDLDisplay::clear_display()
   SDL_RenderPresent(renderer);
 }
 
+void SDLDisplay::clear_to_bottom(const int row)
+{
+  int glyph_height = sdld.get_glyph_height();
+  int rows = sdld.get_screen_rows();
+  int rows_to_blank = rows - row;
+
+  if (rows_to_blank > 0 && !screens.empty() && !screen_cursors.empty())
+  {
+    SDLRender render(sdld);
+    SDL_Rect dst_rect = {0, 0, 0, 0};
+
+    dst_rect.y = row * glyph_height;
+    dst_rect.x = 0;
+    dst_rect.h = rows_to_blank * glyph_height;
+    dst_rect.w = sdld.get_screen_width();
+
+    render.fill_area(renderer, screens.back(), &dst_rect);
+  }
+}
+
 void SDLDisplay::add_alert(const string& message, const bool prompt_for_input)
 {
 }
@@ -179,10 +205,12 @@ void SDLDisplay::halt_messages()
 
 void SDLDisplay::draw(const DisplayMap& dm, const CursorSettings cs)
 {
+  // ...
 }
 
 void SDLDisplay::redraw()
 {
+  refresh_current_window();
 }
 
 void SDLDisplay::draw_update_map(const DisplayMap& update_map, const CursorSettings cs)
@@ -201,12 +229,6 @@ AnimationFactoryPtr SDLDisplay::create_animation_factory() const
 
 void SDLDisplay::draw_animation(const Animation& animation)
 {
-}
-
-void SDLDisplay::display(const DisplayStatistics& player_stats)
-{
-  // JCD FIXME
-  int x = 1;
 }
 
 MapDisplayArea SDLDisplay::get_map_display_area()

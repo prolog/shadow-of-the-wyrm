@@ -427,6 +427,8 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
       display->draw_update_map(display_map, cs);
     }
 
+    display->refresh_current_window();
+
     // As long as there are still player actions within the current map, and we've
     // not loaded a new map, a full redraw is not needed:
     loaded_map_details.synch();

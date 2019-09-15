@@ -34,6 +34,8 @@ class SDLDisplay : public Display
     // Clears the message buffer, map, and info display.
     virtual void clear_display() override;
 
+    virtual void clear_to_bottom(const int row) override;
+
     // Adds a message in the current window, clearing any existing messages and
     // requiring user input.
     virtual void add_alert(const std::string& message, const bool prompt_for_input) override;
@@ -64,9 +66,6 @@ class SDLDisplay : public Display
     // Draws an animation.
     virtual void draw_animation(const Animation& animation) override;
 	  
-	  // Displays the player info
-	  virtual void display(const DisplayStatistics& player_stats) override;
-
     // Used by the engine to query the display size, so the DisplayMap can be created accordingly.
     virtual MapDisplayArea get_map_display_area() override;
 
