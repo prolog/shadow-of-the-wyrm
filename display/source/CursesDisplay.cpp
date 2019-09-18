@@ -14,7 +14,7 @@
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "Screen.hpp"
-#include "CursesConstants.hpp"
+#include "DisplayConstants.hpp"
 #include "CursesDisplay.hpp"
 #include "MapDisplayArea.hpp"
 #include "OptionsComponent.hpp"
@@ -107,6 +107,11 @@ void CursesDisplay::destroy_screen(WINDOW *screen)
   Log::instance().debug("CursesDisplay::destroy_screen - destroying current screen.");
 	delwin(screen);
 	screen = nullptr;
+}
+
+void CursesDisplay::draw_tile_init()
+{
+  curs_set(0);
 }
 
 // Get whether the terminal can support colour.  False by
@@ -437,7 +442,7 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
     }
     
     // If the user presses enter
-    if (cur_y > CursesConstants::MESSAGE_BUFFER_END_ROW)
+    if (cur_y > DisplayConstants::MESSAGE_BUFFER_END_ROW)
     {
       cur_y--;
     }
@@ -486,40 +491,20 @@ string CursesDisplay::add_message_with_prompt(const string& message, const Colou
   return prompt_result;
 }
 
-// Draw the specified Display in the term.  This'll be a simplified
-// map that contains only the information needed by the display -
-// no specific creature, etc., data.
-void CursesDisplay::draw(const DisplayMap& current_map, const CursorSettings cs)
+void CursesDisplay::redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows)
 {
-  refresh_terminal_size();
-
-  DisplayTile display_tile;
-  Coordinate map_coords;
-
-  Dimensions d = current_map.size();
-  unsigned int map_rows = d.get_y();
-  unsigned int map_cols = d.get_x();
-
-  for (unsigned int terminal_row = CursesConstants::MAP_START_ROW; terminal_row < map_rows + CursesConstants::MAP_START_ROW; terminal_row++)
-  {
-    for (unsigned int terminal_col = CursesConstants::MAP_START_COL; terminal_col < map_cols + CursesConstants::MAP_START_COL; terminal_col++)
-    {
-      map_coords.first = terminal_row - CursesConstants::MAP_START_ROW;
-      map_coords.second = terminal_col - CursesConstants::MAP_START_COL;
-
-      DisplayTile tile = current_map.at(map_coords);
-      draw_coordinate(tile, terminal_row, terminal_col);
-    }
-  }
-
   Coordinate cursor_coord = current_map.get_cursor_coordinate();
 
   // Since we're drawing the map (with, presumably, the player) we need the cursor present to show the
   // position of the player's character.
   curs_set(get_cursor_mode(cs));
-  move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
-  wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
-  refresh();
+  move(cursor_coord.first + DisplayConstants::MAP_START_ROW, cursor_coord.second + DisplayConstants::MAP_START_COL);
+  wredrawln(stdscr, DisplayConstants::MAP_START_ROW, map_rows);
+}
+
+void CursesDisplay::refresh_display_parameters()
+{
+  refresh_terminal_size();
 }
 
 // Refreshes the contents of the current window.
@@ -533,53 +518,6 @@ void CursesDisplay::redraw()
   {
     wrefresh(screens.back());
   }
-}
-
-void CursesDisplay::draw_update_map(const DisplayMap& update_map, const CursorSettings cs)
-{
-  DisplayTile display_tile;
-  Coordinate map_coords;
-
-  DisplayMapType tiles = update_map.get_tiles();
-
-  uint terminal_row, terminal_col;
-
-  for (DisplayMapType::value_type& tile : tiles)
-  {
-    Coordinate map_coords = MapUtils::convert_map_key_to_coordinate(tile.first);
-    DisplayTile dtile = tile.second;
-
-    terminal_row = CursesConstants::MAP_START_ROW + map_coords.first;
-    terminal_col = CursesConstants::MAP_START_COL + map_coords.second;
-
-    draw_coordinate(dtile, terminal_row, terminal_col);
-  }
-
-  Coordinate cursor_coord = update_map.get_cursor_coordinate();
-
-  // Since we're drawing the map (with, presumably, the player) we need the cursor present to show the
-  // position of the player's character.
-  curs_set(get_cursor_mode(cs));
-  move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
-  wredrawln(stdscr, CursesConstants::MAP_START_ROW, update_map.size().get_y());
-}
-
-// draw_tile is called externally from a Display to draw a particular engine
-// coordinate.  The display takes the given y and x, adds the appropriate offsets,
-// and then calls its own internal function to draw the given DisplayTile at the
-// correct location on-screen.
-void CursesDisplay::draw_tile(const uint y, const uint x, const DisplayTile& tile)
-{
-  // Turn off the cursor temporarily - higher level redraw functions will enable it
-  // and place it correctly.
-  curs_set(0);
-
-  uint terminal_row = CursesConstants::MAP_START_ROW + y;
-  uint terminal_col = CursesConstants::MAP_START_COL + x;
-
-  draw_coordinate(tile, terminal_row, terminal_col);
-
-  refresh();
 }
 
 AnimationFactoryPtr CursesDisplay::create_animation_factory() const

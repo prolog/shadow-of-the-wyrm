@@ -50,16 +50,17 @@ class Display : public ISerializable
     virtual void halt_messages() = 0;
 
     // Draws the map
-	  virtual void draw(const DisplayMap& current_map, const CursorSettings cs) = 0;
+    virtual void refresh_display_parameters() = 0;
+    virtual void draw(const DisplayMap& current_map, const CursorSettings cs);
     virtual void redraw() = 0;
 
     // Draws on a portion of the map area.
-    virtual void draw_update_map(const DisplayMap& update_map, const CursorSettings cs) = 0;
+    virtual void draw_update_map(const DisplayMap& update_map, const CursorSettings cs);
 
     // Update a single tile.
     // Engine coordinates are used - the display will calculate the correct coordinates for the display
     // to ignore the message display area.
-    virtual void draw_tile(const uint y, const uint x, const DisplayTile& display_tile) = 0;
+    virtual void draw_tile(const uint y, const uint x, const DisplayTile& display_tile);
 
     // Create an animation factory for the display type.
     virtual AnimationFactoryPtr create_animation_factory() const = 0;
@@ -69,6 +70,9 @@ class Display : public ISerializable
 	  
 	  // Displays the player info
 	  virtual void display(const DisplayStatistics& player_stats);
+
+    // Draw a particular map coordinate
+    virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col) = 0;
 
     // Used by the engine to query the display size, so the DisplayMap can be created accordingly.
     virtual MapDisplayArea get_map_display_area() = 0;
@@ -120,6 +124,9 @@ class Display : public ISerializable
     virtual Display* clone() = 0;
 
   protected:
+    virtual void draw_tile_init();
+    virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows);
+
     std::map<std::string, std::string> display_properties;
 
   private:

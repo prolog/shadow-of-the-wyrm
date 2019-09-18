@@ -5840,9 +5840,6 @@
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapCoordinateReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\source</Filter>
     </ClCompile>
-    <ClCompile Include="display\source\CursesConstants.cpp">
-      <Filter>Source Files\display\source</Filter>
-    </ClCompile>
     <ClCompile Include="display\source\CursesDisplay.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>

@@ -203,9 +203,8 @@ void SDLDisplay::halt_messages()
 {
 }
 
-void SDLDisplay::draw(const DisplayMap& dm, const CursorSettings cs)
+void SDLDisplay::refresh_display_parameters()
 {
-  // ...
 }
 
 void SDLDisplay::redraw()
@@ -213,8 +212,18 @@ void SDLDisplay::redraw()
   refresh_current_window();
 }
 
-void SDLDisplay::draw_update_map(const DisplayMap& update_map, const CursorSettings cs)
+void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col)
 {
+  if (!screens.empty() && !screen_cursors.empty())
+  {
+    SDLRender render(sdld);
+    int col = current_tile.get_colour();
+    Colour colour = static_cast<Colour>(col);
+
+    enable_colour(colour);
+    render.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), terminal_row, terminal_col, current_tile.get_symbol());
+    disable_colour(colour);
+  }
 }
 
 void SDLDisplay::draw_tile(const uint y, const uint x, const DisplayTile& dt)

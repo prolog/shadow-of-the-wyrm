@@ -40,17 +40,14 @@ class CursesDisplay : public Display
 
     void halt_messages() override;
 
-	  void draw(const DisplayMap& current_map, const CursorSettings cs) override;
+    virtual void refresh_display_parameters() override;
     void redraw() override;
-
-    virtual void draw_update_map(const DisplayMap& update_map, const CursorSettings cs) override;
-    virtual void draw_tile(const uint y, const uint x, const DisplayTile& tile) override;
 
     // Create an animation factory for the display type.
     AnimationFactoryPtr create_animation_factory() const override;
     virtual void draw_animation(const Animation& animation) override;
 
-    virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col);
+    virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col) override;
     MapDisplayArea get_map_display_area() override;
 
     void display_header(const std::string& header_text, WINDOW* cur_window, const int display_line = 0);
@@ -83,7 +80,10 @@ class CursesDisplay : public Display
 
   protected:
     friend class SW_Display_CursesDisplayFixture; // test fixture
-   
+
+    virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) override;
+    virtual void draw_tile_init() override;
+
     bool uses_colour() const;
     int get_cursor_mode(const CursorSettings cs) const;
 

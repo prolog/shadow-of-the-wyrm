@@ -19,7 +19,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
 {
   Animation animation;
 
-  if (player_blinded)
+  if (player_blinded || animation_factory == nullptr)
   {
     return animation;
   }

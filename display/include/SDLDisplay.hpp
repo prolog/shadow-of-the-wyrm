@@ -48,12 +48,8 @@ class SDLDisplay : public Display
     // Halt the messages - require some form of input from the user to continue
     virtual void halt_messages() override;
 
-    // Draws the map
-	  virtual void draw(const DisplayMap& current_map, const CursorSettings cs) override;
+    virtual void refresh_display_parameters() override;
     virtual void redraw() override;
-
-    // Draws on a portion of the map area.
-    virtual void draw_update_map(const DisplayMap& update_map, const CursorSettings cs) override;
 
     // Update a single tile.
     // Engine coordinates are used - the display will calculate the correct coordinates for the display
@@ -66,6 +62,8 @@ class SDLDisplay : public Display
     // Draws an animation.
     virtual void draw_animation(const Animation& animation) override;
 	  
+    virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col) override;
+
     // Used by the engine to query the display size, so the DisplayMap can be created accordingly.
     virtual MapDisplayArea get_map_display_area() override;
 

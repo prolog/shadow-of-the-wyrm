@@ -22,4 +22,7 @@ class DisplayConstants
   public:
     static const int OPTION_SPACING;
     static const int ROWS_FOR_MESSAGE_BUFFER_AND_SYNOPSIS;
+    static const unsigned int MAP_START_ROW;
+    static const unsigned int MAP_START_COL;
+    static const unsigned int MESSAGE_BUFFER_END_ROW;
 };

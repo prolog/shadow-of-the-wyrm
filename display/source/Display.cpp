@@ -2,6 +2,7 @@
 #include "Conversion.hpp"
 #include "Display.hpp"
 #include "Game.hpp"
+#include "MapUtils.hpp"
 #include "Screen.hpp"
 #include "Setting.hpp"
 #include "Serialize.hpp"
@@ -110,6 +111,61 @@ string Display::display_screen(const Screen& current_screen)
 
   return result;
 }
+
+// Draw the specified Display in the term.  This'll be a simplified
+// map that contains only the information needed by the display -
+// no specific creature, etc., data.
+void Display::draw(const DisplayMap& current_map, const CursorSettings cs)
+{
+  refresh_display_parameters();
+
+  DisplayTile display_tile;
+  Coordinate map_coords;
+
+  Dimensions d = current_map.size();
+  unsigned int map_rows = d.get_y();
+  unsigned int map_cols = d.get_x();
+
+  for (unsigned int terminal_row = DisplayConstants::MAP_START_ROW; terminal_row < map_rows + DisplayConstants::MAP_START_ROW; terminal_row++)
+  {
+    for (unsigned int terminal_col = DisplayConstants::MAP_START_COL; terminal_col < map_cols + DisplayConstants::MAP_START_COL; terminal_col++)
+    {
+      map_coords.first = terminal_row - DisplayConstants::MAP_START_ROW;
+      map_coords.second = terminal_col - DisplayConstants::MAP_START_COL;
+
+      DisplayTile tile = current_map.at(map_coords);
+      draw_coordinate(tile, terminal_row, terminal_col);
+    }
+  }
+
+  redraw_cursor(current_map, cs, map_rows);
+  refresh();
+}
+
+void Display::draw_update_map(const DisplayMap& update_map, const CursorSettings cs)
+{
+  DisplayTile display_tile;
+  Coordinate map_coords;
+
+  DisplayMapType tiles = update_map.get_tiles();
+
+  uint terminal_row, terminal_col;
+
+  for (DisplayMapType::value_type& tile : tiles)
+  {
+    Coordinate map_coords = MapUtils::convert_map_key_to_coordinate(tile.first);
+    DisplayTile dtile = tile.second;
+
+    terminal_row = DisplayConstants::MAP_START_ROW + map_coords.first;
+    terminal_col = DisplayConstants::MAP_START_COL + map_coords.second;
+
+    draw_coordinate(dtile, terminal_row, terminal_col);
+  }
+
+  uint map_rows = update_map.size().get_y();
+  redraw_cursor(update_map, cs, map_rows);
+}
+
 
 // Display the player data at the bottom of the screen
 void Display::display(const DisplayStatistics& player_stats)
@@ -247,6 +303,25 @@ bool Display::update_synopsis_row_and_column(const unsigned int initial_row, uns
   return can_update;
 }
 
+// draw_tile is called externally from a Display to draw a particular engine
+// coordinate.  The display takes the given y and x, adds the appropriate offsets,
+// and then calls its own internal function to draw the given DisplayTile at the
+// correct location on-screen.
+void Display::draw_tile(const uint y, const uint x, const DisplayTile& tile)
+{
+  // Turn off the cursor temporarily - higher level redraw functions will enable it
+  // and place it correctly.
+  draw_tile_init();
+
+  uint terminal_row = DisplayConstants::MAP_START_ROW + y;
+  uint terminal_col = DisplayConstants::MAP_START_COL + x;
+
+  draw_coordinate(tile, terminal_row, terminal_col);
+
+  refresh();
+}
+
+
 int Display::get_field_space() const
 {
   return 2;
@@ -304,3 +379,10 @@ string Display::get_property(const string& property) const
   return value;
 }
 
+void Display::redraw_cursor(const DisplayMap& dm, const CursorSettings& cs, const uint max_rows)
+{
+}
+
+void Display::draw_tile_init()
+{
+}

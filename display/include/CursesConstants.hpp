@@ -6,18 +6,6 @@
 #define NC_ENTER_KEY 10
 #define NC_ESCAPE_KEY 27
 
-class CursesConstants
-{
-  public:
-    static const unsigned int MAP_START_ROW;
-    static const unsigned int MAP_START_COL;
-    static const unsigned int MESSAGE_BUFFER_END_ROW;
-    
-  protected:
-    CursesConstants();
-    ~CursesConstants();
-};
-
 enum struct CursorMode
 {
   CURSOR_MODE_MIN = 0,

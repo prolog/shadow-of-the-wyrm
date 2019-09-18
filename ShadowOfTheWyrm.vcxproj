@@ -2165,7 +2165,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="display\source\DisplaySettings.cpp" />
     <ClCompile Include="display\source\DisplayStatistics.cpp" />
     <ClCompile Include="display\source\DisplayTile.cpp" />
-    <ClCompile Include="display\source\CursesConstants.cpp" />
     <ClCompile Include="display\source\CursesDisplay.cpp" />
     <ClCompile Include="display\source\MenuWrapper.cpp" />
     <ClCompile Include="display\source\CursesPromptProcessor.cpp" />
