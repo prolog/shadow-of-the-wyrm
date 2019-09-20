@@ -8624,5 +8624,8 @@
     <ClCompile Include="display\source\unit_tests\SDLCursorLocation_test.cpp">
       <Filter>Source Files\display\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDL_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

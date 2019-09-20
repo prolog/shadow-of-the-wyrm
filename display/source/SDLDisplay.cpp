@@ -18,7 +18,7 @@ using namespace std;
 
 const int SDLDisplay::SCREEN_ROWS = 25;
 const int SDLDisplay::SCREEN_COLS = 80;
-
+const int SDLDisplay::NUM_SDL_BASE_COLOURS = 16;
 SDLDisplay::SDLDisplay()
 {
   window = nullptr;
@@ -27,6 +27,8 @@ SDLDisplay::SDLDisplay()
 
   sdld.set_screen_rows(SCREEN_ROWS);
   sdld.set_screen_cols(SCREEN_COLS);
+
+  initialize_colours();
 }
 
 SDLDisplay::~SDLDisplay()
@@ -61,6 +63,27 @@ void SDLDisplay::tear_down()
 
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
+}
+
+void SDLDisplay::initialize_colours()
+{
+  colours = { /* black                */ {0, {0,0,0,255} }, // jcd fixme these are bright
+              /* red                  */ {1, {139,0,0,255} },
+              /* green                */ {2, {0,139,0,255} },
+              /* yellow               */ {3, {139,139,0,255} },
+              /* blue                 */ {4, {0,0,139,255} },
+              /* magenta              */ {5, {139,0,139,255} },
+              /* cyan                 */ {6, {0,139,139,255} },
+              /* white                */ {7, {139,139,139,255} },
+              /* bold black/dark gray */ {8, {59,59,59,255} },
+              /* bold red             */ {9, {255,0,0,255} },
+              /* bold green           */ {10, {0,255,0,255} },
+              /* bold yellow          */ {11, {255,255,0,255} },
+              /* bold blue            */ {12, {0,0,255,255} },
+              /* bold magenta         */ {13, {255,0,255,255} },
+              /* bold cyan            */ {14, {0,255,255,255} },
+              /* bold white           */ {15, {255,255,255,255} }
+  };
 }
 
 bool SDLDisplay::read_dimensions_from_settings()
@@ -157,6 +180,7 @@ void SDLDisplay::clear_messages()
 
 void SDLDisplay::clear_display()
 {
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
   SDL_RenderClear(renderer);
   SDL_RenderPresent(renderer);
 }
@@ -470,8 +494,28 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
   // It will have been taken care of when displaying the TextComponent.
 }
 
+SDL_Color SDLDisplay::get_colour(const int curses_colour) const
+{
+  SDL_Color c = { 0,0,0,255 };
+
+  auto c_it = colours.find(curses_colour);
+
+  if (c_it != colours.end())
+  {
+    c = c_it->second;
+  }
+
+  return c;
+}
+
 void SDLDisplay::enable_colour(const Colour colour)
 {
+  int colour_i = static_cast<int>(colour);
+  int colour_fg_curses = colour_i % NUM_SDL_BASE_COLOURS;
+  int colour_bg_curses = colour_i / NUM_SDL_BASE_COLOURS;
+
+  sdld.set_fg_colour(get_colour(colour_fg_curses));
+  sdld.set_bg_colour(get_colour(colour_bg_curses));
 }
 
 void SDLDisplay::disable_colour(const Colour colour)

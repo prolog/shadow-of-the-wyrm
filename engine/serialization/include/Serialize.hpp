@@ -3,6 +3,13 @@
 #include <map>
 #include <set>
 #include <vector>
+
+#ifdef _MSC_VER
+#include "SDL.h"
+#else
+#include "SDL2/SDL.h"
+#endif
+
 #include "ClassIdentifiers.hpp"
 #include "Colours.hpp"
 #include "ScriptDetails.hpp"
@@ -25,6 +32,9 @@ class Serialize
 
     static void write_uint(std::ostream& stream, const unsigned int val);
     static void read_uint(std::istream& stream, unsigned int& val);
+
+    static void write_uint8(std::ostream& stream, const Uint8 val);
+    static void read_uint8(std::istream& stream, Uint8& val);
 
     static void write_int(std::ostream& stream, const signed int val);
     static void read_int(std::istream& stream, signed int& val);
@@ -62,6 +72,9 @@ class Serialize
 
     static void write_event_scripts(std::ostream& stream, const EventScriptsMap& event_scripts);
     static void read_event_scripts(std::istream& stream, EventScriptsMap& event_scripts);
+
+    static void write_sdl_colour(std::ostream& stream, const SDL_Color& color);
+    static void read_sdl_colour(std::istream& stream, SDL_Color& color);
 
     template<class T>
     static void write_enum(std::ostream& stream, T& enum_type)

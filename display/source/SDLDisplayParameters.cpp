@@ -1,4 +1,5 @@
 #include "SDLDisplayParameters.hpp"
+#include "SDL.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -6,16 +7,22 @@ using namespace std;
 SDLDisplayParameters::SDLDisplayParameters()
 : screen_cols(0), screen_rows(0), screen_width(0), screen_height(0), glyph_width(0), glyph_height(0), glyphs_per_line(0)
 {
+  fg_colour = { 255,255,255,255 }; // white
+  bg_colour = { 0,0,0,255 }; // black
 }
 
 SDLDisplayParameters::SDLDisplayParameters(const int new_screen_cols, const int new_screen_rows, const int new_screen_width, const int new_screen_height, const int new_glyph_width, const int new_glyph_height, const int new_glyphs_per_line)
 : screen_cols(new_screen_cols), screen_rows(new_screen_rows), screen_width(new_screen_width), screen_height(new_screen_height), glyph_width(new_glyph_width), glyph_height(new_glyph_height), glyphs_per_line(new_glyphs_per_line)
 {
+  fg_colour = { 255,255,255,255 }; // white
+  bg_colour = { 0,0,0,255 }; // black
 }
 
 bool SDLDisplayParameters::operator==(const SDLDisplayParameters& d)
 {
   bool eq = true;
+
+  SDL sdl;
 
   eq = eq && (screen_cols == d.screen_cols);
   eq = eq && (screen_rows == d.screen_rows);
@@ -24,6 +31,8 @@ bool SDLDisplayParameters::operator==(const SDLDisplayParameters& d)
   eq = eq && (glyph_width == d.glyph_width);
   eq = eq && (glyph_height == d.glyph_height);
   eq = eq && (glyphs_per_line == d.glyphs_per_line);
+  eq = eq && (sdl.sdl_color_eq(fg_colour, d.fg_colour));
+  eq = eq && (sdl.sdl_color_eq(bg_colour, d.bg_colour));
 
   return eq;
 }
@@ -98,6 +107,26 @@ int SDLDisplayParameters::get_glyphs_per_line() const
   return glyphs_per_line;
 }
 
+void SDLDisplayParameters::set_fg_colour(const SDL_Color& new_fg_colour)
+{
+  fg_colour = new_fg_colour;
+}
+
+SDL_Color SDLDisplayParameters::get_fg_colour() const
+{
+  return fg_colour;
+}
+
+void SDLDisplayParameters::set_bg_colour(const SDL_Color& new_bg_colour)
+{
+  bg_colour = new_bg_colour;
+}
+
+SDL_Color SDLDisplayParameters::get_bg_colour() const
+{
+  return bg_colour;
+}
+
 bool SDLDisplayParameters::serialize(std::ostream& stream) const
 {
   Serialize::write_int(stream, screen_cols);
@@ -107,6 +136,12 @@ bool SDLDisplayParameters::serialize(std::ostream& stream) const
   Serialize::write_int(stream, glyph_width);
   Serialize::write_int(stream, glyph_height);
   Serialize::write_int(stream, glyphs_per_line);
+
+  // Write fg colour
+  Serialize::write_sdl_colour(stream, fg_colour);
+
+  // Write bg colour
+  Serialize::write_sdl_colour(stream, bg_colour);
 
   return true;
 }
@@ -120,6 +155,12 @@ bool SDLDisplayParameters::deserialize(std::istream& stream)
   Serialize::read_int(stream, glyph_width);
   Serialize::read_int(stream, glyph_height);
   Serialize::read_int(stream, glyphs_per_line);
+
+  // Read fg colour
+  Serialize::read_sdl_colour(stream, fg_colour);
+
+  // Read bg colour
+  Serialize::read_sdl_colour(stream, bg_colour);
 
   return true;
 }

@@ -1,4 +1,11 @@
 #pragma once
+
+#ifdef _MSC_VER
+#include "SDL.h"
+#else
+#include "SDL2/SDL.h"
+#endif
+
 #include "ISerializable.hpp"
 
 class SDLDisplayParameters : public ISerializable
@@ -29,6 +36,12 @@ class SDLDisplayParameters : public ISerializable
     void set_glyphs_per_line(const int new_glyphs_per_line);
     int get_glyphs_per_line() const;
 
+    void set_fg_colour(const SDL_Color& new_fg_colour);
+    SDL_Color get_fg_colour() const;
+
+    void set_bg_colour(const SDL_Color& new_bg_colour);
+    SDL_Color get_bg_colour() const;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
@@ -40,6 +53,9 @@ protected:
     int glyph_width; // pixels again
     int glyph_height;
     int glyphs_per_line; // per line in the .png texture
+
+    SDL_Color fg_colour;
+    SDL_Color bg_colour;
 
   private:
     ClassIdentifier internal_class_identifier() const;

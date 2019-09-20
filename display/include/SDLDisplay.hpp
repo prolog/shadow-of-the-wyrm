@@ -86,6 +86,7 @@ class SDLDisplay : public Display
 
     void display_text(int row, int col, const std::string& s) override;
 
+    SDL_Color get_colour(const int curses_colour) const;
     void enable_colour(const Colour colour) override;
     void disable_colour(const Colour colour) override;
 
@@ -99,6 +100,7 @@ class SDLDisplay : public Display
     bool read_dimensions_from_settings();
     bool read_font_into_texture();
     bool create_window_and_renderer();
+    void initialize_colours();
 
     // Game-related functions
     void display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
@@ -108,6 +110,8 @@ class SDLDisplay : public Display
     
     bool load_spritesheet_from_file(const std::string& path, SDL_Renderer* renderer);
     void free_font_spritesheet();
+
+    std::unordered_map<int, SDL_Color> colours;
 
     SDL_Window* window = NULL;
     
@@ -125,6 +129,7 @@ class SDLDisplay : public Display
 
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;
+    static const int NUM_SDL_BASE_COLOURS;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
