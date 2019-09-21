@@ -45,6 +45,8 @@ bool SDLDisplay::create()
   
   if (init)
   {
+    enable_colour(Colour::COLOUR_WHITE);
+
     // Set up the main screen, analagous to stdscr in curses.
     setup_new_screen();
   }
@@ -74,7 +76,7 @@ void SDLDisplay::initialize_colours()
               /* blue                 */ {4, {0,0,139,255} },
               /* magenta              */ {5, {139,0,139,255} },
               /* cyan                 */ {6, {0,139,139,255} },
-              /* white                */ {7, {139,139,139,255} },
+              /* white                */ {7, {200,200,200,255} },
               /* bold black/dark gray */ {8, {59,59,59,255} },
               /* bold red             */ {9, {255,0,0,255} },
               /* bold green           */ {10, {0,255,0,255} },
