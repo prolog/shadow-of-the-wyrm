@@ -201,7 +201,7 @@ void SDLDisplay::clear_to_bottom(const int row)
     dst_rect.h = rows_to_blank * glyph_height;
     dst_rect.w = sdld.get_screen_width();
 
-    render.fill_area(renderer, screens.back(), &dst_rect);
+    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(0));
   }
 }
 
@@ -245,7 +245,7 @@ void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint ter
     Colour colour = static_cast<Colour>(col);
 
     enable_colour(colour);
-    render.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), terminal_row, terminal_col, current_tile.get_symbol());
+    render.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), terminal_row, terminal_col, current_tile.get_symbol(), sdld.get_fg_colour(), sdld.get_bg_colour());
     disable_colour(colour);
   }
 }
@@ -380,10 +380,10 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
 
     SDLRenderPtr text_renderer = std::make_shared<SDLRender>(sdld);
     PromptPtr prompt = screen.get_prompt();
-    prompt_processor.show_prompt(cursor_loc, text_renderer, renderer, font_spritesheet, current_screen, prompt, row, col, get_max_rows(), get_max_cols());
+    prompt_processor.show_prompt(sdld, cursor_loc, text_renderer, renderer, font_spritesheet, current_screen, prompt, row, col, get_max_rows(), get_max_cols());
     refresh_current_window();
 
-    prompt_val = prompt_processor.get_prompt(cursor_loc, text_renderer, renderer, font_spritesheet, current_screen, menu_wrapper, prompt);
+    prompt_val = prompt_processor.get_prompt(sdld, cursor_loc, text_renderer, renderer, font_spritesheet, current_screen, menu_wrapper, prompt);
   }
 
   return prompt_val;
@@ -396,7 +396,7 @@ void SDLDisplay::display_header(const string& header_text, const int row)
     SDLRender render(sdld);
 
     string full_header = TextMessages::get_full_header_text(header_text, sdld.get_screen_cols());
-    render.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), row, 0, full_header);
+    render.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), row, 0, full_header, sdld.get_fg_colour(), sdld.get_bg_colour());
   }
 }
 
@@ -420,7 +420,7 @@ void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, 
         // and increment the column.
         for (const char c : cur_text)
         {
-          text_renderer.render_text(screen_cursors.back(), renderer, font_spritesheet, texture, *row, *col, c);
+          text_renderer.render_text(screen_cursors.back(), renderer, font_spritesheet, texture, *row, *col, c, sdld.get_fg_colour(), sdld.get_bg_colour());
           *col += 1;
         }
       }
@@ -436,7 +436,7 @@ void SDLDisplay::display_text(const int row, const int col, const string& s)
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDLRender text_renderer(sdld);
-    text_renderer.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), row, col, s);
+    text_renderer.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), row, col, s, sdld.get_fg_colour(), sdld.get_bg_colour());
   }
 }
 

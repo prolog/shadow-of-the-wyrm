@@ -90,6 +90,8 @@ int parse_command_line_arguments(int argc, char* argv[])
   return 0;
 }
 
+// This is required because SDL is redefining main!  What the hell?!
+#undef main
 #ifdef _MSC_VER
 int _tmain(int argc, _TCHAR* argv[])
 #else
