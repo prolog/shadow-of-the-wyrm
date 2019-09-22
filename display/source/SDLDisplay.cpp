@@ -223,6 +223,15 @@ void SDLDisplay::clear_to_bottom(const int row)
 
 void SDLDisplay::add_alert(const string& message, const bool prompt_for_input)
 {
+  clear_messages();
+  add_message(message, Colour::COLOUR_BOLD_RED, false);
+  refresh_current_window();
+
+  if (prompt_for_input)
+  {
+    prompt_processor.get_prompt(window);
+    clear_messages();
+  }
 }
 
 void SDLDisplay::add_message(const string& message, const Colour colour, const bool clear_prior_to_adding_message)
@@ -231,16 +240,28 @@ void SDLDisplay::add_message(const string& message, const Colour colour, const b
 
 string SDLDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool clear_prior)
 {
-  string prompt;
-  return prompt;
+  string prompt_result;
+
+  if (!screens.empty() && !screen_cursors.empty())
+  {
+    SDLRenderPtr render = std::make_shared<SDLRender>(sdld);
+
+    add_message(message, colour, clear_prior);
+    prompt_result = prompt_processor.get_user_string(sdld, screen_cursors.back(), render, renderer, font_spritesheet, screens.back(), true /* allow arbitrary non-alphanumeric characters */);
+  }
+  
+  return prompt_result;
 }
 
 void SDLDisplay::halt_messages()
 {
+  // Get a keypress from the user and throw it away to continue.
+  prompt_processor.get_prompt(window);
 }
 
 void SDLDisplay::refresh_display_parameters()
 {
+  // ...
 }
 
 void SDLDisplay::redraw()
@@ -523,7 +544,15 @@ SDL_Color SDLDisplay::get_colour(const int curses_colour) const
 
 void SDLDisplay::enable_colour(const Colour colour)
 {
-  int colour_i = static_cast<int>(colour);
+  Colour c = colour;
+
+  if (uses_colour() == false)
+  {
+    init_mono_if_necessary();
+    c = mono_colour;
+  }
+
+  int colour_i = static_cast<int>(c);
   int colour_fg_curses = colour_i % NUM_SDL_BASE_COLOURS;
   int colour_bg_curses = colour_i / NUM_SDL_BASE_COLOURS;
 
@@ -533,7 +562,10 @@ void SDLDisplay::enable_colour(const Colour colour)
 
 void SDLDisplay::disable_colour(const Colour colour)
 {
-  enable_colour(Colour::COLOUR_WHITE);
+  if (uses_colour())
+  {
+    enable_colour(Colour::COLOUR_WHITE);
+  }
 }
 
 // When displaying a general screen, reset the colour to white.

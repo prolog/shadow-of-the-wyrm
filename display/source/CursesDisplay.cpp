@@ -42,8 +42,6 @@ CursesDisplay::CursesDisplay()
 : MSG_BUFFER_LAST_Y(0), 
 MSG_BUFFER_LAST_X(0), 
 message_buffer_screen(nullptr),
-can_use_colour(false),
-mono_colour(Colour::COLOUR_UNDEFINED),
 cursor_mode(1) /* normal visibility */
 {
 }
@@ -68,7 +66,6 @@ bool CursesDisplay::operator==(const CursesDisplay& cd) const
   }
 
   result = result && (prompt_processor == cd.prompt_processor);
-  result = result && (can_use_colour == cd.can_use_colour);
 
   return result;
 }
@@ -112,18 +109,6 @@ void CursesDisplay::destroy_screen(WINDOW *screen)
 void CursesDisplay::draw_tile_init()
 {
   curs_set(0);
-}
-
-// Get whether the terminal can support colour.  False by
-// default, until SL actually tries to detect the terminal's
-// colour capabilities.  This can be turned off in the ini
-// settings, also.
-bool CursesDisplay::uses_colour() const
-{
-  string colour_prop = get_property(DisplaySettings::DISPLAY_SETTING_COLOUR);
-  bool colour = String::to_bool(colour_prop);
-
-  return colour;
 }
 
 // If the cursor mode has been set in the properties, use that.
@@ -188,22 +173,7 @@ void CursesDisplay::enable_colour(const int selected_colour, WINDOW* window)
   }
   else
   {
-    // Do we need to set the "monochrome" display to a particular colour?
-    // Dark red, like my thirteen-year-old-self's old QBASIC games?
-    // Bright green, like an old Apple ][?
-    if (mono_colour == Colour::COLOUR_UNDEFINED)
-    {
-      // Set up the monochrome colour on initial use from the properties
-      // set by the game.
-      auto m_it = display_properties.find(DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR);
-
-      if (m_it != display_properties.end())
-      {
-        int mono_i = String::to_int(m_it->second);
-        mono_colour = static_cast<Colour>(mono_i);
-      }
-    }
-
+    init_mono_if_necessary();
     set_colour(static_cast<int>(mono_colour), window);
   }
 }
@@ -316,7 +286,6 @@ bool CursesDisplay::create()
 
   if (has_colors() == TRUE)
   {
-    can_use_colour = true;
     start_color();
     initialize_colours();
   }
@@ -769,8 +738,6 @@ bool CursesDisplay::serialize(ostream& stream) const
 
   // CursesPromptProcessor is stateless; don't write it.
 
-  Serialize::write_bool(stream, can_use_colour);
-
   // cursor_mode is a constant set in the constructor - ignore it.
 
   return true;
@@ -787,8 +754,6 @@ bool CursesDisplay::deserialize(istream& stream)
   // which will be reconstructed based on the game's map/etc data.
 
   // CursesPromptProcessor is stateless; don't load it.
-
-  Serialize::read_bool(stream, can_use_colour);
 
   // cursor_mode is a constant set in the constructor - ignore it.
 

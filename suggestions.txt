@@ -1,7 +1,5 @@
 Me:
 - Why doesn't input work right away?
-- make sure monochrome works
-- after the colour changes, screens don't work, fg and bg are both black
 - Save/load display?
 - Animation factory for SDL
 - Refactor the keyboard command maps so that the curses-specific stuff

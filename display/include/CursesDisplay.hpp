@@ -82,7 +82,6 @@ class CursesDisplay : public Display
     virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) override;
     virtual void draw_tile_init() override;
 
-    bool uses_colour() const;
     int get_cursor_mode(const CursorSettings cs) const;
 
     // Setup colours the way ncurses requires.
@@ -134,6 +133,5 @@ class CursesDisplay : public Display
     // Used to process the prompt
     CursesPromptProcessor prompt_processor;
     bool can_use_colour;
-    Colour mono_colour;
     const int cursor_mode;
 };

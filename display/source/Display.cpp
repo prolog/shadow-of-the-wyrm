@@ -1,6 +1,7 @@
 #include <sstream>
 #include "Conversion.hpp"
 #include "Display.hpp"
+#include "DisplaySettings.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "Screen.hpp"
@@ -9,6 +10,11 @@
 #include "StringTable.hpp"
 
 using namespace std;
+
+Display::Display()
+: mono_colour(Colour::COLOUR_UNDEFINED)
+{
+}
 
 void Display::add_message(const string& message, const bool reset_cursor)
 {
@@ -334,6 +340,7 @@ int Display::get_field_space() const
 
 bool Display::serialize(ostream& stream) const
 {
+  Serialize::write_enum(stream, mono_colour);
   Serialize::write_string_map(stream, display_properties);
 
   return true;
@@ -341,6 +348,7 @@ bool Display::serialize(ostream& stream) const
 
 bool Display::deserialize(istream& stream)
 {
+  Serialize::read_enum(stream, mono_colour);
   Serialize::read_string_map(stream, display_properties);
 
   return true;
@@ -405,3 +413,32 @@ void Display::draw_animation(const Animation& animation)
   }
 }
 
+// Get whether the terminal can support colour.  False by
+// default, until SL actually tries to detect the terminal's
+// colour capabilities.  This can be turned off in the ini
+// settings, also.
+bool Display::uses_colour() const
+{
+  string colour_prop = get_property(DisplaySettings::DISPLAY_SETTING_COLOUR);
+  bool colour = String::to_bool(colour_prop);
+
+  return colour;
+}
+void Display::init_mono_if_necessary()
+{
+  // Do we need to set the "monochrome" display to a particular colour?
+  // Dark red, like my thirteen-year-old-self's old QBASIC games?
+  // Bright green, like an old Apple ][?
+  if (mono_colour == Colour::COLOUR_UNDEFINED)
+  {
+    // Set up the monochrome colour on initial use from the properties
+    // set by the game.
+    auto m_it = display_properties.find(DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR);
+
+    if (m_it != display_properties.end())
+    {
+      int mono_i = String::to_int(m_it->second);
+      mono_colour = static_cast<Colour>(mono_i);
+    }
+  }
+}

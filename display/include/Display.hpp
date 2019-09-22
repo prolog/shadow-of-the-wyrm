@@ -19,6 +19,7 @@ class Animation;
 class Display : public ISerializable
 {
 	public:
+    Display();
     virtual ~Display() {};
     
 	  virtual bool create() = 0;
@@ -46,6 +47,8 @@ class Display : public ISerializable
     virtual void add_message(const std::string& message, const bool reset_cursor) ;
     virtual void add_message(const std::string& message, const Colour colour, const bool clear_prior_to_adding_message) = 0;
     virtual std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool clear_prior) = 0;
+
+    virtual bool uses_colour() const;
 
     // Halt the messages - require some form of input from the user to continue
     virtual void halt_messages() = 0;
@@ -125,9 +128,11 @@ class Display : public ISerializable
     virtual Display* clone() = 0;
 
   protected:
+    virtual void init_mono_if_necessary();
     virtual void draw_tile_init();
     virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows);
 
+    Colour mono_colour;
     std::map<std::string, std::string> display_properties;
 
   private:
