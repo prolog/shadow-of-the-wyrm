@@ -13,6 +13,10 @@ class DisplaySettings
     // should be used?
     static const std::string DISPLAY_SETTING_MONOCHROME_COLOUR;
 
+    // Show the cursor?
+    static const std::string DISPLAY_SETTING_CURSOR_MODE;
+
+
   protected:
     DisplaySettings();
     ~DisplaySettings();

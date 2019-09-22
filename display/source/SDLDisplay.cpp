@@ -1,4 +1,5 @@
 #include <boost/algorithm/string.hpp>
+#include <boost/tokenizer.hpp>
 #include "SDL_image.h"
 #include "Conversion.hpp"
 #include "SDLKeyboardController.hpp"
@@ -191,6 +192,13 @@ void SDLDisplay::clear_messages()
     SDLRender render(sdld);
     render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
     refresh_current_window();
+
+    SDLCursorLocation& sdlc = screen_cursors.back();
+    sdlc.set_y(0);
+    sdlc.set_x(0);
+
+    msg_buffer_last_y = 0;
+    msg_buffer_last_x = 0;
   }
 }
 
@@ -234,8 +242,93 @@ void SDLDisplay::add_alert(const string& message, const bool prompt_for_input)
   }
 }
 
-void SDLDisplay::add_message(const string& message, const Colour colour, const bool clear_prior_to_adding_message)
+void SDLDisplay::add_message(const string& to_add_message, const Colour colour, const bool clear_prior_to_adding_message)
 {
+  if (!screens.empty() && !screen_cursors.empty())
+  {
+    SDL_Texture* screen = screens.at(0);
+    string message = to_add_message;
+
+    SDLCursorLocation& sdlc = screen_cursors.back();
+    pair<int, int> orig_curs_loc = sdlc.get_yx();
+
+    uint cur_y = 0;
+    uint cur_x = 0;
+
+    if (clear_prior_to_adding_message)
+    {
+      clear_messages();
+    }
+    else
+    {
+      sdlc.set_y(msg_buffer_last_y);
+      sdlc.set_x(msg_buffer_last_x);
+    }
+
+    boost::char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
+    boost::tokenizer<boost::char_separator<char>> tokens(message, separator);
+
+    enable_colour(colour);
+    SDLRender render(sdld);
+
+    for (boost::tokenizer<boost::char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
+    {
+      msg_buffer_last_y = sdlc.get_y();
+      msg_buffer_last_x = sdlc.get_x();
+
+      cur_y = msg_buffer_last_y;
+      cur_x = msg_buffer_last_x;
+
+      string current_token = *t_iter;
+
+      if (cur_y == 0)
+      {
+        if ((cur_x + current_token.length()) > (static_cast<uint>(get_max_cols()) - 1))
+        {
+          // Move to the second line of the buffer
+          sdlc.set_yx(1, 0);
+          cur_y = sdlc.get_y();
+          cur_x = sdlc.get_x();
+        }
+      }
+      else
+      {
+        if ((cur_x + current_token.length()) > (static_cast<uint>(get_max_cols()))-4)
+        {
+          sdlc.set_yx(1, get_max_cols() - 4);
+
+          disable_colour(colour);
+          render.render_text(sdlc, renderer, font_spritesheet, screen, cur_y, cur_x, "...", sdld.get_fg_colour(), sdld.get_bg_colour());
+          prompt_processor.get_prompt(window);
+          enable_colour(colour);
+
+          clear_messages();
+        }
+      }
+
+      // If the user presses enter
+      if (cur_y > DisplayConstants::MESSAGE_BUFFER_END_ROW)
+      {
+        cur_y--;
+      }
+
+      if (cur_x == 0)
+      {
+        if (String::is_whitespace(current_token))
+        {
+          // If we're at the start of a new line in the buffer, and the string 
+          // is entirely whitespace, skip it.
+          continue;
+        }
+      }
+
+      render.render_text(sdlc, renderer, font_spritesheet, screen, cur_y, cur_x, current_token, sdld.get_fg_colour(), sdld.get_bg_colour());
+    }
+
+    disable_colour(colour);
+  }
+
+  refresh_current_window();
 }
 
 string SDLDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool clear_prior)
@@ -301,10 +394,6 @@ MapDisplayArea SDLDisplay::get_map_display_area()
   map_display_area.set_height(sdld.get_screen_rows() - DisplayConstants::ROWS_FOR_MESSAGE_BUFFER_AND_SYNOPSIS);
 
   return map_display_area;
-}
-
-void SDLDisplay::confirm(const string& confirmation_message)
-{
 }
 
 void SDLDisplay::set_title(const string& title)

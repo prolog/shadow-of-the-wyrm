@@ -23,8 +23,8 @@ void SW_Display_CursesDisplayFixture::SetUp()
 
   // I should probably mock up WINDOW*, but I don't really care to right now...
 
-  curses_display.MSG_BUFFER_LAST_Y = RNG::range(0, 1);
-  curses_display.MSG_BUFFER_LAST_X = RNG::range(0, 80);
+  curses_display.msg_buffer_last_y = RNG::range(0, 1);
+  curses_display.msg_buffer_last_x = RNG::range(0, 80);
   curses_display.can_use_colour = RNG::percent_chance(50);
 }
 

@@ -3465,9 +3465,6 @@
     <ClInclude Include="engine\include\ShadowOfTheWyrmEngine.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="display\include\CursesProperties.hpp">
-      <Filter>Header Files\display\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\calculators\include\DoorBreakageCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>

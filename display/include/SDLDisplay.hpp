@@ -63,9 +63,6 @@ class SDLDisplay : public Display
     // Used by the engine to query the display size, so the DisplayMap can be created accordingly.
     virtual MapDisplayArea get_map_display_area() override;
 
-	  // Show confirmation text on the display.
-	  virtual void confirm(const std::string& confirmation_message) override;
-
     virtual void set_title(const std::string& title) override;
     virtual void show() override;
     virtual void hide() override;

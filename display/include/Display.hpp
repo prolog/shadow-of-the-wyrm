@@ -21,7 +21,8 @@ class Display : public ISerializable
 	public:
     Display();
     virtual ~Display() {};
-    
+    bool operator==(const Display& d) const;
+
 	  virtual bool create() = 0;
 	  virtual void tear_down() = 0;
 
@@ -85,7 +86,7 @@ class Display : public ISerializable
 	  virtual std::string display_screen(const Screen& current_screen);
 
 	  // Show confirmation text on the display.
-	  virtual void confirm(const std::string& confirmation_message) = 0;
+	  virtual void confirm(const std::string& confirmation_message);
 
     virtual void set_title(const std::string& title) = 0;
     virtual void show() = 0;
@@ -131,9 +132,13 @@ class Display : public ISerializable
     virtual void init_mono_if_necessary();
     virtual void draw_tile_init();
     virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows);
+    int get_cursor_mode(const CursorSettings cs) const;
 
     Colour mono_colour;
     std::map<std::string, std::string> display_properties;
+    const int cursor_mode;
+    uint msg_buffer_last_y;
+    uint msg_buffer_last_x;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override = 0;

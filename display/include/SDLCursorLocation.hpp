@@ -10,6 +10,8 @@ class SDLCursorLocation
     bool decr();
     void reset();
 
+    void set_yx(const int new_y, const int new_x);
+
     void set_y(const int new_y);
     int get_y() const;
 

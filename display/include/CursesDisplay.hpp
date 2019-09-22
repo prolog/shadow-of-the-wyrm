@@ -50,8 +50,6 @@ class CursesDisplay : public Display
 
     void display_header(const std::string& header_text, WINDOW* cur_window, const int display_line = 0);
 
-	  void confirm(const std::string& confirmation_message) override;
-
     void set_title(const std::string& title) override;
     void show() override;
     void hide() override;
@@ -81,8 +79,6 @@ class CursesDisplay : public Display
 
     virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) override;
     virtual void draw_tile_init() override;
-
-    int get_cursor_mode(const CursorSettings cs) const;
 
     // Setup colours the way ncurses requires.
     void initialize_colours();
@@ -121,9 +117,6 @@ class CursesDisplay : public Display
     // Display text safely on stdscr - does % replacement
     void display_text(int row, int col, const std::string& s) override;
 
-    uint MSG_BUFFER_LAST_Y;
-    uint MSG_BUFFER_LAST_X;
-
     // The display is represented as a stack of windows in ncurses; the game window is the lowest, and any screens
     // or subscreens are layered as new windows on top of that.  Each time a screen is done, a window is popped off
     // the stack and the display is re-drawn.
@@ -133,5 +126,4 @@ class CursesDisplay : public Display
     // Used to process the prompt
     CursesPromptProcessor prompt_processor;
     bool can_use_colour;
-    const int cursor_mode;
 };

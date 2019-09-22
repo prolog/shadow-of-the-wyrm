@@ -298,7 +298,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp" />
-    <ClInclude Include="display\include\CursesProperties.hpp" />
     <ClInclude Include="display\include\Display.hpp" />
     <ClInclude Include="display\include\DisplayConstants.hpp" />
     <ClInclude Include="display\include\DisplayFactory.hpp" />

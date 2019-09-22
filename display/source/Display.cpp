@@ -13,7 +13,28 @@ using namespace std;
 
 Display::Display()
 : mono_colour(Colour::COLOUR_UNDEFINED)
+, cursor_mode(1)
+, msg_buffer_last_y(0)
+, msg_buffer_last_x(0)
 {
+}
+
+bool Display::operator==(const Display& d) const
+{
+  bool result = true;
+
+  result = result && (mono_colour == d.mono_colour);
+  result = result && (cursor_mode == d.cursor_mode);
+  result = result && (msg_buffer_last_y == d.msg_buffer_last_y);
+  result = result && (msg_buffer_last_x == d.msg_buffer_last_x);
+
+  return result;
+}
+
+// Show confirmation text - use the message buffer.
+void Display::confirm(const string& confirmation_message)
+{
+  add_message(confirmation_message, Colour::COLOUR_WHITE, false);
 }
 
 void Display::add_message(const string& message, const bool reset_cursor)
@@ -342,6 +363,8 @@ bool Display::serialize(ostream& stream) const
 {
   Serialize::write_enum(stream, mono_colour);
   Serialize::write_string_map(stream, display_properties);
+  Serialize::write_uint(stream, msg_buffer_last_y);
+  Serialize::write_uint(stream, msg_buffer_last_x);
 
   return true;
 }
@@ -350,6 +373,8 @@ bool Display::deserialize(istream& stream)
 {
   Serialize::read_enum(stream, mono_colour);
   Serialize::read_string_map(stream, display_properties);
+  Serialize::read_uint(stream, msg_buffer_last_y);
+  Serialize::read_uint(stream, msg_buffer_last_x);
 
   return true;
 }
@@ -442,3 +467,27 @@ void Display::init_mono_if_necessary()
     }
   }
 }
+
+// If the cursor mode has been set in the properties, use that.
+// Otherwise, use the default.
+int Display::get_cursor_mode(const CursorSettings cs) const
+{
+  int mode = cursor_mode;
+
+  if (cs == CursorSettings::CURSOR_SETTINGS_SHOW_CURSOR)
+  {
+    mode = 1; /* show cursor */
+  }
+  else
+  {
+    auto p_it = display_properties.find(DisplaySettings::DISPLAY_SETTING_CURSOR_MODE);
+
+    if (p_it != display_properties.end())
+    {
+      mode = String::to_int(p_it->second);
+    }
+  }
+
+  return mode;
+}
+

@@ -39,10 +39,7 @@ Display* CursesDisplay::clone()
 }
 
 CursesDisplay::CursesDisplay()
-: MSG_BUFFER_LAST_Y(0), 
-MSG_BUFFER_LAST_X(0), 
-message_buffer_screen(nullptr),
-cursor_mode(1) /* normal visibility */
+: message_buffer_screen(nullptr)
 {
 }
 
@@ -50,8 +47,7 @@ bool CursesDisplay::operator==(const CursesDisplay& cd) const
 {
   bool result = true;
 
-  result = result && (MSG_BUFFER_LAST_Y == cd.MSG_BUFFER_LAST_Y);
-  result = result && (MSG_BUFFER_LAST_X == cd.MSG_BUFFER_LAST_X);
+  result = result && Display::operator==(cd);
   result = result && (screens.size() == cd.screens.size());
 
   if (result)
@@ -109,29 +105,6 @@ void CursesDisplay::destroy_screen(WINDOW *screen)
 void CursesDisplay::draw_tile_init()
 {
   curs_set(0);
-}
-
-// If the cursor mode has been set in the properties, use that.
-// Otherwise, use the default.
-int CursesDisplay::get_cursor_mode(const CursorSettings cs) const
-{
-  int mode = cursor_mode;
-
-  if (cs == CursorSettings::CURSOR_SETTINGS_SHOW_CURSOR)
-  {
-    mode = 1; /* show cursor */
-  }
-  else
-  {
-    auto p_it = display_properties.find(CursesProperties::CURSES_PROPERTIES_CURSOR_MODE);
-
-    if (p_it != display_properties.end())
-    {
-      mode = String::to_int(p_it->second);
-    }
-  }
-
-  return mode;
 }
 
 // Initialize the base ncurses colours.
@@ -228,11 +201,11 @@ int CursesDisplay::clear_message_buffer()
   return_val = wclrtoeol(screen);
   
   // Reset the internal state
-  MSG_BUFFER_LAST_Y = 0;
-  MSG_BUFFER_LAST_X = 0;
+  msg_buffer_last_y = 0;
+  msg_buffer_last_x = 0;
   
   // Reset cursor to original position
-  wmove(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  wmove(screen, msg_buffer_last_y, msg_buffer_last_x);
 
   return return_val;
 }
@@ -254,7 +227,7 @@ void CursesDisplay::halt_messages()
 {
   WINDOW* screen = get_message_buffer_screen();
 
-  wmove(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  wmove(screen, msg_buffer_last_y, msg_buffer_last_x);
   wrefresh(screen);
   wgetch(screen);  
 }
@@ -365,7 +338,7 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
   }
   else
   {
-    wmove(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+    wmove(screen, msg_buffer_last_y, msg_buffer_last_x);
   }
 
   boost::char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
@@ -375,7 +348,7 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
 
   for (boost::tokenizer<boost::char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
-    getyx(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+    getyx(screen, msg_buffer_last_y, msg_buffer_last_x);
     
     string current_token = *t_iter;
     getyx(screen, cur_y, cur_x);
@@ -425,7 +398,7 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
   }
 
   // Ensure that the last coordinates from the message buffer are up to date.
-  getyx(screen, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  getyx(screen, msg_buffer_last_y, msg_buffer_last_x);
 
   // Reset the cursor.
   if (reset_cursor)
@@ -572,12 +545,6 @@ int CursesDisplay::get_max_rows() const
 int CursesDisplay::get_max_cols() const
 {
   return TERMINAL_MAX_COLS;
-}
-
-// Show confirmation text - use the message buffer.
-void CursesDisplay::confirm(const string& confirmation_message)
-{
-  add_message(confirmation_message, Colour::COLOUR_WHITE, false);
 }
 
 void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr tc, const uint line_incr)
@@ -730,15 +697,10 @@ bool CursesDisplay::serialize(ostream& stream) const
 {
   Display::serialize(stream);
 
-  Serialize::write_uint(stream, MSG_BUFFER_LAST_Y);
-  Serialize::write_uint(stream, MSG_BUFFER_LAST_X);
-  
   // Screens are not serialized.  Saving can only be done on the main screen,
   // which will be reconstructed based on the game's map/etc data.
 
   // CursesPromptProcessor is stateless; don't write it.
-
-  // cursor_mode is a constant set in the constructor - ignore it.
 
   return true;
 }
@@ -747,15 +709,10 @@ bool CursesDisplay::deserialize(istream& stream)
 {
   Display::deserialize(stream);
 
-  Serialize::read_uint(stream, MSG_BUFFER_LAST_Y);
-  Serialize::read_uint(stream, MSG_BUFFER_LAST_X);
-
   // Screens are not serialized.  Saving can only be done on the main screen,
   // which will be reconstructed based on the game's map/etc data.
 
   // CursesPromptProcessor is stateless; don't load it.
-
-  // cursor_mode is a constant set in the constructor - ignore it.
 
   return true;
 }

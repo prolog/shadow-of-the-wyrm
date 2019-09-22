@@ -7,6 +7,12 @@ SDLCursorLocation::SDLCursorLocation(const int m_y, const int m_x)
 {
 }
 
+void SDLCursorLocation::set_yx(const int new_y, const int new_x)
+{
+  set_y(new_y);
+  set_x(new_x);
+}
+
 bool SDLCursorLocation::incr()
 {
   if ((y == max_y || x == max_x) ||

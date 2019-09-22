@@ -2,6 +2,8 @@ Me:
 - Why doesn't input work right away?
 - Save/load display?
 - Animation factory for SDL
+- Cursor...
+- There are some paging/etc type issues with messages
 - Refactor the keyboard command maps so that the curses-specific stuff
   is hidden, and I can easily add SDL stuff later.
 - Linux builds for SDL. Premake, scripts, etc
