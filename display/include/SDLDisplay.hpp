@@ -41,7 +41,6 @@ class SDLDisplay : public Display
     virtual void add_alert(const std::string& message, const bool prompt_for_input) override;
 
     // Add a message to display to the user
-    virtual void add_message(const std::string& message, const bool reset_cursor) override;
     virtual void add_message(const std::string& message, const Colour colour, const bool clear_prior_to_adding_message) override;
     virtual std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool clear_prior) override;
 
@@ -59,9 +58,6 @@ class SDLDisplay : public Display
     // Create an animation factory for the display type.
     virtual AnimationFactoryPtr create_animation_factory() const override;
 
-    // Draws an animation.
-    virtual void draw_animation(const Animation& animation) override;
-	  
     virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col) override;
 
     // Used by the engine to query the display size, so the DisplayMap can be created accordingly.
@@ -86,9 +82,12 @@ class SDLDisplay : public Display
 
     void display_text(int row, int col, const std::string& s) override;
 
+    SDL_Colour get_colour(const Colour curses_colour) const;
     SDL_Color get_colour(const int curses_colour) const;
     void enable_colour(const Colour colour) override;
     void disable_colour(const Colour colour) override;
+
+    virtual std::string display_screen(const Screen& current_screen) override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

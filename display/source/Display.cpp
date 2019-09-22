@@ -10,6 +10,11 @@
 
 using namespace std;
 
+void Display::add_message(const string& message, const bool reset_cursor)
+{
+  add_message(message, Colour::COLOUR_WHITE, reset_cursor);
+}
+
 // Draw the specified screen, full-screen.
 string Display::display_screen(const Screen& current_screen)
 {
@@ -386,3 +391,17 @@ void Display::redraw_cursor(const DisplayMap& dm, const CursorSettings& cs, cons
 void Display::draw_tile_init()
 {
 }
+
+void Display::draw_animation(const Animation& animation)
+{
+  vector<AnimationInstructionPtr> animation_instructions = animation.get_animation_instructions();
+
+  for (AnimationInstructionPtr& instruct : animation_instructions)
+  {
+    if (instruct)
+    {
+      instruct->execute(this);
+    }
+  }
+}
+

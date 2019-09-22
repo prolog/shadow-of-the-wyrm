@@ -178,6 +178,20 @@ unsigned int SDLDisplay::get_height() const
 
 void SDLDisplay::clear_messages()
 {
+  if (!screens.empty() && !screen_cursors.empty())
+  {
+    int text_size = sdld.get_glyph_height();
+    int clear_height = text_size * DisplayConstants::MESSAGE_BUFFER_ROWS;
+    SDL_Rect dst_rect;
+    dst_rect.y = 0;
+    dst_rect.x = 0;
+    dst_rect.h = clear_height;
+    dst_rect.w = sdld.get_screen_width();
+
+    SDLRender render(sdld);
+    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
+    refresh_current_window();
+  }
 }
 
 void SDLDisplay::clear_display()
@@ -208,10 +222,6 @@ void SDLDisplay::clear_to_bottom(const int row)
 }
 
 void SDLDisplay::add_alert(const string& message, const bool prompt_for_input)
-{
-}
-
-void SDLDisplay::add_message(const string& message, const bool reset_cursor)
 {
 }
 
@@ -260,10 +270,6 @@ AnimationFactoryPtr SDLDisplay::create_animation_factory() const
 {
   AnimationFactoryPtr af;
   return af;
-}
-
-void SDLDisplay::draw_animation(const Animation& animation)
-{
 }
 
 MapDisplayArea SDLDisplay::get_map_display_area()
@@ -496,6 +502,11 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
   // It will have been taken care of when displaying the TextComponent.
 }
 
+SDL_Color SDLDisplay::get_colour(const Colour curses_colour) const
+{
+  return get_colour(static_cast<int>(curses_colour));
+}
+
 SDL_Color SDLDisplay::get_colour(const int curses_colour) const
 {
   SDL_Color c = { 0,0,0,255 };
@@ -522,7 +533,16 @@ void SDLDisplay::enable_colour(const Colour colour)
 
 void SDLDisplay::disable_colour(const Colour colour)
 {
+  enable_colour(Colour::COLOUR_WHITE);
 }
+
+// When displaying a general screen, reset the colour to white.
+string SDLDisplay::display_screen(const Screen& current_screen)
+{
+  enable_colour(Colour::COLOUR_WHITE);
+  return Display::display_screen(current_screen);
+}
+
 
 bool SDLDisplay::serialize(std::ostream& stream) const
 {

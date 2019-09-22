@@ -20,3 +20,4 @@ const int DisplayConstants::ROWS_FOR_MESSAGE_BUFFER_AND_SYNOPSIS = 5;
 const unsigned int DisplayConstants::MAP_START_ROW = 2;
 const unsigned int DisplayConstants::MAP_START_COL = 0;
 const unsigned int DisplayConstants::MESSAGE_BUFFER_END_ROW = 1;
+const unsigned int DisplayConstants::MESSAGE_BUFFER_ROWS = 2;

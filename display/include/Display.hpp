@@ -2,6 +2,7 @@
 // can be specified (curses-based, graphical tiles, etc).
 #pragma once
 #include <string>
+#include "Animation.hpp"
 #include "AnimationFactory.hpp"
 #include "DisplayConstants.hpp"
 #include "DisplayItem.hpp"
@@ -42,7 +43,7 @@ class Display : public ISerializable
     virtual void add_alert(const std::string& message, const bool prompt_for_input) = 0;
 
     // Add a message to display to the user
-    virtual void add_message(const std::string& message, const bool reset_cursor) = 0;
+    virtual void add_message(const std::string& message, const bool reset_cursor) ;
     virtual void add_message(const std::string& message, const Colour colour, const bool clear_prior_to_adding_message) = 0;
     virtual std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool clear_prior) = 0;
 
@@ -66,7 +67,7 @@ class Display : public ISerializable
     virtual AnimationFactoryPtr create_animation_factory() const = 0;
 
     // Draws an animation.
-    virtual void draw_animation(const Animation& animation) = 0;
+    virtual void draw_animation(const Animation& animation);
 	  
 	  // Displays the player info
 	  virtual void display(const DisplayStatistics& player_stats);

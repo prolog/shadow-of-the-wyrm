@@ -34,7 +34,6 @@ class CursesDisplay : public Display
     void add_alert(const std::string& message, const bool require_input) override;
 
     // Functions to add messages to the message buffer.
-    void add_message(const std::string& message, const bool reset_prompt) override;
     void add_message(const std::string& message, const Colour colour, const bool reset_prompt) override;
     std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt) override;
 
@@ -45,7 +44,6 @@ class CursesDisplay : public Display
 
     // Create an animation factory for the display type.
     AnimationFactoryPtr create_animation_factory() const override;
-    virtual void draw_animation(const Animation& animation) override;
 
     virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col) override;
     MapDisplayArea get_map_display_area() override;

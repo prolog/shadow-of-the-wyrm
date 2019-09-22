@@ -375,11 +375,6 @@ void CursesDisplay::add_alert(const string& message, const bool require_input)
 
 // Clear the message buffer, and then add a message to display to
 // the user.  If it's very long, "..." it.
-void CursesDisplay::add_message(const string& message, const bool reset_cursor)
-{
-  add_message(message, Colour::COLOUR_WHITE, reset_cursor);
-}
-
 void CursesDisplay::add_message(const string& to_add_message, const Colour colour, const bool reset_cursor)
 {
   string message = to_add_message;
@@ -524,19 +519,6 @@ AnimationFactoryPtr CursesDisplay::create_animation_factory() const
 {
   AnimationFactoryPtr curses_animation_factory = std::make_shared<CursesAnimationFactory>();
   return curses_animation_factory;
-}
-
-void CursesDisplay::draw_animation(const Animation& animation)
-{
-  vector<AnimationInstructionPtr> animation_instructions = animation.get_animation_instructions();
-
-  for(AnimationInstructionPtr& instruct : animation_instructions)
-  {
-    if (instruct)
-    {
-      instruct->execute(this);
-    }
-  }
 }
 
 void CursesDisplay::draw_coordinate(const DisplayTile& display_tile, const unsigned int terminal_row, const unsigned int terminal_col)

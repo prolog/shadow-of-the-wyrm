@@ -2941,3 +2941,13 @@ by keeping back a company or two, %b
 good soldiers and good leaders, to conserve %b
 our forces should our fortunes take a sudden turn."
 %p
+But Tel would not be checked.  "I see your point, %b
+but opportunities like this are rare - %b
+a chance for total victory presents %b
+itself, and with it comes the chance to spur %b
+surrender.  And I'll take it.  Let them say %b
+I pressed my advantages, and let them write %b
+of how I did it, starting with the way %b
+I brought out every sword we had to fight, %b
+a grey-green storm front surging on a summer night."
+%p
