@@ -299,10 +299,15 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
 
           disable_colour(colour);
           render.render_text(sdlc, renderer, font_spritesheet, screen, cur_y, cur_x, "...", sdld.get_fg_colour(), sdld.get_bg_colour());
+          refresh_current_window();
+
           prompt_processor.get_prompt(window);
           enable_colour(colour);
 
           clear_messages();
+
+          cur_y = msg_buffer_last_y;
+          cur_x = msg_buffer_last_x;
         }
       }
 

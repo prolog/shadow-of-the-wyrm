@@ -2,7 +2,9 @@ Me:
 - Why doesn't input work right away?
 - Save/load display?
 - Animation factory for SDL
+- Saves appear broken in SDL only.  Save/load ok in curses
 - Cursor...
+- Need to handle display-switching in saves
 - There are some paging/etc type issues with messages
 - Refactor the keyboard command maps so that the curses-specific stuff
   is hidden, and I can easily add SDL stuff later.

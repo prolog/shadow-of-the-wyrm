@@ -39,7 +39,7 @@ bool SDLCursorLocation::incr()
 bool SDLCursorLocation::decr()
 {
   if ((y > max_y || x > max_x) ||
-      (y == 0 || x == 0))
+      (y == 0 && x == 0))
   {
     return false;
   }
