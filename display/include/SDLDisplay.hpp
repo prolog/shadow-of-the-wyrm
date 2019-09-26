@@ -50,14 +50,6 @@ class SDLDisplay : public Display
     virtual void refresh_display_parameters() override;
     virtual void redraw() override;
 
-    // Update a single tile.
-    // Engine coordinates are used - the display will calculate the correct coordinates for the display
-    // to ignore the message display area.
-    virtual void draw_tile(const uint y, const uint x, const DisplayTile& display_tile) override;
-
-    // Create an animation factory for the display type.
-    virtual AnimationFactoryPtr create_animation_factory() const override;
-
     virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col) override;
 
     // Used by the engine to query the display size, so the DisplayMap can be created accordingly.

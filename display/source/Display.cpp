@@ -1,5 +1,6 @@
 #include <sstream>
 #include "Conversion.hpp"
+#include "DefaultAnimationFactory.hpp"
 #include "Display.hpp"
 #include "DisplaySettings.hpp"
 #include "Game.hpp"
@@ -423,6 +424,12 @@ void Display::redraw_cursor(const DisplayMap& dm, const CursorSettings& cs, cons
 
 void Display::draw_tile_init()
 {
+}
+
+AnimationFactoryPtr Display::create_animation_factory() const
+{
+  AnimationFactoryPtr curses_animation_factory = std::make_shared<DefaultAnimationFactory>();
+  return curses_animation_factory;
 }
 
 void Display::draw_animation(const Animation& animation)

@@ -42,9 +42,6 @@ class CursesDisplay : public Display
     virtual void refresh_display_parameters() override;
     void redraw() override;
 
-    // Create an animation factory for the display type.
-    AnimationFactoryPtr create_animation_factory() const override;
-
     virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col) override;
     MapDisplayArea get_map_display_area() override;
 

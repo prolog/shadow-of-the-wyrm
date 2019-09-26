@@ -6,7 +6,6 @@
 #include "Animation.hpp"
 #include "Colours.hpp"
 #include "Conversion.hpp"
-#include "CursesAnimationFactory.hpp"
 #include "CursesProperties.hpp"
 #include "DisplaySettings.hpp"
 #include "EquipmentTextKeys.hpp"
@@ -455,12 +454,6 @@ void CursesDisplay::redraw()
   {
     wrefresh(screens.back());
   }
-}
-
-AnimationFactoryPtr CursesDisplay::create_animation_factory() const
-{
-  AnimationFactoryPtr curses_animation_factory = std::make_shared<CursesAnimationFactory>();
-  return curses_animation_factory;
 }
 
 void CursesDisplay::draw_coordinate(const DisplayTile& display_tile, const unsigned int terminal_row, const unsigned int terminal_col)

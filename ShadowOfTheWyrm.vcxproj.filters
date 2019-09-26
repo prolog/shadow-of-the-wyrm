@@ -2700,12 +2700,6 @@
     <ClInclude Include="display\animation\include\AnimationInstruction.hpp">
       <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
-    <ClInclude Include="display\animation\include\CursesAnimationFactory.hpp">
-      <Filter>Header Files\display\animation\include</Filter>
-    </ClInclude>
-    <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp">
-      <Filter>Header Files\display\animation\include</Filter>
-    </ClInclude>
     <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp">
       <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
@@ -4310,6 +4304,12 @@
     </ClInclude>
     <ClInclude Include="display\include\SDLCursorLocation.hpp">
       <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\DefaultAnimationFactory.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\DefaultDrawAnimationInstruction.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5978,13 +5978,7 @@
     <ClCompile Include="display\animation\source\PauseAnimationInstruction.cpp">
       <Filter>Source Files\display\animation</Filter>
     </ClCompile>
-    <ClCompile Include="display\animation\source\CursesDrawAnimationInstruction.cpp">
-      <Filter>Source Files\display\animation</Filter>
-    </ClCompile>
     <ClCompile Include="display\animation\source\AnimationFactory.cpp">
-      <Filter>Source Files\display\animation</Filter>
-    </ClCompile>
-    <ClCompile Include="display\animation\source\CursesAnimationFactory.cpp">
       <Filter>Source Files\display\animation</Filter>
     </ClCompile>
     <ClCompile Include="engine\translators\source\AnimationTranslator.cpp">
@@ -8623,6 +8617,12 @@
     </ClCompile>
     <ClCompile Include="display\source\unit_tests\SDL_test.cpp">
       <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\DefaultAnimationFactory.cpp">
+      <Filter>Source Files\display\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\DefaultDrawAnimationInstruction.cpp">
+      <Filter>Source Files\display\animation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

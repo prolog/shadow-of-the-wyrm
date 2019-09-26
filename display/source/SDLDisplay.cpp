@@ -381,16 +381,6 @@ void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint ter
   }
 }
 
-void SDLDisplay::draw_tile(const uint y, const uint x, const DisplayTile& dt)
-{
-}
-
-AnimationFactoryPtr SDLDisplay::create_animation_factory() const
-{
-  AnimationFactoryPtr af;
-  return af;
-}
-
 MapDisplayArea SDLDisplay::get_map_display_area()
 {
   MapDisplayArea map_display_area;

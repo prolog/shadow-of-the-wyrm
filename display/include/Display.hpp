@@ -68,7 +68,7 @@ class Display : public ISerializable
     virtual void draw_tile(const uint y, const uint x, const DisplayTile& display_tile);
 
     // Create an animation factory for the display type.
-    virtual AnimationFactoryPtr create_animation_factory() const = 0;
+    virtual AnimationFactoryPtr create_animation_factory() const;
 
     // Draws an animation.
     virtual void draw_animation(const Animation& animation);

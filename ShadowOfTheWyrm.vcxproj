@@ -294,8 +294,8 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\animation\include\Animation.hpp" />
     <ClInclude Include="display\animation\include\AnimationFactory.hpp" />
     <ClInclude Include="display\animation\include\AnimationInstruction.hpp" />
-    <ClInclude Include="display\animation\include\CursesAnimationFactory.hpp" />
-    <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp" />
+    <ClInclude Include="display\animation\include\DefaultAnimationFactory.hpp" />
+    <ClInclude Include="display\animation\include\DefaultDrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp" />
     <ClInclude Include="display\include\Display.hpp" />
@@ -2158,8 +2158,8 @@ mkdir $(OutDir)logs
     <ClCompile Include="controller\source\NullKeyboardController.cpp" />
     <ClCompile Include="display\animation\source\Animation.cpp" />
     <ClCompile Include="display\animation\source\AnimationFactory.cpp" />
-    <ClCompile Include="display\animation\source\CursesAnimationFactory.cpp" />
-    <ClCompile Include="display\animation\source\CursesDrawAnimationInstruction.cpp" />
+    <ClCompile Include="display\animation\source\DefaultAnimationFactory.cpp" />
+    <ClCompile Include="display\animation\source\DefaultDrawAnimationInstruction.cpp" />
     <ClCompile Include="display\animation\source\DrawAnimationInstruction.cpp" />
     <ClCompile Include="display\animation\source\PauseAnimationInstruction.cpp" />
     <ClCompile Include="display\source\Display.cpp" />

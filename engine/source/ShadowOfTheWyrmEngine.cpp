@@ -122,6 +122,7 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
 
     if (display)
     {
+      display->create();
       display->set_title(StringTable::get(TextKeys::SW_TITLE));
       display->show();
     }
