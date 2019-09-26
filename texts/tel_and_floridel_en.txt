@@ -2951,3 +2951,14 @@ of how I did it, starting with the way %b
 I brought out every sword we had to fight, %b
 a grey-green storm front surging on a summer night."
 %p
+"So be it."  Tel could tell the chancellor's tone %b
+was tinged with disappointment, but the man went %b
+about his business briskly.  Having told %b
+the king the flaws he saw, Alcius spent %b
+a few more minutes going down the line, %b
+inspecting packs, provisions, making sure %b
+no soldier would go hungry, genuine %b
+compassion from the quiet man who served %b
+both king and common folk far more than they deserved.
+%p
+
