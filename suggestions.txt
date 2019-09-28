@@ -1,9 +1,8 @@
 Me:
 - Why doesn't input work right away?
 - Need to handle display-switching in saves
-- alerts not showing properly.  need a "message buffer screen" variable
-  like in curses, and this needs to be the one that messages go to.
 - cursed/blessed equipment not coloured correctly
+- Not Responding...
 - Linux builds for SDL. Premake, scripts, etc
 - Revert the settings around version and metadata before release
 - Cantrip to set glow flag on items

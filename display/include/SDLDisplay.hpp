@@ -109,6 +109,8 @@ class SDLDisplay : public Display
     // at index i in its deque corresponds to the screen at index i in
     // the screens deque.
     std::deque<SDL_Texture*> screens;
+    SDL_Texture* message_buffer_screen;
+
     std::deque<SDLCursorLocation> screen_cursors;
 
     SDL_Renderer* renderer = NULL;

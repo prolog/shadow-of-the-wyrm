@@ -25,6 +25,7 @@ SDLDisplay::SDLDisplay()
   window = nullptr;
   renderer = nullptr;
   font_spritesheet = nullptr;
+  message_buffer_screen = nullptr;
 
   sdld.set_screen_rows(SCREEN_ROWS);
   sdld.set_screen_cols(SCREEN_COLS);
@@ -236,14 +237,21 @@ void SDLDisplay::clear_to_bottom(const int row)
 
 void SDLDisplay::add_alert(const string& message, const bool prompt_for_input)
 {
-  clear_messages();
-  add_message(message, Colour::COLOUR_BOLD_RED, false);
-  refresh_current_window();
-
-  if (prompt_for_input)
+  if (!screens.empty() && !screen_cursors.empty())
   {
-    prompt_processor.get_prompt(window);
     clear_messages();
+
+    message_buffer_screen = screens.back();
+    add_message(message, Colour::COLOUR_BOLD_RED, false);
+    refresh_current_window();
+
+    if (prompt_for_input)
+    {
+      prompt_processor.get_prompt(window);
+      clear_messages();
+    }
+
+    message_buffer_screen = nullptr;
   }
 }
 
@@ -252,6 +260,12 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDL_Texture* screen = screens.at(0);
+
+    if (message_buffer_screen != nullptr)
+    {
+      screen = message_buffer_screen;
+    }
+
     string message = to_add_message;
 
     SDLCursorLocation& sdlc = screen_cursors.back();
