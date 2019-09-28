@@ -1452,7 +1452,6 @@ mkdir $(OutDir)logs
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\SDLKeyboardController.cpp" />
-    <ClCompile Include="display\source\CursesProperties.cpp" />
     <ClCompile Include="display\source\PromptProcessor.cpp" />
     <ClCompile Include="display\source\SDL.cpp" />
     <ClCompile Include="display\source\SDLCursorLocation.cpp" />

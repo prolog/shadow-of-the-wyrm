@@ -7511,9 +7511,6 @@
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
-    <ClCompile Include="display\source\CursesProperties.cpp">
-      <Filter>Source Files\display\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>

@@ -1,6 +1,7 @@
 Me:
 - Why doesn't input work right away?
 - Cursor...
+- Arrow keys not breaking automove in sdl
 - Need to handle display-switching in saves
 - There are some paging/etc type issues with messages
 - Linux builds for SDL. Premake, scripts, etc

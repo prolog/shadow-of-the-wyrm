@@ -6,7 +6,6 @@
 #include "Animation.hpp"
 #include "Colours.hpp"
 #include "Conversion.hpp"
-#include "CursesProperties.hpp"
 #include "DisplaySettings.hpp"
 #include "EquipmentTextKeys.hpp"
 #include "Game.hpp"

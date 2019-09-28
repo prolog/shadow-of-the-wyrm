@@ -114,30 +114,19 @@ int SDLKeyboardController::read_char_as_int()
 pair<bool, int> SDLKeyboardController::read_char_as_int_nb()
 {
   pair<bool, int> character = make_pair(false, -1);
+  SDL_Event event;
 
-/*  DisplayPtr display = Game::instance().get_display();
-  std::shared_ptr<CursesDisplay> cdisplay = std::dynamic_pointer_cast<CursesDisplay>(display);
-
-  WINDOW* cur_win = nullptr;
-
-  if (cdisplay && ((cur_win = cdisplay->get_current_screen()) != nullptr))
+  while (SDL_PollEvent(&event))
   {
-    // Turn on nodelay to try to get a character without blocking
-    nodelay(stdscr, true);
-
-    int win_char = wgetch(cur_win);
-    
-    if (win_char != ERR)
+    if (event.type == SDL_KEYDOWN)
     {
       character.first = true;
-      character.second = win_char;
+      character.second = event.key.keysym.sym;
+      
+      break;
     }
-
-    // Once we're done, turn off nodelay so that we're back to
-    // polling for input.
-    nodelay(stdscr, false);
   }
-  */
+
   return character;
 }
 

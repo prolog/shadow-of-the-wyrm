@@ -215,10 +215,12 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::controller_allows_auto_
 
   if (creature != nullptr)
   {
+    // Has the user pressed a key?  
     pair<bool, int> auto_break = creature->get_decision_strategy()->get_controller()->get_char_as_int_nb();
 
     // If the user's pressed a key, stop automovement and throw up a message
-    // stating that movement has been interrupted.
+    // stating that movement has been interrupted.  Ignore the actual keypress
+    // value.
     if (auto_break.first)
     {
       controller_details.first = false;
