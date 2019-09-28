@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 #include <iostream>
 #include <xercesc/util/PlatformUtils.hpp>
 #include <boost/archive/archive_exception.hpp>
@@ -7,7 +6,6 @@
 
 #include "common.hpp"
 #include "global_prototypes.hpp"
-
 #include "CursesKeyboardController.hpp"
 
 #include "Conversion.hpp"

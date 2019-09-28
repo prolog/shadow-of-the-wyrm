@@ -14,6 +14,10 @@ void SDL::set_up()
     ss << "Unable to initialize SDL: " << SDL_GetError();
     Log::instance().error(ss.str());
   }
+  else
+  {
+    SDL_SetHint(SDL_HINT_VIDEO_X11_NET_WM_PING, "0");
+  }
 }
 
 void SDL::tear_down()

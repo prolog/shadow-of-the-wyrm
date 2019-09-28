@@ -13,7 +13,6 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
-#include "CursesProperties.hpp"
 #include "CustomAreaGenerator.hpp"
 #include "CursesConstants.hpp"
 #include "DecisionStrategySelector.hpp"

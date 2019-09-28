@@ -99,6 +99,8 @@ class SDLDisplay : public Display
     bool load_spritesheet_from_file(const std::string& path, SDL_Renderer* renderer);
     void free_font_spritesheet();
 
+    virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) override;
+
     std::unordered_map<int, SDL_Color> colours;
 
     SDL_Window* window = NULL;

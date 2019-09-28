@@ -131,7 +131,7 @@ class Display : public ISerializable
   protected:
     virtual void init_mono_if_necessary();
     virtual void draw_tile_init();
-    virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows);
+    virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) = 0;
     int get_cursor_mode(const CursorSettings cs) const;
 
     Colour mono_colour;

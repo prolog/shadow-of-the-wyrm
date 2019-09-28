@@ -204,9 +204,14 @@ void SDLDisplay::clear_messages()
 
 void SDLDisplay::clear_display()
 {
-  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-  SDL_RenderClear(renderer);
-  SDL_RenderPresent(renderer);
+  if (!screens.empty() && !screen_cursors.empty())
+  {
+    SDL_SetRenderTarget(renderer, NULL);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+    SDL_RenderPresent(renderer);
+    SDL_SetRenderTarget(renderer, screens.back());
+  }
 }
 
 void SDLDisplay::clear_to_bottom(const int row)
@@ -424,6 +429,7 @@ void SDLDisplay::refresh_and_clear_window()
 {
   if (!screens.empty() && !screen_cursors.empty())
   {
+    clear_screen();
     SDL_SetRenderTarget(renderer, NULL);
     SDL_RenderClear(renderer);
     SDL_SetRenderTarget(renderer, screens.back());
@@ -454,6 +460,7 @@ void SDLDisplay::refresh_current_window()
     SDL_Texture* cur_screen = screens.back();
 
     SDL_SetRenderTarget(renderer, NULL);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, cur_screen, NULL, NULL);
     SDL_RenderPresent(renderer);
@@ -738,6 +745,31 @@ void SDLDisplay::free_font_spritesheet()
   {
     SDL_DestroyTexture(font_spritesheet);
     font_spritesheet = nullptr;
+  }
+}
+
+void SDLDisplay::redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows)
+{
+  if (!screens.empty() && !screen_cursors.empty())
+  {
+    if (get_cursor_mode(cs))
+    {
+      Coordinate cursor_coord = current_map.get_cursor_coordinate();
+      SDLRender render(sdld);
+      SDL_Colour cursor_colour = get_colour(Colour::COLOUR_WHITE);
+      int map_row = cursor_coord.first + DisplayConstants::MAP_START_ROW;
+      int map_col = cursor_coord.second + DisplayConstants::MAP_START_COL;
+
+      // Draw the solid white cursor at the bottom of the current glyph
+      SDL_Rect dst_rect;
+      dst_rect.y = (map_row * sdld.get_glyph_height()) + static_cast<int>((sdld.get_glyph_height() * 0.8));
+      dst_rect.x = map_col * sdld.get_glyph_width(); 
+      dst_rect.w = sdld.get_glyph_width();
+      dst_rect.h = static_cast<int>(sdld.get_glyph_height() * 0.2);
+
+      render.fill_area(renderer, screens.back(), &dst_rect, cursor_colour);
+     
+    }
   }
 }
 
