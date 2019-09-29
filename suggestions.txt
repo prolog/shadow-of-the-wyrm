@@ -1,7 +1,7 @@
 Me:
 - Why doesn't input work right away?
 - Need to handle display-switching in saves
-- cursed/blessed equipment not coloured correctly
+- typing in lua commands - not properly going to 2nd line, etc
 - Not Responding...
 - Linux builds for SDL. Premake, scripts, etc
 - Revert the settings around version and metadata before release

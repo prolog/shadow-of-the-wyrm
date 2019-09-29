@@ -554,7 +554,7 @@ void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, 
         // and increment the column.
         for (const char c : cur_text)
         {
-          text_renderer.render_text(screen_cursors.back(), renderer, font_spritesheet, texture, *row, *col, c, sdld.get_fg_colour(), sdld.get_bg_colour());
+          text_renderer.render_text(screen_cursors.back(), renderer, font_spritesheet, texture, *row, *col, c, get_colour(colour), sdld.get_bg_colour());
           *col += 1;
         }
       }
