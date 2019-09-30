@@ -62,7 +62,7 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
 
       if (c == NC_BACKSPACE_KEY || c == NC_ALTERNATIVE_BACKSPACE_KEY)
       {
-        if (prompt_text.length() && (yx.first >= original_yx.first && yx.second >= original_yx.second))
+        if (!prompt_text.empty())
         {
           cursor_location.decr();
           yx = cursor_location.get_yx();

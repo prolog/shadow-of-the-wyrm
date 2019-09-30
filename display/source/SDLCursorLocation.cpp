@@ -15,14 +15,14 @@ void SDLCursorLocation::set_yx(const int new_y, const int new_x)
 
 bool SDLCursorLocation::incr()
 {
-  if ((y == max_y || x == max_x) ||
+  if ((y == max_y && x == max_x) ||
       (y < 0 || x < 0))
   {
     return false;
   }
   else
   {
-    if (x == max_x)
+    if (x == max_x-1)
     {
       x = 0;
       y++;
@@ -47,7 +47,7 @@ bool SDLCursorLocation::decr()
   {
     if (x == 0)
     {
-      x = max_x;
+      x = max_x-1;
       y--;
     }
     else
