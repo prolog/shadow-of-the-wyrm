@@ -4,7 +4,7 @@
 class SDLCursorLocation
 {
   public:
-    SDLCursorLocation(const int max_y, const int max_x);
+    SDLCursorLocation(const int new_total_rows, const int new_total_cols);
 
     bool incr();
     bool decr();
@@ -23,5 +23,5 @@ class SDLCursorLocation
   protected:
     int y;
     int x;
-    const int max_y, max_x;
+    const int total_rows, total_cols;
 };

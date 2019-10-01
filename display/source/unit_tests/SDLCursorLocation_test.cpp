@@ -39,6 +39,23 @@ TEST(SW_Display_SDLCursorLocation, init_and_set)
   EXPECT_EQ(3, curs.get_x());
 }
 
+TEST(SW_Display_SDLCursorLocation, crossing_lines)
+{
+  SDLCursorLocation curs(25, 80);
+  curs.set_y(0);
+  curs.set_x(79);
+
+  curs.incr();
+
+  EXPECT_EQ(1, curs.get_y());
+  EXPECT_EQ(0, curs.get_x());
+
+  curs.decr();
+
+  EXPECT_EQ(0, curs.get_y());
+  EXPECT_EQ(79, curs.get_x());
+}
+
 TEST(SW_Display_SDLCursorLocation, incr)
 {
   SDLCursorLocation curs(5, 5);
@@ -49,7 +66,7 @@ TEST(SW_Display_SDLCursorLocation, incr)
   int y = 0;
   int x = 0;
 
-  while (y != max_y && x != max_x)
+  while (y != max_y - 1 && x != max_x - 1)
   {
     bool incr = curs.incr();
 
@@ -72,17 +89,20 @@ TEST(SW_Display_SDLCursorLocation, decr)
   int max_y = 5;
   int max_x = 5;
 
-  int y = 5;
-  int x = 5;
+  int y = 4;
+  int x = 4;
 
-  while (y != max_y && x != max_x)
+  curs.set_y(y);
+  curs.set_x(x);
+
+  while (y > 0 && x > 0)
   {
     bool decr = curs.decr();
 
     int new_y = curs.get_y();
     int new_x = curs.get_x();
 
-    bool decr_ok = ((new_y == y && new_x == x - 1) || (new_y == y - 1 && new_x == max_x));
+    bool decr_ok = ((new_y == y && new_x == x - 1) || (new_y == y - 1 && new_x == max_x - 1));
 
     EXPECT_TRUE(decr && decr_ok);
 
