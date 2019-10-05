@@ -1,9 +1,9 @@
 Me:
-- Why doesn't input work right away?
 - Need to handle display-switching in saves
-- After loading the game, not refreshed properly (SDL)
-- Unit test for incr/decr, esp around max/min col.
-- Not Responding...
+- After starting or loading the game, not refreshed properly (SDL). Reproduce 
+  by an Isen Dun start with HuAd.
+- Add a "- Loading..." title change
+- Async for load game
 - Linux builds for SDL. Premake, scripts, etc
 - Revert the settings around version and metadata before release
 - Cantrip to set glow flag on items

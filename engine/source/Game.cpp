@@ -1,5 +1,6 @@
 #include <chrono>
 #include <ctime>
+#include <future>
 #include <boost/timer/timer.hpp>
 #include "global_prototypes.hpp"
 #include "CommandProcessor.hpp"
@@ -322,8 +323,20 @@ CreaturePtr Game::get_current_player() const
 // Then, read in the XML areas, and overlay that on top.
 void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
 {
-  WorldGenerator world_generator;
-  MapPtr current_world = world_generator.generate();
+  MapPtr current_world;
+  ControllerPtr creature_controller = creature->get_decision_strategy()->get_controller();
+  promise<MapPtr> mp;
+  future<MapPtr> fp = mp.get_future();
+  std::thread thread(async_worldgen, std::move(mp));
+    
+  while (fp.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
+  {
+    creature_controller->poll_and_ignore_event();
+  }
+
+  thread.join();
+  current_world = fp.get();
+
   WorldPtr world(new World(current_world));
   worlds.push_back(world);
   current_world_ix = (worlds.size() - 1);

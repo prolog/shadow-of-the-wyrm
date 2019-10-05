@@ -48,6 +48,13 @@ void SDLKeyboardController::init_keymap()
              {SDLK_RETURN, '\r'}
   };
 }
+
+void SDLKeyboardController::poll_and_ignore_event()
+{
+  SDL_Event event;
+  SDL_PollEvent(&event);
+}
+
 string SDLKeyboardController::get_line()
 {
 /* CursesPromptProcessor ncpp;

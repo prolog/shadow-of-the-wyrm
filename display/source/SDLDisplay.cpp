@@ -153,7 +153,8 @@ bool SDLDisplay::create_window_and_renderer()
   else
   {
     //Create vsynced renderer for window
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
+
     if (renderer == NULL)
     {
       ss << "Renderer could not be created! SDL Error: %s\n" << SDL_GetError();
@@ -378,7 +379,7 @@ void SDLDisplay::halt_messages()
 
 void SDLDisplay::refresh_display_parameters()
 {
-  // ...
+  // Resizing is currently disallowed.
 }
 
 void SDLDisplay::redraw()

@@ -12,6 +12,12 @@ bool Controller::operator==(const Controller& c) const
   return (internal_class_identifier() == c.internal_class_identifier());
 }
 
+// SDL needs to peek at events periodically or else the window freezes,
+// Not Responding, blah blah blah. Curses is great because curses doesn't gaf.
+void Controller::poll_and_ignore_event()
+{
+}
+
 int Controller::get_char_as_int()
 {
   return translate_kb_input(read_char_as_int());

@@ -172,7 +172,7 @@ void Display::draw(const DisplayMap& current_map, const CursorSettings cs)
   }
 
   redraw_cursor(current_map, cs, map_rows);
-  refresh();
+  refresh_current_window();
 }
 
 void Display::draw_update_map(const DisplayMap& update_map, const CursorSettings cs)
@@ -350,8 +350,7 @@ void Display::draw_tile(const uint y, const uint x, const DisplayTile& tile)
   uint terminal_col = DisplayConstants::MAP_START_COL + x;
 
   draw_coordinate(tile, terminal_row, terminal_col);
-
-  refresh();
+  refresh_current_window();
 }
 
 

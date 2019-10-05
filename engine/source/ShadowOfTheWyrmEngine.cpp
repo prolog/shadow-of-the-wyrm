@@ -1,3 +1,4 @@
+#include <thread>
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "XMLConfigurationReader.hpp"
 #include "Class.hpp"
@@ -129,7 +130,7 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
   }
 
   setup_player_and_world();
-    
+
   if (!state_manager.exit())
   {
     game.go();
@@ -236,8 +237,12 @@ void ShadowOfTheWyrmEngine::setup_player_and_world()
 
   while (!done)
   {
-    WelcomeScreen welcome(display);
-    string game_option = welcome.display();
+    string game_option;
+
+    {
+      WelcomeScreen welcome(display);
+      game_option = welcome.display();
+    }
 
     done = process_game_option(game_option);
   }

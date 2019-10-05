@@ -10,6 +10,11 @@ class Controller : public ISerializable
     virtual ~Controller();
     virtual bool operator==(const Controller& controller) const;
 
+    // Only needs to be implemented for interfaces like SDL where the
+    // event queue has to be delicately handled or else you'll get
+    // "Not Responding" errors.
+    virtual void poll_and_ignore_event();
+
     virtual std::string get_line() = 0;
     virtual int get_char_as_int();
 
