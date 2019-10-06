@@ -35,6 +35,9 @@ class Game : public ISerializable
       return game;
     }
 
+    void set_loading();
+    void set_ready();
+
     void set_settings(const Settings& settings);
     void set_display_settings();
     void set_world_settings();

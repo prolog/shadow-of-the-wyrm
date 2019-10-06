@@ -1,3 +1,4 @@
+#include <future>
 #include <thread>
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "XMLConfigurationReader.hpp"
@@ -603,14 +604,32 @@ bool ShadowOfTheWyrmEngine::process_load_game()
 
   if (!filename.empty())
   {
-    SerializationReturnCode src = Serialization::load(filename);
+    // Do the load asynchronously or SDL/Windows can flip out because of
+    // events not being responded to.
+    promise<SerializationReturnCode> sp;
+    future<SerializationReturnCode> sf = sp.get_future();
+    std::thread thread([&]() {
+      SerializationReturnCode src = Serialization::load(filename);
+      sp.set_value(src);
+    });
+
+    game.set_loading();
+
+    while (sf.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
+    {
+      controller->poll_and_ignore_event();
+    }
+
+    thread.join();
+    SerializationReturnCode src = sf.get();
 
     if (src == SerializationReturnCode::SERIALIZATION_OK)
     {
       game.set_current_loaded_savefile(filename);
-
       result = true;
     }
+
+    game.set_ready();
   }
 
   // JCD TODO: Add support for additional reloadable settings here.

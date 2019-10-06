@@ -72,6 +72,25 @@ Game::~Game()
 {
 }
 
+void Game::set_loading()
+{
+  if (display != nullptr)
+  {
+    if (display != nullptr)
+    {
+      display->set_title(StringTable::get(TextKeys::SW_TITLE_LOADING));
+    }
+  }
+}
+
+void Game::set_ready()
+{
+  if (display != nullptr)
+  {
+    display->set_title(StringTable::get(TextKeys::SW_TITLE));
+  }
+}
+
 // Set the settings, and also update any other settings (like the language
 // file, etc) that are derived from the settings.
 void Game::set_settings(const Settings& new_settings)
@@ -328,11 +347,15 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   promise<MapPtr> mp;
   future<MapPtr> fp = mp.get_future();
   std::thread thread(async_worldgen, std::move(mp));
+
+  set_loading();
     
   while (fp.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
   {
     creature_controller->poll_and_ignore_event();
   }
+
+  set_ready();
 
   thread.join();
   current_world = fp.get();

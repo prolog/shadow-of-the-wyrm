@@ -8,6 +8,7 @@ class TextKeys
   public:
     static const std::string SW_TITLE;
     static const std::string SW_TITLE_POEM;
+    static const std::string SW_TITLE_LOADING;
     static const std::string COPYRIGHT_NOTICE;
     static const std::string SW_TITLE_NEW_GAME;
     static const std::string SW_TITLE_NEW_GAME_RANDOM;

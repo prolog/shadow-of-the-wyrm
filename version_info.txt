@@ -25,6 +25,10 @@ Shadow of the Wyrm v1.1.3 "Losy"
 
 - Miscellaneous post-migration and gcc strictness fixes.
 
+- Initial graphical support using SDL.  Right now, this imitates the curses
+  interface.  Tileset support will come in a future release.  SDL and
+  curses will always live side-by-side and curses will always be supported.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
