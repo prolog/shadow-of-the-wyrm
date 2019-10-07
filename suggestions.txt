@@ -1,6 +1,7 @@
 Me:
 - Need to handle display-switching in saves
-- Add a "- Loading..." to map generaiton too
+- Fairy spirit should increase max HP/AP by 1 when full
+- Spell drawing in SDL looks different (more draws) than curses
 - Linux builds for SDL. Premake, scripts, etc
 - Revert the settings around version and metadata before release
 - Cantrip to set glow flag on items

@@ -35,6 +35,8 @@ class MovementAction : public IActionManager
     // Generate a new map, and move to it - staircases, etc.
     ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const ExitMovementType emt = ExitMovementType::EXIT_MOVEMENT_DESCEND);
     ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt = ExitMovementType::EXIT_MOVEMENT_DESCEND);
+    ActionCostValue do_generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt = ExitMovementType::EXIT_MOVEMENT_DESCEND);
+
     void add_initial_map_messages(CreaturePtr creature, MapPtr map, const TileType tile_type);
 
     // Handle attempting to move on to a tile where there is a creature present.

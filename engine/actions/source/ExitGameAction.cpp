@@ -1,3 +1,5 @@
+#include <future>
+#include <thread>
 #include "ExitGameAction.hpp"
 #include "CharacterAction.hpp"
 #include "EffectFactory.hpp"
@@ -41,7 +43,22 @@ ActionCostValue ExitGameAction::save(CreaturePtr creature, const bool quit_after
     Serialization::delete_savefile(current_savefile);
   }
 
-  current_savefile = Serialization::save(creature);
+  ControllerPtr creature_controller = creature->get_decision_strategy()->get_controller();
+  promise<string> sp;
+  future<string> sf = sp.get_future();
+
+  std::thread thread([&]() {
+    string fname = Serialization::save(creature);
+    sp.set_value(fname);
+  });
+
+  while (sf.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
+  {
+    creature_controller->poll_and_ignore_event();
+  }
+
+  thread.join();
+  current_savefile = sf.get();
   
   if (!current_savefile.empty())
   {

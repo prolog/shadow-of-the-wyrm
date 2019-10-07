@@ -9,3 +9,5 @@ AgingMinotaur, barrabus, Faladrit, pat--, Aleksanderus, Jeremy Long, Sean McKeag
 Changes to allow building on Mac OS courtesy of alphabetr.
 %p
 Localizations take a large amount of time and effort.  The Russian localization was provided by Redfeek.
+%p
+Finally, SDL support wouldn't be possible without the excellent help and advice provided by people in #roguelike-help on the roguelikes Discord server - HexDecimal, Stof, Smartledore, and others.
