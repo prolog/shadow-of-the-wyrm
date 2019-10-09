@@ -8,6 +8,5 @@ DefaultDrawAnimationInstruction::DefaultDrawAnimationInstruction(const Coordinat
 void DefaultDrawAnimationInstruction::execute(Display* const display)
 {
   display->draw_tile(coords.first, coords.second, tile);
-  display->refresh_current_window();
 }
 

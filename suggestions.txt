@@ -1,10 +1,11 @@
 Me:
 - Need to handle display-switching in saves
 - Fairy spirit should increase max HP/AP by 1 when full
-- Spell drawing in SDL looks different (more draws) than curses
+- How are things handled when symbols don't exist in SDL?
 - Linux builds for SDL. Premake, scripts, etc
 - Revert the settings around version and metadata before release
 - Cantrip to set glow flag on items
+- Grond: automove improvements
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
 - Look at race balance: stats, speed, skill points, etc
