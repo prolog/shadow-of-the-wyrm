@@ -542,7 +542,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
     while (af.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
     {
-      creature_controller->poll_and_ignore_event();
+      creature_controller->poll_event();
     }
 
     game.set_ready();

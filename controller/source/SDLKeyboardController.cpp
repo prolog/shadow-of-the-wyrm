@@ -8,9 +8,11 @@
 #include <map>
 #include <sstream>
 #include "CursesConstants.hpp"
+#include "Game.hpp"
 #include "Log.hpp"
 #include "SDLKeyboardController.hpp"
 #include "SDL.h"
+#include "SDL.hpp"
 
 using namespace std;
 
@@ -49,10 +51,20 @@ void SDLKeyboardController::init_keymap()
   };
 }
 
-void SDLKeyboardController::poll_and_ignore_event()
+// Poll and probably ignore.  The one event we actually want to keep track
+// of is SDL_QUIT, which should cause the game to gracefully exit.
+void SDLKeyboardController::poll_event()
 {
   SDL_Event event;
   SDL_PollEvent(&event);
+
+  if (event.type == SDL_QUIT)
+  {
+    SDL sdl;
+    sdl.tear_down();
+
+    exit(0);
+  }
 }
 
 string SDLKeyboardController::get_line()
@@ -75,6 +87,14 @@ string SDLKeyboardController::get_line()
       if (event.type == SDL_TEXTINPUT)
       {
         ss << event.text.text;
+      }
+
+      if (event.type == SDL_QUIT)
+      {
+        SDL sdl;
+        sdl.tear_down();
+
+        exit(0);
       }
     }
   }
@@ -112,6 +132,13 @@ int SDLKeyboardController::read_char_as_int()
         done = true;
       }
     }
+    else if (event.type == SDL_QUIT)
+    {
+      SDL sdl;
+      sdl.tear_down();
+
+      exit(0);
+    }
   }
 
   SDL_StopTextInput();
@@ -131,6 +158,13 @@ pair<bool, int> SDLKeyboardController::read_char_as_int_nb()
       character.second = event.key.keysym.sym;
       
       break;
+    }
+    else if (event.type == SDL_QUIT)
+    {
+      SDL sdl;
+      sdl.tear_down();
+
+      exit(0);
     }
   }
 

@@ -3,6 +3,7 @@ Me:
 - Fairy spirit should increase max HP/AP by 1 when full
 - How are things handled when symbols don't exist in SDL?
 - Linux builds for SDL. Premake, scripts, etc
+- SDL: Go to middle of Carcassia map.  I, Y, exit.  Much of map disappears.
 - Revert the settings around version and metadata before release
 - Cantrip to set glow flag on items
 - Grond: automove improvements

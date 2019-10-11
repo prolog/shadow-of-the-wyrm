@@ -14,7 +14,7 @@ bool Controller::operator==(const Controller& c) const
 
 // SDL needs to peek at events periodically or else the window freezes,
 // Not Responding, blah blah blah. Curses is great because curses doesn't gaf.
-void Controller::poll_and_ignore_event()
+void Controller::poll_event()
 {
 }
 

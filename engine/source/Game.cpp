@@ -352,7 +352,7 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
     
   while (fp.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
   {
-    creature_controller->poll_and_ignore_event();
+    creature_controller->poll_event();
   }
 
   set_ready();

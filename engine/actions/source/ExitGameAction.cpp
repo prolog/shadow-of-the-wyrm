@@ -54,7 +54,7 @@ ActionCostValue ExitGameAction::save(CreaturePtr creature, const bool quit_after
 
   while (sf.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
   {
-    creature_controller->poll_and_ignore_event();
+    creature_controller->poll_event();
   }
 
   thread.join();

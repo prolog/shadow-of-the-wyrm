@@ -617,7 +617,7 @@ bool ShadowOfTheWyrmEngine::process_load_game()
 
     while (sf.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
     {
-      controller->poll_and_ignore_event();
+      controller->poll_event();
     }
 
     thread.join();
