@@ -116,6 +116,10 @@ bool SDLDisplay::read_dimensions_from_settings()
   int glyphs_per_line = String::to_int(tile_glyphs_per_line);
   sdld.set_glyphs_per_line(glyphs_per_line);
 
+  string num_glyphs_s = get_property(Setting::DISPLAY_NUM_GLYPHS);
+  int num_glyphs = String::to_int(num_glyphs_s);
+  sdld.set_num_glyphs(num_glyphs);
+
   dim_val = (tile_spl.size() >= 2 && !tile_glyphs_per_line.empty() && glyphs_per_line > 0);
   return dim_val;
 }

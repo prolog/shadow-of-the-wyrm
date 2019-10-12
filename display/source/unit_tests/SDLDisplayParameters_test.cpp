@@ -8,7 +8,7 @@ TEST(SW_Display_SDLDisplayParameters, serialization_id)
 
 TEST(SW_Display_SDLDisplayParameters, saveload)
 {
-  SDLDisplayParameters sdld(80, 25, 640, 400, 8, 16, 10);
+  SDLDisplayParameters sdld(80, 25, 640, 400, 8, 16, 10, 100);
   SDLDisplayParameters sdld2;
 
   ostringstream ss;
@@ -24,6 +24,7 @@ TEST(SW_Display_SDLDisplayParameters, saveload)
   EXPECT_EQ(8, sdld2.get_glyph_width());
   EXPECT_EQ(16, sdld2.get_glyph_height());
   EXPECT_EQ(10, sdld2.get_glyphs_per_line());
+  EXPECT_EQ(100, sdld2.get_num_glyphs());
 
   EXPECT_TRUE(sdld == sdld2);
 }

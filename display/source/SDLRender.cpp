@@ -46,12 +46,19 @@ void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* re
 
 void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* text_spritesheet, SDL_Texture* texture, const int row, const int col, const char c, const SDL_Color& fg, const SDL_Color& bg)
 {
+  char display_c = c;
+
   SDL_Rect font_clip;
   int glyph_height = display_params.get_glyph_height();
   int glyph_width = display_params.get_glyph_width();
 
   // Look up the letter
-  std::pair<int, int> ss_coords = get_glyph_location_from_spritesheet(c);
+  if (c < 0 || c > display_params.get_num_glyphs())
+  {
+    display_c = '?';
+  }
+
+  std::pair<int, int> ss_coords = get_glyph_location_from_spritesheet(display_c);
 
   // Set the proper coords
   font_clip.y = ss_coords.first * glyph_height;

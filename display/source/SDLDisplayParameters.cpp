@@ -5,14 +5,28 @@
 using namespace std;
 
 SDLDisplayParameters::SDLDisplayParameters()
-: screen_cols(0), screen_rows(0), screen_width(0), screen_height(0), glyph_width(0), glyph_height(0), glyphs_per_line(0)
+: screen_cols(0)
+, screen_rows(0)
+, screen_width(0)
+, screen_height(0)
+, glyph_width(0)
+, glyph_height(0)
+, glyphs_per_line(0)
+, num_glyphs(0)
 {
   fg_colour = { 255,255,255,255 }; // white
   bg_colour = { 0,0,0,255 }; // black
 }
 
-SDLDisplayParameters::SDLDisplayParameters(const int new_screen_cols, const int new_screen_rows, const int new_screen_width, const int new_screen_height, const int new_glyph_width, const int new_glyph_height, const int new_glyphs_per_line)
-: screen_cols(new_screen_cols), screen_rows(new_screen_rows), screen_width(new_screen_width), screen_height(new_screen_height), glyph_width(new_glyph_width), glyph_height(new_glyph_height), glyphs_per_line(new_glyphs_per_line)
+SDLDisplayParameters::SDLDisplayParameters(const int new_screen_cols, const int new_screen_rows, const int new_screen_width, const int new_screen_height, const int new_glyph_width, const int new_glyph_height, const int new_glyphs_per_line, const int new_num_glyphs)
+: screen_cols(new_screen_cols)
+, screen_rows(new_screen_rows)
+, screen_width(new_screen_width)
+, screen_height(new_screen_height)
+, glyph_width(new_glyph_width)
+, glyph_height(new_glyph_height)
+, glyphs_per_line(new_glyphs_per_line)
+, num_glyphs(new_num_glyphs)
 {
   fg_colour = { 255,255,255,255 }; // white
   bg_colour = { 0,0,0,255 }; // black
@@ -31,6 +45,7 @@ bool SDLDisplayParameters::operator==(const SDLDisplayParameters& d)
   eq = eq && (glyph_width == d.glyph_width);
   eq = eq && (glyph_height == d.glyph_height);
   eq = eq && (glyphs_per_line == d.glyphs_per_line);
+  eq = eq && (num_glyphs == d.num_glyphs);
   eq = eq && (sdl.sdl_color_eq(fg_colour, d.fg_colour));
   eq = eq && (sdl.sdl_color_eq(bg_colour, d.bg_colour));
 
@@ -107,6 +122,16 @@ int SDLDisplayParameters::get_glyphs_per_line() const
   return glyphs_per_line;
 }
 
+void SDLDisplayParameters::set_num_glyphs(const int new_num_glyphs)
+{
+  num_glyphs = new_num_glyphs;
+}
+
+int SDLDisplayParameters::get_num_glyphs() const
+{
+  return num_glyphs;
+}
+
 void SDLDisplayParameters::set_fg_colour(const SDL_Color& new_fg_colour)
 {
   fg_colour = new_fg_colour;
@@ -136,6 +161,7 @@ bool SDLDisplayParameters::serialize(std::ostream& stream) const
   Serialize::write_int(stream, glyph_width);
   Serialize::write_int(stream, glyph_height);
   Serialize::write_int(stream, glyphs_per_line);
+  Serialize::write_int(stream, num_glyphs);
 
   // Write fg colour
   Serialize::write_sdl_colour(stream, fg_colour);
@@ -155,6 +181,7 @@ bool SDLDisplayParameters::deserialize(std::istream& stream)
   Serialize::read_int(stream, glyph_width);
   Serialize::read_int(stream, glyph_height);
   Serialize::read_int(stream, glyphs_per_line);
+  Serialize::read_int(stream, num_glyphs);
 
   // Read fg colour
   Serialize::read_sdl_colour(stream, fg_colour);

@@ -12,7 +12,7 @@ class SDLDisplayParameters : public ISerializable
 {
   public:
     SDLDisplayParameters();
-    SDLDisplayParameters(const int new_screen_cols, const int new_screen_rows, const int new_screen_width, const int new_screen_height, const int new_glyph_width, const int new_glyph_height, const int new_glyphs_per_line);
+    SDLDisplayParameters(const int new_screen_cols, const int new_screen_rows, const int new_screen_width, const int new_screen_height, const int new_glyph_width, const int new_glyph_height, const int new_glyphs_per_line, const int new_num_glyphs);
     bool operator==(const SDLDisplayParameters& d);
 
     void set_screen_cols(const int new_screen_cols);
@@ -36,6 +36,9 @@ class SDLDisplayParameters : public ISerializable
     void set_glyphs_per_line(const int new_glyphs_per_line);
     int get_glyphs_per_line() const;
 
+    void set_num_glyphs(const int new_num_glyphs);
+    int get_num_glyphs() const;
+
     void set_fg_colour(const SDL_Color& new_fg_colour);
     SDL_Color get_fg_colour() const;
 
@@ -53,6 +56,7 @@ protected:
     int glyph_width; // pixels again
     int glyph_height;
     int glyphs_per_line; // per line in the .png texture
+    int num_glyphs; // total number of glyphs in the .png texture
 
     SDL_Color fg_colour;
     SDL_Color bg_colour;

@@ -235,12 +235,14 @@ void set_display_settings(DisplayPtr display, const Settings& settings)
 {
   if (display != nullptr)
   {
-    string display_font = settings.get_setting(Setting::DISPLAY_FONT);
-    string display_tile_size = settings.get_setting(Setting::DISPLAY_TILE_SIZE);
-    string display_tile_glyphs_per_line = settings.get_setting(Setting::DISPLAY_TILE_GLYPHS_PER_LINE);
+    vector<string> setting_names = { Setting::DISPLAY_FONT, 
+                                     Setting::DISPLAY_TILE_SIZE, 
+                                     Setting::DISPLAY_TILE_GLYPHS_PER_LINE, 
+                                     Setting::DISPLAY_NUM_GLYPHS };
 
-    display->set_property(Setting::DISPLAY_FONT, display_font);
-    display->set_property(Setting::DISPLAY_TILE_SIZE, display_tile_size);
-    display->set_property(Setting::DISPLAY_TILE_GLYPHS_PER_LINE, display_tile_glyphs_per_line);
+    for (const string& s : setting_names)
+    {
+      display->set_property(s, settings.get_setting(s));
+    }
   }
 }
