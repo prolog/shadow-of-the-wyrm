@@ -608,8 +608,20 @@ bool ShadowOfTheWyrmEngine::process_load_game()
     // events not being responded to.
     promise<SerializationReturnCode> sp;
     future<SerializationReturnCode> sf = sp.get_future();
+    DisplayPtr cur_display = display;
+    ControllerPtr cur_controller = controller;
+
     std::thread thread([&]() {
       SerializationReturnCode src = Serialization::load(filename);
+      
+      game.set_display(cur_display);
+      CreaturePtr player = game.get_current_player();
+        
+      if (player != nullptr)
+      {
+        player->get_decision_strategy()->set_controller(cur_controller);
+      } 
+
       sp.set_value(src);
     });
 

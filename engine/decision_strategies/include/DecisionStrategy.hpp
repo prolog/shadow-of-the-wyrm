@@ -40,6 +40,7 @@ class DecisionStrategy : public ISerializable
     virtual void set_fov_map(std::shared_ptr<Map> new_fov_map);
     std::shared_ptr<Map> get_fov_map();
 
+    virtual void set_controller(ControllerPtr new_controller);
     virtual ControllerPtr get_controller();
 
     virtual bool can_move() const;

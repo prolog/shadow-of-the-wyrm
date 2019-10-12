@@ -1234,11 +1234,12 @@ bool Game::deserialize(istream& stream)
   ClassIdentifier display_ci;
   Serialize::read_class_id(stream, display_ci);
 
+  // Read and ignore the display.
   DisplayFactory di;
-  di.create_display_details(display_ci).first;
+  pair<DisplayPtr, ControllerPtr> dc_pair = di.create_display_details(display_ci);
 
-  if (!display) return false;
-  if (!display->deserialize(stream)) return false;
+  if (!dc_pair.first) return false;
+  if (!dc_pair.first->deserialize(stream)) return false;
 
   map_registry.deserialize(stream);
 

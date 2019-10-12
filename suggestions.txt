@@ -1,5 +1,4 @@
 Me:
-- Need to handle display-switching in saves
 - Fairy spirit should increase max HP/AP by 1 when full
 - How are things handled when symbols don't exist in SDL?
 - Linux builds for SDL. Premake, scripts, etc
