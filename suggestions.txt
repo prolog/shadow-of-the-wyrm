@@ -1,7 +1,9 @@
 Me:
+- 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
 - Linux builds for SDL. Premake, scripts, etc
 - SDL: Go to middle of Carcassia map.  I, Y, exit.  Much of map disappears.
+  Curses fine.
 - Revert the settings around version and metadata before release
 - Cantrip to set glow flag on items
 - Grond: automove improvements

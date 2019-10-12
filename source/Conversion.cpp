@@ -101,13 +101,16 @@ vector<int> String::create_int_vector_from_csv_string(const string& csv_str)
 
   for (const string& s : str_vec)
   {
-    try
+    if (!s.empty())
     {
-      ints.push_back(std::stoi(s));
-    }
-    catch (...)
-    {
-      continue;
+      try
+      {
+        ints.push_back(std::stoi(s));
+      }
+      catch (...)
+      {
+        continue;
+      }
     }
   }
 
@@ -123,14 +126,17 @@ vector<Colour> String::create_colour_vector_from_csv_string(const string& csv_st
 
   for (const string& s : str_vec)
   {
-    try
+    if (!s.empty())
     {
-      colours.push_back(static_cast<Colour>(std::stoi(s)));
-    }
-    catch (...)
-    {
-      // Might not be a number - that's fine.  Ignore and try the next.
-      continue;
+      try
+      {
+        colours.push_back(static_cast<Colour>(std::stoi(s)));
+      }
+      catch (...)
+      {
+        // Might not be a number - that's fine.  Ignore and try the next.
+        continue;
+      }
     }
   }
 

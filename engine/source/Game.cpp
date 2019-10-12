@@ -821,8 +821,10 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 
         if (current_creature->get_is_player())
         {
-          // Do a full redraw if we've changed map, or if we've just reloaded the game.
-          update_display(current_creature, current_map, fov_map, reloaded_game);
+          // After everything's done we need to update the display, but
+          // shouldn't need to do a full redraw, since a full redraw
+          // was done earlier in this function.
+          update_display(current_creature, current_map, fov_map, false);
         }
 
         // Poor NPCs...they're discriminated against even at the code level!
