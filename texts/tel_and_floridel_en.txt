@@ -2426,7 +2426,7 @@ a mastery of all that would be in your way."
 %p
 Tel stroked his chin.  "You're right.  The exiles form %b
 a threat both as a group and when apart - %b
-we ride them down, they'll scatter and reform %b
+if we hunt for them, they'll scatter and reform %b
 as if a flock of blackbirds.  Let them hurt %b
 for space and opportunity.  I'll send %b
 the riders that you ask, and I'll send more %b
@@ -2961,4 +2961,13 @@ no soldier would go hungry, genuine %b
 compassion from the quiet man who served %b
 both king and common folk far more than they deserved.
 %p
-
+The companies moved out, each by the plan %b
+set out by masters in their comfortable room, %b
+where lives were wood and gold, and would depend %b
+on the correctness of their placement, on assumed %b
+alliances with those whose fealty died %b
+the day they left the hall, and made their way %b
+to rocky meadows, where the far-off sky %b
+looked down indifferently.  The whole crusade %b
+now hinged on help from those who'd chosen not to stay.
+%p
