@@ -26,7 +26,7 @@ void BarrelManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr f
 // on the barrel's tile.
 bool BarrelManipulator::handle(TilePtr tile, CreaturePtr creature)
 {
-  shared_ptr<Barrel> barrel = dynamic_pointer_cast<Barrel>(feature);
+  std::shared_ptr<Barrel> barrel = dynamic_pointer_cast<Barrel>(feature);
 
   if (barrel != nullptr)
   {

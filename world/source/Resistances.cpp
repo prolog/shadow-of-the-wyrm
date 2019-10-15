@@ -183,7 +183,7 @@ Resistances& Resistances::operator=(const Resistances& r)
     {
       if (r_pair.second != nullptr)
       {
-        shared_ptr<Resistance> r = r_pair.second;
+        std::shared_ptr<Resistance> r = r_pair.second;
         resistances[r_pair.first] = ResistancePtr(r->clone());
       }
     }

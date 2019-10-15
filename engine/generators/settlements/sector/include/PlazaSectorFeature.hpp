@@ -1,3 +1,4 @@
+#pragma once
 #include "SectorFeature.hpp"
 
 class PlazaSectorFeature : public SectorFeature

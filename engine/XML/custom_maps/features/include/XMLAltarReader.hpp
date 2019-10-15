@@ -1,3 +1,4 @@
+#pragma once
 #include "IXMLFeatureReader.hpp"
 
 // Create an Altar from the given Altar node.  See CustomMap.xsd for

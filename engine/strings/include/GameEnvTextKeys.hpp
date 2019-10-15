@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 // Used for messages about the game that are not actually related to the game

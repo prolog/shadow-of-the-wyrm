@@ -12,7 +12,7 @@ std::unordered_map<string, string> StringTable::string_table;
 
 void StringTable::load(const string& filename)
 {
-  ifstream string_file(filename.c_str());
+  std::ifstream string_file(filename.c_str());
   string current_line;
   string key;
   string value;

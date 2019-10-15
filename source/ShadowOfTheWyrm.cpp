@@ -1,5 +1,12 @@
 #include <stdio.h>
 #include <iostream>
+
+// This needs to be defined first because it includes msxml.h, which
+// doesn't respect namespaces properly. Including xerces afterwards
+// (which is namespace-aware) allows everything to work as expected.
+#include "UnhandledExceptions.hpp"
+
+#undef DOMDocument
 #include <xercesc/util/PlatformUtils.hpp>
 #include <boost/archive/archive_exception.hpp>
 #include <boost/filesystem.hpp>
@@ -22,7 +29,6 @@
 #include "Setting.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
-#include "UnhandledExceptions.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLFileReader.hpp"
 
@@ -204,7 +210,7 @@ bool check_write_permissions()
   bool can_write = true;
 
   string fname = "test";
-  ofstream test_file;
+  std::ofstream test_file;
   test_file.open(fname, ios::out | ios::binary);
 
   if (!test_file.good())

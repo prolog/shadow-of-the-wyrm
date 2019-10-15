@@ -17,7 +17,7 @@ const string Log::LOG_PREFIX = "sotw-";
 Log::Log()
 {
   string filename = create_filename();
-  while (filesystem::exists(filename) && (counter != numeric_limits<int>::max()))
+  while (filesystem::exists(filename) && (counter != std::numeric_limits<int>::max()))
   {
     filename = create_filename();
   }

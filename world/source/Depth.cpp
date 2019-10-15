@@ -90,7 +90,7 @@ Depth Depth::lower() const
 
   if (has_maximum() == false || (current < maximum))
   {
-    if (current < numeric_limits<int>::max())
+    if (current < std::numeric_limits<int>::max())
     {
       d.set_current(current + std::abs(increment));
     }
@@ -106,7 +106,7 @@ Depth Depth::higher() const
 
   if (has_maximum() == false || (current > minimum))
   {
-    if (current > numeric_limits<int>::min())
+    if (current > std::numeric_limits<int>::min())
     {
       d.set_current(current - std::abs(increment));
     }

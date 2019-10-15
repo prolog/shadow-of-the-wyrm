@@ -1,4 +1,5 @@
 // Prototypes for global functions
+#pragma once
 #include <string>
 #include "Colours.hpp"
 

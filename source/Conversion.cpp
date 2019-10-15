@@ -398,7 +398,7 @@ string File::to_string(const string& filename)
 {
   try
   {
-    ifstream t(filename);
+    std::ifstream t(filename);
     string str((istreambuf_iterator<char>(t)), istreambuf_iterator<char>());
 
     return str;
