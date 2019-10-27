@@ -13,6 +13,7 @@ TextKeys::~TextKeys()
 const string TextKeys::SW_TITLE    = "SW_TITLE";
 const string TextKeys::SW_TITLE_POEM = "SW_TITLE_POEM";
 const string TextKeys::SW_TITLE_LOADING = "SW_TITLE_LOADING";
+const string TextKeys::SW_TITLE_SAVING = "SW_TITLE_SAVING";
 const string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
 const string TextKeys::SW_TITLE_NEW_GAME = "SW_TITLE_NEW_GAME";
 const string TextKeys::SW_TITLE_NEW_GAME_RANDOM = "SW_TITLE_NEW_GAME_RANDOM";

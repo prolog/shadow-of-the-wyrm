@@ -35,6 +35,7 @@ class Game : public ISerializable
       return game;
     }
 
+    void set_title_text(const std::string& new_title_text);
     void set_loading();
     void set_ready();
 

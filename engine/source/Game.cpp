@@ -72,15 +72,16 @@ Game::~Game()
 {
 }
 
-void Game::set_loading()
+void Game::set_title_text(const string& new_title_text)
 {
   if (display != nullptr)
   {
-    if (display != nullptr)
-    {
-      display->set_title(StringTable::get(TextKeys::SW_TITLE_LOADING));
-    }
+    display->set_title(StringTable::get(new_title_text));
   }
+}
+void Game::set_loading()
+{
+  set_title_text(TextKeys::SW_TITLE_LOADING);
 }
 
 void Game::set_ready()
