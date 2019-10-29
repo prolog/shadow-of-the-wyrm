@@ -229,6 +229,8 @@ mkdir $(OutDir)scripts
 xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
 mkdir $(OutDir)texts
 xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts
+mkdir $(OutDir)assets
+xcopy /y /d /s /i $(ProjectDir)assets $(OutDir)assets
 mkdir $(OutDir)logs
 </Command>
     </PostBuildEvent>
@@ -280,6 +282,8 @@ mkdir $(OutDir)scripts
 xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
 mkdir $(OutDir)texts
 xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts
+mkdir $(OutDir)assets
+xcopy /y /d /s /i $(ProjectDir)assets $(OutDir)assets
 mkdir $(OutDir)logs
 </Command>
     </PostBuildEvent>
