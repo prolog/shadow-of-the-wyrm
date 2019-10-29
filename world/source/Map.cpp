@@ -12,7 +12,6 @@
 #include "TileFactory.hpp"
 
 using namespace std;
-using namespace boost;
 
 // JCD FIXME: Right now, this copies a pretty minimal subset of stuff.
 // This will likely need to be updated to include new fields at some

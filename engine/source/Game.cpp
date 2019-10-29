@@ -59,7 +59,7 @@
 using namespace std;
 
 Game::Game()
-: keep_playing(true), reload_game_loop(false), current_world_ix(0)
+: requires_redraw(false), keep_playing(true), reload_game_loop(false), current_world_ix(0)
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -90,6 +90,16 @@ void Game::set_ready()
   {
     display->set_title(StringTable::get(TextKeys::SW_TITLE));
   }
+}
+
+void Game::set_requires_redraw(const bool new_requires_redraw)
+{
+  requires_redraw = new_requires_redraw;
+}
+
+bool Game::get_requires_redraw() const
+{
+  return requires_redraw;
 }
 
 // Set the settings, and also update any other settings (like the language
@@ -441,7 +451,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
     Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords.first);
     loaded_map_details.update_display_coord(display_coord);
-    bool redraw_needed = loaded_map_details.requires_full_map_redraw() || reloaded_game;
+    bool redraw_needed = loaded_map_details.requires_full_map_redraw() || requires_redraw|| reloaded_game;
 
     CurrentCreatureAbilities cca;
     CreaturePtr player = game.get_current_player();
@@ -458,6 +468,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     if (redraw_needed)
     {
       display->draw(display_map, cs);
+      requires_redraw = false;
     }
     else
     {
@@ -1039,6 +1050,7 @@ bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
 
+  // Ignore requires_redraw
   // Ignore keep_playing
   Serialize::write_bool(stream, reload_game_loop);
 
@@ -1228,6 +1240,7 @@ bool Game::deserialize(istream& stream)
 {
   Log::instance().trace("Game::deserialize - start");
 
+  // Ignore requires_redraw
   // Ignore keep_playing
   Serialize::read_bool(stream, reload_game_loop);
   // Ignore game_instance - it's a singleton, and the write/read code is already handling it

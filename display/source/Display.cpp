@@ -173,6 +173,7 @@ void Display::draw(const DisplayMap& current_map, const CursorSettings cs)
 
   redraw_cursor(current_map, cs, map_rows);
   refresh_current_window();
+  Game::instance().set_requires_redraw(false);
 }
 
 void Display::draw_update_map(const DisplayMap& update_map, const CursorSettings cs)

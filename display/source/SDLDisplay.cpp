@@ -441,6 +441,7 @@ void SDLDisplay::clear_screen()
     screen_cursors.pop_back();
 
     SDL_DestroyTexture(current_screen);
+    Game::instance().set_requires_redraw(true);
   }
 }
 
@@ -787,7 +788,6 @@ void SDLDisplay::redraw_cursor(const DisplayMap& current_map, const CursorSettin
       dst_rect.h = static_cast<int>(sdld.get_glyph_height() * 0.2);
 
       render.fill_area(renderer, screens.back(), &dst_rect, cursor_colour);
-     
     }
   }
 }

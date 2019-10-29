@@ -6,7 +6,6 @@
 #include "Conversion.hpp"
 
 using namespace std;
-using namespace boost;
 
 std::unordered_map<string, string> StringTable::string_table;
 
@@ -16,7 +15,7 @@ void StringTable::load(const string& filename)
   string current_line;
   string key;
   string value;
-  char_separator<char> separator("=");
+  boost::char_separator<char> separator("=");
 
   if (string_file.is_open())
   {

@@ -26,7 +26,6 @@
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
-using namespace boost;
 
 const int MapUtils::PLAYER_RESTRICTED_ZONE_RADIUS = 8;
 
@@ -1143,10 +1142,10 @@ Coordinate MapUtils::convert_map_key_to_coordinate(const string& map_key)
 {
   Coordinate coords(0,0);
   
-  char_separator<char> sep("-");
-  tokenizer<char_separator<char>> tokens(map_key, sep);
+  boost::char_separator<char> sep("-");
+  boost::tokenizer<boost::char_separator<char>> tokens(map_key, sep);
 
-  tokenizer<char_separator<char>>:: iterator t_it = tokens.begin();
+  boost::tokenizer<boost::char_separator<char>>:: iterator t_it = tokens.begin();
   
   if (t_it != tokens.end())
   {
