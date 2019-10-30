@@ -1,12 +1,12 @@
 Me:
-- Display's not working in release mode - looks like an xcopy is needed for
-  the assets folder.
+- "Drop how many" doesn't work in SDL
+- ".esting." (dots don't show up in SDL)
+- google screen clear not working for SDL
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
 - Linux builds for SDL. Premake, scripts, etc
 - Check fix
 - Need to do profiling before this release!
-- Revert the settings around version and metadata before release
 - Cantrip to set glow flag on items
 - Grond: automove improvements
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
