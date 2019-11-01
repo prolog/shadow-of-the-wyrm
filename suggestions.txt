@@ -1,6 +1,5 @@
 Me:
-- "Drop how many" doesn't work in SDL
-- ".esting." (dots don't show up in SDL)
+- "Resting." then Not in the wilderness!
 - google screen clear not working for SDL
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full

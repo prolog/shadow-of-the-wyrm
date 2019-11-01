@@ -352,6 +352,20 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
       }
 
       render.render_text(sdlc, renderer, font_spritesheet, screen, cur_y, cur_x, current_token, sdld.get_fg_colour(), sdld.get_bg_colour());
+
+      // After rendering text, update the message buffer position.
+      msg_buffer_last_y = sdlc.get_y();
+      msg_buffer_last_x = sdlc.get_x();
+    }
+
+    // Once we're done, make sure the message buffer coordinates are properly
+    // updated, and clear messages if necessary.
+    msg_buffer_last_y = sdlc.get_y();
+    msg_buffer_last_x = sdlc.get_x();
+
+    if (clear_prior_to_adding_message)
+    {
+      clear_messages();
     }
 
     disable_colour(colour);
