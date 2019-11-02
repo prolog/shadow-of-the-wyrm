@@ -36,6 +36,9 @@ Shadow of the Wyrm v1.1.5 "Losy"
   - Various typos in the codex and guidebook, as well as formatting in
     the in-game texts (Grond, Twelve).
 
+  - Resting on the world map gave a "Resting." message before telling you
+    that you can't do that.
+
 Shadow of the Wyrm v1.1.2 "Tarrega"
 - Version declared July 16, 2019. Version finalized August 11, 2019.
 

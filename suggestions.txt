@@ -1,5 +1,4 @@
 Me:
-- "Resting." then Not in the wilderness!
 - google screen clear not working for SDL
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
@@ -257,4 +256,5 @@ Grond:
 - Adjacent creatures attack on load
 - Differentiate scribing and wandcraft - why use scribing?
 - Add a message when catching an item on a water square
+- "Double flicker" on torches/etc due to multiple draws.
 - Scything on ammo?
