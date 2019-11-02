@@ -20,6 +20,9 @@ Shadow of the Wyrm v1.1.5 "Losy"
 - New option (confirmation_require_capitalization) to force capitalized
   confirmation, for vi key players (Twelve).
 
+- Items acquired by fishing now go directly to the player's inventory, with
+  a message indicating what was caught.
+
 - Migrated from hg to git and moved the project's repository from
   Bitbucket to GitHub.
 

@@ -29,6 +29,7 @@ class ActionTextKeys
     static std::string get_seed_planted_message(const bool blind, const std::string& seed_usage_desc);
     static std::string get_random_bait_message(const FishingType fishing);
     static std::string get_fishing_outcome_message(const FishingType fishing, const FishingOutcomeType fot);
+    static std::string get_item_pack_message(const std::string& creature_desc_sid, const bool is_player, const std::string& item_desc);
     static std::string get_already_stolen_message(const std::string& desc);
     static std::string get_no_pockets_message(const std::string& desc);
     static std::string get_steal_successful_message(const std::string& creature_desc, const std::string& item_desc, const bool is_player);
@@ -228,8 +229,8 @@ class ActionTextKeys
     static const std::string ACTION_SPELLCASTING_CANCELLED_MONSTER;
     static const std::string ACTION_BESTIARY_WHICH_CREATURE;
     static const std::string ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE;
-	static const std::string ACTION_ITEM_CODEX_COMMAND_FOR_TILE_SELECTION;
-	static const std::string ACTION_ITEM_CODEX_WHICH_ITEM;
+    static const std::string ACTION_ITEM_CODEX_COMMAND_FOR_TILE_SELECTION;
+    static const std::string ACTION_ITEM_CODEX_WHICH_ITEM;
     static const std::string ACTION_ITEM_CODEX_PREVIOUS_SEARCH_MESSAGE;
     static const std::string ACTION_POUR_PLAYER;
     static const std::string ACTION_POUR_MONSTER;
@@ -263,4 +264,6 @@ class ActionTextKeys
     static const std::string ACTION_UNIMPRESSED_MONSTER;
     static const std::string ACTION_HIDE_FAILURE_PLAYER;
     static const std::string ACTION_HIDE_FAILURE_MONSTER;
+    static const std::string ACTION_ITEM_PACK_PLAYER;
+    static const std::string ACTION_ITEM_PACK_NPC;
 };
