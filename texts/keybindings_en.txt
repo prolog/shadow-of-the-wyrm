@@ -12,8 +12,9 @@ e - Eat                       C - Chat                a - Apply feature %b
 N - Inscribe                  q - Quests              z - Cast spell %b
 B - Bestiary                  v - Evoke wand          K - Kick %b
 O - Sacrifice                 / - Skin corpse         P - Show piety %b
-X - Experience                S - Save and quit       Q - Quit %b
-M - Message buffer            W - Melee info          R - Ranged info %b
-V - Version                   T - Game date/time      ! - Autopickup %b
-@ - Character info            # - Character dump      F1 - Resistances %b
-F2 - Conducts                 F3 - Skills             F12 - Reload strings
+c - Codex                     X - Experience          S - Save and quit %b
+Q - Quit                      M - Message buffer      W - Melee info %b
+R - Ranged info               V - Version             T - Game date/time %b
+! - Autopickup                @ - Character info      # - Character dump %b
+F1 - Resistances              F2 - Conducts           F3 - Skills %b
+F11 - Script console          F12 - Reload strings

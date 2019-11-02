@@ -23,6 +23,9 @@ Shadow of the Wyrm v1.1.5 "Losy"
 - Items acquired by fishing now go directly to the player's inventory, with
   a message indicating what was caught.
 
+- Due to some SDL/curses differences, scrolls now show their read message
+  at the end.
+
 - Migrated from hg to git and moved the project's repository from
   Bitbucket to GitHub.
 
@@ -37,10 +40,12 @@ Shadow of the Wyrm v1.1.5 "Losy"
 - Bug fixes:
 
   - Various typos in the codex and guidebook, as well as formatting in
-    the in-game texts (Grond, Twelve).
+    the in-game texts (Grond, Twelve, Troubler).
 
   - Resting on the world map gave a "Resting." message before telling you
     that you can't do that.
+
+  - Senators' speech text wasn't triggering (Troubler).
 
 Shadow of the Wyrm v1.1.2 "Tarrega"
 - Version declared July 16, 2019. Version finalized August 11, 2019.

@@ -1,4 +1,5 @@
 Me:
+- Troubler's guidebook charisma/hostility issue.
 - google screen clear not working for SDL
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
@@ -236,6 +237,14 @@ hapro:
 Rob Ayres
 - Aging attacks and potions of youth
 
+Troubler: 
+- Codex should tell what each item is made of.
+- Guidebook says charisma affects creatures being spawned hostile.
+- Doors in dungeon occasionally get spawned in a big, long line.
+- When remapping bestiary to KEY_F6, doesn't work on main screen, but works
+  on 'x', with 'B' not working.
+- Small lumps of gold don't sell?
+
 Grond:
 - Can train up fae health by waiting forever
 - Torment-type spell (1/2 HP)
@@ -245,15 +254,14 @@ Grond:
 - cross spells affects rock tiles around you, shouldn't
 - how is skinning stacks of corpses handled?  seems to be one skin on
   success or zero on failure, regardless of stack size
+- Switching with townsfolk (in churches?) leads to weird behaviour
+- Adjacent creatures attack on load
+- Differentiate scribing and wandcraft - why use scribing?
+- "Double flicker" on torches/etc due to multiple draws.
+- Scything on ammo?
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
 - Do something interesting with flowers!
 - Climb up Telari: more NPCs
 
-Grond:
-- Switching with townsfolk (in churches?) leads to weird behaviour
-- Adjacent creatures attack on load
-- Differentiate scribing and wandcraft - why use scribing?
-- "Double flicker" on torches/etc due to multiple draws.
-- Scything on ammo?
