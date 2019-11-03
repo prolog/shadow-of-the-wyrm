@@ -31,6 +31,8 @@ Shadow of the Wyrm v1.1.5 "Losy"
 
 - Miscellaneous post-migration and gcc strictness fixes.
 
+- Made some significant per-turn performance improvements.
+
 - Initial graphical support using SDL.  Right now, this imitates the curses
   interface.  Tileset support will come in a future release.  SDL and
   curses will always live side-by-side and curses will always be supported.

@@ -288,8 +288,7 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
   Game& game = Game::instance();
   Colour override_colour = oc;
 
-  // Make a copy of the prototype tile off the game.
-  vector<DisplayTile> tiles_info = game.get_tile_display_info_ref();
+  const vector<DisplayTile>& tiles_info = game.get_tile_display_info_ref();
   DisplayTile tile_info = tiles_info.at(static_cast<int>(tile->get_tile_type()));
   display_tile = tile_info;
 

@@ -1126,16 +1126,13 @@ bool MapUtils::is_tile_contained_in_an_existing_component(const Coordinate& coor
 
 string MapUtils::convert_coordinate_to_map_key(const Coordinate& c)
 {
-  ostringstream ss;
-  ss << c.first << "-" << c.second;
-  return ss.str();
+  return convert_coordinate_to_map_key(c.first, c.second);
 }
 
 string MapUtils::convert_coordinate_to_map_key(const int row, const int col)
 {
-  ostringstream ss;
-  ss << row << "-" << col;
-  return ss.str();
+  string s = std::to_string(row) + "-" + std::to_string(col);
+  return s; 
 }
 
 Coordinate MapUtils::convert_map_key_to_coordinate(const string& map_key)

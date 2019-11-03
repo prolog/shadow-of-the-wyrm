@@ -1,10 +1,8 @@
 Me:
-- Troubler's guidebook charisma/hostility issue.
 - google screen clear not working for SDL
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
 - Linux builds for SDL. Premake, scripts, etc
-- Check fix
 - Need to do profiling before this release!
 - Cantrip to set glow flag on items
 - Grond: automove improvements

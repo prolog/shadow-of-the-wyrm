@@ -1,5 +1,5 @@
 ShadowOfTheWyrm.sdf
-ShadowOfTheWyrm.exe
+ShadowOfTheWyrm.exe*
 ShadowOfTheWyrm.exp
 ShadowOfTheWyrm.ilk
 ShadowOfTheWyrm.lib
@@ -30,5 +30,6 @@ savage.exe
 savage.pdb
 xerces-c_3_1.dll
 *.sws
+*.swp
 *.bak
 *.dmp
