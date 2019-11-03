@@ -49,6 +49,9 @@ Shadow of the Wyrm v1.1.5 "Losy"
 
   - Senators' speech text wasn't triggering (Troubler).
 
+  - Skinning a stack of corpses was removing the entire stack, rather than
+    reducing the quantity appropriately (Grond).
+
 Shadow of the Wyrm v1.1.2 "Tarrega"
 - Version declared July 16, 2019. Version finalized August 11, 2019.
 
