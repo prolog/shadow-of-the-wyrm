@@ -5,7 +5,7 @@
 class WornLocationScreenFactory
 {
   public:
-    WornLocationSelectionScreen create_skin_screen(DisplayPtr display);
-    WornLocationSelectionScreen create_weaving_screen(DisplayPtr display);
+    WornLocationSelectionScreenPtr create_skin_screen(DisplayPtr display);
+    WornLocationSelectionScreenPtr create_weaving_screen(DisplayPtr display);
 };
 
