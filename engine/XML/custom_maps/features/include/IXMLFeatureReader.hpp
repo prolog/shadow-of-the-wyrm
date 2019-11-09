@@ -13,4 +13,4 @@ class IXMLFeatureReader
     virtual FeaturePtr create(const XMLNode& node) const = 0;
 };
 
-using IXMLFeatureReaderPtr = std::shared_ptr<IXMLFeatureReader>;
+using IXMLFeatureReaderPtr = std::unique_ptr<IXMLFeatureReader>;

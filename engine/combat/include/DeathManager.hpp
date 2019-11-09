@@ -21,4 +21,4 @@ class DeathManager
     static const int PCT_CHANCE_CORPSE;
 };
 
-using DeathManagerPtr = std::shared_ptr<DeathManager>;
+using DeathManagerPtr = std::unique_ptr<DeathManager>;

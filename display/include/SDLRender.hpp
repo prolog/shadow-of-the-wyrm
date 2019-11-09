@@ -32,4 +32,3 @@ class SDLRender
     SDLDisplayParameters display_params;
 };
 
-using SDLRenderPtr = std::shared_ptr<SDLRender>;

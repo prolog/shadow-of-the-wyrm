@@ -12,7 +12,7 @@ bool SDLPromptProcessor::operator==(const SDLPromptProcessor& cpp) const
   return true;
 }
 
-string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRenderPtr render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, const MenuWrapper& menu_wrapper, PromptPtr prompt)
+string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, const MenuWrapper& menu_wrapper, PromptPtr prompt)
 {
   string prompt_entry;
 
@@ -45,7 +45,7 @@ string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params
 }
 
 // Get a prompt from the user
-string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRenderPtr render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, bool allow_nonalphanumeric)
+string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, bool allow_nonalphanumeric)
 {
   string prompt_text;
   SDLKeyboardController kc;
@@ -67,7 +67,7 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
           cursor_location.decr();
           yx = cursor_location.get_yx();
           prompt_text.erase(prompt_text.end() - 1);
-          render->render_text(cursor_location, sdl_renderer, spritesheet, screen, yx.first, yx.second, ' ', display_params.get_fg_colour(), display_params.get_bg_colour());
+          render.render_text(cursor_location, sdl_renderer, spritesheet, screen, yx.first, yx.second, ' ', display_params.get_fg_colour(), display_params.get_bg_colour());
           cursor_location.decr();
 
           update = true;
@@ -78,7 +78,7 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
         if ((isalpha(c) || isdigit(c) || (c == ' ')) || allow_nonalphanumeric)
         {
           prompt_text.push_back(c);
-          render->render_text(cursor_location, sdl_renderer, spritesheet, screen, yx.first, yx.second, c, display_params.get_fg_colour(), display_params.get_bg_colour());
+          render.render_text(cursor_location, sdl_renderer, spritesheet, screen, yx.first, yx.second, c, display_params.get_fg_colour(), display_params.get_bg_colour());
           update = true;
         }
       }
@@ -114,13 +114,13 @@ int SDLPromptProcessor::get_prompt(SDL_Window* window)
   return prompt_val;
 }
 
-void SDLPromptProcessor::show_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRenderPtr render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
+void SDLPromptProcessor::show_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
-  if (render != nullptr && sdl_renderer != nullptr && spritesheet != nullptr && screen != nullptr && prompt != nullptr)
+  if (sdl_renderer != nullptr && spritesheet != nullptr && screen != nullptr && prompt != nullptr)
   {
     string prompt_text = prompt->get_text();
 
     Coordinate c = get_prompt_coords(prompt->get_location(), prompt_text, row, col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
-    render->render_text(cursor_location, sdl_renderer, spritesheet, screen, c.first, c.second, prompt_text, display_params.get_fg_colour(), display_params.get_bg_colour());
+    render.render_text(cursor_location, sdl_renderer, spritesheet, screen, c.first, c.second, prompt_text, display_params.get_fg_colour(), display_params.get_bg_colour());
   }
 }

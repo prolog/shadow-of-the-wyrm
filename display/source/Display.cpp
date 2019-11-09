@@ -426,7 +426,7 @@ void Display::draw_tile_init()
 
 AnimationFactoryPtr Display::create_animation_factory() const
 {
-  AnimationFactoryPtr curses_animation_factory = std::make_shared<DefaultAnimationFactory>();
+  AnimationFactoryPtr curses_animation_factory = std::make_unique<DefaultAnimationFactory>();
   return curses_animation_factory;
 }
 
@@ -434,9 +434,9 @@ void Display::draw_animation(const Animation& animation)
 {
   vector<AnimationInstructionPtr> animation_instructions = animation.get_animation_instructions();
 
-  for (AnimationInstructionPtr& instruct : animation_instructions)
+  for (AnimationInstructionPtr instruct : animation_instructions)
   {
-    if (instruct)
+    if (instruct != nullptr)
     {
       instruct->execute(this);
     }

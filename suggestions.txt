@@ -1,4 +1,6 @@
 Me:
+- Grond: when you exit to the overworld map, the desc of the current tile is
+  displayed for only a split second.
 - google screen clear not working for SDL
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
@@ -8,6 +10,9 @@ Me:
 - Grond: automove improvements
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
+- EACH VERSION: clean up the usage of some shared_ptrs.  These should be
+  unique_ptrs, generally, and method calls should use raw pointers or
+  const&.
 - Look at race balance: stats, speed, skill points, etc
 - Shield punch!
 - Fruit trees should generate fruit annually.

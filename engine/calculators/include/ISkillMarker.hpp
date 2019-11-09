@@ -12,4 +12,4 @@ class ISkillMarker
     virtual std::vector<SkillType> get_marked_skills(CreaturePtr creature) const = 0;
 };
 
-using ISkillMarkerPtr = std::shared_ptr<ISkillMarker>;
+using ISkillMarkerPtr = std::unique_ptr<ISkillMarker>;

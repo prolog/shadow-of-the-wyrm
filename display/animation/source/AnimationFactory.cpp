@@ -5,7 +5,7 @@ AnimationInstructionPtr AnimationFactory::create_pause_instruction() const
 {
   AnimationInstructionPtr pause;
 
-  pause = std::make_shared<PauseAnimationInstruction>();
+  pause = std::make_unique<PauseAnimationInstruction>();
 
   return pause;
 }

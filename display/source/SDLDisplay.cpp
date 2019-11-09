@@ -380,7 +380,7 @@ string SDLDisplay::add_message_with_prompt(const string& message, const Colour c
 
   if (!screens.empty() && !screen_cursors.empty())
   {
-    SDLRenderPtr render = std::make_shared<SDLRender>(sdld);
+    SDLRender render(sdld);
 
     add_message(message, colour, clear_prior);
     prompt_result = prompt_processor.get_user_string(sdld, screen_cursors.back(), render, renderer, font_spritesheet, screens.back(), true /* allow arbitrary non-alphanumeric characters */);
@@ -532,7 +532,7 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
     SDL_Texture* current_screen = screens.back();
     SDLCursorLocation& cursor_loc = screen_cursors.back();
 
-    SDLRenderPtr text_renderer = std::make_shared<SDLRender>(sdld);
+    SDLRender text_renderer(sdld);
     PromptPtr prompt = screen.get_prompt();
     prompt_processor.show_prompt(sdld, cursor_loc, text_renderer, renderer, font_spritesheet, current_screen, prompt, row, col, get_max_rows(), get_max_cols());
     refresh_current_window();
