@@ -126,6 +126,3 @@ class SDLDisplay : public Display
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
-
-
-using SDLDisplayPtr = std::shared_ptr<SDLDisplay>;

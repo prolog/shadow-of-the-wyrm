@@ -3,8 +3,6 @@
 #include "DepthBasedDangerLevelCalculator.hpp"
 #include "WorldMapDangerLevelCalculator.hpp"
 
-using std::make_shared;
-
 DangerLevelCalculatorFactory::DangerLevelCalculatorFactory()
 {
 }
@@ -19,21 +17,21 @@ IDangerLevelCalculatorPtr DangerLevelCalculatorFactory::create_danger_level_calc
 
   if (depth_based)
   {
-    danger_level_calculator = make_shared<DepthBasedDangerLevelCalculator>(emt);
+    danger_level_calculator = std::make_unique<DepthBasedDangerLevelCalculator>(emt);
   }
   else
   {
     switch (map_type)
     {
       case MapType::MAP_TYPE_WORLD:
-        danger_level_calculator = make_shared<WorldMapDangerLevelCalculator>();
+        danger_level_calculator = std::make_unique<WorldMapDangerLevelCalculator>();
         break;
       case MapType::MAP_TYPE_OVERWORLD:
-        danger_level_calculator = make_shared<BaseDangerLevelCalculator>();
+        danger_level_calculator = std::make_unique<BaseDangerLevelCalculator>();
         break;
       case MapType::MAP_TYPE_UNDERWORLD:
       default:
-        danger_level_calculator = make_shared<DepthBasedDangerLevelCalculator>(emt);
+        danger_level_calculator = std::make_unique<DepthBasedDangerLevelCalculator>(emt);
         break;
     }
   }
