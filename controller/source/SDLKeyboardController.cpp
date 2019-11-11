@@ -11,7 +11,13 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "SDLKeyboardController.hpp"
+
+#ifdef _MSC_VER
 #include "SDL.h"
+#else
+#include "SDL2/SDL.h"
+#endif
+
 #include "SDL.hpp"
 
 using namespace std;
