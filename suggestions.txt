@@ -5,7 +5,6 @@ Me:
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
 - Linux builds for SDL. Premake, scripts, etc
-- Need to do profiling before this release!
 - Cantrip to set glow flag on items
 - Grond: automove improvements
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
@@ -13,6 +12,7 @@ Me:
 - EACH VERSION: clean up the usage of some shared_ptrs.  These should be
   unique_ptrs, generally, and method calls should use raw pointers or
   const&.
+- Do additional profiling after shared_ptr cleanup
 - Look at race balance: stats, speed, skill points, etc
 - Shield punch!
 - Fruit trees should generate fruit annually.

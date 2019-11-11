@@ -1,6 +1,5 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
-#include "SDL_image.h"
 #include "Conversion.hpp"
 #include "SDLKeyboardController.hpp"
 #include "SDLDisplay.hpp"
@@ -13,9 +12,13 @@
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 
-using namespace std;
+#ifdef _MSC_VER
+#include "SDL_image.h"
+#else
+#include "SDL2/SDL_image.h"
+#endif
 
-// JCD TODO: x out of window
+using namespace std;
 
 const int SDLDisplay::SCREEN_ROWS = 25;
 const int SDLDisplay::SCREEN_COLS = 80;
