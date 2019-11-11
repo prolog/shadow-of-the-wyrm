@@ -277,7 +277,6 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
     string message = to_add_message;
 
     SDLCursorLocation& sdlc = screen_cursors.back();
-    pair<int, int> orig_curs_loc = sdlc.get_yx();
 
     uint cur_y = 0;
     uint cur_x = 0;
@@ -615,7 +614,6 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
     for (unsigned int i = 0; i < num_options; i++)
     {
       Option current_option = options.at(i);
-      Colour option_colour = current_option.get_colour();
       TextComponentPtr option_text = current_option.get_description();
       string option_desc;
 

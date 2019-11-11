@@ -59,7 +59,7 @@
 using namespace std;
 
 Game::Game()
-: requires_redraw(false), keep_playing(true), reload_game_loop(false), current_world_ix(0)
+: keep_playing(true), reload_game_loop(false), check_scores(true), requires_redraw(false), current_world_ix(0)
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
