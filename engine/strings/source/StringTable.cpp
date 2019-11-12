@@ -94,7 +94,7 @@ bool StringTable::is_external_file(const string& value)
   bool is_file = false;
 
   string val_trim = value;
-  trim(val_trim);
+  boost::trim(val_trim);
   size_t val_trim_size = val_trim.size();
 
   if (val_trim_size >= 4)
