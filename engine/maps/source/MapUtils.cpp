@@ -1620,16 +1620,12 @@ bool MapUtils::should_link_entry_point(MapType map_type)
 //       If so, add it.
 // - Are there any items on the tile?
 //       If so, add the appropriate message.
+// Hold off on immediately sending these, as we may be changing maps and don't
+// want them erased too early.
 void MapUtils::add_tile_related_messages(CreaturePtr creature, TilePtr tile)
 {
-  bool tile_message_added = add_message_about_tile_if_necessary(creature, tile);
-  bool item_message_added = add_message_about_items_on_tile_if_necessary(creature, tile);
-
-  if (tile_message_added || item_message_added)
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-    manager.send();
-  }
+  add_message_about_tile_if_necessary(creature, tile);
+  add_message_about_items_on_tile_if_necessary(creature, tile);
 }
 
 // Add a message about the tile if necessary.

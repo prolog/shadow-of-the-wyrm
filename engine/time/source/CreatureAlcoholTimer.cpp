@@ -73,16 +73,19 @@ void CreatureAlcoholTimer::metabolize_alcohol(CreaturePtr creature)
 void CreatureAlcoholTimer::add_inebriation_message_if_necessary(CreaturePtr creature, bool drunk_before, bool drunk_after)
 {
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  bool message_added = false;
 
   if (drunk_before && !drunk_after)
   {
     if (creature->get_is_player())
     {
       manager.add_new_message(StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SOBER));
+      message_added = true;
     }
     else
     {
       manager.add_new_message(StatusAilmentTextKeys::get_npc_sober_message(creature));
+      message_added = true;
     }
   }
   else if (!drunk_before && drunk_after)
@@ -90,14 +93,19 @@ void CreatureAlcoholTimer::add_inebriation_message_if_necessary(CreaturePtr crea
     if (creature->get_is_player())
     {
       manager.add_new_message(StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DRUNK));
+      message_added = true;
     }
     else
     {
       manager.add_new_message(StatusAilmentTextKeys::get_npc_drunk_message(creature));
+      message_added = true;
     }
   }
 
-  manager.send();
+  if (message_added)
+  {
+    manager.send();
+  }
 }
 
 // Check to see if a creature has died due to alcohol poisoning

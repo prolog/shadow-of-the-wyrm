@@ -1,6 +1,4 @@
 Me:
-- Grond: when you exit to the overworld map, the desc of the current tile is
-  displayed for only a split second.
 - google screen clear not working for SDL
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full

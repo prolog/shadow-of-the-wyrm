@@ -52,6 +52,9 @@ Shadow of the Wyrm v1.1.5 "Losy"
   - Skinning a stack of corpses was removing the entire stack, rather than
     reducing the quantity appropriately (Grond).
 
+  - Tile-specific messages weren't being shown properly when e.g. moving from
+    a particular map back to the world map (Grond).
+
 Shadow of the Wyrm v1.1.2 "Tarrega"
 - Version declared July 16, 2019. Version finalized August 11, 2019.
 
