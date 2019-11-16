@@ -10,5 +10,5 @@ class IMapTypeQuery
     virtual ~IMapTypeQuery() {};
 };
 
-using IMapTypeQueryPtr = std::shared_ptr<IMapTypeQuery>;
+using IMapTypeQueryPtr = std::unique_ptr<IMapTypeQuery>;
 

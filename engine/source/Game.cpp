@@ -489,7 +489,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
 void Game::go()
 {
-  game_command_factory = std::make_shared<CommandFactory>();
+  game_command_factory = std::make_unique<CommandFactory>();
   game_kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   set_check_scores(true);
@@ -814,7 +814,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         // not actually be the creature's strategy, but rather another one,
         // such as automatic movement, etc.
         DecisionStrategyPtr command_strategy = DecisionStrategySelector::select_decision_strategy(current_creature);
-        CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
+        CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory.get(), game_kb_command_map, view_map /* fov_map */);
         
         if (log.debug_enabled())
         {

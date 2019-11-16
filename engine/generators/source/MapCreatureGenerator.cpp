@@ -71,7 +71,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   Game& game = Game::instance();
 
   int max_creatures = CreationUtils::random_maximum_creatures(dim.get_y(), dim.get_x());
-  ActionManager am = game.get_action_manager_ref();
+  ActionManager& am = game.get_action_manager_ref();
   uint num_creatures_to_place = get_num_creatures(map, max_creatures);
   
   uint current_creatures_placed = 0;

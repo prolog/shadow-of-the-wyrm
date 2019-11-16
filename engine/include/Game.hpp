@@ -167,7 +167,7 @@ class Game : public ISerializable
     friend class SW_Engine_Game; // unit testing
 
     Game();
-    Game(const Game& game);
+    Game(const Game& game) = delete;
     bool operator=(const Game& game);
    ~Game();
 

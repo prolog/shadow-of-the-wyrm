@@ -105,9 +105,9 @@ bool DisarmTrapsSkillProcessor::disarm_trap(const std::pair<int, TileDirectionMa
         manager.send();
       }
 
-      CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
+      CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
       KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
-      CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, 0);
+      CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
 
       if (base_command)
       {

@@ -30,7 +30,7 @@ ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFi
   {
     if (creature)
     {
-      CommandFactoryPtr command_factory    = std::make_shared<InventoryCommandFactory>();
+      CommandFactoryPtr command_factory    = std::make_unique<InventoryCommandFactory>();
       KeyboardCommandMapPtr kb_command_map = std::make_shared<InventoryKeyboardCommandMap>();
     
       while (manage_inv)

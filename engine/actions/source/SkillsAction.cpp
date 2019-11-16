@@ -25,7 +25,7 @@ ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSele
   int cur_page = 1;
 
   DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
-  CommandFactoryPtr command_factory = std::make_shared<SkillsCommandFactory>();
+  CommandFactoryPtr command_factory = std::make_unique<SkillsCommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<SkillsKeyboardCommandMap>();
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
@@ -55,7 +55,7 @@ ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSele
         cur_page = ss.get_current_page_number();
       }
 
-      CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, &input);
+      CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, &input);
       action_cost_value = scp->process(creature, skills_command, map, st);
     }
   }

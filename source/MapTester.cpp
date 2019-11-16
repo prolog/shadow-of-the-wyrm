@@ -939,7 +939,7 @@ void test_creature_generation()
 
   Game& game = Game::instance();
   CreatureGenerationManager cgm;
-  ActionManager am = game.get_action_manager_ref();
+  ActionManager& am = game.get_action_manager_ref();
 
   while (min_level > 0)
   {

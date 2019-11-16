@@ -37,7 +37,7 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
 
   Game& game = Game::instance();
 
-  ActionManager am = game.get_action_manager_ref();
+  ActionManager& am = game.get_action_manager_ref();
   uint num_items_to_place = RNG::range(1, CreationUtils::random_maximum_items(dim.get_y(), dim.get_x()));
   uint current_items_placed = 0;
   uint unsuccessful_attempts = 0;
@@ -161,7 +161,7 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
       ItemGenerationMap generation_map = igm.generate_item_generation_map({1, danger_level, rarity, stocked_types, ItemValues::DEFAULT_MIN_SHOP_VALUE});
       ItemEnchantmentCalculator iec;
       Game& game = Game::instance();
-      ActionManager am = game.get_action_manager_ref();
+      ActionManager& am = game.get_action_manager_ref();
 
       for (int row = start.first; row <= end.first; row++)
       {

@@ -11,6 +11,7 @@ enum struct TileReset
 class TileSelectionAction : public IActionManager, ISerializable
 {
   public:
+    TileSelectionAction(const TileSelectionAction& tsa) = delete; 
     bool operator==(const TileSelectionAction& tsa) const;
 
     void set_selection_key(const std::string& new_selection_key);
