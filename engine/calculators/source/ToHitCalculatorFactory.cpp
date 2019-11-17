@@ -33,11 +33,11 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator(CreaturePtr 
       break;
     }
     case AttackType::ATTACK_TYPE_RANGED:
-      calculator = std::make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
+      calculator = std::make_unique<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
       break;
     case AttackType::ATTACK_TYPE_MAGICAL: // fall through intentionally
     default:
-      calculator = std::make_shared<MagicToHitCalculator>();
+      calculator = std::make_unique<MagicToHitCalculator>();
       break;
   }
   
@@ -66,22 +66,22 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator_given_weapon
     
     if (weight > CombatConstants::HEAVY_WEAPON_THRESHOLD_IN_LBS)
     {
-      calculator = std::make_shared<HeavyWeaponToHitCalculator>(attack_type);
+      calculator = std::make_unique<HeavyWeaponToHitCalculator>(attack_type);
     }
     else
     {
-      calculator = std::make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
+      calculator = std::make_unique<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
     }
   }
   else
   {
     if (creature_size >= CreatureSize::CREATURE_SIZE_HUGE)
     {
-      calculator = std::make_shared<HeavyWeaponToHitCalculator>();
+      calculator = std::make_unique<HeavyWeaponToHitCalculator>();
     }
     else
     {
-      calculator = std::make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
+      calculator = std::make_unique<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
     }
   }
   

@@ -21,4 +21,4 @@ class ToHitCalculator
     static const int NWP_SKILL_BONUS_DIVISOR;
 };
 
-using ToHitCalculatorPtr = std::shared_ptr<ToHitCalculator>;
+using ToHitCalculatorPtr = std::unique_ptr<ToHitCalculator>;

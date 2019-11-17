@@ -26,6 +26,8 @@ Shadow of the Wyrm v1.1.5 "Losy"
 - Due to some SDL/curses differences, scrolls now show their read message
   at the end.
 
+- The item codex now includes material (Troubler).
+
 - Migrated from hg to git and moved the project's repository from
   Bitbucket to GitHub.
 
