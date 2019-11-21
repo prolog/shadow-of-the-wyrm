@@ -3071,3 +3071,13 @@ approaching as a canter.  Then three clicks: %b
 the lid sprang up and Floridel was shown %b
 a ladder to a darkness that would eat its own.
 %p
+She closed her eyes, and took a drawn-out breath %b
+before opening them again, and stepping in %b
+toward the ladder's steps, which broke the depths %b
+of a lightless sea that roiled despite the wind %b
+that wasn't there.  The rungs were bitterly cold, %b
+but the passage down was narrow, so she paused %b
+periodically, and let the bedrock hold %b
+her as she warmed her hands.  Against the wall, %b
+she rubbed her hands and prayed she wouldn't slip and fall.
+%p
