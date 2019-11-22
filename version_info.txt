@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.1.5 "Losy"
-- Version declared August 11, 2019.
+- Version declared August 11, 2019.  Version finalized November 22, 2019.
 
 - Vigarion, the undersea guardian, now generates with an amulet of the
   sea (Grond).
