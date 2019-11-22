@@ -14,7 +14,7 @@ LONG sotw_fault_handler(struct _EXCEPTION_POINTERS *  e)
   write_minidump(e);
 
   cout << "Shadow of the Wyrm crashed unexpectedly (sorry!)." << endl << endl;
-  cout << "Please email the .dmp file created to jcd748@mail.usask.ca and mention if you're using the Win7 or XP build." << endl << endl;
+  cout << "Please email the .dmp file created to jcd748@mail.usask.ca." << endl << endl;
   return EXCEPTION_EXECUTE_HANDLER;
 }
 

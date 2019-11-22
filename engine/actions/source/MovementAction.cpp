@@ -1,3 +1,5 @@
+#include <future>
+#include <thread>
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
@@ -521,9 +523,43 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
   return action_cost_value;
 }
 
-// General version that can handle tile type/subtype from any source - the tile
-// itself, a map exit, etc.
 ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt)
+{
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
+
+  if (creature && tile && map)
+  {
+    Game& game = Game::instance();
+    ControllerPtr creature_controller = creature->get_decision_strategy()->get_controller();
+    promise<ActionCostValue> ap;
+    future<ActionCostValue> af = ap.get_future();
+    std::thread thread([&]() {
+      ActionCostValue acv = do_generate_and_move_to_new_map(creature, map, map_exit, tile, tile_type, tile_subtype, map_exit_properties, emt);
+      ap.set_value(acv);
+    });
+
+    game.set_loading();
+
+    while (af.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
+    {
+      creature_controller->poll_event();
+    }
+
+    game.set_ready();
+
+    thread.join();
+    action_cost_value = af.get();
+  }
+
+  return action_cost_value;
+}
+
+
+// General version that can handle tile type/subtype from any source - the tile
+// itself, a map exit, etc. This function should really never be called
+// directly - it should be called asynchronously from 
+// do_generate_and_move_to_new_map.
+ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt)
 {
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 

@@ -1,3 +1,4 @@
+#pragma once
 #include "Search.hpp"
 
 class UniformCostSearchStrategy : public Search

@@ -19,7 +19,7 @@ using namespace std;
 TileSelectionAction::TileSelectionAction()
 : show_tile_description(true), show_feature_description(true), show_creature_description(true), show_item_descriptions(true)
 {
-  command_factory = std::make_shared<TileSelectionCommandFactory>();
+  command_factory = std::make_unique<TileSelectionCommandFactory>();
   kb_command_map  = std::make_shared<TileSelectionKeyboardCommandMap>();
 }
 
@@ -120,7 +120,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
       
       if (decision_strategy)
       {
-        CommandPtr tile_selection_command = decision_strategy->get_decision(true, creature->get_id(), command_factory, kb_command_map);
+        CommandPtr tile_selection_command = decision_strategy->get_decision(true, creature->get_id(), command_factory.get(), kb_command_map);
         command_result = TileSelectionCommandProcessor::process(creature, tile_selection_command, this);
         
         continue_select_tiles = command_result.first;
@@ -336,7 +336,10 @@ bool TileSelectionAction::deserialize(std::istream& stream)
 {
   ClassIdentifier cf_ci;
   Serialize::read_class_id(stream, cf_ci);
-  command_factory = CommandFactoryFactory::create_command_factory(cf_ci);
+  
+  CommandFactoryFactory cff;
+  command_factory = cff.create_command_factory(cf_ci);
+
   if (!command_factory) return false;
   if (!command_factory->deserialize(stream)) return false;
 

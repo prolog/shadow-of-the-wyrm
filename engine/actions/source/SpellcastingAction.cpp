@@ -345,7 +345,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   // Make the creature select a direction.
-  CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
+  CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   // If the creature is the player, inform the player that a direction is needed.
@@ -362,7 +362,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   }
 
   // Try to get a direction.  This might fail.
-  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, 0);
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
 
   if (base_command)
   {
@@ -430,14 +430,14 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
   string spell_id = sss.get_selected_spell(screen_selection);
 
   DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
-  CommandFactoryPtr command_factory    = std::make_shared<MagicCommandFactory>();
+  CommandFactoryPtr command_factory    = std::make_unique<MagicCommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<MagicKeyboardCommandMap>();
 
   if (decision_strategy)
   {
     // Get the actual command, signalling to the decision function that
     // input has been provided (don't try to get the input twice).
-    CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, &input);
+    CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, &input);
 
     action_cost_value = MagicCommandProcessor::process(creature, magic_command);
 

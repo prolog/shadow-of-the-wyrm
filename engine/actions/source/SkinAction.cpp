@@ -103,8 +103,17 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
       add_mangled_corpse_skin_message(creature);
     }
 
-    // Remove the corpse from the ground.
-    tile->get_items()->remove(item->get_id());
+    // Remove the corpse from the ground, or reduce the quantity appropriately.
+    uint item_quantity = item->get_quantity();
+
+    if (item_quantity > 1)
+    {
+      item->set_quantity(item_quantity - 1);
+    }
+    else
+    {
+      tile->get_items()->remove(item->get_id());
+    }
 
     acv = get_action_cost_value(creature);
   }

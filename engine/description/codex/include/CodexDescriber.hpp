@@ -17,4 +17,4 @@ class CodexDescriber
     ItemPtr item;
 };
 
-using CodexDescriberPtr = std::shared_ptr<CodexDescriber>;
+using CodexDescriberPtr = std::unique_ptr<CodexDescriber>;

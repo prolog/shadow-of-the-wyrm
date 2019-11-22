@@ -13,5 +13,5 @@ class ICryptLayoutStrategy
     virtual void create_layout(MapPtr map, const std::tuple<Coordinate, Coordinate, Coordinate>& stair_loc_and_room_boundary) = 0;
 };
 
-using ICryptLayoutStrategyPtr = std::shared_ptr<ICryptLayoutStrategy>;
+using ICryptLayoutStrategyPtr = std::unique_ptr<ICryptLayoutStrategy>;
 

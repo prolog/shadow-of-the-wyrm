@@ -141,19 +141,11 @@ int CursesPromptProcessor::get_prompt(WINDOW* window/*, MENU* options_menu*/)
 
 void CursesPromptProcessor::show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
-  string empty_string;
-  int prompt_row = row;
-  int prompt_col = col;
-  string prompt_text = prompt->get_text();
-  PromptLocation location = prompt->get_location();
-
-  if (location == PromptLocation::PROMPT_LOCATION_LOWER_RIGHT)
+  if (prompt != nullptr)
   {
-    int prompt_text_length = prompt_text.size();
-    prompt_col = TERMINAL_MAX_COLS - prompt_text_length - 1;
-    prompt_row = TERMINAL_MAX_ROWS - 1;
-  }
+    Coordinate c = get_prompt_coords(prompt->get_location(), prompt->get_text(), row, col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
-  mvwprintw(window, prompt_row, prompt_col, prompt_text.c_str());
-  wrefresh(window);
+    mvwprintw(window, c.first, c.second, prompt->get_text().c_str());
+    wrefresh(window);
+  }
 }

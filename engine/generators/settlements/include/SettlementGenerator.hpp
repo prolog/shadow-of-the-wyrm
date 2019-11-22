@@ -19,5 +19,3 @@ class SettlementGenerator : public BaseSettlementGenerator
 
      MapPtr generate_square(MapPtr map, const int start_row, const int start_col, const int square_size);
 };
-
-using SettlementGeneratorPtr = std::shared_ptr<SettlementGenerator>;

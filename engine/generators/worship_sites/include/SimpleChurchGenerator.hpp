@@ -1,3 +1,4 @@
+#pragma once
 #include "ChurchGenerator.hpp"
 
 // A simple stone church - like the ones that can be seen in the English

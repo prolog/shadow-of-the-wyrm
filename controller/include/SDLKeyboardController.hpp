@@ -1,18 +1,27 @@
 #pragma once
+#include <unordered_map>
 #include "Controller.hpp"
 
 class SDLKeyboardController : public Controller
 {
   public:
-    std::string get_line() override;
-    int get_char_as_int() override;
+    SDLKeyboardController();
 
-    // Non-blocking version.  Returns true when input is present, false
-    // otherwise.  When pair.first is false, pair.second will always be
-    // -1.
-    virtual std::pair<bool, int> get_char_as_int_nb() override;
+    void poll_event() override;
+    std::string get_line() override;
 
     virtual Controller* clone() override;
+
+  protected:
+    void init_keymap();
+
+    int read_char_as_int() override;
+    virtual std::pair<bool, int> read_char_as_int_nb() override;
+    
+    int translate_kb_input(const int input) override;
+
+    static bool SDL_initialized;
+    static std::unordered_map<int, int> keymap;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

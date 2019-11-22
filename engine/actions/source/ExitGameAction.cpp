@@ -1,3 +1,5 @@
+#include <future>
+#include <thread>
 #include "ExitGameAction.hpp"
 #include "CharacterAction.hpp"
 #include "EffectFactory.hpp"
@@ -24,6 +26,7 @@ ActionCostValue ExitGameAction::save(CreaturePtr creature, const bool quit_after
 {
   Game& game = Game::instance();
   game.set_check_scores(false);
+  game.set_title_text(TextKeys::SW_TITLE_SAVING);
 
   // We might be playing in single user mode.  If we are, and if
   // we're using another user's savefile, we need to delete
@@ -41,8 +44,25 @@ ActionCostValue ExitGameAction::save(CreaturePtr creature, const bool quit_after
     Serialization::delete_savefile(current_savefile);
   }
 
-  current_savefile = Serialization::save(creature);
+  ControllerPtr creature_controller = creature->get_decision_strategy()->get_controller();
+  promise<string> sp;
+  future<string> sf = sp.get_future();
+
+  std::thread thread([&]() {
+    string fname = Serialization::save(creature);
+    sp.set_value(fname);
+  });
+
+  while (sf.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
+  {
+    creature_controller->poll_event();
+  }
+
+  thread.join();
+  current_savefile = sf.get();
   
+  game.set_ready();
+
   if (!current_savefile.empty())
   {
     game.set_current_loaded_savefile(current_savefile);

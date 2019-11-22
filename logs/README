@@ -1,0 +1,4 @@
+Git won't allow an empty directory to be tracked, and the logs directory should
+be part of version control, so I'm adding this file.
+
+I miss Mercurial.

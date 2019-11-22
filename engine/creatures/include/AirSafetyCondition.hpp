@@ -1,3 +1,4 @@
+#pragma once
 #include "ITileSafetyCondition.hpp"
 
 // A class used to determine if an Air tile is safe.

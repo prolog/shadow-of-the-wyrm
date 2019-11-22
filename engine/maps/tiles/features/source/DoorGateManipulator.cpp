@@ -81,7 +81,7 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
 {
   bool result = false;
 
-  shared_ptr<Door> door = dynamic_pointer_cast<Door>(feature);
+  std::shared_ptr<Door> door = dynamic_pointer_cast<Door>(feature);
 
   if (door != nullptr && tile != nullptr)
   {

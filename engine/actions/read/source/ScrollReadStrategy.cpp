@@ -30,10 +30,7 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
       ItemIdentifier item_id;
       string base_id = readable->get_base_id();
       bool readable_originally_identified = item_id.get_item_identified(base_id);
-      
-      // Add a message about what's being read
-      add_read_message(get_player_and_monster_read_sids(), creature, readable, item_id);
-      
+            
       // Destroy the item if applicable.
       if (readable->destroy_on_read())
       {
@@ -55,6 +52,8 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
         SpellcastingProcessor sp;
         effect_identified = sp.process(spell_processor, creature, map, caster_coord, Direction::DIRECTION_NULL, scroll_spell, readable->get_status());
       }
+
+      add_read_message(get_player_and_monster_read_sids(), creature, readable, item_id);
 
       if (effect_identified && !readable_originally_identified)
       {

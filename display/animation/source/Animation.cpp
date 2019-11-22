@@ -4,7 +4,7 @@ using namespace std;
 
 void Animation::add_animation_instruction(AnimationInstructionPtr instr)
 {
-  animation_instructions.push_back(instr);
+  animation_instructions.push_back(std::move(instr));
 }
 
 void Animation::clear_animation_instructions()
@@ -21,4 +21,3 @@ vector<AnimationInstructionPtr> Animation::get_animation_instructions() const
 {
   return animation_instructions;
 }
-

@@ -10,14 +10,14 @@ ICryptLayoutStrategyPtr CryptLayoutStrategyFactory::create_layout_strategy(const
   switch(layout_type)
   {
     case CryptLayoutType::CRYPT_LAYOUT_PILLARS:
-      layout_strategy = std::make_shared<PillarCryptLayoutStrategy>();
+      layout_strategy = std::make_unique<PillarCryptLayoutStrategy>();
       break;
     case CryptLayoutType::CRYPT_LAYOUT_VAULT:
-      layout_strategy = std::make_shared<VaultCryptLayoutStrategy>();
+      layout_strategy = std::make_unique<VaultCryptLayoutStrategy>();
       break;
     case CryptLayoutType::CRYPT_LAYOUT_EMPTY:
     default:
-      layout_strategy = std::make_shared<EmptyCryptLayoutStrategy>();
+      layout_strategy = std::make_unique<EmptyCryptLayoutStrategy>();
       break;
   }
   

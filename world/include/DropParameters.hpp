@@ -15,6 +15,6 @@ class DropParameters
   protected:
     std::string item_base_id;
     int percent_chance;
-    int min;
-    int max;
+    int min_v;
+    int max_v;
 };

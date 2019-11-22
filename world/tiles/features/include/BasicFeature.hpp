@@ -1,3 +1,4 @@
+#pragma once
 #include "Feature.hpp"
 
 // This class is used for creating features that have some sort of

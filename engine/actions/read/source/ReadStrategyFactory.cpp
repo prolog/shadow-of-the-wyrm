@@ -17,17 +17,17 @@ ReadStrategyPtr ReadStrategyFactory::create_read_strategy(const ItemType it, con
 
   if (!text_sid.empty())
   {
-    read_strategy = std::make_shared<TextReadStrategy>();
+    read_strategy = std::make_unique<TextReadStrategy>();
   }
   else
   {
     switch(it)
     {
       case ItemType::ITEM_TYPE_SCROLL:
-        read_strategy = std::make_shared<ScrollReadStrategy>();
+        read_strategy = std::make_unique<ScrollReadStrategy>();
         break;
       case ItemType::ITEM_TYPE_SPELLBOOK:
-        read_strategy = std::make_shared<SpellbookReadStrategy>();
+        read_strategy = std::make_unique<SpellbookReadStrategy>();
         break;
       case ItemType::ITEM_TYPE_NULL:
       case ItemType::ITEM_TYPE_MISC:
@@ -45,7 +45,7 @@ ReadStrategyPtr ReadStrategyFactory::create_read_strategy(const ItemType it, con
       case ItemType::ITEM_TYPE_CURRENCY:
       case ItemType::ITEM_TYPE_TOOL:
       case ItemType::ITEM_TYPE_LAST:
-        read_strategy = std::make_shared<NullReadStrategy>();
+        read_strategy = std::make_unique<NullReadStrategy>();
         break;
     }
   }

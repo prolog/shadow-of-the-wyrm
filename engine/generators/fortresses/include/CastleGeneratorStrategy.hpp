@@ -7,5 +7,5 @@ class CastleGeneratorStrategy
     virtual void generate(MapPtr generate_map) = 0;
 };
 
-using CastleGeneratorStrategyPtr = std::shared_ptr<CastleGeneratorStrategy>;
+using CastleGeneratorStrategyPtr = std::unique_ptr<CastleGeneratorStrategy>;
 

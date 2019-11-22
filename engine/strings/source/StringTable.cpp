@@ -6,17 +6,16 @@
 #include "Conversion.hpp"
 
 using namespace std;
-using namespace boost;
 
 std::unordered_map<string, string> StringTable::string_table;
 
 void StringTable::load(const string& filename)
 {
-  ifstream string_file(filename.c_str());
+  std::ifstream string_file(filename.c_str());
   string current_line;
   string key;
   string value;
-  char_separator<char> separator("=");
+  boost::char_separator<char> separator("=");
 
   if (string_file.is_open())
   {
@@ -95,7 +94,7 @@ bool StringTable::is_external_file(const string& value)
   bool is_file = false;
 
   string val_trim = value;
-  trim(val_trim);
+  boost::trim(val_trim);
   size_t val_trim_size = val_trim.size();
 
   if (val_trim_size >= 4)

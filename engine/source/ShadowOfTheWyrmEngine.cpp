@@ -1,3 +1,5 @@
+#include <future>
+#include <thread>
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "XMLConfigurationReader.hpp"
 #include "Class.hpp"
@@ -113,11 +115,23 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
   if (state_manager.start_new_game())
   {
     setup_display(settings);
+
+    // Read in all the game data (there's a lot of it!), and then show the
+    // display
     setup_game();
+
+    DisplayPtr display = game.get_display();
+
+    if (display)
+    {
+      display->create();
+      display->set_title(StringTable::get(TextKeys::SW_TITLE));
+      display->show();
+    }
   }
 
   setup_player_and_world();
-    
+
   if (!state_manager.exit())
   {
     game.go();
@@ -224,8 +238,12 @@ void ShadowOfTheWyrmEngine::setup_player_and_world()
 
   while (!done)
   {
-    WelcomeScreen welcome(display);
-    string game_option = welcome.display();
+    string game_option;
+
+    {
+      WelcomeScreen welcome(display);
+      game_option = welcome.display();
+    }
 
     done = process_game_option(game_option);
   }
@@ -346,7 +364,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   if (prompt_user_for_race_selection)
   {
     creature_synopsis = TextMessages::get_character_creation_synopsis(sex, nullptr, nullptr, nullptr);
-
     RaceSelectionScreen race_selection(display, creature_synopsis);
     string race_index = race_selection.display();
 
@@ -518,7 +535,6 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
       name = naming.display();
     }
 
-
     if (name.empty())
     {
       name = default_name;
@@ -588,14 +604,44 @@ bool ShadowOfTheWyrmEngine::process_load_game()
 
   if (!filename.empty())
   {
-    SerializationReturnCode src = Serialization::load(filename);
+    // Do the load asynchronously or SDL/Windows can flip out because of
+    // events not being responded to.
+    promise<SerializationReturnCode> sp;
+    future<SerializationReturnCode> sf = sp.get_future();
+    DisplayPtr cur_display = display;
+    ControllerPtr cur_controller = controller;
+
+    std::thread thread([&]() {
+      SerializationReturnCode src = Serialization::load(filename);
+      
+      game.set_display(cur_display);
+      CreaturePtr player = game.get_current_player();
+        
+      if (player != nullptr)
+      {
+        player->get_decision_strategy()->set_controller(cur_controller);
+      } 
+
+      sp.set_value(src);
+    });
+
+    game.set_loading();
+
+    while (sf.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
+    {
+      controller->poll_event();
+    }
+
+    thread.join();
+    SerializationReturnCode src = sf.get();
 
     if (src == SerializationReturnCode::SERIALIZATION_OK)
     {
       game.set_current_loaded_savefile(filename);
-
       result = true;
     }
+
+    game.set_ready();
   }
 
   // JCD TODO: Add support for additional reloadable settings here.

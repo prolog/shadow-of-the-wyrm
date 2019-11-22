@@ -69,8 +69,6 @@ class ShadowOfTheWyrmEngine
     bool process_exit_game();
 
     bool is_new_game_allowed();
- 
-    void run_map_scripts();
 
     EngineStateManager state_manager;
     ControllerPtr controller;

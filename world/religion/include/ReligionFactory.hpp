@@ -1,3 +1,4 @@
+#pragma once
 #include "Religion.hpp"
 #include "Deity.hpp"
 

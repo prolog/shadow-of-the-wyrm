@@ -1,13 +1,18 @@
 #include <stdio.h>
-
 #include <iostream>
+
+// This needs to be defined first because it includes msxml.h, which
+// doesn't respect namespaces properly. Including xerces afterwards
+// (which is namespace-aware) allows everything to work as expected.
+#include "UnhandledExceptions.hpp"
+
+#undef DOMDocument
 #include <xercesc/util/PlatformUtils.hpp>
 #include <boost/archive/archive_exception.hpp>
 #include <boost/filesystem.hpp>
 
 #include "common.hpp"
 #include "global_prototypes.hpp"
-
 #include "CursesKeyboardController.hpp"
 
 #include "Conversion.hpp"
@@ -18,12 +23,12 @@
 #include "Log.hpp"
 #include "LogFiles.hpp"
 #include "Metadata.hpp"
+#include "SDL.hpp"
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "Settings.hpp"
 #include "Setting.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
-#include "UnhandledExceptions.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLFileReader.hpp"
 
@@ -43,6 +48,7 @@ void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings);
 void remove_old_logfiles(const Settings& settings);
 bool check_write_permissions();
 int parse_command_line_arguments(int argc, char* argv[]);
+void set_display_settings(DisplayPtr display, const Settings& settings);
 
 #ifdef UNIT_TESTS
 int run_unit_tests();
@@ -88,6 +94,10 @@ int parse_command_line_arguments(int argc, char* argv[])
   return 0;
 }
 
+// This is required because of SDL main-redefinition bullshit trickery.
+#ifdef main
+#undef main
+#endif
 #ifdef _MSC_VER
 int _tmain(int argc, _TCHAR* argv[])
 #else
@@ -111,12 +121,18 @@ int main(int argc, char* argv[])
     else
     {
       Settings settings(true);
+      string display_id = settings.get_setting(Setting::DISPLAY);
+      SDL sdl;
+
+      if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
+      {
+        sdl.set_up();
+      }
 
       remove_old_logfiles(settings);
 
       // Set the default display and controller.
       DisplayFactory di;
-      string display_id = settings.get_setting(Setting::DISPLAY);
       pair<DisplayPtr, ControllerPtr> display_details = di.create_display_details(display_id);
 
       DisplayPtr display = display_details.first;
@@ -130,8 +146,9 @@ int main(int argc, char* argv[])
         throw "error";
       }
 
-      if (display && display->create())
+      if (display)
       {
+        set_display_settings(display, settings);
         run_game(display, controller, settings);
       }
       else
@@ -157,6 +174,11 @@ int main(int argc, char* argv[])
           cerr << "\nCould not create display.";
           throw "error";
         }
+      }
+
+      if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
+      {
+        sdl.tear_down();
       }
     }
   }
@@ -188,7 +210,7 @@ bool check_write_permissions()
   bool can_write = true;
 
   string fname = "test";
-  ofstream test_file;
+  std::ofstream test_file;
   test_file.open(fname, ios::out | ios::binary);
 
   if (!test_file.good())
@@ -212,5 +234,21 @@ void remove_old_logfiles(const Settings& settings)
   {
     LogFiles lf;
     lf.remove_old(days_old);
+  }
+}
+
+void set_display_settings(DisplayPtr display, const Settings& settings)
+{
+  if (display != nullptr)
+  {
+    vector<string> setting_names = { Setting::DISPLAY_FONT, 
+                                     Setting::DISPLAY_TILE_SIZE, 
+                                     Setting::DISPLAY_TILE_GLYPHS_PER_LINE, 
+                                     Setting::DISPLAY_NUM_GLYPHS };
+
+    for (const string& s : setting_names)
+    {
+      display->set_property(s, settings.get_setting(s));
+    }
   }
 }

@@ -2700,12 +2700,6 @@
     <ClInclude Include="display\animation\include\AnimationInstruction.hpp">
       <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
-    <ClInclude Include="display\animation\include\CursesAnimationFactory.hpp">
-      <Filter>Header Files\display\animation\include</Filter>
-    </ClInclude>
-    <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp">
-      <Filter>Header Files\display\animation\include</Filter>
-    </ClInclude>
     <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp">
       <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
@@ -3464,9 +3458,6 @@
     </ClInclude>
     <ClInclude Include="engine\include\ShadowOfTheWyrmEngine.hpp">
       <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\CursesProperties.hpp">
-      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\DoorBreakageCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
@@ -4295,6 +4286,30 @@
     </ClInclude>
     <ClInclude Include="display\include\SDLDisplay.hpp">
       <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDL.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDLPromptProcessor.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\PromptProcessor.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDLDisplayParameters.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDLRender.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDLCursorLocation.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\DefaultAnimationFactory.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\DefaultDrawAnimationInstruction.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5822,9 +5837,6 @@
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapCoordinateReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\source</Filter>
     </ClCompile>
-    <ClCompile Include="display\source\CursesConstants.cpp">
-      <Filter>Source Files\display\source</Filter>
-    </ClCompile>
     <ClCompile Include="display\source\CursesDisplay.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
@@ -5966,13 +5978,7 @@
     <ClCompile Include="display\animation\source\PauseAnimationInstruction.cpp">
       <Filter>Source Files\display\animation</Filter>
     </ClCompile>
-    <ClCompile Include="display\animation\source\CursesDrawAnimationInstruction.cpp">
-      <Filter>Source Files\display\animation</Filter>
-    </ClCompile>
     <ClCompile Include="display\animation\source\AnimationFactory.cpp">
-      <Filter>Source Files\display\animation</Filter>
-    </ClCompile>
-    <ClCompile Include="display\animation\source\CursesAnimationFactory.cpp">
       <Filter>Source Files\display\animation</Filter>
     </ClCompile>
     <ClCompile Include="engine\translators\source\AnimationTranslator.cpp">
@@ -7505,9 +7511,6 @@
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
-    <ClCompile Include="display\source\CursesProperties.cpp">
-      <Filter>Source Files\display\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
@@ -8584,6 +8587,39 @@
     </ClCompile>
     <ClCompile Include="display\source\unit_tests\SDLDisplay_test.cpp">
       <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDL.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLPromptProcessor.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\PromptProcessor.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLDisplayParameters.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDLDisplayParameters_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLRender.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLCursorLocation.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDLCursorLocation_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDL_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\DefaultAnimationFactory.cpp">
+      <Filter>Source Files\display\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\DefaultDrawAnimationInstruction.cpp">
+      <Filter>Source Files\display\animation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

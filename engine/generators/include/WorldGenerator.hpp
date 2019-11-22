@@ -1,4 +1,5 @@
 #pragma once
+#include <future>
 #include <map>
 #include <set>
 #include <vector>
@@ -6,6 +7,11 @@
 #include "Generator.hpp"
 #include "TileDepthOptions.hpp"
 #include "TileGenerator.hpp"
+
+// Asynchronous version of world generation, intended to be passed to a thread.
+// Calls generate().  Necessary because of SDL and event queues - without this
+// running asynchronously, the window goes "Not Responding".
+void async_worldgen(std::promise<MapPtr>&& mp);
 
 // JCD FIXME: Eventually, set about changing all the "MapPtr" arguments to "const MapPtr&" arguments.
 

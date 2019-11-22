@@ -71,13 +71,12 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   Game& game = Game::instance();
 
   int max_creatures = CreationUtils::random_maximum_creatures(dim.get_y(), dim.get_x());
-  ActionManager am = game.get_action_manager_ref();
+  ActionManager& am = game.get_action_manager_ref();
   uint num_creatures_to_place = get_num_creatures(map, max_creatures);
   
   uint current_creatures_placed = 0;
   uint unsuccessful_attempts = 0;
 
-  bool fixed_danger_level = false;
   auto fd_it = additional_properties.find(MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED);
   if (fd_it != additional_properties.end())
   {

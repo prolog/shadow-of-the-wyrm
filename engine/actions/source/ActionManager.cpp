@@ -614,8 +614,9 @@ ActionCost ActionManager::rest(CreaturePtr creature)
   Settings& settings = game.get_settings_ref();
   int rest_turns = String::to_int(settings.get_setting(Setting::REST_TURNS));
   creature->get_automatic_movement_ref().set_turns(rest_turns);
+  MapPtr map = game.get_current_map();
 
-  if (creature && creature->get_is_player())
+  if (creature && creature->get_is_player() && map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
   {
     IMessageManager& manager = MM::instance();
 

@@ -35,6 +35,13 @@ class Game : public ISerializable
       return game;
     }
 
+    void set_title_text(const std::string& new_title_text);
+    void set_loading();
+    void set_ready();
+
+    void set_requires_redraw(const bool new_requires_redraw);
+    bool get_requires_redraw() const;
+
     void set_settings(const Settings& settings);
     void set_display_settings();
     void set_world_settings();
@@ -160,7 +167,7 @@ class Game : public ISerializable
     friend class SW_Engine_Game; // unit testing
 
     Game();
-    Game(const Game& game);
+    Game(const Game& game) = delete;
     bool operator=(const Game& game);
    ~Game();
 
@@ -192,6 +199,7 @@ class Game : public ISerializable
 
     // The races, classes, and items are not the actual in-game items;
     // they're the template upon which the in-game items are built.
+    bool requires_redraw;
     Settings settings;
     DisplayPtr display;
     MapRegistry map_registry;
