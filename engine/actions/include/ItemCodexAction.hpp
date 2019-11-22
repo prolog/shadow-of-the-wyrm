@@ -26,12 +26,12 @@ protected:
     void display_codex_item(ItemPtr item) const;
 
     // Add certain features to the codex screen
-    void add_symbol_and_description_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
-    void add_synopsis_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
-    void add_resistances_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
-    void add_speed_details_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
-    void add_item_details_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
-    void add_description_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
+    void add_symbol_and_description_to_codex(ItemPtr item, CodexDescriber* codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
+    void add_synopsis_to_codex(ItemPtr item, CodexDescriber* codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
+    void add_resistances_to_codex(ItemPtr item, CodexDescriber* codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
+    void add_speed_details_to_codex(ItemPtr item, CodexDescriber* codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
+    void add_item_details_to_codex(ItemPtr item, CodexDescriber* codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
+    void add_description_to_codex(ItemPtr item, CodexDescriber* codex_desc, const std::string& separator, std::vector<std::pair<Colour, std::string>>& codex_text) const;
 
     static const std::string TEMPLATE_SIGNIFIER;
     static const std::string STRING_REPLACEMENT;

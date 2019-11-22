@@ -26,7 +26,6 @@
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
-using namespace boost;
 
 const int MapUtils::PLAYER_RESTRICTED_ZONE_RADIUS = 8;
 
@@ -1127,26 +1126,23 @@ bool MapUtils::is_tile_contained_in_an_existing_component(const Coordinate& coor
 
 string MapUtils::convert_coordinate_to_map_key(const Coordinate& c)
 {
-  ostringstream ss;
-  ss << c.first << "-" << c.second;
-  return ss.str();
+  return convert_coordinate_to_map_key(c.first, c.second);
 }
 
 string MapUtils::convert_coordinate_to_map_key(const int row, const int col)
 {
-  ostringstream ss;
-  ss << row << "-" << col;
-  return ss.str();
+  string s = std::to_string(row) + "-" + std::to_string(col);
+  return s; 
 }
 
 Coordinate MapUtils::convert_map_key_to_coordinate(const string& map_key)
 {
   Coordinate coords(0,0);
   
-  char_separator<char> sep("-");
-  tokenizer<char_separator<char>> tokens(map_key, sep);
+  boost::char_separator<char> sep("-");
+  boost::tokenizer<boost::char_separator<char>> tokens(map_key, sep);
 
-  tokenizer<char_separator<char>>:: iterator t_it = tokens.begin();
+  boost::tokenizer<boost::char_separator<char>>:: iterator t_it = tokens.begin();
   
   if (t_it != tokens.end())
   {
@@ -1624,16 +1620,12 @@ bool MapUtils::should_link_entry_point(MapType map_type)
 //       If so, add it.
 // - Are there any items on the tile?
 //       If so, add the appropriate message.
+// Hold off on immediately sending these, as we may be changing maps and don't
+// want them erased too early.
 void MapUtils::add_tile_related_messages(CreaturePtr creature, TilePtr tile)
 {
-  bool tile_message_added = add_message_about_tile_if_necessary(creature, tile);
-  bool item_message_added = add_message_about_items_on_tile_if_necessary(creature, tile);
-
-  if (tile_message_added || item_message_added)
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-    manager.send();
-  }
+  add_message_about_tile_if_necessary(creature, tile);
+  add_message_about_items_on_tile_if_necessary(creature, tile);
 }
 
 // Add a message about the tile if necessary.

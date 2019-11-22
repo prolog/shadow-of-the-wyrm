@@ -1137,7 +1137,7 @@ int Creature::get_skill_points() const
 
 void Creature::increment_turns()
 {
-  if (turns < numeric_limits<ulonglong>::max())
+  if (turns < std::numeric_limits<ulonglong>::max())
   {
     turns++;
   }

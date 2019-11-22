@@ -16,11 +16,11 @@ DeathManagerPtr DeathManagerFactory::create_death_manager(CreaturePtr attacking,
 
   if (dead->get_is_player())
   {
-    manager = std::make_shared<PlayerDeathManager>(attacking, dead, map);
+    manager = std::make_unique<PlayerDeathManager>(attacking, dead, map);
   }
   else
   {
-    manager = std::make_shared<CreatureDeathManager>(attacking, dead, map);
+    manager = std::make_unique<CreatureDeathManager>(attacking, dead, map);
   }
 
   return manager;

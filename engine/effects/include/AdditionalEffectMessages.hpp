@@ -1,3 +1,4 @@
+#pragma once
 #include "AdditionalEffectMessage.hpp"
 
 class SweetTasteEffectMessage : public AdditionalEffectMessage

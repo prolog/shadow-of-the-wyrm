@@ -7,8 +7,6 @@
 #include "Log.hpp"
 
 using namespace std;
-using namespace boost;
-using namespace boost::posix_time;
 
 LoggingLevel Log::level = LoggingLevel::LOG_NONE; // Logging is off by default.
 int Log::counter = 0;
@@ -17,7 +15,7 @@ const string Log::LOG_PREFIX = "sotw-";
 Log::Log()
 {
   string filename = create_filename();
-  while (filesystem::exists(filename) && (counter != numeric_limits<int>::max()))
+  while (boost::filesystem::exists(filename) && (counter != std::numeric_limits<int>::max()))
   {
     filename = create_filename();
   }
@@ -167,7 +165,7 @@ string Log::create_filename()
 
 string Log::create_datetimestamp()
 {
-  ptime now = second_clock::local_time();
+  boost::posix_time::ptime now = boost::posix_time::second_clock::local_time();
   return to_simple_string(now);
 }
 

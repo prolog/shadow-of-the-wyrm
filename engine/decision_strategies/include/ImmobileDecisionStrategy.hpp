@@ -11,9 +11,9 @@ class ImmobileDecisionStrategy : public NPCDecisionStrategy
         
   protected:
     // Functions that are called based on the factory type
-    virtual CommandPtr get_decision_for_inventory(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) override;
-    virtual CommandPtr get_decision_for_equipment(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) override;
-    virtual CommandPtr get_decision_for_tile_selection(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) override;
+    virtual CommandPtr get_decision_for_inventory(CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands) override;
+    virtual CommandPtr get_decision_for_equipment(CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands) override;
+    virtual CommandPtr get_decision_for_tile_selection(CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands) override;
     
     virtual bool can_move() const override;
 

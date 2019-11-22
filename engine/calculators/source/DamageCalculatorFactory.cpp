@@ -18,15 +18,15 @@ DamageCalculatorPtr DamageCalculatorFactory::create_damage_calculator(const Atta
   switch(attack_type)
   {
     case AttackType::ATTACK_TYPE_RANGED:
-      calculator = std::make_shared<RangedPhysicalDamageCalculator>(pom);
+      calculator = std::make_unique<RangedPhysicalDamageCalculator>(pom);
       break;
     case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
     case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
     case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
-      calculator = std::make_shared<PhysicalDamageCalculator>(attack_type, pom);
+      calculator = std::make_unique<PhysicalDamageCalculator>(attack_type, pom);
       break;
     case AttackType::ATTACK_TYPE_MAGICAL:
-      calculator = std::make_shared<MagicalDamageCalculator>(pom);
+      calculator = std::make_unique<MagicalDamageCalculator>(pom);
       break;
     default: break;
   }

@@ -21,4 +21,4 @@ class DamageCalculator
     PhaseOfMoonType pom_type;
 };
 
-using DamageCalculatorPtr = std::shared_ptr<DamageCalculator>;
+using DamageCalculatorPtr = std::unique_ptr<DamageCalculator>;

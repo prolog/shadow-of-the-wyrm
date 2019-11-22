@@ -32,11 +32,11 @@ ScoreFile::ScoreFile(const bool read_sf)
 
 void ScoreFile::read_score_file()
 {
-  ifstream score_file(HighScoreConstants::FILENAME);
+  std::ifstream score_file(HighScoreConstants::FILENAME);
 
   if (boost::filesystem::exists(HighScoreConstants::FILENAME))
   {
-    ifstream score_file;
+    std::ifstream score_file;
 
     score_file.open(HighScoreConstants::FILENAME, ios_base::binary);
 
@@ -57,7 +57,7 @@ void ScoreFile::save()
   CompilationDetails cd;
 
   string version = cd.get_compilation_details_string();
-  ofstream score_file;
+  std::ofstream score_file;
 
   score_file.open(HighScoreConstants::FILENAME, ios::binary);
 

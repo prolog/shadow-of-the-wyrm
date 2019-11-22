@@ -98,7 +98,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);UNIT_TESTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;NOMINMAX;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);UNIT_TESTS</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -107,13 +107,14 @@
       <TreatWarningAsError>false</TreatWarningAsError>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SDL_DIR)\lib\x86;$(ZLIB_DIR)\zlib-1.2.11\lib;$(LUA_DEV)\lib;$(GTEST_DIR)\gtest-1.8.0\Debug;$(BOOST_DIR)\boost_1_70_0\stage\lib;$(XERCES_DIR)\xerces-c-3.2.1\src\Debug;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;zlib.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtest.lib;gtest_main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;zlib.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtest.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>false</GenerateMapFile>
     </Link>
     <PostBuildEvent>
@@ -127,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);UNIT_TESTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;NOMINMAX;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);UNIT_TESTS</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -142,7 +143,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SDL_DIR)\lib\x86;$(ZLIB_DIR)\zlib-1.2.11\lib;$(LUA_DEV)\lib;$(GTEST_DIR)\gtest-1.8.0\Debug;$(BOOST_DIR)\boost_1_70_0\stage\lib;$(XERCES_DIR)\xerces-c-3.2.1\src\Debug;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>zlib.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtest.lib;gtest_main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zlib.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtest.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>false</GenerateMapFile>
     </Link>
     <PostBuildEvent>
@@ -156,7 +157,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);UNIT_TESTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;NOMINMAX;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);UNIT_TESTS</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -171,7 +172,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SDL_DIR)\lib\x86;$(ZLIB_DIR)\zlib-1.2.11\lib;$(LUA_DEV)\lib;$(GTEST_DIR)\gtest-1.8.0\Debug;$(BOOST_DIR)\boost_1_70_0\stage\lib;$(XERCES_DIR)\xerces-c-3.2.1\src\Debug;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>zlib.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtest.lib;gtest_main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zlib.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtest.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>false</GenerateMapFile>
     </Link>
     <PostBuildEvent>
@@ -185,12 +186,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;NOMINMAX;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>$(ProjectDir)\engine\commands\skills\include;$(ProjectDir)\engine\commands\help\include;$(ProjectDir)\engine\decision_strategies\magic\include;$(ProjectDir)\engine\generators\rooms\include;$(ProjectDir)\engine\generators\fortresses\include;$(ProjectDir)\engine\generators\settlements\sector\include;$(ProjectDir)\engine\maps\tiles\features\include;$(ProjectDir)\engine\maps\tiles\include;$(SDL_DIR)\include;$(ZLIB_DIR)\zlib-1.2.11\include;$(ProjectDir)\engine\generators\crypts\include;$(ProjectDir)\engine\commands\screens\include;$(ProjectDir)\engine\XML\custom_maps\world\include;$(ProjectDir)\engine\XML\custom_maps\features\include;$(ProjectDir)\engine\creatures\include;$(ProjectDir)\engine\generators\tile_config\include;$(ProjectDir)\engine\actions\read\include;$(ProjectDir)\engine\commands\magic\include;$(ProjectDir)\engine\magic\include;$(ProjectDir)\engine\strings\include;$(ProjectDir)\world\magic\include;$(LUA_DEV)\include;$(ProjectDir)\engine\scripting\include;$(ProjectDir)\engine\maps\include;$(ProjectDir)\engine\XML\custom_maps\include;$(ProjectDir)\world\tiles\include;$(ProjectDir)\world\tiles\features\include;$(ProjectDir)\world\seasons\include;$(ProjectDir)\world\religion\include;$(ProjectDir)\world\materials\include;$(ProjectDir)\world\include;$(ProjectDir)\include;$(ProjectDir)\engine\XML\include;$(ProjectDir)\engine\translators\include;$(ProjectDir)\engine\time\include;$(ProjectDir)\engine\skills\include;$(ProjectDir)\engine\serialization\include;$(ProjectDir)\engine\screens\include;$(ProjectDir)\engine\items\include;$(ProjectDir)\engine\include;$(ProjectDir)\engine\generators\worship_sites\include;$(ProjectDir)\engine\generators\settlements\include;$(ProjectDir)\engine\generators\include;$(ProjectDir)\engine\generators\gardens\include;$(ProjectDir)\engine\field_of_view\include;$(ProjectDir)\engine\effects\include;$(ProjectDir)\engine\description\codex\include;$(ProjectDir)\engine\description\include;$(ProjectDir)\engine\decision_strategies\search\include;$(ProjectDir)\engine\decision_strategies\include;$(ProjectDir)\engine\decision_strategies\deity\include;$(ProjectDir)\engine\conversion\include;$(ProjectDir)\engine\commands\select_tile\include;$(ProjectDir)\engine\commands\inventory\include;$(ProjectDir)\engine\commands\include;$(ProjectDir)\engine\commands\equipment\include;$(ProjectDir)\engine\combat\include;$(ProjectDir)\engine\calculators\include;$(ProjectDir)\engine\actions\include;$(ProjectDir)\display\include;$(ProjectDir)\display\animation\include;$(ProjectDir)\controller\include;$(BOOST_DIR)\boost_1_70_0;$(XERCES_DIR)\xerces-c-3.2.1\src;$(CURSES_DIR)\pdcurses;$(GTEST_DIR)\gtest-1.8.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -199,8 +201,9 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SDL_DIR)\lib\x86;$(ZLIB_DIR)\zlib-1.2.11\lib;$(XERCES_DIR)\xerces-c-3.2.1\src\Release;$(LUA_DEV)\lib;$(BOOST_DIR)\boost_1_70_0\stage\lib;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>zlib.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;zlib.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>false</GenerateMapFile>
+      <Profile>true</Profile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d $(ProjectDir)version_info.txt $(OutDir)
@@ -208,11 +211,16 @@ xcopy /y /d $(ProjectDir)sotw_procdump.bat $(OutDir)
 xcopy /y /d $(ProjectDir)howdoi.txt $(OutDir)
 xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
 xcopy /y /d $(ProjectDir)xerces-c_3_2.dll $(OutDir)
+xcopy /y /d $(ProjectDir)SDL2.dll $(OutDir)
+xcopy /y /d $(ProjectDir)SDL2_image.dll $(OutDir)
+xcopy /y /d $(ProjectDir)libpng16-16.dll $(OutDir)
+xcopy /y /d $(ProjectDir)zlib1.dll $(OutDir)
 xcopy /y /d $(ProjectDir)zlib.dll $(OutDir)
 xcopy /y /d $(ProjectDir)README.md $(OutDir)
 xcopy /y /d $(ProjectDir)LICENSE $(OutDir)
 mkdir $(Outdir)licenses
 xcopy /y /d $(ProjectDir)licenses $(OutDir)licenses
+xcopy /y /d $(Projectdir)README-SDL.txt $(OutDir)
 mkdir $(OutDir)docs
 xcopy /y /d $(ProjectDir)docs\*.pdf $(OutDir)docs
 xcopy /y /d $(ProjectDir)*.ini $(OutDir)
@@ -222,6 +230,8 @@ mkdir $(OutDir)scripts
 xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
 mkdir $(OutDir)texts
 xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts
+mkdir $(OutDir)assets
+xcopy /y /d /s /i $(ProjectDir)assets $(OutDir)assets
 mkdir $(OutDir)logs
 </Command>
     </PostBuildEvent>
@@ -231,7 +241,7 @@ mkdir $(OutDir)logs
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;NOMINMAX;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -255,6 +265,9 @@ xcopy /y /d $(ProjectDir)howdoi.txt $(OutDir)
 xcopy /y /d $(ProjectDir)pdcurses.dll $(OutDir)
 xcopy /y /d $(ProjectDir)xerces-c_3_2.dll $(OutDir)
 xcopy /y /d $(ProjectDir)SDL2.dll $(OutDir)
+xcopy /y /d $(ProjectDir)SDL2_image.dll $(OutDir)
+xcopy /y /d $(ProjectDir)libpng16-16.dll $(OutDir)
+xcopy /y /d $(ProjectDir)zlib1.dll $(OutDir)
 xcopy /y /d $(ProjectDir)zlib.dll $(OutDir)
 xcopy /y /d $(ProjectDir)README.md $(OutDir)
 xcopy /y /d $(ProjectDir)LICENSE $(OutDir)
@@ -270,6 +283,8 @@ mkdir $(OutDir)scripts
 xcopy /y /d  /s /i $(ProjectDir)scripts $(OutDir)scripts
 mkdir $(OutDir)texts
 xcopy /y /d  /s /i $(ProjectDir)texts $(OutDir)texts
+mkdir $(OutDir)assets
+xcopy /y /d /s /i $(ProjectDir)assets $(OutDir)assets
 mkdir $(OutDir)logs
 </Command>
     </PostBuildEvent>
@@ -286,11 +301,10 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\animation\include\Animation.hpp" />
     <ClInclude Include="display\animation\include\AnimationFactory.hpp" />
     <ClInclude Include="display\animation\include\AnimationInstruction.hpp" />
-    <ClInclude Include="display\animation\include\CursesAnimationFactory.hpp" />
-    <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp" />
+    <ClInclude Include="display\animation\include\DefaultAnimationFactory.hpp" />
+    <ClInclude Include="display\animation\include\DefaultDrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp" />
-    <ClInclude Include="display\include\CursesProperties.hpp" />
     <ClInclude Include="display\include\Display.hpp" />
     <ClInclude Include="display\include\DisplayConstants.hpp" />
     <ClInclude Include="display\include\DisplayFactory.hpp" />
@@ -306,7 +320,13 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\include\CursesPromptProcessor.hpp" />
     <ClInclude Include="display\include\CursesUtils.hpp" />
     <ClInclude Include="display\include\MapDisplayArea.hpp" />
+    <ClInclude Include="display\include\PromptProcessor.hpp" />
+    <ClInclude Include="display\include\SDL.hpp" />
+    <ClInclude Include="display\include\SDLCursorLocation.hpp" />
     <ClInclude Include="display\include\SDLDisplay.hpp" />
+    <ClInclude Include="display\include\SDLDisplayParameters.hpp" />
+    <ClInclude Include="display\include\SDLPromptProcessor.hpp" />
+    <ClInclude Include="display\include\SDLRender.hpp" />
     <ClInclude Include="engine\actions\include\ActionCoordinator.hpp" />
     <ClInclude Include="engine\actions\include\ActionCost.hpp" />
     <ClInclude Include="engine\actions\include\ActionManager.hpp" />
@@ -1439,9 +1459,35 @@ mkdir $(OutDir)logs
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\SDLKeyboardController.cpp" />
-    <ClCompile Include="display\source\CursesProperties.cpp" />
+    <ClCompile Include="display\source\PromptProcessor.cpp" />
+    <ClCompile Include="display\source\SDL.cpp" />
+    <ClCompile Include="display\source\SDLCursorLocation.cpp" />
     <ClCompile Include="display\source\SDLDisplay.cpp" />
+    <ClCompile Include="display\source\SDLDisplayParameters.cpp" />
+    <ClCompile Include="display\source\SDLPromptProcessor.cpp" />
+    <ClCompile Include="display\source\SDLRender.cpp" />
+    <ClCompile Include="display\source\unit_tests\SDLCursorLocation_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDLDisplayParameters_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="display\source\unit_tests\SDLDisplay_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDL_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -2118,8 +2164,8 @@ mkdir $(OutDir)logs
     <ClCompile Include="controller\source\NullKeyboardController.cpp" />
     <ClCompile Include="display\animation\source\Animation.cpp" />
     <ClCompile Include="display\animation\source\AnimationFactory.cpp" />
-    <ClCompile Include="display\animation\source\CursesAnimationFactory.cpp" />
-    <ClCompile Include="display\animation\source\CursesDrawAnimationInstruction.cpp" />
+    <ClCompile Include="display\animation\source\DefaultAnimationFactory.cpp" />
+    <ClCompile Include="display\animation\source\DefaultDrawAnimationInstruction.cpp" />
     <ClCompile Include="display\animation\source\DrawAnimationInstruction.cpp" />
     <ClCompile Include="display\animation\source\PauseAnimationInstruction.cpp" />
     <ClCompile Include="display\source\Display.cpp" />
@@ -2131,7 +2177,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="display\source\DisplaySettings.cpp" />
     <ClCompile Include="display\source\DisplayStatistics.cpp" />
     <ClCompile Include="display\source\DisplayTile.cpp" />
-    <ClCompile Include="display\source\CursesConstants.cpp" />
     <ClCompile Include="display\source\CursesDisplay.cpp" />
     <ClCompile Include="display\source\MenuWrapper.cpp" />
     <ClCompile Include="display\source\CursesPromptProcessor.cpp" />

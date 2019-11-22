@@ -22,6 +22,12 @@
 using namespace std;
 using std::dynamic_pointer_cast;
 
+void async_worldgen(std::promise<MapPtr>&& mp)
+{
+  WorldGenerator world_generator;
+  mp.set_value(world_generator.generate());
+}
+
 const int WorldGenerator::MIN_CREATURES_PER_VILLAGE = 12;
 const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 

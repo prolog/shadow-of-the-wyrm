@@ -62,9 +62,9 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
         if (selected_fibre)
         {
           WornLocationScreenFactory fac;
-          WornLocationSelectionScreen wlss = fac.create_weaving_screen(display);
-          vector<EquipmentWornLocation> worn_locs = wlss.get_worn_locs();
-          string slot_selection = wlss.display();
+          WornLocationSelectionScreenPtr wlss = fac.create_weaving_screen(display);
+          vector<EquipmentWornLocation> worn_locs = wlss->get_worn_locs();
+          string slot_selection = wlss->display();
 
           if (!slot_selection.empty())
           {

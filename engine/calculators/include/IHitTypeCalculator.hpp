@@ -12,5 +12,5 @@ class IHitTypeCalculator
     virtual int get_base_damage(const Damage& damage) const = 0;
 };
 
-using IHitTypeCalculatorPtr = std::shared_ptr<IHitTypeCalculator>;
+using IHitTypeCalculatorPtr = std::unique_ptr<IHitTypeCalculator>;
 

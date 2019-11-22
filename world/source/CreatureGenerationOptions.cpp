@@ -4,7 +4,6 @@
 #include "CreatureGenerationOptions.hpp"
 
 using namespace std;
-using namespace boost;
 
 void CreatureGenerationOptions::set_id(const string& new_id)
 {
@@ -53,7 +52,7 @@ bool CreatureGenerationOptions::parse(const string& parse_string)
     if (parse_string.find("=") == string::npos && parse_string.find(";") == string::npos)
     {
       id = parse_string;
-      trim(id);
+      boost::trim(id);
     }
     else
     {
@@ -65,7 +64,7 @@ bool CreatureGenerationOptions::parse(const string& parse_string)
         if (token.find("=") == string::npos)
         {
           string val = token;
-          trim(val);
+          boost::trim(val);
 
           options.push_back(make_pair("id", val));
         }
@@ -79,8 +78,8 @@ bool CreatureGenerationOptions::parse(const string& parse_string)
             string key = key_value[0];
             string value = key_value[1];
 
-            trim(key);
-            trim(value);
+            boost::trim(key);
+            boost::trim(value);
 
             options.push_back(make_pair(key, value));
           }
@@ -131,8 +130,8 @@ bool CreatureGenerationOptions::parse_hostility(const string& parse_string)
       string creature_id = creature_hostility.at(0);
       string host_s = creature_hostility.at(1);
 
-      trim(creature_id);
-      trim(host_s);
+      boost::trim(creature_id);
+      boost::trim(host_s);
 
       set_hostility(creature_id, String::to_bool(host_s));
     }

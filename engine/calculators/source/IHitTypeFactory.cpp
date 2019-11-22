@@ -14,13 +14,13 @@ IHitTypeCalculatorPtr IHitTypeFactory::create_hit_type(const HitTypeEnum hit_typ
   switch(hit_type)
   {
     case HitTypeEnum::HIT_TYPE_REGULAR:
-      hit_calc = std::make_shared<RegularHitTypeCalculator>();
+      hit_calc = std::make_unique<RegularHitTypeCalculator>();
       break;
     case HitTypeEnum::HIT_TYPE_MIGHTY:
-      hit_calc = std::make_shared<MightyHitTypeCalculator>();
+      hit_calc = std::make_unique<MightyHitTypeCalculator>();
       break;
     case HitTypeEnum::HIT_TYPE_CRITICAL:
-      hit_calc = std::make_shared<CriticalHitTypeCalculator>();
+      hit_calc = std::make_unique<CriticalHitTypeCalculator>();
       break;
   }
 

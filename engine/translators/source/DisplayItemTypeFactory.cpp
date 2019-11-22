@@ -174,8 +174,6 @@ vector<DisplayItemTypePtr> DisplayItemTypeFactory::create(const int item_symbol)
     }
   }
 
-  auto iter = find_if(display_map.begin(), display_map.end(), [item_symbol] (pair<ItemType, DisplayItemTypePtr> iter) {return iter.second->get_symbol().at(0) == item_symbol;});
-
   return dit_v;
 }
 

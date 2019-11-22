@@ -4,7 +4,6 @@
 #include "TextFormatSpecifiers.hpp"
 
 using namespace std;
-using namespace boost;
 
 TextDisplayFormatter::TextDisplayFormatter()
 : keep_leading_whitespace(false)
@@ -31,8 +30,8 @@ vector<string> TextDisplayFormatter::format_text(const string& text, const int l
     // If it is, just add it.
     // Otherwise, split it up appropriately.
     uint cur_pos = 0;
-    char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
-    tokenizer<char_separator<char>> tokens(text, separator);
+    boost::char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
+    boost::tokenizer<boost::char_separator<char>> tokens(text, separator);
     string current_str;
     int cur_line = 0;
 
@@ -41,7 +40,7 @@ vector<string> TextDisplayFormatter::format_text(const string& text, const int l
     // string.  If it would take us over, then we've got the largest string
     // possible: add that string to the list, and start creating a new one
     // with the next token.
-    for (tokenizer<char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
+    for (boost::tokenizer<boost::char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
     {
       string current_token = *t_iter;
       process_token(current_token, result, current_str, cur_pos, width, lines_displayable_area, cur_line);

@@ -6,14 +6,19 @@ std::string NullKeyboardController::get_line()
   return empty;
 }
 
-int NullKeyboardController::get_char_as_int()
+int NullKeyboardController::read_char_as_int()
 {
   return -1;
 }
 
-std::pair<bool, int> NullKeyboardController::get_char_as_int_nb()
+std::pair<bool, int> NullKeyboardController::read_char_as_int_nb()
 {
   return std::make_pair(false, -1);
+}
+
+int NullKeyboardController::translate_kb_input(const int input)
+{
+  return input;
 }
 
 Controller* NullKeyboardController::clone()

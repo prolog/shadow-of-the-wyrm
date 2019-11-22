@@ -1,3 +1,4 @@
+#pragma once
 #include "IPillarGenerator.hpp"
 
 // A generator to create a "square pillar" of rock, like so:

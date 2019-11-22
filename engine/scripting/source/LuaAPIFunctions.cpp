@@ -1826,7 +1826,7 @@ int add_creature_to_map(lua_State* ls)
 
     // Hostility override is optional, and generally only used in places where
     // generated creatures must be hostile towards the player.
-    shared_ptr<bool> hostility_override;
+    std::shared_ptr<bool> hostility_override;
     if (num_args >= 5 && lua_isboolean(ls, 5))
     {
       hostility_override = std::make_shared<bool>(lua_toboolean(ls, 5) != 0);

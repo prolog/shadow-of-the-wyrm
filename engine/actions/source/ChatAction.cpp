@@ -125,7 +125,7 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
   bool spoke = false;
 
   // Make the creature select a direction.
-  CommandFactoryPtr command_factory    = std::make_shared<CommandFactory>();
+  CommandFactoryPtr command_factory    = std::make_unique<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   // If the creature is the player, inform the player that a direction is needed.
@@ -135,7 +135,7 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
   }
 
   // Try to get a direction.  This might fail.
-  CommandPtr base_command = querying_creature->get_decision_strategy()->get_nonmap_decision(false, querying_creature->get_id(), command_factory, kb_command_map, 0);
+  CommandPtr base_command = querying_creature->get_decision_strategy()->get_nonmap_decision(false, querying_creature->get_id(), command_factory.get(), kb_command_map, 0);
 
   if (base_command)
   {

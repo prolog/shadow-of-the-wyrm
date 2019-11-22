@@ -96,7 +96,7 @@ string Screen::display()
 
     if (!screen_selection.empty())
     {
-      CommandFactoryPtr command_factory = std::make_shared<ScreenCommandFactory>();
+      CommandFactoryPtr command_factory = std::make_unique<ScreenCommandFactory>();
       KeyboardCommandMapPtr kb_command_map = std::make_shared<ScreenKeyboardCommandMap>();
       CommandPtr command = command_factory->create(String::to_int(screen_selection), kb_command_map->get_command_type(screen_selection));
 

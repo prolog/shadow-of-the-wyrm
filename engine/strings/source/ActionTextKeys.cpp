@@ -344,6 +344,20 @@ string ActionTextKeys::get_fishing_outcome_message(const FishingType fishing, co
   return msg;
 }
 
+string ActionTextKeys::get_item_pack_message(const string& creature_desc_sid, const bool is_player, const string& item_desc)
+{
+  string message = StringTable::get(ACTION_ITEM_PACK_PLAYER);
+
+  if (!is_player)
+  {
+    message = StringTable::get(ACTION_ITEM_PACK_NPC);
+    boost::replace_first(message, "%s", StringTable::get(creature_desc_sid));
+  }
+
+  boost::replace_first(message, "%s", item_desc);
+  return message;
+}
+
 string ActionTextKeys::get_already_stolen_message(const string& desc)
 {
   string msg = StringTable::get(ACTION_THIEVERY_ALREADY_STOLEN);
@@ -584,7 +598,6 @@ const string ActionTextKeys::ACTION_FISHING_NIBBLE             = "ACTION_FISHING
 const string ActionTextKeys::ACTION_FISHING_CATCH              = "ACTION_FISHING_CATCH";
 const string ActionTextKeys::ACTION_FISHING_CATCH_SPEAR        = "ACTION_FISHING_CATCH_SPEAR";
 const string ActionTextKeys::ACTION_FISHING_THROW_BACK         = "ACTION_FISHING_THROW_BACK";
-const string ActionTextKeys::ACTION_FISHING_CATCH_ITEM         = "ACTION_FISHING_CATCH_ITEM";
 const string ActionTextKeys::ACTION_DISARM_TRAPS_NO_TRAPS      = "ACTION_DISARM_TRAPS_NO_TRAPS";
 const string ActionTextKeys::ACTION_DISARM_TRAPS_NO_TRAP       = "ACTION_DISARM_TRAPS_NO_TRAP";
 const string ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_DISMANTLE = "ACTION_DISARM_TRAPS_OUTCOME_DISMANTLE";
@@ -678,4 +691,7 @@ const string ActionTextKeys::ACTION_UNIMPRESSED_PLAYER            = "ACTION_UNIM
 const string ActionTextKeys::ACTION_UNIMPRESSED_MONSTER           = "ACTION_UNIMPRESSED_MONSTER";
 const string ActionTextKeys::ACTION_HIDE_FAILURE_PLAYER           = "ACTION_HIDE_FAILURE_PLAYER";
 const string ActionTextKeys::ACTION_HIDE_FAILURE_MONSTER          = "ACTION_HIDE_FAILURE_MONSTER";
+const string ActionTextKeys::ACTION_ITEM_PACK_PLAYER              = "ACTION_ITEM_PACK_PLAYER";
+const string ActionTextKeys::ACTION_ITEM_PACK_NPC                 = "ACTION_ITEM_PACK_NPC";
+
 

@@ -24,13 +24,13 @@ CodexDescriberPtr CodexDescriberFactory::create_codex_describer(const ItemPtr it
       case ItemType::ITEM_TYPE_WEAPON:
       {
         WeaponPtr weapon = dynamic_pointer_cast<Weapon>(item);
-        desc = std::make_shared<WeaponCodexDescriber>(weapon);
+        desc = std::make_unique<WeaponCodexDescriber>(weapon);
         break;
       }
       case ItemType::ITEM_TYPE_SPELLBOOK:
       {
         SpellbookPtr spellbook = dynamic_pointer_cast<Spellbook>(item);
-        desc = std::make_shared<SpellbookCodexDescriber>(spellbook);
+        desc = std::make_unique<SpellbookCodexDescriber>(spellbook);
         break;
       }
       case ItemType::ITEM_TYPE_FOOD:
@@ -38,26 +38,26 @@ CodexDescriberPtr CodexDescriberFactory::create_codex_describer(const ItemPtr it
       case ItemType::ITEM_TYPE_POTION:
       {
         ConsumablePtr consumable = dynamic_pointer_cast<Consumable>(item);
-        desc = std::make_shared<ConsumableCodexDescriber>(consumable);
+        desc = std::make_unique<ConsumableCodexDescriber>(consumable);
         break;
       }
       case ItemType::ITEM_TYPE_RING:
       case ItemType::ITEM_TYPE_AMULET:
       {
         WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
-        desc = std::make_shared<WearableCodexDescriber>(wearable);
+        desc = std::make_unique<WearableCodexDescriber>(wearable);
         break;
       }
       case ItemType::ITEM_TYPE_ARMOUR:
       {
         ArmourPtr armour = dynamic_pointer_cast<Armour>(item);
-        desc = std::make_shared<ArmourCodexDescriber>(armour);
+        desc = std::make_unique<ArmourCodexDescriber>(armour);
         break;
       }
       case ItemType::ITEM_TYPE_WAND:
       {
         WandPtr wand = dynamic_pointer_cast<Wand>(item);
-        desc = std::make_shared<WandCodexDescriber>(wand);
+        desc = std::make_unique<WandCodexDescriber>(wand);
         break;
       }
       case ItemType::ITEM_TYPE_BOAT:
@@ -66,7 +66,7 @@ CodexDescriberPtr CodexDescriberFactory::create_codex_describer(const ItemPtr it
       case ItemType::ITEM_TYPE_STAFF:
       case ItemType::ITEM_TYPE_TOOL:
       default:
-        desc = std::make_shared<CodexDescriber>(item);
+        desc = std::make_unique<CodexDescriber>(item);
     }
 
   }

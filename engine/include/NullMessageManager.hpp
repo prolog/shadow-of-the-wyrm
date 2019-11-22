@@ -1,3 +1,4 @@
+#pragma once
 #include "IMessageManager.hpp"
 
 // This class does absolutely nothing.  Its purpose is to provide an

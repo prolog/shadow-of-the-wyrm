@@ -8,6 +8,7 @@
 #include "ItemIdentifier.hpp"
 #include "ItemTextKeys.hpp"
 #include "ItemTypeTextKeys.hpp"
+#include "MaterialTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ScreenTitleTextKeys.hpp"
 #include "TextDisplayFormatter.hpp"
@@ -119,12 +120,12 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     string separator;
     vector<pair<Colour, string>> codex_text;
 
-    add_symbol_and_description_to_codex(item, codex_desc, separator, codex_text);
-    add_synopsis_to_codex(item, codex_desc, separator, codex_text);
-    add_resistances_to_codex(item, codex_desc, separator, codex_text);
-    add_speed_details_to_codex(item, codex_desc, separator, codex_text);
-    add_item_details_to_codex(item, codex_desc, separator, codex_text);
-    add_description_to_codex(item, codex_desc, separator, codex_text);
+    add_symbol_and_description_to_codex(item, codex_desc.get(), separator, codex_text);
+    add_synopsis_to_codex(item, codex_desc.get(), separator, codex_text);
+    add_resistances_to_codex(item, codex_desc.get(), separator, codex_text);
+    add_speed_details_to_codex(item, codex_desc.get(), separator, codex_text);
+    add_item_details_to_codex(item, codex_desc.get(), separator, codex_text);
+    add_description_to_codex(item, codex_desc.get(), separator, codex_text);
 
     string codex_title_sid = ScreenTitleTextKeys::SCREEN_TITLE_ITEM_CODEX;
     TextDisplayScreen tds(game.get_display(), codex_title_sid, codex_text);
@@ -132,7 +133,7 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
   }
 }
 
-void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
 {
   if (item != nullptr && codex_desc != nullptr)
   {
@@ -159,13 +160,15 @@ void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDes
   }
 }
 
-void ItemCodexAction::add_synopsis_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+void ItemCodexAction::add_synopsis_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
 {
   if (item != nullptr && codex_desc != nullptr)
   {
     ostringstream synopsis_line;
     ItemType itype = item->get_type();
     synopsis_line << ItemTypeTextKeys::get_item_type_description_singular(itype);
+
+    synopsis_line << " (" << MaterialTextKeys::get_material(item->get_material_type()) << ")";
 
     bool is_artifact = item->get_artifact();
     if (is_artifact)
@@ -196,7 +199,7 @@ void ItemCodexAction::add_synopsis_to_codex(ItemPtr item, CodexDescriberPtr code
   }
 }
 
-void ItemCodexAction::add_resistances_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+void ItemCodexAction::add_resistances_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
 {
   if (item != nullptr && codex_desc != nullptr)
   {
@@ -215,7 +218,7 @@ void ItemCodexAction::add_resistances_to_codex(ItemPtr item, CodexDescriberPtr c
   }
 }
 
-void ItemCodexAction::add_speed_details_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+void ItemCodexAction::add_speed_details_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
 {
   if (item != nullptr && codex_desc != nullptr)
   {
@@ -229,7 +232,7 @@ void ItemCodexAction::add_speed_details_to_codex(ItemPtr item, CodexDescriberPtr
   }
 }
 
-void ItemCodexAction::add_item_details_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+void ItemCodexAction::add_item_details_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
 {
   if (item != nullptr && codex_desc != nullptr)
   {
@@ -250,7 +253,7 @@ void ItemCodexAction::add_item_details_to_codex(ItemPtr item, CodexDescriberPtr 
   }
 }
 
-void ItemCodexAction::add_description_to_codex(ItemPtr item, CodexDescriberPtr codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+void ItemCodexAction::add_description_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
 {
   if (item != nullptr)
   {

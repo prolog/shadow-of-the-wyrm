@@ -1,3 +1,4 @@
+#pragma once
 #include "IPillarGenerator.hpp"
 
 // Pillar generator that creates a pillar like:

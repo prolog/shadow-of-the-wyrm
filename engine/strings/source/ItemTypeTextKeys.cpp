@@ -98,6 +98,8 @@ string ItemTypeTextKeys::get_food_type(const FoodType ft)
     case FoodType::FOOD_TYPE_OTHER:
       desc_sid = ItemTypeTextKeys::FOOD_TYPE_OTHER;
       break;
+    case FoodType::FOOD_TYPE_LAST:
+      break;
   }
 
   return StringTable::get(desc_sid);

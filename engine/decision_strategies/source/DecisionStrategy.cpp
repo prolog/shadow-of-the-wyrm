@@ -74,6 +74,11 @@ std::shared_ptr<Map> DecisionStrategy::get_fov_map()
   return fov;
 }
 
+void DecisionStrategy::set_controller(ControllerPtr new_controller)
+{
+  controller = new_controller;
+}
+
 ControllerPtr DecisionStrategy::get_controller()
 {
   return controller;

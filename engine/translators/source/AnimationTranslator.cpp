@@ -19,7 +19,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
 {
   Animation animation;
 
-  if (player_blinded)
+  if (player_blinded || animation_factory == nullptr)
   {
     return animation;
   }
@@ -69,7 +69,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
     }
 
     // Add the updated coordinates to the animation.
-    for (AnimationInstructionPtr instr : coords_in_frame)
+    for (AnimationInstructionPtr& instr : coords_in_frame)
     {
       animation.add_animation_instruction(instr);
     }
@@ -80,11 +80,11 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
     {
       // Pause briefly.
       AnimationInstructionPtr instr = animation_factory->create_pause_instruction();
-      animation.add_animation_instruction(instr);
+      animation.add_animation_instruction(std::move(instr));
 
       if (redraw_previous_frame)
       {
-        for (AnimationInstructionPtr instr : frame_cleanup)
+        for (AnimationInstructionPtr& instr : frame_cleanup)
         {
           animation.add_animation_instruction(instr);
         }

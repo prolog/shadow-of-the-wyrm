@@ -12,7 +12,7 @@ string CursesKeyboardController::get_line()
   return ncpp.get_user_string(stdscr);
 }
 
-int CursesKeyboardController::get_char_as_int()
+int CursesKeyboardController::read_char_as_int()
 {
   Game& game = Game::instance();
   DisplayPtr display = game.get_display();
@@ -33,7 +33,7 @@ int CursesKeyboardController::get_char_as_int()
   return character;
 }
 
-pair<bool, int> CursesKeyboardController::get_char_as_int_nb()
+pair<bool, int> CursesKeyboardController::read_char_as_int_nb()
 {
   pair<bool, int> character = make_pair(false, -1);
 
@@ -61,6 +61,11 @@ pair<bool, int> CursesKeyboardController::get_char_as_int_nb()
   }
 
   return character;
+}
+
+int CursesKeyboardController::translate_kb_input(const int input)
+{
+  return input;
 }
 
 Controller* CursesKeyboardController::clone()

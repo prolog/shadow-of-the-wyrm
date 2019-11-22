@@ -11,6 +11,7 @@
 class TextMessages
 {
   public:
+    static std::string get_full_header_text(const std::string& header, const uint num_cols);
     static std::string get_welcome_message(const std::string& player_name, const bool new_player);
     static std::string get_death_message(const std::string& deity_death_message_sid);
     static std::string get_player_description(const std::string& player_name);

@@ -2426,7 +2426,7 @@ a mastery of all that would be in your way."
 %p
 Tel stroked his chin.  "You're right.  The exiles form %b
 a threat both as a group and when apart - %b
-we ride them down, they'll scatter and reform %b
+if we hunt for them, they'll scatter and reform %b
 as if a flock of blackbirds.  Let them hurt %b
 for space and opportunity.  I'll send %b
 the riders that you ask, and I'll send more %b
@@ -2849,7 +2849,7 @@ apart - and quickly.  Travelling light, they left %b
 before the King and Alcius met up %b
 with their chosen groups, ran down the plans, addressed %b
 concerns, and formed the spearhead of a thrust %b
-into the giants' chest, where they'd collapse the lungs.
+into the giants' bodies, and collapse the lungs.
 %p
 Green-cloaked, bay-horsed, the scouts were built for stealth: %b
 they planned to take the broken woodland routes, %b
@@ -2911,4 +2911,173 @@ remembered in each town.  They all had racked %b
 their brains for any trace of those who made %b
 the choice to strike out on their own and fall away.
 %p
-
+Amidst the preparations, Tel now spoke: %b
+"I've asked so much of you.  I'll ask again, %b
+and offer up my gratitude.  Please know %b
+that history's got its holes.  It lets through names, %b
+but every one of you has got a page %b
+that's partially done, and ink to write the rest. %b
+We'll form a spear and usher in an age %b
+of peace through overwhelming force, and dressed %b
+in shining mail, we'll drive that pilum through their chest."
+%p
+At this, the captains led their soldiers out %b
+to the staging hall, to double-check their packs %b
+and food before they exited the mounds %b
+that met the open air and brought them back %b
+to the world above.  Each man was given wine %b
+and water, packs of cheese and heavy bread, %b
+and rum to steady them, for down the lines %b
+of petty soldiers one could feel the dread %b
+that some amount of them would feed the earth instead.
+%p
+The king conferred with Alcius up front, %b
+double-checking the movements and the routes, %b
+till the councillor paused.  "Forgive me if I'm blunt - %b
+this plan is bold, its goals so absolute %b
+you've gathered nearly every man and youth %b
+who can hold a trembling spear.  We're better served %b
+by keeping back a company or two, %b
+good soldiers and good leaders, to conserve %b
+our forces should our fortunes take a sudden turn."
+%p
+But Tel would not be checked.  "I see your point, %b
+but opportunities like this are rare - %b
+a chance for total victory presents %b
+itself, and with it comes the chance to spur %b
+surrender.  And I'll take it.  Let them say %b
+I pressed my advantages, and let them write %b
+of how I did it, starting with the way %b
+I brought out every sword we had to fight, %b
+a grey-green storm front surging on a summer night."
+%p
+"So be it."  Tel could tell the chancellor's tone %b
+was tinged with disappointment, but the man went %b
+about his business briskly.  Having told %b
+the king the flaws he saw, Alcius spent %b
+a few more minutes going down the line, %b
+inspecting packs, provisions, making sure %b
+no soldier would go hungry, genuine %b
+compassion from the quiet man who served %b
+both king and common folk far more than they deserved.
+%p
+The companies moved out, each by the plan %b
+set out by masters in their comfortable room, %b
+where lives were wood and gold, and would depend %b
+on the correctness of their placement, on assumed %b
+alliances with those whose fealty died %b
+the day they left the hall, and made their way %b
+to rocky meadows, where the far-off sky %b
+looked down indifferently.  The whole crusade %b
+now hinged on help from those who'd chosen not to stay.
+%p
+In Cithriel, the walls of solid rock %b
+were carved out by the fae, or found, perhaps, %b
+later by them - but as the troops now walked %b
+in loose formations to the craggy gaps %b
+that narrowed into stairways up above, %b
+the sound was inperceptible below. %b
+But in the were-light, Floridel looked up, %b
+the darkness pulsing regular and slow. %b
+She'd read but one slim book.  She still had miles to go.
+%p
+The library had no seasons, only night. %b
+She fell asleep, then woke and read again %b
+until she was hungry.  Ate some nuts, a bite %b
+of rindy cheese.  A drink of water set %b
+her right again, until the letters flew %b
+off the page quite literally.  They hung %b
+on the stale air; as pages turned, they blew %b
+away, then fluttered back, proof that she'd won %b
+so little and her studies there had just begun.
+%p
+And as she worked, a happy little book, %b
+a book that brimmed with princesses and knights %b
+jumped off the shelf - regarded her - it took %b
+her measure and then fluttered up, alight %b
+with curiosity.  She laughed; its lift %b
+in response was like a closed-eyed smile.  She bent %b
+a little stream of breath, and as it left %b
+her lips, her laughter bubbled up and sent %b
+the volume down towards her in a slow descent.
+%p
+It waited while she studied.  As she read, %b
+it scuttled on its covers like a crab %b
+to sneak outside and bring her scraps of bread, %b
+the pages made translucent by a pat %b
+of cold and fresh-cut butter.  Floridel %b
+ate automatically.  She barely tasted %b
+the fairy food - she'd fallen down a well %b
+whose walls were books, and acted to encase %b
+the hermit-queen so quietly within that place.
+%p
+For days, she'd grasp at nothing, and return %b
+a book or two beside the dusty shelves %b
+where, with a start, some magic force would spur %b
+them into action, leaping up, impelled %b
+by a long-dead wizard's ordinary spell %b
+to organize the stacks.  She'd go get more, %b
+then bring them back, so that when Floridel %b
+dozed off then woke, her backlog underscored %b
+how little she had read, and how much she had in store.
+%p
+After a week, her hair a mess, her eyes %b
+gone red with lack of sleep, the bleary queen %b
+gave up.  Her little book-friend had supplied %b
+such ample food and drink that it demeaned %b
+the efforts of that hopeful thing, but still, %b
+she stood.  Stretched out her back.  As she prepared %b
+to find her way back out, she felt a chill, %b
+a shift in temperature she couldn't square %b
+with what till then had been the stale and dusty air.
+%p
+Floridel stood up.  The bookling scuttled off %b
+beneath the stacks, and as she walked, she pulled %b
+her cloak closer.  Her skin tingled, gone taut %b
+with cold, and now the lingering dark obscured %b
+the braziers' hazy light.  It seemed to pulse; %b
+it had a palpability, a sheen %b
+that, oil-thick, appeared to be the end result %b
+of something living.  And as she walked, it seemed %b
+to move with her, and hold her somewhere in between.
+%p
+Between the dark and were-light, shivering %b
+beneath her cloak, the girl-queen made her way %b
+down further into winding Calasim - %b
+and as she went, the fetid air became %b
+gauzy-grey, her breathing thin and strained %b
+as she made her way down deeper, where the poor %b
+oxygen grew worse.  She took a breath.  Again. %b
+And as the bookshelves ended, she felt more %b
+than breathlessness against the hard and murky floor. 
+%p
+Her foot brushed up against a levered lid %b
+that lay against the ground, where, locked in place, %b
+it seemed the source of all this cold, and hid %b
+whatever down below required a plate %b
+of steel to hold it back.  The whispered cold %b
+called to her, and Floridel now felt it slip %b
+around her neck and pull her down, a hold %b
+remembered from the days her crook would shift %b
+a sheep's attention elsewhere with a little lift.
+%p
+Rusted, the lever didn't want to move %b
+no matter how she tried, till with a grunt %b
+and curse she threw the thing.  She had assumed %b
+the lid would pop right up, but no - a thud %b
+somewhere in the deep distance.  And then the trick. %b
+A distant sound like hoofbeats made on stone, %b
+approaching as a canter.  Then three clicks: %b
+the lid sprang up and Floridel was shown %b
+a ladder to a darkness that would eat its own.
+%p
+She closed her eyes, and took a drawn-out breath %b
+before opening them again, and stepping in %b
+toward the ladder's steps, which broke the depths %b
+of a lightless sea that roiled despite the wind %b
+that wasn't there.  The rungs were bitterly cold, %b
+but the passage down was narrow, so she paused %b
+periodically, and let the bedrock hold %b
+her as she warmed her hands.  Against the wall, %b
+she rubbed her hands and prayed she wouldn't slip and fall.
+%p

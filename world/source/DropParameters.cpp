@@ -3,12 +3,12 @@
 using namespace std;
 
 DropParameters::DropParameters()
-: percent_chance(0), min(1), max(1)
+: percent_chance(0), min_v(1), max_v(1)
 {
 }
 
 DropParameters::DropParameters(const string& new_item_base_id, const int new_percent_chance, const int new_min, const int new_max)
-: item_base_id(new_item_base_id), percent_chance(new_percent_chance), min(new_min), max(new_max)
+: item_base_id(new_item_base_id), percent_chance(new_percent_chance), min_v(new_min), max_v(new_max)
 {
 }
 
@@ -24,10 +24,10 @@ int DropParameters::get_percent_chance() const
 
 int DropParameters::get_min() const
 {
-  return min;
+  return min_v;
 }
 
 int DropParameters::get_max() const
 {
-  return max;
+  return max_v;
 }

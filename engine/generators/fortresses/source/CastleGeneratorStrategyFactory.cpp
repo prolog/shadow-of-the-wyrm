@@ -8,7 +8,7 @@ CastleGeneratorStrategyPtr CastleGeneratorStrategyFactory::create_strategy(const
   switch(castle_type)
   {
     case CastleType::CASTLE_TYPE_MOTTE_AND_BAILEY:
-      castle_strategy = std::make_shared<MotteBaileyCastleGeneratorStrategy>();
+      castle_strategy = std::make_unique<MotteBaileyCastleGeneratorStrategy>();
       break;
     default:
       break;

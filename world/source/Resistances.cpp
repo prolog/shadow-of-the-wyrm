@@ -183,7 +183,7 @@ Resistances& Resistances::operator=(const Resistances& r)
     {
       if (r_pair.second != nullptr)
       {
-        shared_ptr<Resistance> r = r_pair.second;
+        std::shared_ptr<Resistance> r = r_pair.second;
         resistances[r_pair.first] = ResistancePtr(r->clone());
       }
     }
@@ -522,30 +522,17 @@ string Resistances::str() const
 // Reset the resistances to an absolute default - 1.0 for each value
 void Resistances::default_resistances()
 {
-  std::shared_ptr<Resistance> slash = std::make_shared<SlashResistance>();
-  std::shared_ptr<Resistance> pound = std::make_shared<PoundResistance>();
-  std::shared_ptr<Resistance> pierce = std::make_shared<PierceResistance>();
-  std::shared_ptr<Resistance> heat = std::make_shared<HeatResistance>();
-  std::shared_ptr<Resistance> cold = std::make_shared<ColdResistance>();
-  std::shared_ptr<Resistance> acid = std::make_shared<AcidResistance>();
-  std::shared_ptr<Resistance> poison = std::make_shared<PoisonResistance>();
-  std::shared_ptr<Resistance> holy = std::make_shared<HolyResistance>();
-  std::shared_ptr<Resistance> shadow = std::make_shared<ShadowResistance>();
-  std::shared_ptr<Resistance> arcane = std::make_shared<ArcaneResistance>();
-  std::shared_ptr<Resistance> lightning = std::make_shared<LightningResistance>();
-
-  resistances.clear();
-  resistances = ResistancesMap{{DamageType::DAMAGE_TYPE_SLASH, slash},
-                               {DamageType::DAMAGE_TYPE_POUND, pound},
-                               {DamageType::DAMAGE_TYPE_PIERCE, pierce},
-                               {DamageType::DAMAGE_TYPE_HEAT, heat},
-                               {DamageType::DAMAGE_TYPE_COLD, cold},
-                               {DamageType::DAMAGE_TYPE_ACID, acid},
-                               {DamageType::DAMAGE_TYPE_POISON, poison},
-                               {DamageType::DAMAGE_TYPE_HOLY, holy},
-                               {DamageType::DAMAGE_TYPE_SHADOW, shadow},
-                               {DamageType::DAMAGE_TYPE_ARCANE, arcane},
-                               {DamageType::DAMAGE_TYPE_LIGHTNING, lightning}};
+  resistances = ResistancesMap{{DamageType::DAMAGE_TYPE_SLASH, std::make_shared<SlashResistance>()},
+                               {DamageType::DAMAGE_TYPE_POUND, std::make_shared<PoundResistance>()},
+                               {DamageType::DAMAGE_TYPE_PIERCE, std::make_shared<PierceResistance>()},
+                               {DamageType::DAMAGE_TYPE_HEAT, std::make_shared<HeatResistance>()},
+                               {DamageType::DAMAGE_TYPE_COLD, std::make_shared<ColdResistance>()},
+                               {DamageType::DAMAGE_TYPE_ACID, std::make_shared<AcidResistance>()},
+                               {DamageType::DAMAGE_TYPE_POISON, std::make_shared<PoisonResistance>()},
+                               {DamageType::DAMAGE_TYPE_HOLY, std::make_shared<HolyResistance>()},
+                               {DamageType::DAMAGE_TYPE_SHADOW, std::make_shared<ShadowResistance>()},
+                               {DamageType::DAMAGE_TYPE_ARCANE, std::make_shared<ArcaneResistance>()},
+                               {DamageType::DAMAGE_TYPE_LIGHTNING, std::make_shared<LightningResistance>()}};
 }
 
 #ifdef UNIT_TESTS

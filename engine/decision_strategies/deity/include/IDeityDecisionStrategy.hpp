@@ -12,5 +12,5 @@ class IDeityDecisionStrategy
     virtual DeityDecisionStrategyHandlerPtr get_decision_for_altar_drop(CreaturePtr dropping_creature, FeaturePtr feature, ItemPtr item) = 0;
 };
 
-using IDeityDecisionStrategyPtr = std::shared_ptr<IDeityDecisionStrategy>;
+using IDeityDecisionStrategyPtr = std::unique_ptr<IDeityDecisionStrategy>;
 

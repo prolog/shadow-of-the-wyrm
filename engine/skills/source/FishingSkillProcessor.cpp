@@ -6,6 +6,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "ItemEnchantmentCalculator.hpp"
+#include "ItemIdentifier.hpp"
 #include "ItemGenerationManager.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
@@ -249,10 +250,27 @@ void FishingSkillProcessor::catch_item(CreaturePtr creature, MapPtr map)
     {
       // Can only pull in one item at a time while fishing.
       generated_item->set_quantity(1);
-      creature_tile->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      IInventoryPtr items = creature_tile->get_items();
 
       IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_CATCH_ITEM));
+
+      if (CreatureUtils::can_pick_up(creature, generated_item).first)
+      {
+        IInventoryPtr inv = creature->get_inventory();
+        inv->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+        // Add a message about the item that was added to the pack.
+        ItemIdentifier iid;
+        manager.add_new_message(ActionTextKeys::get_item_pack_message(creature->get_description_sid(), creature->get_is_player(), iid.get_appropriate_usage_description(generated_item)));
+      }
+      else
+      {
+        if (creature && creature->get_is_player())
+        {
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_THROW_BACK));
+        }
+      }
+
       manager.send();
     }
   }

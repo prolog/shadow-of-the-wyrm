@@ -1,5 +1,6 @@
 #include <chrono>
 #include <ctime>
+#include <future>
 #include <boost/timer/timer.hpp>
 #include "global_prototypes.hpp"
 #include "CommandProcessor.hpp"
@@ -13,11 +14,11 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
-#include "CursesProperties.hpp"
 #include "CustomAreaGenerator.hpp"
 #include "CursesConstants.hpp"
 #include "DecisionStrategySelector.hpp"
 #include "DetectionSkillProcessor.hpp"
+#include "DisplaySettings.hpp"
 #include "DisplayStatistics.hpp"
 #include "EngineConversion.hpp"
 #include "ExitGameAction.hpp"
@@ -58,7 +59,7 @@
 using namespace std;
 
 Game::Game()
-: keep_playing(true), reload_game_loop(false), current_world_ix(0)
+: keep_playing(true), reload_game_loop(false), check_scores(true), requires_redraw(false), current_world_ix(0)
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -69,6 +70,36 @@ Game::Game()
 
 Game::~Game()
 {
+}
+
+void Game::set_title_text(const string& new_title_text)
+{
+  if (display != nullptr)
+  {
+    display->set_title(StringTable::get(new_title_text));
+  }
+}
+void Game::set_loading()
+{
+  set_title_text(TextKeys::SW_TITLE_LOADING);
+}
+
+void Game::set_ready()
+{
+  if (display != nullptr)
+  {
+    display->set_title(StringTable::get(TextKeys::SW_TITLE));
+  }
+}
+
+void Game::set_requires_redraw(const bool new_requires_redraw)
+{
+  requires_redraw = new_requires_redraw;
+}
+
+bool Game::get_requires_redraw() const
+{
+  return requires_redraw;
 }
 
 // Set the settings, and also update any other settings (like the language
@@ -103,7 +134,7 @@ void Game::set_display_settings()
     if (cm >= CursorMode::CURSOR_MODE_MIN && cm <= CursorMode::CURSOR_MODE_MAX)
     {
       DisplayPtr display = get_display();
-      display->set_property(CursesProperties::CURSES_PROPERTIES_CURSOR_MODE, cursor_mode);
+      display->set_property(DisplaySettings::DISPLAY_SETTING_CURSOR_MODE, cursor_mode);
     }
   }
 }
@@ -322,8 +353,24 @@ CreaturePtr Game::get_current_player() const
 // Then, read in the XML areas, and overlay that on top.
 void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
 {
-  WorldGenerator world_generator;
-  MapPtr current_world = world_generator.generate();
+  MapPtr current_world;
+  ControllerPtr creature_controller = creature->get_decision_strategy()->get_controller();
+  promise<MapPtr> mp;
+  future<MapPtr> fp = mp.get_future();
+  std::thread thread(async_worldgen, std::move(mp));
+
+  set_loading();
+    
+  while (fp.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
+  {
+    creature_controller->poll_event();
+  }
+
+  set_ready();
+
+  thread.join();
+  current_world = fp.get();
+
   WorldPtr world(new World(current_world));
   worlds.push_back(world);
   current_world_ix = (worlds.size() - 1);
@@ -404,7 +451,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
     Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords.first);
     loaded_map_details.update_display_coord(display_coord);
-    bool redraw_needed = loaded_map_details.requires_full_map_redraw() || reloaded_game;
+    bool redraw_needed = loaded_map_details.requires_full_map_redraw() || requires_redraw|| reloaded_game;
 
     CurrentCreatureAbilities cca;
     CreaturePtr player = game.get_current_player();
@@ -421,11 +468,18 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     if (redraw_needed)
     {
       display->draw(display_map, cs);
+      requires_redraw = false;
     }
     else
     {
       display->draw_update_map(display_map, cs);
     }
+
+    // Add any new required after the full redraw.
+    IMessageManager& manager = MM::instance();
+    manager.send();
+
+    display->refresh_current_window();
 
     // As long as there are still player actions within the current map, and we've
     // not loaded a new map, a full redraw is not needed:
@@ -435,7 +489,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
 void Game::go()
 {
-  game_command_factory = std::make_shared<CommandFactory>();
+  game_command_factory = std::make_unique<CommandFactory>();
   game_kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   set_check_scores(true);
@@ -760,7 +814,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         // not actually be the creature's strategy, but rather another one,
         // such as automatic movement, etc.
         DecisionStrategyPtr command_strategy = DecisionStrategySelector::select_decision_strategy(current_creature);
-        CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
+        CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory.get(), game_kb_command_map, view_map /* fov_map */);
         
         if (log.debug_enabled())
         {
@@ -783,8 +837,10 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 
         if (current_creature->get_is_player())
         {
-          // Do a full redraw if we've changed map, or if we've just reloaded the game.
-          update_display(current_creature, current_map, fov_map, reloaded_game);
+          // After everything's done we need to update the display, but
+          // shouldn't need to do a full redraw, since a full redraw
+          // was done earlier in this function.
+          update_display(current_creature, current_map, fov_map, false);
         }
 
         // Poor NPCs...they're discriminated against even at the code level!
@@ -998,6 +1054,7 @@ bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
 
+  // Ignore requires_redraw
   // Ignore keep_playing
   Serialize::write_bool(stream, reload_game_loop);
 
@@ -1187,6 +1244,7 @@ bool Game::deserialize(istream& stream)
 {
   Log::instance().trace("Game::deserialize - start");
 
+  // Ignore requires_redraw
   // Ignore keep_playing
   Serialize::read_bool(stream, reload_game_loop);
   // Ignore game_instance - it's a singleton, and the write/read code is already handling it
@@ -1196,11 +1254,12 @@ bool Game::deserialize(istream& stream)
   ClassIdentifier display_ci;
   Serialize::read_class_id(stream, display_ci);
 
+  // Read and ignore the display.
   DisplayFactory di;
-  di.create_display_details(display_ci).first;
+  pair<DisplayPtr, ControllerPtr> dc_pair = di.create_display_details(display_ci);
 
-  if (!display) return false;
-  if (!display->deserialize(stream)) return false;
+  if (!dc_pair.first) return false;
+  if (!dc_pair.first->deserialize(stream)) return false;
 
   map_registry.deserialize(stream);
 

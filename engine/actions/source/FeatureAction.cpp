@@ -181,7 +181,7 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
   bool applied = false;
 
   // Make the creature select a direction.
-  CommandFactoryPtr command_factory    = std::make_shared<CommandFactory>();
+  CommandFactoryPtr command_factory    = std::make_unique<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
@@ -194,7 +194,7 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
   }
 
   // Try to get a direction.  This might fail.
-  CommandPtr base_command = creature->get_decision_strategy()->get_decision(true, creature->get_id(), command_factory, kb_command_map);
+  CommandPtr base_command = creature->get_decision_strategy()->get_decision(true, creature->get_id(), command_factory.get(), kb_command_map);
 
   if (base_command)
   {
