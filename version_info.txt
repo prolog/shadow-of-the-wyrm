@@ -1,6 +1,8 @@
 Shadow of the Wyrm v1.1.6 "Paganini"
 - Version declared November 22, 2019.
 
+- Creature generation on maps is now faster.
+
 - Bug fixes:
 
   - Random character generation wasn't respecting Not Specified for default

@@ -4311,6 +4311,9 @@
     <ClInclude Include="display\animation\include\DefaultDrawAnimationInstruction.hpp">
       <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureGenerationListValue.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8620,6 +8623,12 @@
     </ClCompile>
     <ClCompile Include="display\animation\source\DefaultDrawAnimationInstruction.cpp">
       <Filter>Source Files\display\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CreatureGenerationListValue.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\CreatureGenerationListValue_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

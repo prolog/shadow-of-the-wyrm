@@ -594,6 +594,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\creatures\include\CreatureDifficulty.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureFactory.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
+    <ClInclude Include="engine\creatures\include\CreatureGenerationListValue.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationOptionsStringBuilder.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureStatusTypes.hpp" />
@@ -1870,12 +1871,20 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\conversion\source\VictoryDumper.cpp" />
+    <ClCompile Include="engine\creatures\source\CreatureGenerationListValue.cpp" />
     <ClCompile Include="engine\creatures\source\GroundSafetyCondition.cpp" />
     <ClCompile Include="engine\creatures\source\HideStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\RageStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\SatedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\unit_tests\CreatureGenerationListValue_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Windows XP Compatible|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SaveConverter|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\HasteStatusEffect_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

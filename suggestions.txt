@@ -1,4 +1,5 @@
 Me:
+- remove old winxp config
 - google screen clear not working for SDL
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
@@ -19,9 +20,6 @@ Me:
 - Random villages should include the race in the description prior to
   generation.
 - Each version: make sure to update itch.io page!
-- Rework creature generation to be faster and not to bias towards the
-  creatures at the front of the list.  This could be as simple as
-  shuffling the order.
 - The "descend to" functionality
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
