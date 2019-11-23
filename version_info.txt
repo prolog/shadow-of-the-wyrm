@@ -1,3 +1,11 @@
+Shadow of the Wyrm v1.1.6 "Paganini"
+- Version declared November 22, 2019.
+
+- Bug fixes:
+
+  - Random character generation wasn't respecting Not Specified for default
+    sex.
+
 Shadow of the Wyrm v1.1.5 "Losy"
 - Version declared August 11, 2019.  Version finalized November 22, 2019.
 
