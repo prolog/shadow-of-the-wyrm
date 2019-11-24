@@ -3,6 +3,8 @@ Shadow of the Wyrm v1.1.6 "Paganini"
 
 - Creature generation on maps is now faster.
 
+- New names/combinations.
+
 - New effect type, glow, which can set the glow flag on arbitrary items.
 
 - New spells: glow (Cantrips).
