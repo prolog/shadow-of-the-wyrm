@@ -4314,6 +4314,9 @@
     <ClInclude Include="engine\creatures\include\CreatureGenerationListValue.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\GlowEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8629,6 +8632,9 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureGenerationListValue_test.cpp">
       <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\GlowEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

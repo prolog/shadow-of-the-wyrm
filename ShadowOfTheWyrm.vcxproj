@@ -585,6 +585,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\effects\include\FlyingEffect.hpp" />
     <ClInclude Include="engine\effects\include\GainAttributesEffect.hpp" />
     <ClInclude Include="engine\effects\include\GainAttributesTypes.hpp" />
+    <ClInclude Include="engine\effects\include\GlowEffect.hpp" />
     <ClInclude Include="engine\effects\include\HasteEffect.hpp" />
     <ClInclude Include="engine\effects\include\IncorporealEffect.hpp" />
     <ClInclude Include="engine\effects\include\IncreaseMaxHPAPEffect.hpp" />
@@ -1703,6 +1704,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\effects\source\CleansingEffect.cpp" />
     <ClCompile Include="engine\effects\source\DetectTrapsEffect.cpp" />
     <ClCompile Include="engine\effects\source\DiggingEffect.cpp" />
+    <ClCompile Include="engine\effects\source\GlowEffect.cpp" />
     <ClCompile Include="engine\effects\source\IncreaseMaxHPAPEffect.cpp" />
     <ClCompile Include="engine\effects\source\MappingEffect.cpp" />
     <ClCompile Include="engine\effects\source\RageEffect.cpp" />
