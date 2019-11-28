@@ -21,10 +21,10 @@ CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
+CreatureGenerationList CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
 {
   int min_danger = min_danger_level;
-  CreatureGenerationMap generation_map;
+  CreatureGenerationList generation_list;
 
   CreaturePtr generated_creature;
   Game& game = Game::instance();
@@ -77,16 +77,16 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
 
     if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
     {
-      generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
+      generation_list.push_back({creature_id, creature, cgvals});
     }
   }
   
-  return generation_map;
+  return generation_list;
 }
 
-CreatureGenerationMap CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const MapType map_type, const TileType map_terrain_type)
+CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const MapType map_type, const TileType map_terrain_type)
 {
-  CreatureGenerationMap cgm;
+  CreatureGenerationList cgl;
 
   // Ancient beasts only ever appear underground, in dungeons, sewers, caverns,
   // etc.
@@ -154,70 +154,52 @@ CreatureGenerationMap CreatureGenerationManager::generate_ancient_beasts(const i
       cgv.set_race_id(RaceID::RACE_ID_UNKNOWN);
       cgv.set_rarity(Rarity::RARITY_COMMON);
 
-      cgm[creature_id] = make_pair(ancient_beast, cgv);
+      cgl.push_back({ creature_id, ancient_beast, cgv });
     }
   }
 
-  return cgm;
+  return cgl;
 }
 
-string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationMap& generation_map)
+string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationList& generation_list)
 {
   string creature_id;
 
-  // Iterate through the generation map, and attempt to generate a creature with probability P,
-  // where P = (danger level / danger_level + num_creatures_in_map)
-  int p_denominator = 0;
-
-  // Get the denominator for the probabilistic generation by summing the danger level over all creatures
-  // in the map.
-  for (CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
-  {
-    CreatureGenerationValues cgv = c_it->second.second;
-    p_denominator += cgv.get_danger_level();
-  }
-
-  float p_denominator_f = static_cast<float>(p_denominator);
-
   // Determine the creature to generate
-  for (CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
+  if (!generation_list.empty())
   {
-    CreatureGenerationValues cgv = c_it->second.second;
-
-    int p_numerator = cgv.get_danger_level();
-    int P = 0;
-
-    if (p_numerator > 0)
+    for (int i = 0; i < 10; i++)
     {
-      P = max(1, static_cast<int>((static_cast<float>(p_numerator) / p_denominator_f) * 100));
-    }
+      int rnd_val = RNG::range(0, generation_list.size() - 1);
+      const CreatureGenerationListValue& cglv = generation_list.at(rnd_val);
+      const CreatureGenerationValues& cgv = cglv.get_creature_generation_values();
 
-    // Generate the creature if we hit the percentage, or if we're on the last item in the map
-    // and a creature has not yet been generated.
-    if (!cgv.is_maximum_reached() && (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1))))
-    {
-      creature_id = c_it->first;
-      break;
+      if (!cgv.is_maximum_reached())
+      {
+        creature_id = cglv.get_creature_base_id();
+        break;
+      }
     }
   }
 
   return creature_id;
 }
 
-CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationMap& generation_map, MapPtr current_map)
+CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationList& generation_list, MapPtr current_map)
 {
   CreaturePtr generated_creature;
   CreatureFactory cf;
 
-  string creature_id = select_creature_id_for_generation(am, generation_map);
+  string creature_id = select_creature_id_for_generation(am, generation_list);
 
   if (Creature::is_ancient_beast(creature_id))
   {
-    auto c_it = generation_map.find(creature_id);
+    auto gl_it = std::find_if(generation_list.begin(), generation_list.end(),
+      [&creature_id](const CreatureGenerationListValue& cglv) { return cglv.get_creature_base_id() == creature_id; } );
 
-    if (c_it != generation_map.end())
+    if (gl_it != generation_list.end())
     {
-      generated_creature = cf.create_by_creature_id(am, creature_id, current_map, c_it->second.first);
+      generated_creature = cf.create_by_creature_id(am, creature_id, current_map, gl_it->get_creature());
     }
   }
   else

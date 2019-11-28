@@ -105,12 +105,12 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
     }
   }
 
-  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
+  CreatureGenerationList generation_list = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
 
-  if (generation_map.empty())
+  if (generation_list.empty())
   {
     MapType map_type = map->get_map_type();
-    generation_map = cgm.generate_ancient_beasts(max_danger_level, map_type, map_terrain_type);
+    generation_list = cgm.generate_ancient_beasts(max_danger_level, map_type, map_terrain_type);
   }
 
   IMessageManager& manager = MM::instance();
@@ -121,7 +121,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
   while (!maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
-    CreaturePtr generated_creature = cgm.generate_creature(am, generation_map, map);
+    CreaturePtr generated_creature = cgm.generate_creature(am, generation_list, map);
 
     if (generated_creature)
     {

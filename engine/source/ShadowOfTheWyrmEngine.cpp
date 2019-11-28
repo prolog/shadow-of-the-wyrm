@@ -271,7 +271,14 @@ bool ShadowOfTheWyrmEngine::process_new_game_random()
   CharacterCreationDetails ccd;
 
   // Random sex
-  CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
+  Game& game = Game::instance();
+  string default_sex = game.get_settings_ref().get_setting(Setting::DEFAULT_SEX);
+  CreatureSex sex = CreatureSex::CREATURE_SEX_NOT_SPECIFIED;
+
+  if (default_sex != to_string(static_cast<int>(CreatureSex::CREATURE_SEX_NOT_SPECIFIED)))
+  {
+    sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
+  }
 
   // Random playable race id
   RacePtr race = CreatureUtils::get_random_user_playable_race();

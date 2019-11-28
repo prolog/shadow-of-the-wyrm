@@ -959,14 +959,14 @@ void test_creature_generation()
     cout << "Filename: ";
     cin >> filename;
 
-    CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(static_cast<TileType>(tile_type), false, min_level, max_level, Rarity::RARITY_COMMON, {});
+    CreatureGenerationList generation_list = cgm.generate_creature_generation_map(static_cast<TileType>(tile_type), false, min_level, max_level, Rarity::RARITY_COMMON, {});
     map<string, int> creature_count;
 
     if (num_creatures > 0)
     {
       for (int i = 0; i < num_creatures; i++)
       {
-        CreaturePtr creature = cgm.generate_creature(am, generation_map, nullptr);
+        CreaturePtr creature = cgm.generate_creature(am, generation_list, nullptr);
 
         if (creature != nullptr)
         {

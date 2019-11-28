@@ -304,7 +304,9 @@ enum struct ClassIdentifier
   CLASS_ID_PULPER = 299,
   CLASS_ID_SDL_DISPLAY = 300,
   CLASS_ID_SDL_KEYBOARD_CONTROLLER = 301,
-  CLASS_ID_SDL_DISPLAY_PARAMETERS = 302
+  CLASS_ID_SDL_DISPLAY_PARAMETERS = 302,
+  CLASS_ID_SYMBOL = 303,
+  CLASS_ID_SPRITESHEET_LOCATION = 304
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go
