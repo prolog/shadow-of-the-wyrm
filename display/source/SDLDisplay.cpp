@@ -444,9 +444,6 @@ void SDLDisplay::clear_screen()
 {
   if (!screens.empty() && !screen_cursors.empty())
   {
-    clear_display();
-    refresh_current_window();
-
     SDL_Texture* current_screen = screens.back();
 
     screens.pop_back();
@@ -472,15 +469,13 @@ void SDLDisplay::refresh_and_clear_window()
 
 void SDLDisplay::setup_new_screen()
 {
-  SDL_RenderClear(renderer);
-
   SDL_Texture* screen = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, sdld.get_screen_width(), sdld.get_screen_height());
   screens.push_back(screen);
 
   SDLCursorLocation cursor_loc(get_max_rows(), get_max_cols());
   screen_cursors.push_back(cursor_loc);
 
-  SDL_SetRenderTarget(renderer, screen);
+  clear_display();
 }
 
 // To render the screen, detach the renderer from the current texture and 
