@@ -39,7 +39,7 @@ bool SummonMonstersEffect::summon(CreaturePtr creature, MapPtr map, const int nu
 
     int min_danger_level = map->get_danger();
     int summon_danger_level = ((min_danger_level + SUMMON_DANGER_OFFSET) + creature->get_level().get_current()) / 2;
-    CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map->get_terrain_type(), map->get_permanent(), min_danger_level, summon_danger_level, Rarity::RARITY_COMMON, {});
+    CreatureGenerationList generation_list = cgm.generate_creature_generation_map(map->get_terrain_type(), map->get_permanent(), min_danger_level, summon_danger_level, Rarity::RARITY_COMMON, {});
 
     Coordinate creature_coord = map->get_location(creature->get_id());
     vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
@@ -64,7 +64,7 @@ bool SummonMonstersEffect::summon(CreaturePtr creature, MapPtr map, const int nu
 
         if (tile != nullptr)
         {
-          CreaturePtr summoned_creature = cgm.generate_creature(am, generation_map, map);
+          CreaturePtr summoned_creature = cgm.generate_creature(am, generation_list, map);
 
           if (summoned_creature != nullptr)
           {

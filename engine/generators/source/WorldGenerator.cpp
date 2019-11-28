@@ -298,21 +298,18 @@ void WorldGenerator::set_tile_depth_creature_details(TilePtr tile, const int max
   {
     // Get a creature ID for the given tile/depth combination.
     CreatureGenerationManager cgm;
-    CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile->get_tile_type(), true /* assume permanent */, max_depth, max_depth, Rarity::RARITY_COMMON, {});
+    CreatureGenerationList generation_list = cgm.generate_creature_generation_map(tile->get_tile_type(), true /* assume permanent */, max_depth, max_depth, Rarity::RARITY_COMMON, {});
 
-    if (!generation_map.empty())
+    if (!generation_list.empty())
     {
-      auto g_it = generation_map.begin();
-      std::advance(g_it, RNG::range(0, generation_map.size() - 1));
+      int rnd_val = RNG::range(0, generation_list.size() - 1);
+      const CreatureGenerationListValue& cglv = generation_list.at(rnd_val);
 
-      if (g_it != generation_map.end())
+      CreaturePtr creature = cglv.get_creature();
+
+      if (creature != nullptr)
       {
-        CreaturePtr creature = g_it->second.first;
-
-        if (creature != nullptr)
-        {
-          tile->set_additional_property(TileProperties::TILE_PROPERTY_ENGRAVING_SID, creature->get_description_sid());
-        }
+        tile->set_additional_property(TileProperties::TILE_PROPERTY_ENGRAVING_SID, creature->get_description_sid());
       }
     }
   }

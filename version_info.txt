@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.1.5 "Losy"
-- Version declared August 11, 2019.  Version finalized November 22, 2019.
+- Version declared August 11, 2019.  Version finalized November 27, 2019.
 
 - Vigarion, the undersea guardian, now generates with an amulet of the
   sea (Grond).
@@ -39,6 +39,19 @@ Shadow of the Wyrm v1.1.5 "Losy"
   interface.  Tileset support will come in a future release.  SDL and
   curses will always live side-by-side and curses will always be supported.
 
+- Creature generation on maps is now faster.
+
+- Updated the code to allow creatures/tiles/features to optionally contain
+  a spritesheet location in addition to the usual text symbol/colour.
+
+- New names/combinations.
+
+- New effect type, glow, which can set the glow flag on arbitrary items.
+
+- New spells: glow (Cantrips).
+
+- New items: scroll of glowing.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -56,6 +69,9 @@ Shadow of the Wyrm v1.1.5 "Losy"
 
   - Tile-specific messages weren't being shown properly when e.g. moving from
     a particular map back to the world map (Grond).
+
+  - Random character generation wasn't respecting Not Specified for default
+    sex.
 
 Shadow of the Wyrm v1.1.2 "Tarrega"
 - Version declared July 16, 2019. Version finalized August 11, 2019.

@@ -213,14 +213,7 @@ void SDLDisplay::clear_messages()
 
 void SDLDisplay::clear_display()
 {
-  if (!screens.empty() && !screen_cursors.empty())
-  {
-    SDL_SetRenderTarget(renderer, NULL);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
-    SDL_SetRenderTarget(renderer, screens.back());
-  }
+  clear_to_bottom(0);
 }
 
 void SDLDisplay::clear_to_bottom(const int row)
@@ -457,6 +450,7 @@ void SDLDisplay::clear_screen()
     screen_cursors.pop_back();
 
     SDL_DestroyTexture(current_screen);
+
     Game::instance().set_requires_redraw(true);
   }
 }
@@ -475,15 +469,13 @@ void SDLDisplay::refresh_and_clear_window()
 
 void SDLDisplay::setup_new_screen()
 {
-  SDL_RenderClear(renderer);
-
   SDL_Texture* screen = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, sdld.get_screen_width(), sdld.get_screen_height());
   screens.push_back(screen);
 
   SDLCursorLocation cursor_loc(get_max_rows(), get_max_cols());
   screen_cursors.push_back(cursor_loc);
 
-  SDL_SetRenderTarget(renderer, screen);
+  clear_display();
 }
 
 // To render the screen, detach the renderer from the current texture and 

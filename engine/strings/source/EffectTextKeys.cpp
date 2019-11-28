@@ -163,6 +163,11 @@ string EffectTextKeys::get_warp_effect_message(const string& monster_desc_sid, c
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_WARP_PLAYER, EFFECT_WARP_MONSTER);
 }
 
+string EffectTextKeys::get_glow_effect_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_GLOW_PLAYER, EFFECT_GLOW_MONSTER);
+}
+
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
 const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
 const string EffectTextKeys::EFFECT_NULL = "EFFECT_NULL";
@@ -181,6 +186,9 @@ const string EffectTextKeys::EFFECT_CLEANSING = "EFFECT_CLEANSING";
 const string EffectTextKeys::EFFECT_MAPPING = "EFFECT_MAPPING";
 const string EffectTextKeys::EFFECT_MAPPING_FORGET = "EFFECT_MAPPING_FORGET";
 const string EffectTextKeys::EFFECT_SUMMON_MONSTERS = "EFFECT_SUMMON_MONSTERS";
+const string EffectTextKeys::EFFECT_GLOW_SUCCESS = "EFFECT_GLOW_SUCCESS";
+const string EffectTextKeys::EFFECT_GLOW_DEAD = "EFFECT_GLOW_DEAD";
+const string EffectTextKeys::EFFECT_GLOW_ARTIFACT = "EFFECT_GLOW_ARTIFACT";
 
 const string EffectTextKeys::EFFECT_TELEPORT_MONSTER = "EFFECT_TELEPORT_MONSTER";
 const string EffectTextKeys::EFFECT_RECHARGING_PLAYER_NO_WANDS = "EFFECT_RECHARGING_PLAYER_NO_WANDS";
@@ -211,3 +219,5 @@ const string EffectTextKeys::EFFECT_REPEL_PLAYER = "EFFECT_REPEL_PLAYER";
 const string EffectTextKeys::EFFECT_REPEL_MONSTER = "EFFECT_REPEL_MONSTER";
 const string EffectTextKeys::EFFECT_WARP_PLAYER = "EFFECT_WARP_PLAYER";
 const string EffectTextKeys::EFFECT_WARP_MONSTER = "EFFECT_WARP_MONSTER";
+const string EffectTextKeys::EFFECT_GLOW_PLAYER = "EFFECT_GLOW_PLAYER";
+const string EffectTextKeys::EFFECT_GLOW_MONSTER = "EFFECT_GLOW_MONSTER";

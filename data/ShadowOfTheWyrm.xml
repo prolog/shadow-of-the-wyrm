@@ -29138,6 +29138,20 @@
 			<Shape>0</Shape>
 			<Effect>30</Effect>
 		</Spell>
+		<Spell id="c_18_glow">
+			<NameSID>GLOW_NAME_SID</NameSID>
+			<PlayerCastMessageSID>GLOW_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>GLOW_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>11</Colour>
+			<APCost>2</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>0</Shape>
+			<Radius>1</Radius>
+			<Effect>32</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -37990,6 +38004,24 @@
 				<DangerLevel>1</DangerLevel>
 				<Effect>2</Effect>				
 			</Scroll>
+			<Scroll id="glow_scroll">
+				<DescriptionSID>GLOW_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_GLOW_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>GLOW_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_GLOW_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>GLOW_SCROLL_CODEX_SID</CodexDescriptionSID>
+				<Value>38</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Effect>32</Effect>				
+			</Scroll>
 			<Scroll id="mapping_scroll">
 				<DescriptionSID>MAPPING_SCROLL_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_MAPPING_SCROLL_SID</UnidentifiedDescriptionSID>
@@ -39620,6 +39652,25 @@
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_17_repel</SpellID>
 				<Difficulty>32</Difficulty>
+			</Spellbook>
+			<Spellbook id="glow_spellbook">
+				<DescriptionSID>GLOW_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_GLOW_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>GLOW_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_GLOW_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>GLOW_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
+				<Value>34</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<SpellID>c_18_glow</SpellID>
+				<Difficulty>35</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
