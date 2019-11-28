@@ -444,14 +444,15 @@ void SDLDisplay::clear_screen()
 {
   if (!screens.empty() && !screen_cursors.empty())
   {
+    clear_display();
+    refresh_current_window();
+
     SDL_Texture* current_screen = screens.back();
 
     screens.pop_back();
     screen_cursors.pop_back();
 
     SDL_DestroyTexture(current_screen);
-
-    clear_display();
 
     Game::instance().set_requires_redraw(true);
   }
