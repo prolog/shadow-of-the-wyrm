@@ -3,6 +3,9 @@ Shadow of the Wyrm v1.1.6 "Paganini"
 
 - Creature generation on maps is now faster.
 
+- Updated the code to allow creatures/tiles/features to optionally contain
+  a spritesheet location in addition to the usual text symbol/colour.
+
 - New names/combinations.
 
 - New effect type, glow, which can set the glow flag on arbitrary items.
@@ -10,6 +13,8 @@ Shadow of the Wyrm v1.1.6 "Paganini"
 - New spells: glow (Cantrips).
 
 - New items: scroll of glowing.
+
+- Stanzas for the long poem.
 
 - Bug fixes:
 

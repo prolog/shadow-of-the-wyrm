@@ -1175,6 +1175,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\include\SkillFactory.hpp" />
     <ClInclude Include="world\include\Skills.hpp" />
     <ClInclude Include="world\include\SkillTypes.hpp" />
+    <ClInclude Include="world\include\SpritesheetLocation.hpp" />
     <ClInclude Include="world\include\Staff.hpp" />
     <ClInclude Include="world\include\StartingLocation.hpp" />
     <ClInclude Include="world\include\Statistic.hpp" />
@@ -1182,6 +1183,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\include\Status.hpp" />
     <ClInclude Include="world\include\StatusAilments.hpp" />
     <ClInclude Include="world\include\StatusTypes.hpp" />
+    <ClInclude Include="world\include\Symbol.hpp" />
     <ClInclude Include="world\include\ThreatConstants.hpp" />
     <ClInclude Include="world\include\ThreatRatings.hpp" />
     <ClInclude Include="world\include\Tool.hpp" />
@@ -3309,12 +3311,14 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\source\Scroll.cpp" />
     <ClCompile Include="world\source\SkillFactory.cpp" />
     <ClCompile Include="world\source\Skills.cpp" />
+    <ClCompile Include="world\source\SpritesheetLocation.cpp" />
     <ClCompile Include="world\source\Staff.cpp" />
     <ClCompile Include="world\source\StartingLocation.cpp" />
     <ClCompile Include="world\source\Statistic.cpp" />
     <ClCompile Include="world\source\Status.cpp" />
     <ClCompile Include="world\source\StatusAilments.cpp" />
     <ClCompile Include="world\source\StatusTypes.cpp" />
+    <ClCompile Include="world\source\Symbol.cpp" />
     <ClCompile Include="world\source\ThreatConstants.cpp" />
     <ClCompile Include="world\source\ThreatRatings.cpp" />
     <ClCompile Include="world\source\Tool.cpp" />
@@ -3523,6 +3527,11 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\SpritesheetLocation_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\source\unit_tests\StartingLocation_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -3534,6 +3543,11 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Status_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Symbol_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

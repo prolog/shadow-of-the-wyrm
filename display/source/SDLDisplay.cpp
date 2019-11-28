@@ -213,14 +213,7 @@ void SDLDisplay::clear_messages()
 
 void SDLDisplay::clear_display()
 {
-  if (!screens.empty() && !screen_cursors.empty())
-  {
-    SDL_SetRenderTarget(renderer, NULL);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
-    SDL_SetRenderTarget(renderer, screens.back());
-  }
+  clear_to_bottom(0);
 }
 
 void SDLDisplay::clear_to_bottom(const int row)
@@ -457,6 +450,9 @@ void SDLDisplay::clear_screen()
     screen_cursors.pop_back();
 
     SDL_DestroyTexture(current_screen);
+
+    clear_display();
+
     Game::instance().set_requires_redraw(true);
   }
 }

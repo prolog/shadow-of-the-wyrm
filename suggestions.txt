@@ -1,6 +1,6 @@
 Me:
-- remove old winxp config
-- google screen clear not working for SDL
+- auto save - not working?
+- google screen clear not working for SDL. reported 2x.
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
 - Linux builds for SDL. Premake, scripts, etc

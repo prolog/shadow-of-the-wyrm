@@ -4317,6 +4317,12 @@
     <ClInclude Include="engine\effects\include\GlowEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\Symbol.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\SpritesheetLocation.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8635,6 +8641,18 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\GlowEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Symbol.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\SpritesheetLocation.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Symbol_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\SpritesheetLocation_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
