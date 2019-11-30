@@ -239,6 +239,9 @@ Troubler:
 - Doors in dungeon occasionally get spawned in a big, long line.
 - When remapping bestiary to KEY_F6, doesn't work on main screen, but works
   on 'x', with 'B' not working.
+- Golems shouldn't be able to open doors
+- First 3 values of a weapon (x,x,x) are ignored when stacking, and two
+  weapons of the same kind will stack together and share the same values.
 
 Grond:
 - Can train up fae health by waiting forever
@@ -258,3 +261,5 @@ Yan Zhang:
 - Do something interesting with flowers!
 - Climb up Telari: more NPCs
 
+Skjarl:
+- SDL resizing

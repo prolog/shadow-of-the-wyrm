@@ -1,6 +1,8 @@
 Shadow of the Wyrm v1.1.6 "Paganini"
 - Version started November 27, 2019.
 
+- The inn in Carcassia now has a couple of beds (Troubler).
+
 Shadow of the Wyrm v1.1.5.1 "Losy"
 - Version declared August 11, 2019.  Version finalized November 27, 2019.
 
