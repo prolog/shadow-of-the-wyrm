@@ -3,6 +3,8 @@ Shadow of the Wyrm v1.1.6 "Paganini"
 
 - The inn in Carcassia now has a couple of beds (Troubler).
 
+- Stanzas for "Tel and Floridel".
+
 Shadow of the Wyrm v1.1.5.1 "Losy"
 - Version declared August 11, 2019.  Version finalized November 27, 2019.
 

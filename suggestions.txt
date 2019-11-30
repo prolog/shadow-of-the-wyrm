@@ -87,6 +87,7 @@ Me:
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
+- SDL: full screen
 - Cancellation effect type
 - Special rooms: beer hall, magical workshop, armory.
 - More shops in set locations.
