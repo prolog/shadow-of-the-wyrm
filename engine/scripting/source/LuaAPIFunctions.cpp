@@ -297,6 +297,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_item_value", get_item_value);
   lua_register(L, "select_item", select_item);
   lua_register(L, "set_hostility", set_hostility);
+  lua_register(L, "is_creature_hostile", is_creature_hostile);
   lua_register(L, "teleport", teleport);
   lua_register(L, "get_creature_description", get_creature_description);
   lua_register(L, "get_creature_description_sids", get_creature_description_sids);
@@ -383,6 +384,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_id", set_creature_id);
   lua_register(L, "add_all_items_to_player_tile", add_all_items_to_player_tile);
   lua_register(L, "get_primordial_castings", get_primordial_castings);
+  lua_register(L, "creature_exists", creature_exists);
 }
 
 // Lua API helper functions
@@ -4581,6 +4583,29 @@ int set_hostility(lua_State* ls)
   return 0;
 }
 
+int is_creature_hostile(lua_State* ls)
+{
+  bool is_hostile = true;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string hostile_to = lua_tostring(ls, 2);
+    CreaturePtr creature_to_check = get_creature(lua_tostring(ls, 1));
+
+    if (creature_to_check != nullptr)
+    {
+      is_hostile = creature_to_check->hostile_to(hostile_to);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_creature_hostile");
+  }
+
+  lua_pushboolean(ls, is_hostile);
+  return 1;
+}
+
 int teleport(lua_State* ls)
 {
   bool teleported = false;
@@ -7599,5 +7624,27 @@ int get_primordial_castings(lua_State* ls)
   }
 
   lua_pushnumber(ls, castings);
+  return 1;
+}
+
+int creature_exists(lua_State* ls)
+{
+  bool creature_exists = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      creature_exists = true;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to creature_exists");
+  }
+
+  lua_pushboolean(ls, creature_exists);
   return 1;
 }

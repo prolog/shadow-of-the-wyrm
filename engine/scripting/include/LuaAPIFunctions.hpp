@@ -148,6 +148,7 @@ int is_item_identified(lua_State* ls);
 int get_item_value(lua_State* ls);
 int select_item(lua_State* ls);
 int set_hostility(lua_State* ls);
+int is_creature_hostile(lua_State* ls);
 int teleport(lua_State* ls);
 int get_creature_description(lua_State* ls);
 int get_creature_description_sids(lua_State* ls);
@@ -235,6 +236,7 @@ int generate_creature(lua_State* ls);
 int set_creature_id(lua_State* ls);
 int add_all_items_to_player_tile(lua_State* ls); // Debug only! :)
 int get_primordial_castings(lua_State* ls);
+int creature_exists(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

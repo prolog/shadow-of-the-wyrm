@@ -3,6 +3,9 @@ Shadow of the Wyrm v1.1.6 "Paganini"
 
 - The inn in Carcassia now has a couple of beds (Troubler).
 
+- You can no longer fix the turtle races by attacking two of them and letting
+  the third one win.
+
 - Stanzas for "Tel and Floridel".
 
 Shadow of the Wyrm v1.1.5.1 "Losy"
