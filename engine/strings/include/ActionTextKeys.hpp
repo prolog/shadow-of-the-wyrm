@@ -80,6 +80,7 @@ class ActionTextKeys
     static const std::string ACTION_OPEN_SARCOPHAGUS;
     static const std::string ACTION_OPEN_SARCOPHAGUS_CONFIRM;
     static const std::string ACTION_OPEN_SARCOPHAGUS_ALREADY_OPEN;
+    static const std::string ACTION_OPEN_DOOR_UNINTELLIGENT;
     static const std::string ACTION_DOOR_DESTROYED;
     static const std::string ACTION_APPLY_NO_FEATURES_PRESENT;
     static const std::string ACTION_HANDLE_LOCK;

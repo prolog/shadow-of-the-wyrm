@@ -226,6 +226,13 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_intrinsic_resist", set_creature_intrinsic_resist);
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
+  lua_register(L, "set_creature_str", set_creature_str);
+  lua_register(L, "set_creature_dex", set_creature_dex);
+  lua_register(L, "set_creature_agi", set_creature_agi);
+  lua_register(L, "set_creature_hea", set_creature_hea);
+  lua_register(L, "set_creature_int", set_creature_int);
+  lua_register(L, "set_creature_wil", set_creature_wil);
+  lua_register(L, "set_creature_cha", set_creature_cha);
   lua_register(L, "get_creature_yx", get_creature_yx);
   lua_register(L, "get_creature_id", get_creature_id);
   lua_register(L, "get_creature_ids", get_creature_ids);
@@ -2435,6 +2442,160 @@ int get_creature_speed(lua_State* ls)
 
   lua_pushnumber(ls, speed);
   return 1;
+}
+
+int set_creature_str(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_strength_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_str");
+  }
+
+  return 0;
+}
+
+int set_creature_dex(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_dexterity_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_dex");
+  }
+
+  return 0;
+}
+
+int set_creature_agi(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_agility_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_agi");
+  }
+
+  return 0;
+}
+
+int set_creature_hea(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_health_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_hea");
+  }
+
+  return 0;
+}
+
+int set_creature_int(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_intelligence_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_int");
+  }
+
+  return 0;
+}
+
+int set_creature_wil(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_willpower_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_wil");
+  }
+
+  return 0;
+}
+
+int set_creature_cha(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_charisma_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_cha");
+  }
+
+  return 0;
 }
 
 // Return the y and x coordinates for the given creature on the current map.

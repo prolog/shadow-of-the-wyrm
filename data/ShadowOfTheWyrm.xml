@@ -474,7 +474,7 @@
 				<Dexterity>10</Dexterity>
 				<Agility>10</Agility>
 				<Health>10</Health>
-				<Intelligence>10</Intelligence>
+				<Intelligence>1</Intelligence>
 				<Willpower>10</Willpower>
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
@@ -548,7 +548,7 @@
 				<Dexterity>10</Dexterity>
 				<Agility>10</Agility>
 				<Health>10</Health>
-				<Intelligence>10</Intelligence>
+				<Intelligence>1</Intelligence>
 				<Willpower>10</Willpower>
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
@@ -622,7 +622,7 @@
 				<Dexterity>10</Dexterity>
 				<Agility>10</Agility>
 				<Health>10</Health>
-				<Intelligence>10</Intelligence>
+				<Intelligence>1</Intelligence>
 				<Willpower>10</Willpower>
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
@@ -1040,7 +1040,7 @@
 				<Dexterity>10</Dexterity>
 				<Agility>10</Agility>
 				<Health>10</Health>
-				<Intelligence>10</Intelligence>
+				<Intelligence>1</Intelligence>
 				<Willpower>10</Willpower>
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>

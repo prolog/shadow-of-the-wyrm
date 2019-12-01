@@ -6,6 +6,10 @@ Shadow of the Wyrm v1.1.6 "Paganini"
 - You can no longer fix the turtle races by attacking two of them and letting
   the third one win.
 
+- Constructs, animals, birds, and jellies now start with 1 Intelligence, and 
+  low intelligence creatures are now unable to open doors, not knowing how
+  they work.
+
 - Stanzas for "Tel and Floridel".
 
 Shadow of the Wyrm v1.1.5.1 "Losy"
