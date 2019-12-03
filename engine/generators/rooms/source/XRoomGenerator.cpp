@@ -9,7 +9,7 @@ using namespace std;
 void XRoomGenerator::generate(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   // First, generate the room.
-  IRoomGeneratorPtr brg = std::make_shared<BasicRoomGenerator>();
+  IRoomGeneratorPtr brg = std::make_unique<BasicRoomGenerator>();
   brg->generate(map, start_row, end_row, start_col, end_col);
 
   generate_x(map, start_row, end_row, start_col, end_col);

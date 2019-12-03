@@ -18,22 +18,22 @@ IRoomGeneratorPtr RoomGeneratorFactory::create_room_generator(const RoomType roo
   switch(room_type)
   {
     case RoomType::ROOM_TYPE_BASIC:
-      room_gen = std::make_shared<BasicRoomGenerator>();
+      room_gen = std::make_unique<BasicRoomGenerator>();
       break;
     case RoomType::ROOM_TYPE_X:
-      room_gen = std::make_shared<XRoomGenerator>();
+      room_gen = std::make_unique<XRoomGenerator>();
       break;
     case RoomType::ROOM_TYPE_WET:
-      room_gen = std::make_shared<WetRoomGenerator>();
+      room_gen = std::make_unique<WetRoomGenerator>();
       break;
     case RoomType::ROOM_TYPE_DANK:
-      room_gen = std::make_shared<DankRoomGenerator>();
+      room_gen = std::make_unique<DankRoomGenerator>();
       break;
     case RoomType::ROOM_TYPE_CAVE_IN:
-      room_gen = std::make_shared<CaveInRoomGenerator>();
+      room_gen = std::make_unique<CaveInRoomGenerator>();
       break;
     default:
-      room_gen = std::make_shared<NullRoomGenerator>();
+      room_gen = std::make_unique<NullRoomGenerator>();
       break;
   }
 

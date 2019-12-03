@@ -13,7 +13,7 @@ SearchStrategyFactory::~SearchStrategyFactory()
 
 SearchStrategyPtr SearchStrategyFactory::create_search_strategy(const SearchType st, CreaturePtr creature)
 {
-  SearchStrategyPtr ss = std::make_shared<AStarSearchStrategy>();
+  SearchStrategyPtr ss = std::make_unique<AStarSearchStrategy>();
   ss->set_creature(creature);
 
   return ss;
