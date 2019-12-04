@@ -35,53 +35,53 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
   switch(type)
   {
     case MaterialType::MATERIAL_TYPE_CLOTH:
-      material = std::make_shared<Cloth>();
+      material = std::make_unique<Cloth>();
       break;
     case MaterialType::MATERIAL_TYPE_DRAGON_SCALE:
-      material = std::make_shared<DragonScale>();
+      material = std::make_unique<DragonScale>();
       break;
     case MaterialType::MATERIAL_TYPE_GLASS:
-      material = std::make_shared<Glass>();
+      material = std::make_unique<Glass>();
       break;
     case MaterialType::MATERIAL_TYPE_IRON:
-      material = std::make_shared<Iron>();
+      material = std::make_unique<Iron>();
       break;
     case MaterialType::MATERIAL_TYPE_LEATHER:
-      material = std::make_shared<Leather>();
+      material = std::make_unique<Leather>();
       break;
     case MaterialType::MATERIAL_TYPE_PAPER:
-      material = std::make_shared<Paper>();
+      material = std::make_unique<Paper>();
       break;
     case MaterialType::MATERIAL_TYPE_STEEL:
-      material = std::make_shared<Steel>();
+      material = std::make_unique<Steel>();
       break;
     case MaterialType::MATERIAL_TYPE_STONE:
-      material = std::make_shared<Stone>();
+      material = std::make_unique<Stone>();
       break;
     case MaterialType::MATERIAL_TYPE_WOOD:
-      material = std::make_shared<Wood>();
+      material = std::make_unique<Wood>();
       break;
     case MaterialType::MATERIAL_TYPE_MARBLE:
-      material = std::make_shared<Marble>();
+      material = std::make_unique<Marble>();
       break;
     case MaterialType::MATERIAL_TYPE_ONYX:
-      material = std::make_shared<Onyx>();
+      material = std::make_unique<Onyx>();
       break;
     case MaterialType::MATERIAL_TYPE_IVORY:
-      material = std::make_shared<Ivory>();
+      material = std::make_unique<Ivory>();
       break;
     case MaterialType::MATERIAL_TYPE_BONE:
-      material = std::make_shared<Bone>();
+      material = std::make_unique<Bone>();
       break;
     case MaterialType::MATERIAL_TYPE_GOLD:
-      material = std::make_shared<Gold>();
+      material = std::make_unique<Gold>();
       break;
     case MaterialType::MATERIAL_TYPE_GASES:
-      material = std::make_shared<Gases>();
+      material = std::make_unique<Gases>();
       break;
     case MaterialType::MATERIAL_TYPE_UNKNOWN:
     default:
-      material = std::make_shared<UnknownMaterial>();
+      material = std::make_unique<UnknownMaterial>();
       break;
   }
 

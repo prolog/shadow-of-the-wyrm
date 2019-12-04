@@ -30,4 +30,4 @@ class IFeatureManipulator
     FeaturePtr feature;
 };
 
-using IFeatureManipulatorPtr = std::shared_ptr<IFeatureManipulator>;
+using IFeatureManipulatorPtr = std::unique_ptr<IFeatureManipulator>;

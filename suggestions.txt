@@ -1,4 +1,5 @@
 Me:
+- Wind level should affect water shimmer
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
