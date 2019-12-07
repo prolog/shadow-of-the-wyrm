@@ -16,7 +16,8 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> CrossShapeProcessor::get_affe
 
   uint range = spell.get_range();
   MovementPath movement_path;
-  DisplayTile dt('*', static_cast<int>(spell.get_colour()));
+  Symbol s('*', spell.get_colour());
+  DisplayTile dt(s);
   vector<Direction> directions = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST};
   int offset = 1;
   TileMagicChecker tmc;

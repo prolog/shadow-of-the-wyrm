@@ -405,11 +405,13 @@ void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint ter
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDLRender render(sdld);
-    int col = current_tile.get_colour();
-    Colour colour = static_cast<Colour>(col);
+
+    Colour colour = static_cast<Colour>(current_tile.get_colour());
+    Symbol s = current_tile.get_symbol();
+    uchar char_symbol = s.get_symbol();
 
     enable_colour(colour);
-    render.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), terminal_row, terminal_col, current_tile.get_symbol(), sdld.get_fg_colour(), sdld.get_bg_colour());
+    render.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), terminal_row, terminal_col, char_symbol, sdld.get_fg_colour(), sdld.get_bg_colour());
     disable_colour(colour);
   }
 }

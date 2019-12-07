@@ -1,5 +1,12 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Symbol, char_data_no_spritesheet)
+{
+  Symbol s('a', Colour::COLOUR_RED);
+
+  EXPECT_FALSE(s.get_uses_spritesheet());
+}
+
 TEST(SW_World_Symbol, object_creation_and_comparison)
 {
   SpritesheetLocation sl("abc", 1, 2);

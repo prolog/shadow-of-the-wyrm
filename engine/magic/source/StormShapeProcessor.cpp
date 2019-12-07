@@ -76,7 +76,8 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
 
   size_t coords_size = coords.size();
   uint spell_radius = spell.get_shape().get_radius();
-  DisplayTile dt('*', static_cast<int>(spell.get_colour()));
+  Symbol s('*', spell.get_colour());
+  DisplayTile dt(s);
 
   Game& game = Game::instance();
   ISeasonPtr season = game.get_current_world()->get_calendar().get_season();

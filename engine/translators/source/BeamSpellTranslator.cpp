@@ -41,7 +41,8 @@ DisplayTile BeamSpellTranslator::create_display_tile(const uint spell_burst_rang
     beam_symbol = SpellConstants::BEAM_BURST_SYMBOL;
   }
 
-  DisplayTile dt(beam_symbol, static_cast<int>(colour));
+  Symbol s(beam_symbol, colour);
+  DisplayTile dt(s);
   return dt;
 }
 

@@ -48,7 +48,8 @@ DisplayTile DisplayMap::at(const Coordinate& c) const
   }
   else
   {
-    DisplayTile dt(' ', static_cast<int>(Colour::COLOUR_BLACK));
+    Symbol s(' ', Colour::COLOUR_BLACK);
+    DisplayTile dt(s);
     return dt;
   }
 }

@@ -185,7 +185,8 @@ void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creatu
     CurrentCreatureAbilities cca;
     AnimationTranslator at(game.get_display());
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-    DisplayTile display_tile(trap->get_trigger_symbol(), static_cast<int>(trap->get_colour()));
+    Symbol s(trap->get_trigger_symbol(), trap->get_colour());
+    DisplayTile display_tile(s);
     MovementPath movement_path;
 
     movement_path.push_back({make_pair(display_tile, creature_coord)});

@@ -332,7 +332,8 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
 
 DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const uchar symbol, const Colour colour)
 {
-  DisplayTile display_tile(symbol, static_cast<int>(colour));
+  Symbol s(symbol, colour);
+  DisplayTile display_tile(s);
   
   return display_tile;  
 }
@@ -365,8 +366,8 @@ DisplayTile MapTranslator::create_unseen_and_unexplored_display_tile()
 {
   DisplayTile display_tile;
   
-  display_tile.set_symbol(' ');
-  display_tile.set_colour(static_cast<int>(Colour::COLOUR_BLACK));
+  Symbol s(' ', Colour::COLOUR_BLACK);
+  display_tile.set_symbol(s);
   
   return display_tile;  
 }

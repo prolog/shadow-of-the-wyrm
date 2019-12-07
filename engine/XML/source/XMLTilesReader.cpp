@@ -95,7 +95,8 @@ void XMLTilesReader::parse_tile_text_details(vector<DisplayTile>& tile_info, con
         tile_colours[Season::SEASON_WINTER] = winter_colour;
       }
 
-      DisplayTile current_tile_info(symbol, tile_colours);
+      Symbol s(symbol, Colour::COLOUR_WHITE);
+      DisplayTile current_tile_info(s, tile_colours);
       tile_info.push_back(current_tile_info);
     }
   }

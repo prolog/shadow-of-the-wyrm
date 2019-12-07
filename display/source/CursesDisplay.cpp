@@ -461,7 +461,7 @@ void CursesDisplay::draw_coordinate(const DisplayTile& display_tile, const unsig
 
   // Maps are always drawn on ncurses' stdscr.
   enable_colour(colour, stdscr);
-  mvprintw(terminal_row, terminal_col, "%c", display_tile.get_symbol());
+  mvprintw(terminal_row, terminal_col, "%c", display_tile.get_symbol().get_symbol());
   disable_colour(colour, stdscr);
 }
 

@@ -8,6 +8,7 @@ class Symbol : public ISerializable
 {
   public:
     Symbol();
+    Symbol(const uchar new_symbol, const Colour new_colour);
     Symbol(const uchar new_symbol, const Colour new_colour, const SpritesheetLocation& new_spritesheet_location);
     bool operator==(const Symbol& sym) const;
 

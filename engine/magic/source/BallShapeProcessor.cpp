@@ -111,7 +111,8 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
     vector<pair<DisplayTile, Coordinate>> frame;
     for (const Coordinate& c : current_coords)
     {
-      DisplayTile dt('*', static_cast<int>(spell.get_colour()));
+      Symbol s('*', spell.get_colour());
+      DisplayTile dt(s);
 
       if (use_tile_details)
       {
