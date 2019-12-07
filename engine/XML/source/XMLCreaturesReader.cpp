@@ -125,13 +125,15 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     {
       string symbol = XMLUtils::get_child_node_value(text_node, "Symbol");
       
-      if (!symbol.empty())
+      if (symbol.empty())
       {
-        creature->set_symbol(symbol.at(0));
+        symbol = '?';
       }
       
       Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(text_node, "Colour"));
-      creature->set_colour(colour);
+      Symbol s(symbol.at(0), colour);
+
+      creature->set_symbol(s);
     }
     
     XMLNode creature_generation_node = XMLUtils::get_next_element_by_local_name(creature_node, "CreatureGeneration");

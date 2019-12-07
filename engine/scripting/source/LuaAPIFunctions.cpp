@@ -5433,7 +5433,7 @@ int get_creature_colour(lua_State* ls)
 
     if (creature != nullptr)
     {
-      colour = static_cast<int>(creature->get_colour());
+      colour = static_cast<int>(creature->get_symbol().get_colour());
     }
   }
   else
@@ -5467,7 +5467,7 @@ int set_creature_colour(lua_State* ls)
 
       if (creature != nullptr)
       {
-        creature->set_colour(new_colour);
+        creature->get_symbol_ref().set_colour(new_colour);
       }
     }
   }

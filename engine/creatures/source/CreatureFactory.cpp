@@ -185,7 +185,6 @@ CreaturePtr CreatureFactory::create_by_creature_id
 // race/class, with all the XML-specified values as well.
 void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creature, const Creature& creature_instance, DecisionStrategyPtr template_decision_strategy)
 {
-    creature->set_colour(creature_instance.get_colour());
     creature->set_symbol(creature_instance.get_symbol());
     creature->set_short_description_sid(creature_instance.get_short_description_sid());
     creature->set_description_sid(creature_instance.get_description_sid());

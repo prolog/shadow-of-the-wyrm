@@ -210,14 +210,15 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
 // Create a display tile from a given creature
 DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& creature, const Colour override_colour)
 {
+  // JCD FIXME SYMBOL SPRITESHEET
   uchar symbol = '?';
   
   if (creature != nullptr)
   {
-    symbol = creature->get_symbol();
+    symbol = creature->get_symbol().get_symbol();
   }
 
-  return create_display_tile_from_symbol_and_colour(symbol, override_colour != Colour::COLOUR_UNDEFINED ? override_colour : creature->get_colour());
+  return create_display_tile_from_symbol_and_colour(symbol, override_colour != Colour::COLOUR_UNDEFINED ? override_colour : creature->get_symbol().get_colour());
 }
 
 // Create a display tile from a given tile feature

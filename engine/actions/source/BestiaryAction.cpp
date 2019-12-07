@@ -129,7 +129,9 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     vector<pair<Colour, string>> bestiary_text;
 
     // Display the symbol
-    bestiary_text.push_back(make_pair(creature->get_colour(), Char::to_string(creature->get_symbol())));
+    // JCD SYMBOL SPRITESHEET FIXME
+    Symbol s = creature->get_symbol();
+    bestiary_text.push_back(make_pair(s.get_colour(), Char::to_string(s.get_symbol())));
 
     // Display the creature short description
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));

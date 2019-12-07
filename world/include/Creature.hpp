@@ -31,6 +31,7 @@
 #include "StatisticTypes.hpp"
 #include "Status.hpp"
 #include "StatusTypes.hpp"
+#include "Symbol.hpp"
 
 // Forward declarations.
 class DecisionStrategy;
@@ -229,11 +230,9 @@ class Creature : public ISerializable
     Statistic get_addl_damage() const;
 
     // Basic display info
-    void set_symbol(const uchar new_symbol);
-    uchar get_symbol() const;
-
-    void set_colour(const Colour new_colour);
-    Colour get_colour() const;
+    void set_symbol(const Symbol new_symbol);
+    Symbol get_symbol() const;
+    Symbol& get_symbol_ref();
 
     // Level info
     void set_level(const Statistic& level);
@@ -439,8 +438,7 @@ class Creature : public ISerializable
     // Various flags
 
     // Basic creature info used for the display
-    uchar symbol;
-    Colour colour;
+    Symbol symbol;
 
     // Level information
     Statistic level;
