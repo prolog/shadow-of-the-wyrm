@@ -2,14 +2,17 @@
 
 TEST(SW_World_Tiles_Features_Sarcophagus, serialization_id)
 {
-  Sarcophagus sar;
+  Symbol s('_', Colour::COLOUR_WHITE);
+  Sarcophagus sar(s);
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SARCOPHAGUS, sar.get_class_identifier());
 }
 
 TEST(SW_World_Tiles_Features_Sarcophagus, saveload)
 {
-  Sarcophagus sar, sar2;
+  Symbol s('_', Colour::COLOUR_WHITE);
+  Sarcophagus sar(s);
+  Sarcophagus sar2(s);
 
   sar.set_inscription_sid("fdsaasdf");
 

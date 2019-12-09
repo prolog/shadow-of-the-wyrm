@@ -2,7 +2,8 @@
 
 TEST(SW_World_Tiles_Features_Trap, triggered)
 {
-  Trap trap;
+  Symbol s('&', Colour::COLOUR_WHITE);
+  Trap trap(s);
 
   trap.set_triggered(false);
 
@@ -17,7 +18,8 @@ TEST(SW_World_Tiles_Features_Trap, triggered)
 
 TEST(SW_World_Tiles_Features_Trap, set_hidden)
 {
-  Trap trap;
+  Symbol s('^', Colour::COLOUR_WHITE);
+  Trap trap(s);
   trap.set_triggered(false);
 
   EXPECT_TRUE(trap.get_is_hidden());
@@ -30,7 +32,8 @@ TEST(SW_World_Tiles_Features_Trap, set_hidden)
 
 TEST(SW_World_Tiles_Features_Trap, serialization_id)
 {
-  Trap trap;
+  Symbol s('^', Colour::COLOUR_WHITE);
+  Trap trap(s);
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_TRAP, trap.get_class_identifier());
 }
@@ -38,7 +41,8 @@ TEST(SW_World_Tiles_Features_Trap, serialization_id)
 TEST(SW_World_Tiles_Features_Trap, saveload)
 {
   try {
-    Trap t1, t2;
+    Symbol s('^', Colour::COLOUR_WHITE);
+    Trap t1(s), t2(s);
     Damage d1(5, 5, 7, DamageType::DAMAGE_TYPE_COLD, {}, false, false, false, false, false, false, false, false, 0, {});
 
     t1.set_triggered(true);

@@ -38,6 +38,118 @@ FeatureGenerator::~FeatureGenerator()
 
 FeatureSerializationMap FeatureGenerator::feature_map;
 
+Symbol FeatureGenerator::get_config_symbol(const ClassIdentifier ci)
+{
+  uchar s = '?';
+  
+  // JCD SYMBOL SPRITESHEET FIXME - refactor this later to get all the
+  // symbols out of the config data.
+  if (ci == ClassIdentifier::CLASS_ID_ALTAR || ci == ClassIdentifier::CLASS_ID_GOOD_ALTAR || ci == ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR || ci == ClassIdentifier::CLASS_ID_EVIL_ALTAR)
+  {
+    s = '_';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_BARREL)
+  {
+    s = 'o';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_BENCH)
+  {
+    s = '-';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_BED)
+  {
+    s = '~';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_DOOR || ci == ClassIdentifier::CLASS_ID_GATE)
+  {
+    s = '+';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_DECORATIVE_STATUE || 
+           ci == ClassIdentifier::CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE || 
+           ci == ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE || 
+           ci == ClassIdentifier::CLASS_ID_KNIGHT_DECORATIVE_STATUE || 
+           ci == ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE || 
+           ci == ClassIdentifier::CLASS_ID_QUEEN_DECORATIVE_STATUE || 
+           ci == ClassIdentifier::CLASS_ID_WARLORD_DECORATIVE_STATUE ||
+           ci == ClassIdentifier::CLASS_ID_REGULAR_STATUE || 
+           ci == ClassIdentifier::CLASS_ID_SORCEROR_DECORATIVE_STATUE)
+  {
+    s = 'I';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_EAST_WEST_PEW)
+  {
+    s = '|';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_FIRE_PILLAR)
+  {
+    s = 'Y';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_FORGE)
+  {
+    s = '&';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_FOUNTAIN)
+  {
+    s = '~';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH)
+  {
+    s = '&';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_PEW)
+  {
+    s = '-';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_PULPER)
+  {
+    s = ':';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_SARCOPHAGUS)
+  {
+    s = '0';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_SIGN)
+  {
+    s = '+';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_SLOT_MACHINE)
+  {
+    s = '$';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_STONE_MARKER)
+  {
+    s = '+';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_TABLE)
+  {
+    s = 'o';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_TANNERY)
+  {
+    s = ';';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_TRAP)
+  {
+    s = '^';
+  }
+  else if (ci == ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM)
+  {
+    s = ';';
+  }
+  else
+  {
+    ostringstream ss;
+    ss << "Couldn't find CI in FeatureGenerator::get_config_symbol: " << static_cast<int>(ci);
+    string error_msg = ss.str();
+
+    Log::instance().error(error_msg);
+    BOOST_ASSERT_MSG(true, error_msg.c_str());
+  }
+
+  Symbol symbol(s, Colour::COLOUR_WHITE); // colour is generally ignored - material colour used
+  return symbol;
+}
+
 FeaturePtr FeatureGenerator::create_feature(const ClassIdentifier ci)
 {
   FeaturePtr feature;
@@ -74,7 +186,7 @@ LockPtr FeatureGenerator::create_lock()
 
 TrapPtr FeatureGenerator::create_trap()
 {
-  TrapPtr trap = std::make_shared<Trap>();
+  TrapPtr trap = std::make_shared<Trap>(get_config_symbol(ClassIdentifier::CLASS_ID_TRAP));
   return trap;
 }
 
@@ -82,37 +194,37 @@ void FeatureGenerator::initialize_feature_map()
 {
   feature_map.clear();
 
-  FeaturePtr good_altar         = std::make_shared<GoodAltar>();
-  FeaturePtr neutral_altar      = std::make_shared<NeutralAltar>();
-  FeaturePtr evil_altar         = std::make_shared<EvilAltar>();
-  FeaturePtr king_statue        = std::make_shared<KingDecorativeStatue>();
-  FeaturePtr queen_statue       = std::make_shared<QueenDecorativeStatue>();
-  FeaturePtr warlord_statue     = std::make_shared<WarlordDecorativeStatue>();
-  FeaturePtr knight_statue      = std::make_shared<KnightDecorativeStatue>();
-  FeaturePtr high_priest_statue = std::make_shared<HighPriestDecorativeStatue>();
-  FeaturePtr sorceror_statue    = std::make_shared<SorcerorDecorativeStatue>();
-  FeaturePtr bench              = std::make_shared<Bench>();
-  FeaturePtr door               = std::make_shared<Door>();
-  FeaturePtr ew_pew             = std::make_shared<EastWestPew>();
-  FeaturePtr fire_pillar        = std::make_shared<FirePillar>();
-  FeaturePtr fountain           = std::make_shared<Fountain>();
-  FeaturePtr gate               = std::make_shared<Gate>();
-  FeaturePtr pew                = std::make_shared<Pew>();
-  FeaturePtr petrified_corpse   = std::make_shared<PetrifiedCorpseStatue>();
-  FeaturePtr sarcophagus        = std::make_shared<Sarcophagus>();
-  FeaturePtr barrel             = std::make_shared<Barrel>();
-  FeaturePtr forge              = std::make_shared<Forge>();
-  FeaturePtr tannery            = std::make_shared<Tannery>();
-  FeaturePtr pulper             = std::make_shared<Pulper>();
-  FeaturePtr jeweler_workbench  = std::make_shared<JewelerWorkbench>();
-  FeaturePtr wheel_and_loom     = std::make_shared<WheelAndLoom>();
-  FeaturePtr trap               = std::make_shared<Trap>();
-  FeaturePtr bed                = std::make_shared<Bed>();
-  FeaturePtr stone_marker       = std::make_shared<StoneMarker>();
-  FeaturePtr table              = std::make_shared<Table>();
-  FeaturePtr basic_feature      = std::make_shared<BasicFeature>();
-  FeaturePtr slot_machine       = std::make_shared<SlotMachine>();
-  FeaturePtr sign               = std::make_shared<Sign>("fake_sid");
+  FeaturePtr good_altar         = std::make_shared<GoodAltar>(get_config_symbol(ClassIdentifier::CLASS_ID_GOOD_ALTAR));
+  FeaturePtr neutral_altar      = std::make_shared<NeutralAltar>(get_config_symbol(ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR));
+  FeaturePtr evil_altar         = std::make_shared<EvilAltar>(get_config_symbol(ClassIdentifier::CLASS_ID_EVIL_ALTAR));
+  FeaturePtr king_statue        = std::make_shared<KingDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE));
+  FeaturePtr queen_statue       = std::make_shared<QueenDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_QUEEN_DECORATIVE_STATUE));
+  FeaturePtr warlord_statue     = std::make_shared<WarlordDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_WARLORD_DECORATIVE_STATUE));
+  FeaturePtr knight_statue      = std::make_shared<KnightDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_KNIGHT_DECORATIVE_STATUE));
+  FeaturePtr high_priest_statue = std::make_shared<HighPriestDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE));
+  FeaturePtr sorceror_statue    = std::make_shared<SorcerorDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_SORCEROR_DECORATIVE_STATUE));
+  FeaturePtr bench              = std::make_shared<Bench>(get_config_symbol(ClassIdentifier::CLASS_ID_BENCH));
+  FeaturePtr door               = std::make_shared<Door>(get_config_symbol(ClassIdentifier::CLASS_ID_DOOR));
+  FeaturePtr ew_pew             = std::make_shared<EastWestPew>(get_config_symbol(ClassIdentifier::CLASS_ID_EAST_WEST_PEW));
+  FeaturePtr fire_pillar        = std::make_shared<FirePillar>(get_config_symbol(ClassIdentifier::CLASS_ID_FIRE_PILLAR));
+  FeaturePtr fountain           = std::make_shared<Fountain>(get_config_symbol(ClassIdentifier::CLASS_ID_FOUNTAIN));
+  FeaturePtr gate               = std::make_shared<Gate>(get_config_symbol(ClassIdentifier::CLASS_ID_GATE));
+  FeaturePtr pew                = std::make_shared<Pew>(get_config_symbol(ClassIdentifier::CLASS_ID_PEW));
+  FeaturePtr petrified_corpse   = std::make_shared<PetrifiedCorpseStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE));
+  FeaturePtr sarcophagus        = std::make_shared<Sarcophagus>(get_config_symbol(ClassIdentifier::CLASS_ID_SARCOPHAGUS));
+  FeaturePtr barrel             = std::make_shared<Barrel>(get_config_symbol(ClassIdentifier::CLASS_ID_BARREL));
+  FeaturePtr forge              = std::make_shared<Forge>(get_config_symbol(ClassIdentifier::CLASS_ID_FORGE));
+  FeaturePtr tannery            = std::make_shared<Tannery>(get_config_symbol(ClassIdentifier::CLASS_ID_TANNERY));
+  FeaturePtr pulper             = std::make_shared<Pulper>(get_config_symbol(ClassIdentifier::CLASS_ID_PULPER));
+  FeaturePtr jeweler_workbench  = std::make_shared<JewelerWorkbench>(get_config_symbol(ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH));
+  FeaturePtr wheel_and_loom     = std::make_shared<WheelAndLoom>(get_config_symbol(ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM));
+  FeaturePtr trap               = std::make_shared<Trap>(get_config_symbol(ClassIdentifier::CLASS_ID_TRAP));
+  FeaturePtr bed                = std::make_shared<Bed>(get_config_symbol(ClassIdentifier::CLASS_ID_BED));
+  FeaturePtr stone_marker       = std::make_shared<StoneMarker>(get_config_symbol(ClassIdentifier::CLASS_ID_STONE_MARKER));
+  FeaturePtr table              = std::make_shared<Table>(get_config_symbol(ClassIdentifier::CLASS_ID_TABLE));
+  FeaturePtr basic_feature      = std::make_shared<BasicFeature>(Symbol('?', Colour::COLOUR_WHITE));
+  FeaturePtr slot_machine       = std::make_shared<SlotMachine>(get_config_symbol(ClassIdentifier::CLASS_ID_SLOT_MACHINE));
+  FeaturePtr sign               = std::make_shared<Sign>(get_config_symbol(ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE), "fake_sid");
 
   feature_map = FeatureSerializationMap{{ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
                                         {ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -156,23 +268,29 @@ FeaturePtr FeatureGenerator::generate_altar(const std::string& deity_id, const A
   switch(alignment)
   {
     case AlignmentRange::ALIGNMENT_RANGE_EVIL:
-      altar = std::make_shared<EvilAltar>(deity_id);
+      altar = std::make_shared<EvilAltar>(get_config_symbol(ClassIdentifier::CLASS_ID_EVIL_ALTAR), deity_id);
       break;
     case AlignmentRange::ALIGNMENT_RANGE_NEUTRAL:
-      altar = std::make_shared<NeutralAltar>(deity_id);
+      altar = std::make_shared<NeutralAltar>(get_config_symbol(ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR), deity_id);
       break;
     case AlignmentRange::ALIGNMENT_RANGE_GOOD:
     default:
-      altar = std::make_shared<GoodAltar>(deity_id);
+      altar = std::make_shared<GoodAltar>(get_config_symbol(ClassIdentifier::CLASS_ID_GOOD_ALTAR), deity_id);
       break;    
   }
   
   return altar;
 }
 
+FeaturePtr FeatureGenerator::generate_barrel()
+{
+  FeaturePtr barrel = std::make_shared<Bed>(get_config_symbol(ClassIdentifier::CLASS_ID_BARREL));
+  return barrel;
+}
+
 FeaturePtr FeatureGenerator::generate_bed()
 {
-  FeaturePtr bed = std::make_shared<Bed>();
+  FeaturePtr bed = std::make_shared<Bed>(get_config_symbol(ClassIdentifier::CLASS_ID_BED));
   return bed;
 }
 
@@ -181,7 +299,7 @@ DoorPtr FeatureGenerator::generate_door(const EntranceStateType est)
 {
   LockPtr lock_info;
   EntranceState door_state;
-  DoorPtr door = std::make_shared<Door>(lock_info, door_state);
+  DoorPtr door = std::make_shared<Door>(get_config_symbol(ClassIdentifier::CLASS_ID_DOOR), lock_info, door_state);
   door->get_state_ref().set_state(est);
   return door;
 }
@@ -191,21 +309,21 @@ FeaturePtr FeatureGenerator::generate_gate()
 {
   LockPtr lock_info;
   EntranceState gate_state;
-  FeaturePtr gate = std::make_shared<Gate>(lock_info, gate_state);
+  FeaturePtr gate = std::make_shared<Gate>(get_config_symbol(ClassIdentifier::CLASS_ID_GATE), lock_info, gate_state);
   return gate;
 }
 
 // Generate a fire pillar
 FeaturePtr FeatureGenerator::generate_fire_pillar()
 {
-  FeaturePtr fire_pillar = std::make_shared<FirePillar>();
+  FeaturePtr fire_pillar = std::make_shared<FirePillar>(get_config_symbol(ClassIdentifier::CLASS_ID_FIRE_PILLAR));
   return fire_pillar;
 }
 
 // Generate a happy, bubbly fountain
 FeaturePtr FeatureGenerator::generate_fountain()
 {
-  FeaturePtr fountain = std::make_shared<Fountain>();
+  FeaturePtr fountain = std::make_shared<Fountain>(get_config_symbol(ClassIdentifier::CLASS_ID_FOUNTAIN));
   return fountain;
 }
 
@@ -217,11 +335,11 @@ FeaturePtr FeatureGenerator::generate_pew(const PewDirection pew_direction)
   switch(pew_direction)
   {
     case PewDirection::PEW_DIRECTION_NORTH_SOUTH:
-      pew = std::make_shared<Pew>();
+      pew = std::make_shared<Pew>(get_config_symbol(ClassIdentifier::CLASS_ID_PEW));
       break;
     case PewDirection::PEW_DIRECTION_EAST_WEST:
     default:
-      pew = std::make_shared<EastWestPew>();
+      pew = std::make_shared<EastWestPew>(get_config_symbol(ClassIdentifier::CLASS_ID_EAST_WEST_PEW));
       break;
   }
 
@@ -231,69 +349,69 @@ FeaturePtr FeatureGenerator::generate_pew(const PewDirection pew_direction)
 // Generate a wrought-iron bench
 FeaturePtr FeatureGenerator::generate_bench()
 {
-  FeaturePtr bench = std::make_shared<Bench>();
+  FeaturePtr bench = std::make_shared<Bench>(get_config_symbol(ClassIdentifier::CLASS_ID_BENCH));
   return bench;
 }
 
 // Generate a sarcophagus
 SarcophagusPtr FeatureGenerator::generate_sarcophagus(const MaterialType material_type)
 {
-  SarcophagusPtr sarcophagus = std::make_shared<Sarcophagus>(material_type);
+  SarcophagusPtr sarcophagus = std::make_shared<Sarcophagus>(get_config_symbol(ClassIdentifier::CLASS_ID_SARCOPHAGUS), material_type);
   return sarcophagus;
 }
 
 // Generate a slot machine
 SlotMachinePtr FeatureGenerator::generate_slot_machine(const MaterialType material_type, const int cost, const int pct_chance_win, const float payout_multiplier)
 {
-  SlotMachinePtr slot_machine = std::make_shared<SlotMachine>(material_type, cost, pct_chance_win, payout_multiplier);
+  SlotMachinePtr slot_machine = std::make_shared<SlotMachine>(get_config_symbol(ClassIdentifier::CLASS_ID_SLOT_MACHINE), material_type, cost, pct_chance_win, payout_multiplier);
   return slot_machine;
 }
 
 // Generate a forge
 FeaturePtr FeatureGenerator::generate_forge()
 {
-  FeaturePtr forge = std::make_shared<Forge>();
+  FeaturePtr forge = std::make_shared<Forge>(get_config_symbol(ClassIdentifier::CLASS_ID_FORGE));
   return forge;
 }
 
 // Generate a tannery
 FeaturePtr FeatureGenerator::generate_tannery()
 {
-  FeaturePtr tannery = std::make_shared<Tannery>();
+  FeaturePtr tannery = std::make_shared<Tannery>(get_config_symbol(ClassIdentifier::CLASS_ID_TANNERY));
   return tannery;
 }
 
 // Generate a pulper
 FeaturePtr FeatureGenerator::generate_pulper()
 {
-  FeaturePtr pulper = std::make_shared<Pulper>();
+  FeaturePtr pulper = std::make_shared<Pulper>(get_config_symbol(ClassIdentifier::CLASS_ID_PULPER));
   return pulper;
 }
 
 // Generate a jeweler's workbench
 FeaturePtr FeatureGenerator::generate_jeweler_workbench()
 {
-  FeaturePtr workbench = std::make_shared<JewelerWorkbench>();
+  FeaturePtr workbench = std::make_shared<JewelerWorkbench>(get_config_symbol(ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH));
   return workbench;
 }
 
 // Generate spinning wheel and loom
 FeaturePtr FeatureGenerator::generate_wheel_and_loom()
 {
-  FeaturePtr wheel_and_loom = std::make_shared<WheelAndLoom>();
+  FeaturePtr wheel_and_loom = std::make_shared<WheelAndLoom>(get_config_symbol(ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM));
   return wheel_and_loom;
 }
 
 // Generate a strange, stone marker
 FeaturePtr FeatureGenerator::generate_stone_marker()
 {
-  FeaturePtr stm = std::make_shared<StoneMarker>();
+  FeaturePtr stm = std::make_shared<StoneMarker>(get_config_symbol(ClassIdentifier::CLASS_ID_STONE_MARKER));
   return stm;
 }
 
 FeaturePtr FeatureGenerator::generate_table()
 {
-  FeaturePtr table = std::make_shared<Table>();
+  FeaturePtr table = std::make_shared<Table>(get_config_symbol(ClassIdentifier::CLASS_ID_TABLE));
   return table;
 }
 
@@ -322,12 +440,57 @@ FeaturePtr FeatureGenerator::generate_basic_feature(const string& basic_feature_
 // Construct and generate a basic feature
 FeaturePtr FeatureGenerator::generate_basic_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid)
 {
-  FeaturePtr feature = std::make_shared<BasicFeature>(mt, symbol, colour, desc_sid);
+  Symbol s(symbol, colour);
+  FeaturePtr feature = std::make_shared<BasicFeature>(s, mt, desc_sid);
+
   return feature;
 }
 
 FeaturePtr FeatureGenerator::generate_sign(const string& text_sid)
 {
-  FeaturePtr sign = std::make_shared<Sign>(text_sid);
+  FeaturePtr sign = std::make_shared<Sign>(get_config_symbol(ClassIdentifier::CLASS_ID_SIGN), text_sid);
+
   return sign;
+}
+
+// Generate a random decorative statue
+FeaturePtr FeatureGenerator::generate_decorative_statue(const DecorativeStatueType type)
+{
+  FeaturePtr statue;
+
+  static_assert(DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST == DecorativeStatueType(5), "Unexpected DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST value.");
+
+  switch(type)
+  {
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_KING:
+      statue = std::make_shared<KingDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE));
+      break;
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_QUEEN:
+      statue = std::make_shared<QueenDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_QUEEN_DECORATIVE_STATUE));
+      break;
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_WARLORD:
+      statue = std::make_shared<WarlordDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_WARLORD_DECORATIVE_STATUE));
+      break;
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_KNIGHT:
+      statue = std::make_shared<KnightDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_KNIGHT_DECORATIVE_STATUE));
+      break;
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_HIGH_PRIEST:
+      statue = std::make_shared<HighPriestDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE));
+      break;
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_SORCEROR:
+      statue = std::make_shared<SorcerorDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_SORCEROR_DECORATIVE_STATUE));
+      break;
+    default:
+      break;
+  }
+
+  return statue;
+}
+
+PetrifiedCorpseStatuePtr FeatureGenerator::generate_petrified_corpse_statue(const string& corpse_description_sid)
+{
+  PetrifiedCorpseStatuePtr statue;
+  statue = std::make_shared<PetrifiedCorpseStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE), corpse_description_sid);
+  
+  return statue;
 }

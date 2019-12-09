@@ -2,7 +2,6 @@
 #include "FortifiedChurchGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "RNG.hpp"
-#include "StatueGenerator.hpp"
 #include "TileGenerator.hpp"
 
 using std::string;
@@ -145,11 +144,11 @@ void FortifiedChurchGenerator::generate_statues(MapPtr map)
         statue_type = DecorativeStatueType::DECORATIVE_STATUE_TYPE_WARLORD;
       }
       
-      FeaturePtr west_statue = StatueGenerator::generate_decorative_statue(statue_type);
+      FeaturePtr west_statue = FeatureGenerator::generate_decorative_statue(statue_type);
       TilePtr west_tile = map->at(cur_row, altar_col-1);
       west_tile->set_feature(west_statue);
       
-      FeaturePtr east_statue = StatueGenerator::generate_decorative_statue(statue_type);
+      FeaturePtr east_statue = FeatureGenerator::generate_decorative_statue(statue_type);
       TilePtr east_tile = map->at(cur_row, altar_col+1);
       east_tile->set_feature(east_statue);
     }

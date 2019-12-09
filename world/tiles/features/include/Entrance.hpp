@@ -2,12 +2,13 @@
 #include "CreatureFeatures.hpp"
 #include "EntranceState.hpp"
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 class Entrance : public Feature
 {
   public:
-    Entrance();
-    Entrance(LockPtr new_lock, const EntranceState& new_state);
+    Entrance(const Symbol& new_symbol);
+    Entrance(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
     virtual bool operator==(const Entrance& door) const;
 
     virtual void set_state(const EntranceState& new_state);

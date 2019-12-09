@@ -2,8 +2,10 @@
 #include "AlignmentEnums.hpp"
 #include "Door.hpp"
 #include "Feature.hpp"
+#include "RegularStatues.hpp"
 #include "Sarcophagus.hpp"
 #include "SlotMachine.hpp"
+#include "StatueTypes.hpp"
 #include "Trap.hpp"
 
 enum struct PewDirection
@@ -21,6 +23,7 @@ class FeatureGenerator
     static LockPtr create_lock();
     static TrapPtr create_trap();
     static FeaturePtr generate_altar(const std::string& deity_id, const AlignmentRange range);
+    static FeaturePtr generate_barrel();
     static FeaturePtr generate_bed();
     static DoorPtr generate_door(const EntranceStateType et = EntranceStateType::ENTRANCE_TYPE_OPEN);
     static FeaturePtr generate_gate();
@@ -40,8 +43,12 @@ class FeatureGenerator
     static FeaturePtr generate_basic_feature(const std::string& basic_feature_id);
     static FeaturePtr generate_basic_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid);
     static FeaturePtr generate_sign(const std::string& text_sid);
+    static FeaturePtr generate_decorative_statue(const DecorativeStatueType statue_type);
+    static PetrifiedCorpseStatuePtr generate_petrified_corpse_statue(const std::string& corpse_description_sid);
 
   protected:
+    static Symbol get_config_symbol(const ClassIdentifier ci);
+
     FeatureGenerator();
     ~FeatureGenerator();
 

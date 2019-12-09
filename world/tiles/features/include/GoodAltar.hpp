@@ -6,8 +6,8 @@
 class GoodAltar : public Altar
 {
   public:
-    GoodAltar();
-    GoodAltar(const std::string& new_deity_id);
+    GoodAltar(const Symbol& new_symbol);
+    GoodAltar(const Symbol& new_symbol, const std::string& new_deity_id);
     virtual Feature* clone() override;
 
   protected:

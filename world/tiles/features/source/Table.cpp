@@ -5,19 +5,14 @@
 
 using namespace std;
 
-Table::Table()
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Table::Table(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* Table::clone()
 {
   return new Table(*this);
-}
-
-uchar Table::get_symbol() const
-{
-  return 'o';
 }
 
 string Table::get_description_sid() const

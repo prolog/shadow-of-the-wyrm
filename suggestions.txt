@@ -1,4 +1,10 @@
 Me:
+- Feature refactoring:
+  - same as Symbol, but desc
+  - then, move all the now-flyweight feature classes into fewer files
+  - then, set a flag for which colour behaviour to use (material-based vs
+    actual colour)
+  - then, rework the code so that BasicFeature is no longer required
 - Wind level should affect water shimmer
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.

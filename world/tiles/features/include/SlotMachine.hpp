@@ -1,17 +1,17 @@
 #pragma once
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 class SlotMachine : public Feature
 {
   public:
-    SlotMachine(const MaterialType material, const int cost, const int pct_chance_win, const float payout_multiplier);
-    SlotMachine();
-    SlotMachine(const MaterialType material);
+    SlotMachine(const Symbol& new_symbol, const MaterialType material, const int cost, const int pct_chance_win, const float payout_multiplier);
+    SlotMachine(const Symbol& new_symbol);
+    SlotMachine(const Symbol& new_symbol, const MaterialType material);
     bool operator==(const SlotMachine& sm) const;
 
     virtual Feature* clone() override;
 
-    virtual uchar get_symbol() const override;
     virtual Colour get_colour() const override;
 
     virtual void set_cost(const int new_cost);

@@ -5,19 +5,14 @@
 
 using namespace std;
 
-JewelerWorkbench::JewelerWorkbench()
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+JewelerWorkbench::JewelerWorkbench(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* JewelerWorkbench::clone()
 {
   return new JewelerWorkbench(*this);
-}
-
-uchar JewelerWorkbench::get_symbol() const
-{
-  return '&';
 }
 
 string JewelerWorkbench::get_description_sid() const

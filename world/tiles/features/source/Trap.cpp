@@ -6,8 +6,8 @@
 
 using namespace std;
 
-Trap::Trap() 
-: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol('?'), colour(Colour::COLOUR_WHITE), effect(EffectType::EFFECT_TYPE_NULL)
+Trap::Trap(const Symbol& new_symbol) 
+: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol('?'), colour(Colour::COLOUR_WHITE), effect(EffectType::EFFECT_TYPE_NULL)
 {
 }
 
@@ -106,11 +106,6 @@ bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
   }
 
   return apply_trap;
-}
-
-uchar Trap::get_symbol() const
-{
-  return '^';
 }
 
 void Trap::set_triggered(const bool new_triggered)

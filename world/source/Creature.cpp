@@ -1016,7 +1016,7 @@ Statistic Creature::get_addl_damage() const
   return addl_damage;
 }
 
-void Creature::set_symbol(const Symbol new_symbol)
+void Creature::set_symbol(const Symbol& new_symbol)
 {
   symbol = new_symbol;
 }

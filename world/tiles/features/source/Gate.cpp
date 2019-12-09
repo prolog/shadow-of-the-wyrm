@@ -3,7 +3,8 @@
 
 using std::string;
 
-Gate::Gate()
+Gate::Gate(const Symbol& new_symbol)
+: Entrance(new_symbol)
 {
 }
 
@@ -13,8 +14,8 @@ Feature* Gate::clone()
 }
 
 // Gates are always made of iron
-Gate::Gate(LockPtr new_lock, const EntranceState& new_state)
-: Entrance(new_lock, new_state)
+Gate::Gate(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state)
+: Entrance(new_symbol, new_lock, new_state)
 {
   set_material_type(MaterialType::MATERIAL_TYPE_IRON);
 }
@@ -24,9 +25,13 @@ bool Gate::get_is_blocking() const
   return (state.get_state() == EntranceStateType::ENTRANCE_TYPE_CLOSED);
 }
 
-uchar Gate::get_symbol() const
+// JCD SYMBOL SPRITESHEET FIXME
+Symbol Gate::get_symbol() const
 {
-  return state.get_symbol();
+  Symbol s = state.get_symbol();
+  s.set_colour(get_colour());
+
+  return s;
 }
 
 string Gate::get_description_sid() const

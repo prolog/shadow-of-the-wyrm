@@ -14,10 +14,10 @@ class DisplayTile
 {
   public:
     DisplayTile();
-    DisplayTile(const Symbol new_symbol); // Sets all seasons to the given colour
-    DisplayTile(const Symbol new_symbol, const SeasonTileColourMap& new_colours);
+    DisplayTile(const Symbol& new_symbol); // Sets all seasons to the given colour
+    DisplayTile(const Symbol& new_symbol, const SeasonTileColourMap& new_colours);
 
-    void  set_symbol(const Symbol new_symbol);
+    void  set_symbol(const Symbol& new_symbol);
     Symbol get_symbol() const;
 
     // Set/Get the colour for the season currently set on the tile - stateful.

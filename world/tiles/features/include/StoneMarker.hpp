@@ -1,15 +1,14 @@
 #pragma once
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 class StoneMarker : public Feature
 {
   public:
-    StoneMarker();
+    StoneMarker(const Symbol& new_symbol);
     virtual Feature* clone() override;
 
     bool operator==(const StoneMarker& t) const;
-
-    virtual uchar get_symbol() const override;
 
     virtual float get_hp_regeneration_multiplier() const override;
     virtual float get_ap_regeneration_multiplier() const override;

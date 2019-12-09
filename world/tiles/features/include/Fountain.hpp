@@ -1,13 +1,12 @@
 #pragma once
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 class Fountain : public Feature
 {
   public:
-    Fountain();
+    Fountain(const Symbol& new_symbol);
     virtual Feature* clone() override;
-
-    virtual uchar get_symbol() const override;
 
   protected:
     virtual std::string get_description_sid() const override;

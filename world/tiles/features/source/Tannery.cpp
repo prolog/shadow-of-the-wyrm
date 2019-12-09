@@ -5,19 +5,14 @@
 
 using namespace std;
 
-Tannery::Tannery()
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Tannery::Tannery(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* Tannery::clone()
 {
   return new Tannery(*this);
-}
-
-uchar Tannery::get_symbol() const
-{
-  return ';';
 }
 
 string Tannery::get_description_sid() const

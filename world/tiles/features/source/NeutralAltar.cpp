@@ -5,13 +5,13 @@
 using std::string;
 
 // This constructor is only used by the serialization code
-NeutralAltar::NeutralAltar()
-: Altar("", MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+NeutralAltar::NeutralAltar(const Symbol& new_symbol)
+: Altar(new_symbol, "", MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 
-NeutralAltar::NeutralAltar(const std::string& new_deity_id)
-: Altar(new_deity_id, MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+NeutralAltar::NeutralAltar(const Symbol& new_symbol, const std::string& new_deity_id)
+: Altar(new_symbol, new_deity_id, MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 

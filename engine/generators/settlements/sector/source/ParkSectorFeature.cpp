@@ -6,7 +6,6 @@
 #include "GameUtils.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
-#include "StatueGenerator.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
@@ -42,7 +41,7 @@ bool ParkSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coo
         {
           // Add a statue to the existing tile.
           DecorativeStatueType dst = static_cast<DecorativeStatueType>(RNG::range(static_cast<int>(DecorativeStatueType::DECORATIVE_STATUE_TYPE_FIRST), static_cast<int>(DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST)));
-          FeaturePtr statue = StatueGenerator::generate_decorative_statue(dst);
+          FeaturePtr statue = FeatureGenerator::generate_decorative_statue(dst);
 
           if (statue != nullptr)
           {

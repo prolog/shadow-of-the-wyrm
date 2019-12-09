@@ -7,21 +7,21 @@
 
 using namespace std;
 
-SlotMachine::SlotMachine(const MaterialType material, const int new_cost, const int new_pct_chance_win, const float new_payout_multiplier)
-: Feature(material, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL),
+SlotMachine::SlotMachine(const Symbol& new_symbol, const MaterialType material, const int new_cost, const int new_pct_chance_win, const float new_payout_multiplier)
+: Feature(material, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol),
 cost(new_cost),
 pct_chance_win(new_pct_chance_win),
 payout_multiplier(new_payout_multiplier)
 {
 }
 
-SlotMachine::SlotMachine()
-: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL), cost(1), pct_chance_win(0), payout_multiplier(0.0f)
+SlotMachine::SlotMachine(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), cost(1), pct_chance_win(0), payout_multiplier(0.0f)
 {
 }
 
-SlotMachine::SlotMachine(const MaterialType material_type)
-: Feature(material_type, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL),
+SlotMachine::SlotMachine(const Symbol& new_symbol, const MaterialType material_type)
+: Feature(material_type, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol),
 cost(1), pct_chance_win(0), payout_multiplier(0.0f)
 {
 }
@@ -65,11 +65,6 @@ void SlotMachine::set_payout_multiplier(const float new_payout_multiplier)
 float SlotMachine::get_payout_multiplier() const
 {
   return payout_multiplier;
-}
-
-uchar SlotMachine::get_symbol() const
-{
-  return '$';
 }
 
 Colour SlotMachine::get_colour() const

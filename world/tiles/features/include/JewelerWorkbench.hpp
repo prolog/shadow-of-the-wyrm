@@ -4,12 +4,10 @@
 class JewelerWorkbench : public Feature
 {
   public:
-    JewelerWorkbench();
+    JewelerWorkbench(const Symbol& new_symbol);
     virtual Feature* clone() override;
 
     bool operator==(const JewelerWorkbench& j) const;
-
-    virtual uchar get_symbol() const override;
 
   protected:
     virtual std::string get_description_sid() const override;

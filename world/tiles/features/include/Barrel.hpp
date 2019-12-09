@@ -1,15 +1,14 @@
 #pragma once
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 class Barrel : public Feature
 {
   public:
-    Barrel();
+    Barrel(const Symbol& new_symbol);
     virtual Feature* clone() override;
 
     bool operator==(const Barrel& b) const;
-
-    virtual uchar get_symbol() const override;
 
     virtual void set_drinks(const int new_drinks);
     int get_drinks() const;

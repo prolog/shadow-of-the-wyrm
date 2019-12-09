@@ -2,11 +2,12 @@
 #include <memory>
 #include "Damage.hpp"
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 class Trap : public Feature
 {
   public:
-    Trap();
+    Trap(const Symbol& new_symbol);
     virtual ~Trap() {};
     bool operator==(const Trap& trap) const;
     
@@ -18,8 +19,6 @@ class Trap : public Feature
     virtual bool get_is_dangerous() const override;
 
     virtual bool apply_on_movement(CreaturePtr creature) const override;
-
-    virtual uchar get_symbol() const override;
 
     void set_triggered(const bool new_triggered);
     bool get_triggered() const;

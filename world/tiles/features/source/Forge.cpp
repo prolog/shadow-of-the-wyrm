@@ -5,19 +5,14 @@
 
 using namespace std;
 
-Forge::Forge()
-: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Forge::Forge(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* Forge::clone()
 {
   return new Forge(*this);
-}
-
-uchar Forge::get_symbol() const
-{
-  return '&';
 }
 
 string Forge::get_description_sid() const

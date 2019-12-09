@@ -3,13 +3,13 @@
 
 using namespace std;
 
-BasicFeature::BasicFeature()
-: Feature(MaterialType::MATERIAL_TYPE_UNKNOWN, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL), symbol('?'), colour(Colour::COLOUR_WHITE)
+BasicFeature::BasicFeature(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_UNKNOWN, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), colour(new_symbol.get_colour())
 {
 }
 
-BasicFeature::BasicFeature(const MaterialType mat, const uchar new_symbol, const Colour new_colour, const string& new_desc_sid)
-: Feature(mat, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL), symbol(new_symbol), colour(new_colour), description_sid(new_desc_sid)
+BasicFeature::BasicFeature(const Symbol& new_symbol, const MaterialType mat, const string& new_desc_sid)
+: Feature(mat, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), description_sid(new_desc_sid), colour(new_symbol.get_colour())
 {
 }
 
@@ -23,22 +23,10 @@ bool BasicFeature::operator==(const BasicFeature& bf) const
   bool equal = true;
 
   equal = Feature::operator==(bf);
-
-  equal = equal && (symbol == bf.symbol);
-  equal = equal && (colour == bf.colour);
   equal = equal && (description_sid == bf.description_sid);
+  equal = equal && (colour == bf.colour);
 
   return equal;
-}
-
-void BasicFeature::set_symbol(const uchar new_symbol)
-{
-  symbol = new_symbol;
-}
-
-uchar BasicFeature::get_symbol() const
-{
-  return symbol;
 }
 
 void BasicFeature::set_colour(const Colour new_colour)
@@ -70,9 +58,8 @@ bool BasicFeature::serialize(std::ostream& stream) const
 {
   Feature::serialize(stream);
 
-  Serialize::write_uchar(stream, symbol);
-  Serialize::write_enum(stream, colour);
   Serialize::write_string(stream, description_sid);
+  Serialize::write_enum(stream, colour);
 
   return true;
 }
@@ -81,9 +68,8 @@ bool BasicFeature::deserialize(std::istream& stream)
 {
   Feature::deserialize(stream);
 
-  Serialize::read_uchar(stream, symbol);
-  Serialize::read_enum(stream, colour);
   Serialize::read_string(stream, description_sid);
+  Serialize::read_enum(stream, colour);
 
   return true;
 }

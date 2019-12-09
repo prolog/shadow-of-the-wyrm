@@ -4,8 +4,8 @@
 using std::string;
 
 // Abstract base decorative statue class.
-DecorativeStatue::DecorativeStatue()
-: Feature(MaterialType::MATERIAL_TYPE_MARBLE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+DecorativeStatue::DecorativeStatue(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_MARBLE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
@@ -14,19 +14,14 @@ bool DecorativeStatue::get_is_blocking() const
   return true;
 }
 
-uchar DecorativeStatue::get_symbol() const
-{
-  return 'I';
-}
-
 ClassIdentifier DecorativeStatue::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_DECORATIVE_STATUE;
 }
 
 // King
-KingDecorativeStatue::KingDecorativeStatue()
-: DecorativeStatue()
+KingDecorativeStatue::KingDecorativeStatue(const Symbol& new_symbol)
+: DecorativeStatue(new_symbol)
 {
 }
 
@@ -46,8 +41,8 @@ ClassIdentifier KingDecorativeStatue::internal_class_identifier() const
 }
 
 // Queen
-QueenDecorativeStatue::QueenDecorativeStatue()
-: DecorativeStatue()
+QueenDecorativeStatue::QueenDecorativeStatue(const Symbol& new_symbol)
+: DecorativeStatue(new_symbol)
 {
 }
 
@@ -67,8 +62,8 @@ ClassIdentifier QueenDecorativeStatue::internal_class_identifier() const
 }
 
 // Warlord
-WarlordDecorativeStatue::WarlordDecorativeStatue()
-: DecorativeStatue()
+WarlordDecorativeStatue::WarlordDecorativeStatue(const Symbol& new_symbol)
+: DecorativeStatue(new_symbol)
 {
 }
 
@@ -88,8 +83,8 @@ ClassIdentifier WarlordDecorativeStatue::internal_class_identifier() const
 }
 
 // Knight
-KnightDecorativeStatue::KnightDecorativeStatue()
-: DecorativeStatue()
+KnightDecorativeStatue::KnightDecorativeStatue(const Symbol& new_symbol)
+: DecorativeStatue(new_symbol)
 {
 }
 
@@ -109,8 +104,8 @@ ClassIdentifier KnightDecorativeStatue::internal_class_identifier() const
 }
 
 // High Priest
-HighPriestDecorativeStatue::HighPriestDecorativeStatue()
-: DecorativeStatue()
+HighPriestDecorativeStatue::HighPriestDecorativeStatue(const Symbol& new_symbol)
+: DecorativeStatue(new_symbol)
 {
 }
 
@@ -130,8 +125,8 @@ ClassIdentifier HighPriestDecorativeStatue::internal_class_identifier() const
 }
 
 // Sorceror
-SorcerorDecorativeStatue::SorcerorDecorativeStatue()
-: DecorativeStatue()
+SorcerorDecorativeStatue::SorcerorDecorativeStatue(const Symbol& new_symbol)
+: DecorativeStatue(new_symbol)
 {
 }
 

@@ -5,19 +5,14 @@
 
 using namespace std;
 
-WheelAndLoom::WheelAndLoom()
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+WheelAndLoom::WheelAndLoom(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* WheelAndLoom::clone()
 {
   return new WheelAndLoom(*this);
-}
-
-uchar WheelAndLoom::get_symbol() const
-{
-  return ';';
 }
 
 string WheelAndLoom::get_description_sid() const

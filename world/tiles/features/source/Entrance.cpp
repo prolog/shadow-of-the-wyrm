@@ -5,13 +5,13 @@
 using namespace std;
 
 // This constructor is only used by the serialization code
-Entrance::Entrance()
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Entrance::Entrance(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, symbol)
 {
 }
 
-Entrance::Entrance(LockPtr new_lock, const EntranceState& new_state)
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL), state(new_state)
+Entrance::Entrance(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), state(new_state)
 {
   set_lock(new_lock);
 }

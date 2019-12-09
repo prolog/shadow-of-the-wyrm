@@ -4,7 +4,7 @@ DisplayTile::DisplayTile() : current_season(Season::SEASON_SPRING)
 {
 }
 
-DisplayTile::DisplayTile(const Symbol new_symbol) 
+DisplayTile::DisplayTile(const Symbol& new_symbol) 
 : symbol(new_symbol), current_season(Season::SEASON_SPRING)
 {
   int icolour = static_cast<int>(symbol.get_colour());
@@ -16,12 +16,12 @@ DisplayTile::DisplayTile(const Symbol new_symbol)
   }
 }
 
-DisplayTile::DisplayTile(const Symbol new_symbol, const SeasonTileColourMap& new_map) 
+DisplayTile::DisplayTile(const Symbol& new_symbol, const SeasonTileColourMap& new_map) 
 : symbol(new_symbol), current_season(Season::SEASON_SPRING), colours(new_map)
 {
 }
 
-void DisplayTile::set_symbol(const Symbol new_symbol)
+void DisplayTile::set_symbol(const Symbol& new_symbol)
 {
   symbol = new_symbol;
 }

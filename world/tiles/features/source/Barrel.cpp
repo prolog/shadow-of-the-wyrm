@@ -9,8 +9,8 @@ using namespace std;
 const int Barrel::MIN_DRINKS = 3;
 const int Barrel::MAX_DRINKS = 64;
 
-Barrel::Barrel()
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL), drinks(1), tap(false)
+Barrel::Barrel(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), drinks(1), tap(false)
 {
   initialize_drinks();
 }
@@ -36,11 +36,6 @@ bool Barrel::operator==(const Barrel& b) const
   equal = equal && (pour_item_id == b.pour_item_id);
 
   return equal;
-}
-
-uchar Barrel::get_symbol() const
-{
-  return 'o';
 }
 
 bool Barrel::pour()

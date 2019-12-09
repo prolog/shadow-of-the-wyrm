@@ -4,19 +4,14 @@
 
 using std::string;
 
-Pew::Pew()
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Pew::Pew(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* Pew::clone()
 {
   return new Pew(*this);
-}
-
-uchar Pew::get_symbol() const
-{
-  return '-';
 }
 
 string Pew::get_description_sid() const

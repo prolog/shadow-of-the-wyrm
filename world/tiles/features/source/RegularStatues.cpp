@@ -4,8 +4,8 @@
 
 using namespace std;
 
-RegularStatue::RegularStatue()
-: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+RegularStatue::RegularStatue(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
@@ -14,24 +14,19 @@ bool RegularStatue::get_is_blocking() const
   return true;
 }
 
-uchar RegularStatue::get_symbol() const
-{
-  return 'I';
-}
-
 ClassIdentifier RegularStatue::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_REGULAR_STATUE;
 }
 
 // Petrified corpses
-PetrifiedCorpseStatue::PetrifiedCorpseStatue()
-: RegularStatue()
+PetrifiedCorpseStatue::PetrifiedCorpseStatue(const Symbol& new_symbol)
+: RegularStatue(new_symbol)
 {
 }
 
-PetrifiedCorpseStatue::PetrifiedCorpseStatue(const string& corpse_sid)
-: corpse_description_sid(corpse_sid)
+PetrifiedCorpseStatue::PetrifiedCorpseStatue(const Symbol& new_symbol, const string& corpse_sid)
+: RegularStatue(new_symbol), corpse_description_sid(corpse_sid)
 {
 }
 

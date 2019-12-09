@@ -1,15 +1,14 @@
 #pragma once
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 class Table : public Feature
 {
   public:
-    Table();
+    Table(const Symbol& new_symbol);
     virtual Feature* clone() override;
 
     bool operator==(const Table& t) const;
-
-    virtual uchar get_symbol() const override;
 
   protected:
     virtual std::string get_description_sid() const override;

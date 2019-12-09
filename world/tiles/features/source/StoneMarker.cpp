@@ -5,19 +5,14 @@
 
 using namespace std;
 
-StoneMarker::StoneMarker()
-: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+StoneMarker::StoneMarker(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* StoneMarker::clone()
 {
   return new StoneMarker(*this);
-}
-
-uchar StoneMarker::get_symbol() const
-{
-  return '+';
 }
 
 float StoneMarker::get_hp_regeneration_multiplier() const

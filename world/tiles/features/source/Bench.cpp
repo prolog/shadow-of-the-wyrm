@@ -1,8 +1,8 @@
 #include "Bench.hpp"
 #include "FeatureDescriptionTextKeys.hpp"
 
-Bench::Bench()
-: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Bench::Bench(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
@@ -14,11 +14,6 @@ Feature* Bench::clone()
 std::string Bench::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BENCH;
-}
-
-uchar Bench::get_symbol() const
-{
-  return '-';
 }
 
 ClassIdentifier Bench::internal_class_identifier() const

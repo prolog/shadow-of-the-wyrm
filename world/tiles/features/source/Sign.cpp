@@ -5,9 +5,8 @@
 
 using namespace std;
 
-Sign::Sign(const string& new_text_sid)
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL),
-  text_sid(new_text_sid)
+Sign::Sign(const Symbol& new_symbol, const string& new_text_sid)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), text_sid(new_text_sid)
 {
 }
 
@@ -22,11 +21,6 @@ bool Sign::operator==(const Sign& s) const
 Feature* Sign::clone()
 {
   return new Sign(*this);
-}
-
-uchar Sign::get_symbol() const
-{
-  return '+';
 }
 
 string Sign::get_description_sid() const

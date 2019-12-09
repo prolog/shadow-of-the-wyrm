@@ -244,8 +244,10 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
 
   if (feature != nullptr)
   {
-    symbol = feature->get_symbol();
-    colour = feature->get_colour();
+    // JCD SYMBOL SPRITESHEET FIXME
+    Symbol s = feature->get_symbol();
+    symbol = s.get_symbol();
+    colour = s.get_colour();
   }
 
   if (override_colour != Colour::COLOUR_UNDEFINED)

@@ -1,16 +1,20 @@
 #pragma once
 #include "Feature.hpp"
+#include "Symbol.hpp"
+
+// JCD SYMBOL SPRITESHEET FIXME
+//
+// Once features all have their own per-instance symbol, remove most
+// of these classes...
 
 // A number of lightweight, decorative statues that can be generated
-// by the StatueGenerator.  These all inherit from the DecorativeStatue.
+// by the FeatureGenerator.  These all inherit from the DecorativeStatue.
 class DecorativeStatue : public Feature
 {
   public:
-    DecorativeStatue();
+    DecorativeStatue(const Symbol& new_symbol);
 
     virtual bool get_is_blocking() const override;
-
-    virtual uchar get_symbol() const override;
 
     // Purposefully does not implement get_description() - this allows
     // the class to be abstract, and ensures one of the concrete
@@ -25,7 +29,7 @@ class DecorativeStatue : public Feature
 class KingDecorativeStatue : public DecorativeStatue
 {
   public:
-    KingDecorativeStatue();
+    KingDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
   protected:
@@ -38,7 +42,7 @@ class KingDecorativeStatue : public DecorativeStatue
 class QueenDecorativeStatue : public DecorativeStatue
 {
   public:
-    QueenDecorativeStatue();
+    QueenDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
   protected:
@@ -51,7 +55,7 @@ class QueenDecorativeStatue : public DecorativeStatue
 class WarlordDecorativeStatue : public DecorativeStatue
 {
   public:
-    WarlordDecorativeStatue();
+    WarlordDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
   protected:
@@ -64,7 +68,7 @@ class WarlordDecorativeStatue : public DecorativeStatue
 class KnightDecorativeStatue : public DecorativeStatue
 {
   public:
-    KnightDecorativeStatue();
+    KnightDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
   protected:
@@ -77,7 +81,7 @@ class KnightDecorativeStatue : public DecorativeStatue
 class HighPriestDecorativeStatue : public DecorativeStatue
 {
   public:
-    HighPriestDecorativeStatue();
+    HighPriestDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
   protected:
@@ -90,7 +94,7 @@ class HighPriestDecorativeStatue : public DecorativeStatue
 class SorcerorDecorativeStatue : public DecorativeStatue
 {
   public:
-    SorcerorDecorativeStatue();
+    SorcerorDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
   protected:

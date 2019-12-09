@@ -1221,9 +1221,6 @@
     <ClInclude Include="world\tiles\features\include\Pew.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\StatueGenerator.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\tiles\features\include\StatueTypes.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
@@ -4323,6 +4320,12 @@
     <ClInclude Include="world\include\SpritesheetLocation.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Tannery.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\JewelerWorkbench.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4719,9 +4722,6 @@
       <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\Pew.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\Trap.cpp">
@@ -8198,9 +8198,6 @@
     <ClCompile Include="world\materials\source\Gases.cpp">
       <Filter>Source Files\world\materials\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\unit_tests\BasicFeature_test.cpp">
-      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\XML\source\XMLBasicFeatureReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
@@ -8653,6 +8650,9 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\SpritesheetLocation_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\BasicFeature_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

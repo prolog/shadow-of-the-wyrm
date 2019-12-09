@@ -3,7 +3,8 @@
 
 TEST(SW_World_Tiles_Features_Pew, serialization_id)
 {
-  Pew pew;
+  Symbol s('-', Colour::COLOUR_WHITE);
+  Pew pew(s);
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_PEW, pew.get_class_identifier());
 }
@@ -11,8 +12,9 @@ TEST(SW_World_Tiles_Features_Pew, serialization_id)
 // Just a properties test.
 TEST(SW_World_Titles_Features_Pew, saveload)
 {
-  Pew pew;
-  Pew pewpewpew;
+  Symbol s('-', Colour::COLOUR_WHITE);
+  Pew pew(s);
+  Pew pewpewpew(s);
 
   pew.set_additional_property("asdf", "123");
   std::stringstream ss;

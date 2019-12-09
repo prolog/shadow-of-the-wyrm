@@ -32,10 +32,11 @@ EntranceStateType EntranceState::get_state() const
   return state;
 }
 
-uchar EntranceState::get_symbol() const
+Symbol EntranceState::get_symbol() const
 {
-  uchar symbol;
-  
+  uchar symbol = '.';
+  Colour c = Colour::COLOUR_WHITE;
+
   switch(state)
   {
     case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
@@ -50,7 +51,8 @@ uchar EntranceState::get_symbol() const
       break;
   }
   
-  return symbol;
+  Symbol s(symbol, c);
+  return s;
 }
 
 bool EntranceState::serialize(ostream& stream) const

@@ -3,8 +3,8 @@
 
 using namespace std;
 
-Altar::Altar(const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange new_alignment_range)
-: Feature(new_material, new_alignment_range), deity_id(new_deity_id)
+Altar::Altar(const Symbol& new_symbol, const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange new_alignment_range)
+: Feature(new_material, new_alignment_range, new_symbol), deity_id(new_deity_id)
 {
 }
 
@@ -31,11 +31,6 @@ bool Altar::offer()
 {
   // Good things happen.
   return true;
-}
-
-uchar Altar::get_symbol() const
-{
-  return '_';
 }
 
 float Altar::get_piety_loss_multiplier() const

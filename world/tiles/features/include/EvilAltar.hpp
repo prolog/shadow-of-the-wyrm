@@ -5,8 +5,8 @@
 class EvilAltar : public Altar
 {
   public:
-    EvilAltar();
-    EvilAltar(const std::string& new_deity_id);
+    EvilAltar(const Symbol& new_symbol);
+    EvilAltar(const Symbol& new_symbol, const std::string& new_deity_id);
     virtual Feature* clone() override;
 
   protected:

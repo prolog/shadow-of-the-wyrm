@@ -5,13 +5,13 @@
 
 using namespace std;
 
-Sarcophagus::Sarcophagus()
-: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Sarcophagus::Sarcophagus(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
-Sarcophagus::Sarcophagus(const MaterialType material_type)
-: Feature(material_type, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Sarcophagus::Sarcophagus(const Symbol& new_symbol, const MaterialType material_type)
+: Feature(material_type, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
@@ -27,11 +27,6 @@ bool Sarcophagus::operator==(const Sarcophagus& sar) const
 Feature* Sarcophagus::clone()
 {
   return new Sarcophagus(*this);
-}
-
-uchar Sarcophagus::get_symbol() const
-{
-  return '0';
 }
 
 pair<string, vector<string>> Sarcophagus::get_description_and_replacement_sids() const

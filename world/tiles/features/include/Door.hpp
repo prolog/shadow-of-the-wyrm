@@ -1,19 +1,20 @@
 #pragma once
 #include "Entrance.hpp"
+#include "Symbol.hpp"
 
 // Doors are Features, but like Windows, will be re-used outside the
 // dungeon environment.
 class Door : public Entrance
 {
   public:
-    Door();
-    Door(LockPtr new_lock, const EntranceState& new_state);
+    Door(const Symbol& new_symbol);
+    Door(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
     virtual Feature* clone() override;
 
     virtual ~Door() {};
 
     virtual bool get_is_blocking() const override;
-    virtual uchar get_symbol()  const override;
+    virtual Symbol get_symbol()  const override;
 
   protected:
     virtual std::string get_description_sid() const override;

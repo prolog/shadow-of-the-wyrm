@@ -230,7 +230,7 @@ class Creature : public ISerializable
     Statistic get_addl_damage() const;
 
     // Basic display info
-    void set_symbol(const Symbol new_symbol);
+    void set_symbol(const Symbol& new_symbol);
     Symbol get_symbol() const;
     Symbol& get_symbol_ref();
 

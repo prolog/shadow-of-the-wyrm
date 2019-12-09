@@ -1,14 +1,14 @@
 #pragma once
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 class Sign : public Feature
 {
   public:
-    Sign(const std::string& new_text_sid);
+    Sign(const Symbol& new_symbol, const std::string& new_text_sid);
     bool operator==(const Sign& s) const;
 
     virtual Feature* clone() override;
-    virtual uchar get_symbol() const override;
     virtual bool get_is_blocking() const;
     virtual std::string get_text_sid() const;
     virtual bool serialize(std::ostream& stream) const override;

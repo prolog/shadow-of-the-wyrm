@@ -3,13 +3,13 @@
 
 using std::string;
 
-EvilAltar::EvilAltar()
-: Altar("", MaterialType::MATERIAL_TYPE_ONYX, AlignmentRange::ALIGNMENT_RANGE_EVIL)
+EvilAltar::EvilAltar(const Symbol& new_symbol)
+: Altar(new_symbol, "", MaterialType::MATERIAL_TYPE_ONYX, AlignmentRange::ALIGNMENT_RANGE_EVIL)
 {
 }
 
-EvilAltar::EvilAltar(const std::string& new_deity_id)
-: Altar(new_deity_id, MaterialType::MATERIAL_TYPE_ONYX, AlignmentRange::ALIGNMENT_RANGE_EVIL)
+EvilAltar::EvilAltar(const Symbol& new_symbol, const std::string& new_deity_id)
+: Altar(new_symbol, new_deity_id, MaterialType::MATERIAL_TYPE_ONYX, AlignmentRange::ALIGNMENT_RANGE_EVIL)
 {
 }
 

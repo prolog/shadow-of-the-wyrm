@@ -7,8 +7,8 @@ using namespace std;
 
 // JCD FIXME NEED COPY CONSTRUCTOR FOR LOCK PTR WHEN THIS IS COMPLETED
 
-Feature::Feature(const MaterialType new_material, const AlignmentRange new_alignment_range, const int new_uses)
-: material(new_material), alignment_range(new_alignment_range), uses(new_uses)
+Feature::Feature(const MaterialType new_material, const AlignmentRange new_alignment_range, const Symbol& new_symbol, const int new_uses)
+: material(new_material), alignment_range(new_alignment_range), symbol(new_symbol), uses(new_uses)
 {
 }
 
@@ -32,6 +32,7 @@ Feature& Feature::operator=(const Feature& feature)
 
     material = feature.material;
     alignment_range = feature.alignment_range;
+    symbol = feature.symbol;
     uses = feature.uses;
   }
 
@@ -48,6 +49,7 @@ bool Feature::operator==(const Feature& feature) const
   result = result && (shimmer_colours == feature.shimmer_colours);
   result = result && ((!lock && !(feature.lock)) || (lock && feature.lock && (*lock == *(feature.lock))));
   result = result && (alignment_range == feature.alignment_range);
+  result = result && (symbol == feature.symbol);
   result = result && (uses == feature.uses);
 
   return result;
@@ -155,7 +157,11 @@ Colour Feature::get_colour() const
   Colour colour = Colour::COLOUR_WHITE;
   
   MaterialPtr materialp = MaterialFactory::create_material(material);
-  colour = materialp->get_colour();
+
+  if (materialp != nullptr)
+  {
+    colour = materialp->get_colour();
+  }
   
   return colour;
 }
@@ -189,6 +195,17 @@ void Feature::set_alignment_range(const AlignmentRange new_alignment_range)
 AlignmentRange Feature::get_alignment_range() const
 {
   return AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;
+}
+
+void Feature::set_symbol(const Symbol& new_symbol)
+{
+  symbol = new_symbol;
+}
+
+Symbol Feature::get_symbol() const
+{
+  Symbol s(symbol.get_symbol(), get_colour());
+  return s;
 }
 
 void Feature::set_uses(const int new_uses)
@@ -260,6 +277,9 @@ bool Feature::serialize(ostream& stream) const
 
   Serialize::write_enum(stream, material);
   Serialize::write_enum(stream, alignment_range);
+  
+  symbol.serialize(stream);
+
   Serialize::write_enum(stream, uses);
   Serialize::write_string_map(stream, additional_properties);
 
@@ -281,6 +301,9 @@ bool Feature::deserialize(istream& stream)
 
   Serialize::read_enum(stream, material);
   Serialize::read_enum(stream, alignment_range);
+
+  symbol.deserialize(stream);
+
   Serialize::read_int(stream, uses);
   Serialize::read_string_map(stream, additional_properties);
 

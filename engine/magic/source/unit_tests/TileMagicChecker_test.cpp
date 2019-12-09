@@ -2,6 +2,7 @@
 #include "FieldTile.hpp"
 #include "RockTile.hpp"
 #include "FirePillar.hpp"
+#include "FeatureGenerator.hpp"
 
 TEST(SW_Engine_Magic_TileMagicChecker, does_tile_block_spell)
 {
@@ -18,7 +19,7 @@ TEST(SW_Engine_Magic_TileMagicChecker, does_tile_block_spell)
 
   TilePtr rock = std::make_shared<RockTile>();
   TilePtr field = std::make_shared<FieldTile>();
-  FeaturePtr fp = std::make_shared<FirePillar>();
+  FeaturePtr fp = FeatureGenerator::generate_fire_pillar();
 
   // Solid tiles should block
   EXPECT_TRUE(tmc.does_tile_block_spell(rock, spell));

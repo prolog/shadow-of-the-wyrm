@@ -4,9 +4,12 @@
 
 TEST(SW_World_Tiles_Feature_Entrances, saveload)
 {
-  Door door, door2;
+  Symbol s('+', Colour::COLOUR_WHITE);
+  Door door(s);
+  Door door2(s);
   LockPtr lock = LockPtr(new Lock());
-  Gate gate, gate2;
+  Gate gate(s);
+  Gate gate2(s);
 
   lock->set_lock_id("fdsafdsa");
 
@@ -33,8 +36,10 @@ TEST(SW_World_Tiles_Feature_Entrances, saveload)
 
 TEST(SW_World_Tiles_Feature_Entrances, serialization_id)
 {
-  Door door;
-  Gate gate;
+  Symbol s('+', Colour::COLOUR_WHITE);
+
+  Door door(s);
+  Gate gate(s);
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_DOOR, door.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_GATE, gate.get_class_identifier());

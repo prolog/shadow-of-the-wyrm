@@ -1260,6 +1260,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\tiles\features\include\Fountain.hpp" />
     <ClInclude Include="world\tiles\features\include\Gate.hpp" />
     <ClInclude Include="world\tiles\features\include\GoodAltar.hpp" />
+    <ClInclude Include="world\tiles\features\include\JewelerWorkbench.hpp" />
     <ClInclude Include="world\tiles\features\include\Lock.hpp" />
     <ClInclude Include="world\tiles\features\include\NeutralAltar.hpp" />
     <ClInclude Include="world\tiles\features\include\Pew.hpp" />
@@ -1268,10 +1269,10 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\tiles\features\include\Sarcophagus.hpp" />
     <ClInclude Include="world\tiles\features\include\Sign.hpp" />
     <ClInclude Include="world\tiles\features\include\SlotMachine.hpp" />
-    <ClInclude Include="world\tiles\features\include\StatueGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueTypes.hpp" />
     <ClInclude Include="world\tiles\features\include\StoneMarker.hpp" />
     <ClInclude Include="world\tiles\features\include\Table.hpp" />
+    <ClInclude Include="world\tiles\features\include\Tannery.hpp" />
     <ClInclude Include="world\tiles\features\include\Trap.hpp" />
     <ClInclude Include="world\tiles\features\include\WheelAndLoom.hpp" />
     <ClInclude Include="world\tiles\include\AirTile.hpp" />
@@ -3687,7 +3688,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\tiles\features\source\Sarcophagus.cpp" />
     <ClCompile Include="world\tiles\features\source\Sign.cpp" />
     <ClCompile Include="world\tiles\features\source\SlotMachine.cpp" />
-    <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp" />
     <ClCompile Include="world\tiles\features\source\StoneMarker.cpp" />
     <ClCompile Include="world\tiles\features\source\Table.cpp" />
     <ClCompile Include="world\tiles\features\source\Tannery.cpp" />
@@ -3709,8 +3709,6 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\BasicFeature_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Bed_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

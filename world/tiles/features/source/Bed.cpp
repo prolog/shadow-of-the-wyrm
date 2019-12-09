@@ -5,19 +5,14 @@
 
 using namespace std;
 
-Bed::Bed()
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Bed::Bed(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* Bed::clone()
 {
   return new Bed(*this);
-}
-
-uchar Bed::get_symbol() const
-{
-  return '~';
 }
 
 float Bed::get_hp_regeneration_multiplier() const

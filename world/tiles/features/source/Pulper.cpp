@@ -5,19 +5,14 @@
 
 using namespace std;
 
-Pulper::Pulper()
-: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Pulper::Pulper(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* Pulper::clone()
 {
   return new Pulper(*this);
-}
-
-uchar Pulper::get_symbol() const
-{
-  return ':';
 }
 
 string Pulper::get_description_sid() const

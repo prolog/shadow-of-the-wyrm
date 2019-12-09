@@ -1,16 +1,15 @@
 #pragma once
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 class Sarcophagus : public Feature
 {
   public:
-    Sarcophagus();
-    Sarcophagus(const MaterialType material);
+    Sarcophagus(const Symbol& new_symbol);
+    Sarcophagus(const Symbol& new_symbol, const MaterialType material);
     bool operator==(const Sarcophagus& sar) const;
 
     virtual Feature* clone() override;
-
-    virtual uchar get_symbol() const override;
 
     virtual std::pair<std::string, std::vector<std::string>> get_description_and_replacement_sids() const override;
 

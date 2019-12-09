@@ -1,16 +1,15 @@
 #pragma once
 #include "Feature.hpp"
+#include "Symbol.hpp"
 
 // A number of lightweight regular statues that can be generated
-// by the StatueGenerator.
+// by the FeatureGenerator.
 class RegularStatue : public Feature
 {
   public:
-    RegularStatue();
+    RegularStatue(const Symbol& new_symbol);
 
     virtual bool get_is_blocking() const override;
-
-    virtual uchar get_symbol() const override;
 
     // get_description_sid() not implemented because this is an abstract
     // parent class.
@@ -23,8 +22,8 @@ class RegularStatue : public Feature
 class PetrifiedCorpseStatue : public RegularStatue
 {
   public:
-    PetrifiedCorpseStatue();
-    PetrifiedCorpseStatue(const std::string& corpse_description_sid);
+    PetrifiedCorpseStatue(const Symbol& new_symbol);
+    PetrifiedCorpseStatue(const Symbol& new_symbol, const std::string& corpse_description_sid);
     bool operator==(const PetrifiedCorpseStatue& statue) const;
 
     void set_corpse_description_sid(const std::string& new_corpse_description_sid);

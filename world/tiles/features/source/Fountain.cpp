@@ -4,19 +4,14 @@
 
 using std::string;
 
-Fountain::Fountain()
-: Feature(MaterialType::MATERIAL_TYPE_MARBLE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
+Fountain::Fountain(const Symbol& new_symbol)
+: Feature(MaterialType::MATERIAL_TYPE_MARBLE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* Fountain::clone()
 {
   return new Fountain(*this);
-}
-
-uchar Fountain::get_symbol() const
-{
-  return '~';
 }
 
 string Fountain::get_description_sid() const

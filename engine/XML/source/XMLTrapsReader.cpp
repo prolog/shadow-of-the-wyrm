@@ -1,4 +1,5 @@
 #include "XMLTrapsReader.hpp"
+#include "FeatureGenerator.hpp"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node)
 
     for (const auto& xml_tile : trap_nodes)
     {
-      TrapPtr trap = std::make_shared<Trap>();
+      TrapPtr trap = FeatureGenerator::create_trap();
       parse_trap(xml_tile, trap);
 
       traps.push_back(trap);
