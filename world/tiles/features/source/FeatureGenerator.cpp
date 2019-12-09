@@ -1,8 +1,8 @@
 #include "FeatureGenerator.hpp"
 #include "Barrel.hpp"
-#include "BasicFeature.hpp"
 #include "Bench.hpp"
 #include "Bed.hpp"
+#include "ConfigurableFeature.hpp"
 #include "DecorativeStatues.hpp"
 #include "Door.hpp"
 #include "EastWestPew.hpp"
@@ -222,7 +222,7 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr bed                = std::make_shared<Bed>(get_config_symbol(ClassIdentifier::CLASS_ID_BED));
   FeaturePtr stone_marker       = std::make_shared<StoneMarker>(get_config_symbol(ClassIdentifier::CLASS_ID_STONE_MARKER));
   FeaturePtr table              = std::make_shared<Table>(get_config_symbol(ClassIdentifier::CLASS_ID_TABLE));
-  FeaturePtr basic_feature      = std::make_shared<BasicFeature>(Symbol('?', Colour::COLOUR_WHITE));
+  FeaturePtr config_feature     = std::make_shared<ConfigurableFeature>(Symbol('?', Colour::COLOUR_WHITE));
   FeaturePtr slot_machine       = std::make_shared<SlotMachine>(get_config_symbol(ClassIdentifier::CLASS_ID_SLOT_MACHINE));
   FeaturePtr sign               = std::make_shared<Sign>(get_config_symbol(ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE), "fake_sid");
 
@@ -253,7 +253,7 @@ void FeatureGenerator::initialize_feature_map()
                                         {ClassIdentifier::CLASS_ID_BED, bed},
                                         {ClassIdentifier::CLASS_ID_STONE_MARKER, stone_marker},
                                         {ClassIdentifier::CLASS_ID_TABLE, table},
-                                        {ClassIdentifier::CLASS_ID_BASIC_FEATURE, basic_feature},
+                                        {ClassIdentifier::CLASS_ID_CONFIGURABLE_FEATURE, config_feature},
                                         {ClassIdentifier::CLASS_ID_SLOT_MACHINE, slot_machine},
                                         {ClassIdentifier::CLASS_ID_SIGN, sign},
                                         {ClassIdentifier::CLASS_ID_PULPER, pulper}};
@@ -415,33 +415,33 @@ FeaturePtr FeatureGenerator::generate_table()
   return table;
 }
 
-// Generate a basic feature by ID.
+// Generate a configurable feature by ID.
 // Will return null if the feature doesn't exist in the game's collection.
-FeaturePtr FeatureGenerator::generate_basic_feature(const string& basic_feature_id)
+FeaturePtr FeatureGenerator::generate_configurable_feature(const string& configurable_feature_id)
 {
-  FeaturePtr basic_feature;
+  FeaturePtr configurable_feature;
   Game& game = Game::instance();
-  const FeatureMap& fm = game.get_basic_features_ref();
-  const auto f_it = fm.find(basic_feature_id);
+  const FeatureMap& fm = game.get_configurable_features_ref();
+  const auto f_it = fm.find(configurable_feature_id);
 
   if (f_it != fm.end())
   {
-    FeaturePtr bf = f_it->second;
+    FeaturePtr cf = f_it->second;
 
-    if (bf != nullptr)
+    if (cf != nullptr)
     {
-      basic_feature = std::shared_ptr<Feature>(f_it->second->clone());
+      configurable_feature = std::shared_ptr<Feature>(f_it->second->clone());
     }
   }
 
-  return basic_feature;
+  return configurable_feature;
 }
 
-// Construct and generate a basic feature
-FeaturePtr FeatureGenerator::generate_basic_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid)
+// Construct and generate a configurable
+FeaturePtr FeatureGenerator::generate_configurable_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid)
 {
   Symbol s(symbol, colour);
-  FeaturePtr feature = std::make_shared<BasicFeature>(s, mt, desc_sid);
+  FeaturePtr feature = std::make_shared<ConfigurableFeature>(s, mt, desc_sid);
 
   return feature;
 }

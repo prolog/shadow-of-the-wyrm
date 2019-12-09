@@ -59,12 +59,10 @@
 #include "Skills.hpp"
 #include "common.hpp"
 
-using namespace std;
-
-string map_to_string(MapPtr map, bool html=true);
-string map_to_html_string(MapPtr map);
-void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool use_html, string& start_tag, string& end_tag, const int row, const int col, const bool show_coords);
-void output_map(string map, string filename);
+std::string map_to_string(MapPtr map, bool html=true);
+std::string map_to_html_string(MapPtr map);
+void tile_to_string(TilePtr tile, std::string& tile_ascii, std::string& map_s, const bool use_html, std::string& start_tag, std::string& end_tag, const int row, const int col, const bool show_coords);
+void output_map(std::string map, std::string filename);
 
 // Random number generation function prototypes
 void test_rng();
@@ -80,52 +78,52 @@ void test_creature_generation();
 
 // Other maps
 void test_other_maps();
-string generate_void();
+std::string generate_void();
 
 // Custom maps
 void load_custom_maps();
-MapPtr load_custom_map(const string& fname_pattern, const string& map_id);
+MapPtr load_custom_map(const std::string& fname_pattern, const std::string& map_id);
 
 // Map testing stuff
 void test_bresenham_line();
 
 // Terrain generation function prototypes
-string generate_field();
-string generate_field_ruins();
-string generate_field_settlement_ruins();
-string generate_forest();
-string generate_marsh();
-string generate_settlement();
-string generate_hamlet();
-string generate_walled_settlement();
-string generate_scattered_settlement();
-string generate_dungeon();
-string generate_spiral_dungeon();
-string generate_field_road();
-string generate_forest_road();
-string generate_sea();
-string generate_world();
-string generate_cavern();
-string generate_ordered_graveyard();
-string generate_scattered_graveyard();
-string generate_keep();
-string generate_crypt();
-string generate_simple_church();
-string generate_fortified_church();
-string generate_cathedral();
-string generate_snaking_temple();
-string generate_simple_temple();
-string generate_grand_temple();
-string generate_island_sacrifice_site();
-string generate_rocky_sacrifice_site();
-string generate_overgrown_sacrifice_site();
-string generate_mine();
-string generate_castle();
-string generate_sewer();
-string generate_rectangular_shrine();
-string generate_cross_shrine();
-string generate_floating_tower();
-string generate_well();
+std::string generate_field();
+std::string generate_field_ruins();
+std::string generate_field_settlement_ruins();
+std::string generate_forest();
+std::string generate_marsh();
+std::string generate_settlement();
+std::string generate_hamlet();
+std::string generate_walled_settlement();
+std::string generate_scattered_settlement();
+std::string generate_dungeon();
+std::string generate_spiral_dungeon();
+std::string generate_field_road();
+std::string generate_forest_road();
+std::string generate_sea();
+std::string generate_world();
+std::string generate_cavern();
+std::string generate_ordered_graveyard();
+std::string generate_scattered_graveyard();
+std::string generate_keep();
+std::string generate_crypt();
+std::string generate_simple_church();
+std::string generate_fortified_church();
+std::string generate_cathedral();
+std::string generate_snaking_temple();
+std::string generate_simple_temple();
+std::string generate_grand_temple();
+std::string generate_island_sacrifice_site();
+std::string generate_rocky_sacrifice_site();
+std::string generate_overgrown_sacrifice_site();
+std::string generate_mine();
+std::string generate_castle();
+std::string generate_sewer();
+std::string generate_rectangular_shrine();
+std::string generate_cross_shrine();
+std::string generate_floating_tower();
+std::string generate_well();
 
 void   settlement_maps();
 void   city_maps();
@@ -134,32 +132,32 @@ void   initialize_settings();
 void   print_skill_name();
 void   race_info();
 void   class_info();
-void   print_race_info(RaceMap& race_map, const string& id);
-void   print_class_info(ClassMap& class_map, const string& id);
+void   print_race_info(RaceMap& race_map, const std::string& id);
+void   print_class_info(ClassMap& class_map, const std::string& id);
 
 void initialize_settings()
 {
   StringTable::load("shadowofthewyrmtext_en.ini");
 }
 
-void output_map(string map, string filename)
+void output_map(std::string map, std::string filename)
 {
-  ofstream output;
+  std::ofstream output;
   output.open(filename.c_str());
-  output << map << endl;
+  output << map << std::endl;
   output.close();
 }
 
-string map_to_string(MapPtr map, bool use_html)
+std::string map_to_string(MapPtr map, bool use_html)
 {
-  string map_s = "";
-  string tile_ascii = "";
+  std::string map_s = "";
+  std::string tile_ascii = "";
 
   Dimensions d = map->size();
   int rows = d.get_y();
   int cols = d.get_x();
 
-  string start_tag, end_tag;
+  std::string start_tag, end_tag;
 
   if (use_html)
   {
@@ -243,7 +241,7 @@ string map_to_string(MapPtr map, bool use_html)
   return map_s;
 }
 
-void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool use_html, string& start_tag, string& end_tag, const int row, const int col, const bool show_coords)
+void tile_to_string(TilePtr tile, std::string& tile_ascii, std::string& map_s, const bool use_html, std::string& start_tag, std::string& end_tag, const int row, const int col, const bool show_coords)
 {
   IInventoryPtr items = tile->get_items();
   bool has_creature = tile->has_creature();
@@ -252,29 +250,30 @@ void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool 
   {
     ItemPtr item = items->at(0);
     if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(item->get_colour()) + "\">";
-    ostringstream ss;
+    std::ostringstream ss;
     ss << item->get_symbol();
     tile_ascii = html_encode(ss.str());
   }
   else if (tile->has_feature() && !has_creature)
   {
     if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(tile->get_feature()->get_colour()) + "\">";
-    ostringstream ss;
-    ss << tile->get_feature()->get_symbol();
+    std::ostringstream ss;
+    ss << tile->get_feature()->get_symbol().get_symbol();
     tile_ascii = html_encode(ss.str());
   }
   else
   {
     ShimmerColours sc({ Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED });
-    DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, { Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED } /* ditto for colour overrides */, sc, tile, tile);
+    DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, false /*not timewalking*/, { Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED } /* ditto for colour overrides */, sc, tile, tile);
     if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
-    ostringstream ss;
+    std::ostringstream ss;
 
     if (show_coords)
     {
       ss << "(" << row << "," << col << ")";
     }
-    ss << dt.get_symbol();
+    
+    ss << dt.get_symbol().get_symbol();
 
     tile_ascii = html_encode(ss.str());
   }
@@ -282,15 +281,15 @@ void tile_to_string(TilePtr tile, string& tile_ascii, string& map_s, const bool 
   map_s = map_s + start_tag + tile_ascii + end_tag;
 }
 
-string generate_cavern()
+std::string generate_cavern()
 {
   GeneratorPtr cavern_gen = std::make_shared<CavernGenerator>("");
   MapPtr map = cavern_gen->generate();
-  cout << map_to_string(map, false);
+  std::cout << map_to_string(map, false);
   return map_to_string(map);
 }
 
-string generate_ordered_graveyard()
+std::string generate_ordered_graveyard()
 {
   bool inc_tomb = false;
   int rand = RNG::range(0, 1);
@@ -298,11 +297,11 @@ string generate_ordered_graveyard()
 
   GeneratorPtr graveyard_gen = GraveyardGeneratorFactory::create_ordered_graveyard_generator("", inc_tomb);
   MapPtr map = graveyard_gen->generate();
-  cout << map_to_string(map, false);
+  std::cout << map_to_string(map, false);
   return map_to_string(map);
 }
 
-string generate_scattered_graveyard()
+std::string generate_scattered_graveyard()
 {
   bool inc_tomb = false;
   int rand = RNG::range(0, 1);
@@ -310,135 +309,135 @@ string generate_scattered_graveyard()
   
   GeneratorPtr graveyard_gen = GraveyardGeneratorFactory::create_scattered_graveyard_generator("", inc_tomb);
   MapPtr map = graveyard_gen->generate();
-  cout << map_to_string(map, false);
+  std::cout << map_to_string(map, false);
   return map_to_string(map);  
 }
 
-string generate_keep()
+std::string generate_keep()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr base_map = field_gen->generate();
   GeneratorPtr keep_gen = std::make_shared<KeepGenerator>(base_map);
   MapPtr keep_map = keep_gen->generate();
-  cout << map_to_string(keep_map, false);
+  std::cout << map_to_string(keep_map, false);
   return map_to_string(keep_map);
 }
 
-string generate_crypt()
+std::string generate_crypt()
 {
   GeneratorPtr crypt_gen = std::make_shared<CryptGenerator>("");
   MapPtr crypt_map = crypt_gen->generate();
-  cout << map_to_string(crypt_map, false);
+  std::cout << map_to_string(crypt_map, false);
   return map_to_string(crypt_map);
 }
 
-string generate_simple_church()
+std::string generate_simple_church()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr map = field_gen->generate();
   GeneratorPtr church_gen = std::make_shared<SimpleChurchGenerator>("", map);
   MapPtr church_map = church_gen->generate();
-  cout << map_to_string(church_map, false);
+  std::cout << map_to_string(church_map, false);
   return map_to_string(church_map);
 }
 
-string generate_fortified_church()
+std::string generate_fortified_church()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr church_gen = std::make_shared<FortifiedChurchGenerator>("", field_map);
   MapPtr church_map = church_gen->generate();
-  cout << map_to_string(church_map, false);
+  std::cout << map_to_string(church_map, false);
   return map_to_string(church_map);
 }
 
-string generate_cathedral()
+std::string generate_cathedral()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr cathedral_gen = std::make_shared<CathedralGenerator>("", field_map);
   MapPtr cathedral_map = cathedral_gen->generate();
-  cout << map_to_string(cathedral_map, false);
+  std::cout << map_to_string(cathedral_map, false);
   return map_to_string(cathedral_map);
 }
 
-string generate_snaking_temple()
+std::string generate_snaking_temple()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr temple_gen = std::make_shared<SnakingTempleGenerator>("", field_map);
   MapPtr temple_map = temple_gen->generate();
-  cout << map_to_string(temple_map, false);
+  std::cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
 }
 
-string generate_simple_temple()
+std::string generate_simple_temple()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr temple_gen = std::make_shared<SimpleTempleGenerator>("", field_map);
   MapPtr temple_map = temple_gen->generate();
-  cout << map_to_string(temple_map, false);
+  std::cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
 }
 
-string generate_grand_temple()
+std::string generate_grand_temple()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr temple_gen = std::make_shared<GrandTempleGenerator>("", field_map);
   MapPtr temple_map = temple_gen->generate();
-  cout << map_to_string(temple_map, false);
+  std::cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
 }
 
-string generate_island_sacrifice_site()
+std::string generate_island_sacrifice_site()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr site_gen = std::make_shared<IslandSacrificeSiteGenerator>("", field_map);
   MapPtr site_map = site_gen->generate();
-  cout << map_to_string(site_map, false);
+  std::cout << map_to_string(site_map, false);
   return map_to_string(site_map);
 }
 
-string generate_rocky_sacrifice_site()
+std::string generate_rocky_sacrifice_site()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr site_gen = std::make_shared<RockySacrificeSiteGenerator>("", field_map);
   MapPtr site_map = site_gen->generate();
-  cout << map_to_string(site_map, false);
+  std::cout << map_to_string(site_map, false);
   return map_to_string(site_map);
 }
 
-string generate_overgrown_sacrifice_site()
+std::string generate_overgrown_sacrifice_site()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr site_gen = std::make_shared<OvergrownSacrificeSiteGenerator>("", field_map);
   MapPtr site_map = site_gen->generate();
-  cout << map_to_string(site_map, false);
+  std::cout << map_to_string(site_map, false);
   return map_to_string(site_map);
 }
 
-string generate_field()
+std::string generate_field()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr map = field_gen->generate();
-  cout << map_to_string(map, false);
+  std::cout << map_to_string(map, false);
   return map_to_string(map);
 }
 
-string generate_forest()
+std::string generate_forest()
 {
   GeneratorPtr forest_gen = std::make_shared<ForestGenerator>("");
   MapPtr map = forest_gen->generate();
-  cout << map_to_string(map, false);
+  std::cout << map_to_string(map, false);
   return map_to_string(map);
 }
 
-string generate_field_road()
+std::string generate_field_road()
 {
   CardinalDirection direction = static_cast<CardinalDirection>(RNG::range(0, 3));
   int width = RNG::range(3, 6);
@@ -446,11 +445,11 @@ string generate_field_road()
   MapPtr map = field_gen->generate();
   RoadGenerator road_gen(direction, width);
   MapPtr final_map = road_gen.generate(map);
-  cout << map_to_string(map, false);
+  std::cout << map_to_string(map, false);
   return map_to_string(final_map);
 }
 
-string generate_forest_road()
+std::string generate_forest_road()
 {
   CardinalDirection direction = static_cast<CardinalDirection>(RNG::range(0, 3));
   int width = RNG::range(3, 6);
@@ -458,214 +457,214 @@ string generate_forest_road()
   MapPtr map = forest_gen->generate();
   RoadGenerator road_gen(direction, width);
   MapPtr final_map = road_gen.generate(map);
-  cout << map_to_string(map, false);
+  std::cout << map_to_string(map, false);
   return map_to_string(final_map);
 }
 
-string generate_field_settlement_ruins()
+std::string generate_field_settlement_ruins()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   SettlementRuinsGenerator sr_gen(field_map);
   MapPtr ruins_map = sr_gen.generate();
-  cout << map_to_string(ruins_map, false);
+  std::cout << map_to_string(ruins_map, false);
   return map_to_string(ruins_map);
 }
 
-string generate_field_ruins()
+std::string generate_field_ruins()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   RuinsGenerator rg("fdsa", TileType::TILE_TYPE_FIELD, RuinsType::RUINS_TYPE_KEEP);
   MapPtr ruins_map = rg.generate(field_map->size());
-  cout << map_to_string(ruins_map, false);
+  std::cout << map_to_string(ruins_map, false);
   return map_to_string(ruins_map);
 }
 
-string generate_marsh()
+std::string generate_marsh()
 {
   GeneratorPtr marsh_gen = std::make_shared<MarshGenerator>("");
   MapPtr marsh_map = marsh_gen->generate();
-  cout << map_to_string(marsh_map, false);
+  std::cout << map_to_string(marsh_map, false);
   return map_to_string(marsh_map);
 }
 
-string generate_settlement()
+std::string generate_settlement()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   SettlementGenerator settle_gen(field_map);
   MapPtr settlement_map = settle_gen.generate();
-  cout << map_to_string(settlement_map, false);
+  std::cout << map_to_string(settlement_map, false);
   return map_to_string(settlement_map);
 }
 
-string generate_hamlet()
+std::string generate_hamlet()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   HamletGenerator hamlet_gen(field_map);
   MapPtr hamlet_map = hamlet_gen.generate();
-  cout << map_to_string(hamlet_map, false);
+  std::cout << map_to_string(hamlet_map, false);
   return map_to_string(hamlet_map);
 }
 
-string generate_walled_settlement()
+std::string generate_walled_settlement()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   WalledSettlementGenerator ws_gen(field_map);
   MapPtr ws_map = ws_gen.generate();
-  cout << map_to_string(ws_map, false);
+  std::cout << map_to_string(ws_map, false);
   return map_to_string(ws_map);
 }
 
-string generate_scattered_settlement()
+std::string generate_scattered_settlement()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   ScatteredSettlementGenerator sc_gen(field_map);
   MapPtr sc_map = sc_gen.generate();
-  cout << map_to_string(sc_map, false);
+  std::cout << map_to_string(sc_map, false);
   return map_to_string(sc_map);  
 }
 
-string generate_dungeon()
+std::string generate_dungeon()
 {
   GeneratorPtr dun_gen = std::make_shared<DungeonGenerator>(""); // ha ha
   MapPtr dun_gen_map = dun_gen->generate();
-  cout << map_to_string(dun_gen_map, false);
+  std::cout << map_to_string(dun_gen_map, false);
   return map_to_string(dun_gen_map);
 }
 
-string generate_spiral_dungeon()
+std::string generate_spiral_dungeon()
 {
   GeneratorPtr sd_gen = std::make_shared<SpiralDungeonGenerator>("");
   MapPtr sd_map = sd_gen->generate();
-  cout << map_to_string(sd_map, false);
+  std::cout << map_to_string(sd_map, false);
   return map_to_string(sd_map);
 }
 
-string generate_sea()
+std::string generate_sea()
 {
   GeneratorPtr sea_gen = std::make_shared<SeaGenerator>("");
   MapPtr sea_map = sea_gen->generate();
-  cout << map_to_string(sea_map, false);
+  std::cout << map_to_string(sea_map, false);
   return map_to_string(sea_map);
 }
 
-string generate_mine()
+std::string generate_mine()
 {
   GeneratorPtr mine_gen = std::make_shared<MineGenerator>("");
   MapPtr mine_map = mine_gen->generate();
-  cout << map_to_string(mine_map, false);
+  std::cout << map_to_string(mine_map, false);
   return map_to_string(mine_map);
 }
 
-string generate_castle()
+std::string generate_castle()
 {
   GeneratorPtr castle_gen = std::make_shared<CastleGenerator>("", TileType::TILE_TYPE_FIELD);
   MapPtr castle_map = castle_gen->generate();
-  cout << map_to_string(castle_map, false);
+  std::cout << map_to_string(castle_map, false);
   return map_to_string(castle_map);
 }
 
-string generate_sewer()
+std::string generate_sewer()
 {
   GeneratorPtr sewer_gen = std::make_shared<SewerGenerator>("");
   MapPtr sewer_map = sewer_gen->generate();
-  cout << map_to_string(sewer_map, false);
+  std::cout << map_to_string(sewer_map, false);
   return map_to_string(sewer_map);
 }
 
-string generate_rectangular_shrine()
+std::string generate_rectangular_shrine()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr shrine_gen = ShrineGeneratorFactory::create_rectangular_shrine_generator(field_map);
   MapPtr shrine_map = shrine_gen->generate();
-  cout << map_to_string(shrine_map, false);
+  std::cout << map_to_string(shrine_map, false);
   return map_to_string(shrine_map);
 }
 
-string generate_cross_shrine()
+std::string generate_cross_shrine()
 {
   GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr shrine_gen = ShrineGeneratorFactory::create_cross_shrine_generator(field_map);
   MapPtr shrine_map = shrine_gen->generate();
-  cout << map_to_string(shrine_map, false);
+  std::cout << map_to_string(shrine_map, false);
   return map_to_string(shrine_map);
 }
 
-string generate_floating_tower()
+std::string generate_floating_tower()
 {
   GeneratorPtr ft_gen = std::make_shared<FloatingTowerGenerator>("");
   MapPtr ft_map = ft_gen->generate();
-  cout << map_to_string(ft_map, false);
+  std::cout << map_to_string(ft_map, false);
   return map_to_string(ft_map);
 }
 
-string generate_well()
+std::string generate_well()
 {
   GeneratorPtr well_gen = std::make_shared<WellGenerator>("");
   MapPtr well_map = well_gen->generate();
-  cout << map_to_string(well_map, false);
+  std::cout << map_to_string(well_map, false);
   return map_to_string(well_map);
 }
 
-string generate_world()
+std::string generate_world()
 {
   // Add inputs for parameters later!
   WorldGenerator wg;
   MapPtr map = wg.generate();
-  cout << "World map created - see html." << endl;
+  std::cout << "World map created - see html." << std::endl;
   return map_to_string(map);
 }
 
-void print_race_info(RaceMap& race_map, const string& id)
+void print_race_info(RaceMap& race_map, const std::string& id)
 {
   RacePtr race = race_map[id];
 
   if (race)
   {
-    string race_details = race->str();
-    cout << race_details << endl;
+    std::string race_details = race->str();
+    std::cout << race_details << std::endl;
   }
   else
   {
-    cout << "No race with that ID found." << endl;
+    std::cout << "No race with that ID found." << std::endl;
   }
 }
 
-void print_class_info(ClassMap& class_map, const string& id)
+void print_class_info(ClassMap& class_map, const std::string& id)
 {
   ClassPtr current_class = class_map[id];
 
   if (current_class)
   {
-    string class_details = current_class->str();
-    cout << class_details << endl;
+    std::string class_details = current_class->str();
+    std::cout << class_details << std::endl;
   }
   else
   {
-    cout << "No class with that ID found." << endl;
+    std::cout << "No class with that ID found." << std::endl;
   }
 }
 
 void race_info()
 {
-  string race_id = "";
+  std::string race_id = "";
 
   XMLConfigurationReader xml_config_reader("data/ShadowOfTheWyrm.xml");
   RaceMap races = xml_config_reader.get_races();
 
-  cout << "Read " << races.size() << " races." << endl << endl;
+  std::cout << "Read " << races.size() << " races." << std::endl << std::endl;
 
   while (race_id != "-1")
   {
-    cout << "Enter a race id (-1 to quit): ";
-    cin >> race_id;
+    std::cout << "Enter a race id (-1 to quit): ";
+    std::cin >> race_id;
 
     print_race_info(races, race_id);
   }
@@ -673,17 +672,17 @@ void race_info()
 
 void class_info()
 {
-  string class_id = "";
+  std::string class_id = "";
 
   XMLConfigurationReader xml_config_reader("data/ShadowOfTheWyrm.xml");
   ClassMap classes = xml_config_reader.get_classes();
 
-  cout << "Read " << classes.size() << " classes." << endl << endl;
+  std::cout << "Read " << classes.size() << " classes." << std::endl << std::endl;
 
   while (class_id != "-1")
   {
-    cout << "Enter a class id (-1 to quit): ";
-    cin >> class_id;
+    std::cout << "Enter a class id (-1 to quit): ";
+    std::cin >> class_id;
 
     print_class_info(classes, class_id);
   }
@@ -696,18 +695,18 @@ void test_range()
 
   while (min != -1 && max != -1)
   {
-    cout << "-1 for min or max to quit." << endl;
-    cout << "Min: ";
-    cin >> min;
-    cout << "Max: ";
-    cin >> max;
-    cout << "Random value is: ";
+    std::cout << "-1 for min or max to quit." << std::endl;
+    std::cout << "Min: ";
+    std::cin >> min;
+    std::cout << "Max: ";
+    std::cin >> max;
+    std::cout << "Random value is: ";
 
     if (min != -1 && max != -1)
     {
       int random = RNG::range(min, max);
 
-      cout << random << endl;
+      std::cout << random << std::endl;
     }
   }
 
@@ -720,18 +719,18 @@ void test_dice()
 
   while (num != -1 && sides != -1)
   {
-    cout << "-1 for num or sides to quit." << endl;
-    cout << "Num: ";
-    cin >> num;
-    cout << "Sides: ";
-    cin >> sides;
-    cout << "Random value is: ";
+    std::cout << "-1 for num or sides to quit." << std::endl;
+    std::cout << "Num: ";
+    std::cin >> num;
+    std::cout << "Sides: ";
+    std::cin >> sides;
+    std::cout << "Random value is: ";
 
     if (num != -1 && sides != -1)
     {
       int dice = RNG::dice(num, sides);
 
-      cout << dice << endl;
+      std::cout << dice << std::endl;
     }
   }
 }
@@ -743,11 +742,11 @@ void test_poisson()
 
   while (mean > 0 && times > 0)
   {
-    cout << "Poisson calculator (mean <= 0 or times <= 0 to quit)" << endl;
-    cout << "Mean: ";
-    cin >> mean;
-    cout << "Times: ";
-    cin >> times;
+    std::cout << "Poisson calculator (mean <= 0 or times <= 0 to quit)" << std::endl;
+    std::cout << "Mean: ";
+    std::cin >> mean;
+    std::cout << "Times: ";
+    std::cin >> times;
 
     if (mean > 0 && times > 0)
     {
@@ -773,8 +772,8 @@ void test_poisson()
         m += v;
       }
 
-      cout << "Calculated mean: " << (m / static_cast<float>(times)) << endl;
-      cout << "Min, max: " << min << ", " << max << endl << endl;
+      std::cout << "Calculated mean: " << (m / static_cast<float>(times)) << std::endl;
+      std::cout << "Min, max: " << min << ", " << max << std::endl << std::endl;
     }
   }
 }
@@ -784,15 +783,15 @@ void misc()
   int choice = 0;
   while (choice != -1)
   {
-    cout << "-1 to quit." << endl;
-    cout << "1. Bresenham's Line" << endl;
-    cout << "2. Calendar" << endl;
-    cout << "3. Item Generation" << endl;
-    cout << "4. Other Map Types" << endl;
-    cout << "5. Load Custom Map" << endl;
-    cout << "6. Creature Generation" << endl;
+    std::cout << "-1 to quit." << std::endl;
+    std::cout << "1. Bresenham's Line" << std::endl;
+    std::cout << "2. Calendar" << std::endl;
+    std::cout << "3. Item Generation" << std::endl;
+    std::cout << "4. Other Map Types" << std::endl;
+    std::cout << "5. Load Custom Map" << std::endl;
+    std::cout << "6. Creature Generation" << std::endl;
 
-    cin >> choice;
+    std::cin >> choice;
     
     switch(choice)
     {
@@ -825,9 +824,9 @@ void test_calendar()
   
   while (seconds > -1)
   {
-    cout << "-1 to quit." << endl;
-    cout << "Number of elapsed seconds: " << endl;
-    cin >> seconds;
+    std::cout << "-1 to quit." << std::endl;
+    std::cout << "Number of elapsed seconds: " << std::endl;
+    std::cin >> seconds;
     
     if (seconds >= 0)
     {
@@ -835,11 +834,11 @@ void test_calendar()
       c.add_seconds(seconds);
       Date d = c.get_date();
       
-      cout << "Calendar Info: " << endl;
-      cout << "Time: " << d.get_hours() << ":" << d.get_minutes() << ":" << d.get_seconds() << endl;
-      cout << "Day: Day " << d.get_day_of_week() << " of week, day " << d.get_day_of_month() << " of month, day " << d.get_day_of_year() << " of year" << endl;
-      cout << "Month: " << d.get_month() << endl;
-      cout << "Year: " << d.get_year() << endl; 
+      std::cout << "Calendar Info: " << std::endl;
+      std::cout << "Time: " << d.get_hours() << ":" << d.get_minutes() << ":" << d.get_seconds() << std::endl;
+      std::cout << "Day: Day " << d.get_day_of_week() << " of week, day " << d.get_day_of_month() << " of month, day " << d.get_day_of_year() << " of year" << std::endl;
+      std::cout << "Month: " << d.get_month() << std::endl;
+      std::cout << "Year: " << d.get_year() << std::endl; 
     }
   }
 }
@@ -850,32 +849,32 @@ void test_item_generation()
   int danger_level = 0;
   int irarity = 0;
   Rarity rarity = Rarity::RARITY_COMMON;
-  string filename = "test.txt";
+  std::string filename = "test.txt";
   Game& game = Game::instance();
 
   while (item_count > -1 && danger_level > -1 && !filename.empty())
   {
-    cout << "Empty filename to quit" << endl;
-    cout << "Item Generation" << endl;
-    cout << "Items to generate: ";
-    cin >> item_count;
-    cout << "Danger level: ";
-    cin >> danger_level;
-    cout << "Rarity: ";
-    cin >> irarity;
+    std::cout << "Empty filename to quit" << std::endl;
+    std::cout << "Item Generation" << std::endl;
+    std::cout << "Items to generate: ";
+    std::cin >> item_count;
+    std::cout << "Danger level: ";
+    std::cin >> danger_level;
+    std::cout << "Rarity: ";
+    std::cin >> irarity;
     
     rarity = static_cast<Rarity>(irarity);
 
-    cout << "Filename: ";
-    cin >> filename;
+    std::cout << "Filename: ";
+    std::cin >> filename;
 
     if (item_count > -1 && danger_level > -1 && !filename.empty())
     {
       ItemGenerationManager igm;
       ItemGenerationConstraints igc(1, danger_level, rarity, {}, -1);
       auto igmap = igm.generate_item_generation_map(igc);
-      map<string, int> item_map;
-      map<ItemType, int> type_map;
+      std::map<std::string, int> item_map;
+      std::map<ItemType, int> type_map;
 
       for (int i = 0; i < item_count; i++)
       {
@@ -883,7 +882,7 @@ void test_item_generation()
 
         if (item != nullptr)
         {
-          string base_id = item->get_base_id();
+          std::string base_id = item->get_base_id();
           ItemType type = item->get_type();
 
           auto i_it = item_map.find(base_id);
@@ -910,21 +909,21 @@ void test_item_generation()
         }
       }
 
-      ofstream outfile(filename);
+      std::ofstream outfile(filename);
       
       for (const auto& item_pair : item_map)
       {
-        outfile << item_pair.first << ": " << item_pair.second << endl;
+        outfile << item_pair.first << ": " << item_pair.second << std::endl;
       }
 
       for (const auto& type_pair : type_map)
       {
         float pct = ((float) type_pair.second / (float) item_count) * 100.0f;
-        outfile << "Item Type " << static_cast<int>(type_pair.first) << ": " << type_pair.second << "(" << pct << "%)" << endl;
+        outfile << "Item Type " << static_cast<int>(type_pair.first) << ": " << type_pair.second << "(" << pct << "%)" << std::endl;
       }
 
       outfile.close();
-      cout << "Wrote to " << filename << endl << endl;
+      std::cout << "Wrote to " << filename << std::endl << std::endl;
     }
   }
 }
@@ -935,7 +934,7 @@ void test_creature_generation()
   int max_level = 1;
   int tile_type = -1;
   int num_creatures = 1;
-  string filename;
+  std::string filename;
 
   Game& game = Game::instance();
   CreatureGenerationManager cgm;
@@ -943,24 +942,24 @@ void test_creature_generation()
 
   while (min_level > 0)
   {
-    cout << "Creature Generation" << endl << endl;
-    cout << "Min Level: ";
-    cin >> min_level;
+    std::cout << "Creature Generation" << std::endl << std::endl;
+    std::cout << "Min Level: ";
+    std::cin >> min_level;
 
-    cout << "Max Level: ";
-    cin >> max_level;
+    std::cout << "Max Level: ";
+    std::cin >> max_level;
 
-    cout << "Tile Type: ";
-    cin >> tile_type;
+    std::cout << "Tile Type: ";
+    std::cin >> tile_type;
 
-    cout << "Number of creatures: ";
-    cin >> num_creatures;
+    std::cout << "Number of creatures: ";
+    std::cin >> num_creatures;
 
-    cout << "Filename: ";
-    cin >> filename;
+    std::cout << "Filename: ";
+    std::cin >> filename;
 
     CreatureGenerationList generation_list = cgm.generate_creature_generation_map(static_cast<TileType>(tile_type), false, min_level, max_level, Rarity::RARITY_COMMON, {});
-    map<string, int> creature_count;
+    std::map<std::string, int> creature_count;
 
     if (num_creatures > 0)
     {
@@ -970,7 +969,7 @@ void test_creature_generation()
 
         if (creature != nullptr)
         {
-          string creature_id = creature->get_original_id();
+          std::string creature_id = creature->get_original_id();
 
           if (creature_count.find(creature_id) == creature_count.end())
           {
@@ -986,11 +985,11 @@ void test_creature_generation()
 
     if (!creature_count.empty())
     {
-      ofstream outfile(filename);
+      std::ofstream outfile(filename);
 
       for (const auto& cr_pair : creature_count)
       {
-        outfile << cr_pair.first << ": " << cr_pair.second << endl;
+        outfile << cr_pair.first << ": " << cr_pair.second << std::endl;
       }
 
       outfile.close();
@@ -1007,24 +1006,24 @@ void test_bresenham_line()
   
   while (start_y != -1 && start_x != -1 && end_y != -1 && end_x != -1)
   {
-    cout << "-1 for any value to quit." << endl;
-    cout << "Start y: ";
-    cin >> start_y;
-    cout << "Start x: ";
-    cin >> start_x;
-    cout << "End y: ";
-    cin >> end_y;
-    cout << "End x: ";
-    cin >> end_x;
-    cout << "Line contains points: " << endl;
+    std::cout << "-1 for any value to quit." << std::endl;
+    std::cout << "Start y: ";
+    std::cin >> start_y;
+    std::cout << "Start x: ";
+    std::cin >> start_x;
+    std::cout << "End y: ";
+    std::cin >> end_y;
+    std::cout << "End x: ";
+    std::cin >> end_x;
+    std::cout << "Line contains points: " << std::endl;
 
     if (start_y != -1 && start_x != -1 && end_y != -1 && end_x != -1)
     {
-      vector<Coordinate> coords = bl.get_points_in_line(start_y, start_x, end_y, end_x);
+      std::vector<Coordinate> coords = bl.get_points_in_line(start_y, start_x, end_y, end_x);
       
       for (const Coordinate& c : coords)
       {
-        cout << "(" << c.first << "," << c.second << ")" << endl;
+        std::cout << "(" << c.first << "," << c.second << ")" << std::endl;
       }
     }
   }  
@@ -1033,8 +1032,8 @@ void test_bresenham_line()
 void print_skill_name()
 {
   AwarenessSkill awareness;
-  string awareness_skill_name = StringTable::get(awareness.get_skill_name_sid());
-  cout << awareness_skill_name << endl;
+  std::string awareness_skill_name = StringTable::get(awareness.get_skill_name_sid());
+  std::cout << awareness_skill_name << std::endl;
 }
 
 void test_rng()
@@ -1042,12 +1041,12 @@ void test_rng()
   int option = 0;
   while(option != -1)
   {
-    cout << "RNG Test!" << endl << endl;
-    cout << "1. Range" << endl;
-    cout << "2. Dice" << endl;
-    cout << "3. Poisson" << endl;
-    cout << "-1. Quit" << endl << endl;
-    cin >> option;
+    std::cout << "RNG Test!" << std::endl << std::endl;
+    std::cout << "1. Range" << std::endl;
+    std::cout << "2. Dice" << std::endl;
+    std::cout << "3. Poisson" << std::endl;
+    std::cout << "-1. Quit" << std::endl << std::endl;
+    std::cin >> option;
 
     switch(option)
     {
@@ -1068,14 +1067,14 @@ void test_rng()
 
 void test_other_maps()
 {
-  string map;
+  std::string map;
   int option = 0;
   while(option != -1)
   {
-    cout << "Other Maps" << endl << endl;
-    cout << "0. Void" << endl;
-    cout << "-1. Quit" << endl << endl;
-    cin >> option;
+    std::cout << "Other Maps" << std::endl << std::endl;
+    std::cout << "0. Void" << std::endl;
+    std::cout << "-1. Quit" << std::endl << std::endl;
+    std::cin >> option;
 
     switch(option)
     {
@@ -1091,21 +1090,21 @@ void test_other_maps()
 
 void load_custom_maps()
 {
-  string map;
+  std::string map;
   int selection = 0;
   std::map<int, std::pair<std::string, std::string>> selection_mappings = {{1, {"(Carcassia.*\\.xml)", "carcassia_a1"}},
                                                                            {2, {"(Carcassia_GuildOfThieves\\.xml)", "carcassia_guild_of_thieves"}}};
 
   while (selection != -1)
   {
-    string fname_pattern;
+    std::string fname_pattern;
 
-    cout << "Load Custom Map" << endl << endl;
-    cout << "1. Carcassia" << endl;
-    cout << "2. Carcassia Guild of Thieves" << endl;
-    cout << "-1. Quit" << endl;
+    std::cout << "Load Custom Map" << std::endl << std::endl;
+    std::cout << "1. Carcassia" << std::endl;
+    std::cout << "2. Carcassia Guild of Thieves" << std::endl;
+    std::cout << "-1. Quit" << std::endl;
 
-    cin >> selection;
+    std::cin >> selection;
 
     if (selection != -1)
     {
@@ -1113,7 +1112,7 @@ void load_custom_maps()
 
       if (s_it != selection_mappings.end())
       {
-        pair<string, string> filter_mid = s_it->second;
+        std::pair<std::string, std::string> filter_mid = s_it->second;
         MapPtr map = load_custom_map(filter_mid.first, filter_mid.second);
 
         if (map != nullptr)
@@ -1125,7 +1124,7 @@ void load_custom_maps()
   }
 }
 
-MapPtr load_custom_map(const string& fname_pattern, const string& custom_map_id)
+MapPtr load_custom_map(const std::string& fname_pattern, const std::string& custom_map_id)
 {
   MapPtr custom_map;
 
@@ -1134,7 +1133,7 @@ MapPtr load_custom_map(const string& fname_pattern, const string& custom_map_id)
     XMLConfigurationReader cr("");
     Game& game = Game::instance();
 
-    vector<MapPtr> maps = cr.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, fname_pattern);
+    std::vector<MapPtr> maps = cr.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, fname_pattern);
     game.set_custom_maps(maps);
 
     custom_map = game.get_map_registry_ref().get_map(custom_map_id);
@@ -1143,28 +1142,28 @@ MapPtr load_custom_map(const string& fname_pattern, const string& custom_map_id)
   return custom_map;
 }
 
-string generate_void()
+std::string generate_void()
 {
   GeneratorPtr void_gen = std::make_shared<VoidGenerator>("");
   MapPtr map = void_gen->generate();
-  cout << map_to_string(map, false);
+  std::cout << map_to_string(map, false);
   return map_to_string(map);
 }
 
 void settlement_maps()
 {
-  string map;
+  std::string map;
   int settlement_map = 0;
   
   while (settlement_map != -1)
   {
-    cout << "Enter a map number (-1 to quit):" << endl << endl;
-    cout << "1. Settlement" << endl;
-    cout << "2. Hamlet" << endl;
-    cout << "3. Walled Settlement" << endl;
-    cout << "4. Scattered Settlement" << endl;
+    std::cout << "Enter a map number (-1 to quit):" << std::endl << std::endl;
+    std::cout << "1. Settlement" << std::endl;
+    std::cout << "2. Hamlet" << std::endl;
+    std::cout << "3. Walled Settlement" << std::endl;
+    std::cout << "4. Scattered Settlement" << std::endl;
     
-    cin >> settlement_map;
+    std::cin >> settlement_map;
     
     switch(settlement_map)
     {
@@ -1192,26 +1191,26 @@ void settlement_maps()
 
 void city_maps()
 {
-  string map;
+  std::string map;
   int city_adjacent_map = 0;
   
   while (city_adjacent_map != -1)
   {
-    cout << "Enter a map number (-1 to quit)" << endl << endl;
-    cout << "1. Ordered Graveyard" << endl;
-    cout << "2. Scattered Graveyard" << endl;
-    cout << "3. Keep" << endl;
-    cout << "4. Churches, Temples, Sites of Death" << endl;
-    cout << "5. Crypt" << endl;
-    cout << "6. Mine" << endl;
-    cout << "7. Castle" << endl;
-    cout << "8. Sewer" << endl;
-    cout << "9. Rectangular Shrine" << endl;
-    cout << "10. Cross Shrine" << endl;
-    cout << "11. Floating Tower" << endl;
-    cout << "12. Well" << endl;
+    std::cout << "Enter a map number (-1 to quit)" << std::endl << std::endl;
+    std::cout << "1. Ordered Graveyard" << std::endl;
+    std::cout << "2. Scattered Graveyard" << std::endl;
+    std::cout << "3. Keep" << std::endl;
+    std::cout << "4. Churches, Temples, Sites of Death" << std::endl;
+    std::cout << "5. Crypt" << std::endl;
+    std::cout << "6. Mine" << std::endl;
+    std::cout << "7. Castle" << std::endl;
+    std::cout << "8. Sewer" << std::endl;
+    std::cout << "9. Rectangular Shrine" << std::endl;
+    std::cout << "10. Cross Shrine" << std::endl;
+    std::cout << "11. Floating Tower" << std::endl;
+    std::cout << "12. Well" << std::endl;
 
-    cin >> city_adjacent_map;
+    std::cin >> city_adjacent_map;
     
     switch(city_adjacent_map)
     {
@@ -1270,22 +1269,22 @@ void city_maps()
 
 void church_maps()
 {
-  string map;
+  std::string map;
   int church_map = 0;
   
   while (church_map != -1)
   {
-    cout << "Enter a map number (-1 to quit)" << endl << endl;
-    cout << "1. Cathedral (Celeste)" << endl;
-    cout << "2. Fortified Church (Aurelion)" << endl;
-    cout << "3. Simple Church (The Lady)" << endl;
-    cout << "4. Grand Temple (Vedere)" << endl;
-    cout << "5. Snaking Temple (Voros)" << endl;
-    cout << "6. Simple Temple (The Trickster)" << endl;
-    cout << "7. Island Sacrifice Site (Shiver)" << endl;
-    cout << "8. Rocky Sacrifice Site (Urgoth)" << endl;
-    cout << "9. Overgrown Sacrifice Site (Sceadugenga)" << endl;
-    cin >> church_map;
+    std::cout << "Enter a map number (-1 to quit)" << std::endl << std::endl;
+    std::cout << "1. Cathedral (Celeste)" << std::endl;
+    std::cout << "2. Fortified Church (Aurelion)" << std::endl;
+    std::cout << "3. Simple Church (The Lady)" << std::endl;
+    std::cout << "4. Grand Temple (Vedere)" << std::endl;
+    std::cout << "5. Snaking Temple (Voros)" << std::endl;
+    std::cout << "6. Simple Temple (The Trickster)" << std::endl;
+    std::cout << "7. Island Sacrifice Site (Shiver)" << std::endl;
+    std::cout << "8. Rocky Sacrifice Site (Urgoth)" << std::endl;
+    std::cout << "9. Overgrown Sacrifice Site (Sceadugenga)" << std::endl;
+    std::cin >> church_map;
     
     switch(church_map)
     {
@@ -1333,7 +1332,7 @@ void church_maps()
 
 int main(int argc, char** argv)
 {
-  string map;
+  std::string map;
   int option = 0;
   XML::initialize();
   initialize_settings();
@@ -1344,28 +1343,28 @@ int main(int argc, char** argv)
 
   while (option != -1)
   {
-    cout << "Map Generator!" << endl << endl;
-    cout << "0. RNG" << endl;
-    cout << "1. Field" << endl;
-    cout << "2. Forest" << endl;
-    cout << "3. Ruins (Field)" << endl;
-    cout << "4. Settlements" << endl;
-    cout << "5. Settlement Ruins (Field)" << endl;
-    cout << "6. Marsh" << endl;
-    cout << "7. Regular Dungeon" << endl;
-    cout << "8. Spiral Dungeon" << endl;
-    cout << "9. Road (Field)" << endl;
-    cout << "10. Road (Forest)" << endl;
-    cout << "11. Sea" << endl;
-    cout << "12. World" << endl;
-    cout << "13. Cavern" << endl;
-    cout << "14. Quick skill name test" << endl;
-    cout << "15. Display race info" << endl;
-    cout << "16. Display class info" << endl;
-    cout << "17. City-adjacent maps" << endl;
-    cout << "18. Misc" << endl;
-    cout << "-1. Quit" << endl << endl;
-    cin >> option;
+    std::cout << "Map Generator!" << std::endl << std::endl;
+    std::cout << "0. RNG" << std::endl;
+    std::cout << "1. Field" << std::endl;
+    std::cout << "2. Forest" << std::endl;
+    std::cout << "3. Ruins (Field)" << std::endl;
+    std::cout << "4. Settlements" << std::endl;
+    std::cout << "5. Settlement Ruins (Field)" << std::endl;
+    std::cout << "6. Marsh" << std::endl;
+    std::cout << "7. Regular Dungeon" << std::endl;
+    std::cout << "8. Spiral Dungeon" << std::endl;
+    std::cout << "9. Road (Field)" << std::endl;
+    std::cout << "10. Road (Forest)" << std::endl;
+    std::cout << "11. Sea" << std::endl;
+    std::cout << "12. World" << std::endl;
+    std::cout << "13. Cavern" << std::endl;
+    std::cout << "14. Quick skill name test" << std::endl;
+    std::cout << "15. Display race info" << std::endl;
+    std::cout << "16. Display class info" << std::endl;
+    std::cout << "17. City-adjacent maps" << std::endl;
+    std::cout << "18. Misc" << std::endl;
+    std::cout << "-1. Quit" << std::endl << std::endl;
+    std::cin >> option;
 
     switch(option)
     {

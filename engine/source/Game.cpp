@@ -273,14 +273,14 @@ const ItemMap& Game::get_items_ref() const
   return items;
 }
 
-void Game::set_basic_features(const FeatureMap& game_features)
+void Game::set_configurable_features(const FeatureMap& game_features)
 {
-  basic_features = game_features;
+  configurable_features = game_features;
 }
 
-const FeatureMap& Game::get_basic_features_ref() const
+const FeatureMap& Game::get_configurable_features_ref() const
 {
-  return basic_features;
+  return configurable_features;
 }
 
 void Game::set_custom_maps(const vector<MapPtr>& custom_maps)
@@ -1136,9 +1136,9 @@ bool Game::serialize(ostream& stream) const
     }
   }
 
-  Serialize::write_size_t(stream, basic_features.size());
+  Serialize::write_size_t(stream, configurable_features.size());
 
-  for (const auto& feat_pair : basic_features)
+  for (const auto& feat_pair : configurable_features)
   {
     Serialize::write_string(stream, feat_pair.first);
 
@@ -1353,11 +1353,11 @@ bool Game::deserialize(istream& stream)
     }
   }
 
-  basic_features.clear();
-  size_t num_basic_features = 0;
-  Serialize::read_size_t(stream, num_basic_features);
+  configurable_features.clear();
+  size_t num_config_features = 0;
+  Serialize::read_size_t(stream, num_config_features);
 
-  for (size_t i = 0; i < num_basic_features; i++)
+  for (size_t i = 0; i < num_config_features; i++)
   {
     string feature_id;
     Serialize::read_string(stream, feature_id);
@@ -1372,7 +1372,7 @@ bool Game::deserialize(istream& stream)
       if (feat != nullptr)
       {
         feat->deserialize(stream);
-        basic_features[feature_id] = feat;
+        configurable_features[feature_id] = feat;
       }
     }
   }

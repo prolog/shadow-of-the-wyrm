@@ -184,7 +184,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_object_to_creature", add_object_to_creature);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
-  lua_register(L, "add_basic_feature_to_map", add_basic_feature_to_map);
+  lua_register(L, "add_configurable_feature_to_map", add_configurable_feature_to_map);
   lua_register(L, "add_feature_to_map", add_feature_to_map);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "set_feature_additional_property", set_feature_additional_property);
@@ -1121,38 +1121,62 @@ int add_key_to_player_tile(lua_State* ls)
   return 1;
 }
 
-int add_basic_feature_to_map(lua_State* ls)
+int add_configurable_feature_to_map(lua_State* ls)
 {
   bool added = false;
+  int num_args = lua_gettop(ls);
+  Game& game = Game::instance();
+  FeaturePtr feature;
+  string map_id;
+  Coordinate c(0, 0);
+  bool created_feature = false;
 
-  if ((lua_gettop(ls) == 4) && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  // Create an ad-hoc configurable feautre
+  if (num_args == 7 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6) && lua_isstring(ls, 7))
   {
-    Game& game = Game::instance();
-    string basic_feature_id = lua_tostring(ls, 1);
-    Coordinate c = make_pair(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
-    string map_id = lua_tostring(ls, 4);
+    string symbol = lua_tostring(ls, 1);
+    Colour colour = static_cast<Colour>(lua_tointeger(ls, 2));
+    MaterialType material = static_cast<MaterialType>(lua_tointeger(ls, 3));
+    string desc_sid = lua_tostring(ls, 4);
+    c = make_pair(lua_tointeger(ls, 5), lua_tointeger(ls, 6));
+    map_id = lua_tostring(ls, 7);
 
+    feature = FeatureGenerator::generate_configurable_feature(material, symbol[0], colour, desc_sid);
+    created_feature = (feature != nullptr);
+  }
+  // Reference a configurable feature from the game XML.
+  else if (num_args == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  {
+    string config_feature_id = lua_tostring(ls, 1);
+    c = make_pair(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    map_id = lua_tostring(ls, 4);
+
+    feature = FeatureGenerator::generate_configurable_feature(config_feature_id);
+    created_feature = (feature != nullptr);
+  }
+
+  // Create a feature if we've read a map id, coordinate, etc.
+  if (!map_id.empty())
+  {
     MapPtr map = game.get_map_registry_ref().get_map(map_id);
-
     if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
-      FeaturePtr feature = FeatureGenerator::generate_basic_feature(basic_feature_id);
-
       if (feature != nullptr)
       {
-        TilePtr bf_tile = map->at(c);
+        TilePtr cf_tile = map->at(c);
 
-        if (bf_tile != nullptr)
+        if (cf_tile != nullptr)
         {
-          bf_tile->set_feature(feature);
+          cf_tile->set_feature(feature);
           added = true;
         }
       }
     }
   }
-  else
+
+  if (!created_feature)
   {
-    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_basic_feature_to_map");
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_configurable_feature_to_map or could not create feature");
   }
 
   lua_pushboolean(ls, added);

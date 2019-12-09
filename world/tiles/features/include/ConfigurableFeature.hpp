@@ -1,24 +1,19 @@
 #pragma once
 #include "Feature.hpp"
 
-// JCD SYMBOL SPRITESHEET FIXME
-//
-// Fold this back into regular features once symbol/desc are per-feature.
-
-// This class is used for creating features that have some sort of
-// description, but can't be interacted with at all..
-class BasicFeature : public Feature
+class ConfigurableFeature : public Feature
 {
   public:
-    BasicFeature(const Symbol& new_symbol);
-    BasicFeature(const Symbol& new_symbol, MaterialType mt, const std::string& new_description_sid);
+    ConfigurableFeature(const Symbol& new_symbol);
+    ConfigurableFeature(const Symbol& new_symbol, MaterialType mt, const std::string& new_description_sid);
+
+    bool operator==(const ConfigurableFeature& cf) const;
 
     virtual Feature* clone() override;
 
     virtual void set_colour(const Colour colour);
     virtual Colour get_colour() const;
 
-    bool operator==(const BasicFeature& bf) const;
 
     virtual void set_description_sid(const std::string& new_description_sid);
 

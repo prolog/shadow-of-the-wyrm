@@ -75,11 +75,11 @@ pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
   return items;
 }
 
-FeatureMap XMLConfigurationReader::get_basic_features()
+FeatureMap XMLConfigurationReader::get_configurable_features()
 {
-  XMLNode basic_features_node = XMLUtils::get_next_element_by_local_name(root, "Features");
-  FeatureMap bfm = bf_reader.get_basic_features(basic_features_node);
-  return bfm;
+  XMLNode config_features_node = XMLUtils::get_next_element_by_local_name(root, "Features");
+  FeatureMap cfm = cf_reader.get_configurable_features(config_features_node);
+  return cfm;
 }
 
 map<string, string> XMLConfigurationReader::get_scripts()

@@ -3954,20 +3954,11 @@
     <ClInclude Include="engine\generators\include\VoidGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\BasicFeature.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\materials\include\UnknownMaterial.hpp">
       <Filter>Header Files\world\materials\include</Filter>
     </ClInclude>
     <ClInclude Include="world\materials\include\Gases.hpp">
       <Filter>Header Files\world\materials\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\XML\include\XMLBasicFeatureReader.hpp">
-      <Filter>Header Files\engine\XML\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\XML\custom_maps\features\include\XMLBasicFeatureCMReader.hpp">
-      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\conversion\include\EngineConversion.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
@@ -4325,6 +4316,15 @@
     </ClInclude>
     <ClInclude Include="world\tiles\features\include\JewelerWorkbench.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\ConfigurableFeature.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLConfigurableFeatureCMReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLConfigurableFeatureReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8189,20 +8189,11 @@
     <ClCompile Include="engine\generators\source\VoidGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\BasicFeature.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\materials\source\UnknownMaterial.cpp">
       <Filter>Source Files\world\materials\source</Filter>
     </ClCompile>
     <ClCompile Include="world\materials\source\Gases.cpp">
       <Filter>Source Files\world\materials\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\XML\source\XMLBasicFeatureReader.cpp">
-      <Filter>Source Files\engine\XML\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\XML\custom_maps\features\source\XMLBasicFeatureCMReader.cpp">
-      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\unit_tests\EvilAltarManipulator_test.cpp">
       <Filter>Source Files\engine\maps\tiles\features\source\unit_tests</Filter>
@@ -8651,8 +8642,17 @@
     <ClCompile Include="world\source\unit_tests\SpritesheetLocation_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\unit_tests\BasicFeature_test.cpp">
+    <ClCompile Include="world\tiles\features\source\unit_tests\ConfigurableFeature_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\ConfigurableFeature.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLConfigurableFeatureCMReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLConfigurableFeatureReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

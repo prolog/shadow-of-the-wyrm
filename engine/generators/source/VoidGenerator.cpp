@@ -151,7 +151,7 @@ void VoidGenerator::add_spiral_arm(MapPtr result_map)
 
             if (tile && !tile->has_feature())
             {
-              FeaturePtr sp_arm = FeatureGenerator::generate_basic_feature(FEATURE_ID_SPIRAL_ARM);
+              FeaturePtr sp_arm = FeatureGenerator::generate_configurable_feature(FEATURE_ID_SPIRAL_ARM);
 
               if (sp_arm != nullptr)
               {
@@ -185,7 +185,7 @@ void VoidGenerator::add_random_features(MapPtr result_map, const vector<string>&
       if (tile != nullptr && !tile->has_feature())
       {
         string feature_id = feature_ids.at(RNG::range(0, feature_ids.size() - 1));
-        FeaturePtr feat = FeatureGenerator::generate_basic_feature(feature_id);
+        FeaturePtr feat = FeatureGenerator::generate_configurable_feature(feature_id);
 
         if (feat != nullptr)
         {

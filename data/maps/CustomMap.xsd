@@ -217,7 +217,7 @@
 				<xs:element name="Bed" type="tns:Feature"/>
 				<xs:element name="StoneMarker" type="tns:Feature"/>
 				<xs:element name="Table" type="tns:Feature"/>
-				<xs:element name="BasicFeature" type="tns:Feature"/>
+				<xs:element name="ConfigurableFeature" type="tns:Feature"/>
 				<xs:element name="SlotMachine" type="tns:SlotMachine"/>
 				<xs:element name="Sign" type="tns:Sign"/>
 				<xs:element name="DecorativeStatue" type="tns:DecorativeStatue"/>

@@ -2,15 +2,15 @@
 #include "XMLReader.hpp"
 #include "Feature.hpp"
 
-class XMLBasicFeatureReader : public XMLReader
+class XMLConfigurableFeatureReader : public XMLReader
 {
   public:
-    FeatureMap get_basic_features(const XMLNode& basic_features_node);
+    FeatureMap get_configurable_features(const XMLNode& config_features_node);
 
   protected:
     // Returns a FeaturePtr.  Uses this approach instead of just being a void
     // function because the creation of the right feature type is dependent on
     // the values parsed.
-    FeaturePtr get_basic_feature(const XMLNode& basic_feature_node);
+    FeaturePtr get_configurable_feature(const XMLNode& config_feature_node);
 };
 
