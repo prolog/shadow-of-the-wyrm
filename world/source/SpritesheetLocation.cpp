@@ -4,12 +4,17 @@
 using namespace std;
 
 SpritesheetLocation::SpritesheetLocation()
-: row(-1), col(-1)
+: coord(-1, -1)
 {
 }
 
-SpritesheetLocation::SpritesheetLocation(const string& new_index, const int new_row, const int new_col)
-: index(new_index), row(new_row), col(new_col)
+SpritesheetLocation::SpritesheetLocation(const string& new_index, const Coordinate& new_coord)
+: index(new_index), coord(new_coord)
+{
+}
+
+SpritesheetLocation::SpritesheetLocation(const string& new_index, const string& new_ref_id)
+: index(new_index), reference_id(new_ref_id), coord(-1, -1)
 {
 }
 
@@ -18,8 +23,8 @@ bool SpritesheetLocation::operator==(const SpritesheetLocation& sl) const
   bool result = true;
 
   result = result && (index == sl.index);
-  result = result && (row == sl.row);
-  result = result && (col == sl.col);
+  result = result && (coord == sl.coord);
+  result = result && (reference_id == sl.reference_id);
 
   return result;
 }
@@ -34,31 +39,37 @@ string SpritesheetLocation::get_index() const
   return index;
 }
 
-void SpritesheetLocation::set_row(const int new_row)
+void SpritesheetLocation::set_reference_id(const string& new_ref_id)
 {
-  row = new_row;
+  reference_id = new_ref_id;
 }
 
-int SpritesheetLocation::get_row() const
+string SpritesheetLocation::get_reference_id() const
 {
-  return row;
+  return reference_id;
 }
 
-void SpritesheetLocation::set_col(const int new_col)
+bool SpritesheetLocation::uses_reference_id() const
 {
-  col = new_col;
+  return (reference_id.empty() == false);
 }
 
-int SpritesheetLocation::get_col() const
+void SpritesheetLocation::set_coordinate(const Coordinate& new_coord)
 {
-  return col;
+  coord = new_coord;
+}
+
+Coordinate SpritesheetLocation::get_coordinate() const
+{
+  return coord;
 }
 
 bool SpritesheetLocation::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, index);
-  Serialize::write_int(stream, row);
-  Serialize::write_int(stream, col);
+  Serialize::write_string(stream, reference_id);
+  Serialize::write_int(stream, coord.first);
+  Serialize::write_int(stream, coord.second);
 
   return true;
 }
@@ -66,8 +77,9 @@ bool SpritesheetLocation::serialize(ostream& stream) const
 bool SpritesheetLocation::deserialize(istream& stream)
 {
   Serialize::read_string(stream, index);
-  Serialize::read_int(stream, row);
-  Serialize::read_int(stream, col);
+  Serialize::read_string(stream, reference_id);
+  Serialize::read_int(stream, coord.first);
+  Serialize::read_int(stream, coord.second);
 
   return true;
 }

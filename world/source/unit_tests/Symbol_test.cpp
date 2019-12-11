@@ -9,7 +9,7 @@ TEST(SW_World_Symbol, char_data_no_spritesheet)
 
 TEST(SW_World_Symbol, object_creation_and_comparison)
 {
-  SpritesheetLocation sl("abc", 1, 2);
+  SpritesheetLocation sl("abc", make_pair(1,2));
 
   Symbol s;
   s.set_symbol('f');
@@ -30,7 +30,7 @@ TEST(SW_World_Symbol, serialization_id)
 
 TEST(SW_World_Symbol, saveload)
 {
-  Symbol s('f', Colour::COLOUR_BLUE, { "abc123", 1, 2 });
+  Symbol s('f', Colour::COLOUR_BLUE, { "abc123", make_pair(1,2) });
   Symbol s2;
 
   ostringstream ss;
