@@ -7,7 +7,7 @@
 using namespace std;
 
 Trap::Trap(const Symbol& new_symbol) 
-: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol('?'), colour(Colour::COLOUR_WHITE), effect(EffectType::EFFECT_TYPE_NULL)
+: Feature("", MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol('?'), colour(Colour::COLOUR_WHITE), effect(EffectType::EFFECT_TYPE_NULL)
 {
 }
 
@@ -16,7 +16,6 @@ bool Trap::operator==(const Trap& trap) const
   bool result = (Feature::operator==(trap));
   result = result && (triggered == trap.triggered);
   result = result && (id == trap.id);
-  result = result && (description_sid == trap.description_sid);
   result = result && (trigger_message_sid == trap.trigger_message_sid);
   result = result && (trigger_symbol == trap.trigger_symbol);
   result = result && (player_damage_message_sid == trap.player_damage_message_sid);
@@ -229,7 +228,6 @@ bool Trap::serialize(std::ostream& stream) const
 
   Serialize::write_bool(stream, triggered);
   Serialize::write_string(stream, id);
-  Serialize::write_string(stream, description_sid);
   Serialize::write_string(stream, trigger_message_sid);
   Serialize::write_uchar(stream, trigger_symbol);
   Serialize::write_string(stream, player_damage_message_sid);
@@ -247,7 +245,6 @@ bool Trap::deserialize(istream& stream)
 
   Serialize::read_bool(stream, triggered);
   Serialize::read_string(stream, id);
-  Serialize::read_string(stream, description_sid);
   Serialize::read_string(stream, trigger_message_sid);
   Serialize::read_uchar(stream, trigger_symbol);
   Serialize::read_string(stream, player_damage_message_sid);

@@ -54,11 +54,10 @@ class Trap : public Feature
     bool deserialize(std::istream& stream) override;
 
   protected:
-    virtual std::string get_description_sid() const override;
+    std::string get_description_sid() const;
 
     bool triggered;
     std::string id;
-    std::string description_sid;
     std::string trigger_message_sid;
     uchar trigger_symbol;
     std::string player_damage_message_sid;

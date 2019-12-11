@@ -10,9 +10,6 @@ class Pulper : public Feature
 
     bool operator==(const Pulper& p) const;
 
-  protected:
-    virtual std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };

@@ -19,7 +19,7 @@ class Creature;
 class Feature : public ISerializable
 {
   public:
-    Feature(const MaterialType new_material, const AlignmentRange new_alignment_range, const Symbol& new_symbol, const int uses = -1);
+    Feature(const std::string& new_description_sid, const MaterialType new_material, const AlignmentRange new_alignment_range, const Symbol& new_symbol, const int uses = -1);
     Feature(const Feature& feature);
     Feature& operator=(const Feature& feature);
 
@@ -100,8 +100,9 @@ class Feature : public ISerializable
     virtual bool deserialize(std::istream& stream) override;
 
   protected:
-    virtual std::string get_description_sid() const = 0;
+    virtual std::string get_description_sid() const;
 
+    std::string description_sid;
     ShimmerColours shimmer_colours;
     LockPtr lock;
     MaterialType material;

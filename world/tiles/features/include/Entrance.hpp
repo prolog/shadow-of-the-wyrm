@@ -7,8 +7,8 @@
 class Entrance : public Feature
 {
   public:
-    Entrance(const Symbol& new_symbol);
-    Entrance(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
+    Entrance(const std::string& new_desc_sid, const Symbol& new_symbol);
+    Entrance(const std::string& new_desc_sid, const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
     virtual bool operator==(const Entrance& door) const;
 
     virtual void set_state(const EntranceState& new_state);

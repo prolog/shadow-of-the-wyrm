@@ -6,7 +6,7 @@
 using namespace std;
 
 Bed::Bed(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BED, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
@@ -23,11 +23,6 @@ float Bed::get_hp_regeneration_multiplier() const
 float Bed::get_ap_regeneration_multiplier() const
 {
   return 0.75f;
-}
-
-string Bed::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BED;
 }
 
 ClassIdentifier Bed::internal_class_identifier() const

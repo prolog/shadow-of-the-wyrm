@@ -4,12 +4,12 @@
 using namespace std;
 
 ConfigurableFeature::ConfigurableFeature(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_UNKNOWN, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), colour(new_symbol.get_colour())
+: Feature("", MaterialType::MATERIAL_TYPE_UNKNOWN, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), colour(new_symbol.get_colour())
 {
 }
 
 ConfigurableFeature::ConfigurableFeature(const Symbol& new_symbol, const MaterialType mat, const string& new_desc_sid)
-: Feature(mat, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), description_sid(new_desc_sid), colour(new_symbol.get_colour())
+: Feature(new_desc_sid, mat, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), description_sid(new_desc_sid), colour(new_symbol.get_colour())
 {
 }
 
@@ -44,11 +44,6 @@ void ConfigurableFeature::set_description_sid(const string& new_desc_sid)
   description_sid = new_desc_sid;
 }
 
-string ConfigurableFeature::get_description_sid() const
-{
-  return description_sid;
-}
-
 ClassIdentifier ConfigurableFeature::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_CONFIGURABLE_FEATURE;
@@ -57,8 +52,6 @@ ClassIdentifier ConfigurableFeature::internal_class_identifier() const
 bool ConfigurableFeature::serialize(std::ostream& stream) const
 {
   Feature::serialize(stream);
-
-  Serialize::write_string(stream, description_sid);
   Serialize::write_enum(stream, colour);
 
   return true;
@@ -67,8 +60,6 @@ bool ConfigurableFeature::serialize(std::ostream& stream) const
 bool ConfigurableFeature::deserialize(std::istream& stream)
 {
   Feature::deserialize(stream);
-
-  Serialize::read_string(stream, description_sid);
   Serialize::read_enum(stream, colour);
 
   return true;

@@ -6,18 +6,13 @@
 using namespace std;
 
 WheelAndLoom::WheelAndLoom(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_WHEEL_AND_LOOM, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* WheelAndLoom::clone()
 {
   return new WheelAndLoom(*this);
-}
-
-string WheelAndLoom::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_WHEEL_AND_LOOM;
 }
 
 ClassIdentifier WheelAndLoom::internal_class_identifier() const

@@ -12,13 +12,9 @@
 class DecorativeStatue : public Feature
 {
   public:
-    DecorativeStatue(const Symbol& new_symbol);
+    DecorativeStatue(const std::string& new_desc_sid, const Symbol& new_symbol);
 
     virtual bool get_is_blocking() const override;
-
-    // Purposefully does not implement get_description() - this allows
-    // the class to be abstract, and ensures one of the concrete
-    // descendents is used.
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -32,9 +28,6 @@ class KingDecorativeStatue : public DecorativeStatue
     KingDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
-  protected:
-    std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
@@ -45,9 +38,6 @@ class QueenDecorativeStatue : public DecorativeStatue
     QueenDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
-  protected:
-    std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
@@ -58,9 +48,6 @@ class WarlordDecorativeStatue : public DecorativeStatue
     WarlordDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
-  protected:
-    std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
@@ -71,9 +58,6 @@ class KnightDecorativeStatue : public DecorativeStatue
     KnightDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
-  protected:
-    std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
@@ -84,9 +68,6 @@ class HighPriestDecorativeStatue : public DecorativeStatue
     HighPriestDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
-  protected:
-    std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
@@ -97,10 +78,6 @@ class SorcerorDecorativeStatue : public DecorativeStatue
     SorcerorDecorativeStatue(const Symbol& new_symbol);
     virtual Feature* clone() override;
     
-  protected:
-    std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
-

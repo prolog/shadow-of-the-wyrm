@@ -26,7 +26,6 @@ class Barrel : public Feature
     virtual bool deserialize(std::istream& stream) override;
 
   protected:
-    virtual std::string get_description_sid() const override;
     virtual void initialize_drinks();
 
     int drinks;

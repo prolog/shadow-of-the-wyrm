@@ -22,6 +22,5 @@ TEST(SW_World_Titles_Features_Sign, saveload)
   sign2.deserialize(iss);
 
   EXPECT_TRUE(sign == sign2);
-  EXPECT_EQ("text_sid", sign2.get_text_sid());
 }
 

@@ -9,9 +9,6 @@ class EvilAltar : public Altar
     EvilAltar(const Symbol& new_symbol, const std::string& new_deity_id);
     virtual Feature* clone() override;
 
-  protected:
-    std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };

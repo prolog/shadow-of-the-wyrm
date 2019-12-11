@@ -5,7 +5,7 @@
 using namespace std;
 
 RegularStatue::RegularStatue(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+: Feature("", MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 

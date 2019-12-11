@@ -3,8 +3,8 @@
 
 using namespace std;
 
-Altar::Altar(const Symbol& new_symbol, const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange new_alignment_range)
-: Feature(new_material, new_alignment_range, new_symbol), deity_id(new_deity_id)
+Altar::Altar(const std::string& new_desc_sid, const Symbol& new_symbol, const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange new_alignment_range)
+: Feature(new_desc_sid, new_material, new_alignment_range, new_symbol), deity_id(new_deity_id)
 {
 }
 

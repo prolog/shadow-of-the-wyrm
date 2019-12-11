@@ -6,7 +6,7 @@
 class Altar : public Feature
 {
   public:
-    Altar(const Symbol& new_symbol, const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange alignment_range);
+    Altar(const std::string& new_desc_sid, const Symbol& new_symbol, const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange alignment_range);
     virtual ~Altar() {};
     virtual bool operator==(const Altar& altar) const;
 

@@ -5,13 +5,13 @@ using std::string;
 
 // This constructor is really only used by serialization.
 Door::Door(const Symbol& new_symbol)
-: Entrance(new_symbol)
+: Entrance(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_DOOR, new_symbol)
 {
 }
 
 // By default, doors are made of wood.
 Door::Door(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state)
-: Entrance(new_symbol, new_lock, new_state)
+: Entrance(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_DOOR, new_symbol, new_lock, new_state)
 {
 }
 
@@ -37,11 +37,6 @@ Symbol Door::get_symbol() const
   s.set_colour(get_colour());
 
   return s;
-}
-
-string Door::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_DOOR;
 }
 
 ClassIdentifier Door::internal_class_identifier() const

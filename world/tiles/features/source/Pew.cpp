@@ -5,18 +5,13 @@
 using std::string;
 
 Pew::Pew(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_PEW, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* Pew::clone()
 {
   return new Pew(*this);
-}
-
-string Pew::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_PEW;
 }
 
 float Pew::get_piety_loss_multiplier() const

@@ -8,7 +8,7 @@
 using namespace std;
 
 SlotMachine::SlotMachine(const Symbol& new_symbol, const MaterialType material, const int new_cost, const int new_pct_chance_win, const float new_payout_multiplier)
-: Feature(material, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol),
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SLOT_MACHINE, material, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol),
 cost(new_cost),
 pct_chance_win(new_pct_chance_win),
 payout_multiplier(new_payout_multiplier)
@@ -16,12 +16,12 @@ payout_multiplier(new_payout_multiplier)
 }
 
 SlotMachine::SlotMachine(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), cost(1), pct_chance_win(0), payout_multiplier(0.0f)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SLOT_MACHINE, MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), cost(1), pct_chance_win(0), payout_multiplier(0.0f)
 {
 }
 
 SlotMachine::SlotMachine(const Symbol& new_symbol, const MaterialType material_type)
-: Feature(material_type, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol),
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SLOT_MACHINE, material_type, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol),
 cost(1), pct_chance_win(0), payout_multiplier(0.0f)
 {
 }
@@ -75,11 +75,6 @@ Colour SlotMachine::get_colour() const
 Feature* SlotMachine::clone()
 {
   return new SlotMachine(*this);
-}
-
-string SlotMachine::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SLOT_MACHINE;
 }
 
 bool SlotMachine::serialize(ostream& stream) const

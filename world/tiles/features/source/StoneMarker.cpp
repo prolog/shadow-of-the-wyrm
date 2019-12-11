@@ -6,7 +6,7 @@
 using namespace std;
 
 StoneMarker::StoneMarker(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_STONE_MARKER, MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
@@ -23,11 +23,6 @@ float StoneMarker::get_hp_regeneration_multiplier() const
 float StoneMarker::get_ap_regeneration_multiplier() const
 {
   return 0.1f;
-}
-
-string StoneMarker::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_STONE_MARKER;
 }
 
 ClassIdentifier StoneMarker::internal_class_identifier() const

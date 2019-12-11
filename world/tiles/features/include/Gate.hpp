@@ -12,9 +12,6 @@ class Gate : public Entrance
     virtual bool get_is_blocking() const override;
     virtual Symbol get_symbol() const override;
 
-  protected:
-    virtual std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };

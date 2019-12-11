@@ -7,8 +7,8 @@ using namespace std;
 
 // JCD FIXME NEED COPY CONSTRUCTOR FOR LOCK PTR WHEN THIS IS COMPLETED
 
-Feature::Feature(const MaterialType new_material, const AlignmentRange new_alignment_range, const Symbol& new_symbol, const int new_uses)
-: material(new_material), alignment_range(new_alignment_range), symbol(new_symbol), uses(new_uses)
+Feature::Feature(const string& new_description_sid, const MaterialType new_material, const AlignmentRange new_alignment_range, const Symbol& new_symbol, const int new_uses)
+: description_sid(new_description_sid), material(new_material), alignment_range(new_alignment_range), symbol(new_symbol), uses(new_uses)
 {
 }
 
@@ -30,6 +30,7 @@ Feature& Feature::operator=(const Feature& feature)
       lock = std::make_shared<Lock>(*feature.lock);
     }
 
+    description_sid = feature.description_sid;
     material = feature.material;
     alignment_range = feature.alignment_range;
     symbol = feature.symbol;
@@ -45,6 +46,7 @@ bool Feature::operator==(const Feature& feature) const
 
   result = result && (internal_class_identifier() == feature.internal_class_identifier());
 
+  result = result && (description_sid == feature.description_sid);
   result = result && (material == feature.material);
   result = result && (shimmer_colours == feature.shimmer_colours);
   result = result && ((!lock && !(feature.lock)) || (lock && feature.lock && (*lock == *(feature.lock))));
@@ -261,8 +263,14 @@ map<string, string> Feature::get_additional_properties() const
   return additional_properties;
 }
 
+string Feature::get_description_sid() const
+{
+  return description_sid;
+}
+
 bool Feature::serialize(ostream& stream) const
 {
+  Serialize::write_string(stream, description_sid);
   shimmer_colours.serialize(stream);
 
   if (lock)
@@ -288,6 +296,7 @@ bool Feature::serialize(ostream& stream) const
 
 bool Feature::deserialize(istream& stream)
 {
+  Serialize::read_string(stream, description_sid);
   shimmer_colours.deserialize(stream);
 
   ClassIdentifier lock_clid;

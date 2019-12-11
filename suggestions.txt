@@ -5,6 +5,9 @@ Me:
   - then, set a flag for which colour behaviour to use (material-based vs
     actual colour)
   - then, rework the code so that BasicFeature is no longer required
+  - don't think regular statues are being used, refactor them out and leave
+    an INTENTIONAL_BLANK in the class IDs and a note at the top of class
+    Id class that these can be reused.
 - Wind level should affect water shimmer
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.

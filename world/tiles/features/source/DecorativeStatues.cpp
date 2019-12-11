@@ -4,8 +4,8 @@
 using std::string;
 
 // Abstract base decorative statue class.
-DecorativeStatue::DecorativeStatue(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_MARBLE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+DecorativeStatue::DecorativeStatue(const string& new_description_sid, const Symbol& new_symbol)
+: Feature(new_description_sid, MaterialType::MATERIAL_TYPE_MARBLE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
@@ -21,18 +21,13 @@ ClassIdentifier DecorativeStatue::internal_class_identifier() const
 
 // King
 KingDecorativeStatue::KingDecorativeStatue(const Symbol& new_symbol)
-: DecorativeStatue(new_symbol)
+: DecorativeStatue(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_KING_STATUE, new_symbol)
 {
 }
 
 Feature* KingDecorativeStatue::clone()
 {
   return new KingDecorativeStatue(*this);
-}
-
-string KingDecorativeStatue::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_KING_STATUE;
 }
 
 ClassIdentifier KingDecorativeStatue::internal_class_identifier() const
@@ -42,18 +37,13 @@ ClassIdentifier KingDecorativeStatue::internal_class_identifier() const
 
 // Queen
 QueenDecorativeStatue::QueenDecorativeStatue(const Symbol& new_symbol)
-: DecorativeStatue(new_symbol)
+: DecorativeStatue(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_QUEEN_STATUE, new_symbol)
 {
 }
 
 Feature* QueenDecorativeStatue::clone()
 {
   return new QueenDecorativeStatue(*this);
-}
-
-string QueenDecorativeStatue::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_QUEEN_STATUE;
 }
 
 ClassIdentifier QueenDecorativeStatue::internal_class_identifier() const
@@ -63,18 +53,13 @@ ClassIdentifier QueenDecorativeStatue::internal_class_identifier() const
 
 // Warlord
 WarlordDecorativeStatue::WarlordDecorativeStatue(const Symbol& new_symbol)
-: DecorativeStatue(new_symbol)
+: DecorativeStatue(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_WARLORD_STATUE, new_symbol)
 {
 }
 
 Feature* WarlordDecorativeStatue::clone()
 {
   return new WarlordDecorativeStatue(*this);
-}
-
-string WarlordDecorativeStatue::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_WARLORD_STATUE;
 }
 
 ClassIdentifier WarlordDecorativeStatue::internal_class_identifier() const
@@ -84,18 +69,13 @@ ClassIdentifier WarlordDecorativeStatue::internal_class_identifier() const
 
 // Knight
 KnightDecorativeStatue::KnightDecorativeStatue(const Symbol& new_symbol)
-: DecorativeStatue(new_symbol)
+: DecorativeStatue(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_KNIGHT_STATUE, new_symbol)
 {
 }
 
 Feature* KnightDecorativeStatue::clone()
 {
   return new KnightDecorativeStatue(*this);
-}
-
-string KnightDecorativeStatue::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_KNIGHT_STATUE;
 }
 
 ClassIdentifier KnightDecorativeStatue::internal_class_identifier() const
@@ -105,18 +85,13 @@ ClassIdentifier KnightDecorativeStatue::internal_class_identifier() const
 
 // High Priest
 HighPriestDecorativeStatue::HighPriestDecorativeStatue(const Symbol& new_symbol)
-: DecorativeStatue(new_symbol)
+: DecorativeStatue(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_HIGH_PRIEST_STATUE, new_symbol)
 {
 }
 
 Feature* HighPriestDecorativeStatue::clone()
 {
   return new HighPriestDecorativeStatue(*this);
-}
-
-string HighPriestDecorativeStatue::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_HIGH_PRIEST_STATUE;
 }
 
 ClassIdentifier HighPriestDecorativeStatue::internal_class_identifier() const
@@ -126,18 +101,13 @@ ClassIdentifier HighPriestDecorativeStatue::internal_class_identifier() const
 
 // Sorceror
 SorcerorDecorativeStatue::SorcerorDecorativeStatue(const Symbol& new_symbol)
-: DecorativeStatue(new_symbol)
+: DecorativeStatue(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SORCEROR_STATUE, new_symbol)
 {
 }
 
 Feature* SorcerorDecorativeStatue::clone()
 {
   return new SorcerorDecorativeStatue(*this);
-}
-
-string SorcerorDecorativeStatue::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SORCEROR_STATUE;
 }
 
 ClassIdentifier SorcerorDecorativeStatue::internal_class_identifier() const

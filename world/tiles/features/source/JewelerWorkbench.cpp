@@ -6,18 +6,13 @@
 using namespace std;
 
 JewelerWorkbench::JewelerWorkbench(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_JEWELER_WORKBENCH, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
 Feature* JewelerWorkbench::clone()
 {
   return new JewelerWorkbench(*this);
-}
-
-string JewelerWorkbench::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_JEWELER_WORKBENCH;
 }
 
 ClassIdentifier JewelerWorkbench::internal_class_identifier() const

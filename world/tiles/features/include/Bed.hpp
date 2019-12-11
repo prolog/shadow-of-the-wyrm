@@ -13,9 +13,6 @@ class Bed : public Feature
     virtual float get_hp_regeneration_multiplier() const override;
     virtual float get_ap_regeneration_multiplier() const override;
 
-  protected:
-    virtual std::string get_description_sid() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };

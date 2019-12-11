@@ -14,15 +14,12 @@ class ConfigurableFeature : public Feature
     virtual void set_colour(const Colour colour);
     virtual Colour get_colour() const;
 
-
     virtual void set_description_sid(const std::string& new_description_sid);
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
   protected:
-    virtual std::string get_description_sid() const;
-
     std::string description_sid;
     Colour colour;
   

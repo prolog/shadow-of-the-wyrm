@@ -10,7 +10,7 @@ const int Barrel::MIN_DRINKS = 3;
 const int Barrel::MAX_DRINKS = 64;
 
 Barrel::Barrel(const Symbol& new_symbol)
-: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), drinks(1), tap(false)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BARREL, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), drinks(1), tap(false)
 {
   initialize_drinks();
 }
@@ -61,11 +61,6 @@ bool Barrel::can_pour() const
   }
 
   return pour;
-}
-
-string Barrel::get_description_sid() const
-{
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BARREL;
 }
 
 ClassIdentifier Barrel::internal_class_identifier() const
