@@ -1,7 +1,4 @@
 #include "gtest/gtest.h"
-#include "GoodAltar.hpp"
-#include "NeutralAltar.hpp"
-#include "EvilAltar.hpp"
 
 TEST(SW_World_Tiles_Feature_Altar, deity_id)
 {

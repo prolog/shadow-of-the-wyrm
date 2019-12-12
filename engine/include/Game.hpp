@@ -9,6 +9,7 @@
 #include "Directions.hpp"
 #include "DisplayTile.hpp"
 #include "Display.hpp"
+#include "Features.hpp"
 #include "Item.hpp"
 #include "ISerializable.hpp"
 #include "LoadedMapDetails.hpp"
@@ -20,7 +21,6 @@
 #include "Settings.hpp"
 #include "Spell.hpp"
 #include "StartingLocation.hpp"
-#include "Trap.hpp"
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
 

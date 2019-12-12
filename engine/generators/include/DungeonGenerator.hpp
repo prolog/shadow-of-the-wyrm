@@ -1,9 +1,9 @@
 #pragma once
+#include "Features.hpp"
 #include "Generator.hpp"
 #include "Map.hpp"
 #include "Room.hpp"
 #include "TileGenerator.hpp"
-#include "Trap.hpp"
 
 class DungeonGenerator : public SOTW::Generator
 {

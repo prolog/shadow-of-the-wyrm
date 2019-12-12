@@ -1,12 +1,7 @@
 #pragma once
 #include "AlignmentEnums.hpp"
-#include "Door.hpp"
-#include "Feature.hpp"
-#include "RegularStatues.hpp"
-#include "Sarcophagus.hpp"
-#include "SlotMachine.hpp"
 #include "StatueTypes.hpp"
-#include "Trap.hpp"
+#include "Features.hpp"
 
 enum struct PewDirection
 {

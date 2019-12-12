@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include "GoodAltar.hpp"
 #include "FeatureGenerator.hpp"
 
 TEST(SW_Engine_Maps_Tiles_Features_GoodAltarManipulator, action_key)

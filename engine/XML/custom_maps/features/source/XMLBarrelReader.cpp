@@ -1,5 +1,4 @@
 #include "XMLBarrelReader.hpp"
-#include "Barrel.hpp"
 #include "FeatureGenerator.hpp"
 
 using namespace std;

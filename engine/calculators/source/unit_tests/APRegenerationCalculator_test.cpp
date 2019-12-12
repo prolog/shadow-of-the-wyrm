@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "AirTile.hpp"
-#include "Bed.hpp"
+#include "Features.hpp"
 
 TEST(SW_Engine_Calculators_APRegenerationCalculator, minutes_per_ap)
 {

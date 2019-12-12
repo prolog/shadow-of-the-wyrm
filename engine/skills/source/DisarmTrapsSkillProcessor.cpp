@@ -2,6 +2,7 @@
 #include "Commands.hpp"
 #include "CoordUtils.hpp"
 #include "DisarmTrapsSkillProcessor.hpp"
+#include "Features.hpp"
 #include "Game.hpp"
 #include "ItemManager.hpp"
 #include "ItemProperties.hpp"
@@ -9,7 +10,6 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StatisticsMarker.hpp"
-#include "Trap.hpp"
 
 using namespace std;
 

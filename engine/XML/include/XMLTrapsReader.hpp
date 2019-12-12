@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
+#include "Features.hpp"
 #include "XMLReader.hpp"
 #include "XMLDataStructures.hpp"
-#include "Trap.hpp"
 
 class DisplayTile;
 

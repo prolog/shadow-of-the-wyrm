@@ -1,6 +1,6 @@
 #pragma once
 #include "Creature.hpp"
-#include "Door.hpp"
+#include "Features.hpp"
 #include "MaterialTypes.hpp"
 
 class DoorBreakageCalculator

@@ -1,7 +1,6 @@
 #include "gtest/gtest.h"
 #include "FieldTile.hpp"
 #include "RockTile.hpp"
-#include "FirePillar.hpp"
 #include "FeatureGenerator.hpp"
 
 TEST(SW_Engine_Magic_TileMagicChecker, does_tile_block_spell)

@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include "EvilAltar.hpp"
 #include "FeatureGenerator.hpp"
 
 TEST(SW_Engine_Maps_Tiles_Features_EvilAltarManipulator, action_key)

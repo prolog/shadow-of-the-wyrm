@@ -1,6 +1,4 @@
 #include "gtest/gtest.h"
-#include "Door.hpp"
-#include "Gate.hpp"
 
 TEST(SW_World_Tiles_Feature_Entrances, saveload)
 {

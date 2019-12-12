@@ -1,7 +1,7 @@
 #include "ActionTextKeys.hpp"
-#include "Altar.hpp"
 #include "AltarManipulator.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
+#include "Features.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 

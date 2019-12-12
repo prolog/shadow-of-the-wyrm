@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "FeatureGenerator.hpp"
-#include "NeutralAltar.hpp"
+#include "Features.hpp"
 
 TEST(SW_Engine_Maps_Tiles_Features_NeutralAltarManipulator, action_key)
 {

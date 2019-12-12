@@ -1167,31 +1167,10 @@
     <ClInclude Include="world\tiles\include\WorshipSiteTypes.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Altar.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Bench.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\DecorativeStatues.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Door.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\EastWestPew.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Entrance.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\tiles\features\include\EntranceState.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
     <ClInclude Include="world\tiles\features\include\EntranceTypes.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\EvilAltar.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
     <ClInclude Include="world\tiles\features\include\Feature.hpp">
@@ -1200,31 +1179,10 @@
     <ClInclude Include="world\tiles\features\include\FeatureGenerator.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\FirePillar.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Fountain.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Gate.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\GoodAltar.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\tiles\features\include\Lock.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\NeutralAltar.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Pew.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\tiles\features\include\StatueTypes.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Trap.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
     <ClInclude Include="world\seasons\include\Autumn.hpp">
@@ -2583,9 +2541,6 @@
     <ClInclude Include="engine\calculators\include\StoneCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\RegularStatues.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\include\IMessageManager.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
@@ -2636,9 +2591,6 @@
     </ClInclude>
     <ClInclude Include="engine\strings\include\ItemTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Sarcophagus.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
     <ClInclude Include="controller\include\Controller.hpp">
       <Filter>Header Files\controller\include</Filter>
@@ -2798,9 +2750,6 @@
     </ClInclude>
     <ClInclude Include="world\include\StatusAilments.hpp">
       <Filter>Header Files\world\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Barrel.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
     <ClInclude Include="world\include\Blood.hpp">
       <Filter>Header Files\world\include</Filter>
@@ -3192,9 +3141,6 @@
     <ClInclude Include="display\include\DisplaySettings.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Forge.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
@@ -3227,9 +3173,6 @@
     </ClInclude>
     <ClInclude Include="engine\calculators\include\TanningCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\WheelAndLoom.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLWheelAndLoomReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
@@ -3330,17 +3273,11 @@
     <ClInclude Include="engine\screens\include\ComponentAlignment.hpp">
       <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Bed.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBedReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\CarryingCapacityCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\StoneMarker.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLStoneMarkerReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
@@ -4143,9 +4080,6 @@
     <ClInclude Include="engine\calculators\include\NullAttackSpeedCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Table.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLTableReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
@@ -4170,9 +4104,6 @@
     <ClInclude Include="engine\scripting\include\MoveScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\SlotMachine.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSlotMachineReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
@@ -4194,9 +4125,6 @@
     <ClInclude Include="engine\include\DeityUtils.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Sign.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSignReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
@@ -4214,9 +4142,6 @@
     </ClInclude>
     <ClInclude Include="engine\maps\tiles\features\include\PulperManipulator.hpp">
       <Filter>Header Files\engine\maps\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Pulper.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\skills\include\PapercraftSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
@@ -4311,12 +4236,6 @@
     <ClInclude Include="world\include\SpritesheetLocation.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\Tannery.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\JewelerWorkbench.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\tiles\features\include\ConfigurableFeature.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
@@ -4325,6 +4244,9 @@
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLConfigurableFeatureReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Features.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4676,55 +4598,13 @@
     <ClCompile Include="world\tiles\source\WorshipSiteTile.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Altar.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Bench.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\DecorativeStatues.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Door.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\EastWestPew.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Entrance.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\tiles\features\source\EntranceState.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\EvilAltar.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\Feature.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\FeatureGenerator.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\FirePillar.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Fountain.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Gate.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\GoodAltar.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\NeutralAltar.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Pew.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Trap.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\actions\source\ActionCoordinator.cpp">
@@ -6500,9 +6380,6 @@
     <ClCompile Include="engine\calculators\source\unit_tests\StoneCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\RegularStatues.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\RegularStatues_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
@@ -6583,9 +6460,6 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\ItemTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Sarcophagus.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Sarcophagus_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
@@ -6712,9 +6586,6 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\StatusAilments_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Barrel.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Barrel_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
@@ -7160,9 +7031,6 @@
     <ClCompile Include="display\source\DisplaySettings.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Forge.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Forge_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
@@ -7202,12 +7070,6 @@
     <ClCompile Include="world\materials\source\Gold.cpp">
       <Filter>Source Files\world\materials\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\JewelerWorkbench.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Tannery.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLJewelerWorkbenchReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
@@ -7231,9 +7093,6 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\TanningCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\WheelAndLoom.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\WheelAndLoom_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
@@ -7373,9 +7232,6 @@
     <ClCompile Include="engine\screens\source\unit_tests\ComponentAlignment_test.cpp">
       <Filter>Source Files\engine\screens\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Bed.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Bed_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
@@ -7399,9 +7255,6 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Item_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\StoneMarker.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\StoneMarker_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
@@ -8411,9 +8264,6 @@
     <ClCompile Include="engine\calculators\source\unit_tests\RangedAttackSpeedCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Table.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Table_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
@@ -8441,9 +8291,6 @@
     <ClCompile Include="engine\scripting\source\MoveScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\SlotMachine.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\SlotMachine_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
@@ -8468,9 +8315,6 @@
     <ClCompile Include="engine\source\DeityUtils.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Sign.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Sign_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
@@ -8494,9 +8338,6 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\PulperManipulator.cpp">
       <Filter>Source Files\engine\maps\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\Pulper.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Pulper_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
@@ -8653,6 +8494,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLConfigurableFeatureReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Features.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
