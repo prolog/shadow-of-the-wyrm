@@ -212,7 +212,18 @@ class Game : public ISerializable
     GenerationValuesMap item_generation_values;
     ItemMap items;
     FeatureMap configurable_features;
-    std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
+
+    // At some point in the future, you're going to look at this and ask,
+    // hey, I separated symbol details from tiles and put into the game 
+    // class to save space, why not do the same with creatures?
+    //
+    // To save you another half-hour of your life, it's because there's
+    // scripting support for dynamically manipulating a creature's symbol
+    // and colour, for things like jellyfish, shapeshifters, etc.
+    //
+    // Note that there are no shapeshifters, I'm just saying this to try
+    // to persuade you not to try this, again.
+    std::vector<DisplayTile> tile_info;
     std::vector<TrapPtr> trap_info;
     std::map<int, CalendarDay> calendar_days;
     StartingLocationMap starting_locations;
