@@ -197,7 +197,7 @@
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>earthcleaver</Artifact>
 				<Artifact>asturias</Artifact>
-				<Artifact>vorpal_blade</Artifact>
+ 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>choros_greatsword</Artifact>
 				<Artifact>blood_and_glory</Artifact>
 				<Artifact>inferno</Artifact>
@@ -41080,56 +41080,58 @@
 			</Item>
 		</MiscItems>
 	</Items>
-	<Features>
-		<Feature id="_rift">
-			<Material>14</Material>
-			<Symbol>^</Symbol>
-			<Colour>9</Colour>
-			<DescriptionSID>FEATURE_DESCRIPTION_RIFT</DescriptionSID>
-		</Feature>
-		<Feature id="_dwarf_star">
-			<Material>14</Material>
-			<Symbol>o</Symbol>
-			<Colour>11</Colour>
-			<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
-		</Feature>
-		<Feature id="_spiral_arm">
-			<Material>14</Material>
-			<Symbol>;</Symbol>
-			<Colour>15</Colour>
-			<DescriptionSID>FEATURE_DESCRIPTION_SPIRAL_ARM</DescriptionSID>
-		</Feature>
-		<Feature id="_red_giant_star">
-			<Material>14</Material>
-			<Symbol>O</Symbol>
-			<Colour>9</Colour>
-			<DescriptionSID>FEATURE_DESCRIPTION_RED_GIANT</DescriptionSID>
-		</Feature>
-		<Feature id="_supernova">
-			<Material>14</Material>
-			<Symbol> </Symbol>
-			<Colour>80</Colour>
-			<DescriptionSID>FEATURE_DESCRIPTION_SUPERNOVA</DescriptionSID>
-		</Feature>
-		<Feature id="_black_hole">
-			<Material>14</Material>
-			<Symbol>*</Symbol>
-			<Colour>8</Colour>
-			<DescriptionSID>FEATURE_DESCRIPTION_BLACK_HOLE</DescriptionSID>
-		</Feature>
-		<Feature id="_pulsar">
-			<Material>14</Material>
-			<Symbol>*</Symbol>
-			<Colour>15</Colour>
-			<DescriptionSID>FEATURE_DESCRIPTION_PULSAR</DescriptionSID>
-		</Feature>
-		<Feature id="_cosmic_dust">
-			<Material>12</Material>
-			<Symbol>.</Symbol>
-			<Colour>3</Colour>
-			<DescriptionSID>FEATURE_DESCRIPTION_COSMIC_DUST</DescriptionSID>
-		</Feature>
-	</Features>
+	<AllFeatures>
+		<ConfigurableFeatures>
+			<ConfigurableFeature id="_rift">
+				<Material>14</Material>
+				<Symbol>^</Symbol>
+				<Colour>9</Colour>
+				<DescriptionSID>FEATURE_DESCRIPTION_RIFT</DescriptionSID>
+			</ConfigurableFeature>
+			<ConfigurableFeature id="_dwarf_star">
+				<Material>14</Material>
+				<Symbol>o</Symbol>
+				<Colour>11</Colour>
+				<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
+			</ConfigurableFeature>
+			<ConfigurableFeature id="_spiral_arm">
+				<Material>14</Material>
+				<Symbol>;</Symbol>
+				<Colour>15</Colour>
+				<DescriptionSID>FEATURE_DESCRIPTION_SPIRAL_ARM</DescriptionSID>
+			</ConfigurableFeature>
+			<ConfigurableFeature id="_red_giant_star">
+				<Material>14</Material>
+				<Symbol>O</Symbol>
+				<Colour>9</Colour>
+				<DescriptionSID>FEATURE_DESCRIPTION_RED_GIANT</DescriptionSID>
+			</ConfigurableFeature>
+			<ConfigurableFeature id="_supernova">
+				<Material>14</Material>
+				<Symbol> </Symbol>
+				<Colour>80</Colour>
+				<DescriptionSID>FEATURE_DESCRIPTION_SUPERNOVA</DescriptionSID>
+			</ConfigurableFeature>
+			<ConfigurableFeature id="_black_hole">
+				<Material>14</Material>
+				<Symbol>*</Symbol>
+				<Colour>8</Colour>
+				<DescriptionSID>FEATURE_DESCRIPTION_BLACK_HOLE</DescriptionSID>
+			</ConfigurableFeature>
+			<ConfigurableFeature id="_pulsar">
+				<Material>14</Material>
+				<Symbol>*</Symbol>
+				<Colour>15</Colour>
+				<DescriptionSID>FEATURE_DESCRIPTION_PULSAR</DescriptionSID>
+			</ConfigurableFeature>
+			<ConfigurableFeature id="_cosmic_dust">
+				<Material>12</Material>
+				<Symbol>.</Symbol>
+				<Colour>3</Colour>
+				<DescriptionSID>FEATURE_DESCRIPTION_COSMIC_DUST</DescriptionSID>
+			</ConfigurableFeature>
+		</ConfigurableFeatures>
+	</AllFeatures>
 	<Calendar>
 		<Day>
 			<NameSID>ALARI_NAME_SID</NameSID>

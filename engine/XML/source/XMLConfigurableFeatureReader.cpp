@@ -9,7 +9,7 @@ FeatureMap XMLConfigurableFeatureReader::get_configurable_features(const XMLNode
 
   if (!config_features_node.is_null())
   {
-    vector<XMLNode> config_feature_nodes = XMLUtils::get_elements_by_local_name(config_features_node, "Feature");
+    vector<XMLNode> config_feature_nodes = XMLUtils::get_elements_by_local_name(config_features_node, "ConfigurableFeature");
 
     for (const XMLNode& cf_node : config_feature_nodes)
     {

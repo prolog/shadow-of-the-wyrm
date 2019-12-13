@@ -1,13 +1,13 @@
 Me:
-- Feature refactoring:
-  - same as Symbol, but desc
-  - then, move all the now-flyweight feature classes into fewer files
-  - then, set a flag for which colour behaviour to use (material-based vs
-    actual colour)
-  - then, rework the code so that BasicFeature is no longer required
-  - don't think regular statues are being used, refactor them out and leave
-    an INTENTIONAL_BLANK in the class IDs and a note at the top of class
-    Id class that these can be reused.
+- Test AllFeatures in XML
+- Tiles symbols are already abstracted out of the Tile class and into a vector
+  on the game.
+  - Do something similar for creatures
+  - Do something similar for features
+  - Check memory usage after this is done and once the game is running!
+- Create optional spritesheet list in ShadowOfTheWyrm.xml/xsd
+  - This should be read in by the display during its startup, SDLDisplay
+    should read the images, CursesDisplay should ignore, etc.
 - Wind level should affect water shimmer
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.

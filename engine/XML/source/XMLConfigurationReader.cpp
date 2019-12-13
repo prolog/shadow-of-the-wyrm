@@ -77,7 +77,8 @@ pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
 
 FeatureMap XMLConfigurationReader::get_configurable_features()
 {
-  XMLNode config_features_node = XMLUtils::get_next_element_by_local_name(root, "Features");
+  XMLNode features_node = XMLUtils::get_next_element_by_local_name(root, "AllFeatures");
+  XMLNode config_features_node = XMLUtils::get_next_element_by_local_name(features_node, "ConfigurableFeatures");
   FeatureMap cfm = cf_reader.get_configurable_features(config_features_node);
   return cfm;
 }

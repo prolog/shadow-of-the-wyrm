@@ -13,7 +13,7 @@
 			<xs:element ref="tns:Tiles"/>
 			<xs:element ref="tns:Traps"/>
 			<xs:element ref="tns:Items"/>
-			<xs:element ref="tns:Features"/>
+			<xs:element ref="tns:AllFeatures"/>
 			<xs:element ref="tns:Calendar"/>
 			<xs:element ref="tns:StartingLocations"/>
 			<xs:element ref="tns:Scripts"/>
@@ -182,19 +182,37 @@
 	<!-- Books -->
 	<!-- Rings -->
 </xs:element>
-<xs:element name="Features">
+<xs:element name="AllFeatures">
 	<xs:annotation>
-		<xs:documentation>Basic features (have descriptions but cannot be manipulated).</xs:documentation>
+		<xs:documentation>Contains information about regular (non-configurable) as well as configurable features.</xs:documentation>
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element ref="tns:Feature" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- <xs:element ref="tns:Features" minOccurs="0"/> -->
+			<xs:element ref="tns:ConfigurableFeatures" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
-<xs:element name="Feature">
+<!--<xs:element name="Features">
 	<xs:annotation>
-		<xs:documentation>A basic feature, consisting of a symbol, colour, and description SID.</xs:documentation>
+		<xs:documentation>Symbol information for non-user-defined features.</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+	</xs:sequence>
+</xs:element> -->
+<xs:element name="ConfigurableFeatures">
+	<xs:annotation>
+		<xs:documentation>Configurable features (have XML-settable descriptions/materials but cannot be manipulated).</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:ConfigurableFeature" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="ConfigurableFeature">
+	<xs:annotation>
+		<xs:documentation>A configurable feature, consisting of a symbol, colour, and description SID.</xs:documentation>
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
