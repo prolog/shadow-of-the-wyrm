@@ -1556,7 +1556,7 @@ Memberships& Creature::get_memberships_ref()
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
 {
-  // VS 2015
+  // Visual Studio
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
@@ -1567,7 +1567,7 @@ void Creature::assert_size() const
     #endif
   #else // gcc toolchain
   // Works for gcc in release
-  static_assert(sizeof(*this) == 2216 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
+  static_assert(sizeof(*this) == 2304 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
   #endif
 }
 
