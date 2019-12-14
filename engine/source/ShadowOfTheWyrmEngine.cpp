@@ -167,7 +167,11 @@ void ShadowOfTheWyrmEngine::setup_game()
 {
   Game& game = Game::instance();
   
-  XMLConfigurationReader reader(FileConstants::XML_CONFIGURATION_FILE);
+  string config_file = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_BASE);
+  string config_file_creatures = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_CREATURES);
+  string config_file_items = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_ITEMS);
+
+  XMLConfigurationReader reader(config_file, config_file_creatures, config_file_items);
 
   // Read the races, classes, and items from the configuration file.
   // Items need to be read first so that each class's default items can be loaded.

@@ -1563,7 +1563,7 @@ void Creature::assert_size() const
     static_assert(sizeof(*this) == 1384, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 1208, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1272, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
   // Works for gcc in release

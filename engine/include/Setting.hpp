@@ -43,6 +43,10 @@ class Setting
     static const std::string ALLOW_CURSED_AMMUNITION_USE;
     static const std::string SKILL_SELECTION_REQUIRE_CAPITALIZATION;
     static const std::string CONFIRMATION_REQUIRE_CAPITALIZATION;
+    static const std::string CONFIGURATION_FILE_BASE;
+    static const std::string CONFIGURATION_FILE_CREATURES;
+    static const std::string CONFIGURATION_FILE_ITEMS;
+    static const std::string CONFIGURATION_FILE_WORLD_MAP_AREAS;
 
   protected:
     Setting();

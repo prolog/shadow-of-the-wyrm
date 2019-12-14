@@ -24,7 +24,7 @@
 class XMLConfigurationReader
 {
   public:
-    XMLConfigurationReader(const std::string& xml_filename);
+    XMLConfigurationReader(const std::string& xml_filename, const std::string& cr_file, const std::string& it_file);
     ~XMLConfigurationReader();
 
     void set_new_file(const std::string& xml_filename);
@@ -48,6 +48,9 @@ class XMLConfigurationReader
 
     // Member variables for the base XML configuration file parsing.
     std::string filename;
+    std::string creatures_filename;
+    std::string items_filename;
+
     XMLNode root;
 
     // Member variables for reading the various XML nodes and setting the data into world objects.

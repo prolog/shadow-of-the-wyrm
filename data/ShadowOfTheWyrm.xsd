@@ -2,21 +2,21 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:shadow_of_the_wyrm:1.0.0" targetNamespace="urn:shadow_of_the_wyrm:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
 <!-- ELEMENTS -->
 <xs:element name="ShadowOfTheWyrm">
-	<xs:annotation><xs:documentation>The configuration root node - contains all the races, classes, and game data.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>The configuration root node - contains all the races, classes, and game data.  In practice, all the elements below are required, but are made optional so that the data can be easily spread across multiple files.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element ref="tns:Deities"/>
-			<xs:element ref="tns:Races"/>
-			<xs:element ref="tns:Classes"/>
-			<xs:element ref="tns:Creatures"/>
-			<xs:element ref="tns:Spells"/>
-			<xs:element ref="tns:Tiles"/>
-			<xs:element ref="tns:Traps"/>
-			<xs:element ref="tns:Items"/>
-			<xs:element ref="tns:AllFeatures"/>
-			<xs:element ref="tns:Calendar"/>
-			<xs:element ref="tns:StartingLocations"/>
-			<xs:element ref="tns:Scripts"/>
+			<xs:element ref="tns:Deities" minOccurs="0"/>
+			<xs:element ref="tns:Races" minOccurs="0"/>
+			<xs:element ref="tns:Classes" minOccurs="0"/>
+			<xs:element ref="tns:Creatures" minOccurs="0"/>
+			<xs:element ref="tns:Spells" minOccurs="0"/>
+			<xs:element ref="tns:Tiles" minOccurs="0"/>
+			<xs:element ref="tns:Traps" minOccurs="0"/>
+			<xs:element ref="tns:Items" minOccurs="0"/>
+			<xs:element ref="tns:AllFeatures" minOccurs="0"/>
+			<xs:element ref="tns:Calendar" minOccurs="0"/>
+			<xs:element ref="tns:StartingLocations" minOccurs="0"/>
+			<xs:element ref="tns:Scripts" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

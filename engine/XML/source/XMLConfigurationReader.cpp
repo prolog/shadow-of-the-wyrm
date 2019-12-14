@@ -4,14 +4,15 @@
 #include <boost/regex.hpp>
 #include "CreatureGenerationValues.hpp"
 #include "DisplayTile.hpp"
+#include "Setting.hpp"
 #include "XMLMapReaders.hpp"
 #include "XMLConfigurationReader.hpp"
 
 using namespace std;
 using namespace boost::filesystem;
 
-XMLConfigurationReader::XMLConfigurationReader(const std::string& xml_filename)
-: filename(xml_filename)
+XMLConfigurationReader::XMLConfigurationReader(const string& xml_filename, const string& cr_filename, const string& it_filename)
+: filename(xml_filename), creatures_filename(cr_filename), items_filename(it_filename)
 {
   XML::initialize();
 
@@ -56,8 +57,12 @@ StartingLocationMap XMLConfigurationReader::get_starting_locations()
 
 pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creatures()
 {
+  XMLNode prev_config = root;
+  initialize_parser(creatures_filename);
   XMLNode creatures_node = XMLUtils::get_next_element_by_local_name(root, "Creatures");
   pair<CreatureMap, CreatureGenerationValuesMap> creatures = creatures_reader.get_creatures(creatures_node);
+  root = prev_config;
+
   return creatures;
 }
 
@@ -70,8 +75,12 @@ SpellMap XMLConfigurationReader::get_spells()
 
 pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
 {
+  XMLNode prev_config = root;
+  initialize_parser(items_filename);
   XMLNode items_node = XMLUtils::get_next_element_by_local_name(root, "Items");
   pair<ItemMap, GenerationValuesMap> items = items_reader.get_items(items_node);
+  root = prev_config;
+
   return items;
 }
 

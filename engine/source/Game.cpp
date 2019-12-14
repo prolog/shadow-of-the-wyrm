@@ -381,7 +381,8 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   // any scripts called by the CustomAreaGenerator.
   set_current_map(current_world);
 
-  CustomAreaGenerator cag(FileConstants::WORLD_MAP_AREAS_FILE);
+  string world_map_areas = settings.get_setting(Setting::CONFIGURATION_FILE_WORLD_MAP_AREAS);
+  CustomAreaGenerator cag(world_map_areas);
   cag.overlay_custom_areas(current_world);
 
   MapPtr world_map = get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);

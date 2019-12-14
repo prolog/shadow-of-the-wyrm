@@ -1,10 +1,4 @@
 Me:
-- Test AllFeatures in XML
-- Tiles symbols are already abstracted out of the Tile class and into a vector
-  on the game.
-  - Do something similar for creatures
-  - Do something similar for features
-  - Check memory usage after this is done and once the game is running!
 - Create optional spritesheet list in ShadowOfTheWyrm.xml/xsd
   - This should be read in by the display during its startup, SDLDisplay
     should read the images, CursesDisplay should ignore, etc.

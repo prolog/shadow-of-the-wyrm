@@ -50,3 +50,7 @@ const string Setting::CHECKPOINT_SAVE = "checkpoint_save";
 const string Setting::ALLOW_CURSED_AMMUNITION_USE = "allow_cursed_ammunition_use";
 const string Setting::SKILL_SELECTION_REQUIRE_CAPITALIZATION = "skill_selection_require_capitalization";
 const string Setting::CONFIRMATION_REQUIRE_CAPITALIZATION = "confirmation_require_capitalization";
+const string Setting::CONFIGURATION_FILE_BASE = "configuration_file_base";
+const string Setting::CONFIGURATION_FILE_CREATURES = "configuration_file_creatures";
+const string Setting::CONFIGURATION_FILE_ITEMS = "configuration_file_items";
+const string Setting::CONFIGURATION_FILE_WORLD_MAP_AREAS = "configuration_file_world_map_areas";

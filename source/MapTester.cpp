@@ -656,7 +656,7 @@ void race_info()
 {
   std::string race_id = "";
 
-  XMLConfigurationReader xml_config_reader("data/ShadowOfTheWyrm.xml");
+  XMLConfigurationReader xml_config_reader("data/ShadowOfTheWyrm.xml", "data/ShadowOfTheWyrm_Creatures.xml", "data/ShadowOfTheWyrm_Items.xml");
   RaceMap races = xml_config_reader.get_races();
 
   std::cout << "Read " << races.size() << " races." << std::endl << std::endl;
@@ -674,7 +674,7 @@ void class_info()
 {
   std::string class_id = "";
 
-  XMLConfigurationReader xml_config_reader("data/ShadowOfTheWyrm.xml");
+  XMLConfigurationReader xml_config_reader("data/ShadowOfTheWyrm.xml", "data/ShadowOfTheWyrm_Creatures.xml", "data/ShadowOfTheWyrm_Items.xml");
   ClassMap classes = xml_config_reader.get_classes();
 
   std::cout << "Read " << classes.size() << " classes." << std::endl << std::endl;
@@ -1130,7 +1130,8 @@ MapPtr load_custom_map(const std::string& fname_pattern, const std::string& cust
 
   if (!fname_pattern.empty() && !custom_map_id.empty())
   {
-    XMLConfigurationReader cr("");
+    // We don't care about reading actual configuration data, just the maps.
+    XMLConfigurationReader cr("", "", "");
     Game& game = Game::instance();
 
     std::vector<MapPtr> maps = cr.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, fname_pattern);
