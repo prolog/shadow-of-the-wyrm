@@ -7047,4 +7047,7 @@
 	<Scripts>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
+	<Spritesheets>
+		<Spritesheet id="test">assets/sprites/test.png</Spritesheet>
+	</Spritesheets>
 </ShadowOfTheWyrm>

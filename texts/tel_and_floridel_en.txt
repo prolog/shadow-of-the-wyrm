@@ -3155,8 +3155,19 @@ That tunnel narrowed.  Shrinking on all sides, %b
 it pressed against her, made her duck and shrink %b
 as the ceiling knelt and floor began to rise. %b
 She duck-walked and then crawled up to the brink %b
-of a tiny wooden door.  The whispers trilled. %b
-The door swung open, and a little light %b
+of a tiny iron door.  The whispers trilled. %b
+She pulled it open, and a little light %b
 expanded from the opening to fill %b
-the girl with wonder, casting off the bitter chill.
+the girl with wonder, warm and soft, the sight %b
+a welcome break against the subterranean night.
+%p
+What else was there to do but take that door %b
+and put it behind her?  Floridel crawled through, %b
+the ring of steel that lined the first tunnel's bore %b
+now giving way to what was once a flume %b
+perhaps, a narrow stream, but long dried up. %b
+The whispers went external.  Taking shape %b
+in sound and source, they called her as she ducked %b
+through narrow, twisting passages, and craned %b
+to hear them as they laughed and softly called her name.
 %p

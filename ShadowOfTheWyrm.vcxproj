@@ -1078,6 +1078,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\include\XMLScrollReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLSkillsReaders.hpp" />
     <ClInclude Include="engine\XML\include\XMLSpellsReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLSpritesheetsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLStartingLocationsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLTilesReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLToolReader.hpp" />
@@ -1894,6 +1895,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLTableReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLConfigurableFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLSpritesheetsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp" />
     <ClCompile Include="source\ColourUtils.cpp" />
     <ClCompile Include="source\CompilationDetails.cpp" />

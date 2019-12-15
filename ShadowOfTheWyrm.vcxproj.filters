@@ -4248,6 +4248,9 @@
     <ClInclude Include="world\tiles\features\include\Features.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLSpritesheetsReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8497,6 +8500,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\Features.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLSpritesheetsReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

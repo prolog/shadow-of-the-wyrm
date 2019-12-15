@@ -17,6 +17,7 @@
 			<xs:element ref="tns:Calendar" minOccurs="0"/>
 			<xs:element ref="tns:StartingLocations" minOccurs="0"/>
 			<xs:element ref="tns:Scripts" minOccurs="0"/>
+			<xs:element ref="tns:Spritesheets" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -251,6 +252,14 @@
 			<!-- Run after character creation to have special effects when
 				 starting on a particular day. -->
 			<xs:element name="SpecialDaysScript" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Spritesheets">
+	<xs:annotation><xs:documentation>A list of spritesheet IDs and their associated images on disk.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Spritesheet" type="tns:Spritesheet" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -1230,6 +1239,14 @@
 		<xs:element name="Max" type="xs:integer" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
+<xs:complexType name="Spritesheet">
+	<xs:annotation><xs:documentation>An individual spritesheet, which consists of an ID and file.  The ID is referenced by creatures/items/etc when they provide their index into the spritesheet.</xs:documentation></xs:annotation>		
+	<xs:simpleContent>
+		<xs:extension base="xs:string">
+			<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
+		</xs:extension>
+	</xs:simpleContent>
+</xs:complexType>
 <!-- SIMPLE TYPES -->
 <xs:simpleType name="HandsType">
 	<xs:annotation>
@@ -1759,6 +1776,13 @@
 <xs:simpleType name="Identifier">
 	<xs:restriction base="xs:string">
 		<xs:pattern value="[\*a-zA-Z0-9_]*"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NonEmptyIdentifier">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[\*a-zA-Z0-9_]*"/>
+		<xs:minLength value="1"/>
+		<xs:maxLength value="50"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="StatusAilmentType">

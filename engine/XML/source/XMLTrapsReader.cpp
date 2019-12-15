@@ -11,10 +11,10 @@ vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node)
   {
     vector<XMLNode> trap_nodes = XMLUtils::get_elements_by_local_name(xml_config_traps_node, "Trap");
 
-    for (const auto& xml_tile : trap_nodes)
+    for (const auto& xml_trap : trap_nodes)
     {
       TrapPtr trap = FeatureGenerator::create_trap();
-      parse_trap(xml_tile, trap);
+      parse_trap(xml_trap, trap);
 
       traps.push_back(trap);
     }
